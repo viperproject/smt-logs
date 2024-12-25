@@ -1,1 +1,1 @@
-find $(dirname "$0")/dafny/Source/IntegrationTests/TestFiles/LitTests/LitTest -name "*.dfy" -type f
+find $(realpath "$0" | xargs dirname)/dafny/Source/IntegrationTests/TestFiles/LitTests/LitTest -name "*.dfy" -type f
