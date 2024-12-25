@@ -1,0 +1,9 @@
+[submodule "silicon"]
+	path = silicon/silicon
+	url = https://github.com/viperproject/silicon.git
+[submodule "carbon"]
+	path = carbon/carbon
+	url = https://github.com/viperproject/carbon.git
+[submodule "dafny"]
+	path = dafny/dafny
+	url = https://github.com/dafny-lang/dafny.git
