@@ -1,0 +1,42 @@
+name: Make .smt2 files
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  generate_smt2:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: 'recursive'
+
+      - name: Install Z3 for newer version
+        uses: pavpanchekha/setup-z3@v1.3
+        with:
+          version: 4.12.1
+
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 6.0.x
+
+      - name: Install Boogie
+        run: dotnet tool install --global boogie
+
+      - name: Make smt2 files
+        run: ./make_smt2.sh
+
+      - name: Commit changes
+        run: |
+          git config --global user.email "gh-action[bot]@users.noreply.github.com"
+          git config --global user.name "gh-action[bot]"
+          git symbolic-ref HEAD refs/heads/smt2
+          git add .
+          git commit -m "Update from main and rebuild `.smt2` files"
+          git push
