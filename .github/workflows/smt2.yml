@@ -20,6 +20,7 @@ jobs:
         uses: pavpanchekha/setup-z3@v1.3
         with:
           version: 4.12.1
+          distribution: 'glibc-2.35'
 
       - name: Setup dotnet
         uses: actions/setup-dotnet@v4
