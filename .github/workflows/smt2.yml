@@ -37,7 +37,8 @@ jobs:
         run: |
           git config --global user.email "gh-action[bot]@users.noreply.github.com"
           git config --global user.name "gh-action[bot]"
+          git fetch origin smt2
           git symbolic-ref HEAD refs/heads/smt2
           git add .
-          git commit -m "Update from main and rebuild `.smt2` files"
-          git push -u origin smt2
+          git commit -m "Update from main and rebuild \".smt2\" files"
+          git push -f -u origin smt2

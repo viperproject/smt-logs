@@ -13,6 +13,7 @@ VERIFIERS="$DIRNAME/$(echo $VERIFIERS | sed "s| | $DIRNAME/|g")"
 for verifier in $VERIFIERS; do
     echo "[Running $verifier]"
     cd $verifier
+    continue # TODO: Remove this line
     ./build.sh
     VERIFIER=$(basename $verifier)
     for file in `./tests.sh`; do
@@ -23,6 +24,5 @@ for verifier in $VERIFIERS; do
         fi
         echo "[.smt2] $no_prefix"
         ./run.sh $file ../smt2/$VERIFIER/$no_prefix ${TIMEOUT:-10}
-        break # TODO: Remove this line
     done
 done
