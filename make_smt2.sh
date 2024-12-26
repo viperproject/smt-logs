@@ -3,7 +3,7 @@
 
 VERIFIERS="$@"
 if [ -z "$VERIFIERS" ]; then
-    VERIFIERS="silicon carbon dafny"
+    VERIFIERS="dafny silicon carbon"
 fi
 
 git submodule update --init --recursive &> /dev/null
@@ -18,7 +18,7 @@ while read -r verifier; do
     # Split on '\n' with `while` instead of potentially ' ' in filename with `for`
     while read -r file; do
         # This requires that 
-        no_prefix=$(echo "$file" | perl -pe "s|.*?/$VERIFIER/||")
+        no_prefix=$(echo "$file" | perl -pe "s|.*?/$VERIFIER/($VERIFIER/)?||")
         if [ "$file" == "$no_prefix" ]; then
             echo "Could not strip prefix (.*/$VERIFIER/): $no_prefix"
             exit 1
