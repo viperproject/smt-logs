@@ -42,6 +42,7 @@ jobs:
         run: |
           git config --global user.email "gh-action[bot]@users.noreply.github.com"
           git config --global user.name "gh-action[bot]"
+          git add -A
           git stash
           git fetch origin smt2
           git checkout FETCH_HEAD -b smt2

@@ -25,5 +25,6 @@ while read -r verifier; do
         fi
         echo "[.smt2] $VERIFIER/$no_prefix"
         ./run.sh "$file" "../smt2/$VERIFIER/$no_prefix" "${TIMEOUT:-10}" || exit 1
+        break # TODO: Remove this
     done <<< "$(./tests.sh)"
 done <<< "$VERIFIERS"
