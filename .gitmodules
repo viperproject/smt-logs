@@ -1,9 +1,9 @@
-[submodule "silicon"]
-	path = silicon/silicon
-	url = https://github.com/viperproject/silicon.git
-[submodule "carbon"]
-	path = carbon/carbon
-	url = https://github.com/viperproject/carbon.git
 [submodule "dafny"]
 	path = dafny/dafny
 	url = https://github.com/dafny-lang/dafny.git
+[submodule "viper/viperserver"]
+	path = viper/viperserver
+	url = https://github.com/viperproject/viperserver.git
+[submodule "viper/viper_client"]
+	path = viper/viper_client
+	url = https://github.com/viperproject/viper_client.git
