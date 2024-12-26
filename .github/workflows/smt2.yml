@@ -42,10 +42,11 @@ jobs:
           git config --global user.name "gh-action[bot]"
           git fetch origin smt2
           git checkout FETCH_HEAD -b smt2
-          git checkout main
           git fetch --unshallow --no-tags --prune --no-recurse-submodules
-          echo "[git update]"
+          git merge -X theirs main
+          git checkout main
+          echo "[git] Update and merge done"
           git symbolic-ref HEAD refs/heads/smt2
-          git add .
-          git commit -m "Update from main and rebuild \".smt2\" files"
+          git add -A
+          git diff-index --quiet HEAD || git commit -m "Update from main and rebuild \".smt2\" files"
           git push -u origin smt2
