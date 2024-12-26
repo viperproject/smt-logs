@@ -1,3 +1,5 @@
-if [ ! -f $(dirname "$0")/dafny/Binaries/Dafny ]; then
-    cd $(dirname "$0")/dafny && make
+cd $(dirname "$0")/dafny
+
+if [ ! -f Binaries/Dafny ]; then
+    make
 fi

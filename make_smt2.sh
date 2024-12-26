@@ -23,5 +23,6 @@ for verifier in $VERIFIERS; do
         fi
         echo "[.smt2] $no_prefix"
         ./run.sh $file ../smt2/$VERIFIER/$no_prefix ${TIMEOUT:-10}
+        break # TODO: Remove this line
     done
 done

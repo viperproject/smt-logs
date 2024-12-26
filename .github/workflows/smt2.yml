@@ -31,7 +31,7 @@ jobs:
         run: dotnet tool install --global boogie
 
       - name: Make smt2 files
-        run: ./make_smt2.sh carbon
+        run: ./make_smt2.sh
 
       - name: Commit changes
         run: |
