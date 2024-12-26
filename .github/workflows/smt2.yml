@@ -33,14 +33,18 @@ jobs:
       - name: Make smt2 files
         run: ./make_smt2.sh
 
+      # - name: Debugging with tmate
+      #   uses: mxschmitt/action-tmate@v3.19
+
       - name: Commit changes
         run: |
           git config --global user.email "gh-action[bot]@users.noreply.github.com"
           git config --global user.name "gh-action[bot]"
-          git remote set-branches --add origin smt2
+          git fetch origin smt2
+          git checkout FETCH_HEAD -b smt2
+          git checkout main
           git fetch --unshallow --no-tags --prune --no-recurse-submodules
-          git pull
-          echo "[git pull] done"
+          echo "[git update]"
           git symbolic-ref HEAD refs/heads/smt2
           git add .
           git commit -m "Update from main and rebuild \".smt2\" files"
