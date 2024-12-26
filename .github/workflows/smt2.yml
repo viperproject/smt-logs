@@ -6,6 +6,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 jobs:
   generate_smt2:
@@ -23,7 +24,6 @@ jobs:
           git config --global user.name "gh-action[bot]"
           git fetch origin smt2
           git checkout FETCH_HEAD -b smt2
-          git merge -X theirs main
           git checkout main
 
       - name: Install Z3 for newer version
@@ -46,9 +46,17 @@ jobs:
       # - name: Debugging with tmate
       #   uses: mxschmitt/action-tmate@v3.19
 
+      - name: Merge in from main
+        run: |
+          git stash
+          git checkout smt2
+          git merge -X theirs main
+          git checkout main
+          git stash show && git stash pop || true
+
       - name: Commit changes
         run: |
           git symbolic-ref HEAD refs/heads/smt2
           git add -A
-          git diff-index --quiet HEAD || git commit -m "Update from main and rebuild \".smt2\" files"
+          git diff-index --quiet HEAD || git commit -m "Rebuild \".smt2\" files with new main"
           git push -u origin smt2
