@@ -18,14 +18,6 @@ jobs:
           submodules: 'recursive'
           fetch-depth: 0
 
-      - name: Setup "smt2" branch for commit
-        run: |
-          git config --global user.email "gh-action[bot]@users.noreply.github.com"
-          git config --global user.name "gh-action[bot]"
-          git fetch origin smt2
-          git checkout FETCH_HEAD -b smt2
-          git checkout main
-
       - name: Install Z3 for newer version
         uses: pavpanchekha/setup-z3@v1.3
         with:
@@ -48,8 +40,12 @@ jobs:
 
       - name: Merge in from main
         run: |
+          git config --global user.email "gh-action[bot]@users.noreply.github.com"
+          git config --global user.name "gh-action[bot]"
+          git add -A
           git stash
-          git checkout smt2
+          git fetch origin smt2
+          git checkout FETCH_HEAD -b smt2
           git merge -X theirs main
           git checkout main
           git stash show && git stash pop || true
