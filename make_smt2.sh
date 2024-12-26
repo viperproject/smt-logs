@@ -17,7 +17,7 @@ for verifier in $VERIFIERS; do
     ./build.sh
     VERIFIER=$(basename $verifier)
     for file in `./tests.sh`; do
-        no_prefix=$(echo $file | sed "s|.*/$VERIFIER/||g")
+        no_prefix=$(echo $file | perl -pe "s|.*?/$VERIFIER/||")
         if [ "$file" == "$no_prefix" ]; then
             echo "Could not strip prefix (.*/$VERIFIER/): $no_prefix"
             exit 1
