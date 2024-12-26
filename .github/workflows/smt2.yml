@@ -40,4 +40,4 @@ jobs:
           git symbolic-ref HEAD refs/heads/smt2
           git add .
           git commit -m "Update from main and rebuild `.smt2` files"
-          git push
+          git push -u origin smt2
