@@ -1,0 +1,554 @@
+(set-option :print-success false)
+(set-info :smt-lib-version 2.6)
+(set-option :smt.AUTO_CONFIG false)
+(set-option :smt.PHASE_SELECTION 0)
+(set-option :smt.RESTART_STRATEGY 0)
+(set-option :smt.RESTART_FACTOR |1.5|)
+(set-option :smt.ARITH.RANDOM_INITIAL_VALUE true)
+(set-option :smt.CASE_SPLIT 3)
+(set-option :smt.DELAY_UNITS true)
+(set-option :NNF.SK_HACK true)
+(set-option :smt.MBQI false)
+(set-option :smt.QI.EAGER_THRESHOLD 100)
+(set-option :smt.BV.REFLECT true)
+(set-option :smt.qi.max_multi_patterns 1000)
+(set-option :smt.mbqi false)
+(set-option :model.compact false)
+(set-option :model.v2 true)
+(set-option :pp.bv_literals false)
+; done setting options
+
+
+(declare-fun tickleBool (Bool) Bool)
+(assert (and (tickleBool true) (tickleBool false)))
+(declare-sort T@Ref 0)
+(declare-sort T@Field_6133_53 0)
+(declare-sort T@Field_6146_6147 0)
+(declare-sort T@Field_6133_16579 0)
+(declare-sort T@Field_6133_16446 0)
+(declare-sort T@FrameType 0)
+(declare-datatypes ((T@PolymorphicMapType_6094 0)) (((PolymorphicMapType_6094 (|PolymorphicMapType_6094_6133_53#PolymorphicMapType_6094| (Array T@Ref T@Field_6133_53 Real)) (|PolymorphicMapType_6094_6133_6147#PolymorphicMapType_6094| (Array T@Ref T@Field_6146_6147 Real)) (|PolymorphicMapType_6094_6133_16446#PolymorphicMapType_6094| (Array T@Ref T@Field_6133_16446 Real)) (|PolymorphicMapType_6094_6133_20140#PolymorphicMapType_6094| (Array T@Ref T@Field_6133_16579 Real)) ) ) ))
+(declare-datatypes ((T@PolymorphicMapType_6622 0)) (((PolymorphicMapType_6622 (|PolymorphicMapType_6622_6133_53#PolymorphicMapType_6622| (Array T@Ref T@Field_6133_53 Bool)) (|PolymorphicMapType_6622_6133_6147#PolymorphicMapType_6622| (Array T@Ref T@Field_6146_6147 Bool)) (|PolymorphicMapType_6622_6133_16446#PolymorphicMapType_6622| (Array T@Ref T@Field_6133_16446 Bool)) (|PolymorphicMapType_6622_6133_17559#PolymorphicMapType_6622| (Array T@Ref T@Field_6133_16579 Bool)) ) ) ))
+(declare-datatypes ((T@PolymorphicMapType_6073 0)) (((PolymorphicMapType_6073 (|PolymorphicMapType_6073_3601_53#PolymorphicMapType_6073| (Array T@Ref T@Field_6133_53 Bool)) (|PolymorphicMapType_6073_3604_3605#PolymorphicMapType_6073| (Array T@Ref T@Field_6146_6147 T@Ref)) (|PolymorphicMapType_6073_6133_16623#PolymorphicMapType_6073| (Array T@Ref T@Field_6133_16579 T@PolymorphicMapType_6622)) (|PolymorphicMapType_6073_6133_16446#PolymorphicMapType_6073| (Array T@Ref T@Field_6133_16446 T@FrameType)) ) ) ))
+(declare-sort T@TreeDomainType 0)
+(declare-fun state (T@PolymorphicMapType_6073 T@PolymorphicMapType_6094) Bool)
+(declare-fun |allNodesLessThan'| (T@PolymorphicMapType_6073 T@TreeDomainType Int) Bool)
+(declare-fun |allNodesLessThan#frame| (T@FrameType T@TreeDomainType Int) Bool)
+(declare-fun EmptyFrame () T@FrameType)
+(declare-fun |allNodesGreaterThan'| (T@PolymorphicMapType_6073 T@TreeDomainType Int) Bool)
+(declare-fun |allNodesGreaterThan#frame| (T@FrameType T@TreeDomainType Int) Bool)
+(declare-fun succHeap (T@PolymorphicMapType_6073 T@PolymorphicMapType_6073) Bool)
+(declare-fun succHeapTrans (T@PolymorphicMapType_6073 T@PolymorphicMapType_6073) Bool)
+(declare-fun GoodMask (T@PolymorphicMapType_6094) Bool)
+(declare-fun ZeroPMask () T@PolymorphicMapType_6622)
+(declare-fun Node_1 (Int T@TreeDomainType T@TreeDomainType) T@TreeDomainType)
+(declare-fun Tree_tag (T@TreeDomainType) Int)
+(declare-fun dummyFunction_1656 (Bool) Bool)
+(declare-fun |allNodesLessThan#triggerStateless| (T@TreeDomainType Int) Bool)
+(declare-fun |allNodesGreaterThan#triggerStateless| (T@TreeDomainType Int) Bool)
+(declare-fun Leaf () T@TreeDomainType)
+(declare-fun |isBST'| (T@PolymorphicMapType_6073 T@TreeDomainType) Bool)
+(declare-fun |isBST#triggerStateless| (T@TreeDomainType) Bool)
+(declare-fun IdenticalOnKnownLocations (T@PolymorphicMapType_6073 T@PolymorphicMapType_6073 T@PolymorphicMapType_6094) Bool)
+(declare-fun IsPredicateField_6133_16537 (T@Field_6133_16446) Bool)
+(declare-fun null () T@Ref)
+(declare-fun PredicateMaskField_6133 (T@Field_6133_16446) T@Field_6133_16579)
+(declare-fun HasDirectPerm_6133_16510 (T@PolymorphicMapType_6094 T@Ref T@Field_6133_16446) Bool)
+(declare-fun IsWandField_6133_18086 (T@Field_6133_16446) Bool)
+(declare-fun WandMaskField_6133 (T@Field_6133_16446) T@Field_6133_16579)
+(declare-fun allNodesLessThan (T@PolymorphicMapType_6073 T@TreeDomainType Int) Bool)
+(declare-fun AssumeFunctionsAbove () Int)
+(declare-fun get_Tree_v (T@TreeDomainType) Int)
+(declare-fun get_Tree_right (T@TreeDomainType) T@TreeDomainType)
+(declare-fun get_Tree_left (T@TreeDomainType) T@TreeDomainType)
+(declare-fun allNodesGreaterThan (T@PolymorphicMapType_6073 T@TreeDomainType Int) Bool)
+(declare-fun isBST (T@PolymorphicMapType_6073 T@TreeDomainType) Bool)
+(declare-fun dummyHeap () T@PolymorphicMapType_6073)
+(declare-fun ZeroMask () T@PolymorphicMapType_6094)
+(declare-fun $allocated () T@Field_6133_53)
+(declare-fun InsidePredicate_6133_6133 (T@Field_6133_16446 T@FrameType T@Field_6133_16446 T@FrameType) Bool)
+(declare-fun NoPerm () Real)
+(declare-fun AssumePermUpperBound () Bool)
+(declare-fun IsPredicateField_6133_21049 (T@Field_6133_16579) Bool)
+(declare-fun IsWandField_6133_21065 (T@Field_6133_16579) Bool)
+(declare-fun FullPerm () Real)
+(declare-fun IsPredicateField_6133_6147 (T@Field_6146_6147) Bool)
+(declare-fun IsWandField_6133_6147 (T@Field_6146_6147) Bool)
+(declare-fun IsPredicateField_6133_53 (T@Field_6133_53) Bool)
+(declare-fun IsWandField_6133_53 (T@Field_6133_53) Bool)
+(declare-fun HasDirectPerm_6133_21420 (T@PolymorphicMapType_6094 T@Ref T@Field_6133_16579) Bool)
+(declare-fun HasDirectPerm_6133_6147 (T@PolymorphicMapType_6094 T@Ref T@Field_6146_6147) Bool)
+(declare-fun HasDirectPerm_6133_53 (T@PolymorphicMapType_6094 T@Ref T@Field_6133_53) Bool)
+(declare-fun ConditionalFrame (Real T@FrameType) T@FrameType)
+(declare-fun sumMask (T@PolymorphicMapType_6094 T@PolymorphicMapType_6094 T@PolymorphicMapType_6094) Bool)
+(declare-fun |isBST#frame| (T@FrameType T@TreeDomainType) Bool)
+(assert (forall ((Heap T@PolymorphicMapType_6073) (Mask T@PolymorphicMapType_6094) (t_2 T@TreeDomainType) (value_1 Int) ) (!  (=> (state Heap Mask) (= (|allNodesLessThan'| Heap t_2 value_1) (|allNodesLessThan#frame| EmptyFrame t_2 value_1)))
+ :qid |stdinbpl.348:15|
+ :skolemid |34|
+ :pattern ( (state Heap Mask) (|allNodesLessThan'| Heap t_2 value_1))
+)))
+(assert (forall ((Heap@@0 T@PolymorphicMapType_6073) (Mask@@0 T@PolymorphicMapType_6094) (t_2@@0 T@TreeDomainType) (value_1@@0 Int) ) (!  (=> (state Heap@@0 Mask@@0) (= (|allNodesGreaterThan'| Heap@@0 t_2@@0 value_1@@0) (|allNodesGreaterThan#frame| EmptyFrame t_2@@0 value_1@@0)))
+ :qid |stdinbpl.423:15|
+ :skolemid |38|
+ :pattern ( (state Heap@@0 Mask@@0) (|allNodesGreaterThan'| Heap@@0 t_2@@0 value_1@@0))
+)))
+(assert (forall ((Heap0 T@PolymorphicMapType_6073) (Heap1 T@PolymorphicMapType_6073) ) (!  (=> (succHeap Heap0 Heap1) (succHeapTrans Heap0 Heap1))
+ :qid |stdinbpl.88:15|
+ :skolemid |11|
+ :pattern ( (succHeap Heap0 Heap1))
+)))
+(assert (forall ((Heap@@1 T@PolymorphicMapType_6073) (Mask@@1 T@PolymorphicMapType_6094) ) (!  (=> (state Heap@@1 Mask@@1) (GoodMask Mask@@1))
+ :qid |stdinbpl.125:15|
+ :skolemid |15|
+ :pattern ( (state Heap@@1 Mask@@1))
+)))
+(assert (forall ((Heap0@@0 T@PolymorphicMapType_6073) (Heap1@@0 T@PolymorphicMapType_6073) (Heap2 T@PolymorphicMapType_6073) ) (!  (=> (and (succHeapTrans Heap0@@0 Heap1@@0) (succHeap Heap1@@0 Heap2)) (succHeapTrans Heap0@@0 Heap2))
+ :qid |stdinbpl.93:15|
+ :skolemid |12|
+ :pattern ( (succHeapTrans Heap0@@0 Heap1@@0) (succHeap Heap1@@0 Heap2))
+)))
+(assert (forall ((o_2 T@Ref) (f_4 T@Field_6133_16579) ) (!  (not (select (|PolymorphicMapType_6622_6133_17559#PolymorphicMapType_6622| ZeroPMask) o_2 f_4))
+ :qid |stdinbpl.112:22|
+ :skolemid |14|
+ :pattern ( (select (|PolymorphicMapType_6622_6133_17559#PolymorphicMapType_6622| ZeroPMask) o_2 f_4))
+)))
+(assert (forall ((o_2@@0 T@Ref) (f_4@@0 T@Field_6133_16446) ) (!  (not (select (|PolymorphicMapType_6622_6133_16446#PolymorphicMapType_6622| ZeroPMask) o_2@@0 f_4@@0))
+ :qid |stdinbpl.112:22|
+ :skolemid |14|
+ :pattern ( (select (|PolymorphicMapType_6622_6133_16446#PolymorphicMapType_6622| ZeroPMask) o_2@@0 f_4@@0))
+)))
+(assert (forall ((o_2@@1 T@Ref) (f_4@@1 T@Field_6146_6147) ) (!  (not (select (|PolymorphicMapType_6622_6133_6147#PolymorphicMapType_6622| ZeroPMask) o_2@@1 f_4@@1))
+ :qid |stdinbpl.112:22|
+ :skolemid |14|
+ :pattern ( (select (|PolymorphicMapType_6622_6133_6147#PolymorphicMapType_6622| ZeroPMask) o_2@@1 f_4@@1))
+)))
+(assert (forall ((o_2@@2 T@Ref) (f_4@@2 T@Field_6133_53) ) (!  (not (select (|PolymorphicMapType_6622_6133_53#PolymorphicMapType_6622| ZeroPMask) o_2@@2 f_4@@2))
+ :qid |stdinbpl.112:22|
+ :skolemid |14|
+ :pattern ( (select (|PolymorphicMapType_6622_6133_53#PolymorphicMapType_6622| ZeroPMask) o_2@@2 f_4@@2))
+)))
+(assert (forall ((v_2 Int) (left_1 T@TreeDomainType) (right T@TreeDomainType) ) (! (= (Tree_tag (Node_1 v_2 left_1 right)) 1)
+ :qid |stdinbpl.228:15|
+ :skolemid |25|
+ :pattern ( (Node_1 v_2 left_1 right))
+)))
+(assert (forall ((Heap@@2 T@PolymorphicMapType_6073) (t_2@@1 T@TreeDomainType) (value_1@@1 Int) ) (! (dummyFunction_1656 (|allNodesLessThan#triggerStateless| t_2@@1 value_1@@1))
+ :qid |stdinbpl.335:15|
+ :skolemid |32|
+ :pattern ( (|allNodesLessThan'| Heap@@2 t_2@@1 value_1@@1))
+)))
+(assert (forall ((Heap@@3 T@PolymorphicMapType_6073) (t_2@@2 T@TreeDomainType) (value_1@@2 Int) ) (! (dummyFunction_1656 (|allNodesGreaterThan#triggerStateless| t_2@@2 value_1@@2))
+ :qid |stdinbpl.410:15|
+ :skolemid |36|
+ :pattern ( (|allNodesGreaterThan'| Heap@@3 t_2@@2 value_1@@2))
+)))
+(assert (= (Tree_tag Leaf) 0))
+(assert (forall ((Heap@@4 T@PolymorphicMapType_6073) (t_2@@3 T@TreeDomainType) ) (! (dummyFunction_1656 (|isBST#triggerStateless| t_2@@3))
+ :qid |stdinbpl.250:15|
+ :skolemid |28|
+ :pattern ( (|isBST'| Heap@@4 t_2@@3))
+)))
+(assert (forall ((Heap@@5 T@PolymorphicMapType_6073) (ExhaleHeap T@PolymorphicMapType_6073) (Mask@@2 T@PolymorphicMapType_6094) (pm_f_5 T@Field_6133_16446) ) (!  (=> (IdenticalOnKnownLocations Heap@@5 ExhaleHeap Mask@@2) (=> (and (HasDirectPerm_6133_16510 Mask@@2 null pm_f_5) (IsPredicateField_6133_16537 pm_f_5)) (= (select (|PolymorphicMapType_6073_6133_16623#PolymorphicMapType_6073| Heap@@5) null (PredicateMaskField_6133 pm_f_5)) (select (|PolymorphicMapType_6073_6133_16623#PolymorphicMapType_6073| ExhaleHeap) null (PredicateMaskField_6133 pm_f_5)))))
+ :qid |stdinbpl.47:19|
+ :skolemid |2|
+ :pattern ( (IdenticalOnKnownLocations Heap@@5 ExhaleHeap Mask@@2) (IsPredicateField_6133_16537 pm_f_5) (select (|PolymorphicMapType_6073_6133_16623#PolymorphicMapType_6073| ExhaleHeap) null (PredicateMaskField_6133 pm_f_5)))
+)))
+(assert (forall ((Heap@@6 T@PolymorphicMapType_6073) (ExhaleHeap@@0 T@PolymorphicMapType_6073) (Mask@@3 T@PolymorphicMapType_6094) (pm_f_5@@0 T@Field_6133_16446) ) (!  (=> (IdenticalOnKnownLocations Heap@@6 ExhaleHeap@@0 Mask@@3) (=> (and (HasDirectPerm_6133_16510 Mask@@3 null pm_f_5@@0) (IsWandField_6133_18086 pm_f_5@@0)) (= (select (|PolymorphicMapType_6073_6133_16623#PolymorphicMapType_6073| Heap@@6) null (WandMaskField_6133 pm_f_5@@0)) (select (|PolymorphicMapType_6073_6133_16623#PolymorphicMapType_6073| ExhaleHeap@@0) null (WandMaskField_6133 pm_f_5@@0)))))
+ :qid |stdinbpl.60:19|
+ :skolemid |5|
+ :pattern ( (IdenticalOnKnownLocations Heap@@6 ExhaleHeap@@0 Mask@@3) (IsWandField_6133_18086 pm_f_5@@0) (select (|PolymorphicMapType_6073_6133_16623#PolymorphicMapType_6073| ExhaleHeap@@0) null (WandMaskField_6133 pm_f_5@@0)))
+)))
+(assert (forall ((Heap@@7 T@PolymorphicMapType_6073) (Mask@@4 T@PolymorphicMapType_6094) (t_2@@4 T@TreeDomainType) (value_1@@3 Int) ) (!  (=> (and (state Heap@@7 Mask@@4) (< AssumeFunctionsAbove 1)) (= (allNodesLessThan Heap@@7 t_2@@4 value_1@@3)  (or (= (Tree_tag t_2@@4) 0) (and (< (get_Tree_v t_2@@4) value_1@@3) (and (|allNodesLessThan'| Heap@@7 (get_Tree_right t_2@@4) value_1@@3) (|allNodesLessThan'| Heap@@7 (get_Tree_left t_2@@4) value_1@@3))))))
+ :qid |stdinbpl.341:15|
+ :skolemid |33|
+ :pattern ( (state Heap@@7 Mask@@4) (allNodesLessThan Heap@@7 t_2@@4 value_1@@3))
+)))
+(assert (forall ((Heap@@8 T@PolymorphicMapType_6073) (Mask@@5 T@PolymorphicMapType_6094) (t_2@@5 T@TreeDomainType) (value_1@@4 Int) ) (!  (=> (and (state Heap@@8 Mask@@5) (< AssumeFunctionsAbove 2)) (= (allNodesGreaterThan Heap@@8 t_2@@5 value_1@@4)  (or (= (Tree_tag t_2@@5) 0) (and (> (get_Tree_v t_2@@5) value_1@@4) (and (|allNodesGreaterThan'| Heap@@8 (get_Tree_left t_2@@5) value_1@@4) (|allNodesGreaterThan'| Heap@@8 (get_Tree_right t_2@@5) value_1@@4))))))
+ :qid |stdinbpl.416:15|
+ :skolemid |37|
+ :pattern ( (state Heap@@8 Mask@@5) (allNodesGreaterThan Heap@@8 t_2@@5 value_1@@4))
+)))
+(assert (forall ((Heap@@9 T@PolymorphicMapType_6073) (ExhaleHeap@@1 T@PolymorphicMapType_6073) (Mask@@6 T@PolymorphicMapType_6094) (pm_f_5@@1 T@Field_6133_16446) ) (!  (=> (IdenticalOnKnownLocations Heap@@9 ExhaleHeap@@1 Mask@@6) (=> (and (HasDirectPerm_6133_16510 Mask@@6 null pm_f_5@@1) (IsPredicateField_6133_16537 pm_f_5@@1)) (and (and (and (forall ((o2_5 T@Ref) (f_16 T@Field_6133_53) ) (!  (=> (select (|PolymorphicMapType_6622_6133_53#PolymorphicMapType_6622| (select (|PolymorphicMapType_6073_6133_16623#PolymorphicMapType_6073| Heap@@9) null (PredicateMaskField_6133 pm_f_5@@1))) o2_5 f_16) (= (select (|PolymorphicMapType_6073_3601_53#PolymorphicMapType_6073| Heap@@9) o2_5 f_16) (select (|PolymorphicMapType_6073_3601_53#PolymorphicMapType_6073| ExhaleHeap@@1) o2_5 f_16)))
+ :qid |stdinbpl.54:138|
+ :skolemid |3|
+ :pattern ( (select (|PolymorphicMapType_6073_3601_53#PolymorphicMapType_6073| ExhaleHeap@@1) o2_5 f_16))
+)) (forall ((o2_5@@0 T@Ref) (f_16@@0 T@Field_6146_6147) ) (!  (=> (select (|PolymorphicMapType_6622_6133_6147#PolymorphicMapType_6622| (select (|PolymorphicMapType_6073_6133_16623#PolymorphicMapType_6073| Heap@@9) null (PredicateMaskField_6133 pm_f_5@@1))) o2_5@@0 f_16@@0) (= (select (|PolymorphicMapType_6073_3604_3605#PolymorphicMapType_6073| Heap@@9) o2_5@@0 f_16@@0) (select (|PolymorphicMapType_6073_3604_3605#PolymorphicMapType_6073| ExhaleHeap@@1) o2_5@@0 f_16@@0)))
+ :qid |stdinbpl.54:138|
+ :skolemid |3|
+ :pattern ( (select (|PolymorphicMapType_6073_3604_3605#PolymorphicMapType_6073| ExhaleHeap@@1) o2_5@@0 f_16@@0))
+))) (forall ((o2_5@@1 T@Ref) (f_16@@1 T@Field_6133_16446) ) (!  (=> (select (|PolymorphicMapType_6622_6133_16446#PolymorphicMapType_6622| (select (|PolymorphicMapType_6073_6133_16623#PolymorphicMapType_6073| Heap@@9) null (PredicateMaskField_6133 pm_f_5@@1))) o2_5@@1 f_16@@1) (= (select (|PolymorphicMapType_6073_6133_16446#PolymorphicMapType_6073| Heap@@9) o2_5@@1 f_16@@1) (select (|PolymorphicMapType_6073_6133_16446#PolymorphicMapType_6073| ExhaleHeap@@1) o2_5@@1 f_16@@1)))
+ :qid |stdinbpl.54:138|
+ :skolemid |3|
+ :pattern ( (select (|PolymorphicMapType_6073_6133_16446#PolymorphicMapType_6073| ExhaleHeap@@1) o2_5@@1 f_16@@1))
+))) (forall ((o2_5@@2 T@Ref) (f_16@@2 T@Field_6133_16579) ) (!  (=> (select (|PolymorphicMapType_6622_6133_17559#PolymorphicMapType_6622| (select (|PolymorphicMapType_6073_6133_16623#PolymorphicMapType_6073| Heap@@9) null (PredicateMaskField_6133 pm_f_5@@1))) o2_5@@2 f_16@@2) (= (select (|PolymorphicMapType_6073_6133_16623#PolymorphicMapType_6073| Heap@@9) o2_5@@2 f_16@@2) (select (|PolymorphicMapType_6073_6133_16623#PolymorphicMapType_6073| ExhaleHeap@@1) o2_5@@2 f_16@@2)))
+ :qid |stdinbpl.54:138|
+ :skolemid |3|
+ :pattern ( (select (|PolymorphicMapType_6073_6133_16623#PolymorphicMapType_6073| ExhaleHeap@@1) o2_5@@2 f_16@@2))
+)))))
+ :qid |stdinbpl.52:19|
+ :skolemid |4|
+ :pattern ( (IdenticalOnKnownLocations Heap@@9 ExhaleHeap@@1 Mask@@6) (IsPredicateField_6133_16537 pm_f_5@@1))
+)))
+(assert (forall ((Heap@@10 T@PolymorphicMapType_6073) (ExhaleHeap@@2 T@PolymorphicMapType_6073) (Mask@@7 T@PolymorphicMapType_6094) (pm_f_5@@2 T@Field_6133_16446) ) (!  (=> (IdenticalOnKnownLocations Heap@@10 ExhaleHeap@@2 Mask@@7) (=> (and (HasDirectPerm_6133_16510 Mask@@7 null pm_f_5@@2) (IsWandField_6133_18086 pm_f_5@@2)) (and (and (and (forall ((o2_5@@3 T@Ref) (f_16@@3 T@Field_6133_53) ) (!  (=> (select (|PolymorphicMapType_6622_6133_53#PolymorphicMapType_6622| (select (|PolymorphicMapType_6073_6133_16623#PolymorphicMapType_6073| Heap@@10) null (WandMaskField_6133 pm_f_5@@2))) o2_5@@3 f_16@@3) (= (select (|PolymorphicMapType_6073_3601_53#PolymorphicMapType_6073| Heap@@10) o2_5@@3 f_16@@3) (select (|PolymorphicMapType_6073_3601_53#PolymorphicMapType_6073| ExhaleHeap@@2) o2_5@@3 f_16@@3)))
+ :qid |stdinbpl.67:133|
+ :skolemid |6|
+ :pattern ( (select (|PolymorphicMapType_6073_3601_53#PolymorphicMapType_6073| ExhaleHeap@@2) o2_5@@3 f_16@@3))
+)) (forall ((o2_5@@4 T@Ref) (f_16@@4 T@Field_6146_6147) ) (!  (=> (select (|PolymorphicMapType_6622_6133_6147#PolymorphicMapType_6622| (select (|PolymorphicMapType_6073_6133_16623#PolymorphicMapType_6073| Heap@@10) null (WandMaskField_6133 pm_f_5@@2))) o2_5@@4 f_16@@4) (= (select (|PolymorphicMapType_6073_3604_3605#PolymorphicMapType_6073| Heap@@10) o2_5@@4 f_16@@4) (select (|PolymorphicMapType_6073_3604_3605#PolymorphicMapType_6073| ExhaleHeap@@2) o2_5@@4 f_16@@4)))
+ :qid |stdinbpl.67:133|
+ :skolemid |6|
+ :pattern ( (select (|PolymorphicMapType_6073_3604_3605#PolymorphicMapType_6073| ExhaleHeap@@2) o2_5@@4 f_16@@4))
+))) (forall ((o2_5@@5 T@Ref) (f_16@@5 T@Field_6133_16446) ) (!  (=> (select (|PolymorphicMapType_6622_6133_16446#PolymorphicMapType_6622| (select (|PolymorphicMapType_6073_6133_16623#PolymorphicMapType_6073| Heap@@10) null (WandMaskField_6133 pm_f_5@@2))) o2_5@@5 f_16@@5) (= (select (|PolymorphicMapType_6073_6133_16446#PolymorphicMapType_6073| Heap@@10) o2_5@@5 f_16@@5) (select (|PolymorphicMapType_6073_6133_16446#PolymorphicMapType_6073| ExhaleHeap@@2) o2_5@@5 f_16@@5)))
+ :qid |stdinbpl.67:133|
+ :skolemid |6|
+ :pattern ( (select (|PolymorphicMapType_6073_6133_16446#PolymorphicMapType_6073| ExhaleHeap@@2) o2_5@@5 f_16@@5))
+))) (forall ((o2_5@@6 T@Ref) (f_16@@6 T@Field_6133_16579) ) (!  (=> (select (|PolymorphicMapType_6622_6133_17559#PolymorphicMapType_6622| (select (|PolymorphicMapType_6073_6133_16623#PolymorphicMapType_6073| Heap@@10) null (WandMaskField_6133 pm_f_5@@2))) o2_5@@6 f_16@@6) (= (select (|PolymorphicMapType_6073_6133_16623#PolymorphicMapType_6073| Heap@@10) o2_5@@6 f_16@@6) (select (|PolymorphicMapType_6073_6133_16623#PolymorphicMapType_6073| ExhaleHeap@@2) o2_5@@6 f_16@@6)))
+ :qid |stdinbpl.67:133|
+ :skolemid |6|
+ :pattern ( (select (|PolymorphicMapType_6073_6133_16623#PolymorphicMapType_6073| ExhaleHeap@@2) o2_5@@6 f_16@@6))
+)))))
+ :qid |stdinbpl.65:19|
+ :skolemid |7|
+ :pattern ( (IdenticalOnKnownLocations Heap@@10 ExhaleHeap@@2 Mask@@7) (IsWandField_6133_18086 pm_f_5@@2))
+)))
+(assert (forall ((Heap@@11 T@PolymorphicMapType_6073) (Mask@@8 T@PolymorphicMapType_6094) (t_2@@6 T@TreeDomainType) ) (!  (=> (and (state Heap@@11 Mask@@8) (< AssumeFunctionsAbove 0)) (= (isBST Heap@@11 t_2@@6)  (or (= (Tree_tag t_2@@6) 0) (and (allNodesLessThan Heap@@11 (get_Tree_left t_2@@6) (get_Tree_v t_2@@6)) (and (|isBST'| Heap@@11 (get_Tree_left t_2@@6)) (and (allNodesGreaterThan Heap@@11 (get_Tree_right t_2@@6) (get_Tree_v t_2@@6)) (|isBST'| Heap@@11 (get_Tree_right t_2@@6))))))))
+ :qid |stdinbpl.256:15|
+ :skolemid |29|
+ :pattern ( (state Heap@@11 Mask@@8) (isBST Heap@@11 t_2@@6))
+)))
+(assert (state dummyHeap ZeroMask))
+(assert (forall ((Heap@@12 T@PolymorphicMapType_6073) (ExhaleHeap@@3 T@PolymorphicMapType_6073) (Mask@@9 T@PolymorphicMapType_6094) (o_12 T@Ref) ) (!  (=> (IdenticalOnKnownLocations Heap@@12 ExhaleHeap@@3 Mask@@9) (=> (select (|PolymorphicMapType_6073_3601_53#PolymorphicMapType_6073| Heap@@12) o_12 $allocated) (select (|PolymorphicMapType_6073_3601_53#PolymorphicMapType_6073| ExhaleHeap@@3) o_12 $allocated)))
+ :qid |stdinbpl.73:15|
+ :skolemid |8|
+ :pattern ( (IdenticalOnKnownLocations Heap@@12 ExhaleHeap@@3 Mask@@9) (select (|PolymorphicMapType_6073_3601_53#PolymorphicMapType_6073| ExhaleHeap@@3) o_12 $allocated))
+)))
+(assert (forall ((p T@Field_6133_16446) (v_1 T@FrameType) (w T@FrameType) ) (!  (not (InsidePredicate_6133_6133 p v_1 p w))
+ :qid |stdinbpl.176:19|
+ :skolemid |21|
+ :pattern ( (InsidePredicate_6133_6133 p v_1 p w))
+)))
+(assert (forall ((Heap@@13 T@PolymorphicMapType_6073) (ExhaleHeap@@4 T@PolymorphicMapType_6073) (Mask@@10 T@PolymorphicMapType_6094) ) (!  (=> (IdenticalOnKnownLocations Heap@@13 ExhaleHeap@@4 Mask@@10) (succHeap Heap@@13 ExhaleHeap@@4))
+ :qid |stdinbpl.83:15|
+ :skolemid |10|
+ :pattern ( (IdenticalOnKnownLocations Heap@@13 ExhaleHeap@@4 Mask@@10))
+)))
+(assert (forall ((Mask@@11 T@PolymorphicMapType_6094) (o_2@@3 T@Ref) (f_4@@3 T@Field_6133_16579) ) (!  (=> (GoodMask Mask@@11) (and (>= (select (|PolymorphicMapType_6094_6133_20140#PolymorphicMapType_6094| Mask@@11) o_2@@3 f_4@@3) NoPerm) (=> (and (and (and (GoodMask Mask@@11) AssumePermUpperBound) (not (IsPredicateField_6133_21049 f_4@@3))) (not (IsWandField_6133_21065 f_4@@3))) (<= (select (|PolymorphicMapType_6094_6133_20140#PolymorphicMapType_6094| Mask@@11) o_2@@3 f_4@@3) FullPerm))))
+ :qid |stdinbpl.129:22|
+ :skolemid |16|
+ :pattern ( (GoodMask Mask@@11) (select (|PolymorphicMapType_6094_6133_20140#PolymorphicMapType_6094| Mask@@11) o_2@@3 f_4@@3))
+)))
+(assert (forall ((Mask@@12 T@PolymorphicMapType_6094) (o_2@@4 T@Ref) (f_4@@4 T@Field_6133_16446) ) (!  (=> (GoodMask Mask@@12) (and (>= (select (|PolymorphicMapType_6094_6133_16446#PolymorphicMapType_6094| Mask@@12) o_2@@4 f_4@@4) NoPerm) (=> (and (and (and (GoodMask Mask@@12) AssumePermUpperBound) (not (IsPredicateField_6133_16537 f_4@@4))) (not (IsWandField_6133_18086 f_4@@4))) (<= (select (|PolymorphicMapType_6094_6133_16446#PolymorphicMapType_6094| Mask@@12) o_2@@4 f_4@@4) FullPerm))))
+ :qid |stdinbpl.129:22|
+ :skolemid |16|
+ :pattern ( (GoodMask Mask@@12) (select (|PolymorphicMapType_6094_6133_16446#PolymorphicMapType_6094| Mask@@12) o_2@@4 f_4@@4))
+)))
+(assert (forall ((Mask@@13 T@PolymorphicMapType_6094) (o_2@@5 T@Ref) (f_4@@5 T@Field_6146_6147) ) (!  (=> (GoodMask Mask@@13) (and (>= (select (|PolymorphicMapType_6094_6133_6147#PolymorphicMapType_6094| Mask@@13) o_2@@5 f_4@@5) NoPerm) (=> (and (and (and (GoodMask Mask@@13) AssumePermUpperBound) (not (IsPredicateField_6133_6147 f_4@@5))) (not (IsWandField_6133_6147 f_4@@5))) (<= (select (|PolymorphicMapType_6094_6133_6147#PolymorphicMapType_6094| Mask@@13) o_2@@5 f_4@@5) FullPerm))))
+ :qid |stdinbpl.129:22|
+ :skolemid |16|
+ :pattern ( (GoodMask Mask@@13) (select (|PolymorphicMapType_6094_6133_6147#PolymorphicMapType_6094| Mask@@13) o_2@@5 f_4@@5))
+)))
+(assert (forall ((Mask@@14 T@PolymorphicMapType_6094) (o_2@@6 T@Ref) (f_4@@6 T@Field_6133_53) ) (!  (=> (GoodMask Mask@@14) (and (>= (select (|PolymorphicMapType_6094_6133_53#PolymorphicMapType_6094| Mask@@14) o_2@@6 f_4@@6) NoPerm) (=> (and (and (and (GoodMask Mask@@14) AssumePermUpperBound) (not (IsPredicateField_6133_53 f_4@@6))) (not (IsWandField_6133_53 f_4@@6))) (<= (select (|PolymorphicMapType_6094_6133_53#PolymorphicMapType_6094| Mask@@14) o_2@@6 f_4@@6) FullPerm))))
+ :qid |stdinbpl.129:22|
+ :skolemid |16|
+ :pattern ( (GoodMask Mask@@14) (select (|PolymorphicMapType_6094_6133_53#PolymorphicMapType_6094| Mask@@14) o_2@@6 f_4@@6))
+)))
+(assert (forall ((Mask@@15 T@PolymorphicMapType_6094) (o_2@@7 T@Ref) (f_4@@7 T@Field_6133_16579) ) (! (= (HasDirectPerm_6133_21420 Mask@@15 o_2@@7 f_4@@7) (> (select (|PolymorphicMapType_6094_6133_20140#PolymorphicMapType_6094| Mask@@15) o_2@@7 f_4@@7) NoPerm))
+ :qid |stdinbpl.134:22|
+ :skolemid |17|
+ :pattern ( (HasDirectPerm_6133_21420 Mask@@15 o_2@@7 f_4@@7))
+)))
+(assert (forall ((Mask@@16 T@PolymorphicMapType_6094) (o_2@@8 T@Ref) (f_4@@8 T@Field_6133_16446) ) (! (= (HasDirectPerm_6133_16510 Mask@@16 o_2@@8 f_4@@8) (> (select (|PolymorphicMapType_6094_6133_16446#PolymorphicMapType_6094| Mask@@16) o_2@@8 f_4@@8) NoPerm))
+ :qid |stdinbpl.134:22|
+ :skolemid |17|
+ :pattern ( (HasDirectPerm_6133_16510 Mask@@16 o_2@@8 f_4@@8))
+)))
+(assert (forall ((Mask@@17 T@PolymorphicMapType_6094) (o_2@@9 T@Ref) (f_4@@9 T@Field_6146_6147) ) (! (= (HasDirectPerm_6133_6147 Mask@@17 o_2@@9 f_4@@9) (> (select (|PolymorphicMapType_6094_6133_6147#PolymorphicMapType_6094| Mask@@17) o_2@@9 f_4@@9) NoPerm))
+ :qid |stdinbpl.134:22|
+ :skolemid |17|
+ :pattern ( (HasDirectPerm_6133_6147 Mask@@17 o_2@@9 f_4@@9))
+)))
+(assert (forall ((Mask@@18 T@PolymorphicMapType_6094) (o_2@@10 T@Ref) (f_4@@10 T@Field_6133_53) ) (! (= (HasDirectPerm_6133_53 Mask@@18 o_2@@10 f_4@@10) (> (select (|PolymorphicMapType_6094_6133_53#PolymorphicMapType_6094| Mask@@18) o_2@@10 f_4@@10) NoPerm))
+ :qid |stdinbpl.134:22|
+ :skolemid |17|
+ :pattern ( (HasDirectPerm_6133_53 Mask@@18 o_2@@10 f_4@@10))
+)))
+(assert (forall ((p@@0 Real) (f_6 T@FrameType) ) (! (= (ConditionalFrame p@@0 f_6) (ite (> p@@0 0.0) f_6 EmptyFrame))
+ :qid |stdinbpl.164:15|
+ :skolemid |19|
+ :pattern ( (ConditionalFrame p@@0 f_6))
+)))
+(assert (forall ((Heap@@14 T@PolymorphicMapType_6073) (ExhaleHeap@@5 T@PolymorphicMapType_6073) (Mask@@19 T@PolymorphicMapType_6094) (o_12@@0 T@Ref) (f_16@@7 T@Field_6133_16579) ) (!  (=> (IdenticalOnKnownLocations Heap@@14 ExhaleHeap@@5 Mask@@19) (=> (HasDirectPerm_6133_21420 Mask@@19 o_12@@0 f_16@@7) (= (select (|PolymorphicMapType_6073_6133_16623#PolymorphicMapType_6073| Heap@@14) o_12@@0 f_16@@7) (select (|PolymorphicMapType_6073_6133_16623#PolymorphicMapType_6073| ExhaleHeap@@5) o_12@@0 f_16@@7))))
+ :qid |stdinbpl.42:22|
+ :skolemid |1|
+ :pattern ( (IdenticalOnKnownLocations Heap@@14 ExhaleHeap@@5 Mask@@19) (select (|PolymorphicMapType_6073_6133_16623#PolymorphicMapType_6073| ExhaleHeap@@5) o_12@@0 f_16@@7))
+)))
+(assert (forall ((Heap@@15 T@PolymorphicMapType_6073) (ExhaleHeap@@6 T@PolymorphicMapType_6073) (Mask@@20 T@PolymorphicMapType_6094) (o_12@@1 T@Ref) (f_16@@8 T@Field_6133_16446) ) (!  (=> (IdenticalOnKnownLocations Heap@@15 ExhaleHeap@@6 Mask@@20) (=> (HasDirectPerm_6133_16510 Mask@@20 o_12@@1 f_16@@8) (= (select (|PolymorphicMapType_6073_6133_16446#PolymorphicMapType_6073| Heap@@15) o_12@@1 f_16@@8) (select (|PolymorphicMapType_6073_6133_16446#PolymorphicMapType_6073| ExhaleHeap@@6) o_12@@1 f_16@@8))))
+ :qid |stdinbpl.42:22|
+ :skolemid |1|
+ :pattern ( (IdenticalOnKnownLocations Heap@@15 ExhaleHeap@@6 Mask@@20) (select (|PolymorphicMapType_6073_6133_16446#PolymorphicMapType_6073| ExhaleHeap@@6) o_12@@1 f_16@@8))
+)))
+(assert (forall ((Heap@@16 T@PolymorphicMapType_6073) (ExhaleHeap@@7 T@PolymorphicMapType_6073) (Mask@@21 T@PolymorphicMapType_6094) (o_12@@2 T@Ref) (f_16@@9 T@Field_6146_6147) ) (!  (=> (IdenticalOnKnownLocations Heap@@16 ExhaleHeap@@7 Mask@@21) (=> (HasDirectPerm_6133_6147 Mask@@21 o_12@@2 f_16@@9) (= (select (|PolymorphicMapType_6073_3604_3605#PolymorphicMapType_6073| Heap@@16) o_12@@2 f_16@@9) (select (|PolymorphicMapType_6073_3604_3605#PolymorphicMapType_6073| ExhaleHeap@@7) o_12@@2 f_16@@9))))
+ :qid |stdinbpl.42:22|
+ :skolemid |1|
+ :pattern ( (IdenticalOnKnownLocations Heap@@16 ExhaleHeap@@7 Mask@@21) (select (|PolymorphicMapType_6073_3604_3605#PolymorphicMapType_6073| ExhaleHeap@@7) o_12@@2 f_16@@9))
+)))
+(assert (forall ((Heap@@17 T@PolymorphicMapType_6073) (ExhaleHeap@@8 T@PolymorphicMapType_6073) (Mask@@22 T@PolymorphicMapType_6094) (o_12@@3 T@Ref) (f_16@@10 T@Field_6133_53) ) (!  (=> (IdenticalOnKnownLocations Heap@@17 ExhaleHeap@@8 Mask@@22) (=> (HasDirectPerm_6133_53 Mask@@22 o_12@@3 f_16@@10) (= (select (|PolymorphicMapType_6073_3601_53#PolymorphicMapType_6073| Heap@@17) o_12@@3 f_16@@10) (select (|PolymorphicMapType_6073_3601_53#PolymorphicMapType_6073| ExhaleHeap@@8) o_12@@3 f_16@@10))))
+ :qid |stdinbpl.42:22|
+ :skolemid |1|
+ :pattern ( (IdenticalOnKnownLocations Heap@@17 ExhaleHeap@@8 Mask@@22) (select (|PolymorphicMapType_6073_3601_53#PolymorphicMapType_6073| ExhaleHeap@@8) o_12@@3 f_16@@10))
+)))
+(assert (forall ((o_2@@11 T@Ref) (f_4@@11 T@Field_6133_16579) ) (! (= (select (|PolymorphicMapType_6094_6133_20140#PolymorphicMapType_6094| ZeroMask) o_2@@11 f_4@@11) NoPerm)
+ :qid |stdinbpl.106:22|
+ :skolemid |13|
+ :pattern ( (select (|PolymorphicMapType_6094_6133_20140#PolymorphicMapType_6094| ZeroMask) o_2@@11 f_4@@11))
+)))
+(assert (forall ((o_2@@12 T@Ref) (f_4@@12 T@Field_6133_16446) ) (! (= (select (|PolymorphicMapType_6094_6133_16446#PolymorphicMapType_6094| ZeroMask) o_2@@12 f_4@@12) NoPerm)
+ :qid |stdinbpl.106:22|
+ :skolemid |13|
+ :pattern ( (select (|PolymorphicMapType_6094_6133_16446#PolymorphicMapType_6094| ZeroMask) o_2@@12 f_4@@12))
+)))
+(assert (forall ((o_2@@13 T@Ref) (f_4@@13 T@Field_6146_6147) ) (! (= (select (|PolymorphicMapType_6094_6133_6147#PolymorphicMapType_6094| ZeroMask) o_2@@13 f_4@@13) NoPerm)
+ :qid |stdinbpl.106:22|
+ :skolemid |13|
+ :pattern ( (select (|PolymorphicMapType_6094_6133_6147#PolymorphicMapType_6094| ZeroMask) o_2@@13 f_4@@13))
+)))
+(assert (forall ((o_2@@14 T@Ref) (f_4@@14 T@Field_6133_53) ) (! (= (select (|PolymorphicMapType_6094_6133_53#PolymorphicMapType_6094| ZeroMask) o_2@@14 f_4@@14) NoPerm)
+ :qid |stdinbpl.106:22|
+ :skolemid |13|
+ :pattern ( (select (|PolymorphicMapType_6094_6133_53#PolymorphicMapType_6094| ZeroMask) o_2@@14 f_4@@14))
+)))
+(assert (forall ((ResultMask T@PolymorphicMapType_6094) (SummandMask1 T@PolymorphicMapType_6094) (SummandMask2 T@PolymorphicMapType_6094) (o_2@@15 T@Ref) (f_4@@15 T@Field_6133_16579) ) (!  (=> (sumMask ResultMask SummandMask1 SummandMask2) (= (select (|PolymorphicMapType_6094_6133_20140#PolymorphicMapType_6094| ResultMask) o_2@@15 f_4@@15) (+ (select (|PolymorphicMapType_6094_6133_20140#PolymorphicMapType_6094| SummandMask1) o_2@@15 f_4@@15) (select (|PolymorphicMapType_6094_6133_20140#PolymorphicMapType_6094| SummandMask2) o_2@@15 f_4@@15))))
+ :qid |stdinbpl.139:22|
+ :skolemid |18|
+ :pattern ( (sumMask ResultMask SummandMask1 SummandMask2) (select (|PolymorphicMapType_6094_6133_20140#PolymorphicMapType_6094| ResultMask) o_2@@15 f_4@@15))
+ :pattern ( (sumMask ResultMask SummandMask1 SummandMask2) (select (|PolymorphicMapType_6094_6133_20140#PolymorphicMapType_6094| SummandMask1) o_2@@15 f_4@@15))
+ :pattern ( (sumMask ResultMask SummandMask1 SummandMask2) (select (|PolymorphicMapType_6094_6133_20140#PolymorphicMapType_6094| SummandMask2) o_2@@15 f_4@@15))
+)))
+(assert (forall ((ResultMask@@0 T@PolymorphicMapType_6094) (SummandMask1@@0 T@PolymorphicMapType_6094) (SummandMask2@@0 T@PolymorphicMapType_6094) (o_2@@16 T@Ref) (f_4@@16 T@Field_6133_16446) ) (!  (=> (sumMask ResultMask@@0 SummandMask1@@0 SummandMask2@@0) (= (select (|PolymorphicMapType_6094_6133_16446#PolymorphicMapType_6094| ResultMask@@0) o_2@@16 f_4@@16) (+ (select (|PolymorphicMapType_6094_6133_16446#PolymorphicMapType_6094| SummandMask1@@0) o_2@@16 f_4@@16) (select (|PolymorphicMapType_6094_6133_16446#PolymorphicMapType_6094| SummandMask2@@0) o_2@@16 f_4@@16))))
+ :qid |stdinbpl.139:22|
+ :skolemid |18|
+ :pattern ( (sumMask ResultMask@@0 SummandMask1@@0 SummandMask2@@0) (select (|PolymorphicMapType_6094_6133_16446#PolymorphicMapType_6094| ResultMask@@0) o_2@@16 f_4@@16))
+ :pattern ( (sumMask ResultMask@@0 SummandMask1@@0 SummandMask2@@0) (select (|PolymorphicMapType_6094_6133_16446#PolymorphicMapType_6094| SummandMask1@@0) o_2@@16 f_4@@16))
+ :pattern ( (sumMask ResultMask@@0 SummandMask1@@0 SummandMask2@@0) (select (|PolymorphicMapType_6094_6133_16446#PolymorphicMapType_6094| SummandMask2@@0) o_2@@16 f_4@@16))
+)))
+(assert (forall ((ResultMask@@1 T@PolymorphicMapType_6094) (SummandMask1@@1 T@PolymorphicMapType_6094) (SummandMask2@@1 T@PolymorphicMapType_6094) (o_2@@17 T@Ref) (f_4@@17 T@Field_6146_6147) ) (!  (=> (sumMask ResultMask@@1 SummandMask1@@1 SummandMask2@@1) (= (select (|PolymorphicMapType_6094_6133_6147#PolymorphicMapType_6094| ResultMask@@1) o_2@@17 f_4@@17) (+ (select (|PolymorphicMapType_6094_6133_6147#PolymorphicMapType_6094| SummandMask1@@1) o_2@@17 f_4@@17) (select (|PolymorphicMapType_6094_6133_6147#PolymorphicMapType_6094| SummandMask2@@1) o_2@@17 f_4@@17))))
+ :qid |stdinbpl.139:22|
+ :skolemid |18|
+ :pattern ( (sumMask ResultMask@@1 SummandMask1@@1 SummandMask2@@1) (select (|PolymorphicMapType_6094_6133_6147#PolymorphicMapType_6094| ResultMask@@1) o_2@@17 f_4@@17))
+ :pattern ( (sumMask ResultMask@@1 SummandMask1@@1 SummandMask2@@1) (select (|PolymorphicMapType_6094_6133_6147#PolymorphicMapType_6094| SummandMask1@@1) o_2@@17 f_4@@17))
+ :pattern ( (sumMask ResultMask@@1 SummandMask1@@1 SummandMask2@@1) (select (|PolymorphicMapType_6094_6133_6147#PolymorphicMapType_6094| SummandMask2@@1) o_2@@17 f_4@@17))
+)))
+(assert (forall ((ResultMask@@2 T@PolymorphicMapType_6094) (SummandMask1@@2 T@PolymorphicMapType_6094) (SummandMask2@@2 T@PolymorphicMapType_6094) (o_2@@18 T@Ref) (f_4@@18 T@Field_6133_53) ) (!  (=> (sumMask ResultMask@@2 SummandMask1@@2 SummandMask2@@2) (= (select (|PolymorphicMapType_6094_6133_53#PolymorphicMapType_6094| ResultMask@@2) o_2@@18 f_4@@18) (+ (select (|PolymorphicMapType_6094_6133_53#PolymorphicMapType_6094| SummandMask1@@2) o_2@@18 f_4@@18) (select (|PolymorphicMapType_6094_6133_53#PolymorphicMapType_6094| SummandMask2@@2) o_2@@18 f_4@@18))))
+ :qid |stdinbpl.139:22|
+ :skolemid |18|
+ :pattern ( (sumMask ResultMask@@2 SummandMask1@@2 SummandMask2@@2) (select (|PolymorphicMapType_6094_6133_53#PolymorphicMapType_6094| ResultMask@@2) o_2@@18 f_4@@18))
+ :pattern ( (sumMask ResultMask@@2 SummandMask1@@2 SummandMask2@@2) (select (|PolymorphicMapType_6094_6133_53#PolymorphicMapType_6094| SummandMask1@@2) o_2@@18 f_4@@18))
+ :pattern ( (sumMask ResultMask@@2 SummandMask1@@2 SummandMask2@@2) (select (|PolymorphicMapType_6094_6133_53#PolymorphicMapType_6094| SummandMask2@@2) o_2@@18 f_4@@18))
+)))
+(assert (forall ((Heap@@18 T@PolymorphicMapType_6073) (Mask@@23 T@PolymorphicMapType_6094) (t_2@@7 T@TreeDomainType) ) (!  (=> (state Heap@@18 Mask@@23) (= (|isBST'| Heap@@18 t_2@@7) (|isBST#frame| EmptyFrame t_2@@7)))
+ :qid |stdinbpl.263:15|
+ :skolemid |30|
+ :pattern ( (state Heap@@18 Mask@@23) (|isBST'| Heap@@18 t_2@@7))
+)))
+(assert (forall ((Heap@@19 T@PolymorphicMapType_6073) (t_2@@8 T@TreeDomainType) ) (!  (and (= (isBST Heap@@19 t_2@@8) (|isBST'| Heap@@19 t_2@@8)) (dummyFunction_1656 (|isBST#triggerStateless| t_2@@8)))
+ :qid |stdinbpl.246:15|
+ :skolemid |27|
+ :pattern ( (isBST Heap@@19 t_2@@8))
+)))
+(assert (forall ((v_2@@0 Int) (left_1@@0 T@TreeDomainType) (right@@0 T@TreeDomainType) ) (! (= v_2@@0 (get_Tree_v (Node_1 v_2@@0 left_1@@0 right@@0)))
+ :qid |stdinbpl.207:15|
+ :skolemid |22|
+ :pattern ( (Node_1 v_2@@0 left_1@@0 right@@0))
+)))
+(assert (forall ((v_2@@1 Int) (left_1@@1 T@TreeDomainType) (right@@1 T@TreeDomainType) ) (! (= left_1@@1 (get_Tree_left (Node_1 v_2@@1 left_1@@1 right@@1)))
+ :qid |stdinbpl.213:15|
+ :skolemid |23|
+ :pattern ( (Node_1 v_2@@1 left_1@@1 right@@1))
+)))
+(assert (forall ((v_2@@2 Int) (left_1@@2 T@TreeDomainType) (right@@2 T@TreeDomainType) ) (! (= right@@2 (get_Tree_right (Node_1 v_2@@2 left_1@@2 right@@2)))
+ :qid |stdinbpl.219:15|
+ :skolemid |24|
+ :pattern ( (Node_1 v_2@@2 left_1@@2 right@@2))
+)))
+(assert (forall ((Heap@@20 T@PolymorphicMapType_6073) (o_11 T@Ref) (f_17 T@Field_6133_16446) (v T@FrameType) ) (! (succHeap Heap@@20 (PolymorphicMapType_6073 (|PolymorphicMapType_6073_3601_53#PolymorphicMapType_6073| Heap@@20) (|PolymorphicMapType_6073_3604_3605#PolymorphicMapType_6073| Heap@@20) (|PolymorphicMapType_6073_6133_16623#PolymorphicMapType_6073| Heap@@20) (store (|PolymorphicMapType_6073_6133_16446#PolymorphicMapType_6073| Heap@@20) o_11 f_17 v)))
+ :qid |stdinbpl.78:22|
+ :skolemid |9|
+ :pattern ( (PolymorphicMapType_6073 (|PolymorphicMapType_6073_3601_53#PolymorphicMapType_6073| Heap@@20) (|PolymorphicMapType_6073_3604_3605#PolymorphicMapType_6073| Heap@@20) (|PolymorphicMapType_6073_6133_16623#PolymorphicMapType_6073| Heap@@20) (store (|PolymorphicMapType_6073_6133_16446#PolymorphicMapType_6073| Heap@@20) o_11 f_17 v)))
+)))
+(assert (forall ((Heap@@21 T@PolymorphicMapType_6073) (o_11@@0 T@Ref) (f_17@@0 T@Field_6133_16579) (v@@0 T@PolymorphicMapType_6622) ) (! (succHeap Heap@@21 (PolymorphicMapType_6073 (|PolymorphicMapType_6073_3601_53#PolymorphicMapType_6073| Heap@@21) (|PolymorphicMapType_6073_3604_3605#PolymorphicMapType_6073| Heap@@21) (store (|PolymorphicMapType_6073_6133_16623#PolymorphicMapType_6073| Heap@@21) o_11@@0 f_17@@0 v@@0) (|PolymorphicMapType_6073_6133_16446#PolymorphicMapType_6073| Heap@@21)))
+ :qid |stdinbpl.78:22|
+ :skolemid |9|
+ :pattern ( (PolymorphicMapType_6073 (|PolymorphicMapType_6073_3601_53#PolymorphicMapType_6073| Heap@@21) (|PolymorphicMapType_6073_3604_3605#PolymorphicMapType_6073| Heap@@21) (store (|PolymorphicMapType_6073_6133_16623#PolymorphicMapType_6073| Heap@@21) o_11@@0 f_17@@0 v@@0) (|PolymorphicMapType_6073_6133_16446#PolymorphicMapType_6073| Heap@@21)))
+)))
+(assert (forall ((Heap@@22 T@PolymorphicMapType_6073) (o_11@@1 T@Ref) (f_17@@1 T@Field_6146_6147) (v@@1 T@Ref) ) (! (succHeap Heap@@22 (PolymorphicMapType_6073 (|PolymorphicMapType_6073_3601_53#PolymorphicMapType_6073| Heap@@22) (store (|PolymorphicMapType_6073_3604_3605#PolymorphicMapType_6073| Heap@@22) o_11@@1 f_17@@1 v@@1) (|PolymorphicMapType_6073_6133_16623#PolymorphicMapType_6073| Heap@@22) (|PolymorphicMapType_6073_6133_16446#PolymorphicMapType_6073| Heap@@22)))
+ :qid |stdinbpl.78:22|
+ :skolemid |9|
+ :pattern ( (PolymorphicMapType_6073 (|PolymorphicMapType_6073_3601_53#PolymorphicMapType_6073| Heap@@22) (store (|PolymorphicMapType_6073_3604_3605#PolymorphicMapType_6073| Heap@@22) o_11@@1 f_17@@1 v@@1) (|PolymorphicMapType_6073_6133_16623#PolymorphicMapType_6073| Heap@@22) (|PolymorphicMapType_6073_6133_16446#PolymorphicMapType_6073| Heap@@22)))
+)))
+(assert (forall ((Heap@@23 T@PolymorphicMapType_6073) (o_11@@2 T@Ref) (f_17@@2 T@Field_6133_53) (v@@2 Bool) ) (! (succHeap Heap@@23 (PolymorphicMapType_6073 (store (|PolymorphicMapType_6073_3601_53#PolymorphicMapType_6073| Heap@@23) o_11@@2 f_17@@2 v@@2) (|PolymorphicMapType_6073_3604_3605#PolymorphicMapType_6073| Heap@@23) (|PolymorphicMapType_6073_6133_16623#PolymorphicMapType_6073| Heap@@23) (|PolymorphicMapType_6073_6133_16446#PolymorphicMapType_6073| Heap@@23)))
+ :qid |stdinbpl.78:22|
+ :skolemid |9|
+ :pattern ( (PolymorphicMapType_6073 (store (|PolymorphicMapType_6073_3601_53#PolymorphicMapType_6073| Heap@@23) o_11@@2 f_17@@2 v@@2) (|PolymorphicMapType_6073_3604_3605#PolymorphicMapType_6073| Heap@@23) (|PolymorphicMapType_6073_6133_16623#PolymorphicMapType_6073| Heap@@23) (|PolymorphicMapType_6073_6133_16446#PolymorphicMapType_6073| Heap@@23)))
+)))
+(assert (forall ((o_11@@3 T@Ref) (f_10 T@Field_6146_6147) (Heap@@24 T@PolymorphicMapType_6073) ) (!  (=> (select (|PolymorphicMapType_6073_3601_53#PolymorphicMapType_6073| Heap@@24) o_11@@3 $allocated) (select (|PolymorphicMapType_6073_3601_53#PolymorphicMapType_6073| Heap@@24) (select (|PolymorphicMapType_6073_3604_3605#PolymorphicMapType_6073| Heap@@24) o_11@@3 f_10) $allocated))
+ :qid |stdinbpl.31:15|
+ :skolemid |0|
+ :pattern ( (select (|PolymorphicMapType_6073_3604_3605#PolymorphicMapType_6073| Heap@@24) o_11@@3 f_10))
+)))
+(assert (forall ((p@@1 T@Field_6133_16446) (v_1@@0 T@FrameType) (q T@Field_6133_16446) (w@@0 T@FrameType) (r T@Field_6133_16446) (u T@FrameType) ) (!  (=> (and (InsidePredicate_6133_6133 p@@1 v_1@@0 q w@@0) (InsidePredicate_6133_6133 q w@@0 r u)) (InsidePredicate_6133_6133 p@@1 v_1@@0 r u))
+ :qid |stdinbpl.171:25|
+ :skolemid |20|
+ :pattern ( (InsidePredicate_6133_6133 p@@1 v_1@@0 q w@@0) (InsidePredicate_6133_6133 q w@@0 r u))
+)))
+(assert (= NoPerm 0.0))
+(assert (= FullPerm 1.0))
+(assert (forall ((t_2@@9 T@TreeDomainType) ) (!  (or (= t_2@@9 Leaf) (= t_2@@9 (Node_1 (get_Tree_v t_2@@9) (get_Tree_left t_2@@9) (get_Tree_right t_2@@9))))
+ :qid |stdinbpl.234:15|
+ :skolemid |26|
+ :pattern ( (Tree_tag t_2@@9))
+ :pattern ( (get_Tree_v t_2@@9))
+ :pattern ( (get_Tree_left t_2@@9))
+ :pattern ( (get_Tree_right t_2@@9))
+)))
+(assert (forall ((Heap@@25 T@PolymorphicMapType_6073) (t_2@@10 T@TreeDomainType) (value_1@@5 Int) ) (!  (and (= (allNodesLessThan Heap@@25 t_2@@10 value_1@@5) (|allNodesLessThan'| Heap@@25 t_2@@10 value_1@@5)) (dummyFunction_1656 (|allNodesLessThan#triggerStateless| t_2@@10 value_1@@5)))
+ :qid |stdinbpl.331:15|
+ :skolemid |31|
+ :pattern ( (allNodesLessThan Heap@@25 t_2@@10 value_1@@5))
+)))
+(assert (forall ((Heap@@26 T@PolymorphicMapType_6073) (t_2@@11 T@TreeDomainType) (value_1@@6 Int) ) (!  (and (= (allNodesGreaterThan Heap@@26 t_2@@11 value_1@@6) (|allNodesGreaterThan'| Heap@@26 t_2@@11 value_1@@6)) (dummyFunction_1656 (|allNodesGreaterThan#triggerStateless| t_2@@11 value_1@@6)))
+ :qid |stdinbpl.406:15|
+ :skolemid |35|
+ :pattern ( (allNodesGreaterThan Heap@@26 t_2@@11 value_1@@6))
+)))
+(push 1)
+(declare-fun ControlFlow (Int Int) Int)
+(declare-fun PostHeap@0 () T@PolymorphicMapType_6073)
+(declare-fun res () T@TreeDomainType)
+(declare-fun t_2@@12 () T@TreeDomainType)
+(declare-fun v_2@@3 () Int)
+(declare-fun i_2 () Int)
+(declare-fun i_14 () Int)
+(declare-fun Heap@@27 () T@PolymorphicMapType_6073)
+(declare-fun res@5 () T@TreeDomainType)
+(declare-fun i_6_1 () Int)
+(declare-fun i_4_1 () Int)
+(declare-fun res@4 () T@TreeDomainType)
+(declare-fun res@3 () T@TreeDomainType)
+(declare-fun res@2 () T@TreeDomainType)
+(declare-fun new_leftsubtree@0 () T@TreeDomainType)
+(declare-fun arg_t@0 () T@TreeDomainType)
+(declare-fun res@1 () T@TreeDomainType)
+(declare-fun new_rightsubtree@0 () T@TreeDomainType)
+(declare-fun arg_t_1@0 () T@TreeDomainType)
+(declare-fun res@0 () T@TreeDomainType)
+(set-info :boogie-vc-id insertValue)
+(set-option :timeout 0)
+(set-option :rlimit 0)
+(set-option :smt.AUTO_CONFIG false)
+(set-option :smt.PHASE_SELECTION 0)
+(set-option :smt.RESTART_STRATEGY 0)
+(set-option :smt.RESTART_FACTOR |1.5|)
+(set-option :smt.ARITH.RANDOM_INITIAL_VALUE true)
+(set-option :smt.CASE_SPLIT 3)
+(set-option :smt.DELAY_UNITS true)
+(set-option :NNF.SK_HACK true)
+(set-option :smt.MBQI false)
+(set-option :smt.QI.EAGER_THRESHOLD 100)
+(set-option :smt.BV.REFLECT true)
+(set-option :smt.qi.max_multi_patterns 1000)
+(set-option :smt.mbqi false)
+(set-option :model.compact false)
+(set-option :model.v2 true)
+(set-option :pp.bv_literals false)
+(assert (not
+ (=> (= (ControlFlow 0 0) 49) (let ((anon56_Then_correct true))
+(let ((anon21_correct true))
+(let ((anon56_Else_correct  (=> (and (isBST PostHeap@0 res) (= (ControlFlow 0 43) 40)) anon21_correct)))
+(let ((anon55_Then_correct  (=> (and (isBST PostHeap@0 t_2@@12) (state PostHeap@0 ZeroMask)) (and (=> (= (ControlFlow 0 44) 42) anon56_Then_correct) (=> (= (ControlFlow 0 44) 43) anon56_Else_correct)))))
+(let ((anon55_Else_correct  (=> (and (not (isBST PostHeap@0 t_2@@12)) (= (ControlFlow 0 41) 40)) anon21_correct)))
+(let ((anon54_Then_correct true))
+(let ((anon50_Else_correct  (=> (and (forall ((i_3 Int) ) (!  (=> (and (allNodesLessThan PostHeap@0 t_2@@12 i_3) (< v_2@@3 i_3)) (allNodesLessThan PostHeap@0 res i_3))
+ :qid |stdinbpl.551:20|
+ :skolemid |40|
+ :pattern ( (|allNodesLessThan#frame| EmptyFrame t_2@@12 i_3))
+ :pattern ( (|allNodesLessThan#frame| EmptyFrame res i_3))
+)) (state PostHeap@0 ZeroMask)) (and (and (=> (= (ControlFlow 0 45) 39) anon54_Then_correct) (=> (= (ControlFlow 0 45) 44) anon55_Then_correct)) (=> (= (ControlFlow 0 45) 41) anon55_Else_correct)))))
+(let ((anon53_Then_correct true))
+(let ((anon14_correct true))
+(let ((anon52_Then_correct  (=> (and (allNodesLessThan PostHeap@0 t_2@@12 i_2) (< v_2@@3 i_2)) (and (=> (= (ControlFlow 0 38) 37) anon53_Then_correct) (=> (= (ControlFlow 0 38) 35) anon14_correct)))))
+(let ((anon52_Else_correct  (=> (and (not (and (allNodesLessThan PostHeap@0 t_2@@12 i_2) (< v_2@@3 i_2))) (= (ControlFlow 0 36) 35)) anon14_correct)))
+(let ((anon51_Then_correct true))
+(let ((anon46_Else_correct  (=> (forall ((i_1 Int) ) (!  (=> (and (allNodesGreaterThan PostHeap@0 t_2@@12 i_1) (< i_1 v_2@@3)) (allNodesGreaterThan PostHeap@0 res i_1))
+ :qid |stdinbpl.530:20|
+ :skolemid |39|
+ :pattern ( (|allNodesGreaterThan#frame| EmptyFrame t_2@@12 i_1))
+ :pattern ( (|allNodesGreaterThan#frame| EmptyFrame res i_1))
+)) (=> (and (state PostHeap@0 ZeroMask) (state PostHeap@0 ZeroMask)) (and (and (and (=> (= (ControlFlow 0 46) 45) anon50_Else_correct) (=> (= (ControlFlow 0 46) 34) anon51_Then_correct)) (=> (= (ControlFlow 0 46) 38) anon52_Then_correct)) (=> (= (ControlFlow 0 46) 36) anon52_Else_correct))))))
+(let ((anon49_Then_correct true))
+(let ((anon7_correct true))
+(let ((anon48_Then_correct  (=> (and (allNodesGreaterThan PostHeap@0 t_2@@12 i_14) (< i_14 v_2@@3)) (and (=> (= (ControlFlow 0 33) 32) anon49_Then_correct) (=> (= (ControlFlow 0 33) 30) anon7_correct)))))
+(let ((anon48_Else_correct  (=> (and (not (and (allNodesGreaterThan PostHeap@0 t_2@@12 i_14) (< i_14 v_2@@3))) (= (ControlFlow 0 31) 30)) anon7_correct)))
+(let ((anon47_Then_correct true))
+(let ((anon45_Then_correct  (=> (and (state PostHeap@0 ZeroMask) (state PostHeap@0 ZeroMask)) (and (and (and (=> (= (ControlFlow 0 47) 46) anon46_Else_correct) (=> (= (ControlFlow 0 47) 29) anon47_Then_correct)) (=> (= (ControlFlow 0 47) 33) anon48_Then_correct)) (=> (= (ControlFlow 0 47) 31) anon48_Else_correct)))))
+(let ((anon66_Else_correct true))
+(let ((anon66_Then_correct  (=> (and (isBST Heap@@27 t_2@@12) (= (ControlFlow 0 10) (- 0 9))) (isBST Heap@@27 res@5))))
+(let ((anon64_Else_correct  (=> (forall ((i_7_1_1 Int) ) (!  (=> (and (allNodesLessThan Heap@@27 t_2@@12 i_7_1_1) (< v_2@@3 i_7_1_1)) (allNodesLessThan Heap@@27 res@5 i_7_1_1))
+ :qid |stdinbpl.684:20|
+ :skolemid |46|
+ :pattern ( (|allNodesLessThan#frame| EmptyFrame t_2@@12 i_7_1_1))
+ :pattern ( (|allNodesLessThan#frame| EmptyFrame res@5 i_7_1_1))
+)) (and (=> (= (ControlFlow 0 12) 10) anon66_Then_correct) (=> (= (ControlFlow 0 12) 11) anon66_Else_correct)))))
+(let ((anon42_correct true))
+(let ((anon65_Else_correct  (=> (and (not (and (allNodesLessThan Heap@@27 t_2@@12 i_6_1) (< v_2@@3 i_6_1))) (= (ControlFlow 0 8) 5)) anon42_correct)))
+(let ((anon65_Then_correct  (=> (and (allNodesLessThan Heap@@27 t_2@@12 i_6_1) (< v_2@@3 i_6_1)) (and (=> (= (ControlFlow 0 6) (- 0 7)) (allNodesLessThan Heap@@27 res@5 i_6_1)) (=> (allNodesLessThan Heap@@27 res@5 i_6_1) (=> (= (ControlFlow 0 6) 5) anon42_correct))))))
+(let ((anon62_Else_correct  (=> (forall ((i_5_1_1 Int) ) (!  (=> (and (allNodesGreaterThan Heap@@27 t_2@@12 i_5_1_1) (< i_5_1_1 v_2@@3)) (allNodesGreaterThan Heap@@27 res@5 i_5_1_1))
+ :qid |stdinbpl.673:20|
+ :skolemid |45|
+ :pattern ( (|allNodesGreaterThan#frame| EmptyFrame t_2@@12 i_5_1_1))
+ :pattern ( (|allNodesGreaterThan#frame| EmptyFrame res@5 i_5_1_1))
+)) (and (and (=> (= (ControlFlow 0 13) 12) anon64_Else_correct) (=> (= (ControlFlow 0 13) 6) anon65_Then_correct)) (=> (= (ControlFlow 0 13) 8) anon65_Else_correct)))))
+(let ((anon38_correct true))
+(let ((anon63_Else_correct  (=> (and (not (and (allNodesGreaterThan Heap@@27 t_2@@12 i_4_1) (< i_4_1 v_2@@3))) (= (ControlFlow 0 4) 1)) anon38_correct)))
+(let ((anon63_Then_correct  (=> (and (allNodesGreaterThan Heap@@27 t_2@@12 i_4_1) (< i_4_1 v_2@@3)) (and (=> (= (ControlFlow 0 2) (- 0 3)) (allNodesGreaterThan Heap@@27 res@5 i_4_1)) (=> (allNodesGreaterThan Heap@@27 res@5 i_4_1) (=> (= (ControlFlow 0 2) 1) anon38_correct))))))
+(let ((anon35_correct  (=> (state Heap@@27 ZeroMask) (and (and (=> (= (ControlFlow 0 14) 13) anon62_Else_correct) (=> (= (ControlFlow 0 14) 2) anon63_Then_correct)) (=> (= (ControlFlow 0 14) 4) anon63_Else_correct)))))
+(let ((anon34_correct  (=> (state Heap@@27 ZeroMask) (=> (and (= res@5 res@4) (= (ControlFlow 0 16) 14)) anon35_correct))))
+(let ((anon33_correct  (=> (state Heap@@27 ZeroMask) (=> (and (= res@4 res@3) (= (ControlFlow 0 18) 16)) anon34_correct))))
+(let ((anon29_correct  (=> (and (state Heap@@27 ZeroMask) (state Heap@@27 ZeroMask)) (=> (and (and (= res@2 (Node_1 (get_Tree_v t_2@@12) new_leftsubtree@0 (get_Tree_right t_2@@12))) (state Heap@@27 ZeroMask)) (and (= res@3 res@2) (= (ControlFlow 0 23) 18))) anon33_correct))))
+(let ((anon60_Else_correct  (=> (and (not (isBST Heap@@27 arg_t@0)) (= (ControlFlow 0 25) 23)) anon29_correct)))
+(let ((anon60_Then_correct  (=> (and (and (isBST Heap@@27 arg_t@0) (state Heap@@27 ZeroMask)) (and (isBST Heap@@27 new_leftsubtree@0) (= (ControlFlow 0 24) 23))) anon29_correct)))
+(let ((anon59_Then_correct  (=> (and (< v_2@@3 (get_Tree_v t_2@@12)) (= arg_t@0 (get_Tree_left t_2@@12))) (=> (and (and (state Heap@@27 ZeroMask) (forall ((i_8_2 Int) ) (!  (=> (and (allNodesGreaterThan Heap@@27 arg_t@0 i_8_2) (< i_8_2 v_2@@3)) (allNodesGreaterThan Heap@@27 new_leftsubtree@0 i_8_2))
+ :qid |stdinbpl.606:34|
+ :skolemid |41|
+ :pattern ( (|allNodesGreaterThan#frame| EmptyFrame arg_t@0 i_8_2))
+ :pattern ( (|allNodesGreaterThan#frame| EmptyFrame new_leftsubtree@0 i_8_2))
+))) (and (state Heap@@27 ZeroMask) (forall ((i_9_1 Int) ) (!  (=> (and (allNodesLessThan Heap@@27 arg_t@0 i_9_1) (< v_2@@3 i_9_1)) (allNodesLessThan Heap@@27 new_leftsubtree@0 i_9_1))
+ :qid |stdinbpl.611:34|
+ :skolemid |42|
+ :pattern ( (|allNodesLessThan#frame| EmptyFrame arg_t@0 i_9_1))
+ :pattern ( (|allNodesLessThan#frame| EmptyFrame new_leftsubtree@0 i_9_1))
+)))) (and (=> (= (ControlFlow 0 26) 24) anon60_Then_correct) (=> (= (ControlFlow 0 26) 25) anon60_Else_correct))))))
+(let ((anon32_correct  (=> (and (state Heap@@27 ZeroMask) (state Heap@@27 ZeroMask)) (=> (and (and (= res@1 (Node_1 (get_Tree_v t_2@@12) (get_Tree_left t_2@@12) new_rightsubtree@0)) (state Heap@@27 ZeroMask)) (and (= res@3 res@1) (= (ControlFlow 0 19) 18))) anon33_correct))))
+(let ((anon61_Else_correct  (=> (and (not (isBST Heap@@27 arg_t_1@0)) (= (ControlFlow 0 21) 19)) anon32_correct)))
+(let ((anon61_Then_correct  (=> (and (and (isBST Heap@@27 arg_t_1@0) (state Heap@@27 ZeroMask)) (and (isBST Heap@@27 new_rightsubtree@0) (= (ControlFlow 0 20) 19))) anon32_correct)))
+(let ((anon59_Else_correct  (=> (and (<= (get_Tree_v t_2@@12) v_2@@3) (= arg_t_1@0 (get_Tree_right t_2@@12))) (=> (and (and (state Heap@@27 ZeroMask) (forall ((i_10_1 Int) ) (!  (=> (and (allNodesGreaterThan Heap@@27 arg_t_1@0 i_10_1) (< i_10_1 v_2@@3)) (allNodesGreaterThan Heap@@27 new_rightsubtree@0 i_10_1))
+ :qid |stdinbpl.637:34|
+ :skolemid |43|
+ :pattern ( (|allNodesGreaterThan#frame| EmptyFrame arg_t_1@0 i_10_1))
+ :pattern ( (|allNodesGreaterThan#frame| EmptyFrame new_rightsubtree@0 i_10_1))
+))) (and (state Heap@@27 ZeroMask) (forall ((i_11_1 Int) ) (!  (=> (and (allNodesLessThan Heap@@27 arg_t_1@0 i_11_1) (< v_2@@3 i_11_1)) (allNodesLessThan Heap@@27 new_rightsubtree@0 i_11_1))
+ :qid |stdinbpl.642:34|
+ :skolemid |44|
+ :pattern ( (|allNodesLessThan#frame| EmptyFrame arg_t_1@0 i_11_1))
+ :pattern ( (|allNodesLessThan#frame| EmptyFrame new_rightsubtree@0 i_11_1))
+)))) (and (=> (= (ControlFlow 0 22) 20) anon61_Then_correct) (=> (= (ControlFlow 0 22) 21) anon61_Else_correct))))))
+(let ((anon58_Else_correct  (=> (not (= v_2@@3 (get_Tree_v t_2@@12))) (and (=> (= (ControlFlow 0 27) 26) anon59_Then_correct) (=> (= (ControlFlow 0 27) 22) anon59_Else_correct)))))
+(let ((anon58_Then_correct  (=> (and (and (= v_2@@3 (get_Tree_v t_2@@12)) (state Heap@@27 ZeroMask)) (and (= res@4 t_2@@12) (= (ControlFlow 0 17) 16))) anon34_correct)))
+(let ((anon57_Else_correct  (=> (not (= (Tree_tag t_2@@12) 0)) (and (=> (= (ControlFlow 0 28) 17) anon58_Then_correct) (=> (= (ControlFlow 0 28) 27) anon58_Else_correct)))))
+(let ((anon57_Then_correct  (=> (= (Tree_tag t_2@@12) 0) (=> (and (and (= res@0 (Node_1 v_2@@3 Leaf Leaf)) (state Heap@@27 ZeroMask)) (and (= res@5 res@0) (= (ControlFlow 0 15) 14))) anon35_correct))))
+(let ((anon0_correct  (=> (state Heap@@27 ZeroMask) (=> (and (= AssumeFunctionsAbove (- 0 1)) AssumePermUpperBound) (and (and (=> (= (ControlFlow 0 48) 47) anon45_Then_correct) (=> (= (ControlFlow 0 48) 15) anon57_Then_correct)) (=> (= (ControlFlow 0 48) 28) anon57_Else_correct))))))
+(let ((PreconditionGeneratedEntry_correct  (=> (= (ControlFlow 0 49) 48) anon0_correct)))
+PreconditionGeneratedEntry_correct)))))))))))))))))))))))))))))))))))))))))))))))
+))
+(check-sat)
+(get-info :rlimit)
+(pop 1)
+; Valid
