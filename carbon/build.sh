@@ -1,4 +1,4 @@
-cd $(dirname $0)/../viper
+cd "$(dirname "$0")/../viper"
 
 ./build.sh
 if ! type boogie > /dev/null; then
