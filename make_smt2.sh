@@ -3,12 +3,12 @@
 
 VERIFIERS="$@"
 if [ -z "$VERIFIERS" ]; then
-    VERIFIERS="dafny silicon carbon"
+    VERIFIERS="fstar dafny silicon carbon"
 fi
 
 git submodule update --init --recursive &> /dev/null
 
-DIRNAME=$(realpath "$0" | xargs dirname)
+DIRNAME="$(realpath "$(dirname "$0")")"
 VERIFIERS="$DIRNAME/$(echo "$VERIFIERS" | sed "s| |\n$DIRNAME/|g")"
 while read -r verifier; do
     echo "[Running $verifier]"

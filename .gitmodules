@@ -7,3 +7,6 @@
 [submodule "viper/viper_client"]
 	path = viper/viper_client
 	url = https://github.com/viperproject/viper_client.git
+[submodule "fstar/fstar"]
+	path = fstar/fstar
+	url = https://github.com/FStarLang/FStar.git
