@@ -13,7 +13,7 @@ VERIFIERS="$DIRNAME/$(echo "$VERIFIERS" | sed "s| |\n$DIRNAME/|g")"
 while read -r verifier; do
     echo "[Running $verifier]"
     cd "$verifier"
-    ./build.sh
+    ./build.sh || exit 1
     VERIFIER=$(basename "$verifier")
     # Split on '\n' with `while` instead of potentially ' ' in filename with `for`
     while read -r file; do
@@ -23,7 +23,7 @@ while read -r verifier; do
             echo "Could not strip prefix (.*/$VERIFIER/): $no_prefix"
             exit 1
         fi
-        echo "[.smt2] $no_prefix"
-        ./run.sh "$file" "../smt2/$VERIFIER/$no_prefix" "${TIMEOUT:-10}"
+        echo "[.smt2] $VERIFIER/$no_prefix"
+        ./run.sh "$file" "../smt2/$VERIFIER/$no_prefix" "${TIMEOUT:-10}" || exit 1
     done <<< "$(./tests.sh)"
 done <<< "$VERIFIERS"
