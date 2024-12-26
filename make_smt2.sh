@@ -13,7 +13,6 @@ VERIFIERS="$DIRNAME/$(echo $VERIFIERS | sed "s| | $DIRNAME/|g")"
 for verifier in $VERIFIERS; do
     echo "[Running $verifier]"
     cd $verifier
-    continue # TODO: Remove this line
     ./build.sh
     VERIFIER=$(basename $verifier)
     for file in `./tests.sh`; do
