@@ -3,11 +3,14 @@ mkdir -p "$(dirname "$OUT")"
 
 cd "$(dirname "$0")/dafny"
 OUTPUT=$(Binaries/Dafny /deprecation:0 /compile:0 /timeLimit:$3 /print:$OUT.bpl /vcsCores:1 /proverLog:$OUT-@PROC@.smt2 "$1")
-
-# Check if "$1.expect" exists and if so if it contains " Error:", then it's ok for the above to fail
-if [ $? -eq 0 ] || ([ -f "$1.expect" ] && grep -q " Error:" "$1.expect"); then
+if [ $? -eq 0 ]; then
     exit 0
-else
-    echo "[ERROR] $OUTPUT"
-    exit 1
 fi
+while read -r out_line; do
+    # Return error if the output line contains " Error:" but does not start with
+    # a filename. This means it's not a verification error pointing to a file.
+    if grep -q " Error:" <<< "$(echo "$out_line" | sed "s|\.dfy.*|.dfy|g")"; then
+        echo "[ERROR] $OUTPUT"
+        exit 1
+    fi
+done <<< "$OUTPUT"

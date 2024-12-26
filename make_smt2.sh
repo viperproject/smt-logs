@@ -3,7 +3,7 @@
 
 VERIFIERS="$@"
 if [ -z "$VERIFIERS" ]; then
-    VERIFIERS="silicon carbon"
+    VERIFIERS="dafny silicon carbon"
 fi
 
 git submodule update --init --recursive &> /dev/null
