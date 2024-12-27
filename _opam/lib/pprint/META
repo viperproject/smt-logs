@@ -1,6 +1,0 @@
-description = ""
-requires = ""
-archive(byte) = "pprint.cma"
-archive(native) = "pprint.cmxa"
-plugin(byte) = "pprint.cma"
-plugin(native) = "pprint.cmxs"
