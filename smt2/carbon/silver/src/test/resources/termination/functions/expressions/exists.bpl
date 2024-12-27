@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 02:48:09
+// Date:         2024-12-27 10:57:02
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/termination/functions/expressions/exists.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/termination/functions/expressions/exists-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -649,11 +649,11 @@ procedure partiallyTerminating#definedness(x: int) returns (Result: bool)
 procedure test_termination_proof(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var x21: Ref;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -667,8 +667,8 @@ procedure test_termination_proof(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[x21, $allocated];
@@ -690,8 +690,8 @@ procedure test_termination_proof(x: Ref) returns ()
     if (x == x21) {
       
       // -- Translating statement: assert false -- <no position>
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Assert might fail. Assertion false might not hold. (<no position>) [223164]"}
           false;
         assume state(Heap, Mask);
@@ -706,11 +706,11 @@ procedure test_termination_proof(x: Ref) returns ()
 procedure test2_termination_proof() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var x22: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -721,8 +721,8 @@ procedure test2_termination_proof() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale partiallyTerminating(x22) -- exists.vpr@20.5--20.47
     assume state(Heap, Mask);
@@ -737,8 +737,8 @@ procedure test2_termination_proof() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert x22 == 42 -- <no position>
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion x22 == 42 might not hold. (exists.vpr@50.18--50.25) [223165]"}
       x22 == 42;
     assume state(Heap, Mask);
@@ -751,11 +751,11 @@ procedure test2_termination_proof() returns ()
 procedure test3_termination_proof(x: int) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var x23: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -770,8 +770,8 @@ procedure test3_termination_proof(x: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale x == x23 && partiallyTerminating(x23) -- exists.vpr@28.5--28.58
     assume x == x23;
@@ -790,8 +790,8 @@ procedure test3_termination_proof(x: int) returns ()
     if (x == x23) {
       
       // -- Translating statement: assert x23 == 42 -- <no position>
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Assert might fail. Assertion x23 == 42 might not hold. (exists.vpr@50.18--50.25) [223166]"}
           x23 == 42;
         assume state(Heap, Mask);
@@ -806,11 +806,11 @@ procedure test3_termination_proof(x: int) returns ()
 procedure test4_termination_proof(x: int) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var x24: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -821,8 +821,8 @@ procedure test4_termination_proof(x: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale x == x24 -- exists.vpr@36.6--36.31
     assume x == x24;
@@ -841,8 +841,8 @@ procedure test4_termination_proof(x: int) returns ()
     )) {
       
       // -- Translating statement: assert x == 42 -- <no position>
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Assert might fail. Assertion x == 42 might not hold. (exists.vpr@50.18--50.25) [223167]"}
           x == 42;
         assume state(Heap, Mask);
@@ -857,11 +857,11 @@ procedure test4_termination_proof(x: int) returns ()
 procedure test5_termination_proof(x: int) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var x25: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -872,8 +872,8 @@ procedure test5_termination_proof(x: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale x == x25 && x != x25 -- exists.vpr@43.6--43.42
     assume x == x25;
@@ -893,8 +893,8 @@ procedure test5_termination_proof(x: int) returns ()
     )) {
       
       // -- Translating statement: assert x == 42 -- <no position>
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Assert might fail. Assertion x == 42 might not hold. (exists.vpr@50.18--50.25) [223168]"}
           x == 42;
         assume state(Heap, Mask);

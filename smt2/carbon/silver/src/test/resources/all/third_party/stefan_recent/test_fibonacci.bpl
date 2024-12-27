@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 02:33:43
+// Date:         2024-12-27 10:42:39
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/third_party/stefan_recent/test_fibonacci.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/third_party/stefan_recent/test_fibonacci-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -301,12 +301,12 @@ procedure Fib__forkOperator(diz: Ref, current_thread_id: int) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -339,8 +339,8 @@ procedure Fib__forkOperator(diz: Ref, current_thread_id: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -360,8 +360,8 @@ procedure Fib__forkOperator(diz: Ref, current_thread_id: int) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of Fib__forkOperator might not hold. There might be insufficient permission to access Fib__joinToken(diz) (test_fibonacci.vpr@20.11--20.42) [178025]"}
@@ -382,12 +382,12 @@ procedure Fib__joinOperator(diz: Ref, current_thread_id: int) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -412,8 +412,8 @@ procedure Fib__joinOperator(diz: Ref, current_thread_id: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -454,8 +454,8 @@ procedure Fib__joinOperator(diz: Ref, current_thread_id: int) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := 1 / 10;
     assert {:msg "  Postcondition of Fib__joinOperator might not hold. Fraction 1 / 10 might be negative. (test_fibonacci.vpr@29.11--29.38) [178029]"}
       perm >= NoPerm;
@@ -486,8 +486,8 @@ procedure Fib__run(diz: Ref, current_thread_id: int) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var f2: Ref;
@@ -499,8 +499,8 @@ procedure Fib__run(diz: Ref, current_thread_id: int) returns ()
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
   var arg_n: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var arg_n_1: int;
   var ExhaleHeap: HeapType;
   var __flatten_8: int;
@@ -536,8 +536,8 @@ procedure Fib__run(diz: Ref, current_thread_id: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -610,8 +610,8 @@ procedure Fib__run(diz: Ref, current_thread_id: int) returns ()
         arg_n := Heap[diz, Fib__input] - 1;
         
         // -- Exhaling precondition
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           assert {:msg "  The precondition of method Fib__Fib might not hold. Assertion current_thread_id >= 0 might not hold. (test_fibonacci.vpr@58.5--58.67) [178040]"}
             current_thread_id >= 0;
         
@@ -647,8 +647,8 @@ procedure Fib__run(diz: Ref, current_thread_id: int) returns ()
         arg_n_1 := Heap[diz, Fib__input] - 2;
         
         // -- Exhaling precondition
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           assert {:msg "  The precondition of method Fib__Fib might not hold. Assertion current_thread_id >= 0 might not hold. (test_fibonacci.vpr@60.5--60.67) [178042]"}
             current_thread_id >= 0;
         
@@ -679,8 +679,8 @@ procedure Fib__run(diz: Ref, current_thread_id: int) returns ()
         PreCallMask := Mask;
         
         // -- Exhaling precondition
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           assert {:msg "  The precondition of method Fib__forkOperator might not hold. Assertion f1 != null might not hold. (test_fibonacci.vpr@62.5--62.45) [178043]"}
             f1 != null;
           assert {:msg "  The precondition of method Fib__forkOperator might not hold. Assertion current_thread_id >= 0 might not hold. (test_fibonacci.vpr@62.5--62.45) [178044]"}
@@ -716,8 +716,8 @@ procedure Fib__run(diz: Ref, current_thread_id: int) returns ()
         PreCallMask := Mask;
         
         // -- Exhaling precondition
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           assert {:msg "  The precondition of method Fib__forkOperator might not hold. Assertion f2 != null might not hold. (test_fibonacci.vpr@63.5--63.45) [178048]"}
             f2 != null;
           assert {:msg "  The precondition of method Fib__forkOperator might not hold. Assertion current_thread_id >= 0 might not hold. (test_fibonacci.vpr@63.5--63.45) [178049]"}
@@ -753,8 +753,8 @@ procedure Fib__run(diz: Ref, current_thread_id: int) returns ()
         PreCallMask := Mask;
         
         // -- Exhaling precondition
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           assert {:msg "  The precondition of method Fib__joinOperator might not hold. Assertion f1 != null might not hold. (test_fibonacci.vpr@64.5--64.45) [178053]"}
             f1 != null;
           assert {:msg "  The precondition of method Fib__joinOperator might not hold. Assertion current_thread_id >= 0 might not hold. (test_fibonacci.vpr@64.5--64.45) [178054]"}
@@ -791,8 +791,8 @@ procedure Fib__run(diz: Ref, current_thread_id: int) returns ()
         PreCallMask := Mask;
         
         // -- Exhaling precondition
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           assert {:msg "  The precondition of method Fib__joinOperator might not hold. Assertion f2 != null might not hold. (test_fibonacci.vpr@65.5--65.45) [178057]"}
             f2 != null;
           assert {:msg "  The precondition of method Fib__joinOperator might not hold. Assertion current_thread_id >= 0 might not hold. (test_fibonacci.vpr@65.5--65.45) [178058]"}
@@ -847,8 +847,8 @@ procedure Fib__run(diz: Ref, current_thread_id: int) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := 1 / 10;
     assert {:msg "  Postcondition of Fib__run might not hold. Fraction 1 / 10 might be negative. (test_fibonacci.vpr@41.11--41.38) [178064]"}
       perm >= NoPerm;
@@ -878,8 +878,8 @@ procedure Fib__run(diz: Ref, current_thread_id: int) returns ()
 procedure Fib__Fib(current_thread_id: int, n: int) returns (sys__result: Ref)
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var perm: Perm;
@@ -889,8 +889,8 @@ procedure Fib__Fib(current_thread_id: int, n: int) returns (sys__result: Ref)
   var __flatten_18: int;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -906,8 +906,8 @@ procedure Fib__Fib(current_thread_id: int, n: int) returns (sys__result: Ref)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -970,8 +970,8 @@ procedure Fib__Fib(current_thread_id: int, n: int) returns (sys__result: Ref)
   //   (acc(sys__result.Fib__output, write) && sys__result.Fib__input == n)) -- test_fibonacci.vpr@87.3--87.141
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
+    ExhaleWellDef0Mask := AssertMask;
     assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (test_fibonacci.vpr@87.10--87.141) [178070]"}
       sys__result != null;
     perm := FullPerm;
@@ -1000,8 +1000,8 @@ procedure Fib__Fib(current_thread_id: int, n: int) returns (sys__result: Ref)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of Fib__Fib might not hold. Assertion sys__result != null might not hold. (test_fibonacci.vpr@74.11--74.30) [178077]"}
       sys__result != null;
     perm := FullPerm;

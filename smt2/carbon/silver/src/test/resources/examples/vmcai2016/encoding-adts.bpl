@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 02:17:18
+// Date:         2024-12-27 10:26:17
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/examples/vmcai2016/encoding-adts.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/examples/vmcai2016/encoding-adts-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -253,10 +253,10 @@ axiom (forall xs: listDomainType ::
 procedure test_types(x: listDomainType) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -266,12 +266,12 @@ procedure test_types(x: listDomainType) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert is_Nil(x) == !is_Cons(x) -- encoding-adts.vpr@72.3--72.36
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion is_Nil(x) == !is_Cons(x) might not hold. (encoding-adts.vpr@72.10--72.36) [113110]"}
       (is_Nil(x): bool) == !(is_Cons(x): bool);
     assume state(Heap, Mask);
@@ -284,10 +284,10 @@ procedure test_types(x: listDomainType) returns ()
 procedure test_quantifiers() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var xs_1_2: listDomainType;
   var head_1_1: int;
   var tail_1_1: listDomainType;
@@ -304,8 +304,8 @@ procedure test_quantifiers() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert (forall head: Int, tail: list, xs: list ::
   //     { is_Cons(xs), Cons(head, tail) }
@@ -314,8 +314,8 @@ procedure test_quantifiers() returns ()
   //     is_Cons(xs) ==>
   //     (head == head_Cons(xs) && tail == tail_Cons(xs)) ==
   //     (Cons(head, tail) == xs)) -- encoding-adts.vpr@78.5--79.99
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall head: Int, tail: list, xs: list :: { is_Cons(xs), Cons(head, tail) } { head_Cons(xs), Cons(head, tail) } { tail_Cons(xs), Cons(head, tail) } is_Cons(xs) ==> (head == head_Cons(xs) && tail == tail_Cons(xs)) == (Cons(head, tail) == xs))
       if (*) {
@@ -338,8 +338,8 @@ procedure test_quantifiers() returns ()
   //     { Cons(head1, tail1), Cons(head2, tail2) }
   //     (Cons(head1, tail1) == Cons(head2, tail2)) ==
   //     (head1 == head2 && tail1 == tail2)) -- encoding-adts.vpr@82.5--83.85
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall head1: Int, head2: Int, tail1: list, tail2: list :: { Cons(head1, tail1), Cons(head2, tail2) } (Cons(head1, tail1) == Cons(head2, tail2)) == (head1 == head2 && tail1 == tail2))
       if (*) {
@@ -364,10 +364,10 @@ procedure test_quantifiers() returns ()
 procedure pattern_match_exhaustiveness_test(xs: listDomainType) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ys: listDomainType;
   var ys_1: listDomainType;
   var y: int;
@@ -398,8 +398,8 @@ procedure pattern_match_exhaustiveness_test(xs: listDomainType) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert !is_Nil(xs) &&
   //   (!(is_Cons(xs) && (let ys == (tail_Cons(xs)) in is_Nil(ys))) &&
@@ -410,8 +410,8 @@ procedure pattern_match_exhaustiveness_test(xs: listDomainType) returns ()
   //       (tail_Cons(xs)) in
   //       is_Cons(ys))))) ==>
   //   false -- encoding-adts.vpr@101.4--105.16
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of !is_Nil(xs) && (!(is_Cons(xs) && (let ys == (tail_Cons(xs)) in is_Nil(ys))) && !(is_Cons(xs) && (let y == (head_Cons(xs)) in (let ys == (tail_Cons(xs)) in is_Cons(ys)))))
       if (!(is_Nil(xs): bool)) {
@@ -452,8 +452,8 @@ procedure pattern_match_exhaustiveness_test(xs: listDomainType) returns ()
   //       (tail_Cons(xs)) in
   //       is_Cons(ys) && (let z == (head_Cons(ys)) in y < z))))) ==>
   //   false -- encoding-adts.vpr@114.4--119.16
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of !is_Nil(xs) && (!(is_Cons(xs) && (let ys == (tail_Cons(xs)) in is_Nil(ys))) && !(is_Cons(xs) && (let y == (head_Cons(xs)) in (let ys == (tail_Cons(xs)) in is_Cons(ys) && (let z == (head_Cons(ys)) in y < z)))))
       if (!(is_Nil(xs): bool)) {

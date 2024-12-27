@@ -1,0 +1,12 @@
+opam-version: "2.0"
+added: [
+  "lib/process" {"D"}
+  "lib/process/META" {"F:5891e912a00b85eb6feb0d160ab22927"}
+  "lib/process/process.a" {"F:6d952d87fd55bd6f410b685af716c5c1"}
+  "lib/process/process.cma" {"F:f95911735304b88283e6d323ee9a82cd"}
+  "lib/process/process.cmi" {"F:c5c0eac44ef8b67c07fe8f033dabcd43"}
+  "lib/process/process.cmti" {"F:1e87e018b43684cead1d8a1d9c54da27"}
+  "lib/process/process.cmx" {"F:41fe0fd410048fd85ba6dc016d0e9bc4"}
+  "lib/process/process.cmxa" {"F:c04941847087bb49a9a9a555e4134786"}
+  "lib/process/process.mli" {"F:47f91a7f5634b0036e070d1a84e9a559"}
+]

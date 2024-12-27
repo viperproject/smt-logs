@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 02:32:40
+// Date:         2024-12-27 10:41:36
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/third_party/stefan_recent/testGoto2.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/third_party/stefan_recent/testGoto2-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -240,20 +240,20 @@ procedure Ref__t2(diz: Ref, current_thread_id: int, n: int) returns (sys__result
   var lbl1_lblGuard: bool;
   var lbl2_lblGuard: bool;
   var lbl3_lblGuard: bool;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var Labellbl2Heap: HeapType;
   var Labellbl2Mask: MaskType;
+  var Labellbl2Heap: HeapType;
   var r_1: int;
-  var Labellbl1Heap: HeapType;
   var Labellbl1Mask: MaskType;
-  var Labellbl3Heap: HeapType;
+  var Labellbl1Heap: HeapType;
   var Labellbl3Mask: MaskType;
+  var Labellbl3Heap: HeapType;
   var __flatten_1: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -277,8 +277,8 @@ procedure Ref__t2(diz: Ref, current_thread_id: int, n: int) returns (sys__result
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -313,8 +313,8 @@ procedure Ref__t2(diz: Ref, current_thread_id: int, n: int) returns (sys__result
   // -- Translating statement: // id = 5
   // label lbl2 -- testGoto2.vpr@13.1--13.11
     lbl2:
-    Labellbl2Heap := Heap;
     Labellbl2Mask := Mask;
+    Labellbl2Heap := Heap;
     lbl2_lblGuard := true;
     assume state(Heap, Mask);
   
@@ -331,8 +331,8 @@ procedure Ref__t2(diz: Ref, current_thread_id: int, n: int) returns (sys__result
   // -- Translating statement: // id = 8
   // label lbl1 -- testGoto2.vpr@16.1--16.11
     lbl1:
-    Labellbl1Heap := Heap;
     Labellbl1Mask := Mask;
+    Labellbl1Heap := Heap;
     lbl1_lblGuard := true;
     assume state(Heap, Mask);
   
@@ -344,8 +344,8 @@ procedure Ref__t2(diz: Ref, current_thread_id: int, n: int) returns (sys__result
   // -- Translating statement: // id = 10
   // label lbl3 -- testGoto2.vpr@18.1--18.11
     lbl3:
-    Labellbl3Heap := Heap;
     Labellbl3Mask := Mask;
+    Labellbl3Heap := Heap;
     lbl3_lblGuard := true;
     assume state(Heap, Mask);
   
@@ -361,8 +361,8 @@ procedure Ref__t2(diz: Ref, current_thread_id: int, n: int) returns (sys__result
   
   // -- Translating statement: // id = 13
   // assert sys__result > 0 -- testGoto2.vpr@21.3--21.25
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion sys__result > 0 might not hold. (testGoto2.vpr@21.10--21.25) [166746]"}
       sys__result > 0;
     assume state(Heap, Mask);
@@ -374,8 +374,8 @@ procedure Ref__t2(diz: Ref, current_thread_id: int, n: int) returns (sys__result
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of Ref__t2 might not hold. Assertion sys__result > 0 might not hold. (testGoto2.vpr@8.11--8.26) [166747]"}
       sys__result > 0;
 }
@@ -387,14 +387,14 @@ procedure Ref__t2(diz: Ref, current_thread_id: int, n: int) returns (sys__result
 procedure Ref__Ref(current_thread_id: int) returns (sys__result: Ref)
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var diz: Ref;
   var freshObj: Ref;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -408,8 +408,8 @@ procedure Ref__Ref(current_thread_id: int) returns (sys__result: Ref)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -436,8 +436,8 @@ procedure Ref__Ref(current_thread_id: int) returns (sys__result: Ref)
     assume state(Heap, Mask);
   
   // -- Translating statement: assert sys__result != null -- testGoto2.vpr@32.3--32.29
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (testGoto2.vpr@32.10--32.29) [166748]"}
       sys__result != null;
     assume state(Heap, Mask);
@@ -448,8 +448,8 @@ procedure Ref__Ref(current_thread_id: int) returns (sys__result: Ref)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of Ref__Ref might not hold. Assertion sys__result != null might not hold. (testGoto2.vpr@27.11--27.30) [166749]"}
       sys__result != null;
 }

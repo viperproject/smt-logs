@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 02:11:24
+// Date:         2024-12-27 10:20:23
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/issues/issue_0067.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/issues/issue_0067-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -421,10 +421,10 @@ procedure test01(S: (Set Ref), a_2: Ref) returns ()
   var QPMask: MaskType;
   var s_5: Ref;
   var s_7: Ref;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var perm: Perm;
   var ExhaleHeap: HeapType;
   
@@ -547,12 +547,12 @@ procedure test01(S: (Set Ref), a_2: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: exhale acc(a.f, a.k) -- issue_0067.vpr@13.3--13.23
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of acc(a.f, a.k)
       assert {:msg "  Exhale might fail. There might be insufficient permission to access a.k (issue_0067.vpr@13.10--13.23) [73779]"}
@@ -572,8 +572,8 @@ procedure test01(S: (Set Ref), a_2: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(a.f, a.k) -- issue_0067.vpr@15.3--15.23
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of acc(a.f, a.k)
       assert {:msg "  Exhale might fail. There might be insufficient permission to access a.k (issue_0067.vpr@15.10--15.23) [73782]"}
@@ -603,10 +603,10 @@ procedure test02(S: (Set Ref), a_2: Ref, b_24: Ref) returns ()
   var QPMask: MaskType;
   var s_8: Ref;
   var s_9: Ref;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var perm: Perm;
   var ExhaleHeap: HeapType;
   
@@ -731,12 +731,12 @@ procedure test02(S: (Set Ref), a_2: Ref, b_24: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: exhale acc(a.f, a.k) -- issue_0067.vpr@24.3--24.23
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of acc(a.f, a.k)
       assert {:msg "  Exhale might fail. There might be insufficient permission to access a.k (issue_0067.vpr@24.10--24.23) [73790]"}
@@ -756,8 +756,8 @@ procedure test02(S: (Set Ref), a_2: Ref, b_24: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(b.f, a.k) -- issue_0067.vpr@26.3--26.23
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of acc(b.f, a.k)
       assert {:msg "  Exhale might fail. There might be insufficient permission to access a.k (issue_0067.vpr@26.10--26.23) [73793]"}
@@ -787,10 +787,10 @@ procedure test03(S: (Set Ref), a_2: Ref, b_24: Ref) returns ()
   var QPMask: MaskType;
   var s_10: Ref;
   var s_11: Ref;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var perm: Perm;
   var ExhaleHeap: HeapType;
   
@@ -915,12 +915,12 @@ procedure test03(S: (Set Ref), a_2: Ref, b_24: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: exhale acc(a.f, a.k) -- issue_0067.vpr@35.3--35.23
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of acc(a.f, a.k)
       assert {:msg "  Exhale might fail. There might be insufficient permission to access a.k (issue_0067.vpr@35.10--35.23) [73801]"}
@@ -940,8 +940,8 @@ procedure test03(S: (Set Ref), a_2: Ref, b_24: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(b.f, b.k) -- issue_0067.vpr@37.3--37.23
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of acc(b.f, b.k)
       assert {:msg "  Exhale might fail. There might be insufficient permission to access b.k (issue_0067.vpr@37.10--37.23) [73804]"}
@@ -971,10 +971,10 @@ procedure test04(S: (Set Ref), a_2: Ref, b_24: Ref) returns ()
   var QPMask: MaskType;
   var s_12: Ref;
   var s_13: Ref;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var perm: Perm;
   var ExhaleHeap: HeapType;
   
@@ -1101,12 +1101,12 @@ procedure test04(S: (Set Ref), a_2: Ref, b_24: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: exhale acc(a.f, a.k) -- issue_0067.vpr@47.3--47.23
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of acc(a.f, a.k)
       assert {:msg "  Exhale might fail. There might be insufficient permission to access a.k (issue_0067.vpr@47.10--47.23) [73812]"}
@@ -1126,8 +1126,8 @@ procedure test04(S: (Set Ref), a_2: Ref, b_24: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(b.f, b.k) -- issue_0067.vpr@48.3--48.23
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of acc(b.f, b.k)
       assert {:msg "  Exhale might fail. There might be insufficient permission to access b.k (issue_0067.vpr@48.10--48.23) [73815]"}
@@ -1147,8 +1147,8 @@ procedure test04(S: (Set Ref), a_2: Ref, b_24: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- issue_0067.vpr@50.3--50.15
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion false might not hold. (issue_0067.vpr@50.10--50.15) [73818]"}
       false;
     assume state(Heap, Mask);

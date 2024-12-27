@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-27 02:00:36
+; Started: 2024-12-27 10:09:41
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -127,11 +127,11 @@
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (= (NodegetNext$%limited s@$ this@0@00) (NodegetNext$ s@$ this@0@00))
   :pattern ((NodegetNext$ s@$ this@0@00))
-  :qid |quant-u-24678|)))
+  :qid |quant-u-24687|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (NodegetNext$%stateless this@0@00)
   :pattern ((NodegetNext$%limited s@$ this@0@00))
-  :qid |quant-u-24679|)))
+  :qid |quant-u-24688|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (and
     ($Perm.isReadVar $k@2@00)
@@ -145,11 +145,11 @@
         (NodegetNext$ s@$ this@0@00)
         ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$))))))
   :pattern ((NodegetNext$ s@$ this@0@00))
-  :qid |quant-u-24680|)))
+  :qid |quant-u-24689|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   true
   :pattern ((NodegetNext$ s@$ this@0@00))
-  :qid |quant-u-24681|)))
+  :qid |quant-u-24690|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- NodetestNestingUnfold$ ----------

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 02:10:55
+// Date:         2024-12-27 10:19:55
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/misc/snapshots_partial_fvfs.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/misc/snapshots_partial_fvfs-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -718,10 +718,10 @@ procedure test(xs: (Seq Ref)) returns ()
   var i_6: int;
   var QPMask: MaskType;
   var i_7: int;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var i_6_1: int;
   var j_2_1: int;
   var perm: Perm;
@@ -855,12 +855,12 @@ procedure test(xs: (Seq Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: fold acc(P(xs), write) -- snapshots_partial_fvfs.vpr@18.3--18.18
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Folding P(xs) might fail. Assertion 3 < |xs| might not hold. (snapshots_partial_fvfs.vpr@18.3--18.18) [69459]"}
       3 < Seq#Length(xs);
     if (*) {
@@ -943,8 +943,8 @@ procedure test(xs: (Seq Ref)) returns ()
   // -- Translating statement: unfold acc(P(xs), write) -- snapshots_partial_fvfs.vpr@19.3--19.20
     assume P#trigger(Heap, P(xs));
     assume Heap[null, P(xs)] == FrameFragment(P#condqp1(Heap, xs));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding P(xs) might fail. There might be insufficient permission to access P(xs) (snapshots_partial_fvfs.vpr@19.3--19.20) [69467]"}
@@ -1010,8 +1010,8 @@ procedure test(xs: (Seq Ref)) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(P(xs), write) -- snapshots_partial_fvfs.vpr@23.3--23.18
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Folding P(xs) might fail. Assertion 3 < |xs| might not hold. (snapshots_partial_fvfs.vpr@23.3--23.18) [69472]"}
       3 < Seq#Length(xs);
     if (*) {
@@ -1094,8 +1094,8 @@ procedure test(xs: (Seq Ref)) returns ()
   // -- Translating statement: unfold acc(P(xs), write) -- snapshots_partial_fvfs.vpr@24.3--24.20
     assume P#trigger(Heap, P(xs));
     assume Heap[null, P(xs)] == FrameFragment(P#condqp1(Heap, xs));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding P(xs) might fail. There might be insufficient permission to access P(xs) (snapshots_partial_fvfs.vpr@24.3--24.20) [69480]"}
@@ -1151,8 +1151,8 @@ procedure test(xs: (Seq Ref)) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert xs[4].f == old(xs[4].f) -- snapshots_partial_fvfs.vpr@27.3--27.33
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of xs[4].f == old(xs[4].f)
       assert {:msg "  Assert might fail. Index xs[4] into xs might exceed sequence length. (snapshots_partial_fvfs.vpr@27.10--27.33) [69482]"}

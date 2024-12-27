@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 02:47:37
+// Date:         2024-12-27 10:56:30
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/adt/postconditions.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/adt/postconditions-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -320,11 +320,11 @@ procedure wrapNot#definedness(data_1: int) returns (Result: WrapDomainType)
 procedure wrapTest() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var x: WrapDomainType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var y: WrapDomainType;
   
   // -- Initializing the state
@@ -336,8 +336,8 @@ procedure wrapTest() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: x := wrap(1) -- postconditions.vpr@18.3--18.25
     
@@ -350,8 +350,8 @@ procedure wrapTest() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert get_Wrap_data(x) == 1 -- postconditions.vpr@19.3--19.22
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion get_Wrap_data(x) == 1 might not hold. (postconditions.vpr@19.10--19.21) [222866]"}
       (get_Wrap_data(x): int) == 1;
     assume state(Heap, Mask);
@@ -367,8 +367,8 @@ procedure wrapTest() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert get_Wrap_data(y) == 1 -- postconditions.vpr@22.3--22.22
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion get_Wrap_data(y) == 1 might not hold. (postconditions.vpr@22.10--22.21) [222867]"}
       (get_Wrap_data(y): int) == 1;
     assume state(Heap, Mask);

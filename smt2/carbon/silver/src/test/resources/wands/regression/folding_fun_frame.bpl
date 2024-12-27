@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 02:24:33
+// Date:         2024-12-27 10:33:30
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/folding_fun_frame.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/folding_fun_frame-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -266,8 +266,8 @@ procedure sum_rec#definedness(ys: Ref) returns (Result: int)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var newPMask: PMaskType;
   
@@ -291,8 +291,8 @@ procedure sum_rec#definedness(ys: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume List#trigger(UnfoldingHeap, List(ys));
       assume UnfoldingHeap[null, List(ys)] == CombineFrames(FrameFragment(UnfoldingHeap[ys, val]), CombineFrames(FrameFragment(UnfoldingHeap[ys, next]), FrameFragment((if UnfoldingHeap[ys, next] != null then UnfoldingHeap[null, List(UnfoldingHeap[ys, next])] else EmptyFrame))));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access List(ys) (folding_fun_frame.vpr@20.1--22.76) [133125]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, List(ys)];
@@ -323,8 +323,8 @@ procedure sum_rec#definedness(ys: Ref) returns (Result: int)
           HasDirectPerm(UnfoldingMask, ys, next);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
+          ExhaleWellDef0Mask := UnfoldingMask;
           perm := FullPerm;
           assert {:msg "  Precondition of function sum_rec might not hold. There might be insufficient permission to access List(ys.next) (folding_fun_frame.vpr@22.57--22.73) [133129]"}
             NoPerm < perm ==> NoPerm < UnfoldingMask[null, List(UnfoldingHeap[ys, next])];
@@ -437,10 +437,10 @@ procedure t01(xs: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var i: int;
   var newVersion: FrameType;
@@ -450,8 +450,8 @@ procedure t01(xs: Ref) returns ()
   var UsedHeap: HeapType;
   var UsedMask: MaskType;
   var b_2: bool;
-  var Labellhs1Mask: MaskType;
   var Labellhs1Heap: HeapType;
+  var Labellhs1Mask: MaskType;
   var boolCur: bool;
   var Used_1Heap: HeapType;
   var Used_1Mask: MaskType;
@@ -504,16 +504,16 @@ procedure t01(xs: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: i := sum_rec(xs) -- folding_fun_frame.vpr@29.3--29.19
     
     // -- Check definedness of sum_rec(xs)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function sum_rec might not hold. There might be insufficient permission to access List(xs) (folding_fun_frame.vpr@29.8--29.19) [133132]"}
           NoPerm < perm ==> NoPerm < Mask[null, List(xs)];
@@ -530,8 +530,8 @@ procedure t01(xs: Ref) returns ()
   // -- Translating statement: unfold acc(List(xs), write) -- folding_fun_frame.vpr@30.3--30.18
     assume List#trigger(Heap, List(xs));
     assume Heap[null, List(xs)] == CombineFrames(FrameFragment(Heap[xs, val]), CombineFrames(FrameFragment(Heap[xs, next]), FrameFragment((if Heap[xs, next] != null then Heap[null, List(Heap[xs, next])] else EmptyFrame))));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding List(xs) might fail. There might be insufficient permission to access List(xs) (folding_fun_frame.vpr@30.3--30.18) [133135]"}
@@ -580,15 +580,15 @@ procedure t01(xs: Ref) returns ()
     
     // -- Translating statement: label lhs1 -- folding_fun_frame.vpr@32.11--32.53
       lhs1:
-      Labellhs1Mask := Ops_1Mask;
       Labellhs1Heap := Ops_1Heap;
+      Labellhs1Mask := Ops_1Mask;
       b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);
     boolCur := true;
     if (b_1_1) {
       
       // -- Translating statement: fold acc(List(xs), write) -- folding_fun_frame.vpr@33.7--33.20
-        ExhaleWellDef0Mask := Ops_1Mask;
         ExhaleWellDef0Heap := Ops_1Heap;
+        ExhaleWellDef0Mask := Ops_1Mask;
         havoc Used_1Heap;
         Used_1Mask := ZeroMask;
         b_2_1 := b_2_1 && state(Used_1Heap, Used_1Mask);
@@ -899,8 +899,8 @@ procedure t01(xs: Ref) returns ()
         // -- Check definedness of sum_rec(xs) == i
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := Result_4Mask;
             ExhaleWellDef0Heap := Result_4Heap;
+            ExhaleWellDef0Mask := Result_4Mask;
             perm := FullPerm;
             assert {:msg "  Precondition of function sum_rec might not hold. There might be insufficient permission to access List(xs) (folding_fun_frame.vpr@32.39--32.50) [133150]"}
               NoPerm < perm ==> NoPerm < Result_4Mask[null, List(xs)];
@@ -922,8 +922,8 @@ procedure t01(xs: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- folding_fun_frame.vpr@37.3--37.15
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion false might not hold. (folding_fun_frame.vpr@37.10--37.15) [133152]"}
       false;
     assume state(Heap, Mask);

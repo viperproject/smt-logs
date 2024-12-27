@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 02:18:12
+// Date:         2024-12-27 10:27:10
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/refute/complex.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/refute/complex-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -259,21 +259,21 @@ procedure bar_1(y: int) returns ()
   modifies Heap, Mask;
 {
   var l_lblGuard: bool;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var x: Ref;
   var perm: Perm;
-  var LabellMask: MaskType;
   var LabellHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var LabellMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var loopHeap: HeapType;
   var loopMask: MaskType;
   var __plugin_refute_nondet1: bool;
   var __plugin_refute_nondet2: bool;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var __plugin_refute_nondet3: bool;
   var z: int;
   var __plugin_refute_nondet4: bool;
@@ -293,8 +293,8 @@ procedure bar_1(y: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[x, $allocated];
@@ -309,8 +309,8 @@ procedure bar_1(y: int) returns ()
   
   // -- Translating statement: label l -- complex.vpr@11.5--11.12
     l_9:
-    LabellMask := Mask;
     LabellHeap := Heap;
+    LabellMask := Mask;
     l_lblGuard := true;
     assume state(Heap, Mask);
   
@@ -319,8 +319,8 @@ procedure bar_1(y: int) returns ()
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Loop invariant acc(x.f, write) && (old[l](x.f >= y) ==> x.f >= y) might not hold on entry. There might be insufficient permission to access x.f (complex.vpr@13.19--13.62) [119894]"}
@@ -389,8 +389,8 @@ procedure bar_1(y: int) returns ()
             if (__plugin_refute_nondet1) {
               
               // -- Translating statement: assert x.f < y -- complex.vpr@15.9--15.23
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 
                 // -- Check definedness of x.f < y
                   assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (complex.vpr@15.16--15.23) [119900]"}
@@ -420,14 +420,14 @@ procedure bar_1(y: int) returns ()
             if (__plugin_refute_nondet2) {
               
               // -- Translating statement: assert foo(x) -- complex.vpr@18.9--18.22
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 
                 // -- Check definedness of foo(x)
                   if (*) {
                     // Exhale precondition of function application
-                    ExhaleWellDef1Mask := ExhaleWellDef0Mask;
                     ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+                    ExhaleWellDef1Mask := ExhaleWellDef0Mask;
                     perm := FullPerm;
                     assert {:msg "  Precondition of function foo might not hold. There might be insufficient permission to access x.f (complex.vpr@18.16--18.22) [119904]"}
                       NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[x, f_7];
@@ -449,8 +449,8 @@ procedure bar_1(y: int) returns ()
             }
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Loop invariant acc(x.f, write) && (old[l](x.f >= y) ==> x.f >= y) might not be preserved. There might be insufficient permission to access x.f (complex.vpr@13.19--13.62) [119906]"}
@@ -486,8 +486,8 @@ procedure bar_1(y: int) returns ()
     if (__plugin_refute_nondet3) {
       
       // -- Translating statement: assert x.f == y -- complex.vpr@20.5--20.20
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         
         // -- Check definedness of x.f == y
           assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (complex.vpr@20.12--20.20) [119908]"}
@@ -535,8 +535,8 @@ procedure bar_1(y: int) returns ()
     if (__plugin_refute_nondet4) {
       
       // -- Translating statement: assert z == 10 -- complex.vpr@33.5--33.19
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Assert might fail. Assertion z == 10 might not hold. (complex.vpr@33.12--33.19) [119910]"}
           z == 10;
         assume state(Heap, Mask);
@@ -552,8 +552,8 @@ procedure bar_1(y: int) returns ()
     if (__plugin_refute_nondet5) {
       
       // -- Translating statement: assert z < 9 || z > 10 -- complex.vpr@35.5--35.27
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Assert might fail. Assertion z < 9 || z > 10 might not hold. (complex.vpr@35.12--35.27) [119911]"}
           z < 9 || z > 10;
         assume state(Heap, Mask);

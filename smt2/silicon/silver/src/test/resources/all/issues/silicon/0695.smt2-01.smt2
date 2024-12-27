@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-27 02:00:49
+; Started: 2024-12-27 10:09:54
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -1343,11 +1343,11 @@
 (assert (forall ((s@$ $Snap) (lft@0@00 Map<Int~_Map<$Ref~_$Perm>>)) (!
   (= (valid_lft%limited s@$ lft@0@00) (valid_lft s@$ lft@0@00))
   :pattern ((valid_lft s@$ lft@0@00))
-  :qid |quant-u-25072|)))
+  :qid |quant-u-25081|)))
 (assert (forall ((s@$ $Snap) (lft@0@00 Map<Int~_Map<$Ref~_$Perm>>)) (!
   (valid_lft%stateless lft@0@00)
   :pattern ((valid_lft%limited s@$ lft@0@00))
-  :qid |quant-u-25073|)))
+  :qid |quant-u-25082|)))
 (assert (forall ((s@$ $Snap) (lft@0@00 Map<Int~_Map<$Ref~_$Perm>>)) (!
   (=>
     (valid_lft%precondition s@$ lft@0@00)
@@ -1355,19 +1355,19 @@
       (valid_lft s@$ lft@0@00)
       (and (Set_in 0 (Map_domain lft@0@00)) (Set_in 1 (Map_domain lft@0@00)))))
   :pattern ((valid_lft s@$ lft@0@00))
-  :qid |quant-u-25076|)))
+  :qid |quant-u-25085|)))
 (assert (forall ((s@$ $Snap) (lft@0@00 Map<Int~_Map<$Ref~_$Perm>>)) (!
   true
   :pattern ((valid_lft s@$ lft@0@00))
-  :qid |quant-u-25077|)))
+  :qid |quant-u-25086|)))
 (assert (forall ((s@$ $Snap) (x@2@00 $Ref) (lft@3@00 Map<Int~_Map<$Ref~_$Perm>>)) (!
   (= (get_disc%limited s@$ x@2@00 lft@3@00) (get_disc s@$ x@2@00 lft@3@00))
   :pattern ((get_disc s@$ x@2@00 lft@3@00))
-  :qid |quant-u-25074|)))
+  :qid |quant-u-25083|)))
 (assert (forall ((s@$ $Snap) (x@2@00 $Ref) (lft@3@00 Map<Int~_Map<$Ref~_$Perm>>)) (!
   (get_disc%stateless x@2@00 lft@3@00)
   :pattern ((get_disc%limited s@$ x@2@00 lft@3@00))
-  :qid |quant-u-25075|)))
+  :qid |quant-u-25084|)))
 (assert (forall ((s@$ $Snap) (x@2@00 $Ref) (lft@3@00 Map<Int~_Map<$Ref~_$Perm>>)) (!
   (and
     (forall ((x@7@00 $Ref)) (!
@@ -1382,7 +1382,7 @@
       :pattern ((Map_apply (Map_apply lft@3@00 0) x@7@00))
       :pattern ((inv@8@00 s@$ x@2@00 lft@3@00 x@7@00))
       :pattern ((img@9@00 s@$ x@2@00 lft@3@00 x@7@00))
-      :qid |quant-u-25079|))
+      :qid |quant-u-25088|))
     (forall ((x $Ref)) (!
       (=>
         (and
@@ -1407,7 +1407,7 @@
       :pattern ((Map_apply (Map_apply lft@3@00 1) x@12@00))
       :pattern ((inv@13@00 s@$ x@2@00 lft@3@00 x@12@00))
       :pattern ((img@14@00 s@$ x@2@00 lft@3@00 x@12@00))
-      :qid |quant-u-25081|))
+      :qid |quant-u-25090|))
     (forall ((x $Ref)) (!
       (=>
         (and
@@ -1446,11 +1446,11 @@
         (get_disc s@$ x@2@00 lft@3@00)
         ($SortWrappers.$SnapTo$Ref ($Snap.first ($PSF.lookup_lft_List (sm@17@00 s@$ x@2@00 lft@3@00) ($SortWrappers.$RefTo$Snap x@2@00)))))))
   :pattern ((get_disc s@$ x@2@00 lft@3@00))
-  :qid |quant-u-25083|)))
+  :qid |quant-u-25092|)))
 (assert (forall ((s@$ $Snap) (x@2@00 $Ref) (lft@3@00 Map<Int~_Map<$Ref~_$Perm>>)) (!
   true
   :pattern ((get_disc s@$ x@2@00 lft@3@00))
-  :qid |quant-u-25084|)))
+  :qid |quant-u-25093|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- foo ----------
@@ -2142,7 +2142,7 @@
       (= (Map_apply (Map_apply new_lft@13@01 0) x@18@01) $Perm.No)
       (< $Perm.No (Map_apply (Map_apply new_lft@13@01 0) x@18@01))))
   
-  :qid |quant-u-25089|))))
+  :qid |quant-u-25098|))))
 (check-sat)
 ; unsat
 (pop) ; 7
@@ -2179,7 +2179,7 @@
   :pattern ((Map_apply (Map_apply new_lft@13@01 0) x@18@01))
   :pattern ((inv@19@01 x@18@01))
   :pattern ((img@20@01 x@18@01))
-  :qid |quant-u-25090|)))
+  :qid |quant-u-25099|)))
 (assert (forall ((x $Ref)) (!
   (=>
     (and
@@ -2372,7 +2372,7 @@
       (= (Map_apply (Map_apply new_lft@13@01 1) x@23@01) $Perm.No)
       (< $Perm.No (Map_apply (Map_apply new_lft@13@01 1) x@23@01))))
   
-  :qid |quant-u-25091|))))
+  :qid |quant-u-25100|))))
 (check-sat)
 ; unsat
 (pop) ; 7
@@ -2409,7 +2409,7 @@
   :pattern ((Map_apply (Map_apply new_lft@13@01 1) x@23@01))
   :pattern ((inv@24@01 x@23@01))
   :pattern ((img@25@01 x@23@01))
-  :qid |quant-u-25092|)))
+  :qid |quant-u-25101|)))
 (assert (forall ((x $Ref)) (!
   (=>
     (and
@@ -2501,7 +2501,7 @@
       (pTaken@26@01 x))
     $Perm.No)
   
-  :qid |quant-u-25094|))))
+  :qid |quant-u-25103|))))
 (check-sat)
 ; unknown
 (pop) ; 7
@@ -2513,7 +2513,7 @@
 (assert (not (forall ((x $Ref)) (!
   (= (pTaken@26@01 x) $Perm.No)
   
-  :qid |quant-u-25095|))))
+  :qid |quant-u-25104|))))
 (check-sat)
 ; unknown
 (pop) ; 7
@@ -2534,7 +2534,7 @@
         (pTaken@26@01 x))
       $Perm.No))
   
-  :qid |quant-u-25096|))))
+  :qid |quant-u-25105|))))
 (check-sat)
 ; unsat
 (pop) ; 7
@@ -3203,7 +3203,7 @@
       (= (Map_apply (Map_apply new_lft@13@01 0) x@34@01) $Perm.No)
       (< $Perm.No (Map_apply (Map_apply new_lft@13@01 0) x@34@01))))
   
-  :qid |quant-u-25097|))))
+  :qid |quant-u-25106|))))
 (check-sat)
 ; unsat
 (pop) ; 7
@@ -3288,7 +3288,7 @@
       (pTaken@37@01 x))
     $Perm.No)
   
-  :qid |quant-u-25099|))))
+  :qid |quant-u-25108|))))
 (check-sat)
 ; unsat
 (pop) ; 7
@@ -3308,7 +3308,7 @@
       (- (Map_apply (Map_apply new_lft@13@01 0) (inv@35@01 x)) (pTaken@37@01 x))
       $Perm.No))
   
-  :qid |quant-u-25100|))))
+  :qid |quant-u-25109|))))
 (check-sat)
 ; unsat
 (pop) ; 7
@@ -3550,7 +3550,7 @@
       (= (Map_apply (Map_apply new_lft@13@01 1) x@42@01) $Perm.No)
       (< $Perm.No (Map_apply (Map_apply new_lft@13@01 1) x@42@01))))
   
-  :qid |quant-u-25101|))))
+  :qid |quant-u-25110|))))
 (check-sat)
 ; unsat
 (pop) ; 7
@@ -3656,7 +3656,7 @@
       (pTaken@45@01 x))
     $Perm.No)
   
-  :qid |quant-u-25103|))))
+  :qid |quant-u-25112|))))
 (check-sat)
 ; unsat
 (pop) ; 7
@@ -3676,7 +3676,7 @@
       (- (Map_apply (Map_apply new_lft@13@01 1) (inv@43@01 x)) (pTaken@45@01 x))
       $Perm.No))
   
-  :qid |quant-u-25104|))))
+  :qid |quant-u-25113|))))
 (check-sat)
 ; unknown
 (pop) ; 7
@@ -3721,7 +3721,7 @@
         (pTaken@46@01 x))
       $Perm.No))
   
-  :qid |quant-u-25106|))))
+  :qid |quant-u-25115|))))
 (check-sat)
 ; unknown
 (pop) ; 7
@@ -3744,7 +3744,7 @@
         (pTaken@46@01 x))
       $Perm.No))
   
-  :qid |quant-u-25106|))))
+  :qid |quant-u-25115|))))
 (check-sat)
 ; unknown
 (pop) ; 7
@@ -3978,7 +3978,7 @@
       (= (Map_apply (Map_apply new_lft@13@01 1) x@47@01) $Perm.No)
       (< $Perm.No (Map_apply (Map_apply new_lft@13@01 1) x@47@01))))
   
-  :qid |quant-u-25107|))))
+  :qid |quant-u-25116|))))
 (check-sat)
 ; unsat
 (pop) ; 7
@@ -4084,7 +4084,7 @@
       (pTaken@50@01 x))
     $Perm.No)
   
-  :qid |quant-u-25109|))))
+  :qid |quant-u-25118|))))
 (check-sat)
 ; unsat
 (pop) ; 7
@@ -4104,7 +4104,7 @@
       (- (Map_apply (Map_apply new_lft@13@01 1) (inv@48@01 x)) (pTaken@50@01 x))
       $Perm.No))
   
-  :qid |quant-u-25110|))))
+  :qid |quant-u-25119|))))
 (check-sat)
 ; unknown
 (pop) ; 7
@@ -4149,7 +4149,7 @@
         (pTaken@51@01 x))
       $Perm.No))
   
-  :qid |quant-u-25112|))))
+  :qid |quant-u-25121|))))
 (check-sat)
 ; unknown
 (pop) ; 7
@@ -4172,7 +4172,7 @@
         (pTaken@51@01 x))
       $Perm.No))
   
-  :qid |quant-u-25112|))))
+  :qid |quant-u-25121|))))
 (check-sat)
 ; unknown
 (pop) ; 7
@@ -4368,7 +4368,7 @@
 (assert (forall (($t@60@01 $Snap)) (!
   (= (MWSF_apply mwsf@61@01 $t@60@01) ($Snap.combine $t@60@01 $Snap.unit))
   :pattern ((MWSF_apply mwsf@61@01 $t@60@01))
-  :qid |quant-u-25113|)))
+  :qid |quant-u-25122|)))
 ; [eval] p / 2
 ; [eval] p / 2
 (pop) ; 3
@@ -4377,7 +4377,7 @@
 (assert (forall (($t@60@01 $Snap)) (!
   (= (MWSF_apply mwsf@61@01 $t@60@01) ($Snap.combine $t@60@01 $Snap.unit))
   :pattern ((MWSF_apply mwsf@61@01 $t@60@01))
-  :qid |quant-u-25114|)))
+  :qid |quant-u-25123|)))
 (assert true)
 ; [eval] p / 2
 (push) ; 4

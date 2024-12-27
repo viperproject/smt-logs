@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 02:47:15
+// Date:         2024-12-27 10:56:07
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/adt/example_3.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/adt/example_3-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -271,8 +271,8 @@ function  len#triggerStateless(xs: ListDomainType): int;
 procedure len#definedness(xs: ListDomainType) returns (Result: int)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -298,8 +298,8 @@ procedure len#definedness(xs: ListDomainType) returns (Result: int)
     Result := (if (List_tag(xs): int) == 1 then 0 else 1 + len_3(Heap, (get_List_tail(xs): ListDomainType)));
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of len might not hold. Assertion result >= 0 might not hold. (example_3.vpr@15.13--15.24) [222643]"}
       Result >= 0;
 }
@@ -378,12 +378,12 @@ procedure at#definedness(xs: ListDomainType, pos: int) returns (Result: int)
 procedure prepend(xs: ListDomainType, v_2: int) returns (ys: ListDomainType)
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -394,8 +394,8 @@ procedure prepend(xs: ListDomainType, v_2: int) returns (ys: ListDomainType)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -414,8 +414,8 @@ procedure prepend(xs: ListDomainType, v_2: int) returns (ys: ListDomainType)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of prepend might not hold. Assertion get_List_head(ys) == v might not hold. (example_3.vpr@8.13--8.25) [222644]"}
       (get_List_head(ys): int) == v_2;
     assert {:msg "  Postcondition of prepend might not hold. Assertion get_List_tail(ys) == xs might not hold. (example_3.vpr@9.13--9.26) [222645]"}
@@ -429,14 +429,14 @@ procedure prepend(xs: ListDomainType, v_2: int) returns (ys: ListDomainType)
 procedure linear_search(xs: ListDomainType, key_1: int) returns (pos: int)
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var k_1: int;
   var ys: ListDomainType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var k_4_1: int;
   var k_6: int;
   var k_2: int;
@@ -463,8 +463,8 @@ procedure linear_search(xs: ListDomainType, key_1: int) returns (pos: int)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -543,8 +543,8 @@ procedure linear_search(xs: ListDomainType, key_1: int) returns (pos: int)
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Loop invariant 0 <= pos might not hold on entry. Assertion 0 <= pos might not hold. (example_3.vpr@44.19--44.27) [222646]"}
           0 <= pos;
         assert {:msg "  Loop invariant pos + len(ys) == len(xs) might not hold on entry. Assertion pos + len(ys) == len(xs) might not hold. (example_3.vpr@45.19--45.43) [222647]"}
@@ -691,8 +691,8 @@ procedure linear_search(xs: ListDomainType, key_1: int) returns (pos: int)
           // -- Translating statement: assert (forall k: Int ::
   //     { at(ys, k) }
   //     0 <= k ==> at(old_ys, k + 1) == at(ys, k)) -- example_3.vpr@53.9--53.69
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             
             // -- Check definedness of (forall k: Int :: { at(ys, k) } 0 <= k ==> at(old_ys, k + 1) == at(ys, k))
               if (*) {
@@ -722,8 +722,8 @@ procedure linear_search(xs: ListDomainType, key_1: int) returns (pos: int)
             assume state(Heap, Mask);
           
           // -- Translating statement: assert at(old_ys, 0) == at(xs, pos) -- example_3.vpr@54.9--54.44
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             
             // -- Check definedness of at(old_ys, 0) == at(xs, pos)
               if (*) {
@@ -742,8 +742,8 @@ procedure linear_search(xs: ListDomainType, key_1: int) returns (pos: int)
             pos := pos + 1;
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Loop invariant 0 <= pos might not be preserved. Assertion 0 <= pos might not hold. (example_3.vpr@44.19--44.27) [222653]"}
           0 <= pos;
         assert {:msg "  Loop invariant pos + len(ys) == len(xs) might not be preserved. Assertion pos + len(ys) == len(xs) might not hold. (example_3.vpr@45.19--45.43) [222654]"}
@@ -802,8 +802,8 @@ procedure linear_search(xs: ListDomainType, key_1: int) returns (pos: int)
     assume state(Heap, Mask);
   
   // -- Translating statement: assert !(List_tag(ys) == 1) ==> at(ys, 0) == key -- example_3.vpr@58.5--58.42
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     if (!((List_tag(ys): int) == 1)) {
       
       // -- Check definedness of at(ys, 0) == key
@@ -817,8 +817,8 @@ procedure linear_search(xs: ListDomainType, key_1: int) returns (pos: int)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of linear_search might not hold. Assertion 0 <= pos might not hold. (example_3.vpr@35.13--35.39) [222659]"}
       0 <= pos;
     assert {:msg "  Postcondition of linear_search might not hold. Assertion pos <= len(xs) might not hold. (example_3.vpr@35.13--35.39) [222660]"}

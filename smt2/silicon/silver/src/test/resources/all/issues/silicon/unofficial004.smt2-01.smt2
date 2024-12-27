@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-27 02:00:21
+; Started: 2024-12-27 10:09:27
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -224,8 +224,8 @@
 (declare-const f@8@01 Int)
 (declare-const parX@9@01 $Ref)
 (declare-const parK@10@01 $Perm)
-(assert (not (= tk1@6@01 tk1@5@01)))
 (assert (not (= tk1@6@01 this@2@01)))
+(assert (not (= tk1@6@01 tk1@5@01)))
 ; [exec]
 ; tk1.joinable$ := true
 ; [exec]

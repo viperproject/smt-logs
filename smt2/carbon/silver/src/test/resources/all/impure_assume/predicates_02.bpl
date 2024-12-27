@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 02:30:27
+// Date:         2024-12-27 10:39:23
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/impure_assume/predicates_02.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/impure_assume/predicates_02-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -240,15 +240,15 @@ axiom (forall Heap: HeapType, x: Ref, i: int ::
 procedure test01(b_24: bool) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var x: Ref;
   var y: Ref;
   var perm: Perm;
   var i: int;
   var j_9: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -258,8 +258,8 @@ procedure test01(b_24: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[x, $allocated];
@@ -309,15 +309,15 @@ procedure test01(b_24: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert perm(P(x, i)) == 1 / 3 + (b ? 1 / 4 : none) -- predicates_02.vpr@18.3--18.49
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion perm(P(x, i)) == 1 / 3 + (b ? 1 / 4 : none) might not hold. (predicates_02.vpr@18.10--18.49) [150183]"}
       Mask[null, P(x, i)] == 1 / 3 + (if b_24 then 1 / 4 else NoPerm);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert b ==> y == x && j == i -- predicates_02.vpr@19.3--19.32
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     if (b_24) {
       assert {:msg "  Assert might fail. Assertion y == x might not hold. (predicates_02.vpr@19.10--19.32) [150184]"}
         y == x;
@@ -330,15 +330,15 @@ procedure test01(b_24: bool) returns ()
     if (x != y || i != j_9) {
       
       // -- Translating statement: assert !b -- predicates_02.vpr@22.5--22.14
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Assert might fail. Assertion !b might not hold. (predicates_02.vpr@22.12--22.14) [150186]"}
           !b_24;
         assume state(Heap, Mask);
       
       // -- Translating statement: assert perm(P(y, j)) == none -- predicates_02.vpr@23.5--23.33
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Assert might fail. Assertion perm(P(y, j)) == none might not hold. (predicates_02.vpr@23.12--23.33) [150187]"}
           Mask[null, P(y, j_9)] == NoPerm;
         assume state(Heap, Mask);
@@ -353,15 +353,15 @@ procedure test01(b_24: bool) returns ()
 procedure test01_p1(b_24: bool) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var x: Ref;
   var y: Ref;
   var perm: Perm;
   var i: int;
   var j_9: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -371,8 +371,8 @@ procedure test01_p1(b_24: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[x, $allocated];
@@ -422,15 +422,15 @@ procedure test01_p1(b_24: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert perm(P(x, i)) == 1 / 3 + (b ? 1 / 4 : none) -- predicates_02.vpr@18.3--18.49
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion perm(P(x, i)) == 1 / 3 + (b ? 1 / 4 : none) might not hold. (predicates_02.vpr@18.10--18.49) [150190]"}
       Mask[null, P(x, i)] == 1 / 3 + (if b_24 then 1 / 4 else NoPerm);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert b ==> y == x && j == i -- predicates_02.vpr@19.3--19.32
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     if (b_24) {
       assert {:msg "  Assert might fail. Assertion y == x might not hold. (predicates_02.vpr@19.10--19.32) [150191]"}
         y == x;
@@ -443,15 +443,15 @@ procedure test01_p1(b_24: bool) returns ()
     if (x != y || i != j_9) {
       
       // -- Translating statement: assert !b -- predicates_02.vpr@22.5--22.14
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Assert might fail. Assertion !b might not hold. (predicates_02.vpr@22.12--22.14) [150193]"}
           !b_24;
         assume state(Heap, Mask);
       
       // -- Translating statement: assert perm(P(y, j)) == none -- predicates_02.vpr@23.5--23.33
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Assert might fail. Assertion perm(P(y, j)) == none might not hold. (predicates_02.vpr@23.12--23.33) [150194]"}
           Mask[null, P(y, j_9)] == NoPerm;
         assume state(Heap, Mask);
@@ -469,8 +469,8 @@ procedure test01_p1(b_24: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- predicates_02.vpr@38.3--38.15
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion false might not hold. (predicates_02.vpr@38.10--38.15) [150195]"}
       false;
     assume state(Heap, Mask);
@@ -483,15 +483,15 @@ procedure test01_p1(b_24: bool) returns ()
 procedure test01_p2(b_24: bool) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var x: Ref;
   var y: Ref;
   var perm: Perm;
   var i: int;
   var j_9: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -501,8 +501,8 @@ procedure test01_p2(b_24: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[x, $allocated];
@@ -552,15 +552,15 @@ procedure test01_p2(b_24: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert perm(P(x, i)) == 1 / 3 + (b ? 1 / 4 : none) -- predicates_02.vpr@18.3--18.49
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion perm(P(x, i)) == 1 / 3 + (b ? 1 / 4 : none) might not hold. (predicates_02.vpr@18.10--18.49) [150198]"}
       Mask[null, P(x, i)] == 1 / 3 + (if b_24 then 1 / 4 else NoPerm);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert b ==> y == x && j == i -- predicates_02.vpr@19.3--19.32
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     if (b_24) {
       assert {:msg "  Assert might fail. Assertion y == x might not hold. (predicates_02.vpr@19.10--19.32) [150199]"}
         y == x;
@@ -573,15 +573,15 @@ procedure test01_p2(b_24: bool) returns ()
     if (x != y || i != j_9) {
       
       // -- Translating statement: assert !b -- predicates_02.vpr@22.5--22.14
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Assert might fail. Assertion !b might not hold. (predicates_02.vpr@22.12--22.14) [150201]"}
           !b_24;
         assume state(Heap, Mask);
       
       // -- Translating statement: assert perm(P(y, j)) == none -- predicates_02.vpr@23.5--23.33
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Assert might fail. Assertion perm(P(y, j)) == none might not hold. (predicates_02.vpr@23.12--23.33) [150202]"}
           Mask[null, P(y, j_9)] == NoPerm;
         assume state(Heap, Mask);
@@ -599,8 +599,8 @@ procedure test01_p2(b_24: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- predicates_02.vpr@45.3--45.15
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion false might not hold. (predicates_02.vpr@45.10--45.15) [150203]"}
       false;
     assume state(Heap, Mask);
@@ -613,15 +613,15 @@ procedure test01_p2(b_24: bool) returns ()
 procedure test01_p3(b_24: bool) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var x: Ref;
   var y: Ref;
   var perm: Perm;
   var i: int;
   var j_9: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -631,8 +631,8 @@ procedure test01_p3(b_24: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[x, $allocated];
@@ -682,15 +682,15 @@ procedure test01_p3(b_24: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert perm(P(x, i)) == 1 / 3 + (b ? 1 / 4 : none) -- predicates_02.vpr@18.3--18.49
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion perm(P(x, i)) == 1 / 3 + (b ? 1 / 4 : none) might not hold. (predicates_02.vpr@18.10--18.49) [150206]"}
       Mask[null, P(x, i)] == 1 / 3 + (if b_24 then 1 / 4 else NoPerm);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert b ==> y == x && j == i -- predicates_02.vpr@19.3--19.32
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     if (b_24) {
       assert {:msg "  Assert might fail. Assertion y == x might not hold. (predicates_02.vpr@19.10--19.32) [150207]"}
         y == x;
@@ -703,15 +703,15 @@ procedure test01_p3(b_24: bool) returns ()
     if (x != y || i != j_9) {
       
       // -- Translating statement: assert !b -- predicates_02.vpr@22.5--22.14
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Assert might fail. Assertion !b might not hold. (predicates_02.vpr@22.12--22.14) [150209]"}
           !b_24;
         assume state(Heap, Mask);
       
       // -- Translating statement: assert perm(P(y, j)) == none -- predicates_02.vpr@23.5--23.33
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Assert might fail. Assertion perm(P(y, j)) == none might not hold. (predicates_02.vpr@23.12--23.33) [150210]"}
           Mask[null, P(y, j_9)] == NoPerm;
         assume state(Heap, Mask);
@@ -729,8 +729,8 @@ procedure test01_p3(b_24: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- predicates_02.vpr@52.3--52.15
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion false might not hold. (predicates_02.vpr@52.10--52.15) [150211]"}
       false;
     assume state(Heap, Mask);
@@ -743,15 +743,15 @@ procedure test01_p3(b_24: bool) returns ()
 procedure test01_p4(b_24: bool) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var x: Ref;
   var y: Ref;
   var perm: Perm;
   var i: int;
   var j_9: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -761,8 +761,8 @@ procedure test01_p4(b_24: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[x, $allocated];
@@ -812,15 +812,15 @@ procedure test01_p4(b_24: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert perm(P(x, i)) == 1 / 3 + (b ? 1 / 4 : none) -- predicates_02.vpr@18.3--18.49
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion perm(P(x, i)) == 1 / 3 + (b ? 1 / 4 : none) might not hold. (predicates_02.vpr@18.10--18.49) [150214]"}
       Mask[null, P(x, i)] == 1 / 3 + (if b_24 then 1 / 4 else NoPerm);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert b ==> y == x && j == i -- predicates_02.vpr@19.3--19.32
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     if (b_24) {
       assert {:msg "  Assert might fail. Assertion y == x might not hold. (predicates_02.vpr@19.10--19.32) [150215]"}
         y == x;
@@ -833,15 +833,15 @@ procedure test01_p4(b_24: bool) returns ()
     if (x != y || i != j_9) {
       
       // -- Translating statement: assert !b -- predicates_02.vpr@22.5--22.14
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Assert might fail. Assertion !b might not hold. (predicates_02.vpr@22.12--22.14) [150217]"}
           !b_24;
         assume state(Heap, Mask);
       
       // -- Translating statement: assert perm(P(y, j)) == none -- predicates_02.vpr@23.5--23.33
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Assert might fail. Assertion perm(P(y, j)) == none might not hold. (predicates_02.vpr@23.12--23.33) [150218]"}
           Mask[null, P(y, j_9)] == NoPerm;
         assume state(Heap, Mask);
@@ -859,8 +859,8 @@ procedure test01_p4(b_24: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- predicates_02.vpr@59.3--59.15
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion false might not hold. (predicates_02.vpr@59.10--59.15) [150219]"}
       false;
     assume state(Heap, Mask);

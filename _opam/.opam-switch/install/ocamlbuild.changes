@@ -1,0 +1,36 @@
+opam-version: "2.0"
+added: [
+  "bin/ocamlbuild" {"F:cf90f5372cb7b25eb4afe46906b6e221"}
+  "bin/ocamlbuild.byte" {"F:f0a6b9a2653e8d89d4d4a64879a4a6e7"}
+  "bin/ocamlbuild.native" {"F:cf90f5372cb7b25eb4afe46906b6e221"}
+  "doc/ocamlbuild" {"D"}
+  "doc/ocamlbuild/Changes" {"F:e87bba96adcee1ec593f8f855a11b0dc"}
+  "doc/ocamlbuild/LICENSE" {"F:5123b1988300c0d24c79e04f09d86dc0"}
+  "doc/ocamlbuild/Readme.md" {"F:63d12973587bdbec3346d8d118dfa643"}
+  "lib/ocamlbuild" {"D"}
+  "lib/ocamlbuild/META" {"F:4a859c16b57fcdcb79956d420960c6b4"}
+  "lib/ocamlbuild/ocamlbuild.cmo" {"F:d8c86e91664a4ef97bc580768b9e8bf8"}
+  "lib/ocamlbuild/ocamlbuild.cmx" {"F:712fe116cc0d0e1e57365eb648ba8a08"}
+  "lib/ocamlbuild/ocamlbuild.o" {"F:de364504d356ba30effbdecce8ae0f08"}
+  "lib/ocamlbuild/ocamlbuild_pack.cmi" {"F:bf411f8ebc4ea338278fa1efd7aed856"}
+  "lib/ocamlbuild/ocamlbuild_pack.cmx" {"F:4006d781441ce2bf3bf44108e4cf21d3"}
+  "lib/ocamlbuild/ocamlbuild_plugin.cmi"
+    {"F:038ac14f9f4a2e8224be413e5d04f442"}
+  "lib/ocamlbuild/ocamlbuild_plugin.cmx"
+    {"F:8f026bb34dfbda8239742c919846c3eb"}
+  "lib/ocamlbuild/ocamlbuild_plugin.o" {"F:9ceaa7084d83cec11cd45a67d8583af2"}
+  "lib/ocamlbuild/ocamlbuild_unix_plugin.cmi"
+    {"F:67349e8fe77f847de43b672aad5e1a2c"}
+  "lib/ocamlbuild/ocamlbuild_unix_plugin.cmx"
+    {"F:e5c7accd291292d74761fe3971cc029d"}
+  "lib/ocamlbuild/ocamlbuild_unix_plugin.o"
+    {"F:d3edf81a8dc2dfd6a0eacce5fa2568ab"}
+  "lib/ocamlbuild/ocamlbuildlib.a" {"F:d3ae4a47e25d32341f1c747a67fe65d2"}
+  "lib/ocamlbuild/ocamlbuildlib.cma" {"F:d113a1326c20d91d9ff417a6769f7fe0"}
+  "lib/ocamlbuild/ocamlbuildlib.cmxa" {"F:452c92806bdcfe882e193f01c04a2297"}
+  "lib/ocamlbuild/opam" {"F:3eb29dac9636f579a6e66f2f8c1c597e"}
+  "lib/ocamlbuild/signatures.cmi" {"F:f154b1b3378830b8a05c2da0c2c12eaf"}
+  "lib/ocamlbuild/signatures.cmti" {"F:2954f48441aa89085d45f194e2de6b77"}
+  "lib/ocamlbuild/signatures.mli" {"F:3041dc65d6da597ca61004d1feb3c2bc"}
+  "man/man1/ocamlbuild.1" {"F:f037772d2800ebf0045b9ec92e554ead"}
+]

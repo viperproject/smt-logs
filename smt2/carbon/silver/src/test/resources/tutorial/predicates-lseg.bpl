@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 02:18:13
+// Date:         2024-12-27 10:27:11
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/tutorial/predicates-lseg.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/tutorial/predicates-lseg-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -632,12 +632,12 @@ procedure findFirst(first_1: Ref, last: Ref, values: (Seq int)) returns (value_1
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newVersion: FrameType;
   var ExhaleHeap: HeapType;
   
@@ -661,8 +661,8 @@ procedure findFirst(first_1: Ref, last: Ref, values: (Seq int)) returns (value_1
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -679,8 +679,8 @@ procedure findFirst(first_1: Ref, last: Ref, values: (Seq int)) returns (value_1
   // -- Translating statement: unfold acc(lseg(first, last, values), write) -- predicates-lseg.vpr@22.3--22.35
     assume lseg#trigger(Heap, lseg(first_1, last, values));
     assume Heap[null, lseg(first_1, last, values)] == FrameFragment((if first_1 != last then CombineFrames(FrameFragment(Heap[first_1, elem_1]), CombineFrames(FrameFragment(Heap[first_1, next]), Heap[null, lseg(Heap[first_1, next], last, Seq#Drop(values, 1))])) else EmptyFrame));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding lseg(first, last, values) might fail. There might be insufficient permission to access lseg(first, last, values) (predicates-lseg.vpr@22.3--22.35) [119993]"}
@@ -731,8 +731,8 @@ procedure findFirst(first_1: Ref, last: Ref, values: (Seq int)) returns (value_1
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of findFirst might not hold. There might be insufficient permission to access lseg(second, last, values[1..]) (predicates-lseg.vpr@20.12--20.43) [119999]"}
@@ -753,13 +753,13 @@ procedure prependFails(first_1: Ref, last: Ref, values: (Seq int), toAdd: int) r
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var freshObj: Ref;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var freshVersion: FrameType;
   var newPMask: PMaskType;
   var ExhaleHeap: HeapType;
@@ -782,8 +782,8 @@ procedure prependFails(first_1: Ref, last: Ref, values: (Seq int), toAdd: int) r
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -819,8 +819,8 @@ procedure prependFails(first_1: Ref, last: Ref, values: (Seq int), toAdd: int) r
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(lseg(r, last, Seq(toAdd) ++ values), write) -- predicates-lseg.vpr@37.7--37.45
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     if (r_1 != last) {
       perm := FullPerm;
       if (perm != NoPerm) {
@@ -873,8 +873,8 @@ procedure prependFails(first_1: Ref, last: Ref, values: (Seq int), toAdd: int) r
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of prependFails might not hold. There might be insufficient permission to access lseg(r, last, Seq(toAdd) ++ values) (predicates-lseg.vpr@30.11--30.46) [120012]"}
@@ -895,13 +895,13 @@ procedure prepend(first_1: Ref, last: Ref, values: (Seq int), toAdd: int) return
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var freshObj: Ref;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var freshVersion: FrameType;
   var newPMask: PMaskType;
   var ExhaleHeap: HeapType;
@@ -924,8 +924,8 @@ procedure prepend(first_1: Ref, last: Ref, values: (Seq int), toAdd: int) return
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -961,15 +961,15 @@ procedure prepend(first_1: Ref, last: Ref, values: (Seq int), toAdd: int) return
     assume state(Heap, Mask);
   
   // -- Translating statement: assert Seq(toAdd) ++ values[1..] == values -- predicates-lseg.vpr@47.7--47.51
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion Seq(toAdd) ++ values[1..] == values might not hold. (predicates-lseg.vpr@47.14--47.51) [120015]"}
       Seq#Equal(Seq#Drop(Seq#Append(Seq#Singleton(toAdd), values), 1), values);
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(lseg(r, last, Seq(toAdd) ++ values), write) -- predicates-lseg.vpr@48.7--48.45
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     if (r_1 != last) {
       perm := FullPerm;
       if (perm != NoPerm) {
@@ -1022,8 +1022,8 @@ procedure prepend(first_1: Ref, last: Ref, values: (Seq int), toAdd: int) return
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of prepend might not hold. There might be insufficient permission to access lseg(r, last, Seq(toAdd) ++ values) (predicates-lseg.vpr@42.11--42.46) [120026]"}

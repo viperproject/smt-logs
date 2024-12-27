@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 02:08:30
+// Date:         2024-12-27 10:17:30
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/third_party/blom02.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/third_party/blom02-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -625,8 +625,8 @@ function  Map__EMPTY#triggerStateless(): int;
 procedure Map__EMPTY#definedness() returns (Result: int)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -638,8 +638,8 @@ procedure Map__EMPTY#definedness() returns (Result: int)
     Result := -1;
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of Map__EMPTY might not hold. Assertion result == -1 might not hold. (blom02.vpr@16.11--16.23) [40415]"}
       Result == -1;
 }
@@ -689,8 +689,8 @@ function  Map__DELETED#triggerStateless(): int;
 procedure Map__DELETED#definedness() returns (Result: int)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -702,8 +702,8 @@ procedure Map__DELETED#definedness() returns (Result: int)
     Result := -2;
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of Map__DELETED might not hold. Assertion result == -2 might not hold. (blom02.vpr@22.11--22.23) [40416]"}
       Result == -2;
 }
@@ -800,8 +800,8 @@ procedure Map__indexOfLoop#definedness(diz: Ref, hash: int, ignoreDeleted: bool,
   var j_6: int;
   var i3_6: int;
   var i1_12: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var i_8_2: int;
   var j_8: int;
   var i_10_1: int;
@@ -1103,8 +1103,8 @@ procedure Map__indexOfLoop#definedness(diz: Ref, hash: int, ignoreDeleted: bool,
           Seq#Length(Heap[diz, Map__keys]) != 0;
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           assert {:msg "  Precondition of function Map__indexOfLoop might not hold. Assertion diz != null might not hold. (blom02.vpr@44.30--44.105) [40464]"}
             diz != null;
           perm := FullPerm;
@@ -1230,8 +1230,8 @@ procedure Map__indexOfLoop#definedness(diz: Ref, hash: int, ignoreDeleted: bool,
     Result := (if cap <= 0 then Map__EMPTY(Heap) else Map__indexOfLoop(Heap, diz, (hash + 1) mod Seq#Length(Heap[diz, Map__keys]), ignoreDeleted, cap - 1));
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of result == Map__EMPTY() || result >= 0 && result < |diz.Map__keys|
       if (*) {
@@ -1255,14 +1255,14 @@ procedure Map__indexOfLoop#definedness(diz: Ref, hash: int, ignoreDeleted: bool,
 procedure Map__Map(capacity: int) returns (sys__result: Ref)
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var diz: Ref;
   var freshObj: Ref;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1273,8 +1273,8 @@ procedure Map__Map(capacity: int) returns (sys__result: Ref)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1303,8 +1303,8 @@ procedure Map__Map(capacity: int) returns (sys__result: Ref)
     assume state(Heap, Mask);
   
   // -- Translating statement: assert sys__result != null -- blom02.vpr@53.3--53.29
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (blom02.vpr@53.10--53.29) [40482]"}
       sys__result != null;
     assume state(Heap, Mask);
@@ -1315,8 +1315,8 @@ procedure Map__Map(capacity: int) returns (sys__result: Ref)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of Map__Map might not hold. Assertion sys__result != null might not hold. (blom02.vpr@48.11--48.30) [40483]"}
       sys__result != null;
 }

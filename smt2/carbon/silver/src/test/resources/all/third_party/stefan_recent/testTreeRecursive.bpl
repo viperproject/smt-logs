@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 02:33:57
+// Date:         2024-12-27 10:42:53
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/third_party/stefan_recent/testTreeRecursive.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/third_party/stefan_recent/testTreeRecursive-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -602,8 +602,8 @@ procedure Tree__contents#definedness(t_2: Ref) returns (Result: (Seq int))
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var newPMask: PMaskType;
   
@@ -631,8 +631,8 @@ procedure Tree__contents#definedness(t_2: Ref) returns (Result: (Seq int))
         UnfoldingMask := Mask;
         assume Tree__state#trigger(UnfoldingHeap, Tree__state(t_2));
         assume UnfoldingHeap[null, Tree__state(t_2)] == CombineFrames(FrameFragment(UnfoldingHeap[t_2, Tree__data]), CombineFrames(FrameFragment(UnfoldingHeap[t_2, Tree__left]), CombineFrames(FrameFragment(UnfoldingHeap[t_2, Tree__right]), CombineFrames(FrameFragment((if UnfoldingHeap[t_2, Tree__left] != null then UnfoldingHeap[null, Tree__state(UnfoldingHeap[t_2, Tree__left])] else EmptyFrame)), FrameFragment((if UnfoldingHeap[t_2, Tree__right] != null then UnfoldingHeap[null, Tree__state(UnfoldingHeap[t_2, Tree__right])] else EmptyFrame))))));
-        ExhaleWellDef0Mask := UnfoldingMask;
         ExhaleWellDef0Heap := UnfoldingHeap;
+        ExhaleWellDef0Mask := UnfoldingMask;
         perm := FullPerm;
         assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Tree__state(t) (testTreeRecursive.vpr@10.1--15.2) [178972]"}
           NoPerm < perm ==> NoPerm < UnfoldingMask[null, Tree__state(t_2)];
@@ -669,8 +669,8 @@ procedure Tree__contents#definedness(t_2: Ref) returns (Result: (Seq int))
           HasDirectPerm(UnfoldingMask, t_2, Tree__left);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
+          ExhaleWellDef0Mask := UnfoldingMask;
           if (UnfoldingHeap[t_2, Tree__left] != null) {
             perm := FullPerm;
             assert {:msg "  Precondition of function Tree__contents might not hold. There might be insufficient permission to access Tree__state(t.Tree__left) (testTreeRecursive.vpr@14.70--14.98) [178974]"}
@@ -692,8 +692,8 @@ procedure Tree__contents#definedness(t_2: Ref) returns (Result: (Seq int))
           HasDirectPerm(UnfoldingMask, t_2, Tree__right);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
+          ExhaleWellDef0Mask := UnfoldingMask;
           if (UnfoldingHeap[t_2, Tree__right] != null) {
             perm := FullPerm;
             assert {:msg "  Precondition of function Tree__contents might not hold. There might be insufficient permission to access Tree__state(t.Tree__right) (testTreeRecursive.vpr@14.123--14.152) [178977]"}
@@ -737,8 +737,8 @@ procedure Tree__contents#definedness(t_2: Ref) returns (Result: (Seq int))
     Result := (if t_2 == null then (Seq#Empty(): Seq int) else Seq#Append(Seq#Append(Tree__contents(Heap, Heap[t_2, Tree__left]), Seq#Singleton(Heap[t_2, Tree__data])), Tree__contents(Heap, Heap[t_2, Tree__right])));
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     if (t_2 != null) {
       assert {:msg "  Postcondition of Tree__contents might not hold. Assertion |result| > 0 might not hold. (testTreeRecursive.vpr@12.11--12.41) [178978]"}
         Seq#Length(Result) > 0;
@@ -842,12 +842,12 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, t_2: Ref) returns (sys
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var __flatten_1: Ref;
   var __flatten_2: Ref;
@@ -855,8 +855,8 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, t_2: Ref) returns (sys
   var __flatten_4: Ref;
   var __flatten_7: Ref;
   var newVersion: FrameType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
   var PreCallHeap: HeapType;
@@ -890,8 +890,8 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, t_2: Ref) returns (sys
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -908,8 +908,8 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, t_2: Ref) returns (sys
     // -- Check definedness of Tree__contents(sys__result) == old(Tree__contents(t))[1..]
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
+        ExhaleWellDef0Mask := PostMask;
         if (sys__result != null) {
           perm := FullPerm;
           assert {:msg "  Precondition of function Tree__contents might not hold. There might be insufficient permission to access Tree__state(sys__result) (testTreeRecursive.vpr@27.11--27.38) [178983]"}
@@ -924,8 +924,8 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, t_2: Ref) returns (sys
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := oldMask;
         ExhaleWellDef0Heap := oldHeap;
+        ExhaleWellDef0Mask := oldMask;
         if (t_2 != null) {
           perm := FullPerm;
           assert {:msg "  Precondition of function Tree__contents might not hold. There might be insufficient permission to access Tree__state(t) (testTreeRecursive.vpr@27.46--27.63) [178984]"}
@@ -951,8 +951,8 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, t_2: Ref) returns (sys
   // -- Translating statement: unfold acc(Tree__state(t), write) -- testTreeRecursive.vpr@34.3--34.36
     assume Tree__state#trigger(Heap, Tree__state(t_2));
     assume Heap[null, Tree__state(t_2)] == CombineFrames(FrameFragment(Heap[t_2, Tree__data]), CombineFrames(FrameFragment(Heap[t_2, Tree__left]), CombineFrames(FrameFragment(Heap[t_2, Tree__right]), CombineFrames(FrameFragment((if Heap[t_2, Tree__left] != null then Heap[null, Tree__state(Heap[t_2, Tree__left])] else EmptyFrame)), FrameFragment((if Heap[t_2, Tree__right] != null then Heap[null, Tree__state(Heap[t_2, Tree__right])] else EmptyFrame))))));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Tree__state(t) might fail. There might be insufficient permission to access Tree__state(t) (testTreeRecursive.vpr@34.3--34.36) [178987]"}
@@ -1004,16 +1004,16 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, t_2: Ref) returns (sys
     if (Heap[t_2, Tree__left] == null) {
       
       // -- Translating statement: assert Tree__contents(t.Tree__left) == Seq[Int]() -- testTreeRecursive.vpr@36.5--36.54
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         
         // -- Check definedness of Tree__contents(t.Tree__left) == Seq[Int]()
           assert {:msg "  Assert might fail. There might be insufficient permission to access t.Tree__left (testTreeRecursive.vpr@36.12--36.54) [178994]"}
             HasDirectPerm(ExhaleWellDef0Mask, t_2, Tree__left);
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Mask := ExhaleWellDef0Mask;
             ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+            ExhaleWellDef1Mask := ExhaleWellDef0Mask;
             if (ExhaleWellDef0Heap[t_2, Tree__left] != null) {
               perm := FullPerm;
               assert {:msg "  Precondition of function Tree__contents might not hold. There might be insufficient permission to access Tree__state(t.Tree__left) (testTreeRecursive.vpr@36.12--36.40) [178995]"}
@@ -1046,8 +1046,8 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, t_2: Ref) returns (sys
   //   Tree__contents(sys__result) == old(Tree__contents(t))[1..] -- testTreeRecursive.vpr@39.5--39.140
         AssertHeap := Heap;
         AssertMask := Mask;
-        ExhaleWellDef0Mask := AssertMask;
         ExhaleWellDef0Heap := AssertHeap;
+        ExhaleWellDef0Mask := AssertMask;
         if (sys__result != null) {
           perm := FullPerm;
           if (perm != NoPerm) {
@@ -1060,8 +1060,8 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, t_2: Ref) returns (sys
         // -- Check definedness of Tree__contents(sys__result) == old(Tree__contents(t))[1..]
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Mask := ExhaleWellDef0Mask;
             ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+            ExhaleWellDef1Mask := ExhaleWellDef0Mask;
             if (sys__result != null) {
               perm := FullPerm;
               assert {:msg "  Precondition of function Tree__contents might not hold. There might be insufficient permission to access Tree__state(sys__result) (testTreeRecursive.vpr@39.81--39.108) [179000]"}
@@ -1076,8 +1076,8 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, t_2: Ref) returns (sys
           }
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Mask := oldMask;
             ExhaleWellDef1Heap := oldHeap;
+            ExhaleWellDef1Mask := oldMask;
             if (t_2 != null) {
               perm := FullPerm;
               assert {:msg "  Precondition of function Tree__contents might not hold. There might be insufficient permission to access Tree__state(t) (testTreeRecursive.vpr@39.116--39.133) [179001]"}
@@ -1107,8 +1107,8 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, t_2: Ref) returns (sys
         arg_t := Heap[t_2, Tree__left];
         
         // -- Exhaling precondition
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           assert {:msg "  The precondition of method Tree__del_min might not hold. Assertion diz != null might not hold. (testTreeRecursive.vpr@42.5--42.71) [179004]"}
             diz != null;
           assert {:msg "  The precondition of method Tree__del_min might not hold. Assertion current_thread_id >= 0 might not hold. (testTreeRecursive.vpr@42.5--42.71) [179005]"}
@@ -1156,8 +1156,8 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, t_2: Ref) returns (sys
         assume state(Heap, Mask);
       
       // -- Translating statement: fold acc(Tree__state(t), write) -- testTreeRecursive.vpr@46.5--46.36
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Folding Tree__state(t) might fail. There might be insufficient permission to access t.Tree__data (testTreeRecursive.vpr@46.5--46.36) [179011]"}
@@ -1243,8 +1243,8 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, t_2: Ref) returns (sys
   //   Tree__contents(sys__result) == old(Tree__contents(t))[1..] -- testTreeRecursive.vpr@49.5--49.140
         AssertHeap := Heap;
         AssertMask := Mask;
-        ExhaleWellDef0Mask := AssertMask;
         ExhaleWellDef0Heap := AssertHeap;
+        ExhaleWellDef0Mask := AssertMask;
         if (sys__result != null) {
           perm := FullPerm;
           if (perm != NoPerm) {
@@ -1257,8 +1257,8 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, t_2: Ref) returns (sys
         // -- Check definedness of Tree__contents(sys__result) == old(Tree__contents(t))[1..]
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Mask := ExhaleWellDef0Mask;
             ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+            ExhaleWellDef1Mask := ExhaleWellDef0Mask;
             if (sys__result != null) {
               perm := FullPerm;
               assert {:msg "  Precondition of function Tree__contents might not hold. There might be insufficient permission to access Tree__state(sys__result) (testTreeRecursive.vpr@49.81--49.108) [179023]"}
@@ -1273,8 +1273,8 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, t_2: Ref) returns (sys
           }
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Mask := oldMask;
             ExhaleWellDef1Heap := oldHeap;
+            ExhaleWellDef1Mask := oldMask;
             if (t_2 != null) {
               perm := FullPerm;
               assert {:msg "  Precondition of function Tree__contents might not hold. There might be insufficient permission to access Tree__state(t) (testTreeRecursive.vpr@49.116--49.133) [179024]"}
@@ -1296,8 +1296,8 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, t_2: Ref) returns (sys
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     if (sys__result != null) {
       perm := FullPerm;
       if (perm != NoPerm) {
@@ -1321,8 +1321,8 @@ procedure Tree__del_min(diz: Ref, current_thread_id: int, t_2: Ref) returns (sys
 procedure Tree__Tree(current_thread_id: int) returns (sys__result: Ref)
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var perm: Perm;
@@ -1332,8 +1332,8 @@ procedure Tree__Tree(current_thread_id: int) returns (sys__result: Ref)
   var __flatten_8: int;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -1349,8 +1349,8 @@ procedure Tree__Tree(current_thread_id: int) returns (sys__result: Ref)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1441,8 +1441,8 @@ procedure Tree__Tree(current_thread_id: int) returns (sys__result: Ref)
   //   (acc(sys__result.Tree__right, write) && sys__result.Tree__right == null))) -- testTreeRecursive.vpr@71.3--71.258
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
+    ExhaleWellDef0Mask := AssertMask;
     assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (testTreeRecursive.vpr@71.10--71.258) [179034]"}
       sys__result != null;
     perm := FullPerm;
@@ -1489,8 +1489,8 @@ procedure Tree__Tree(current_thread_id: int) returns (sys__result: Ref)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of Tree__Tree might not hold. Assertion sys__result != null might not hold. (testTreeRecursive.vpr@56.11--56.30) [179047]"}
       sys__result != null;
     perm := FullPerm;

@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-27 02:02:57
+; Started: 2024-12-27 10:12:00
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -235,11 +235,11 @@
 (assert (forall ((s@$ $Snap) (xs@0@00 list)) (!
   (= (f%limited s@$ xs@0@00) (f s@$ xs@0@00))
   :pattern ((f s@$ xs@0@00))
-  :qid |quant-u-26881|)))
+  :qid |quant-u-26890|)))
 (assert (forall ((s@$ $Snap) (xs@0@00 list)) (!
   (f%stateless xs@0@00)
   :pattern ((f%limited s@$ xs@0@00))
-  :qid |quant-u-26882|)))
+  :qid |quant-u-26891|)))
 (assert (forall ((s@$ $Snap) (xs@0@00 list)) (!
   (=>
     (f%precondition s@$ xs@0@00)
@@ -250,7 +250,7 @@
         (f%limited $Snap.unit (tail_Cons<list> xs@0@00))
         6)))
   :pattern ((f s@$ xs@0@00))
-  :qid |quant-u-26883|)))
+  :qid |quant-u-26892|)))
 (assert (forall ((s@$ $Snap) (xs@0@00 list)) (!
   (=>
     (f%precondition s@$ xs@0@00)
@@ -259,7 +259,7 @@
       (f%precondition $Snap.unit (tail_Cons<list> xs@0@00))
       true))
   :pattern ((f s@$ xs@0@00))
-  :qid |quant-u-26884|)))
+  :qid |quant-u-26893|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- f_termination_proof ----------

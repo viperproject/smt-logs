@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 02:36:36
+// Date:         2024-12-27 10:45:31
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0100.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0100-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -248,14 +248,14 @@ procedure Main$MonitorInvariant#definedness(this$_2: Ref) returns ()
 procedure Main$change(this: Ref, m_17: Ref, n: int) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var perm: Perm;
   var r$_15: Ref;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newVersion: FrameType;
   var ExhaleHeap: HeapType;
   
@@ -277,8 +277,8 @@ procedure Main$change(this: Ref, m_17: Ref, n: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -325,15 +325,15 @@ procedure Main$change(this: Ref, m_17: Ref, n: int) returns ()
   }
   
   // -- Translating statement: assert m != null -- 0100.vpr@23.3--23.19
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion m != null might not hold. (0100.vpr@23.10--23.19) [192285]"}
       m_17 != null;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert perm(m.mustReleaseBounded$) + perm(m.mustReleaseUnbounded$) == none -- 0100.vpr@25.3--25.77
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion perm(m.mustReleaseBounded$) + perm(m.mustReleaseUnbounded$) == none might not hold. (0100.vpr@25.10--25.77) [192286]"}
       Mask[m_17, mustReleaseBounded$] + Mask[m_17, mustReleaseUnbounded$] == NoPerm;
     assume state(Heap, Mask);
@@ -348,8 +348,8 @@ procedure Main$change(this: Ref, m_17: Ref, n: int) returns ()
   // -- Translating statement: unfold acc(Main$MonitorInvariant(m), write) -- 0100.vpr@27.3--27.46
     assume Main$MonitorInvariant#trigger(Heap, Main$MonitorInvariant(m_17));
     assume Heap[null, Main$MonitorInvariant(m_17)] == FrameFragment(Heap[m_17, Main$f]);
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Main$MonitorInvariant(m) might fail. There might be insufficient permission to access Main$MonitorInvariant(m) (0100.vpr@27.3--27.46) [192290]"}
@@ -384,8 +384,8 @@ procedure Main$change(this: Ref, m_17: Ref, n: int) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of Main$change might not hold. Assertion perm(m.mustReleaseBounded$) == none might not hold. (0100.vpr@18.11--18.54) [192294]"}
       Mask[m_17, mustReleaseBounded$] == NoPerm;
     assert {:msg "  Postcondition of Main$change might not hold. Assertion write - perm(m.mustReleaseBounded$) == write might not hold. (0100.vpr@19.11--19.63) [192295]"}

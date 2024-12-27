@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-27 01:56:34
+; Started: 2024-12-27 10:05:41
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -198,7 +198,7 @@
     (MWSF_apply mwsf@4@01 $t@3@01)
     ($Snap.combine ($Snap.first $t@3@01) ($SortWrappers.IntTo$Snap 1)))
   :pattern ((MWSF_apply mwsf@4@01 $t@3@01))
-  :qid |quant-u-20038|)))
+  :qid |quant-u-20049|)))
 (pop) ; 3
 (set-option :timeout 0)
 (push) ; 3
@@ -207,7 +207,7 @@
     (MWSF_apply mwsf@4@01 $t@3@01)
     ($Snap.combine ($Snap.first $t@3@01) ($SortWrappers.IntTo$Snap 1)))
   :pattern ((MWSF_apply mwsf@4@01 $t@3@01))
-  :qid |quant-u-20039|)))
+  :qid |quant-u-20050|)))
 (assert true)
 ; [exec]
 ; apply acc(x.f, 1 / 2) && x.f == 1 --* acc(x.f, 1 / 2) && acc(x.g, write)

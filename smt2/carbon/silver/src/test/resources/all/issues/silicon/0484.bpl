@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 02:44:32
+// Date:         2024-12-27 10:53:25
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0484.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0484-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -307,16 +307,16 @@ procedure treePerm#definedness(current: Ref) returns ()
 procedure insert_simpler(current: Ref, bool_val: bool) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var freshVersion: FrameType;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -333,8 +333,8 @@ procedure insert_simpler(current: Ref, bool_val: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale acc(current.left, write) -- 0484.vpr@13.3--13.27
     perm := FullPerm;
@@ -345,8 +345,8 @@ procedure insert_simpler(current: Ref, bool_val: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(treePerm_simpler(current), write) -- 0484.vpr@15.3--15.38
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     if (current != null) {
       perm := FullPerm;
       if (perm != NoPerm) {
@@ -374,8 +374,8 @@ procedure insert_simpler(current: Ref, bool_val: bool) returns ()
   
   // -- Translating statement: assert current != null ||
   //   (unfolding acc(treePerm_simpler(current), write) in true) -- 0484.vpr@17.3--18.72
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of current != null || (unfolding acc(treePerm_simpler(current), write) in true)
       if (!(current != null)) {
@@ -383,8 +383,8 @@ procedure insert_simpler(current: Ref, bool_val: bool) returns ()
         UnfoldingMask := ExhaleWellDef0Mask;
         assume treePerm_simpler#trigger(UnfoldingHeap, treePerm_simpler(current));
         assume UnfoldingHeap[null, treePerm_simpler(current)] == FrameFragment((if current != null then FrameFragment(UnfoldingHeap[current, left]) else EmptyFrame));
-        ExhaleWellDef1Mask := UnfoldingMask;
         ExhaleWellDef1Heap := UnfoldingHeap;
+        ExhaleWellDef1Mask := UnfoldingMask;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Assert might fail. There might be insufficient permission to access treePerm_simpler(current) (0484.vpr@18.5--18.72) [219290]"}
@@ -422,16 +422,16 @@ procedure insert(current: Ref, bool_val: bool) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newVersion: FrameType;
   var freshVersion: FrameType;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -452,14 +452,14 @@ procedure insert(current: Ref, bool_val: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: unfold acc(treePerm(current), write) -- 0484.vpr@34.3--34.39
     assume treePerm#trigger(Heap, treePerm(current));
     assume Heap[null, treePerm(current)] == FrameFragment((if current != null then CombineFrames(FrameFragment(Heap[current, left]), FrameFragment(Heap[current, right_1])) else EmptyFrame));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding treePerm(current) might fail. There might be insufficient permission to access treePerm(current) (0484.vpr@34.3--34.39) [219294]"}
@@ -486,8 +486,8 @@ procedure insert(current: Ref, bool_val: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(treePerm(current), write) -- 0484.vpr@35.3--35.37
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     if (current != null) {
       perm := FullPerm;
       if (perm != NoPerm) {
@@ -522,8 +522,8 @@ procedure insert(current: Ref, bool_val: bool) returns ()
   
   // -- Translating statement: assert bool_val == true ||
   //   (unfolding acc(treePerm(current), write) in true) -- 0484.vpr@36.3--38.12
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of bool_val == true || (unfolding acc(treePerm(current), write) in true)
       if (!bool_val) {
@@ -531,8 +531,8 @@ procedure insert(current: Ref, bool_val: bool) returns ()
         UnfoldingMask := ExhaleWellDef0Mask;
         assume treePerm#trigger(UnfoldingHeap, treePerm(current));
         assume UnfoldingHeap[null, treePerm(current)] == FrameFragment((if current != null then CombineFrames(FrameFragment(UnfoldingHeap[current, left]), FrameFragment(UnfoldingHeap[current, right_1])) else EmptyFrame));
-        ExhaleWellDef1Mask := UnfoldingMask;
         ExhaleWellDef1Heap := UnfoldingHeap;
+        ExhaleWellDef1Mask := UnfoldingMask;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Assert might fail. There might be insufficient permission to access treePerm(current) (0484.vpr@36.11--37.64) [219303]"}

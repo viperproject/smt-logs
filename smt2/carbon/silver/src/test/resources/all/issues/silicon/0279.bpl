@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 02:44:03
+// Date:         2024-12-27 10:52:55
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0279.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0279-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -530,14 +530,14 @@ procedure mark(g_1: (Set Ref)) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var n1_10: Ref;
   var n2_6: Ref;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var perm: Perm;
   var ExhaleHeap: HeapType;
   var n1_1_2: Ref;
@@ -594,22 +594,22 @@ procedure mark(g_1: (Set Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert (forall n1: Ref, n2: Ref ::
   //     { f(n1, n2) }
   //     (n1 in g) && (n2 in g) ==> f(n1, n2)) -- 0279.vpr@14.3--14.79
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall n1: Ref, n2: Ref :: { f(n1, n2) } (n1 in g) && (n2 in g) ==> f(n1, n2))
       if (*) {
         if (g_1[n1_10] && g_1[n2_6]) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Heap := ExhaleWellDef0Heap;
             ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+            ExhaleWellDef1Heap := ExhaleWellDef0Heap;
             perm := FullPerm;
             assert {:msg "  Precondition of function f might not hold. There might be insufficient permission to access n1.car (0279.vpr@14.71--14.79) [218200]"}
               NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[n1_10, car];
@@ -650,14 +650,14 @@ procedure mark2(g_1: (Set Ref)) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var n1_11: Ref;
   var n2_7: Ref;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var perm: Perm;
   var ExhaleHeap: HeapType;
   var n1_1_2: Ref;
@@ -714,8 +714,8 @@ procedure mark2(g_1: (Set Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert (forall n1: Ref, n2: Ref ::
   //     { (n1 in g), (n2 in g) }
@@ -723,16 +723,16 @@ procedure mark2(g_1: (Set Ref)) returns ()
   //     { (n2 in g), $(n1) }
   //     { $(n1), $(n2) }
   //     (n1 in g) && (n2 in g) ==> $(n1) && $(n2)) -- 0279.vpr@26.3--26.72
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall n1: Ref, n2: Ref :: { (n1 in g), (n2 in g) } { (n1 in g), $(n2) } { (n2 in g), $(n1) } { $(n1), $(n2) } (n1 in g) && (n2 in g) ==> $(n1) && $(n2))
       if (*) {
         if (g_1[n1_11] && g_1[n2_7]) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Heap := ExhaleWellDef0Heap;
             ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+            ExhaleWellDef1Heap := ExhaleWellDef0Heap;
             perm := FullPerm;
             assert {:msg "  Precondition of function $ might not hold. There might be insufficient permission to access n1.car (0279.vpr@26.58--26.63) [218204]"}
               NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[n1_11, car];
@@ -746,8 +746,8 @@ procedure mark2(g_1: (Set Ref)) returns ()
           if ($(Heap, n1_11)) {
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef1Heap := ExhaleWellDef0Heap;
               ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+              ExhaleWellDef1Heap := ExhaleWellDef0Heap;
               perm := FullPerm;
               assert {:msg "  Precondition of function $ might not hold. There might be insufficient permission to access n2.car (0279.vpr@26.67--26.72) [218205]"}
                 NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[n2_7, car];

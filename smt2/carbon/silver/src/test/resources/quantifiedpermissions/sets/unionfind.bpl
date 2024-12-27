@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 02:04:10
+// Date:         2024-12-27 10:13:11
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/sets/unionfind.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/sets/unionfind-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -475,15 +475,15 @@ procedure find#definedness(struct: Ref, this: Ref) returns (Result: Ref)
 {
   var wildcard: real where wildcard > NoPerm;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
   var QPMask: MaskType;
   var newPMask: PMaskType;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -507,8 +507,8 @@ procedure find#definedness(struct: Ref, this: Ref) returns (Result: Ref)
     // -- Check definedness of (this in allNodes(struct))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function allNodes might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@11.20--11.36) [2449]"}
           NoPerm < perm ==> NoPerm < Mask[null, inv(struct)];
@@ -529,8 +529,8 @@ procedure find#definedness(struct: Ref, this: Ref) returns (Result: Ref)
       UnfoldingMask := Mask;
       assume inv#trigger(UnfoldingHeap, inv(struct));
       assume UnfoldingHeap[null, inv(struct)] == CombineFrames(FrameFragment(UnfoldingHeap[struct, nodes]), FrameFragment(inv#condqp1(UnfoldingHeap, struct)));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access inv(struct) (unionfind.vpr@8.1--16.2) [2450]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, inv(struct)];
@@ -587,8 +587,8 @@ procedure find#definedness(struct: Ref, this: Ref) returns (Result: Ref)
           HasDirectPerm(UnfoldingMask, this, parent);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := UnfoldingHeap;
           ExhaleWellDef0Mask := UnfoldingMask;
+          ExhaleWellDef0Heap := UnfoldingHeap;
           assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@15.72--15.97) [2454]"}
             struct != null;
           assert {:msg "  Precondition of function find might not hold. Assertion this.parent != null might not hold. (unionfind.vpr@15.72--15.97) [2455]"}
@@ -629,16 +629,16 @@ procedure find#definedness(struct: Ref, this: Ref) returns (Result: Ref)
     Result := (if this == Heap[this, parent] then this else find(Heap, struct, Heap[this, parent]));
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of find might not hold. Assertion result != null might not hold. (unionfind.vpr@12.11--12.25) [2458]"}
       Result != null;
     
     // -- Check definedness of (result in allNodes(struct))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function allNodes might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@13.21--13.37) [2459]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, inv(struct)];
@@ -696,8 +696,8 @@ procedure allNodes#definedness(this: Ref) returns (Result: (Set Ref))
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var QPMask: MaskType;
   var newPMask: PMaskType;
   
@@ -722,8 +722,8 @@ procedure allNodes#definedness(this: Ref) returns (Result: (Set Ref))
       UnfoldingMask := Mask;
       assume inv#trigger(UnfoldingHeap, inv(this));
       assume UnfoldingHeap[null, inv(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, nodes]), FrameFragment(inv#condqp1(UnfoldingHeap, this)));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access inv(this) (unionfind.vpr@119.1--123.2) [2461]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, inv(this)];
@@ -933,12 +933,12 @@ procedure add(struct: Ref, this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var o_17: Ref;
   var newVersion: FrameType;
@@ -948,8 +948,8 @@ procedure add(struct: Ref, this: Ref) returns ()
   var newPMask: PMaskType;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var x_2: Ref;
   var x_1: Ref;
   var o_21: Ref;
@@ -985,8 +985,8 @@ procedure add(struct: Ref, this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1001,8 +1001,8 @@ procedure add(struct: Ref, this: Ref) returns ()
     // -- Check definedness of allNodes(struct) == (old(allNodes(struct)) union Set(this))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := PostHeap;
         ExhaleWellDef0Mask := PostMask;
+        ExhaleWellDef0Heap := PostHeap;
         perm := FullPerm;
         assert {:msg "  Precondition of function allNodes might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@24.11--24.27) [2471]"}
           NoPerm < perm ==> NoPerm < PostMask[null, inv(struct)];
@@ -1015,8 +1015,8 @@ procedure add(struct: Ref, this: Ref) returns ()
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := oldHeap;
         ExhaleWellDef0Mask := oldMask;
+        ExhaleWellDef0Heap := oldHeap;
         perm := FullPerm;
         assert {:msg "  Precondition of function allNodes might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@24.35--24.51) [2472]"}
           NoPerm < perm ==> NoPerm < oldMask[null, inv(struct)];
@@ -1031,8 +1031,8 @@ procedure add(struct: Ref, this: Ref) returns ()
     // -- Check definedness of this == find(struct, this)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := PostHeap;
         ExhaleWellDef0Mask := PostMask;
+        ExhaleWellDef0Heap := PostHeap;
         assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@25.19--25.37) [2473]"}
           struct != null;
         assert {:msg "  Precondition of function find might not hold. Assertion this != null might not hold. (unionfind.vpr@25.19--25.37) [2474]"}
@@ -1057,8 +1057,8 @@ procedure add(struct: Ref, this: Ref) returns ()
       if (*) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := oldHeap;
           ExhaleWellDef0Mask := oldMask;
+          ExhaleWellDef0Heap := oldHeap;
           perm := FullPerm;
           assert {:msg "  Precondition of function allNodes might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@31.37--31.53) [2477]"}
             NoPerm < perm ==> NoPerm < oldMask[null, inv(struct)];
@@ -1069,8 +1069,8 @@ procedure add(struct: Ref, this: Ref) returns ()
         if (allNodes(oldHeap, struct)[o_17]) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := PostHeap;
             ExhaleWellDef0Mask := PostMask;
+            ExhaleWellDef0Heap := PostHeap;
             assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@31.59--31.74) [2478]"}
               struct != null;
             assert {:msg "  Precondition of function find might not hold. Assertion o != null might not hold. (unionfind.vpr@31.59--31.74) [2479]"}
@@ -1089,8 +1089,8 @@ procedure add(struct: Ref, this: Ref) returns ()
           }
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := oldHeap;
             ExhaleWellDef0Mask := oldMask;
+            ExhaleWellDef0Heap := oldHeap;
             assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@31.82--31.97) [2482]"}
               struct != null;
             assert {:msg "  Precondition of function find might not hold. Assertion o != null might not hold. (unionfind.vpr@31.82--31.97) [2483]"}
@@ -1119,8 +1119,8 @@ procedure add(struct: Ref, this: Ref) returns ()
   // -- Translating statement: unfold acc(inv(struct), write) -- unionfind.vpr@33.5--33.35
     assume inv#trigger(Heap, inv(struct));
     assume Heap[null, inv(struct)] == CombineFrames(FrameFragment(Heap[struct, nodes]), FrameFragment(inv#condqp1(Heap, struct)));
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding inv(struct) might fail. There might be insufficient permission to access inv(struct) (unionfind.vpr@33.5--33.35) [2488]"}
@@ -1196,8 +1196,8 @@ procedure add(struct: Ref, this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(inv(struct), write) -- unionfind.vpr@36.5--36.33
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding inv(struct) might fail. There might be insufficient permission to access struct.nodes (unionfind.vpr@36.5--36.33) [2496]"}
@@ -1291,8 +1291,8 @@ procedure add(struct: Ref, this: Ref) returns ()
       UnfoldingMask := Mask;
       assume inv#trigger(UnfoldingHeap, inv(struct));
       assume UnfoldingHeap[null, inv(struct)] == CombineFrames(FrameFragment(UnfoldingHeap[struct, nodes]), FrameFragment(inv#condqp1(UnfoldingHeap, struct)));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Inhale might fail. There might be insufficient permission to access inv(struct) (unionfind.vpr@38.9--38.65) [2503]"}
@@ -1366,8 +1366,8 @@ procedure add(struct: Ref, this: Ref) returns ()
       UnfoldingMask := Mask;
       assume inv#trigger(UnfoldingHeap, inv(struct));
       assume UnfoldingHeap[null, inv(struct)] == CombineFrames(FrameFragment(UnfoldingHeap[struct, nodes]), FrameFragment(inv#condqp1(UnfoldingHeap, struct)));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       UnfoldingMask := UnfoldingMask[null, inv(struct):=UnfoldingMask[null, inv(struct)] - perm];
       perm := FullPerm;
@@ -1418,15 +1418,15 @@ procedure add(struct: Ref, this: Ref) returns ()
   //     (x in old(allNodes(struct))) ==>
   //     (unfolding acc(inv(struct), write) in x.parent) ==
   //     old((unfolding acc(inv(struct), write) in x.parent))) -- unionfind.vpr@40.2--40.158
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall x: Ref :: { (x in old(allNodes(struct))) } (x in old(allNodes(struct))) ==> (unfolding acc(inv(struct), write) in x.parent) == old((unfolding acc(inv(struct), write) in x.parent)))
       if (*) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef1Heap := oldHeap;
           ExhaleWellDef1Mask := oldMask;
+          ExhaleWellDef1Heap := oldHeap;
           perm := FullPerm;
           assert {:msg "  Precondition of function allNodes might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@40.35--40.51) [2506]"}
             NoPerm < perm ==> NoPerm < oldMask[null, inv(struct)];
@@ -1439,8 +1439,8 @@ procedure add(struct: Ref, this: Ref) returns ()
           UnfoldingMask := ExhaleWellDef0Mask;
           assume inv#trigger(UnfoldingHeap, inv(struct));
           assume UnfoldingHeap[null, inv(struct)] == CombineFrames(FrameFragment(UnfoldingHeap[struct, nodes]), FrameFragment(inv#condqp1(UnfoldingHeap, struct)));
-          ExhaleWellDef1Heap := UnfoldingHeap;
           ExhaleWellDef1Mask := UnfoldingMask;
+          ExhaleWellDef1Heap := UnfoldingHeap;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  Assert might fail. There might be insufficient permission to access inv(struct) (unionfind.vpr@40.9--40.158) [2507]"}
@@ -1512,8 +1512,8 @@ procedure add(struct: Ref, this: Ref) returns ()
           UnfoldingMask := oldMask;
           assume inv#trigger(UnfoldingHeap, inv(struct));
           assume UnfoldingHeap[null, inv(struct)] == CombineFrames(FrameFragment(UnfoldingHeap[struct, nodes]), FrameFragment(inv#condqp1(UnfoldingHeap, struct)));
-          ExhaleWellDef1Heap := UnfoldingHeap;
           ExhaleWellDef1Mask := UnfoldingMask;
+          ExhaleWellDef1Heap := UnfoldingHeap;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  Assert might fail. There might be insufficient permission to access inv(struct) (unionfind.vpr@40.9--40.158) [2510]"}
@@ -1608,8 +1608,8 @@ procedure add(struct: Ref, this: Ref) returns ()
       if (*) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := oldHeap;
           ExhaleWellDef0Mask := oldMask;
+          ExhaleWellDef0Heap := oldHeap;
           perm := FullPerm;
           assert {:msg "  Precondition of function allNodes might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@42.35--42.51) [2514]"}
             NoPerm < perm ==> NoPerm < oldMask[null, inv(struct)];
@@ -1620,8 +1620,8 @@ procedure add(struct: Ref, this: Ref) returns ()
         if (allNodes(oldHeap, struct)[o_21]) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@42.57--42.72) [2515]"}
               struct != null;
             assert {:msg "  Precondition of function find might not hold. Assertion o != null might not hold. (unionfind.vpr@42.57--42.72) [2516]"}
@@ -1640,8 +1640,8 @@ procedure add(struct: Ref, this: Ref) returns ()
           }
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := oldHeap;
             ExhaleWellDef0Mask := oldMask;
+            ExhaleWellDef0Heap := oldHeap;
             assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@42.80--42.95) [2519]"}
               struct != null;
             assert {:msg "  Precondition of function find might not hold. Assertion o != null might not hold. (unionfind.vpr@42.80--42.95) [2520]"}
@@ -1666,8 +1666,8 @@ procedure add(struct: Ref, this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of add might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@23.11--23.34) [2523]"}
@@ -1703,11 +1703,11 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var p_2: Ref;
@@ -1755,8 +1755,8 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
     // -- Check definedness of (this in allNodes(struct))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function allNodes might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@83.36--83.52) [2527]"}
           NoPerm < perm ==> NoPerm < Mask[null, inv(struct)];
@@ -1775,8 +1775,8 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
     // -- Check definedness of (other in allNodes(struct))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function allNodes might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@84.38--84.54) [2528]"}
           NoPerm < perm ==> NoPerm < Mask[null, inv(struct)];
@@ -1793,8 +1793,8 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1809,8 +1809,8 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
     // -- Check definedness of allNodes(struct) == old(allNodes(struct))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := PostHeap;
         ExhaleWellDef0Mask := PostMask;
+        ExhaleWellDef0Heap := PostHeap;
         perm := FullPerm;
         assert {:msg "  Precondition of function allNodes might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@86.11--86.27) [2529]"}
           NoPerm < perm ==> NoPerm < PostMask[null, inv(struct)];
@@ -1823,8 +1823,8 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := oldHeap;
         ExhaleWellDef0Mask := oldMask;
+        ExhaleWellDef0Heap := oldHeap;
         perm := FullPerm;
         assert {:msg "  Precondition of function allNodes might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@86.35--86.51) [2530]"}
           NoPerm < perm ==> NoPerm < oldMask[null, inv(struct)];
@@ -1840,8 +1840,8 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
       if (*) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := PostHeap;
           ExhaleWellDef0Mask := PostMask;
+          ExhaleWellDef0Heap := PostHeap;
           perm := FullPerm;
           assert {:msg "  Precondition of function allNodes might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@90.41--90.57) [2531]"}
             NoPerm < perm ==> NoPerm < PostMask[null, inv(struct)];
@@ -1855,8 +1855,8 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
         if (allNodes(PostHeap, struct)[p_2]) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := PostHeap;
             ExhaleWellDef0Mask := PostMask;
+            ExhaleWellDef0Heap := PostHeap;
             perm := FullPerm;
             assert {:msg "  Precondition of function allNodes might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@90.66--90.82) [2532]"}
               NoPerm < perm ==> NoPerm < PostMask[null, inv(struct)];
@@ -1870,8 +1870,8 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
           if (allNodes(PostHeap, struct)[q_7]) {
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Heap := oldHeap;
               ExhaleWellDef0Mask := oldMask;
+              ExhaleWellDef0Heap := oldHeap;
               assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@90.90--90.105) [2533]"}
                 struct != null;
               assert {:msg "  Precondition of function find might not hold. Assertion p != null might not hold. (unionfind.vpr@90.90--90.105) [2534]"}
@@ -1887,8 +1887,8 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
             }
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Heap := oldHeap;
               ExhaleWellDef0Mask := oldMask;
+              ExhaleWellDef0Heap := oldHeap;
               assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@90.109--90.124) [2537]"}
                 struct != null;
               assert {:msg "  Precondition of function find might not hold. Assertion q != null might not hold. (unionfind.vpr@90.109--90.124) [2538]"}
@@ -1907,8 +1907,8 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
         if (allNodes(PostHeap, struct)[p_2] && (allNodes(PostHeap, struct)[q_7] && find(oldHeap, struct, p_2) == find(oldHeap, struct, q_7))) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := PostHeap;
             ExhaleWellDef0Mask := PostMask;
+            ExhaleWellDef0Heap := PostHeap;
             assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@90.130--90.145) [2541]"}
               struct != null;
             assert {:msg "  Precondition of function find might not hold. Assertion p != null might not hold. (unionfind.vpr@90.130--90.145) [2542]"}
@@ -1927,8 +1927,8 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
           }
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := PostHeap;
             ExhaleWellDef0Mask := PostMask;
+            ExhaleWellDef0Heap := PostHeap;
             assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@90.149--90.164) [2545]"}
               struct != null;
             assert {:msg "  Precondition of function find might not hold. Assertion q != null might not hold. (unionfind.vpr@90.149--90.164) [2546]"}
@@ -1959,8 +1959,8 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
       if (*) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := PostHeap;
           ExhaleWellDef0Mask := PostMask;
+          ExhaleWellDef0Heap := PostHeap;
           perm := FullPerm;
           assert {:msg "  Precondition of function allNodes might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@91.41--91.57) [2549]"}
             NoPerm < perm ==> NoPerm < PostMask[null, inv(struct)];
@@ -1974,8 +1974,8 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
         if (allNodes(PostHeap, struct)[p_3]) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := PostHeap;
             ExhaleWellDef0Mask := PostMask;
+            ExhaleWellDef0Heap := PostHeap;
             perm := FullPerm;
             assert {:msg "  Precondition of function allNodes might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@91.66--91.82) [2550]"}
               NoPerm < perm ==> NoPerm < PostMask[null, inv(struct)];
@@ -1989,8 +1989,8 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
           if (allNodes(PostHeap, struct)[q_8]) {
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Heap := oldHeap;
               ExhaleWellDef0Mask := oldMask;
+              ExhaleWellDef0Heap := oldHeap;
               assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@91.90--91.105) [2551]"}
                 struct != null;
               assert {:msg "  Precondition of function find might not hold. Assertion p != null might not hold. (unionfind.vpr@91.90--91.105) [2552]"}
@@ -2006,8 +2006,8 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
             }
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Heap := oldHeap;
               ExhaleWellDef0Mask := oldMask;
+              ExhaleWellDef0Heap := oldHeap;
               assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@91.109--91.127) [2555]"}
                 struct != null;
               assert {:msg "  Precondition of function find might not hold. Assertion this != null might not hold. (unionfind.vpr@91.109--91.127) [2556]"}
@@ -2024,8 +2024,8 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
             if (find(oldHeap, struct, p_3) == find(oldHeap, struct, this)) {
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Heap := oldHeap;
                 ExhaleWellDef0Mask := oldMask;
+                ExhaleWellDef0Heap := oldHeap;
                 assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@91.136--91.151) [2559]"}
                   struct != null;
                 assert {:msg "  Precondition of function find might not hold. Assertion q != null might not hold. (unionfind.vpr@91.136--91.151) [2560]"}
@@ -2041,8 +2041,8 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
               }
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Heap := oldHeap;
                 ExhaleWellDef0Mask := oldMask;
+                ExhaleWellDef0Heap := oldHeap;
                 assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@91.155--91.174) [2563]"}
                   struct != null;
                 assert {:msg "  Precondition of function find might not hold. Assertion other != null might not hold. (unionfind.vpr@91.155--91.174) [2564]"}
@@ -2062,8 +2062,8 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
         if (allNodes(PostHeap, struct)[p_3] && (allNodes(PostHeap, struct)[q_8] && (find(oldHeap, struct, p_3) == find(oldHeap, struct, this) && find(oldHeap, struct, q_8) == find(oldHeap, struct, other)))) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := PostHeap;
             ExhaleWellDef0Mask := PostMask;
+            ExhaleWellDef0Heap := PostHeap;
             assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@91.180--91.195) [2567]"}
               struct != null;
             assert {:msg "  Precondition of function find might not hold. Assertion p != null might not hold. (unionfind.vpr@91.180--91.195) [2568]"}
@@ -2082,8 +2082,8 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
           }
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := PostHeap;
             ExhaleWellDef0Mask := PostMask;
+            ExhaleWellDef0Heap := PostHeap;
             assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@91.199--91.214) [2571]"}
               struct != null;
             assert {:msg "  Precondition of function find might not hold. Assertion q != null might not hold. (unionfind.vpr@91.199--91.214) [2572]"}
@@ -2114,8 +2114,8 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
       if (*) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := PostHeap;
           ExhaleWellDef0Mask := PostMask;
+          ExhaleWellDef0Heap := PostHeap;
           perm := FullPerm;
           assert {:msg "  Precondition of function allNodes might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@93.10--93.26) [2575]"}
             NoPerm < perm ==> NoPerm < PostMask[null, inv(struct)];
@@ -2129,8 +2129,8 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
         if (allNodes(PostHeap, struct)[p_4]) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := PostHeap;
             ExhaleWellDef0Mask := PostMask;
+            ExhaleWellDef0Heap := PostHeap;
             perm := FullPerm;
             assert {:msg "  Precondition of function allNodes might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@93.35--93.51) [2576]"}
               NoPerm < perm ==> NoPerm < PostMask[null, inv(struct)];
@@ -2144,8 +2144,8 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
           if (allNodes(PostHeap, struct)[q_9]) {
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Heap := oldHeap;
               ExhaleWellDef0Mask := oldMask;
+              ExhaleWellDef0Heap := oldHeap;
               assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@93.59--93.74) [2577]"}
                 struct != null;
               assert {:msg "  Precondition of function find might not hold. Assertion p != null might not hold. (unionfind.vpr@93.59--93.74) [2578]"}
@@ -2161,8 +2161,8 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
             }
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Heap := oldHeap;
               ExhaleWellDef0Mask := oldMask;
+              ExhaleWellDef0Heap := oldHeap;
               assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@93.78--93.96) [2581]"}
                 struct != null;
               assert {:msg "  Precondition of function find might not hold. Assertion this != null might not hold. (unionfind.vpr@93.78--93.96) [2582]"}
@@ -2179,8 +2179,8 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
             if (find(oldHeap, struct, p_4) != find(oldHeap, struct, this)) {
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Heap := oldHeap;
                 ExhaleWellDef0Mask := oldMask;
+                ExhaleWellDef0Heap := oldHeap;
                 assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@93.105--93.120) [2585]"}
                   struct != null;
                 assert {:msg "  Precondition of function find might not hold. Assertion q != null might not hold. (unionfind.vpr@93.105--93.120) [2586]"}
@@ -2196,8 +2196,8 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
               }
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Heap := oldHeap;
                 ExhaleWellDef0Mask := oldMask;
+                ExhaleWellDef0Heap := oldHeap;
                 assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@93.124--93.143) [2589]"}
                   struct != null;
                 assert {:msg "  Precondition of function find might not hold. Assertion other != null might not hold. (unionfind.vpr@93.124--93.143) [2590]"}
@@ -2214,8 +2214,8 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
               if (find(oldHeap, struct, q_9) != find(oldHeap, struct, other)) {
                 if (*) {
                   // Exhale precondition of function application
-                  ExhaleWellDef0Heap := oldHeap;
                   ExhaleWellDef0Mask := oldMask;
+                  ExhaleWellDef0Heap := oldHeap;
                   assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@93.152--93.167) [2593]"}
                     struct != null;
                   assert {:msg "  Precondition of function find might not hold. Assertion p != null might not hold. (unionfind.vpr@93.152--93.167) [2594]"}
@@ -2231,8 +2231,8 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
                 }
                 if (*) {
                   // Exhale precondition of function application
-                  ExhaleWellDef0Heap := oldHeap;
                   ExhaleWellDef0Mask := oldMask;
+                  ExhaleWellDef0Heap := oldHeap;
                   assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@93.171--93.186) [2597]"}
                     struct != null;
                   assert {:msg "  Precondition of function find might not hold. Assertion q != null might not hold. (unionfind.vpr@93.171--93.186) [2598]"}
@@ -2253,8 +2253,8 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
         if (allNodes(PostHeap, struct)[p_4] && (allNodes(PostHeap, struct)[q_9] && (find(oldHeap, struct, p_4) != find(oldHeap, struct, this) && (find(oldHeap, struct, q_9) != find(oldHeap, struct, other) && find(oldHeap, struct, p_4) == find(oldHeap, struct, q_9))))) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := PostHeap;
             ExhaleWellDef0Mask := PostMask;
+            ExhaleWellDef0Heap := PostHeap;
             assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@93.192--93.207) [2601]"}
               struct != null;
             assert {:msg "  Precondition of function find might not hold. Assertion p != null might not hold. (unionfind.vpr@93.192--93.207) [2602]"}
@@ -2273,8 +2273,8 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
           }
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := PostHeap;
             ExhaleWellDef0Mask := PostMask;
+            ExhaleWellDef0Heap := PostHeap;
             assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@93.211--93.226) [2605]"}
               struct != null;
             assert {:msg "  Precondition of function find might not hold. Assertion q != null might not hold. (unionfind.vpr@93.211--93.226) [2606]"}
@@ -2312,8 +2312,8 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
     // -- Check definedness of find(struct, this)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@95.19--95.37) [2609]"}
           struct != null;
         assert {:msg "  Precondition of function find might not hold. Assertion this != null might not hold. (unionfind.vpr@95.19--95.37) [2610]"}
@@ -2338,8 +2338,8 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
     // -- Check definedness of find(struct, other)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@96.20--96.39) [2613]"}
           struct != null;
         assert {:msg "  Precondition of function find might not hold. Assertion other != null might not hold. (unionfind.vpr@96.20--96.39) [2614]"}
@@ -2365,8 +2365,8 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
       // -- Translating statement: unfold acc(inv(struct), write) -- unionfind.vpr@99.4--99.34
         assume inv#trigger(Heap, inv(struct));
         assume Heap[null, inv(struct)] == CombineFrames(FrameFragment(Heap[struct, nodes]), FrameFragment(inv#condqp1(Heap, struct)));
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Unfolding inv(struct) might fail. There might be insufficient permission to access inv(struct) (unionfind.vpr@99.4--99.34) [2619]"}
@@ -2432,8 +2432,8 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
         assume state(Heap, Mask);
       
       // -- Translating statement: fold acc(inv(struct), write) -- unionfind.vpr@101.4--101.32
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Folding inv(struct) might fail. There might be insufficient permission to access struct.nodes (unionfind.vpr@101.4--101.32) [2625]"}
@@ -2531,8 +2531,8 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
           if (*) {
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Heap := Heap;
               ExhaleWellDef0Mask := Mask;
+              ExhaleWellDef0Heap := Heap;
               perm := FullPerm;
               assert {:msg "  Precondition of function allNodes might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@104.36--104.52) [2632]"}
                 NoPerm < perm ==> NoPerm < Mask[null, inv(struct)];
@@ -2546,8 +2546,8 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
             if (allNodes(Heap, struct)[p_6]) {
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Heap := oldHeap;
                 ExhaleWellDef0Mask := oldMask;
+                ExhaleWellDef0Heap := oldHeap;
                 assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@104.60--104.75) [2633]"}
                   struct != null;
                 assert {:msg "  Precondition of function find might not hold. Assertion p != null might not hold. (unionfind.vpr@104.60--104.75) [2634]"}
@@ -2565,8 +2565,8 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
             if (allNodes(Heap, struct)[p_6] && find(oldHeap, struct, p_6) == this1) {
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Heap := Heap;
                 ExhaleWellDef0Mask := Mask;
+                ExhaleWellDef0Heap := Heap;
                 assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@104.90--104.105) [2637]"}
                   struct != null;
                 assert {:msg "  Precondition of function find might not hold. Assertion p != null might not hold. (unionfind.vpr@104.90--104.105) [2638]"}
@@ -2604,8 +2604,8 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
           if (*) {
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Heap := Heap;
               ExhaleWellDef0Mask := Mask;
+              ExhaleWellDef0Heap := Heap;
               perm := FullPerm;
               assert {:msg "  Precondition of function allNodes might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@105.36--105.52) [2641]"}
                 NoPerm < perm ==> NoPerm < Mask[null, inv(struct)];
@@ -2619,8 +2619,8 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
             if (allNodes(Heap, struct)[p_7]) {
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Heap := oldHeap;
                 ExhaleWellDef0Mask := oldMask;
+                ExhaleWellDef0Heap := oldHeap;
                 assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@105.60--105.75) [2642]"}
                   struct != null;
                 assert {:msg "  Precondition of function find might not hold. Assertion p != null might not hold. (unionfind.vpr@105.60--105.75) [2643]"}
@@ -2638,8 +2638,8 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
             if (allNodes(Heap, struct)[p_7] && find(oldHeap, struct, p_7) != this1) {
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Heap := Heap;
                 ExhaleWellDef0Mask := Mask;
+                ExhaleWellDef0Heap := Heap;
                 assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@105.90--105.105) [2646]"}
                   struct != null;
                 assert {:msg "  Precondition of function find might not hold. Assertion p != null might not hold. (unionfind.vpr@105.90--105.105) [2647]"}
@@ -2658,8 +2658,8 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
               }
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Heap := oldHeap;
                 ExhaleWellDef0Mask := oldMask;
+                ExhaleWellDef0Heap := oldHeap;
                 assert {:msg "  Precondition of function find might not hold. Assertion struct != null might not hold. (unionfind.vpr@105.113--105.128) [2650]"}
                   struct != null;
                 assert {:msg "  Precondition of function find might not hold. Assertion p != null might not hold. (unionfind.vpr@105.113--105.128) [2651]"}
@@ -2686,8 +2686,8 @@ procedure unionn(struct: Ref, this: Ref, other: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of unionn might not hold. There might be insufficient permission to access inv(struct) (unionfind.vpr@85.11--85.34) [2654]"}

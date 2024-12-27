@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 02:28:22
+// Date:         2024-12-27 10:37:19
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/heap-dependent_triggers/heapTriggersNested.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/heap-dependent_triggers/heapTriggersNested-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -406,8 +406,8 @@ axiom !IsWandField(r_6);
 procedure m1(xs: (Set Ref)) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var a_2: Ref;
   var v_2: Ref;
   var QPMask: MaskType;
@@ -418,8 +418,8 @@ procedure m1(xs: (Set Ref)) returns ()
   var x_38: Ref;
   var y_11: Ref;
   var x_32: Ref;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -429,8 +429,8 @@ procedure m1(xs: (Set Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[a_2, $allocated];
@@ -674,8 +674,8 @@ procedure m1(xs: (Set Ref)) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert perm(a.r) >= write -- heapTriggersNested.vpr@21.5--21.30
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion perm(a.r) >= write might not hold. (heapTriggersNested.vpr@21.12--21.30) [140700]"}
       FullPerm <= Mask[a_2, r_6];
     assume state(Heap, Mask);
@@ -689,8 +689,8 @@ procedure m1(xs: (Set Ref)) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert perm(a.r.f) >= write -- heapTriggersNested.vpr@26.5--26.32
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of perm(a.r.f) >= write
       assert {:msg "  Assert might fail. There might be insufficient permission to access a.r (heapTriggersNested.vpr@26.12--26.32) [140702]"}
@@ -700,8 +700,8 @@ procedure m1(xs: (Set Ref)) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert perm(a.r.r.f) >= write -- heapTriggersNested.vpr@27.5--27.34
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of perm(a.r.r.f) >= write
       assert {:msg "  Assert might fail. There might be insufficient permission to access a.r (heapTriggersNested.vpr@27.12--27.34) [140704]"}

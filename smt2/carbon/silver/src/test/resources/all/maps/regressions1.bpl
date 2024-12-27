@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 02:31:35
+// Date:         2024-12-27 10:40:31
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/maps/regressions1.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/maps/regressions1-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -482,10 +482,10 @@ axiom !IsWandField(val);
 procedure test1(m_17: (Map int Ref), x: int) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -499,12 +499,12 @@ procedure test1(m_17: (Map int Ref), x: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert 0 < m[x].val -- regressions1.vpr@10.3--10.22
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of 0 < m[x].val
       assert {:msg "  Assert might fail. Map m might not contain an entry at key x. (regressions1.vpr@10.10--10.22) [157614]"}
@@ -523,10 +523,10 @@ procedure test1(m_17: (Map int Ref), x: int) returns ()
 procedure test2(m_17: (Map int (Map int bool))) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -548,12 +548,12 @@ procedure test2(m_17: (Map int (Map int bool))) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert domain(m) == Set(0, 1, 2) || !((3 in m)) -- regressions1.vpr@17.3--17.48
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion domain(m) == Set(0, 1, 2) || !((3 in m)) might not hold. (regressions1.vpr@17.10--17.48) [157617]"}
       Set#Equal(Map#Domain(m_17), Set#UnionOne(Set#UnionOne(Set#Singleton(2), 1), 0)) || !Map#Domain(m_17)[3];
     assume state(Heap, Mask);
@@ -566,11 +566,11 @@ procedure test2(m_17: (Map int (Map int bool))) returns ()
 procedure test3() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var m_17: (Map int bool);
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -580,16 +580,16 @@ procedure test3() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: m := Map(6 := false, 2 := false) -- regressions1.vpr@22.3--22.56
     m_17 := Map#Build(Map#Build((Map#Empty(): Map int bool), 6, false), 2, false);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (4 in m) || (true in range(m)) -- regressions1.vpr@25.3--25.36
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion (4 in m) || (true in range(m)) might not hold. (regressions1.vpr@25.10--25.36) [157618]"}
       Map#Domain(m_17)[4] || Map#Values(m_17)[true];
     assume state(Heap, Mask);
@@ -602,11 +602,11 @@ procedure test3() returns ()
 procedure test4() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var m_17: (Map int int);
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -616,16 +616,16 @@ procedure test4() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: m := Map[Int,Int]() -- regressions1.vpr@30.3--30.33
     m_17 := (Map#Empty(): Map int int);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert |m| != 0 -- regressions1.vpr@33.3--33.18
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion |m| != 0 might not hold. (regressions1.vpr@33.10--33.18) [157619]"}
       Map#Card(m_17) != 0;
     assume state(Heap, Mask);
@@ -638,11 +638,11 @@ procedure test4() returns ()
 procedure test5() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var m_17: (Map int int);
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -652,16 +652,16 @@ procedure test5() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: m := Map(3 := 9) -- regressions1.vpr@38.3--38.39
     m_17 := Map#Build((Map#Empty(): Map int int), 3, 9);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert m[3 := 5] == Map(3 := 9) -- regressions1.vpr@41.3--41.34
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion m[3 := 5] == Map(3 := 9) might not hold. (regressions1.vpr@41.10--41.34) [157620]"}
       Map#Equal(Map#Build(m_17, 3, 5), Map#Build((Map#Empty(): Map int int), 3, 9));
     assume state(Heap, Mask);

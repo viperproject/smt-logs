@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 02:38:48
+// Date:         2024-12-27 10:47:42
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0334.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0334-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -233,8 +233,8 @@ procedure tree_size#definedness(tree_1: Ref) returns (Result: int)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var newPMask: PMaskType;
   
@@ -262,8 +262,8 @@ procedure tree_size#definedness(tree_1: Ref) returns (Result: int)
         UnfoldingMask := Mask;
         assume BTree#trigger(UnfoldingHeap, BTree(tree_1));
         assume UnfoldingHeap[null, BTree(tree_1)] == CombineFrames(FrameFragment(UnfoldingHeap[tree_1, left]), CombineFrames(FrameFragment((if UnfoldingHeap[tree_1, left] != null then UnfoldingHeap[null, BTree(UnfoldingHeap[tree_1, left])] else EmptyFrame)), CombineFrames(FrameFragment(UnfoldingHeap[tree_1, right_1]), CombineFrames(FrameFragment((if UnfoldingHeap[tree_1, right_1] != null then UnfoldingHeap[null, BTree(UnfoldingHeap[tree_1, right_1])] else EmptyFrame)), FrameFragment(UnfoldingHeap[tree_1, value])))));
-        ExhaleWellDef0Mask := UnfoldingMask;
         ExhaleWellDef0Heap := UnfoldingHeap;
+        ExhaleWellDef0Mask := UnfoldingMask;
         perm := FullPerm;
         assert {:msg "  Function might not be well-formed. There might be insufficient permission to access BTree(tree) (0334.vpr@14.1--20.2) [199286]"}
           NoPerm < perm ==> NoPerm < UnfoldingMask[null, BTree(tree_1)];
@@ -300,8 +300,8 @@ procedure tree_size#definedness(tree_1: Ref) returns (Result: int)
           HasDirectPerm(UnfoldingMask, tree_1, left);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
+          ExhaleWellDef0Mask := UnfoldingMask;
           if (UnfoldingHeap[tree_1, left] != null) {
             perm := FullPerm;
             assert {:msg "  Precondition of function tree_size might not hold. There might be insufficient permission to access BTree(tree.left) (0334.vpr@18.34--18.54) [199288]"}
@@ -321,8 +321,8 @@ procedure tree_size#definedness(tree_1: Ref) returns (Result: int)
           HasDirectPerm(UnfoldingMask, tree_1, right_1);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
+          ExhaleWellDef0Mask := UnfoldingMask;
           if (UnfoldingHeap[tree_1, right_1] != null) {
             perm := FullPerm;
             assert {:msg "  Precondition of function tree_size might not hold. There might be insufficient permission to access BTree(tree.right) (0334.vpr@18.57--18.78) [199290]"}
@@ -408,8 +408,8 @@ procedure tree_size_fix#definedness(tree_1: Ref, i: int, b_24: int) returns (Res
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var newPMask: PMaskType;
   
@@ -437,8 +437,8 @@ procedure tree_size_fix#definedness(tree_1: Ref, i: int, b_24: int) returns (Res
         UnfoldingMask := Mask;
         assume BTree#trigger(UnfoldingHeap, BTree(tree_1));
         assume UnfoldingHeap[null, BTree(tree_1)] == CombineFrames(FrameFragment(UnfoldingHeap[tree_1, left]), CombineFrames(FrameFragment((if UnfoldingHeap[tree_1, left] != null then UnfoldingHeap[null, BTree(UnfoldingHeap[tree_1, left])] else EmptyFrame)), CombineFrames(FrameFragment(UnfoldingHeap[tree_1, right_1]), CombineFrames(FrameFragment((if UnfoldingHeap[tree_1, right_1] != null then UnfoldingHeap[null, BTree(UnfoldingHeap[tree_1, right_1])] else EmptyFrame)), FrameFragment(UnfoldingHeap[tree_1, value])))));
-        ExhaleWellDef0Mask := UnfoldingMask;
         ExhaleWellDef0Heap := UnfoldingHeap;
+        ExhaleWellDef0Mask := UnfoldingMask;
         perm := FullPerm;
         assert {:msg "  Function might not be well-formed. There might be insufficient permission to access BTree(tree) (0334.vpr@33.1--39.2) [199291]"}
           NoPerm < perm ==> NoPerm < UnfoldingMask[null, BTree(tree_1)];
@@ -475,8 +475,8 @@ procedure tree_size_fix#definedness(tree_1: Ref, i: int, b_24: int) returns (Res
           HasDirectPerm(UnfoldingMask, tree_1, left);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
+          ExhaleWellDef0Mask := UnfoldingMask;
           if (UnfoldingHeap[tree_1, left] != null) {
             perm := FullPerm;
             assert {:msg "  Precondition of function tree_size_fix might not hold. There might be insufficient permission to access BTree(tree.left) (0334.vpr@37.34--37.64) [199293]"}
@@ -496,8 +496,8 @@ procedure tree_size_fix#definedness(tree_1: Ref, i: int, b_24: int) returns (Res
           HasDirectPerm(UnfoldingMask, tree_1, right_1);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
+          ExhaleWellDef0Mask := UnfoldingMask;
           if (UnfoldingHeap[tree_1, right_1] != null) {
             perm := FullPerm;
             assert {:msg "  Precondition of function tree_size_fix might not hold. There might be insufficient permission to access BTree(tree.right) (0334.vpr@37.67--37.98) [199295]"}
@@ -638,13 +638,13 @@ procedure toArray(tree_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newVersion: FrameType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var ExhaleHeap: HeapType;
   var i_11: int;
   var b_103: int;
@@ -671,14 +671,14 @@ procedure toArray(tree_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: unfold acc(BTree(tree), write) -- 0334.vpr@26.3--26.21
     assume BTree#trigger(Heap, BTree(tree_1));
     assume Heap[null, BTree(tree_1)] == CombineFrames(FrameFragment(Heap[tree_1, left]), CombineFrames(FrameFragment((if Heap[tree_1, left] != null then Heap[null, BTree(Heap[tree_1, left])] else EmptyFrame)), CombineFrames(FrameFragment(Heap[tree_1, right_1]), CombineFrames(FrameFragment((if Heap[tree_1, right_1] != null then Heap[null, BTree(Heap[tree_1, right_1])] else EmptyFrame)), FrameFragment(Heap[tree_1, value])))));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding BTree(tree) might fail. There might be insufficient permission to access BTree(tree) (0334.vpr@26.3--26.21) [199302]"}
@@ -724,8 +724,8 @@ procedure toArray(tree_1: Ref) returns ()
   
   // -- Translating statement: assert (forall i: Int, b: Int ::tree_size(tree.left) < i && i < b ==>
   //     tree_size(tree.left) + 1 < b) -- 0334.vpr@28.3--30.77
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall i: Int, b: Int ::tree_size(tree.left) < i && i < b ==> tree_size(tree.left) + 1 < b)
       if (*) {
@@ -733,8 +733,8 @@ procedure toArray(tree_1: Ref) returns ()
           HasDirectPerm(ExhaleWellDef0Mask, tree_1, left);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef1Mask := ExhaleWellDef0Mask;
           ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+          ExhaleWellDef1Mask := ExhaleWellDef0Mask;
           if (ExhaleWellDef0Heap[tree_1, left] != null) {
             perm := FullPerm;
             assert {:msg "  Precondition of function tree_size might not hold. There might be insufficient permission to access BTree(tree.left) (0334.vpr@30.8--30.28) [199309]"}
@@ -752,8 +752,8 @@ procedure toArray(tree_1: Ref) returns ()
             HasDirectPerm(ExhaleWellDef0Mask, tree_1, left);
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Mask := ExhaleWellDef0Mask;
             ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+            ExhaleWellDef1Mask := ExhaleWellDef0Mask;
             if (ExhaleWellDef0Heap[tree_1, left] != null) {
               perm := FullPerm;
               assert {:msg "  Precondition of function tree_size might not hold. There might be insufficient permission to access BTree(tree.left) (0334.vpr@30.48--30.68) [199311]"}
@@ -791,13 +791,13 @@ procedure toArray_fix(tree_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newVersion: FrameType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var ExhaleHeap: HeapType;
   var i_12: int;
   var b_104: int;
@@ -824,14 +824,14 @@ procedure toArray_fix(tree_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: unfold acc(BTree(tree), write) -- 0334.vpr@45.3--45.21
     assume BTree#trigger(Heap, BTree(tree_1));
     assume Heap[null, BTree(tree_1)] == CombineFrames(FrameFragment(Heap[tree_1, left]), CombineFrames(FrameFragment((if Heap[tree_1, left] != null then Heap[null, BTree(Heap[tree_1, left])] else EmptyFrame)), CombineFrames(FrameFragment(Heap[tree_1, right_1]), CombineFrames(FrameFragment((if Heap[tree_1, right_1] != null then Heap[null, BTree(Heap[tree_1, right_1])] else EmptyFrame)), FrameFragment(Heap[tree_1, value])))));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding BTree(tree) might fail. There might be insufficient permission to access BTree(tree) (0334.vpr@45.3--45.21) [199315]"}
@@ -879,8 +879,8 @@ procedure toArray_fix(tree_1: Ref) returns ()
   //     { tree_size_fix(tree.left, i, b) }
   //     tree_size_fix(tree.left, i, b) < i && i < b ==>
   //     tree_size_fix(tree.left, i, b) + 1 < b) -- 0334.vpr@46.3--48.97
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall i: Int, b: Int :: { tree_size_fix(tree.left, i, b) } tree_size_fix(tree.left, i, b) < i && i < b ==> tree_size_fix(tree.left, i, b) + 1 < b)
       if (*) {
@@ -888,8 +888,8 @@ procedure toArray_fix(tree_1: Ref) returns ()
           HasDirectPerm(ExhaleWellDef0Mask, tree_1, left);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef1Mask := ExhaleWellDef0Mask;
           ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+          ExhaleWellDef1Mask := ExhaleWellDef0Mask;
           if (ExhaleWellDef0Heap[tree_1, left] != null) {
             perm := FullPerm;
             assert {:msg "  Precondition of function tree_size_fix might not hold. There might be insufficient permission to access BTree(tree.left) (0334.vpr@48.8--48.38) [199322]"}
@@ -907,8 +907,8 @@ procedure toArray_fix(tree_1: Ref) returns ()
             HasDirectPerm(ExhaleWellDef0Mask, tree_1, left);
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Mask := ExhaleWellDef0Mask;
             ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+            ExhaleWellDef1Mask := ExhaleWellDef0Mask;
             if (ExhaleWellDef0Heap[tree_1, left] != null) {
               perm := FullPerm;
               assert {:msg "  Precondition of function tree_size_fix might not hold. There might be insufficient permission to access BTree(tree.left) (0334.vpr@48.58--48.88) [199324]"}

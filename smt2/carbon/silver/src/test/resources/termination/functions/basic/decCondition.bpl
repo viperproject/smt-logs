@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 02:48:17
+// Date:         2024-12-27 10:57:09
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/termination/functions/basic/decCondition.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/termination/functions/basic/decCondition-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -562,10 +562,10 @@ procedure f2_e#definedness(x: int) returns (Result: int)
 procedure f1_termination_proof(x: int) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -576,31 +576,31 @@ procedure f1_termination_proof(x: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: if (x == 0) -- <no position>
     if (x == 0) {
       
       // -- Translating statement: assert !old(x >= 0) || (x >= 5 || 0 <= x && x < 5) -- <no position>
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Assert might fail. Assertion !old(x >= 0) || (x >= 5 || 0 <= x && x < 5) might not hold. (<no position>) [223673]"}
           !(x >= 0) || (x >= 5 || (0 <= x && x < 5));
         assume state(Heap, Mask);
     } else {
       
       // -- Translating statement: assert !old(x >= 0) || x - 1 >= 0 -- <no position>
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Assert might fail. Assertion !old(x >= 0) || x - 1 >= 0 might not hold. (<no position>) [223674]"}
           !(x >= 0) || x - 1 >= 0;
         assume state(Heap, Mask);
       
       // -- Translating statement: assert old(x >= 0) ==>
   //   (decreasing(x - 1, old(x)): Bool) && (bounded(old(x)): Bool) -- <no position>
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         if (x >= 0) {
           assert {:msg "  Assert might fail. Assertion (decreasing(x - 1, old(x)): Bool) might not hold. (<no position>) [223675]"}
             (decreasing(x - 1, x): bool);
@@ -610,16 +610,16 @@ procedure f1_termination_proof(x: int) returns ()
         assume state(Heap, Mask);
       
       // -- Translating statement: assert !old(x >= 0) || -(x - 1) <= 0 -- <no position>
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Assert might fail. Assertion !old(x >= 0) || -(x - 1) <= 0 might not hold. (<no position>) [223677]"}
           !(x >= 0) || -(x - 1) <= 0;
         assume state(Heap, Mask);
       
       // -- Translating statement: assert old(x >= 0) ==>
   //   (decreasing(x - 1, old(x)): Bool) && (bounded(old(x)): Bool) -- <no position>
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         if (x >= 0) {
           assert {:msg "  Assert might fail. Assertion (decreasing(x - 1, old(x)): Bool) might not hold. (<no position>) [223678]"}
             (decreasing(x - 1, x): bool);
@@ -629,8 +629,8 @@ procedure f1_termination_proof(x: int) returns ()
         assume state(Heap, Mask);
       
       // -- Translating statement: assert !old(x >= 0) || (x >= 5 || 0 <= x && x < 5) -- <no position>
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Assert might fail. Assertion !old(x >= 0) || (x >= 5 || 0 <= x && x < 5) might not hold. (<no position>) [223680]"}
           !(x >= 0) || (x >= 5 || (0 <= x && x < 5));
         assume state(Heap, Mask);
@@ -645,10 +645,10 @@ procedure f1_termination_proof(x: int) returns ()
 procedure f2_termination_proof(x: int) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -659,31 +659,31 @@ procedure f2_termination_proof(x: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: if (x == 0) -- <no position>
     if (x == 0) {
       
       // -- Translating statement: assert !old(x <= 0) || (x >= 5 || 0 <= x && x < 5) -- <no position>
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Assert might fail. Assertion !old(x <= 0) || (x >= 5 || 0 <= x && x < 5) might not hold. (<no position>) [223681]"}
           !(x <= 0) || (x >= 5 || (0 <= x && x < 5));
         assume state(Heap, Mask);
     } else {
       
       // -- Translating statement: assert !old(x <= 0) || x + 1 <= 0 -- <no position>
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Assert might fail. Assertion !old(x <= 0) || x + 1 <= 0 might not hold. (<no position>) [223682]"}
           !(x <= 0) || x + 1 <= 0;
         assume state(Heap, Mask);
       
       // -- Translating statement: assert old(x <= 0) ==>
   //   (decreasing(-(x + 1), old(-x)): Bool) && (bounded(old(-x)): Bool) -- <no position>
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         if (x <= 0) {
           assert {:msg "  Assert might fail. Assertion (decreasing(-(x + 1), old(-x)): Bool) might not hold. (<no position>) [223683]"}
             (decreasing(-(x + 1), -x): bool);
@@ -693,16 +693,16 @@ procedure f2_termination_proof(x: int) returns ()
         assume state(Heap, Mask);
       
       // -- Translating statement: assert !old(x <= 0) || -(x + 1) >= 0 -- <no position>
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Assert might fail. Assertion !old(x <= 0) || -(x + 1) >= 0 might not hold. (<no position>) [223685]"}
           !(x <= 0) || -(x + 1) >= 0;
         assume state(Heap, Mask);
       
       // -- Translating statement: assert old(x <= 0) ==>
   //   (decreasing(-(x + 1), old(-x)): Bool) && (bounded(old(-x)): Bool) -- <no position>
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         if (x <= 0) {
           assert {:msg "  Assert might fail. Assertion (decreasing(-(x + 1), old(-x)): Bool) might not hold. (<no position>) [223686]"}
             (decreasing(-(x + 1), -x): bool);
@@ -712,8 +712,8 @@ procedure f2_termination_proof(x: int) returns ()
         assume state(Heap, Mask);
       
       // -- Translating statement: assert !old(x <= 0) || (-x >= 5 || 0 <= -x && -x < 5) -- <no position>
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Assert might fail. Assertion !old(x <= 0) || (-x >= 5 || 0 <= -x && -x < 5) might not hold. (<no position>) [223688]"}
           !(x <= 0) || (-x >= 5 || (0 <= -x && -x < 5));
         assume state(Heap, Mask);
@@ -728,10 +728,10 @@ procedure f2_termination_proof(x: int) returns ()
 procedure f1_e_termination_proof(x: int) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -742,31 +742,31 @@ procedure f1_e_termination_proof(x: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: if (x == 0) -- <no position>
     if (x == 0) {
       
       // -- Translating statement: assert !old(x >= 0) || (x >= 5 || 0 <= x && x < 5) -- <no position>
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Assert might fail. Assertion !old(x >= 0) || (x >= 5 || 0 <= x && x < 5) might not hold. (<no position>) [223689]"}
           !(x >= 0) || (x >= 5 || (0 <= x && x < 5));
         assume state(Heap, Mask);
     } else {
       
       // -- Translating statement: assert !old(x >= 0) || x - 1 >= 0 -- <no position>
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Assert might fail. Assertion !old(x >= 0) || x - 1 >= 0 might not hold. (<no position>) [223690]"}
           !(x >= 0) || x - 1 >= 0;
         assume state(Heap, Mask);
       
       // -- Translating statement: assert old(x >= 0) ==>
   //   (decreasing(x - 1, old(x)): Bool) && (bounded(old(x)): Bool) -- <no position>
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         if (x >= 0) {
           assert {:msg "  Assert might fail. Assertion (decreasing(x - 1, old(x)): Bool) might not hold. (<no position>) [223691]"}
             (decreasing(x - 1, x): bool);
@@ -776,16 +776,16 @@ procedure f1_e_termination_proof(x: int) returns ()
         assume state(Heap, Mask);
       
       // -- Translating statement: assert !old(x >= 0) || x - 1 <= 0 -- <no position>
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Assert might fail. Assertion !old(x >= 0) || x - 1 <= 0 might not hold. (<no position>) [223693]"}
           !(x >= 0) || x - 1 <= 0;
         assume state(Heap, Mask);
       
       // -- Translating statement: assert old(x >= 0) ==>
   //   (decreasing(-(x - 1), old(x)): Bool) && (bounded(old(x)): Bool) -- <no position>
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         if (x >= 0) {
           assert {:msg "  Assert might fail. Assertion (decreasing(-(x - 1), old(x)): Bool) might not hold. (<no position>) [223694]"}
             (decreasing(-(x - 1), x): bool);
@@ -795,8 +795,8 @@ procedure f1_e_termination_proof(x: int) returns ()
         assume state(Heap, Mask);
       
       // -- Translating statement: assert !old(x >= 0) || (x >= 5 || 0 <= x && x < 5) -- <no position>
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Assert might fail. Assertion !old(x >= 0) || (x >= 5 || 0 <= x && x < 5) might not hold. (<no position>) [223696]"}
           !(x >= 0) || (x >= 5 || (0 <= x && x < 5));
         assume state(Heap, Mask);
@@ -811,10 +811,10 @@ procedure f1_e_termination_proof(x: int) returns ()
 procedure f2_e_termination_proof(x: int) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -825,31 +825,31 @@ procedure f2_e_termination_proof(x: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: if (x == 0) -- <no position>
     if (x == 0) {
       
       // -- Translating statement: assert !old(x <= 0) || (x >= 5 || 0 <= x && x < 5) -- <no position>
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Assert might fail. Assertion !old(x <= 0) || (x >= 5 || 0 <= x && x < 5) might not hold. (<no position>) [223697]"}
           !(x <= 0) || (x >= 5 || (0 <= x && x < 5));
         assume state(Heap, Mask);
     } else {
       
       // -- Translating statement: assert !old(x <= 0) || x + 1 <= 0 -- <no position>
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Assert might fail. Assertion !old(x <= 0) || x + 1 <= 0 might not hold. (<no position>) [223698]"}
           !(x <= 0) || x + 1 <= 0;
         assume state(Heap, Mask);
       
       // -- Translating statement: assert old(x <= 0) ==>
   //   (decreasing(-(x + 1), old(-x)): Bool) && (bounded(old(-x)): Bool) -- <no position>
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         if (x <= 0) {
           assert {:msg "  Assert might fail. Assertion (decreasing(-(x + 1), old(-x)): Bool) might not hold. (<no position>) [223699]"}
             (decreasing(-(x + 1), -x): bool);
@@ -859,16 +859,16 @@ procedure f2_e_termination_proof(x: int) returns ()
         assume state(Heap, Mask);
       
       // -- Translating statement: assert !old(x <= 0) || -(x + 1) >= 0 -- <no position>
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Assert might fail. Assertion !old(x <= 0) || -(x + 1) >= 0 might not hold. (<no position>) [223701]"}
           !(x <= 0) || -(x + 1) >= 0;
         assume state(Heap, Mask);
       
       // -- Translating statement: assert old(x <= 0) ==>
   //   (decreasing(-(x + 1), old(-x)): Bool) && (bounded(old(-x)): Bool) -- <no position>
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         if (x <= 0) {
           assert {:msg "  Assert might fail. Assertion (decreasing(-(x + 1), old(-x)): Bool) might not hold. (<no position>) [223702]"}
             (decreasing(-(x + 1), -x): bool);
@@ -878,8 +878,8 @@ procedure f2_e_termination_proof(x: int) returns ()
         assume state(Heap, Mask);
       
       // -- Translating statement: assert !old(x <= 0) || (x >= 5 || 0 <= x && x < 5) -- <no position>
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Assert might fail. Assertion !old(x <= 0) || (x >= 5 || 0 <= x && x < 5) might not hold. (<no position>) [223704]"}
           !(x <= 0) || (x >= 5 || (0 <= x && x < 5));
         assume state(Heap, Mask);

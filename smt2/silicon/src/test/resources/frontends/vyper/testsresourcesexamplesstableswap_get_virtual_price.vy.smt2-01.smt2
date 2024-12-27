@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-27 01:45:17
+; Started: 2024-12-27 09:54:33
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -10477,7 +10477,7 @@
 (check-sat)
 ; unsat
 (pop) ; 13
-; 0.66s
+; 0.40s
 ; (get-info :all-statistics)
 (assert (=>
   (forall ((q$i@393@01 Int)) (!
@@ -10641,7 +10641,7 @@
 (check-sat)
 ; unsat
 (pop) ; 16
-; 0.31s
+; 0.13s
 ; (get-info :all-statistics)
 (assert (<=
   0
@@ -10659,7 +10659,7 @@
 (check-sat)
 ; unsat
 (pop) ; 16
-; 0.16s
+; 0.12s
 ; (get-info :all-statistics)
 (assert (>
   ($unwrap<Int> ($wrap<$Int> (+
@@ -11195,7 +11195,7 @@
 (check-sat)
 ; unsat
 (pop) ; 13
-; 0.11s
+; 0.12s
 ; (get-info :all-statistics)
 (assert (=>
   (forall ((q$i@395@01 Int)) (!
@@ -11266,7 +11266,7 @@
 (check-sat)
 ; unknown
 (pop) ; 13
-; 0.02s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 13
@@ -11931,7 +11931,7 @@
 (check-sat)
 ; unknown
 (pop) ; 22
-; 0.01s
+; 0.02s
 ; (get-info :all-statistics)
 ; [then-branch: 123 | $unwrap[Int]($wrap[$Int]($unwrap[Int]($w_mul[$Int]($wrap[$Int]($unwrap[Int](l$Ann$1@201@01) - 1), l$D$2@218@01)) + 4 * $unwrap[Int](l$D_P$1@391@01))) != 0 | live]
 ; [else-branch: 123 | $unwrap[Int]($wrap[$Int]($unwrap[Int]($w_mul[$Int]($wrap[$Int]($unwrap[Int](l$Ann$1@201@01) - 1), l$D$2@218@01)) + 4 * $unwrap[Int](l$D_P$1@391@01))) == 0 | live]
@@ -12420,7 +12420,7 @@
 (check-sat)
 ; unsat
 (pop) ; 24
-; 1.59s
+; 0.36s
 ; (get-info :all-statistics)
 (assert (=>
   (forall ((q$i@397@01 Int)) (!
@@ -12513,7 +12513,7 @@
 (check-sat)
 ; unknown
 (pop) ; 26
-; 0.02s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 26
@@ -12839,7 +12839,7 @@
 (check-sat)
 ; unsat
 (pop) ; 28
-; 0.44s
+; 0.40s
 ; (get-info :all-statistics)
 (assert (=>
   (forall ((q$i@399@01 Int)) (!
@@ -13136,7 +13136,7 @@
 (check-sat)
 ; unknown
 (pop) ; 32
-; 0.02s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 152 | QA q$i@402@01 :: 0 <= q$i@402@01 && q$i@402@01 < 3 ==> l$xp@166@01[0] == l$xp@166@01[q$i@402@01] | live]
 ; [else-branch: 152 | !(QA q$i@402@01 :: 0 <= q$i@402@01 && q$i@402@01 < 3 ==> l$xp@166@01[0] == l$xp@166@01[q$i@402@01]) | live]
@@ -13227,7 +13227,7 @@
 (check-sat)
 ; unsat
 (pop) ; 29
-; 0.41s
+; 0.33s
 ; (get-info :all-statistics)
 (assert (=>
   (forall ((q$i@402@01 Int)) (!
@@ -13912,7 +13912,7 @@
 (check-sat)
 ; unsat
 (pop) ; 28
-; 0.40s
+; 0.49s
 ; (get-info :all-statistics)
 (assert (=>
   (forall ((q$i@406@01 Int)) (!
@@ -14300,7 +14300,7 @@
 (check-sat)
 ; unsat
 (pop) ; 29
-; 0.44s
+; 0.30s
 ; (get-info :all-statistics)
 (assert (=>
   (forall ((q$i@409@01 Int)) (!
@@ -14830,7 +14830,7 @@
 (check-sat)
 ; unsat
 (pop) ; 13
-; 0.05s
+; 0.10s
 ; (get-info :all-statistics)
 (assert (=>
   (forall ((q$i@413@01 Int)) (!
@@ -17834,7 +17834,7 @@
 (check-sat)
 ; unsat
 (pop) ; 31
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [eval] l$i1$xp[q$i]
 (push) ; 31
@@ -17939,7 +17939,7 @@
 (check-sat)
 ; unsat
 (pop) ; 28
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (pop) ; 27
 (push) ; 27
@@ -18221,7 +18221,7 @@
 (check-sat)
 ; unknown
 (pop) ; 26
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 256 | True | live]
 ; [else-branch: 256 | False | dead]

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 02:15:30
+// Date:         2024-12-27 10:24:29
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpredicates/predicates/arguments.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpredicates/predicates/arguments-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -883,12 +883,12 @@ procedure unrelated(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -909,8 +909,8 @@ procedure unrelated(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -926,8 +926,8 @@ procedure unrelated(this: Ref) returns ()
   }
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of unrelated might not hold. There might be insufficient permission to access this.unrelatedField (arguments.vpr@11.13--11.44) [105050]"}
@@ -949,12 +949,12 @@ procedure t1_1(this: Ref, xs: (Seq Ref), b_24: bool) returns ()
 {
   var QPMask: MaskType;
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newVersion: FrameType;
   var freshVersion: FrameType;
   var PreCallHeap: HeapType;
@@ -1020,8 +1020,8 @@ procedure t1_1(this: Ref, xs: (Seq Ref), b_24: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1038,8 +1038,8 @@ procedure t1_1(this: Ref, xs: (Seq Ref), b_24: bool) returns ()
   // -- Translating statement: unfold acc(valid(this, b), write) -- arguments.vpr@24.5--24.38
     assume valid#trigger(Heap, valid(this, b_24));
     assume Heap[null, valid(this, b_24)] == FrameFragment((if b_24 then FrameFragment(Heap[this, f_7]) else FrameFragment(Heap[this, g])));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding valid(this, b) might fail. There might be insufficient permission to access valid(this, b) (arguments.vpr@24.5--24.38) [105054]"}
@@ -1085,8 +1085,8 @@ procedure t1_1(this: Ref, xs: (Seq Ref), b_24: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(valid(this, b), write) -- arguments.vpr@30.5--30.36
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     if (b_24) {
       perm := FullPerm;
       if (perm != NoPerm) {
@@ -1126,8 +1126,8 @@ procedure t1_1(this: Ref, xs: (Seq Ref), b_24: bool) returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  The precondition of method unrelated might not hold. There might be insufficient permission to access this.unrelatedField (arguments.vpr@31.5--31.20) [105065]"}
@@ -1148,8 +1148,8 @@ procedure t1_1(this: Ref, xs: (Seq Ref), b_24: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of t1_1 might not hold. There might be insufficient permission to access valid(this, b) (arguments.vpr@22.13--22.39) [105066]"}
@@ -1170,13 +1170,13 @@ procedure t1_2(this: Ref, xs: (Seq Ref), b_24: bool) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newVersion: FrameType;
   var freshVersion: FrameType;
   var PreCallHeap: HeapType;
@@ -1280,8 +1280,8 @@ procedure t1_2(this: Ref, xs: (Seq Ref), b_24: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1298,8 +1298,8 @@ procedure t1_2(this: Ref, xs: (Seq Ref), b_24: bool) returns ()
   // -- Translating statement: unfold acc(valid(this, b), write) -- arguments.vpr@40.5--40.38
     assume valid#trigger(Heap, valid(this, b_24));
     assume Heap[null, valid(this, b_24)] == FrameFragment((if b_24 then FrameFragment(Heap[this, f_7]) else FrameFragment(Heap[this, g])));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding valid(this, b) might fail. There might be insufficient permission to access valid(this, b) (arguments.vpr@40.5--40.38) [105071]"}
@@ -1345,8 +1345,8 @@ procedure t1_2(this: Ref, xs: (Seq Ref), b_24: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(valid(this, b), write) -- arguments.vpr@46.5--46.36
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     if (b_24) {
       perm := FullPerm;
       if (perm != NoPerm) {
@@ -1386,8 +1386,8 @@ procedure t1_2(this: Ref, xs: (Seq Ref), b_24: bool) returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  The precondition of method unrelated might not hold. There might be insufficient permission to access this.unrelatedField (arguments.vpr@47.5--47.20) [105082]"}
@@ -1408,8 +1408,8 @@ procedure t1_2(this: Ref, xs: (Seq Ref), b_24: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of t1_2 might not hold. There might be insufficient permission to access valid(this, b) (arguments.vpr@38.13--38.39) [105083]"}
@@ -1430,12 +1430,12 @@ procedure t1_3(this: Ref, xs: (Seq Ref), b_24: bool) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var perm: Perm;
   var newVersion: FrameType;
   var freshVersion: FrameType;
@@ -1540,8 +1540,8 @@ procedure t1_3(this: Ref, xs: (Seq Ref), b_24: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1596,8 +1596,8 @@ procedure t1_3(this: Ref, xs: (Seq Ref), b_24: bool) returns ()
   // -- Translating statement: unfold acc(valid(this, b), write) -- arguments.vpr@56.5--56.38
     assume valid#trigger(Heap, valid(this, b_24));
     assume Heap[null, valid(this, b_24)] == FrameFragment((if b_24 then FrameFragment(Heap[this, f_7]) else FrameFragment(Heap[this, g])));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding valid(this, b) might fail. There might be insufficient permission to access valid(this, b) (arguments.vpr@56.5--56.38) [105089]"}
@@ -1643,8 +1643,8 @@ procedure t1_3(this: Ref, xs: (Seq Ref), b_24: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(valid(this, b), write) -- arguments.vpr@62.5--62.36
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     if (b_24) {
       perm := FullPerm;
       if (perm != NoPerm) {
@@ -1684,8 +1684,8 @@ procedure t1_3(this: Ref, xs: (Seq Ref), b_24: bool) returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  The precondition of method unrelated might not hold. There might be insufficient permission to access this.unrelatedField (arguments.vpr@63.5--63.20) [105100]"}
@@ -1706,8 +1706,8 @@ procedure t1_3(this: Ref, xs: (Seq Ref), b_24: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     havoc QPMask;
     
     // -- check that the permission amount is positive
@@ -1768,12 +1768,12 @@ procedure t1_4(this: Ref, xs: (Seq Ref), b_24: bool) returns ()
 {
   var perm: Perm;
   var QPMask: MaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newVersion: FrameType;
   var freshVersion: FrameType;
   var PreCallHeap: HeapType;
@@ -1842,8 +1842,8 @@ procedure t1_4(this: Ref, xs: (Seq Ref), b_24: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1860,8 +1860,8 @@ procedure t1_4(this: Ref, xs: (Seq Ref), b_24: bool) returns ()
   // -- Translating statement: unfold acc(valid(this, b), write) -- arguments.vpr@72.5--72.38
     assume valid#trigger(Heap, valid(this, b_24));
     assume Heap[null, valid(this, b_24)] == FrameFragment((if b_24 then FrameFragment(Heap[this, f_7]) else FrameFragment(Heap[this, g])));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding valid(this, b) might fail. There might be insufficient permission to access valid(this, b) (arguments.vpr@72.5--72.38) [105106]"}
@@ -1907,8 +1907,8 @@ procedure t1_4(this: Ref, xs: (Seq Ref), b_24: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(valid(this, b), write) -- arguments.vpr@78.5--78.36
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     if (b_24) {
       perm := FullPerm;
       if (perm != NoPerm) {
@@ -1948,8 +1948,8 @@ procedure t1_4(this: Ref, xs: (Seq Ref), b_24: bool) returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  The precondition of method unrelated might not hold. There might be insufficient permission to access this.unrelatedField (arguments.vpr@79.5--79.20) [105117]"}
@@ -1970,8 +1970,8 @@ procedure t1_4(this: Ref, xs: (Seq Ref), b_24: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of t1_4 might not hold. There might be insufficient permission to access valid(this, b) (arguments.vpr@70.13--70.39) [105118]"}
@@ -1993,12 +1993,12 @@ procedure t2(x1_2: Ref, x2: Ref) returns ()
 {
   var perm: Perm;
   var QPMask: MaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var freshVersion: FrameType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
@@ -2065,8 +2065,8 @@ procedure t2(x1_2: Ref, x2: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -2119,8 +2119,8 @@ procedure t2(x1_2: Ref, x2: Ref) returns ()
   }
   
   // -- Translating statement: fold acc(valid(x1, true), write) -- arguments.vpr@88.5--88.37
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding valid(x1, true) might fail. There might be insufficient permission to access x1.f (arguments.vpr@88.5--88.37) [105123]"}
@@ -2143,8 +2143,8 @@ procedure t2(x1_2: Ref, x2: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(valid(x2, true), write) -- arguments.vpr@89.5--89.37
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding valid(x2, true) might fail. There might be insufficient permission to access x2.f (arguments.vpr@89.5--89.37) [105129]"}
@@ -2171,8 +2171,8 @@ procedure t2(x1_2: Ref, x2: Ref) returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  The precondition of method unrelated might not hold. There might be insufficient permission to access x1.unrelatedField (arguments.vpr@90.5--90.18) [105133]"}
@@ -2193,8 +2193,8 @@ procedure t2(x1_2: Ref, x2: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     havoc QPMask;
     
     // -- check that the permission amount is positive
@@ -2255,12 +2255,12 @@ procedure t2_b(x1_2: Ref, x2: Ref) returns ()
 {
   var perm: Perm;
   var QPMask: MaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var freshVersion: FrameType;
   var ExhaleHeap: HeapType;
   
@@ -2323,8 +2323,8 @@ procedure t2_b(x1_2: Ref, x2: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -2377,8 +2377,8 @@ procedure t2_b(x1_2: Ref, x2: Ref) returns ()
   }
   
   // -- Translating statement: fold acc(valid(x2, false), write) -- arguments.vpr@99.5--99.38
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding valid(x2, false) might fail. There might be insufficient permission to access x2.g (arguments.vpr@99.5--99.38) [105142]"}
@@ -2401,8 +2401,8 @@ procedure t2_b(x1_2: Ref, x2: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     havoc QPMask;
     
     // -- check that the permission amount is positive
@@ -2465,16 +2465,16 @@ procedure t3_1(this: Ref, xs: (Seq Ref), b_24: bool) returns ()
   var QPMask: MaskType;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
-  var oldMask: MaskType;
+  var ExhaleWellDef0Mask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var newVersion: FrameType;
   var freshVersion: FrameType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -2583,8 +2583,8 @@ procedure t3_1(this: Ref, xs: (Seq Ref), b_24: bool) returns ()
       UnfoldingMask := Mask;
       assume valid#trigger(UnfoldingHeap, valid(this, false));
       assume UnfoldingHeap[null, valid(this, false)] == FrameFragment(FrameFragment(UnfoldingHeap[this, g]));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access valid(this, false) (arguments.vpr@107.15--107.74) [105148]"}
@@ -2608,8 +2608,8 @@ procedure t3_1(this: Ref, xs: (Seq Ref), b_24: bool) returns ()
       UnfoldingMask := Mask;
       assume valid#trigger(UnfoldingHeap, valid(this, false));
       assume UnfoldingHeap[null, valid(this, false)] == FrameFragment(FrameFragment(UnfoldingHeap[this, g]));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       UnfoldingMask := UnfoldingMask[null, valid(this, false):=UnfoldingMask[null, valid(this, false)] - perm];
       perm := FullPerm;
@@ -2623,8 +2623,8 @@ procedure t3_1(this: Ref, xs: (Seq Ref), b_24: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -2644,8 +2644,8 @@ procedure t3_1(this: Ref, xs: (Seq Ref), b_24: bool) returns ()
       UnfoldingMask := PostMask;
       assume valid#trigger(UnfoldingHeap, valid(this, false));
       assume UnfoldingHeap[null, valid(this, false)] == FrameFragment(FrameFragment(UnfoldingHeap[this, g]));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access valid(this, false) (arguments.vpr@110.14--110.73) [105150]"}
@@ -2669,8 +2669,8 @@ procedure t3_1(this: Ref, xs: (Seq Ref), b_24: bool) returns ()
       UnfoldingMask := PostMask;
       assume valid#trigger(UnfoldingHeap, valid(this, false));
       assume UnfoldingHeap[null, valid(this, false)] == FrameFragment(FrameFragment(UnfoldingHeap[this, g]));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       UnfoldingMask := UnfoldingMask[null, valid(this, false):=UnfoldingMask[null, valid(this, false)] - perm];
       perm := FullPerm;
@@ -2687,8 +2687,8 @@ procedure t3_1(this: Ref, xs: (Seq Ref), b_24: bool) returns ()
   // -- Translating statement: unfold acc(valid(this, true), write) -- arguments.vpr@112.5--112.41
     assume valid#trigger(Heap, valid(this, true));
     assume Heap[null, valid(this, true)] == FrameFragment(FrameFragment(Heap[this, f_7]));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding valid(this, true) might fail. There might be insufficient permission to access valid(this, true) (arguments.vpr@112.5--112.41) [105154]"}
@@ -2715,8 +2715,8 @@ procedure t3_1(this: Ref, xs: (Seq Ref), b_24: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(valid(this, true), write) -- arguments.vpr@114.5--114.39
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding valid(this, true) might fail. There might be insufficient permission to access this.f (arguments.vpr@114.5--114.39) [105160]"}
@@ -2739,8 +2739,8 @@ procedure t3_1(this: Ref, xs: (Seq Ref), b_24: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of t3_1 might not hold. There might be insufficient permission to access valid(this, b) (arguments.vpr@108.13--108.39) [105164]"}
@@ -2759,8 +2759,8 @@ procedure t3_1(this: Ref, xs: (Seq Ref), b_24: bool) returns ()
       UnfoldingMask := ExhaleWellDef0Mask;
       assume valid#trigger(UnfoldingHeap, valid(this, false));
       assume UnfoldingHeap[null, valid(this, false)] == FrameFragment(FrameFragment(UnfoldingHeap[this, g]));
-      ExhaleWellDef1Mask := UnfoldingMask;
       ExhaleWellDef1Heap := UnfoldingHeap;
+      ExhaleWellDef1Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Postcondition of t3_1 might not hold. There might be insufficient permission to access valid(this, false) (arguments.vpr@110.14--110.73) [105166]"}
@@ -2795,10 +2795,10 @@ procedure t3a(this: Ref, xs: (Seq Ref), b_24: bool) returns ()
   var QPMask: MaskType;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
-  var oldMask: MaskType;
+  var ExhaleWellDef0Mask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var newVersion: FrameType;
@@ -2806,8 +2806,8 @@ procedure t3a(this: Ref, xs: (Seq Ref), b_24: bool) returns ()
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
   var ExhaleHeap: HeapType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -2915,8 +2915,8 @@ procedure t3a(this: Ref, xs: (Seq Ref), b_24: bool) returns ()
       UnfoldingMask := Mask;
       assume valid#trigger(UnfoldingHeap, valid(this, false));
       assume UnfoldingHeap[null, valid(this, false)] == FrameFragment(FrameFragment(UnfoldingHeap[this, g]));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access valid(this, false) (arguments.vpr@122.15--122.74) [105170]"}
@@ -2940,8 +2940,8 @@ procedure t3a(this: Ref, xs: (Seq Ref), b_24: bool) returns ()
       UnfoldingMask := Mask;
       assume valid#trigger(UnfoldingHeap, valid(this, false));
       assume UnfoldingHeap[null, valid(this, false)] == FrameFragment(FrameFragment(UnfoldingHeap[this, g]));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       UnfoldingMask := UnfoldingMask[null, valid(this, false):=UnfoldingMask[null, valid(this, false)] - perm];
       perm := FullPerm;
@@ -2955,8 +2955,8 @@ procedure t3a(this: Ref, xs: (Seq Ref), b_24: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -2976,8 +2976,8 @@ procedure t3a(this: Ref, xs: (Seq Ref), b_24: bool) returns ()
       UnfoldingMask := PostMask;
       assume valid#trigger(UnfoldingHeap, valid(this, false));
       assume UnfoldingHeap[null, valid(this, false)] == FrameFragment(FrameFragment(UnfoldingHeap[this, g]));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access valid(this, false) (arguments.vpr@125.14--125.73) [105172]"}
@@ -3001,8 +3001,8 @@ procedure t3a(this: Ref, xs: (Seq Ref), b_24: bool) returns ()
       UnfoldingMask := PostMask;
       assume valid#trigger(UnfoldingHeap, valid(this, false));
       assume UnfoldingHeap[null, valid(this, false)] == FrameFragment(FrameFragment(UnfoldingHeap[this, g]));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       UnfoldingMask := UnfoldingMask[null, valid(this, false):=UnfoldingMask[null, valid(this, false)] - perm];
       perm := FullPerm;
@@ -3019,8 +3019,8 @@ procedure t3a(this: Ref, xs: (Seq Ref), b_24: bool) returns ()
   // -- Translating statement: unfold acc(valid(this, true), write) -- arguments.vpr@127.5--127.41
     assume valid#trigger(Heap, valid(this, true));
     assume Heap[null, valid(this, true)] == FrameFragment(FrameFragment(Heap[this, f_7]));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding valid(this, true) might fail. There might be insufficient permission to access valid(this, true) (arguments.vpr@127.5--127.41) [105176]"}
@@ -3047,8 +3047,8 @@ procedure t3a(this: Ref, xs: (Seq Ref), b_24: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(valid(this, true), write) -- arguments.vpr@129.5--129.39
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding valid(this, true) might fail. There might be insufficient permission to access this.f (arguments.vpr@129.5--129.39) [105182]"}
@@ -3075,8 +3075,8 @@ procedure t3a(this: Ref, xs: (Seq Ref), b_24: bool) returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  The precondition of method unrelated might not hold. There might be insufficient permission to access this.unrelatedField (arguments.vpr@130.5--130.20) [105186]"}
@@ -3097,8 +3097,8 @@ procedure t3a(this: Ref, xs: (Seq Ref), b_24: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of t3a might not hold. There might be insufficient permission to access valid(this, b) (arguments.vpr@123.13--123.39) [105187]"}
@@ -3117,8 +3117,8 @@ procedure t3a(this: Ref, xs: (Seq Ref), b_24: bool) returns ()
       UnfoldingMask := ExhaleWellDef0Mask;
       assume valid#trigger(UnfoldingHeap, valid(this, false));
       assume UnfoldingHeap[null, valid(this, false)] == FrameFragment(FrameFragment(UnfoldingHeap[this, g]));
-      ExhaleWellDef1Mask := UnfoldingMask;
       ExhaleWellDef1Heap := UnfoldingHeap;
+      ExhaleWellDef1Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Postcondition of t3a might not hold. There might be insufficient permission to access valid(this, false) (arguments.vpr@125.14--125.73) [105189]"}
@@ -3150,10 +3150,10 @@ procedure t3b(this: Ref, xs: (Seq Ref), b_24: bool) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var perm: Perm;
   var newVersion: FrameType;
   
@@ -3256,14 +3256,14 @@ procedure t3b(this: Ref, xs: (Seq Ref), b_24: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: unfold acc(valid(this, true), write) -- arguments.vpr@138.5--138.41
     assume valid#trigger(Heap, valid(this, true));
     assume Heap[null, valid(this, true)] == FrameFragment(FrameFragment(Heap[this, f_7]));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding valid(this, true) might fail. There might be insufficient permission to access valid(this, true) (arguments.vpr@138.5--138.41) [105195]"}

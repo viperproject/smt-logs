@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 02:35:26
+// Date:         2024-12-27 10:44:21
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/basic/regression1.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/basic/regression1-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -237,8 +237,8 @@ axiom (forall x: bool ::
 procedure Simple_lessinitgreater(rd_1: Perm, this: Ref) returns (vresult: Ref)
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -257,8 +257,8 @@ procedure Simple_lessinitgreater(rd_1: Perm, this: Ref) returns (vresult: Ref)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: vresult := unit() -- regression1.vpr@45.3--45.20
     vresult := (unit(): Ref);
@@ -272,12 +272,12 @@ procedure Simple_lessinitgreater(rd_1: Perm, this: Ref) returns (vresult: Ref)
 procedure Simple_test2(rd_1: Perm, this: Ref, x: int) returns (vresult: int)
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -298,8 +298,8 @@ procedure Simple_test2(rd_1: Perm, this: Ref, x: int) returns (vresult: int)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -316,8 +316,8 @@ procedure Simple_test2(rd_1: Perm, this: Ref, x: int) returns (vresult: int)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of Simple_test2 might not hold. Assertion vresult == x * x might not hold. (regression1.vpr@53.11--53.29) [188199]"}
       vresult == x * x;
 }

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 02:43:38
+// Date:         2024-12-27 10:52:31
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0267b.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0267b-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -505,8 +505,8 @@ procedure purify_graph#definedness(nodes_1: (Set Ref)) returns (Result: (Set Nod
 {
   var QPMask: MaskType;
   var n_85: Ref;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var perm: Perm;
   var ExhaleHeap: HeapType;
   
@@ -566,8 +566,8 @@ procedure purify_graph#definedness(nodes_1: (Set Ref)) returns (Result: (Set Nod
         if (nodes_1[n_85]) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
             assert {:msg "  Precondition of function $ might not hold. There might be insufficient permission to access n.m (0267b.vpr@13.45--13.49) [216695]"}
               NoPerm < perm ==> NoPerm < Mask[n_85, m_22];

@@ -1,0 +1,7 @@
+version = "0.2.3"
+description = ""
+requires = "threads unix"
+archive(byte) = "memtrace.cma"
+archive(native) = "memtrace.cmxa"
+plugin(byte) = "memtrace.cma"
+plugin(native) = "memtrace.cmxs"

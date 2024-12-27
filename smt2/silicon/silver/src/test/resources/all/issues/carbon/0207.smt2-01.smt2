@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-27 01:59:41
+; Started: 2024-12-27 10:08:47
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -959,11 +959,11 @@
 (assert (forall ((s@$ $Snap) (this@0@00 Array_)) (!
   (= (elements%limited s@$ this@0@00) (elements s@$ this@0@00))
   :pattern ((elements s@$ this@0@00))
-  :qid |quant-u-23529|)))
+  :qid |quant-u-23540|)))
 (assert (forall ((s@$ $Snap) (this@0@00 Array_)) (!
   (elements%stateless this@0@00)
   :pattern ((elements%limited s@$ this@0@00))
-  :qid |quant-u-23530|)))
+  :qid |quant-u-23541|)))
 (assert (forall ((s@$ $Snap) (this@0@00 Array_)) (!
   (let ((result@1@00 (elements%limited s@$ this@0@00))) (and
     (forall ((i@2@00 Int)) (!
@@ -977,7 +977,7 @@
       :pattern ((Seq_contains_trigger
         (Seq_range 0 (length<Int> this@0@00))
         i@2@00))
-      :qid |quant-u-23532|))
+      :qid |quant-u-23543|))
     (forall ((r $Ref)) (!
       (=>
         (and
@@ -1021,11 +1021,11 @@
         :pattern ((Seq_contains_trigger (Seq_range 0 (length<Int> this@0@00)) i))
         )))))
   :pattern ((elements%limited s@$ this@0@00))
-  :qid |quant-u-23534|)))
+  :qid |quant-u-23545|)))
 (assert (forall ((s@$ $Snap) (this@0@00 Array_)) (!
   (let ((result@1@00 (elements%limited s@$ this@0@00))) true)
   :pattern ((elements%limited s@$ this@0@00))
-  :qid |quant-u-23535|)))
+  :qid |quant-u-23546|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- swap01 ----------
@@ -1100,7 +1100,7 @@
       (= (inv@9@01 (loc<Ref> a@3@01 i@7@01)) i@7@01)
       (img@10@01 (loc<Ref> a@3@01 i@7@01))))
   :pattern (($FVF.loc_val ($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> ($Snap.first $t@6@01)) (loc<Ref> a@3@01 i@7@01)) (loc<Ref> a@3@01 i@7@01)))
-  :qid |quant-u-23537|)))
+  :qid |quant-u-23548|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -1140,7 +1140,7 @@
     (and (<= 0 (inv@9@01 r)) (< (inv@9@01 r) (length<Int> a@3@01)))
     ($FVF.loc_val ($FVF.lookup_val (as sm@11@01  $FVF<val>) r) r))
   :pattern ((inv@9@01 r))
-  :qid |quant-u-23538|)))
+  :qid |quant-u-23549|)))
 (assert (=
   ($Snap.second $t@6@01)
   ($Snap.combine
@@ -1265,7 +1265,7 @@
     (Seq_contains (Seq_range 0 (length<Int> a@3@01)) (inv@16@01 r))
     ($FVF.loc_val ($FVF.lookup_val (as sm@11@01  $FVF<val>) r) r))
   :pattern ((inv@16@01 r))
-  :qid |quant-u-23540|)))
+  :qid |quant-u-23551|)))
 (push) ; 5
 (assert (not (forall ((r $Ref)) (!
   (=>
@@ -1282,7 +1282,7 @@
         $Perm.No)
       $Perm.No))
   
-  :qid |quant-u-23541|))))
+  :qid |quant-u-23552|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -1382,7 +1382,7 @@
       (Seq_contains (Seq_range 0 (length<Int> a@3@01)) (inv@16@01 r))
       ($FVF.loc_val ($FVF.lookup_val (as sm@11@01  $FVF<val>) r) r))
     :pattern ((inv@16@01 r))
-    :qid |quant-u-23540|))
+    :qid |quant-u-23551|))
   (elements%precondition ($SortWrappers.$FVF<val>To$Snap (as sm@18@01  $FVF<val>)) a@3@01)))
 (push) ; 4
 ; [then-branch: 1 | e@14@01 in elements(sm@18@01, a@3@01) | live]
@@ -1468,7 +1468,7 @@
     (Seq_contains (Seq_range 0 (length<Int> a@3@01)) (inv@16@01 r))
     ($FVF.loc_val ($FVF.lookup_val (as sm@11@01  $FVF<val>) r) r))
   :pattern ((inv@16@01 r))
-  :qid |quant-u-23540|)))
+  :qid |quant-u-23551|)))
 (assert (elements%precondition ($SortWrappers.$FVF<val>To$Snap (as sm@18@01  $FVF<val>)) a@3@01))
 ; Nested auxiliary terms: non-globals (aux)
 (assert (forall ((e@14@01 Int)) (!
@@ -1580,7 +1580,7 @@
       (pTaken@22@01 r))
     $Perm.No)
   
-  :qid |quant-u-23543|))))
+  :qid |quant-u-23554|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -1592,7 +1592,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@22@01 r) $Perm.No)
   
-  :qid |quant-u-23544|))))
+  :qid |quant-u-23555|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -1607,7 +1607,7 @@
     (= r (loc<Ref> a@3@01 x@4@01))
     (= (- $Perm.Write (pTaken@22@01 r)) $Perm.No))
   
-  :qid |quant-u-23545|))))
+  :qid |quant-u-23556|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -1705,7 +1705,7 @@
       (pTaken@25@01 r))
     $Perm.No)
   
-  :qid |quant-u-23547|))))
+  :qid |quant-u-23558|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -1717,7 +1717,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@25@01 r) $Perm.No)
   
-  :qid |quant-u-23548|))))
+  :qid |quant-u-23559|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -1732,7 +1732,7 @@
     (= r (loc<Ref> a@3@01 y@5@01))
     (= (- $Perm.Write (pTaken@25@01 r)) $Perm.No))
   
-  :qid |quant-u-23549|))))
+  :qid |quant-u-23560|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -1846,7 +1846,7 @@
     (Seq_contains (Seq_range 0 (length<Int> a@3@01)) (inv@29@01 r))
     ($FVF.loc_val ($FVF.lookup_val (as sm@31@01  $FVF<val>) r) r))
   :pattern ((inv@29@01 r))
-  :qid |quant-u-23551|)))
+  :qid |quant-u-23562|)))
 (push) ; 4
 (assert (not (forall ((r $Ref)) (!
   (=>
@@ -1867,7 +1867,7 @@
         (ite (= r (loc<Ref> a@3@01 x@4@01)) $Perm.Write $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-23552|))))
+  :qid |quant-u-23563|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -2070,7 +2070,7 @@
       (Seq_contains (Seq_range 0 (length<Int> a@3@01)) (inv@29@01 r))
       ($FVF.loc_val ($FVF.lookup_val (as sm@31@01  $FVF<val>) r) r))
     :pattern ((inv@29@01 r))
-    :qid |quant-u-23551|))
+    :qid |quant-u-23562|))
   (elements%precondition ($SortWrappers.$FVF<val>To$Snap (as sm@32@01  $FVF<val>)) a@3@01)))
 ; [eval] old(elements(a))
 ; [eval] elements(a)
@@ -2131,7 +2131,7 @@
     (Seq_contains (Seq_range 0 (length<Int> a@3@01)) (inv@34@01 r))
     ($FVF.loc_val ($FVF.lookup_val (as sm@21@01  $FVF<val>) r) r))
   :pattern ((inv@34@01 r))
-  :qid |quant-u-23554|)))
+  :qid |quant-u-23565|)))
 (push) ; 4
 (assert (not (forall ((r $Ref)) (!
   (=>
@@ -2148,7 +2148,7 @@
         $Perm.No)
       $Perm.No))
   
-  :qid |quant-u-23555|))))
+  :qid |quant-u-23566|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -2248,7 +2248,7 @@
       (Seq_contains (Seq_range 0 (length<Int> a@3@01)) (inv@34@01 r))
       ($FVF.loc_val ($FVF.lookup_val (as sm@21@01  $FVF<val>) r) r))
     :pattern ((inv@34@01 r))
-    :qid |quant-u-23554|))
+    :qid |quant-u-23565|))
   (elements%precondition ($SortWrappers.$FVF<val>To$Snap (as sm@36@01  $FVF<val>)) a@3@01)))
 (push) ; 3
 (assert (not (Set_equal (elements ($SortWrappers.$FVF<val>To$Snap (as sm@32@01  $FVF<val>)) a@3@01) (elements ($SortWrappers.$FVF<val>To$Snap (as sm@36@01  $FVF<val>)) a@3@01))))
@@ -2518,7 +2518,7 @@
     (Seq_contains (Seq_range 0 (length<Int> a@3@01)) (inv@40@01 r))
     ($FVF.loc_val ($FVF.lookup_val (as sm@42@01  $FVF<val>) r) r))
   :pattern ((inv@40@01 r))
-  :qid |quant-u-23557|)))
+  :qid |quant-u-23568|)))
 (push) ; 4
 (assert (not (forall ((r $Ref)) (!
   (=>
@@ -2539,7 +2539,7 @@
         (ite (= r (loc<Ref> a@3@01 y@5@01)) $Perm.Write $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-23558|))))
+  :qid |quant-u-23569|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -2742,7 +2742,7 @@
       (Seq_contains (Seq_range 0 (length<Int> a@3@01)) (inv@40@01 r))
       ($FVF.loc_val ($FVF.lookup_val (as sm@42@01  $FVF<val>) r) r))
     :pattern ((inv@40@01 r))
-    :qid |quant-u-23557|))
+    :qid |quant-u-23568|))
   (elements%precondition ($SortWrappers.$FVF<val>To$Snap (as sm@43@01  $FVF<val>)) a@3@01)))
 ; [eval] old(elements(a))
 ; [state consolidation]
@@ -2833,7 +2833,7 @@
     (Seq_contains (Seq_range 0 (length<Int> a@3@01)) (inv@46@01 r))
     ($FVF.loc_val ($FVF.lookup_val (as sm@21@01  $FVF<val>) r) r))
   :pattern ((inv@46@01 r))
-  :qid |quant-u-23560|)))
+  :qid |quant-u-23571|)))
 (push) ; 4
 (assert (not (forall ((r $Ref)) (!
   (=>
@@ -2850,7 +2850,7 @@
         $Perm.No)
       $Perm.No))
   
-  :qid |quant-u-23561|))))
+  :qid |quant-u-23572|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -2950,7 +2950,7 @@
       (Seq_contains (Seq_range 0 (length<Int> a@3@01)) (inv@46@01 r))
       ($FVF.loc_val ($FVF.lookup_val (as sm@21@01  $FVF<val>) r) r))
     :pattern ((inv@46@01 r))
-    :qid |quant-u-23560|))
+    :qid |quant-u-23571|))
   (elements%precondition ($SortWrappers.$FVF<val>To$Snap (as sm@48@01  $FVF<val>)) a@3@01)))
 (push) ; 3
 (assert (not (Set_equal (elements ($SortWrappers.$FVF<val>To$Snap (as sm@43@01  $FVF<val>)) a@3@01) (elements ($SortWrappers.$FVF<val>To$Snap (as sm@48@01  $FVF<val>)) a@3@01))))
@@ -3180,7 +3180,7 @@
     (Seq_contains (Seq_range 0 (length<Int> a@3@01)) (inv@52@01 r))
     ($FVF.loc_val ($FVF.lookup_val (as sm@49@01  $FVF<val>) r) r))
   :pattern ((inv@52@01 r))
-  :qid |quant-u-23563|)))
+  :qid |quant-u-23574|)))
 (push) ; 4
 (assert (not (forall ((r $Ref)) (!
   (=>
@@ -3201,7 +3201,7 @@
         (ite (= r (loc<Ref> a@3@01 x@4@01)) $Perm.Write $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-23564|))))
+  :qid |quant-u-23575|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -3365,7 +3365,7 @@
       (Seq_contains (Seq_range 0 (length<Int> a@3@01)) (inv@52@01 r))
       ($FVF.loc_val ($FVF.lookup_val (as sm@49@01  $FVF<val>) r) r))
     :pattern ((inv@52@01 r))
-    :qid |quant-u-23563|))
+    :qid |quant-u-23574|))
   (elements%precondition ($SortWrappers.$FVF<val>To$Snap (as sm@54@01  $FVF<val>)) a@3@01)))
 ; [eval] old(elements(a))
 ; [state consolidation]
@@ -3456,7 +3456,7 @@
     (Seq_contains (Seq_range 0 (length<Int> a@3@01)) (inv@57@01 r))
     ($FVF.loc_val ($FVF.lookup_val (as sm@21@01  $FVF<val>) r) r))
   :pattern ((inv@57@01 r))
-  :qid |quant-u-23566|)))
+  :qid |quant-u-23577|)))
 (push) ; 4
 (assert (not (forall ((r $Ref)) (!
   (=>
@@ -3473,7 +3473,7 @@
         $Perm.No)
       $Perm.No))
   
-  :qid |quant-u-23567|))))
+  :qid |quant-u-23578|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -3573,7 +3573,7 @@
       (Seq_contains (Seq_range 0 (length<Int> a@3@01)) (inv@57@01 r))
       ($FVF.loc_val ($FVF.lookup_val (as sm@21@01  $FVF<val>) r) r))
     :pattern ((inv@57@01 r))
-    :qid |quant-u-23566|))
+    :qid |quant-u-23577|))
   (elements%precondition ($SortWrappers.$FVF<val>To$Snap (as sm@59@01  $FVF<val>)) a@3@01)))
 (push) ; 3
 (assert (not (Set_equal (elements ($SortWrappers.$FVF<val>To$Snap (as sm@54@01  $FVF<val>)) a@3@01) (elements ($SortWrappers.$FVF<val>To$Snap (as sm@59@01  $FVF<val>)) a@3@01))))
@@ -3775,7 +3775,7 @@
     (Seq_contains (Seq_range 0 (length<Int> a@3@01)) (inv@61@01 r))
     ($FVF.loc_val ($FVF.lookup_val (as sm@63@01  $FVF<val>) r) r))
   :pattern ((inv@61@01 r))
-  :qid |quant-u-23569|)))
+  :qid |quant-u-23580|)))
 (push) ; 4
 (assert (not (forall ((r $Ref)) (!
   (=>
@@ -3796,11 +3796,11 @@
         (ite (= r (loc<Ref> a@3@01 y@5@01)) $Perm.Write $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-23570|))))
+  :qid |quant-u-23581|))))
 (check-sat)
 ; unsat
 (pop) ; 4
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (declare-const sm@64@01 $FVF<val>)
 ; Definitional axioms for snapshot map domain
@@ -3999,7 +3999,7 @@
       (Seq_contains (Seq_range 0 (length<Int> a@3@01)) (inv@61@01 r))
       ($FVF.loc_val ($FVF.lookup_val (as sm@63@01  $FVF<val>) r) r))
     :pattern ((inv@61@01 r))
-    :qid |quant-u-23569|))
+    :qid |quant-u-23580|))
   (elements%precondition ($SortWrappers.$FVF<val>To$Snap (as sm@64@01  $FVF<val>)) a@3@01)))
 ; [eval] old(elements(a))
 ; [state consolidation]
@@ -4090,7 +4090,7 @@
     (Seq_contains (Seq_range 0 (length<Int> a@3@01)) (inv@67@01 r))
     ($FVF.loc_val ($FVF.lookup_val (as sm@21@01  $FVF<val>) r) r))
   :pattern ((inv@67@01 r))
-  :qid |quant-u-23572|)))
+  :qid |quant-u-23583|)))
 (push) ; 4
 (assert (not (forall ((r $Ref)) (!
   (=>
@@ -4107,7 +4107,7 @@
         $Perm.No)
       $Perm.No))
   
-  :qid |quant-u-23573|))))
+  :qid |quant-u-23584|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -4207,14 +4207,14 @@
       (Seq_contains (Seq_range 0 (length<Int> a@3@01)) (inv@67@01 r))
       ($FVF.loc_val ($FVF.lookup_val (as sm@21@01  $FVF<val>) r) r))
     :pattern ((inv@67@01 r))
-    :qid |quant-u-23572|))
+    :qid |quant-u-23583|))
   (elements%precondition ($SortWrappers.$FVF<val>To$Snap (as sm@69@01  $FVF<val>)) a@3@01)))
 (push) ; 3
 (assert (not (Set_equal (elements ($SortWrappers.$FVF<val>To$Snap (as sm@64@01  $FVF<val>)) a@3@01) (elements ($SortWrappers.$FVF<val>To$Snap (as sm@69@01  $FVF<val>)) a@3@01))))
 (check-sat)
 ; unknown
 (pop) ; 3
-; 0.32s
+; 0.24s
 ; (get-info :all-statistics)
 (pop) ; 2
 (pop) ; 1
@@ -4284,7 +4284,7 @@
   :pattern (($FVF.loc_val ($FVF.lookup_val $t@79@01 (loc<Ref> a@73@01 i@77@01)) (loc<Ref> a@73@01 i@77@01)))
   :pattern ((Seq_contains (Seq_range 0 (length<Int> a@73@01)) i@77@01))
   :pattern ((Seq_contains_trigger (Seq_range 0 (length<Int> a@73@01)) i@77@01))
-  :qid |quant-u-23575|)))
+  :qid |quant-u-23586|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -4324,7 +4324,7 @@
     (Seq_contains (Seq_range 0 (length<Int> a@73@01)) (inv@80@01 r))
     ($FVF.loc_val ($FVF.lookup_val (as sm@82@01  $FVF<val>) r) r))
   :pattern ((inv@80@01 r))
-  :qid |quant-u-23576|)))
+  :qid |quant-u-23587|)))
 ; State saturation: after inhale
 (set-option :timeout 20)
 (check-sat)
@@ -4439,7 +4439,7 @@
     (Seq_contains (Seq_range 0 (length<Int> a@73@01)) (inv@89@01 r))
     ($FVF.loc_val ($FVF.lookup_val (as sm@82@01  $FVF<val>) r) r))
   :pattern ((inv@89@01 r))
-  :qid |quant-u-23578|)))
+  :qid |quant-u-23589|)))
 (push) ; 5
 (assert (not (forall ((r $Ref)) (!
   (=>
@@ -4456,7 +4456,7 @@
         $Perm.No)
       $Perm.No))
   
-  :qid |quant-u-23579|))))
+  :qid |quant-u-23590|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -4552,7 +4552,7 @@
       (Seq_contains (Seq_range 0 (length<Int> a@73@01)) (inv@89@01 r))
       ($FVF.loc_val ($FVF.lookup_val (as sm@82@01  $FVF<val>) r) r))
     :pattern ((inv@89@01 r))
-    :qid |quant-u-23578|))
+    :qid |quant-u-23589|))
   (elements%precondition ($SortWrappers.$FVF<val>To$Snap (as sm@91@01  $FVF<val>)) a@73@01)))
 (push) ; 4
 ; [then-branch: 2 | e@87@01 in elements(sm@91@01, a@73@01) | live]
@@ -4636,7 +4636,7 @@
     (Seq_contains (Seq_range 0 (length<Int> a@73@01)) (inv@89@01 r))
     ($FVF.loc_val ($FVF.lookup_val (as sm@82@01  $FVF<val>) r) r))
   :pattern ((inv@89@01 r))
-  :qid |quant-u-23578|)))
+  :qid |quant-u-23589|)))
 (assert (elements%precondition ($SortWrappers.$FVF<val>To$Snap (as sm@91@01  $FVF<val>)) a@73@01))
 ; Nested auxiliary terms: non-globals (aux)
 (assert (forall ((e@87@01 Int)) (!
@@ -4746,7 +4746,7 @@
       (pTaken@95@01 r))
     $Perm.No)
   
-  :qid |quant-u-23581|))))
+  :qid |quant-u-23592|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -4758,7 +4758,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@95@01 r) $Perm.No)
   
-  :qid |quant-u-23582|))))
+  :qid |quant-u-23593|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -4773,7 +4773,7 @@
     (= r (loc<Ref> a@73@01 x@74@01))
     (= (- $Perm.Write (pTaken@95@01 r)) $Perm.No))
   
-  :qid |quant-u-23583|))))
+  :qid |quant-u-23594|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -4869,7 +4869,7 @@
       (pTaken@98@01 r))
     $Perm.No)
   
-  :qid |quant-u-23585|))))
+  :qid |quant-u-23596|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -4881,7 +4881,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@98@01 r) $Perm.No)
   
-  :qid |quant-u-23586|))))
+  :qid |quant-u-23597|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -4896,7 +4896,7 @@
     (= r (loc<Ref> a@73@01 y@75@01))
     (= (- $Perm.Write (pTaken@98@01 r)) $Perm.No))
   
-  :qid |quant-u-23587|))))
+  :qid |quant-u-23598|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -5012,7 +5012,7 @@
     (Seq_contains (Seq_range 0 (length<Int> a@73@01)) (inv@102@01 r))
     ($FVF.loc_val ($FVF.lookup_val (as sm@104@01  $FVF<val>) r) r))
   :pattern ((inv@102@01 r))
-  :qid |quant-u-23589|)))
+  :qid |quant-u-23600|)))
 (push) ; 4
 (assert (not (forall ((r $Ref)) (!
   (=>
@@ -5033,7 +5033,7 @@
         (ite (= r (loc<Ref> a@73@01 x@74@01)) $Perm.Write $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-23590|))))
+  :qid |quant-u-23601|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -5236,7 +5236,7 @@
       (Seq_contains (Seq_range 0 (length<Int> a@73@01)) (inv@102@01 r))
       ($FVF.loc_val ($FVF.lookup_val (as sm@104@01  $FVF<val>) r) r))
     :pattern ((inv@102@01 r))
-    :qid |quant-u-23589|))
+    :qid |quant-u-23600|))
   (elements%precondition ($SortWrappers.$FVF<val>To$Snap (as sm@105@01  $FVF<val>)) a@73@01)))
 ; [eval] old[pre](elements(a))
 ; [eval] elements(a)
@@ -5297,7 +5297,7 @@
     (Seq_contains (Seq_range 0 (length<Int> a@73@01)) (inv@107@01 r))
     ($FVF.loc_val ($FVF.lookup_val (as sm@94@01  $FVF<val>) r) r))
   :pattern ((inv@107@01 r))
-  :qid |quant-u-23592|)))
+  :qid |quant-u-23603|)))
 (push) ; 4
 (assert (not (forall ((r $Ref)) (!
   (=>
@@ -5314,7 +5314,7 @@
         $Perm.No)
       $Perm.No))
   
-  :qid |quant-u-23593|))))
+  :qid |quant-u-23604|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -5414,7 +5414,7 @@
       (Seq_contains (Seq_range 0 (length<Int> a@73@01)) (inv@107@01 r))
       ($FVF.loc_val ($FVF.lookup_val (as sm@94@01  $FVF<val>) r) r))
     :pattern ((inv@107@01 r))
-    :qid |quant-u-23592|))
+    :qid |quant-u-23603|))
   (elements%precondition ($SortWrappers.$FVF<val>To$Snap (as sm@109@01  $FVF<val>)) a@73@01)))
 (push) ; 3
 (assert (not (Set_equal (elements ($SortWrappers.$FVF<val>To$Snap (as sm@105@01  $FVF<val>)) a@73@01) (elements ($SortWrappers.$FVF<val>To$Snap (as sm@109@01  $FVF<val>)) a@73@01))))
@@ -5684,7 +5684,7 @@
     (Seq_contains (Seq_range 0 (length<Int> a@73@01)) (inv@113@01 r))
     ($FVF.loc_val ($FVF.lookup_val (as sm@115@01  $FVF<val>) r) r))
   :pattern ((inv@113@01 r))
-  :qid |quant-u-23595|)))
+  :qid |quant-u-23606|)))
 (push) ; 4
 (assert (not (forall ((r $Ref)) (!
   (=>
@@ -5705,7 +5705,7 @@
         (ite (= r (loc<Ref> a@73@01 y@75@01)) $Perm.Write $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-23596|))))
+  :qid |quant-u-23607|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -5908,7 +5908,7 @@
       (Seq_contains (Seq_range 0 (length<Int> a@73@01)) (inv@113@01 r))
       ($FVF.loc_val ($FVF.lookup_val (as sm@115@01  $FVF<val>) r) r))
     :pattern ((inv@113@01 r))
-    :qid |quant-u-23595|))
+    :qid |quant-u-23606|))
   (elements%precondition ($SortWrappers.$FVF<val>To$Snap (as sm@116@01  $FVF<val>)) a@73@01)))
 ; [eval] old[pre](elements(a))
 ; [state consolidation]
@@ -5999,7 +5999,7 @@
     (Seq_contains (Seq_range 0 (length<Int> a@73@01)) (inv@119@01 r))
     ($FVF.loc_val ($FVF.lookup_val (as sm@94@01  $FVF<val>) r) r))
   :pattern ((inv@119@01 r))
-  :qid |quant-u-23598|)))
+  :qid |quant-u-23609|)))
 (push) ; 4
 (assert (not (forall ((r $Ref)) (!
   (=>
@@ -6016,7 +6016,7 @@
         $Perm.No)
       $Perm.No))
   
-  :qid |quant-u-23599|))))
+  :qid |quant-u-23610|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -6116,7 +6116,7 @@
       (Seq_contains (Seq_range 0 (length<Int> a@73@01)) (inv@119@01 r))
       ($FVF.loc_val ($FVF.lookup_val (as sm@94@01  $FVF<val>) r) r))
     :pattern ((inv@119@01 r))
-    :qid |quant-u-23598|))
+    :qid |quant-u-23609|))
   (elements%precondition ($SortWrappers.$FVF<val>To$Snap (as sm@121@01  $FVF<val>)) a@73@01)))
 (push) ; 3
 (assert (not (Set_equal (elements ($SortWrappers.$FVF<val>To$Snap (as sm@116@01  $FVF<val>)) a@73@01) (elements ($SortWrappers.$FVF<val>To$Snap (as sm@121@01  $FVF<val>)) a@73@01))))
@@ -6346,7 +6346,7 @@
     (Seq_contains (Seq_range 0 (length<Int> a@73@01)) (inv@125@01 r))
     ($FVF.loc_val ($FVF.lookup_val (as sm@122@01  $FVF<val>) r) r))
   :pattern ((inv@125@01 r))
-  :qid |quant-u-23601|)))
+  :qid |quant-u-23612|)))
 (push) ; 4
 (assert (not (forall ((r $Ref)) (!
   (=>
@@ -6367,7 +6367,7 @@
         (ite (= r (loc<Ref> a@73@01 x@74@01)) $Perm.Write $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-23602|))))
+  :qid |quant-u-23613|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -6531,7 +6531,7 @@
       (Seq_contains (Seq_range 0 (length<Int> a@73@01)) (inv@125@01 r))
       ($FVF.loc_val ($FVF.lookup_val (as sm@122@01  $FVF<val>) r) r))
     :pattern ((inv@125@01 r))
-    :qid |quant-u-23601|))
+    :qid |quant-u-23612|))
   (elements%precondition ($SortWrappers.$FVF<val>To$Snap (as sm@127@01  $FVF<val>)) a@73@01)))
 ; [eval] old[pre](elements(a))
 ; [state consolidation]
@@ -6622,7 +6622,7 @@
     (Seq_contains (Seq_range 0 (length<Int> a@73@01)) (inv@130@01 r))
     ($FVF.loc_val ($FVF.lookup_val (as sm@94@01  $FVF<val>) r) r))
   :pattern ((inv@130@01 r))
-  :qid |quant-u-23604|)))
+  :qid |quant-u-23615|)))
 (push) ; 4
 (assert (not (forall ((r $Ref)) (!
   (=>
@@ -6639,7 +6639,7 @@
         $Perm.No)
       $Perm.No))
   
-  :qid |quant-u-23605|))))
+  :qid |quant-u-23616|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -6739,7 +6739,7 @@
       (Seq_contains (Seq_range 0 (length<Int> a@73@01)) (inv@130@01 r))
       ($FVF.loc_val ($FVF.lookup_val (as sm@94@01  $FVF<val>) r) r))
     :pattern ((inv@130@01 r))
-    :qid |quant-u-23604|))
+    :qid |quant-u-23615|))
   (elements%precondition ($SortWrappers.$FVF<val>To$Snap (as sm@132@01  $FVF<val>)) a@73@01)))
 (push) ; 3
 (assert (not (Set_equal (elements ($SortWrappers.$FVF<val>To$Snap (as sm@127@01  $FVF<val>)) a@73@01) (elements ($SortWrappers.$FVF<val>To$Snap (as sm@132@01  $FVF<val>)) a@73@01))))
@@ -6818,7 +6818,7 @@
 (check-sat)
 ; unknown
 (pop) ; 3
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 3
@@ -6941,7 +6941,7 @@
     (Seq_contains (Seq_range 0 (length<Int> a@73@01)) (inv@134@01 r))
     ($FVF.loc_val ($FVF.lookup_val (as sm@136@01  $FVF<val>) r) r))
   :pattern ((inv@134@01 r))
-  :qid |quant-u-23607|)))
+  :qid |quant-u-23618|)))
 (push) ; 4
 (assert (not (forall ((r $Ref)) (!
   (=>
@@ -6962,7 +6962,7 @@
         (ite (= r (loc<Ref> a@73@01 y@75@01)) $Perm.Write $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-23608|))))
+  :qid |quant-u-23619|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -7165,7 +7165,7 @@
       (Seq_contains (Seq_range 0 (length<Int> a@73@01)) (inv@134@01 r))
       ($FVF.loc_val ($FVF.lookup_val (as sm@136@01  $FVF<val>) r) r))
     :pattern ((inv@134@01 r))
-    :qid |quant-u-23607|))
+    :qid |quant-u-23618|))
   (elements%precondition ($SortWrappers.$FVF<val>To$Snap (as sm@137@01  $FVF<val>)) a@73@01)))
 ; [eval] old[pre](elements(a))
 ; [state consolidation]
@@ -7256,7 +7256,7 @@
     (Seq_contains (Seq_range 0 (length<Int> a@73@01)) (inv@140@01 r))
     ($FVF.loc_val ($FVF.lookup_val (as sm@94@01  $FVF<val>) r) r))
   :pattern ((inv@140@01 r))
-  :qid |quant-u-23610|)))
+  :qid |quant-u-23621|)))
 (push) ; 4
 (assert (not (forall ((r $Ref)) (!
   (=>
@@ -7273,7 +7273,7 @@
         $Perm.No)
       $Perm.No))
   
-  :qid |quant-u-23611|))))
+  :qid |quant-u-23622|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -7373,14 +7373,14 @@
       (Seq_contains (Seq_range 0 (length<Int> a@73@01)) (inv@140@01 r))
       ($FVF.loc_val ($FVF.lookup_val (as sm@94@01  $FVF<val>) r) r))
     :pattern ((inv@140@01 r))
-    :qid |quant-u-23610|))
+    :qid |quant-u-23621|))
   (elements%precondition ($SortWrappers.$FVF<val>To$Snap (as sm@142@01  $FVF<val>)) a@73@01)))
 (push) ; 3
 (assert (not (Set_equal (elements ($SortWrappers.$FVF<val>To$Snap (as sm@137@01  $FVF<val>)) a@73@01) (elements ($SortWrappers.$FVF<val>To$Snap (as sm@142@01  $FVF<val>)) a@73@01))))
 (check-sat)
 ; unknown
 (pop) ; 3
-; 0.05s
+; 0.01s
 ; (get-info :all-statistics)
 (pop) ; 2
 (pop) ; 1

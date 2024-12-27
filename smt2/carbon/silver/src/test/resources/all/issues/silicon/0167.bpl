@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 02:42:12
+// Date:         2024-12-27 10:51:05
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0167.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0167-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -319,11 +319,11 @@ procedure h#definedness(n: int) returns (Result: bool)
 procedure test01(n: int) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var i_14: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -334,8 +334,8 @@ procedure test01(n: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale (forall i: Int :: { g(i) } i > 4 ==> h(i)) -- 0167.vpr@12.3--12.48
     assume state(Heap, Mask);
@@ -371,8 +371,8 @@ procedure test01(n: int) returns ()
     // -- Check definedness of g(n)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Precondition of function g might not hold. Assertion f(n) might not hold. (0167.vpr@21.18--21.22) [210274]"}
           f_6(Heap, n);
         // Stop execution
@@ -388,8 +388,8 @@ procedure test01(n: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert h(n) -- 0167.vpr@24.3--24.14
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of h(n)
       if (*) {

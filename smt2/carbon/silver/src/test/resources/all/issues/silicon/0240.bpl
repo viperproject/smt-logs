@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 02:38:03
+// Date:         2024-12-27 10:46:58
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0240.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0240-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -620,8 +620,8 @@ procedure list#definedness(this: Ref) returns ()
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var Unfolding1Heap: HeapType;
   var Unfolding1Mask: MaskType;
   var newPMask: PMaskType;
@@ -660,8 +660,8 @@ procedure list#definedness(this: Ref) returns ()
         UnfoldingMask := Mask;
         assume list#trigger(UnfoldingHeap, list(UnfoldingHeap[this, next]));
         assume UnfoldingHeap[null, list(UnfoldingHeap[this, next])] == CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[this, next], next]), CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[this, next], data]), FrameFragment((if UnfoldingHeap[UnfoldingHeap[this, next], next] != null then UnfoldingHeap[null, list(UnfoldingHeap[UnfoldingHeap[this, next], next])] else EmptyFrame))));
-        ExhaleWellDef0Mask := UnfoldingMask;
         ExhaleWellDef0Heap := UnfoldingHeap;
+        ExhaleWellDef0Mask := UnfoldingMask;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access list(this.next) (0240.vpr@7.2--13.3) [195927]"}
@@ -689,8 +689,8 @@ procedure list#definedness(this: Ref) returns ()
             Unfolding1Mask := UnfoldingMask;
             assume list#trigger(Unfolding1Heap, list(Unfolding1Heap[Unfolding1Heap[this, next], next]));
             assume Unfolding1Heap[null, list(Unfolding1Heap[Unfolding1Heap[this, next], next])] == CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[this, next], next], next]), CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[this, next], next], data]), FrameFragment((if Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[this, next], next], next] != null then Unfolding1Heap[null, list(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[this, next], next], next])] else EmptyFrame))));
-            ExhaleWellDef0Mask := Unfolding1Mask;
             ExhaleWellDef0Heap := Unfolding1Heap;
+            ExhaleWellDef0Mask := Unfolding1Mask;
             perm := FullPerm;
             Unfolding1Mask := Unfolding1Mask[null, list(Unfolding1Heap[Unfolding1Heap[this, next], next]):=Unfolding1Mask[null, list(Unfolding1Heap[Unfolding1Heap[this, next], next])] - perm];
             perm := FullPerm;
@@ -767,8 +767,8 @@ procedure list#definedness(this: Ref) returns ()
         UnfoldingMask := Mask;
         assume list#trigger(UnfoldingHeap, list(UnfoldingHeap[this, next]));
         assume UnfoldingHeap[null, list(UnfoldingHeap[this, next])] == CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[this, next], next]), CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[this, next], data]), FrameFragment((if UnfoldingHeap[UnfoldingHeap[this, next], next] != null then UnfoldingHeap[null, list(UnfoldingHeap[UnfoldingHeap[this, next], next])] else EmptyFrame))));
-        ExhaleWellDef0Mask := UnfoldingMask;
         ExhaleWellDef0Heap := UnfoldingHeap;
+        ExhaleWellDef0Mask := UnfoldingMask;
         perm := FullPerm;
         UnfoldingMask := UnfoldingMask[null, list(UnfoldingHeap[this, next]):=UnfoldingMask[null, list(UnfoldingHeap[this, next])] - perm];
         perm := FullPerm;
@@ -846,8 +846,8 @@ procedure bla#definedness(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Check definedness of predicate body of bla
@@ -866,8 +866,8 @@ procedure bla#definedness(this: Ref) returns ()
     // -- Check definedness of foo(this)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function foo might not hold. There might be insufficient permission to access list(this) (0240.vpr@33.6--33.15) [195932]"}
           NoPerm < perm ==> NoPerm < Mask[null, list(this)];
@@ -986,8 +986,8 @@ procedure bla_qp#definedness(xs: (Set Ref)) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Check definedness of predicate body of bla_qp
@@ -1041,8 +1041,8 @@ procedure bla_qp#definedness(xs: (Set Ref)) returns ()
     // -- Check definedness of foo_qp(xs)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         havoc QPMask;
         
         // -- check that the permission amount is positive
@@ -1090,10 +1090,10 @@ procedure test01(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newVersion: FrameType;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
@@ -1117,14 +1117,14 @@ procedure test01(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: unfold acc(list(this), 1 / 2) -- 0240.vpr@18.3--18.30
     assume list#trigger(Heap, list(this));
     assume Heap[null, list(this)] == CombineFrames(FrameFragment(Heap[this, next]), CombineFrames(FrameFragment(Heap[this, data]), FrameFragment((if Heap[this, next] != null then Heap[null, list(Heap[this, next])] else EmptyFrame))));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := 1 / 2;
     assert {:msg "  Unfolding list(this) might fail. Fraction 1 / 2 might be negative. (0240.vpr@18.3--18.30) [195937]"}
       perm >= NoPerm;
@@ -1166,8 +1166,8 @@ procedure test01(this: Ref) returns ()
         UnfoldingMask := Mask;
         assume list#trigger(UnfoldingHeap, list(UnfoldingHeap[this, next]));
         assume UnfoldingHeap[null, list(UnfoldingHeap[this, next])] == CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[this, next], next]), CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[this, next], data]), FrameFragment((if UnfoldingHeap[UnfoldingHeap[this, next], next] != null then UnfoldingHeap[null, list(UnfoldingHeap[UnfoldingHeap[this, next], next])] else EmptyFrame))));
-        ExhaleWellDef0Mask := UnfoldingMask;
         ExhaleWellDef0Heap := UnfoldingHeap;
+        ExhaleWellDef0Mask := UnfoldingMask;
         perm := 1 / 2;
         UnfoldingMask := UnfoldingMask[null, list(UnfoldingHeap[this, next]):=UnfoldingMask[null, list(UnfoldingHeap[this, next])] - perm];
         perm := 1 / 2;
@@ -1228,10 +1228,10 @@ procedure test02(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newVersion: FrameType;
   
   // -- Initializing the state
@@ -1254,14 +1254,14 @@ procedure test02(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: unfold acc(bla(this), 1 / 2) -- 0240.vpr@39.3--39.29
     assume bla#trigger(Heap, bla_1(this));
     assume Heap[null, bla_1(this)] == Heap[null, list(this)];
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := 1 / 2;
     assert {:msg "  Unfolding bla(this) might fail. Fraction 1 / 2 might be negative. (0240.vpr@39.3--39.29) [195944]"}
       perm >= NoPerm;
@@ -1298,10 +1298,10 @@ procedure test03(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var freshVersion: FrameType;
   var newPMask: PMaskType;
   
@@ -1325,12 +1325,12 @@ procedure test03(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: fold acc(bla(this), 1 / 2) -- 0240.vpr@45.3--45.27
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := 1 / 2;
     assert {:msg "  Folding bla(this) might fail. Fraction 1 / 2 might be negative. (0240.vpr@45.3--45.27) [195949]"}
       perm >= NoPerm;
@@ -1375,14 +1375,14 @@ procedure test04a(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var newPMask: PMaskType;
   
   // -- Initializing the state
@@ -1405,20 +1405,20 @@ procedure test04a(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert (unfolding acc(bla(this), 1 / 2) in true) -- 0240.vpr@51.3--51.47
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (unfolding acc(bla(this), 1 / 2) in true)
       UnfoldingHeap := ExhaleWellDef0Heap;
       UnfoldingMask := ExhaleWellDef0Mask;
       assume bla#trigger(UnfoldingHeap, bla_1(this));
       assume UnfoldingHeap[null, bla_1(this)] == UnfoldingHeap[null, list(this)];
-      ExhaleWellDef1Mask := UnfoldingMask;
       ExhaleWellDef1Heap := UnfoldingHeap;
+      ExhaleWellDef1Mask := UnfoldingMask;
       perm := 1 / 2;
       assert {:msg "  Assert might fail. Fraction 1 / 2 might be negative. (0240.vpr@51.10--51.47) [195954]"}
         perm >= NoPerm;
@@ -1467,14 +1467,14 @@ procedure test04b(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var ExhaleHeap: HeapType;
   var newPMask: PMaskType;
   
@@ -1498,20 +1498,20 @@ procedure test04b(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert (unfolding acc(bla(this), 1 / 2) in foo(this)) -- 0240.vpr@58.3--58.52
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (unfolding acc(bla(this), 1 / 2) in foo(this))
       UnfoldingHeap := ExhaleWellDef0Heap;
       UnfoldingMask := ExhaleWellDef0Mask;
       assume bla#trigger(UnfoldingHeap, bla_1(this));
       assume UnfoldingHeap[null, bla_1(this)] == UnfoldingHeap[null, list(this)];
-      ExhaleWellDef1Mask := UnfoldingMask;
       ExhaleWellDef1Heap := UnfoldingHeap;
+      ExhaleWellDef1Mask := UnfoldingMask;
       perm := 1 / 2;
       assert {:msg "  Assert might fail. Fraction 1 / 2 might be negative. (0240.vpr@58.10--58.52) [195959]"}
         perm >= NoPerm;
@@ -1533,8 +1533,8 @@ procedure test04b(this: Ref) returns ()
       assume state(UnfoldingHeap, UnfoldingMask);
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := UnfoldingMask;
         ExhaleWellDef1Heap := UnfoldingHeap;
+        ExhaleWellDef1Mask := UnfoldingMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function foo might not hold. There might be insufficient permission to access list(this) (0240.vpr@58.43--58.52) [195962]"}
           NoPerm < perm ==> NoPerm < UnfoldingMask[null, list(this)];
@@ -1576,14 +1576,14 @@ procedure test05(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var Unfolding1Heap: HeapType;
   var Unfolding1Mask: MaskType;
   var newPMask: PMaskType;
@@ -1606,21 +1606,21 @@ procedure test05(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert (unfolding acc(blabla(this), 1 / 3) in
   //     (unfolding acc(bla(this), 1 / 5) in true)) -- 0240.vpr@66.3--66.83
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (unfolding acc(blabla(this), 1 / 3) in (unfolding acc(bla(this), 1 / 5) in true))
       UnfoldingHeap := ExhaleWellDef0Heap;
       UnfoldingMask := ExhaleWellDef0Mask;
       assume blabla#trigger(UnfoldingHeap, blabla(this));
       assume UnfoldingHeap[null, blabla(this)] == UnfoldingHeap[null, bla_1(this)];
-      ExhaleWellDef1Mask := UnfoldingMask;
       ExhaleWellDef1Heap := UnfoldingHeap;
+      ExhaleWellDef1Mask := UnfoldingMask;
       perm := 1 / 3;
       assert {:msg "  Assert might fail. Fraction 1 / 3 might be negative. (0240.vpr@66.10--66.83) [195964]"}
         perm >= NoPerm;
@@ -1642,8 +1642,8 @@ procedure test05(this: Ref) returns ()
       Unfolding1Mask := UnfoldingMask;
       assume bla#trigger(Unfolding1Heap, bla_1(this));
       assume Unfolding1Heap[null, bla_1(this)] == Unfolding1Heap[null, list(this)];
-      ExhaleWellDef1Mask := Unfolding1Mask;
       ExhaleWellDef1Heap := Unfolding1Heap;
+      ExhaleWellDef1Mask := Unfolding1Mask;
       perm := 1 / 5;
       assert {:msg "  Assert might fail. Fraction 1 / 5 might be negative. (0240.vpr@66.10--66.83) [195967]"}
         perm >= NoPerm;
@@ -1715,10 +1715,10 @@ procedure test02_qp(xs: (Set Ref)) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newVersion: FrameType;
   var QPMask: MaskType;
   
@@ -1739,14 +1739,14 @@ procedure test02_qp(xs: (Set Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: unfold acc(bla_qp(xs), 1 / 2) -- 0240.vpr@83.3--83.30
     assume bla_qp#trigger(Heap, bla_qp(xs));
     assume Heap[null, bla_qp(xs)] == FrameFragment(bla_qp#condqp2(Heap, xs));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := 1 / 2;
     assert {:msg "  Unfolding bla_qp(xs) might fail. Fraction 1 / 2 might be negative. (0240.vpr@83.3--83.30) [195973]"}
       perm >= NoPerm;
@@ -1815,10 +1815,10 @@ procedure test03_qp(xs: (Set Ref)) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var perm: Perm;
   var freshVersion: FrameType;
   var newPMask: PMaskType;
@@ -1880,12 +1880,12 @@ procedure test03_qp(xs: (Set Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: fold acc(bla_qp(xs), 1 / 2) -- 0240.vpr@89.3--89.28
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     havoc QPMask;
     
     // -- check that the permission amount is positive
@@ -1969,14 +1969,14 @@ procedure test04a_qp(xs: (Set Ref)) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var QPMask: MaskType;
   var newPMask: PMaskType;
   
@@ -1997,20 +1997,20 @@ procedure test04a_qp(xs: (Set Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert (unfolding acc(bla_qp(xs), 1 / 2) in true) -- 0240.vpr@95.3--95.48
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (unfolding acc(bla_qp(xs), 1 / 2) in true)
       UnfoldingHeap := ExhaleWellDef0Heap;
       UnfoldingMask := ExhaleWellDef0Mask;
       assume bla_qp#trigger(UnfoldingHeap, bla_qp(xs));
       assume UnfoldingHeap[null, bla_qp(xs)] == FrameFragment(bla_qp#condqp2(UnfoldingHeap, xs));
-      ExhaleWellDef1Mask := UnfoldingMask;
       ExhaleWellDef1Heap := UnfoldingHeap;
+      ExhaleWellDef1Mask := UnfoldingMask;
       perm := 1 / 2;
       assert {:msg "  Assert might fail. Fraction 1 / 2 might be negative. (0240.vpr@95.10--95.48) [195986]"}
         perm >= NoPerm;
@@ -2101,14 +2101,14 @@ procedure test04b_qp(xs: (Set Ref)) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var QPMask: MaskType;
   var ExhaleHeap: HeapType;
   var newPMask: PMaskType;
@@ -2130,20 +2130,20 @@ procedure test04b_qp(xs: (Set Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert (unfolding acc(bla_qp(xs), 1 / 2) in foo_qp(xs)) -- 0240.vpr@102.3--102.54
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (unfolding acc(bla_qp(xs), 1 / 2) in foo_qp(xs))
       UnfoldingHeap := ExhaleWellDef0Heap;
       UnfoldingMask := ExhaleWellDef0Mask;
       assume bla_qp#trigger(UnfoldingHeap, bla_qp(xs));
       assume UnfoldingHeap[null, bla_qp(xs)] == FrameFragment(bla_qp#condqp2(UnfoldingHeap, xs));
-      ExhaleWellDef1Mask := UnfoldingMask;
       ExhaleWellDef1Heap := UnfoldingHeap;
+      ExhaleWellDef1Mask := UnfoldingMask;
       perm := 1 / 2;
       assert {:msg "  Assert might fail. Fraction 1 / 2 might be negative. (0240.vpr@102.10--102.54) [195992]"}
         perm >= NoPerm;
@@ -2197,8 +2197,8 @@ procedure test04b_qp(xs: (Set Ref)) returns ()
       assume state(UnfoldingHeap, UnfoldingMask);
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := UnfoldingMask;
         ExhaleWellDef1Heap := UnfoldingHeap;
+        ExhaleWellDef1Mask := UnfoldingMask;
         havoc QPMask;
         
         // -- check that the permission amount is positive

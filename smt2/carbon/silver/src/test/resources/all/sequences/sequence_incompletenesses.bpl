@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 02:34:20
+// Date:         2024-12-27 10:43:16
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/sequences/sequence_incompletenesses.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/sequences/sequence_incompletenesses-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -759,10 +759,10 @@ procedure colourings0(a_2: ArrayDomainType) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var j: int;
   var j_1: int;
   
@@ -819,8 +819,8 @@ procedure colourings0(a_2: ArrayDomainType) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: slot(a, 0).val := Seq(Seq[Int]()) -- sequence_incompletenesses.vpr@40.3--40.30
     assert {:msg "  Assignment might fail. There might be insufficient permission to access slot(a, 0).val (sequence_incompletenesses.vpr@40.3--40.30) [183200]"}
@@ -835,8 +835,8 @@ procedure colourings0(a_2: ArrayDomainType) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert valid(Seq[Int](), 0, false) -- sequence_incompletenesses.vpr@45.3--45.30
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of valid(Seq[Int](), 0, false)
       if (*) {
@@ -851,8 +851,8 @@ procedure colourings0(a_2: ArrayDomainType) returns ()
   //     { valid(slot(a, 1).val[j], 1, true) }
   //     0 <= j && j < |slot(a, 1).val| ==>
   //     slot(a, 1).val[j] == Seq(0, 1) && valid(slot(a, 1).val[j], 1, true)) -- sequence_incompletenesses.vpr@49.3--50.71
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall j: Int :: { valid(slot(a, 1).val[j], 1, true) } 0 <= j && j < |slot(a, 1).val| ==> slot(a, 1).val[j] == Seq(0, 1) && valid(slot(a, 1).val[j], 1, true))
       if (*) {
@@ -906,10 +906,10 @@ procedure colourings1(a_2: ArrayDomainType) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var j_2: int;
   var j_1: int;
   var j_7: int;
@@ -993,8 +993,8 @@ procedure colourings1(a_2: ArrayDomainType) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: slot(a, 0).val := Seq(Seq[Int]()) -- sequence_incompletenesses.vpr@60.3--60.30
     assert {:msg "  Assignment might fail. There might be insufficient permission to access slot(a, 0).val (sequence_incompletenesses.vpr@60.3--60.30) [183213]"}
@@ -1009,8 +1009,8 @@ procedure colourings1(a_2: ArrayDomainType) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert valid(Seq[Int](), 0, false) -- sequence_incompletenesses.vpr@65.3--65.30
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of valid(Seq[Int](), 0, false)
       if (*) {
@@ -1022,8 +1022,8 @@ procedure colourings1(a_2: ArrayDomainType) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert Seq(0, 1)[2..] == Seq[Int]() -- sequence_incompletenesses.vpr@66.3--66.32
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion Seq(0, 1)[2..] == Seq[Int]() might not hold. (sequence_incompletenesses.vpr@66.10--66.32) [183216]"}
       Seq#Equal(Seq#Drop(Seq#Append(Seq#Singleton(0), Seq#Singleton(1)), 2), (Seq#Empty(): Seq int));
     assume state(Heap, Mask);
@@ -1032,8 +1032,8 @@ procedure colourings1(a_2: ArrayDomainType) returns ()
   //     { valid(slot(a, 1).val[j], 1, true) }
   //     0 <= j && j < |slot(a, 1).val| ==>
   //     slot(a, 1).val[j] == Seq(0, 1) && valid(slot(a, 1).val[j], 1, true)) -- sequence_incompletenesses.vpr@67.3--68.71
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall j: Int :: { valid(slot(a, 1).val[j], 1, true) } 0 <= j && j < |slot(a, 1).val| ==> slot(a, 1).val[j] == Seq(0, 1) && valid(slot(a, 1).val[j], 1, true))
       if (*) {
@@ -1085,8 +1085,8 @@ procedure colourings1(a_2: ArrayDomainType) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert Seq(0, 2)[2..] == Seq[Int]() -- sequence_incompletenesses.vpr@71.3--71.32
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion Seq(0, 2)[2..] == Seq[Int]() might not hold. (sequence_incompletenesses.vpr@71.10--71.32) [183227]"}
       Seq#Equal(Seq#Drop(Seq#Append(Seq#Singleton(0), Seq#Singleton(2)), 2), (Seq#Empty(): Seq int));
     assume state(Heap, Mask);
@@ -1094,8 +1094,8 @@ procedure colourings1(a_2: ArrayDomainType) returns ()
   // -- Translating statement: assert (forall j: Int ::
   //     { valid(slot(a, 2).val[j], 2, true) }
   //     0 <= j && j < |slot(a, 2).val| ==> valid(slot(a, 2).val[j], 2, true)) -- sequence_incompletenesses.vpr@72.3--73.37
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall j: Int :: { valid(slot(a, 2).val[j], 2, true) } 0 <= j && j < |slot(a, 2).val| ==> valid(slot(a, 2).val[j], 2, true))
       if (*) {
@@ -1137,8 +1137,8 @@ procedure colourings1(a_2: ArrayDomainType) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert Seq(0, 3)[2..] == Seq[Int]() -- sequence_incompletenesses.vpr@76.3--76.32
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion Seq(0, 3)[2..] == Seq[Int]() might not hold. (sequence_incompletenesses.vpr@76.10--76.32) [183234]"}
       Seq#Equal(Seq#Drop(Seq#Append(Seq#Singleton(0), Seq#Singleton(3)), 2), (Seq#Empty(): Seq int));
     assume state(Heap, Mask);
@@ -1146,8 +1146,8 @@ procedure colourings1(a_2: ArrayDomainType) returns ()
   // -- Translating statement: assert (forall j: Int ::
   //     { valid(slot(a, 3).val[j], 3, true) }
   //     0 <= j && j < |slot(a, 3).val| ==> valid(slot(a, 3).val[j], 3, true)) -- sequence_incompletenesses.vpr@77.3--78.37
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall j: Int :: { valid(slot(a, 3).val[j], 3, true) } 0 <= j && j < |slot(a, 3).val| ==> valid(slot(a, 3).val[j], 3, true))
       if (*) {
@@ -1191,8 +1191,8 @@ procedure colourings1(a_2: ArrayDomainType) returns ()
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Loop invariant 4 <= n && n <= 51 might not hold on entry. Assertion 4 <= n might not hold. (sequence_incompletenesses.vpr@82.13--82.30) [183240]"}
           4 <= n;
         assert {:msg "  Loop invariant 4 <= n && n <= 51 might not hold on entry. Assertion n <= 51 might not hold. (sequence_incompletenesses.vpr@82.13--82.30) [183241]"}
@@ -1412,8 +1412,8 @@ procedure colourings1(a_2: ArrayDomainType) returns ()
             // -- Before loop head
               
               // -- Exhale loop invariant before loop
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 perm := 1 / 2;
                 assert {:msg "  Loop invariant acc(slot(a, n - 1).val, 1 / 2) might not hold on entry. Fraction 1 / 2 might be negative. (sequence_incompletenesses.vpr@92.17--92.42) [183253]"}
                   perm >= NoPerm;
@@ -1621,8 +1621,8 @@ procedure colourings1(a_2: ArrayDomainType) returns ()
                         assume state(Heap, Mask);
                       
                       // -- Translating statement: assert valid(soln, n, true) -- sequence_incompletenesses.vpr@108.9--108.34
-                        ExhaleWellDef0Mask := Mask;
                         ExhaleWellDef0Heap := Heap;
+                        ExhaleWellDef0Mask := Mask;
                         
                         // -- Check definedness of valid(soln, n, true)
                           if (*) {
@@ -1639,15 +1639,15 @@ procedure colourings1(a_2: ArrayDomainType) returns ()
                         assume state(Heap, Mask);
                       
                       // -- Translating statement: assert soln[2..] == oldSoln -- sequence_incompletenesses.vpr@111.9--111.36
-                        ExhaleWellDef0Mask := Mask;
                         ExhaleWellDef0Heap := Heap;
+                        ExhaleWellDef0Mask := Mask;
                         assert {:msg "  Assert might fail. Assertion soln[2..] == oldSoln might not hold. (sequence_incompletenesses.vpr@111.16--111.36) [183280]"}
                           Seq#Equal(Seq#Drop(soln, 2), oldSoln);
                         assume state(Heap, Mask);
                       
                       // -- Translating statement: assert valid(oldSoln, n - 1, false) -- sequence_incompletenesses.vpr@112.9--112.40
-                        ExhaleWellDef0Mask := Mask;
                         ExhaleWellDef0Heap := Heap;
+                        ExhaleWellDef0Mask := Mask;
                         
                         // -- Check definedness of valid(oldSoln, n - 1, false)
                           if (*) {
@@ -1659,8 +1659,8 @@ procedure colourings1(a_2: ArrayDomainType) returns ()
                         assume state(Heap, Mask);
                       
                       // -- Translating statement: assert valid(soln, n, true) -- sequence_incompletenesses.vpr@113.9--113.34
-                        ExhaleWellDef0Mask := Mask;
                         ExhaleWellDef0Heap := Heap;
+                        ExhaleWellDef0Mask := Mask;
                         
                         // -- Check definedness of valid(soln, n, true)
                           if (*) {
@@ -1687,8 +1687,8 @@ procedure colourings1(a_2: ArrayDomainType) returns ()
                     i_6_1 := i_6_1 + 1;
                     assume state(Heap, Mask);
                 // Exhale invariant
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 perm := 1 / 2;
                 assert {:msg "  Loop invariant acc(slot(a, n - 1).val, 1 / 2) might not be preserved. Fraction 1 / 2 might be negative. (sequence_incompletenesses.vpr@92.17--92.42) [183285]"}
                   perm >= NoPerm;
@@ -1775,8 +1775,8 @@ procedure colourings1(a_2: ArrayDomainType) returns ()
             n := n + 1;
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Loop invariant 4 <= n && n <= 51 might not be preserved. Assertion 4 <= n might not hold. (sequence_incompletenesses.vpr@82.13--82.30) [183295]"}
           4 <= n;
         assert {:msg "  Loop invariant 4 <= n && n <= 51 might not be preserved. Assertion n <= 51 might not hold. (sequence_incompletenesses.vpr@82.13--82.30) [183296]"}
@@ -1900,10 +1900,10 @@ procedure colourings2(a_2: ArrayDomainType) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var j_21: int;
   var j_1: int;
   var j_12: int;
@@ -1987,8 +1987,8 @@ procedure colourings2(a_2: ArrayDomainType) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: slot(a, 0).val := Seq(Seq[Int]()) -- sequence_incompletenesses.vpr@131.3--131.30
     assert {:msg "  Assignment might fail. There might be insufficient permission to access slot(a, 0).val (sequence_incompletenesses.vpr@131.3--131.30) [183303]"}
@@ -2003,8 +2003,8 @@ procedure colourings2(a_2: ArrayDomainType) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert valid(Seq[Int](), 0, false) -- sequence_incompletenesses.vpr@136.3--136.30
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of valid(Seq[Int](), 0, false)
       if (*) {
@@ -2016,8 +2016,8 @@ procedure colourings2(a_2: ArrayDomainType) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert Seq(0, 1)[2..] == Seq[Int]() -- sequence_incompletenesses.vpr@137.3--137.32
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion Seq(0, 1)[2..] == Seq[Int]() might not hold. (sequence_incompletenesses.vpr@137.10--137.32) [183306]"}
       Seq#Equal(Seq#Drop(Seq#Append(Seq#Singleton(0), Seq#Singleton(1)), 2), (Seq#Empty(): Seq int));
     assume state(Heap, Mask);
@@ -2026,8 +2026,8 @@ procedure colourings2(a_2: ArrayDomainType) returns ()
   //     { valid(slot(a, 1).val[j], 1, true) }
   //     0 <= j && j < |slot(a, 1).val| ==>
   //     slot(a, 1).val[j] == Seq(0, 1) && valid(slot(a, 1).val[j], 1, true)) -- sequence_incompletenesses.vpr@138.3--139.71
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall j: Int :: { valid(slot(a, 1).val[j], 1, true) } 0 <= j && j < |slot(a, 1).val| ==> slot(a, 1).val[j] == Seq(0, 1) && valid(slot(a, 1).val[j], 1, true))
       if (*) {
@@ -2079,8 +2079,8 @@ procedure colourings2(a_2: ArrayDomainType) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert Seq(0, 2)[2..] == Seq[Int]() -- sequence_incompletenesses.vpr@142.3--142.32
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion Seq(0, 2)[2..] == Seq[Int]() might not hold. (sequence_incompletenesses.vpr@142.10--142.32) [183317]"}
       Seq#Equal(Seq#Drop(Seq#Append(Seq#Singleton(0), Seq#Singleton(2)), 2), (Seq#Empty(): Seq int));
     assume state(Heap, Mask);
@@ -2088,8 +2088,8 @@ procedure colourings2(a_2: ArrayDomainType) returns ()
   // -- Translating statement: assert (forall j: Int ::
   //     { valid(slot(a, 2).val[j], 2, true) }
   //     0 <= j && j < |slot(a, 2).val| ==> valid(slot(a, 2).val[j], 2, true)) -- sequence_incompletenesses.vpr@143.3--144.37
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall j: Int :: { valid(slot(a, 2).val[j], 2, true) } 0 <= j && j < |slot(a, 2).val| ==> valid(slot(a, 2).val[j], 2, true))
       if (*) {
@@ -2131,8 +2131,8 @@ procedure colourings2(a_2: ArrayDomainType) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert Seq(0, 3)[2..] == Seq[Int]() -- sequence_incompletenesses.vpr@147.3--147.32
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion Seq(0, 3)[2..] == Seq[Int]() might not hold. (sequence_incompletenesses.vpr@147.10--147.32) [183324]"}
       Seq#Equal(Seq#Drop(Seq#Append(Seq#Singleton(0), Seq#Singleton(3)), 2), (Seq#Empty(): Seq int));
     assume state(Heap, Mask);
@@ -2140,8 +2140,8 @@ procedure colourings2(a_2: ArrayDomainType) returns ()
   // -- Translating statement: assert (forall j: Int ::
   //     { valid(slot(a, 3).val[j], 3, true) }
   //     0 <= j && j < |slot(a, 3).val| ==> valid(slot(a, 3).val[j], 3, true)) -- sequence_incompletenesses.vpr@148.3--149.37
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall j: Int :: { valid(slot(a, 3).val[j], 3, true) } 0 <= j && j < |slot(a, 3).val| ==> valid(slot(a, 3).val[j], 3, true))
       if (*) {
@@ -2185,8 +2185,8 @@ procedure colourings2(a_2: ArrayDomainType) returns ()
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Loop invariant 4 <= n && n <= 51 might not hold on entry. Assertion 4 <= n might not hold. (sequence_incompletenesses.vpr@153.13--153.30) [183330]"}
           4 <= n;
         assert {:msg "  Loop invariant 4 <= n && n <= 51 might not hold on entry. Assertion n <= 51 might not hold. (sequence_incompletenesses.vpr@153.13--153.30) [183331]"}
@@ -2406,8 +2406,8 @@ procedure colourings2(a_2: ArrayDomainType) returns ()
             // -- Before loop head
               
               // -- Exhale loop invariant before loop
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 perm := 1 / 2;
                 assert {:msg "  Loop invariant acc(slot(a, n - 1).val, 1 / 2) might not hold on entry. Fraction 1 / 2 might be negative. (sequence_incompletenesses.vpr@163.17--163.42) [183343]"}
                   perm >= NoPerm;
@@ -2615,15 +2615,15 @@ procedure colourings2(a_2: ArrayDomainType) returns ()
                         assume state(Heap, Mask);
                       
                       // -- Translating statement: assert soln[2..] == oldSoln[2..] -- sequence_incompletenesses.vpr@177.9--177.41
-                        ExhaleWellDef0Mask := Mask;
                         ExhaleWellDef0Heap := Heap;
+                        ExhaleWellDef0Mask := Mask;
                         assert {:msg "  Assert might fail. Assertion soln[2..] == oldSoln[2..] might not hold. (sequence_incompletenesses.vpr@177.16--177.41) [183369]"}
                           Seq#Equal(Seq#Drop(soln, 2), Seq#Drop(oldSoln, 2));
                         assume state(Heap, Mask);
                       
                       // -- Translating statement: assert valid(soln, n, true) -- sequence_incompletenesses.vpr@178.9--178.34
-                        ExhaleWellDef0Mask := Mask;
                         ExhaleWellDef0Heap := Heap;
+                        ExhaleWellDef0Mask := Mask;
                         
                         // -- Check definedness of valid(soln, n, true)
                           if (*) {
@@ -2640,8 +2640,8 @@ procedure colourings2(a_2: ArrayDomainType) returns ()
                         assume state(Heap, Mask);
                       
                       // -- Translating statement: assert valid(oldSoln, n - 1, false) -- sequence_incompletenesses.vpr@182.9--182.40
-                        ExhaleWellDef0Mask := Mask;
                         ExhaleWellDef0Heap := Heap;
+                        ExhaleWellDef0Mask := Mask;
                         
                         // -- Check definedness of valid(oldSoln, n - 1, false)
                           if (*) {
@@ -2653,8 +2653,8 @@ procedure colourings2(a_2: ArrayDomainType) returns ()
                         assume state(Heap, Mask);
                       
                       // -- Translating statement: assert valid(soln, n, true) -- sequence_incompletenesses.vpr@184.9--184.34
-                        ExhaleWellDef0Mask := Mask;
                         ExhaleWellDef0Heap := Heap;
+                        ExhaleWellDef0Mask := Mask;
                         
                         // -- Check definedness of valid(soln, n, true)
                           if (*) {
@@ -2681,8 +2681,8 @@ procedure colourings2(a_2: ArrayDomainType) returns ()
                     i_6_1 := i_6_1 + 1;
                     assume state(Heap, Mask);
                 // Exhale invariant
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 perm := 1 / 2;
                 assert {:msg "  Loop invariant acc(slot(a, n - 1).val, 1 / 2) might not be preserved. Fraction 1 / 2 might be negative. (sequence_incompletenesses.vpr@163.17--163.42) [183375]"}
                   perm >= NoPerm;
@@ -2769,8 +2769,8 @@ procedure colourings2(a_2: ArrayDomainType) returns ()
             n := n + 1;
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Loop invariant 4 <= n && n <= 51 might not be preserved. Assertion 4 <= n might not hold. (sequence_incompletenesses.vpr@153.13--153.30) [183385]"}
           4 <= n;
         assert {:msg "  Loop invariant 4 <= n && n <= 51 might not be preserved. Assertion n <= 51 might not hold. (sequence_incompletenesses.vpr@153.13--153.30) [183386]"}
@@ -2894,10 +2894,10 @@ procedure colourings(a_2: ArrayDomainType) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var j_23: int;
   var j_1: int;
   var j_17: int;
@@ -2981,8 +2981,8 @@ procedure colourings(a_2: ArrayDomainType) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: slot(a, 0).val := Seq(Seq[Int]()) -- sequence_incompletenesses.vpr@200.3--200.30
     assert {:msg "  Assignment might fail. There might be insufficient permission to access slot(a, 0).val (sequence_incompletenesses.vpr@200.3--200.30) [183393]"}
@@ -2997,8 +2997,8 @@ procedure colourings(a_2: ArrayDomainType) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert valid(Seq[Int](), 0, false) -- sequence_incompletenesses.vpr@205.3--205.30
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of valid(Seq[Int](), 0, false)
       if (*) {
@@ -3010,8 +3010,8 @@ procedure colourings(a_2: ArrayDomainType) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert Seq(0, 1)[2..] == Seq[Int]() -- sequence_incompletenesses.vpr@206.3--206.32
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion Seq(0, 1)[2..] == Seq[Int]() might not hold. (sequence_incompletenesses.vpr@206.10--206.32) [183396]"}
       Seq#Equal(Seq#Drop(Seq#Append(Seq#Singleton(0), Seq#Singleton(1)), 2), (Seq#Empty(): Seq int));
     assume state(Heap, Mask);
@@ -3020,8 +3020,8 @@ procedure colourings(a_2: ArrayDomainType) returns ()
   //     { valid(slot(a, 1).val[j], 1, true) }
   //     0 <= j && j < |slot(a, 1).val| ==>
   //     slot(a, 1).val[j] == Seq(0, 1) && valid(slot(a, 1).val[j], 1, true)) -- sequence_incompletenesses.vpr@207.3--208.71
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall j: Int :: { valid(slot(a, 1).val[j], 1, true) } 0 <= j && j < |slot(a, 1).val| ==> slot(a, 1).val[j] == Seq(0, 1) && valid(slot(a, 1).val[j], 1, true))
       if (*) {
@@ -3073,8 +3073,8 @@ procedure colourings(a_2: ArrayDomainType) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert Seq(0, 2)[2..] == Seq[Int]() -- sequence_incompletenesses.vpr@211.3--211.32
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion Seq(0, 2)[2..] == Seq[Int]() might not hold. (sequence_incompletenesses.vpr@211.10--211.32) [183407]"}
       Seq#Equal(Seq#Drop(Seq#Append(Seq#Singleton(0), Seq#Singleton(2)), 2), (Seq#Empty(): Seq int));
     assume state(Heap, Mask);
@@ -3082,8 +3082,8 @@ procedure colourings(a_2: ArrayDomainType) returns ()
   // -- Translating statement: assert (forall j: Int ::
   //     { valid(slot(a, 2).val[j], 2, true) }
   //     0 <= j && j < |slot(a, 2).val| ==> valid(slot(a, 2).val[j], 2, true)) -- sequence_incompletenesses.vpr@212.3--213.37
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall j: Int :: { valid(slot(a, 2).val[j], 2, true) } 0 <= j && j < |slot(a, 2).val| ==> valid(slot(a, 2).val[j], 2, true))
       if (*) {
@@ -3125,8 +3125,8 @@ procedure colourings(a_2: ArrayDomainType) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert Seq(0, 3)[2..] == Seq[Int]() -- sequence_incompletenesses.vpr@216.3--216.32
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion Seq(0, 3)[2..] == Seq[Int]() might not hold. (sequence_incompletenesses.vpr@216.10--216.32) [183414]"}
       Seq#Equal(Seq#Drop(Seq#Append(Seq#Singleton(0), Seq#Singleton(3)), 2), (Seq#Empty(): Seq int));
     assume state(Heap, Mask);
@@ -3134,8 +3134,8 @@ procedure colourings(a_2: ArrayDomainType) returns ()
   // -- Translating statement: assert (forall j: Int ::
   //     { valid(slot(a, 3).val[j], 3, true) }
   //     0 <= j && j < |slot(a, 3).val| ==> valid(slot(a, 3).val[j], 3, true)) -- sequence_incompletenesses.vpr@217.3--218.37
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall j: Int :: { valid(slot(a, 3).val[j], 3, true) } 0 <= j && j < |slot(a, 3).val| ==> valid(slot(a, 3).val[j], 3, true))
       if (*) {
@@ -3179,8 +3179,8 @@ procedure colourings(a_2: ArrayDomainType) returns ()
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Loop invariant 4 <= n && n <= 51 might not hold on entry. Assertion 4 <= n might not hold. (sequence_incompletenesses.vpr@222.13--222.30) [183420]"}
           4 <= n;
         assert {:msg "  Loop invariant 4 <= n && n <= 51 might not hold on entry. Assertion n <= 51 might not hold. (sequence_incompletenesses.vpr@222.13--222.30) [183421]"}
@@ -3400,8 +3400,8 @@ procedure colourings(a_2: ArrayDomainType) returns ()
             // -- Before loop head
               
               // -- Exhale loop invariant before loop
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 perm := 1 / 2;
                 assert {:msg "  Loop invariant acc(slot(a, n - 1).val, 1 / 2) might not hold on entry. Fraction 1 / 2 might be negative. (sequence_incompletenesses.vpr@232.17--232.42) [183433]"}
                   perm >= NoPerm;
@@ -3609,15 +3609,15 @@ procedure colourings(a_2: ArrayDomainType) returns ()
                         assume state(Heap, Mask);
                       
                       // -- Translating statement: assert soln[2..] == oldSoln[2..] -- sequence_incompletenesses.vpr@246.9--246.41
-                        ExhaleWellDef0Mask := Mask;
                         ExhaleWellDef0Heap := Heap;
+                        ExhaleWellDef0Mask := Mask;
                         assert {:msg "  Assert might fail. Assertion soln[2..] == oldSoln[2..] might not hold. (sequence_incompletenesses.vpr@246.16--246.41) [183459]"}
                           Seq#Equal(Seq#Drop(soln, 2), Seq#Drop(oldSoln, 2));
                         assume state(Heap, Mask);
                       
                       // -- Translating statement: assert valid(soln, n, true) -- sequence_incompletenesses.vpr@247.9--247.34
-                        ExhaleWellDef0Mask := Mask;
                         ExhaleWellDef0Heap := Heap;
+                        ExhaleWellDef0Mask := Mask;
                         
                         // -- Check definedness of valid(soln, n, true)
                           if (*) {
@@ -3634,15 +3634,15 @@ procedure colourings(a_2: ArrayDomainType) returns ()
                         assume state(Heap, Mask);
                       
                       // -- Translating statement: assert soln[2..] == oldSoln -- sequence_incompletenesses.vpr@250.9--250.36
-                        ExhaleWellDef0Mask := Mask;
                         ExhaleWellDef0Heap := Heap;
+                        ExhaleWellDef0Mask := Mask;
                         assert {:msg "  Assert might fail. Assertion soln[2..] == oldSoln might not hold. (sequence_incompletenesses.vpr@250.16--250.36) [183461]"}
                           Seq#Equal(Seq#Drop(soln, 2), oldSoln);
                         assume state(Heap, Mask);
                       
                       // -- Translating statement: assert valid(oldSoln, n - 1, false) -- sequence_incompletenesses.vpr@251.9--251.40
-                        ExhaleWellDef0Mask := Mask;
                         ExhaleWellDef0Heap := Heap;
+                        ExhaleWellDef0Mask := Mask;
                         
                         // -- Check definedness of valid(oldSoln, n - 1, false)
                           if (*) {
@@ -3654,8 +3654,8 @@ procedure colourings(a_2: ArrayDomainType) returns ()
                         assume state(Heap, Mask);
                       
                       // -- Translating statement: assert valid(soln, n, true) -- sequence_incompletenesses.vpr@252.9--252.34
-                        ExhaleWellDef0Mask := Mask;
                         ExhaleWellDef0Heap := Heap;
+                        ExhaleWellDef0Mask := Mask;
                         
                         // -- Check definedness of valid(soln, n, true)
                           if (*) {
@@ -3682,8 +3682,8 @@ procedure colourings(a_2: ArrayDomainType) returns ()
                     i_6_1 := i_6_1 + 1;
                     assume state(Heap, Mask);
                 // Exhale invariant
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 perm := 1 / 2;
                 assert {:msg "  Loop invariant acc(slot(a, n - 1).val, 1 / 2) might not be preserved. Fraction 1 / 2 might be negative. (sequence_incompletenesses.vpr@232.17--232.42) [183466]"}
                   perm >= NoPerm;
@@ -3770,8 +3770,8 @@ procedure colourings(a_2: ArrayDomainType) returns ()
             n := n + 1;
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Loop invariant 4 <= n && n <= 51 might not be preserved. Assertion 4 <= n might not hold. (sequence_incompletenesses.vpr@222.13--222.30) [183476]"}
           4 <= n;
         assert {:msg "  Loop invariant 4 <= n && n <= 51 might not be preserved. Assertion n <= 51 might not hold. (sequence_incompletenesses.vpr@222.13--222.30) [183477]"}
@@ -3894,11 +3894,11 @@ procedure colourings(a_2: ArrayDomainType) returns ()
 procedure test_extend(s_2: (Seq int)) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var ss: (Seq int);
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var i_1: int;
   
   // -- Initializing the state
@@ -3910,16 +3910,16 @@ procedure test_extend(s_2: (Seq int)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: ss := s ++ Seq(42) -- sequence_incompletenesses.vpr@267.3--267.36
     ss := Seq#Append(s_2, Seq#Singleton(42));
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forall i: Int :: { (i in s) } (i in s) ==> (i in ss[..|ss| - 1])) -- sequence_incompletenesses.vpr@268.3--268.54
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall i: Int :: { (i in s) } (i in s) ==> (i in ss[..|ss| - 1]))
       if (*) {
@@ -3946,11 +3946,11 @@ procedure test_extend(s_2: (Seq int)) returns ()
 procedure test_extend_left(s_2: (Seq int)) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var ss: (Seq int);
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var i_1: int;
   
   // -- Initializing the state
@@ -3962,8 +3962,8 @@ procedure test_extend_left(s_2: (Seq int)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: ss := Seq(42) ++ s -- sequence_incompletenesses.vpr@273.3--273.36
     ss := Seq#Append(Seq#Singleton(42), s_2);
@@ -3973,8 +3973,8 @@ procedure test_extend_left(s_2: (Seq int)) returns ()
   //     { (i in s) }
   //     { (i in ss[1..]) }
   //     (i in s) ==> (i in ss[1..])) -- sequence_incompletenesses.vpr@275.4--275.50
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall i: Int :: { (i in s) } { (i in ss[1..]) } (i in s) ==> (i in ss[1..]))
       if (*) {
@@ -4001,11 +4001,11 @@ procedure test_extend_left(s_2: (Seq int)) returns ()
 procedure test_append_left(s_2: (Seq int), t_2: (Seq int)) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var ss: (Seq int);
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var i_1: int;
   
   // -- Initializing the state
@@ -4017,8 +4017,8 @@ procedure test_append_left(s_2: (Seq int), t_2: (Seq int)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: ss := s ++ t -- sequence_incompletenesses.vpr@280.3--280.30
     ss := Seq#Append(s_2, t_2);
@@ -4028,8 +4028,8 @@ procedure test_append_left(s_2: (Seq int), t_2: (Seq int)) returns ()
   //     { (i in s) }
   //     { (i in ss[..|s|]) }
   //     (i in s) ==> (i in ss[..|s|])) -- sequence_incompletenesses.vpr@281.3--281.51
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall i: Int :: { (i in s) } { (i in ss[..|s|]) } (i in s) ==> (i in ss[..|s|]))
       if (*) {
@@ -4056,11 +4056,11 @@ procedure test_append_left(s_2: (Seq int), t_2: (Seq int)) returns ()
 procedure test_append_right(s_2: (Seq int), t_2: (Seq int)) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var ss: (Seq int);
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var i_1: int;
   
   // -- Initializing the state
@@ -4072,8 +4072,8 @@ procedure test_append_right(s_2: (Seq int), t_2: (Seq int)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: ss := s ++ t -- sequence_incompletenesses.vpr@286.3--286.30
     ss := Seq#Append(s_2, t_2);
@@ -4083,8 +4083,8 @@ procedure test_append_right(s_2: (Seq int), t_2: (Seq int)) returns ()
   //     { (i in t) }
   //     { (i in ss[|s|..]) }
   //     (i in t) ==> (i in ss[|s|..])) -- sequence_incompletenesses.vpr@288.3--288.51
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall i: Int :: { (i in t) } { (i in ss[|s|..]) } (i in t) ==> (i in ss[|s|..]))
       if (*) {

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 02:27:27
+// Date:         2024-12-27 10:36:24
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/new_syntax/IfElseDifferentFootprint.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/new_syntax/IfElseDifferentFootprint-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -226,19 +226,19 @@ procedure test0(x: Ref, y: Ref, b_24: bool) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var Ops_1Heap: HeapType;
   var Ops_1Mask: MaskType;
   var b_1_1: bool;
   var UsedHeap: HeapType;
   var UsedMask: MaskType;
   var b_2: bool;
-  var Labellhs1Heap: HeapType;
   var Labellhs1Mask: MaskType;
+  var Labellhs1Heap: HeapType;
   var boolCur: bool;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var Used_1Heap: HeapType;
   var Used_1Mask: MaskType;
   var b_2_1: bool;
@@ -287,8 +287,8 @@ procedure test0(x: Ref, y: Ref, b_24: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: package true --* true {
   //   if (b) {
@@ -310,8 +310,8 @@ procedure test0(x: Ref, y: Ref, b_24: bool) returns ()
     
     // -- Translating statement: label lhs1 -- IfElseDifferentFootprint.vpr@8.13--8.26
       lhs1:
-      Labellhs1Heap := Ops_1Heap;
       Labellhs1Mask := Ops_1Mask;
+      Labellhs1Heap := Ops_1Heap;
       b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);
     boolCur := true;
     if (b_1_1) {
@@ -320,8 +320,8 @@ procedure test0(x: Ref, y: Ref, b_24: bool) returns ()
         if (b_1_1 ==> b_24) {
           
           // -- Translating statement: exhale acc(x.f, write) -- IfElseDifferentFootprint.vpr@10.13--10.28
-            ExhaleWellDef0Heap := Ops_1Heap;
             ExhaleWellDef0Mask := Ops_1Mask;
+            ExhaleWellDef0Heap := Ops_1Heap;
             havoc Used_1Heap;
             Used_1Mask := ZeroMask;
             b_2_1 := b_2_1 && state(Used_1Heap, Used_1Mask);
@@ -392,8 +392,8 @@ procedure test0(x: Ref, y: Ref, b_24: bool) returns ()
         } else {
           
           // -- Translating statement: exhale acc(y.f, write) -- IfElseDifferentFootprint.vpr@12.13--12.28
-            ExhaleWellDef0Heap := Ops_1Heap;
             ExhaleWellDef0Mask := Ops_1Mask;
+            ExhaleWellDef0Heap := Ops_1Heap;
             havoc Used_2Heap;
             Used_2Mask := ZeroMask;
             b_4 := b_4 && state(Used_2Heap, Used_2Mask);
@@ -479,8 +479,8 @@ procedure test0(x: Ref, y: Ref, b_24: bool) returns ()
       // -- Translating statement: assert acc(y.f, write) -- IfElseDifferentFootprint.vpr@16.9--16.24
         AssertHeap := Heap;
         AssertMask := Mask;
-        ExhaleWellDef0Heap := AssertHeap;
         ExhaleWellDef0Mask := AssertMask;
+        ExhaleWellDef0Heap := AssertHeap;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Assert might fail. There might be insufficient permission to access y.f (IfElseDifferentFootprint.vpr@16.16--16.24) [139545]"}
@@ -493,8 +493,8 @@ procedure test0(x: Ref, y: Ref, b_24: bool) returns ()
       // -- Translating statement: assert acc(x.f, write) -- IfElseDifferentFootprint.vpr@18.9--18.24
         AssertHeap := Heap;
         AssertMask := Mask;
-        ExhaleWellDef0Heap := AssertHeap;
         ExhaleWellDef0Mask := AssertMask;
+        ExhaleWellDef0Heap := AssertHeap;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (IfElseDifferentFootprint.vpr@18.16--18.24) [139547]"}
@@ -511,8 +511,8 @@ procedure test0(x: Ref, y: Ref, b_24: bool) returns ()
       // -- Translating statement: assert acc(x.f, write) -- IfElseDifferentFootprint.vpr@22.9--22.24
         AssertHeap := Heap;
         AssertMask := Mask;
-        ExhaleWellDef0Heap := AssertHeap;
         ExhaleWellDef0Mask := AssertMask;
+        ExhaleWellDef0Heap := AssertHeap;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (IfElseDifferentFootprint.vpr@22.16--22.24) [139549]"}

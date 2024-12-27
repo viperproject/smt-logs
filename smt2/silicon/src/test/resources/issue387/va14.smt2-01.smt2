@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-27 01:50:23
+; Started: 2024-12-27 09:59:43
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -131,11 +131,11 @@
     (contains%limited s@$ _pure_1@0@00 _pure_2@1@00 _pure_3@2@00)
     (contains s@$ _pure_1@0@00 _pure_2@1@00 _pure_3@2@00))
   :pattern ((contains s@$ _pure_1@0@00 _pure_2@1@00 _pure_3@2@00))
-  :qid |quant-u-5190|)))
+  :qid |quant-u-5238|)))
 (assert (forall ((s@$ $Snap) (_pure_1@0@00 $Ref) (_pure_2@1@00 Int) (_pure_3@2@00 Int)) (!
   (contains%stateless _pure_1@0@00 _pure_2@1@00 _pure_3@2@00)
   :pattern ((contains%limited s@$ _pure_1@0@00 _pure_2@1@00 _pure_3@2@00))
-  :qid |quant-u-5191|)))
+  :qid |quant-u-5239|)))
 (assert (forall ((s@$ $Snap) (_pure_1@0@00 $Ref) (_pure_2@1@00 Int) (_pure_3@2@00 Int)) (!
   (=>
     (contains%precondition s@$ _pure_1@0@00 _pure_2@1@00 _pure_3@2@00)
@@ -148,7 +148,7 @@
         (contains%limited ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.first ($Snap.second s@$)))))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first ($Snap.second s@$))))))) _pure_2@1@00 _pure_3@2@00))))
   :pattern ((contains s@$ _pure_1@0@00 _pure_2@1@00 _pure_3@2@00))
   :pattern ((contains%stateless _pure_1@0@00 _pure_2@1@00 _pure_3@2@00) (List%trigger s@$ _pure_1@0@00))
-  :qid |quant-u-5192|)))
+  :qid |quant-u-5240|)))
 (assert (forall ((s@$ $Snap) (_pure_1@0@00 $Ref) (_pure_2@1@00 Int) (_pure_3@2@00 Int)) (!
   (=>
     (and
@@ -158,6 +158,6 @@
         0))
     (contains%precondition ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.first ($Snap.second s@$)))))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first ($Snap.second s@$))))))) _pure_2@1@00 _pure_3@2@00))
   :pattern ((contains s@$ _pure_1@0@00 _pure_2@1@00 _pure_3@2@00))
-  :qid |quant-u-5193|)))
+  :qid |quant-u-5241|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------

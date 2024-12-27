@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 02:47:00
+// Date:         2024-12-27 10:55:53
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/adt/example_4.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/adt/example_4-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -818,12 +818,12 @@ axiom (forall <T> t_2: (OptionDomainType T) ::
 procedure request(arg: int) returns (res: (OptionDomainType int))
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -833,8 +833,8 @@ procedure request(arg: int) returns (res: (OptionDomainType int))
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -868,8 +868,8 @@ procedure request(arg: int) returns (res: (OptionDomainType int))
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     if (arg > 0) {
       assert {:msg "  Postcondition of request might not hold. Assertion (Option_tag(res): Int) == 1 might not hold. (example_4.vpr@27.9--27.53) [222541]"}
         (Option_tag(res): int) == 1;
@@ -889,13 +889,13 @@ procedure request(arg: int) returns (res: (OptionDomainType int))
 procedure client() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
   var response: (OptionDomainType int);
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var o_193: (OptionDomainType int);
   var arg_arg: int;
   
@@ -907,8 +907,8 @@ procedure client() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: response := request(1) -- example_4.vpr@43.5--43.27
     PreCallHeap := Heap;
@@ -927,8 +927,8 @@ procedure client() returns ()
     if ((Option_tag(response): int) == 1) {
       
       // -- Translating statement: assert (get_Option_value(response): Int) == 2 -- example_4.vpr@47.9--47.35
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Assert might fail. Assertion (get_Option_value(response): Int) == 2 might not hold. (example_4.vpr@47.16--47.35) [222544]"}
           (get_Option_value(response): int) == 2;
         assume state(Heap, Mask);
@@ -939,15 +939,15 @@ procedure client() returns ()
       
       // -- Translating statement: assert (add(response, (None(): Option[Int])): Option[Int]) ==
   //   (None(): Option[Int]) -- example_4.vpr@52.9--52.47
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Assert might fail. Assertion (add(response, (None(): Option[Int])): Option[Int]) == (None(): Option[Int]) might not hold. (example_4.vpr@52.16--52.47) [222545]"}
           (add_3(response, (None(): OptionDomainType int)): OptionDomainType int) == (None(): OptionDomainType int);
         assume state(Heap, Mask);
       
       // -- Translating statement: assert (get_Option_value((add(o, response): Option[Int])): Int) == 5 -- example_4.vpr@53.9--53.43
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Assert might fail. Assertion (get_Option_value((add(o, response): Option[Int])): Int) == 5 might not hold. (example_4.vpr@53.16--53.43) [222546]"}
           (get_Option_value((add_3(o_193, response): OptionDomainType int)): int) == 5;
         assume state(Heap, Mask);
@@ -955,16 +955,16 @@ procedure client() returns ()
       // -- Translating statement: assert (get_Option_value((add((Some(Seq(1, 2, 3)): Option[Seq[Int]]), (Some(Seq(1,
   //   2, 3)): Option[Seq[Int]])): Option[Seq[Int]])): Seq[Int]) ==
   //   Seq(1, 2, 3, 1, 2, 3) -- example_4.vpr@55.9--55.81
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Assert might fail. Assertion (get_Option_value((add((Some(Seq(1, 2, 3)): Option[Seq[Int]]), (Some(Seq(1, 2, 3)): Option[Seq[Int]])): Option[Seq[Int]])): Seq[Int]) == Seq(1, 2, 3, 1, 2, 3) might not hold. (example_4.vpr@55.16--55.81) [222547]"}
           Seq#Equal((get_Option_value((add_3((Some(Seq#Append(Seq#Append(Seq#Singleton(1), Seq#Singleton(2)), Seq#Singleton(3))): OptionDomainType (Seq int)), (Some(Seq#Append(Seq#Append(Seq#Singleton(1), Seq#Singleton(2)), Seq#Singleton(3))): OptionDomainType (Seq int))): OptionDomainType (Seq int))): Seq int), Seq#Append(Seq#Append(Seq#Append(Seq#Append(Seq#Append(Seq#Singleton(1), Seq#Singleton(2)), Seq#Singleton(3)), Seq#Singleton(1)), Seq#Singleton(2)), Seq#Singleton(3)));
         assume state(Heap, Mask);
     } else {
       
       // -- Translating statement: assert false -- example_4.vpr@59.9--59.21
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Assert might fail. Assertion false might not hold. (example_4.vpr@59.16--59.21) [222548]"}
           false;
         assume state(Heap, Mask);
@@ -991,8 +991,8 @@ procedure client() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (Option_tag(response): Int) == 0 -- example_4.vpr@65.5--65.27
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion (Option_tag(response): Int) == 0 might not hold. (example_4.vpr@65.12--65.27) [222549]"}
       (Option_tag(response): int) == 0;
     assume state(Heap, Mask);
@@ -1001,16 +1001,16 @@ procedure client() returns ()
     if ((Option_tag(response): int) == 1) {
       
       // -- Translating statement: assert false -- example_4.vpr@69.9--69.21
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Assert might fail. Assertion false might not hold. (example_4.vpr@69.16--69.21) [222550]"}
           false;
         assume state(Heap, Mask);
     } else {
       
       // -- Translating statement: assert true -- example_4.vpr@74.9--74.20
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assume state(Heap, Mask);
     }
     assume state(Heap, Mask);

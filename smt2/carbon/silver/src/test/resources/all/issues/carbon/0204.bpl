@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 02:37:45
+// Date:         2024-12-27 10:46:39
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0204.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0204-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -934,8 +934,8 @@ procedure foo_1(s_2: (Seq Ref)) returns ()
 {
   var i_2: int;
   var j: int;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var i_4: int;
@@ -943,8 +943,8 @@ procedure foo_1(s_2: (Seq Ref)) returns ()
   var i_6: int;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var perm: Perm;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
@@ -952,8 +952,8 @@ procedure foo_1(s_2: (Seq Ref)) returns ()
   var j_2_1: int;
   var i$0_6: int;
   var i_8_2: int;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -986,8 +986,8 @@ procedure foo_1(s_2: (Seq Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1048,8 +1048,8 @@ procedure foo_1(s_2: (Seq Ref)) returns ()
           UnfoldingMask := PostMask;
           assume Node#trigger(UnfoldingHeap, Node(Seq#Index(s_2, i_6)));
           assume UnfoldingHeap[null, Node(Seq#Index(s_2, i_6))] == FrameFragment(UnfoldingHeap[Seq#Index(s_2, i_6), val]);
-          ExhaleWellDef0Heap := UnfoldingHeap;
           ExhaleWellDef0Mask := UnfoldingMask;
+          ExhaleWellDef0Heap := UnfoldingHeap;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access Node(s[i]) (0204.vpr@12.13--12.103) [194956]"}
@@ -1092,8 +1092,8 @@ procedure foo_1(s_2: (Seq Ref)) returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       if (*) {
         if (i$0 >= 0 && (i$0 < Seq#Length(s_2) && (j_2_1 >= 0 && (j_2_1 < Seq#Length(s_2) && i$0 != j_2_1)))) {
           assert {:msg "  The precondition of method foo might not hold. Assertion s[i$0] != s[j] might not hold. (0204.vpr@15.5--15.11) [194962]"}
@@ -1159,8 +1159,8 @@ procedure foo_1(s_2: (Seq Ref)) returns ()
             UnfoldingMask := Mask;
             assume Node#trigger(UnfoldingHeap, Node(Seq#Index(s_2, i$0_6)));
             assume UnfoldingHeap[null, Node(Seq#Index(s_2, i$0_6))] == FrameFragment(UnfoldingHeap[Seq#Index(s_2, i$0_6), val]);
-            ExhaleWellDef0Heap := UnfoldingHeap;
             ExhaleWellDef0Mask := UnfoldingMask;
+            ExhaleWellDef0Heap := UnfoldingHeap;
             perm := FullPerm;
             if (perm != NoPerm) {
               assert {:msg "  An internal error occurred. There might be insufficient permission to access Node(s[i$0]) (0204.vpr@12.13--12.103) [194964]"}
@@ -1182,8 +1182,8 @@ procedure foo_1(s_2: (Seq Ref)) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     havoc QPMask;
     
     // -- check that the permission amount is positive
@@ -1237,8 +1237,8 @@ procedure foo_1(s_2: (Seq Ref)) returns ()
           UnfoldingMask := ExhaleWellDef0Mask;
           assume Node#trigger(UnfoldingHeap, Node(Seq#Index(s_2, i_8_2)));
           assume UnfoldingHeap[null, Node(Seq#Index(s_2, i_8_2))] == FrameFragment(UnfoldingHeap[Seq#Index(s_2, i_8_2), val]);
-          ExhaleWellDef1Heap := UnfoldingHeap;
           ExhaleWellDef1Mask := UnfoldingMask;
+          ExhaleWellDef1Heap := UnfoldingHeap;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  Postcondition of foo might not hold. There might be insufficient permission to access Node(s[i]) (0204.vpr@12.13--12.103) [194967]"}
@@ -1275,14 +1275,14 @@ procedure append(g_1: (Set Ref)) returns ()
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var QPMask: MaskType;
   var newPMask: PMaskType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef1Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1300,8 +1300,8 @@ procedure append(g_1: (Set Ref)) returns ()
       UnfoldingMask := Mask;
       assume GRAPH#trigger(UnfoldingHeap, GRAPH(g_1));
       assume UnfoldingHeap[null, GRAPH(g_1)] == FrameFragment(GRAPH#condqp1(UnfoldingHeap, g_1));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access GRAPH(g) (0204.vpr@26.14--26.40) [194969]"}
@@ -1363,8 +1363,8 @@ procedure append(g_1: (Set Ref)) returns ()
       UnfoldingMask := Mask;
       assume GRAPH#trigger(UnfoldingHeap, GRAPH(g_1));
       assume UnfoldingHeap[null, GRAPH(g_1)] == FrameFragment(GRAPH#condqp1(UnfoldingHeap, g_1));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       UnfoldingMask := UnfoldingMask[null, GRAPH(g_1):=UnfoldingMask[null, GRAPH(g_1)] - perm];
       havoc QPMask;
@@ -1402,20 +1402,20 @@ procedure append(g_1: (Set Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert (unfolding acc(GRAPH(g), write) in (forall n: Ref ::true)) -- 0204.vpr@29.5--29.54
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (unfolding acc(GRAPH(g), write) in (forall n: Ref ::true))
       UnfoldingHeap := ExhaleWellDef0Heap;
       UnfoldingMask := ExhaleWellDef0Mask;
       assume GRAPH#trigger(UnfoldingHeap, GRAPH(g_1));
       assume UnfoldingHeap[null, GRAPH(g_1)] == FrameFragment(GRAPH#condqp1(UnfoldingHeap, g_1));
-      ExhaleWellDef1Heap := UnfoldingHeap;
       ExhaleWellDef1Mask := UnfoldingMask;
+      ExhaleWellDef1Heap := UnfoldingHeap;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Assert might fail. There might be insufficient permission to access GRAPH(g) (0204.vpr@29.12--29.54) [194971]"}

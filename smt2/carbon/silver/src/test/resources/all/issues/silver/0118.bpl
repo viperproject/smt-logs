@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 02:46:07
+// Date:         2024-12-27 10:54:59
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0118.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0118-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -579,8 +579,8 @@ function  zip#triggerStateless(xs: (Seq Ref), ys: (Seq Ref)): Seq Ref;
 procedure zip#definedness(xs: (Seq Ref), ys: (Seq Ref)) returns (Result: (Seq Ref))
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -603,8 +603,8 @@ procedure zip#definedness(xs: (Seq Ref), ys: (Seq Ref)) returns (Result: (Seq Re
           0 < Seq#Length(ys);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           assert {:msg "  Precondition of function zip might not hold. Assertion |xs[1..]| == |ys[1..]| || |xs[1..]| == |ys[1..]| + 1 might not hold. (0118.vpr@9.28--9.49) [221294]"}
             Seq#Length(Seq#Drop(xs, 1)) == Seq#Length(Seq#Drop(ys, 1)) || Seq#Length(Seq#Drop(xs, 1)) == Seq#Length(Seq#Drop(ys, 1)) + 1;
           // Stop execution
@@ -626,12 +626,12 @@ procedure zip#definedness(xs: (Seq Ref), ys: (Seq Ref)) returns (Result: (Seq Re
 procedure test02(xs: (Seq Ref), ys: (Seq Ref), x: Ref, y: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -652,8 +652,8 @@ procedure test02(xs: (Seq Ref), ys: (Seq Ref), x: Ref, y: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -664,8 +664,8 @@ procedure test02(xs: (Seq Ref), ys: (Seq Ref), x: Ref, y: Ref) returns ()
     // -- Check definedness of Seq(x, y) == zip(xs, ys)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := PostHeap;
         ExhaleWellDef0Mask := PostMask;
+        ExhaleWellDef0Heap := PostHeap;
         assert {:msg "  Precondition of function zip might not hold. Assertion |xs| == |ys| || |xs| == |ys| + 1 might not hold. (0118.vpr@16.25--16.36) [221295]"}
           Seq#Length(xs) == Seq#Length(ys) || Seq#Length(xs) == Seq#Length(ys) + 1;
         // Stop execution
@@ -678,8 +678,8 @@ procedure test02(xs: (Seq Ref), ys: (Seq Ref), x: Ref, y: Ref) returns ()
   }
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of test02 might not hold. Assertion Seq(x, y) == zip(xs, ys) might not hold. (0118.vpr@16.12--16.36) [221296]"}
       Seq#Equal(Seq#Append(Seq#Singleton(x), Seq#Singleton(y)), zip(Heap, xs, ys));
 }
@@ -691,12 +691,12 @@ procedure test02(xs: (Seq Ref), ys: (Seq Ref), x: Ref, y: Ref) returns ()
 procedure test01(xs: (Seq Ref), ys: (Seq Ref)) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
-  var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -711,19 +711,19 @@ procedure test01(xs: (Seq Ref), ys: (Seq Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert zip(xs, ys) ==
   //   (ys == Seq[Ref]() ? xs : Seq(xs[0], ys[0]) ++ zip(xs[1..], ys[1..])) -- 0118.vpr@25.3--30.52
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of zip(xs, ys) == (ys == Seq[Ref]() ? xs : Seq(xs[0], ys[0]) ++ zip(xs[1..], ys[1..]))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         assert {:msg "  Precondition of function zip might not hold. Assertion |xs| == |ys| || |xs| == |ys| + 1 might not hold. (0118.vpr@26.5--26.16) [221297]"}
           Seq#Length(xs) == Seq#Length(ys) || Seq#Length(xs) == Seq#Length(ys) + 1;
         // Stop execution
@@ -737,8 +737,8 @@ procedure test01(xs: (Seq Ref), ys: (Seq Ref)) returns ()
           0 < Seq#Length(ys);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef1Heap := ExhaleWellDef0Heap;
           ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+          ExhaleWellDef1Heap := ExhaleWellDef0Heap;
           assert {:msg "  Precondition of function zip might not hold. Assertion |xs[1..]| == |ys[1..]| || |xs[1..]| == |ys[1..]| + 1 might not hold. (0118.vpr@30.30--30.51) [221300]"}
             Seq#Length(Seq#Drop(xs, 1)) == Seq#Length(Seq#Drop(ys, 1)) || Seq#Length(Seq#Drop(xs, 1)) == Seq#Length(Seq#Drop(ys, 1)) + 1;
           // Stop execution

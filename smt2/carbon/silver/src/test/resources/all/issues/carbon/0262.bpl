@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 02:37:11
+// Date:         2024-12-27 10:46:05
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0262.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0262-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -196,12 +196,12 @@ function  foo(start_1: Ref, end_1: Ref): bool;
 procedure link_DAG_next(from: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var y_2: Ref;
   
   // -- Initializing the state
@@ -215,8 +215,8 @@ procedure link_DAG_next(from: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -244,8 +244,8 @@ procedure link_DAG_next(from: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     if (from != null) {
       if (*) {
         assert {:msg "  Postcondition of link_DAG_next might not hold. Assertion __learn_trigger__(foo(from, y)) might not hold. (0262.vpr@8.11--8.107) [193052]"}
@@ -266,13 +266,13 @@ procedure link_DAG_next(from: Ref) returns ()
 procedure append(from: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var y: Ref;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -285,8 +285,8 @@ procedure append(from: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[y, $allocated];
@@ -311,8 +311,8 @@ procedure append(from: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert exists_path(y, y) ==> __learn_trigger__(foo(from, y)) -- 0262.vpr@15.5--15.63
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     if ((exists_path(y, y): bool)) {
       assert {:msg "  Assert might fail. Assertion __learn_trigger__(foo(from, y)) might not hold. (0262.vpr@15.12--15.63) [193053]"}
         (__learn_trigger__((foo(from, y): bool)): bool);
@@ -320,8 +320,8 @@ procedure append(from: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert exists_path(y, y) ==> __learn_trigger__(foo(y, y)) -- 0262.vpr@17.5--17.60
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     if ((exists_path(y, y): bool)) {
       assert {:msg "  Assert might fail. Assertion __learn_trigger__(foo(y, y)) might not hold. (0262.vpr@17.12--17.60) [193054]"}
         (__learn_trigger__((foo(y, y): bool)): bool);

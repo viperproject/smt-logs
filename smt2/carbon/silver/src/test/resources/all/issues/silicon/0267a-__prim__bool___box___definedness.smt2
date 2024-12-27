@@ -501,7 +501,7 @@
 )))
 (assert (= NoPerm 0.0))
 (assert (= FullPerm 1.0))
-; Invalid
+; Valid
 (push 1)
 (declare-fun ControlFlow (Int Int) Int)
 (set-info :boogie-vc-id |__prim__bool___box__#definedness|)

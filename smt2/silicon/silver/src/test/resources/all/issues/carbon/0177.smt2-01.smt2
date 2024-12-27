@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-27 01:59:18
+; Started: 2024-12-27 10:08:25
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -525,7 +525,7 @@
         $Perm.No
         ($PSF.perm_p (as pm@3@01  $PPM) ($SortWrappers.$RefTo$Snap r@0@01)))))
   
-  :qid |quant-u-23137|))))
+  :qid |quant-u-23148|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -595,7 +595,7 @@
       ($PSF.perm_p (as pm@3@01  $PPM) ($SortWrappers.$RefTo$Snap (inv@4@01 r)))
       $Perm.No))
   
-  :qid |quant-u-23138|))))
+  :qid |quant-u-23149|))))
 (check-sat)
 ; unsat
 (pop) ; 3

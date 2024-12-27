@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 02:46:33
+// Date:         2024-12-27 10:55:26
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0444.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0444-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -243,10 +243,10 @@ procedure tru#definedness() returns ()
 procedure test_unfold() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var perm: Perm;
   var newVersion: FrameType;
   
@@ -258,16 +258,16 @@ procedure test_unfold() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: unfold acc(falze(), none) -- 0444.vpr@17.5--17.30
     assert {:msg "  Unfolding falze() might fail. Fraction none might not be positive. (0444.vpr@17.5--17.30) [221510]"}
       false;
     assume falze#trigger(Heap, falze());
     assume Heap[null, falze()] == EmptyFrame;
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := NoPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding falze() might fail. There might be insufficient permission to access falze() (0444.vpr@17.5--17.30) [221512]"}
@@ -285,8 +285,8 @@ procedure test_unfold() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- 0444.vpr@18.5--18.17
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion false might not hold. (0444.vpr@18.12--18.17) [221513]"}
       false;
     assume state(Heap, Mask);
@@ -299,10 +299,10 @@ procedure test_unfold() returns ()
 procedure test_unfold_unknown(p_1: Perm) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var perm: Perm;
   var newVersion: FrameType;
   
@@ -314,8 +314,8 @@ procedure test_unfold_unknown(p_1: Perm) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale p >= none -- 0444.vpr@22.12--22.21
     assume NoPerm <= p_1;
@@ -327,8 +327,8 @@ procedure test_unfold_unknown(p_1: Perm) returns ()
       p_1 > NoPerm;
     assume falze#trigger(Heap, falze());
     assume Heap[null, falze()] == EmptyFrame;
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := p_1;
     assert {:msg "  Unfolding falze() might fail. Fraction p might be negative. (0444.vpr@26.5--26.27) [221515]"}
       perm >= NoPerm;
@@ -348,8 +348,8 @@ procedure test_unfold_unknown(p_1: Perm) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- 0444.vpr@27.5--27.17
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion false might not hold. (0444.vpr@27.12--27.17) [221517]"}
       false;
     assume state(Heap, Mask);
@@ -362,14 +362,14 @@ procedure test_unfold_unknown(p_1: Perm) returns ()
 procedure test_unfolding() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var perm: Perm;
   
   // -- Initializing the state
@@ -380,12 +380,12 @@ procedure test_unfolding() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert (unfolding acc(falze(), none) in false) -- 0444.vpr@32.5--32.49
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (unfolding acc(falze(), none) in false)
       UnfoldingHeap := ExhaleWellDef0Heap;
@@ -394,8 +394,8 @@ procedure test_unfolding() returns ()
         false;
       assume falze#trigger(UnfoldingHeap, falze());
       assume UnfoldingHeap[null, falze()] == EmptyFrame;
-      ExhaleWellDef1Mask := UnfoldingMask;
       ExhaleWellDef1Heap := UnfoldingHeap;
+      ExhaleWellDef1Mask := UnfoldingMask;
       perm := NoPerm;
       if (perm != NoPerm) {
         assert {:msg "  Assert might fail. There might be insufficient permission to access falze() (0444.vpr@32.12--32.49) [221519]"}
@@ -422,14 +422,14 @@ procedure test_unfolding() returns ()
 procedure test_unfolding_unknown(p_1: Perm) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var perm: Perm;
   
   // -- Initializing the state
@@ -440,8 +440,8 @@ procedure test_unfolding_unknown(p_1: Perm) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale p >= none -- 0444.vpr@36.12--36.21
     assume NoPerm <= p_1;
@@ -449,8 +449,8 @@ procedure test_unfolding_unknown(p_1: Perm) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (unfolding acc(falze(), p) in false) -- 0444.vpr@40.5--40.46
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (unfolding acc(falze(), p) in false)
       UnfoldingHeap := ExhaleWellDef0Heap;
@@ -459,8 +459,8 @@ procedure test_unfolding_unknown(p_1: Perm) returns ()
         p_1 > NoPerm;
       assume falze#trigger(UnfoldingHeap, falze());
       assume UnfoldingHeap[null, falze()] == EmptyFrame;
-      ExhaleWellDef1Mask := UnfoldingMask;
       ExhaleWellDef1Heap := UnfoldingHeap;
+      ExhaleWellDef1Mask := UnfoldingMask;
       perm := p_1;
       assert {:msg "  Assert might fail. Fraction p might be negative. (0444.vpr@40.12--40.46) [221522]"}
         perm >= NoPerm;
@@ -489,10 +489,10 @@ procedure test_unfolding_unknown(p_1: Perm) returns ()
 procedure test_fold() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var perm: Perm;
   var freshVersion: FrameType;
   
@@ -504,14 +504,14 @@ procedure test_fold() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: fold acc(tru(), none) -- 0444.vpr@45.5--45.26
     assert {:msg "  Folding tru() might fail. Fraction none might not be positive. (0444.vpr@45.5--45.26) [221525]"}
       false;
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := NoPerm;
     Mask := Mask[null, tru():=Mask[null, tru()] + perm];
     assume state(Heap, Mask);
@@ -534,10 +534,10 @@ procedure test_fold() returns ()
 procedure test_fold_unknown(p_1: Perm) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var perm: Perm;
   var freshVersion: FrameType;
   
@@ -549,8 +549,8 @@ procedure test_fold_unknown(p_1: Perm) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale p >= none -- 0444.vpr@49.12--49.21
     assume NoPerm <= p_1;
@@ -560,8 +560,8 @@ procedure test_fold_unknown(p_1: Perm) returns ()
   // -- Translating statement: fold acc(tru(), p) -- 0444.vpr@51.5--51.23
     assert {:msg "  Folding tru() might fail. Fraction p might not be positive. (0444.vpr@51.5--51.23) [221528]"}
       p_1 > NoPerm;
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := p_1;
     assert {:msg "  Folding tru() might fail. Fraction p might be negative. (0444.vpr@51.5--51.23) [221530]"}
       perm >= NoPerm;

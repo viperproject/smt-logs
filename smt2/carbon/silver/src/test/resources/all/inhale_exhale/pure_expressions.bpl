@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 02:35:32
+// Date:         2024-12-27 10:44:27
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/inhale_exhale/pure_expressions.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/inhale_exhale/pure_expressions-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -180,11 +180,11 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 procedure aa1() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var x: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -194,23 +194,23 @@ procedure aa1() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: x := 1 -- pure_expressions.vpr@7.3--7.9
     x := 1;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert [x == 0, x == 1] -- pure_expressions.vpr@10.3--10.26
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion x == 1 might not hold. (pure_expressions.vpr@10.10--10.26) [188627]"}
       x == 1;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert [x == 1, x == 0] -- pure_expressions.vpr@14.3--14.26
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion x == 0 might not hold. (pure_expressions.vpr@14.10--14.26) [188628]"}
       x == 0;
     assume state(Heap, Mask);
@@ -223,11 +223,11 @@ procedure aa1() returns ()
 procedure aa2() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var x: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -237,8 +237,8 @@ procedure aa2() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: x := 1 -- pure_expressions.vpr@20.3--20.9
     x := 1;
@@ -250,8 +250,8 @@ procedure aa2() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- pure_expressions.vpr@24.3--24.15
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion false might not hold. (pure_expressions.vpr@24.10--24.15) [188629]"}
       false;
     assume state(Heap, Mask);
@@ -264,11 +264,11 @@ procedure aa2() returns ()
 procedure aa3() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var x: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -278,8 +278,8 @@ procedure aa3() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: x := 1 -- pure_expressions.vpr@30.3--30.9
     x := 1;
@@ -291,8 +291,8 @@ procedure aa3() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- pure_expressions.vpr@35.3--35.15
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion false might not hold. (pure_expressions.vpr@35.10--35.15) [188630]"}
       false;
     assume state(Heap, Mask);
@@ -305,11 +305,11 @@ procedure aa3() returns ()
 procedure aa4() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var x: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -319,16 +319,16 @@ procedure aa4() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: x := 1 -- pure_expressions.vpr@41.3--41.9
     x := 1;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert [x == 0, x == 1] && [x == 0, x == 1] -- pure_expressions.vpr@44.3--44.46
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion x == 1 might not hold. (pure_expressions.vpr@44.10--44.46) [188631]"}
       x == 1;
     assert {:msg "  Assert might fail. Assertion x == 1 might not hold. (pure_expressions.vpr@44.10--44.46) [188632]"}
@@ -336,8 +336,8 @@ procedure aa4() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert [x == 1, x == 0] && [x == 0, x == 1] -- pure_expressions.vpr@48.3--48.46
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion x == 0 might not hold. (pure_expressions.vpr@48.10--48.46) [188633]"}
       x == 0;
     assert {:msg "  Assert might fail. Assertion x == 1 might not hold. (pure_expressions.vpr@48.10--48.46) [188634]"}
@@ -352,11 +352,11 @@ procedure aa4() returns ()
 procedure aa5() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var x: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -366,23 +366,23 @@ procedure aa5() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: x := 1 -- pure_expressions.vpr@54.3--54.9
     x := 1;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert [[x == 0, x == 0], x == 1] -- pure_expressions.vpr@57.3--57.36
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion x == 1 might not hold. (pure_expressions.vpr@57.10--57.36) [188635]"}
       x == 1;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert [[x == 0, x == 0], [x == 0, x == 1]] -- pure_expressions.vpr@60.3--60.46
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion x == 1 might not hold. (pure_expressions.vpr@60.10--60.46) [188636]"}
       x == 1;
     assume state(Heap, Mask);
@@ -395,11 +395,11 @@ procedure aa5() returns ()
 procedure aa6() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var x: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -409,16 +409,16 @@ procedure aa6() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: x := 1 -- pure_expressions.vpr@66.3--66.9
     x := 1;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert [[x == 0, x == 0], [x == 0, x == 1] && x == 1] -- pure_expressions.vpr@69.3--69.56
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion x == 1 might not hold. (pure_expressions.vpr@69.10--69.56) [188637]"}
       x == 1;
     assert {:msg "  Assert might fail. Assertion x == 1 might not hold. (pure_expressions.vpr@69.10--69.56) [188638]"}
@@ -426,8 +426,8 @@ procedure aa6() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert [[x == 0, x == 0], x == 1 ==> [x == 0, x == 1]] -- pure_expressions.vpr@72.3--72.57
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     if (x == 1) {
       assert {:msg "  Assert might fail. Assertion x == 1 might not hold. (pure_expressions.vpr@72.10--72.57) [188639]"}
         x == 1;
@@ -442,11 +442,11 @@ procedure aa6() returns ()
 procedure ie1_1() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var x: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -456,23 +456,23 @@ procedure ie1_1() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: x := 1 -- pure_expressions.vpr@78.3--78.9
     x := 1;
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale [x == 0, x == 1] -- pure_expressions.vpr@81.3--81.26
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Exhale might fail. Assertion x == 1 might not hold. (pure_expressions.vpr@81.10--81.26) [188640]"}
       x == 1;
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale [x == 1, x == 0] -- pure_expressions.vpr@85.3--85.26
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Exhale might fail. Assertion x == 0 might not hold. (pure_expressions.vpr@85.10--85.26) [188641]"}
       x == 0;
     assume state(Heap, Mask);
@@ -485,11 +485,11 @@ procedure ie1_1() returns ()
 procedure ie2() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var x: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -499,8 +499,8 @@ procedure ie2() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: x := 1 -- pure_expressions.vpr@91.3--91.9
     x := 1;
@@ -512,8 +512,8 @@ procedure ie2() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- pure_expressions.vpr@95.3--95.15
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion false might not hold. (pure_expressions.vpr@95.10--95.15) [188642]"}
       false;
     assume state(Heap, Mask);
@@ -526,11 +526,11 @@ procedure ie2() returns ()
 procedure ie3() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var x: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -540,8 +540,8 @@ procedure ie3() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: x := 1 -- pure_expressions.vpr@101.3--101.9
     x := 1;
@@ -553,8 +553,8 @@ procedure ie3() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- pure_expressions.vpr@106.3--106.15
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion false might not hold. (pure_expressions.vpr@106.10--106.15) [188643]"}
       false;
     assume state(Heap, Mask);

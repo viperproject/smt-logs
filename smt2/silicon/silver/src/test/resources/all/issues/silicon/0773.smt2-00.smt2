@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-27 02:00:42
+; Started: 2024-12-27 10:09:47
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -125,11 +125,11 @@
 (assert (forall ((s@$ $Snap)) (!
   (= (pre%limited s@$) (pre s@$))
   :pattern ((pre s@$))
-  :qid |quant-u-24800|)))
+  :qid |quant-u-24809|)))
 (assert (forall ((s@$ $Snap)) (!
   (as pre%stateless  Bool)
   :pattern ((pre%limited s@$))
-  :qid |quant-u-24801|)))
+  :qid |quant-u-24810|)))
 ; ---------- FUNCTION needsPre----------
 (declare-fun result@1@00 () Bool)
 ; ----- Well-definedness of specifications -----
@@ -146,8 +146,8 @@
 (assert (forall ((s@$ $Snap)) (!
   (= (needsPre%limited s@$) (needsPre s@$))
   :pattern ((needsPre s@$))
-  :qid |quant-u-24802|)))
+  :qid |quant-u-24811|)))
 (assert (forall ((s@$ $Snap)) (!
   (as needsPre%stateless  Bool)
   :pattern ((needsPre%limited s@$))
-  :qid |quant-u-24803|)))
+  :qid |quant-u-24812|)))

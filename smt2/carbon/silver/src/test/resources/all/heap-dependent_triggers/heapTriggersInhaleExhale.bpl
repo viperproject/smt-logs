@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 02:28:24
+// Date:         2024-12-27 10:37:21
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/heap-dependent_triggers/heapTriggersInhaleExhale.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/heap-dependent_triggers/heapTriggersInhaleExhale-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -770,15 +770,15 @@ axiom !IsWandField(f_7);
 procedure m7(xs: (Seq Ref)) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var i_14: int;
   var j_5: int;
   var i_2: int;
   var QPMask: MaskType;
   var v_2: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var i_4: int;
   var ExhaleHeap: HeapType;
   var i_6: int;
@@ -792,8 +792,8 @@ procedure m7(xs: (Seq Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale |xs| >= 1 -- heapTriggersInhaleExhale.vpr@8.12--8.21
     assume Seq#Length(xs) >= 1;
@@ -888,8 +888,8 @@ procedure m7(xs: (Seq Ref)) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert perm(xs[0].f) >= write -- heapTriggersInhaleExhale.vpr@14.5--14.34
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of perm(xs[0].f) >= write
       assert {:msg "  Assert might fail. Index xs[0] into xs might exceed sequence length. (heapTriggersInhaleExhale.vpr@14.12--14.34) [140804]"}
@@ -901,8 +901,8 @@ procedure m7(xs: (Seq Ref)) returns ()
   // -- Translating statement: exhale (forall i: Int ::
   //     { xs[i].f }
   //     0 <= i && i < |xs| ==> acc(xs[i].f, write)) -- heapTriggersInhaleExhale.vpr@16.5--16.74
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall i: Int :: { xs[i].f } 0 <= i && i < |xs| ==> acc(xs[i].f, write))
       if (*) {
@@ -964,8 +964,8 @@ procedure m7(xs: (Seq Ref)) returns ()
   // -- Translating statement: assert (forall i: Int ::
   //     { xs[i] }
   //     0 <= i && i < |xs| ==> perm(xs[i].f) == none) -- heapTriggersInhaleExhale.vpr@17.5--17.73
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall i: Int :: { xs[i] } 0 <= i && i < |xs| ==> perm(xs[i].f) == none)
       if (*) {
@@ -998,12 +998,12 @@ procedure m7(xs: (Seq Ref)) returns ()
 procedure m2(xs: (Set Ref), ys: (Set Ref)) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var a_2: Ref;
   var QPMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1013,8 +1013,8 @@ procedure m2(xs: (Set Ref), ys: (Set Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[a_2, $allocated];
@@ -1116,15 +1116,15 @@ procedure m2(xs: (Set Ref), ys: (Set Ref)) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert perm(a.f) == 2 * write -- heapTriggersInhaleExhale.vpr@28.5--28.32
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion perm(a.f) == 2 * write might not hold. (heapTriggersInhaleExhale.vpr@28.12--28.32) [140816]"}
       Mask[a_2, f_7] == real(2) * FullPerm;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- heapTriggersInhaleExhale.vpr@29.5--29.17
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion false might not hold. (heapTriggersInhaleExhale.vpr@29.12--29.17) [140817]"}
       false;
     assume state(Heap, Mask);
@@ -1137,13 +1137,13 @@ procedure m2(xs: (Set Ref), ys: (Set Ref)) returns ()
 procedure m3(xs: (Seq Ref)) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var y: Ref;
   var z: Ref;
   var QPMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1153,8 +1153,8 @@ procedure m3(xs: (Seq Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[y, $allocated];
@@ -1222,8 +1222,8 @@ procedure m3(xs: (Seq Ref)) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert z != y -- heapTriggersInhaleExhale.vpr@39.5--39.18
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion z != y might not hold. (heapTriggersInhaleExhale.vpr@39.12--39.18) [140819]"}
       z != y;
     assume state(Heap, Mask);

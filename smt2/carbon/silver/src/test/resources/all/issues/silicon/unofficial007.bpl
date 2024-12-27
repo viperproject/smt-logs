@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 02:40:41
+// Date:         2024-12-27 10:49:34
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/unofficial007.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/unofficial007-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -237,8 +237,8 @@ procedure length#definedness(xs: Ref) returns (Result: int)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var newPMask: PMaskType;
   
@@ -262,8 +262,8 @@ procedure length#definedness(xs: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume SortedList#trigger(UnfoldingHeap, SortedList(xs));
       assume UnfoldingHeap[null, SortedList(xs)] == CombineFrames(FrameFragment(UnfoldingHeap[xs, val]), CombineFrames(FrameFragment(UnfoldingHeap[xs, next]), CombineFrames(FrameFragment((if UnfoldingHeap[xs, next] != null then UnfoldingHeap[null, SortedList(UnfoldingHeap[xs, next])] else EmptyFrame)), FrameFragment((if UnfoldingHeap[xs, next] != null then EmptyFrame else EmptyFrame)))));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access SortedList(xs) (unofficial007.vpr@7.1--10.79) [204385]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, SortedList(xs)];
@@ -298,8 +298,8 @@ procedure length#definedness(xs: Ref) returns (Result: int)
           HasDirectPerm(UnfoldingMask, xs, next);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
+          ExhaleWellDef0Mask := UnfoldingMask;
           perm := FullPerm;
           assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access SortedList(xs.next) (unofficial007.vpr@10.62--10.77) [204388]"}
             NoPerm < perm ==> NoPerm < UnfoldingMask[null, SortedList(UnfoldingHeap[xs, next])];
@@ -345,8 +345,8 @@ procedure length#definedness(xs: Ref) returns (Result: int)
     Result := 1 + (if Heap[xs, next] == null then 0 else length(Heap, Heap[xs, next]));
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of length might not hold. Assertion result > 0 might not hold. (unofficial007.vpr@9.10--9.20) [204389]"}
       Result > 0;
 }
@@ -391,8 +391,8 @@ procedure itemAt#definedness(xs: Ref, i: int) returns (Result: int)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
@@ -416,8 +416,8 @@ procedure itemAt#definedness(xs: Ref, i: int) returns (Result: int)
     // -- Check definedness of i < length(xs)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access SortedList(xs) (unofficial007.vpr@14.25--14.35) [204390]"}
           NoPerm < perm ==> NoPerm < Mask[null, SortedList(xs)];
@@ -438,8 +438,8 @@ procedure itemAt#definedness(xs: Ref, i: int) returns (Result: int)
       UnfoldingMask := Mask;
       assume SortedList#trigger(UnfoldingHeap, SortedList(xs));
       assume UnfoldingHeap[null, SortedList(xs)] == CombineFrames(FrameFragment(UnfoldingHeap[xs, val]), CombineFrames(FrameFragment(UnfoldingHeap[xs, next]), CombineFrames(FrameFragment((if UnfoldingHeap[xs, next] != null then UnfoldingHeap[null, SortedList(UnfoldingHeap[xs, next])] else EmptyFrame)), FrameFragment((if UnfoldingHeap[xs, next] != null then EmptyFrame else EmptyFrame)))));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access SortedList(xs) (unofficial007.vpr@12.1--15.76) [204391]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, SortedList(xs)];
@@ -474,8 +474,8 @@ procedure itemAt#definedness(xs: Ref, i: int) returns (Result: int)
           HasDirectPerm(UnfoldingMask, xs, next);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
+          ExhaleWellDef0Mask := UnfoldingMask;
           perm := FullPerm;
           assert {:msg "  Precondition of function itemAt might not hold. There might be insufficient permission to access SortedList(xs.next) (unofficial007.vpr@15.54--15.74) [204394]"}
             NoPerm < perm ==> NoPerm < UnfoldingMask[null, SortedList(UnfoldingHeap[xs, next])];
@@ -557,8 +557,8 @@ procedure ascending#definedness(xs: Ref) returns (Result: bool)
   var perm: Perm;
   var i_9: int;
   var j_10: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -582,8 +582,8 @@ procedure ascending#definedness(xs: Ref) returns (Result: bool)
           if (i_9 < j_10) {
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access SortedList(xs) (unofficial007.vpr@19.82--19.92) [204397]"}
                 NoPerm < perm ==> NoPerm < Mask[null, SortedList(xs)];
@@ -599,8 +599,8 @@ procedure ascending#definedness(xs: Ref) returns (Result: bool)
         if (0 <= i_9 && (i_9 < j_10 && j_10 < length(Heap, xs))) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
             assert {:msg "  Precondition of function itemAt might not hold. There might be insufficient permission to access SortedList(xs) (unofficial007.vpr@19.97--19.110) [204398]"}
               NoPerm < perm ==> NoPerm < Mask[null, SortedList(xs)];
@@ -617,8 +617,8 @@ procedure ascending#definedness(xs: Ref) returns (Result: bool)
           }
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
             assert {:msg "  Precondition of function itemAt might not hold. There might be insufficient permission to access SortedList(xs) (unofficial007.vpr@19.114--19.127) [204401]"}
               NoPerm < perm ==> NoPerm < Mask[null, SortedList(xs)];
@@ -683,8 +683,8 @@ procedure SortedList#definedness(xs: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Check definedness of predicate body of SortedList
@@ -730,8 +730,8 @@ procedure SortedList#definedness(xs: Ref) returns ()
           HasDirectPerm(Mask, xs, next);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           perm := FullPerm;
           assert {:msg "  Precondition of function itemAt might not hold. There might be insufficient permission to access SortedList(xs.next) (unofficial007.vpr@24.36--24.54) [204409]"}
             NoPerm < perm ==> NoPerm < Mask[null, SortedList(Heap[xs, next])];
@@ -752,8 +752,8 @@ procedure SortedList#definedness(xs: Ref) returns ()
           HasDirectPerm(Mask, xs, next);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           perm := FullPerm;
           assert {:msg "  Precondition of function ascending might not hold. There might be insufficient permission to access SortedList(xs.next) (unofficial007.vpr@24.58--24.76) [204412]"}
             NoPerm < perm ==> NoPerm < Mask[null, SortedList(Heap[xs, next])];
@@ -777,14 +777,14 @@ procedure insert(xs: Ref, e_1: int) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var newPMask: PMaskType;
   var ExhaleHeap: HeapType;
   
@@ -806,20 +806,20 @@ procedure insert(xs: Ref, e_1: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert (unfolding acc(SortedList(xs), write) in true) -- unofficial007.vpr@30.2--30.46
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (unfolding acc(SortedList(xs), write) in true)
       UnfoldingHeap := ExhaleWellDef0Heap;
       UnfoldingMask := ExhaleWellDef0Mask;
       assume SortedList#trigger(UnfoldingHeap, SortedList(xs));
       assume UnfoldingHeap[null, SortedList(xs)] == CombineFrames(FrameFragment(UnfoldingHeap[xs, val]), CombineFrames(FrameFragment(UnfoldingHeap[xs, next]), CombineFrames(FrameFragment((if UnfoldingHeap[xs, next] != null then UnfoldingHeap[null, SortedList(UnfoldingHeap[xs, next])] else EmptyFrame)), FrameFragment((if UnfoldingHeap[xs, next] != null then EmptyFrame else EmptyFrame)))));
-      ExhaleWellDef1Mask := UnfoldingMask;
       ExhaleWellDef1Heap := UnfoldingHeap;
+      ExhaleWellDef1Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Assert might fail. There might be insufficient permission to access SortedList(xs) (unofficial007.vpr@30.9--30.46) [204413]"}
@@ -878,14 +878,14 @@ procedure insert(xs: Ref, e_1: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert ascending(xs) -- unofficial007.vpr@31.2--31.22
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of ascending(xs)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function ascending might not hold. There might be insufficient permission to access SortedList(xs) (unofficial007.vpr@31.9--31.22) [204415]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, SortedList(xs)];

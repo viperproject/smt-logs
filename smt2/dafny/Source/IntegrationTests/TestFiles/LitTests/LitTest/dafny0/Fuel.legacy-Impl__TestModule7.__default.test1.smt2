@@ -193,7 +193,3 @@ $generated@@142))))))))
 (get-info :rlimit)
 (pop 1)
 ; Invalid
-(reset)
-(set-option :rlimit 0)
-; did a full reset
-(reset)

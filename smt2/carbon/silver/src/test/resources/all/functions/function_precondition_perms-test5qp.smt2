@@ -1744,7 +1744,7 @@
  :pattern ( (state Heap@@101 Mask@@79) (bar2 Heap@@101 x@@70))
  :pattern ( (state Heap@@101 Mask@@79) (|bar2#triggerStateless| x@@70) (|P#trigger_21974| Heap@@101 (P x@@70)))
 )))
-; Valid
+; Invalid
 (push 1)
 (declare-fun ControlFlow (Int Int) Int)
 (declare-fun QPMask@0 () T@PolymorphicMapType_38218)

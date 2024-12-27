@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-27 01:52:03
+; Started: 2024-12-27 10:01:21
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -675,7 +675,7 @@
   :pattern ((Set_in x@3@00 xs@0@00))
   :pattern ((inv@4@00 s@$ xs@0@00 y@1@00 x@3@00))
   :pattern ((img@5@00 s@$ xs@0@00 y@1@00 x@3@00))
-  :qid |quant-u-12201|)))
+  :qid |quant-u-12249|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -699,11 +699,11 @@
 (assert (forall ((s@$ $Snap) (xs@0@00 Set<$Ref>) (y@1@00 $Ref)) (!
   (= (fun01%limited s@$ xs@0@00 y@1@00) (fun01 s@$ xs@0@00 y@1@00))
   :pattern ((fun01 s@$ xs@0@00 y@1@00))
-  :qid |quant-u-12198|)))
+  :qid |quant-u-12246|)))
 (assert (forall ((s@$ $Snap) (xs@0@00 Set<$Ref>) (y@1@00 $Ref)) (!
   (fun01%stateless xs@0@00 y@1@00)
   :pattern ((fun01%limited s@$ xs@0@00 y@1@00))
-  :qid |quant-u-12199|)))
+  :qid |quant-u-12247|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (forall ((r $Ref)) (!
@@ -723,7 +723,7 @@
   :pattern ((Set_in x@3@00 xs@0@00))
   :pattern ((inv@4@00 s@$ xs@0@00 y@1@00 x@3@00))
   :pattern ((img@5@00 s@$ xs@0@00 y@1@00 x@3@00))
-  :qid |quant-u-12201|)))
+  :qid |quant-u-12249|)))
 (assert (forall ((x@3@00 $Ref)) (!
   (=> (Set_in x@3@00 xs@0@00) (not (= x@3@00 $Ref.null)))
   :pattern ((Set_in x@3@00 xs@0@00))
@@ -762,7 +762,7 @@
       :pattern ((Set_in x@3@00 xs@0@00))
       :pattern ((inv@4@00 s@$ xs@0@00 y@1@00 x@3@00))
       :pattern ((img@5@00 s@$ xs@0@00 y@1@00 x@3@00))
-      :qid |quant-u-12201|))
+      :qid |quant-u-12249|))
     (forall ((r $Ref)) (!
       (=>
         (and
@@ -777,8 +777,8 @@
         (fun01 s@$ xs@0@00 y@1@00)
         ($FVF.lookup_f ($SortWrappers.$SnapTo$FVF<f> ($Snap.first s@$)) y@1@00))))
   :pattern ((fun01 s@$ xs@0@00 y@1@00))
-  :qid |quant-u-12202|)))
+  :qid |quant-u-12250|)))
 (assert (forall ((s@$ $Snap) (xs@0@00 Set<$Ref>) (y@1@00 $Ref)) (!
   true
   :pattern ((fun01 s@$ xs@0@00 y@1@00))
-  :qid |quant-u-12203|)))
+  :qid |quant-u-12251|)))

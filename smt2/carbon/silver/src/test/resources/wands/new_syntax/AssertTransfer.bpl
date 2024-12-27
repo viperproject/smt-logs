@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 02:27:14
+// Date:         2024-12-27 10:36:11
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/new_syntax/AssertTransfer.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/new_syntax/AssertTransfer-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -261,19 +261,19 @@ procedure test0(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var Ops_1Heap: HeapType;
   var Ops_1Mask: MaskType;
   var b_1_1: bool;
   var UsedHeap: HeapType;
   var UsedMask: MaskType;
   var b_2: bool;
-  var Labellhs1Heap: HeapType;
   var Labellhs1Mask: MaskType;
+  var Labellhs1Heap: HeapType;
   var boolCur: bool;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var Used_1Heap: HeapType;
   var Used_1Mask: MaskType;
   var b_2_1: bool;
@@ -304,8 +304,8 @@ procedure test0(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: package true --* true {
   //   assert x.f == 0
@@ -324,15 +324,15 @@ procedure test0(x: Ref) returns ()
     
     // -- Translating statement: label lhs1 -- AssertTransfer.vpr@9.13--9.26
       lhs1:
-      Labellhs1Heap := Ops_1Heap;
       Labellhs1Mask := Ops_1Mask;
+      Labellhs1Heap := Ops_1Heap;
       b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);
     boolCur := true;
     if (b_1_1) {
       
       // -- Translating statement: assert x.f == 0 -- AssertTransfer.vpr@11.9--11.24
-        ExhaleWellDef0Heap := Ops_1Heap;
         ExhaleWellDef0Mask := Ops_1Mask;
+        ExhaleWellDef0Heap := Ops_1Heap;
         havoc Used_1Heap;
         Used_1Mask := ZeroMask;
         b_2_1 := b_2_1 && state(Used_1Heap, Used_1Mask);
@@ -367,21 +367,21 @@ procedure test1(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var Ops_3Heap: HeapType;
   var Ops_3Mask: MaskType;
   var b_5: bool;
   var Used_3Heap: HeapType;
   var Used_3Mask: MaskType;
   var b_4: bool;
-  var Labellhs3Heap: HeapType;
   var Labellhs3Mask: MaskType;
+  var Labellhs3Heap: HeapType;
   var boolCur_1: bool;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var Used_4Heap: HeapType;
   var Used_4Mask: MaskType;
   var b_6: bool;
@@ -427,8 +427,8 @@ procedure test1(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: package true --* true {
   //   assert acc(x.f, write)
@@ -448,8 +448,8 @@ procedure test1(x: Ref) returns ()
     
     // -- Translating statement: label lhs3 -- AssertTransfer.vpr@17.13--17.26
       lhs3:
-      Labellhs3Heap := Ops_3Heap;
       Labellhs3Mask := Ops_3Mask;
+      Labellhs3Heap := Ops_3Heap;
       b_5 := b_5 && state(Ops_3Heap, Ops_3Mask);
     boolCur_1 := true;
     if (b_5) {
@@ -457,8 +457,8 @@ procedure test1(x: Ref) returns ()
       // -- Translating statement: assert acc(x.f, write) -- AssertTransfer.vpr@18.9--18.24
         AssertHeap := Ops_3Heap;
         AssertMask := Ops_3Mask;
-        ExhaleWellDef0Heap := AssertHeap;
         ExhaleWellDef0Mask := AssertMask;
+        ExhaleWellDef0Heap := AssertHeap;
         havoc Used_4Heap;
         Used_4Mask := ZeroMask;
         b_6 := b_6 && state(Used_4Heap, Used_4Mask);
@@ -565,8 +565,8 @@ procedure test1(x: Ref) returns ()
     if (b_5) {
       
       // -- Translating statement: assert x.f == 0 -- AssertTransfer.vpr@19.9--19.24
-        ExhaleWellDef0Heap := Ops_3Heap;
         ExhaleWellDef0Mask := Ops_3Mask;
+        ExhaleWellDef0Heap := Ops_3Heap;
         havoc Used_5Heap;
         Used_5Mask := ZeroMask;
         b_9 := b_9 && state(Used_5Heap, Used_5Mask);
@@ -601,21 +601,21 @@ procedure test2(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var Ops_5Heap: HeapType;
   var Ops_5Mask: MaskType;
   var b_12: bool;
   var Used_7Heap: HeapType;
   var Used_7Mask: MaskType;
   var b_11: bool;
-  var Labellhs5Heap: HeapType;
   var Labellhs5Mask: MaskType;
+  var Labellhs5Heap: HeapType;
   var boolCur_2: bool;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var Used_8Heap: HeapType;
   var Used_8Mask: MaskType;
   var b_13: bool;
@@ -658,8 +658,8 @@ procedure test2(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: package acc(x.f, 1 / 2) && x.f == 2 --* true {
   //   assert acc(x.f, write) && false
@@ -694,8 +694,8 @@ procedure test2(x: Ref) returns ()
     
     // -- Translating statement: label lhs5 -- AssertTransfer.vpr@25.13--25.47
       lhs5:
-      Labellhs5Heap := Ops_5Heap;
       Labellhs5Mask := Ops_5Mask;
+      Labellhs5Heap := Ops_5Heap;
       b_12 := b_12 && state(Ops_5Heap, Ops_5Mask);
     boolCur_2 := true;
     if (b_12) {
@@ -703,8 +703,8 @@ procedure test2(x: Ref) returns ()
       // -- Translating statement: assert acc(x.f, write) && false -- AssertTransfer.vpr@26.9--26.33
         AssertHeap := Ops_5Heap;
         AssertMask := Ops_5Mask;
-        ExhaleWellDef0Heap := AssertHeap;
         ExhaleWellDef0Mask := AssertMask;
+        ExhaleWellDef0Heap := AssertHeap;
         havoc Used_8Heap;
         Used_8Mask := ZeroMask;
         b_13 := b_13 && state(Used_8Heap, Used_8Mask);
@@ -830,21 +830,21 @@ procedure test3(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var Ops_7Heap: HeapType;
   var Ops_7Mask: MaskType;
   var b_18: bool;
   var Used_10Heap: HeapType;
   var Used_10Mask: MaskType;
   var b_17: bool;
-  var Labellhs7Heap: HeapType;
   var Labellhs7Mask: MaskType;
+  var Labellhs7Heap: HeapType;
   var boolCur_3: bool;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var Used_11Heap: HeapType;
   var Used_11Mask: MaskType;
   var b_19: bool;
@@ -901,8 +901,8 @@ procedure test3(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: package true --* true {
   //   assert acc(x.f, write) && (x.f == 0 ==> acc(x.g, write))
@@ -926,8 +926,8 @@ procedure test3(x: Ref) returns ()
     
     // -- Translating statement: label lhs7 -- AssertTransfer.vpr@32.13--32.26
       lhs7:
-      Labellhs7Heap := Ops_7Heap;
       Labellhs7Mask := Ops_7Mask;
+      Labellhs7Heap := Ops_7Heap;
       b_18 := b_18 && state(Ops_7Heap, Ops_7Mask);
     boolCur_3 := true;
     if (b_18) {
@@ -935,8 +935,8 @@ procedure test3(x: Ref) returns ()
       // -- Translating statement: assert acc(x.f, write) && (x.f == 0 ==> acc(x.g, write)) -- AssertTransfer.vpr@33.9--33.51
         AssertHeap := Ops_7Heap;
         AssertMask := Ops_7Mask;
-        ExhaleWellDef0Heap := AssertHeap;
         ExhaleWellDef0Mask := AssertMask;
+        ExhaleWellDef0Heap := AssertHeap;
         havoc Used_11Heap;
         Used_11Mask := ZeroMask;
         b_19 := b_19 && state(Used_11Heap, Used_11Mask);
@@ -1198,21 +1198,21 @@ procedure test4(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var Ops_9Heap: HeapType;
   var Ops_9Mask: MaskType;
   var b_27: bool;
   var Used_13Heap: HeapType;
   var Used_13Mask: MaskType;
   var b_26: bool;
-  var Labellhs9Heap: HeapType;
   var Labellhs9Mask: MaskType;
+  var Labellhs9Heap: HeapType;
   var boolCur_4: bool;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var Used_14Heap: HeapType;
   var Used_14Mask: MaskType;
   var b_28: bool;
@@ -1263,8 +1263,8 @@ procedure test4(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: package true --* true {
   //   assert acc(x.f, write) && (x.f == 0 ==> acc(x.g, write))
@@ -1288,8 +1288,8 @@ procedure test4(x: Ref) returns ()
     
     // -- Translating statement: label lhs9 -- AssertTransfer.vpr@47.13--47.26
       lhs9:
-      Labellhs9Heap := Ops_9Heap;
       Labellhs9Mask := Ops_9Mask;
+      Labellhs9Heap := Ops_9Heap;
       b_27 := b_27 && state(Ops_9Heap, Ops_9Mask);
     boolCur_4 := true;
     if (b_27) {
@@ -1297,8 +1297,8 @@ procedure test4(x: Ref) returns ()
       // -- Translating statement: assert acc(x.f, write) && (x.f == 0 ==> acc(x.g, write)) -- AssertTransfer.vpr@48.9--48.51
         AssertHeap := Ops_9Heap;
         AssertMask := Ops_9Mask;
-        ExhaleWellDef0Heap := AssertHeap;
         ExhaleWellDef0Mask := AssertMask;
+        ExhaleWellDef0Heap := AssertHeap;
         havoc Used_14Heap;
         Used_14Mask := ZeroMask;
         b_28 := b_28 && state(Used_14Heap, Used_14Mask);

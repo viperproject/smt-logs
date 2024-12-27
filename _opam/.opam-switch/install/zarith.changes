@@ -1,0 +1,27 @@
+opam-version: "2.0"
+added: [
+  "lib/stublibs/dllzarith.so" {"F:128eb542faee2b0486798aa47013dc52"}
+  "lib/stublibs/dllzarith.so.owner" {"F:07848ecd0fd1d8d453f783c13ce364bd"}
+  "lib/zarith" {"D"}
+  "lib/zarith/META" {"F:3152e094ede59b364bea121b661a4c48"}
+  "lib/zarith/big_int_Z.cmi" {"F:5a54b1fba8c1aee9238da7ab2cb883b2"}
+  "lib/zarith/big_int_Z.cmti" {"F:c8f9e865857d4ba5935a740418c935ce"}
+  "lib/zarith/big_int_Z.cmx" {"F:e2c3ad20fc7b1ff64460d2f6127e4f5e"}
+  "lib/zarith/big_int_Z.mli" {"F:90ad5fb6988c172d61d750a877ff57e3"}
+  "lib/zarith/libzarith.a" {"F:20d7fb551a1d92e3d251f6e8055772f7"}
+  "lib/zarith/q.cmi" {"F:c580c8e05139a1f26c9126cee79099e2"}
+  "lib/zarith/q.cmti" {"F:a11580272b4ef111378f9572cafe5ba4"}
+  "lib/zarith/q.cmx" {"F:1317ef2de6be7991466d340146a79a98"}
+  "lib/zarith/q.mli" {"F:c6764ef537255c9bd7836659857a4080"}
+  "lib/zarith/z.cmi" {"F:e61a159b4408372bd4958afaa25af612"}
+  "lib/zarith/z.cmti" {"F:407faca2637bc7d5c8375547e9fb939b"}
+  "lib/zarith/z.cmx" {"F:df5896e0e59122499078877335ca475f"}
+  "lib/zarith/z.mli" {"F:71ddb4d1066bdd2ddca70e18ab335907"}
+  "lib/zarith/zarith.a" {"F:b5999ec1af3ac497c63506f89ed84db6"}
+  "lib/zarith/zarith.cma" {"F:fcede9211d499e3d2375517068c64009"}
+  "lib/zarith/zarith.cmxa" {"F:be88fa1ffb22a4259eff8abbe1d6199c"}
+  "lib/zarith/zarith.cmxs" {"F:03004756130920775ceb4762d42297bc"}
+  "lib/zarith/zarith.h" {"F:f6a9fa6da50b575be3fccf3cacdd9dd6"}
+  "lib/zarith/zarith_top.cma" {"F:73f71e57baac1b44dcd0ba3bf0e6a618"}
+  "lib/zarith/zarith_version.cmx" {"F:bc3fcba581309380acdebf074450614c"}
+]

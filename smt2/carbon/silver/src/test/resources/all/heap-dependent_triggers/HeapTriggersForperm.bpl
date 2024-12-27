@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 02:28:18
+// Date:         2024-12-27 10:37:16
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/heap-dependent_triggers/HeapTriggersForperm.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/heap-dependent_triggers/HeapTriggersForperm-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -403,13 +403,13 @@ axiom !IsWandField(f_7);
 procedure m1(xs: (Set Ref), y: Ref, z: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var QPMask: MaskType;
   var x_11: Ref;
   var x_38: Ref;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var x_32: Ref;
   
   // -- Initializing the state
@@ -424,8 +424,8 @@ procedure m1(xs: (Set Ref), y: Ref, z: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale (forall x: Ref :: { (x in xs) } (x in xs) ==> acc(x.f, write)) -- HeapTriggersForperm.vpr@8.5--8.49
     
@@ -591,8 +591,8 @@ procedure m1(xs: (Set Ref), y: Ref, z: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forperm x: Ref [x.f] :: x.f == 0) -- HeapTriggersForperm.vpr@14.5--14.44
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forperm x: Ref [x.f] :: x.f == 0)
       if (*) {
@@ -619,11 +619,11 @@ procedure m1(xs: (Set Ref), y: Ref, z: Ref) returns ()
 procedure m2(xs: (Set Ref), y: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var QPMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var x_3: Ref;
   var x_42: Ref;
   var x_13: Ref;
@@ -639,8 +639,8 @@ procedure m2(xs: (Set Ref), y: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale (forall x: Ref :: { x.f } (x in xs) ==> acc(x.f, write)) -- HeapTriggersForperm.vpr@20.5--20.55
     
@@ -686,8 +686,8 @@ procedure m2(xs: (Set Ref), y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forall x: Ref :: { x.f } (x in xs) ==> perm(x.f) >= write) -- HeapTriggersForperm.vpr@22.5--22.65
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall x: Ref :: { x.f } (x in xs) ==> perm(x.f) >= write)
       if (*) {
@@ -724,8 +724,8 @@ procedure m2(xs: (Set Ref), y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forperm x: Ref [x.f] :: (x in xs) ==> x.f != 0) -- HeapTriggersForperm.vpr@25.5--25.56
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forperm x: Ref [x.f] :: (x in xs) ==> x.f != 0)
       if (*) {

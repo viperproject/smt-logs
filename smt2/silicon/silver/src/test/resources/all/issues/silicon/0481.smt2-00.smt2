@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-27 02:01:35
+; Started: 2024-12-27 10:10:40
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -925,25 +925,25 @@
 (assert (forall ((s@$ $Snap)) (!
   (= (read%limited s@$) (read s@$))
   :pattern ((read s@$))
-  :qid |quant-u-25979|)))
+  :qid |quant-u-25988|)))
 (assert (forall ((s@$ $Snap)) (!
   (as read%stateless  Bool)
   :pattern ((read%limited s@$))
-  :qid |quant-u-25980|)))
+  :qid |quant-u-25989|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@0@00 (read%limited s@$))) (=>
     (read%precondition s@$)
     (and (< $Perm.No result@0@00) (< result@0@00 $Perm.Write))))
   :pattern ((read%limited s@$))
-  :qid |quant-u-25981|)))
+  :qid |quant-u-25990|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@0@00 (read%limited s@$))) true)
   :pattern ((read%limited s@$))
-  :qid |quant-u-25982|)))
+  :qid |quant-u-25991|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@0@00 (read%limited s@$))) true)
   :pattern ((read%limited s@$))
-  :qid |quant-u-25983|)))
+  :qid |quant-u-25992|)))
 ; ---------- P ----------
 (declare-const self@2@00 $Ref)
 (push) ; 1
@@ -1214,7 +1214,7 @@
       (= (inv@9@00 (Seq_index arr@4@00 i@8@00)) i@8@00)
       (img@10@00 (Seq_index arr@4@00 i@8@00))))
   :pattern ((Seq_index arr@4@00 i@8@00))
-  :qid |quant-u-25985|)))
+  :qid |quant-u-25994|)))
 (assert (forall ((self $Ref)) (!
   (=>
     (and

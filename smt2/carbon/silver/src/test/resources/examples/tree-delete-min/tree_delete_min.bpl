@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 02:16:57
+// Date:         2024-12-27 10:25:56
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/examples/tree-delete-min/tree_delete_min.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/examples/tree-delete-min/tree_delete_min-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -634,8 +634,8 @@ procedure val#definedness(x: Ref) returns (Result: int)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var newPMask: PMaskType;
   
   // -- Initializing the state
@@ -659,8 +659,8 @@ procedure val#definedness(x: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume Tree#trigger(UnfoldingHeap, Tree(x));
       assume UnfoldingHeap[null, Tree(x)] == FrameFragment((if x == null then EmptyFrame else CombineFrames(FrameFragment(UnfoldingHeap[x, v_36]), CombineFrames(FrameFragment(UnfoldingHeap[x, l_8]), CombineFrames(UnfoldingHeap[null, Tree(UnfoldingHeap[x, l_8])], CombineFrames(FrameFragment(UnfoldingHeap[x, r_6]), UnfoldingHeap[null, Tree(UnfoldingHeap[x, r_6])]))))));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Tree(x) (tree_delete_min.vpr@30.1--32.34) [111814]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, Tree(x)];
@@ -762,8 +762,8 @@ procedure vals#definedness(x: Ref) returns (Result: (Seq int))
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var newPMask: PMaskType;
   
@@ -789,8 +789,8 @@ procedure vals#definedness(x: Ref) returns (Result: (Seq int))
         UnfoldingMask := Mask;
         assume Tree#trigger(UnfoldingHeap, Tree(x));
         assume UnfoldingHeap[null, Tree(x)] == FrameFragment((if x == null then EmptyFrame else CombineFrames(FrameFragment(UnfoldingHeap[x, v_36]), CombineFrames(FrameFragment(UnfoldingHeap[x, l_8]), CombineFrames(UnfoldingHeap[null, Tree(UnfoldingHeap[x, l_8])], CombineFrames(FrameFragment(UnfoldingHeap[x, r_6]), UnfoldingHeap[null, Tree(UnfoldingHeap[x, r_6])]))))));
-        ExhaleWellDef0Heap := UnfoldingHeap;
         ExhaleWellDef0Mask := UnfoldingMask;
+        ExhaleWellDef0Heap := UnfoldingHeap;
         perm := FullPerm;
         assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Tree(x) (tree_delete_min.vpr@34.1--36.90) [111816]"}
           NoPerm < perm ==> NoPerm < UnfoldingMask[null, Tree(x)];
@@ -826,8 +826,8 @@ procedure vals#definedness(x: Ref) returns (Result: (Seq int))
           HasDirectPerm(UnfoldingMask, x, l_8);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := UnfoldingHeap;
           ExhaleWellDef0Mask := UnfoldingMask;
+          ExhaleWellDef0Heap := UnfoldingHeap;
           perm := FullPerm;
           assert {:msg "  Precondition of function vals might not hold. There might be insufficient permission to access Tree(x.l) (tree_delete_min.vpr@36.54--36.63) [111818]"}
             NoPerm < perm ==> NoPerm < UnfoldingMask[null, Tree(UnfoldingHeap[x, l_8])];
@@ -847,8 +847,8 @@ procedure vals#definedness(x: Ref) returns (Result: (Seq int))
           HasDirectPerm(UnfoldingMask, x, r_6);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := UnfoldingHeap;
           ExhaleWellDef0Mask := UnfoldingMask;
+          ExhaleWellDef0Heap := UnfoldingHeap;
           perm := FullPerm;
           assert {:msg "  Precondition of function vals might not hold. There might be insufficient permission to access Tree(x.r) (tree_delete_min.vpr@36.79--36.88) [111821]"}
             NoPerm < perm ==> NoPerm < UnfoldingMask[null, Tree(UnfoldingHeap[x, r_6])];
@@ -977,26 +977,26 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var p_1: Ref;
   var newVersion: FrameType;
   var plvs: (Seq int);
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var Ops_1Heap: HeapType;
   var Ops_1Mask: MaskType;
   var b_1_1: bool;
   var UsedHeap: HeapType;
   var UsedMask: MaskType;
   var b_2: bool;
-  var Labellhs1Heap: HeapType;
   var Labellhs1Mask: MaskType;
+  var Labellhs1Heap: HeapType;
   var boolCur: bool;
   var Used_1Heap: HeapType;
   var Used_1Mask: MaskType;
@@ -1039,8 +1039,8 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
   var Result_6Mask: MaskType;
   var WandDefLHSHeap: HeapType;
   var WandDefLHSMask: MaskType;
-  var Labellhs3Heap: HeapType;
   var Labellhs3Mask: MaskType;
+  var Labellhs3Heap: HeapType;
   var WandDefRHSHeap: HeapType;
   var WandDefRHSMask: MaskType;
   var loopHeap: HeapType;
@@ -1055,8 +1055,8 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
   var Used_3Heap: HeapType;
   var Used_3Mask: MaskType;
   var b_11: bool;
-  var Labellhs4Heap: HeapType;
   var Labellhs4Mask: MaskType;
+  var Labellhs4Heap: HeapType;
   var boolCur_1: bool;
   var Used_4Heap: HeapType;
   var Used_4Mask: MaskType;
@@ -1084,8 +1084,8 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
   var Used_5Heap: HeapType;
   var Used_5Mask: MaskType;
   var b_20: bool;
-  var Labellhs7Heap: HeapType;
   var Labellhs7Mask: MaskType;
+  var Labellhs7Heap: HeapType;
   var b_21: bool;
   var Result_13Heap: HeapType;
   var Result_13Mask: MaskType;
@@ -1126,8 +1126,8 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1142,8 +1142,8 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
     // -- Check definedness of vals(z) == old(vals(x))[1..]
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := PostHeap;
         ExhaleWellDef0Mask := PostMask;
+        ExhaleWellDef0Heap := PostHeap;
         perm := FullPerm;
         assert {:msg "  Precondition of function vals might not hold. There might be insufficient permission to access Tree(z) (tree_delete_min.vpr@45.11--45.18) [111824]"}
           NoPerm < perm ==> NoPerm < PostMask[null, Tree(z)];
@@ -1156,8 +1156,8 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := oldHeap;
         ExhaleWellDef0Mask := oldMask;
+        ExhaleWellDef0Heap := oldHeap;
         perm := FullPerm;
         assert {:msg "  Precondition of function vals might not hold. There might be insufficient permission to access Tree(x) (tree_delete_min.vpr@45.26--45.33) [111825]"}
           NoPerm < perm ==> NoPerm < oldMask[null, Tree(x)];
@@ -1181,8 +1181,8 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
   // -- Translating statement: unfold acc(Tree(p), write) -- tree_delete_min.vpr@53.3--53.22
     assume Tree#trigger(Heap, Tree(p_1));
     assume Heap[null, Tree(p_1)] == FrameFragment((if p_1 == null then EmptyFrame else CombineFrames(FrameFragment(Heap[p_1, v_36]), CombineFrames(FrameFragment(Heap[p_1, l_8]), CombineFrames(Heap[null, Tree(Heap[p_1, l_8])], CombineFrames(FrameFragment(Heap[p_1, r_6]), Heap[null, Tree(Heap[p_1, r_6])]))))));
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Tree(p) might fail. There might be insufficient permission to access Tree(p) (tree_delete_min.vpr@53.3--53.22) [111828]"}
@@ -1232,8 +1232,8 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
         HasDirectPerm(Mask, p_1, l_8);
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function vals might not hold. There might be insufficient permission to access Tree(p.l) (tree_delete_min.vpr@54.11--54.20) [111835]"}
           NoPerm < perm ==> NoPerm < Mask[null, Tree(Heap[p_1, l_8])];
@@ -1263,16 +1263,16 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
         assume state(Heap, Mask);
       
       // -- Translating statement: assert vals(x.l) == Seq[Int]() -- tree_delete_min.vpr@59.5--59.35
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         
         // -- Check definedness of vals(x.l) == Seq[Int]()
           assert {:msg "  Assert might fail. There might be insufficient permission to access x.l (tree_delete_min.vpr@59.12--59.35) [111838]"}
             HasDirectPerm(ExhaleWellDef0Mask, x, l_8);
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Heap := ExhaleWellDef0Heap;
             ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+            ExhaleWellDef1Heap := ExhaleWellDef0Heap;
             perm := FullPerm;
             assert {:msg "  Precondition of function vals might not hold. There might be insufficient permission to access Tree(x.l) (tree_delete_min.vpr@59.12--59.21) [111839]"}
               NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, Tree(ExhaleWellDef0Heap[x, l_8])];
@@ -1329,8 +1329,8 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                     HasDirectPerm(Ops_1Mask, p_1, l_8);
                   if (*) {
                     // Exhale precondition of function application
-                    ExhaleWellDef0Heap := Ops_1Heap;
                     ExhaleWellDef0Mask := Ops_1Mask;
+                    ExhaleWellDef0Heap := Ops_1Heap;
                     perm := FullPerm;
                     assert {:msg "  Precondition of function vals might not hold. There might be insufficient permission to access Tree(p.l) (tree_delete_min.vpr@61.14--61.15) [111843]"}
                       NoPerm < perm ==> NoPerm < Ops_1Mask[null, Tree(Ops_1Heap[p_1, l_8])];
@@ -1350,15 +1350,15 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
         
         // -- Translating statement: label lhs1 -- tree_delete_min.vpr@61.13--61.22
           lhs1:
-          Labellhs1Heap := Ops_1Heap;
           Labellhs1Mask := Ops_1Mask;
+          Labellhs1Heap := Ops_1Heap;
           b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);
         boolCur := true;
         if (b_1_1) {
           
           // -- Translating statement: fold acc(Tree(p), write) -- tree_delete_min.vpr@62.9--62.26
-            ExhaleWellDef0Heap := Ops_1Heap;
             ExhaleWellDef0Mask := Ops_1Mask;
+            ExhaleWellDef0Heap := Ops_1Heap;
             havoc Used_1Heap;
             Used_1Mask := ZeroMask;
             b_2_1 := b_2_1 && state(Used_1Heap, Used_1Mask);
@@ -1819,8 +1819,8 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
             // -- Check definedness of vals(x) == old(vals(x))[1..]
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Heap := Result_6Heap;
                 ExhaleWellDef0Mask := Result_6Mask;
+                ExhaleWellDef0Heap := Result_6Heap;
                 perm := FullPerm;
                 assert {:msg "  Precondition of function vals might not hold. There might be insufficient permission to access Tree(x) (tree_delete_min.vpr@61.21--61.22) [111861]"}
                   NoPerm < perm ==> NoPerm < Result_6Mask[null, Tree(x)];
@@ -1833,8 +1833,8 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
               }
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Heap := oldHeap;
                 ExhaleWellDef0Mask := oldMask;
+                ExhaleWellDef0Heap := oldHeap;
                 perm := FullPerm;
                 assert {:msg "  Precondition of function vals might not hold. There might be insufficient permission to access Tree(x) (tree_delete_min.vpr@61.21--61.22) [111862]"}
                   NoPerm < perm ==> NoPerm < oldMask[null, Tree(x)];
@@ -1857,8 +1857,8 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
         // -- Before loop head
           
           // -- Exhale loop invariant before loop
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             assert {:msg "  Loop invariant p != null && (acc(p.l, write) && (acc(Tree(p.l), write) && p.l != null)) might not hold on entry. Assertion p != null might not hold. (tree_delete_min.vpr@66.17--66.71) [111864]"}
               p_1 != null;
             perm := FullPerm;
@@ -1917,8 +1917,8 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                 HasDirectPerm(Mask, p_1, l_8);
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Heap := Heap;
                 ExhaleWellDef0Mask := Mask;
+                ExhaleWellDef0Heap := Heap;
                 perm := FullPerm;
                 assert {:msg "  Precondition of function vals might not hold. There might be insufficient permission to access Tree(p.l) (tree_delete_min.vpr@67.25--67.34) [111873]"}
                   NoPerm < perm ==> NoPerm < Mask[null, Tree(Heap[p_1, l_8])];
@@ -1955,8 +1955,8 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                     HasDirectPerm(WandDefLHSMask, p_1, l_8);
                   if (*) {
                     // Exhale precondition of function application
-                    ExhaleWellDef0Heap := WandDefLHSHeap;
                     ExhaleWellDef0Mask := WandDefLHSMask;
+                    ExhaleWellDef0Heap := WandDefLHSHeap;
                     perm := FullPerm;
                     assert {:msg "  Precondition of function vals might not hold. There might be insufficient permission to access Tree(p.l) (tree_delete_min.vpr@68.17--68.18) [111876]"}
                       NoPerm < perm ==> NoPerm < WandDefLHSMask[null, Tree(WandDefLHSHeap[p_1, l_8])];
@@ -1972,8 +1972,8 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                 
                 // -- Translating statement: label lhs3 -- tree_delete_min.vpr@68.17--68.24
                   lhs3:
-                  Labellhs3Heap := WandDefLHSHeap;
                   Labellhs3Mask := WandDefLHSMask;
+                  Labellhs3Heap := WandDefLHSHeap;
                   assume state(WandDefLHSHeap, WandDefLHSMask);
                 havoc WandDefRHSHeap;
                 WandDefRHSMask := ZeroMask;
@@ -1985,8 +1985,8 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                 // -- Check definedness of vals(x) == old(vals(x))[1..]
                   if (*) {
                     // Exhale precondition of function application
-                    ExhaleWellDef0Heap := WandDefRHSHeap;
                     ExhaleWellDef0Mask := WandDefRHSMask;
+                    ExhaleWellDef0Heap := WandDefRHSHeap;
                     perm := FullPerm;
                     assert {:msg "  Precondition of function vals might not hold. There might be insufficient permission to access Tree(x) (tree_delete_min.vpr@68.23--68.24) [111877]"}
                       NoPerm < perm ==> NoPerm < WandDefRHSMask[null, Tree(x)];
@@ -1999,8 +1999,8 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                   }
                   if (*) {
                     // Exhale precondition of function application
-                    ExhaleWellDef0Heap := oldHeap;
                     ExhaleWellDef0Mask := oldMask;
+                    ExhaleWellDef0Heap := oldHeap;
                     perm := FullPerm;
                     assert {:msg "  Precondition of function vals might not hold. There might be insufficient permission to access Tree(x) (tree_delete_min.vpr@68.23--68.24) [111878]"}
                       NoPerm < perm ==> NoPerm < oldMask[null, Tree(x)];
@@ -2048,8 +2048,8 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
               UnfoldingMask := Mask;
               assume Tree#trigger(UnfoldingHeap, Tree(UnfoldingHeap[p_1, l_8]));
               assume UnfoldingHeap[null, Tree(UnfoldingHeap[p_1, l_8])] == FrameFragment((if UnfoldingHeap[p_1, l_8] == null then EmptyFrame else CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[p_1, l_8], v_36]), CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[p_1, l_8], l_8]), CombineFrames(UnfoldingHeap[null, Tree(UnfoldingHeap[UnfoldingHeap[p_1, l_8], l_8])], CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[p_1, l_8], r_6]), UnfoldingHeap[null, Tree(UnfoldingHeap[UnfoldingHeap[p_1, l_8], r_6])]))))));
-              ExhaleWellDef0Heap := UnfoldingHeap;
               ExhaleWellDef0Mask := UnfoldingMask;
+              ExhaleWellDef0Heap := UnfoldingHeap;
               perm := FullPerm;
               if (perm != NoPerm) {
                 assert {:msg "  While statement might fail. There might be insufficient permission to access Tree(p.l) (tree_delete_min.vpr@65.12--65.53) [111879]"}
@@ -2134,8 +2134,8 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                     HasDirectPerm(Mask, p_1, l_8);
                 assume Tree#trigger(Heap, Tree(Heap[p_1, l_8]));
                 assume Heap[null, Tree(Heap[p_1, l_8])] == FrameFragment((if Heap[p_1, l_8] == null then EmptyFrame else CombineFrames(FrameFragment(Heap[Heap[p_1, l_8], v_36]), CombineFrames(FrameFragment(Heap[Heap[p_1, l_8], l_8]), CombineFrames(Heap[null, Tree(Heap[Heap[p_1, l_8], l_8])], CombineFrames(FrameFragment(Heap[Heap[p_1, l_8], r_6]), Heap[null, Tree(Heap[Heap[p_1, l_8], r_6])]))))));
-                ExhaleWellDef0Heap := Heap;
                 ExhaleWellDef0Mask := Mask;
+                ExhaleWellDef0Heap := Heap;
                 perm := FullPerm;
                 if (perm != NoPerm) {
                   assert {:msg "  Unfolding Tree(p.l) might fail. There might be insufficient permission to access Tree(p.l) (tree_delete_min.vpr@73.7--73.28) [111884]"}
@@ -2193,8 +2193,8 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                     HasDirectPerm(Mask, p_1, l_8);
                   if (*) {
                     // Exhale precondition of function application
-                    ExhaleWellDef0Heap := Heap;
                     ExhaleWellDef0Mask := Mask;
+                    ExhaleWellDef0Heap := Heap;
                     perm := FullPerm;
                     assert {:msg "  Precondition of function vals might not hold. There might be insufficient permission to access Tree(p.l) (tree_delete_min.vpr@75.15--75.24) [111887]"}
                       NoPerm < perm ==> NoPerm < Mask[null, Tree(Heap[p_1, l_8])];
@@ -2252,8 +2252,8 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                             HasDirectPerm(Ops_3Mask, p_1, l_8);
                           if (*) {
                             // Exhale precondition of function application
-                            ExhaleWellDef0Heap := Ops_3Heap;
                             ExhaleWellDef0Mask := Ops_3Mask;
+                            ExhaleWellDef0Heap := Ops_3Heap;
                             perm := FullPerm;
                             assert {:msg "  Precondition of function vals might not hold. There might be insufficient permission to access Tree(p.l) (tree_delete_min.vpr@77.16--77.17) [111890]"}
                               NoPerm < perm ==> NoPerm < Ops_3Mask[null, Tree(Ops_3Heap[p_1, l_8])];
@@ -2273,15 +2273,15 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                 
                 // -- Translating statement: label lhs4 -- tree_delete_min.vpr@77.15--77.24
                   lhs4:
-                  Labellhs4Heap := Ops_3Heap;
                   Labellhs4Mask := Ops_3Mask;
+                  Labellhs4Heap := Ops_3Heap;
                   b_12 := b_12 && state(Ops_3Heap, Ops_3Mask);
                 boolCur_1 := true;
                 if (b_12) {
                   
                   // -- Translating statement: fold acc(Tree(p), write) -- tree_delete_min.vpr@78.11--78.23
-                    ExhaleWellDef0Heap := Ops_3Heap;
                     ExhaleWellDef0Mask := Ops_3Mask;
+                    ExhaleWellDef0Heap := Ops_3Heap;
                     havoc Used_4Heap;
                     Used_4Mask := ZeroMask;
                     b_13 := b_13 && state(Used_4Heap, Used_4Mask);
@@ -2674,8 +2674,8 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
   //   acc(Tree(x), write) && vals(x) == old(vals(x))[1..] -- tree_delete_min.vpr@79.11--80.57
                     
                     // -- check if wand is held and remove an instance
-                      ExhaleWellDef0Heap := Ops_3Heap;
                       ExhaleWellDef0Mask := Ops_3Mask;
+                      ExhaleWellDef0Heap := Ops_3Heap;
                       havoc Used_5Heap;
                       Used_5Mask := ZeroMask;
                       b_20 := b_20 && state(Used_5Heap, Used_5Mask);
@@ -2708,8 +2708,8 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                                       HasDirectPerm(WandDefLHSMask, oldP, l_8);
                                     if (*) {
                                       // Exhale precondition of function application
-                                      ExhaleWellDef1Heap := WandDefLHSHeap;
                                       ExhaleWellDef1Mask := WandDefLHSMask;
+                                      ExhaleWellDef1Heap := WandDefLHSHeap;
                                       perm := FullPerm;
                                       assert {:msg "  Precondition of function vals might not hold. There might be insufficient permission to access Tree(oldP.l) (tree_delete_min.vpr@79.54--79.66) [111905]"}
                                         NoPerm < perm ==> NoPerm < WandDefLHSMask[null, Tree(WandDefLHSHeap[oldP, l_8])];
@@ -2725,8 +2725,8 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                                   
                                   // -- Translating statement: label lhs7 -- tree_delete_min.vpr@79.17--80.57
                                     lhs7:
-                                    Labellhs7Heap := WandDefLHSHeap;
                                     Labellhs7Mask := WandDefLHSMask;
+                                    Labellhs7Heap := WandDefLHSHeap;
                                     assume state(WandDefLHSHeap, WandDefLHSMask);
                                   havoc WandDefRHSHeap;
                                   WandDefRHSMask := ZeroMask;
@@ -2738,8 +2738,8 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                                   // -- Check definedness of vals(x) == old(vals(x))[1..]
                                     if (*) {
                                       // Exhale precondition of function application
-                                      ExhaleWellDef1Heap := WandDefRHSHeap;
                                       ExhaleWellDef1Mask := WandDefRHSMask;
+                                      ExhaleWellDef1Heap := WandDefRHSHeap;
                                       perm := FullPerm;
                                       assert {:msg "  Precondition of function vals might not hold. There might be insufficient permission to access Tree(x) (tree_delete_min.vpr@80.28--80.35) [111906]"}
                                         NoPerm < perm ==> NoPerm < WandDefRHSMask[null, Tree(x)];
@@ -2752,8 +2752,8 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                                     }
                                     if (*) {
                                       // Exhale precondition of function application
-                                      ExhaleWellDef1Heap := oldHeap;
                                       ExhaleWellDef1Mask := oldMask;
+                                      ExhaleWellDef1Heap := oldHeap;
                                       perm := FullPerm;
                                       assert {:msg "  Precondition of function vals might not hold. There might be insufficient permission to access Tree(x) (tree_delete_min.vpr@80.43--80.50) [111907]"}
                                         NoPerm < perm ==> NoPerm < oldMask[null, Tree(x)];
@@ -2824,8 +2824,8 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                     b_12 := b_12 && state(Ops_3Heap, Ops_3Mask);
                     
                     // -- check if LHS holds and remove permissions 
-                      ExhaleWellDef0Heap := Ops_3Heap;
                       ExhaleWellDef0Mask := Ops_3Mask;
+                      ExhaleWellDef0Heap := Ops_3Heap;
                       havoc Used_6Heap;
                       Used_6Mask := ZeroMask;
                       b_22 := b_22 && state(Used_6Heap, Used_6Mask);
@@ -2974,8 +2974,8 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                               HasDirectPerm(Result_15Mask, oldP, l_8);
                             if (*) {
                               // Exhale precondition of function application
-                              ExhaleWellDef1Heap := Result_15Heap;
                               ExhaleWellDef1Mask := Result_15Mask;
+                              ExhaleWellDef1Heap := Result_15Heap;
                               perm := FullPerm;
                               assert {:msg "  Precondition of function vals might not hold. There might be insufficient permission to access Tree(oldP.l) (tree_delete_min.vpr@79.54--79.66) [111916]"}
                                 NoPerm < perm ==> NoPerm < Result_15Mask[null, Tree(Result_15Heap[oldP, l_8])];
@@ -3083,8 +3083,8 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                     // -- Check definedness of vals(x) == old(vals(x))[1..]
                       if (*) {
                         // Exhale precondition of function application
-                        ExhaleWellDef0Heap := Result_16Heap;
                         ExhaleWellDef0Mask := Result_16Mask;
+                        ExhaleWellDef0Heap := Result_16Heap;
                         perm := FullPerm;
                         assert {:msg "  Precondition of function vals might not hold. There might be insufficient permission to access Tree(x) (tree_delete_min.vpr@77.23--77.24) [111920]"}
                           NoPerm < perm ==> NoPerm < Result_16Mask[null, Tree(x)];
@@ -3097,8 +3097,8 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                       }
                       if (*) {
                         // Exhale precondition of function application
-                        ExhaleWellDef0Heap := oldHeap;
                         ExhaleWellDef0Mask := oldMask;
+                        ExhaleWellDef0Heap := oldHeap;
                         perm := FullPerm;
                         assert {:msg "  Precondition of function vals might not hold. There might be insufficient permission to access Tree(x) (tree_delete_min.vpr@77.23--77.24) [111921]"}
                           NoPerm < perm ==> NoPerm < oldMask[null, Tree(x)];
@@ -3116,8 +3116,8 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
                 assume state(Heap, Mask);
                 assume state(Heap, Mask);
             // Exhale invariant
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             assert {:msg "  Loop invariant p != null && (acc(p.l, write) && (acc(Tree(p.l), write) && p.l != null)) might not be preserved. Assertion p != null might not hold. (tree_delete_min.vpr@66.17--66.71) [111923]"}
               p_1 != null;
             perm := FullPerm;
@@ -3175,8 +3175,8 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
             HasDirectPerm(Mask, p_1, l_8);
         assume Tree#trigger(Heap, Tree(Heap[p_1, l_8]));
         assume Heap[null, Tree(Heap[p_1, l_8])] == FrameFragment((if Heap[p_1, l_8] == null then EmptyFrame else CombineFrames(FrameFragment(Heap[Heap[p_1, l_8], v_36]), CombineFrames(FrameFragment(Heap[Heap[p_1, l_8], l_8]), CombineFrames(Heap[null, Tree(Heap[Heap[p_1, l_8], l_8])], CombineFrames(FrameFragment(Heap[Heap[p_1, l_8], r_6]), Heap[null, Tree(Heap[Heap[p_1, l_8], r_6])]))))));
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Unfolding Tree(p.l) might fail. There might be insufficient permission to access Tree(p.l) (tree_delete_min.vpr@84.5--84.26) [111932]"}
@@ -3220,8 +3220,8 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
         assume state(Heap, Mask);
       
       // -- Translating statement: assert vals(p.l.l) == Seq[Int]() -- tree_delete_min.vpr@85.5--85.37
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         
         // -- Check definedness of vals(p.l.l) == Seq[Int]()
           assert {:msg "  Assert might fail. There might be insufficient permission to access p.l (tree_delete_min.vpr@85.12--85.37) [111938]"}
@@ -3230,8 +3230,8 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
             HasDirectPerm(ExhaleWellDef0Mask, Heap[p_1, l_8], l_8);
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Heap := ExhaleWellDef0Heap;
             ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+            ExhaleWellDef1Heap := ExhaleWellDef0Heap;
             perm := FullPerm;
             assert {:msg "  Precondition of function vals might not hold. There might be insufficient permission to access Tree(p.l.l) (tree_delete_min.vpr@85.12--85.23) [111940]"}
               NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, Tree(ExhaleWellDef0Heap[ExhaleWellDef0Heap[p_1, l_8], l_8])];
@@ -3262,8 +3262,8 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
   //   acc(Tree(x), write) && vals(x) == old(vals(x))[1..] -- tree_delete_min.vpr@89.5--89.18
         
         // -- check if wand is held and remove an instance
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           // permLe
           assert {:msg "  Applying wand might fail. Magic wand instance not found. (tree_delete_min.vpr@89.5--89.18) [111945]"}
             FullPerm <= Mask[null, wand(p_1, FullPerm, p_1, p_1, Seq#Drop(plvs, 1), x, x, Seq#Drop(vals(oldHeap, x), 1))];
@@ -3271,8 +3271,8 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
         assume state(Heap, Mask);
         
         // -- check if LHS holds and remove permissions 
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  Applying wand might fail. There might be insufficient permission to access p.l (tree_delete_min.vpr@89.5--89.18) [111947]"}
@@ -3309,8 +3309,8 @@ procedure tree_delete_min(x: Ref) returns (z: Ref)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of tree_delete_min might not hold. There might be insufficient permission to access Tree(z) (tree_delete_min.vpr@44.11--44.23) [111952]"}

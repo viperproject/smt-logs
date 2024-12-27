@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 02:11:29
+// Date:         2024-12-27 10:20:29
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/issues/issue_0060.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/issues/issue_0060-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -589,8 +589,8 @@ procedure find_var(S: (Seq Ref), x: int) returns (index: int)
   var j_5: int;
   var i_2: int;
   var QPMask: MaskType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var j_6: int;
@@ -598,8 +598,8 @@ procedure find_var(S: (Seq Ref), x: int) returns (index: int)
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
   var arg_S: (Seq Ref);
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var i_4_1: int;
   var j_5_1: int;
   var ExhaleHeap: HeapType;
@@ -685,8 +685,8 @@ procedure find_var(S: (Seq Ref), x: int) returns (index: int)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -791,8 +791,8 @@ procedure find_var(S: (Seq Ref), x: int) returns (index: int)
             arg_S := Seq#Take(S, k);
             
             // -- Exhaling precondition
-              ExhaleWellDef0Heap := Heap;
               ExhaleWellDef0Mask := Mask;
+              ExhaleWellDef0Heap := Heap;
               if (*) {
                 if (0 <= i_4_1 && (i_4_1 < j_5_1 && j_5_1 < Seq#Length(arg_S))) {
                   assert {:msg "  The precondition of method find_var might not hold. Assertion S[..k][i] != S[..k][j] might not hold. (issue_0060.vpr@24.5--24.30) [74488]"}
@@ -902,8 +902,8 @@ procedure find_var(S: (Seq Ref), x: int) returns (index: int)
             arg_S_1 := Seq#Drop(S, k);
             
             // -- Exhaling precondition
-              ExhaleWellDef0Heap := Heap;
               ExhaleWellDef0Mask := Mask;
+              ExhaleWellDef0Heap := Heap;
               if (*) {
                 if (0 <= i_7_1 && (i_7_1 < j_8 && j_8 < Seq#Length(arg_S_1))) {
                   assert {:msg "  The precondition of method find_var might not hold. Assertion S[k..][i] != S[k..][j] might not hold. (issue_0060.vpr@25.5--25.30) [74492]"}
@@ -1026,8 +1026,8 @@ procedure find_var(S: (Seq Ref), x: int) returns (index: int)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     havoc QPMask;
     
     // -- check that the permission amount is positive

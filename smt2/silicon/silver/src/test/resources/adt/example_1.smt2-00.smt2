@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-27 02:02:49
+; Started: 2024-12-27 10:11:52
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -181,11 +181,11 @@
     (allNodesGreaterThan%limited s@$ t@0@00 value@1@00)
     (allNodesGreaterThan s@$ t@0@00 value@1@00))
   :pattern ((allNodesGreaterThan s@$ t@0@00 value@1@00))
-  :qid |quant-u-26547|)))
+  :qid |quant-u-26556|)))
 (assert (forall ((s@$ $Snap) (t@0@00 Tree) (value@1@00 Int)) (!
   (allNodesGreaterThan%stateless t@0@00 value@1@00)
   :pattern ((allNodesGreaterThan%limited s@$ t@0@00 value@1@00))
-  :qid |quant-u-26548|)))
+  :qid |quant-u-26557|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -345,7 +345,7 @@
             (allNodesGreaterThan%limited $Snap.unit (get_Tree_left<Tree> t@0@00) value@1@00)
             (allNodesGreaterThan%limited $Snap.unit (get_Tree_right<Tree> t@0@00) value@1@00))))))
   :pattern ((allNodesGreaterThan s@$ t@0@00 value@1@00))
-  :qid |quant-u-26553|)))
+  :qid |quant-u-26562|)))
 (assert (forall ((s@$ $Snap) (t@0@00 Tree) (value@1@00 Int)) (!
   (=>
     (allNodesGreaterThan%precondition s@$ t@0@00 value@1@00)
@@ -360,7 +360,7 @@
             (allNodesGreaterThan%limited $Snap.unit (get_Tree_left<Tree> t@0@00) value@1@00)
             (allNodesGreaterThan%precondition $Snap.unit (get_Tree_right<Tree> t@0@00) value@1@00))))))
   :pattern ((allNodesGreaterThan s@$ t@0@00 value@1@00))
-  :qid |quant-u-26554|)))
+  :qid |quant-u-26563|)))
 ; ---------- FUNCTION allNodesLessThan----------
 (declare-fun t@3@00 () Tree)
 (declare-fun value@4@00 () Int)
@@ -373,11 +373,11 @@
     (allNodesLessThan%limited s@$ t@3@00 value@4@00)
     (allNodesLessThan s@$ t@3@00 value@4@00))
   :pattern ((allNodesLessThan s@$ t@3@00 value@4@00))
-  :qid |quant-u-26549|)))
+  :qid |quant-u-26558|)))
 (assert (forall ((s@$ $Snap) (t@3@00 Tree) (value@4@00 Int)) (!
   (allNodesLessThan%stateless t@3@00 value@4@00)
   :pattern ((allNodesLessThan%limited s@$ t@3@00 value@4@00))
-  :qid |quant-u-26550|)))
+  :qid |quant-u-26559|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -537,7 +537,7 @@
             (allNodesLessThan%limited $Snap.unit (get_Tree_right<Tree> t@3@00) value@4@00)
             (allNodesLessThan%limited $Snap.unit (get_Tree_left<Tree> t@3@00) value@4@00))))))
   :pattern ((allNodesLessThan s@$ t@3@00 value@4@00))
-  :qid |quant-u-26555|)))
+  :qid |quant-u-26564|)))
 (assert (forall ((s@$ $Snap) (t@3@00 Tree) (value@4@00 Int)) (!
   (=>
     (allNodesLessThan%precondition s@$ t@3@00 value@4@00)
@@ -552,7 +552,7 @@
             (allNodesLessThan%limited $Snap.unit (get_Tree_right<Tree> t@3@00) value@4@00)
             (allNodesLessThan%precondition $Snap.unit (get_Tree_left<Tree> t@3@00) value@4@00))))))
   :pattern ((allNodesLessThan s@$ t@3@00 value@4@00))
-  :qid |quant-u-26556|)))
+  :qid |quant-u-26565|)))
 ; ---------- FUNCTION isBST----------
 (declare-fun t@6@00 () Tree)
 (declare-fun result@7@00 () Bool)
@@ -562,11 +562,11 @@
 (assert (forall ((s@$ $Snap) (t@6@00 Tree)) (!
   (= (isBST%limited s@$ t@6@00) (isBST s@$ t@6@00))
   :pattern ((isBST s@$ t@6@00))
-  :qid |quant-u-26551|)))
+  :qid |quant-u-26560|)))
 (assert (forall ((s@$ $Snap) (t@6@00 Tree)) (!
   (isBST%stateless t@6@00)
   :pattern ((isBST%limited s@$ t@6@00))
-  :qid |quant-u-26552|)))
+  :qid |quant-u-26561|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -797,7 +797,7 @@
               (allNodesGreaterThan $Snap.unit (get_Tree_right<Tree> t@6@00) (get_Tree_v<Int> t@6@00))
               (isBST%limited $Snap.unit (get_Tree_right<Tree> t@6@00))))))))
   :pattern ((isBST s@$ t@6@00))
-  :qid |quant-u-26557|)))
+  :qid |quant-u-26566|)))
 (assert (forall ((s@$ $Snap) (t@6@00 Tree)) (!
   (=>
     (isBST%precondition s@$ t@6@00)
@@ -818,4 +818,4 @@
                   (allNodesGreaterThan $Snap.unit (get_Tree_right<Tree> t@6@00) (get_Tree_v<Int> t@6@00))
                   (isBST%precondition $Snap.unit (get_Tree_right<Tree> t@6@00))))))))))
   :pattern ((isBST s@$ t@6@00))
-  :qid |quant-u-26558|)))
+  :qid |quant-u-26567|)))

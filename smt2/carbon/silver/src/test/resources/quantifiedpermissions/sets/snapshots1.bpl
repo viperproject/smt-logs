@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 02:04:20
+// Date:         2024-12-27 10:13:22
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/sets/snapshots1.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/sets/snapshots1-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -611,8 +611,8 @@ procedure fun2#definedness(xs: (Set Ref), x: Ref) returns (Result: int)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var QPMask: MaskType;
   var newPMask: PMaskType;
   
@@ -636,8 +636,8 @@ procedure fun2#definedness(xs: (Set Ref), x: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume P#trigger(UnfoldingHeap, P(xs, x));
       assume UnfoldingHeap[null, P(xs, x)] == FrameFragment(P#condqp2(UnfoldingHeap, xs, x));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access P(xs, x) (snapshots1.vpr@66.1--68.35) [2915]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, P(xs, x)];
@@ -808,14 +808,14 @@ procedure test1(xs: (Set Ref), x: Ref) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var a_2: int;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var b_24: int;
   
   // -- Initializing the state
@@ -874,16 +874,16 @@ procedure test1(xs: (Set Ref), x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: a := fun1(xs, x) -- snapshots1.vpr@15.3--15.28
     
     // -- Check definedness of fun1(xs, x)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Precondition of function fun1 might not hold. Assertion (x in xs) might not hold. (snapshots1.vpr@15.17--15.28) [2920]"}
           xs[x];
         havoc QPMask;
@@ -925,14 +925,14 @@ procedure test1(xs: (Set Ref), x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert a == fun1(xs, x) -- snapshots1.vpr@16.3--16.26
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of a == fun1(xs, x)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         assert {:msg "  Precondition of function fun1 might not hold. Assertion (x in xs) might not hold. (snapshots1.vpr@16.15--16.26) [2923]"}
           xs[x];
         havoc QPMask;
@@ -979,8 +979,8 @@ procedure test1(xs: (Set Ref), x: Ref) returns ()
     // -- Check definedness of fun1(xs, x)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Precondition of function fun1 might not hold. Assertion (x in xs) might not hold. (snapshots1.vpr@18.17--18.28) [2927]"}
           xs[x];
         havoc QPMask;
@@ -1022,14 +1022,14 @@ procedure test1(xs: (Set Ref), x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert b == fun1(xs, x) -- snapshots1.vpr@19.3--19.26
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of b == fun1(xs, x)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         assert {:msg "  Precondition of function fun1 might not hold. Assertion (x in xs) might not hold. (snapshots1.vpr@19.15--19.26) [2930]"}
           xs[x];
         havoc QPMask;
@@ -1072,8 +1072,8 @@ procedure test1(xs: (Set Ref), x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert a == b -- snapshots1.vpr@21.3--21.16
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion a == b might not hold. (snapshots1.vpr@21.10--21.16) [2934]"}
       a_2 == b_24;
     assume state(Heap, Mask);
@@ -1087,11 +1087,11 @@ procedure test5(xs: (Set Ref), x: Ref, y: Ref) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var yf: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -1154,8 +1154,8 @@ procedure test5(xs: (Set Ref), x: Ref, y: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: yf := y.f -- snapshots1.vpr@29.3--29.21
     
@@ -1172,8 +1172,8 @@ procedure test5(xs: (Set Ref), x: Ref, y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert y.f == yf -- snapshots1.vpr@32.3--32.19
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of y.f == yf
       assert {:msg "  Assert might fail. There might be insufficient permission to access y.f (snapshots1.vpr@32.10--32.19) [2938]"}
@@ -1189,8 +1189,8 @@ procedure test5(xs: (Set Ref), x: Ref, y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale (forall z: Ref :: { (z in xs) } (z in xs) ==> acc(z.f, write)) -- snapshots1.vpr@36.3--36.47
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall z: Ref :: { (z in xs) } (z in xs) ==> acc(z.f, write))
       if (*) {
@@ -1244,8 +1244,8 @@ procedure test5(xs: (Set Ref), x: Ref, y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- snapshots1.vpr@39.3--39.15
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion false might not hold. (snapshots1.vpr@39.10--39.15) [2944]"}
       false;
     assume state(Heap, Mask);
@@ -1259,15 +1259,15 @@ procedure test4(xs: (Set Ref), x: Ref, y: Ref) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var xf: int;
   var yf: int;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1329,16 +1329,16 @@ procedure test4(xs: (Set Ref), x: Ref, y: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: xf := fun1(xs, x) -- snapshots1.vpr@47.3--47.29
     
     // -- Check definedness of fun1(xs, x)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Precondition of function fun1 might not hold. Assertion (x in xs) might not hold. (snapshots1.vpr@47.18--47.29) [2946]"}
           xs[x];
         havoc QPMask;
@@ -1384,8 +1384,8 @@ procedure test4(xs: (Set Ref), x: Ref, y: Ref) returns ()
     // -- Check definedness of fun1(xs, y)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Precondition of function fun1 might not hold. Assertion (y in xs) might not hold. (snapshots1.vpr@48.18--48.29) [2949]"}
           xs[y];
         havoc QPMask;
@@ -1433,14 +1433,14 @@ procedure test4(xs: (Set Ref), x: Ref, y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert fun1(xs, x) == xf + 1 -- snapshots1.vpr@51.3--51.31
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of fun1(xs, x) == xf + 1
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         assert {:msg "  Precondition of function fun1 might not hold. Assertion (x in xs) might not hold. (snapshots1.vpr@51.10--51.21) [2953]"}
           xs[x];
         havoc QPMask;
@@ -1483,14 +1483,14 @@ procedure test4(xs: (Set Ref), x: Ref, y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert fun1(xs, y) == yf -- snapshots1.vpr@52.3--52.27
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of fun1(xs, y) == yf
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         assert {:msg "  Precondition of function fun1 might not hold. Assertion (y in xs) might not hold. (snapshots1.vpr@52.10--52.21) [2957]"}
           xs[y];
         havoc QPMask;
@@ -1539,14 +1539,14 @@ procedure test4(xs: (Set Ref), x: Ref, y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert fun1(xs, x) == xf + 1 -- snapshots1.vpr@56.3--56.31
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of fun1(xs, x) == xf + 1
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         assert {:msg "  Precondition of function fun1 might not hold. Assertion (x in xs) might not hold. (snapshots1.vpr@56.10--56.21) [2962]"}
           xs[x];
         havoc QPMask;
@@ -1589,14 +1589,14 @@ procedure test4(xs: (Set Ref), x: Ref, y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert fun1(xs, y) == yf -- snapshots1.vpr@59.3--59.27
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of fun1(xs, y) == yf
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         assert {:msg "  Precondition of function fun1 might not hold. Assertion (y in xs) might not hold. (snapshots1.vpr@59.10--59.21) [2966]"}
           xs[y];
         havoc QPMask;
@@ -1647,14 +1647,14 @@ procedure test2(xs: (Set Ref), x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var a_2: int;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var newVersion: FrameType;
   var QPMask: MaskType;
   var freshVersion: FrameType;
@@ -1679,16 +1679,16 @@ procedure test2(xs: (Set Ref), x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: a := fun2(xs, x) -- snapshots1.vpr@73.3--73.28
     
     // -- Check definedness of fun2(xs, x)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function fun2 might not hold. There might be insufficient permission to access P(xs, x) (snapshots1.vpr@73.17--73.28) [2970]"}
           NoPerm < perm ==> NoPerm < Mask[null, P(xs, x)];
@@ -1703,14 +1703,14 @@ procedure test2(xs: (Set Ref), x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert a == fun2(xs, x) -- snapshots1.vpr@74.3--74.26
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of a == fun2(xs, x)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function fun2 might not hold. There might be insufficient permission to access P(xs, x) (snapshots1.vpr@74.15--74.26) [2971]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, P(xs, x)];
@@ -1728,8 +1728,8 @@ procedure test2(xs: (Set Ref), x: Ref) returns ()
   // -- Translating statement: unfold acc(P(xs, x), write) -- snapshots1.vpr@76.3--76.23
     assume P#trigger(Heap, P(xs, x));
     assume Heap[null, P(xs, x)] == FrameFragment(P#condqp2(Heap, xs, x));
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding P(xs, x) might fail. There might be insufficient permission to access P(xs, x) (snapshots1.vpr@76.3--76.23) [2975]"}
@@ -1781,8 +1781,8 @@ procedure test2(xs: (Set Ref), x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(P(xs, x), write) -- snapshots1.vpr@77.3--77.21
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Folding P(xs, x) might fail. Assertion (x in xs) might not hold. (snapshots1.vpr@77.3--77.21) [2978]"}
       xs[x];
     havoc QPMask;
@@ -1856,8 +1856,8 @@ procedure test2(xs: (Set Ref), x: Ref) returns ()
     // -- Check definedness of fun2(xs, x)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function fun2 might not hold. There might be insufficient permission to access P(xs, x) (snapshots1.vpr@79.17--79.28) [2983]"}
           NoPerm < perm ==> NoPerm < Mask[null, P(xs, x)];
@@ -1872,14 +1872,14 @@ procedure test2(xs: (Set Ref), x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert b == fun2(xs, x) -- snapshots1.vpr@80.3--80.26
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of b == fun2(xs, x)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function fun2 might not hold. There might be insufficient permission to access P(xs, x) (snapshots1.vpr@80.15--80.26) [2984]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, P(xs, x)];
@@ -1895,15 +1895,15 @@ procedure test2(xs: (Set Ref), x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert a == b -- snapshots1.vpr@82.3--82.16
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion a == b might not hold. (snapshots1.vpr@82.10--82.16) [2986]"}
       a_2 == b_24;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- snapshots1.vpr@85.3--85.15
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion false might not hold. (snapshots1.vpr@85.10--85.15) [2987]"}
       false;
     assume state(Heap, Mask);
@@ -1917,17 +1917,17 @@ procedure test3(xs: (Set Ref), x: Ref) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var perm: Perm;
   var freshVersion: FrameType;
   var newPMask: PMaskType;
   var ExhaleHeap: HeapType;
   var a_2: int;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var newVersion: FrameType;
   var b_24: int;
   
@@ -1987,12 +1987,12 @@ procedure test3(xs: (Set Ref), x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: fold acc(P(xs, x), write) -- snapshots1.vpr@92.3--92.21
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Folding P(xs, x) might fail. Assertion (x in xs) might not hold. (snapshots1.vpr@92.3--92.21) [2990]"}
       xs[x];
     havoc QPMask;
@@ -2066,8 +2066,8 @@ procedure test3(xs: (Set Ref), x: Ref) returns ()
     // -- Check definedness of fun2(xs, x)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function fun2 might not hold. There might be insufficient permission to access P(xs, x) (snapshots1.vpr@94.17--94.28) [2995]"}
           NoPerm < perm ==> NoPerm < Mask[null, P(xs, x)];
@@ -2082,14 +2082,14 @@ procedure test3(xs: (Set Ref), x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert a == fun2(xs, x) -- snapshots1.vpr@95.3--95.26
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of a == fun2(xs, x)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function fun2 might not hold. There might be insufficient permission to access P(xs, x) (snapshots1.vpr@95.15--95.26) [2996]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, P(xs, x)];
@@ -2107,8 +2107,8 @@ procedure test3(xs: (Set Ref), x: Ref) returns ()
   // -- Translating statement: unfold acc(P(xs, x), write) -- snapshots1.vpr@97.3--97.23
     assume P#trigger(Heap, P(xs, x));
     assume Heap[null, P(xs, x)] == FrameFragment(P#condqp2(Heap, xs, x));
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding P(xs, x) might fail. There might be insufficient permission to access P(xs, x) (snapshots1.vpr@97.3--97.23) [3000]"}
@@ -2160,8 +2160,8 @@ procedure test3(xs: (Set Ref), x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(P(xs, x), write) -- snapshots1.vpr@98.3--98.21
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Folding P(xs, x) might fail. Assertion (x in xs) might not hold. (snapshots1.vpr@98.3--98.21) [3003]"}
       xs[x];
     havoc QPMask;
@@ -2235,8 +2235,8 @@ procedure test3(xs: (Set Ref), x: Ref) returns ()
     // -- Check definedness of fun2(xs, x)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function fun2 might not hold. There might be insufficient permission to access P(xs, x) (snapshots1.vpr@100.17--100.28) [3008]"}
           NoPerm < perm ==> NoPerm < Mask[null, P(xs, x)];
@@ -2251,14 +2251,14 @@ procedure test3(xs: (Set Ref), x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert b == fun2(xs, x) -- snapshots1.vpr@101.3--101.26
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of b == fun2(xs, x)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function fun2 might not hold. There might be insufficient permission to access P(xs, x) (snapshots1.vpr@101.15--101.26) [3009]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, P(xs, x)];
@@ -2274,15 +2274,15 @@ procedure test3(xs: (Set Ref), x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert a == b -- snapshots1.vpr@103.3--103.16
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion a == b might not hold. (snapshots1.vpr@103.10--103.16) [3011]"}
       a_2 == b_24;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- snapshots1.vpr@106.3--106.15
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion false might not hold. (snapshots1.vpr@106.10--106.15) [3012]"}
       false;
     assume state(Heap, Mask);

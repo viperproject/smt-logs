@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 02:29:17
+// Date:         2024-12-27 10:38:14
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/chalice/AVLTree.iterative.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/chalice/AVLTree.iterative-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -1242,12 +1242,12 @@ procedure init(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var freshVersion: FrameType;
   var newPMask: PMaskType;
   var ExhaleHeap: HeapType;
@@ -1270,8 +1270,8 @@ procedure init(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1292,8 +1292,8 @@ procedure init(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(valid1(this), write) -- AVLTree.iterative.vpr@21.3--21.31
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding valid1(this) might fail. There might be insufficient permission to access this.root1 (AVLTree.iterative.vpr@21.3--21.31) [145820]"}
@@ -1367,8 +1367,8 @@ procedure init(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of init might not hold. There might be insufficient permission to access valid1(this) (AVLTree.iterative.vpr@18.11--18.34) [145830]"}
@@ -1389,24 +1389,24 @@ procedure has(this: Ref, k: int) returns (b_24: bool)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var n: Ref;
   var p_1: Ref;
   var q_1: Ref;
   var r_1: Ref;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newVersion: FrameType;
   var freshVersion: FrameType;
   var newPMask: PMaskType;
   var end: bool;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var ExhaleHeap: HeapType;
   var loopHeap: HeapType;
   var loopMask: MaskType;
@@ -1428,8 +1428,8 @@ procedure has(this: Ref, k: int) returns (b_24: bool)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1452,8 +1452,8 @@ procedure has(this: Ref, k: int) returns (b_24: bool)
   // -- Translating statement: unfold acc(valid1(this), write) -- AVLTree.iterative.vpr@33.3--33.33
     assume valid1#trigger(Heap, valid1(this));
     assume Heap[null, valid1(this)] == CombineFrames(FrameFragment(Heap[this, root1]), CombineFrames(FrameFragment((if Heap[this, root1] != null then Heap[null, valid(Heap[this, root1])] else EmptyFrame)), CombineFrames(FrameFragment((if Heap[this, root1] != null then FrameFragment(Heap[Heap[this, root1], parent]) else EmptyFrame)), CombineFrames(FrameFragment((if Heap[this, root1] != null then EmptyFrame else EmptyFrame)), CombineFrames(FrameFragment((if Heap[this, root1] != null then FrameFragment(Heap[Heap[this, root1], root_1]) else EmptyFrame)), FrameFragment((if Heap[this, root1] != null then EmptyFrame else EmptyFrame)))))));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding valid1(this) might fail. There might be insufficient permission to access valid1(this) (AVLTree.iterative.vpr@33.3--33.33) [145833]"}
@@ -1513,8 +1513,8 @@ procedure has(this: Ref, k: int) returns (b_24: bool)
         assume state(Heap, Mask);
       
       // -- Translating statement: fold acc(valid1(this), write) -- AVLTree.iterative.vpr@36.4--36.32
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Folding valid1(this) might fail. There might be insufficient permission to access this.root1 (AVLTree.iterative.vpr@36.4--36.32) [145841]"}
@@ -1605,8 +1605,8 @@ procedure has(this: Ref, k: int) returns (b_24: bool)
         assume state(Heap, Mask);
       
       // -- Translating statement: fold acc(udParentValid(n), write) -- AVLTree.iterative.vpr@41.4--41.36
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := 1 / 2;
         assert {:msg "  Folding udParentValid(n) might fail. Fraction 1 / 2 might be negative. (AVLTree.iterative.vpr@41.4--41.36) [145853]"}
           perm >= NoPerm;
@@ -1737,8 +1737,8 @@ procedure has(this: Ref, k: int) returns (b_24: bool)
               UnfoldingMask := Mask;
               assume valid#trigger(UnfoldingHeap, valid(n));
               assume UnfoldingHeap[null, valid(n)] == CombineFrames(UnfoldingHeap[null, validRest(n)], CombineFrames(UnfoldingHeap[null, leftValid(n)], UnfoldingHeap[null, rightValid(n)]));
-              ExhaleWellDef0Mask := UnfoldingMask;
               ExhaleWellDef0Heap := UnfoldingHeap;
+              ExhaleWellDef0Mask := UnfoldingMask;
               perm := FullPerm;
               if (perm != NoPerm) {
                 assert {:msg "  Loop invariant (unfolding acc(valid(n), write) in n.root == this.root1) might not hold on entry. There might be insufficient permission to access valid(n) (AVLTree.iterative.vpr@49.15--49.68) [145872]"}
@@ -1785,8 +1785,8 @@ procedure has(this: Ref, k: int) returns (b_24: bool)
                 );
                 Heap := Heap[null, valid#sm(n):=newPMask];
                 assume state(Heap, Mask);
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
             if (perm != NoPerm) {
               assert {:msg "  Loop invariant acc(this.root1, write) might not hold on entry. There might be insufficient permission to access this.root1 (AVLTree.iterative.vpr@43.15--43.36) [145873]"}
@@ -1831,8 +1831,8 @@ procedure has(this: Ref, k: int) returns (b_24: bool)
               UnfoldingMask := ExhaleWellDef0Mask;
               assume valid#trigger(UnfoldingHeap, valid(n));
               assume UnfoldingHeap[null, valid(n)] == CombineFrames(UnfoldingHeap[null, validRest(n)], CombineFrames(UnfoldingHeap[null, leftValid(n)], UnfoldingHeap[null, rightValid(n)]));
-              ExhaleWellDef1Mask := UnfoldingMask;
               ExhaleWellDef1Heap := UnfoldingHeap;
+              ExhaleWellDef1Mask := UnfoldingMask;
               perm := FullPerm;
               if (perm != NoPerm) {
                 assert {:msg "  Loop invariant (unfolding acc(valid(n), write) in n.root == this.root1) might not hold on entry. There might be insufficient permission to access valid(n) (AVLTree.iterative.vpr@49.15--49.68) [145882]"}
@@ -1940,8 +1940,8 @@ procedure has(this: Ref, k: int) returns (b_24: bool)
               UnfoldingMask := Mask;
               assume valid#trigger(UnfoldingHeap, valid(n));
               assume UnfoldingHeap[null, valid(n)] == CombineFrames(UnfoldingHeap[null, validRest(n)], CombineFrames(UnfoldingHeap[null, leftValid(n)], UnfoldingHeap[null, rightValid(n)]));
-              ExhaleWellDef0Mask := UnfoldingMask;
               ExhaleWellDef0Heap := UnfoldingHeap;
+              ExhaleWellDef0Mask := UnfoldingMask;
               perm := FullPerm;
               if (perm != NoPerm) {
                 assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access valid(n) (AVLTree.iterative.vpr@49.15--49.68) [145889]"}
@@ -1998,8 +1998,8 @@ procedure has(this: Ref, k: int) returns (b_24: bool)
               UnfoldingMask := Mask;
               assume valid#trigger(UnfoldingHeap, valid(n));
               assume UnfoldingHeap[null, valid(n)] == CombineFrames(UnfoldingHeap[null, validRest(n)], CombineFrames(UnfoldingHeap[null, leftValid(n)], UnfoldingHeap[null, rightValid(n)]));
-              ExhaleWellDef0Mask := UnfoldingMask;
               ExhaleWellDef0Heap := UnfoldingHeap;
+              ExhaleWellDef0Mask := UnfoldingMask;
               perm := FullPerm;
               UnfoldingMask := UnfoldingMask[null, valid(n):=UnfoldingMask[null, valid(n)] - perm];
               perm := FullPerm;
@@ -2070,8 +2070,8 @@ procedure has(this: Ref, k: int) returns (b_24: bool)
               UnfoldingMask := Mask;
               assume valid#trigger(UnfoldingHeap, valid(n));
               assume UnfoldingHeap[null, valid(n)] == CombineFrames(UnfoldingHeap[null, validRest(n)], CombineFrames(UnfoldingHeap[null, leftValid(n)], UnfoldingHeap[null, rightValid(n)]));
-              ExhaleWellDef0Mask := UnfoldingMask;
               ExhaleWellDef0Heap := UnfoldingHeap;
+              ExhaleWellDef0Mask := UnfoldingMask;
               perm := FullPerm;
               UnfoldingMask := UnfoldingMask[null, valid(n):=UnfoldingMask[null, valid(n)] - perm];
               perm := FullPerm;
@@ -2123,8 +2123,8 @@ procedure has(this: Ref, k: int) returns (b_24: bool)
               UnfoldingMask := Mask;
               assume valid#trigger(UnfoldingHeap, valid(n));
               assume UnfoldingHeap[null, valid(n)] == CombineFrames(UnfoldingHeap[null, validRest(n)], CombineFrames(UnfoldingHeap[null, leftValid(n)], UnfoldingHeap[null, rightValid(n)]));
-              ExhaleWellDef0Mask := UnfoldingMask;
               ExhaleWellDef0Heap := UnfoldingHeap;
+              ExhaleWellDef0Mask := UnfoldingMask;
               perm := FullPerm;
               if (perm != NoPerm) {
                 assert {:msg "  An internal error occurred. There might be insufficient permission to access valid(n) (AVLTree.iterative.vpr@49.15--49.68) [145895]"}
@@ -2180,8 +2180,8 @@ procedure has(this: Ref, k: int) returns (b_24: bool)
               // -- Translating statement: unfold acc(valid(n), write) -- AVLTree.iterative.vpr@52.5--52.31
                 assume valid#trigger(Heap, valid(n));
                 assume Heap[null, valid(n)] == CombineFrames(Heap[null, validRest(n)], CombineFrames(Heap[null, leftValid(n)], Heap[null, rightValid(n)]));
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 perm := FullPerm;
                 if (perm != NoPerm) {
                   assert {:msg "  Unfolding valid(n) might fail. There might be insufficient permission to access valid(n) (AVLTree.iterative.vpr@52.5--52.31) [145896]"}
@@ -2218,8 +2218,8 @@ procedure has(this: Ref, k: int) returns (b_24: bool)
               // -- Translating statement: unfold acc(validRest(n), write) -- AVLTree.iterative.vpr@53.5--53.35
                 assume validRest#trigger(Heap, validRest(n));
                 assume Heap[null, validRest(n)] == CombineFrames(FrameFragment(Heap[n, key]), CombineFrames(FrameFragment(Heap[n, root_1]), CombineFrames(FrameFragment(Heap[n, left]), CombineFrames(FrameFragment(Heap[n, right_1]), FrameFragment(Heap[n, leftDown])))));
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 perm := FullPerm;
                 if (perm != NoPerm) {
                   assert {:msg "  Unfolding validRest(n) might fail. There might be insufficient permission to access validRest(n) (AVLTree.iterative.vpr@53.5--53.35) [145897]"}
@@ -2274,8 +2274,8 @@ procedure has(this: Ref, k: int) returns (b_24: bool)
                     assume state(Heap, Mask);
                   
                   // -- Translating statement: fold acc(validRest(n), write) -- AVLTree.iterative.vpr@57.6--57.34
-                    ExhaleWellDef0Mask := Mask;
                     ExhaleWellDef0Heap := Heap;
+                    ExhaleWellDef0Mask := Mask;
                     perm := FullPerm;
                     if (perm != NoPerm) {
                       assert {:msg "  Folding validRest(n) might fail. There might be insufficient permission to access n.key (AVLTree.iterative.vpr@57.6--57.34) [145902]"}
@@ -2334,8 +2334,8 @@ procedure has(this: Ref, k: int) returns (b_24: bool)
                     assume state(Heap, Mask);
                   
                   // -- Translating statement: fold acc(valid(n), write) -- AVLTree.iterative.vpr@58.6--58.30
-                    ExhaleWellDef0Mask := Mask;
                     ExhaleWellDef0Heap := Heap;
+                    ExhaleWellDef0Mask := Mask;
                     perm := FullPerm;
                     if (perm != NoPerm) {
                       assert {:msg "  Folding valid(n) might fail. There might be insufficient permission to access validRest(n) (AVLTree.iterative.vpr@58.6--58.30) [145911]"}
@@ -2419,8 +2419,8 @@ procedure has(this: Ref, k: int) returns (b_24: bool)
                             assume state(Heap, Mask);
                           
                           // -- Translating statement: fold acc(validRest(n), write) -- AVLTree.iterative.vpr@64.8--64.36
-                            ExhaleWellDef0Mask := Mask;
                             ExhaleWellDef0Heap := Heap;
+                            ExhaleWellDef0Mask := Mask;
                             perm := FullPerm;
                             if (perm != NoPerm) {
                               assert {:msg "  Folding validRest(n) might fail. There might be insufficient permission to access n.key (AVLTree.iterative.vpr@64.8--64.36) [145916]"}
@@ -2479,8 +2479,8 @@ procedure has(this: Ref, k: int) returns (b_24: bool)
                             assume state(Heap, Mask);
                           
                           // -- Translating statement: fold acc(valid(n), write) -- AVLTree.iterative.vpr@65.8--65.32
-                            ExhaleWellDef0Mask := Mask;
                             ExhaleWellDef0Heap := Heap;
+                            ExhaleWellDef0Mask := Mask;
                             perm := FullPerm;
                             if (perm != NoPerm) {
                               assert {:msg "  Folding valid(n) might fail. There might be insufficient permission to access validRest(n) (AVLTree.iterative.vpr@65.8--65.32) [145925]"}
@@ -2548,8 +2548,8 @@ procedure has(this: Ref, k: int) returns (b_24: bool)
                           // -- Translating statement: unfold acc(leftValid(p), write) -- AVLTree.iterative.vpr@68.8--68.38
                             assume leftValid#trigger(Heap, leftValid(p_1));
                             assume Heap[null, leftValid(p_1)] == CombineFrames(FrameFragment(Heap[p_1, left]), CombineFrames(FrameFragment(Heap[p_1, root_1]), CombineFrames(FrameFragment((if Heap[p_1, left] != null then Heap[null, valid(Heap[p_1, left])] else EmptyFrame)), CombineFrames(FrameFragment((if Heap[p_1, left] != null then FrameFragment(Heap[Heap[p_1, left], parent]) else EmptyFrame)), CombineFrames(FrameFragment((if Heap[p_1, left] != null then EmptyFrame else EmptyFrame)), CombineFrames(FrameFragment((if Heap[p_1, left] != null then FrameFragment(Heap[Heap[p_1, left], root_1]) else EmptyFrame)), FrameFragment((if Heap[p_1, left] != null then EmptyFrame else EmptyFrame))))))));
-                            ExhaleWellDef0Mask := Mask;
                             ExhaleWellDef0Heap := Heap;
+                            ExhaleWellDef0Mask := Mask;
                             perm := FullPerm;
                             if (perm != NoPerm) {
                               assert {:msg "  Unfolding leftValid(p) might fail. There might be insufficient permission to access leftValid(p) (AVLTree.iterative.vpr@68.8--68.38) [145928]"}
@@ -2620,8 +2620,8 @@ procedure has(this: Ref, k: int) returns (b_24: bool)
                             assume state(Heap, Mask);
                           
                           // -- Translating statement: fold acc(leftOpen(p), write) -- AVLTree.iterative.vpr@71.8--71.35
-                            ExhaleWellDef0Mask := Mask;
                             ExhaleWellDef0Heap := Heap;
+                            ExhaleWellDef0Mask := Mask;
                             perm := 1 / 4;
                             assert {:msg "  Folding leftOpen(p) might fail. Fraction 1 / 4 might be negative. (AVLTree.iterative.vpr@71.8--71.35) [145934]"}
                               perm >= NoPerm;
@@ -2672,8 +2672,8 @@ procedure has(this: Ref, k: int) returns (b_24: bool)
                             assume state(Heap, Mask);
                           
                           // -- Translating statement: fold acc(udValid(p), write) -- AVLTree.iterative.vpr@72.8--72.34
-                            ExhaleWellDef0Mask := Mask;
                             ExhaleWellDef0Heap := Heap;
+                            ExhaleWellDef0Mask := Mask;
                             perm := FullPerm;
                             if (perm != NoPerm) {
                               assert {:msg "  Folding udValid(p) might fail. There might be insufficient permission to access p.key (AVLTree.iterative.vpr@72.8--72.34) [145941]"}
@@ -2823,8 +2823,8 @@ procedure has(this: Ref, k: int) returns (b_24: bool)
                             assume state(Heap, Mask);
                           
                           // -- Translating statement: fold acc(udParentValid(n), write) -- AVLTree.iterative.vpr@73.8--73.40
-                            ExhaleWellDef0Mask := Mask;
                             ExhaleWellDef0Heap := Heap;
+                            ExhaleWellDef0Mask := Mask;
                             perm := 1 / 2;
                             assert {:msg "  Folding udParentValid(n) might fail. Fraction 1 / 2 might be negative. (AVLTree.iterative.vpr@73.8--73.40) [145955]"}
                               perm >= NoPerm;
@@ -2959,8 +2959,8 @@ procedure has(this: Ref, k: int) returns (b_24: bool)
                             assume state(Heap, Mask);
                           
                           // -- Translating statement: fold acc(validRest(n), write) -- AVLTree.iterative.vpr@78.8--78.36
-                            ExhaleWellDef0Mask := Mask;
                             ExhaleWellDef0Heap := Heap;
+                            ExhaleWellDef0Mask := Mask;
                             perm := FullPerm;
                             if (perm != NoPerm) {
                               assert {:msg "  Folding validRest(n) might fail. There might be insufficient permission to access n.key (AVLTree.iterative.vpr@78.8--78.36) [145973]"}
@@ -3019,8 +3019,8 @@ procedure has(this: Ref, k: int) returns (b_24: bool)
                             assume state(Heap, Mask);
                           
                           // -- Translating statement: fold acc(valid(n), write) -- AVLTree.iterative.vpr@79.8--79.32
-                            ExhaleWellDef0Mask := Mask;
                             ExhaleWellDef0Heap := Heap;
+                            ExhaleWellDef0Mask := Mask;
                             perm := FullPerm;
                             if (perm != NoPerm) {
                               assert {:msg "  Folding valid(n) might fail. There might be insufficient permission to access validRest(n) (AVLTree.iterative.vpr@79.8--79.32) [145982]"}
@@ -3088,8 +3088,8 @@ procedure has(this: Ref, k: int) returns (b_24: bool)
                           // -- Translating statement: unfold acc(rightValid(q), write) -- AVLTree.iterative.vpr@82.8--82.39
                             assume rightValid#trigger(Heap, rightValid(q_1));
                             assume Heap[null, rightValid(q_1)] == CombineFrames(FrameFragment(Heap[q_1, right_1]), CombineFrames(FrameFragment(Heap[q_1, root_1]), CombineFrames(FrameFragment((if Heap[q_1, right_1] != null then Heap[null, valid(Heap[q_1, right_1])] else EmptyFrame)), CombineFrames(FrameFragment((if Heap[q_1, right_1] != null then FrameFragment(Heap[Heap[q_1, right_1], parent]) else EmptyFrame)), CombineFrames(FrameFragment((if Heap[q_1, right_1] != null then EmptyFrame else EmptyFrame)), CombineFrames(FrameFragment((if Heap[q_1, right_1] != null then FrameFragment(Heap[Heap[q_1, right_1], root_1]) else EmptyFrame)), FrameFragment((if Heap[q_1, right_1] != null then EmptyFrame else EmptyFrame))))))));
-                            ExhaleWellDef0Mask := Mask;
                             ExhaleWellDef0Heap := Heap;
+                            ExhaleWellDef0Mask := Mask;
                             perm := FullPerm;
                             if (perm != NoPerm) {
                               assert {:msg "  Unfolding rightValid(q) might fail. There might be insufficient permission to access rightValid(q) (AVLTree.iterative.vpr@82.8--82.39) [145985]"}
@@ -3160,8 +3160,8 @@ procedure has(this: Ref, k: int) returns (b_24: bool)
                             assume state(Heap, Mask);
                           
                           // -- Translating statement: fold acc(rightOpen(q), write) -- AVLTree.iterative.vpr@85.8--85.36
-                            ExhaleWellDef0Mask := Mask;
                             ExhaleWellDef0Heap := Heap;
+                            ExhaleWellDef0Mask := Mask;
                             perm := 1 / 4;
                             assert {:msg "  Folding rightOpen(q) might fail. Fraction 1 / 4 might be negative. (AVLTree.iterative.vpr@85.8--85.36) [145991]"}
                               perm >= NoPerm;
@@ -3212,8 +3212,8 @@ procedure has(this: Ref, k: int) returns (b_24: bool)
                             assume state(Heap, Mask);
                           
                           // -- Translating statement: fold acc(udValid(q), write) -- AVLTree.iterative.vpr@86.8--86.34
-                            ExhaleWellDef0Mask := Mask;
                             ExhaleWellDef0Heap := Heap;
+                            ExhaleWellDef0Mask := Mask;
                             perm := FullPerm;
                             if (perm != NoPerm) {
                               assert {:msg "  Folding udValid(q) might fail. There might be insufficient permission to access q.key (AVLTree.iterative.vpr@86.8--86.34) [145998]"}
@@ -3363,8 +3363,8 @@ procedure has(this: Ref, k: int) returns (b_24: bool)
                             assume state(Heap, Mask);
                           
                           // -- Translating statement: fold acc(udParentValid(n), write) -- AVLTree.iterative.vpr@87.8--87.40
-                            ExhaleWellDef0Mask := Mask;
                             ExhaleWellDef0Heap := Heap;
+                            ExhaleWellDef0Mask := Mask;
                             perm := 1 / 2;
                             assert {:msg "  Folding udParentValid(n) might fail. Fraction 1 / 2 might be negative. (AVLTree.iterative.vpr@87.8--87.40) [146012]"}
                               perm >= NoPerm;
@@ -3496,8 +3496,8 @@ procedure has(this: Ref, k: int) returns (b_24: bool)
               UnfoldingMask := Mask;
               assume valid#trigger(UnfoldingHeap, valid(n));
               assume UnfoldingHeap[null, valid(n)] == CombineFrames(UnfoldingHeap[null, validRest(n)], CombineFrames(UnfoldingHeap[null, leftValid(n)], UnfoldingHeap[null, rightValid(n)]));
-              ExhaleWellDef0Mask := UnfoldingMask;
               ExhaleWellDef0Heap := UnfoldingHeap;
+              ExhaleWellDef0Mask := UnfoldingMask;
               perm := FullPerm;
               if (perm != NoPerm) {
                 assert {:msg "  Loop invariant (unfolding acc(valid(n), write) in n.root == this.root1) might not be preserved. There might be insufficient permission to access valid(n) (AVLTree.iterative.vpr@49.15--49.68) [146029]"}
@@ -3544,8 +3544,8 @@ procedure has(this: Ref, k: int) returns (b_24: bool)
                 );
                 Heap := Heap[null, valid#sm(n):=newPMask];
                 assume state(Heap, Mask);
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
             if (perm != NoPerm) {
               assert {:msg "  Loop invariant acc(this.root1, write) might not be preserved. There might be insufficient permission to access this.root1 (AVLTree.iterative.vpr@43.15--43.36) [146030]"}
@@ -3590,8 +3590,8 @@ procedure has(this: Ref, k: int) returns (b_24: bool)
               UnfoldingMask := ExhaleWellDef0Mask;
               assume valid#trigger(UnfoldingHeap, valid(n));
               assume UnfoldingHeap[null, valid(n)] == CombineFrames(UnfoldingHeap[null, validRest(n)], CombineFrames(UnfoldingHeap[null, leftValid(n)], UnfoldingHeap[null, rightValid(n)]));
-              ExhaleWellDef1Mask := UnfoldingMask;
               ExhaleWellDef1Heap := UnfoldingHeap;
+              ExhaleWellDef1Mask := UnfoldingMask;
               perm := FullPerm;
               if (perm != NoPerm) {
                 assert {:msg "  Loop invariant (unfolding acc(valid(n), write) in n.root == this.root1) might not be preserved. There might be insufficient permission to access valid(n) (AVLTree.iterative.vpr@49.15--49.68) [146039]"}
@@ -3683,8 +3683,8 @@ procedure has(this: Ref, k: int) returns (b_24: bool)
             UnfoldingMask := Mask;
             assume valid#trigger(UnfoldingHeap, valid(n));
             assume UnfoldingHeap[null, valid(n)] == CombineFrames(UnfoldingHeap[null, validRest(n)], CombineFrames(UnfoldingHeap[null, leftValid(n)], UnfoldingHeap[null, rightValid(n)]));
-            ExhaleWellDef0Mask := UnfoldingMask;
             ExhaleWellDef0Heap := UnfoldingHeap;
+            ExhaleWellDef0Mask := UnfoldingMask;
             perm := FullPerm;
             UnfoldingMask := UnfoldingMask[null, valid(n):=UnfoldingMask[null, valid(n)] - perm];
             perm := FullPerm;
@@ -3736,8 +3736,8 @@ procedure has(this: Ref, k: int) returns (b_24: bool)
             UnfoldingMask := Mask;
             assume valid#trigger(UnfoldingHeap, valid(n));
             assume UnfoldingHeap[null, valid(n)] == CombineFrames(UnfoldingHeap[null, validRest(n)], CombineFrames(UnfoldingHeap[null, leftValid(n)], UnfoldingHeap[null, rightValid(n)]));
-            ExhaleWellDef0Mask := UnfoldingMask;
             ExhaleWellDef0Heap := UnfoldingHeap;
+            ExhaleWellDef0Mask := UnfoldingMask;
             perm := FullPerm;
             if (perm != NoPerm) {
               assert {:msg "  An internal error occurred. There might be insufficient permission to access valid(n) (AVLTree.iterative.vpr@49.15--49.68) [146044]"}
@@ -3801,8 +3801,8 @@ procedure has(this: Ref, k: int) returns (b_24: bool)
               UnfoldingMask := Mask;
               assume valid#trigger(UnfoldingHeap, valid(n));
               assume UnfoldingHeap[null, valid(n)] == CombineFrames(UnfoldingHeap[null, validRest(n)], CombineFrames(UnfoldingHeap[null, leftValid(n)], UnfoldingHeap[null, rightValid(n)]));
-              ExhaleWellDef0Mask := UnfoldingMask;
               ExhaleWellDef0Heap := UnfoldingHeap;
+              ExhaleWellDef0Mask := UnfoldingMask;
               perm := FullPerm;
               if (perm != NoPerm) {
                 assert {:msg "  Loop invariant (unfolding acc(valid(n), write) in n.root == this.root1) might not hold on entry. There might be insufficient permission to access valid(n) (AVLTree.iterative.vpr@100.18--100.71) [146045]"}
@@ -3856,8 +3856,8 @@ procedure has(this: Ref, k: int) returns (b_24: bool)
                 UnfoldingMask := Mask;
                 assume udParentValid#trigger(UnfoldingHeap, udParentValid(n));
                 assume UnfoldingHeap[null, udParentValid(n)] == CombineFrames(FrameFragment(UnfoldingHeap[n, parent]), CombineFrames(FrameFragment(UnfoldingHeap[n, root_1]), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then UnfoldingHeap[null, udValid(UnfoldingHeap[n, parent])] else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[n, parent], leftDown]) else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[n, parent], left]) else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then EmptyFrame else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[n, parent], right_1]) else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then EmptyFrame else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[n, parent], root_1]) else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then EmptyFrame else EmptyFrame)), FrameFragment((if UnfoldingHeap[n, parent] == null then EmptyFrame else EmptyFrame))))))))))));
-                ExhaleWellDef0Mask := UnfoldingMask;
                 ExhaleWellDef0Heap := UnfoldingHeap;
+                ExhaleWellDef0Mask := UnfoldingMask;
                 perm := FullPerm;
                 if (perm != NoPerm) {
                   assert {:msg "  Loop invariant end ==> (unfolding acc(udParentValid(n), write) in n.parent == null) might not hold on entry. There might be insufficient permission to access udParentValid(n) (AVLTree.iterative.vpr@102.18--102.79) [146046]"}
@@ -3955,8 +3955,8 @@ procedure has(this: Ref, k: int) returns (b_24: bool)
                   }
                   assume state(Heap, Mask);
               }
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
             if (perm != NoPerm) {
               assert {:msg "  Loop invariant acc(this.root1, write) might not hold on entry. There might be insufficient permission to access this.root1 (AVLTree.iterative.vpr@94.18--94.39) [146053]"}
@@ -4001,8 +4001,8 @@ procedure has(this: Ref, k: int) returns (b_24: bool)
               UnfoldingMask := ExhaleWellDef0Mask;
               assume valid#trigger(UnfoldingHeap, valid(n));
               assume UnfoldingHeap[null, valid(n)] == CombineFrames(UnfoldingHeap[null, validRest(n)], CombineFrames(UnfoldingHeap[null, leftValid(n)], UnfoldingHeap[null, rightValid(n)]));
-              ExhaleWellDef1Mask := UnfoldingMask;
               ExhaleWellDef1Heap := UnfoldingHeap;
+              ExhaleWellDef1Mask := UnfoldingMask;
               perm := FullPerm;
               if (perm != NoPerm) {
                 assert {:msg "  Loop invariant (unfolding acc(valid(n), write) in n.root == this.root1) might not hold on entry. There might be insufficient permission to access valid(n) (AVLTree.iterative.vpr@100.18--100.71) [146062]"}
@@ -4039,8 +4039,8 @@ procedure has(this: Ref, k: int) returns (b_24: bool)
                 UnfoldingMask := ExhaleWellDef0Mask;
                 assume udParentValid#trigger(UnfoldingHeap, udParentValid(n));
                 assume UnfoldingHeap[null, udParentValid(n)] == CombineFrames(FrameFragment(UnfoldingHeap[n, parent]), CombineFrames(FrameFragment(UnfoldingHeap[n, root_1]), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then UnfoldingHeap[null, udValid(UnfoldingHeap[n, parent])] else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[n, parent], leftDown]) else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[n, parent], left]) else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then EmptyFrame else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[n, parent], right_1]) else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then EmptyFrame else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[n, parent], root_1]) else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then EmptyFrame else EmptyFrame)), FrameFragment((if UnfoldingHeap[n, parent] == null then EmptyFrame else EmptyFrame))))))))))));
-                ExhaleWellDef1Mask := UnfoldingMask;
                 ExhaleWellDef1Heap := UnfoldingHeap;
+                ExhaleWellDef1Mask := UnfoldingMask;
                 perm := FullPerm;
                 if (perm != NoPerm) {
                   assert {:msg "  Loop invariant end ==> (unfolding acc(udParentValid(n), write) in n.parent == null) might not hold on entry. There might be insufficient permission to access udParentValid(n) (AVLTree.iterative.vpr@102.18--102.79) [146065]"}
@@ -4215,8 +4215,8 @@ procedure has(this: Ref, k: int) returns (b_24: bool)
               UnfoldingMask := Mask;
               assume valid#trigger(UnfoldingHeap, valid(n));
               assume UnfoldingHeap[null, valid(n)] == CombineFrames(UnfoldingHeap[null, validRest(n)], CombineFrames(UnfoldingHeap[null, leftValid(n)], UnfoldingHeap[null, rightValid(n)]));
-              ExhaleWellDef0Mask := UnfoldingMask;
               ExhaleWellDef0Heap := UnfoldingHeap;
+              ExhaleWellDef0Mask := UnfoldingMask;
               perm := FullPerm;
               if (perm != NoPerm) {
                 assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access valid(n) (AVLTree.iterative.vpr@100.18--100.71) [146077]"}
@@ -4273,8 +4273,8 @@ procedure has(this: Ref, k: int) returns (b_24: bool)
               UnfoldingMask := Mask;
               assume valid#trigger(UnfoldingHeap, valid(n));
               assume UnfoldingHeap[null, valid(n)] == CombineFrames(UnfoldingHeap[null, validRest(n)], CombineFrames(UnfoldingHeap[null, leftValid(n)], UnfoldingHeap[null, rightValid(n)]));
-              ExhaleWellDef0Mask := UnfoldingMask;
               ExhaleWellDef0Heap := UnfoldingHeap;
+              ExhaleWellDef0Mask := UnfoldingMask;
               perm := FullPerm;
               UnfoldingMask := UnfoldingMask[null, valid(n):=UnfoldingMask[null, valid(n)] - perm];
               perm := FullPerm;
@@ -4311,8 +4311,8 @@ procedure has(this: Ref, k: int) returns (b_24: bool)
                 UnfoldingMask := Mask;
                 assume udParentValid#trigger(UnfoldingHeap, udParentValid(n));
                 assume UnfoldingHeap[null, udParentValid(n)] == CombineFrames(FrameFragment(UnfoldingHeap[n, parent]), CombineFrames(FrameFragment(UnfoldingHeap[n, root_1]), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then UnfoldingHeap[null, udValid(UnfoldingHeap[n, parent])] else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[n, parent], leftDown]) else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[n, parent], left]) else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then EmptyFrame else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[n, parent], right_1]) else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then EmptyFrame else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[n, parent], root_1]) else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then EmptyFrame else EmptyFrame)), FrameFragment((if UnfoldingHeap[n, parent] == null then EmptyFrame else EmptyFrame))))))))))));
-                ExhaleWellDef0Mask := UnfoldingMask;
                 ExhaleWellDef0Heap := UnfoldingHeap;
+                ExhaleWellDef0Mask := UnfoldingMask;
                 perm := FullPerm;
                 if (perm != NoPerm) {
                   assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access udParentValid(n) (AVLTree.iterative.vpr@102.18--102.79) [146081]"}
@@ -4417,8 +4417,8 @@ procedure has(this: Ref, k: int) returns (b_24: bool)
                 UnfoldingMask := Mask;
                 assume udParentValid#trigger(UnfoldingHeap, udParentValid(n));
                 assume UnfoldingHeap[null, udParentValid(n)] == CombineFrames(FrameFragment(UnfoldingHeap[n, parent]), CombineFrames(FrameFragment(UnfoldingHeap[n, root_1]), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then UnfoldingHeap[null, udValid(UnfoldingHeap[n, parent])] else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[n, parent], leftDown]) else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[n, parent], left]) else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then EmptyFrame else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[n, parent], right_1]) else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then EmptyFrame else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[n, parent], root_1]) else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then EmptyFrame else EmptyFrame)), FrameFragment((if UnfoldingHeap[n, parent] == null then EmptyFrame else EmptyFrame))))))))))));
-                ExhaleWellDef0Mask := UnfoldingMask;
                 ExhaleWellDef0Heap := UnfoldingHeap;
+                ExhaleWellDef0Mask := UnfoldingMask;
                 perm := FullPerm;
                 UnfoldingMask := UnfoldingMask[null, udParentValid(n):=UnfoldingMask[null, udParentValid(n)] - perm];
                 perm := 1 / 2;
@@ -4518,8 +4518,8 @@ procedure has(this: Ref, k: int) returns (b_24: bool)
               UnfoldingMask := Mask;
               assume valid#trigger(UnfoldingHeap, valid(n));
               assume UnfoldingHeap[null, valid(n)] == CombineFrames(UnfoldingHeap[null, validRest(n)], CombineFrames(UnfoldingHeap[null, leftValid(n)], UnfoldingHeap[null, rightValid(n)]));
-              ExhaleWellDef0Mask := UnfoldingMask;
               ExhaleWellDef0Heap := UnfoldingHeap;
+              ExhaleWellDef0Mask := UnfoldingMask;
               perm := FullPerm;
               UnfoldingMask := UnfoldingMask[null, valid(n):=UnfoldingMask[null, valid(n)] - perm];
               perm := FullPerm;
@@ -4571,8 +4571,8 @@ procedure has(this: Ref, k: int) returns (b_24: bool)
                 UnfoldingMask := Mask;
                 assume udParentValid#trigger(UnfoldingHeap, udParentValid(n));
                 assume UnfoldingHeap[null, udParentValid(n)] == CombineFrames(FrameFragment(UnfoldingHeap[n, parent]), CombineFrames(FrameFragment(UnfoldingHeap[n, root_1]), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then UnfoldingHeap[null, udValid(UnfoldingHeap[n, parent])] else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[n, parent], leftDown]) else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[n, parent], left]) else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then EmptyFrame else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[n, parent], right_1]) else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then EmptyFrame else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[n, parent], root_1]) else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then EmptyFrame else EmptyFrame)), FrameFragment((if UnfoldingHeap[n, parent] == null then EmptyFrame else EmptyFrame))))))))))));
-                ExhaleWellDef0Mask := UnfoldingMask;
                 ExhaleWellDef0Heap := UnfoldingHeap;
+                ExhaleWellDef0Mask := UnfoldingMask;
                 perm := FullPerm;
                 UnfoldingMask := UnfoldingMask[null, udParentValid(n):=UnfoldingMask[null, udParentValid(n)] - perm];
                 perm := 1 / 2;
@@ -4662,8 +4662,8 @@ procedure has(this: Ref, k: int) returns (b_24: bool)
               UnfoldingMask := Mask;
               assume valid#trigger(UnfoldingHeap, valid(n));
               assume UnfoldingHeap[null, valid(n)] == CombineFrames(UnfoldingHeap[null, validRest(n)], CombineFrames(UnfoldingHeap[null, leftValid(n)], UnfoldingHeap[null, rightValid(n)]));
-              ExhaleWellDef0Mask := UnfoldingMask;
               ExhaleWellDef0Heap := UnfoldingHeap;
+              ExhaleWellDef0Mask := UnfoldingMask;
               perm := FullPerm;
               if (perm != NoPerm) {
                 assert {:msg "  An internal error occurred. There might be insufficient permission to access valid(n) (AVLTree.iterative.vpr@100.18--100.71) [146091]"}
@@ -4717,8 +4717,8 @@ procedure has(this: Ref, k: int) returns (b_24: bool)
                 UnfoldingMask := Mask;
                 assume udParentValid#trigger(UnfoldingHeap, udParentValid(n));
                 assume UnfoldingHeap[null, udParentValid(n)] == CombineFrames(FrameFragment(UnfoldingHeap[n, parent]), CombineFrames(FrameFragment(UnfoldingHeap[n, root_1]), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then UnfoldingHeap[null, udValid(UnfoldingHeap[n, parent])] else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[n, parent], leftDown]) else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[n, parent], left]) else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then EmptyFrame else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[n, parent], right_1]) else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then EmptyFrame else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[n, parent], root_1]) else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then EmptyFrame else EmptyFrame)), FrameFragment((if UnfoldingHeap[n, parent] == null then EmptyFrame else EmptyFrame))))))))))));
-                ExhaleWellDef0Mask := UnfoldingMask;
                 ExhaleWellDef0Heap := UnfoldingHeap;
+                ExhaleWellDef0Mask := UnfoldingMask;
                 perm := FullPerm;
                 if (perm != NoPerm) {
                   assert {:msg "  An internal error occurred. There might be insufficient permission to access udParentValid(n) (AVLTree.iterative.vpr@102.18--102.79) [146092]"}
@@ -4825,8 +4825,8 @@ procedure has(this: Ref, k: int) returns (b_24: bool)
               // -- Translating statement: unfold acc(udParentValid(n), write) -- AVLTree.iterative.vpr@104.8--104.42
                 assume udParentValid#trigger(Heap, udParentValid(n));
                 assume Heap[null, udParentValid(n)] == CombineFrames(FrameFragment(Heap[n, parent]), CombineFrames(FrameFragment(Heap[n, root_1]), CombineFrames(FrameFragment((if Heap[n, parent] != null then Heap[null, udValid(Heap[n, parent])] else EmptyFrame)), CombineFrames(FrameFragment((if Heap[n, parent] != null then FrameFragment(Heap[Heap[n, parent], leftDown]) else EmptyFrame)), CombineFrames(FrameFragment((if Heap[n, parent] != null then FrameFragment(Heap[Heap[n, parent], left]) else EmptyFrame)), CombineFrames(FrameFragment((if Heap[n, parent] != null then EmptyFrame else EmptyFrame)), CombineFrames(FrameFragment((if Heap[n, parent] != null then FrameFragment(Heap[Heap[n, parent], right_1]) else EmptyFrame)), CombineFrames(FrameFragment((if Heap[n, parent] != null then EmptyFrame else EmptyFrame)), CombineFrames(FrameFragment((if Heap[n, parent] != null then FrameFragment(Heap[Heap[n, parent], root_1]) else EmptyFrame)), CombineFrames(FrameFragment((if Heap[n, parent] != null then EmptyFrame else EmptyFrame)), FrameFragment((if Heap[n, parent] == null then EmptyFrame else EmptyFrame))))))))))));
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 perm := FullPerm;
                 if (perm != NoPerm) {
                   assert {:msg "  Unfolding udParentValid(n) might fail. There might be insufficient permission to access udParentValid(n) (AVLTree.iterative.vpr@104.8--104.42) [146099]"}
@@ -4922,8 +4922,8 @@ procedure has(this: Ref, k: int) returns (b_24: bool)
                     assume state(Heap, Mask);
                   
                   // -- Translating statement: fold acc(udParentValid(n), write) -- AVLTree.iterative.vpr@108.9--108.41
-                    ExhaleWellDef0Mask := Mask;
                     ExhaleWellDef0Heap := Heap;
+                    ExhaleWellDef0Mask := Mask;
                     perm := 1 / 2;
                     assert {:msg "  Folding udParentValid(n) might fail. Fraction 1 / 2 might be negative. (AVLTree.iterative.vpr@108.9--108.41) [146107]"}
                       perm >= NoPerm;
@@ -5047,8 +5047,8 @@ procedure has(this: Ref, k: int) returns (b_24: bool)
                   // -- Translating statement: unfold acc(udValid(r), write) -- AVLTree.iterative.vpr@110.9--110.37
                     assume udValid#trigger(Heap, udValid(r_1));
                     assume Heap[null, udValid(r_1)] == CombineFrames(FrameFragment(Heap[r_1, key]), CombineFrames(FrameFragment(Heap[r_1, leftDown]), CombineFrames(FrameFragment(Heap[r_1, left]), CombineFrames(FrameFragment(Heap[r_1, right_1]), CombineFrames(FrameFragment(Heap[r_1, root_1]), CombineFrames(FrameFragment((if Heap[r_1, leftDown] then Heap[null, rightValid(r_1)] else EmptyFrame)), CombineFrames(FrameFragment((if Heap[r_1, leftDown] then Heap[null, leftOpen(r_1)] else EmptyFrame)), CombineFrames(FrameFragment((if Heap[r_1, leftDown] ==> false then Heap[null, leftValid(r_1)] else EmptyFrame)), CombineFrames(FrameFragment((if Heap[r_1, leftDown] ==> false then Heap[null, rightOpen(r_1)] else EmptyFrame)), Heap[null, udParentValid(r_1)])))))))));
-                    ExhaleWellDef0Mask := Mask;
                     ExhaleWellDef0Heap := Heap;
+                    ExhaleWellDef0Mask := Mask;
                     perm := FullPerm;
                     if (perm != NoPerm) {
                       assert {:msg "  Unfolding udValid(r) might fail. There might be insufficient permission to access udValid(r) (AVLTree.iterative.vpr@110.9--110.37) [146124]"}
@@ -5140,8 +5140,8 @@ procedure has(this: Ref, k: int) returns (b_24: bool)
                       // -- Translating statement: unfold acc(leftOpen(r), write) -- AVLTree.iterative.vpr@112.10--112.39
                         assume leftOpen#trigger(Heap, leftOpen(r_1));
                         assume Heap[null, leftOpen(r_1)] == CombineFrames(FrameFragment(Heap[r_1, left]), CombineFrames(FrameFragment(Heap[r_1, root_1]), CombineFrames(FrameFragment((if Heap[r_1, left] != null then FrameFragment(Heap[Heap[r_1, left], parent]) else EmptyFrame)), FrameFragment((if Heap[r_1, left] != null then EmptyFrame else EmptyFrame)))));
-                        ExhaleWellDef0Mask := Mask;
                         ExhaleWellDef0Heap := Heap;
+                        ExhaleWellDef0Mask := Mask;
                         perm := FullPerm;
                         if (perm != NoPerm) {
                           assert {:msg "  Unfolding leftOpen(r) might fail. There might be insufficient permission to access leftOpen(r) (AVLTree.iterative.vpr@112.10--112.39) [146130]"}
@@ -5181,8 +5181,8 @@ procedure has(this: Ref, k: int) returns (b_24: bool)
                         assume state(Heap, Mask);
                       
                       // -- Translating statement: fold acc(leftValid(r), write) -- AVLTree.iterative.vpr@113.10--113.40
-                        ExhaleWellDef0Mask := Mask;
                         ExhaleWellDef0Heap := Heap;
+                        ExhaleWellDef0Mask := Mask;
                         perm := 1 / 4;
                         assert {:msg "  Folding leftValid(r) might fail. Fraction 1 / 4 might be negative. (AVLTree.iterative.vpr@113.10--113.40) [146134]"}
                           perm >= NoPerm;
@@ -5270,8 +5270,8 @@ procedure has(this: Ref, k: int) returns (b_24: bool)
                       // -- Translating statement: unfold acc(rightOpen(r), write) -- AVLTree.iterative.vpr@115.10--115.40
                         assume rightOpen#trigger(Heap, rightOpen(r_1));
                         assume Heap[null, rightOpen(r_1)] == CombineFrames(FrameFragment(Heap[r_1, right_1]), CombineFrames(FrameFragment(Heap[r_1, root_1]), CombineFrames(FrameFragment((if Heap[r_1, right_1] != null then FrameFragment(Heap[Heap[r_1, right_1], parent]) else EmptyFrame)), FrameFragment((if Heap[r_1, right_1] != null then EmptyFrame else EmptyFrame)))));
-                        ExhaleWellDef0Mask := Mask;
                         ExhaleWellDef0Heap := Heap;
+                        ExhaleWellDef0Mask := Mask;
                         perm := FullPerm;
                         if (perm != NoPerm) {
                           assert {:msg "  Unfolding rightOpen(r) might fail. There might be insufficient permission to access rightOpen(r) (AVLTree.iterative.vpr@115.10--115.40) [146144]"}
@@ -5311,8 +5311,8 @@ procedure has(this: Ref, k: int) returns (b_24: bool)
                         assume state(Heap, Mask);
                       
                       // -- Translating statement: fold acc(rightValid(r), write) -- AVLTree.iterative.vpr@116.10--116.41
-                        ExhaleWellDef0Mask := Mask;
                         ExhaleWellDef0Heap := Heap;
+                        ExhaleWellDef0Mask := Mask;
                         perm := 1 / 4;
                         assert {:msg "  Folding rightValid(r) might fail. Fraction 1 / 4 might be negative. (AVLTree.iterative.vpr@116.10--116.41) [146148]"}
                           perm >= NoPerm;
@@ -5399,8 +5399,8 @@ procedure has(this: Ref, k: int) returns (b_24: bool)
                     assume state(Heap, Mask);
                   
                   // -- Translating statement: fold acc(validRest(r), write) -- AVLTree.iterative.vpr@118.9--118.37
-                    ExhaleWellDef0Mask := Mask;
                     ExhaleWellDef0Heap := Heap;
+                    ExhaleWellDef0Mask := Mask;
                     perm := FullPerm;
                     if (perm != NoPerm) {
                       assert {:msg "  Folding validRest(r) might fail. There might be insufficient permission to access r.key (AVLTree.iterative.vpr@118.9--118.37) [146158]"}
@@ -5459,8 +5459,8 @@ procedure has(this: Ref, k: int) returns (b_24: bool)
                     assume state(Heap, Mask);
                   
                   // -- Translating statement: fold acc(valid(r), write) -- AVLTree.iterative.vpr@119.9--119.33
-                    ExhaleWellDef0Mask := Mask;
                     ExhaleWellDef0Heap := Heap;
+                    ExhaleWellDef0Mask := Mask;
                     perm := FullPerm;
                     if (perm != NoPerm) {
                       assert {:msg "  Folding valid(r) might fail. There might be insufficient permission to access validRest(r) (AVLTree.iterative.vpr@119.9--119.33) [146167]"}
@@ -5532,8 +5532,8 @@ procedure has(this: Ref, k: int) returns (b_24: bool)
               UnfoldingMask := Mask;
               assume valid#trigger(UnfoldingHeap, valid(n));
               assume UnfoldingHeap[null, valid(n)] == CombineFrames(UnfoldingHeap[null, validRest(n)], CombineFrames(UnfoldingHeap[null, leftValid(n)], UnfoldingHeap[null, rightValid(n)]));
-              ExhaleWellDef0Mask := UnfoldingMask;
               ExhaleWellDef0Heap := UnfoldingHeap;
+              ExhaleWellDef0Mask := UnfoldingMask;
               perm := FullPerm;
               if (perm != NoPerm) {
                 assert {:msg "  Loop invariant (unfolding acc(valid(n), write) in n.root == this.root1) might not be preserved. There might be insufficient permission to access valid(n) (AVLTree.iterative.vpr@100.18--100.71) [146170]"}
@@ -5587,8 +5587,8 @@ procedure has(this: Ref, k: int) returns (b_24: bool)
                 UnfoldingMask := Mask;
                 assume udParentValid#trigger(UnfoldingHeap, udParentValid(n));
                 assume UnfoldingHeap[null, udParentValid(n)] == CombineFrames(FrameFragment(UnfoldingHeap[n, parent]), CombineFrames(FrameFragment(UnfoldingHeap[n, root_1]), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then UnfoldingHeap[null, udValid(UnfoldingHeap[n, parent])] else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[n, parent], leftDown]) else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[n, parent], left]) else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then EmptyFrame else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[n, parent], right_1]) else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then EmptyFrame else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[n, parent], root_1]) else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then EmptyFrame else EmptyFrame)), FrameFragment((if UnfoldingHeap[n, parent] == null then EmptyFrame else EmptyFrame))))))))))));
-                ExhaleWellDef0Mask := UnfoldingMask;
                 ExhaleWellDef0Heap := UnfoldingHeap;
+                ExhaleWellDef0Mask := UnfoldingMask;
                 perm := FullPerm;
                 if (perm != NoPerm) {
                   assert {:msg "  Loop invariant end ==> (unfolding acc(udParentValid(n), write) in n.parent == null) might not be preserved. There might be insufficient permission to access udParentValid(n) (AVLTree.iterative.vpr@102.18--102.79) [146171]"}
@@ -5686,8 +5686,8 @@ procedure has(this: Ref, k: int) returns (b_24: bool)
                   }
                   assume state(Heap, Mask);
               }
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
             if (perm != NoPerm) {
               assert {:msg "  Loop invariant acc(this.root1, write) might not be preserved. There might be insufficient permission to access this.root1 (AVLTree.iterative.vpr@94.18--94.39) [146178]"}
@@ -5732,8 +5732,8 @@ procedure has(this: Ref, k: int) returns (b_24: bool)
               UnfoldingMask := ExhaleWellDef0Mask;
               assume valid#trigger(UnfoldingHeap, valid(n));
               assume UnfoldingHeap[null, valid(n)] == CombineFrames(UnfoldingHeap[null, validRest(n)], CombineFrames(UnfoldingHeap[null, leftValid(n)], UnfoldingHeap[null, rightValid(n)]));
-              ExhaleWellDef1Mask := UnfoldingMask;
               ExhaleWellDef1Heap := UnfoldingHeap;
+              ExhaleWellDef1Mask := UnfoldingMask;
               perm := FullPerm;
               if (perm != NoPerm) {
                 assert {:msg "  Loop invariant (unfolding acc(valid(n), write) in n.root == this.root1) might not be preserved. There might be insufficient permission to access valid(n) (AVLTree.iterative.vpr@100.18--100.71) [146187]"}
@@ -5770,8 +5770,8 @@ procedure has(this: Ref, k: int) returns (b_24: bool)
                 UnfoldingMask := ExhaleWellDef0Mask;
                 assume udParentValid#trigger(UnfoldingHeap, udParentValid(n));
                 assume UnfoldingHeap[null, udParentValid(n)] == CombineFrames(FrameFragment(UnfoldingHeap[n, parent]), CombineFrames(FrameFragment(UnfoldingHeap[n, root_1]), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then UnfoldingHeap[null, udValid(UnfoldingHeap[n, parent])] else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[n, parent], leftDown]) else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[n, parent], left]) else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then EmptyFrame else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[n, parent], right_1]) else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then EmptyFrame else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[n, parent], root_1]) else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then EmptyFrame else EmptyFrame)), FrameFragment((if UnfoldingHeap[n, parent] == null then EmptyFrame else EmptyFrame))))))))))));
-                ExhaleWellDef1Mask := UnfoldingMask;
                 ExhaleWellDef1Heap := UnfoldingHeap;
+                ExhaleWellDef1Mask := UnfoldingMask;
                 perm := FullPerm;
                 if (perm != NoPerm) {
                   assert {:msg "  Loop invariant end ==> (unfolding acc(udParentValid(n), write) in n.parent == null) might not be preserved. There might be insufficient permission to access udParentValid(n) (AVLTree.iterative.vpr@102.18--102.79) [146190]"}
@@ -5931,8 +5931,8 @@ procedure has(this: Ref, k: int) returns (b_24: bool)
             UnfoldingMask := Mask;
             assume valid#trigger(UnfoldingHeap, valid(n));
             assume UnfoldingHeap[null, valid(n)] == CombineFrames(UnfoldingHeap[null, validRest(n)], CombineFrames(UnfoldingHeap[null, leftValid(n)], UnfoldingHeap[null, rightValid(n)]));
-            ExhaleWellDef0Mask := UnfoldingMask;
             ExhaleWellDef0Heap := UnfoldingHeap;
+            ExhaleWellDef0Mask := UnfoldingMask;
             perm := FullPerm;
             UnfoldingMask := UnfoldingMask[null, valid(n):=UnfoldingMask[null, valid(n)] - perm];
             perm := FullPerm;
@@ -5984,8 +5984,8 @@ procedure has(this: Ref, k: int) returns (b_24: bool)
               UnfoldingMask := Mask;
               assume udParentValid#trigger(UnfoldingHeap, udParentValid(n));
               assume UnfoldingHeap[null, udParentValid(n)] == CombineFrames(FrameFragment(UnfoldingHeap[n, parent]), CombineFrames(FrameFragment(UnfoldingHeap[n, root_1]), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then UnfoldingHeap[null, udValid(UnfoldingHeap[n, parent])] else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[n, parent], leftDown]) else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[n, parent], left]) else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then EmptyFrame else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[n, parent], right_1]) else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then EmptyFrame else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[n, parent], root_1]) else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then EmptyFrame else EmptyFrame)), FrameFragment((if UnfoldingHeap[n, parent] == null then EmptyFrame else EmptyFrame))))))))))));
-              ExhaleWellDef0Mask := UnfoldingMask;
               ExhaleWellDef0Heap := UnfoldingHeap;
+              ExhaleWellDef0Mask := UnfoldingMask;
               perm := FullPerm;
               UnfoldingMask := UnfoldingMask[null, udParentValid(n):=UnfoldingMask[null, udParentValid(n)] - perm];
               perm := 1 / 2;
@@ -6075,8 +6075,8 @@ procedure has(this: Ref, k: int) returns (b_24: bool)
             UnfoldingMask := Mask;
             assume valid#trigger(UnfoldingHeap, valid(n));
             assume UnfoldingHeap[null, valid(n)] == CombineFrames(UnfoldingHeap[null, validRest(n)], CombineFrames(UnfoldingHeap[null, leftValid(n)], UnfoldingHeap[null, rightValid(n)]));
-            ExhaleWellDef0Mask := UnfoldingMask;
             ExhaleWellDef0Heap := UnfoldingHeap;
+            ExhaleWellDef0Mask := UnfoldingMask;
             perm := FullPerm;
             if (perm != NoPerm) {
               assert {:msg "  An internal error occurred. There might be insufficient permission to access valid(n) (AVLTree.iterative.vpr@100.18--100.71) [146200]"}
@@ -6130,8 +6130,8 @@ procedure has(this: Ref, k: int) returns (b_24: bool)
               UnfoldingMask := Mask;
               assume udParentValid#trigger(UnfoldingHeap, udParentValid(n));
               assume UnfoldingHeap[null, udParentValid(n)] == CombineFrames(FrameFragment(UnfoldingHeap[n, parent]), CombineFrames(FrameFragment(UnfoldingHeap[n, root_1]), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then UnfoldingHeap[null, udValid(UnfoldingHeap[n, parent])] else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[n, parent], leftDown]) else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[n, parent], left]) else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then EmptyFrame else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[n, parent], right_1]) else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then EmptyFrame else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[n, parent], root_1]) else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[n, parent] != null then EmptyFrame else EmptyFrame)), FrameFragment((if UnfoldingHeap[n, parent] == null then EmptyFrame else EmptyFrame))))))))))));
-              ExhaleWellDef0Mask := UnfoldingMask;
               ExhaleWellDef0Heap := UnfoldingHeap;
+              ExhaleWellDef0Mask := UnfoldingMask;
               perm := FullPerm;
               if (perm != NoPerm) {
                 assert {:msg "  An internal error occurred. There might be insufficient permission to access udParentValid(n) (AVLTree.iterative.vpr@102.18--102.79) [146201]"}
@@ -6234,8 +6234,8 @@ procedure has(this: Ref, k: int) returns (b_24: bool)
       // -- Translating statement: unfold acc(udParentValid(n), write) -- AVLTree.iterative.vpr@123.7--123.41
         assume udParentValid#trigger(Heap, udParentValid(n));
         assume Heap[null, udParentValid(n)] == CombineFrames(FrameFragment(Heap[n, parent]), CombineFrames(FrameFragment(Heap[n, root_1]), CombineFrames(FrameFragment((if Heap[n, parent] != null then Heap[null, udValid(Heap[n, parent])] else EmptyFrame)), CombineFrames(FrameFragment((if Heap[n, parent] != null then FrameFragment(Heap[Heap[n, parent], leftDown]) else EmptyFrame)), CombineFrames(FrameFragment((if Heap[n, parent] != null then FrameFragment(Heap[Heap[n, parent], left]) else EmptyFrame)), CombineFrames(FrameFragment((if Heap[n, parent] != null then EmptyFrame else EmptyFrame)), CombineFrames(FrameFragment((if Heap[n, parent] != null then FrameFragment(Heap[Heap[n, parent], right_1]) else EmptyFrame)), CombineFrames(FrameFragment((if Heap[n, parent] != null then EmptyFrame else EmptyFrame)), CombineFrames(FrameFragment((if Heap[n, parent] != null then FrameFragment(Heap[Heap[n, parent], root_1]) else EmptyFrame)), CombineFrames(FrameFragment((if Heap[n, parent] != null then EmptyFrame else EmptyFrame)), FrameFragment((if Heap[n, parent] == null then EmptyFrame else EmptyFrame))))))))))));
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Unfolding udParentValid(n) might fail. There might be insufficient permission to access udParentValid(n) (AVLTree.iterative.vpr@123.7--123.41) [146210]"}
@@ -6316,8 +6316,8 @@ procedure has(this: Ref, k: int) returns (b_24: bool)
         assume state(Heap, Mask);
       
       // -- Translating statement: fold acc(valid1(this), write) -- AVLTree.iterative.vpr@124.7--124.35
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Folding valid1(this) might fail. There might be insufficient permission to access this.root1 (AVLTree.iterative.vpr@124.7--124.35) [146220]"}
@@ -6393,8 +6393,8 @@ procedure has(this: Ref, k: int) returns (b_24: bool)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of has might not hold. There might be insufficient permission to access valid1(this) (AVLTree.iterative.vpr@26.11--26.34) [146230]"}
@@ -6415,12 +6415,12 @@ procedure init_2(this: Ref, k: int) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var freshVersion: FrameType;
   var newPMask: PMaskType;
   var ExhaleHeap: HeapType;
@@ -6463,8 +6463,8 @@ procedure init_2(this: Ref, k: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -6497,8 +6497,8 @@ procedure init_2(this: Ref, k: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(leftValid(this), write) -- AVLTree.iterative.vpr@230.3--230.34
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := 1 / 4;
     assert {:msg "  Folding leftValid(this) might fail. Fraction 1 / 4 might be negative. (AVLTree.iterative.vpr@230.3--230.34) [146235]"}
       perm >= NoPerm;
@@ -6583,8 +6583,8 @@ procedure init_2(this: Ref, k: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(rightValid(this), write) -- AVLTree.iterative.vpr@231.3--231.35
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := 1 / 4;
     assert {:msg "  Folding rightValid(this) might fail. Fraction 1 / 4 might be negative. (AVLTree.iterative.vpr@231.3--231.35) [146249]"}
       perm >= NoPerm;
@@ -6669,8 +6669,8 @@ procedure init_2(this: Ref, k: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(validRest(this), write) -- AVLTree.iterative.vpr@232.3--232.34
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding validRest(this) might fail. There might be insufficient permission to access this.key (AVLTree.iterative.vpr@232.3--232.34) [146264]"}
@@ -6729,8 +6729,8 @@ procedure init_2(this: Ref, k: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(valid(this), write) -- AVLTree.iterative.vpr@233.3--233.30
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding valid(this) might fail. There might be insufficient permission to access validRest(this) (AVLTree.iterative.vpr@233.3--233.30) [146277]"}
@@ -6791,8 +6791,8 @@ procedure init_2(this: Ref, k: int) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of init_2 might not hold. There might be insufficient permission to access valid(this) (AVLTree.iterative.vpr@224.11--224.33) [146283]"}

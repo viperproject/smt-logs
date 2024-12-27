@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 02:36:37
+// Date:         2024-12-27 10:45:32
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0061.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0061-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -305,13 +305,13 @@ procedure Consumervalid$#definedness(this: Ref) returns ()
 procedure Producerinit$(this: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var freshVersion: FrameType;
   var ExhaleHeap: HeapType;
   
@@ -330,8 +330,8 @@ procedure Producerinit$(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -346,8 +346,8 @@ procedure Producerinit$(this: Ref) returns ()
   }
   
   // -- Translating statement: fold acc(Producervalid$(this), write) -- 0061.vpr@32.3--32.40
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     Mask := Mask[null, Producervalid$(this):=Mask[null, Producervalid$(this)] + perm];
     assume state(Heap, Mask);
@@ -363,8 +363,8 @@ procedure Producerinit$(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of Producerinit$ might not hold. There might be insufficient permission to access Producervalid$(this) (0061.vpr@30.11--30.43) [192322]"}
@@ -385,12 +385,12 @@ procedure Consumerinit$(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var freshVersion: FrameType;
   var ExhaleHeap: HeapType;
   
@@ -414,8 +414,8 @@ procedure Consumerinit$(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -430,8 +430,8 @@ procedure Consumerinit$(this: Ref) returns ()
   }
   
   // -- Translating statement: fold acc(Consumervalid$(this), write) -- 0061.vpr@48.3--48.40
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     Mask := Mask[null, Consumervalid$(this):=Mask[null, Consumervalid$(this)] + perm];
     assume state(Heap, Mask);
@@ -447,8 +447,8 @@ procedure Consumerinit$(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of Consumerinit$ might not hold. There might be insufficient permission to access Consumervalid$(this) (0061.vpr@46.11--46.43) [192326]"}

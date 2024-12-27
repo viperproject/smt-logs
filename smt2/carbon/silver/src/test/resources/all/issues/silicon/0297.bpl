@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 02:40:46
+// Date:         2024-12-27 10:49:39
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0297.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0297-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -204,8 +204,8 @@ type d2DomainType;
 procedure meth(r_1: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var y: (LocDomainType dDomainType);
   
   // -- Initializing the state
@@ -219,8 +219,8 @@ procedure meth(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: y := (loc_Ref(r): Loc[d]) -- 0297.vpr@9.3--9.30
     y := (loc_Ref(r_1): LocDomainType dDomainType);
@@ -234,8 +234,8 @@ procedure meth(r_1: Ref) returns ()
 procedure meth2(r_1: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var z: (LocDomainType d2DomainType);
   
   // -- Initializing the state
@@ -249,8 +249,8 @@ procedure meth2(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: z := (loc_Ref(r): Loc[d2]) -- 0297.vpr@13.3--13.31
     z := (loc_Ref(r_1): LocDomainType d2DomainType);

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 02:41:45
+// Date:         2024-12-27 10:50:39
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0505.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0505-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -410,14 +410,14 @@ procedure foo_1(r_1: Ref, set_2: (Set Ref)) returns ()
   var x_10: Ref;
   var y_4: Ref;
   var x_31: Ref;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var new_set: (Set Ref);
   var perm: Perm;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var x_38: Ref;
   
   // -- Initializing the state
@@ -545,8 +545,8 @@ procedure foo_1(r_1: Ref, set_2: (Set Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: new_set := (set union Set(r)) -- 0505.vpr@13.3--13.30
     new_set := Set#Union(set_2, Set#Singleton(r_1));
@@ -579,8 +579,8 @@ procedure foo_1(r_1: Ref, set_2: (Set Ref)) returns ()
   // -- Translating statement: assert (forall x: Ref :: { x.f } (x in new_set) ==> acc(x.f, 1 / 3)) -- 0505.vpr@16.3--16.65
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Heap := AssertHeap;
     ExhaleWellDef0Mask := AssertMask;
+    ExhaleWellDef0Heap := AssertHeap;
     
     // -- Check definedness of (forall x: Ref :: { x.f } (x in new_set) ==> acc(x.f, 1 / 3))
       if (*) {
@@ -636,8 +636,8 @@ procedure foo_1(r_1: Ref, set_2: (Set Ref)) returns ()
   // -- Translating statement: assert (forall x: Ref :: { x.f.g } (x in new_set) ==> acc(x.f.g, 2 / 3)) -- 0505.vpr@17.3--17.69
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Heap := AssertHeap;
     ExhaleWellDef0Mask := AssertMask;
+    ExhaleWellDef0Heap := AssertHeap;
     
     // -- Check definedness of (forall x: Ref :: { x.f.g } (x in new_set) ==> acc(x.f.g, 2 / 3))
       if (*) {

@@ -1,0 +1,82 @@
+opam-version: "2.0"
+added: [
+  "bin/memtrace_dump_trace" {"F:dac26a52186011d8b4d5e52070b96de7"}
+  "bin/memtrace_flamegraph" {"F:086d5efc2df37e310862ac7da1007edc"}
+  "bin/memtrace_hotspots" {"F:c460fa63209494b4515b1c0058d9e355"}
+  "bin/memtrace_identify" {"F:e69c9208c40d38e171cd1277b09e9757"}
+  "bin/memtrace_subsample" {"F:f0a505389749d6d0cafd8f1e034e6840"}
+  "doc/memtrace" {"D"}
+  "doc/memtrace/CHANGES.md" {"F:4cf1823a76730fe10c14f182fa84c54a"}
+  "doc/memtrace/LICENSE.md" {"F:775dda2fdd1823960adb5d52c20cd478"}
+  "doc/memtrace/README.md" {"F:c2ccc5593feee9a92e87b7da3f350cd0"}
+  "lib/memtrace" {"D"}
+  "lib/memtrace/META" {"F:ad7ba31deb76ff5b6bd3daf39605c00b"}
+  "lib/memtrace/backtrace_codec.ml" {"F:7978517cbef81e67628e5256ff2b3cff"}
+  "lib/memtrace/backtrace_codec.mli" {"F:398ca4fa6ddb2c781d4dda4a77e12de3"}
+  "lib/memtrace/buf.ml" {"F:fd2b58b1d2ff881ac4735de44619c1e4"}
+  "lib/memtrace/buf.mli" {"F:87a4a8223db1801725ef8e6426edfafd"}
+  "lib/memtrace/dune-package" {"F:9463aada2d8feefc1ab97d82710e0f61"}
+  "lib/memtrace/geometric_sampler.ml" {"F:d43a054d0debfd89ec046a75ab2a5dd3"}
+  "lib/memtrace/geometric_sampler.mli" {"F:016d45d2c8dfd82e253ff0fb3cea41cf"}
+  "lib/memtrace/location_codec.ml" {"F:b6e2fc02ea8f32350c38ebc450fcca93"}
+  "lib/memtrace/location_codec.mli" {"F:3495457eb756bee89b99da658ccf4947"}
+  "lib/memtrace/memprof_tracer.ml" {"F:934b2724869083b4c1a7b9e7a73c7884"}
+  "lib/memtrace/memprof_tracer.mli" {"F:930c75e41680ac40fb66f46a8623a129"}
+  "lib/memtrace/memtrace.a" {"F:06f2eafb06357a4ebc1ede4e5bcd3f50"}
+  "lib/memtrace/memtrace.cma" {"F:434034874b1157508d05e00c20092122"}
+  "lib/memtrace/memtrace.cmi" {"F:43b5bfa0a11cd24165c0235a564d8bb5"}
+  "lib/memtrace/memtrace.cmt" {"F:8057b252763767d0bc1bb46e03d58cda"}
+  "lib/memtrace/memtrace.cmti" {"F:3fbeb81bdfda58cb6527c8540f2b61b2"}
+  "lib/memtrace/memtrace.cmx" {"F:a21016235c05017acf42a8a0d218900d"}
+  "lib/memtrace/memtrace.cmxa" {"F:fd6efcd25a6879188db7b2229458b2b5"}
+  "lib/memtrace/memtrace.cmxs" {"F:953e5dd7d147f1947e7f61caf1d35725"}
+  "lib/memtrace/memtrace.ml" {"F:b79b24da3a7cf57c05d8df4fc92fb512"}
+  "lib/memtrace/memtrace.mli" {"F:f3ee5fb95b602f4e6777c511f195f4ac"}
+  "lib/memtrace/memtrace__.cmi" {"F:24699a5758ddf8b9b236021e8baf3d11"}
+  "lib/memtrace/memtrace__.cmt" {"F:025aa9c37345e667b8a72baba7b60be8"}
+  "lib/memtrace/memtrace__.cmx" {"F:e8f285bf5b31a65e4727fcdf54edcf5d"}
+  "lib/memtrace/memtrace__.ml" {"F:5e9df9122b8b32e7ebbbb4402674bce4"}
+  "lib/memtrace/memtrace__Backtrace_codec.cmi"
+    {"F:bbfccb2f2aee45e0678fdbbd5a90a5b3"}
+  "lib/memtrace/memtrace__Backtrace_codec.cmt"
+    {"F:3cb4c5e3dde3d96f3d1c03de640296ca"}
+  "lib/memtrace/memtrace__Backtrace_codec.cmti"
+    {"F:dc0cea63b7f58eb7e823aa5dcbb90df9"}
+  "lib/memtrace/memtrace__Backtrace_codec.cmx"
+    {"F:15dd392396f875d98ff98fb459df26c7"}
+  "lib/memtrace/memtrace__Buf.cmi" {"F:0ddc53f30e9a41fbca0e3725466228d4"}
+  "lib/memtrace/memtrace__Buf.cmt" {"F:c94bf661a1e461c2d7d7e8ad135a437d"}
+  "lib/memtrace/memtrace__Buf.cmti" {"F:2edabd88a901ce11ef8d5e11fbc34211"}
+  "lib/memtrace/memtrace__Buf.cmx" {"F:4724342b43427c0bbaf6da5f4f0ae958"}
+  "lib/memtrace/memtrace__Geometric_sampler.cmi"
+    {"F:175499be157b8caed306273863e1b24f"}
+  "lib/memtrace/memtrace__Geometric_sampler.cmt"
+    {"F:75d0225d8b9132935ea95ccc262155ee"}
+  "lib/memtrace/memtrace__Geometric_sampler.cmti"
+    {"F:649776156e7ba92fddccb42c6ae38162"}
+  "lib/memtrace/memtrace__Geometric_sampler.cmx"
+    {"F:a018435072c698613e65434f60520d68"}
+  "lib/memtrace/memtrace__Location_codec.cmi"
+    {"F:2483eb55764d4bb000b76645d8ebb6db"}
+  "lib/memtrace/memtrace__Location_codec.cmt"
+    {"F:1b20cfeda53338ecbbcf27fe081ac0b3"}
+  "lib/memtrace/memtrace__Location_codec.cmti"
+    {"F:4d1c29503e9a3455ab7027f491e87bb4"}
+  "lib/memtrace/memtrace__Location_codec.cmx"
+    {"F:380565861c3425d3625003fb9e8cd150"}
+  "lib/memtrace/memtrace__Memprof_tracer.cmi"
+    {"F:86c0e8be9af60a6630381400226b9cc0"}
+  "lib/memtrace/memtrace__Memprof_tracer.cmt"
+    {"F:33da87548aa9a9ef3a95dea0cf611368"}
+  "lib/memtrace/memtrace__Memprof_tracer.cmti"
+    {"F:8467a0b010b091c45bd8444972998238"}
+  "lib/memtrace/memtrace__Memprof_tracer.cmx"
+    {"F:e94229e65233016c113248e7a3aa4561"}
+  "lib/memtrace/memtrace__Trace.cmi" {"F:07039ce9ce0d59c32b18bcb0a7bf6c16"}
+  "lib/memtrace/memtrace__Trace.cmt" {"F:0e24fb57a894da4a743c161084e73c2b"}
+  "lib/memtrace/memtrace__Trace.cmti" {"F:a17ccbe08124e8a38e219bc163d5d784"}
+  "lib/memtrace/memtrace__Trace.cmx" {"F:f84ac3072610365ab8d135363b3d6571"}
+  "lib/memtrace/opam" {"F:0a950ba2f1a0cf351c59bb82201eead6"}
+  "lib/memtrace/trace.ml" {"F:b1e2dc2459357a6630afa11d65b3bcd6"}
+  "lib/memtrace/trace.mli" {"F:b1e7c0db64f0e1b1db30f85960d967b6"}
+]

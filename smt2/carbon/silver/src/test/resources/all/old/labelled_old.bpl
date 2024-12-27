@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 02:31:32
+// Date:         2024-12-27 10:40:29
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/old/labelled_old.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/old/labelled_old-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -192,15 +192,15 @@ procedure test01() returns ()
   modifies Heap, Mask;
 {
   var initial_lblGuard: bool;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var m_17: Ref;
   var freshObj: Ref;
-  var LabelinitialHeap: HeapType;
   var LabelinitialMask: MaskType;
+  var LabelinitialHeap: HeapType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -212,8 +212,8 @@ procedure test01() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[m_17, $allocated];
@@ -234,8 +234,8 @@ procedure test01() returns ()
   
   // -- Translating statement: label initial -- labelled_old.vpr@12.1--12.14
     initial:
-    LabelinitialHeap := Heap;
     LabelinitialMask := Mask;
+    LabelinitialHeap := Heap;
     initial_lblGuard := true;
     assume state(Heap, Mask);
   
@@ -254,8 +254,8 @@ procedure test01() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert m.f == 3 && old[initial](m.f) == 15 -- labelled_old.vpr@17.3--17.45
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of m.f == 3
       assert {:msg "  Assert might fail. There might be insufficient permission to access m.f (labelled_old.vpr@17.10--17.45) [157416]"}
@@ -273,8 +273,8 @@ procedure test01() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert perm(m.tk) == write && old[initial](perm(m.tk)) == none -- labelled_old.vpr@18.3--18.65
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion perm(m.tk) == write might not hold. (labelled_old.vpr@18.10--18.65) [157421]"}
       Mask[m_17, tk] == FullPerm;
     
@@ -286,8 +286,8 @@ procedure test01() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(m.f, write) -- labelled_old.vpr@19.3--19.18
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Exhale might fail. There might be insufficient permission to access m.f (labelled_old.vpr@19.10--19.18) [157425]"}
@@ -301,8 +301,8 @@ procedure test01() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert old[initial](m.f) == 15 -- labelled_old.vpr@20.3--20.33
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of old[initial](m.f) == 15
       assert {:msg "  Assert might fail. Did not reach labelled state initial required to evaluate old[initial](m.f). (labelled_old.vpr@20.10--20.33) [157426]"}
@@ -322,15 +322,15 @@ procedure test02() returns ()
   modifies Heap, Mask;
 {
   var initial_lblGuard: bool;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var m_17: Ref;
   var freshObj: Ref;
-  var LabelinitialHeap: HeapType;
   var LabelinitialMask: MaskType;
+  var LabelinitialHeap: HeapType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -341,8 +341,8 @@ procedure test02() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[m_17, $allocated];
@@ -363,8 +363,8 @@ procedure test02() returns ()
   
   // -- Translating statement: label initial -- labelled_old.vpr@28.1--28.14
     initial:
-    LabelinitialHeap := Heap;
     LabelinitialMask := Mask;
+    LabelinitialHeap := Heap;
     initial_lblGuard := true;
     assume state(Heap, Mask);
   
@@ -383,8 +383,8 @@ procedure test02() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale m.f == 3 && old[initial](m.f) == 15 -- labelled_old.vpr@33.3--33.45
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of m.f == 3
       assert {:msg "  Exhale might fail. There might be insufficient permission to access m.f (labelled_old.vpr@33.10--33.45) [157432]"}
@@ -402,15 +402,15 @@ procedure test02() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert perm(m.tk) == write -- labelled_old.vpr@34.3--34.29
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion perm(m.tk) == write might not hold. (labelled_old.vpr@34.10--34.29) [157437]"}
       Mask[m_17, tk] == FullPerm;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert old[initial](perm(m.tk)) == write -- labelled_old.vpr@36.3--36.43
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of old[initial](perm(m.tk)) == write
       assert {:msg "  Assert might fail. Did not reach labelled state initial required to evaluate old[initial](perm(m.tk)). (labelled_old.vpr@36.10--36.43) [157438]"}
@@ -428,15 +428,15 @@ procedure test03() returns ()
   modifies Heap, Mask;
 {
   var initial_lblGuard: bool;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var m_17: Ref;
   var freshObj: Ref;
-  var LabelinitialHeap: HeapType;
   var LabelinitialMask: MaskType;
+  var LabelinitialHeap: HeapType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -448,8 +448,8 @@ procedure test03() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[m_17, $allocated];
@@ -470,8 +470,8 @@ procedure test03() returns ()
   
   // -- Translating statement: label initial -- labelled_old.vpr@45.1--45.14
     initial:
-    LabelinitialHeap := Heap;
     LabelinitialMask := Mask;
+    LabelinitialHeap := Heap;
     initial_lblGuard := true;
     assume state(Heap, Mask);
   
@@ -490,8 +490,8 @@ procedure test03() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale m.f == 3 && old[initial](m.f) == 15 -- labelled_old.vpr@50.3--50.45
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of m.f == 3
       assert {:msg "  Exhale might fail. There might be insufficient permission to access m.f (labelled_old.vpr@50.10--50.45) [157443]"}
@@ -509,8 +509,8 @@ procedure test03() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(m.f, write) -- labelled_old.vpr@51.3--51.18
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Exhale might fail. There might be insufficient permission to access m.f (labelled_old.vpr@51.10--51.18) [157449]"}
@@ -524,8 +524,8 @@ procedure test03() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale old[initial](m.f) == 3 -- labelled_old.vpr@53.3--53.32
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of old[initial](m.f) == 3
       assert {:msg "  Exhale might fail. Did not reach labelled state initial required to evaluate old[initial](m.f). (labelled_old.vpr@53.10--53.32) [157450]"}
@@ -547,16 +547,16 @@ procedure test04(x: Ref) returns ()
   var first_lblGuard: bool;
   var second_lblGuard: bool;
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var y: Ref;
-  var LabelfirstHeap: HeapType;
   var LabelfirstMask: MaskType;
+  var LabelfirstHeap: HeapType;
   var freshObj: Ref;
-  var LabelsecondHeap: HeapType;
   var LabelsecondMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var LabelsecondHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var z_25: Ref;
   var z_9: Ref;
   
@@ -580,16 +580,16 @@ procedure test04(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[y, $allocated];
   
   // -- Translating statement: label first -- labelled_old.vpr@59.1--59.12
     first_2:
-    LabelfirstHeap := Heap;
     LabelfirstMask := Mask;
+    LabelfirstHeap := Heap;
     first_lblGuard := true;
     assume state(Heap, Mask);
   
@@ -603,14 +603,14 @@ procedure test04(x: Ref) returns ()
   
   // -- Translating statement: label second -- labelled_old.vpr@63.1--63.13
     second_2:
-    LabelsecondHeap := Heap;
     LabelsecondMask := Mask;
+    LabelsecondHeap := Heap;
     second_lblGuard := true;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forperm z: Ref [z.f] :: z.f == old[second](z.f)) -- labelled_old.vpr@64.3--64.57
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forperm z: Ref [z.f] :: z.f == old[second](z.f))
       if (*) {
@@ -634,8 +634,8 @@ procedure test04(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forperm z: Ref [z.f] :: z.f == old[first](z.f)) -- labelled_old.vpr@67.3--67.56
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forperm z: Ref [z.f] :: z.f == old[first](z.f))
       if (*) {
@@ -669,14 +669,14 @@ procedure test05(x: Ref, y: Ref) returns ()
   var first_lblGuard: bool;
   var second_lblGuard: bool;
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var LabelfirstHeap: HeapType;
+  var oldHeap: HeapType;
   var LabelfirstMask: MaskType;
-  var LabelsecondHeap: HeapType;
+  var LabelfirstHeap: HeapType;
   var LabelsecondMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var LabelsecondHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var z_28: Ref;
   var z_30: Ref;
   
@@ -705,13 +705,13 @@ procedure test05(x: Ref, y: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: label first -- labelled_old.vpr@73.1--73.12
     first_2:
-    LabelfirstHeap := Heap;
     LabelfirstMask := Mask;
+    LabelfirstHeap := Heap;
     first_lblGuard := true;
     assume state(Heap, Mask);
   
@@ -723,14 +723,14 @@ procedure test05(x: Ref, y: Ref) returns ()
   
   // -- Translating statement: label second -- labelled_old.vpr@76.1--76.13
     second_2:
-    LabelsecondHeap := Heap;
     LabelsecondMask := Mask;
+    LabelsecondHeap := Heap;
     second_lblGuard := true;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forperm z: Ref [z.f] :: z.f == old[second](z.f)) -- labelled_old.vpr@77.3--77.57
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forperm z: Ref [z.f] :: z.f == old[second](z.f))
       if (*) {
@@ -754,8 +754,8 @@ procedure test05(x: Ref, y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forperm z: Ref [z.f] :: z.f == old[first](z.f)) -- labelled_old.vpr@80.3--80.56
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forperm z: Ref [z.f] :: z.f == old[first](z.f))
       if (*) {

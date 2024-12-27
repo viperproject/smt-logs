@@ -1161,7 +1161,7 @@
 )))
 (assert (= NoPerm 0.0))
 (assert (= FullPerm 1.0))
-; Invalid
+; Valid
 (push 1)
 (declare-fun ControlFlow (Int Int) Int)
 (declare-fun tmp@0 () Int)

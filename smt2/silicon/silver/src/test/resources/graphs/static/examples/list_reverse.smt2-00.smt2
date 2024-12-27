@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-27 01:53:46
+; Started: 2024-12-27 10:03:03
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -786,7 +786,7 @@
       (= (inv@4@00 s@$ refs@0@00 n@2@00) n@2@00)
       (img@5@00 s@$ refs@0@00 n@2@00)))
   :pattern (($FVF.loc_next ($FVF.lookup_next ($SortWrappers.$SnapTo$FVF<next> s@$) n@2@00) n@2@00))
-  :qid |quant-u-15084|)))
+  :qid |quant-u-15033|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -823,7 +823,7 @@
     (Set_in (inv@4@00 s@$ refs@0@00 r) refs@0@00)
     ($FVF.loc_next ($FVF.lookup_next (sm@6@00 s@$ refs@0@00) r) r))
   :pattern ((inv@4@00 s@$ refs@0@00 r))
-  :qid |quant-u-15085|)))
+  :qid |quant-u-15034|)))
 (declare-const $t@7@00 $Snap)
 (assert (= $t@7@00 $Snap.unit))
 ; [eval] (forall p: Ref, s: Ref :: { create_edge(p, s) } ((p in refs) && ((s in refs) && p.next == s)) == (create_edge(p, s) in result))
@@ -985,11 +985,11 @@
 (assert (forall ((s@$ $Snap) (refs@0@00 Set<$Ref>)) (!
   (= ($$%limited s@$ refs@0@00) ($$ s@$ refs@0@00))
   :pattern (($$ s@$ refs@0@00))
-  :qid |quant-u-15081|)))
+  :qid |quant-u-15030|)))
 (assert (forall ((s@$ $Snap) (refs@0@00 Set<$Ref>)) (!
   ($$%stateless refs@0@00)
   :pattern (($$%limited s@$ refs@0@00))
-  :qid |quant-u-15082|)))
+  :qid |quant-u-15031|)))
 (assert (forall ((s@$ $Snap) (refs@0@00 Set<$Ref>)) (!
   (let ((result@1@00 ($$%limited s@$ refs@0@00))) (and
     (forall ((n@2@00 $Ref)) (!
@@ -999,7 +999,7 @@
           (= (inv@4@00 s@$ refs@0@00 n@2@00) n@2@00)
           (img@5@00 s@$ refs@0@00 n@2@00)))
       :pattern (($FVF.loc_next ($FVF.lookup_next ($SortWrappers.$SnapTo$FVF<next> s@$) n@2@00) n@2@00))
-      :qid |quant-u-15084|))
+      :qid |quant-u-15033|))
     (forall ((r $Ref)) (!
       (=>
         (and
@@ -1040,8 +1040,8 @@
         :pattern ((create_edge<Edge> p s))
         )))))
   :pattern (($$%limited s@$ refs@0@00))
-  :qid |quant-u-15086|)))
+  :qid |quant-u-15035|)))
 (assert (forall ((s@$ $Snap) (refs@0@00 Set<$Ref>)) (!
   (let ((result@1@00 ($$%limited s@$ refs@0@00))) true)
   :pattern (($$%limited s@$ refs@0@00))
-  :qid |quant-u-15087|)))
+  :qid |quant-u-15036|)))

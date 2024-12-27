@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 02:40:53
+// Date:         2024-12-27 10:49:47
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0011.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0011-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -198,14 +198,14 @@ procedure succeeds1(k: Perm, x: Ref) returns (r_1: bool)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -284,8 +284,8 @@ procedure succeeds1(k: Perm, x: Ref) returns (r_1: bool)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -352,8 +352,8 @@ procedure succeeds1(k: Perm, x: Ref) returns (r_1: bool)
       // -- Translating statement: assert acc(x.c.f, write) -- 0011.vpr@21.5--21.22
         AssertHeap := Heap;
         AssertMask := Mask;
-        ExhaleWellDef0Heap := AssertHeap;
         ExhaleWellDef0Mask := AssertMask;
+        ExhaleWellDef0Heap := AssertHeap;
         
         // -- Check definedness of acc(x.c.f, write)
           assert {:msg "  Assert might fail. There might be insufficient permission to access x.c (0011.vpr@21.12--21.22) [205501]"}
@@ -383,8 +383,8 @@ procedure succeeds1(k: Perm, x: Ref) returns (r_1: bool)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := k;
     assert {:msg "  Postcondition of succeeds1 might not hold. Fraction k might be negative. (0011.vpr@15.11--15.52) [205507]"}
       perm >= NoPerm;
@@ -437,12 +437,12 @@ procedure succeeds2(k: Perm, x: Ref) returns (r_1: bool)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -519,8 +519,8 @@ procedure succeeds2(k: Perm, x: Ref) returns (r_1: bool)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -598,8 +598,8 @@ procedure succeeds2(k: Perm, x: Ref) returns (r_1: bool)
   }
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := k;
     assert {:msg "  Postcondition of succeeds2 might not hold. Fraction k might be negative. (0011.vpr@33.11--33.52) [205541]"}
       perm >= NoPerm;
@@ -660,12 +660,12 @@ procedure fails0(k: Perm, b1: bool, x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -694,8 +694,8 @@ procedure fails0(k: Perm, b1: bool, x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -716,8 +716,8 @@ procedure fails0(k: Perm, b1: bool, x: Ref) returns ()
   }
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of fails0 might not hold. There might be insufficient permission to access x.f (0011.vpr@41.11--41.19) [205555]"}
@@ -744,14 +744,14 @@ procedure fails1(k: Perm, x: Ref) returns (r_1: bool)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -830,8 +830,8 @@ procedure fails1(k: Perm, x: Ref) returns (r_1: bool)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -913,8 +913,8 @@ procedure fails1(k: Perm, x: Ref) returns (r_1: bool)
       // -- Translating statement: assert acc(x.c.f, write) -- 0011.vpr@60.5--60.22
         AssertHeap := Heap;
         AssertMask := Mask;
-        ExhaleWellDef0Heap := AssertHeap;
         ExhaleWellDef0Mask := AssertMask;
+        ExhaleWellDef0Heap := AssertHeap;
         
         // -- Check definedness of acc(x.c.f, write)
           assert {:msg "  Assert might fail. There might be insufficient permission to access x.c (0011.vpr@60.12--60.22) [205579]"}
@@ -944,8 +944,8 @@ procedure fails1(k: Perm, x: Ref) returns (r_1: bool)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := k;
     assert {:msg "  Postcondition of fails1 might not hold. Fraction k might be negative. (0011.vpr@52.11--52.52) [205585]"}
       perm >= NoPerm;
@@ -1006,12 +1006,12 @@ procedure fails2(k: Perm, x: Ref) returns (r_1: bool)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -1078,8 +1078,8 @@ procedure fails2(k: Perm, x: Ref) returns (r_1: bool)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1153,8 +1153,8 @@ procedure fails2(k: Perm, x: Ref) returns (r_1: bool)
   }
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := k;
     assert {:msg "  Postcondition of fails2 might not hold. Fraction k might be negative. (0011.vpr@71.11--71.52) [205617]"}
       perm >= NoPerm;

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 02:31:36
+// Date:         2024-12-27 10:40:33
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/maps/example2.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/maps/example2-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -474,11 +474,11 @@ axiom (forall<U, V> m: Map U V, m': Map U V ::
 procedure test1() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var m_17: (Map int int);
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -488,30 +488,30 @@ procedure test1() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: m := Map(2 := 3) -- example2.vpr@12.3--12.39
     m_17 := Map#Build((Map#Empty(): Map int int), 2, 3);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (2 in m) -- example2.vpr@13.3--13.16
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion (2 in m) might not hold. (example2.vpr@13.10--13.16) [157735]"}
       Map#Domain(m_17)[2];
     assume state(Heap, Mask);
   
   // -- Translating statement: assert !((3 in m)) -- example2.vpr@14.3--14.19
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion !((3 in m)) might not hold. (example2.vpr@14.10--14.19) [157736]"}
       !Map#Domain(m_17)[3];
     assume state(Heap, Mask);
   
   // -- Translating statement: assert m[2] == 3 -- example2.vpr@15.3--15.19
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of m[2] == 3
       assert {:msg "  Assert might fail. Map m might not contain an entry at key 2. (example2.vpr@15.10--15.19) [157737]"}
@@ -521,22 +521,22 @@ procedure test1() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert m[2 := 4] == Map(2 := 4) -- example2.vpr@16.3--16.34
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion m[2 := 4] == Map(2 := 4) might not hold. (example2.vpr@16.10--16.34) [157739]"}
       Map#Equal(Map#Build(m_17, 2, 4), Map#Build((Map#Empty(): Map int int), 2, 4));
     assume state(Heap, Mask);
   
   // -- Translating statement: assert m[7 := 1] == Map(2 := 3, 7 := 1) -- example2.vpr@17.3--17.42
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion m[7 := 1] == Map(2 := 3, 7 := 1) might not hold. (example2.vpr@17.10--17.42) [157740]"}
       Map#Equal(Map#Build(m_17, 7, 1), Map#Build(Map#Build((Map#Empty(): Map int int), 2, 3), 7, 1));
     assume state(Heap, Mask);
   
   // -- Translating statement: assert m == Map(2 := 3) -- example2.vpr@18.3--18.26
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion m == Map(2 := 3) might not hold. (example2.vpr@18.10--18.26) [157741]"}
       Map#Equal(m_17, Map#Build((Map#Empty(): Map int int), 2, 3));
     assume state(Heap, Mask);
@@ -549,12 +549,12 @@ procedure test1() returns ()
 procedure test2() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var m1_3: (Map int int);
   var m2_1: (Map int int);
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -564,8 +564,8 @@ procedure test2() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: m1 := Map(2 := 3) -- example2.vpr@24.3--24.40
     m1_3 := Map#Build((Map#Empty(): Map int int), 2, 3);
@@ -576,8 +576,8 @@ procedure test2() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert m1[m2[3]] == 3 -- example2.vpr@26.3--26.24
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of m1[m2[3]] == 3
       assert {:msg "  Assert might fail. Map m2 might not contain an entry at key 3. (example2.vpr@26.10--26.24) [157742]"}
@@ -597,10 +597,10 @@ procedure test3(m1_3: (Map int bool), m2_1: (Map int bool)) returns ()
   modifies Heap, Mask;
 {
   var i_14: int;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var i_2: int;
   var i_3: int;
   
@@ -634,15 +634,15 @@ procedure test3(m1_3: (Map int bool), m2_1: (Map int bool)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert (forall i: Int ::
   //     { m1[i] }
   //     { m2[i] }
   //     0 <= i && i < 100 ==> m1[i] || m2[i]) -- example2.vpr@33.3--33.64
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall i: Int :: { m1[i] } { m2[i] } 0 <= i && i < 100 ==> m1[i] || m2[i])
       if (*) {
@@ -678,10 +678,10 @@ procedure test4(m_17: (Map int int)) returns ()
   modifies Heap, Mask;
 {
   var i_4: int;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -709,12 +709,12 @@ procedure test4(m_17: (Map int int)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert m[20] == 400 -- example2.vpr@39.3--39.22
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of m[20] == 400
       assert {:msg "  Assert might fail. Map m might not contain an entry at key 20. (example2.vpr@39.10--39.22) [157751]"}
@@ -731,8 +731,8 @@ procedure test4(m_17: (Map int int)) returns ()
 procedure test5() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var m_17: (Map int int);
   
   // -- Initializing the state
@@ -743,8 +743,8 @@ procedure test5() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: m := Map(3 := 9) -- example2.vpr@44.3--44.39
     m_17 := Map#Build((Map#Empty(): Map int int), 3, 9);
@@ -758,10 +758,10 @@ procedure test5() returns ()
 procedure test6(m_17: (Map int int)) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -775,12 +775,12 @@ procedure test6(m_17: (Map int int)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert m[20] <= 0 || 0 < m[20] -- example2.vpr@58.3--58.33
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of m[20] <= 0 || 0 < m[20]
       assert {:msg "  Assert might fail. Map m might not contain an entry at key 20. (example2.vpr@58.10--58.33) [157753]"}
@@ -801,11 +801,11 @@ procedure test6(m_17: (Map int int)) returns ()
 procedure test7() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var m_17: (Map int int);
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -815,30 +815,30 @@ procedure test7() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: m := Map(3 := 9) -- example2.vpr@63.3--63.39
     m_17 := Map#Build((Map#Empty(): Map int int), 3, 9);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert m[3 := 5] == Map(3 := 5) -- example2.vpr@64.3--64.34
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion m[3 := 5] == Map(3 := 5) might not hold. (example2.vpr@64.10--64.34) [157756]"}
       Map#Equal(Map#Build(m_17, 3, 5), Map#Build((Map#Empty(): Map int int), 3, 5));
     assume state(Heap, Mask);
   
   // -- Translating statement: assert m[2 := 5] == Map(2 := 5, 3 := 9) -- example2.vpr@65.3--65.42
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion m[2 := 5] == Map(2 := 5, 3 := 9) might not hold. (example2.vpr@65.10--65.42) [157757]"}
       Map#Equal(Map#Build(m_17, 2, 5), Map#Build(Map#Build((Map#Empty(): Map int int), 2, 5), 3, 9));
     assume state(Heap, Mask);
   
   // -- Translating statement: assert m[2 := 5] == Map(2 := 6, 3 := 9, 2 := 5) -- example2.vpr@66.3--66.50
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion m[2 := 5] == Map(2 := 6, 3 := 9, 2 := 5) might not hold. (example2.vpr@66.10--66.50) [157758]"}
       Map#Equal(Map#Build(m_17, 2, 5), Map#Build(Map#Build(Map#Build((Map#Empty(): Map int int), 2, 6), 3, 9), 2, 5));
     assume state(Heap, Mask);
@@ -851,11 +851,11 @@ procedure test7() returns ()
 procedure test8() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var m_17: (Map int int);
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var i_6: int;
   var i_1: int;
   var i_4_1: int;
@@ -868,16 +868,16 @@ procedure test8() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: m := Map(1 := 1, 2 := 4, 3 := 9) -- example2.vpr@71.3--71.55
     m_17 := Map#Build(Map#Build(Map#Build((Map#Empty(): Map int int), 1, 1), 2, 4), 3, 9);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forall i: Int :: { m[i] } (i in m) ==> m[i] == i * i) -- example2.vpr@72.3--72.61
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall i: Int :: { m[i] } (i in m) ==> m[i] == i * i)
       if (*) {
@@ -901,36 +901,36 @@ procedure test8() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert !((0 in m)) -- example2.vpr@73.3--73.19
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion !((0 in m)) might not hold. (example2.vpr@73.10--73.19) [157761]"}
       !Map#Domain(m_17)[0];
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (1 in m) -- example2.vpr@74.3--74.16
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion (1 in m) might not hold. (example2.vpr@74.10--74.16) [157762]"}
       Map#Domain(m_17)[1];
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (2 in m) -- example2.vpr@75.3--75.16
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion (2 in m) might not hold. (example2.vpr@75.10--75.16) [157763]"}
       Map#Domain(m_17)[2];
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (3 in m) -- example2.vpr@76.3--76.16
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion (3 in m) might not hold. (example2.vpr@76.10--76.16) [157764]"}
       Map#Domain(m_17)[3];
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forall i: Int :: { (i in m) } i < 1 || i > 3 ==> !((i in m))) -- example2.vpr@77.3--77.67
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall i: Int :: { (i in m) } i < 1 || i > 3 ==> !((i in m)))
       if (*) {
@@ -957,11 +957,11 @@ procedure test8() returns ()
 procedure test9() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var m_17: (Map int int);
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var k_1_1: int;
   var i: int;
   var n: int;
@@ -984,16 +984,16 @@ procedure test9() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: m := Map[Int,Int]() -- example2.vpr@82.3--82.33
     m_17 := (Map#Empty(): Map int int);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forall k: Int :: { (k in m) } !((k in m))) -- example2.vpr@83.3--83.37
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall k: Int :: { (k in m) } !((k in m)))
       if (*) {
@@ -1023,8 +1023,8 @@ procedure test9() returns ()
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Loop invariant 0 <= i && (i <= n && n == 100) might not hold on entry. Assertion 0 <= i might not hold. (example2.vpr@89.15--89.43) [157767]"}
           0 <= i;
         assert {:msg "  Loop invariant 0 <= i && (i <= n && n == 100) might not hold on entry. Assertion i <= n might not hold. (example2.vpr@89.15--89.43) [157768]"}
@@ -1122,8 +1122,8 @@ procedure test9() returns ()
             i := i + 1;
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Loop invariant 0 <= i && (i <= n && n == 100) might not be preserved. Assertion 0 <= i might not hold. (example2.vpr@89.15--89.43) [157773]"}
           0 <= i;
         assert {:msg "  Loop invariant 0 <= i && (i <= n && n == 100) might not be preserved. Assertion i <= n might not hold. (example2.vpr@89.15--89.43) [157774]"}
@@ -1176,8 +1176,8 @@ procedure test9() returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       if (*) {
         if (0 <= i$0 && i$0 < 100) {
           assert {:msg "  The precondition of method test4 might not hold. Assertion (i$0 in m) might not hold. (example2.vpr@97.3--97.11) [157778]"}
@@ -1205,10 +1205,10 @@ procedure test10(m_17: (Map int int)) returns ()
   modifies Heap, Mask;
 {
   var i_12: int;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1244,33 +1244,33 @@ procedure test10(m_17: (Map int int)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert (0 in m) -- example2.vpr@104.3--104.16
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion (0 in m) might not hold. (example2.vpr@104.10--104.16) [157781]"}
       Map#Domain(m_17)[0];
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (1 in m) -- example2.vpr@105.3--105.16
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion (1 in m) might not hold. (example2.vpr@105.10--105.16) [157782]"}
       Map#Domain(m_17)[1];
     assume state(Heap, Mask);
   
   // -- Translating statement: assert !((10 in m)) -- example2.vpr@106.3--106.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion !((10 in m)) might not hold. (example2.vpr@106.10--106.20) [157783]"}
       !Map#Domain(m_17)[10];
     assume state(Heap, Mask);
   
   // -- Translating statement: assert m[0] == 0 && m[2] == 4 -- example2.vpr@107.3--107.32
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of m[0] == 0
       assert {:msg "  Assert might fail. Map m might not contain an entry at key 0. (example2.vpr@107.10--107.32) [157784]"}
@@ -1294,10 +1294,10 @@ procedure test11(m_17: (Map int int)) returns ()
   modifies Heap, Mask;
 {
   var i_18: int;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1333,26 +1333,26 @@ procedure test11(m_17: (Map int int)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert (5 in domain(m)) -- example2.vpr@114.3--114.24
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion (5 in domain(m)) might not hold. (example2.vpr@114.10--114.24) [157789]"}
       Map#Domain(m_17)[5];
     assume state(Heap, Mask);
   
   // -- Translating statement: assert !((6 in domain(m))) -- example2.vpr@115.3--115.27
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion !((6 in domain(m))) might not hold. (example2.vpr@115.10--115.27) [157790]"}
       !Map#Domain(m_17)[6];
     assume state(Heap, Mask);
   
   // -- Translating statement: assert m[5] == 6 -- example2.vpr@116.3--116.19
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of m[5] == 6
       assert {:msg "  Assert might fail. Map m might not contain an entry at key 5. (example2.vpr@116.10--116.19) [157791]"}
@@ -1362,8 +1362,8 @@ procedure test11(m_17: (Map int int)) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (6 in range(m)) -- example2.vpr@117.3--117.23
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion (6 in range(m)) might not hold. (example2.vpr@117.10--117.23) [157793]"}
       Map#Values(m_17)[6];
     assume state(Heap, Mask);

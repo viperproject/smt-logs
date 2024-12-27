@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-27 02:01:32
+; Started: 2024-12-27 10:10:36
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -433,11 +433,11 @@
     (PseudoListget$%limited s@$ this$_2@0@00 index@1@00)
     (PseudoListget$ s@$ this$_2@0@00 index@1@00))
   :pattern ((PseudoListget$ s@$ this$_2@0@00 index@1@00))
-  :qid |quant-u-25883|)))
+  :qid |quant-u-25892|)))
 (assert (forall ((s@$ $Snap) (this$_2@0@00 $Ref) (index@1@00 Int)) (!
   (PseudoListget$%stateless this$_2@0@00 index@1@00)
   :pattern ((PseudoListget$%limited s@$ this$_2@0@00 index@1@00))
-  :qid |quant-u-25884|)))
+  :qid |quant-u-25893|)))
 (assert (forall ((s@$ $Snap) (this$_2@0@00 $Ref) (index@1@00 Int)) (!
   (and
     ($Perm.isReadVar $k@3@00)
@@ -458,7 +458,7 @@
             1))))))
   :pattern ((PseudoListget$ s@$ this$_2@0@00 index@1@00))
   :pattern ((PseudoListget$%stateless this$_2@0@00 index@1@00) (PseudoListinv$%trigger ($Snap.second s@$) this$_2@0@00))
-  :qid |quant-u-25885|)))
+  :qid |quant-u-25894|)))
 (assert (forall ((s@$ $Snap) (this$_2@0@00 $Ref) (index@1@00 Int)) (!
   (=>
     (PseudoListget$%precondition s@$ this$_2@0@00 index@1@00)
@@ -471,7 +471,7 @@
         index@1@00
         1))))
   :pattern ((PseudoListget$ s@$ this$_2@0@00 index@1@00))
-  :qid |quant-u-25886|)))
+  :qid |quant-u-25895|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- PseudoListstatic_range_workaround$ ----------

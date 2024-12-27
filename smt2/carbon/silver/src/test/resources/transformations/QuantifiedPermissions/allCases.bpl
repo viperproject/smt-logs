@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 02:13:31
+// Date:         2024-12-27 10:22:30
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/transformations/QuantifiedPermissions/allCases.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/transformations/QuantifiedPermissions/allCases-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -702,18 +702,18 @@ procedure p#definedness(r_1: Ref) returns ()
 procedure main(xs: (Seq Ref), ys: (Seq Ref)) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var QPMask: MaskType;
   var x_10: Ref;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var perm: Perm;
   var x_4: Ref;
   var x_32: Ref;
@@ -729,8 +729,8 @@ procedure main(xs: (Seq Ref), ys: (Seq Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale false -- allCases.vpr@16.3--16.15
     assume false;
@@ -743,8 +743,8 @@ procedure main(xs: (Seq Ref), ys: (Seq Ref)) returns ()
   //     (x in xs) ==> (unfolding acc(pred(x), write) in true)) -- allCases.vpr@17.3--17.81
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Heap := AssertHeap;
     ExhaleWellDef0Mask := AssertMask;
+    ExhaleWellDef0Heap := AssertHeap;
     
     // -- Check definedness of (forall x: Ref :: { (x in xs) } (x in xs) ==> acc(pred(x), write))
       if (*) {
@@ -803,8 +803,8 @@ procedure main(xs: (Seq Ref), ys: (Seq Ref)) returns ()
           UnfoldingMask := ExhaleWellDef0Mask;
           assume pred#trigger(UnfoldingHeap, pred_3(x_10));
           assume UnfoldingHeap[null, pred_3(x_10)] == FrameFragment(UnfoldingHeap[x_10, f_7]);
-          ExhaleWellDef1Heap := UnfoldingHeap;
           ExhaleWellDef1Mask := UnfoldingMask;
+          ExhaleWellDef1Heap := UnfoldingHeap;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  Assert might fail. There might be insufficient permission to access pred(x) (allCases.vpr@17.10--17.81) [92555]"}
@@ -831,8 +831,8 @@ procedure main(xs: (Seq Ref), ys: (Seq Ref)) returns ()
           UnfoldingMask := ExhaleWellDef0Mask;
           assume pred#trigger(UnfoldingHeap, pred_3(x_4));
           assume UnfoldingHeap[null, pred_3(x_4)] == FrameFragment(UnfoldingHeap[x_4, f_7]);
-          ExhaleWellDef1Heap := UnfoldingHeap;
           ExhaleWellDef1Mask := UnfoldingMask;
+          ExhaleWellDef1Heap := UnfoldingHeap;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  Assert might fail. There might be insufficient permission to access pred(x) (allCases.vpr@17.10--17.81) [92558]"}
@@ -855,8 +855,8 @@ procedure main(xs: (Seq Ref), ys: (Seq Ref)) returns ()
   //   (forall x: Ref :: { (x in xs) } (x in xs) ==> x.f > 0) -- allCases.vpr@18.3--18.86
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Heap := AssertHeap;
     ExhaleWellDef0Mask := AssertMask;
+    ExhaleWellDef0Heap := AssertHeap;
     
     // -- Check definedness of (forall x: Ref :: { (x in xs) } (x in xs) ==> acc(x.f, write))
       if (*) {
@@ -1027,8 +1027,8 @@ procedure main(xs: (Seq Ref), ys: (Seq Ref)) returns ()
   //   (forall x: Ref :: { (x in ys) } true && (x in ys) ==> acc(p(x), write)) -- allCases.vpr@19.3--19.88
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Heap := AssertHeap;
     ExhaleWellDef0Mask := AssertMask;
+    ExhaleWellDef0Heap := AssertHeap;
     
     // -- Check definedness of (forall x: Ref :: { (x in xs) } true && (x in xs) ==> acc(x.f, write))
       if (*) {
@@ -1134,8 +1134,8 @@ procedure main(xs: (Seq Ref), ys: (Seq Ref)) returns ()
   //   (forall x: Ref :: { (x in ys) } true && (x in ys) ==> acc(p(x), write)) -- allCases.vpr@20.3--20.100
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Heap := AssertHeap;
     ExhaleWellDef0Mask := AssertMask;
+    ExhaleWellDef0Heap := AssertHeap;
     
     // -- Check definedness of (forall x: Ref :: { (x in xs) } true && (x in xs) ==> acc(x.f, write))
       if (*) {

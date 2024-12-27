@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 02:10:07
+// Date:         2024-12-27 10:19:07
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/sequences/random_access.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/sequences/random_access-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -659,15 +659,15 @@ procedure exp#definedness(a_2: int, i: int, b_24: int) returns (Result: int)
 procedure test01(s_2: (Seq Ref), a_2: int, b_24: int, n: int) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var j_9: int;
   var i1_17: int;
   var i2_7: int;
   var i_2: int;
   var QPMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -686,8 +686,8 @@ procedure test01(s_2: (Seq Ref), a_2: int, b_24: int, n: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale 0 <= j && j < n -- random_access.vpr@12.3--12.25
     assume 0 <= j_9;
@@ -773,8 +773,8 @@ procedure test01(s_2: (Seq Ref), a_2: int, b_24: int, n: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert s[a + j * b] != null -- random_access.vpr@32.3--32.28
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of s[a + j * b] != null
       assert {:msg "  Assert might fail. Index s[a + j * b] into s might be negative. (random_access.vpr@32.10--32.28) [60749]"}
@@ -793,11 +793,11 @@ procedure test01(s_2: (Seq Ref), a_2: int, b_24: int, n: int) returns ()
 procedure test04(s_2: (Seq Ref), a_2: int, b_24: int, n: int) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var j_9: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var i_4: int;
   var i_1: int;
   var i1_23: int;
@@ -822,8 +822,8 @@ procedure test04(s_2: (Seq Ref), a_2: int, b_24: int, n: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale 0 <= j && j < n -- random_access.vpr@45.3--45.25
     assume 0 <= j_9;
@@ -834,8 +834,8 @@ procedure test04(s_2: (Seq Ref), a_2: int, b_24: int, n: int) returns ()
   // -- Translating statement: assert (forall i: Int ::
   //     { (i in [0..n)) }
   //     (i in [0..n)) ==> exp(a, i, b) < |s|) -- random_access.vpr@46.3--46.75
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall i: Int :: { (i in [0..n)) } (i in [0..n)) ==> exp(a, i, b) < |s|)
       if (*) {
@@ -953,8 +953,8 @@ procedure test04(s_2: (Seq Ref), a_2: int, b_24: int, n: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert s[exp(a, j, b)] != null -- random_access.vpr@58.3--58.33
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of s[exp(a, j, b)] != null
       if (*) {
@@ -981,11 +981,11 @@ procedure test02(s_2: (Seq Ref), a_2: int, b_24: int) returns ()
   var j_3: int;
   var i_9: int;
   var QPMask: MaskType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var j_2_1: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var i_10: int;
   var loopHeap: HeapType;
@@ -1085,8 +1085,8 @@ procedure test02(s_2: (Seq Ref), a_2: int, b_24: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: j := a -- random_access.vpr@66.3--66.18
     j_2_1 := a_2;
@@ -1097,8 +1097,8 @@ procedure test02(s_2: (Seq Ref), a_2: int, b_24: int) returns ()
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Loop invariant a <= j might not hold on entry. Assertion a <= j might not hold. (random_access.vpr@69.15--69.21) [60773]"}
           a_2 <= j_2_1;
         assert {:msg "  Loop invariant (j - a) % b == 0 might not hold on entry. Assertion (j - a) % b == 0 might not hold. (random_access.vpr@70.15--70.31) [60774]"}
@@ -1267,15 +1267,15 @@ procedure test02(s_2: (Seq Ref), a_2: int, b_24: int) returns ()
         // -- Translate loop body
           
           // -- Translating statement: assert (j in [a..|s|)) -- random_access.vpr@73.5--73.25
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             assert {:msg "  Assert might fail. Assertion (j in [a..|s|)) might not hold. (random_access.vpr@73.12--73.25) [60783]"}
               Seq#Contains(Seq#Range(a_2, Seq#Length(s_2)), j_2_1);
             assume state(Heap, Mask);
           
           // -- Translating statement: assert (j - a) % b == 0 -- random_access.vpr@74.5--74.28
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             
             // -- Check definedness of (j - a) % b == 0
               assert {:msg "  Assert might fail. Divisor b might be zero. (random_access.vpr@74.12--74.28) [60784]"}
@@ -1309,8 +1309,8 @@ procedure test02(s_2: (Seq Ref), a_2: int, b_24: int) returns ()
             assume state(Heap, Mask);
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Loop invariant a <= j might not be preserved. Assertion a <= j might not hold. (random_access.vpr@69.15--69.21) [60790]"}
           a_2 <= j_2_1;
         assert {:msg "  Loop invariant (j - a) % b == 0 might not be preserved. Assertion (j - a) % b == 0 might not hold. (random_access.vpr@70.15--70.31) [60791]"}
@@ -1418,11 +1418,11 @@ procedure test03(s_2: (Seq Ref), a_2: int, b_24: int) returns ()
   var j_11: int;
   var i_12: int;
   var QPMask: MaskType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var j_2_1: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var i_16: int;
   var loopHeap: HeapType;
@@ -1522,16 +1522,16 @@ procedure test03(s_2: (Seq Ref), a_2: int, b_24: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: j := 0 -- random_access.vpr@88.3--88.18
     j_2_1 := 0;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert j * b % b == 0 -- random_access.vpr@89.3--89.22
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of j * b % b == 0
       assert {:msg "  Assert might fail. Divisor b might be zero. (random_access.vpr@89.10--89.22) [60805]"}
@@ -1545,8 +1545,8 @@ procedure test03(s_2: (Seq Ref), a_2: int, b_24: int) returns ()
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Loop invariant 0 <= j might not hold on entry. Assertion 0 <= j might not hold. (random_access.vpr@92.15--92.21) [60807]"}
           0 <= j_2_1;
         assert {:msg "  Loop invariant j * b % b == 0 might not hold on entry. Assertion j * b % b == 0 might not hold. (random_access.vpr@93.15--93.27) [60808]"}
@@ -1715,15 +1715,15 @@ procedure test03(s_2: (Seq Ref), a_2: int, b_24: int) returns ()
         // -- Translate loop body
           
           // -- Translating statement: assert (a + j * b in [a..|s|)) -- random_access.vpr@96.5--96.29
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             assert {:msg "  Assert might fail. Assertion (a + j * b in [a..|s|)) might not hold. (random_access.vpr@96.12--96.29) [60817]"}
               Seq#Contains(Seq#Range(a_2, Seq#Length(s_2)), a_2 + j_2_1 * b_24);
             assume state(Heap, Mask);
           
           // -- Translating statement: assert j * b % b == 0 -- random_access.vpr@97.5--97.24
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             
             // -- Check definedness of j * b % b == 0
               assert {:msg "  Assert might fail. Divisor b might be zero. (random_access.vpr@97.12--97.24) [60818]"}
@@ -1757,8 +1757,8 @@ procedure test03(s_2: (Seq Ref), a_2: int, b_24: int) returns ()
             assume state(Heap, Mask);
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Loop invariant 0 <= j might not be preserved. Assertion 0 <= j might not hold. (random_access.vpr@92.15--92.21) [60824]"}
           0 <= j_2_1;
         assert {:msg "  Loop invariant j * b % b == 0 might not be preserved. Assertion j * b % b == 0 might not hold. (random_access.vpr@93.15--93.27) [60825]"}

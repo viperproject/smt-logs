@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-27 01:58:42
+; Started: 2024-12-27 10:07:48
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -408,21 +408,21 @@
 (assert (forall ((s@$ $Snap) (t@0@00 $Ref)) (!
   (= (Tree__contents%limited s@$ t@0@00) (Tree__contents s@$ t@0@00))
   :pattern ((Tree__contents s@$ t@0@00))
-  :qid |quant-u-22636|)))
+  :qid |quant-u-22647|)))
 (assert (forall ((s@$ $Snap) (t@0@00 $Ref)) (!
   (Tree__contents%stateless t@0@00)
   :pattern ((Tree__contents%limited s@$ t@0@00))
-  :qid |quant-u-22637|)))
+  :qid |quant-u-22648|)))
 (assert (forall ((s@$ $Snap) (t@0@00 $Ref)) (!
   (let ((result@1@00 (Tree__contents%limited s@$ t@0@00))) (=>
     (and (Tree__contents%precondition s@$ t@0@00) (not (= t@0@00 $Ref.null)))
     (> (Seq_length result@1@00) 0)))
   :pattern ((Tree__contents%limited s@$ t@0@00))
-  :qid |quant-u-22638|)))
+  :qid |quant-u-22649|)))
 (assert (forall ((s@$ $Snap) (t@0@00 $Ref)) (!
   (let ((result@1@00 (Tree__contents%limited s@$ t@0@00))) true)
   :pattern ((Tree__contents%limited s@$ t@0@00))
-  :qid |quant-u-22639|)))
+  :qid |quant-u-22650|)))
 (assert (forall ((s@$ $Snap) (t@0@00 $Ref)) (!
   (=>
     (Tree__contents%precondition s@$ t@0@00)
@@ -450,7 +450,7 @@
             $Snap.unit) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second s@$)))))))))
   :pattern ((Tree__contents s@$ t@0@00))
   :pattern ((Tree__contents%stateless t@0@00) (Tree__state%trigger s@$ t@0@00))
-  :qid |quant-u-22640|)))
+  :qid |quant-u-22651|)))
 (assert (forall ((s@$ $Snap) (t@0@00 $Ref)) (!
   (=>
     (Tree__contents%precondition s@$ t@0@00)
@@ -473,7 +473,7 @@
           ($Snap.second ($Snap.second ($Snap.second ($Snap.second s@$))))
           $Snap.unit) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second s@$))))))))
   :pattern ((Tree__contents s@$ t@0@00))
-  :qid |quant-u-22641|)))
+  :qid |quant-u-22652|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- Tree__del_min ----------
@@ -2250,8 +2250,8 @@
 (declare-const Tree__data@31@01 Int)
 (declare-const Tree__left@32@01 $Ref)
 (declare-const Tree__right@33@01 $Ref)
-(assert (not (= diz@30@01 sys__result@24@01)))
 (assert (not (= diz@30@01 diz@27@01)))
+(assert (not (= diz@30@01 sys__result@24@01)))
 ; [exec]
 ; __flatten_5 := 0
 ; [exec]

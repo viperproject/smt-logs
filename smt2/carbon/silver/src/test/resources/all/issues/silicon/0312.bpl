@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 02:44:01
+// Date:         2024-12-27 10:52:53
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0312.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0312-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -198,13 +198,13 @@ procedure test0(k: Perm, x: Ref) returns ()
   modifies Heap, Mask;
 {
   var succeeds2_end_label_lblGuard: bool;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var perm: Perm;
-  var Labelsucceeds2_end_labelMask: MaskType;
   var Labelsucceeds2_end_labelHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var Labelsucceeds2_end_labelMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -219,8 +219,8 @@ procedure test0(k: Perm, x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale k > none -- 0312.vpr@10.3--10.18
     assume NoPerm < k;
@@ -286,14 +286,14 @@ procedure test0(k: Perm, x: Ref) returns ()
   
   // -- Translating statement: label succeeds2_end_label -- 0312.vpr@16.3--16.28
     succeeds2_end_label:
-    Labelsucceeds2_end_labelMask := Mask;
     Labelsucceeds2_end_labelHeap := Heap;
+    Labelsucceeds2_end_labelMask := Mask;
     succeeds2_end_label_lblGuard := true;
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(old[succeeds2_end_label](x.c).f, k) -- 0312.vpr@18.3--18.49
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of acc(old[succeeds2_end_label](x.c).f, k)
       assert {:msg "  Exhale might fail. Did not reach labelled state succeeds2_end_label required to evaluate old[succeeds2_end_label](x.c). (0312.vpr@18.10--18.49) [218077]"}
@@ -324,8 +324,8 @@ procedure test0(k: Perm, x: Ref) returns ()
     if (Labelsucceeds2_end_labelHeap[x, b_94]) {
       
       // -- Translating statement: exhale old[succeeds2_end_label](x.c.f == x.d.f) -- 0312.vpr@21.5--21.52
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         
         // -- Check definedness of old[succeeds2_end_label](x.c.f == x.d.f)
           assert {:msg "  Exhale might fail. Did not reach labelled state succeeds2_end_label required to evaluate old[succeeds2_end_label](x.c.f == x.d.f). (0312.vpr@21.12--21.52) [218083]"}
@@ -353,13 +353,13 @@ procedure test1(k: Perm, x: Ref) returns ()
   modifies Heap, Mask;
 {
   var succeeds2_end_label_lblGuard: bool;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var perm: Perm;
-  var Labelsucceeds2_end_labelMask: MaskType;
   var Labelsucceeds2_end_labelHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var Labelsucceeds2_end_labelMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -374,8 +374,8 @@ procedure test1(k: Perm, x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale k > none -- 0312.vpr@26.3--26.18
     assume NoPerm < k;
@@ -441,14 +441,14 @@ procedure test1(k: Perm, x: Ref) returns ()
   
   // -- Translating statement: label succeeds2_end_label -- 0312.vpr@32.3--32.28
     succeeds2_end_label:
-    Labelsucceeds2_end_labelMask := Mask;
     Labelsucceeds2_end_labelHeap := Heap;
+    Labelsucceeds2_end_labelMask := Mask;
     succeeds2_end_label_lblGuard := true;
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(old[succeeds2_end_label](x.c).f, k) -- 0312.vpr@34.3--34.49
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of acc(old[succeeds2_end_label](x.c).f, k)
       assert {:msg "  Exhale might fail. Did not reach labelled state succeeds2_end_label required to evaluate old[succeeds2_end_label](x.c). (0312.vpr@34.10--34.49) [218099]"}
@@ -471,8 +471,8 @@ procedure test1(k: Perm, x: Ref) returns ()
   
   // -- Translating statement: exhale old[succeeds2_end_label](x.b) ==>
   //   old[succeeds2_end_label](x.c.f) == old[succeeds2_end_label](x.d.f) -- 0312.vpr@36.3--38.75
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of old[succeeds2_end_label](x.b)
       assert {:msg "  Exhale might fail. Did not reach labelled state succeeds2_end_label required to evaluate old[succeeds2_end_label](x.b). (0312.vpr@37.5--38.75) [218103]"}
@@ -508,13 +508,13 @@ procedure test2(k: Perm, x: Ref) returns ()
   modifies Heap, Mask;
 {
   var succeeds2_end_label_lblGuard: bool;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var perm: Perm;
-  var Labelsucceeds2_end_labelMask: MaskType;
   var Labelsucceeds2_end_labelHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var Labelsucceeds2_end_labelMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -529,8 +529,8 @@ procedure test2(k: Perm, x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale k > none -- 0312.vpr@42.3--42.18
     assume NoPerm < k;
@@ -596,14 +596,14 @@ procedure test2(k: Perm, x: Ref) returns ()
   
   // -- Translating statement: label succeeds2_end_label -- 0312.vpr@48.3--48.28
     succeeds2_end_label:
-    Labelsucceeds2_end_labelMask := Mask;
     Labelsucceeds2_end_labelHeap := Heap;
+    Labelsucceeds2_end_labelMask := Mask;
     succeeds2_end_label_lblGuard := true;
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(old[succeeds2_end_label](x.c).f, k) -- 0312.vpr@50.3--50.49
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of acc(old[succeeds2_end_label](x.c).f, k)
       assert {:msg "  Exhale might fail. Did not reach labelled state succeeds2_end_label required to evaluate old[succeeds2_end_label](x.c). (0312.vpr@50.10--50.49) [218122]"}
@@ -626,8 +626,8 @@ procedure test2(k: Perm, x: Ref) returns ()
   
   // -- Translating statement: exhale old[succeeds2_end_label](x.b) ==>
   //   old[succeeds2_end_label](x.c.f == x.d.f) -- 0312.vpr@52.3--54.49
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of old[succeeds2_end_label](x.b)
       assert {:msg "  Exhale might fail. Did not reach labelled state succeeds2_end_label required to evaluate old[succeeds2_end_label](x.b). (0312.vpr@53.5--54.49) [218126]"}

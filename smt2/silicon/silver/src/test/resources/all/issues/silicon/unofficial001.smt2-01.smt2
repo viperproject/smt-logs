@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-27 02:01:15
+; Started: 2024-12-27 10:10:20
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -123,11 +123,11 @@
     (last%limited s@$ start@0@00 end@1@00 x@2@00)
     (last s@$ start@0@00 end@1@00 x@2@00))
   :pattern ((last s@$ start@0@00 end@1@00 x@2@00))
-  :qid |quant-u-25545|)))
+  :qid |quant-u-25554|)))
 (assert (forall ((s@$ $Snap) (start@0@00 $Ref) (end@1@00 $Ref) (x@2@00 $Ref)) (!
   (last%stateless start@0@00 end@1@00 x@2@00)
   :pattern ((last%limited s@$ start@0@00 end@1@00 x@2@00))
-  :qid |quant-u-25546|)))
+  :qid |quant-u-25555|)))
 (assert (forall ((s@$ $Snap) (start@0@00 $Ref) (end@1@00 $Ref) (x@2@00 $Ref)) (!
   (=>
     (last%precondition s@$ start@0@00 end@1@00 x@2@00)
@@ -157,7 +157,7 @@
         $Ref.null)))
   :pattern ((last s@$ start@0@00 end@1@00 x@2@00))
   :pattern ((last%stateless start@0@00 end@1@00 x@2@00) (P%trigger ($Snap.first ($Snap.second ($Snap.second s@$))) start@0@00 end@1@00))
-  :qid |quant-u-25547|)))
+  :qid |quant-u-25556|)))
 (assert (forall ((s@$ $Snap) (start@0@00 $Ref) (end@1@00 $Ref) (x@2@00 $Ref)) (!
   (=>
     (last%precondition s@$ start@0@00 end@1@00 x@2@00)
@@ -184,6 +184,6 @@
               $Snap.unit)))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.first ($Snap.second ($Snap.second s@$))))) end@1@00 x@2@00)
       true))
   :pattern ((last s@$ start@0@00 end@1@00 x@2@00))
-  :qid |quant-u-25548|)))
+  :qid |quant-u-25557|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------

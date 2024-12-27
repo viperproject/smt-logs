@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 02:47:34
+// Date:         2024-12-27 10:56:27
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/adt/discriminators_3.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/adt/discriminators_3-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -232,11 +232,11 @@ axiom (forall <T> t_2: (ListDomainType T) ::
 procedure discriminators_3() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var list_2: (ListDomainType int);
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -246,8 +246,8 @@ procedure discriminators_3() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: list := (Cons(1, (Nil(): List[Int])): List[Int]) -- discriminators_3.vpr@9.5--9.27
     list_2 := (Cons(1, (Nil(): ListDomainType int)): ListDomainType int);
@@ -256,8 +256,8 @@ procedure discriminators_3() returns ()
   // -- Translating statement: assert ((List_tag((get_List_tail(list): List[Int])): Int) == 1 ?
   //     true :
   //     false) -- discriminators_3.vpr@11.5--11.42
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     if ((List_tag((get_List_tail(list_2): ListDomainType int)): int) == 1) {
     } else {
       assert {:msg "  Assert might fail. Assertion false might not hold. (discriminators_3.vpr@11.12--11.42) [222821]"}
@@ -268,8 +268,8 @@ procedure discriminators_3() returns ()
   // -- Translating statement: assert ((List_tag((get_List_tail(list): List[Int])): Int) == 1 ?
   //     true :
   //     false) -- discriminators_3.vpr@12.5--12.38
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     if ((List_tag((get_List_tail(list_2): ListDomainType int)): int) == 1) {
     } else {
       assert {:msg "  Assert might fail. Assertion false might not hold. (discriminators_3.vpr@12.12--12.38) [222823]"}
@@ -286,8 +286,8 @@ procedure discriminators_3() returns ()
   //         true :
   //         false)) :
   //     ((List_tag((get_List_tail(list): List[Int])): Int) == 1 ? true : false)) -- discriminators_3.vpr@14.5--14.145
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     if ((List_tag((get_List_tail(list_2): ListDomainType int)): int) == 1) {
       if ((List_tag((get_List_tail(list_2): ListDomainType int)): int) == 0) {
         if ((List_tag((get_List_tail(list_2): ListDomainType int)): int) == 1) {

@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-27 01:59:02
+; Started: 2024-12-27 10:08:08
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -178,18 +178,18 @@
 ; f1 := new()
 (declare-const f1@17@01 $Ref)
 (assert (not (= f1@17@01 $Ref.null)))
-(assert (not (= f1@17@01 f1@15@01)))
-(assert (not (= f1@17@01 g@9@01)))
-(assert (not (= f1@17@01 f2@16@01)))
 (assert (not (= f1@17@01 this@6@01)))
+(assert (not (= f1@17@01 f1@15@01)))
+(assert (not (= f1@17@01 f2@16@01)))
+(assert (not (= f1@17@01 g@9@01)))
 ; [exec]
 ; f2 := new()
 (declare-const f2@18@01 $Ref)
 (assert (not (= f2@18@01 $Ref.null)))
-(assert (not (= f2@18@01 g@9@01)))
+(assert (not (= f2@18@01 this@6@01)))
 (assert (not (= f2@18@01 f1@17@01)))
 (assert (not (= f2@18@01 f2@16@01)))
-(assert (not (= f2@18@01 this@6@01)))
+(assert (not (= f2@18@01 g@9@01)))
 ; [eval] g != null
 (push) ; 3
 (set-option :timeout 10)
@@ -412,18 +412,18 @@
 ; l1 := new()
 (declare-const l1@27@01 $Ref)
 (assert (not (= l1@27@01 $Ref.null)))
-(assert (not (= l1@27@01 l1@25@01)))
 (assert (not (= l1@27@01 l2@26@01)))
-(assert (not (= l1@27@01 b@24@01)))
+(assert (not (= l1@27@01 l1@25@01)))
 (assert (not (= l1@27@01 a@23@01)))
+(assert (not (= l1@27@01 b@24@01)))
 ; [exec]
 ; l2 := new()
 (declare-const l2@28@01 $Ref)
 (assert (not (= l2@28@01 $Ref.null)))
 (assert (not (= l2@28@01 l1@27@01)))
 (assert (not (= l2@28@01 l2@26@01)))
-(assert (not (= l2@28@01 b@24@01)))
 (assert (not (= l2@28@01 a@23@01)))
+(assert (not (= l2@28@01 b@24@01)))
 ; [exec]
 ; exhale a != l1
 ; [eval] a != l1
@@ -834,8 +834,8 @@
 ; m := new()
 (declare-const m@42@01 $Ref)
 (assert (not (= m@42@01 $Ref.null)))
-(assert (not (= m@42@01 m@41@01)))
 (assert (not (= m@42@01 n@38@01)))
+(assert (not (= m@42@01 m@41@01)))
 ; [exec]
 ; assert m != null
 ; [eval] m != null

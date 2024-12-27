@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 02:37:43
+// Date:         2024-12-27 10:46:37
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0422.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0422-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -238,16 +238,16 @@ procedure m1() returns ()
   modifies Heap, Mask;
 {
   var bubble_lblGuard: bool;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var frameMask1: MaskType;
   var frameHeap1: HeapType;
   var loopHeap: HeapType;
   var loopMask: MaskType;
   var LoopSumHeap: HeapType;
   var LoopSumMask: MaskType;
-  var LabelbubbleHeap: HeapType;
   var LabelbubbleMask: MaskType;
+  var LabelbubbleHeap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -258,8 +258,8 @@ procedure m1() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: while (true) -- 0422.vpr@2.3--4.4
     
@@ -316,8 +316,8 @@ procedure m1() returns ()
   // // LoopInfo(None,Set())
   // label bubble -- 0422.vpr@5.3--5.15
     bubble:
-    LabelbubbleHeap := Heap;
     LabelbubbleMask := Mask;
+    LabelbubbleHeap := Heap;
     bubble_lblGuard := true;
     assume state(Heap, Mask);
 }
@@ -329,8 +329,8 @@ procedure m1() returns ()
 procedure m2() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -340,6 +340,6 @@ procedure m2() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
 }

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 02:15:59
+// Date:         2024-12-27 10:24:58
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpredicates/basic/independence.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpredicates/basic/independence-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -378,12 +378,12 @@ procedure p2#definedness(a_2: Ref, b_24: int) returns ()
 procedure m1(r_1: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var c: int;
   var QPMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -397,8 +397,8 @@ procedure m1(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: c := 2 -- independence.vpr@18.2--18.16
     c := 2;
@@ -450,15 +450,15 @@ procedure m1(r_1: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert c == 2 -- independence.vpr@20.2--20.16
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion c == 2 might not hold. (independence.vpr@20.9--20.15) [107432]"}
       c == 2;
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale (forall x: Int ::x > 0 ==> acc(p2(r, x), write)) -- independence.vpr@21.2--21.48
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall x: Int ::x > 0 ==> acc(p2(r, x), write))
       if (*) {
@@ -516,8 +516,8 @@ procedure m1(r_1: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert c == 2 -- independence.vpr@22.2--22.17
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion c == 2 might not hold. (independence.vpr@22.10--22.16) [107436]"}
       c == 2;
     assume state(Heap, Mask);
@@ -531,13 +531,13 @@ procedure m2(r_1: Ref, r2: Ref, i: int) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var QPMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var newVersion: FrameType;
   var freshVersion: FrameType;
   var ExhaleHeap: HeapType;
@@ -562,8 +562,8 @@ procedure m2(r_1: Ref, r2: Ref, i: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -625,8 +625,8 @@ procedure m2(r_1: Ref, r2: Ref, i: int) returns ()
   // -- Translating statement: unfold acc(p2(r2, i), write) -- independence.vpr@33.2--33.18
     assume p2#trigger(Heap, p2(r2, i));
     assume Heap[null, p2(r2, i)] == FrameFragment(Heap[r2, g]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding p2(r2, i) might fail. There might be insufficient permission to access p2(r2, i) (independence.vpr@33.2--33.18) [107440]"}
@@ -647,8 +647,8 @@ procedure m2(r_1: Ref, r2: Ref, i: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(p2(r2, i), write) -- independence.vpr@34.2--34.16
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding p2(r2, i) might fail. There might be insufficient permission to access r2.g (independence.vpr@34.2--34.16) [107444]"}
@@ -671,8 +671,8 @@ procedure m2(r_1: Ref, r2: Ref, i: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale (forall x: Int ::x > 0 ==> acc(p2(r, x), write)) -- independence.vpr@35.2--35.48
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall x: Int ::x > 0 ==> acc(p2(r, x), write))
       if (*) {
@@ -732,8 +732,8 @@ procedure m2(r_1: Ref, r2: Ref, i: int) returns ()
   // -- Translating statement: unfold acc(p2(r2, i), write) -- independence.vpr@36.2--36.18
     assume p2#trigger(Heap, p2(r2, i));
     assume Heap[null, p2(r2, i)] == FrameFragment(Heap[r2, g]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding p2(r2, i) might fail. There might be insufficient permission to access p2(r2, i) (independence.vpr@36.2--36.18) [107451]"}
@@ -754,8 +754,8 @@ procedure m2(r_1: Ref, r2: Ref, i: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(p2(r2, i), write) -- independence.vpr@37.2--37.16
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding p2(r2, i) might fail. There might be insufficient permission to access r2.g (independence.vpr@37.2--37.16) [107455]"}
@@ -778,8 +778,8 @@ procedure m2(r_1: Ref, r2: Ref, i: int) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of m2 might not hold. There might be insufficient permission to access p2(r2, i) (independence.vpr@30.9--30.23) [107457]"}
@@ -800,13 +800,13 @@ procedure m3(r_1: Ref, r2: Ref, i: int) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var QPMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var newVersion: FrameType;
   var freshVersion: FrameType;
   var ExhaleHeap: HeapType;
@@ -831,8 +831,8 @@ procedure m3(r_1: Ref, r2: Ref, i: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -894,8 +894,8 @@ procedure m3(r_1: Ref, r2: Ref, i: int) returns ()
   // -- Translating statement: unfold acc(p2(r, -1), write) -- independence.vpr@47.2--47.18
     assume p2#trigger(Heap, p2(r_1, -1));
     assume Heap[null, p2(r_1, -1)] == FrameFragment(Heap[r_1, g]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding p2(r, -1) might fail. There might be insufficient permission to access p2(r, -1) (independence.vpr@47.2--47.18) [107461]"}
@@ -916,8 +916,8 @@ procedure m3(r_1: Ref, r2: Ref, i: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(p2(r, -1), write) -- independence.vpr@48.2--48.16
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding p2(r, -1) might fail. There might be insufficient permission to access r.g (independence.vpr@48.2--48.16) [107465]"}
@@ -940,8 +940,8 @@ procedure m3(r_1: Ref, r2: Ref, i: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale (forall x: Int ::x > 0 ==> acc(p2(r, x), write)) -- independence.vpr@49.2--49.48
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall x: Int ::x > 0 ==> acc(p2(r, x), write))
       if (*) {
@@ -1001,8 +1001,8 @@ procedure m3(r_1: Ref, r2: Ref, i: int) returns ()
   // -- Translating statement: unfold acc(p2(r, -1), write) -- independence.vpr@50.2--50.18
     assume p2#trigger(Heap, p2(r_1, -1));
     assume Heap[null, p2(r_1, -1)] == FrameFragment(Heap[r_1, g]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding p2(r, -1) might fail. There might be insufficient permission to access p2(r, -1) (independence.vpr@50.2--50.18) [107472]"}
@@ -1023,8 +1023,8 @@ procedure m3(r_1: Ref, r2: Ref, i: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(p2(r, -1), write) -- independence.vpr@51.2--51.16
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding p2(r, -1) might fail. There might be insufficient permission to access r.g (independence.vpr@51.2--51.16) [107476]"}
@@ -1047,8 +1047,8 @@ procedure m3(r_1: Ref, r2: Ref, i: int) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of m3 might not hold. There might be insufficient permission to access p2(r, -1) (independence.vpr@44.9--44.23) [107478]"}
@@ -1069,13 +1069,13 @@ procedure m4(r_1: Ref, i: int) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var QPMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var newVersion: FrameType;
   var freshVersion: FrameType;
   var ExhaleHeap: HeapType;
@@ -1097,8 +1097,8 @@ procedure m4(r_1: Ref, i: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1160,8 +1160,8 @@ procedure m4(r_1: Ref, i: int) returns ()
   // -- Translating statement: unfold acc(p1(r), write) -- independence.vpr@60.3--60.15
     assume p1#trigger(Heap, p1(r_1));
     assume Heap[null, p1(r_1)] == FrameFragment(Heap[r_1, f_7]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding p1(r) might fail. There might be insufficient permission to access p1(r) (independence.vpr@60.3--60.15) [107482]"}
@@ -1182,8 +1182,8 @@ procedure m4(r_1: Ref, i: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(p1(r), write) -- independence.vpr@61.3--61.13
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding p1(r) might fail. There might be insufficient permission to access r.f (independence.vpr@61.3--61.13) [107486]"}
@@ -1206,8 +1206,8 @@ procedure m4(r_1: Ref, i: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale (forall x: Int ::x > 0 ==> acc(p2(r, x), write)) -- independence.vpr@62.3--62.49
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall x: Int ::x > 0 ==> acc(p2(r, x), write))
       if (*) {
@@ -1267,8 +1267,8 @@ procedure m4(r_1: Ref, i: int) returns ()
   // -- Translating statement: unfold acc(p1(r), write) -- independence.vpr@63.3--63.15
     assume p1#trigger(Heap, p1(r_1));
     assume Heap[null, p1(r_1)] == FrameFragment(Heap[r_1, f_7]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding p1(r) might fail. There might be insufficient permission to access p1(r) (independence.vpr@63.3--63.15) [107493]"}
@@ -1289,8 +1289,8 @@ procedure m4(r_1: Ref, i: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(p1(r), write) -- independence.vpr@64.3--64.13
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding p1(r) might fail. There might be insufficient permission to access r.f (independence.vpr@64.3--64.13) [107497]"}
@@ -1313,8 +1313,8 @@ procedure m4(r_1: Ref, i: int) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of m4 might not hold. There might be insufficient permission to access p1(r) (independence.vpr@57.10--57.20) [107499]"}
@@ -1337,17 +1337,17 @@ procedure m5(r_1: Ref, r2: Ref, i: int) returns ()
   var perm: Perm;
   var WandDefLHSHeap: HeapType;
   var WandDefLHSMask: MaskType;
-  var Labellhs1Heap: HeapType;
   var Labellhs1Mask: MaskType;
+  var Labellhs1Heap: HeapType;
   var WandDefRHSHeap: HeapType;
   var WandDefRHSMask: MaskType;
-  var Labellhs2Heap: HeapType;
   var Labellhs2Mask: MaskType;
-  var oldHeap: HeapType;
+  var Labellhs2Heap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var QPMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var Ops_1Heap: HeapType;
   var Ops_1Mask: MaskType;
@@ -1355,8 +1355,8 @@ procedure m5(r_1: Ref, r2: Ref, i: int) returns ()
   var UsedHeap: HeapType;
   var UsedMask: MaskType;
   var b_2: bool;
-  var Labellhs4Heap: HeapType;
   var Labellhs4Mask: MaskType;
+  var Labellhs4Heap: HeapType;
   var boolCur: bool;
   var Used_1Heap: HeapType;
   var Used_1Mask: MaskType;
@@ -1376,8 +1376,8 @@ procedure m5(r_1: Ref, r2: Ref, i: int) returns ()
   var Used_2Heap: HeapType;
   var Used_2Mask: MaskType;
   var b_4: bool;
-  var Labellhs7Heap: HeapType;
   var Labellhs7Mask: MaskType;
+  var Labellhs7Heap: HeapType;
   var boolCur_1: bool;
   var Used_3Heap: HeapType;
   var Used_3Mask: MaskType;
@@ -1419,8 +1419,8 @@ procedure m5(r_1: Ref, r2: Ref, i: int) returns ()
         
         // -- Translating statement: label lhs1 -- independence.vpr@70.11--70.61
           lhs1:
-          Labellhs1Heap := WandDefLHSHeap;
           Labellhs1Mask := WandDefLHSMask;
+          Labellhs1Heap := WandDefLHSHeap;
           assume state(WandDefLHSHeap, WandDefLHSMask);
         havoc WandDefRHSHeap;
         WandDefRHSMask := ZeroMask;
@@ -1453,8 +1453,8 @@ procedure m5(r_1: Ref, r2: Ref, i: int) returns ()
         
         // -- Translating statement: label lhs2 -- independence.vpr@71.11--71.57
           lhs2:
-          Labellhs2Heap := WandDefLHSHeap;
           Labellhs2Mask := WandDefLHSMask;
+          Labellhs2Heap := WandDefLHSHeap;
           assume state(WandDefLHSHeap, WandDefLHSMask);
         havoc WandDefRHSHeap;
         WandDefRHSMask := ZeroMask;
@@ -1478,8 +1478,8 @@ procedure m5(r_1: Ref, r2: Ref, i: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale (forall x: Int ::x != i ==> acc(p2(r, x), write)) -- independence.vpr@74.5--74.54
     
@@ -1529,8 +1529,8 @@ procedure m5(r_1: Ref, r2: Ref, i: int) returns ()
   // -- Translating statement: apply acc(r.f, write) --* r != null && (acc(r.g, write) && r.g == i) -- independence.vpr@75.5--75.57
     
     // -- check if wand is held and remove an instance
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       // permLe
       assert {:msg "  Applying wand might fail. Magic wand instance not found. (independence.vpr@75.5--75.57) [107503]"}
         FullPerm <= Mask[null, wand(r_1, FullPerm, r_1 != null, r_1, FullPerm, r_1, i)];
@@ -1538,8 +1538,8 @@ procedure m5(r_1: Ref, r2: Ref, i: int) returns ()
     assume state(Heap, Mask);
     
     // -- check if LHS holds and remove permissions 
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Applying wand might fail. There might be insufficient permission to access r.f (independence.vpr@75.5--75.57) [107505]"}
@@ -1563,8 +1563,8 @@ procedure m5(r_1: Ref, r2: Ref, i: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert r.g == i -- independence.vpr@76.5--76.21
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of r.g == i
       assert {:msg "  Assert might fail. There might be insufficient permission to access r.g (independence.vpr@76.12--76.20) [107507]"}
@@ -1592,8 +1592,8 @@ procedure m5(r_1: Ref, r2: Ref, i: int) returns ()
     
     // -- Translating statement: label lhs4 -- independence.vpr@77.13--77.59
       lhs4:
-      Labellhs4Heap := Ops_1Heap;
       Labellhs4Mask := Ops_1Mask;
+      Labellhs4Heap := Ops_1Heap;
       b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);
     boolCur := true;
     // Translating exec of non-ghost operationr != null && (acc(r.g, write) && r.g == i)
@@ -1676,8 +1676,8 @@ procedure m5(r_1: Ref, r2: Ref, i: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale (forall x: Int ::x != i ==> acc(p2(r, x), write)) -- independence.vpr@78.5--78.54
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall x: Int ::x != i ==> acc(p2(r, x), write))
       if (*) {
@@ -1737,8 +1737,8 @@ procedure m5(r_1: Ref, r2: Ref, i: int) returns ()
   // -- Translating statement: apply acc(r2.f, write) --* r2 != null && (acc(r2.g, write) && r2.g == i) -- independence.vpr@79.5--79.62
     
     // -- check if wand is held and remove an instance
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       // permLe
       assert {:msg "  Applying wand might fail. Magic wand instance not found. (independence.vpr@79.5--79.62) [107517]"}
         FullPerm <= Mask[null, wand(r2, FullPerm, r2 != null, r2, FullPerm, r2, i)];
@@ -1746,8 +1746,8 @@ procedure m5(r_1: Ref, r2: Ref, i: int) returns ()
     assume state(Heap, Mask);
     
     // -- check if LHS holds and remove permissions 
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Applying wand might fail. There might be insufficient permission to access r2.f (independence.vpr@79.5--79.62) [107519]"}
@@ -1771,8 +1771,8 @@ procedure m5(r_1: Ref, r2: Ref, i: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert r2.g == i -- independence.vpr@80.5--80.23
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of r2.g == i
       assert {:msg "  Assert might fail. There might be insufficient permission to access r2.g (independence.vpr@80.13--80.22) [107521]"}
@@ -1800,8 +1800,8 @@ procedure m5(r_1: Ref, r2: Ref, i: int) returns ()
     
     // -- Translating statement: label lhs7 -- independence.vpr@81.14--81.64
       lhs7:
-      Labellhs7Heap := Ops_3Heap;
       Labellhs7Mask := Ops_3Mask;
+      Labellhs7Heap := Ops_3Heap;
       b_5 := b_5 && state(Ops_3Heap, Ops_3Mask);
     boolCur_1 := true;
     // Translating exec of non-ghost operationr2 != null && (acc(r2.g, write) && r2.g == i)

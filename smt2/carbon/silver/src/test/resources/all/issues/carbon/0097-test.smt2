@@ -873,7 +873,7 @@
  :pattern ( (state Heap@@44 Mask@@46) (sum_fail Heap@@44 l_2@@6))
  :pattern ( (state Heap@@44 Mask@@46) (|sum_fail#triggerStateless| l_2@@6) (|valid__List#trigger_3655| Heap@@44 (valid__List l_2@@6)))
 )))
-; Invalid
+; Valid
 (push 1)
 (declare-fun ControlFlow (Int Int) Int)
 (declare-fun Heap@@45 () T@PolymorphicMapType_6760)
