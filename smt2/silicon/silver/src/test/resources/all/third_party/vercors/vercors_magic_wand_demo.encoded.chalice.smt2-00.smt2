@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-26 19:38:03
+; Started: 2024-12-27 01:58:02
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -163,11 +163,11 @@
     (Wand_readonly_for_writeonlyget_in_1$%limited s@$ this$_1@0@00)
     (Wand_readonly_for_writeonlyget_in_1$ s@$ this$_1@0@00))
   :pattern ((Wand_readonly_for_writeonlyget_in_1$ s@$ this$_1@0@00))
-  :qid |quant-u-22424|)))
+  :qid |quant-u-22452|)))
 (assert (forall ((s@$ $Snap) (this$_1@0@00 $Ref)) (!
   (Wand_readonly_for_writeonlyget_in_1$%stateless this$_1@0@00)
   :pattern ((Wand_readonly_for_writeonlyget_in_1$%limited s@$ this$_1@0@00))
-  :qid |quant-u-22425|)))
+  :qid |quant-u-22453|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert ($Perm.isReadVar $k@6@00))
@@ -635,11 +635,11 @@
         (Wand_readonly_for_writeonlyget_in_1$ s@$ this$_1@0@00)
         ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second s@$))))))))
   :pattern ((Wand_readonly_for_writeonlyget_in_1$ s@$ this$_1@0@00))
-  :qid |quant-u-22430|)))
+  :qid |quant-u-22458|)))
 (assert (forall ((s@$ $Snap) (this$_1@0@00 $Ref)) (!
   true
   :pattern ((Wand_readonly_for_writeonlyget_in_1$ s@$ this$_1@0@00))
-  :qid |quant-u-22431|)))
+  :qid |quant-u-22459|)))
 ; ---------- FUNCTION WandDemoget$----------
 (declare-fun this$_9@2@00 () $Ref)
 (declare-fun result@3@00 () Int)
@@ -657,11 +657,11 @@
 (assert (forall ((s@$ $Snap) (this$_9@2@00 $Ref)) (!
   (= (WandDemoget$%limited s@$ this$_9@2@00) (WandDemoget$ s@$ this$_9@2@00))
   :pattern ((WandDemoget$ s@$ this$_9@2@00))
-  :qid |quant-u-22426|)))
+  :qid |quant-u-22454|)))
 (assert (forall ((s@$ $Snap) (this$_9@2@00 $Ref)) (!
   (WandDemoget$%stateless this$_9@2@00)
   :pattern ((WandDemoget$%limited s@$ this$_9@2@00))
-  :qid |quant-u-22427|)))
+  :qid |quant-u-22455|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert ($Perm.isReadVar $k@14@00))
@@ -738,11 +738,11 @@
         (WandDemoget$ s@$ this$_9@2@00)
         ($SortWrappers.$SnapToInt ($Snap.second s@$)))))
   :pattern ((WandDemoget$ s@$ this$_9@2@00))
-  :qid |quant-u-22432|)))
+  :qid |quant-u-22460|)))
 (assert (forall ((s@$ $Snap) (this$_9@2@00 $Ref)) (!
   true
   :pattern ((WandDemoget$ s@$ this$_9@2@00))
-  :qid |quant-u-22433|)))
+  :qid |quant-u-22461|)))
 ; ---------- FUNCTION Wand_readonly_for_writeonlyget_out_1$----------
 (declare-fun this$_2@4@00 () $Ref)
 (declare-fun result@5@00 () $Ref)
@@ -762,11 +762,11 @@
     (Wand_readonly_for_writeonlyget_out_1$%limited s@$ this$_2@4@00)
     (Wand_readonly_for_writeonlyget_out_1$ s@$ this$_2@4@00))
   :pattern ((Wand_readonly_for_writeonlyget_out_1$ s@$ this$_2@4@00))
-  :qid |quant-u-22428|)))
+  :qid |quant-u-22456|)))
 (assert (forall ((s@$ $Snap) (this$_2@4@00 $Ref)) (!
   (Wand_readonly_for_writeonlyget_out_1$%stateless this$_2@4@00)
   :pattern ((Wand_readonly_for_writeonlyget_out_1$%limited s@$ this$_2@4@00))
-  :qid |quant-u-22429|)))
+  :qid |quant-u-22457|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert ($Perm.isReadVar $k@17@00))
@@ -1234,11 +1234,11 @@
         (Wand_readonly_for_writeonlyget_out_1$ s@$ this$_2@4@00)
         ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second s@$)))))))))
   :pattern ((Wand_readonly_for_writeonlyget_out_1$ s@$ this$_2@4@00))
-  :qid |quant-u-22434|)))
+  :qid |quant-u-22462|)))
 (assert (forall ((s@$ $Snap) (this$_2@4@00 $Ref)) (!
   true
   :pattern ((Wand_readonly_for_writeonlyget_out_1$ s@$ this$_2@4@00))
-  :qid |quant-u-22435|)))
+  :qid |quant-u-22463|)))
 ; ---------- Wand_readonly_for_writeonly$MonitorInvariant ----------
 (declare-const this$@25@00 $Ref)
 (set-option :timeout 0)

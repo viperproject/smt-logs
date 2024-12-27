@@ -1,0 +1,21 @@
+opam-version: "2.0"
+added: [
+  "doc/ppx_derivers" {"D"}
+  "doc/ppx_derivers/CHANGES.md" {"F:faf288f3d1962b02a8e7632fe429649a"}
+  "doc/ppx_derivers/LICENSE.md" {"F:fd59b43199d629e08dc266a2dbd24f57"}
+  "doc/ppx_derivers/README.md" {"F:e0d7f6fcd5892da85911bf526d8caa85"}
+  "lib/ppx_derivers" {"D"}
+  "lib/ppx_derivers/META" {"F:899b095f4c4134d42f80268ef19c8de2"}
+  "lib/ppx_derivers/dune-package" {"F:cbf297fe6edee17ad9bf160b20a4eb5b"}
+  "lib/ppx_derivers/opam" {"F:6d5bb426aa027ff32ac300935705ac9c"}
+  "lib/ppx_derivers/ppx_derivers.a" {"F:0c5174882013a32ae3b12823dd84e01d"}
+  "lib/ppx_derivers/ppx_derivers.cma" {"F:a15ad273bf7acfa56abb209bae6d3d88"}
+  "lib/ppx_derivers/ppx_derivers.cmi" {"F:059472726378522e4833a1a63268b018"}
+  "lib/ppx_derivers/ppx_derivers.cmt" {"F:fc1899803216d8c22b298be8ad9c064b"}
+  "lib/ppx_derivers/ppx_derivers.cmti" {"F:44a5414f75446925605883c87c4c63e9"}
+  "lib/ppx_derivers/ppx_derivers.cmx" {"F:86f42df5e920786e5faef8887ffea17d"}
+  "lib/ppx_derivers/ppx_derivers.cmxa" {"F:3555ed46fe70627b9314920274220686"}
+  "lib/ppx_derivers/ppx_derivers.cmxs" {"F:7dc08a6d79599bc2db695507b32ef7fe"}
+  "lib/ppx_derivers/ppx_derivers.ml" {"F:3e7ec4644155502554d5d470655dc8f9"}
+  "lib/ppx_derivers/ppx_derivers.mli" {"F:06136889bc540203c052c1d746af5442"}
+]

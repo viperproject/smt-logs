@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-26 19:40:30
+; Started: 2024-12-27 02:00:30
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -706,21 +706,21 @@
 (assert (forall ((s@$ $Snap) (v@0@00 $Ref)) (!
   (= (alwaysTrue%limited s@$ v@0@00) (alwaysTrue s@$ v@0@00))
   :pattern ((alwaysTrue s@$ v@0@00))
-  :qid |quant-u-24598|)))
+  :qid |quant-u-24626|)))
 (assert (forall ((s@$ $Snap) (v@0@00 $Ref)) (!
   (alwaysTrue%stateless v@0@00)
   :pattern ((alwaysTrue%limited s@$ v@0@00))
-  :qid |quant-u-24599|)))
+  :qid |quant-u-24627|)))
 (assert (forall ((s@$ $Snap) (v@0@00 $Ref)) (!
   (let ((result@1@00 (alwaysTrue%limited s@$ v@0@00))) (=>
     (alwaysTrue%precondition s@$ v@0@00)
     (= result@1@00 true)))
   :pattern ((alwaysTrue%limited s@$ v@0@00))
-  :qid |quant-u-24600|)))
+  :qid |quant-u-24628|)))
 (assert (forall ((s@$ $Snap) (v@0@00 $Ref)) (!
   (let ((result@1@00 (alwaysTrue%limited s@$ v@0@00))) true)
   :pattern ((alwaysTrue%limited s@$ v@0@00))
-  :qid |quant-u-24601|)))
+  :qid |quant-u-24629|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- some_method ----------
@@ -785,7 +785,7 @@
     (and (<= 0 i@5@01) (< i@5@01 g@3@01))
     (or (= $k@6@01 $Perm.No) (< $Perm.No $k@6@01)))
   
-  :qid |quant-u-24602|))))
+  :qid |quant-u-24630|))))
 (check-sat)
 ; unsat
 (pop) ; 2
@@ -815,7 +815,7 @@
       (= (inv@8@01 (loc<Ref> trees@2@01 i@5@01)) i@5@01)
       (img@9@01 (loc<Ref> trees@2@01 i@5@01))))
   :pattern (($FVF.loc_item ($FVF.lookup_item ($SortWrappers.$SnapTo$FVF<item> ($Snap.first ($Snap.second $t@4@01))) (loc<Ref> trees@2@01 i@5@01)) (loc<Ref> trees@2@01 i@5@01)))
-  :qid |quant-u-24603|)))
+  :qid |quant-u-24631|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -866,7 +866,7 @@
     (and (<= 0 (inv@8@01 r)) (< (inv@8@01 r) g@3@01))
     ($FVF.loc_item ($FVF.lookup_item (as sm@10@01  $FVF<item>) r) r))
   :pattern ((inv@8@01 r))
-  :qid |quant-u-24604|)))
+  :qid |quant-u-24632|)))
 (assert (=
   ($Snap.second ($Snap.second $t@4@01))
   ($Snap.combine
@@ -1167,7 +1167,7 @@
     (and (<= 0 i@13@01) (< i@13@01 g@3@01))
     (or (= $k@14@01 $Perm.No) (< $Perm.No $k@14@01)))
   
-  :qid |quant-u-24605|))))
+  :qid |quant-u-24633|))))
 (check-sat)
 ; unsat
 (pop) ; 2
@@ -1201,7 +1201,7 @@
         i@13@01)
       (img@17@01 ($FVF.lookup_item (as sm@10@01  $FVF<item>) (loc<Ref> trees@2@01 i@13@01)))))
   :pattern (($FVF.loc_item ($FVF.lookup_item (as sm@10@01  $FVF<item>) (loc<Ref> trees@2@01 i@13@01)) (loc<Ref> trees@2@01 i@13@01)) ($FVF.loc_bool_prop ($FVF.lookup_bool_prop ($SortWrappers.$SnapTo$FVF<bool_prop> ($Snap.second ($Snap.second ($Snap.second $t@4@01)))) ($FVF.lookup_item (as sm@10@01  $FVF<item>) (loc<Ref> trees@2@01 i@13@01))) ($FVF.lookup_item (as sm@10@01  $FVF<item>) (loc<Ref> trees@2@01 i@13@01))))
-  :qid |quant-u-24606|)))
+  :qid |quant-u-24634|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -1257,7 +1257,7 @@
     (and (<= 0 (inv@16@01 r)) (< (inv@16@01 r) g@3@01))
     ($FVF.loc_bool_prop ($FVF.lookup_bool_prop (as sm@18@01  $FVF<bool_prop>) r) r))
   :pattern ((inv@16@01 r))
-  :qid |quant-u-24607|)))
+  :qid |quant-u-24635|)))
 ; State saturation: after contract
 (set-option :timeout 50)
 (check-sat)
@@ -1364,7 +1364,7 @@
     (and (<= 0 j@19@01) (< j@19@01 g@3@01))
     (or (= $k@20@01 $Perm.No) (< $Perm.No $k@20@01)))
   
-  :qid |quant-u-24608|))))
+  :qid |quant-u-24636|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -1425,7 +1425,7 @@
     (and (<= 0 (inv@21@01 r)) (< (inv@21@01 r) g@3@01))
     ($FVF.loc_bool_prop ($FVF.lookup_bool_prop (as sm@18@01  $FVF<bool_prop>) r) r))
   :pattern ((inv@21@01 r))
-  :qid |quant-u-24609|)))
+  :qid |quant-u-24637|)))
 ; Precomputing data for removing quantified permissions
 (define-fun pTaken@23@01 ((r $Ref)) $Perm
   (ite
@@ -1500,7 +1500,7 @@
         ($FVF.lookup_item (as sm@10@01  $FVF<item>) (loc<Ref> trees@2@01 (inv@21@01 r)))))
     (= (- $k@20@01 (pTaken@23@01 r)) $Perm.No))
   
-  :qid |quant-u-24612|))))
+  :qid |quant-u-24640|))))
 (check-sat)
 ; unsat
 (pop) ; 3

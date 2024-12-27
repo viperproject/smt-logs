@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-26 19:34:33
+; Started: 2024-12-27 01:54:23
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -691,11 +691,11 @@
 (assert (forall ((s@$ $Snap) (b@0@00 Bool) (z@1@00 Int)) (!
   (= (function3%limited s@$ b@0@00 z@1@00) (function3 s@$ b@0@00 z@1@00))
   :pattern ((function3 s@$ b@0@00 z@1@00))
-  :qid |quant-u-15736|)))
+  :qid |quant-u-15794|)))
 (assert (forall ((s@$ $Snap) (b@0@00 Bool) (z@1@00 Int)) (!
   (function3%stateless b@0@00 z@1@00)
   :pattern ((function3%limited s@$ b@0@00 z@1@00))
-  :qid |quant-u-15737|)))
+  :qid |quant-u-15795|)))
 ; ---------- FUNCTION function2----------
 (declare-fun b@3@00 () Bool)
 (declare-fun result@4@00 () Bool)
@@ -733,11 +733,11 @@
 (assert (forall ((s@$ $Snap) (b@3@00 Bool)) (!
   (= (function2%limited s@$ b@3@00) (function2 s@$ b@3@00))
   :pattern ((function2 s@$ b@3@00))
-  :qid |quant-u-15738|)))
+  :qid |quant-u-15796|)))
 (assert (forall ((s@$ $Snap) (b@3@00 Bool)) (!
   (function2%stateless b@3@00)
   :pattern ((function2%limited s@$ b@3@00))
-  :qid |quant-u-15739|)))
+  :qid |quant-u-15797|)))
 ; ---------- FUNCTION function0----------
 (declare-fun b@5@00 () Bool)
 (declare-fun c@6@00 () Bool)
@@ -776,11 +776,11 @@
 (assert (forall ((s@$ $Snap) (b@5@00 Bool) (c@6@00 Bool)) (!
   (= (function0%limited s@$ b@5@00 c@6@00) (function0 s@$ b@5@00 c@6@00))
   :pattern ((function0 s@$ b@5@00 c@6@00))
-  :qid |quant-u-15740|)))
+  :qid |quant-u-15798|)))
 (assert (forall ((s@$ $Snap) (b@5@00 Bool) (c@6@00 Bool)) (!
   (function0%stateless b@5@00 c@6@00)
   :pattern ((function0%limited s@$ b@5@00 c@6@00))
-  :qid |quant-u-15741|)))
+  :qid |quant-u-15799|)))
 ; ---------- FUNCTION function4----------
 (declare-fun x@8@00 () Bool)
 (declare-fun result@9@00 () Bool)
@@ -802,7 +802,7 @@
   (and (= (inv@16@00 s@$ x@8@00 y@15@00) y@15@00) (img@17@00 s@$ x@8@00 y@15@00))
   :pattern ((inv@16@00 s@$ x@8@00 y@15@00))
   :pattern ((img@17@00 s@$ x@8@00 y@15@00))
-  :qid |quant-u-15747|)))
+  :qid |quant-u-15805|)))
 (assert (forall ((r $Ref)) (!
   (=> (img@17@00 s@$ x@8@00 r) (= (inv@16@00 s@$ x@8@00 r) r))
   :pattern ((inv@16@00 s@$ x@8@00 r))
@@ -818,11 +818,11 @@
 (assert (forall ((s@$ $Snap) (x@8@00 Bool)) (!
   (= (function4%limited s@$ x@8@00) (function4 s@$ x@8@00))
   :pattern ((function4 s@$ x@8@00))
-  :qid |quant-u-15742|)))
+  :qid |quant-u-15800|)))
 (assert (forall ((s@$ $Snap) (x@8@00 Bool)) (!
   (function4%stateless x@8@00)
   :pattern ((function4%limited s@$ x@8@00))
-  :qid |quant-u-15743|)))
+  :qid |quant-u-15801|)))
 ; ---------- FUNCTION function1----------
 (declare-fun b@10@00 () Bool)
 (declare-fun result@11@00 () Bool)
@@ -843,8 +843,8 @@
 (assert (forall ((s@$ $Snap) (b@10@00 Bool)) (!
   (= (function1%limited s@$ b@10@00) (function1 s@$ b@10@00))
   :pattern ((function1 s@$ b@10@00))
-  :qid |quant-u-15744|)))
+  :qid |quant-u-15802|)))
 (assert (forall ((s@$ $Snap) (b@10@00 Bool)) (!
   (function1%stateless b@10@00)
   :pattern ((function1%limited s@$ b@10@00))
-  :qid |quant-u-15745|)))
+  :qid |quant-u-15803|)))

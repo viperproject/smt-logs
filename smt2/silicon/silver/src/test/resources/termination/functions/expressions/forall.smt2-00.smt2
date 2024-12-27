@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-26 19:42:49
+; Started: 2024-12-27 02:02:51
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -653,11 +653,11 @@
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   (= (nonTerminating%limited s@$ x@0@00) (nonTerminating s@$ x@0@00))
   :pattern ((nonTerminating s@$ x@0@00))
-  :qid |quant-u-26553|)))
+  :qid |quant-u-26581|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   (nonTerminating%stateless x@0@00)
   :pattern ((nonTerminating%limited s@$ x@0@00))
-  :qid |quant-u-26554|)))
+  :qid |quant-u-26582|)))
 ; ---------- FUNCTION test----------
 (declare-fun x@2@00 () $Ref)
 (declare-fun result@3@00 () Bool)
@@ -693,7 +693,7 @@
     (and (= (inv@7@00 s@$ x@2@00 x2@6@00) x2@6@00) (img@8@00 s@$ x@2@00 x2@6@00)))
   :pattern ((inv@7@00 s@$ x@2@00 x2@6@00))
   :pattern ((img@8@00 s@$ x@2@00 x2@6@00))
-  :qid |quant-u-26560|)))
+  :qid |quant-u-26588|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and (img@8@00 s@$ x@2@00 r) (= x@2@00 (inv@7@00 s@$ x@2@00 r)))
@@ -756,11 +756,11 @@
 (assert (forall ((s@$ $Snap) (x@2@00 $Ref)) (!
   (= (test%limited s@$ x@2@00) (test s@$ x@2@00))
   :pattern ((test s@$ x@2@00))
-  :qid |quant-u-26555|)))
+  :qid |quant-u-26583|)))
 (assert (forall ((s@$ $Snap) (x@2@00 $Ref)) (!
   (test%stateless x@2@00)
   :pattern ((test%limited s@$ x@2@00))
-  :qid |quant-u-26556|)))
+  :qid |quant-u-26584|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (forall ((r $Ref)) (!
@@ -775,7 +775,7 @@
     (and (= (inv@7@00 s@$ x@2@00 x2@6@00) x2@6@00) (img@8@00 s@$ x@2@00 x2@6@00)))
   :pattern ((inv@7@00 s@$ x@2@00 x2@6@00))
   :pattern ((img@8@00 s@$ x@2@00 x2@6@00))
-  :qid |quant-u-26560|)))
+  :qid |quant-u-26588|)))
 (assert (forall ((x2@6@00 $Ref)) (!
   (=> (= x@2@00 x2@6@00) (not (= x2@6@00 $Ref.null)))
   :pattern ((inv@7@00 s@$ x@2@00 x2@6@00))
@@ -811,7 +811,7 @@
           (img@8@00 s@$ x@2@00 x2@6@00)))
       :pattern ((inv@7@00 s@$ x@2@00 x2@6@00))
       :pattern ((img@8@00 s@$ x@2@00 x2@6@00))
-      :qid |quant-u-26560|))
+      :qid |quant-u-26588|))
     (forall ((r $Ref)) (!
       (=>
         (and (img@8@00 s@$ x@2@00 r) (= x@2@00 (inv@7@00 s@$ x@2@00 r)))
@@ -820,11 +820,11 @@
       :qid |f-fctOfInv|))
     (=> (test%precondition s@$ x@2@00) (= (test s@$ x@2@00) true)))
   :pattern ((test s@$ x@2@00))
-  :qid |quant-u-26561|)))
+  :qid |quant-u-26589|)))
 (assert (forall ((s@$ $Snap) (x@2@00 $Ref)) (!
   true
   :pattern ((test s@$ x@2@00))
-  :qid |quant-u-26562|)))
+  :qid |quant-u-26590|)))
 ; ---------- FUNCTION test2----------
 (declare-fun x@4@00 () $Ref)
 (declare-fun result@5@00 () Bool)
@@ -877,11 +877,11 @@
 (assert (forall ((s@$ $Snap) (x@4@00 $Ref)) (!
   (= (test2%limited s@$ x@4@00) (test2 s@$ x@4@00))
   :pattern ((test2 s@$ x@4@00))
-  :qid |quant-u-26557|)))
+  :qid |quant-u-26585|)))
 (assert (forall ((s@$ $Snap) (x@4@00 $Ref)) (!
   (test2%stateless x@4@00)
   :pattern ((test2%limited s@$ x@4@00))
-  :qid |quant-u-26558|)))
+  :qid |quant-u-26586|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (= s@$ $Snap.unit))
@@ -904,8 +904,8 @@
 (assert (forall ((s@$ $Snap) (x@4@00 $Ref)) (!
   (=> (test2%precondition s@$ x@4@00) (= (test2 s@$ x@4@00) true))
   :pattern ((test2 s@$ x@4@00))
-  :qid |quant-u-26563|)))
+  :qid |quant-u-26591|)))
 (assert (forall ((s@$ $Snap) (x@4@00 $Ref)) (!
   true
   :pattern ((test2 s@$ x@4@00))
-  :qid |quant-u-26564|)))
+  :qid |quant-u-26592|)))

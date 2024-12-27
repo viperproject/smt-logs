@@ -156,14 +156,18 @@
 (set-option :pp.bv_literals false)
 (set-option :smt.arith.solver 2)
 (assert (not
- (=> (= (ControlFlow 0 0) 4) (let (($generated@@120  (=> (= $generated@@111 ($generated@@50 $generated@@112 $generated@@113 $generated false)) (=> (and (and ($generated@@114 $generated@@115) ($generated@@116 $generated@@115)) (and (= $generated@@113 $generated@@115) $generated@@27)) (and (=> (= (ControlFlow 0 2) (- 0 3)) ($generated@@40 $generated@@4 ($generated@@8 (+ $generated@@117 $generated@@117)) $generated@@19)) (=> ($generated@@40 $generated@@4 ($generated@@8 (+ $generated@@117 $generated@@117)) $generated@@19) (=> (= $generated@@118 (+ $generated@@117 $generated@@117)) (=> (and (and ($generated@@18 $generated@@4 ($generated@@8 $generated@@118) $generated@@19 $generated@@115) ($generated@@25 (+ $generated@@117 $generated@@117))) (and ($generated@@25 (+ $generated@@117 $generated@@117)) (= (ControlFlow 0 2) (- 0 1)))) ($generated@@23 ($generated@@24 ($generated@@24 $generated@@119)) $generated@@27 (+ $generated@@117 $generated@@117))))))))))
+ (=> (= (ControlFlow 0 0) 4) (let (($generated@@120  (=> (= $generated@@111 ($generated@@50 $generated@@112 $generated@@113 $generated false)) (=> (and (and ($generated@@114 $generated@@115) ($generated@@116 $generated@@115)) (and (= $generated@@113 $generated@@115) $generated@@27)) (and (=> (= (ControlFlow 0 2) (- 0 3)) ($generated@@40 $generated@@4 ($generated@@8 (+ (+ $generated@@117 $generated@@117) $generated@@117)) $generated@@19)) (=> ($generated@@40 $generated@@4 ($generated@@8 (+ (+ $generated@@117 $generated@@117) $generated@@117)) $generated@@19) (=> (= $generated@@118 (+ (+ $generated@@117 $generated@@117) $generated@@117)) (=> (and (and ($generated@@18 $generated@@4 ($generated@@8 $generated@@118) $generated@@19 $generated@@115) ($generated@@25 (+ (+ $generated@@117 $generated@@117) $generated@@117))) (and ($generated@@25 (+ (+ $generated@@117 $generated@@117) $generated@@117)) (= (ControlFlow 0 2) (- 0 1)))) ($generated@@23 ($generated@@24 ($generated@@24 $generated@@119)) $generated@@27 (+ (+ $generated@@117 $generated@@117) $generated@@117))))))))))
 (let (($generated@@121  (=> (and (and (and ($generated@@114 $generated@@113) ($generated@@116 $generated@@113)) (= 1 $generated@@22)) (and (= $generated@@117 ($generated@@26 1)) (= (ControlFlow 0 4) 2))) $generated@@120)))
 $generated@@121)))
 ))
 (check-sat)
+(get-info :reason-unknown)
+(get-info :rlimit)
+(assert (not (= (ControlFlow 0 2) (- 1))))
+(check-sat)
 (get-info :rlimit)
 (pop 1)
-; Valid
+; Invalid
 (reset)
 (set-option :rlimit 0)
 ; did a full reset

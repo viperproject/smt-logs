@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-26 20:08:29
+// Date:         2024-12-27 02:28:41
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/permission_introspection/permWandAlias.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/permission_introspection/permWandAlias-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -228,26 +228,26 @@ axiom !IsWandField(g);
 procedure m(x: Ref, y: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var WandDefLHSHeap: HeapType;
   var WandDefLHSMask: MaskType;
   var perm: Perm;
-  var Labellhs1Mask: MaskType;
   var Labellhs1Heap: HeapType;
+  var Labellhs1Mask: MaskType;
   var WandDefRHSHeap: HeapType;
   var WandDefRHSMask: MaskType;
-  var Labellhs2Mask: MaskType;
   var Labellhs2Heap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var Labellhs2Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
-  var Labellhs3Mask: MaskType;
+  var ExhaleWellDef0Mask: MaskType;
   var Labellhs3Heap: HeapType;
-  var Labellhs4Mask: MaskType;
+  var Labellhs3Mask: MaskType;
   var Labellhs4Heap: HeapType;
+  var Labellhs4Mask: MaskType;
   var ExhaleHeap: HeapType;
-  var Labellhs5Mask: MaskType;
   var Labellhs5Heap: HeapType;
+  var Labellhs5Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -261,8 +261,8 @@ procedure m(x: Ref, y: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale acc(x.f, write) --* acc(x.g, write) -- permWandAlias.vpr@8.5--8.33
     
@@ -278,8 +278,8 @@ procedure m(x: Ref, y: Ref) returns ()
         
         // -- Translating statement: label lhs1 -- permWandAlias.vpr@8.12--8.33
           lhs1:
-          Labellhs1Mask := WandDefLHSMask;
           Labellhs1Heap := WandDefLHSHeap;
+          Labellhs1Mask := WandDefLHSMask;
           assume state(WandDefLHSHeap, WandDefLHSMask);
         havoc WandDefRHSHeap;
         WandDefRHSMask := ZeroMask;
@@ -309,8 +309,8 @@ procedure m(x: Ref, y: Ref) returns ()
         
         // -- Translating statement: label lhs2 -- permWandAlias.vpr@9.12--9.33
           lhs2:
-          Labellhs2Mask := WandDefLHSMask;
           Labellhs2Heap := WandDefLHSHeap;
+          Labellhs2Mask := WandDefLHSMask;
           assume state(WandDefLHSHeap, WandDefLHSMask);
         havoc WandDefRHSHeap;
         WandDefRHSMask := ZeroMask;
@@ -330,8 +330,8 @@ procedure m(x: Ref, y: Ref) returns ()
     if (x == y) {
       
       // -- Translating statement: assert perm(acc(x.f, write) --* acc(x.g, write)) == 2 * write -- permWandAlias.vpr@12.9--12.56
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         
         // -- Check definedness of perm(acc(x.f, write) --* acc(x.g, write)) == 2 * write
           if (*) {
@@ -345,8 +345,8 @@ procedure m(x: Ref, y: Ref) returns ()
             
             // -- Translating statement: label lhs3 -- permWandAlias.vpr@12.21--12.42
               lhs3:
-              Labellhs3Mask := WandDefLHSMask;
               Labellhs3Heap := WandDefLHSHeap;
+              Labellhs3Mask := WandDefLHSMask;
               assume state(WandDefLHSHeap, WandDefLHSMask);
             havoc WandDefRHSHeap;
             WandDefRHSMask := ZeroMask;
@@ -363,8 +363,8 @@ procedure m(x: Ref, y: Ref) returns ()
     } else {
       
       // -- Translating statement: exhale acc(x.f, write) --* acc(x.g, write) -- permWandAlias.vpr@14.9--14.37
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         
         // -- Check definedness of acc(x.f, write) --* acc(x.g, write)
           if (*) {
@@ -378,8 +378,8 @@ procedure m(x: Ref, y: Ref) returns ()
             
             // -- Translating statement: label lhs4 -- permWandAlias.vpr@14.16--14.37
               lhs4:
-              Labellhs4Mask := WandDefLHSMask;
               Labellhs4Heap := WandDefLHSHeap;
+              Labellhs4Mask := WandDefLHSMask;
               assume state(WandDefLHSHeap, WandDefLHSMask);
             havoc WandDefRHSHeap;
             WandDefRHSMask := ZeroMask;
@@ -401,8 +401,8 @@ procedure m(x: Ref, y: Ref) returns ()
         assume state(Heap, Mask);
       
       // -- Translating statement: assert perm(acc(y.f, write) --* acc(y.g, write)) == write -- permWandAlias.vpr@15.9--15.52
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         
         // -- Check definedness of perm(acc(y.f, write) --* acc(y.g, write)) == write
           if (*) {
@@ -416,8 +416,8 @@ procedure m(x: Ref, y: Ref) returns ()
             
             // -- Translating statement: label lhs5 -- permWandAlias.vpr@15.21--15.42
               lhs5:
-              Labellhs5Mask := WandDefLHSMask;
               Labellhs5Heap := WandDefLHSHeap;
+              Labellhs5Mask := WandDefLHSMask;
               assume state(WandDefLHSHeap, WandDefLHSMask);
             havoc WandDefRHSHeap;
             WandDefRHSMask := ZeroMask;

@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-26 19:41:58
+; Started: 2024-12-27 02:01:59
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -688,7 +688,7 @@
 (assert (not (forall ((i@4@01 Int)) (!
   (or (= (ite (= i@4@01 2) $Perm.Write $Perm.No) $Perm.No) (= i@4@01 2))
   
-  :qid |quant-u-26087|))))
+  :qid |quant-u-26115|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -743,7 +743,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@7@01 r) $Perm.No)
   
-  :qid |quant-u-26090|))))
+  :qid |quant-u-26118|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -760,7 +760,7 @@
       (- (ite (= (inv@5@01 r) 2) $Perm.Write $Perm.No) (pTaken@7@01 r))
       $Perm.No))
   
-  :qid |quant-u-26091|))))
+  :qid |quant-u-26119|))))
 (check-sat)
 ; unsat
 (pop) ; 3

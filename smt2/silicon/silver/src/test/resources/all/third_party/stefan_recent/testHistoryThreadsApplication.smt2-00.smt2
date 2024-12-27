@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-26 19:38:05
+; Started: 2024-12-27 01:58:05
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -263,11 +263,11 @@
     (History__hist_get_x%limited s@$ diz@0@00)
     (History__hist_get_x s@$ diz@0@00))
   :pattern ((History__hist_get_x s@$ diz@0@00))
-  :qid |quant-u-22444|)))
+  :qid |quant-u-22472|)))
 (assert (forall ((s@$ $Snap) (diz@0@00 $Ref)) (!
   (History__hist_get_x%stateless diz@0@00)
   :pattern ((History__hist_get_x%limited s@$ diz@0@00))
-  :qid |quant-u-22445|)))
+  :qid |quant-u-22473|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert ($Perm.isReadVar $k@4@00))
@@ -300,11 +300,11 @@
         (History__hist_get_x s@$ diz@0@00)
         ($SortWrappers.$SnapToInt ($Snap.second s@$)))))
   :pattern ((History__hist_get_x s@$ diz@0@00))
-  :qid |quant-u-22448|)))
+  :qid |quant-u-22476|)))
 (assert (forall ((s@$ $Snap) (diz@0@00 $Ref)) (!
   true
   :pattern ((History__hist_get_x s@$ diz@0@00))
-  :qid |quant-u-22449|)))
+  :qid |quant-u-22477|)))
 ; ---------- FUNCTION History__free_get_x----------
 (declare-fun diz@2@00 () $Ref)
 (declare-fun result@3@00 () Int)
@@ -325,11 +325,11 @@
     (History__free_get_x%limited s@$ diz@2@00)
     (History__free_get_x s@$ diz@2@00))
   :pattern ((History__free_get_x s@$ diz@2@00))
-  :qid |quant-u-22446|)))
+  :qid |quant-u-22474|)))
 (assert (forall ((s@$ $Snap) (diz@2@00 $Ref)) (!
   (History__free_get_x%stateless diz@2@00)
   :pattern ((History__free_get_x%limited s@$ diz@2@00))
-  :qid |quant-u-22447|)))
+  :qid |quant-u-22475|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert ($Perm.isReadVar $k@5@00))
@@ -362,11 +362,11 @@
         (History__free_get_x s@$ diz@2@00)
         ($SortWrappers.$SnapToInt ($Snap.second s@$)))))
   :pattern ((History__free_get_x s@$ diz@2@00))
-  :qid |quant-u-22450|)))
+  :qid |quant-u-22478|)))
 (assert (forall ((s@$ $Snap) (diz@2@00 $Ref)) (!
   true
   :pattern ((History__free_get_x s@$ diz@2@00))
-  :qid |quant-u-22451|)))
+  :qid |quant-u-22479|)))
 ; ---------- History__inv ----------
 (declare-const diz@6@00 $Ref)
 (set-option :timeout 0)

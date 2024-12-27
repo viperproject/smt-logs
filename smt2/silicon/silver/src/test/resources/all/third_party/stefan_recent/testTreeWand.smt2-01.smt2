@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-26 19:38:12
+; Started: 2024-12-27 01:58:11
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -525,11 +525,11 @@
 (assert (forall ((s@$ $Snap) (t@0@00 $Ref)) (!
   (= (Tree__tolist%limited s@$ t@0@00) (Tree__tolist s@$ t@0@00))
   :pattern ((Tree__tolist s@$ t@0@00))
-  :qid |quant-u-22492|)))
+  :qid |quant-u-22520|)))
 (assert (forall ((s@$ $Snap) (t@0@00 $Ref)) (!
   (Tree__tolist%stateless t@0@00)
   :pattern ((Tree__tolist%limited s@$ t@0@00))
-  :qid |quant-u-22493|)))
+  :qid |quant-u-22521|)))
 (assert (forall ((s@$ $Snap) (t@0@00 $Ref)) (!
   (=>
     (Tree__tolist%precondition s@$ t@0@00)
@@ -557,7 +557,7 @@
             $Snap.unit) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second s@$)))))))))
   :pattern ((Tree__tolist s@$ t@0@00))
   :pattern ((Tree__tolist%stateless t@0@00) (Tree__state%trigger s@$ t@0@00))
-  :qid |quant-u-22506|)))
+  :qid |quant-u-22534|)))
 (assert (forall ((s@$ $Snap) (t@0@00 $Ref)) (!
   (=>
     (Tree__tolist%precondition s@$ t@0@00)
@@ -580,15 +580,15 @@
           ($Snap.second ($Snap.second ($Snap.second ($Snap.second s@$))))
           $Snap.unit) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second s@$))))))))
   :pattern ((Tree__tolist s@$ t@0@00))
-  :qid |quant-u-22507|)))
+  :qid |quant-u-22535|)))
 (assert (forall ((s@$ $Snap) (s@2@00 Seq<Int>)) (!
   (= (Tree__sorted_list%limited s@$ s@2@00) (Tree__sorted_list s@$ s@2@00))
   :pattern ((Tree__sorted_list s@$ s@2@00))
-  :qid |quant-u-22494|)))
+  :qid |quant-u-22522|)))
 (assert (forall ((s@$ $Snap) (s@2@00 Seq<Int>)) (!
   (Tree__sorted_list%stateless s@2@00)
   :pattern ((Tree__sorted_list%limited s@$ s@2@00))
-  :qid |quant-u-22495|)))
+  :qid |quant-u-22523|)))
 (assert (forall ((s@$ $Snap) (s@2@00 Seq<Int>)) (!
   (=>
     (Tree__sorted_list%precondition s@$ s@2@00)
@@ -601,21 +601,21 @@
         :pattern ((Seq_index s@2@00 i) (Seq_index s@2@00 j))
         ))))
   :pattern ((Tree__sorted_list s@$ s@2@00))
-  :qid |quant-u-22508|)))
+  :qid |quant-u-22536|)))
 (assert (forall ((s@$ $Snap) (s@2@00 Seq<Int>)) (!
   true
   :pattern ((Tree__sorted_list s@$ s@2@00))
-  :qid |quant-u-22509|)))
+  :qid |quant-u-22537|)))
 (assert (forall ((s@$ $Snap) (diz@4@00 $Ref)) (!
   (=
     (Wand_state_contains_for_state_contains__get_in_1_0%limited s@$ diz@4@00)
     (Wand_state_contains_for_state_contains__get_in_1_0 s@$ diz@4@00))
   :pattern ((Wand_state_contains_for_state_contains__get_in_1_0 s@$ diz@4@00))
-  :qid |quant-u-22496|)))
+  :qid |quant-u-22524|)))
 (assert (forall ((s@$ $Snap) (diz@4@00 $Ref)) (!
   (Wand_state_contains_for_state_contains__get_in_1_0%stateless diz@4@00)
   :pattern ((Wand_state_contains_for_state_contains__get_in_1_0%limited s@$ diz@4@00))
-  :qid |quant-u-22497|)))
+  :qid |quant-u-22525|)))
 (assert (forall ((s@$ $Snap) (diz@4@00 $Ref)) (!
   (and
     ($Perm.isReadVar $k@17@00)
@@ -646,21 +646,21 @@
         (Wand_state_contains_for_state_contains__get_in_1_0 s@$ diz@4@00)
         ($SortWrappers.$SnapToSeq<Int> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second s@$))))))))))
   :pattern ((Wand_state_contains_for_state_contains__get_in_1_0 s@$ diz@4@00))
-  :qid |quant-u-22510|)))
+  :qid |quant-u-22538|)))
 (assert (forall ((s@$ $Snap) (diz@4@00 $Ref)) (!
   true
   :pattern ((Wand_state_contains_for_state_contains__get_in_1_0 s@$ diz@4@00))
-  :qid |quant-u-22511|)))
+  :qid |quant-u-22539|)))
 (assert (forall ((s@$ $Snap) (diz@6@00 $Ref)) (!
   (=
     (Wand_state_contains_for_state_contains__get_out_1_0%limited s@$ diz@6@00)
     (Wand_state_contains_for_state_contains__get_out_1_0 s@$ diz@6@00))
   :pattern ((Wand_state_contains_for_state_contains__get_out_1_0 s@$ diz@6@00))
-  :qid |quant-u-22498|)))
+  :qid |quant-u-22526|)))
 (assert (forall ((s@$ $Snap) (diz@6@00 $Ref)) (!
   (Wand_state_contains_for_state_contains__get_out_1_0%stateless diz@6@00)
   :pattern ((Wand_state_contains_for_state_contains__get_out_1_0%limited s@$ diz@6@00))
-  :qid |quant-u-22499|)))
+  :qid |quant-u-22527|)))
 (assert (forall ((s@$ $Snap) (diz@6@00 $Ref)) (!
   (and
     ($Perm.isReadVar $k@40@00)
@@ -691,31 +691,31 @@
         (Wand_state_contains_for_state_contains__get_out_1_0 s@$ diz@6@00)
         ($SortWrappers.$SnapToSeq<Int> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second s@$)))))))))))))
   :pattern ((Wand_state_contains_for_state_contains__get_out_1_0 s@$ diz@6@00))
-  :qid |quant-u-22512|)))
+  :qid |quant-u-22540|)))
 (assert (forall ((s@$ $Snap) (diz@6@00 $Ref)) (!
   true
   :pattern ((Wand_state_contains_for_state_contains__get_out_1_0 s@$ diz@6@00))
-  :qid |quant-u-22513|)))
+  :qid |quant-u-22541|)))
 (assert (forall ((s@$ $Snap) (diz@8@00 $Ref)) (!
   (=
     (Wand_state_contains_for_state_contains__get_in_1%limited s@$ diz@8@00)
     (Wand_state_contains_for_state_contains__get_in_1 s@$ diz@8@00))
   :pattern ((Wand_state_contains_for_state_contains__get_in_1 s@$ diz@8@00))
-  :qid |quant-u-22500|)))
+  :qid |quant-u-22528|)))
 (assert (forall ((s@$ $Snap) (diz@8@00 $Ref)) (!
   (Wand_state_contains_for_state_contains__get_in_1%stateless diz@8@00)
   :pattern ((Wand_state_contains_for_state_contains__get_in_1%limited s@$ diz@8@00))
-  :qid |quant-u-22501|)))
+  :qid |quant-u-22529|)))
 (assert (forall ((s@$ $Snap) (diz@8@00 $Ref)) (!
   (let ((result@9@00 (Wand_state_contains_for_state_contains__get_in_1%limited s@$ diz@8@00))) (=>
     (Wand_state_contains_for_state_contains__get_in_1%precondition s@$ diz@8@00)
     (not (= result@9@00 $Ref.null))))
   :pattern ((Wand_state_contains_for_state_contains__get_in_1%limited s@$ diz@8@00))
-  :qid |quant-u-22514|)))
+  :qid |quant-u-22542|)))
 (assert (forall ((s@$ $Snap) (diz@8@00 $Ref)) (!
   (let ((result@9@00 (Wand_state_contains_for_state_contains__get_in_1%limited s@$ diz@8@00))) true)
   :pattern ((Wand_state_contains_for_state_contains__get_in_1%limited s@$ diz@8@00))
-  :qid |quant-u-22515|)))
+  :qid |quant-u-22543|)))
 (assert (forall ((s@$ $Snap) (diz@8@00 $Ref)) (!
   (and
     ($Perm.isReadVar $k@64@00)
@@ -746,31 +746,31 @@
         (Wand_state_contains_for_state_contains__get_in_1 s@$ diz@8@00)
         ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second s@$))))))))
   :pattern ((Wand_state_contains_for_state_contains__get_in_1 s@$ diz@8@00))
-  :qid |quant-u-22516|)))
+  :qid |quant-u-22544|)))
 (assert (forall ((s@$ $Snap) (diz@8@00 $Ref)) (!
   true
   :pattern ((Wand_state_contains_for_state_contains__get_in_1 s@$ diz@8@00))
-  :qid |quant-u-22517|)))
+  :qid |quant-u-22545|)))
 (assert (forall ((s@$ $Snap) (diz@10@00 $Ref)) (!
   (=
     (Wand_state_contains_for_state_contains__get_out_1%limited s@$ diz@10@00)
     (Wand_state_contains_for_state_contains__get_out_1 s@$ diz@10@00))
   :pattern ((Wand_state_contains_for_state_contains__get_out_1 s@$ diz@10@00))
-  :qid |quant-u-22502|)))
+  :qid |quant-u-22530|)))
 (assert (forall ((s@$ $Snap) (diz@10@00 $Ref)) (!
   (Wand_state_contains_for_state_contains__get_out_1%stateless diz@10@00)
   :pattern ((Wand_state_contains_for_state_contains__get_out_1%limited s@$ diz@10@00))
-  :qid |quant-u-22503|)))
+  :qid |quant-u-22531|)))
 (assert (forall ((s@$ $Snap) (diz@10@00 $Ref)) (!
   (let ((result@11@00 (Wand_state_contains_for_state_contains__get_out_1%limited s@$ diz@10@00))) (=>
     (Wand_state_contains_for_state_contains__get_out_1%precondition s@$ diz@10@00)
     (not (= result@11@00 $Ref.null))))
   :pattern ((Wand_state_contains_for_state_contains__get_out_1%limited s@$ diz@10@00))
-  :qid |quant-u-22518|)))
+  :qid |quant-u-22546|)))
 (assert (forall ((s@$ $Snap) (diz@10@00 $Ref)) (!
   (let ((result@11@00 (Wand_state_contains_for_state_contains__get_out_1%limited s@$ diz@10@00))) true)
   :pattern ((Wand_state_contains_for_state_contains__get_out_1%limited s@$ diz@10@00))
-  :qid |quant-u-22519|)))
+  :qid |quant-u-22547|)))
 (assert (forall ((s@$ $Snap) (diz@10@00 $Ref)) (!
   (and
     ($Perm.isReadVar $k@88@00)
@@ -801,19 +801,19 @@
         (Wand_state_contains_for_state_contains__get_out_1 s@$ diz@10@00)
         ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second s@$)))))))))))
   :pattern ((Wand_state_contains_for_state_contains__get_out_1 s@$ diz@10@00))
-  :qid |quant-u-22520|)))
+  :qid |quant-u-22548|)))
 (assert (forall ((s@$ $Snap) (diz@10@00 $Ref)) (!
   true
   :pattern ((Wand_state_contains_for_state_contains__get_out_1 s@$ diz@10@00))
-  :qid |quant-u-22521|)))
+  :qid |quant-u-22549|)))
 (assert (forall ((s@$ $Snap) (t@12@00 $Ref)) (!
   (= (Tree__sorted%limited s@$ t@12@00) (Tree__sorted s@$ t@12@00))
   :pattern ((Tree__sorted s@$ t@12@00))
-  :qid |quant-u-22504|)))
+  :qid |quant-u-22532|)))
 (assert (forall ((s@$ $Snap) (t@12@00 $Ref)) (!
   (Tree__sorted%stateless t@12@00)
   :pattern ((Tree__sorted%limited s@$ t@12@00))
-  :qid |quant-u-22505|)))
+  :qid |quant-u-22533|)))
 (assert (forall ((s@$ $Snap) (t@12@00 $Ref)) (!
   (=>
     (Tree__sorted%precondition s@$ t@12@00)
@@ -824,7 +824,7 @@
         s@$
         $Snap.unit) t@12@00))))
   :pattern ((Tree__sorted s@$ t@12@00))
-  :qid |quant-u-22522|)))
+  :qid |quant-u-22550|)))
 (assert (forall ((s@$ $Snap) (t@12@00 $Ref)) (!
   (=>
     (Tree__sorted%precondition s@$ t@12@00)
@@ -835,7 +835,7 @@
         s@$
         $Snap.unit) t@12@00))))
   :pattern ((Tree__sorted s@$ t@12@00))
-  :qid |quant-u-22523|)))
+  :qid |quant-u-22551|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- Wand_state_contains_for_state_contains___apply ----------
@@ -2067,7 +2067,7 @@
 (check-sat)
 ; unknown
 (pop) ; 5
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 6 | First:(First:(Second:(Second:($t@4@01)))) == 1 | live]
 ; [else-branch: 6 | First:(First:(Second:(Second:($t@4@01)))) != 1 | dead]
@@ -2125,7 +2125,7 @@
 (check-sat)
 ; unknown
 (pop) ; 7
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 7
@@ -12359,7 +12359,7 @@
 (check-sat)
 ; unknown
 (pop) ; 5
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 54 | top@260@01 != Null | live]
 ; [else-branch: 54 | top@260@01 == Null | dead]
@@ -12407,7 +12407,7 @@
 (check-sat)
 ; unknown
 (pop) ; 7
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 56 | sys__result@261@01 != Null | live]
 ; [else-branch: 56 | sys__result@261@01 == Null | dead]
@@ -13350,7 +13350,7 @@
 (check-sat)
 ; unknown
 (pop) ; 10
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (assert (not (= left@296@01 $Ref.null)))
 (assert (=
@@ -13365,7 +13365,7 @@
 (check-sat)
 ; unknown
 (pop) ; 10
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (assert (=
   ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@306@01)))))))
@@ -13379,7 +13379,7 @@
 (check-sat)
 ; unknown
 (pop) ; 10
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (assert (=
   ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@306@01))))))))
@@ -13396,7 +13396,7 @@
 (check-sat)
 ; unknown
 (pop) ; 10
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 10
@@ -13427,7 +13427,7 @@
 (check-sat)
 ; unknown
 (pop) ; 11
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (assert (=
   ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@306@01)))))))))
@@ -13444,7 +13444,7 @@
 (check-sat)
 ; unknown
 (pop) ; 11
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 11
@@ -13475,7 +13475,7 @@
 (check-sat)
 ; unknown
 (pop) ; 12
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 12
@@ -13486,7 +13486,7 @@
 (check-sat)
 ; unknown
 (pop) ; 12
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (assert (=
   ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@306@01))))))))))
@@ -13513,7 +13513,7 @@
 (check-sat)
 ; unknown
 (pop) ; 13
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 75 | First:(Second:(Second:(Second:(Second:(Second:($t@306@01)))))) != Null | live]
 ; [else-branch: 75 | First:(Second:(Second:(Second:(Second:(Second:($t@306@01)))))) == Null | dead]
@@ -13546,7 +13546,7 @@
 (check-sat)
 ; unknown
 (pop) ; 13
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 76 | First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@306@01)))))))) != Null | live]
 ; [else-branch: 76 | First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@306@01)))))))) == Null | dead]
@@ -13579,7 +13579,7 @@
 (check-sat)
 ; unknown
 (pop) ; 13
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 77 | First:(Second:(Second:($t@306@01))) != Null | live]
 ; [else-branch: 77 | First:(Second:(Second:($t@306@01))) == Null | dead]
@@ -14294,7 +14294,7 @@
 (check-sat)
 ; unknown
 (pop) ; 13
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 87 | First:(Second:(Second:($t@306@01))) != Null | live]
 ; [else-branch: 87 | First:(Second:(Second:($t@306@01))) == Null | dead]
@@ -14455,7 +14455,7 @@
 (check-sat)
 ; unknown
 (pop) ; 10
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (assert (not (= left@296@01 $Ref.null)))
 (assert (=
@@ -14569,7 +14569,7 @@
 (check-sat)
 ; unknown
 (pop) ; 12
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (assert (=
   ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@306@01))))))))))
@@ -16288,7 +16288,7 @@
 (check-sat)
 ; unsat
 (pop) ; 16
-; 0.02s
+; 0.01s
 ; (get-info :all-statistics)
 (assert (> (Seq_length cur_contents@312@01) 0))
 ; [exec]
@@ -16888,7 +16888,7 @@
 (check-sat)
 ; unsat
 (pop) ; 16
-; 0.01s
+; 0.02s
 ; (get-info :all-statistics)
 (assert (> (Seq_length cur_contents@319@01) 0))
 ; [exec]
@@ -18074,7 +18074,7 @@
 (check-sat)
 ; unsat
 (pop) ; 16
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (assert (> (Seq_length cur_contents@301@01) 0))
 ; [exec]
@@ -20201,7 +20201,7 @@
 (check-sat)
 ; unsat
 (pop) ; 16
-; 0.02s
+; 0.01s
 ; (get-info :all-statistics)
 (assert (> (Seq_length cur_contents@301@01) 0))
 ; [exec]
@@ -22958,7 +22958,7 @@
 (check-sat)
 ; unsat
 (pop) ; 17
-; 0.01s
+; 0.02s
 ; (get-info :all-statistics)
 (assert (=>
   (Tree__sorted ($Snap.second ($Snap.second ($Snap.second $t@262@01))) top@260@01)
@@ -23541,7 +23541,7 @@
 (check-sat)
 ; unsat
 (pop) ; 16
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (assert (> (Seq_length cur_contents@301@01) 0))
 ; [exec]
@@ -24120,7 +24120,7 @@
 (check-sat)
 ; unsat
 (pop) ; 16
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (assert (> (Seq_length cur_contents@381@01) 0))
 ; [exec]
@@ -26681,7 +26681,7 @@
 (check-sat)
 ; unsat
 (pop) ; 16
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (assert (> (Seq_length cur_contents@301@01) 0))
 ; [exec]
@@ -27738,7 +27738,7 @@
 (check-sat)
 ; unsat
 (pop) ; 16
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (assert (> (Seq_length cur_contents@424@01) 0))
 ; [exec]
@@ -28999,7 +28999,7 @@
 (check-sat)
 ; unsat
 (pop) ; 17
-; 0.04s
+; 0.01s
 ; (get-info :all-statistics)
 (assert (=>
   (Tree__sorted ($Snap.second ($Snap.second ($Snap.second $t@262@01))) top@260@01)
@@ -29873,7 +29873,7 @@
 (check-sat)
 ; unsat
 (pop) ; 17
-; 0.02s
+; 0.01s
 ; (get-info :all-statistics)
 (assert (=>
   (Tree__sorted ($Snap.second ($Snap.second ($Snap.second $t@262@01))) top@260@01)
@@ -30157,7 +30157,7 @@
 (check-sat)
 ; unknown
 (pop) ; 10
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 10
@@ -30188,7 +30188,7 @@
 (check-sat)
 ; unknown
 (pop) ; 11
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (assert (=
   ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@446@01)))))))))
@@ -30217,7 +30217,7 @@
 (check-sat)
 ; unknown
 (pop) ; 11
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 387 | First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@446@01)))))))) != Null | live]
 ; [else-branch: 387 | First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@446@01)))))))) == Null | live]
@@ -30307,7 +30307,7 @@
 (check-sat)
 ; unknown
 (pop) ; 13
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 389 | First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@446@01)))))))) != Null | live]
 ; [else-branch: 389 | First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@446@01)))))))) == Null | dead]
@@ -30512,7 +30512,7 @@
 (check-sat)
 ; unknown
 (pop) ; 13
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 391 | First:(Second:(Second:(Second:(Second:(Second:($t@446@01)))))) != Null | live]
 ; [else-branch: 391 | First:(Second:(Second:(Second:(Second:(Second:($t@446@01)))))) == Null | dead]
@@ -30741,7 +30741,7 @@
 (check-sat)
 ; unknown
 (pop) ; 11
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 394 | First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@446@01)))))))) != Null | live]
 ; [else-branch: 394 | First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@446@01)))))))) == Null | live]
@@ -30841,7 +30841,7 @@
 (check-sat)
 ; unknown
 (pop) ; 13
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 397 | First:(Second:(Second:($t@446@01))) != Null | live]
 ; [else-branch: 397 | First:(Second:(Second:($t@446@01))) == Null | dead]
@@ -31055,7 +31055,7 @@
 (check-sat)
 ; unknown
 (pop) ; 13
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 400 | First:(Second:(Second:($t@446@01))) != Null | live]
 ; [else-branch: 400 | First:(Second:(Second:($t@446@01))) == Null | dead]
@@ -31216,7 +31216,7 @@
 (check-sat)
 ; unknown
 (pop) ; 10
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (assert (not (= left@436@01 $Ref.null)))
 (assert (=
@@ -31245,7 +31245,7 @@
 (check-sat)
 ; unknown
 (pop) ; 10
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (assert (=
   ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@446@01))))))))
@@ -31311,7 +31311,7 @@
 (check-sat)
 ; unknown
 (pop) ; 11
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 402 | First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@446@01)))))))) != Null | live]
 ; [else-branch: 402 | First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@446@01)))))))) == Null | live]
@@ -31330,7 +31330,7 @@
 (check-sat)
 ; unknown
 (pop) ; 12
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (assert (=
   ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@446@01))))))))))
@@ -31357,7 +31357,7 @@
 (check-sat)
 ; unknown
 (pop) ; 13
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 403 | First:(Second:(Second:(Second:(Second:(Second:($t@446@01)))))) != Null | live]
 ; [else-branch: 403 | First:(Second:(Second:(Second:(Second:(Second:($t@446@01)))))) == Null | dead]
@@ -31390,7 +31390,7 @@
 (check-sat)
 ; unknown
 (pop) ; 13
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 404 | First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@446@01)))))))) != Null | live]
 ; [else-branch: 404 | First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@446@01)))))))) == Null | dead]
@@ -31800,7 +31800,7 @@
 (check-sat)
 ; unknown
 (pop) ; 11
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 409 | First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@446@01)))))))) != Null | live]
 ; [else-branch: 409 | First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@446@01)))))))) == Null | live]
@@ -32246,7 +32246,7 @@
 (check-sat)
 ; unknown
 (pop) ; 9
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 416 | First:(Second:(Second:(Second:(Second:(Second:($t@262@01)))))) != Null | live]
 ; [else-branch: 416 | First:(Second:(Second:(Second:(Second:(Second:($t@262@01)))))) == Null | dead]
@@ -32262,7 +32262,7 @@
 (check-sat)
 ; unknown
 (pop) ; 10
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 417 | First:(Second:(First:(Second:(Second:(Second:(Second:(Second:(Second:($t@262@01))))))))) != Null | live]
 ; [else-branch: 417 | First:(Second:(First:(Second:(Second:(Second:(Second:(Second:(Second:($t@262@01))))))))) == Null | dead]
@@ -32290,7 +32290,7 @@
 (check-sat)
 ; unknown
 (pop) ; 13
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 419 | First:(Second:(First:(Second:(Second:(Second:(Second:(Second:(Second:($t@262@01))))))))) != Null | live]
 ; [else-branch: 419 | First:(Second:(First:(Second:(Second:(Second:(Second:(Second:(Second:($t@262@01))))))))) == Null | dead]
@@ -32340,7 +32340,7 @@
 (check-sat)
 ; unknown
 (pop) ; 13
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 421 | First:(Second:(Second:(Second:(Second:(Second:($t@262@01)))))) != Null | live]
 ; [else-branch: 421 | First:(Second:(Second:(Second:(Second:(Second:($t@262@01)))))) == Null | dead]
@@ -33614,7 +33614,7 @@
 (check-sat)
 ; unsat
 (pop) ; 16
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (assert (> (Seq_length cur_contents@441@01) 0))
 ; [exec]
@@ -34812,7 +34812,7 @@
 (check-sat)
 ; unsat
 (pop) ; 16
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (assert (> (Seq_length cur_contents@441@01) 0))
 ; [exec]
@@ -34824,7 +34824,7 @@
 (check-sat)
 ; unsat
 (pop) ; 16
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (assert (> (Seq_length cur_contents@473@01) 0))
 ; [exec]
@@ -35796,7 +35796,7 @@
 (check-sat)
 ; unsat
 (pop) ; 16
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (assert (> (Seq_length cur_contents@481@01) 0))
 ; [exec]
@@ -35888,227 +35888,5 @@
 (set-option :timeout 10)
 (assert (not (=
   ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second $t@446@01))))
-  $Ref.null)))
-(check-sat)
-; unknown
-(pop) ; 18
-; 0.01s
-; (get-info :all-statistics)
-; [then-branch: 483 | First:(Second:(Second:($t@446@01))) != Null | live]
-; [else-branch: 483 | First:(Second:(Second:($t@446@01))) == Null | dead]
-(set-option :timeout 0)
-(push) ; 18
-; [then-branch: 483 | First:(Second:(Second:($t@446@01))) != Null]
-(assert (Tree__tolist%precondition ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@446@01))))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second $t@446@01))))))
-(pop) ; 18
-(pop) ; 17
-; Joined path conditions
-; [eval] wand_1 != null
-; [eval] Wand_state_contains_for_state_contains__get_in_1(wand_1) == prev_1
-; [eval] Wand_state_contains_for_state_contains__get_in_1(wand_1)
-(push) ; 17
-; [eval] diz != null
-(pop) ; 17
-; Joined path conditions
-; [eval] Wand_state_contains_for_state_contains__get_in_1_0(wand_1) == prev_contents_1[1..]
-; [eval] Wand_state_contains_for_state_contains__get_in_1_0(wand_1)
-(push) ; 17
-; [eval] diz != null
-(pop) ; 17
-; Joined path conditions
-; [eval] prev_contents_1[1..]
-; [eval] Wand_state_contains_for_state_contains__get_out_1(wand_1) == top_1
-; [eval] Wand_state_contains_for_state_contains__get_out_1(wand_1)
-(push) ; 17
-; [eval] diz != null
-(pop) ; 17
-; Joined path conditions
-; [eval] Wand_state_contains_for_state_contains__get_out_1_0(wand_1) == target_contents_1
-; [eval] Wand_state_contains_for_state_contains__get_out_1_0(wand_1)
-(push) ; 17
-; [eval] diz != null
-(pop) ; 17
-; Joined path conditions
-; [eval] in_1 != null
-; [eval] in_1 == cur_1
-; [eval] in_1_0 == cur_contents_1[1..]
-; [eval] cur_contents_1[1..]
-; [eval] out_1 != null
-; [eval] out_1 == top_1
-; [eval] out_1_0 == target_contents_1
-(declare-const sys__result@482@01 $Ref)
-(declare-const $t@483@01 $Snap)
-(assert (= $t@483@01 ($Snap.combine ($Snap.first $t@483@01) ($Snap.second $t@483@01))))
-(assert (= ($Snap.first $t@483@01) $Snap.unit))
-; [eval] sys__result != null
-(assert (not (= sys__result@482@01 $Ref.null)))
-(assert (=
-  ($Snap.second $t@483@01)
-  ($Snap.combine
-    ($Snap.first ($Snap.second $t@483@01))
-    ($Snap.second ($Snap.second $t@483@01)))))
-(assert (=
-  ($Snap.second ($Snap.second $t@483@01))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second $t@483@01)))
-    ($Snap.second ($Snap.second ($Snap.second $t@483@01))))))
-(assert (= ($Snap.first ($Snap.second ($Snap.second $t@483@01))) $Snap.unit))
-; [eval] Wand_state_contains_for_state_contains__get_in_1(sys__result) == in_1
-; [eval] Wand_state_contains_for_state_contains__get_in_1(sys__result)
-(push) ; 17
-; [eval] diz != null
-(assert (Wand_state_contains_for_state_contains__get_in_1%precondition ($Snap.combine
-  $Snap.unit
-  ($Snap.first ($Snap.second $t@483@01))) sys__result@482@01))
-(pop) ; 17
-; Joined path conditions
-(assert (Wand_state_contains_for_state_contains__get_in_1%precondition ($Snap.combine
-  $Snap.unit
-  ($Snap.first ($Snap.second $t@483@01))) sys__result@482@01))
-(assert (=
-  (Wand_state_contains_for_state_contains__get_in_1 ($Snap.combine
-    $Snap.unit
-    ($Snap.first ($Snap.second $t@483@01))) sys__result@482@01)
-  left@436@01))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second $t@483@01)))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@483@01))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@483@01)))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@483@01))))
-  $Snap.unit))
-; [eval] Wand_state_contains_for_state_contains__get_in_1_0(sys__result) == in_1_0
-; [eval] Wand_state_contains_for_state_contains__get_in_1_0(sys__result)
-(push) ; 17
-; [eval] diz != null
-(assert (Wand_state_contains_for_state_contains__get_in_1_0%precondition ($Snap.combine
-  $Snap.unit
-  ($Snap.first ($Snap.second $t@483@01))) sys__result@482@01))
-(pop) ; 17
-; Joined path conditions
-(assert (Wand_state_contains_for_state_contains__get_in_1_0%precondition ($Snap.combine
-  $Snap.unit
-  ($Snap.first ($Snap.second $t@483@01))) sys__result@482@01))
-(assert (Seq_equal
-  (Wand_state_contains_for_state_contains__get_in_1_0 ($Snap.combine
-    $Snap.unit
-    ($Snap.first ($Snap.second $t@483@01))) sys__result@482@01)
-  (Seq_drop cur_contents@481@01 1)))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@483@01))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@483@01)))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@483@01))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@483@01)))))
-  $Snap.unit))
-; [eval] Wand_state_contains_for_state_contains__get_out_1(sys__result) == out_1
-; [eval] Wand_state_contains_for_state_contains__get_out_1(sys__result)
-(push) ; 17
-; [eval] diz != null
-(assert (Wand_state_contains_for_state_contains__get_out_1%precondition ($Snap.combine
-  $Snap.unit
-  ($Snap.first ($Snap.second $t@483@01))) sys__result@482@01))
-(pop) ; 17
-; Joined path conditions
-(assert (Wand_state_contains_for_state_contains__get_out_1%precondition ($Snap.combine
-  $Snap.unit
-  ($Snap.first ($Snap.second $t@483@01))) sys__result@482@01))
-(assert (=
-  (Wand_state_contains_for_state_contains__get_out_1 ($Snap.combine
-    $Snap.unit
-    ($Snap.first ($Snap.second $t@483@01))) sys__result@482@01)
-  top@260@01))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@483@01)))))
-  $Snap.unit))
-; [eval] Wand_state_contains_for_state_contains__get_out_1_0(sys__result) == out_1_0
-; [eval] Wand_state_contains_for_state_contains__get_out_1_0(sys__result)
-(push) ; 17
-; [eval] diz != null
-(assert (Wand_state_contains_for_state_contains__get_out_1_0%precondition ($Snap.combine
-  $Snap.unit
-  ($Snap.first ($Snap.second $t@483@01))) sys__result@482@01))
-(pop) ; 17
-; Joined path conditions
-(assert (Wand_state_contains_for_state_contains__get_out_1_0%precondition ($Snap.combine
-  $Snap.unit
-  ($Snap.first ($Snap.second $t@483@01))) sys__result@482@01))
-(assert (Seq_equal
-  (Wand_state_contains_for_state_contains__get_out_1_0 ($Snap.combine
-    $Snap.unit
-    ($Snap.first ($Snap.second $t@483@01))) sys__result@482@01)
-  target_contents@289@01))
-; State saturation: after contract
-(set-option :timeout 50)
-(check-sat)
-; unknown
-; [exec]
-; vwand := __flatten_40
-; Loop head block: Re-establish invariant
-; [eval] cur.Tree__left == left
-(set-option :timeout 0)
-(push) ; 17
-(assert (not (=
-  ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@446@01)))))))
-  left@476@01)))
-(check-sat)
-; unsat
-(pop) ; 17
-; 0.00s
-; (get-info :all-statistics)
-(assert (=
-  ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@446@01)))))))
-  left@476@01))
-; [eval] cur.Tree__right != null
-; [then-branch: 484 | First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@446@01)))))))) != Null | dead]
-; [else-branch: 484 | First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@446@01)))))))) == Null | live]
-(push) ; 17
-; [else-branch: 484 | First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@446@01)))))))) == Null]
-; [eval] left.Tree__left != null
-(push) ; 18
-(set-option :timeout 10)
-(assert (not (=
-  ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@446@01))))))))))))
-  $Ref.null)))
-(check-sat)
-; unknown
-(pop) ; 18
-; 0.01s
-; (get-info :all-statistics)
-; [then-branch: 485 | First:(Second:(First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@446@01))))))))))) != Null | live]
-; [else-branch: 485 | First:(Second:(First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@446@01))))))))))) == Null | dead]
-(set-option :timeout 0)
-(push) ; 18
-; [then-branch: 485 | First:(Second:(First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@446@01))))))))))) != Null]
-; [eval] left.Tree__right != null
-(push) ; 19
-(set-option :timeout 10)
-(assert (not (=
-  ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@446@01)))))))))))))
-  $Ref.null)))
-(check-sat)
-; unknown
-(pop) ; 19
-; 0.01s
-; (get-info :all-statistics)
-; [then-branch: 486 | First:(Second:(Second:(First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@446@01)))))))))))) != Null | live]
-; [else-branch: 486 | First:(Second:(Second:(First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@446@01)))))))))))) == Null | dead]
-(set-option :timeout 0)
-(push) ; 19
-; [then-branch: 486 | First:(Second:(Second:(First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@446@01)))))))))))) != Null]
-; [eval] cur_contents == Tree__tolist(left.Tree__left) ++ Seq(left.Tree__data) ++ Tree__tolist(left.Tree__right) ++ Seq(cur.Tree__data) ++ Tree__tolist(cur.Tree__right)
-; [eval] Tree__tolist(left.Tree__left) ++ Seq(left.Tree__data) ++ Tree__tolist(left.Tree__right) ++ Seq(cur.Tree__data) ++ Tree__tolist(cur.Tree__right)
-; [eval] Tree__tolist(left.Tree__left) ++ Seq(left.Tree__data) ++ Tree__tolist(left.Tree__right) ++ Seq(cur.Tree__data)
-; [eval] Tree__tolist(left.Tree__left) ++ Seq(left.Tree__data) ++ Tree__tolist(left.Tree__right)
-; [eval] Tree__tolist(left.Tree__left) ++ Seq(left.Tree__data)
-; [eval] Tree__tolist(left.Tree__left)
-(push) ; 20
-; [eval] t != null
-(push) ; 21
-(set-option :timeout 10)
-(assert (not (=
-  ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@446@01))))))))))))
   $Ref.null)))
 (check-sat)

@@ -1,0 +1,77 @@
+(library
+ (name batteries_unthreaded)
+ (public_name batteries.unthreaded)
+ (synopsis "Batteries Included (for use in unthreaded programs)")
+ (modules (:standard \ batteries_compattest batConcreteQueue_402
+                       batConcreteQueue_403 batteriesThread batRMutex
+                       batMutex))
+ (preprocess
+  (action (run %{project_root}/build/prefilter.exe %{input-file})))
+ (flags (:standard -w -3-32-50-52))
+ (libraries num str camlp-streams unix bigarray)
+ (inline_tests
+   (backend qtest_batteries)
+   (deps %{project_root}/qtest/qtest_preamble.ml
+   ;; fix 'dune clean && dune build @src/runtest' (opam CI tests)
+          batteriesConfig.ml batConcreteQueue.ml))
+ (wrapped false)
+)
+
+(library
+ (name batteries)
+ (public_name batteries)
+ (synopsis
+ "Batteries Included is a community-maintained standard library extension")
+ (modules batteriesThread batRMutex batMutex)
+ (preprocess
+  (action (run %{project_root}/build/prefilter.exe %{input-file})))
+ (flags (:standard -w -3-32-50-52))
+ (libraries batteries.unthreaded threads)
+ (inline_tests
+   (backend qtest_batteries)
+   (deps %{project_root}/qtest/qtest_preamble.ml)
+ )
+ (wrapped false)
+)
+
+(rule
+  (action (copy# batConcreteQueue_402.ml batConcreteQueue.ml))
+  (enabled_if (< %{ocaml_version} 4.03))
+)
+
+(rule
+  (action (copy# batConcreteQueue_403.ml batConcreteQueue.ml))
+  (enabled_if (>= %{ocaml_version} 4.03))
+)
+
+(library
+ (name qtest_batteries)
+ (modules)
+ (inline_tests.backend
+    (generate_runner (pipe-stdout (run qtest extract --preamble-file
+    %{dep:../qtest/qtest_preamble.ml} --quiet %{impl-files} %{intf-files})
+    ;; inline_tests gets unpreprocessed files, apply prefilter here as well
+    (run ../build/prefilter.exe)))
+    (runner_libraries qcheck ounit2)
+ ))
+
+(rule
+  (target batteriesConfig.ml)
+  (deps %{project_root}/build/mkconf.exe %{project_root}/VERSION
+        batteriesConfig.mlp)
+  (action
+    (run %{project_root}/build/mkconf.exe %{project_root}/VERSION
+         batteriesConfig.mlp %{target})))
+
+(test
+ (name batteries_compattest)
+ (modules batteries_compattest)
+ (preprocess
+  (action (run %{project_root}/build/prefilter.exe %{input-file})))
+ (libraries batteries))
+
+; build documentation
+;   dune build @doc
+;   xdg-open _build/default/_doc/_html/index.html
+(documentation
+ (mld_files index))

@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-26 19:40:20
+; Started: 2024-12-27 02:00:21
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -161,30 +161,30 @@
 (assert (forall (($t@3@01 $Snap)) (!
   (= (MWSF_apply mwsf@4@01 $t@3@01) $Snap.unit)
   :pattern ((MWSF_apply mwsf@4@01 $t@3@01))
-  :qid |quant-u-24406|)))
+  :qid |quant-u-24434|)))
 (pop) ; 4
 (push) ; 4
 (assert (forall (($t@3@01 $Snap)) (!
   (= (MWSF_apply mwsf@4@01 $t@3@01) $Snap.unit)
   :pattern ((MWSF_apply mwsf@4@01 $t@3@01))
-  :qid |quant-u-24407|)))
+  :qid |quant-u-24435|)))
 ; Create MagicWandSnapFunction for wand false --* true
 (declare-const mwsf@5@01 $MWSF)
 (assert (forall (($t@2@01 $Snap)) (!
   (= (MWSF_apply mwsf@5@01 $t@2@01) $Snap.unit)
   :pattern ((MWSF_apply mwsf@5@01 $t@2@01))
-  :qid |quant-u-24408|)))
+  :qid |quant-u-24436|)))
 (pop) ; 4
 (pop) ; 3
 (push) ; 3
 (assert (forall (($t@2@01 $Snap)) (!
   (= (MWSF_apply mwsf@5@01 $t@2@01) $Snap.unit)
   :pattern ((MWSF_apply mwsf@5@01 $t@2@01))
-  :qid |quant-u-24409|)))
+  :qid |quant-u-24437|)))
 (assert (forall (($t@3@01 $Snap)) (!
   (= (MWSF_apply mwsf@4@01 $t@3@01) $Snap.unit)
   :pattern ((MWSF_apply mwsf@4@01 $t@3@01))
-  :qid |quant-u-24406|)))
+  :qid |quant-u-24434|)))
 (pop) ; 3
 (pop) ; 2
 (pop) ; 1

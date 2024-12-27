@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-26 19:40:31
+; Started: 2024-12-27 02:00:32
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -465,11 +465,11 @@
 (assert (forall ((s@$ $Snap) (t@0@00 Tree)) (!
   (= (height%limited s@$ t@0@00) (height s@$ t@0@00))
   :pattern ((height s@$ t@0@00))
-  :qid |quant-u-24617|)))
+  :qid |quant-u-24645|)))
 (assert (forall ((s@$ $Snap) (t@0@00 Tree)) (!
   (height%stateless t@0@00)
   :pattern ((height%limited s@$ t@0@00))
-  :qid |quant-u-24618|)))
+  :qid |quant-u-24646|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -631,7 +631,7 @@
           (+ (height%limited $Snap.unit (getLeft<Tree> t@0@00)) 1)
           (+ (height%limited $Snap.unit (getRight<Tree> t@0@00)) 1)))))
   :pattern ((height s@$ t@0@00))
-  :qid |quant-u-24619|)))
+  :qid |quant-u-24647|)))
 (assert (forall ((s@$ $Snap) (t@0@00 Tree)) (!
   (=>
     (height%precondition s@$ t@0@00)
@@ -649,4 +649,4 @@
           (height%precondition $Snap.unit (getLeft<Tree> t@0@00))
           (height%precondition $Snap.unit (getRight<Tree> t@0@00))))))
   :pattern ((height s@$ t@0@00))
-  :qid |quant-u-24620|)))
+  :qid |quant-u-24648|)))

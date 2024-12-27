@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-26 19:36:54
+; Started: 2024-12-27 01:56:53
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -511,6 +511,6 @@
 (assert (forall (($t@4@01 $Snap)) (!
   (= (MWSF_apply mwsf@6@01 $t@4@01) $t@5@01)
   :pattern ((MWSF_apply mwsf@6@01 $t@4@01))
-  :qid |quant-u-20450|)))
+  :qid |quant-u-20478|)))
 (pop) ; 2
 (pop) ; 1

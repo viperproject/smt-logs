@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-26 20:25:20
+// Date:         2024-12-27 02:45:41
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0068.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0068-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -371,10 +371,10 @@ axiom (forall<T> a: MultiSet T, b: MultiSet T :: { MultiSet#Disjoint(a,b) }
 procedure test1(xs: (Set Ref), ys: (Set Ref), zs: (Set Ref)) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -384,8 +384,8 @@ procedure test1(xs: (Set Ref), ys: (Set Ref), zs: (Set Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale (xs intersection ys) == zs -- 0068.vpr@5.10--5.36
     assume Set#Equal(Set#Intersection(xs, ys), zs);
@@ -393,8 +393,8 @@ procedure test1(xs: (Set Ref), ys: (Set Ref), zs: (Set Ref)) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (ys intersection xs) == zs -- 0068.vpr@6.3--6.36
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion (ys intersection xs) == zs might not hold. (0068.vpr@6.10--6.36) [220841]"}
       Set#Equal(Set#Intersection(ys, xs), zs);
     assume state(Heap, Mask);
@@ -407,10 +407,10 @@ procedure test1(xs: (Set Ref), ys: (Set Ref), zs: (Set Ref)) returns ()
 procedure test11(xs: (Set Ref), ys: (Set Ref), zs: (Set Ref), vas: (Set Ref)) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -420,8 +420,8 @@ procedure test11(xs: (Set Ref), ys: (Set Ref), zs: (Set Ref), vas: (Set Ref)) re
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale ((xs intersection ys) intersection zs) == as -- 0068.vpr@10.10--10.54
     assume Set#Equal(Set#Intersection(Set#Intersection(xs, ys), zs), vas);
@@ -429,8 +429,8 @@ procedure test11(xs: (Set Ref), ys: (Set Ref), zs: (Set Ref), vas: (Set Ref)) re
     assume state(Heap, Mask);
   
   // -- Translating statement: assert ((zs intersection ys) intersection xs) == as -- 0068.vpr@11.3--11.54
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion ((zs intersection ys) intersection xs) == as might not hold. (0068.vpr@11.10--11.54) [220842]"}
       Set#Equal(Set#Intersection(Set#Intersection(zs, ys), xs), vas);
     assume state(Heap, Mask);
@@ -443,10 +443,10 @@ procedure test11(xs: (Set Ref), ys: (Set Ref), zs: (Set Ref), vas: (Set Ref)) re
 procedure test12(xs: (Set Ref), ys: (Set Ref), zs: (Set Ref), vas: (Set Ref)) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -456,8 +456,8 @@ procedure test12(xs: (Set Ref), ys: (Set Ref), zs: (Set Ref), vas: (Set Ref)) re
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale ((xs intersection ys) intersection zs) == as -- 0068.vpr@15.10--15.54
     assume Set#Equal(Set#Intersection(Set#Intersection(xs, ys), zs), vas);
@@ -465,8 +465,8 @@ procedure test12(xs: (Set Ref), ys: (Set Ref), zs: (Set Ref), vas: (Set Ref)) re
     assume state(Heap, Mask);
   
   // -- Translating statement: assert ((xs intersection zs) intersection ys) == as -- 0068.vpr@16.3--16.54
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion ((xs intersection zs) intersection ys) == as might not hold. (0068.vpr@16.10--16.54) [220843]"}
       Set#Equal(Set#Intersection(Set#Intersection(xs, zs), ys), vas);
     assume state(Heap, Mask);
@@ -479,10 +479,10 @@ procedure test12(xs: (Set Ref), ys: (Set Ref), zs: (Set Ref), vas: (Set Ref)) re
 procedure test13(xs: (Set Ref), ys: (Set Ref), zs: (Set Ref), vas: (Set Ref)) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -492,8 +492,8 @@ procedure test13(xs: (Set Ref), ys: (Set Ref), zs: (Set Ref), vas: (Set Ref)) re
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale ((xs intersection ys) intersection zs) == as -- 0068.vpr@20.10--20.54
     assume Set#Equal(Set#Intersection(Set#Intersection(xs, ys), zs), vas);
@@ -501,8 +501,8 @@ procedure test13(xs: (Set Ref), ys: (Set Ref), zs: (Set Ref), vas: (Set Ref)) re
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (xs intersection (zs intersection ys)) == as -- 0068.vpr@21.3--21.54
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion (xs intersection (zs intersection ys)) == as might not hold. (0068.vpr@21.10--21.54) [220844]"}
       Set#Equal(Set#Intersection(xs, Set#Intersection(zs, ys)), vas);
     assume state(Heap, Mask);
@@ -515,10 +515,10 @@ procedure test13(xs: (Set Ref), ys: (Set Ref), zs: (Set Ref), vas: (Set Ref)) re
 procedure test14(xs: (Set Ref), ys: (Set Ref), zs: (Set Ref), vas: (Set Ref)) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -528,8 +528,8 @@ procedure test14(xs: (Set Ref), ys: (Set Ref), zs: (Set Ref), vas: (Set Ref)) re
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale ((xs intersection ys) intersection zs) == as -- 0068.vpr@25.10--25.54
     assume Set#Equal(Set#Intersection(Set#Intersection(xs, ys), zs), vas);
@@ -537,8 +537,8 @@ procedure test14(xs: (Set Ref), ys: (Set Ref), zs: (Set Ref), vas: (Set Ref)) re
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (ys intersection (zs intersection xs)) == as -- 0068.vpr@26.3--26.54
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion (ys intersection (zs intersection xs)) == as might not hold. (0068.vpr@26.10--26.54) [220845]"}
       Set#Equal(Set#Intersection(ys, Set#Intersection(zs, xs)), vas);
     assume state(Heap, Mask);
@@ -551,10 +551,10 @@ procedure test14(xs: (Set Ref), ys: (Set Ref), zs: (Set Ref), vas: (Set Ref)) re
 procedure test2(xs: (Set Ref), ys: (Set Ref), zs: (Set Ref)) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -564,8 +564,8 @@ procedure test2(xs: (Set Ref), ys: (Set Ref), zs: (Set Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale (xs union ys) == zs -- 0068.vpr@32.10--32.29
     assume Set#Equal(Set#Union(xs, ys), zs);
@@ -573,8 +573,8 @@ procedure test2(xs: (Set Ref), ys: (Set Ref), zs: (Set Ref)) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (ys union xs) == zs -- 0068.vpr@33.3--33.29
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion (ys union xs) == zs might not hold. (0068.vpr@33.10--33.29) [220846]"}
       Set#Equal(Set#Union(ys, xs), zs);
     assume state(Heap, Mask);
@@ -587,10 +587,10 @@ procedure test2(xs: (Set Ref), ys: (Set Ref), zs: (Set Ref)) returns ()
 procedure test21(xs: (Set Ref), ys: (Set Ref), zs: (Set Ref), vas: (Set Ref)) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -600,8 +600,8 @@ procedure test21(xs: (Set Ref), ys: (Set Ref), zs: (Set Ref), vas: (Set Ref)) re
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale ((xs union ys) union zs) == as -- 0068.vpr@37.10--37.40
     assume Set#Equal(Set#Union(Set#Union(xs, ys), zs), vas);
@@ -609,8 +609,8 @@ procedure test21(xs: (Set Ref), ys: (Set Ref), zs: (Set Ref), vas: (Set Ref)) re
     assume state(Heap, Mask);
   
   // -- Translating statement: assert ((zs union ys) union xs) == as -- 0068.vpr@38.3--38.40
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion ((zs union ys) union xs) == as might not hold. (0068.vpr@38.10--38.40) [220847]"}
       Set#Equal(Set#Union(Set#Union(zs, ys), xs), vas);
     assume state(Heap, Mask);
@@ -623,10 +623,10 @@ procedure test21(xs: (Set Ref), ys: (Set Ref), zs: (Set Ref), vas: (Set Ref)) re
 procedure test22(xs: (Set Ref), ys: (Set Ref), zs: (Set Ref), vas: (Set Ref)) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -636,8 +636,8 @@ procedure test22(xs: (Set Ref), ys: (Set Ref), zs: (Set Ref), vas: (Set Ref)) re
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale ((xs union ys) union zs) == as -- 0068.vpr@42.10--42.40
     assume Set#Equal(Set#Union(Set#Union(xs, ys), zs), vas);
@@ -645,8 +645,8 @@ procedure test22(xs: (Set Ref), ys: (Set Ref), zs: (Set Ref), vas: (Set Ref)) re
     assume state(Heap, Mask);
   
   // -- Translating statement: assert ((xs union zs) union ys) == as -- 0068.vpr@43.3--43.40
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion ((xs union zs) union ys) == as might not hold. (0068.vpr@43.10--43.40) [220848]"}
       Set#Equal(Set#Union(Set#Union(xs, zs), ys), vas);
     assume state(Heap, Mask);
@@ -659,10 +659,10 @@ procedure test22(xs: (Set Ref), ys: (Set Ref), zs: (Set Ref), vas: (Set Ref)) re
 procedure test23(xs: (Set Ref), ys: (Set Ref), zs: (Set Ref), vas: (Set Ref)) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -672,8 +672,8 @@ procedure test23(xs: (Set Ref), ys: (Set Ref), zs: (Set Ref), vas: (Set Ref)) re
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale ((xs union ys) union zs) == as -- 0068.vpr@47.10--47.40
     assume Set#Equal(Set#Union(Set#Union(xs, ys), zs), vas);
@@ -681,8 +681,8 @@ procedure test23(xs: (Set Ref), ys: (Set Ref), zs: (Set Ref), vas: (Set Ref)) re
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (xs union (zs union ys)) == as -- 0068.vpr@48.3--48.40
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion (xs union (zs union ys)) == as might not hold. (0068.vpr@48.10--48.40) [220849]"}
       Set#Equal(Set#Union(xs, Set#Union(zs, ys)), vas);
     assume state(Heap, Mask);
@@ -695,10 +695,10 @@ procedure test23(xs: (Set Ref), ys: (Set Ref), zs: (Set Ref), vas: (Set Ref)) re
 procedure test24(xs: (Set Ref), ys: (Set Ref), zs: (Set Ref), vas: (Set Ref)) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -708,8 +708,8 @@ procedure test24(xs: (Set Ref), ys: (Set Ref), zs: (Set Ref), vas: (Set Ref)) re
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale ((xs union ys) union zs) == as -- 0068.vpr@52.10--52.40
     assume Set#Equal(Set#Union(Set#Union(xs, ys), zs), vas);
@@ -717,8 +717,8 @@ procedure test24(xs: (Set Ref), ys: (Set Ref), zs: (Set Ref), vas: (Set Ref)) re
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (ys union (zs union xs)) == as -- 0068.vpr@53.3--53.40
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion (ys union (zs union xs)) == as might not hold. (0068.vpr@53.10--53.40) [220850]"}
       Set#Equal(Set#Union(ys, Set#Union(zs, xs)), vas);
     assume state(Heap, Mask);

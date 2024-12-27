@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-26 19:40:22
+; Started: 2024-12-27 02:00:22
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -441,11 +441,11 @@
 (assert (forall ((s@$ $Snap) (this$_2@0@00 $Ref)) (!
   (= (Nodevals$%limited s@$ this$_2@0@00) (Nodevals$ s@$ this$_2@0@00))
   :pattern ((Nodevals$ s@$ this$_2@0@00))
-  :qid |quant-u-24426|)))
+  :qid |quant-u-24454|)))
 (assert (forall ((s@$ $Snap) (this$_2@0@00 $Ref)) (!
   (Nodevals$%stateless this$_2@0@00)
   :pattern ((Nodevals$%limited s@$ this$_2@0@00))
-  :qid |quant-u-24427|)))
+  :qid |quant-u-24455|)))
 (assert (forall ((s@$ $Snap) (this$_2@0@00 $Ref)) (!
   (and
     ($Perm.isReadVar $k@4@00)
@@ -468,7 +468,7 @@
               ($Snap.second ($Snap.second ($Snap.second s@$)))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$)))))))))
   :pattern ((Nodevals$ s@$ this$_2@0@00))
   :pattern ((Nodevals$%stateless this$_2@0@00) (Nodelist$%trigger ($Snap.second s@$) this$_2@0@00))
-  :qid |quant-u-24430|)))
+  :qid |quant-u-24458|)))
 (assert (forall ((s@$ $Snap) (this$_2@0@00 $Ref)) (!
   (=>
     (Nodevals$%precondition s@$ this$_2@0@00)
@@ -479,17 +479,17 @@
         $Snap.unit
         ($Snap.second ($Snap.second ($Snap.second s@$)))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$))))))
   :pattern ((Nodevals$ s@$ this$_2@0@00))
-  :qid |quant-u-24431|)))
+  :qid |quant-u-24459|)))
 (assert (forall ((s@$ $Snap) (this$_3@2@00 $Ref)) (!
   (=
     (Nodereverse_vals$%limited s@$ this$_3@2@00)
     (Nodereverse_vals$ s@$ this$_3@2@00))
   :pattern ((Nodereverse_vals$ s@$ this$_3@2@00))
-  :qid |quant-u-24428|)))
+  :qid |quant-u-24456|)))
 (assert (forall ((s@$ $Snap) (this$_3@2@00 $Ref)) (!
   (Nodereverse_vals$%stateless this$_3@2@00)
   :pattern ((Nodereverse_vals$%limited s@$ this$_3@2@00))
-  :qid |quant-u-24429|)))
+  :qid |quant-u-24457|)))
 (assert (forall ((s@$ $Snap) (this$_3@2@00 $Ref)) (!
   (and
     ($Perm.isReadVar $k@9@00)
@@ -512,7 +512,7 @@
             (Seq_singleton ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second s@$))))))))))
   :pattern ((Nodereverse_vals$ s@$ this$_3@2@00))
   :pattern ((Nodereverse_vals$%stateless this$_3@2@00) (Nodelist$%trigger ($Snap.second s@$) this$_3@2@00))
-  :qid |quant-u-24432|)))
+  :qid |quant-u-24460|)))
 (assert (forall ((s@$ $Snap) (this$_3@2@00 $Ref)) (!
   (=>
     (Nodereverse_vals$%precondition s@$ this$_3@2@00)
@@ -523,7 +523,7 @@
         $Snap.unit
         ($Snap.second ($Snap.second ($Snap.second s@$)))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$))))))
   :pattern ((Nodereverse_vals$ s@$ this$_3@2@00))
-  :qid |quant-u-24433|)))
+  :qid |quant-u-24461|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- Nodereverse_in_place$ ----------
@@ -3339,7 +3339,7 @@
 (check-sat)
 ; unsat
 (pop) ; 18
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (assert (Seq_equal
   (Nodereverse_vals$ ($Snap.combine

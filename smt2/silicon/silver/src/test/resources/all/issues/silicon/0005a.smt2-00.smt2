@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-26 19:41:36
+; Started: 2024-12-27 02:01:36
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -128,11 +128,11 @@
 (assert (forall ((s@$ $Snap) (x@0@00 Int) (y@1@00 Int)) (!
   (= (trigF%limited s@$ x@0@00 y@1@00) (trigF s@$ x@0@00 y@1@00))
   :pattern ((trigF s@$ x@0@00 y@1@00))
-  :qid |quant-u-25980|)))
+  :qid |quant-u-26008|)))
 (assert (forall ((s@$ $Snap) (x@0@00 Int) (y@1@00 Int)) (!
   (trigF%stateless x@0@00 y@1@00)
   :pattern ((trigF%limited s@$ x@0@00 y@1@00))
-  :qid |quant-u-25981|)))
+  :qid |quant-u-26009|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -144,11 +144,11 @@
 (assert (forall ((s@$ $Snap) (x@0@00 Int) (y@1@00 Int)) (!
   (=> (trigF%precondition s@$ x@0@00 y@1@00) (= (trigF s@$ x@0@00 y@1@00) true))
   :pattern ((trigF s@$ x@0@00 y@1@00))
-  :qid |quant-u-25984|)))
+  :qid |quant-u-26012|)))
 (assert (forall ((s@$ $Snap) (x@0@00 Int) (y@1@00 Int)) (!
   true
   :pattern ((trigF s@$ x@0@00 y@1@00))
-  :qid |quant-u-25985|)))
+  :qid |quant-u-26013|)))
 ; ---------- FUNCTION trigG----------
 (declare-fun x@3@00 () Int)
 (declare-fun b@4@00 () Bool)
@@ -160,11 +160,11 @@
 (assert (forall ((s@$ $Snap) (x@3@00 Int) (b@4@00 Bool)) (!
   (= (trigG%limited s@$ x@3@00 b@4@00) (trigG s@$ x@3@00 b@4@00))
   :pattern ((trigG s@$ x@3@00 b@4@00))
-  :qid |quant-u-25982|)))
+  :qid |quant-u-26010|)))
 (assert (forall ((s@$ $Snap) (x@3@00 Int) (b@4@00 Bool)) (!
   (trigG%stateless x@3@00 b@4@00)
   :pattern ((trigG%limited s@$ x@3@00 b@4@00))
-  :qid |quant-u-25983|)))
+  :qid |quant-u-26011|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -178,11 +178,11 @@
     (trigG%precondition s@$ x@3@00 b@4@00)
     (= (trigG s@$ x@3@00 b@4@00) b@4@00))
   :pattern ((trigG s@$ x@3@00 b@4@00))
-  :qid |quant-u-25986|)))
+  :qid |quant-u-26014|)))
 (assert (forall ((s@$ $Snap) (x@3@00 Int) (b@4@00 Bool)) (!
   true
   :pattern ((trigG s@$ x@3@00 b@4@00))
-  :qid |quant-u-25987|)))
+  :qid |quant-u-26015|)))
 ; ---------- P ----------
 (set-option :timeout 0)
 (push) ; 1

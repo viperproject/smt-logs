@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-26 19:44:51
+// Date:         2024-12-27 02:04:56
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/consistency/permissions.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/consistency/permissions-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -577,10 +577,10 @@ procedure test01(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -600,12 +600,12 @@ procedure test01(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert x != null -- permissions.vpr@9.3--9.19
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion x != null might not hold. (permissions.vpr@9.10--9.19) [5255]"}
       x != null;
     assume state(Heap, Mask);
@@ -618,12 +618,12 @@ procedure test01(x: Ref) returns ()
 procedure test01_client(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var perm: Perm;
   var ExhaleHeap: HeapType;
   
@@ -638,16 +638,16 @@ procedure test01_client(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: test01(x) -- permissions.vpr@14.3--14.12
     PreCallHeap := Heap;
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  The precondition of method test01 might not hold. There might be insufficient permission to access x.f (permissions.vpr@14.3--14.12) [5256]"}
@@ -672,10 +672,10 @@ procedure test01_qp(xs: (Seq Ref), y: Ref) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -732,12 +732,12 @@ procedure test01_qp(xs: (Seq Ref), y: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert y != null -- permissions.vpr@21.4--21.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion y != null might not hold. (permissions.vpr@21.11--21.20) [5258]"}
       y != null;
     assume state(Heap, Mask);
@@ -750,12 +750,12 @@ procedure test01_qp(xs: (Seq Ref), y: Ref) returns ()
 procedure test01_qp_client(xs: (Seq Ref), y: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var QPMask: MaskType;
   var ExhaleHeap: HeapType;
   
@@ -774,16 +774,16 @@ procedure test01_qp_client(xs: (Seq Ref), y: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: test01_qp(xs, y) -- permissions.vpr@28.3--28.19
     PreCallHeap := Heap;
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       assert {:msg "  The precondition of method test01_qp might not hold. Assertion (y in xs) might not hold. (permissions.vpr@28.3--28.19) [5259]"}
         Seq#Contains(xs, y);
       havoc QPMask;
@@ -845,10 +845,10 @@ procedure test02(x: Ref, p_1: Perm) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -872,19 +872,19 @@ procedure test02(x: Ref, p_1: Perm) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert x != null -- permissions.vpr@36.3--36.19
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion x != null might not hold. (permissions.vpr@36.10--36.19) [5263]"}
       x != null;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert p != none -- permissions.vpr@40.3--40.19
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion p != none might not hold. (permissions.vpr@40.10--40.19) [5264]"}
       p_1 != NoPerm;
     assume state(Heap, Mask);
@@ -898,12 +898,12 @@ procedure test02_client(x: Ref, p_1: Perm) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -928,16 +928,16 @@ procedure test02_client(x: Ref, p_1: Perm) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: test02(x, p) -- permissions.vpr@47.3--47.15
     PreCallHeap := Heap;
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       assert {:msg "  The precondition of method test02 might not hold. Assertion p >= none might not hold. (permissions.vpr@47.3--47.15) [5266]"}
         NoPerm <= p_1;
       perm := p_1;
@@ -958,8 +958,8 @@ procedure test02_client(x: Ref, p_1: Perm) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- permissions.vpr@49.3--49.15
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion false might not hold. (permissions.vpr@49.10--49.15) [5269]"}
       false;
     assume state(Heap, Mask);
@@ -973,10 +973,10 @@ procedure test02_qp(xs: (Seq Ref), y: Ref, p_1: Perm) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1041,19 +1041,19 @@ procedure test02_qp(xs: (Seq Ref), y: Ref, p_1: Perm) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert y != null -- permissions.vpr@58.4--58.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion y != null might not hold. (permissions.vpr@58.11--58.20) [5272]"}
       y != null;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert p != none -- permissions.vpr@62.4--62.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion p != none might not hold. (permissions.vpr@62.11--62.20) [5273]"}
       p_1 != NoPerm;
     assume state(Heap, Mask);
@@ -1066,12 +1066,12 @@ procedure test02_qp(xs: (Seq Ref), y: Ref, p_1: Perm) returns ()
 procedure test02_qp_client(xs: (Seq Ref), y: Ref, p_1: Perm) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var QPMask: MaskType;
   var ExhaleHeap: HeapType;
   
@@ -1102,16 +1102,16 @@ procedure test02_qp_client(xs: (Seq Ref), y: Ref, p_1: Perm) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: test02_qp(xs, y, p) -- permissions.vpr@70.3--70.22
     PreCallHeap := Heap;
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       assert {:msg "  The precondition of method test02_qp might not hold. Assertion (y in xs) might not hold. (permissions.vpr@70.3--70.22) [5274]"}
         Seq#Contains(xs, y);
       assert {:msg "  The precondition of method test02_qp might not hold. Assertion p >= none might not hold. (permissions.vpr@70.3--70.22) [5275]"}
@@ -1171,8 +1171,8 @@ procedure test02_qp_client(xs: (Seq Ref), y: Ref, p_1: Perm) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- permissions.vpr@72.3--72.15
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion false might not hold. (permissions.vpr@72.10--72.15) [5279]"}
       false;
     assume state(Heap, Mask);

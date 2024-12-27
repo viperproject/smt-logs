@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-26 20:08:18
+// Date:         2024-12-27 02:28:30
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/invariants/jump_out_of_loop.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/invariants/jump_out_of_loop-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -246,11 +246,11 @@ procedure m(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var l_lblGuard: bool;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var frameMask3: MaskType;
   var frameHeap3: HeapType;
   var c: int;
@@ -258,8 +258,8 @@ procedure m(x: Ref) returns ()
   var loopMask: MaskType;
   var LoopSumHeap: HeapType;
   var LoopSumMask: MaskType;
-  var LabellHeap: HeapType;
   var LabellMask: MaskType;
+  var LabellHeap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -273,8 +273,8 @@ procedure m(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: // id = 1
   // // LoopDummyStmtInfo()
@@ -298,8 +298,8 @@ procedure m(x: Ref) returns ()
     // -- Before loop head3
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
       
       // -- Store frame in mask associated with loop
         frameMask3 := Mask;
@@ -376,8 +376,8 @@ procedure m(x: Ref) returns ()
   // inhale true -- <no position>
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         // Terminate execution
         assume false;
       }
@@ -392,8 +392,8 @@ procedure m(x: Ref) returns ()
   // // LoopInfo(None,Set())
   // label l -- jump_out_of_loop.vpr@19.5--19.12
     l_9:
-    LabellHeap := Heap;
     LabellMask := Mask;
+    LabellHeap := Heap;
     l_lblGuard := true;
     assume state(Heap, Mask);
   
@@ -405,16 +405,16 @@ procedure m(x: Ref) returns ()
   
   // -- Translating statement: // id = 11
   // assert perm(x.g) == 1 / 2 + 1 / 3 -- jump_out_of_loop.vpr@25.5--25.32
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion perm(x.g) == 1 / 2 + 1 / 3 might not hold. (jump_out_of_loop.vpr@25.12--25.32) [141605]"}
       Mask[x, g] == 1 / 2 + 1 / 3;
     assume state(Heap, Mask);
   
   // -- Translating statement: // id = 12
   // assert false -- jump_out_of_loop.vpr@28.5--28.17
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion false might not hold. (jump_out_of_loop.vpr@28.12--28.17) [141606]"}
       false;
     assume state(Heap, Mask);

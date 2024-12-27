@@ -1,0 +1,25 @@
+description =
+"Batteries Included is a community-maintained standard library extension"
+requires = "batteries.unthreaded threads"
+archive(byte) = "batteries.cma"
+archive(native) = "batteries.cmxa"
+plugin(byte) = "batteries.cma"
+plugin(native) = "batteries.cmxs"
+package "top" (
+  directory = "top"
+  description = "Bytecode toplevel support for Batteries"
+  requires = "batteries compiler-libs num str threads"
+  archive(byte) = "batteries_top.cma"
+  archive(native) = ""
+  plugin(byte) = "batteries_top.cma"
+  plugin(native) = ""
+)
+package "unthreaded" (
+  directory = "unthreaded"
+  description = "Batteries Included (for use in unthreaded programs)"
+  requires = "camlp-streams num str unix"
+  archive(byte) = "batteries_unthreaded.cma"
+  archive(native) = "batteries_unthreaded.cmxa"
+  plugin(byte) = "batteries_unthreaded.cma"
+  plugin(native) = "batteries_unthreaded.cmxs"
+)

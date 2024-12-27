@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-26 19:42:04
+; Started: 2024-12-27 02:02:04
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -124,35 +124,35 @@
 (assert (forall ((s@$ $Snap) (r@0@00 $Ref)) (!
   (= (F2%limited s@$ r@0@00) (F2 s@$ r@0@00))
   :pattern ((F2 s@$ r@0@00))
-  :qid |quant-u-26130|)))
+  :qid |quant-u-26158|)))
 (assert (forall ((s@$ $Snap) (r@0@00 $Ref)) (!
   (F2%stateless r@0@00)
   :pattern ((F2%limited s@$ r@0@00))
-  :qid |quant-u-26131|)))
+  :qid |quant-u-26159|)))
 (assert (forall ((s@$ $Snap) (r@0@00 $Ref)) (!
   (=> (F2%precondition s@$ r@0@00) (= (F2 s@$ r@0@00) true))
   :pattern ((F2 s@$ r@0@00))
-  :qid |quant-u-26134|)))
+  :qid |quant-u-26162|)))
 (assert (forall ((s@$ $Snap) (r@0@00 $Ref)) (!
   true
   :pattern ((F2 s@$ r@0@00))
-  :qid |quant-u-26135|)))
+  :qid |quant-u-26163|)))
 (assert (forall ((s@$ $Snap) (r@2@00 $Ref)) (!
   (= (idf%limited s@$ r@2@00) (idf s@$ r@2@00))
   :pattern ((idf s@$ r@2@00))
-  :qid |quant-u-26132|)))
+  :qid |quant-u-26160|)))
 (assert (forall ((s@$ $Snap) (r@2@00 $Ref)) (!
   (idf%stateless r@2@00)
   :pattern ((idf%limited s@$ r@2@00))
-  :qid |quant-u-26133|)))
+  :qid |quant-u-26161|)))
 (assert (forall ((s@$ $Snap) (r@2@00 $Ref)) (!
   (=> (idf%precondition s@$ r@2@00) (= (idf s@$ r@2@00) r@2@00))
   :pattern ((idf s@$ r@2@00))
-  :qid |quant-u-26136|)))
+  :qid |quant-u-26164|)))
 (assert (forall ((s@$ $Snap) (r@2@00 $Ref)) (!
   true
   :pattern ((idf s@$ r@2@00))
-  :qid |quant-u-26137|)))
+  :qid |quant-u-26165|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- F3 ----------

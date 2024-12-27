@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-26 19:44:48
+// Date:         2024-12-27 02:04:52
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/sets/quantifiedvalues.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/sets/quantifiedvalues-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -402,10 +402,10 @@ procedure m1(this: Ref, x: Ref, y: Ref) returns ()
 {
   var perm: Perm;
   var QPMask: MaskType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -485,12 +485,12 @@ procedure m1(this: Ref, x: Ref, y: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert y.f == old(y.f) -- quantifiedvalues.vpr@12.5--12.27
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of y.f == old(y.f)
       assert {:msg "  Assert might fail. There might be insufficient permission to access y.f (quantifiedvalues.vpr@12.12--12.27) [4972]"}
@@ -502,8 +502,8 @@ procedure m1(this: Ref, x: Ref, y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert x.f == old(x.f) -- quantifiedvalues.vpr@13.5--13.27
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of x.f == old(x.f)
       assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (quantifiedvalues.vpr@13.12--13.27) [4975]"}
@@ -524,10 +524,10 @@ procedure m2(this: Ref, x: Ref, y: Ref) returns ()
 {
   var perm: Perm;
   var QPMask: MaskType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -607,8 +607,8 @@ procedure m2(this: Ref, x: Ref, y: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: x.f := 3 -- quantifiedvalues.vpr@20.5--20.13
     assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (quantifiedvalues.vpr@20.5--20.13) [4983]"}
@@ -617,8 +617,8 @@ procedure m2(this: Ref, x: Ref, y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert y.f == old(y.f) -- quantifiedvalues.vpr@21.5--21.27
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of y.f == old(y.f)
       assert {:msg "  Assert might fail. There might be insufficient permission to access y.f (quantifiedvalues.vpr@21.12--21.27) [4984]"}
@@ -630,8 +630,8 @@ procedure m2(this: Ref, x: Ref, y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert x.f == 3 -- quantifiedvalues.vpr@22.5--22.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of x.f == 3
       assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (quantifiedvalues.vpr@22.12--22.20) [4987]"}
@@ -641,8 +641,8 @@ procedure m2(this: Ref, x: Ref, y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert x.f == old(x.f) -- quantifiedvalues.vpr@24.5--24.27
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of x.f == old(x.f)
       assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (quantifiedvalues.vpr@24.12--24.27) [4989]"}
@@ -662,10 +662,10 @@ procedure m3(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -686,8 +686,8 @@ procedure m3(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: x.f := 3 -- quantifiedvalues.vpr@30.5--30.13
     assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (quantifiedvalues.vpr@30.5--30.13) [4992]"}
@@ -696,8 +696,8 @@ procedure m3(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert x.f == 3 -- quantifiedvalues.vpr@31.5--31.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of x.f == 3
       assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (quantifiedvalues.vpr@31.12--31.20) [4993]"}

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-26 20:20:33
+// Date:         2024-12-27 02:40:52
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0773.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0773-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -335,12 +335,12 @@ procedure test() returns ()
   modifies Heap, Mask;
 {
   var l0_lblGuard: bool;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var Labell0Mask: MaskType;
+  var oldMask: MaskType;
   var Labell0Heap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var Labell0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var frameMask1: MaskType;
   var frameHeap1: HeapType;
   var __plugin_refute_nondet1: bool;
@@ -355,23 +355,23 @@ procedure test() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: // id = 1
   // // LoopInfo(Some(1),Set(1))
   // label l0
   //   invariant true -- 0773.vpr@3.5--3.28
     l0:
-    Labell0Mask := Mask;
     Labell0Heap := Heap;
+    Labell0Mask := Mask;
     l0_lblGuard := true;
     
     // -- Before loop head1
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
       
       // -- Store frame in mask associated with loop
         frameMask1 := Mask;
@@ -398,8 +398,8 @@ procedure test() returns ()
       
       // -- Translating statement: // id = 2
   // assert false -- 0773.vpr@4.5--4.17
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Assert might fail. Assertion false might not hold. (0773.vpr@4.12--4.17) [205081]"}
           false;
         assume state(Heap, Mask);
@@ -429,8 +429,8 @@ procedure test() returns ()
           assume false;
         }
       // Exhale invariant
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       // Terminate execution
       assume false;
     assume state(Heap, Mask);
@@ -444,15 +444,15 @@ procedure test2() returns ()
   modifies Heap, Mask;
 {
   var l0_lblGuard: bool;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var Labell0Mask: MaskType;
+  var oldMask: MaskType;
   var Labell0Heap: HeapType;
+  var Labell0Mask: MaskType;
   var frameMask1: MaskType;
   var frameHeap1: HeapType;
   var __plugin_refute_nondet1: bool;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -464,15 +464,15 @@ procedure test2() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: // id = 1
   // // LoopInfo(Some(1),Set(1))
   // label l0 -- 0773.vpr@10.5--10.13
     l0:
-    Labell0Mask := Mask;
     Labell0Heap := Heap;
+    Labell0Mask := Mask;
     l0_lblGuard := true;
     
     // -- Before loop head1
@@ -501,8 +501,8 @@ procedure test2() returns ()
       
       // -- Translating statement: // id = 2
   // assert false -- 0773.vpr@11.5--11.17
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Assert might fail. Assertion false might not hold. (0773.vpr@11.12--11.17) [205082]"}
           false;
         assume state(Heap, Mask);
@@ -543,15 +543,15 @@ procedure test3() returns ()
   modifies Heap, Mask;
 {
   var l1_lblGuard: bool;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var Labell1Mask: MaskType;
+  var oldMask: MaskType;
   var Labell1Heap: HeapType;
+  var Labell1Mask: MaskType;
   var frameMask2: MaskType;
   var frameHeap2: HeapType;
   var tmp: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -563,8 +563,8 @@ procedure test3() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: // id = 1
   // // LoopDummyStmtInfo()
@@ -576,8 +576,8 @@ procedure test3() returns ()
   // // LoopInfo(Some(2),Set(2))
   // label l1 -- 0773.vpr@23.5--23.13
     l1_2:
-    Labell1Mask := Mask;
     Labell1Heap := Heap;
+    Labell1Mask := Mask;
     l1_lblGuard := true;
     
     // -- Before loop head2
@@ -627,8 +627,8 @@ procedure test3() returns ()
     // -- Check definedness of needsPre()
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Precondition of function needsPre might not hold. Assertion pre() might not hold. (0773.vpr@25.9--25.19) [205083]"}
           pre_1(Heap);
         // Stop execution
@@ -671,15 +671,15 @@ procedure test3fail() returns ()
   modifies Heap, Mask;
 {
   var l1_lblGuard: bool;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var Labell1Mask: MaskType;
+  var oldMask: MaskType;
   var Labell1Heap: HeapType;
+  var Labell1Mask: MaskType;
   var frameMask2: MaskType;
   var frameHeap2: HeapType;
   var tmp: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -691,8 +691,8 @@ procedure test3fail() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: // id = 1
   // // LoopDummyStmtInfo()
@@ -704,8 +704,8 @@ procedure test3fail() returns ()
   // // LoopInfo(Some(2),Set(2))
   // label l1 -- 0773.vpr@36.5--36.13
     l1_2:
-    Labell1Mask := Mask;
     Labell1Heap := Heap;
+    Labell1Mask := Mask;
     l1_lblGuard := true;
     
     // -- Before loop head2
@@ -737,8 +737,8 @@ procedure test3fail() returns ()
     // -- Check definedness of needsPre()
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Precondition of function needsPre might not hold. Assertion pre() might not hold. (0773.vpr@38.9--38.19) [205084]"}
           pre_1(Heap);
         // Stop execution
@@ -781,15 +781,15 @@ procedure test4() returns ()
   modifies Heap, Mask;
 {
   var l0_lblGuard: bool;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var Labell0Mask: MaskType;
+  var oldMask: MaskType;
   var Labell0Heap: HeapType;
+  var Labell0Mask: MaskType;
   var frameMask1: MaskType;
   var frameHeap1: HeapType;
   var __plugin_refute_nondet1: bool;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -801,15 +801,15 @@ procedure test4() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: // id = 1
   // // LoopInfo(Some(1),Set(1))
   // label l0 -- 0773.vpr@50.5--50.13
     l0:
-    Labell0Mask := Mask;
     Labell0Heap := Heap;
+    Labell0Mask := Mask;
     l0_lblGuard := true;
     
     // -- Before loop head1
@@ -848,8 +848,8 @@ procedure test4() returns ()
       
       // -- Translating statement: // id = 4
   // assert false -- 0773.vpr@55.9--55.21
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Assert might fail. Assertion false might not hold. (0773.vpr@55.16--55.21) [205085]"}
           false;
         assume state(Heap, Mask);

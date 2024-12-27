@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-26 19:44:20
+// Date:         2024-12-27 02:04:25
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/sets/constraining_permissions.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/sets/constraining_permissions-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -442,12 +442,12 @@ procedure test00(xs: (Set Ref)) returns ()
 {
   var QPMask: MaskType;
   var wildcard: real where wildcard > 0.000000000;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -500,8 +500,8 @@ procedure test00(xs: (Set Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -552,8 +552,8 @@ procedure test00(xs: (Set Ref)) returns ()
   }
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     havoc QPMask;
     // wild card assumptions
     havoc wildcard;
@@ -625,12 +625,12 @@ procedure test01(xs: (Set Ref), ys: (Set Ref)) returns ()
 {
   var QPMask: MaskType;
   var wildcard: real where wildcard > 0.000000000;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -723,8 +723,8 @@ procedure test01(xs: (Set Ref), ys: (Set Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -775,8 +775,8 @@ procedure test01(xs: (Set Ref), ys: (Set Ref)) returns ()
   }
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     havoc QPMask;
     // wild card assumptions
     havoc wildcard;
@@ -848,10 +848,10 @@ procedure test02(xs: (Set Ref), y: Ref, z: Ref) returns ()
 {
   var QPMask: MaskType;
   var wildcard: real where wildcard > 0.000000000;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var k0: Perm;
   
@@ -911,15 +911,15 @@ procedure test02(xs: (Set Ref), y: Ref, z: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: if ((y in xs)) -- constraining_permissions.vpr@21.3--23.4
     if (xs[y]) {
       
       // -- Translating statement: exhale acc(y.f, wildcard) -- constraining_permissions.vpr@22.5--22.30
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Exhale might fail. There might be insufficient permission to access y.f (constraining_permissions.vpr@22.12--22.30) [3412]"}
           Mask[y, f_7] > NoPerm;
         havoc wildcard;
@@ -936,8 +936,8 @@ procedure test02(xs: (Set Ref), y: Ref, z: Ref) returns ()
   // -- Translating statement: exhale (forall x: Ref ::
   //     { (x in (xs setminus Set(y))) }
   //     (x in (xs setminus Set(y))) ==> acc(x.f, wildcard)) -- constraining_permissions.vpr@25.3--25.75
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall x: Ref :: { (x in (xs setminus Set(y))) } (x in (xs setminus Set(y))) ==> acc(x.f, wildcard))
       if (*) {
@@ -1006,8 +1006,8 @@ procedure test02(xs: (Set Ref), y: Ref, z: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale (forall x: Ref :: { (x in xs) } (x in xs) ==> acc(x.f, wildcard)) -- constraining_permissions.vpr@26.3--26.57
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall x: Ref :: { (x in xs) } (x in xs) ==> acc(x.f, wildcard))
       if (*) {
@@ -1081,8 +1081,8 @@ procedure test02(xs: (Set Ref), y: Ref, z: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale (forall x: Ref :: { (x in xs) } (x in xs) ==> acc(x.f, k0)) -- constraining_permissions.vpr@31.3--31.51
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall x: Ref :: { (x in xs) } (x in xs) ==> acc(x.f, k0))
       if (*) {

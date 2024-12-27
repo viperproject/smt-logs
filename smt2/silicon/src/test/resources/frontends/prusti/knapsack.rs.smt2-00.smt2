@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-26 19:23:00
+; Started: 2024-12-27 01:42:37
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -2636,7 +2636,7 @@
 (check-sat)
 ; unknown
 (pop) ; 5
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 2 | !(m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_weight$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$((First:(s@$), (_, (_, _))), _pure_1@18@00, _pure_2@19@00 - 1) > _pure_3@20@00) | live]
 ; [else-branch: 2 | m_knapsack$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$1$closesqu$$$lookup_weight$opensqu$0$closesqu$__$TY$__m_knapsack$$Items$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$((First:(s@$), (_, (_, _))), _pure_1@18@00, _pure_2@19@00 - 1) > _pure_3@20@00 | live]

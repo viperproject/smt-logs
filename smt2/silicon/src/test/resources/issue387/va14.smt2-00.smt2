@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-26 19:30:37
+; Started: 2024-12-27 01:50:23
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -137,11 +137,11 @@
     (contains%limited s@$ _pure_1@0@00 _pure_2@1@00 _pure_3@2@00)
     (contains s@$ _pure_1@0@00 _pure_2@1@00 _pure_3@2@00))
   :pattern ((contains s@$ _pure_1@0@00 _pure_2@1@00 _pure_3@2@00))
-  :qid |quant-u-5125|)))
+  :qid |quant-u-5190|)))
 (assert (forall ((s@$ $Snap) (_pure_1@0@00 $Ref) (_pure_2@1@00 Int) (_pure_3@2@00 Int)) (!
   (contains%stateless _pure_1@0@00 _pure_2@1@00 _pure_3@2@00)
   :pattern ((contains%limited s@$ _pure_1@0@00 _pure_2@1@00 _pure_3@2@00))
-  :qid |quant-u-5126|)))
+  :qid |quant-u-5191|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -369,7 +369,7 @@
         (contains%limited ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.first ($Snap.second s@$)))))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first ($Snap.second s@$))))))) _pure_2@1@00 _pure_3@2@00))))
   :pattern ((contains s@$ _pure_1@0@00 _pure_2@1@00 _pure_3@2@00))
   :pattern ((contains%stateless _pure_1@0@00 _pure_2@1@00 _pure_3@2@00) (List%trigger s@$ _pure_1@0@00))
-  :qid |quant-u-5127|)))
+  :qid |quant-u-5192|)))
 (assert (forall ((s@$ $Snap) (_pure_1@0@00 $Ref) (_pure_2@1@00 Int) (_pure_3@2@00 Int)) (!
   (=>
     (and
@@ -379,7 +379,7 @@
         0))
     (contains%precondition ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.first ($Snap.second s@$)))))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first ($Snap.second s@$))))))) _pure_2@1@00 _pure_3@2@00))
   :pattern ((contains s@$ _pure_1@0@00 _pure_2@1@00 _pure_3@2@00))
-  :qid |quant-u-5128|)))
+  :qid |quant-u-5193|)))
 ; ---------- i32 ----------
 (declare-const self@4@00 $Ref)
 (push) ; 1

@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-26 19:41:19
+; Started: 2024-12-27 02:01:20
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -131,11 +131,11 @@
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (= (length%limited s@$ this@0@00) (length s@$ this@0@00))
   :pattern ((length s@$ this@0@00))
-  :qid |quant-u-25612|)))
+  :qid |quant-u-25640|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (length%stateless this@0@00)
   :pattern ((length%limited s@$ this@0@00))
-  :qid |quant-u-25613|)))
+  :qid |quant-u-25641|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -147,11 +147,11 @@
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (=> (length%precondition s@$ this@0@00) (= (length s@$ this@0@00) 10))
   :pattern ((length s@$ this@0@00))
-  :qid |quant-u-25618|)))
+  :qid |quant-u-25646|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   true
   :pattern ((length s@$ this@0@00))
-  :qid |quant-u-25619|)))
+  :qid |quant-u-25647|)))
 ; ---------- FUNCTION list_len----------
 (declare-fun result@2@00 () Int)
 ; ----- Well-definedness of specifications -----
@@ -161,11 +161,11 @@
 (assert (forall ((s@$ $Snap)) (!
   (= (list_len%limited s@$) (list_len s@$))
   :pattern ((list_len s@$))
-  :qid |quant-u-25614|)))
+  :qid |quant-u-25642|)))
 (assert (forall ((s@$ $Snap)) (!
   (as list_len%stateless  Bool)
   :pattern ((list_len%limited s@$))
-  :qid |quant-u-25615|)))
+  :qid |quant-u-25643|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -177,11 +177,11 @@
 (assert (forall ((s@$ $Snap)) (!
   (=> (list_len%precondition s@$) (= (list_len s@$) 0))
   :pattern ((list_len s@$))
-  :qid |quant-u-25620|)))
+  :qid |quant-u-25648|)))
 (assert (forall ((s@$ $Snap)) (!
   true
   :pattern ((list_len s@$))
-  :qid |quant-u-25621|)))
+  :qid |quant-u-25649|)))
 ; ---------- FUNCTION get----------
 (declare-fun this@3@00 () $Ref)
 (declare-fun i@4@00 () Int)
@@ -211,11 +211,11 @@
 (assert (forall ((s@$ $Snap) (this@3@00 $Ref) (i@4@00 Int)) (!
   (= (get%limited s@$ this@3@00 i@4@00) (get s@$ this@3@00 i@4@00))
   :pattern ((get s@$ this@3@00 i@4@00))
-  :qid |quant-u-25616|)))
+  :qid |quant-u-25644|)))
 (assert (forall ((s@$ $Snap) (this@3@00 $Ref) (i@4@00 Int)) (!
   (get%stateless this@3@00 i@4@00)
   :pattern ((get%limited s@$ this@3@00 i@4@00))
-  :qid |quant-u-25617|)))
+  :qid |quant-u-25645|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (= s@$ ($Snap.combine ($Snap.first s@$) ($Snap.second s@$))))
@@ -402,7 +402,7 @@
           1)))))
   :pattern ((get s@$ this@3@00 i@4@00))
   :pattern ((get%stateless this@3@00 i@4@00) (Node%trigger ($Snap.first s@$) this@3@00))
-  :qid |quant-u-25622|)))
+  :qid |quant-u-25650|)))
 (assert (forall ((s@$ $Snap) (this@3@00 $Ref) (i@4@00 Int)) (!
   (=>
     (get%precondition s@$ this@3@00 i@4@00)
@@ -415,7 +415,7 @@
         i@4@00
         1))))
   :pattern ((get s@$ this@3@00 i@4@00))
-  :qid |quant-u-25623|)))
+  :qid |quant-u-25651|)))
 ; ---------- Node ----------
 (declare-const this@6@00 $Ref)
 (push) ; 1

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-26 19:50:06
+// Date:         2024-12-27 02:10:12
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/sequences/array.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/sequences/array-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -677,8 +677,8 @@ procedure init(this: Ref, i: int) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var wildcard: real where wildcard > NoPerm;
@@ -689,8 +689,8 @@ procedure init(this: Ref, i: int) returns ()
   var k_4: int;
   var j_6: int;
   var k_7: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var k_4_1: int;
   var j_2_1: int;
   var ExhaleHeap: HeapType;
@@ -714,8 +714,8 @@ procedure init(this: Ref, i: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -900,8 +900,8 @@ procedure init(this: Ref, i: int) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of init might not hold. There might be insufficient permission to access this.array (array.vpr@9.9--9.34) [61914]"}
       Mask[this, array] > NoPerm;
     havoc wildcard;
@@ -976,12 +976,12 @@ procedure set(this: Ref, i: int, val_1: int) returns ()
 {
   var wildcard: real where wildcard > NoPerm;
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -1024,8 +1024,8 @@ procedure set(this: Ref, i: int, val_1: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1095,8 +1095,8 @@ procedure set(this: Ref, i: int, val_1: int) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of set might not hold. There might be insufficient permission to access this.array (array.vpr@23.9--23.34) [61936]"}
       Mask[this, array] > NoPerm;
     havoc wildcard;
@@ -1131,20 +1131,20 @@ procedure set(this: Ref, i: int, val_1: int) returns ()
 procedure caller() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var mutableArray: Ref;
   var freshObj: Ref;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var perm: Perm;
   var ExhaleHeap: HeapType;
   var wildcard: real where wildcard > NoPerm;
   var QPMask: MaskType;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1155,8 +1155,8 @@ procedure caller() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[mutableArray, $allocated];
@@ -1174,8 +1174,8 @@ procedure caller() returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  The precondition of method init might not hold. There might be insufficient permission to access mutableArray.array (array.vpr@44.5--44.26) [61943]"}
@@ -1240,8 +1240,8 @@ procedure caller() returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       assert {:msg "  The precondition of method set might not hold. There might be insufficient permission to access mutableArray.array (array.vpr@45.5--45.28) [61945]"}
         Mask[mutableArray, array] > NoPerm;
       havoc wildcard;
@@ -1277,14 +1277,14 @@ procedure caller() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert get(mutableArray, 0) == 2 -- array.vpr@46.5--46.37
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of get(mutableArray, 0) == 2
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function get might not hold. There might be insufficient permission to access mutableArray.array (array.vpr@46.12--46.32) [61948]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[mutableArray, array];

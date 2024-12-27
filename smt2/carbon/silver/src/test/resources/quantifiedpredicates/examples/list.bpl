@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-26 19:55:33
+// Date:         2024-12-27 02:15:42
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpredicates/examples/list.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpredicates/examples/list-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -567,8 +567,8 @@ procedure allSet#definedness(r_1: Ref, i: int, v_2: int) returns (Result: bool)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var newPMask: PMaskType;
   
@@ -594,8 +594,8 @@ procedure allSet#definedness(r_1: Ref, i: int, v_2: int) returns (Result: bool)
         UnfoldingMask := Mask;
         assume list#trigger(UnfoldingHeap, list(r_1, i));
         assume UnfoldingHeap[null, list(r_1, i)] == FrameFragment((if i > 0 then CombineFrames(FrameFragment(UnfoldingHeap[r_1, val]), CombineFrames(FrameFragment(UnfoldingHeap[r_1, next]), UnfoldingHeap[null, list(UnfoldingHeap[r_1, next], i - 1)])) else EmptyFrame));
-        ExhaleWellDef0Mask := UnfoldingMask;
         ExhaleWellDef0Heap := UnfoldingHeap;
+        ExhaleWellDef0Mask := UnfoldingMask;
         perm := FullPerm;
         assert {:msg "  Function might not be well-formed. There might be insufficient permission to access list(r, i) (list.vpr@13.1--21.2) [106194]"}
           NoPerm < perm ==> NoPerm < UnfoldingMask[null, list(r_1, i)];
@@ -623,8 +623,8 @@ procedure allSet#definedness(r_1: Ref, i: int, v_2: int) returns (Result: bool)
             HasDirectPerm(UnfoldingMask, r_1, next);
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := UnfoldingMask;
             ExhaleWellDef0Heap := UnfoldingHeap;
+            ExhaleWellDef0Mask := UnfoldingMask;
             perm := FullPerm;
             assert {:msg "  Precondition of function allSet might not hold. There might be insufficient permission to access list(r.next, i - 1) (list.vpr@19.37--19.59) [106197]"}
               NoPerm < perm ==> NoPerm < UnfoldingMask[null, list(UnfoldingHeap[r_1, next], i - 1)];
@@ -734,13 +734,13 @@ procedure m1(lists: (Set Ref), length_2: int, v_2: int) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var r_12: Ref;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var perm: Perm;
   var ExhaleHeap: HeapType;
   var s_2: (Set Ref);
@@ -841,8 +841,8 @@ procedure m1(lists: (Set Ref), length_2: int, v_2: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -896,8 +896,8 @@ procedure m1(lists: (Set Ref), length_2: int, v_2: int) returns ()
         if (lists[r_12]) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := PostMask;
             ExhaleWellDef0Heap := PostHeap;
+            ExhaleWellDef0Mask := PostMask;
             perm := FullPerm;
             assert {:msg "  Precondition of function allSet might not hold. There might be insufficient permission to access list(r, length) (list.vpr@26.65--26.85) [106201]"}
               NoPerm < perm ==> NoPerm < PostMask[null, list(r_12, length_2)];
@@ -933,8 +933,8 @@ procedure m1(lists: (Set Ref), length_2: int, v_2: int) returns ()
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         havoc QPMask;
         
         // -- check that the permission amount is positive
@@ -1538,8 +1538,8 @@ procedure m1(lists: (Set Ref), length_2: int, v_2: int) returns ()
           // -- Translating statement: unfold acc(list(l, length), write) -- list.vpr@40.9--40.31
             assume list#trigger(Heap, list(l_2, length_2));
             assume Heap[null, list(l_2, length_2)] == FrameFragment((if length_2 > 0 then CombineFrames(FrameFragment(Heap[l_2, val]), CombineFrames(FrameFragment(Heap[l_2, next]), Heap[null, list(Heap[l_2, next], length_2 - 1)])) else EmptyFrame));
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
             if (perm != NoPerm) {
               assert {:msg "  Unfolding list(l, length) might fail. There might be insufficient permission to access list(l, length) (list.vpr@40.9--40.31) [106225]"}
@@ -1611,8 +1611,8 @@ procedure m1(lists: (Set Ref), length_2: int, v_2: int) returns ()
             Heap := Heap[l_2, val:=v_2];
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         havoc QPMask;
         
         // -- check that the permission amount is positive
@@ -1993,8 +1993,8 @@ procedure m1(lists: (Set Ref), length_2: int, v_2: int) returns ()
         arg_length := length_2 - 1;
         
         // -- Exhaling precondition
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           assert {:msg "  The precondition of method m1 might not hold. Assertion length - 1 > 0 might not hold. (list.vpr@48.9--48.31) [106245]"}
             arg_length > 0;
           havoc QPMask;
@@ -2103,8 +2103,8 @@ procedure m1(lists: (Set Ref), length_2: int, v_2: int) returns ()
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         havoc QPMask;
         
         // -- check that the permission amount is positive
@@ -2380,8 +2380,8 @@ procedure m1(lists: (Set Ref), length_2: int, v_2: int) returns ()
             if (lists[r_21] && !s_2[r_21]) {
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 perm := FullPerm;
                 assert {:msg "  Precondition of function allSet might not hold. There might be insufficient permission to access list(r, length) (list.vpr@53.65--53.85) [106262]"}
                   NoPerm < perm ==> NoPerm < Mask[null, list(r_21, length_2)];
@@ -2563,8 +2563,8 @@ procedure m1(lists: (Set Ref), length_2: int, v_2: int) returns ()
                 HasDirectPerm(Mask, r_26, next);
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 perm := FullPerm;
                 assert {:msg "  Precondition of function allSet might not hold. There might be insufficient permission to access list(r.next, length - 1) (list.vpr@57.48--57.75) [106271]"}
                   NoPerm < perm ==> NoPerm < Mask[null, list(Heap[r_26, next], length_2 - 1)];
@@ -2768,8 +2768,8 @@ procedure m1(lists: (Set Ref), length_2: int, v_2: int) returns ()
             assume state(Heap, Mask);
           
           // -- Translating statement: fold acc(list(l2, length), write) -- list.vpr@61.13--61.34
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             if (length_2 > 0) {
               perm := FullPerm;
               if (perm != NoPerm) {
@@ -2821,8 +2821,8 @@ procedure m1(lists: (Set Ref), length_2: int, v_2: int) returns ()
             s_2 := Set#Difference(s_2, Set#Singleton(l2_2));
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         havoc QPMask;
         
         // -- check that the permission amount is positive
@@ -3212,8 +3212,8 @@ procedure m1(lists: (Set Ref), length_2: int, v_2: int) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     havoc QPMask;
     
     // -- check that the permission amount is positive

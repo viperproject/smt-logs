@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-26 19:42:49
+; Started: 2024-12-27 02:02:50
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -119,21 +119,21 @@
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   (= (test%limited s@$ x@0@00) (test s@$ x@0@00))
   :pattern ((test s@$ x@0@00))
-  :qid |quant-u-26549|)))
+  :qid |quant-u-26577|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   (test%stateless x@0@00)
   :pattern ((test%limited s@$ x@0@00))
-  :qid |quant-u-26550|)))
+  :qid |quant-u-26578|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   (and
     ($Perm.isReadVar $k@2@00)
     (=> (test%precondition s@$ x@0@00) (= (test s@$ x@0@00) true)))
   :pattern ((test s@$ x@0@00))
-  :qid |quant-u-26551|)))
+  :qid |quant-u-26579|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   true
   :pattern ((test s@$ x@0@00))
-  :qid |quant-u-26552|)))
+  :qid |quant-u-26580|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- test_pres_termination_proof ----------

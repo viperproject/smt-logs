@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-26 20:26:54
+// Date:         2024-12-27 02:47:16
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/adt/destructors_2.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/adt/destructors_2-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -293,10 +293,10 @@ axiom (forall <T> t_2: (TreeDomainType T) ::
 procedure destructors_2() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -306,20 +306,20 @@ procedure destructors_2() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert (get_List_value((Cons(1, (Nil(): List[Int])): List[Int])): Int) == 1 -- destructors_2.vpr@15.5--15.37
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion (get_List_value((Cons(1, (Nil(): List[Int])): List[Int])): Int) == 1 might not hold. (destructors_2.vpr@15.12--15.37) [222668]"}
       (get_List_value((Cons(1, (Nil(): ListDomainType int)): ListDomainType int)): int) == 1;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (get_List_tail((Cons(1, (Nil(): List[Int])): List[Int])): List[Int]) ==
   //   (Nil(): List[Int]) -- destructors_2.vpr@17.5--17.40
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion (get_List_tail((Cons(1, (Nil(): List[Int])): List[Int])): List[Int]) == (Nil(): List[Int]) might not hold. (destructors_2.vpr@17.12--17.40) [222669]"}
       (get_List_tail((Cons(1, (Nil(): ListDomainType int)): ListDomainType int)): ListDomainType int) == (Nil(): ListDomainType int);
     assume state(Heap, Mask);
@@ -328,8 +328,8 @@ procedure destructors_2() returns ()
   //   (Leaf(): Tree[Int]), (Leaf(): Tree[Int])): Tree[Int]), (Leaf(): Tree[Int])): Tree[Int])): Tree[Int]),
   //   (Leaf(): Tree[Int])): Tree[Int])): Int) ==
   //   42 -- destructors_2.vpr@19.5--19.102
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion (get_Tree_value((Node(42, (Node(42, (Leaf(): Tree[Int]), (Node(42, (Node(42, (Leaf(): Tree[Int]), (Leaf(): Tree[Int])): Tree[Int]), (Leaf(): Tree[Int])): Tree[Int])): Tree[Int]), (Leaf(): Tree[Int])): Tree[Int])): Int) == 42 might not hold. (destructors_2.vpr@19.12--19.102) [222670]"}
       (get_Tree_value((Node_1(42, (Node_1(42, (Leaf(): TreeDomainType int), (Node_1(42, (Node_1(42, (Leaf(): TreeDomainType int), (Leaf(): TreeDomainType int)): TreeDomainType int), (Leaf(): TreeDomainType int)): TreeDomainType int)): TreeDomainType int), (Leaf(): TreeDomainType int)): TreeDomainType int)): int) == 42;
     assume state(Heap, Mask);
@@ -338,8 +338,8 @@ procedure destructors_2() returns ()
   //   (Node(42, (Leaf(): Tree[Int]), (Node(42, (Node(42, (Leaf(): Tree[Int]), (Leaf(): Tree[Int])): Tree[Int]),
   //   (Leaf(): Tree[Int])): Tree[Int])): Tree[Int]), (Leaf(): Tree[Int])): Tree[Int])): Tree[Int])): Tree[Int])): Tree[Int])): Int) ==
   //   42 -- destructors_2.vpr@21.5--21.118
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion (get_Tree_value((get_Tree_left((get_Tree_right((get_Tree_left((Node(42, (Node(42, (Leaf(): Tree[Int]), (Node(42, (Node(42, (Leaf(): Tree[Int]), (Leaf(): Tree[Int])): Tree[Int]), (Leaf(): Tree[Int])): Tree[Int])): Tree[Int]), (Leaf(): Tree[Int])): Tree[Int])): Tree[Int])): Tree[Int])): Tree[Int])): Int) == 42 might not hold. (destructors_2.vpr@21.12--21.118) [222671]"}
       (get_Tree_value((get_Tree_left((get_Tree_right((get_Tree_left((Node_1(42, (Node_1(42, (Leaf(): TreeDomainType int), (Node_1(42, (Node_1(42, (Leaf(): TreeDomainType int), (Leaf(): TreeDomainType int)): TreeDomainType int), (Leaf(): TreeDomainType int)): TreeDomainType int)): TreeDomainType int), (Leaf(): TreeDomainType int)): TreeDomainType int)): TreeDomainType int)): TreeDomainType int)): TreeDomainType int)): int) == 42;
     assume state(Heap, Mask);
@@ -348,8 +348,8 @@ procedure destructors_2() returns ()
   //   (Node(42, (Leaf(): Tree[Int]), (Node(42, (Node(42, (Leaf(): Tree[Int]), (Leaf(): Tree[Int])): Tree[Int]),
   //   (Leaf(): Tree[Int])): Tree[Int])): Tree[Int]), (Leaf(): Tree[Int])): Tree[Int])): Tree[Int])): Tree[Int])): Tree[Int])): Int) ==
   //   42 -- destructors_2.vpr@23.5--23.122
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion (get_Tree_value((get_Tree_left((get_Tree_right((get_Tree_left((Node(42, (Node(42, (Leaf(): Tree[Int]), (Node(42, (Node(42, (Leaf(): Tree[Int]), (Leaf(): Tree[Int])): Tree[Int]), (Leaf(): Tree[Int])): Tree[Int])): Tree[Int]), (Leaf(): Tree[Int])): Tree[Int])): Tree[Int])): Tree[Int])): Tree[Int])): Int) == 42 might not hold. (destructors_2.vpr@23.12--23.122) [222672]"}
       (get_Tree_value((get_Tree_left((get_Tree_right((get_Tree_left((Node_1(42, (Node_1(42, (Leaf(): TreeDomainType int), (Node_1(42, (Node_1(42, (Leaf(): TreeDomainType int), (Leaf(): TreeDomainType int)): TreeDomainType int), (Leaf(): TreeDomainType int)): TreeDomainType int)): TreeDomainType int), (Leaf(): TreeDomainType int)): TreeDomainType int)): TreeDomainType int)): TreeDomainType int)): TreeDomainType int)): int) == 42;
     assume state(Heap, Mask);

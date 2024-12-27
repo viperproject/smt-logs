@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-26 20:12:26
+// Date:         2024-12-27 02:32:41
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/third_party/stefan_recent/testLoopInvariantE1.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/third_party/stefan_recent/testLoopInvariantE1-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -189,15 +189,15 @@ procedure Ref__Mul(diz: Ref, current_thread_id: int, n: int) returns (sys__resul
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var i: int;
   var __flatten_1: int;
   var __flatten_4: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var __flatten_5: int;
   var __flatten_2: int;
@@ -237,8 +237,8 @@ procedure Ref__Mul(diz: Ref, current_thread_id: int, n: int) returns (sys__resul
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -284,8 +284,8 @@ procedure Ref__Mul(diz: Ref, current_thread_id: int, n: int) returns (sys__resul
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Loop invariant acc(diz.Ref__res, write) might not hold on entry. There might be insufficient permission to access diz.Ref__res (testLoopInvariantE1.vpr@27.15--27.39) [166818]"}
@@ -365,8 +365,8 @@ procedure Ref__Mul(diz: Ref, current_thread_id: int, n: int) returns (sys__resul
             i := i + 2;
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Loop invariant acc(diz.Ref__res, write) might not be preserved. There might be insufficient permission to access diz.Ref__res (testLoopInvariantE1.vpr@27.15--27.39) [166824]"}
@@ -412,8 +412,8 @@ procedure Ref__Mul(diz: Ref, current_thread_id: int, n: int) returns (sys__resul
   // -- Translating statement: assert acc(diz.Ref__res, write) && (diz.Ref__res == n * n && n > 0) -- testLoopInvariantE1.vpr@42.3--42.72
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Heap := AssertHeap;
     ExhaleWellDef0Mask := AssertMask;
+    ExhaleWellDef0Heap := AssertHeap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Assert might fail. There might be insufficient permission to access diz.Ref__res (testLoopInvariantE1.vpr@42.10--42.72) [166829]"}
@@ -436,8 +436,8 @@ procedure Ref__Mul(diz: Ref, current_thread_id: int, n: int) returns (sys__resul
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of Ref__Mul might not hold. There might be insufficient permission to access diz.Ref__res (testLoopInvariantE1.vpr@12.11--12.35) [166833]"}

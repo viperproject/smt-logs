@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-26 20:02:26
+// Date:         2024-12-27 02:22:37
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/packaging_apply.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/packaging_apply-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -289,8 +289,8 @@ axiom !IsWandField(f_7);
 procedure t04(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var perm: Perm;
   var Ops_1Heap: HeapType;
   var Ops_1Mask: MaskType;
@@ -298,8 +298,8 @@ procedure t04(x: Ref) returns ()
   var UsedHeap: HeapType;
   var UsedMask: MaskType;
   var b_2: bool;
-  var Labellhs1Mask: MaskType;
   var Labellhs1Heap: HeapType;
+  var Labellhs1Mask: MaskType;
   var boolCur: bool;
   var Used_1Heap: HeapType;
   var Used_1Mask: MaskType;
@@ -319,8 +319,8 @@ procedure t04(x: Ref) returns ()
   var Used_2Heap: HeapType;
   var Used_2Mask: MaskType;
   var b_4: bool;
-  var Labellhs4Mask: MaskType;
   var Labellhs4Heap: HeapType;
+  var Labellhs4Mask: MaskType;
   var boolCur_1: bool;
   var Ops_5Heap: HeapType;
   var Ops_5Mask: MaskType;
@@ -328,8 +328,8 @@ procedure t04(x: Ref) returns ()
   var Used_3Heap: HeapType;
   var Used_3Mask: MaskType;
   var b_6: bool;
-  var Labellhs6Mask: MaskType;
   var Labellhs6Heap: HeapType;
+  var Labellhs6Mask: MaskType;
   var boolCur_2: bool;
   var Used_4Heap: HeapType;
   var Used_4Mask: MaskType;
@@ -345,15 +345,15 @@ procedure t04(x: Ref) returns ()
   var Result_2Mask: MaskType;
   var WandDefLHSHeap: HeapType;
   var WandDefLHSMask: MaskType;
-  var Labellhs8Mask: MaskType;
   var Labellhs8Heap: HeapType;
+  var Labellhs8Mask: MaskType;
   var WandDefRHSHeap: HeapType;
   var WandDefRHSMask: MaskType;
   var b_12: bool;
   var Result_3Heap: HeapType;
   var Result_3Mask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -367,8 +367,8 @@ procedure t04(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale acc(x.f, write) && x.f == 2 -- packaging_apply.vpr@7.3--7.26
     perm := FullPerm;
@@ -404,8 +404,8 @@ procedure t04(x: Ref) returns ()
     
     // -- Translating statement: label lhs1 -- packaging_apply.vpr@9.11--9.44
       lhs1:
-      Labellhs1Mask := Ops_1Mask;
       Labellhs1Heap := Ops_1Heap;
+      Labellhs1Mask := Ops_1Mask;
       b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);
     boolCur := true;
     // Translating exec of non-ghost operationacc(x.f, write) && x.f == 2
@@ -521,8 +521,8 @@ procedure t04(x: Ref) returns ()
     
     // -- Translating statement: label lhs4 -- packaging_apply.vpr@12.11--12.94
       lhs4:
-      Labellhs4Mask := Ops_3Mask;
       Labellhs4Heap := Ops_3Heap;
+      Labellhs4Mask := Ops_3Mask;
       b_5 := b_5 && state(Ops_3Heap, Ops_3Mask);
     boolCur_1 := true;
     if (b_5) {
@@ -559,8 +559,8 @@ procedure t04(x: Ref) returns ()
         
         // -- Translating statement: label lhs6 -- packaging_apply.vpr@13.16--13.56
           lhs6:
-          Labellhs6Mask := Ops_5Mask;
           Labellhs6Heap := Ops_5Heap;
+          Labellhs6Mask := Ops_5Mask;
           b_7 := b_7 && state(Ops_5Heap, Ops_5Mask);
         boolCur_2 := true;
         // Translating exec of non-ghost operationacc(x.f, write) && false
@@ -741,8 +741,8 @@ procedure t04(x: Ref) returns ()
                 
                 // -- Translating statement: label lhs8 -- packaging_apply.vpr@12.53--12.93
                   lhs8:
-                  Labellhs8Mask := WandDefLHSMask;
                   Labellhs8Heap := WandDefLHSHeap;
+                  Labellhs8Mask := WandDefLHSMask;
                   assume state(WandDefLHSHeap, WandDefLHSMask);
                 havoc WandDefRHSHeap;
                 WandDefRHSMask := ZeroMask;
@@ -818,8 +818,8 @@ procedure t04(x: Ref) returns ()
   //   (acc(x.f, 1 / 4) && x.f == 3 --* acc(x.f, write) && false) -- packaging_apply.vpr@19.3--19.90
     
     // -- check if wand is held and remove an instance
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       // permLe
       assert {:msg "  Applying wand might fail. Magic wand instance not found. (packaging_apply.vpr@19.3--19.90) [129833]"}
         FullPerm <= Mask[null, wand_1(x, 1 / 4, x, 2, x, 1 / 4, x, 1 / 4, x, 3, x, FullPerm, false)];
@@ -827,8 +827,8 @@ procedure t04(x: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- check if LHS holds and remove permissions 
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       perm := 1 / 4;
       assert {:msg "  Applying wand might fail. Fraction 1 / 4 might be negative. (packaging_apply.vpr@19.3--19.90) [129834]"}
         perm >= NoPerm;

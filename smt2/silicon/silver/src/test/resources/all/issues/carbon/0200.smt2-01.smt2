@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-26 19:39:54
+; Started: 2024-12-27 01:59:55
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -135,47 +135,47 @@
 (assert (forall ((s@$ $Snap) (r@0@00 $Ref)) (!
   (= (isBool%limited s@$ r@0@00) (isBool s@$ r@0@00))
   :pattern ((isBool s@$ r@0@00))
-  :qid |quant-u-23771|)))
+  :qid |quant-u-23799|)))
 (assert (forall ((s@$ $Snap) (r@0@00 $Ref)) (!
   (isBool%stateless r@0@00)
   :pattern ((isBool%limited s@$ r@0@00))
-  :qid |quant-u-23772|)))
+  :qid |quant-u-23800|)))
 (assert (forall ((s@$ $Snap) (b@2@00 Bool)) (!
   (= (box%limited s@$ b@2@00) (box s@$ b@2@00))
   :pattern ((box s@$ b@2@00))
-  :qid |quant-u-23773|)))
+  :qid |quant-u-23801|)))
 (assert (forall ((s@$ $Snap) (b@2@00 Bool)) (!
   (box%stateless b@2@00)
   :pattern ((box%limited s@$ b@2@00))
-  :qid |quant-u-23774|)))
+  :qid |quant-u-23802|)))
 (assert (forall ((s@$ $Snap) (b@2@00 Bool)) (!
   (let ((result@3@00 (box%limited s@$ b@2@00))) (=>
     (box%precondition s@$ b@2@00)
     (isBool $Snap.unit result@3@00)))
   :pattern ((box%limited s@$ b@2@00))
-  :qid |quant-u-23779|)))
+  :qid |quant-u-23807|)))
 (assert (forall ((s@$ $Snap) (b@2@00 Bool)) (!
   (let ((result@3@00 (box%limited s@$ b@2@00))) (=>
     (box%precondition s@$ b@2@00)
     (isBool%precondition $Snap.unit result@3@00)))
   :pattern ((box%limited s@$ b@2@00))
-  :qid |quant-u-23780|)))
+  :qid |quant-u-23808|)))
 (assert (forall ((s@$ $Snap) (r@4@00 $Ref)) (!
   (= (unbox%limited s@$ r@4@00) (unbox s@$ r@4@00))
   :pattern ((unbox s@$ r@4@00))
-  :qid |quant-u-23775|)))
+  :qid |quant-u-23803|)))
 (assert (forall ((s@$ $Snap) (r@4@00 $Ref)) (!
   (unbox%stateless r@4@00)
   :pattern ((unbox%limited s@$ r@4@00))
-  :qid |quant-u-23776|)))
+  :qid |quant-u-23804|)))
 (assert (forall ((s@$ $Snap) (self@6@00 $Ref)) (!
   (= (SCIONPath_get_hof%limited s@$ self@6@00) (SCIONPath_get_hof s@$ self@6@00))
   :pattern ((SCIONPath_get_hof s@$ self@6@00))
-  :qid |quant-u-23777|)))
+  :qid |quant-u-23805|)))
 (assert (forall ((s@$ $Snap) (self@6@00 $Ref)) (!
   (SCIONPath_get_hof%stateless self@6@00)
   :pattern ((SCIONPath_get_hof%limited s@$ self@6@00))
-  :qid |quant-u-23778|)))
+  :qid |quant-u-23806|)))
 (assert (forall ((s@$ $Snap) (self@6@00 $Ref)) (!
   (and
     ($Perm.isReadVar $k@9@00)
@@ -187,12 +187,12 @@
         (SCIONPath_get_hof s@$ self@6@00)
         (let ((idx_0 ($SortWrappers.$SnapToInt s@$))) $Ref.null))))
   :pattern ((SCIONPath_get_hof s@$ self@6@00))
-  :qid |quant-u-23781|)))
+  :qid |quant-u-23809|)))
 (assert (forall ((s@$ $Snap) (self@6@00 $Ref)) (!
   (=>
     (SCIONPath_get_hof%precondition s@$ self@6@00)
     (let ((idx_0 ($SortWrappers.$SnapToInt s@$))) true))
   :pattern ((SCIONPath_get_hof s@$ self@6@00))
-  :qid |quant-u-23782|)))
+  :qid |quant-u-23810|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------

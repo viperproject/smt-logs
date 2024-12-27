@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-26 19:39:32
+; Started: 2024-12-27 01:59:32
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -740,7 +740,7 @@
       (= (inv@5@01 (loc<Ref> a@1@01 i@3@01)) i@3@01)
       (img@6@01 (loc<Ref> a@1@01 i@3@01))))
   :pattern (($FVF.loc_val ($FVF.lookup_val $t@2@01 (loc<Ref> a@1@01 i@3@01)) (loc<Ref> a@1@01 i@3@01)))
-  :qid |quant-u-23286|)))
+  :qid |quant-u-23314|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -778,7 +778,7 @@
     (and (<= 0 (inv@5@01 r)) (< (inv@5@01 r) (len<Int> a@1@01)))
     ($FVF.loc_val ($FVF.lookup_val (as sm@7@01  $FVF<val>) r) r))
   :pattern ((inv@5@01 r))
-  :qid |quant-u-23287|)))
+  :qid |quant-u-23315|)))
 ; State saturation: after unfold
 (set-option :timeout 40)
 (check-sat)
@@ -868,7 +868,7 @@
     (and (<= 0 (inv@9@01 r)) (< (inv@9@01 r) (len<Int> a@1@01)))
     ($FVF.loc_val ($FVF.lookup_val (as sm@7@01  $FVF<val>) r) r))
   :pattern ((inv@9@01 r))
-  :qid |quant-u-23289|)))
+  :qid |quant-u-23317|)))
 ; Precomputing data for removing quantified permissions
 (define-fun pTaken@11@01 ((r $Ref)) $Perm
   (ite
@@ -906,7 +906,7 @@
       (pTaken@11@01 r))
     $Perm.No)
   
-  :qid |quant-u-23291|))))
+  :qid |quant-u-23319|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -924,7 +924,7 @@
       (= r (loc<Ref> a@1@01 (inv@9@01 r))))
     (= (- $Perm.Write (pTaken@11@01 r)) $Perm.No))
   
-  :qid |quant-u-23292|))))
+  :qid |quant-u-23320|))))
 (check-sat)
 ; unsat
 (pop) ; 3

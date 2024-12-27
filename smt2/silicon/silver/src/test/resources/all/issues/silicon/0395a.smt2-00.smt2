@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-26 19:40:53
+; Started: 2024-12-27 02:00:54
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -487,11 +487,11 @@
 (assert (forall ((s@$ $Snap) (i@0@00 Int)) (!
   (= (isInt%limited s@$ i@0@00) (isInt s@$ i@0@00))
   :pattern ((isInt s@$ i@0@00))
-  :qid |quant-u-25174|)))
+  :qid |quant-u-25202|)))
 (assert (forall ((s@$ $Snap) (i@0@00 Int)) (!
   (isInt%stateless i@0@00)
   :pattern ((isInt%limited s@$ i@0@00))
-  :qid |quant-u-25175|)))
+  :qid |quant-u-25203|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -503,11 +503,11 @@
 (assert (forall ((s@$ $Snap) (i@0@00 Int)) (!
   (=> (isInt%precondition s@$ i@0@00) (= (isInt s@$ i@0@00) true))
   :pattern ((isInt s@$ i@0@00))
-  :qid |quant-u-25176|)))
+  :qid |quant-u-25204|)))
 (assert (forall ((s@$ $Snap) (i@0@00 Int)) (!
   true
   :pattern ((isInt s@$ i@0@00))
-  :qid |quant-u-25177|)))
+  :qid |quant-u-25205|)))
 ; ---------- accessible_withdraw ----------
 (declare-const msg_sender@2@00 Int)
 (declare-const amount@3@00 Int)

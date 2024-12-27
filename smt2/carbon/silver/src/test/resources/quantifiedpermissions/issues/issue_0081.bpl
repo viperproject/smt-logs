@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-26 19:51:34
+// Date:         2024-12-27 02:11:41
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/issues/issue_0081.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/issues/issue_0081-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -584,13 +584,13 @@ procedure test01(S: (Seq Ref)) returns ()
   var i_2: int;
   var QPMask: MaskType;
   var wildcard: real where wildcard > 0.000000000;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var i_4: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var i1_23: int;
   var i2_2: int;
@@ -671,8 +671,8 @@ procedure test01(S: (Seq Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -732,8 +732,8 @@ procedure test01(S: (Seq Ref)) returns ()
     if (Seq#Length(S) > 1) {
       
       // -- Translating statement: exhale acc(S[0].f, wildcard) -- issue_0081.vpr@12.5--12.33
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         
         // -- Check definedness of acc(S[0].f, wildcard)
           assert {:msg "  Exhale might fail. Index S[0] into S might exceed sequence length. (issue_0081.vpr@12.12--12.33) [76844]"}
@@ -754,8 +754,8 @@ procedure test01(S: (Seq Ref)) returns ()
   // -- Translating statement: exhale (forall i1: Int ::
   //     { S[i1] }
   //     (i1 in [0..|S| - 2)) ==> acc(S[i1].f, wildcard)) -- issue_0081.vpr@15.3--15.72
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall i1: Int :: { S[i1] } (i1 in [0..|S| - 2)) ==> acc(S[i1].f, wildcard))
       if (*) {
@@ -833,8 +833,8 @@ procedure test01(S: (Seq Ref)) returns ()
   //     { (i2 in [0..|S|)) }
   //     { S[i2] }
   //     (i2 in [0..|S|)) ==> acc(S[i2].f, wildcard)) -- issue_0081.vpr@16.3--16.70
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall i2: Int :: { (i2 in [0..|S|)) } { S[i2] } (i2 in [0..|S|)) ==> acc(S[i2].f, wildcard))
       if (*) {
@@ -909,8 +909,8 @@ procedure test01(S: (Seq Ref)) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     havoc QPMask;
     // wild card assumptions
     havoc wildcard;

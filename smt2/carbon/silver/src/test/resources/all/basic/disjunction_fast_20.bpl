@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-26 20:14:59
+// Date:         2024-12-27 02:35:14
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/basic/disjunction_fast_20.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/basic/disjunction_fast_20-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -322,8 +322,8 @@ procedure Slow#definedness(this: Ref) returns ()
 procedure vhavoc() returns (res: int)
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -333,8 +333,8 @@ procedure vhavoc() returns (res: int)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale false -- <no position>
     assume false;
@@ -350,12 +350,12 @@ procedure test(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var newVersion: FrameType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
@@ -380,8 +380,8 @@ procedure test(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -398,8 +398,8 @@ procedure test(this: Ref) returns ()
   // -- Translating statement: unfold acc(Slow(this), write) -- disjunction_fast_20.vpr@22.5--22.22
     assume Slow#trigger(Heap, Slow(this));
     assume Heap[null, Slow(this)] == FrameFragment(Heap[this, val]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Slow(this) might fail. There might be insufficient permission to access Slow(this) (disjunction_fast_20.vpr@22.5--22.22) [187721]"}
@@ -437,8 +437,8 @@ procedure test(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Slow(this), write) -- disjunction_fast_20.vpr@26.5--26.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding Slow(this) might fail. There might be insufficient permission to access this.val (disjunction_fast_20.vpr@26.5--26.20) [187726]"}
@@ -463,8 +463,8 @@ procedure test(this: Ref) returns ()
   // -- Translating statement: unfold acc(Slow(this), write) -- disjunction_fast_20.vpr@27.5--27.22
     assume Slow#trigger(Heap, Slow(this));
     assume Heap[null, Slow(this)] == FrameFragment(Heap[this, val]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Slow(this) might fail. There might be insufficient permission to access Slow(this) (disjunction_fast_20.vpr@27.5--27.22) [187731]"}
@@ -502,8 +502,8 @@ procedure test(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Slow(this), write) -- disjunction_fast_20.vpr@30.5--30.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding Slow(this) might fail. There might be insufficient permission to access this.val (disjunction_fast_20.vpr@30.5--30.20) [187736]"}
@@ -528,8 +528,8 @@ procedure test(this: Ref) returns ()
   // -- Translating statement: unfold acc(Slow(this), write) -- disjunction_fast_20.vpr@31.5--31.22
     assume Slow#trigger(Heap, Slow(this));
     assume Heap[null, Slow(this)] == FrameFragment(Heap[this, val]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Slow(this) might fail. There might be insufficient permission to access Slow(this) (disjunction_fast_20.vpr@31.5--31.22) [187741]"}
@@ -567,8 +567,8 @@ procedure test(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Slow(this), write) -- disjunction_fast_20.vpr@34.5--34.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding Slow(this) might fail. There might be insufficient permission to access this.val (disjunction_fast_20.vpr@34.5--34.20) [187746]"}
@@ -593,8 +593,8 @@ procedure test(this: Ref) returns ()
   // -- Translating statement: unfold acc(Slow(this), write) -- disjunction_fast_20.vpr@35.5--35.22
     assume Slow#trigger(Heap, Slow(this));
     assume Heap[null, Slow(this)] == FrameFragment(Heap[this, val]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Slow(this) might fail. There might be insufficient permission to access Slow(this) (disjunction_fast_20.vpr@35.5--35.22) [187751]"}
@@ -632,8 +632,8 @@ procedure test(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Slow(this), write) -- disjunction_fast_20.vpr@38.5--38.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding Slow(this) might fail. There might be insufficient permission to access this.val (disjunction_fast_20.vpr@38.5--38.20) [187756]"}
@@ -658,8 +658,8 @@ procedure test(this: Ref) returns ()
   // -- Translating statement: unfold acc(Slow(this), write) -- disjunction_fast_20.vpr@39.5--39.22
     assume Slow#trigger(Heap, Slow(this));
     assume Heap[null, Slow(this)] == FrameFragment(Heap[this, val]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Slow(this) might fail. There might be insufficient permission to access Slow(this) (disjunction_fast_20.vpr@39.5--39.22) [187761]"}
@@ -697,8 +697,8 @@ procedure test(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Slow(this), write) -- disjunction_fast_20.vpr@42.5--42.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding Slow(this) might fail. There might be insufficient permission to access this.val (disjunction_fast_20.vpr@42.5--42.20) [187766]"}
@@ -723,8 +723,8 @@ procedure test(this: Ref) returns ()
   // -- Translating statement: unfold acc(Slow(this), write) -- disjunction_fast_20.vpr@43.5--43.22
     assume Slow#trigger(Heap, Slow(this));
     assume Heap[null, Slow(this)] == FrameFragment(Heap[this, val]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Slow(this) might fail. There might be insufficient permission to access Slow(this) (disjunction_fast_20.vpr@43.5--43.22) [187771]"}
@@ -762,8 +762,8 @@ procedure test(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Slow(this), write) -- disjunction_fast_20.vpr@46.5--46.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding Slow(this) might fail. There might be insufficient permission to access this.val (disjunction_fast_20.vpr@46.5--46.20) [187776]"}
@@ -788,8 +788,8 @@ procedure test(this: Ref) returns ()
   // -- Translating statement: unfold acc(Slow(this), write) -- disjunction_fast_20.vpr@47.5--47.22
     assume Slow#trigger(Heap, Slow(this));
     assume Heap[null, Slow(this)] == FrameFragment(Heap[this, val]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Slow(this) might fail. There might be insufficient permission to access Slow(this) (disjunction_fast_20.vpr@47.5--47.22) [187781]"}
@@ -827,8 +827,8 @@ procedure test(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Slow(this), write) -- disjunction_fast_20.vpr@50.5--50.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding Slow(this) might fail. There might be insufficient permission to access this.val (disjunction_fast_20.vpr@50.5--50.20) [187786]"}
@@ -853,8 +853,8 @@ procedure test(this: Ref) returns ()
   // -- Translating statement: unfold acc(Slow(this), write) -- disjunction_fast_20.vpr@51.5--51.22
     assume Slow#trigger(Heap, Slow(this));
     assume Heap[null, Slow(this)] == FrameFragment(Heap[this, val]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Slow(this) might fail. There might be insufficient permission to access Slow(this) (disjunction_fast_20.vpr@51.5--51.22) [187791]"}
@@ -892,8 +892,8 @@ procedure test(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Slow(this), write) -- disjunction_fast_20.vpr@54.5--54.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding Slow(this) might fail. There might be insufficient permission to access this.val (disjunction_fast_20.vpr@54.5--54.20) [187796]"}
@@ -918,8 +918,8 @@ procedure test(this: Ref) returns ()
   // -- Translating statement: unfold acc(Slow(this), write) -- disjunction_fast_20.vpr@55.5--55.22
     assume Slow#trigger(Heap, Slow(this));
     assume Heap[null, Slow(this)] == FrameFragment(Heap[this, val]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Slow(this) might fail. There might be insufficient permission to access Slow(this) (disjunction_fast_20.vpr@55.5--55.22) [187801]"}
@@ -957,8 +957,8 @@ procedure test(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Slow(this), write) -- disjunction_fast_20.vpr@58.5--58.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding Slow(this) might fail. There might be insufficient permission to access this.val (disjunction_fast_20.vpr@58.5--58.20) [187806]"}
@@ -983,8 +983,8 @@ procedure test(this: Ref) returns ()
   // -- Translating statement: unfold acc(Slow(this), write) -- disjunction_fast_20.vpr@59.5--59.22
     assume Slow#trigger(Heap, Slow(this));
     assume Heap[null, Slow(this)] == FrameFragment(Heap[this, val]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Slow(this) might fail. There might be insufficient permission to access Slow(this) (disjunction_fast_20.vpr@59.5--59.22) [187811]"}
@@ -1022,8 +1022,8 @@ procedure test(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Slow(this), write) -- disjunction_fast_20.vpr@62.5--62.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding Slow(this) might fail. There might be insufficient permission to access this.val (disjunction_fast_20.vpr@62.5--62.20) [187816]"}
@@ -1048,8 +1048,8 @@ procedure test(this: Ref) returns ()
   // -- Translating statement: unfold acc(Slow(this), write) -- disjunction_fast_20.vpr@63.5--63.22
     assume Slow#trigger(Heap, Slow(this));
     assume Heap[null, Slow(this)] == FrameFragment(Heap[this, val]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Slow(this) might fail. There might be insufficient permission to access Slow(this) (disjunction_fast_20.vpr@63.5--63.22) [187821]"}
@@ -1087,8 +1087,8 @@ procedure test(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Slow(this), write) -- disjunction_fast_20.vpr@66.5--66.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding Slow(this) might fail. There might be insufficient permission to access this.val (disjunction_fast_20.vpr@66.5--66.20) [187826]"}
@@ -1113,8 +1113,8 @@ procedure test(this: Ref) returns ()
   // -- Translating statement: unfold acc(Slow(this), write) -- disjunction_fast_20.vpr@67.5--67.22
     assume Slow#trigger(Heap, Slow(this));
     assume Heap[null, Slow(this)] == FrameFragment(Heap[this, val]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Slow(this) might fail. There might be insufficient permission to access Slow(this) (disjunction_fast_20.vpr@67.5--67.22) [187831]"}
@@ -1152,8 +1152,8 @@ procedure test(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Slow(this), write) -- disjunction_fast_20.vpr@70.5--70.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding Slow(this) might fail. There might be insufficient permission to access this.val (disjunction_fast_20.vpr@70.5--70.20) [187836]"}
@@ -1178,8 +1178,8 @@ procedure test(this: Ref) returns ()
   // -- Translating statement: unfold acc(Slow(this), write) -- disjunction_fast_20.vpr@71.5--71.22
     assume Slow#trigger(Heap, Slow(this));
     assume Heap[null, Slow(this)] == FrameFragment(Heap[this, val]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Slow(this) might fail. There might be insufficient permission to access Slow(this) (disjunction_fast_20.vpr@71.5--71.22) [187841]"}
@@ -1217,8 +1217,8 @@ procedure test(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Slow(this), write) -- disjunction_fast_20.vpr@74.5--74.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding Slow(this) might fail. There might be insufficient permission to access this.val (disjunction_fast_20.vpr@74.5--74.20) [187846]"}
@@ -1243,8 +1243,8 @@ procedure test(this: Ref) returns ()
   // -- Translating statement: unfold acc(Slow(this), write) -- disjunction_fast_20.vpr@75.5--75.22
     assume Slow#trigger(Heap, Slow(this));
     assume Heap[null, Slow(this)] == FrameFragment(Heap[this, val]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Slow(this) might fail. There might be insufficient permission to access Slow(this) (disjunction_fast_20.vpr@75.5--75.22) [187851]"}
@@ -1282,8 +1282,8 @@ procedure test(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Slow(this), write) -- disjunction_fast_20.vpr@78.5--78.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding Slow(this) might fail. There might be insufficient permission to access this.val (disjunction_fast_20.vpr@78.5--78.20) [187856]"}
@@ -1308,8 +1308,8 @@ procedure test(this: Ref) returns ()
   // -- Translating statement: unfold acc(Slow(this), write) -- disjunction_fast_20.vpr@79.5--79.22
     assume Slow#trigger(Heap, Slow(this));
     assume Heap[null, Slow(this)] == FrameFragment(Heap[this, val]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Slow(this) might fail. There might be insufficient permission to access Slow(this) (disjunction_fast_20.vpr@79.5--79.22) [187861]"}
@@ -1347,8 +1347,8 @@ procedure test(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Slow(this), write) -- disjunction_fast_20.vpr@82.5--82.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding Slow(this) might fail. There might be insufficient permission to access this.val (disjunction_fast_20.vpr@82.5--82.20) [187866]"}
@@ -1373,8 +1373,8 @@ procedure test(this: Ref) returns ()
   // -- Translating statement: unfold acc(Slow(this), write) -- disjunction_fast_20.vpr@83.5--83.22
     assume Slow#trigger(Heap, Slow(this));
     assume Heap[null, Slow(this)] == FrameFragment(Heap[this, val]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Slow(this) might fail. There might be insufficient permission to access Slow(this) (disjunction_fast_20.vpr@83.5--83.22) [187871]"}
@@ -1412,8 +1412,8 @@ procedure test(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Slow(this), write) -- disjunction_fast_20.vpr@86.5--86.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding Slow(this) might fail. There might be insufficient permission to access this.val (disjunction_fast_20.vpr@86.5--86.20) [187876]"}
@@ -1438,8 +1438,8 @@ procedure test(this: Ref) returns ()
   // -- Translating statement: unfold acc(Slow(this), write) -- disjunction_fast_20.vpr@87.5--87.22
     assume Slow#trigger(Heap, Slow(this));
     assume Heap[null, Slow(this)] == FrameFragment(Heap[this, val]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Slow(this) might fail. There might be insufficient permission to access Slow(this) (disjunction_fast_20.vpr@87.5--87.22) [187881]"}
@@ -1477,8 +1477,8 @@ procedure test(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Slow(this), write) -- disjunction_fast_20.vpr@90.5--90.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding Slow(this) might fail. There might be insufficient permission to access this.val (disjunction_fast_20.vpr@90.5--90.20) [187886]"}
@@ -1503,8 +1503,8 @@ procedure test(this: Ref) returns ()
   // -- Translating statement: unfold acc(Slow(this), write) -- disjunction_fast_20.vpr@91.5--91.22
     assume Slow#trigger(Heap, Slow(this));
     assume Heap[null, Slow(this)] == FrameFragment(Heap[this, val]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Slow(this) might fail. There might be insufficient permission to access Slow(this) (disjunction_fast_20.vpr@91.5--91.22) [187891]"}
@@ -1542,8 +1542,8 @@ procedure test(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Slow(this), write) -- disjunction_fast_20.vpr@94.5--94.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding Slow(this) might fail. There might be insufficient permission to access this.val (disjunction_fast_20.vpr@94.5--94.20) [187896]"}
@@ -1568,8 +1568,8 @@ procedure test(this: Ref) returns ()
   // -- Translating statement: unfold acc(Slow(this), write) -- disjunction_fast_20.vpr@95.5--95.22
     assume Slow#trigger(Heap, Slow(this));
     assume Heap[null, Slow(this)] == FrameFragment(Heap[this, val]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Slow(this) might fail. There might be insufficient permission to access Slow(this) (disjunction_fast_20.vpr@95.5--95.22) [187901]"}
@@ -1607,8 +1607,8 @@ procedure test(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Slow(this), write) -- disjunction_fast_20.vpr@98.5--98.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding Slow(this) might fail. There might be insufficient permission to access this.val (disjunction_fast_20.vpr@98.5--98.20) [187906]"}
@@ -1633,8 +1633,8 @@ procedure test(this: Ref) returns ()
   // -- Translating statement: unfold acc(Slow(this), write) -- disjunction_fast_20.vpr@99.5--99.22
     assume Slow#trigger(Heap, Slow(this));
     assume Heap[null, Slow(this)] == FrameFragment(Heap[this, val]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Slow(this) might fail. There might be insufficient permission to access Slow(this) (disjunction_fast_20.vpr@99.5--99.22) [187911]"}
@@ -1672,8 +1672,8 @@ procedure test(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Slow(this), write) -- disjunction_fast_20.vpr@102.5--102.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding Slow(this) might fail. There might be insufficient permission to access this.val (disjunction_fast_20.vpr@102.5--102.20) [187916]"}
@@ -1698,8 +1698,8 @@ procedure test(this: Ref) returns ()
   // -- Translating statement: unfold acc(Slow(this), write) -- disjunction_fast_20.vpr@103.5--103.22
     assume Slow#trigger(Heap, Slow(this));
     assume Heap[null, Slow(this)] == FrameFragment(Heap[this, val]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Slow(this) might fail. There might be insufficient permission to access Slow(this) (disjunction_fast_20.vpr@103.5--103.22) [187921]"}
@@ -1737,8 +1737,8 @@ procedure test(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Slow(this), write) -- disjunction_fast_20.vpr@106.5--106.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding Slow(this) might fail. There might be insufficient permission to access this.val (disjunction_fast_20.vpr@106.5--106.20) [187926]"}
@@ -1763,8 +1763,8 @@ procedure test(this: Ref) returns ()
   // -- Translating statement: unfold acc(Slow(this), write) -- disjunction_fast_20.vpr@107.5--107.22
     assume Slow#trigger(Heap, Slow(this));
     assume Heap[null, Slow(this)] == FrameFragment(Heap[this, val]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Slow(this) might fail. There might be insufficient permission to access Slow(this) (disjunction_fast_20.vpr@107.5--107.22) [187931]"}
@@ -1802,8 +1802,8 @@ procedure test(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Slow(this), write) -- disjunction_fast_20.vpr@110.5--110.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding Slow(this) might fail. There might be insufficient permission to access this.val (disjunction_fast_20.vpr@110.5--110.20) [187936]"}
@@ -1828,8 +1828,8 @@ procedure test(this: Ref) returns ()
   // -- Translating statement: unfold acc(Slow(this), write) -- disjunction_fast_20.vpr@111.5--111.22
     assume Slow#trigger(Heap, Slow(this));
     assume Heap[null, Slow(this)] == FrameFragment(Heap[this, val]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Slow(this) might fail. There might be insufficient permission to access Slow(this) (disjunction_fast_20.vpr@111.5--111.22) [187941]"}
@@ -1867,8 +1867,8 @@ procedure test(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Slow(this), write) -- disjunction_fast_20.vpr@114.5--114.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding Slow(this) might fail. There might be insufficient permission to access this.val (disjunction_fast_20.vpr@114.5--114.20) [187946]"}
@@ -1893,8 +1893,8 @@ procedure test(this: Ref) returns ()
   // -- Translating statement: unfold acc(Slow(this), write) -- disjunction_fast_20.vpr@115.5--115.22
     assume Slow#trigger(Heap, Slow(this));
     assume Heap[null, Slow(this)] == FrameFragment(Heap[this, val]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Slow(this) might fail. There might be insufficient permission to access Slow(this) (disjunction_fast_20.vpr@115.5--115.22) [187951]"}
@@ -1932,8 +1932,8 @@ procedure test(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Slow(this), write) -- disjunction_fast_20.vpr@118.5--118.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding Slow(this) might fail. There might be insufficient permission to access this.val (disjunction_fast_20.vpr@118.5--118.20) [187956]"}
@@ -1958,8 +1958,8 @@ procedure test(this: Ref) returns ()
   // -- Translating statement: unfold acc(Slow(this), write) -- disjunction_fast_20.vpr@119.5--119.22
     assume Slow#trigger(Heap, Slow(this));
     assume Heap[null, Slow(this)] == FrameFragment(Heap[this, val]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Slow(this) might fail. There might be insufficient permission to access Slow(this) (disjunction_fast_20.vpr@119.5--119.22) [187961]"}
@@ -1997,8 +1997,8 @@ procedure test(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Slow(this), write) -- disjunction_fast_20.vpr@122.5--122.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding Slow(this) might fail. There might be insufficient permission to access this.val (disjunction_fast_20.vpr@122.5--122.20) [187966]"}
@@ -2023,8 +2023,8 @@ procedure test(this: Ref) returns ()
   // -- Translating statement: unfold acc(Slow(this), write) -- disjunction_fast_20.vpr@123.5--123.22
     assume Slow#trigger(Heap, Slow(this));
     assume Heap[null, Slow(this)] == FrameFragment(Heap[this, val]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Slow(this) might fail. There might be insufficient permission to access Slow(this) (disjunction_fast_20.vpr@123.5--123.22) [187971]"}
@@ -2062,8 +2062,8 @@ procedure test(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Slow(this), write) -- disjunction_fast_20.vpr@126.5--126.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding Slow(this) might fail. There might be insufficient permission to access this.val (disjunction_fast_20.vpr@126.5--126.20) [187976]"}
@@ -2088,8 +2088,8 @@ procedure test(this: Ref) returns ()
   // -- Translating statement: unfold acc(Slow(this), write) -- disjunction_fast_20.vpr@127.5--127.22
     assume Slow#trigger(Heap, Slow(this));
     assume Heap[null, Slow(this)] == FrameFragment(Heap[this, val]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Slow(this) might fail. There might be insufficient permission to access Slow(this) (disjunction_fast_20.vpr@127.5--127.22) [187981]"}
@@ -2127,8 +2127,8 @@ procedure test(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Slow(this), write) -- disjunction_fast_20.vpr@130.5--130.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding Slow(this) might fail. There might be insufficient permission to access this.val (disjunction_fast_20.vpr@130.5--130.20) [187986]"}
@@ -2153,8 +2153,8 @@ procedure test(this: Ref) returns ()
   // -- Translating statement: unfold acc(Slow(this), write) -- disjunction_fast_20.vpr@131.5--131.22
     assume Slow#trigger(Heap, Slow(this));
     assume Heap[null, Slow(this)] == FrameFragment(Heap[this, val]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Slow(this) might fail. There might be insufficient permission to access Slow(this) (disjunction_fast_20.vpr@131.5--131.22) [187991]"}
@@ -2192,8 +2192,8 @@ procedure test(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Slow(this), write) -- disjunction_fast_20.vpr@134.5--134.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding Slow(this) might fail. There might be insufficient permission to access this.val (disjunction_fast_20.vpr@134.5--134.20) [187996]"}
@@ -2218,8 +2218,8 @@ procedure test(this: Ref) returns ()
   // -- Translating statement: unfold acc(Slow(this), write) -- disjunction_fast_20.vpr@135.5--135.22
     assume Slow#trigger(Heap, Slow(this));
     assume Heap[null, Slow(this)] == FrameFragment(Heap[this, val]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Slow(this) might fail. There might be insufficient permission to access Slow(this) (disjunction_fast_20.vpr@135.5--135.22) [188001]"}
@@ -2257,8 +2257,8 @@ procedure test(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Slow(this), write) -- disjunction_fast_20.vpr@138.5--138.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding Slow(this) might fail. There might be insufficient permission to access this.val (disjunction_fast_20.vpr@138.5--138.20) [188006]"}
@@ -2283,8 +2283,8 @@ procedure test(this: Ref) returns ()
   // -- Translating statement: unfold acc(Slow(this), write) -- disjunction_fast_20.vpr@139.5--139.22
     assume Slow#trigger(Heap, Slow(this));
     assume Heap[null, Slow(this)] == FrameFragment(Heap[this, val]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Slow(this) might fail. There might be insufficient permission to access Slow(this) (disjunction_fast_20.vpr@139.5--139.22) [188011]"}
@@ -2322,8 +2322,8 @@ procedure test(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Slow(this), write) -- disjunction_fast_20.vpr@142.5--142.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding Slow(this) might fail. There might be insufficient permission to access this.val (disjunction_fast_20.vpr@142.5--142.20) [188016]"}
@@ -2348,8 +2348,8 @@ procedure test(this: Ref) returns ()
   // -- Translating statement: unfold acc(Slow(this), write) -- disjunction_fast_20.vpr@143.5--143.22
     assume Slow#trigger(Heap, Slow(this));
     assume Heap[null, Slow(this)] == FrameFragment(Heap[this, val]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Slow(this) might fail. There might be insufficient permission to access Slow(this) (disjunction_fast_20.vpr@143.5--143.22) [188021]"}
@@ -2387,8 +2387,8 @@ procedure test(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Slow(this), write) -- disjunction_fast_20.vpr@146.5--146.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding Slow(this) might fail. There might be insufficient permission to access this.val (disjunction_fast_20.vpr@146.5--146.20) [188026]"}
@@ -2413,8 +2413,8 @@ procedure test(this: Ref) returns ()
   // -- Translating statement: unfold acc(Slow(this), write) -- disjunction_fast_20.vpr@147.5--147.22
     assume Slow#trigger(Heap, Slow(this));
     assume Heap[null, Slow(this)] == FrameFragment(Heap[this, val]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Slow(this) might fail. There might be insufficient permission to access Slow(this) (disjunction_fast_20.vpr@147.5--147.22) [188031]"}
@@ -2452,8 +2452,8 @@ procedure test(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Slow(this), write) -- disjunction_fast_20.vpr@150.5--150.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding Slow(this) might fail. There might be insufficient permission to access this.val (disjunction_fast_20.vpr@150.5--150.20) [188036]"}
@@ -2478,8 +2478,8 @@ procedure test(this: Ref) returns ()
   // -- Translating statement: unfold acc(Slow(this), write) -- disjunction_fast_20.vpr@151.5--151.22
     assume Slow#trigger(Heap, Slow(this));
     assume Heap[null, Slow(this)] == FrameFragment(Heap[this, val]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Slow(this) might fail. There might be insufficient permission to access Slow(this) (disjunction_fast_20.vpr@151.5--151.22) [188041]"}
@@ -2517,8 +2517,8 @@ procedure test(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Slow(this), write) -- disjunction_fast_20.vpr@154.5--154.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding Slow(this) might fail. There might be insufficient permission to access this.val (disjunction_fast_20.vpr@154.5--154.20) [188046]"}
@@ -2543,8 +2543,8 @@ procedure test(this: Ref) returns ()
   // -- Translating statement: unfold acc(Slow(this), write) -- disjunction_fast_20.vpr@155.5--155.22
     assume Slow#trigger(Heap, Slow(this));
     assume Heap[null, Slow(this)] == FrameFragment(Heap[this, val]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Slow(this) might fail. There might be insufficient permission to access Slow(this) (disjunction_fast_20.vpr@155.5--155.22) [188051]"}
@@ -2582,8 +2582,8 @@ procedure test(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Slow(this), write) -- disjunction_fast_20.vpr@158.5--158.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding Slow(this) might fail. There might be insufficient permission to access this.val (disjunction_fast_20.vpr@158.5--158.20) [188056]"}
@@ -2608,8 +2608,8 @@ procedure test(this: Ref) returns ()
   // -- Translating statement: unfold acc(Slow(this), write) -- disjunction_fast_20.vpr@159.5--159.22
     assume Slow#trigger(Heap, Slow(this));
     assume Heap[null, Slow(this)] == FrameFragment(Heap[this, val]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Slow(this) might fail. There might be insufficient permission to access Slow(this) (disjunction_fast_20.vpr@159.5--159.22) [188061]"}
@@ -2647,8 +2647,8 @@ procedure test(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Slow(this), write) -- disjunction_fast_20.vpr@162.5--162.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding Slow(this) might fail. There might be insufficient permission to access this.val (disjunction_fast_20.vpr@162.5--162.20) [188066]"}
@@ -2673,8 +2673,8 @@ procedure test(this: Ref) returns ()
   // -- Translating statement: unfold acc(Slow(this), write) -- disjunction_fast_20.vpr@163.5--163.22
     assume Slow#trigger(Heap, Slow(this));
     assume Heap[null, Slow(this)] == FrameFragment(Heap[this, val]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Slow(this) might fail. There might be insufficient permission to access Slow(this) (disjunction_fast_20.vpr@163.5--163.22) [188071]"}
@@ -2712,8 +2712,8 @@ procedure test(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Slow(this), write) -- disjunction_fast_20.vpr@166.5--166.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding Slow(this) might fail. There might be insufficient permission to access this.val (disjunction_fast_20.vpr@166.5--166.20) [188076]"}
@@ -2738,8 +2738,8 @@ procedure test(this: Ref) returns ()
   // -- Translating statement: unfold acc(Slow(this), write) -- disjunction_fast_20.vpr@167.5--167.22
     assume Slow#trigger(Heap, Slow(this));
     assume Heap[null, Slow(this)] == FrameFragment(Heap[this, val]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Slow(this) might fail. There might be insufficient permission to access Slow(this) (disjunction_fast_20.vpr@167.5--167.22) [188081]"}
@@ -2777,8 +2777,8 @@ procedure test(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Slow(this), write) -- disjunction_fast_20.vpr@170.5--170.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding Slow(this) might fail. There might be insufficient permission to access this.val (disjunction_fast_20.vpr@170.5--170.20) [188086]"}
@@ -2803,8 +2803,8 @@ procedure test(this: Ref) returns ()
   // -- Translating statement: unfold acc(Slow(this), write) -- disjunction_fast_20.vpr@171.5--171.22
     assume Slow#trigger(Heap, Slow(this));
     assume Heap[null, Slow(this)] == FrameFragment(Heap[this, val]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Slow(this) might fail. There might be insufficient permission to access Slow(this) (disjunction_fast_20.vpr@171.5--171.22) [188091]"}
@@ -2842,8 +2842,8 @@ procedure test(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Slow(this), write) -- disjunction_fast_20.vpr@174.5--174.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding Slow(this) might fail. There might be insufficient permission to access this.val (disjunction_fast_20.vpr@174.5--174.20) [188096]"}
@@ -2868,8 +2868,8 @@ procedure test(this: Ref) returns ()
   // -- Translating statement: unfold acc(Slow(this), write) -- disjunction_fast_20.vpr@175.5--175.22
     assume Slow#trigger(Heap, Slow(this));
     assume Heap[null, Slow(this)] == FrameFragment(Heap[this, val]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Slow(this) might fail. There might be insufficient permission to access Slow(this) (disjunction_fast_20.vpr@175.5--175.22) [188101]"}
@@ -2907,8 +2907,8 @@ procedure test(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Slow(this), write) -- disjunction_fast_20.vpr@178.5--178.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding Slow(this) might fail. There might be insufficient permission to access this.val (disjunction_fast_20.vpr@178.5--178.20) [188106]"}
@@ -2933,8 +2933,8 @@ procedure test(this: Ref) returns ()
   // -- Translating statement: unfold acc(Slow(this), write) -- disjunction_fast_20.vpr@179.5--179.22
     assume Slow#trigger(Heap, Slow(this));
     assume Heap[null, Slow(this)] == FrameFragment(Heap[this, val]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Slow(this) might fail. There might be insufficient permission to access Slow(this) (disjunction_fast_20.vpr@179.5--179.22) [188111]"}
@@ -2972,8 +2972,8 @@ procedure test(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Slow(this), write) -- disjunction_fast_20.vpr@182.5--182.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding Slow(this) might fail. There might be insufficient permission to access this.val (disjunction_fast_20.vpr@182.5--182.20) [188116]"}
@@ -2998,8 +2998,8 @@ procedure test(this: Ref) returns ()
   // -- Translating statement: unfold acc(Slow(this), write) -- disjunction_fast_20.vpr@183.5--183.22
     assume Slow#trigger(Heap, Slow(this));
     assume Heap[null, Slow(this)] == FrameFragment(Heap[this, val]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Slow(this) might fail. There might be insufficient permission to access Slow(this) (disjunction_fast_20.vpr@183.5--183.22) [188121]"}
@@ -3037,8 +3037,8 @@ procedure test(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Slow(this), write) -- disjunction_fast_20.vpr@186.5--186.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding Slow(this) might fail. There might be insufficient permission to access this.val (disjunction_fast_20.vpr@186.5--186.20) [188126]"}
@@ -3063,8 +3063,8 @@ procedure test(this: Ref) returns ()
   // -- Translating statement: unfold acc(Slow(this), write) -- disjunction_fast_20.vpr@187.5--187.22
     assume Slow#trigger(Heap, Slow(this));
     assume Heap[null, Slow(this)] == FrameFragment(Heap[this, val]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Slow(this) might fail. There might be insufficient permission to access Slow(this) (disjunction_fast_20.vpr@187.5--187.22) [188131]"}
@@ -3102,8 +3102,8 @@ procedure test(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Slow(this), write) -- disjunction_fast_20.vpr@190.5--190.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding Slow(this) might fail. There might be insufficient permission to access this.val (disjunction_fast_20.vpr@190.5--190.20) [188136]"}
@@ -3128,8 +3128,8 @@ procedure test(this: Ref) returns ()
   // -- Translating statement: unfold acc(Slow(this), write) -- disjunction_fast_20.vpr@191.5--191.22
     assume Slow#trigger(Heap, Slow(this));
     assume Heap[null, Slow(this)] == FrameFragment(Heap[this, val]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Slow(this) might fail. There might be insufficient permission to access Slow(this) (disjunction_fast_20.vpr@191.5--191.22) [188141]"}
@@ -3167,8 +3167,8 @@ procedure test(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Slow(this), write) -- disjunction_fast_20.vpr@194.5--194.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding Slow(this) might fail. There might be insufficient permission to access this.val (disjunction_fast_20.vpr@194.5--194.20) [188146]"}
@@ -3193,8 +3193,8 @@ procedure test(this: Ref) returns ()
   // -- Translating statement: unfold acc(Slow(this), write) -- disjunction_fast_20.vpr@195.5--195.22
     assume Slow#trigger(Heap, Slow(this));
     assume Heap[null, Slow(this)] == FrameFragment(Heap[this, val]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Slow(this) might fail. There might be insufficient permission to access Slow(this) (disjunction_fast_20.vpr@195.5--195.22) [188151]"}
@@ -3232,8 +3232,8 @@ procedure test(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Slow(this), write) -- disjunction_fast_20.vpr@198.5--198.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding Slow(this) might fail. There might be insufficient permission to access this.val (disjunction_fast_20.vpr@198.5--198.20) [188156]"}
@@ -3258,8 +3258,8 @@ procedure test(this: Ref) returns ()
   // -- Translating statement: unfold acc(Slow(this), write) -- disjunction_fast_20.vpr@199.5--199.22
     assume Slow#trigger(Heap, Slow(this));
     assume Heap[null, Slow(this)] == FrameFragment(Heap[this, val]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Slow(this) might fail. There might be insufficient permission to access Slow(this) (disjunction_fast_20.vpr@199.5--199.22) [188161]"}
@@ -3297,8 +3297,8 @@ procedure test(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Slow(this), write) -- disjunction_fast_20.vpr@202.5--202.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding Slow(this) might fail. There might be insufficient permission to access this.val (disjunction_fast_20.vpr@202.5--202.20) [188166]"}
@@ -3323,8 +3323,8 @@ procedure test(this: Ref) returns ()
   // -- Translating statement: unfold acc(Slow(this), write) -- disjunction_fast_20.vpr@203.5--203.22
     assume Slow#trigger(Heap, Slow(this));
     assume Heap[null, Slow(this)] == FrameFragment(Heap[this, val]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Slow(this) might fail. There might be insufficient permission to access Slow(this) (disjunction_fast_20.vpr@203.5--203.22) [188171]"}
@@ -3362,8 +3362,8 @@ procedure test(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Slow(this), write) -- disjunction_fast_20.vpr@206.5--206.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding Slow(this) might fail. There might be insufficient permission to access this.val (disjunction_fast_20.vpr@206.5--206.20) [188176]"}
@@ -3388,8 +3388,8 @@ procedure test(this: Ref) returns ()
   // -- Translating statement: unfold acc(Slow(this), write) -- disjunction_fast_20.vpr@207.5--207.22
     assume Slow#trigger(Heap, Slow(this));
     assume Heap[null, Slow(this)] == FrameFragment(Heap[this, val]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Slow(this) might fail. There might be insufficient permission to access Slow(this) (disjunction_fast_20.vpr@207.5--207.22) [188181]"}
@@ -3427,8 +3427,8 @@ procedure test(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Slow(this), write) -- disjunction_fast_20.vpr@210.5--210.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding Slow(this) might fail. There might be insufficient permission to access this.val (disjunction_fast_20.vpr@210.5--210.20) [188186]"}
@@ -3451,8 +3451,8 @@ procedure test(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of test might not hold. There might be insufficient permission to access Slow(this) (disjunction_fast_20.vpr@20.13--20.23) [188189]"}

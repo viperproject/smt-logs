@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-26 19:42:38
+; Started: 2024-12-27 02:02:39
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -162,21 +162,21 @@
 (assert (forall ((s@$ $Snap) (xs@0@00 List_)) (!
   (= (len%limited s@$ xs@0@00) (len s@$ xs@0@00))
   :pattern ((len s@$ xs@0@00))
-  :qid |quant-u-26393|)))
+  :qid |quant-u-26421|)))
 (assert (forall ((s@$ $Snap) (xs@0@00 List_)) (!
   (len%stateless xs@0@00)
   :pattern ((len%limited s@$ xs@0@00))
-  :qid |quant-u-26394|)))
+  :qid |quant-u-26422|)))
 (assert (forall ((s@$ $Snap) (xs@0@00 List_)) (!
   (let ((result@1@00 (len%limited s@$ xs@0@00))) (=>
     (len%precondition s@$ xs@0@00)
     (>= result@1@00 0)))
   :pattern ((len%limited s@$ xs@0@00))
-  :qid |quant-u-26397|)))
+  :qid |quant-u-26425|)))
 (assert (forall ((s@$ $Snap) (xs@0@00 List_)) (!
   (let ((result@1@00 (len%limited s@$ xs@0@00))) true)
   :pattern ((len%limited s@$ xs@0@00))
-  :qid |quant-u-26398|)))
+  :qid |quant-u-26426|)))
 (assert (forall ((s@$ $Snap) (xs@0@00 List_)) (!
   (=>
     (len%precondition s@$ xs@0@00)
@@ -187,7 +187,7 @@
         0
         (+ 1 (len%limited $Snap.unit (get_List_tail<List> xs@0@00))))))
   :pattern ((len s@$ xs@0@00))
-  :qid |quant-u-26399|)))
+  :qid |quant-u-26427|)))
 (assert (forall ((s@$ $Snap) (xs@0@00 List_)) (!
   (=>
     (len%precondition s@$ xs@0@00)
@@ -196,15 +196,15 @@
       true
       (len%precondition $Snap.unit (get_List_tail<List> xs@0@00))))
   :pattern ((len s@$ xs@0@00))
-  :qid |quant-u-26400|)))
+  :qid |quant-u-26428|)))
 (assert (forall ((s@$ $Snap) (xs@2@00 List_) (pos@3@00 Int)) (!
   (= (at%limited s@$ xs@2@00 pos@3@00) (at s@$ xs@2@00 pos@3@00))
   :pattern ((at s@$ xs@2@00 pos@3@00))
-  :qid |quant-u-26395|)))
+  :qid |quant-u-26423|)))
 (assert (forall ((s@$ $Snap) (xs@2@00 List_) (pos@3@00 Int)) (!
   (at%stateless xs@2@00 pos@3@00)
   :pattern ((at%limited s@$ xs@2@00 pos@3@00))
-  :qid |quant-u-26396|)))
+  :qid |quant-u-26424|)))
 (assert (forall ((s@$ $Snap) (xs@2@00 List_) (pos@3@00 Int)) (!
   (=>
     (at%precondition s@$ xs@2@00 pos@3@00)
@@ -218,7 +218,7 @@
           (get_List_head<Int> xs@2@00)
           (at%limited $Snap.unit (get_List_tail<List> xs@2@00) (- pos@3@00 1))))))
   :pattern ((at s@$ xs@2@00 pos@3@00))
-  :qid |quant-u-26401|)))
+  :qid |quant-u-26429|)))
 (assert (forall ((s@$ $Snap) (xs@2@00 List_) (pos@3@00 Int)) (!
   (=>
     (at%precondition s@$ xs@2@00 pos@3@00)
@@ -230,7 +230,7 @@
         true
         (at%precondition $Snap.unit (get_List_tail<List> xs@2@00) (- pos@3@00 1)))))
   :pattern ((at s@$ xs@2@00 pos@3@00))
-  :qid |quant-u-26402|)))
+  :qid |quant-u-26430|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- prepend ----------

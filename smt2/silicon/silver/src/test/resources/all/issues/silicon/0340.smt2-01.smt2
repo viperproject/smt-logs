@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-26 19:40:38
+; Started: 2024-12-27 02:00:38
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -495,7 +495,7 @@
 (assert (forall ((r@0@01 $Ref)) (!
   (and (= (inv@3@01 r@0@01) r@0@01) (img@4@01 r@0@01))
   :pattern (($FVF.loc_next ($FVF.lookup_next $t@2@01 r@0@01) r@0@01))
-  :qid |quant-u-24682|)))
+  :qid |quant-u-24710|)))
 (assert (forall ((r $Ref)) (!
   (=> (img@4@01 r) (= (inv@3@01 r) r))
   :pattern ((inv@3@01 r))
@@ -525,7 +525,7 @@
 (assert (forall ((r $Ref)) (!
   ($FVF.loc_next ($FVF.lookup_next (as sm@5@01  $FVF<next>) r) r)
   :pattern ((inv@3@01 r))
-  :qid |quant-u-24683|)))
+  :qid |quant-u-24711|)))
 ; State saturation: after contract
 (set-option :timeout 50)
 (check-sat)
@@ -556,7 +556,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (- (ite (img@4@01 r) $Perm.Write $Perm.No) (pTaken@6@01 r)) $Perm.No)
   
-  :qid |quant-u-24685|))))
+  :qid |quant-u-24713|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -569,7 +569,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (= r $Ref.null) (= (- $Perm.Write (pTaken@6@01 r)) $Perm.No))
   
-  :qid |quant-u-24686|))))
+  :qid |quant-u-24714|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -601,7 +601,7 @@
 (assert (forall ((r@7@01 $Ref)) (!
   (and (= (inv@10@01 r@7@01) r@7@01) (img@11@01 r@7@01))
   :pattern (($FVF.loc_next ($FVF.lookup_next $t@9@01 r@7@01) r@7@01))
-  :qid |quant-u-24688|)))
+  :qid |quant-u-24716|)))
 (assert (forall ((r $Ref)) (!
   (=> (img@11@01 r) (= (inv@10@01 r) r))
   :pattern ((inv@10@01 r))
@@ -631,7 +631,7 @@
 (assert (forall ((r $Ref)) (!
   ($FVF.loc_next ($FVF.lookup_next (as sm@12@01  $FVF<next>) r) r)
   :pattern ((inv@10@01 r))
-  :qid |quant-u-24689|)))
+  :qid |quant-u-24717|)))
 ; State saturation: after contract
 (set-option :timeout 50)
 (check-sat)
@@ -728,7 +728,7 @@
     (not (= r@15@01 $Ref.null))
     (and (= (inv@18@01 r@15@01) r@15@01) (img@19@01 r@15@01)))
   :pattern (($FVF.loc_next ($FVF.lookup_next $t@17@01 r@15@01) r@15@01))
-  :qid |quant-u-24691|)))
+  :qid |quant-u-24719|)))
 (assert (forall ((r $Ref)) (!
   (=> (and (img@19@01 r) (not (= (inv@18@01 r) $Ref.null))) (= (inv@18@01 r) r))
   :pattern ((inv@18@01 r))
@@ -756,7 +756,7 @@
     (not (= (inv@18@01 r) $Ref.null))
     ($FVF.loc_next ($FVF.lookup_next (as sm@20@01  $FVF<next>) r) r))
   :pattern ((inv@18@01 r))
-  :qid |quant-u-24692|)))
+  :qid |quant-u-24720|)))
 ; State saturation: after inhale
 (set-option :timeout 20)
 (check-sat)
@@ -804,7 +804,7 @@
       (pTaken@22@01 r))
     $Perm.No)
   
-  :qid |quant-u-24694|))))
+  :qid |quant-u-24722|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -816,7 +816,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@22@01 r) $Perm.No)
   
-  :qid |quant-u-24695|))))
+  :qid |quant-u-24723|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -829,7 +829,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (= r x@14@01) (= (- $Perm.Write (pTaken@22@01 r)) $Perm.No))
   
-  :qid |quant-u-24696|))))
+  :qid |quant-u-24724|))))
 (check-sat)
 ; unsat
 (pop) ; 3

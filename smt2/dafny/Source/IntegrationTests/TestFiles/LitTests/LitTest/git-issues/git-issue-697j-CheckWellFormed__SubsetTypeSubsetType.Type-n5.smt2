@@ -131,7 +131,7 @@
 (set-option :pp.bv_literals false)
 (set-option :smt.arith.solver 2)
 (assert (not
- (=> (= (ControlFlow 0 0) 6) (let (($generated@@100  (=> (= $generated@@93 ($generated 0)) (and (=> (= (ControlFlow 0 3) (- 0 4)) ($generated@@21 $generated@@93)) (=> ($generated@@21 $generated@@93) (=> (= (ControlFlow 0 3) (- 0 2)) ($generated@@5 ($generated@@17 $generated@@1 ($generated@@4 true)))))))))
+ (=> (= (ControlFlow 0 0) 6) (let (($generated@@100  (=> (= $generated@@93 ($generated 0)) (and (=> (= (ControlFlow 0 3) (- 0 4)) (and (and (<= ($generated (- 0 2147483648)) $generated@@93) (< $generated@@93 2147483648)) ($generated@@21 $generated@@93))) (=> (and (and (<= ($generated (- 0 2147483648)) $generated@@93) (< $generated@@93 2147483648)) ($generated@@21 $generated@@93)) (=> (= (ControlFlow 0 3) (- 0 2)) ($generated@@5 ($generated@@17 $generated@@1 ($generated@@4 true)))))))))
 (let (($generated@@101 true))
 (let (($generated@@102  (=> (= $generated@@94 ($generated@@34 $generated@@95 $generated@@96 $generated@@97 false)) (and (=> (= (ControlFlow 0 5) 1) $generated@@101) (=> (= (ControlFlow 0 5) 3) $generated@@100)))))
 (let (($generated@@103  (=> (and (and ($generated@@98 $generated@@96) ($generated@@99 $generated@@96)) (and (= 2 $generated@@20) (= (ControlFlow 0 6) 5))) $generated@@102)))

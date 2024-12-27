@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-26 19:41:15
+; Started: 2024-12-27 02:01:16
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -682,11 +682,11 @@
 (assert (forall ((s@$ $Snap) (a@0@00 array) (i@1@00 Int)) (!
   (= (aloc%limited s@$ a@0@00 i@1@00) (aloc s@$ a@0@00 i@1@00))
   :pattern ((aloc s@$ a@0@00 i@1@00))
-  :qid |quant-u-25521|)))
+  :qid |quant-u-25549|)))
 (assert (forall ((s@$ $Snap) (a@0@00 array) (i@1@00 Int)) (!
   (aloc%stateless a@0@00 i@1@00)
   :pattern ((aloc%limited s@$ a@0@00 i@1@00))
-  :qid |quant-u-25522|)))
+  :qid |quant-u-25550|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (= s@$ ($Snap.combine ($Snap.first s@$) ($Snap.second s@$))))
@@ -706,8 +706,8 @@
     (aloc%precondition s@$ a@0@00 i@1@00)
     (= (aloc s@$ a@0@00 i@1@00) (array_loc<Ref> a@0@00 i@1@00)))
   :pattern ((aloc s@$ a@0@00 i@1@00))
-  :qid |quant-u-25523|)))
+  :qid |quant-u-25551|)))
 (assert (forall ((s@$ $Snap) (a@0@00 array) (i@1@00 Int)) (!
   true
   :pattern ((aloc s@$ a@0@00 i@1@00))
-  :qid |quant-u-25524|)))
+  :qid |quant-u-25552|)))

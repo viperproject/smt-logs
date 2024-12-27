@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-26 19:40:37
+; Started: 2024-12-27 02:00:38
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -672,7 +672,7 @@
     (Set_in r@4@01 xs@3@01)
     (and (= (inv@6@01 r@4@01) r@4@01) (img@7@01 r@4@01)))
   :pattern ((Set_in r@4@01 xs@3@01))
-  :qid |quant-u-24673|)))
+  :qid |quant-u-24701|)))
 (assert (forall ((r $Ref)) (!
   (=> (and (img@7@01 r) (Set_in (inv@6@01 r) xs@3@01)) (= (inv@6@01 r) r))
   :pattern ((inv@6@01 r))
@@ -762,7 +762,7 @@
   :pattern (($FVF.lookup_f (as sm@10@01  $FVF<f>) r))
   :pattern (($FVF.lookup_f (as sm@12@01  $FVF<f>) r))
   :pattern (($FVF.lookup_f $t@13@01 r))
-  :qid |quant-u-24674|)))
+  :qid |quant-u-24702|)))
 ; State saturation: after inhale
 (set-option :timeout 20)
 (check-sat)
@@ -805,7 +805,7 @@
   :pattern (($FVF.lookup_f (as sm@10@01  $FVF<f>) r))
   :pattern (($FVF.lookup_f (as sm@15@01  $FVF<f>) r))
   :pattern (($FVF.lookup_f $t@16@01 r))
-  :qid |quant-u-24675|)))
+  :qid |quant-u-24703|)))
 ; State saturation: after inhale
 (set-option :timeout 20)
 (check-sat)
@@ -927,7 +927,7 @@
       :pattern (($FVF.lookup_f (as sm@10@01  $FVF<f>) r))
       :pattern (($FVF.lookup_f (as sm@12@01  $FVF<f>) r))
       :pattern (($FVF.lookup_f $t@13@01 r))
-      :qid |quant-u-24674|)))))
+      :qid |quant-u-24702|)))))
 ; Joined path conditions
 (assert (=>
   (not b@8@01)
@@ -944,7 +944,7 @@
       :pattern (($FVF.lookup_f (as sm@10@01  $FVF<f>) r))
       :pattern (($FVF.lookup_f (as sm@15@01  $FVF<f>) r))
       :pattern (($FVF.lookup_f $t@16@01 r))
-      :qid |quant-u-24675|)))))
+      :qid |quant-u-24703|)))))
 (assert (or (not b@8@01) b@8@01))
 ; [exec]
 ; assert acc(x.f, write)
@@ -989,7 +989,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (= r x@2@01) (= (- $Perm.Write (pTaken@19@01 r)) $Perm.No))
   
-  :qid |quant-u-24678|))))
+  :qid |quant-u-24706|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -1014,7 +1014,7 @@
     (= r x@2@01)
     (= (- (- $Perm.Write (pTaken@19@01 r)) (pTaken@20@01 r)) $Perm.No))
   
-  :qid |quant-u-24680|))))
+  :qid |quant-u-24708|))))
 (check-sat)
 ; unsat
 (pop) ; 3

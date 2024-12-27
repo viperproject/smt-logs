@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-26 19:36:29
+; Started: 2024-12-27 01:56:28
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -130,21 +130,21 @@
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   (= (fun%limited s@$ x@0@00) (fun s@$ x@0@00))
   :pattern ((fun s@$ x@0@00))
-  :qid |quant-u-19922|)))
+  :qid |quant-u-19950|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   (fun%stateless x@0@00)
   :pattern ((fun%limited s@$ x@0@00))
-  :qid |quant-u-19923|)))
+  :qid |quant-u-19951|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   (let ((result@1@00 (fun%limited s@$ x@0@00))) (and
     ($Perm.isReadVar $k@2@00)
     (=> (fun%precondition s@$ x@0@00) (> result@1@00 0))))
   :pattern ((fun%limited s@$ x@0@00))
-  :qid |quant-u-19924|)))
+  :qid |quant-u-19952|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   (let ((result@1@00 (fun%limited s@$ x@0@00))) true)
   :pattern ((fun%limited s@$ x@0@00))
-  :qid |quant-u-19925|)))
+  :qid |quant-u-19953|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert ($Perm.isReadVar $k@2@00))
@@ -238,11 +238,11 @@
       (fun%precondition s@$ x@0@00)
       (= (fun s@$ x@0@00) ($SortWrappers.$SnapToInt ($Snap.first s@$)))))
   :pattern ((fun s@$ x@0@00))
-  :qid |quant-u-19926|)))
+  :qid |quant-u-19954|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   true
   :pattern ((fun s@$ x@0@00))
-  :qid |quant-u-19927|)))
+  :qid |quant-u-19955|)))
 ; ---------- P ----------
 (declare-const x@6@00 $Ref)
 (push) ; 1

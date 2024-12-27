@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-26 19:37:17
+; Started: 2024-12-27 01:57:16
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -178,21 +178,21 @@
 (assert (forall ((s@$ $Snap) (r@0@00 $Ref)) (!
   (= (heapDepUnint%limited s@$ r@0@00) (heapDepUnint s@$ r@0@00))
   :pattern ((heapDepUnint s@$ r@0@00))
-  :qid |quant-u-21767|)))
+  :qid |quant-u-21795|)))
 (assert (forall ((s@$ $Snap) (r@0@00 $Ref)) (!
   (heapDepUnint%stateless r@0@00)
   :pattern ((heapDepUnint%limited s@$ r@0@00))
-  :qid |quant-u-21768|)))
+  :qid |quant-u-21796|)))
 (assert (forall ((s@$ $Snap) (r@0@00 $Ref)) (!
   (let ((result@1@00 (heapDepUnint%limited s@$ r@0@00))) (=>
     (heapDepUnint%precondition s@$ r@0@00)
     (= result@1@00 (+ ($SortWrappers.$SnapToInt s@$) 3))))
   :pattern ((heapDepUnint%limited s@$ r@0@00))
-  :qid |quant-u-21777|)))
+  :qid |quant-u-21805|)))
 (assert (forall ((s@$ $Snap) (r@0@00 $Ref)) (!
   (let ((result@1@00 (heapDepUnint%limited s@$ r@0@00))) true)
   :pattern ((heapDepUnint%limited s@$ r@0@00))
-  :qid |quant-u-21778|)))
+  :qid |quant-u-21806|)))
 ; ---------- FUNCTION heapDep----------
 (declare-fun r@2@00 () $Ref)
 (declare-fun result@3@00 () Int)
@@ -203,11 +203,11 @@
 (assert (forall ((s@$ $Snap) (r@2@00 $Ref)) (!
   (= (heapDep%limited s@$ r@2@00) (heapDep s@$ r@2@00))
   :pattern ((heapDep s@$ r@2@00))
-  :qid |quant-u-21769|)))
+  :qid |quant-u-21797|)))
 (assert (forall ((s@$ $Snap) (r@2@00 $Ref)) (!
   (heapDep%stateless r@2@00)
   :pattern ((heapDep%limited s@$ r@2@00))
-  :qid |quant-u-21770|)))
+  :qid |quant-u-21798|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (not (= r@2@00 $Ref.null)))
@@ -223,11 +223,11 @@
     (heapDep%precondition s@$ r@2@00)
     (= (heapDep s@$ r@2@00) (+ ($SortWrappers.$SnapToInt s@$) 2)))
   :pattern ((heapDep s@$ r@2@00))
-  :qid |quant-u-21779|)))
+  :qid |quant-u-21807|)))
 (assert (forall ((s@$ $Snap) (r@2@00 $Ref)) (!
   true
   :pattern ((heapDep s@$ r@2@00))
-  :qid |quant-u-21780|)))
+  :qid |quant-u-21808|)))
 ; ---------- FUNCTION uninterp----------
 (declare-fun i@4@00 () Int)
 (declare-fun result@5@00 () Int)
@@ -243,21 +243,21 @@
 (assert (forall ((s@$ $Snap) (i@4@00 Int)) (!
   (= (uninterp%limited s@$ i@4@00) (uninterp s@$ i@4@00))
   :pattern ((uninterp s@$ i@4@00))
-  :qid |quant-u-21771|)))
+  :qid |quant-u-21799|)))
 (assert (forall ((s@$ $Snap) (i@4@00 Int)) (!
   (uninterp%stateless i@4@00)
   :pattern ((uninterp%limited s@$ i@4@00))
-  :qid |quant-u-21772|)))
+  :qid |quant-u-21800|)))
 (assert (forall ((s@$ $Snap) (i@4@00 Int)) (!
   (let ((result@5@00 (uninterp%limited s@$ i@4@00))) (=>
     (uninterp%precondition s@$ i@4@00)
     (= result@5@00 (+ i@4@00 4))))
   :pattern ((uninterp%limited s@$ i@4@00))
-  :qid |quant-u-21781|)))
+  :qid |quant-u-21809|)))
 (assert (forall ((s@$ $Snap) (i@4@00 Int)) (!
   (let ((result@5@00 (uninterp%limited s@$ i@4@00))) true)
   :pattern ((uninterp%limited s@$ i@4@00))
-  :qid |quant-u-21782|)))
+  :qid |quant-u-21810|)))
 ; ---------- FUNCTION interp----------
 (declare-fun i@6@00 () Int)
 (declare-fun result@7@00 () Int)
@@ -267,11 +267,11 @@
 (assert (forall ((s@$ $Snap) (i@6@00 Int)) (!
   (= (interp%limited s@$ i@6@00) (interp s@$ i@6@00))
   :pattern ((interp s@$ i@6@00))
-  :qid |quant-u-21773|)))
+  :qid |quant-u-21801|)))
 (assert (forall ((s@$ $Snap) (i@6@00 Int)) (!
   (interp%stateless i@6@00)
   :pattern ((interp%limited s@$ i@6@00))
-  :qid |quant-u-21774|)))
+  :qid |quant-u-21802|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -284,11 +284,11 @@
 (assert (forall ((s@$ $Snap) (i@6@00 Int)) (!
   (=> (interp%precondition s@$ i@6@00) (= (interp s@$ i@6@00) (+ i@6@00 1)))
   :pattern ((interp s@$ i@6@00))
-  :qid |quant-u-21783|)))
+  :qid |quant-u-21811|)))
 (assert (forall ((s@$ $Snap) (i@6@00 Int)) (!
   true
   :pattern ((interp s@$ i@6@00))
-  :qid |quant-u-21784|)))
+  :qid |quant-u-21812|)))
 ; ---------- FUNCTION heapDep2----------
 (declare-fun r@8@00 () $Ref)
 (declare-fun result@9@00 () Int)
@@ -300,11 +300,11 @@
 (assert (forall ((s@$ $Snap) (r@8@00 $Ref)) (!
   (= (heapDep2%limited s@$ r@8@00) (heapDep2 s@$ r@8@00))
   :pattern ((heapDep2 s@$ r@8@00))
-  :qid |quant-u-21775|)))
+  :qid |quant-u-21803|)))
 (assert (forall ((s@$ $Snap) (r@8@00 $Ref)) (!
   (heapDep2%stateless r@8@00)
   :pattern ((heapDep2%limited s@$ r@8@00))
-  :qid |quant-u-21776|)))
+  :qid |quant-u-21804|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (not (= r@8@00 $Ref.null)))
@@ -336,7 +336,7 @@
       (heapDep2 s@$ r@8@00)
       (+ (+ (heapDep s@$ r@8@00) (heapDepUnint s@$ r@8@00)) 10)))
   :pattern ((heapDep2 s@$ r@8@00))
-  :qid |quant-u-21785|)))
+  :qid |quant-u-21813|)))
 (assert (forall ((s@$ $Snap) (r@8@00 $Ref)) (!
   (=>
     (heapDep2%precondition s@$ r@8@00)
@@ -344,4 +344,4 @@
       (heapDep%precondition s@$ r@8@00)
       (heapDepUnint%precondition s@$ r@8@00)))
   :pattern ((heapDep2 s@$ r@8@00))
-  :qid |quant-u-21786|)))
+  :qid |quant-u-21814|)))

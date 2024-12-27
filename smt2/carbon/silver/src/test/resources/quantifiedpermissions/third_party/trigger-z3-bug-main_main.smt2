@@ -1649,6 +1649,3 @@ PreconditionGeneratedEntry_correct))))))))))))))))))))))))))))))))))))))))))))))
 (get-info :rlimit)
 (assert (not (= (ControlFlow 0 209) (- 210))))
 (check-sat)
-(get-info :rlimit)
-(pop 1)
-; Invalid

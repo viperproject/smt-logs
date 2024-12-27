@@ -1,0 +1,25412 @@
+
+; Z3 invocation started by F*
+; F* version: 2024.12.03~dev -- commit hash: a3be6122b76ec0ca29030e1ff72576dceeede19d
+; Z3 version (according to F*): 4.12.1
+
+(set-option :global-decls false)
+(set-option :smt.mbqi false)
+(set-option :auto_config false)
+(set-option :produce-unsat-cores true)
+(set-option :model true)
+(set-option :smt.case_split 3)
+(set-option :smt.relevancy 2)
+(set-option :smt.arith.solver 2)
+(set-option :smt.qi.eager_threshold 100)
+(set-option :smt.arith.nl false)
+(set-option :smt.arith.nl true)
+
+(declare-sort FString)
+(declare-fun FString_constr_id (FString) Int)
+
+(declare-sort Term)
+(declare-fun Term_constr_id (Term) Int)
+(declare-sort Dummy_sort)
+(declare-fun Dummy_value () Dummy_sort)
+(declare-datatypes () ((Fuel 
+(ZFuel) 
+(SFuel (prec Fuel)))))
+(declare-fun MaxIFuel () Fuel)
+(declare-fun MaxFuel () Fuel)
+(declare-fun PreType (Term) Term)
+(declare-fun Valid (Term) Bool)
+(declare-fun HasTypeFuel (Fuel Term Term) Bool)
+(define-fun HasTypeZ ((x Term) (t Term)) Bool
+(HasTypeFuel ZFuel x t))
+(define-fun HasType ((x Term) (t Term)) Bool
+(HasTypeFuel MaxIFuel x t))
+(declare-fun IsTotFun (Term) Bool)
+
+                ;;fuel irrelevance
+(assert (forall ((f Fuel) (x Term) (t Term))
+(! (= (HasTypeFuel (SFuel f) x t)
+(HasTypeZ x t))
+:pattern ((HasTypeFuel (SFuel f) x t)))))
+(declare-fun NoHoist (Term Bool) Bool)
+;;no-hoist
+(assert (forall ((dummy Term) (b Bool))
+(! (= (NoHoist dummy b)
+b)
+:pattern ((NoHoist dummy b)))))
+(define-fun  IsTyped ((x Term)) Bool
+(exists ((t Term)) (HasTypeZ x t)))
+(declare-fun ApplyTF (Term Fuel) Term)
+(declare-fun ApplyTT (Term Term) Term)
+(declare-fun Prec (Term Term) Bool)
+(assert (forall ((x Term) (y Term) (z Term))
+(! (implies (and (Prec x y) (Prec y z))
+(Prec x z))
+                                   :pattern ((Prec x z) (Prec x y)))))
+(assert (forall ((x Term) (y Term))
+(implies (Prec x y)
+(not (Prec y x)))))
+(declare-fun Closure (Term) Term)
+(declare-fun ConsTerm (Term Term) Term)
+(declare-fun ConsFuel (Fuel Term) Term)
+(declare-fun Tm_uvar (Int) Term)
+(define-fun Reify ((x Term)) Term x)
+(declare-fun Prims.precedes (Term Term Term Term) Term)
+(declare-fun Range_const (Int) Term)
+(declare-fun _mul (Int Int) Int)
+(declare-fun _div (Int Int) Int)
+(declare-fun _mod (Int Int) Int)
+(declare-fun __uu__PartialApp () Term)
+(assert (forall ((x Int) (y Int)) (! (= (_mul x y) (* x y)) :pattern ((_mul x y)))))
+(assert (forall ((x Int) (y Int)) (! (= (_div x y) (div x y)) :pattern ((_div x y)))))
+(assert (forall ((x Int) (y Int)) (! (= (_mod x y) (mod x y)) :pattern ((_mod x y)))))
+(declare-fun _rmul (Real Real) Real)
+(declare-fun _rdiv (Real Real) Real)
+(assert (forall ((x Real) (y Real)) (! (= (_rmul x y) (* x y)) :pattern ((_rmul x y)))))
+(assert (forall ((x Real) (y Real)) (! (= (_rdiv x y) (/ x y)) :pattern ((_rdiv x y)))))
+(define-fun Unreachable () Bool false)
+; <start constructor FString_const>
+
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun FString_const (Int) FString)
+;;;;;;;;;;;;;;;;Constructor distinct
+;;; Fact-ids: 
+(assert (! (forall ((@u0 Int))
+ (! (= 0
+(FString_constr_id (FString_const @u0)))
+ 
+
+:pattern ((FString_const @u0))
+:qid constructor_distinct_FString_const))
+:named constructor_distinct_FString_const))
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FString_const_proj_0 (FString) Int)
+;;;;;;;;;;;;;;;;Projection inverse
+;;; Fact-ids: 
+(assert (! (forall ((@u0 Int))
+ (! (= (FString_const_proj_0 (FString_const @u0))
+@u0)
+ 
+
+:pattern ((FString_const @u0))
+:qid projection_inverse_FString_const_proj_0))
+:named projection_inverse_FString_const_proj_0))
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-FString_const ((__@u0 FString)) Bool
+ (and (= (FString_constr_id __@u0)
+0)
+(= __@u0
+(FString_const (FString_const_proj_0 __@u0)))))
+
+; </end constructor FString_const>
+
+
+; <start constructor Tm_type>
+
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun Tm_type () Term)
+;;;;;;;;;;;;;;;;Constructor distinct
+;;; Fact-ids: 
+(assert (! (= 2
+(Term_constr_id Tm_type))
+:named constructor_distinct_Tm_type))
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-Tm_type ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+2)
+(= __@x0
+Tm_type)))
+
+; </end constructor Tm_type>
+
+
+; <start constructor Tm_arrow>
+
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun Tm_arrow (Int) Term)
+;;;;;;;;;;;;;;;;Constructor distinct
+;;; Fact-ids: 
+(assert (! (forall ((@u0 Int))
+ (! (= 3
+(Term_constr_id (Tm_arrow @u0)))
+ 
+
+:pattern ((Tm_arrow @u0))
+:qid constructor_distinct_Tm_arrow))
+:named constructor_distinct_Tm_arrow))
+;;;;;;;;;;;;;;;;Projector
+(declare-fun Tm_arrow_id (Term) Int)
+;;;;;;;;;;;;;;;;Projection inverse
+;;; Fact-ids: 
+(assert (! (forall ((@u0 Int))
+ (! (= (Tm_arrow_id (Tm_arrow @u0))
+@u0)
+ 
+
+:pattern ((Tm_arrow @u0))
+:qid projection_inverse_Tm_arrow_id))
+:named projection_inverse_Tm_arrow_id))
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-Tm_arrow ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+3)
+(= __@x0
+(Tm_arrow (Tm_arrow_id __@x0)))))
+
+; </end constructor Tm_arrow>
+
+
+; <start constructor Tm_unit>
+
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun Tm_unit () Term)
+;;;;;;;;;;;;;;;;Constructor distinct
+;;; Fact-ids: 
+(assert (! (= 6
+(Term_constr_id Tm_unit))
+:named constructor_distinct_Tm_unit))
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-Tm_unit ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+6)
+(= __@x0
+Tm_unit)))
+
+; </end constructor Tm_unit>
+
+
+; <start constructor BoxInt>
+
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun BoxInt (Int) Term)
+;;;;;;;;;;;;;;;;Constructor distinct
+;;; Fact-ids: 
+(assert (! (forall ((@u0 Int))
+ (! (= 7
+(Term_constr_id (BoxInt @u0)))
+ 
+
+:pattern ((BoxInt @u0))
+:qid constructor_distinct_BoxInt))
+:named constructor_distinct_BoxInt))
+;;;;;;;;;;;;;;;;Projector
+(declare-fun BoxInt_proj_0 (Term) Int)
+;;;;;;;;;;;;;;;;Projection inverse
+;;; Fact-ids: 
+(assert (! (forall ((@u0 Int))
+ (! (= (BoxInt_proj_0 (BoxInt @u0))
+@u0)
+ 
+
+:pattern ((BoxInt @u0))
+:qid projection_inverse_BoxInt_proj_0))
+:named projection_inverse_BoxInt_proj_0))
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-BoxInt ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+7)
+(= __@x0
+(BoxInt (BoxInt_proj_0 __@x0)))))
+
+; </end constructor BoxInt>
+
+
+; <start constructor BoxBool>
+
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun BoxBool (Bool) Term)
+;;;;;;;;;;;;;;;;Constructor distinct
+;;; Fact-ids: 
+(assert (! (forall ((@u0 Bool))
+ (! (= 8
+(Term_constr_id (BoxBool @u0)))
+ 
+
+:pattern ((BoxBool @u0))
+:qid constructor_distinct_BoxBool))
+:named constructor_distinct_BoxBool))
+;;;;;;;;;;;;;;;;Projector
+(declare-fun BoxBool_proj_0 (Term) Bool)
+;;;;;;;;;;;;;;;;Projection inverse
+;;; Fact-ids: 
+(assert (! (forall ((@u0 Bool))
+ (! (= (BoxBool_proj_0 (BoxBool @u0))
+@u0)
+ 
+
+:pattern ((BoxBool @u0))
+:qid projection_inverse_BoxBool_proj_0))
+:named projection_inverse_BoxBool_proj_0))
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-BoxBool ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+8)
+(= __@x0
+(BoxBool (BoxBool_proj_0 __@x0)))))
+
+; </end constructor BoxBool>
+
+
+; <start constructor BoxString>
+
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun BoxString (FString) Term)
+;;;;;;;;;;;;;;;;Constructor distinct
+;;; Fact-ids: 
+(assert (! (forall ((@u0 FString))
+ (! (= 9
+(Term_constr_id (BoxString @u0)))
+ 
+
+:pattern ((BoxString @u0))
+:qid constructor_distinct_BoxString))
+:named constructor_distinct_BoxString))
+;;;;;;;;;;;;;;;;Projector
+(declare-fun BoxString_proj_0 (Term) FString)
+;;;;;;;;;;;;;;;;Projection inverse
+;;; Fact-ids: 
+(assert (! (forall ((@u0 FString))
+ (! (= (BoxString_proj_0 (BoxString @u0))
+@u0)
+ 
+
+:pattern ((BoxString @u0))
+:qid projection_inverse_BoxString_proj_0))
+:named projection_inverse_BoxString_proj_0))
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-BoxString ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+9)
+(= __@x0
+(BoxString (BoxString_proj_0 __@x0)))))
+
+; </end constructor BoxString>
+
+
+; <start constructor BoxReal>
+
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun BoxReal (Real) Term)
+;;;;;;;;;;;;;;;;Constructor distinct
+;;; Fact-ids: 
+(assert (! (forall ((@u0 Real))
+ (! (= 10
+(Term_constr_id (BoxReal @u0)))
+ 
+
+:pattern ((BoxReal @u0))
+:qid constructor_distinct_BoxReal))
+:named constructor_distinct_BoxReal))
+;;;;;;;;;;;;;;;;Projector
+(declare-fun BoxReal_proj_0 (Term) Real)
+;;;;;;;;;;;;;;;;Projection inverse
+;;; Fact-ids: 
+(assert (! (forall ((@u0 Real))
+ (! (= (BoxReal_proj_0 (BoxReal @u0))
+@u0)
+ 
+
+:pattern ((BoxReal @u0))
+:qid projection_inverse_BoxReal_proj_0))
+:named projection_inverse_BoxReal_proj_0))
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-BoxReal ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+10)
+(= __@x0
+(BoxReal (BoxReal_proj_0 __@x0)))))
+
+; </end constructor BoxReal>
+
+(declare-fun Prims.precedes@tok () Term)
+(assert
+(forall ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term))
+(! (= (ApplyTT (ApplyTT (ApplyTT (ApplyTT Prims.precedes@tok
+@x0)
+@x1)
+@x2)
+@x3)
+(Prims.precedes @x0 @x1 @x2 @x3))
+
+:pattern ((ApplyTT (ApplyTT (ApplyTT (ApplyTT Prims.precedes@tok
+@x0)
+@x1)
+@x2)
+@x3)))))
+
+(declare-fun Prims.lex_t () Term)
+(assert (forall ((t1 Term) (t2 Term) (e1 Term) (e2 Term))
+(! (iff (Valid (Prims.precedes t1 t2 e1 e2))
+(Valid (Prims.precedes Prims.lex_t Prims.lex_t e1 e2)))
+:pattern (Prims.precedes t1 t2 e1 e2))))
+(assert (forall ((t1 Term) (t2 Term))
+(! (iff (Valid (Prims.precedes Prims.lex_t Prims.lex_t t1 t2)) 
+(Prec t1 t2))
+:pattern ((Prims.precedes Prims.lex_t Prims.lex_t t1 t2)))))
+(assert (forall ((e Term) (t Term))
+(! (implies (HasType e t)
+(Valid t))
+:pattern ((HasType e t)
+(Valid t))
+:qid __prelude_valid_intro)))
+
+
+; Externals for module Prims
+
+
+; <Start encoding val Prims.attribute>
+
+(declare-fun Prims.attribute () Term)
+
+; </end encoding val Prims.attribute>
+
+
+; <Start encoding val Prims.cps>
+
+(declare-fun Prims.cps () Term)
+
+; </end encoding val Prims.cps>
+
+
+; <Start encoding val Prims.tac_opaque>
+
+(declare-fun Prims.tac_opaque () Term)
+
+; </end encoding val Prims.tac_opaque>
+
+
+; <Start encoding val Prims.unrefine>
+
+(declare-fun Prims.unrefine () Term)
+
+; </end encoding val Prims.unrefine>
+
+
+; <Start encoding val Prims.do_not_unrefine>
+
+(declare-fun Prims.do_not_unrefine () Term)
+
+; </end encoding val Prims.do_not_unrefine>
+
+
+; <Start encoding val Prims.hasEq>
+
+(declare-fun Prims.hasEq (Term) Term)
+(declare-fun Tm_arrow_ef9cb512a25ee351fa5536d617490497 () Term)
+(declare-fun Prims.hasEq@tok () Term)
+
+; </end encoding val Prims.hasEq>
+
+
+; <Start encoding let eqtype>
+
+(declare-fun Prims.eqtype () Term)
+(declare-fun Tm_refine_414d0a9f578ab0048252f8c8f552b99f () Term)
+
+; </end encoding let eqtype>
+
+
+; <Start encoding val Prims.bool>
+
+(declare-fun Prims.bool () Term)
+
+; </end encoding val Prims.bool>
+
+
+; <Start encoding type Prims.empty>
+
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun Prims.empty () Term)
+
+; <start constructor Prims.empty>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-Prims.empty ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+111)
+(= __@x0
+Prims.empty)))
+
+; </end constructor Prims.empty>
+
+
+; </end encoding type Prims.empty>
+
+
+; <Start encoding type Prims.trivial>
+
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun Prims.trivial () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun Prims.T () Term)
+;;;;;;;;;;;;;;;;data constructor proxy: Prims.T
+(declare-fun Prims.T@tok () Term)
+
+; <start constructor Prims.trivial>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-Prims.trivial ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+116)
+(= __@x0
+Prims.trivial)))
+
+; </end constructor Prims.trivial>
+
+
+; <start constructor Prims.T>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-Prims.T ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+122)
+(= __@x0
+Prims.T)))
+
+; </end constructor Prims.T>
+
+
+; </end encoding type Prims.trivial>
+
+
+; <Start encoding val Prims.uu___is_T>
+
+(declare-fun Prims.uu___is_T (Term) Term)
+(declare-fun Tm_arrow_053f01f066524059a49c5dc621e6494a () Term)
+(declare-fun Prims.uu___is_T@tok () Term)
+
+; </end encoding val Prims.uu___is_T>
+
+
+; <Start encoding val Prims.unit>
+
+(declare-fun Prims.unit () Term)
+
+; </end encoding val Prims.unit>
+
+
+; <Start encoding let squash>
+
+(declare-fun Prims.squash (Term) Term)
+
+(declare-fun Prims.squash@tok () Term)
+(declare-fun Tm_refine_2de20c066034c13bf76e9c0b94f4806c (Term) Term)
+
+; </end encoding let squash>
+
+
+; <Start encoding let auto_squash>
+
+(declare-fun Prims.auto_squash (Term) Term)
+
+(declare-fun Prims.auto_squash@tok () Term)
+
+; </end encoding let auto_squash>
+
+
+; <Start encoding let logical>
+
+(declare-fun Prims.logical () Term)
+
+; </end encoding let logical>
+
+
+; <Start encoding val Prims.smt_theory_symbol>
+
+(declare-fun Prims.smt_theory_symbol () Term)
+
+; </end encoding val Prims.smt_theory_symbol>
+
+
+; <Start encoding let l_True>
+
+(declare-fun Prims.l_True () Term)
+
+; </end encoding let l_True>
+
+
+; <Start encoding let l_False>
+
+(declare-fun Prims.l_False () Term)
+
+; </end encoding let l_False>
+
+
+; <Start encoding type Prims.equals>
+
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun Prims.equals (Term Term Term) Term)
+;;;;;;;;;;;;;;;;token
+(declare-fun Prims.equals@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun Prims.Refl (Term Term) Term)
+;;;;;;;;;;;;;;;;Constructor base
+(declare-fun Prims.Refl@base () Term)
+;;;;;;;;;;;;;;;;data constructor proxy: Prims.Refl
+(declare-fun Prims.Refl@tok () Term)
+(declare-fun Tm_arrow_8e00c6263684633abbc1d1a87608e391 () Term)
+
+; <start constructor Prims.equals>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-Prims.equals ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+134)
+(exists ((@x0 Term) (@x1 Term) (@x2 Term))
+ (! (= __@x0
+(Prims.equals @x0
+@x1
+@x2))
+ 
+;;no pats
+:qid is-Prims.equals))))
+
+; </end constructor Prims.equals>
+
+
+; <start constructor Prims.Refl>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-Prims.Refl ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+141)
+(exists ((@x0 Term) (@x1 Term))
+ (! (= __@x0
+(Prims.Refl @x0
+@x1))
+ 
+;;no pats
+:qid is-Prims.Refl))))
+
+; </end constructor Prims.Refl>
+
+
+; </end encoding type Prims.equals>
+
+
+; <Start encoding val Prims.uu___is_Refl>
+
+(declare-fun Prims.uu___is_Refl (Term Term Term Term) Term)
+(declare-fun Tm_arrow_2a4540f76c8969717ea911077d7b4d15 () Term)
+(declare-fun Prims.uu___is_Refl@tok () Term)
+
+; </end encoding val Prims.uu___is_Refl>
+
+
+; <Start encoding let eq2>
+
+(declare-fun Prims.eq2 (Term Term Term) Term)
+(declare-fun Tm_arrow_1ec40cec1da281b45a559c74dd57f3b7 () Term)
+(declare-fun Prims.eq2@tok () Term)
+
+; </end encoding let eq2>
+
+
+; <Start encoding let b2t>
+
+(declare-fun Prims.b2t (Term) Term)
+
+; </end encoding let b2t>
+
+
+; <Start encoding type Prims.pair>
+
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun Prims.pair (Term Term) Term)
+;;;;;;;;;;;;;;;;token
+(declare-fun Prims.pair@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun Prims.Pair (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun Prims.Pair_p (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun Prims.Pair_q (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun Prims.Pair__1 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun Prims.Pair__2 (Term) Term)
+;;;;;;;;;;;;;;;;data constructor proxy: Prims.Pair
+(declare-fun Prims.Pair@tok () Term)
+(declare-fun Tm_arrow_e2b0096073073582c70f249d40f91c5d () Term)
+
+; <start constructor Prims.pair>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-Prims.pair ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+150)
+(exists ((@x0 Term) (@x1 Term))
+ (! (= __@x0
+(Prims.pair @x0
+@x1))
+ 
+;;no pats
+:qid is-Prims.pair))))
+
+; </end constructor Prims.pair>
+
+
+; <start constructor Prims.Pair>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-Prims.Pair ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+157)
+(= __@x0
+(Prims.Pair (Prims.Pair_p __@x0)
+(Prims.Pair_q __@x0)
+(Prims.Pair__1 __@x0)
+(Prims.Pair__2 __@x0)))))
+
+; </end constructor Prims.Pair>
+
+
+; </end encoding type Prims.pair>
+
+
+; <Start encoding val Prims.uu___is_Pair>
+
+(declare-fun Prims.uu___is_Pair (Term Term Term) Term)
+(declare-fun Tm_arrow_0a519c999e1325381ee4c9b1d93a06b2 () Term)
+(declare-fun Prims.uu___is_Pair@tok () Term)
+
+; </end encoding val Prims.uu___is_Pair>
+
+
+; <Start encoding val Prims.__proj__Pair__item___1>
+
+(declare-fun Prims.__proj__Pair__item___1 (Term Term Term) Term)
+(declare-fun Tm_arrow_214b45775d1504fb2699ff0d156b6857 () Term)
+(declare-fun Prims.__proj__Pair__item___1@tok () Term)
+
+; </end encoding val Prims.__proj__Pair__item___1>
+
+
+; <Start encoding val Prims.__proj__Pair__item___2>
+
+(declare-fun Prims.__proj__Pair__item___2 (Term Term Term) Term)
+(declare-fun Tm_arrow_1b97dbe8f5eb289f51cc2556690371e3 () Term)
+(declare-fun Prims.__proj__Pair__item___2@tok () Term)
+
+; </end encoding val Prims.__proj__Pair__item___2>
+
+
+; <Start encoding let l_and>
+
+(declare-fun Prims.l_and (Term Term) Term)
+(declare-fun Tm_arrow_289ee2cc5874944bf725b9e3db8c0fd6 () Term)
+(declare-fun Prims.l_and@tok () Term)
+
+; </end encoding let l_and>
+
+
+; <Start encoding type Prims.sum>
+
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun Prims.sum (Term Term) Term)
+;;;;;;;;;;;;;;;;token
+(declare-fun Prims.sum@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun Prims.Left (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun Prims.Left_p (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun Prims.Left_q (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun Prims.Left_v (Term) Term)
+;;;;;;;;;;;;;;;;data constructor proxy: Prims.Left
+(declare-fun Prims.Left@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun Prims.Right (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun Prims.Right_p (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun Prims.Right_q (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun Prims.Right_v (Term) Term)
+;;;;;;;;;;;;;;;;data constructor proxy: Prims.Right
+(declare-fun Prims.Right@tok () Term)
+(declare-fun Tm_arrow_4ef073c03ed003774fe6ccb4064aeebd () Term)
+(declare-fun Tm_arrow_c537ccd7fef2183d55f1a6960ee793b0 () Term)
+
+; <start constructor Prims.sum>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-Prims.sum ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+169)
+(exists ((@x0 Term) (@x1 Term))
+ (! (= __@x0
+(Prims.sum @x0
+@x1))
+ 
+;;no pats
+:qid is-Prims.sum))))
+
+; </end constructor Prims.sum>
+
+
+; <start constructor Prims.Left>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-Prims.Left ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+176)
+(= __@x0
+(Prims.Left (Prims.Left_p __@x0)
+(Prims.Left_q __@x0)
+(Prims.Left_v __@x0)))))
+
+; </end constructor Prims.Left>
+
+
+; <start constructor Prims.Right>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-Prims.Right ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+181)
+(= __@x0
+(Prims.Right (Prims.Right_p __@x0)
+(Prims.Right_q __@x0)
+(Prims.Right_v __@x0)))))
+
+; </end constructor Prims.Right>
+
+
+; </end encoding type Prims.sum>
+
+
+; <Start encoding val Prims.uu___is_Left>
+
+(declare-fun Prims.uu___is_Left (Term Term Term) Term)
+(declare-fun Tm_arrow_3c254c463840bdea2ca63f23cf7c2f0c () Term)
+(declare-fun Prims.uu___is_Left@tok () Term)
+
+; </end encoding val Prims.uu___is_Left>
+
+
+; <Start encoding val Prims.__proj__Left__item__v>
+
+(declare-fun Tm_refine_6140be01a70b18051829f178aaf0270b (Term Term) Term)
+(declare-fun Prims.__proj__Left__item__v (Term Term Term) Term)
+
+(declare-fun Tm_arrow_aaf070885513892396497eef726adce1 () Term)
+(declare-fun Prims.__proj__Left__item__v@tok () Term)
+
+; </end encoding val Prims.__proj__Left__item__v>
+
+
+; <Start encoding val Prims.uu___is_Right>
+
+(declare-fun Prims.uu___is_Right (Term Term Term) Term)
+
+(declare-fun Prims.uu___is_Right@tok () Term)
+
+; </end encoding val Prims.uu___is_Right>
+
+
+; <Start encoding val Prims.__proj__Right__item__v>
+
+(declare-fun Tm_refine_43ea5cf89e866ce271f97bd6ce102588 (Term Term) Term)
+(declare-fun Prims.__proj__Right__item__v (Term Term Term) Term)
+
+(declare-fun Tm_arrow_4ae0e7dd85e55aec7e8190dea6e3997f () Term)
+(declare-fun Prims.__proj__Right__item__v@tok () Term)
+
+; </end encoding val Prims.__proj__Right__item__v>
+
+
+; <Start encoding let l_or>
+
+(declare-fun Prims.l_or (Term Term) Term)
+
+(declare-fun Prims.l_or@tok () Term)
+
+; </end encoding let l_or>
+
+
+; <Start encoding let l_imp>
+
+(declare-fun Prims.l_imp (Term Term) Term)
+
+(declare-fun Prims.l_imp@tok () Term)
+(declare-fun Tm_ghost_arrow_0283b8a2a36bbec52abac4e3d837674a (Term Term) Term)
+
+; </end encoding let l_imp>
+
+
+; <Start encoding let l_iff>
+
+(declare-fun Prims.l_iff (Term Term) Term)
+
+(declare-fun Prims.l_iff@tok () Term)
+
+; </end encoding let l_iff>
+
+
+; <Start encoding let l_not>
+
+(declare-fun Prims.l_not (Term) Term)
+(declare-fun Tm_arrow_8178e3b6934aa50ea45bb0ccea2d9711 () Term)
+(declare-fun Prims.l_not@tok () Term)
+
+; </end encoding let l_not>
+
+
+; <Skipped let l_ITE/>
+
+
+; <Skipped val Prims.precedes/>
+
+
+; <Start encoding val Prims.string>
+
+(declare-fun Prims.string () Term)
+
+; </end encoding val Prims.string>
+
+
+; <Start encoding val Prims.warn_on_use>
+
+(declare-fun Prims.warn_on_use (Term) Term)
+(declare-fun Tm_arrow_2863eb88d7490a9c3cf347c16ca04740 () Term)
+(declare-fun Prims.warn_on_use@tok () Term)
+
+; </end encoding val Prims.warn_on_use>
+
+
+; <Start encoding val Prims.deprecated>
+
+(declare-fun Prims.deprecated (Term) Term)
+
+(declare-fun Prims.deprecated@tok () Term)
+
+; </end encoding val Prims.deprecated>
+
+
+; <Start encoding val Prims.has_type>
+
+(declare-fun Prims.has_type (Term Term Term) Term)
+(declare-fun Tm_arrow_b5d8ed0243b8c7c893f2b329de57c62b () Term)
+(declare-fun Prims.has_type@tok () Term)
+
+; </end encoding val Prims.has_type>
+
+
+; <Start encoding let l_Forall>
+
+(declare-fun Tm_arrow_2eaa01e78f73e9bab5d0955fc1a662da (Term) Term)
+(declare-fun Prims.l_Forall (Term Term) Term)
+
+(declare-fun Tm_arrow_977ec6901669a051ac66211b8e72666a () Term)
+(declare-fun Prims.l_Forall@tok () Term)
+
+(declare-fun Tm_ghost_arrow_3aa447697277bb40c9738c9125c3e80f (Term Term) Term)
+
+; </end encoding let l_Forall>
+
+
+; <Skipped #push-options "--warn_error -288"/>
+
+
+; <Start encoding let subtype_of>
+
+(declare-fun Prims.subtype_of (Term Term) Term)
+(declare-fun Tm_arrow_28becc0427b69ebf63ea956148504d97 () Term)
+(declare-fun Prims.subtype_of@tok () Term)
+
+; </end encoding let subtype_of>
+
+
+; <Skipped #pop-options/>
+
+
+; <Start encoding let prop>
+
+(declare-fun Prims.prop () Term)
+(declare-fun Tm_refine_73f210ca6e0061ed4a3150f69b8f33bf () Term)
+
+; </end encoding let prop>
+
+
+; <Start encoding let pure_pre>
+
+(declare-fun Prims.pure_pre () Term)
+
+; </end encoding let pure_pre>
+
+
+; <Start encoding let pure_post'>
+
+(declare-fun Prims.pure_post_ (Term Term) Term)
+(declare-fun Tm_arrow_e4cf09589736facd1137944a1f5a00a6 () Term)
+(declare-fun Prims.pure_post_@tok () Term)
+(declare-fun Tm_refine_8d65e998a07dd53ec478e27017d9dba5 (Term Term) Term)
+(declare-fun Tm_arrow_92458cff82f9ffee1f6e26a1c0c579f3 (Term Term) Term)
+
+; </end encoding let pure_post'>
+
+
+; <Start encoding let pure_post>
+
+(declare-fun Prims.pure_post (Term) Term)
+
+(declare-fun Prims.pure_post@tok () Term)
+
+; </end encoding let pure_post>
+
+
+; <Start encoding let pure_wp'>
+
+(declare-fun Prims.pure_wp_ (Term) Term)
+
+(declare-fun Prims.pure_wp_@tok () Term)
+(declare-fun Tm_arrow_e5c03abbf8b0946a9aa7ee31bb7999a4 (Term) Term)
+
+; </end encoding let pure_wp'>
+
+
+; <Start encoding let pure_wp_monotonic0>
+
+(declare-fun Prims.pure_wp_monotonic0 (Term Term) Term)
+(declare-fun Tm_arrow_85436e2c1c64a4dd0159a737ef5b212e () Term)
+(declare-fun Prims.pure_wp_monotonic0@tok () Term)
+
+; </end encoding let pure_wp_monotonic0>
+
+
+; <Start encoding let pure_wp_monotonic>
+
+(declare-fun Prims.pure_wp_monotonic (Term Term) Term)
+
+(declare-fun Prims.pure_wp_monotonic@tok () Term)
+
+; </end encoding let pure_wp_monotonic>
+
+
+; <Start encoding let pure_wp>
+
+(declare-fun Prims.pure_wp (Term) Term)
+
+(declare-fun Prims.pure_wp@tok () Term)
+(declare-fun Tm_refine_15e0beb75f7033bad5fae236999feebe (Term) Term)
+
+; </end encoding let pure_wp>
+
+
+; <Start encoding val Prims.guard_free>
+
+(declare-fun Prims.guard_free (Term) Term)
+
+(declare-fun Prims.guard_free@tok () Term)
+
+; </end encoding val Prims.guard_free>
+
+
+; <Skipped let pure_return0/>
+
+
+; <Skipped let pure_bind_wp0/>
+
+
+; <Skipped let pure_if_then_else0/>
+
+
+; <Skipped let pure_ite_wp0/>
+
+
+; <Skipped let pure_stronger/>
+
+
+; <Skipped let pure_close_wp0/>
+
+
+; <Skipped let pure_trivial/>
+
+
+; <Skipped new_effect { PURE ... }/>
+
+
+; <Skipped effect Pure a pre post = Prims.PURE a/>
+
+
+; <Skipped effect Admit a = Prims.PURE a/>
+
+
+; <Skipped let pure_null_wp0/>
+
+
+; <Skipped effect Tot a = Prims.PURE a/>
+
+
+; <Start encoding let pure_assert_wp0>
+
+(declare-fun Prims.pure_assert_wp0 (Term) Term)
+(declare-fun Tm_arrow_14bcf5e7fc38d91827ecd9d25d3b3a67 () Term)
+(declare-fun Prims.pure_assert_wp0@tok () Term)
+
+; </end encoding let pure_assert_wp0>
+
+
+; <Start encoding let pure_assume_wp0>
+
+(declare-fun Prims.pure_assume_wp0 (Term) Term)
+
+(declare-fun Prims.pure_assume_wp0@tok () Term)
+
+; </end encoding let pure_assume_wp0>
+
+
+; <Skipped new_effect { GHOST ... }/>
+
+
+; <Skipped let purewp_id/>
+
+
+; <Skipped sub_effect PURE ~> GHOST/>
+
+
+; <Skipped effect Ghost a pre post = Prims.GHOST a/>
+
+
+; <Skipped effect GTot a = Prims.GHOST a/>
+
+
+; <Start encoding let op_Equals_Equals_Equals>
+
+(declare-fun Prims.op_Equals_Equals_Equals (Term Term Term Term) Term)
+(declare-fun Tm_arrow_7fcb145b23c2ac843afd9b126c4f71a9 () Term)
+(declare-fun Prims.op_Equals_Equals_Equals@tok () Term)
+
+; </end encoding let op_Equals_Equals_Equals>
+
+
+; <Start encoding type Prims.dtuple2>
+
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun Prims.dtuple2 (Term Term) Term)
+;;;;;;;;;;;;;;;;token
+(declare-fun Prims.dtuple2@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun Prims.Mkdtuple2 (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun Prims.Mkdtuple2_a (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun Prims.Mkdtuple2_b (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun Prims.Mkdtuple2__1 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun Prims.Mkdtuple2__2 (Term) Term)
+;;;;;;;;;;;;;;;;data constructor proxy: Prims.Mkdtuple2
+(declare-fun Prims.Mkdtuple2@tok () Term)
+
+
+
+(declare-fun Tm_arrow_22a50f5c5c9bb74bac4384fb8999be8b () Term)
+
+; <start constructor Prims.dtuple2>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-Prims.dtuple2 ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+258)
+(exists ((@x0 Term) (@x1 Term))
+ (! (= __@x0
+(Prims.dtuple2 @x0
+@x1))
+ 
+;;no pats
+:qid is-Prims.dtuple2))))
+
+; </end constructor Prims.dtuple2>
+
+
+; <start constructor Prims.Mkdtuple2>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-Prims.Mkdtuple2 ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+267)
+(= __@x0
+(Prims.Mkdtuple2 (Prims.Mkdtuple2_a __@x0)
+(Prims.Mkdtuple2_b __@x0)
+(Prims.Mkdtuple2__1 __@x0)
+(Prims.Mkdtuple2__2 __@x0)))))
+
+; </end constructor Prims.Mkdtuple2>
+
+
+; </end encoding type Prims.dtuple2>
+
+
+; <Start encoding assume Prims.dtuple2__uu___haseq>
+
+
+
+; </end encoding assume Prims.dtuple2__uu___haseq>
+
+
+; <Start encoding val Prims.uu___is_Mkdtuple2>
+
+
+(declare-fun Prims.uu___is_Mkdtuple2 (Term Term Term) Term)
+
+(declare-fun Tm_arrow_e6f9f7cb1936ec43b52469e706dcadcc () Term)
+(declare-fun Prims.uu___is_Mkdtuple2@tok () Term)
+
+; </end encoding val Prims.uu___is_Mkdtuple2>
+
+
+; <Skipped let uu___is_Mkdtuple2/>
+
+
+; <Start encoding val Prims.__proj__Mkdtuple2__item___1>
+
+
+(declare-fun Prims.__proj__Mkdtuple2__item___1 (Term Term Term) Term)
+
+(declare-fun Tm_arrow_26c013ffba39d4f7eeb4bcc80d2d4e22 () Term)
+(declare-fun Prims.__proj__Mkdtuple2__item___1@tok () Term)
+
+; </end encoding val Prims.__proj__Mkdtuple2__item___1>
+
+
+; <Skipped let __proj__Mkdtuple2__item___1/>
+
+
+; <Start encoding val Prims.__proj__Mkdtuple2__item___2>
+
+
+(declare-fun Prims.__proj__Mkdtuple2__item___2 (Term Term Term) Term)
+
+(declare-fun Tm_arrow_870cc7701a0d9a8a2d6fb92427a97d66 () Term)
+(declare-fun Prims.__proj__Mkdtuple2__item___2@tok () Term)
+
+; </end encoding val Prims.__proj__Mkdtuple2__item___2>
+
+
+; <Skipped let __proj__Mkdtuple2__item___2/>
+
+
+; <Start encoding let l_Exists>
+
+
+(declare-fun Prims.l_Exists (Term Term) Term)
+
+
+(declare-fun Prims.l_Exists@tok () Term)
+
+
+(declare-fun Tm_abs_6ba36691ee58dee85cd144324b083848 (Term Term) Term)
+
+; </end encoding let l_Exists>
+
+
+; <Start encoding val Prims.int>
+
+(declare-fun Prims.int () Term)
+
+; </end encoding val Prims.int>
+
+
+; <Start encoding val Prims.op_AmpAmp>
+
+(declare-fun Prims.op_AmpAmp (Term Term) Term)
+(declare-fun Prims.op_AmpAmp@tok () Term)
+
+; </end encoding val Prims.op_AmpAmp>
+
+
+; <Start encoding val Prims.op_BarBar>
+
+(declare-fun Prims.op_BarBar (Term Term) Term)
+(declare-fun Prims.op_BarBar@tok () Term)
+
+; </end encoding val Prims.op_BarBar>
+
+
+; <Start encoding val Prims.op_Negation>
+
+(declare-fun Prims.op_Negation (Term) Term)
+(declare-fun Prims.op_Negation@tok () Term)
+
+; </end encoding val Prims.op_Negation>
+
+
+; <Start encoding val Prims.op_Multiply>
+
+(declare-fun Prims.op_Multiply (Term Term) Term)
+(declare-fun Prims.op_Multiply@tok () Term)
+
+; </end encoding val Prims.op_Multiply>
+
+
+; <Start encoding val Prims.op_Subtraction>
+
+(declare-fun Prims.op_Subtraction (Term Term) Term)
+(declare-fun Prims.op_Subtraction@tok () Term)
+
+; </end encoding val Prims.op_Subtraction>
+
+
+; <Start encoding val Prims.op_Addition>
+
+(declare-fun Prims.op_Addition (Term Term) Term)
+(declare-fun Prims.op_Addition@tok () Term)
+
+; </end encoding val Prims.op_Addition>
+
+
+; <Start encoding val Prims.op_Minus>
+
+(declare-fun Prims.op_Minus (Term) Term)
+(declare-fun Prims.op_Minus@tok () Term)
+
+; </end encoding val Prims.op_Minus>
+
+
+; <Start encoding val Prims.op_LessThanOrEqual>
+
+(declare-fun Prims.op_LessThanOrEqual (Term Term) Term)
+(declare-fun Prims.op_LessThanOrEqual@tok () Term)
+
+; </end encoding val Prims.op_LessThanOrEqual>
+
+
+; <Start encoding val Prims.op_GreaterThan>
+
+(declare-fun Prims.op_GreaterThan (Term Term) Term)
+(declare-fun Prims.op_GreaterThan@tok () Term)
+
+; </end encoding val Prims.op_GreaterThan>
+
+
+; <Start encoding val Prims.op_GreaterThanOrEqual>
+
+(declare-fun Prims.op_GreaterThanOrEqual (Term Term) Term)
+(declare-fun Prims.op_GreaterThanOrEqual@tok () Term)
+
+; </end encoding val Prims.op_GreaterThanOrEqual>
+
+
+; <Start encoding val Prims.op_LessThan>
+
+(declare-fun Prims.op_LessThan (Term Term) Term)
+(declare-fun Prims.op_LessThan@tok () Term)
+
+; </end encoding val Prims.op_LessThan>
+
+
+; <Start encoding val Prims.op_Equality>
+
+(declare-fun Prims.op_Equality (Term Term Term) Term)
+(declare-fun Prims.op_Equality@tok () Term)
+
+; </end encoding val Prims.op_Equality>
+
+
+; <Start encoding val Prims.op_disEquality>
+
+(declare-fun Prims.op_disEquality (Term Term Term) Term)
+(declare-fun Prims.op_disEquality@tok () Term)
+
+; </end encoding val Prims.op_disEquality>
+
+
+; <Start encoding val Prims.exn>
+
+(declare-fun Prims.exn () Term)
+
+; </end encoding val Prims.exn>
+
+
+; <Start encoding val Prims.array>
+
+(declare-fun Prims.array (Term) Term)
+
+(declare-fun Prims.array@tok () Term)
+
+; </end encoding val Prims.array>
+
+
+; <Start encoding val Prims.strcat>
+
+(declare-fun Prims.strcat (Term Term) Term)
+(declare-fun Tm_arrow_b66cecec1d56111347abe61e89557dd1 () Term)
+(declare-fun Prims.strcat@tok () Term)
+
+; </end encoding val Prims.strcat>
+
+
+; <Skipped let op_Hat/>
+
+
+; <Start encoding type Prims.list>
+
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun Prims.list (Term) Term)
+;;;;;;;;;;;;;;;;token
+(declare-fun Prims.list@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun Prims.Nil (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun Prims.Nil_a (Term) Term)
+;;;;;;;;;;;;;;;;data constructor proxy: Prims.Nil
+(declare-fun Prims.Nil@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun Prims.Cons (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun Prims.Cons_a (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun Prims.Cons_hd (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun Prims.Cons_tl (Term) Term)
+;;;;;;;;;;;;;;;;data constructor proxy: Prims.Cons
+(declare-fun Prims.Cons@tok () Term)
+(declare-fun Tm_arrow_3864bd5fbb999b4fe4487408df9b3401 () Term)
+(declare-fun Tm_arrow_02c072760cbad0f5a4706f6cffab6c94 () Term)
+
+; <start constructor Prims.list>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-Prims.list ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+318)
+(exists ((@x0 Term))
+ (! (= __@x0
+(Prims.list @x0))
+ 
+;;no pats
+:qid is-Prims.list))))
+
+; </end constructor Prims.list>
+
+
+; <start constructor Prims.Nil>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-Prims.Nil ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+325)
+(= __@x0
+(Prims.Nil (Prims.Nil_a __@x0)))))
+
+; </end constructor Prims.Nil>
+
+
+; <start constructor Prims.Cons>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-Prims.Cons ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+330)
+(= __@x0
+(Prims.Cons (Prims.Cons_a __@x0)
+(Prims.Cons_hd __@x0)
+(Prims.Cons_tl __@x0)))))
+
+; </end constructor Prims.Cons>
+
+
+; </end encoding type Prims.list>
+
+
+; <Start encoding assume Prims.list__uu___haseq>
+
+
+; </end encoding assume Prims.list__uu___haseq>
+
+
+; <Start encoding val Prims.uu___is_Nil>
+
+(declare-fun Prims.uu___is_Nil (Term Term) Term)
+(declare-fun Tm_arrow_606904b0fa72729a20285beb231f9f2e () Term)
+(declare-fun Prims.uu___is_Nil@tok () Term)
+
+; </end encoding val Prims.uu___is_Nil>
+
+
+; <Skipped let uu___is_Nil/>
+
+
+; <Start encoding val Prims.uu___is_Cons>
+
+(declare-fun Prims.uu___is_Cons (Term Term) Term)
+
+(declare-fun Prims.uu___is_Cons@tok () Term)
+
+; </end encoding val Prims.uu___is_Cons>
+
+
+; <Skipped let uu___is_Cons/>
+
+
+; <Start encoding val Prims.__proj__Cons__item__hd>
+
+(declare-fun Tm_refine_7aac12c24449a22c34d98a0ea8ed4a32 (Term) Term)
+(declare-fun Prims.__proj__Cons__item__hd (Term Term) Term)
+
+(declare-fun Tm_arrow_27c3547831737e5a63950f3d18bf3d22 () Term)
+(declare-fun Prims.__proj__Cons__item__hd@tok () Term)
+
+; </end encoding val Prims.__proj__Cons__item__hd>
+
+
+; <Skipped let __proj__Cons__item__hd/>
+
+
+; <Start encoding val Prims.__proj__Cons__item__tl>
+
+
+(declare-fun Prims.__proj__Cons__item__tl (Term Term) Term)
+
+(declare-fun Tm_arrow_4e740085106d54d8b48ffe3c6c20ef21 () Term)
+(declare-fun Prims.__proj__Cons__item__tl@tok () Term)
+
+; </end encoding val Prims.__proj__Cons__item__tl>
+
+
+; <Skipped let __proj__Cons__item__tl/>
+
+
+; <Skipped effect M a = a/>
+
+
+; <Start encoding let returnM>
+
+(declare-fun Prims.returnM (Term Term) Term)
+(declare-fun Tm_arrow_99724436653747ac6f5a6a00c64ff8bc () Term)
+(declare-fun Prims.returnM@tok () Term)
+
+; </end encoding let returnM>
+
+
+; <Skipped let as_requires/>
+
+
+; <Skipped let as_ensures/>
+
+
+; <Start encoding val Prims._assume>
+
+(declare-fun Prims._assume (Term) Term)
+(declare-fun Non_total_Tm_arrow_724d0dab46b8b51a1bb19d329f7fc4b2 () Term)
+(declare-fun Prims._assume@tok () Term)
+
+; </end encoding val Prims._assume>
+
+
+; <Start encoding val Prims.admit>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun Prims.admit (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun Prims.admit@tok () Term)
+
+; </end encoding val Prims.admit>
+
+
+; <Start encoding val Prims.magic>
+
+(declare-fun Prims.magic (Term Term) Term)
+(declare-fun Tm_arrow_f5df98ce82fbcebbbdb844c958bee4fb () Term)
+(declare-fun Prims.magic@tok () Term)
+
+; </end encoding val Prims.magic>
+
+
+; <Start encoding let unsafe_coerce>
+
+(declare-fun Prims.unsafe_coerce (Term Term Term) Term)
+(declare-fun Tm_arrow_443ab41008720460b7a09e280558a60f () Term)
+(declare-fun Prims.unsafe_coerce@tok () Term)
+
+; </end encoding let unsafe_coerce>
+
+
+; <Start encoding val Prims.admitP>
+
+(declare-fun Prims.admitP (Term) Term)
+
+(declare-fun Prims.admitP@tok () Term)
+
+; </end encoding val Prims.admitP>
+
+
+; <Skipped val Prims._assert/>
+
+
+; <Start encoding let _assert>
+
+(declare-fun Prims._assert (Term) Term)
+(declare-fun Non_total_Tm_arrow_bb2d1b4bdb07c87bf5990ad3e5fd8642 () Term)
+(declare-fun Prims._assert@tok () Term)
+
+; </end encoding let _assert>
+
+
+; <Skipped val Prims.cut/>
+
+
+; <Start encoding let cut>
+
+(declare-fun Prims.cut (Term) Term)
+
+(declare-fun Prims.cut@tok () Term)
+
+; </end encoding let cut>
+
+
+; <Start encoding let nat>
+
+(declare-fun Prims.nat () Term)
+(declare-fun Tm_refine_542f9d4f129664613f2483a6c88bc7c2 () Term)
+
+; </end encoding let nat>
+
+
+; <Start encoding let pos>
+
+(declare-fun Prims.pos () Term)
+(declare-fun Tm_refine_774ba3f728d91ead8ef40be66c9802e5 () Term)
+
+; </end encoding let pos>
+
+
+; <Start encoding let nonzero>
+
+(declare-fun Prims.nonzero () Term)
+(declare-fun Tm_refine_0766302b68bb44ab7aff8c4d8be0b46f () Term)
+
+; </end encoding let nonzero>
+
+
+; <Start encoding val Prims.op_Modulus>
+
+(declare-fun Prims.op_Modulus (Term Term) Term)
+(declare-fun Prims.op_Modulus@tok () Term)
+
+; </end encoding val Prims.op_Modulus>
+
+
+; <Start encoding val Prims.op_Division>
+
+(declare-fun Prims.op_Division (Term Term) Term)
+(declare-fun Prims.op_Division@tok () Term)
+
+; </end encoding val Prims.op_Division>
+
+
+; <Start encoding let rec pow2>
+
+;;;;;;;;;;;;;;;;Fuel-instrumented function name
+(declare-fun Prims.pow2.fuel_instrumented (Fuel Term) Term)
+;;;;;;;;;;;;;;;;Token for fuel-instrumented partial applications
+(declare-fun Prims.pow2.fuel_instrumented_token () Term)
+(declare-fun Prims.pow2 (Term) Term)
+(declare-fun Prims.pow2@tok () Term)
+(declare-fun Tm_arrow_c331a0e032e021e1eaa359b3983de4f2 () Term)
+
+; </end encoding let rec pow2>
+
+
+; <Start encoding let min>
+
+(declare-fun Prims.min (Term Term) Term)
+(declare-fun Tm_arrow_47fc285d7b44e13bcb7e420cbfc55623 () Term)
+(declare-fun Prims.min@tok () Term)
+
+; </end encoding let min>
+
+
+; <Start encoding let abs>
+
+(declare-fun Prims.abs (Term) Term)
+(declare-fun Tm_arrow_35447810753695c4fe25c93af1251992 () Term)
+(declare-fun Prims.abs@tok () Term)
+
+; </end encoding let abs>
+
+
+; <Start encoding val Prims.string_of_bool>
+
+(declare-fun Prims.string_of_bool (Term) Term)
+(declare-fun Tm_arrow_e86b54405c2a58719f5e8112efd48c09 () Term)
+(declare-fun Prims.string_of_bool@tok () Term)
+
+; </end encoding val Prims.string_of_bool>
+
+
+; <Start encoding val Prims.string_of_int>
+
+(declare-fun Prims.string_of_int (Term) Term)
+(declare-fun Tm_arrow_2bc066ec63734c94a3c008e1e72cae2b () Term)
+(declare-fun Prims.string_of_int@tok () Term)
+
+; </end encoding val Prims.string_of_int>
+
+
+; <Start encoding let __cache_version_number__>
+
+(declare-fun Prims.__cache_version_number__ () Term)
+
+; </end encoding let __cache_version_number__>
+
+
+; End Externals for module Prims
+
+
+; Externals for module FStar.Pervasives.Native
+
+
+; <Start encoding type FStar.Pervasives.Native.option>
+
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun FStar.Pervasives.Native.option (Term) Term)
+;;;;;;;;;;;;;;;;token
+(declare-fun FStar.Pervasives.Native.option@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun FStar.Pervasives.Native.None (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.None_a (Term) Term)
+;;;;;;;;;;;;;;;;data constructor proxy: FStar.Pervasives.Native.None
+(declare-fun FStar.Pervasives.Native.None@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun FStar.Pervasives.Native.Some (Term Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Some_a (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Some_v (Term) Term)
+;;;;;;;;;;;;;;;;data constructor proxy: FStar.Pervasives.Native.Some
+(declare-fun FStar.Pervasives.Native.Some@tok () Term)
+(declare-fun Tm_arrow_48b914114ec9f2f1caadf0f6848a9741 () Term)
+(declare-fun Tm_arrow_b93a364b5144c2a5f3e9d1ea7b881752 () Term)
+
+; <start constructor FStar.Pervasives.Native.option>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-FStar.Pervasives.Native.option ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+101)
+(exists ((@x0 Term))
+ (! (= __@x0
+(FStar.Pervasives.Native.option @x0))
+ 
+;;no pats
+:qid is-FStar.Pervasives.Native.option))))
+
+; </end constructor FStar.Pervasives.Native.option>
+
+
+; <start constructor FStar.Pervasives.Native.None>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-FStar.Pervasives.Native.None ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+108)
+(= __@x0
+(FStar.Pervasives.Native.None (FStar.Pervasives.Native.None_a __@x0)))))
+
+; </end constructor FStar.Pervasives.Native.None>
+
+
+; <start constructor FStar.Pervasives.Native.Some>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-FStar.Pervasives.Native.Some ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+113)
+(= __@x0
+(FStar.Pervasives.Native.Some (FStar.Pervasives.Native.Some_a __@x0)
+(FStar.Pervasives.Native.Some_v __@x0)))))
+
+; </end constructor FStar.Pervasives.Native.Some>
+
+
+; </end encoding type FStar.Pervasives.Native.option>
+
+
+; <Start encoding assume FStar.Pervasives.Native.option__uu___haseq>
+
+
+; </end encoding assume FStar.Pervasives.Native.option__uu___haseq>
+
+
+; <Start encoding val FStar.Pervasives.Native.uu___is_None>
+
+(declare-fun FStar.Pervasives.Native.uu___is_None (Term Term) Term)
+(declare-fun Tm_arrow_f1a97bcd6ba9b40d22609b756f183afa () Term)
+(declare-fun FStar.Pervasives.Native.uu___is_None@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.uu___is_None>
+
+
+; <Skipped let uu___is_None/>
+
+
+; <Start encoding val FStar.Pervasives.Native.uu___is_Some>
+
+(declare-fun FStar.Pervasives.Native.uu___is_Some (Term Term) Term)
+
+(declare-fun FStar.Pervasives.Native.uu___is_Some@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.uu___is_Some>
+
+
+; <Skipped let uu___is_Some/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Some__item__v>
+
+(declare-fun Tm_refine_4d5241eb6fe198666a8101195bbd4a2a (Term) Term)
+(declare-fun FStar.Pervasives.Native.__proj__Some__item__v (Term Term) Term)
+
+(declare-fun Tm_arrow_1b1398c011ff53e4194fc2ec00c7b411 () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Some__item__v@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Some__item__v>
+
+
+; <Skipped let __proj__Some__item__v/>
+
+
+; <Start encoding type FStar.Pervasives.Native.tuple2>
+
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun FStar.Pervasives.Native.tuple2 (Term Term) Term)
+;;;;;;;;;;;;;;;;token
+(declare-fun FStar.Pervasives.Native.tuple2@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun FStar.Pervasives.Native.Mktuple2 (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple2__a (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple2__b (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple2__1 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple2__2 (Term) Term)
+;;;;;;;;;;;;;;;;data constructor proxy: FStar.Pervasives.Native.Mktuple2
+(declare-fun FStar.Pervasives.Native.Mktuple2@tok () Term)
+(declare-fun Tm_arrow_4054cc0a51327db54c2ed9ba3376a093 () Term)
+
+; <start constructor FStar.Pervasives.Native.tuple2>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-FStar.Pervasives.Native.tuple2 ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+125)
+(exists ((@x0 Term) (@x1 Term))
+ (! (= __@x0
+(FStar.Pervasives.Native.tuple2 @x0
+@x1))
+ 
+;;no pats
+:qid is-FStar.Pervasives.Native.tuple2))))
+
+; </end constructor FStar.Pervasives.Native.tuple2>
+
+
+; <start constructor FStar.Pervasives.Native.Mktuple2>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-FStar.Pervasives.Native.Mktuple2 ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+132)
+(= __@x0
+(FStar.Pervasives.Native.Mktuple2 (FStar.Pervasives.Native.Mktuple2__a __@x0)
+(FStar.Pervasives.Native.Mktuple2__b __@x0)
+(FStar.Pervasives.Native.Mktuple2__1 __@x0)
+(FStar.Pervasives.Native.Mktuple2__2 __@x0)))))
+
+; </end constructor FStar.Pervasives.Native.Mktuple2>
+
+
+; </end encoding type FStar.Pervasives.Native.tuple2>
+
+
+; <Start encoding assume FStar.Pervasives.Native.tuple2__uu___haseq>
+
+
+; </end encoding assume FStar.Pervasives.Native.tuple2__uu___haseq>
+
+
+; <Start encoding val FStar.Pervasives.Native.uu___is_Mktuple2>
+
+(declare-fun FStar.Pervasives.Native.uu___is_Mktuple2 (Term Term Term) Term)
+(declare-fun Tm_arrow_eff71eeee4474e017e02350f86f54756 () Term)
+(declare-fun FStar.Pervasives.Native.uu___is_Mktuple2@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.uu___is_Mktuple2>
+
+
+; <Skipped let uu___is_Mktuple2/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple2__item___1>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple2__item___1 (Term Term Term) Term)
+(declare-fun Tm_arrow_b8cce376a4a678a51298a0f3945f25ce () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple2__item___1@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple2__item___1>
+
+
+; <Skipped let __proj__Mktuple2__item___1/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple2__item___2>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple2__item___2 (Term Term Term) Term)
+(declare-fun Tm_arrow_d952d001575ecb20c572af535c88dd2d () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple2__item___2@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple2__item___2>
+
+
+; <Skipped let __proj__Mktuple2__item___2/>
+
+
+; <Start encoding let fst>
+
+(declare-fun FStar.Pervasives.Native.fst (Term Term Term) Term)
+
+(declare-fun FStar.Pervasives.Native.fst@tok () Term)
+
+; </end encoding let fst>
+
+
+; <Start encoding let snd>
+
+(declare-fun FStar.Pervasives.Native.snd (Term Term Term) Term)
+
+(declare-fun FStar.Pervasives.Native.snd@tok () Term)
+
+; </end encoding let snd>
+
+
+; <Start encoding type FStar.Pervasives.Native.tuple3>
+
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun FStar.Pervasives.Native.tuple3 (Term Term Term) Term)
+;;;;;;;;;;;;;;;;token
+(declare-fun FStar.Pervasives.Native.tuple3@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun FStar.Pervasives.Native.Mktuple3 (Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple3__a (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple3__b (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple3__c (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple3__1 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple3__2 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple3__3 (Term) Term)
+;;;;;;;;;;;;;;;;data constructor proxy: FStar.Pervasives.Native.Mktuple3
+(declare-fun FStar.Pervasives.Native.Mktuple3@tok () Term)
+(declare-fun Tm_arrow_1bedda193f13e939931cf5d46ad84216 () Term)
+
+; <start constructor FStar.Pervasives.Native.tuple3>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-FStar.Pervasives.Native.tuple3 ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+146)
+(exists ((@x0 Term) (@x1 Term) (@x2 Term))
+ (! (= __@x0
+(FStar.Pervasives.Native.tuple3 @x0
+@x1
+@x2))
+ 
+;;no pats
+:qid is-FStar.Pervasives.Native.tuple3))))
+
+; </end constructor FStar.Pervasives.Native.tuple3>
+
+
+; <start constructor FStar.Pervasives.Native.Mktuple3>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-FStar.Pervasives.Native.Mktuple3 ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+153)
+(= __@x0
+(FStar.Pervasives.Native.Mktuple3 (FStar.Pervasives.Native.Mktuple3__a __@x0)
+(FStar.Pervasives.Native.Mktuple3__b __@x0)
+(FStar.Pervasives.Native.Mktuple3__c __@x0)
+(FStar.Pervasives.Native.Mktuple3__1 __@x0)
+(FStar.Pervasives.Native.Mktuple3__2 __@x0)
+(FStar.Pervasives.Native.Mktuple3__3 __@x0)))))
+
+; </end constructor FStar.Pervasives.Native.Mktuple3>
+
+
+; </end encoding type FStar.Pervasives.Native.tuple3>
+
+
+; <Start encoding assume FStar.Pervasives.Native.tuple3__uu___haseq>
+
+
+; </end encoding assume FStar.Pervasives.Native.tuple3__uu___haseq>
+
+
+; <Start encoding val FStar.Pervasives.Native.uu___is_Mktuple3>
+
+(declare-fun FStar.Pervasives.Native.uu___is_Mktuple3 (Term Term Term Term) Term)
+(declare-fun Tm_arrow_f03c6dc5b30146aaca49ed4bf6f332a7 () Term)
+(declare-fun FStar.Pervasives.Native.uu___is_Mktuple3@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.uu___is_Mktuple3>
+
+
+; <Skipped let uu___is_Mktuple3/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple3__item___1>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple3__item___1 (Term Term Term Term) Term)
+(declare-fun Tm_arrow_592c45439d32a71e1933eacb9776c9ed () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple3__item___1@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple3__item___1>
+
+
+; <Skipped let __proj__Mktuple3__item___1/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple3__item___2>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple3__item___2 (Term Term Term Term) Term)
+(declare-fun Tm_arrow_9c9b0c5ac9b0fbfc367f406af296ecab () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple3__item___2@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple3__item___2>
+
+
+; <Skipped let __proj__Mktuple3__item___2/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple3__item___3>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple3__item___3 (Term Term Term Term) Term)
+(declare-fun Tm_arrow_08246a62c9aeca08c44c602ad80e95a4 () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple3__item___3@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple3__item___3>
+
+
+; <Skipped let __proj__Mktuple3__item___3/>
+
+
+; <Start encoding type FStar.Pervasives.Native.tuple4>
+
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun FStar.Pervasives.Native.tuple4 (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;token
+(declare-fun FStar.Pervasives.Native.tuple4@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun FStar.Pervasives.Native.Mktuple4 (Term Term Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple4__a (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple4__b (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple4__c (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple4__d (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple4__1 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple4__2 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple4__3 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple4__4 (Term) Term)
+;;;;;;;;;;;;;;;;data constructor proxy: FStar.Pervasives.Native.Mktuple4
+(declare-fun FStar.Pervasives.Native.Mktuple4@tok () Term)
+(declare-fun Tm_arrow_cbe72a10167439fe1ecfaf4fec8fd23f () Term)
+
+; <start constructor FStar.Pervasives.Native.tuple4>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-FStar.Pervasives.Native.tuple4 ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+165)
+(exists ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term))
+ (! (= __@x0
+(FStar.Pervasives.Native.tuple4 @x0
+@x1
+@x2
+@x3))
+ 
+;;no pats
+:qid is-FStar.Pervasives.Native.tuple4))))
+
+; </end constructor FStar.Pervasives.Native.tuple4>
+
+
+; <start constructor FStar.Pervasives.Native.Mktuple4>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-FStar.Pervasives.Native.Mktuple4 ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+172)
+(= __@x0
+(FStar.Pervasives.Native.Mktuple4 (FStar.Pervasives.Native.Mktuple4__a __@x0)
+(FStar.Pervasives.Native.Mktuple4__b __@x0)
+(FStar.Pervasives.Native.Mktuple4__c __@x0)
+(FStar.Pervasives.Native.Mktuple4__d __@x0)
+(FStar.Pervasives.Native.Mktuple4__1 __@x0)
+(FStar.Pervasives.Native.Mktuple4__2 __@x0)
+(FStar.Pervasives.Native.Mktuple4__3 __@x0)
+(FStar.Pervasives.Native.Mktuple4__4 __@x0)))))
+
+; </end constructor FStar.Pervasives.Native.Mktuple4>
+
+
+; </end encoding type FStar.Pervasives.Native.tuple4>
+
+
+; <Start encoding assume FStar.Pervasives.Native.tuple4__uu___haseq>
+
+
+; </end encoding assume FStar.Pervasives.Native.tuple4__uu___haseq>
+
+
+; <Start encoding val FStar.Pervasives.Native.uu___is_Mktuple4>
+
+(declare-fun FStar.Pervasives.Native.uu___is_Mktuple4 (Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_4319694c225efa92ce9fad6e9d81f761 () Term)
+(declare-fun FStar.Pervasives.Native.uu___is_Mktuple4@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.uu___is_Mktuple4>
+
+
+; <Skipped let uu___is_Mktuple4/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple4__item___1>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple4__item___1 (Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_382d1e9129053162252ec57e86d46f82 () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple4__item___1@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple4__item___1>
+
+
+; <Skipped let __proj__Mktuple4__item___1/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple4__item___2>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple4__item___2 (Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_fffd25e5325d259efa0675ef649c6864 () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple4__item___2@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple4__item___2>
+
+
+; <Skipped let __proj__Mktuple4__item___2/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple4__item___3>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple4__item___3 (Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_57b4005e0833f7b396e349ed7cdd1bb2 () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple4__item___3@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple4__item___3>
+
+
+; <Skipped let __proj__Mktuple4__item___3/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple4__item___4>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple4__item___4 (Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_9e6c1a63d63f8735645b9898955a2dca () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple4__item___4@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple4__item___4>
+
+
+; <Skipped let __proj__Mktuple4__item___4/>
+
+
+; <Start encoding type FStar.Pervasives.Native.tuple5>
+
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun FStar.Pervasives.Native.tuple5 (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;token
+(declare-fun FStar.Pervasives.Native.tuple5@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun FStar.Pervasives.Native.Mktuple5 (Term Term Term Term Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple5__a (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple5__b (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple5__c (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple5__d (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple5__e (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple5__1 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple5__2 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple5__3 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple5__4 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple5__5 (Term) Term)
+;;;;;;;;;;;;;;;;data constructor proxy: FStar.Pervasives.Native.Mktuple5
+(declare-fun FStar.Pervasives.Native.Mktuple5@tok () Term)
+(declare-fun Tm_arrow_dd8a078a1b97a81b5089dc3637cc2887 () Term)
+
+; <start constructor FStar.Pervasives.Native.tuple5>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-FStar.Pervasives.Native.tuple5 ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+186)
+(exists ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term) (@x4 Term))
+ (! (= __@x0
+(FStar.Pervasives.Native.tuple5 @x0
+@x1
+@x2
+@x3
+@x4))
+ 
+;;no pats
+:qid is-FStar.Pervasives.Native.tuple5))))
+
+; </end constructor FStar.Pervasives.Native.tuple5>
+
+
+; <start constructor FStar.Pervasives.Native.Mktuple5>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-FStar.Pervasives.Native.Mktuple5 ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+193)
+(= __@x0
+(FStar.Pervasives.Native.Mktuple5 (FStar.Pervasives.Native.Mktuple5__a __@x0)
+(FStar.Pervasives.Native.Mktuple5__b __@x0)
+(FStar.Pervasives.Native.Mktuple5__c __@x0)
+(FStar.Pervasives.Native.Mktuple5__d __@x0)
+(FStar.Pervasives.Native.Mktuple5__e __@x0)
+(FStar.Pervasives.Native.Mktuple5__1 __@x0)
+(FStar.Pervasives.Native.Mktuple5__2 __@x0)
+(FStar.Pervasives.Native.Mktuple5__3 __@x0)
+(FStar.Pervasives.Native.Mktuple5__4 __@x0)
+(FStar.Pervasives.Native.Mktuple5__5 __@x0)))))
+
+; </end constructor FStar.Pervasives.Native.Mktuple5>
+
+
+; </end encoding type FStar.Pervasives.Native.tuple5>
+
+
+; <Start encoding assume FStar.Pervasives.Native.tuple5__uu___haseq>
+
+
+; </end encoding assume FStar.Pervasives.Native.tuple5__uu___haseq>
+
+
+; <Start encoding val FStar.Pervasives.Native.uu___is_Mktuple5>
+
+(declare-fun FStar.Pervasives.Native.uu___is_Mktuple5 (Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_cfa2e2c8b8b41312889ff659c4faa5f9 () Term)
+(declare-fun FStar.Pervasives.Native.uu___is_Mktuple5@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.uu___is_Mktuple5>
+
+
+; <Skipped let uu___is_Mktuple5/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple5__item___1>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple5__item___1 (Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_7519f72fe101267af170e00c6ce694af () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple5__item___1@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple5__item___1>
+
+
+; <Skipped let __proj__Mktuple5__item___1/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple5__item___2>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple5__item___2 (Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_3e46329f224aa70981a337f98afbaa87 () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple5__item___2@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple5__item___2>
+
+
+; <Skipped let __proj__Mktuple5__item___2/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple5__item___3>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple5__item___3 (Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_55e6dc1b736536de45fedf844003f847 () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple5__item___3@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple5__item___3>
+
+
+; <Skipped let __proj__Mktuple5__item___3/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple5__item___4>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple5__item___4 (Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_3a4e86c6aee1a39b4811bdbc12405398 () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple5__item___4@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple5__item___4>
+
+
+; <Skipped let __proj__Mktuple5__item___4/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple5__item___5>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple5__item___5 (Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_1a78355922fdaba3f3848932dfc0a089 () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple5__item___5@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple5__item___5>
+
+
+; <Skipped let __proj__Mktuple5__item___5/>
+
+
+; <Start encoding type FStar.Pervasives.Native.tuple6>
+
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun FStar.Pervasives.Native.tuple6 (Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;token
+(declare-fun FStar.Pervasives.Native.tuple6@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun FStar.Pervasives.Native.Mktuple6 (Term Term Term Term Term Term Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple6__a (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple6__b (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple6__c (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple6__d (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple6__e (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple6__f (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple6__1 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple6__2 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple6__3 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple6__4 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple6__5 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple6__6 (Term) Term)
+;;;;;;;;;;;;;;;;data constructor proxy: FStar.Pervasives.Native.Mktuple6
+(declare-fun FStar.Pervasives.Native.Mktuple6@tok () Term)
+(declare-fun Tm_arrow_f277ffaa7e891207f9c6bff5b88ffd67 () Term)
+
+; <start constructor FStar.Pervasives.Native.tuple6>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-FStar.Pervasives.Native.tuple6 ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+209)
+(exists ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term) (@x4 Term) (@x5 Term))
+ (! (= __@x0
+(FStar.Pervasives.Native.tuple6 @x0
+@x1
+@x2
+@x3
+@x4
+@x5))
+ 
+;;no pats
+:qid is-FStar.Pervasives.Native.tuple6))))
+
+; </end constructor FStar.Pervasives.Native.tuple6>
+
+
+; <start constructor FStar.Pervasives.Native.Mktuple6>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-FStar.Pervasives.Native.Mktuple6 ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+216)
+(= __@x0
+(FStar.Pervasives.Native.Mktuple6 (FStar.Pervasives.Native.Mktuple6__a __@x0)
+(FStar.Pervasives.Native.Mktuple6__b __@x0)
+(FStar.Pervasives.Native.Mktuple6__c __@x0)
+(FStar.Pervasives.Native.Mktuple6__d __@x0)
+(FStar.Pervasives.Native.Mktuple6__e __@x0)
+(FStar.Pervasives.Native.Mktuple6__f __@x0)
+(FStar.Pervasives.Native.Mktuple6__1 __@x0)
+(FStar.Pervasives.Native.Mktuple6__2 __@x0)
+(FStar.Pervasives.Native.Mktuple6__3 __@x0)
+(FStar.Pervasives.Native.Mktuple6__4 __@x0)
+(FStar.Pervasives.Native.Mktuple6__5 __@x0)
+(FStar.Pervasives.Native.Mktuple6__6 __@x0)))))
+
+; </end constructor FStar.Pervasives.Native.Mktuple6>
+
+
+; </end encoding type FStar.Pervasives.Native.tuple6>
+
+
+; <Start encoding assume FStar.Pervasives.Native.tuple6__uu___haseq>
+
+
+; </end encoding assume FStar.Pervasives.Native.tuple6__uu___haseq>
+
+
+; <Start encoding val FStar.Pervasives.Native.uu___is_Mktuple6>
+
+(declare-fun FStar.Pervasives.Native.uu___is_Mktuple6 (Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_286587a1b9d299ba75a076f54a6dad5f () Term)
+(declare-fun FStar.Pervasives.Native.uu___is_Mktuple6@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.uu___is_Mktuple6>
+
+
+; <Skipped let uu___is_Mktuple6/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple6__item___1>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple6__item___1 (Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_5b1e145eeceab869b8e427e6927dbd63 () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple6__item___1@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple6__item___1>
+
+
+; <Skipped let __proj__Mktuple6__item___1/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple6__item___2>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple6__item___2 (Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_3207475e225d584881d3e0a297482887 () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple6__item___2@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple6__item___2>
+
+
+; <Skipped let __proj__Mktuple6__item___2/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple6__item___3>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple6__item___3 (Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_43e491b3b537a523a4f10de18b1915f5 () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple6__item___3@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple6__item___3>
+
+
+; <Skipped let __proj__Mktuple6__item___3/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple6__item___4>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple6__item___4 (Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_f5747d5b721642d7ecb757b043f20880 () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple6__item___4@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple6__item___4>
+
+
+; <Skipped let __proj__Mktuple6__item___4/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple6__item___5>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple6__item___5 (Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_d6501381a0206e157ecc43950bb31fea () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple6__item___5@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple6__item___5>
+
+
+; <Skipped let __proj__Mktuple6__item___5/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple6__item___6>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple6__item___6 (Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_9c342f41120d0c7aea115b09b58cefb2 () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple6__item___6@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple6__item___6>
+
+
+; <Skipped let __proj__Mktuple6__item___6/>
+
+
+; <Start encoding type FStar.Pervasives.Native.tuple7>
+
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun FStar.Pervasives.Native.tuple7 (Term Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;token
+(declare-fun FStar.Pervasives.Native.tuple7@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun FStar.Pervasives.Native.Mktuple7 (Term Term Term Term Term Term Term Term Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple7__a (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple7__b (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple7__c (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple7__d (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple7__e (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple7__f (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple7__g (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple7__1 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple7__2 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple7__3 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple7__4 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple7__5 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple7__6 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple7__7 (Term) Term)
+;;;;;;;;;;;;;;;;data constructor proxy: FStar.Pervasives.Native.Mktuple7
+(declare-fun FStar.Pervasives.Native.Mktuple7@tok () Term)
+(declare-fun Tm_arrow_37ee9ec407a0f7bb69bf1b308f74a230 () Term)
+
+; <start constructor FStar.Pervasives.Native.tuple7>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-FStar.Pervasives.Native.tuple7 ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+234)
+(exists ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term) (@x4 Term) (@x5 Term) (@x6 Term))
+ (! (= __@x0
+(FStar.Pervasives.Native.tuple7 @x0
+@x1
+@x2
+@x3
+@x4
+@x5
+@x6))
+ 
+;;no pats
+:qid is-FStar.Pervasives.Native.tuple7))))
+
+; </end constructor FStar.Pervasives.Native.tuple7>
+
+
+; <start constructor FStar.Pervasives.Native.Mktuple7>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-FStar.Pervasives.Native.Mktuple7 ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+241)
+(= __@x0
+(FStar.Pervasives.Native.Mktuple7 (FStar.Pervasives.Native.Mktuple7__a __@x0)
+(FStar.Pervasives.Native.Mktuple7__b __@x0)
+(FStar.Pervasives.Native.Mktuple7__c __@x0)
+(FStar.Pervasives.Native.Mktuple7__d __@x0)
+(FStar.Pervasives.Native.Mktuple7__e __@x0)
+(FStar.Pervasives.Native.Mktuple7__f __@x0)
+(FStar.Pervasives.Native.Mktuple7__g __@x0)
+(FStar.Pervasives.Native.Mktuple7__1 __@x0)
+(FStar.Pervasives.Native.Mktuple7__2 __@x0)
+(FStar.Pervasives.Native.Mktuple7__3 __@x0)
+(FStar.Pervasives.Native.Mktuple7__4 __@x0)
+(FStar.Pervasives.Native.Mktuple7__5 __@x0)
+(FStar.Pervasives.Native.Mktuple7__6 __@x0)
+(FStar.Pervasives.Native.Mktuple7__7 __@x0)))))
+
+; </end constructor FStar.Pervasives.Native.Mktuple7>
+
+
+; </end encoding type FStar.Pervasives.Native.tuple7>
+
+
+; <Start encoding assume FStar.Pervasives.Native.tuple7__uu___haseq>
+
+
+; </end encoding assume FStar.Pervasives.Native.tuple7__uu___haseq>
+
+
+; <Start encoding val FStar.Pervasives.Native.uu___is_Mktuple7>
+
+(declare-fun FStar.Pervasives.Native.uu___is_Mktuple7 (Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_612dde2fedb1440c5d790ba7f5015319 () Term)
+(declare-fun FStar.Pervasives.Native.uu___is_Mktuple7@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.uu___is_Mktuple7>
+
+
+; <Skipped let uu___is_Mktuple7/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple7__item___1>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple7__item___1 (Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_01c4488a68699f466c59799f5c1173ff () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple7__item___1@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple7__item___1>
+
+
+; <Skipped let __proj__Mktuple7__item___1/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple7__item___2>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple7__item___2 (Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_f317591858699585c67fe4ba8664e34c () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple7__item___2@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple7__item___2>
+
+
+; <Skipped let __proj__Mktuple7__item___2/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple7__item___3>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple7__item___3 (Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_44afce9d86f095aacc82b3ea2e0e223c () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple7__item___3@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple7__item___3>
+
+
+; <Skipped let __proj__Mktuple7__item___3/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple7__item___4>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple7__item___4 (Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_e857539d4cc5be0510cbcfb97cb64b35 () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple7__item___4@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple7__item___4>
+
+
+; <Skipped let __proj__Mktuple7__item___4/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple7__item___5>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple7__item___5 (Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_a249d3d5ba06026b12d41e289bb88061 () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple7__item___5@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple7__item___5>
+
+
+; <Skipped let __proj__Mktuple7__item___5/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple7__item___6>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple7__item___6 (Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_bf614c740d11cac9b5f8eb20b24c7d00 () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple7__item___6@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple7__item___6>
+
+
+; <Skipped let __proj__Mktuple7__item___6/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple7__item___7>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple7__item___7 (Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_e775fbf03b08091e48143165286522f7 () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple7__item___7@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple7__item___7>
+
+
+; <Skipped let __proj__Mktuple7__item___7/>
+
+
+; <Start encoding type FStar.Pervasives.Native.tuple8>
+
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun FStar.Pervasives.Native.tuple8 (Term Term Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;token
+(declare-fun FStar.Pervasives.Native.tuple8@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun FStar.Pervasives.Native.Mktuple8 (Term Term Term Term Term Term Term Term Term Term Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple8__a (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple8__b (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple8__c (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple8__d (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple8__e (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple8__f (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple8__g (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple8__h (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple8__1 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple8__2 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple8__3 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple8__4 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple8__5 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple8__6 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple8__7 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple8__8 (Term) Term)
+;;;;;;;;;;;;;;;;data constructor proxy: FStar.Pervasives.Native.Mktuple8
+(declare-fun FStar.Pervasives.Native.Mktuple8@tok () Term)
+(declare-fun Tm_arrow_e922a339a0aa0f375ed7113049811583 () Term)
+
+; <start constructor FStar.Pervasives.Native.tuple8>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-FStar.Pervasives.Native.tuple8 ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+261)
+(exists ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term) (@x4 Term) (@x5 Term) (@x6 Term) (@x7 Term))
+ (! (= __@x0
+(FStar.Pervasives.Native.tuple8 @x0
+@x1
+@x2
+@x3
+@x4
+@x5
+@x6
+@x7))
+ 
+;;no pats
+:qid is-FStar.Pervasives.Native.tuple8))))
+
+; </end constructor FStar.Pervasives.Native.tuple8>
+
+
+; <start constructor FStar.Pervasives.Native.Mktuple8>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-FStar.Pervasives.Native.Mktuple8 ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+268)
+(= __@x0
+(FStar.Pervasives.Native.Mktuple8 (FStar.Pervasives.Native.Mktuple8__a __@x0)
+(FStar.Pervasives.Native.Mktuple8__b __@x0)
+(FStar.Pervasives.Native.Mktuple8__c __@x0)
+(FStar.Pervasives.Native.Mktuple8__d __@x0)
+(FStar.Pervasives.Native.Mktuple8__e __@x0)
+(FStar.Pervasives.Native.Mktuple8__f __@x0)
+(FStar.Pervasives.Native.Mktuple8__g __@x0)
+(FStar.Pervasives.Native.Mktuple8__h __@x0)
+(FStar.Pervasives.Native.Mktuple8__1 __@x0)
+(FStar.Pervasives.Native.Mktuple8__2 __@x0)
+(FStar.Pervasives.Native.Mktuple8__3 __@x0)
+(FStar.Pervasives.Native.Mktuple8__4 __@x0)
+(FStar.Pervasives.Native.Mktuple8__5 __@x0)
+(FStar.Pervasives.Native.Mktuple8__6 __@x0)
+(FStar.Pervasives.Native.Mktuple8__7 __@x0)
+(FStar.Pervasives.Native.Mktuple8__8 __@x0)))))
+
+; </end constructor FStar.Pervasives.Native.Mktuple8>
+
+
+; </end encoding type FStar.Pervasives.Native.tuple8>
+
+
+; <Start encoding assume FStar.Pervasives.Native.tuple8__uu___haseq>
+
+
+; </end encoding assume FStar.Pervasives.Native.tuple8__uu___haseq>
+
+
+; <Start encoding val FStar.Pervasives.Native.uu___is_Mktuple8>
+
+(declare-fun FStar.Pervasives.Native.uu___is_Mktuple8 (Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_ee31533e24c78558f4566668a6ec027c () Term)
+(declare-fun FStar.Pervasives.Native.uu___is_Mktuple8@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.uu___is_Mktuple8>
+
+
+; <Skipped let uu___is_Mktuple8/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple8__item___1>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple8__item___1 (Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_c971649e117e4941e7317eff508d5ea7 () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple8__item___1@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple8__item___1>
+
+
+; <Skipped let __proj__Mktuple8__item___1/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple8__item___2>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple8__item___2 (Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_97dd51e3888c1c543d8f6c73d1808548 () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple8__item___2@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple8__item___2>
+
+
+; <Skipped let __proj__Mktuple8__item___2/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple8__item___3>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple8__item___3 (Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_3931d1873633dc65fed4e022ee3df3ca () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple8__item___3@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple8__item___3>
+
+
+; <Skipped let __proj__Mktuple8__item___3/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple8__item___4>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple8__item___4 (Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_5c791e62f9472e4c351c2befb2b7a3d8 () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple8__item___4@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple8__item___4>
+
+
+; <Skipped let __proj__Mktuple8__item___4/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple8__item___5>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple8__item___5 (Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_7ef7cac898ca0ef25893959e91d8c6ce () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple8__item___5@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple8__item___5>
+
+
+; <Skipped let __proj__Mktuple8__item___5/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple8__item___6>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple8__item___6 (Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_b0ae5f58a7fa002e0313b58bf5fc74cb () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple8__item___6@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple8__item___6>
+
+
+; <Skipped let __proj__Mktuple8__item___6/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple8__item___7>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple8__item___7 (Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_7fcd94f7549ca8acfadc26bc5b82f590 () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple8__item___7@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple8__item___7>
+
+
+; <Skipped let __proj__Mktuple8__item___7/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple8__item___8>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple8__item___8 (Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_feaaf61fa62fef18c5ee7c39e9f86573 () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple8__item___8@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple8__item___8>
+
+
+; <Skipped let __proj__Mktuple8__item___8/>
+
+
+; <Start encoding type FStar.Pervasives.Native.tuple9>
+
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun FStar.Pervasives.Native.tuple9 (Term Term Term Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;token
+(declare-fun FStar.Pervasives.Native.tuple9@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun FStar.Pervasives.Native.Mktuple9 (Term Term Term Term Term Term Term Term Term Term Term Term Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple9__a (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple9__b (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple9__c (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple9__d (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple9__e (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple9__f (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple9__g (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple9__h (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple9__i (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple9__1 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple9__2 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple9__3 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple9__4 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple9__5 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple9__6 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple9__7 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple9__8 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple9__9 (Term) Term)
+;;;;;;;;;;;;;;;;data constructor proxy: FStar.Pervasives.Native.Mktuple9
+(declare-fun FStar.Pervasives.Native.Mktuple9@tok () Term)
+(declare-fun Tm_arrow_0c6bc368a301d7de6e1939ebea91ee60 () Term)
+
+; <start constructor FStar.Pervasives.Native.tuple9>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-FStar.Pervasives.Native.tuple9 ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+290)
+(exists ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term) (@x4 Term) (@x5 Term) (@x6 Term) (@x7 Term) (@x8 Term))
+ (! (= __@x0
+(FStar.Pervasives.Native.tuple9 @x0
+@x1
+@x2
+@x3
+@x4
+@x5
+@x6
+@x7
+@x8))
+ 
+;;no pats
+:qid is-FStar.Pervasives.Native.tuple9))))
+
+; </end constructor FStar.Pervasives.Native.tuple9>
+
+
+; <start constructor FStar.Pervasives.Native.Mktuple9>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-FStar.Pervasives.Native.Mktuple9 ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+297)
+(= __@x0
+(FStar.Pervasives.Native.Mktuple9 (FStar.Pervasives.Native.Mktuple9__a __@x0)
+(FStar.Pervasives.Native.Mktuple9__b __@x0)
+(FStar.Pervasives.Native.Mktuple9__c __@x0)
+(FStar.Pervasives.Native.Mktuple9__d __@x0)
+(FStar.Pervasives.Native.Mktuple9__e __@x0)
+(FStar.Pervasives.Native.Mktuple9__f __@x0)
+(FStar.Pervasives.Native.Mktuple9__g __@x0)
+(FStar.Pervasives.Native.Mktuple9__h __@x0)
+(FStar.Pervasives.Native.Mktuple9__i __@x0)
+(FStar.Pervasives.Native.Mktuple9__1 __@x0)
+(FStar.Pervasives.Native.Mktuple9__2 __@x0)
+(FStar.Pervasives.Native.Mktuple9__3 __@x0)
+(FStar.Pervasives.Native.Mktuple9__4 __@x0)
+(FStar.Pervasives.Native.Mktuple9__5 __@x0)
+(FStar.Pervasives.Native.Mktuple9__6 __@x0)
+(FStar.Pervasives.Native.Mktuple9__7 __@x0)
+(FStar.Pervasives.Native.Mktuple9__8 __@x0)
+(FStar.Pervasives.Native.Mktuple9__9 __@x0)))))
+
+; </end constructor FStar.Pervasives.Native.Mktuple9>
+
+
+; </end encoding type FStar.Pervasives.Native.tuple9>
+
+
+; <Start encoding assume FStar.Pervasives.Native.tuple9__uu___haseq>
+
+
+; </end encoding assume FStar.Pervasives.Native.tuple9__uu___haseq>
+
+
+; <Start encoding val FStar.Pervasives.Native.uu___is_Mktuple9>
+
+(declare-fun FStar.Pervasives.Native.uu___is_Mktuple9 (Term Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_9ac8f39c7b1df1e87db7c9bf5bc37a38 () Term)
+(declare-fun FStar.Pervasives.Native.uu___is_Mktuple9@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.uu___is_Mktuple9>
+
+
+; <Skipped let uu___is_Mktuple9/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple9__item___1>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple9__item___1 (Term Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_270119cc1f13c9afeb25322d78efc328 () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple9__item___1@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple9__item___1>
+
+
+; <Skipped let __proj__Mktuple9__item___1/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple9__item___2>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple9__item___2 (Term Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_3c368dee2c86a1af7bd7ea91baab7613 () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple9__item___2@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple9__item___2>
+
+
+; <Skipped let __proj__Mktuple9__item___2/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple9__item___3>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple9__item___3 (Term Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_e9c745e2da3dec50930b0a7e01a11cc3 () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple9__item___3@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple9__item___3>
+
+
+; <Skipped let __proj__Mktuple9__item___3/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple9__item___4>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple9__item___4 (Term Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_a82ff41c5c66cd37481c83584c94a54d () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple9__item___4@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple9__item___4>
+
+
+; <Skipped let __proj__Mktuple9__item___4/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple9__item___5>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple9__item___5 (Term Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_1b3b4c5e68fdf7277f64bde93e6534de () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple9__item___5@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple9__item___5>
+
+
+; <Skipped let __proj__Mktuple9__item___5/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple9__item___6>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple9__item___6 (Term Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_837f1324f6fa51bb8a0e45ee48e4e058 () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple9__item___6@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple9__item___6>
+
+
+; <Skipped let __proj__Mktuple9__item___6/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple9__item___7>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple9__item___7 (Term Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_a7562220963e3431d35de76c3c9c87b9 () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple9__item___7@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple9__item___7>
+
+
+; <Skipped let __proj__Mktuple9__item___7/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple9__item___8>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple9__item___8 (Term Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_861b810bc1c20bbd221cecbce824b695 () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple9__item___8@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple9__item___8>
+
+
+; <Skipped let __proj__Mktuple9__item___8/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple9__item___9>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple9__item___9 (Term Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_9a54b18d8e08fdf0e20244b3f960c9dc () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple9__item___9@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple9__item___9>
+
+
+; <Skipped let __proj__Mktuple9__item___9/>
+
+
+; <Start encoding type FStar.Pervasives.Native.tuple10>
+
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun FStar.Pervasives.Native.tuple10 (Term Term Term Term Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;token
+(declare-fun FStar.Pervasives.Native.tuple10@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun FStar.Pervasives.Native.Mktuple10 (Term Term Term Term Term Term Term Term Term Term Term Term Term Term Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple10__a (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple10__b (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple10__c (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple10__d (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple10__e (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple10__f (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple10__g (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple10__h (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple10__i (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple10__j (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple10__1 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple10__2 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple10__3 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple10__4 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple10__5 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple10__6 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple10__7 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple10__8 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple10__9 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple10__10 (Term) Term)
+;;;;;;;;;;;;;;;;data constructor proxy: FStar.Pervasives.Native.Mktuple10
+(declare-fun FStar.Pervasives.Native.Mktuple10@tok () Term)
+(declare-fun Tm_arrow_61d31241317018093b2245d256adbcb5 () Term)
+
+; <start constructor FStar.Pervasives.Native.tuple10>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-FStar.Pervasives.Native.tuple10 ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+321)
+(exists ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term) (@x4 Term) (@x5 Term) (@x6 Term) (@x7 Term) (@x8 Term) (@x9 Term))
+ (! (= __@x0
+(FStar.Pervasives.Native.tuple10 @x0
+@x1
+@x2
+@x3
+@x4
+@x5
+@x6
+@x7
+@x8
+@x9))
+ 
+;;no pats
+:qid is-FStar.Pervasives.Native.tuple10))))
+
+; </end constructor FStar.Pervasives.Native.tuple10>
+
+
+; <start constructor FStar.Pervasives.Native.Mktuple10>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-FStar.Pervasives.Native.Mktuple10 ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+328)
+(= __@x0
+(FStar.Pervasives.Native.Mktuple10 (FStar.Pervasives.Native.Mktuple10__a __@x0)
+(FStar.Pervasives.Native.Mktuple10__b __@x0)
+(FStar.Pervasives.Native.Mktuple10__c __@x0)
+(FStar.Pervasives.Native.Mktuple10__d __@x0)
+(FStar.Pervasives.Native.Mktuple10__e __@x0)
+(FStar.Pervasives.Native.Mktuple10__f __@x0)
+(FStar.Pervasives.Native.Mktuple10__g __@x0)
+(FStar.Pervasives.Native.Mktuple10__h __@x0)
+(FStar.Pervasives.Native.Mktuple10__i __@x0)
+(FStar.Pervasives.Native.Mktuple10__j __@x0)
+(FStar.Pervasives.Native.Mktuple10__1 __@x0)
+(FStar.Pervasives.Native.Mktuple10__2 __@x0)
+(FStar.Pervasives.Native.Mktuple10__3 __@x0)
+(FStar.Pervasives.Native.Mktuple10__4 __@x0)
+(FStar.Pervasives.Native.Mktuple10__5 __@x0)
+(FStar.Pervasives.Native.Mktuple10__6 __@x0)
+(FStar.Pervasives.Native.Mktuple10__7 __@x0)
+(FStar.Pervasives.Native.Mktuple10__8 __@x0)
+(FStar.Pervasives.Native.Mktuple10__9 __@x0)
+(FStar.Pervasives.Native.Mktuple10__10 __@x0)))))
+
+; </end constructor FStar.Pervasives.Native.Mktuple10>
+
+
+; </end encoding type FStar.Pervasives.Native.tuple10>
+
+
+; <Start encoding assume FStar.Pervasives.Native.tuple10__uu___haseq>
+
+
+; </end encoding assume FStar.Pervasives.Native.tuple10__uu___haseq>
+
+
+; <Start encoding val FStar.Pervasives.Native.uu___is_Mktuple10>
+
+(declare-fun FStar.Pervasives.Native.uu___is_Mktuple10 (Term Term Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_f27282a056f525d8710bf32204d252ec () Term)
+(declare-fun FStar.Pervasives.Native.uu___is_Mktuple10@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.uu___is_Mktuple10>
+
+
+; <Skipped let uu___is_Mktuple10/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple10__item___1>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple10__item___1 (Term Term Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_c581e9177cd071a1b6e057fca49ea75b () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple10__item___1@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple10__item___1>
+
+
+; <Skipped let __proj__Mktuple10__item___1/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple10__item___2>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple10__item___2 (Term Term Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_ae4b2db87d7c69a8380f4d5ae20f2149 () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple10__item___2@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple10__item___2>
+
+
+; <Skipped let __proj__Mktuple10__item___2/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple10__item___3>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple10__item___3 (Term Term Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_a21274cb112dc6619b2bde244e6a0f9a () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple10__item___3@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple10__item___3>
+
+
+; <Skipped let __proj__Mktuple10__item___3/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple10__item___4>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple10__item___4 (Term Term Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_9a051d5cacf4367d170d590ba8bb720d () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple10__item___4@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple10__item___4>
+
+
+; <Skipped let __proj__Mktuple10__item___4/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple10__item___5>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple10__item___5 (Term Term Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_bbd73769b626202d4de52d4d60cd3b75 () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple10__item___5@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple10__item___5>
+
+
+; <Skipped let __proj__Mktuple10__item___5/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple10__item___6>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple10__item___6 (Term Term Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_7ceeded5a3852448c1a5406becbd990e () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple10__item___6@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple10__item___6>
+
+
+; <Skipped let __proj__Mktuple10__item___6/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple10__item___7>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple10__item___7 (Term Term Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_c68947c71d484ad43cd50646c4e1daf4 () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple10__item___7@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple10__item___7>
+
+
+; <Skipped let __proj__Mktuple10__item___7/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple10__item___8>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple10__item___8 (Term Term Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_e7b9ff90289491020fe84c6ab3bc60c6 () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple10__item___8@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple10__item___8>
+
+
+; <Skipped let __proj__Mktuple10__item___8/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple10__item___9>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple10__item___9 (Term Term Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_6dbb3170f112f78092d1caee0b341678 () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple10__item___9@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple10__item___9>
+
+
+; <Skipped let __proj__Mktuple10__item___9/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple10__item___10>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple10__item___10 (Term Term Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_45598a99c0a7fcc1bf2258b9ad4256cf () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple10__item___10@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple10__item___10>
+
+
+; <Skipped let __proj__Mktuple10__item___10/>
+
+
+; <Start encoding type FStar.Pervasives.Native.tuple11>
+
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun FStar.Pervasives.Native.tuple11 (Term Term Term Term Term Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;token
+(declare-fun FStar.Pervasives.Native.tuple11@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun FStar.Pervasives.Native.Mktuple11 (Term Term Term Term Term Term Term Term Term Term Term Term Term Term Term Term Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple11__a (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple11__b (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple11__c (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple11__d (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple11__e (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple11__f (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple11__g (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple11__h (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple11__i (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple11__j (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple11__k (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple11__1 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple11__2 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple11__3 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple11__4 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple11__5 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple11__6 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple11__7 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple11__8 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple11__9 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple11__10 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple11__11 (Term) Term)
+;;;;;;;;;;;;;;;;data constructor proxy: FStar.Pervasives.Native.Mktuple11
+(declare-fun FStar.Pervasives.Native.Mktuple11@tok () Term)
+(declare-fun Tm_arrow_bf9783a1a3bf19ab918f42acff1daa32 () Term)
+
+; <start constructor FStar.Pervasives.Native.tuple11>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-FStar.Pervasives.Native.tuple11 ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+354)
+(exists ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term) (@x4 Term) (@x5 Term) (@x6 Term) (@x7 Term) (@x8 Term) (@x9 Term) (@x10 Term))
+ (! (= __@x0
+(FStar.Pervasives.Native.tuple11 @x0
+@x1
+@x2
+@x3
+@x4
+@x5
+@x6
+@x7
+@x8
+@x9
+@x10))
+ 
+;;no pats
+:qid is-FStar.Pervasives.Native.tuple11))))
+
+; </end constructor FStar.Pervasives.Native.tuple11>
+
+
+; <start constructor FStar.Pervasives.Native.Mktuple11>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-FStar.Pervasives.Native.Mktuple11 ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+361)
+(= __@x0
+(FStar.Pervasives.Native.Mktuple11 (FStar.Pervasives.Native.Mktuple11__a __@x0)
+(FStar.Pervasives.Native.Mktuple11__b __@x0)
+(FStar.Pervasives.Native.Mktuple11__c __@x0)
+(FStar.Pervasives.Native.Mktuple11__d __@x0)
+(FStar.Pervasives.Native.Mktuple11__e __@x0)
+(FStar.Pervasives.Native.Mktuple11__f __@x0)
+(FStar.Pervasives.Native.Mktuple11__g __@x0)
+(FStar.Pervasives.Native.Mktuple11__h __@x0)
+(FStar.Pervasives.Native.Mktuple11__i __@x0)
+(FStar.Pervasives.Native.Mktuple11__j __@x0)
+(FStar.Pervasives.Native.Mktuple11__k __@x0)
+(FStar.Pervasives.Native.Mktuple11__1 __@x0)
+(FStar.Pervasives.Native.Mktuple11__2 __@x0)
+(FStar.Pervasives.Native.Mktuple11__3 __@x0)
+(FStar.Pervasives.Native.Mktuple11__4 __@x0)
+(FStar.Pervasives.Native.Mktuple11__5 __@x0)
+(FStar.Pervasives.Native.Mktuple11__6 __@x0)
+(FStar.Pervasives.Native.Mktuple11__7 __@x0)
+(FStar.Pervasives.Native.Mktuple11__8 __@x0)
+(FStar.Pervasives.Native.Mktuple11__9 __@x0)
+(FStar.Pervasives.Native.Mktuple11__10 __@x0)
+(FStar.Pervasives.Native.Mktuple11__11 __@x0)))))
+
+; </end constructor FStar.Pervasives.Native.Mktuple11>
+
+
+; </end encoding type FStar.Pervasives.Native.tuple11>
+
+
+; <Start encoding assume FStar.Pervasives.Native.tuple11__uu___haseq>
+
+
+; </end encoding assume FStar.Pervasives.Native.tuple11__uu___haseq>
+
+
+; <Start encoding val FStar.Pervasives.Native.uu___is_Mktuple11>
+
+(declare-fun FStar.Pervasives.Native.uu___is_Mktuple11 (Term Term Term Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_005819ee7a23a5c47189bae72b85d85c () Term)
+(declare-fun FStar.Pervasives.Native.uu___is_Mktuple11@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.uu___is_Mktuple11>
+
+
+; <Skipped let uu___is_Mktuple11/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple11__item___1>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple11__item___1 (Term Term Term Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_31968e334e9582d95281307f534992a9 () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple11__item___1@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple11__item___1>
+
+
+; <Skipped let __proj__Mktuple11__item___1/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple11__item___2>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple11__item___2 (Term Term Term Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_6252dd9f4473dc54a3482810e8556404 () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple11__item___2@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple11__item___2>
+
+
+; <Skipped let __proj__Mktuple11__item___2/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple11__item___3>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple11__item___3 (Term Term Term Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_ec3ce6b7406c091cd7d0961922bb5a02 () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple11__item___3@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple11__item___3>
+
+
+; <Skipped let __proj__Mktuple11__item___3/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple11__item___4>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple11__item___4 (Term Term Term Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_be7571e73b0e7fc24d03efe0e003c054 () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple11__item___4@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple11__item___4>
+
+
+; <Skipped let __proj__Mktuple11__item___4/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple11__item___5>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple11__item___5 (Term Term Term Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_97ae7d913e508c46c48c3b51553d4459 () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple11__item___5@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple11__item___5>
+
+
+; <Skipped let __proj__Mktuple11__item___5/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple11__item___6>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple11__item___6 (Term Term Term Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_1dca311798936510e0ead61e14cf32a6 () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple11__item___6@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple11__item___6>
+
+
+; <Skipped let __proj__Mktuple11__item___6/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple11__item___7>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple11__item___7 (Term Term Term Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_eec431ea31093a646681ef2ceb2e2986 () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple11__item___7@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple11__item___7>
+
+
+; <Skipped let __proj__Mktuple11__item___7/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple11__item___8>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple11__item___8 (Term Term Term Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_689b2f06e9fd83f7a84ce80a13d338c6 () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple11__item___8@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple11__item___8>
+
+
+; <Skipped let __proj__Mktuple11__item___8/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple11__item___9>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple11__item___9 (Term Term Term Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_20210a3d9498f929cb7aa68d9e8b5ebf () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple11__item___9@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple11__item___9>
+
+
+; <Skipped let __proj__Mktuple11__item___9/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple11__item___10>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple11__item___10 (Term Term Term Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_96812f2124d88760b2002bbe1502c3c9 () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple11__item___10@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple11__item___10>
+
+
+; <Skipped let __proj__Mktuple11__item___10/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple11__item___11>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple11__item___11 (Term Term Term Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_abcfa2582f68905d460c5ef4a7642f2d () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple11__item___11@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple11__item___11>
+
+
+; <Skipped let __proj__Mktuple11__item___11/>
+
+
+; <Start encoding type FStar.Pervasives.Native.tuple12>
+
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun FStar.Pervasives.Native.tuple12 (Term Term Term Term Term Term Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;token
+(declare-fun FStar.Pervasives.Native.tuple12@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun FStar.Pervasives.Native.Mktuple12 (Term Term Term Term Term Term Term Term Term Term Term Term Term Term Term Term Term Term Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple12__a (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple12__b (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple12__c (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple12__d (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple12__e (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple12__f (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple12__g (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple12__h (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple12__i (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple12__j (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple12__k (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple12__l (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple12__1 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple12__2 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple12__3 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple12__4 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple12__5 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple12__6 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple12__7 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple12__8 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple12__9 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple12__10 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple12__11 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple12__12 (Term) Term)
+;;;;;;;;;;;;;;;;data constructor proxy: FStar.Pervasives.Native.Mktuple12
+(declare-fun FStar.Pervasives.Native.Mktuple12@tok () Term)
+(declare-fun Tm_arrow_4d5cd995d6f44a2ec39d0f193be0be65 () Term)
+
+; <start constructor FStar.Pervasives.Native.tuple12>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-FStar.Pervasives.Native.tuple12 ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+389)
+(exists ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term) (@x4 Term) (@x5 Term) (@x6 Term) (@x7 Term) (@x8 Term) (@x9 Term) (@x10 Term) (@x11 Term))
+ (! (= __@x0
+(FStar.Pervasives.Native.tuple12 @x0
+@x1
+@x2
+@x3
+@x4
+@x5
+@x6
+@x7
+@x8
+@x9
+@x10
+@x11))
+ 
+;;no pats
+:qid is-FStar.Pervasives.Native.tuple12))))
+
+; </end constructor FStar.Pervasives.Native.tuple12>
+
+
+; <start constructor FStar.Pervasives.Native.Mktuple12>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-FStar.Pervasives.Native.Mktuple12 ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+396)
+(= __@x0
+(FStar.Pervasives.Native.Mktuple12 (FStar.Pervasives.Native.Mktuple12__a __@x0)
+(FStar.Pervasives.Native.Mktuple12__b __@x0)
+(FStar.Pervasives.Native.Mktuple12__c __@x0)
+(FStar.Pervasives.Native.Mktuple12__d __@x0)
+(FStar.Pervasives.Native.Mktuple12__e __@x0)
+(FStar.Pervasives.Native.Mktuple12__f __@x0)
+(FStar.Pervasives.Native.Mktuple12__g __@x0)
+(FStar.Pervasives.Native.Mktuple12__h __@x0)
+(FStar.Pervasives.Native.Mktuple12__i __@x0)
+(FStar.Pervasives.Native.Mktuple12__j __@x0)
+(FStar.Pervasives.Native.Mktuple12__k __@x0)
+(FStar.Pervasives.Native.Mktuple12__l __@x0)
+(FStar.Pervasives.Native.Mktuple12__1 __@x0)
+(FStar.Pervasives.Native.Mktuple12__2 __@x0)
+(FStar.Pervasives.Native.Mktuple12__3 __@x0)
+(FStar.Pervasives.Native.Mktuple12__4 __@x0)
+(FStar.Pervasives.Native.Mktuple12__5 __@x0)
+(FStar.Pervasives.Native.Mktuple12__6 __@x0)
+(FStar.Pervasives.Native.Mktuple12__7 __@x0)
+(FStar.Pervasives.Native.Mktuple12__8 __@x0)
+(FStar.Pervasives.Native.Mktuple12__9 __@x0)
+(FStar.Pervasives.Native.Mktuple12__10 __@x0)
+(FStar.Pervasives.Native.Mktuple12__11 __@x0)
+(FStar.Pervasives.Native.Mktuple12__12 __@x0)))))
+
+; </end constructor FStar.Pervasives.Native.Mktuple12>
+
+
+; </end encoding type FStar.Pervasives.Native.tuple12>
+
+
+; <Start encoding assume FStar.Pervasives.Native.tuple12__uu___haseq>
+
+
+; </end encoding assume FStar.Pervasives.Native.tuple12__uu___haseq>
+
+
+; <Start encoding val FStar.Pervasives.Native.uu___is_Mktuple12>
+
+(declare-fun FStar.Pervasives.Native.uu___is_Mktuple12 (Term Term Term Term Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_5c9f47d9090f554c9826d2f65e388f20 () Term)
+(declare-fun FStar.Pervasives.Native.uu___is_Mktuple12@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.uu___is_Mktuple12>
+
+
+; <Skipped let uu___is_Mktuple12/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple12__item___1>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple12__item___1 (Term Term Term Term Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_618941d7cf5ddbaabe15df8579b4a387 () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple12__item___1@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple12__item___1>
+
+
+; <Skipped let __proj__Mktuple12__item___1/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple12__item___2>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple12__item___2 (Term Term Term Term Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_84e9e2280e9bcb3233e4f33f86d66ea6 () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple12__item___2@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple12__item___2>
+
+
+; <Skipped let __proj__Mktuple12__item___2/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple12__item___3>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple12__item___3 (Term Term Term Term Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_1fa79c5abf9f18607bd2e46a1a6967fa () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple12__item___3@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple12__item___3>
+
+
+; <Skipped let __proj__Mktuple12__item___3/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple12__item___4>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple12__item___4 (Term Term Term Term Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_0f49c582489d782b08195e81221181dc () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple12__item___4@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple12__item___4>
+
+
+; <Skipped let __proj__Mktuple12__item___4/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple12__item___5>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple12__item___5 (Term Term Term Term Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_29b7181ebb44f9e4a45f95c4f8478c6a () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple12__item___5@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple12__item___5>
+
+
+; <Skipped let __proj__Mktuple12__item___5/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple12__item___6>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple12__item___6 (Term Term Term Term Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_3cc2863a7d7f23e3916fa1e43483cb90 () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple12__item___6@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple12__item___6>
+
+
+; <Skipped let __proj__Mktuple12__item___6/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple12__item___7>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple12__item___7 (Term Term Term Term Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_c7deea49701ab64a73985bf522e46359 () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple12__item___7@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple12__item___7>
+
+
+; <Skipped let __proj__Mktuple12__item___7/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple12__item___8>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple12__item___8 (Term Term Term Term Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_380615e7761919086537a14273a02d22 () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple12__item___8@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple12__item___8>
+
+
+; <Skipped let __proj__Mktuple12__item___8/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple12__item___9>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple12__item___9 (Term Term Term Term Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_245250918a4432b31aea8152d056489a () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple12__item___9@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple12__item___9>
+
+
+; <Skipped let __proj__Mktuple12__item___9/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple12__item___10>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple12__item___10 (Term Term Term Term Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_2a967c8402c441e6d8a9336a7568e4de () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple12__item___10@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple12__item___10>
+
+
+; <Skipped let __proj__Mktuple12__item___10/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple12__item___11>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple12__item___11 (Term Term Term Term Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_543c3feac0cd9e04ecb6cfd74ced8964 () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple12__item___11@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple12__item___11>
+
+
+; <Skipped let __proj__Mktuple12__item___11/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple12__item___12>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple12__item___12 (Term Term Term Term Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_e91029e2320896c60e94f554727a0c41 () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple12__item___12@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple12__item___12>
+
+
+; <Skipped let __proj__Mktuple12__item___12/>
+
+
+; <Start encoding type FStar.Pervasives.Native.tuple13>
+
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun FStar.Pervasives.Native.tuple13 (Term Term Term Term Term Term Term Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;token
+(declare-fun FStar.Pervasives.Native.tuple13@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun FStar.Pervasives.Native.Mktuple13 (Term Term Term Term Term Term Term Term Term Term Term Term Term Term Term Term Term Term Term Term Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple13__a (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple13__b (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple13__c (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple13__d (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple13__e (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple13__f (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple13__g (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple13__h (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple13__i (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple13__j (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple13__k (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple13__l (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple13__m (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple13__1 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple13__2 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple13__3 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple13__4 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple13__5 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple13__6 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple13__7 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple13__8 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple13__9 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple13__10 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple13__11 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple13__12 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple13__13 (Term) Term)
+;;;;;;;;;;;;;;;;data constructor proxy: FStar.Pervasives.Native.Mktuple13
+(declare-fun FStar.Pervasives.Native.Mktuple13@tok () Term)
+(declare-fun Tm_arrow_6462785e86ca440ee74ed32e1053eae3 () Term)
+
+; <start constructor FStar.Pervasives.Native.tuple13>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-FStar.Pervasives.Native.tuple13 ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+426)
+(exists ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term) (@x4 Term) (@x5 Term) (@x6 Term) (@x7 Term) (@x8 Term) (@x9 Term) (@x10 Term) (@x11 Term) (@x12 Term))
+ (! (= __@x0
+(FStar.Pervasives.Native.tuple13 @x0
+@x1
+@x2
+@x3
+@x4
+@x5
+@x6
+@x7
+@x8
+@x9
+@x10
+@x11
+@x12))
+ 
+;;no pats
+:qid is-FStar.Pervasives.Native.tuple13))))
+
+; </end constructor FStar.Pervasives.Native.tuple13>
+
+
+; <start constructor FStar.Pervasives.Native.Mktuple13>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-FStar.Pervasives.Native.Mktuple13 ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+433)
+(= __@x0
+(FStar.Pervasives.Native.Mktuple13 (FStar.Pervasives.Native.Mktuple13__a __@x0)
+(FStar.Pervasives.Native.Mktuple13__b __@x0)
+(FStar.Pervasives.Native.Mktuple13__c __@x0)
+(FStar.Pervasives.Native.Mktuple13__d __@x0)
+(FStar.Pervasives.Native.Mktuple13__e __@x0)
+(FStar.Pervasives.Native.Mktuple13__f __@x0)
+(FStar.Pervasives.Native.Mktuple13__g __@x0)
+(FStar.Pervasives.Native.Mktuple13__h __@x0)
+(FStar.Pervasives.Native.Mktuple13__i __@x0)
+(FStar.Pervasives.Native.Mktuple13__j __@x0)
+(FStar.Pervasives.Native.Mktuple13__k __@x0)
+(FStar.Pervasives.Native.Mktuple13__l __@x0)
+(FStar.Pervasives.Native.Mktuple13__m __@x0)
+(FStar.Pervasives.Native.Mktuple13__1 __@x0)
+(FStar.Pervasives.Native.Mktuple13__2 __@x0)
+(FStar.Pervasives.Native.Mktuple13__3 __@x0)
+(FStar.Pervasives.Native.Mktuple13__4 __@x0)
+(FStar.Pervasives.Native.Mktuple13__5 __@x0)
+(FStar.Pervasives.Native.Mktuple13__6 __@x0)
+(FStar.Pervasives.Native.Mktuple13__7 __@x0)
+(FStar.Pervasives.Native.Mktuple13__8 __@x0)
+(FStar.Pervasives.Native.Mktuple13__9 __@x0)
+(FStar.Pervasives.Native.Mktuple13__10 __@x0)
+(FStar.Pervasives.Native.Mktuple13__11 __@x0)
+(FStar.Pervasives.Native.Mktuple13__12 __@x0)
+(FStar.Pervasives.Native.Mktuple13__13 __@x0)))))
+
+; </end constructor FStar.Pervasives.Native.Mktuple13>
+
+
+; </end encoding type FStar.Pervasives.Native.tuple13>
+
+
+; <Start encoding assume FStar.Pervasives.Native.tuple13__uu___haseq>
+
+
+; </end encoding assume FStar.Pervasives.Native.tuple13__uu___haseq>
+
+
+; <Start encoding val FStar.Pervasives.Native.uu___is_Mktuple13>
+
+(declare-fun FStar.Pervasives.Native.uu___is_Mktuple13 (Term Term Term Term Term Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_68c092e8b387730b412c4dcf592b12d3 () Term)
+(declare-fun FStar.Pervasives.Native.uu___is_Mktuple13@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.uu___is_Mktuple13>
+
+
+; <Skipped let uu___is_Mktuple13/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple13__item___1>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple13__item___1 (Term Term Term Term Term Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_82a3dc3a5dbad615d8d4a31db238e43f () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple13__item___1@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple13__item___1>
+
+
+; <Skipped let __proj__Mktuple13__item___1/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple13__item___2>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple13__item___2 (Term Term Term Term Term Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_1da976aaa65f1c6b8b256dfc45c41306 () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple13__item___2@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple13__item___2>
+
+
+; <Skipped let __proj__Mktuple13__item___2/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple13__item___3>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple13__item___3 (Term Term Term Term Term Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_ca5cf529c415deee29e0a34c0c5d1c9f () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple13__item___3@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple13__item___3>
+
+
+; <Skipped let __proj__Mktuple13__item___3/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple13__item___4>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple13__item___4 (Term Term Term Term Term Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_94f6c578541b6cb528ca9e7dd1dacc3b () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple13__item___4@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple13__item___4>
+
+
+; <Skipped let __proj__Mktuple13__item___4/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple13__item___5>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple13__item___5 (Term Term Term Term Term Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_211e172b7220adc186d8a02ff17e8780 () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple13__item___5@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple13__item___5>
+
+
+; <Skipped let __proj__Mktuple13__item___5/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple13__item___6>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple13__item___6 (Term Term Term Term Term Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_9276a4f669d8497205e8d59f12da53ba () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple13__item___6@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple13__item___6>
+
+
+; <Skipped let __proj__Mktuple13__item___6/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple13__item___7>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple13__item___7 (Term Term Term Term Term Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_8aa8f381a5ed57cbbae9dcd2405ce80f () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple13__item___7@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple13__item___7>
+
+
+; <Skipped let __proj__Mktuple13__item___7/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple13__item___8>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple13__item___8 (Term Term Term Term Term Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_51814106613688cf259d7cdba9c24d93 () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple13__item___8@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple13__item___8>
+
+
+; <Skipped let __proj__Mktuple13__item___8/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple13__item___9>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple13__item___9 (Term Term Term Term Term Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_05fec25e6f03f974bb2933a910642d7e () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple13__item___9@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple13__item___9>
+
+
+; <Skipped let __proj__Mktuple13__item___9/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple13__item___10>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple13__item___10 (Term Term Term Term Term Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_3280ee04611a7985c9d107bb1a8a330a () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple13__item___10@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple13__item___10>
+
+
+; <Skipped let __proj__Mktuple13__item___10/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple13__item___11>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple13__item___11 (Term Term Term Term Term Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_86c868d5d5058e8e5ec1f4d0285c7e90 () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple13__item___11@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple13__item___11>
+
+
+; <Skipped let __proj__Mktuple13__item___11/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple13__item___12>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple13__item___12 (Term Term Term Term Term Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_7263c1a3c4475bb4e4b41a1be4bf22da () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple13__item___12@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple13__item___12>
+
+
+; <Skipped let __proj__Mktuple13__item___12/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple13__item___13>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple13__item___13 (Term Term Term Term Term Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_338c65ae58844787891c6f47cf01c068 () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple13__item___13@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple13__item___13>
+
+
+; <Skipped let __proj__Mktuple13__item___13/>
+
+
+; <Start encoding type FStar.Pervasives.Native.tuple14>
+
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun FStar.Pervasives.Native.tuple14 (Term Term Term Term Term Term Term Term Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;token
+(declare-fun FStar.Pervasives.Native.tuple14@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun FStar.Pervasives.Native.Mktuple14 (Term Term Term Term Term Term Term Term Term Term Term Term Term Term Term Term Term Term Term Term Term Term Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple14__a (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple14__b (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple14__c (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple14__d (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple14__e (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple14__f (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple14__g (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple14__h (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple14__i (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple14__j (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple14__k (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple14__l (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple14__m (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple14__n (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple14__1 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple14__2 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple14__3 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple14__4 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple14__5 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple14__6 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple14__7 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple14__8 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple14__9 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple14__10 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple14__11 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple14__12 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple14__13 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Native.Mktuple14__14 (Term) Term)
+;;;;;;;;;;;;;;;;data constructor proxy: FStar.Pervasives.Native.Mktuple14
+(declare-fun FStar.Pervasives.Native.Mktuple14@tok () Term)
+(declare-fun Tm_arrow_484e3bf88a886900f7e695d7333615e9 () Term)
+
+; <start constructor FStar.Pervasives.Native.tuple14>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-FStar.Pervasives.Native.tuple14 ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+465)
+(exists ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term) (@x4 Term) (@x5 Term) (@x6 Term) (@x7 Term) (@x8 Term) (@x9 Term) (@x10 Term) (@x11 Term) (@x12 Term) (@x13 Term))
+ (! (= __@x0
+(FStar.Pervasives.Native.tuple14 @x0
+@x1
+@x2
+@x3
+@x4
+@x5
+@x6
+@x7
+@x8
+@x9
+@x10
+@x11
+@x12
+@x13))
+ 
+;;no pats
+:qid is-FStar.Pervasives.Native.tuple14))))
+
+; </end constructor FStar.Pervasives.Native.tuple14>
+
+
+; <start constructor FStar.Pervasives.Native.Mktuple14>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-FStar.Pervasives.Native.Mktuple14 ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+472)
+(= __@x0
+(FStar.Pervasives.Native.Mktuple14 (FStar.Pervasives.Native.Mktuple14__a __@x0)
+(FStar.Pervasives.Native.Mktuple14__b __@x0)
+(FStar.Pervasives.Native.Mktuple14__c __@x0)
+(FStar.Pervasives.Native.Mktuple14__d __@x0)
+(FStar.Pervasives.Native.Mktuple14__e __@x0)
+(FStar.Pervasives.Native.Mktuple14__f __@x0)
+(FStar.Pervasives.Native.Mktuple14__g __@x0)
+(FStar.Pervasives.Native.Mktuple14__h __@x0)
+(FStar.Pervasives.Native.Mktuple14__i __@x0)
+(FStar.Pervasives.Native.Mktuple14__j __@x0)
+(FStar.Pervasives.Native.Mktuple14__k __@x0)
+(FStar.Pervasives.Native.Mktuple14__l __@x0)
+(FStar.Pervasives.Native.Mktuple14__m __@x0)
+(FStar.Pervasives.Native.Mktuple14__n __@x0)
+(FStar.Pervasives.Native.Mktuple14__1 __@x0)
+(FStar.Pervasives.Native.Mktuple14__2 __@x0)
+(FStar.Pervasives.Native.Mktuple14__3 __@x0)
+(FStar.Pervasives.Native.Mktuple14__4 __@x0)
+(FStar.Pervasives.Native.Mktuple14__5 __@x0)
+(FStar.Pervasives.Native.Mktuple14__6 __@x0)
+(FStar.Pervasives.Native.Mktuple14__7 __@x0)
+(FStar.Pervasives.Native.Mktuple14__8 __@x0)
+(FStar.Pervasives.Native.Mktuple14__9 __@x0)
+(FStar.Pervasives.Native.Mktuple14__10 __@x0)
+(FStar.Pervasives.Native.Mktuple14__11 __@x0)
+(FStar.Pervasives.Native.Mktuple14__12 __@x0)
+(FStar.Pervasives.Native.Mktuple14__13 __@x0)
+(FStar.Pervasives.Native.Mktuple14__14 __@x0)))))
+
+; </end constructor FStar.Pervasives.Native.Mktuple14>
+
+
+; </end encoding type FStar.Pervasives.Native.tuple14>
+
+
+; <Start encoding assume FStar.Pervasives.Native.tuple14__uu___haseq>
+
+
+; </end encoding assume FStar.Pervasives.Native.tuple14__uu___haseq>
+
+
+; <Start encoding val FStar.Pervasives.Native.uu___is_Mktuple14>
+
+(declare-fun FStar.Pervasives.Native.uu___is_Mktuple14 (Term Term Term Term Term Term Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_2de133cfaca100fc23d8bf4b3421db9a () Term)
+(declare-fun FStar.Pervasives.Native.uu___is_Mktuple14@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.uu___is_Mktuple14>
+
+
+; <Skipped let uu___is_Mktuple14/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple14__item___1>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple14__item___1 (Term Term Term Term Term Term Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_2e3216cab266e138debd68d0a503c177 () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple14__item___1@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple14__item___1>
+
+
+; <Skipped let __proj__Mktuple14__item___1/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple14__item___2>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple14__item___2 (Term Term Term Term Term Term Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_958b0270e487d0bf5fe9191b9efaa127 () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple14__item___2@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple14__item___2>
+
+
+; <Skipped let __proj__Mktuple14__item___2/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple14__item___3>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple14__item___3 (Term Term Term Term Term Term Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_08349f596f8c0acf60d1587bebe8c91b () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple14__item___3@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple14__item___3>
+
+
+; <Skipped let __proj__Mktuple14__item___3/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple14__item___4>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple14__item___4 (Term Term Term Term Term Term Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_2b069168147ba0f67f117ad5b0ac078b () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple14__item___4@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple14__item___4>
+
+
+; <Skipped let __proj__Mktuple14__item___4/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple14__item___5>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple14__item___5 (Term Term Term Term Term Term Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_1e38bb16245a24a197c44a262fee7bf1 () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple14__item___5@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple14__item___5>
+
+
+; <Skipped let __proj__Mktuple14__item___5/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple14__item___6>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple14__item___6 (Term Term Term Term Term Term Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_7a148953a3884454d8a1dffddce086bb () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple14__item___6@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple14__item___6>
+
+
+; <Skipped let __proj__Mktuple14__item___6/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple14__item___7>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple14__item___7 (Term Term Term Term Term Term Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_812eeb3fdab56dfea8e419236740acb0 () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple14__item___7@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple14__item___7>
+
+
+; <Skipped let __proj__Mktuple14__item___7/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple14__item___8>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple14__item___8 (Term Term Term Term Term Term Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_9dc932ce7cdfd6fa57f6536787fcb65b () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple14__item___8@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple14__item___8>
+
+
+; <Skipped let __proj__Mktuple14__item___8/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple14__item___9>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple14__item___9 (Term Term Term Term Term Term Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_2600722933f06bc55e28bb3fc2ce4a6a () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple14__item___9@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple14__item___9>
+
+
+; <Skipped let __proj__Mktuple14__item___9/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple14__item___10>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple14__item___10 (Term Term Term Term Term Term Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_f51203e57fd66f9e9293b8962c57edfe () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple14__item___10@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple14__item___10>
+
+
+; <Skipped let __proj__Mktuple14__item___10/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple14__item___11>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple14__item___11 (Term Term Term Term Term Term Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_7c34e0c28edc5fc4ad24d0b749c0adb7 () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple14__item___11@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple14__item___11>
+
+
+; <Skipped let __proj__Mktuple14__item___11/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple14__item___12>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple14__item___12 (Term Term Term Term Term Term Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_8772cc50ea320af17b3f2371c273679a () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple14__item___12@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple14__item___12>
+
+
+; <Skipped let __proj__Mktuple14__item___12/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple14__item___13>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple14__item___13 (Term Term Term Term Term Term Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_039da0b9a8da1a651a1c570e55456614 () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple14__item___13@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple14__item___13>
+
+
+; <Skipped let __proj__Mktuple14__item___13/>
+
+
+; <Start encoding val FStar.Pervasives.Native.__proj__Mktuple14__item___14>
+
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple14__item___14 (Term Term Term Term Term Term Term Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_579ada2eb036c15c7306dac5b648153e () Term)
+(declare-fun FStar.Pervasives.Native.__proj__Mktuple14__item___14@tok () Term)
+
+; </end encoding val FStar.Pervasives.Native.__proj__Mktuple14__item___14>
+
+
+; <Skipped let __proj__Mktuple14__item___14/>
+
+
+; End Externals for module FStar.Pervasives.Native
+
+
+; Externals for interface FStar.Pervasives
+
+
+; <Start encoding val FStar.Pervasives.remove_unused_type_parameters>
+
+(declare-fun FStar.Pervasives.remove_unused_type_parameters (Term) Term)
+(declare-fun Tm_arrow_555d62757eeaf90340982fcdf25f6704 () Term)
+(declare-fun FStar.Pervasives.remove_unused_type_parameters@tok () Term)
+
+; </end encoding val FStar.Pervasives.remove_unused_type_parameters>
+
+
+; <Start encoding let pattern>
+
+(declare-fun FStar.Pervasives.pattern () Term)
+
+; </end encoding let pattern>
+
+
+; <Start encoding val FStar.Pervasives.smt_pat>
+
+(declare-fun FStar.Pervasives.smt_pat (Term Term) Term)
+(declare-fun Tm_arrow_ce7b692455ad1649f97902066cf7c9aa () Term)
+(declare-fun FStar.Pervasives.smt_pat@tok () Term)
+
+; </end encoding val FStar.Pervasives.smt_pat>
+
+
+; <Start encoding val FStar.Pervasives.smt_pat_or>
+
+(declare-fun FStar.Pervasives.smt_pat_or (Term) Term)
+(declare-fun Tm_arrow_cbfaca2770c8ef7d6393b664b7ea1a41 () Term)
+(declare-fun FStar.Pervasives.smt_pat_or@tok () Term)
+
+; </end encoding val FStar.Pervasives.smt_pat_or>
+
+
+; <Start encoding let eqtype_u>
+
+(declare-fun FStar.Pervasives.eqtype_u () Term)
+
+
+; </end encoding let eqtype_u>
+
+
+; <Skipped effect Lemma a pre post pats = Prims.Pure a/>
+
+
+; <Start encoding val FStar.Pervasives.spinoff>
+
+(declare-fun FStar.Pervasives.spinoff (Term) Term)
+
+(declare-fun FStar.Pervasives.spinoff@tok () Term)
+
+; </end encoding val FStar.Pervasives.spinoff>
+
+
+; <Start encoding val FStar.Pervasives.spinoff_eq>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Pervasives.spinoff_eq (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Pervasives.spinoff_eq@tok () Term)
+
+; </end encoding val FStar.Pervasives.spinoff_eq>
+
+
+; <Start encoding val FStar.Pervasives.spinoff_equiv>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Pervasives.spinoff_equiv (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Pervasives.spinoff_equiv@tok () Term)
+
+; </end encoding val FStar.Pervasives.spinoff_equiv>
+
+
+; <Start encoding val FStar.Pervasives.assert_spinoff>
+
+(declare-fun FStar.Pervasives.assert_spinoff (Term) Term)
+
+(declare-fun Tm_arrow_071538fd1c72fb82c7bb7b280daddf84 () Term)
+(declare-fun FStar.Pervasives.assert_spinoff@tok () Term)
+
+
+; </end encoding val FStar.Pervasives.assert_spinoff>
+
+
+; <Start encoding let id>
+
+(declare-fun FStar.Pervasives.id (Term Term) Term)
+
+(declare-fun FStar.Pervasives.id@tok () Term)
+
+; </end encoding let id>
+
+
+; <Start encoding let trivial_pure_post>
+
+(declare-fun FStar.Pervasives.trivial_pure_post (Term) Term)
+(declare-fun Tm_arrow_53823f439377767fbcd3e27ebcdb971b () Term)
+(declare-fun FStar.Pervasives.trivial_pure_post@tok () Term)
+
+(declare-fun Tm_abs_5e34897418ce4950a4effcc8c159cf53 (Term) Term)
+
+; </end encoding let trivial_pure_post>
+
+
+; <Start encoding val FStar.Pervasives.ambient>
+
+(declare-fun FStar.Pervasives.ambient (Term Term) Term)
+(declare-fun Tm_arrow_9e007179360e2932d75ab29019e3d7fa () Term)
+(declare-fun FStar.Pervasives.ambient@tok () Term)
+
+; </end encoding val FStar.Pervasives.ambient>
+
+
+; <Start encoding val FStar.Pervasives.intro_ambient>
+
+(declare-fun FStar.Pervasives.intro_ambient (Term Term) Term)
+(declare-fun Tm_arrow_6fc6334d56387f3d408122a4bd045e7e () Term)
+(declare-fun FStar.Pervasives.intro_ambient@tok () Term)
+
+; </end encoding val FStar.Pervasives.intro_ambient>
+
+
+; <Start encoding val FStar.Pervasives.normalize_term>
+
+(declare-fun FStar.Pervasives.normalize_term (Term Term) Term)
+
+(declare-fun FStar.Pervasives.normalize_term@tok () Term)
+
+; </end encoding val FStar.Pervasives.normalize_term>
+
+
+; <Start encoding val FStar.Pervasives.normalize>
+
+(declare-fun FStar.Pervasives.normalize (Term) Term)
+
+(declare-fun FStar.Pervasives.normalize@tok () Term)
+
+; </end encoding val FStar.Pervasives.normalize>
+
+
+; <Start encoding val FStar.Pervasives.norm_step>
+
+(declare-fun FStar.Pervasives.norm_step () Term)
+
+; </end encoding val FStar.Pervasives.norm_step>
+
+
+; <Start encoding val FStar.Pervasives.simplify>
+
+(declare-fun FStar.Pervasives.simplify (Dummy_sort) Term)
+
+; </end encoding val FStar.Pervasives.simplify>
+
+
+; <Start encoding val FStar.Pervasives.weak>
+
+(declare-fun FStar.Pervasives.weak (Dummy_sort) Term)
+
+; </end encoding val FStar.Pervasives.weak>
+
+
+; <Start encoding val FStar.Pervasives.hnf>
+
+(declare-fun FStar.Pervasives.hnf (Dummy_sort) Term)
+
+; </end encoding val FStar.Pervasives.hnf>
+
+
+; <Start encoding val FStar.Pervasives.primops>
+
+(declare-fun FStar.Pervasives.primops (Dummy_sort) Term)
+
+; </end encoding val FStar.Pervasives.primops>
+
+
+; <Start encoding val FStar.Pervasives.delta>
+
+(declare-fun FStar.Pervasives.delta (Dummy_sort) Term)
+
+; </end encoding val FStar.Pervasives.delta>
+
+
+; <Start encoding val FStar.Pervasives.norm_debug>
+
+(declare-fun FStar.Pervasives.norm_debug (Dummy_sort) Term)
+
+; </end encoding val FStar.Pervasives.norm_debug>
+
+
+; <Start encoding val FStar.Pervasives.zeta>
+
+(declare-fun FStar.Pervasives.zeta (Dummy_sort) Term)
+
+; </end encoding val FStar.Pervasives.zeta>
+
+
+; <Start encoding val FStar.Pervasives.zeta_full>
+
+(declare-fun FStar.Pervasives.zeta_full (Dummy_sort) Term)
+
+; </end encoding val FStar.Pervasives.zeta_full>
+
+
+; <Start encoding val FStar.Pervasives.iota>
+
+(declare-fun FStar.Pervasives.iota (Dummy_sort) Term)
+
+; </end encoding val FStar.Pervasives.iota>
+
+
+; <Start encoding val FStar.Pervasives.nbe>
+
+(declare-fun FStar.Pervasives.nbe (Dummy_sort) Term)
+
+; </end encoding val FStar.Pervasives.nbe>
+
+
+; <Start encoding val FStar.Pervasives.reify_>
+
+(declare-fun FStar.Pervasives.reify_ (Dummy_sort) Term)
+
+; </end encoding val FStar.Pervasives.reify_>
+
+
+; <Start encoding val FStar.Pervasives.delta_only>
+
+(declare-fun FStar.Pervasives.delta_only (Term) Term)
+(declare-fun Tm_arrow_f14a20345cd55ddda96b6c4cc49e05f1 () Term)
+(declare-fun FStar.Pervasives.delta_only@tok () Term)
+
+; </end encoding val FStar.Pervasives.delta_only>
+
+
+; <Start encoding val FStar.Pervasives.delta_fully>
+
+(declare-fun FStar.Pervasives.delta_fully (Term) Term)
+
+(declare-fun FStar.Pervasives.delta_fully@tok () Term)
+
+; </end encoding val FStar.Pervasives.delta_fully>
+
+
+; <Start encoding val FStar.Pervasives.delta_attr>
+
+(declare-fun FStar.Pervasives.delta_attr (Term) Term)
+
+(declare-fun FStar.Pervasives.delta_attr@tok () Term)
+
+; </end encoding val FStar.Pervasives.delta_attr>
+
+
+; <Start encoding val FStar.Pervasives.delta_qualifier>
+
+(declare-fun FStar.Pervasives.delta_qualifier (Term) Term)
+
+(declare-fun FStar.Pervasives.delta_qualifier@tok () Term)
+
+; </end encoding val FStar.Pervasives.delta_qualifier>
+
+
+; <Start encoding val FStar.Pervasives.delta_namespace>
+
+(declare-fun FStar.Pervasives.delta_namespace (Term) Term)
+
+(declare-fun FStar.Pervasives.delta_namespace@tok () Term)
+
+; </end encoding val FStar.Pervasives.delta_namespace>
+
+
+; <Start encoding val FStar.Pervasives.unmeta>
+
+(declare-fun FStar.Pervasives.unmeta (Dummy_sort) Term)
+
+; </end encoding val FStar.Pervasives.unmeta>
+
+
+; <Start encoding val FStar.Pervasives.unascribe>
+
+(declare-fun FStar.Pervasives.unascribe (Dummy_sort) Term)
+
+; </end encoding val FStar.Pervasives.unascribe>
+
+
+; <Start encoding val FStar.Pervasives.norm>
+
+(declare-fun FStar.Pervasives.norm (Term Term Term) Term)
+(declare-fun Tm_arrow_7d92e7a4aa7eee4098b10c5f1b3d77ea () Term)
+(declare-fun FStar.Pervasives.norm@tok () Term)
+
+; </end encoding val FStar.Pervasives.norm>
+
+
+; <Start encoding val FStar.Pervasives.assert_norm>
+
+(declare-fun FStar.Pervasives.assert_norm (Term) Term)
+
+(declare-fun Tm_arrow_ee24fcf624d074d3c637ee61e4a867fb () Term)
+(declare-fun FStar.Pervasives.assert_norm@tok () Term)
+
+
+; </end encoding val FStar.Pervasives.assert_norm>
+
+
+; <Start encoding val FStar.Pervasives.normalize_term_spec>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Pervasives.normalize_term_spec (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Pervasives.normalize_term_spec@tok () Term)
+
+; </end encoding val FStar.Pervasives.normalize_term_spec>
+
+
+; <Start encoding val FStar.Pervasives.normalize_spec>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Pervasives.normalize_spec (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Pervasives.normalize_spec@tok () Term)
+
+; </end encoding val FStar.Pervasives.normalize_spec>
+
+
+; <Start encoding val FStar.Pervasives.norm_spec>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Pervasives.norm_spec (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Pervasives.norm_spec@tok () Term)
+
+; </end encoding val FStar.Pervasives.norm_spec>
+
+
+; <Start encoding let reveal_opaque>
+
+(declare-fun FStar.Pervasives.reveal_opaque (Term Term) Term)
+(declare-fun Tm_refine_2be30877b98f57c6ef5847ce3a81c23c (Term Term Term) Term)
+(declare-fun Tm_arrow_ba8e05da7828191e456b9d6196e5c486 (Term Term) Term)
+(declare-fun Tm_arrow_a3d09fecedc35d104f95c5fde10a81ff () Term)
+(declare-fun FStar.Pervasives.reveal_opaque@tok () Term)
+
+
+
+; </end encoding let reveal_opaque>
+
+
+; <Start encoding let pure_return>
+
+(declare-fun FStar.Pervasives.pure_return (Term Term) Term)
+(declare-fun Tm_arrow_0dff8d294aeaf0b1d7e9cad664c9a15f () Term)
+(declare-fun FStar.Pervasives.pure_return@tok () Term)
+
+(declare-fun Tm_abs_bc5117f6a06a581c69e04141781c86d0 (Term Term Term) Term)
+(declare-fun Tm_arrow_c88a29758356586fc450d481d4b685f3 (Term) Term)
+(declare-fun Tm_abs_bdac9a3f32789788b83138a3a4262d0d (Term Term) Term)
+
+; </end encoding let pure_return>
+
+
+; <Start encoding let pure_bind_wp>
+
+(declare-fun Tm_arrow_c05bc9331677cc1a187ad7677301a601 (Term Term) Term)
+(declare-fun FStar.Pervasives.pure_bind_wp (Term Term Term Term) Term)
+
+(declare-fun Tm_arrow_f8eba41a4bcb9aca0e3c11224f695d1e () Term)
+(declare-fun FStar.Pervasives.pure_bind_wp@tok () Term)
+
+
+(declare-fun Tm_abs_d0f415a5361a9d7988d8e425dc193472 (Term Term Term) Term)
+
+(declare-fun Tm_abs_72b65b71b828688dbb0ba657715a194c (Term Term Term Term) Term)
+
+; </end encoding let pure_bind_wp>
+
+
+; <Start encoding let pure_if_then_else>
+
+(declare-fun FStar.Pervasives.pure_if_then_else (Term Term Term Term) Term)
+(declare-fun Tm_arrow_5911c11ab85061b4a8acf6a6ff43aaea () Term)
+(declare-fun FStar.Pervasives.pure_if_then_else@tok () Term)
+
+(declare-fun Tm_abs_614d7ab3976dfea6b6428085a93bafcc (Term Term Term Term) Term)
+
+; </end encoding let pure_if_then_else>
+
+
+; <Start encoding let pure_ite_wp>
+
+(declare-fun FStar.Pervasives.pure_ite_wp (Term Term) Term)
+(declare-fun Tm_arrow_983cc9c1e881fffd3b37c61b327d54c8 () Term)
+(declare-fun FStar.Pervasives.pure_ite_wp@tok () Term)
+
+(declare-fun Tm_abs_ea1703a99385b474600aa7a3bdb045c5 (Term Term Term) Term)
+(declare-fun Tm_arrow_b275e247a67e3e77d7c5997d864d1247 (Term) Term)
+(declare-fun Tm_abs_f9993abe3e10fc5902262cf22e5f5e1c (Term Term Term) Term)
+
+(declare-fun Tm_abs_a4d8a67e708eb0f8e41d6eefd90d8b3d (Term Term) Term)
+
+; </end encoding let pure_ite_wp>
+
+
+; <Start encoding let pure_close_wp>
+
+
+(declare-fun FStar.Pervasives.pure_close_wp (Term Term Term) Term)
+
+(declare-fun Tm_arrow_6424f17922e38fc8eb3b7ad8d9107d78 () Term)
+(declare-fun FStar.Pervasives.pure_close_wp@tok () Term)
+
+
+
+
+(declare-fun Tm_abs_bef01cdc202d648a37f7725a1e8579fa (Term Term Term) Term)
+
+; </end encoding let pure_close_wp>
+
+
+; <Start encoding let pure_null_wp>
+
+(declare-fun FStar.Pervasives.pure_null_wp (Term) Term)
+(declare-fun Tm_arrow_e02f472dad10492b4fdaf21971ae643f () Term)
+(declare-fun FStar.Pervasives.pure_null_wp@tok () Term)
+
+
+
+(declare-fun Tm_abs_c7a599bd05f6d553477b7b3a5a51d357 (Term) Term)
+
+; </end encoding let pure_null_wp>
+
+
+; <Start encoding let pure_assert_wp>
+
+(declare-fun FStar.Pervasives.pure_assert_wp (Term) Term)
+
+(declare-fun FStar.Pervasives.pure_assert_wp@tok () Term)
+
+; </end encoding let pure_assert_wp>
+
+
+; <Start encoding let pure_assume_wp>
+
+(declare-fun FStar.Pervasives.pure_assume_wp (Term) Term)
+
+(declare-fun FStar.Pervasives.pure_assume_wp@tok () Term)
+
+; </end encoding let pure_assume_wp>
+
+
+; <Skipped new_effect { DIV ... }/>
+
+
+; <Skipped sub_effect PURE ~> DIV/>
+
+
+; <Start encoding let div_hoare_to_wp>
+
+(declare-fun FStar.Pervasives.div_hoare_to_wp (Term Term Term) Term)
+(declare-fun Tm_arrow_e81e37f60b892c60a4b806bfecd6c240 () Term)
+(declare-fun FStar.Pervasives.div_hoare_to_wp@tok () Term)
+
+
+
+
+(declare-fun Tm_abs_69982e78bbdc9cbdfcc98c8c3ec276f1 (Term Term Term Term) Term)
+
+
+(declare-fun Tm_abs_95829b03554cf2093d2bc29e28500b94 (Term Term Term) Term)
+
+; </end encoding let div_hoare_to_wp>
+
+
+; <Skipped effect Div a pre post = FStar.Pervasives.DIV a/>
+
+
+; <Skipped effect Dv a = FStar.Pervasives.DIV a/>
+
+
+; <Skipped effect EXT a = FStar.Pervasives.Dv a/>
+
+
+; <Start encoding let st_pre_h>
+
+(declare-fun FStar.Pervasives.st_pre_h (Term) Term)
+
+(declare-fun FStar.Pervasives.st_pre_h@tok () Term)
+
+
+; </end encoding let st_pre_h>
+
+
+; <Start encoding let st_post_h'>
+
+(declare-fun FStar.Pervasives.st_post_h_ (Term Term Term) Term)
+(declare-fun Tm_arrow_659175ed40df3b798f91ffaee9e689bd () Term)
+(declare-fun FStar.Pervasives.st_post_h_@tok () Term)
+
+(declare-fun Tm_arrow_14435f7112db17792f8cd33f8f7ea859 (Term Term Term) Term)
+
+; </end encoding let st_post_h'>
+
+
+; <Start encoding let st_post_h>
+
+(declare-fun FStar.Pervasives.st_post_h (Term Term) Term)
+
+(declare-fun FStar.Pervasives.st_post_h@tok () Term)
+
+; </end encoding let st_post_h>
+
+
+; <Start encoding let st_wp_h>
+
+(declare-fun FStar.Pervasives.st_wp_h (Term Term) Term)
+
+(declare-fun FStar.Pervasives.st_wp_h@tok () Term)
+(declare-fun Tm_arrow_c80b139653078194d2de90941effdc68 (Term Term) Term)
+
+; </end encoding let st_wp_h>
+
+
+; <Start encoding let st_return>
+
+(declare-fun FStar.Pervasives.st_return (Term Term Term Term) Term)
+
+(declare-fun Tm_arrow_6bfe4bf6faf1fb53a521d575cefc35ef () Term)
+(declare-fun FStar.Pervasives.st_return@tok () Term)
+
+
+; </end encoding let st_return>
+
+
+; <Start encoding let st_bind_wp>
+
+(declare-fun Tm_arrow_c6e0af8c2ccbdda79db5c09d07e87e35 (Term Term Term) Term)
+(declare-fun FStar.Pervasives.st_bind_wp (Term Term Term Term Term Term Term) Term)
+
+(declare-fun Tm_arrow_0eca50df2f29485bdbf578799f16b4a6 () Term)
+(declare-fun FStar.Pervasives.st_bind_wp@tok () Term)
+
+(declare-fun Tm_arrow_eb9b1a038524b37579c152a3f169145e (Term Term) Term)
+(declare-fun Tm_abs_0f3b5ee9eaa8de8cacad7d3dcacb4558 (Term Term Term Term) Term)
+
+; </end encoding let st_bind_wp>
+
+
+; <Start encoding let st_if_then_else>
+
+(declare-fun FStar.Pervasives.st_if_then_else (Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_6e48361e1a1c92df6ec1ff87e622ddad () Term)
+(declare-fun FStar.Pervasives.st_if_then_else@tok () Term)
+
+; </end encoding let st_if_then_else>
+
+
+; <Start encoding let st_ite_wp>
+
+(declare-fun FStar.Pervasives.st_ite_wp (Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_eaad896c6afdcb7ade2e80b5a6a930af () Term)
+(declare-fun FStar.Pervasives.st_ite_wp@tok () Term)
+
+; </end encoding let st_ite_wp>
+
+
+; <Start encoding let st_stronger>
+
+(declare-fun FStar.Pervasives.st_stronger (Term Term Term Term) Term)
+(declare-fun Tm_arrow_ae4d7f489de84317e0022bf89d45dd95 () Term)
+(declare-fun FStar.Pervasives.st_stronger@tok () Term)
+
+; </end encoding let st_stronger>
+
+
+; <Start encoding let st_close_wp>
+
+
+(declare-fun FStar.Pervasives.st_close_wp (Term Term Term Term Term Term) Term)
+
+(declare-fun Tm_arrow_de6d3045642382698e9e38d41acfd7cc () Term)
+(declare-fun FStar.Pervasives.st_close_wp@tok () Term)
+
+
+; </end encoding let st_close_wp>
+
+
+; <Start encoding let st_trivial>
+
+(declare-fun FStar.Pervasives.st_trivial (Term Term Term) Term)
+(declare-fun Tm_arrow_f145e04ff3c7033bdfc718f7f5bb1df0 () Term)
+(declare-fun FStar.Pervasives.st_trivial@tok () Term)
+
+(declare-fun Tm_abs_89b21c42be5bc00d63e29f63ae20d4e2 (Term Term) Term)
+
+; </end encoding let st_trivial>
+
+
+; <Skipped new_effect { STATE_h ... }/>
+
+
+; <Start encoding type FStar.Pervasives.result>
+
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun FStar.Pervasives.result (Term) Term)
+;;;;;;;;;;;;;;;;token
+(declare-fun FStar.Pervasives.result@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun FStar.Pervasives.V (Term Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.V_a (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.V_v (Term) Term)
+;;;;;;;;;;;;;;;;data constructor proxy: FStar.Pervasives.V
+(declare-fun FStar.Pervasives.V@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun FStar.Pervasives.E (Term Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.E_a (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.E_e (Term) Term)
+;;;;;;;;;;;;;;;;data constructor proxy: FStar.Pervasives.E
+(declare-fun FStar.Pervasives.E@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun FStar.Pervasives.Err (Term Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Err_a (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Err_msg (Term) Term)
+;;;;;;;;;;;;;;;;data constructor proxy: FStar.Pervasives.Err
+(declare-fun FStar.Pervasives.Err@tok () Term)
+(declare-fun Tm_arrow_30908143640041985b9200e2fb38a259 () Term)
+(declare-fun Tm_arrow_f8bb10130fea772e0f786d78a188c381 () Term)
+(declare-fun Tm_arrow_93661c87034b0b64c4714dafbe2b02e6 () Term)
+
+; <start constructor FStar.Pervasives.result>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-FStar.Pervasives.result ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+263)
+(exists ((@x0 Term))
+ (! (= __@x0
+(FStar.Pervasives.result @x0))
+ 
+;;no pats
+:qid is-FStar.Pervasives.result))))
+
+; </end constructor FStar.Pervasives.result>
+
+
+; <start constructor FStar.Pervasives.V>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-FStar.Pervasives.V ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+270)
+(= __@x0
+(FStar.Pervasives.V (FStar.Pervasives.V_a __@x0)
+(FStar.Pervasives.V_v __@x0)))))
+
+; </end constructor FStar.Pervasives.V>
+
+
+; <start constructor FStar.Pervasives.E>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-FStar.Pervasives.E ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+275)
+(= __@x0
+(FStar.Pervasives.E (FStar.Pervasives.E_a __@x0)
+(FStar.Pervasives.E_e __@x0)))))
+
+; </end constructor FStar.Pervasives.E>
+
+
+; <start constructor FStar.Pervasives.Err>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-FStar.Pervasives.Err ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+280)
+(= __@x0
+(FStar.Pervasives.Err (FStar.Pervasives.Err_a __@x0)
+(FStar.Pervasives.Err_msg __@x0)))))
+
+; </end constructor FStar.Pervasives.Err>
+
+
+; </end encoding type FStar.Pervasives.result>
+
+
+; <Start encoding val FStar.Pervasives.uu___is_V>
+
+(declare-fun FStar.Pervasives.uu___is_V (Term Term) Term)
+(declare-fun Tm_arrow_5cd1d0722a6a986faf6f8e557186fe24 () Term)
+(declare-fun FStar.Pervasives.uu___is_V@tok () Term)
+
+; </end encoding val FStar.Pervasives.uu___is_V>
+
+
+; <Skipped let uu___is_V/>
+
+
+; <Start encoding val FStar.Pervasives.__proj__V__item__v>
+
+(declare-fun Tm_refine_9db520b26a7f39c5a01493a3f375290d (Term) Term)
+(declare-fun FStar.Pervasives.__proj__V__item__v (Term Term) Term)
+
+(declare-fun Tm_arrow_1ea119bf213c016916a7095486e28467 () Term)
+(declare-fun FStar.Pervasives.__proj__V__item__v@tok () Term)
+
+; </end encoding val FStar.Pervasives.__proj__V__item__v>
+
+
+; <Skipped let __proj__V__item__v/>
+
+
+; <Start encoding val FStar.Pervasives.uu___is_E>
+
+(declare-fun FStar.Pervasives.uu___is_E (Term Term) Term)
+
+(declare-fun FStar.Pervasives.uu___is_E@tok () Term)
+
+; </end encoding val FStar.Pervasives.uu___is_E>
+
+
+; <Skipped let uu___is_E/>
+
+
+; <Start encoding val FStar.Pervasives.__proj__E__item__e>
+
+(declare-fun Tm_refine_95e1e2ee29104754cc3740f5575fc6e5 (Term) Term)
+(declare-fun FStar.Pervasives.__proj__E__item__e (Term Term) Term)
+
+(declare-fun Tm_arrow_19e73c373dbf3f9945c6fcfce8a07661 () Term)
+(declare-fun FStar.Pervasives.__proj__E__item__e@tok () Term)
+
+; </end encoding val FStar.Pervasives.__proj__E__item__e>
+
+
+; <Skipped let __proj__E__item__e/>
+
+
+; <Start encoding val FStar.Pervasives.uu___is_Err>
+
+(declare-fun FStar.Pervasives.uu___is_Err (Term Term) Term)
+
+(declare-fun FStar.Pervasives.uu___is_Err@tok () Term)
+
+; </end encoding val FStar.Pervasives.uu___is_Err>
+
+
+; <Skipped let uu___is_Err/>
+
+
+; <Start encoding val FStar.Pervasives.__proj__Err__item__msg>
+
+(declare-fun Tm_refine_22fb403854eba07427f92e79848f9d9f (Term) Term)
+(declare-fun FStar.Pervasives.__proj__Err__item__msg (Term Term) Term)
+
+(declare-fun Tm_arrow_f7e3debb858e412c9497460c5187d5cd () Term)
+(declare-fun FStar.Pervasives.__proj__Err__item__msg@tok () Term)
+
+; </end encoding val FStar.Pervasives.__proj__Err__item__msg>
+
+
+; <Skipped let __proj__Err__item__msg/>
+
+
+; <Start encoding let ex_pre>
+
+(declare-fun FStar.Pervasives.ex_pre () Term)
+
+; </end encoding let ex_pre>
+
+
+; <Start encoding let ex_post'>
+
+(declare-fun FStar.Pervasives.ex_post_ (Term Term) Term)
+
+(declare-fun FStar.Pervasives.ex_post_@tok () Term)
+(declare-fun Tm_refine_a4dcdeeacbcb04d05a6720f786918fd6 (Term Term) Term)
+(declare-fun Tm_arrow_68b66d987e8a7bdf825af8b370553e65 (Term Term) Term)
+
+; </end encoding let ex_post'>
+
+
+; <Start encoding let ex_post>
+
+(declare-fun FStar.Pervasives.ex_post (Term) Term)
+
+(declare-fun FStar.Pervasives.ex_post@tok () Term)
+
+; </end encoding let ex_post>
+
+
+; <Start encoding let ex_wp>
+
+(declare-fun FStar.Pervasives.ex_wp (Term) Term)
+
+(declare-fun FStar.Pervasives.ex_wp@tok () Term)
+(declare-fun Tm_arrow_58168e52ae0908fefec42cac825ecc69 (Term) Term)
+
+; </end encoding let ex_wp>
+
+
+; <Start encoding let ex_return>
+
+(declare-fun FStar.Pervasives.ex_return (Term Term Term) Term)
+(declare-fun Tm_arrow_375264f6f19b4e37d33ffba9f6b1c7d2 () Term)
+(declare-fun FStar.Pervasives.ex_return@tok () Term)
+
+; </end encoding let ex_return>
+
+
+; <Start encoding let ex_bind_wp>
+
+(declare-fun Tm_arrow_3eb2992a529511f5b0ff2fef4e4594ad (Term Term) Term)
+(declare-fun FStar.Pervasives.ex_bind_wp (Term Term Term Term Term) Term)
+
+(declare-fun Tm_arrow_1da2056f1a2fe3dc8db7decf5cbd5885 () Term)
+(declare-fun FStar.Pervasives.ex_bind_wp@tok () Term)
+
+(declare-fun Tm_arrow_ca5db633696caf7e0cd44c11654eed8b (Term) Term)
+(declare-fun Tm_abs_c1d9037a5cc10cc07ba9b6a7a58728db (Term Term Term Term) Term)
+
+; </end encoding let ex_bind_wp>
+
+
+; <Start encoding let ex_if_then_else>
+
+(declare-fun FStar.Pervasives.ex_if_then_else (Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_08bd7ce530cc6e8b4a3f8dadbd0806b0 () Term)
+(declare-fun FStar.Pervasives.ex_if_then_else@tok () Term)
+
+; </end encoding let ex_if_then_else>
+
+
+; <Start encoding let ex_ite_wp>
+
+(declare-fun FStar.Pervasives.ex_ite_wp (Term Term Term) Term)
+(declare-fun Tm_arrow_c2a8c761b16a75376b24262cd8c50369 () Term)
+(declare-fun FStar.Pervasives.ex_ite_wp@tok () Term)
+
+; </end encoding let ex_ite_wp>
+
+
+; <Start encoding let ex_stronger>
+
+(declare-fun FStar.Pervasives.ex_stronger (Term Term Term) Term)
+(declare-fun Tm_arrow_1376d97b5d43e7d77d56729e2a3e04af () Term)
+(declare-fun FStar.Pervasives.ex_stronger@tok () Term)
+
+; </end encoding let ex_stronger>
+
+
+; <Start encoding let ex_close_wp>
+
+
+(declare-fun FStar.Pervasives.ex_close_wp (Term Term Term Term) Term)
+
+(declare-fun Tm_arrow_814af0adff92aa08c5b8b0951bcb1959 () Term)
+(declare-fun FStar.Pervasives.ex_close_wp@tok () Term)
+
+
+; </end encoding let ex_close_wp>
+
+
+; <Start encoding let ex_trivial>
+
+(declare-fun FStar.Pervasives.ex_trivial (Term Term) Term)
+(declare-fun Tm_arrow_ee4a787765920b0cb4357a47a0d3ac5c () Term)
+(declare-fun FStar.Pervasives.ex_trivial@tok () Term)
+
+(declare-fun Tm_abs_5cc223716d095f4545f0dcc745acad5d (Term) Term)
+
+; </end encoding let ex_trivial>
+
+
+; <Skipped new_effect { EXN ... }/>
+
+
+; <Skipped effect Exn a pre post = FStar.Pervasives.EXN a/>
+
+
+; <Start encoding let lift_div_exn>
+
+(declare-fun FStar.Pervasives.lift_div_exn (Term Term Term) Term)
+(declare-fun Tm_arrow_8196682216f286f6fe3a7dffb3de7d02 () Term)
+(declare-fun FStar.Pervasives.lift_div_exn@tok () Term)
+
+(declare-fun Tm_abs_c2b605ddd5d1991642baf5762d2b1dc5 (Term Term) Term)
+
+; </end encoding let lift_div_exn>
+
+
+; <Skipped sub_effect DIV ~> EXN/>
+
+
+; <Skipped effect Ex a = FStar.Pervasives.Exn a/>
+
+
+; <Start encoding let all_pre_h>
+
+(declare-fun FStar.Pervasives.all_pre_h (Term) Term)
+
+(declare-fun FStar.Pervasives.all_pre_h@tok () Term)
+
+
+; </end encoding let all_pre_h>
+
+
+; <Start encoding let all_post_h'>
+
+(declare-fun FStar.Pervasives.all_post_h_ (Term Term Term) Term)
+
+(declare-fun FStar.Pervasives.all_post_h_@tok () Term)
+
+(declare-fun Tm_arrow_fc269489cb2e24a10c7710a1f7f9d269 (Term Term Term) Term)
+
+; </end encoding let all_post_h'>
+
+
+; <Start encoding let all_post_h>
+
+(declare-fun FStar.Pervasives.all_post_h (Term Term) Term)
+
+(declare-fun FStar.Pervasives.all_post_h@tok () Term)
+
+; </end encoding let all_post_h>
+
+
+; <Start encoding let all_wp_h>
+
+(declare-fun FStar.Pervasives.all_wp_h (Term Term) Term)
+
+(declare-fun FStar.Pervasives.all_wp_h@tok () Term)
+(declare-fun Tm_arrow_1cd90c71d90a216d9fb0ba0321a1d3b5 (Term Term) Term)
+
+; </end encoding let all_wp_h>
+
+
+; <Start encoding let all_return>
+
+(declare-fun FStar.Pervasives.all_return (Term Term Term Term) Term)
+
+(declare-fun Tm_arrow_3f61557667800fb54cc62e48a5201f9d () Term)
+(declare-fun FStar.Pervasives.all_return@tok () Term)
+
+
+; </end encoding let all_return>
+
+
+; <Start encoding let all_bind_wp>
+
+(declare-fun Tm_arrow_b567b509414635f00096b9b1c3e30b57 (Term Term Term) Term)
+(declare-fun FStar.Pervasives.all_bind_wp (Term Term Term Term Term Term Term) Term)
+
+(declare-fun Tm_arrow_6ac18e25eb49f55ae0ce9c14679ecc22 () Term)
+(declare-fun FStar.Pervasives.all_bind_wp@tok () Term)
+
+(declare-fun Tm_arrow_59cac8a9b1ae3aa9511b8a867f8e934e (Term Term) Term)
+(declare-fun Tm_abs_35ddc99cefc0079215f6f6ab3c58856d (Term Term Term Term Term) Term)
+
+; </end encoding let all_bind_wp>
+
+
+; <Start encoding let all_if_then_else>
+
+(declare-fun FStar.Pervasives.all_if_then_else (Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_491eee2c8dc4eab4d420326a8285d2c4 () Term)
+(declare-fun FStar.Pervasives.all_if_then_else@tok () Term)
+
+; </end encoding let all_if_then_else>
+
+
+; <Start encoding let all_ite_wp>
+
+(declare-fun FStar.Pervasives.all_ite_wp (Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_20fdb4e6d0c32f949f55e39a059913a7 () Term)
+(declare-fun FStar.Pervasives.all_ite_wp@tok () Term)
+
+; </end encoding let all_ite_wp>
+
+
+; <Start encoding let all_stronger>
+
+(declare-fun FStar.Pervasives.all_stronger (Term Term Term Term) Term)
+(declare-fun Tm_arrow_073b21d0ec8edf2dda32907b45ec5f68 () Term)
+(declare-fun FStar.Pervasives.all_stronger@tok () Term)
+
+; </end encoding let all_stronger>
+
+
+; <Start encoding let all_close_wp>
+
+
+(declare-fun FStar.Pervasives.all_close_wp (Term Term Term Term Term Term) Term)
+
+(declare-fun Tm_arrow_803d195802308e8beadf04438d3a6508 () Term)
+(declare-fun FStar.Pervasives.all_close_wp@tok () Term)
+
+
+; </end encoding let all_close_wp>
+
+
+; <Start encoding let all_trivial>
+
+(declare-fun FStar.Pervasives.all_trivial (Term Term Term) Term)
+(declare-fun Tm_arrow_957927b0d25001784693eee8b2182308 () Term)
+(declare-fun FStar.Pervasives.all_trivial@tok () Term)
+
+(declare-fun Tm_abs_22e463dbd987016e31d6bc67025a7cd9 (Term Term) Term)
+
+; </end encoding let all_trivial>
+
+
+; <Skipped new_effect { ALL_h ... }/>
+
+
+; <Start encoding val FStar.Pervasives.inversion>
+
+(declare-fun FStar.Pervasives.inversion (Term) Term)
+
+(declare-fun FStar.Pervasives.inversion@tok () Term)
+
+; </end encoding val FStar.Pervasives.inversion>
+
+
+; <Start encoding val FStar.Pervasives.allow_inversion>
+
+(declare-fun FStar.Pervasives.allow_inversion (Term) Term)
+(declare-fun Tm_refine_363615bee79fae5066b7c8bd06c286d0 (Term) Term)
+(declare-fun Tm_arrow_bcab9cce464ec0f76562bc48c17ba410 () Term)
+(declare-fun FStar.Pervasives.allow_inversion@tok () Term)
+
+
+; </end encoding val FStar.Pervasives.allow_inversion>
+
+
+; <Start encoding val FStar.Pervasives.invertOption>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Pervasives.invertOption (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Pervasives.invertOption@tok () Term)
+
+; </end encoding val FStar.Pervasives.invertOption>
+
+
+; <Start encoding type FStar.Pervasives.either>
+
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun FStar.Pervasives.either (Term Term) Term)
+;;;;;;;;;;;;;;;;token
+(declare-fun FStar.Pervasives.either@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun FStar.Pervasives.Inl (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Inl_a (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Inl_b (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Inl_v (Term) Term)
+;;;;;;;;;;;;;;;;data constructor proxy: FStar.Pervasives.Inl
+(declare-fun FStar.Pervasives.Inl@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun FStar.Pervasives.Inr (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Inr_a (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Inr_b (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Inr_v (Term) Term)
+;;;;;;;;;;;;;;;;data constructor proxy: FStar.Pervasives.Inr
+(declare-fun FStar.Pervasives.Inr@tok () Term)
+(declare-fun Tm_arrow_065da0adeba0c4ae0da1476ececee84c () Term)
+(declare-fun Tm_arrow_c883938642e6d97d79c975d8d94b4aac () Term)
+
+; <start constructor FStar.Pervasives.either>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-FStar.Pervasives.either ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+402)
+(exists ((@x0 Term) (@x1 Term))
+ (! (= __@x0
+(FStar.Pervasives.either @x0
+@x1))
+ 
+;;no pats
+:qid is-FStar.Pervasives.either))))
+
+; </end constructor FStar.Pervasives.either>
+
+
+; <start constructor FStar.Pervasives.Inl>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-FStar.Pervasives.Inl ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+409)
+(= __@x0
+(FStar.Pervasives.Inl (FStar.Pervasives.Inl_a __@x0)
+(FStar.Pervasives.Inl_b __@x0)
+(FStar.Pervasives.Inl_v __@x0)))))
+
+; </end constructor FStar.Pervasives.Inl>
+
+
+; <start constructor FStar.Pervasives.Inr>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-FStar.Pervasives.Inr ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+414)
+(= __@x0
+(FStar.Pervasives.Inr (FStar.Pervasives.Inr_a __@x0)
+(FStar.Pervasives.Inr_b __@x0)
+(FStar.Pervasives.Inr_v __@x0)))))
+
+; </end constructor FStar.Pervasives.Inr>
+
+
+; </end encoding type FStar.Pervasives.either>
+
+
+; <Start encoding assume FStar.Pervasives.either__uu___haseq>
+
+
+; </end encoding assume FStar.Pervasives.either__uu___haseq>
+
+
+; <Start encoding val FStar.Pervasives.uu___is_Inl>
+
+(declare-fun FStar.Pervasives.uu___is_Inl (Term Term Term) Term)
+(declare-fun Tm_arrow_af0c68f1e39d4d6020c0873b16730c7d () Term)
+(declare-fun FStar.Pervasives.uu___is_Inl@tok () Term)
+
+; </end encoding val FStar.Pervasives.uu___is_Inl>
+
+
+; <Skipped let uu___is_Inl/>
+
+
+; <Start encoding val FStar.Pervasives.__proj__Inl__item__v>
+
+(declare-fun Tm_refine_85e0cc884f8457202f90cd77f23733ba (Term Term) Term)
+(declare-fun FStar.Pervasives.__proj__Inl__item__v (Term Term Term) Term)
+
+(declare-fun Tm_arrow_a80e0750277867ba1a434ad3bba8702d () Term)
+(declare-fun FStar.Pervasives.__proj__Inl__item__v@tok () Term)
+
+; </end encoding val FStar.Pervasives.__proj__Inl__item__v>
+
+
+; <Skipped let __proj__Inl__item__v/>
+
+
+; <Start encoding val FStar.Pervasives.uu___is_Inr>
+
+(declare-fun FStar.Pervasives.uu___is_Inr (Term Term Term) Term)
+
+(declare-fun FStar.Pervasives.uu___is_Inr@tok () Term)
+
+; </end encoding val FStar.Pervasives.uu___is_Inr>
+
+
+; <Skipped let uu___is_Inr/>
+
+
+; <Start encoding val FStar.Pervasives.__proj__Inr__item__v>
+
+(declare-fun Tm_refine_8f1f5f564dae90240db429de2eb41517 (Term Term) Term)
+(declare-fun FStar.Pervasives.__proj__Inr__item__v (Term Term Term) Term)
+
+(declare-fun Tm_arrow_df618db6b42762940f198036c8a56200 () Term)
+(declare-fun FStar.Pervasives.__proj__Inr__item__v@tok () Term)
+
+; </end encoding val FStar.Pervasives.__proj__Inr__item__v>
+
+
+; <Skipped let __proj__Inr__item__v/>
+
+
+; <Start encoding let dfst>
+
+
+(declare-fun FStar.Pervasives.dfst (Term Term Term) Term)
+
+
+(declare-fun FStar.Pervasives.dfst@tok () Term)
+
+
+; </end encoding let dfst>
+
+
+; <Start encoding let dsnd>
+
+
+(declare-fun FStar.Pervasives.dsnd (Term Term Term) Term)
+
+
+(declare-fun FStar.Pervasives.dsnd@tok () Term)
+
+
+; </end encoding let dsnd>
+
+
+; <Start encoding type FStar.Pervasives.dtuple3>
+
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun FStar.Pervasives.dtuple3 (Term Term Term) Term)
+;;;;;;;;;;;;;;;;token
+(declare-fun FStar.Pervasives.dtuple3@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun FStar.Pervasives.Mkdtuple3 (Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Mkdtuple3_a (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Mkdtuple3_b (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Mkdtuple3_c (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Mkdtuple3__1 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Mkdtuple3__2 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Mkdtuple3__3 (Term) Term)
+;;;;;;;;;;;;;;;;data constructor proxy: FStar.Pervasives.Mkdtuple3
+(declare-fun FStar.Pervasives.Mkdtuple3@tok () Term)
+
+(declare-fun Tm_arrow_0b6559e6ff3addf84b0c2880affbb335 (Term Term) Term)
+
+
+
+
+(declare-fun Tm_arrow_8423f67df62f9e824c55756f9e26058d () Term)
+
+; <start constructor FStar.Pervasives.dtuple3>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-FStar.Pervasives.dtuple3 ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+450)
+(exists ((@x0 Term) (@x1 Term) (@x2 Term))
+ (! (= __@x0
+(FStar.Pervasives.dtuple3 @x0
+@x1
+@x2))
+ 
+;;no pats
+:qid is-FStar.Pervasives.dtuple3))))
+
+; </end constructor FStar.Pervasives.dtuple3>
+
+
+; <start constructor FStar.Pervasives.Mkdtuple3>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-FStar.Pervasives.Mkdtuple3 ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+461)
+(= __@x0
+(FStar.Pervasives.Mkdtuple3 (FStar.Pervasives.Mkdtuple3_a __@x0)
+(FStar.Pervasives.Mkdtuple3_b __@x0)
+(FStar.Pervasives.Mkdtuple3_c __@x0)
+(FStar.Pervasives.Mkdtuple3__1 __@x0)
+(FStar.Pervasives.Mkdtuple3__2 __@x0)
+(FStar.Pervasives.Mkdtuple3__3 __@x0)))))
+
+; </end constructor FStar.Pervasives.Mkdtuple3>
+
+
+; </end encoding type FStar.Pervasives.dtuple3>
+
+
+; <Start encoding assume FStar.Pervasives.dtuple3__uu___haseq>
+
+
+
+
+; </end encoding assume FStar.Pervasives.dtuple3__uu___haseq>
+
+
+; <Start encoding val FStar.Pervasives.uu___is_Mkdtuple3>
+
+
+
+(declare-fun FStar.Pervasives.uu___is_Mkdtuple3 (Term Term Term Term) Term)
+
+
+(declare-fun Tm_arrow_70452cb82cd0a282ca9a2dbeb54c1b04 () Term)
+(declare-fun FStar.Pervasives.uu___is_Mkdtuple3@tok () Term)
+
+; </end encoding val FStar.Pervasives.uu___is_Mkdtuple3>
+
+
+; <Skipped let uu___is_Mkdtuple3/>
+
+
+; <Start encoding val FStar.Pervasives.__proj__Mkdtuple3__item___1>
+
+
+
+(declare-fun FStar.Pervasives.__proj__Mkdtuple3__item___1 (Term Term Term Term) Term)
+
+
+(declare-fun Tm_arrow_255f0cfe499b1d2e9836e157bce1dba3 () Term)
+(declare-fun FStar.Pervasives.__proj__Mkdtuple3__item___1@tok () Term)
+
+; </end encoding val FStar.Pervasives.__proj__Mkdtuple3__item___1>
+
+
+; <Skipped let __proj__Mkdtuple3__item___1/>
+
+
+; <Start encoding val FStar.Pervasives.__proj__Mkdtuple3__item___2>
+
+
+
+(declare-fun FStar.Pervasives.__proj__Mkdtuple3__item___2 (Term Term Term Term) Term)
+
+
+(declare-fun Tm_arrow_ea1ded11f7d194a26e812f407333a011 () Term)
+(declare-fun FStar.Pervasives.__proj__Mkdtuple3__item___2@tok () Term)
+
+; </end encoding val FStar.Pervasives.__proj__Mkdtuple3__item___2>
+
+
+; <Skipped let __proj__Mkdtuple3__item___2/>
+
+
+; <Start encoding val FStar.Pervasives.__proj__Mkdtuple3__item___3>
+
+
+
+(declare-fun FStar.Pervasives.__proj__Mkdtuple3__item___3 (Term Term Term Term) Term)
+
+
+(declare-fun Tm_arrow_1d7ad5cfa0fff643640e3f74466d283e () Term)
+(declare-fun FStar.Pervasives.__proj__Mkdtuple3__item___3@tok () Term)
+
+; </end encoding val FStar.Pervasives.__proj__Mkdtuple3__item___3>
+
+
+; <Skipped let __proj__Mkdtuple3__item___3/>
+
+
+; <Start encoding type FStar.Pervasives.dtuple4>
+
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun FStar.Pervasives.dtuple4 (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;token
+(declare-fun FStar.Pervasives.dtuple4@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun FStar.Pervasives.Mkdtuple4 (Term Term Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Mkdtuple4_a (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Mkdtuple4_b (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Mkdtuple4_c (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Mkdtuple4_d (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Mkdtuple4__1 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Mkdtuple4__2 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Mkdtuple4__3 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Mkdtuple4__4 (Term) Term)
+;;;;;;;;;;;;;;;;data constructor proxy: FStar.Pervasives.Mkdtuple4
+(declare-fun FStar.Pervasives.Mkdtuple4@tok () Term)
+
+
+(declare-fun Tm_arrow_af8eda99ba3685403be22a88669dcb35 (Term Term Term) Term)
+
+
+
+
+
+
+(declare-fun Tm_arrow_cef44a6056754f192c2446237c4c1408 () Term)
+
+; <start constructor FStar.Pervasives.dtuple4>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-FStar.Pervasives.dtuple4 ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+519)
+(exists ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term))
+ (! (= __@x0
+(FStar.Pervasives.dtuple4 @x0
+@x1
+@x2
+@x3))
+ 
+;;no pats
+:qid is-FStar.Pervasives.dtuple4))))
+
+; </end constructor FStar.Pervasives.dtuple4>
+
+
+; <start constructor FStar.Pervasives.Mkdtuple4>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-FStar.Pervasives.Mkdtuple4 ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+532)
+(= __@x0
+(FStar.Pervasives.Mkdtuple4 (FStar.Pervasives.Mkdtuple4_a __@x0)
+(FStar.Pervasives.Mkdtuple4_b __@x0)
+(FStar.Pervasives.Mkdtuple4_c __@x0)
+(FStar.Pervasives.Mkdtuple4_d __@x0)
+(FStar.Pervasives.Mkdtuple4__1 __@x0)
+(FStar.Pervasives.Mkdtuple4__2 __@x0)
+(FStar.Pervasives.Mkdtuple4__3 __@x0)
+(FStar.Pervasives.Mkdtuple4__4 __@x0)))))
+
+; </end constructor FStar.Pervasives.Mkdtuple4>
+
+
+; </end encoding type FStar.Pervasives.dtuple4>
+
+
+; <Start encoding assume FStar.Pervasives.dtuple4__uu___haseq>
+
+
+
+
+
+; </end encoding assume FStar.Pervasives.dtuple4__uu___haseq>
+
+
+; <Start encoding val FStar.Pervasives.uu___is_Mkdtuple4>
+
+
+
+
+(declare-fun FStar.Pervasives.uu___is_Mkdtuple4 (Term Term Term Term Term) Term)
+
+
+
+(declare-fun Tm_arrow_76a226dc2cea2ddd4e4258637fc95e5b () Term)
+(declare-fun FStar.Pervasives.uu___is_Mkdtuple4@tok () Term)
+
+; </end encoding val FStar.Pervasives.uu___is_Mkdtuple4>
+
+
+; <Skipped let uu___is_Mkdtuple4/>
+
+
+; <Start encoding val FStar.Pervasives.__proj__Mkdtuple4__item___1>
+
+
+
+
+(declare-fun FStar.Pervasives.__proj__Mkdtuple4__item___1 (Term Term Term Term Term) Term)
+
+
+
+(declare-fun Tm_arrow_1da4d60ab69f411b912e76cc25e77965 () Term)
+(declare-fun FStar.Pervasives.__proj__Mkdtuple4__item___1@tok () Term)
+
+; </end encoding val FStar.Pervasives.__proj__Mkdtuple4__item___1>
+
+
+; <Skipped let __proj__Mkdtuple4__item___1/>
+
+
+; <Start encoding val FStar.Pervasives.__proj__Mkdtuple4__item___2>
+
+
+
+
+(declare-fun FStar.Pervasives.__proj__Mkdtuple4__item___2 (Term Term Term Term Term) Term)
+
+
+
+(declare-fun Tm_arrow_a86867091548f3d7d3ca1cb8b0458b9f () Term)
+(declare-fun FStar.Pervasives.__proj__Mkdtuple4__item___2@tok () Term)
+
+; </end encoding val FStar.Pervasives.__proj__Mkdtuple4__item___2>
+
+
+; <Skipped let __proj__Mkdtuple4__item___2/>
+
+
+; <Start encoding val FStar.Pervasives.__proj__Mkdtuple4__item___3>
+
+
+
+
+(declare-fun FStar.Pervasives.__proj__Mkdtuple4__item___3 (Term Term Term Term Term) Term)
+
+
+
+(declare-fun Tm_arrow_ee72552fcc293405aa0e854ba26f27ac () Term)
+(declare-fun FStar.Pervasives.__proj__Mkdtuple4__item___3@tok () Term)
+
+; </end encoding val FStar.Pervasives.__proj__Mkdtuple4__item___3>
+
+
+; <Skipped let __proj__Mkdtuple4__item___3/>
+
+
+; <Start encoding val FStar.Pervasives.__proj__Mkdtuple4__item___4>
+
+
+
+
+(declare-fun FStar.Pervasives.__proj__Mkdtuple4__item___4 (Term Term Term Term Term) Term)
+
+
+
+(declare-fun Tm_arrow_6c79def96aa5d5d9eb9555c48dd9ebb6 () Term)
+(declare-fun FStar.Pervasives.__proj__Mkdtuple4__item___4@tok () Term)
+
+; </end encoding val FStar.Pervasives.__proj__Mkdtuple4__item___4>
+
+
+; <Skipped let __proj__Mkdtuple4__item___4/>
+
+
+; <Start encoding type FStar.Pervasives.dtuple5>
+
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun FStar.Pervasives.dtuple5 (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;token
+(declare-fun FStar.Pervasives.dtuple5@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun FStar.Pervasives.Mkdtuple5 (Term Term Term Term Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Mkdtuple5_a (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Mkdtuple5_b (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Mkdtuple5_c (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Mkdtuple5_d (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Mkdtuple5_e (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Mkdtuple5__1 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Mkdtuple5__2 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Mkdtuple5__3 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Mkdtuple5__4 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Mkdtuple5__5 (Term) Term)
+;;;;;;;;;;;;;;;;data constructor proxy: FStar.Pervasives.Mkdtuple5
+(declare-fun FStar.Pervasives.Mkdtuple5@tok () Term)
+
+
+
+(declare-fun Tm_arrow_e2051b23ee191036cd2c8f08b57577cc (Term Term Term Term) Term)
+
+
+
+
+
+
+
+
+(declare-fun Tm_arrow_7c47a0b67fa3d6e69e51a1ade2982e74 () Term)
+
+; <start constructor FStar.Pervasives.dtuple5>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-FStar.Pervasives.dtuple5 ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+626)
+(exists ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term) (@x4 Term))
+ (! (= __@x0
+(FStar.Pervasives.dtuple5 @x0
+@x1
+@x2
+@x3
+@x4))
+ 
+;;no pats
+:qid is-FStar.Pervasives.dtuple5))))
+
+; </end constructor FStar.Pervasives.dtuple5>
+
+
+; <start constructor FStar.Pervasives.Mkdtuple5>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-FStar.Pervasives.Mkdtuple5 ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+641)
+(= __@x0
+(FStar.Pervasives.Mkdtuple5 (FStar.Pervasives.Mkdtuple5_a __@x0)
+(FStar.Pervasives.Mkdtuple5_b __@x0)
+(FStar.Pervasives.Mkdtuple5_c __@x0)
+(FStar.Pervasives.Mkdtuple5_d __@x0)
+(FStar.Pervasives.Mkdtuple5_e __@x0)
+(FStar.Pervasives.Mkdtuple5__1 __@x0)
+(FStar.Pervasives.Mkdtuple5__2 __@x0)
+(FStar.Pervasives.Mkdtuple5__3 __@x0)
+(FStar.Pervasives.Mkdtuple5__4 __@x0)
+(FStar.Pervasives.Mkdtuple5__5 __@x0)))))
+
+; </end constructor FStar.Pervasives.Mkdtuple5>
+
+
+; </end encoding type FStar.Pervasives.dtuple5>
+
+
+; <Start encoding assume FStar.Pervasives.dtuple5__uu___haseq>
+
+
+
+
+
+
+; </end encoding assume FStar.Pervasives.dtuple5__uu___haseq>
+
+
+; <Start encoding val FStar.Pervasives.uu___is_Mkdtuple5>
+
+
+
+
+
+(declare-fun FStar.Pervasives.uu___is_Mkdtuple5 (Term Term Term Term Term Term) Term)
+
+
+
+
+(declare-fun Tm_arrow_790317d9d2afaf2417875fd8f65cee9f () Term)
+(declare-fun FStar.Pervasives.uu___is_Mkdtuple5@tok () Term)
+
+; </end encoding val FStar.Pervasives.uu___is_Mkdtuple5>
+
+
+; <Skipped let uu___is_Mkdtuple5/>
+
+
+; <Start encoding val FStar.Pervasives.__proj__Mkdtuple5__item___1>
+
+
+
+
+
+(declare-fun FStar.Pervasives.__proj__Mkdtuple5__item___1 (Term Term Term Term Term Term) Term)
+
+
+
+
+(declare-fun Tm_arrow_855676d3a54fc2cdf0dfa3ac2f15fdad () Term)
+(declare-fun FStar.Pervasives.__proj__Mkdtuple5__item___1@tok () Term)
+
+; </end encoding val FStar.Pervasives.__proj__Mkdtuple5__item___1>
+
+
+; <Skipped let __proj__Mkdtuple5__item___1/>
+
+
+; <Start encoding val FStar.Pervasives.__proj__Mkdtuple5__item___2>
+
+
+
+
+
+(declare-fun FStar.Pervasives.__proj__Mkdtuple5__item___2 (Term Term Term Term Term Term) Term)
+
+
+
+
+(declare-fun Tm_arrow_3c181aa1af161d84af20412908ff5981 () Term)
+(declare-fun FStar.Pervasives.__proj__Mkdtuple5__item___2@tok () Term)
+
+; </end encoding val FStar.Pervasives.__proj__Mkdtuple5__item___2>
+
+
+; <Skipped let __proj__Mkdtuple5__item___2/>
+
+
+; <Start encoding val FStar.Pervasives.__proj__Mkdtuple5__item___3>
+
+
+
+
+
+(declare-fun FStar.Pervasives.__proj__Mkdtuple5__item___3 (Term Term Term Term Term Term) Term)
+
+
+
+
+(declare-fun Tm_arrow_cc152ea4c314cfd6854de94e70041031 () Term)
+(declare-fun FStar.Pervasives.__proj__Mkdtuple5__item___3@tok () Term)
+
+; </end encoding val FStar.Pervasives.__proj__Mkdtuple5__item___3>
+
+
+; <Skipped let __proj__Mkdtuple5__item___3/>
+
+
+; <Start encoding val FStar.Pervasives.__proj__Mkdtuple5__item___4>
+
+
+
+
+
+(declare-fun FStar.Pervasives.__proj__Mkdtuple5__item___4 (Term Term Term Term Term Term) Term)
+
+
+
+
+(declare-fun Tm_arrow_6a05465acf4f8d1b8f43fd30077a772a () Term)
+(declare-fun FStar.Pervasives.__proj__Mkdtuple5__item___4@tok () Term)
+
+; </end encoding val FStar.Pervasives.__proj__Mkdtuple5__item___4>
+
+
+; <Skipped let __proj__Mkdtuple5__item___4/>
+
+
+; <Start encoding val FStar.Pervasives.__proj__Mkdtuple5__item___5>
+
+
+
+
+
+(declare-fun FStar.Pervasives.__proj__Mkdtuple5__item___5 (Term Term Term Term Term Term) Term)
+
+
+
+
+(declare-fun Tm_arrow_d5d61b48d54646c5c411627b3a20c98f () Term)
+(declare-fun FStar.Pervasives.__proj__Mkdtuple5__item___5@tok () Term)
+
+; </end encoding val FStar.Pervasives.__proj__Mkdtuple5__item___5>
+
+
+; <Skipped let __proj__Mkdtuple5__item___5/>
+
+
+; <Start encoding let ignore>
+
+(declare-fun FStar.Pervasives.ignore (Term Term) Term)
+(declare-fun Tm_arrow_962476a7eea46a6ffc9b658c6d8fbc71 () Term)
+(declare-fun FStar.Pervasives.ignore@tok () Term)
+
+; </end encoding let ignore>
+
+
+; <Start encoding val FStar.Pervasives.false_elim>
+
+(declare-fun Tm_refine_f1ecc6ab6882a651504f328937700647 () Term)
+(declare-fun FStar.Pervasives.false_elim (Term Term) Term)
+
+(declare-fun Tm_arrow_7636fbfab5cd88ba06f60c10ea8caef2 () Term)
+(declare-fun FStar.Pervasives.false_elim@tok () Term)
+
+; </end encoding val FStar.Pervasives.false_elim>
+
+
+; <Start encoding type FStar.Pervasives.__internal_ocaml_attributes>
+
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun FStar.Pervasives.__internal_ocaml_attributes () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun FStar.Pervasives.PpxDerivingShow () Term)
+;;;;;;;;;;;;;;;;data constructor proxy: FStar.Pervasives.PpxDerivingShow
+(declare-fun FStar.Pervasives.PpxDerivingShow@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun FStar.Pervasives.PpxDerivingShowConstant (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.PpxDerivingShowConstant__0 (Term) Term)
+;;;;;;;;;;;;;;;;data constructor proxy: FStar.Pervasives.PpxDerivingShowConstant
+(declare-fun FStar.Pervasives.PpxDerivingShowConstant@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun FStar.Pervasives.PpxDerivingYoJson () Term)
+;;;;;;;;;;;;;;;;data constructor proxy: FStar.Pervasives.PpxDerivingYoJson
+(declare-fun FStar.Pervasives.PpxDerivingYoJson@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun FStar.Pervasives.CInline () Term)
+;;;;;;;;;;;;;;;;data constructor proxy: FStar.Pervasives.CInline
+(declare-fun FStar.Pervasives.CInline@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun FStar.Pervasives.Substitute () Term)
+;;;;;;;;;;;;;;;;data constructor proxy: FStar.Pervasives.Substitute
+(declare-fun FStar.Pervasives.Substitute@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun FStar.Pervasives.Gc () Term)
+;;;;;;;;;;;;;;;;data constructor proxy: FStar.Pervasives.Gc
+(declare-fun FStar.Pervasives.Gc@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun FStar.Pervasives.Comment (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.Comment__0 (Term) Term)
+;;;;;;;;;;;;;;;;data constructor proxy: FStar.Pervasives.Comment
+(declare-fun FStar.Pervasives.Comment@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun FStar.Pervasives.CPrologue (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.CPrologue__0 (Term) Term)
+;;;;;;;;;;;;;;;;data constructor proxy: FStar.Pervasives.CPrologue
+(declare-fun FStar.Pervasives.CPrologue@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun FStar.Pervasives.CEpilogue (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.CEpilogue__0 (Term) Term)
+;;;;;;;;;;;;;;;;data constructor proxy: FStar.Pervasives.CEpilogue
+(declare-fun FStar.Pervasives.CEpilogue@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun FStar.Pervasives.CConst (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.CConst__0 (Term) Term)
+;;;;;;;;;;;;;;;;data constructor proxy: FStar.Pervasives.CConst
+(declare-fun FStar.Pervasives.CConst@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun FStar.Pervasives.CCConv (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.Pervasives.CCConv__0 (Term) Term)
+;;;;;;;;;;;;;;;;data constructor proxy: FStar.Pervasives.CCConv
+(declare-fun FStar.Pervasives.CCConv@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun FStar.Pervasives.CAbstractStruct () Term)
+;;;;;;;;;;;;;;;;data constructor proxy: FStar.Pervasives.CAbstractStruct
+(declare-fun FStar.Pervasives.CAbstractStruct@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun FStar.Pervasives.CIfDef () Term)
+;;;;;;;;;;;;;;;;data constructor proxy: FStar.Pervasives.CIfDef
+(declare-fun FStar.Pervasives.CIfDef@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun FStar.Pervasives.CMacro () Term)
+;;;;;;;;;;;;;;;;data constructor proxy: FStar.Pervasives.CMacro
+(declare-fun FStar.Pervasives.CMacro@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun FStar.Pervasives.CNoInline () Term)
+;;;;;;;;;;;;;;;;data constructor proxy: FStar.Pervasives.CNoInline
+(declare-fun FStar.Pervasives.CNoInline@tok () Term)
+(declare-fun Tm_arrow_a25c6dbdd7c43412e925069991c0ef48 () Term)
+
+
+
+
+
+
+; <start constructor FStar.Pervasives.__internal_ocaml_attributes>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-FStar.Pervasives.__internal_ocaml_attributes ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+775)
+(= __@x0
+FStar.Pervasives.__internal_ocaml_attributes)))
+
+; </end constructor FStar.Pervasives.__internal_ocaml_attributes>
+
+
+; <start constructor FStar.Pervasives.PpxDerivingShow>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-FStar.Pervasives.PpxDerivingShow ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+781)
+(= __@x0
+FStar.Pervasives.PpxDerivingShow)))
+
+; </end constructor FStar.Pervasives.PpxDerivingShow>
+
+
+; <start constructor FStar.Pervasives.PpxDerivingShowConstant>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-FStar.Pervasives.PpxDerivingShowConstant ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+783)
+(= __@x0
+(FStar.Pervasives.PpxDerivingShowConstant (FStar.Pervasives.PpxDerivingShowConstant__0 __@x0)))))
+
+; </end constructor FStar.Pervasives.PpxDerivingShowConstant>
+
+
+; <start constructor FStar.Pervasives.PpxDerivingYoJson>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-FStar.Pervasives.PpxDerivingYoJson ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+788)
+(= __@x0
+FStar.Pervasives.PpxDerivingYoJson)))
+
+; </end constructor FStar.Pervasives.PpxDerivingYoJson>
+
+
+; <start constructor FStar.Pervasives.CInline>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-FStar.Pervasives.CInline ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+790)
+(= __@x0
+FStar.Pervasives.CInline)))
+
+; </end constructor FStar.Pervasives.CInline>
+
+
+; <start constructor FStar.Pervasives.Substitute>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-FStar.Pervasives.Substitute ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+792)
+(= __@x0
+FStar.Pervasives.Substitute)))
+
+; </end constructor FStar.Pervasives.Substitute>
+
+
+; <start constructor FStar.Pervasives.Gc>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-FStar.Pervasives.Gc ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+794)
+(= __@x0
+FStar.Pervasives.Gc)))
+
+; </end constructor FStar.Pervasives.Gc>
+
+
+; <start constructor FStar.Pervasives.Comment>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-FStar.Pervasives.Comment ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+796)
+(= __@x0
+(FStar.Pervasives.Comment (FStar.Pervasives.Comment__0 __@x0)))))
+
+; </end constructor FStar.Pervasives.Comment>
+
+
+; <start constructor FStar.Pervasives.CPrologue>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-FStar.Pervasives.CPrologue ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+801)
+(= __@x0
+(FStar.Pervasives.CPrologue (FStar.Pervasives.CPrologue__0 __@x0)))))
+
+; </end constructor FStar.Pervasives.CPrologue>
+
+
+; <start constructor FStar.Pervasives.CEpilogue>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-FStar.Pervasives.CEpilogue ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+806)
+(= __@x0
+(FStar.Pervasives.CEpilogue (FStar.Pervasives.CEpilogue__0 __@x0)))))
+
+; </end constructor FStar.Pervasives.CEpilogue>
+
+
+; <start constructor FStar.Pervasives.CConst>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-FStar.Pervasives.CConst ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+811)
+(= __@x0
+(FStar.Pervasives.CConst (FStar.Pervasives.CConst__0 __@x0)))))
+
+; </end constructor FStar.Pervasives.CConst>
+
+
+; <start constructor FStar.Pervasives.CCConv>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-FStar.Pervasives.CCConv ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+816)
+(= __@x0
+(FStar.Pervasives.CCConv (FStar.Pervasives.CCConv__0 __@x0)))))
+
+; </end constructor FStar.Pervasives.CCConv>
+
+
+; <start constructor FStar.Pervasives.CAbstractStruct>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-FStar.Pervasives.CAbstractStruct ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+821)
+(= __@x0
+FStar.Pervasives.CAbstractStruct)))
+
+; </end constructor FStar.Pervasives.CAbstractStruct>
+
+
+; <start constructor FStar.Pervasives.CIfDef>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-FStar.Pervasives.CIfDef ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+823)
+(= __@x0
+FStar.Pervasives.CIfDef)))
+
+; </end constructor FStar.Pervasives.CIfDef>
+
+
+; <start constructor FStar.Pervasives.CMacro>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-FStar.Pervasives.CMacro ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+825)
+(= __@x0
+FStar.Pervasives.CMacro)))
+
+; </end constructor FStar.Pervasives.CMacro>
+
+
+; <start constructor FStar.Pervasives.CNoInline>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-FStar.Pervasives.CNoInline ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+827)
+(= __@x0
+FStar.Pervasives.CNoInline)))
+
+; </end constructor FStar.Pervasives.CNoInline>
+
+
+; </end encoding type FStar.Pervasives.__internal_ocaml_attributes>
+
+
+; <Start encoding assume FStar.Pervasives.__internal_ocaml_attributes__uu___haseq>
+
+
+; </end encoding assume FStar.Pervasives.__internal_ocaml_attributes__uu___haseq>
+
+
+; <Start encoding val FStar.Pervasives.uu___is_PpxDerivingShow>
+
+(declare-fun FStar.Pervasives.uu___is_PpxDerivingShow (Term) Term)
+(declare-fun Tm_arrow_89dc0c243f5e74d4fefc48cfe123db41 () Term)
+(declare-fun FStar.Pervasives.uu___is_PpxDerivingShow@tok () Term)
+
+; </end encoding val FStar.Pervasives.uu___is_PpxDerivingShow>
+
+
+; <Skipped let uu___is_PpxDerivingShow/>
+
+
+; <Start encoding val FStar.Pervasives.uu___is_PpxDerivingShowConstant>
+
+(declare-fun FStar.Pervasives.uu___is_PpxDerivingShowConstant (Term) Term)
+
+(declare-fun FStar.Pervasives.uu___is_PpxDerivingShowConstant@tok () Term)
+
+; </end encoding val FStar.Pervasives.uu___is_PpxDerivingShowConstant>
+
+
+; <Skipped let uu___is_PpxDerivingShowConstant/>
+
+
+; <Start encoding val FStar.Pervasives.__proj__PpxDerivingShowConstant__item___0>
+
+(declare-fun Tm_refine_564db2f0aa0878b4d96c60508be3dd36 () Term)
+(declare-fun FStar.Pervasives.__proj__PpxDerivingShowConstant__item___0 (Term) Term)
+
+(declare-fun Tm_arrow_dbb84ef8131159481071b6d6a41b7f31 () Term)
+(declare-fun FStar.Pervasives.__proj__PpxDerivingShowConstant__item___0@tok () Term)
+
+; </end encoding val FStar.Pervasives.__proj__PpxDerivingShowConstant__item___0>
+
+
+; <Skipped let __proj__PpxDerivingShowConstant__item___0/>
+
+
+; <Start encoding val FStar.Pervasives.uu___is_PpxDerivingYoJson>
+
+(declare-fun FStar.Pervasives.uu___is_PpxDerivingYoJson (Term) Term)
+
+(declare-fun FStar.Pervasives.uu___is_PpxDerivingYoJson@tok () Term)
+
+; </end encoding val FStar.Pervasives.uu___is_PpxDerivingYoJson>
+
+
+; <Skipped let uu___is_PpxDerivingYoJson/>
+
+
+; <Start encoding val FStar.Pervasives.uu___is_CInline>
+
+(declare-fun FStar.Pervasives.uu___is_CInline (Term) Term)
+
+(declare-fun FStar.Pervasives.uu___is_CInline@tok () Term)
+
+; </end encoding val FStar.Pervasives.uu___is_CInline>
+
+
+; <Skipped let uu___is_CInline/>
+
+
+; <Start encoding val FStar.Pervasives.uu___is_Substitute>
+
+(declare-fun FStar.Pervasives.uu___is_Substitute (Term) Term)
+
+(declare-fun FStar.Pervasives.uu___is_Substitute@tok () Term)
+
+; </end encoding val FStar.Pervasives.uu___is_Substitute>
+
+
+; <Skipped let uu___is_Substitute/>
+
+
+; <Start encoding val FStar.Pervasives.uu___is_Gc>
+
+(declare-fun FStar.Pervasives.uu___is_Gc (Term) Term)
+
+(declare-fun FStar.Pervasives.uu___is_Gc@tok () Term)
+
+; </end encoding val FStar.Pervasives.uu___is_Gc>
+
+
+; <Skipped let uu___is_Gc/>
+
+
+; <Start encoding val FStar.Pervasives.uu___is_Comment>
+
+(declare-fun FStar.Pervasives.uu___is_Comment (Term) Term)
+
+(declare-fun FStar.Pervasives.uu___is_Comment@tok () Term)
+
+; </end encoding val FStar.Pervasives.uu___is_Comment>
+
+
+; <Skipped let uu___is_Comment/>
+
+
+; <Start encoding val FStar.Pervasives.__proj__Comment__item___0>
+
+(declare-fun Tm_refine_c53089e2d20d1b0f5a267296ac8e45f0 () Term)
+(declare-fun FStar.Pervasives.__proj__Comment__item___0 (Term) Term)
+
+(declare-fun Tm_arrow_d4c2bbf4fb852b3f4b9961c7cbc2f3a2 () Term)
+(declare-fun FStar.Pervasives.__proj__Comment__item___0@tok () Term)
+
+; </end encoding val FStar.Pervasives.__proj__Comment__item___0>
+
+
+; <Skipped let __proj__Comment__item___0/>
+
+
+; <Start encoding val FStar.Pervasives.uu___is_CPrologue>
+
+(declare-fun FStar.Pervasives.uu___is_CPrologue (Term) Term)
+
+(declare-fun FStar.Pervasives.uu___is_CPrologue@tok () Term)
+
+; </end encoding val FStar.Pervasives.uu___is_CPrologue>
+
+
+; <Skipped let uu___is_CPrologue/>
+
+
+; <Start encoding val FStar.Pervasives.__proj__CPrologue__item___0>
+
+(declare-fun Tm_refine_ac46c1a2a06ce46a180e0eda48004c47 () Term)
+(declare-fun FStar.Pervasives.__proj__CPrologue__item___0 (Term) Term)
+
+(declare-fun Tm_arrow_929b9daa0a2a2e99e3571b146c52feaf () Term)
+(declare-fun FStar.Pervasives.__proj__CPrologue__item___0@tok () Term)
+
+; </end encoding val FStar.Pervasives.__proj__CPrologue__item___0>
+
+
+; <Skipped let __proj__CPrologue__item___0/>
+
+
+; <Start encoding val FStar.Pervasives.uu___is_CEpilogue>
+
+(declare-fun FStar.Pervasives.uu___is_CEpilogue (Term) Term)
+
+(declare-fun FStar.Pervasives.uu___is_CEpilogue@tok () Term)
+
+; </end encoding val FStar.Pervasives.uu___is_CEpilogue>
+
+
+; <Skipped let uu___is_CEpilogue/>
+
+
+; <Start encoding val FStar.Pervasives.__proj__CEpilogue__item___0>
+
+(declare-fun Tm_refine_47384bef739d1f0729fd782d351dc9a5 () Term)
+(declare-fun FStar.Pervasives.__proj__CEpilogue__item___0 (Term) Term)
+
+(declare-fun Tm_arrow_e37361b66babb46a30183ad1ff072689 () Term)
+(declare-fun FStar.Pervasives.__proj__CEpilogue__item___0@tok () Term)
+
+; </end encoding val FStar.Pervasives.__proj__CEpilogue__item___0>
+
+
+; <Skipped let __proj__CEpilogue__item___0/>
+
+
+; <Start encoding val FStar.Pervasives.uu___is_CConst>
+
+(declare-fun FStar.Pervasives.uu___is_CConst (Term) Term)
+
+(declare-fun FStar.Pervasives.uu___is_CConst@tok () Term)
+
+; </end encoding val FStar.Pervasives.uu___is_CConst>
+
+
+; <Skipped let uu___is_CConst/>
+
+
+; <Start encoding val FStar.Pervasives.__proj__CConst__item___0>
+
+(declare-fun Tm_refine_5036c6b2983454bc3afeffcba3f00f50 () Term)
+(declare-fun FStar.Pervasives.__proj__CConst__item___0 (Term) Term)
+
+(declare-fun Tm_arrow_2d0b7639551b88b0df758d7b36c8f77a () Term)
+(declare-fun FStar.Pervasives.__proj__CConst__item___0@tok () Term)
+
+; </end encoding val FStar.Pervasives.__proj__CConst__item___0>
+
+
+; <Skipped let __proj__CConst__item___0/>
+
+
+; <Start encoding val FStar.Pervasives.uu___is_CCConv>
+
+(declare-fun FStar.Pervasives.uu___is_CCConv (Term) Term)
+
+(declare-fun FStar.Pervasives.uu___is_CCConv@tok () Term)
+
+; </end encoding val FStar.Pervasives.uu___is_CCConv>
+
+
+; <Skipped let uu___is_CCConv/>
+
+
+; <Start encoding val FStar.Pervasives.__proj__CCConv__item___0>
+
+(declare-fun Tm_refine_2c4510f48649a66c3dca1fc9e3a2d320 () Term)
+(declare-fun FStar.Pervasives.__proj__CCConv__item___0 (Term) Term)
+
+(declare-fun Tm_arrow_b7e884ec94708f2b05c42d4d8834eac6 () Term)
+(declare-fun FStar.Pervasives.__proj__CCConv__item___0@tok () Term)
+
+; </end encoding val FStar.Pervasives.__proj__CCConv__item___0>
+
+
+; <Skipped let __proj__CCConv__item___0/>
+
+
+; <Start encoding val FStar.Pervasives.uu___is_CAbstractStruct>
+
+(declare-fun FStar.Pervasives.uu___is_CAbstractStruct (Term) Term)
+
+(declare-fun FStar.Pervasives.uu___is_CAbstractStruct@tok () Term)
+
+; </end encoding val FStar.Pervasives.uu___is_CAbstractStruct>
+
+
+; <Skipped let uu___is_CAbstractStruct/>
+
+
+; <Start encoding val FStar.Pervasives.uu___is_CIfDef>
+
+(declare-fun FStar.Pervasives.uu___is_CIfDef (Term) Term)
+
+(declare-fun FStar.Pervasives.uu___is_CIfDef@tok () Term)
+
+; </end encoding val FStar.Pervasives.uu___is_CIfDef>
+
+
+; <Skipped let uu___is_CIfDef/>
+
+
+; <Start encoding val FStar.Pervasives.uu___is_CMacro>
+
+(declare-fun FStar.Pervasives.uu___is_CMacro (Term) Term)
+
+(declare-fun FStar.Pervasives.uu___is_CMacro@tok () Term)
+
+; </end encoding val FStar.Pervasives.uu___is_CMacro>
+
+
+; <Skipped let uu___is_CMacro/>
+
+
+; <Start encoding val FStar.Pervasives.uu___is_CNoInline>
+
+(declare-fun FStar.Pervasives.uu___is_CNoInline (Term) Term)
+
+(declare-fun FStar.Pervasives.uu___is_CNoInline@tok () Term)
+
+; </end encoding val FStar.Pervasives.uu___is_CNoInline>
+
+
+; <Skipped let uu___is_CNoInline/>
+
+
+; <Start encoding val FStar.Pervasives.inline_let>
+
+(declare-fun FStar.Pervasives.inline_let (Dummy_sort) Term)
+
+; </end encoding val FStar.Pervasives.inline_let>
+
+
+; <Start encoding val FStar.Pervasives.rename_let>
+
+(declare-fun FStar.Pervasives.rename_let (Term) Term)
+
+(declare-fun FStar.Pervasives.rename_let@tok () Term)
+
+; </end encoding val FStar.Pervasives.rename_let>
+
+
+; <Start encoding val FStar.Pervasives.plugin>
+
+(declare-fun FStar.Pervasives.plugin (Term) Term)
+(declare-fun Tm_arrow_f12575a0ee171a8be16a63e3359708f8 () Term)
+(declare-fun FStar.Pervasives.plugin@tok () Term)
+
+; </end encoding val FStar.Pervasives.plugin>
+
+
+; <Start encoding val FStar.Pervasives.tcnorm>
+
+(declare-fun FStar.Pervasives.tcnorm (Dummy_sort) Term)
+
+; </end encoding val FStar.Pervasives.tcnorm>
+
+
+; <Start encoding val FStar.Pervasives.must_erase_for_extraction>
+
+(declare-fun FStar.Pervasives.must_erase_for_extraction (Dummy_sort) Term)
+
+; </end encoding val FStar.Pervasives.must_erase_for_extraction>
+
+
+; <Start encoding val FStar.Pervasives.dm4f_bind_range>
+
+(declare-fun FStar.Pervasives.dm4f_bind_range (Dummy_sort) Term)
+
+; </end encoding val FStar.Pervasives.dm4f_bind_range>
+
+
+; <Start encoding val FStar.Pervasives.expect_failure>
+
+(declare-fun FStar.Pervasives.expect_failure (Term) Term)
+
+(declare-fun FStar.Pervasives.expect_failure@tok () Term)
+
+; </end encoding val FStar.Pervasives.expect_failure>
+
+
+; <Start encoding val FStar.Pervasives.expect_lax_failure>
+
+(declare-fun FStar.Pervasives.expect_lax_failure (Term) Term)
+
+(declare-fun FStar.Pervasives.expect_lax_failure@tok () Term)
+
+; </end encoding val FStar.Pervasives.expect_lax_failure>
+
+
+; <Start encoding val FStar.Pervasives.tcdecltime>
+
+(declare-fun FStar.Pervasives.tcdecltime (Dummy_sort) Term)
+
+; </end encoding val FStar.Pervasives.tcdecltime>
+
+
+; <Start encoding val FStar.Pervasives.unifier_hint_injective>
+
+(declare-fun FStar.Pervasives.unifier_hint_injective (Dummy_sort) Term)
+
+; </end encoding val FStar.Pervasives.unifier_hint_injective>
+
+
+; <Start encoding val FStar.Pervasives.strict_on_arguments>
+
+(declare-fun FStar.Pervasives.strict_on_arguments (Term) Term)
+
+(declare-fun FStar.Pervasives.strict_on_arguments@tok () Term)
+
+; </end encoding val FStar.Pervasives.strict_on_arguments>
+
+
+; <Start encoding val FStar.Pervasives.resolve_implicits>
+
+(declare-fun FStar.Pervasives.resolve_implicits (Dummy_sort) Term)
+
+; </end encoding val FStar.Pervasives.resolve_implicits>
+
+
+; <Start encoding val FStar.Pervasives.override_resolve_implicits_handler>
+
+(declare-fun FStar.Pervasives.override_resolve_implicits_handler (Term Term Term) Term)
+(declare-fun Tm_arrow_93e6548cfc250f7cc25301579d62a018 () Term)
+(declare-fun FStar.Pervasives.override_resolve_implicits_handler@tok () Term)
+
+; </end encoding val FStar.Pervasives.override_resolve_implicits_handler>
+
+
+; <Start encoding val FStar.Pervasives.handle_smt_goals>
+
+(declare-fun FStar.Pervasives.handle_smt_goals (Dummy_sort) Term)
+
+; </end encoding val FStar.Pervasives.handle_smt_goals>
+
+
+; <Start encoding val FStar.Pervasives.erasable>
+
+(declare-fun FStar.Pervasives.erasable (Dummy_sort) Term)
+
+; </end encoding val FStar.Pervasives.erasable>
+
+
+; <Start encoding val FStar.Pervasives.commute_nested_matches>
+
+(declare-fun FStar.Pervasives.commute_nested_matches (Dummy_sort) Term)
+
+; </end encoding val FStar.Pervasives.commute_nested_matches>
+
+
+; <Start encoding val FStar.Pervasives.noextract_to>
+
+(declare-fun FStar.Pervasives.noextract_to (Term) Term)
+
+(declare-fun FStar.Pervasives.noextract_to@tok () Term)
+
+; </end encoding val FStar.Pervasives.noextract_to>
+
+
+; <Start encoding val FStar.Pervasives.normalize_for_extraction>
+
+(declare-fun FStar.Pervasives.normalize_for_extraction (Term) Term)
+(declare-fun Tm_arrow_5a371649389ebd695db0478470787cef () Term)
+(declare-fun FStar.Pervasives.normalize_for_extraction@tok () Term)
+
+; </end encoding val FStar.Pervasives.normalize_for_extraction>
+
+
+; <Start encoding val FStar.Pervasives.ite_soundness_by>
+
+(declare-fun FStar.Pervasives.ite_soundness_by (Term) Term)
+(declare-fun Tm_arrow_0c55530a575bf8e94add46ffb548393c () Term)
+(declare-fun FStar.Pervasives.ite_soundness_by@tok () Term)
+
+; </end encoding val FStar.Pervasives.ite_soundness_by>
+
+
+; <Start encoding val FStar.Pervasives.default_effect>
+
+(declare-fun FStar.Pervasives.default_effect (Term) Term)
+
+(declare-fun FStar.Pervasives.default_effect@tok () Term)
+
+; </end encoding val FStar.Pervasives.default_effect>
+
+
+; <Start encoding val FStar.Pervasives.top_level_effect>
+
+(declare-fun FStar.Pervasives.top_level_effect (Term) Term)
+
+(declare-fun FStar.Pervasives.top_level_effect@tok () Term)
+
+; </end encoding val FStar.Pervasives.top_level_effect>
+
+
+; <Start encoding val FStar.Pervasives.effect_param>
+
+(declare-fun FStar.Pervasives.effect_param (Dummy_sort) Term)
+
+; </end encoding val FStar.Pervasives.effect_param>
+
+
+; <Start encoding val FStar.Pervasives.bind_has_range_args>
+
+(declare-fun FStar.Pervasives.bind_has_range_args (Dummy_sort) Term)
+
+; </end encoding val FStar.Pervasives.bind_has_range_args>
+
+
+; <Start encoding val FStar.Pervasives.primitive_extraction>
+
+(declare-fun FStar.Pervasives.primitive_extraction (Dummy_sort) Term)
+
+; </end encoding val FStar.Pervasives.primitive_extraction>
+
+
+; <Start encoding val FStar.Pervasives.extract_as_impure_effect>
+
+(declare-fun FStar.Pervasives.extract_as_impure_effect (Dummy_sort) Term)
+
+; </end encoding val FStar.Pervasives.extract_as_impure_effect>
+
+
+; <Start encoding val FStar.Pervasives.strictly_positive>
+
+(declare-fun FStar.Pervasives.strictly_positive (Dummy_sort) Term)
+
+; </end encoding val FStar.Pervasives.strictly_positive>
+
+
+; <Start encoding val FStar.Pervasives.unused>
+
+(declare-fun FStar.Pervasives.unused (Dummy_sort) Term)
+
+; </end encoding val FStar.Pervasives.unused>
+
+
+; <Start encoding val FStar.Pervasives.no_auto_projectors>
+
+(declare-fun FStar.Pervasives.no_auto_projectors (Dummy_sort) Term)
+
+; </end encoding val FStar.Pervasives.no_auto_projectors>
+
+
+; <Start encoding val FStar.Pervasives.no_auto_projectors_decls>
+
+(declare-fun FStar.Pervasives.no_auto_projectors_decls (Dummy_sort) Term)
+
+; </end encoding val FStar.Pervasives.no_auto_projectors_decls>
+
+
+; <Start encoding val FStar.Pervasives.no_subtyping>
+
+(declare-fun FStar.Pervasives.no_subtyping (Dummy_sort) Term)
+
+; </end encoding val FStar.Pervasives.no_subtyping>
+
+
+; <Start encoding val FStar.Pervasives.admit_termination>
+
+(declare-fun FStar.Pervasives.admit_termination (Dummy_sort) Term)
+
+; </end encoding val FStar.Pervasives.admit_termination>
+
+
+; <Start encoding val FStar.Pervasives.singleton>
+
+(declare-fun FStar.Pervasives.singleton (Term Term) Term)
+(declare-fun Tm_refine_2fbd657fe85bcb2423f9c7e5f9b3bcb5 (Term Term) Term)
+(declare-fun Tm_arrow_9cdb4ebd85da757e86217b6fb07ef9fc () Term)
+(declare-fun FStar.Pervasives.singleton@tok () Term)
+
+
+; </end encoding val FStar.Pervasives.singleton>
+
+
+; <Start encoding let eqtype_as_type>
+
+(declare-fun FStar.Pervasives.eqtype_as_type (Term) Term)
+(declare-fun Tm_arrow_7e9afc6da5407011473323ad80ff51bf () Term)
+(declare-fun FStar.Pervasives.eqtype_as_type@tok () Term)
+
+; </end encoding let eqtype_as_type>
+
+
+; <Start encoding let coerce_eq>
+
+(declare-fun Tm_refine_0dee8cb03258a67c2f7ec66427696212 (Term Term) Term)
+(declare-fun FStar.Pervasives.coerce_eq (Term Term Term Term) Term)
+
+(declare-fun Tm_arrow_f44173fb14fa6046eedce5f32cb8aae8 () Term)
+(declare-fun FStar.Pervasives.coerce_eq@tok () Term)
+
+
+; </end encoding let coerce_eq>
+
+
+; <Start encoding val FStar.Pervasives.coercion>
+
+(declare-fun FStar.Pervasives.coercion (Dummy_sort) Term)
+
+; </end encoding val FStar.Pervasives.coercion>
+
+
+; <Start encoding val FStar.Pervasives.desugar_of_variant_record>
+
+(declare-fun FStar.Pervasives.desugar_of_variant_record (Term) Term)
+
+(declare-fun FStar.Pervasives.desugar_of_variant_record@tok () Term)
+
+; </end encoding val FStar.Pervasives.desugar_of_variant_record>
+
+
+; <Start encoding val FStar.Pervasives.defer_to>
+
+(declare-fun FStar.Pervasives.defer_to (Term Term) Term)
+
+(declare-fun FStar.Pervasives.defer_to@tok () Term)
+
+; </end encoding val FStar.Pervasives.defer_to>
+
+
+; End Externals for interface FStar.Pervasives
+
+
+; Externals for interface FStar.Set
+
+
+; <Skipped #set-options "--initial_fuel 0 --max_fuel 0 --initial_ifuel 0 --max_ifuel 0"/>
+
+
+; <Start encoding val FStar.Set.set>
+
+(declare-fun FStar.Set.set (Term) Term)
+
+(declare-fun FStar.Set.set@tok () Term)
+
+; </end encoding val FStar.Set.set>
+
+
+; <Start encoding val FStar.Set.equal>
+
+(declare-fun FStar.Set.equal (Term Term Term) Term)
+(declare-fun Tm_arrow_3c4f6e4cf547bd34ec8e06fa6c99957f () Term)
+(declare-fun FStar.Set.equal@tok () Term)
+
+; </end encoding val FStar.Set.equal>
+
+
+; <Start encoding val FStar.Set.mem>
+
+(declare-fun FStar.Set.mem (Term Term Term) Term)
+(declare-fun Tm_arrow_3622740f6f31d7fd022d9da9e7023a5e () Term)
+(declare-fun FStar.Set.mem@tok () Term)
+
+; </end encoding val FStar.Set.mem>
+
+
+; <Start encoding val FStar.Set.empty>
+
+(declare-fun FStar.Set.empty (Term) Term)
+(declare-fun Tm_arrow_8126140804a823c0abf765b538511539 () Term)
+(declare-fun FStar.Set.empty@tok () Term)
+
+; </end encoding val FStar.Set.empty>
+
+
+; <Start encoding val FStar.Set.singleton>
+
+(declare-fun FStar.Set.singleton (Term Term) Term)
+(declare-fun Tm_arrow_764304f899737575fb0645eff5d55885 () Term)
+(declare-fun FStar.Set.singleton@tok () Term)
+
+; </end encoding val FStar.Set.singleton>
+
+
+; <Start encoding val FStar.Set.union>
+
+(declare-fun FStar.Set.union (Term Term Term) Term)
+(declare-fun Tm_arrow_7571f855c31e3c10cb35bbdc0f3ae878 () Term)
+(declare-fun FStar.Set.union@tok () Term)
+
+; </end encoding val FStar.Set.union>
+
+
+; <Start encoding val FStar.Set.intersect>
+
+(declare-fun FStar.Set.intersect (Term Term Term) Term)
+
+(declare-fun FStar.Set.intersect@tok () Term)
+
+; </end encoding val FStar.Set.intersect>
+
+
+; <Start encoding val FStar.Set.complement>
+
+(declare-fun FStar.Set.complement (Term Term) Term)
+(declare-fun Tm_arrow_4a14af1f2d9ff62069ebb44d0d1980f6 () Term)
+(declare-fun FStar.Set.complement@tok () Term)
+
+; </end encoding val FStar.Set.complement>
+
+
+; <Start encoding val FStar.Set.intension>
+
+(declare-fun Tm_arrow_84543425b818e2d10a976186b8e8c250 (Term) Term)
+(declare-fun FStar.Set.intension (Term Term) Term)
+
+(declare-fun Tm_ghost_arrow_04e42a5c0c55c36964ab6333a076e29e () Term)
+(declare-fun FStar.Set.intension@tok () Term)
+
+; </end encoding val FStar.Set.intension>
+
+
+; <Start encoding let disjoint>
+
+(declare-fun FStar.Set.disjoint (Term Term Term) Term)
+
+(declare-fun FStar.Set.disjoint@tok () Term)
+
+; </end encoding let disjoint>
+
+
+; <Start encoding let subset>
+
+(declare-fun FStar.Set.subset (Term Term Term) Term)
+(declare-fun Tm_arrow_9a1bfd7a415bf0250a3dd161144f27fa () Term)
+(declare-fun FStar.Set.subset@tok () Term)
+
+; </end encoding let subset>
+
+
+; <Start encoding let add>
+
+(declare-fun FStar.Set.add (Term Term Term) Term)
+(declare-fun Tm_arrow_3e561cbcf9b0a4b95f6e5d77760b40db () Term)
+(declare-fun FStar.Set.add@tok () Term)
+
+; </end encoding let add>
+
+
+; <Start encoding let remove>
+
+(declare-fun FStar.Set.remove (Term Term Term) Term)
+
+(declare-fun FStar.Set.remove@tok () Term)
+
+; </end encoding let remove>
+
+
+; <Start encoding val FStar.Set.mem_empty>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Set.mem_empty (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Set.mem_empty@tok () Term)
+
+; </end encoding val FStar.Set.mem_empty>
+
+
+; <Start encoding val FStar.Set.mem_singleton>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Set.mem_singleton (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Set.mem_singleton@tok () Term)
+
+; </end encoding val FStar.Set.mem_singleton>
+
+
+; <Start encoding val FStar.Set.mem_union>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Set.mem_union (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Set.mem_union@tok () Term)
+
+; </end encoding val FStar.Set.mem_union>
+
+
+; <Start encoding val FStar.Set.mem_intersect>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Set.mem_intersect (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Set.mem_intersect@tok () Term)
+
+; </end encoding val FStar.Set.mem_intersect>
+
+
+; <Start encoding val FStar.Set.mem_complement>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Set.mem_complement (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Set.mem_complement@tok () Term)
+
+; </end encoding val FStar.Set.mem_complement>
+
+
+; <Start encoding val FStar.Set.mem_intension>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Set.mem_intension (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Set.mem_intension@tok () Term)
+
+; </end encoding val FStar.Set.mem_intension>
+
+
+; <Start encoding val FStar.Set.mem_subset>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Set.mem_subset (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Set.mem_subset@tok () Term)
+
+; </end encoding val FStar.Set.mem_subset>
+
+
+; <Start encoding val FStar.Set.subset_mem>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Set.subset_mem (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Set.subset_mem@tok () Term)
+
+; </end encoding val FStar.Set.subset_mem>
+
+
+; <Start encoding val FStar.Set.lemma_equal_intro>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Set.lemma_equal_intro (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Set.lemma_equal_intro@tok () Term)
+
+; </end encoding val FStar.Set.lemma_equal_intro>
+
+
+; <Start encoding val FStar.Set.lemma_equal_elim>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Set.lemma_equal_elim (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Set.lemma_equal_elim@tok () Term)
+
+; </end encoding val FStar.Set.lemma_equal_elim>
+
+
+; <Start encoding val FStar.Set.lemma_equal_refl>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Set.lemma_equal_refl (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Set.lemma_equal_refl@tok () Term)
+
+; </end encoding val FStar.Set.lemma_equal_refl>
+
+
+; <Start encoding val FStar.Set.disjoint_not_in_both>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Set.disjoint_not_in_both (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Set.disjoint_not_in_both@tok () Term)
+
+; </end encoding val FStar.Set.disjoint_not_in_both>
+
+
+; <Skipped #reset-options/>
+
+
+; <Start encoding let rec as_set'>
+
+;;;;;;;;;;;;;;;;Fuel-instrumented function name
+(declare-fun FStar.Set.as_set_.fuel_instrumented (Fuel Term Term) Term)
+;;;;;;;;;;;;;;;;Token for fuel-instrumented partial applications
+(declare-fun FStar.Set.as_set_.fuel_instrumented_token () Term)
+(declare-fun FStar.Set.as_set_ (Term Term) Term)
+(declare-fun FStar.Set.as_set_@tok () Term)
+(declare-fun Tm_arrow_37c32948884378803a50151abdb3cb09 () Term)
+
+; </end encoding let rec as_set'>
+
+
+; <Start encoding let as_set>
+
+(declare-fun FStar.Set.as_set (Term Term) Term)
+
+(declare-fun FStar.Set.as_set@tok () Term)
+
+; </end encoding let as_set>
+
+
+; <Start encoding let lemma_disjoint_subset>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Set.lemma_disjoint_subset (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Set.lemma_disjoint_subset@tok () Term)
+
+; </end encoding let lemma_disjoint_subset>
+
+
+; End Externals for interface FStar.Set
+
+
+; Externals for interface FStar.Map
+
+
+; <Start encoding val FStar.Map.t>
+
+(declare-fun FStar.Map.t (Term Term) Term)
+(declare-fun Tm_arrow_2b8b9bde9fdc9f797e5827d0c154aeeb () Term)
+(declare-fun FStar.Map.t@tok () Term)
+
+; </end encoding val FStar.Map.t>
+
+
+; <Start encoding val FStar.Map.sel>
+
+(declare-fun FStar.Map.sel (Term Term Term Term) Term)
+(declare-fun Tm_arrow_28a168f8d4c6d78564a214862be72b08 () Term)
+(declare-fun FStar.Map.sel@tok () Term)
+
+; </end encoding val FStar.Map.sel>
+
+
+; <Start encoding val FStar.Map.upd>
+
+(declare-fun FStar.Map.upd (Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_b19283e90b47034162373413c6a19933 () Term)
+(declare-fun FStar.Map.upd@tok () Term)
+
+; </end encoding val FStar.Map.upd>
+
+
+; <Start encoding val FStar.Map.const>
+
+(declare-fun FStar.Map.const (Term Term Term) Term)
+(declare-fun Tm_arrow_867ad7c8cdd01bd87f415b1f9e0b39ac () Term)
+(declare-fun FStar.Map.const@tok () Term)
+
+; </end encoding val FStar.Map.const>
+
+
+; <Start encoding val FStar.Map.domain>
+
+(declare-fun FStar.Map.domain (Term Term Term) Term)
+(declare-fun Tm_arrow_6e8371e4f424600b54c69f2eb03b48d8 () Term)
+(declare-fun FStar.Map.domain@tok () Term)
+
+; </end encoding val FStar.Map.domain>
+
+
+; <Start encoding val FStar.Map.contains>
+
+(declare-fun FStar.Map.contains (Term Term Term Term) Term)
+(declare-fun Tm_arrow_32b461b2324f01c7a6bc6b577725566d () Term)
+(declare-fun FStar.Map.contains@tok () Term)
+
+; </end encoding val FStar.Map.contains>
+
+
+; <Start encoding val FStar.Map.concat>
+
+(declare-fun FStar.Map.concat (Term Term Term Term) Term)
+(declare-fun Tm_arrow_b137090ab92fa6ffe958df8f30b9f54e () Term)
+(declare-fun FStar.Map.concat@tok () Term)
+
+; </end encoding val FStar.Map.concat>
+
+
+; <Start encoding val FStar.Map.map_val>
+
+(declare-fun Tm_arrow_6980332764c4493a7b0df5c02f7aefbe (Term Term) Term)
+(declare-fun FStar.Map.map_val (Term Term Term Term Term) Term)
+
+(declare-fun Tm_arrow_9123217b92d7c89a4449fe44590b9f47 () Term)
+(declare-fun FStar.Map.map_val@tok () Term)
+
+; </end encoding val FStar.Map.map_val>
+
+
+; <Start encoding val FStar.Map.restrict>
+
+(declare-fun FStar.Map.restrict (Term Term Term Term) Term)
+(declare-fun Tm_arrow_e8f96ed4bf330326d457be2f8416d734 () Term)
+(declare-fun FStar.Map.restrict@tok () Term)
+
+; </end encoding val FStar.Map.restrict>
+
+
+; <Start encoding let const_on>
+
+(declare-fun FStar.Map.const_on (Term Term Term Term) Term)
+(declare-fun Tm_arrow_f99b4e662f3e4a97cdb11f6ede73601e () Term)
+(declare-fun FStar.Map.const_on@tok () Term)
+
+; </end encoding let const_on>
+
+
+; <Start encoding val FStar.Map.map_literal>
+
+
+(declare-fun FStar.Map.map_literal (Term Term Term) Term)
+
+(declare-fun Tm_arrow_fb1dd96195814b8107d05d25a2bbb566 () Term)
+(declare-fun FStar.Map.map_literal@tok () Term)
+
+; </end encoding val FStar.Map.map_literal>
+
+
+; <Start encoding let disjoint_dom>
+
+(declare-fun FStar.Map.disjoint_dom (Term Term Term Term) Term)
+(declare-fun Tm_arrow_556fc2b76256aeb4c51415a912920e4f () Term)
+(declare-fun FStar.Map.disjoint_dom@tok () Term)
+
+; </end encoding let disjoint_dom>
+
+
+; <Start encoding let has_dom>
+
+(declare-fun FStar.Map.has_dom (Term Term Term Term) Term)
+(declare-fun Tm_arrow_978eafbacd55316f8accb3c830570c46 () Term)
+(declare-fun FStar.Map.has_dom@tok () Term)
+
+; </end encoding let has_dom>
+
+
+; <Start encoding val FStar.Map.lemma_SelUpd1>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Map.lemma_SelUpd1 (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Map.lemma_SelUpd1@tok () Term)
+
+; </end encoding val FStar.Map.lemma_SelUpd1>
+
+
+; <Start encoding val FStar.Map.lemma_SelUpd2>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Map.lemma_SelUpd2 (Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Map.lemma_SelUpd2@tok () Term)
+
+; </end encoding val FStar.Map.lemma_SelUpd2>
+
+
+; <Start encoding val FStar.Map.lemma_SelConst>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Map.lemma_SelConst (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Map.lemma_SelConst@tok () Term)
+
+; </end encoding val FStar.Map.lemma_SelConst>
+
+
+; <Start encoding val FStar.Map.lemma_SelRestrict>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Map.lemma_SelRestrict (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Map.lemma_SelRestrict@tok () Term)
+
+; </end encoding val FStar.Map.lemma_SelRestrict>
+
+
+; <Start encoding val FStar.Map.lemma_SelConcat1>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Map.lemma_SelConcat1 (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Map.lemma_SelConcat1@tok () Term)
+
+; </end encoding val FStar.Map.lemma_SelConcat1>
+
+
+; <Start encoding val FStar.Map.lemma_SelConcat2>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Map.lemma_SelConcat2 (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Map.lemma_SelConcat2@tok () Term)
+
+; </end encoding val FStar.Map.lemma_SelConcat2>
+
+
+; <Start encoding val FStar.Map.lemma_SelMapVal>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Map.lemma_SelMapVal (Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Map.lemma_SelMapVal@tok () Term)
+
+
+; </end encoding val FStar.Map.lemma_SelMapVal>
+
+
+; <Start encoding val FStar.Map.lemma_InDomUpd1>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Map.lemma_InDomUpd1 (Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Map.lemma_InDomUpd1@tok () Term)
+
+; </end encoding val FStar.Map.lemma_InDomUpd1>
+
+
+; <Start encoding val FStar.Map.lemma_InDomUpd2>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Map.lemma_InDomUpd2 (Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Map.lemma_InDomUpd2@tok () Term)
+
+; </end encoding val FStar.Map.lemma_InDomUpd2>
+
+
+; <Start encoding val FStar.Map.lemma_InDomConstMap>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Map.lemma_InDomConstMap (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Map.lemma_InDomConstMap@tok () Term)
+
+; </end encoding val FStar.Map.lemma_InDomConstMap>
+
+
+; <Start encoding val FStar.Map.lemma_InDomConcat>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Map.lemma_InDomConcat (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Map.lemma_InDomConcat@tok () Term)
+
+; </end encoding val FStar.Map.lemma_InDomConcat>
+
+
+; <Start encoding val FStar.Map.lemma_InMapVal>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Map.lemma_InMapVal (Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Map.lemma_InMapVal@tok () Term)
+
+
+; </end encoding val FStar.Map.lemma_InMapVal>
+
+
+; <Start encoding val FStar.Map.lemma_InDomRestrict>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Map.lemma_InDomRestrict (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Map.lemma_InDomRestrict@tok () Term)
+
+; </end encoding val FStar.Map.lemma_InDomRestrict>
+
+
+; <Start encoding val FStar.Map.lemma_ContainsDom>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Map.lemma_ContainsDom (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Map.lemma_ContainsDom@tok () Term)
+
+; </end encoding val FStar.Map.lemma_ContainsDom>
+
+
+; <Start encoding val FStar.Map.lemma_UpdDomain>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Map.lemma_UpdDomain (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Map.lemma_UpdDomain@tok () Term)
+
+; </end encoding val FStar.Map.lemma_UpdDomain>
+
+
+; <Start encoding val FStar.Map.lemma_map_literal>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Map.lemma_map_literal (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Map.lemma_map_literal@tok () Term)
+
+
+; </end encoding val FStar.Map.lemma_map_literal>
+
+
+; <Start encoding val FStar.Map.equal>
+
+(declare-fun FStar.Map.equal (Term Term Term Term) Term)
+(declare-fun Tm_arrow_8d5e09121919a406639e2201d1f5d3dd () Term)
+(declare-fun FStar.Map.equal@tok () Term)
+
+; </end encoding val FStar.Map.equal>
+
+
+; <Start encoding val FStar.Map.lemma_equal_intro>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Map.lemma_equal_intro (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Map.lemma_equal_intro@tok () Term)
+
+; </end encoding val FStar.Map.lemma_equal_intro>
+
+
+; <Start encoding val FStar.Map.lemma_equal_elim>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Map.lemma_equal_elim (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Map.lemma_equal_elim@tok () Term)
+
+; </end encoding val FStar.Map.lemma_equal_elim>
+
+
+; <Start encoding val FStar.Map.lemma_equal_refl>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Map.lemma_equal_refl (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Map.lemma_equal_refl@tok () Term)
+
+; </end encoding val FStar.Map.lemma_equal_refl>
+
+
+; End Externals for interface FStar.Map
+
+
+; Externals for interface FStar.Classical.Sugar
+
+
+; <Start encoding val FStar.Classical.Sugar.forall_elim>
+
+
+(declare-fun Tm_refine_eee646ed2c0261b2e37307734e5990b8 (Term Term) Term)
+(declare-fun FStar.Classical.Sugar.forall_elim (Term Term Term Term) Term)
+
+
+(declare-fun Tm_arrow_6fad81cdc8376c5921e448133045a0b5 () Term)
+(declare-fun FStar.Classical.Sugar.forall_elim@tok () Term)
+
+; </end encoding val FStar.Classical.Sugar.forall_elim>
+
+
+; <Start encoding val FStar.Classical.Sugar.exists_elim>
+
+
+(declare-fun Tm_refine_df2d65c00128265e81a98d1694fa32db (Term Term) Term)
+(declare-fun Tm_arrow_757abf2ff34845ceba7272f2bf4c779d (Term Term Term) Term)
+(declare-fun FStar.Classical.Sugar.exists_elim (Term Term Term Term Term) Term)
+
+
+
+(declare-fun Tm_arrow_8a831fa0f832c0a8df6d5207189d1bd6 () Term)
+(declare-fun FStar.Classical.Sugar.exists_elim@tok () Term)
+
+; </end encoding val FStar.Classical.Sugar.exists_elim>
+
+
+; <Start encoding let implies_elim>
+
+(declare-fun Tm_refine_913239c2cf9dc8a14e1f047e0206138d (Term Term) Term)
+(declare-fun Tm_arrow_e5bf96e6b202d44baf035cb07df2da84 (Term) Term)
+(declare-fun FStar.Classical.Sugar.implies_elim (Term Term Term Term) Term)
+
+
+(declare-fun Tm_arrow_08b9f1333754078ddc08d25d2c8efab0 () Term)
+(declare-fun FStar.Classical.Sugar.implies_elim@tok () Term)
+
+
+
+; </end encoding let implies_elim>
+
+
+; <Start encoding val FStar.Classical.Sugar.or_elim>
+
+(declare-fun Tm_refine_953a6e4e702e848a7213bd619baaa22d (Term) Term)
+(declare-fun Tm_arrow_0e4b9f46020ce2f098f1971a515a22d9 (Term) Term)
+(declare-fun Tm_refine_044452ce08fa2077b813992baef379a7 (Term Term) Term)
+(declare-fun Tm_arrow_9d84457d1c8d2a3cb1cecf47a390b833 (Term Term) Term)
+
+(declare-fun Tm_arrow_3cd50b91a1a8ff7ae2a33f725c49ca25 (Term Term Term) Term)
+(declare-fun FStar.Classical.Sugar.or_elim (Term Term Term Term Term Term) Term)
+
+
+
+
+
+
+(declare-fun Tm_arrow_cd3704184434b709df08ad54743b9ddc () Term)
+(declare-fun FStar.Classical.Sugar.or_elim@tok () Term)
+
+; </end encoding val FStar.Classical.Sugar.or_elim>
+
+
+; <Start encoding val FStar.Classical.Sugar.and_elim>
+
+(declare-fun Tm_arrow_e617226e5c485cfca90836a8d37dc422 (Term) Term)
+(declare-fun Tm_refine_0e6764ea7cf9747bf338120e46774802 (Term Term) Term)
+(declare-fun Tm_arrow_9cf3fa74bead5ce84576f320b610d107 (Term Term Term) Term)
+(declare-fun FStar.Classical.Sugar.and_elim (Term Term Term Term Term) Term)
+
+
+
+(declare-fun Tm_arrow_46e93521f3e2b84feb3b4c45d4b82427 () Term)
+(declare-fun FStar.Classical.Sugar.and_elim@tok () Term)
+
+; </end encoding val FStar.Classical.Sugar.and_elim>
+
+
+; <Start encoding val FStar.Classical.Sugar.forall_intro>
+
+
+(declare-fun Tm_arrow_e44b1a1960e76c65248b9976ee453bf1 (Term Term) Term)
+(declare-fun FStar.Classical.Sugar.forall_intro (Term Term Term) Term)
+
+
+
+(declare-fun Tm_arrow_810fc5a930eab84e2e1c9bc10e65f526 () Term)
+(declare-fun FStar.Classical.Sugar.forall_intro@tok () Term)
+
+
+; </end encoding val FStar.Classical.Sugar.forall_intro>
+
+
+; <Start encoding val FStar.Classical.Sugar.exists_intro>
+
+
+(declare-fun Tm_arrow_1f559753133c819dcbab21eb87f04504 (Term Term) Term)
+(declare-fun FStar.Classical.Sugar.exists_intro (Term Term Term Term) Term)
+
+
+
+(declare-fun Tm_arrow_98a6ce57193d862f12aa770d807de2d6 () Term)
+(declare-fun FStar.Classical.Sugar.exists_intro@tok () Term)
+
+
+; </end encoding val FStar.Classical.Sugar.exists_intro>
+
+
+; <Start encoding val FStar.Classical.Sugar.implies_intro>
+
+
+(declare-fun Tm_arrow_8cc28639983f141a2c2b513a3b9f2226 (Term Term) Term)
+(declare-fun FStar.Classical.Sugar.implies_intro (Term Term Term) Term)
+
+
+(declare-fun Tm_refine_210741fcd012f6981d2132fb47059ae4 (Term Term) Term)
+(declare-fun Tm_arrow_16ed35ee40b45e5834d942fa129fc7a5 () Term)
+(declare-fun FStar.Classical.Sugar.implies_intro@tok () Term)
+
+
+; </end encoding val FStar.Classical.Sugar.implies_intro>
+
+
+; <Start encoding val FStar.Classical.Sugar.or_intro_left>
+
+
+
+
+(declare-fun FStar.Classical.Sugar.or_intro_left (Term Term Term) Term)
+
+
+
+
+(declare-fun Tm_arrow_ba201b0aaffa8c92349bb033309546c6 () Term)
+(declare-fun FStar.Classical.Sugar.or_intro_left@tok () Term)
+
+
+; </end encoding val FStar.Classical.Sugar.or_intro_left>
+
+
+; <Start encoding val FStar.Classical.Sugar.or_intro_right>
+
+
+
+
+(declare-fun Tm_arrow_c1f46761cba190a64ceda9e0b423d73a (Term Term) Term)
+(declare-fun FStar.Classical.Sugar.or_intro_right (Term Term Term) Term)
+
+
+
+
+
+(declare-fun Tm_arrow_820ce98d2bc904183444162411ef4873 () Term)
+(declare-fun FStar.Classical.Sugar.or_intro_right@tok () Term)
+
+
+; </end encoding val FStar.Classical.Sugar.or_intro_right>
+
+
+; <Start encoding val FStar.Classical.Sugar.and_intro>
+
+
+
+
+(declare-fun FStar.Classical.Sugar.and_intro (Term Term Term Term) Term)
+
+
+
+
+(declare-fun Tm_arrow_74dd2a70fe5b8eefc42b899233f1e113 () Term)
+(declare-fun FStar.Classical.Sugar.and_intro@tok () Term)
+
+
+; </end encoding val FStar.Classical.Sugar.and_intro>
+
+
+; End Externals for interface FStar.Classical.Sugar
+
+
+; Externals for module FStar.Mul
+
+
+; <Start encoding let op_Star>
+
+(declare-fun FStar.Mul.op_Star (Term Term) Term)
+
+(declare-fun FStar.Mul.op_Star@tok () Term)
+
+; </end encoding let op_Star>
+
+
+; End Externals for module FStar.Mul
+
+
+; Externals for interface FStar.Ghost
+
+
+; <Start encoding val FStar.Ghost.erased>
+
+(declare-fun FStar.Ghost.erased (Term) Term)
+
+(declare-fun FStar.Ghost.erased@tok () Term)
+
+; </end encoding val FStar.Ghost.erased>
+
+
+; <Start encoding val FStar.Ghost.reveal>
+
+(declare-fun FStar.Ghost.reveal (Term Term) Term)
+(declare-fun Tm_ghost_arrow_e2f4c1991753137c5a80c115428d0cef () Term)
+(declare-fun FStar.Ghost.reveal@tok () Term)
+
+; </end encoding val FStar.Ghost.reveal>
+
+
+; <Start encoding val FStar.Ghost.hide>
+
+(declare-fun FStar.Ghost.hide (Term Term) Term)
+(declare-fun Tm_arrow_643f1030585ddc96db34fbedd5533726 () Term)
+(declare-fun FStar.Ghost.hide@tok () Term)
+
+; </end encoding val FStar.Ghost.hide>
+
+
+; <Start encoding val FStar.Ghost.hide_reveal>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Ghost.hide_reveal (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Ghost.hide_reveal@tok () Term)
+
+; </end encoding val FStar.Ghost.hide_reveal>
+
+
+; <Start encoding val FStar.Ghost.reveal_hide>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Ghost.reveal_hide (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Ghost.reveal_hide@tok () Term)
+
+; </end encoding val FStar.Ghost.reveal_hide>
+
+
+; <Start encoding let tot_to_gtot>
+
+
+(declare-fun FStar.Ghost.tot_to_gtot (Term Term Term Term) Term)
+
+(declare-fun Tm_ghost_arrow_c9fd3b742fd348c1f0aa2b7131578f3e () Term)
+(declare-fun FStar.Ghost.tot_to_gtot@tok () Term)
+
+
+; </end encoding let tot_to_gtot>
+
+
+; <Start encoding let return>
+
+(declare-fun FStar.Ghost.return (Term Term) Term)
+
+(declare-fun FStar.Ghost.return@tok () Term)
+
+; </end encoding let return>
+
+
+; <Start encoding let bind>
+
+(declare-fun Tm_arrow_5716b68879f92aa07a25325dea2a598d (Term Term) Term)
+(declare-fun FStar.Ghost.bind (Term Term Term Term) Term)
+
+(declare-fun Tm_arrow_744e10832c82c923706888158b99b0fe () Term)
+(declare-fun FStar.Ghost.bind@tok () Term)
+
+
+; </end encoding let bind>
+
+
+; <Start encoding let op_let_At>
+
+
+(declare-fun FStar.Ghost.op_let_At (Term Term Term Term) Term)
+
+
+(declare-fun FStar.Ghost.op_let_At@tok () Term)
+
+
+; </end encoding let op_let_At>
+
+
+; <Start encoding let elift1>
+
+
+(declare-fun FStar.Ghost.elift1 (Term Term Term Term) Term)
+
+(declare-fun Tm_refine_785b445c1ccb59eaa8c666ff5bddec28 (Term Term Term Term) Term)
+(declare-fun Tm_arrow_da89250ece049a2244626f93975cd557 () Term)
+(declare-fun FStar.Ghost.elift1@tok () Term)
+
+
+; </end encoding let elift1>
+
+
+; <Start encoding let elift2>
+
+(declare-fun Tm_ghost_arrow_44164f5e759c8937bc211b53dca29861 (Term Term Term) Term)
+(declare-fun FStar.Ghost.elift2 (Term Term Term Term Term Term) Term)
+
+(declare-fun Tm_refine_65079789b5ee069d4dcb71b5d5562419 (Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_3bc5977a48f4c4aa4cd3ebcf331fe3f9 () Term)
+(declare-fun FStar.Ghost.elift2@tok () Term)
+
+
+; </end encoding let elift2>
+
+
+; <Start encoding let elift3>
+
+(declare-fun Tm_ghost_arrow_c3cf725ad58bf27e304b88d311d2ef4d (Term Term Term Term) Term)
+(declare-fun FStar.Ghost.elift3 (Term Term Term Term Term Term Term Term) Term)
+
+(declare-fun Tm_refine_f701336f04214efabf1dc8fb653177ef (Term Term Term Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_d597747eb30e55a029a57bb56ae3576b () Term)
+(declare-fun FStar.Ghost.elift3@tok () Term)
+
+
+; </end encoding let elift3>
+
+
+; <Start encoding let push_refinement>
+
+
+(declare-fun Tm_refine_4861ff30b18822886452f698558931e8 (Term Term) Term)
+(declare-fun FStar.Ghost.push_refinement (Term Term Term) Term)
+
+
+(declare-fun Tm_refine_36af295866c873249daf08f8d623a269 (Term Term Term) Term)
+(declare-fun Tm_arrow_08d120582cc4dfdc7e90cb9038e8f6b8 () Term)
+(declare-fun FStar.Ghost.push_refinement@tok () Term)
+
+
+
+
+
+; </end encoding let push_refinement>
+
+
+; <Start encoding let elift1_p>
+
+
+(declare-fun Tm_refine_9f8cb5a84b67f50c9d5f87a914037545 (Term Term) Term)
+(declare-fun Tm_ghost_arrow_8f538917cb02d75c44bfd86ed6834262 (Term Term Term) Term)
+
+(declare-fun FStar.Ghost.elift1_p (Term Term Term Term Term) Term)
+
+
+
+
+
+(declare-fun Tm_arrow_2f2f081c9c2a272e83f647cd86440766 () Term)
+(declare-fun FStar.Ghost.elift1_p@tok () Term)
+
+
+; </end encoding let elift1_p>
+
+
+; <Start encoding let elift2_p>
+
+
+(declare-fun Tm_refine_08698b4b6e166624b5bf789ac071b4cf (Term Term Term) Term)
+(declare-fun Tm_ghost_arrow_4f9eac2d0622ae1c34d05baa5f6854c6 (Term Term Term Term) Term)
+(declare-fun Tm_refine_50e552dc638ed7dac9f2492d99576667 (Term Term Term Term) Term)
+(declare-fun FStar.Ghost.elift2_p (Term Term Term Term Term Term Term) Term)
+
+
+
+
+
+(declare-fun Tm_arrow_4243a3f87827ef2e8c38dd30c5e8518d () Term)
+(declare-fun FStar.Ghost.elift2_p@tok () Term)
+
+
+; </end encoding let elift2_p>
+
+
+; <Start encoding let elift1_pq>
+
+
+
+(declare-fun Tm_arrow_b9b0980b05721a41304c20e612f3108f (Term Term Term) Term)
+
+
+(declare-fun Tm_ghost_arrow_3f0c334c27896d01c2e72f45e6fcb67c (Term Term Term Term) Term)
+
+(declare-fun FStar.Ghost.elift1_pq (Term Term Term Term Term Term) Term)
+
+
+
+
+
+
+
+
+(declare-fun Tm_arrow_b8eadba0211443ca5c59668f6aa4b6c9 () Term)
+(declare-fun FStar.Ghost.elift1_pq@tok () Term)
+
+
+; </end encoding let elift1_pq>
+
+
+; <Start encoding let elift2_pq>
+
+
+
+(declare-fun Tm_arrow_747965e95d1386c22f52f977256a903b (Term Term Term Term) Term)
+
+(declare-fun Tm_refine_f9e3dab5c1ea39d2741639e0fe40e216 (Term Term Term Term) Term)
+(declare-fun Tm_ghost_arrow_00838c3d276d7476d6679b97a2aa247c (Term Term Term Term Term) Term)
+
+(declare-fun FStar.Ghost.elift2_pq (Term Term Term Term Term Term Term Term) Term)
+
+
+
+
+
+
+
+
+(declare-fun Tm_arrow_b7e390954ec59dc663763c956d66957b () Term)
+(declare-fun FStar.Ghost.elift2_pq@tok () Term)
+
+
+; </end encoding let elift2_pq>
+
+
+; End Externals for interface FStar.Ghost
+
+
+; Externals for interface FStar.IndefiniteDescription
+
+
+; <Start encoding val FStar.IndefiniteDescription.elim_squash>
+
+(declare-fun FStar.IndefiniteDescription.elim_squash (Term Term) Term)
+(declare-fun Tm_ghost_arrow_c6842219f247b61822e21d8f892190b3 () Term)
+(declare-fun FStar.IndefiniteDescription.elim_squash@tok () Term)
+
+; </end encoding val FStar.IndefiniteDescription.elim_squash>
+
+
+; <Start encoding val FStar.IndefiniteDescription.indefinite_description_ghost>
+
+(declare-fun Tm_arrow_81e65de2755319ee661cc1adc7d951e3 (Term) Term)
+(declare-fun Tm_refine_4cc89ae73e7128e43010e5aba0ff060c (Term) Term)
+(declare-fun FStar.IndefiniteDescription.indefinite_description_ghost (Term Term) Term)
+
+
+
+(declare-fun Tm_ghost_arrow_feddccf07264e14202821ef1d50468a8 () Term)
+(declare-fun FStar.IndefiniteDescription.indefinite_description_ghost@tok () Term)
+
+
+; </end encoding val FStar.IndefiniteDescription.indefinite_description_ghost>
+
+
+; <Start encoding val FStar.IndefiniteDescription.indefinite_description_tot>
+
+
+
+(declare-fun FStar.IndefiniteDescription.indefinite_description_tot (Term Term) Term)
+
+
+
+(declare-fun Tm_arrow_913328739865ec1d7344ba2324047e94 () Term)
+(declare-fun FStar.IndefiniteDescription.indefinite_description_tot@tok () Term)
+
+
+; </end encoding val FStar.IndefiniteDescription.indefinite_description_tot>
+
+
+; <Start encoding val FStar.IndefiniteDescription.strong_excluded_middle>
+
+(declare-fun FStar.IndefiniteDescription.strong_excluded_middle (Term) Term)
+(declare-fun Tm_refine_2c7ecebd8a41d0890aab4251b61d6458 (Term) Term)
+(declare-fun Tm_ghost_arrow_13b822d9f45311e725609e40f68f39a1 () Term)
+(declare-fun FStar.IndefiniteDescription.strong_excluded_middle@tok () Term)
+
+
+; </end encoding val FStar.IndefiniteDescription.strong_excluded_middle>
+
+
+; <Start encoding val FStar.IndefiniteDescription.stronger_markovs_principle>
+
+(declare-fun Tm_ghost_arrow_eaf0e881316979a10a835f9aef894ea3 () Term)
+(declare-fun FStar.IndefiniteDescription.stronger_markovs_principle (Term) Term)
+
+(declare-fun Tm_refine_ce62cc380d030e5cd8dfd1cf0ea19b01 (Term) Term)
+(declare-fun Tm_ghost_arrow_0ecc4bb7783229ca7ca7edd38b0bab8d () Term)
+(declare-fun FStar.IndefiniteDescription.stronger_markovs_principle@tok () Term)
+
+
+; </end encoding val FStar.IndefiniteDescription.stronger_markovs_principle>
+
+
+; <Start encoding val FStar.IndefiniteDescription.stronger_markovs_principle_prop>
+
+(declare-fun Tm_arrow_1742ee5bbc9c9e74913cc041d85062b6 () Term)
+(declare-fun FStar.IndefiniteDescription.stronger_markovs_principle_prop (Term) Term)
+
+(declare-fun Tm_refine_e76bd1e3fcd1369d7232ec3854a8c984 (Term) Term)
+(declare-fun Tm_ghost_arrow_c21c60a4b8d9409191eea9e22a1b37db () Term)
+(declare-fun FStar.IndefiniteDescription.stronger_markovs_principle_prop@tok () Term)
+
+
+; </end encoding val FStar.IndefiniteDescription.stronger_markovs_principle_prop>
+
+
+; End Externals for interface FStar.IndefiniteDescription
+
+
+; Externals for module FStar.StrongExcludedMiddle
+
+
+; <Start encoding let strong_excluded_middle>
+
+(declare-fun FStar.StrongExcludedMiddle.strong_excluded_middle (Term) Term)
+
+
+(declare-fun FStar.StrongExcludedMiddle.strong_excluded_middle@tok () Term)
+
+
+; </end encoding let strong_excluded_middle>
+
+
+; End Externals for module FStar.StrongExcludedMiddle
+
+
+; Externals for module FStar.List.Tot.Base
+
+
+; <Skipped val FStar.List.Tot.Base.isEmpty/>
+
+
+; <Start encoding let isEmpty>
+
+(declare-fun FStar.List.Tot.Base.isEmpty (Term Term) Term)
+
+(declare-fun FStar.List.Tot.Base.isEmpty@tok () Term)
+
+; </end encoding let isEmpty>
+
+
+; <Skipped val FStar.List.Tot.Base.hd/>
+
+
+; <Start encoding let hd>
+
+
+(declare-fun FStar.List.Tot.Base.hd (Term Term) Term)
+
+
+(declare-fun FStar.List.Tot.Base.hd@tok () Term)
+
+
+; </end encoding let hd>
+
+
+; <Skipped val FStar.List.Tot.Base.tail/>
+
+
+; <Start encoding let tail>
+
+
+(declare-fun FStar.List.Tot.Base.tail (Term Term) Term)
+
+
+(declare-fun FStar.List.Tot.Base.tail@tok () Term)
+
+
+; </end encoding let tail>
+
+
+; <Skipped val FStar.List.Tot.Base.tl/>
+
+
+; <Start encoding let tl>
+
+
+(declare-fun FStar.List.Tot.Base.tl (Term Term) Term)
+
+
+(declare-fun FStar.List.Tot.Base.tl@tok () Term)
+
+
+; </end encoding let tl>
+
+
+; <Skipped val FStar.List.Tot.Base.last/>
+
+
+; <Start encoding let rec last>
+
+;;;;;;;;;;;;;;;;Fuel-instrumented function name
+(declare-fun FStar.List.Tot.Base.last.fuel_instrumented (Fuel Term Term) Term)
+;;;;;;;;;;;;;;;;Token for fuel-instrumented partial applications
+(declare-fun FStar.List.Tot.Base.last.fuel_instrumented_token () Term)
+(declare-fun FStar.List.Tot.Base.last (Term Term) Term)
+(declare-fun FStar.List.Tot.Base.last@tok () Term)
+
+
+
+
+
+; </end encoding let rec last>
+
+
+; <Skipped val FStar.List.Tot.Base.init/>
+
+
+; <Start encoding let rec init>
+
+;;;;;;;;;;;;;;;;Fuel-instrumented function name
+(declare-fun FStar.List.Tot.Base.init.fuel_instrumented (Fuel Term Term) Term)
+;;;;;;;;;;;;;;;;Token for fuel-instrumented partial applications
+(declare-fun FStar.List.Tot.Base.init.fuel_instrumented_token () Term)
+(declare-fun FStar.List.Tot.Base.init (Term Term) Term)
+(declare-fun FStar.List.Tot.Base.init@tok () Term)
+
+
+
+
+
+; </end encoding let rec init>
+
+
+; <Skipped val FStar.List.Tot.Base.length/>
+
+
+; <Start encoding let rec length>
+
+;;;;;;;;;;;;;;;;Fuel-instrumented function name
+(declare-fun FStar.List.Tot.Base.length.fuel_instrumented (Fuel Term Term) Term)
+;;;;;;;;;;;;;;;;Token for fuel-instrumented partial applications
+(declare-fun FStar.List.Tot.Base.length.fuel_instrumented_token () Term)
+(declare-fun FStar.List.Tot.Base.length (Term Term) Term)
+(declare-fun FStar.List.Tot.Base.length@tok () Term)
+(declare-fun Tm_arrow_5adbd6bc13eabd8f92e79f380e1498f0 () Term)
+
+; </end encoding let rec length>
+
+
+; <Skipped val FStar.List.Tot.Base.nth/>
+
+
+; <Start encoding let rec nth>
+
+;;;;;;;;;;;;;;;;Fuel-instrumented function name
+(declare-fun FStar.List.Tot.Base.nth.fuel_instrumented (Fuel Term Term Term) Term)
+;;;;;;;;;;;;;;;;Token for fuel-instrumented partial applications
+(declare-fun FStar.List.Tot.Base.nth.fuel_instrumented_token () Term)
+(declare-fun FStar.List.Tot.Base.nth (Term Term Term) Term)
+(declare-fun FStar.List.Tot.Base.nth@tok () Term)
+(declare-fun Tm_arrow_c96efec76dd44fb4c1c29ca8a004927d () Term)
+
+; </end encoding let rec nth>
+
+
+; <Skipped val FStar.List.Tot.Base.index/>
+
+
+; <Start encoding let rec index>
+
+;;;;;;;;;;;;;;;;Fuel-instrumented function name
+(declare-fun FStar.List.Tot.Base.index.fuel_instrumented (Fuel Term Term Term) Term)
+;;;;;;;;;;;;;;;;Token for fuel-instrumented partial applications
+(declare-fun FStar.List.Tot.Base.index.fuel_instrumented_token () Term)
+(declare-fun FStar.List.Tot.Base.index (Term Term Term) Term)
+(declare-fun FStar.List.Tot.Base.index@tok () Term)
+(declare-fun Tm_refine_c86aba5c6243e6b7f9a4b0ad41b4e9a0 (Term Term) Term)
+
+
+(declare-fun Tm_arrow_87330224a075c52374b0ca2b4b909772 () Term)
+
+; </end encoding let rec index>
+
+
+; <Skipped val FStar.List.Tot.Base.count/>
+
+
+; <Start encoding let rec count>
+
+;;;;;;;;;;;;;;;;Fuel-instrumented function name
+(declare-fun FStar.List.Tot.Base.count.fuel_instrumented (Fuel Term Term Term) Term)
+;;;;;;;;;;;;;;;;Token for fuel-instrumented partial applications
+(declare-fun FStar.List.Tot.Base.count.fuel_instrumented_token () Term)
+(declare-fun FStar.List.Tot.Base.count (Term Term Term) Term)
+(declare-fun FStar.List.Tot.Base.count@tok () Term)
+(declare-fun Tm_arrow_d7494a533e0c3edea69ad484d93aa0e5 () Term)
+
+; </end encoding let rec count>
+
+
+; <Skipped val FStar.List.Tot.Base.rev_acc/>
+
+
+; <Start encoding let rec rev_acc>
+
+;;;;;;;;;;;;;;;;Fuel-instrumented function name
+(declare-fun FStar.List.Tot.Base.rev_acc.fuel_instrumented (Fuel Term Term Term) Term)
+;;;;;;;;;;;;;;;;Token for fuel-instrumented partial applications
+(declare-fun FStar.List.Tot.Base.rev_acc.fuel_instrumented_token () Term)
+(declare-fun FStar.List.Tot.Base.rev_acc (Term Term Term) Term)
+(declare-fun FStar.List.Tot.Base.rev_acc@tok () Term)
+(declare-fun Tm_arrow_54e38bdd456bab4cdb32b5d540c2274c () Term)
+
+; </end encoding let rec rev_acc>
+
+
+; <Skipped val FStar.List.Tot.Base.rev/>
+
+
+; <Start encoding let rev>
+
+(declare-fun FStar.List.Tot.Base.rev (Term Term) Term)
+(declare-fun Tm_arrow_f9ba16c6212a483d195bbb8ceec3eef1 () Term)
+(declare-fun FStar.List.Tot.Base.rev@tok () Term)
+
+; </end encoding let rev>
+
+
+; <Skipped val FStar.List.Tot.Base.append/>
+
+
+; <Start encoding let rec append>
+
+;;;;;;;;;;;;;;;;Fuel-instrumented function name
+(declare-fun FStar.List.Tot.Base.append.fuel_instrumented (Fuel Term Term Term) Term)
+;;;;;;;;;;;;;;;;Token for fuel-instrumented partial applications
+(declare-fun FStar.List.Tot.Base.append.fuel_instrumented_token () Term)
+(declare-fun FStar.List.Tot.Base.append (Term Term Term) Term)
+(declare-fun FStar.List.Tot.Base.append@tok () Term)
+
+
+; </end encoding let rec append>
+
+
+; <Start encoding let op_At>
+
+(declare-fun FStar.List.Tot.Base.op_At (Term Term Term) Term)
+
+(declare-fun FStar.List.Tot.Base.op_At@tok () Term)
+
+; </end encoding let op_At>
+
+
+; <Skipped val FStar.List.Tot.Base.snoc/>
+
+
+; <Start encoding let snoc>
+
+(declare-fun FStar.List.Tot.Base.snoc (Term Term) Term)
+(declare-fun Tm_arrow_07ff48a1c7b541b0963ce508064e29fb () Term)
+(declare-fun FStar.List.Tot.Base.snoc@tok () Term)
+
+; </end encoding let snoc>
+
+
+; <Skipped val FStar.List.Tot.Base.flatten/>
+
+
+; <Start encoding let rec flatten>
+
+;;;;;;;;;;;;;;;;Fuel-instrumented function name
+(declare-fun FStar.List.Tot.Base.flatten.fuel_instrumented (Fuel Term Term) Term)
+;;;;;;;;;;;;;;;;Token for fuel-instrumented partial applications
+(declare-fun FStar.List.Tot.Base.flatten.fuel_instrumented_token () Term)
+(declare-fun FStar.List.Tot.Base.flatten (Term Term) Term)
+(declare-fun FStar.List.Tot.Base.flatten@tok () Term)
+(declare-fun Tm_arrow_7e18fd6b36805c1f1c9a77e024fdec2e () Term)
+
+; </end encoding let rec flatten>
+
+
+; <Skipped val FStar.List.Tot.Base.map/>
+
+
+; <Start encoding let rec map>
+
+;;;;;;;;;;;;;;;;Fuel-instrumented function name
+(declare-fun FStar.List.Tot.Base.map.fuel_instrumented (Fuel Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Token for fuel-instrumented partial applications
+(declare-fun FStar.List.Tot.Base.map.fuel_instrumented_token () Term)
+(declare-fun FStar.List.Tot.Base.map (Term Term Term Term) Term)
+(declare-fun FStar.List.Tot.Base.map@tok () Term)
+
+
+
+(declare-fun Tm_arrow_28431dcf5044bcdd56dbe625f9e3df4e () Term)
+
+; </end encoding let rec map>
+
+
+; <Skipped val FStar.List.Tot.Base.mapi_init/>
+
+
+; <Start encoding let rec mapi_init>
+
+;;;;;;;;;;;;;;;;Fuel-instrumented function name
+(declare-fun FStar.List.Tot.Base.mapi_init.fuel_instrumented (Fuel Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Token for fuel-instrumented partial applications
+(declare-fun FStar.List.Tot.Base.mapi_init.fuel_instrumented_token () Term)
+(declare-fun FStar.List.Tot.Base.mapi_init (Term Term Term Term Term) Term)
+(declare-fun FStar.List.Tot.Base.mapi_init@tok () Term)
+(declare-fun Tm_arrow_010f318679809a99aeced42f5ba95505 (Term Term) Term)
+
+
+(declare-fun Tm_arrow_9a89e146e4bb6b361bc4526b891ed1f1 () Term)
+
+; </end encoding let rec mapi_init>
+
+
+; <Skipped val FStar.List.Tot.Base.mapi/>
+
+
+; <Start encoding let mapi>
+
+
+(declare-fun FStar.List.Tot.Base.mapi (Term Term Term Term) Term)
+
+(declare-fun Tm_arrow_b2a07f422fceebd0f3ee3abd5e4aeed2 () Term)
+(declare-fun FStar.List.Tot.Base.mapi@tok () Term)
+
+
+; </end encoding let mapi>
+
+
+; <Skipped val FStar.List.Tot.Base.concatMap/>
+
+
+; <Start encoding let rec concatMap>
+
+;;;;;;;;;;;;;;;;Fuel-instrumented function name
+(declare-fun FStar.List.Tot.Base.concatMap.fuel_instrumented (Fuel Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Token for fuel-instrumented partial applications
+(declare-fun FStar.List.Tot.Base.concatMap.fuel_instrumented_token () Term)
+(declare-fun FStar.List.Tot.Base.concatMap (Term Term Term Term) Term)
+(declare-fun FStar.List.Tot.Base.concatMap@tok () Term)
+(declare-fun Tm_arrow_121fa5bc200f7b3946a5e35040f266b9 (Term Term) Term)
+
+
+(declare-fun Tm_arrow_c35dd4e5f8c08f94183bf93963fac92f () Term)
+
+; </end encoding let rec concatMap>
+
+
+; <Skipped val FStar.List.Tot.Base.fold_left/>
+
+
+; <Start encoding let rec fold_left>
+
+;;;;;;;;;;;;;;;;Fuel-instrumented function name
+(declare-fun FStar.List.Tot.Base.fold_left.fuel_instrumented (Fuel Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Token for fuel-instrumented partial applications
+(declare-fun FStar.List.Tot.Base.fold_left.fuel_instrumented_token () Term)
+(declare-fun FStar.List.Tot.Base.fold_left (Term Term Term Term Term) Term)
+(declare-fun FStar.List.Tot.Base.fold_left@tok () Term)
+(declare-fun Tm_arrow_f0225aaf6b987d44876e7f498390aa39 (Term Term) Term)
+
+
+(declare-fun Tm_arrow_230697841c1116c0d5f3958097856e6e () Term)
+
+; </end encoding let rec fold_left>
+
+
+; <Skipped val FStar.List.Tot.Base.fold_right/>
+
+
+; <Start encoding let rec fold_right>
+
+;;;;;;;;;;;;;;;;Fuel-instrumented function name
+(declare-fun FStar.List.Tot.Base.fold_right.fuel_instrumented (Fuel Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Token for fuel-instrumented partial applications
+(declare-fun FStar.List.Tot.Base.fold_right.fuel_instrumented_token () Term)
+(declare-fun FStar.List.Tot.Base.fold_right (Term Term Term Term Term) Term)
+(declare-fun FStar.List.Tot.Base.fold_right@tok () Term)
+(declare-fun Tm_arrow_3c1d21b8f6dcc5e202b4ff1cafbaba81 (Term Term) Term)
+
+
+(declare-fun Tm_arrow_105b39eeae3a464c82e64975ac399cdb () Term)
+
+; </end encoding let rec fold_right>
+
+
+; <Start encoding let rec fold_right_gtot>
+
+;;;;;;;;;;;;;;;;Fuel-instrumented function name
+(declare-fun FStar.List.Tot.Base.fold_right_gtot.fuel_instrumented (Fuel Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Token for fuel-instrumented partial applications
+(declare-fun FStar.List.Tot.Base.fold_right_gtot.fuel_instrumented_token () Term)
+(declare-fun FStar.List.Tot.Base.fold_right_gtot (Term Term Term Term Term) Term)
+(declare-fun FStar.List.Tot.Base.fold_right_gtot@tok () Term)
+(declare-fun Tm_ghost_arrow_d7e9834b8fd0407a723f5f3f4b012fdd (Term Term) Term)
+
+
+(declare-fun Tm_ghost_arrow_fab043b8cdd2296e8d98a06066e4b2d2 () Term)
+
+; </end encoding let rec fold_right_gtot>
+
+
+; <Start encoding let map_gtot>
+
+
+(declare-fun FStar.List.Tot.Base.map_gtot (Term Term Term Term) Term)
+
+(declare-fun Tm_ghost_arrow_d0c7be07105bf8d5ad60b7f603c725f3 () Term)
+(declare-fun FStar.List.Tot.Base.map_gtot@tok () Term)
+
+(declare-fun Tm_ghost_arrow_21583233c98863da294c5e5d657cf78a (Term Term) Term)
+(declare-fun Tm_abs_469cd3853c3ff3e8cd408b5521fdbd9d (Term Term Term) Term)
+
+; </end encoding let map_gtot>
+
+
+; <Skipped val FStar.List.Tot.Base.fold_left2/>
+
+
+; <Start encoding let rec fold_left2>
+
+;;;;;;;;;;;;;;;;Fuel-instrumented function name
+(declare-fun FStar.List.Tot.Base.fold_left2.fuel_instrumented (Fuel Term Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Token for fuel-instrumented partial applications
+(declare-fun FStar.List.Tot.Base.fold_left2.fuel_instrumented_token () Term)
+(declare-fun FStar.List.Tot.Base.fold_left2 (Term Term Term Term Term Term Term) Term)
+(declare-fun FStar.List.Tot.Base.fold_left2@tok () Term)
+(declare-fun Tm_arrow_40dd30796dd695d143ec6ed01d322177 (Term Term Term) Term)
+(declare-fun Tm_refine_c16bc1b61f58b349bf6fc1c94dcaf83b (Term) Term)
+
+
+
+(declare-fun Tm_arrow_3f28d1abbd43ddded682cbec516ea7bb () Term)
+
+
+; </end encoding let rec fold_left2>
+
+
+; <Start encoding let rec memP>
+
+;;;;;;;;;;;;;;;;Fuel-instrumented function name
+(declare-fun FStar.List.Tot.Base.memP.fuel_instrumented (Fuel Term Term Term) Term)
+;;;;;;;;;;;;;;;;Token for fuel-instrumented partial applications
+(declare-fun FStar.List.Tot.Base.memP.fuel_instrumented_token () Term)
+(declare-fun FStar.List.Tot.Base.memP (Term Term Term) Term)
+(declare-fun FStar.List.Tot.Base.memP@tok () Term)
+(declare-fun Tm_arrow_9a5de17321abf8ec257671c9a474c08a () Term)
+
+; </end encoding let rec memP>
+
+
+; <Skipped val FStar.List.Tot.Base.mem/>
+
+
+; <Start encoding let rec mem>
+
+;;;;;;;;;;;;;;;;Fuel-instrumented function name
+(declare-fun FStar.List.Tot.Base.mem.fuel_instrumented (Fuel Term Term Term) Term)
+;;;;;;;;;;;;;;;;Token for fuel-instrumented partial applications
+(declare-fun FStar.List.Tot.Base.mem.fuel_instrumented_token () Term)
+(declare-fun FStar.List.Tot.Base.mem (Term Term Term) Term)
+(declare-fun FStar.List.Tot.Base.mem@tok () Term)
+(declare-fun Tm_arrow_8b16b79a9f8fab7cb6911016a8022992 () Term)
+
+; </end encoding let rec mem>
+
+
+; <Start encoding let contains>
+
+(declare-fun FStar.List.Tot.Base.contains (Term Term Term) Term)
+
+(declare-fun FStar.List.Tot.Base.contains@tok () Term)
+
+; </end encoding let contains>
+
+
+; <Skipped val FStar.List.Tot.Base.existsb/>
+
+
+; <Start encoding let rec existsb>
+
+;;;;;;;;;;;;;;;;Fuel-instrumented function name
+(declare-fun FStar.List.Tot.Base.existsb.fuel_instrumented (Fuel Term Term Term) Term)
+;;;;;;;;;;;;;;;;Token for fuel-instrumented partial applications
+(declare-fun FStar.List.Tot.Base.existsb.fuel_instrumented_token () Term)
+(declare-fun FStar.List.Tot.Base.existsb (Term Term Term) Term)
+(declare-fun FStar.List.Tot.Base.existsb@tok () Term)
+
+
+
+(declare-fun Tm_arrow_98dbecc64760e6a41f037a6881cd5df8 () Term)
+
+; </end encoding let rec existsb>
+
+
+; <Skipped val FStar.List.Tot.Base.find/>
+
+
+; <Start encoding let rec find>
+
+;;;;;;;;;;;;;;;;Fuel-instrumented function name
+(declare-fun FStar.List.Tot.Base.find.fuel_instrumented (Fuel Term Term Term) Term)
+;;;;;;;;;;;;;;;;Token for fuel-instrumented partial applications
+(declare-fun FStar.List.Tot.Base.find.fuel_instrumented_token () Term)
+(declare-fun FStar.List.Tot.Base.find (Term Term Term) Term)
+(declare-fun FStar.List.Tot.Base.find@tok () Term)
+
+(declare-fun Tm_refine_3b1cb9ec3355fed185c658f53954b3fa (Term Term) Term)
+
+
+
+
+
+(declare-fun Tm_arrow_286c509b12b9a2bb9bf1025c6fd97451 () Term)
+
+
+; </end encoding let rec find>
+
+
+; <Skipped val FStar.List.Tot.Base.filter/>
+
+
+; <Start encoding let rec filter>
+
+;;;;;;;;;;;;;;;;Fuel-instrumented function name
+(declare-fun FStar.List.Tot.Base.filter.fuel_instrumented (Fuel Term Term Term) Term)
+;;;;;;;;;;;;;;;;Token for fuel-instrumented partial applications
+(declare-fun FStar.List.Tot.Base.filter.fuel_instrumented_token () Term)
+(declare-fun FStar.List.Tot.Base.filter (Term Term Term) Term)
+(declare-fun FStar.List.Tot.Base.filter@tok () Term)
+
+
+
+(declare-fun Tm_arrow_7c3df353a3c3ca9bc0a8454788aa9ad1 () Term)
+
+; </end encoding let rec filter>
+
+
+; <Start encoding let rec mem_filter>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Base.mem_filter (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Base.mem_filter@tok () Term)
+
+; </end encoding let rec mem_filter>
+
+
+; <Start encoding let mem_filter_forall>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Base.mem_filter_forall (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Base.mem_filter_forall@tok () Term)
+
+
+; </end encoding let mem_filter_forall>
+
+
+; <Skipped val FStar.List.Tot.Base.for_all/>
+
+
+; <Start encoding let rec for_all>
+
+;;;;;;;;;;;;;;;;Fuel-instrumented function name
+(declare-fun FStar.List.Tot.Base.for_all.fuel_instrumented (Fuel Term Term Term) Term)
+;;;;;;;;;;;;;;;;Token for fuel-instrumented partial applications
+(declare-fun FStar.List.Tot.Base.for_all.fuel_instrumented_token () Term)
+(declare-fun FStar.List.Tot.Base.for_all (Term Term Term) Term)
+(declare-fun FStar.List.Tot.Base.for_all@tok () Term)
+
+
+
+
+
+; </end encoding let rec for_all>
+
+
+; <Start encoding let rec for_all_mem>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Base.for_all_mem (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Base.for_all_mem@tok () Term)
+
+; </end encoding let rec for_all_mem>
+
+
+; <Skipped val FStar.List.Tot.Base.collect/>
+
+
+; <Start encoding let rec collect>
+
+;;;;;;;;;;;;;;;;Fuel-instrumented function name
+(declare-fun FStar.List.Tot.Base.collect.fuel_instrumented (Fuel Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Token for fuel-instrumented partial applications
+(declare-fun FStar.List.Tot.Base.collect.fuel_instrumented_token () Term)
+(declare-fun FStar.List.Tot.Base.collect (Term Term Term Term) Term)
+(declare-fun FStar.List.Tot.Base.collect@tok () Term)
+
+
+
+
+
+; </end encoding let rec collect>
+
+
+; <Skipped val FStar.List.Tot.Base.tryFind/>
+
+
+; <Start encoding let rec tryFind>
+
+;;;;;;;;;;;;;;;;Fuel-instrumented function name
+(declare-fun FStar.List.Tot.Base.tryFind.fuel_instrumented (Fuel Term Term Term) Term)
+;;;;;;;;;;;;;;;;Token for fuel-instrumented partial applications
+(declare-fun FStar.List.Tot.Base.tryFind.fuel_instrumented_token () Term)
+(declare-fun FStar.List.Tot.Base.tryFind (Term Term Term) Term)
+(declare-fun FStar.List.Tot.Base.tryFind@tok () Term)
+
+
+
+(declare-fun Tm_arrow_4ae6bca87a611585312b8b0d0d66fefe () Term)
+
+; </end encoding let rec tryFind>
+
+
+; <Skipped val FStar.List.Tot.Base.tryPick/>
+
+
+; <Start encoding let rec tryPick>
+
+;;;;;;;;;;;;;;;;Fuel-instrumented function name
+(declare-fun FStar.List.Tot.Base.tryPick.fuel_instrumented (Fuel Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Token for fuel-instrumented partial applications
+(declare-fun FStar.List.Tot.Base.tryPick.fuel_instrumented_token () Term)
+(declare-fun FStar.List.Tot.Base.tryPick (Term Term Term Term) Term)
+(declare-fun FStar.List.Tot.Base.tryPick@tok () Term)
+(declare-fun Tm_arrow_4b0c7cc34485afa5854ebe5c95023d4c (Term Term) Term)
+
+
+(declare-fun Tm_arrow_7fbbe8a710b97b9ed9c0d2dfb00b1641 () Term)
+
+; </end encoding let rec tryPick>
+
+
+; <Skipped val FStar.List.Tot.Base.choose/>
+
+
+; <Start encoding let rec choose>
+
+;;;;;;;;;;;;;;;;Fuel-instrumented function name
+(declare-fun FStar.List.Tot.Base.choose.fuel_instrumented (Fuel Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Token for fuel-instrumented partial applications
+(declare-fun FStar.List.Tot.Base.choose.fuel_instrumented_token () Term)
+(declare-fun FStar.List.Tot.Base.choose (Term Term Term Term) Term)
+(declare-fun FStar.List.Tot.Base.choose@tok () Term)
+
+
+
+(declare-fun Tm_arrow_ee03a7411b6d8975b285ea6c772c4d89 () Term)
+
+; </end encoding let rec choose>
+
+
+; <Skipped val FStar.List.Tot.Base.partition/>
+
+
+; <Start encoding let rec partition>
+
+;;;;;;;;;;;;;;;;Fuel-instrumented function name
+(declare-fun FStar.List.Tot.Base.partition.fuel_instrumented (Fuel Term Term Term) Term)
+;;;;;;;;;;;;;;;;Token for fuel-instrumented partial applications
+(declare-fun FStar.List.Tot.Base.partition.fuel_instrumented_token () Term)
+(declare-fun FStar.List.Tot.Base.partition (Term Term Term) Term)
+(declare-fun FStar.List.Tot.Base.partition@tok () Term)
+
+
+
+(declare-fun Tm_arrow_706f575815ce8a3bbd962da035d8aa14 () Term)
+
+; </end encoding let rec partition>
+
+
+; <Skipped val FStar.List.Tot.Base.subset/>
+
+
+; <Start encoding let rec subset>
+
+;;;;;;;;;;;;;;;;Fuel-instrumented function name
+(declare-fun FStar.List.Tot.Base.subset.fuel_instrumented (Fuel Term Term Term) Term)
+;;;;;;;;;;;;;;;;Token for fuel-instrumented partial applications
+(declare-fun FStar.List.Tot.Base.subset.fuel_instrumented_token () Term)
+(declare-fun FStar.List.Tot.Base.subset (Term Term Term) Term)
+(declare-fun FStar.List.Tot.Base.subset@tok () Term)
+(declare-fun Tm_arrow_8d819a995fc33b4cb6aa699af88e8d32 () Term)
+
+; </end encoding let rec subset>
+
+
+; <Skipped val FStar.List.Tot.Base.noRepeats/>
+
+
+; <Start encoding let rec noRepeats>
+
+;;;;;;;;;;;;;;;;Fuel-instrumented function name
+(declare-fun FStar.List.Tot.Base.noRepeats.fuel_instrumented (Fuel Term Term) Term)
+;;;;;;;;;;;;;;;;Token for fuel-instrumented partial applications
+(declare-fun FStar.List.Tot.Base.noRepeats.fuel_instrumented_token () Term)
+(declare-fun FStar.List.Tot.Base.noRepeats (Term Term) Term)
+(declare-fun FStar.List.Tot.Base.noRepeats@tok () Term)
+(declare-fun Tm_arrow_0dd285b24907a2f8b15dedffef61afa6 () Term)
+
+; </end encoding let rec noRepeats>
+
+
+; <Skipped val FStar.List.Tot.Base.no_repeats_p/>
+
+
+; <Start encoding let rec no_repeats_p>
+
+;;;;;;;;;;;;;;;;Fuel-instrumented function name
+(declare-fun FStar.List.Tot.Base.no_repeats_p.fuel_instrumented (Fuel Term Term) Term)
+;;;;;;;;;;;;;;;;Token for fuel-instrumented partial applications
+(declare-fun FStar.List.Tot.Base.no_repeats_p.fuel_instrumented_token () Term)
+(declare-fun FStar.List.Tot.Base.no_repeats_p (Term Term) Term)
+(declare-fun FStar.List.Tot.Base.no_repeats_p@tok () Term)
+(declare-fun Tm_arrow_79c2442eab9e49d1108d2b7a240dc76e () Term)
+
+; </end encoding let rec no_repeats_p>
+
+
+; <Skipped val FStar.List.Tot.Base.assoc/>
+
+
+; <Start encoding let rec assoc>
+
+;;;;;;;;;;;;;;;;Fuel-instrumented function name
+(declare-fun FStar.List.Tot.Base.assoc.fuel_instrumented (Fuel Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Token for fuel-instrumented partial applications
+(declare-fun FStar.List.Tot.Base.assoc.fuel_instrumented_token () Term)
+(declare-fun FStar.List.Tot.Base.assoc (Term Term Term Term) Term)
+(declare-fun FStar.List.Tot.Base.assoc@tok () Term)
+(declare-fun Tm_arrow_d77cf796c5b72d2c2316c0fcdad1dd79 () Term)
+
+; </end encoding let rec assoc>
+
+
+; <Skipped val FStar.List.Tot.Base.split/>
+
+
+; <Start encoding let rec split>
+
+;;;;;;;;;;;;;;;;Fuel-instrumented function name
+(declare-fun FStar.List.Tot.Base.split.fuel_instrumented (Fuel Term Term Term) Term)
+;;;;;;;;;;;;;;;;Token for fuel-instrumented partial applications
+(declare-fun FStar.List.Tot.Base.split.fuel_instrumented_token () Term)
+(declare-fun FStar.List.Tot.Base.split (Term Term Term) Term)
+(declare-fun FStar.List.Tot.Base.split@tok () Term)
+(declare-fun Tm_arrow_1c3cb31b4ffa47bc6454f5b8a25e2407 () Term)
+
+; </end encoding let rec split>
+
+
+; <Start encoding let unzip>
+
+(declare-fun FStar.List.Tot.Base.unzip (Term Term Term) Term)
+
+(declare-fun FStar.List.Tot.Base.unzip@tok () Term)
+
+; </end encoding let unzip>
+
+
+; <Skipped val FStar.List.Tot.Base.unzip3/>
+
+
+; <Start encoding let rec unzip3>
+
+;;;;;;;;;;;;;;;;Fuel-instrumented function name
+(declare-fun FStar.List.Tot.Base.unzip3.fuel_instrumented (Fuel Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Token for fuel-instrumented partial applications
+(declare-fun FStar.List.Tot.Base.unzip3.fuel_instrumented_token () Term)
+(declare-fun FStar.List.Tot.Base.unzip3 (Term Term Term Term) Term)
+(declare-fun FStar.List.Tot.Base.unzip3@tok () Term)
+(declare-fun Tm_arrow_d40be6b496fedb6f7a46205c5824b732 () Term)
+
+; </end encoding let rec unzip3>
+
+
+; <Start encoding let rec splitAt>
+
+;;;;;;;;;;;;;;;;Fuel-instrumented function name
+(declare-fun FStar.List.Tot.Base.splitAt.fuel_instrumented (Fuel Term Term Term) Term)
+;;;;;;;;;;;;;;;;Token for fuel-instrumented partial applications
+(declare-fun FStar.List.Tot.Base.splitAt.fuel_instrumented_token () Term)
+(declare-fun FStar.List.Tot.Base.splitAt (Term Term Term) Term)
+(declare-fun FStar.List.Tot.Base.splitAt@tok () Term)
+(declare-fun Tm_arrow_e36bd078e08c2ac2f1324fef6e0a4a22 () Term)
+
+; </end encoding let rec splitAt>
+
+
+; <Start encoding let rec lemma_splitAt_snd_length>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Base.lemma_splitAt_snd_length (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Base.lemma_splitAt_snd_length@tok () Term)
+
+; </end encoding let rec lemma_splitAt_snd_length>
+
+
+; <Skipped val FStar.List.Tot.Base.unsnoc/>
+
+
+; <Start encoding let unsnoc>
+
+(declare-fun Tm_refine_3f6b38b2852708f36615f9b4db0f9ff1 (Term) Term)
+(declare-fun FStar.List.Tot.Base.unsnoc (Term Term) Term)
+
+(declare-fun Tm_arrow_f4bc61622db0c39a751170734a140783 () Term)
+(declare-fun FStar.List.Tot.Base.unsnoc@tok () Term)
+
+
+; </end encoding let unsnoc>
+
+
+; <Skipped val FStar.List.Tot.Base.split3/>
+
+
+; <Start encoding let split3>
+
+
+(declare-fun FStar.List.Tot.Base.split3 (Term Term Term) Term)
+
+(declare-fun Tm_arrow_07dcb44faa0fb6172673970868e7ecff () Term)
+(declare-fun FStar.List.Tot.Base.split3@tok () Term)
+
+
+; </end encoding let split3>
+
+
+; <Skipped val FStar.List.Tot.Base.partition_length/>
+
+
+; <Start encoding let rec partition_length>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Base.partition_length (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Base.partition_length@tok () Term)
+
+; </end encoding let rec partition_length>
+
+
+; <Skipped val FStar.List.Tot.Base.bool_of_compare/>
+
+
+; <Start encoding let bool_of_compare>
+
+(declare-fun Tm_arrow_9877f854fbaabbcfda94f6c19b32ae3f (Term) Term)
+(declare-fun FStar.List.Tot.Base.bool_of_compare (Term Term Term Term) Term)
+
+(declare-fun Tm_arrow_a2f219461d35e20b7bc771538ca96429 () Term)
+(declare-fun FStar.List.Tot.Base.bool_of_compare@tok () Term)
+
+
+; </end encoding let bool_of_compare>
+
+
+; <Skipped val FStar.List.Tot.Base.compare_of_bool/>
+
+
+; <Start encoding let compare_of_bool>
+
+(declare-fun Tm_arrow_c8126b87a2c25bb477df4a7a6b0eea9e (Term) Term)
+(declare-fun FStar.List.Tot.Base.compare_of_bool (Term Term Term Term) Term)
+
+(declare-fun Tm_arrow_8b54d4820d055c327440d0d4811d3a33 () Term)
+(declare-fun FStar.List.Tot.Base.compare_of_bool@tok () Term)
+
+
+; </end encoding let compare_of_bool>
+
+
+; <Start encoding let compare_of_bool_of_compare>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Base.compare_of_bool_of_compare (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Base.compare_of_bool_of_compare@tok () Term)
+
+; </end encoding let compare_of_bool_of_compare>
+
+
+; <Skipped val FStar.List.Tot.Base.sortWith/>
+
+
+; <Start encoding let rec sortWith>
+
+;;;;;;;;;;;;;;;;Fuel-instrumented function name
+(declare-fun FStar.List.Tot.Base.sortWith.fuel_instrumented (Fuel Term Term Term) Term)
+;;;;;;;;;;;;;;;;Token for fuel-instrumented partial applications
+(declare-fun FStar.List.Tot.Base.sortWith.fuel_instrumented_token () Term)
+(declare-fun FStar.List.Tot.Base.sortWith (Term Term Term) Term)
+(declare-fun FStar.List.Tot.Base.sortWith@tok () Term)
+
+
+
+(declare-fun Tm_arrow_d29fb5884447b657cb725f9be68c5ba6 () Term)
+
+; </end encoding let rec sortWith>
+
+
+; <Start encoding let rec strict_suffix_of>
+
+;;;;;;;;;;;;;;;;Fuel-instrumented function name
+(declare-fun FStar.List.Tot.Base.strict_suffix_of.fuel_instrumented (Fuel Term Term Term) Term)
+;;;;;;;;;;;;;;;;Token for fuel-instrumented partial applications
+(declare-fun FStar.List.Tot.Base.strict_suffix_of.fuel_instrumented_token () Term)
+(declare-fun FStar.List.Tot.Base.strict_suffix_of (Term Term Term) Term)
+(declare-fun FStar.List.Tot.Base.strict_suffix_of@tok () Term)
+(declare-fun Tm_refine_da3062322c9bea8d5b2058386775b91a () Term)
+
+(declare-fun Tm_arrow_1d91178a138c1826d6a199b1613394f1 () Term)
+
+
+; </end encoding let rec strict_suffix_of>
+
+
+; <Start encoding let strict_prefix_of>
+
+(declare-fun FStar.List.Tot.Base.strict_prefix_of (Term) Term)
+
+(declare-fun Tm_arrow_0dd65914dd84642f7849df5d67086aa0 (Term) Term)
+(declare-fun Tm_arrow_25d975ae357f14f725a8d52a81f8be72 () Term)
+(declare-fun FStar.List.Tot.Base.strict_prefix_of@tok () Term)
+
+
+
+; </end encoding let strict_prefix_of>
+
+
+; <Skipped val FStar.List.Tot.Base.list_unref/>
+
+
+; <Start encoding let rec list_unref>
+
+;;;;;;;;;;;;;;;;Fuel-instrumented function name
+(declare-fun FStar.List.Tot.Base.list_unref.fuel_instrumented (Fuel Term Term Term) Term)
+;;;;;;;;;;;;;;;;Token for fuel-instrumented partial applications
+(declare-fun FStar.List.Tot.Base.list_unref.fuel_instrumented_token () Term)
+(declare-fun FStar.List.Tot.Base.list_unref (Term Term Term) Term)
+(declare-fun FStar.List.Tot.Base.list_unref@tok () Term)
+
+
+
+
+
+
+(declare-fun Tm_arrow_6b3a7706fc085133138f00ee506ef176 () Term)
+
+; </end encoding let rec list_unref>
+
+
+; <Skipped val FStar.List.Tot.Base.list_refb/>
+
+
+; <Start encoding let rec list_refb>
+
+;;;;;;;;;;;;;;;;Fuel-instrumented function name
+(declare-fun FStar.List.Tot.Base.list_refb.fuel_instrumented (Fuel Term Term Term) Term)
+;;;;;;;;;;;;;;;;Token for fuel-instrumented partial applications
+(declare-fun FStar.List.Tot.Base.list_refb.fuel_instrumented_token () Term)
+(declare-fun FStar.List.Tot.Base.list_refb (Term Term Term) Term)
+(declare-fun FStar.List.Tot.Base.list_refb@tok () Term)
+
+(declare-fun Tm_refine_3dfaece5a1f8e27ecb1367ff50145048 (Term Term) Term)
+
+
+
+
+
+(declare-fun Tm_refine_b3daba88e15ae8a9be9dd341522270b2 (Term Term Term Term) Term)
+
+(declare-fun Tm_refine_1d1ddbacd892e41ad4ba585e87296d2e (Term Term Term) Term)
+
+
+
+
+
+
+
+
+
+
+(declare-fun Tm_arrow_73c684a5823f2875fcceead4ce671ea8 () Term)
+
+
+
+
+
+
+
+; </end encoding let rec list_refb>
+
+
+; <Skipped val FStar.List.Tot.Base.list_ref/>
+
+
+; <Start encoding let rec list_ref>
+
+;;;;;;;;;;;;;;;;Fuel-instrumented function name
+(declare-fun FStar.List.Tot.Base.list_ref.fuel_instrumented (Fuel Term Term Term) Term)
+;;;;;;;;;;;;;;;;Token for fuel-instrumented partial applications
+(declare-fun FStar.List.Tot.Base.list_ref.fuel_instrumented_token () Term)
+(declare-fun FStar.List.Tot.Base.list_ref (Term Term Term) Term)
+(declare-fun FStar.List.Tot.Base.list_ref@tok () Term)
+
+(declare-fun Tm_refine_751cc4d3e845537c495f9d7e1deb8aa9 (Term Term) Term)
+
+
+
+
+
+(declare-fun Tm_refine_f61b92c00df29b87346e52dcf7670926 (Term Term Term Term) Term)
+
+(declare-fun Tm_refine_16f0c42812e28aba7e30bc8c275306fb (Term Term Term) Term)
+
+
+
+
+
+
+
+
+
+
+(declare-fun Tm_arrow_73f29356f974e35d230fb85375ad3965 () Term)
+
+
+
+
+
+
+
+; </end encoding let rec list_ref>
+
+
+; End Externals for module FStar.List.Tot.Base
+
+
+; Externals for interface FStar.List.Tot.Properties
+
+
+; <Start encoding let llist>
+
+(declare-fun FStar.List.Tot.Properties.llist (Term Term) Term)
+(declare-fun Tm_arrow_67c7b2626869cb316f118144000415b9 () Term)
+(declare-fun FStar.List.Tot.Properties.llist@tok () Term)
+(declare-fun Tm_refine_fbb3412f12fd58a91571022d7c9fa36d (Term Term) Term)
+
+; </end encoding let llist>
+
+
+; <Start encoding val FStar.List.Tot.Properties.mem_memP>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.mem_memP (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.mem_memP@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.mem_memP>
+
+
+; <Start encoding val FStar.List.Tot.Properties.lemma_index_memP>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.lemma_index_memP (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.lemma_index_memP@tok () Term)
+(declare-fun Tm_refine_bf2fa1226f2c9a0f6671df3e80ddcb8e (Term Term) Term)
+
+; </end encoding val FStar.List.Tot.Properties.lemma_index_memP>
+
+
+; <Start encoding val FStar.List.Tot.Properties.memP_empty>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.memP_empty (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.memP_empty@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.memP_empty>
+
+
+; <Start encoding val FStar.List.Tot.Properties.memP_existsb>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.memP_existsb (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.memP_existsb@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.memP_existsb>
+
+
+; <Start encoding val FStar.List.Tot.Properties.memP_map_intro>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.memP_map_intro (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.memP_map_intro@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.memP_map_intro>
+
+
+; <Start encoding val FStar.List.Tot.Properties.memP_map_elim>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.memP_map_elim (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.memP_map_elim@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.memP_map_elim>
+
+
+; <Start encoding val FStar.List.Tot.Properties.mem_empty>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.mem_empty (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.mem_empty@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.mem_empty>
+
+
+; <Start encoding val FStar.List.Tot.Properties.mem_existsb>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.mem_existsb (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.mem_existsb@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.mem_existsb>
+
+
+; <Start encoding val FStar.List.Tot.Properties.mem_count>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.mem_count (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.mem_count@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.mem_count>
+
+
+; <Start encoding val FStar.List.Tot.Properties.rev_acc_length>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.rev_acc_length (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.rev_acc_length@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.rev_acc_length>
+
+
+; <Start encoding val FStar.List.Tot.Properties.rev_length>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.rev_length (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.rev_length@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.rev_length>
+
+
+; <Start encoding val FStar.List.Tot.Properties.rev_acc_memP>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.rev_acc_memP (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.rev_acc_memP@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.rev_acc_memP>
+
+
+; <Start encoding val FStar.List.Tot.Properties.rev_memP>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.rev_memP (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.rev_memP@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.rev_memP>
+
+
+; <Start encoding val FStar.List.Tot.Properties.rev_mem>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.rev_mem (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.rev_mem@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.rev_mem>
+
+
+; <Start encoding val FStar.List.Tot.Properties.append_nil_l>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.append_nil_l (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.append_nil_l@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.append_nil_l>
+
+
+; <Start encoding val FStar.List.Tot.Properties.append_l_nil>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.append_l_nil (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.append_l_nil@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.append_l_nil>
+
+
+; <Start encoding val FStar.List.Tot.Properties.append_cons_l>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.append_cons_l (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.append_cons_l@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.append_cons_l>
+
+
+; <Start encoding val FStar.List.Tot.Properties.append_l_cons>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.append_l_cons (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.append_l_cons@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.append_l_cons>
+
+
+; <Start encoding val FStar.List.Tot.Properties.append_assoc>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.append_assoc (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.append_assoc@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.append_assoc>
+
+
+; <Start encoding val FStar.List.Tot.Properties.append_length>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.append_length (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.append_length@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.append_length>
+
+
+; <Start encoding val FStar.List.Tot.Properties.append_mem>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.append_mem (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.append_mem@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.append_mem>
+
+
+; <Start encoding val FStar.List.Tot.Properties.append_memP>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.append_memP (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.append_memP@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.append_memP>
+
+
+; <Start encoding val FStar.List.Tot.Properties.append_mem_forall>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.append_mem_forall (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.append_mem_forall@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.append_mem_forall>
+
+
+; <Start encoding val FStar.List.Tot.Properties.append_memP_forall>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.append_memP_forall (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.append_memP_forall@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.append_memP_forall>
+
+
+; <Start encoding val FStar.List.Tot.Properties.append_count>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.append_count (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.append_count@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.append_count>
+
+
+; <Start encoding val FStar.List.Tot.Properties.append_count_forall>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.append_count_forall (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.append_count_forall@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.append_count_forall>
+
+
+; <Start encoding val FStar.List.Tot.Properties.append_eq_nil>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.append_eq_nil (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.append_eq_nil@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.append_eq_nil>
+
+
+; <Start encoding val FStar.List.Tot.Properties.append_eq_singl>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.append_eq_singl (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.append_eq_singl@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.append_eq_singl>
+
+
+; <Start encoding val FStar.List.Tot.Properties.append_inv_head>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.append_inv_head (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.append_inv_head@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.append_inv_head>
+
+
+; <Start encoding val FStar.List.Tot.Properties.append_inv_tail>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.append_inv_tail (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.append_inv_tail@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.append_inv_tail>
+
+
+; <Start encoding val FStar.List.Tot.Properties.append_length_inv_head>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.append_length_inv_head (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.append_length_inv_head@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.append_length_inv_head>
+
+
+; <Start encoding val FStar.List.Tot.Properties.append_length_inv_tail>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.append_length_inv_tail (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.append_length_inv_tail@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.append_length_inv_tail>
+
+
+; <Start encoding val FStar.List.Tot.Properties.append_injective>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.append_injective (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.append_injective@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.append_injective>
+
+
+; <Start encoding val FStar.List.Tot.Properties.lemma_append_last>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.lemma_append_last (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.lemma_append_last@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.lemma_append_last>
+
+
+; <Start encoding let rec rev'>
+
+;;;;;;;;;;;;;;;;Fuel-instrumented function name
+(declare-fun FStar.List.Tot.Properties.rev_.fuel_instrumented (Fuel Term Term) Term)
+;;;;;;;;;;;;;;;;Token for fuel-instrumented partial applications
+(declare-fun FStar.List.Tot.Properties.rev_.fuel_instrumented_token () Term)
+(declare-fun FStar.List.Tot.Properties.rev_ (Term Term) Term)
+(declare-fun FStar.List.Tot.Properties.rev_@tok () Term)
+
+
+; </end encoding let rec rev'>
+
+
+; <Start encoding let rev'T>
+
+(declare-fun FStar.List.Tot.Properties.rev_T (Term) Term)
+(declare-fun Tm_arrow_f34ce2ad5441b4bd300fa100b397737d (Term) Term)
+(declare-fun Tm_arrow_42c6b27a859866d5307ff94c9f459cb1 () Term)
+(declare-fun FStar.List.Tot.Properties.rev_T@tok () Term)
+
+
+; </end encoding let rev'T>
+
+
+; <Start encoding val FStar.List.Tot.Properties.rev_acc_rev'>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.rev_acc_rev_ (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.rev_acc_rev_@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.rev_acc_rev'>
+
+
+; <Start encoding val FStar.List.Tot.Properties.rev_rev'>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.rev_rev_ (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.rev_rev_@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.rev_rev'>
+
+
+; <Start encoding val FStar.List.Tot.Properties.rev'_append>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.rev__append (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.rev__append@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.rev'_append>
+
+
+; <Start encoding val FStar.List.Tot.Properties.rev_append>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.rev_append (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.rev_append@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.rev_append>
+
+
+; <Start encoding val FStar.List.Tot.Properties.rev'_involutive>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.rev__involutive (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.rev__involutive@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.rev'_involutive>
+
+
+; <Start encoding val FStar.List.Tot.Properties.rev_involutive>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.rev_involutive (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.rev_involutive@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.rev_involutive>
+
+
+; <Start encoding val FStar.List.Tot.Properties.lemma_snoc_length>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.lemma_snoc_length (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.lemma_snoc_length@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.lemma_snoc_length>
+
+
+; <Start encoding val FStar.List.Tot.Properties.rev'_list_ind>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.rev__list_ind (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.rev__list_ind@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.rev'_list_ind>
+
+
+; <Start encoding val FStar.List.Tot.Properties.rev_ind>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.rev_ind (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.rev_ind@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.rev_ind>
+
+
+; <Start encoding val FStar.List.Tot.Properties.map_lemma>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.map_lemma (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.map_lemma@tok () Term)
+
+
+; </end encoding val FStar.List.Tot.Properties.map_lemma>
+
+
+; <Start encoding val FStar.List.Tot.Properties.lemma_unsnoc_snoc>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.lemma_unsnoc_snoc (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.lemma_unsnoc_snoc@tok () Term)
+(declare-fun Tm_refine_e88aba6d4c79a5625ab4330932edf7ed (Term) Term)
+
+; </end encoding val FStar.List.Tot.Properties.lemma_unsnoc_snoc>
+
+
+; <Start encoding val FStar.List.Tot.Properties.lemma_snoc_unsnoc>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.lemma_snoc_unsnoc (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.lemma_snoc_unsnoc@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.lemma_snoc_unsnoc>
+
+
+; <Start encoding val FStar.List.Tot.Properties.lemma_unsnoc_length>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.lemma_unsnoc_length (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.lemma_unsnoc_length@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.lemma_unsnoc_length>
+
+
+; <Start encoding val FStar.List.Tot.Properties.lemma_unsnoc_append>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.lemma_unsnoc_append (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.lemma_unsnoc_append@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.lemma_unsnoc_append>
+
+
+; <Start encoding val FStar.List.Tot.Properties.lemma_unsnoc_is_last>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.lemma_unsnoc_is_last (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.lemma_unsnoc_is_last@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.lemma_unsnoc_is_last>
+
+
+; <Start encoding val FStar.List.Tot.Properties.lemma_unsnoc_index>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.lemma_unsnoc_index (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.lemma_unsnoc_index@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.lemma_unsnoc_index>
+
+
+; <Start encoding let rec split_using>
+
+;;;;;;;;;;;;;;;;Fuel-instrumented function name
+(declare-fun FStar.List.Tot.Properties.split_using.fuel_instrumented (Fuel Term Term Term) Term)
+;;;;;;;;;;;;;;;;Token for fuel-instrumented partial applications
+(declare-fun FStar.List.Tot.Properties.split_using.fuel_instrumented_token () Term)
+(declare-fun FStar.List.Tot.Properties.split_using (Term Term Term) Term)
+(declare-fun FStar.List.Tot.Properties.split_using@tok () Term)
+(declare-fun Tm_refine_ca5b6dc4e0a851997703798a1ffc5f70 (Term Term) Term)
+
+
+(declare-fun Tm_ghost_arrow_583c096a402961cd40d8b718fb07bacc () Term)
+
+; </end encoding let rec split_using>
+
+
+; <Start encoding val FStar.List.Tot.Properties.lemma_split_using>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.lemma_split_using (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.lemma_split_using@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.lemma_split_using>
+
+
+; <Start encoding let rec index_of>
+
+;;;;;;;;;;;;;;;;Fuel-instrumented function name
+(declare-fun FStar.List.Tot.Properties.index_of.fuel_instrumented (Fuel Term Term Term) Term)
+;;;;;;;;;;;;;;;;Token for fuel-instrumented partial applications
+(declare-fun FStar.List.Tot.Properties.index_of.fuel_instrumented_token () Term)
+(declare-fun FStar.List.Tot.Properties.index_of (Term Term Term) Term)
+(declare-fun FStar.List.Tot.Properties.index_of@tok () Term)
+
+(declare-fun Tm_refine_cd45ecc9daf74409c394004efbaa3338 (Term Term Term) Term)
+
+
+
+(declare-fun Tm_ghost_arrow_d9cd5e48f458f8c211c59f9048af3929 () Term)
+
+
+; </end encoding let rec index_of>
+
+
+; <Start encoding val FStar.List.Tot.Properties.partition_mem>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.partition_mem (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.partition_mem@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.partition_mem>
+
+
+; <Start encoding val FStar.List.Tot.Properties.partition_mem_forall>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.partition_mem_forall (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.partition_mem_forall@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.partition_mem_forall>
+
+
+; <Start encoding val FStar.List.Tot.Properties.partition_mem_p_forall>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.partition_mem_p_forall (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.partition_mem_p_forall@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.partition_mem_p_forall>
+
+
+; <Start encoding val FStar.List.Tot.Properties.partition_count>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.partition_count (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.partition_count@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.partition_count>
+
+
+; <Start encoding val FStar.List.Tot.Properties.partition_count_forall>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.partition_count_forall (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.partition_count_forall@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.partition_count_forall>
+
+
+; <Start encoding val FStar.List.Tot.Properties.mem_subset>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.mem_subset (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.mem_subset@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.mem_subset>
+
+
+; <Start encoding val FStar.List.Tot.Properties.subset_reflexive>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.subset_reflexive (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.subset_reflexive@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.subset_reflexive>
+
+
+; <Start encoding val FStar.List.Tot.Properties.sortWith_permutation>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.sortWith_permutation (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.sortWith_permutation@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.sortWith_permutation>
+
+
+; <Start encoding let rec sorted>
+
+;;;;;;;;;;;;;;;;Fuel-instrumented function name
+(declare-fun FStar.List.Tot.Properties.sorted.fuel_instrumented (Fuel Term Term) Term)
+;;;;;;;;;;;;;;;;Token for fuel-instrumented partial applications
+(declare-fun FStar.List.Tot.Properties.sorted.fuel_instrumented_token () Term)
+(declare-fun FStar.List.Tot.Properties.sorted (Term Term) Term)
+(declare-fun FStar.List.Tot.Properties.sorted@tok () Term)
+
+(declare-fun Tm_arrow_9cabe840930f95fd18f81c0a913ddb25 (Term) Term)
+(declare-fun Tm_abs_4bfb53c1305d6fe7222f07cf49f467b6 (Term Term Fuel Term) Term)
+
+
+
+
+(declare-fun Tm_arrow_af42ab660b7a2cfc6caea649532e5867 () Term)
+
+
+; </end encoding let rec sorted>
+
+
+; <Start encoding let total_order>
+
+
+(declare-fun FStar.List.Tot.Properties.total_order (Term Term) Term)
+
+(declare-fun Tm_arrow_92649d42e4d7df07b51f92b06355903e () Term)
+(declare-fun FStar.List.Tot.Properties.total_order@tok () Term)
+
+
+; </end encoding let total_order>
+
+
+; <Start encoding val FStar.List.Tot.Properties.append_sorted>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.append_sorted (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.append_sorted@tok () Term)
+
+(declare-fun Tm_refine_a928c26e721d07631e5f0d63f521a37e (Term Term) Term)
+
+
+; </end encoding val FStar.List.Tot.Properties.append_sorted>
+
+
+; <Start encoding val FStar.List.Tot.Properties.sortWith_sorted>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.sortWith_sorted (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.sortWith_sorted@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.sortWith_sorted>
+
+
+; <Start encoding val FStar.List.Tot.Properties.noRepeats_nil>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.noRepeats_nil (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.noRepeats_nil@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.noRepeats_nil>
+
+
+; <Start encoding val FStar.List.Tot.Properties.noRepeats_cons>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.noRepeats_cons (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.noRepeats_cons@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.noRepeats_cons>
+
+
+; <Start encoding val FStar.List.Tot.Properties.noRepeats_append_elim>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.noRepeats_append_elim (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.noRepeats_append_elim@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.noRepeats_append_elim>
+
+
+; <Start encoding val FStar.List.Tot.Properties.noRepeats_append_intro>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.noRepeats_append_intro (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.noRepeats_append_intro@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.noRepeats_append_intro>
+
+
+; <Start encoding val FStar.List.Tot.Properties.no_repeats_p_nil>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.no_repeats_p_nil (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.no_repeats_p_nil@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.no_repeats_p_nil>
+
+
+; <Start encoding val FStar.List.Tot.Properties.no_repeats_p_cons>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.no_repeats_p_cons (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.no_repeats_p_cons@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.no_repeats_p_cons>
+
+
+; <Start encoding val FStar.List.Tot.Properties.no_repeats_p_append_elim>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.no_repeats_p_append_elim (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.no_repeats_p_append_elim@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.no_repeats_p_append_elim>
+
+
+; <Start encoding val FStar.List.Tot.Properties.no_repeats_p_append_intro>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.no_repeats_p_append_intro (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.no_repeats_p_append_intro@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.no_repeats_p_append_intro>
+
+
+; <Start encoding val FStar.List.Tot.Properties.no_repeats_p_append>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.no_repeats_p_append (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.no_repeats_p_append@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.no_repeats_p_append>
+
+
+; <Start encoding val FStar.List.Tot.Properties.no_repeats_p_append_swap>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.no_repeats_p_append_swap (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.no_repeats_p_append_swap@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.no_repeats_p_append_swap>
+
+
+; <Start encoding val FStar.List.Tot.Properties.no_repeats_p_append_permut>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.no_repeats_p_append_permut (Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.no_repeats_p_append_permut@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.no_repeats_p_append_permut>
+
+
+; <Start encoding val FStar.List.Tot.Properties.no_repeats_p_false_intro>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.no_repeats_p_false_intro (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.no_repeats_p_false_intro@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.no_repeats_p_false_intro>
+
+
+; <Start encoding val FStar.List.Tot.Properties.assoc_nil>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.assoc_nil (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.assoc_nil@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.assoc_nil>
+
+
+; <Start encoding val FStar.List.Tot.Properties.assoc_cons_eq>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.assoc_cons_eq (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.assoc_cons_eq@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.assoc_cons_eq>
+
+
+; <Start encoding val FStar.List.Tot.Properties.assoc_cons_not_eq>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.assoc_cons_not_eq (Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.assoc_cons_not_eq@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.assoc_cons_not_eq>
+
+
+; <Start encoding val FStar.List.Tot.Properties.assoc_append_elim_r>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.assoc_append_elim_r (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.assoc_append_elim_r@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.assoc_append_elim_r>
+
+
+; <Start encoding val FStar.List.Tot.Properties.assoc_append_elim_l>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.assoc_append_elim_l (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.assoc_append_elim_l@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.assoc_append_elim_l>
+
+
+; <Start encoding val FStar.List.Tot.Properties.assoc_memP_some>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.assoc_memP_some (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.assoc_memP_some@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.assoc_memP_some>
+
+
+; <Start encoding val FStar.List.Tot.Properties.assoc_memP_none>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.assoc_memP_none (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.assoc_memP_none@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.assoc_memP_none>
+
+
+; <Start encoding val FStar.List.Tot.Properties.assoc_mem>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.assoc_mem (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.assoc_mem@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.assoc_mem>
+
+
+; <Start encoding val FStar.List.Tot.Properties.fold_left_invar>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.fold_left_invar (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.fold_left_invar@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.fold_left_invar>
+
+
+; <Start encoding val FStar.List.Tot.Properties.fold_left_map>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.fold_left_map (Term Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.fold_left_map@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.fold_left_map>
+
+
+; <Start encoding val FStar.List.Tot.Properties.map_append>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.map_append (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.map_append@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.map_append>
+
+
+; <Start encoding val FStar.List.Tot.Properties.fold_left_append>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.fold_left_append (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.fold_left_append@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.fold_left_append>
+
+
+; <Start encoding val FStar.List.Tot.Properties.fold_left_monoid>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.fold_left_monoid (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.fold_left_monoid@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.fold_left_monoid>
+
+
+; <Start encoding val FStar.List.Tot.Properties.fold_left_append_monoid>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.fold_left_append_monoid (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.fold_left_append_monoid@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.fold_left_append_monoid>
+
+
+; <Start encoding val FStar.List.Tot.Properties.index_extensionality>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.index_extensionality (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.index_extensionality@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.index_extensionality>
+
+
+; <Start encoding val FStar.List.Tot.Properties.strict_suffix_of_nil>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.strict_suffix_of_nil (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.strict_suffix_of_nil@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.strict_suffix_of_nil>
+
+
+; <Start encoding val FStar.List.Tot.Properties.strict_suffix_of_or_eq_nil>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.strict_suffix_of_or_eq_nil (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.strict_suffix_of_or_eq_nil@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.strict_suffix_of_or_eq_nil>
+
+
+; <Start encoding val FStar.List.Tot.Properties.strict_suffix_of_cons>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.strict_suffix_of_cons (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.strict_suffix_of_cons@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.strict_suffix_of_cons>
+
+
+; <Start encoding val FStar.List.Tot.Properties.strict_suffix_of_trans>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.strict_suffix_of_trans (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.strict_suffix_of_trans@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.strict_suffix_of_trans>
+
+
+; <Start encoding val FStar.List.Tot.Properties.strict_suffix_of_correct>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.strict_suffix_of_correct (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.strict_suffix_of_correct@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.strict_suffix_of_correct>
+
+
+; <Start encoding val FStar.List.Tot.Properties.map_strict_suffix_of>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.map_strict_suffix_of (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.map_strict_suffix_of@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.map_strict_suffix_of>
+
+
+; <Start encoding val FStar.List.Tot.Properties.mem_strict_suffix_of>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.mem_strict_suffix_of (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.mem_strict_suffix_of@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.mem_strict_suffix_of>
+
+
+; <Start encoding val FStar.List.Tot.Properties.strict_suffix_of_exists_append>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.strict_suffix_of_exists_append (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.strict_suffix_of_exists_append@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.strict_suffix_of_exists_append>
+
+
+; <Start encoding val FStar.List.Tot.Properties.strict_suffix_of_or_eq_exists_append>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.strict_suffix_of_or_eq_exists_append (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.strict_suffix_of_or_eq_exists_append@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.strict_suffix_of_or_eq_exists_append>
+
+
+; <Start encoding val FStar.List.Tot.Properties.precedes_tl>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.precedes_tl (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.precedes_tl@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.precedes_tl>
+
+
+; <Start encoding val FStar.List.Tot.Properties.precedes_append_cons_r>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.precedes_append_cons_r (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.precedes_append_cons_r@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.precedes_append_cons_r>
+
+
+; <Start encoding val FStar.List.Tot.Properties.precedes_append_cons_prod_r>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.precedes_append_cons_prod_r (Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.precedes_append_cons_prod_r@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.precedes_append_cons_prod_r>
+
+
+; <Start encoding val FStar.List.Tot.Properties.memP_precedes>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.memP_precedes (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.memP_precedes@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.memP_precedes>
+
+
+; <Start encoding val FStar.List.Tot.Properties.assoc_precedes>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.assoc_precedes (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.assoc_precedes@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.assoc_precedes>
+
+
+; <Start encoding val FStar.List.Tot.Properties.find_none>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.find_none (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.find_none@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.find_none>
+
+
+; <Start encoding val FStar.List.Tot.Properties.append_init_last>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.append_init_last (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.append_init_last@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.append_init_last>
+
+
+; <Start encoding val FStar.List.Tot.Properties.init_last_def>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.init_last_def (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.init_last_def@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.init_last_def>
+
+
+; <Start encoding val FStar.List.Tot.Properties.init_last_inj>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.init_last_inj (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.init_last_inj@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.init_last_inj>
+
+
+; <Start encoding val FStar.List.Tot.Properties.for_all_append>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.List.Tot.Properties.for_all_append (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.List.Tot.Properties.for_all_append@tok () Term)
+
+; </end encoding val FStar.List.Tot.Properties.for_all_append>
+
+
+; End Externals for interface FStar.List.Tot.Properties
+
+
+; Externals for module FStar.List.Tot
+
+
+; End Externals for module FStar.List.Tot
+
+
+; Externals for interface FStar.Seq.Base
+
+
+; <Start encoding val FStar.Seq.Base.seq>
+
+(declare-fun FStar.Seq.Base.seq (Term) Term)
+
+(declare-fun FStar.Seq.Base.seq@tok () Term)
+
+; </end encoding val FStar.Seq.Base.seq>
+
+
+; <Start encoding val FStar.Seq.Base.length>
+
+(declare-fun FStar.Seq.Base.length (Term Term) Term)
+(declare-fun Tm_arrow_d2c01593e1ccf972aadc4bced72f8166 () Term)
+(declare-fun FStar.Seq.Base.length@tok () Term)
+
+; </end encoding val FStar.Seq.Base.length>
+
+
+; <Start encoding val FStar.Seq.Base.seq_to_list>
+
+(declare-fun FStar.Seq.Base.seq_to_list (Term Term) Term)
+(declare-fun Tm_refine_c4e3a92f9bd1d01a07e4fb66c5de2e7e (Term Term) Term)
+(declare-fun Tm_arrow_7d1aeb9cf9244f8c50e0ad901486a03b () Term)
+(declare-fun FStar.Seq.Base.seq_to_list@tok () Term)
+
+
+; </end encoding val FStar.Seq.Base.seq_to_list>
+
+
+; <Start encoding val FStar.Seq.Base.seq_of_list>
+
+(declare-fun FStar.Seq.Base.seq_of_list (Term Term) Term)
+(declare-fun Tm_refine_d2d1ea66f2b3a92c2deb42edcbb784ce (Term Term) Term)
+(declare-fun Tm_arrow_4966fa2986a35d9c0803c863a2768cbd () Term)
+(declare-fun FStar.Seq.Base.seq_of_list@tok () Term)
+
+
+; </end encoding val FStar.Seq.Base.seq_of_list>
+
+
+; <Start encoding val FStar.Seq.Base.index>
+
+(declare-fun Tm_refine_d83f8da8ef6c1cb9f71d1465c1bb1c55 (Term Term) Term)
+(declare-fun FStar.Seq.Base.index (Term Term Term) Term)
+
+(declare-fun Tm_arrow_1910ef5262f2ee8e712b6609a232b1ea () Term)
+(declare-fun FStar.Seq.Base.index@tok () Term)
+
+; </end encoding val FStar.Seq.Base.index>
+
+
+; <Start encoding val FStar.Seq.Base.create>
+
+(declare-fun FStar.Seq.Base.create (Term Term Term) Term)
+(declare-fun Tm_arrow_b5b3d4fcc48eb666a8878550e50df9fb () Term)
+(declare-fun FStar.Seq.Base.create@tok () Term)
+
+; </end encoding val FStar.Seq.Base.create>
+
+
+; <Start encoding val FStar.Seq.Base.init_aux>
+
+(declare-fun Tm_refine_c1424615841f28cac7fc34e92b7ff33c (Term) Term)
+
+(declare-fun Tm_arrow_44bb45ed5c2534b346e0f58ea5033251 (Term Term) Term)
+(declare-fun FStar.Seq.Base.init_aux (Term Term Term Term) Term)
+
+
+
+(declare-fun Tm_arrow_da6bbab10714c064205223f9990745bd () Term)
+(declare-fun FStar.Seq.Base.init_aux@tok () Term)
+
+; </end encoding val FStar.Seq.Base.init_aux>
+
+
+; <Start encoding val FStar.Seq.Base.init>
+
+
+
+(declare-fun FStar.Seq.Base.init (Term Term Term) Term)
+
+
+(declare-fun Tm_arrow_d638d84259a58eff38c91944355ac313 () Term)
+(declare-fun FStar.Seq.Base.init@tok () Term)
+
+; </end encoding val FStar.Seq.Base.init>
+
+
+; <Start encoding val FStar.Seq.Base.init_aux_ghost>
+
+
+
+(declare-fun Tm_ghost_arrow_b7c239afcc620812134a759b53cafcc7 (Term Term) Term)
+(declare-fun FStar.Seq.Base.init_aux_ghost (Term Term Term Term) Term)
+
+
+
+(declare-fun Tm_ghost_arrow_90c084cce85ad5fa9b6789a83ba7b9d5 () Term)
+(declare-fun FStar.Seq.Base.init_aux_ghost@tok () Term)
+
+; </end encoding val FStar.Seq.Base.init_aux_ghost>
+
+
+; <Start encoding val FStar.Seq.Base.init_ghost>
+
+
+
+(declare-fun FStar.Seq.Base.init_ghost (Term Term Term) Term)
+
+
+(declare-fun Tm_ghost_arrow_dc3e2497ae3914facc1bb3cecddbafe4 () Term)
+(declare-fun FStar.Seq.Base.init_ghost@tok () Term)
+
+; </end encoding val FStar.Seq.Base.init_ghost>
+
+
+; <Start encoding val FStar.Seq.Base.empty>
+
+(declare-fun FStar.Seq.Base.empty (Term) Term)
+(declare-fun Tm_refine_b913a3f691ca99086652e0a655e72f17 (Term) Term)
+(declare-fun Tm_arrow_c39fb4e3e203a822394c714f70ec2d2c () Term)
+(declare-fun FStar.Seq.Base.empty@tok () Term)
+
+
+; </end encoding val FStar.Seq.Base.empty>
+
+
+; <Start encoding let createEmpty>
+
+(declare-fun FStar.Seq.Base.createEmpty (Term) Term)
+
+
+(declare-fun FStar.Seq.Base.createEmpty@tok () Term)
+
+
+; </end encoding let createEmpty>
+
+
+; <Start encoding val FStar.Seq.Base.lemma_empty>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Seq.Base.lemma_empty (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Seq.Base.lemma_empty@tok () Term)
+
+; </end encoding val FStar.Seq.Base.lemma_empty>
+
+
+; <Start encoding val FStar.Seq.Base.upd>
+
+
+(declare-fun FStar.Seq.Base.upd (Term Term Term Term) Term)
+
+(declare-fun Tm_arrow_12766e98f50c8b91e296bbc369061265 () Term)
+(declare-fun FStar.Seq.Base.upd@tok () Term)
+
+; </end encoding val FStar.Seq.Base.upd>
+
+
+; <Start encoding val FStar.Seq.Base.append>
+
+(declare-fun FStar.Seq.Base.append (Term Term Term) Term)
+(declare-fun Tm_arrow_22c1b165cc91e8aafbceb8b36244be8e () Term)
+(declare-fun FStar.Seq.Base.append@tok () Term)
+
+; </end encoding val FStar.Seq.Base.append>
+
+
+; <Start encoding let cons>
+
+(declare-fun FStar.Seq.Base.cons (Term Term Term) Term)
+(declare-fun Tm_arrow_62ad6018b578ef7ed3c0e74bdebff729 () Term)
+(declare-fun FStar.Seq.Base.cons@tok () Term)
+
+; </end encoding let cons>
+
+
+; <Start encoding let op_At_Bar>
+
+(declare-fun FStar.Seq.Base.op_At_Bar (Term Term Term) Term)
+
+(declare-fun FStar.Seq.Base.op_At_Bar@tok () Term)
+
+; </end encoding let op_At_Bar>
+
+
+; <Start encoding val FStar.Seq.Base.slice>
+
+(declare-fun Tm_refine_81407705a0828c2c1b1976675443f647 (Term Term Term) Term)
+(declare-fun FStar.Seq.Base.slice (Term Term Term Term) Term)
+
+(declare-fun Tm_arrow_f59809c98fadf275c00ce819f5868628 () Term)
+(declare-fun FStar.Seq.Base.slice@tok () Term)
+
+; </end encoding val FStar.Seq.Base.slice>
+
+
+; <Start encoding val FStar.Seq.Base.lemma_seq_of_seq_to_list>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Seq.Base.lemma_seq_of_seq_to_list (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Seq.Base.lemma_seq_of_seq_to_list@tok () Term)
+
+; </end encoding val FStar.Seq.Base.lemma_seq_of_seq_to_list>
+
+
+; <Start encoding val FStar.Seq.Base.lemma_seq_to_seq_of_list>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Seq.Base.lemma_seq_to_seq_of_list (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Seq.Base.lemma_seq_to_seq_of_list@tok () Term)
+
+; </end encoding val FStar.Seq.Base.lemma_seq_to_seq_of_list>
+
+
+; <Start encoding val FStar.Seq.Base.lemma_seq_of_list_cons>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Seq.Base.lemma_seq_of_list_cons (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Seq.Base.lemma_seq_of_list_cons@tok () Term)
+
+; </end encoding val FStar.Seq.Base.lemma_seq_of_list_cons>
+
+
+; <Start encoding val FStar.Seq.Base.lemma_seq_to_list_cons>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Seq.Base.lemma_seq_to_list_cons (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Seq.Base.lemma_seq_to_list_cons@tok () Term)
+
+; </end encoding val FStar.Seq.Base.lemma_seq_to_list_cons>
+
+
+; <Start encoding val FStar.Seq.Base.lemma_create_len>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Seq.Base.lemma_create_len (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Seq.Base.lemma_create_len@tok () Term)
+
+; </end encoding val FStar.Seq.Base.lemma_create_len>
+
+
+; <Start encoding val FStar.Seq.Base.lemma_init_len>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Seq.Base.lemma_init_len (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Seq.Base.lemma_init_len@tok () Term)
+
+
+
+; </end encoding val FStar.Seq.Base.lemma_init_len>
+
+
+; <Start encoding val FStar.Seq.Base.lemma_init_aux_len>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Seq.Base.lemma_init_aux_len (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Seq.Base.lemma_init_aux_len@tok () Term)
+
+
+
+
+; </end encoding val FStar.Seq.Base.lemma_init_aux_len>
+
+
+; <Start encoding val FStar.Seq.Base.lemma_init_ghost_len>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Seq.Base.lemma_init_ghost_len (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Seq.Base.lemma_init_ghost_len@tok () Term)
+
+
+
+; </end encoding val FStar.Seq.Base.lemma_init_ghost_len>
+
+
+; <Start encoding val FStar.Seq.Base.lemma_init_ghost_aux_len>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Seq.Base.lemma_init_ghost_aux_len (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Seq.Base.lemma_init_ghost_aux_len@tok () Term)
+
+
+
+
+; </end encoding val FStar.Seq.Base.lemma_init_ghost_aux_len>
+
+
+; <Start encoding val FStar.Seq.Base.lemma_len_upd>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Seq.Base.lemma_len_upd (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Seq.Base.lemma_len_upd@tok () Term)
+(declare-fun Tm_refine_2ca062977a42c36634b89c1c4f193f79 (Term Term) Term)
+
+; </end encoding val FStar.Seq.Base.lemma_len_upd>
+
+
+; <Start encoding val FStar.Seq.Base.lemma_len_append>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Seq.Base.lemma_len_append (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Seq.Base.lemma_len_append@tok () Term)
+
+; </end encoding val FStar.Seq.Base.lemma_len_append>
+
+
+; <Start encoding val FStar.Seq.Base.lemma_len_slice>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Seq.Base.lemma_len_slice (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Seq.Base.lemma_len_slice@tok () Term)
+
+
+; </end encoding val FStar.Seq.Base.lemma_len_slice>
+
+
+; <Start encoding val FStar.Seq.Base.lemma_index_create>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Seq.Base.lemma_index_create (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Seq.Base.lemma_index_create@tok () Term)
+
+
+; </end encoding val FStar.Seq.Base.lemma_index_create>
+
+
+; <Start encoding val FStar.Seq.Base.lemma_index_upd1>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Seq.Base.lemma_index_upd1 (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Seq.Base.lemma_index_upd1@tok () Term)
+
+
+; </end encoding val FStar.Seq.Base.lemma_index_upd1>
+
+
+; <Start encoding val FStar.Seq.Base.lemma_index_upd2>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Seq.Base.lemma_index_upd2 (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Seq.Base.lemma_index_upd2@tok () Term)
+
+(declare-fun Tm_refine_df81b3f17797c6f405c1dbb191651292 (Term Term Term) Term)
+
+; </end encoding val FStar.Seq.Base.lemma_index_upd2>
+
+
+; <Start encoding val FStar.Seq.Base.lemma_index_app1>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Seq.Base.lemma_index_app1 (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Seq.Base.lemma_index_app1@tok () Term)
+
+
+; </end encoding val FStar.Seq.Base.lemma_index_app1>
+
+
+; <Start encoding val FStar.Seq.Base.lemma_index_app2>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Seq.Base.lemma_index_app2 (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Seq.Base.lemma_index_app2@tok () Term)
+(declare-fun Tm_refine_ac201cf927190d39c033967b63cb957b (Term Term Term) Term)
+
+; </end encoding val FStar.Seq.Base.lemma_index_app2>
+
+
+; <Start encoding val FStar.Seq.Base.lemma_index_slice>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Seq.Base.lemma_index_slice (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Seq.Base.lemma_index_slice@tok () Term)
+(declare-fun Tm_refine_d3d07693cd71377864ef84dc97d10ec1 (Term Term Term) Term)
+(declare-fun Tm_refine_35a0739c434508f48d0bb1d5cd5df9e8 (Term Term) Term)
+
+; </end encoding val FStar.Seq.Base.lemma_index_slice>
+
+
+; <Start encoding val FStar.Seq.Base.hasEq_lemma>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Seq.Base.hasEq_lemma (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Seq.Base.hasEq_lemma@tok () Term)
+
+; </end encoding val FStar.Seq.Base.hasEq_lemma>
+
+
+; <Start encoding val FStar.Seq.Base.equal>
+
+(declare-fun FStar.Seq.Base.equal (Term Term Term) Term)
+(declare-fun Tm_arrow_c2c0a5f39eee7a5a92db8bac6fe4fb3b () Term)
+(declare-fun FStar.Seq.Base.equal@tok () Term)
+
+; </end encoding val FStar.Seq.Base.equal>
+
+
+; <Start encoding val FStar.Seq.Base.eq_i>
+
+(declare-fun Tm_refine_4639d389381bee5cf8cf77b7a6585074 (Term Term) Term)
+(declare-fun Tm_refine_b361ba8089a6e963921008d537e799a1 (Term Term) Term)
+(declare-fun FStar.Seq.Base.eq_i (Term Term Term Term) Term)
+
+
+(declare-fun Tm_refine_331c14d442c5ee89a4fce6ea305c920f (Term Term Term) Term)
+(declare-fun Tm_refine_51f956555266662f5f0ed4aac81d10bc (Term Term Term Term) Term)
+(declare-fun Tm_arrow_e5286e13b5c071949ebc5146fbef7d7f () Term)
+(declare-fun FStar.Seq.Base.eq_i@tok () Term)
+
+
+
+; </end encoding val FStar.Seq.Base.eq_i>
+
+
+; <Start encoding val FStar.Seq.Base.eq>
+
+(declare-fun FStar.Seq.Base.eq (Term Term Term) Term)
+(declare-fun Tm_refine_1c0effbdef48f9b00a1efb7b571fbb69 (Term Term Term) Term)
+(declare-fun Tm_arrow_70ef1e4b9388d8aa6e0d17c5aeed02a7 () Term)
+(declare-fun FStar.Seq.Base.eq@tok () Term)
+
+
+; </end encoding val FStar.Seq.Base.eq>
+
+
+; <Start encoding val FStar.Seq.Base.lemma_eq_intro>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Seq.Base.lemma_eq_intro (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Seq.Base.lemma_eq_intro@tok () Term)
+
+
+; </end encoding val FStar.Seq.Base.lemma_eq_intro>
+
+
+; <Start encoding val FStar.Seq.Base.lemma_eq_refl>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Seq.Base.lemma_eq_refl (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Seq.Base.lemma_eq_refl@tok () Term)
+
+; </end encoding val FStar.Seq.Base.lemma_eq_refl>
+
+
+; <Start encoding val FStar.Seq.Base.lemma_eq_elim>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Seq.Base.lemma_eq_elim (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Seq.Base.lemma_eq_elim@tok () Term)
+
+; </end encoding val FStar.Seq.Base.lemma_eq_elim>
+
+
+; <Start encoding val FStar.Seq.Base.append_assoc>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Seq.Base.append_assoc (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Seq.Base.append_assoc@tok () Term)
+
+; </end encoding val FStar.Seq.Base.append_assoc>
+
+
+; <Start encoding val FStar.Seq.Base.append_empty_l>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Seq.Base.append_empty_l (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Seq.Base.append_empty_l@tok () Term)
+
+; </end encoding val FStar.Seq.Base.append_empty_l>
+
+
+; <Start encoding val FStar.Seq.Base.append_empty_r>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Seq.Base.append_empty_r (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Seq.Base.append_empty_r@tok () Term)
+
+; </end encoding val FStar.Seq.Base.append_empty_r>
+
+
+; <Start encoding val FStar.Seq.Base.init_index>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Seq.Base.init_index (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Seq.Base.init_index@tok () Term)
+
+; </end encoding val FStar.Seq.Base.init_index>
+
+
+; <Start encoding val FStar.Seq.Base.init_index_>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Seq.Base.init_index_ (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Seq.Base.init_index_@tok () Term)
+
+
+
+; </end encoding val FStar.Seq.Base.init_index_>
+
+
+; <Start encoding val FStar.Seq.Base.init_ghost_index>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Seq.Base.init_ghost_index (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Seq.Base.init_ghost_index@tok () Term)
+
+; </end encoding val FStar.Seq.Base.init_ghost_index>
+
+
+; <Start encoding val FStar.Seq.Base.init_ghost_index_>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Seq.Base.init_ghost_index_ (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Seq.Base.init_ghost_index_@tok () Term)
+
+
+
+; </end encoding val FStar.Seq.Base.init_ghost_index_>
+
+
+; <Start encoding val FStar.Seq.Base.lemma_equal_instances_implies_equal_types>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Seq.Base.lemma_equal_instances_implies_equal_types (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Seq.Base.lemma_equal_instances_implies_equal_types@tok () Term)
+
+; </end encoding val FStar.Seq.Base.lemma_equal_instances_implies_equal_types>
+
+
+; End Externals for interface FStar.Seq.Base
+
+
+; Externals for interface FStar.Math.Lemmas
+
+
+; <Start encoding val FStar.Math.Lemmas.euclidean_div_axiom>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.euclidean_div_axiom (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.euclidean_div_axiom@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.euclidean_div_axiom>
+
+
+; <Start encoding val FStar.Math.Lemmas.lemma_eucl_div_bound>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.lemma_eucl_div_bound (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.lemma_eucl_div_bound@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.lemma_eucl_div_bound>
+
+
+; <Start encoding val FStar.Math.Lemmas.lemma_mult_le_left>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.lemma_mult_le_left (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.lemma_mult_le_left@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.lemma_mult_le_left>
+
+
+; <Start encoding val FStar.Math.Lemmas.lemma_mult_le_right>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.lemma_mult_le_right (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.lemma_mult_le_right@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.lemma_mult_le_right>
+
+
+; <Start encoding val FStar.Math.Lemmas.lemma_mult_lt_left>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.lemma_mult_lt_left (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.lemma_mult_lt_left@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.lemma_mult_lt_left>
+
+
+; <Start encoding val FStar.Math.Lemmas.lemma_mult_lt_right>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.lemma_mult_lt_right (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.lemma_mult_lt_right@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.lemma_mult_lt_right>
+
+
+; <Start encoding val FStar.Math.Lemmas.lemma_mult_lt_sqr>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.lemma_mult_lt_sqr (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.lemma_mult_lt_sqr@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.lemma_mult_lt_sqr>
+
+
+; <Start encoding val FStar.Math.Lemmas.swap_mul>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.swap_mul (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.swap_mul@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.swap_mul>
+
+
+; <Start encoding val FStar.Math.Lemmas.lemma_cancel_mul>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.lemma_cancel_mul (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.lemma_cancel_mul@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.lemma_cancel_mul>
+
+
+; <Start encoding val FStar.Math.Lemmas.distributivity_add_left>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.distributivity_add_left (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.distributivity_add_left@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.distributivity_add_left>
+
+
+; <Start encoding val FStar.Math.Lemmas.distributivity_add_right>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.distributivity_add_right (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.distributivity_add_right@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.distributivity_add_right>
+
+
+; <Start encoding val FStar.Math.Lemmas.paren_mul_left>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.paren_mul_left (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.paren_mul_left@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.paren_mul_left>
+
+
+; <Start encoding val FStar.Math.Lemmas.paren_mul_right>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.paren_mul_right (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.paren_mul_right@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.paren_mul_right>
+
+
+; <Start encoding val FStar.Math.Lemmas.paren_add_left>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.paren_add_left (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.paren_add_left@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.paren_add_left>
+
+
+; <Start encoding val FStar.Math.Lemmas.paren_add_right>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.paren_add_right (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.paren_add_right@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.paren_add_right>
+
+
+; <Start encoding val FStar.Math.Lemmas.addition_is_associative>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.addition_is_associative (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.addition_is_associative@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.addition_is_associative>
+
+
+; <Start encoding val FStar.Math.Lemmas.subtraction_is_distributive>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.subtraction_is_distributive (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.subtraction_is_distributive@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.subtraction_is_distributive>
+
+
+; <Start encoding val FStar.Math.Lemmas.swap_add_plus_minus>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.swap_add_plus_minus (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.swap_add_plus_minus@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.swap_add_plus_minus>
+
+
+; <Start encoding val FStar.Math.Lemmas.neg_mul_left>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.neg_mul_left (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.neg_mul_left@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.neg_mul_left>
+
+
+; <Start encoding val FStar.Math.Lemmas.neg_mul_right>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.neg_mul_right (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.neg_mul_right@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.neg_mul_right>
+
+
+; <Start encoding val FStar.Math.Lemmas.swap_neg_mul>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.swap_neg_mul (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.swap_neg_mul@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.swap_neg_mul>
+
+
+; <Start encoding val FStar.Math.Lemmas.distributivity_sub_left>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.distributivity_sub_left (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.distributivity_sub_left@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.distributivity_sub_left>
+
+
+; <Start encoding val FStar.Math.Lemmas.distributivity_sub_right>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.distributivity_sub_right (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.distributivity_sub_right@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.distributivity_sub_right>
+
+
+; <Start encoding val FStar.Math.Lemmas.mul_binds_tighter>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.mul_binds_tighter (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.mul_binds_tighter@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.mul_binds_tighter>
+
+
+; <Start encoding val FStar.Math.Lemmas.lemma_abs_mul>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.lemma_abs_mul (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.lemma_abs_mul@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.lemma_abs_mul>
+
+
+; <Start encoding val FStar.Math.Lemmas.lemma_abs_bound>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.lemma_abs_bound (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.lemma_abs_bound@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.lemma_abs_bound>
+
+
+; <Start encoding val FStar.Math.Lemmas.mul_ineq1>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.mul_ineq1 (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.mul_ineq1@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.mul_ineq1>
+
+
+; <Start encoding val FStar.Math.Lemmas.add_zero_left_is_same>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.add_zero_left_is_same (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.add_zero_left_is_same@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.add_zero_left_is_same>
+
+
+; <Start encoding val FStar.Math.Lemmas.add_zero_right_is_same>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.add_zero_right_is_same (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.add_zero_right_is_same@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.add_zero_right_is_same>
+
+
+; <Start encoding val FStar.Math.Lemmas.mul_one_left_is_same>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.mul_one_left_is_same (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.mul_one_left_is_same@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.mul_one_left_is_same>
+
+
+; <Start encoding val FStar.Math.Lemmas.mul_one_right_is_same>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.mul_one_right_is_same (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.mul_one_right_is_same@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.mul_one_right_is_same>
+
+
+; <Start encoding val FStar.Math.Lemmas.mul_zero_left_is_zero>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.mul_zero_left_is_zero (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.mul_zero_left_is_zero@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.mul_zero_left_is_zero>
+
+
+; <Start encoding val FStar.Math.Lemmas.mul_zero_right_is_zero>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.mul_zero_right_is_zero (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.mul_zero_right_is_zero@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.mul_zero_right_is_zero>
+
+
+; <Start encoding val FStar.Math.Lemmas.nat_times_nat_is_nat>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.nat_times_nat_is_nat (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.nat_times_nat_is_nat@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.nat_times_nat_is_nat>
+
+
+; <Start encoding val FStar.Math.Lemmas.pos_times_pos_is_pos>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.pos_times_pos_is_pos (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.pos_times_pos_is_pos@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.pos_times_pos_is_pos>
+
+
+; <Start encoding val FStar.Math.Lemmas.nat_over_pos_is_nat>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.nat_over_pos_is_nat (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.nat_over_pos_is_nat@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.nat_over_pos_is_nat>
+
+
+; <Start encoding val FStar.Math.Lemmas.nat_plus_nat_equal_zero_lemma>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.nat_plus_nat_equal_zero_lemma (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.nat_plus_nat_equal_zero_lemma@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.nat_plus_nat_equal_zero_lemma>
+
+
+; <Start encoding val FStar.Math.Lemmas.int_times_int_equal_zero_lemma>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.int_times_int_equal_zero_lemma (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.int_times_int_equal_zero_lemma@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.int_times_int_equal_zero_lemma>
+
+
+; <Start encoding val FStar.Math.Lemmas.pow2_double_sum>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.pow2_double_sum (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.pow2_double_sum@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.pow2_double_sum>
+
+
+; <Start encoding val FStar.Math.Lemmas.pow2_double_mult>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.pow2_double_mult (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.pow2_double_mult@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.pow2_double_mult>
+
+
+; <Start encoding val FStar.Math.Lemmas.pow2_lt_compat>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.pow2_lt_compat (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.pow2_lt_compat@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.pow2_lt_compat>
+
+
+; <Start encoding val FStar.Math.Lemmas.pow2_le_compat>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.pow2_le_compat (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.pow2_le_compat@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.pow2_le_compat>
+
+
+; <Start encoding val FStar.Math.Lemmas.pow2_plus>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.pow2_plus (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.pow2_plus@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.pow2_plus>
+
+
+; <Start encoding val FStar.Math.Lemmas.pow2_minus>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.pow2_minus (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.pow2_minus@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.pow2_minus>
+
+
+; <Start encoding val FStar.Math.Lemmas.multiply_fractions>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.multiply_fractions (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.multiply_fractions@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.multiply_fractions>
+
+
+; <Start encoding val FStar.Math.Lemmas.modulo_lemma>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.modulo_lemma (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.modulo_lemma@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.modulo_lemma>
+
+
+; <Start encoding val FStar.Math.Lemmas.lemma_div_mod>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.lemma_div_mod (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.lemma_div_mod@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.lemma_div_mod>
+
+
+; <Start encoding val FStar.Math.Lemmas.lemma_mod_lt>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.lemma_mod_lt (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.lemma_mod_lt@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.lemma_mod_lt>
+
+
+; <Start encoding val FStar.Math.Lemmas.lemma_div_lt_nat>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.lemma_div_lt_nat (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.lemma_div_lt_nat@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.lemma_div_lt_nat>
+
+
+; <Start encoding val FStar.Math.Lemmas.lemma_div_lt>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.lemma_div_lt (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.lemma_div_lt@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.lemma_div_lt>
+
+
+; <Start encoding val FStar.Math.Lemmas.bounded_multiple_is_zero>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.bounded_multiple_is_zero (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.bounded_multiple_is_zero@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.bounded_multiple_is_zero>
+
+
+; <Start encoding val FStar.Math.Lemmas.small_div>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.small_div (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.small_div@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.small_div>
+
+
+; <Start encoding val FStar.Math.Lemmas.small_mod>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.small_mod (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.small_mod@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.small_mod>
+
+
+; <Start encoding val FStar.Math.Lemmas.lt_multiple_is_equal>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.lt_multiple_is_equal (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.lt_multiple_is_equal@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.lt_multiple_is_equal>
+
+
+; <Start encoding val FStar.Math.Lemmas.lemma_mod_plus>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.lemma_mod_plus (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.lemma_mod_plus@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.lemma_mod_plus>
+
+
+; <Start encoding val FStar.Math.Lemmas.lemma_div_plus>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.lemma_div_plus (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.lemma_div_plus@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.lemma_div_plus>
+
+
+; <Start encoding val FStar.Math.Lemmas.lemma_div_mod_plus>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.lemma_div_mod_plus (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.lemma_div_mod_plus@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.lemma_div_mod_plus>
+
+
+; <Start encoding val FStar.Math.Lemmas.add_div_mod_1>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.add_div_mod_1 (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.add_div_mod_1@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.add_div_mod_1>
+
+
+; <Start encoding val FStar.Math.Lemmas.sub_div_mod_1>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.sub_div_mod_1 (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.sub_div_mod_1@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.sub_div_mod_1>
+
+
+; <Start encoding val FStar.Math.Lemmas.cancel_mul_div>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.cancel_mul_div (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.cancel_mul_div@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.cancel_mul_div>
+
+
+; <Start encoding val FStar.Math.Lemmas.cancel_mul_mod>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.cancel_mul_mod (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.cancel_mul_mod@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.cancel_mul_mod>
+
+
+; <Start encoding val FStar.Math.Lemmas.lemma_mod_add_distr>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.lemma_mod_add_distr (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.lemma_mod_add_distr@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.lemma_mod_add_distr>
+
+
+; <Start encoding val FStar.Math.Lemmas.lemma_mod_sub_distr>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.lemma_mod_sub_distr (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.lemma_mod_sub_distr@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.lemma_mod_sub_distr>
+
+
+; <Start encoding val FStar.Math.Lemmas.lemma_mod_sub_0>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.lemma_mod_sub_0 (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.lemma_mod_sub_0@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.lemma_mod_sub_0>
+
+
+; <Start encoding val FStar.Math.Lemmas.lemma_mod_sub_1>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.lemma_mod_sub_1 (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.lemma_mod_sub_1@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.lemma_mod_sub_1>
+
+
+; <Start encoding val FStar.Math.Lemmas.lemma_mod_mul_distr_l>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.lemma_mod_mul_distr_l (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.lemma_mod_mul_distr_l@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.lemma_mod_mul_distr_l>
+
+
+; <Start encoding val FStar.Math.Lemmas.lemma_mod_mul_distr_r>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.lemma_mod_mul_distr_r (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.lemma_mod_mul_distr_r@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.lemma_mod_mul_distr_r>
+
+
+; <Start encoding val FStar.Math.Lemmas.lemma_mod_injective>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.lemma_mod_injective (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.lemma_mod_injective@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.lemma_mod_injective>
+
+
+; <Start encoding val FStar.Math.Lemmas.lemma_mul_sub_distr>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.lemma_mul_sub_distr (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.lemma_mul_sub_distr@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.lemma_mul_sub_distr>
+
+
+; <Start encoding val FStar.Math.Lemmas.lemma_div_exact>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.lemma_div_exact (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.lemma_div_exact@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.lemma_div_exact>
+
+
+; <Start encoding val FStar.Math.Lemmas.div_exact_r>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.div_exact_r (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.div_exact_r@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.div_exact_r>
+
+
+; <Start encoding val FStar.Math.Lemmas.lemma_mod_spec>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.lemma_mod_spec (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.lemma_mod_spec@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.lemma_mod_spec>
+
+
+; <Start encoding val FStar.Math.Lemmas.lemma_mod_spec2>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.lemma_mod_spec2 (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.lemma_mod_spec2@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.lemma_mod_spec2>
+
+
+; <Start encoding val FStar.Math.Lemmas.lemma_mod_plus_distr_l>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.lemma_mod_plus_distr_l (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.lemma_mod_plus_distr_l@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.lemma_mod_plus_distr_l>
+
+
+; <Start encoding val FStar.Math.Lemmas.lemma_mod_plus_distr_r>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.lemma_mod_plus_distr_r (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.lemma_mod_plus_distr_r@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.lemma_mod_plus_distr_r>
+
+
+; <Start encoding val FStar.Math.Lemmas.lemma_mod_mod>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.lemma_mod_mod (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.lemma_mod_mod@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.lemma_mod_mod>
+
+
+; <Start encoding val FStar.Math.Lemmas.euclidean_division_definition>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.euclidean_division_definition (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.euclidean_division_definition@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.euclidean_division_definition>
+
+
+; <Start encoding val FStar.Math.Lemmas.modulo_range_lemma>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.modulo_range_lemma (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.modulo_range_lemma@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.modulo_range_lemma>
+
+
+; <Start encoding val FStar.Math.Lemmas.small_modulo_lemma_1>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.small_modulo_lemma_1 (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.small_modulo_lemma_1@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.small_modulo_lemma_1>
+
+
+; <Start encoding val FStar.Math.Lemmas.small_modulo_lemma_2>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.small_modulo_lemma_2 (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.small_modulo_lemma_2@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.small_modulo_lemma_2>
+
+
+; <Start encoding val FStar.Math.Lemmas.small_division_lemma_1>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.small_division_lemma_1 (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.small_division_lemma_1@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.small_division_lemma_1>
+
+
+; <Start encoding val FStar.Math.Lemmas.small_division_lemma_2>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.small_division_lemma_2 (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.small_division_lemma_2@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.small_division_lemma_2>
+
+
+; <Start encoding val FStar.Math.Lemmas.multiplication_order_lemma>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.multiplication_order_lemma (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.multiplication_order_lemma@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.multiplication_order_lemma>
+
+
+; <Start encoding val FStar.Math.Lemmas.division_propriety>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.division_propriety (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.division_propriety@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.division_propriety>
+
+
+; <Start encoding val FStar.Math.Lemmas.division_definition_lemma_1>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.division_definition_lemma_1 (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.division_definition_lemma_1@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.division_definition_lemma_1>
+
+
+; <Start encoding val FStar.Math.Lemmas.division_definition_lemma_2>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.division_definition_lemma_2 (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.division_definition_lemma_2@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.division_definition_lemma_2>
+
+
+; <Start encoding val FStar.Math.Lemmas.division_definition>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.division_definition (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.division_definition@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.division_definition>
+
+
+; <Start encoding val FStar.Math.Lemmas.multiple_division_lemma>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.multiple_division_lemma (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.multiple_division_lemma@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.multiple_division_lemma>
+
+
+; <Start encoding val FStar.Math.Lemmas.multiple_modulo_lemma>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.multiple_modulo_lemma (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.multiple_modulo_lemma@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.multiple_modulo_lemma>
+
+
+; <Start encoding val FStar.Math.Lemmas.division_addition_lemma>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.division_addition_lemma (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.division_addition_lemma@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.division_addition_lemma>
+
+
+; <Start encoding val FStar.Math.Lemmas.modulo_distributivity>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.modulo_distributivity (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.modulo_distributivity@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.modulo_distributivity>
+
+
+; <Start encoding val FStar.Math.Lemmas.lemma_div_le>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.lemma_div_le (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.lemma_div_le@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.lemma_div_le>
+
+
+; <Start encoding val FStar.Math.Lemmas.division_sub_lemma>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.division_sub_lemma (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.division_sub_lemma@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.division_sub_lemma>
+
+
+; <Start encoding val FStar.Math.Lemmas.lemma_mod_plus_mul_distr>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.lemma_mod_plus_mul_distr (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.lemma_mod_plus_mul_distr@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.lemma_mod_plus_mul_distr>
+
+
+; <Start encoding val FStar.Math.Lemmas.modulo_addition_lemma>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.modulo_addition_lemma (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.modulo_addition_lemma@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.modulo_addition_lemma>
+
+
+; <Start encoding val FStar.Math.Lemmas.lemma_mod_sub>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.lemma_mod_sub (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.lemma_mod_sub@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.lemma_mod_sub>
+
+
+; <Start encoding val FStar.Math.Lemmas.mod_mult_exact>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.mod_mult_exact (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.mod_mult_exact@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.mod_mult_exact>
+
+
+; <Start encoding val FStar.Math.Lemmas.mod_mul_div_exact>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.mod_mul_div_exact (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.mod_mul_div_exact@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.mod_mul_div_exact>
+
+
+; <Start encoding val FStar.Math.Lemmas.mod_pow2_div2>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.mod_pow2_div2 (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.mod_pow2_div2@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.mod_pow2_div2>
+
+
+; <Start encoding val FStar.Math.Lemmas.division_multiplication_lemma>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.division_multiplication_lemma (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.division_multiplication_lemma@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.division_multiplication_lemma>
+
+
+; <Start encoding val FStar.Math.Lemmas.modulo_scale_lemma>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.modulo_scale_lemma (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.modulo_scale_lemma@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.modulo_scale_lemma>
+
+
+; <Start encoding val FStar.Math.Lemmas.lemma_mul_pos_pos_is_pos>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.lemma_mul_pos_pos_is_pos (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.lemma_mul_pos_pos_is_pos@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.lemma_mul_pos_pos_is_pos>
+
+
+; <Start encoding val FStar.Math.Lemmas.lemma_mul_nat_pos_is_nat>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.lemma_mul_nat_pos_is_nat (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.lemma_mul_nat_pos_is_nat@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.lemma_mul_nat_pos_is_nat>
+
+
+; <Start encoding val FStar.Math.Lemmas.modulo_division_lemma>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.modulo_division_lemma (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.modulo_division_lemma@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.modulo_division_lemma>
+
+
+; <Start encoding val FStar.Math.Lemmas.modulo_modulo_lemma>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.modulo_modulo_lemma (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.modulo_modulo_lemma@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.modulo_modulo_lemma>
+
+
+; <Start encoding val FStar.Math.Lemmas.pow2_multiplication_division_lemma_1>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.pow2_multiplication_division_lemma_1 (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.pow2_multiplication_division_lemma_1@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.pow2_multiplication_division_lemma_1>
+
+
+; <Start encoding val FStar.Math.Lemmas.pow2_multiplication_division_lemma_2>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.pow2_multiplication_division_lemma_2 (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.pow2_multiplication_division_lemma_2@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.pow2_multiplication_division_lemma_2>
+
+
+; <Start encoding val FStar.Math.Lemmas.pow2_multiplication_modulo_lemma_1>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.pow2_multiplication_modulo_lemma_1 (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.pow2_multiplication_modulo_lemma_1@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.pow2_multiplication_modulo_lemma_1>
+
+
+; <Start encoding val FStar.Math.Lemmas.pow2_multiplication_modulo_lemma_2>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.pow2_multiplication_modulo_lemma_2 (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.pow2_multiplication_modulo_lemma_2@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.pow2_multiplication_modulo_lemma_2>
+
+
+; <Start encoding val FStar.Math.Lemmas.pow2_modulo_division_lemma_1>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.pow2_modulo_division_lemma_1 (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.pow2_modulo_division_lemma_1@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.pow2_modulo_division_lemma_1>
+
+
+; <Start encoding val FStar.Math.Lemmas.pow2_modulo_division_lemma_2>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.pow2_modulo_division_lemma_2 (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.pow2_modulo_division_lemma_2@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.pow2_modulo_division_lemma_2>
+
+
+; <Start encoding val FStar.Math.Lemmas.pow2_modulo_modulo_lemma_1>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.pow2_modulo_modulo_lemma_1 (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.pow2_modulo_modulo_lemma_1@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.pow2_modulo_modulo_lemma_1>
+
+
+; <Start encoding val FStar.Math.Lemmas.pow2_modulo_modulo_lemma_2>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.pow2_modulo_modulo_lemma_2 (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.pow2_modulo_modulo_lemma_2@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.pow2_modulo_modulo_lemma_2>
+
+
+; <Start encoding val FStar.Math.Lemmas.modulo_add>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.modulo_add (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.modulo_add@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.modulo_add>
+
+
+; <Start encoding val FStar.Math.Lemmas.lemma_mod_twice>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.lemma_mod_twice (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.lemma_mod_twice@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.lemma_mod_twice>
+
+
+; <Start encoding val FStar.Math.Lemmas.modulo_sub>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.modulo_sub (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.modulo_sub@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.modulo_sub>
+
+
+; <Start encoding val FStar.Math.Lemmas.mod_add_both>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.mod_add_both (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.mod_add_both@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.mod_add_both>
+
+
+; <Start encoding val FStar.Math.Lemmas.lemma_mod_plus_injective>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.lemma_mod_plus_injective (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.lemma_mod_plus_injective@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.lemma_mod_plus_injective>
+
+
+; <Start encoding val FStar.Math.Lemmas.modulo_sub_lemma>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Math.Lemmas.modulo_sub_lemma (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Math.Lemmas.modulo_sub_lemma@tok () Term)
+
+; </end encoding val FStar.Math.Lemmas.modulo_sub_lemma>
+
+
+; End Externals for interface FStar.Math.Lemmas
+
+
+; Externals for interface FStar.BitVector
+
+
+; <Start encoding let bv_t>
+
+(declare-fun FStar.BitVector.bv_t (Term) Term)
+(declare-fun Tm_arrow_9974df5c311cfcfa7100bc7bef095e1e () Term)
+(declare-fun FStar.BitVector.bv_t@tok () Term)
+(declare-fun Tm_refine_e2d5d62a90ceed8a6faf9d20615f4e1e (Term) Term)
+
+; </end encoding let bv_t>
+
+
+; <Start encoding let zero_vec>
+
+(declare-fun FStar.BitVector.zero_vec (Term) Term)
+(declare-fun Tm_arrow_b6d52a9c4babaef5c45b062eb8723782 () Term)
+(declare-fun FStar.BitVector.zero_vec@tok () Term)
+
+; </end encoding let zero_vec>
+
+
+; <Start encoding let elem_vec>
+
+
+(declare-fun FStar.BitVector.elem_vec (Term Term) Term)
+
+(declare-fun Tm_arrow_6880b3a4da9e8c38f1dbaa400eb50d7d () Term)
+(declare-fun FStar.BitVector.elem_vec@tok () Term)
+
+
+; </end encoding let elem_vec>
+
+
+; <Start encoding let ones_vec>
+
+(declare-fun FStar.BitVector.ones_vec (Term) Term)
+
+(declare-fun FStar.BitVector.ones_vec@tok () Term)
+
+; </end encoding let ones_vec>
+
+
+; <Start encoding let rec logand_vec>
+
+;;;;;;;;;;;;;;;;Fuel-instrumented function name
+(declare-fun FStar.BitVector.logand_vec.fuel_instrumented (Fuel Term Term Term) Term)
+;;;;;;;;;;;;;;;;Token for fuel-instrumented partial applications
+(declare-fun FStar.BitVector.logand_vec.fuel_instrumented_token () Term)
+(declare-fun FStar.BitVector.logand_vec (Term Term Term) Term)
+(declare-fun FStar.BitVector.logand_vec@tok () Term)
+(declare-fun Tm_arrow_d5001f682a0789c7aa8e67d06058b034 () Term)
+
+; </end encoding let rec logand_vec>
+
+
+; <Start encoding val FStar.BitVector.logand_vec_definition>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.BitVector.logand_vec_definition (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.BitVector.logand_vec_definition@tok () Term)
+
+
+; </end encoding val FStar.BitVector.logand_vec_definition>
+
+
+; <Start encoding let rec logxor_vec>
+
+;;;;;;;;;;;;;;;;Fuel-instrumented function name
+(declare-fun FStar.BitVector.logxor_vec.fuel_instrumented (Fuel Term Term Term) Term)
+;;;;;;;;;;;;;;;;Token for fuel-instrumented partial applications
+(declare-fun FStar.BitVector.logxor_vec.fuel_instrumented_token () Term)
+(declare-fun FStar.BitVector.logxor_vec (Term Term Term) Term)
+(declare-fun FStar.BitVector.logxor_vec@tok () Term)
+
+
+; </end encoding let rec logxor_vec>
+
+
+; <Start encoding val FStar.BitVector.logxor_vec_definition>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.BitVector.logxor_vec_definition (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.BitVector.logxor_vec_definition@tok () Term)
+
+
+; </end encoding val FStar.BitVector.logxor_vec_definition>
+
+
+; <Start encoding let rec logor_vec>
+
+;;;;;;;;;;;;;;;;Fuel-instrumented function name
+(declare-fun FStar.BitVector.logor_vec.fuel_instrumented (Fuel Term Term Term) Term)
+;;;;;;;;;;;;;;;;Token for fuel-instrumented partial applications
+(declare-fun FStar.BitVector.logor_vec.fuel_instrumented_token () Term)
+(declare-fun FStar.BitVector.logor_vec (Term Term Term) Term)
+(declare-fun FStar.BitVector.logor_vec@tok () Term)
+
+
+; </end encoding let rec logor_vec>
+
+
+; <Start encoding val FStar.BitVector.logor_vec_definition>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.BitVector.logor_vec_definition (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.BitVector.logor_vec_definition@tok () Term)
+
+
+; </end encoding val FStar.BitVector.logor_vec_definition>
+
+
+; <Start encoding let rec lognot_vec>
+
+;;;;;;;;;;;;;;;;Fuel-instrumented function name
+(declare-fun FStar.BitVector.lognot_vec.fuel_instrumented (Fuel Term Term) Term)
+;;;;;;;;;;;;;;;;Token for fuel-instrumented partial applications
+(declare-fun FStar.BitVector.lognot_vec.fuel_instrumented_token () Term)
+(declare-fun FStar.BitVector.lognot_vec (Term Term) Term)
+(declare-fun FStar.BitVector.lognot_vec@tok () Term)
+(declare-fun Tm_arrow_190e27813ba14c0d36577dc3d47778da () Term)
+
+; </end encoding let rec lognot_vec>
+
+
+; <Start encoding val FStar.BitVector.lognot_vec_definition>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.BitVector.lognot_vec_definition (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.BitVector.lognot_vec_definition@tok () Term)
+
+
+; </end encoding val FStar.BitVector.lognot_vec_definition>
+
+
+; <Start encoding val FStar.BitVector.lemma_xor_bounded>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.BitVector.lemma_xor_bounded (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.BitVector.lemma_xor_bounded@tok () Term)
+
+; </end encoding val FStar.BitVector.lemma_xor_bounded>
+
+
+; <Start encoding let is_subset_vec>
+
+(declare-fun FStar.BitVector.is_subset_vec (Term Term Term) Term)
+(declare-fun Tm_arrow_b51a0c80adeae3f31b1215853bb34fe1 () Term)
+(declare-fun FStar.BitVector.is_subset_vec@tok () Term)
+
+; </end encoding let is_subset_vec>
+
+
+; <Start encoding let is_superset_vec>
+
+(declare-fun FStar.BitVector.is_superset_vec (Term Term Term) Term)
+
+(declare-fun FStar.BitVector.is_superset_vec@tok () Term)
+
+; </end encoding let is_superset_vec>
+
+
+; <Start encoding val FStar.BitVector.lemma_slice_subset_vec>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.BitVector.lemma_slice_subset_vec (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.BitVector.lemma_slice_subset_vec@tok () Term)
+
+; </end encoding val FStar.BitVector.lemma_slice_subset_vec>
+
+
+; <Start encoding val FStar.BitVector.lemma_slice_superset_vec>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.BitVector.lemma_slice_superset_vec (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.BitVector.lemma_slice_superset_vec@tok () Term)
+
+; </end encoding val FStar.BitVector.lemma_slice_superset_vec>
+
+
+; <Start encoding let shift_left_vec>
+
+(declare-fun FStar.BitVector.shift_left_vec (Term Term Term) Term)
+(declare-fun Tm_arrow_ccbebd343bd3a7caba5f263c2ba5f3be () Term)
+(declare-fun FStar.BitVector.shift_left_vec@tok () Term)
+
+; </end encoding let shift_left_vec>
+
+
+; <Start encoding val FStar.BitVector.shift_left_vec_lemma_1>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.BitVector.shift_left_vec_lemma_1 (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.BitVector.shift_left_vec_lemma_1@tok () Term)
+(declare-fun Tm_refine_6ccf0869e6825997ab860bb25791c11f (Term Term) Term)
+
+; </end encoding val FStar.BitVector.shift_left_vec_lemma_1>
+
+
+; <Start encoding val FStar.BitVector.shift_left_vec_lemma_2>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.BitVector.shift_left_vec_lemma_2 (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.BitVector.shift_left_vec_lemma_2@tok () Term)
+(declare-fun Tm_refine_e8e1ad4b2203cd724d5b8b2dba0a5826 (Term Term) Term)
+
+; </end encoding val FStar.BitVector.shift_left_vec_lemma_2>
+
+
+; <Start encoding let shift_right_vec>
+
+(declare-fun FStar.BitVector.shift_right_vec (Term Term Term) Term)
+
+(declare-fun FStar.BitVector.shift_right_vec@tok () Term)
+
+; </end encoding let shift_right_vec>
+
+
+; <Start encoding val FStar.BitVector.shift_right_vec_lemma_1>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.BitVector.shift_right_vec_lemma_1 (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.BitVector.shift_right_vec_lemma_1@tok () Term)
+(declare-fun Tm_refine_34425c23b534b8a294f8f063dd9faa4b (Term Term) Term)
+
+; </end encoding val FStar.BitVector.shift_right_vec_lemma_1>
+
+
+; <Start encoding val FStar.BitVector.shift_right_vec_lemma_2>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.BitVector.shift_right_vec_lemma_2 (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.BitVector.shift_right_vec_lemma_2@tok () Term)
+(declare-fun Tm_refine_c0ec47abc53a2509e744dad22ccf8191 (Term Term) Term)
+
+; </end encoding val FStar.BitVector.shift_right_vec_lemma_2>
+
+
+; <Start encoding let shift_arithmetic_right_vec>
+
+(declare-fun FStar.BitVector.shift_arithmetic_right_vec (Term Term Term) Term)
+
+(declare-fun FStar.BitVector.shift_arithmetic_right_vec@tok () Term)
+
+; </end encoding let shift_arithmetic_right_vec>
+
+
+; <Start encoding val FStar.BitVector.shift_arithmetic_right_vec_lemma_1>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.BitVector.shift_arithmetic_right_vec_lemma_1 (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.BitVector.shift_arithmetic_right_vec_lemma_1@tok () Term)
+
+
+; </end encoding val FStar.BitVector.shift_arithmetic_right_vec_lemma_1>
+
+
+; <Start encoding val FStar.BitVector.shift_arithmetic_right_vec_lemma_2>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.BitVector.shift_arithmetic_right_vec_lemma_2 (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.BitVector.shift_arithmetic_right_vec_lemma_2@tok () Term)
+
+
+; </end encoding val FStar.BitVector.shift_arithmetic_right_vec_lemma_2>
+
+
+; End Externals for interface FStar.BitVector
+
+
+; Externals for interface FStar.UInt
+
+
+; <Start encoding val FStar.UInt.pow2_values>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.pow2_values (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.pow2_values@tok () Term)
+
+; </end encoding val FStar.UInt.pow2_values>
+
+
+; <Start encoding let max_int>
+
+(declare-fun FStar.UInt.max_int (Term) Term)
+(declare-fun Tm_arrow_fc34ca66de2f262c06145b17fb7ed6cb () Term)
+(declare-fun FStar.UInt.max_int@tok () Term)
+
+; </end encoding let max_int>
+
+
+; <Start encoding let min_int>
+
+(declare-fun FStar.UInt.min_int (Term) Term)
+
+(declare-fun FStar.UInt.min_int@tok () Term)
+
+; </end encoding let min_int>
+
+
+; <Start encoding let fits>
+
+(declare-fun FStar.UInt.fits (Term Term) Term)
+(declare-fun Tm_arrow_dea48782e508c14fa98dcf9716548804 () Term)
+(declare-fun FStar.UInt.fits@tok () Term)
+
+; </end encoding let fits>
+
+
+; <Start encoding let size>
+
+(declare-fun FStar.UInt.size (Term Term) Term)
+(declare-fun Tm_arrow_f4ec8f8bfe492e31741a15356024bbaa () Term)
+(declare-fun FStar.UInt.size@tok () Term)
+
+; </end encoding let size>
+
+
+; <Start encoding let uint_t>
+
+(declare-fun FStar.UInt.uint_t (Term) Term)
+
+(declare-fun FStar.UInt.uint_t@tok () Term)
+(declare-fun Tm_refine_f13070840248fced9d9d60d77bdae3ec (Term) Term)
+
+; </end encoding let uint_t>
+
+
+; <Start encoding let zero>
+
+(declare-fun FStar.UInt.zero (Term) Term)
+(declare-fun Tm_arrow_f1dd811328ea3b27fc410fa0f52880f7 () Term)
+(declare-fun FStar.UInt.zero@tok () Term)
+
+; </end encoding let zero>
+
+
+; <Start encoding let pow2_n>
+
+
+(declare-fun FStar.UInt.pow2_n (Term Term) Term)
+
+(declare-fun Tm_arrow_8d41edd1e7b665db26512e6c6d9ece64 () Term)
+(declare-fun FStar.UInt.pow2_n@tok () Term)
+
+
+; </end encoding let pow2_n>
+
+
+; <Start encoding let one>
+
+(declare-fun FStar.UInt.one (Term) Term)
+(declare-fun Tm_arrow_89d370fa478cfd1f85a8759662ce0390 () Term)
+(declare-fun FStar.UInt.one@tok () Term)
+
+; </end encoding let one>
+
+
+; <Start encoding let ones>
+
+(declare-fun FStar.UInt.ones (Term) Term)
+
+(declare-fun FStar.UInt.ones@tok () Term)
+
+; </end encoding let ones>
+
+
+; <Start encoding let incr>
+
+(declare-fun FStar.UInt.incr (Term Term) Term)
+(declare-fun Tm_refine_22e8629663f0cb1c9de86e57e73778e3 (Term) Term)
+(declare-fun Tm_arrow_e8e04e4a1022a7343e76760b76915c9e () Term)
+(declare-fun FStar.UInt.incr@tok () Term)
+
+
+; </end encoding let incr>
+
+
+; <Start encoding let decr>
+
+(declare-fun FStar.UInt.decr (Term Term) Term)
+
+(declare-fun Tm_arrow_2a167fb2d2f3f00bff7b73f048db0e83 () Term)
+(declare-fun FStar.UInt.decr@tok () Term)
+
+
+; </end encoding let decr>
+
+
+; <Start encoding val FStar.UInt.incr_underspec>
+
+(declare-fun FStar.UInt.incr_underspec (Term Term) Term)
+(declare-fun Tm_refine_6a367e92d5b1ca10009a43bd430dd796 (Term Term) Term)
+(declare-fun Tm_arrow_fb114bd2e9239af1296268eb30490ff7 () Term)
+(declare-fun FStar.UInt.incr_underspec@tok () Term)
+
+
+; </end encoding val FStar.UInt.incr_underspec>
+
+
+; <Start encoding val FStar.UInt.decr_underspec>
+
+(declare-fun FStar.UInt.decr_underspec (Term Term) Term)
+(declare-fun Tm_refine_fa3c796c533e86dc9f3e3ffc647718f6 (Term Term) Term)
+(declare-fun Tm_arrow_f1853f30408c6d0beb7795897a3ab5bc () Term)
+(declare-fun FStar.UInt.decr_underspec@tok () Term)
+
+
+; </end encoding val FStar.UInt.decr_underspec>
+
+
+; <Start encoding let incr_mod>
+
+(declare-fun FStar.UInt.incr_mod (Term Term) Term)
+(declare-fun Tm_arrow_a565732dbe0b43ae2274b1f24341f11b () Term)
+(declare-fun FStar.UInt.incr_mod@tok () Term)
+
+; </end encoding let incr_mod>
+
+
+; <Start encoding let decr_mod>
+
+(declare-fun FStar.UInt.decr_mod (Term Term) Term)
+
+(declare-fun FStar.UInt.decr_mod@tok () Term)
+
+; </end encoding let decr_mod>
+
+
+; <Start encoding let add>
+
+(declare-fun FStar.UInt.add (Term Term Term) Term)
+
+(declare-fun Tm_arrow_ea9f73d61c207ec4508af75e87c5ca13 () Term)
+(declare-fun FStar.UInt.add@tok () Term)
+
+
+; </end encoding let add>
+
+
+; <Start encoding val FStar.UInt.add_underspec>
+
+(declare-fun FStar.UInt.add_underspec (Term Term Term) Term)
+(declare-fun Tm_refine_c7a9b50c1b5983f8171c03368a208e31 (Term Term Term) Term)
+(declare-fun Tm_arrow_880847ba34dd402fb6567384684864a6 () Term)
+(declare-fun FStar.UInt.add_underspec@tok () Term)
+
+
+; </end encoding val FStar.UInt.add_underspec>
+
+
+; <Start encoding let add_mod>
+
+(declare-fun FStar.UInt.add_mod (Term Term Term) Term)
+(declare-fun Tm_arrow_2f3c6a962eb1cbbfd959311c0f20b277 () Term)
+(declare-fun FStar.UInt.add_mod@tok () Term)
+
+; </end encoding let add_mod>
+
+
+; <Start encoding let sub>
+
+(declare-fun FStar.UInt.sub (Term Term Term) Term)
+
+(declare-fun Tm_arrow_974b47e4388c1a4055fe210bb6a11687 () Term)
+(declare-fun FStar.UInt.sub@tok () Term)
+
+
+; </end encoding let sub>
+
+
+; <Start encoding val FStar.UInt.sub_underspec>
+
+(declare-fun FStar.UInt.sub_underspec (Term Term Term) Term)
+(declare-fun Tm_refine_109ae46bb20ad559af297346ec64ae4e (Term Term Term) Term)
+(declare-fun Tm_arrow_1479a03f646b965be1bfedb2ee360f95 () Term)
+(declare-fun FStar.UInt.sub_underspec@tok () Term)
+
+
+; </end encoding val FStar.UInt.sub_underspec>
+
+
+; <Start encoding let sub_mod>
+
+(declare-fun FStar.UInt.sub_mod (Term Term Term) Term)
+
+(declare-fun FStar.UInt.sub_mod@tok () Term)
+
+; </end encoding let sub_mod>
+
+
+; <Start encoding let mul>
+
+(declare-fun FStar.UInt.mul (Term Term Term) Term)
+
+(declare-fun Tm_arrow_45e02637bbbba15e6760300e4a62b58d () Term)
+(declare-fun FStar.UInt.mul@tok () Term)
+
+
+; </end encoding let mul>
+
+
+; <Start encoding val FStar.UInt.mul_underspec>
+
+(declare-fun FStar.UInt.mul_underspec (Term Term Term) Term)
+(declare-fun Tm_refine_ea207e5cce50229e615af011837e59a5 (Term Term Term) Term)
+(declare-fun Tm_arrow_1f5fca1fff06689d84a49261819dc580 () Term)
+(declare-fun FStar.UInt.mul_underspec@tok () Term)
+
+
+; </end encoding val FStar.UInt.mul_underspec>
+
+
+; <Start encoding let mul_mod>
+
+(declare-fun FStar.UInt.mul_mod (Term Term Term) Term)
+
+(declare-fun FStar.UInt.mul_mod@tok () Term)
+
+; </end encoding let mul_mod>
+
+
+; <Start encoding val FStar.UInt.lt_square_div_lt>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.lt_square_div_lt (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.lt_square_div_lt@tok () Term)
+
+; </end encoding val FStar.UInt.lt_square_div_lt>
+
+
+; <Skipped #push-options "--fuel 0 --ifuel 0"/>
+
+
+; <Start encoding let mul_div>
+
+(declare-fun FStar.UInt.mul_div (Term Term Term) Term)
+
+(declare-fun FStar.UInt.mul_div@tok () Term)
+
+; </end encoding let mul_div>
+
+
+; <Skipped #pop-options/>
+
+
+; <Start encoding let div>
+
+(declare-fun Tm_refine_0722e9115d2a1be8d90527397d01011c (Term) Term)
+(declare-fun FStar.UInt.div (Term Term Term) Term)
+
+(declare-fun Tm_refine_e49d79feeb1e96b29b0f01b06f8dac23 (Term Term Term) Term)
+(declare-fun Tm_arrow_6ebc7a9e6ff34015952a4168421980bf () Term)
+(declare-fun FStar.UInt.div@tok () Term)
+
+
+
+; </end encoding let div>
+
+
+; <Start encoding val FStar.UInt.div_underspec>
+
+
+(declare-fun FStar.UInt.div_underspec (Term Term Term) Term)
+
+(declare-fun Tm_refine_fafbb762e9b0100ba27aa174122ddaa3 (Term Term Term) Term)
+(declare-fun Tm_arrow_ed1485a952a27dc4770fb0182ab26e79 () Term)
+(declare-fun FStar.UInt.div_underspec@tok () Term)
+
+
+; </end encoding val FStar.UInt.div_underspec>
+
+
+; <Start encoding val FStar.UInt.div_size>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.div_size (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.div_size@tok () Term)
+
+; </end encoding val FStar.UInt.div_size>
+
+
+; <Start encoding let udiv>
+
+
+(declare-fun FStar.UInt.udiv (Term Term Term) Term)
+
+
+(declare-fun Tm_arrow_2b6a409bd2eeb88753b2b6fe89b0d0a9 () Term)
+(declare-fun FStar.UInt.udiv@tok () Term)
+
+
+
+; </end encoding let udiv>
+
+
+; <Start encoding let mod>
+
+
+(declare-fun FStar.UInt.mod (Term Term Term) Term)
+
+(declare-fun Tm_arrow_6ae50616ce0b08fd950ce0be5e711193 () Term)
+(declare-fun FStar.UInt.mod@tok () Term)
+
+
+; </end encoding let mod>
+
+
+; <Start encoding let eq>
+
+(declare-fun FStar.UInt.eq (Term Term Term) Term)
+(declare-fun Tm_arrow_ed25d9271888f66e143c5c59e11fb3a9 () Term)
+(declare-fun FStar.UInt.eq@tok () Term)
+
+; </end encoding let eq>
+
+
+; <Start encoding let gt>
+
+(declare-fun FStar.UInt.gt (Term Term Term) Term)
+
+(declare-fun FStar.UInt.gt@tok () Term)
+
+; </end encoding let gt>
+
+
+; <Start encoding let gte>
+
+(declare-fun FStar.UInt.gte (Term Term Term) Term)
+
+(declare-fun FStar.UInt.gte@tok () Term)
+
+; </end encoding let gte>
+
+
+; <Start encoding let lt>
+
+(declare-fun FStar.UInt.lt (Term Term Term) Term)
+
+(declare-fun FStar.UInt.lt@tok () Term)
+
+; </end encoding let lt>
+
+
+; <Start encoding let lte>
+
+(declare-fun FStar.UInt.lte (Term Term Term) Term)
+
+(declare-fun FStar.UInt.lte@tok () Term)
+
+; </end encoding let lte>
+
+
+; <Start encoding let to_uint_t>
+
+(declare-fun FStar.UInt.to_uint_t (Term Term) Term)
+(declare-fun Tm_arrow_d5257ef463a03617bca88873b50f4e96 () Term)
+(declare-fun FStar.UInt.to_uint_t@tok () Term)
+
+; </end encoding let to_uint_t>
+
+
+; <Start encoding let rec to_vec>
+
+;;;;;;;;;;;;;;;;Fuel-instrumented function name
+(declare-fun FStar.UInt.to_vec.fuel_instrumented (Fuel Term Term) Term)
+;;;;;;;;;;;;;;;;Token for fuel-instrumented partial applications
+(declare-fun FStar.UInt.to_vec.fuel_instrumented_token () Term)
+(declare-fun FStar.UInt.to_vec (Term Term) Term)
+(declare-fun FStar.UInt.to_vec@tok () Term)
+(declare-fun Tm_arrow_50c9ac04c4da2f9a3a1512bf3cfd180e () Term)
+
+; </end encoding let rec to_vec>
+
+
+; <Start encoding let rec from_vec>
+
+;;;;;;;;;;;;;;;;Fuel-instrumented function name
+(declare-fun FStar.UInt.from_vec.fuel_instrumented (Fuel Term Term) Term)
+;;;;;;;;;;;;;;;;Token for fuel-instrumented partial applications
+(declare-fun FStar.UInt.from_vec.fuel_instrumented_token () Term)
+(declare-fun FStar.UInt.from_vec (Term Term) Term)
+(declare-fun FStar.UInt.from_vec@tok () Term)
+(declare-fun Tm_arrow_3a21f80bb386ebae30b30ec5363d47ef () Term)
+
+; </end encoding let rec from_vec>
+
+
+; <Start encoding val FStar.UInt.to_vec_lemma_1>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.to_vec_lemma_1 (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.to_vec_lemma_1@tok () Term)
+
+; </end encoding val FStar.UInt.to_vec_lemma_1>
+
+
+; <Start encoding val FStar.UInt.to_vec_lemma_2>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.to_vec_lemma_2 (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.to_vec_lemma_2@tok () Term)
+
+; </end encoding val FStar.UInt.to_vec_lemma_2>
+
+
+; <Start encoding val FStar.UInt.inverse_aux>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.inverse_aux (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.inverse_aux@tok () Term)
+
+
+; </end encoding val FStar.UInt.inverse_aux>
+
+
+; <Start encoding val FStar.UInt.inverse_vec_lemma>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.inverse_vec_lemma (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.inverse_vec_lemma@tok () Term)
+
+; </end encoding val FStar.UInt.inverse_vec_lemma>
+
+
+; <Start encoding val FStar.UInt.inverse_num_lemma>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.inverse_num_lemma (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.inverse_num_lemma@tok () Term)
+
+; </end encoding val FStar.UInt.inverse_num_lemma>
+
+
+; <Start encoding val FStar.UInt.from_vec_lemma_1>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.from_vec_lemma_1 (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.from_vec_lemma_1@tok () Term)
+
+; </end encoding val FStar.UInt.from_vec_lemma_1>
+
+
+; <Start encoding val FStar.UInt.from_vec_lemma_2>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.from_vec_lemma_2 (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.from_vec_lemma_2@tok () Term)
+
+; </end encoding val FStar.UInt.from_vec_lemma_2>
+
+
+; <Start encoding val FStar.UInt.from_vec_aux>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.from_vec_aux (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.from_vec_aux@tok () Term)
+
+; </end encoding val FStar.UInt.from_vec_aux>
+
+
+; <Start encoding val FStar.UInt.seq_slice_lemma>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.seq_slice_lemma (Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.seq_slice_lemma@tok () Term)
+
+; </end encoding val FStar.UInt.seq_slice_lemma>
+
+
+; <Start encoding val FStar.UInt.from_vec_propriety>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.from_vec_propriety (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.from_vec_propriety@tok () Term)
+
+; </end encoding val FStar.UInt.from_vec_propriety>
+
+
+; <Start encoding val FStar.UInt.append_lemma>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.append_lemma (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.append_lemma@tok () Term)
+
+; </end encoding val FStar.UInt.append_lemma>
+
+
+; <Start encoding val FStar.UInt.slice_left_lemma>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.slice_left_lemma (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.slice_left_lemma@tok () Term)
+
+; </end encoding val FStar.UInt.slice_left_lemma>
+
+
+; <Start encoding val FStar.UInt.slice_right_lemma>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.slice_right_lemma (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.slice_right_lemma@tok () Term)
+
+; </end encoding val FStar.UInt.slice_right_lemma>
+
+
+; <Start encoding val FStar.UInt.zero_to_vec_lemma>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.zero_to_vec_lemma (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.zero_to_vec_lemma@tok () Term)
+
+
+; </end encoding val FStar.UInt.zero_to_vec_lemma>
+
+
+; <Start encoding val FStar.UInt.zero_from_vec_lemma>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.zero_from_vec_lemma (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.zero_from_vec_lemma@tok () Term)
+
+; </end encoding val FStar.UInt.zero_from_vec_lemma>
+
+
+; <Start encoding val FStar.UInt.one_to_vec_lemma>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.one_to_vec_lemma (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.one_to_vec_lemma@tok () Term)
+
+
+; </end encoding val FStar.UInt.one_to_vec_lemma>
+
+
+; <Start encoding val FStar.UInt.pow2_to_vec_lemma>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.pow2_to_vec_lemma (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.pow2_to_vec_lemma@tok () Term)
+
+
+
+; </end encoding val FStar.UInt.pow2_to_vec_lemma>
+
+
+; <Start encoding val FStar.UInt.pow2_from_vec_lemma>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.pow2_from_vec_lemma (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.pow2_from_vec_lemma@tok () Term)
+
+
+; </end encoding val FStar.UInt.pow2_from_vec_lemma>
+
+
+; <Start encoding val FStar.UInt.ones_to_vec_lemma>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.ones_to_vec_lemma (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.ones_to_vec_lemma@tok () Term)
+
+
+; </end encoding val FStar.UInt.ones_to_vec_lemma>
+
+
+; <Start encoding val FStar.UInt.ones_from_vec_lemma>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.ones_from_vec_lemma (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.ones_from_vec_lemma@tok () Term)
+
+; </end encoding val FStar.UInt.ones_from_vec_lemma>
+
+
+; <Start encoding let nth>
+
+
+(declare-fun FStar.UInt.nth (Term Term Term) Term)
+
+(declare-fun Tm_arrow_3fc70c4ae2acbd923fa94b8473fca72c () Term)
+(declare-fun FStar.UInt.nth@tok () Term)
+
+
+; </end encoding let nth>
+
+
+; <Start encoding val FStar.UInt.nth_lemma>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.nth_lemma (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.nth_lemma@tok () Term)
+
+; </end encoding val FStar.UInt.nth_lemma>
+
+
+; <Start encoding val FStar.UInt.zero_nth_lemma>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.zero_nth_lemma (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.zero_nth_lemma@tok () Term)
+
+
+; </end encoding val FStar.UInt.zero_nth_lemma>
+
+
+; <Start encoding val FStar.UInt.pow2_nth_lemma>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.pow2_nth_lemma (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.pow2_nth_lemma@tok () Term)
+
+
+
+; </end encoding val FStar.UInt.pow2_nth_lemma>
+
+
+; <Start encoding val FStar.UInt.one_nth_lemma>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.one_nth_lemma (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.one_nth_lemma@tok () Term)
+
+
+; </end encoding val FStar.UInt.one_nth_lemma>
+
+
+; <Start encoding val FStar.UInt.ones_nth_lemma>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.ones_nth_lemma (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.ones_nth_lemma@tok () Term)
+
+
+; </end encoding val FStar.UInt.ones_nth_lemma>
+
+
+; <Start encoding let logand>
+
+(declare-fun FStar.UInt.logand (Term Term Term) Term)
+(declare-fun Tm_arrow_f4d897275479f32ec94ab14cea117895 () Term)
+(declare-fun FStar.UInt.logand@tok () Term)
+
+; </end encoding let logand>
+
+
+; <Start encoding let logxor>
+
+(declare-fun FStar.UInt.logxor (Term Term Term) Term)
+
+(declare-fun FStar.UInt.logxor@tok () Term)
+
+; </end encoding let logxor>
+
+
+; <Start encoding let logor>
+
+(declare-fun FStar.UInt.logor (Term Term Term) Term)
+
+(declare-fun FStar.UInt.logor@tok () Term)
+
+; </end encoding let logor>
+
+
+; <Start encoding let lognot>
+
+(declare-fun FStar.UInt.lognot (Term Term) Term)
+(declare-fun Tm_arrow_7e93208f7d6c7796851172614443345f () Term)
+(declare-fun FStar.UInt.lognot@tok () Term)
+
+; </end encoding let lognot>
+
+
+; <Start encoding val FStar.UInt.logand_definition>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.logand_definition (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.logand_definition@tok () Term)
+
+
+; </end encoding val FStar.UInt.logand_definition>
+
+
+; <Start encoding val FStar.UInt.logxor_definition>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.logxor_definition (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.logxor_definition@tok () Term)
+
+
+; </end encoding val FStar.UInt.logxor_definition>
+
+
+; <Start encoding val FStar.UInt.logor_definition>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.logor_definition (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.logor_definition@tok () Term)
+
+
+; </end encoding val FStar.UInt.logor_definition>
+
+
+; <Start encoding val FStar.UInt.lognot_definition>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.lognot_definition (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.lognot_definition@tok () Term)
+
+
+; </end encoding val FStar.UInt.lognot_definition>
+
+
+; <Start encoding let minus>
+
+(declare-fun FStar.UInt.minus (Term Term) Term)
+
+(declare-fun FStar.UInt.minus@tok () Term)
+
+; </end encoding let minus>
+
+
+; <Start encoding val FStar.UInt.logand_commutative>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.logand_commutative (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.logand_commutative@tok () Term)
+
+; </end encoding val FStar.UInt.logand_commutative>
+
+
+; <Start encoding val FStar.UInt.logand_associative>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.logand_associative (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.logand_associative@tok () Term)
+
+; </end encoding val FStar.UInt.logand_associative>
+
+
+; <Start encoding val FStar.UInt.logand_self>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.logand_self (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.logand_self@tok () Term)
+
+; </end encoding val FStar.UInt.logand_self>
+
+
+; <Start encoding val FStar.UInt.logand_lemma_1>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.logand_lemma_1 (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.logand_lemma_1@tok () Term)
+
+; </end encoding val FStar.UInt.logand_lemma_1>
+
+
+; <Start encoding val FStar.UInt.logand_lemma_2>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.logand_lemma_2 (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.logand_lemma_2@tok () Term)
+
+; </end encoding val FStar.UInt.logand_lemma_2>
+
+
+; <Start encoding val FStar.UInt.subset_vec_le_lemma>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.subset_vec_le_lemma (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.subset_vec_le_lemma@tok () Term)
+
+; </end encoding val FStar.UInt.subset_vec_le_lemma>
+
+
+; <Start encoding val FStar.UInt.logand_le>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.logand_le (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.logand_le@tok () Term)
+
+; </end encoding val FStar.UInt.logand_le>
+
+
+; <Start encoding val FStar.UInt.logxor_commutative>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.logxor_commutative (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.logxor_commutative@tok () Term)
+
+; </end encoding val FStar.UInt.logxor_commutative>
+
+
+; <Start encoding val FStar.UInt.logxor_associative>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.logxor_associative (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.logxor_associative@tok () Term)
+
+; </end encoding val FStar.UInt.logxor_associative>
+
+
+; <Start encoding val FStar.UInt.logxor_self>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.logxor_self (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.logxor_self@tok () Term)
+
+; </end encoding val FStar.UInt.logxor_self>
+
+
+; <Start encoding val FStar.UInt.logxor_lemma_1>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.logxor_lemma_1 (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.logxor_lemma_1@tok () Term)
+
+; </end encoding val FStar.UInt.logxor_lemma_1>
+
+
+; <Start encoding val FStar.UInt.logxor_lemma_2>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.logxor_lemma_2 (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.logxor_lemma_2@tok () Term)
+
+; </end encoding val FStar.UInt.logxor_lemma_2>
+
+
+; <Start encoding let xor>
+
+(declare-fun FStar.UInt.xor (Term Term) Term)
+(declare-fun Tm_arrow_a41b9b98d4288401e09e5c3b51ccc4f5 () Term)
+(declare-fun FStar.UInt.xor@tok () Term)
+
+; </end encoding let xor>
+
+
+; <Start encoding val FStar.UInt.xor_lemma>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.xor_lemma (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.xor_lemma@tok () Term)
+
+; </end encoding val FStar.UInt.xor_lemma>
+
+
+; <Start encoding val FStar.UInt.logxor_inv>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.logxor_inv (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.logxor_inv@tok () Term)
+
+; </end encoding val FStar.UInt.logxor_inv>
+
+
+; <Start encoding val FStar.UInt.logxor_neq_nonzero>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.logxor_neq_nonzero (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.logxor_neq_nonzero@tok () Term)
+
+; </end encoding val FStar.UInt.logxor_neq_nonzero>
+
+
+; <Start encoding val FStar.UInt.logor_commutative>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.logor_commutative (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.logor_commutative@tok () Term)
+
+; </end encoding val FStar.UInt.logor_commutative>
+
+
+; <Start encoding val FStar.UInt.logor_associative>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.logor_associative (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.logor_associative@tok () Term)
+
+; </end encoding val FStar.UInt.logor_associative>
+
+
+; <Start encoding val FStar.UInt.logor_self>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.logor_self (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.logor_self@tok () Term)
+
+; </end encoding val FStar.UInt.logor_self>
+
+
+; <Start encoding val FStar.UInt.logor_lemma_1>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.logor_lemma_1 (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.logor_lemma_1@tok () Term)
+
+; </end encoding val FStar.UInt.logor_lemma_1>
+
+
+; <Start encoding val FStar.UInt.logor_lemma_2>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.logor_lemma_2 (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.logor_lemma_2@tok () Term)
+
+; </end encoding val FStar.UInt.logor_lemma_2>
+
+
+; <Start encoding val FStar.UInt.superset_vec_ge_lemma>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.superset_vec_ge_lemma (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.superset_vec_ge_lemma@tok () Term)
+
+; </end encoding val FStar.UInt.superset_vec_ge_lemma>
+
+
+; <Start encoding val FStar.UInt.logor_ge>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.logor_ge (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.logor_ge@tok () Term)
+
+; </end encoding val FStar.UInt.logor_ge>
+
+
+; <Start encoding val FStar.UInt.lognot_self>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.lognot_self (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.lognot_self@tok () Term)
+
+; </end encoding val FStar.UInt.lognot_self>
+
+
+; <Start encoding val FStar.UInt.lognot_lemma_1>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.lognot_lemma_1 (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.lognot_lemma_1@tok () Term)
+
+; </end encoding val FStar.UInt.lognot_lemma_1>
+
+
+; <Start encoding val FStar.UInt.index_to_vec_ones>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.index_to_vec_ones (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.index_to_vec_ones@tok () Term)
+(declare-fun Tm_refine_7e0b9b2dbca36eab00de093c1b701c6d (Term) Term)
+
+
+; </end encoding val FStar.UInt.index_to_vec_ones>
+
+
+; <Start encoding val FStar.UInt.logor_disjoint>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.logor_disjoint (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.logor_disjoint@tok () Term)
+
+; </end encoding val FStar.UInt.logor_disjoint>
+
+
+; <Start encoding val FStar.UInt.logand_mask>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.logand_mask (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.logand_mask@tok () Term)
+
+; </end encoding val FStar.UInt.logand_mask>
+
+
+; <Start encoding let shift_left>
+
+(declare-fun FStar.UInt.shift_left (Term Term Term) Term)
+(declare-fun Tm_arrow_88bed77db23726a0c4c74cf2019c096b () Term)
+(declare-fun FStar.UInt.shift_left@tok () Term)
+
+; </end encoding let shift_left>
+
+
+; <Start encoding let shift_right>
+
+(declare-fun FStar.UInt.shift_right (Term Term Term) Term)
+
+(declare-fun FStar.UInt.shift_right@tok () Term)
+
+; </end encoding let shift_right>
+
+
+; <Start encoding val FStar.UInt.shift_left_lemma_1>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.shift_left_lemma_1 (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.shift_left_lemma_1@tok () Term)
+
+
+; </end encoding val FStar.UInt.shift_left_lemma_1>
+
+
+; <Start encoding val FStar.UInt.shift_left_lemma_2>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.shift_left_lemma_2 (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.shift_left_lemma_2@tok () Term)
+
+
+; </end encoding val FStar.UInt.shift_left_lemma_2>
+
+
+; <Start encoding val FStar.UInt.shift_right_lemma_1>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.shift_right_lemma_1 (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.shift_right_lemma_1@tok () Term)
+
+
+; </end encoding val FStar.UInt.shift_right_lemma_1>
+
+
+; <Start encoding val FStar.UInt.shift_right_lemma_2>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.shift_right_lemma_2 (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.shift_right_lemma_2@tok () Term)
+
+
+; </end encoding val FStar.UInt.shift_right_lemma_2>
+
+
+; <Start encoding val FStar.UInt.shift_left_logand_lemma>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.shift_left_logand_lemma (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.shift_left_logand_lemma@tok () Term)
+
+; </end encoding val FStar.UInt.shift_left_logand_lemma>
+
+
+; <Start encoding val FStar.UInt.shift_right_logand_lemma>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.shift_right_logand_lemma (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.shift_right_logand_lemma@tok () Term)
+
+; </end encoding val FStar.UInt.shift_right_logand_lemma>
+
+
+; <Start encoding val FStar.UInt.shift_left_logxor_lemma>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.shift_left_logxor_lemma (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.shift_left_logxor_lemma@tok () Term)
+
+; </end encoding val FStar.UInt.shift_left_logxor_lemma>
+
+
+; <Start encoding val FStar.UInt.shift_right_logxor_lemma>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.shift_right_logxor_lemma (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.shift_right_logxor_lemma@tok () Term)
+
+; </end encoding val FStar.UInt.shift_right_logxor_lemma>
+
+
+; <Start encoding val FStar.UInt.shift_left_logor_lemma>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.shift_left_logor_lemma (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.shift_left_logor_lemma@tok () Term)
+
+; </end encoding val FStar.UInt.shift_left_logor_lemma>
+
+
+; <Start encoding val FStar.UInt.shift_right_logor_lemma>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.shift_right_logor_lemma (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.shift_right_logor_lemma@tok () Term)
+
+; </end encoding val FStar.UInt.shift_right_logor_lemma>
+
+
+; <Start encoding val FStar.UInt.shift_left_value_aux_1>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.shift_left_value_aux_1 (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.shift_left_value_aux_1@tok () Term)
+
+; </end encoding val FStar.UInt.shift_left_value_aux_1>
+
+
+; <Start encoding val FStar.UInt.shift_left_value_aux_2>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.shift_left_value_aux_2 (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.shift_left_value_aux_2@tok () Term)
+
+; </end encoding val FStar.UInt.shift_left_value_aux_2>
+
+
+; <Start encoding val FStar.UInt.shift_left_value_aux_3>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.shift_left_value_aux_3 (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.shift_left_value_aux_3@tok () Term)
+
+; </end encoding val FStar.UInt.shift_left_value_aux_3>
+
+
+; <Start encoding val FStar.UInt.shift_left_value_lemma>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.shift_left_value_lemma (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.shift_left_value_lemma@tok () Term)
+
+; </end encoding val FStar.UInt.shift_left_value_lemma>
+
+
+; <Start encoding val FStar.UInt.shift_right_value_aux_1>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.shift_right_value_aux_1 (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.shift_right_value_aux_1@tok () Term)
+
+; </end encoding val FStar.UInt.shift_right_value_aux_1>
+
+
+; <Start encoding val FStar.UInt.shift_right_value_aux_2>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.shift_right_value_aux_2 (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.shift_right_value_aux_2@tok () Term)
+
+; </end encoding val FStar.UInt.shift_right_value_aux_2>
+
+
+; <Start encoding val FStar.UInt.shift_right_value_aux_3>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.shift_right_value_aux_3 (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.shift_right_value_aux_3@tok () Term)
+
+; </end encoding val FStar.UInt.shift_right_value_aux_3>
+
+
+; <Start encoding val FStar.UInt.shift_right_value_lemma>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.shift_right_value_lemma (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.shift_right_value_lemma@tok () Term)
+
+; </end encoding val FStar.UInt.shift_right_value_lemma>
+
+
+; <Start encoding let msb>
+
+(declare-fun FStar.UInt.msb (Term Term) Term)
+(declare-fun Tm_arrow_d4ac65fa6e48f26152e66f6f5f032db4 () Term)
+(declare-fun FStar.UInt.msb@tok () Term)
+
+; </end encoding let msb>
+
+
+; <Start encoding val FStar.UInt.lemma_msb_pow2>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.lemma_msb_pow2 (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.lemma_msb_pow2@tok () Term)
+
+; </end encoding val FStar.UInt.lemma_msb_pow2>
+
+
+; <Start encoding val FStar.UInt.lemma_minus_zero>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.lemma_minus_zero (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.lemma_minus_zero@tok () Term)
+
+; </end encoding val FStar.UInt.lemma_minus_zero>
+
+
+; <Start encoding val FStar.UInt.lemma_msb_gte>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.lemma_msb_gte (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.lemma_msb_gte@tok () Term)
+
+; </end encoding val FStar.UInt.lemma_msb_gte>
+
+
+; <Start encoding val FStar.UInt.lemma_uint_mod>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.lemma_uint_mod (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.lemma_uint_mod@tok () Term)
+
+; </end encoding val FStar.UInt.lemma_uint_mod>
+
+
+; <Start encoding val FStar.UInt.lemma_add_sub_cancel>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.lemma_add_sub_cancel (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.lemma_add_sub_cancel@tok () Term)
+
+; </end encoding val FStar.UInt.lemma_add_sub_cancel>
+
+
+; <Start encoding val FStar.UInt.lemma_mod_sub_distr_l>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.lemma_mod_sub_distr_l (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.lemma_mod_sub_distr_l@tok () Term)
+
+; </end encoding val FStar.UInt.lemma_mod_sub_distr_l>
+
+
+; <Start encoding val FStar.UInt.lemma_sub_add_cancel>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.lemma_sub_add_cancel (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.lemma_sub_add_cancel@tok () Term)
+
+; </end encoding val FStar.UInt.lemma_sub_add_cancel>
+
+
+; <Start encoding let zero_extend_vec>
+
+(declare-fun FStar.UInt.zero_extend_vec (Term Term) Term)
+(declare-fun Tm_arrow_dcb1e97275faab10b7eb1bdfcfbde371 () Term)
+(declare-fun FStar.UInt.zero_extend_vec@tok () Term)
+
+; </end encoding let zero_extend_vec>
+
+
+; <Start encoding let one_extend_vec>
+
+(declare-fun FStar.UInt.one_extend_vec (Term Term) Term)
+
+(declare-fun FStar.UInt.one_extend_vec@tok () Term)
+
+; </end encoding let one_extend_vec>
+
+
+; <Start encoding let zero_extend>
+
+(declare-fun FStar.UInt.zero_extend (Term Term) Term)
+(declare-fun Tm_arrow_8a55f1e2e0fc60c6f44b88ae88621b5f () Term)
+(declare-fun FStar.UInt.zero_extend@tok () Term)
+
+; </end encoding let zero_extend>
+
+
+; <Start encoding let one_extend>
+
+(declare-fun FStar.UInt.one_extend (Term Term) Term)
+
+(declare-fun FStar.UInt.one_extend@tok () Term)
+
+; </end encoding let one_extend>
+
+
+; <Start encoding val FStar.UInt.lemma_zero_extend>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.lemma_zero_extend (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.lemma_zero_extend@tok () Term)
+(declare-fun Tm_refine_a2362280d81dbd526f1fa3f771e8faad (Term) Term)
+
+; </end encoding val FStar.UInt.lemma_zero_extend>
+
+
+; <Start encoding val FStar.UInt.lemma_one_extend>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.lemma_one_extend (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.lemma_one_extend@tok () Term)
+
+; </end encoding val FStar.UInt.lemma_one_extend>
+
+
+; <Start encoding val FStar.UInt.lemma_lognot_zero_ext>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.lemma_lognot_zero_ext (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.lemma_lognot_zero_ext@tok () Term)
+
+; </end encoding val FStar.UInt.lemma_lognot_zero_ext>
+
+
+; <Start encoding val FStar.UInt.lemma_lognot_one_ext>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.lemma_lognot_one_ext (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.lemma_lognot_one_ext@tok () Term)
+
+; </end encoding val FStar.UInt.lemma_lognot_one_ext>
+
+
+; <Start encoding val FStar.UInt.lemma_lognot_value_mod>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.lemma_lognot_value_mod (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.lemma_lognot_value_mod@tok () Term)
+
+; </end encoding val FStar.UInt.lemma_lognot_value_mod>
+
+
+; <Start encoding val FStar.UInt.lemma_lognot_value_zero>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.lemma_lognot_value_zero (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.lemma_lognot_value_zero@tok () Term)
+
+; </end encoding val FStar.UInt.lemma_lognot_value_zero>
+
+
+; <Start encoding val FStar.UInt.lemma_one_mod_pow2>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.lemma_one_mod_pow2 (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.lemma_one_mod_pow2@tok () Term)
+
+; </end encoding val FStar.UInt.lemma_one_mod_pow2>
+
+
+; <Start encoding val FStar.UInt.lemma_lognot_value_nonzero>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.lemma_lognot_value_nonzero (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.lemma_lognot_value_nonzero@tok () Term)
+
+; </end encoding val FStar.UInt.lemma_lognot_value_nonzero>
+
+
+; <Start encoding val FStar.UInt.lemma_lognot_value>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.lemma_lognot_value (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.lemma_lognot_value@tok () Term)
+
+; </end encoding val FStar.UInt.lemma_lognot_value>
+
+
+; <Start encoding val FStar.UInt.lemma_minus_eq_zero_sub>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt.lemma_minus_eq_zero_sub (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt.lemma_minus_eq_zero_sub@tok () Term)
+
+; </end encoding val FStar.UInt.lemma_minus_eq_zero_sub>
+
+
+; End Externals for interface FStar.UInt
+
+
+; Externals for interface FStar.UInt32
+
+
+; <Start encoding let n>
+
+(declare-fun FStar.UInt32.n (Dummy_sort) Term)
+
+; </end encoding let n>
+
+
+; <Skipped #set-options "--max_fuel 0 --max_ifuel 0"/>
+
+
+; <Start encoding val FStar.UInt32.t>
+
+(declare-fun FStar.UInt32.t (Dummy_sort) Term)
+
+; </end encoding val FStar.UInt32.t>
+
+
+; <Start encoding val FStar.UInt32.v>
+
+(declare-fun FStar.UInt32.v (Term) Term)
+(declare-fun Tm_arrow_33a06d9a3ec1c77524ab958d37ae1453 () Term)
+(declare-fun FStar.UInt32.v@tok () Term)
+
+; </end encoding val FStar.UInt32.v>
+
+
+; <Start encoding val FStar.UInt32.uint_to_t>
+
+(declare-fun FStar.UInt32.uint_to_t (Term) Term)
+(declare-fun Tm_refine_0ea1fba779ad5718e28476faeef94d56 (Term) Term)
+(declare-fun Tm_arrow_3d414099f2a2b7ef3e11b1fc75a28674 () Term)
+(declare-fun FStar.UInt32.uint_to_t@tok () Term)
+
+
+; </end encoding val FStar.UInt32.uint_to_t>
+
+
+; <Start encoding val FStar.UInt32.uv_inv>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt32.uv_inv (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt32.uv_inv@tok () Term)
+
+; </end encoding val FStar.UInt32.uv_inv>
+
+
+; <Start encoding val FStar.UInt32.vu_inv>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt32.vu_inv (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt32.vu_inv@tok () Term)
+
+; </end encoding val FStar.UInt32.vu_inv>
+
+
+; <Start encoding val FStar.UInt32.v_inj>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt32.v_inj (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt32.v_inj@tok () Term)
+
+; </end encoding val FStar.UInt32.v_inj>
+
+
+; <Start encoding val FStar.UInt32.zero>
+
+(declare-fun FStar.UInt32.zero (Dummy_sort) Term)
+(declare-fun Tm_refine_7cfa0141116db910fdee890408ebbaf1 () Term)
+
+
+; </end encoding val FStar.UInt32.zero>
+
+
+; <Start encoding val FStar.UInt32.one>
+
+(declare-fun FStar.UInt32.one (Dummy_sort) Term)
+(declare-fun Tm_refine_d94e5152d1c8429ac781cc5558c9a3e2 () Term)
+
+
+; </end encoding val FStar.UInt32.one>
+
+
+; <Start encoding val FStar.UInt32.add>
+
+(declare-fun FStar.UInt32.add (Term Term) Term)
+(declare-fun Tm_refine_709aff84c75b0fff77dcbf3b529649dd (Term Term) Term)
+(declare-fun Tm_arrow_5558b72197031b1efc1a0f8298859a47 () Term)
+(declare-fun FStar.UInt32.add@tok () Term)
+
+
+; </end encoding val FStar.UInt32.add>
+
+
+; <Start encoding val FStar.UInt32.add_underspec>
+
+(declare-fun FStar.UInt32.add_underspec (Term Term) Term)
+(declare-fun Tm_refine_57eacb083aaa8f3c6200eef2872d40a9 (Term Term) Term)
+(declare-fun Tm_arrow_2aa4a786718187783c350fff98c0276d () Term)
+(declare-fun FStar.UInt32.add_underspec@tok () Term)
+
+
+; </end encoding val FStar.UInt32.add_underspec>
+
+
+; <Start encoding val FStar.UInt32.add_mod>
+
+(declare-fun FStar.UInt32.add_mod (Term Term) Term)
+(declare-fun Tm_refine_edc8fb7e909853d860d4ab445ef31337 (Term Term) Term)
+(declare-fun Tm_arrow_edbd649f4b12a343efa6ef46e7961890 () Term)
+(declare-fun FStar.UInt32.add_mod@tok () Term)
+
+
+; </end encoding val FStar.UInt32.add_mod>
+
+
+; <Start encoding val FStar.UInt32.sub>
+
+(declare-fun FStar.UInt32.sub (Term Term) Term)
+(declare-fun Tm_refine_aa4b3d268075d84252df525db1f85524 (Term Term) Term)
+(declare-fun Tm_arrow_ac932fe6124478fcfd5be99d334122e8 () Term)
+(declare-fun FStar.UInt32.sub@tok () Term)
+
+
+; </end encoding val FStar.UInt32.sub>
+
+
+; <Start encoding val FStar.UInt32.sub_underspec>
+
+(declare-fun FStar.UInt32.sub_underspec (Term Term) Term)
+(declare-fun Tm_refine_01926286fa04b785df0ea0da544f2001 (Term Term) Term)
+(declare-fun Tm_arrow_a0c271942b2fe7be43f6ae297698cd0b () Term)
+(declare-fun FStar.UInt32.sub_underspec@tok () Term)
+
+
+; </end encoding val FStar.UInt32.sub_underspec>
+
+
+; <Start encoding val FStar.UInt32.sub_mod>
+
+(declare-fun FStar.UInt32.sub_mod (Term Term) Term)
+(declare-fun Tm_refine_ace23c600fbe87b65e5fc333816f74de (Term Term) Term)
+(declare-fun Tm_arrow_4a8c4b67b5977a746f1eeda7c310346f () Term)
+(declare-fun FStar.UInt32.sub_mod@tok () Term)
+
+
+; </end encoding val FStar.UInt32.sub_mod>
+
+
+; <Start encoding val FStar.UInt32.mul>
+
+(declare-fun FStar.UInt32.mul (Term Term) Term)
+(declare-fun Tm_refine_1ccfb21903aa30ace8832f7a4d067d9b (Term Term) Term)
+(declare-fun Tm_arrow_f261941925861d12451675f7409141e5 () Term)
+(declare-fun FStar.UInt32.mul@tok () Term)
+
+
+; </end encoding val FStar.UInt32.mul>
+
+
+; <Start encoding val FStar.UInt32.mul_underspec>
+
+(declare-fun FStar.UInt32.mul_underspec (Term Term) Term)
+(declare-fun Tm_refine_cb4ffd3222952e9ac95fc72e8f9913c6 (Term Term) Term)
+(declare-fun Tm_arrow_54623a1c9ed03c94751f7d25d259da67 () Term)
+(declare-fun FStar.UInt32.mul_underspec@tok () Term)
+
+
+; </end encoding val FStar.UInt32.mul_underspec>
+
+
+; <Start encoding val FStar.UInt32.mul_mod>
+
+(declare-fun FStar.UInt32.mul_mod (Term Term) Term)
+(declare-fun Tm_refine_8618df86656cf4c2bc98614452120307 (Term Term) Term)
+(declare-fun Tm_arrow_b9ba4f3f3f0a1ea3202a99cc97238a0d () Term)
+(declare-fun FStar.UInt32.mul_mod@tok () Term)
+
+
+; </end encoding val FStar.UInt32.mul_mod>
+
+
+; <Start encoding val FStar.UInt32.div>
+
+(declare-fun Tm_refine_0941c9ff95557f2d53bc8f8179ab793e () Term)
+(declare-fun FStar.UInt32.div (Term Term) Term)
+
+(declare-fun Tm_refine_74d1ae07763cf2ce5f26906c9df0d2cc (Term Term) Term)
+(declare-fun Tm_arrow_61dc5944349c0fd1e6ccd916a51fdfe8 () Term)
+(declare-fun FStar.UInt32.div@tok () Term)
+
+
+; </end encoding val FStar.UInt32.div>
+
+
+; <Start encoding val FStar.UInt32.rem>
+
+
+(declare-fun FStar.UInt32.rem (Term Term) Term)
+
+(declare-fun Tm_refine_19ac6a052799e5086e9c3eb3a21d54a5 (Term Term) Term)
+(declare-fun Tm_arrow_a00bbce6d7d4a1d495177d4f11116643 () Term)
+(declare-fun FStar.UInt32.rem@tok () Term)
+
+
+; </end encoding val FStar.UInt32.rem>
+
+
+; <Start encoding val FStar.UInt32.logand>
+
+(declare-fun FStar.UInt32.logand (Term Term) Term)
+(declare-fun Tm_refine_7afd5b0ca8e77c7f6870883658e19d63 (Term Term) Term)
+(declare-fun Tm_arrow_eff0426e7af51f8d330de4f569da9534 () Term)
+(declare-fun FStar.UInt32.logand@tok () Term)
+
+
+; </end encoding val FStar.UInt32.logand>
+
+
+; <Start encoding val FStar.UInt32.logxor>
+
+(declare-fun FStar.UInt32.logxor (Term Term) Term)
+(declare-fun Tm_refine_2b25e5c3b25bc06167200cbfa5d36b3e (Term Term) Term)
+(declare-fun Tm_arrow_07d2eb0ad8dc47fa48b862c24603f207 () Term)
+(declare-fun FStar.UInt32.logxor@tok () Term)
+
+
+; </end encoding val FStar.UInt32.logxor>
+
+
+; <Start encoding val FStar.UInt32.logor>
+
+(declare-fun FStar.UInt32.logor (Term Term) Term)
+(declare-fun Tm_refine_39cb18a1d289e559096741772432b24f (Term Term) Term)
+(declare-fun Tm_arrow_f4c0c09b0ba22212b54bc6a7fb947fac () Term)
+(declare-fun FStar.UInt32.logor@tok () Term)
+
+
+; </end encoding val FStar.UInt32.logor>
+
+
+; <Start encoding val FStar.UInt32.lognot>
+
+(declare-fun FStar.UInt32.lognot (Term) Term)
+(declare-fun Tm_refine_d5743ca0a8d5f3ceec748bdcb132b14f (Term) Term)
+(declare-fun Tm_arrow_b6548dae703a0f26a4185c51dee5464b () Term)
+(declare-fun FStar.UInt32.lognot@tok () Term)
+
+
+; </end encoding val FStar.UInt32.lognot>
+
+
+; <Start encoding val FStar.UInt32.shift_right>
+
+(declare-fun FStar.UInt32.shift_right (Term Term) Term)
+(declare-fun Tm_refine_59202c8b625f4b04caf2081d6778d9e7 (Term Term) Term)
+(declare-fun Tm_arrow_13c7acc70a3dd34a798f691f2cee4104 () Term)
+(declare-fun FStar.UInt32.shift_right@tok () Term)
+
+
+; </end encoding val FStar.UInt32.shift_right>
+
+
+; <Start encoding val FStar.UInt32.shift_left>
+
+(declare-fun FStar.UInt32.shift_left (Term Term) Term)
+(declare-fun Tm_refine_c642c4de19ebed0b1a9b5f85d40989c0 (Term Term) Term)
+(declare-fun Tm_arrow_0709d575329517627fac117b134f4462 () Term)
+(declare-fun FStar.UInt32.shift_left@tok () Term)
+
+
+; </end encoding val FStar.UInt32.shift_left>
+
+
+; <Start encoding let eq>
+
+(declare-fun FStar.UInt32.eq (Term Term) Term)
+(declare-fun Tm_arrow_6de09abf9de7977da03ee416904d3039 () Term)
+(declare-fun FStar.UInt32.eq@tok () Term)
+
+; </end encoding let eq>
+
+
+; <Start encoding let gt>
+
+(declare-fun FStar.UInt32.gt (Term Term) Term)
+
+(declare-fun FStar.UInt32.gt@tok () Term)
+
+; </end encoding let gt>
+
+
+; <Start encoding let gte>
+
+(declare-fun FStar.UInt32.gte (Term Term) Term)
+
+(declare-fun FStar.UInt32.gte@tok () Term)
+
+; </end encoding let gte>
+
+
+; <Start encoding let lt>
+
+(declare-fun FStar.UInt32.lt (Term Term) Term)
+
+(declare-fun FStar.UInt32.lt@tok () Term)
+
+; </end encoding let lt>
+
+
+; <Start encoding let lte>
+
+(declare-fun FStar.UInt32.lte (Term Term) Term)
+
+(declare-fun FStar.UInt32.lte@tok () Term)
+
+; </end encoding let lte>
+
+
+; <Start encoding let minus>
+
+(declare-fun FStar.UInt32.minus (Term) Term)
+(declare-fun Tm_arrow_c4b70260248a2080020c883b42aa875d () Term)
+(declare-fun FStar.UInt32.minus@tok () Term)
+
+; </end encoding let minus>
+
+
+; <Start encoding let n_minus_one>
+
+(declare-fun FStar.UInt32.n_minus_one (Dummy_sort) Term)
+
+; </end encoding let n_minus_one>
+
+
+; <Skipped #set-options "--z3rlimit 80 --initial_fuel 1 --max_fuel 1"/>
+
+
+; <Start encoding let eq_mask>
+
+(declare-fun FStar.UInt32.eq_mask (Term Term) Term)
+(declare-fun Tm_refine_09d9a189c8c7a3bf3fc28db14e6689cd (Term Term) Term)
+(declare-fun Tm_arrow_472ed8b8700983a2f5b417531368b430 () Term)
+(declare-fun FStar.UInt32.eq_mask@tok () Term)
+
+
+; </end encoding let eq_mask>
+
+
+; <Start encoding val FStar.UInt32.lemma_sub_msbs>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt32.lemma_sub_msbs (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt32.lemma_sub_msbs@tok () Term)
+
+; </end encoding val FStar.UInt32.lemma_sub_msbs>
+
+
+; <Start encoding let gte_mask>
+
+(declare-fun FStar.UInt32.gte_mask (Term Term) Term)
+(declare-fun Tm_refine_83df857506788e94d25c8be97271668a (Term Term) Term)
+(declare-fun Tm_arrow_a9de8133430dc71a337d9373e485c8b4 () Term)
+(declare-fun FStar.UInt32.gte_mask@tok () Term)
+
+
+; </end encoding let gte_mask>
+
+
+; <Skipped #reset-options/>
+
+
+; <Start encoding let op_Plus_Hat>
+
+(declare-fun FStar.UInt32.op_Plus_Hat (Term Term) Term)
+
+
+(declare-fun FStar.UInt32.op_Plus_Hat@tok () Term)
+
+
+; </end encoding let op_Plus_Hat>
+
+
+; <Start encoding let op_Plus_Question_Hat>
+
+(declare-fun FStar.UInt32.op_Plus_Question_Hat (Term Term) Term)
+
+
+(declare-fun FStar.UInt32.op_Plus_Question_Hat@tok () Term)
+
+
+; </end encoding let op_Plus_Question_Hat>
+
+
+; <Start encoding let op_Plus_Percent_Hat>
+
+(declare-fun FStar.UInt32.op_Plus_Percent_Hat (Term Term) Term)
+
+
+(declare-fun FStar.UInt32.op_Plus_Percent_Hat@tok () Term)
+
+
+; </end encoding let op_Plus_Percent_Hat>
+
+
+; <Start encoding let op_Subtraction_Hat>
+
+(declare-fun FStar.UInt32.op_Subtraction_Hat (Term Term) Term)
+
+
+(declare-fun FStar.UInt32.op_Subtraction_Hat@tok () Term)
+
+
+; </end encoding let op_Subtraction_Hat>
+
+
+; <Start encoding let op_Subtraction_Question_Hat>
+
+(declare-fun FStar.UInt32.op_Subtraction_Question_Hat (Term Term) Term)
+
+
+(declare-fun FStar.UInt32.op_Subtraction_Question_Hat@tok () Term)
+
+
+; </end encoding let op_Subtraction_Question_Hat>
+
+
+; <Start encoding let op_Subtraction_Percent_Hat>
+
+(declare-fun FStar.UInt32.op_Subtraction_Percent_Hat (Term Term) Term)
+
+
+(declare-fun FStar.UInt32.op_Subtraction_Percent_Hat@tok () Term)
+
+
+; </end encoding let op_Subtraction_Percent_Hat>
+
+
+; <Start encoding let op_Star_Hat>
+
+(declare-fun FStar.UInt32.op_Star_Hat (Term Term) Term)
+
+
+(declare-fun FStar.UInt32.op_Star_Hat@tok () Term)
+
+
+; </end encoding let op_Star_Hat>
+
+
+; <Start encoding let op_Star_Question_Hat>
+
+(declare-fun FStar.UInt32.op_Star_Question_Hat (Term Term) Term)
+
+
+(declare-fun FStar.UInt32.op_Star_Question_Hat@tok () Term)
+
+
+; </end encoding let op_Star_Question_Hat>
+
+
+; <Start encoding let op_Star_Percent_Hat>
+
+(declare-fun FStar.UInt32.op_Star_Percent_Hat (Term Term) Term)
+
+
+(declare-fun FStar.UInt32.op_Star_Percent_Hat@tok () Term)
+
+
+; </end encoding let op_Star_Percent_Hat>
+
+
+; <Start encoding let op_Slash_Hat>
+
+
+(declare-fun FStar.UInt32.op_Slash_Hat (Term Term) Term)
+
+
+
+(declare-fun FStar.UInt32.op_Slash_Hat@tok () Term)
+
+
+
+; </end encoding let op_Slash_Hat>
+
+
+; <Start encoding let op_Percent_Hat>
+
+
+(declare-fun FStar.UInt32.op_Percent_Hat (Term Term) Term)
+
+
+
+(declare-fun FStar.UInt32.op_Percent_Hat@tok () Term)
+
+
+
+; </end encoding let op_Percent_Hat>
+
+
+; <Start encoding let op_Hat_Hat>
+
+(declare-fun FStar.UInt32.op_Hat_Hat (Term Term) Term)
+
+
+(declare-fun FStar.UInt32.op_Hat_Hat@tok () Term)
+
+
+; </end encoding let op_Hat_Hat>
+
+
+; <Start encoding let op_Amp_Hat>
+
+(declare-fun FStar.UInt32.op_Amp_Hat (Term Term) Term)
+
+
+(declare-fun FStar.UInt32.op_Amp_Hat@tok () Term)
+
+
+; </end encoding let op_Amp_Hat>
+
+
+; <Start encoding let op_Bar_Hat>
+
+(declare-fun FStar.UInt32.op_Bar_Hat (Term Term) Term)
+
+
+(declare-fun FStar.UInt32.op_Bar_Hat@tok () Term)
+
+
+; </end encoding let op_Bar_Hat>
+
+
+; <Start encoding let op_Less_Less_Hat>
+
+(declare-fun FStar.UInt32.op_Less_Less_Hat (Term Term) Term)
+
+
+(declare-fun FStar.UInt32.op_Less_Less_Hat@tok () Term)
+
+
+; </end encoding let op_Less_Less_Hat>
+
+
+; <Start encoding let op_Greater_Greater_Hat>
+
+(declare-fun FStar.UInt32.op_Greater_Greater_Hat (Term Term) Term)
+
+
+(declare-fun FStar.UInt32.op_Greater_Greater_Hat@tok () Term)
+
+
+; </end encoding let op_Greater_Greater_Hat>
+
+
+; <Start encoding let op_Equals_Hat>
+
+(declare-fun FStar.UInt32.op_Equals_Hat (Term Term) Term)
+
+(declare-fun FStar.UInt32.op_Equals_Hat@tok () Term)
+
+; </end encoding let op_Equals_Hat>
+
+
+; <Start encoding let op_Greater_Hat>
+
+(declare-fun FStar.UInt32.op_Greater_Hat (Term Term) Term)
+
+(declare-fun FStar.UInt32.op_Greater_Hat@tok () Term)
+
+; </end encoding let op_Greater_Hat>
+
+
+; <Start encoding let op_Greater_Equals_Hat>
+
+(declare-fun FStar.UInt32.op_Greater_Equals_Hat (Term Term) Term)
+
+(declare-fun FStar.UInt32.op_Greater_Equals_Hat@tok () Term)
+
+; </end encoding let op_Greater_Equals_Hat>
+
+
+; <Start encoding let op_Less_Hat>
+
+(declare-fun FStar.UInt32.op_Less_Hat (Term Term) Term)
+
+(declare-fun FStar.UInt32.op_Less_Hat@tok () Term)
+
+; </end encoding let op_Less_Hat>
+
+
+; <Start encoding let op_Less_Equals_Hat>
+
+(declare-fun FStar.UInt32.op_Less_Equals_Hat (Term Term) Term)
+
+(declare-fun FStar.UInt32.op_Less_Equals_Hat@tok () Term)
+
+; </end encoding let op_Less_Equals_Hat>
+
+
+; <Start encoding val FStar.UInt32.to_string>
+
+(declare-fun FStar.UInt32.to_string (Term) Term)
+(declare-fun Tm_arrow_bde0326394a5877aafa8a9dfb4adb318 () Term)
+(declare-fun FStar.UInt32.to_string@tok () Term)
+
+; </end encoding val FStar.UInt32.to_string>
+
+
+; <Start encoding val FStar.UInt32.to_string_hex>
+
+(declare-fun FStar.UInt32.to_string_hex (Term) Term)
+
+(declare-fun FStar.UInt32.to_string_hex@tok () Term)
+
+; </end encoding val FStar.UInt32.to_string_hex>
+
+
+; <Start encoding val FStar.UInt32.to_string_hex_pad>
+
+(declare-fun FStar.UInt32.to_string_hex_pad (Term) Term)
+
+(declare-fun FStar.UInt32.to_string_hex_pad@tok () Term)
+
+; </end encoding val FStar.UInt32.to_string_hex_pad>
+
+
+; <Start encoding val FStar.UInt32.of_string>
+
+(declare-fun FStar.UInt32.of_string (Term) Term)
+(declare-fun Tm_arrow_564534749090ea8f842e229c3182e762 () Term)
+(declare-fun FStar.UInt32.of_string@tok () Term)
+
+; </end encoding val FStar.UInt32.of_string>
+
+
+; <Skipped #set-options "--admit_smt_queries true"/>
+
+
+; <Start encoding let __uint_to_t>
+
+(declare-fun FStar.UInt32.__uint_to_t (Term) Term)
+(declare-fun Tm_arrow_67ad727682511dd92ce30d8d55620a8e () Term)
+(declare-fun FStar.UInt32.__uint_to_t@tok () Term)
+
+; </end encoding let __uint_to_t>
+
+
+; <Skipped #reset-options/>
+
+
+; End Externals for interface FStar.UInt32
+
+
+; Externals for interface FStar.UInt64
+
+
+; <Start encoding let n>
+
+(declare-fun FStar.UInt64.n (Dummy_sort) Term)
+
+; </end encoding let n>
+
+
+; <Skipped #set-options "--max_fuel 0 --max_ifuel 0"/>
+
+
+; <Start encoding val FStar.UInt64.t>
+
+(declare-fun FStar.UInt64.t (Dummy_sort) Term)
+
+; </end encoding val FStar.UInt64.t>
+
+
+; <Start encoding val FStar.UInt64.v>
+
+(declare-fun FStar.UInt64.v (Term) Term)
+(declare-fun Tm_arrow_b1dc77edd47f50a79ef19c45877be87f () Term)
+(declare-fun FStar.UInt64.v@tok () Term)
+
+; </end encoding val FStar.UInt64.v>
+
+
+; <Start encoding val FStar.UInt64.uint_to_t>
+
+(declare-fun FStar.UInt64.uint_to_t (Term) Term)
+(declare-fun Tm_refine_48c1b5b4c02ad49f0760911a9d4b1fb4 (Term) Term)
+(declare-fun Tm_arrow_0a7b550d26d1f7783c7c5e1990842388 () Term)
+(declare-fun FStar.UInt64.uint_to_t@tok () Term)
+
+
+; </end encoding val FStar.UInt64.uint_to_t>
+
+
+; <Start encoding val FStar.UInt64.uv_inv>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt64.uv_inv (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt64.uv_inv@tok () Term)
+
+; </end encoding val FStar.UInt64.uv_inv>
+
+
+; <Start encoding val FStar.UInt64.vu_inv>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt64.vu_inv (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt64.vu_inv@tok () Term)
+
+; </end encoding val FStar.UInt64.vu_inv>
+
+
+; <Start encoding val FStar.UInt64.v_inj>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt64.v_inj (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt64.v_inj@tok () Term)
+
+; </end encoding val FStar.UInt64.v_inj>
+
+
+; <Start encoding val FStar.UInt64.zero>
+
+(declare-fun FStar.UInt64.zero (Dummy_sort) Term)
+(declare-fun Tm_refine_89584a9c9cf094f470969adafcc43f12 () Term)
+
+
+; </end encoding val FStar.UInt64.zero>
+
+
+; <Start encoding val FStar.UInt64.one>
+
+(declare-fun FStar.UInt64.one (Dummy_sort) Term)
+(declare-fun Tm_refine_248426d47c73436882d5ff4a2d4f3cf0 () Term)
+
+
+; </end encoding val FStar.UInt64.one>
+
+
+; <Start encoding val FStar.UInt64.add>
+
+(declare-fun FStar.UInt64.add (Term Term) Term)
+(declare-fun Tm_refine_bc552b2c624e2add758b3ac761c0c563 (Term Term) Term)
+(declare-fun Tm_arrow_be2b56e86970b1435b564896876df5af () Term)
+(declare-fun FStar.UInt64.add@tok () Term)
+
+
+; </end encoding val FStar.UInt64.add>
+
+
+; <Start encoding val FStar.UInt64.add_underspec>
+
+(declare-fun FStar.UInt64.add_underspec (Term Term) Term)
+(declare-fun Tm_refine_453fa410c3a31a8a972a89b516aee90f (Term Term) Term)
+(declare-fun Tm_arrow_7f1e1876505bc4561e28a0354c79be94 () Term)
+(declare-fun FStar.UInt64.add_underspec@tok () Term)
+
+
+; </end encoding val FStar.UInt64.add_underspec>
+
+
+; <Start encoding val FStar.UInt64.add_mod>
+
+(declare-fun FStar.UInt64.add_mod (Term Term) Term)
+(declare-fun Tm_refine_2d98f2f5de361516da3dbd9f556509e2 (Term Term) Term)
+(declare-fun Tm_arrow_05395bb977e74723e0c89b35f3db81b1 () Term)
+(declare-fun FStar.UInt64.add_mod@tok () Term)
+
+
+; </end encoding val FStar.UInt64.add_mod>
+
+
+; <Start encoding val FStar.UInt64.sub>
+
+(declare-fun FStar.UInt64.sub (Term Term) Term)
+(declare-fun Tm_refine_4db8ba22c4504a66577a2159dcc603cd (Term Term) Term)
+(declare-fun Tm_arrow_a3c2957810330952c9cd0dc2ef7e5dc1 () Term)
+(declare-fun FStar.UInt64.sub@tok () Term)
+
+
+; </end encoding val FStar.UInt64.sub>
+
+
+; <Start encoding val FStar.UInt64.sub_underspec>
+
+(declare-fun FStar.UInt64.sub_underspec (Term Term) Term)
+(declare-fun Tm_refine_dd3e2dd01aa446ac6616a71fc757406a (Term Term) Term)
+(declare-fun Tm_arrow_87b0e65776a09c1fe9734c4195b4bf84 () Term)
+(declare-fun FStar.UInt64.sub_underspec@tok () Term)
+
+
+; </end encoding val FStar.UInt64.sub_underspec>
+
+
+; <Start encoding val FStar.UInt64.sub_mod>
+
+(declare-fun FStar.UInt64.sub_mod (Term Term) Term)
+(declare-fun Tm_refine_cb95789552ffa46c14f21af13ceaad6b (Term Term) Term)
+(declare-fun Tm_arrow_7f617113bda01094490f58e39564f398 () Term)
+(declare-fun FStar.UInt64.sub_mod@tok () Term)
+
+
+; </end encoding val FStar.UInt64.sub_mod>
+
+
+; <Start encoding val FStar.UInt64.mul>
+
+(declare-fun FStar.UInt64.mul (Term Term) Term)
+(declare-fun Tm_refine_2ac8bed7a6398f84bccb91bd4fed7136 (Term Term) Term)
+(declare-fun Tm_arrow_ea17845c6f4791bda61fffc74c40da51 () Term)
+(declare-fun FStar.UInt64.mul@tok () Term)
+
+
+; </end encoding val FStar.UInt64.mul>
+
+
+; <Start encoding val FStar.UInt64.mul_underspec>
+
+(declare-fun FStar.UInt64.mul_underspec (Term Term) Term)
+(declare-fun Tm_refine_b936d941ba7bf51db4d781f9af09acd3 (Term Term) Term)
+(declare-fun Tm_arrow_596709ad66a9eee3dc6ef040a813e08e () Term)
+(declare-fun FStar.UInt64.mul_underspec@tok () Term)
+
+
+; </end encoding val FStar.UInt64.mul_underspec>
+
+
+; <Start encoding val FStar.UInt64.mul_mod>
+
+(declare-fun FStar.UInt64.mul_mod (Term Term) Term)
+(declare-fun Tm_refine_fce3a2e2e29645212301d89fcebc4e29 (Term Term) Term)
+(declare-fun Tm_arrow_a58b92e22a54f064a91938f5890f3d26 () Term)
+(declare-fun FStar.UInt64.mul_mod@tok () Term)
+
+
+; </end encoding val FStar.UInt64.mul_mod>
+
+
+; <Start encoding val FStar.UInt64.div>
+
+(declare-fun Tm_refine_94d25b6e0041d543efd58300424ecc37 () Term)
+(declare-fun FStar.UInt64.div (Term Term) Term)
+
+(declare-fun Tm_refine_2905e4cd1a81244ae97dc5c62563e060 (Term Term) Term)
+(declare-fun Tm_arrow_362fd430a2a36692a10db610ce347491 () Term)
+(declare-fun FStar.UInt64.div@tok () Term)
+
+
+; </end encoding val FStar.UInt64.div>
+
+
+; <Start encoding val FStar.UInt64.rem>
+
+
+(declare-fun FStar.UInt64.rem (Term Term) Term)
+
+(declare-fun Tm_refine_06f2bf4950bb76094f7b7f43daea2409 (Term Term) Term)
+(declare-fun Tm_arrow_53bf9c10f719f234f584267623ec2e33 () Term)
+(declare-fun FStar.UInt64.rem@tok () Term)
+
+
+; </end encoding val FStar.UInt64.rem>
+
+
+; <Start encoding val FStar.UInt64.logand>
+
+(declare-fun FStar.UInt64.logand (Term Term) Term)
+(declare-fun Tm_refine_4a73301fbc41c8e432f23b6aef69a5eb (Term Term) Term)
+(declare-fun Tm_arrow_cbca1d1a87f201e6ff2f61643983b2f3 () Term)
+(declare-fun FStar.UInt64.logand@tok () Term)
+
+
+; </end encoding val FStar.UInt64.logand>
+
+
+; <Start encoding val FStar.UInt64.logxor>
+
+(declare-fun FStar.UInt64.logxor (Term Term) Term)
+(declare-fun Tm_refine_b87f471e80e3c2bc077d38b7026cfcf6 (Term Term) Term)
+(declare-fun Tm_arrow_7a0892a26110d0c3bb8d5540c3f9134f () Term)
+(declare-fun FStar.UInt64.logxor@tok () Term)
+
+
+; </end encoding val FStar.UInt64.logxor>
+
+
+; <Start encoding val FStar.UInt64.logor>
+
+(declare-fun FStar.UInt64.logor (Term Term) Term)
+(declare-fun Tm_refine_6913af387cf2f30da0961ac60666f00f (Term Term) Term)
+(declare-fun Tm_arrow_88959be20cb195d8ed8c043810621aa5 () Term)
+(declare-fun FStar.UInt64.logor@tok () Term)
+
+
+; </end encoding val FStar.UInt64.logor>
+
+
+; <Start encoding val FStar.UInt64.lognot>
+
+(declare-fun FStar.UInt64.lognot (Term) Term)
+(declare-fun Tm_refine_d294ad5c8783c9adf54e87f8b3d910d1 (Term) Term)
+(declare-fun Tm_arrow_5830582bc087a4c4cac6e2d02503540d () Term)
+(declare-fun FStar.UInt64.lognot@tok () Term)
+
+
+; </end encoding val FStar.UInt64.lognot>
+
+
+; <Start encoding val FStar.UInt64.shift_right>
+
+(declare-fun FStar.UInt64.shift_right (Term Term) Term)
+(declare-fun Tm_refine_0556f625b89f1ac99fd21e82e26fe9e0 (Term Term) Term)
+(declare-fun Tm_arrow_54172cd4c03b90333401dcf08f131f18 () Term)
+(declare-fun FStar.UInt64.shift_right@tok () Term)
+
+
+; </end encoding val FStar.UInt64.shift_right>
+
+
+; <Start encoding val FStar.UInt64.shift_left>
+
+(declare-fun FStar.UInt64.shift_left (Term Term) Term)
+(declare-fun Tm_refine_ebf0af240d826e12ec6c1570ad81631c (Term Term) Term)
+(declare-fun Tm_arrow_f0e726dc2efef2bba1cad7b7437673ab () Term)
+(declare-fun FStar.UInt64.shift_left@tok () Term)
+
+
+; </end encoding val FStar.UInt64.shift_left>
+
+
+; <Start encoding let eq>
+
+(declare-fun FStar.UInt64.eq (Term Term) Term)
+(declare-fun Tm_arrow_598288f3403164a95ff09472c7ec0bb4 () Term)
+(declare-fun FStar.UInt64.eq@tok () Term)
+
+; </end encoding let eq>
+
+
+; <Start encoding let gt>
+
+(declare-fun FStar.UInt64.gt (Term Term) Term)
+
+(declare-fun FStar.UInt64.gt@tok () Term)
+
+; </end encoding let gt>
+
+
+; <Start encoding let gte>
+
+(declare-fun FStar.UInt64.gte (Term Term) Term)
+
+(declare-fun FStar.UInt64.gte@tok () Term)
+
+; </end encoding let gte>
+
+
+; <Start encoding let lt>
+
+(declare-fun FStar.UInt64.lt (Term Term) Term)
+
+(declare-fun FStar.UInt64.lt@tok () Term)
+
+; </end encoding let lt>
+
+
+; <Start encoding let lte>
+
+(declare-fun FStar.UInt64.lte (Term Term) Term)
+
+(declare-fun FStar.UInt64.lte@tok () Term)
+
+; </end encoding let lte>
+
+
+; <Start encoding let minus>
+
+(declare-fun FStar.UInt64.minus (Term) Term)
+(declare-fun Tm_arrow_1b7783661e16e9c2a9894c974bc97032 () Term)
+(declare-fun FStar.UInt64.minus@tok () Term)
+
+; </end encoding let minus>
+
+
+; <Start encoding let n_minus_one>
+
+(declare-fun FStar.UInt64.n_minus_one (Dummy_sort) Term)
+
+; </end encoding let n_minus_one>
+
+
+; <Skipped #set-options "--z3rlimit 80 --initial_fuel 1 --max_fuel 1"/>
+
+
+; <Start encoding let eq_mask>
+
+(declare-fun FStar.UInt64.eq_mask (Term Term) Term)
+(declare-fun Tm_refine_30c561286d2c8600e271922aaab003cf (Term Term) Term)
+(declare-fun Tm_arrow_dc89781bb433a3a499ce3ed25df276ee () Term)
+(declare-fun FStar.UInt64.eq_mask@tok () Term)
+
+
+; </end encoding let eq_mask>
+
+
+; <Start encoding val FStar.UInt64.lemma_sub_msbs>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt64.lemma_sub_msbs (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt64.lemma_sub_msbs@tok () Term)
+
+; </end encoding val FStar.UInt64.lemma_sub_msbs>
+
+
+; <Start encoding let gte_mask>
+
+(declare-fun FStar.UInt64.gte_mask (Term Term) Term)
+(declare-fun Tm_refine_1b1f0e3b5d9ef76ddc765c8d9e623234 (Term Term) Term)
+(declare-fun Tm_arrow_7b13171caed18c0d7cf0b1d9315655c1 () Term)
+(declare-fun FStar.UInt64.gte_mask@tok () Term)
+
+
+; </end encoding let gte_mask>
+
+
+; <Skipped #reset-options/>
+
+
+; <Start encoding let op_Plus_Hat>
+
+(declare-fun FStar.UInt64.op_Plus_Hat (Term Term) Term)
+
+
+(declare-fun FStar.UInt64.op_Plus_Hat@tok () Term)
+
+
+; </end encoding let op_Plus_Hat>
+
+
+; <Start encoding let op_Plus_Question_Hat>
+
+(declare-fun FStar.UInt64.op_Plus_Question_Hat (Term Term) Term)
+
+
+(declare-fun FStar.UInt64.op_Plus_Question_Hat@tok () Term)
+
+
+; </end encoding let op_Plus_Question_Hat>
+
+
+; <Start encoding let op_Plus_Percent_Hat>
+
+(declare-fun FStar.UInt64.op_Plus_Percent_Hat (Term Term) Term)
+
+
+(declare-fun FStar.UInt64.op_Plus_Percent_Hat@tok () Term)
+
+
+; </end encoding let op_Plus_Percent_Hat>
+
+
+; <Start encoding let op_Subtraction_Hat>
+
+(declare-fun FStar.UInt64.op_Subtraction_Hat (Term Term) Term)
+
+
+(declare-fun FStar.UInt64.op_Subtraction_Hat@tok () Term)
+
+
+; </end encoding let op_Subtraction_Hat>
+
+
+; <Start encoding let op_Subtraction_Question_Hat>
+
+(declare-fun FStar.UInt64.op_Subtraction_Question_Hat (Term Term) Term)
+
+
+(declare-fun FStar.UInt64.op_Subtraction_Question_Hat@tok () Term)
+
+
+; </end encoding let op_Subtraction_Question_Hat>
+
+
+; <Start encoding let op_Subtraction_Percent_Hat>
+
+(declare-fun FStar.UInt64.op_Subtraction_Percent_Hat (Term Term) Term)
+
+
+(declare-fun FStar.UInt64.op_Subtraction_Percent_Hat@tok () Term)
+
+
+; </end encoding let op_Subtraction_Percent_Hat>
+
+
+; <Start encoding let op_Star_Hat>
+
+(declare-fun FStar.UInt64.op_Star_Hat (Term Term) Term)
+
+
+(declare-fun FStar.UInt64.op_Star_Hat@tok () Term)
+
+
+; </end encoding let op_Star_Hat>
+
+
+; <Start encoding let op_Star_Question_Hat>
+
+(declare-fun FStar.UInt64.op_Star_Question_Hat (Term Term) Term)
+
+
+(declare-fun FStar.UInt64.op_Star_Question_Hat@tok () Term)
+
+
+; </end encoding let op_Star_Question_Hat>
+
+
+; <Start encoding let op_Star_Percent_Hat>
+
+(declare-fun FStar.UInt64.op_Star_Percent_Hat (Term Term) Term)
+
+
+(declare-fun FStar.UInt64.op_Star_Percent_Hat@tok () Term)
+
+
+; </end encoding let op_Star_Percent_Hat>
+
+
+; <Start encoding let op_Slash_Hat>
+
+
+(declare-fun FStar.UInt64.op_Slash_Hat (Term Term) Term)
+
+
+
+(declare-fun FStar.UInt64.op_Slash_Hat@tok () Term)
+
+
+
+; </end encoding let op_Slash_Hat>
+
+
+; <Start encoding let op_Percent_Hat>
+
+
+(declare-fun FStar.UInt64.op_Percent_Hat (Term Term) Term)
+
+
+
+(declare-fun FStar.UInt64.op_Percent_Hat@tok () Term)
+
+
+
+; </end encoding let op_Percent_Hat>
+
+
+; <Start encoding let op_Hat_Hat>
+
+(declare-fun FStar.UInt64.op_Hat_Hat (Term Term) Term)
+
+
+(declare-fun FStar.UInt64.op_Hat_Hat@tok () Term)
+
+
+; </end encoding let op_Hat_Hat>
+
+
+; <Start encoding let op_Amp_Hat>
+
+(declare-fun FStar.UInt64.op_Amp_Hat (Term Term) Term)
+
+
+(declare-fun FStar.UInt64.op_Amp_Hat@tok () Term)
+
+
+; </end encoding let op_Amp_Hat>
+
+
+; <Start encoding let op_Bar_Hat>
+
+(declare-fun FStar.UInt64.op_Bar_Hat (Term Term) Term)
+
+
+(declare-fun FStar.UInt64.op_Bar_Hat@tok () Term)
+
+
+; </end encoding let op_Bar_Hat>
+
+
+; <Start encoding let op_Less_Less_Hat>
+
+(declare-fun FStar.UInt64.op_Less_Less_Hat (Term Term) Term)
+
+
+(declare-fun FStar.UInt64.op_Less_Less_Hat@tok () Term)
+
+
+; </end encoding let op_Less_Less_Hat>
+
+
+; <Start encoding let op_Greater_Greater_Hat>
+
+(declare-fun FStar.UInt64.op_Greater_Greater_Hat (Term Term) Term)
+
+
+(declare-fun FStar.UInt64.op_Greater_Greater_Hat@tok () Term)
+
+
+; </end encoding let op_Greater_Greater_Hat>
+
+
+; <Start encoding let op_Equals_Hat>
+
+(declare-fun FStar.UInt64.op_Equals_Hat (Term Term) Term)
+
+(declare-fun FStar.UInt64.op_Equals_Hat@tok () Term)
+
+; </end encoding let op_Equals_Hat>
+
+
+; <Start encoding let op_Greater_Hat>
+
+(declare-fun FStar.UInt64.op_Greater_Hat (Term Term) Term)
+
+(declare-fun FStar.UInt64.op_Greater_Hat@tok () Term)
+
+; </end encoding let op_Greater_Hat>
+
+
+; <Start encoding let op_Greater_Equals_Hat>
+
+(declare-fun FStar.UInt64.op_Greater_Equals_Hat (Term Term) Term)
+
+(declare-fun FStar.UInt64.op_Greater_Equals_Hat@tok () Term)
+
+; </end encoding let op_Greater_Equals_Hat>
+
+
+; <Start encoding let op_Less_Hat>
+
+(declare-fun FStar.UInt64.op_Less_Hat (Term Term) Term)
+
+(declare-fun FStar.UInt64.op_Less_Hat@tok () Term)
+
+; </end encoding let op_Less_Hat>
+
+
+; <Start encoding let op_Less_Equals_Hat>
+
+(declare-fun FStar.UInt64.op_Less_Equals_Hat (Term Term) Term)
+
+(declare-fun FStar.UInt64.op_Less_Equals_Hat@tok () Term)
+
+; </end encoding let op_Less_Equals_Hat>
+
+
+; <Start encoding val FStar.UInt64.to_string>
+
+(declare-fun FStar.UInt64.to_string (Term) Term)
+(declare-fun Tm_arrow_9181e066d5f5e8abb661df26378ed002 () Term)
+(declare-fun FStar.UInt64.to_string@tok () Term)
+
+; </end encoding val FStar.UInt64.to_string>
+
+
+; <Start encoding val FStar.UInt64.to_string_hex>
+
+(declare-fun FStar.UInt64.to_string_hex (Term) Term)
+
+(declare-fun FStar.UInt64.to_string_hex@tok () Term)
+
+; </end encoding val FStar.UInt64.to_string_hex>
+
+
+; <Start encoding val FStar.UInt64.to_string_hex_pad>
+
+(declare-fun FStar.UInt64.to_string_hex_pad (Term) Term)
+
+(declare-fun FStar.UInt64.to_string_hex_pad@tok () Term)
+
+; </end encoding val FStar.UInt64.to_string_hex_pad>
+
+
+; <Start encoding val FStar.UInt64.of_string>
+
+(declare-fun FStar.UInt64.of_string (Term) Term)
+(declare-fun Tm_arrow_d8ed8461d1bddbfa79f5d5b77e608759 () Term)
+(declare-fun FStar.UInt64.of_string@tok () Term)
+
+; </end encoding val FStar.UInt64.of_string>
+
+
+; <Skipped #set-options "--admit_smt_queries true"/>
+
+
+; <Start encoding let __uint_to_t>
+
+(declare-fun FStar.UInt64.__uint_to_t (Term) Term)
+(declare-fun Tm_arrow_583103ad9bf405c63f576183363ae2d9 () Term)
+(declare-fun FStar.UInt64.__uint_to_t@tok () Term)
+
+; </end encoding let __uint_to_t>
+
+
+; <Skipped #reset-options/>
+
+
+; End Externals for interface FStar.UInt64
+
+
+; Externals for interface FStar.FunctionalExtensionality
+
+
+; <Start encoding let arrow>
+
+
+(declare-fun FStar.FunctionalExtensionality.arrow (Term Term) Term)
+
+(declare-fun Tm_arrow_28022b1931e0c9114f09925e8271570a () Term)
+(declare-fun FStar.FunctionalExtensionality.arrow@tok () Term)
+
+(declare-fun Tm_arrow_a7d5cc170be69663c495e8582d2bc62a (Term Term) Term)
+
+; </end encoding let arrow>
+
+
+; <Start encoding let efun>
+
+
+(declare-fun FStar.FunctionalExtensionality.efun (Term Term) Term)
+
+
+(declare-fun FStar.FunctionalExtensionality.efun@tok () Term)
+
+
+
+; </end encoding let efun>
+
+
+; <Start encoding let feq>
+
+
+
+
+(declare-fun FStar.FunctionalExtensionality.feq (Term Term Term Term) Term)
+
+
+
+(declare-fun Tm_arrow_a26edf208afb0682b12235c66ccbd71c () Term)
+(declare-fun FStar.FunctionalExtensionality.feq@tok () Term)
+
+
+
+
+; </end encoding let feq>
+
+
+; <Start encoding val FStar.FunctionalExtensionality.on_domain>
+
+
+
+(declare-fun FStar.FunctionalExtensionality.on_domain (Term Term Term) Term)
+
+
+
+(declare-fun Tm_arrow_4644eedc14c2df3e417da1b7c07108e6 () Term)
+(declare-fun FStar.FunctionalExtensionality.on_domain@tok () Term)
+
+
+; </end encoding val FStar.FunctionalExtensionality.on_domain>
+
+
+; <Start encoding val FStar.FunctionalExtensionality.feq_on_domain>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.FunctionalExtensionality.feq_on_domain (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.FunctionalExtensionality.feq_on_domain@tok () Term)
+
+
+
+; </end encoding val FStar.FunctionalExtensionality.feq_on_domain>
+
+
+; <Start encoding val FStar.FunctionalExtensionality.idempotence_on_domain>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.FunctionalExtensionality.idempotence_on_domain (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.FunctionalExtensionality.idempotence_on_domain@tok () Term)
+
+
+
+; </end encoding val FStar.FunctionalExtensionality.idempotence_on_domain>
+
+
+; <Start encoding let is_restricted>
+
+
+
+(declare-fun FStar.FunctionalExtensionality.is_restricted (Term Term Term) Term)
+
+
+(declare-fun Tm_arrow_b9e5e589ff6008bf9dc6c8ac06a76d9b () Term)
+(declare-fun FStar.FunctionalExtensionality.is_restricted@tok () Term)
+
+
+
+; </end encoding let is_restricted>
+
+
+; <Start encoding let restricted_t>
+
+
+(declare-fun FStar.FunctionalExtensionality.restricted_t (Term Term) Term)
+
+
+(declare-fun FStar.FunctionalExtensionality.restricted_t@tok () Term)
+
+
+(declare-fun Tm_refine_7e4a6c5999db731b5d17d0418dfeea3e (Term Term) Term)
+
+; </end encoding let restricted_t>
+
+
+; <Start encoding let op_Hat_Subtraction_Greater>
+
+(declare-fun FStar.FunctionalExtensionality.op_Hat_Subtraction_Greater (Term Term) Term)
+
+(declare-fun FStar.FunctionalExtensionality.op_Hat_Subtraction_Greater@tok () Term)
+
+(declare-fun Tm_abs_134069e179ddf4705519081c391c4e10 (Term Term) Term)
+
+; </end encoding let op_Hat_Subtraction_Greater>
+
+
+; <Start encoding let on_dom>
+
+
+
+(declare-fun FStar.FunctionalExtensionality.on_dom (Term Term Term) Term)
+
+
+(declare-fun Tm_arrow_2c8a39c5d1179d9b2dbff37a928311ac () Term)
+(declare-fun FStar.FunctionalExtensionality.on_dom@tok () Term)
+
+
+
+; </end encoding let on_dom>
+
+
+; <Start encoding let on>
+
+
+(declare-fun FStar.FunctionalExtensionality.on (Term Term Term) Term)
+
+
+
+(declare-fun Tm_arrow_eab9bf17eb33be7efca62de21f27985c () Term)
+(declare-fun FStar.FunctionalExtensionality.on@tok () Term)
+
+
+
+
+
+
+; </end encoding let on>
+
+
+; <Start encoding val FStar.FunctionalExtensionality.extensionality>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.FunctionalExtensionality.extensionality (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.FunctionalExtensionality.extensionality@tok () Term)
+
+
+
+
+; </end encoding val FStar.FunctionalExtensionality.extensionality>
+
+
+; <Start encoding let arrow_g>
+
+
+(declare-fun FStar.FunctionalExtensionality.arrow_g (Term Term) Term)
+
+
+(declare-fun FStar.FunctionalExtensionality.arrow_g@tok () Term)
+
+
+
+; </end encoding let arrow_g>
+
+
+; <Start encoding let efun_g>
+
+
+(declare-fun FStar.FunctionalExtensionality.efun_g (Term Term) Term)
+
+
+(declare-fun FStar.FunctionalExtensionality.efun_g@tok () Term)
+
+
+
+; </end encoding let efun_g>
+
+
+; <Start encoding let feq_g>
+
+
+
+
+(declare-fun FStar.FunctionalExtensionality.feq_g (Term Term Term Term) Term)
+
+
+
+(declare-fun Tm_arrow_361ba84e60d273d78a5743d30c9dc908 () Term)
+(declare-fun FStar.FunctionalExtensionality.feq_g@tok () Term)
+
+
+
+
+; </end encoding let feq_g>
+
+
+; <Start encoding val FStar.FunctionalExtensionality.on_domain_g>
+
+
+
+(declare-fun FStar.FunctionalExtensionality.on_domain_g (Term Term Term) Term)
+
+
+
+(declare-fun Tm_arrow_bf6371335aea4d90f7963f85ebad8f0d () Term)
+(declare-fun FStar.FunctionalExtensionality.on_domain_g@tok () Term)
+
+
+; </end encoding val FStar.FunctionalExtensionality.on_domain_g>
+
+
+; <Start encoding val FStar.FunctionalExtensionality.feq_on_domain_g>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.FunctionalExtensionality.feq_on_domain_g (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.FunctionalExtensionality.feq_on_domain_g@tok () Term)
+
+
+
+; </end encoding val FStar.FunctionalExtensionality.feq_on_domain_g>
+
+
+; <Start encoding val FStar.FunctionalExtensionality.idempotence_on_domain_g>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.FunctionalExtensionality.idempotence_on_domain_g (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.FunctionalExtensionality.idempotence_on_domain_g@tok () Term)
+
+
+
+; </end encoding val FStar.FunctionalExtensionality.idempotence_on_domain_g>
+
+
+; <Start encoding let is_restricted_g>
+
+
+
+(declare-fun FStar.FunctionalExtensionality.is_restricted_g (Term Term Term) Term)
+
+
+(declare-fun Tm_arrow_eadb252d9886eeba4938e11c03ce9b79 () Term)
+(declare-fun FStar.FunctionalExtensionality.is_restricted_g@tok () Term)
+
+
+
+; </end encoding let is_restricted_g>
+
+
+; <Start encoding let restricted_g_t>
+
+
+(declare-fun FStar.FunctionalExtensionality.restricted_g_t (Term Term) Term)
+
+
+(declare-fun FStar.FunctionalExtensionality.restricted_g_t@tok () Term)
+
+
+(declare-fun Tm_refine_9185da06fca917c5514ae63042657873 (Term Term) Term)
+
+; </end encoding let restricted_g_t>
+
+
+; <Start encoding let op_Hat_Subtraction_Greater_Greater>
+
+(declare-fun FStar.FunctionalExtensionality.op_Hat_Subtraction_Greater_Greater (Term Term) Term)
+
+(declare-fun FStar.FunctionalExtensionality.op_Hat_Subtraction_Greater_Greater@tok () Term)
+
+
+
+; </end encoding let op_Hat_Subtraction_Greater_Greater>
+
+
+; <Start encoding let on_dom_g>
+
+
+
+(declare-fun FStar.FunctionalExtensionality.on_dom_g (Term Term Term) Term)
+
+
+(declare-fun Tm_arrow_2e3db44d1263cf9452aaa6907eac66cc () Term)
+(declare-fun FStar.FunctionalExtensionality.on_dom_g@tok () Term)
+
+
+
+; </end encoding let on_dom_g>
+
+
+; <Start encoding let on_g>
+
+
+(declare-fun FStar.FunctionalExtensionality.on_g (Term Term Term) Term)
+
+
+
+(declare-fun Tm_arrow_93a363f6461271c3e18b18593d7d03bf () Term)
+(declare-fun FStar.FunctionalExtensionality.on_g@tok () Term)
+
+
+
+
+
+
+; </end encoding let on_g>
+
+
+; <Start encoding val FStar.FunctionalExtensionality.extensionality_g>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.FunctionalExtensionality.extensionality_g (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.FunctionalExtensionality.extensionality_g@tok () Term)
+
+
+
+
+; </end encoding val FStar.FunctionalExtensionality.extensionality_g>
+
+
+; End Externals for interface FStar.FunctionalExtensionality
+
+
+; Externals for module X64.Machine_s
+
+
+; <Start encoding let nat32_max>
+
+(declare-fun X64.Machine_s.nat32_max (Dummy_sort) Term)
+
+; </end encoding let nat32_max>
+
+
+; <Start encoding let nat64_max>
+
+(declare-fun X64.Machine_s.nat64_max (Dummy_sort) Term)
+
+; </end encoding let nat64_max>
+
+
+; <Start encoding let nat128_max>
+
+(declare-fun X64.Machine_s.nat128_max (Dummy_sort) Term)
+
+; </end encoding let nat128_max>
+
+
+; <Start encoding let uu___0>
+
+(declare-fun X64.Machine_s.uu___0 (Dummy_sort) Term)
+
+; </end encoding let uu___0>
+
+
+; <Start encoding let uu___1>
+
+(declare-fun X64.Machine_s.uu___1 (Dummy_sort) Term)
+
+; </end encoding let uu___1>
+
+
+; <Start encoding let uu___2>
+
+(declare-fun X64.Machine_s.uu___2 (Dummy_sort) Term)
+
+; </end encoding let uu___2>
+
+
+; <Start encoding let nat64>
+
+(declare-fun X64.Machine_s.nat64 () Term)
+(declare-fun Tm_refine_a608a89bbc0a207d5920d37d906f7f40 () Term)
+
+; </end encoding let nat64>
+
+
+; <Start encoding val X64.Machine_s.int_to_nat64>
+
+(declare-fun X64.Machine_s.int_to_nat64 (Term) Term)
+(declare-fun Tm_refine_33c23e946048d3d79f362ad9f81ccafe (Term) Term)
+;;;;;;;;;;;;;;;;i: Prims.int -> n: nat64{0 <= i && i < 0x10000000000000000 ==> i == n}
+(declare-fun Tm_arrow_1aa3e2460ba68d51e3c61e72d27102af () Term)
+(declare-fun X64.Machine_s.int_to_nat64@tok () Term)
+
+
+; </end encoding val X64.Machine_s.int_to_nat64>
+
+
+; <Start encoding let nat128>
+
+(declare-fun X64.Machine_s.nat128 () Term)
+(declare-fun Tm_refine_758ff42440a58a30c095e911b9c96f61 () Term)
+
+; </end encoding let nat128>
+
+
+; <Start encoding type X64.Machine_s.reg>
+
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun X64.Machine_s.reg () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun X64.Machine_s.Rax () Term)
+;;;;;;;;;;;;;;;;data constructor proxy: X64.Machine_s.Rax
+(declare-fun X64.Machine_s.Rax@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun X64.Machine_s.Rbx () Term)
+;;;;;;;;;;;;;;;;data constructor proxy: X64.Machine_s.Rbx
+(declare-fun X64.Machine_s.Rbx@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun X64.Machine_s.Rcx () Term)
+;;;;;;;;;;;;;;;;data constructor proxy: X64.Machine_s.Rcx
+(declare-fun X64.Machine_s.Rcx@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun X64.Machine_s.Rdx () Term)
+;;;;;;;;;;;;;;;;data constructor proxy: X64.Machine_s.Rdx
+(declare-fun X64.Machine_s.Rdx@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun X64.Machine_s.Rsi () Term)
+;;;;;;;;;;;;;;;;data constructor proxy: X64.Machine_s.Rsi
+(declare-fun X64.Machine_s.Rsi@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun X64.Machine_s.Rdi () Term)
+;;;;;;;;;;;;;;;;data constructor proxy: X64.Machine_s.Rdi
+(declare-fun X64.Machine_s.Rdi@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun X64.Machine_s.Rbp () Term)
+;;;;;;;;;;;;;;;;data constructor proxy: X64.Machine_s.Rbp
+(declare-fun X64.Machine_s.Rbp@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun X64.Machine_s.Rsp () Term)
+;;;;;;;;;;;;;;;;data constructor proxy: X64.Machine_s.Rsp
+(declare-fun X64.Machine_s.Rsp@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun X64.Machine_s.R8 () Term)
+;;;;;;;;;;;;;;;;data constructor proxy: X64.Machine_s.R8
+(declare-fun X64.Machine_s.R8@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun X64.Machine_s.R9 () Term)
+;;;;;;;;;;;;;;;;data constructor proxy: X64.Machine_s.R9
+(declare-fun X64.Machine_s.R9@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun X64.Machine_s.R10 () Term)
+;;;;;;;;;;;;;;;;data constructor proxy: X64.Machine_s.R10
+(declare-fun X64.Machine_s.R10@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun X64.Machine_s.R11 () Term)
+;;;;;;;;;;;;;;;;data constructor proxy: X64.Machine_s.R11
+(declare-fun X64.Machine_s.R11@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun X64.Machine_s.R12 () Term)
+;;;;;;;;;;;;;;;;data constructor proxy: X64.Machine_s.R12
+(declare-fun X64.Machine_s.R12@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun X64.Machine_s.R13 () Term)
+;;;;;;;;;;;;;;;;data constructor proxy: X64.Machine_s.R13
+(declare-fun X64.Machine_s.R13@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun X64.Machine_s.R14 () Term)
+;;;;;;;;;;;;;;;;data constructor proxy: X64.Machine_s.R14
+(declare-fun X64.Machine_s.R14@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun X64.Machine_s.R15 () Term)
+;;;;;;;;;;;;;;;;data constructor proxy: X64.Machine_s.R15
+(declare-fun X64.Machine_s.R15@tok () Term)
+
+; <start constructor X64.Machine_s.reg>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-X64.Machine_s.reg ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+107)
+(= __@x0
+X64.Machine_s.reg)))
+
+; </end constructor X64.Machine_s.reg>
+
+
+; <start constructor X64.Machine_s.Rax>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-X64.Machine_s.Rax ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+113)
+(= __@x0
+X64.Machine_s.Rax)))
+
+; </end constructor X64.Machine_s.Rax>
+
+
+; <start constructor X64.Machine_s.Rbx>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-X64.Machine_s.Rbx ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+115)
+(= __@x0
+X64.Machine_s.Rbx)))
+
+; </end constructor X64.Machine_s.Rbx>
+
+
+; <start constructor X64.Machine_s.Rcx>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-X64.Machine_s.Rcx ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+117)
+(= __@x0
+X64.Machine_s.Rcx)))
+
+; </end constructor X64.Machine_s.Rcx>
+
+
+; <start constructor X64.Machine_s.Rdx>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-X64.Machine_s.Rdx ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+119)
+(= __@x0
+X64.Machine_s.Rdx)))
+
+; </end constructor X64.Machine_s.Rdx>
+
+
+; <start constructor X64.Machine_s.Rsi>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-X64.Machine_s.Rsi ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+121)
+(= __@x0
+X64.Machine_s.Rsi)))
+
+; </end constructor X64.Machine_s.Rsi>
+
+
+; <start constructor X64.Machine_s.Rdi>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-X64.Machine_s.Rdi ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+123)
+(= __@x0
+X64.Machine_s.Rdi)))
+
+; </end constructor X64.Machine_s.Rdi>
+
+
+; <start constructor X64.Machine_s.Rbp>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-X64.Machine_s.Rbp ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+125)
+(= __@x0
+X64.Machine_s.Rbp)))
+
+; </end constructor X64.Machine_s.Rbp>
+
+
+; <start constructor X64.Machine_s.Rsp>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-X64.Machine_s.Rsp ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+127)
+(= __@x0
+X64.Machine_s.Rsp)))
+
+; </end constructor X64.Machine_s.Rsp>
+
+
+; <start constructor X64.Machine_s.R8>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-X64.Machine_s.R8 ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+129)
+(= __@x0
+X64.Machine_s.R8)))
+
+; </end constructor X64.Machine_s.R8>
+
+
+; <start constructor X64.Machine_s.R9>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-X64.Machine_s.R9 ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+131)
+(= __@x0
+X64.Machine_s.R9)))
+
+; </end constructor X64.Machine_s.R9>
+
+
+; <start constructor X64.Machine_s.R10>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-X64.Machine_s.R10 ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+133)
+(= __@x0
+X64.Machine_s.R10)))
+
+; </end constructor X64.Machine_s.R10>
+
+
+; <start constructor X64.Machine_s.R11>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-X64.Machine_s.R11 ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+135)
+(= __@x0
+X64.Machine_s.R11)))
+
+; </end constructor X64.Machine_s.R11>
+
+
+; <start constructor X64.Machine_s.R12>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-X64.Machine_s.R12 ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+137)
+(= __@x0
+X64.Machine_s.R12)))
+
+; </end constructor X64.Machine_s.R12>
+
+
+; <start constructor X64.Machine_s.R13>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-X64.Machine_s.R13 ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+139)
+(= __@x0
+X64.Machine_s.R13)))
+
+; </end constructor X64.Machine_s.R13>
+
+
+; <start constructor X64.Machine_s.R14>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-X64.Machine_s.R14 ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+141)
+(= __@x0
+X64.Machine_s.R14)))
+
+; </end constructor X64.Machine_s.R14>
+
+
+; <start constructor X64.Machine_s.R15>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-X64.Machine_s.R15 ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+143)
+(= __@x0
+X64.Machine_s.R15)))
+
+; </end constructor X64.Machine_s.R15>
+
+
+; </end encoding type X64.Machine_s.reg>
+
+
+; <Start encoding assume X64.Machine_s.reg__uu___haseq>
+
+
+; </end encoding assume X64.Machine_s.reg__uu___haseq>
+
+
+; <Start encoding val X64.Machine_s.uu___is_Rax>
+
+(declare-fun X64.Machine_s.uu___is_Rax (Term) Term)
+;;;;;;;;;;;;;;;;projectee: reg -> Prims.bool
+(declare-fun Tm_arrow_c7f0e9f7c9673b5fa7751bb905ce0362 () Term)
+(declare-fun X64.Machine_s.uu___is_Rax@tok () Term)
+
+; </end encoding val X64.Machine_s.uu___is_Rax>
+
+
+; <Skipped let uu___is_Rax/>
+
+
+; <Start encoding val X64.Machine_s.uu___is_Rbx>
+
+(declare-fun X64.Machine_s.uu___is_Rbx (Term) Term)
+
+(declare-fun X64.Machine_s.uu___is_Rbx@tok () Term)
+
+; </end encoding val X64.Machine_s.uu___is_Rbx>
+
+
+; <Skipped let uu___is_Rbx/>
+
+
+; <Start encoding val X64.Machine_s.uu___is_Rcx>
+
+(declare-fun X64.Machine_s.uu___is_Rcx (Term) Term)
+
+(declare-fun X64.Machine_s.uu___is_Rcx@tok () Term)
+
+; </end encoding val X64.Machine_s.uu___is_Rcx>
+
+
+; <Skipped let uu___is_Rcx/>
+
+
+; <Start encoding val X64.Machine_s.uu___is_Rdx>
+
+(declare-fun X64.Machine_s.uu___is_Rdx (Term) Term)
+
+(declare-fun X64.Machine_s.uu___is_Rdx@tok () Term)
+
+; </end encoding val X64.Machine_s.uu___is_Rdx>
+
+
+; <Skipped let uu___is_Rdx/>
+
+
+; <Start encoding val X64.Machine_s.uu___is_Rsi>
+
+(declare-fun X64.Machine_s.uu___is_Rsi (Term) Term)
+
+(declare-fun X64.Machine_s.uu___is_Rsi@tok () Term)
+
+; </end encoding val X64.Machine_s.uu___is_Rsi>
+
+
+; <Skipped let uu___is_Rsi/>
+
+
+; <Start encoding val X64.Machine_s.uu___is_Rdi>
+
+(declare-fun X64.Machine_s.uu___is_Rdi (Term) Term)
+
+(declare-fun X64.Machine_s.uu___is_Rdi@tok () Term)
+
+; </end encoding val X64.Machine_s.uu___is_Rdi>
+
+
+; <Skipped let uu___is_Rdi/>
+
+
+; <Start encoding val X64.Machine_s.uu___is_Rbp>
+
+(declare-fun X64.Machine_s.uu___is_Rbp (Term) Term)
+
+(declare-fun X64.Machine_s.uu___is_Rbp@tok () Term)
+
+; </end encoding val X64.Machine_s.uu___is_Rbp>
+
+
+; <Skipped let uu___is_Rbp/>
+
+
+; <Start encoding val X64.Machine_s.uu___is_Rsp>
+
+(declare-fun X64.Machine_s.uu___is_Rsp (Term) Term)
+
+(declare-fun X64.Machine_s.uu___is_Rsp@tok () Term)
+
+; </end encoding val X64.Machine_s.uu___is_Rsp>
+
+
+; <Skipped let uu___is_Rsp/>
+
+
+; <Start encoding val X64.Machine_s.uu___is_R8>
+
+(declare-fun X64.Machine_s.uu___is_R8 (Term) Term)
+
+(declare-fun X64.Machine_s.uu___is_R8@tok () Term)
+
+; </end encoding val X64.Machine_s.uu___is_R8>
+
+
+; <Skipped let uu___is_R8/>
+
+
+; <Start encoding val X64.Machine_s.uu___is_R9>
+
+(declare-fun X64.Machine_s.uu___is_R9 (Term) Term)
+
+(declare-fun X64.Machine_s.uu___is_R9@tok () Term)
+
+; </end encoding val X64.Machine_s.uu___is_R9>
+
+
+; <Skipped let uu___is_R9/>
+
+
+; <Start encoding val X64.Machine_s.uu___is_R10>
+
+(declare-fun X64.Machine_s.uu___is_R10 (Term) Term)
+
+(declare-fun X64.Machine_s.uu___is_R10@tok () Term)
+
+; </end encoding val X64.Machine_s.uu___is_R10>
+
+
+; <Skipped let uu___is_R10/>
+
+
+; <Start encoding val X64.Machine_s.uu___is_R11>
+
+(declare-fun X64.Machine_s.uu___is_R11 (Term) Term)
+
+(declare-fun X64.Machine_s.uu___is_R11@tok () Term)
+
+; </end encoding val X64.Machine_s.uu___is_R11>
+
+
+; <Skipped let uu___is_R11/>
+
+
+; <Start encoding val X64.Machine_s.uu___is_R12>
+
+(declare-fun X64.Machine_s.uu___is_R12 (Term) Term)
+
+(declare-fun X64.Machine_s.uu___is_R12@tok () Term)
+
+; </end encoding val X64.Machine_s.uu___is_R12>
+
+
+; <Skipped let uu___is_R12/>
+
+
+; <Start encoding val X64.Machine_s.uu___is_R13>
+
+(declare-fun X64.Machine_s.uu___is_R13 (Term) Term)
+
+(declare-fun X64.Machine_s.uu___is_R13@tok () Term)
+
+; </end encoding val X64.Machine_s.uu___is_R13>
+
+
+; <Skipped let uu___is_R13/>
+
+
+; <Start encoding val X64.Machine_s.uu___is_R14>
+
+(declare-fun X64.Machine_s.uu___is_R14 (Term) Term)
+
+(declare-fun X64.Machine_s.uu___is_R14@tok () Term)
+
+; </end encoding val X64.Machine_s.uu___is_R14>
+
+
+; <Skipped let uu___is_R14/>
+
+
+; <Start encoding val X64.Machine_s.uu___is_R15>
+
+(declare-fun X64.Machine_s.uu___is_R15 (Term) Term)
+
+(declare-fun X64.Machine_s.uu___is_R15@tok () Term)
+
+; </end encoding val X64.Machine_s.uu___is_R15>
+
+
+; <Skipped let uu___is_R15/>
+
+
+; <Start encoding type X64.Machine_s.maddr>
+
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun X64.Machine_s.maddr () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun X64.Machine_s.MConst (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Machine_s.MConst_n (Term) Term)
+;;;;;;;;;;;;;;;;data constructor proxy: X64.Machine_s.MConst
+(declare-fun X64.Machine_s.MConst@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun X64.Machine_s.MReg (Term Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Machine_s.MReg_r (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Machine_s.MReg_offset (Term) Term)
+;;;;;;;;;;;;;;;;data constructor proxy: X64.Machine_s.MReg
+(declare-fun X64.Machine_s.MReg@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun X64.Machine_s.MIndex (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Machine_s.MIndex_base (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Machine_s.MIndex_scale (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Machine_s.MIndex_index (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Machine_s.MIndex_offset (Term) Term)
+;;;;;;;;;;;;;;;;data constructor proxy: X64.Machine_s.MIndex
+(declare-fun X64.Machine_s.MIndex@tok () Term)
+;;;;;;;;;;;;;;;;n: Prims.int -> maddr
+(declare-fun Tm_arrow_9414af839812526c8a04e362fb1cb22b () Term)
+;;;;;;;;;;;;;;;;r: reg -> offset: Prims.int -> maddr
+(declare-fun Tm_arrow_f3c2bcfda38ef61cb04cf914bbf7384e () Term)
+;;;;;;;;;;;;;;;;base: reg -> scale: Prims.int -> index: reg -> offset: Prims.int -> maddr
+(declare-fun Tm_arrow_bee6d14f905101e2f5bf160729816207 () Term)
+
+; <start constructor X64.Machine_s.maddr>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-X64.Machine_s.maddr ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+176)
+(= __@x0
+X64.Machine_s.maddr)))
+
+; </end constructor X64.Machine_s.maddr>
+
+
+; <start constructor X64.Machine_s.MConst>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-X64.Machine_s.MConst ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+182)
+(= __@x0
+(X64.Machine_s.MConst (X64.Machine_s.MConst_n __@x0)))))
+
+; </end constructor X64.Machine_s.MConst>
+
+
+; <start constructor X64.Machine_s.MReg>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-X64.Machine_s.MReg ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+187)
+(= __@x0
+(X64.Machine_s.MReg (X64.Machine_s.MReg_r __@x0)
+(X64.Machine_s.MReg_offset __@x0)))))
+
+; </end constructor X64.Machine_s.MReg>
+
+
+; <start constructor X64.Machine_s.MIndex>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-X64.Machine_s.MIndex ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+192)
+(= __@x0
+(X64.Machine_s.MIndex (X64.Machine_s.MIndex_base __@x0)
+(X64.Machine_s.MIndex_scale __@x0)
+(X64.Machine_s.MIndex_index __@x0)
+(X64.Machine_s.MIndex_offset __@x0)))))
+
+; </end constructor X64.Machine_s.MIndex>
+
+
+; </end encoding type X64.Machine_s.maddr>
+
+
+; <Start encoding assume X64.Machine_s.maddr__uu___haseq>
+
+
+; </end encoding assume X64.Machine_s.maddr__uu___haseq>
+
+
+; <Start encoding val X64.Machine_s.uu___is_MConst>
+
+(declare-fun X64.Machine_s.uu___is_MConst (Term) Term)
+;;;;;;;;;;;;;;;;projectee: maddr -> Prims.bool
+(declare-fun Tm_arrow_ff927c11f46c62b4136fa0dbb46448d2 () Term)
+(declare-fun X64.Machine_s.uu___is_MConst@tok () Term)
+
+; </end encoding val X64.Machine_s.uu___is_MConst>
+
+
+; <Skipped let uu___is_MConst/>
+
+
+; <Start encoding val X64.Machine_s.__proj__MConst__item__n>
+
+(declare-fun Tm_refine_ad649c559db000bf1dd08bb4e261413e () Term)
+(declare-fun X64.Machine_s.__proj__MConst__item__n (Term) Term)
+
+;;;;;;;;;;;;;;;;projectee: _: maddr{MConst? _} -> Prims.int
+(declare-fun Tm_arrow_de03ee0e28d8cb42ea4684ab629083bb () Term)
+(declare-fun X64.Machine_s.__proj__MConst__item__n@tok () Term)
+
+; </end encoding val X64.Machine_s.__proj__MConst__item__n>
+
+
+; <Skipped let __proj__MConst__item__n/>
+
+
+; <Start encoding val X64.Machine_s.uu___is_MReg>
+
+(declare-fun X64.Machine_s.uu___is_MReg (Term) Term)
+
+(declare-fun X64.Machine_s.uu___is_MReg@tok () Term)
+
+; </end encoding val X64.Machine_s.uu___is_MReg>
+
+
+; <Skipped let uu___is_MReg/>
+
+
+; <Start encoding val X64.Machine_s.__proj__MReg__item__r>
+
+(declare-fun Tm_refine_49b6b7afc081bac09ce40febdab68891 () Term)
+(declare-fun X64.Machine_s.__proj__MReg__item__r (Term) Term)
+
+;;;;;;;;;;;;;;;;projectee: _: maddr{MReg? _} -> reg
+(declare-fun Tm_arrow_e06612d97fbadc6befb17ec3b5955951 () Term)
+(declare-fun X64.Machine_s.__proj__MReg__item__r@tok () Term)
+
+; </end encoding val X64.Machine_s.__proj__MReg__item__r>
+
+
+; <Skipped let __proj__MReg__item__r/>
+
+
+; <Start encoding val X64.Machine_s.__proj__MReg__item__offset>
+
+
+(declare-fun X64.Machine_s.__proj__MReg__item__offset (Term) Term)
+
+;;;;;;;;;;;;;;;;projectee: _: maddr{MReg? _} -> Prims.int
+(declare-fun Tm_arrow_c1ca35fec6314553caa7a9f1ab113b95 () Term)
+(declare-fun X64.Machine_s.__proj__MReg__item__offset@tok () Term)
+
+; </end encoding val X64.Machine_s.__proj__MReg__item__offset>
+
+
+; <Skipped let __proj__MReg__item__offset/>
+
+
+; <Start encoding val X64.Machine_s.uu___is_MIndex>
+
+(declare-fun X64.Machine_s.uu___is_MIndex (Term) Term)
+
+(declare-fun X64.Machine_s.uu___is_MIndex@tok () Term)
+
+; </end encoding val X64.Machine_s.uu___is_MIndex>
+
+
+; <Skipped let uu___is_MIndex/>
+
+
+; <Start encoding val X64.Machine_s.__proj__MIndex__item__base>
+
+(declare-fun Tm_refine_0c01fa907bf3fbb9b7c15b0e05d45125 () Term)
+(declare-fun X64.Machine_s.__proj__MIndex__item__base (Term) Term)
+
+;;;;;;;;;;;;;;;;projectee: _: maddr{MIndex? _} -> reg
+(declare-fun Tm_arrow_5ce8d0ce0f3554237501631bb2423766 () Term)
+(declare-fun X64.Machine_s.__proj__MIndex__item__base@tok () Term)
+
+; </end encoding val X64.Machine_s.__proj__MIndex__item__base>
+
+
+; <Skipped let __proj__MIndex__item__base/>
+
+
+; <Start encoding val X64.Machine_s.__proj__MIndex__item__scale>
+
+
+(declare-fun X64.Machine_s.__proj__MIndex__item__scale (Term) Term)
+
+;;;;;;;;;;;;;;;;projectee: _: maddr{MIndex? _} -> Prims.int
+(declare-fun Tm_arrow_1c6dd63b73c30ae1c6642380dd180a24 () Term)
+(declare-fun X64.Machine_s.__proj__MIndex__item__scale@tok () Term)
+
+; </end encoding val X64.Machine_s.__proj__MIndex__item__scale>
+
+
+; <Skipped let __proj__MIndex__item__scale/>
+
+
+; <Start encoding val X64.Machine_s.__proj__MIndex__item__index>
+
+
+(declare-fun X64.Machine_s.__proj__MIndex__item__index (Term) Term)
+
+
+(declare-fun X64.Machine_s.__proj__MIndex__item__index@tok () Term)
+
+; </end encoding val X64.Machine_s.__proj__MIndex__item__index>
+
+
+; <Skipped let __proj__MIndex__item__index/>
+
+
+; <Start encoding val X64.Machine_s.__proj__MIndex__item__offset>
+
+
+(declare-fun X64.Machine_s.__proj__MIndex__item__offset (Term) Term)
+
+
+(declare-fun X64.Machine_s.__proj__MIndex__item__offset@tok () Term)
+
+; </end encoding val X64.Machine_s.__proj__MIndex__item__offset>
+
+
+; <Skipped let __proj__MIndex__item__offset/>
+
+
+; <Start encoding type X64.Machine_s.operand>
+
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun X64.Machine_s.operand () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun X64.Machine_s.OConst (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Machine_s.OConst_n (Term) Term)
+;;;;;;;;;;;;;;;;data constructor proxy: X64.Machine_s.OConst
+(declare-fun X64.Machine_s.OConst@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun X64.Machine_s.OReg (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Machine_s.OReg_r (Term) Term)
+;;;;;;;;;;;;;;;;data constructor proxy: X64.Machine_s.OReg
+(declare-fun X64.Machine_s.OReg@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun X64.Machine_s.OMem (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Machine_s.OMem_m (Term) Term)
+;;;;;;;;;;;;;;;;data constructor proxy: X64.Machine_s.OMem
+(declare-fun X64.Machine_s.OMem@tok () Term)
+;;;;;;;;;;;;;;;;n: Prims.int -> operand
+(declare-fun Tm_arrow_b6d7f68e716a1e4fa718b096c4229d4c () Term)
+;;;;;;;;;;;;;;;;r: reg -> operand
+(declare-fun Tm_arrow_ed53777d74168b76de878051abd0d595 () Term)
+;;;;;;;;;;;;;;;;m: maddr -> operand
+(declare-fun Tm_arrow_bdd01546fc6f3c47560e779c36085b13 () Term)
+
+; <start constructor X64.Machine_s.operand>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-X64.Machine_s.operand ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+230)
+(= __@x0
+X64.Machine_s.operand)))
+
+; </end constructor X64.Machine_s.operand>
+
+
+; <start constructor X64.Machine_s.OConst>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-X64.Machine_s.OConst ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+236)
+(= __@x0
+(X64.Machine_s.OConst (X64.Machine_s.OConst_n __@x0)))))
+
+; </end constructor X64.Machine_s.OConst>
+
+
+; <start constructor X64.Machine_s.OReg>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-X64.Machine_s.OReg ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+241)
+(= __@x0
+(X64.Machine_s.OReg (X64.Machine_s.OReg_r __@x0)))))
+
+; </end constructor X64.Machine_s.OReg>
+
+
+; <start constructor X64.Machine_s.OMem>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-X64.Machine_s.OMem ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+246)
+(= __@x0
+(X64.Machine_s.OMem (X64.Machine_s.OMem_m __@x0)))))
+
+; </end constructor X64.Machine_s.OMem>
+
+
+; </end encoding type X64.Machine_s.operand>
+
+
+; <Start encoding assume X64.Machine_s.operand__uu___haseq>
+
+
+; </end encoding assume X64.Machine_s.operand__uu___haseq>
+
+
+; <Start encoding val X64.Machine_s.uu___is_OConst>
+
+(declare-fun X64.Machine_s.uu___is_OConst (Term) Term)
+;;;;;;;;;;;;;;;;projectee: operand -> Prims.bool
+(declare-fun Tm_arrow_4c3cbca00af6e73051f04a1e4e4895f8 () Term)
+(declare-fun X64.Machine_s.uu___is_OConst@tok () Term)
+
+; </end encoding val X64.Machine_s.uu___is_OConst>
+
+
+; <Skipped let uu___is_OConst/>
+
+
+; <Start encoding val X64.Machine_s.__proj__OConst__item__n>
+
+(declare-fun Tm_refine_7efc3fb0a0ebacf4e999ae215f7b60a8 () Term)
+(declare-fun X64.Machine_s.__proj__OConst__item__n (Term) Term)
+
+;;;;;;;;;;;;;;;;projectee: _: operand{OConst? _} -> Prims.int
+(declare-fun Tm_arrow_e21ff7d2f895bc4d2ac0da255a240e50 () Term)
+(declare-fun X64.Machine_s.__proj__OConst__item__n@tok () Term)
+
+; </end encoding val X64.Machine_s.__proj__OConst__item__n>
+
+
+; <Skipped let __proj__OConst__item__n/>
+
+
+; <Start encoding val X64.Machine_s.uu___is_OReg>
+
+(declare-fun X64.Machine_s.uu___is_OReg (Term) Term)
+
+(declare-fun X64.Machine_s.uu___is_OReg@tok () Term)
+
+; </end encoding val X64.Machine_s.uu___is_OReg>
+
+
+; <Skipped let uu___is_OReg/>
+
+
+; <Start encoding val X64.Machine_s.__proj__OReg__item__r>
+
+(declare-fun Tm_refine_7c9e5bdb9582a858897946d48f9f4d58 () Term)
+(declare-fun X64.Machine_s.__proj__OReg__item__r (Term) Term)
+
+;;;;;;;;;;;;;;;;projectee: _: operand{OReg? _} -> reg
+(declare-fun Tm_arrow_4f28a4c90c6477e0d36845d97551ee54 () Term)
+(declare-fun X64.Machine_s.__proj__OReg__item__r@tok () Term)
+
+; </end encoding val X64.Machine_s.__proj__OReg__item__r>
+
+
+; <Skipped let __proj__OReg__item__r/>
+
+
+; <Start encoding val X64.Machine_s.uu___is_OMem>
+
+(declare-fun X64.Machine_s.uu___is_OMem (Term) Term)
+
+(declare-fun X64.Machine_s.uu___is_OMem@tok () Term)
+
+; </end encoding val X64.Machine_s.uu___is_OMem>
+
+
+; <Skipped let uu___is_OMem/>
+
+
+; <Start encoding val X64.Machine_s.__proj__OMem__item__m>
+
+(declare-fun Tm_refine_1ffc672b65f59d0fc5f2be00bff120b6 () Term)
+(declare-fun X64.Machine_s.__proj__OMem__item__m (Term) Term)
+
+;;;;;;;;;;;;;;;;projectee: _: operand{OMem? _} -> maddr
+(declare-fun Tm_arrow_ce53f81782c867cbe295bf95855c832b () Term)
+(declare-fun X64.Machine_s.__proj__OMem__item__m@tok () Term)
+
+; </end encoding val X64.Machine_s.__proj__OMem__item__m>
+
+
+; <Skipped let __proj__OMem__item__m/>
+
+
+; <Start encoding type X64.Machine_s.precode>
+
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun X64.Machine_s.precode (Term Term) Term)
+;;;;;;;;;;;;;;;;token
+(declare-fun X64.Machine_s.precode@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun X64.Machine_s.Ins (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Machine_s.Ins_t_ins (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Machine_s.Ins_t_ocmp (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Machine_s.Ins_ins (Term) Term)
+;;;;;;;;;;;;;;;;data constructor proxy: X64.Machine_s.Ins
+(declare-fun X64.Machine_s.Ins@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun X64.Machine_s.Block (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Machine_s.Block_t_ins (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Machine_s.Block_t_ocmp (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Machine_s.Block_block (Term) Term)
+;;;;;;;;;;;;;;;;data constructor proxy: X64.Machine_s.Block
+(declare-fun X64.Machine_s.Block@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun X64.Machine_s.IfElse (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Machine_s.IfElse_t_ins (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Machine_s.IfElse_t_ocmp (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Machine_s.IfElse_ifCond (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Machine_s.IfElse_ifTrue (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Machine_s.IfElse_ifFalse (Term) Term)
+;;;;;;;;;;;;;;;;data constructor proxy: X64.Machine_s.IfElse
+(declare-fun X64.Machine_s.IfElse@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun X64.Machine_s.While (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Machine_s.While_t_ins (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Machine_s.While_t_ocmp (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Machine_s.While_whileCond (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Machine_s.While_whileBody (Term) Term)
+;;;;;;;;;;;;;;;;data constructor proxy: X64.Machine_s.While
+(declare-fun X64.Machine_s.While@tok () Term)
+;;;;;;;;;;;;;;;;ins: t_ins -> precode t_ins t_ocmp
+(declare-fun Tm_arrow_8c2521134ec700b5462dee903e585327 () Term)
+;;;;;;;;;;;;;;;;block: Prims.list (precode t_ins t_ocmp) -> precode t_ins t_ocmp
+(declare-fun Tm_arrow_c8bb83bcb803188d7a2f598a8bd1f0a4 () Term)
+;;;;;;;;;;;;;;;;ifCond: t_ocmp -> ifTrue: precode t_ins t_ocmp -> ifFalse: precode t_ins t_ocmp   -> precode t_ins t_ocmp
+(declare-fun Tm_arrow_1ba522780cb69fa2f47cdbc62ca91419 () Term)
+;;;;;;;;;;;;;;;;whileCond: t_ocmp -> whileBody: precode t_ins t_ocmp -> precode t_ins t_ocmp
+(declare-fun Tm_arrow_1bcd23eed2c00c81fe04dc802553da1a () Term)
+
+; <start constructor X64.Machine_s.precode>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-X64.Machine_s.precode ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+268)
+(exists ((@x0 Term) (@x1 Term))
+ (! (= __@x0
+(X64.Machine_s.precode @x0
+@x1))
+ 
+;;no pats
+:qid is-X64.Machine_s.precode))))
+
+; </end constructor X64.Machine_s.precode>
+
+
+; <start constructor X64.Machine_s.Ins>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-X64.Machine_s.Ins ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+275)
+(= __@x0
+(X64.Machine_s.Ins (X64.Machine_s.Ins_t_ins __@x0)
+(X64.Machine_s.Ins_t_ocmp __@x0)
+(X64.Machine_s.Ins_ins __@x0)))))
+
+; </end constructor X64.Machine_s.Ins>
+
+
+; <start constructor X64.Machine_s.Block>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-X64.Machine_s.Block ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+280)
+(= __@x0
+(X64.Machine_s.Block (X64.Machine_s.Block_t_ins __@x0)
+(X64.Machine_s.Block_t_ocmp __@x0)
+(X64.Machine_s.Block_block __@x0)))))
+
+; </end constructor X64.Machine_s.Block>
+
+
+; <start constructor X64.Machine_s.IfElse>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-X64.Machine_s.IfElse ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+285)
+(= __@x0
+(X64.Machine_s.IfElse (X64.Machine_s.IfElse_t_ins __@x0)
+(X64.Machine_s.IfElse_t_ocmp __@x0)
+(X64.Machine_s.IfElse_ifCond __@x0)
+(X64.Machine_s.IfElse_ifTrue __@x0)
+(X64.Machine_s.IfElse_ifFalse __@x0)))))
+
+; </end constructor X64.Machine_s.IfElse>
+
+
+; <start constructor X64.Machine_s.While>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-X64.Machine_s.While ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+290)
+(= __@x0
+(X64.Machine_s.While (X64.Machine_s.While_t_ins __@x0)
+(X64.Machine_s.While_t_ocmp __@x0)
+(X64.Machine_s.While_whileCond __@x0)
+(X64.Machine_s.While_whileBody __@x0)))))
+
+; </end constructor X64.Machine_s.While>
+
+
+; </end encoding type X64.Machine_s.precode>
+
+
+; <Start encoding assume X64.Machine_s.precode__uu___haseq>
+
+
+; </end encoding assume X64.Machine_s.precode__uu___haseq>
+
+
+; <Start encoding val X64.Machine_s.uu___is_Ins>
+
+(declare-fun X64.Machine_s.uu___is_Ins (Term Term Term) Term)
+;;;;;;;;;;;;;;;;projectee: precode t_ins t_ocmp -> Prims.bool
+(declare-fun Tm_arrow_8daf6690694745e3b2d4c7c748899c1d () Term)
+(declare-fun X64.Machine_s.uu___is_Ins@tok () Term)
+
+; </end encoding val X64.Machine_s.uu___is_Ins>
+
+
+; <Skipped let uu___is_Ins/>
+
+
+; <Start encoding val X64.Machine_s.__proj__Ins__item__ins>
+
+(declare-fun Tm_refine_8d23bd498b85d9ef871e961295abeefa (Term Term) Term)
+(declare-fun X64.Machine_s.__proj__Ins__item__ins (Term Term Term) Term)
+
+;;;;;;;;;;;;;;;;projectee: _: precode t_ins t_ocmp {Ins? _} -> t_ins
+(declare-fun Tm_arrow_1ff3260e391a92b117b162ed7e8440a6 () Term)
+(declare-fun X64.Machine_s.__proj__Ins__item__ins@tok () Term)
+
+; </end encoding val X64.Machine_s.__proj__Ins__item__ins>
+
+
+; <Skipped let __proj__Ins__item__ins/>
+
+
+; <Start encoding val X64.Machine_s.uu___is_Block>
+
+(declare-fun X64.Machine_s.uu___is_Block (Term Term Term) Term)
+
+(declare-fun X64.Machine_s.uu___is_Block@tok () Term)
+
+; </end encoding val X64.Machine_s.uu___is_Block>
+
+
+; <Skipped let uu___is_Block/>
+
+
+; <Start encoding val X64.Machine_s.__proj__Block__item__block>
+
+(declare-fun Tm_refine_7931b24c4e7900a01f262ca0e3574c0e (Term Term) Term)
+(declare-fun X64.Machine_s.__proj__Block__item__block (Term Term Term) Term)
+
+;;;;;;;;;;;;;;;;projectee: _: precode t_ins t_ocmp {Block? _} -> Prims.list (precode t_ins t_ocmp)
+(declare-fun Tm_arrow_a1d21575b2f23f80b4d2af9d71edb82e () Term)
+(declare-fun X64.Machine_s.__proj__Block__item__block@tok () Term)
+
+; </end encoding val X64.Machine_s.__proj__Block__item__block>
+
+
+; <Skipped let __proj__Block__item__block/>
+
+
+; <Start encoding val X64.Machine_s.uu___is_IfElse>
+
+(declare-fun X64.Machine_s.uu___is_IfElse (Term Term Term) Term)
+
+(declare-fun X64.Machine_s.uu___is_IfElse@tok () Term)
+
+; </end encoding val X64.Machine_s.uu___is_IfElse>
+
+
+; <Skipped let uu___is_IfElse/>
+
+
+; <Start encoding val X64.Machine_s.__proj__IfElse__item__ifCond>
+
+(declare-fun Tm_refine_4377826c4723fe1b7a6258fac9438e3d (Term Term) Term)
+(declare-fun X64.Machine_s.__proj__IfElse__item__ifCond (Term Term Term) Term)
+
+;;;;;;;;;;;;;;;;projectee: _: precode t_ins t_ocmp {IfElse? _} -> t_ocmp
+(declare-fun Tm_arrow_e6b0c3d7c431b2a19ad8cabd3c849bb8 () Term)
+(declare-fun X64.Machine_s.__proj__IfElse__item__ifCond@tok () Term)
+
+; </end encoding val X64.Machine_s.__proj__IfElse__item__ifCond>
+
+
+; <Skipped let __proj__IfElse__item__ifCond/>
+
+
+; <Start encoding val X64.Machine_s.__proj__IfElse__item__ifTrue>
+
+
+(declare-fun X64.Machine_s.__proj__IfElse__item__ifTrue (Term Term Term) Term)
+
+;;;;;;;;;;;;;;;;projectee: _: precode t_ins t_ocmp {IfElse? _} -> precode t_ins t_ocmp
+(declare-fun Tm_arrow_05c38c81ca8e5d074417a95300ffa5d4 () Term)
+(declare-fun X64.Machine_s.__proj__IfElse__item__ifTrue@tok () Term)
+
+; </end encoding val X64.Machine_s.__proj__IfElse__item__ifTrue>
+
+
+; <Skipped let __proj__IfElse__item__ifTrue/>
+
+
+; <Start encoding val X64.Machine_s.__proj__IfElse__item__ifFalse>
+
+
+(declare-fun X64.Machine_s.__proj__IfElse__item__ifFalse (Term Term Term) Term)
+
+
+(declare-fun X64.Machine_s.__proj__IfElse__item__ifFalse@tok () Term)
+
+; </end encoding val X64.Machine_s.__proj__IfElse__item__ifFalse>
+
+
+; <Skipped let __proj__IfElse__item__ifFalse/>
+
+
+; <Start encoding val X64.Machine_s.uu___is_While>
+
+(declare-fun X64.Machine_s.uu___is_While (Term Term Term) Term)
+
+(declare-fun X64.Machine_s.uu___is_While@tok () Term)
+
+; </end encoding val X64.Machine_s.uu___is_While>
+
+
+; <Skipped let uu___is_While/>
+
+
+; <Start encoding val X64.Machine_s.__proj__While__item__whileCond>
+
+(declare-fun Tm_refine_45c3c142e427e91690ff415ec1656ffb (Term Term) Term)
+(declare-fun X64.Machine_s.__proj__While__item__whileCond (Term Term Term) Term)
+
+;;;;;;;;;;;;;;;;projectee: _: precode t_ins t_ocmp {While? _} -> t_ocmp
+(declare-fun Tm_arrow_e2fb64671092bfded6c2990ab57154aa () Term)
+(declare-fun X64.Machine_s.__proj__While__item__whileCond@tok () Term)
+
+; </end encoding val X64.Machine_s.__proj__While__item__whileCond>
+
+
+; <Skipped let __proj__While__item__whileCond/>
+
+
+; <Start encoding val X64.Machine_s.__proj__While__item__whileBody>
+
+
+(declare-fun X64.Machine_s.__proj__While__item__whileBody (Term Term Term) Term)
+
+;;;;;;;;;;;;;;;;projectee: _: precode t_ins t_ocmp {While? _} -> precode t_ins t_ocmp
+(declare-fun Tm_arrow_fff72ee73f15cca4c5756f235dbd9964 () Term)
+(declare-fun X64.Machine_s.__proj__While__item__whileBody@tok () Term)
+
+; </end encoding val X64.Machine_s.__proj__While__item__whileBody>
+
+
+; <Skipped let __proj__While__item__whileBody/>
+
+
+; <Start encoding let valid_dst>
+
+(declare-fun X64.Machine_s.valid_dst (Term) Term)
+
+(declare-fun X64.Machine_s.valid_dst@tok () Term)
+
+; </end encoding let valid_dst>
+
+
+; <Start encoding let dst_op>
+
+(declare-fun X64.Machine_s.dst_op () Term)
+(declare-fun Tm_refine_e85c4468bd6fa895770a44e5ae1526dc () Term)
+
+; </end encoding let dst_op>
+
+
+; End Externals for module X64.Machine_s
+
+
+; Externals for interface X64.Vale.Regs_i
+
+
+; <Start encoding let t>
+
+(declare-fun X64.Vale.Regs_i.t () Term)
+;;;;;;;;;;;;;;;;_: X64.Machine_s.reg -> Type
+(declare-fun Tm_arrow_73862e447730cb7be03c891c89cb5703 () Term)
+(declare-fun Tm_abs_bde726dfeb2837d96e43a155f7c873f5 () Term)
+
+; </end encoding let t>
+
+
+; <Start encoding val X64.Vale.Regs_i.equal>
+
+(declare-fun X64.Vale.Regs_i.equal (Term Term) Term)
+;;;;;;;;;;;;;;;;regs1: t -> regs2: t -> Type
+(declare-fun Tm_arrow_09ce3637a0bad3dcc1b6043f68d63f8f () Term)
+(declare-fun X64.Vale.Regs_i.equal@tok () Term)
+
+; </end encoding val X64.Vale.Regs_i.equal>
+
+
+; <Start encoding val X64.Vale.Regs_i.lemma_equal_intro>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun X64.Vale.Regs_i.lemma_equal_intro (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun X64.Vale.Regs_i.lemma_equal_intro@tok () Term)
+
+; </end encoding val X64.Vale.Regs_i.lemma_equal_intro>
+
+
+; <Start encoding val X64.Vale.Regs_i.lemma_equal_elim>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun X64.Vale.Regs_i.lemma_equal_elim (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun X64.Vale.Regs_i.lemma_equal_elim@tok () Term)
+
+; </end encoding val X64.Vale.Regs_i.lemma_equal_elim>
+
+
+; End Externals for interface X64.Vale.Regs_i
+
+
+; Externals for interface FStar.Float
+
+
+; <Start encoding val FStar.Float.float>
+
+(declare-fun FStar.Float.float () Term)
+
+; </end encoding val FStar.Float.float>
+
+
+; <Start encoding let double>
+
+(declare-fun FStar.Float.double () Term)
+
+; </end encoding let double>
+
+
+; End Externals for interface FStar.Float
+
+
+; Externals for interface FStar.UInt16
+
+
+; <Start encoding let n>
+
+(declare-fun FStar.UInt16.n (Dummy_sort) Term)
+
+; </end encoding let n>
+
+
+; <Skipped #set-options "--max_fuel 0 --max_ifuel 0"/>
+
+
+; <Start encoding val FStar.UInt16.t>
+
+(declare-fun FStar.UInt16.t (Dummy_sort) Term)
+
+; </end encoding val FStar.UInt16.t>
+
+
+; <Start encoding val FStar.UInt16.v>
+
+(declare-fun FStar.UInt16.v (Term) Term)
+(declare-fun Tm_arrow_831b8138993a407ded8960bcff127b07 () Term)
+(declare-fun FStar.UInt16.v@tok () Term)
+
+; </end encoding val FStar.UInt16.v>
+
+
+; <Start encoding val FStar.UInt16.uint_to_t>
+
+(declare-fun FStar.UInt16.uint_to_t (Term) Term)
+(declare-fun Tm_refine_f2a41cd0b7a1b87e64e4bdabfc823091 (Term) Term)
+(declare-fun Tm_arrow_f4c24117357cf86f1b23d9cc39310530 () Term)
+(declare-fun FStar.UInt16.uint_to_t@tok () Term)
+
+
+; </end encoding val FStar.UInt16.uint_to_t>
+
+
+; <Start encoding val FStar.UInt16.uv_inv>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt16.uv_inv (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt16.uv_inv@tok () Term)
+
+; </end encoding val FStar.UInt16.uv_inv>
+
+
+; <Start encoding val FStar.UInt16.vu_inv>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt16.vu_inv (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt16.vu_inv@tok () Term)
+
+; </end encoding val FStar.UInt16.vu_inv>
+
+
+; <Start encoding val FStar.UInt16.v_inj>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt16.v_inj (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt16.v_inj@tok () Term)
+
+; </end encoding val FStar.UInt16.v_inj>
+
+
+; <Start encoding val FStar.UInt16.zero>
+
+(declare-fun FStar.UInt16.zero (Dummy_sort) Term)
+(declare-fun Tm_refine_954f2f8414e85457d28fe853c92eda2f () Term)
+
+
+; </end encoding val FStar.UInt16.zero>
+
+
+; <Start encoding val FStar.UInt16.one>
+
+(declare-fun FStar.UInt16.one (Dummy_sort) Term)
+(declare-fun Tm_refine_2808678106914fa614675fc00e2d12d2 () Term)
+
+
+; </end encoding val FStar.UInt16.one>
+
+
+; <Start encoding val FStar.UInt16.add>
+
+(declare-fun FStar.UInt16.add (Term Term) Term)
+(declare-fun Tm_refine_6fc1cfeb1ee6b248d1fef572cc963c99 (Term Term) Term)
+(declare-fun Tm_arrow_f5504d213bba7b5885cb0987c01f2153 () Term)
+(declare-fun FStar.UInt16.add@tok () Term)
+
+
+; </end encoding val FStar.UInt16.add>
+
+
+; <Start encoding val FStar.UInt16.add_underspec>
+
+(declare-fun FStar.UInt16.add_underspec (Term Term) Term)
+(declare-fun Tm_refine_34c091163f56732e02aa4746939ed3b3 (Term Term) Term)
+(declare-fun Tm_arrow_fca12874fe31591238919898de90521f () Term)
+(declare-fun FStar.UInt16.add_underspec@tok () Term)
+
+
+; </end encoding val FStar.UInt16.add_underspec>
+
+
+; <Start encoding val FStar.UInt16.add_mod>
+
+(declare-fun FStar.UInt16.add_mod (Term Term) Term)
+(declare-fun Tm_refine_a528e7088dc7771b5f67a6b9c65b45af (Term Term) Term)
+(declare-fun Tm_arrow_e98be28bf728160b6eb326bbf51fc61a () Term)
+(declare-fun FStar.UInt16.add_mod@tok () Term)
+
+
+; </end encoding val FStar.UInt16.add_mod>
+
+
+; <Start encoding val FStar.UInt16.sub>
+
+(declare-fun FStar.UInt16.sub (Term Term) Term)
+(declare-fun Tm_refine_b859c3bfdcf246597841540fb1ed998d (Term Term) Term)
+(declare-fun Tm_arrow_413f6d7ea0554099e9c499578964c6cd () Term)
+(declare-fun FStar.UInt16.sub@tok () Term)
+
+
+; </end encoding val FStar.UInt16.sub>
+
+
+; <Start encoding val FStar.UInt16.sub_underspec>
+
+(declare-fun FStar.UInt16.sub_underspec (Term Term) Term)
+(declare-fun Tm_refine_8fdd03b83187f4fea291f025e835855f (Term Term) Term)
+(declare-fun Tm_arrow_d2d64a11e05eca67e5ebd6fbca18667e () Term)
+(declare-fun FStar.UInt16.sub_underspec@tok () Term)
+
+
+; </end encoding val FStar.UInt16.sub_underspec>
+
+
+; <Start encoding val FStar.UInt16.sub_mod>
+
+(declare-fun FStar.UInt16.sub_mod (Term Term) Term)
+(declare-fun Tm_refine_129b0169b4e8bab9a8dfb4cbd0d62214 (Term Term) Term)
+(declare-fun Tm_arrow_0cfa58c6ce7e51c3d1880814626c261d () Term)
+(declare-fun FStar.UInt16.sub_mod@tok () Term)
+
+
+; </end encoding val FStar.UInt16.sub_mod>
+
+
+; <Start encoding val FStar.UInt16.mul>
+
+(declare-fun FStar.UInt16.mul (Term Term) Term)
+(declare-fun Tm_refine_0c3c281ec070e108a64d9e6643fa12b8 (Term Term) Term)
+(declare-fun Tm_arrow_818a65cd860d9d90b9ff51d2de174014 () Term)
+(declare-fun FStar.UInt16.mul@tok () Term)
+
+
+; </end encoding val FStar.UInt16.mul>
+
+
+; <Start encoding val FStar.UInt16.mul_underspec>
+
+(declare-fun FStar.UInt16.mul_underspec (Term Term) Term)
+(declare-fun Tm_refine_cb1b76b3df6f40838b504137c35a6e17 (Term Term) Term)
+(declare-fun Tm_arrow_dfe74ad18d22be11665be6a37fdb27f6 () Term)
+(declare-fun FStar.UInt16.mul_underspec@tok () Term)
+
+
+; </end encoding val FStar.UInt16.mul_underspec>
+
+
+; <Start encoding val FStar.UInt16.mul_mod>
+
+(declare-fun FStar.UInt16.mul_mod (Term Term) Term)
+(declare-fun Tm_refine_e24ce146e70bc5c453cecdd42c419aa1 (Term Term) Term)
+(declare-fun Tm_arrow_fa5800654240cb69e060f3600acc0ab9 () Term)
+(declare-fun FStar.UInt16.mul_mod@tok () Term)
+
+
+; </end encoding val FStar.UInt16.mul_mod>
+
+
+; <Start encoding val FStar.UInt16.div>
+
+(declare-fun Tm_refine_3e34e2c4f5ba554ca9d5a94a7452f876 () Term)
+(declare-fun FStar.UInt16.div (Term Term) Term)
+
+(declare-fun Tm_refine_a2680f37a85ca38ef32ad76329ca6655 (Term Term) Term)
+(declare-fun Tm_arrow_1d3ed7d1a36eb1c15be9167cdd26d975 () Term)
+(declare-fun FStar.UInt16.div@tok () Term)
+
+
+; </end encoding val FStar.UInt16.div>
+
+
+; <Start encoding val FStar.UInt16.rem>
+
+
+(declare-fun FStar.UInt16.rem (Term Term) Term)
+
+(declare-fun Tm_refine_8d1743b5c6d2f2c9050076549cfeb5f4 (Term Term) Term)
+(declare-fun Tm_arrow_a9b2f8e628351ca8191e5a2d74e12318 () Term)
+(declare-fun FStar.UInt16.rem@tok () Term)
+
+
+; </end encoding val FStar.UInt16.rem>
+
+
+; <Start encoding val FStar.UInt16.logand>
+
+(declare-fun FStar.UInt16.logand (Term Term) Term)
+(declare-fun Tm_refine_7cf5fd844874f3049d3067fe68a85256 (Term Term) Term)
+(declare-fun Tm_arrow_7aa270d906bd8fb45c247b75568c48db () Term)
+(declare-fun FStar.UInt16.logand@tok () Term)
+
+
+; </end encoding val FStar.UInt16.logand>
+
+
+; <Start encoding val FStar.UInt16.logxor>
+
+(declare-fun FStar.UInt16.logxor (Term Term) Term)
+(declare-fun Tm_refine_e55be37d77d9b240b683ff3354ca439c (Term Term) Term)
+(declare-fun Tm_arrow_22be9a4de1ee3eadb350cd60783b66ae () Term)
+(declare-fun FStar.UInt16.logxor@tok () Term)
+
+
+; </end encoding val FStar.UInt16.logxor>
+
+
+; <Start encoding val FStar.UInt16.logor>
+
+(declare-fun FStar.UInt16.logor (Term Term) Term)
+(declare-fun Tm_refine_3881ab512ff2d0d86d43bf57b0c61e75 (Term Term) Term)
+(declare-fun Tm_arrow_fa4847a4c38079a6033cc53f6f8391a5 () Term)
+(declare-fun FStar.UInt16.logor@tok () Term)
+
+
+; </end encoding val FStar.UInt16.logor>
+
+
+; <Start encoding val FStar.UInt16.lognot>
+
+(declare-fun FStar.UInt16.lognot (Term) Term)
+(declare-fun Tm_refine_dfa8480cc0780e895037e28b8472b8df (Term) Term)
+(declare-fun Tm_arrow_893e33c74d084e533ade4a873a1f755c () Term)
+(declare-fun FStar.UInt16.lognot@tok () Term)
+
+
+; </end encoding val FStar.UInt16.lognot>
+
+
+; <Start encoding val FStar.UInt16.shift_right>
+
+(declare-fun FStar.UInt16.shift_right (Term Term) Term)
+(declare-fun Tm_refine_4ef8dd68ca64f7c4c1a8bac302cb51a6 (Term Term) Term)
+(declare-fun Tm_arrow_a7706d3849bacf3a6eca4b133d095a70 () Term)
+(declare-fun FStar.UInt16.shift_right@tok () Term)
+
+
+; </end encoding val FStar.UInt16.shift_right>
+
+
+; <Start encoding val FStar.UInt16.shift_left>
+
+(declare-fun FStar.UInt16.shift_left (Term Term) Term)
+(declare-fun Tm_refine_bb6b262bbc4fcaf78b2af3148bb763c6 (Term Term) Term)
+(declare-fun Tm_arrow_5b62fe9416ecdac1c662be0b77ffd710 () Term)
+(declare-fun FStar.UInt16.shift_left@tok () Term)
+
+
+; </end encoding val FStar.UInt16.shift_left>
+
+
+; <Start encoding let eq>
+
+(declare-fun FStar.UInt16.eq (Term Term) Term)
+(declare-fun Tm_arrow_ec095ea6bafa5e9866a85b27cff308e0 () Term)
+(declare-fun FStar.UInt16.eq@tok () Term)
+
+; </end encoding let eq>
+
+
+; <Start encoding let gt>
+
+(declare-fun FStar.UInt16.gt (Term Term) Term)
+
+(declare-fun FStar.UInt16.gt@tok () Term)
+
+; </end encoding let gt>
+
+
+; <Start encoding let gte>
+
+(declare-fun FStar.UInt16.gte (Term Term) Term)
+
+(declare-fun FStar.UInt16.gte@tok () Term)
+
+; </end encoding let gte>
+
+
+; <Start encoding let lt>
+
+(declare-fun FStar.UInt16.lt (Term Term) Term)
+
+(declare-fun FStar.UInt16.lt@tok () Term)
+
+; </end encoding let lt>
+
+
+; <Start encoding let lte>
+
+(declare-fun FStar.UInt16.lte (Term Term) Term)
+
+(declare-fun FStar.UInt16.lte@tok () Term)
+
+; </end encoding let lte>
+
+
+; <Start encoding let minus>
+
+(declare-fun FStar.UInt16.minus (Term) Term)
+(declare-fun Tm_arrow_3f395de82a49d1518ea23b50c5f2f44e () Term)
+(declare-fun FStar.UInt16.minus@tok () Term)
+
+; </end encoding let minus>
+
+
+; <Start encoding let n_minus_one>
+
+(declare-fun FStar.UInt16.n_minus_one (Dummy_sort) Term)
+
+; </end encoding let n_minus_one>
+
+
+; <Skipped #set-options "--z3rlimit 80 --initial_fuel 1 --max_fuel 1"/>
+
+
+; <Start encoding let eq_mask>
+
+(declare-fun FStar.UInt16.eq_mask (Term Term) Term)
+(declare-fun Tm_refine_4337d527bd8e18a624079c37cd404c59 (Term Term) Term)
+(declare-fun Tm_arrow_3b501882da55605a5a3d3f43f32c45b9 () Term)
+(declare-fun FStar.UInt16.eq_mask@tok () Term)
+
+
+; </end encoding let eq_mask>
+
+
+; <Start encoding val FStar.UInt16.lemma_sub_msbs>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt16.lemma_sub_msbs (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt16.lemma_sub_msbs@tok () Term)
+
+; </end encoding val FStar.UInt16.lemma_sub_msbs>
+
+
+; <Start encoding let gte_mask>
+
+(declare-fun FStar.UInt16.gte_mask (Term Term) Term)
+(declare-fun Tm_refine_d8e117de3278723cbc3559698b2db64e (Term Term) Term)
+(declare-fun Tm_arrow_01b6b3276c1f9c1f15edd31113793e3b () Term)
+(declare-fun FStar.UInt16.gte_mask@tok () Term)
+
+
+; </end encoding let gte_mask>
+
+
+; <Skipped #reset-options/>
+
+
+; <Start encoding let op_Plus_Hat>
+
+(declare-fun FStar.UInt16.op_Plus_Hat (Term Term) Term)
+
+
+(declare-fun FStar.UInt16.op_Plus_Hat@tok () Term)
+
+
+; </end encoding let op_Plus_Hat>
+
+
+; <Start encoding let op_Plus_Question_Hat>
+
+(declare-fun FStar.UInt16.op_Plus_Question_Hat (Term Term) Term)
+
+
+(declare-fun FStar.UInt16.op_Plus_Question_Hat@tok () Term)
+
+
+; </end encoding let op_Plus_Question_Hat>
+
+
+; <Start encoding let op_Plus_Percent_Hat>
+
+(declare-fun FStar.UInt16.op_Plus_Percent_Hat (Term Term) Term)
+
+
+(declare-fun FStar.UInt16.op_Plus_Percent_Hat@tok () Term)
+
+
+; </end encoding let op_Plus_Percent_Hat>
+
+
+; <Start encoding let op_Subtraction_Hat>
+
+(declare-fun FStar.UInt16.op_Subtraction_Hat (Term Term) Term)
+
+
+(declare-fun FStar.UInt16.op_Subtraction_Hat@tok () Term)
+
+
+; </end encoding let op_Subtraction_Hat>
+
+
+; <Start encoding let op_Subtraction_Question_Hat>
+
+(declare-fun FStar.UInt16.op_Subtraction_Question_Hat (Term Term) Term)
+
+
+(declare-fun FStar.UInt16.op_Subtraction_Question_Hat@tok () Term)
+
+
+; </end encoding let op_Subtraction_Question_Hat>
+
+
+; <Start encoding let op_Subtraction_Percent_Hat>
+
+(declare-fun FStar.UInt16.op_Subtraction_Percent_Hat (Term Term) Term)
+
+
+(declare-fun FStar.UInt16.op_Subtraction_Percent_Hat@tok () Term)
+
+
+; </end encoding let op_Subtraction_Percent_Hat>
+
+
+; <Start encoding let op_Star_Hat>
+
+(declare-fun FStar.UInt16.op_Star_Hat (Term Term) Term)
+
+
+(declare-fun FStar.UInt16.op_Star_Hat@tok () Term)
+
+
+; </end encoding let op_Star_Hat>
+
+
+; <Start encoding let op_Star_Question_Hat>
+
+(declare-fun FStar.UInt16.op_Star_Question_Hat (Term Term) Term)
+
+
+(declare-fun FStar.UInt16.op_Star_Question_Hat@tok () Term)
+
+
+; </end encoding let op_Star_Question_Hat>
+
+
+; <Start encoding let op_Star_Percent_Hat>
+
+(declare-fun FStar.UInt16.op_Star_Percent_Hat (Term Term) Term)
+
+
+(declare-fun FStar.UInt16.op_Star_Percent_Hat@tok () Term)
+
+
+; </end encoding let op_Star_Percent_Hat>
+
+
+; <Start encoding let op_Slash_Hat>
+
+
+(declare-fun FStar.UInt16.op_Slash_Hat (Term Term) Term)
+
+
+
+(declare-fun FStar.UInt16.op_Slash_Hat@tok () Term)
+
+
+
+; </end encoding let op_Slash_Hat>
+
+
+; <Start encoding let op_Percent_Hat>
+
+
+(declare-fun FStar.UInt16.op_Percent_Hat (Term Term) Term)
+
+
+
+(declare-fun FStar.UInt16.op_Percent_Hat@tok () Term)
+
+
+
+; </end encoding let op_Percent_Hat>
+
+
+; <Start encoding let op_Hat_Hat>
+
+(declare-fun FStar.UInt16.op_Hat_Hat (Term Term) Term)
+
+
+(declare-fun FStar.UInt16.op_Hat_Hat@tok () Term)
+
+
+; </end encoding let op_Hat_Hat>
+
+
+; <Start encoding let op_Amp_Hat>
+
+(declare-fun FStar.UInt16.op_Amp_Hat (Term Term) Term)
+
+
+(declare-fun FStar.UInt16.op_Amp_Hat@tok () Term)
+
+
+; </end encoding let op_Amp_Hat>
+
+
+; <Start encoding let op_Bar_Hat>
+
+(declare-fun FStar.UInt16.op_Bar_Hat (Term Term) Term)
+
+
+(declare-fun FStar.UInt16.op_Bar_Hat@tok () Term)
+
+
+; </end encoding let op_Bar_Hat>
+
+
+; <Start encoding let op_Less_Less_Hat>
+
+(declare-fun FStar.UInt16.op_Less_Less_Hat (Term Term) Term)
+
+
+(declare-fun FStar.UInt16.op_Less_Less_Hat@tok () Term)
+
+
+; </end encoding let op_Less_Less_Hat>
+
+
+; <Start encoding let op_Greater_Greater_Hat>
+
+(declare-fun FStar.UInt16.op_Greater_Greater_Hat (Term Term) Term)
+
+
+(declare-fun FStar.UInt16.op_Greater_Greater_Hat@tok () Term)
+
+
+; </end encoding let op_Greater_Greater_Hat>
+
+
+; <Start encoding let op_Equals_Hat>
+
+(declare-fun FStar.UInt16.op_Equals_Hat (Term Term) Term)
+
+(declare-fun FStar.UInt16.op_Equals_Hat@tok () Term)
+
+; </end encoding let op_Equals_Hat>
+
+
+; <Start encoding let op_Greater_Hat>
+
+(declare-fun FStar.UInt16.op_Greater_Hat (Term Term) Term)
+
+(declare-fun FStar.UInt16.op_Greater_Hat@tok () Term)
+
+; </end encoding let op_Greater_Hat>
+
+
+; <Start encoding let op_Greater_Equals_Hat>
+
+(declare-fun FStar.UInt16.op_Greater_Equals_Hat (Term Term) Term)
+
+(declare-fun FStar.UInt16.op_Greater_Equals_Hat@tok () Term)
+
+; </end encoding let op_Greater_Equals_Hat>
+
+
+; <Start encoding let op_Less_Hat>
+
+(declare-fun FStar.UInt16.op_Less_Hat (Term Term) Term)
+
+(declare-fun FStar.UInt16.op_Less_Hat@tok () Term)
+
+; </end encoding let op_Less_Hat>
+
+
+; <Start encoding let op_Less_Equals_Hat>
+
+(declare-fun FStar.UInt16.op_Less_Equals_Hat (Term Term) Term)
+
+(declare-fun FStar.UInt16.op_Less_Equals_Hat@tok () Term)
+
+; </end encoding let op_Less_Equals_Hat>
+
+
+; <Start encoding val FStar.UInt16.to_string>
+
+(declare-fun FStar.UInt16.to_string (Term) Term)
+(declare-fun Tm_arrow_1567a0c3fa9c6a7b76db1de05c62a83e () Term)
+(declare-fun FStar.UInt16.to_string@tok () Term)
+
+; </end encoding val FStar.UInt16.to_string>
+
+
+; <Start encoding val FStar.UInt16.to_string_hex>
+
+(declare-fun FStar.UInt16.to_string_hex (Term) Term)
+
+(declare-fun FStar.UInt16.to_string_hex@tok () Term)
+
+; </end encoding val FStar.UInt16.to_string_hex>
+
+
+; <Start encoding val FStar.UInt16.to_string_hex_pad>
+
+(declare-fun FStar.UInt16.to_string_hex_pad (Term) Term)
+
+(declare-fun FStar.UInt16.to_string_hex_pad@tok () Term)
+
+; </end encoding val FStar.UInt16.to_string_hex_pad>
+
+
+; <Start encoding val FStar.UInt16.of_string>
+
+(declare-fun FStar.UInt16.of_string (Term) Term)
+(declare-fun Tm_arrow_68a59188b2c9544b263522e5c6da7655 () Term)
+(declare-fun FStar.UInt16.of_string@tok () Term)
+
+; </end encoding val FStar.UInt16.of_string>
+
+
+; <Skipped #set-options "--admit_smt_queries true"/>
+
+
+; <Start encoding let __uint_to_t>
+
+(declare-fun FStar.UInt16.__uint_to_t (Term) Term)
+(declare-fun Tm_arrow_08c7c5e1e582fde525f5d9f6401fce2b () Term)
+(declare-fun FStar.UInt16.__uint_to_t@tok () Term)
+
+; </end encoding let __uint_to_t>
+
+
+; <Skipped #reset-options/>
+
+
+; End Externals for interface FStar.UInt16
+
+
+; Externals for interface FStar.UInt8
+
+
+; <Start encoding let n>
+
+(declare-fun FStar.UInt8.n (Dummy_sort) Term)
+
+; </end encoding let n>
+
+
+; <Skipped #set-options "--max_fuel 0 --max_ifuel 0"/>
+
+
+; <Start encoding val FStar.UInt8.t>
+
+(declare-fun FStar.UInt8.t (Dummy_sort) Term)
+
+; </end encoding val FStar.UInt8.t>
+
+
+; <Start encoding val FStar.UInt8.v>
+
+(declare-fun FStar.UInt8.v (Term) Term)
+(declare-fun Tm_arrow_3777b5a630a36e62279f05e8abae7a72 () Term)
+(declare-fun FStar.UInt8.v@tok () Term)
+
+; </end encoding val FStar.UInt8.v>
+
+
+; <Start encoding val FStar.UInt8.uint_to_t>
+
+(declare-fun FStar.UInt8.uint_to_t (Term) Term)
+(declare-fun Tm_refine_25c72d704900d626b30894312c325451 (Term) Term)
+(declare-fun Tm_arrow_99681d89836a4c650badaf3b898e0fd2 () Term)
+(declare-fun FStar.UInt8.uint_to_t@tok () Term)
+
+
+; </end encoding val FStar.UInt8.uint_to_t>
+
+
+; <Start encoding val FStar.UInt8.uv_inv>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt8.uv_inv (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt8.uv_inv@tok () Term)
+
+; </end encoding val FStar.UInt8.uv_inv>
+
+
+; <Start encoding val FStar.UInt8.vu_inv>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt8.vu_inv (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt8.vu_inv@tok () Term)
+
+; </end encoding val FStar.UInt8.vu_inv>
+
+
+; <Start encoding val FStar.UInt8.v_inj>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt8.v_inj (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt8.v_inj@tok () Term)
+
+; </end encoding val FStar.UInt8.v_inj>
+
+
+; <Start encoding val FStar.UInt8.zero>
+
+(declare-fun FStar.UInt8.zero (Dummy_sort) Term)
+(declare-fun Tm_refine_70356e30ad97b892992d5e77127e234b () Term)
+
+
+; </end encoding val FStar.UInt8.zero>
+
+
+; <Start encoding val FStar.UInt8.one>
+
+(declare-fun FStar.UInt8.one (Dummy_sort) Term)
+(declare-fun Tm_refine_9a778967dadeb1d9cdc158a156c04472 () Term)
+
+
+; </end encoding val FStar.UInt8.one>
+
+
+; <Start encoding val FStar.UInt8.add>
+
+(declare-fun FStar.UInt8.add (Term Term) Term)
+(declare-fun Tm_refine_e7a8c22ddf5fa06051ce01d4308e93c9 (Term Term) Term)
+(declare-fun Tm_arrow_93f019685d372e95eac5ee2026269943 () Term)
+(declare-fun FStar.UInt8.add@tok () Term)
+
+
+; </end encoding val FStar.UInt8.add>
+
+
+; <Start encoding val FStar.UInt8.add_underspec>
+
+(declare-fun FStar.UInt8.add_underspec (Term Term) Term)
+(declare-fun Tm_refine_e2fc73b749d5084f2161a1b2256e684a (Term Term) Term)
+(declare-fun Tm_arrow_c4436082bc35b52549c292a4092c74f2 () Term)
+(declare-fun FStar.UInt8.add_underspec@tok () Term)
+
+
+; </end encoding val FStar.UInt8.add_underspec>
+
+
+; <Start encoding val FStar.UInt8.add_mod>
+
+(declare-fun FStar.UInt8.add_mod (Term Term) Term)
+(declare-fun Tm_refine_c5c06f774ce917320ace84c78a678f3a (Term Term) Term)
+(declare-fun Tm_arrow_52ecb5e08ede937a376b797f76452f11 () Term)
+(declare-fun FStar.UInt8.add_mod@tok () Term)
+
+
+; </end encoding val FStar.UInt8.add_mod>
+
+
+; <Start encoding val FStar.UInt8.sub>
+
+(declare-fun FStar.UInt8.sub (Term Term) Term)
+(declare-fun Tm_refine_b9fa04b492b01fd435452ff429d13919 (Term Term) Term)
+(declare-fun Tm_arrow_ec1e3750fe88626fd39551f91ea86fc8 () Term)
+(declare-fun FStar.UInt8.sub@tok () Term)
+
+
+; </end encoding val FStar.UInt8.sub>
+
+
+; <Start encoding val FStar.UInt8.sub_underspec>
+
+(declare-fun FStar.UInt8.sub_underspec (Term Term) Term)
+(declare-fun Tm_refine_2f0c7364767f32abaf6bd4293573996b (Term Term) Term)
+(declare-fun Tm_arrow_9b74ded99c9ac1ce430c56353e375533 () Term)
+(declare-fun FStar.UInt8.sub_underspec@tok () Term)
+
+
+; </end encoding val FStar.UInt8.sub_underspec>
+
+
+; <Start encoding val FStar.UInt8.sub_mod>
+
+(declare-fun FStar.UInt8.sub_mod (Term Term) Term)
+(declare-fun Tm_refine_31110a8e88288515f5ff8c631a6fc5fd (Term Term) Term)
+(declare-fun Tm_arrow_f944420b8232be8a08ac1eac1a8cfc60 () Term)
+(declare-fun FStar.UInt8.sub_mod@tok () Term)
+
+
+; </end encoding val FStar.UInt8.sub_mod>
+
+
+; <Start encoding val FStar.UInt8.mul>
+
+(declare-fun FStar.UInt8.mul (Term Term) Term)
+(declare-fun Tm_refine_d72a979d91a11894cbd64b344a4b0237 (Term Term) Term)
+(declare-fun Tm_arrow_f916cf085880111e18cd4d6a364c6342 () Term)
+(declare-fun FStar.UInt8.mul@tok () Term)
+
+
+; </end encoding val FStar.UInt8.mul>
+
+
+; <Start encoding val FStar.UInt8.mul_underspec>
+
+(declare-fun FStar.UInt8.mul_underspec (Term Term) Term)
+(declare-fun Tm_refine_12692332647397b458ce816ee08aa096 (Term Term) Term)
+(declare-fun Tm_arrow_44a424ccb654a64902b3f4c4584dfee1 () Term)
+(declare-fun FStar.UInt8.mul_underspec@tok () Term)
+
+
+; </end encoding val FStar.UInt8.mul_underspec>
+
+
+; <Start encoding val FStar.UInt8.mul_mod>
+
+(declare-fun FStar.UInt8.mul_mod (Term Term) Term)
+(declare-fun Tm_refine_4ce5cfa0cf1c69159e9310e6885c3e22 (Term Term) Term)
+(declare-fun Tm_arrow_082e5a7318c49f7336161f30b53f326f () Term)
+(declare-fun FStar.UInt8.mul_mod@tok () Term)
+
+
+; </end encoding val FStar.UInt8.mul_mod>
+
+
+; <Start encoding val FStar.UInt8.div>
+
+(declare-fun Tm_refine_a8cb57fcf32c2764d2e39fc97ecb3aa0 () Term)
+(declare-fun FStar.UInt8.div (Term Term) Term)
+
+(declare-fun Tm_refine_488bac52b9d15f98f9de642f30db345a (Term Term) Term)
+(declare-fun Tm_arrow_032d4f95524b20f7a0ffe6be0a29e0dd () Term)
+(declare-fun FStar.UInt8.div@tok () Term)
+
+
+; </end encoding val FStar.UInt8.div>
+
+
+; <Start encoding val FStar.UInt8.rem>
+
+
+(declare-fun FStar.UInt8.rem (Term Term) Term)
+
+(declare-fun Tm_refine_41d38db91700fb5bf8d345e71a7ea813 (Term Term) Term)
+(declare-fun Tm_arrow_cce9ccb13b0c72c92896f9584ae44f9a () Term)
+(declare-fun FStar.UInt8.rem@tok () Term)
+
+
+; </end encoding val FStar.UInt8.rem>
+
+
+; <Start encoding val FStar.UInt8.logand>
+
+(declare-fun FStar.UInt8.logand (Term Term) Term)
+(declare-fun Tm_refine_71d1a346f76194fb038bba96302ce90d (Term Term) Term)
+(declare-fun Tm_arrow_606a7fadbc7c16f0b0151a905dbf43f5 () Term)
+(declare-fun FStar.UInt8.logand@tok () Term)
+
+
+; </end encoding val FStar.UInt8.logand>
+
+
+; <Start encoding val FStar.UInt8.logxor>
+
+(declare-fun FStar.UInt8.logxor (Term Term) Term)
+(declare-fun Tm_refine_97e4a63388ae45ee4261a689ecdcc635 (Term Term) Term)
+(declare-fun Tm_arrow_64e5ecb00734a6581a045079ffb5fe59 () Term)
+(declare-fun FStar.UInt8.logxor@tok () Term)
+
+
+; </end encoding val FStar.UInt8.logxor>
+
+
+; <Start encoding val FStar.UInt8.logor>
+
+(declare-fun FStar.UInt8.logor (Term Term) Term)
+(declare-fun Tm_refine_a7fcc8489f92354d1f8a101b7f900b3b (Term Term) Term)
+(declare-fun Tm_arrow_32400c8ec986ceb55a1554f2089e0efa () Term)
+(declare-fun FStar.UInt8.logor@tok () Term)
+
+
+; </end encoding val FStar.UInt8.logor>
+
+
+; <Start encoding val FStar.UInt8.lognot>
+
+(declare-fun FStar.UInt8.lognot (Term) Term)
+(declare-fun Tm_refine_455031e9fe191e56270c683d0e98b61b (Term) Term)
+(declare-fun Tm_arrow_1a84223456a82ceb3bff40c0b2935125 () Term)
+(declare-fun FStar.UInt8.lognot@tok () Term)
+
+
+; </end encoding val FStar.UInt8.lognot>
+
+
+; <Start encoding val FStar.UInt8.shift_right>
+
+(declare-fun FStar.UInt8.shift_right (Term Term) Term)
+(declare-fun Tm_refine_098e5306776c74ab1df7fd9dd6d3b590 (Term Term) Term)
+(declare-fun Tm_arrow_b066c40415d68ecc38942bb71d3e3f6f () Term)
+(declare-fun FStar.UInt8.shift_right@tok () Term)
+
+
+; </end encoding val FStar.UInt8.shift_right>
+
+
+; <Start encoding val FStar.UInt8.shift_left>
+
+(declare-fun FStar.UInt8.shift_left (Term Term) Term)
+(declare-fun Tm_refine_a97317ecf8cf07e3c11fb9b0d3ed777c (Term Term) Term)
+(declare-fun Tm_arrow_07d4bb9ab4248e20b62c52c13b75d97e () Term)
+(declare-fun FStar.UInt8.shift_left@tok () Term)
+
+
+; </end encoding val FStar.UInt8.shift_left>
+
+
+; <Start encoding let eq>
+
+(declare-fun FStar.UInt8.eq (Term Term) Term)
+(declare-fun Tm_arrow_044ce6ce0f384eef0fc1f6f3f8f2f074 () Term)
+(declare-fun FStar.UInt8.eq@tok () Term)
+
+; </end encoding let eq>
+
+
+; <Start encoding let gt>
+
+(declare-fun FStar.UInt8.gt (Term Term) Term)
+
+(declare-fun FStar.UInt8.gt@tok () Term)
+
+; </end encoding let gt>
+
+
+; <Start encoding let gte>
+
+(declare-fun FStar.UInt8.gte (Term Term) Term)
+
+(declare-fun FStar.UInt8.gte@tok () Term)
+
+; </end encoding let gte>
+
+
+; <Start encoding let lt>
+
+(declare-fun FStar.UInt8.lt (Term Term) Term)
+
+(declare-fun FStar.UInt8.lt@tok () Term)
+
+; </end encoding let lt>
+
+
+; <Start encoding let lte>
+
+(declare-fun FStar.UInt8.lte (Term Term) Term)
+
+(declare-fun FStar.UInt8.lte@tok () Term)
+
+; </end encoding let lte>
+
+
+; <Start encoding let minus>
+
+(declare-fun FStar.UInt8.minus (Term) Term)
+(declare-fun Tm_arrow_53a47de46a631aa3eac76ad156b433ff () Term)
+(declare-fun FStar.UInt8.minus@tok () Term)
+
+; </end encoding let minus>
+
+
+; <Start encoding let n_minus_one>
+
+(declare-fun FStar.UInt8.n_minus_one (Dummy_sort) Term)
+
+; </end encoding let n_minus_one>
+
+
+; <Skipped #set-options "--z3rlimit 80 --initial_fuel 1 --max_fuel 1"/>
+
+
+; <Start encoding let eq_mask>
+
+(declare-fun FStar.UInt8.eq_mask (Term Term) Term)
+(declare-fun Tm_refine_4b365856d6f9222ae4baaff2421b1f3d (Term Term) Term)
+(declare-fun Tm_arrow_a445c7cdf140b45a21388352df89d169 () Term)
+(declare-fun FStar.UInt8.eq_mask@tok () Term)
+
+
+; </end encoding let eq_mask>
+
+
+; <Start encoding val FStar.UInt8.lemma_sub_msbs>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.UInt8.lemma_sub_msbs (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.UInt8.lemma_sub_msbs@tok () Term)
+
+; </end encoding val FStar.UInt8.lemma_sub_msbs>
+
+
+; <Start encoding let gte_mask>
+
+(declare-fun FStar.UInt8.gte_mask (Term Term) Term)
+(declare-fun Tm_refine_d0b1e2944ee74da332d1b0864caf4a29 (Term Term) Term)
+(declare-fun Tm_arrow_fdec4315b860ac38893cb3277ba98c8c () Term)
+(declare-fun FStar.UInt8.gte_mask@tok () Term)
+
+
+; </end encoding let gte_mask>
+
+
+; <Skipped #reset-options/>
+
+
+; <Start encoding let op_Plus_Hat>
+
+(declare-fun FStar.UInt8.op_Plus_Hat (Term Term) Term)
+
+
+(declare-fun FStar.UInt8.op_Plus_Hat@tok () Term)
+
+
+; </end encoding let op_Plus_Hat>
+
+
+; <Start encoding let op_Plus_Question_Hat>
+
+(declare-fun FStar.UInt8.op_Plus_Question_Hat (Term Term) Term)
+
+
+(declare-fun FStar.UInt8.op_Plus_Question_Hat@tok () Term)
+
+
+; </end encoding let op_Plus_Question_Hat>
+
+
+; <Start encoding let op_Plus_Percent_Hat>
+
+(declare-fun FStar.UInt8.op_Plus_Percent_Hat (Term Term) Term)
+
+
+(declare-fun FStar.UInt8.op_Plus_Percent_Hat@tok () Term)
+
+
+; </end encoding let op_Plus_Percent_Hat>
+
+
+; <Start encoding let op_Subtraction_Hat>
+
+(declare-fun FStar.UInt8.op_Subtraction_Hat (Term Term) Term)
+
+
+(declare-fun FStar.UInt8.op_Subtraction_Hat@tok () Term)
+
+
+; </end encoding let op_Subtraction_Hat>
+
+
+; <Start encoding let op_Subtraction_Question_Hat>
+
+(declare-fun FStar.UInt8.op_Subtraction_Question_Hat (Term Term) Term)
+
+
+(declare-fun FStar.UInt8.op_Subtraction_Question_Hat@tok () Term)
+
+
+; </end encoding let op_Subtraction_Question_Hat>
+
+
+; <Start encoding let op_Subtraction_Percent_Hat>
+
+(declare-fun FStar.UInt8.op_Subtraction_Percent_Hat (Term Term) Term)
+
+
+(declare-fun FStar.UInt8.op_Subtraction_Percent_Hat@tok () Term)
+
+
+; </end encoding let op_Subtraction_Percent_Hat>
+
+
+; <Start encoding let op_Star_Hat>
+
+(declare-fun FStar.UInt8.op_Star_Hat (Term Term) Term)
+
+
+(declare-fun FStar.UInt8.op_Star_Hat@tok () Term)
+
+
+; </end encoding let op_Star_Hat>
+
+
+; <Start encoding let op_Star_Question_Hat>
+
+(declare-fun FStar.UInt8.op_Star_Question_Hat (Term Term) Term)
+
+
+(declare-fun FStar.UInt8.op_Star_Question_Hat@tok () Term)
+
+
+; </end encoding let op_Star_Question_Hat>
+
+
+; <Start encoding let op_Star_Percent_Hat>
+
+(declare-fun FStar.UInt8.op_Star_Percent_Hat (Term Term) Term)
+
+
+(declare-fun FStar.UInt8.op_Star_Percent_Hat@tok () Term)
+
+
+; </end encoding let op_Star_Percent_Hat>
+
+
+; <Start encoding let op_Slash_Hat>
+
+
+(declare-fun FStar.UInt8.op_Slash_Hat (Term Term) Term)
+
+
+
+(declare-fun FStar.UInt8.op_Slash_Hat@tok () Term)
+
+
+
+; </end encoding let op_Slash_Hat>
+
+
+; <Start encoding let op_Percent_Hat>
+
+
+(declare-fun FStar.UInt8.op_Percent_Hat (Term Term) Term)
+
+
+
+(declare-fun FStar.UInt8.op_Percent_Hat@tok () Term)
+
+
+
+; </end encoding let op_Percent_Hat>
+
+
+; <Start encoding let op_Hat_Hat>
+
+(declare-fun FStar.UInt8.op_Hat_Hat (Term Term) Term)
+
+
+(declare-fun FStar.UInt8.op_Hat_Hat@tok () Term)
+
+
+; </end encoding let op_Hat_Hat>
+
+
+; <Start encoding let op_Amp_Hat>
+
+(declare-fun FStar.UInt8.op_Amp_Hat (Term Term) Term)
+
+
+(declare-fun FStar.UInt8.op_Amp_Hat@tok () Term)
+
+
+; </end encoding let op_Amp_Hat>
+
+
+; <Start encoding let op_Bar_Hat>
+
+(declare-fun FStar.UInt8.op_Bar_Hat (Term Term) Term)
+
+
+(declare-fun FStar.UInt8.op_Bar_Hat@tok () Term)
+
+
+; </end encoding let op_Bar_Hat>
+
+
+; <Start encoding let op_Less_Less_Hat>
+
+(declare-fun FStar.UInt8.op_Less_Less_Hat (Term Term) Term)
+
+
+(declare-fun FStar.UInt8.op_Less_Less_Hat@tok () Term)
+
+
+; </end encoding let op_Less_Less_Hat>
+
+
+; <Start encoding let op_Greater_Greater_Hat>
+
+(declare-fun FStar.UInt8.op_Greater_Greater_Hat (Term Term) Term)
+
+
+(declare-fun FStar.UInt8.op_Greater_Greater_Hat@tok () Term)
+
+
+; </end encoding let op_Greater_Greater_Hat>
+
+
+; <Start encoding let op_Equals_Hat>
+
+(declare-fun FStar.UInt8.op_Equals_Hat (Term Term) Term)
+
+(declare-fun FStar.UInt8.op_Equals_Hat@tok () Term)
+
+; </end encoding let op_Equals_Hat>
+
+
+; <Start encoding let op_Greater_Hat>
+
+(declare-fun FStar.UInt8.op_Greater_Hat (Term Term) Term)
+
+(declare-fun FStar.UInt8.op_Greater_Hat@tok () Term)
+
+; </end encoding let op_Greater_Hat>
+
+
+; <Start encoding let op_Greater_Equals_Hat>
+
+(declare-fun FStar.UInt8.op_Greater_Equals_Hat (Term Term) Term)
+
+(declare-fun FStar.UInt8.op_Greater_Equals_Hat@tok () Term)
+
+; </end encoding let op_Greater_Equals_Hat>
+
+
+; <Start encoding let op_Less_Hat>
+
+(declare-fun FStar.UInt8.op_Less_Hat (Term Term) Term)
+
+(declare-fun FStar.UInt8.op_Less_Hat@tok () Term)
+
+; </end encoding let op_Less_Hat>
+
+
+; <Start encoding let op_Less_Equals_Hat>
+
+(declare-fun FStar.UInt8.op_Less_Equals_Hat (Term Term) Term)
+
+(declare-fun FStar.UInt8.op_Less_Equals_Hat@tok () Term)
+
+; </end encoding let op_Less_Equals_Hat>
+
+
+; <Start encoding val FStar.UInt8.to_string>
+
+(declare-fun FStar.UInt8.to_string (Term) Term)
+(declare-fun Tm_arrow_630ce6920914ed05e3724fa72d06132c () Term)
+(declare-fun FStar.UInt8.to_string@tok () Term)
+
+; </end encoding val FStar.UInt8.to_string>
+
+
+; <Start encoding val FStar.UInt8.to_string_hex>
+
+(declare-fun FStar.UInt8.to_string_hex (Term) Term)
+
+(declare-fun FStar.UInt8.to_string_hex@tok () Term)
+
+; </end encoding val FStar.UInt8.to_string_hex>
+
+
+; <Start encoding val FStar.UInt8.to_string_hex_pad>
+
+(declare-fun FStar.UInt8.to_string_hex_pad (Term) Term)
+
+(declare-fun FStar.UInt8.to_string_hex_pad@tok () Term)
+
+; </end encoding val FStar.UInt8.to_string_hex_pad>
+
+
+; <Start encoding val FStar.UInt8.of_string>
+
+(declare-fun FStar.UInt8.of_string (Term) Term)
+(declare-fun Tm_arrow_2b6f4c2bff8eb5d0563e8b6985a71043 () Term)
+(declare-fun FStar.UInt8.of_string@tok () Term)
+
+; </end encoding val FStar.UInt8.of_string>
+
+
+; <Skipped #set-options "--admit_smt_queries true"/>
+
+
+; <Start encoding let __uint_to_t>
+
+(declare-fun FStar.UInt8.__uint_to_t (Term) Term)
+(declare-fun Tm_arrow_52383a4d974551ee41b2c1746d04b8c5 () Term)
+(declare-fun FStar.UInt8.__uint_to_t@tok () Term)
+
+; </end encoding let __uint_to_t>
+
+
+; <Skipped #reset-options/>
+
+
+; <Start encoding let byte>
+
+(declare-fun FStar.UInt8.byte (Dummy_sort) Term)
+
+; </end encoding let byte>
+
+
+; End Externals for interface FStar.UInt8
+
+
+; Externals for module FStar.Exn
+
+
+; <Start encoding val FStar.Exn.raise>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Exn.raise (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Exn.raise@tok () Term)
+
+; </end encoding val FStar.Exn.raise>
+
+
+; End Externals for module FStar.Exn
+
+
+; Externals for module FStar.Preorder
+
+
+; <Start encoding let relation>
+
+(declare-fun FStar.Preorder.relation (Term) Term)
+
+(declare-fun FStar.Preorder.relation@tok () Term)
+(declare-fun Tm_arrow_a19f9d49348d4e0038f0ded87d87802f (Term) Term)
+
+; </end encoding let relation>
+
+
+; <Start encoding let predicate>
+
+(declare-fun FStar.Preorder.predicate (Term) Term)
+
+(declare-fun FStar.Preorder.predicate@tok () Term)
+
+
+; </end encoding let predicate>
+
+
+; <Start encoding let reflexive>
+
+(declare-fun FStar.Preorder.reflexive (Term Term) Term)
+(declare-fun Tm_arrow_8e677a33afbeb812aa3779b7bdd0131c () Term)
+(declare-fun FStar.Preorder.reflexive@tok () Term)
+
+; </end encoding let reflexive>
+
+
+; <Start encoding let transitive>
+
+(declare-fun FStar.Preorder.transitive (Term Term) Term)
+
+(declare-fun FStar.Preorder.transitive@tok () Term)
+
+; </end encoding let transitive>
+
+
+; <Start encoding let preorder_rel>
+
+(declare-fun FStar.Preorder.preorder_rel (Term Term) Term)
+
+(declare-fun FStar.Preorder.preorder_rel@tok () Term)
+
+; </end encoding let preorder_rel>
+
+
+; <Start encoding let preorder>
+
+(declare-fun FStar.Preorder.preorder (Term) Term)
+
+(declare-fun FStar.Preorder.preorder@tok () Term)
+(declare-fun Tm_refine_bd10f09297e0e7dc08314f7d9211801c (Term) Term)
+
+; </end encoding let preorder>
+
+
+; <Start encoding let stable>
+
+
+(declare-fun FStar.Preorder.stable (Term Term Term) Term)
+
+(declare-fun Tm_arrow_88036d0811eee3361efd6229bae2556d () Term)
+(declare-fun FStar.Preorder.stable@tok () Term)
+
+
+; </end encoding let stable>
+
+
+; End Externals for module FStar.Preorder
+
+
+; Externals for interface FStar.Monotonic.Witnessed
+
+
+; <Start encoding val FStar.Monotonic.Witnessed.witnessed>
+
+
+(declare-fun FStar.Monotonic.Witnessed.witnessed (Term Term Term) Term)
+
+(declare-fun Tm_arrow_d588830826b7a1087c9fd83547a14841 () Term)
+(declare-fun FStar.Monotonic.Witnessed.witnessed@tok () Term)
+
+; </end encoding val FStar.Monotonic.Witnessed.witnessed>
+
+
+; <Start encoding val FStar.Monotonic.Witnessed.lemma_witnessed_weakening>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Witnessed.lemma_witnessed_weakening (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Witnessed.lemma_witnessed_weakening@tok () Term)
+
+; </end encoding val FStar.Monotonic.Witnessed.lemma_witnessed_weakening>
+
+
+; <Start encoding val FStar.Monotonic.Witnessed.lemma_witnessed_constant>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Witnessed.lemma_witnessed_constant (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Witnessed.lemma_witnessed_constant@tok () Term)
+
+; </end encoding val FStar.Monotonic.Witnessed.lemma_witnessed_constant>
+
+
+; <Start encoding val FStar.Monotonic.Witnessed.lemma_witnessed_nested>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Witnessed.lemma_witnessed_nested (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Witnessed.lemma_witnessed_nested@tok () Term)
+
+; </end encoding val FStar.Monotonic.Witnessed.lemma_witnessed_nested>
+
+
+; <Start encoding val FStar.Monotonic.Witnessed.lemma_witnessed_and>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Witnessed.lemma_witnessed_and (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Witnessed.lemma_witnessed_and@tok () Term)
+
+; </end encoding val FStar.Monotonic.Witnessed.lemma_witnessed_and>
+
+
+; <Start encoding val FStar.Monotonic.Witnessed.lemma_witnessed_or>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Witnessed.lemma_witnessed_or (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Witnessed.lemma_witnessed_or@tok () Term)
+
+; </end encoding val FStar.Monotonic.Witnessed.lemma_witnessed_or>
+
+
+; <Start encoding val FStar.Monotonic.Witnessed.lemma_witnessed_impl>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Witnessed.lemma_witnessed_impl (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Witnessed.lemma_witnessed_impl@tok () Term)
+
+; </end encoding val FStar.Monotonic.Witnessed.lemma_witnessed_impl>
+
+
+; <Start encoding val FStar.Monotonic.Witnessed.lemma_witnessed_forall>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Witnessed.lemma_witnessed_forall (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Witnessed.lemma_witnessed_forall@tok () Term)
+
+; </end encoding val FStar.Monotonic.Witnessed.lemma_witnessed_forall>
+
+
+; <Start encoding val FStar.Monotonic.Witnessed.lemma_witnessed_exists>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Witnessed.lemma_witnessed_exists (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Witnessed.lemma_witnessed_exists@tok () Term)
+
+; </end encoding val FStar.Monotonic.Witnessed.lemma_witnessed_exists>
+
+
+; End Externals for interface FStar.Monotonic.Witnessed
+
+
+; Externals for interface FStar.TSet
+
+
+; <Skipped #set-options "--initial_fuel 0 --max_fuel 0 --initial_ifuel 0 --max_ifuel 0"/>
+
+
+; <Start encoding val FStar.TSet.set>
+
+(declare-fun FStar.TSet.set (Term) Term)
+
+(declare-fun FStar.TSet.set@tok () Term)
+
+; </end encoding val FStar.TSet.set>
+
+
+; <Start encoding val FStar.TSet.equal>
+
+(declare-fun FStar.TSet.equal (Term Term Term) Term)
+(declare-fun Tm_arrow_461adcd665973ea611b925a11158df2c () Term)
+(declare-fun FStar.TSet.equal@tok () Term)
+
+; </end encoding val FStar.TSet.equal>
+
+
+; <Start encoding val FStar.TSet.mem>
+
+(declare-fun FStar.TSet.mem (Term Term Term) Term)
+(declare-fun Tm_arrow_6bd40494c735add94090089fc1560f3a () Term)
+(declare-fun FStar.TSet.mem@tok () Term)
+
+; </end encoding val FStar.TSet.mem>
+
+
+; <Start encoding val FStar.TSet.empty>
+
+(declare-fun FStar.TSet.empty (Term) Term)
+(declare-fun Tm_arrow_7479bde908a771f633d91cf1e6159164 () Term)
+(declare-fun FStar.TSet.empty@tok () Term)
+
+; </end encoding val FStar.TSet.empty>
+
+
+; <Start encoding val FStar.TSet.singleton>
+
+(declare-fun FStar.TSet.singleton (Term Term) Term)
+(declare-fun Tm_arrow_efd4130c737a1c63982cd396443713d5 () Term)
+(declare-fun FStar.TSet.singleton@tok () Term)
+
+; </end encoding val FStar.TSet.singleton>
+
+
+; <Start encoding val FStar.TSet.union>
+
+(declare-fun FStar.TSet.union (Term Term Term) Term)
+(declare-fun Tm_arrow_3de58fd829d33d9d3ee6c709e8528481 () Term)
+(declare-fun FStar.TSet.union@tok () Term)
+
+; </end encoding val FStar.TSet.union>
+
+
+; <Start encoding val FStar.TSet.intersect>
+
+(declare-fun FStar.TSet.intersect (Term Term Term) Term)
+
+(declare-fun FStar.TSet.intersect@tok () Term)
+
+; </end encoding val FStar.TSet.intersect>
+
+
+; <Start encoding val FStar.TSet.complement>
+
+(declare-fun FStar.TSet.complement (Term Term) Term)
+(declare-fun Tm_arrow_0bfcc001675666a8c38e138bf5ac4ee8 () Term)
+(declare-fun FStar.TSet.complement@tok () Term)
+
+; </end encoding val FStar.TSet.complement>
+
+
+; <Start encoding val FStar.TSet.intension>
+
+
+(declare-fun FStar.TSet.intension (Term Term) Term)
+
+(declare-fun Tm_arrow_43deeb1307894e15ad1446f8a75a5811 () Term)
+(declare-fun FStar.TSet.intension@tok () Term)
+
+; </end encoding val FStar.TSet.intension>
+
+
+; <Start encoding let subset>
+
+(declare-fun FStar.TSet.subset (Term Term Term) Term)
+(declare-fun Tm_arrow_a884d17a435ad7c4eff639e843c2e915 () Term)
+(declare-fun FStar.TSet.subset@tok () Term)
+
+; </end encoding let subset>
+
+
+; <Start encoding val FStar.TSet.mem_empty>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.TSet.mem_empty (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.TSet.mem_empty@tok () Term)
+
+; </end encoding val FStar.TSet.mem_empty>
+
+
+; <Start encoding val FStar.TSet.mem_singleton>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.TSet.mem_singleton (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.TSet.mem_singleton@tok () Term)
+
+; </end encoding val FStar.TSet.mem_singleton>
+
+
+; <Start encoding val FStar.TSet.mem_union>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.TSet.mem_union (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.TSet.mem_union@tok () Term)
+
+; </end encoding val FStar.TSet.mem_union>
+
+
+; <Start encoding val FStar.TSet.mem_intersect>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.TSet.mem_intersect (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.TSet.mem_intersect@tok () Term)
+
+; </end encoding val FStar.TSet.mem_intersect>
+
+
+; <Start encoding val FStar.TSet.mem_complement>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.TSet.mem_complement (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.TSet.mem_complement@tok () Term)
+
+; </end encoding val FStar.TSet.mem_complement>
+
+
+; <Start encoding val FStar.TSet.mem_subset>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.TSet.mem_subset (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.TSet.mem_subset@tok () Term)
+
+; </end encoding val FStar.TSet.mem_subset>
+
+
+; <Start encoding val FStar.TSet.subset_mem>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.TSet.subset_mem (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.TSet.subset_mem@tok () Term)
+
+; </end encoding val FStar.TSet.subset_mem>
+
+
+; <Start encoding val FStar.TSet.mem_intension>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.TSet.mem_intension (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.TSet.mem_intension@tok () Term)
+
+
+; </end encoding val FStar.TSet.mem_intension>
+
+
+; <Start encoding val FStar.TSet.lemma_equal_intro>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.TSet.lemma_equal_intro (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.TSet.lemma_equal_intro@tok () Term)
+
+; </end encoding val FStar.TSet.lemma_equal_intro>
+
+
+; <Start encoding val FStar.TSet.lemma_equal_elim>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.TSet.lemma_equal_elim (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.TSet.lemma_equal_elim@tok () Term)
+
+; </end encoding val FStar.TSet.lemma_equal_elim>
+
+
+; <Start encoding val FStar.TSet.lemma_equal_refl>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.TSet.lemma_equal_refl (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.TSet.lemma_equal_refl@tok () Term)
+
+; </end encoding val FStar.TSet.lemma_equal_refl>
+
+
+; <Start encoding val FStar.TSet.tset_of_set>
+
+(declare-fun FStar.TSet.tset_of_set (Term Term) Term)
+(declare-fun Tm_arrow_3cbed28ab0f3b752d3656db155a3e9f3 () Term)
+(declare-fun FStar.TSet.tset_of_set@tok () Term)
+
+; </end encoding val FStar.TSet.tset_of_set>
+
+
+; <Start encoding val FStar.TSet.lemma_mem_tset_of_set>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.TSet.lemma_mem_tset_of_set (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.TSet.lemma_mem_tset_of_set@tok () Term)
+
+; </end encoding val FStar.TSet.lemma_mem_tset_of_set>
+
+
+; <Start encoding val FStar.TSet.filter>
+
+
+(declare-fun FStar.TSet.filter (Term Term Term) Term)
+
+(declare-fun Tm_arrow_1a001071ad6106aec2470a87b194954c () Term)
+(declare-fun FStar.TSet.filter@tok () Term)
+
+; </end encoding val FStar.TSet.filter>
+
+
+; <Start encoding val FStar.TSet.lemma_mem_filter>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.TSet.lemma_mem_filter (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.TSet.lemma_mem_filter@tok () Term)
+
+
+; </end encoding val FStar.TSet.lemma_mem_filter>
+
+
+; <Start encoding val FStar.TSet.map>
+
+
+(declare-fun FStar.TSet.map (Term Term Term Term) Term)
+
+(declare-fun Tm_arrow_8af532fc458491b78200f8bcb1361e90 () Term)
+(declare-fun FStar.TSet.map@tok () Term)
+
+; </end encoding val FStar.TSet.map>
+
+
+; <Start encoding val FStar.TSet.lemma_mem_map>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.TSet.lemma_mem_map (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.TSet.lemma_mem_map@tok () Term)
+
+
+; </end encoding val FStar.TSet.lemma_mem_map>
+
+
+; <Skipped #reset-options/>
+
+
+; <Start encoding let rec as_set'>
+
+;;;;;;;;;;;;;;;;Fuel-instrumented function name
+(declare-fun FStar.TSet.as_set_.fuel_instrumented (Fuel Term Term) Term)
+;;;;;;;;;;;;;;;;Token for fuel-instrumented partial applications
+(declare-fun FStar.TSet.as_set_.fuel_instrumented_token () Term)
+(declare-fun FStar.TSet.as_set_ (Term Term) Term)
+(declare-fun FStar.TSet.as_set_@tok () Term)
+(declare-fun Tm_arrow_b205d25f357c7c6022ebceb6497753f3 () Term)
+
+; </end encoding let rec as_set'>
+
+
+; End Externals for interface FStar.TSet
+
+
+; Externals for interface FStar.Monotonic.Heap
+
+
+; <Start encoding let set>
+
+(declare-fun FStar.Monotonic.Heap.set (Term) Term)
+
+(declare-fun FStar.Monotonic.Heap.set@tok () Term)
+
+; </end encoding let set>
+
+
+; <Start encoding let tset>
+
+(declare-fun FStar.Monotonic.Heap.tset (Term) Term)
+
+(declare-fun FStar.Monotonic.Heap.tset@tok () Term)
+
+; </end encoding let tset>
+
+
+; <Start encoding val FStar.Monotonic.Heap.heap>
+
+(declare-fun FStar.Monotonic.Heap.heap () Term)
+
+; </end encoding val FStar.Monotonic.Heap.heap>
+
+
+; <Start encoding val FStar.Monotonic.Heap.equal>
+
+(declare-fun FStar.Monotonic.Heap.equal (Term Term) Term)
+(declare-fun Tm_arrow_22ea7bfd67f4919a6b048e3792f6aac6 () Term)
+(declare-fun FStar.Monotonic.Heap.equal@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.equal>
+
+
+; <Start encoding val FStar.Monotonic.Heap.equal_extensional>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.equal_extensional (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.equal_extensional@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.equal_extensional>
+
+
+; <Start encoding val FStar.Monotonic.Heap.emp>
+
+(declare-fun FStar.Monotonic.Heap.emp (Dummy_sort) Term)
+
+; </end encoding val FStar.Monotonic.Heap.emp>
+
+
+; <Start encoding val FStar.Monotonic.Heap.next_addr>
+
+(declare-fun FStar.Monotonic.Heap.next_addr (Term) Term)
+(declare-fun Tm_ghost_arrow_5f9b7d66eebaf7d00b1d1c8781e1bd33 () Term)
+(declare-fun FStar.Monotonic.Heap.next_addr@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.next_addr>
+
+
+; <Start encoding val FStar.Monotonic.Heap.core_mref>
+
+(declare-fun FStar.Monotonic.Heap.core_mref (Term) Term)
+
+(declare-fun FStar.Monotonic.Heap.core_mref@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.core_mref>
+
+
+; <Start encoding let mref>
+
+(declare-fun FStar.Monotonic.Heap.mref (Term Term) Term)
+(declare-fun Tm_arrow_5bf0606d629ecb30adc0c556c248cd8a () Term)
+(declare-fun FStar.Monotonic.Heap.mref@tok () Term)
+
+; </end encoding let mref>
+
+
+; <Start encoding val FStar.Monotonic.Heap.addr_of>
+
+(declare-fun FStar.Monotonic.Heap.addr_of (Term Term Term) Term)
+(declare-fun Tm_ghost_arrow_3e3805ca9fb6a056cde481ca6e6b2666 () Term)
+(declare-fun FStar.Monotonic.Heap.addr_of@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.addr_of>
+
+
+; <Start encoding val FStar.Monotonic.Heap.is_mm>
+
+(declare-fun FStar.Monotonic.Heap.is_mm (Term Term Term) Term)
+(declare-fun Tm_ghost_arrow_8181c56eb62b6f09010fd19362ec557f () Term)
+(declare-fun FStar.Monotonic.Heap.is_mm@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.is_mm>
+
+
+; <Start encoding let compare_addrs>
+
+(declare-fun FStar.Monotonic.Heap.compare_addrs (Term Term Term Term Term Term) Term)
+(declare-fun Tm_ghost_arrow_d9620af24825960ed2af7182687876b1 () Term)
+(declare-fun FStar.Monotonic.Heap.compare_addrs@tok () Term)
+
+; </end encoding let compare_addrs>
+
+
+; <Start encoding val FStar.Monotonic.Heap.contains>
+
+(declare-fun FStar.Monotonic.Heap.contains (Term Term Term Term) Term)
+(declare-fun Tm_arrow_78eae2771402d9ca8cd20442a69b19a1 () Term)
+(declare-fun FStar.Monotonic.Heap.contains@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.contains>
+
+
+; <Start encoding val FStar.Monotonic.Heap.addr_unused_in>
+
+(declare-fun FStar.Monotonic.Heap.addr_unused_in (Term Term) Term)
+(declare-fun Tm_arrow_5e652491869ddd6d9add00477fe250d4 () Term)
+(declare-fun FStar.Monotonic.Heap.addr_unused_in@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.addr_unused_in>
+
+
+; <Start encoding val FStar.Monotonic.Heap.not_addr_unused_in_nullptr>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.not_addr_unused_in_nullptr (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.not_addr_unused_in_nullptr@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.not_addr_unused_in_nullptr>
+
+
+; <Start encoding val FStar.Monotonic.Heap.unused_in>
+
+(declare-fun FStar.Monotonic.Heap.unused_in (Term Term Term Term) Term)
+(declare-fun Tm_arrow_63db68eb9811874d358b39a3a3a594c0 () Term)
+(declare-fun FStar.Monotonic.Heap.unused_in@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.unused_in>
+
+
+; <Start encoding let fresh>
+
+(declare-fun FStar.Monotonic.Heap.fresh (Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_516fb5369267798913835a1aff4b7fe3 () Term)
+(declare-fun FStar.Monotonic.Heap.fresh@tok () Term)
+
+; </end encoding let fresh>
+
+
+; <Start encoding let only_t>
+
+(declare-fun FStar.Monotonic.Heap.only_t (Term Term Term) Term)
+(declare-fun Tm_arrow_97d9b8894eec5cc757ee6368627567ce () Term)
+(declare-fun FStar.Monotonic.Heap.only_t@tok () Term)
+
+; </end encoding let only_t>
+
+
+; <Start encoding let only>
+
+(declare-fun FStar.Monotonic.Heap.only (Term Term Term) Term)
+(declare-fun Tm_ghost_arrow_fe5c1d63e245bf0ffcacbc885af17fc3 () Term)
+(declare-fun FStar.Monotonic.Heap.only@tok () Term)
+
+; </end encoding let only>
+
+
+; <Start encoding let op_Hat_Plus_Plus>
+
+(declare-fun FStar.Monotonic.Heap.op_Hat_Plus_Plus (Term Term Term Term) Term)
+(declare-fun Tm_ghost_arrow_21e6803beb51b9a6b0e4cc69a41b426b () Term)
+(declare-fun FStar.Monotonic.Heap.op_Hat_Plus_Plus@tok () Term)
+
+; </end encoding let op_Hat_Plus_Plus>
+
+
+; <Start encoding let op_Plus_Plus_Hat>
+
+(declare-fun FStar.Monotonic.Heap.op_Plus_Plus_Hat (Term Term Term Term) Term)
+(declare-fun Tm_ghost_arrow_155b4e9b4b7e1cd02500a5483fe79417 () Term)
+(declare-fun FStar.Monotonic.Heap.op_Plus_Plus_Hat@tok () Term)
+
+; </end encoding let op_Plus_Plus_Hat>
+
+
+; <Start encoding let op_Hat_Plus_Hat>
+
+(declare-fun FStar.Monotonic.Heap.op_Hat_Plus_Hat (Term Term Term Term Term Term) Term)
+(declare-fun Tm_ghost_arrow_a3f887bc1beedc82ccf25ac24af9a106 () Term)
+(declare-fun FStar.Monotonic.Heap.op_Hat_Plus_Hat@tok () Term)
+
+; </end encoding let op_Hat_Plus_Hat>
+
+
+; <Start encoding val FStar.Monotonic.Heap.sel_tot>
+
+(declare-fun Tm_refine_60a89cd0c268e7ce38a2aab467325fd8 (Term Term Term) Term)
+(declare-fun FStar.Monotonic.Heap.sel_tot (Term Term Term Term) Term)
+
+(declare-fun Tm_arrow_b9c7abd21015083a18544d8f5e4bfa5f () Term)
+(declare-fun FStar.Monotonic.Heap.sel_tot@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.sel_tot>
+
+
+; <Start encoding val FStar.Monotonic.Heap.sel>
+
+(declare-fun FStar.Monotonic.Heap.sel (Term Term Term Term) Term)
+(declare-fun Tm_ghost_arrow_ffe8429ce0118fe92246c624b0f48cb8 () Term)
+(declare-fun FStar.Monotonic.Heap.sel@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.sel>
+
+
+; <Start encoding val FStar.Monotonic.Heap.upd_tot>
+
+
+(declare-fun FStar.Monotonic.Heap.upd_tot (Term Term Term Term Term) Term)
+
+(declare-fun Tm_arrow_bc62c38ea3e82ecfe3b8b2ec42ad37db () Term)
+(declare-fun FStar.Monotonic.Heap.upd_tot@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.upd_tot>
+
+
+; <Start encoding val FStar.Monotonic.Heap.upd>
+
+(declare-fun FStar.Monotonic.Heap.upd (Term Term Term Term Term) Term)
+(declare-fun Tm_ghost_arrow_34a9169877528f6cc19628f2fc55c538 () Term)
+(declare-fun FStar.Monotonic.Heap.upd@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.upd>
+
+
+; <Start encoding val FStar.Monotonic.Heap.alloc>
+
+(declare-fun FStar.Monotonic.Heap.alloc (Term Term Term Term Term) Term)
+(declare-fun Tm_arrow_1c0aac8fe904b4d396ec54b136d2ffe7 () Term)
+(declare-fun FStar.Monotonic.Heap.alloc@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.alloc>
+
+
+; <Start encoding val FStar.Monotonic.Heap.free_mm>
+
+(declare-fun Tm_refine_5015146880b2d88cf7d4492a6a4488b3 (Term Term Term) Term)
+(declare-fun FStar.Monotonic.Heap.free_mm (Term Term Term Term) Term)
+
+(declare-fun Tm_arrow_6ecb62093891266f94b1f3f1a90a448e () Term)
+(declare-fun FStar.Monotonic.Heap.free_mm@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.free_mm>
+
+
+; <Start encoding let modifies_t>
+
+(declare-fun FStar.Monotonic.Heap.modifies_t (Term Term Term) Term)
+(declare-fun Tm_arrow_a4fe7207a94d4c1647746618fee3b728 () Term)
+(declare-fun FStar.Monotonic.Heap.modifies_t@tok () Term)
+
+; </end encoding let modifies_t>
+
+
+; <Start encoding let modifies>
+
+(declare-fun FStar.Monotonic.Heap.modifies (Term Term Term) Term)
+(declare-fun Tm_arrow_46ebd76bd348c127a0b9b24dfad446fc () Term)
+(declare-fun FStar.Monotonic.Heap.modifies@tok () Term)
+
+; </end encoding let modifies>
+
+
+; <Start encoding let equal_dom>
+
+(declare-fun FStar.Monotonic.Heap.equal_dom (Term Term) Term)
+
+(declare-fun FStar.Monotonic.Heap.equal_dom@tok () Term)
+
+; </end encoding let equal_dom>
+
+
+; <Start encoding val FStar.Monotonic.Heap.lemma_ref_unused_iff_addr_unused>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_ref_unused_iff_addr_unused (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_ref_unused_iff_addr_unused@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.lemma_ref_unused_iff_addr_unused>
+
+
+; <Start encoding val FStar.Monotonic.Heap.lemma_contains_implies_used>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_contains_implies_used (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_contains_implies_used@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.lemma_contains_implies_used>
+
+
+; <Start encoding val FStar.Monotonic.Heap.lemma_distinct_addrs_distinct_types>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_distinct_addrs_distinct_types (Term Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_distinct_addrs_distinct_types@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.lemma_distinct_addrs_distinct_types>
+
+
+; <Start encoding val FStar.Monotonic.Heap.lemma_distinct_addrs_distinct_preorders>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_distinct_addrs_distinct_preorders (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_distinct_addrs_distinct_preorders@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.lemma_distinct_addrs_distinct_preorders>
+
+
+; <Start encoding val FStar.Monotonic.Heap.lemma_distinct_addrs_distinct_mm>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_distinct_addrs_distinct_mm (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_distinct_addrs_distinct_mm@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.lemma_distinct_addrs_distinct_mm>
+
+
+; <Start encoding val FStar.Monotonic.Heap.lemma_distinct_addrs_unused>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_distinct_addrs_unused (Term Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_distinct_addrs_unused@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.lemma_distinct_addrs_unused>
+
+
+; <Start encoding val FStar.Monotonic.Heap.lemma_alloc>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_alloc (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_alloc@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.lemma_alloc>
+
+
+; <Start encoding val FStar.Monotonic.Heap.lemma_free_mm_sel>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_free_mm_sel (Term Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_free_mm_sel@tok () Term)
+
+
+; </end encoding val FStar.Monotonic.Heap.lemma_free_mm_sel>
+
+
+; <Start encoding val FStar.Monotonic.Heap.lemma_free_mm_contains>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_free_mm_contains (Term Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_free_mm_contains@tok () Term)
+
+
+; </end encoding val FStar.Monotonic.Heap.lemma_free_mm_contains>
+
+
+; <Start encoding val FStar.Monotonic.Heap.lemma_free_mm_unused>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_free_mm_unused (Term Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_free_mm_unused@tok () Term)
+
+
+; </end encoding val FStar.Monotonic.Heap.lemma_free_mm_unused>
+
+
+; <Start encoding val FStar.Monotonic.Heap.lemma_free_addr_unused_in>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_free_addr_unused_in (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_free_addr_unused_in@tok () Term)
+
+(declare-fun Tm_refine_b197fcc3fe1a6a8a07bfa2aebd77a80a () Term)
+
+; </end encoding val FStar.Monotonic.Heap.lemma_free_addr_unused_in>
+
+
+; <Start encoding val FStar.Monotonic.Heap.lemma_sel_same_addr>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_sel_same_addr (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_sel_same_addr@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.lemma_sel_same_addr>
+
+
+; <Start encoding val FStar.Monotonic.Heap.lemma_sel_upd1>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_sel_upd1 (Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_sel_upd1@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.lemma_sel_upd1>
+
+
+; <Start encoding val FStar.Monotonic.Heap.lemma_sel_upd2>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_sel_upd2 (Term Term Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_sel_upd2@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.lemma_sel_upd2>
+
+
+; <Start encoding val FStar.Monotonic.Heap.lemma_mref_injectivity>
+
+(declare-fun FStar.Monotonic.Heap.lemma_mref_injectivity () Term)
+(declare-fun Tm_refine_e1adf49e5e772ddffa19181e1a812a81 () Term)
+
+
+; </end encoding val FStar.Monotonic.Heap.lemma_mref_injectivity>
+
+
+; <Start encoding val FStar.Monotonic.Heap.lemma_in_dom_emp>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_in_dom_emp (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_in_dom_emp@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.lemma_in_dom_emp>
+
+
+; <Start encoding val FStar.Monotonic.Heap.lemma_upd_contains>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_upd_contains (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_upd_contains@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.lemma_upd_contains>
+
+
+; <Start encoding val FStar.Monotonic.Heap.lemma_well_typed_upd_contains>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_well_typed_upd_contains (Term Term Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_well_typed_upd_contains@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.lemma_well_typed_upd_contains>
+
+
+; <Start encoding val FStar.Monotonic.Heap.lemma_unused_upd_contains>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_unused_upd_contains (Term Term Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_unused_upd_contains@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.lemma_unused_upd_contains>
+
+
+; <Start encoding val FStar.Monotonic.Heap.lemma_upd_contains_different_addr>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_upd_contains_different_addr (Term Term Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_upd_contains_different_addr@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.lemma_upd_contains_different_addr>
+
+
+; <Start encoding val FStar.Monotonic.Heap.lemma_upd_unused>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_upd_unused (Term Term Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_upd_unused@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.lemma_upd_unused>
+
+
+; <Start encoding val FStar.Monotonic.Heap.lemma_contains_upd_modifies>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_contains_upd_modifies (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_contains_upd_modifies@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.lemma_contains_upd_modifies>
+
+
+; <Start encoding val FStar.Monotonic.Heap.lemma_unused_upd_modifies>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_unused_upd_modifies (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_unused_upd_modifies@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.lemma_unused_upd_modifies>
+
+
+; <Start encoding val FStar.Monotonic.Heap.lemma_sel_equals_sel_tot_for_contained_refs>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_sel_equals_sel_tot_for_contained_refs (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_sel_equals_sel_tot_for_contained_refs@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.lemma_sel_equals_sel_tot_for_contained_refs>
+
+
+; <Start encoding val FStar.Monotonic.Heap.lemma_upd_equals_upd_tot_for_contained_refs>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_upd_equals_upd_tot_for_contained_refs (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_upd_equals_upd_tot_for_contained_refs@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.lemma_upd_equals_upd_tot_for_contained_refs>
+
+
+; <Start encoding val FStar.Monotonic.Heap.lemma_modifies_and_equal_dom_sel_diff_addr>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_modifies_and_equal_dom_sel_diff_addr (Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_modifies_and_equal_dom_sel_diff_addr@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.lemma_modifies_and_equal_dom_sel_diff_addr>
+
+
+; <Start encoding val FStar.Monotonic.Heap.lemma_heap_equality_upd_same_addr>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_heap_equality_upd_same_addr (Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_heap_equality_upd_same_addr@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.lemma_heap_equality_upd_same_addr>
+
+
+; <Start encoding val FStar.Monotonic.Heap.lemma_heap_equality_cancel_same_mref_upd>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_heap_equality_cancel_same_mref_upd (Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_heap_equality_cancel_same_mref_upd@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.lemma_heap_equality_cancel_same_mref_upd>
+
+
+; <Start encoding val FStar.Monotonic.Heap.lemma_heap_equality_upd_with_sel>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_heap_equality_upd_with_sel (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_heap_equality_upd_with_sel@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.lemma_heap_equality_upd_with_sel>
+
+
+; <Start encoding val FStar.Monotonic.Heap.lemma_heap_equality_commute_distinct_upds>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_heap_equality_commute_distinct_upds (Term Term Term Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_heap_equality_commute_distinct_upds@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.lemma_heap_equality_commute_distinct_upds>
+
+
+; <Start encoding val FStar.Monotonic.Heap.lemma_next_addr_upd_tot>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_next_addr_upd_tot (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_next_addr_upd_tot@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.lemma_next_addr_upd_tot>
+
+
+; <Start encoding val FStar.Monotonic.Heap.lemma_next_addr_upd>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_next_addr_upd (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_next_addr_upd@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.lemma_next_addr_upd>
+
+
+; <Start encoding val FStar.Monotonic.Heap.lemma_next_addr_alloc>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_next_addr_alloc (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_next_addr_alloc@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.lemma_next_addr_alloc>
+
+
+; <Start encoding val FStar.Monotonic.Heap.lemma_next_addr_free_mm>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_next_addr_free_mm (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_next_addr_free_mm@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.lemma_next_addr_free_mm>
+
+
+; <Start encoding val FStar.Monotonic.Heap.lemma_next_addr_contained_refs_addr>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_next_addr_contained_refs_addr (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.lemma_next_addr_contained_refs_addr@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.lemma_next_addr_contained_refs_addr>
+
+
+; <Start encoding val FStar.Monotonic.Heap.aref>
+
+(declare-fun FStar.Monotonic.Heap.aref () Term)
+
+; </end encoding val FStar.Monotonic.Heap.aref>
+
+
+; <Start encoding val FStar.Monotonic.Heap.dummy_aref>
+
+(declare-fun FStar.Monotonic.Heap.dummy_aref (Dummy_sort) Term)
+
+; </end encoding val FStar.Monotonic.Heap.dummy_aref>
+
+
+; <Start encoding val FStar.Monotonic.Heap.aref_equal>
+
+(declare-fun FStar.Monotonic.Heap.aref_equal (Term Term) Term)
+(declare-fun Tm_refine_82707a6e3d48caa257bb4bddb01d7d73 (Term Term) Term)
+(declare-fun Tm_ghost_arrow_15fb16496d887138d488803245c89d64 () Term)
+(declare-fun FStar.Monotonic.Heap.aref_equal@tok () Term)
+
+
+; </end encoding val FStar.Monotonic.Heap.aref_equal>
+
+
+; <Start encoding val FStar.Monotonic.Heap.aref_of>
+
+(declare-fun FStar.Monotonic.Heap.aref_of (Term Term Term) Term)
+(declare-fun Tm_arrow_52adf65c8447500d70e5098f6c041a65 () Term)
+(declare-fun FStar.Monotonic.Heap.aref_of@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.aref_of>
+
+
+; <Start encoding val FStar.Monotonic.Heap.addr_of_aref>
+
+(declare-fun FStar.Monotonic.Heap.addr_of_aref (Term) Term)
+(declare-fun Tm_refine_afd51579b90d50ea23e03b743a1fa001 () Term)
+(declare-fun Tm_ghost_arrow_168094509145e28b296ce766eea04736 () Term)
+(declare-fun FStar.Monotonic.Heap.addr_of_aref@tok () Term)
+
+
+; </end encoding val FStar.Monotonic.Heap.addr_of_aref>
+
+
+; <Start encoding val FStar.Monotonic.Heap.addr_of_aref_of>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.addr_of_aref_of (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.addr_of_aref_of@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.addr_of_aref_of>
+
+
+; <Start encoding val FStar.Monotonic.Heap.aref_is_mm>
+
+(declare-fun FStar.Monotonic.Heap.aref_is_mm (Term) Term)
+(declare-fun Tm_ghost_arrow_86fca776032c40cedacef7de5d660572 () Term)
+(declare-fun FStar.Monotonic.Heap.aref_is_mm@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.aref_is_mm>
+
+
+; <Start encoding val FStar.Monotonic.Heap.is_mm_aref_of>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.is_mm_aref_of (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.is_mm_aref_of@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.is_mm_aref_of>
+
+
+; <Start encoding val FStar.Monotonic.Heap.aref_unused_in>
+
+(declare-fun FStar.Monotonic.Heap.aref_unused_in (Term Term) Term)
+(declare-fun Tm_arrow_8227ceb756b15f6c9348698ae3bb9b5e () Term)
+(declare-fun FStar.Monotonic.Heap.aref_unused_in@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.aref_unused_in>
+
+
+; <Start encoding val FStar.Monotonic.Heap.unused_in_aref_of>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.unused_in_aref_of (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.unused_in_aref_of@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.unused_in_aref_of>
+
+
+; <Start encoding val FStar.Monotonic.Heap.contains_aref_unused_in>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.contains_aref_unused_in (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.contains_aref_unused_in@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.contains_aref_unused_in>
+
+
+; <Start encoding val FStar.Monotonic.Heap.aref_live_at>
+
+(declare-fun FStar.Monotonic.Heap.aref_live_at (Term Term Term Term) Term)
+(declare-fun Tm_arrow_9c4830390b5ceaaec5e76b4f367d6c11 () Term)
+(declare-fun FStar.Monotonic.Heap.aref_live_at@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.aref_live_at>
+
+
+; <Start encoding val FStar.Monotonic.Heap.gref_of>
+
+(declare-fun FStar.Monotonic.Heap.gref_of (Term Term Term) Term)
+(declare-fun Tm_refine_f871b1cec1676516ecbdd8b1fdf16da7 (Term Term) Term)
+(declare-fun Tm_ghost_arrow_b090c641b42392b5ed08e8774610283a () Term)
+(declare-fun FStar.Monotonic.Heap.gref_of@tok () Term)
+
+
+; </end encoding val FStar.Monotonic.Heap.gref_of>
+
+
+; <Start encoding val FStar.Monotonic.Heap.ref_of>
+
+(declare-fun FStar.Monotonic.Heap.ref_of (Term Term Term Term) Term)
+(declare-fun Tm_refine_e9f69f18eb8d91697e49057991573e9f (Term Term Term Term) Term)
+(declare-fun Tm_arrow_593ebdf0a0f4ac12ef03a2bedce8e97b () Term)
+(declare-fun FStar.Monotonic.Heap.ref_of@tok () Term)
+
+
+; </end encoding val FStar.Monotonic.Heap.ref_of>
+
+
+; <Start encoding val FStar.Monotonic.Heap.aref_live_at_aref_of>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.aref_live_at_aref_of (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.aref_live_at_aref_of@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.aref_live_at_aref_of>
+
+
+; <Start encoding val FStar.Monotonic.Heap.contains_gref_of>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.contains_gref_of (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.contains_gref_of@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.contains_gref_of>
+
+
+; <Start encoding val FStar.Monotonic.Heap.aref_of_gref_of>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.aref_of_gref_of (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.aref_of_gref_of@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.aref_of_gref_of>
+
+
+; <Start encoding val FStar.Monotonic.Heap.addr_of_gref_of>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.addr_of_gref_of (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.addr_of_gref_of@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.addr_of_gref_of>
+
+
+; <Start encoding val FStar.Monotonic.Heap.is_mm_gref_of>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.is_mm_gref_of (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.is_mm_gref_of@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.is_mm_gref_of>
+
+
+; <Start encoding val FStar.Monotonic.Heap.unused_in_gref_of>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.unused_in_gref_of (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.unused_in_gref_of@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.unused_in_gref_of>
+
+
+; <Start encoding val FStar.Monotonic.Heap.sel_ref_of>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.sel_ref_of (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.sel_ref_of@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.sel_ref_of>
+
+
+; <Start encoding val FStar.Monotonic.Heap.upd_ref_of>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.Monotonic.Heap.upd_ref_of (Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.Monotonic.Heap.upd_ref_of@tok () Term)
+
+; </end encoding val FStar.Monotonic.Heap.upd_ref_of>
+
+
+; End Externals for interface FStar.Monotonic.Heap
+
+
+; Externals for module FStar.Heap
+
+
+; <Start encoding let trivial_rel>
+
+(declare-fun FStar.Heap.trivial_rel (Term) Term)
+(declare-fun Tm_arrow_5e933b4711265943ba4bba734363561b () Term)
+(declare-fun FStar.Heap.trivial_rel@tok () Term)
+
+(declare-fun Tm_abs_568747eb5009c1dec504311dee989dc2 (Term) Term)
+
+; </end encoding let trivial_rel>
+
+
+; <Start encoding let trivial_preorder>
+
+(declare-fun FStar.Heap.trivial_preorder (Term) Term)
+(declare-fun Tm_arrow_1a6db055683d4a5b8a00786676e339b5 () Term)
+(declare-fun FStar.Heap.trivial_preorder@tok () Term)
+
+; </end encoding let trivial_preorder>
+
+
+; <Start encoding let ref>
+
+(declare-fun FStar.Heap.ref (Term) Term)
+
+(declare-fun FStar.Heap.ref@tok () Term)
+
+; </end encoding let ref>
+
+
+; End Externals for module FStar.Heap
+
+
+; Externals for module FStar.ST
+
+
+; <Skipped new_effect { GST ... }/>
+
+
+; <Start encoding let gst_pre>
+
+(declare-fun FStar.ST.gst_pre () Term)
+
+; </end encoding let gst_pre>
+
+
+; <Start encoding let gst_post'>
+
+(declare-fun FStar.ST.gst_post_ (Term Term) Term)
+
+(declare-fun FStar.ST.gst_post_@tok () Term)
+
+; </end encoding let gst_post'>
+
+
+; <Start encoding let gst_post>
+
+(declare-fun FStar.ST.gst_post (Term) Term)
+
+(declare-fun FStar.ST.gst_post@tok () Term)
+
+; </end encoding let gst_post>
+
+
+; <Start encoding let gst_wp>
+
+(declare-fun FStar.ST.gst_wp (Term) Term)
+
+(declare-fun FStar.ST.gst_wp@tok () Term)
+
+; </end encoding let gst_wp>
+
+
+; <Start encoding let lift_div_gst>
+
+(declare-fun FStar.ST.lift_div_gst (Term Term Term Term) Term)
+(declare-fun Tm_arrow_bbaeef6680f54609c0f7c85c1ba1bd3c () Term)
+(declare-fun FStar.ST.lift_div_gst@tok () Term)
+
+
+
+; </end encoding let lift_div_gst>
+
+
+; <Skipped sub_effect DIV ~> GST/>
+
+
+; <Start encoding let heap_rel>
+
+(declare-fun FStar.ST.heap_rel (Term Term) Term)
+(declare-fun Tm_arrow_3ffd8da3a1b4fb5a75e097e2a7ead7a9 () Term)
+(declare-fun FStar.ST.heap_rel@tok () Term)
+
+; </end encoding let heap_rel>
+
+
+; <Start encoding val FStar.ST.gst_get>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.ST.gst_get (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.ST.gst_get@tok () Term)
+
+; </end encoding val FStar.ST.gst_get>
+
+
+; <Start encoding val FStar.ST.gst_put>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.ST.gst_put (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.ST.gst_put@tok () Term)
+
+; </end encoding val FStar.ST.gst_put>
+
+
+; <Start encoding let heap_predicate>
+
+(declare-fun FStar.ST.heap_predicate () Term)
+(declare-fun Tm_arrow_c4185f52507383203d0d6335fd0332a8 () Term)
+
+; </end encoding let heap_predicate>
+
+
+; <Start encoding let stable>
+
+(declare-fun FStar.ST.stable (Term) Term)
+(declare-fun Tm_arrow_6fabddab2e8badc7a54f2fce30469fd3 () Term)
+(declare-fun FStar.ST.stable@tok () Term)
+
+; </end encoding let stable>
+
+
+; <Start encoding let witnessed>
+
+(declare-fun Tm_refine_a11098d99239284f14b49e1dd0266896 () Term)
+(declare-fun FStar.ST.witnessed (Term) Term)
+
+(declare-fun Tm_arrow_eda1223bb1d06bd92699e8c3d8f9251d () Term)
+(declare-fun FStar.ST.witnessed@tok () Term)
+
+; </end encoding let witnessed>
+
+
+; <Start encoding val FStar.ST.gst_witness>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.ST.gst_witness (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.ST.gst_witness@tok () Term)
+
+; </end encoding val FStar.ST.gst_witness>
+
+
+; <Start encoding val FStar.ST.gst_recall>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.ST.gst_recall (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.ST.gst_recall@tok () Term)
+
+; </end encoding val FStar.ST.gst_recall>
+
+
+; <Skipped val FStar.ST.lemma_functoriality/>
+
+
+; <Start encoding let lemma_functoriality>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.ST.lemma_functoriality (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.ST.lemma_functoriality@tok () Term)
+
+; </end encoding let lemma_functoriality>
+
+
+; <Start encoding let st_pre>
+
+(declare-fun FStar.ST.st_pre () Term)
+
+; </end encoding let st_pre>
+
+
+; <Start encoding let st_post'>
+
+(declare-fun FStar.ST.st_post_ (Term Term) Term)
+
+(declare-fun FStar.ST.st_post_@tok () Term)
+
+; </end encoding let st_post'>
+
+
+; <Start encoding let st_post>
+
+(declare-fun FStar.ST.st_post (Term) Term)
+
+(declare-fun FStar.ST.st_post@tok () Term)
+
+; </end encoding let st_post>
+
+
+; <Start encoding let st_wp>
+
+(declare-fun FStar.ST.st_wp (Term) Term)
+
+(declare-fun FStar.ST.st_wp@tok () Term)
+
+; </end encoding let st_wp>
+
+
+; <Skipped new_effect { STATE ... }/>
+
+
+; <Start encoding let lift_gst_state>
+
+(declare-fun FStar.ST.lift_gst_state (Term Term) Term)
+(declare-fun Tm_arrow_9f8aa176b7421939c7ff58d9777d1285 () Term)
+(declare-fun FStar.ST.lift_gst_state@tok () Term)
+
+; </end encoding let lift_gst_state>
+
+
+; <Skipped sub_effect GST ~> STATE/>
+
+
+; <Skipped effect State a wp = FStar.ST.STATE a/>
+
+
+; <Skipped effect ST a pre post = FStar.ST.STATE a/>
+
+
+; <Skipped effect St a = FStar.ST.ST a/>
+
+
+; <Start encoding let contains_pred>
+
+(declare-fun FStar.ST.contains_pred (Term Term Term Term) Term)
+
+(declare-fun FStar.ST.contains_pred@tok () Term)
+
+; </end encoding let contains_pred>
+
+
+; <Start encoding let mref>
+
+(declare-fun FStar.ST.mref (Term Term) Term)
+
+(declare-fun FStar.ST.mref@tok () Term)
+(declare-fun Tm_refine_e33ef751d600ad1c7f71142479103c47 (Term Term) Term)
+
+; </end encoding let mref>
+
+
+; <Start encoding let recall>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.ST.recall (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.ST.recall@tok () Term)
+
+; </end encoding let recall>
+
+
+; <Start encoding let alloc>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.ST.alloc (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.ST.alloc@tok () Term)
+
+; </end encoding let alloc>
+
+
+; <Start encoding let read>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.ST.read (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.ST.read@tok () Term)
+
+; </end encoding let read>
+
+
+; <Start encoding let write>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.ST.write (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.ST.write@tok () Term)
+
+; </end encoding let write>
+
+
+; <Start encoding let get>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.ST.get (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.ST.get@tok () Term)
+
+; </end encoding let get>
+
+
+; <Start encoding let op_Bang>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.ST.op_Bang (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.ST.op_Bang@tok () Term)
+
+; </end encoding let op_Bang>
+
+
+; <Start encoding let op_Colon_Equals>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.ST.op_Colon_Equals (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.ST.op_Colon_Equals@tok () Term)
+
+; </end encoding let op_Colon_Equals>
+
+
+; <Start encoding let ref>
+
+(declare-fun FStar.ST.ref (Term) Term)
+
+(declare-fun FStar.ST.ref@tok () Term)
+
+; </end encoding let ref>
+
+
+; <Start encoding let modifies_none>
+
+(declare-fun FStar.ST.modifies_none (Term Term) Term)
+
+(declare-fun FStar.ST.modifies_none@tok () Term)
+
+; </end encoding let modifies_none>
+
+
+; End Externals for module FStar.ST
+
+
+; Externals for interface FStar.All
+
+
+; <Start encoding let all_pre>
+
+(declare-fun FStar.All.all_pre () Term)
+
+; </end encoding let all_pre>
+
+
+; <Start encoding let all_post'>
+
+(declare-fun FStar.All.all_post_ (Term Term) Term)
+
+(declare-fun FStar.All.all_post_@tok () Term)
+
+; </end encoding let all_post'>
+
+
+; <Start encoding let all_post>
+
+(declare-fun FStar.All.all_post (Term) Term)
+
+(declare-fun FStar.All.all_post@tok () Term)
+
+; </end encoding let all_post>
+
+
+; <Start encoding let all_wp>
+
+(declare-fun FStar.All.all_wp (Term) Term)
+
+(declare-fun FStar.All.all_wp@tok () Term)
+
+; </end encoding let all_wp>
+
+
+; <Skipped new_effect { ALL ... }/>
+
+
+; <Start encoding let lift_state_all>
+
+(declare-fun FStar.All.lift_state_all (Term Term Term) Term)
+(declare-fun Tm_arrow_3e4fec12f1c8981f71096a48e2abdc84 () Term)
+(declare-fun FStar.All.lift_state_all@tok () Term)
+(declare-fun Tm_refine_298bc3bb6d69e8b09e25f0f52730a1aa () Term)
+(declare-fun Tm_arrow_0fb416478174b228abde05d827bd6313 () Term)
+(declare-fun Tm_arrow_23b08cf81278f3c1bdae402318f6ccd9 (Term) Term)
+(declare-fun Tm_abs_bdb21fd2b7ca1058c18a3e7e90881ef2 (Term Term) Term)
+
+; </end encoding let lift_state_all>
+
+
+; <Skipped sub_effect STATE ~> ALL/>
+
+
+; <Start encoding let lift_exn_all>
+
+(declare-fun FStar.All.lift_exn_all (Term Term Term Term) Term)
+(declare-fun Tm_arrow_135df870f17e8c60e7945fbf1f54fc29 () Term)
+(declare-fun FStar.All.lift_exn_all@tok () Term)
+
+(declare-fun Tm_abs_a9ba63c9dfe5bf6c6b349a4bcc1b5528 (Term Term Term) Term)
+
+; </end encoding let lift_exn_all>
+
+
+; <Skipped sub_effect EXN ~> ALL/>
+
+
+; <Skipped effect All a pre post = FStar.All.ALL a/>
+
+
+; <Skipped effect ML a = FStar.All.ALL a/>
+
+
+; <Start encoding val FStar.All.exit>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.All.exit (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.All.exit@tok () Term)
+
+; </end encoding val FStar.All.exit>
+
+
+; <Start encoding val FStar.All.try_with>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.All.try_with (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.All.try_with@tok () Term)
+
+; </end encoding val FStar.All.try_with>
+
+
+; <Start encoding datacon FStar.All.Failure for type Prims.exn>
+
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun FStar.All.Failure (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun FStar.All.Failure_uu___ (Term) Term)
+;;;;;;;;;;;;;;;;Constructor base
+(declare-fun FStar.All.Failure@base (Term) Term)
+;;;;;;;;;;;;;;;;data constructor proxy: FStar.All.Failure
+(declare-fun FStar.All.Failure@tok () Term)
+(declare-fun Tm_arrow_ba2c44545f37b4cb1ed7c94934918f65 () Term)
+
+; <start constructor FStar.All.Failure>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-FStar.All.Failure ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+119)
+(= __@x0
+(FStar.All.Failure (FStar.All.Failure_uu___ __@x0)))))
+
+; </end constructor FStar.All.Failure>
+
+
+; </end encoding datacon FStar.All.Failure for type Prims.exn>
+
+
+; <Start encoding val FStar.All.uu___is_Failure>
+
+(declare-fun FStar.All.uu___is_Failure (Term) Term)
+(declare-fun Tm_arrow_81ab3356926b82578fcb92e97b412345 () Term)
+(declare-fun FStar.All.uu___is_Failure@tok () Term)
+
+; </end encoding val FStar.All.uu___is_Failure>
+
+
+; <Skipped let uu___is_Failure/>
+
+
+; <Start encoding val FStar.All.__proj__Failure__item__uu___>
+
+(declare-fun Tm_refine_149c6719f34c408becdf9120a4ae2d59 () Term)
+(declare-fun FStar.All.__proj__Failure__item__uu___ (Term) Term)
+
+(declare-fun Tm_arrow_931774599ca5f3ca7bd6eb18157a7dec () Term)
+(declare-fun FStar.All.__proj__Failure__item__uu___@tok () Term)
+
+; </end encoding val FStar.All.__proj__Failure__item__uu___>
+
+
+; <Skipped let __proj__Failure__item__uu___/>
+
+
+; <Start encoding val FStar.All.failwith>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.All.failwith (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.All.failwith@tok () Term)
+
+; </end encoding val FStar.All.failwith>
+
+
+; End Externals for interface FStar.All
+
+
+; Externals for interface FStar.IO
+
+
+; <Start encoding datacon FStar.IO.EOF for type Prims.exn>
+
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun FStar.IO.EOF () Term)
+;;;;;;;;;;;;;;;;Constructor base
+(declare-fun FStar.IO.EOF@base () Term)
+;;;;;;;;;;;;;;;;data constructor proxy: FStar.IO.EOF
+(declare-fun FStar.IO.EOF@tok () Term)
+
+; <start constructor FStar.IO.EOF>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-FStar.IO.EOF ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+102)
+(= __@x0
+FStar.IO.EOF)))
+
+; </end constructor FStar.IO.EOF>
+
+
+; </end encoding datacon FStar.IO.EOF for type Prims.exn>
+
+
+; <Start encoding val FStar.IO.uu___is_EOF>
+
+(declare-fun FStar.IO.uu___is_EOF (Term) Term)
+
+(declare-fun FStar.IO.uu___is_EOF@tok () Term)
+
+; </end encoding val FStar.IO.uu___is_EOF>
+
+
+; <Skipped let uu___is_EOF/>
+
+
+; <Start encoding val FStar.IO.fd_read>
+
+(declare-fun FStar.IO.fd_read () Term)
+
+; </end encoding val FStar.IO.fd_read>
+
+
+; <Start encoding val FStar.IO.fd_write>
+
+(declare-fun FStar.IO.fd_write () Term)
+
+; </end encoding val FStar.IO.fd_write>
+
+
+; <Start encoding val FStar.IO.stdin>
+
+(declare-fun FStar.IO.stdin (Dummy_sort) Term)
+
+; </end encoding val FStar.IO.stdin>
+
+
+; <Start encoding val FStar.IO.stdout>
+
+(declare-fun FStar.IO.stdout (Dummy_sort) Term)
+
+; </end encoding val FStar.IO.stdout>
+
+
+; <Start encoding val FStar.IO.stderr>
+
+(declare-fun FStar.IO.stderr (Dummy_sort) Term)
+
+; </end encoding val FStar.IO.stderr>
+
+
+; <Start encoding val FStar.IO.print_newline>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.IO.print_newline (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.IO.print_newline@tok () Term)
+
+; </end encoding val FStar.IO.print_newline>
+
+
+; <Start encoding val FStar.IO.print_string>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.IO.print_string (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.IO.print_string@tok () Term)
+
+; </end encoding val FStar.IO.print_string>
+
+
+; <Start encoding val FStar.IO.print_uint8>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.IO.print_uint8 (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.IO.print_uint8@tok () Term)
+
+; </end encoding val FStar.IO.print_uint8>
+
+
+; <Start encoding val FStar.IO.print_uint16>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.IO.print_uint16 (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.IO.print_uint16@tok () Term)
+
+; </end encoding val FStar.IO.print_uint16>
+
+
+; <Start encoding val FStar.IO.print_uint32>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.IO.print_uint32 (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.IO.print_uint32@tok () Term)
+
+; </end encoding val FStar.IO.print_uint32>
+
+
+; <Start encoding val FStar.IO.print_uint64>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.IO.print_uint64 (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.IO.print_uint64@tok () Term)
+
+; </end encoding val FStar.IO.print_uint64>
+
+
+; <Start encoding val FStar.IO.print_uint8_dec>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.IO.print_uint8_dec (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.IO.print_uint8_dec@tok () Term)
+
+; </end encoding val FStar.IO.print_uint8_dec>
+
+
+; <Start encoding val FStar.IO.print_uint16_dec>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.IO.print_uint16_dec (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.IO.print_uint16_dec@tok () Term)
+
+; </end encoding val FStar.IO.print_uint16_dec>
+
+
+; <Start encoding val FStar.IO.print_uint32_dec>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.IO.print_uint32_dec (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.IO.print_uint32_dec@tok () Term)
+
+; </end encoding val FStar.IO.print_uint32_dec>
+
+
+; <Start encoding val FStar.IO.print_uint64_dec>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.IO.print_uint64_dec (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.IO.print_uint64_dec@tok () Term)
+
+; </end encoding val FStar.IO.print_uint64_dec>
+
+
+; <Start encoding val FStar.IO.print_uint8_hex_pad>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.IO.print_uint8_hex_pad (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.IO.print_uint8_hex_pad@tok () Term)
+
+; </end encoding val FStar.IO.print_uint8_hex_pad>
+
+
+; <Start encoding val FStar.IO.print_uint16_hex_pad>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.IO.print_uint16_hex_pad (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.IO.print_uint16_hex_pad@tok () Term)
+
+; </end encoding val FStar.IO.print_uint16_hex_pad>
+
+
+; <Start encoding val FStar.IO.print_uint32_hex_pad>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.IO.print_uint32_hex_pad (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.IO.print_uint32_hex_pad@tok () Term)
+
+; </end encoding val FStar.IO.print_uint32_hex_pad>
+
+
+; <Start encoding val FStar.IO.print_uint64_hex_pad>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.IO.print_uint64_hex_pad (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.IO.print_uint64_hex_pad@tok () Term)
+
+; </end encoding val FStar.IO.print_uint64_hex_pad>
+
+
+; <Start encoding val FStar.IO.print_uint8_dec_pad>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.IO.print_uint8_dec_pad (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.IO.print_uint8_dec_pad@tok () Term)
+
+; </end encoding val FStar.IO.print_uint8_dec_pad>
+
+
+; <Start encoding val FStar.IO.print_uint16_dec_pad>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.IO.print_uint16_dec_pad (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.IO.print_uint16_dec_pad@tok () Term)
+
+; </end encoding val FStar.IO.print_uint16_dec_pad>
+
+
+; <Start encoding val FStar.IO.print_uint32_dec_pad>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.IO.print_uint32_dec_pad (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.IO.print_uint32_dec_pad@tok () Term)
+
+; </end encoding val FStar.IO.print_uint32_dec_pad>
+
+
+; <Start encoding val FStar.IO.print_uint64_dec_pad>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.IO.print_uint64_dec_pad (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.IO.print_uint64_dec_pad@tok () Term)
+
+; </end encoding val FStar.IO.print_uint64_dec_pad>
+
+
+; <Start encoding val FStar.IO.print_any>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.IO.print_any (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.IO.print_any@tok () Term)
+
+; </end encoding val FStar.IO.print_any>
+
+
+; <Start encoding val FStar.IO.input_line>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.IO.input_line (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.IO.input_line@tok () Term)
+
+; </end encoding val FStar.IO.input_line>
+
+
+; <Start encoding val FStar.IO.input_int>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.IO.input_int (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.IO.input_int@tok () Term)
+
+; </end encoding val FStar.IO.input_int>
+
+
+; <Start encoding val FStar.IO.input_float>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.IO.input_float (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.IO.input_float@tok () Term)
+
+; </end encoding val FStar.IO.input_float>
+
+
+; <Start encoding val FStar.IO.open_read_file>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.IO.open_read_file (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.IO.open_read_file@tok () Term)
+
+; </end encoding val FStar.IO.open_read_file>
+
+
+; <Start encoding val FStar.IO.open_write_file>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.IO.open_write_file (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.IO.open_write_file@tok () Term)
+
+; </end encoding val FStar.IO.open_write_file>
+
+
+; <Start encoding val FStar.IO.close_read_file>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.IO.close_read_file (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.IO.close_read_file@tok () Term)
+
+; </end encoding val FStar.IO.close_read_file>
+
+
+; <Start encoding val FStar.IO.close_write_file>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.IO.close_write_file (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.IO.close_write_file@tok () Term)
+
+; </end encoding val FStar.IO.close_write_file>
+
+
+; <Start encoding val FStar.IO.read_line>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.IO.read_line (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.IO.read_line@tok () Term)
+
+; </end encoding val FStar.IO.read_line>
+
+
+; <Start encoding val FStar.IO.write_string>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun FStar.IO.write_string (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun FStar.IO.write_string@tok () Term)
+
+; </end encoding val FStar.IO.write_string>
+
+
+; <Start encoding val FStar.IO.debug_print_string>
+
+(declare-fun FStar.IO.debug_print_string (Term) Term)
+(declare-fun Tm_arrow_7e92cc1c04700553193b6f7c7895fa62 () Term)
+(declare-fun FStar.IO.debug_print_string@tok () Term)
+
+; </end encoding val FStar.IO.debug_print_string>
+
+
+; End Externals for interface FStar.IO
+
+
+; Externals for module X64.Semantics_s
+
+
+; <Skipped #set-options "--warn_error -350"/>
+
+
+; <Start encoding let uint64>
+
+(declare-fun X64.Semantics_s.uint64 (Dummy_sort) Term)
+
+; </end encoding let uint64>
+
+
+; <Start encoding let map>
+
+(declare-fun X64.Semantics_s.map (Term Term) Term)
+
+(declare-fun X64.Semantics_s.map@tok () Term)
+
+; </end encoding let map>
+
+
+; <Start encoding let op_String_Access>
+
+(declare-fun X64.Semantics_s.op_String_Access (Term Term Term Term) Term)
+
+(declare-fun X64.Semantics_s.op_String_Access@tok () Term)
+
+; </end encoding let op_String_Access>
+
+
+; <Start encoding let op_String_Assignment>
+
+(declare-fun X64.Semantics_s.op_String_Assignment (Term Term) Term)
+;;;;;;;;;;;;;;;;_: FStar.Map.t _ _ -> _: _ -> _: _ -> FStar.Map.t _ _
+(declare-fun Tm_arrow_e76ad7ea1b49a51ebc304bcd6e344d98 (Term Term) Term)
+;;;;;;;;;;;;;;;;_: FStar.Map.t _ _ -> _: _ -> _: _ -> FStar.Map.t _ _
+(declare-fun Tm_arrow_ecbe25e460c8c11eb9fd7d4047b093d0 () Term)
+(declare-fun X64.Semantics_s.op_String_Assignment@tok () Term)
+
+
+; </end encoding let op_String_Assignment>
+
+
+; <Start encoding type X64.Semantics_s.ins>
+
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun X64.Semantics_s.ins () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun X64.Semantics_s.Mov64 (Term Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Semantics_s.Mov64_dst (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Semantics_s.Mov64_src (Term) Term)
+;;;;;;;;;;;;;;;;data constructor proxy: X64.Semantics_s.Mov64
+(declare-fun X64.Semantics_s.Mov64@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun X64.Semantics_s.Add64 (Term Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Semantics_s.Add64_dst (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Semantics_s.Add64_src (Term) Term)
+;;;;;;;;;;;;;;;;data constructor proxy: X64.Semantics_s.Add64
+(declare-fun X64.Semantics_s.Add64@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun X64.Semantics_s.AddLea64 (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Semantics_s.AddLea64_dst (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Semantics_s.AddLea64_src1 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Semantics_s.AddLea64_src2 (Term) Term)
+;;;;;;;;;;;;;;;;data constructor proxy: X64.Semantics_s.AddLea64
+(declare-fun X64.Semantics_s.AddLea64@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun X64.Semantics_s.AddCarry64 (Term Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Semantics_s.AddCarry64_dst (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Semantics_s.AddCarry64_src (Term) Term)
+;;;;;;;;;;;;;;;;data constructor proxy: X64.Semantics_s.AddCarry64
+(declare-fun X64.Semantics_s.AddCarry64@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun X64.Semantics_s.Sub64 (Term Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Semantics_s.Sub64_dst (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Semantics_s.Sub64_src (Term) Term)
+;;;;;;;;;;;;;;;;data constructor proxy: X64.Semantics_s.Sub64
+(declare-fun X64.Semantics_s.Sub64@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun X64.Semantics_s.Mul64 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Semantics_s.Mul64_src (Term) Term)
+;;;;;;;;;;;;;;;;data constructor proxy: X64.Semantics_s.Mul64
+(declare-fun X64.Semantics_s.Mul64@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun X64.Semantics_s.IMul64 (Term Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Semantics_s.IMul64_dst (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Semantics_s.IMul64_src (Term) Term)
+;;;;;;;;;;;;;;;;data constructor proxy: X64.Semantics_s.IMul64
+(declare-fun X64.Semantics_s.IMul64@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun X64.Semantics_s.Xor64 (Term Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Semantics_s.Xor64_dst (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Semantics_s.Xor64_src (Term) Term)
+;;;;;;;;;;;;;;;;data constructor proxy: X64.Semantics_s.Xor64
+(declare-fun X64.Semantics_s.Xor64@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun X64.Semantics_s.And64 (Term Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Semantics_s.And64_dst (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Semantics_s.And64_src (Term) Term)
+;;;;;;;;;;;;;;;;data constructor proxy: X64.Semantics_s.And64
+(declare-fun X64.Semantics_s.And64@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun X64.Semantics_s.Shr64 (Term Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Semantics_s.Shr64_dst (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Semantics_s.Shr64_amt (Term) Term)
+;;;;;;;;;;;;;;;;data constructor proxy: X64.Semantics_s.Shr64
+(declare-fun X64.Semantics_s.Shr64@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun X64.Semantics_s.Shl64 (Term Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Semantics_s.Shl64_dst (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Semantics_s.Shl64_amt (Term) Term)
+;;;;;;;;;;;;;;;;data constructor proxy: X64.Semantics_s.Shl64
+(declare-fun X64.Semantics_s.Shl64@tok () Term)
+;;;;;;;;;;;;;;;;dst: X64.Machine_s.dst_op -> src: X64.Machine_s.operand -> ins
+(declare-fun Tm_arrow_7d09ea6761f591164821f0420e55d20e () Term)
+
+;;;;;;;;;;;;;;;;dst: X64.Machine_s.dst_op -> src1: X64.Machine_s.operand -> src2: X64.Machine_s.operand -> ins
+(declare-fun Tm_arrow_d8804abb697e8efb0a8e70db4b3d0082 () Term)
+
+
+;;;;;;;;;;;;;;;;src: X64.Machine_s.operand -> ins
+(declare-fun Tm_arrow_f7cd6ae08a2c40fa4a393b74a1122569 () Term)
+
+
+
+
+
+
+; <start constructor X64.Semantics_s.ins>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-X64.Semantics_s.ins ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+111)
+(= __@x0
+X64.Semantics_s.ins)))
+
+; </end constructor X64.Semantics_s.ins>
+
+
+; <start constructor X64.Semantics_s.Mov64>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-X64.Semantics_s.Mov64 ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+117)
+(= __@x0
+(X64.Semantics_s.Mov64 (X64.Semantics_s.Mov64_dst __@x0)
+(X64.Semantics_s.Mov64_src __@x0)))))
+
+; </end constructor X64.Semantics_s.Mov64>
+
+
+; <start constructor X64.Semantics_s.Add64>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-X64.Semantics_s.Add64 ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+122)
+(= __@x0
+(X64.Semantics_s.Add64 (X64.Semantics_s.Add64_dst __@x0)
+(X64.Semantics_s.Add64_src __@x0)))))
+
+; </end constructor X64.Semantics_s.Add64>
+
+
+; <start constructor X64.Semantics_s.AddLea64>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-X64.Semantics_s.AddLea64 ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+127)
+(= __@x0
+(X64.Semantics_s.AddLea64 (X64.Semantics_s.AddLea64_dst __@x0)
+(X64.Semantics_s.AddLea64_src1 __@x0)
+(X64.Semantics_s.AddLea64_src2 __@x0)))))
+
+; </end constructor X64.Semantics_s.AddLea64>
+
+
+; <start constructor X64.Semantics_s.AddCarry64>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-X64.Semantics_s.AddCarry64 ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+132)
+(= __@x0
+(X64.Semantics_s.AddCarry64 (X64.Semantics_s.AddCarry64_dst __@x0)
+(X64.Semantics_s.AddCarry64_src __@x0)))))
+
+; </end constructor X64.Semantics_s.AddCarry64>
+
+
+; <start constructor X64.Semantics_s.Sub64>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-X64.Semantics_s.Sub64 ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+137)
+(= __@x0
+(X64.Semantics_s.Sub64 (X64.Semantics_s.Sub64_dst __@x0)
+(X64.Semantics_s.Sub64_src __@x0)))))
+
+; </end constructor X64.Semantics_s.Sub64>
+
+
+; <start constructor X64.Semantics_s.Mul64>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-X64.Semantics_s.Mul64 ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+142)
+(= __@x0
+(X64.Semantics_s.Mul64 (X64.Semantics_s.Mul64_src __@x0)))))
+
+; </end constructor X64.Semantics_s.Mul64>
+
+
+; <start constructor X64.Semantics_s.IMul64>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-X64.Semantics_s.IMul64 ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+147)
+(= __@x0
+(X64.Semantics_s.IMul64 (X64.Semantics_s.IMul64_dst __@x0)
+(X64.Semantics_s.IMul64_src __@x0)))))
+
+; </end constructor X64.Semantics_s.IMul64>
+
+
+; <start constructor X64.Semantics_s.Xor64>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-X64.Semantics_s.Xor64 ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+152)
+(= __@x0
+(X64.Semantics_s.Xor64 (X64.Semantics_s.Xor64_dst __@x0)
+(X64.Semantics_s.Xor64_src __@x0)))))
+
+; </end constructor X64.Semantics_s.Xor64>
+
+
+; <start constructor X64.Semantics_s.And64>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-X64.Semantics_s.And64 ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+157)
+(= __@x0
+(X64.Semantics_s.And64 (X64.Semantics_s.And64_dst __@x0)
+(X64.Semantics_s.And64_src __@x0)))))
+
+; </end constructor X64.Semantics_s.And64>
+
+
+; <start constructor X64.Semantics_s.Shr64>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-X64.Semantics_s.Shr64 ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+162)
+(= __@x0
+(X64.Semantics_s.Shr64 (X64.Semantics_s.Shr64_dst __@x0)
+(X64.Semantics_s.Shr64_amt __@x0)))))
+
+; </end constructor X64.Semantics_s.Shr64>
+
+
+; <start constructor X64.Semantics_s.Shl64>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-X64.Semantics_s.Shl64 ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+167)
+(= __@x0
+(X64.Semantics_s.Shl64 (X64.Semantics_s.Shl64_dst __@x0)
+(X64.Semantics_s.Shl64_amt __@x0)))))
+
+; </end constructor X64.Semantics_s.Shl64>
+
+
+; </end encoding type X64.Semantics_s.ins>
+
+
+; <Start encoding assume X64.Semantics_s.ins__uu___haseq>
+
+
+; </end encoding assume X64.Semantics_s.ins__uu___haseq>
+
+
+; <Start encoding val X64.Semantics_s.uu___is_Mov64>
+
+(declare-fun X64.Semantics_s.uu___is_Mov64 (Term) Term)
+;;;;;;;;;;;;;;;;projectee: ins -> Prims.bool
+(declare-fun Tm_arrow_b24754724c12341f4c78eaa5e55663ca () Term)
+(declare-fun X64.Semantics_s.uu___is_Mov64@tok () Term)
+
+; </end encoding val X64.Semantics_s.uu___is_Mov64>
+
+
+; <Skipped let uu___is_Mov64/>
+
+
+; <Start encoding val X64.Semantics_s.__proj__Mov64__item__dst>
+
+(declare-fun Tm_refine_e8de62b85869f7c1a1780736ed143295 () Term)
+(declare-fun X64.Semantics_s.__proj__Mov64__item__dst (Term) Term)
+
+;;;;;;;;;;;;;;;;projectee: _: ins{Mov64? _} -> X64.Machine_s.dst_op
+(declare-fun Tm_arrow_dce0c0216e1c68ca98bf41ab4af3b592 () Term)
+(declare-fun X64.Semantics_s.__proj__Mov64__item__dst@tok () Term)
+
+; </end encoding val X64.Semantics_s.__proj__Mov64__item__dst>
+
+
+; <Skipped let __proj__Mov64__item__dst/>
+
+
+; <Start encoding val X64.Semantics_s.__proj__Mov64__item__src>
+
+
+(declare-fun X64.Semantics_s.__proj__Mov64__item__src (Term) Term)
+
+;;;;;;;;;;;;;;;;projectee: _: ins{Mov64? _} -> X64.Machine_s.operand
+(declare-fun Tm_arrow_b8771cbd3e717b7ecc8c91ef6865ef74 () Term)
+(declare-fun X64.Semantics_s.__proj__Mov64__item__src@tok () Term)
+
+; </end encoding val X64.Semantics_s.__proj__Mov64__item__src>
+
+
+; <Skipped let __proj__Mov64__item__src/>
+
+
+; <Start encoding val X64.Semantics_s.uu___is_Add64>
+
+(declare-fun X64.Semantics_s.uu___is_Add64 (Term) Term)
+
+(declare-fun X64.Semantics_s.uu___is_Add64@tok () Term)
+
+; </end encoding val X64.Semantics_s.uu___is_Add64>
+
+
+; <Skipped let uu___is_Add64/>
+
+
+; <Start encoding val X64.Semantics_s.__proj__Add64__item__dst>
+
+(declare-fun Tm_refine_6fab9340d0ab4fd98129eb512f268790 () Term)
+(declare-fun X64.Semantics_s.__proj__Add64__item__dst (Term) Term)
+
+;;;;;;;;;;;;;;;;projectee: _: ins{Add64? _} -> X64.Machine_s.dst_op
+(declare-fun Tm_arrow_415e9c482470a002ccbc685c36feb633 () Term)
+(declare-fun X64.Semantics_s.__proj__Add64__item__dst@tok () Term)
+
+; </end encoding val X64.Semantics_s.__proj__Add64__item__dst>
+
+
+; <Skipped let __proj__Add64__item__dst/>
+
+
+; <Start encoding val X64.Semantics_s.__proj__Add64__item__src>
+
+
+(declare-fun X64.Semantics_s.__proj__Add64__item__src (Term) Term)
+
+;;;;;;;;;;;;;;;;projectee: _: ins{Add64? _} -> X64.Machine_s.operand
+(declare-fun Tm_arrow_920f3bb0b6f3134788910e3aa904262a () Term)
+(declare-fun X64.Semantics_s.__proj__Add64__item__src@tok () Term)
+
+; </end encoding val X64.Semantics_s.__proj__Add64__item__src>
+
+
+; <Skipped let __proj__Add64__item__src/>
+
+
+; <Start encoding val X64.Semantics_s.uu___is_AddLea64>
+
+(declare-fun X64.Semantics_s.uu___is_AddLea64 (Term) Term)
+
+(declare-fun X64.Semantics_s.uu___is_AddLea64@tok () Term)
+
+; </end encoding val X64.Semantics_s.uu___is_AddLea64>
+
+
+; <Skipped let uu___is_AddLea64/>
+
+
+; <Start encoding val X64.Semantics_s.__proj__AddLea64__item__dst>
+
+(declare-fun Tm_refine_e04f937679d9c74a6caf8aa7b9f98189 () Term)
+(declare-fun X64.Semantics_s.__proj__AddLea64__item__dst (Term) Term)
+
+;;;;;;;;;;;;;;;;projectee: _: ins{AddLea64? _} -> X64.Machine_s.dst_op
+(declare-fun Tm_arrow_fb5ccab15162fcd9dc5302440e3b49ac () Term)
+(declare-fun X64.Semantics_s.__proj__AddLea64__item__dst@tok () Term)
+
+; </end encoding val X64.Semantics_s.__proj__AddLea64__item__dst>
+
+
+; <Skipped let __proj__AddLea64__item__dst/>
+
+
+; <Start encoding val X64.Semantics_s.__proj__AddLea64__item__src1>
+
+
+(declare-fun X64.Semantics_s.__proj__AddLea64__item__src1 (Term) Term)
+
+;;;;;;;;;;;;;;;;projectee: _: ins{AddLea64? _} -> X64.Machine_s.operand
+(declare-fun Tm_arrow_b5efd52585cd5ef59db151052fbd131d () Term)
+(declare-fun X64.Semantics_s.__proj__AddLea64__item__src1@tok () Term)
+
+; </end encoding val X64.Semantics_s.__proj__AddLea64__item__src1>
+
+
+; <Skipped let __proj__AddLea64__item__src1/>
+
+
+; <Start encoding val X64.Semantics_s.__proj__AddLea64__item__src2>
+
+
+(declare-fun X64.Semantics_s.__proj__AddLea64__item__src2 (Term) Term)
+
+
+(declare-fun X64.Semantics_s.__proj__AddLea64__item__src2@tok () Term)
+
+; </end encoding val X64.Semantics_s.__proj__AddLea64__item__src2>
+
+
+; <Skipped let __proj__AddLea64__item__src2/>
+
+
+; <Start encoding val X64.Semantics_s.uu___is_AddCarry64>
+
+(declare-fun X64.Semantics_s.uu___is_AddCarry64 (Term) Term)
+
+(declare-fun X64.Semantics_s.uu___is_AddCarry64@tok () Term)
+
+; </end encoding val X64.Semantics_s.uu___is_AddCarry64>
+
+
+; <Skipped let uu___is_AddCarry64/>
+
+
+; <Start encoding val X64.Semantics_s.__proj__AddCarry64__item__dst>
+
+(declare-fun Tm_refine_16a53ffd1bab892d408baed6f0393a33 () Term)
+(declare-fun X64.Semantics_s.__proj__AddCarry64__item__dst (Term) Term)
+
+;;;;;;;;;;;;;;;;projectee: _: ins{AddCarry64? _} -> X64.Machine_s.dst_op
+(declare-fun Tm_arrow_83ef28a509a8506b1f6ce2ba9b0c18f7 () Term)
+(declare-fun X64.Semantics_s.__proj__AddCarry64__item__dst@tok () Term)
+
+; </end encoding val X64.Semantics_s.__proj__AddCarry64__item__dst>
+
+
+; <Skipped let __proj__AddCarry64__item__dst/>
+
+
+; <Start encoding val X64.Semantics_s.__proj__AddCarry64__item__src>
+
+
+(declare-fun X64.Semantics_s.__proj__AddCarry64__item__src (Term) Term)
+
+;;;;;;;;;;;;;;;;projectee: _: ins{AddCarry64? _} -> X64.Machine_s.operand
+(declare-fun Tm_arrow_821ed355b5d5c7702e224f22f655b5aa () Term)
+(declare-fun X64.Semantics_s.__proj__AddCarry64__item__src@tok () Term)
+
+; </end encoding val X64.Semantics_s.__proj__AddCarry64__item__src>
+
+
+; <Skipped let __proj__AddCarry64__item__src/>
+
+
+; <Start encoding val X64.Semantics_s.uu___is_Sub64>
+
+(declare-fun X64.Semantics_s.uu___is_Sub64 (Term) Term)
+
+(declare-fun X64.Semantics_s.uu___is_Sub64@tok () Term)
+
+; </end encoding val X64.Semantics_s.uu___is_Sub64>
+
+
+; <Skipped let uu___is_Sub64/>
+
+
+; <Start encoding val X64.Semantics_s.__proj__Sub64__item__dst>
+
+(declare-fun Tm_refine_569023f890bbff681c285b9f9a216ade () Term)
+(declare-fun X64.Semantics_s.__proj__Sub64__item__dst (Term) Term)
+
+;;;;;;;;;;;;;;;;projectee: _: ins{Sub64? _} -> X64.Machine_s.dst_op
+(declare-fun Tm_arrow_4db8a0046aba47b840ce0bacba21e7ea () Term)
+(declare-fun X64.Semantics_s.__proj__Sub64__item__dst@tok () Term)
+
+; </end encoding val X64.Semantics_s.__proj__Sub64__item__dst>
+
+
+; <Skipped let __proj__Sub64__item__dst/>
+
+
+; <Start encoding val X64.Semantics_s.__proj__Sub64__item__src>
+
+
+(declare-fun X64.Semantics_s.__proj__Sub64__item__src (Term) Term)
+
+;;;;;;;;;;;;;;;;projectee: _: ins{Sub64? _} -> X64.Machine_s.operand
+(declare-fun Tm_arrow_00d33969141605800c30ea669782f6c6 () Term)
+(declare-fun X64.Semantics_s.__proj__Sub64__item__src@tok () Term)
+
+; </end encoding val X64.Semantics_s.__proj__Sub64__item__src>
+
+
+; <Skipped let __proj__Sub64__item__src/>
+
+
+; <Start encoding val X64.Semantics_s.uu___is_Mul64>
+
+(declare-fun X64.Semantics_s.uu___is_Mul64 (Term) Term)
+
+(declare-fun X64.Semantics_s.uu___is_Mul64@tok () Term)
+
+; </end encoding val X64.Semantics_s.uu___is_Mul64>
+
+
+; <Skipped let uu___is_Mul64/>
+
+
+; <Start encoding val X64.Semantics_s.__proj__Mul64__item__src>
+
+(declare-fun Tm_refine_eb9d1a68ff54ae6cb27769ecbf49ba9b () Term)
+(declare-fun X64.Semantics_s.__proj__Mul64__item__src (Term) Term)
+
+;;;;;;;;;;;;;;;;projectee: _: ins{Mul64? _} -> X64.Machine_s.operand
+(declare-fun Tm_arrow_1b7338387c93fcd70d52fb82eeb46cd5 () Term)
+(declare-fun X64.Semantics_s.__proj__Mul64__item__src@tok () Term)
+
+; </end encoding val X64.Semantics_s.__proj__Mul64__item__src>
+
+
+; <Skipped let __proj__Mul64__item__src/>
+
+
+; <Start encoding val X64.Semantics_s.uu___is_IMul64>
+
+(declare-fun X64.Semantics_s.uu___is_IMul64 (Term) Term)
+
+(declare-fun X64.Semantics_s.uu___is_IMul64@tok () Term)
+
+; </end encoding val X64.Semantics_s.uu___is_IMul64>
+
+
+; <Skipped let uu___is_IMul64/>
+
+
+; <Start encoding val X64.Semantics_s.__proj__IMul64__item__dst>
+
+(declare-fun Tm_refine_2b0bbeefece73e6f59fc38828ce1e64e () Term)
+(declare-fun X64.Semantics_s.__proj__IMul64__item__dst (Term) Term)
+
+;;;;;;;;;;;;;;;;projectee: _: ins{IMul64? _} -> X64.Machine_s.dst_op
+(declare-fun Tm_arrow_1a41efc2303d48ded56e34bbc56bd963 () Term)
+(declare-fun X64.Semantics_s.__proj__IMul64__item__dst@tok () Term)
+
+; </end encoding val X64.Semantics_s.__proj__IMul64__item__dst>
+
+
+; <Skipped let __proj__IMul64__item__dst/>
+
+
+; <Start encoding val X64.Semantics_s.__proj__IMul64__item__src>
+
+
+(declare-fun X64.Semantics_s.__proj__IMul64__item__src (Term) Term)
+
+;;;;;;;;;;;;;;;;projectee: _: ins{IMul64? _} -> X64.Machine_s.operand
+(declare-fun Tm_arrow_825a5d41c9ccfcbb4f28c6a581f1d150 () Term)
+(declare-fun X64.Semantics_s.__proj__IMul64__item__src@tok () Term)
+
+; </end encoding val X64.Semantics_s.__proj__IMul64__item__src>
+
+
+; <Skipped let __proj__IMul64__item__src/>
+
+
+; <Start encoding val X64.Semantics_s.uu___is_Xor64>
+
+(declare-fun X64.Semantics_s.uu___is_Xor64 (Term) Term)
+
+(declare-fun X64.Semantics_s.uu___is_Xor64@tok () Term)
+
+; </end encoding val X64.Semantics_s.uu___is_Xor64>
+
+
+; <Skipped let uu___is_Xor64/>
+
+
+; <Start encoding val X64.Semantics_s.__proj__Xor64__item__dst>
+
+(declare-fun Tm_refine_1957040814f569aff4b252943fe77fdd () Term)
+(declare-fun X64.Semantics_s.__proj__Xor64__item__dst (Term) Term)
+
+;;;;;;;;;;;;;;;;projectee: _: ins{Xor64? _} -> X64.Machine_s.dst_op
+(declare-fun Tm_arrow_b22c6da47d894a71bdeeb52c16ae7073 () Term)
+(declare-fun X64.Semantics_s.__proj__Xor64__item__dst@tok () Term)
+
+; </end encoding val X64.Semantics_s.__proj__Xor64__item__dst>
+
+
+; <Skipped let __proj__Xor64__item__dst/>
+
+
+; <Start encoding val X64.Semantics_s.__proj__Xor64__item__src>
+
+
+(declare-fun X64.Semantics_s.__proj__Xor64__item__src (Term) Term)
+
+;;;;;;;;;;;;;;;;projectee: _: ins{Xor64? _} -> X64.Machine_s.operand
+(declare-fun Tm_arrow_7c16cf92b3151c26cdd9f19e5b5a1fc8 () Term)
+(declare-fun X64.Semantics_s.__proj__Xor64__item__src@tok () Term)
+
+; </end encoding val X64.Semantics_s.__proj__Xor64__item__src>
+
+
+; <Skipped let __proj__Xor64__item__src/>
+
+
+; <Start encoding val X64.Semantics_s.uu___is_And64>
+
+(declare-fun X64.Semantics_s.uu___is_And64 (Term) Term)
+
+(declare-fun X64.Semantics_s.uu___is_And64@tok () Term)
+
+; </end encoding val X64.Semantics_s.uu___is_And64>
+
+
+; <Skipped let uu___is_And64/>
+
+
+; <Start encoding val X64.Semantics_s.__proj__And64__item__dst>
+
+(declare-fun Tm_refine_cebe7e9690dfac8d7c9475e4922b0da2 () Term)
+(declare-fun X64.Semantics_s.__proj__And64__item__dst (Term) Term)
+
+;;;;;;;;;;;;;;;;projectee: _: ins{And64? _} -> X64.Machine_s.dst_op
+(declare-fun Tm_arrow_9d55ceb83ef05c2ec852a74cca020166 () Term)
+(declare-fun X64.Semantics_s.__proj__And64__item__dst@tok () Term)
+
+; </end encoding val X64.Semantics_s.__proj__And64__item__dst>
+
+
+; <Skipped let __proj__And64__item__dst/>
+
+
+; <Start encoding val X64.Semantics_s.__proj__And64__item__src>
+
+
+(declare-fun X64.Semantics_s.__proj__And64__item__src (Term) Term)
+
+;;;;;;;;;;;;;;;;projectee: _: ins{And64? _} -> X64.Machine_s.operand
+(declare-fun Tm_arrow_68f6bd45cc439ed4fe8ba0ef38bcba45 () Term)
+(declare-fun X64.Semantics_s.__proj__And64__item__src@tok () Term)
+
+; </end encoding val X64.Semantics_s.__proj__And64__item__src>
+
+
+; <Skipped let __proj__And64__item__src/>
+
+
+; <Start encoding val X64.Semantics_s.uu___is_Shr64>
+
+(declare-fun X64.Semantics_s.uu___is_Shr64 (Term) Term)
+
+(declare-fun X64.Semantics_s.uu___is_Shr64@tok () Term)
+
+; </end encoding val X64.Semantics_s.uu___is_Shr64>
+
+
+; <Skipped let uu___is_Shr64/>
+
+
+; <Start encoding val X64.Semantics_s.__proj__Shr64__item__dst>
+
+(declare-fun Tm_refine_e31d0af1473307c26c9e917a73600ad0 () Term)
+(declare-fun X64.Semantics_s.__proj__Shr64__item__dst (Term) Term)
+
+;;;;;;;;;;;;;;;;projectee: _: ins{Shr64? _} -> X64.Machine_s.dst_op
+(declare-fun Tm_arrow_7276133325e2ad1a2fd4e74180840da9 () Term)
+(declare-fun X64.Semantics_s.__proj__Shr64__item__dst@tok () Term)
+
+; </end encoding val X64.Semantics_s.__proj__Shr64__item__dst>
+
+
+; <Skipped let __proj__Shr64__item__dst/>
+
+
+; <Start encoding val X64.Semantics_s.__proj__Shr64__item__amt>
+
+
+(declare-fun X64.Semantics_s.__proj__Shr64__item__amt (Term) Term)
+
+;;;;;;;;;;;;;;;;projectee: _: ins{Shr64? _} -> X64.Machine_s.operand
+(declare-fun Tm_arrow_117f3939cbb95b7238346582888f2170 () Term)
+(declare-fun X64.Semantics_s.__proj__Shr64__item__amt@tok () Term)
+
+; </end encoding val X64.Semantics_s.__proj__Shr64__item__amt>
+
+
+; <Skipped let __proj__Shr64__item__amt/>
+
+
+; <Start encoding val X64.Semantics_s.uu___is_Shl64>
+
+(declare-fun X64.Semantics_s.uu___is_Shl64 (Term) Term)
+
+(declare-fun X64.Semantics_s.uu___is_Shl64@tok () Term)
+
+; </end encoding val X64.Semantics_s.uu___is_Shl64>
+
+
+; <Skipped let uu___is_Shl64/>
+
+
+; <Start encoding val X64.Semantics_s.__proj__Shl64__item__dst>
+
+(declare-fun Tm_refine_b4ab27333df03bce36b56906586a3225 () Term)
+(declare-fun X64.Semantics_s.__proj__Shl64__item__dst (Term) Term)
+
+;;;;;;;;;;;;;;;;projectee: _: ins{Shl64? _} -> X64.Machine_s.dst_op
+(declare-fun Tm_arrow_2ee168e402e1889215d73b9f8abad805 () Term)
+(declare-fun X64.Semantics_s.__proj__Shl64__item__dst@tok () Term)
+
+; </end encoding val X64.Semantics_s.__proj__Shl64__item__dst>
+
+
+; <Skipped let __proj__Shl64__item__dst/>
+
+
+; <Start encoding val X64.Semantics_s.__proj__Shl64__item__amt>
+
+
+(declare-fun X64.Semantics_s.__proj__Shl64__item__amt (Term) Term)
+
+;;;;;;;;;;;;;;;;projectee: _: ins{Shl64? _} -> X64.Machine_s.operand
+(declare-fun Tm_arrow_b66464593fa49f1f4ef0fdffbc350c18 () Term)
+(declare-fun X64.Semantics_s.__proj__Shl64__item__amt@tok () Term)
+
+; </end encoding val X64.Semantics_s.__proj__Shl64__item__amt>
+
+
+; <Skipped let __proj__Shl64__item__amt/>
+
+
+; <Start encoding type X64.Semantics_s.ocmp>
+
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun X64.Semantics_s.ocmp () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun X64.Semantics_s.OEq (Term Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Semantics_s.OEq_o1 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Semantics_s.OEq_o2 (Term) Term)
+;;;;;;;;;;;;;;;;data constructor proxy: X64.Semantics_s.OEq
+(declare-fun X64.Semantics_s.OEq@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun X64.Semantics_s.ONe (Term Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Semantics_s.ONe_o1 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Semantics_s.ONe_o2 (Term) Term)
+;;;;;;;;;;;;;;;;data constructor proxy: X64.Semantics_s.ONe
+(declare-fun X64.Semantics_s.ONe@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun X64.Semantics_s.OLe (Term Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Semantics_s.OLe_o1 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Semantics_s.OLe_o2 (Term) Term)
+;;;;;;;;;;;;;;;;data constructor proxy: X64.Semantics_s.OLe
+(declare-fun X64.Semantics_s.OLe@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun X64.Semantics_s.OGe (Term Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Semantics_s.OGe_o1 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Semantics_s.OGe_o2 (Term) Term)
+;;;;;;;;;;;;;;;;data constructor proxy: X64.Semantics_s.OGe
+(declare-fun X64.Semantics_s.OGe@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun X64.Semantics_s.OLt (Term Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Semantics_s.OLt_o1 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Semantics_s.OLt_o2 (Term) Term)
+;;;;;;;;;;;;;;;;data constructor proxy: X64.Semantics_s.OLt
+(declare-fun X64.Semantics_s.OLt@tok () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun X64.Semantics_s.OGt (Term Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Semantics_s.OGt_o1 (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Semantics_s.OGt_o2 (Term) Term)
+;;;;;;;;;;;;;;;;data constructor proxy: X64.Semantics_s.OGt
+(declare-fun X64.Semantics_s.OGt@tok () Term)
+;;;;;;;;;;;;;;;;o1: X64.Machine_s.operand -> o2: X64.Machine_s.operand -> ocmp
+(declare-fun Tm_arrow_644b7bc00b7392f41480b0e470aa09c1 () Term)
+
+
+
+
+
+
+; <start constructor X64.Semantics_s.ocmp>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-X64.Semantics_s.ocmp ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+281)
+(= __@x0
+X64.Semantics_s.ocmp)))
+
+; </end constructor X64.Semantics_s.ocmp>
+
+
+; <start constructor X64.Semantics_s.OEq>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-X64.Semantics_s.OEq ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+287)
+(= __@x0
+(X64.Semantics_s.OEq (X64.Semantics_s.OEq_o1 __@x0)
+(X64.Semantics_s.OEq_o2 __@x0)))))
+
+; </end constructor X64.Semantics_s.OEq>
+
+
+; <start constructor X64.Semantics_s.ONe>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-X64.Semantics_s.ONe ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+292)
+(= __@x0
+(X64.Semantics_s.ONe (X64.Semantics_s.ONe_o1 __@x0)
+(X64.Semantics_s.ONe_o2 __@x0)))))
+
+; </end constructor X64.Semantics_s.ONe>
+
+
+; <start constructor X64.Semantics_s.OLe>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-X64.Semantics_s.OLe ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+297)
+(= __@x0
+(X64.Semantics_s.OLe (X64.Semantics_s.OLe_o1 __@x0)
+(X64.Semantics_s.OLe_o2 __@x0)))))
+
+; </end constructor X64.Semantics_s.OLe>
+
+
+; <start constructor X64.Semantics_s.OGe>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-X64.Semantics_s.OGe ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+302)
+(= __@x0
+(X64.Semantics_s.OGe (X64.Semantics_s.OGe_o1 __@x0)
+(X64.Semantics_s.OGe_o2 __@x0)))))
+
+; </end constructor X64.Semantics_s.OGe>
+
+
+; <start constructor X64.Semantics_s.OLt>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-X64.Semantics_s.OLt ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+307)
+(= __@x0
+(X64.Semantics_s.OLt (X64.Semantics_s.OLt_o1 __@x0)
+(X64.Semantics_s.OLt_o2 __@x0)))))
+
+; </end constructor X64.Semantics_s.OLt>
+
+
+; <start constructor X64.Semantics_s.OGt>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-X64.Semantics_s.OGt ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+312)
+(= __@x0
+(X64.Semantics_s.OGt (X64.Semantics_s.OGt_o1 __@x0)
+(X64.Semantics_s.OGt_o2 __@x0)))))
+
+; </end constructor X64.Semantics_s.OGt>
+
+
+; </end encoding type X64.Semantics_s.ocmp>
+
+
+; <Start encoding assume X64.Semantics_s.ocmp__uu___haseq>
+
+
+; </end encoding assume X64.Semantics_s.ocmp__uu___haseq>
+
+
+; <Start encoding val X64.Semantics_s.uu___is_OEq>
+
+(declare-fun X64.Semantics_s.uu___is_OEq (Term) Term)
+;;;;;;;;;;;;;;;;projectee: ocmp -> Prims.bool
+(declare-fun Tm_arrow_b7fceb06ee22d1aacd62867883b0f37b () Term)
+(declare-fun X64.Semantics_s.uu___is_OEq@tok () Term)
+
+; </end encoding val X64.Semantics_s.uu___is_OEq>
+
+
+; <Skipped let uu___is_OEq/>
+
+
+; <Start encoding val X64.Semantics_s.__proj__OEq__item__o1>
+
+(declare-fun Tm_refine_495233c1b3965f79901632003c360db5 () Term)
+(declare-fun X64.Semantics_s.__proj__OEq__item__o1 (Term) Term)
+
+;;;;;;;;;;;;;;;;projectee: _: ocmp{OEq? _} -> X64.Machine_s.operand
+(declare-fun Tm_arrow_9c1ec535632d8c54a5b44c4a90cce42d () Term)
+(declare-fun X64.Semantics_s.__proj__OEq__item__o1@tok () Term)
+
+; </end encoding val X64.Semantics_s.__proj__OEq__item__o1>
+
+
+; <Skipped let __proj__OEq__item__o1/>
+
+
+; <Start encoding val X64.Semantics_s.__proj__OEq__item__o2>
+
+
+(declare-fun X64.Semantics_s.__proj__OEq__item__o2 (Term) Term)
+
+
+(declare-fun X64.Semantics_s.__proj__OEq__item__o2@tok () Term)
+
+; </end encoding val X64.Semantics_s.__proj__OEq__item__o2>
+
+
+; <Skipped let __proj__OEq__item__o2/>
+
+
+; <Start encoding val X64.Semantics_s.uu___is_ONe>
+
+(declare-fun X64.Semantics_s.uu___is_ONe (Term) Term)
+
+(declare-fun X64.Semantics_s.uu___is_ONe@tok () Term)
+
+; </end encoding val X64.Semantics_s.uu___is_ONe>
+
+
+; <Skipped let uu___is_ONe/>
+
+
+; <Start encoding val X64.Semantics_s.__proj__ONe__item__o1>
+
+(declare-fun Tm_refine_48e1a980bff417eb8ecda8fd755a7052 () Term)
+(declare-fun X64.Semantics_s.__proj__ONe__item__o1 (Term) Term)
+
+;;;;;;;;;;;;;;;;projectee: _: ocmp{ONe? _} -> X64.Machine_s.operand
+(declare-fun Tm_arrow_aefd2e951d82b82f7d5a7cde33e10b1d () Term)
+(declare-fun X64.Semantics_s.__proj__ONe__item__o1@tok () Term)
+
+; </end encoding val X64.Semantics_s.__proj__ONe__item__o1>
+
+
+; <Skipped let __proj__ONe__item__o1/>
+
+
+; <Start encoding val X64.Semantics_s.__proj__ONe__item__o2>
+
+
+(declare-fun X64.Semantics_s.__proj__ONe__item__o2 (Term) Term)
+
+
+(declare-fun X64.Semantics_s.__proj__ONe__item__o2@tok () Term)
+
+; </end encoding val X64.Semantics_s.__proj__ONe__item__o2>
+
+
+; <Skipped let __proj__ONe__item__o2/>
+
+
+; <Start encoding val X64.Semantics_s.uu___is_OLe>
+
+(declare-fun X64.Semantics_s.uu___is_OLe (Term) Term)
+
+(declare-fun X64.Semantics_s.uu___is_OLe@tok () Term)
+
+; </end encoding val X64.Semantics_s.uu___is_OLe>
+
+
+; <Skipped let uu___is_OLe/>
+
+
+; <Start encoding val X64.Semantics_s.__proj__OLe__item__o1>
+
+(declare-fun Tm_refine_57f9b3587a37875d37de2b8ee309c52c () Term)
+(declare-fun X64.Semantics_s.__proj__OLe__item__o1 (Term) Term)
+
+;;;;;;;;;;;;;;;;projectee: _: ocmp{OLe? _} -> X64.Machine_s.operand
+(declare-fun Tm_arrow_634c935d93a8506b69cf02587c71a3e3 () Term)
+(declare-fun X64.Semantics_s.__proj__OLe__item__o1@tok () Term)
+
+; </end encoding val X64.Semantics_s.__proj__OLe__item__o1>
+
+
+; <Skipped let __proj__OLe__item__o1/>
+
+
+; <Start encoding val X64.Semantics_s.__proj__OLe__item__o2>
+
+
+(declare-fun X64.Semantics_s.__proj__OLe__item__o2 (Term) Term)
+
+
+(declare-fun X64.Semantics_s.__proj__OLe__item__o2@tok () Term)
+
+; </end encoding val X64.Semantics_s.__proj__OLe__item__o2>
+
+
+; <Skipped let __proj__OLe__item__o2/>
+
+
+; <Start encoding val X64.Semantics_s.uu___is_OGe>
+
+(declare-fun X64.Semantics_s.uu___is_OGe (Term) Term)
+
+(declare-fun X64.Semantics_s.uu___is_OGe@tok () Term)
+
+; </end encoding val X64.Semantics_s.uu___is_OGe>
+
+
+; <Skipped let uu___is_OGe/>
+
+
+; <Start encoding val X64.Semantics_s.__proj__OGe__item__o1>
+
+(declare-fun Tm_refine_f22bf0e89c9043ddb9367ea1bd90ba6e () Term)
+(declare-fun X64.Semantics_s.__proj__OGe__item__o1 (Term) Term)
+
+;;;;;;;;;;;;;;;;projectee: _: ocmp{OGe? _} -> X64.Machine_s.operand
+(declare-fun Tm_arrow_bf38e13eaa1ae2d584977c7f67b000f5 () Term)
+(declare-fun X64.Semantics_s.__proj__OGe__item__o1@tok () Term)
+
+; </end encoding val X64.Semantics_s.__proj__OGe__item__o1>
+
+
+; <Skipped let __proj__OGe__item__o1/>
+
+
+; <Start encoding val X64.Semantics_s.__proj__OGe__item__o2>
+
+
+(declare-fun X64.Semantics_s.__proj__OGe__item__o2 (Term) Term)
+
+
+(declare-fun X64.Semantics_s.__proj__OGe__item__o2@tok () Term)
+
+; </end encoding val X64.Semantics_s.__proj__OGe__item__o2>
+
+
+; <Skipped let __proj__OGe__item__o2/>
+
+
+; <Start encoding val X64.Semantics_s.uu___is_OLt>
+
+(declare-fun X64.Semantics_s.uu___is_OLt (Term) Term)
+
+(declare-fun X64.Semantics_s.uu___is_OLt@tok () Term)
+
+; </end encoding val X64.Semantics_s.uu___is_OLt>
+
+
+; <Skipped let uu___is_OLt/>
+
+
+; <Start encoding val X64.Semantics_s.__proj__OLt__item__o1>
+
+(declare-fun Tm_refine_e3f7ed102fdc0dee07045511829455f8 () Term)
+(declare-fun X64.Semantics_s.__proj__OLt__item__o1 (Term) Term)
+
+;;;;;;;;;;;;;;;;projectee: _: ocmp{OLt? _} -> X64.Machine_s.operand
+(declare-fun Tm_arrow_9a05b270c59cf866aab796ad564c7f8f () Term)
+(declare-fun X64.Semantics_s.__proj__OLt__item__o1@tok () Term)
+
+; </end encoding val X64.Semantics_s.__proj__OLt__item__o1>
+
+
+; <Skipped let __proj__OLt__item__o1/>
+
+
+; <Start encoding val X64.Semantics_s.__proj__OLt__item__o2>
+
+
+(declare-fun X64.Semantics_s.__proj__OLt__item__o2 (Term) Term)
+
+
+(declare-fun X64.Semantics_s.__proj__OLt__item__o2@tok () Term)
+
+; </end encoding val X64.Semantics_s.__proj__OLt__item__o2>
+
+
+; <Skipped let __proj__OLt__item__o2/>
+
+
+; <Start encoding val X64.Semantics_s.uu___is_OGt>
+
+(declare-fun X64.Semantics_s.uu___is_OGt (Term) Term)
+
+(declare-fun X64.Semantics_s.uu___is_OGt@tok () Term)
+
+; </end encoding val X64.Semantics_s.uu___is_OGt>
+
+
+; <Skipped let uu___is_OGt/>
+
+
+; <Start encoding val X64.Semantics_s.__proj__OGt__item__o1>
+
+(declare-fun Tm_refine_078a14331436c956e0be06364feefcd5 () Term)
+(declare-fun X64.Semantics_s.__proj__OGt__item__o1 (Term) Term)
+
+;;;;;;;;;;;;;;;;projectee: _: ocmp{OGt? _} -> X64.Machine_s.operand
+(declare-fun Tm_arrow_da595d4440caae22680b4a81b07753b2 () Term)
+(declare-fun X64.Semantics_s.__proj__OGt__item__o1@tok () Term)
+
+; </end encoding val X64.Semantics_s.__proj__OGt__item__o1>
+
+
+; <Skipped let __proj__OGt__item__o1/>
+
+
+; <Start encoding val X64.Semantics_s.__proj__OGt__item__o2>
+
+
+(declare-fun X64.Semantics_s.__proj__OGt__item__o2 (Term) Term)
+
+
+(declare-fun X64.Semantics_s.__proj__OGt__item__o2@tok () Term)
+
+; </end encoding val X64.Semantics_s.__proj__OGt__item__o2>
+
+
+; <Skipped let __proj__OGt__item__o2/>
+
+
+; <Start encoding let code>
+
+(declare-fun X64.Semantics_s.code () Term)
+
+; </end encoding let code>
+
+
+; <Start encoding let codes>
+
+(declare-fun X64.Semantics_s.codes () Term)
+
+; </end encoding let codes>
+
+
+; <Start encoding let mem>
+
+(declare-fun X64.Semantics_s.mem () Term)
+
+; </end encoding let mem>
+
+
+; <Start encoding val X64.Semantics_s.mem_make>
+
+;;;;;;;;;;;;;;;;_: Prims.int -> v
+(declare-fun Tm_arrow_8928427c3e013c0cd8946aaaf1c65a29 (Term) Term)
+(declare-fun X64.Semantics_s.mem_make (Term Term Term) Term)
+
+(declare-fun Tm_refine_c644247a73759f086aca82c4165d2bf4 (Term Term Term) Term)
+;;;;;;;;;;;;;;;;mappings: (_: Prims.int -> v) -> domain: FStar.Set.set Prims.int   -> m:     map Prims.int v       { FStar.Set.equal (FStar.Map.domain m) domain /\         (forall (i: Prims.int). {:pattern FStar.Map.sel m i} FStar.Map.sel m i == mappings i) }
+(declare-fun Tm_arrow_a213b30021e54b7a2c9ed42509eec657 () Term)
+(declare-fun X64.Semantics_s.mem_make@tok () Term)
+
+
+; </end encoding val X64.Semantics_s.mem_make>
+
+
+; <Start encoding type X64.Semantics_s.state>
+
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun X64.Semantics_s.state () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun X64.Semantics_s.Mkstate (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Semantics_s.Mkstate_ok (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Semantics_s.Mkstate_regs (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Semantics_s.Mkstate_flags (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Semantics_s.Mkstate_mem (Term) Term)
+;;;;;;;;;;;;;;;;data constructor proxy: X64.Semantics_s.Mkstate
+(declare-fun X64.Semantics_s.Mkstate@tok () Term)
+
+(declare-fun Tm_abs_2da3d120bd5ce08465191535a1915477 () Term)
+
+
+;;;;;;;;;;;;;;;;ok: Prims.bool ->     regs: FStar.FunctionalExtensionality.restricted_t X64.Machine_s.reg (fun _ -> uint64) ->     flags: uint64 ->     mem: mem   -> state
+(declare-fun Tm_arrow_a0936d9f16d1767fa0d69715fe066403 () Term)
+
+; <start constructor X64.Semantics_s.state>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-X64.Semantics_s.state ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+384)
+(= __@x0
+X64.Semantics_s.state)))
+
+; </end constructor X64.Semantics_s.state>
+
+
+; <start constructor X64.Semantics_s.Mkstate>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-X64.Semantics_s.Mkstate ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+392)
+(= __@x0
+(X64.Semantics_s.Mkstate (X64.Semantics_s.Mkstate_ok __@x0)
+(X64.Semantics_s.Mkstate_regs __@x0)
+(X64.Semantics_s.Mkstate_flags __@x0)
+(X64.Semantics_s.Mkstate_mem __@x0)))))
+
+; </end constructor X64.Semantics_s.Mkstate>
+
+
+; </end encoding type X64.Semantics_s.state>
+
+
+; <Start encoding val X64.Semantics_s.__proj__Mkstate__item__ok>
+
+(declare-fun X64.Semantics_s.__proj__Mkstate__item__ok (Term) Term)
+;;;;;;;;;;;;;;;;projectee: state -> Prims.bool
+(declare-fun Tm_arrow_07de4ab51a9872907b4c4f360d028b9c () Term)
+(declare-fun X64.Semantics_s.__proj__Mkstate__item__ok@tok () Term)
+
+; </end encoding val X64.Semantics_s.__proj__Mkstate__item__ok>
+
+
+; <Skipped let __proj__Mkstate__item__ok/>
+
+
+; <Start encoding val X64.Semantics_s.__proj__Mkstate__item__regs>
+
+(declare-fun X64.Semantics_s.__proj__Mkstate__item__regs (Term) Term)
+
+
+;;;;;;;;;;;;;;;;projectee: state -> FStar.FunctionalExtensionality.restricted_t X64.Machine_s.reg (fun _ -> uint64)
+(declare-fun Tm_arrow_193bd525e26cb6146836f2ec97504c13 () Term)
+(declare-fun X64.Semantics_s.__proj__Mkstate__item__regs@tok () Term)
+
+
+
+; </end encoding val X64.Semantics_s.__proj__Mkstate__item__regs>
+
+
+; <Skipped let __proj__Mkstate__item__regs/>
+
+
+; <Start encoding val X64.Semantics_s.__proj__Mkstate__item__flags>
+
+(declare-fun X64.Semantics_s.__proj__Mkstate__item__flags (Term) Term)
+;;;;;;;;;;;;;;;;projectee: state -> uint64
+(declare-fun Tm_arrow_6f4c9386f1dee25485b476db0d507e31 () Term)
+(declare-fun X64.Semantics_s.__proj__Mkstate__item__flags@tok () Term)
+
+; </end encoding val X64.Semantics_s.__proj__Mkstate__item__flags>
+
+
+; <Skipped let __proj__Mkstate__item__flags/>
+
+
+; <Start encoding val X64.Semantics_s.__proj__Mkstate__item__mem>
+
+(declare-fun X64.Semantics_s.__proj__Mkstate__item__mem (Term) Term)
+;;;;;;;;;;;;;;;;projectee: state -> mem
+(declare-fun Tm_arrow_4380e06cbc738210f08e966ff153a603 () Term)
+(declare-fun X64.Semantics_s.__proj__Mkstate__item__mem@tok () Term)
+
+; </end encoding val X64.Semantics_s.__proj__Mkstate__item__mem>
+
+
+; <Skipped let __proj__Mkstate__item__mem/>
+
+
+; <Start encoding let u>
+
+(declare-fun Tm_refine_4a56532dbb80b238f6b7d86890fac538 () Term)
+(declare-fun X64.Semantics_s.u (Term) Term)
+
+;;;;;;;;;;;;;;;;i: Prims.int{FStar.UInt.fits i 64} -> uint64
+(declare-fun Tm_arrow_30a1747eb30b7cd0a445ff6b4e586b5d () Term)
+(declare-fun X64.Semantics_s.u@tok () Term)
+
+
+; </end encoding let u>
+
+
+; <Start encoding val X64.Semantics_s.havoc>
+
+(declare-fun X64.Semantics_s.havoc (Term Term) Term)
+;;;;;;;;;;;;;;;;_: state -> _: ins -> uint64
+(declare-fun Tm_arrow_736730c751df501ddbdd99ff93e3ea1f () Term)
+(declare-fun X64.Semantics_s.havoc@tok () Term)
+
+; </end encoding val X64.Semantics_s.havoc>
+
+
+; <Start encoding let eval_reg>
+
+(declare-fun X64.Semantics_s.eval_reg (Term Term) Term)
+;;;;;;;;;;;;;;;;r: X64.Machine_s.reg -> s: state -> uint64
+(declare-fun Tm_arrow_1a9ea2324a7f331b78f24d32bc298d74 () Term)
+(declare-fun X64.Semantics_s.eval_reg@tok () Term)
+
+; </end encoding let eval_reg>
+
+
+; <Start encoding let eval_mem>
+
+(declare-fun X64.Semantics_s.eval_mem (Term Term) Term)
+;;;;;;;;;;;;;;;;ptr: Prims.int -> s: state -> uint64
+(declare-fun Tm_arrow_49930f872a1b4f0c4a21e87c8bc6f697 () Term)
+(declare-fun X64.Semantics_s.eval_mem@tok () Term)
+
+; </end encoding let eval_mem>
+
+
+; <Start encoding let eval_maddr>
+
+(declare-fun X64.Semantics_s.eval_maddr (Term Term) Term)
+;;;;;;;;;;;;;;;;m: X64.Machine_s.maddr -> s: state -> Prims.int
+(declare-fun Tm_arrow_fd3b684681156cb51e250f195e54bd31 () Term)
+(declare-fun X64.Semantics_s.eval_maddr@tok () Term)
+
+
+
+
+; </end encoding let eval_maddr>
+
+
+; <Start encoding let eval_operand>
+
+(declare-fun X64.Semantics_s.eval_operand (Term Term) Term)
+;;;;;;;;;;;;;;;;o: X64.Machine_s.operand -> s: state -> uint64
+(declare-fun Tm_arrow_d010e301e4f9437d7808de18cb3c0276 () Term)
+(declare-fun X64.Semantics_s.eval_operand@tok () Term)
+
+
+; </end encoding let eval_operand>
+
+
+; <Start encoding let update_reg'>
+
+(declare-fun X64.Semantics_s.update_reg_ (Term Term Term) Term)
+;;;;;;;;;;;;;;;;r: X64.Machine_s.reg -> v: uint64 -> s: state -> state
+(declare-fun Tm_arrow_beacf58e68754869b7f6912f804d53db () Term)
+(declare-fun X64.Semantics_s.update_reg_@tok () Term)
+
+
+
+;;;;;;;;;;;;;;;;r': X64.Machine_s.reg -> uint64
+(declare-fun Tm_arrow_645426269fc615b2b182027e55cc5771 () Term)
+(declare-fun Tm_abs_ea7cecc32baf46388a93622b2a6ebd75 (Term Term Term) Term)
+
+; </end encoding let update_reg'>
+
+
+; <Start encoding let update_mem>
+
+(declare-fun X64.Semantics_s.update_mem (Term Term Term) Term)
+;;;;;;;;;;;;;;;;ptr: Prims.int -> v: uint64 -> s: state -> state
+(declare-fun Tm_arrow_464cef0f670d75f2eb11a711f92a8cd4 () Term)
+(declare-fun X64.Semantics_s.update_mem@tok () Term)
+
+; </end encoding let update_mem>
+
+
+; <Start encoding let valid_maddr>
+
+(declare-fun X64.Semantics_s.valid_maddr (Term Term) Term)
+;;;;;;;;;;;;;;;;m: X64.Machine_s.maddr -> s: state -> Prims.bool
+(declare-fun Tm_arrow_25e865d496d6acc6c9cbcf36c0743c2a () Term)
+(declare-fun X64.Semantics_s.valid_maddr@tok () Term)
+
+; </end encoding let valid_maddr>
+
+
+; <Start encoding let valid_operand>
+
+(declare-fun X64.Semantics_s.valid_operand (Term Term) Term)
+;;;;;;;;;;;;;;;;o: X64.Machine_s.operand -> s: state -> Prims.bool
+(declare-fun Tm_arrow_29bd83258fce538537677ec712c07468 () Term)
+(declare-fun X64.Semantics_s.valid_operand@tok () Term)
+
+; </end encoding let valid_operand>
+
+
+; <Start encoding let update_operand_preserve_flags'>
+
+(declare-fun X64.Semantics_s.update_operand_preserve_flags_ (Term Term Term) Term)
+;;;;;;;;;;;;;;;;o: X64.Machine_s.dst_op -> v: uint64 -> s: state -> state
+(declare-fun Tm_arrow_31f1eea6e9bc7f841fbd38b216ad426a () Term)
+(declare-fun X64.Semantics_s.update_operand_preserve_flags_@tok () Term)
+
+; </end encoding let update_operand_preserve_flags'>
+
+
+; <Start encoding let update_operand'>
+
+(declare-fun X64.Semantics_s.update_operand_ (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;o: X64.Machine_s.dst_op -> ins: ins -> v: uint64 -> s: state -> state
+(declare-fun Tm_arrow_752a7c682b883722b45e82f8d8fa4580 () Term)
+(declare-fun X64.Semantics_s.update_operand_@tok () Term)
+
+; </end encoding let update_operand'>
+
+
+; <Start encoding let cf>
+
+(declare-fun X64.Semantics_s.cf (Term) Term)
+;;;;;;;;;;;;;;;;flags: uint64 -> Prims.bool
+(declare-fun Tm_arrow_89e1d5413bf33e2cb65d8b4b2b8481c8 () Term)
+(declare-fun X64.Semantics_s.cf@tok () Term)
+
+; </end encoding let cf>
+
+
+; <Start encoding let update_cf>
+
+(declare-fun X64.Semantics_s.update_cf (Term Term) Term)
+(declare-fun Tm_refine_5e4248dc93a56d69a95eb5ac14851d39 (Term) Term)
+;;;;;;;;;;;;;;;;flags: uint64 -> new_cf: Prims.bool -> new_flags: uint64{cf new_flags == new_cf}
+(declare-fun Tm_arrow_6c744c8229cce2fff0d5e51bd1964a74 () Term)
+(declare-fun X64.Semantics_s.update_cf@tok () Term)
+
+
+; </end encoding let update_cf>
+
+
+; <Start encoding let st>
+
+(declare-fun X64.Semantics_s.st (Term) Term)
+
+(declare-fun X64.Semantics_s.st@tok () Term)
+;;;;;;;;;;;;;;;;_: state -> a & state
+(declare-fun Tm_arrow_609ab49ade451d3e7b1162e976ede8d4 (Term) Term)
+
+; </end encoding let st>
+
+
+; <Start encoding let return>
+
+(declare-fun X64.Semantics_s.return (Term Term) Term)
+;;;;;;;;;;;;;;;;x: a -> st a
+(declare-fun Tm_arrow_86d064662bcf85b9eb1464580bdc216b () Term)
+(declare-fun X64.Semantics_s.return@tok () Term)
+
+(declare-fun Tm_abs_ca9ce7c040ca62129548600eb9451f97 (Term Term) Term)
+
+; </end encoding let return>
+
+
+; <Start encoding let bind>
+
+;;;;;;;;;;;;;;;;_: a -> st b
+(declare-fun Tm_arrow_1d09dabe58a73d85b47e6a30e452f8c5 (Term Term) Term)
+(declare-fun X64.Semantics_s.bind (Term Term Term Term) Term)
+
+;;;;;;;;;;;;;;;;m: st a -> f: (_: a -> st b) -> st b
+(declare-fun Tm_arrow_98681b11ebb4a3beb37d5cc02918ccc9 () Term)
+(declare-fun X64.Semantics_s.bind@tok () Term)
+
+
+(declare-fun Tm_abs_705ca510c4d3ac6fb27d1b743c80ce54 (Term Term Term) Term)
+
+; </end encoding let bind>
+
+
+; <Start encoding let get>
+
+(declare-fun X64.Semantics_s.get (Dummy_sort) Term)
+
+; </end encoding let get>
+
+
+; <Start encoding let set>
+
+(declare-fun X64.Semantics_s.set (Term) Term)
+;;;;;;;;;;;;;;;;s: state -> st Prims.unit
+(declare-fun Tm_arrow_0bce0521ab9e4af8ed830c07754bb01a () Term)
+(declare-fun X64.Semantics_s.set@tok () Term)
+;;;;;;;;;;;;;;;;_: state -> Prims.unit & state
+(declare-fun Tm_arrow_025dbaceb4b862aa04a44e930c7828ea () Term)
+(declare-fun Tm_abs_7388af26d889d13d76f214161e20afe9 (Term) Term)
+
+; </end encoding let set>
+
+
+; <Start encoding let fail>
+
+(declare-fun X64.Semantics_s.fail (Dummy_sort) Term)
+
+; </end encoding let fail>
+
+
+; <Start encoding let check>
+
+
+(declare-fun X64.Semantics_s.check (Term) Term)
+
+;;;;;;;;;;;;;;;;valid: (_: state -> Prims.bool) -> st Prims.unit
+(declare-fun Tm_arrow_11c5a607d68b869ede186f0aea9c94be () Term)
+(declare-fun X64.Semantics_s.check@tok () Term)
+
+
+(declare-fun Tm_abs_f0959d9e8c38aa2643c83552fbc44802 () Term)
+
+(declare-fun Tm_abs_081baac0dab8f4468ac989ea2ddf99a3 () Term)
+
+(declare-fun Tm_abs_60abe48c0a7e2ce27b03455669d2bcc1 (Term) Term)
+
+; </end encoding let check>
+
+
+; <Start encoding let run>
+
+(declare-fun X64.Semantics_s.run (Term Term) Term)
+;;;;;;;;;;;;;;;;f: st Prims.unit -> s: state -> state
+(declare-fun Tm_arrow_56e8bf7a49c3f67ad067d888c2f028ad () Term)
+(declare-fun X64.Semantics_s.run@tok () Term)
+
+; </end encoding let run>
+
+
+; <Start encoding let update_operand_preserve_flags>
+
+(declare-fun X64.Semantics_s.update_operand_preserve_flags (Term Term) Term)
+;;;;;;;;;;;;;;;;dst: X64.Machine_s.dst_op -> v: uint64 -> st Prims.unit
+(declare-fun Tm_arrow_d2c23435aeb72ca097dd64864396df6c () Term)
+(declare-fun X64.Semantics_s.update_operand_preserve_flags@tok () Term)
+
+
+
+
+
+(declare-fun Tm_abs_48b30fb9771ec355f67c7d3774818ccd (Term Term) Term)
+
+; </end encoding let update_operand_preserve_flags>
+
+
+; <Start encoding let update_operand>
+
+(declare-fun X64.Semantics_s.update_operand (Term Term Term) Term)
+;;;;;;;;;;;;;;;;dst: X64.Machine_s.dst_op -> ins: ins -> v: uint64 -> st Prims.unit
+(declare-fun Tm_arrow_42c36ab8cb4e71093ab035534c131592 () Term)
+(declare-fun X64.Semantics_s.update_operand@tok () Term)
+
+
+
+
+
+(declare-fun Tm_abs_7e07efd9b30556d81e07106a395f40cd (Term Term Term) Term)
+
+; </end encoding let update_operand>
+
+
+; <Start encoding let update_reg>
+
+(declare-fun X64.Semantics_s.update_reg (Term Term) Term)
+;;;;;;;;;;;;;;;;r: X64.Machine_s.reg -> v: uint64 -> st Prims.unit
+(declare-fun Tm_arrow_86a2ece66c8a4690fde39fd480d1a750 () Term)
+(declare-fun X64.Semantics_s.update_reg@tok () Term)
+
+(declare-fun Tm_abs_9308350a750cd3e48424d434c40f4e9f (Term Term) Term)
+
+; </end encoding let update_reg>
+
+
+; <Start encoding let update_flags>
+
+(declare-fun X64.Semantics_s.update_flags (Term) Term)
+;;;;;;;;;;;;;;;;new_flags: uint64 -> st Prims.unit
+(declare-fun Tm_arrow_d55005f5e4c98dc2a582b0cbb5a803fd () Term)
+(declare-fun X64.Semantics_s.update_flags@tok () Term)
+
+(declare-fun Tm_abs_2c81f4a4818392ccafc16cff9167306e (Term) Term)
+
+; </end encoding let update_flags>
+
+
+; <Start encoding let example>
+
+(declare-fun X64.Semantics_s.example (Term Term) Term)
+;;;;;;;;;;;;;;;;dst: X64.Machine_s.dst_op -> src: X64.Machine_s.operand -> st Prims.unit
+(declare-fun Tm_arrow_4a4ab03f283a5c6ec72a0a99e0f86d78 () Term)
+(declare-fun X64.Semantics_s.example@tok () Term)
+
+
+
+
+
+
+
+
+
+
+
+
+
+(declare-fun Tm_abs_3eddfac935ebb5b544189785ac56d995 (Term Term) Term)
+
+; </end encoding let example>
+
+
+; <Start encoding let logxor>
+
+(declare-fun X64.Semantics_s.logxor (Term Term) Term)
+;;;;;;;;;;;;;;;;x: Prims.int -> y: Prims.int -> X64.Machine_s.nat64
+(declare-fun Tm_arrow_95cc84be19c7dbf3373bc85bd42c7e06 () Term)
+(declare-fun X64.Semantics_s.logxor@tok () Term)
+
+; </end encoding let logxor>
+
+
+; <Start encoding let logxor_uint64>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun X64.Semantics_s.logxor_uint64 (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun X64.Semantics_s.logxor_uint64@tok () Term)
+(declare-fun Tm_refine_9e523552080158c04fafd9dbbcf2e767 () Term)
+
+; </end encoding let logxor_uint64>
+
+
+; <Start encoding let logand>
+
+(declare-fun X64.Semantics_s.logand (Term Term) Term)
+
+(declare-fun X64.Semantics_s.logand@tok () Term)
+
+; </end encoding let logand>
+
+
+; <Start encoding let logand_uint64>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun X64.Semantics_s.logand_uint64 (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun X64.Semantics_s.logand_uint64@tok () Term)
+
+
+; </end encoding let logand_uint64>
+
+
+; <Start encoding let shift_right>
+
+(declare-fun X64.Semantics_s.shift_right (Term Term) Term)
+
+(declare-fun X64.Semantics_s.shift_right@tok () Term)
+
+; </end encoding let shift_right>
+
+
+; <Start encoding let shift_right_uint64>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun X64.Semantics_s.shift_right_uint64 (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun X64.Semantics_s.shift_right_uint64@tok () Term)
+
+
+; </end encoding let shift_right_uint64>
+
+
+; <Start encoding let shift_left>
+
+(declare-fun X64.Semantics_s.shift_left (Term Term) Term)
+
+(declare-fun X64.Semantics_s.shift_left@tok () Term)
+
+; </end encoding let shift_left>
+
+
+; <Start encoding let shift_left_uint64>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun X64.Semantics_s.shift_left_uint64 (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun X64.Semantics_s.shift_left_uint64@tok () Term)
+
+
+; </end encoding let shift_left_uint64>
+
+
+; <Start encoding let eval_ocmp>
+
+(declare-fun X64.Semantics_s.eval_ocmp (Term Term) Term)
+;;;;;;;;;;;;;;;;s: state -> c: ocmp -> Prims.bool
+(declare-fun Tm_arrow_fc110cf3b76cd3f78b83b52b0130c9fc () Term)
+(declare-fun X64.Semantics_s.eval_ocmp@tok () Term)
+
+; </end encoding let eval_ocmp>
+
+
+; <Skipped val X64.Semantics_s.add_mod64/>
+
+
+; <Start encoding let add_mod64>
+
+(declare-fun X64.Semantics_s.add_mod64 (Term Term) Term)
+(declare-fun Tm_refine_541d8b5bedd79f842c043b0167c0294d (Term Term) Term)
+;;;;;;;;;;;;;;;;a: uint64 -> b: uint64 -> Prims.Pure uint64
+(declare-fun Tm_arrow_138cc3596db49ce3d1db89e8fede3c3c () Term)
+(declare-fun X64.Semantics_s.add_mod64@tok () Term)
+
+
+; </end encoding let add_mod64>
+
+
+; <Skipped val X64.Semantics_s.sub_mod64/>
+
+
+; <Start encoding let sub_mod64>
+
+(declare-fun X64.Semantics_s.sub_mod64 (Term Term) Term)
+(declare-fun Tm_refine_9047fa206eb79fbe3b02e2e3d1bcaa4f (Term Term) Term)
+;;;;;;;;;;;;;;;;a: uint64 -> b: uint64 -> Prims.Pure uint64
+(declare-fun Tm_arrow_7b358dd252041e123df4a27027abcfe5 () Term)
+(declare-fun X64.Semantics_s.sub_mod64@tok () Term)
+
+
+; </end encoding let sub_mod64>
+
+
+; <Skipped val X64.Semantics_s.mul_mod64/>
+
+
+; <Start encoding let mul_mod64>
+
+(declare-fun X64.Semantics_s.mul_mod64 (Term Term) Term)
+(declare-fun Tm_refine_5e0b55f391f0d80e17a86a98e20c6bf1 (Term Term) Term)
+;;;;;;;;;;;;;;;;a: uint64 -> b: uint64 -> Prims.Pure uint64
+(declare-fun Tm_arrow_71329c19d1678051dfa1cb6b8458f4e9 () Term)
+(declare-fun X64.Semantics_s.mul_mod64@tok () Term)
+
+
+; </end encoding let mul_mod64>
+
+
+; <Skipped val X64.Semantics_s.mul_div64/>
+
+
+; <Start encoding let mul_div64>
+
+(declare-fun X64.Semantics_s.mul_div64 (Term Term) Term)
+(declare-fun Tm_refine_f57897888b8e8a5df8c6b09df8b92b30 (Term Term) Term)
+;;;;;;;;;;;;;;;;a: uint64 -> b: uint64 -> Prims.Pure uint64
+(declare-fun Tm_arrow_98cf46f64bdd73e5fdac64cc62963f1e () Term)
+(declare-fun X64.Semantics_s.mul_div64@tok () Term)
+
+
+; </end encoding let mul_div64>
+
+
+; <Start encoding let eval_ins>
+
+(declare-fun X64.Semantics_s.eval_ins (Term) Term)
+;;;;;;;;;;;;;;;;ins: ins -> st Prims.unit
+(declare-fun Tm_arrow_6a8707fb618f4f9581d4d2aaf34223ff () Term)
+(declare-fun X64.Semantics_s.eval_ins@tok () Term)
+
+
+
+
+
+
+
+(declare-fun Tm_abs_e41ff8e98891b6dd8546d7c0ea20848c (Term Term Term) Term)
+
+
+
+
+
+(declare-fun Tm_abs_06436ba00a5bd9a8083ce074f3a147a1 (Term Term Term) Term)
+
+
+
+
+
+
+
+
+
+(declare-fun Tm_abs_e79b8a999a7f57f0040921f533b269ce (Term Term Term) Term)
+
+
+
+
+
+
+
+
+
+(declare-fun Tm_abs_724242e80027e2a267145da56a098c8b (Term Term Term) Term)
+
+
+
+
+
+
+
+
+
+(declare-fun Tm_abs_efd9e8f8b7c98c9b586f4897a855bab0 (Term Term Term) Term)
+
+
+
+
+
+
+
+
+(declare-fun Tm_abs_e208dc70abce4505afd7c75d2e94a8a4 (Term Term Term) Term)
+
+
+
+
+
+
+
+
+
+(declare-fun Tm_abs_bb6aff5b98a517373530d9e388c5f89b (Term Term Term) Term)
+
+
+
+
+
+
+
+
+
+
+(declare-fun Tm_abs_613dc199a18050b65a16a60fdb912f4f (Term Term Term) Term)
+
+
+
+
+
+
+
+
+
+
+
+
+
+(declare-fun Tm_abs_da887bd33a5a6c5a992d65f196996f0a (Term Term) Term)
+
+
+
+
+
+
+
+
+
+
+(declare-fun Tm_abs_4913b90bcf1c33b400aafdd4cec55f1b (Term Term Term) Term)
+
+
+
+
+
+
+
+
+
+(declare-fun Tm_abs_1a46cd7a0bd7922d113274c37c2fe3d5 (Term Term) Term)
+
+(declare-fun Tm_abs_10261c42e10a9394c7f8c711bf81e6e4 (Term) Term)
+
+; </end encoding let eval_ins>
+
+
+; <Skipped val X64.Semantics_s.eval_code/>
+
+
+; <Skipped val X64.Semantics_s.eval_codes/>
+
+
+; <Skipped val X64.Semantics_s.eval_while/>
+
+
+; <Start encoding let rec eval_code and eval_codes and eval_while>
+
+;;;;;;;;;;;;;;;;Fuel-instrumented function name
+(declare-fun X64.Semantics_s.eval_while.fuel_instrumented (Fuel Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Token for fuel-instrumented partial applications
+(declare-fun X64.Semantics_s.eval_while.fuel_instrumented_token () Term)
+;;;;;;;;;;;;;;;;Fuel-instrumented function name
+(declare-fun X64.Semantics_s.eval_codes.fuel_instrumented (Fuel Term Term Term) Term)
+;;;;;;;;;;;;;;;;Token for fuel-instrumented partial applications
+(declare-fun X64.Semantics_s.eval_codes.fuel_instrumented_token () Term)
+;;;;;;;;;;;;;;;;Fuel-instrumented function name
+(declare-fun X64.Semantics_s.eval_code.fuel_instrumented (Fuel Term Term Term) Term)
+;;;;;;;;;;;;;;;;Token for fuel-instrumented partial applications
+(declare-fun X64.Semantics_s.eval_code.fuel_instrumented_token () Term)
+(declare-fun X64.Semantics_s.eval_code (Term Term Term) Term)
+(declare-fun X64.Semantics_s.eval_code@tok () Term)
+(declare-fun X64.Semantics_s.eval_codes (Term Term Term) Term)
+(declare-fun X64.Semantics_s.eval_codes@tok () Term)
+(declare-fun X64.Semantics_s.eval_while (Term Term Term Term) Term)
+(declare-fun X64.Semantics_s.eval_while@tok () Term)
+;;;;;;;;;;;;;;;;c: code -> fuel: Prims.nat -> s: state -> Prims.Tot (FStar.Pervasives.Native.option state)
+(declare-fun Tm_arrow_059320c4dc9350b320fac216233deddf () Term)
+;;;;;;;;;;;;;;;;l: codes -> fuel: Prims.nat -> s: state -> Prims.Tot (FStar.Pervasives.Native.option state)
+(declare-fun Tm_arrow_9845a7d7cfcd92ffb9261217008654df () Term)
+;;;;;;;;;;;;;;;;b: ocmp -> c: code -> fuel: Prims.nat -> s: state   -> Prims.Tot (FStar.Pervasives.Native.option state)
+(declare-fun Tm_arrow_71fc45e62ba7cfd66865f0f696c29c0a () Term)
+
+; </end encoding let rec eval_code and eval_codes and eval_while>
+
+
+; End Externals for module X64.Semantics_s
+
+
+; Externals for module TransparentMap
+
+
+; <Start encoding let map>
+
+(declare-fun TransparentMap.map (Term Term) Term)
+
+(declare-fun TransparentMap.map@tok () Term)
+
+
+
+; </end encoding let map>
+
+
+; <Start encoding let sel>
+
+(declare-fun TransparentMap.sel (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;m: map k v -> key: k -> v
+(declare-fun Tm_arrow_b924d6b1ea097e2422c6e94739f4239a () Term)
+(declare-fun TransparentMap.sel@tok () Term)
+
+; </end encoding let sel>
+
+
+; <Start encoding let upd>
+
+(declare-fun TransparentMap.upd (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;m: map k v -> key: k -> value: v -> map k v
+(declare-fun Tm_arrow_3242d51f11275ab7564d18b86520c533 () Term)
+(declare-fun TransparentMap.upd@tok () Term)
+
+
+
+(declare-fun Tm_abs_331bcae1afb9bcb02e34122de03c3f66 (Term Term Term Term Term) Term)
+
+; </end encoding let upd>
+
+
+; <Start encoding let sel_upd1>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun TransparentMap.sel_upd1 (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun TransparentMap.sel_upd1@tok () Term)
+
+; </end encoding let sel_upd1>
+
+
+; <Start encoding let sel_upd2>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun TransparentMap.sel_upd2 (Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun TransparentMap.sel_upd2@tok () Term)
+
+; </end encoding let sel_upd2>
+
+
+; <Start encoding let equal>
+
+(declare-fun TransparentMap.equal (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;m1: map key value -> m2: map key value -> Prims.logical
+(declare-fun Tm_arrow_cd07bfb70969d51cec6bc1e4db8603e6 () Term)
+(declare-fun TransparentMap.equal@tok () Term)
+
+
+
+
+
+; </end encoding let equal>
+
+
+; <Skipped val TransparentMap.lemma_equal_intro/>
+
+
+; <Skipped val TransparentMap.lemma_equal_elim/>
+
+
+; <Skipped val TransparentMap.lemma_equal_refl/>
+
+
+; <Start encoding let lemma_equal_intro>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun TransparentMap.lemma_equal_intro (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun TransparentMap.lemma_equal_intro@tok () Term)
+
+; </end encoding let lemma_equal_intro>
+
+
+; <Start encoding let lemma_equal_elim>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun TransparentMap.lemma_equal_elim (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun TransparentMap.lemma_equal_elim@tok () Term)
+
+; </end encoding let lemma_equal_elim>
+
+
+; <Start encoding let lemma_equal_refl>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun TransparentMap.lemma_equal_refl (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun TransparentMap.lemma_equal_refl@tok () Term)
+
+; </end encoding let lemma_equal_refl>
+
+
+; End Externals for module TransparentMap
+
+
+; Externals for interface X64.Vale.State_i
+
+
+; <Start encoding let mem>
+
+(declare-fun X64.Vale.State_i.mem () Term)
+
+; </end encoding let mem>
+
+
+; <Start encoding type X64.Vale.State_i.state>
+
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun X64.Vale.State_i.state () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun X64.Vale.State_i.Mkstate (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Vale.State_i.Mkstate_ok (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Vale.State_i.Mkstate_regs (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Vale.State_i.Mkstate_flags (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Vale.State_i.Mkstate_mem (Term) Term)
+;;;;;;;;;;;;;;;;data constructor proxy: X64.Vale.State_i.Mkstate
+(declare-fun X64.Vale.State_i.Mkstate@tok () Term)
+;;;;;;;;;;;;;;;;ok: Prims.bool ->     regs: X64.Vale.Regs_i.t ->     flags: X64.Machine_s.nat64 ->     mem: FStar.Map.t Prims.int X64.Machine_s.nat64   -> state
+(declare-fun Tm_arrow_bf3c56506b8f5eb79926980cc656f10f () Term)
+
+; <start constructor X64.Vale.State_i.state>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-X64.Vale.State_i.state ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+101)
+(= __@x0
+X64.Vale.State_i.state)))
+
+; </end constructor X64.Vale.State_i.state>
+
+
+; <start constructor X64.Vale.State_i.Mkstate>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-X64.Vale.State_i.Mkstate ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+107)
+(= __@x0
+(X64.Vale.State_i.Mkstate (X64.Vale.State_i.Mkstate_ok __@x0)
+(X64.Vale.State_i.Mkstate_regs __@x0)
+(X64.Vale.State_i.Mkstate_flags __@x0)
+(X64.Vale.State_i.Mkstate_mem __@x0)))))
+
+; </end constructor X64.Vale.State_i.Mkstate>
+
+
+; </end encoding type X64.Vale.State_i.state>
+
+
+; <Start encoding val X64.Vale.State_i.__proj__Mkstate__item__ok>
+
+(declare-fun X64.Vale.State_i.__proj__Mkstate__item__ok (Term) Term)
+;;;;;;;;;;;;;;;;projectee: state -> Prims.bool
+(declare-fun Tm_arrow_5c5fed4129bbf9b3e7583d154e69c21e () Term)
+(declare-fun X64.Vale.State_i.__proj__Mkstate__item__ok@tok () Term)
+
+; </end encoding val X64.Vale.State_i.__proj__Mkstate__item__ok>
+
+
+; <Skipped let __proj__Mkstate__item__ok/>
+
+
+; <Start encoding val X64.Vale.State_i.__proj__Mkstate__item__regs>
+
+(declare-fun X64.Vale.State_i.__proj__Mkstate__item__regs (Term) Term)
+;;;;;;;;;;;;;;;;projectee: state -> X64.Vale.Regs_i.t
+(declare-fun Tm_arrow_76f16c4ba6b1cb416c6c6aa8cade2cee () Term)
+(declare-fun X64.Vale.State_i.__proj__Mkstate__item__regs@tok () Term)
+
+; </end encoding val X64.Vale.State_i.__proj__Mkstate__item__regs>
+
+
+; <Skipped let __proj__Mkstate__item__regs/>
+
+
+; <Start encoding val X64.Vale.State_i.__proj__Mkstate__item__flags>
+
+(declare-fun X64.Vale.State_i.__proj__Mkstate__item__flags (Term) Term)
+;;;;;;;;;;;;;;;;projectee: state -> X64.Machine_s.nat64
+(declare-fun Tm_arrow_01c6bddba2d6959bf2984d5bb35626d1 () Term)
+(declare-fun X64.Vale.State_i.__proj__Mkstate__item__flags@tok () Term)
+
+; </end encoding val X64.Vale.State_i.__proj__Mkstate__item__flags>
+
+
+; <Skipped let __proj__Mkstate__item__flags/>
+
+
+; <Start encoding val X64.Vale.State_i.__proj__Mkstate__item__mem>
+
+(declare-fun X64.Vale.State_i.__proj__Mkstate__item__mem (Term) Term)
+;;;;;;;;;;;;;;;;projectee: state -> FStar.Map.t Prims.int X64.Machine_s.nat64
+(declare-fun Tm_arrow_91f4557325018bd0b2143a809bc61a2b () Term)
+(declare-fun X64.Vale.State_i.__proj__Mkstate__item__mem@tok () Term)
+
+; </end encoding val X64.Vale.State_i.__proj__Mkstate__item__mem>
+
+
+; <Skipped let __proj__Mkstate__item__mem/>
+
+
+; <Start encoding let reg_to_int>
+
+(declare-fun X64.Vale.State_i.reg_to_int (Term) Term)
+;;;;;;;;;;;;;;;;r: X64.Machine_s.reg -> Prims.int
+(declare-fun Tm_arrow_fa17d9caaadf5f567f6aea6dba96f000 () Term)
+(declare-fun X64.Vale.State_i.reg_to_int@tok () Term)
+
+; </end encoding let reg_to_int>
+
+
+; <Start encoding let eval_reg>
+
+(declare-fun X64.Vale.State_i.eval_reg (Term Term) Term)
+;;;;;;;;;;;;;;;;r: X64.Machine_s.reg -> s: state -> X64.Machine_s.nat64
+(declare-fun Tm_arrow_9574d1338dc0d43578d8515dff1c58e1 () Term)
+(declare-fun X64.Vale.State_i.eval_reg@tok () Term)
+
+; </end encoding let eval_reg>
+
+
+; <Start encoding let eval_mem>
+
+(declare-fun X64.Vale.State_i.eval_mem (Term Term) Term)
+;;;;;;;;;;;;;;;;ptr: Prims.int -> s: state -> X64.Machine_s.nat64
+(declare-fun Tm_arrow_0784e42cf7e01da169e63a3999455727 () Term)
+(declare-fun X64.Vale.State_i.eval_mem@tok () Term)
+
+; </end encoding let eval_mem>
+
+
+; <Start encoding let eval_maddr>
+
+(declare-fun X64.Vale.State_i.eval_maddr (Term Term) Term)
+;;;;;;;;;;;;;;;;m: X64.Machine_s.maddr -> s: state -> Prims.int
+(declare-fun Tm_arrow_2d5a81cb81806c2a7a6cc9eb180f8c6c () Term)
+(declare-fun X64.Vale.State_i.eval_maddr@tok () Term)
+
+
+
+
+; </end encoding let eval_maddr>
+
+
+; <Start encoding let eval_operand>
+
+(declare-fun X64.Vale.State_i.eval_operand (Term Term) Term)
+;;;;;;;;;;;;;;;;o: X64.Machine_s.operand -> s: state -> X64.Machine_s.nat64
+(declare-fun Tm_arrow_e6e156fd62f2c5ec5ac072a8caacf3ef () Term)
+(declare-fun X64.Vale.State_i.eval_operand@tok () Term)
+
+
+; </end encoding let eval_operand>
+
+
+; <Start encoding let update_reg>
+
+(declare-fun X64.Vale.State_i.update_reg (Term Term Term) Term)
+;;;;;;;;;;;;;;;;r: X64.Machine_s.reg -> v: X64.Machine_s.nat64 -> s: state -> state
+(declare-fun Tm_arrow_1a371b6f5cc469875cee38e0de08dd87 () Term)
+(declare-fun X64.Vale.State_i.update_reg@tok () Term)
+
+
+
+;;;;;;;;;;;;;;;;r': X64.Machine_s.reg -> X64.Machine_s.nat64
+(declare-fun Tm_arrow_1093f8e31085b67d2aaada502a6d45cd () Term)
+(declare-fun Tm_abs_53c55973f12c5cd6dba65c1cc5016627 (Term Term Term) Term)
+
+; </end encoding let update_reg>
+
+
+; <Start encoding let update_mem>
+
+(declare-fun X64.Vale.State_i.update_mem (Term Term Term) Term)
+;;;;;;;;;;;;;;;;ptr: Prims.int -> v: X64.Machine_s.nat64 -> s: state -> state
+(declare-fun Tm_arrow_b7f5df9f909755c0217c731e463eb8d9 () Term)
+(declare-fun X64.Vale.State_i.update_mem@tok () Term)
+
+; </end encoding let update_mem>
+
+
+; <Start encoding let valid_maddr>
+
+(declare-fun X64.Vale.State_i.valid_maddr (Term Term) Term)
+;;;;;;;;;;;;;;;;m: X64.Machine_s.maddr -> s: state -> Type
+(declare-fun Tm_arrow_ea1f1fcdcc5e42130d314013afa41640 () Term)
+(declare-fun X64.Vale.State_i.valid_maddr@tok () Term)
+
+; </end encoding let valid_maddr>
+
+
+; <Start encoding let valid_operand>
+
+(declare-fun X64.Vale.State_i.valid_operand (Term Term) Term)
+;;;;;;;;;;;;;;;;o: X64.Machine_s.operand -> s: state -> Type
+(declare-fun Tm_arrow_bf8a51e61f47e3e72fdc2e0e9f99e5f4 () Term)
+(declare-fun X64.Vale.State_i.valid_operand@tok () Term)
+
+; </end encoding let valid_operand>
+
+
+; <Start encoding let state_eq>
+
+(declare-fun X64.Vale.State_i.state_eq (Term Term) Term)
+;;;;;;;;;;;;;;;;s0: state -> s1: state -> Type
+(declare-fun Tm_arrow_ee5a24814994841774b9f7427f3ef695 () Term)
+(declare-fun X64.Vale.State_i.state_eq@tok () Term)
+
+; </end encoding let state_eq>
+
+
+; <Start encoding let add_wrap>
+
+(declare-fun X64.Vale.State_i.add_wrap (Term Term) Term)
+
+(declare-fun X64.Vale.State_i.add_wrap@tok () Term)
+
+; </end encoding let add_wrap>
+
+
+; <Start encoding let eq_int>
+
+(declare-fun X64.Vale.State_i.eq_int (Term Term) Term)
+;;;;;;;;;;;;;;;;i1: Prims.int -> i2: Prims.int -> Prims.logical
+(declare-fun Tm_arrow_7418b65d64c02ff38a120101f758e12a () Term)
+(declare-fun X64.Vale.State_i.eq_int@tok () Term)
+
+; </end encoding let eq_int>
+
+
+; End Externals for interface X64.Vale.State_i
+
+
+; Externals for interface X64.Vale.StateLemmas_i
+
+
+; <Start encoding let ok'>
+
+(declare-fun X64.Vale.StateLemmas_i.ok_ (Term) Term)
+
+(declare-fun X64.Vale.StateLemmas_i.ok_@tok () Term)
+
+; </end encoding let ok'>
+
+
+; <Start encoding let regs'>
+
+(declare-fun X64.Vale.StateLemmas_i.regs_ (Term) Term)
+
+
+
+(declare-fun X64.Vale.StateLemmas_i.regs_@tok () Term)
+
+
+
+; </end encoding let regs'>
+
+
+; <Start encoding let flags'>
+
+(declare-fun X64.Vale.StateLemmas_i.flags_ (Term) Term)
+
+(declare-fun X64.Vale.StateLemmas_i.flags_@tok () Term)
+
+; </end encoding let flags'>
+
+
+; <Start encoding let mem'>
+
+(declare-fun X64.Vale.StateLemmas_i.mem_ (Term) Term)
+
+(declare-fun X64.Vale.StateLemmas_i.mem_@tok () Term)
+
+; </end encoding let mem'>
+
+
+; <Start encoding val X64.Vale.StateLemmas_i.state_to_S>
+
+(declare-fun X64.Vale.StateLemmas_i.state_to_S (Term) Term)
+;;;;;;;;;;;;;;;;s: X64.Vale.State_i.state -> X64.Semantics_s.state
+(declare-fun Tm_arrow_fed75580a3b4a5e0a8ecea05886461c1 () Term)
+(declare-fun X64.Vale.StateLemmas_i.state_to_S@tok () Term)
+
+; </end encoding val X64.Vale.StateLemmas_i.state_to_S>
+
+
+; <Start encoding val X64.Vale.StateLemmas_i.state_of_S>
+
+(declare-fun X64.Vale.StateLemmas_i.state_of_S (Term) Term)
+;;;;;;;;;;;;;;;;s: X64.Semantics_s.state -> X64.Vale.State_i.state
+(declare-fun Tm_arrow_a3f5e6e5e7ac70d74d7868ff19ceff91 () Term)
+(declare-fun X64.Vale.StateLemmas_i.state_of_S@tok () Term)
+
+; </end encoding val X64.Vale.StateLemmas_i.state_of_S>
+
+
+; <Start encoding val X64.Vale.StateLemmas_i.lemma_to_ok>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun X64.Vale.StateLemmas_i.lemma_to_ok (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun X64.Vale.StateLemmas_i.lemma_to_ok@tok () Term)
+
+; </end encoding val X64.Vale.StateLemmas_i.lemma_to_ok>
+
+
+; <Start encoding val X64.Vale.StateLemmas_i.lemma_to_flags>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun X64.Vale.StateLemmas_i.lemma_to_flags (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun X64.Vale.StateLemmas_i.lemma_to_flags@tok () Term)
+
+; </end encoding val X64.Vale.StateLemmas_i.lemma_to_flags>
+
+
+; <Start encoding val X64.Vale.StateLemmas_i.lemma_to_mem_contains>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun X64.Vale.StateLemmas_i.lemma_to_mem_contains (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun X64.Vale.StateLemmas_i.lemma_to_mem_contains@tok () Term)
+
+; </end encoding val X64.Vale.StateLemmas_i.lemma_to_mem_contains>
+
+
+; <Start encoding val X64.Vale.StateLemmas_i.lemma_to_mem_sel>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun X64.Vale.StateLemmas_i.lemma_to_mem_sel (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun X64.Vale.StateLemmas_i.lemma_to_mem_sel@tok () Term)
+
+; </end encoding val X64.Vale.StateLemmas_i.lemma_to_mem_sel>
+
+
+; <Start encoding val X64.Vale.StateLemmas_i.lemma_to_reg>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun X64.Vale.StateLemmas_i.lemma_to_reg (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun X64.Vale.StateLemmas_i.lemma_to_reg@tok () Term)
+
+
+
+
+; </end encoding val X64.Vale.StateLemmas_i.lemma_to_reg>
+
+
+; <Start encoding val X64.Vale.StateLemmas_i.lemma_to_eval_operand>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun X64.Vale.StateLemmas_i.lemma_to_eval_operand (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun X64.Vale.StateLemmas_i.lemma_to_eval_operand@tok () Term)
+
+; </end encoding val X64.Vale.StateLemmas_i.lemma_to_eval_operand>
+
+
+; <Start encoding val X64.Vale.StateLemmas_i.lemma_to_valid_operand>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun X64.Vale.StateLemmas_i.lemma_to_valid_operand (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun X64.Vale.StateLemmas_i.lemma_to_valid_operand@tok () Term)
+
+; </end encoding val X64.Vale.StateLemmas_i.lemma_to_valid_operand>
+
+
+; <Start encoding val X64.Vale.StateLemmas_i.lemma_of_to>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun X64.Vale.StateLemmas_i.lemma_of_to (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun X64.Vale.StateLemmas_i.lemma_of_to@tok () Term)
+
+; </end encoding val X64.Vale.StateLemmas_i.lemma_of_to>
+
+
+; <Start encoding val X64.Vale.StateLemmas_i.lemma_to_of>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun X64.Vale.StateLemmas_i.lemma_to_of (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun X64.Vale.StateLemmas_i.lemma_to_of@tok () Term)
+
+; </end encoding val X64.Vale.StateLemmas_i.lemma_to_of>
+
+
+; End Externals for interface X64.Vale.StateLemmas_i
+
+
+; Externals for interface X64.Vale.Lemmas_i
+
+
+; <Start encoding let code>
+
+(declare-fun X64.Vale.Lemmas_i.code () Term)
+
+; </end encoding let code>
+
+
+; <Start encoding let codes>
+
+(declare-fun X64.Vale.Lemmas_i.codes () Term)
+
+; </end encoding let codes>
+
+
+; <Start encoding let cf>
+
+(declare-fun X64.Vale.Lemmas_i.cf (Term) Term)
+;;;;;;;;;;;;;;;;flags: Prims.int -> Prims.bool
+(declare-fun Tm_arrow_2b00b574e3c859da902fc1b8ce85c0f1 () Term)
+(declare-fun X64.Vale.Lemmas_i.cf@tok () Term)
+
+; </end encoding let cf>
+
+
+; <Start encoding let eval_code>
+
+(declare-fun X64.Vale.Lemmas_i.eval_code (Term Term Term) Term)
+;;;;;;;;;;;;;;;;c: X64.Semantics_s.code -> s0: X64.Vale.State_i.state -> s1: X64.Vale.State_i.state -> Type
+(declare-fun Tm_arrow_e820f79973835121231df3b8e7b31210 () Term)
+(declare-fun X64.Vale.Lemmas_i.eval_code@tok () Term)
+
+; </end encoding let eval_code>
+
+
+; <Start encoding val X64.Vale.Lemmas_i.eval_while>
+
+(declare-fun X64.Vale.Lemmas_i.eval_while (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;b: X64.Semantics_s.ocmp ->     c: X64.Semantics_s.code ->     n: Prims.nat ->     s0: X64.Vale.State_i.state ->     s1: X64.Vale.State_i.state   -> Type
+(declare-fun Tm_arrow_32b2688a9c04e52666c89873d1b3817d () Term)
+(declare-fun X64.Vale.Lemmas_i.eval_while@tok () Term)
+
+; </end encoding val X64.Vale.Lemmas_i.eval_while>
+
+
+; <Start encoding let eval_ocmp>
+
+(declare-fun X64.Vale.Lemmas_i.eval_ocmp (Term Term) Term)
+;;;;;;;;;;;;;;;;s: X64.Vale.State_i.state -> c: X64.Semantics_s.ocmp -> Prims.bool
+(declare-fun Tm_arrow_e0edbb32836459d608ce3053670bb3b9 () Term)
+(declare-fun X64.Vale.Lemmas_i.eval_ocmp@tok () Term)
+
+; </end encoding let eval_ocmp>
+
+
+; <Start encoding val X64.Vale.Lemmas_i.lemma_cmp_eq>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun X64.Vale.Lemmas_i.lemma_cmp_eq (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun X64.Vale.Lemmas_i.lemma_cmp_eq@tok () Term)
+
+; </end encoding val X64.Vale.Lemmas_i.lemma_cmp_eq>
+
+
+; <Start encoding val X64.Vale.Lemmas_i.lemma_cmp_ne>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun X64.Vale.Lemmas_i.lemma_cmp_ne (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun X64.Vale.Lemmas_i.lemma_cmp_ne@tok () Term)
+
+; </end encoding val X64.Vale.Lemmas_i.lemma_cmp_ne>
+
+
+; <Start encoding val X64.Vale.Lemmas_i.lemma_cmp_le>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun X64.Vale.Lemmas_i.lemma_cmp_le (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun X64.Vale.Lemmas_i.lemma_cmp_le@tok () Term)
+
+; </end encoding val X64.Vale.Lemmas_i.lemma_cmp_le>
+
+
+; <Start encoding val X64.Vale.Lemmas_i.lemma_cmp_ge>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun X64.Vale.Lemmas_i.lemma_cmp_ge (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun X64.Vale.Lemmas_i.lemma_cmp_ge@tok () Term)
+
+; </end encoding val X64.Vale.Lemmas_i.lemma_cmp_ge>
+
+
+; <Start encoding val X64.Vale.Lemmas_i.lemma_cmp_lt>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun X64.Vale.Lemmas_i.lemma_cmp_lt (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun X64.Vale.Lemmas_i.lemma_cmp_lt@tok () Term)
+
+; </end encoding val X64.Vale.Lemmas_i.lemma_cmp_lt>
+
+
+; <Start encoding val X64.Vale.Lemmas_i.lemma_cmp_gt>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun X64.Vale.Lemmas_i.lemma_cmp_gt (Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun X64.Vale.Lemmas_i.lemma_cmp_gt@tok () Term)
+
+; </end encoding val X64.Vale.Lemmas_i.lemma_cmp_gt>
+
+
+; <Start encoding val X64.Vale.Lemmas_i.lemma_block>
+
+(declare-fun X64.Vale.Lemmas_i.lemma_block (Term Term Term) Term)
+(declare-fun Tm_refine_ec0e014fbc4d93e822b7bab1a60d71ce (Term Term Term) Term)
+;;;;;;;;;;;;;;;;b0: X64.Semantics_s.codes -> s0: X64.Vale.State_i.state -> sN: X64.Vale.State_i.state   -> Prims.Ghost (X64.Vale.State_i.state & X64.Semantics_s.code & X64.Semantics_s.codes)
+(declare-fun Tm_ghost_arrow_e5549eb2cedc0b2bdb062b3ee5f94469 () Term)
+(declare-fun X64.Vale.Lemmas_i.lemma_block@tok () Term)
+
+
+; </end encoding val X64.Vale.Lemmas_i.lemma_block>
+
+
+; <Start encoding val X64.Vale.Lemmas_i.lemma_empty>
+
+(declare-fun X64.Vale.Lemmas_i.lemma_empty (Term Term) Term)
+(declare-fun Tm_refine_1a123a18a9fbec3f8aaf12e23c99cf3e (Term Term) Term)
+;;;;;;;;;;;;;;;;s0: X64.Vale.State_i.state -> sN: X64.Vale.State_i.state -> Prims.Ghost X64.Vale.State_i.state
+(declare-fun Tm_ghost_arrow_8ac43c40294e5968e50d9cff9a539d9d () Term)
+(declare-fun X64.Vale.Lemmas_i.lemma_empty@tok () Term)
+
+
+; </end encoding val X64.Vale.Lemmas_i.lemma_empty>
+
+
+; <Start encoding val X64.Vale.Lemmas_i.lemma_ifElse>
+
+(declare-fun X64.Vale.Lemmas_i.lemma_ifElse (Term Term Term Term Term) Term)
+(declare-fun Tm_refine_888cb1733b22127f63eee621a74e68db (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;ifb: X64.Semantics_s.ocmp ->     ct: X64.Semantics_s.code ->     cf: X64.Semantics_s.code ->     s0: X64.Vale.State_i.state ->     sN: X64.Vale.State_i.state   -> Prims.Ghost (Prims.bool & X64.Vale.State_i.state)
+(declare-fun Tm_ghost_arrow_7cfc4af8db6b8f375f195346cf7fd978 () Term)
+(declare-fun X64.Vale.Lemmas_i.lemma_ifElse@tok () Term)
+
+
+; </end encoding val X64.Vale.Lemmas_i.lemma_ifElse>
+
+
+; <Start encoding val X64.Vale.Lemmas_i.lemma_while>
+
+(declare-fun X64.Vale.Lemmas_i.lemma_while (Term Term Term Term) Term)
+(declare-fun Tm_refine_9cf895b0a039eba851f96470cf9d02fd (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;b: X64.Semantics_s.ocmp ->     c: X64.Semantics_s.code ->     s0: X64.Vale.State_i.state ->     sN: X64.Vale.State_i.state   -> Prims.Ghost (Prims.nat & X64.Vale.State_i.state)
+(declare-fun Tm_ghost_arrow_41d90e4eb538ca1c8cd43daf782f0a1c () Term)
+(declare-fun X64.Vale.Lemmas_i.lemma_while@tok () Term)
+
+
+; </end encoding val X64.Vale.Lemmas_i.lemma_while>
+
+
+; <Start encoding val X64.Vale.Lemmas_i.lemma_whileTrue>
+
+(declare-fun X64.Vale.Lemmas_i.lemma_whileTrue (Term Term Term Term Term) Term)
+(declare-fun Tm_refine_5b92e6c1855dac2bfe5a094c5f8b5d4e (Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;b: X64.Semantics_s.ocmp ->     c: X64.Semantics_s.code ->     n: Prims.nat ->     s0: X64.Vale.State_i.state ->     sN: X64.Vale.State_i.state   -> Prims.Ghost (X64.Vale.State_i.state & X64.Vale.State_i.state)
+(declare-fun Tm_ghost_arrow_422fc444b9b379c9186cc5ee544bfe5d () Term)
+(declare-fun X64.Vale.Lemmas_i.lemma_whileTrue@tok () Term)
+
+
+; </end encoding val X64.Vale.Lemmas_i.lemma_whileTrue>
+
+
+; <Start encoding val X64.Vale.Lemmas_i.lemma_whileFalse>
+
+(declare-fun X64.Vale.Lemmas_i.lemma_whileFalse (Term Term Term Term) Term)
+(declare-fun Tm_refine_e47f154361dcabf8dd6639320265676b (Term Term Term) Term)
+;;;;;;;;;;;;;;;;b: X64.Semantics_s.ocmp ->     c: X64.Semantics_s.code ->     s0: X64.Vale.State_i.state ->     sN: X64.Vale.State_i.state   -> Prims.Ghost X64.Vale.State_i.state
+(declare-fun Tm_ghost_arrow_3011c501ae6b651cac055e84bf6139a1 () Term)
+(declare-fun X64.Vale.Lemmas_i.lemma_whileFalse@tok () Term)
+
+
+; </end encoding val X64.Vale.Lemmas_i.lemma_whileFalse>
+
+
+; End Externals for interface X64.Vale.Lemmas_i
+
+
+; Externals for module X64.Print_s
+
+
+; <Start encoding type X64.Print_s.printer>
+
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun X64.Print_s.printer () Term)
+;;;;;;;;;;;;;;;;Constructor
+(declare-fun X64.Print_s.Mkprinter (Term Term Term Term Term Term Term Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Print_s.Mkprinter_reg_prefix (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Print_s.Mkprinter_mem_prefix (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Print_s.Mkprinter_maddr (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Print_s.Mkprinter_const (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Print_s.Mkprinter_ins_name (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Print_s.Mkprinter_op_order (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Print_s.Mkprinter_align (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Print_s.Mkprinter_header (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Print_s.Mkprinter_footer (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Print_s.Mkprinter_proc_name (Term) Term)
+;;;;;;;;;;;;;;;;Projector
+(declare-fun X64.Print_s.Mkprinter_ret (Term) Term)
+;;;;;;;;;;;;;;;;data constructor proxy: X64.Print_s.Mkprinter
+(declare-fun X64.Print_s.Mkprinter@tok () Term)
+;;;;;;;;;;;;;;;;_: Prims.unit -> Prims.string
+(declare-fun Tm_arrow_998f8468eda62fbe33076ca009204032 () Term)
+;;;;;;;;;;;;;;;;_: Prims.string -> Prims.string
+(declare-fun Tm_arrow_70affe4dada4ca8ba18740c614ba5211 () Term)
+;;;;;;;;;;;;;;;;_: Prims.string ->     _: FStar.Pervasives.Native.option (Prims.string & Prims.string) ->     _: Prims.string   -> Prims.string
+(declare-fun Tm_arrow_1812a41d0c6987835ab3384e07167375 () Term)
+
+;;;;;;;;;;;;;;;;_: Prims.string -> _: Prims.list X64.Machine_s.operand -> Prims.string
+(declare-fun Tm_arrow_78f97979f9b3975cfed2be9aa3c9f45e () Term)
+;;;;;;;;;;;;;;;;_: Prims.string -> _: Prims.string -> Prims.string & Prims.string
+(declare-fun Tm_arrow_590505dc49453312909d156fb4bf80a4 () Term)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+;;;;;;;;;;;;;;;;reg_prefix: (_: Prims.unit -> Prims.string) ->     mem_prefix: (_: Prims.string -> Prims.string) ->     maddr:       (             _: Prims.string ->             _: FStar.Pervasives.Native.option (Prims.string & Prims.string) ->             _: Prims.string           -> Prims.string) ->     const: (_: Prims.int -> Prims.string) ->     ins_name: (_: Prims.string -> _: Prims.list X64.Machine_s.operand -> Prims.string) ->     op_order: (_: Prims.string -> _: Prims.string -> Prims.string & Prims.string) ->     align: (_: Prims.unit -> Prims.string) ->     header: (_: Prims.unit -> Prims.string) ->     footer: (_: Prims.unit -> Prims.string) ->     proc_name: (_: Prims.string -> Prims.string) ->     ret: (_: Prims.string -> Prims.string)   -> printer
+(declare-fun Tm_arrow_f4d68a42ff77d6bf4be39926ed2a6df1 () Term)
+
+; <start constructor X64.Print_s.printer>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-X64.Print_s.printer ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+101)
+(= __@x0
+X64.Print_s.printer)))
+
+; </end constructor X64.Print_s.printer>
+
+
+; <start constructor X64.Print_s.Mkprinter>
+
+;;;;;;;;;;;;;;;;Discriminator definition
+(define-fun is-X64.Print_s.Mkprinter ((__@x0 Term)) Bool
+ (and (= (Term_constr_id __@x0)
+129)
+(= __@x0
+(X64.Print_s.Mkprinter (X64.Print_s.Mkprinter_reg_prefix __@x0)
+(X64.Print_s.Mkprinter_mem_prefix __@x0)
+(X64.Print_s.Mkprinter_maddr __@x0)
+(X64.Print_s.Mkprinter_const __@x0)
+(X64.Print_s.Mkprinter_ins_name __@x0)
+(X64.Print_s.Mkprinter_op_order __@x0)
+(X64.Print_s.Mkprinter_align __@x0)
+(X64.Print_s.Mkprinter_header __@x0)
+(X64.Print_s.Mkprinter_footer __@x0)
+(X64.Print_s.Mkprinter_proc_name __@x0)
+(X64.Print_s.Mkprinter_ret __@x0)))))
+
+; </end constructor X64.Print_s.Mkprinter>
+
+
+; </end encoding type X64.Print_s.printer>
+
+
+; <Start encoding val X64.Print_s.__proj__Mkprinter__item__reg_prefix>
+
+(declare-fun X64.Print_s.__proj__Mkprinter__item__reg_prefix (Term) Term)
+
+;;;;;;;;;;;;;;;;projectee: printer -> _: Prims.unit -> Prims.string
+(declare-fun Tm_arrow_95e0d79c44e3dab999eb5c9a7beeda82 () Term)
+(declare-fun X64.Print_s.__proj__Mkprinter__item__reg_prefix@tok () Term)
+
+
+; </end encoding val X64.Print_s.__proj__Mkprinter__item__reg_prefix>
+
+
+; <Skipped let __proj__Mkprinter__item__reg_prefix/>
+
+
+; <Start encoding val X64.Print_s.__proj__Mkprinter__item__mem_prefix>
+
+(declare-fun X64.Print_s.__proj__Mkprinter__item__mem_prefix (Term) Term)
+
+;;;;;;;;;;;;;;;;projectee: printer -> _: Prims.string -> Prims.string
+(declare-fun Tm_arrow_e6dc54b9284412253ab722d73b6ef033 () Term)
+(declare-fun X64.Print_s.__proj__Mkprinter__item__mem_prefix@tok () Term)
+
+
+; </end encoding val X64.Print_s.__proj__Mkprinter__item__mem_prefix>
+
+
+; <Skipped let __proj__Mkprinter__item__mem_prefix/>
+
+
+; <Start encoding val X64.Print_s.__proj__Mkprinter__item__maddr>
+
+(declare-fun X64.Print_s.__proj__Mkprinter__item__maddr (Term) Term)
+
+;;;;;;;;;;;;;;;;projectee: printer ->     _: Prims.string ->     _: FStar.Pervasives.Native.option (Prims.string & Prims.string) ->     _: Prims.string   -> Prims.string
+(declare-fun Tm_arrow_6ddae27d09fadc28bd79a846c26b5ebf () Term)
+(declare-fun X64.Print_s.__proj__Mkprinter__item__maddr@tok () Term)
+
+
+; </end encoding val X64.Print_s.__proj__Mkprinter__item__maddr>
+
+
+; <Skipped let __proj__Mkprinter__item__maddr/>
+
+
+; <Start encoding val X64.Print_s.__proj__Mkprinter__item__const>
+
+(declare-fun X64.Print_s.__proj__Mkprinter__item__const (Term) Term)
+
+;;;;;;;;;;;;;;;;projectee: printer -> _: Prims.int -> Prims.string
+(declare-fun Tm_arrow_60568e8bbfa4b98e141b020e006fea47 () Term)
+(declare-fun X64.Print_s.__proj__Mkprinter__item__const@tok () Term)
+
+
+; </end encoding val X64.Print_s.__proj__Mkprinter__item__const>
+
+
+; <Skipped let __proj__Mkprinter__item__const/>
+
+
+; <Start encoding val X64.Print_s.__proj__Mkprinter__item__ins_name>
+
+(declare-fun X64.Print_s.__proj__Mkprinter__item__ins_name (Term) Term)
+
+;;;;;;;;;;;;;;;;projectee: printer -> _: Prims.string -> _: Prims.list X64.Machine_s.operand -> Prims.string
+(declare-fun Tm_arrow_a2ed7d0b5dbeeb71ea0ba361fe5f8b2b () Term)
+(declare-fun X64.Print_s.__proj__Mkprinter__item__ins_name@tok () Term)
+
+
+; </end encoding val X64.Print_s.__proj__Mkprinter__item__ins_name>
+
+
+; <Skipped let __proj__Mkprinter__item__ins_name/>
+
+
+; <Start encoding val X64.Print_s.__proj__Mkprinter__item__op_order>
+
+(declare-fun X64.Print_s.__proj__Mkprinter__item__op_order (Term) Term)
+
+;;;;;;;;;;;;;;;;projectee: printer -> _: Prims.string -> _: Prims.string -> Prims.string & Prims.string
+(declare-fun Tm_arrow_ffbc311c686ddd3da6188918715e4214 () Term)
+(declare-fun X64.Print_s.__proj__Mkprinter__item__op_order@tok () Term)
+
+
+; </end encoding val X64.Print_s.__proj__Mkprinter__item__op_order>
+
+
+; <Skipped let __proj__Mkprinter__item__op_order/>
+
+
+; <Start encoding val X64.Print_s.__proj__Mkprinter__item__align>
+
+(declare-fun X64.Print_s.__proj__Mkprinter__item__align (Term) Term)
+
+
+(declare-fun X64.Print_s.__proj__Mkprinter__item__align@tok () Term)
+
+
+; </end encoding val X64.Print_s.__proj__Mkprinter__item__align>
+
+
+; <Skipped let __proj__Mkprinter__item__align/>
+
+
+; <Start encoding val X64.Print_s.__proj__Mkprinter__item__header>
+
+(declare-fun X64.Print_s.__proj__Mkprinter__item__header (Term) Term)
+
+
+(declare-fun X64.Print_s.__proj__Mkprinter__item__header@tok () Term)
+
+
+; </end encoding val X64.Print_s.__proj__Mkprinter__item__header>
+
+
+; <Skipped let __proj__Mkprinter__item__header/>
+
+
+; <Start encoding val X64.Print_s.__proj__Mkprinter__item__footer>
+
+(declare-fun X64.Print_s.__proj__Mkprinter__item__footer (Term) Term)
+
+
+(declare-fun X64.Print_s.__proj__Mkprinter__item__footer@tok () Term)
+
+
+; </end encoding val X64.Print_s.__proj__Mkprinter__item__footer>
+
+
+; <Skipped let __proj__Mkprinter__item__footer/>
+
+
+; <Start encoding val X64.Print_s.__proj__Mkprinter__item__proc_name>
+
+(declare-fun X64.Print_s.__proj__Mkprinter__item__proc_name (Term) Term)
+
+
+(declare-fun X64.Print_s.__proj__Mkprinter__item__proc_name@tok () Term)
+
+
+; </end encoding val X64.Print_s.__proj__Mkprinter__item__proc_name>
+
+
+; <Skipped let __proj__Mkprinter__item__proc_name/>
+
+
+; <Start encoding val X64.Print_s.__proj__Mkprinter__item__ret>
+
+(declare-fun X64.Print_s.__proj__Mkprinter__item__ret (Term) Term)
+
+
+(declare-fun X64.Print_s.__proj__Mkprinter__item__ret@tok () Term)
+
+
+; </end encoding val X64.Print_s.__proj__Mkprinter__item__ret>
+
+
+; <Skipped let __proj__Mkprinter__item__ret/>
+
+
+; <Start encoding let print_reg>
+
+(declare-fun X64.Print_s.print_reg (Term Term) Term)
+;;;;;;;;;;;;;;;;r: X64.Machine_s.reg -> p: printer -> Prims.string
+(declare-fun Tm_arrow_91c906156f57bd1b2dfb03c9de1043fd () Term)
+(declare-fun X64.Print_s.print_reg@tok () Term)
+
+; </end encoding let print_reg>
+
+
+; <Start encoding let print_small_reg>
+
+(declare-fun X64.Print_s.print_small_reg (Term Term) Term)
+
+(declare-fun X64.Print_s.print_small_reg@tok () Term)
+
+
+; </end encoding let print_small_reg>
+
+
+; <Start encoding let print_maddr>
+
+(declare-fun X64.Print_s.print_maddr (Term Term Term) Term)
+;;;;;;;;;;;;;;;;m: X64.Machine_s.maddr -> ptr_type: Prims.string -> p: printer -> Prims.string
+(declare-fun Tm_arrow_1eef96729e84c9d31b0b07077cd35bec () Term)
+(declare-fun X64.Print_s.print_maddr@tok () Term)
+
+
+; </end encoding let print_maddr>
+
+
+; <Start encoding let print_operand>
+
+(declare-fun X64.Print_s.print_operand (Term Term) Term)
+;;;;;;;;;;;;;;;;o: X64.Machine_s.operand -> p: printer -> Prims.string
+(declare-fun Tm_arrow_78b04fdc5aa7531f1715697ef200e18a () Term)
+(declare-fun X64.Print_s.print_operand@tok () Term)
+
+
+; </end encoding let print_operand>
+
+
+; <Start encoding let print_small_operand>
+
+(declare-fun X64.Print_s.print_small_operand (Term Term) Term)
+
+(declare-fun X64.Print_s.print_small_operand@tok () Term)
+
+
+; </end encoding let print_small_operand>
+
+
+; <Start encoding val X64.Print_s.print_any>
+
+(declare-fun X64.Print_s.print_any (Term Term) Term)
+;;;;;;;;;;;;;;;;_: 'a -> Prims.string
+(declare-fun Tm_arrow_6652b507163e00a53181486d64459501 () Term)
+(declare-fun X64.Print_s.print_any@tok () Term)
+
+; </end encoding val X64.Print_s.print_any>
+
+
+; <Start encoding let print_shift_operand>
+
+(declare-fun X64.Print_s.print_shift_operand (Term Term) Term)
+
+(declare-fun X64.Print_s.print_shift_operand@tok () Term)
+
+
+; </end encoding let print_shift_operand>
+
+
+; <Start encoding let cmp_not>
+
+(declare-fun X64.Print_s.cmp_not (Term) Term)
+;;;;;;;;;;;;;;;;o: X64.Semantics_s.ocmp -> X64.Semantics_s.ocmp
+(declare-fun Tm_arrow_de07ca8b36185833370d6ee26f318da1 () Term)
+(declare-fun X64.Print_s.cmp_not@tok () Term)
+
+; </end encoding let cmp_not>
+
+
+; <Start encoding let uu___0>
+
+(declare-fun X64.Print_s.uu___0 (Dummy_sort) Term)
+
+; </end encoding let uu___0>
+
+
+; <Start encoding let print_ins>
+
+(declare-fun X64.Print_s.print_ins (Term Term) Term)
+;;;;;;;;;;;;;;;;ins: X64.Semantics_s.ins -> p: printer -> Prims.string
+(declare-fun Tm_arrow_a5724305cec47ce94886152d9098bff5 () Term)
+(declare-fun X64.Print_s.print_ins@tok () Term)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+; </end encoding let print_ins>
+
+
+; <Start encoding let print_cmp>
+
+(declare-fun X64.Print_s.print_cmp (Term Term Term) Term)
+;;;;;;;;;;;;;;;;c: X64.Semantics_s.ocmp -> counter: Prims.int -> p: printer -> Prims.string
+(declare-fun Tm_arrow_7c37824b6952a74749c1bd6f20cbda93 () Term)
+(declare-fun X64.Print_s.print_cmp@tok () Term)
+
+
+
+
+
+
+
+; </end encoding let print_cmp>
+
+
+; <Start encoding let rec print_block and print_code>
+
+;;;;;;;;;;;;;;;;Fuel-instrumented function name
+(declare-fun X64.Print_s.print_code.fuel_instrumented (Fuel Term Term Term) Term)
+;;;;;;;;;;;;;;;;Token for fuel-instrumented partial applications
+(declare-fun X64.Print_s.print_code.fuel_instrumented_token () Term)
+;;;;;;;;;;;;;;;;Fuel-instrumented function name
+(declare-fun X64.Print_s.print_block.fuel_instrumented (Fuel Term Term Term) Term)
+;;;;;;;;;;;;;;;;Token for fuel-instrumented partial applications
+(declare-fun X64.Print_s.print_block.fuel_instrumented_token () Term)
+(declare-fun X64.Print_s.print_block (Term Term Term) Term)
+(declare-fun X64.Print_s.print_block@tok () Term)
+(declare-fun X64.Print_s.print_code (Term Term Term) Term)
+(declare-fun X64.Print_s.print_code@tok () Term)
+;;;;;;;;;;;;;;;;b: X64.Semantics_s.codes -> n: Prims.int -> p: printer -> Prims.string & Prims.int
+(declare-fun Tm_arrow_c7ef5123fa15f839f312819ff81f7cc5 () Term)
+;;;;;;;;;;;;;;;;c: X64.Semantics_s.code -> n: Prims.int -> p: printer -> Prims.string & Prims.int
+(declare-fun Tm_arrow_f7a5ae2e4ef3acdc436f38509ea02264 () Term)
+
+
+; </end encoding let rec print_block and print_code>
+
+
+; <Start encoding let print_header>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun X64.Print_s.print_header (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun X64.Print_s.print_header@tok () Term)
+
+; </end encoding let print_header>
+
+
+; <Start encoding let print_proc>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun X64.Print_s.print_proc (Term Term Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun X64.Print_s.print_proc@tok () Term)
+
+; </end encoding let print_proc>
+
+
+; <Start encoding let print_footer>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun X64.Print_s.print_footer (Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun X64.Print_s.print_footer@tok () Term)
+
+; </end encoding let print_footer>
+
+
+; <Start encoding let masm>
+
+(declare-fun X64.Print_s.masm (Dummy_sort) Term)
+
+(declare-fun Tm_abs_d1d29a6ad4eefbba838fa3fa939a2f9d () Term)
+
+(declare-fun Tm_abs_05688fb0a066953b544e530191aa9885 () Term)
+
+(declare-fun Tm_abs_6433e0d84408f90b1914d68c8f92d19d () Term)
+
+(declare-fun Tm_abs_89e69cb3684213f778aa72e3375615c9 () Term)
+
+(declare-fun Tm_abs_1d12b7c68721ef5889a4054acb0421a1 () Term)
+
+(declare-fun Tm_abs_4f7e0c5e68802da843bb1aa0f293764a () Term)
+
+(declare-fun Tm_abs_6a2876ad4e70fffb26afc39175c22c32 () Term)
+
+(declare-fun Tm_abs_4d567d05d649fe29e121c986ff3a438f () Term)
+
+(declare-fun Tm_abs_8a7b9b24011a1ed476de959b44ea96b0 () Term)
+
+(declare-fun Tm_abs_f02d1d3c1b3a00fe5a0396dc90afc8b9 () Term)
+
+(declare-fun Tm_abs_a2475844ebea9583626c5b630dbe72a9 () Term)
+
+; </end encoding let masm>
+
+
+; <Start encoding let gcc>
+
+(declare-fun X64.Print_s.gcc (Dummy_sort) Term)
+
+; </end encoding let gcc>
+
+
+; End Externals for module X64.Print_s
+
+
+; Externals for interface Opaque_i
+
+
+; <Start encoding val Opaque_i.make_opaque>
+
+(declare-fun Opaque_i.make_opaque (Term Term) Term)
+
+(declare-fun Opaque_i.make_opaque@tok () Term)
+
+; </end encoding val Opaque_i.make_opaque>
+
+
+; <Start encoding val Opaque_i.reveal_opaque>
+
+;;;;;;;;;;;;;;;;Uninterpreted function symbol for impure function
+(declare-fun Opaque_i.reveal_opaque (Term Term) Term)
+;;;;;;;;;;;;;;;;Uninterpreted name for impure function
+(declare-fun Opaque_i.reveal_opaque@tok () Term)
+
+; </end encoding val Opaque_i.reveal_opaque>
+
+
+; End Externals for interface Opaque_i
+
+(push) ;; push{1
+
+; Internals for X64.Vale.Decls
+
+
+; encoding sigelt #reset-options "--z3smtopt '(set-option :smt.arith.nl true)' --using_facts_from Prims --using_facts_from FStar.Math"
+
+
+; <Skipped #reset-options "--z3smtopt '(set-option :smt.arith.nl true)' --using_facts_from Prims --using_facts_from FStar.Math"/>
+
+;;;;;;;;;;;;;;;;function token typing
+;;; Fact-ids: Name Prims.__cache_version_number__; Namespace Prims
+(assert (! (HasType Prims.__cache_version_number__
+Prims.int)
+:named function_token_typing_Prims.__cache_version_number__))
+;;;;;;;;;;;;;;;;unit typing
+;;; Fact-ids: Name Prims.unit; Namespace Prims
+(assert (! (HasType Tm_unit
+Prims.unit)
+:named unit_typing))
+;;;;;;;;;;;;;;;;unit inversion
+;;; Fact-ids: Name Prims.unit; Namespace Prims
+(assert (! (forall ((@u0 Fuel) (@x1 Term))
+ (! (implies (HasTypeFuel @u0
+@x1
+Prims.unit)
+(= @x1
+Tm_unit))
+ 
+
+:pattern ((HasTypeFuel @u0
+@x1
+Prims.unit))
+:qid unit_inversion))
+:named unit_inversion))
+;;;;;;;;;;;;;;;;typing for data constructor proxy
+;;; Fact-ids: Name Prims.trivial; Namespace Prims; Name Prims.T; Namespace Prims
+(assert (! (HasType Prims.T@tok
+Prims.trivial)
+:named typing_tok_Prims.T@tok))
+;;;;;;;;;;;;;;;;free var typing
+;;; Fact-ids: Name Prims.unit; Namespace Prims
+(assert (! (HasType Prims.unit
+Prims.eqtype)
+:named typing_Prims.unit))
+;;;;;;;;;;;;;;;;free var typing
+;;; Fact-ids: Name Prims.subtype_of; Namespace Prims
+(assert (! 
+;; def=Prims.fst(291,4-291,14); use=Prims.fst(291,4-291,14)
+(forall ((@x0 Term) (@x1 Term))
+ (! (implies (and (HasType @x0
+Tm_type)
+(HasType @x1
+Tm_type))
+(HasType (Prims.subtype_of @x0
+@x1)
+Prims.logical))
+ 
+
+:pattern ((Prims.subtype_of @x0
+@x1))
+:qid typing_Prims.subtype_of))
+
+:named typing_Prims.subtype_of))
+;;;;;;;;;;;;;;;;free var typing
+;;; Fact-ids: Name Prims.squash; Namespace Prims
+(assert (! 
+;; def=Prims.fst(117,5-117,11); use=Prims.fst(117,5-117,11)
+(forall ((@x0 Term))
+ (! (implies (HasType @x0
+Tm_type)
+(HasType (Prims.squash @x0)
+Tm_type))
+ 
+
+:pattern ((Prims.squash @x0))
+:qid typing_Prims.squash))
+
+:named typing_Prims.squash))
+;;;;;;;;;;;;;;;;free var typing
+;;; Fact-ids: Name Prims.pure_post'; Namespace Prims
+(assert (! 
+;; def=Prims.fst(315,4-315,14); use=Prims.fst(315,4-315,14)
+(forall ((@x0 Term) (@x1 Term))
+ (! (implies (and (HasType @x0
+Tm_type)
+(HasType @x1
+Tm_type))
+(HasType (Prims.pure_post_ @x0
+@x1)
+Tm_type))
+ 
+
+:pattern ((Prims.pure_post_ @x0
+@x1))
+:qid typing_Prims.pure_post_))
+
+:named typing_Prims.pure_post_))
+;;;;;;;;;;;;;;;;free var typing
+;;; Fact-ids: Name Prims.pure_post; Namespace Prims
+(assert (! 
+;; def=Prims.fst(316,4-316,13); use=Prims.fst(316,4-316,13)
+(forall ((@x0 Term))
+ (! (implies (HasType @x0
+Tm_type)
+(HasType (Prims.pure_post @x0)
+Tm_type))
+ 
+
+:pattern ((Prims.pure_post @x0))
+:qid typing_Prims.pure_post))
+
+:named typing_Prims.pure_post))
+;;;;;;;;;;;;;;;;free var typing
+;;; Fact-ids: Name Prims.pow2; Namespace Prims
+(assert (! 
+;; def=Prims.fst(708,8-708,12); use=Prims.fst(708,8-708,12)
+(forall ((@x0 Term))
+ (! (implies (HasType @x0
+Prims.nat)
+(HasType (Prims.pow2 @x0)
+Prims.pos))
+ 
+
+:pattern ((Prims.pow2 @x0))
+:qid typing_Prims.pow2))
+
+:named typing_Prims.pow2))
+;;;;;;;;;;;;;;;;free var typing
+;;; Fact-ids: Name Prims.pos; Namespace Prims
+(assert (! (HasType Prims.pos
+Tm_type)
+:named typing_Prims.pos))
+;;;;;;;;;;;;;;;;free var typing
+;;; Fact-ids: Name Prims.op_Equals_Equals_Equals; Namespace Prims
+(assert (! 
+;; def=Prims.fst(498,6-498,9); use=Prims.fst(498,6-498,9)
+(forall ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term))
+ (! (implies (and (HasType @x0
+Tm_type)
+(HasType @x1
+Tm_type)
+(HasType @x2
+@x0)
+(HasType @x3
+@x1))
+(HasType (Prims.op_Equals_Equals_Equals @x0
+@x1
+@x2
+@x3)
+Prims.logical))
+ 
+
+:pattern ((Prims.op_Equals_Equals_Equals @x0
+@x1
+@x2
+@x3))
+:qid typing_Prims.op_Equals_Equals_Equals))
+
+:named typing_Prims.op_Equals_Equals_Equals))
+;;;;;;;;;;;;;;;;free var typing
+;;; Fact-ids: Name Prims.nat; Namespace Prims
+(assert (! (HasType Prims.nat
+Tm_type)
+:named typing_Prims.nat))
+;;;;;;;;;;;;;;;;free var typing
+;;; Fact-ids: Name Prims.logical; Namespace Prims
+(assert (! (HasType Prims.logical
+Tm_type)
+:named typing_Prims.logical))
+;;;;;;;;;;;;;;;;free var typing
+;;; Fact-ids: Name Prims.l_True; Namespace Prims
+(assert (! (HasType Prims.l_True
+Prims.logical)
+:named typing_Prims.l_True))
+;;;;;;;;;;;;;;;;free var typing
+;;; Fact-ids: Name Prims.int; Namespace Prims
+(assert (! (HasType Prims.int
+Prims.eqtype)
+:named typing_Prims.int))
+;;;;;;;;;;;;;;;;free var typing
+;;; Fact-ids: Name Prims.hasEq; Namespace Prims
+(assert (! 
+;; def=Prims.fst(69,5-69,10); use=Prims.fst(69,5-69,10)
+(forall ((@x0 Term))
+ (! (implies (HasType @x0
+Tm_type)
+(HasType (Prims.hasEq @x0)
+Tm_type))
+ 
+
+:pattern ((Prims.hasEq @x0))
+:qid typing_Prims.hasEq))
+
+:named typing_Prims.hasEq))
+;;;;;;;;;;;;;;;;free var typing
+;;; Fact-ids: Name Prims.eqtype; Namespace Prims
+(assert (! (HasType Prims.eqtype
+Tm_type)
+:named typing_Prims.eqtype))
+;;;;;;;;;;;;;;;;free var typing
+;;; Fact-ids: Name Prims.bool; Namespace Prims
+(assert (! (HasType Prims.bool
+Prims.eqtype)
+:named typing_Prims.bool))
+;;;;;;;;;;;;;;;;True interpretation
+;;; Fact-ids: Name Prims.l_True; Namespace Prims
+(assert (! (Valid Prims.l_True)
+:named true_interp))
+;;;;;;;;;;;;;;;;Typing correspondence of token to term
+;;; Fact-ids: Name Prims.pow2; Namespace Prims
+(assert (! 
+;; def=Prims.fst(708,8-708,12); use=Prims.fst(708,8-708,12)
+(forall ((@u0 Fuel) (@x1 Term))
+ (! (implies (HasType @x1
+Prims.nat)
+(HasType (Prims.pow2.fuel_instrumented @u0
+@x1)
+Prims.pos))
+ 
+
+:pattern ((Prims.pow2.fuel_instrumented @u0
+@x1))
+:qid token_correspondence_Prims.pow2.fuel_instrumented))
+
+:named token_correspondence_Prims.pow2.fuel_instrumented))
+;;;;;;;;;;;;;;;;refinement kinding
+;;; Fact-ids: Name FStar.Pervasives.false_elim; Namespace FStar.Pervasives
+(assert (! (HasType Tm_refine_f1ecc6ab6882a651504f328937700647
+Tm_type)
+:named refinement_kinding_Tm_refine_f1ecc6ab6882a651504f328937700647))
+;;;;;;;;;;;;;;;;refinement kinding
+;;; Fact-ids: Name FStar.Monotonic.Heap.lemma_mref_injectivity; Namespace FStar.Monotonic.Heap
+(assert (! (HasType Tm_refine_e1adf49e5e772ddffa19181e1a812a81
+Tm_type)
+:named refinement_kinding_Tm_refine_e1adf49e5e772ddffa19181e1a812a81))
+;;;;;;;;;;;;;;;;refinement kinding
+;;; Fact-ids: Name FStar.List.Tot.Base.strict_suffix_of; Namespace FStar.List.Tot.Base
+(assert (! (HasType Tm_refine_da3062322c9bea8d5b2058386775b91a
+Tm_type)
+:named refinement_kinding_Tm_refine_da3062322c9bea8d5b2058386775b91a))
+;;;;;;;;;;;;;;;;refinement kinding
+;;; Fact-ids: Name FStar.Preorder.preorder; Namespace FStar.Preorder
+(assert (! 
+;; def=FStar.Preorder.fst(33,25-33,57); use=FStar.Preorder.fst(33,25-33,57)
+(forall ((@x0 Term))
+ (! (HasType (Tm_refine_bd10f09297e0e7dc08314f7d9211801c @x0)
+Tm_type)
+ 
+
+:pattern ((HasType (Tm_refine_bd10f09297e0e7dc08314f7d9211801c @x0)
+Tm_type))
+:qid refinement_kinding_Tm_refine_bd10f09297e0e7dc08314f7d9211801c))
+
+:named refinement_kinding_Tm_refine_bd10f09297e0e7dc08314f7d9211801c))
+;;;;;;;;;;;;;;;;refinement kinding
+;;; Fact-ids: Name FStar.Monotonic.Heap.addr_of_aref; Namespace FStar.Monotonic.Heap
+(assert (! (HasType Tm_refine_afd51579b90d50ea23e03b743a1fa001
+Tm_type)
+:named refinement_kinding_Tm_refine_afd51579b90d50ea23e03b743a1fa001))
+;;;;;;;;;;;;;;;;refinement kinding
+;;; Fact-ids: Name X64.Semantics_s.logxor_uint64; Namespace X64.Semantics_s
+(assert (! (HasType Tm_refine_9e523552080158c04fafd9dbbcf2e767
+Tm_type)
+:named refinement_kinding_Tm_refine_9e523552080158c04fafd9dbbcf2e767))
+;;;;;;;;;;;;;;;;refinement kinding
+;;; Fact-ids: Name Prims.pure_post'; Namespace Prims
+(assert (! 
+;; def=Prims.fst(315,31-315,40); use=Prims.fst(315,31-315,40)
+(forall ((@x0 Term) (@x1 Term))
+ (! (HasType (Tm_refine_8d65e998a07dd53ec478e27017d9dba5 @x0
+@x1)
+Tm_type)
+ 
+
+:pattern ((HasType (Tm_refine_8d65e998a07dd53ec478e27017d9dba5 @x0
+@x1)
+Tm_type))
+:qid refinement_kinding_Tm_refine_8d65e998a07dd53ec478e27017d9dba5))
+
+:named refinement_kinding_Tm_refine_8d65e998a07dd53ec478e27017d9dba5))
+;;;;;;;;;;;;;;;;refinement kinding
+;;; Fact-ids: Name Prims.pos; Namespace Prims
+(assert (! (HasType Tm_refine_774ba3f728d91ead8ef40be66c9802e5
+Tm_type)
+:named refinement_kinding_Tm_refine_774ba3f728d91ead8ef40be66c9802e5))
+;;;;;;;;;;;;;;;;refinement kinding
+;;; Fact-ids: Name Prims.prop; Namespace Prims
+(assert (! (HasType Tm_refine_73f210ca6e0061ed4a3150f69b8f33bf
+Tm_type)
+:named refinement_kinding_Tm_refine_73f210ca6e0061ed4a3150f69b8f33bf))
+;;;;;;;;;;;;;;;;refinement kinding
+;;; Fact-ids: Name Prims.nat; Namespace Prims
+(assert (! (HasType Tm_refine_542f9d4f129664613f2483a6c88bc7c2
+Tm_type)
+:named refinement_kinding_Tm_refine_542f9d4f129664613f2483a6c88bc7c2))
+;;;;;;;;;;;;;;;;refinement kinding
+;;; Fact-ids: Name X64.Semantics_s.u; Namespace X64.Semantics_s
+(assert (! (HasType Tm_refine_4a56532dbb80b238f6b7d86890fac538
+Tm_type)
+:named refinement_kinding_Tm_refine_4a56532dbb80b238f6b7d86890fac538))
+;;;;;;;;;;;;;;;;refinement kinding
+;;; Fact-ids: Name Prims.eqtype; Namespace Prims
+(assert (! (HasType Tm_refine_414d0a9f578ab0048252f8c8f552b99f
+Tm_type)
+:named refinement_kinding_Tm_refine_414d0a9f578ab0048252f8c8f552b99f))
+;;;;;;;;;;;;;;;;refinement kinding
+;;; Fact-ids: Name Prims.squash; Namespace Prims
+(assert (! 
+;; def=Prims.fst(117,32-117,42); use=Prims.fst(117,32-117,42)
+(forall ((@x0 Term))
+ (! (HasType (Tm_refine_2de20c066034c13bf76e9c0b94f4806c @x0)
+Tm_type)
+ 
+
+:pattern ((HasType (Tm_refine_2de20c066034c13bf76e9c0b94f4806c @x0)
+Tm_type))
+:qid refinement_kinding_Tm_refine_2de20c066034c13bf76e9c0b94f4806c))
+
+:named refinement_kinding_Tm_refine_2de20c066034c13bf76e9c0b94f4806c))
+;;;;;;;;;;;;;;;;refinement kinding
+;;; Fact-ids: Name Prims.nonzero; Namespace Prims
+(assert (! (HasType Tm_refine_0766302b68bb44ab7aff8c4d8be0b46f
+Tm_type)
+:named refinement_kinding_Tm_refine_0766302b68bb44ab7aff8c4d8be0b46f))
+;;;;;;;;;;;;;;;;refinement_interpretation
+;;; Fact-ids: Name FStar.Pervasives.false_elim; Namespace FStar.Pervasives
+(assert (! 
+;; def=FStar.Pervasives.fsti(772,26-772,42); use=FStar.Pervasives.fsti(772,26-772,42)
+(forall ((@u0 Fuel) (@x1 Term))
+ (! (iff (HasTypeFuel @u0
+@x1
+Tm_refine_f1ecc6ab6882a651504f328937700647)
+false)
+ 
+
+:pattern ((HasTypeFuel @u0
+@x1
+Tm_refine_f1ecc6ab6882a651504f328937700647))
+:qid refinement_interpretation_Tm_refine_f1ecc6ab6882a651504f328937700647))
+
+:named refinement_interpretation_Tm_refine_f1ecc6ab6882a651504f328937700647))
+;;;;;;;;;;;;;;;;refinement_interpretation
+;;; Fact-ids: Name FStar.Monotonic.Heap.lemma_mref_injectivity; Namespace FStar.Monotonic.Heap
+(assert (! 
+;; def=FStar.Monotonic.Heap.fsti(207,3-207,136); use=FStar.Monotonic.Heap.fsti(207,3-207,136)
+(forall ((@u0 Fuel) (@x1 Term))
+ (! (iff (HasTypeFuel @u0
+@x1
+Tm_refine_e1adf49e5e772ddffa19181e1a812a81)
+(and (HasTypeFuel @u0
+@x1
+Prims.unit)
+
+;; def=FStar.Monotonic.Heap.fsti(207,11-207,134); use=FStar.Monotonic.Heap.fsti(207,11-207,134)
+(forall ((@x2 Term) (@x3 Term) (@x4 Term) (@x5 Term) (@x6 Term) (@x7 Term))
+ (! (implies (and (HasType @x2
+Tm_type)
+(HasType @x3
+Tm_type)
+(HasType @x4
+(FStar.Preorder.preorder @x2))
+(HasType @x5
+(FStar.Preorder.preorder @x3))
+(HasType @x6
+(FStar.Monotonic.Heap.mref @x2
+@x4))
+(HasType @x7
+(FStar.Monotonic.Heap.mref @x3
+@x5))
+
+;; def=FStar.Monotonic.Heap.fsti(207,109-207,116); use=FStar.Monotonic.Heap.fsti(207,109-207,116)
+(not 
+;; def=FStar.Monotonic.Heap.fsti(207,109-207,116); use=FStar.Monotonic.Heap.fsti(207,109-207,116)
+(= @x2
+@x3)
+)
+)
+
+;; def=FStar.Monotonic.Heap.fsti(207,121-207,134); use=FStar.Monotonic.Heap.fsti(207,121-207,134)
+(not 
+;; def=FStar.Monotonic.Heap.fsti(207,123-207,134); use=FStar.Monotonic.Heap.fsti(207,123-207,134)
+(Valid 
+;; def=FStar.Monotonic.Heap.fsti(207,123-207,134); use=FStar.Monotonic.Heap.fsti(207,123-207,134)
+(Prims.op_Equals_Equals_Equals (FStar.Monotonic.Heap.mref @x2
+@x4)
+(FStar.Monotonic.Heap.mref @x3
+@x5)
+@x6
+@x7)
+)
+)
+)
+ 
+;;no pats
+:qid refinement_interpretation_Tm_refine_e1adf49e5e772ddffa19181e1a812a81.1))
+))
+ 
+
+:pattern ((HasTypeFuel @u0
+@x1
+Tm_refine_e1adf49e5e772ddffa19181e1a812a81))
+:qid refinement_interpretation_Tm_refine_e1adf49e5e772ddffa19181e1a812a81))
+
+:named refinement_interpretation_Tm_refine_e1adf49e5e772ddffa19181e1a812a81))
+;;;;;;;;;;;;;;;;refinement_interpretation
+;;; Fact-ids: Name FStar.List.Tot.Base.strict_suffix_of; Namespace FStar.List.Tot.Base
+(assert (! 
+;; def=FStar.List.Tot.Base.fst(533,7-533,12); use=FStar.List.Tot.Base.fst(533,7-533,12)
+(forall ((@u0 Fuel) (@x1 Term))
+ (! (iff (HasTypeFuel @u0
+@x1
+Tm_refine_da3062322c9bea8d5b2058386775b91a)
+(HasTypeFuel @u0
+@x1
+Tm_type))
+ 
+
+:pattern ((HasTypeFuel @u0
+@x1
+Tm_refine_da3062322c9bea8d5b2058386775b91a))
+:qid refinement_interpretation_Tm_refine_da3062322c9bea8d5b2058386775b91a))
+
+:named refinement_interpretation_Tm_refine_da3062322c9bea8d5b2058386775b91a))
+;;;;;;;;;;;;;;;;refinement_interpretation
+;;; Fact-ids: Name FStar.Preorder.preorder; Namespace FStar.Preorder
+(assert (! 
+;; def=FStar.Preorder.fst(33,25-33,57); use=FStar.Preorder.fst(33,25-33,57)
+(forall ((@u0 Fuel) (@x1 Term) (@x2 Term))
+ (! (iff (HasTypeFuel @u0
+@x1
+(Tm_refine_bd10f09297e0e7dc08314f7d9211801c @x2))
+(and (HasTypeFuel @u0
+@x1
+(FStar.Preorder.relation @x2))
+
+;; def=FStar.Preorder.fst(33,40-33,56); use=FStar.Preorder.fst(33,40-33,56)
+(Valid 
+;; def=FStar.Preorder.fst(33,40-33,56); use=FStar.Preorder.fst(33,40-33,56)
+(FStar.Preorder.preorder_rel @x2
+@x1)
+)
+))
+ 
+
+:pattern ((HasTypeFuel @u0
+@x1
+(Tm_refine_bd10f09297e0e7dc08314f7d9211801c @x2)))
+:qid refinement_interpretation_Tm_refine_bd10f09297e0e7dc08314f7d9211801c))
+
+:named refinement_interpretation_Tm_refine_bd10f09297e0e7dc08314f7d9211801c))
+;;;;;;;;;;;;;;;;refinement_interpretation
+;;; Fact-ids: Name FStar.Monotonic.Heap.addr_of_aref; Namespace FStar.Monotonic.Heap
+(assert (! 
+;; def=FStar.Monotonic.Heap.fsti(324,34-324,53); use=FStar.Monotonic.Heap.fsti(324,34-324,53)
+(forall ((@u0 Fuel) (@x1 Term))
+ (! (iff (HasTypeFuel @u0
+@x1
+Tm_refine_afd51579b90d50ea23e03b743a1fa001)
+(and (HasTypeFuel @u0
+@x1
+Prims.nat)
+
+;; def=FStar.Monotonic.Heap.fsti(324,44-324,49); use=FStar.Monotonic.Heap.fsti(324,44-324,49)
+(> (BoxInt_proj_0 @x1)
+(BoxInt_proj_0 (BoxInt 0)))
+))
+ 
+
+:pattern ((HasTypeFuel @u0
+@x1
+Tm_refine_afd51579b90d50ea23e03b743a1fa001))
+:qid refinement_interpretation_Tm_refine_afd51579b90d50ea23e03b743a1fa001))
+
+:named refinement_interpretation_Tm_refine_afd51579b90d50ea23e03b743a1fa001))
+;;;;;;;;;;;;;;;;refinement_interpretation
+;;; Fact-ids: Name X64.Semantics_s.logxor_uint64; Namespace X64.Semantics_s
+(assert (! 
+;; def=FStar.UInt.fsti(54,28-54,36); use=FStar.UInt.fsti(54,28-54,36)
+(forall ((@u0 Fuel) (@x1 Term))
+ (! (iff (HasTypeFuel @u0
+@x1
+Tm_refine_9e523552080158c04fafd9dbbcf2e767)
+(and (HasTypeFuel @u0
+@x1
+Prims.int)
+
+;; def=FStar.UInt.fsti(54,28-54,36); use=FStar.UInt.fsti(54,28-54,36)
+(or 
+;; def=X64.Machine_s.fst(27,19-27,32); use=X64.Semantics_s.fst(221,20-221,26)
+(and 
+;; def=Prims.fst(680,18-680,24); use=Prims.fst(680,18-680,24)
+(>= (BoxInt_proj_0 @x1)
+0)
+
+
+;; def=X64.Machine_s.fst(27,19-27,32); use=X64.Semantics_s.fst(221,20-221,26)
+(< (BoxInt_proj_0 @x1)
+18446744073709551616)
+)
+
+
+;; def=FStar.UInt.fsti(54,28-54,36); use=FStar.UInt.fsti(54,28-54,36)
+(Valid 
+;; def=FStar.UInt.fsti(54,28-54,36); use=FStar.UInt.fsti(54,28-54,36)
+(FStar.UInt.size @x1
+(BoxInt 64))
+)
+)
+))
+ 
+
+:pattern ((HasTypeFuel @u0
+@x1
+Tm_refine_9e523552080158c04fafd9dbbcf2e767))
+:qid refinement_interpretation_Tm_refine_9e523552080158c04fafd9dbbcf2e767))
+
+:named refinement_interpretation_Tm_refine_9e523552080158c04fafd9dbbcf2e767))
+;;;;;;;;;;;;;;;;refinement_interpretation
+;;; Fact-ids: Name Prims.pure_post'; Namespace Prims
+(assert (! 
+;; def=Prims.fst(315,31-315,40); use=Prims.fst(315,31-315,40)
+(forall ((@u0 Fuel) (@x1 Term) (@x2 Term) (@x3 Term))
+ (! (iff (HasTypeFuel @u0
+@x1
+(Tm_refine_8d65e998a07dd53ec478e27017d9dba5 @x2
+@x3))
+(and (HasTypeFuel @u0
+@x1
+@x2)
+
+;; def=Prims.fst(315,18-315,21); use=Prims.fst(315,36-315,39)
+(Valid 
+;; def=Prims.fst(315,18-315,21); use=Prims.fst(315,36-315,39)
+@x3
+)
+))
+ 
+
+:pattern ((HasTypeFuel @u0
+@x1
+(Tm_refine_8d65e998a07dd53ec478e27017d9dba5 @x2
+@x3)))
+:qid refinement_interpretation_Tm_refine_8d65e998a07dd53ec478e27017d9dba5))
+
+:named refinement_interpretation_Tm_refine_8d65e998a07dd53ec478e27017d9dba5))
+;;;;;;;;;;;;;;;;refinement_interpretation
+;;; Fact-ids: Name Prims.pos; Namespace Prims
+(assert (! 
+;; def=Prims.fst(683,11-683,24); use=Prims.fst(683,11-683,24)
+(forall ((@u0 Fuel) (@x1 Term))
+ (! (iff (HasTypeFuel @u0
+@x1
+Tm_refine_774ba3f728d91ead8ef40be66c9802e5)
+(and (HasTypeFuel @u0
+@x1
+Prims.int)
+
+;; def=Prims.fst(683,18-683,23); use=Prims.fst(683,18-683,23)
+(> (BoxInt_proj_0 @x1)
+(BoxInt_proj_0 (BoxInt 0)))
+))
+ 
+
+:pattern ((HasTypeFuel @u0
+@x1
+Tm_refine_774ba3f728d91ead8ef40be66c9802e5))
+:qid refinement_interpretation_Tm_refine_774ba3f728d91ead8ef40be66c9802e5))
+
+:named refinement_interpretation_Tm_refine_774ba3f728d91ead8ef40be66c9802e5))
+;;;;;;;;;;;;;;;;refinement_interpretation
+;;; Fact-ids: Name Prims.prop; Namespace Prims
+(assert (! 
+;; def=Prims.fst(304,12-304,41); use=Prims.fst(304,12-304,41)
+(forall ((@u0 Fuel) (@x1 Term))
+ (! (iff (HasTypeFuel @u0
+@x1
+Tm_refine_73f210ca6e0061ed4a3150f69b8f33bf)
+(and (HasTypeFuel @u0
+@x1
+Tm_type)
+
+;; def=Prims.fst(304,21-304,40); use=Prims.fst(304,21-304,40)
+(Valid 
+;; def=Prims.fst(304,21-304,40); use=Prims.fst(304,21-304,40)
+(Prims.subtype_of @x1
+Prims.unit)
+)
+))
+ 
+
+:pattern ((HasTypeFuel @u0
+@x1
+Tm_refine_73f210ca6e0061ed4a3150f69b8f33bf))
+:qid refinement_interpretation_Tm_refine_73f210ca6e0061ed4a3150f69b8f33bf))
+
+:named refinement_interpretation_Tm_refine_73f210ca6e0061ed4a3150f69b8f33bf))
+;;;;;;;;;;;;;;;;refinement_interpretation
+;;; Fact-ids: Name Prims.nat; Namespace Prims
+(assert (! 
+;; def=Prims.fst(680,11-680,25); use=Prims.fst(680,11-680,25)
+(forall ((@u0 Fuel) (@x1 Term))
+ (! (iff (HasTypeFuel @u0
+@x1
+Tm_refine_542f9d4f129664613f2483a6c88bc7c2)
+(and (HasTypeFuel @u0
+@x1
+Prims.int)
+
+;; def=Prims.fst(680,18-680,24); use=Prims.fst(680,18-680,24)
+(>= (BoxInt_proj_0 @x1)
+(BoxInt_proj_0 (BoxInt 0)))
+))
+ 
+
+:pattern ((HasTypeFuel @u0
+@x1
+Tm_refine_542f9d4f129664613f2483a6c88bc7c2))
+:qid refinement_interpretation_Tm_refine_542f9d4f129664613f2483a6c88bc7c2))
+
+:named refinement_interpretation_Tm_refine_542f9d4f129664613f2483a6c88bc7c2))
+;;;;;;;;;;;;;;;;refinement_interpretation
+;;; Fact-ids: Name X64.Semantics_s.u; Namespace X64.Semantics_s
+(assert (! 
+;; def=X64.Semantics_s.fst(73,6-73,35); use=X64.Semantics_s.fst(73,6-73,35)
+(forall ((@u0 Fuel) (@x1 Term))
+ (! (iff (HasTypeFuel @u0
+@x1
+Tm_refine_4a56532dbb80b238f6b7d86890fac538)
+(and (HasTypeFuel @u0
+@x1
+Prims.int)
+
+;; def=X64.Semantics_s.fst(73,13-73,33); use=X64.Semantics_s.fst(73,13-73,33)
+(BoxBool_proj_0 (FStar.UInt.fits @x1
+(BoxInt 64)))
+))
+ 
+
+:pattern ((HasTypeFuel @u0
+@x1
+Tm_refine_4a56532dbb80b238f6b7d86890fac538))
+:qid refinement_interpretation_Tm_refine_4a56532dbb80b238f6b7d86890fac538))
+
+:named refinement_interpretation_Tm_refine_4a56532dbb80b238f6b7d86890fac538))
+;;;;;;;;;;;;;;;;refinement_interpretation
+;;; Fact-ids: Name Prims.eqtype; Namespace Prims
+(assert (! 
+;; def=Prims.fst(73,14-73,31); use=Prims.fst(73,14-73,31)
+(forall ((@u0 Fuel) (@x1 Term))
+ (! (iff (HasTypeFuel @u0
+@x1
+Tm_refine_414d0a9f578ab0048252f8c8f552b99f)
+(and (HasTypeFuel @u0
+@x1
+Tm_type)
+
+;; def=Prims.fst(73,23-73,30); use=Prims.fst(73,23-73,30)
+(Valid 
+;; def=Prims.fst(73,23-73,30); use=Prims.fst(73,23-73,30)
+(Prims.hasEq @x1)
+)
+))
+ 
+
+:pattern ((HasTypeFuel @u0
+@x1
+Tm_refine_414d0a9f578ab0048252f8c8f552b99f))
+:qid refinement_interpretation_Tm_refine_414d0a9f578ab0048252f8c8f552b99f))
+
+:named refinement_interpretation_Tm_refine_414d0a9f578ab0048252f8c8f552b99f))
+;;;;;;;;;;;;;;;;refinement_interpretation
+;;; Fact-ids: Name Prims.squash; Namespace Prims
+(assert (! 
+;; def=Prims.fst(117,32-117,42); use=Prims.fst(117,32-117,42)
+(forall ((@u0 Fuel) (@x1 Term) (@x2 Term))
+ (! (iff (HasTypeFuel @u0
+@x1
+(Tm_refine_2de20c066034c13bf76e9c0b94f4806c @x2))
+(and (HasTypeFuel @u0
+@x1
+Prims.unit)
+
+;; def=Prims.fst(117,13-117,14); use=Prims.fst(117,40-117,41)
+(Valid 
+;; def=Prims.fst(117,13-117,14); use=Prims.fst(117,40-117,41)
+@x2
+)
+))
+ 
+
+:pattern ((HasTypeFuel @u0
+@x1
+(Tm_refine_2de20c066034c13bf76e9c0b94f4806c @x2)))
+:qid refinement_interpretation_Tm_refine_2de20c066034c13bf76e9c0b94f4806c))
+
+:named refinement_interpretation_Tm_refine_2de20c066034c13bf76e9c0b94f4806c))
+;;;;;;;;;;;;;;;;refinement_interpretation
+;;; Fact-ids: Name Prims.nonzero; Namespace Prims
+(assert (! 
+;; def=Prims.fst(686,15-686,29); use=Prims.fst(686,15-686,29)
+(forall ((@u0 Fuel) (@x1 Term))
+ (! (iff (HasTypeFuel @u0
+@x1
+Tm_refine_0766302b68bb44ab7aff8c4d8be0b46f)
+(and (HasTypeFuel @u0
+@x1
+Prims.int)
+
+;; def=Prims.fst(686,22-686,28); use=Prims.fst(686,22-686,28)
+(not (= @x1
+(BoxInt 0)))
+))
+ 
+
+:pattern ((HasTypeFuel @u0
+@x1
+Tm_refine_0766302b68bb44ab7aff8c4d8be0b46f))
+:qid refinement_interpretation_Tm_refine_0766302b68bb44ab7aff8c4d8be0b46f))
+
+:named refinement_interpretation_Tm_refine_0766302b68bb44ab7aff8c4d8be0b46f))
+;;; Fact-ids: Name Prims.op_Subtraction; Namespace Prims
+(assert (! 
+;; def=Prims.fst(546,4-546,18); use=Prims.fst(546,4-546,18)
+(forall ((@x0 Term) (@x1 Term))
+ (! (= (Prims.op_Subtraction @x0
+@x1)
+(BoxInt (- (BoxInt_proj_0 @x0)
+(BoxInt_proj_0 @x1))))
+ 
+
+:pattern ((Prims.op_Subtraction @x0
+@x1))
+:qid primitive_Prims.op_Subtraction))
+
+:named primitive_Prims.op_Subtraction))
+;;; Fact-ids: Name Prims.op_Multiply; Namespace Prims
+(assert (! 
+;; def=Prims.fst(540,4-540,15); use=Prims.fst(540,4-540,15)
+(forall ((@x0 Term) (@x1 Term))
+ (! (= (Prims.op_Multiply @x0
+@x1)
+(BoxInt (* (BoxInt_proj_0 @x0)
+(BoxInt_proj_0 @x1))))
+ 
+
+:pattern ((Prims.op_Multiply @x0
+@x1))
+:qid primitive_Prims.op_Multiply))
+
+:named primitive_Prims.op_Multiply))
+;;; Fact-ids: Name Prims.op_LessThanOrEqual; Namespace Prims
+(assert (! 
+;; def=Prims.fst(564,4-564,22); use=Prims.fst(564,4-564,22)
+(forall ((@x0 Term) (@x1 Term))
+ (! (= (Prims.op_LessThanOrEqual @x0
+@x1)
+(BoxBool (<= (BoxInt_proj_0 @x0)
+(BoxInt_proj_0 @x1))))
+ 
+
+:pattern ((Prims.op_LessThanOrEqual @x0
+@x1))
+:qid primitive_Prims.op_LessThanOrEqual))
+
+:named primitive_Prims.op_LessThanOrEqual))
+;;; Fact-ids: Name Prims.op_AmpAmp; Namespace Prims
+(assert (! 
+;; def=Prims.fst(522,4-522,13); use=Prims.fst(522,4-522,13)
+(forall ((@x0 Term) (@x1 Term))
+ (! (= (Prims.op_AmpAmp @x0
+@x1)
+(BoxBool (and (BoxBool_proj_0 @x0)
+(BoxBool_proj_0 @x1))))
+ 
+
+:pattern ((Prims.op_AmpAmp @x0
+@x1))
+:qid primitive_Prims.op_AmpAmp))
+
+:named primitive_Prims.op_AmpAmp))
+;;;;;;;;;;;;;;;;kinding_Tm_arrow_a19f9d49348d4e0038f0ded87d87802f
+;;; Fact-ids: Name FStar.Preorder.relation; Namespace FStar.Preorder
+(assert (! 
+;; def=FStar.Preorder.fst(20,15-20,40); use=FStar.Preorder.fst(20,25-20,40)
+(forall ((@x0 Term))
+ (! (HasType (Tm_arrow_a19f9d49348d4e0038f0ded87d87802f @x0)
+Tm_type)
+ 
+
+:pattern ((HasType (Tm_arrow_a19f9d49348d4e0038f0ded87d87802f @x0)
+Tm_type))
+:qid kinding_Tm_arrow_a19f9d49348d4e0038f0ded87d87802f))
+
+:named kinding_Tm_arrow_a19f9d49348d4e0038f0ded87d87802f))
+;;;;;;;;;;;;;;;;kinding_Tm_arrow_92458cff82f9ffee1f6e26a1c0c579f3
+;;; Fact-ids: Name Prims.pure_post'; Namespace Prims
+(assert (! 
+;; def=Prims.fst(315,31-315,54); use=Prims.fst(315,31-315,54)
+(forall ((@x0 Term) (@x1 Term))
+ (! (HasType (Tm_arrow_92458cff82f9ffee1f6e26a1c0c579f3 @x0
+@x1)
+Tm_type)
+ 
+
+:pattern ((HasType (Tm_arrow_92458cff82f9ffee1f6e26a1c0c579f3 @x0
+@x1)
+Tm_type))
+:qid kinding_Tm_arrow_92458cff82f9ffee1f6e26a1c0c579f3))
+
+:named kinding_Tm_arrow_92458cff82f9ffee1f6e26a1c0c579f3))
+;;; Fact-ids: Name Prims.trivial; Namespace Prims; Name Prims.T; Namespace Prims
+(assert (! (HasType Prims.trivial
+Tm_type)
+:named kinding_Prims.trivial@tok))
+;;;;;;;;;;;;;;;;int typing
+;;; Fact-ids: Name Prims.int; Namespace Prims
+(assert (! (forall ((@u0 Int))
+ (! (HasType (BoxInt @u0)
+Prims.int)
+ 
+
+:pattern ((BoxInt @u0))
+:qid int_typing))
+:named int_typing))
+;;;;;;;;;;;;;;;;int inversion
+;;; Fact-ids: Name Prims.int; Namespace Prims
+(assert (! (forall ((@u0 Fuel) (@x1 Term))
+ (! (implies (HasTypeFuel @u0
+@x1
+Prims.int)
+(is-BoxInt @x1))
+ 
+
+:pattern ((HasTypeFuel @u0
+@x1
+Prims.int))
+:qid int_inversion))
+:named int_inversion))
+;;;;;;;;;;;;;;;;haseq for Tm_refine_f1ecc6ab6882a651504f328937700647
+;;; Fact-ids: Name FStar.Pervasives.false_elim; Namespace FStar.Pervasives
+(assert (! (iff (Valid (Prims.hasEq Tm_refine_f1ecc6ab6882a651504f328937700647))
+(Valid (Prims.hasEq Prims.unit)))
+:named haseqTm_refine_f1ecc6ab6882a651504f328937700647))
+;;;;;;;;;;;;;;;;haseq for Tm_refine_e1adf49e5e772ddffa19181e1a812a81
+;;; Fact-ids: Name FStar.Monotonic.Heap.lemma_mref_injectivity; Namespace FStar.Monotonic.Heap
+(assert (! (iff (Valid (Prims.hasEq Tm_refine_e1adf49e5e772ddffa19181e1a812a81))
+(Valid (Prims.hasEq Prims.unit)))
+:named haseqTm_refine_e1adf49e5e772ddffa19181e1a812a81))
+;;;;;;;;;;;;;;;;haseq for Tm_refine_da3062322c9bea8d5b2058386775b91a
+;;; Fact-ids: Name FStar.List.Tot.Base.strict_suffix_of; Namespace FStar.List.Tot.Base
+(assert (! (iff (Valid (Prims.hasEq Tm_refine_da3062322c9bea8d5b2058386775b91a))
+(Valid (Prims.hasEq Tm_type)))
+:named haseqTm_refine_da3062322c9bea8d5b2058386775b91a))
+;;;;;;;;;;;;;;;;haseq for Tm_refine_bd10f09297e0e7dc08314f7d9211801c
+;;; Fact-ids: Name FStar.Preorder.preorder; Namespace FStar.Preorder
+(assert (! 
+;; def=FStar.Preorder.fst(33,25-33,57); use=FStar.Preorder.fst(33,25-33,57)
+(forall ((@x0 Term))
+ (! (iff (Valid (Prims.hasEq (Tm_refine_bd10f09297e0e7dc08314f7d9211801c @x0)))
+(Valid (Prims.hasEq (FStar.Preorder.relation @x0))))
+ 
+
+:pattern ((Valid (Prims.hasEq (Tm_refine_bd10f09297e0e7dc08314f7d9211801c @x0))))
+:qid haseqTm_refine_bd10f09297e0e7dc08314f7d9211801c))
+
+:named haseqTm_refine_bd10f09297e0e7dc08314f7d9211801c))
+;;;;;;;;;;;;;;;;haseq for Tm_refine_afd51579b90d50ea23e03b743a1fa001
+;;; Fact-ids: Name FStar.Monotonic.Heap.addr_of_aref; Namespace FStar.Monotonic.Heap
+(assert (! (iff (Valid (Prims.hasEq Tm_refine_afd51579b90d50ea23e03b743a1fa001))
+(Valid (Prims.hasEq Prims.nat)))
+:named haseqTm_refine_afd51579b90d50ea23e03b743a1fa001))
+;;;;;;;;;;;;;;;;haseq for Tm_refine_9e523552080158c04fafd9dbbcf2e767
+;;; Fact-ids: Name X64.Semantics_s.logxor_uint64; Namespace X64.Semantics_s
+(assert (! (iff (Valid (Prims.hasEq Tm_refine_9e523552080158c04fafd9dbbcf2e767))
+(Valid (Prims.hasEq Prims.int)))
+:named haseqTm_refine_9e523552080158c04fafd9dbbcf2e767))
+;;;;;;;;;;;;;;;;haseq for Tm_refine_8d65e998a07dd53ec478e27017d9dba5
+;;; Fact-ids: Name Prims.pure_post'; Namespace Prims
+(assert (! 
+;; def=Prims.fst(315,31-315,40); use=Prims.fst(315,31-315,40)
+(forall ((@x0 Term) (@x1 Term))
+ (! (iff (Valid (Prims.hasEq (Tm_refine_8d65e998a07dd53ec478e27017d9dba5 @x0
+@x1)))
+(Valid (Prims.hasEq @x0)))
+ 
+
+:pattern ((Valid (Prims.hasEq (Tm_refine_8d65e998a07dd53ec478e27017d9dba5 @x0
+@x1))))
+:qid haseqTm_refine_8d65e998a07dd53ec478e27017d9dba5))
+
+:named haseqTm_refine_8d65e998a07dd53ec478e27017d9dba5))
+;;;;;;;;;;;;;;;;haseq for Tm_refine_774ba3f728d91ead8ef40be66c9802e5
+;;; Fact-ids: Name Prims.pos; Namespace Prims
+(assert (! (iff (Valid (Prims.hasEq Tm_refine_774ba3f728d91ead8ef40be66c9802e5))
+(Valid (Prims.hasEq Prims.int)))
+:named haseqTm_refine_774ba3f728d91ead8ef40be66c9802e5))
+;;;;;;;;;;;;;;;;haseq for Tm_refine_73f210ca6e0061ed4a3150f69b8f33bf
+;;; Fact-ids: Name Prims.prop; Namespace Prims
+(assert (! (iff (Valid (Prims.hasEq Tm_refine_73f210ca6e0061ed4a3150f69b8f33bf))
+(Valid (Prims.hasEq Tm_type)))
+:named haseqTm_refine_73f210ca6e0061ed4a3150f69b8f33bf))
+;;;;;;;;;;;;;;;;haseq for Tm_refine_542f9d4f129664613f2483a6c88bc7c2
+;;; Fact-ids: Name Prims.nat; Namespace Prims
+(assert (! (iff (Valid (Prims.hasEq Tm_refine_542f9d4f129664613f2483a6c88bc7c2))
+(Valid (Prims.hasEq Prims.int)))
+:named haseqTm_refine_542f9d4f129664613f2483a6c88bc7c2))
+;;;;;;;;;;;;;;;;haseq for Tm_refine_4a56532dbb80b238f6b7d86890fac538
+;;; Fact-ids: Name X64.Semantics_s.u; Namespace X64.Semantics_s
+(assert (! (iff (Valid (Prims.hasEq Tm_refine_4a56532dbb80b238f6b7d86890fac538))
+(Valid (Prims.hasEq Prims.int)))
+:named haseqTm_refine_4a56532dbb80b238f6b7d86890fac538))
+;;;;;;;;;;;;;;;;haseq for Tm_refine_414d0a9f578ab0048252f8c8f552b99f
+;;; Fact-ids: Name Prims.eqtype; Namespace Prims
+(assert (! (iff (Valid (Prims.hasEq Tm_refine_414d0a9f578ab0048252f8c8f552b99f))
+(Valid (Prims.hasEq Tm_type)))
+:named haseqTm_refine_414d0a9f578ab0048252f8c8f552b99f))
+;;;;;;;;;;;;;;;;haseq for Tm_refine_2de20c066034c13bf76e9c0b94f4806c
+;;; Fact-ids: Name Prims.squash; Namespace Prims
+(assert (! 
+;; def=Prims.fst(117,32-117,42); use=Prims.fst(117,32-117,42)
+(forall ((@x0 Term))
+ (! (iff (Valid (Prims.hasEq (Tm_refine_2de20c066034c13bf76e9c0b94f4806c @x0)))
+(Valid (Prims.hasEq Prims.unit)))
+ 
+
+:pattern ((Valid (Prims.hasEq (Tm_refine_2de20c066034c13bf76e9c0b94f4806c @x0))))
+:qid haseqTm_refine_2de20c066034c13bf76e9c0b94f4806c))
+
+:named haseqTm_refine_2de20c066034c13bf76e9c0b94f4806c))
+;;;;;;;;;;;;;;;;haseq for Tm_refine_0766302b68bb44ab7aff8c4d8be0b46f
+;;; Fact-ids: Name Prims.nonzero; Namespace Prims
+(assert (! (iff (Valid (Prims.hasEq Tm_refine_0766302b68bb44ab7aff8c4d8be0b46f))
+(Valid (Prims.hasEq Prims.int)))
+:named haseqTm_refine_0766302b68bb44ab7aff8c4d8be0b46f))
+;;;;;;;;;;;;;;;;function token typing
+;;; Fact-ids: Name Prims.unit; Namespace Prims
+(assert (! (HasType Prims.unit
+Prims.eqtype)
+:named function_token_typing_Prims.unit))
+;;;;;;;;;;;;;;;;function token typing
+;;; Fact-ids: Name Prims.pos; Namespace Prims
+(assert (! (HasType Prims.pos
+Tm_type)
+:named function_token_typing_Prims.pos))
+;;;;;;;;;;;;;;;;function token typing
+;;; Fact-ids: Name Prims.nat; Namespace Prims
+(assert (! (HasType Prims.nat
+Tm_type)
+:named function_token_typing_Prims.nat))
+;;;;;;;;;;;;;;;;function token typing
+;;; Fact-ids: Name Prims.logical; Namespace Prims
+(assert (! (HasType Prims.logical
+Tm_type)
+:named function_token_typing_Prims.logical))
+;;;;;;;;;;;;;;;;function token typing
+;;; Fact-ids: Name Prims.l_True; Namespace Prims
+(assert (! (HasType Prims.l_True
+Prims.logical)
+:named function_token_typing_Prims.l_True))
+;;;;;;;;;;;;;;;;function token typing
+;;; Fact-ids: Name Prims.int; Namespace Prims
+(assert (! (HasType Prims.int
+Prims.eqtype)
+:named function_token_typing_Prims.int))
+;;;;;;;;;;;;;;;;function token typing
+;;; Fact-ids: Name Prims.eqtype; Namespace Prims
+(assert (! (HasType Prims.eqtype
+Tm_type)
+:named function_token_typing_Prims.eqtype))
+;;;;;;;;;;;;;;;;function token typing
+;;; Fact-ids: Name Prims.bool; Namespace Prims
+(assert (! (HasType Prims.bool
+Prims.eqtype)
+:named function_token_typing_Prims.bool))
+;;;;;;;;;;;;;;;;inversion axiom
+;;; Fact-ids: Name Prims.trivial; Namespace Prims; Name Prims.T; Namespace Prims
+(assert (! 
+;; def=Prims.fst(91,5-91,12); use=Prims.fst(91,5-91,12)
+(forall ((@u0 Fuel) (@x1 Term))
+ (! (implies (HasTypeFuel @u0
+@x1
+Prims.trivial)
+(is-Prims.T @x1))
+ 
+
+:pattern ((HasTypeFuel @u0
+@x1
+Prims.trivial))
+:qid fuel_guarded_inversion_Prims.trivial))
+
+:named fuel_guarded_inversion_Prims.trivial))
+;;;;;;;;;;;;;;;;Equation for fuel-instrumented recursive function: Prims.pow2
+;;; Fact-ids: Name Prims.pow2; Namespace Prims
+(assert (! 
+;; def=Prims.fst(708,8-708,12); use=Prims.fst(708,8-708,12)
+(forall ((@u0 Fuel) (@x1 Term))
+ (! (implies (HasType @x1
+Prims.nat)
+(= (Prims.pow2.fuel_instrumented (SFuel @u0)
+@x1)
+(let ((@lb2 @x1))
+(ite (= @lb2
+(BoxInt 0))
+(BoxInt 1)
+(Prims.op_Multiply (BoxInt 2)
+(Prims.pow2.fuel_instrumented @u0
+(Prims.op_Subtraction @x1
+(BoxInt 1))))))))
+ :weight 0
+
+
+:pattern ((Prims.pow2.fuel_instrumented (SFuel @u0)
+@x1))
+:qid equation_with_fuel_Prims.pow2.fuel_instrumented))
+
+:named equation_with_fuel_Prims.pow2.fuel_instrumented))
+;;;;;;;;;;;;;;;;Equation for Prims.subtype_of
+;;; Fact-ids: Name Prims.subtype_of; Namespace Prims
+(assert (! 
+;; def=Prims.fst(291,4-291,14); use=Prims.fst(291,4-291,14)
+(forall ((@x0 Term) (@x1 Term))
+ (! (= (Valid (Prims.subtype_of @x0
+@x1))
+
+;; def=Prims.fst(291,31-291,60); use=Prims.fst(291,31-291,60)
+(forall ((@x2 Term))
+ (! (implies (HasType @x2
+@x0)
+(HasType @x2
+@x1))
+ 
+;;no pats
+:qid equation_Prims.subtype_of.1))
+)
+ 
+
+:pattern ((Prims.subtype_of @x0
+@x1))
+:qid equation_Prims.subtype_of))
+
+:named equation_Prims.subtype_of))
+;;;;;;;;;;;;;;;;Equation for Prims.squash
+;;; Fact-ids: Name Prims.squash; Namespace Prims
+(assert (! 
+;; def=Prims.fst(117,5-117,11); use=Prims.fst(117,5-117,11)
+(forall ((@x0 Term))
+ (! (= (Prims.squash @x0)
+(Tm_refine_2de20c066034c13bf76e9c0b94f4806c @x0))
+ 
+
+:pattern ((Prims.squash @x0))
+:qid equation_Prims.squash))
+
+:named equation_Prims.squash))
+;;;;;;;;;;;;;;;;Equation for Prims.pure_post'
+;;; Fact-ids: Name Prims.pure_post'; Namespace Prims
+(assert (! 
+;; def=Prims.fst(315,4-315,14); use=Prims.fst(315,4-315,14)
+(forall ((@x0 Term) (@x1 Term))
+ (! (= (Prims.pure_post_ @x0
+@x1)
+(Tm_arrow_92458cff82f9ffee1f6e26a1c0c579f3 @x1
+@x0))
+ 
+
+:pattern ((Prims.pure_post_ @x0
+@x1))
+:qid equation_Prims.pure_post_))
+
+:named equation_Prims.pure_post_))
+;;;;;;;;;;;;;;;;Equation for Prims.pure_post
+;;; Fact-ids: Name Prims.pure_post; Namespace Prims
+(assert (! 
+;; def=Prims.fst(316,4-316,13); use=Prims.fst(316,4-316,13)
+(forall ((@x0 Term))
+ (! (= (Prims.pure_post @x0)
+(Prims.pure_post_ @x0
+Prims.l_True))
+ 
+
+:pattern ((Prims.pure_post @x0))
+:qid equation_Prims.pure_post))
+
+:named equation_Prims.pure_post))
+;;;;;;;;;;;;;;;;Equation for Prims.pos
+;;; Fact-ids: Name Prims.pos; Namespace Prims
+(assert (! (= Prims.pos
+Tm_refine_774ba3f728d91ead8ef40be66c9802e5)
+:named equation_Prims.pos))
+;;;;;;;;;;;;;;;;Equation for Prims.op_Equals_Equals_Equals
+;;; Fact-ids: Name Prims.op_Equals_Equals_Equals; Namespace Prims
+(assert (! 
+;; def=Prims.fst(498,6-498,9); use=Prims.fst(498,6-498,9)
+(forall ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term))
+ (! (= (Valid (Prims.op_Equals_Equals_Equals @x0
+@x1
+@x2
+@x3))
+
+;; def=Prims.fst(498,52-498,68); use=Prims.fst(498,52-498,68)
+(and 
+;; def=Prims.fst(498,52-498,58); use=Prims.fst(498,52-498,58)
+(= @x0
+@x1)
+
+
+;; def=Prims.fst(498,62-498,68); use=Prims.fst(498,62-498,68)
+(= @x2
+@x3)
+)
+)
+ 
+
+:pattern ((Prims.op_Equals_Equals_Equals @x0
+@x1
+@x2
+@x3))
+:qid equation_Prims.op_Equals_Equals_Equals))
+
+:named equation_Prims.op_Equals_Equals_Equals))
+;;;;;;;;;;;;;;;;Equation for Prims.nat
+;;; Fact-ids: Name Prims.nat; Namespace Prims
+(assert (! (= Prims.nat
+Tm_refine_542f9d4f129664613f2483a6c88bc7c2)
+:named equation_Prims.nat))
+;;;;;;;;;;;;;;;;Equation for Prims.logical
+;;; Fact-ids: Name Prims.logical; Namespace Prims
+(assert (! (= Prims.logical
+Tm_type)
+:named equation_Prims.logical))
+;;;;;;;;;;;;;;;;Equation for Prims.l_True
+;;; Fact-ids: Name Prims.l_True; Namespace Prims
+(assert (! (= Prims.l_True
+(Prims.squash Prims.trivial))
+:named equation_Prims.l_True))
+;;;;;;;;;;;;;;;;Equation for Prims.eqtype
+;;; Fact-ids: Name Prims.eqtype; Namespace Prims
+(assert (! (= Prims.eqtype
+Tm_refine_414d0a9f578ab0048252f8c8f552b99f)
+:named equation_Prims.eqtype))
+;;;;;;;;;;;;;;;;equality for proxy
+;;; Fact-ids: Name Prims.trivial; Namespace Prims; Name Prims.T; Namespace Prims
+(assert (! (= Prims.T@tok
+Prims.T)
+:named equality_tok_Prims.T@tok))
+;;;;;;;;;;;;;;;;Prop-typing for Prims.subtype_of
+;;; Fact-ids: Name Prims.subtype_of; Namespace Prims
+(assert (! 
+;; def=Prims.fst(291,4-291,14); use=Prims.fst(291,4-291,14)
+(forall ((@x0 Term) (@x1 Term))
+ (! (implies (and (HasType @x0
+Tm_type)
+(HasType @x1
+Tm_type))
+(Valid (Prims.subtype_of (Prims.subtype_of @x0
+@x1)
+Prims.unit)))
+ 
+
+:pattern ((Prims.subtype_of (Prims.subtype_of @x0
+@x1)
+Prims.unit))
+:qid defn_equation_Prims.subtype_of))
+
+:named defn_equation_Prims.subtype_of))
+;;;;;;;;;;;;;;;;Prop-typing for Prims.op_Equals_Equals_Equals
+;;; Fact-ids: Name Prims.op_Equals_Equals_Equals; Namespace Prims
+(assert (! 
+;; def=Prims.fst(498,6-498,9); use=Prims.fst(498,6-498,9)
+(forall ((@x0 Term) (@x1 Term) (@x2 Term) (@x3 Term))
+ (! (implies (and (HasType @x0
+Tm_type)
+(HasType @x1
+Tm_type)
+(HasType @x2
+@x0)
+(HasType @x3
+@x1))
+(Valid (Prims.subtype_of (Prims.op_Equals_Equals_Equals @x0
+@x1
+@x2
+@x3)
+Prims.unit)))
+ 
+
+:pattern ((Prims.subtype_of (Prims.op_Equals_Equals_Equals @x0
+@x1
+@x2
+@x3)
+Prims.unit))
+:qid defn_equation_Prims.op_Equals_Equals_Equals))
+
+:named defn_equation_Prims.op_Equals_Equals_Equals))
+;;;;;;;;;;;;;;;;data constructor typing intro
+;;; Fact-ids: Name Prims.trivial; Namespace Prims; Name Prims.T; Namespace Prims
+(assert (! 
+;; def=Prims.fst(91,17-91,18); use=Prims.fst(91,17-91,18)
+(forall ((@u0 Fuel))
+ (! (HasTypeFuel @u0
+Prims.T
+Prims.trivial)
+ 
+
+:pattern ((HasTypeFuel @u0
+Prims.T
+Prims.trivial))
+:qid data_typing_intro_Prims.T@tok))
+
+:named data_typing_intro_Prims.T@tok))
+;;;;;;;;;;;;;;;;Constructor distinct
+;;; Fact-ids: Name Prims.unit; Namespace Prims
+(assert (! (= 125
+(Term_constr_id Prims.unit))
+:named constructor_distinct_Prims.unit))
+;;;;;;;;;;;;;;;;Constructor distinct
+;;; Fact-ids: Name Prims.trivial; Namespace Prims; Name Prims.T; Namespace Prims
+(assert (! (= 116
+(Term_constr_id Prims.trivial))
+:named constructor_distinct_Prims.trivial))
+;;;;;;;;;;;;;;;;Constructor distinct
+;;; Fact-ids: Name Prims.int; Namespace Prims
+(assert (! (= 303
+(Term_constr_id Prims.int))
+:named constructor_distinct_Prims.int))
+;;;;;;;;;;;;;;;;Constructor distinct
+;;; Fact-ids: Name Prims.bool; Namespace Prims
+(assert (! (= 107
+(Term_constr_id Prims.bool))
+:named constructor_distinct_Prims.bool))
+;;;;;;;;;;;;;;;;Constructor distinct
+;;; Fact-ids: Name Prims.trivial; Namespace Prims; Name Prims.T; Namespace Prims
+(assert (! (= 122
+(Term_constr_id Prims.T))
+:named constructor_distinct_Prims.T))
+;;;;;;;;;;;;;;;;bool typing
+;;; Fact-ids: Name Prims.bool; Namespace Prims
+(assert (! (forall ((@u0 Bool))
+ (! (HasType (BoxBool @u0)
+Prims.bool)
+ 
+
+:pattern ((BoxBool @u0))
+:qid bool_typing))
+:named bool_typing))
+;;;;;;;;;;;;;;;;bool inversion
+;;; Fact-ids: Name Prims.bool; Namespace Prims
+(assert (! (forall ((@u0 Fuel) (@x1 Term))
+ (! (implies (HasTypeFuel @u0
+@x1
+Prims.bool)
+(is-BoxBool @x1))
+ 
+
+:pattern ((HasTypeFuel @u0
+@x1
+Prims.bool))
+:qid bool_inversion))
+:named bool_inversion))
+;;;;;;;;;;;;;;;;b2t typing
+;;; Fact-ids: Name Prims.b2t; Namespace Prims
+(assert (! 
+;; def=Prims.fst(180,5-180,8); use=Prims.fst(180,5-180,8)
+(forall ((@x0 Term))
+ (! (implies (HasType @x0
+Prims.bool)
+(HasType (Prims.b2t @x0)
+Tm_type))
+ 
+
+:pattern ((Prims.b2t @x0))
+:qid b2t_typing))
+
+:named b2t_typing))
+;;;;;;;;;;;;;;;;b2t def
+;;; Fact-ids: Name Prims.b2t; Namespace Prims
+(assert (! 
+;; def=Prims.fst(180,5-180,8); use=Prims.fst(180,5-180,8)
+(forall ((@x0 Term))
+ (! (= (Valid (Prims.b2t @x0))
+(BoxBool_proj_0 @x0))
+ 
+
+:pattern ((Prims.b2t @x0))
+:qid b2t_def))
+
+:named b2t_def))
+;;;;;;;;;;;;;;;;pretyping
+;;; Fact-ids: Name Prims.unit; Namespace Prims
+(assert (! 
+;; def=Prims.fst(96,5-96,9); use=Prims.fst(96,5-96,9)
+(forall ((@x0 Term) (@u1 Fuel))
+ (! (implies (HasTypeFuel @u1
+@x0
+Prims.unit)
+(= Prims.unit
+(PreType @x0)))
+ 
+
+:pattern ((HasTypeFuel @u1
+@x0
+Prims.unit))
+:qid Prims_pretyping_f8666440faa91836cc5a13998af863fc))
+
+:named Prims_pretyping_f8666440faa91836cc5a13998af863fc))
+;;;;;;;;;;;;;;;;pretyping
+;;; Fact-ids: Name Prims.bool; Namespace Prims
+(assert (! 
+;; def=Prims.fst(80,5-80,9); use=Prims.fst(80,5-80,9)
+(forall ((@x0 Term) (@u1 Fuel))
+ (! (implies (HasTypeFuel @u1
+@x0
+Prims.bool)
+(= Prims.bool
+(PreType @x0)))
+ 
+
+:pattern ((HasTypeFuel @u1
+@x0
+Prims.bool))
+:qid Prims_pretyping_f537159ed795b314b4e58c260361ae86))
+
+:named Prims_pretyping_f537159ed795b314b4e58c260361ae86))
+;;;;;;;;;;;;;;;;pretyping
+;;; Fact-ids: Name Prims.trivial; Namespace Prims; Name Prims.T; Namespace Prims
+(assert (! 
+;; def=Prims.fst(91,5-91,12); use=Prims.fst(91,5-91,12)
+(forall ((@x0 Term) (@u1 Fuel))
+ (! (implies (HasTypeFuel @u1
+@x0
+Prims.trivial)
+(= Prims.trivial
+(PreType @x0)))
+ 
+
+:pattern ((HasTypeFuel @u1
+@x0
+Prims.trivial))
+:qid Prims_pretyping_e8ffb7d227a1bbf69407a8d2ad2c4c83))
+
+:named Prims_pretyping_e8ffb7d227a1bbf69407a8d2ad2c4c83))
+;;;;;;;;;;;;;;;;pretyping
+;;; Fact-ids: Name Prims.int; Namespace Prims
+(assert (! 
+;; def=Prims.fst(514,5-514,8); use=Prims.fst(514,5-514,8)
+(forall ((@x0 Term) (@u1 Fuel))
+ (! (implies (HasTypeFuel @u1
+@x0
+Prims.int)
+(= Prims.int
+(PreType @x0)))
+ 
+
+:pattern ((HasTypeFuel @u1
+@x0
+Prims.int))
+:qid Prims_pretyping_ae567c2fb75be05905677af440075565))
+
+:named Prims_pretyping_ae567c2fb75be05905677af440075565))
+;;;;;;;;;;;;;;;;pre-typing for functions
+;;; Fact-ids: Name Prims.pure_post'; Namespace Prims
+(assert (! 
+;; def=Prims.fst(315,31-315,54); use=Prims.fst(315,31-315,54)
+(forall ((@u0 Fuel) (@x1 Term) (@x2 Term) (@x3 Term))
+ (! (implies (HasTypeFuel @u0
+@x1
+(Tm_arrow_92458cff82f9ffee1f6e26a1c0c579f3 @x2
+@x3))
+(is-Tm_arrow (PreType @x1)))
+ 
+
+:pattern ((HasTypeFuel @u0
+@x1
+(Tm_arrow_92458cff82f9ffee1f6e26a1c0c579f3 @x2
+@x3)))
+:qid Prims_pre_typing_Tm_arrow_92458cff82f9ffee1f6e26a1c0c579f3))
+
+:named Prims_pre_typing_Tm_arrow_92458cff82f9ffee1f6e26a1c0c579f3))
+;;;;;;;;;;;;;;;;interpretation_Tm_arrow_92458cff82f9ffee1f6e26a1c0c579f3
+;;; Fact-ids: Name Prims.pure_post'; Namespace Prims
+(assert (! 
+;; def=Prims.fst(315,31-315,54); use=Prims.fst(315,31-315,54)
+(forall ((@x0 Term) (@x1 Term) (@x2 Term))
+ (! (iff (HasTypeZ @x0
+(Tm_arrow_92458cff82f9ffee1f6e26a1c0c579f3 @x1
+@x2))
+(and 
+;; def=Prims.fst(315,31-315,54); use=Prims.fst(315,31-315,54)
+(forall ((@x3 Term))
+ (! (implies (HasType @x3
+(Tm_refine_8d65e998a07dd53ec478e27017d9dba5 @x2
+@x1))
+(HasType (ApplyTT @x0
+@x3)
+Tm_type))
+ 
+
+:pattern ((ApplyTT @x0
+@x3))
+:qid Prims_interpretation_Tm_arrow_92458cff82f9ffee1f6e26a1c0c579f3.1))
+
+(IsTotFun @x0)))
+ 
+
+:pattern ((HasTypeZ @x0
+(Tm_arrow_92458cff82f9ffee1f6e26a1c0c579f3 @x1
+@x2)))
+:qid Prims_interpretation_Tm_arrow_92458cff82f9ffee1f6e26a1c0c579f3))
+
+:named Prims_interpretation_Tm_arrow_92458cff82f9ffee1f6e26a1c0c579f3))
+;;;;;;;;;;;;;;;;pre-typing for functions
+;;; Fact-ids: Name FStar.Preorder.relation; Namespace FStar.Preorder
+(assert (! 
+;; def=FStar.Preorder.fst(20,15-20,40); use=FStar.Preorder.fst(20,25-20,40)
+(forall ((@u0 Fuel) (@x1 Term) (@x2 Term))
+ (! (implies (HasTypeFuel @u0
+@x1
+(Tm_arrow_a19f9d49348d4e0038f0ded87d87802f @x2))
+(is-Tm_arrow (PreType @x1)))
+ 
+
+:pattern ((HasTypeFuel @u0
+@x1
+(Tm_arrow_a19f9d49348d4e0038f0ded87d87802f @x2)))
+:qid FStar.Preorder_pre_typing_Tm_arrow_a19f9d49348d4e0038f0ded87d87802f))
+
+:named FStar.Preorder_pre_typing_Tm_arrow_a19f9d49348d4e0038f0ded87d87802f))
+;;;;;;;;;;;;;;;;interpretation_Tm_arrow_a19f9d49348d4e0038f0ded87d87802f
+;;; Fact-ids: Name FStar.Preorder.relation; Namespace FStar.Preorder
+(assert (! 
+;; def=FStar.Preorder.fst(20,15-20,40); use=FStar.Preorder.fst(20,25-20,40)
+(forall ((@x0 Term) (@x1 Term))
+ (! (iff (HasTypeZ @x0
+(Tm_arrow_a19f9d49348d4e0038f0ded87d87802f @x1))
+(and 
+;; def=FStar.Preorder.fst(20,15-20,40); use=FStar.Preorder.fst(20,25-20,40)
+(forall ((@x2 Term) (@x3 Term))
+ (! (implies (and (HasType @x2
+@x1)
+(HasType @x3
+@x1))
+(HasType (ApplyTT (ApplyTT @x0
+@x2)
+@x3)
+Tm_type))
+ 
+
+:pattern ((ApplyTT (ApplyTT @x0
+@x2)
+@x3))
+:qid FStar.Preorder_interpretation_Tm_arrow_a19f9d49348d4e0038f0ded87d87802f.1))
+
+(IsTotFun @x0)
+
+;; def=FStar.Preorder.fst(20,15-20,40); use=FStar.Preorder.fst(20,25-20,40)
+(forall ((@x2 Term))
+ (! (implies (HasType @x2
+@x1)
+(IsTotFun (ApplyTT @x0
+@x2)))
+ 
+
+:pattern ((ApplyTT @x0
+@x2))
+:qid FStar.Preorder_interpretation_Tm_arrow_a19f9d49348d4e0038f0ded87d87802f.2))
+))
+ 
+
+:pattern ((HasTypeZ @x0
+(Tm_arrow_a19f9d49348d4e0038f0ded87d87802f @x1)))
+:qid FStar.Preorder_interpretation_Tm_arrow_a19f9d49348d4e0038f0ded87d87802f))
+
+:named FStar.Preorder_interpretation_Tm_arrow_a19f9d49348d4e0038f0ded87d87802f))
+;;;;;;;;;;;;;;;;Fuel irrelevance
+;;; Fact-ids: Name Prims.pow2; Namespace Prims
+(assert (! 
+;; def=Prims.fst(708,8-708,12); use=Prims.fst(708,8-708,12)
+(forall ((@u0 Fuel) (@x1 Term))
+ (! (= (Prims.pow2.fuel_instrumented (SFuel @u0)
+@x1)
+(Prims.pow2.fuel_instrumented ZFuel
+@x1))
+ 
+
+:pattern ((Prims.pow2.fuel_instrumented (SFuel @u0)
+@x1))
+:qid @fuel_irrelevance_Prims.pow2.fuel_instrumented))
+
+:named @fuel_irrelevance_Prims.pow2.fuel_instrumented))
+;;;;;;;;;;;;;;;;Correspondence of recursive function to instrumented version
+;;; Fact-ids: Name Prims.pow2; Namespace Prims
+(assert (! 
+;; def=Prims.fst(708,8-708,12); use=Prims.fst(708,8-708,12)
+(forall ((@x0 Term))
+ (! (= (Prims.pow2 @x0)
+(Prims.pow2.fuel_instrumented MaxFuel
+@x0))
+ 
+
+:pattern ((Prims.pow2 @x0))
+:qid @fuel_correspondence_Prims.pow2.fuel_instrumented))
+
+:named @fuel_correspondence_Prims.pow2.fuel_instrumented))
+(push) ;; push{2
+
+; Starting query at X64.Vale.Decls.fst(26,79-26,81)
+
+(declare-fun label_2 () Bool)
+(declare-fun label_1 () Bool)
+
+; Encoding query formula : forall (x: Prims.nat) (y: Prims.nat).
+;   (*  - Could not prove post-condition
+; *)
+;   forall (p: Prims.pure_post Prims.unit).
+;     (forall (pure_result: Prims.unit). 0 <= x * y ==> p pure_result) ==>
+;     (forall (any_result: Prims.unit). p any_result)
+
+
+; Context: While encoding a query
+; While typechecking the top-level declaration `let lemma_mul_nat`
+
+(push) ;; push{0
+
+; <fuel='1' ifuel='1'>
+
+;;; Fact-ids: 
+(assert (! (= MaxFuel
+(SFuel ZFuel))
+:named @MaxFuel_assumption))
+;;; Fact-ids: 
+(assert (! (= MaxIFuel
+(SFuel ZFuel))
+:named @MaxIFuel_assumption))
+;;;;;;;;;;;;;;;;query
+;;; Fact-ids: 
+(assert (! (not (forall ((@x0 Term) (@x1 Term))
+ (! (implies (and (HasType @x0
+Prims.nat)
+(HasType @x1
+Prims.nat))
+
+;; def=Prims.fst(406,51-406,91); use=Prims.fst(430,19-430,32)
+(forall ((@x2 Term))
+ (! (implies (and (HasType @x2
+(Prims.pure_post Prims.unit))
+
+;; def=Prims.fst(441,36-441,97); use=X64.Vale.Decls.fst(26,79-26,81)
+(forall ((@x3 Term))
+ (! (implies (and (or label_1
+(HasType @x3
+Prims.unit))
+
+;; def=X64.Vale.Decls.fst(26,51-26,75); use=X64.Vale.Decls.fst(26,79-26,81)
+(or label_2
+
+;; def=X64.Vale.Decls.fst(26,51-26,75); use=X64.Vale.Decls.fst(26,79-26,81)
+(<= 0
+(_mul (BoxInt_proj_0 @x0)
+(BoxInt_proj_0 @x1)))
+)
+)
+
+;; def=Prims.fst(441,83-441,96); use=X64.Vale.Decls.fst(26,79-26,81)
+(Valid 
+;; def=Prims.fst(441,83-441,96); use=X64.Vale.Decls.fst(26,79-26,81)
+(ApplyTT @x2
+@x3)
+)
+)
+ 
+
+:pattern (
+;; def=Prims.fst(441,83-441,96); use=X64.Vale.Decls.fst(26,79-26,81)
+(Valid 
+;; def=Prims.fst(441,83-441,96); use=X64.Vale.Decls.fst(26,79-26,81)
+(ApplyTT @x2
+@x3)
+)
+)
+:qid @query.2))
+)
+
+;; def=Prims.fst(451,66-451,102); use=Prims.fst(454,31-454,44)
+(forall ((@x3 Term))
+ (! (implies (HasType @x3
+Prims.unit)
+
+;; def=Prims.fst(451,90-451,102); use=Prims.fst(454,31-454,44)
+(Valid 
+;; def=Prims.fst(451,90-451,102); use=Prims.fst(454,31-454,44)
+(ApplyTT @x2
+@x3)
+)
+)
+ 
+;;no pats
+:qid @query.3))
+)
+ 
+;;no pats
+:qid @query.1))
+)
+ 
+;;no pats
+:qid @query)))
+:named @query))
+(set-option :rlimit 2723280)
+(echo "<result>")
+(check-sat)
+(echo "</result>")
+(set-option :rlimit 0)
+(echo "<reason-unknown>")
+(get-info :reason-unknown)
+(echo "</reason-unknown>")
+(echo "<unsat-core>")
+(get-unsat-core)
+(echo "</unsat-core>")
+(echo "<labels>")
+(echo "label_2")
+(eval label_2)
+(echo "label_1")
+(eval label_1)
+(echo "</labels>")
+(echo "Done!")
+(pop) ;; 0}pop
+; QUERY ID: (X64.Vale.Decls.lemma_mul_nat, 1)
+; STATUS: unsat
+; UNSAT CORE GENERATED: @MaxIFuel_assumption, @query, equation_Prims.nat, projection_inverse_BoxInt_proj_0, refinement_interpretation_Tm_refine_542f9d4f129664613f2483a6c88bc7c2

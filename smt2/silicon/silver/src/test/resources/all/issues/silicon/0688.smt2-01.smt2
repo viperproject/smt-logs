@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-26 19:41:28
+; Started: 2024-12-27 02:01:29
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -500,11 +500,11 @@
 (assert (forall ((s@$ $Snap) (address@0@00 $Ref)) (!
   (= (loopkup%limited s@$ address@0@00) (loopkup s@$ address@0@00))
   :pattern ((loopkup s@$ address@0@00))
-  :qid |quant-u-25793|)))
+  :qid |quant-u-25821|)))
 (assert (forall ((s@$ $Snap) (address@0@00 $Ref)) (!
   (loopkup%stateless address@0@00)
   :pattern ((loopkup%limited s@$ address@0@00))
-  :qid |quant-u-25794|)))
+  :qid |quant-u-25822|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- test ----------

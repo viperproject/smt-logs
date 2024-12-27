@@ -1,0 +1,75 @@
+opam-version: "2.0"
+added: [
+  "doc/stdint" {"D"}
+  "doc/stdint/CHANGES.md" {"F:188160259ff1bd686ec9c9a468ccdb09"}
+  "doc/stdint/LICENSE" {"F:5788a35499aa413170109e90ecd34546"}
+  "doc/stdint/README.md" {"F:bdf7876216b86c14d01897579210c485"}
+  "lib/stdint" {"D"}
+  "lib/stdint/META" {"F:67999c70bcf831dd0401a7d2d8295497"}
+  "lib/stdint/Stdint_stdlib_.ml" {"F:f15bd56039bbd0ccc53da1ef8d5ca0d0"}
+  "lib/stdint/bytes_conv.ml" {"F:2b0903a1947e0ebd6a29149c57e73c6f"}
+  "lib/stdint/bytes_conv.mli" {"F:1888593c60837f18e124947a3ccf0173"}
+  "lib/stdint/dune-package" {"F:637b26bb771bb2a2ea37e42f4c7f14c9"}
+  "lib/stdint/infix.ml" {"F:d7b387acd79c29bb49bc606264a30570"}
+  "lib/stdint/infix.mli" {"F:f10f95150cad0b954e041eb582bee7a2"}
+  "lib/stdint/int128.h" {"F:7505e0e27805d2534515b50c0e5aa5b0"}
+  "lib/stdint/int16.h" {"F:14bf7f061c4cc3064d3b332a2abd8c2c"}
+  "lib/stdint/int24.h" {"F:d404c5d7b9ecbd286e5e952013fa7dee"}
+  "lib/stdint/int40.h" {"F:3bdd844a44eab7f567a31b57e0e78952"}
+  "lib/stdint/int48.h" {"F:26d5d6586c6bbdf2c07ec7d01e9dbc7c"}
+  "lib/stdint/int56.h" {"F:28082bc2810fd68ee8d04ba49042988a"}
+  "lib/stdint/int8.h" {"F:ebc726c904b4490fe2b23262eab99da9"}
+  "lib/stdint/int_wrapper.ml" {"F:646f77281885e8496f24759610092310"}
+  "lib/stdint/int_wrapper.mli" {"F:b270e87317eed995f8f0378ac0d8bb0d"}
+  "lib/stdint/libstdint_stubs.a" {"F:48a07988d4f0613889b4e279367978c3"}
+  "lib/stdint/opam" {"F:d1089fa28808c9e7e9214374ecffc5d1"}
+  "lib/stdint/stdint.a" {"F:97d32ca4cd75a501eac5e6f758b10b23"}
+  "lib/stdint/stdint.cma" {"F:3c28d3e9eec139f70ec91c0838a160d1"}
+  "lib/stdint/stdint.cmi" {"F:d93509f7bfa1a0e8222afe2eec72007b"}
+  "lib/stdint/stdint.cmt" {"F:6eb2cee70ac50e6343a49792fdf7c63e"}
+  "lib/stdint/stdint.cmti" {"F:185f5d6242ff471b66d7d70d32955f44"}
+  "lib/stdint/stdint.cmx" {"F:b40f612d300db50c3b3f833d2f7a9160"}
+  "lib/stdint/stdint.cmxa" {"F:1064395920e69e76ba91b7cf5f67deee"}
+  "lib/stdint/stdint.cmxs" {"F:bc3512b6fb3168fb0fe37293768ec9d8"}
+  "lib/stdint/stdint.ml" {"F:5dbacff35f864bb2a2269ca4e238adf9"}
+  "lib/stdint/stdint.mli" {"F:8089413000204afb982674b314b6675f"}
+  "lib/stdint/stdint__.cmi" {"F:ebc0ebdd2284b920c66ccf96b6ea9047"}
+  "lib/stdint/stdint__.cmt" {"F:72f9d76ef495f7c7685a417aba01e558"}
+  "lib/stdint/stdint__.cmx" {"F:76caa6527355687f30bac5054f6eb8aa"}
+  "lib/stdint/stdint__.ml" {"F:3f0500d6e2cc6379a3943d7871d6abe0"}
+  "lib/stdint/stdint__Bytes_conv.cmi" {"F:793906e98881dfb91c9ba43ab1f999a5"}
+  "lib/stdint/stdint__Bytes_conv.cmt" {"F:c855eabc08df06b017d136b710c8e0c0"}
+  "lib/stdint/stdint__Bytes_conv.cmti" {"F:e4d93dd512e3c75ed8ebd9504e30cc45"}
+  "lib/stdint/stdint__Bytes_conv.cmx" {"F:4671053e227dc959ba4cea04f5daa781"}
+  "lib/stdint/stdint__Infix.cmi" {"F:7fc0527f47e5fc71746356ffc3f54e5b"}
+  "lib/stdint/stdint__Infix.cmt" {"F:efdca03b21276e7bb36db70c823915e0"}
+  "lib/stdint/stdint__Infix.cmti" {"F:7611afbbfcc655078e9bbcef295612e2"}
+  "lib/stdint/stdint__Infix.cmx" {"F:f342dc78d473d63fd8d6fca7540f4e61"}
+  "lib/stdint/stdint__Int_wrapper.cmi" {"F:f9b6689bb25ab852d103d9caaf03528f"}
+  "lib/stdint/stdint__Int_wrapper.cmt" {"F:9b69e28803d048f7c30242ae753f617d"}
+  "lib/stdint/stdint__Int_wrapper.cmti"
+    {"F:569eafb9abe07c89ae9929286004011c"}
+  "lib/stdint/stdint__Int_wrapper.cmx" {"F:aea0cb9455f79feeb0fdfa7f0bd6d4a2"}
+  "lib/stdint/stdint__Stdint_stdlib_.cmi"
+    {"F:de8f1c4e8aa91c41bb1c09be205d4fa6"}
+  "lib/stdint/stdint__Stdint_stdlib_.cmt"
+    {"F:263d44c5e359f82101b0f603ca1657f2"}
+  "lib/stdint/stdint__Stdint_stdlib_.cmx"
+    {"F:5fa403a147629e2b62a9b3164460bc20"}
+  "lib/stdint/stdint__Str_conv.cmi" {"F:8ff75bec4133a3a407d9537197e14b8c"}
+  "lib/stdint/stdint__Str_conv.cmt" {"F:fad4d9685086b146d8dbc2d045e2e882"}
+  "lib/stdint/stdint__Str_conv.cmti" {"F:12113ab86c3778640dc6b2a75267b1a4"}
+  "lib/stdint/stdint__Str_conv.cmx" {"F:946940a183c0d5397c21e2be202117fe"}
+  "lib/stdint/str_conv.ml" {"F:306355da4f4857753532cb41bb41bbb1"}
+  "lib/stdint/str_conv.mli" {"F:5b55da46a45d12d0a563e6af8631890f"}
+  "lib/stdint/uint128.h" {"F:fdcf325855868f1307d157c737f12196"}
+  "lib/stdint/uint16.h" {"F:2ff927108e2b6725d097c00680d3620e"}
+  "lib/stdint/uint24.h" {"F:ffad35b475f4773930d07edf1bbf49f8"}
+  "lib/stdint/uint32.h" {"F:8aaec6e9ed5d8610b6a8dd2d9956047a"}
+  "lib/stdint/uint40.h" {"F:1567ba85eb7b261d946b38966b5b6f3e"}
+  "lib/stdint/uint48.h" {"F:38e910b8c03c48b1ae76ba290f4af7c3"}
+  "lib/stdint/uint56.h" {"F:4f8358e8558fcba3d3bf691296e87848"}
+  "lib/stdint/uint64.h" {"F:907e4c48e2a0a3fa474168088459f3e7"}
+  "lib/stdint/uint8.h" {"F:c17c555d25fe79cc3aff0f95951622a1"}
+  "lib/stublibs/dllstdint_stubs.so" {"F:ac1172efad564409545be1d70cd92e3a"}
+]

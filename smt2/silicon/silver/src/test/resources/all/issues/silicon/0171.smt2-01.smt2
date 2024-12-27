@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-26 19:39:58
+; Started: 2024-12-27 01:59:58
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -421,11 +421,11 @@
 (assert (forall ((s@$ $Snap) (a@0@00 IArray) (x@1@00 Int) (y@2@00 Int)) (!
   (= (f_lcp%limited s@$ a@0@00 x@1@00 y@2@00) (f_lcp s@$ a@0@00 x@1@00 y@2@00))
   :pattern ((f_lcp s@$ a@0@00 x@1@00 y@2@00))
-  :qid |quant-u-23897|)))
+  :qid |quant-u-23925|)))
 (assert (forall ((s@$ $Snap) (a@0@00 IArray) (x@1@00 Int) (y@2@00 Int)) (!
   (f_lcp%stateless a@0@00 x@1@00 y@2@00)
   :pattern ((f_lcp%limited s@$ a@0@00 x@1@00 y@2@00))
-  :qid |quant-u-23898|)))
+  :qid |quant-u-23926|)))
 (assert (forall ((s@$ $Snap) (a@0@00 IArray) (x@1@00 Int) (y@2@00 Int)) (!
   (let ((result@3@00 (f_lcp%limited s@$ a@0@00 x@1@00 y@2@00))) (=>
     (f_lcp%precondition s@$ a@0@00 x@1@00 y@2@00)
@@ -438,10 +438,10 @@
       :pattern ((Seq_contains_trigger (Seq_range x@1@00 fresh__182) k))
       ))))
   :pattern ((f_lcp%limited s@$ a@0@00 x@1@00 y@2@00))
-  :qid |quant-u-23899|)))
+  :qid |quant-u-23927|)))
 (assert (forall ((s@$ $Snap) (a@0@00 IArray) (x@1@00 Int) (y@2@00 Int)) (!
   (let ((result@3@00 (f_lcp%limited s@$ a@0@00 x@1@00 y@2@00))) true)
   :pattern ((f_lcp%limited s@$ a@0@00 x@1@00 y@2@00))
-  :qid |quant-u-23900|)))
+  :qid |quant-u-23928|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------

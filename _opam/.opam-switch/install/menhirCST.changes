@@ -1,0 +1,26 @@
+opam-version: "2.0"
+added: [
+  "doc/menhirCST" {"D"}
+  "doc/menhirCST/LICENSE" {"F:7c409efab485d007e8c2d442b51a252f"}
+  "lib/menhirCST" {"D"}
+  "lib/menhirCST/META" {"F:d0d304b1b97989c895ccfbc4e441d71b"}
+  "lib/menhirCST/Settle.ml" {"F:d2148f950655290d859a58282fef0954"}
+  "lib/menhirCST/Settle.mli" {"F:3eb4d701276814da82cb635d3b3a30cc"}
+  "lib/menhirCST/dune-package" {"F:a9063ecb9574f78ab34b98966c931951"}
+  "lib/menhirCST/menhirCST.a" {"F:466d1e48b34b7b40fdbb51c922118b0f"}
+  "lib/menhirCST/menhirCST.cma" {"F:9eed41373ecf13f1b483e564c4646b36"}
+  "lib/menhirCST/menhirCST.cmi" {"F:9027da33fb0f32e71c605e0bfb761af1"}
+  "lib/menhirCST/menhirCST.cmt" {"F:1658e6d516374304b3b9e0e02139658c"}
+  "lib/menhirCST/menhirCST.cmx" {"F:db6268976cecab3e5453446d0bcb3bc1"}
+  "lib/menhirCST/menhirCST.cmxa" {"F:f880b94b22cfd3f7e45db3103ca88982"}
+  "lib/menhirCST/menhirCST.cmxs" {"F:36e7c8b1c5cd9c88521df09a07be0847"}
+  "lib/menhirCST/menhirCST.ml" {"F:e0cf3a722bfa59a6da5c3110337ce65c"}
+  "lib/menhirCST/menhirCST__Settle.cmi"
+    {"F:d0ca1c31d79a6d4c4d3180e0fca2499b"}
+  "lib/menhirCST/menhirCST__Settle.cmt"
+    {"F:73950d701abf94539f88ddbc1cabfb47"}
+  "lib/menhirCST/menhirCST__Settle.cmti"
+    {"F:4a73542dab6fb063c6a6e74dc27fbc5f"}
+  "lib/menhirCST/menhirCST__Settle.cmx"
+    {"F:c2cf1aba35c36c556f75cd8350dec04c"}
+]

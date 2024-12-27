@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-26 19:42:57
+; Started: 2024-12-27 02:02:59
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -194,11 +194,11 @@
 (assert (forall ((s@$ $Snap) (xs@0@00 $Ref)) (!
   (= (PI_list%limited s@$ xs@0@00) (PI_list s@$ xs@0@00))
   :pattern ((PI_list s@$ xs@0@00))
-  :qid |quant-u-26861|)))
+  :qid |quant-u-26889|)))
 (assert (forall ((s@$ $Snap) (xs@0@00 $Ref)) (!
   (PI_list%stateless xs@0@00)
   :pattern ((PI_list%limited s@$ xs@0@00))
-  :qid |quant-u-26862|)))
+  :qid |quant-u-26890|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- alwaysAppendLoop ----------
@@ -896,12 +896,12 @@
 (assert (not (= n@31@01 $Ref.null)))
 (declare-const next@32@01 $Ref)
 (assert (not (= n@31@01 n@30@01)))
-(assert (not (= n@31@01 ys@20@01)))
+(assert (not (= n@31@01 xs@1@01)))
 (assert (not (= n@31@01 ys@12@01)))
 (assert (not
   (= n@31@01 ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second $t@16@01))))))
 (assert (not (= n@31@01 ($SortWrappers.$SnapTo$Ref ($Snap.first $t@16@01)))))
-(assert (not (= n@31@01 xs@1@01)))
+(assert (not (= n@31@01 ys@20@01)))
 ; [exec]
 ; n.next := null
 (push) ; 12

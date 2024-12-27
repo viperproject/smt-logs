@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-26 19:57:32
+// Date:         2024-12-27 02:17:42
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/examples/binary-search/binary-search-seq.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/examples/binary-search/binary-search-seq-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -546,15 +546,15 @@ procedure binary_search(xs: (Seq int), key_1: int) returns (index: int)
 {
   var i_14: int;
   var j_5: int;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var i_2: int;
   var low: int;
   var high: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var i_6_1: int;
   var i_4: int;
   var loopHeap: HeapType;
@@ -593,8 +593,8 @@ procedure binary_search(xs: (Seq int), key_1: int) returns (index: int)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -652,8 +652,8 @@ procedure binary_search(xs: (Seq int), key_1: int) returns (index: int)
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Loop invariant 0 <= low && (low <= high && high <= |xs|) might not hold on entry. Assertion 0 <= low might not hold. (binary-search-seq.vpr@17.17--17.56) [116664]"}
           0 <= low;
         assert {:msg "  Loop invariant 0 <= low && (low <= high && high <= |xs|) might not hold on entry. Assertion low <= high might not hold. (binary-search-seq.vpr@17.17--17.56) [116665]"}
@@ -798,8 +798,8 @@ procedure binary_search(xs: (Seq int), key_1: int) returns (index: int)
             }
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Loop invariant 0 <= low && (low <= high && high <= |xs|) might not be preserved. Assertion 0 <= low might not hold. (binary-search-seq.vpr@17.17--17.56) [116679]"}
           0 <= low;
         assert {:msg "  Loop invariant 0 <= low && (low <= high && high <= |xs|) might not be preserved. Assertion low <= high might not hold. (binary-search-seq.vpr@17.17--17.56) [116680]"}
@@ -852,8 +852,8 @@ procedure binary_search(xs: (Seq int), key_1: int) returns (index: int)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of binary_search might not hold. Assertion -1 <= index might not hold. (binary-search-seq.vpr@8.12--8.39) [116686]"}
       -1 <= index;
     assert {:msg "  Postcondition of binary_search might not hold. Assertion index < |xs| might not hold. (binary-search-seq.vpr@8.12--8.39) [116687]"}

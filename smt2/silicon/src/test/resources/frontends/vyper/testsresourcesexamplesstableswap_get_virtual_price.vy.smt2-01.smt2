@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-26 19:25:37
+; Started: 2024-12-27 01:45:17
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -10477,7 +10477,7 @@
 (check-sat)
 ; unsat
 (pop) ; 13
-; 0.86s
+; 0.66s
 ; (get-info :all-statistics)
 (assert (=>
   (forall ((q$i@393@01 Int)) (!
@@ -10641,7 +10641,7 @@
 (check-sat)
 ; unsat
 (pop) ; 16
-; 0.10s
+; 0.31s
 ; (get-info :all-statistics)
 (assert (<=
   0
@@ -10659,7 +10659,7 @@
 (check-sat)
 ; unsat
 (pop) ; 16
-; 0.00s
+; 0.16s
 ; (get-info :all-statistics)
 (assert (>
   ($unwrap<Int> ($wrap<$Int> (+
@@ -11024,7 +11024,7 @@
 (check-sat)
 ; unsat
 (pop) ; 17
-; 0.06s
+; 0.07s
 ; (get-info :all-statistics)
 (pop) ; 16
 (push) ; 16
@@ -11195,7 +11195,7 @@
 (check-sat)
 ; unsat
 (pop) ; 13
-; 0.18s
+; 0.11s
 ; (get-info :all-statistics)
 (assert (=>
   (forall ((q$i@395@01 Int)) (!
@@ -11266,7 +11266,7 @@
 (check-sat)
 ; unknown
 (pop) ; 13
-; 0.01s
+; 0.02s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 13
@@ -12420,7 +12420,7 @@
 (check-sat)
 ; unsat
 (pop) ; 24
-; 0.76s
+; 1.59s
 ; (get-info :all-statistics)
 (assert (=>
   (forall ((q$i@397@01 Int)) (!
@@ -12513,7 +12513,7 @@
 (check-sat)
 ; unknown
 (pop) ; 26
-; 0.01s
+; 0.02s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 26
@@ -12839,7 +12839,7 @@
 (check-sat)
 ; unsat
 (pop) ; 28
-; 0.66s
+; 0.44s
 ; (get-info :all-statistics)
 (assert (=>
   (forall ((q$i@399@01 Int)) (!
@@ -12933,7 +12933,7 @@
 (check-sat)
 ; unknown
 (pop) ; 28
-; 0.02s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 28
@@ -13136,7 +13136,7 @@
 (check-sat)
 ; unknown
 (pop) ; 32
-; 0.01s
+; 0.02s
 ; (get-info :all-statistics)
 ; [then-branch: 152 | QA q$i@402@01 :: 0 <= q$i@402@01 && q$i@402@01 < 3 ==> l$xp@166@01[0] == l$xp@166@01[q$i@402@01] | live]
 ; [else-branch: 152 | !(QA q$i@402@01 :: 0 <= q$i@402@01 && q$i@402@01 < 3 ==> l$xp@166@01[0] == l$xp@166@01[q$i@402@01]) | live]
@@ -13227,7 +13227,7 @@
 (check-sat)
 ; unsat
 (pop) ; 29
-; 0.25s
+; 0.41s
 ; (get-info :all-statistics)
 (assert (=>
   (forall ((q$i@402@01 Int)) (!
@@ -13912,7 +13912,7 @@
 (check-sat)
 ; unsat
 (pop) ; 28
-; 0.51s
+; 0.40s
 ; (get-info :all-statistics)
 (assert (=>
   (forall ((q$i@406@01 Int)) (!
@@ -14300,7 +14300,7 @@
 (check-sat)
 ; unsat
 (pop) ; 29
-; 0.27s
+; 0.44s
 ; (get-info :all-statistics)
 (assert (=>
   (forall ((q$i@409@01 Int)) (!
@@ -14830,7 +14830,7 @@
 (check-sat)
 ; unsat
 (pop) ; 13
-; 0.07s
+; 0.05s
 ; (get-info :all-statistics)
 (assert (=>
   (forall ((q$i@413@01 Int)) (!
@@ -17113,7 +17113,7 @@
 (check-sat)
 ; unknown
 (pop) ; 18
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 18
@@ -17834,7 +17834,7 @@
 (check-sat)
 ; unsat
 (pop) ; 31
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [eval] l$i1$xp[q$i]
 (push) ; 31
@@ -17939,7 +17939,7 @@
 (check-sat)
 ; unsat
 (pop) ; 28
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (pop) ; 27
 (push) ; 27

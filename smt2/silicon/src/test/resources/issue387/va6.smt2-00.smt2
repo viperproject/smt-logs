@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-26 19:30:39
+; Started: 2024-12-27 01:50:25
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -931,11 +931,11 @@
 (assert (forall ((s@$ $Snap) (xs@0@00 Seq<$Ref>) (n@1@00 Int) (i@2@00 Int)) (!
   (= (fun06%limited s@$ xs@0@00 n@1@00 i@2@00) (fun06 s@$ xs@0@00 n@1@00 i@2@00))
   :pattern ((fun06 s@$ xs@0@00 n@1@00 i@2@00))
-  :qid |quant-u-5147|)))
+  :qid |quant-u-5212|)))
 (assert (forall ((s@$ $Snap) (xs@0@00 Seq<$Ref>) (n@1@00 Int) (i@2@00 Int)) (!
   (fun06%stateless xs@0@00 n@1@00 i@2@00)
   :pattern ((fun06%limited s@$ xs@0@00 n@1@00 i@2@00))
-  :qid |quant-u-5148|)))
+  :qid |quant-u-5213|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (= s@$ ($Snap.combine ($Snap.first s@$) ($Snap.second s@$))))
@@ -1289,7 +1289,7 @@
       (= (inv@7@00 s@$ xs@0@00 n@1@00 i@2@00 (Seq_index xs@0@00 j@6@00)) j@6@00)
       (img@8@00 s@$ xs@0@00 n@1@00 i@2@00 (Seq_index xs@0@00 j@6@00))))
   :pattern ((Seq_index xs@0@00 j@6@00))
-  :qid |quant-u-5150|)))
+  :qid |quant-u-5215|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -1379,7 +1379,7 @@
       (= (inv@10@00 s@$ xs@0@00 n@1@00 i@2@00 (Seq_index xs@0@00 j@9@00)) j@9@00)
       (img@11@00 s@$ xs@0@00 n@1@00 i@2@00 (Seq_index xs@0@00 j@9@00))))
   :pattern ((Seq_index xs@0@00 j@9@00))
-  :qid |quant-u-5152|)))
+  :qid |quant-u-5217|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -1415,7 +1415,7 @@
           (<= 0 (inv@7@00 s@$ xs@0@00 n@1@00 i@2@00 r))
           (< (inv@7@00 s@$ xs@0@00 n@1@00 i@2@00 r) 3)))))
   
-  :qid |quant-u-5153|))))
+  :qid |quant-u-5218|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -1672,7 +1672,7 @@
           j@6@00)
         (img@8@00 s@$ xs@0@00 n@1@00 i@2@00 (Seq_index xs@0@00 j@6@00))))
     :pattern ((Seq_index xs@0@00 j@6@00))
-    :qid |quant-u-5150|))
+    :qid |quant-u-5215|))
   (forall ((j@6@00 Int)) (!
     (=>
       (and (<= 0 j@6@00) (< j@6@00 3))
@@ -1695,7 +1695,7 @@
           j@9@00)
         (img@11@00 s@$ xs@0@00 n@1@00 i@2@00 (Seq_index xs@0@00 j@9@00))))
     :pattern ((Seq_index xs@0@00 j@9@00))
-    :qid |quant-u-5152|))
+    :qid |quant-u-5217|))
   (forall ((j@9@00 Int)) (!
     (=>
       (and (<= 3 j@9@00) (< j@9@00 n@1@00))
@@ -1717,7 +1717,7 @@
             j@6@00)
           (img@8@00 s@$ xs@0@00 n@1@00 i@2@00 (Seq_index xs@0@00 j@6@00))))
       :pattern ((Seq_index xs@0@00 j@6@00))
-      :qid |quant-u-5150|))
+      :qid |quant-u-5215|))
     (forall ((r $Ref)) (!
       (=>
         (and
@@ -1737,7 +1737,7 @@
             j@9@00)
           (img@11@00 s@$ xs@0@00 n@1@00 i@2@00 (Seq_index xs@0@00 j@9@00))))
       :pattern ((Seq_index xs@0@00 j@9@00))
-      :qid |quant-u-5152|))
+      :qid |quant-u-5217|))
     (forall ((r $Ref)) (!
       (=>
         (and
@@ -1782,11 +1782,11 @@
           xs@0@00
           i@2@00)))))
   :pattern ((fun06 s@$ xs@0@00 n@1@00 i@2@00))
-  :qid |quant-u-5154|)))
+  :qid |quant-u-5219|)))
 (assert (forall ((s@$ $Snap) (xs@0@00 Seq<$Ref>) (n@1@00 Int) (i@2@00 Int)) (!
   true
   :pattern ((fun06 s@$ xs@0@00 n@1@00 i@2@00))
-  :qid |quant-u-5155|)))
+  :qid |quant-u-5220|)))
 ; ---------- P02 ----------
 (declare-const xs@14@00 Seq<$Ref>)
 (declare-const n@15@00 Int)
@@ -2127,7 +2127,7 @@
       (= (inv@20@00 (Seq_index xs@14@00 j@19@00)) j@19@00)
       (img@21@00 (Seq_index xs@14@00 j@19@00))))
   :pattern ((Seq_index xs@14@00 j@19@00))
-  :qid |quant-u-5157|)))
+  :qid |quant-u-5222|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and (img@21@00 r) (and (<= 0 (inv@20@00 r)) (< (inv@20@00 r) 3)))
@@ -2214,7 +2214,7 @@
       (= (inv@23@00 (Seq_index xs@14@00 j@22@00)) j@22@00)
       (img@24@00 (Seq_index xs@14@00 j@22@00))))
   :pattern ((Seq_index xs@14@00 j@22@00))
-  :qid |quant-u-5159|)))
+  :qid |quant-u-5224|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and (img@24@00 r) (and (<= 3 (inv@23@00 r)) (< (inv@23@00 r) n@15@00)))
@@ -2239,7 +2239,7 @@
       (and (img@24@00 r) (and (<= 3 (inv@23@00 r)) (< (inv@23@00 r) n@15@00)))
       (and (img@21@00 r) (and (<= 0 (inv@20@00 r)) (< (inv@20@00 r) 3)))))
   
-  :qid |quant-u-5160|))))
+  :qid |quant-u-5225|))))
 (check-sat)
 ; unknown
 (pop) ; 2

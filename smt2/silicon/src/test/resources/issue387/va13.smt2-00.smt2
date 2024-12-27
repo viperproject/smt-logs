@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-26 19:30:35
+; Started: 2024-12-27 01:50:21
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -123,11 +123,11 @@
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   (= (contains%limited s@$ x@0@00) (contains s@$ x@0@00))
   :pattern ((contains s@$ x@0@00))
-  :qid |quant-u-5091|)))
+  :qid |quant-u-5156|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   (contains%stateless x@0@00)
   :pattern ((contains%limited s@$ x@0@00))
-  :qid |quant-u-5092|)))
+  :qid |quant-u-5157|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -225,7 +225,7 @@
         (contains%limited ($Snap.second ($Snap.second s@$)) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$)))))))
   :pattern ((contains s@$ x@0@00))
   :pattern ((contains%stateless x@0@00) (BoxList%trigger s@$ x@0@00))
-  :qid |quant-u-5093|)))
+  :qid |quant-u-5158|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   (=>
     (and
@@ -233,7 +233,7 @@
       (= ($SortWrappers.$SnapToInt ($Snap.first s@$)) 0))
     (contains%precondition ($Snap.second ($Snap.second s@$)) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$)))))
   :pattern ((contains s@$ x@0@00))
-  :qid |quant-u-5094|)))
+  :qid |quant-u-5159|)))
 ; ---------- BoxList ----------
 (declare-const self@2@00 $Ref)
 (push) ; 1

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-26 20:08:17
+// Date:         2024-12-27 02:28:29
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/invariants/while3.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/invariants/while3-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -296,10 +296,10 @@ procedure test01(x: Ref) returns ()
 {
   var brk_lblGuard: bool;
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var frameMask1: MaskType;
   var frameHeap1: HeapType;
@@ -308,8 +308,8 @@ procedure test01(x: Ref) returns ()
   var newVersion: FrameType;
   var LoopSumHeap: HeapType;
   var LoopSumMask: MaskType;
-  var LabelbrkHeap: HeapType;
   var LabelbrkMask: MaskType;
+  var LabelbrkHeap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -329,16 +329,16 @@ procedure test01(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: while (true) -- while3.vpr@11.3--18.4
     
     // -- Before loop head1
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Loop invariant acc(List(x), write) might not hold on entry. There might be insufficient permission to access List(x) (while3.vpr@12.15--12.27) [141577]"}
@@ -384,8 +384,8 @@ procedure test01(x: Ref) returns ()
   // unfold acc(List(x), write) -- while3.vpr@14.5--14.24
             assume List#trigger(Heap, List(x));
             assume Heap[null, List(x)] == EmptyFrame;
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             perm := FullPerm;
             if (perm != NoPerm) {
               assert {:msg "  Unfolding List(x) might fail. There might be insufficient permission to access List(x) (while3.vpr@14.5--14.24) [141578]"}
@@ -418,8 +418,8 @@ procedure test01(x: Ref) returns ()
           
           // -- Translating statement: // id = 4
   // assert false -- while3.vpr@16.5--16.17
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             assert {:msg "  Assert might fail. Assertion false might not hold. (while3.vpr@16.12--16.17) [141579]"}
               false;
             assume state(Heap, Mask);
@@ -435,8 +435,8 @@ procedure test01(x: Ref) returns ()
   // inhale true -- <no position>
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Loop invariant acc(List(x), write) might not be preserved. There might be insufficient permission to access List(x) (while3.vpr@12.15--12.27) [141580]"}
@@ -464,15 +464,15 @@ procedure test01(x: Ref) returns ()
   // // LoopInfo(None,Set())
   // label brk -- while3.vpr@20.3--20.12
     brk:
-    LabelbrkHeap := Heap;
     LabelbrkMask := Mask;
+    LabelbrkHeap := Heap;
     brk_lblGuard := true;
     assume state(Heap, Mask);
   
   // -- Translating statement: // id = 8
   // assert false -- while3.vpr@22.3--22.15
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion false might not hold. (while3.vpr@22.10--22.15) [141581]"}
       false;
     assume state(Heap, Mask);
@@ -486,8 +486,8 @@ procedure test02a() returns ()
   modifies Heap, Mask;
 {
   var brk_lblGuard: bool;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var frameMask3: MaskType;
@@ -497,10 +497,10 @@ procedure test02a() returns ()
   var loopMask: MaskType;
   var LoopSumHeap: HeapType;
   var LoopSumMask: MaskType;
-  var LabelbrkHeap: HeapType;
   var LabelbrkMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var LabelbrkHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -511,8 +511,8 @@ procedure test02a() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -599,14 +599,14 @@ procedure test02a() returns ()
   // // LoopInfo(None,Set())
   // label brk -- while3.vpr@36.3--36.12
     brk:
-    LabelbrkHeap := Heap;
     LabelbrkMask := Mask;
+    LabelbrkHeap := Heap;
     brk_lblGuard := true;
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of test02a might not hold. Assertion false might not hold. (while3.vpr@27.11--27.16) [141582]"}
       false;
 }
@@ -619,8 +619,8 @@ procedure test02b() returns ()
   modifies Heap, Mask;
 {
   var brk_lblGuard: bool;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var frameMask1: MaskType;
@@ -629,10 +629,10 @@ procedure test02b() returns ()
   var loopMask: MaskType;
   var LoopSumHeap: HeapType;
   var LoopSumMask: MaskType;
-  var LabelbrkHeap: HeapType;
   var LabelbrkMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var LabelbrkHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -643,8 +643,8 @@ procedure test02b() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -711,14 +711,14 @@ procedure test02b() returns ()
   // // LoopInfo(None,Set())
   // label brk -- while3.vpr@47.3--47.12
     brk:
-    LabelbrkHeap := Heap;
     LabelbrkMask := Mask;
+    LabelbrkHeap := Heap;
     brk_lblGuard := true;
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of test02b might not hold. Assertion false might not hold. (while3.vpr@41.11--41.16) [141583]"}
       false;
 }
@@ -731,8 +731,8 @@ procedure test10() returns ()
   modifies Heap, Mask;
 {
   var end_lblGuard: bool;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var b_24: bool;
   var frameMask2: MaskType;
   var frameHeap2: HeapType;
@@ -740,10 +740,10 @@ procedure test10() returns ()
   var loopMask: MaskType;
   var LoopSumHeap: HeapType;
   var LoopSumMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
-  var LabelendHeap: HeapType;
+  var ExhaleWellDef0Heap: HeapType;
   var LabelendMask: MaskType;
+  var LabelendHeap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -754,8 +754,8 @@ procedure test10() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: // id = 1
   // // LoopInfo(None,Set())
@@ -826,8 +826,8 @@ procedure test10() returns ()
   // -- Translating statement: // id = 5
   // // LoopInfo(None,Set())
   // assert false -- while3.vpr@61.3--61.15
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion false might not hold. (while3.vpr@61.10--61.15) [141584]"}
       false;
     assume state(Heap, Mask);
@@ -836,8 +836,8 @@ procedure test10() returns ()
   // // LoopInfo(None,Set())
   // label end -- while3.vpr@63.3--63.12
     end_2:
-    LabelendHeap := Heap;
     LabelendMask := Mask;
+    LabelendHeap := Heap;
     end_lblGuard := true;
     assume state(Heap, Mask);
 }

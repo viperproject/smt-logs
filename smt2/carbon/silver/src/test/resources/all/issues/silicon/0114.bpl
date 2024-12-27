@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-26 20:21:51
+// Date:         2024-12-27 02:42:11
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0114.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0114-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -376,15 +376,15 @@ procedure P#definedness(x: Ref, b_24: bool) returns ()
 procedure test02(x: Ref, b_24: bool) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var j_1: int;
   
   // -- Initializing the state
@@ -399,8 +399,8 @@ procedure test02(x: Ref, b_24: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale acc(P(x, b), write) -- 0114.vpr@12.3--12.17
     perm := FullPerm;
@@ -412,8 +412,8 @@ procedure test02(x: Ref, b_24: bool) returns ()
   // -- Translating statement: assert (forall j: Int ::
   //     { fun1(j) }
   //     (unfolding acc(P(x, b), write) in fun1(j) > 0)) -- 0114.vpr@15.3--15.69
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall j: Int :: { fun1(j) } (unfolding acc(P(x, b), write) in fun1(j) > 0))
       if (*) {
@@ -421,8 +421,8 @@ procedure test02(x: Ref, b_24: bool) returns ()
         UnfoldingMask := ExhaleWellDef0Mask;
         assume P#trigger(UnfoldingHeap, P(x, b_24));
         assume UnfoldingHeap[null, P(x, b_24)] == FrameFragment((if b_24 then FrameFragment(UnfoldingHeap[x, f_7]) else EmptyFrame));
-        ExhaleWellDef1Mask := UnfoldingMask;
         ExhaleWellDef1Heap := UnfoldingHeap;
+        ExhaleWellDef1Mask := UnfoldingMask;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Assert might fail. There might be insufficient permission to access P(x, b) (0114.vpr@15.10--15.69) [210238]"}
@@ -455,8 +455,8 @@ procedure test02(x: Ref, b_24: bool) returns ()
         UnfoldingMask := ExhaleWellDef0Mask;
         assume P#trigger(UnfoldingHeap, P(x, b_24));
         assume UnfoldingHeap[null, P(x, b_24)] == FrameFragment((if b_24 then FrameFragment(UnfoldingHeap[x, f_7]) else EmptyFrame));
-        ExhaleWellDef1Mask := UnfoldingMask;
         ExhaleWellDef1Heap := UnfoldingHeap;
+        ExhaleWellDef1Mask := UnfoldingMask;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Assert might fail. There might be insufficient permission to access P(x, b) (0114.vpr@15.10--15.69) [210241]"}
@@ -488,10 +488,10 @@ procedure test02(x: Ref, b_24: bool) returns ()
 procedure test03(x: Ref, b_24: bool) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var j_1: int;
   
   // -- Initializing the state
@@ -506,12 +506,12 @@ procedure test03(x: Ref, b_24: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert (forall j: Int :: { fun1(j) } (b ? fun1(j) > 0 : fun1(j) > 1)) -- 0114.vpr@20.3--20.66
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall j: Int :: { fun1(j) } (b ? fun1(j) > 0 : fun1(j) > 1))
       if (*) {
@@ -552,13 +552,13 @@ procedure test03(x: Ref, b_24: bool) returns ()
 procedure test04(x: Ref, y: Ref, b_24: bool) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
-  var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var ExhaleHeap: HeapType;
   var j_1: int;
   
@@ -575,8 +575,8 @@ procedure test04(x: Ref, y: Ref, b_24: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale acc(x.f, write) && acc(y.f, write) -- 0114.vpr@29.3--29.30
     perm := FullPerm;
@@ -591,15 +591,15 @@ procedure test04(x: Ref, y: Ref, b_24: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forall j: Int :: { fun2(b, x, y, j) } fun2(b, x, y, j) > 0) -- 0114.vpr@31.3--31.66
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall j: Int :: { fun2(b, x, y, j) } fun2(b, x, y, j) > 0)
       if (*) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef1Mask := ExhaleWellDef0Mask;
           ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+          ExhaleWellDef1Mask := ExhaleWellDef0Mask;
           if (b_24) {
             perm := FullPerm;
             assert {:msg "  Precondition of function fun2 might not hold. There might be insufficient permission to access x.f (0114.vpr@31.46--31.62) [210248]"}
@@ -637,11 +637,11 @@ procedure test04(x: Ref, y: Ref, b_24: bool) returns ()
 procedure test05(x: Ref, y: Ref, b_24: bool) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -657,8 +657,8 @@ procedure test05(x: Ref, y: Ref, b_24: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale acc(x.f, write) && acc(y.f, write) -- 0114.vpr@40.3--40.30
     perm := FullPerm;
@@ -692,8 +692,8 @@ procedure test05(x: Ref, y: Ref, b_24: bool) returns ()
     // -- Check definedness of fun2(b, x, y, 5) > 0
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         if (b_24) {
           perm := FullPerm;
           assert {:msg "  Precondition of function fun2 might not hold. There might be insufficient permission to access x.f (0114.vpr@43.10--43.26) [210253]"}
@@ -715,8 +715,8 @@ procedure test05(x: Ref, y: Ref, b_24: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert fun3(5) -- 0114.vpr@46.3--46.17
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion fun3(5) might not hold. (0114.vpr@46.10--46.17) [210255]"}
       (fun3_1(5): bool);
     assume state(Heap, Mask);
@@ -730,10 +730,10 @@ procedure test01(x: Ref, b_24: bool, c: bool) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var j_1: int;
   var j_4_1: int;
   var j_7_1: int;
@@ -741,8 +741,8 @@ procedure test01(x: Ref, b_24: bool, c: bool) returns ()
   var j_13_2: int;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var j_16_2: int;
   
   // -- Initializing the state
@@ -763,12 +763,12 @@ procedure test01(x: Ref, b_24: bool, c: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert (forall j: Int :: { fun1(j) } fun1(j) > 0) -- 0114.vpr@53.3--53.38
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall j: Int :: { fun1(j) } fun1(j) > 0)
       if (*) {
@@ -790,8 +790,8 @@ procedure test01(x: Ref, b_24: bool, c: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forall j: Int :: { fun1(j) } (false ? true : fun1(j) > 0)) -- 0114.vpr@54.3--54.53
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall j: Int :: { fun1(j) } (false ? true : fun1(j) > 0))
       if (*) {
@@ -813,8 +813,8 @@ procedure test01(x: Ref, b_24: bool, c: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forall j: Int :: { fun1(j) } (b ? fun1(j) > 5 : fun1(j) > 0)) -- 0114.vpr@55.3--55.56
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall j: Int :: { fun1(j) } (b ? fun1(j) > 5 : fun1(j) > 0))
       if (*) {
@@ -848,8 +848,8 @@ procedure test01(x: Ref, b_24: bool, c: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forall j: Int :: { fun1(j) } true ==> fun1(j) > 0) -- 0114.vpr@57.3--57.47
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall j: Int :: { fun1(j) } true ==> fun1(j) > 0)
       if (*) {
@@ -871,8 +871,8 @@ procedure test01(x: Ref, b_24: bool, c: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forall j: Int :: { fun1(j) } b ==> fun1(j) > 0) -- 0114.vpr@58.3--58.44
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall j: Int :: { fun1(j) } b ==> fun1(j) > 0)
       if (*) {
@@ -900,8 +900,8 @@ procedure test01(x: Ref, b_24: bool, c: bool) returns ()
   // -- Translating statement: assert (forall j: Int ::
   //     { fun1(j) }
   //     (unfolding acc(P(x, c), write) in fun1(j) > 0)) -- 0114.vpr@61.3--61.64
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall j: Int :: { fun1(j) } (unfolding acc(P(x, c), write) in fun1(j) > 0))
       if (*) {
@@ -909,8 +909,8 @@ procedure test01(x: Ref, b_24: bool, c: bool) returns ()
         UnfoldingMask := ExhaleWellDef0Mask;
         assume P#trigger(UnfoldingHeap, P(x, c));
         assume UnfoldingHeap[null, P(x, c)] == FrameFragment((if c then FrameFragment(UnfoldingHeap[x, f_7]) else EmptyFrame));
-        ExhaleWellDef1Mask := UnfoldingMask;
         ExhaleWellDef1Heap := UnfoldingHeap;
+        ExhaleWellDef1Mask := UnfoldingMask;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Assert might fail. There might be insufficient permission to access P(x, c) (0114.vpr@61.10--61.64) [210263]"}
@@ -943,8 +943,8 @@ procedure test01(x: Ref, b_24: bool, c: bool) returns ()
         UnfoldingMask := ExhaleWellDef0Mask;
         assume P#trigger(UnfoldingHeap, P(x, c));
         assume UnfoldingHeap[null, P(x, c)] == FrameFragment((if c then FrameFragment(UnfoldingHeap[x, f_7]) else EmptyFrame));
-        ExhaleWellDef1Mask := UnfoldingMask;
         ExhaleWellDef1Heap := UnfoldingHeap;
+        ExhaleWellDef1Mask := UnfoldingMask;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Assert might fail. There might be insufficient permission to access P(x, c) (0114.vpr@61.10--61.64) [210266]"}
@@ -969,8 +969,8 @@ procedure test01(x: Ref, b_24: bool, c: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- 0114.vpr@65.3--65.15
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion false might not hold. (0114.vpr@65.10--65.15) [210269]"}
       false;
     assume state(Heap, Mask);

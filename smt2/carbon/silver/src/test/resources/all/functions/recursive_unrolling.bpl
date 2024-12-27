@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-26 20:11:01
+// Date:         2024-12-27 02:31:14
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/functions/recursive_unrolling.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/functions/recursive_unrolling-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -232,8 +232,8 @@ procedure length#definedness(this: Ref) returns (Result: int)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var newPMask: PMaskType;
   
@@ -257,8 +257,8 @@ procedure length#definedness(this: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume node#trigger(UnfoldingHeap, node_2(this));
       assume UnfoldingHeap[null, node_2(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, next]), FrameFragment((if UnfoldingHeap[this, next] != null then UnfoldingHeap[null, node_2(UnfoldingHeap[this, next])] else EmptyFrame)));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access node(this) (recursive_unrolling.vpr@10.1--16.2) [154567]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, node_2(this)];
@@ -283,8 +283,8 @@ procedure length#definedness(this: Ref) returns (Result: int)
           HasDirectPerm(UnfoldingMask, this, next);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := UnfoldingHeap;
           ExhaleWellDef0Mask := UnfoldingMask;
+          ExhaleWellDef0Heap := UnfoldingHeap;
           perm := FullPerm;
           assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access node(this.next) (recursive_unrolling.vpr@15.35--15.52) [154570]"}
             NoPerm < perm ==> NoPerm < UnfoldingMask[null, node_2(UnfoldingHeap[this, next])];
@@ -328,8 +328,8 @@ procedure length#definedness(this: Ref) returns (Result: int)
     Result := 1 + (if Heap[this, next] == null then 0 else length(Heap, Heap[this, next]));
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of length might not hold. Assertion result > 0 might not hold. (recursive_unrolling.vpr@12.12--12.22) [154571]"}
       Result > 0;
 }
@@ -409,21 +409,21 @@ procedure node#definedness(this: Ref) returns ()
 procedure test01() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var n1_1: Ref;
   var n2: Ref;
   var n3: Ref;
   var n4: Ref;
   var n5: Ref;
   var freshObj: Ref;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var perm: Perm;
   var freshVersion: FrameType;
   var newPMask: PMaskType;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -435,8 +435,8 @@ procedure test01() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[n1_1, $allocated];
@@ -460,8 +460,8 @@ procedure test01() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(node(n1), write) -- recursive_unrolling.vpr@21.3--21.21
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding node(n1) might fail. There might be insufficient permission to access n1.next (recursive_unrolling.vpr@21.3--21.21) [154577]"}
@@ -517,8 +517,8 @@ procedure test01() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(node(n2), write) -- recursive_unrolling.vpr@25.3--25.21
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding node(n2) might fail. There might be insufficient permission to access n2.next (recursive_unrolling.vpr@25.3--25.21) [154584]"}
@@ -574,8 +574,8 @@ procedure test01() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(node(n3), write) -- recursive_unrolling.vpr@29.3--29.21
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding node(n3) might fail. There might be insufficient permission to access n3.next (recursive_unrolling.vpr@29.3--29.21) [154591]"}
@@ -631,8 +631,8 @@ procedure test01() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(node(n4), write) -- recursive_unrolling.vpr@33.3--33.21
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding node(n4) might fail. There might be insufficient permission to access n4.next (recursive_unrolling.vpr@33.3--33.21) [154598]"}
@@ -688,8 +688,8 @@ procedure test01() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(node(n5), write) -- recursive_unrolling.vpr@37.3--37.21
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding node(n5) might fail. There might be insufficient permission to access n5.next (recursive_unrolling.vpr@37.3--37.21) [154605]"}
@@ -731,14 +731,14 @@ procedure test01() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert length(n5) == 5 -- recursive_unrolling.vpr@39.3--39.25
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of length(n5) == 5
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access node(n5) (recursive_unrolling.vpr@39.10--39.20) [154609]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, node_2(n5)];
@@ -762,11 +762,11 @@ procedure test02(n4: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var newVersion: FrameType;
   
   // -- Initializing the state
@@ -787,8 +787,8 @@ procedure test02(n4: Ref) returns ()
     // -- Check definedness of length(n4) == 4
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access node(n4) (recursive_unrolling.vpr@43.29--43.39) [154611]"}
           NoPerm < perm ==> NoPerm < Mask[null, node_2(n4)];
@@ -805,14 +805,14 @@ procedure test02(n4: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: unfold acc(node(n4), write) -- recursive_unrolling.vpr@45.3--45.23
     assume node#trigger(Heap, node_2(n4));
     assume Heap[null, node_2(n4)] == CombineFrames(FrameFragment(Heap[n4, next]), FrameFragment((if Heap[n4, next] != null then Heap[null, node_2(Heap[n4, next])] else EmptyFrame)));
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding node(n4) might fail. There might be insufficient permission to access node(n4) (recursive_unrolling.vpr@45.3--45.23) [154614]"}
@@ -847,8 +847,8 @@ procedure test02(n4: Ref) returns ()
         HasDirectPerm(Mask, n4, next);
     assume node#trigger(Heap, node_2(Heap[n4, next]));
     assume Heap[null, node_2(Heap[n4, next])] == CombineFrames(FrameFragment(Heap[Heap[n4, next], next]), FrameFragment((if Heap[Heap[n4, next], next] != null then Heap[null, node_2(Heap[Heap[n4, next], next])] else EmptyFrame)));
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding node(n4.next) might fail. There might be insufficient permission to access node(n4.next) (recursive_unrolling.vpr@46.3--46.28) [154620]"}
@@ -885,8 +885,8 @@ procedure test02(n4: Ref) returns ()
         HasDirectPerm(Mask, Heap[n4, next], next);
     assume node#trigger(Heap, node_2(Heap[Heap[n4, next], next]));
     assume Heap[null, node_2(Heap[Heap[n4, next], next])] == CombineFrames(FrameFragment(Heap[Heap[Heap[n4, next], next], next]), FrameFragment((if Heap[Heap[Heap[n4, next], next], next] != null then Heap[null, node_2(Heap[Heap[Heap[n4, next], next], next])] else EmptyFrame)));
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding node(n4.next.next) might fail. There might be insufficient permission to access node(n4.next.next) (recursive_unrolling.vpr@47.3--47.33) [154627]"}
@@ -925,8 +925,8 @@ procedure test02(n4: Ref) returns ()
         HasDirectPerm(Mask, Heap[Heap[n4, next], next], next);
     assume node#trigger(Heap, node_2(Heap[Heap[Heap[n4, next], next], next]));
     assume Heap[null, node_2(Heap[Heap[Heap[n4, next], next], next])] == CombineFrames(FrameFragment(Heap[Heap[Heap[Heap[n4, next], next], next], next]), FrameFragment((if Heap[Heap[Heap[Heap[n4, next], next], next], next] != null then Heap[null, node_2(Heap[Heap[Heap[Heap[n4, next], next], next], next])] else EmptyFrame)));
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding node(n4.next.next.next) might fail. There might be insufficient permission to access node(n4.next.next.next) (recursive_unrolling.vpr@48.3--48.38) [154635]"}
@@ -955,8 +955,8 @@ procedure test02(n4: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert n4.next.next.next.next == null -- recursive_unrolling.vpr@50.3--50.40
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of n4.next.next.next.next == null
       assert {:msg "  Assert might fail. There might be insufficient permission to access n4.next (recursive_unrolling.vpr@50.10--50.40) [154638]"}

@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-26 19:39:40
+; Started: 2024-12-27 01:59:40
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -124,19 +124,19 @@
     (range___contains__%limited s@$ self@0@00 item@1@00)
     (range___contains__ s@$ self@0@00 item@1@00))
   :pattern ((range___contains__ s@$ self@0@00 item@1@00))
-  :qid |quant-u-23495|)))
+  :qid |quant-u-23523|)))
 (assert (forall ((s@$ $Snap) (self@0@00 $Ref) (item@1@00 Int)) (!
   (range___contains__%stateless self@0@00 item@1@00)
   :pattern ((range___contains__%limited s@$ self@0@00 item@1@00))
-  :qid |quant-u-23496|)))
+  :qid |quant-u-23524|)))
 (assert (forall ((s@$ $Snap)) (!
   (= (range___create__%limited s@$) (range___create__ s@$))
   :pattern ((range___create__ s@$))
-  :qid |quant-u-23497|)))
+  :qid |quant-u-23525|)))
 (assert (forall ((s@$ $Snap)) (!
   (as range___create__%stateless  Bool)
   :pattern ((range___create__%limited s@$))
-  :qid |quant-u-23498|)))
+  :qid |quant-u-23526|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@3@00 (range___create__%limited s@$))) (=>
     (range___create__%precondition s@$)
@@ -145,7 +145,7 @@
       :pattern ((range___contains__%limited $Snap.unit result@3@00 i))
       ))))
   :pattern ((range___create__%limited s@$))
-  :qid |quant-u-23499|)))
+  :qid |quant-u-23527|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@3@00 (range___create__%limited s@$))) (=>
     (range___create__%precondition s@$)
@@ -154,6 +154,6 @@
       :pattern ((range___contains__%limited $Snap.unit result@3@00 i))
       ))))
   :pattern ((range___create__%limited s@$))
-  :qid |quant-u-23500|)))
+  :qid |quant-u-23528|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------

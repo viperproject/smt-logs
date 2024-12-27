@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-26 20:22:52
+// Date:         2024-12-27 02:43:12
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/unofficial001.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/unofficial001-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -226,8 +226,8 @@ procedure last#definedness(start: Ref, end: Ref, x: Ref) returns (Result: Ref)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var newPMask: PMaskType;
   
@@ -264,8 +264,8 @@ procedure last#definedness(start: Ref, end: Ref, x: Ref) returns (Result: Ref)
       UnfoldingMask := Mask;
       assume P#trigger(UnfoldingHeap, P(start, end));
       assume UnfoldingHeap[null, P(start, end)] == FrameFragment((if start != end then CombineFrames(FrameFragment(UnfoldingHeap[start, next]), FrameFragment((if UnfoldingHeap[start, next] == null then EmptyFrame else UnfoldingHeap[null, P(UnfoldingHeap[start, next], end)]))) else EmptyFrame));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access P(start, end) (unofficial001.vpr@19.1--27.2) [215110]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, P(start, end)];
@@ -293,8 +293,8 @@ procedure last#definedness(start: Ref, end: Ref, x: Ref) returns (Result: Ref)
           HasDirectPerm(UnfoldingMask, start, next);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
+          ExhaleWellDef0Mask := UnfoldingMask;
           assert {:msg "  Precondition of function last might not hold. Assertion start.next != null might not hold. (unofficial001.vpr@26.23--26.46) [215113]"}
             UnfoldingHeap[start, next] != null;
           assert {:msg "  Precondition of function last might not hold. Assertion start.next != end might not hold. (unofficial001.vpr@26.23--26.46) [215114]"}

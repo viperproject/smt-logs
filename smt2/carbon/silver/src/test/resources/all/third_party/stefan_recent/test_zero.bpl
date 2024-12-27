@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-26 20:13:40
+// Date:         2024-12-27 02:33:55
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/third_party/stefan_recent/test_zero.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/third_party/stefan_recent/test_zero-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -557,15 +557,15 @@ procedure zero__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: 
 {
   var wildcard: real where wildcard > NoPerm;
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var __flatten_1: Ref;
   var __last_barrier: int;
   var __flatten_2: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -622,8 +622,8 @@ procedure zero__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: 
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -720,8 +720,8 @@ procedure zero__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: 
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of zero__main_main might not hold. Assertion 0 <= tid might not hold. (test_zero.vpr@20.11--20.19) [178712]"}
       0 <= tid;
     assert {:msg "  Postcondition of zero__main_main might not hold. Assertion tid < tcount might not hold. (test_zero.vpr@21.11--21.23) [178713]"}
@@ -766,12 +766,12 @@ procedure zero__main_barrier(diz: Ref, current_thread_id: int, tcount: int, gsiz
 {
   var wildcard: real where wildcard > NoPerm;
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -830,8 +830,8 @@ procedure zero__main_barrier(diz: Ref, current_thread_id: int, tcount: int, gsiz
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -896,8 +896,8 @@ procedure zero__main_barrier(diz: Ref, current_thread_id: int, tcount: int, gsiz
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of zero__main_barrier might not hold. Assertion 0 <= tid might not hold. (test_zero.vpr@53.11--53.19) [178733]"}
       0 <= tid;
     assert {:msg "  Postcondition of zero__main_barrier might not hold. Assertion tid < tcount might not hold. (test_zero.vpr@54.11--54.23) [178734]"}

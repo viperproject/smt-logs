@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-26 19:38:07
+; Started: 2024-12-27 01:58:07
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -294,8 +294,8 @@
 ; diz := new()
 (declare-const diz@20@01 $Ref)
 (assert (not (= diz@20@01 $Ref.null)))
-(assert (not (= diz@20@01 diz@19@01)))
 (assert (not (= diz@20@01 sys__result@16@01)))
+(assert (not (= diz@20@01 diz@19@01)))
 ; [exec]
 ; sys__result := diz
 ; [exec]

@@ -1,0 +1,129 @@
+(lang dune 3.17)
+(name memtrace)
+(version 0.2.3)
+(sections (lib .) (libexec .) (bin ../../bin) (doc ../../doc/memtrace))
+(files
+ (lib
+  (META
+   backtrace_codec.ml
+   backtrace_codec.mli
+   buf.ml
+   buf.mli
+   dune-package
+   geometric_sampler.ml
+   geometric_sampler.mli
+   location_codec.ml
+   location_codec.mli
+   memprof_tracer.ml
+   memprof_tracer.mli
+   memtrace.a
+   memtrace.cma
+   memtrace.cmi
+   memtrace.cmt
+   memtrace.cmti
+   memtrace.cmx
+   memtrace.cmxa
+   memtrace.ml
+   memtrace.mli
+   memtrace__.cmi
+   memtrace__.cmt
+   memtrace__.cmx
+   memtrace__.ml
+   memtrace__Backtrace_codec.cmi
+   memtrace__Backtrace_codec.cmt
+   memtrace__Backtrace_codec.cmti
+   memtrace__Backtrace_codec.cmx
+   memtrace__Buf.cmi
+   memtrace__Buf.cmt
+   memtrace__Buf.cmti
+   memtrace__Buf.cmx
+   memtrace__Geometric_sampler.cmi
+   memtrace__Geometric_sampler.cmt
+   memtrace__Geometric_sampler.cmti
+   memtrace__Geometric_sampler.cmx
+   memtrace__Location_codec.cmi
+   memtrace__Location_codec.cmt
+   memtrace__Location_codec.cmti
+   memtrace__Location_codec.cmx
+   memtrace__Memprof_tracer.cmi
+   memtrace__Memprof_tracer.cmt
+   memtrace__Memprof_tracer.cmti
+   memtrace__Memprof_tracer.cmx
+   memtrace__Trace.cmi
+   memtrace__Trace.cmt
+   memtrace__Trace.cmti
+   memtrace__Trace.cmx
+   opam
+   trace.ml
+   trace.mli))
+ (libexec (memtrace.cmxs))
+ (bin
+  (memtrace_dump_trace
+   memtrace_flamegraph
+   memtrace_hotspots
+   memtrace_identify
+   memtrace_subsample))
+ (doc (CHANGES.md LICENSE.md README.md)))
+(library
+ (name memtrace)
+ (kind normal)
+ (archives (byte memtrace.cma) (native memtrace.cmxa))
+ (plugins (byte memtrace.cma) (native memtrace.cmxs))
+ (native_archives memtrace.a)
+ (requires unix threads)
+ (main_module_name Memtrace)
+ (modes byte native)
+ (modules
+  (wrapped
+   (group
+    (alias
+     (obj_name memtrace__)
+     (visibility public)
+     (kind alias)
+     (source (path Memtrace__) (impl (path memtrace__.ml-gen))))
+    (name Memtrace)
+    (modules
+     (module
+      (obj_name memtrace__Backtrace_codec)
+      (visibility public)
+      (source
+       (path Backtrace_codec)
+       (intf (path backtrace_codec.mli))
+       (impl (path backtrace_codec.ml))))
+     (module
+      (obj_name memtrace__Buf)
+      (visibility public)
+      (source (path Buf) (intf (path buf.mli)) (impl (path buf.ml))))
+     (module
+      (obj_name memtrace__Geometric_sampler)
+      (visibility public)
+      (source
+       (path Geometric_sampler)
+       (intf (path geometric_sampler.mli))
+       (impl (path geometric_sampler.ml))))
+     (module
+      (obj_name memtrace__Location_codec)
+      (visibility public)
+      (source
+       (path Location_codec)
+       (intf (path location_codec.mli))
+       (impl (path location_codec.ml))))
+     (module
+      (obj_name memtrace__Memprof_tracer)
+      (visibility public)
+      (source
+       (path Memprof_tracer)
+       (intf (path memprof_tracer.mli))
+       (impl (path memprof_tracer.ml))))
+     (module
+      (obj_name memtrace)
+      (visibility public)
+      (source
+       (path Memtrace)
+       (intf (path memtrace.mli))
+       (impl (path memtrace.ml))))
+     (module
+      (obj_name memtrace__Trace)
+      (visibility public)
+      (source (path Trace) (intf (path trace.mli)) (impl (path trace.ml))))))
+   (wrapped true))))

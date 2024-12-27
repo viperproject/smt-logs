@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-26 20:07:14
+// Date:         2024-12-27 02:27:26
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/new_syntax/IfElsePackage.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/new_syntax/IfElsePackage-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -299,8 +299,8 @@ procedure Cell#definedness(x: Ref) returns ()
 procedure test0(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var Ops_1Heap: HeapType;
   var Ops_1Mask: MaskType;
   var b_1_1: bool;
@@ -308,11 +308,11 @@ procedure test0(x: Ref) returns ()
   var UsedMask: MaskType;
   var b_2: bool;
   var perm: Perm;
-  var Labellhs1Mask: MaskType;
   var Labellhs1Heap: HeapType;
+  var Labellhs1Mask: MaskType;
   var boolCur: bool;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var Used_1Heap: HeapType;
   var Used_1Mask: MaskType;
   var b_2_1: bool;
@@ -363,8 +363,8 @@ procedure test0(x: Ref) returns ()
   var Result_7Mask: MaskType;
   var WandDefLHSHeap: HeapType;
   var WandDefLHSMask: MaskType;
-  var Labellhs3Mask: MaskType;
   var Labellhs3Heap: HeapType;
+  var Labellhs3Mask: MaskType;
   var WandDefRHSHeap: HeapType;
   var WandDefRHSMask: MaskType;
   var ExhaleHeap: HeapType;
@@ -380,8 +380,8 @@ procedure test0(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: package acc(Cell(x), write) --*
   // acc(x.f, write) && (acc(x.b, write) && (x.b ? acc(x.f.b, write) : false)) {
@@ -409,8 +409,8 @@ procedure test0(x: Ref) returns ()
     
     // -- Translating statement: label lhs1 -- IfElsePackage.vpr@13.13--13.75
       lhs1:
-      Labellhs1Mask := Ops_1Mask;
       Labellhs1Heap := Ops_1Heap;
+      Labellhs1Mask := Ops_1Mask;
       b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);
     boolCur := true;
     if (b_1_1) {
@@ -418,8 +418,8 @@ procedure test0(x: Ref) returns ()
       // -- Translating statement: unfold acc(Cell(x), write) -- IfElsePackage.vpr@14.9--14.23
         assume Cell#trigger(Ops_1Heap, Cell(x));
         assume Ops_1Heap[null, Cell(x)] == CombineFrames(FrameFragment(Ops_1Heap[x, b_94]), CombineFrames(FrameFragment(Ops_1Heap[x, f_7]), FrameFragment((if Ops_1Heap[x, b_94] then Ops_1Heap[null, Cell(Ops_1Heap[x, f_7])] else EmptyFrame))));
-        ExhaleWellDef0Mask := Ops_1Mask;
         ExhaleWellDef0Heap := Ops_1Heap;
+        ExhaleWellDef0Mask := Ops_1Mask;
         havoc Used_1Heap;
         Used_1Mask := ZeroMask;
         b_2_1 := b_2_1 && state(Used_1Heap, Used_1Mask);
@@ -530,8 +530,8 @@ procedure test0(x: Ref) returns ()
             }
             assume Cell#trigger(Ops_1Heap, Cell(Ops_1Heap[x, f_7]));
             assume Ops_1Heap[null, Cell(Ops_1Heap[x, f_7])] == CombineFrames(FrameFragment(Ops_1Heap[Ops_1Heap[x, f_7], b_94]), CombineFrames(FrameFragment(Ops_1Heap[Ops_1Heap[x, f_7], f_7]), FrameFragment((if Ops_1Heap[Ops_1Heap[x, f_7], b_94] then Ops_1Heap[null, Cell(Ops_1Heap[Ops_1Heap[x, f_7], f_7])] else EmptyFrame))));
-            ExhaleWellDef0Mask := Ops_1Mask;
             ExhaleWellDef0Heap := Ops_1Heap;
+            ExhaleWellDef0Mask := Ops_1Mask;
             havoc Used_2Heap;
             Used_2Mask := ZeroMask;
             b_4 := b_4 && state(Used_2Heap, Used_2Mask);
@@ -647,8 +647,8 @@ procedure test0(x: Ref) returns ()
       // -- Translating statement: assert x.b ==> acc(x.f.b, write) -- IfElsePackage.vpr@20.9--20.34
         AssertHeap := Ops_1Heap;
         AssertMask := Ops_1Mask;
-        ExhaleWellDef0Mask := AssertMask;
         ExhaleWellDef0Heap := AssertHeap;
+        ExhaleWellDef0Mask := AssertMask;
         havoc Used_3Heap;
         Used_3Mask := ZeroMask;
         b_6 := b_6 && state(Used_3Heap, Used_3Mask);
@@ -984,8 +984,8 @@ procedure test0(x: Ref) returns ()
   
   // -- Translating statement: exhale acc(Cell(x), write) --*
   //   acc(x.f, write) && (acc(x.b, write) && (x.b ? acc(x.f.b, write) : false)) -- IfElsePackage.vpr@22.5--22.74
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of acc(Cell(x), write) --* acc(x.f, write) && (acc(x.b, write) && (x.b ? acc(x.f.b, write) : false))
       if (*) {
@@ -998,8 +998,8 @@ procedure test0(x: Ref) returns ()
         
         // -- Translating statement: label lhs3 -- IfElsePackage.vpr@22.12--22.74
           lhs3:
-          Labellhs3Mask := WandDefLHSMask;
           Labellhs3Heap := WandDefLHSHeap;
+          Labellhs3Mask := WandDefLHSMask;
           assume state(WandDefLHSHeap, WandDefLHSMask);
         havoc WandDefRHSHeap;
         WandDefRHSMask := ZeroMask;

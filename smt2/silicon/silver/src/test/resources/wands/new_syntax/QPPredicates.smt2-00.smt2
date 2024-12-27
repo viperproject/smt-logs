@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-26 19:36:58
+; Started: 2024-12-27 01:56:58
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -711,11 +711,11 @@
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref) (y@1@00 $Ref)) (!
   (= (sum%limited s@$ x@0@00 y@1@00) (sum s@$ x@0@00 y@1@00))
   :pattern ((sum s@$ x@0@00 y@1@00))
-  :qid |quant-u-20727|)))
+  :qid |quant-u-20755|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref) (y@1@00 $Ref)) (!
   (sum%stateless x@0@00 y@1@00)
   :pattern ((sum%limited s@$ x@0@00 y@1@00))
-  :qid |quant-u-20728|)))
+  :qid |quant-u-20756|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -760,11 +760,11 @@
         ($SortWrappers.$SnapToInt ($Snap.first s@$))
         ($SortWrappers.$SnapToInt ($Snap.second s@$)))))
   :pattern ((sum s@$ x@0@00 y@1@00))
-  :qid |quant-u-20731|)))
+  :qid |quant-u-20759|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref) (y@1@00 $Ref)) (!
   true
   :pattern ((sum s@$ x@0@00 y@1@00))
-  :qid |quant-u-20732|)))
+  :qid |quant-u-20760|)))
 ; ---------- FUNCTION get----------
 (declare-fun x@3@00 () $Ref)
 (declare-fun result@4@00 () Int)
@@ -775,11 +775,11 @@
 (assert (forall ((s@$ $Snap) (x@3@00 $Ref)) (!
   (= (get%limited s@$ x@3@00) (get s@$ x@3@00))
   :pattern ((get s@$ x@3@00))
-  :qid |quant-u-20729|)))
+  :qid |quant-u-20757|)))
 (assert (forall ((s@$ $Snap) (x@3@00 $Ref)) (!
   (get%stateless x@3@00)
   :pattern ((get%limited s@$ x@3@00))
-  :qid |quant-u-20730|)))
+  :qid |quant-u-20758|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -801,11 +801,11 @@
     (get%precondition s@$ x@3@00)
     (= (get s@$ x@3@00) ($SortWrappers.$SnapToInt s@$)))
   :pattern ((get s@$ x@3@00))
-  :qid |quant-u-20733|)))
+  :qid |quant-u-20761|)))
 (assert (forall ((s@$ $Snap) (x@3@00 $Ref)) (!
   true
   :pattern ((get s@$ x@3@00))
-  :qid |quant-u-20734|)))
+  :qid |quant-u-20762|)))
 ; ---------- Cell ----------
 (declare-const x@5@00 $Ref)
 (push) ; 1

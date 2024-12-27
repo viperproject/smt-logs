@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-26 19:26:45
+; Started: 2024-12-27 01:46:27
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -2143,11 +2143,11 @@
 (assert (forall ((s@$ $Snap) (x@0@00 $Struct)) (!
   (= ($pure$success_get%limited s@$ x@0@00) ($pure$success_get s@$ x@0@00))
   :pattern (($pure$success_get s@$ x@0@00))
-  :qid |quant-u-1387|)))
+  :qid |quant-u-1392|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Struct)) (!
   ($pure$success_get%stateless x@0@00)
   :pattern (($pure$success_get%limited s@$ x@0@00))
-  :qid |quant-u-1388|)))
+  :qid |quant-u-1393|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Struct)) (!
   (=>
     ($pure$success_get%precondition s@$ x@0@00)
@@ -2155,37 +2155,37 @@
       ($pure$success_get s@$ x@0@00)
       ($struct_get<Bool> ($struct_loc<Int> x@0@00 0))))
   :pattern (($pure$success_get s@$ x@0@00))
-  :qid |quant-u-1393|)))
+  :qid |quant-u-1398|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Struct)) (!
   true
   :pattern (($pure$success_get s@$ x@0@00))
-  :qid |quant-u-1394|)))
+  :qid |quant-u-1399|)))
 (assert (forall ((s@$ $Snap) (x@2@00 $Struct)) (!
   (= ($pure$return_get%limited s@$ x@2@00) ($pure$return_get s@$ x@2@00))
   :pattern (($pure$return_get s@$ x@2@00))
-  :qid |quant-u-1389|)))
+  :qid |quant-u-1394|)))
 (assert (forall ((s@$ $Snap) (x@2@00 $Struct)) (!
   ($pure$return_get%stateless x@2@00)
   :pattern (($pure$return_get%limited s@$ x@2@00))
-  :qid |quant-u-1390|)))
+  :qid |quant-u-1395|)))
 (assert (forall ((s@$ $Snap) (x@2@00 $Struct)) (!
   (=>
     ($pure$return_get%precondition s@$ x@2@00)
     (= ($pure$return_get s@$ x@2@00) ($struct_loc<Int> x@2@00 1)))
   :pattern (($pure$return_get s@$ x@2@00))
-  :qid |quant-u-1395|)))
+  :qid |quant-u-1400|)))
 (assert (forall ((s@$ $Snap) (x@2@00 $Struct)) (!
   true
   :pattern (($pure$return_get s@$ x@2@00))
-  :qid |quant-u-1396|)))
+  :qid |quant-u-1401|)))
 (assert (forall ((s@$ $Snap) ($x@4@00 Int) ($y@5@00 Int)) (!
   (= ($range_sum%limited s@$ $x@4@00 $y@5@00) ($range_sum s@$ $x@4@00 $y@5@00))
   :pattern (($range_sum s@$ $x@4@00 $y@5@00))
-  :qid |quant-u-1391|)))
+  :qid |quant-u-1396|)))
 (assert (forall ((s@$ $Snap) ($x@4@00 Int) ($y@5@00 Int)) (!
   ($range_sum%stateless $x@4@00 $y@5@00)
   :pattern (($range_sum%limited s@$ $x@4@00 $y@5@00))
-  :qid |quant-u-1392|)))
+  :qid |quant-u-1397|)))
 (assert (forall ((s@$ $Snap) ($x@4@00 Int) ($y@5@00 Int)) (!
   (=>
     ($range_sum%precondition s@$ $x@4@00 $y@5@00)
@@ -2205,7 +2205,7 @@
           (+ (- $y_exclusive $x_exclusive) $x@4@00)
           (+ (- (- $y_exclusive $y@5@00) $x_exclusive) $x@4@00)))))))))
   :pattern (($range_sum s@$ $x@4@00 $y@5@00))
-  :qid |quant-u-1397|)))
+  :qid |quant-u-1402|)))
 (assert (forall ((s@$ $Snap) ($x@4@00 Int) ($y@5@00 Int)) (!
   (=>
     ($range_sum%precondition s@$ $x@4@00 $y@5@00)
@@ -2217,7 +2217,7 @@
       (div (* (- $y@5@00 1) $y@5@00) 2)
       (div (* (- (- 0 $y@5@00) 1) (- 0 $y@5@00)) 2)))) true)))))
   :pattern (($range_sum s@$ $x@4@00 $y@5@00))
-  :qid |quant-u-1398|)))
+  :qid |quant-u-1403|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- $transitivity_check ----------
@@ -4371,7 +4371,7 @@
       ($SortWrappers.IntTo$Snap 1)
       ($SortWrappers.IntTo$Snap q$a@84@01))
     ($SortWrappers.IntTo$Snap q$v@85@01))))
-  :qid |quant-u-1400|)))
+  :qid |quant-u-1405|)))
 (assert (forall (($tag Int) ($to Int) ($amount Int)) (!
   (=>
     (and
@@ -4466,7 +4466,7 @@
         ($SortWrappers.IntTo$Snap $to))
       ($SortWrappers.IntTo$Snap $amount))))
   :pattern ((inv@88@01 $tag $to $amount) (inv@90@01 $tag $to $amount))
-  :qid |quant-u-1401|)))
+  :qid |quant-u-1406|)))
 ; State saturation: after inhale
 (set-option :timeout 20)
 (check-sat)
@@ -4817,7 +4817,7 @@
       ($SortWrappers.IntTo$Snap 1)
       ($SortWrappers.IntTo$Snap q$a@98@01))
     ($SortWrappers.IntTo$Snap q$v@99@01))))
-  :qid |quant-u-1403|)))
+  :qid |quant-u-1408|)))
 (assert (forall (($tag Int) ($to Int) ($amount Int)) (!
   (=>
     (and
@@ -4884,7 +4884,7 @@
                 (inv@90@01 $tag $to $amount)
                 ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> $self$0@0@01 3)) (inv@88@01 $tag $to $amount)))))))))
   
-  :qid |quant-u-1404|))))
+  :qid |quant-u-1409|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -4992,7 +4992,7 @@
         ($SortWrappers.IntTo$Snap $to))
       ($SortWrappers.IntTo$Snap $amount))))
   :pattern ((inv@100@01 $tag $to $amount) (inv@102@01 $tag $to $amount))
-  :qid |quant-u-1405|)))
+  :qid |quant-u-1410|)))
 ; State saturation: after inhale
 (set-option :timeout 20)
 (check-sat)
@@ -5345,7 +5345,7 @@
       ($SortWrappers.IntTo$Snap 1)
       ($SortWrappers.IntTo$Snap q$a@110@01))
     ($SortWrappers.IntTo$Snap q$v@111@01))))
-  :qid |quant-u-1407|)))
+  :qid |quant-u-1412|)))
 (assert (forall (($tag Int) ($to Int) ($amount Int)) (!
   (=>
     (and
@@ -5412,7 +5412,7 @@
                 (inv@102@01 $tag $to $amount)
                 ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> $self$1@2@01 3)) (inv@100@01 $tag $to $amount)))))))))
   
-  :qid |quant-u-1408|))))
+  :qid |quant-u-1413|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -5458,7 +5458,7 @@
                 (inv@90@01 $tag $to $amount)
                 ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> $self$0@0@01 3)) (inv@88@01 $tag $to $amount)))))))))
   
-  :qid |quant-u-1409|))))
+  :qid |quant-u-1414|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -5600,7 +5600,7 @@
         ($SortWrappers.IntTo$Snap $to))
       ($SortWrappers.IntTo$Snap $amount))))
   :pattern ((inv@112@01 $tag $to $amount) (inv@114@01 $tag $to $amount))
-  :qid |quant-u-1410|)))
+  :qid |quant-u-1415|)))
 ; State saturation: after inhale
 (set-option :timeout 20)
 (check-sat)
@@ -5986,7 +5986,7 @@
         ($SortWrappers.IntTo$Snap $to))
       ($SortWrappers.IntTo$Snap $amount))))
   :pattern ((inv@120@01 $tag $to $amount) (inv@122@01 $tag $to $amount))
-  :qid |quant-u-1412|)))
+  :qid |quant-u-1417|)))
 ; Precomputing data for removing quantified permissions
 (define-fun pTaken@124@01 (($tag Int) ($to Int) ($amount Int)) $Perm
   (ite
@@ -6163,7 +6163,7 @@
       (pTaken@124@01 $tag $to $amount))
     $Perm.No)
   
-  :qid |quant-u-1414|))))
+  :qid |quant-u-1419|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -6175,7 +6175,7 @@
 (assert (not (forall (($tag Int) ($to Int) ($amount Int)) (!
   (= (pTaken@124@01 $tag $to $amount) $Perm.No)
   
-  :qid |quant-u-1415|))))
+  :qid |quant-u-1420|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -6210,7 +6210,7 @@
         (= $amount (inv@122@01 $tag $to $amount))))
     (= (- $Perm.Write (pTaken@124@01 $tag $to $amount)) $Perm.No))
   
-  :qid |quant-u-1416|))))
+  :qid |quant-u-1421|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -6246,7 +6246,7 @@
       (pTaken@125@01 $tag $to $amount))
     $Perm.No)
   
-  :qid |quant-u-1417|))))
+  :qid |quant-u-1422|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -6258,7 +6258,7 @@
 (assert (not (forall (($tag Int) ($to Int) ($amount Int)) (!
   (= (pTaken@125@01 $tag $to $amount) $Perm.No)
   
-  :qid |quant-u-1418|))))
+  :qid |quant-u-1423|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -6297,7 +6297,7 @@
         (pTaken@125@01 $tag $to $amount))
       $Perm.No))
   
-  :qid |quant-u-1419|))))
+  :qid |quant-u-1424|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -6333,7 +6333,7 @@
       (pTaken@126@01 $tag $to $amount))
     $Perm.No)
   
-  :qid |quant-u-1420|))))
+  :qid |quant-u-1425|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -6345,7 +6345,7 @@
 (assert (not (forall (($tag Int) ($to Int) ($amount Int)) (!
   (= (pTaken@126@01 $tag $to $amount) $Perm.No)
   
-  :qid |quant-u-1421|))))
+  :qid |quant-u-1426|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -6386,7 +6386,7 @@
         (pTaken@126@01 $tag $to $amount))
       $Perm.No))
   
-  :qid |quant-u-1422|))))
+  :qid |quant-u-1427|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -7995,7 +7995,7 @@
       ($SortWrappers.IntTo$Snap 1)
       ($SortWrappers.IntTo$Snap q$a@187@01))
     ($SortWrappers.IntTo$Snap q$v@188@01))))
-  :qid |quant-u-1424|)))
+  :qid |quant-u-1429|)))
 (assert (forall (($tag Int) ($to Int) ($amount Int)) (!
   (=>
     (and
@@ -8090,7 +8090,7 @@
         ($SortWrappers.IntTo$Snap $to))
       ($SortWrappers.IntTo$Snap $amount))))
   :pattern ((inv@191@01 $tag $to $amount) (inv@193@01 $tag $to $amount))
-  :qid |quant-u-1425|)))
+  :qid |quant-u-1430|)))
 ; State saturation: after inhale
 (set-option :timeout 20)
 (check-sat)
@@ -8476,7 +8476,7 @@
         ($SortWrappers.IntTo$Snap $to))
       ($SortWrappers.IntTo$Snap $amount))))
   :pattern ((inv@199@01 $tag $to $amount) (inv@201@01 $tag $to $amount))
-  :qid |quant-u-1427|)))
+  :qid |quant-u-1432|)))
 ; Precomputing data for removing quantified permissions
 (define-fun pTaken@203@01 (($tag Int) ($to Int) ($amount Int)) $Perm
   (ite
@@ -8559,7 +8559,7 @@
       (pTaken@203@01 $tag $to $amount))
     $Perm.No)
   
-  :qid |quant-u-1429|))))
+  :qid |quant-u-1434|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -8594,7 +8594,7 @@
         (= $amount (inv@201@01 $tag $to $amount))))
     (= (- $Perm.Write (pTaken@203@01 $tag $to $amount)) $Perm.No))
   
-  :qid |quant-u-1430|))))
+  :qid |quant-u-1435|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -10203,7 +10203,7 @@
       ($SortWrappers.IntTo$Snap 1)
       ($SortWrappers.IntTo$Snap q$a@266@01))
     ($SortWrappers.IntTo$Snap q$v@267@01))))
-  :qid |quant-u-1432|)))
+  :qid |quant-u-1437|)))
 (assert (forall (($tag Int) ($to Int) ($amount Int)) (!
   (=>
     (and
@@ -10298,7 +10298,7 @@
         ($SortWrappers.IntTo$Snap $to))
       ($SortWrappers.IntTo$Snap $amount))))
   :pattern ((inv@270@01 $tag $to $amount) (inv@272@01 $tag $to $amount))
-  :qid |quant-u-1433|)))
+  :qid |quant-u-1438|)))
 ; State saturation: after inhale
 (set-option :timeout 20)
 (check-sat)
@@ -13307,7 +13307,7 @@
       ($SortWrappers.IntTo$Snap 1)
       ($SortWrappers.IntTo$Snap q$a@416@01))
     ($SortWrappers.IntTo$Snap q$v@417@01))))
-  :qid |quant-u-1435|)))
+  :qid |quant-u-1440|)))
 (assert (forall (($tag Int) ($to Int) ($amount Int)) (!
   (=>
     (and
@@ -13402,7 +13402,7 @@
         ($SortWrappers.IntTo$Snap $to))
       ($SortWrappers.IntTo$Snap $amount))))
   :pattern ((inv@420@01 $tag $to $amount) (inv@422@01 $tag $to $amount))
-  :qid |quant-u-1436|)))
+  :qid |quant-u-1441|)))
 ; State saturation: after inhale
 (set-option :timeout 20)
 (check-sat)
@@ -13830,7 +13830,7 @@
             ($SortWrappers.Seq<Int>To$Snap $arg1@432@01))
           ($SortWrappers.IntTo$Snap $arg2@433@01))))))
   
-  :qid |quant-u-1437|))))
+  :qid |quant-u-1442|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -13997,7 +13997,7 @@
         ($SortWrappers.Seq<Int>To$Snap $arg1))
       ($SortWrappers.IntTo$Snap $arg2))))
   :pattern ((inv@437@01 $arg0 $arg1 $arg2) (inv@439@01 $arg0 $arg1 $arg2) (inv@441@01 $arg0 $arg1 $arg2))
-  :qid |quant-u-1438|)))
+  :qid |quant-u-1443|)))
 ; Precomputing data for removing quantified permissions
 ; Done precomputing, updating quantified chunks
 ; State saturation: before repetition
@@ -14033,7 +14033,7 @@
         ($SortWrappers.IntTo$Snap (inv@441@01 $arg0 $arg1 $arg2))))
       $Perm.No))
   
-  :qid |quant-u-1439|))))
+  :qid |quant-u-1444|))))
 (check-sat)
 ; unsat
 (pop) ; 4

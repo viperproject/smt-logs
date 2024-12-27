@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-26 19:58:45
+// Date:         2024-12-27 02:18:55
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/unfolding.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/unfolding-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -362,8 +362,8 @@ procedure sum#definedness(p_1: Ref) returns (Result: int)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -385,8 +385,8 @@ procedure sum#definedness(p_1: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume Pair#trigger(UnfoldingHeap, Pair(p_1));
       assume UnfoldingHeap[null, Pair(p_1)] == CombineFrames(FrameFragment(UnfoldingHeap[p_1, f_7]), FrameFragment(UnfoldingHeap[p_1, g]));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Pair(p) (unfolding.vpr@11.1--15.2) [122947]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, Pair(p_1)];
@@ -479,8 +479,8 @@ procedure Pair#definedness(this: Ref) returns ()
 procedure test06(p_1: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var Ops_1Heap: HeapType;
   var Ops_1Mask: MaskType;
   var b_1_1: bool;
@@ -488,11 +488,11 @@ procedure test06(p_1: Ref) returns ()
   var UsedMask: MaskType;
   var b_2: bool;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
-  var Labellhs1Heap: HeapType;
   var Labellhs1Mask: MaskType;
+  var Labellhs1Heap: HeapType;
   var boolCur: bool;
   var Used_1Heap: HeapType;
   var Used_1Mask: MaskType;
@@ -524,8 +524,8 @@ procedure test06(p_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: package acc(Pair(p), write) && sum(p) == 10 --* p.f + p.g == 10 {
   //   unfold acc(Pair(p), write)
@@ -551,8 +551,8 @@ procedure test06(p_1: Ref) returns ()
           // -- Check definedness of sum(p) == 10
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Heap := Ops_1Heap;
               ExhaleWellDef0Mask := Ops_1Mask;
+              ExhaleWellDef0Heap := Ops_1Heap;
               perm := FullPerm;
               assert {:msg "  Precondition of function sum might not hold. There might be insufficient permission to access Pair(p) (unfolding.vpr@22.28--22.34) [122950]"}
                 NoPerm < perm ==> NoPerm < Ops_1Mask[null, Pair(p_1)];
@@ -571,8 +571,8 @@ procedure test06(p_1: Ref) returns ()
     
     // -- Translating statement: label lhs1 -- unfolding.vpr@22.11--22.61
       lhs1:
-      Labellhs1Heap := Ops_1Heap;
       Labellhs1Mask := Ops_1Mask;
+      Labellhs1Heap := Ops_1Heap;
       b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);
     boolCur := true;
     if (b_1_1) {
@@ -580,8 +580,8 @@ procedure test06(p_1: Ref) returns ()
       // -- Translating statement: unfold acc(Pair(p), write) -- unfolding.vpr@23.7--23.26
         assume Pair#trigger(Ops_1Heap, Pair(p_1));
         assume Ops_1Heap[null, Pair(p_1)] == CombineFrames(FrameFragment(Ops_1Heap[p_1, f_7]), FrameFragment(Ops_1Heap[p_1, g]));
-        ExhaleWellDef0Heap := Ops_1Heap;
         ExhaleWellDef0Mask := Ops_1Mask;
+        ExhaleWellDef0Heap := Ops_1Heap;
         havoc Used_1Heap;
         Used_1Mask := ZeroMask;
         b_2_1 := b_2_1 && state(Used_1Heap, Used_1Mask);
@@ -693,8 +693,8 @@ procedure test06(p_1: Ref) returns ()
 procedure test07(p_1: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var Ops_3Heap: HeapType;
   var Ops_3Mask: MaskType;
   var b_6: bool;
@@ -702,11 +702,11 @@ procedure test07(p_1: Ref) returns ()
   var Used_3Mask: MaskType;
   var b_5: bool;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
-  var Labellhs3Heap: HeapType;
   var Labellhs3Mask: MaskType;
+  var Labellhs3Heap: HeapType;
   var boolCur_1: bool;
   var Used_4Heap: HeapType;
   var Used_4Mask: MaskType;
@@ -726,8 +726,8 @@ procedure test07(p_1: Ref) returns ()
   var UnfoldingMask: MaskType;
   var newVersion: FrameType;
   var freshVersion: FrameType;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -741,8 +741,8 @@ procedure test07(p_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: package acc(Pair(p), write) && sum(p) == 10 --*
   // acc(Pair(p), write) && (unfolding acc(Pair(p), write) in p.f + p.g == 10) {
@@ -768,8 +768,8 @@ procedure test07(p_1: Ref) returns ()
           // -- Check definedness of sum(p) == 10
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Heap := Ops_3Heap;
               ExhaleWellDef0Mask := Ops_3Mask;
+              ExhaleWellDef0Heap := Ops_3Heap;
               perm := FullPerm;
               assert {:msg "  Precondition of function sum might not hold. There might be insufficient permission to access Pair(p) (unfolding.vpr@29.22--29.28) [122959]"}
                 NoPerm < perm ==> NoPerm < Ops_3Mask[null, Pair(p_1)];
@@ -788,8 +788,8 @@ procedure test07(p_1: Ref) returns ()
     
     // -- Translating statement: label lhs3 -- unfolding.vpr@29.5--31.62
       lhs3:
-      Labellhs3Heap := Ops_3Heap;
       Labellhs3Mask := Ops_3Mask;
+      Labellhs3Heap := Ops_3Heap;
       b_6 := b_6 && state(Ops_3Heap, Ops_3Mask);
     boolCur_1 := true;
     // Translating exec of non-ghost operationacc(Pair(p), write) && (unfolding acc(Pair(p), write) in p.f + p.g == 10)
@@ -869,8 +869,8 @@ procedure test07(p_1: Ref) returns ()
           UnfoldingMask := Result_1Mask;
           assume Pair#trigger(UnfoldingHeap, Pair(p_1));
           assume UnfoldingHeap[null, Pair(p_1)] == CombineFrames(FrameFragment(UnfoldingHeap[p_1, f_7]), FrameFragment(UnfoldingHeap[p_1, g]));
-          ExhaleWellDef0Heap := UnfoldingHeap;
           ExhaleWellDef0Mask := UnfoldingMask;
+          ExhaleWellDef0Heap := UnfoldingHeap;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  Packaging wand might fail. There might be insufficient permission to access Pair(p) (unfolding.vpr@28.3--31.62) [122962]"}
@@ -915,8 +915,8 @@ procedure test07(p_1: Ref) returns ()
   // -- Translating statement: unfold acc(Pair(p), write) -- unfolding.vpr@34.3--34.17
     assume Pair#trigger(Heap, Pair(p_1));
     assume Heap[null, Pair(p_1)] == CombineFrames(FrameFragment(Heap[p_1, f_7]), FrameFragment(Heap[p_1, g]));
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Pair(p) might fail. There might be insufficient permission to access Pair(p) (unfolding.vpr@34.3--34.17) [122969]"}
@@ -957,8 +957,8 @@ procedure test07(p_1: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Pair(p), write) -- unfolding.vpr@37.3--37.15
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding Pair(p) might fail. There might be insufficient permission to access p.f (unfolding.vpr@37.3--37.15) [122977]"}
@@ -991,8 +991,8 @@ procedure test07(p_1: Ref) returns ()
   //   acc(Pair(p), write) && (unfolding acc(Pair(p), write) in p.f + p.g == 10) -- unfolding.vpr@39.3--39.99
     
     // -- check if wand is held and remove an instance
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       // permLe
       assert {:msg "  Applying wand might fail. Magic wand instance not found. (unfolding.vpr@39.3--39.99) [122981]"}
         FullPerm <= Mask[null, wand_1(p_1, p_1, 10, p_1, p_1, p_1, p_1, 10)];
@@ -1000,8 +1000,8 @@ procedure test07(p_1: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- check if LHS holds and remove permissions 
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Applying wand might fail. There might be insufficient permission to access Pair(p) (unfolding.vpr@39.3--39.99) [122983]"}
@@ -1022,8 +1022,8 @@ procedure test07(p_1: Ref) returns ()
         UnfoldingMask := Mask;
         assume Pair#trigger(UnfoldingHeap, Pair(p_1));
         assume UnfoldingHeap[null, Pair(p_1)] == CombineFrames(FrameFragment(UnfoldingHeap[p_1, f_7]), FrameFragment(UnfoldingHeap[p_1, g]));
-        ExhaleWellDef0Heap := UnfoldingHeap;
         ExhaleWellDef0Mask := UnfoldingMask;
+        ExhaleWellDef0Heap := UnfoldingHeap;
         perm := FullPerm;
         UnfoldingMask := UnfoldingMask[null, Pair(p_1):=UnfoldingMask[null, Pair(p_1)] - perm];
         perm := FullPerm;
@@ -1049,16 +1049,16 @@ procedure test07(p_1: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (unfolding acc(Pair(p), write) in p.f + p.g == 10) -- unfolding.vpr@40.3--40.51
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (unfolding acc(Pair(p), write) in p.f + p.g == 10)
       UnfoldingHeap := ExhaleWellDef0Heap;
       UnfoldingMask := ExhaleWellDef0Mask;
       assume Pair#trigger(UnfoldingHeap, Pair(p_1));
       assume UnfoldingHeap[null, Pair(p_1)] == CombineFrames(FrameFragment(UnfoldingHeap[p_1, f_7]), FrameFragment(UnfoldingHeap[p_1, g]));
-      ExhaleWellDef1Heap := UnfoldingHeap;
       ExhaleWellDef1Mask := UnfoldingMask;
+      ExhaleWellDef1Heap := UnfoldingHeap;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Assert might fail. There might be insufficient permission to access Pair(p) (unfolding.vpr@40.10--40.51) [122986]"}
@@ -1093,8 +1093,8 @@ procedure test07(p_1: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- unfolding.vpr@43.3--43.15
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion false might not hold. (unfolding.vpr@43.10--43.15) [122990]"}
       false;
     assume state(Heap, Mask);
@@ -1107,12 +1107,12 @@ procedure test07(p_1: Ref) returns ()
 procedure test01() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var p_1: Ref;
   var freshObj: Ref;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var perm: Perm;
   var freshVersion: FrameType;
   var Ops_5Heap: HeapType;
@@ -1122,8 +1122,8 @@ procedure test01() returns ()
   var Used_5Mask: MaskType;
   var b_9: bool;
   var ExhaleHeap: HeapType;
-  var Labellhs6Heap: HeapType;
   var Labellhs6Mask: MaskType;
+  var Labellhs6Heap: HeapType;
   var boolCur_2: bool;
   var Used_6Heap: HeapType;
   var Used_6Mask: MaskType;
@@ -1149,8 +1149,8 @@ procedure test01() returns ()
   var b_15: bool;
   var Result_4Heap: HeapType;
   var Result_4Mask: MaskType;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1161,8 +1161,8 @@ procedure test01() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[p_1, $allocated];
@@ -1189,8 +1189,8 @@ procedure test01() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Pair(p), write) -- unfolding.vpr@51.3--51.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding Pair(p) might fail. There might be insufficient permission to access p.f (unfolding.vpr@51.3--51.20) [122995]"}
@@ -1244,8 +1244,8 @@ procedure test01() returns ()
           // -- Check definedness of sum(p) == 10
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Heap := Ops_5Heap;
               ExhaleWellDef0Mask := Ops_5Mask;
+              ExhaleWellDef0Heap := Ops_5Heap;
               perm := FullPerm;
               assert {:msg "  Precondition of function sum might not hold. There might be insufficient permission to access Pair(p) (unfolding.vpr@53.28--53.34) [122999]"}
                 NoPerm < perm ==> NoPerm < Ops_5Mask[null, Pair(p_1)];
@@ -1264,8 +1264,8 @@ procedure test01() returns ()
     
     // -- Translating statement: label lhs6 -- unfolding.vpr@53.11--53.85
       lhs6:
-      Labellhs6Heap := Ops_5Heap;
       Labellhs6Mask := Ops_5Mask;
+      Labellhs6Heap := Ops_5Heap;
       b_10 := b_10 && state(Ops_5Heap, Ops_5Mask);
     boolCur_2 := true;
     if (b_10) {
@@ -1273,8 +1273,8 @@ procedure test01() returns ()
       // -- Translating statement: unfold acc(Pair(p), write) -- unfolding.vpr@54.7--54.26
         assume Pair#trigger(Ops_5Heap, Pair(p_1));
         assume Ops_5Heap[null, Pair(p_1)] == CombineFrames(FrameFragment(Ops_5Heap[p_1, f_7]), FrameFragment(Ops_5Heap[p_1, g]));
-        ExhaleWellDef0Heap := Ops_5Heap;
         ExhaleWellDef0Mask := Ops_5Mask;
+        ExhaleWellDef0Heap := Ops_5Heap;
         havoc Used_6Heap;
         Used_6Mask := ZeroMask;
         b_11 := b_11 && state(Used_6Heap, Used_6Mask);
@@ -1498,8 +1498,8 @@ procedure test01() returns ()
   //   acc(p.f, write) && (acc(p.g, write) && p.f + p.g == 10) -- unfolding.vpr@57.3--57.81
     
     // -- check if wand is held and remove an instance
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       // permLe
       assert {:msg "  Applying wand might fail. Magic wand instance not found. (unfolding.vpr@57.3--57.81) [123012]"}
         FullPerm <= Mask[null, wand_2(p_1, p_1, 10, p_1, FullPerm, p_1, FullPerm, p_1, p_1, 10)];
@@ -1507,8 +1507,8 @@ procedure test01() returns ()
     assume state(Heap, Mask);
     
     // -- check if LHS holds and remove permissions 
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Applying wand might fail. There might be insufficient permission to access Pair(p) (unfolding.vpr@57.3--57.81) [123014]"}
@@ -1537,8 +1537,8 @@ procedure test01() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Pair(p), write) -- unfolding.vpr@58.3--58.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding Pair(p) might fail. There might be insufficient permission to access p.f (unfolding.vpr@58.3--58.20) [123020]"}
@@ -1568,14 +1568,14 @@ procedure test01() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert sum(p) == 10 -- unfolding.vpr@59.3--59.22
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of sum(p) == 10
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function sum might not hold. There might be insufficient permission to access Pair(p) (unfolding.vpr@59.10--59.16) [123024]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, Pair(p_1)];
@@ -1591,8 +1591,8 @@ procedure test01() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- unfolding.vpr@62.3--62.15
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion false might not hold. (unfolding.vpr@62.10--62.15) [123026]"}
       false;
     assume state(Heap, Mask);
@@ -1605,8 +1605,8 @@ procedure test01() returns ()
 procedure test02(p_1: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
   var Ops_7Heap: HeapType;
   var Ops_7Mask: MaskType;
@@ -1614,11 +1614,11 @@ procedure test02(p_1: Ref) returns ()
   var Used_8Heap: HeapType;
   var Used_8Mask: MaskType;
   var b_16: bool;
-  var Labellhs9Heap: HeapType;
   var Labellhs9Mask: MaskType;
+  var Labellhs9Heap: HeapType;
   var boolCur_3: bool;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var Used_9Heap: HeapType;
   var Used_9Mask: MaskType;
   var b_18: bool;
@@ -1656,8 +1656,8 @@ procedure test02(p_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale acc(Pair(p), 1 / 2) -- unfolding.vpr@66.3--66.27
     perm := 1 / 2;
@@ -1690,8 +1690,8 @@ procedure test02(p_1: Ref) returns ()
     
     // -- Translating statement: label lhs9 -- unfolding.vpr@68.11--68.55
       lhs9:
-      Labellhs9Heap := Ops_7Heap;
       Labellhs9Mask := Ops_7Mask;
+      Labellhs9Heap := Ops_7Heap;
       b_17 := b_17 && state(Ops_7Heap, Ops_7Mask);
     boolCur_3 := true;
     if (b_17) {
@@ -1699,8 +1699,8 @@ procedure test02(p_1: Ref) returns ()
       // -- Translating statement: unfold acc(Pair(p), write) -- unfolding.vpr@69.7--69.26
         assume Pair#trigger(Ops_7Heap, Pair(p_1));
         assume Ops_7Heap[null, Pair(p_1)] == CombineFrames(FrameFragment(Ops_7Heap[p_1, f_7]), FrameFragment(Ops_7Heap[p_1, g]));
-        ExhaleWellDef0Heap := Ops_7Heap;
         ExhaleWellDef0Mask := Ops_7Mask;
+        ExhaleWellDef0Heap := Ops_7Heap;
         havoc Used_9Heap;
         Used_9Mask := ZeroMask;
         b_18 := b_18 && state(Used_9Heap, Used_9Mask);
@@ -1915,8 +1915,8 @@ procedure test02(p_1: Ref) returns ()
 procedure test03(p_1: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var Ops_9Heap: HeapType;
   var Ops_9Mask: MaskType;
   var b_24_1: bool;
@@ -1924,11 +1924,11 @@ procedure test03(p_1: Ref) returns ()
   var Used_11Mask: MaskType;
   var b_23: bool;
   var perm: Perm;
-  var Labellhs11Heap: HeapType;
   var Labellhs11Mask: MaskType;
+  var Labellhs11Heap: HeapType;
   var boolCur_4: bool;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var Used_12Heap: HeapType;
   var Used_12Mask: MaskType;
   var b_25: bool;
@@ -1966,8 +1966,8 @@ procedure test03(p_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: package acc(Pair(p), 1 / 2) --* acc(p.f, write) && acc(p.g, write) {
   //   unfold acc(Pair(p), write)
@@ -1991,8 +1991,8 @@ procedure test03(p_1: Ref) returns ()
     
     // -- Translating statement: label lhs11 -- unfolding.vpr@74.11--74.55
       lhs11:
-      Labellhs11Heap := Ops_9Heap;
       Labellhs11Mask := Ops_9Mask;
+      Labellhs11Heap := Ops_9Heap;
       b_24_1 := b_24_1 && state(Ops_9Heap, Ops_9Mask);
     boolCur_4 := true;
     if (b_24_1) {
@@ -2000,8 +2000,8 @@ procedure test03(p_1: Ref) returns ()
       // -- Translating statement: unfold acc(Pair(p), write) -- unfolding.vpr@76.7--76.26
         assume Pair#trigger(Ops_9Heap, Pair(p_1));
         assume Ops_9Heap[null, Pair(p_1)] == CombineFrames(FrameFragment(Ops_9Heap[p_1, f_7]), FrameFragment(Ops_9Heap[p_1, g]));
-        ExhaleWellDef0Heap := Ops_9Heap;
         ExhaleWellDef0Mask := Ops_9Mask;
+        ExhaleWellDef0Heap := Ops_9Heap;
         havoc Used_12Heap;
         Used_12Mask := ZeroMask;
         b_25 := b_25 && state(Used_12Heap, Used_12Mask);

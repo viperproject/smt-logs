@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-26 20:23:22
+// Date:         2024-12-27 02:43:43
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0269.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0269-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -253,25 +253,25 @@ procedure nested_try_finally_fails(out: Ref) returns ()
   var handlerMyException_lblGuard: bool;
   var try_finally_lblGuard: bool;
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var error_0: Ref;
   var try_finally_2: int;
-  var LabelhandlerMyExceptionMask: MaskType;
   var LabelhandlerMyExceptionHeap: HeapType;
-  var Labeltry_finallyMask: MaskType;
+  var LabelhandlerMyExceptionMask: MaskType;
   var Labeltry_finallyHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var Labeltry_finallyMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var nonDet: bool;
   var LoopSumHeap: HeapType;
   var LoopSumMask: MaskType;
   var frameHeap18: HeapType;
   var frameMask18: MaskType;
-  var Labeltry_finally_0Mask: MaskType;
   var Labeltry_finally_0Heap: HeapType;
-  var Label__endMask: MaskType;
+  var Labeltry_finally_0Mask: MaskType;
   var Label__endHeap: HeapType;
+  var Label__endMask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -295,8 +295,8 @@ procedure nested_try_finally_fails(out: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[error_0, $allocated];
@@ -320,8 +320,8 @@ procedure nested_try_finally_fails(out: Ref) returns ()
   // -- Translating statement: // id = 4
   // label handlerMyException -- 0269.vpr@14.3--14.27
     handlerMyException:
-    LabelhandlerMyExceptionMask := Mask;
     LabelhandlerMyExceptionHeap := Heap;
+    LabelhandlerMyExceptionMask := Mask;
     handlerMyException_lblGuard := true;
     assume state(Heap, Mask);
   
@@ -338,16 +338,16 @@ procedure nested_try_finally_fails(out: Ref) returns ()
   // -- Translating statement: // id = 7
   // label try_finally -- 0269.vpr@18.3--18.20
     try_finally:
-    Labeltry_finallyMask := Mask;
     Labeltry_finallyHeap := Heap;
+    Labeltry_finallyMask := Mask;
     try_finally_lblGuard := true;
     assume state(Heap, Mask);
   
   // -- Translating statement: // id = 8
   // // LoopInfo(None,Set(18))
   // assert try_finally_2 == 0 -- 0269.vpr@19.5--19.30
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion try_finally_2 == 0 might not hold. (0269.vpr@19.12--19.30) [216975]"}
       try_finally_2 == 0;
     assume state(Heap, Mask);
@@ -399,8 +399,8 @@ procedure nested_try_finally_fails(out: Ref) returns ()
       
       // -- Translating statement: // id = 14
   // exhale false -- 0269.vpr@25.7--25.19
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Exhale might fail. Assertion false might not hold. (0269.vpr@25.14--25.19) [216976]"}
           false;
         
@@ -452,8 +452,8 @@ procedure nested_try_finally_fails(out: Ref) returns ()
   // // LoopInfo(Some(18),Set(18))
   // label try_finally_0 -- 0269.vpr@34.3--34.22
     try_finally_0:
-    Labeltry_finally_0Mask := Mask;
     Labeltry_finally_0Heap := Heap;
+    Labeltry_finally_0Mask := Mask;
     try_finally_0_lblGuard := true;
     
     // -- Before loop head18
@@ -495,8 +495,8 @@ procedure nested_try_finally_fails(out: Ref) returns ()
   // -- Translating statement: // id = 21
   // label __end -- 0269.vpr@40.3--40.14
     __end:
-    Label__endMask := Mask;
     Label__endHeap := Heap;
+    Label__endMask := Mask;
     __end_lblGuard := true;
     assume state(Heap, Mask);
 }
@@ -513,21 +513,21 @@ procedure nested_try_finally_fixed(out: Ref) returns ()
   var handlerMyException_lblGuard: bool;
   var try_finally_lblGuard: bool;
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var error_0: Ref;
   var try_finally_2: int;
-  var LabelhandlerMyExceptionMask: MaskType;
   var LabelhandlerMyExceptionHeap: HeapType;
-  var Labeltry_finallyMask: MaskType;
+  var LabelhandlerMyExceptionMask: MaskType;
   var Labeltry_finallyHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var Labeltry_finallyMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var nonDet: bool;
-  var Labeltry_finally_0Mask: MaskType;
   var Labeltry_finally_0Heap: HeapType;
-  var Label__endMask: MaskType;
+  var Labeltry_finally_0Mask: MaskType;
   var Label__endHeap: HeapType;
+  var Label__endMask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -551,8 +551,8 @@ procedure nested_try_finally_fixed(out: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[error_0, $allocated];
@@ -575,8 +575,8 @@ procedure nested_try_finally_fixed(out: Ref) returns ()
   // -- Translating statement: // id = 4
   // label handlerMyException -- 0269.vpr@51.3--51.27
     handlerMyException:
-    LabelhandlerMyExceptionMask := Mask;
     LabelhandlerMyExceptionHeap := Heap;
+    LabelhandlerMyExceptionMask := Mask;
     handlerMyException_lblGuard := true;
     assume state(Heap, Mask);
   
@@ -593,15 +593,15 @@ procedure nested_try_finally_fixed(out: Ref) returns ()
   // -- Translating statement: // id = 7
   // label try_finally -- 0269.vpr@55.3--55.20
     try_finally:
-    Labeltry_finallyMask := Mask;
     Labeltry_finallyHeap := Heap;
+    Labeltry_finallyMask := Mask;
     try_finally_lblGuard := true;
     assume state(Heap, Mask);
   
   // -- Translating statement: // id = 8
   // assert try_finally_2 == 0 -- 0269.vpr@56.5--56.30
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion try_finally_2 == 0 might not hold. (0269.vpr@56.12--56.30) [216978]"}
       try_finally_2 == 0;
     assume state(Heap, Mask);
@@ -642,8 +642,8 @@ procedure nested_try_finally_fixed(out: Ref) returns ()
       
       // -- Translating statement: // id = 14
   // exhale false -- 0269.vpr@62.7--62.19
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Exhale might fail. Assertion false might not hold. (0269.vpr@62.14--62.19) [216979]"}
           false;
         assume state(Heap, Mask);
@@ -680,8 +680,8 @@ procedure nested_try_finally_fixed(out: Ref) returns ()
   // -- Translating statement: // id = 19
   // label try_finally_0 -- 0269.vpr@70.3--70.22
     try_finally_0:
-    Labeltry_finally_0Mask := Mask;
     Labeltry_finally_0Heap := Heap;
+    Labeltry_finally_0Mask := Mask;
     try_finally_0_lblGuard := true;
     assume state(Heap, Mask);
   
@@ -700,8 +700,8 @@ procedure nested_try_finally_fixed(out: Ref) returns ()
   // -- Translating statement: // id = 22
   // label __end -- 0269.vpr@75.3--75.14
     __end:
-    Label__endMask := Mask;
     Label__endHeap := Heap;
+    Label__endMask := Mask;
     __end_lblGuard := true;
     assume state(Heap, Mask);
 }
@@ -715,12 +715,12 @@ procedure test(x: Ref) returns (b_24: bool)
 {
   var pseudo_loop_head_lblGuard: bool;
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var Labelpseudo_loop_headMask: MaskType;
+  var oldMask: MaskType;
   var Labelpseudo_loop_headHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var Labelpseudo_loop_headMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var frameMask2: MaskType;
   var frameHeap2: HeapType;
   var AssertHeap: HeapType;
@@ -747,8 +747,8 @@ procedure test(x: Ref) returns (b_24: bool)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: // id = 1
   // // LoopInfo(None,Set())
@@ -761,15 +761,15 @@ procedure test(x: Ref) returns (b_24: bool)
   // label pseudo_loop_head
   //   invariant true -- 0269.vpr@87.3--88.19
     pseudo_loop_head:
-    Labelpseudo_loop_headMask := Mask;
     Labelpseudo_loop_headHeap := Heap;
+    Labelpseudo_loop_headMask := Mask;
     pseudo_loop_head_lblGuard := true;
     
     // -- Before loop head2
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
       
       // -- Store frame in mask associated with loop
         frameMask2 := Mask;
@@ -793,8 +793,8 @@ procedure test(x: Ref) returns (b_24: bool)
   
   // -- Translating statement: // id = 3
   // assert !b -- 0269.vpr@90.5--90.14
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion !b might not hold. (0269.vpr@90.12--90.14) [216981]"}
       !b_24;
     assume state(Heap, Mask);
@@ -804,8 +804,8 @@ procedure test(x: Ref) returns (b_24: bool)
   // assert acc(x.f, write) -- 0269.vpr@92.5--92.20
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
+    ExhaleWellDef0Mask := AssertMask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (0269.vpr@92.12--92.20) [216983]"}
@@ -828,8 +828,8 @@ procedure test(x: Ref) returns (b_24: bool)
               assume false;
             }
           // Exhale invariant
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           // Terminate execution
           assume false;
         assume state(Heap, Mask);

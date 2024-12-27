@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-26 20:18:05
+// Date:         2024-12-27 02:38:23
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0383b.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0383b-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -497,8 +497,8 @@ procedure acc_graph#definedness(all_nodes: (Set Ref)) returns ()
   var node_3: Ref;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var perm: Perm;
   
   // -- Check definedness of predicate body of acc_graph
@@ -556,8 +556,8 @@ procedure acc_graph#definedness(all_nodes: (Set Ref)) returns ()
           UnfoldingMask := Mask;
           assume read_fields#trigger(UnfoldingHeap, read_fields(node_3));
           assume UnfoldingHeap[null, read_fields(node_3)] == FrameFragment(UnfoldingHeap[node_3, visited]);
-          ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
+          ExhaleWellDef0Mask := UnfoldingMask;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access read_fields(node) (0383b.vpr@8.1--12.2) [197123]"}
@@ -587,19 +587,19 @@ procedure test(n: Ref, diff: Ref, graph: (Set Ref)) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var freshVersion: FrameType;
   var QPMask: MaskType;
   var node_2_1: Ref;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -627,8 +627,8 @@ procedure test(n: Ref, diff: Ref, graph: (Set Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -653,8 +653,8 @@ procedure test(n: Ref, diff: Ref, graph: (Set Ref)) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(read_fields(diff), write) -- 0383b.vpr@24.3--24.25
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding read_fields(diff) might fail. There might be insufficient permission to access diff.visited (0383b.vpr@24.3--24.25) [197128]"}
@@ -677,8 +677,8 @@ procedure test(n: Ref, diff: Ref, graph: (Set Ref)) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(read_fields(n), write) -- 0383b.vpr@25.3--25.22
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding read_fields(n) might fail. There might be insufficient permission to access n.visited (0383b.vpr@25.3--25.22) [197133]"}
@@ -701,8 +701,8 @@ procedure test(n: Ref, diff: Ref, graph: (Set Ref)) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(acc_graph(graph), write) -- 0383b.vpr@28.3--28.24
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     havoc QPMask;
     
     // -- check that the permission amount is positive
@@ -756,8 +756,8 @@ procedure test(n: Ref, diff: Ref, graph: (Set Ref)) returns ()
           UnfoldingMask := ExhaleWellDef0Mask;
           assume read_fields#trigger(UnfoldingHeap, read_fields(node_2_1));
           assume UnfoldingHeap[null, read_fields(node_2_1)] == FrameFragment(UnfoldingHeap[node_2_1, visited]);
-          ExhaleWellDef1Mask := UnfoldingMask;
           ExhaleWellDef1Heap := UnfoldingHeap;
+          ExhaleWellDef1Mask := UnfoldingMask;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  Folding acc_graph(graph) might fail. There might be insufficient permission to access read_fields(node) (0383b.vpr@28.3--28.24) [197142]"}
@@ -787,8 +787,8 @@ procedure test(n: Ref, diff: Ref, graph: (Set Ref)) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of test might not hold. Assertion false might not hold. (0383b.vpr@19.11--19.16) [197146]"}
       false;
 }

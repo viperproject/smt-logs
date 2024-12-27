@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-26 20:17:27
+// Date:         2024-12-27 02:37:44
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0192.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0192-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -618,8 +618,8 @@ procedure extension_len_rec#definedness(hdrs: Ref, index: int) returns (Result: 
   var perm: Perm;
   var QPMask: MaskType;
   var cond_0_1: bool;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -705,8 +705,8 @@ procedure extension_len_rec#definedness(hdrs: Ref, index: int) returns (Result: 
       } else {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           perm := 1 / 200;
           assert {:msg "  Precondition of function extension_len_rec might not hold. Fraction 1 / 200 might be negative. (0192.vpr@15.17--15.51) [194814]"}
             perm >= NoPerm;

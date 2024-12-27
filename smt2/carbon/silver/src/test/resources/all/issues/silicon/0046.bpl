@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-26 20:23:28
+// Date:         2024-12-27 02:43:48
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0046.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0046-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -189,12 +189,12 @@ procedure test01(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var loopHeap: HeapType;
   var loopMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -219,8 +219,8 @@ procedure test01(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: while (true) -- 0046.vpr@9.3--11.4
     
@@ -244,8 +244,8 @@ procedure test01(this: Ref) returns ()
         // -- Translate loop body
           
           // -- Translating statement: assert old(this.f) == 0 -- 0046.vpr@10.5--10.28
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             
             // -- Check definedness of old(this.f) == 0
               assert {:msg "  Assert might fail. There might be insufficient permission to access this.f (0046.vpr@10.12--10.28) [217220]"}
@@ -264,8 +264,8 @@ procedure test01(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert old(this.f) == 0 -- 0046.vpr@13.3--13.26
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of old(this.f) == 0
       assert {:msg "  Assert might fail. There might be insufficient permission to access this.f (0046.vpr@13.10--13.26) [217222]"}

@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-26 19:30:37
+; Started: 2024-12-27 01:50:23
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -123,33 +123,33 @@
 (assert (forall ((s@$ $Snap)) (!
   (= (read$%limited s@$) (read$ s@$))
   :pattern ((read$ s@$))
-  :qid |quant-u-5110|)))
+  :qid |quant-u-5175|)))
 (assert (forall ((s@$ $Snap)) (!
   (as read$%stateless  Bool)
   :pattern ((read$%limited s@$))
-  :qid |quant-u-5111|)))
+  :qid |quant-u-5176|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@0@00 (read$%limited s@$))) (=>
     (read$%precondition s@$)
     (and (< $Perm.No result@0@00) (< result@0@00 $Perm.Write))))
   :pattern ((read$%limited s@$))
-  :qid |quant-u-5114|)))
+  :qid |quant-u-5179|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@0@00 (read$%limited s@$))) true)
   :pattern ((read$%limited s@$))
-  :qid |quant-u-5115|)))
+  :qid |quant-u-5180|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@0@00 (read$%limited s@$))) true)
   :pattern ((read$%limited s@$))
-  :qid |quant-u-5116|)))
+  :qid |quant-u-5181|)))
 (assert (forall ((s@$ $Snap) (_pure_1@1@00 $Ref)) (!
   (= (contains%limited s@$ _pure_1@1@00) (contains s@$ _pure_1@1@00))
   :pattern ((contains s@$ _pure_1@1@00))
-  :qid |quant-u-5112|)))
+  :qid |quant-u-5177|)))
 (assert (forall ((s@$ $Snap) (_pure_1@1@00 $Ref)) (!
   (contains%stateless _pure_1@1@00)
   :pattern ((contains%limited s@$ _pure_1@1@00))
-  :qid |quant-u-5113|)))
+  :qid |quant-u-5178|)))
 (assert (forall ((s@$ $Snap) (_pure_1@1@00 $Ref)) (!
   (=>
     (contains%precondition s@$ _pure_1@1@00)
@@ -160,7 +160,7 @@
         (contains%limited ($Snap.second ($Snap.second s@$)) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$)))))))
   :pattern ((contains s@$ _pure_1@1@00))
   :pattern ((contains%stateless _pure_1@1@00) (BoxList%trigger s@$ _pure_1@1@00))
-  :qid |quant-u-5117|)))
+  :qid |quant-u-5182|)))
 (assert (forall ((s@$ $Snap) (_pure_1@1@00 $Ref)) (!
   (=>
     (and
@@ -168,6 +168,6 @@
       (not (= ($SortWrappers.$SnapToInt ($Snap.first s@$)) 0)))
     (contains%precondition ($Snap.second ($Snap.second s@$)) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$)))))
   :pattern ((contains s@$ _pure_1@1@00))
-  :qid |quant-u-5118|)))
+  :qid |quant-u-5183|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------

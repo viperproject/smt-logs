@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-26 20:26:00
+// Date:         2024-12-27 02:46:22
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0211.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0211-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -411,15 +411,15 @@ procedure m(r_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var p1_2: Perm;
   var p2_1: Perm;
   var i1: int;
   var i2_1: int;
   var i3_7: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -442,8 +442,8 @@ procedure m(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: p1 := 1 / 7 -- 0211.vpr@14.5--14.25
     p1_2 := 1 / 7;
@@ -466,8 +466,8 @@ procedure m(r_1: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert 1 / 2 * (2 / 1) == 0 / 1 -- 0211.vpr@20.5--20.34
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion 1 / 2 * (2 / 1) == 0 / 1 might not hold. (0211.vpr@20.12--20.34) [221398]"}
       1 / 2 * (2 / 1) == 0 / 1;
     assume state(Heap, Mask);

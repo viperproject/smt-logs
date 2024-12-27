@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-26 20:25:29
+// Date:         2024-12-27 02:45:50
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0078.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0078-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -242,10 +242,10 @@ procedure fun#definedness(x: Ref) returns (Result: Perm)
 procedure test(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -259,12 +259,12 @@ procedure test(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: exhale none < -1 * fun(x.f) -- 0078.vpr@12.3--12.32
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of none < -1 * fun(x.f)
       assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (0078.vpr@12.10--12.32) [220914]"}
@@ -278,8 +278,8 @@ procedure test(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale none < -1 * fun(x.f) -- 0078.vpr@13.3--13.30
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of none < -1 * fun(x.f)
       assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (0078.vpr@13.10--13.30) [220916]"}

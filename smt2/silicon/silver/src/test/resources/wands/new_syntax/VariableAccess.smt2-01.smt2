@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-26 19:36:58
+; Started: 2024-12-27 01:56:58
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -134,21 +134,21 @@
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   (= (getNext%limited s@$ x@0@00) (getNext s@$ x@0@00))
   :pattern ((getNext s@$ x@0@00))
-  :qid |quant-u-20721|)))
+  :qid |quant-u-20749|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   (getNext%stateless x@0@00)
   :pattern ((getNext%limited s@$ x@0@00))
-  :qid |quant-u-20722|)))
+  :qid |quant-u-20750|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   (=>
     (getNext%precondition s@$ x@0@00)
     (= (getNext s@$ x@0@00) ($SortWrappers.$SnapTo$Ref ($Snap.first s@$))))
   :pattern ((getNext s@$ x@0@00))
-  :qid |quant-u-20723|)))
+  :qid |quant-u-20751|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   true
   :pattern ((getNext s@$ x@0@00))
-  :qid |quant-u-20724|)))
+  :qid |quant-u-20752|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- test0 ----------
@@ -174,9 +174,9 @@
 (declare-const n@4@01 $Ref)
 (assert (not (= n@4@01 $Ref.null)))
 (declare-const next@5@01 $Ref)
+(assert (not (= n@4@01 n@3@01)))
 (assert (not (= n@4@01 $t@2@01)))
 (assert (not (= n@4@01 x@1@01)))
-(assert (not (= n@4@01 n@3@01)))
 ; [exec]
 ; x.next := n
 (push) ; 3
@@ -311,7 +311,7 @@
         ($Snap.combine $Snap.unit ($SortWrappers.$RefTo$Snap next@5@01)))
       $Snap.unit))
   :pattern ((MWSF_apply mwsf@8@01 $t@6@01))
-  :qid |quant-u-20725|)))
+  :qid |quant-u-20753|)))
 (pop) ; 3
 (push) ; 3
 (assert (forall (($t@6@01 $Snap)) (!
@@ -323,7 +323,7 @@
         ($Snap.combine $Snap.unit ($SortWrappers.$RefTo$Snap next@5@01)))
       $Snap.unit))
   :pattern ((MWSF_apply mwsf@8@01 $t@6@01))
-  :qid |quant-u-20726|)))
+  :qid |quant-u-20754|)))
 (assert true)
 (pop) ; 3
 (pop) ; 2

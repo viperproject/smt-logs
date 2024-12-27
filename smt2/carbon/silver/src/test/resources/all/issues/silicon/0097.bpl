@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-26 20:23:45
+// Date:         2024-12-27 02:44:05
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0097.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0097-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -619,8 +619,8 @@ procedure PseudoListget$#definedness(this$_2: Ref, index: int) returns (Result: 
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var newPMask: PMaskType;
   
@@ -647,8 +647,8 @@ procedure PseudoListget$#definedness(this$_2: Ref, index: int) returns (Result: 
       UnfoldingMask := Mask;
       assume PseudoListinv$#trigger(UnfoldingHeap, PseudoListinv$(this$_2));
       assume UnfoldingHeap[null, PseudoListinv$(this$_2)] == CombineFrames(FrameFragment(UnfoldingHeap[this$_2, PseudoListvalue$]), CombineFrames(FrameFragment(UnfoldingHeap[this$_2, PseudoListnext$]), UnfoldingHeap[null, PseudoListinv$(UnfoldingHeap[this$_2, PseudoListnext$])]));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access PseudoListinv$(this$_2) (0097.vpr@25.1--30.2) [218311]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, PseudoListinv$(this$_2)];
@@ -677,8 +677,8 @@ procedure PseudoListget$#definedness(this$_2: Ref, index: int) returns (Result: 
           HasDirectPerm(UnfoldingMask, this$_2, PseudoListnext$);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
+          ExhaleWellDef0Mask := UnfoldingMask;
           assert {:msg "  Precondition of function PseudoListget$ might not hold. Assertion this$_2.PseudoListnext$ != null might not hold. (0097.vpr@29.77--29.127) [218313]"}
             UnfoldingHeap[this$_2, PseudoListnext$] != null;
           perm := FullPerm;
@@ -840,21 +840,21 @@ procedure PseudoListstatic_range_workaround$(this$_1: Ref, k$: Perm) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var n$: Ref;
   var a$: Ref;
   var b$: Ref;
   var c$: Ref;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var i_4: int;
   var i_6: int;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var i_3: int;
   
   // -- Initializing the state
@@ -881,8 +881,8 @@ procedure PseudoListstatic_range_workaround$(this$_1: Ref, k$: Perm) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -908,8 +908,8 @@ procedure PseudoListstatic_range_workaround$(this$_1: Ref, k$: Perm) returns ()
     // -- Check definedness of PseudoListget$(this$_1, 0)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Precondition of function PseudoListget$ might not hold. Assertion this$_1 != null might not hold. (0097.vpr@51.10--51.36) [218317]"}
           this$_1 != null;
         perm := FullPerm;
@@ -937,8 +937,8 @@ procedure PseudoListstatic_range_workaround$(this$_1: Ref, k$: Perm) returns ()
         if (Seq#Contains(Seq#Range(1, 4), i_4)) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             assert {:msg "  Precondition of function PseudoListget$ might not hold. Assertion this$_1 != null might not hold. (0097.vpr@52.54--52.80) [218319]"}
               this$_1 != null;
             perm := FullPerm;
@@ -965,16 +965,16 @@ procedure PseudoListstatic_range_workaround$(this$_1: Ref, k$: Perm) returns ()
   //     { (i in [0..4)) }
   //     { PseudoListget$(this$_1, i) }
   //     true && (i in [0..4)) ==> PseudoListget$(this$_1, i)) -- 0097.vpr@53.3--53.81
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall i: Int :: { (i in [0..4)) } { PseudoListget$(this$_1, i) } true && (i in [0..4)) ==> PseudoListget$(this$_1, i))
       if (*) {
         if (Seq#Contains(Seq#Range(0, 4), i_6)) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Mask := ExhaleWellDef0Mask;
             ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+            ExhaleWellDef1Mask := ExhaleWellDef0Mask;
             assert {:msg "  Precondition of function PseudoListget$ might not hold. Assertion this$_1 != null might not hold. (0097.vpr@53.54--53.80) [218321]"}
               this$_1 != null;
             perm := FullPerm;
@@ -1004,8 +1004,8 @@ procedure PseudoListstatic_range_workaround$(this$_1: Ref, k$: Perm) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of PseudoListstatic_range_workaround$ might not hold. There might be insufficient permission to access PseudoListinv$(this$_1) (0097.vpr@45.11--45.46) [218324]"}

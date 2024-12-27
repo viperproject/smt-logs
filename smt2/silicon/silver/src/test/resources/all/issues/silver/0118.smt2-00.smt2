@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-26 19:42:20
+; Started: 2024-12-27 02:02:20
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -423,11 +423,11 @@
 (assert (forall ((s@$ $Snap) (xs@0@00 Seq<$Ref>) (ys@1@00 Seq<$Ref>)) (!
   (= (zip%limited s@$ xs@0@00 ys@1@00) (zip s@$ xs@0@00 ys@1@00))
   :pattern ((zip s@$ xs@0@00 ys@1@00))
-  :qid |quant-u-26176|)))
+  :qid |quant-u-26204|)))
 (assert (forall ((s@$ $Snap) (xs@0@00 Seq<$Ref>) (ys@1@00 Seq<$Ref>)) (!
   (zip%stateless xs@0@00 ys@1@00)
   :pattern ((zip%limited s@$ xs@0@00 ys@1@00))
-  :qid |quant-u-26177|)))
+  :qid |quant-u-26205|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (= s@$ $Snap.unit))
@@ -601,7 +601,7 @@
             (Seq_singleton (Seq_index ys@1@00 0)))
           (zip%limited $Snap.unit (Seq_drop xs@0@00 1) (Seq_drop ys@1@00 1))))))
   :pattern ((zip s@$ xs@0@00 ys@1@00))
-  :qid |quant-u-26178|)))
+  :qid |quant-u-26206|)))
 (assert (forall ((s@$ $Snap) (xs@0@00 Seq<$Ref>) (ys@1@00 Seq<$Ref>)) (!
   (=>
     (zip%precondition s@$ xs@0@00 ys@1@00)
@@ -610,4 +610,4 @@
       true
       (zip%precondition $Snap.unit (Seq_drop xs@0@00 1) (Seq_drop ys@1@00 1))))
   :pattern ((zip s@$ xs@0@00 ys@1@00))
-  :qid |quant-u-26179|)))
+  :qid |quant-u-26207|)))

@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-26 19:41:19
+; Started: 2024-12-27 02:01:19
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -165,11 +165,11 @@
     (Triggersg$%limited s@$ this$_4@0@00 x@1@00)
     (Triggersg$ s@$ this$_4@0@00 x@1@00))
   :pattern ((Triggersg$ s@$ this$_4@0@00 x@1@00))
-  :qid |quant-u-25596|)))
+  :qid |quant-u-25624|)))
 (assert (forall ((s@$ $Snap) (this$_4@0@00 $Ref) (x@1@00 Int)) (!
   (Triggersg$%stateless this$_4@0@00 x@1@00)
   :pattern ((Triggersg$%limited s@$ this$_4@0@00 x@1@00))
-  :qid |quant-u-25597|)))
+  :qid |quant-u-25625|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert ($Perm.isReadVar $k@17@00))
@@ -337,7 +337,7 @@
           ($Snap.second ($Snap.second ($Snap.second s@$)))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$))) x@1@00))))
   :pattern ((Triggersg$ s@$ this$_4@0@00 x@1@00))
   :pattern ((Triggersg$%stateless this$_4@0@00 x@1@00) (Triggersvalid$%trigger ($Snap.second s@$) this$_4@0@00))
-  :qid |quant-u-25604|)))
+  :qid |quant-u-25632|)))
 (assert (forall ((s@$ $Snap) (this$_4@0@00 $Ref) (x@1@00 Int)) (!
   (=>
     (Triggersg$%precondition s@$ this$_4@0@00 x@1@00)
@@ -345,7 +345,7 @@
       $Snap.unit
       ($Snap.second ($Snap.second ($Snap.second s@$)))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$))) x@1@00))
   :pattern ((Triggersg$ s@$ this$_4@0@00 x@1@00))
-  :qid |quant-u-25605|)))
+  :qid |quant-u-25633|)))
 ; ---------- FUNCTION Triggersf$----------
 (declare-fun this$_2@3@00 () $Ref)
 (declare-fun x@4@00 () Int)
@@ -368,11 +368,11 @@
     (Triggersf$%limited s@$ this$_2@3@00 x@4@00 y@5@00 z@6@00)
     (Triggersf$ s@$ this$_2@3@00 x@4@00 y@5@00 z@6@00))
   :pattern ((Triggersf$ s@$ this$_2@3@00 x@4@00 y@5@00 z@6@00))
-  :qid |quant-u-25598|)))
+  :qid |quant-u-25626|)))
 (assert (forall ((s@$ $Snap) (this$_2@3@00 $Ref) (x@4@00 Int) (y@5@00 Int) (z@6@00 Int)) (!
   (Triggersf$%stateless this$_2@3@00 x@4@00 y@5@00 z@6@00)
   :pattern ((Triggersf$%limited s@$ this$_2@3@00 x@4@00 y@5@00 z@6@00))
-  :qid |quant-u-25599|)))
+  :qid |quant-u-25627|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert ($Perm.isReadVar $k@21@00))
@@ -540,7 +540,7 @@
           ($Snap.second ($Snap.second ($Snap.second s@$)))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$))) x@4@00 y@5@00 z@6@00))))
   :pattern ((Triggersf$ s@$ this$_2@3@00 x@4@00 y@5@00 z@6@00))
   :pattern ((Triggersf$%stateless this$_2@3@00 x@4@00 y@5@00 z@6@00) (Triggersvalid$%trigger ($Snap.second s@$) this$_2@3@00))
-  :qid |quant-u-25606|)))
+  :qid |quant-u-25634|)))
 (assert (forall ((s@$ $Snap) (this$_2@3@00 $Ref) (x@4@00 Int) (y@5@00 Int) (z@6@00 Int)) (!
   (=>
     (Triggersf$%precondition s@$ this$_2@3@00 x@4@00 y@5@00 z@6@00)
@@ -548,7 +548,7 @@
       $Snap.unit
       ($Snap.second ($Snap.second ($Snap.second s@$)))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$))) x@4@00 y@5@00 z@6@00))
   :pattern ((Triggersf$ s@$ this$_2@3@00 x@4@00 y@5@00 z@6@00))
-  :qid |quant-u-25607|)))
+  :qid |quant-u-25635|)))
 ; ---------- FUNCTION Triggersi$----------
 (declare-fun this$_5@8@00 () $Ref)
 (declare-fun x@9@00 () Int)
@@ -570,11 +570,11 @@
     (Triggersi$%limited s@$ this$_5@8@00 x@9@00 y@10@00)
     (Triggersi$ s@$ this$_5@8@00 x@9@00 y@10@00))
   :pattern ((Triggersi$ s@$ this$_5@8@00 x@9@00 y@10@00))
-  :qid |quant-u-25600|)))
+  :qid |quant-u-25628|)))
 (assert (forall ((s@$ $Snap) (this$_5@8@00 $Ref) (x@9@00 Int) (y@10@00 Bool)) (!
   (Triggersi$%stateless this$_5@8@00 x@9@00 y@10@00)
   :pattern ((Triggersi$%limited s@$ this$_5@8@00 x@9@00 y@10@00))
-  :qid |quant-u-25601|)))
+  :qid |quant-u-25629|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert ($Perm.isReadVar $k@25@00))
@@ -742,7 +742,7 @@
           ($Snap.second ($Snap.second ($Snap.second s@$)))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$))) x@9@00 y@10@00))))
   :pattern ((Triggersi$ s@$ this$_5@8@00 x@9@00 y@10@00))
   :pattern ((Triggersi$%stateless this$_5@8@00 x@9@00 y@10@00) (Triggersvalid$%trigger ($Snap.second s@$) this$_5@8@00))
-  :qid |quant-u-25608|)))
+  :qid |quant-u-25636|)))
 (assert (forall ((s@$ $Snap) (this$_5@8@00 $Ref) (x@9@00 Int) (y@10@00 Bool)) (!
   (=>
     (Triggersi$%precondition s@$ this$_5@8@00 x@9@00 y@10@00)
@@ -750,7 +750,7 @@
       $Snap.unit
       ($Snap.second ($Snap.second ($Snap.second s@$)))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$))) x@9@00 y@10@00))
   :pattern ((Triggersi$ s@$ this$_5@8@00 x@9@00 y@10@00))
-  :qid |quant-u-25609|)))
+  :qid |quant-u-25637|)))
 ; ---------- FUNCTION Triggersh$----------
 (declare-fun this$_3@12@00 () $Ref)
 (declare-fun x@13@00 () Int)
@@ -773,11 +773,11 @@
     (Triggersh$%limited s@$ this$_3@12@00 x@13@00 y@14@00 z@15@00)
     (Triggersh$ s@$ this$_3@12@00 x@13@00 y@14@00 z@15@00))
   :pattern ((Triggersh$ s@$ this$_3@12@00 x@13@00 y@14@00 z@15@00))
-  :qid |quant-u-25602|)))
+  :qid |quant-u-25630|)))
 (assert (forall ((s@$ $Snap) (this$_3@12@00 $Ref) (x@13@00 Int) (y@14@00 Int) (z@15@00 Int)) (!
   (Triggersh$%stateless this$_3@12@00 x@13@00 y@14@00 z@15@00)
   :pattern ((Triggersh$%limited s@$ this$_3@12@00 x@13@00 y@14@00 z@15@00))
-  :qid |quant-u-25603|)))
+  :qid |quant-u-25631|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert ($Perm.isReadVar $k@29@00))
@@ -945,7 +945,7 @@
           ($Snap.second ($Snap.second ($Snap.second s@$)))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$))) x@13@00 y@14@00 z@15@00))))
   :pattern ((Triggersh$ s@$ this$_3@12@00 x@13@00 y@14@00 z@15@00))
   :pattern ((Triggersh$%stateless this$_3@12@00 x@13@00 y@14@00 z@15@00) (Triggersvalid$%trigger ($Snap.second s@$) this$_3@12@00))
-  :qid |quant-u-25610|)))
+  :qid |quant-u-25638|)))
 (assert (forall ((s@$ $Snap) (this$_3@12@00 $Ref) (x@13@00 Int) (y@14@00 Int) (z@15@00 Int)) (!
   (=>
     (Triggersh$%precondition s@$ this$_3@12@00 x@13@00 y@14@00 z@15@00)
@@ -953,7 +953,7 @@
       $Snap.unit
       ($Snap.second ($Snap.second ($Snap.second s@$)))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$))) x@13@00 y@14@00 z@15@00))
   :pattern ((Triggersh$ s@$ this$_3@12@00 x@13@00 y@14@00 z@15@00))
-  :qid |quant-u-25611|)))
+  :qid |quant-u-25639|)))
 ; ---------- Triggers$MonitorInvariant ----------
 (declare-const this$@33@00 $Ref)
 (set-option :timeout 0)

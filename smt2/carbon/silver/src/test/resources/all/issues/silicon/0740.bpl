@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-26 20:23:41
+// Date:         2024-12-27 02:44:02
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0740.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0740-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -188,11 +188,11 @@ axiom !IsWandField(f_7);
 procedure fails(a_2: bool) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var curr: Ref;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var perm: Perm;
   var ExhaleHeap: HeapType;
   var loopHeap: HeapType;
@@ -207,8 +207,8 @@ procedure fails(a_2: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[curr, $allocated];
@@ -222,8 +222,8 @@ procedure fails(a_2: bool) returns ()
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         if (curr != null) {
           perm := FullPerm;
           if (perm != NoPerm) {
@@ -278,8 +278,8 @@ procedure fails(a_2: bool) returns ()
             if (__plugin_refute_nondet1) {
               
               // -- Translating statement: assert false -- 0740.vpr@14.9--14.21
-                ExhaleWellDef0Heap := Heap;
                 ExhaleWellDef0Mask := Mask;
+                ExhaleWellDef0Heap := Heap;
                 assert {:msg "  Assert might fail. Assertion false might not hold. (0740.vpr@14.16--14.21) [218155]"}
                   false;
                 assume state(Heap, Mask);
@@ -295,8 +295,8 @@ procedure fails(a_2: bool) returns ()
             curr := null;
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         if (curr != null) {
           perm := FullPerm;
           if (perm != NoPerm) {
@@ -326,8 +326,8 @@ procedure fails(a_2: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- 0740.vpr@19.5--19.17
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion false might not hold. (0740.vpr@19.12--19.17) [218157]"}
       false;
     assume state(Heap, Mask);

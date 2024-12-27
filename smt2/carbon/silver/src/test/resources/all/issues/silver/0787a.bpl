@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-26 20:25:42
+// Date:         2024-12-27 02:46:03
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0787a.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0787a-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -238,10 +238,10 @@ procedure main() returns ()
   modifies Heap, Mask;
 {
   var some_name_lblGuard: bool;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var Labelsome_nameMask: MaskType;
+  var oldMask: MaskType;
   var Labelsome_nameHeap: HeapType;
+  var Labelsome_nameMask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -252,8 +252,8 @@ procedure main() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: // id = 1
   // goto some_name -- 0787a.vpr@12.5--12.20
@@ -263,8 +263,8 @@ procedure main() returns ()
   // -- Translating statement: // id = 2
   // label some_name -- 0787a.vpr@13.5--13.21
     some_name:
-    Labelsome_nameMask := Mask;
     Labelsome_nameHeap := Heap;
+    Labelsome_nameMask := Mask;
     some_name_lblGuard := true;
     assume state(Heap, Mask);
 }

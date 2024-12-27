@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-26 20:27:57
+// Date:         2024-12-27 02:48:20
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/termination/functions/basic/specOrder.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/termination/functions/basic/specOrder-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -255,8 +255,8 @@ function  fun1#triggerStateless(x: int): int;
 procedure fun1#definedness(x: int) returns (Result: int)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -273,8 +273,8 @@ procedure fun1#definedness(x: int) returns (Result: int)
       if (x > -10) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           // Stop execution
           assume false;
         } else {
@@ -287,8 +287,8 @@ procedure fun1#definedness(x: int) returns (Result: int)
     Result := (if x > -10 then fun1(Heap, x - 1) else 6);
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
 }
 
 // ==================================================
@@ -333,8 +333,8 @@ function  fun2#triggerStateless(x: int): int;
 procedure fun2#definedness(x: int) returns (Result: int)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -351,8 +351,8 @@ procedure fun2#definedness(x: int) returns (Result: int)
       if (x > -10) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           // Stop execution
           assume false;
         } else {
@@ -365,8 +365,8 @@ procedure fun2#definedness(x: int) returns (Result: int)
     Result := (if x > -10 then fun2(Heap, x - 1) else 6);
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
 }
 
 // ==================================================
@@ -411,8 +411,8 @@ function  fun3#triggerStateless(x: int): int;
 procedure fun3#definedness(x: int) returns (Result: int)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -429,8 +429,8 @@ procedure fun3#definedness(x: int) returns (Result: int)
       if (x > -10) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           // Stop execution
           assume false;
         } else {
@@ -443,8 +443,8 @@ procedure fun3#definedness(x: int) returns (Result: int)
     Result := (if x > -10 then fun3(Heap, x - 1) else 6);
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
 }
 
 // ==================================================
@@ -489,8 +489,8 @@ function  fun4#triggerStateless(x: int): int;
 procedure fun4#definedness(x: int) returns (Result: int)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -507,8 +507,8 @@ procedure fun4#definedness(x: int) returns (Result: int)
       if (x > -10) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           // Stop execution
           assume false;
         } else {
@@ -521,8 +521,8 @@ procedure fun4#definedness(x: int) returns (Result: int)
     Result := (if x > -10 then fun4(Heap, x - 1) else 6);
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
 }
 
 // ==================================================
@@ -567,8 +567,8 @@ function  fun5#triggerStateless(x: int): int;
 procedure fun5#definedness(x: int) returns (Result: int)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -585,8 +585,8 @@ procedure fun5#definedness(x: int) returns (Result: int)
       if (x > -10) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           // Stop execution
           assume false;
         } else {
@@ -599,8 +599,8 @@ procedure fun5#definedness(x: int) returns (Result: int)
     Result := (if x > -10 then fun5(Heap, x - 1) else 6);
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
 }
 
 // ==================================================
@@ -645,8 +645,8 @@ function  fun6#triggerStateless(x: int): int;
 procedure fun6#definedness(x: int) returns (Result: int)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -663,8 +663,8 @@ procedure fun6#definedness(x: int) returns (Result: int)
       if (x > -10) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           // Stop execution
           assume false;
         } else {
@@ -677,8 +677,8 @@ procedure fun6#definedness(x: int) returns (Result: int)
     Result := (if x > -10 then fun6(Heap, x - 1) else 6);
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
 }
 
 // ==================================================
@@ -688,10 +688,10 @@ procedure fun6#definedness(x: int) returns (Result: int)
 procedure fun1_termination_proof(x: int) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -705,15 +705,15 @@ procedure fun1_termination_proof(x: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: if (x > -10) -- <no position>
     if (x > -10) {
       
       // -- Translating statement: assert false -- <no position>
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Assert might fail. Assertion false might not hold. (<no position>) [223803]"}
           false;
         assume state(Heap, Mask);
@@ -728,10 +728,10 @@ procedure fun1_termination_proof(x: int) returns ()
 procedure fun2_termination_proof(x: int) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -745,15 +745,15 @@ procedure fun2_termination_proof(x: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: if (x > -10) -- <no position>
     if (x > -10) {
       
       // -- Translating statement: assert false -- <no position>
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Assert might fail. Assertion false might not hold. (<no position>) [223804]"}
           false;
         assume state(Heap, Mask);
@@ -768,10 +768,10 @@ procedure fun2_termination_proof(x: int) returns ()
 procedure fun3_termination_proof(x: int) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -785,15 +785,15 @@ procedure fun3_termination_proof(x: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: if (x > -10) -- <no position>
     if (x > -10) {
       
       // -- Translating statement: assert false -- <no position>
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Assert might fail. Assertion false might not hold. (<no position>) [223805]"}
           false;
         assume state(Heap, Mask);
@@ -808,10 +808,10 @@ procedure fun3_termination_proof(x: int) returns ()
 procedure fun4_termination_proof(x: int) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -825,15 +825,15 @@ procedure fun4_termination_proof(x: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: if (x > -10) -- <no position>
     if (x > -10) {
       
       // -- Translating statement: assert !old(x > -10) || x - 1 > -10 -- <no position>
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Assert might fail. Assertion !old(x > -10) || x - 1 > -10 might not hold. (<no position>) [223806]"}
           !(x > -10) || x - 1 > -10;
         assume state(Heap, Mask);
@@ -841,8 +841,8 @@ procedure fun4_termination_proof(x: int) returns ()
       // -- Translating statement: assert old(x > -10) ==>
   //   (decreasing(x - 1 + 10, old(x + 10)): Bool) &&
   //   (bounded(old(x + 10)): Bool) -- <no position>
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         if (x > -10) {
           assert {:msg "  Assert might fail. Assertion (decreasing(x - 1 + 10, old(x + 10)): Bool) might not hold. (<no position>) [223807]"}
             (decreasing(x - 1 + 10, x + 10): bool);
@@ -861,10 +861,10 @@ procedure fun4_termination_proof(x: int) returns ()
 procedure fun5_termination_proof(x: int) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -878,15 +878,15 @@ procedure fun5_termination_proof(x: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: if (x > -10) -- <no position>
     if (x > -10) {
       
       // -- Translating statement: assert !old(x > -10) || x - 1 > -10 -- <no position>
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Assert might fail. Assertion !old(x > -10) || x - 1 > -10 might not hold. (<no position>) [223809]"}
           !(x > -10) || x - 1 > -10;
         assume state(Heap, Mask);
@@ -894,8 +894,8 @@ procedure fun5_termination_proof(x: int) returns ()
       // -- Translating statement: assert old(x > -10) ==>
   //   (decreasing(x - 1 + 10, old(x + 10)): Bool) &&
   //   (bounded(old(x + 10)): Bool) -- <no position>
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         if (x > -10) {
           assert {:msg "  Assert might fail. Assertion (decreasing(x - 1 + 10, old(x + 10)): Bool) might not hold. (<no position>) [223810]"}
             (decreasing(x - 1 + 10, x + 10): bool);
@@ -914,10 +914,10 @@ procedure fun5_termination_proof(x: int) returns ()
 procedure fun6_termination_proof(x: int) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -931,15 +931,15 @@ procedure fun6_termination_proof(x: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: if (x > -10) -- <no position>
     if (x > -10) {
       
       // -- Translating statement: assert !old(x > -10) || x - 1 > -10 -- <no position>
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Assert might fail. Assertion !old(x > -10) || x - 1 > -10 might not hold. (<no position>) [223812]"}
           !(x > -10) || x - 1 > -10;
         assume state(Heap, Mask);
@@ -947,8 +947,8 @@ procedure fun6_termination_proof(x: int) returns ()
       // -- Translating statement: assert old(x > -10) ==>
   //   (decreasing(x - 1 + 10, old(x + 10)): Bool) &&
   //   (bounded(old(x + 10)): Bool) -- <no position>
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         if (x > -10) {
           assert {:msg "  Assert might fail. Assertion (decreasing(x - 1 + 10, old(x + 10)): Bool) might not hold. (<no position>) [223813]"}
             (decreasing(x - 1 + 10, x + 10): bool);

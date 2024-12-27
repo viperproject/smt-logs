@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-26 19:25:17
+; Started: 2024-12-27 01:44:57
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -6644,7 +6644,7 @@
 (check-sat)
 ; unsat
 (pop) ; 18
-; 0.03s
+; 0.02s
 ; (get-info :all-statistics)
 (assert (=
   ($div<Int> (- 0 l$e@177@01) 10000000000 (div (- 0 l$e@177@01) 10000000000))
@@ -6725,7 +6725,7 @@
 (check-sat)
 ; unknown
 (pop) ; 21
-; 0.47s
+; 0.35s
 ; (get-info :all-statistics)
 ; [state consolidation]
 ; State saturation: before repetition
@@ -6740,7 +6740,7 @@
 (check-sat)
 ; unknown
 (pop) ; 21
-; 0.46s
+; 0.39s
 ; (get-info :all-statistics)
 ; [state consolidation]
 ; State saturation: before repetition
@@ -6755,7 +6755,7 @@
 (check-sat)
 ; unknown
 (pop) ; 21
-; 0.41s
+; 0.40s
 ; (get-info :all-statistics)
 ; [state consolidation]
 ; State saturation: before repetition
@@ -6770,7 +6770,7 @@
 (check-sat)
 ; unknown
 (pop) ; 21
-; 0.38s
+; 0.40s
 ; (get-info :all-statistics)
 (pop) ; 20
 (pop) ; 19
@@ -11769,7 +11769,7 @@
 (check-sat)
 ; unsat
 (pop) ; 5
-; 0.42s
+; 0.62s
 ; (get-info :all-statistics)
 (assert (=
   (not

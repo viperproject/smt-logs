@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-26 19:31:32
+; Started: 2024-12-27 01:51:19
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -1211,21 +1211,21 @@
     (idx_abs%limited s@$ M@0@00 N@1@00 i@2@00 j@3@00)
     (idx_abs s@$ M@0@00 N@1@00 i@2@00 j@3@00))
   :pattern ((idx_abs s@$ M@0@00 N@1@00 i@2@00 j@3@00))
-  :qid |quant-u-8767|)))
+  :qid |quant-u-8832|)))
 (assert (forall ((s@$ $Snap) (M@0@00 Int) (N@1@00 Int) (i@2@00 Int) (j@3@00 Int)) (!
   (idx_abs%stateless M@0@00 N@1@00 i@2@00 j@3@00)
   :pattern ((idx_abs%limited s@$ M@0@00 N@1@00 i@2@00 j@3@00))
-  :qid |quant-u-8768|)))
+  :qid |quant-u-8833|)))
 (assert (forall ((s@$ $Snap) (M@0@00 Int) (N@1@00 Int) (i@2@00 Int) (j@3@00 Int)) (!
   (let ((result@4@00 (idx_abs%limited s@$ M@0@00 N@1@00 i@2@00 j@3@00))) (=>
     (idx_abs%precondition s@$ M@0@00 N@1@00 i@2@00 j@3@00)
     (and (<= 0 result@4@00) (< result@4@00 (* N@1@00 M@0@00)))))
   :pattern ((idx_abs%limited s@$ M@0@00 N@1@00 i@2@00 j@3@00))
-  :qid |quant-u-8771|)))
+  :qid |quant-u-8836|)))
 (assert (forall ((s@$ $Snap) (M@0@00 Int) (N@1@00 Int) (i@2@00 Int) (j@3@00 Int)) (!
   (let ((result@4@00 (idx_abs%limited s@$ M@0@00 N@1@00 i@2@00 j@3@00))) true)
   :pattern ((idx_abs%limited s@$ M@0@00 N@1@00 i@2@00 j@3@00))
-  :qid |quant-u-8772|)))
+  :qid |quant-u-8837|)))
 ; ---------- FUNCTION idx----------
 (declare-fun M@5@00 () Int)
 (declare-fun N@6@00 () Int)
@@ -1240,11 +1240,11 @@
     (idx%limited s@$ M@5@00 N@6@00 i@7@00 j@8@00)
     (idx s@$ M@5@00 N@6@00 i@7@00 j@8@00))
   :pattern ((idx s@$ M@5@00 N@6@00 i@7@00 j@8@00))
-  :qid |quant-u-8769|)))
+  :qid |quant-u-8834|)))
 (assert (forall ((s@$ $Snap) (M@5@00 Int) (N@6@00 Int) (i@7@00 Int) (j@8@00 Int)) (!
   (idx%stateless M@5@00 N@6@00 i@7@00 j@8@00)
   :pattern ((idx%limited s@$ M@5@00 N@6@00 i@7@00 j@8@00))
-  :qid |quant-u-8770|)))
+  :qid |quant-u-8835|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -1258,8 +1258,8 @@
     (idx%precondition s@$ M@5@00 N@6@00 i@7@00 j@8@00)
     (= (idx s@$ M@5@00 N@6@00 i@7@00 j@8@00) 0))
   :pattern ((idx s@$ M@5@00 N@6@00 i@7@00 j@8@00))
-  :qid |quant-u-8773|)))
+  :qid |quant-u-8838|)))
 (assert (forall ((s@$ $Snap) (M@5@00 Int) (N@6@00 Int) (i@7@00 Int) (j@8@00 Int)) (!
   true
   :pattern ((idx s@$ M@5@00 N@6@00 i@7@00 j@8@00))
-  :qid |quant-u-8774|)))
+  :qid |quant-u-8839|)))

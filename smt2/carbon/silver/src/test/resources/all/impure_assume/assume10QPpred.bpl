@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-26 20:10:07
+// Date:         2024-12-27 02:30:20
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/impure_assume/assume10QPpred.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/impure_assume/assume10QPpred-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -704,16 +704,16 @@ axiom (forall Heap: HeapType, x: Ref, y: Ref, z: Ref ::
 procedure m(xs1: (Set Ref), xs2: (Set Ref), xs3: (Set Ref), xs4: (Set Ref), xs5: (Set Ref), xs6: (Set Ref), xs7: (Set Ref), xs8: (Set Ref), xs9: (Set Ref), xs10: (Set Ref), xs11: (Set Ref), ys1: (Set Ref), ys2: (Set Ref), ys3: (Set Ref), ys4: (Set Ref), ys5: (Set Ref), ys6: (Set Ref), ys7: (Set Ref), ys8: (Set Ref), ys9: (Set Ref), ys10: (Set Ref), ys11: (Set Ref), zs1: (Set Ref), zs2: (Set Ref), zs3: (Set Ref), zs4: (Set Ref), zs5: (Set Ref), zs6: (Set Ref), zs7: (Set Ref), zs8: (Set Ref), zs9: (Set Ref), zs10: (Set Ref), zs11: (Set Ref), xs: (Set Ref), ys: (Set Ref), zs: (Set Ref), q_1: Perm) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var a_2: Ref;
   var b_24: Ref;
   var c: Ref;
   var QPMask: MaskType;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var perm: Perm;
   
   // -- Initializing the state
@@ -724,8 +724,8 @@ procedure m(xs1: (Set Ref), xs2: (Set Ref), xs3: (Set Ref), xs4: (Set Ref), xs5:
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[a_2, $allocated];
@@ -1515,8 +1515,8 @@ procedure m(xs1: (Set Ref), xs2: (Set Ref), xs3: (Set Ref), xs4: (Set Ref), xs5:
   // -- Translating statement: assert acc(p(a, b, c), q) -- assume10QPpred.vpr@40.3--40.26
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Heap := AssertHeap;
     ExhaleWellDef0Mask := AssertMask;
+    ExhaleWellDef0Heap := AssertHeap;
     perm := q_1;
     assert {:msg "  Assert might fail. Fraction q might be negative. (assume10QPpred.vpr@40.10--40.26) [149711]"}
       perm >= NoPerm;
@@ -1528,8 +1528,8 @@ procedure m(xs1: (Set Ref), xs2: (Set Ref), xs3: (Set Ref), xs4: (Set Ref), xs5:
     assume state(Heap, Mask);
   
   // -- Translating statement: assert q > none ==> false -- assume10QPpred.vpr@43.3--43.28
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     if (NoPerm < q_1) {
       assert {:msg "  Assert might fail. Assertion false might not hold. (assume10QPpred.vpr@43.10--43.28) [149713]"}
         false;

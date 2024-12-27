@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-26 19:40:10
+; Started: 2024-12-27 02:00:10
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -131,11 +131,11 @@
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref) (i@1@00 Int)) (!
   (= (contains%limited s@$ this@0@00 i@1@00) (contains s@$ this@0@00 i@1@00))
   :pattern ((contains s@$ this@0@00 i@1@00))
-  :qid |quant-u-24209|)))
+  :qid |quant-u-24237|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref) (i@1@00 Int)) (!
   (contains%stateless this@0@00 i@1@00)
   :pattern ((contains%limited s@$ this@0@00 i@1@00))
-  :qid |quant-u-24210|)))
+  :qid |quant-u-24238|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert ($Perm.isReadVar $k@3@00))
@@ -714,7 +714,7 @@
               ($Snap.combine $Snap.unit ($Snap.second s@$))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$))) i@1@00))))))
   :pattern ((contains s@$ this@0@00 i@1@00))
   :pattern ((contains%stateless this@0@00 i@1@00) (valid%trigger ($Snap.second s@$) this@0@00))
-  :qid |quant-u-24211|)))
+  :qid |quant-u-24239|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref) (i@1@00 Int)) (!
   (=>
     (and
@@ -736,7 +736,7 @@
       ($Snap.combine $Snap.unit ($Snap.second ($Snap.second ($Snap.second s@$))))
       ($Snap.combine $Snap.unit ($Snap.second s@$))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$))) i@1@00))
   :pattern ((contains s@$ this@0@00 i@1@00))
-  :qid |quant-u-24212|)))
+  :qid |quant-u-24240|)))
 ; ---------- valid ----------
 (declare-const this@9@00 $Ref)
 (set-option :timeout 0)

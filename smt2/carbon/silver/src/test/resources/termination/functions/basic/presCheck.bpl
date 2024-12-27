@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-26 20:27:55
+// Date:         2024-12-27 02:48:18
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/termination/functions/basic/presCheck.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/termination/functions/basic/presCheck-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -256,8 +256,8 @@ function  f#triggerStateless(x: int): int;
 procedure f#definedness(x: int) returns (Result: int)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -280,8 +280,8 @@ procedure f#definedness(x: int) returns (Result: int)
     Result := f_6(Heap, x);
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of f might not hold. Assertion result == x might not hold. (presCheck.vpr@8.13--8.24) [223741]"}
       Result == x;
 }
@@ -331,8 +331,8 @@ function  f1#triggerStateless(x: int): int;
 procedure f1#definedness(x: int) returns (Result: int)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -355,8 +355,8 @@ procedure f1#definedness(x: int) returns (Result: int)
     Result := f1_3(Heap, x);
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of f1 might not hold. Assertion result == x might not hold. (presCheck.vpr@15.13--15.24) [223742]"}
       Result == x;
 }
@@ -410,10 +410,10 @@ function  h#triggerStateless(x: int): int;
 procedure h#definedness(x: int) returns (Result: int)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
-  var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -448,8 +448,8 @@ procedure h#definedness(x: int) returns (Result: int)
       } else {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           assert {:msg "  Precondition of function h might not hold. Assertion f(x - 1) == 0 might not hold. (presCheck.vpr@27.22--27.28) [223743]"}
             f_6(Heap, x - 1) == 0;
           assert {:msg "  Precondition of function h might not hold. Assertion f1(x - 1) == 0 might not hold. (presCheck.vpr@27.22--27.28) [223744]"}
@@ -466,8 +466,8 @@ procedure h#definedness(x: int) returns (Result: int)
     Result := (if x == 0 then 0 else 1 + h_3(Heap, x - 1));
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of h might not hold. Assertion result == x might not hold. (presCheck.vpr@24.13--24.24) [223745]"}
       Result == x;
     if (Result > 0) {
@@ -475,8 +475,8 @@ procedure h#definedness(x: int) returns (Result: int)
       // -- Check definedness of result == h(result - 1) + 1
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef1Heap := ExhaleWellDef0Heap;
           ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+          ExhaleWellDef1Heap := ExhaleWellDef0Heap;
           assert {:msg "  Precondition of function h might not hold. Assertion f(result - 1) == 0 might not hold. (presCheck.vpr@25.38--25.49) [223746]"}
             f_6(ExhaleWellDef0Heap, Result - 1) == 0;
           assert {:msg "  Precondition of function h might not hold. Assertion f1(result - 1) == 0 might not hold. (presCheck.vpr@25.38--25.49) [223747]"}
@@ -531,8 +531,8 @@ function  h_e#triggerStateless(x: int): int;
 procedure h_e#definedness(x: int) returns (Result: int)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -558,8 +558,8 @@ procedure h_e#definedness(x: int) returns (Result: int)
       } else {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           assert {:msg "  Precondition of function h_e might not hold. Assertion f1(x - 1) == x - 1 might not hold. (presCheck.vpr@35.22--35.30) [223749]"}
             f1_3(Heap, x - 1) == x - 1;
           // Stop execution
@@ -581,10 +581,10 @@ procedure h_e#definedness(x: int) returns (Result: int)
 procedure h_termination_proof(x: int) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -615,16 +615,16 @@ procedure h_termination_proof(x: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: if (x == 0) -- <no position>
     if (x == 0) {
     } else {
       
       // -- Translating statement: assert (decreasing(x - 1, old(x)): Bool) && (bounded(old(x)): Bool) -- <no position>
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Assert might fail. Assertion (decreasing(x - 1, old(x)): Bool) might not hold. (<no position>) [223750]"}
           (decreasing(x - 1, x): bool);
         assert {:msg "  Assert might fail. Assertion (bounded(old(x)): Bool) might not hold. (<no position>) [223751]"}
@@ -641,11 +641,11 @@ procedure h_termination_proof(x: int) returns ()
 procedure h_posts_termination_proof(x: int) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var $result: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -676,8 +676,8 @@ procedure h_posts_termination_proof(x: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: if ($result == x) -- <no position>
     if ($result == x) {
@@ -686,8 +686,8 @@ procedure h_posts_termination_proof(x: int) returns ()
         if ($result > 0) {
           
           // -- Translating statement: assert (decreasing($result - 1, old(x)): Bool) && (bounded(old(x)): Bool) -- <no position>
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             assert {:msg "  Assert might fail. Assertion (decreasing($result - 1, old(x)): Bool) might not hold. (<no position>) [223752]"}
               (decreasing($result - 1, x): bool);
             assert {:msg "  Assert might fail. Assertion (bounded(old(x)): Bool) might not hold. (<no position>) [223753]"}
@@ -706,11 +706,11 @@ procedure h_posts_termination_proof(x: int) returns ()
 procedure h_pres_termination_proof(x: int) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var b_24: bool;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -721,8 +721,8 @@ procedure h_pres_termination_proof(x: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: if (b) -- presCheck.vpr@22.14--22.23
     if (b_24) {
@@ -748,8 +748,8 @@ procedure h_pres_termination_proof(x: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert x >= 0 -- <no position>
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion x >= 0 might not hold. (presCheck.vpr@14.20--14.26) [223754]"}
       x >= 0;
     assume state(Heap, Mask);
@@ -762,10 +762,10 @@ procedure h_pres_termination_proof(x: int) returns ()
 procedure h_e_termination_proof(x: int) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -787,16 +787,16 @@ procedure h_e_termination_proof(x: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: if (x <= 0) -- <no position>
     if (x <= 0) {
     } else {
       
       // -- Translating statement: assert (decreasing(x - 1, old(x)): Bool) && (bounded(old(x)): Bool) -- <no position>
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Assert might fail. Assertion (decreasing(x - 1, old(x)): Bool) might not hold. (<no position>) [223755]"}
           (decreasing(x - 1, x): bool);
         assert {:msg "  Assert might fail. Assertion (bounded(old(x)): Bool) might not hold. (<no position>) [223756]"}
@@ -813,10 +813,10 @@ procedure h_e_termination_proof(x: int) returns ()
 procedure h_e_pres_termination_proof(x: int) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -827,12 +827,12 @@ procedure h_e_pres_termination_proof(x: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert x >= 0 -- <no position>
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion x >= 0 might not hold. (presCheck.vpr@14.20--14.26) [223757]"}
       x >= 0;
     assume state(Heap, Mask);

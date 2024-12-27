@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-26 20:08:13
+// Date:         2024-12-27 02:28:25
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/invariants/loops2.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/invariants/loops2-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -241,26 +241,26 @@ procedure main() returns ()
   var skiploop2_lblGuard: bool;
   var loop2_lblGuard: bool;
   var loop1_lblGuard: bool;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var i: int;
   var j_9: bool;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
-  var Labelloop1Mask: MaskType;
+  var ExhaleWellDef0Mask: MaskType;
   var Labelloop1Heap: HeapType;
+  var Labelloop1Mask: MaskType;
   var frameMask6: MaskType;
   var frameHeap6: HeapType;
-  var Labelloop2Mask: MaskType;
   var Labelloop2Heap: HeapType;
+  var Labelloop2Mask: MaskType;
   var frameMask10: MaskType;
   var frameHeap10: HeapType;
   var LoopSumHeap: HeapType;
   var LoopSumMask: MaskType;
-  var Labelskiploop2Mask: MaskType;
   var Labelskiploop2Heap: HeapType;
-  var Labelskiploop1Mask: MaskType;
+  var Labelskiploop2Mask: MaskType;
   var Labelskiploop1Heap: HeapType;
+  var Labelskiploop1Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -274,8 +274,8 @@ procedure main() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: // id = 1
   // i := 1 -- loops2.vpr@6.6--6.20
@@ -289,8 +289,8 @@ procedure main() returns ()
   
   // -- Translating statement: // id = 3
   // assert i <= 5 -- loops2.vpr@9.6--9.19
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion i <= 5 might not hold. (loops2.vpr@9.13--9.19) [140831]"}
       i <= 5;
     assume state(Heap, Mask);
@@ -317,15 +317,15 @@ procedure main() returns ()
   // label loop1
   //   invariant i < 5 -- loops2.vpr@14.6--15.22
     loop1:
-    Labelloop1Mask := Mask;
     Labelloop1Heap := Heap;
+    Labelloop1Mask := Mask;
     loop1_lblGuard := true;
     
     // -- Before loop head6
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Loop invariant i < 5 might not hold on entry. Assertion i < 5 might not hold. (loops2.vpr@15.17--15.22) [140832]"}
           i < 5;
       
@@ -336,7 +336,7 @@ procedure main() returns ()
     // -- Code for loop head 6
       
       // -- Havoc loop written variables (except locals)
-        havoc i, j_9;
+        havoc j_9, i;
       
       // -- Check definedness of invariant
         if (*) {
@@ -356,8 +356,8 @@ procedure main() returns ()
   
   // -- Translating statement: // id = 7
   // assert i <= 5 -- loops2.vpr@16.10--16.23
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion i <= 5 might not hold. (loops2.vpr@16.17--16.23) [140833]"}
       i <= 5;
     assume state(Heap, Mask);
@@ -383,8 +383,8 @@ procedure main() returns ()
   // // LoopInfo(Some(10),Set(6, 10))
   // label loop2 -- loops2.vpr@21.10--21.21
     loop2:
-    Labelloop2Mask := Mask;
     Labelloop2Heap := Heap;
+    Labelloop2Mask := Mask;
     loop2_lblGuard := true;
     
     // -- Before loop head10
@@ -419,8 +419,8 @@ procedure main() returns ()
   // -- Translating statement: // id = 12
   // // LoopInfo(None,Set(6, 10))
   // assert i <= 5 -- loops2.vpr@23.14--23.27
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion i <= 5 might not hold. (loops2.vpr@23.21--23.27) [140834]"}
       i <= 5;
     assume state(Heap, Mask);
@@ -462,8 +462,8 @@ procedure main() returns ()
   // -- Translating statement: // id = 15
   // label skiploop2 -- loops2.vpr@27.10--27.25
     skiploop2:
-    Labelskiploop2Mask := Mask;
     Labelskiploop2Heap := Heap;
+    Labelskiploop2Mask := Mask;
     skiploop2_lblGuard := true;
     assume state(Heap, Mask);
   
@@ -475,8 +475,8 @@ procedure main() returns ()
   // -- Translating statement: // id = 17
   // // LoopInfo(None,Set(6))
   // assert i <= 5 -- loops2.vpr@29.10--29.23
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion i <= 5 might not hold. (loops2.vpr@29.17--29.23) [140835]"}
       i <= 5;
     assume state(Heap, Mask);
@@ -496,8 +496,8 @@ procedure main() returns ()
               assume false;
             }
           // Exhale invariant
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           assert {:msg "  Loop invariant i < 5 might not be preserved. Assertion i < 5 might not hold. (loops2.vpr@15.17--15.22) [140836]"}
             i < 5;
           // Terminate execution
@@ -525,15 +525,15 @@ procedure main() returns ()
   // -- Translating statement: // id = 20
   // label skiploop1 -- loops2.vpr@33.6--33.21
     skiploop1:
-    Labelskiploop1Mask := Mask;
     Labelskiploop1Heap := Heap;
+    Labelskiploop1Mask := Mask;
     skiploop1_lblGuard := true;
     assume state(Heap, Mask);
   
   // -- Translating statement: // id = 21
   // assert i == 5 -- loops2.vpr@35.6--35.20
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion i == 5 might not hold. (loops2.vpr@35.13--35.19) [140837]"}
       i == 5;
     assume state(Heap, Mask);

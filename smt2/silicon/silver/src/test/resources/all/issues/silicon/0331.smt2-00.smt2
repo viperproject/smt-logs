@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-26 19:41:23
+; Started: 2024-12-27 02:01:24
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -491,11 +491,11 @@
 (assert (forall ((s@$ $Snap) (r@0@00 $Ref)) (!
   (= (integer%limited s@$ r@0@00) (integer s@$ r@0@00))
   :pattern ((integer s@$ r@0@00))
-  :qid |quant-u-25735|)))
+  :qid |quant-u-25763|)))
 (assert (forall ((s@$ $Snap) (r@0@00 $Ref)) (!
   (integer%stateless r@0@00)
   :pattern ((integer%limited s@$ r@0@00))
-  :qid |quant-u-25736|)))
+  :qid |quant-u-25764|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -623,7 +623,7 @@
           (integer%limited ($Snap.second s@$) ($SortWrappers.$SnapTo$Ref ($Snap.first s@$)))))))
   :pattern ((integer s@$ r@0@00))
   :pattern ((integer%stateless r@0@00) (Peano%trigger s@$ r@0@00))
-  :qid |quant-u-25739|)))
+  :qid |quant-u-25767|)))
 (assert (forall ((s@$ $Snap) (r@0@00 $Ref)) (!
   (=>
     (integer%precondition s@$ r@0@00)
@@ -632,7 +632,7 @@
       true
       (integer%precondition ($Snap.second s@$) ($SortWrappers.$SnapTo$Ref ($Snap.first s@$)))))
   :pattern ((integer s@$ r@0@00))
-  :qid |quant-u-25740|)))
+  :qid |quant-u-25768|)))
 ; ---------- FUNCTION integer2----------
 (declare-fun r@2@00 () $Ref)
 (declare-fun k@3@00 () Int)
@@ -643,11 +643,11 @@
 (assert (forall ((s@$ $Snap) (r@2@00 $Ref) (k@3@00 Int)) (!
   (= (integer2%limited s@$ r@2@00 k@3@00) (integer2 s@$ r@2@00 k@3@00))
   :pattern ((integer2 s@$ r@2@00 k@3@00))
-  :qid |quant-u-25737|)))
+  :qid |quant-u-25765|)))
 (assert (forall ((s@$ $Snap) (r@2@00 $Ref) (k@3@00 Int)) (!
   (integer2%stateless r@2@00 k@3@00)
   :pattern ((integer2%limited s@$ r@2@00 k@3@00))
-  :qid |quant-u-25738|)))
+  :qid |quant-u-25766|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -669,13 +669,13 @@
     (integer2%precondition s@$ r@2@00 k@3@00)
     (= (integer2 s@$ r@2@00 k@3@00) (+ (integer s@$ r@2@00) k@3@00)))
   :pattern ((integer2 s@$ r@2@00 k@3@00))
-  :qid |quant-u-25741|)))
+  :qid |quant-u-25769|)))
 (assert (forall ((s@$ $Snap) (r@2@00 $Ref) (k@3@00 Int)) (!
   (=>
     (integer2%precondition s@$ r@2@00 k@3@00)
     (integer%precondition s@$ r@2@00))
   :pattern ((integer2 s@$ r@2@00 k@3@00))
-  :qid |quant-u-25742|)))
+  :qid |quant-u-25770|)))
 ; ---------- Peano ----------
 (declare-const r@6@00 $Ref)
 (push) ; 1

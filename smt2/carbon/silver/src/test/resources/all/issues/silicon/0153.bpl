@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-26 20:20:30
+// Date:         2024-12-27 02:40:50
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0153.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0153-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -258,12 +258,12 @@ procedure posterr01(this: Ref, other: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -295,8 +295,8 @@ procedure posterr01(this: Ref, other: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -321,8 +321,8 @@ procedure posterr01(this: Ref, other: Ref) returns ()
     // -- Check definedness of fun(this)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
+        ExhaleWellDef0Mask := PostMask;
         perm := 1 / 2;
         assert {:msg "  Precondition of function fun might not hold. Fraction 1 / 2 might be negative. (0153.vpr@20.12--20.21) [204931]"}
           perm >= NoPerm;
@@ -344,8 +344,8 @@ procedure posterr01(this: Ref, other: Ref) returns ()
   }
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := 1 / 2;
     assert {:msg "  Postcondition of posterr01 might not hold. Fraction 1 / 2 might be negative. (0153.vpr@16.12--16.28) [204934]"}
       perm >= NoPerm;
@@ -378,12 +378,12 @@ procedure posterr02(this: Ref, other: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -411,8 +411,8 @@ procedure posterr02(this: Ref, other: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -433,8 +433,8 @@ procedure posterr02(this: Ref, other: Ref) returns ()
     // -- Check definedness of fun(this)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
+        ExhaleWellDef0Mask := PostMask;
         perm := 1 / 2;
         assert {:msg "  Precondition of function fun might not hold. Fraction 1 / 2 might be negative. (0153.vpr@30.12--30.21) [204939]"}
           perm >= NoPerm;
@@ -456,8 +456,8 @@ procedure posterr02(this: Ref, other: Ref) returns ()
   }
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of posterr02 might not hold. There might be insufficient permission to access this.f (0153.vpr@26.12--26.23) [204942]"}

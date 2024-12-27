@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-26 19:55:20
+// Date:         2024-12-27 02:15:29
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedcombinations/perm.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedcombinations/perm-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -265,10 +265,10 @@ procedure P#definedness(x: Ref) returns ()
 procedure test01(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var QPMask: MaskType;
   var ExhaleHeap: HeapType;
   var perm: Perm;
@@ -284,12 +284,12 @@ procedure test01(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: exhale (forall y: Ref ::false ==> acc(y.f, write)) -- perm.vpr@11.3--11.45
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall y: Ref ::false ==> acc(y.f, write))
       if (*) {
@@ -336,15 +336,15 @@ procedure test01(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert perm(x.f) == write -- perm.vpr@14.3--14.28
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion perm(x.f) == write might not hold. (perm.vpr@14.10--14.28) [104660]"}
       Mask[x, f_7] == FullPerm;
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(x.f, write) && perm(x.f) == none -- perm.vpr@15.3--15.39
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (perm.vpr@15.10--15.39) [104662]"}
@@ -367,10 +367,10 @@ procedure test01(x: Ref) returns ()
 procedure test02(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var QPMask: MaskType;
   var ExhaleHeap: HeapType;
   var perm: Perm;
@@ -388,12 +388,12 @@ procedure test02(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: exhale (forall y: Ref ::false ==> acc(P(y), write)) -- perm.vpr@19.3--19.41
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall y: Ref ::false ==> acc(P(y), write))
       if (*) {
@@ -441,8 +441,8 @@ procedure test02(x: Ref) returns ()
   // -- Translating statement: unfold acc(P(x), write) -- perm.vpr@22.3--22.14
     assume P#trigger(Heap, P(x));
     assume Heap[null, P(x)] == FrameFragment(Heap[x, f_7]);
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding P(x) might fail. There might be insufficient permission to access P(x) (perm.vpr@22.3--22.14) [104670]"}
@@ -464,22 +464,22 @@ procedure test02(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert perm(x.f) == write -- perm.vpr@24.3--24.28
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion perm(x.f) == write might not hold. (perm.vpr@24.10--24.28) [104672]"}
       Mask[x, f_7] == FullPerm;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert perm(P(x)) == none -- perm.vpr@25.3--25.28
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion perm(P(x)) == none might not hold. (perm.vpr@25.10--25.28) [104673]"}
       Mask[null, P(x)] == NoPerm;
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(P(x), write) -- perm.vpr@27.3--27.12
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding P(x) might fail. There might be insufficient permission to access x.f (perm.vpr@27.3--27.12) [104676]"}
@@ -504,15 +504,15 @@ procedure test02(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert perm(x.f) == none -- perm.vpr@29.3--29.27
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion perm(x.f) == none might not hold. (perm.vpr@29.10--29.27) [104679]"}
       Mask[x, f_7] == NoPerm;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert perm(P(x)) == write -- perm.vpr@30.3--30.29
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion perm(P(x)) == write might not hold. (perm.vpr@30.10--30.29) [104680]"}
       Mask[null, P(x)] == FullPerm;
     assume state(Heap, Mask);

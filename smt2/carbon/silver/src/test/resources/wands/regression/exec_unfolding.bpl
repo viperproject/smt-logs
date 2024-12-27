@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-26 20:01:08
+// Date:         2024-12-27 02:21:19
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/exec_unfolding.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/exec_unfolding-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -313,8 +313,8 @@ procedure P#definedness(x: Ref) returns ()
 procedure t01(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var Ops_1Heap: HeapType;
   var Ops_1Mask: MaskType;
   var b_1_1: bool;
@@ -322,11 +322,11 @@ procedure t01(x: Ref) returns ()
   var UsedMask: MaskType;
   var b_2: bool;
   var perm: Perm;
-  var Labellhs1Heap: HeapType;
   var Labellhs1Mask: MaskType;
+  var Labellhs1Heap: HeapType;
   var boolCur: bool;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var Used_1Heap: HeapType;
   var Used_1Mask: MaskType;
   var b_2_1: bool;
@@ -377,8 +377,8 @@ procedure t01(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: package acc(x.f, 1 / 4) && acc(P(x.f), write) --*
   // acc(x.f, 1 / 4) && acc(x.f.f, 1 / 4) {
@@ -419,15 +419,15 @@ procedure t01(x: Ref) returns ()
     
     // -- Translating statement: label lhs1 -- exec_unfolding.vpr@11.11--11.71
       lhs1:
-      Labellhs1Heap := Ops_1Heap;
       Labellhs1Mask := Ops_1Mask;
+      Labellhs1Heap := Ops_1Heap;
       b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);
     boolCur := true;
     if (b_1_1) {
       
       // -- Translating statement: fold acc(P(x), write) -- exec_unfolding.vpr@12.7--12.16
-        ExhaleWellDef0Heap := Ops_1Heap;
         ExhaleWellDef0Mask := Ops_1Mask;
+        ExhaleWellDef0Heap := Ops_1Heap;
         havoc Used_1Heap;
         Used_1Mask := ZeroMask;
         b_2_1 := b_2_1 && state(Used_1Heap, Used_1Mask);
@@ -512,8 +512,8 @@ procedure t01(x: Ref) returns ()
       // -- Translating statement: unfold acc(P(x), write) -- exec_unfolding.vpr@13.7--13.18
         assume P#trigger(Ops_1Heap, P(x));
         assume Ops_1Heap[null, P(x)] == FrameFragment(Ops_1Heap[x, f_7]);
-        ExhaleWellDef0Heap := Ops_1Heap;
         ExhaleWellDef0Mask := Ops_1Mask;
+        ExhaleWellDef0Heap := Ops_1Heap;
         havoc Used_2Heap;
         Used_2Mask := ZeroMask;
         b_4 := b_4 && state(Used_2Heap, Used_2Mask);
@@ -604,8 +604,8 @@ procedure t01(x: Ref) returns ()
         }
         assume P#trigger(Ops_1Heap, P(Ops_1Heap[x, f_7]));
         assume Ops_1Heap[null, P(Ops_1Heap[x, f_7])] == FrameFragment(Ops_1Heap[Ops_1Heap[x, f_7], f_7]);
-        ExhaleWellDef0Heap := Ops_1Heap;
         ExhaleWellDef0Mask := Ops_1Mask;
+        ExhaleWellDef0Heap := Ops_1Heap;
         havoc Used_3Heap;
         Used_3Mask := ZeroMask;
         b_6 := b_6 && state(Used_3Heap, Used_3Mask);
@@ -831,8 +831,8 @@ procedure t01(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- exec_unfolding.vpr@18.3--18.15
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion false might not hold. (exec_unfolding.vpr@18.10--18.15) [127057]"}
       false;
     assume state(Heap, Mask);
@@ -845,8 +845,8 @@ procedure t01(x: Ref) returns ()
 procedure t02(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var Ops_3Heap: HeapType;
   var Ops_3Mask: MaskType;
   var b_12: bool;
@@ -854,11 +854,11 @@ procedure t02(x: Ref) returns ()
   var Used_5Mask: MaskType;
   var b_11: bool;
   var perm: Perm;
-  var Labellhs3Heap: HeapType;
   var Labellhs3Mask: MaskType;
+  var Labellhs3Heap: HeapType;
   var boolCur_1: bool;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var Used_6Heap: HeapType;
   var Used_6Mask: MaskType;
   var b_13: bool;
@@ -899,8 +899,8 @@ procedure t02(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: package acc(x.f, 1 / 4) --* acc(x.f, 1 / 4) {
   //   fold acc(P(x), write)
@@ -925,15 +925,15 @@ procedure t02(x: Ref) returns ()
     
     // -- Translating statement: label lhs3 -- exec_unfolding.vpr@22.11--22.42
       lhs3:
-      Labellhs3Heap := Ops_3Heap;
       Labellhs3Mask := Ops_3Mask;
+      Labellhs3Heap := Ops_3Heap;
       b_12 := b_12 && state(Ops_3Heap, Ops_3Mask);
     boolCur_1 := true;
     if (b_12) {
       
       // -- Translating statement: fold acc(P(x), write) -- exec_unfolding.vpr@23.7--23.16
-        ExhaleWellDef0Heap := Ops_3Heap;
         ExhaleWellDef0Mask := Ops_3Mask;
+        ExhaleWellDef0Heap := Ops_3Heap;
         havoc Used_6Heap;
         Used_6Mask := ZeroMask;
         b_13 := b_13 && state(Used_6Heap, Used_6Mask);
@@ -1018,8 +1018,8 @@ procedure t02(x: Ref) returns ()
       // -- Translating statement: unfold acc(P(x), write) -- exec_unfolding.vpr@24.7--24.18
         assume P#trigger(Ops_3Heap, P(x));
         assume Ops_3Heap[null, P(x)] == FrameFragment(Ops_3Heap[x, f_7]);
-        ExhaleWellDef0Heap := Ops_3Heap;
         ExhaleWellDef0Mask := Ops_3Mask;
+        ExhaleWellDef0Heap := Ops_3Heap;
         havoc Used_7Heap;
         Used_7Mask := ZeroMask;
         b_15 := b_15 && state(Used_7Heap, Used_7Mask);
@@ -1167,8 +1167,8 @@ procedure t02(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- exec_unfolding.vpr@28.3--28.15
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion false might not hold. (exec_unfolding.vpr@28.10--28.15) [127069]"}
       false;
     assume state(Heap, Mask);

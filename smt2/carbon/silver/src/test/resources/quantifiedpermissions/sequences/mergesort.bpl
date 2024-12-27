@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-26 19:50:13
+// Date:         2024-12-27 02:10:19
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/sequences/mergesort.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/sequences/mergesort-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -678,8 +678,8 @@ procedure parallel_mergesort(a_2: Ref, b_24: Ref, start: int, end: int) returns 
   var i_4: int;
   var j_6: int;
   var i_6: int;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var i_7: int;
@@ -691,8 +691,8 @@ procedure parallel_mergesort(a_2: Ref, b_24: Ref, start: int, end: int) returns 
   var middle: int;
   var t1A: (Seq Ref);
   var t1B: (Seq Ref);
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var i_11: int;
   var i_12: int;
@@ -899,8 +899,8 @@ procedure parallel_mergesort(a_2: Ref, b_24: Ref, start: int, end: int) returns 
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1120,8 +1120,8 @@ procedure parallel_mergesort(a_2: Ref, b_24: Ref, start: int, end: int) returns 
         assume state(Heap, Mask);
       
       // -- Translating statement: exhale acc(a.array, wildcard) -- mergesort.vpr@41.3--41.32
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Exhale might fail. There might be insufficient permission to access a.array (mergesort.vpr@41.10--41.32) [64298]"}
           Mask[a_2, array] > NoPerm;
         havoc wildcard;
@@ -1134,8 +1134,8 @@ procedure parallel_mergesort(a_2: Ref, b_24: Ref, start: int, end: int) returns 
         assume state(Heap, Mask);
       
       // -- Translating statement: exhale acc(b.array, wildcard) -- mergesort.vpr@42.9--42.38
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Exhale might fail. There might be insufficient permission to access b.array (mergesort.vpr@42.16--42.38) [64299]"}
           Mask[b_24, array] > NoPerm;
         havoc wildcard;
@@ -1148,8 +1148,8 @@ procedure parallel_mergesort(a_2: Ref, b_24: Ref, start: int, end: int) returns 
         assume state(Heap, Mask);
       
       // -- Translating statement: exhale start >= 0 && (middle <= |a.array| && |a.array| == |b.array|) -- mergesort.vpr@43.9--43.75
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Exhale might fail. Assertion start >= 0 might not hold. (mergesort.vpr@43.16--43.75) [64300]"}
           start >= 0;
         
@@ -1172,8 +1172,8 @@ procedure parallel_mergesort(a_2: Ref, b_24: Ref, start: int, end: int) returns 
   //     { (i in [start..middle)) }
   //     { a.array[i] }
   //     (i in [start..middle)) ==> acc(a.array[i].value, write)) -- mergesort.vpr@44.9--44.85
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         
         // -- Check definedness of (forall i: Int :: { (i in [start..middle)) } { a.array[i] } (i in [start..middle)) ==> acc(a.array[i].value, write))
           if (*) {
@@ -1238,8 +1238,8 @@ procedure parallel_mergesort(a_2: Ref, b_24: Ref, start: int, end: int) returns 
   //     { (i in [start..middle)) }
   //     { b.array[i] }
   //     (i in [start..middle)) ==> acc(b.array[i].value, write)) -- mergesort.vpr@45.9--45.85
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         
         // -- Check definedness of (forall i: Int :: { (i in [start..middle)) } { b.array[i] } (i in [start..middle)) ==> acc(b.array[i].value, write))
           if (*) {
@@ -1317,8 +1317,8 @@ procedure parallel_mergesort(a_2: Ref, b_24: Ref, start: int, end: int) returns 
         assume state(Heap, Mask);
       
       // -- Translating statement: exhale acc(a.array, wildcard) -- mergesort.vpr@50.3--50.32
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Exhale might fail. There might be insufficient permission to access a.array (mergesort.vpr@50.10--50.32) [64320]"}
           Mask[a_2, array] > NoPerm;
         havoc wildcard;
@@ -1331,8 +1331,8 @@ procedure parallel_mergesort(a_2: Ref, b_24: Ref, start: int, end: int) returns 
         assume state(Heap, Mask);
       
       // -- Translating statement: exhale acc(b.array, wildcard) -- mergesort.vpr@51.9--51.38
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Exhale might fail. There might be insufficient permission to access b.array (mergesort.vpr@51.16--51.38) [64321]"}
           Mask[b_24, array] > NoPerm;
         havoc wildcard;
@@ -1345,8 +1345,8 @@ procedure parallel_mergesort(a_2: Ref, b_24: Ref, start: int, end: int) returns 
         assume state(Heap, Mask);
       
       // -- Translating statement: exhale middle >= 0 && (end <= |a.array| && |a.array| == |b.array|) -- mergesort.vpr@52.9--52.73
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Exhale might fail. Assertion middle >= 0 might not hold. (mergesort.vpr@52.16--52.73) [64322]"}
           middle >= 0;
         
@@ -1369,8 +1369,8 @@ procedure parallel_mergesort(a_2: Ref, b_24: Ref, start: int, end: int) returns 
   //     { (i in [middle..end)) }
   //     { a.array[i] }
   //     (i in [middle..end)) ==> acc(a.array[i].value, write)) -- mergesort.vpr@53.9--53.83
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         
         // -- Check definedness of (forall i: Int :: { (i in [middle..end)) } { a.array[i] } (i in [middle..end)) ==> acc(a.array[i].value, write))
           if (*) {
@@ -1435,8 +1435,8 @@ procedure parallel_mergesort(a_2: Ref, b_24: Ref, start: int, end: int) returns 
   //     { (i in [middle..end)) }
   //     { b.array[i] }
   //     (i in [middle..end)) ==> acc(b.array[i].value, write)) -- mergesort.vpr@54.9--54.83
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         
         // -- Check definedness of (forall i: Int :: { (i in [middle..end)) } { b.array[i] } (i in [middle..end)) ==> acc(b.array[i].value, write))
           if (*) {
@@ -1790,8 +1790,8 @@ procedure parallel_mergesort(a_2: Ref, b_24: Ref, start: int, end: int) returns 
         PreCallMask := Mask;
         
         // -- Exhaling precondition
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           assert {:msg "  The precondition of method merge might not hold. There might be insufficient permission to access a.array (mergesort.vpr@72.9--72.36) [64360]"}
             Mask[a_2, array] > NoPerm;
           havoc wildcard;
@@ -2016,8 +2016,8 @@ procedure parallel_mergesort(a_2: Ref, b_24: Ref, start: int, end: int) returns 
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of parallel_mergesort might not hold. There might be insufficient permission to access a.array (mergesort.vpr@18.11--18.33) [64375]"}
       Mask[a_2, array] > NoPerm;
     havoc wildcard;
@@ -2164,8 +2164,8 @@ procedure merge(a_2: Ref, b_24: Ref, start: int, middle: int, end: int) returns 
   var i_31: int;
   var j_19: int;
   var l_4: int;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var i_33: int;
@@ -2177,8 +2177,8 @@ procedure merge(a_2: Ref, b_24: Ref, start: int, middle: int, end: int) returns 
   var I: int;
   var J: int;
   var N: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var i_41: int;
   var i_43: int;
@@ -2375,8 +2375,8 @@ procedure merge(a_2: Ref, b_24: Ref, start: int, middle: int, end: int) returns 
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -2575,8 +2575,8 @@ procedure merge(a_2: Ref, b_24: Ref, start: int, middle: int, end: int) returns 
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Loop invariant acc(a.array, wildcard) might not hold on entry. There might be insufficient permission to access a.array (mergesort.vpr@98.17--98.39) [64435]"}
           Mask[a_2, array] > NoPerm;
         havoc wildcard;
@@ -3039,8 +3039,8 @@ procedure merge(a_2: Ref, b_24: Ref, start: int, middle: int, end: int) returns 
             N := N + 1;
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Loop invariant acc(a.array, wildcard) might not be preserved. There might be insufficient permission to access a.array (mergesort.vpr@98.17--98.39) [64492]"}
           Mask[a_2, array] > NoPerm;
         havoc wildcard;
@@ -3256,8 +3256,8 @@ procedure merge(a_2: Ref, b_24: Ref, start: int, middle: int, end: int) returns 
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of merge might not hold. There might be insufficient permission to access a.array (mergesort.vpr@84.11--84.33) [64510]"}
       Mask[a_2, array] > NoPerm;
     havoc wildcard;

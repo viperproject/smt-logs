@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-26 19:40:36
+; Started: 2024-12-27 02:00:36
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -132,11 +132,11 @@
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (= (NodegetNext$%limited s@$ this@0@00) (NodegetNext$ s@$ this@0@00))
   :pattern ((NodegetNext$ s@$ this@0@00))
-  :qid |quant-u-24650|)))
+  :qid |quant-u-24678|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (NodegetNext$%stateless this@0@00)
   :pattern ((NodegetNext$%limited s@$ this@0@00))
-  :qid |quant-u-24651|)))
+  :qid |quant-u-24679|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert ($Perm.isReadVar $k@2@00))
@@ -353,11 +353,11 @@
         (NodegetNext$ s@$ this@0@00)
         ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$))))))
   :pattern ((NodegetNext$ s@$ this@0@00))
-  :qid |quant-u-24652|)))
+  :qid |quant-u-24680|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   true
   :pattern ((NodegetNext$ s@$ this@0@00))
-  :qid |quant-u-24653|)))
+  :qid |quant-u-24681|)))
 ; ---------- Nodevalid$ ----------
 (declare-const this@8@00 $Ref)
 (set-option :timeout 0)

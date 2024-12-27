@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-26 19:51:06
+// Date:         2024-12-27 02:11:12
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/issues/unofficial_0001.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/issues/unofficial_0001-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -627,15 +627,15 @@ procedure P#definedness(x: Ref) returns ()
 procedure test(x: Ref, zs: (Seq Ref)) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
   var i_14: int;
   var j_5: int;
   var i_2: int;
   var QPMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var wildcard: real where wildcard > NoPerm;
   var freshVersion: FrameType;
   var newVersion: FrameType;
@@ -654,8 +654,8 @@ procedure test(x: Ref, zs: (Seq Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale acc(x.f, write) -- unofficial_0001.vpr@14.3--14.18
     perm := FullPerm;
@@ -761,8 +761,8 @@ procedure test(x: Ref, zs: (Seq Ref)) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(P(x), wildcard) -- unofficial_0001.vpr@19.3--19.27
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Folding P(x) might fail. There might be insufficient permission to access x.f (unofficial_0001.vpr@19.3--19.27) [71282]"}
       Mask[x, f_7] > NoPerm;
     havoc wildcard;
@@ -787,8 +787,8 @@ procedure test(x: Ref, zs: (Seq Ref)) returns ()
   // -- Translating statement: unfold acc(P(x), wildcard) -- unofficial_0001.vpr@20.3--20.29
     assume P#trigger(Heap, P(x));
     assume Heap[null, P(x)] == FrameFragment(Heap[x, f_7]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Unfolding P(x) might fail. There might be insufficient permission to access P(x) (unofficial_0001.vpr@20.3--20.29) [71284]"}
       Mask[null, P(x)] > NoPerm;
     havoc wildcard;
@@ -813,8 +813,8 @@ procedure test(x: Ref, zs: (Seq Ref)) returns ()
   //     0 <= i && i < x.f ==> acc(zs[i].g, write)) -- unofficial_0001.vpr@22.3--22.61
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Heap := AssertHeap;
     ExhaleWellDef0Mask := AssertMask;
+    ExhaleWellDef0Heap := AssertHeap;
     
     // -- Check definedness of (forall i: Int :: { zs[i] } 0 <= i && i < x.f ==> acc(zs[i].g, write))
       if (*) {

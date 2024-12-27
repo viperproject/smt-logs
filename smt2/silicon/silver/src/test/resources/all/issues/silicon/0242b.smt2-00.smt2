@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-26 19:40:12
+; Started: 2024-12-27 02:00:12
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -774,18 +774,18 @@
 (assert (forall ((s@$ $Snap) (n@0@00 $Ref)) (!
   (= (purify_node%limited s@$ n@0@00) (purify_node s@$ n@0@00))
   :pattern ((purify_node s@$ n@0@00))
-  :qid |quant-u-24240|)))
+  :qid |quant-u-24268|)))
 (assert (forall ((s@$ $Snap) (n@0@00 $Ref)) (!
   (purify_node%stateless n@0@00)
   :pattern ((purify_node%limited s@$ n@0@00))
-  :qid |quant-u-24241|)))
+  :qid |quant-u-24269|)))
 (assert (forall ((s@$ $Snap) (n@0@00 $Ref)) (!
   (let ((result@1@00 (purify_node%limited s@$ n@0@00))) (=>
     (purify_node%precondition s@$ n@0@00)
     (= result@1@00 (as default_node<Node>  Node))))
   :pattern ((purify_node%limited s@$ n@0@00))
-  :qid |quant-u-24242|)))
+  :qid |quant-u-24270|)))
 (assert (forall ((s@$ $Snap) (n@0@00 $Ref)) (!
   (let ((result@1@00 (purify_node%limited s@$ n@0@00))) true)
   :pattern ((purify_node%limited s@$ n@0@00))
-  :qid |quant-u-24243|)))
+  :qid |quant-u-24271|)))
