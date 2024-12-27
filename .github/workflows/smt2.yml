@@ -18,25 +18,34 @@ jobs:
           submodules: 'recursive'
           fetch-depth: 0
 
+      # Dafny likes `4.12.1`, FStar likes `4.13.3`, Viper likes `4.8.7`
       - name: Install Z3 for newer version
         uses: pavpanchekha/setup-z3@v1.3
         with:
           version: 4.12.1
           distribution: 'glibc-2.35'
 
+      # Dafny
       - name: Setup dotnet
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 6.0.x
 
+      # Dafny & Carbon
       - name: Install Boogie
         run: dotnet tool install --global boogie
 
-      - name: Make smt2 files
-        run: ./make_smt2.sh
+      # FStar
+      - name: Set-up OCaml
+        uses: ocaml/setup-ocaml@v3
+        with:
+          ocaml-compiler: 5
 
       # - name: Debugging with tmate
       #   uses: mxschmitt/action-tmate@v3.19
+
+      - name: Make smt2 files
+        run: ./make_smt2.sh
 
       - name: Merge in from main
         run: |
