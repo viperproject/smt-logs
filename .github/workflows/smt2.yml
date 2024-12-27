@@ -41,8 +41,8 @@ jobs:
         with:
           ocaml-compiler: 5
 
-      - name: Debugging with tmate
-        uses: mxschmitt/action-tmate@v3.19
+      # - name: Debugging with tmate
+      #   uses: mxschmitt/action-tmate@v3.19
 
       - name: Make smt2 files
         run: ./make_smt2.sh
