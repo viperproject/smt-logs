@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-27 10:04:40
+; Started: 2024-12-29 14:54:33
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -1088,7 +1088,7 @@
   :pattern ((Seq_contains_trigger xs@3@01 r@5@01))
   :pattern ((inv@6@01 r@5@01))
   :pattern ((img@7@01 r@5@01))
-  :qid |quant-u-17934|)))
+  :qid |quant-u-17891|)))
 (assert (forall ((r $Ref)) (!
   (=> (and (img@7@01 r) (Seq_contains xs@3@01 (inv@6@01 r))) (= (inv@6@01 r) r))
   :pattern ((inv@6@01 r))
@@ -1152,7 +1152,7 @@
   :pattern ((Seq_contains_trigger xs@12@01 r@14@01))
   :pattern ((inv@15@01 r@14@01))
   :pattern ((img@16@01 r@14@01))
-  :qid |quant-u-17936|)))
+  :qid |quant-u-17893|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and (img@16@01 r) (Seq_contains xs@12@01 (inv@15@01 r)))
@@ -1220,7 +1220,7 @@
   :pattern ((Seq_contains_trigger xs@23@01 r@25@01))
   :pattern ((inv@26@01 r@25@01 i@22@01))
   :pattern ((img@27@01 r@25@01 i@22@01))
-  :qid |quant-u-17938|)))
+  :qid |quant-u-17895|)))
 (assert (forall ((r $Ref) (i Int)) (!
   (=>
     (and (img@27@01 r i) (Seq_contains xs@23@01 (inv@26@01 r i)))
@@ -1290,7 +1290,7 @@
   :pattern ((Seq_contains_trigger xs@34@01 r@36@01))
   :pattern ((inv@37@01 r@36@01 i@33@01))
   :pattern ((img@38@01 r@36@01 i@33@01))
-  :qid |quant-u-17940|)))
+  :qid |quant-u-17897|)))
 (assert (forall ((r $Ref) (i Int)) (!
   (=>
     (and (img@38@01 r i) (Seq_contains xs@34@01 (inv@37@01 r i)))

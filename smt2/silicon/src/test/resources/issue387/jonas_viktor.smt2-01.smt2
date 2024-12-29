@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-27 09:59:42
+; Started: 2024-12-29 14:49:31
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -673,57 +673,57 @@
 (assert (forall ((s@$ $Snap)) (!
   (= (read$%limited s@$) (read$ s@$))
   :pattern ((read$ s@$))
-  :qid |quant-u-5208|)))
+  :qid |quant-u-5164|)))
 (assert (forall ((s@$ $Snap)) (!
   (as read$%stateless  Bool)
   :pattern ((read$%limited s@$))
-  :qid |quant-u-5209|)))
+  :qid |quant-u-5165|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@0@00 (read$%limited s@$))) (=>
     (read$%precondition s@$)
     (and (< $Perm.No result@0@00) (< result@0@00 $Perm.Write))))
   :pattern ((read$%limited s@$))
-  :qid |quant-u-5218|)))
+  :qid |quant-u-5174|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@0@00 (read$%limited s@$))) true)
   :pattern ((read$%limited s@$))
-  :qid |quant-u-5219|)))
+  :qid |quant-u-5175|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@0@00 (read$%limited s@$))) true)
   :pattern ((read$%limited s@$))
-  :qid |quant-u-5220|)))
+  :qid |quant-u-5176|)))
 (assert (forall ((s@$ $Snap) (a@1@00 ArrayDomain)) (!
   (= (array_len%limited s@$ a@1@00) (array_len s@$ a@1@00))
   :pattern ((array_len s@$ a@1@00))
-  :qid |quant-u-5210|)))
+  :qid |quant-u-5166|)))
 (assert (forall ((s@$ $Snap) (a@1@00 ArrayDomain)) (!
   (array_len%stateless a@1@00)
   :pattern ((array_len%limited s@$ a@1@00))
-  :qid |quant-u-5211|)))
+  :qid |quant-u-5167|)))
 (assert (forall ((s@$ $Snap) (a@3@00 ArrayDomain) (a_len@4@00 Int)) (!
   (= (idx_into%limited s@$ a@3@00 a_len@4@00) (idx_into s@$ a@3@00 a_len@4@00))
   :pattern ((idx_into s@$ a@3@00 a_len@4@00))
-  :qid |quant-u-5212|)))
+  :qid |quant-u-5168|)))
 (assert (forall ((s@$ $Snap) (a@3@00 ArrayDomain) (a_len@4@00 Int)) (!
   (idx_into%stateless a@3@00 a_len@4@00)
   :pattern ((idx_into%limited s@$ a@3@00 a_len@4@00))
-  :qid |quant-u-5213|)))
+  :qid |quant-u-5169|)))
 (assert (forall ((s@$ $Snap) (a@6@00 $Ref) (b@7@00 Int)) (!
   (= (holds%limited s@$ a@6@00 b@7@00) (holds s@$ a@6@00 b@7@00))
   :pattern ((holds s@$ a@6@00 b@7@00))
-  :qid |quant-u-5214|)))
+  :qid |quant-u-5170|)))
 (assert (forall ((s@$ $Snap) (a@6@00 $Ref) (b@7@00 Int)) (!
   (holds%stateless a@6@00 b@7@00)
   :pattern ((holds%limited s@$ a@6@00 b@7@00))
-  :qid |quant-u-5215|)))
+  :qid |quant-u-5171|)))
 (assert (forall ((s@$ $Snap) (self@9@00 $Ref)) (!
   (= (to_domain%limited s@$ self@9@00) (to_domain s@$ self@9@00))
   :pattern ((to_domain s@$ self@9@00))
-  :qid |quant-u-5216|)))
+  :qid |quant-u-5172|)))
 (assert (forall ((s@$ $Snap) (self@9@00 $Ref)) (!
   (to_domain%stateless self@9@00)
   :pattern ((to_domain%limited s@$ self@9@00))
-  :qid |quant-u-5217|)))
+  :qid |quant-u-5173|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- foo ----------

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 10:53:14
+// Date:         2024-12-29 15:43:42
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0005a.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0005a-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -331,12 +331,12 @@ procedure test(flag_1: bool) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var a_21: int;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var a_4: int;
@@ -360,8 +360,8 @@ procedure test(flag_1: bool) returns ()
       if (*) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           perm := FullPerm;
           assert {:msg "  Precondition of function trigG might not hold. There might be insufficient permission to access P() (0005a.vpr@16.46--16.60) [219058]"}
             NoPerm < perm ==> NoPerm < Mask[null, P()];
@@ -375,8 +375,8 @@ procedure test(flag_1: bool) returns ()
         if (trigG(Heap, a_21, flag_1)) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             perm := FullPerm;
             assert {:msg "  Precondition of function trigF might not hold. There might be insufficient permission to access P() (0005a.vpr@16.64--16.75) [219059]"}
               NoPerm < perm ==> NoPerm < Mask[null, P()];
@@ -399,8 +399,8 @@ procedure test(flag_1: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -416,8 +416,8 @@ procedure test(flag_1: bool) returns ()
       if (*) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := PostHeap;
           ExhaleWellDef0Mask := PostMask;
+          ExhaleWellDef0Heap := PostHeap;
           perm := FullPerm;
           assert {:msg "  Precondition of function trigG might not hold. There might be insufficient permission to access P() (0005a.vpr@19.45--19.59) [219060]"}
             NoPerm < perm ==> NoPerm < PostMask[null, P()];
@@ -431,8 +431,8 @@ procedure test(flag_1: bool) returns ()
         if (trigG(PostHeap, a_4, flag_1)) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := PostHeap;
             ExhaleWellDef0Mask := PostMask;
+            ExhaleWellDef0Heap := PostHeap;
             perm := FullPerm;
             assert {:msg "  Precondition of function trigF might not hold. There might be insufficient permission to access P() (0005a.vpr@19.63--19.74) [219061]"}
               NoPerm < perm ==> NoPerm < PostMask[null, P()];
@@ -456,8 +456,8 @@ procedure test(flag_1: bool) returns ()
   }
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of test might not hold. There might be insufficient permission to access P() (0005a.vpr@17.12--17.20) [219062]"}
@@ -489,12 +489,12 @@ procedure test2(flag_1: bool) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var a_5: int;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var a_8: int;
@@ -519,8 +519,8 @@ procedure test2(flag_1: bool) returns ()
       if (*) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           perm := FullPerm;
           assert {:msg "  Precondition of function trigG might not hold. There might be insufficient permission to access P() (0005a.vpr@26.46--26.60) [219065]"}
             NoPerm < perm ==> NoPerm < Mask[null, P()];
@@ -534,8 +534,8 @@ procedure test2(flag_1: bool) returns ()
         if (trigG(Heap, a_5, flag_1)) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             perm := FullPerm;
             assert {:msg "  Precondition of function trigF might not hold. There might be insufficient permission to access P() (0005a.vpr@26.64--26.75) [219066]"}
               NoPerm < perm ==> NoPerm < Mask[null, P()];
@@ -558,8 +558,8 @@ procedure test2(flag_1: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -575,8 +575,8 @@ procedure test2(flag_1: bool) returns ()
       if (*) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := PostHeap;
           ExhaleWellDef0Mask := PostMask;
+          ExhaleWellDef0Heap := PostHeap;
           perm := FullPerm;
           assert {:msg "  Precondition of function trigF might not hold. There might be insufficient permission to access P() (0005a.vpr@28.46--28.56) [219067]"}
             NoPerm < perm ==> NoPerm < PostMask[null, P()];
@@ -590,8 +590,8 @@ procedure test2(flag_1: bool) returns ()
         if (trigF(PostHeap, a_8, b_99)) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := PostHeap;
             ExhaleWellDef0Mask := PostMask;
+            ExhaleWellDef0Heap := PostHeap;
             perm := FullPerm;
             assert {:msg "  Precondition of function trigG might not hold. There might be insufficient permission to access P() (0005a.vpr@28.61--28.75) [219068]"}
               NoPerm < perm ==> NoPerm < PostMask[null, P()];
@@ -606,8 +606,8 @@ procedure test2(flag_1: bool) returns ()
         if (trigF(PostHeap, a_8, b_99) ==> trigG(PostHeap, a_8, flag_1)) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := PostHeap;
             ExhaleWellDef0Mask := PostMask;
+            ExhaleWellDef0Heap := PostHeap;
             perm := FullPerm;
             assert {:msg "  Precondition of function trigF might not hold. There might be insufficient permission to access P() (0005a.vpr@28.80--28.91) [219069]"}
               NoPerm < perm ==> NoPerm < PostMask[null, P()];
@@ -631,8 +631,8 @@ procedure test2(flag_1: bool) returns ()
   }
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of test2 might not hold. There might be insufficient permission to access P() (0005a.vpr@27.12--27.20) [219070]"}

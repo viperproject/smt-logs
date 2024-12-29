@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-27 09:59:43
+; Started: 2024-12-29 14:49:32
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -134,25 +134,25 @@
 (assert (forall ((s@$ $Snap)) (!
   (= (read$%limited s@$) (read$ s@$))
   :pattern ((read$ s@$))
-  :qid |quant-u-5223|)))
+  :qid |quant-u-5179|)))
 (assert (forall ((s@$ $Snap)) (!
   (as read$%stateless  Bool)
   :pattern ((read$%limited s@$))
-  :qid |quant-u-5224|)))
+  :qid |quant-u-5180|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@0@00 (read$%limited s@$))) (=>
     (read$%precondition s@$)
     (and (< $Perm.No result@0@00) (< result@0@00 $Perm.Write))))
   :pattern ((read$%limited s@$))
-  :qid |quant-u-5227|)))
+  :qid |quant-u-5183|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@0@00 (read$%limited s@$))) true)
   :pattern ((read$%limited s@$))
-  :qid |quant-u-5228|)))
+  :qid |quant-u-5184|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@0@00 (read$%limited s@$))) true)
   :pattern ((read$%limited s@$))
-  :qid |quant-u-5229|)))
+  :qid |quant-u-5185|)))
 ; ---------- FUNCTION contains----------
 (declare-fun _pure_1@1@00 () $Ref)
 (declare-fun result@2@00 () Bool)
@@ -176,11 +176,11 @@
 (assert (forall ((s@$ $Snap) (_pure_1@1@00 $Ref)) (!
   (= (contains%limited s@$ _pure_1@1@00) (contains s@$ _pure_1@1@00))
   :pattern ((contains s@$ _pure_1@1@00))
-  :qid |quant-u-5225|)))
+  :qid |quant-u-5181|)))
 (assert (forall ((s@$ $Snap) (_pure_1@1@00 $Ref)) (!
   (contains%stateless _pure_1@1@00)
   :pattern ((contains%limited s@$ _pure_1@1@00))
-  :qid |quant-u-5226|)))
+  :qid |quant-u-5182|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (read$%precondition $Snap.unit))
@@ -398,7 +398,7 @@
         (contains%limited ($Snap.second ($Snap.second s@$)) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$)))))))
   :pattern ((contains s@$ _pure_1@1@00))
   :pattern ((contains%stateless _pure_1@1@00) (BoxList%trigger s@$ _pure_1@1@00))
-  :qid |quant-u-5230|)))
+  :qid |quant-u-5186|)))
 (assert (forall ((s@$ $Snap) (_pure_1@1@00 $Ref)) (!
   (=>
     (and
@@ -406,7 +406,7 @@
       (not (= ($SortWrappers.$SnapToInt ($Snap.first s@$)) 0)))
     (contains%precondition ($Snap.second ($Snap.second s@$)) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$)))))
   :pattern ((contains s@$ _pure_1@1@00))
-  :qid |quant-u-5231|)))
+  :qid |quant-u-5187|)))
 ; ---------- BoxList ----------
 (declare-const self@4@00 $Ref)
 (set-option :timeout 0)

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 10:29:52
+// Date:         2024-12-29 15:20:12
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/issue010.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/issue010-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -257,8 +257,8 @@ axiom !IsWandField(v_36);
 procedure test1(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var Ops_1Heap: HeapType;
   var Ops_1Mask: MaskType;
   var b_1_1: bool;
@@ -266,8 +266,8 @@ procedure test1(x: Ref) returns ()
   var UsedMask: MaskType;
   var b_2: bool;
   var perm: Perm;
-  var Labellhs1Mask: MaskType;
   var Labellhs1Heap: HeapType;
+  var Labellhs1Mask: MaskType;
   var boolCur: bool;
   var Used_1Heap: HeapType;
   var Used_1Mask: MaskType;
@@ -284,8 +284,8 @@ procedure test1(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: package acc(x.v, write) && acc(x.v, write) --* false {
   // } -- issue010.vpr@7.3--7.41
@@ -314,8 +314,8 @@ procedure test1(x: Ref) returns ()
     
     // -- Translating statement: label lhs1 -- issue010.vpr@7.11--7.41
       lhs1:
-      Labellhs1Mask := Ops_1Mask;
       Labellhs1Heap := Ops_1Heap;
+      Labellhs1Mask := Ops_1Mask;
       b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);
     boolCur := true;
     // Translating exec of non-ghost operationfalse
@@ -337,8 +337,8 @@ procedure test1(x: Ref) returns ()
 procedure test1fix(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var Ops_3Heap: HeapType;
   var Ops_3Mask: MaskType;
   var b_4: bool;
@@ -346,8 +346,8 @@ procedure test1fix(x: Ref) returns ()
   var Used_2Mask: MaskType;
   var b_3: bool;
   var perm: Perm;
-  var Labellhs3Mask: MaskType;
   var Labellhs3Heap: HeapType;
+  var Labellhs3Mask: MaskType;
   var boolCur_1: bool;
   var Used_3Heap: HeapType;
   var Used_3Mask: MaskType;
@@ -376,8 +376,8 @@ procedure test1fix(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: package acc(x.v, write) && acc(x.v, write) --*
   // acc(x.v, write) && (acc(x.v, write) && false) {
@@ -407,8 +407,8 @@ procedure test1fix(x: Ref) returns ()
     
     // -- Translating statement: label lhs3 -- issue010.vpr@11.11--11.65
       lhs3:
-      Labellhs3Mask := Ops_3Mask;
       Labellhs3Heap := Ops_3Heap;
+      Labellhs3Mask := Ops_3Mask;
       b_4 := b_4 && state(Ops_3Heap, Ops_3Mask);
     boolCur_1 := true;
     // Translating exec of non-ghost operationacc(x.v, write) && (acc(x.v, write) && false)
@@ -546,8 +546,8 @@ procedure test1fix(x: Ref) returns ()
 procedure test2(x: Ref, y: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var Ops_5Heap: HeapType;
   var Ops_5Mask: MaskType;
   var b_9: bool;
@@ -555,8 +555,8 @@ procedure test2(x: Ref, y: Ref) returns ()
   var Used_4Mask: MaskType;
   var b_8: bool;
   var perm: Perm;
-  var Labellhs5Mask: MaskType;
   var Labellhs5Heap: HeapType;
+  var Labellhs5Mask: MaskType;
   var boolCur_2: bool;
   var Used_5Heap: HeapType;
   var Used_5Mask: MaskType;
@@ -574,8 +574,8 @@ procedure test2(x: Ref, y: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: package acc(x.v, write) && acc(y.v, write) --* x != y {
   // } -- issue010.vpr@15.3--15.42
@@ -604,8 +604,8 @@ procedure test2(x: Ref, y: Ref) returns ()
     
     // -- Translating statement: label lhs5 -- issue010.vpr@15.11--15.42
       lhs5:
-      Labellhs5Mask := Ops_5Mask;
       Labellhs5Heap := Ops_5Heap;
+      Labellhs5Mask := Ops_5Mask;
       b_9 := b_9 && state(Ops_5Heap, Ops_5Mask);
     boolCur_2 := true;
     // Translating exec of non-ghost operationx != y
@@ -627,8 +627,8 @@ procedure test2(x: Ref, y: Ref) returns ()
 procedure test2fix(x: Ref, y: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var Ops_7Heap: HeapType;
   var Ops_7Mask: MaskType;
   var b_12: bool;
@@ -636,8 +636,8 @@ procedure test2fix(x: Ref, y: Ref) returns ()
   var Used_6Mask: MaskType;
   var b_11: bool;
   var perm: Perm;
-  var Labellhs7Mask: MaskType;
   var Labellhs7Heap: HeapType;
+  var Labellhs7Mask: MaskType;
   var boolCur_3: bool;
   var Used_7Heap: HeapType;
   var Used_7Mask: MaskType;
@@ -667,8 +667,8 @@ procedure test2fix(x: Ref, y: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: package acc(x.v, write) && acc(y.v, write) --*
   // acc(x.v, write) && (acc(y.v, write) && x != y) {
@@ -698,8 +698,8 @@ procedure test2fix(x: Ref, y: Ref) returns ()
     
     // -- Translating statement: label lhs7 -- issue010.vpr@19.11--19.66
       lhs7:
-      Labellhs7Mask := Ops_7Mask;
       Labellhs7Heap := Ops_7Heap;
+      Labellhs7Mask := Ops_7Mask;
       b_12 := b_12 && state(Ops_7Heap, Ops_7Mask);
     boolCur_3 := true;
     // Translating exec of non-ghost operationacc(x.v, write) && (acc(y.v, write) && x != y)

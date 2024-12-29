@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 10:51:38
+// Date:         2024-12-29 15:42:06
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0210.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0210-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -327,8 +327,8 @@ procedure silver_length#definedness(this: Ref) returns (Result: int)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var newPMask: PMaskType;
   
@@ -353,8 +353,8 @@ procedure silver_length#definedness(this: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume valid__List#trigger(UnfoldingHeap, valid__List(this));
       assume UnfoldingHeap[null, valid__List(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, List__variant]), CombineFrames(FrameFragment((if (variantOfList(UnfoldingHeap[this, List__variant]): ListDomainType) == fn$$List__Node then CombineFrames(FrameFragment(UnfoldingHeap[this, List__Node__0]), CombineFrames(FrameFragment(UnfoldingHeap[this, List__Node__1]), UnfoldingHeap[null, valid__List(UnfoldingHeap[this, List__Node__1])])) else EmptyFrame)), FrameFragment((if (variantOfList(UnfoldingHeap[this, List__variant]): ListDomainType) == fn$$List__Nil then CombineFrames(FrameFragment(UnfoldingHeap[this, List__Node__0]), FrameFragment(UnfoldingHeap[this, List__Node__1])) else EmptyFrame))));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access valid__List(this) (0210.vpr@4.1--10.2) [214591]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, valid__List(this)];
@@ -404,8 +404,8 @@ procedure silver_length#definedness(this: Ref) returns (Result: int)
           HasDirectPerm(UnfoldingMask, this, List__Node__1);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := UnfoldingHeap;
           ExhaleWellDef0Mask := UnfoldingMask;
+          ExhaleWellDef0Heap := UnfoldingHeap;
           perm := FullPerm;
           assert {:msg "  Precondition of function silver_length might not hold. There might be insufficient permission to access valid__List(this.List__Node__1) (0210.vpr@9.73--9.106) [214594]"}
             NoPerm < perm ==> NoPerm < UnfoldingMask[null, valid__List(UnfoldingHeap[this, List__Node__1])];
@@ -443,8 +443,8 @@ procedure silver_length#definedness(this: Ref) returns (Result: int)
     Result := (if (variantOfList(Heap[this, List__variant]): ListDomainType) == fn$$List__Nil then 0 else 1 + silver_length(Heap, Heap[this, List__Node__1]));
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of silver_length might not hold. Assertion result >= 0 might not hold. (0210.vpr@6.13--6.24) [214595]"}
       Result >= 0;
 }
@@ -553,14 +553,14 @@ procedure length_iter(list$1: Ref, rd$1: Perm) returns (res$1: int)
 {
   var loop_end_lblGuard: bool;
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var current$1: Ref;
   var counter$1: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var frameMask5: MaskType;
   var frameHeap5: HeapType;
@@ -572,8 +572,8 @@ procedure length_iter(list$1: Ref, rd$1: Perm) returns (res$1: int)
   var newPMask: PMaskType;
   var LoopSumHeap: HeapType;
   var LoopSumMask: MaskType;
-  var Labelloop_endHeap: HeapType;
   var Labelloop_endMask: MaskType;
+  var Labelloop_endHeap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -599,8 +599,8 @@ procedure length_iter(list$1: Ref, rd$1: Perm) returns (res$1: int)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -645,8 +645,8 @@ procedure length_iter(list$1: Ref, rd$1: Perm) returns (res$1: int)
     // -- Before loop head5
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := rd$1;
         assert {:msg "  Loop invariant acc(valid__List(current$1), rd$1) might not hold on entry. Fraction rd$1 might be negative. (0210.vpr@26.19--26.52) [214602]"}
           perm >= NoPerm;
@@ -707,8 +707,8 @@ procedure length_iter(list$1: Ref, rd$1: Perm) returns (res$1: int)
               rd$1 > NoPerm;
             assume valid__List#trigger(Heap, valid__List(current$1));
             assume Heap[null, valid__List(current$1)] == CombineFrames(FrameFragment(Heap[current$1, List__variant]), CombineFrames(FrameFragment((if (variantOfList(Heap[current$1, List__variant]): ListDomainType) == fn$$List__Node then CombineFrames(FrameFragment(Heap[current$1, List__Node__0]), CombineFrames(FrameFragment(Heap[current$1, List__Node__1]), Heap[null, valid__List(Heap[current$1, List__Node__1])])) else EmptyFrame)), FrameFragment((if (variantOfList(Heap[current$1, List__variant]): ListDomainType) == fn$$List__Nil then CombineFrames(FrameFragment(Heap[current$1, List__Node__0]), FrameFragment(Heap[current$1, List__Node__1])) else EmptyFrame))));
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             perm := rd$1;
             assert {:msg "  Unfolding valid__List(current$1) might fail. Fraction rd$1 might be negative. (0210.vpr@28.7--28.47) [214607]"}
               perm >= NoPerm;
@@ -802,8 +802,8 @@ procedure length_iter(list$1: Ref, rd$1: Perm) returns (res$1: int)
               
               // -- Translating statement: // id = 11
   // assert perm(valid__List(current$1)) > none -- 0210.vpr@35.11--35.53
-                ExhaleWellDef0Heap := Heap;
                 ExhaleWellDef0Mask := Mask;
+                ExhaleWellDef0Heap := Heap;
                 assert {:msg "  Assert might fail. Assertion perm(valid__List(current$1)) > none might not hold. (0210.vpr@35.18--35.53) [214617]"}
                   NoPerm < Mask[null, valid__List(current$1)];
                 assume state(Heap, Mask);
@@ -813,8 +813,8 @@ procedure length_iter(list$1: Ref, rd$1: Perm) returns (res$1: int)
   // fold acc(valid__List(current$1), rd$1) -- 0210.vpr@38.13--38.51
                 assert {:msg "  Folding valid__List(current$1) might fail. Fraction rd$1 might not be positive. (0210.vpr@38.13--38.51) [214618]"}
                   rd$1 > NoPerm;
-                ExhaleWellDef0Heap := Heap;
                 ExhaleWellDef0Mask := Mask;
+                ExhaleWellDef0Heap := Heap;
                 perm := rd$1;
                 assert {:msg "  Folding valid__List(current$1) might fail. Fraction rd$1 might be negative. (0210.vpr@38.13--38.51) [214619]"}
                   perm >= NoPerm;
@@ -925,8 +925,8 @@ procedure length_iter(list$1: Ref, rd$1: Perm) returns (res$1: int)
   // inhale true -- <no position>
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := rd$1;
         assert {:msg "  Loop invariant acc(valid__List(current$1), rd$1) might not be preserved. Fraction rd$1 might be negative. (0210.vpr@26.19--26.52) [214633]"}
           perm >= NoPerm;
@@ -958,8 +958,8 @@ procedure length_iter(list$1: Ref, rd$1: Perm) returns (res$1: int)
   // // LoopInfo(None,Set())
   // label loop_end -- 0210.vpr@43.5--43.19
     loop_end:
-    Labelloop_endHeap := Heap;
     Labelloop_endMask := Mask;
+    Labelloop_endHeap := Heap;
     loop_end_lblGuard := true;
     assume state(Heap, Mask);
   
@@ -969,8 +969,8 @@ procedure length_iter(list$1: Ref, rd$1: Perm) returns (res$1: int)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := rd$1;
     assert {:msg "  Postcondition of length_iter might not hold. Fraction rd$1 might be negative. (0210.vpr@17.11--17.41) [214636]"}
       perm >= NoPerm;

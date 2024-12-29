@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-27 10:10:17
+; Started: 2024-12-29 15:00:26
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -158,21 +158,21 @@
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (= (silver_length%limited s@$ this@0@00) (silver_length s@$ this@0@00))
   :pattern ((silver_length s@$ this@0@00))
-  :qid |quant-u-25495|)))
+  :qid |quant-u-25433|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (silver_length%stateless this@0@00)
   :pattern ((silver_length%limited s@$ this@0@00))
-  :qid |quant-u-25496|)))
+  :qid |quant-u-25434|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (let ((result@1@00 (silver_length%limited s@$ this@0@00))) (and
     ($Perm.isReadVar $k@2@00)
     (=> (silver_length%precondition s@$ this@0@00) (>= result@1@00 0))))
   :pattern ((silver_length%limited s@$ this@0@00))
-  :qid |quant-u-25497|)))
+  :qid |quant-u-25435|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (let ((result@1@00 (silver_length%limited s@$ this@0@00))) true)
   :pattern ((silver_length%limited s@$ this@0@00))
-  :qid |quant-u-25498|)))
+  :qid |quant-u-25436|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (and
     ($Perm.isReadVar $k@2@00)
@@ -193,7 +193,7 @@
             (silver_length%limited ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second s@$))))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.first ($Snap.second ($Snap.second s@$))))))))))))
   :pattern ((silver_length s@$ this@0@00))
   :pattern ((silver_length%stateless this@0@00) (valid__List%trigger s@$ this@0@00))
-  :qid |quant-u-25499|)))
+  :qid |quant-u-25437|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (=>
     (silver_length%precondition s@$ this@0@00)
@@ -204,7 +204,7 @@
       true
       (silver_length%precondition ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second s@$))))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.first ($Snap.second ($Snap.second s@$)))))))))
   :pattern ((silver_length s@$ this@0@00))
-  :qid |quant-u-25500|)))
+  :qid |quant-u-25438|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- length_iter ----------

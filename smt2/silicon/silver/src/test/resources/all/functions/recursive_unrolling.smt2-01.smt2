@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-27 10:06:58
+; Started: 2024-12-29 14:57:06
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -120,21 +120,21 @@
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (= (length%limited s@$ this@0@00) (length s@$ this@0@00))
   :pattern ((length s@$ this@0@00))
-  :qid |quant-u-22235|)))
+  :qid |quant-u-22172|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (length%stateless this@0@00)
   :pattern ((length%limited s@$ this@0@00))
-  :qid |quant-u-22236|)))
+  :qid |quant-u-22173|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (let ((result@1@00 (length%limited s@$ this@0@00))) (=>
     (length%precondition s@$ this@0@00)
     (> result@1@00 0)))
   :pattern ((length%limited s@$ this@0@00))
-  :qid |quant-u-22237|)))
+  :qid |quant-u-22174|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (let ((result@1@00 (length%limited s@$ this@0@00))) true)
   :pattern ((length%limited s@$ this@0@00))
-  :qid |quant-u-22238|)))
+  :qid |quant-u-22175|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (=>
     (length%precondition s@$ this@0@00)
@@ -148,7 +148,7 @@
           (length%limited ($Snap.second s@$) ($SortWrappers.$SnapTo$Ref ($Snap.first s@$)))))))
   :pattern ((length s@$ this@0@00))
   :pattern ((length%stateless this@0@00) (node%trigger s@$ this@0@00))
-  :qid |quant-u-22239|)))
+  :qid |quant-u-22176|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (=>
     (length%precondition s@$ this@0@00)
@@ -157,7 +157,7 @@
       true
       (length%precondition ($Snap.second s@$) ($SortWrappers.$SnapTo$Ref ($Snap.first s@$)))))
   :pattern ((length s@$ this@0@00))
-  :qid |quant-u-22240|)))
+  :qid |quant-u-22177|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- test01 ----------
@@ -191,11 +191,11 @@
 (declare-const n1@5@01 $Ref)
 (assert (not (= n1@5@01 $Ref.null)))
 (declare-const next@6@01 $Ref)
-(assert (not (= n1@5@01 n2@1@01)))
 (assert (not (= n1@5@01 n5@4@01)))
-(assert (not (= n1@5@01 n1@0@01)))
-(assert (not (= n1@5@01 n3@2@01)))
 (assert (not (= n1@5@01 n4@3@01)))
+(assert (not (= n1@5@01 n3@2@01)))
+(assert (not (= n1@5@01 n2@1@01)))
+(assert (not (= n1@5@01 n1@0@01)))
 ; [exec]
 ; n1.next := null
 ; [exec]
@@ -211,11 +211,11 @@
 (declare-const n2@7@01 $Ref)
 (assert (not (= n2@7@01 $Ref.null)))
 (declare-const next@8@01 $Ref)
-(assert (not (= n2@7@01 n2@1@01)))
 (assert (not (= n2@7@01 n5@4@01)))
-(assert (not (= n2@7@01 n3@2@01)))
-(assert (not (= n2@7@01 n4@3@01)))
 (assert (not (= n2@7@01 n1@5@01)))
+(assert (not (= n2@7@01 n4@3@01)))
+(assert (not (= n2@7@01 n3@2@01)))
+(assert (not (= n2@7@01 n2@1@01)))
 ; [exec]
 ; n2.next := n1
 ; [exec]
@@ -243,10 +243,10 @@
 (assert (not (= n3@9@01 $Ref.null)))
 (declare-const next@10@01 $Ref)
 (assert (not (= n3@9@01 n5@4@01)))
-(assert (not (= n3@9@01 n3@2@01)))
-(assert (not (= n3@9@01 n4@3@01)))
-(assert (not (= n3@9@01 n2@7@01)))
 (assert (not (= n3@9@01 n1@5@01)))
+(assert (not (= n3@9@01 n2@7@01)))
+(assert (not (= n3@9@01 n4@3@01)))
+(assert (not (= n3@9@01 n3@2@01)))
 ; [exec]
 ; n3.next := n2
 ; [exec]
@@ -276,10 +276,10 @@
 (assert (not (= n4@11@01 $Ref.null)))
 (declare-const next@12@01 $Ref)
 (assert (not (= n4@11@01 n5@4@01)))
-(assert (not (= n4@11@01 n4@3@01)))
-(assert (not (= n4@11@01 n3@9@01)))
-(assert (not (= n4@11@01 n2@7@01)))
 (assert (not (= n4@11@01 n1@5@01)))
+(assert (not (= n4@11@01 n2@7@01)))
+(assert (not (= n4@11@01 n3@9@01)))
+(assert (not (= n4@11@01 n4@3@01)))
 ; [exec]
 ; n4.next := n3
 ; [exec]
@@ -311,9 +311,9 @@
 (assert (not (= n5@13@01 $Ref.null)))
 (declare-const next@14@01 $Ref)
 (assert (not (= n5@13@01 n5@4@01)))
-(assert (not (= n5@13@01 n3@9@01)))
-(assert (not (= n5@13@01 n2@7@01)))
 (assert (not (= n5@13@01 n1@5@01)))
+(assert (not (= n5@13@01 n2@7@01)))
+(assert (not (= n5@13@01 n3@9@01)))
 (assert (not (= n5@13@01 n4@11@01)))
 ; [exec]
 ; n5.next := n4

@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-27 10:10:17
+; Started: 2024-12-29 15:00:26
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -854,11 +854,11 @@
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (= (length%limited s@$ this@0@00) (length s@$ this@0@00))
   :pattern ((length s@$ this@0@00))
-  :qid |quant-u-25477|)))
+  :qid |quant-u-25415|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (length%stateless this@0@00)
   :pattern ((length%limited s@$ this@0@00))
-  :qid |quant-u-25478|)))
+  :qid |quant-u-25416|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (and
     (forall ((r@3@00 $Ref)) (!
@@ -870,7 +870,7 @@
       :pattern ((Set_in r@3@00 ($SortWrappers.$SnapToSet<$Ref> ($Snap.first s@$))))
       :pattern ((inv@4@00 s@$ this@0@00 r@3@00))
       :pattern ((img@5@00 s@$ this@0@00 r@3@00))
-      :qid |quant-u-25482|))
+      :qid |quant-u-25420|))
     (forall ((r $Ref)) (!
       (=>
         (and
@@ -888,7 +888,7 @@
       :pattern ((Set_in r@6@00 ($SortWrappers.$SnapToSet<$Ref> ($Snap.first s@$))))
       :pattern ((inv@7@00 s@$ this@0@00 r@6@00))
       :pattern ((img@8@00 s@$ this@0@00 r@6@00))
-      :qid |quant-u-25484|))
+      :qid |quant-u-25422|))
     (forall ((r $Ref)) (!
       (=>
         (and
@@ -918,28 +918,28 @@
         (length s@$ this@0@00)
         (Set_card ($SortWrappers.$SnapToSet<$Ref> ($Snap.first s@$))))))
   :pattern ((length s@$ this@0@00))
-  :qid |quant-u-25486|)))
+  :qid |quant-u-25424|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   true
   :pattern ((length s@$ this@0@00))
-  :qid |quant-u-25487|)))
+  :qid |quant-u-25425|)))
 (assert (forall ((s@$ $Snap)) (!
   (= (set%limited s@$) (set s@$))
   :pattern ((set s@$))
-  :qid |quant-u-25479|)))
+  :qid |quant-u-25417|)))
 (assert (forall ((s@$ $Snap)) (!
   (as set%stateless  Bool)
   :pattern ((set%limited s@$))
-  :qid |quant-u-25480|)))
+  :qid |quant-u-25418|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@2@00 (set%limited s@$))) (=>
     (set%precondition s@$)
     (= (Set_card result@2@00) 0)))
   :pattern ((set%limited s@$))
-  :qid |quant-u-25488|)))
+  :qid |quant-u-25426|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@2@00 (set%limited s@$))) true)
   :pattern ((set%limited s@$))
-  :qid |quant-u-25489|)))
+  :qid |quant-u-25427|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------

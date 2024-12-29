@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 10:19:36
+// Date:         2024-12-29 15:09:51
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/misc/functions2.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/misc/functions2-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -1155,16 +1155,16 @@ procedure test01(xs: (Set Ref), y: Ref) returns ()
   modifies Heap, Mask;
 {
   var pre_lblGuard: bool;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var QPMask: MaskType;
   var x_18: Ref;
-  var LabelpreHeap: HeapType;
   var LabelpreMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var LabelpreHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
-  var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var x_5: Ref;
   var ExhaleHeap: HeapType;
   var x_8_1: Ref;
@@ -1183,8 +1183,8 @@ procedure test01(xs: (Set Ref), y: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale (forall x: Ref :: { (x in xs) } (x in xs) ==> acc(x.f, write)) -- functions2.vpr@13.3--13.47
     
@@ -1253,20 +1253,20 @@ procedure test01(xs: (Set Ref), y: Ref) returns ()
   
   // -- Translating statement: label pre -- functions2.vpr@16.1--16.10
     pre:
-    LabelpreHeap := Heap;
     LabelpreMask := Mask;
+    LabelpreHeap := Heap;
     pre_lblGuard := true;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert fun01(xs, y) == y.f -- functions2.vpr@18.3--18.28
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of fun01(xs, y) == y.f
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         havoc QPMask;
         
         // -- check that the permission amount is positive
@@ -1322,14 +1322,14 @@ procedure test01(xs: (Set Ref), y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert fun01(xs, y) == old[pre](fun01(xs, y)) -- functions2.vpr@19.3--19.46
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of fun01(xs, y) == old[pre](fun01(xs, y))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         havoc QPMask;
         
         // -- check that the permission amount is positive
@@ -1382,8 +1382,8 @@ procedure test01(xs: (Set Ref), y: Ref) returns ()
         pre_lblGuard;
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := LabelpreHeap;
         ExhaleWellDef1Mask := LabelpreMask;
+        ExhaleWellDef1Heap := LabelpreHeap;
         havoc QPMask;
         
         // -- check that the permission amount is positive
@@ -1437,8 +1437,8 @@ procedure test01(xs: (Set Ref), y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- functions2.vpr@22.3--22.15
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion false might not hold. (functions2.vpr@22.10--22.15) [66570]"}
       false;
     assume state(Heap, Mask);
@@ -1451,8 +1451,8 @@ procedure test01(xs: (Set Ref), y: Ref) returns ()
 procedure test02(xs: (Seq Ref), ys: (Seq Ref)) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var i_11: int;
   var j_11: int;
   var i_12: int;
@@ -1460,10 +1460,10 @@ procedure test02(xs: (Seq Ref), ys: (Seq Ref)) returns ()
   var i_16: int;
   var j_18: int;
   var i_18: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
-  var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var i_8_2: int;
   var j_4_1: int;
   var i_11_1: int;
@@ -1479,8 +1479,8 @@ procedure test02(xs: (Seq Ref), ys: (Seq Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale (forall i: Int, j: Int ::
   //     { xs[i], xs[j] }
@@ -1643,14 +1643,14 @@ procedure test02(xs: (Seq Ref), ys: (Seq Ref)) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert fun02(xs, ys) -- functions2.vpr@41.3--41.23
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of fun02(xs, ys)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         if (*) {
           if (i_8_2 >= 0 && (i_8_2 < Seq#Length(xs) && (j_4_1 >= 0 && (j_4_1 < Seq#Length(xs) && i_8_2 != j_4_1)))) {
             assert {:msg "  Precondition of function fun02 might not hold. Assertion xs[i] != xs[j] might not hold. (functions2.vpr@41.10--41.23) [66585]"}

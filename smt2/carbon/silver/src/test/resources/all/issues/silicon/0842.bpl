@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 10:52:03
+// Date:         2024-12-29 15:42:30
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0842.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0842-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -598,10 +598,10 @@ procedure P2#definedness(x: Ref) returns ()
 procedure consumeField(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var QPMask: MaskType;
   var ExhaleHeap: HeapType;
   
@@ -617,12 +617,12 @@ procedure consumeField(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: exhale (forall i: Int ::one() == two() && x.f != null ==> acc(x.g.f, write)) -- 0842.vpr@22.3--22.71
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall i: Int ::one() == two() && x.f != null ==> acc(x.g.f, write))
       if (*) {
@@ -692,8 +692,8 @@ procedure consumeField(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- 0842.vpr@24.3--24.15
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion false might not hold. (0842.vpr@24.10--24.15) [215042]"}
       false;
     assume state(Heap, Mask);
@@ -706,11 +706,11 @@ procedure consumeField(x: Ref) returns ()
 procedure produceField(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newVersion: FrameType;
   var QPMask: MaskType;
   
@@ -726,8 +726,8 @@ procedure produceField(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale acc(P(x), write) -- 0842.vpr@29.3--29.14
     perm := FullPerm;
@@ -739,8 +739,8 @@ procedure produceField(x: Ref) returns ()
   // -- Translating statement: unfold acc(P(x), write) -- 0842.vpr@30.3--30.14
     assume P#trigger(Heap, P(x));
     assume Heap[null, P(x)] == FrameFragment(P#condqp1(Heap, x));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding P(x) might fail. There might be insufficient permission to access P(x) (0842.vpr@30.3--30.14) [215046]"}
@@ -792,8 +792,8 @@ procedure produceField(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- 0842.vpr@32.3--32.15
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion false might not hold. (0842.vpr@32.10--32.15) [215048]"}
       false;
     assume state(Heap, Mask);
@@ -806,10 +806,10 @@ procedure produceField(x: Ref) returns ()
 procedure consumePred(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var QPMask: MaskType;
   var perm: Perm;
   var freshVersion: FrameType;
@@ -826,12 +826,12 @@ procedure consumePred(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: fold acc(P2(x), write) -- 0842.vpr@37.3--37.13
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     havoc QPMask;
     
     // -- check that the permission amount is positive
@@ -892,8 +892,8 @@ procedure consumePred(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- 0842.vpr@39.3--39.15
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion false might not hold. (0842.vpr@39.10--39.15) [215054]"}
       false;
     assume state(Heap, Mask);
@@ -906,11 +906,11 @@ procedure consumePred(x: Ref) returns ()
 procedure producePred(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var QPMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -924,8 +924,8 @@ procedure producePred(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale (forall i: Int ::one() == two() && x.f != null ==>
   //     acc(Q(x.g), write)) -- 0842.vpr@44.3--44.67
@@ -991,8 +991,8 @@ procedure producePred(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- 0842.vpr@46.3--46.15
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion false might not hold. (0842.vpr@46.10--46.15) [215058]"}
       false;
     assume state(Heap, Mask);

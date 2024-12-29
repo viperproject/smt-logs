@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-27 09:54:33
+; Started: 2024-12-29 14:44:19
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -10477,7 +10477,7 @@
 (check-sat)
 ; unsat
 (pop) ; 13
-; 0.40s
+; 0.41s
 ; (get-info :all-statistics)
 (assert (=>
   (forall ((q$i@393@01 Int)) (!
@@ -10641,7 +10641,7 @@
 (check-sat)
 ; unsat
 (pop) ; 16
-; 0.13s
+; 0.12s
 ; (get-info :all-statistics)
 (assert (<=
   0
@@ -10659,7 +10659,7 @@
 (check-sat)
 ; unsat
 (pop) ; 16
-; 0.12s
+; 0.00s
 ; (get-info :all-statistics)
 (assert (>
   ($unwrap<Int> ($wrap<$Int> (+
@@ -11024,7 +11024,7 @@
 (check-sat)
 ; unsat
 (pop) ; 17
-; 0.07s
+; 0.12s
 ; (get-info :all-statistics)
 (pop) ; 16
 (push) ; 16
@@ -11195,7 +11195,7 @@
 (check-sat)
 ; unsat
 (pop) ; 13
-; 0.12s
+; 0.24s
 ; (get-info :all-statistics)
 (assert (=>
   (forall ((q$i@395@01 Int)) (!
@@ -11931,7 +11931,7 @@
 (check-sat)
 ; unknown
 (pop) ; 22
-; 0.02s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 123 | $unwrap[Int]($wrap[$Int]($unwrap[Int]($w_mul[$Int]($wrap[$Int]($unwrap[Int](l$Ann$1@201@01) - 1), l$D$2@218@01)) + 4 * $unwrap[Int](l$D_P$1@391@01))) != 0 | live]
 ; [else-branch: 123 | $unwrap[Int]($wrap[$Int]($unwrap[Int]($w_mul[$Int]($wrap[$Int]($unwrap[Int](l$Ann$1@201@01) - 1), l$D$2@218@01)) + 4 * $unwrap[Int](l$D_P$1@391@01))) == 0 | live]
@@ -12420,7 +12420,7 @@
 (check-sat)
 ; unsat
 (pop) ; 24
-; 0.36s
+; 3.83s
 ; (get-info :all-statistics)
 (assert (=>
   (forall ((q$i@397@01 Int)) (!
@@ -12839,7 +12839,7 @@
 (check-sat)
 ; unsat
 (pop) ; 28
-; 0.40s
+; 0.44s
 ; (get-info :all-statistics)
 (assert (=>
   (forall ((q$i@399@01 Int)) (!
@@ -13122,7 +13122,7 @@
 (check-sat)
 ; unknown
 (pop) ; 32
-; 0.01s
+; 0.02s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 32
@@ -13227,7 +13227,7 @@
 (check-sat)
 ; unsat
 (pop) ; 29
-; 0.33s
+; 0.45s
 ; (get-info :all-statistics)
 (assert (=>
   (forall ((q$i@402@01 Int)) (!
@@ -13912,7 +13912,7 @@
 (check-sat)
 ; unsat
 (pop) ; 28
-; 0.49s
+; 0.23s
 ; (get-info :all-statistics)
 (assert (=>
   (forall ((q$i@406@01 Int)) (!
@@ -14300,7 +14300,7 @@
 (check-sat)
 ; unsat
 (pop) ; 29
-; 0.30s
+; 0.44s
 ; (get-info :all-statistics)
 (assert (=>
   (forall ((q$i@409@01 Int)) (!
@@ -14477,7 +14477,7 @@
 (check-sat)
 ; unknown
 (pop) ; 29
-; 0.01s
+; 0.02s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 29
@@ -14830,7 +14830,7 @@
 (check-sat)
 ; unsat
 (pop) ; 13
-; 0.10s
+; 0.00s
 ; (get-info :all-statistics)
 (assert (=>
   (forall ((q$i@413@01 Int)) (!
@@ -17071,7 +17071,7 @@
 (check-sat)
 ; unsat
 (pop) ; 18
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 230 | !(0 <= $unwrap[Int](l$i0$i@481@01) && $unwrap[Int](l$i0$i@481@01) < |l$i0$result@480@01|) | dead]
 ; [else-branch: 230 | 0 <= $unwrap[Int](l$i0$i@481@01) && $unwrap[Int](l$i0$i@481@01) < |l$i0$result@480@01| | live]
@@ -17113,7 +17113,7 @@
 (check-sat)
 ; unknown
 (pop) ; 18
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 18
@@ -17347,7 +17347,7 @@
 (check-sat)
 ; unsat
 (pop) ; 20
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 238 | !($unwrap[Int]($w_mul[$Int]($wrap[$Int](l$i0$result@480@01[$unwrap[Int](l$i0$i@481@01)]), $wrap[$Int]($struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))[$unwrap[Int](l$i0$i@481@01)]))) < 0) | live]
 ; [else-branch: 238 | $unwrap[Int]($w_mul[$Int]($wrap[$Int](l$i0$result@480@01[$unwrap[Int](l$i0$i@481@01)]), $wrap[$Int]($struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))[$unwrap[Int](l$i0$i@481@01)]))) < 0 | dead]
@@ -17834,7 +17834,7 @@
 (check-sat)
 ; unsat
 (pop) ; 31
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [eval] l$i1$xp[q$i]
 (push) ; 31
@@ -17939,7 +17939,7 @@
 (check-sat)
 ; unsat
 (pop) ; 28
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (pop) ; 27
 (push) ; 27
@@ -18221,7 +18221,7 @@
 (check-sat)
 ; unknown
 (pop) ; 26
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 256 | True | live]
 ; [else-branch: 256 | False | dead]

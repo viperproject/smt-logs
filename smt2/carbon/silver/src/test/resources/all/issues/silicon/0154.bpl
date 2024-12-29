@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 10:48:59
+// Date:         2024-12-29 15:39:26
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0154.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0154-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -231,8 +231,8 @@ procedure Nodet$#definedness(this: Ref) returns (Result: int)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var newPMask: PMaskType;
   
@@ -259,8 +259,8 @@ procedure Nodet$#definedness(this: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume Nodevalid$#trigger(UnfoldingHeap, Nodevalid$(this));
       assume UnfoldingHeap[null, Nodevalid$(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, Nodeval$]), CombineFrames(FrameFragment(UnfoldingHeap[this, Nodenext$]), FrameFragment((if UnfoldingHeap[this, Nodenext$] != null then UnfoldingHeap[null, Nodevalid$(UnfoldingHeap[this, Nodenext$])] else EmptyFrame))));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Nodevalid$(this) (0154.vpr@9.1--14.2) [202523]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, Nodevalid$(this)];
@@ -286,8 +286,8 @@ procedure Nodet$#definedness(this: Ref) returns (Result: int)
       assume state(UnfoldingHeap, UnfoldingMask);
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := UnfoldingMask;
         ExhaleWellDef0Heap := UnfoldingHeap;
+        ExhaleWellDef0Mask := UnfoldingMask;
         assert {:msg "  Precondition of function Nodet$ might not hold. Assertion this != null might not hold. (0154.vpr@13.49--13.61) [202524]"}
           this != null;
         perm := FullPerm;
@@ -364,8 +364,8 @@ procedure Nodet2$#definedness(this: Ref) returns (Result: int)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var newPMask: PMaskType;
   
@@ -392,8 +392,8 @@ procedure Nodet2$#definedness(this: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume Nodep$#trigger(UnfoldingHeap, Nodep$(this));
       assume UnfoldingHeap[null, Nodep$(this)] == UnfoldingHeap[null, Nodep$(this)];
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Nodep$(this) (0154.vpr@16.1--22.2) [202526]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, Nodep$(this)];
@@ -407,8 +407,8 @@ procedure Nodet2$#definedness(this: Ref) returns (Result: int)
       assume state(UnfoldingHeap, UnfoldingMask);
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := UnfoldingMask;
         ExhaleWellDef0Heap := UnfoldingHeap;
+        ExhaleWellDef0Mask := UnfoldingMask;
         assert {:msg "  Precondition of function Nodet$ might not hold. Assertion this != null might not hold. (0154.vpr@21.45--21.57) [202527]"}
           this != null;
         perm := FullPerm;

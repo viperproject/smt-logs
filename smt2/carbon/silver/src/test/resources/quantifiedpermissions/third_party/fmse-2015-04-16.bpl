@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 10:13:57
+// Date:         2024-12-29 15:04:11
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/third_party/fmse-2015-04-16.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/third_party/fmse-2015-04-16-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -649,8 +649,8 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
   var i_7: int;
   var j_7: int;
   var i_8: int;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var i_9: int;
@@ -665,8 +665,8 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
   var __flatten_8: Ref;
   var __flatten_9: Ref;
   var k: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var i_40: int;
   var i_42: int;
   var i_44: int;
@@ -921,8 +921,8 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1187,8 +1187,8 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Loop invariant 0 <= k might not hold on entry. Assertion 0 <= k might not hold. (fmse-2015-04-16.vpr@66.15--66.21) [6028]"}
           0 <= k;
         assert {:msg "  Loop invariant k % 2 == 0 might not hold on entry. Assertion k % 2 == 0 might not hold. (fmse-2015-04-16.vpr@67.15--67.25) [6029]"}
@@ -1853,8 +1853,8 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
             k := __flatten_3;
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Loop invariant 0 <= k might not be preserved. Assertion 0 <= k might not hold. (fmse-2015-04-16.vpr@66.15--66.21) [6091]"}
           0 <= k;
         assert {:msg "  Loop invariant k % 2 == 0 might not be preserved. Assertion k % 2 == 0 might not hold. (fmse-2015-04-16.vpr@67.15--67.25) [6092]"}
@@ -2170,15 +2170,15 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
     assume state(Heap, Mask);
   
   // -- Translating statement: assert k == |res| -- fmse-2015-04-16.vpr@93.3--93.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion k == |res| might not hold. (fmse-2015-04-16.vpr@93.10--93.20) [6109]"}
       k == Seq#Length(res);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert |res| \ 2 == k \ 2 -- fmse-2015-04-16.vpr@94.3--94.28
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion |res| \ 2 == k \ 2 might not hold. (fmse-2015-04-16.vpr@94.10--94.28) [6110]"}
       Seq#Length(res) div 2 == k div 2;
     assume state(Heap, Mask);
@@ -2187,8 +2187,8 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
   //     { a[i] }
   //     (i in [0..|res| \ 2)) ==>
   //     res[2 * i].Ref__Integer_value == a[i].Ref__Integer_value) -- fmse-2015-04-16.vpr@95.3--95.113
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall i: Int :: { a[i] } (i in [0..|res| \ 2)) ==> res[2 * i].Ref__Integer_value == a[i].Ref__Integer_value)
       if (*) {
@@ -2225,8 +2225,8 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
   //     { res[i] }
   //     0 <= i && (i % 2 == 1 && i < |res|) ==>
   //     res[i].Ref__Integer_value == b[i \ 2].Ref__Integer_value) -- fmse-2015-04-16.vpr@96.3--96.131
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall i: Int :: { res[i] } 0 <= i && (i % 2 == 1 && i < |res|) ==> res[i].Ref__Integer_value == b[i \ 2].Ref__Integer_value)
       if (*) {
@@ -2263,8 +2263,8 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
   //     { b[i] }
   //     (i in [0..|res| \ 2)) ==>
   //     res[2 * i + 1].Ref__Integer_value == b[i].Ref__Integer_value) -- fmse-2015-04-16.vpr@97.3--97.117
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall i: Int :: { b[i] } (i in [0..|res| \ 2)) ==> res[2 * i + 1].Ref__Integer_value == b[i].Ref__Integer_value)
       if (*) {
@@ -2301,8 +2301,8 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
   //     { res[i] }
   //     0 <= i && (i % 2 == 0 && i < |res|) ==>
   //     res[i].Ref__Integer_value == a[i \ 2].Ref__Integer_value) -- fmse-2015-04-16.vpr@98.3--98.131
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall i: Int :: { res[i] } 0 <= i && (i % 2 == 0 && i < |res|) ==> res[i].Ref__Integer_value == a[i \ 2].Ref__Integer_value)
       if (*) {
@@ -2336,8 +2336,8 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of Exercise4__zip might not hold. Assertion |res| == 2 * |a| might not hold. (fmse-2015-04-16.vpr@21.11--21.27) [6139]"}
       Seq#Length(res) == 2 * Seq#Length(a_2);
     assert {:msg "  Postcondition of Exercise4__zip might not hold. Assertion |a| == |b| might not hold. (fmse-2015-04-16.vpr@22.11--22.21) [6140]"}
@@ -2524,15 +2524,15 @@ procedure Exercise4__zip(diz: Ref, a_2: (Seq Ref), b_24: (Seq Ref), res: (Seq Re
 procedure Exercise4__Exercise4() returns (sys__result: Ref)
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var diz: Ref;
   var __flatten_11: Ref;
   var freshObj: Ref;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -2542,8 +2542,8 @@ procedure Exercise4__Exercise4() returns (sys__result: Ref)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -2576,8 +2576,8 @@ procedure Exercise4__Exercise4() returns (sys__result: Ref)
     assume state(Heap, Mask);
   
   // -- Translating statement: assert sys__result != null -- fmse-2015-04-16.vpr@109.3--109.29
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (fmse-2015-04-16.vpr@109.10--109.29) [6152]"}
       sys__result != null;
     assume state(Heap, Mask);
@@ -2588,8 +2588,8 @@ procedure Exercise4__Exercise4() returns (sys__result: Ref)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of Exercise4__Exercise4 might not hold. Assertion sys__result != null might not hold. (fmse-2015-04-16.vpr@102.11--102.30) [6153]"}
       sys__result != null;
 }

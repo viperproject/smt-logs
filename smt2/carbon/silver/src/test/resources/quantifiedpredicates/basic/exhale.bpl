@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 10:24:48
+// Date:         2024-12-29 15:15:07
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpredicates/basic/exhale.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpredicates/basic/exhale-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -712,12 +712,12 @@ procedure test01(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var newVersion: FrameType;
   var freshVersion: FrameType;
   var ExhaleHeap: HeapType;
@@ -739,8 +739,8 @@ procedure test01(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -757,8 +757,8 @@ procedure test01(x: Ref) returns ()
   // -- Translating statement: unfold acc(pred1(x), write) -- exhale.vpr@18.3--18.18
     assume pred1#trigger(Heap, pred1(x));
     assume Heap[null, pred1(x)] == FrameFragment(Heap[x, f_7]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding pred1(x) might fail. There might be insufficient permission to access pred1(x) (exhale.vpr@18.3--18.18) [107136]"}
@@ -779,15 +779,15 @@ procedure test01(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert x != null -- exhale.vpr@19.3--19.19
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion x != null might not hold. (exhale.vpr@19.10--19.19) [107138]"}
       x != null;
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(pred1(x), write) -- exhale.vpr@20.3--20.16
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding pred1(x) might fail. There might be insufficient permission to access x.f (exhale.vpr@20.3--20.16) [107141]"}
@@ -810,8 +810,8 @@ procedure test01(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of test01 might not hold. There might be insufficient permission to access pred1(x) (exhale.vpr@16.11--16.24) [107143]"}
@@ -832,12 +832,12 @@ procedure test01_qp(xs: (Seq Ref), y: Ref) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var perm: Perm;
   var newVersion: FrameType;
   var freshVersion: FrameType;
@@ -900,8 +900,8 @@ procedure test01_qp(xs: (Seq Ref), y: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -956,8 +956,8 @@ procedure test01_qp(xs: (Seq Ref), y: Ref) returns ()
   // -- Translating statement: unfold acc(pred1(y), write) -- exhale.vpr@28.4--28.19
     assume pred1#trigger(Heap, pred1(y));
     assume Heap[null, pred1(y)] == FrameFragment(Heap[y, f_7]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding pred1(y) might fail. There might be insufficient permission to access pred1(y) (exhale.vpr@28.4--28.19) [107148]"}
@@ -978,15 +978,15 @@ procedure test01_qp(xs: (Seq Ref), y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert y != null -- exhale.vpr@29.4--29.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion y != null might not hold. (exhale.vpr@29.11--29.20) [107150]"}
       y != null;
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(pred1(y), write) -- exhale.vpr@30.4--30.17
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding pred1(y) might fail. There might be insufficient permission to access y.f (exhale.vpr@30.4--30.17) [107153]"}
@@ -1009,8 +1009,8 @@ procedure test01_qp(xs: (Seq Ref), y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     havoc QPMask;
     
     // -- check that the permission amount is positive
@@ -1070,13 +1070,13 @@ procedure test02_qp(xs: (Seq Ref), y: Ref) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var newVersion: FrameType;
   var freshVersion: FrameType;
   var ExhaleHeap: HeapType;
@@ -1138,8 +1138,8 @@ procedure test02_qp(xs: (Seq Ref), y: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1198,8 +1198,8 @@ procedure test02_qp(xs: (Seq Ref), y: Ref) returns ()
   // -- Translating statement: unfold acc(pred1(y), write) -- exhale.vpr@39.4--39.19
     assume pred1#trigger(Heap, pred1(y));
     assume Heap[null, pred1(y)] == FrameFragment(Heap[y, f_7]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding pred1(y) might fail. There might be insufficient permission to access pred1(y) (exhale.vpr@39.4--39.19) [107161]"}
@@ -1220,15 +1220,15 @@ procedure test02_qp(xs: (Seq Ref), y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert y != null -- exhale.vpr@40.4--40.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion y != null might not hold. (exhale.vpr@40.11--40.20) [107163]"}
       y != null;
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(pred1(y), write) -- exhale.vpr@41.4--41.17
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding pred1(y) might fail. There might be insufficient permission to access y.f (exhale.vpr@41.4--41.17) [107166]"}
@@ -1251,8 +1251,8 @@ procedure test02_qp(xs: (Seq Ref), y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     havoc QPMask;
     
     // -- check that the permission amount is positive
@@ -1318,10 +1318,10 @@ procedure test03_qp(xs: (Seq Ref), y: Ref) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var perm: Perm;
   var newVersion: FrameType;
   var freshVersion: FrameType;
@@ -1384,14 +1384,14 @@ procedure test03_qp(xs: (Seq Ref), y: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: unfold acc(pred1(y), write) -- exhale.vpr@48.4--48.19
     assume pred1#trigger(Heap, pred1(y));
     assume Heap[null, pred1(y)] == FrameFragment(Heap[y, f_7]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding pred1(y) might fail. There might be insufficient permission to access pred1(y) (exhale.vpr@48.4--48.19) [107174]"}
@@ -1412,15 +1412,15 @@ procedure test03_qp(xs: (Seq Ref), y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert y != null -- exhale.vpr@49.4--49.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion y != null might not hold. (exhale.vpr@49.11--49.20) [107176]"}
       y != null;
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(pred1(y), write) -- exhale.vpr@50.4--50.17
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding pred1(y) might fail. There might be insufficient permission to access y.f (exhale.vpr@50.4--50.17) [107179]"}
@@ -1443,8 +1443,8 @@ procedure test03_qp(xs: (Seq Ref), y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(pred1(y), write) -- exhale.vpr@51.4--51.24
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Exhale might fail. There might be insufficient permission to access pred1(y) (exhale.vpr@51.11--51.24) [107182]"}
@@ -1458,8 +1458,8 @@ procedure test03_qp(xs: (Seq Ref), y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale (forall x: Ref :: { (x in xs) } (x in xs) ==> acc(pred1(x), write)) -- exhale.vpr@54.4--54.53
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall x: Ref :: { (x in xs) } (x in xs) ==> acc(pred1(x), write))
       if (*) {
@@ -1525,10 +1525,10 @@ procedure test04_qp(xs: (Seq Ref), y: Ref) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var perm: Perm;
   var newVersion: FrameType;
   var freshVersion: FrameType;
@@ -1591,14 +1591,14 @@ procedure test04_qp(xs: (Seq Ref), y: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: unfold acc(pred1(y), write) -- exhale.vpr@61.4--61.19
     assume pred1#trigger(Heap, pred1(y));
     assume Heap[null, pred1(y)] == FrameFragment(Heap[y, f_7]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding pred1(y) might fail. There might be insufficient permission to access pred1(y) (exhale.vpr@61.4--61.19) [107189]"}
@@ -1619,15 +1619,15 @@ procedure test04_qp(xs: (Seq Ref), y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert y != null -- exhale.vpr@62.4--62.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion y != null might not hold. (exhale.vpr@62.11--62.20) [107191]"}
       y != null;
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(pred1(y), write) -- exhale.vpr@63.4--63.17
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding pred1(y) might fail. There might be insufficient permission to access y.f (exhale.vpr@63.4--63.17) [107194]"}
@@ -1650,8 +1650,8 @@ procedure test04_qp(xs: (Seq Ref), y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(pred1(y), write) -- exhale.vpr@64.4--64.24
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Exhale might fail. There might be insufficient permission to access pred1(y) (exhale.vpr@64.11--64.24) [107197]"}
@@ -1667,8 +1667,8 @@ procedure test04_qp(xs: (Seq Ref), y: Ref) returns ()
   // -- Translating statement: unfold acc(pred1(y), write) -- exhale.vpr@67.4--67.19
     assume pred1#trigger(Heap, pred1(y));
     assume Heap[null, pred1(y)] == FrameFragment(Heap[y, f_7]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding pred1(y) might fail. There might be insufficient permission to access pred1(y) (exhale.vpr@67.4--67.19) [107200]"}
@@ -1697,10 +1697,10 @@ procedure test05_qp(xs: (Seq Ref), y: Ref) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var perm: Perm;
   var newVersion: FrameType;
   var freshVersion: FrameType;
@@ -1765,14 +1765,14 @@ procedure test05_qp(xs: (Seq Ref), y: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: unfold acc(pred1(y), write) -- exhale.vpr@75.4--75.19
     assume pred1#trigger(Heap, pred1(y));
     assume Heap[null, pred1(y)] == FrameFragment(Heap[y, f_7]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding pred1(y) might fail. There might be insufficient permission to access pred1(y) (exhale.vpr@75.4--75.19) [107205]"}
@@ -1799,8 +1799,8 @@ procedure test05_qp(xs: (Seq Ref), y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(pred1(y), write) -- exhale.vpr@77.4--77.17
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding pred1(y) might fail. There might be insufficient permission to access y.f (exhale.vpr@77.4--77.17) [107210]"}
@@ -1825,8 +1825,8 @@ procedure test05_qp(xs: (Seq Ref), y: Ref) returns ()
   // -- Translating statement: unfold acc(pred1(y), write) -- exhale.vpr@78.4--78.19
     assume pred1#trigger(Heap, pred1(y));
     assume Heap[null, pred1(y)] == FrameFragment(Heap[y, f_7]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding pred1(y) might fail. There might be insufficient permission to access pred1(y) (exhale.vpr@78.4--78.19) [107214]"}
@@ -1847,8 +1847,8 @@ procedure test05_qp(xs: (Seq Ref), y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert y.f == 1 -- exhale.vpr@79.4--79.19
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of y.f == 1
       assert {:msg "  Assert might fail. There might be insufficient permission to access y.f (exhale.vpr@79.11--79.19) [107216]"}
@@ -1858,8 +1858,8 @@ procedure test05_qp(xs: (Seq Ref), y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(pred1(y), write) -- exhale.vpr@80.4--80.17
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding pred1(y) might fail. There might be insufficient permission to access y.f (exhale.vpr@80.4--80.17) [107220]"}
@@ -1882,8 +1882,8 @@ procedure test05_qp(xs: (Seq Ref), y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(pred1(y), write) -- exhale.vpr@81.4--81.24
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Exhale might fail. There might be insufficient permission to access pred1(y) (exhale.vpr@81.11--81.24) [107223]"}
@@ -1899,8 +1899,8 @@ procedure test05_qp(xs: (Seq Ref), y: Ref) returns ()
   // -- Translating statement: unfold acc(pred1(y), write) -- exhale.vpr@84.4--84.19
     assume pred1#trigger(Heap, pred1(y));
     assume Heap[null, pred1(y)] == FrameFragment(Heap[y, f_7]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding pred1(y) might fail. There might be insufficient permission to access pred1(y) (exhale.vpr@84.4--84.19) [107226]"}
@@ -1929,10 +1929,10 @@ procedure test06_qp(xs: (Seq Ref), y: Ref, z: Ref) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var perm: Perm;
   var newVersion: FrameType;
   
@@ -1994,14 +1994,14 @@ procedure test06_qp(xs: (Seq Ref), y: Ref, z: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: unfold acc(pred1(y), write) -- exhale.vpr@91.4--91.19
     assume pred1#trigger(Heap, pred1(y));
     assume Heap[null, pred1(y)] == FrameFragment(Heap[y, f_7]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding pred1(y) might fail. There might be insufficient permission to access pred1(y) (exhale.vpr@91.4--91.19) [107231]"}
@@ -2024,8 +2024,8 @@ procedure test06_qp(xs: (Seq Ref), y: Ref, z: Ref) returns ()
   // -- Translating statement: unfold acc(pred1(z), write) -- exhale.vpr@93.4--93.19
     assume pred1#trigger(Heap, pred1(z));
     assume Heap[null, pred1(z)] == FrameFragment(Heap[z, f_7]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding pred1(z) might fail. There might be insufficient permission to access pred1(z) (exhale.vpr@93.4--93.19) [107235]"}
@@ -2054,10 +2054,10 @@ procedure test07_qp(xs: (Seq Ref), y: Ref) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var perm: Perm;
   var newVersion: FrameType;
   var freshVersion: FrameType;
@@ -2121,14 +2121,14 @@ procedure test07_qp(xs: (Seq Ref), y: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: unfold acc(pred1(y), write) -- exhale.vpr@102.4--102.19
     assume pred1#trigger(Heap, pred1(y));
     assume Heap[null, pred1(y)] == FrameFragment(Heap[y, f_7]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding pred1(y) might fail. There might be insufficient permission to access pred1(y) (exhale.vpr@102.4--102.19) [107240]"}
@@ -2155,8 +2155,8 @@ procedure test07_qp(xs: (Seq Ref), y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert y.f == 1 -- exhale.vpr@104.4--104.19
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of y.f == 1
       assert {:msg "  Assert might fail. There might be insufficient permission to access y.f (exhale.vpr@104.11--104.19) [107243]"}
@@ -2166,8 +2166,8 @@ procedure test07_qp(xs: (Seq Ref), y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(pred1(y), write) -- exhale.vpr@105.4--105.17
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding pred1(y) might fail. There might be insufficient permission to access y.f (exhale.vpr@105.4--105.17) [107247]"}
@@ -2192,8 +2192,8 @@ procedure test07_qp(xs: (Seq Ref), y: Ref) returns ()
   // -- Translating statement: unfold acc(pred1(y), write) -- exhale.vpr@108.4--108.19
     assume pred1#trigger(Heap, pred1(y));
     assume Heap[null, pred1(y)] == FrameFragment(Heap[y, f_7]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding pred1(y) might fail. There might be insufficient permission to access pred1(y) (exhale.vpr@108.4--108.19) [107251]"}
@@ -2214,8 +2214,8 @@ procedure test07_qp(xs: (Seq Ref), y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert y.f == 1 -- exhale.vpr@109.4--109.19
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of y.f == 1
       assert {:msg "  Assert might fail. There might be insufficient permission to access y.f (exhale.vpr@109.11--109.19) [107253]"}

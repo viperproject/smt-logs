@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-27 10:06:35
+; Started: 2024-12-29 14:56:43
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -137,20 +137,20 @@
 (assert (forall ((s@$ $Snap) (a@0@00 Int) (b@1@00 Bool)) (!
   (= (LibB%limited s@$ a@0@00 b@1@00) (LibB s@$ a@0@00 b@1@00))
   :pattern ((LibB s@$ a@0@00 b@1@00))
-  :qid |quant-u-21932|)))
+  :qid |quant-u-21869|)))
 (assert (forall ((s@$ $Snap) (a@0@00 Int) (b@1@00 Bool)) (!
   (LibB%stateless a@0@00 b@1@00)
   :pattern ((LibB%limited s@$ a@0@00 b@1@00))
-  :qid |quant-u-21933|)))
+  :qid |quant-u-21870|)))
 (assert (forall ((s@$ $Snap) (a@0@00 Int) (b@1@00 Bool)) (!
   (let ((result@2@00 (LibB%limited s@$ a@0@00 b@1@00))) (=>
     (LibB%precondition s@$ a@0@00 b@1@00)
     (= result@2@00 (or b@1@00 (foo<Bool> a@0@00)))))
   :pattern ((LibB%limited s@$ a@0@00 b@1@00))
-  :qid |quant-u-21934|)))
+  :qid |quant-u-21871|)))
 (assert (forall ((s@$ $Snap) (a@0@00 Int) (b@1@00 Bool)) (!
   (let ((result@2@00 (LibB%limited s@$ a@0@00 b@1@00))) true)
   :pattern ((LibB%limited s@$ a@0@00 b@1@00))
-  :qid |quant-u-21935|)))
+  :qid |quant-u-21872|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------

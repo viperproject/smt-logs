@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 10:53:48
+// Date:         2024-12-29 15:44:16
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0072.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0072-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -243,10 +243,10 @@ procedure t_plus(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var freshVersion: FrameType;
   
   // -- Initializing the state
@@ -267,12 +267,12 @@ procedure t_plus(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: fold acc(token(x), 1 / 10) -- 0072.vpr@13.5--13.31
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := 1 / 10;
     assert {:msg "  Folding token(x) might fail. Fraction 1 / 10 might be negative. (0072.vpr@13.5--13.31) [219823]"}
       perm >= NoPerm;
@@ -307,10 +307,10 @@ procedure t_minus_1(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var freshVersion: FrameType;
   
   // -- Initializing the state
@@ -331,14 +331,14 @@ procedure t_minus_1(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: fold acc(token(x), -1 / 1) -- 0072.vpr@20.5--20.31
     assert {:msg "  Folding token(x) might fail. Fraction -1 / 1 might not be positive. (0072.vpr@20.5--20.31) [219826]"}
       false;
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := -1 / 1;
     assert {:msg "  Folding token(x) might fail. Fraction -1 / 1 might be negative. (0072.vpr@20.5--20.31) [219827]"}
       perm >= NoPerm;
@@ -373,10 +373,10 @@ procedure t_minus_2(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var freshVersion: FrameType;
   
   // -- Initializing the state
@@ -397,14 +397,14 @@ procedure t_minus_2(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: fold acc(token(x), -(1 / 1)) -- 0072.vpr@27.5--27.31
     assert {:msg "  Folding token(x) might fail. Fraction -(1 / 1) might not be positive. (0072.vpr@27.5--27.31) [219830]"}
       false;
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := -(1 / 1);
     assert {:msg "  Folding token(x) might fail. Fraction -(1 / 1) might be negative. (0072.vpr@27.5--27.31) [219831]"}
       perm >= NoPerm;

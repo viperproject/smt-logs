@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-27 10:04:55
+; Started: 2024-12-29 14:54:55
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -447,11 +447,11 @@
     (contentNodes%limited s@$ this@0@00 end@1@00)
     (contentNodes s@$ this@0@00 end@1@00))
   :pattern ((contentNodes s@$ this@0@00 end@1@00))
-  :qid |quant-u-18899|)))
+  :qid |quant-u-18856|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref) (end@1@00 $Ref)) (!
   (contentNodes%stateless this@0@00 end@1@00)
   :pattern ((contentNodes%limited s@$ this@0@00 end@1@00))
-  :qid |quant-u-18900|)))
+  :qid |quant-u-18857|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref) (end@1@00 $Ref)) (!
   (let ((result@2@00 (contentNodes%limited s@$ this@0@00 end@1@00))) (=>
     (contentNodes%precondition s@$ this@0@00 end@1@00)
@@ -473,19 +473,19 @@
         :pattern ((Seq_index result@2@00 i) (Seq_index result@2@00 j))
         )))))
   :pattern ((contentNodes%limited s@$ this@0@00 end@1@00))
-  :qid |quant-u-18909|)))
+  :qid |quant-u-18866|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref) (end@1@00 $Ref)) (!
   (let ((result@2@00 (contentNodes%limited s@$ this@0@00 end@1@00))) true)
   :pattern ((contentNodes%limited s@$ this@0@00 end@1@00))
-  :qid |quant-u-18910|)))
+  :qid |quant-u-18867|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref) (end@1@00 $Ref)) (!
   (let ((result@2@00 (contentNodes%limited s@$ this@0@00 end@1@00))) true)
   :pattern ((contentNodes%limited s@$ this@0@00 end@1@00))
-  :qid |quant-u-18911|)))
+  :qid |quant-u-18868|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref) (end@1@00 $Ref)) (!
   (let ((result@2@00 (contentNodes%limited s@$ this@0@00 end@1@00))) true)
   :pattern ((contentNodes%limited s@$ this@0@00 end@1@00))
-  :qid |quant-u-18912|)))
+  :qid |quant-u-18869|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref) (end@1@00 $Ref)) (!
   (=>
     (contentNodes%precondition s@$ this@0@00 end@1@00)
@@ -499,7 +499,7 @@
           (contentNodes%limited ($Snap.first ($Snap.second ($Snap.second s@$))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$))) end@1@00)))))
   :pattern ((contentNodes s@$ this@0@00 end@1@00))
   :pattern ((contentNodes%stateless this@0@00 end@1@00) (lseg%trigger s@$ this@0@00 end@1@00))
-  :qid |quant-u-18913|)))
+  :qid |quant-u-18870|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref) (end@1@00 $Ref)) (!
   (=>
     (contentNodes%precondition s@$ this@0@00 end@1@00)
@@ -508,29 +508,29 @@
       true
       (contentNodes%precondition ($Snap.first ($Snap.second ($Snap.second s@$))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$))) end@1@00)))
   :pattern ((contentNodes s@$ this@0@00 end@1@00))
-  :qid |quant-u-18914|)))
+  :qid |quant-u-18871|)))
 (assert (forall ((s@$ $Snap) (this@3@00 $Ref) (end@4@00 $Ref)) (!
   (=
     (lengthNodes%limited s@$ this@3@00 end@4@00)
     (lengthNodes s@$ this@3@00 end@4@00))
   :pattern ((lengthNodes s@$ this@3@00 end@4@00))
-  :qid |quant-u-18901|)))
+  :qid |quant-u-18858|)))
 (assert (forall ((s@$ $Snap) (this@3@00 $Ref) (end@4@00 $Ref)) (!
   (lengthNodes%stateless this@3@00 end@4@00)
   :pattern ((lengthNodes%limited s@$ this@3@00 end@4@00))
-  :qid |quant-u-18902|)))
+  :qid |quant-u-18859|)))
 (assert (forall ((s@$ $Snap) (this@3@00 $Ref) (end@4@00 $Ref)) (!
   (let ((result@5@00 (lengthNodes%limited s@$ this@3@00 end@4@00))) (=>
     (lengthNodes%precondition s@$ this@3@00 end@4@00)
     (= result@5@00 (Seq_length (contentNodes s@$ this@3@00 end@4@00)))))
   :pattern ((lengthNodes%limited s@$ this@3@00 end@4@00))
-  :qid |quant-u-18915|)))
+  :qid |quant-u-18872|)))
 (assert (forall ((s@$ $Snap) (this@3@00 $Ref) (end@4@00 $Ref)) (!
   (let ((result@5@00 (lengthNodes%limited s@$ this@3@00 end@4@00))) (=>
     (lengthNodes%precondition s@$ this@3@00 end@4@00)
     (contentNodes%precondition s@$ this@3@00 end@4@00)))
   :pattern ((lengthNodes%limited s@$ this@3@00 end@4@00))
-  :qid |quant-u-18916|)))
+  :qid |quant-u-18873|)))
 (assert (forall ((s@$ $Snap) (this@3@00 $Ref) (end@4@00 $Ref)) (!
   (=>
     (lengthNodes%precondition s@$ this@3@00 end@4@00)
@@ -544,7 +544,7 @@
           (lengthNodes%limited ($Snap.first ($Snap.second ($Snap.second s@$))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$))) end@4@00)))))
   :pattern ((lengthNodes s@$ this@3@00 end@4@00))
   :pattern ((lengthNodes%stateless this@3@00 end@4@00) (lseg%trigger s@$ this@3@00 end@4@00))
-  :qid |quant-u-18917|)))
+  :qid |quant-u-18874|)))
 (assert (forall ((s@$ $Snap) (this@3@00 $Ref) (end@4@00 $Ref)) (!
   (=>
     (lengthNodes%precondition s@$ this@3@00 end@4@00)
@@ -553,15 +553,15 @@
       true
       (lengthNodes%precondition ($Snap.first ($Snap.second ($Snap.second s@$))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$))) end@4@00)))
   :pattern ((lengthNodes s@$ this@3@00 end@4@00))
-  :qid |quant-u-18918|)))
+  :qid |quant-u-18875|)))
 (assert (forall ((s@$ $Snap) (this@6@00 $Ref)) (!
   (= (content%limited s@$ this@6@00) (content s@$ this@6@00))
   :pattern ((content s@$ this@6@00))
-  :qid |quant-u-18903|)))
+  :qid |quant-u-18860|)))
 (assert (forall ((s@$ $Snap) (this@6@00 $Ref)) (!
   (content%stateless this@6@00)
   :pattern ((content%limited s@$ this@6@00))
-  :qid |quant-u-18904|)))
+  :qid |quant-u-18861|)))
 (assert (forall ((s@$ $Snap) (this@6@00 $Ref)) (!
   (let ((result@7@00 (content%limited s@$ this@6@00))) (=>
     (content%precondition s@$ this@6@00)
@@ -572,11 +572,11 @@
       :pattern ((Seq_index result@7@00 i) (Seq_index result@7@00 j))
       ))))
   :pattern ((content%limited s@$ this@6@00))
-  :qid |quant-u-18919|)))
+  :qid |quant-u-18876|)))
 (assert (forall ((s@$ $Snap) (this@6@00 $Ref)) (!
   (let ((result@7@00 (content%limited s@$ this@6@00))) true)
   :pattern ((content%limited s@$ this@6@00))
-  :qid |quant-u-18920|)))
+  :qid |quant-u-18877|)))
 (assert (forall ((s@$ $Snap) (this@6@00 $Ref)) (!
   (=>
     (content%precondition s@$ this@6@00)
@@ -585,33 +585,33 @@
       (contentNodes ($Snap.second s@$) ($SortWrappers.$SnapTo$Ref ($Snap.first s@$)) $Ref.null)))
   :pattern ((content s@$ this@6@00))
   :pattern ((content%stateless this@6@00) (List%trigger s@$ this@6@00))
-  :qid |quant-u-18921|)))
+  :qid |quant-u-18878|)))
 (assert (forall ((s@$ $Snap) (this@6@00 $Ref)) (!
   (=>
     (content%precondition s@$ this@6@00)
     (contentNodes%precondition ($Snap.second s@$) ($SortWrappers.$SnapTo$Ref ($Snap.first s@$)) $Ref.null))
   :pattern ((content s@$ this@6@00))
-  :qid |quant-u-18922|)))
+  :qid |quant-u-18879|)))
 (assert (forall ((s@$ $Snap) (this@8@00 $Ref)) (!
   (= (length%limited s@$ this@8@00) (length s@$ this@8@00))
   :pattern ((length s@$ this@8@00))
-  :qid |quant-u-18905|)))
+  :qid |quant-u-18862|)))
 (assert (forall ((s@$ $Snap) (this@8@00 $Ref)) (!
   (length%stateless this@8@00)
   :pattern ((length%limited s@$ this@8@00))
-  :qid |quant-u-18906|)))
+  :qid |quant-u-18863|)))
 (assert (forall ((s@$ $Snap) (this@8@00 $Ref)) (!
   (let ((result@9@00 (length%limited s@$ this@8@00))) (=>
     (length%precondition s@$ this@8@00)
     (= result@9@00 (Seq_length (content s@$ this@8@00)))))
   :pattern ((length%limited s@$ this@8@00))
-  :qid |quant-u-18923|)))
+  :qid |quant-u-18880|)))
 (assert (forall ((s@$ $Snap) (this@8@00 $Ref)) (!
   (let ((result@9@00 (length%limited s@$ this@8@00))) (=>
     (length%precondition s@$ this@8@00)
     (content%precondition s@$ this@8@00)))
   :pattern ((length%limited s@$ this@8@00))
-  :qid |quant-u-18924|)))
+  :qid |quant-u-18881|)))
 (assert (forall ((s@$ $Snap) (this@8@00 $Ref)) (!
   (=>
     (length%precondition s@$ this@8@00)
@@ -620,33 +620,33 @@
       (lengthNodes ($Snap.second s@$) ($SortWrappers.$SnapTo$Ref ($Snap.first s@$)) $Ref.null)))
   :pattern ((length s@$ this@8@00))
   :pattern ((length%stateless this@8@00) (List%trigger s@$ this@8@00))
-  :qid |quant-u-18925|)))
+  :qid |quant-u-18882|)))
 (assert (forall ((s@$ $Snap) (this@8@00 $Ref)) (!
   (=>
     (length%precondition s@$ this@8@00)
     (lengthNodes%precondition ($Snap.second s@$) ($SortWrappers.$SnapTo$Ref ($Snap.first s@$)) $Ref.null))
   :pattern ((length s@$ this@8@00))
-  :qid |quant-u-18926|)))
+  :qid |quant-u-18883|)))
 (assert (forall ((s@$ $Snap) (this@10@00 $Ref)) (!
   (= (peek%limited s@$ this@10@00) (peek s@$ this@10@00))
   :pattern ((peek s@$ this@10@00))
-  :qid |quant-u-18907|)))
+  :qid |quant-u-18864|)))
 (assert (forall ((s@$ $Snap) (this@10@00 $Ref)) (!
   (peek%stateless this@10@00)
   :pattern ((peek%limited s@$ this@10@00))
-  :qid |quant-u-18908|)))
+  :qid |quant-u-18865|)))
 (assert (forall ((s@$ $Snap) (this@10@00 $Ref)) (!
   (let ((result@11@00 (peek%limited s@$ this@10@00))) (=>
     (peek%precondition s@$ this@10@00)
     (= result@11@00 (Seq_index (content ($Snap.first s@$) this@10@00) 0))))
   :pattern ((peek%limited s@$ this@10@00))
-  :qid |quant-u-18927|)))
+  :qid |quant-u-18884|)))
 (assert (forall ((s@$ $Snap) (this@10@00 $Ref)) (!
   (let ((result@11@00 (peek%limited s@$ this@10@00))) (=>
     (peek%precondition s@$ this@10@00)
     (content%precondition ($Snap.first s@$) this@10@00)))
   :pattern ((peek%limited s@$ this@10@00))
-  :qid |quant-u-18928|)))
+  :qid |quant-u-18885|)))
 (assert (forall ((s@$ $Snap) (this@10@00 $Ref)) (!
   (=>
     (peek%precondition s@$ this@10@00)
@@ -654,11 +654,11 @@
       (peek s@$ this@10@00)
       ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.first s@$))))))
   :pattern ((peek s@$ this@10@00))
-  :qid |quant-u-18929|)))
+  :qid |quant-u-18886|)))
 (assert (forall ((s@$ $Snap) (this@10@00 $Ref)) (!
   true
   :pattern ((peek s@$ this@10@00))
-  :qid |quant-u-18930|)))
+  :qid |quant-u-18887|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- create ----------
@@ -2742,7 +2742,7 @@
     (MWSF_apply mwsf@37@01 $t@36@01)
     ($Snap.combine ($Snap.first $t@36@01) $Snap.unit))
   :pattern ((MWSF_apply mwsf@37@01 $t@36@01))
-  :qid |quant-u-18931|)))
+  :qid |quant-u-18888|)))
 ; [eval] old(content(this))[index - 1]
 ; [eval] old(content(this))
 ; [eval] content(this)
@@ -2781,7 +2781,7 @@
     (MWSF_apply mwsf@37@01 $t@36@01)
     ($Snap.combine ($Snap.first $t@36@01) $Snap.unit))
   :pattern ((MWSF_apply mwsf@37@01 $t@36@01))
-  :qid |quant-u-18932|)))
+  :qid |quant-u-18889|)))
 (assert true)
 (declare-const prev@38@01 $Ref)
 (declare-const index@39@01 Int)
@@ -3012,7 +3012,7 @@
 (check-sat)
 ; unknown
 (pop) ; 10
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 10
@@ -4650,7 +4650,7 @@
 (check-sat)
 ; unknown
 (pop) ; 16
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 43 | First:(Second:(First:(Second:(Second:($t@41@01))))) != Null | live]
 ; [else-branch: 43 | First:(Second:(First:(Second:(Second:($t@41@01))))) == Null | live]
@@ -5081,7 +5081,7 @@
 (check-sat)
 ; unknown
 (pop) ; 15
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (assert (=
   ($Snap.second ($Snap.first ($Snap.second ($Snap.second $t@41@01))))
@@ -5095,7 +5095,7 @@
 (check-sat)
 ; unknown
 (pop) ; 15
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (assert (=
   ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second $t@41@01)))))
@@ -5165,7 +5165,7 @@
 (check-sat)
 ; unknown
 (pop) ; 17
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (assert (=
   ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second $t@41@01)))))))
@@ -5181,7 +5181,7 @@
 (check-sat)
 ; unknown
 (pop) ; 17
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 17
@@ -5192,7 +5192,7 @@
 (check-sat)
 ; unknown
 (pop) ; 17
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (assert (=
   ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second $t@41@01))))))))
@@ -5633,7 +5633,7 @@
 (check-sat)
 ; unknown
 (pop) ; 16
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 16
@@ -5644,7 +5644,7 @@
 (check-sat)
 ; unknown
 (pop) ; 16
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (assert (=
   ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second $t@41@01)))))))
@@ -5660,7 +5660,7 @@
 (check-sat)
 ; unknown
 (pop) ; 16
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 16
@@ -5671,7 +5671,7 @@
 (check-sat)
 ; unknown
 (pop) ; 16
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (assert (=
   ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second $t@41@01))))))))
@@ -6738,7 +6738,7 @@
 (check-sat)
 ; unknown
 (pop) ; 14
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (check-sat)
 ; unknown
@@ -6840,7 +6840,7 @@
 (check-sat)
 ; unknown
 (pop) ; 17
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 17
@@ -6852,7 +6852,7 @@
 (check-sat)
 ; unknown
 (pop) ; 17
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 66 | First:(Second:(First:($t@58@01))) != Null | live]
 ; [else-branch: 66 | First:(Second:(First:($t@58@01))) == Null | live]
@@ -6876,7 +6876,7 @@
 (check-sat)
 ; unknown
 (pop) ; 18
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 18
@@ -6903,7 +6903,7 @@
 (check-sat)
 ; unknown
 (pop) ; 18
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 18
@@ -7051,7 +7051,7 @@
 (check-sat)
 ; unknown
 (pop) ; 17
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 69 | First:($t@41@01) != Null | live]
 ; [else-branch: 69 | First:($t@41@01) == Null | dead]
@@ -7219,7 +7219,7 @@
 (check-sat)
 ; unknown
 (pop) ; 14
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (check-sat)
 ; unknown
@@ -7460,7 +7460,7 @@
 (check-sat)
 ; unsat
 (pop) ; 14
-; 0.11s
+; 0.21s
 ; (get-info :all-statistics)
 (assert (Seq_equal
   (contentNodes ($Snap.first (MWSF_apply ($SortWrappers.$SnapTo$MWSF ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@41@01))))))))))) ($Snap.combine
@@ -7488,7 +7488,7 @@
         $Snap.unit)))
       $Snap.unit))
   :pattern ((MWSF_apply mwsf@61@01 $t@58@01))
-  :qid |quant-u-18933|)))
+  :qid |quant-u-18890|)))
 ; [eval] old(content(this))[index - 1]
 ; [eval] old(content(this))
 ; [eval] content(this)
@@ -7559,7 +7559,7 @@
         $Snap.unit)))
       $Snap.unit))
   :pattern ((MWSF_apply mwsf@61@01 $t@58@01))
-  :qid |quant-u-18934|)))
+  :qid |quant-u-18891|)))
 (assert true)
 ; Loop head block: Re-establish invariant
 (push) ; 13
@@ -7645,7 +7645,7 @@
 (check-sat)
 ; unknown
 (pop) ; 14
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 70 | First:(Second:(First:(Second:(Second:($t@41@01))))) == Null | live]
 ; [else-branch: 70 | First:(Second:(First:(Second:(Second:($t@41@01))))) != Null | live]
@@ -7760,7 +7760,7 @@
 (check-sat)
 ; unknown
 (pop) ; 14
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 14
@@ -7838,7 +7838,7 @@
 (check-sat)
 ; unsat
 (pop) ; 13
-; 0.23s
+; 0.06s
 ; (get-info :all-statistics)
 (assert (=>
   (not
@@ -7940,7 +7940,7 @@
 (check-sat)
 ; unknown
 (pop) ; 16
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 73 | First:(Second:(First:(Second:(Second:($t@41@01))))) != Null | live]
 ; [else-branch: 73 | First:(Second:(First:(Second:(Second:($t@41@01))))) == Null | dead]
@@ -7960,7 +7960,7 @@
 (check-sat)
 ; unknown
 (pop) ; 17
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (assert (=
   ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second $t@41@01)))))))
@@ -7976,7 +7976,7 @@
 (check-sat)
 ; unknown
 (pop) ; 17
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (assert (=
   ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second $t@41@01))))))))
@@ -8011,7 +8011,7 @@
 (check-sat)
 ; unknown
 (pop) ; 18
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 74 | First:(Second:(First:(Second:(Second:(First:(Second:(Second:($t@41@01)))))))) != Null | live]
 ; [else-branch: 74 | First:(Second:(First:(Second:(Second:(First:(Second:(Second:($t@41@01)))))))) == Null | live]
@@ -8211,7 +8211,7 @@
 (check-sat)
 ; unknown
 (pop) ; 17
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 17
@@ -8533,7 +8533,7 @@
 (check-sat)
 ; unknown
 (pop) ; 13
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 78 | First:($t@41@01) != Null | live]
 ; [else-branch: 78 | First:($t@41@01) == Null | dead]
@@ -8551,7 +8551,7 @@
 (check-sat)
 ; unknown
 (pop) ; 14
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (assert (=
   ($Snap.second ($Snap.first ($Snap.second ($Snap.second $t@41@01))))
@@ -8565,7 +8565,7 @@
 (check-sat)
 ; unknown
 (pop) ; 14
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (assert (=
   ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second $t@41@01)))))
@@ -8613,7 +8613,7 @@
 (check-sat)
 ; unknown
 (pop) ; 15
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 79 | First:(Second:(First:(Second:(Second:($t@41@01))))) != Null | live]
 ; [else-branch: 79 | First:(Second:(First:(Second:(Second:($t@41@01))))) == Null | live]
@@ -8637,7 +8637,7 @@
 (check-sat)
 ; unknown
 (pop) ; 16
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 16
@@ -8648,7 +8648,7 @@
 (check-sat)
 ; unknown
 (pop) ; 16
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (assert (=
   ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second $t@41@01)))))))
@@ -8664,7 +8664,7 @@
 (check-sat)
 ; unknown
 (pop) ; 16
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 16
@@ -8675,7 +8675,7 @@
 (check-sat)
 ; unknown
 (pop) ; 16
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (assert (=
   ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second $t@41@01))))))))
@@ -8693,7 +8693,7 @@
 (check-sat)
 ; unknown
 (pop) ; 16
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (assert (=
   ($Snap.second ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second $t@41@01)))))))))
@@ -8713,7 +8713,7 @@
 (check-sat)
 ; unknown
 (pop) ; 17
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 80 | First:(Second:(First:(Second:(Second:($t@41@01))))) != Null | live]
 ; [else-branch: 80 | First:(Second:(First:(Second:(Second:($t@41@01))))) == Null | dead]
@@ -9060,13 +9060,13 @@
 (declare-const head@69@01 $Ref)
 (declare-const held@70@01 Int)
 (declare-const changed@71@01 Bool)
-(assert (not (= tmp@66@01 this@12@01)))
 (assert (not (= tmp@66@01 prev@38@01)))
+(assert (not (= tmp@66@01 this@12@01)))
+(assert (not (= tmp@66@01 tmp@17@01)))
+(assert (not (= tmp@66@01 ($SortWrappers.$SnapTo$Ref ($Snap.first $t@15@01)))))
 (assert (not (= tmp@66@01 ptr@40@01)))
 (assert (not (= tmp@66@01 ($SortWrappers.$SnapTo$Ref ($Snap.first $t@41@01)))))
-(assert (not (= tmp@66@01 tmp@17@01)))
 (assert (not (= tmp@66@01 hd@35@01)))
-(assert (not (= tmp@66@01 ($SortWrappers.$SnapTo$Ref ($Snap.first $t@15@01)))))
 ; [exec]
 ; tmp.data := elem
 (push) ; 11
@@ -9749,7 +9749,7 @@
 (check-sat)
 ; unknown
 (pop) ; 16
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 16
@@ -9777,7 +9777,7 @@
 (check-sat)
 ; unknown
 (pop) ; 17
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 17
@@ -9786,7 +9786,7 @@
 (check-sat)
 ; unknown
 (pop) ; 17
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (assert (=
   ($Snap.second ($Snap.first ($Snap.second ($Snap.second $t@41@01))))
@@ -9800,7 +9800,7 @@
 (check-sat)
 ; unknown
 (pop) ; 17
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 17
@@ -9809,7 +9809,7 @@
 (check-sat)
 ; unknown
 (pop) ; 17
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (assert (=
   ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second $t@41@01)))))
@@ -9827,7 +9827,7 @@
 (check-sat)
 ; unknown
 (pop) ; 17
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (assert (=
   ($Snap.second ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second $t@41@01))))))
@@ -9845,7 +9845,7 @@
 (check-sat)
 ; unknown
 (pop) ; 18
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 93 | next@72@01 != Null | live]
 ; [else-branch: 93 | next@72@01 == Null | dead]
@@ -10537,1350 +10537,3 @@
       (Seq_singleton elem@13@01))
     (Seq_drop (content $t@15@01 this@12@01) index@39@01)))))
 (check-sat)
-; unsat
-(pop) ; 13
-; 0.45s
-; (get-info :all-statistics)
-(assert (Seq_equal
-  (content ($Snap.combine
-    ($Snap.first $t@15@01)
-    ($Snap.first (MWSF_apply ($SortWrappers.$SnapTo$MWSF ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@41@01))))))))))) ($Snap.combine
-      ($Snap.combine
-        ($Snap.first ($Snap.second $t@41@01))
-        ($Snap.combine
-          ($SortWrappers.$RefTo$Snap tmp@66@01)
-          ($Snap.combine
-            ($Snap.combine
-              ($SortWrappers.IntTo$Snap elem@13@01)
-              ($Snap.combine
-                ($SortWrappers.$RefTo$Snap next@72@01)
-                ($Snap.combine
-                  ($Snap.first ($Snap.second ($Snap.second $t@41@01)))
-                  $Snap.unit)))
-            $Snap.unit)))
-      $Snap.unit)))) this@12@01)
-  (Seq_append
-    (Seq_append
-      (Seq_drop (Seq_take (content $t@15@01 this@12@01) index@39@01) 0)
-      (Seq_singleton elem@13@01))
-    (Seq_drop (content $t@15@01 this@12@01) index@39@01))))
-(pop) ; 12
-(pop) ; 11
-(pop) ; 10
-(push) ; 10
-; [else-branch: 82 | First:($t@41@01) != Null && First:(First:(Second:(Second:($t@41@01)))) < elem@13@01]
-(assert (and
-  (not (= ($SortWrappers.$SnapTo$Ref ($Snap.first $t@41@01)) $Ref.null))
-  (<
-    ($SortWrappers.$SnapToInt ($Snap.first ($Snap.first ($Snap.second ($Snap.second $t@41@01)))))
-    elem@13@01)))
-(pop) ; 10
-(pop) ; 9
-(pop) ; 8
-(pop) ; 7
-(pop) ; 6
-(pop) ; 5
-(push) ; 5
-; [else-branch: 25 | First:($t@15@01) == Null || elem@13@01 <= First:(Second:($t@15@01))]
-(assert (or
-  (= ($SortWrappers.$SnapTo$Ref ($Snap.first $t@15@01)) $Ref.null)
-  (<=
-    elem@13@01
-    ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second $t@15@01))))))
-(pop) ; 5
-(pop) ; 4
-(pop) ; 3
-(push) ; 3
-; [else-branch: 1 | First:($t@15@01) == Null]
-(assert (= ($SortWrappers.$SnapTo$Ref ($Snap.first $t@15@01)) $Ref.null))
-(pop) ; 3
-; [eval] !(this.head != null)
-; [eval] this.head != null
-(push) ; 3
-(set-option :timeout 10)
-(assert (not (not (= ($SortWrappers.$SnapTo$Ref ($Snap.first $t@15@01)) $Ref.null))))
-(check-sat)
-; unknown
-(pop) ; 3
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 3
-(set-option :timeout 10)
-(assert (not (= ($SortWrappers.$SnapTo$Ref ($Snap.first $t@15@01)) $Ref.null)))
-(check-sat)
-; unknown
-(pop) ; 3
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 96 | First:($t@15@01) == Null | live]
-; [else-branch: 96 | First:($t@15@01) != Null | live]
-(set-option :timeout 0)
-(push) ; 3
-; [then-branch: 96 | First:($t@15@01) == Null]
-(assert (= ($SortWrappers.$SnapTo$Ref ($Snap.first $t@15@01)) $Ref.null))
-; [eval] this.head == null || elem <= this.head.data
-; [eval] this.head == null
-(push) ; 4
-; [then-branch: 97 | First:($t@15@01) == Null | live]
-; [else-branch: 97 | First:($t@15@01) != Null | live]
-(push) ; 5
-; [then-branch: 97 | First:($t@15@01) == Null]
-(pop) ; 5
-(push) ; 5
-; [else-branch: 97 | First:($t@15@01) != Null]
-(assert (not (= ($SortWrappers.$SnapTo$Ref ($Snap.first $t@15@01)) $Ref.null)))
-; [eval] elem <= this.head.data
-(check-sat)
-; unsat
-(pop) ; 5
-(pop) ; 4
-; Joined path conditions
-(push) ; 4
-(set-option :timeout 10)
-(assert (not (not (= ($SortWrappers.$SnapTo$Ref ($Snap.first $t@15@01)) $Ref.null))))
-(check-sat)
-; unknown
-(pop) ; 4
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 98 | First:($t@15@01) == Null | live]
-; [else-branch: 98 | First:($t@15@01) != Null | dead]
-(set-option :timeout 0)
-(push) ; 4
-; [then-branch: 98 | First:($t@15@01) == Null]
-; [exec]
-; tmp := new(data, next, head, held, changed)
-(declare-const tmp@78@01 $Ref)
-(assert (not (= tmp@78@01 $Ref.null)))
-(declare-const data@79@01 Int)
-(declare-const next@80@01 $Ref)
-(declare-const head@81@01 $Ref)
-(declare-const held@82@01 Int)
-(declare-const changed@83@01 Bool)
-(assert (not (= tmp@78@01 this@12@01)))
-(assert (not (= tmp@78@01 tmp@17@01)))
-(assert (not (= tmp@78@01 ($SortWrappers.$SnapTo$Ref ($Snap.first $t@15@01)))))
-; [exec]
-; tmp.data := elem
-; [exec]
-; tmp.next := this.head
-(declare-const next@84@01 $Ref)
-(assert (= next@84@01 ($SortWrappers.$SnapTo$Ref ($Snap.first $t@15@01))))
-; [exec]
-; fold acc(lseg(this.head, null), write)
-; [eval] this != end
-; [then-branch: 99 | First:($t@15@01) != Null | dead]
-; [else-branch: 99 | First:($t@15@01) == Null | live]
-(push) ; 5
-; [else-branch: 99 | First:($t@15@01) == Null]
-(assert (lseg%trigger $Snap.unit ($SortWrappers.$SnapTo$Ref ($Snap.first $t@15@01)) $Ref.null))
-(assert (= ($Snap.second $t@15@01) $Snap.unit))
-; [exec]
-; fold acc(lseg(tmp, null), write)
-; [eval] this != end
-(push) ; 6
-(set-option :timeout 10)
-(assert (not (= tmp@78@01 $Ref.null)))
-(check-sat)
-; unknown
-(pop) ; 6
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 100 | tmp@78@01 != Null | live]
-; [else-branch: 100 | tmp@78@01 == Null | dead]
-(set-option :timeout 0)
-(push) ; 6
-; [then-branch: 100 | tmp@78@01 != Null]
-(push) ; 7
-(set-option :timeout 10)
-(assert (not (= ($SortWrappers.$SnapTo$Ref ($Snap.first $t@15@01)) next@84@01)))
-(check-sat)
-; unsat
-(pop) ; 7
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 7
-(set-option :timeout 10)
-(assert (not false))
-(check-sat)
-; unknown
-(pop) ; 7
-; 0.00s
-; (get-info :all-statistics)
-; [eval] (unfolding acc(lseg(this.next, end), write) in this.next != end ==> this.data <= this.next.data)
-(set-option :timeout 0)
-(push) ; 7
-(push) ; 8
-(set-option :timeout 10)
-(assert (not (= ($SortWrappers.$SnapTo$Ref ($Snap.first $t@15@01)) next@84@01)))
-(check-sat)
-; unsat
-(pop) ; 8
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 8
-(set-option :timeout 10)
-(assert (not false))
-(check-sat)
-; unknown
-(pop) ; 8
-; 0.00s
-; (get-info :all-statistics)
-(assert (lseg%trigger ($Snap.second $t@15@01) next@84@01 $Ref.null))
-; [eval] this != end
-(set-option :timeout 0)
-(push) ; 8
-(set-option :timeout 10)
-(assert (not (= next@84@01 $Ref.null)))
-(check-sat)
-; unsat
-(pop) ; 8
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 101 | next@84@01 != Null | dead]
-; [else-branch: 101 | next@84@01 == Null | live]
-(set-option :timeout 0)
-(push) ; 8
-; [else-branch: 101 | next@84@01 == Null]
-(assert (= next@84@01 $Ref.null))
-; [eval] this.next != end ==> this.data <= this.next.data
-; [eval] this.next != end
-(push) ; 9
-; [then-branch: 102 | next@84@01 != Null | dead]
-; [else-branch: 102 | next@84@01 == Null | live]
-(push) ; 10
-; [else-branch: 102 | next@84@01 == Null]
-(pop) ; 10
-(pop) ; 9
-; Joined path conditions
-(pop) ; 8
-(pop) ; 7
-; Joined path conditions
-(assert (lseg%trigger ($Snap.second $t@15@01) next@84@01 $Ref.null))
-(assert (= next@84@01 $Ref.null))
-(assert (lseg%trigger ($Snap.combine
-  ($SortWrappers.IntTo$Snap elem@13@01)
-  ($Snap.combine
-    ($SortWrappers.$RefTo$Snap next@84@01)
-    ($Snap.combine ($Snap.second $t@15@01) $Snap.unit))) tmp@78@01 $Ref.null))
-(push) ; 7
-(set-option :timeout 10)
-(assert (not (= ($SortWrappers.$SnapTo$Ref ($Snap.first $t@15@01)) tmp@78@01)))
-(check-sat)
-; unknown
-(pop) ; 7
-; 0.00s
-; (get-info :all-statistics)
-; [exec]
-; this.head := tmp
-(set-option :timeout 0)
-(push) ; 7
-(set-option :timeout 10)
-(assert (not (= tmp@78@01 this@12@01)))
-(check-sat)
-; unknown
-(pop) ; 7
-; 0.00s
-; (get-info :all-statistics)
-; [exec]
-; fold acc(List(this), write)
-(assert (List%trigger ($Snap.combine
-  ($SortWrappers.$RefTo$Snap tmp@78@01)
-  ($Snap.combine
-    ($SortWrappers.IntTo$Snap elem@13@01)
-    ($Snap.combine
-      ($SortWrappers.$RefTo$Snap next@84@01)
-      ($Snap.combine ($Snap.second $t@15@01) $Snap.unit)))) this@12@01))
-; [eval] 0 <= index
-; [eval] index <= |old(content(this))|
-; [eval] |old(content(this))|
-; [eval] old(content(this))
-; [eval] content(this)
-(set-option :timeout 0)
-(push) ; 7
-(assert (content%precondition $t@15@01 this@12@01))
-(pop) ; 7
-; Joined path conditions
-(assert (content%precondition $t@15@01 this@12@01))
-(push) ; 7
-(assert (not (<= 0 (Seq_length (content $t@15@01 this@12@01)))))
-(check-sat)
-; unsat
-(pop) ; 7
-; 0.00s
-; (get-info :all-statistics)
-(assert (<= 0 (Seq_length (content $t@15@01 this@12@01))))
-; [eval] content(this) == old(content(this))[0..index] ++ Seq(elem) ++ old(content(this))[index..]
-; [eval] content(this)
-(push) ; 7
-(assert (content%precondition ($Snap.combine
-  ($SortWrappers.$RefTo$Snap tmp@78@01)
-  ($Snap.combine
-    ($SortWrappers.IntTo$Snap elem@13@01)
-    ($Snap.combine
-      ($SortWrappers.$RefTo$Snap next@84@01)
-      ($Snap.combine ($Snap.second $t@15@01) $Snap.unit)))) this@12@01))
-(pop) ; 7
-; Joined path conditions
-(assert (content%precondition ($Snap.combine
-  ($SortWrappers.$RefTo$Snap tmp@78@01)
-  ($Snap.combine
-    ($SortWrappers.IntTo$Snap elem@13@01)
-    ($Snap.combine
-      ($SortWrappers.$RefTo$Snap next@84@01)
-      ($Snap.combine ($Snap.second $t@15@01) $Snap.unit)))) this@12@01))
-; [eval] old(content(this))[0..index] ++ Seq(elem) ++ old(content(this))[index..]
-; [eval] old(content(this))[0..index] ++ Seq(elem)
-; [eval] old(content(this))[0..index]
-; [eval] old(content(this))[..index]
-; [eval] old(content(this))
-; [eval] content(this)
-(push) ; 7
-(pop) ; 7
-; Joined path conditions
-; [eval] Seq(elem)
-(assert (= (Seq_length (Seq_singleton elem@13@01)) 1))
-; [eval] old(content(this))[index..]
-; [eval] old(content(this))
-; [eval] content(this)
-(push) ; 7
-(pop) ; 7
-; Joined path conditions
-(push) ; 7
-(assert (not (Seq_equal
-  (content ($Snap.combine
-    ($SortWrappers.$RefTo$Snap tmp@78@01)
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap elem@13@01)
-      ($Snap.combine
-        ($SortWrappers.$RefTo$Snap next@84@01)
-        ($Snap.combine ($Snap.second $t@15@01) $Snap.unit)))) this@12@01)
-  (Seq_append
-    (Seq_append
-      (Seq_drop (Seq_take (content $t@15@01 this@12@01) 0) 0)
-      (Seq_singleton elem@13@01))
-    (Seq_drop (content $t@15@01 this@12@01) 0)))))
-(check-sat)
-; unsat
-(pop) ; 7
-; 0.00s
-; (get-info :all-statistics)
-(assert (Seq_equal
-  (content ($Snap.combine
-    ($SortWrappers.$RefTo$Snap tmp@78@01)
-    ($Snap.combine
-      ($SortWrappers.IntTo$Snap elem@13@01)
-      ($Snap.combine
-        ($SortWrappers.$RefTo$Snap next@84@01)
-        ($Snap.combine ($Snap.second $t@15@01) $Snap.unit)))) this@12@01)
-  (Seq_append
-    (Seq_append
-      (Seq_drop (Seq_take (content $t@15@01 this@12@01) 0) 0)
-      (Seq_singleton elem@13@01))
-    (Seq_drop (content $t@15@01 this@12@01) 0))))
-(pop) ; 6
-(pop) ; 5
-(pop) ; 4
-; [eval] !(this.head == null || elem <= this.head.data)
-; [eval] this.head == null || elem <= this.head.data
-; [eval] this.head == null
-(push) ; 4
-; [then-branch: 103 | First:($t@15@01) == Null | live]
-; [else-branch: 103 | First:($t@15@01) != Null | live]
-(push) ; 5
-; [then-branch: 103 | First:($t@15@01) == Null]
-(pop) ; 5
-(push) ; 5
-; [else-branch: 103 | First:($t@15@01) != Null]
-(assert (not (= ($SortWrappers.$SnapTo$Ref ($Snap.first $t@15@01)) $Ref.null)))
-; [eval] elem <= this.head.data
-(check-sat)
-; unsat
-(pop) ; 5
-(pop) ; 4
-; Joined path conditions
-; [then-branch: 104 | First:($t@15@01) != Null | dead]
-; [else-branch: 104 | First:($t@15@01) == Null | live]
-(push) ; 4
-; [else-branch: 104 | First:($t@15@01) == Null]
-(pop) ; 4
-(pop) ; 3
-(push) ; 3
-; [else-branch: 96 | First:($t@15@01) != Null]
-(assert (not (= ($SortWrappers.$SnapTo$Ref ($Snap.first $t@15@01)) $Ref.null)))
-(pop) ; 3
-(pop) ; 2
-(pop) ; 1
-; ---------- dequeue ----------
-(declare-const this@85@01 $Ref)
-(declare-const res@86@01 Int)
-(declare-const this@87@01 $Ref)
-(declare-const res@88@01 Int)
-(push) ; 1
-(declare-const $t@89@01 $Snap)
-(assert (= $t@89@01 ($Snap.combine ($Snap.first $t@89@01) ($Snap.second $t@89@01))))
-(assert (= ($Snap.second $t@89@01) $Snap.unit))
-; [eval] 0 < length(this)
-; [eval] length(this)
-(push) ; 2
-(assert (length%precondition ($Snap.first $t@89@01) this@87@01))
-(pop) ; 2
-; Joined path conditions
-(assert (length%precondition ($Snap.first $t@89@01) this@87@01))
-(assert (< 0 (length ($Snap.first $t@89@01) this@87@01)))
-; State saturation: after contract
-(set-option :timeout 50)
-(check-sat)
-; unknown
-(set-option :timeout 0)
-(push) ; 2
-(declare-const $t@90@01 $Snap)
-(assert (= $t@90@01 ($Snap.combine ($Snap.first $t@90@01) ($Snap.second $t@90@01))))
-(assert (=
-  ($Snap.second $t@90@01)
-  ($Snap.combine
-    ($Snap.first ($Snap.second $t@90@01))
-    ($Snap.second ($Snap.second $t@90@01)))))
-(assert (= ($Snap.first ($Snap.second $t@90@01)) $Snap.unit))
-; [eval] res == old(content(this)[0])
-; [eval] old(content(this)[0])
-; [eval] content(this)[0]
-; [eval] content(this)
-(push) ; 3
-(assert (content%precondition ($Snap.first $t@89@01) this@87@01))
-(pop) ; 3
-; Joined path conditions
-(assert (content%precondition ($Snap.first $t@89@01) this@87@01))
-(push) ; 3
-(assert (not (< 0 (Seq_length (content ($Snap.first $t@89@01) this@87@01)))))
-(check-sat)
-; unsat
-(pop) ; 3
-; 0.00s
-; (get-info :all-statistics)
-(assert (= res@88@01 (Seq_index (content ($Snap.first $t@89@01) this@87@01) 0)))
-(assert (= ($Snap.second ($Snap.second $t@90@01)) $Snap.unit))
-; [eval] content(this) == old(content(this)[1..])
-; [eval] content(this)
-(push) ; 3
-(assert (content%precondition ($Snap.first $t@90@01) this@87@01))
-(pop) ; 3
-; Joined path conditions
-(assert (content%precondition ($Snap.first $t@90@01) this@87@01))
-; [eval] old(content(this)[1..])
-; [eval] content(this)[1..]
-; [eval] content(this)
-(push) ; 3
-(pop) ; 3
-; Joined path conditions
-(assert (Seq_equal
-  (content ($Snap.first $t@90@01) this@87@01)
-  (Seq_drop (content ($Snap.first $t@89@01) this@87@01) 1)))
-(pop) ; 2
-(push) ; 2
-; [exec]
-; unfold acc(List(this), write)
-(assert (=
-  ($Snap.first $t@89@01)
-  ($Snap.combine
-    ($Snap.first ($Snap.first $t@89@01))
-    ($Snap.second ($Snap.first $t@89@01)))))
-(assert (not (= this@87@01 $Ref.null)))
-; State saturation: after unfold
-(set-option :timeout 40)
-(check-sat)
-; unknown
-(assert (List%trigger ($Snap.first $t@89@01) this@87@01))
-; [exec]
-; unfold acc(lseg(this.head, null), write)
-; [eval] this != end
-(set-option :timeout 0)
-(push) ; 3
-(set-option :timeout 10)
-(assert (not (= ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.first $t@89@01))) $Ref.null)))
-(check-sat)
-; unknown
-(pop) ; 3
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 3
-(set-option :timeout 10)
-(assert (not (not
-  (= ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.first $t@89@01))) $Ref.null))))
-(check-sat)
-; unsat
-(pop) ; 3
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 105 | First:(First:($t@89@01)) != Null | live]
-; [else-branch: 105 | First:(First:($t@89@01)) == Null | dead]
-(set-option :timeout 0)
-(push) ; 3
-; [then-branch: 105 | First:(First:($t@89@01)) != Null]
-(assert (not
-  (= ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.first $t@89@01))) $Ref.null)))
-(assert (=
-  ($Snap.second ($Snap.first $t@89@01))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.first $t@89@01)))
-    ($Snap.second ($Snap.second ($Snap.first $t@89@01))))))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.first $t@89@01)))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.first $t@89@01))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01)))))))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01)))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01))))))))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01)))))
-  $Snap.unit))
-; [eval] (unfolding acc(lseg(this.next, end), write) in this.next != end ==> this.data <= this.next.data)
-(push) ; 4
-(assert (lseg%trigger ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01))))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.first $t@89@01))))) $Ref.null))
-; [eval] this != end
-(push) ; 5
-(set-option :timeout 10)
-(assert (not (=
-  ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.first $t@89@01)))))
-  $Ref.null)))
-(check-sat)
-; unknown
-(pop) ; 5
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 5
-(set-option :timeout 10)
-(assert (not (not
-  (=
-    ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.first $t@89@01)))))
-    $Ref.null))))
-(check-sat)
-; unknown
-(pop) ; 5
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 106 | First:(Second:(Second:(First:($t@89@01)))) != Null | live]
-; [else-branch: 106 | First:(Second:(Second:(First:($t@89@01)))) == Null | live]
-(set-option :timeout 0)
-(push) ; 5
-; [then-branch: 106 | First:(Second:(Second:(First:($t@89@01)))) != Null]
-(assert (not
-  (=
-    ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.first $t@89@01)))))
-    $Ref.null)))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01)))))
-  ($Snap.combine
-    ($Snap.first ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01))))))
-    ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01)))))))))
-(push) ; 6
-(set-option :timeout 10)
-(assert (not (=
-  ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.first $t@89@01)))
-  ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.first $t@89@01))))))))
-(check-sat)
-; unknown
-(pop) ; 6
-; 0.00s
-; (get-info :all-statistics)
-(assert (=
-  ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01)))))))
-    ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01))))))))))
-(set-option :timeout 0)
-(push) ; 6
-(set-option :timeout 10)
-(assert (not (=
-  ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.first $t@89@01)))
-  ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.first $t@89@01))))))))
-(check-sat)
-; unknown
-(pop) ; 6
-; 0.00s
-; (get-info :all-statistics)
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01)))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01)))))))))))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01))))))))
-  $Snap.unit))
-; [eval] (unfolding acc(lseg(this.next, end), write) in this.next != end ==> this.data <= this.next.data)
-(set-option :timeout 0)
-(push) ; 6
-(assert (lseg%trigger ($Snap.first ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01)))))))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01)))))))) $Ref.null))
-; [eval] this != end
-(push) ; 7
-(set-option :timeout 10)
-(assert (not (=
-  ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01))))))))
-  $Ref.null)))
-(check-sat)
-; unknown
-(pop) ; 7
-; 0.01s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 7
-(set-option :timeout 10)
-(assert (not (not
-  (=
-    ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01))))))))
-    $Ref.null))))
-(check-sat)
-; unknown
-(pop) ; 7
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 107 | First:(Second:(First:(Second:(Second:(Second:(First:($t@89@01))))))) != Null | live]
-; [else-branch: 107 | First:(Second:(First:(Second:(Second:(Second:(First:($t@89@01))))))) == Null | live]
-(set-option :timeout 0)
-(push) ; 7
-; [then-branch: 107 | First:(Second:(First:(Second:(Second:(Second:(First:($t@89@01))))))) != Null]
-(assert (not
-  (=
-    ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01))))))))
-    $Ref.null)))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.first ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01)))))))))
-    ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01))))))))))))
-(push) ; 8
-(set-option :timeout 10)
-(assert (not (=
-  ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.first $t@89@01)))))
-  ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01)))))))))))
-(check-sat)
-; unknown
-(pop) ; 8
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 8
-(set-option :timeout 10)
-(assert (not (=
-  ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.first $t@89@01)))
-  ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01)))))))))))
-(check-sat)
-; unknown
-(pop) ; 8
-; 0.00s
-; (get-info :all-statistics)
-(assert (=
-  ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01)))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01))))))))))
-    ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01)))))))))))))
-(set-option :timeout 0)
-(push) ; 8
-(set-option :timeout 10)
-(assert (not (=
-  ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.first $t@89@01)))))
-  ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01)))))))))))
-(check-sat)
-; unknown
-(pop) ; 8
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 8
-(set-option :timeout 10)
-(assert (not (=
-  ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.first $t@89@01)))
-  ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01)))))))))))
-(check-sat)
-; unknown
-(pop) ; 8
-; 0.00s
-; (get-info :all-statistics)
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01))))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01)))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01))))))))))))))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01)))))))))))
-  $Snap.unit))
-; [eval] (unfolding acc(lseg(this.next, end), write) in this.next != end ==> this.data <= this.next.data)
-(declare-const recunf@91@01 Bool)
-(assert (as recunf@91@01  Bool))
-; [eval] this.next != end ==> this.data <= this.next.data
-; [eval] this.next != end
-(set-option :timeout 0)
-(push) ; 8
-(push) ; 9
-(set-option :timeout 10)
-(assert (not (=
-  ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01))))))))
-  $Ref.null)))
-(check-sat)
-; unknown
-(pop) ; 9
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 108 | First:(Second:(First:(Second:(Second:(Second:(First:($t@89@01))))))) != Null | live]
-; [else-branch: 108 | First:(Second:(First:(Second:(Second:(Second:(First:($t@89@01))))))) == Null | dead]
-(set-option :timeout 0)
-(push) ; 9
-; [then-branch: 108 | First:(Second:(First:(Second:(Second:(Second:(First:($t@89@01))))))) != Null]
-; [eval] this.data <= this.next.data
-(pop) ; 9
-(pop) ; 8
-; Joined path conditions
-(pop) ; 7
-(push) ; 7
-; [else-branch: 107 | First:(Second:(First:(Second:(Second:(Second:(First:($t@89@01))))))) == Null]
-(assert (=
-  ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01))))))))
-  $Ref.null))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01))))))))
-  $Snap.unit))
-; [eval] this.next != end ==> this.data <= this.next.data
-; [eval] this.next != end
-(push) ; 8
-; [then-branch: 109 | First:(Second:(First:(Second:(Second:(Second:(First:($t@89@01))))))) != Null | dead]
-; [else-branch: 109 | First:(Second:(First:(Second:(Second:(Second:(First:($t@89@01))))))) == Null | live]
-(push) ; 9
-; [else-branch: 109 | First:(Second:(First:(Second:(Second:(Second:(First:($t@89@01))))))) == Null]
-(pop) ; 9
-(pop) ; 8
-; Joined path conditions
-(pop) ; 7
-(pop) ; 6
-(declare-const joined_unfolding@92@01 Bool)
-(assert (=>
-  (not
-    (=
-      ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01))))))))
-      $Ref.null))
-  (=
-    (as joined_unfolding@92@01  Bool)
-    (=>
-      (not
-        (=
-          ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01))))))))
-          $Ref.null))
-      (<=
-        ($SortWrappers.$SnapToInt ($Snap.first ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01)))))))
-        ($SortWrappers.$SnapToInt ($Snap.first ($Snap.first ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01)))))))))))))))
-(assert (=>
-  (=
-    ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01))))))))
-    $Ref.null)
-  (= (as joined_unfolding@92@01  Bool) true)))
-; Joined path conditions
-(assert (lseg%trigger ($Snap.first ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01)))))))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01)))))))) $Ref.null))
-(assert (=>
-  (not
-    (=
-      ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01))))))))
-      $Ref.null))
-  (and
-    (not
-      (=
-        ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01))))))))
-        $Ref.null))
-    (=
-      ($Snap.first ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01))))))))
-      ($Snap.combine
-        ($Snap.first ($Snap.first ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01)))))))))
-        ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01)))))))))))
-    (=
-      ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01)))))))))
-      ($Snap.combine
-        ($Snap.first ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01))))))))))
-        ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01))))))))))))
-    (=
-      ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01))))))))))
-      ($Snap.combine
-        ($Snap.first ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01)))))))))))
-        ($Snap.second ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01)))))))))))))
-    (=
-      ($Snap.second ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01)))))))))))
-      $Snap.unit)
-    (as recunf@91@01  Bool))))
-; Joined path conditions
-(assert (=>
-  (=
-    ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01))))))))
-    $Ref.null)
-  (and
-    (=
-      ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01))))))))
-      $Ref.null)
-    (=
-      ($Snap.first ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01))))))))
-      $Snap.unit))))
-(assert (or
-  (=
-    ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01))))))))
-    $Ref.null)
-  (not
-    (=
-      ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01))))))))
-      $Ref.null))))
-(assert (as joined_unfolding@92@01  Bool))
-; [eval] this.next != end ==> this.data <= this.next.data
-; [eval] this.next != end
-(push) ; 6
-(push) ; 7
-(set-option :timeout 10)
-(assert (not (=
-  ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.first $t@89@01)))))
-  $Ref.null)))
-(check-sat)
-; unknown
-(pop) ; 7
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 110 | First:(Second:(Second:(First:($t@89@01)))) != Null | live]
-; [else-branch: 110 | First:(Second:(Second:(First:($t@89@01)))) == Null | dead]
-(set-option :timeout 0)
-(push) ; 7
-; [then-branch: 110 | First:(Second:(Second:(First:($t@89@01)))) != Null]
-; [eval] this.data <= this.next.data
-(pop) ; 7
-(pop) ; 6
-; Joined path conditions
-(pop) ; 5
-(push) ; 5
-; [else-branch: 106 | First:(Second:(Second:(First:($t@89@01)))) == Null]
-(assert (=
-  ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.first $t@89@01)))))
-  $Ref.null))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01)))))
-  $Snap.unit))
-; [eval] this.next != end ==> this.data <= this.next.data
-; [eval] this.next != end
-(push) ; 6
-; [then-branch: 111 | First:(Second:(Second:(First:($t@89@01)))) != Null | dead]
-; [else-branch: 111 | First:(Second:(Second:(First:($t@89@01)))) == Null | live]
-(push) ; 7
-; [else-branch: 111 | First:(Second:(Second:(First:($t@89@01)))) == Null]
-(pop) ; 7
-(pop) ; 6
-; Joined path conditions
-(pop) ; 5
-(pop) ; 4
-(declare-const joined_unfolding@93@01 Bool)
-(assert (=>
-  (not
-    (=
-      ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.first $t@89@01)))))
-      $Ref.null))
-  (=
-    (as joined_unfolding@93@01  Bool)
-    (=>
-      (not
-        (=
-          ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.first $t@89@01)))))
-          $Ref.null))
-      (<=
-        ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.first $t@89@01))))
-        ($SortWrappers.$SnapToInt ($Snap.first ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01))))))))))))
-(assert (=>
-  (=
-    ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.first $t@89@01)))))
-    $Ref.null)
-  (= (as joined_unfolding@93@01  Bool) true)))
-; Joined path conditions
-(assert (lseg%trigger ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01))))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.first $t@89@01))))) $Ref.null))
-(assert (=>
-  (not
-    (=
-      ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.first $t@89@01)))))
-      $Ref.null))
-  (and
-    (not
-      (=
-        ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.first $t@89@01)))))
-        $Ref.null))
-    (=
-      ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01)))))
-      ($Snap.combine
-        ($Snap.first ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01))))))
-        ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01))))))))
-    (=
-      ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01))))))
-      ($Snap.combine
-        ($Snap.first ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01)))))))
-        ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01)))))))))
-    (=
-      ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01)))))))
-      ($Snap.combine
-        ($Snap.first ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01))))))))
-        ($Snap.second ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01))))))))))
-    (=
-      ($Snap.second ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01))))))))
-      $Snap.unit)
-    (=>
-      (not
-        (=
-          ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01))))))))
-          $Ref.null))
-      (=
-        (as joined_unfolding@92@01  Bool)
-        (=>
-          (not
-            (=
-              ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01))))))))
-              $Ref.null))
-          (<=
-            ($SortWrappers.$SnapToInt ($Snap.first ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01)))))))
-            ($SortWrappers.$SnapToInt ($Snap.first ($Snap.first ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01))))))))))))))
-    (=>
-      (=
-        ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01))))))))
-        $Ref.null)
-      (= (as joined_unfolding@92@01  Bool) true))
-    (lseg%trigger ($Snap.first ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01)))))))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01)))))))) $Ref.null)
-    (=>
-      (not
-        (=
-          ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01))))))))
-          $Ref.null))
-      (and
-        (not
-          (=
-            ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01))))))))
-            $Ref.null))
-        (=
-          ($Snap.first ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01))))))))
-          ($Snap.combine
-            ($Snap.first ($Snap.first ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01)))))))))
-            ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01)))))))))))
-        (=
-          ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01)))))))))
-          ($Snap.combine
-            ($Snap.first ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01))))))))))
-            ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01))))))))))))
-        (=
-          ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01))))))))))
-          ($Snap.combine
-            ($Snap.first ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01)))))))))))
-            ($Snap.second ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01)))))))))))))
-        (=
-          ($Snap.second ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01)))))))))))
-          $Snap.unit)
-        (as recunf@91@01  Bool)))
-    (=>
-      (=
-        ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01))))))))
-        $Ref.null)
-      (and
-        (=
-          ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01))))))))
-          $Ref.null)
-        (=
-          ($Snap.first ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01))))))))
-          $Snap.unit)))
-    (or
-      (=
-        ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01))))))))
-        $Ref.null)
-      (not
-        (=
-          ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01))))))))
-          $Ref.null)))
-    (as joined_unfolding@92@01  Bool))))
-; Joined path conditions
-(assert (=>
-  (=
-    ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.first $t@89@01)))))
-    $Ref.null)
-  (and
-    (=
-      ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.first $t@89@01)))))
-      $Ref.null)
-    (=
-      ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01)))))
-      $Snap.unit))))
-(assert (or
-  (=
-    ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.first $t@89@01)))))
-    $Ref.null)
-  (not
-    (=
-      ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.first $t@89@01)))))
-      $Ref.null))))
-(assert (as joined_unfolding@93@01  Bool))
-; State saturation: after unfold
-(set-option :timeout 40)
-(check-sat)
-; unknown
-(assert (lseg%trigger ($Snap.second ($Snap.first $t@89@01)) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.first $t@89@01))) $Ref.null))
-; [exec]
-; res := this.head.data
-(declare-const res@94@01 Int)
-(assert (=
-  res@94@01
-  ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.first $t@89@01))))))
-; [exec]
-; this.head := this.head.next
-(declare-const head@95@01 $Ref)
-(assert (=
-  head@95@01
-  ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.first $t@89@01)))))))
-; [exec]
-; fold acc(List(this), write)
-(set-option :timeout 0)
-(push) ; 4
-(set-option :timeout 10)
-(assert (not (=
-  ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.first $t@89@01)))))
-  head@95@01)))
-(check-sat)
-; unsat
-(pop) ; 4
-; 0.00s
-; (get-info :all-statistics)
-(assert (List%trigger ($Snap.combine
-  ($SortWrappers.$RefTo$Snap head@95@01)
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01)))))) this@87@01))
-; [eval] res == old(content(this)[0])
-; [eval] old(content(this)[0])
-; [eval] content(this)[0]
-; [eval] content(this)
-(set-option :timeout 0)
-(push) ; 4
-(assert (content%precondition ($Snap.first $t@89@01) this@87@01))
-(pop) ; 4
-; Joined path conditions
-(assert (content%precondition ($Snap.first $t@89@01) this@87@01))
-(push) ; 4
-(assert (not (< 0 (Seq_length (content ($Snap.first $t@89@01) this@87@01)))))
-(check-sat)
-; unsat
-(pop) ; 4
-; 0.00s
-; (get-info :all-statistics)
-(push) ; 4
-(assert (not (= res@94@01 (Seq_index (content ($Snap.first $t@89@01) this@87@01) 0))))
-(check-sat)
-; unsat
-(pop) ; 4
-; 0.00s
-; (get-info :all-statistics)
-(assert (= res@94@01 (Seq_index (content ($Snap.first $t@89@01) this@87@01) 0)))
-; [eval] content(this) == old(content(this)[1..])
-; [eval] content(this)
-(push) ; 4
-(assert (content%precondition ($Snap.combine
-  ($SortWrappers.$RefTo$Snap head@95@01)
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01)))))) this@87@01))
-(pop) ; 4
-; Joined path conditions
-(assert (content%precondition ($Snap.combine
-  ($SortWrappers.$RefTo$Snap head@95@01)
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01)))))) this@87@01))
-; [eval] old(content(this)[1..])
-; [eval] content(this)[1..]
-; [eval] content(this)
-(push) ; 4
-(pop) ; 4
-; Joined path conditions
-(push) ; 4
-(assert (not (Seq_equal
-  (content ($Snap.combine
-    ($SortWrappers.$RefTo$Snap head@95@01)
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01)))))) this@87@01)
-  (Seq_drop (content ($Snap.first $t@89@01) this@87@01) 1))))
-(check-sat)
-; unsat
-(pop) ; 4
-; 0.00s
-; (get-info :all-statistics)
-(assert (Seq_equal
-  (content ($Snap.combine
-    ($SortWrappers.$RefTo$Snap head@95@01)
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.first $t@89@01)))))) this@87@01)
-  (Seq_drop (content ($Snap.first $t@89@01) this@87@01) 1)))
-(pop) ; 3
-(pop) ; 2
-(pop) ; 1
-; ---------- test ----------
-(declare-const lock@96@01 $Ref)
-(declare-const lock@97@01 $Ref)
-(push) ; 1
-; State saturation: after contract
-(set-option :timeout 50)
-(check-sat)
-; unknown
-(set-option :timeout 0)
-(push) ; 2
-(declare-const $t@98@01 $Snap)
-(assert (= $t@98@01 $Snap.unit))
-(pop) ; 2
-(push) ; 2
-; [exec]
-; inhale acc(List(lock), write) &&
-;   (acc(lock.held, write) && acc(lock.changed, write))
-(declare-const $t@99@01 $Snap)
-(assert (= $t@99@01 ($Snap.combine ($Snap.first $t@99@01) ($Snap.second $t@99@01))))
-(assert (=
-  ($Snap.second $t@99@01)
-  ($Snap.combine
-    ($Snap.first ($Snap.second $t@99@01))
-    ($Snap.second ($Snap.second $t@99@01)))))
-(assert (not (= lock@97@01 $Ref.null)))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [exec]
-; label acq
-; [eval] 2 <= length(lock)
-; [eval] length(lock)
-(set-option :timeout 0)
-(push) ; 3
-(assert (length%precondition ($Snap.first $t@99@01) lock@97@01))
-(pop) ; 3
-; Joined path conditions
-(assert (length%precondition ($Snap.first $t@99@01) lock@97@01))
-(push) ; 3
-(set-option :timeout 10)
-(assert (not (not (<= 2 (length ($Snap.first $t@99@01) lock@97@01)))))
-(check-sat)
-; unknown
-(pop) ; 3
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 3
-(set-option :timeout 10)
-(assert (not (<= 2 (length ($Snap.first $t@99@01) lock@97@01))))
-(check-sat)
-; unknown
-(pop) ; 3
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 112 | 2 <= length(First:($t@99@01), lock@97@01) | live]
-; [else-branch: 112 | !(2 <= length(First:($t@99@01), lock@97@01)) | live]
-(set-option :timeout 0)
-(push) ; 3
-; [then-branch: 112 | 2 <= length(First:($t@99@01), lock@97@01)]
-(assert (<= 2 (length ($Snap.first $t@99@01) lock@97@01)))
-; [exec]
-; var r1: Int
-(declare-const r1@100@01 Int)
-; [exec]
-; r1 := dequeue(lock)
-; [eval] 0 < length(this)
-; [eval] length(this)
-(push) ; 4
-(pop) ; 4
-; Joined path conditions
-(push) ; 4
-(assert (not (< 0 (length ($Snap.first $t@99@01) lock@97@01))))
-(check-sat)
-; unsat
-(pop) ; 4
-; 0.00s
-; (get-info :all-statistics)
-(assert (< 0 (length ($Snap.first $t@99@01) lock@97@01)))
-(declare-const res@101@01 Int)
-(declare-const $t@102@01 $Snap)
-(assert (= $t@102@01 ($Snap.combine ($Snap.first $t@102@01) ($Snap.second $t@102@01))))
-(assert (=
-  ($Snap.second $t@102@01)
-  ($Snap.combine
-    ($Snap.first ($Snap.second $t@102@01))
-    ($Snap.second ($Snap.second $t@102@01)))))
-(assert (= ($Snap.first ($Snap.second $t@102@01)) $Snap.unit))
-; [eval] res == old(content(this)[0])
-; [eval] old(content(this)[0])
-; [eval] content(this)[0]
-; [eval] content(this)
-(push) ; 4
-(assert (content%precondition ($Snap.first $t@99@01) lock@97@01))
-(pop) ; 4
-; Joined path conditions
-(assert (content%precondition ($Snap.first $t@99@01) lock@97@01))
-(push) ; 4
-(assert (not (< 0 (Seq_length (content ($Snap.first $t@99@01) lock@97@01)))))
-(check-sat)
-; unsat
-(pop) ; 4
-; 0.00s
-; (get-info :all-statistics)
-(assert (= res@101@01 (Seq_index (content ($Snap.first $t@99@01) lock@97@01) 0)))
-(assert (= ($Snap.second ($Snap.second $t@102@01)) $Snap.unit))
-; [eval] content(this) == old(content(this)[1..])
-; [eval] content(this)
-(push) ; 4
-(assert (content%precondition ($Snap.first $t@102@01) lock@97@01))
-(pop) ; 4
-; Joined path conditions
-(assert (content%precondition ($Snap.first $t@102@01) lock@97@01))
-; [eval] old(content(this)[1..])
-; [eval] content(this)[1..]
-; [eval] content(this)
-(push) ; 4
-(pop) ; 4
-; Joined path conditions
-(assert (Seq_equal
-  (content ($Snap.first $t@102@01) lock@97@01)
-  (Seq_drop (content ($Snap.first $t@99@01) lock@97@01) 1)))
-; State saturation: after contract
-(set-option :timeout 50)
-(check-sat)
-; unknown
-; [exec]
-; assert r1 <= peek(lock)
-; [eval] r1 <= peek(lock)
-; [eval] peek(lock)
-(set-option :timeout 0)
-(push) ; 4
-; [eval] 0 < length(this)
-; [eval] length(this)
-(push) ; 5
-(assert (length%precondition ($Snap.first $t@102@01) lock@97@01))
-(pop) ; 5
-; Joined path conditions
-(assert (length%precondition ($Snap.first $t@102@01) lock@97@01))
-(push) ; 5
-(assert (not (< 0 (length ($Snap.first $t@102@01) lock@97@01))))
-(check-sat)
-; unsat
-(pop) ; 5
-; 0.00s
-; (get-info :all-statistics)
-(assert (< 0 (length ($Snap.first $t@102@01) lock@97@01)))
-(assert (peek%precondition ($Snap.combine ($Snap.first $t@102@01) $Snap.unit) lock@97@01))
-(pop) ; 4
-; Joined path conditions
-(assert (and
-  (length%precondition ($Snap.first $t@102@01) lock@97@01)
-  (< 0 (length ($Snap.first $t@102@01) lock@97@01))
-  (peek%precondition ($Snap.combine ($Snap.first $t@102@01) $Snap.unit) lock@97@01)))
-(push) ; 4
-(assert (not (<=
-  res@101@01
-  (peek ($Snap.combine ($Snap.first $t@102@01) $Snap.unit) lock@97@01))))
-(check-sat)
-; unsat
-(pop) ; 4
-; 0.00s
-; (get-info :all-statistics)
-(assert (<=
-  res@101@01
-  (peek ($Snap.combine ($Snap.first $t@102@01) $Snap.unit) lock@97@01)))
-; [exec]
-; lock.changed := true
-; [exec]
-; exhale acc(List(lock), write) &&
-;   (acc(lock.held, write) &&
-;   (acc(lock.changed, write) &&
-;   (old[acq](content(lock)) == content(lock) || lock.changed)))
-; [eval] old[acq](content(lock)) == content(lock) || lock.changed
-; [eval] old[acq](content(lock)) == content(lock)
-; [eval] old[acq](content(lock))
-; [eval] content(lock)
-(push) ; 4
-(pop) ; 4
-; Joined path conditions
-; [eval] content(lock)
-(push) ; 4
-(pop) ; 4
-; Joined path conditions
-(push) ; 4
-; [then-branch: 113 | content(First:($t@99@01), lock@97@01) === content(First:($t@102@01), lock@97@01) | live]
-; [else-branch: 113 | !(content(First:($t@99@01), lock@97@01) === content(First:($t@102@01), lock@97@01)) | live]
-(push) ; 5
-; [then-branch: 113 | content(First:($t@99@01), lock@97@01) === content(First:($t@102@01), lock@97@01)]
-(assert (Seq_equal
-  (content ($Snap.first $t@99@01) lock@97@01)
-  (content ($Snap.first $t@102@01) lock@97@01)))
-(pop) ; 5
-(push) ; 5
-; [else-branch: 113 | !(content(First:($t@99@01), lock@97@01) === content(First:($t@102@01), lock@97@01))]
-(assert (not
-  (Seq_equal
-    (content ($Snap.first $t@99@01) lock@97@01)
-    (content ($Snap.first $t@102@01) lock@97@01))))
-(pop) ; 5
-(pop) ; 4
-; Joined path conditions
-; Joined path conditions
-(assert (or
-  (not
-    (Seq_equal
-      (content ($Snap.first $t@99@01) lock@97@01)
-      (content ($Snap.first $t@102@01) lock@97@01)))
-  (Seq_equal
-    (content ($Snap.first $t@99@01) lock@97@01)
-    (content ($Snap.first $t@102@01) lock@97@01))))
-; [eval] (forperm r: Ref [r.held] :: false)
-(pop) ; 3
-(push) ; 3
-; [else-branch: 112 | !(2 <= length(First:($t@99@01), lock@97@01))]
-(assert (not (<= 2 (length ($Snap.first $t@99@01) lock@97@01))))
-(pop) ; 3
-; [eval] !(2 <= length(lock))
-; [eval] 2 <= length(lock)
-; [eval] length(lock)
-(push) ; 3
-(pop) ; 3
-; Joined path conditions
-(push) ; 3
-(set-option :timeout 10)
-(assert (not (<= 2 (length ($Snap.first $t@99@01) lock@97@01))))
-(check-sat)
-; unknown
-(pop) ; 3
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 3
-(set-option :timeout 10)
-(assert (not (not (<= 2 (length ($Snap.first $t@99@01) lock@97@01)))))
-(check-sat)
-; unknown
-(pop) ; 3
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 114 | !(2 <= length(First:($t@99@01), lock@97@01)) | live]
-; [else-branch: 114 | 2 <= length(First:($t@99@01), lock@97@01) | live]
-(set-option :timeout 0)
-(push) ; 3
-; [then-branch: 114 | !(2 <= length(First:($t@99@01), lock@97@01))]
-(assert (not (<= 2 (length ($Snap.first $t@99@01) lock@97@01))))
-; [exec]
-; exhale acc(List(lock), write) &&
-;   (acc(lock.held, write) &&
-;   (acc(lock.changed, write) &&
-;   (old[acq](content(lock)) == content(lock) || lock.changed)))
-; [eval] old[acq](content(lock)) == content(lock) || lock.changed
-; [eval] old[acq](content(lock)) == content(lock)
-; [eval] old[acq](content(lock))
-; [eval] content(lock)
-(push) ; 4
-(assert (content%precondition ($Snap.first $t@99@01) lock@97@01))
-(pop) ; 4
-; Joined path conditions
-(assert (content%precondition ($Snap.first $t@99@01) lock@97@01))
-; [eval] content(lock)
-(push) ; 4
-(pop) ; 4
-; Joined path conditions
-; [eval] (forperm r: Ref [r.held] :: false)
-(pop) ; 3
-(push) ; 3
-; [else-branch: 114 | 2 <= length(First:($t@99@01), lock@97@01)]
-(assert (<= 2 (length ($Snap.first $t@99@01) lock@97@01)))
-(pop) ; 3
-(pop) ; 2
-(pop) ; 1

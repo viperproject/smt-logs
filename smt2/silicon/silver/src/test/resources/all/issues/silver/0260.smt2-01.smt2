@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-27 10:11:09
+; Started: 2024-12-29 15:01:19
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -535,7 +535,7 @@
 (assert (forall ((j@5@01 Int)) (!
   (=> (= j@5@01 k@3@01) (and (= (inv@6@01 s@2@01) j@5@01) (img@7@01 s@2@01)))
   
-  :qid |quant-u-26166|)))
+  :qid |quant-u-26104|)))
 (assert (forall ((r $Ref)) (!
   (=> (and (img@7@01 r) (= (inv@6@01 r) k@3@01)) (= s@2@01 r))
   :pattern ((inv@6@01 r))

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 10:44:53
+// Date:         2024-12-29 15:35:17
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0073.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0073-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -191,11 +191,11 @@ axiom !IsWandField(rds_1);
 procedure test(this: Ref, I: Perm) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -209,8 +209,8 @@ procedure test(this: Ref, I: Perm) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale acc(this.rds, write) &&
   //   (this.rds >= 0 && (acc(this.data, write) && this.rds * I > none)) -- 0073.vpr@9.3--9.88
@@ -236,8 +236,8 @@ procedure test(this: Ref, I: Perm) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert this.rds * I > none -- 0073.vpr@10.3--10.29
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of this.rds * I > none
       assert {:msg "  Assert might fail. There might be insufficient permission to access this.rds (0073.vpr@10.10--10.29) [191013]"}
@@ -247,8 +247,8 @@ procedure test(this: Ref, I: Perm) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(this.data, write) -- 0073.vpr@11.3--11.31
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Exhale might fail. There might be insufficient permission to access this.data (0073.vpr@11.10--11.31) [191016]"}
@@ -262,8 +262,8 @@ procedure test(this: Ref, I: Perm) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert this.rds >= 0 -- 0073.vpr@12.3--12.23
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of this.rds >= 0
       assert {:msg "  Assert might fail. There might be insufficient permission to access this.rds (0073.vpr@12.10--12.23) [191017]"}
@@ -273,8 +273,8 @@ procedure test(this: Ref, I: Perm) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert this.rds * I > none -- 0073.vpr@16.3--16.29
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of this.rds * I > none
       assert {:msg "  Assert might fail. There might be insufficient permission to access this.rds (0073.vpr@16.10--16.29) [191019]"}

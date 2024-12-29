@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-27 10:01:23
+; Started: 2024-12-29 14:51:12
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -1639,7 +1639,7 @@
   :pattern ((Seq_index
     ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first $t@1@00))
     i@4@00))
-  :qid |quant-u-12313|)))
+  :qid |quant-u-12269|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -1778,7 +1778,7 @@
   :pattern ((Seq_index
     ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first $t@1@00))
     i@7@00))
-  :qid |quant-u-12315|)))
+  :qid |quant-u-12271|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and

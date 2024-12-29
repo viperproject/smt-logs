@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 10:37:39
+// Date:         2024-12-29 15:28:00
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/permission_introspection/forpermPredicatesAdvanced.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/permission_introspection/forpermPredicatesAdvanced-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -420,11 +420,11 @@ procedure p3#definedness(x: Ref, y: Ref) returns ()
 procedure m1(x: Ref, y: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var a_21: Ref;
   var i_14: int;
   
@@ -441,8 +441,8 @@ procedure m1(x: Ref, y: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale acc(p1(x, 0), write) -- forpermPredicatesAdvanced.vpr@7.5--7.20
     perm := FullPerm;
@@ -459,8 +459,8 @@ procedure m1(x: Ref, y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forperm a: Ref, i: Int [p1(a, i)] :: i >= 0) -- forpermPredicatesAdvanced.vpr@11.5--11.53
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forperm a: Ref, i: Int [p1(a, i)] :: i >= 0)
       if (*) {
@@ -485,11 +485,11 @@ procedure m1(x: Ref, y: Ref) returns ()
 procedure m2(x: Ref, y: Ref, z: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var a_4: Ref;
   var newVersion: FrameType;
   var a_5: Ref;
@@ -508,8 +508,8 @@ procedure m2(x: Ref, y: Ref, z: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale acc(p2(x, y), write) -- forpermPredicatesAdvanced.vpr@15.5--15.20
     perm := FullPerm;
@@ -531,8 +531,8 @@ procedure m2(x: Ref, y: Ref, z: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert !(forperm a: Ref [p2(a, y)] :: a == z) -- forpermPredicatesAdvanced.vpr@20.5--20.47
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of !(forperm a: Ref [p2(a, y)] :: a == z)
       if (*) {
@@ -552,8 +552,8 @@ procedure m2(x: Ref, y: Ref, z: Ref) returns ()
   // -- Translating statement: unfold acc(p2(x, y), write) -- forpermPredicatesAdvanced.vpr@21.5--21.19
     assume p2#trigger(Heap, p2(x, y));
     assume Heap[null, p2(x, y)] == CombineFrames(FrameFragment(Heap[x, f_7]), FrameFragment(Heap[y, f_7]));
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding p2(x, y) might fail. There might be insufficient permission to access p2(x, y) (forpermPredicatesAdvanced.vpr@21.5--21.19) [142376]"}
@@ -579,8 +579,8 @@ procedure m2(x: Ref, y: Ref, z: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forperm a: Ref [p2(a, y)] :: a == z) -- forpermPredicatesAdvanced.vpr@22.5--22.46
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forperm a: Ref [p2(a, y)] :: a == z)
       if (*) {
@@ -605,11 +605,11 @@ procedure m2(x: Ref, y: Ref, z: Ref) returns ()
 procedure m3(x: Ref, y: Ref, z: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var a_8: Ref;
   
   // -- Initializing the state
@@ -626,8 +626,8 @@ procedure m3(x: Ref, y: Ref, z: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale acc(p3(x, y), write) -- forpermPredicatesAdvanced.vpr@26.5--26.19
     perm := FullPerm;
@@ -649,8 +649,8 @@ procedure m3(x: Ref, y: Ref, z: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forperm a: Ref [p3(a, a)] :: a == z) -- forpermPredicatesAdvanced.vpr@30.5--30.46
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forperm a: Ref [p3(a, a)] :: a == z)
       if (*) {
@@ -675,11 +675,11 @@ procedure m3(x: Ref, y: Ref, z: Ref) returns ()
 procedure m4(x: Ref, y: Ref, z: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var a_9: Ref;
   
   // -- Initializing the state
@@ -696,8 +696,8 @@ procedure m4(x: Ref, y: Ref, z: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale acc(p3(x, y), write) -- forpermPredicatesAdvanced.vpr@34.5--34.19
     perm := FullPerm;
@@ -719,8 +719,8 @@ procedure m4(x: Ref, y: Ref, z: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forperm a: Ref [p3(a, y)] :: a == x) -- forpermPredicatesAdvanced.vpr@38.5--38.46
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forperm a: Ref [p3(a, y)] :: a == x)
       if (*) {
@@ -745,13 +745,13 @@ procedure m4(x: Ref, y: Ref, z: Ref) returns ()
 procedure m5(x: Ref, y: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
   var a_10: Ref;
   var i_8: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -766,8 +766,8 @@ procedure m5(x: Ref, y: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale acc(p1(x, 10), write) -- forpermPredicatesAdvanced.vpr@42.5--42.20
     perm := FullPerm;
@@ -799,16 +799,16 @@ procedure m5(x: Ref, y: Ref) returns ()
     )) {
       
       // -- Translating statement: assert x == y -- forpermPredicatesAdvanced.vpr@46.9--46.22
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Assert might fail. Assertion x == y might not hold. (forpermPredicatesAdvanced.vpr@46.16--46.22) [142392]"}
           x == y;
         assume state(Heap, Mask);
     } else {
       
       // -- Translating statement: assert x != y -- forpermPredicatesAdvanced.vpr@48.9--48.22
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Assert might fail. Assertion x != y might not hold. (forpermPredicatesAdvanced.vpr@48.16--48.22) [142393]"}
           x != y;
         assume state(Heap, Mask);
@@ -823,11 +823,11 @@ procedure m5(x: Ref, y: Ref) returns ()
 procedure m6(x: Ref, y: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var a_22: Ref;
   var b_101: Ref;
   
@@ -844,8 +844,8 @@ procedure m6(x: Ref, y: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale acc(p2(x, y), write) -- forpermPredicatesAdvanced.vpr@53.5--53.19
     perm := FullPerm;
@@ -862,8 +862,8 @@ procedure m6(x: Ref, y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forperm a: Ref, b: Ref [p2(a, b)] :: x != y ==> a != y) -- forpermPredicatesAdvanced.vpr@56.5--56.65
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forperm a: Ref, b: Ref [p2(a, b)] :: x != y ==> a != y)
       if (*) {
@@ -888,11 +888,11 @@ procedure m6(x: Ref, y: Ref) returns ()
 procedure m7(x: Ref, y: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var a_23: Ref;
   
   // -- Initializing the state
@@ -908,8 +908,8 @@ procedure m7(x: Ref, y: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale acc(p2(x, y), write) -- forpermPredicatesAdvanced.vpr@60.5--60.19
     perm := FullPerm;
@@ -949,8 +949,8 @@ procedure m7(x: Ref, y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forperm a: Ref [p2(fun(x), a)] :: a == fun(y)) -- forpermPredicatesAdvanced.vpr@64.5--64.56
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forperm a: Ref [p2(fun(x), a)] :: a == fun(y))
       if (*) {
@@ -983,11 +983,11 @@ procedure m7(x: Ref, y: Ref) returns ()
 procedure m8(x: Ref, y: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var a_12: Ref;
   
   // -- Initializing the state
@@ -1003,8 +1003,8 @@ procedure m8(x: Ref, y: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale acc(p1(x, 10), write) -- forpermPredicatesAdvanced.vpr@68.5--68.21
     perm := FullPerm;
@@ -1021,8 +1021,8 @@ procedure m8(x: Ref, y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forperm a: Ref [p1(a, 10)] :: a == x) -- forpermPredicatesAdvanced.vpr@71.5--71.47
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forperm a: Ref [p1(a, 10)] :: a == x)
       if (*) {
@@ -1047,11 +1047,11 @@ procedure m8(x: Ref, y: Ref) returns ()
 procedure m9(x: Ref, y: Ref, z: Ref, b_24: bool) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var a_24: Ref;
   
   // -- Initializing the state
@@ -1068,8 +1068,8 @@ procedure m9(x: Ref, y: Ref, z: Ref, b_24: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale acc(p3((b ? x : y), z), write) -- forpermPredicatesAdvanced.vpr@75.5--75.30
     perm := FullPerm;
@@ -1091,8 +1091,8 @@ procedure m9(x: Ref, y: Ref, z: Ref, b_24: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forperm a: Ref [p3((b ? x : y), a)] :: a == z) -- forpermPredicatesAdvanced.vpr@79.5--79.57
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forperm a: Ref [p3((b ? x : y), a)] :: a == z)
       if (*) {

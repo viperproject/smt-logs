@@ -402,7 +402,7 @@
  :skolemid |22|
  :pattern ( (fun01 Heap@@22 x@@1 i@@4))
 )))
-; Invalid
+; Valid
 (push 1)
 (declare-fun ControlFlow (Int Int) Int)
 (declare-fun ExhaleHeap@0 () T@PolymorphicMapType_7650)

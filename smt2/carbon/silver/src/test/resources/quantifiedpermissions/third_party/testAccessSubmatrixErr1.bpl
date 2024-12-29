@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 10:15:57
+// Date:         2024-12-29 15:06:11
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/third_party/testAccessSubmatrixErr1.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/third_party/testAccessSubmatrixErr1-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -671,11 +671,11 @@ procedure Ref__zero(diz: Ref, current_thread_id: int, M: int, N: int, step: int,
   var j_5: int;
   var j1_11: int;
   var QPMask: MaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var __flatten_3: Ref;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var __flatten_2: int;
   var __flatten_1: int;
   var __flatten_4: int;
@@ -778,8 +778,8 @@ procedure Ref__zero(diz: Ref, current_thread_id: int, M: int, N: int, step: int,
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[__flatten_3, $allocated];
@@ -789,8 +789,8 @@ procedure Ref__zero(diz: Ref, current_thread_id: int, M: int, N: int, step: int,
     // -- Check definedness of Ref__multidim_index_2(M, step, 0, N)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Precondition of function Ref__multidim_index_2 might not hold. Assertion 0 < M might not hold. (testAccessSubmatrixErr1.vpr@33.18--33.54) [27854]"}
           0 < M;
         assert {:msg "  Precondition of function Ref__multidim_index_2 might not hold. Assertion 0 <= M might not hold. (testAccessSubmatrixErr1.vpr@33.18--33.54) [27855]"}

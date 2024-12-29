@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 10:49:21
+// Date:         2024-12-29 15:39:47
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0227.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0227-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -230,11 +230,11 @@ procedure test(this: Ref, c: Ref, n: int) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var i: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var loopHeap: HeapType;
   var loopMask: MaskType;
@@ -265,16 +265,16 @@ procedure test(this: Ref, c: Ref, n: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: i := 0 -- 0227.vpr@14.3--14.9
     i := 0;
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale (n - i) * write >= none && acc(mustSendBounded$(c), (n - i) * write) -- 0227.vpr@16.3--16.80
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Exhale might fail. Assertion (n - i) * write >= none might not hold. (0227.vpr@16.10--16.80) [203472]"}
       NoPerm <= real(n - i) * FullPerm;
     perm := real(n - i) * FullPerm;
@@ -292,8 +292,8 @@ procedure test(this: Ref, c: Ref, n: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale n - i + 1 > 0 && n - i >= 0 -- 0227.vpr@17.3--17.41
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Exhale might fail. Assertion n - i + 1 > 0 might not hold. (0227.vpr@17.10--17.41) [203475]"}
       n - i + 1 > 0;
     assert {:msg "  Exhale might fail. Assertion n - i >= 0 might not hold. (0227.vpr@17.10--17.41) [203476]"}
@@ -339,15 +339,15 @@ procedure test(this: Ref, c: Ref, n: int) returns ()
             assume state(Heap, Mask);
           
           // -- Translating statement: assert c != null -- 0227.vpr@26.5--26.21
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             assert {:msg "  Assert might fail. Assertion c != null might not hold. (0227.vpr@26.12--26.21) [203478]"}
               c != null;
             assume state(Heap, Mask);
           
           // -- Translating statement: exhale acc(mustSendBounded$(c), 1 * write) -- 0227.vpr@28.5--28.47
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             perm := real(1) * FullPerm;
             assert {:msg "  Exhale might fail. Fraction 1 * write might be negative. (0227.vpr@28.12--28.47) [203479]"}
               perm >= NoPerm;
@@ -363,8 +363,8 @@ procedure test(this: Ref, c: Ref, n: int) returns ()
             assume state(Heap, Mask);
           
           // -- Translating statement: exhale (forperm r$_4: Ref [mustSendBounded$(r$_4)] :: false) -- 0227.vpr@31.5--31.65
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             
             // -- Check definedness of (forperm r$_4: Ref [mustSendBounded$(r$_4)] :: false)
               if (*) {

@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-27 10:08:56
+; Started: 2024-12-29 14:59:05
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -913,11 +913,11 @@
 (assert (forall ((s@$ $Snap) (a@0@00 Int)) (!
   (= (fun%limited s@$ a@0@00) (fun s@$ a@0@00))
   :pattern ((fun s@$ a@0@00))
-  :qid |quant-u-23747|)))
+  :qid |quant-u-23684|)))
 (assert (forall ((s@$ $Snap) (a@0@00 Int)) (!
   (fun%stateless a@0@00)
   :pattern ((fun%limited s@$ a@0@00))
-  :qid |quant-u-23748|)))
+  :qid |quant-u-23685|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- test ----------
@@ -962,7 +962,7 @@
   :pattern ((Seq_contains_trigger xs@1@01 xx@3@01))
   :pattern ((inv@4@01 xx@3@01))
   :pattern ((img@5@01 xx@3@01))
-  :qid |quant-u-23752|)))
+  :qid |quant-u-23689|)))
 (assert (forall ((r $Ref)) (!
   (=> (and (img@5@01 r) (Seq_contains xs@1@01 (inv@4@01 r))) (= (inv@4@01 r) r))
   :pattern ((inv@4@01 r))
@@ -1138,7 +1138,7 @@
       (pTaken@10@01 r))
     $Perm.No)
   
-  :qid |quant-u-23755|))))
+  :qid |quant-u-23692|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -1153,7 +1153,7 @@
     (and (Seq_contains xs@1@01 (inv@8@01 r)) (img@9@01 r) (= r (inv@8@01 r)))
     (= (- $Perm.Write (pTaken@10@01 r)) $Perm.No))
   
-  :qid |quant-u-23756|))))
+  :qid |quant-u-23693|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -1224,7 +1224,7 @@
   :pattern ((Seq_contains_trigger xs@1@01 x@12@01))
   :pattern ((inv@13@01 x@12@01))
   :pattern ((img@14@01 x@12@01))
-  :qid |quant-u-23758|)))
+  :qid |quant-u-23695|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and (img@14@01 r) (Seq_contains xs@1@01 (inv@13@01 r)))

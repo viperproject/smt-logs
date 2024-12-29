@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 10:49:59
+// Date:         2024-12-29 15:40:26
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0493b.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0493b-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -895,14 +895,14 @@ procedure two#definedness(a_2: Ref, i: int) returns ()
 procedure test_vals(vas: (Set Ref)) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var QPMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -913,8 +913,8 @@ procedure test_vals(vas: (Set Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale (forall a: Ref :: { a.val } (a in as) ==> acc(a.val, write)) -- 0493b.vpr@28.3--28.25
     
@@ -965,8 +965,8 @@ procedure test_vals(vas: (Set Ref)) returns ()
     // -- Check definedness of foo_vals(as) == 0
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         havoc QPMask;
         
         // -- check that the permission amount is positive
@@ -1007,14 +1007,14 @@ procedure test_vals(vas: (Set Ref)) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale foo_vals(as) == 0 -- 0493b.vpr@30.3--30.27
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of foo_vals(as) == 0
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         havoc QPMask;
         
         // -- check that the permission amount is positive
@@ -1062,16 +1062,16 @@ procedure test_vals(vas: (Set Ref)) returns ()
 procedure test_vals_2(vas: (Set Ref), bs: (Set Ref)) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var a1: Ref;
   var b1: Ref;
   var QPMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1082,8 +1082,8 @@ procedure test_vals_2(vas: (Set Ref), bs: (Set Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[a1, $allocated];
@@ -1178,8 +1178,8 @@ procedure test_vals_2(vas: (Set Ref), bs: (Set Ref)) returns ()
     // -- Check definedness of foo_vals(as) == 0
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         havoc QPMask;
         
         // -- check that the permission amount is positive
@@ -1246,8 +1246,8 @@ procedure test_vals_2(vas: (Set Ref), bs: (Set Ref)) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale (forall a$1: Ref :: { a$1.val } (a$1 in bs) ==> acc(a$1.val, write)) -- 0493b.vpr@44.3--44.25
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall a$1: Ref :: { a$1.val } (a$1 in bs) ==> acc(a$1.val, write))
       if (*) {
@@ -1301,14 +1301,14 @@ procedure test_vals_2(vas: (Set Ref), bs: (Set Ref)) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale foo_vals(as) == 0 -- 0493b.vpr@46.3--46.27
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of foo_vals(as) == 0
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         havoc QPMask;
         
         // -- check that the permission amount is positive
@@ -1356,14 +1356,14 @@ procedure test_vals_2(vas: (Set Ref), bs: (Set Ref)) returns ()
 procedure test_ones(vas: (Set Ref)) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var QPMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1374,8 +1374,8 @@ procedure test_ones(vas: (Set Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale (forall a: Ref :: { one(a) } (a in as) ==> acc(one(a), write)) -- 0493b.vpr@50.3--50.24
     
@@ -1428,8 +1428,8 @@ procedure test_ones(vas: (Set Ref)) returns ()
     // -- Check definedness of foo_ones(as) == 0
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         havoc QPMask;
         
         // -- check that the permission amount is positive
@@ -1470,14 +1470,14 @@ procedure test_ones(vas: (Set Ref)) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale foo_ones(as) == 0 -- 0493b.vpr@52.3--52.27
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of foo_ones(as) == 0
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         havoc QPMask;
         
         // -- check that the permission amount is positive
@@ -1525,19 +1525,19 @@ procedure test_ones(vas: (Set Ref)) returns ()
 procedure test_ones_2(vas: (Set Ref), bs: (Set Ref)) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var a1: Ref;
   var b1: Ref;
   var QPMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var perm: Perm;
   var newVersion: FrameType;
   var freshVersion: FrameType;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1548,8 +1548,8 @@ procedure test_ones_2(vas: (Set Ref), bs: (Set Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[a1, $allocated];
@@ -1648,8 +1648,8 @@ procedure test_ones_2(vas: (Set Ref), bs: (Set Ref)) returns ()
     // -- Check definedness of foo_ones(as) == 0
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         havoc QPMask;
         
         // -- check that the permission amount is positive
@@ -1697,8 +1697,8 @@ procedure test_ones_2(vas: (Set Ref), bs: (Set Ref)) returns ()
   // -- Translating statement: unfold acc(one(a1), write) -- 0493b.vpr@61.3--61.17
     assume one#trigger(Heap, one_1(a1));
     assume Heap[null, one_1(a1)] == FrameFragment(Heap[a1, val]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding one(a1) might fail. There might be insufficient permission to access one(a1) (0493b.vpr@61.3--61.17) [206485]"}
@@ -1729,8 +1729,8 @@ procedure test_ones_2(vas: (Set Ref), bs: (Set Ref)) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(one(a1), write) -- 0493b.vpr@63.3--63.15
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding one(a1) might fail. There might be insufficient permission to access a1.val (0493b.vpr@63.3--63.15) [206491]"}
@@ -1758,8 +1758,8 @@ procedure test_ones_2(vas: (Set Ref), bs: (Set Ref)) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(one(b1), write) -- 0493b.vpr@67.3--67.17
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Exhale might fail. There might be insufficient permission to access one(b1) (0493b.vpr@67.10--67.17) [206494]"}
@@ -1775,8 +1775,8 @@ procedure test_ones_2(vas: (Set Ref), bs: (Set Ref)) returns ()
   // -- Translating statement: exhale (forall a$1: Ref ::
   //     { one(a$1) }
   //     (a$1 in (bs setminus Set(b1))) ==> acc(one(a$1), write)) -- 0493b.vpr@68.3--68.41
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall a$1: Ref :: { one(a$1) } (a$1 in (bs setminus Set(b1))) ==> acc(one(a$1), write))
       if (*) {
@@ -1834,14 +1834,14 @@ procedure test_ones_2(vas: (Set Ref), bs: (Set Ref)) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale foo_ones(as) == 0 -- 0493b.vpr@70.3--70.27
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of foo_ones(as) == 0
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         havoc QPMask;
         
         // -- check that the permission amount is positive
@@ -1889,14 +1889,14 @@ procedure test_ones_2(vas: (Set Ref), bs: (Set Ref)) returns ()
 procedure test_twos(vas: (Set Ref), vis: (Set int)) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var QPMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1907,8 +1907,8 @@ procedure test_twos(vas: (Set Ref), vis: (Set int)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale (forall a: Ref, i: Int ::
   //     { two(a, i) }
@@ -1963,8 +1963,8 @@ procedure test_twos(vas: (Set Ref), vis: (Set int)) returns ()
     // -- Check definedness of foo_twos(as, is) == 0
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         havoc QPMask;
         
         // -- check that the permission amount is positive
@@ -2005,14 +2005,14 @@ procedure test_twos(vas: (Set Ref), vis: (Set int)) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale foo_twos(as, is) == 0 -- 0493b.vpr@76.3--76.31
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of foo_twos(as, is) == 0
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         havoc QPMask;
         
         // -- check that the permission amount is positive
@@ -2060,19 +2060,19 @@ procedure test_twos(vas: (Set Ref), vis: (Set int)) returns ()
 procedure test_twos_2(vas: (Set Ref), vis: (Set int)) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var a1: Ref;
   var QPMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var i1: int;
   var perm: Perm;
   var newVersion: FrameType;
   var freshVersion: FrameType;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -2083,8 +2083,8 @@ procedure test_twos_2(vas: (Set Ref), vis: (Set int)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[a1, $allocated];
@@ -2142,8 +2142,8 @@ procedure test_twos_2(vas: (Set Ref), vis: (Set int)) returns ()
     // -- Check definedness of foo_twos(as, is) == 0
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         havoc QPMask;
         
         // -- check that the permission amount is positive
@@ -2196,8 +2196,8 @@ procedure test_twos_2(vas: (Set Ref), vis: (Set int)) returns ()
   // -- Translating statement: unfold acc(two(a1, i1), write) -- 0493b.vpr@85.3--85.21
     assume two#trigger(Heap, two(a1, i1));
     assume Heap[null, two(a1, i1)] == FrameFragment(Heap[a1, val]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding two(a1, i1) might fail. There might be insufficient permission to access two(a1, i1) (0493b.vpr@85.3--85.21) [206512]"}
@@ -2218,8 +2218,8 @@ procedure test_twos_2(vas: (Set Ref), vis: (Set int)) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(two(a1, i1), write) -- 0493b.vpr@86.3--86.19
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding two(a1, i1) might fail. There might be insufficient permission to access a1.val (0493b.vpr@86.3--86.19) [206516]"}
@@ -2242,14 +2242,14 @@ procedure test_twos_2(vas: (Set Ref), vis: (Set int)) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale foo_twos(as, is) == 0 -- 0493b.vpr@88.3--88.31
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of foo_twos(as, is) == 0
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         havoc QPMask;
         
         // -- check that the permission amount is positive
@@ -2297,21 +2297,21 @@ procedure test_twos_2(vas: (Set Ref), vis: (Set int)) returns ()
 procedure test_twos_3(vas: (Set Ref), vis: (Set int), bs: (Set Ref), js: (Set int)) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var b1: Ref;
   var a1: Ref;
   var QPMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var j1_33: int;
   var perm: Perm;
   var i1: int;
   var newVersion: FrameType;
   var freshVersion: FrameType;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -2322,8 +2322,8 @@ procedure test_twos_3(vas: (Set Ref), vis: (Set int), bs: (Set Ref), js: (Set in
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[b1, $allocated];
@@ -2426,8 +2426,8 @@ procedure test_twos_3(vas: (Set Ref), vis: (Set int), bs: (Set Ref), js: (Set in
     // -- Check definedness of foo_twos(as, is) == 0
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         havoc QPMask;
         
         // -- check that the permission amount is positive
@@ -2478,8 +2478,8 @@ procedure test_twos_3(vas: (Set Ref), vis: (Set int), bs: (Set Ref), js: (Set in
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(two(b1, j1), write) -- 0493b.vpr@97.3--97.21
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Exhale might fail. There might be insufficient permission to access two(b1, j1) (0493b.vpr@97.10--97.21) [206526]"}
@@ -2505,8 +2505,8 @@ procedure test_twos_3(vas: (Set Ref), vis: (Set int), bs: (Set Ref), js: (Set in
   // -- Translating statement: unfold acc(two(a1, i1), write) -- 0493b.vpr@101.3--101.21
     assume two#trigger(Heap, two(a1, i1));
     assume Heap[null, two(a1, i1)] == FrameFragment(Heap[a1, val]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding two(a1, i1) might fail. There might be insufficient permission to access two(a1, i1) (0493b.vpr@101.3--101.21) [206529]"}
@@ -2537,8 +2537,8 @@ procedure test_twos_3(vas: (Set Ref), vis: (Set int), bs: (Set Ref), js: (Set in
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(two(a1, i1), write) -- 0493b.vpr@103.3--103.19
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding two(a1, i1) might fail. There might be insufficient permission to access a1.val (0493b.vpr@103.3--103.19) [206535]"}
@@ -2564,8 +2564,8 @@ procedure test_twos_3(vas: (Set Ref), vis: (Set int), bs: (Set Ref), js: (Set in
   //     { two(a$1, i$1) }
   //     (a$1 in (bs setminus Set(b1))) && (i$1 in (js setminus Set(j1))) ==>
   //     acc(two(a$1, i$1), write)) -- 0493b.vpr@105.3--105.62
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall a$1: Ref, i$1: Int :: { two(a$1, i$1) } (a$1 in (bs setminus Set(b1))) && (i$1 in (js setminus Set(j1))) ==> acc(two(a$1, i$1), write))
       if (*) {
@@ -2623,14 +2623,14 @@ procedure test_twos_3(vas: (Set Ref), vis: (Set int), bs: (Set Ref), js: (Set in
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale foo_twos(as, is) == 0 -- 0493b.vpr@107.3--107.31
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of foo_twos(as, is) == 0
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         havoc QPMask;
         
         // -- check that the permission amount is positive

@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-27 10:07:01
+; Started: 2024-12-29 14:57:09
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -138,25 +138,25 @@
 (assert (forall ((s@$ $Snap)) (!
   (= (fun02%limited s@$) (fun02 s@$))
   :pattern ((fun02 s@$))
-  :qid |quant-u-22404|)))
+  :qid |quant-u-22341|)))
 (assert (forall ((s@$ $Snap)) (!
   (as fun02%stateless  Bool)
   :pattern ((fun02%limited s@$))
-  :qid |quant-u-22405|)))
+  :qid |quant-u-22342|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@0@00 (fun02%limited s@$))) (=>
     (fun02%precondition s@$)
     (and (not (= result@0@00 0)) (not (= (div 1 result@0@00) 1)))))
   :pattern ((fun02%limited s@$))
-  :qid |quant-u-22410|)))
+  :qid |quant-u-22347|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@0@00 (fun02%limited s@$))) true)
   :pattern ((fun02%limited s@$))
-  :qid |quant-u-22411|)))
+  :qid |quant-u-22348|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@0@00 (fun02%limited s@$))) true)
   :pattern ((fun02%limited s@$))
-  :qid |quant-u-22412|)))
+  :qid |quant-u-22349|)))
 ; ---------- FUNCTION fun01----------
 (declare-fun result@1@00 () Int)
 ; ----- Well-definedness of specifications -----
@@ -190,18 +190,18 @@
 (assert (forall ((s@$ $Snap)) (!
   (= (fun03%limited s@$) (fun03 s@$))
   :pattern ((fun03 s@$))
-  :qid |quant-u-22408|)))
+  :qid |quant-u-22345|)))
 (assert (forall ((s@$ $Snap)) (!
   (as fun03%stateless  Bool)
   :pattern ((fun03%limited s@$))
-  :qid |quant-u-22409|)))
+  :qid |quant-u-22346|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@2@00 (fun03%limited s@$))) (=>
     (fun03%precondition s@$)
     (and (not (= result@2@00 0)) (not (= (div 1 result@2@00) 1)))))
   :pattern ((fun03%limited s@$))
-  :qid |quant-u-22413|)))
+  :qid |quant-u-22350|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@2@00 (fun03%limited s@$))) true)
   :pattern ((fun03%limited s@$))
-  :qid |quant-u-22414|)))
+  :qid |quant-u-22351|)))

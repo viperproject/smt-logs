@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 10:19:57
+// Date:         2024-12-29 15:10:11
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/misc/countfalse.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/misc/countfalse-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -317,8 +317,8 @@ procedure countFalseX#definedness(a_2: ArrayDomainType, from: int) returns (Resu
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -379,8 +379,8 @@ procedure countFalseX#definedness(a_2: ArrayDomainType, from: int) returns (Resu
       } else {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           assert {:msg "  Precondition of function countFalseX might not hold. Assertion 0 <= from + 1 might not hold. (countfalse.vpr@8.27--8.49) [69647]"}
             0 <= from + 1;
           assert {:msg "  Precondition of function countFalseX might not hold. Assertion from + 1 <= length(a) might not hold. (countfalse.vpr@8.27--8.49) [69648]"}
@@ -479,8 +479,8 @@ procedure countFalse#definedness(a_2: ArrayDomainType, from: int, to: int) retur
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -544,8 +544,8 @@ procedure countFalse#definedness(a_2: ArrayDomainType, from: int, to: int) retur
           HasDirectPerm(Mask, (loc(a_2, from): Ref), val);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           assert {:msg "  Precondition of function countFalse might not hold. Assertion 0 <= from + 1 might not hold. (countfalse.vpr@41.49--41.74) [69653]"}
             0 <= from + 1;
           assert {:msg "  Precondition of function countFalse might not hold. Assertion from + 1 <= to might not hold. (countfalse.vpr@41.49--41.74) [69654]"}
@@ -604,12 +604,12 @@ procedure lemmaFrontX(a_2: ArrayDomainType, from: int) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
-  var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -666,19 +666,19 @@ procedure lemmaFrontX(a_2: ArrayDomainType, from: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert countFalseX(a, from) ==
   //   (from == length(a) ? 0 : countFalseX(a, from + 1)) -- countfalse.vpr@15.3--18.53
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of countFalseX(a, from) == (from == length(a) ? 0 : countFalseX(a, from + 1))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         assert {:msg "  Precondition of function countFalseX might not hold. Assertion 0 <= from might not hold. (countfalse.vpr@16.5--16.25) [69659]"}
           0 <= from;
         assert {:msg "  Precondition of function countFalseX might not hold. Assertion from <= length(a) might not hold. (countfalse.vpr@16.5--16.25) [69660]"}
@@ -722,8 +722,8 @@ procedure lemmaFrontX(a_2: ArrayDomainType, from: int) returns ()
       } else {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef1Mask := ExhaleWellDef0Mask;
           ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+          ExhaleWellDef1Mask := ExhaleWellDef0Mask;
           assert {:msg "  Precondition of function countFalseX might not hold. Assertion 0 <= from + 1 might not hold. (countfalse.vpr@18.30--18.52) [69663]"}
             0 <= from + 1;
           assert {:msg "  Precondition of function countFalseX might not hold. Assertion from + 1 <= length(a) might not hold. (countfalse.vpr@18.30--18.52) [69664]"}
@@ -777,12 +777,12 @@ procedure lemmaFrontXX(a_2: ArrayDomainType, from: int) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
-  var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -839,19 +839,19 @@ procedure lemmaFrontXX(a_2: ArrayDomainType, from: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert countFalseX(a, from) ==
   //   (from == length(a) ? 0 : countFalseX(a, from + 1)) -- countfalse.vpr@25.3--28.53
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of countFalseX(a, from) == (from == length(a) ? 0 : countFalseX(a, from + 1))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         assert {:msg "  Precondition of function countFalseX might not hold. Assertion 0 <= from might not hold. (countfalse.vpr@26.5--26.25) [69669]"}
           0 <= from;
         assert {:msg "  Precondition of function countFalseX might not hold. Assertion from <= length(a) might not hold. (countfalse.vpr@26.5--26.25) [69670]"}
@@ -895,8 +895,8 @@ procedure lemmaFrontXX(a_2: ArrayDomainType, from: int) returns ()
       } else {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef1Mask := ExhaleWellDef0Mask;
           ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+          ExhaleWellDef1Mask := ExhaleWellDef0Mask;
           assert {:msg "  Precondition of function countFalseX might not hold. Assertion 0 <= from + 1 might not hold. (countfalse.vpr@28.30--28.52) [69673]"}
             0 <= from + 1;
           assert {:msg "  Precondition of function countFalseX might not hold. Assertion from + 1 <= length(a) might not hold. (countfalse.vpr@28.30--28.52) [69674]"}
@@ -942,8 +942,8 @@ procedure lemmaFrontXX(a_2: ArrayDomainType, from: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- countfalse.vpr@31.3--31.15
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion false might not hold. (countfalse.vpr@31.10--31.15) [69678]"}
       false;
     assume state(Heap, Mask);
@@ -957,12 +957,12 @@ procedure lemmaFront(a_2: ArrayDomainType, from: int, to: int) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
-  var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -1020,21 +1020,21 @@ procedure lemmaFront(a_2: ArrayDomainType, from: int, to: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert countFalse(a, from, to) ==
   //   (from == to ?
   //     0 :
   //     (loc(a, from).val ? 0 : 1) + countFalse(a, from + 1, to)) -- countfalse.vpr@49.3--52.77
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of countFalse(a, from, to) == (from == to ? 0 : (loc(a, from).val ? 0 : 1) + countFalse(a, from + 1, to))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         assert {:msg "  Precondition of function countFalse might not hold. Assertion 0 <= from might not hold. (countfalse.vpr@50.5--50.28) [69680]"}
           0 <= from;
         assert {:msg "  Precondition of function countFalse might not hold. Assertion from <= to might not hold. (countfalse.vpr@50.5--50.28) [69681]"}
@@ -1082,8 +1082,8 @@ procedure lemmaFront(a_2: ArrayDomainType, from: int, to: int) returns ()
           HasDirectPerm(ExhaleWellDef0Mask, (loc(a_2, from): Ref), val);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef1Mask := ExhaleWellDef0Mask;
           ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+          ExhaleWellDef1Mask := ExhaleWellDef0Mask;
           assert {:msg "  Precondition of function countFalse might not hold. Assertion 0 <= from + 1 might not hold. (countfalse.vpr@52.51--52.76) [69686]"}
             0 <= from + 1;
           assert {:msg "  Precondition of function countFalse might not hold. Assertion from + 1 <= to might not hold. (countfalse.vpr@52.51--52.76) [69687]"}

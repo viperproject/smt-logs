@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 10:25:02
+// Date:         2024-12-29 15:15:20
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpredicates/basic/knownfolded.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpredicates/basic/knownfolded-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -462,13 +462,13 @@ procedure test1(x: Ref, xs: (Set Ref), b_24: bool) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newVersion: FrameType;
   var ExhaleHeap: HeapType;
   
@@ -529,8 +529,8 @@ procedure test1(x: Ref, xs: (Set Ref), b_24: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -565,8 +565,8 @@ procedure test1(x: Ref, xs: (Set Ref), b_24: bool) returns ()
   // -- Translating statement: unfold acc(P(x, b), write) -- knownfolded.vpr@16.3--16.22
     assume P#trigger(Heap, P(x, b_24));
     assume Heap[null, P(x, b_24)] == FrameFragment((if b_24 then FrameFragment(Heap[x, f_7]) else FrameFragment(Heap[x, g])));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding P(x, b) might fail. There might be insufficient permission to access P(x, b) (knownfolded.vpr@16.3--16.22) [107928]"}
@@ -612,8 +612,8 @@ procedure test1(x: Ref, xs: (Set Ref), b_24: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     if (b_24) {
       perm := FullPerm;
       if (perm != NoPerm) {
@@ -647,19 +647,19 @@ procedure test2(x: Ref, xs: (Set Ref), b_24: bool) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newVersion: FrameType;
   var freshVersion: FrameType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -719,8 +719,8 @@ procedure test2(x: Ref, xs: (Set Ref), b_24: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -736,8 +736,8 @@ procedure test2(x: Ref, xs: (Set Ref), b_24: bool) returns ()
       UnfoldingMask := PostMask;
       assume P#trigger(UnfoldingHeap, P(x, b_24));
       assume UnfoldingHeap[null, P(x, b_24)] == FrameFragment((if b_24 then FrameFragment(UnfoldingHeap[x, f_7]) else FrameFragment(UnfoldingHeap[x, g])));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access P(x, b) (knownfolded.vpr@31.11--31.52) [107938]"}
@@ -777,8 +777,8 @@ procedure test2(x: Ref, xs: (Set Ref), b_24: bool) returns ()
       UnfoldingMask := PostMask;
       assume P#trigger(UnfoldingHeap, P(x, b_24));
       assume UnfoldingHeap[null, P(x, b_24)] == FrameFragment((if b_24 then FrameFragment(UnfoldingHeap[x, f_7]) else FrameFragment(UnfoldingHeap[x, g])));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       UnfoldingMask := UnfoldingMask[null, P(x, b_24):=UnfoldingMask[null, P(x, b_24)] - perm];
       if (b_24) {
@@ -802,8 +802,8 @@ procedure test2(x: Ref, xs: (Set Ref), b_24: bool) returns ()
   // -- Translating statement: unfold acc(P(x, b), write) -- knownfolded.vpr@33.3--33.22
     assume P#trigger(Heap, P(x, b_24));
     assume Heap[null, P(x, b_24)] == FrameFragment((if b_24 then FrameFragment(Heap[x, f_7]) else FrameFragment(Heap[x, g])));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding P(x, b) might fail. There might be insufficient permission to access P(x, b) (knownfolded.vpr@33.3--33.22) [107943]"}
@@ -849,8 +849,8 @@ procedure test2(x: Ref, xs: (Set Ref), b_24: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(P(x, b), write) -- knownfolded.vpr@40.3--40.20
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     if (b_24) {
       perm := FullPerm;
       if (perm != NoPerm) {
@@ -886,8 +886,8 @@ procedure test2(x: Ref, xs: (Set Ref), b_24: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of test2 might not hold. There might be insufficient permission to access P(x, b) (knownfolded.vpr@30.11--30.23) [107954]"}
@@ -900,8 +900,8 @@ procedure test2(x: Ref, xs: (Set Ref), b_24: bool) returns ()
       UnfoldingMask := ExhaleWellDef0Mask;
       assume P#trigger(UnfoldingHeap, P(x, b_24));
       assume UnfoldingHeap[null, P(x, b_24)] == FrameFragment((if b_24 then FrameFragment(UnfoldingHeap[x, f_7]) else FrameFragment(UnfoldingHeap[x, g])));
-      ExhaleWellDef1Mask := UnfoldingMask;
       ExhaleWellDef1Heap := UnfoldingHeap;
+      ExhaleWellDef1Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Postcondition of test2 might not hold. There might be insufficient permission to access P(x, b) (knownfolded.vpr@31.11--31.52) [107955]"}

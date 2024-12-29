@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-27 09:56:08
+; Started: 2024-12-29 14:45:57
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -2427,11 +2427,11 @@
 (assert (forall ((s@$ $Snap) (x@0@00 $Struct)) (!
   (= ($pure$success_get%limited s@$ x@0@00) ($pure$success_get s@$ x@0@00))
   :pattern (($pure$success_get s@$ x@0@00))
-  :qid |quant-u-1504|)))
+  :qid |quant-u-1496|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Struct)) (!
   ($pure$success_get%stateless x@0@00)
   :pattern (($pure$success_get%limited s@$ x@0@00))
-  :qid |quant-u-1505|)))
+  :qid |quant-u-1497|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Struct)) (!
   (=>
     ($pure$success_get%precondition s@$ x@0@00)
@@ -2439,37 +2439,37 @@
       ($pure$success_get s@$ x@0@00)
       ($struct_get<Bool> ($struct_loc<Int> x@0@00 0))))
   :pattern (($pure$success_get s@$ x@0@00))
-  :qid |quant-u-1510|)))
+  :qid |quant-u-1502|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Struct)) (!
   true
   :pattern (($pure$success_get s@$ x@0@00))
-  :qid |quant-u-1511|)))
+  :qid |quant-u-1503|)))
 (assert (forall ((s@$ $Snap) (x@2@00 $Struct)) (!
   (= ($pure$return_get%limited s@$ x@2@00) ($pure$return_get s@$ x@2@00))
   :pattern (($pure$return_get s@$ x@2@00))
-  :qid |quant-u-1506|)))
+  :qid |quant-u-1498|)))
 (assert (forall ((s@$ $Snap) (x@2@00 $Struct)) (!
   ($pure$return_get%stateless x@2@00)
   :pattern (($pure$return_get%limited s@$ x@2@00))
-  :qid |quant-u-1507|)))
+  :qid |quant-u-1499|)))
 (assert (forall ((s@$ $Snap) (x@2@00 $Struct)) (!
   (=>
     ($pure$return_get%precondition s@$ x@2@00)
     (= ($pure$return_get s@$ x@2@00) ($struct_loc<Int> x@2@00 1)))
   :pattern (($pure$return_get s@$ x@2@00))
-  :qid |quant-u-1512|)))
+  :qid |quant-u-1504|)))
 (assert (forall ((s@$ $Snap) (x@2@00 $Struct)) (!
   true
   :pattern (($pure$return_get s@$ x@2@00))
-  :qid |quant-u-1513|)))
+  :qid |quant-u-1505|)))
 (assert (forall ((s@$ $Snap) ($x@4@00 Int) ($y@5@00 Int)) (!
   (= ($range_sum%limited s@$ $x@4@00 $y@5@00) ($range_sum s@$ $x@4@00 $y@5@00))
   :pattern (($range_sum s@$ $x@4@00 $y@5@00))
-  :qid |quant-u-1508|)))
+  :qid |quant-u-1500|)))
 (assert (forall ((s@$ $Snap) ($x@4@00 Int) ($y@5@00 Int)) (!
   ($range_sum%stateless $x@4@00 $y@5@00)
   :pattern (($range_sum%limited s@$ $x@4@00 $y@5@00))
-  :qid |quant-u-1509|)))
+  :qid |quant-u-1501|)))
 (assert (forall ((s@$ $Snap) ($x@4@00 Int) ($y@5@00 Int)) (!
   (=>
     ($range_sum%precondition s@$ $x@4@00 $y@5@00)
@@ -2489,7 +2489,7 @@
           (+ (- $y_exclusive $x_exclusive) $x@4@00)
           (+ (- (- $y_exclusive $y@5@00) $x_exclusive) $x@4@00)))))))))
   :pattern (($range_sum s@$ $x@4@00 $y@5@00))
-  :qid |quant-u-1514|)))
+  :qid |quant-u-1506|)))
 (assert (forall ((s@$ $Snap) ($x@4@00 Int) ($y@5@00 Int)) (!
   (=>
     ($range_sum%precondition s@$ $x@4@00 $y@5@00)
@@ -2501,7 +2501,7 @@
       (div (* (- $y@5@00 1) $y@5@00) 2)
       (div (* (- (- 0 $y@5@00) 1) (- 0 $y@5@00)) 2)))) true)))))
   :pattern (($range_sum s@$ $x@4@00 $y@5@00))
-  :qid |quant-u-1515|)))
+  :qid |quant-u-1507|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- $transitivity_check ----------
@@ -40656,12 +40656,12 @@
     ($unwrap<Int> l$i@568@01)
     (Seq_length ($struct_get<Seq<Int>> ($struct_loc<Int> self@567@01 0)))))))
 (check-sat)
-; unknown
+; unsat
 (pop) ; 8
 ; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 387 | 0 <= $unwrap[Int](l$i@568@01) && $unwrap[Int](l$i@568@01) < |$struct_get[Seq[Int]]($struct_loc[Int](self@567@01, 0))| | live]
-; [else-branch: 387 | !(0 <= $unwrap[Int](l$i@568@01) && $unwrap[Int](l$i@568@01) < |$struct_get[Seq[Int]]($struct_loc[Int](self@567@01, 0))|) | live]
+; [else-branch: 387 | !(0 <= $unwrap[Int](l$i@568@01) && $unwrap[Int](l$i@568@01) < |$struct_get[Seq[Int]]($struct_loc[Int](self@567@01, 0))|) | dead]
 (set-option :timeout 0)
 (push) ; 8
 ; [then-branch: 387 | 0 <= $unwrap[Int](l$i@568@01) && $unwrap[Int](l$i@568@01) < |$struct_get[Seq[Int]]($struct_loc[Int](self@567@01, 0))|]
@@ -40761,7 +40761,7 @@
 (check-sat)
 ; unknown
 (pop) ; 9
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 389 | !(0 <= $unwrap[Int](l$i@571@01) && $unwrap[Int](l$i@571@01) < |$struct_get[Seq[Int]]($struct_loc[Int](self@570@01, 0))|) | live]
 ; [else-branch: 389 | 0 <= $unwrap[Int](l$i@571@01) && $unwrap[Int](l$i@571@01) < |$struct_get[Seq[Int]]($struct_loc[Int](self@570@01, 0))| | live]
@@ -41413,7 +41413,7 @@
 (check-sat)
 ; unsat
 (pop) ; 11
-; 0.02s
+; 0.04s
 ; (get-info :all-statistics)
 (assert (forall ((q$i@577@01 Int)) (!
   (=>
@@ -41454,7 +41454,7 @@
 ; State saturation: after inhale
 (set-option :timeout 20)
 (check-sat)
-; unknown
+; unsat
 ; [exec]
 ; self := ($struct_set(self, 5, ($struct_get($struct_loc(self, 5)): Int) +
 ;   l$havoc): $Struct)
@@ -41861,7 +41861,7 @@
 (check-sat)
 ; unsat
 (pop) ; 12
-; 0.03s
+; 0.02s
 ; (get-info :all-statistics)
 (assert (forall ((q$i@582@01 Int)) (!
   (=>
@@ -42309,7 +42309,7 @@
 (check-sat)
 ; unsat
 (pop) ; 13
-; 0.04s
+; 0.03s
 ; (get-info :all-statistics)
 (assert (forall ((q$i@587@01 Int)) (!
   (=>
@@ -43570,7 +43570,7 @@
 (check-sat)
 ; unsat
 (pop) ; 15
-; 0.66s
+; 0.22s
 ; (get-info :all-statistics)
 (assert (forall ((q$i@601@01 Int)) (!
   (=>
@@ -43714,15 +43714,6 @@
       ($unwrap<Int> l$i@571@01)
       (Seq_length ($struct_get<Seq<Int>> ($struct_loc<Int> self@570@01 0)))))))
 (pop) ; 9
-(pop) ; 8
-(push) ; 8
-; [else-branch: 387 | !(0 <= $unwrap[Int](l$i@568@01) && $unwrap[Int](l$i@568@01) < |$struct_get[Seq[Int]]($struct_loc[Int](self@567@01, 0))|)]
-(assert (not
-  (and
-    (<= 0 ($unwrap<Int> l$i@568@01))
-    (<
-      ($unwrap<Int> l$i@568@01)
-      (Seq_length ($struct_get<Seq<Int>> ($struct_loc<Int> self@567@01 0)))))))
 (pop) ; 8
 (pop) ; 7
 (pop) ; 6

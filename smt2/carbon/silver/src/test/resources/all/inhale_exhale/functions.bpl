@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 10:44:29
+// Date:         2024-12-29 15:34:53
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/inhale_exhale/functions.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/inhale_exhale/functions-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -459,8 +459,8 @@ procedure inhaleExpression1#definedness(this: Ref) returns (Result: int)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -499,8 +499,8 @@ procedure inhaleExpression1#definedness(this: Ref) returns (Result: int)
     Result := Heap[this, x_36];
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of inhaleExpression1 might not hold. Assertion result == 1 might not hold. (functions.vpr@46.11--46.22) [188883]"}
       Result == 1;
 }
@@ -551,8 +551,8 @@ procedure inhaleExpression2#definedness(this: Ref) returns (Result: int)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -591,8 +591,8 @@ procedure inhaleExpression2#definedness(this: Ref) returns (Result: int)
     Result := Heap[this, x_36];
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of inhaleExpression2 might not hold. Assertion result == 1 might not hold. (functions.vpr@53.11--53.22) [188886]"}
       Result == 1;
 }
@@ -643,8 +643,8 @@ procedure inhaleExpression3#definedness(this: Ref) returns (Result: int)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -685,8 +685,8 @@ procedure inhaleExpression3#definedness(this: Ref) returns (Result: int)
     Result := Heap[this, x_36];
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of inhaleExpression3 might not hold. Assertion result == 1 might not hold. (functions.vpr@61.11--61.22) [188889]"}
       Result == 1;
 }
@@ -737,8 +737,8 @@ procedure exhaleTrue1#definedness(this: Ref) returns (Result: int)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -771,8 +771,8 @@ procedure exhaleTrue1#definedness(this: Ref) returns (Result: int)
       }
     
     // -- Normally exhale the exhale part.
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
 }
 
 // ==================================================
@@ -821,8 +821,8 @@ procedure exhaleTrue2#definedness(this: Ref) returns (Result: int)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -856,8 +856,8 @@ procedure exhaleTrue2#definedness(this: Ref) returns (Result: int)
       }
     
     // -- Normally exhale the exhale part.
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
 }
 
 // ==================================================
@@ -910,8 +910,8 @@ procedure exhaleTrue3#definedness(this: Ref) returns (Result: int)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -946,8 +946,8 @@ procedure exhaleTrue3#definedness(this: Ref) returns (Result: int)
       }
     
     // -- Normally exhale the exhale part.
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
 }
 
 // ==================================================
@@ -993,8 +993,8 @@ procedure exhaleExpression1WithRequires#definedness(this: Ref) returns (Result: 
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1033,8 +1033,8 @@ procedure exhaleExpression1WithRequires#definedness(this: Ref) returns (Result: 
       }
     
     // -- Normally exhale the exhale part.
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       
       // -- Check definedness of this.x == 1
         assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access this.x (functions.vpr@102.11--102.30) [188895]"}
@@ -1086,8 +1086,8 @@ procedure exhaleExpression2WithRequires#definedness(this: Ref) returns (Result: 
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1126,8 +1126,8 @@ procedure exhaleExpression2WithRequires#definedness(this: Ref) returns (Result: 
       }
     
     // -- Normally exhale the exhale part.
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       assert {:msg "  Postcondition of exhaleExpression2WithRequires might not hold. Assertion this != null might not hold. (functions.vpr@109.11--109.54) [188899]"}
         this != null;
       
@@ -1182,8 +1182,8 @@ procedure exhaleExpression3WithRequires#definedness(this: Ref) returns (Result: 
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1223,8 +1223,8 @@ procedure exhaleExpression3WithRequires#definedness(this: Ref) returns (Result: 
       }
     
     // -- Normally exhale the exhale part.
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       assert {:msg "  Postcondition of exhaleExpression3WithRequires might not hold. Assertion this != null might not hold. (functions.vpr@116.11--116.31) [188904]"}
         this != null;
       
@@ -1242,12 +1242,12 @@ procedure exhaleExpression3WithRequires#definedness(this: Ref) returns (Result: 
 procedure inhaleTrue1Method1(this: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
-  var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var perm: Perm;
   var ExhaleHeap: HeapType;
   
@@ -1267,18 +1267,18 @@ procedure inhaleTrue1Method1(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert inhaleTrue1(this) == 0 -- functions.vpr@32.3--32.32
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of inhaleTrue1(this) == 0
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function inhaleTrue1 might not hold. There might be insufficient permission to access this.x (functions.vpr@32.10--32.27) [188907]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[this, x_36];
@@ -1304,12 +1304,12 @@ procedure inhaleTrue1Method2(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
-  var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var ExhaleHeap: HeapType;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
@@ -1338,18 +1338,18 @@ procedure inhaleTrue1Method2(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert inhaleTrue1(this) == 0 -- functions.vpr@38.3--38.32
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of inhaleTrue1(this) == 0
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function inhaleTrue1 might not hold. There might be insufficient permission to access this.x (functions.vpr@38.10--38.27) [188911]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[this, x_36];
@@ -1369,8 +1369,8 @@ procedure inhaleTrue1Method2(this: Ref) returns ()
   // -- Translating statement: assert acc(this.x, write) && this.x == 1 -- functions.vpr@39.3--39.36
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
+    ExhaleWellDef0Mask := AssertMask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Assert might fail. There might be insufficient permission to access this.x (functions.vpr@39.10--39.36) [188915]"}
@@ -1386,14 +1386,14 @@ procedure inhaleTrue1Method2(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale inhaleTrue1(this) == 0 -- functions.vpr@40.3--40.32
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of inhaleTrue1(this) == 0
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function inhaleTrue1 might not hold. There might be insufficient permission to access this.x (functions.vpr@40.10--40.27) [188918]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[this, x_36];
@@ -1413,8 +1413,8 @@ procedure inhaleTrue1Method2(this: Ref) returns ()
   // -- Translating statement: assert acc(this.x, write) && this.x == 1 -- functions.vpr@41.3--41.36
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
+    ExhaleWellDef0Mask := AssertMask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Assert might fail. There might be insufficient permission to access this.x (functions.vpr@41.10--41.36) [188922]"}
@@ -1437,12 +1437,12 @@ procedure inhaleTrue1Method2(this: Ref) returns ()
 procedure inhaleExpression1Method(this: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
-  var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -1457,18 +1457,18 @@ procedure inhaleExpression1Method(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert inhaleExpression1(this) == 1 -- functions.vpr@68.3--68.38
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of inhaleExpression1(this) == 1
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         // Finish exhale
         havoc ExhaleHeap;
         assume IdenticalOnKnownLocations(ExhaleWellDef0Heap, ExhaleHeap, ExhaleWellDef0Mask);
@@ -1489,12 +1489,12 @@ procedure exhaleTrue1Method(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
-  var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -1516,18 +1516,18 @@ procedure exhaleTrue1Method(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert exhaleTrue1(this) == 0 -- functions.vpr@96.3--96.32
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of exhaleTrue1(this) == 0
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function exhaleTrue1 might not hold. There might be insufficient permission to access this.x (functions.vpr@96.10--96.27) [188926]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[this, x_36];
@@ -1543,8 +1543,8 @@ procedure exhaleTrue1Method(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert this.x == 1 -- functions.vpr@97.3--97.21
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of this.x == 1
       assert {:msg "  Assert might fail. There might be insufficient permission to access this.x (functions.vpr@97.10--97.21) [188928]"}
@@ -1562,12 +1562,12 @@ procedure exhaleExpression1WithRequiresMethod(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
-  var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -1594,18 +1594,18 @@ procedure exhaleExpression1WithRequiresMethod(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert exhaleExpression1WithRequires(this) == 1 -- functions.vpr@125.3--125.50
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of exhaleExpression1WithRequires(this) == 1
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function exhaleExpression1WithRequires might not hold. There might be insufficient permission to access this.x (functions.vpr@125.10--125.45) [188931]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[this, x_36];

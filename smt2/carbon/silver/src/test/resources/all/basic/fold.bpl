@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 10:43:53
+// Date:         2024-12-29 15:34:16
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/basic/fold.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/basic/fold-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -248,10 +248,10 @@ procedure t1(r_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var freshVersion: FrameType;
   var newVersion: FrameType;
   
@@ -273,8 +273,8 @@ procedure t1(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: r.f := 0 -- fold.vpr@14.5--14.13
     assert {:msg "  Assignment might fail. There might be insufficient permission to access r.f (fold.vpr@14.5--14.13) [185854]"}
@@ -283,8 +283,8 @@ procedure t1(r_1: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(valid(r), write) -- fold.vpr@15.5--15.30
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding valid(r) might fail. There might be insufficient permission to access r.f (fold.vpr@15.5--15.30) [185857]"}
@@ -311,8 +311,8 @@ procedure t1(r_1: Ref) returns ()
   // -- Translating statement: unfold acc(valid(r), write) -- fold.vpr@16.5--16.32
     assume valid#trigger(Heap, valid(r_1));
     assume Heap[null, valid(r_1)] == FrameFragment(Heap[r_1, f_7]);
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding valid(r) might fail. There might be insufficient permission to access valid(r) (fold.vpr@16.5--16.32) [185862]"}
@@ -334,8 +334,8 @@ procedure t1(r_1: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- fold.vpr@18.5--18.17
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion false might not hold. (fold.vpr@18.12--18.17) [185864]"}
       false;
     assume state(Heap, Mask);
@@ -349,10 +349,10 @@ procedure t2(r_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var freshVersion: FrameType;
   
   // -- Initializing the state
@@ -373,8 +373,8 @@ procedure t2(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: r.f := 1 -- fold.vpr@24.5--24.13
     assert {:msg "  Assignment might fail. There might be insufficient permission to access r.f (fold.vpr@24.5--24.13) [185865]"}
@@ -383,8 +383,8 @@ procedure t2(r_1: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(valid(r), write) -- fold.vpr@26.5--26.30
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding valid(r) might fail. There might be insufficient permission to access r.f (fold.vpr@26.5--26.30) [185868]"}
@@ -417,10 +417,10 @@ procedure t3(r_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newVersion: FrameType;
   
   // -- Initializing the state
@@ -441,8 +441,8 @@ procedure t3(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: r.f := 1 -- fold.vpr@32.5--32.13
     assert {:msg "  Assignment might fail. There might be insufficient permission to access r.f (fold.vpr@32.5--32.13) [185871]"}
@@ -453,8 +453,8 @@ procedure t3(r_1: Ref) returns ()
   // -- Translating statement: unfold acc(valid(r), write) -- fold.vpr@34.5--34.32
     assume valid#trigger(Heap, valid(r_1));
     assume Heap[null, valid(r_1)] == FrameFragment(Heap[r_1, f_7]);
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding valid(r) might fail. There might be insufficient permission to access valid(r) (fold.vpr@34.5--34.32) [185874]"}

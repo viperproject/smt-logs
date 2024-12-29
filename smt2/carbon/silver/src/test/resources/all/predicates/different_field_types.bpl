@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 10:39:40
+// Date:         2024-12-29 15:30:01
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/predicates/different_field_types.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/predicates/different_field_types-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -334,12 +334,12 @@ procedure test1(x: Ref, b_24: bool) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -368,8 +368,8 @@ procedure test1(x: Ref, b_24: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -420,8 +420,8 @@ procedure test1(x: Ref, b_24: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     if (b_24) {
       perm := FullPerm;
       if (perm != NoPerm) {
@@ -455,12 +455,12 @@ procedure test2(x: Ref, b_24: bool) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var newVersion: FrameType;
   var ExhaleHeap: HeapType;
   
@@ -482,8 +482,8 @@ procedure test2(x: Ref, b_24: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -508,8 +508,8 @@ procedure test2(x: Ref, b_24: bool) returns ()
   // -- Translating statement: unfold acc(P(x, b), write) -- different_field_types.vpr@28.3--28.22
     assume P#trigger(Heap, P(x, b_24));
     assume Heap[null, P(x, b_24)] == FrameFragment((if b_24 then FrameFragment(Heap[x, f_7]) else FrameFragment(Heap[x, g])));
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding P(x, b) might fail. There might be insufficient permission to access P(x, b) (different_field_types.vpr@28.3--28.22) [151341]"}
@@ -563,8 +563,8 @@ procedure test2(x: Ref, b_24: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     if (b_24) {
       perm := FullPerm;
       if (perm != NoPerm) {
@@ -594,12 +594,12 @@ procedure test3(x: Ref, b_24: bool) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var newVersion: FrameType;
   var ExhaleHeap: HeapType;
   var c: bool;
@@ -623,8 +623,8 @@ procedure test3(x: Ref, b_24: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -641,8 +641,8 @@ procedure test3(x: Ref, b_24: bool) returns ()
   // -- Translating statement: unfold acc(P(x, b), write) -- different_field_types.vpr@45.3--45.22
     assume P#trigger(Heap, P(x, b_24));
     assume Heap[null, P(x, b_24)] == FrameFragment((if b_24 then FrameFragment(Heap[x, f_7]) else FrameFragment(Heap[x, g])));
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding P(x, b) might fail. There might be insufficient permission to access P(x, b) (different_field_types.vpr@45.3--45.22) [151352]"}
@@ -674,8 +674,8 @@ procedure test3(x: Ref, b_24: bool) returns ()
     // -- Check definedness of fun(x, b)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         if (b_24) {
           perm := FullPerm;
           assert {:msg "  Precondition of function fun might not hold. There might be insufficient permission to access x.f (different_field_types.vpr@47.18--47.27) [151355]"}
@@ -713,8 +713,8 @@ procedure test3(x: Ref, b_24: bool) returns ()
         // -- Check definedness of fun(x, b)
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             if (b_24) {
               perm := FullPerm;
               assert {:msg "  Precondition of function fun might not hold. There might be insufficient permission to access x.f (different_field_types.vpr@51.10--51.19) [151359]"}
@@ -750,8 +750,8 @@ procedure test3(x: Ref, b_24: bool) returns ()
         // -- Check definedness of fun(x, b)
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             if (b_24) {
               perm := FullPerm;
               assert {:msg "  Precondition of function fun might not hold. There might be insufficient permission to access x.f (different_field_types.vpr@54.10--54.19) [151363]"}
@@ -774,8 +774,8 @@ procedure test3(x: Ref, b_24: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(P(x, b), write) -- different_field_types.vpr@57.3--57.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     if (b_24) {
       perm := FullPerm;
       if (perm != NoPerm) {
@@ -811,8 +811,8 @@ procedure test3(x: Ref, b_24: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of test3 might not hold. There might be insufficient permission to access P(x, b) (different_field_types.vpr@43.11--43.23) [151371]"}

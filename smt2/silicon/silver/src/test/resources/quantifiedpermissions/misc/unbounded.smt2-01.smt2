@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-27 10:01:17
+; Started: 2024-12-29 14:51:07
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -687,7 +687,7 @@
   (and (= (inv@5@01 x@3@01) x@3@01) (img@6@01 x@3@01))
   :pattern ((inv@5@01 x@3@01))
   :pattern ((img@6@01 x@3@01))
-  :qid |quant-u-12068|)))
+  :qid |quant-u-12024|)))
 (assert (forall ((r $Ref)) (!
   (=> (img@6@01 r) (= (inv@5@01 r) r))
   :pattern ((inv@5@01 r))
@@ -775,8 +775,8 @@
 ; z := new()
 (declare-const z@9@01 $Ref)
 (assert (not (= z@9@01 $Ref.null)))
-(assert (not (= z@9@01 z@2@01)))
 (assert (not (= z@9@01 y@1@01)))
+(assert (not (= z@9@01 z@2@01)))
 ; [exec]
 ; assert NN(z)
 ; [eval] NN(z)
@@ -890,7 +890,7 @@
     (and (= (inv@17@01 x@15@01) x@15@01) (img@18@01 x@15@01)))
   :pattern ((inv@17@01 x@15@01))
   :pattern ((img@18@01 x@15@01))
-  :qid |quant-u-12070|)))
+  :qid |quant-u-12026|)))
 (assert (forall ((r $Ref)) (!
   (=> (and (img@18@01 r) (not (= (inv@17@01 r) $Ref.null))) (= (inv@17@01 r) r))
   :pattern ((inv@17@01 r))

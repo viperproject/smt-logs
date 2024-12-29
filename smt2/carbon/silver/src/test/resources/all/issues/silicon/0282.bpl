@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 10:47:28
+// Date:         2024-12-29 15:37:53
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0282.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0282-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -878,13 +878,13 @@ procedure t4b(xs: (Seq Ref), i: int) returns ()
 {
   var x_33: Ref;
   var QPMask: MaskType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var y_4: Ref;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -947,8 +947,8 @@ procedure t4b(xs: (Seq Ref), i: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1008,8 +1008,8 @@ procedure t4b(xs: (Seq Ref), i: int) returns ()
   }
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     havoc QPMask;
     
     // -- check that the permission amount is positive
@@ -1068,21 +1068,21 @@ procedure t4b(xs: (Seq Ref), i: int) returns ()
 procedure test02a(xs: (Seq Ref), k: int) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var i_4: int;
   var j_6: int;
   var i_6: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var QPMask: MaskType;
   var i_7: int;
   var j_7: int;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
   var i_8: int;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1093,8 +1093,8 @@ procedure test02a(xs: (Seq Ref), k: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale (forall i: Int, j: Int ::
   //     { xs[i], xs[j] }
@@ -1132,8 +1132,8 @@ procedure test02a(xs: (Seq Ref), k: int) returns ()
         if (0 <= i_6 && i_6 < Seq#Length(xs)) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             assert {:msg "  Precondition of function at1 might not hold. Assertion 0 <= i might not hold. (0282.vpr@29.67--29.77) [197342]"}
               0 <= i_6;
             assert {:msg "  Precondition of function at1 might not hold. Assertion i < |xs| might not hold. (0282.vpr@29.67--29.77) [197343]"}
@@ -1211,16 +1211,16 @@ procedure test02a(xs: (Seq Ref), k: int) returns ()
   //     0 <= i && i < |xs| ==> acc(at2(i, xs).f, write)) -- 0282.vpr@35.3--35.80
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Heap := AssertHeap;
     ExhaleWellDef0Mask := AssertMask;
+    ExhaleWellDef0Heap := AssertHeap;
     
     // -- Check definedness of (forall i: Int :: { at2(i, xs) } 0 <= i && i < |xs| ==> acc(at2(i, xs).f, write))
       if (*) {
         if (0 <= i_8 && i_8 < Seq#Length(xs)) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Heap := ExhaleWellDef0Heap;
             ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+            ExhaleWellDef1Heap := ExhaleWellDef0Heap;
             assert {:msg "  Precondition of function at2 might not hold. Assertion 0 <= i might not hold. (0282.vpr@35.67--35.77) [197349]"}
               0 <= i_8;
             assert {:msg "  Precondition of function at2 might not hold. Assertion i < |xs| might not hold. (0282.vpr@35.67--35.77) [197350]"}
@@ -1282,17 +1282,17 @@ procedure test02a(xs: (Seq Ref), k: int) returns ()
 procedure test02b(xs: (Seq Ref), k: int) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var i_9: int;
   var j_10: int;
   var i_10: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var QPMask: MaskType;
   var i_11: int;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var i_5: int;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
@@ -1307,8 +1307,8 @@ procedure test02b(xs: (Seq Ref), k: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale (forall i: Int, j: Int ::
   //     { xs[i], xs[j] }
@@ -1346,8 +1346,8 @@ procedure test02b(xs: (Seq Ref), k: int) returns ()
         if (0 <= i_10 && i_10 < Seq#Length(xs)) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             assert {:msg "  Precondition of function at1 might not hold. Assertion 0 <= i might not hold. (0282.vpr@45.67--45.77) [197358]"}
               0 <= i_10;
             assert {:msg "  Precondition of function at1 might not hold. Assertion i < |xs| might not hold. (0282.vpr@45.67--45.77) [197359]"}
@@ -1399,16 +1399,16 @@ procedure test02b(xs: (Seq Ref), k: int) returns ()
   //     { at1(xs, i) }
   //     { at2(i, xs) }
   //     0 <= i && i < |xs| ==> at1(xs, i) == at2(i, xs)) -- 0282.vpr@48.3--48.74
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall i: Int :: { at1(xs, i) } { at2(i, xs) } 0 <= i && i < |xs| ==> at1(xs, i) == at2(i, xs))
       if (*) {
         if (0 <= i_11 && i_11 < Seq#Length(xs)) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Heap := ExhaleWellDef0Heap;
             ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+            ExhaleWellDef1Heap := ExhaleWellDef0Heap;
             assert {:msg "  Precondition of function at1 might not hold. Assertion 0 <= i might not hold. (0282.vpr@48.50--48.60) [197361]"}
               0 <= i_11;
             assert {:msg "  Precondition of function at1 might not hold. Assertion i < |xs| might not hold. (0282.vpr@48.50--48.60) [197362]"}
@@ -1418,8 +1418,8 @@ procedure test02b(xs: (Seq Ref), k: int) returns ()
           }
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Heap := ExhaleWellDef0Heap;
             ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+            ExhaleWellDef1Heap := ExhaleWellDef0Heap;
             assert {:msg "  Precondition of function at2 might not hold. Assertion 0 <= i might not hold. (0282.vpr@48.64--48.74) [197363]"}
               0 <= i_11;
             assert {:msg "  Precondition of function at2 might not hold. Assertion i < |xs| might not hold. (0282.vpr@48.64--48.74) [197364]"}
@@ -1448,16 +1448,16 @@ procedure test02b(xs: (Seq Ref), k: int) returns ()
   //     0 <= i && i < |xs| ==> acc(at2(i, xs).f, write)) -- 0282.vpr@50.3--50.80
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Heap := AssertHeap;
     ExhaleWellDef0Mask := AssertMask;
+    ExhaleWellDef0Heap := AssertHeap;
     
     // -- Check definedness of (forall i: Int :: { at2(i, xs) } 0 <= i && i < |xs| ==> acc(at2(i, xs).f, write))
       if (*) {
         if (0 <= i_12 && i_12 < Seq#Length(xs)) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Heap := ExhaleWellDef0Heap;
             ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+            ExhaleWellDef1Heap := ExhaleWellDef0Heap;
             assert {:msg "  Precondition of function at2 might not hold. Assertion 0 <= i might not hold. (0282.vpr@50.67--50.77) [197366]"}
               0 <= i_12;
             assert {:msg "  Precondition of function at2 might not hold. Assertion i < |xs| might not hold. (0282.vpr@50.67--50.77) [197367]"}
@@ -1519,16 +1519,16 @@ procedure test02b(xs: (Seq Ref), k: int) returns ()
 procedure test03a(xs: (Seq Ref), k: int) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var i_16: int;
   var j_18: int;
   var i_18: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var QPMask: MaskType;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1539,8 +1539,8 @@ procedure test03a(xs: (Seq Ref), k: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale 0 <= k && k < |xs| -- 0282.vpr@54.3--54.28
     assume 0 <= k;
@@ -1584,8 +1584,8 @@ procedure test03a(xs: (Seq Ref), k: int) returns ()
         if (0 <= i_18 && i_18 < Seq#Length(xs)) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             assert {:msg "  Precondition of function at1 might not hold. Assertion 0 <= i might not hold. (0282.vpr@56.67--56.77) [197375]"}
               0 <= i_18;
             assert {:msg "  Precondition of function at1 might not hold. Assertion i < |xs| might not hold. (0282.vpr@56.67--56.77) [197376]"}
@@ -1634,14 +1634,14 @@ procedure test03a(xs: (Seq Ref), k: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert at1(xs, k) != null -- 0282.vpr@59.3--59.28
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of at1(xs, k) != null
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         assert {:msg "  Precondition of function at1 might not hold. Assertion 0 <= k might not hold. (0282.vpr@59.10--59.20) [197378]"}
           0 <= k;
         assert {:msg "  Precondition of function at1 might not hold. Assertion k < |xs| might not hold. (0282.vpr@59.10--59.20) [197379]"}
@@ -1661,16 +1661,16 @@ procedure test03a(xs: (Seq Ref), k: int) returns ()
 procedure test03b(xs: (Seq Ref), k: int) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var i_13: int;
   var j_12: int;
   var i_20: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var QPMask: MaskType;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1681,8 +1681,8 @@ procedure test03b(xs: (Seq Ref), k: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale 0 <= k && k < |xs| -- 0282.vpr@63.3--63.28
     assume 0 <= k;
@@ -1726,8 +1726,8 @@ procedure test03b(xs: (Seq Ref), k: int) returns ()
         if (0 <= i_20 && i_20 < Seq#Length(xs)) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             assert {:msg "  Precondition of function at1 might not hold. Assertion 0 <= i might not hold. (0282.vpr@65.67--65.77) [197385]"}
               0 <= i_20;
             assert {:msg "  Precondition of function at1 might not hold. Assertion i < |xs| might not hold. (0282.vpr@65.67--65.77) [197386]"}
@@ -1776,14 +1776,14 @@ procedure test03b(xs: (Seq Ref), k: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert at2(k, xs) != null -- 0282.vpr@66.3--66.28
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of at2(k, xs) != null
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         assert {:msg "  Precondition of function at2 might not hold. Assertion 0 <= k might not hold. (0282.vpr@66.10--66.20) [197388]"}
           0 <= k;
         assert {:msg "  Precondition of function at2 might not hold. Assertion k < |xs| might not hold. (0282.vpr@66.10--66.20) [197389]"}

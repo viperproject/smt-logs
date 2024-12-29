@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 10:47:09
+// Date:         2024-12-29 15:37:34
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0264.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0264-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -458,8 +458,8 @@ procedure validList#definedness(root: Ref, nodes_1: (Set Ref)) returns (Result: 
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -479,8 +479,8 @@ procedure validList#definedness(root: Ref, nodes_1: (Set Ref)) returns (Result: 
     // -- Check definedness of (nodes subset getWSet(root))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function getWSet might not hold. There might be insufficient permission to access RefGuard(root) (0264.vpr@11.25--11.38) [196378]"}
           NoPerm < perm ==> NoPerm < Mask[null, RefGuard(root)];
@@ -532,8 +532,8 @@ procedure validList_abstract#definedness(root: Ref, nodes_1: (Set Ref)) returns 
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -553,8 +553,8 @@ procedure validList_abstract#definedness(root: Ref, nodes_1: (Set Ref)) returns 
     // -- Check definedness of (nodes subset getWSet(root))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function getWSet might not hold. There might be insufficient permission to access RefGuard(root) (0264.vpr@21.25--21.38) [196379]"}
           NoPerm < perm ==> NoPerm < Mask[null, RefGuard(root)];
@@ -612,11 +612,11 @@ procedure validList_method(root: Ref, nodes_1: (Set Ref)) returns (r_1: bool)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -637,8 +637,8 @@ procedure validList_method(root: Ref, nodes_1: (Set Ref)) returns (r_1: bool)
     // -- Check definedness of (nodes subset getWSet(root))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function getWSet might not hold. There might be insufficient permission to access RefGuard(root) (0264.vpr@16.25--16.38) [196380]"}
           NoPerm < perm ==> NoPerm < Mask[null, RefGuard(root)];
@@ -655,8 +655,8 @@ procedure validList_method(root: Ref, nodes_1: (Set Ref)) returns (r_1: bool)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: r := true -- 0264.vpr@17.3--17.12
     r_1 := true;

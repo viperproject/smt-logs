@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 10:49:20
+// Date:         2024-12-29 15:39:46
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0053.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0053-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -263,11 +263,11 @@ procedure traverse(list_2: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var tmp: Ref;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var loopHeap: HeapType;
   var loopMask: MaskType;
@@ -290,8 +290,8 @@ procedure traverse(list_2: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[tmp, $allocated];
@@ -305,8 +305,8 @@ procedure traverse(list_2: Ref) returns ()
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         if (tmp != null) {
           perm := FullPerm;
           if (perm != NoPerm) {
@@ -358,8 +358,8 @@ procedure traverse(list_2: Ref) returns ()
           // -- Translating statement: unfold acc(valid(tmp), write) -- 0053.vpr@20.5--20.27
             assume valid#trigger(Heap, valid(tmp));
             assume Heap[null, valid(tmp)] == CombineFrames(FrameFragment(Heap[tmp, next]), CombineFrames(FrameFragment(Heap[tmp, val]), FrameFragment((if Heap[tmp, next] != null then Heap[null, valid(Heap[tmp, next])] else EmptyFrame))));
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
             if (perm != NoPerm) {
               assert {:msg "  Unfolding valid(tmp) might fail. There might be insufficient permission to access valid(tmp) (0053.vpr@20.5--20.27) [203441]"}
@@ -399,8 +399,8 @@ procedure traverse(list_2: Ref) returns ()
             tmp := Heap[tmp, next];
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         if (tmp != null) {
           perm := FullPerm;
           if (perm != NoPerm) {

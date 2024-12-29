@@ -2623,7 +2623,3 @@ $generated@@1728)))))))
 (get-info :rlimit)
 (pop 1)
 ; Timed out
-(reset)
-(set-option :rlimit 0)
-; did a full reset
-(reset)

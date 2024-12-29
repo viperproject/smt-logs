@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 10:18:40
+// Date:         2024-12-29 15:08:54
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/third_party/ZeroArray.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/third_party/ZeroArray-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -592,15 +592,15 @@ procedure zero_array(this: Ref, ar: (Seq Ref)) returns ()
   var k2_1: int;
   var k_2: int;
   var QPMask: MaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var k_4: int;
   var k_7: int;
   var i: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var k_10_2: int;
   var ExhaleHeap: HeapType;
   var k_10: int;
@@ -691,8 +691,8 @@ procedure zero_array(this: Ref, ar: (Seq Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -785,8 +785,8 @@ procedure zero_array(this: Ref, ar: (Seq Ref)) returns ()
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Loop invariant 0 <= i && i <= |ar| might not hold on entry. Assertion 0 <= i might not hold. (ZeroArray.vpr@19.15--19.34) [54502]"}
           0 <= i;
         assert {:msg "  Loop invariant 0 <= i && i <= |ar| might not hold on entry. Assertion i <= |ar| might not hold. (ZeroArray.vpr@19.15--19.34) [54503]"}
@@ -994,8 +994,8 @@ procedure zero_array(this: Ref, ar: (Seq Ref)) returns ()
             i := i + 1;
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Loop invariant 0 <= i && i <= |ar| might not be preserved. Assertion 0 <= i might not hold. (ZeroArray.vpr@19.15--19.34) [54517]"}
           0 <= i;
         assert {:msg "  Loop invariant 0 <= i && i <= |ar| might not be preserved. Assertion i <= |ar| might not hold. (ZeroArray.vpr@19.15--19.34) [54518]"}
@@ -1107,8 +1107,8 @@ procedure zero_array(this: Ref, ar: (Seq Ref)) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     havoc QPMask;
     
     // -- check that the permission amount is positive

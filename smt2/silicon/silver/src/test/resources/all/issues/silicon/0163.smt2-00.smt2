@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-27 10:10:39
+; Started: 2024-12-29 15:00:48
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -157,11 +157,11 @@
 (assert (forall ((s@$ $Snap)) (!
   (= (otherRef%limited s@$) (otherRef s@$))
   :pattern ((otherRef s@$))
-  :qid |quant-u-25946|)))
+  :qid |quant-u-25884|)))
 (assert (forall ((s@$ $Snap)) (!
   (as otherRef%stateless  Bool)
   :pattern ((otherRef%limited s@$))
-  :qid |quant-u-25947|)))
+  :qid |quant-u-25885|)))
 ; ---------- FUNCTION helper----------
 (declare-fun r@1@00 () $Ref)
 (declare-fun result@2@00 () Int)
@@ -171,11 +171,11 @@
 (assert (forall ((s@$ $Snap) (r@1@00 $Ref)) (!
   (= (helper%limited s@$ r@1@00) (helper s@$ r@1@00))
   :pattern ((helper s@$ r@1@00))
-  :qid |quant-u-25948|)))
+  :qid |quant-u-25886|)))
 (assert (forall ((s@$ $Snap) (r@1@00 $Ref)) (!
   (helper%stateless r@1@00)
   :pattern ((helper%limited s@$ r@1@00))
-  :qid |quant-u-25949|)))
+  :qid |quant-u-25887|)))
 ; ---------- FUNCTION postInhale----------
 (declare-fun r@3@00 () $Ref)
 (declare-fun result@4@00 () $Ref)
@@ -195,23 +195,23 @@
 (assert (forall ((s@$ $Snap) (r@3@00 $Ref)) (!
   (= (postInhale%limited s@$ r@3@00) (postInhale s@$ r@3@00))
   :pattern ((postInhale s@$ r@3@00))
-  :qid |quant-u-25950|)))
+  :qid |quant-u-25888|)))
 (assert (forall ((s@$ $Snap) (r@3@00 $Ref)) (!
   (postInhale%stateless r@3@00)
   :pattern ((postInhale%limited s@$ r@3@00))
-  :qid |quant-u-25951|)))
+  :qid |quant-u-25889|)))
 (assert (forall ((s@$ $Snap) (r@3@00 $Ref)) (!
   (let ((result@4@00 (postInhale%limited s@$ r@3@00))) (=>
     (postInhale%precondition s@$ r@3@00)
     (= (helper $Snap.unit result@4@00) 2)))
   :pattern ((postInhale%limited s@$ r@3@00))
-  :qid |quant-u-25966|)))
+  :qid |quant-u-25904|)))
 (assert (forall ((s@$ $Snap) (r@3@00 $Ref)) (!
   (let ((result@4@00 (postInhale%limited s@$ r@3@00))) (=>
     (postInhale%precondition s@$ r@3@00)
     (helper%precondition $Snap.unit result@4@00)))
   :pattern ((postInhale%limited s@$ r@3@00))
-  :qid |quant-u-25967|)))
+  :qid |quant-u-25905|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -232,11 +232,11 @@
     (postInhale%precondition s@$ r@3@00)
     (= (postInhale s@$ r@3@00) (otherRef $Snap.unit)))
   :pattern ((postInhale s@$ r@3@00))
-  :qid |quant-u-25968|)))
+  :qid |quant-u-25906|)))
 (assert (forall ((s@$ $Snap) (r@3@00 $Ref)) (!
   (=> (postInhale%precondition s@$ r@3@00) (otherRef%precondition $Snap.unit))
   :pattern ((postInhale s@$ r@3@00))
-  :qid |quant-u-25969|)))
+  :qid |quant-u-25907|)))
 ; ---------- FUNCTION onlyWorksWithInhale----------
 (declare-fun i@5@00 () Int)
 (declare-fun result@6@00 () Int)
@@ -253,21 +253,21 @@
 (assert (forall ((s@$ $Snap) (i@5@00 Int)) (!
   (= (onlyWorksWithInhale%limited s@$ i@5@00) (onlyWorksWithInhale s@$ i@5@00))
   :pattern ((onlyWorksWithInhale s@$ i@5@00))
-  :qid |quant-u-25952|)))
+  :qid |quant-u-25890|)))
 (assert (forall ((s@$ $Snap) (i@5@00 Int)) (!
   (onlyWorksWithInhale%stateless i@5@00)
   :pattern ((onlyWorksWithInhale%limited s@$ i@5@00))
-  :qid |quant-u-25953|)))
+  :qid |quant-u-25891|)))
 (assert (forall ((s@$ $Snap) (i@5@00 Int)) (!
   (let ((result@6@00 (onlyWorksWithInhale%limited s@$ i@5@00))) (=>
     (onlyWorksWithInhale%precondition s@$ i@5@00)
     (> result@6@00 17)))
   :pattern ((onlyWorksWithInhale%limited s@$ i@5@00))
-  :qid |quant-u-25970|)))
+  :qid |quant-u-25908|)))
 (assert (forall ((s@$ $Snap) (i@5@00 Int)) (!
   (let ((result@6@00 (onlyWorksWithInhale%limited s@$ i@5@00))) true)
   :pattern ((onlyWorksWithInhale%limited s@$ i@5@00))
-  :qid |quant-u-25971|)))
+  :qid |quant-u-25909|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (= s@$ $Snap.unit))
@@ -293,11 +293,11 @@
     (onlyWorksWithInhale%precondition s@$ i@5@00)
     (= (onlyWorksWithInhale s@$ i@5@00) i@5@00))
   :pattern ((onlyWorksWithInhale s@$ i@5@00))
-  :qid |quant-u-25972|)))
+  :qid |quant-u-25910|)))
 (assert (forall ((s@$ $Snap) (i@5@00 Int)) (!
   true
   :pattern ((onlyWorksWithInhale s@$ i@5@00))
-  :qid |quant-u-25973|)))
+  :qid |quant-u-25911|)))
 ; ---------- FUNCTION onlyWorksWithInhale2----------
 (declare-fun i@7@00 () Int)
 (declare-fun result@8@00 () Int)
@@ -312,21 +312,21 @@
 (assert (forall ((s@$ $Snap) (i@7@00 Int)) (!
   (= (onlyWorksWithInhale2%limited s@$ i@7@00) (onlyWorksWithInhale2 s@$ i@7@00))
   :pattern ((onlyWorksWithInhale2 s@$ i@7@00))
-  :qid |quant-u-25954|)))
+  :qid |quant-u-25892|)))
 (assert (forall ((s@$ $Snap) (i@7@00 Int)) (!
   (onlyWorksWithInhale2%stateless i@7@00)
   :pattern ((onlyWorksWithInhale2%limited s@$ i@7@00))
-  :qid |quant-u-25955|)))
+  :qid |quant-u-25893|)))
 (assert (forall ((s@$ $Snap) (i@7@00 Int)) (!
   (let ((result@8@00 (onlyWorksWithInhale2%limited s@$ i@7@00))) (=>
     (onlyWorksWithInhale2%precondition s@$ i@7@00)
     (> result@8@00 17)))
   :pattern ((onlyWorksWithInhale2%limited s@$ i@7@00))
-  :qid |quant-u-25974|)))
+  :qid |quant-u-25912|)))
 (assert (forall ((s@$ $Snap) (i@7@00 Int)) (!
   (let ((result@8@00 (onlyWorksWithInhale2%limited s@$ i@7@00))) true)
   :pattern ((onlyWorksWithInhale2%limited s@$ i@7@00))
-  :qid |quant-u-25975|)))
+  :qid |quant-u-25913|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (= s@$ $Snap.unit))
@@ -406,23 +406,23 @@
 (assert (forall ((s@$ $Snap) (r2@9@00 $Ref)) (!
   (= (main%limited s@$ r2@9@00) (main s@$ r2@9@00))
   :pattern ((main s@$ r2@9@00))
-  :qid |quant-u-25956|)))
+  :qid |quant-u-25894|)))
 (assert (forall ((s@$ $Snap) (r2@9@00 $Ref)) (!
   (main%stateless r2@9@00)
   :pattern ((main%limited s@$ r2@9@00))
-  :qid |quant-u-25957|)))
+  :qid |quant-u-25895|)))
 (assert (forall ((s@$ $Snap) (r2@9@00 $Ref)) (!
   (let ((result@10@00 (main%limited s@$ r2@9@00))) (=>
     (main%precondition s@$ r2@9@00)
     (= (helper $Snap.unit result@10@00) 2)))
   :pattern ((main%limited s@$ r2@9@00))
-  :qid |quant-u-25976|)))
+  :qid |quant-u-25914|)))
 (assert (forall ((s@$ $Snap) (r2@9@00 $Ref)) (!
   (let ((result@10@00 (main%limited s@$ r2@9@00))) (=>
     (main%precondition s@$ r2@9@00)
     (helper%precondition $Snap.unit result@10@00)))
   :pattern ((main%limited s@$ r2@9@00))
-  :qid |quant-u-25977|)))
+  :qid |quant-u-25915|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -458,13 +458,13 @@
     (main%precondition s@$ r2@9@00)
     (= (main s@$ r2@9@00) (postInhale $Snap.unit r2@9@00)))
   :pattern ((main s@$ r2@9@00))
-  :qid |quant-u-25978|)))
+  :qid |quant-u-25916|)))
 (assert (forall ((s@$ $Snap) (r2@9@00 $Ref)) (!
   (=>
     (main%precondition s@$ r2@9@00)
     (postInhale%precondition $Snap.unit r2@9@00))
   :pattern ((main s@$ r2@9@00))
-  :qid |quant-u-25979|)))
+  :qid |quant-u-25917|)))
 ; ---------- FUNCTION inhaleTrue----------
 (declare-fun this@11@00 () $Ref)
 (declare-fun result@12@00 () Int)
@@ -475,11 +475,11 @@
 (assert (forall ((s@$ $Snap) (this@11@00 $Ref)) (!
   (= (inhaleTrue%limited s@$ this@11@00) (inhaleTrue s@$ this@11@00))
   :pattern ((inhaleTrue s@$ this@11@00))
-  :qid |quant-u-25958|)))
+  :qid |quant-u-25896|)))
 (assert (forall ((s@$ $Snap) (this@11@00 $Ref)) (!
   (inhaleTrue%stateless this@11@00)
   :pattern ((inhaleTrue%limited s@$ this@11@00))
-  :qid |quant-u-25959|)))
+  :qid |quant-u-25897|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (= s@$ $Snap.unit))
@@ -492,11 +492,11 @@
 (assert (forall ((s@$ $Snap) (this@11@00 $Ref)) (!
   (=> (inhaleTrue%precondition s@$ this@11@00) (= (inhaleTrue s@$ this@11@00) 0))
   :pattern ((inhaleTrue s@$ this@11@00))
-  :qid |quant-u-25980|)))
+  :qid |quant-u-25918|)))
 (assert (forall ((s@$ $Snap) (this@11@00 $Ref)) (!
   true
   :pattern ((inhaleTrue s@$ this@11@00))
-  :qid |quant-u-25981|)))
+  :qid |quant-u-25919|)))
 ; ---------- FUNCTION onlyWorksWithPreExhale----------
 (declare-fun i2@13@00 () Int)
 (declare-fun result@14@00 () Int)
@@ -509,11 +509,11 @@
     (onlyWorksWithPreExhale%limited s@$ i2@13@00)
     (onlyWorksWithPreExhale s@$ i2@13@00))
   :pattern ((onlyWorksWithPreExhale s@$ i2@13@00))
-  :qid |quant-u-25960|)))
+  :qid |quant-u-25898|)))
 (assert (forall ((s@$ $Snap) (i2@13@00 Int)) (!
   (onlyWorksWithPreExhale%stateless i2@13@00)
   :pattern ((onlyWorksWithPreExhale%limited s@$ i2@13@00))
-  :qid |quant-u-25961|)))
+  :qid |quant-u-25899|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -536,13 +536,13 @@
       (onlyWorksWithPreExhale s@$ i2@13@00)
       (onlyWorksWithInhale $Snap.unit i2@13@00)))
   :pattern ((onlyWorksWithPreExhale s@$ i2@13@00))
-  :qid |quant-u-25982|)))
+  :qid |quant-u-25920|)))
 (assert (forall ((s@$ $Snap) (i2@13@00 Int)) (!
   (=>
     (onlyWorksWithPreExhale%precondition s@$ i2@13@00)
     (onlyWorksWithInhale%precondition $Snap.unit i2@13@00))
   :pattern ((onlyWorksWithPreExhale s@$ i2@13@00))
-  :qid |quant-u-25983|)))
+  :qid |quant-u-25921|)))
 ; ---------- FUNCTION onlyWorksWithPreExhale2----------
 (declare-fun i2@15@00 () Int)
 (declare-fun result@16@00 () Int)
@@ -554,11 +554,11 @@
     (onlyWorksWithPreExhale2%limited s@$ i2@15@00)
     (onlyWorksWithPreExhale2 s@$ i2@15@00))
   :pattern ((onlyWorksWithPreExhale2 s@$ i2@15@00))
-  :qid |quant-u-25962|)))
+  :qid |quant-u-25900|)))
 (assert (forall ((s@$ $Snap) (i2@15@00 Int)) (!
   (onlyWorksWithPreExhale2%stateless i2@15@00)
   :pattern ((onlyWorksWithPreExhale2%limited s@$ i2@15@00))
-  :qid |quant-u-25963|)))
+  :qid |quant-u-25901|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -633,21 +633,21 @@
 (assert (forall ((s@$ $Snap) (i3@17@00 Int)) (!
   (= (main2%limited s@$ i3@17@00) (main2 s@$ i3@17@00))
   :pattern ((main2 s@$ i3@17@00))
-  :qid |quant-u-25964|)))
+  :qid |quant-u-25902|)))
 (assert (forall ((s@$ $Snap) (i3@17@00 Int)) (!
   (main2%stateless i3@17@00)
   :pattern ((main2%limited s@$ i3@17@00))
-  :qid |quant-u-25965|)))
+  :qid |quant-u-25903|)))
 (assert (forall ((s@$ $Snap) (i3@17@00 Int)) (!
   (let ((result@18@00 (main2%limited s@$ i3@17@00))) (=>
     (main2%precondition s@$ i3@17@00)
     (> result@18@00 17)))
   :pattern ((main2%limited s@$ i3@17@00))
-  :qid |quant-u-25984|)))
+  :qid |quant-u-25922|)))
 (assert (forall ((s@$ $Snap) (i3@17@00 Int)) (!
   (let ((result@18@00 (main2%limited s@$ i3@17@00))) true)
   :pattern ((main2%limited s@$ i3@17@00))
-  :qid |quant-u-25985|)))
+  :qid |quant-u-25923|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -677,10 +677,10 @@
     (main2%precondition s@$ i3@17@00)
     (= (main2 s@$ i3@17@00) (onlyWorksWithInhale $Snap.unit i3@17@00)))
   :pattern ((main2 s@$ i3@17@00))
-  :qid |quant-u-25986|)))
+  :qid |quant-u-25924|)))
 (assert (forall ((s@$ $Snap) (i3@17@00 Int)) (!
   (=>
     (main2%precondition s@$ i3@17@00)
     (onlyWorksWithInhale%precondition $Snap.unit i3@17@00))
   :pattern ((main2 s@$ i3@17@00))
-  :qid |quant-u-25987|)))
+  :qid |quant-u-25925|)))

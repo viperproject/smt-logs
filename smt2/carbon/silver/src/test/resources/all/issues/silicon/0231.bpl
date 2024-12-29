@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 10:52:42
+// Date:         2024-12-29 15:43:10
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0231.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0231-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -216,10 +216,10 @@ procedure test01(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -239,13 +239,13 @@ procedure test01(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: exhale perm(P(this)) == write &&
   //   (acc(P(this), write) && perm(P(this)) == none) -- 0231.vpr@9.3--11.31
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Exhale might fail. Assertion perm(P(this)) == write might not hold. (0231.vpr@9.10--11.31) [217345]"}
       Mask[null, P(this)] == FullPerm;
     perm := FullPerm;
@@ -271,10 +271,10 @@ procedure test02a(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var r_36: Ref;
   var r_27: Ref;
   var ExhaleHeap: HeapType;
@@ -296,13 +296,13 @@ procedure test02a(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: exhale (forperm r: Ref [P(r)] :: false) &&
   //   (acc(P(this), write) && (forperm r: Ref [P(r)] :: false)) -- 0231.vpr@18.3--20.42
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forperm r: Ref [P(r)] :: false)
       if (*) {
@@ -352,10 +352,10 @@ procedure test02b(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var r_28: Ref;
   var ExhaleHeap: HeapType;
   
@@ -376,12 +376,12 @@ procedure test02b(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: exhale acc(P(this), write) && (forperm r: Ref [P(r)] :: false) -- 0231.vpr@26.3--28.42
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Exhale might fail. There might be insufficient permission to access P(this) (0231.vpr@27.10--28.42) [217356]"}
@@ -416,11 +416,11 @@ procedure test02b(this: Ref) returns ()
 procedure test04a(this: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -434,8 +434,8 @@ procedure test04a(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale acc(P(this), write) -- 0231.vpr@33.3--33.22
     perm := FullPerm;
@@ -445,8 +445,8 @@ procedure test04a(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(P(this), write) && perm(P(this)) >= write -- 0231.vpr@36.3--36.48
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Exhale might fail. There might be insufficient permission to access P(this) (0231.vpr@36.10--36.48) [217361]"}
@@ -469,11 +469,11 @@ procedure test04a(this: Ref) returns ()
 procedure test04b(this: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -487,8 +487,8 @@ procedure test04b(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale acc(P(this), write) -- 0231.vpr@40.3--40.22
     perm := FullPerm;
@@ -498,8 +498,8 @@ procedure test04b(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(P(this), write) -- 0231.vpr@42.3--42.22
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Exhale might fail. There might be insufficient permission to access P(this) (0231.vpr@42.10--42.22) [217365]"}
@@ -513,8 +513,8 @@ procedure test04b(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale perm(P(this)) >= write ==> acc(P(this), write) -- 0231.vpr@43.3--43.51
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     if (FullPerm <= Mask[null, P(this)]) {
       perm := FullPerm;
       if (perm != NoPerm) {
@@ -537,11 +537,11 @@ procedure test04b(this: Ref) returns ()
 procedure test04c(this: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -555,8 +555,8 @@ procedure test04c(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale acc(P(this), write) -- 0231.vpr@47.3--47.22
     perm := FullPerm;
@@ -567,8 +567,8 @@ procedure test04c(this: Ref) returns ()
   
   // -- Translating statement: exhale acc(P(this), write) &&
   //   (perm(P(this)) >= write ==> acc(P(this), write)) -- 0231.vpr@49.3--49.67
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Exhale might fail. There might be insufficient permission to access P(this) (0231.vpr@49.10--49.67) [217370]"}
@@ -597,10 +597,10 @@ procedure test04c(this: Ref) returns ()
 procedure test03a(this: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var perm: Perm;
   var ExhaleHeap: HeapType;
   var loopHeap: HeapType;
@@ -617,16 +617,16 @@ procedure test03a(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: while (true) -- 0231.vpr@55.3--59.5
     
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         if (NoPerm < Mask[null, P(this)]) {
           perm := FullPerm;
           if (perm != NoPerm) {
@@ -674,8 +674,8 @@ procedure test03a(this: Ref) returns ()
         // Check and assume guard
         assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         if (NoPerm < Mask[null, P(this)]) {
           perm := FullPerm;
           if (perm != NoPerm) {
@@ -717,10 +717,10 @@ procedure test03a(this: Ref) returns ()
 procedure test03b(this: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var perm: Perm;
   var ExhaleHeap: HeapType;
   var loopHeap: HeapType;
@@ -737,16 +737,16 @@ procedure test03b(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: while (true) -- 0231.vpr@65.3--71.4
     
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         if (NoPerm < Mask[null, P(this)]) {
           perm := FullPerm;
           if (perm != NoPerm) {
@@ -797,8 +797,8 @@ procedure test03b(this: Ref) returns ()
         // -- Translate loop body
           
           // -- Translating statement: exhale acc(P(this), write) -- 0231.vpr@70.5--70.24
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
             if (perm != NoPerm) {
               assert {:msg "  Exhale might fail. There might be insufficient permission to access P(this) (0231.vpr@70.12--70.24) [217379]"}
@@ -811,8 +811,8 @@ procedure test03b(this: Ref) returns ()
             Heap := ExhaleHeap;
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         if (NoPerm < Mask[null, P(this)]) {
           perm := FullPerm;
           if (perm != NoPerm) {

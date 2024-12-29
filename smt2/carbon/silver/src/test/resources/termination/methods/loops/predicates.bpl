@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 10:57:28
+// Date:         2024-12-29 15:47:58
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/termination/methods/loops/predicates.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/termination/methods/loops/predicates-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -375,11 +375,11 @@ procedure alwaysAppendLoop(xs: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var ys: Ref;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var list__338897620: PredicateInstanceDomainType;
   var newVersion: FrameType;
@@ -393,8 +393,8 @@ procedure alwaysAppendLoop(xs: Ref) returns ()
   var freshObj: Ref;
   var freshVersion: FrameType;
   var newPMask: PMaskType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -414,8 +414,8 @@ procedure alwaysAppendLoop(xs: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[ys, $allocated];
@@ -429,8 +429,8 @@ procedure alwaysAppendLoop(xs: Ref) returns ()
     // -- Check definedness of PI_list(ys)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(ys) (predicates.vpr@20.12--20.20) [224801]"}
           NoPerm < perm ==> NoPerm < Mask[null, list(ys)];
@@ -447,8 +447,8 @@ procedure alwaysAppendLoop(xs: Ref) returns ()
   // -- Translating statement: unfold acc(list(ys), write) -- <no position>
     assume list#trigger(Heap, list(ys));
     assume Heap[null, list(ys)] == CombineFrames(FrameFragment(Heap[ys, next]), FrameFragment((if Heap[ys, next] != null then Heap[null, list(Heap[ys, next])] else EmptyFrame)));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding list(ys) might fail. There might be insufficient permission to access list(ys) (<no position>) [224804]"}
@@ -490,8 +490,8 @@ procedure alwaysAppendLoop(xs: Ref) returns ()
             HasDirectPerm(Mask, ys, next);
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
             assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(ys.next) (predicates.vpr@12.42--12.55) [224809]"}
               NoPerm < perm ==> NoPerm < Mask[null, list(Heap[ys, next])];
@@ -524,8 +524,8 @@ procedure alwaysAppendLoop(xs: Ref) returns ()
         // -- Before loop head
           
           // -- Exhale loop invariant before loop
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
             if (perm != NoPerm) {
               assert {:msg "  Loop invariant acc(ys.next, write) might not hold on entry. There might be insufficient permission to access ys.next (predicates.vpr@23.23--23.35) [224811]"}
@@ -598,8 +598,8 @@ procedure alwaysAppendLoop(xs: Ref) returns ()
                     HasDirectPerm(Mask, ys, next);
                   if (*) {
                     // Exhale precondition of function application
-                    ExhaleWellDef0Mask := Mask;
                     ExhaleWellDef0Heap := Heap;
+                    ExhaleWellDef0Mask := Mask;
                     perm := FullPerm;
                     assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(ys.next) (predicates.vpr@26.23--26.36) [224816]"}
                       NoPerm < perm ==> NoPerm < Mask[null, list(Heap[ys, next])];
@@ -626,8 +626,8 @@ procedure alwaysAppendLoop(xs: Ref) returns ()
                 // -- Check definedness of PI_list(ys)
                   if (*) {
                     // Exhale precondition of function application
-                    ExhaleWellDef0Mask := Mask;
                     ExhaleWellDef0Heap := Heap;
+                    ExhaleWellDef0Mask := Mask;
                     perm := FullPerm;
                     assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(ys) (predicates.vpr@29.20--29.28) [224818]"}
                       NoPerm < perm ==> NoPerm < Mask[null, list(ys)];
@@ -644,8 +644,8 @@ procedure alwaysAppendLoop(xs: Ref) returns ()
               // -- Translating statement: unfold acc(list(ys), write) -- <no position>
                 assume list#trigger(Heap, list(ys));
                 assume Heap[null, list(ys)] == CombineFrames(FrameFragment(Heap[ys, next]), FrameFragment((if Heap[ys, next] != null then Heap[null, list(Heap[ys, next])] else EmptyFrame)));
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 perm := FullPerm;
                 if (perm != NoPerm) {
                   assert {:msg "  Unfolding list(ys) might fail. There might be insufficient permission to access list(ys) (<no position>) [224819]"}
@@ -687,8 +687,8 @@ procedure alwaysAppendLoop(xs: Ref) returns ()
                         HasDirectPerm(Mask, ys, next);
                       if (*) {
                         // Exhale precondition of function application
-                        ExhaleWellDef0Mask := Mask;
                         ExhaleWellDef0Heap := Heap;
+                        ExhaleWellDef0Mask := Mask;
                         perm := FullPerm;
                         assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(ys.next) (predicates.vpr@12.42--12.55) [224822]"}
                           NoPerm < perm ==> NoPerm < Mask[null, list(Heap[ys, next])];
@@ -740,8 +740,8 @@ procedure alwaysAppendLoop(xs: Ref) returns ()
                     assume state(Heap, Mask);
                   
                   // -- Translating statement: fold acc(list(n), write) -- predicates.vpr@35.17--35.29
-                    ExhaleWellDef0Mask := Mask;
                     ExhaleWellDef0Heap := Heap;
+                    ExhaleWellDef0Mask := Mask;
                     perm := FullPerm;
                     if (perm != NoPerm) {
                       assert {:msg "  Folding list(n) might fail. There might be insufficient permission to access n.next (predicates.vpr@35.17--35.29) [224826]"}
@@ -788,8 +788,8 @@ procedure alwaysAppendLoop(xs: Ref) returns ()
   //   (decreasing(PI_list(ys.next), old_W1_T0): Bool) &&
   //   (bounded(old_W1_T0): Bool) ||
   //   PI_list(ys.next) == old_W1_T0 && false -- <no position>
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 
                 // -- Check definedness of true && ys.next != null
                   assert {:msg "  Assert might fail. There might be insufficient permission to access ys.next (<no position>) [224828]"}
@@ -801,8 +801,8 @@ procedure alwaysAppendLoop(xs: Ref) returns ()
                       HasDirectPerm(ExhaleWellDef0Mask, ys, next);
                     if (*) {
                       // Exhale precondition of function application
-                      ExhaleWellDef1Mask := ExhaleWellDef0Mask;
                       ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+                      ExhaleWellDef1Mask := ExhaleWellDef0Mask;
                       perm := FullPerm;
                       assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(ys.next) (predicates.vpr@26.23--26.36) [224830]"}
                         NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, list(ExhaleWellDef0Heap[ys, next])];
@@ -818,8 +818,8 @@ procedure alwaysAppendLoop(xs: Ref) returns ()
                         HasDirectPerm(ExhaleWellDef0Mask, ys, next);
                       if (*) {
                         // Exhale precondition of function application
-                        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
                         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+                        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
                         perm := FullPerm;
                         assert {:msg "  Precondition of function PI_list might not hold. There might be insufficient permission to access list(ys.next) (predicates.vpr@26.23--26.36) [224832]"}
                           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, list(ExhaleWellDef0Heap[ys, next])];
@@ -836,8 +836,8 @@ procedure alwaysAppendLoop(xs: Ref) returns ()
                 }
                 assume state(Heap, Mask);
             // Exhale invariant
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
             if (perm != NoPerm) {
               assert {:msg "  Loop invariant acc(ys.next, write) might not be preserved. There might be insufficient permission to access ys.next (predicates.vpr@23.23--23.35) [224834]"}

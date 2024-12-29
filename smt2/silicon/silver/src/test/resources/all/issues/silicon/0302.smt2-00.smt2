@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-27 10:09:12
+; Started: 2024-12-29 14:59:21
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -35028,11 +35028,11 @@
     (p%limited s@$ q@0@00 size@1@00 rdAmount@2@00)
     (p s@$ q@0@00 size@1@00 rdAmount@2@00))
   :pattern ((p s@$ q@0@00 size@1@00 rdAmount@2@00))
-  :qid |quant-u-24168|)))
+  :qid |quant-u-24105|)))
 (assert (forall ((s@$ $Snap) (q@0@00 Int) (size@1@00 Int) (rdAmount@2@00 $Perm)) (!
   (p%stateless q@0@00 size@1@00 rdAmount@2@00)
   :pattern ((p%limited s@$ q@0@00 size@1@00 rdAmount@2@00))
-  :qid |quant-u-24169|)))
+  :qid |quant-u-24106|)))
 (assert (forall ((s@$ $Snap) (q@0@00 Int) (size@1@00 Int) (rdAmount@2@00 $Perm)) (!
   (let ((result@3@00 (p%limited s@$ q@0@00 size@1@00 rdAmount@2@00))) (=>
     (p%precondition s@$ q@0@00 size@1@00 rdAmount@2@00)
@@ -35616,8 +35616,8 @@
                                         (< size@1@00 (+ 3 q@0@00))
                                         (>= result@3@00 $Perm.No)))))))))))))))))))))
   :pattern ((p%limited s@$ q@0@00 size@1@00 rdAmount@2@00))
-  :qid |quant-u-24170|)))
+  :qid |quant-u-24107|)))
 (assert (forall ((s@$ $Snap) (q@0@00 Int) (size@1@00 Int) (rdAmount@2@00 $Perm)) (!
   (let ((result@3@00 (p%limited s@$ q@0@00 size@1@00 rdAmount@2@00))) true)
   :pattern ((p%limited s@$ q@0@00 size@1@00 rdAmount@2@00))
-  :qid |quant-u-24171|)))
+  :qid |quant-u-24108|)))

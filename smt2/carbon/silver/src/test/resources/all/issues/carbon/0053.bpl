@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 10:45:28
+// Date:         2024-12-29 15:35:52
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0053.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0053-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -243,16 +243,16 @@ procedure Testfail10$(this: Ref, k$: Perm) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
-  var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -278,8 +278,8 @@ procedure Testfail10$(this: Ref, k$: Perm) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -295,8 +295,8 @@ procedure Testfail10$(this: Ref, k$: Perm) returns ()
       UnfoldingMask := PostMask;
       assume TestP$#trigger(UnfoldingHeap, TestP$(this));
       assume UnfoldingHeap[null, TestP$(this)] == FrameFragment(UnfoldingHeap[this, Testx$]);
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access TestP$(this) (0053.vpr@18.12--18.81) [192023]"}
@@ -322,8 +322,8 @@ procedure Testfail10$(this: Ref, k$: Perm) returns ()
       UnfoldingMask := PostMask;
       assume TestP$#trigger(UnfoldingHeap, TestP$(this));
       assume UnfoldingHeap[null, TestP$(this)] == FrameFragment(UnfoldingHeap[this, Testx$]);
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       UnfoldingMask := UnfoldingMask[null, TestP$(this):=UnfoldingMask[null, TestP$(this)] - perm];
       perm := FullPerm;
@@ -338,8 +338,8 @@ procedure Testfail10$(this: Ref, k$: Perm) returns ()
   }
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of Testfail10$ might not hold. There might be insufficient permission to access TestP$(this) (0053.vpr@16.11--16.35) [192026]"}
@@ -352,8 +352,8 @@ procedure Testfail10$(this: Ref, k$: Perm) returns ()
       UnfoldingMask := ExhaleWellDef0Mask;
       assume TestP$#trigger(UnfoldingHeap, TestP$(this));
       assume UnfoldingHeap[null, TestP$(this)] == FrameFragment(UnfoldingHeap[this, Testx$]);
-      ExhaleWellDef1Heap := UnfoldingHeap;
       ExhaleWellDef1Mask := UnfoldingMask;
+      ExhaleWellDef1Heap := UnfoldingHeap;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Postcondition of Testfail10$ might not hold. There might be insufficient permission to access TestP$(this) (0053.vpr@18.12--18.81) [192027]"}

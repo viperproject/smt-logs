@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-27 10:10:18
+; Started: 2024-12-29 15:00:27
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -710,7 +710,7 @@
     (= (inv@5@00 s@$ x@0@00 k@1@00 (foo<Ref> i@4@00)) i@4@00)
     (img@6@00 s@$ x@0@00 k@1@00 (foo<Ref> i@4@00)))
   :pattern ((foo<Ref> i@4@00))
-  :qid |quant-u-25512|)))
+  :qid |quant-u-25450|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (img@6@00 s@$ x@0@00 k@1@00 r)
@@ -727,11 +727,11 @@
 (assert (forall ((s@$ $Snap) (x@0@00 Int) (k@1@00 Int)) (!
   (= (inv%limited s@$ x@0@00 k@1@00) (inv s@$ x@0@00 k@1@00))
   :pattern ((inv s@$ x@0@00 k@1@00))
-  :qid |quant-u-25509|)))
+  :qid |quant-u-25447|)))
 (assert (forall ((s@$ $Snap) (x@0@00 Int) (k@1@00 Int)) (!
   (inv%stateless x@0@00 k@1@00)
   :pattern ((inv%limited s@$ x@0@00 k@1@00))
-  :qid |quant-u-25510|)))
+  :qid |quant-u-25448|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (forall ((r $Ref)) (!
@@ -745,7 +745,7 @@
     (= (inv@5@00 s@$ x@0@00 k@1@00 (foo<Ref> i@4@00)) i@4@00)
     (img@6@00 s@$ x@0@00 k@1@00 (foo<Ref> i@4@00)))
   :pattern ((foo<Ref> i@4@00))
-  :qid |quant-u-25512|)))
+  :qid |quant-u-25450|)))
 (assert (forall ((i@4@00 Int)) (!
   (not (= (foo<Ref> i@4@00) $Ref.null))
   :pattern ((foo<Ref> i@4@00))
@@ -824,7 +824,7 @@
         (ite (img@6@00 s@$ x@0@00 k@1@00 r) (/ (to_real 1) (to_real 2)) $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-25513|))))
+  :qid |quant-u-25451|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -887,7 +887,7 @@
         (ite (= r (foo<Ref> k@1@00)) (/ (to_real 1) (to_real 2)) $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-25515|))))
+  :qid |quant-u-25453|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -1080,7 +1080,7 @@
         (= (inv@5@00 s@$ x@0@00 k@1@00 (foo<Ref> i@4@00)) i@4@00)
         (img@6@00 s@$ x@0@00 k@1@00 (foo<Ref> i@4@00)))
       :pattern ((foo<Ref> i@4@00))
-      :qid |quant-u-25512|))
+      :qid |quant-u-25450|))
     (forall ((r $Ref)) (!
       (=>
         (img@6@00 s@$ x@0@00 k@1@00 r)
@@ -1162,7 +1162,7 @@
             x@0@00
             1) k@1@00)))))
   :pattern ((inv s@$ x@0@00 k@1@00))
-  :qid |quant-u-25516|)))
+  :qid |quant-u-25454|)))
 (assert (forall ((s@$ $Snap) (x@0@00 Int) (k@1@00 Int)) (!
   (=>
     (and (inv%precondition s@$ x@0@00 k@1@00) (not (= x@0@00 0)))
@@ -1174,4 +1174,4 @@
       x@0@00
       1) k@1@00))
   :pattern ((inv s@$ x@0@00 k@1@00))
-  :qid |quant-u-25517|)))
+  :qid |quant-u-25455|)))

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 10:56:24
+// Date:         2024-12-29 15:46:54
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/adt/termination_mutual_1.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/adt/termination_mutual_1-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -1398,10 +1398,10 @@ procedure tripleLen3Bad#definedness(t_2: Triple3DomainType) returns (Result: int
 procedure len2_termination_proof(l_2: List2DomainType) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1412,8 +1412,8 @@ procedure len2_termination_proof(l_2: List2DomainType) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: if (l == Empty()) -- <no position>
     if (l_2 == (Empty(): List2DomainType)) {
@@ -1421,8 +1421,8 @@ procedure len2_termination_proof(l_2: List2DomainType) returns ()
       
       // -- Translating statement: assert (decreasing(get_List1_l(get_List2_l(l)), old(l)): Bool) &&
   //   (bounded(old(l)): Bool) -- <no position>
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Assert might fail. Assertion (decreasing(get_List1_l(get_List2_l(l)), old(l)): Bool) might not hold. (<no position>) [222760]"}
           (decreasing((get_List1_l((get_List2_l(l_2): List1DomainType)): List2DomainType), l_2): bool);
         assert {:msg "  Assert might fail. Assertion (bounded(old(l)): Bool) might not hold. (<no position>) [222761]"}
@@ -1439,10 +1439,10 @@ procedure len2_termination_proof(l_2: List2DomainType) returns ()
 procedure len2Bad_termination_proof(l_2: List2DomainType) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1453,16 +1453,16 @@ procedure len2Bad_termination_proof(l_2: List2DomainType) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: if (l == Empty()) -- <no position>
     if (l_2 == (Empty(): List2DomainType)) {
     } else {
       
       // -- Translating statement: assert (decreasing(l, old(l)): Bool) && (bounded(old(l)): Bool) -- <no position>
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Assert might fail. Assertion (decreasing(l, old(l)): Bool) might not hold. (<no position>) [222762]"}
           (decreasing(l_2, l_2): bool);
         assert {:msg "  Assert might fail. Assertion (bounded(old(l)): Bool) might not hold. (<no position>) [222763]"}
@@ -1479,10 +1479,10 @@ procedure len2Bad_termination_proof(l_2: List2DomainType) returns ()
 procedure len1_termination_proof(l_2: List1DomainType) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1493,8 +1493,8 @@ procedure len1_termination_proof(l_2: List1DomainType) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: if (get_List1_l(l) == Empty()) -- <no position>
     if ((get_List1_l(l_2): List2DomainType) == (Empty(): List2DomainType)) {
@@ -1502,8 +1502,8 @@ procedure len1_termination_proof(l_2: List1DomainType) returns ()
       
       // -- Translating statement: assert (decreasing(get_List2_l(get_List1_l(l)), old(l)): Bool) &&
   //   (bounded(old(l)): Bool) -- <no position>
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Assert might fail. Assertion (decreasing(get_List2_l(get_List1_l(l)), old(l)): Bool) might not hold. (<no position>) [222764]"}
           (decreasing((get_List2_l((get_List1_l(l_2): List2DomainType)): List1DomainType), l_2): bool);
         assert {:msg "  Assert might fail. Assertion (bounded(old(l)): Bool) might not hold. (<no position>) [222765]"}
@@ -1520,10 +1520,10 @@ procedure len1_termination_proof(l_2: List1DomainType) returns ()
 procedure len1Bad_termination_proof(l_2: List1DomainType) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1534,16 +1534,16 @@ procedure len1Bad_termination_proof(l_2: List1DomainType) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: if (get_List1_l(l) == Empty()) -- <no position>
     if ((get_List1_l(l_2): List2DomainType) == (Empty(): List2DomainType)) {
     } else {
       
       // -- Translating statement: assert (decreasing(l, old(l)): Bool) && (bounded(old(l)): Bool) -- <no position>
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Assert might fail. Assertion (decreasing(l, old(l)): Bool) might not hold. (<no position>) [222766]"}
           (decreasing(l_2, l_2): bool);
         assert {:msg "  Assert might fail. Assertion (bounded(old(l)): Bool) might not hold. (<no position>) [222767]"}
@@ -1560,10 +1560,10 @@ procedure len1Bad_termination_proof(l_2: List1DomainType) returns ()
 procedure mlen2_termination_proof(l_2: MList2DomainType) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1574,8 +1574,8 @@ procedure mlen2_termination_proof(l_2: MList2DomainType) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: if (l == MEmpty()) -- <no position>
     if (l_2 == (MEmpty(): MList2DomainType)) {
@@ -1583,8 +1583,8 @@ procedure mlen2_termination_proof(l_2: MList2DomainType) returns ()
       
       // -- Translating statement: assert (decreasing(get_MList1_y(get_MList2_l(l)), old(l)): Bool) &&
   //   (bounded(old(l)): Bool) -- <no position>
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Assert might fail. Assertion (decreasing(get_MList1_y(get_MList2_l(l)), old(l)): Bool) might not hold. (<no position>) [222768]"}
           (decreasing((get_MList1_y((get_MList2_l(l_2): MList1DomainType)): MList2DomainType), l_2): bool);
         assert {:msg "  Assert might fail. Assertion (bounded(old(l)): Bool) might not hold. (<no position>) [222769]"}
@@ -1601,10 +1601,10 @@ procedure mlen2_termination_proof(l_2: MList2DomainType) returns ()
 procedure tripleLen1_termination_proof(t_2: Triple1DomainType) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1615,8 +1615,8 @@ procedure tripleLen1_termination_proof(t_2: Triple1DomainType) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: if (Triple3_tag(get_Triple2_x(get_Triple1_x(t))) == 0) -- <no position>
     if ((Triple3_tag((get_Triple2_x((get_Triple1_x(t_2): Triple2DomainType)): Triple3DomainType)): int) == 0) {
@@ -1624,8 +1624,8 @@ procedure tripleLen1_termination_proof(t_2: Triple1DomainType) returns ()
       
       // -- Translating statement: assert (decreasing(get_Triple3_x(get_Triple2_x(get_Triple1_x(t))), old(t)): Bool) &&
   //   (bounded(old(t)): Bool) -- <no position>
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Assert might fail. Assertion (decreasing(get_Triple3_x(get_Triple2_x(get_Triple1_x(t))), old(t)): Bool) might not hold. (<no position>) [222770]"}
           (decreasing((get_Triple3_x((get_Triple2_x((get_Triple1_x(t_2): Triple2DomainType)): Triple3DomainType)): Triple1DomainType), t_2): bool);
         assert {:msg "  Assert might fail. Assertion (bounded(old(t)): Bool) might not hold. (<no position>) [222771]"}
@@ -1642,10 +1642,10 @@ procedure tripleLen1_termination_proof(t_2: Triple1DomainType) returns ()
 procedure tripleLen2_termination_proof(t_2: Triple2DomainType) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1656,8 +1656,8 @@ procedure tripleLen2_termination_proof(t_2: Triple2DomainType) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: if (Triple3_tag(get_Triple2_x(t)) == 0) -- <no position>
     if ((Triple3_tag((get_Triple2_x(t_2): Triple3DomainType)): int) == 0) {
@@ -1665,8 +1665,8 @@ procedure tripleLen2_termination_proof(t_2: Triple2DomainType) returns ()
       
       // -- Translating statement: assert (decreasing(get_Triple1_x(get_Triple3_x(get_Triple2_x(t))), old(t)): Bool) &&
   //   (bounded(old(t)): Bool) -- <no position>
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Assert might fail. Assertion (decreasing(get_Triple1_x(get_Triple3_x(get_Triple2_x(t))), old(t)): Bool) might not hold. (<no position>) [222772]"}
           (decreasing((get_Triple1_x((get_Triple3_x((get_Triple2_x(t_2): Triple3DomainType)): Triple1DomainType)): Triple2DomainType), t_2): bool);
         assert {:msg "  Assert might fail. Assertion (bounded(old(t)): Bool) might not hold. (<no position>) [222773]"}
@@ -1683,10 +1683,10 @@ procedure tripleLen2_termination_proof(t_2: Triple2DomainType) returns ()
 procedure tripleLen3_termination_proof(t_2: Triple3DomainType) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1697,8 +1697,8 @@ procedure tripleLen3_termination_proof(t_2: Triple3DomainType) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: if (Triple3_tag(t) == 0) -- <no position>
     if ((Triple3_tag(t_2): int) == 0) {
@@ -1706,8 +1706,8 @@ procedure tripleLen3_termination_proof(t_2: Triple3DomainType) returns ()
       
       // -- Translating statement: assert (decreasing(get_Triple2_x(get_Triple1_x(get_Triple3_x(t))), old(t)): Bool) &&
   //   (bounded(old(t)): Bool) -- <no position>
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Assert might fail. Assertion (decreasing(get_Triple2_x(get_Triple1_x(get_Triple3_x(t))), old(t)): Bool) might not hold. (<no position>) [222774]"}
           (decreasing((get_Triple2_x((get_Triple1_x((get_Triple3_x(t_2): Triple1DomainType)): Triple2DomainType)): Triple3DomainType), t_2): bool);
         assert {:msg "  Assert might fail. Assertion (bounded(old(t)): Bool) might not hold. (<no position>) [222775]"}
@@ -1724,10 +1724,10 @@ procedure tripleLen3_termination_proof(t_2: Triple3DomainType) returns ()
 procedure tripleLen1Bad_termination_proof(t_2: Triple1DomainType) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1738,16 +1738,16 @@ procedure tripleLen1Bad_termination_proof(t_2: Triple1DomainType) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: if (Triple3_tag(get_Triple2_x(get_Triple1_x(t))) == 0) -- <no position>
     if ((Triple3_tag((get_Triple2_x((get_Triple1_x(t_2): Triple2DomainType)): Triple3DomainType)): int) == 0) {
     } else {
       
       // -- Translating statement: assert (decreasing(t, old(t)): Bool) && (bounded(old(t)): Bool) -- <no position>
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Assert might fail. Assertion (decreasing(t, old(t)): Bool) might not hold. (<no position>) [222776]"}
           (decreasing(t_2, t_2): bool);
         assert {:msg "  Assert might fail. Assertion (bounded(old(t)): Bool) might not hold. (<no position>) [222777]"}
@@ -1764,10 +1764,10 @@ procedure tripleLen1Bad_termination_proof(t_2: Triple1DomainType) returns ()
 procedure tripleLen2Bad_termination_proof(t_2: Triple2DomainType) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1778,16 +1778,16 @@ procedure tripleLen2Bad_termination_proof(t_2: Triple2DomainType) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: if (Triple3_tag(get_Triple2_x(t)) == 0) -- <no position>
     if ((Triple3_tag((get_Triple2_x(t_2): Triple3DomainType)): int) == 0) {
     } else {
       
       // -- Translating statement: assert (decreasing(t, old(t)): Bool) && (bounded(old(t)): Bool) -- <no position>
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Assert might fail. Assertion (decreasing(t, old(t)): Bool) might not hold. (<no position>) [222778]"}
           (decreasing(t_2, t_2): bool);
         assert {:msg "  Assert might fail. Assertion (bounded(old(t)): Bool) might not hold. (<no position>) [222779]"}
@@ -1804,10 +1804,10 @@ procedure tripleLen2Bad_termination_proof(t_2: Triple2DomainType) returns ()
 procedure tripleLen3Bad_termination_proof(t_2: Triple3DomainType) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1818,16 +1818,16 @@ procedure tripleLen3Bad_termination_proof(t_2: Triple3DomainType) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: if (Triple3_tag(t) == 0) -- <no position>
     if ((Triple3_tag(t_2): int) == 0) {
     } else {
       
       // -- Translating statement: assert (decreasing(t, old(t)): Bool) && (bounded(old(t)): Bool) -- <no position>
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Assert might fail. Assertion (decreasing(t, old(t)): Bool) might not hold. (<no position>) [222780]"}
           (decreasing(t_2, t_2): bool);
         assert {:msg "  Assert might fail. Assertion (bounded(old(t)): Bool) might not hold. (<no position>) [222781]"}

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 10:20:38
+// Date:         2024-12-29 15:10:53
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/issues/issue_0184.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/issues/issue_0184-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -586,14 +586,14 @@ axiom !IsWandField(Ref__Integer_value);
 procedure ArrayTest__ArrayTest(current_thread_id: int) returns (sys__result: Ref)
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var diz__1: Ref;
   var freshObj: Ref;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -607,8 +607,8 @@ procedure ArrayTest__ArrayTest(current_thread_id: int) returns (sys__result: Ref
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -642,8 +642,8 @@ procedure ArrayTest__ArrayTest(current_thread_id: int) returns (sys__result: Ref
     assume state(Heap, Mask);
   
   // -- Translating statement: assert sys__result != null -- issue_0184.vpr@18.3--18.29
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (issue_0184.vpr@18.10--18.29) [76519]"}
       sys__result != null;
     assume state(Heap, Mask);
@@ -654,8 +654,8 @@ procedure ArrayTest__ArrayTest(current_thread_id: int) returns (sys__result: Ref
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of ArrayTest__ArrayTest might not hold. Assertion sys__result != null might not hold. (issue_0184.vpr@12.11--12.30) [76520]"}
       sys__result != null;
 }
@@ -676,8 +676,8 @@ procedure ArrayTest__m(diz: Ref, current_thread_id: int) returns ()
   var i_4: int;
   var j_6: int;
   var i_6: int;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var __flatten_1__3: Ref;
   var __flatten_2__4: Ref;
   var __flatten_3__5: Ref;
@@ -936,8 +936,8 @@ procedure ArrayTest__m(diz: Ref, current_thread_id: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[__flatten_1__3, $allocated];

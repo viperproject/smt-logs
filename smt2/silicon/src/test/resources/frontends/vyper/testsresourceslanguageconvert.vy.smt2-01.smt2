@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-27 09:54:08
+; Started: 2024-12-29 14:43:59
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -6725,7 +6725,7 @@
 (check-sat)
 ; unknown
 (pop) ; 21
-; 0.53s
+; 0.59s
 ; (get-info :all-statistics)
 ; [state consolidation]
 ; State saturation: before repetition
@@ -6740,7 +6740,7 @@
 (check-sat)
 ; unknown
 (pop) ; 21
-; 0.41s
+; 0.57s
 ; (get-info :all-statistics)
 ; [state consolidation]
 ; State saturation: before repetition
@@ -6755,7 +6755,7 @@
 (check-sat)
 ; unknown
 (pop) ; 21
-; 0.43s
+; 0.57s
 ; (get-info :all-statistics)
 ; [state consolidation]
 ; State saturation: before repetition
@@ -6770,7 +6770,7 @@
 (check-sat)
 ; unknown
 (pop) ; 21
-; 0.38s
+; 0.58s
 ; (get-info :all-statistics)
 (pop) ; 20
 (pop) ; 19
@@ -11767,3 +11767,4088 @@
         (Seq_singleton 0))))
   true)))
 (check-sat)
+; unsat
+(pop) ; 5
+; 0.33s
+; (get-info :all-statistics)
+(assert (=
+  (not
+    (Seq_equal
+      ($pad32<Seq<Int>> l$sc@396@01)
+      (Seq_append
+        (Seq_append
+          (Seq_append
+            (Seq_append
+              (Seq_append
+                (Seq_append
+                  (Seq_append
+                    (Seq_append
+                      (Seq_append
+                        (Seq_append
+                          (Seq_append
+                            (Seq_append
+                              (Seq_append
+                                (Seq_append
+                                  (Seq_append
+                                    (Seq_append
+                                      (Seq_append
+                                        (Seq_append
+                                          (Seq_append
+                                            (Seq_append
+                                              (Seq_append
+                                                (Seq_append
+                                                  (Seq_append
+                                                    (Seq_append
+                                                      (Seq_append
+                                                        (Seq_append
+                                                          (Seq_append
+                                                            (Seq_append
+                                                              (Seq_append
+                                                                (Seq_append
+                                                                  (Seq_append
+                                                                    (Seq_singleton 0)
+                                                                    (Seq_singleton 0))
+                                                                  (Seq_singleton 0))
+                                                                (Seq_singleton 0))
+                                                              (Seq_singleton 0))
+                                                            (Seq_singleton 0))
+                                                          (Seq_singleton 0))
+                                                        (Seq_singleton 0))
+                                                      (Seq_singleton 0))
+                                                    (Seq_singleton 0))
+                                                  (Seq_singleton 0))
+                                                (Seq_singleton 0))
+                                              (Seq_singleton 0))
+                                            (Seq_singleton 0))
+                                          (Seq_singleton 0))
+                                        (Seq_singleton 0))
+                                      (Seq_singleton 0))
+                                    (Seq_singleton 0))
+                                  (Seq_singleton 0))
+                                (Seq_singleton 0))
+                              (Seq_singleton 0))
+                            (Seq_singleton 0))
+                          (Seq_singleton 0))
+                        (Seq_singleton 0))
+                      (Seq_singleton 0))
+                    (Seq_singleton 0))
+                  (Seq_singleton 0))
+                (Seq_singleton 0))
+              (Seq_singleton 0))
+            (Seq_singleton 0))
+          (Seq_singleton 0))
+        (Seq_singleton 0))))
+  true))
+; [exec]
+; label return
+(push) ; 5
+(set-option :timeout 10)
+(assert (not (not $out_of_gas@361@01)))
+(check-sat)
+; unknown
+(pop) ; 5
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 5
+(set-option :timeout 10)
+(assert (not $out_of_gas@361@01))
+(check-sat)
+; unknown
+(pop) ; 5
+; 0.01s
+; (get-info :all-statistics)
+; [then-branch: 127 | $out_of_gas@361@01 | live]
+; [else-branch: 127 | !($out_of_gas@361@01) | live]
+(set-option :timeout 0)
+(push) ; 5
+; [then-branch: 127 | $out_of_gas@361@01]
+(assert $out_of_gas@361@01)
+; [exec]
+; label revert
+; [exec]
+; $succ := false
+; [exec]
+; self := $pre_self
+; [exec]
+; $contracts := $pre_$contracts
+; [exec]
+; $old_self := $pre_self
+; [exec]
+; $old_$contracts := $pre_$contracts
+; [exec]
+; label end
+; [eval] !$succ
+(push) ; 6
+(set-option :timeout 10)
+(assert (not false))
+(check-sat)
+; unknown
+(pop) ; 6
+; 0.01s
+; (get-info :all-statistics)
+; [then-branch: 128 | True | live]
+; [else-branch: 128 | False | dead]
+(set-option :timeout 0)
+(push) ; 6
+; [then-branch: 128 | True]
+; [exec]
+; inhale l$havoc >= 0
+(declare-const $t@397@01 $Snap)
+(assert (= $t@397@01 $Snap.unit))
+; [eval] l$havoc >= 0
+(assert (>= l$havoc@362@01 0))
+; State saturation: after inhale
+(set-option :timeout 20)
+(check-sat)
+; unknown
+; [exec]
+; self := ($struct_set(self, 0, ($struct_get($struct_loc(self, 0)): Int) +
+;   l$havoc): $Struct)
+; [eval] ($struct_set(self, 0, ($struct_get($struct_loc(self, 0)): Int) + l$havoc): $Struct)
+; [eval] ($struct_get($struct_loc(self, 0)): Int) + l$havoc
+; [eval] ($struct_get($struct_loc(self, 0)): Int)
+; [eval] $struct_loc(self, 0)
+(declare-const self@398@01 $Struct)
+(assert (=
+  self@398@01
+  ($struct_set<$Struct> self@351@01 0 (+
+    ($struct_get<Int> ($struct_loc<Int> self@351@01 0))
+    l$havoc@362@01))))
+; [exec]
+; $contracts := l$havoc$1
+(pop) ; 6
+; [then-branch: 129 | False | dead]
+; [else-branch: 129 | True | live]
+(set-option :timeout 0)
+(push) ; 6
+; [else-branch: 129 | True]
+(pop) ; 6
+(pop) ; 5
+(push) ; 5
+; [else-branch: 127 | !($out_of_gas@361@01)]
+(assert (not $out_of_gas@361@01))
+(pop) ; 5
+; [eval] !$out_of_gas
+(push) ; 5
+(set-option :timeout 10)
+(assert (not $out_of_gas@361@01))
+(check-sat)
+; unknown
+(pop) ; 5
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 5
+(set-option :timeout 10)
+(assert (not (not $out_of_gas@361@01)))
+(check-sat)
+; unknown
+(pop) ; 5
+; 0.01s
+; (get-info :all-statistics)
+; [then-branch: 130 | !($out_of_gas@361@01) | live]
+; [else-branch: 130 | $out_of_gas@361@01 | live]
+(set-option :timeout 0)
+(push) ; 5
+; [then-branch: 130 | !($out_of_gas@361@01)]
+(assert (not $out_of_gas@361@01))
+; [exec]
+; label end
+; [eval] !$succ
+; [then-branch: 131 | False | dead]
+; [else-branch: 131 | True | live]
+(push) ; 6
+; [else-branch: 131 | True]
+(pop) ; 6
+(push) ; 6
+(set-option :timeout 10)
+(assert (not false))
+(check-sat)
+; unknown
+(pop) ; 6
+; 0.01s
+; (get-info :all-statistics)
+; [then-branch: 132 | True | live]
+; [else-branch: 132 | False | dead]
+(set-option :timeout 0)
+(push) ; 6
+; [then-branch: 132 | True]
+; [exec]
+; inhale l$havoc >= 0
+(declare-const $t@399@01 $Snap)
+(assert (= $t@399@01 $Snap.unit))
+; [eval] l$havoc >= 0
+(assert (>= l$havoc@362@01 0))
+; State saturation: after inhale
+(set-option :timeout 20)
+(check-sat)
+; unknown
+; [exec]
+; self := ($struct_set(self, 0, ($struct_get($struct_loc(self, 0)): Int) +
+;   l$havoc): $Struct)
+; [eval] ($struct_set(self, 0, ($struct_get($struct_loc(self, 0)): Int) + l$havoc): $Struct)
+; [eval] ($struct_get($struct_loc(self, 0)): Int) + l$havoc
+; [eval] ($struct_get($struct_loc(self, 0)): Int)
+; [eval] $struct_loc(self, 0)
+(declare-const self@400@01 $Struct)
+(assert (=
+  self@400@01
+  ($struct_set<$Struct> self@351@01 0 (+
+    ($struct_get<Int> ($struct_loc<Int> self@351@01 0))
+    l$havoc@362@01))))
+; [exec]
+; $contracts := l$havoc$1
+(pop) ; 6
+(pop) ; 5
+(set-option :timeout 0)
+(push) ; 5
+; [else-branch: 130 | $out_of_gas@361@01]
+(assert $out_of_gas@361@01)
+(pop) ; 5
+(pop) ; 4
+(push) ; 4
+; [else-branch: 126 | !($pad32[Seq[Int]](l$bb@344@01) === [0] ++ [0] ++ [0] ++ [0] ++ [0] ++ [0] ++ [0] ++ [0] ++ [0] ++ [0] ++ [0] ++ [0] ++ [0] ++ [0] ++ [0] ++ [0] ++ [0] ++ [0] ++ [0] ++ [0] ++ [0] ++ [0] ++ [0] ++ [0] ++ [0] ++ [0] ++ [0] ++ [0] ++ [0] ++ [0] ++ [0] ++ [0]) != True]
+(assert (not
+  (=
+    (not
+      (Seq_equal
+        ($pad32<Seq<Int>> l$bb@344@01)
+        (Seq_append
+          (Seq_append
+            (Seq_append
+              (Seq_append
+                (Seq_append
+                  (Seq_append
+                    (Seq_append
+                      (Seq_append
+                        (Seq_append
+                          (Seq_append
+                            (Seq_append
+                              (Seq_append
+                                (Seq_append
+                                  (Seq_append
+                                    (Seq_append
+                                      (Seq_append
+                                        (Seq_append
+                                          (Seq_append
+                                            (Seq_append
+                                              (Seq_append
+                                                (Seq_append
+                                                  (Seq_append
+                                                    (Seq_append
+                                                      (Seq_append
+                                                        (Seq_append
+                                                          (Seq_append
+                                                            (Seq_append
+                                                              (Seq_append
+                                                                (Seq_append
+                                                                  (Seq_append
+                                                                    (Seq_append
+                                                                      (Seq_singleton 0)
+                                                                      (Seq_singleton 0))
+                                                                    (Seq_singleton 0))
+                                                                  (Seq_singleton 0))
+                                                                (Seq_singleton 0))
+                                                              (Seq_singleton 0))
+                                                            (Seq_singleton 0))
+                                                          (Seq_singleton 0))
+                                                        (Seq_singleton 0))
+                                                      (Seq_singleton 0))
+                                                    (Seq_singleton 0))
+                                                  (Seq_singleton 0))
+                                                (Seq_singleton 0))
+                                              (Seq_singleton 0))
+                                            (Seq_singleton 0))
+                                          (Seq_singleton 0))
+                                        (Seq_singleton 0))
+                                      (Seq_singleton 0))
+                                    (Seq_singleton 0))
+                                  (Seq_singleton 0))
+                                (Seq_singleton 0))
+                              (Seq_singleton 0))
+                            (Seq_singleton 0))
+                          (Seq_singleton 0))
+                        (Seq_singleton 0))
+                      (Seq_singleton 0))
+                    (Seq_singleton 0))
+                  (Seq_singleton 0))
+                (Seq_singleton 0))
+              (Seq_singleton 0))
+            (Seq_singleton 0))
+          (Seq_singleton 0))))
+    true)))
+(pop) ; 4
+(pop) ; 3
+(push) ; 3
+; [else-branch: 122 | !($pad32[Seq[Int]](l$bc@345@01) === [0] ++ [0] ++ [0] ++ [0] ++ [0] ++ [0] ++ [0] ++ [0] ++ [0] ++ [0] ++ [0] ++ [0] ++ [0] ++ [0] ++ [0] ++ [0] ++ [0] ++ [0] ++ [0] ++ [0] ++ [0] ++ [0] ++ [0] ++ [0] ++ [0] ++ [0] ++ [0] ++ [0] ++ [0] ++ [0] ++ [0] ++ [0]) != False]
+(assert (not
+  (=
+    (not
+      (Seq_equal
+        ($pad32<Seq<Int>> l$bc@345@01)
+        (Seq_append
+          (Seq_append
+            (Seq_append
+              (Seq_append
+                (Seq_append
+                  (Seq_append
+                    (Seq_append
+                      (Seq_append
+                        (Seq_append
+                          (Seq_append
+                            (Seq_append
+                              (Seq_append
+                                (Seq_append
+                                  (Seq_append
+                                    (Seq_append
+                                      (Seq_append
+                                        (Seq_append
+                                          (Seq_append
+                                            (Seq_append
+                                              (Seq_append
+                                                (Seq_append
+                                                  (Seq_append
+                                                    (Seq_append
+                                                      (Seq_append
+                                                        (Seq_append
+                                                          (Seq_append
+                                                            (Seq_append
+                                                              (Seq_append
+                                                                (Seq_append
+                                                                  (Seq_append
+                                                                    (Seq_append
+                                                                      (Seq_singleton 0)
+                                                                      (Seq_singleton 0))
+                                                                    (Seq_singleton 0))
+                                                                  (Seq_singleton 0))
+                                                                (Seq_singleton 0))
+                                                              (Seq_singleton 0))
+                                                            (Seq_singleton 0))
+                                                          (Seq_singleton 0))
+                                                        (Seq_singleton 0))
+                                                      (Seq_singleton 0))
+                                                    (Seq_singleton 0))
+                                                  (Seq_singleton 0))
+                                                (Seq_singleton 0))
+                                              (Seq_singleton 0))
+                                            (Seq_singleton 0))
+                                          (Seq_singleton 0))
+                                        (Seq_singleton 0))
+                                      (Seq_singleton 0))
+                                    (Seq_singleton 0))
+                                  (Seq_singleton 0))
+                                (Seq_singleton 0))
+                              (Seq_singleton 0))
+                            (Seq_singleton 0))
+                          (Seq_singleton 0))
+                        (Seq_singleton 0))
+                      (Seq_singleton 0))
+                    (Seq_singleton 0))
+                  (Seq_singleton 0))
+                (Seq_singleton 0))
+              (Seq_singleton 0))
+            (Seq_singleton 0))
+          (Seq_singleton 0))))
+    false)))
+(pop) ; 3
+(pop) ; 2
+(pop) ; 1
+; ---------- f$check ----------
+(declare-const $succ@401@01 Bool)
+(declare-const $succ@402@01 Bool)
+(push) ; 1
+; State saturation: after contract
+(set-option :timeout 50)
+(check-sat)
+; unknown
+(set-option :timeout 0)
+(push) ; 2
+(pop) ; 2
+(push) ; 2
+; [exec]
+; var msg: $Struct
+(declare-const msg@403@01 $Struct)
+; [exec]
+; var block: $Struct
+(declare-const block@404@01 $Struct)
+; [exec]
+; var chain: $Struct
+(declare-const chain@405@01 $Struct)
+; [exec]
+; var tx: $Struct
+(declare-const tx@406@01 $Struct)
+; [exec]
+; var self: $Struct
+(declare-const self@407@01 $Struct)
+; [exec]
+; var $contracts: $Map[Int, $Struct]
+(declare-const $contracts@408@01 $Map<Int~_$Struct>)
+; [exec]
+; var $old_self: $Struct
+(declare-const $old_self@409@01 $Struct)
+; [exec]
+; var $old_$contracts: $Map[Int, $Struct]
+(declare-const $old_$contracts@410@01 $Map<Int~_$Struct>)
+; [exec]
+; var $pre_self: $Struct
+(declare-const $pre_self@411@01 $Struct)
+; [exec]
+; var $pre_$contracts: $Map[Int, $Struct]
+(declare-const $pre_$contracts@412@01 $Map<Int~_$Struct>)
+; [exec]
+; var $issued_self: $Struct
+(declare-const $issued_self@413@01 $Struct)
+; [exec]
+; var $issued_$contracts: $Map[Int, $Struct]
+(declare-const $issued_$contracts@414@01 $Map<Int~_$Struct>)
+; [exec]
+; var $overflow: Bool
+(declare-const $overflow@415@01 Bool)
+; [exec]
+; var $out_of_gas: Bool
+(declare-const $out_of_gas@416@01 Bool)
+; [exec]
+; var l$havoc: Int
+(declare-const l$havoc@417@01 Int)
+; [exec]
+; var l$havoc$1: $Map[Int, $Struct]
+(declare-const l$havoc$1@418@01 $Map<Int~_$Struct>)
+; [exec]
+; inhale 0 <= ($struct_get($struct_loc(self, 0)): Int) &&
+;   ($struct_get($struct_loc(self, 0)): Int) <=
+;   115792089237316195423570985008687907853269984665640564039457584007913129639935
+(declare-const $t@419@01 $Snap)
+(assert (= $t@419@01 ($Snap.combine ($Snap.first $t@419@01) ($Snap.second $t@419@01))))
+(assert (= ($Snap.first $t@419@01) $Snap.unit))
+; [eval] 0 <= ($struct_get($struct_loc(self, 0)): Int)
+; [eval] ($struct_get($struct_loc(self, 0)): Int)
+; [eval] $struct_loc(self, 0)
+(assert (<= 0 ($struct_get<Int> ($struct_loc<Int> self@407@01 0))))
+(assert (= ($Snap.second $t@419@01) $Snap.unit))
+; [eval] ($struct_get($struct_loc(self, 0)): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
+; [eval] ($struct_get($struct_loc(self, 0)): Int)
+; [eval] $struct_loc(self, 0)
+(assert (<=
+  ($struct_get<Int> ($struct_loc<Int> self@407@01 0))
+  115792089237316195423570985008687907853269984665640564039457584007913129639935))
+; State saturation: after inhale
+(set-option :timeout 20)
+(check-sat)
+; unknown
+; [exec]
+; inhale -170141183460469231731687303715884105728 <=
+;   ($struct_get($struct_loc(self, 1)): Int) &&
+;   ($struct_get($struct_loc(self, 1)): Int) <=
+;   170141183460469231731687303715884105727
+(declare-const $t@420@01 $Snap)
+(assert (= $t@420@01 ($Snap.combine ($Snap.first $t@420@01) ($Snap.second $t@420@01))))
+(assert (= ($Snap.first $t@420@01) $Snap.unit))
+; [eval] -170141183460469231731687303715884105728 <= ($struct_get($struct_loc(self, 1)): Int)
+; [eval] -170141183460469231731687303715884105728
+; [eval] ($struct_get($struct_loc(self, 1)): Int)
+; [eval] $struct_loc(self, 1)
+(assert (<=
+  (- 0 170141183460469231731687303715884105728)
+  ($struct_get<Int> ($struct_loc<Int> self@407@01 1))))
+(assert (= ($Snap.second $t@420@01) $Snap.unit))
+; [eval] ($struct_get($struct_loc(self, 1)): Int) <= 170141183460469231731687303715884105727
+; [eval] ($struct_get($struct_loc(self, 1)): Int)
+; [eval] $struct_loc(self, 1)
+(assert (<=
+  ($struct_get<Int> ($struct_loc<Int> self@407@01 1))
+  170141183460469231731687303715884105727))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale (forall $q0: Int ::
+;     { ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $q0): Int) }
+;     0 <=
+;     ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $q0): Int) &&
+;     ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $q0): Int) <=
+;     115792089237316195423570985008687907853269984665640564039457584007913129639935)
+(declare-const $t@421@01 $Snap)
+(assert (= $t@421@01 $Snap.unit))
+; [eval] (forall $q0: Int :: { ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $q0): Int) } 0 <= ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $q0): Int) && ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $q0): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935)
+(declare-const $q0@422@01 Int)
+(set-option :timeout 0)
+(push) ; 3
+; [eval] 0 <= ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $q0): Int) && ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $q0): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
+; [eval] 0 <= ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $q0): Int)
+; [eval] ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $q0): Int)
+; [eval] ($struct_get($struct_loc(self, 3)): $Map[Int, Int])
+; [eval] $struct_loc(self, 3)
+(push) ; 4
+; [then-branch: 133 | !(0 <= $map_get[Int]($struct_get[$Map[Int, Int]]($struct_loc[Int](self@407@01, 3)), $q0@422@01)) | live]
+; [else-branch: 133 | 0 <= $map_get[Int]($struct_get[$Map[Int, Int]]($struct_loc[Int](self@407@01, 3)), $q0@422@01) | live]
+(push) ; 5
+; [then-branch: 133 | !(0 <= $map_get[Int]($struct_get[$Map[Int, Int]]($struct_loc[Int](self@407@01, 3)), $q0@422@01))]
+(assert (not
+  (<=
+    0
+    ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@407@01 3)) $q0@422@01))))
+(pop) ; 5
+(push) ; 5
+; [else-branch: 133 | 0 <= $map_get[Int]($struct_get[$Map[Int, Int]]($struct_loc[Int](self@407@01, 3)), $q0@422@01)]
+(assert (<=
+  0
+  ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@407@01 3)) $q0@422@01)))
+; [eval] ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $q0): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
+; [eval] ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $q0): Int)
+; [eval] ($struct_get($struct_loc(self, 3)): $Map[Int, Int])
+; [eval] $struct_loc(self, 3)
+(pop) ; 5
+(pop) ; 4
+; Joined path conditions
+; Joined path conditions
+(assert (or
+  (<=
+    0
+    ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@407@01 3)) $q0@422@01))
+  (not
+    (<=
+      0
+      ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@407@01 3)) $q0@422@01)))))
+(pop) ; 3
+; Nested auxiliary terms: globals (aux)
+; Nested auxiliary terms: non-globals (aux)
+(assert (forall (($q0@422@01 Int)) (!
+  (or
+    (<=
+      0
+      ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@407@01 3)) $q0@422@01))
+    (not
+      (<=
+        0
+        ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@407@01 3)) $q0@422@01))))
+  :pattern (($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@407@01 3)) $q0@422@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourceslanguageconvert.vy.vpr@1276@11@1276@345-aux|)))
+(assert (forall (($q0@422@01 Int)) (!
+  (and
+    (<=
+      0
+      ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@407@01 3)) $q0@422@01))
+    (<=
+      ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@407@01 3)) $q0@422@01)
+      115792089237316195423570985008687907853269984665640564039457584007913129639935))
+  :pattern (($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@407@01 3)) $q0@422@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourceslanguageconvert.vy.vpr@1276@11@1276@345|)))
+; State saturation: after inhale
+(set-option :timeout 20)
+(check-sat)
+; unknown
+; [exec]
+; inhale (forall $q0: Int ::
+;     { ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $q0): Int) }
+;     ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $q0): Int) <=
+;     ($map_sum(($struct_get($struct_loc(self, 3)): $Map[Int, Int])): Int))
+(declare-const $t@423@01 $Snap)
+(assert (= $t@423@01 $Snap.unit))
+; [eval] (forall $q0: Int :: { ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $q0): Int) } ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $q0): Int) <= ($map_sum(($struct_get($struct_loc(self, 3)): $Map[Int, Int])): Int))
+(declare-const $q0@424@01 Int)
+(set-option :timeout 0)
+(push) ; 3
+; [eval] ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $q0): Int) <= ($map_sum(($struct_get($struct_loc(self, 3)): $Map[Int, Int])): Int)
+; [eval] ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $q0): Int)
+; [eval] ($struct_get($struct_loc(self, 3)): $Map[Int, Int])
+; [eval] $struct_loc(self, 3)
+; [eval] ($map_sum(($struct_get($struct_loc(self, 3)): $Map[Int, Int])): Int)
+; [eval] ($struct_get($struct_loc(self, 3)): $Map[Int, Int])
+; [eval] $struct_loc(self, 3)
+(pop) ; 3
+; Nested auxiliary terms: globals (aux)
+; Nested auxiliary terms: non-globals (aux)
+(assert (forall (($q0@424@01 Int)) (!
+  (<=
+    ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@407@01 3)) $q0@424@01)
+    ($map_sum<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@407@01 3))))
+  :pattern (($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@407@01 3)) $q0@424@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourceslanguageconvert.vy.vpr@1277@11@1277@253|)))
+; State saturation: after inhale
+(set-option :timeout 20)
+(check-sat)
+; unknown
+; [exec]
+; inhale (forall $q1: Int ::
+;     { ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q1): Int) }
+;     0 <=
+;     ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q1): Int) &&
+;     ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q1): Int) <=
+;     115792089237316195423570985008687907853269984665640564039457584007913129639935)
+(declare-const $t@425@01 $Snap)
+(assert (= $t@425@01 $Snap.unit))
+; [eval] (forall $q1: Int :: { ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q1): Int) } 0 <= ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q1): Int) && ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q1): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935)
+(declare-const $q1@426@01 Int)
+(set-option :timeout 0)
+(push) ; 3
+; [eval] 0 <= ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q1): Int) && ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q1): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
+; [eval] 0 <= ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q1): Int)
+; [eval] ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q1): Int)
+; [eval] ($struct_get($struct_loc(self, 4)): $Map[Int, Int])
+; [eval] $struct_loc(self, 4)
+(push) ; 4
+; [then-branch: 134 | !(0 <= $map_get[Int]($struct_get[$Map[Int, Int]]($struct_loc[Int](self@407@01, 4)), $q1@426@01)) | live]
+; [else-branch: 134 | 0 <= $map_get[Int]($struct_get[$Map[Int, Int]]($struct_loc[Int](self@407@01, 4)), $q1@426@01) | live]
+(push) ; 5
+; [then-branch: 134 | !(0 <= $map_get[Int]($struct_get[$Map[Int, Int]]($struct_loc[Int](self@407@01, 4)), $q1@426@01))]
+(assert (not
+  (<=
+    0
+    ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@407@01 4)) $q1@426@01))))
+(pop) ; 5
+(push) ; 5
+; [else-branch: 134 | 0 <= $map_get[Int]($struct_get[$Map[Int, Int]]($struct_loc[Int](self@407@01, 4)), $q1@426@01)]
+(assert (<=
+  0
+  ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@407@01 4)) $q1@426@01)))
+; [eval] ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q1): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
+; [eval] ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q1): Int)
+; [eval] ($struct_get($struct_loc(self, 4)): $Map[Int, Int])
+; [eval] $struct_loc(self, 4)
+(pop) ; 5
+(pop) ; 4
+; Joined path conditions
+; Joined path conditions
+(assert (or
+  (<=
+    0
+    ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@407@01 4)) $q1@426@01))
+  (not
+    (<=
+      0
+      ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@407@01 4)) $q1@426@01)))))
+(pop) ; 3
+; Nested auxiliary terms: globals (aux)
+; Nested auxiliary terms: non-globals (aux)
+(assert (forall (($q1@426@01 Int)) (!
+  (or
+    (<=
+      0
+      ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@407@01 4)) $q1@426@01))
+    (not
+      (<=
+        0
+        ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@407@01 4)) $q1@426@01))))
+  :pattern (($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@407@01 4)) $q1@426@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourceslanguageconvert.vy.vpr@1278@11@1278@345-aux|)))
+(assert (forall (($q1@426@01 Int)) (!
+  (and
+    (<=
+      0
+      ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@407@01 4)) $q1@426@01))
+    (<=
+      ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@407@01 4)) $q1@426@01)
+      115792089237316195423570985008687907853269984665640564039457584007913129639935))
+  :pattern (($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@407@01 4)) $q1@426@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourceslanguageconvert.vy.vpr@1278@11@1278@345|)))
+; State saturation: after inhale
+(set-option :timeout 20)
+(check-sat)
+; unknown
+; [exec]
+; inhale (forall $q1: Int ::
+;     { ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q1): Int) }
+;     ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q1): Int) <=
+;     ($map_sum(($struct_get($struct_loc(self, 4)): $Map[Int, Int])): Int))
+(declare-const $t@427@01 $Snap)
+(assert (= $t@427@01 $Snap.unit))
+; [eval] (forall $q1: Int :: { ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q1): Int) } ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q1): Int) <= ($map_sum(($struct_get($struct_loc(self, 4)): $Map[Int, Int])): Int))
+(declare-const $q1@428@01 Int)
+(set-option :timeout 0)
+(push) ; 3
+; [eval] ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q1): Int) <= ($map_sum(($struct_get($struct_loc(self, 4)): $Map[Int, Int])): Int)
+; [eval] ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q1): Int)
+; [eval] ($struct_get($struct_loc(self, 4)): $Map[Int, Int])
+; [eval] $struct_loc(self, 4)
+; [eval] ($map_sum(($struct_get($struct_loc(self, 4)): $Map[Int, Int])): Int)
+; [eval] ($struct_get($struct_loc(self, 4)): $Map[Int, Int])
+; [eval] $struct_loc(self, 4)
+(pop) ; 3
+; Nested auxiliary terms: globals (aux)
+; Nested auxiliary terms: non-globals (aux)
+(assert (forall (($q1@428@01 Int)) (!
+  (<=
+    ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@407@01 4)) $q1@428@01)
+    ($map_sum<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@407@01 4))))
+  :pattern (($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@407@01 4)) $q1@428@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourceslanguageconvert.vy.vpr@1279@11@1279@253|)))
+; State saturation: after inhale
+(set-option :timeout 20)
+(check-sat)
+; unknown
+; [exec]
+; inhale ($struct_get($struct_loc(self, -1)): Int) ==
+;   9122519725869122497593506884710
+(declare-const $t@429@01 $Snap)
+(assert (= $t@429@01 $Snap.unit))
+; [eval] ($struct_get($struct_loc(self, -1)): Int) == 9122519725869122497593506884710
+; [eval] ($struct_get($struct_loc(self, -1)): Int)
+; [eval] $struct_loc(self, -1)
+; [eval] -1
+(assert (=
+  ($struct_get<Int> ($struct_loc<Int> self@407@01 (- 0 1)))
+  9122519725869122497593506884710))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale 0 <= $self_address() &&
+;   $self_address() <= 1461501637330902918203684832716283019655932542975
+(declare-const $t@430@01 $Snap)
+(assert (= $t@430@01 ($Snap.combine ($Snap.first $t@430@01) ($Snap.second $t@430@01))))
+(assert (= ($Snap.first $t@430@01) $Snap.unit))
+; [eval] 0 <= $self_address()
+; [eval] $self_address()
+(assert (<= 0 (as $self_address<Int>  Int)))
+(assert (= ($Snap.second $t@430@01) $Snap.unit))
+; [eval] $self_address() <= 1461501637330902918203684832716283019655932542975
+; [eval] $self_address()
+(assert (<=
+  (as $self_address<Int>  Int)
+  1461501637330902918203684832716283019655932542975))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale 0 <= ($struct_get($struct_loc(block, 0)): Int) &&
+;   ($struct_get($struct_loc(block, 0)): Int) <=
+;   1461501637330902918203684832716283019655932542975
+(declare-const $t@431@01 $Snap)
+(assert (= $t@431@01 ($Snap.combine ($Snap.first $t@431@01) ($Snap.second $t@431@01))))
+(assert (= ($Snap.first $t@431@01) $Snap.unit))
+; [eval] 0 <= ($struct_get($struct_loc(block, 0)): Int)
+; [eval] ($struct_get($struct_loc(block, 0)): Int)
+; [eval] $struct_loc(block, 0)
+(assert (<= 0 ($struct_get<Int> ($struct_loc<Int> block@404@01 0))))
+(assert (= ($Snap.second $t@431@01) $Snap.unit))
+; [eval] ($struct_get($struct_loc(block, 0)): Int) <= 1461501637330902918203684832716283019655932542975
+; [eval] ($struct_get($struct_loc(block, 0)): Int)
+; [eval] $struct_loc(block, 0)
+(assert (<=
+  ($struct_get<Int> ($struct_loc<Int> block@404@01 0))
+  1461501637330902918203684832716283019655932542975))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale 0 <= ($struct_get($struct_loc(block, 1)): Int) &&
+;   ($struct_get($struct_loc(block, 1)): Int) <=
+;   115792089237316195423570985008687907853269984665640564039457584007913129639935
+(declare-const $t@432@01 $Snap)
+(assert (= $t@432@01 ($Snap.combine ($Snap.first $t@432@01) ($Snap.second $t@432@01))))
+(assert (= ($Snap.first $t@432@01) $Snap.unit))
+; [eval] 0 <= ($struct_get($struct_loc(block, 1)): Int)
+; [eval] ($struct_get($struct_loc(block, 1)): Int)
+; [eval] $struct_loc(block, 1)
+(assert (<= 0 ($struct_get<Int> ($struct_loc<Int> block@404@01 1))))
+(assert (= ($Snap.second $t@432@01) $Snap.unit))
+; [eval] ($struct_get($struct_loc(block, 1)): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
+; [eval] ($struct_get($struct_loc(block, 1)): Int)
+; [eval] $struct_loc(block, 1)
+(assert (<=
+  ($struct_get<Int> ($struct_loc<Int> block@404@01 1))
+  115792089237316195423570985008687907853269984665640564039457584007913129639935))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale 0 <= ($struct_get($struct_loc(block, 2)): Int) &&
+;   ($struct_get($struct_loc(block, 2)): Int) <=
+;   115792089237316195423570985008687907853269984665640564039457584007913129639935
+(declare-const $t@433@01 $Snap)
+(assert (= $t@433@01 ($Snap.combine ($Snap.first $t@433@01) ($Snap.second $t@433@01))))
+(assert (= ($Snap.first $t@433@01) $Snap.unit))
+; [eval] 0 <= ($struct_get($struct_loc(block, 2)): Int)
+; [eval] ($struct_get($struct_loc(block, 2)): Int)
+; [eval] $struct_loc(block, 2)
+(assert (<= 0 ($struct_get<Int> ($struct_loc<Int> block@404@01 2))))
+(assert (= ($Snap.second $t@433@01) $Snap.unit))
+; [eval] ($struct_get($struct_loc(block, 2)): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
+; [eval] ($struct_get($struct_loc(block, 2)): Int)
+; [eval] $struct_loc(block, 2)
+(assert (<=
+  ($struct_get<Int> ($struct_loc<Int> block@404@01 2))
+  115792089237316195423570985008687907853269984665640564039457584007913129639935))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale |($struct_get($struct_loc(block, 3)): Seq[Int])| == 32
+(declare-const $t@434@01 $Snap)
+(assert (= $t@434@01 $Snap.unit))
+; [eval] |($struct_get($struct_loc(block, 3)): Seq[Int])| == 32
+; [eval] |($struct_get($struct_loc(block, 3)): Seq[Int])|
+; [eval] ($struct_get($struct_loc(block, 3)): Seq[Int])
+; [eval] $struct_loc(block, 3)
+(assert (= (Seq_length ($struct_get<Seq<Int>> ($struct_loc<Int> block@404@01 3))) 32))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale 0 <= ($struct_get($struct_loc(block, 4)): Int) &&
+;   ($struct_get($struct_loc(block, 4)): Int) <=
+;   115792089237316195423570985008687907853269984665640564039457584007913129639935
+(declare-const $t@435@01 $Snap)
+(assert (= $t@435@01 ($Snap.combine ($Snap.first $t@435@01) ($Snap.second $t@435@01))))
+(assert (= ($Snap.first $t@435@01) $Snap.unit))
+; [eval] 0 <= ($struct_get($struct_loc(block, 4)): Int)
+; [eval] ($struct_get($struct_loc(block, 4)): Int)
+; [eval] $struct_loc(block, 4)
+(assert (<= 0 ($struct_get<Int> ($struct_loc<Int> block@404@01 4))))
+(assert (= ($Snap.second $t@435@01) $Snap.unit))
+; [eval] ($struct_get($struct_loc(block, 4)): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
+; [eval] ($struct_get($struct_loc(block, 4)): Int)
+; [eval] $struct_loc(block, 4)
+(assert (<=
+  ($struct_get<Int> ($struct_loc<Int> block@404@01 4))
+  115792089237316195423570985008687907853269984665640564039457584007913129639935))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale ($struct_get($struct_loc(block, -1)): Int) ==
+;   2335365049822495359383864865678187
+(declare-const $t@436@01 $Snap)
+(assert (= $t@436@01 $Snap.unit))
+; [eval] ($struct_get($struct_loc(block, -1)): Int) == 2335365049822495359383864865678187
+; [eval] ($struct_get($struct_loc(block, -1)): Int)
+; [eval] $struct_loc(block, -1)
+; [eval] -1
+(assert (=
+  ($struct_get<Int> ($struct_loc<Int> block@404@01 (- 0 1)))
+  2335365049822495359383864865678187))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale 0 <= ($struct_get($struct_loc(msg, 0)): Int) &&
+;   ($struct_get($struct_loc(msg, 0)): Int) <=
+;   1461501637330902918203684832716283019655932542975
+(declare-const $t@437@01 $Snap)
+(assert (= $t@437@01 ($Snap.combine ($Snap.first $t@437@01) ($Snap.second $t@437@01))))
+(assert (= ($Snap.first $t@437@01) $Snap.unit))
+; [eval] 0 <= ($struct_get($struct_loc(msg, 0)): Int)
+; [eval] ($struct_get($struct_loc(msg, 0)): Int)
+; [eval] $struct_loc(msg, 0)
+(assert (<= 0 ($struct_get<Int> ($struct_loc<Int> msg@403@01 0))))
+(assert (= ($Snap.second $t@437@01) $Snap.unit))
+; [eval] ($struct_get($struct_loc(msg, 0)): Int) <= 1461501637330902918203684832716283019655932542975
+; [eval] ($struct_get($struct_loc(msg, 0)): Int)
+; [eval] $struct_loc(msg, 0)
+(assert (<=
+  ($struct_get<Int> ($struct_loc<Int> msg@403@01 0))
+  1461501637330902918203684832716283019655932542975))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale 0 <= ($struct_get($struct_loc(msg, 1)): Int) &&
+;   ($struct_get($struct_loc(msg, 1)): Int) <=
+;   115792089237316195423570985008687907853269984665640564039457584007913129639935
+(declare-const $t@438@01 $Snap)
+(assert (= $t@438@01 ($Snap.combine ($Snap.first $t@438@01) ($Snap.second $t@438@01))))
+(assert (= ($Snap.first $t@438@01) $Snap.unit))
+; [eval] 0 <= ($struct_get($struct_loc(msg, 1)): Int)
+; [eval] ($struct_get($struct_loc(msg, 1)): Int)
+; [eval] $struct_loc(msg, 1)
+(assert (<= 0 ($struct_get<Int> ($struct_loc<Int> msg@403@01 1))))
+(assert (= ($Snap.second $t@438@01) $Snap.unit))
+; [eval] ($struct_get($struct_loc(msg, 1)): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
+; [eval] ($struct_get($struct_loc(msg, 1)): Int)
+; [eval] $struct_loc(msg, 1)
+(assert (<=
+  ($struct_get<Int> ($struct_loc<Int> msg@403@01 1))
+  115792089237316195423570985008687907853269984665640564039457584007913129639935))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale 0 <= ($struct_get($struct_loc(msg, 2)): Int) &&
+;   ($struct_get($struct_loc(msg, 2)): Int) <=
+;   115792089237316195423570985008687907853269984665640564039457584007913129639935
+(declare-const $t@439@01 $Snap)
+(assert (= $t@439@01 ($Snap.combine ($Snap.first $t@439@01) ($Snap.second $t@439@01))))
+(assert (= ($Snap.first $t@439@01) $Snap.unit))
+; [eval] 0 <= ($struct_get($struct_loc(msg, 2)): Int)
+; [eval] ($struct_get($struct_loc(msg, 2)): Int)
+; [eval] $struct_loc(msg, 2)
+(assert (<= 0 ($struct_get<Int> ($struct_loc<Int> msg@403@01 2))))
+(assert (= ($Snap.second $t@439@01) $Snap.unit))
+; [eval] ($struct_get($struct_loc(msg, 2)): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
+; [eval] ($struct_get($struct_loc(msg, 2)): Int)
+; [eval] $struct_loc(msg, 2)
+(assert (<=
+  ($struct_get<Int> ($struct_loc<Int> msg@403@01 2))
+  115792089237316195423570985008687907853269984665640564039457584007913129639935))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale ($struct_get($struct_loc(msg, -1)): Int) ==
+;   35634842679176259756224246631
+(declare-const $t@440@01 $Snap)
+(assert (= $t@440@01 $Snap.unit))
+; [eval] ($struct_get($struct_loc(msg, -1)): Int) == 35634842679176259756224246631
+; [eval] ($struct_get($struct_loc(msg, -1)): Int)
+; [eval] $struct_loc(msg, -1)
+; [eval] -1
+(assert (=
+  ($struct_get<Int> ($struct_loc<Int> msg@403@01 (- 0 1)))
+  35634842679176259756224246631))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale ($struct_get($struct_loc(msg, 0)): Int) != 0
+(declare-const $t@441@01 $Snap)
+(assert (= $t@441@01 $Snap.unit))
+; [eval] ($struct_get($struct_loc(msg, 0)): Int) != 0
+; [eval] ($struct_get($struct_loc(msg, 0)): Int)
+; [eval] $struct_loc(msg, 0)
+(assert (not (= ($struct_get<Int> ($struct_loc<Int> msg@403@01 0)) 0)))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale (forall $a: Int ::
+;     { ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $a): Int) }
+;     ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $a): Int) >=
+;     ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $a): Int))
+(declare-const $t@442@01 $Snap)
+(assert (= $t@442@01 $Snap.unit))
+; [eval] (forall $a: Int :: { ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $a): Int) } ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $a): Int) >= ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $a): Int))
+(declare-const $a@443@01 Int)
+(set-option :timeout 0)
+(push) ; 3
+; [eval] ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $a): Int) >= ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $a): Int)
+; [eval] ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $a): Int)
+; [eval] ($struct_get($struct_loc(self, 3)): $Map[Int, Int])
+; [eval] $struct_loc(self, 3)
+; [eval] ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $a): Int)
+; [eval] ($struct_get($struct_loc(self, 3)): $Map[Int, Int])
+; [eval] $struct_loc(self, 3)
+(pop) ; 3
+; Nested auxiliary terms: globals (aux)
+; Nested auxiliary terms: non-globals (aux)
+; State saturation: after inhale
+(set-option :timeout 20)
+(check-sat)
+; unknown
+; [exec]
+; $pre_self := self
+; [exec]
+; $pre_$contracts := $contracts
+; [exec]
+; $old_self := self
+; [exec]
+; $old_$contracts := $contracts
+; [exec]
+; $succ := true
+; [exec]
+; $overflow := false
+; [exec]
+; inhale ($struct_get($struct_loc(msg, 1)): Int) == 0
+(declare-const $t@444@01 $Snap)
+(assert (= $t@444@01 $Snap.unit))
+; [eval] ($struct_get($struct_loc(msg, 1)): Int) == 0
+; [eval] ($struct_get($struct_loc(msg, 1)): Int)
+; [eval] $struct_loc(msg, 1)
+(assert (= ($struct_get<Int> ($struct_loc<Int> msg@403@01 1)) 0))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; label return
+(set-option :timeout 0)
+(push) ; 3
+(set-option :timeout 10)
+(assert (not (not $out_of_gas@416@01)))
+(check-sat)
+; unknown
+(pop) ; 3
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 3
+(set-option :timeout 10)
+(assert (not $out_of_gas@416@01))
+(check-sat)
+; unknown
+(pop) ; 3
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 135 | $out_of_gas@416@01 | live]
+; [else-branch: 135 | !($out_of_gas@416@01) | live]
+(set-option :timeout 0)
+(push) ; 3
+; [then-branch: 135 | $out_of_gas@416@01]
+(assert $out_of_gas@416@01)
+; [exec]
+; label revert
+; [exec]
+; $succ := false
+; [exec]
+; self := $pre_self
+; [exec]
+; $contracts := $pre_$contracts
+; [exec]
+; $old_self := $pre_self
+; [exec]
+; $old_$contracts := $pre_$contracts
+; [exec]
+; label end
+; [exec]
+; exhale (forall q$i: Int ::-170141183460469231731687303715884105728 <= q$i &&
+;     q$i <= 170141183460469231731687303715884105727 ==>
+;     q$i != 0 ==> q$i != 0)
+; [eval] (forall q$i: Int ::-170141183460469231731687303715884105728 <= q$i && q$i <= 170141183460469231731687303715884105727 ==> q$i != 0 ==> q$i != 0)
+(declare-const q$i@445@01 Int)
+(push) ; 4
+; [eval] -170141183460469231731687303715884105728 <= q$i && q$i <= 170141183460469231731687303715884105727 ==> q$i != 0 ==> q$i != 0
+; [eval] -170141183460469231731687303715884105728 <= q$i && q$i <= 170141183460469231731687303715884105727
+; [eval] -170141183460469231731687303715884105728 <= q$i
+; [eval] -170141183460469231731687303715884105728
+(push) ; 5
+; [then-branch: 136 | !(-170141183460469231731687303715884105728 <= q$i@445@01) | live]
+; [else-branch: 136 | -170141183460469231731687303715884105728 <= q$i@445@01 | live]
+(push) ; 6
+; [then-branch: 136 | !(-170141183460469231731687303715884105728 <= q$i@445@01)]
+(assert (not (<= (- 0 170141183460469231731687303715884105728) q$i@445@01)))
+(pop) ; 6
+(push) ; 6
+; [else-branch: 136 | -170141183460469231731687303715884105728 <= q$i@445@01]
+(assert (<= (- 0 170141183460469231731687303715884105728) q$i@445@01))
+; [eval] q$i <= 170141183460469231731687303715884105727
+(pop) ; 6
+(pop) ; 5
+; Joined path conditions
+; Joined path conditions
+(assert (or
+  (<= (- 0 170141183460469231731687303715884105728) q$i@445@01)
+  (not (<= (- 0 170141183460469231731687303715884105728) q$i@445@01))))
+(push) ; 5
+; [then-branch: 137 | -170141183460469231731687303715884105728 <= q$i@445@01 && q$i@445@01 <= 170141183460469231731687303715884105727 | live]
+; [else-branch: 137 | !(-170141183460469231731687303715884105728 <= q$i@445@01 && q$i@445@01 <= 170141183460469231731687303715884105727) | live]
+(push) ; 6
+; [then-branch: 137 | -170141183460469231731687303715884105728 <= q$i@445@01 && q$i@445@01 <= 170141183460469231731687303715884105727]
+(assert (and
+  (<= (- 0 170141183460469231731687303715884105728) q$i@445@01)
+  (<= q$i@445@01 170141183460469231731687303715884105727)))
+; [eval] q$i != 0 ==> q$i != 0
+; [eval] q$i != 0
+(push) ; 7
+; [then-branch: 138 | q$i@445@01 != 0 | live]
+; [else-branch: 138 | q$i@445@01 == 0 | live]
+(push) ; 8
+; [then-branch: 138 | q$i@445@01 != 0]
+(assert (not (= q$i@445@01 0)))
+; [eval] q$i != 0
+(pop) ; 8
+(push) ; 8
+; [else-branch: 138 | q$i@445@01 == 0]
+(assert (= q$i@445@01 0))
+(pop) ; 8
+(pop) ; 7
+; Joined path conditions
+; Joined path conditions
+(assert (or (= q$i@445@01 0) (not (= q$i@445@01 0))))
+(pop) ; 6
+(push) ; 6
+; [else-branch: 137 | !(-170141183460469231731687303715884105728 <= q$i@445@01 && q$i@445@01 <= 170141183460469231731687303715884105727)]
+(assert (not
+  (and
+    (<= (- 0 170141183460469231731687303715884105728) q$i@445@01)
+    (<= q$i@445@01 170141183460469231731687303715884105727))))
+(pop) ; 6
+(pop) ; 5
+; Joined path conditions
+(assert (=>
+  (and
+    (<= (- 0 170141183460469231731687303715884105728) q$i@445@01)
+    (<= q$i@445@01 170141183460469231731687303715884105727))
+  (and
+    (<= (- 0 170141183460469231731687303715884105728) q$i@445@01)
+    (<= q$i@445@01 170141183460469231731687303715884105727)
+    (or (= q$i@445@01 0) (not (= q$i@445@01 0))))))
+; Joined path conditions
+(assert (or
+  (not
+    (and
+      (<= (- 0 170141183460469231731687303715884105728) q$i@445@01)
+      (<= q$i@445@01 170141183460469231731687303715884105727)))
+  (and
+    (<= (- 0 170141183460469231731687303715884105728) q$i@445@01)
+    (<= q$i@445@01 170141183460469231731687303715884105727))))
+(pop) ; 4
+; Nested auxiliary terms: globals (aux)
+; Nested auxiliary terms: non-globals (aux)
+; [exec]
+; exhale !(0 != 0)
+; [eval] !(0 != 0)
+; [eval] 0 != 0
+; [exec]
+; exhale (forall q$i: Int ::-170141183460469231731687303715884105728 <= q$i &&
+;     q$i <= 170141183460469231731687303715884105727 ==>
+;     $div(q$i * 10000000000, 10000000000, q$i * 10000000000 \ 10000000000) ==
+;     q$i)
+; [eval] (forall q$i: Int ::-170141183460469231731687303715884105728 <= q$i && q$i <= 170141183460469231731687303715884105727 ==> $div(q$i * 10000000000, 10000000000, q$i * 10000000000 \ 10000000000) == q$i)
+(declare-const q$i@446@01 Int)
+(push) ; 4
+; [eval] -170141183460469231731687303715884105728 <= q$i && q$i <= 170141183460469231731687303715884105727 ==> $div(q$i * 10000000000, 10000000000, q$i * 10000000000 \ 10000000000) == q$i
+; [eval] -170141183460469231731687303715884105728 <= q$i && q$i <= 170141183460469231731687303715884105727
+; [eval] -170141183460469231731687303715884105728 <= q$i
+; [eval] -170141183460469231731687303715884105728
+(push) ; 5
+; [then-branch: 139 | !(-170141183460469231731687303715884105728 <= q$i@446@01) | live]
+; [else-branch: 139 | -170141183460469231731687303715884105728 <= q$i@446@01 | live]
+(push) ; 6
+; [then-branch: 139 | !(-170141183460469231731687303715884105728 <= q$i@446@01)]
+(assert (not (<= (- 0 170141183460469231731687303715884105728) q$i@446@01)))
+(pop) ; 6
+(push) ; 6
+; [else-branch: 139 | -170141183460469231731687303715884105728 <= q$i@446@01]
+(assert (<= (- 0 170141183460469231731687303715884105728) q$i@446@01))
+; [eval] q$i <= 170141183460469231731687303715884105727
+(pop) ; 6
+(pop) ; 5
+; Joined path conditions
+; Joined path conditions
+(assert (or
+  (<= (- 0 170141183460469231731687303715884105728) q$i@446@01)
+  (not (<= (- 0 170141183460469231731687303715884105728) q$i@446@01))))
+(push) ; 5
+; [then-branch: 140 | -170141183460469231731687303715884105728 <= q$i@446@01 && q$i@446@01 <= 170141183460469231731687303715884105727 | live]
+; [else-branch: 140 | !(-170141183460469231731687303715884105728 <= q$i@446@01 && q$i@446@01 <= 170141183460469231731687303715884105727) | live]
+(push) ; 6
+; [then-branch: 140 | -170141183460469231731687303715884105728 <= q$i@446@01 && q$i@446@01 <= 170141183460469231731687303715884105727]
+(assert (and
+  (<= (- 0 170141183460469231731687303715884105728) q$i@446@01)
+  (<= q$i@446@01 170141183460469231731687303715884105727)))
+; [eval] $div(q$i * 10000000000, 10000000000, q$i * 10000000000 \ 10000000000) == q$i
+; [eval] $div(q$i * 10000000000, 10000000000, q$i * 10000000000 \ 10000000000)
+; [eval] q$i * 10000000000
+; [eval] q$i * 10000000000 \ 10000000000
+; [eval] q$i * 10000000000
+(pop) ; 6
+(push) ; 6
+; [else-branch: 140 | !(-170141183460469231731687303715884105728 <= q$i@446@01 && q$i@446@01 <= 170141183460469231731687303715884105727)]
+(assert (not
+  (and
+    (<= (- 0 170141183460469231731687303715884105728) q$i@446@01)
+    (<= q$i@446@01 170141183460469231731687303715884105727))))
+(pop) ; 6
+(pop) ; 5
+; Joined path conditions
+; Joined path conditions
+(assert (or
+  (not
+    (and
+      (<= (- 0 170141183460469231731687303715884105728) q$i@446@01)
+      (<= q$i@446@01 170141183460469231731687303715884105727)))
+  (and
+    (<= (- 0 170141183460469231731687303715884105728) q$i@446@01)
+    (<= q$i@446@01 170141183460469231731687303715884105727))))
+(pop) ; 4
+; Nested auxiliary terms: globals (aux)
+; Nested auxiliary terms: non-globals (aux)
+(push) ; 4
+(assert (not (forall ((q$i@446@01 Int)) (!
+  (=>
+    (and
+      (<= (- 0 170141183460469231731687303715884105728) q$i@446@01)
+      (<= q$i@446@01 170141183460469231731687303715884105727))
+    (=
+      ($div<Int> (* q$i@446@01 10000000000) 10000000000 (div
+        (* q$i@446@01 10000000000)
+        10000000000))
+      q$i@446@01))
+  
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourceslanguageconvert.vy.vpr@1325@11@1325@208|))))
+(check-sat)
+; unsat
+(pop) ; 4
+; 0.00s
+; (get-info :all-statistics)
+(assert (forall ((q$i@446@01 Int)) (!
+  (=>
+    (and
+      (<= (- 0 170141183460469231731687303715884105728) q$i@446@01)
+      (<= q$i@446@01 170141183460469231731687303715884105727))
+    (=
+      ($div<Int> (* q$i@446@01 10000000000) 10000000000 (div
+        (* q$i@446@01 10000000000)
+        10000000000))
+      q$i@446@01))
+  
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourceslanguageconvert.vy.vpr@1325@11@1325@208|)))
+; [exec]
+; exhale $signed_int_to_bytes32(1) == $signed_int_to_bytes32(1)
+; [eval] $signed_int_to_bytes32(1) == $signed_int_to_bytes32(1)
+; [eval] $signed_int_to_bytes32(1)
+; [eval] $signed_int_to_bytes32(1)
+; [eval] !$succ
+(push) ; 4
+(set-option :timeout 10)
+(assert (not false))
+(check-sat)
+; unknown
+(pop) ; 4
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 141 | True | live]
+; [else-branch: 141 | False | dead]
+(set-option :timeout 0)
+(push) ; 4
+; [then-branch: 141 | True]
+; [exec]
+; inhale l$havoc >= 0
+(declare-const $t@447@01 $Snap)
+(assert (= $t@447@01 $Snap.unit))
+; [eval] l$havoc >= 0
+(assert (>= l$havoc@417@01 0))
+; State saturation: after inhale
+(set-option :timeout 20)
+(check-sat)
+; unknown
+; [exec]
+; self := ($struct_set(self, 0, ($struct_get($struct_loc(self, 0)): Int) +
+;   l$havoc): $Struct)
+; [eval] ($struct_set(self, 0, ($struct_get($struct_loc(self, 0)): Int) + l$havoc): $Struct)
+; [eval] ($struct_get($struct_loc(self, 0)): Int) + l$havoc
+; [eval] ($struct_get($struct_loc(self, 0)): Int)
+; [eval] $struct_loc(self, 0)
+(declare-const self@448@01 $Struct)
+(assert (=
+  self@448@01
+  ($struct_set<$Struct> self@407@01 0 (+
+    ($struct_get<Int> ($struct_loc<Int> self@407@01 0))
+    l$havoc@417@01))))
+; [exec]
+; $contracts := l$havoc$1
+(pop) ; 4
+; [then-branch: 142 | False | dead]
+; [else-branch: 142 | True | live]
+(set-option :timeout 0)
+(push) ; 4
+; [else-branch: 142 | True]
+(pop) ; 4
+(pop) ; 3
+(push) ; 3
+; [else-branch: 135 | !($out_of_gas@416@01)]
+(assert (not $out_of_gas@416@01))
+(pop) ; 3
+; [eval] !$out_of_gas
+(push) ; 3
+(set-option :timeout 10)
+(assert (not $out_of_gas@416@01))
+(check-sat)
+; unknown
+(pop) ; 3
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 3
+(set-option :timeout 10)
+(assert (not (not $out_of_gas@416@01)))
+(check-sat)
+; unknown
+(pop) ; 3
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 143 | !($out_of_gas@416@01) | live]
+; [else-branch: 143 | $out_of_gas@416@01 | live]
+(set-option :timeout 0)
+(push) ; 3
+; [then-branch: 143 | !($out_of_gas@416@01)]
+(assert (not $out_of_gas@416@01))
+; [exec]
+; label end
+; [exec]
+; exhale (forall q$i: Int ::-170141183460469231731687303715884105728 <= q$i &&
+;     q$i <= 170141183460469231731687303715884105727 ==>
+;     q$i != 0 ==> q$i != 0)
+; [eval] (forall q$i: Int ::-170141183460469231731687303715884105728 <= q$i && q$i <= 170141183460469231731687303715884105727 ==> q$i != 0 ==> q$i != 0)
+(declare-const q$i@449@01 Int)
+(push) ; 4
+; [eval] -170141183460469231731687303715884105728 <= q$i && q$i <= 170141183460469231731687303715884105727 ==> q$i != 0 ==> q$i != 0
+; [eval] -170141183460469231731687303715884105728 <= q$i && q$i <= 170141183460469231731687303715884105727
+; [eval] -170141183460469231731687303715884105728 <= q$i
+; [eval] -170141183460469231731687303715884105728
+(push) ; 5
+; [then-branch: 144 | !(-170141183460469231731687303715884105728 <= q$i@449@01) | live]
+; [else-branch: 144 | -170141183460469231731687303715884105728 <= q$i@449@01 | live]
+(push) ; 6
+; [then-branch: 144 | !(-170141183460469231731687303715884105728 <= q$i@449@01)]
+(assert (not (<= (- 0 170141183460469231731687303715884105728) q$i@449@01)))
+(pop) ; 6
+(push) ; 6
+; [else-branch: 144 | -170141183460469231731687303715884105728 <= q$i@449@01]
+(assert (<= (- 0 170141183460469231731687303715884105728) q$i@449@01))
+; [eval] q$i <= 170141183460469231731687303715884105727
+(pop) ; 6
+(pop) ; 5
+; Joined path conditions
+; Joined path conditions
+(assert (or
+  (<= (- 0 170141183460469231731687303715884105728) q$i@449@01)
+  (not (<= (- 0 170141183460469231731687303715884105728) q$i@449@01))))
+(push) ; 5
+; [then-branch: 145 | -170141183460469231731687303715884105728 <= q$i@449@01 && q$i@449@01 <= 170141183460469231731687303715884105727 | live]
+; [else-branch: 145 | !(-170141183460469231731687303715884105728 <= q$i@449@01 && q$i@449@01 <= 170141183460469231731687303715884105727) | live]
+(push) ; 6
+; [then-branch: 145 | -170141183460469231731687303715884105728 <= q$i@449@01 && q$i@449@01 <= 170141183460469231731687303715884105727]
+(assert (and
+  (<= (- 0 170141183460469231731687303715884105728) q$i@449@01)
+  (<= q$i@449@01 170141183460469231731687303715884105727)))
+; [eval] q$i != 0 ==> q$i != 0
+; [eval] q$i != 0
+(push) ; 7
+; [then-branch: 146 | q$i@449@01 != 0 | live]
+; [else-branch: 146 | q$i@449@01 == 0 | live]
+(push) ; 8
+; [then-branch: 146 | q$i@449@01 != 0]
+(assert (not (= q$i@449@01 0)))
+; [eval] q$i != 0
+(pop) ; 8
+(push) ; 8
+; [else-branch: 146 | q$i@449@01 == 0]
+(assert (= q$i@449@01 0))
+(pop) ; 8
+(pop) ; 7
+; Joined path conditions
+; Joined path conditions
+(assert (or (= q$i@449@01 0) (not (= q$i@449@01 0))))
+(pop) ; 6
+(push) ; 6
+; [else-branch: 145 | !(-170141183460469231731687303715884105728 <= q$i@449@01 && q$i@449@01 <= 170141183460469231731687303715884105727)]
+(assert (not
+  (and
+    (<= (- 0 170141183460469231731687303715884105728) q$i@449@01)
+    (<= q$i@449@01 170141183460469231731687303715884105727))))
+(pop) ; 6
+(pop) ; 5
+; Joined path conditions
+(assert (=>
+  (and
+    (<= (- 0 170141183460469231731687303715884105728) q$i@449@01)
+    (<= q$i@449@01 170141183460469231731687303715884105727))
+  (and
+    (<= (- 0 170141183460469231731687303715884105728) q$i@449@01)
+    (<= q$i@449@01 170141183460469231731687303715884105727)
+    (or (= q$i@449@01 0) (not (= q$i@449@01 0))))))
+; Joined path conditions
+(assert (or
+  (not
+    (and
+      (<= (- 0 170141183460469231731687303715884105728) q$i@449@01)
+      (<= q$i@449@01 170141183460469231731687303715884105727)))
+  (and
+    (<= (- 0 170141183460469231731687303715884105728) q$i@449@01)
+    (<= q$i@449@01 170141183460469231731687303715884105727))))
+(pop) ; 4
+; Nested auxiliary terms: globals (aux)
+; Nested auxiliary terms: non-globals (aux)
+; [exec]
+; exhale !(0 != 0)
+; [eval] !(0 != 0)
+; [eval] 0 != 0
+; [exec]
+; exhale (forall q$i: Int ::-170141183460469231731687303715884105728 <= q$i &&
+;     q$i <= 170141183460469231731687303715884105727 ==>
+;     $div(q$i * 10000000000, 10000000000, q$i * 10000000000 \ 10000000000) ==
+;     q$i)
+; [eval] (forall q$i: Int ::-170141183460469231731687303715884105728 <= q$i && q$i <= 170141183460469231731687303715884105727 ==> $div(q$i * 10000000000, 10000000000, q$i * 10000000000 \ 10000000000) == q$i)
+(declare-const q$i@450@01 Int)
+(push) ; 4
+; [eval] -170141183460469231731687303715884105728 <= q$i && q$i <= 170141183460469231731687303715884105727 ==> $div(q$i * 10000000000, 10000000000, q$i * 10000000000 \ 10000000000) == q$i
+; [eval] -170141183460469231731687303715884105728 <= q$i && q$i <= 170141183460469231731687303715884105727
+; [eval] -170141183460469231731687303715884105728 <= q$i
+; [eval] -170141183460469231731687303715884105728
+(push) ; 5
+; [then-branch: 147 | !(-170141183460469231731687303715884105728 <= q$i@450@01) | live]
+; [else-branch: 147 | -170141183460469231731687303715884105728 <= q$i@450@01 | live]
+(push) ; 6
+; [then-branch: 147 | !(-170141183460469231731687303715884105728 <= q$i@450@01)]
+(assert (not (<= (- 0 170141183460469231731687303715884105728) q$i@450@01)))
+(pop) ; 6
+(push) ; 6
+; [else-branch: 147 | -170141183460469231731687303715884105728 <= q$i@450@01]
+(assert (<= (- 0 170141183460469231731687303715884105728) q$i@450@01))
+; [eval] q$i <= 170141183460469231731687303715884105727
+(pop) ; 6
+(pop) ; 5
+; Joined path conditions
+; Joined path conditions
+(assert (or
+  (<= (- 0 170141183460469231731687303715884105728) q$i@450@01)
+  (not (<= (- 0 170141183460469231731687303715884105728) q$i@450@01))))
+(push) ; 5
+; [then-branch: 148 | -170141183460469231731687303715884105728 <= q$i@450@01 && q$i@450@01 <= 170141183460469231731687303715884105727 | live]
+; [else-branch: 148 | !(-170141183460469231731687303715884105728 <= q$i@450@01 && q$i@450@01 <= 170141183460469231731687303715884105727) | live]
+(push) ; 6
+; [then-branch: 148 | -170141183460469231731687303715884105728 <= q$i@450@01 && q$i@450@01 <= 170141183460469231731687303715884105727]
+(assert (and
+  (<= (- 0 170141183460469231731687303715884105728) q$i@450@01)
+  (<= q$i@450@01 170141183460469231731687303715884105727)))
+; [eval] $div(q$i * 10000000000, 10000000000, q$i * 10000000000 \ 10000000000) == q$i
+; [eval] $div(q$i * 10000000000, 10000000000, q$i * 10000000000 \ 10000000000)
+; [eval] q$i * 10000000000
+; [eval] q$i * 10000000000 \ 10000000000
+; [eval] q$i * 10000000000
+(pop) ; 6
+(push) ; 6
+; [else-branch: 148 | !(-170141183460469231731687303715884105728 <= q$i@450@01 && q$i@450@01 <= 170141183460469231731687303715884105727)]
+(assert (not
+  (and
+    (<= (- 0 170141183460469231731687303715884105728) q$i@450@01)
+    (<= q$i@450@01 170141183460469231731687303715884105727))))
+(pop) ; 6
+(pop) ; 5
+; Joined path conditions
+; Joined path conditions
+(assert (or
+  (not
+    (and
+      (<= (- 0 170141183460469231731687303715884105728) q$i@450@01)
+      (<= q$i@450@01 170141183460469231731687303715884105727)))
+  (and
+    (<= (- 0 170141183460469231731687303715884105728) q$i@450@01)
+    (<= q$i@450@01 170141183460469231731687303715884105727))))
+(pop) ; 4
+; Nested auxiliary terms: globals (aux)
+; Nested auxiliary terms: non-globals (aux)
+(push) ; 4
+(assert (not (forall ((q$i@450@01 Int)) (!
+  (=>
+    (and
+      (<= (- 0 170141183460469231731687303715884105728) q$i@450@01)
+      (<= q$i@450@01 170141183460469231731687303715884105727))
+    (=
+      ($div<Int> (* q$i@450@01 10000000000) 10000000000 (div
+        (* q$i@450@01 10000000000)
+        10000000000))
+      q$i@450@01))
+  
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourceslanguageconvert.vy.vpr@1325@11@1325@208|))))
+(check-sat)
+; unsat
+(pop) ; 4
+; 0.00s
+; (get-info :all-statistics)
+(assert (forall ((q$i@450@01 Int)) (!
+  (=>
+    (and
+      (<= (- 0 170141183460469231731687303715884105728) q$i@450@01)
+      (<= q$i@450@01 170141183460469231731687303715884105727))
+    (=
+      ($div<Int> (* q$i@450@01 10000000000) 10000000000 (div
+        (* q$i@450@01 10000000000)
+        10000000000))
+      q$i@450@01))
+  
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourceslanguageconvert.vy.vpr@1325@11@1325@208|)))
+; [exec]
+; exhale $signed_int_to_bytes32(1) == $signed_int_to_bytes32(1)
+; [eval] $signed_int_to_bytes32(1) == $signed_int_to_bytes32(1)
+; [eval] $signed_int_to_bytes32(1)
+; [eval] $signed_int_to_bytes32(1)
+; [eval] !$succ
+; [then-branch: 149 | False | dead]
+; [else-branch: 149 | True | live]
+(push) ; 4
+; [else-branch: 149 | True]
+(pop) ; 4
+(push) ; 4
+(set-option :timeout 10)
+(assert (not false))
+(check-sat)
+; unknown
+(pop) ; 4
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 150 | True | live]
+; [else-branch: 150 | False | dead]
+(set-option :timeout 0)
+(push) ; 4
+; [then-branch: 150 | True]
+; [exec]
+; inhale l$havoc >= 0
+(declare-const $t@451@01 $Snap)
+(assert (= $t@451@01 $Snap.unit))
+; [eval] l$havoc >= 0
+(assert (>= l$havoc@417@01 0))
+; State saturation: after inhale
+(set-option :timeout 20)
+(check-sat)
+; unknown
+; [exec]
+; self := ($struct_set(self, 0, ($struct_get($struct_loc(self, 0)): Int) +
+;   l$havoc): $Struct)
+; [eval] ($struct_set(self, 0, ($struct_get($struct_loc(self, 0)): Int) + l$havoc): $Struct)
+; [eval] ($struct_get($struct_loc(self, 0)): Int) + l$havoc
+; [eval] ($struct_get($struct_loc(self, 0)): Int)
+; [eval] $struct_loc(self, 0)
+(declare-const self@452@01 $Struct)
+(assert (=
+  self@452@01
+  ($struct_set<$Struct> self@407@01 0 (+
+    ($struct_get<Int> ($struct_loc<Int> self@407@01 0))
+    l$havoc@417@01))))
+; [exec]
+; $contracts := l$havoc$1
+(pop) ; 4
+(pop) ; 3
+(set-option :timeout 0)
+(push) ; 3
+; [else-branch: 143 | $out_of_gas@416@01]
+(assert $out_of_gas@416@01)
+(pop) ; 3
+(pop) ; 2
+(pop) ; 1
+; ---------- f$check_fail ----------
+(declare-const $succ@453@01 Bool)
+(declare-const $succ@454@01 Bool)
+(push) ; 1
+; State saturation: after contract
+(set-option :timeout 50)
+(check-sat)
+; unknown
+(set-option :timeout 0)
+(push) ; 2
+(pop) ; 2
+(push) ; 2
+; [exec]
+; var msg: $Struct
+(declare-const msg@455@01 $Struct)
+; [exec]
+; var block: $Struct
+(declare-const block@456@01 $Struct)
+; [exec]
+; var chain: $Struct
+(declare-const chain@457@01 $Struct)
+; [exec]
+; var tx: $Struct
+(declare-const tx@458@01 $Struct)
+; [exec]
+; var self: $Struct
+(declare-const self@459@01 $Struct)
+; [exec]
+; var $contracts: $Map[Int, $Struct]
+(declare-const $contracts@460@01 $Map<Int~_$Struct>)
+; [exec]
+; var $old_self: $Struct
+(declare-const $old_self@461@01 $Struct)
+; [exec]
+; var $old_$contracts: $Map[Int, $Struct]
+(declare-const $old_$contracts@462@01 $Map<Int~_$Struct>)
+; [exec]
+; var $pre_self: $Struct
+(declare-const $pre_self@463@01 $Struct)
+; [exec]
+; var $pre_$contracts: $Map[Int, $Struct]
+(declare-const $pre_$contracts@464@01 $Map<Int~_$Struct>)
+; [exec]
+; var $issued_self: $Struct
+(declare-const $issued_self@465@01 $Struct)
+; [exec]
+; var $issued_$contracts: $Map[Int, $Struct]
+(declare-const $issued_$contracts@466@01 $Map<Int~_$Struct>)
+; [exec]
+; var $overflow: Bool
+(declare-const $overflow@467@01 Bool)
+; [exec]
+; var $out_of_gas: Bool
+(declare-const $out_of_gas@468@01 Bool)
+; [exec]
+; var l$havoc: Int
+(declare-const l$havoc@469@01 Int)
+; [exec]
+; var l$havoc$1: $Map[Int, $Struct]
+(declare-const l$havoc$1@470@01 $Map<Int~_$Struct>)
+; [exec]
+; inhale 0 <= ($struct_get($struct_loc(self, 0)): Int) &&
+;   ($struct_get($struct_loc(self, 0)): Int) <=
+;   115792089237316195423570985008687907853269984665640564039457584007913129639935
+(declare-const $t@471@01 $Snap)
+(assert (= $t@471@01 ($Snap.combine ($Snap.first $t@471@01) ($Snap.second $t@471@01))))
+(assert (= ($Snap.first $t@471@01) $Snap.unit))
+; [eval] 0 <= ($struct_get($struct_loc(self, 0)): Int)
+; [eval] ($struct_get($struct_loc(self, 0)): Int)
+; [eval] $struct_loc(self, 0)
+(assert (<= 0 ($struct_get<Int> ($struct_loc<Int> self@459@01 0))))
+(assert (= ($Snap.second $t@471@01) $Snap.unit))
+; [eval] ($struct_get($struct_loc(self, 0)): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
+; [eval] ($struct_get($struct_loc(self, 0)): Int)
+; [eval] $struct_loc(self, 0)
+(assert (<=
+  ($struct_get<Int> ($struct_loc<Int> self@459@01 0))
+  115792089237316195423570985008687907853269984665640564039457584007913129639935))
+; State saturation: after inhale
+(set-option :timeout 20)
+(check-sat)
+; unknown
+; [exec]
+; inhale -170141183460469231731687303715884105728 <=
+;   ($struct_get($struct_loc(self, 1)): Int) &&
+;   ($struct_get($struct_loc(self, 1)): Int) <=
+;   170141183460469231731687303715884105727
+(declare-const $t@472@01 $Snap)
+(assert (= $t@472@01 ($Snap.combine ($Snap.first $t@472@01) ($Snap.second $t@472@01))))
+(assert (= ($Snap.first $t@472@01) $Snap.unit))
+; [eval] -170141183460469231731687303715884105728 <= ($struct_get($struct_loc(self, 1)): Int)
+; [eval] -170141183460469231731687303715884105728
+; [eval] ($struct_get($struct_loc(self, 1)): Int)
+; [eval] $struct_loc(self, 1)
+(assert (<=
+  (- 0 170141183460469231731687303715884105728)
+  ($struct_get<Int> ($struct_loc<Int> self@459@01 1))))
+(assert (= ($Snap.second $t@472@01) $Snap.unit))
+; [eval] ($struct_get($struct_loc(self, 1)): Int) <= 170141183460469231731687303715884105727
+; [eval] ($struct_get($struct_loc(self, 1)): Int)
+; [eval] $struct_loc(self, 1)
+(assert (<=
+  ($struct_get<Int> ($struct_loc<Int> self@459@01 1))
+  170141183460469231731687303715884105727))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale (forall $q0: Int ::
+;     { ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $q0): Int) }
+;     0 <=
+;     ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $q0): Int) &&
+;     ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $q0): Int) <=
+;     115792089237316195423570985008687907853269984665640564039457584007913129639935)
+(declare-const $t@473@01 $Snap)
+(assert (= $t@473@01 $Snap.unit))
+; [eval] (forall $q0: Int :: { ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $q0): Int) } 0 <= ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $q0): Int) && ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $q0): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935)
+(declare-const $q0@474@01 Int)
+(set-option :timeout 0)
+(push) ; 3
+; [eval] 0 <= ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $q0): Int) && ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $q0): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
+; [eval] 0 <= ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $q0): Int)
+; [eval] ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $q0): Int)
+; [eval] ($struct_get($struct_loc(self, 3)): $Map[Int, Int])
+; [eval] $struct_loc(self, 3)
+(push) ; 4
+; [then-branch: 151 | !(0 <= $map_get[Int]($struct_get[$Map[Int, Int]]($struct_loc[Int](self@459@01, 3)), $q0@474@01)) | live]
+; [else-branch: 151 | 0 <= $map_get[Int]($struct_get[$Map[Int, Int]]($struct_loc[Int](self@459@01, 3)), $q0@474@01) | live]
+(push) ; 5
+; [then-branch: 151 | !(0 <= $map_get[Int]($struct_get[$Map[Int, Int]]($struct_loc[Int](self@459@01, 3)), $q0@474@01))]
+(assert (not
+  (<=
+    0
+    ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@459@01 3)) $q0@474@01))))
+(pop) ; 5
+(push) ; 5
+; [else-branch: 151 | 0 <= $map_get[Int]($struct_get[$Map[Int, Int]]($struct_loc[Int](self@459@01, 3)), $q0@474@01)]
+(assert (<=
+  0
+  ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@459@01 3)) $q0@474@01)))
+; [eval] ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $q0): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
+; [eval] ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $q0): Int)
+; [eval] ($struct_get($struct_loc(self, 3)): $Map[Int, Int])
+; [eval] $struct_loc(self, 3)
+(pop) ; 5
+(pop) ; 4
+; Joined path conditions
+; Joined path conditions
+(assert (or
+  (<=
+    0
+    ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@459@01 3)) $q0@474@01))
+  (not
+    (<=
+      0
+      ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@459@01 3)) $q0@474@01)))))
+(pop) ; 3
+; Nested auxiliary terms: globals (aux)
+; Nested auxiliary terms: non-globals (aux)
+(assert (forall (($q0@474@01 Int)) (!
+  (or
+    (<=
+      0
+      ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@459@01 3)) $q0@474@01))
+    (not
+      (<=
+        0
+        ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@459@01 3)) $q0@474@01))))
+  :pattern (($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@459@01 3)) $q0@474@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourceslanguageconvert.vy.vpr@1358@11@1358@345-aux|)))
+(assert (forall (($q0@474@01 Int)) (!
+  (and
+    (<=
+      0
+      ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@459@01 3)) $q0@474@01))
+    (<=
+      ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@459@01 3)) $q0@474@01)
+      115792089237316195423570985008687907853269984665640564039457584007913129639935))
+  :pattern (($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@459@01 3)) $q0@474@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourceslanguageconvert.vy.vpr@1358@11@1358@345|)))
+; State saturation: after inhale
+(set-option :timeout 20)
+(check-sat)
+; unknown
+; [exec]
+; inhale (forall $q0: Int ::
+;     { ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $q0): Int) }
+;     ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $q0): Int) <=
+;     ($map_sum(($struct_get($struct_loc(self, 3)): $Map[Int, Int])): Int))
+(declare-const $t@475@01 $Snap)
+(assert (= $t@475@01 $Snap.unit))
+; [eval] (forall $q0: Int :: { ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $q0): Int) } ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $q0): Int) <= ($map_sum(($struct_get($struct_loc(self, 3)): $Map[Int, Int])): Int))
+(declare-const $q0@476@01 Int)
+(set-option :timeout 0)
+(push) ; 3
+; [eval] ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $q0): Int) <= ($map_sum(($struct_get($struct_loc(self, 3)): $Map[Int, Int])): Int)
+; [eval] ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $q0): Int)
+; [eval] ($struct_get($struct_loc(self, 3)): $Map[Int, Int])
+; [eval] $struct_loc(self, 3)
+; [eval] ($map_sum(($struct_get($struct_loc(self, 3)): $Map[Int, Int])): Int)
+; [eval] ($struct_get($struct_loc(self, 3)): $Map[Int, Int])
+; [eval] $struct_loc(self, 3)
+(pop) ; 3
+; Nested auxiliary terms: globals (aux)
+; Nested auxiliary terms: non-globals (aux)
+(assert (forall (($q0@476@01 Int)) (!
+  (<=
+    ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@459@01 3)) $q0@476@01)
+    ($map_sum<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@459@01 3))))
+  :pattern (($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@459@01 3)) $q0@476@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourceslanguageconvert.vy.vpr@1359@11@1359@253|)))
+; State saturation: after inhale
+(set-option :timeout 20)
+(check-sat)
+; unknown
+; [exec]
+; inhale (forall $q1: Int ::
+;     { ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q1): Int) }
+;     0 <=
+;     ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q1): Int) &&
+;     ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q1): Int) <=
+;     115792089237316195423570985008687907853269984665640564039457584007913129639935)
+(declare-const $t@477@01 $Snap)
+(assert (= $t@477@01 $Snap.unit))
+; [eval] (forall $q1: Int :: { ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q1): Int) } 0 <= ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q1): Int) && ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q1): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935)
+(declare-const $q1@478@01 Int)
+(set-option :timeout 0)
+(push) ; 3
+; [eval] 0 <= ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q1): Int) && ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q1): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
+; [eval] 0 <= ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q1): Int)
+; [eval] ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q1): Int)
+; [eval] ($struct_get($struct_loc(self, 4)): $Map[Int, Int])
+; [eval] $struct_loc(self, 4)
+(push) ; 4
+; [then-branch: 152 | !(0 <= $map_get[Int]($struct_get[$Map[Int, Int]]($struct_loc[Int](self@459@01, 4)), $q1@478@01)) | live]
+; [else-branch: 152 | 0 <= $map_get[Int]($struct_get[$Map[Int, Int]]($struct_loc[Int](self@459@01, 4)), $q1@478@01) | live]
+(push) ; 5
+; [then-branch: 152 | !(0 <= $map_get[Int]($struct_get[$Map[Int, Int]]($struct_loc[Int](self@459@01, 4)), $q1@478@01))]
+(assert (not
+  (<=
+    0
+    ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@459@01 4)) $q1@478@01))))
+(pop) ; 5
+(push) ; 5
+; [else-branch: 152 | 0 <= $map_get[Int]($struct_get[$Map[Int, Int]]($struct_loc[Int](self@459@01, 4)), $q1@478@01)]
+(assert (<=
+  0
+  ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@459@01 4)) $q1@478@01)))
+; [eval] ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q1): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
+; [eval] ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q1): Int)
+; [eval] ($struct_get($struct_loc(self, 4)): $Map[Int, Int])
+; [eval] $struct_loc(self, 4)
+(pop) ; 5
+(pop) ; 4
+; Joined path conditions
+; Joined path conditions
+(assert (or
+  (<=
+    0
+    ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@459@01 4)) $q1@478@01))
+  (not
+    (<=
+      0
+      ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@459@01 4)) $q1@478@01)))))
+(pop) ; 3
+; Nested auxiliary terms: globals (aux)
+; Nested auxiliary terms: non-globals (aux)
+(assert (forall (($q1@478@01 Int)) (!
+  (or
+    (<=
+      0
+      ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@459@01 4)) $q1@478@01))
+    (not
+      (<=
+        0
+        ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@459@01 4)) $q1@478@01))))
+  :pattern (($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@459@01 4)) $q1@478@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourceslanguageconvert.vy.vpr@1360@11@1360@345-aux|)))
+(assert (forall (($q1@478@01 Int)) (!
+  (and
+    (<=
+      0
+      ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@459@01 4)) $q1@478@01))
+    (<=
+      ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@459@01 4)) $q1@478@01)
+      115792089237316195423570985008687907853269984665640564039457584007913129639935))
+  :pattern (($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@459@01 4)) $q1@478@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourceslanguageconvert.vy.vpr@1360@11@1360@345|)))
+; State saturation: after inhale
+(set-option :timeout 20)
+(check-sat)
+; unknown
+; [exec]
+; inhale (forall $q1: Int ::
+;     { ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q1): Int) }
+;     ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q1): Int) <=
+;     ($map_sum(($struct_get($struct_loc(self, 4)): $Map[Int, Int])): Int))
+(declare-const $t@479@01 $Snap)
+(assert (= $t@479@01 $Snap.unit))
+; [eval] (forall $q1: Int :: { ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q1): Int) } ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q1): Int) <= ($map_sum(($struct_get($struct_loc(self, 4)): $Map[Int, Int])): Int))
+(declare-const $q1@480@01 Int)
+(set-option :timeout 0)
+(push) ; 3
+; [eval] ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q1): Int) <= ($map_sum(($struct_get($struct_loc(self, 4)): $Map[Int, Int])): Int)
+; [eval] ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q1): Int)
+; [eval] ($struct_get($struct_loc(self, 4)): $Map[Int, Int])
+; [eval] $struct_loc(self, 4)
+; [eval] ($map_sum(($struct_get($struct_loc(self, 4)): $Map[Int, Int])): Int)
+; [eval] ($struct_get($struct_loc(self, 4)): $Map[Int, Int])
+; [eval] $struct_loc(self, 4)
+(pop) ; 3
+; Nested auxiliary terms: globals (aux)
+; Nested auxiliary terms: non-globals (aux)
+(assert (forall (($q1@480@01 Int)) (!
+  (<=
+    ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@459@01 4)) $q1@480@01)
+    ($map_sum<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@459@01 4))))
+  :pattern (($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@459@01 4)) $q1@480@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourceslanguageconvert.vy.vpr@1361@11@1361@253|)))
+; State saturation: after inhale
+(set-option :timeout 20)
+(check-sat)
+; unknown
+; [exec]
+; inhale ($struct_get($struct_loc(self, -1)): Int) ==
+;   9122519725869122497593506884710
+(declare-const $t@481@01 $Snap)
+(assert (= $t@481@01 $Snap.unit))
+; [eval] ($struct_get($struct_loc(self, -1)): Int) == 9122519725869122497593506884710
+; [eval] ($struct_get($struct_loc(self, -1)): Int)
+; [eval] $struct_loc(self, -1)
+; [eval] -1
+(assert (=
+  ($struct_get<Int> ($struct_loc<Int> self@459@01 (- 0 1)))
+  9122519725869122497593506884710))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale 0 <= $self_address() &&
+;   $self_address() <= 1461501637330902918203684832716283019655932542975
+(declare-const $t@482@01 $Snap)
+(assert (= $t@482@01 ($Snap.combine ($Snap.first $t@482@01) ($Snap.second $t@482@01))))
+(assert (= ($Snap.first $t@482@01) $Snap.unit))
+; [eval] 0 <= $self_address()
+; [eval] $self_address()
+(assert (<= 0 (as $self_address<Int>  Int)))
+(assert (= ($Snap.second $t@482@01) $Snap.unit))
+; [eval] $self_address() <= 1461501637330902918203684832716283019655932542975
+; [eval] $self_address()
+(assert (<=
+  (as $self_address<Int>  Int)
+  1461501637330902918203684832716283019655932542975))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale 0 <= ($struct_get($struct_loc(block, 0)): Int) &&
+;   ($struct_get($struct_loc(block, 0)): Int) <=
+;   1461501637330902918203684832716283019655932542975
+(declare-const $t@483@01 $Snap)
+(assert (= $t@483@01 ($Snap.combine ($Snap.first $t@483@01) ($Snap.second $t@483@01))))
+(assert (= ($Snap.first $t@483@01) $Snap.unit))
+; [eval] 0 <= ($struct_get($struct_loc(block, 0)): Int)
+; [eval] ($struct_get($struct_loc(block, 0)): Int)
+; [eval] $struct_loc(block, 0)
+(assert (<= 0 ($struct_get<Int> ($struct_loc<Int> block@456@01 0))))
+(assert (= ($Snap.second $t@483@01) $Snap.unit))
+; [eval] ($struct_get($struct_loc(block, 0)): Int) <= 1461501637330902918203684832716283019655932542975
+; [eval] ($struct_get($struct_loc(block, 0)): Int)
+; [eval] $struct_loc(block, 0)
+(assert (<=
+  ($struct_get<Int> ($struct_loc<Int> block@456@01 0))
+  1461501637330902918203684832716283019655932542975))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale 0 <= ($struct_get($struct_loc(block, 1)): Int) &&
+;   ($struct_get($struct_loc(block, 1)): Int) <=
+;   115792089237316195423570985008687907853269984665640564039457584007913129639935
+(declare-const $t@484@01 $Snap)
+(assert (= $t@484@01 ($Snap.combine ($Snap.first $t@484@01) ($Snap.second $t@484@01))))
+(assert (= ($Snap.first $t@484@01) $Snap.unit))
+; [eval] 0 <= ($struct_get($struct_loc(block, 1)): Int)
+; [eval] ($struct_get($struct_loc(block, 1)): Int)
+; [eval] $struct_loc(block, 1)
+(assert (<= 0 ($struct_get<Int> ($struct_loc<Int> block@456@01 1))))
+(assert (= ($Snap.second $t@484@01) $Snap.unit))
+; [eval] ($struct_get($struct_loc(block, 1)): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
+; [eval] ($struct_get($struct_loc(block, 1)): Int)
+; [eval] $struct_loc(block, 1)
+(assert (<=
+  ($struct_get<Int> ($struct_loc<Int> block@456@01 1))
+  115792089237316195423570985008687907853269984665640564039457584007913129639935))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale 0 <= ($struct_get($struct_loc(block, 2)): Int) &&
+;   ($struct_get($struct_loc(block, 2)): Int) <=
+;   115792089237316195423570985008687907853269984665640564039457584007913129639935
+(declare-const $t@485@01 $Snap)
+(assert (= $t@485@01 ($Snap.combine ($Snap.first $t@485@01) ($Snap.second $t@485@01))))
+(assert (= ($Snap.first $t@485@01) $Snap.unit))
+; [eval] 0 <= ($struct_get($struct_loc(block, 2)): Int)
+; [eval] ($struct_get($struct_loc(block, 2)): Int)
+; [eval] $struct_loc(block, 2)
+(assert (<= 0 ($struct_get<Int> ($struct_loc<Int> block@456@01 2))))
+(assert (= ($Snap.second $t@485@01) $Snap.unit))
+; [eval] ($struct_get($struct_loc(block, 2)): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
+; [eval] ($struct_get($struct_loc(block, 2)): Int)
+; [eval] $struct_loc(block, 2)
+(assert (<=
+  ($struct_get<Int> ($struct_loc<Int> block@456@01 2))
+  115792089237316195423570985008687907853269984665640564039457584007913129639935))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale |($struct_get($struct_loc(block, 3)): Seq[Int])| == 32
+(declare-const $t@486@01 $Snap)
+(assert (= $t@486@01 $Snap.unit))
+; [eval] |($struct_get($struct_loc(block, 3)): Seq[Int])| == 32
+; [eval] |($struct_get($struct_loc(block, 3)): Seq[Int])|
+; [eval] ($struct_get($struct_loc(block, 3)): Seq[Int])
+; [eval] $struct_loc(block, 3)
+(assert (= (Seq_length ($struct_get<Seq<Int>> ($struct_loc<Int> block@456@01 3))) 32))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale 0 <= ($struct_get($struct_loc(block, 4)): Int) &&
+;   ($struct_get($struct_loc(block, 4)): Int) <=
+;   115792089237316195423570985008687907853269984665640564039457584007913129639935
+(declare-const $t@487@01 $Snap)
+(assert (= $t@487@01 ($Snap.combine ($Snap.first $t@487@01) ($Snap.second $t@487@01))))
+(assert (= ($Snap.first $t@487@01) $Snap.unit))
+; [eval] 0 <= ($struct_get($struct_loc(block, 4)): Int)
+; [eval] ($struct_get($struct_loc(block, 4)): Int)
+; [eval] $struct_loc(block, 4)
+(assert (<= 0 ($struct_get<Int> ($struct_loc<Int> block@456@01 4))))
+(assert (= ($Snap.second $t@487@01) $Snap.unit))
+; [eval] ($struct_get($struct_loc(block, 4)): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
+; [eval] ($struct_get($struct_loc(block, 4)): Int)
+; [eval] $struct_loc(block, 4)
+(assert (<=
+  ($struct_get<Int> ($struct_loc<Int> block@456@01 4))
+  115792089237316195423570985008687907853269984665640564039457584007913129639935))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale ($struct_get($struct_loc(block, -1)): Int) ==
+;   2335365049822495359383864865678187
+(declare-const $t@488@01 $Snap)
+(assert (= $t@488@01 $Snap.unit))
+; [eval] ($struct_get($struct_loc(block, -1)): Int) == 2335365049822495359383864865678187
+; [eval] ($struct_get($struct_loc(block, -1)): Int)
+; [eval] $struct_loc(block, -1)
+; [eval] -1
+(assert (=
+  ($struct_get<Int> ($struct_loc<Int> block@456@01 (- 0 1)))
+  2335365049822495359383864865678187))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale 0 <= ($struct_get($struct_loc(msg, 0)): Int) &&
+;   ($struct_get($struct_loc(msg, 0)): Int) <=
+;   1461501637330902918203684832716283019655932542975
+(declare-const $t@489@01 $Snap)
+(assert (= $t@489@01 ($Snap.combine ($Snap.first $t@489@01) ($Snap.second $t@489@01))))
+(assert (= ($Snap.first $t@489@01) $Snap.unit))
+; [eval] 0 <= ($struct_get($struct_loc(msg, 0)): Int)
+; [eval] ($struct_get($struct_loc(msg, 0)): Int)
+; [eval] $struct_loc(msg, 0)
+(assert (<= 0 ($struct_get<Int> ($struct_loc<Int> msg@455@01 0))))
+(assert (= ($Snap.second $t@489@01) $Snap.unit))
+; [eval] ($struct_get($struct_loc(msg, 0)): Int) <= 1461501637330902918203684832716283019655932542975
+; [eval] ($struct_get($struct_loc(msg, 0)): Int)
+; [eval] $struct_loc(msg, 0)
+(assert (<=
+  ($struct_get<Int> ($struct_loc<Int> msg@455@01 0))
+  1461501637330902918203684832716283019655932542975))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale 0 <= ($struct_get($struct_loc(msg, 1)): Int) &&
+;   ($struct_get($struct_loc(msg, 1)): Int) <=
+;   115792089237316195423570985008687907853269984665640564039457584007913129639935
+(declare-const $t@490@01 $Snap)
+(assert (= $t@490@01 ($Snap.combine ($Snap.first $t@490@01) ($Snap.second $t@490@01))))
+(assert (= ($Snap.first $t@490@01) $Snap.unit))
+; [eval] 0 <= ($struct_get($struct_loc(msg, 1)): Int)
+; [eval] ($struct_get($struct_loc(msg, 1)): Int)
+; [eval] $struct_loc(msg, 1)
+(assert (<= 0 ($struct_get<Int> ($struct_loc<Int> msg@455@01 1))))
+(assert (= ($Snap.second $t@490@01) $Snap.unit))
+; [eval] ($struct_get($struct_loc(msg, 1)): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
+; [eval] ($struct_get($struct_loc(msg, 1)): Int)
+; [eval] $struct_loc(msg, 1)
+(assert (<=
+  ($struct_get<Int> ($struct_loc<Int> msg@455@01 1))
+  115792089237316195423570985008687907853269984665640564039457584007913129639935))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale 0 <= ($struct_get($struct_loc(msg, 2)): Int) &&
+;   ($struct_get($struct_loc(msg, 2)): Int) <=
+;   115792089237316195423570985008687907853269984665640564039457584007913129639935
+(declare-const $t@491@01 $Snap)
+(assert (= $t@491@01 ($Snap.combine ($Snap.first $t@491@01) ($Snap.second $t@491@01))))
+(assert (= ($Snap.first $t@491@01) $Snap.unit))
+; [eval] 0 <= ($struct_get($struct_loc(msg, 2)): Int)
+; [eval] ($struct_get($struct_loc(msg, 2)): Int)
+; [eval] $struct_loc(msg, 2)
+(assert (<= 0 ($struct_get<Int> ($struct_loc<Int> msg@455@01 2))))
+(assert (= ($Snap.second $t@491@01) $Snap.unit))
+; [eval] ($struct_get($struct_loc(msg, 2)): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
+; [eval] ($struct_get($struct_loc(msg, 2)): Int)
+; [eval] $struct_loc(msg, 2)
+(assert (<=
+  ($struct_get<Int> ($struct_loc<Int> msg@455@01 2))
+  115792089237316195423570985008687907853269984665640564039457584007913129639935))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale ($struct_get($struct_loc(msg, -1)): Int) ==
+;   35634842679176259756224246631
+(declare-const $t@492@01 $Snap)
+(assert (= $t@492@01 $Snap.unit))
+; [eval] ($struct_get($struct_loc(msg, -1)): Int) == 35634842679176259756224246631
+; [eval] ($struct_get($struct_loc(msg, -1)): Int)
+; [eval] $struct_loc(msg, -1)
+; [eval] -1
+(assert (=
+  ($struct_get<Int> ($struct_loc<Int> msg@455@01 (- 0 1)))
+  35634842679176259756224246631))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale ($struct_get($struct_loc(msg, 0)): Int) != 0
+(declare-const $t@493@01 $Snap)
+(assert (= $t@493@01 $Snap.unit))
+; [eval] ($struct_get($struct_loc(msg, 0)): Int) != 0
+; [eval] ($struct_get($struct_loc(msg, 0)): Int)
+; [eval] $struct_loc(msg, 0)
+(assert (not (= ($struct_get<Int> ($struct_loc<Int> msg@455@01 0)) 0)))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale (forall $a: Int ::
+;     { ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $a): Int) }
+;     ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $a): Int) >=
+;     ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $a): Int))
+(declare-const $t@494@01 $Snap)
+(assert (= $t@494@01 $Snap.unit))
+; [eval] (forall $a: Int :: { ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $a): Int) } ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $a): Int) >= ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $a): Int))
+(declare-const $a@495@01 Int)
+(set-option :timeout 0)
+(push) ; 3
+; [eval] ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $a): Int) >= ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $a): Int)
+; [eval] ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $a): Int)
+; [eval] ($struct_get($struct_loc(self, 3)): $Map[Int, Int])
+; [eval] $struct_loc(self, 3)
+; [eval] ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $a): Int)
+; [eval] ($struct_get($struct_loc(self, 3)): $Map[Int, Int])
+; [eval] $struct_loc(self, 3)
+(pop) ; 3
+; Nested auxiliary terms: globals (aux)
+; Nested auxiliary terms: non-globals (aux)
+; State saturation: after inhale
+(set-option :timeout 20)
+(check-sat)
+; unknown
+; [exec]
+; $pre_self := self
+; [exec]
+; $pre_$contracts := $contracts
+; [exec]
+; $old_self := self
+; [exec]
+; $old_$contracts := $contracts
+; [exec]
+; $succ := true
+; [exec]
+; $overflow := false
+; [exec]
+; inhale ($struct_get($struct_loc(msg, 1)): Int) == 0
+(declare-const $t@496@01 $Snap)
+(assert (= $t@496@01 $Snap.unit))
+; [eval] ($struct_get($struct_loc(msg, 1)): Int) == 0
+; [eval] ($struct_get($struct_loc(msg, 1)): Int)
+; [eval] $struct_loc(msg, 1)
+(assert (= ($struct_get<Int> ($struct_loc<Int> msg@455@01 1)) 0))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; label return
+(set-option :timeout 0)
+(push) ; 3
+(set-option :timeout 10)
+(assert (not (not $out_of_gas@468@01)))
+(check-sat)
+; unknown
+(pop) ; 3
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 3
+(set-option :timeout 10)
+(assert (not $out_of_gas@468@01))
+(check-sat)
+; unknown
+(pop) ; 3
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 153 | $out_of_gas@468@01 | live]
+; [else-branch: 153 | !($out_of_gas@468@01) | live]
+(set-option :timeout 0)
+(push) ; 3
+; [then-branch: 153 | $out_of_gas@468@01]
+(assert $out_of_gas@468@01)
+; [exec]
+; label revert
+; [exec]
+; $succ := false
+; [exec]
+; self := $pre_self
+; [exec]
+; $contracts := $pre_$contracts
+; [exec]
+; $old_self := $pre_self
+; [exec]
+; $old_$contracts := $pre_$contracts
+; [exec]
+; label end
+; [exec]
+; exhale $signed_int_to_bytes32(1) == $unsigned_int_to_bytes32(1)
+; [eval] $signed_int_to_bytes32(1) == $unsigned_int_to_bytes32(1)
+; [eval] $signed_int_to_bytes32(1)
+; [eval] $unsigned_int_to_bytes32(1)
+(push) ; 4
+(assert (not (Seq_equal
+  ($signed_int_to_bytes32<Seq<Int>> 1)
+  ($unsigned_int_to_bytes32<Seq<Int>> 1))))
+(check-sat)
+; unknown
+(pop) ; 4
+; 0.00s
+; (get-info :all-statistics)
+; [state consolidation]
+; State saturation: before repetition
+(set-option :timeout 10)
+(check-sat)
+; unknown
+; [eval] $signed_int_to_bytes32(1) == $unsigned_int_to_bytes32(1)
+; [eval] $signed_int_to_bytes32(1)
+; [eval] $unsigned_int_to_bytes32(1)
+(set-option :timeout 0)
+(push) ; 4
+(assert (not (Seq_equal
+  ($signed_int_to_bytes32<Seq<Int>> 1)
+  ($unsigned_int_to_bytes32<Seq<Int>> 1))))
+(check-sat)
+; unknown
+(pop) ; 4
+; 0.00s
+; (get-info :all-statistics)
+; [state consolidation]
+; State saturation: before repetition
+(set-option :timeout 10)
+(check-sat)
+; unknown
+; [eval] $signed_int_to_bytes32(1) == $unsigned_int_to_bytes32(1)
+; [eval] $signed_int_to_bytes32(1)
+; [eval] $unsigned_int_to_bytes32(1)
+(set-option :timeout 0)
+(push) ; 4
+(assert (not (Seq_equal
+  ($signed_int_to_bytes32<Seq<Int>> 1)
+  ($unsigned_int_to_bytes32<Seq<Int>> 1))))
+(check-sat)
+; unknown
+(pop) ; 4
+; 0.00s
+; (get-info :all-statistics)
+; [state consolidation]
+; State saturation: before repetition
+(set-option :timeout 10)
+(check-sat)
+; unknown
+; [eval] $signed_int_to_bytes32(1) == $unsigned_int_to_bytes32(1)
+; [eval] $signed_int_to_bytes32(1)
+; [eval] $unsigned_int_to_bytes32(1)
+(set-option :timeout 0)
+(push) ; 4
+(assert (not (Seq_equal
+  ($signed_int_to_bytes32<Seq<Int>> 1)
+  ($unsigned_int_to_bytes32<Seq<Int>> 1))))
+(check-sat)
+; unknown
+(pop) ; 4
+; 0.00s
+; (get-info :all-statistics)
+(pop) ; 3
+(pop) ; 2
+(pop) ; 1
+; ---------- f$convert_int_fail ----------
+(declare-const l$bb@497@01 Seq<Int>)
+(declare-const $succ@498@01 Bool)
+(declare-const $res@499@01 Int)
+(declare-const l$bb@500@01 Seq<Int>)
+(declare-const $succ@501@01 Bool)
+(declare-const $res@502@01 Int)
+(push) ; 1
+; State saturation: after contract
+(set-option :timeout 50)
+(check-sat)
+; unknown
+(set-option :timeout 0)
+(push) ; 2
+(pop) ; 2
+(push) ; 2
+; [exec]
+; var msg: $Struct
+(declare-const msg@503@01 $Struct)
+; [exec]
+; var block: $Struct
+(declare-const block@504@01 $Struct)
+; [exec]
+; var chain: $Struct
+(declare-const chain@505@01 $Struct)
+; [exec]
+; var tx: $Struct
+(declare-const tx@506@01 $Struct)
+; [exec]
+; var self: $Struct
+(declare-const self@507@01 $Struct)
+; [exec]
+; var $contracts: $Map[Int, $Struct]
+(declare-const $contracts@508@01 $Map<Int~_$Struct>)
+; [exec]
+; var $old_self: $Struct
+(declare-const $old_self@509@01 $Struct)
+; [exec]
+; var $old_$contracts: $Map[Int, $Struct]
+(declare-const $old_$contracts@510@01 $Map<Int~_$Struct>)
+; [exec]
+; var $pre_self: $Struct
+(declare-const $pre_self@511@01 $Struct)
+; [exec]
+; var $pre_$contracts: $Map[Int, $Struct]
+(declare-const $pre_$contracts@512@01 $Map<Int~_$Struct>)
+; [exec]
+; var $issued_self: $Struct
+(declare-const $issued_self@513@01 $Struct)
+; [exec]
+; var $issued_$contracts: $Map[Int, $Struct]
+(declare-const $issued_$contracts@514@01 $Map<Int~_$Struct>)
+; [exec]
+; var $overflow: Bool
+(declare-const $overflow@515@01 Bool)
+; [exec]
+; var $out_of_gas: Bool
+(declare-const $out_of_gas@516@01 Bool)
+; [exec]
+; var l$havoc: Int
+(declare-const l$havoc@517@01 Int)
+; [exec]
+; var l$havoc$1: Int
+(declare-const l$havoc$1@518@01 Int)
+; [exec]
+; var l$havoc$2: $Map[Int, $Struct]
+(declare-const l$havoc$2@519@01 $Map<Int~_$Struct>)
+; [exec]
+; inhale 0 <= ($struct_get($struct_loc(self, 0)): Int) &&
+;   ($struct_get($struct_loc(self, 0)): Int) <=
+;   115792089237316195423570985008687907853269984665640564039457584007913129639935
+(declare-const $t@520@01 $Snap)
+(assert (= $t@520@01 ($Snap.combine ($Snap.first $t@520@01) ($Snap.second $t@520@01))))
+(assert (= ($Snap.first $t@520@01) $Snap.unit))
+; [eval] 0 <= ($struct_get($struct_loc(self, 0)): Int)
+; [eval] ($struct_get($struct_loc(self, 0)): Int)
+; [eval] $struct_loc(self, 0)
+(assert (<= 0 ($struct_get<Int> ($struct_loc<Int> self@507@01 0))))
+(assert (= ($Snap.second $t@520@01) $Snap.unit))
+; [eval] ($struct_get($struct_loc(self, 0)): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
+; [eval] ($struct_get($struct_loc(self, 0)): Int)
+; [eval] $struct_loc(self, 0)
+(assert (<=
+  ($struct_get<Int> ($struct_loc<Int> self@507@01 0))
+  115792089237316195423570985008687907853269984665640564039457584007913129639935))
+; State saturation: after inhale
+(set-option :timeout 20)
+(check-sat)
+; unknown
+; [exec]
+; inhale -170141183460469231731687303715884105728 <=
+;   ($struct_get($struct_loc(self, 1)): Int) &&
+;   ($struct_get($struct_loc(self, 1)): Int) <=
+;   170141183460469231731687303715884105727
+(declare-const $t@521@01 $Snap)
+(assert (= $t@521@01 ($Snap.combine ($Snap.first $t@521@01) ($Snap.second $t@521@01))))
+(assert (= ($Snap.first $t@521@01) $Snap.unit))
+; [eval] -170141183460469231731687303715884105728 <= ($struct_get($struct_loc(self, 1)): Int)
+; [eval] -170141183460469231731687303715884105728
+; [eval] ($struct_get($struct_loc(self, 1)): Int)
+; [eval] $struct_loc(self, 1)
+(assert (<=
+  (- 0 170141183460469231731687303715884105728)
+  ($struct_get<Int> ($struct_loc<Int> self@507@01 1))))
+(assert (= ($Snap.second $t@521@01) $Snap.unit))
+; [eval] ($struct_get($struct_loc(self, 1)): Int) <= 170141183460469231731687303715884105727
+; [eval] ($struct_get($struct_loc(self, 1)): Int)
+; [eval] $struct_loc(self, 1)
+(assert (<=
+  ($struct_get<Int> ($struct_loc<Int> self@507@01 1))
+  170141183460469231731687303715884105727))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale (forall $q0: Int ::
+;     { ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $q0): Int) }
+;     0 <=
+;     ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $q0): Int) &&
+;     ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $q0): Int) <=
+;     115792089237316195423570985008687907853269984665640564039457584007913129639935)
+(declare-const $t@522@01 $Snap)
+(assert (= $t@522@01 $Snap.unit))
+; [eval] (forall $q0: Int :: { ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $q0): Int) } 0 <= ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $q0): Int) && ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $q0): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935)
+(declare-const $q0@523@01 Int)
+(set-option :timeout 0)
+(push) ; 3
+; [eval] 0 <= ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $q0): Int) && ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $q0): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
+; [eval] 0 <= ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $q0): Int)
+; [eval] ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $q0): Int)
+; [eval] ($struct_get($struct_loc(self, 3)): $Map[Int, Int])
+; [eval] $struct_loc(self, 3)
+(push) ; 4
+; [then-branch: 154 | !(0 <= $map_get[Int]($struct_get[$Map[Int, Int]]($struct_loc[Int](self@507@01, 3)), $q0@523@01)) | live]
+; [else-branch: 154 | 0 <= $map_get[Int]($struct_get[$Map[Int, Int]]($struct_loc[Int](self@507@01, 3)), $q0@523@01) | live]
+(push) ; 5
+; [then-branch: 154 | !(0 <= $map_get[Int]($struct_get[$Map[Int, Int]]($struct_loc[Int](self@507@01, 3)), $q0@523@01))]
+(assert (not
+  (<=
+    0
+    ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@507@01 3)) $q0@523@01))))
+(pop) ; 5
+(push) ; 5
+; [else-branch: 154 | 0 <= $map_get[Int]($struct_get[$Map[Int, Int]]($struct_loc[Int](self@507@01, 3)), $q0@523@01)]
+(assert (<=
+  0
+  ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@507@01 3)) $q0@523@01)))
+; [eval] ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $q0): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
+; [eval] ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $q0): Int)
+; [eval] ($struct_get($struct_loc(self, 3)): $Map[Int, Int])
+; [eval] $struct_loc(self, 3)
+(pop) ; 5
+(pop) ; 4
+; Joined path conditions
+; Joined path conditions
+(assert (or
+  (<=
+    0
+    ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@507@01 3)) $q0@523@01))
+  (not
+    (<=
+      0
+      ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@507@01 3)) $q0@523@01)))))
+(pop) ; 3
+; Nested auxiliary terms: globals (aux)
+; Nested auxiliary terms: non-globals (aux)
+(assert (forall (($q0@523@01 Int)) (!
+  (or
+    (<=
+      0
+      ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@507@01 3)) $q0@523@01))
+    (not
+      (<=
+        0
+        ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@507@01 3)) $q0@523@01))))
+  :pattern (($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@507@01 3)) $q0@523@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourceslanguageconvert.vy.vpr@1438@11@1438@345-aux|)))
+(assert (forall (($q0@523@01 Int)) (!
+  (and
+    (<=
+      0
+      ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@507@01 3)) $q0@523@01))
+    (<=
+      ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@507@01 3)) $q0@523@01)
+      115792089237316195423570985008687907853269984665640564039457584007913129639935))
+  :pattern (($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@507@01 3)) $q0@523@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourceslanguageconvert.vy.vpr@1438@11@1438@345|)))
+; State saturation: after inhale
+(set-option :timeout 20)
+(check-sat)
+; unknown
+; [exec]
+; inhale (forall $q0: Int ::
+;     { ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $q0): Int) }
+;     ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $q0): Int) <=
+;     ($map_sum(($struct_get($struct_loc(self, 3)): $Map[Int, Int])): Int))
+(declare-const $t@524@01 $Snap)
+(assert (= $t@524@01 $Snap.unit))
+; [eval] (forall $q0: Int :: { ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $q0): Int) } ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $q0): Int) <= ($map_sum(($struct_get($struct_loc(self, 3)): $Map[Int, Int])): Int))
+(declare-const $q0@525@01 Int)
+(set-option :timeout 0)
+(push) ; 3
+; [eval] ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $q0): Int) <= ($map_sum(($struct_get($struct_loc(self, 3)): $Map[Int, Int])): Int)
+; [eval] ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $q0): Int)
+; [eval] ($struct_get($struct_loc(self, 3)): $Map[Int, Int])
+; [eval] $struct_loc(self, 3)
+; [eval] ($map_sum(($struct_get($struct_loc(self, 3)): $Map[Int, Int])): Int)
+; [eval] ($struct_get($struct_loc(self, 3)): $Map[Int, Int])
+; [eval] $struct_loc(self, 3)
+(pop) ; 3
+; Nested auxiliary terms: globals (aux)
+; Nested auxiliary terms: non-globals (aux)
+(assert (forall (($q0@525@01 Int)) (!
+  (<=
+    ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@507@01 3)) $q0@525@01)
+    ($map_sum<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@507@01 3))))
+  :pattern (($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@507@01 3)) $q0@525@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourceslanguageconvert.vy.vpr@1439@11@1439@253|)))
+; State saturation: after inhale
+(set-option :timeout 20)
+(check-sat)
+; unknown
+; [exec]
+; inhale (forall $q1: Int ::
+;     { ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q1): Int) }
+;     0 <=
+;     ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q1): Int) &&
+;     ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q1): Int) <=
+;     115792089237316195423570985008687907853269984665640564039457584007913129639935)
+(declare-const $t@526@01 $Snap)
+(assert (= $t@526@01 $Snap.unit))
+; [eval] (forall $q1: Int :: { ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q1): Int) } 0 <= ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q1): Int) && ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q1): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935)
+(declare-const $q1@527@01 Int)
+(set-option :timeout 0)
+(push) ; 3
+; [eval] 0 <= ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q1): Int) && ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q1): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
+; [eval] 0 <= ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q1): Int)
+; [eval] ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q1): Int)
+; [eval] ($struct_get($struct_loc(self, 4)): $Map[Int, Int])
+; [eval] $struct_loc(self, 4)
+(push) ; 4
+; [then-branch: 155 | !(0 <= $map_get[Int]($struct_get[$Map[Int, Int]]($struct_loc[Int](self@507@01, 4)), $q1@527@01)) | live]
+; [else-branch: 155 | 0 <= $map_get[Int]($struct_get[$Map[Int, Int]]($struct_loc[Int](self@507@01, 4)), $q1@527@01) | live]
+(push) ; 5
+; [then-branch: 155 | !(0 <= $map_get[Int]($struct_get[$Map[Int, Int]]($struct_loc[Int](self@507@01, 4)), $q1@527@01))]
+(assert (not
+  (<=
+    0
+    ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@507@01 4)) $q1@527@01))))
+(pop) ; 5
+(push) ; 5
+; [else-branch: 155 | 0 <= $map_get[Int]($struct_get[$Map[Int, Int]]($struct_loc[Int](self@507@01, 4)), $q1@527@01)]
+(assert (<=
+  0
+  ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@507@01 4)) $q1@527@01)))
+; [eval] ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q1): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
+; [eval] ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q1): Int)
+; [eval] ($struct_get($struct_loc(self, 4)): $Map[Int, Int])
+; [eval] $struct_loc(self, 4)
+(pop) ; 5
+(pop) ; 4
+; Joined path conditions
+; Joined path conditions
+(assert (or
+  (<=
+    0
+    ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@507@01 4)) $q1@527@01))
+  (not
+    (<=
+      0
+      ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@507@01 4)) $q1@527@01)))))
+(pop) ; 3
+; Nested auxiliary terms: globals (aux)
+; Nested auxiliary terms: non-globals (aux)
+(assert (forall (($q1@527@01 Int)) (!
+  (or
+    (<=
+      0
+      ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@507@01 4)) $q1@527@01))
+    (not
+      (<=
+        0
+        ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@507@01 4)) $q1@527@01))))
+  :pattern (($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@507@01 4)) $q1@527@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourceslanguageconvert.vy.vpr@1440@11@1440@345-aux|)))
+(assert (forall (($q1@527@01 Int)) (!
+  (and
+    (<=
+      0
+      ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@507@01 4)) $q1@527@01))
+    (<=
+      ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@507@01 4)) $q1@527@01)
+      115792089237316195423570985008687907853269984665640564039457584007913129639935))
+  :pattern (($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@507@01 4)) $q1@527@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourceslanguageconvert.vy.vpr@1440@11@1440@345|)))
+; State saturation: after inhale
+(set-option :timeout 20)
+(check-sat)
+; unknown
+; [exec]
+; inhale (forall $q1: Int ::
+;     { ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q1): Int) }
+;     ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q1): Int) <=
+;     ($map_sum(($struct_get($struct_loc(self, 4)): $Map[Int, Int])): Int))
+(declare-const $t@528@01 $Snap)
+(assert (= $t@528@01 $Snap.unit))
+; [eval] (forall $q1: Int :: { ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q1): Int) } ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q1): Int) <= ($map_sum(($struct_get($struct_loc(self, 4)): $Map[Int, Int])): Int))
+(declare-const $q1@529@01 Int)
+(set-option :timeout 0)
+(push) ; 3
+; [eval] ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q1): Int) <= ($map_sum(($struct_get($struct_loc(self, 4)): $Map[Int, Int])): Int)
+; [eval] ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q1): Int)
+; [eval] ($struct_get($struct_loc(self, 4)): $Map[Int, Int])
+; [eval] $struct_loc(self, 4)
+; [eval] ($map_sum(($struct_get($struct_loc(self, 4)): $Map[Int, Int])): Int)
+; [eval] ($struct_get($struct_loc(self, 4)): $Map[Int, Int])
+; [eval] $struct_loc(self, 4)
+(pop) ; 3
+; Nested auxiliary terms: globals (aux)
+; Nested auxiliary terms: non-globals (aux)
+(assert (forall (($q1@529@01 Int)) (!
+  (<=
+    ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@507@01 4)) $q1@529@01)
+    ($map_sum<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@507@01 4))))
+  :pattern (($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@507@01 4)) $q1@529@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourceslanguageconvert.vy.vpr@1441@11@1441@253|)))
+; State saturation: after inhale
+(set-option :timeout 20)
+(check-sat)
+; unknown
+; [exec]
+; inhale ($struct_get($struct_loc(self, -1)): Int) ==
+;   9122519725869122497593506884710
+(declare-const $t@530@01 $Snap)
+(assert (= $t@530@01 $Snap.unit))
+; [eval] ($struct_get($struct_loc(self, -1)): Int) == 9122519725869122497593506884710
+; [eval] ($struct_get($struct_loc(self, -1)): Int)
+; [eval] $struct_loc(self, -1)
+; [eval] -1
+(assert (=
+  ($struct_get<Int> ($struct_loc<Int> self@507@01 (- 0 1)))
+  9122519725869122497593506884710))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale 0 <= $self_address() &&
+;   $self_address() <= 1461501637330902918203684832716283019655932542975
+(declare-const $t@531@01 $Snap)
+(assert (= $t@531@01 ($Snap.combine ($Snap.first $t@531@01) ($Snap.second $t@531@01))))
+(assert (= ($Snap.first $t@531@01) $Snap.unit))
+; [eval] 0 <= $self_address()
+; [eval] $self_address()
+(assert (<= 0 (as $self_address<Int>  Int)))
+(assert (= ($Snap.second $t@531@01) $Snap.unit))
+; [eval] $self_address() <= 1461501637330902918203684832716283019655932542975
+; [eval] $self_address()
+(assert (<=
+  (as $self_address<Int>  Int)
+  1461501637330902918203684832716283019655932542975))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale |l$bb| == 32
+(declare-const $t@532@01 $Snap)
+(assert (= $t@532@01 $Snap.unit))
+; [eval] |l$bb| == 32
+; [eval] |l$bb|
+(assert (= (Seq_length l$bb@500@01) 32))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale 0 <= ($struct_get($struct_loc(block, 0)): Int) &&
+;   ($struct_get($struct_loc(block, 0)): Int) <=
+;   1461501637330902918203684832716283019655932542975
+(declare-const $t@533@01 $Snap)
+(assert (= $t@533@01 ($Snap.combine ($Snap.first $t@533@01) ($Snap.second $t@533@01))))
+(assert (= ($Snap.first $t@533@01) $Snap.unit))
+; [eval] 0 <= ($struct_get($struct_loc(block, 0)): Int)
+; [eval] ($struct_get($struct_loc(block, 0)): Int)
+; [eval] $struct_loc(block, 0)
+(assert (<= 0 ($struct_get<Int> ($struct_loc<Int> block@504@01 0))))
+(assert (= ($Snap.second $t@533@01) $Snap.unit))
+; [eval] ($struct_get($struct_loc(block, 0)): Int) <= 1461501637330902918203684832716283019655932542975
+; [eval] ($struct_get($struct_loc(block, 0)): Int)
+; [eval] $struct_loc(block, 0)
+(assert (<=
+  ($struct_get<Int> ($struct_loc<Int> block@504@01 0))
+  1461501637330902918203684832716283019655932542975))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale 0 <= ($struct_get($struct_loc(block, 1)): Int) &&
+;   ($struct_get($struct_loc(block, 1)): Int) <=
+;   115792089237316195423570985008687907853269984665640564039457584007913129639935
+(declare-const $t@534@01 $Snap)
+(assert (= $t@534@01 ($Snap.combine ($Snap.first $t@534@01) ($Snap.second $t@534@01))))
+(assert (= ($Snap.first $t@534@01) $Snap.unit))
+; [eval] 0 <= ($struct_get($struct_loc(block, 1)): Int)
+; [eval] ($struct_get($struct_loc(block, 1)): Int)
+; [eval] $struct_loc(block, 1)
+(assert (<= 0 ($struct_get<Int> ($struct_loc<Int> block@504@01 1))))
+(assert (= ($Snap.second $t@534@01) $Snap.unit))
+; [eval] ($struct_get($struct_loc(block, 1)): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
+; [eval] ($struct_get($struct_loc(block, 1)): Int)
+; [eval] $struct_loc(block, 1)
+(assert (<=
+  ($struct_get<Int> ($struct_loc<Int> block@504@01 1))
+  115792089237316195423570985008687907853269984665640564039457584007913129639935))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale 0 <= ($struct_get($struct_loc(block, 2)): Int) &&
+;   ($struct_get($struct_loc(block, 2)): Int) <=
+;   115792089237316195423570985008687907853269984665640564039457584007913129639935
+(declare-const $t@535@01 $Snap)
+(assert (= $t@535@01 ($Snap.combine ($Snap.first $t@535@01) ($Snap.second $t@535@01))))
+(assert (= ($Snap.first $t@535@01) $Snap.unit))
+; [eval] 0 <= ($struct_get($struct_loc(block, 2)): Int)
+; [eval] ($struct_get($struct_loc(block, 2)): Int)
+; [eval] $struct_loc(block, 2)
+(assert (<= 0 ($struct_get<Int> ($struct_loc<Int> block@504@01 2))))
+(assert (= ($Snap.second $t@535@01) $Snap.unit))
+; [eval] ($struct_get($struct_loc(block, 2)): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
+; [eval] ($struct_get($struct_loc(block, 2)): Int)
+; [eval] $struct_loc(block, 2)
+(assert (<=
+  ($struct_get<Int> ($struct_loc<Int> block@504@01 2))
+  115792089237316195423570985008687907853269984665640564039457584007913129639935))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale |($struct_get($struct_loc(block, 3)): Seq[Int])| == 32
+(declare-const $t@536@01 $Snap)
+(assert (= $t@536@01 $Snap.unit))
+; [eval] |($struct_get($struct_loc(block, 3)): Seq[Int])| == 32
+; [eval] |($struct_get($struct_loc(block, 3)): Seq[Int])|
+; [eval] ($struct_get($struct_loc(block, 3)): Seq[Int])
+; [eval] $struct_loc(block, 3)
+(assert (= (Seq_length ($struct_get<Seq<Int>> ($struct_loc<Int> block@504@01 3))) 32))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale 0 <= ($struct_get($struct_loc(block, 4)): Int) &&
+;   ($struct_get($struct_loc(block, 4)): Int) <=
+;   115792089237316195423570985008687907853269984665640564039457584007913129639935
+(declare-const $t@537@01 $Snap)
+(assert (= $t@537@01 ($Snap.combine ($Snap.first $t@537@01) ($Snap.second $t@537@01))))
+(assert (= ($Snap.first $t@537@01) $Snap.unit))
+; [eval] 0 <= ($struct_get($struct_loc(block, 4)): Int)
+; [eval] ($struct_get($struct_loc(block, 4)): Int)
+; [eval] $struct_loc(block, 4)
+(assert (<= 0 ($struct_get<Int> ($struct_loc<Int> block@504@01 4))))
+(assert (= ($Snap.second $t@537@01) $Snap.unit))
+; [eval] ($struct_get($struct_loc(block, 4)): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
+; [eval] ($struct_get($struct_loc(block, 4)): Int)
+; [eval] $struct_loc(block, 4)
+(assert (<=
+  ($struct_get<Int> ($struct_loc<Int> block@504@01 4))
+  115792089237316195423570985008687907853269984665640564039457584007913129639935))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale ($struct_get($struct_loc(block, -1)): Int) ==
+;   2335365049822495359383864865678187
+(declare-const $t@538@01 $Snap)
+(assert (= $t@538@01 $Snap.unit))
+; [eval] ($struct_get($struct_loc(block, -1)): Int) == 2335365049822495359383864865678187
+; [eval] ($struct_get($struct_loc(block, -1)): Int)
+; [eval] $struct_loc(block, -1)
+; [eval] -1
+(assert (=
+  ($struct_get<Int> ($struct_loc<Int> block@504@01 (- 0 1)))
+  2335365049822495359383864865678187))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale 0 <= ($struct_get($struct_loc(msg, 0)): Int) &&
+;   ($struct_get($struct_loc(msg, 0)): Int) <=
+;   1461501637330902918203684832716283019655932542975
+(declare-const $t@539@01 $Snap)
+(assert (= $t@539@01 ($Snap.combine ($Snap.first $t@539@01) ($Snap.second $t@539@01))))
+(assert (= ($Snap.first $t@539@01) $Snap.unit))
+; [eval] 0 <= ($struct_get($struct_loc(msg, 0)): Int)
+; [eval] ($struct_get($struct_loc(msg, 0)): Int)
+; [eval] $struct_loc(msg, 0)
+(assert (<= 0 ($struct_get<Int> ($struct_loc<Int> msg@503@01 0))))
+(assert (= ($Snap.second $t@539@01) $Snap.unit))
+; [eval] ($struct_get($struct_loc(msg, 0)): Int) <= 1461501637330902918203684832716283019655932542975
+; [eval] ($struct_get($struct_loc(msg, 0)): Int)
+; [eval] $struct_loc(msg, 0)
+(assert (<=
+  ($struct_get<Int> ($struct_loc<Int> msg@503@01 0))
+  1461501637330902918203684832716283019655932542975))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale 0 <= ($struct_get($struct_loc(msg, 1)): Int) &&
+;   ($struct_get($struct_loc(msg, 1)): Int) <=
+;   115792089237316195423570985008687907853269984665640564039457584007913129639935
+(declare-const $t@540@01 $Snap)
+(assert (= $t@540@01 ($Snap.combine ($Snap.first $t@540@01) ($Snap.second $t@540@01))))
+(assert (= ($Snap.first $t@540@01) $Snap.unit))
+; [eval] 0 <= ($struct_get($struct_loc(msg, 1)): Int)
+; [eval] ($struct_get($struct_loc(msg, 1)): Int)
+; [eval] $struct_loc(msg, 1)
+(assert (<= 0 ($struct_get<Int> ($struct_loc<Int> msg@503@01 1))))
+(assert (= ($Snap.second $t@540@01) $Snap.unit))
+; [eval] ($struct_get($struct_loc(msg, 1)): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
+; [eval] ($struct_get($struct_loc(msg, 1)): Int)
+; [eval] $struct_loc(msg, 1)
+(assert (<=
+  ($struct_get<Int> ($struct_loc<Int> msg@503@01 1))
+  115792089237316195423570985008687907853269984665640564039457584007913129639935))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale 0 <= ($struct_get($struct_loc(msg, 2)): Int) &&
+;   ($struct_get($struct_loc(msg, 2)): Int) <=
+;   115792089237316195423570985008687907853269984665640564039457584007913129639935
+(declare-const $t@541@01 $Snap)
+(assert (= $t@541@01 ($Snap.combine ($Snap.first $t@541@01) ($Snap.second $t@541@01))))
+(assert (= ($Snap.first $t@541@01) $Snap.unit))
+; [eval] 0 <= ($struct_get($struct_loc(msg, 2)): Int)
+; [eval] ($struct_get($struct_loc(msg, 2)): Int)
+; [eval] $struct_loc(msg, 2)
+(assert (<= 0 ($struct_get<Int> ($struct_loc<Int> msg@503@01 2))))
+(assert (= ($Snap.second $t@541@01) $Snap.unit))
+; [eval] ($struct_get($struct_loc(msg, 2)): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
+; [eval] ($struct_get($struct_loc(msg, 2)): Int)
+; [eval] $struct_loc(msg, 2)
+(assert (<=
+  ($struct_get<Int> ($struct_loc<Int> msg@503@01 2))
+  115792089237316195423570985008687907853269984665640564039457584007913129639935))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale ($struct_get($struct_loc(msg, -1)): Int) ==
+;   35634842679176259756224246631
+(declare-const $t@542@01 $Snap)
+(assert (= $t@542@01 $Snap.unit))
+; [eval] ($struct_get($struct_loc(msg, -1)): Int) == 35634842679176259756224246631
+; [eval] ($struct_get($struct_loc(msg, -1)): Int)
+; [eval] $struct_loc(msg, -1)
+; [eval] -1
+(assert (=
+  ($struct_get<Int> ($struct_loc<Int> msg@503@01 (- 0 1)))
+  35634842679176259756224246631))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale ($struct_get($struct_loc(msg, 0)): Int) != 0
+(declare-const $t@543@01 $Snap)
+(assert (= $t@543@01 $Snap.unit))
+; [eval] ($struct_get($struct_loc(msg, 0)): Int) != 0
+; [eval] ($struct_get($struct_loc(msg, 0)): Int)
+; [eval] $struct_loc(msg, 0)
+(assert (not (= ($struct_get<Int> ($struct_loc<Int> msg@503@01 0)) 0)))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale (forall $a: Int ::
+;     { ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $a): Int) }
+;     ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $a): Int) >=
+;     ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $a): Int))
+(declare-const $t@544@01 $Snap)
+(assert (= $t@544@01 $Snap.unit))
+; [eval] (forall $a: Int :: { ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $a): Int) } ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $a): Int) >= ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $a): Int))
+(declare-const $a@545@01 Int)
+(set-option :timeout 0)
+(push) ; 3
+; [eval] ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $a): Int) >= ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $a): Int)
+; [eval] ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $a): Int)
+; [eval] ($struct_get($struct_loc(self, 3)): $Map[Int, Int])
+; [eval] $struct_loc(self, 3)
+; [eval] ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $a): Int)
+; [eval] ($struct_get($struct_loc(self, 3)): $Map[Int, Int])
+; [eval] $struct_loc(self, 3)
+(pop) ; 3
+; Nested auxiliary terms: globals (aux)
+; Nested auxiliary terms: non-globals (aux)
+; State saturation: after inhale
+(set-option :timeout 20)
+(check-sat)
+; unknown
+; [exec]
+; $pre_self := self
+; [exec]
+; $pre_$contracts := $contracts
+; [exec]
+; $old_self := self
+; [exec]
+; $old_$contracts := $contracts
+; [exec]
+; $succ := true
+; [exec]
+; $overflow := false
+; [exec]
+; inhale ($struct_get($struct_loc(msg, 1)): Int) == 0
+(declare-const $t@546@01 $Snap)
+(assert (= $t@546@01 $Snap.unit))
+; [eval] ($struct_get($struct_loc(msg, 1)): Int) == 0
+; [eval] ($struct_get($struct_loc(msg, 1)): Int)
+; [eval] $struct_loc(msg, 1)
+(assert (= ($struct_get<Int> ($struct_loc<Int> msg@503@01 1)) 0))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [eval] $bytes32_to_signed_int($pad32(l$bb)) < -170141183460469231731687303715884105728 || $bytes32_to_signed_int($pad32(l$bb)) > 170141183460469231731687303715884105727
+; [eval] $bytes32_to_signed_int($pad32(l$bb)) < -170141183460469231731687303715884105728
+; [eval] $bytes32_to_signed_int($pad32(l$bb))
+; [eval] $pad32(l$bb)
+; [eval] -170141183460469231731687303715884105728
+(set-option :timeout 0)
+(push) ; 3
+; [then-branch: 156 | $bytes32_to_signed_int[Int]($pad32[Seq[Int]](l$bb@500@01)) < -170141183460469231731687303715884105728 | live]
+; [else-branch: 156 | !($bytes32_to_signed_int[Int]($pad32[Seq[Int]](l$bb@500@01)) < -170141183460469231731687303715884105728) | live]
+(push) ; 4
+; [then-branch: 156 | $bytes32_to_signed_int[Int]($pad32[Seq[Int]](l$bb@500@01)) < -170141183460469231731687303715884105728]
+(assert (<
+  ($bytes32_to_signed_int<Int> ($pad32<Seq<Int>> l$bb@500@01))
+  (- 0 170141183460469231731687303715884105728)))
+(pop) ; 4
+(push) ; 4
+; [else-branch: 156 | !($bytes32_to_signed_int[Int]($pad32[Seq[Int]](l$bb@500@01)) < -170141183460469231731687303715884105728)]
+(assert (not
+  (<
+    ($bytes32_to_signed_int<Int> ($pad32<Seq<Int>> l$bb@500@01))
+    (- 0 170141183460469231731687303715884105728))))
+; [eval] $bytes32_to_signed_int($pad32(l$bb)) > 170141183460469231731687303715884105727
+; [eval] $bytes32_to_signed_int($pad32(l$bb))
+; [eval] $pad32(l$bb)
+(pop) ; 4
+(pop) ; 3
+; Joined path conditions
+; Joined path conditions
+(assert (or
+  (not
+    (<
+      ($bytes32_to_signed_int<Int> ($pad32<Seq<Int>> l$bb@500@01))
+      (- 0 170141183460469231731687303715884105728)))
+  (<
+    ($bytes32_to_signed_int<Int> ($pad32<Seq<Int>> l$bb@500@01))
+    (- 0 170141183460469231731687303715884105728))))
+(push) ; 3
+(set-option :timeout 10)
+(assert (not (not
+  (or
+    (<
+      ($bytes32_to_signed_int<Int> ($pad32<Seq<Int>> l$bb@500@01))
+      (- 0 170141183460469231731687303715884105728))
+    (>
+      ($bytes32_to_signed_int<Int> ($pad32<Seq<Int>> l$bb@500@01))
+      170141183460469231731687303715884105727)))))
+(check-sat)
+; unknown
+(pop) ; 3
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 3
+(set-option :timeout 10)
+(assert (not (or
+  (<
+    ($bytes32_to_signed_int<Int> ($pad32<Seq<Int>> l$bb@500@01))
+    (- 0 170141183460469231731687303715884105728))
+  (>
+    ($bytes32_to_signed_int<Int> ($pad32<Seq<Int>> l$bb@500@01))
+    170141183460469231731687303715884105727))))
+(check-sat)
+; unknown
+(pop) ; 3
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 157 | $bytes32_to_signed_int[Int]($pad32[Seq[Int]](l$bb@500@01)) < -170141183460469231731687303715884105728 || $bytes32_to_signed_int[Int]($pad32[Seq[Int]](l$bb@500@01)) > 170141183460469231731687303715884105727 | live]
+; [else-branch: 157 | !($bytes32_to_signed_int[Int]($pad32[Seq[Int]](l$bb@500@01)) < -170141183460469231731687303715884105728 || $bytes32_to_signed_int[Int]($pad32[Seq[Int]](l$bb@500@01)) > 170141183460469231731687303715884105727) | live]
+(set-option :timeout 0)
+(push) ; 3
+; [then-branch: 157 | $bytes32_to_signed_int[Int]($pad32[Seq[Int]](l$bb@500@01)) < -170141183460469231731687303715884105728 || $bytes32_to_signed_int[Int]($pad32[Seq[Int]](l$bb@500@01)) > 170141183460469231731687303715884105727]
+(assert (or
+  (<
+    ($bytes32_to_signed_int<Int> ($pad32<Seq<Int>> l$bb@500@01))
+    (- 0 170141183460469231731687303715884105728))
+  (>
+    ($bytes32_to_signed_int<Int> ($pad32<Seq<Int>> l$bb@500@01))
+    170141183460469231731687303715884105727)))
+; [exec]
+; $overflow := true
+; [exec]
+; label revert
+; [exec]
+; $succ := false
+; [exec]
+; $res := l$havoc
+; [exec]
+; self := $pre_self
+; [exec]
+; $contracts := $pre_$contracts
+; [exec]
+; $old_self := $pre_self
+; [exec]
+; $old_$contracts := $pre_$contracts
+; [exec]
+; label end
+; [exec]
+; exhale !($overflow || $out_of_gas) ==> $succ
+; [eval] !($overflow || $out_of_gas) ==> $succ
+; [eval] !($overflow || $out_of_gas)
+; [eval] $overflow || $out_of_gas
+(push) ; 4
+; [then-branch: 158 | False | dead]
+; [else-branch: 158 | True | live]
+(push) ; 5
+; [else-branch: 158 | True]
+(pop) ; 5
+(pop) ; 4
+; Joined path conditions
+; [exec]
+; exhale !$out_of_gas ==> $succ
+; [eval] !$out_of_gas ==> $succ
+; [eval] !$out_of_gas
+(push) ; 4
+(push) ; 5
+(set-option :timeout 10)
+(assert (not $out_of_gas@516@01))
+(check-sat)
+; unknown
+(pop) ; 5
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 5
+(set-option :timeout 10)
+(assert (not (not $out_of_gas@516@01)))
+(check-sat)
+; unknown
+(pop) ; 5
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 159 | !($out_of_gas@516@01) | live]
+; [else-branch: 159 | $out_of_gas@516@01 | live]
+(set-option :timeout 0)
+(push) ; 5
+; [then-branch: 159 | !($out_of_gas@516@01)]
+(assert (not $out_of_gas@516@01))
+(pop) ; 5
+(push) ; 5
+; [else-branch: 159 | $out_of_gas@516@01]
+(assert $out_of_gas@516@01)
+(pop) ; 5
+(pop) ; 4
+; Joined path conditions
+; Joined path conditions
+(assert (or $out_of_gas@516@01 (not $out_of_gas@516@01)))
+(push) ; 4
+(assert (not (=> (not $out_of_gas@516@01) false)))
+(check-sat)
+; unknown
+(pop) ; 4
+; 0.00s
+; (get-info :all-statistics)
+; [state consolidation]
+; State saturation: before repetition
+(set-option :timeout 10)
+(check-sat)
+; unknown
+; [eval] !$out_of_gas ==> $succ
+; [eval] !$out_of_gas
+(set-option :timeout 0)
+(push) ; 4
+(push) ; 5
+(set-option :timeout 10)
+(assert (not $out_of_gas@516@01))
+(check-sat)
+; unknown
+(pop) ; 5
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 5
+(set-option :timeout 10)
+(assert (not (not $out_of_gas@516@01)))
+(check-sat)
+; unknown
+(pop) ; 5
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 160 | !($out_of_gas@516@01) | live]
+; [else-branch: 160 | $out_of_gas@516@01 | live]
+(set-option :timeout 0)
+(push) ; 5
+; [then-branch: 160 | !($out_of_gas@516@01)]
+(assert (not $out_of_gas@516@01))
+; [state consolidation]
+; State saturation: before repetition
+(set-option :timeout 10)
+(check-sat)
+; unknown
+(pop) ; 5
+(set-option :timeout 0)
+(push) ; 5
+; [else-branch: 160 | $out_of_gas@516@01]
+(assert $out_of_gas@516@01)
+; [state consolidation]
+; State saturation: before repetition
+(set-option :timeout 10)
+(check-sat)
+; unknown
+(pop) ; 5
+(pop) ; 4
+; Joined path conditions
+; Joined path conditions
+(set-option :timeout 0)
+(push) ; 4
+(assert (not (=> (not $out_of_gas@516@01) false)))
+(check-sat)
+; unknown
+(pop) ; 4
+; 0.00s
+; (get-info :all-statistics)
+; [state consolidation]
+; State saturation: before repetition
+(set-option :timeout 10)
+(check-sat)
+; unknown
+; [eval] !$out_of_gas ==> $succ
+; [eval] !$out_of_gas
+(set-option :timeout 0)
+(push) ; 4
+(push) ; 5
+(set-option :timeout 10)
+(assert (not $out_of_gas@516@01))
+(check-sat)
+; unknown
+(pop) ; 5
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 5
+(set-option :timeout 10)
+(assert (not (not $out_of_gas@516@01)))
+(check-sat)
+; unknown
+(pop) ; 5
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 161 | !($out_of_gas@516@01) | live]
+; [else-branch: 161 | $out_of_gas@516@01 | live]
+(set-option :timeout 0)
+(push) ; 5
+; [then-branch: 161 | !($out_of_gas@516@01)]
+(assert (not $out_of_gas@516@01))
+; [state consolidation]
+; State saturation: before repetition
+(set-option :timeout 10)
+(check-sat)
+; unknown
+(pop) ; 5
+(set-option :timeout 0)
+(push) ; 5
+; [else-branch: 161 | $out_of_gas@516@01]
+(assert $out_of_gas@516@01)
+; [state consolidation]
+; State saturation: before repetition
+(set-option :timeout 10)
+(check-sat)
+; unknown
+(pop) ; 5
+(pop) ; 4
+; Joined path conditions
+; Joined path conditions
+(set-option :timeout 0)
+(push) ; 4
+(assert (not (=> (not $out_of_gas@516@01) false)))
+(check-sat)
+; unknown
+(pop) ; 4
+; 0.00s
+; (get-info :all-statistics)
+; [state consolidation]
+; State saturation: before repetition
+(set-option :timeout 10)
+(check-sat)
+; unknown
+; [eval] !$out_of_gas ==> $succ
+; [eval] !$out_of_gas
+(set-option :timeout 0)
+(push) ; 4
+(push) ; 5
+(set-option :timeout 10)
+(assert (not $out_of_gas@516@01))
+(check-sat)
+; unknown
+(pop) ; 5
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 5
+(set-option :timeout 10)
+(assert (not (not $out_of_gas@516@01)))
+(check-sat)
+; unknown
+(pop) ; 5
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 162 | !($out_of_gas@516@01) | live]
+; [else-branch: 162 | $out_of_gas@516@01 | live]
+(set-option :timeout 0)
+(push) ; 5
+; [then-branch: 162 | !($out_of_gas@516@01)]
+(assert (not $out_of_gas@516@01))
+; [state consolidation]
+; State saturation: before repetition
+(set-option :timeout 10)
+(check-sat)
+; unknown
+(pop) ; 5
+(set-option :timeout 0)
+(push) ; 5
+; [else-branch: 162 | $out_of_gas@516@01]
+(assert $out_of_gas@516@01)
+; [state consolidation]
+; State saturation: before repetition
+(set-option :timeout 10)
+(check-sat)
+; unknown
+(pop) ; 5
+(pop) ; 4
+; Joined path conditions
+; Joined path conditions
+(set-option :timeout 0)
+(push) ; 4
+(assert (not (=> (not $out_of_gas@516@01) false)))
+(check-sat)
+; unknown
+(pop) ; 4
+; 0.00s
+; (get-info :all-statistics)
+(pop) ; 3
+(pop) ; 2
+(pop) ; 1
+; ---------- f$__init__ ----------
+(declare-const $succ@547@01 Bool)
+(declare-const $succ@548@01 Bool)
+(push) ; 1
+; State saturation: after contract
+(set-option :timeout 50)
+(check-sat)
+; unknown
+(set-option :timeout 0)
+(push) ; 2
+(pop) ; 2
+(push) ; 2
+; [exec]
+; var msg: $Struct
+(declare-const msg@549@01 $Struct)
+; [exec]
+; var block: $Struct
+(declare-const block@550@01 $Struct)
+; [exec]
+; var chain: $Struct
+(declare-const chain@551@01 $Struct)
+; [exec]
+; var tx: $Struct
+(declare-const tx@552@01 $Struct)
+; [exec]
+; var self: $Struct
+(declare-const self@553@01 $Struct)
+; [exec]
+; var $contracts: $Map[Int, $Struct]
+(declare-const $contracts@554@01 $Map<Int~_$Struct>)
+; [exec]
+; var $old_self: $Struct
+(declare-const $old_self@555@01 $Struct)
+; [exec]
+; var $old_$contracts: $Map[Int, $Struct]
+(declare-const $old_$contracts@556@01 $Map<Int~_$Struct>)
+; [exec]
+; var $pre_self: $Struct
+(declare-const $pre_self@557@01 $Struct)
+; [exec]
+; var $pre_$contracts: $Map[Int, $Struct]
+(declare-const $pre_$contracts@558@01 $Map<Int~_$Struct>)
+; [exec]
+; var $issued_self: $Struct
+(declare-const $issued_self@559@01 $Struct)
+; [exec]
+; var $issued_$contracts: $Map[Int, $Struct]
+(declare-const $issued_$contracts@560@01 $Map<Int~_$Struct>)
+; [exec]
+; var $overflow: Bool
+(declare-const $overflow@561@01 Bool)
+; [exec]
+; var $first_public_state: Bool
+(declare-const $first_public_state@562@01 Bool)
+; [exec]
+; var l$havoc: Int
+(declare-const l$havoc@563@01 Int)
+; [exec]
+; var $out_of_gas: Bool
+(declare-const $out_of_gas@564@01 Bool)
+; [exec]
+; var l$havoc$1: Int
+(declare-const l$havoc$1@565@01 Int)
+; [exec]
+; var l$havoc$2: $Map[Int, $Struct]
+(declare-const l$havoc$2@566@01 $Map<Int~_$Struct>)
+; [exec]
+; inhale 0 <= ($struct_get($struct_loc(self, 0)): Int) &&
+;   ($struct_get($struct_loc(self, 0)): Int) <=
+;   115792089237316195423570985008687907853269984665640564039457584007913129639935
+(declare-const $t@567@01 $Snap)
+(assert (= $t@567@01 ($Snap.combine ($Snap.first $t@567@01) ($Snap.second $t@567@01))))
+(assert (= ($Snap.first $t@567@01) $Snap.unit))
+; [eval] 0 <= ($struct_get($struct_loc(self, 0)): Int)
+; [eval] ($struct_get($struct_loc(self, 0)): Int)
+; [eval] $struct_loc(self, 0)
+(assert (<= 0 ($struct_get<Int> ($struct_loc<Int> self@553@01 0))))
+(assert (= ($Snap.second $t@567@01) $Snap.unit))
+; [eval] ($struct_get($struct_loc(self, 0)): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
+; [eval] ($struct_get($struct_loc(self, 0)): Int)
+; [eval] $struct_loc(self, 0)
+(assert (<=
+  ($struct_get<Int> ($struct_loc<Int> self@553@01 0))
+  115792089237316195423570985008687907853269984665640564039457584007913129639935))
+; State saturation: after inhale
+(set-option :timeout 20)
+(check-sat)
+; unknown
+; [exec]
+; inhale -170141183460469231731687303715884105728 <=
+;   ($struct_get($struct_loc(self, 1)): Int) &&
+;   ($struct_get($struct_loc(self, 1)): Int) <=
+;   170141183460469231731687303715884105727
+(declare-const $t@568@01 $Snap)
+(assert (= $t@568@01 ($Snap.combine ($Snap.first $t@568@01) ($Snap.second $t@568@01))))
+(assert (= ($Snap.first $t@568@01) $Snap.unit))
+; [eval] -170141183460469231731687303715884105728 <= ($struct_get($struct_loc(self, 1)): Int)
+; [eval] -170141183460469231731687303715884105728
+; [eval] ($struct_get($struct_loc(self, 1)): Int)
+; [eval] $struct_loc(self, 1)
+(assert (<=
+  (- 0 170141183460469231731687303715884105728)
+  ($struct_get<Int> ($struct_loc<Int> self@553@01 1))))
+(assert (= ($Snap.second $t@568@01) $Snap.unit))
+; [eval] ($struct_get($struct_loc(self, 1)): Int) <= 170141183460469231731687303715884105727
+; [eval] ($struct_get($struct_loc(self, 1)): Int)
+; [eval] $struct_loc(self, 1)
+(assert (<=
+  ($struct_get<Int> ($struct_loc<Int> self@553@01 1))
+  170141183460469231731687303715884105727))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale (forall $q0: Int ::
+;     { ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $q0): Int) }
+;     0 <=
+;     ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $q0): Int) &&
+;     ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $q0): Int) <=
+;     115792089237316195423570985008687907853269984665640564039457584007913129639935)
+(declare-const $t@569@01 $Snap)
+(assert (= $t@569@01 $Snap.unit))
+; [eval] (forall $q0: Int :: { ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $q0): Int) } 0 <= ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $q0): Int) && ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $q0): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935)
+(declare-const $q0@570@01 Int)
+(set-option :timeout 0)
+(push) ; 3
+; [eval] 0 <= ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $q0): Int) && ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $q0): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
+; [eval] 0 <= ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $q0): Int)
+; [eval] ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $q0): Int)
+; [eval] ($struct_get($struct_loc(self, 3)): $Map[Int, Int])
+; [eval] $struct_loc(self, 3)
+(push) ; 4
+; [then-branch: 163 | !(0 <= $map_get[Int]($struct_get[$Map[Int, Int]]($struct_loc[Int](self@553@01, 3)), $q0@570@01)) | live]
+; [else-branch: 163 | 0 <= $map_get[Int]($struct_get[$Map[Int, Int]]($struct_loc[Int](self@553@01, 3)), $q0@570@01) | live]
+(push) ; 5
+; [then-branch: 163 | !(0 <= $map_get[Int]($struct_get[$Map[Int, Int]]($struct_loc[Int](self@553@01, 3)), $q0@570@01))]
+(assert (not
+  (<=
+    0
+    ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@553@01 3)) $q0@570@01))))
+(pop) ; 5
+(push) ; 5
+; [else-branch: 163 | 0 <= $map_get[Int]($struct_get[$Map[Int, Int]]($struct_loc[Int](self@553@01, 3)), $q0@570@01)]
+(assert (<=
+  0
+  ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@553@01 3)) $q0@570@01)))
+; [eval] ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $q0): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
+; [eval] ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $q0): Int)
+; [eval] ($struct_get($struct_loc(self, 3)): $Map[Int, Int])
+; [eval] $struct_loc(self, 3)
+(pop) ; 5
+(pop) ; 4
+; Joined path conditions
+; Joined path conditions
+(assert (or
+  (<=
+    0
+    ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@553@01 3)) $q0@570@01))
+  (not
+    (<=
+      0
+      ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@553@01 3)) $q0@570@01)))))
+(pop) ; 3
+; Nested auxiliary terms: globals (aux)
+; Nested auxiliary terms: non-globals (aux)
+(assert (forall (($q0@570@01 Int)) (!
+  (or
+    (<=
+      0
+      ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@553@01 3)) $q0@570@01))
+    (not
+      (<=
+        0
+        ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@553@01 3)) $q0@570@01))))
+  :pattern (($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@553@01 3)) $q0@570@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourceslanguageconvert.vy.vpr@1530@11@1530@345-aux|)))
+(assert (forall (($q0@570@01 Int)) (!
+  (and
+    (<=
+      0
+      ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@553@01 3)) $q0@570@01))
+    (<=
+      ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@553@01 3)) $q0@570@01)
+      115792089237316195423570985008687907853269984665640564039457584007913129639935))
+  :pattern (($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@553@01 3)) $q0@570@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourceslanguageconvert.vy.vpr@1530@11@1530@345|)))
+; State saturation: after inhale
+(set-option :timeout 20)
+(check-sat)
+; unknown
+; [exec]
+; inhale (forall $q0: Int ::
+;     { ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $q0): Int) }
+;     ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $q0): Int) <=
+;     ($map_sum(($struct_get($struct_loc(self, 3)): $Map[Int, Int])): Int))
+(declare-const $t@571@01 $Snap)
+(assert (= $t@571@01 $Snap.unit))
+; [eval] (forall $q0: Int :: { ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $q0): Int) } ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $q0): Int) <= ($map_sum(($struct_get($struct_loc(self, 3)): $Map[Int, Int])): Int))
+(declare-const $q0@572@01 Int)
+(set-option :timeout 0)
+(push) ; 3
+; [eval] ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $q0): Int) <= ($map_sum(($struct_get($struct_loc(self, 3)): $Map[Int, Int])): Int)
+; [eval] ($map_get(($struct_get($struct_loc(self, 3)): $Map[Int, Int]), $q0): Int)
+; [eval] ($struct_get($struct_loc(self, 3)): $Map[Int, Int])
+; [eval] $struct_loc(self, 3)
+; [eval] ($map_sum(($struct_get($struct_loc(self, 3)): $Map[Int, Int])): Int)
+; [eval] ($struct_get($struct_loc(self, 3)): $Map[Int, Int])
+; [eval] $struct_loc(self, 3)
+(pop) ; 3
+; Nested auxiliary terms: globals (aux)
+; Nested auxiliary terms: non-globals (aux)
+(assert (forall (($q0@572@01 Int)) (!
+  (<=
+    ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@553@01 3)) $q0@572@01)
+    ($map_sum<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@553@01 3))))
+  :pattern (($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@553@01 3)) $q0@572@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourceslanguageconvert.vy.vpr@1531@11@1531@253|)))
+; State saturation: after inhale
+(set-option :timeout 20)
+(check-sat)
+; unknown
+; [exec]
+; inhale (forall $q1: Int ::
+;     { ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q1): Int) }
+;     0 <=
+;     ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q1): Int) &&
+;     ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q1): Int) <=
+;     115792089237316195423570985008687907853269984665640564039457584007913129639935)
+(declare-const $t@573@01 $Snap)
+(assert (= $t@573@01 $Snap.unit))
+; [eval] (forall $q1: Int :: { ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q1): Int) } 0 <= ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q1): Int) && ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q1): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935)
+(declare-const $q1@574@01 Int)
+(set-option :timeout 0)
+(push) ; 3
+; [eval] 0 <= ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q1): Int) && ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q1): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
+; [eval] 0 <= ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q1): Int)
+; [eval] ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q1): Int)
+; [eval] ($struct_get($struct_loc(self, 4)): $Map[Int, Int])
+; [eval] $struct_loc(self, 4)
+(push) ; 4
+; [then-branch: 164 | !(0 <= $map_get[Int]($struct_get[$Map[Int, Int]]($struct_loc[Int](self@553@01, 4)), $q1@574@01)) | live]
+; [else-branch: 164 | 0 <= $map_get[Int]($struct_get[$Map[Int, Int]]($struct_loc[Int](self@553@01, 4)), $q1@574@01) | live]
+(push) ; 5
+; [then-branch: 164 | !(0 <= $map_get[Int]($struct_get[$Map[Int, Int]]($struct_loc[Int](self@553@01, 4)), $q1@574@01))]
+(assert (not
+  (<=
+    0
+    ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@553@01 4)) $q1@574@01))))
+(pop) ; 5
+(push) ; 5
+; [else-branch: 164 | 0 <= $map_get[Int]($struct_get[$Map[Int, Int]]($struct_loc[Int](self@553@01, 4)), $q1@574@01)]
+(assert (<=
+  0
+  ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@553@01 4)) $q1@574@01)))
+; [eval] ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q1): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
+; [eval] ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q1): Int)
+; [eval] ($struct_get($struct_loc(self, 4)): $Map[Int, Int])
+; [eval] $struct_loc(self, 4)
+(pop) ; 5
+(pop) ; 4
+; Joined path conditions
+; Joined path conditions
+(assert (or
+  (<=
+    0
+    ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@553@01 4)) $q1@574@01))
+  (not
+    (<=
+      0
+      ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@553@01 4)) $q1@574@01)))))
+(pop) ; 3
+; Nested auxiliary terms: globals (aux)
+; Nested auxiliary terms: non-globals (aux)
+(assert (forall (($q1@574@01 Int)) (!
+  (or
+    (<=
+      0
+      ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@553@01 4)) $q1@574@01))
+    (not
+      (<=
+        0
+        ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@553@01 4)) $q1@574@01))))
+  :pattern (($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@553@01 4)) $q1@574@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourceslanguageconvert.vy.vpr@1532@11@1532@345-aux|)))
+(assert (forall (($q1@574@01 Int)) (!
+  (and
+    (<=
+      0
+      ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@553@01 4)) $q1@574@01))
+    (<=
+      ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@553@01 4)) $q1@574@01)
+      115792089237316195423570985008687907853269984665640564039457584007913129639935))
+  :pattern (($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@553@01 4)) $q1@574@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourceslanguageconvert.vy.vpr@1532@11@1532@345|)))
+; State saturation: after inhale
+(set-option :timeout 20)
+(check-sat)
+; unknown
+; [exec]
+; inhale (forall $q1: Int ::
+;     { ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q1): Int) }
+;     ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q1): Int) <=
+;     ($map_sum(($struct_get($struct_loc(self, 4)): $Map[Int, Int])): Int))
+(declare-const $t@575@01 $Snap)
+(assert (= $t@575@01 $Snap.unit))
+; [eval] (forall $q1: Int :: { ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q1): Int) } ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q1): Int) <= ($map_sum(($struct_get($struct_loc(self, 4)): $Map[Int, Int])): Int))
+(declare-const $q1@576@01 Int)
+(set-option :timeout 0)
+(push) ; 3
+; [eval] ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q1): Int) <= ($map_sum(($struct_get($struct_loc(self, 4)): $Map[Int, Int])): Int)
+; [eval] ($map_get(($struct_get($struct_loc(self, 4)): $Map[Int, Int]), $q1): Int)
+; [eval] ($struct_get($struct_loc(self, 4)): $Map[Int, Int])
+; [eval] $struct_loc(self, 4)
+; [eval] ($map_sum(($struct_get($struct_loc(self, 4)): $Map[Int, Int])): Int)
+; [eval] ($struct_get($struct_loc(self, 4)): $Map[Int, Int])
+; [eval] $struct_loc(self, 4)
+(pop) ; 3
+; Nested auxiliary terms: globals (aux)
+; Nested auxiliary terms: non-globals (aux)
+(assert (forall (($q1@576@01 Int)) (!
+  (<=
+    ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@553@01 4)) $q1@576@01)
+    ($map_sum<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@553@01 4))))
+  :pattern (($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@553@01 4)) $q1@576@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourceslanguageconvert.vy.vpr@1533@11@1533@253|)))
+; State saturation: after inhale
+(set-option :timeout 20)
+(check-sat)
+; unknown
+; [exec]
+; inhale ($struct_get($struct_loc(self, -1)): Int) ==
+;   9122519725869122497593506884710
+(declare-const $t@577@01 $Snap)
+(assert (= $t@577@01 $Snap.unit))
+; [eval] ($struct_get($struct_loc(self, -1)): Int) == 9122519725869122497593506884710
+; [eval] ($struct_get($struct_loc(self, -1)): Int)
+; [eval] $struct_loc(self, -1)
+; [eval] -1
+(assert (=
+  ($struct_get<Int> ($struct_loc<Int> self@553@01 (- 0 1)))
+  9122519725869122497593506884710))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale 0 <= $self_address() &&
+;   $self_address() <= 1461501637330902918203684832716283019655932542975
+(declare-const $t@578@01 $Snap)
+(assert (= $t@578@01 ($Snap.combine ($Snap.first $t@578@01) ($Snap.second $t@578@01))))
+(assert (= ($Snap.first $t@578@01) $Snap.unit))
+; [eval] 0 <= $self_address()
+; [eval] $self_address()
+(assert (<= 0 (as $self_address<Int>  Int)))
+(assert (= ($Snap.second $t@578@01) $Snap.unit))
+; [eval] $self_address() <= 1461501637330902918203684832716283019655932542975
+; [eval] $self_address()
+(assert (<=
+  (as $self_address<Int>  Int)
+  1461501637330902918203684832716283019655932542975))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale 0 <= ($struct_get($struct_loc(block, 0)): Int) &&
+;   ($struct_get($struct_loc(block, 0)): Int) <=
+;   1461501637330902918203684832716283019655932542975
+(declare-const $t@579@01 $Snap)
+(assert (= $t@579@01 ($Snap.combine ($Snap.first $t@579@01) ($Snap.second $t@579@01))))
+(assert (= ($Snap.first $t@579@01) $Snap.unit))
+; [eval] 0 <= ($struct_get($struct_loc(block, 0)): Int)
+; [eval] ($struct_get($struct_loc(block, 0)): Int)
+; [eval] $struct_loc(block, 0)
+(assert (<= 0 ($struct_get<Int> ($struct_loc<Int> block@550@01 0))))
+(assert (= ($Snap.second $t@579@01) $Snap.unit))
+; [eval] ($struct_get($struct_loc(block, 0)): Int) <= 1461501637330902918203684832716283019655932542975
+; [eval] ($struct_get($struct_loc(block, 0)): Int)
+; [eval] $struct_loc(block, 0)
+(assert (<=
+  ($struct_get<Int> ($struct_loc<Int> block@550@01 0))
+  1461501637330902918203684832716283019655932542975))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale 0 <= ($struct_get($struct_loc(block, 1)): Int) &&
+;   ($struct_get($struct_loc(block, 1)): Int) <=
+;   115792089237316195423570985008687907853269984665640564039457584007913129639935
+(declare-const $t@580@01 $Snap)
+(assert (= $t@580@01 ($Snap.combine ($Snap.first $t@580@01) ($Snap.second $t@580@01))))
+(assert (= ($Snap.first $t@580@01) $Snap.unit))
+; [eval] 0 <= ($struct_get($struct_loc(block, 1)): Int)
+; [eval] ($struct_get($struct_loc(block, 1)): Int)
+; [eval] $struct_loc(block, 1)
+(assert (<= 0 ($struct_get<Int> ($struct_loc<Int> block@550@01 1))))
+(assert (= ($Snap.second $t@580@01) $Snap.unit))
+; [eval] ($struct_get($struct_loc(block, 1)): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
+; [eval] ($struct_get($struct_loc(block, 1)): Int)
+; [eval] $struct_loc(block, 1)
+(assert (<=
+  ($struct_get<Int> ($struct_loc<Int> block@550@01 1))
+  115792089237316195423570985008687907853269984665640564039457584007913129639935))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale 0 <= ($struct_get($struct_loc(block, 2)): Int) &&
+;   ($struct_get($struct_loc(block, 2)): Int) <=
+;   115792089237316195423570985008687907853269984665640564039457584007913129639935
+(declare-const $t@581@01 $Snap)
+(assert (= $t@581@01 ($Snap.combine ($Snap.first $t@581@01) ($Snap.second $t@581@01))))
+(assert (= ($Snap.first $t@581@01) $Snap.unit))
+; [eval] 0 <= ($struct_get($struct_loc(block, 2)): Int)
+; [eval] ($struct_get($struct_loc(block, 2)): Int)
+; [eval] $struct_loc(block, 2)
+(assert (<= 0 ($struct_get<Int> ($struct_loc<Int> block@550@01 2))))
+(assert (= ($Snap.second $t@581@01) $Snap.unit))
+; [eval] ($struct_get($struct_loc(block, 2)): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
+; [eval] ($struct_get($struct_loc(block, 2)): Int)
+; [eval] $struct_loc(block, 2)
+(assert (<=
+  ($struct_get<Int> ($struct_loc<Int> block@550@01 2))
+  115792089237316195423570985008687907853269984665640564039457584007913129639935))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale |($struct_get($struct_loc(block, 3)): Seq[Int])| == 32
+(declare-const $t@582@01 $Snap)
+(assert (= $t@582@01 $Snap.unit))
+; [eval] |($struct_get($struct_loc(block, 3)): Seq[Int])| == 32
+; [eval] |($struct_get($struct_loc(block, 3)): Seq[Int])|
+; [eval] ($struct_get($struct_loc(block, 3)): Seq[Int])
+; [eval] $struct_loc(block, 3)
+(assert (= (Seq_length ($struct_get<Seq<Int>> ($struct_loc<Int> block@550@01 3))) 32))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale 0 <= ($struct_get($struct_loc(block, 4)): Int) &&
+;   ($struct_get($struct_loc(block, 4)): Int) <=
+;   115792089237316195423570985008687907853269984665640564039457584007913129639935
+(declare-const $t@583@01 $Snap)
+(assert (= $t@583@01 ($Snap.combine ($Snap.first $t@583@01) ($Snap.second $t@583@01))))
+(assert (= ($Snap.first $t@583@01) $Snap.unit))
+; [eval] 0 <= ($struct_get($struct_loc(block, 4)): Int)
+; [eval] ($struct_get($struct_loc(block, 4)): Int)
+; [eval] $struct_loc(block, 4)
+(assert (<= 0 ($struct_get<Int> ($struct_loc<Int> block@550@01 4))))
+(assert (= ($Snap.second $t@583@01) $Snap.unit))
+; [eval] ($struct_get($struct_loc(block, 4)): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
+; [eval] ($struct_get($struct_loc(block, 4)): Int)
+; [eval] $struct_loc(block, 4)
+(assert (<=
+  ($struct_get<Int> ($struct_loc<Int> block@550@01 4))
+  115792089237316195423570985008687907853269984665640564039457584007913129639935))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale ($struct_get($struct_loc(block, -1)): Int) ==
+;   2335365049822495359383864865678187
+(declare-const $t@584@01 $Snap)
+(assert (= $t@584@01 $Snap.unit))
+; [eval] ($struct_get($struct_loc(block, -1)): Int) == 2335365049822495359383864865678187
+; [eval] ($struct_get($struct_loc(block, -1)): Int)
+; [eval] $struct_loc(block, -1)
+; [eval] -1
+(assert (=
+  ($struct_get<Int> ($struct_loc<Int> block@550@01 (- 0 1)))
+  2335365049822495359383864865678187))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale 0 <= ($struct_get($struct_loc(msg, 0)): Int) &&
+;   ($struct_get($struct_loc(msg, 0)): Int) <=
+;   1461501637330902918203684832716283019655932542975
+(declare-const $t@585@01 $Snap)
+(assert (= $t@585@01 ($Snap.combine ($Snap.first $t@585@01) ($Snap.second $t@585@01))))
+(assert (= ($Snap.first $t@585@01) $Snap.unit))
+; [eval] 0 <= ($struct_get($struct_loc(msg, 0)): Int)
+; [eval] ($struct_get($struct_loc(msg, 0)): Int)
+; [eval] $struct_loc(msg, 0)
+(assert (<= 0 ($struct_get<Int> ($struct_loc<Int> msg@549@01 0))))
+(assert (= ($Snap.second $t@585@01) $Snap.unit))
+; [eval] ($struct_get($struct_loc(msg, 0)): Int) <= 1461501637330902918203684832716283019655932542975
+; [eval] ($struct_get($struct_loc(msg, 0)): Int)
+; [eval] $struct_loc(msg, 0)
+(assert (<=
+  ($struct_get<Int> ($struct_loc<Int> msg@549@01 0))
+  1461501637330902918203684832716283019655932542975))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale 0 <= ($struct_get($struct_loc(msg, 1)): Int) &&
+;   ($struct_get($struct_loc(msg, 1)): Int) <=
+;   115792089237316195423570985008687907853269984665640564039457584007913129639935
+(declare-const $t@586@01 $Snap)
+(assert (= $t@586@01 ($Snap.combine ($Snap.first $t@586@01) ($Snap.second $t@586@01))))
+(assert (= ($Snap.first $t@586@01) $Snap.unit))
+; [eval] 0 <= ($struct_get($struct_loc(msg, 1)): Int)
+; [eval] ($struct_get($struct_loc(msg, 1)): Int)
+; [eval] $struct_loc(msg, 1)
+(assert (<= 0 ($struct_get<Int> ($struct_loc<Int> msg@549@01 1))))
+(assert (= ($Snap.second $t@586@01) $Snap.unit))
+; [eval] ($struct_get($struct_loc(msg, 1)): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
+; [eval] ($struct_get($struct_loc(msg, 1)): Int)
+; [eval] $struct_loc(msg, 1)
+(assert (<=
+  ($struct_get<Int> ($struct_loc<Int> msg@549@01 1))
+  115792089237316195423570985008687907853269984665640564039457584007913129639935))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale 0 <= ($struct_get($struct_loc(msg, 2)): Int) &&
+;   ($struct_get($struct_loc(msg, 2)): Int) <=
+;   115792089237316195423570985008687907853269984665640564039457584007913129639935
+(declare-const $t@587@01 $Snap)
+(assert (= $t@587@01 ($Snap.combine ($Snap.first $t@587@01) ($Snap.second $t@587@01))))
+(assert (= ($Snap.first $t@587@01) $Snap.unit))
+; [eval] 0 <= ($struct_get($struct_loc(msg, 2)): Int)
+; [eval] ($struct_get($struct_loc(msg, 2)): Int)
+; [eval] $struct_loc(msg, 2)
+(assert (<= 0 ($struct_get<Int> ($struct_loc<Int> msg@549@01 2))))
+(assert (= ($Snap.second $t@587@01) $Snap.unit))
+; [eval] ($struct_get($struct_loc(msg, 2)): Int) <= 115792089237316195423570985008687907853269984665640564039457584007913129639935
+; [eval] ($struct_get($struct_loc(msg, 2)): Int)
+; [eval] $struct_loc(msg, 2)
+(assert (<=
+  ($struct_get<Int> ($struct_loc<Int> msg@549@01 2))
+  115792089237316195423570985008687907853269984665640564039457584007913129639935))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale ($struct_get($struct_loc(msg, -1)): Int) ==
+;   35634842679176259756224246631
+(declare-const $t@588@01 $Snap)
+(assert (= $t@588@01 $Snap.unit))
+; [eval] ($struct_get($struct_loc(msg, -1)): Int) == 35634842679176259756224246631
+; [eval] ($struct_get($struct_loc(msg, -1)): Int)
+; [eval] $struct_loc(msg, -1)
+; [eval] -1
+(assert (=
+  ($struct_get<Int> ($struct_loc<Int> msg@549@01 (- 0 1)))
+  35634842679176259756224246631))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale ($struct_get($struct_loc(msg, 0)): Int) != 0
+(declare-const $t@589@01 $Snap)
+(assert (= $t@589@01 $Snap.unit))
+; [eval] ($struct_get($struct_loc(msg, 0)): Int) != 0
+; [eval] ($struct_get($struct_loc(msg, 0)): Int)
+; [eval] $struct_loc(msg, 0)
+(assert (not (= ($struct_get<Int> ($struct_loc<Int> msg@549@01 0)) 0)))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; $pre_self := self
+; [exec]
+; $pre_$contracts := $contracts
+; [exec]
+; $old_self := self
+; [exec]
+; $old_$contracts := $contracts
+; [exec]
+; $succ := true
+; [exec]
+; $overflow := false
+; [exec]
+; $first_public_state := true
+; [exec]
+; self := s$struct$self$init(0, 0, false, ($map_init(0): $Map[Int, Int]), ($map_init(0): $Map[Int, Int]),
+;   false)
+; [eval] s$struct$self$init(0, 0, false, ($map_init(0): $Map[Int, Int]), ($map_init(0): $Map[Int, Int]), false)
+; [eval] ($map_init(0): $Map[Int, Int])
+; [eval] ($map_init(0): $Map[Int, Int])
+(declare-const self@590@01 $Struct)
+(assert (=
+  self@590@01
+  (s$struct$self$init<$Struct> 0 0 false ($map_init<$Map<Int~_Int>> 0) ($map_init<$Map<Int~_Int>> 0) false)))
+; [exec]
+; inhale l$havoc >= 0
+(declare-const $t@591@01 $Snap)
+(assert (= $t@591@01 $Snap.unit))
+; [eval] l$havoc >= 0
+(assert (>= l$havoc@563@01 0))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; self := ($struct_set(self, 0, ($struct_get($struct_loc(self, 0)): Int) +
+;   l$havoc): $Struct)
+; [eval] ($struct_set(self, 0, ($struct_get($struct_loc(self, 0)): Int) + l$havoc): $Struct)
+; [eval] ($struct_get($struct_loc(self, 0)): Int) + l$havoc
+; [eval] ($struct_get($struct_loc(self, 0)): Int)
+; [eval] $struct_loc(self, 0)
+(declare-const self@592@01 $Struct)
+(assert (=
+  self@592@01
+  ($struct_set<$Struct> self@590@01 0 (+
+    ($struct_get<Int> ($struct_loc<Int> self@590@01 0))
+    l$havoc@563@01))))
+; [exec]
+; inhale ($struct_get($struct_loc(msg, 1)): Int) == 0
+(declare-const $t@593@01 $Snap)
+(assert (= $t@593@01 $Snap.unit))
+; [eval] ($struct_get($struct_loc(msg, 1)): Int) == 0
+; [eval] ($struct_get($struct_loc(msg, 1)): Int)
+; [eval] $struct_loc(msg, 1)
+(assert (= ($struct_get<Int> ($struct_loc<Int> msg@549@01 1)) 0))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; label return
+(set-option :timeout 0)
+(push) ; 3
+(set-option :timeout 10)
+(assert (not (not $out_of_gas@564@01)))
+(check-sat)
+; unknown
+(pop) ; 3
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 3
+(set-option :timeout 10)
+(assert (not $out_of_gas@564@01))
+(check-sat)
+; unknown
+(pop) ; 3
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 165 | $out_of_gas@564@01 | live]
+; [else-branch: 165 | !($out_of_gas@564@01) | live]
+(set-option :timeout 0)
+(push) ; 3
+; [then-branch: 165 | $out_of_gas@564@01]
+(assert $out_of_gas@564@01)
+; [exec]
+; label revert
+; [exec]
+; $succ := false
+; [exec]
+; self := $pre_self
+; [exec]
+; $contracts := $pre_$contracts
+; [exec]
+; $old_self := $pre_self
+; [exec]
+; $old_$contracts := $pre_$contracts
+; [exec]
+; label end
+(push) ; 4
+(set-option :timeout 10)
+(assert (not false))
+(check-sat)
+; unknown
+(pop) ; 4
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 166 | True | live]
+; [else-branch: 166 | False | dead]
+(set-option :timeout 0)
+(push) ; 4
+; [then-branch: 166 | True]
+; [exec]
+; $old_self := self
+; [eval] !$succ
+(push) ; 5
+(set-option :timeout 10)
+(assert (not false))
+(check-sat)
+; unknown
+(pop) ; 5
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 167 | True | live]
+; [else-branch: 167 | False | dead]
+(set-option :timeout 0)
+(push) ; 5
+; [then-branch: 167 | True]
+; [exec]
+; inhale l$havoc$1 >= 0
+(declare-const $t@594@01 $Snap)
+(assert (= $t@594@01 $Snap.unit))
+; [eval] l$havoc$1 >= 0
+(assert (>= l$havoc$1@565@01 0))
+; State saturation: after inhale
+(set-option :timeout 20)
+(check-sat)
+; unknown
+; [exec]
+; self := ($struct_set(self, 0, ($struct_get($struct_loc(self, 0)): Int) +
+;   l$havoc$1): $Struct)
+; [eval] ($struct_set(self, 0, ($struct_get($struct_loc(self, 0)): Int) + l$havoc$1): $Struct)
+; [eval] ($struct_get($struct_loc(self, 0)): Int) + l$havoc$1
+; [eval] ($struct_get($struct_loc(self, 0)): Int)
+; [eval] $struct_loc(self, 0)
+(declare-const self@595@01 $Struct)
+(assert (=
+  self@595@01
+  ($struct_set<$Struct> self@553@01 0 (+
+    ($struct_get<Int> ($struct_loc<Int> self@553@01 0))
+    l$havoc$1@565@01))))
+; [exec]
+; $contracts := l$havoc$2
+(set-option :timeout 0)
+(push) ; 6
+(set-option :timeout 10)
+(assert (not false))
+(check-sat)
+; unknown
+(pop) ; 6
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 168 | True | live]
+; [else-branch: 168 | False | dead]
+(set-option :timeout 0)
+(push) ; 6
+; [then-branch: 168 | True]
+; [exec]
+; $old_self := self
+(pop) ; 6
+; [eval] !$first_public_state
+; [then-branch: 169 | False | dead]
+; [else-branch: 169 | True | live]
+(push) ; 6
+; [else-branch: 169 | True]
+(pop) ; 6
+(pop) ; 5
+; [then-branch: 170 | False | dead]
+; [else-branch: 170 | True | live]
+(push) ; 5
+; [else-branch: 170 | True]
+(pop) ; 5
+(pop) ; 4
+; [eval] !$first_public_state
+; [then-branch: 171 | False | dead]
+; [else-branch: 171 | True | live]
+(push) ; 4
+; [else-branch: 171 | True]
+(pop) ; 4
+(pop) ; 3
+(push) ; 3
+; [else-branch: 165 | !($out_of_gas@564@01)]
+(assert (not $out_of_gas@564@01))
+(pop) ; 3
+; [eval] !$out_of_gas
+(push) ; 3
+(set-option :timeout 10)
+(assert (not $out_of_gas@564@01))
+(check-sat)
+; unknown
+(pop) ; 3
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 3
+(set-option :timeout 10)
+(assert (not (not $out_of_gas@564@01)))
+(check-sat)
+; unknown
+(pop) ; 3
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 172 | !($out_of_gas@564@01) | live]
+; [else-branch: 172 | $out_of_gas@564@01 | live]
+(set-option :timeout 0)
+(push) ; 3
+; [then-branch: 172 | !($out_of_gas@564@01)]
+(assert (not $out_of_gas@564@01))
+; [exec]
+; label end
+(push) ; 4
+(set-option :timeout 10)
+(assert (not false))
+(check-sat)
+; unknown
+(pop) ; 4
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 173 | True | live]
+; [else-branch: 173 | False | dead]
+(set-option :timeout 0)
+(push) ; 4
+; [then-branch: 173 | True]
+; [exec]
+; $old_self := self
+; [eval] !$succ
+; [then-branch: 174 | False | dead]
+; [else-branch: 174 | True | live]
+(push) ; 5
+; [else-branch: 174 | True]
+(pop) ; 5
+(push) ; 5
+(set-option :timeout 10)
+(assert (not false))
+(check-sat)
+; unknown
+(pop) ; 5
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 175 | True | live]
+; [else-branch: 175 | False | dead]
+(set-option :timeout 0)
+(push) ; 5
+; [then-branch: 175 | True]
+; [exec]
+; inhale l$havoc$1 >= 0
+(declare-const $t@596@01 $Snap)
+(assert (= $t@596@01 $Snap.unit))
+; [eval] l$havoc$1 >= 0
+(assert (>= l$havoc$1@565@01 0))
+; State saturation: after inhale
+(set-option :timeout 20)
+(check-sat)
+; unknown
+; [exec]
+; self := ($struct_set(self, 0, ($struct_get($struct_loc(self, 0)): Int) +
+;   l$havoc$1): $Struct)
+; [eval] ($struct_set(self, 0, ($struct_get($struct_loc(self, 0)): Int) + l$havoc$1): $Struct)
+; [eval] ($struct_get($struct_loc(self, 0)): Int) + l$havoc$1
+; [eval] ($struct_get($struct_loc(self, 0)): Int)
+; [eval] $struct_loc(self, 0)
+(declare-const self@597@01 $Struct)
+(assert (=
+  self@597@01
+  ($struct_set<$Struct> self@592@01 0 (+
+    ($struct_get<Int> ($struct_loc<Int> self@592@01 0))
+    l$havoc$1@565@01))))
+; [exec]
+; $contracts := l$havoc$2
+(set-option :timeout 0)
+(push) ; 6
+(set-option :timeout 10)
+(assert (not false))
+(check-sat)
+; unknown
+(pop) ; 6
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 176 | True | live]
+; [else-branch: 176 | False | dead]
+(set-option :timeout 0)
+(push) ; 6
+; [then-branch: 176 | True]
+; [exec]
+; $old_self := self
+(pop) ; 6
+; [eval] !$first_public_state
+; [then-branch: 177 | False | dead]
+; [else-branch: 177 | True | live]
+(push) ; 6
+; [else-branch: 177 | True]
+(pop) ; 6
+(pop) ; 5
+(pop) ; 4
+; [eval] !$first_public_state
+; [then-branch: 178 | False | dead]
+; [else-branch: 178 | True | live]
+(push) ; 4
+; [else-branch: 178 | True]
+(pop) ; 4
+(pop) ; 3
+(push) ; 3
+; [else-branch: 172 | $out_of_gas@564@01]
+(assert $out_of_gas@564@01)
+(pop) ; 3
+(pop) ; 2
+(pop) ; 1

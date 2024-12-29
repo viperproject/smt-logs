@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-27 10:01:20
+; Started: 2024-12-29 14:51:09
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -855,7 +855,7 @@
   :pattern (($FVF.lookup_val (as sm@8@01  $FVF<val>) r))
   :pattern (($FVF.lookup_val (as sm@15@01  $FVF<val>) r))
   :pattern (($FVF.lookup_val $t@16@01 r))
-  :qid |quant-u-12228|)))
+  :qid |quant-u-12184|)))
 (assert (<=
   $Perm.No
   (ite
@@ -1079,7 +1079,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (- $Perm.No (pTaken@19@01 r)) $Perm.No)
   
-  :qid |quant-u-12230|))))
+  :qid |quant-u-12186|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -1105,7 +1105,7 @@
         (pTaken@19@01 r))
       $Perm.No))
   
-  :qid |quant-u-12231|))))
+  :qid |quant-u-12187|))))
 (check-sat)
 ; unknown
 (pop) ; 4
@@ -1127,7 +1127,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@20@01 r) $Perm.No)
   
-  :qid |quant-u-12233|))))
+  :qid |quant-u-12189|))))
 (check-sat)
 ; unknown
 (pop) ; 4
@@ -1155,7 +1155,7 @@
         (pTaken@20@01 r))
       $Perm.No))
   
-  :qid |quant-u-12234|))))
+  :qid |quant-u-12190|))))
 (check-sat)
 ; unknown
 (pop) ; 4
@@ -1181,7 +1181,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@21@01 r) $Perm.No)
   
-  :qid |quant-u-12236|))))
+  :qid |quant-u-12192|))))
 (check-sat)
 ; unknown
 (pop) ; 4
@@ -1211,7 +1211,7 @@
         (pTaken@21@01 r))
       $Perm.No))
   
-  :qid |quant-u-12237|))))
+  :qid |quant-u-12193|))))
 (check-sat)
 ; unknown
 (pop) ; 4
@@ -1240,7 +1240,7 @@
         (pTaken@21@01 r))
       $Perm.No))
   
-  :qid |quant-u-12237|))))
+  :qid |quant-u-12193|))))
 (check-sat)
 ; unknown
 (pop) ; 4
@@ -1428,7 +1428,7 @@
   :pattern (($FVF.lookup_val $t@16@01 r))
   :pattern (($FVF.lookup_val (as sm@7@01  $FVF<val>) r))
   :pattern (($FVF.lookup_val $t@24@01 r))
-  :qid |quant-u-12238|)))
+  :qid |quant-u-12194|)))
 (declare-const sm@25@01 $FVF<val>)
 ; Definitional axioms for snapshot map values
 (assert (forall ((r $Ref)) (!
@@ -1547,7 +1547,7 @@
       :pattern (($FVF.lookup_val $t@16@01 r))
       :pattern (($FVF.lookup_val (as sm@7@01  $FVF<val>) r))
       :pattern (($FVF.lookup_val $t@24@01 r))
-      :qid |quant-u-12238|))
+      :qid |quant-u-12194|))
     (forall ((r $Ref)) (!
       (<= ($FVF.perm_val (as pm@26@01  $FPM) r) $Perm.Write)
       :pattern ((inv@12@01 r))
@@ -1637,7 +1637,7 @@
         (pTaken@28@01 r))
       $Perm.No))
   
-  :qid |quant-u-12241|))))
+  :qid |quant-u-12197|))))
 (check-sat)
 ; unsat
 (pop) ; 4

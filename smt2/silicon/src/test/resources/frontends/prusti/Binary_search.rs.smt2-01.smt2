@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-27 09:52:41
+; Started: 2024-12-29 14:42:33
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -36529,7 +36529,7 @@
 (check-sat)
 ; unknown
 (pop) ; 14
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 111 | m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$is_none$opensqu$0$closesqu$__$TY$__m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_$$bool$(($t@381@01, _), ret@211@01) | live]
 ; [else-branch: 111 | !(m_Binary_search$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$3$closesqu$$$is_none$opensqu$0$closesqu$__$TY$__m_Binary_search$$UsizeOption$opensqu$0$closesqu$$_beg_$_end_$$bool$(($t@381@01, _), ret@211@01)) | dead]
@@ -37827,7 +37827,7 @@
 (check-sat)
 ; unknown
 (pop) ; 13
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (assert (<=
   $Perm.No

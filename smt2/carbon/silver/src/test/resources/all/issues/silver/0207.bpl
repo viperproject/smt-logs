@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 10:54:48
+// Date:         2024-12-29 15:45:17
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0207.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0207-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -257,8 +257,8 @@ axiom (forall p_1: BSTDomainType, c: BSTDomainType ::
 procedure test(f_69: FooDomainType) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -272,8 +272,8 @@ procedure test(f_69: FooDomainType) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale false -- <no position>
     assume false;
@@ -288,13 +288,13 @@ procedure test(f_69: FooDomainType) returns ()
 procedure getMin(t_2: BSTDomainType) returns (vmin: int)
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var currentNode: BSTDomainType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var pc: BSTDomainType;
   var loopHeap: HeapType;
   var loopMask: MaskType;
@@ -323,8 +323,8 @@ procedure getMin(t_2: BSTDomainType) returns (vmin: int)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -358,8 +358,8 @@ procedure getMin(t_2: BSTDomainType) returns (vmin: int)
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Loop invariant isParent(t, currentNode) might not hold on entry. Assertion isParent(t, currentNode) might not hold. (0207.vpr@71.15--71.39) [220956]"}
           (isParent(t_2, currentNode): bool);
         assert {:msg "  Loop invariant !(currentNode == nullNode()) might not hold on entry. Assertion !(currentNode == nullNode()) might not hold. (0207.vpr@72.15--72.35) [220957]"}
@@ -439,8 +439,8 @@ procedure getMin(t_2: BSTDomainType) returns (vmin: int)
             currentNode := (left_2(currentNode): BSTDomainType);
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Loop invariant isParent(t, currentNode) might not be preserved. Assertion isParent(t, currentNode) might not hold. (0207.vpr@71.15--71.39) [220961]"}
           (isParent(t_2, currentNode): bool);
         assert {:msg "  Loop invariant !(currentNode == nullNode()) might not be preserved. Assertion !(currentNode == nullNode()) might not hold. (0207.vpr@72.15--72.35) [220962]"}
@@ -487,8 +487,8 @@ procedure getMin(t_2: BSTDomainType) returns (vmin: int)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     if (*) {
       if (!(t1_4_1 == (nullNode(): BSTDomainType)) && (isParent(t_2, t1_4_1): bool)) {
         assert {:msg "  Postcondition of getMin might not hold. Assertion value(t1) >= min might not hold. (0207.vpr@64.11--65.56) [220966]"}

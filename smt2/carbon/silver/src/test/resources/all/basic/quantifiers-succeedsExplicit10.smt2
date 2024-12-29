@@ -906,7 +906,7 @@
  :skolemid |138|
  :pattern ( (g2_1 Heap@@40 i@@30 j_9@@6))
 )))
-; Valid
+; Invalid
 (push 1)
 (declare-fun ControlFlow (Int Int) Int)
 (declare-fun i_1 () Int)

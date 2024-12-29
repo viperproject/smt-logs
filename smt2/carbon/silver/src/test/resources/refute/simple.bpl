@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 10:27:09
+// Date:         2024-12-29 15:17:28
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/refute/simple.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/refute/simple-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -180,11 +180,11 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 procedure foo_1(x: int) returns (r_1: int)
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var __plugin_refute_nondet1: bool;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var __plugin_refute_nondet2: bool;
   var __plugin_refute_nondet3: bool;
   var __plugin_refute_nondet4: bool;
@@ -203,15 +203,15 @@ procedure foo_1(x: int) returns (r_1: int)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: if (__plugin_refute_nondet1) -- simple.vpr@4.5--4.20
     if (__plugin_refute_nondet1) {
       
       // -- Translating statement: assert !(x > 0) -- simple.vpr@4.5--4.20
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Assert might fail. Assertion !(x > 0) might not hold. (simple.vpr@4.12--4.20) [119813]"}
           !(x > 0);
         assume state(Heap, Mask);
@@ -227,8 +227,8 @@ procedure foo_1(x: int) returns (r_1: int)
     if (__plugin_refute_nondet2) {
       
       // -- Translating statement: assert x > 0 -- simple.vpr@6.5--6.17
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Assert might fail. Assertion x > 0 might not hold. (simple.vpr@6.12--6.17) [119814]"}
           x > 0;
         assume state(Heap, Mask);
@@ -244,8 +244,8 @@ procedure foo_1(x: int) returns (r_1: int)
     if (__plugin_refute_nondet3) {
       
       // -- Translating statement: assert false -- simple.vpr@7.5--7.17
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Assert might fail. Assertion false might not hold. (simple.vpr@7.12--7.17) [119815]"}
           false;
         assume state(Heap, Mask);
@@ -261,8 +261,8 @@ procedure foo_1(x: int) returns (r_1: int)
     if (__plugin_refute_nondet4) {
       
       // -- Translating statement: assert true -- simple.vpr@9.5--9.16
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assume state(Heap, Mask);
       
       // -- Translating statement: inhale false -- simple.vpr@9.5--9.16
@@ -276,8 +276,8 @@ procedure foo_1(x: int) returns (r_1: int)
     if (__plugin_refute_nondet5) {
       
       // -- Translating statement: assert false -- simple.vpr@10.5--10.17
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Assert might fail. Assertion false might not hold. (simple.vpr@10.12--10.17) [119817]"}
           false;
         assume state(Heap, Mask);
@@ -301,8 +301,8 @@ procedure foo_1(x: int) returns (r_1: int)
         if (__plugin_refute_nondet6) {
           
           // -- Translating statement: assert false -- simple.vpr@15.9--15.21
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             assert {:msg "  Assert might fail. Assertion false might not hold. (simple.vpr@15.16--15.21) [119818]"}
               false;
             assume state(Heap, Mask);

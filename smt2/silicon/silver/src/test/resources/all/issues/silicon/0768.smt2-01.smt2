@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-27 10:09:30
+; Started: 2024-12-29 14:59:38
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -1184,11 +1184,11 @@
 (assert (forall ((s@$ $Snap) (p@0@00 pointer) (offset@1@00 Int)) (!
   (= (ptr_add%limited s@$ p@0@00 offset@1@00) (ptr_add s@$ p@0@00 offset@1@00))
   :pattern ((ptr_add s@$ p@0@00 offset@1@00))
-  :qid |quant-u-24473|)))
+  :qid |quant-u-24410|)))
 (assert (forall ((s@$ $Snap) (p@0@00 pointer) (offset@1@00 Int)) (!
   (ptr_add%stateless p@0@00 offset@1@00)
   :pattern ((ptr_add%limited s@$ p@0@00 offset@1@00))
-  :qid |quant-u-24474|)))
+  :qid |quant-u-24411|)))
 (assert (forall ((s@$ $Snap) (p@0@00 pointer) (offset@1@00 Int)) (!
   (=>
     (ptr_add%precondition s@$ p@0@00 offset@1@00)
@@ -1198,19 +1198,19 @@
         (pointer_offset<Int> p@0@00)
         offset@1@00))))
   :pattern ((ptr_add s@$ p@0@00 offset@1@00))
-  :qid |quant-u-24483|)))
+  :qid |quant-u-24420|)))
 (assert (forall ((s@$ $Snap) (p@0@00 pointer) (offset@1@00 Int)) (!
   true
   :pattern ((ptr_add s@$ p@0@00 offset@1@00))
-  :qid |quant-u-24484|)))
+  :qid |quant-u-24421|)))
 (assert (forall ((s@$ $Snap) (p@3@00 pointer)) (!
   (= (ptr_deref%limited s@$ p@3@00) (ptr_deref s@$ p@3@00))
   :pattern ((ptr_deref s@$ p@3@00))
-  :qid |quant-u-24475|)))
+  :qid |quant-u-24412|)))
 (assert (forall ((s@$ $Snap) (p@3@00 pointer)) (!
   (ptr_deref%stateless p@3@00)
   :pattern ((ptr_deref%limited s@$ p@3@00))
-  :qid |quant-u-24476|)))
+  :qid |quant-u-24413|)))
 (assert (forall ((s@$ $Snap) (p@3@00 pointer)) (!
   (=>
     (ptr_deref%precondition s@$ p@3@00)
@@ -1218,37 +1218,37 @@
       (ptr_deref s@$ p@3@00)
       (loc<Ref> (pointer_block<block> p@3@00) (pointer_offset<Int> p@3@00))))
   :pattern ((ptr_deref s@$ p@3@00))
-  :qid |quant-u-24485|)))
+  :qid |quant-u-24422|)))
 (assert (forall ((s@$ $Snap) (p@3@00 pointer)) (!
   true
   :pattern ((ptr_deref s@$ p@3@00))
-  :qid |quant-u-24486|)))
+  :qid |quant-u-24423|)))
 (assert (forall ((s@$ $Snap) (i@5@00 Int)) (!
   (= (id%limited s@$ i@5@00) (id s@$ i@5@00))
   :pattern ((id s@$ i@5@00))
-  :qid |quant-u-24477|)))
+  :qid |quant-u-24414|)))
 (assert (forall ((s@$ $Snap) (i@5@00 Int)) (!
   (id%stateless i@5@00)
   :pattern ((id%limited s@$ i@5@00))
-  :qid |quant-u-24478|)))
+  :qid |quant-u-24415|)))
 (assert (forall ((s@$ $Snap) (i@5@00 Int)) (!
   (=> (id%precondition s@$ i@5@00) (= (id s@$ i@5@00) i@5@00))
   :pattern ((id s@$ i@5@00))
-  :qid |quant-u-24487|)))
+  :qid |quant-u-24424|)))
 (assert (forall ((s@$ $Snap) (i@5@00 Int)) (!
   true
   :pattern ((id s@$ i@5@00))
-  :qid |quant-u-24488|)))
+  :qid |quant-u-24425|)))
 (assert (forall ((s@$ $Snap) (inp@7@00 pointer) (n@8@00 Int)) (!
   (=
     (inp_to_seq_2%limited s@$ inp@7@00 n@8@00)
     (inp_to_seq_2 s@$ inp@7@00 n@8@00))
   :pattern ((inp_to_seq_2 s@$ inp@7@00 n@8@00))
-  :qid |quant-u-24479|)))
+  :qid |quant-u-24416|)))
 (assert (forall ((s@$ $Snap) (inp@7@00 pointer) (n@8@00 Int)) (!
   (inp_to_seq_2%stateless inp@7@00 n@8@00)
   :pattern ((inp_to_seq_2%limited s@$ inp@7@00 n@8@00))
-  :qid |quant-u-24480|)))
+  :qid |quant-u-24417|)))
 (assert (forall ((s@$ $Snap) (inp@7@00 pointer) (n@8@00 Int)) (!
   (and
     (forall ((i@12@00 Int)) (!
@@ -1268,7 +1268,7 @@
         $Snap.unit) inp@7@00 i@12@00))) (ptr_deref $Snap.unit (ptr_add ($Snap.combine
         $Snap.unit
         $Snap.unit) inp@7@00 i@12@00))))
-      :qid |quant-u-24490|))
+      :qid |quant-u-24427|))
     (forall ((r $Ref)) (!
       (=>
         (and
@@ -1302,7 +1302,7 @@
         $Snap.unit) inp@7@00 i@19@00)))) ($FVF.lookup_ref (sm@16@00 s@$ inp@7@00 n@8@00) (ptr_deref $Snap.unit (ptr_add ($Snap.combine
         $Snap.unit
         $Snap.unit) inp@7@00 i@19@00)))))
-      :qid |quant-u-24493|))
+      :qid |quant-u-24430|))
     (forall ((r $Ref)) (!
       (=>
         (and
@@ -1346,19 +1346,19 @@
       (inp_to_seq_2%precondition s@$ inp@7@00 n@8@00)
       (= (inp_to_seq_2 s@$ inp@7@00 n@8@00) (as Seq_empty  Seq<Int>))))
   :pattern ((inp_to_seq_2 s@$ inp@7@00 n@8@00))
-  :qid |quant-u-24495|)))
+  :qid |quant-u-24432|)))
 (assert (forall ((s@$ $Snap) (inp@7@00 pointer) (n@8@00 Int)) (!
   true
   :pattern ((inp_to_seq_2 s@$ inp@7@00 n@8@00))
-  :qid |quant-u-24496|)))
+  :qid |quant-u-24433|)))
 (assert (forall ((s@$ $Snap) (t@10@00 tree)) (!
   (= (leafCount%limited s@$ t@10@00) (leafCount s@$ t@10@00))
   :pattern ((leafCount s@$ t@10@00))
-  :qid |quant-u-24481|)))
+  :qid |quant-u-24418|)))
 (assert (forall ((s@$ $Snap) (t@10@00 tree)) (!
   (leafCount%stateless t@10@00)
   :pattern ((leafCount%limited s@$ t@10@00))
-  :qid |quant-u-24482|)))
+  :qid |quant-u-24419|)))
 (assert (forall ((s@$ $Snap) (t@10@00 tree)) (!
   (=>
     (leafCount%precondition s@$ t@10@00)
@@ -1371,7 +1371,7 @@
           (leafCount%limited $Snap.unit (get_tree_left<tree> t@10@00))
           (leafCount%limited $Snap.unit (get_tree_right<tree> t@10@00)))))))
   :pattern ((leafCount s@$ t@10@00))
-  :qid |quant-u-24497|)))
+  :qid |quant-u-24434|)))
 (assert (forall ((s@$ $Snap) (t@10@00 tree)) (!
   (=>
     (leafCount%precondition s@$ t@10@00)
@@ -1389,7 +1389,7 @@
           (leafCount%limited $Snap.unit (get_tree_left<tree> t@10@00))
           (leafCount%limited $Snap.unit (get_tree_right<tree> t@10@00)))))))
   :pattern ((leafCount s@$ t@10@00))
-  :qid |quant-u-24498|)))
+  :qid |quant-u-24435|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- ptr_add_pres_termination_proof ----------
@@ -2135,7 +2135,7 @@
     $Snap.unit) inp@9@01 i@23@01))) (ptr_deref $Snap.unit (ptr_add ($Snap.combine
     $Snap.unit
     $Snap.unit) inp@9@01 i@23@01))))
-  :qid |quant-u-24500|)))
+  :qid |quant-u-24437|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and (img@26@01 r) (and (<= 0 (inv@25@01 r)) (< (inv@25@01 r) n@10@01)))
@@ -2163,7 +2163,7 @@
     $Snap.unit) inp@9@01 i@23@01))) (ptr_deref $Snap.unit (ptr_add ($Snap.combine
     $Snap.unit
     $Snap.unit) inp@9@01 i@23@01))))
-  :qid |quant-u-24500|)))
+  :qid |quant-u-24437|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and (img@26@01 r) (and (<= 0 (inv@25@01 r)) (< (inv@25@01 r) n@10@01)))
@@ -2208,7 +2208,7 @@
     (and (<= 0 (inv@25@01 r)) (< (inv@25@01 r) n@10@01))
     ($FVF.loc_ref ($FVF.lookup_ref (as sm@27@01  $FVF<ref>) r) r))
   :pattern ((inv@25@01 r))
-  :qid |quant-u-24501|)))
+  :qid |quant-u-24438|)))
 ; State saturation: after inhale
 (set-option :timeout 20)
 (check-sat)
@@ -2676,7 +2676,7 @@
     $Snap.unit) inp@9@01 i@37@01))) (ptr_deref $Snap.unit (ptr_add ($Snap.combine
     $Snap.unit
     $Snap.unit) inp@9@01 i@37@01))))
-  :qid |quant-u-24503|)))
+  :qid |quant-u-24440|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and (img@40@01 r) (and (<= 0 (inv@39@01 r)) (< (inv@39@01 r) n@10@01)))
@@ -2704,7 +2704,7 @@
     $Snap.unit) inp@9@01 i@37@01))) (ptr_deref $Snap.unit (ptr_add ($Snap.combine
     $Snap.unit
     $Snap.unit) inp@9@01 i@37@01))))
-  :qid |quant-u-24503|)))
+  :qid |quant-u-24440|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and (img@40@01 r) (and (<= 0 (inv@39@01 r)) (< (inv@39@01 r) n@10@01)))
@@ -2749,7 +2749,7 @@
     (and (<= 0 (inv@39@01 r)) (< (inv@39@01 r) n@10@01))
     ($FVF.loc_ref ($FVF.lookup_ref (as sm@41@01  $FVF<ref>) r) r))
   :pattern ((inv@39@01 r))
-  :qid |quant-u-24504|)))
+  :qid |quant-u-24441|)))
 (assert (= ($Snap.second ($Snap.second $t@36@01)) $Snap.unit))
 ; [eval] (forall i: Int, j: Int :: { ptr_add(inp, i), ptr_deref(ptr_add(inp, j)) } { ptr_deref(ptr_add(inp, i)), ptr_add(inp, j) } { ptr_deref(ptr_add(inp, i)), ptr_deref(ptr_add(inp, j)) } 0 <= i && (i < n && (0 <= j && j < n)) && i != j ==> ptr_deref(ptr_add(inp, i)).ref != ptr_deref(ptr_add(inp, j)).ref)
 (declare-const i@42@01 Int)

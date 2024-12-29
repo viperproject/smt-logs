@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-27 09:59:58
+; Started: 2024-12-29 14:49:48
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -676,7 +676,7 @@
   :pattern ((Set_in z@4@00 xs@0@00))
   :pattern ((inv@5@00 s@$ xs@0@00 x@1@00 n@2@00 z@4@00))
   :pattern ((img@6@00 s@$ xs@0@00 x@1@00 n@2@00 z@4@00))
-  :qid |quant-u-5681|)))
+  :qid |quant-u-5637|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -708,11 +708,11 @@
 (assert (forall ((s@$ $Snap) (xs@0@00 Set<$Ref>) (x@1@00 $Ref) (n@2@00 Int)) (!
   (= (fun%limited s@$ xs@0@00 x@1@00 n@2@00) (fun s@$ xs@0@00 x@1@00 n@2@00))
   :pattern ((fun s@$ xs@0@00 x@1@00 n@2@00))
-  :qid |quant-u-5678|)))
+  :qid |quant-u-5634|)))
 (assert (forall ((s@$ $Snap) (xs@0@00 Set<$Ref>) (x@1@00 $Ref) (n@2@00 Int)) (!
   (fun%stateless xs@0@00 x@1@00 n@2@00)
   :pattern ((fun%limited s@$ xs@0@00 x@1@00 n@2@00))
-  :qid |quant-u-5679|)))
+  :qid |quant-u-5635|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (forall ((r $Ref)) (!
@@ -732,7 +732,7 @@
   :pattern ((Set_in z@4@00 xs@0@00))
   :pattern ((inv@5@00 s@$ xs@0@00 x@1@00 n@2@00 z@4@00))
   :pattern ((img@6@00 s@$ xs@0@00 x@1@00 n@2@00 z@4@00))
-  :qid |quant-u-5681|)))
+  :qid |quant-u-5637|)))
 (assert (forall ((z@4@00 $Ref)) (!
   (=> (Set_in z@4@00 xs@0@00) (not (= z@4@00 $Ref.null)))
   :pattern ((Set_in z@4@00 xs@0@00))
@@ -853,7 +853,7 @@
         $Perm.No)
       $Perm.No))
   
-  :qid |quant-u-5683|))))
+  :qid |quant-u-5639|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -1038,7 +1038,7 @@
       :pattern ((Set_in z@4@00 xs@0@00))
       :pattern ((inv@5@00 s@$ xs@0@00 x@1@00 n@2@00 z@4@00))
       :pattern ((img@6@00 s@$ xs@0@00 x@1@00 n@2@00 z@4@00))
-      :qid |quant-u-5681|))
+      :qid |quant-u-5637|))
     (forall ((r $Ref)) (!
       (=>
         (and
@@ -1105,7 +1105,7 @@
             ($SortWrappers.$FVF<f>To$Snap (sm@10@00 s@$ xs@0@00 x@1@00 n@2@00))
             ($Snap.combine $Snap.unit $Snap.unit)) xs@0@00 x@1@00 (- n@2@00 1))))))
   :pattern ((fun s@$ xs@0@00 x@1@00 n@2@00))
-  :qid |quant-u-5684|)))
+  :qid |quant-u-5640|)))
 (assert (forall ((s@$ $Snap) (xs@0@00 Set<$Ref>) (x@1@00 $Ref) (n@2@00 Int)) (!
   (=>
     (fun%precondition s@$ xs@0@00 x@1@00 n@2@00)
@@ -1116,4 +1116,4 @@
         ($SortWrappers.$FVF<f>To$Snap (sm@10@00 s@$ xs@0@00 x@1@00 n@2@00))
         ($Snap.combine $Snap.unit $Snap.unit)) xs@0@00 x@1@00 (- n@2@00 1))))
   :pattern ((fun s@$ xs@0@00 x@1@00 n@2@00))
-  :qid |quant-u-5685|)))
+  :qid |quant-u-5641|)))

@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-27 10:06:04
+; Started: 2024-12-29 14:56:11
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -134,21 +134,21 @@
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   (= (func%limited s@$ x@0@00) (func s@$ x@0@00))
   :pattern ((func s@$ x@0@00))
-  :qid |quant-u-20754|)))
+  :qid |quant-u-20691|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   (func%stateless x@0@00)
   :pattern ((func%limited s@$ x@0@00))
-  :qid |quant-u-20755|)))
+  :qid |quant-u-20692|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   (=>
     (func%precondition s@$ x@0@00)
     (= (func s@$ x@0@00) ($SortWrappers.$SnapToInt s@$)))
   :pattern ((func s@$ x@0@00))
-  :qid |quant-u-20756|)))
+  :qid |quant-u-20693|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   true
   :pattern ((func s@$ x@0@00))
-  :qid |quant-u-20757|)))
+  :qid |quant-u-20694|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- test0 ----------
@@ -508,6 +508,6 @@
 (assert (forall (($t@4@01 $Snap)) (!
   (= (MWSF_apply mwsf@6@01 $t@4@01) $t@5@01)
   :pattern ((MWSF_apply mwsf@6@01 $t@4@01))
-  :qid |quant-u-20758|)))
+  :qid |quant-u-20695|)))
 (pop) ; 2
 (pop) ; 1

@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-27 10:11:58
+; Started: 2024-12-29 15:02:10
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -171,19 +171,19 @@
 (assert (forall ((s@$ $Snap) (y@0@00 Int)) (!
   (= (g%limited s@$ y@0@00) (g s@$ y@0@00))
   :pattern ((g s@$ y@0@00))
-  :qid |quant-u-26785|)))
+  :qid |quant-u-26723|)))
 (assert (forall ((s@$ $Snap) (y@0@00 Int)) (!
   (g%stateless y@0@00)
   :pattern ((g%limited s@$ y@0@00))
-  :qid |quant-u-26786|)))
+  :qid |quant-u-26724|)))
 (assert (forall ((s@$ $Snap) (x@2@00 Int)) (!
   (= (f1%limited s@$ x@2@00) (f1 s@$ x@2@00))
   :pattern ((f1 s@$ x@2@00))
-  :qid |quant-u-26787|)))
+  :qid |quant-u-26725|)))
 (assert (forall ((s@$ $Snap) (x@2@00 Int)) (!
   (f1%stateless x@2@00)
   :pattern ((f1%limited s@$ x@2@00))
-  :qid |quant-u-26788|)))
+  :qid |quant-u-26726|)))
 (assert (forall ((s@$ $Snap) (x@2@00 Int)) (!
   (=>
     (f1%precondition s@$ x@2@00)
@@ -198,7 +198,7 @@
             (f2%limited $Snap.unit (- 0 (- x@2@00 1))))
           (g $Snap.unit x@2@00)))))
   :pattern ((f1 s@$ x@2@00))
-  :qid |quant-u-26795|)))
+  :qid |quant-u-26733|)))
 (assert (forall ((s@$ $Snap) (x@2@00 Int)) (!
   (=>
     (f1%precondition s@$ x@2@00)
@@ -211,15 +211,15 @@
           (f2%precondition $Snap.unit (- 0 (- x@2@00 1))))
         (g%precondition $Snap.unit x@2@00))))
   :pattern ((f1 s@$ x@2@00))
-  :qid |quant-u-26796|)))
+  :qid |quant-u-26734|)))
 (assert (forall ((s@$ $Snap) (x@4@00 Int)) (!
   (= (f2%limited s@$ x@4@00) (f2 s@$ x@4@00))
   :pattern ((f2 s@$ x@4@00))
-  :qid |quant-u-26789|)))
+  :qid |quant-u-26727|)))
 (assert (forall ((s@$ $Snap) (x@4@00 Int)) (!
   (f2%stateless x@4@00)
   :pattern ((f2%limited s@$ x@4@00))
-  :qid |quant-u-26790|)))
+  :qid |quant-u-26728|)))
 (assert (forall ((s@$ $Snap) (x@4@00 Int)) (!
   (=>
     (f2%precondition s@$ x@4@00)
@@ -234,7 +234,7 @@
             (f1%limited $Snap.unit (- 0 (+ x@4@00 1))))
           (g $Snap.unit (- 0 x@4@00))))))
   :pattern ((f2 s@$ x@4@00))
-  :qid |quant-u-26797|)))
+  :qid |quant-u-26735|)))
 (assert (forall ((s@$ $Snap) (x@4@00 Int)) (!
   (=>
     (f2%precondition s@$ x@4@00)
@@ -247,15 +247,15 @@
           (f1%precondition $Snap.unit (- 0 (+ x@4@00 1))))
         (g%precondition $Snap.unit (- 0 x@4@00)))))
   :pattern ((f2 s@$ x@4@00))
-  :qid |quant-u-26798|)))
+  :qid |quant-u-26736|)))
 (assert (forall ((s@$ $Snap) (x@6@00 Int)) (!
   (= (f1_e%limited s@$ x@6@00) (f1_e s@$ x@6@00))
   :pattern ((f1_e s@$ x@6@00))
-  :qid |quant-u-26791|)))
+  :qid |quant-u-26729|)))
 (assert (forall ((s@$ $Snap) (x@6@00 Int)) (!
   (f1_e%stateless x@6@00)
   :pattern ((f1_e%limited s@$ x@6@00))
-  :qid |quant-u-26792|)))
+  :qid |quant-u-26730|)))
 (assert (forall ((s@$ $Snap) (x@6@00 Int)) (!
   (=>
     (f1_e%precondition s@$ x@6@00)
@@ -270,7 +270,7 @@
             (f2_e%limited $Snap.unit (- x@6@00 1)))
           (g $Snap.unit x@6@00)))))
   :pattern ((f1_e s@$ x@6@00))
-  :qid |quant-u-26799|)))
+  :qid |quant-u-26737|)))
 (assert (forall ((s@$ $Snap) (x@6@00 Int)) (!
   (=>
     (f1_e%precondition s@$ x@6@00)
@@ -283,15 +283,15 @@
           (f2_e%precondition $Snap.unit (- x@6@00 1)))
         (g%precondition $Snap.unit x@6@00))))
   :pattern ((f1_e s@$ x@6@00))
-  :qid |quant-u-26800|)))
+  :qid |quant-u-26738|)))
 (assert (forall ((s@$ $Snap) (x@8@00 Int)) (!
   (= (f2_e%limited s@$ x@8@00) (f2_e s@$ x@8@00))
   :pattern ((f2_e s@$ x@8@00))
-  :qid |quant-u-26793|)))
+  :qid |quant-u-26731|)))
 (assert (forall ((s@$ $Snap) (x@8@00 Int)) (!
   (f2_e%stateless x@8@00)
   :pattern ((f2_e%limited s@$ x@8@00))
-  :qid |quant-u-26794|)))
+  :qid |quant-u-26732|)))
 (assert (forall ((s@$ $Snap) (x@8@00 Int)) (!
   (=>
     (f2_e%precondition s@$ x@8@00)
@@ -306,7 +306,7 @@
             (f1_e%limited $Snap.unit (- 0 (+ x@8@00 1))))
           (g $Snap.unit x@8@00)))))
   :pattern ((f2_e s@$ x@8@00))
-  :qid |quant-u-26801|)))
+  :qid |quant-u-26739|)))
 (assert (forall ((s@$ $Snap) (x@8@00 Int)) (!
   (=>
     (f2_e%precondition s@$ x@8@00)
@@ -319,7 +319,7 @@
           (f1_e%precondition $Snap.unit (- 0 (+ x@8@00 1))))
         (g%precondition $Snap.unit x@8@00))))
   :pattern ((f2_e s@$ x@8@00))
-  :qid |quant-u-26802|)))
+  :qid |quant-u-26740|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- f1_termination_proof ----------

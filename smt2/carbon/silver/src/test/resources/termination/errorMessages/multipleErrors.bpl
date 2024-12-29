@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 10:57:16
+// Date:         2024-12-29 15:47:45
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/termination/errorMessages/multipleErrors.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/termination/errorMessages/multipleErrors-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -258,8 +258,8 @@ function  factorialPure#triggerStateless(n: int): int;
 procedure factorialPure#definedness(n: int) returns (Result: int)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -278,8 +278,8 @@ procedure factorialPure#definedness(n: int) returns (Result: int)
       } else {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           assert {:msg "  Precondition of function factorialPure might not hold. Assertion n - 1 >= 0 might not hold. (multipleErrors.vpr@13.22--13.40) [223958]"}
             n - 1 >= 0;
           // Stop execution
@@ -374,12 +374,12 @@ procedure length_3(x: Ref) returns (l_2: int)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var newVersion: FrameType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
@@ -407,8 +407,8 @@ procedure length_3(x: Ref) returns (l_2: int)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -425,8 +425,8 @@ procedure length_3(x: Ref) returns (l_2: int)
   // -- Translating statement: unfold acc(list(x), write) -- multipleErrors.vpr@28.5--28.19
     assume list#trigger(Heap, list(x));
     assume Heap[null, list(x)] == CombineFrames(FrameFragment(Heap[x, next]), CombineFrames(FrameFragment(Heap[x, value]), FrameFragment((if Heap[x, next] != null then Heap[null, list(Heap[x, next])] else EmptyFrame))));
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding list(x) might fail. There might be insufficient permission to access list(x) (multipleErrors.vpr@28.5--28.19) [223963]"}
@@ -471,8 +471,8 @@ procedure length_3(x: Ref) returns (l_2: int)
     } else {
       
       // -- Translating statement: assert false -- <no position>
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Assert might fail. Assertion false might not hold. (<no position>) [223968]"}
           false;
         assume state(Heap, Mask);
@@ -487,8 +487,8 @@ procedure length_3(x: Ref) returns (l_2: int)
         arg_x := Heap[x, next];
         
         // -- Exhaling precondition
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  The precondition of method length might not hold. There might be insufficient permission to access list(x.next) (multipleErrors.vpr@34.9--34.30) [223970]"}
@@ -517,8 +517,8 @@ procedure length_3(x: Ref) returns (l_2: int)
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(list(x), write) -- multipleErrors.vpr@37.5--37.17
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding list(x) might fail. There might be insufficient permission to access x.next (multipleErrors.vpr@37.5--37.17) [223973]"}
@@ -567,8 +567,8 @@ procedure length_3(x: Ref) returns (l_2: int)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of length might not hold. There might be insufficient permission to access list(x) (multipleErrors.vpr@26.14--26.21) [223979]"}
@@ -588,10 +588,10 @@ procedure length_3(x: Ref) returns (l_2: int)
 procedure factorialPure_termination_proof(n: int) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -606,16 +606,16 @@ procedure factorialPure_termination_proof(n: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: if (n == 0) -- <no position>
     if (n == 0) {
     } else {
       
       // -- Translating statement: assert false -- <no position>
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Assert might fail. Assertion false might not hold. (<no position>) [223980]"}
           false;
         assume state(Heap, Mask);

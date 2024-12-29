@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 10:37:57
+// Date:         2024-12-29 15:28:18
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/domains/domains_underspecified.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/domains/domains_underspecified-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -217,8 +217,8 @@ axiom (forall <S, T> x: S ::
 procedure m(x: (DDomainType int bool)) returns (r_1: (DDomainType bool int))
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var y: int;
   
   // -- Initializing the state
@@ -229,8 +229,8 @@ procedure m(x: (DDomainType int bool)) returns (r_1: (DDomainType bool int))
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: y := (f3((f5((f1(y): Int)): D[Int, Int])): Int) -- domains_underspecified.vpr@20.5--20.23
     y := (f3_1((f5((f1_2(y): int)): DDomainType int int)): int);

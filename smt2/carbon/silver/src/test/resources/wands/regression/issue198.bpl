@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 10:31:32
+// Date:         2024-12-29 15:21:52
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/issue198.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/issue198-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -343,19 +343,19 @@ procedure Q#definedness() returns ()
 procedure test01() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var Ops_1Heap: HeapType;
   var Ops_1Mask: MaskType;
   var b_1_1: bool;
   var UsedHeap: HeapType;
   var UsedMask: MaskType;
   var b_2: bool;
-  var Labellhs1Heap: HeapType;
   var Labellhs1Mask: MaskType;
+  var Labellhs1Heap: HeapType;
   var boolCur: bool;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var Used_1Heap: HeapType;
   var Used_1Mask: MaskType;
   var b_2_1: bool;
@@ -386,8 +386,8 @@ procedure test01() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: package true --* acc(P(), 1 / 1) {
   //   fold acc(P(), write)
@@ -407,15 +407,15 @@ procedure test01() returns ()
     
     // -- Translating statement: label lhs1 -- issue198.vpr@8.11--8.33
       lhs1:
-      Labellhs1Heap := Ops_1Heap;
       Labellhs1Mask := Ops_1Mask;
+      Labellhs1Heap := Ops_1Heap;
       b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);
     boolCur := true;
     if (b_1_1) {
       
       // -- Translating statement: fold acc(P(), write) -- issue198.vpr@9.7--9.15
-        ExhaleWellDef0Heap := Ops_1Heap;
         ExhaleWellDef0Mask := Ops_1Mask;
+        ExhaleWellDef0Heap := Ops_1Heap;
         havoc Used_1Heap;
         Used_1Mask := ZeroMask;
         b_2_1 := b_2_1 && state(Used_1Heap, Used_1Mask);
@@ -439,8 +439,8 @@ procedure test01() returns ()
     if (b_1_1) {
       
       // -- Translating statement: fold acc(P(), write) -- issue198.vpr@10.7--10.15
-        ExhaleWellDef0Heap := Ops_1Heap;
         ExhaleWellDef0Mask := Ops_1Mask;
+        ExhaleWellDef0Heap := Ops_1Heap;
         havoc Used_2Heap;
         Used_2Mask := ZeroMask;
         b_3 := b_3 && state(Used_2Heap, Used_2Mask);
@@ -542,19 +542,19 @@ procedure test01() returns ()
 procedure test02() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var Ops_3Heap: HeapType;
   var Ops_3Mask: MaskType;
   var b_7: bool;
   var Used_4Heap: HeapType;
   var Used_4Mask: MaskType;
   var b_6: bool;
-  var Labellhs3Heap: HeapType;
   var Labellhs3Mask: MaskType;
+  var Labellhs3Heap: HeapType;
   var boolCur_1: bool;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var Used_5Heap: HeapType;
   var Used_5Mask: MaskType;
   var b_8: bool;
@@ -588,8 +588,8 @@ procedure test02() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: package true --* acc(P(), 1 / 1) && acc(P(), 1 / 1) {
   //   fold acc(P(), write)
@@ -609,15 +609,15 @@ procedure test02() returns ()
     
     // -- Translating statement: label lhs3 -- issue198.vpr@15.11--15.50
       lhs3:
-      Labellhs3Heap := Ops_3Heap;
       Labellhs3Mask := Ops_3Mask;
+      Labellhs3Heap := Ops_3Heap;
       b_7 := b_7 && state(Ops_3Heap, Ops_3Mask);
     boolCur_1 := true;
     if (b_7) {
       
       // -- Translating statement: fold acc(P(), write) -- issue198.vpr@16.7--16.15
-        ExhaleWellDef0Heap := Ops_3Heap;
         ExhaleWellDef0Mask := Ops_3Mask;
+        ExhaleWellDef0Heap := Ops_3Heap;
         havoc Used_5Heap;
         Used_5Mask := ZeroMask;
         b_8 := b_8 && state(Used_5Heap, Used_5Mask);
@@ -641,8 +641,8 @@ procedure test02() returns ()
     if (b_7) {
       
       // -- Translating statement: fold acc(P(), write) -- issue198.vpr@17.7--17.15
-        ExhaleWellDef0Heap := Ops_3Heap;
         ExhaleWellDef0Mask := Ops_3Mask;
+        ExhaleWellDef0Heap := Ops_3Heap;
         havoc Used_6Heap;
         Used_6Mask := ZeroMask;
         b_9 := b_9 && state(Used_6Heap, Used_6Mask);
@@ -808,19 +808,19 @@ procedure test02() returns ()
 procedure test03() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var Ops_5Heap: HeapType;
   var Ops_5Mask: MaskType;
   var b_14: bool;
   var Used_8Heap: HeapType;
   var Used_8Mask: MaskType;
   var b_13: bool;
-  var Labellhs5Heap: HeapType;
   var Labellhs5Mask: MaskType;
+  var Labellhs5Heap: HeapType;
   var boolCur_2: bool;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var Used_9Heap: HeapType;
   var Used_9Mask: MaskType;
   var b_15: bool;
@@ -851,8 +851,8 @@ procedure test03() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: package true --* acc(P(), 2 / 1) {
   //   fold acc(P(), write)
@@ -872,15 +872,15 @@ procedure test03() returns ()
     
     // -- Translating statement: label lhs5 -- issue198.vpr@22.11--22.33
       lhs5:
-      Labellhs5Heap := Ops_5Heap;
       Labellhs5Mask := Ops_5Mask;
+      Labellhs5Heap := Ops_5Heap;
       b_14 := b_14 && state(Ops_5Heap, Ops_5Mask);
     boolCur_2 := true;
     if (b_14) {
       
       // -- Translating statement: fold acc(P(), write) -- issue198.vpr@23.5--23.13
-        ExhaleWellDef0Heap := Ops_5Heap;
         ExhaleWellDef0Mask := Ops_5Mask;
+        ExhaleWellDef0Heap := Ops_5Heap;
         havoc Used_9Heap;
         Used_9Mask := ZeroMask;
         b_15 := b_15 && state(Used_9Heap, Used_9Mask);
@@ -904,8 +904,8 @@ procedure test03() returns ()
     if (b_14) {
       
       // -- Translating statement: fold acc(P(), write) -- issue198.vpr@24.5--24.13
-        ExhaleWellDef0Heap := Ops_5Heap;
         ExhaleWellDef0Mask := Ops_5Mask;
+        ExhaleWellDef0Heap := Ops_5Heap;
         havoc Used_10Heap;
         Used_10Mask := ZeroMask;
         b_16 := b_16 && state(Used_10Heap, Used_10Mask);
@@ -1007,19 +1007,19 @@ procedure test03() returns ()
 procedure test04() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var Ops_7Heap: HeapType;
   var Ops_7Mask: MaskType;
   var b_20: bool;
   var Used_12Heap: HeapType;
   var Used_12Mask: MaskType;
   var b_19: bool;
-  var Labellhs7Heap: HeapType;
   var Labellhs7Mask: MaskType;
+  var Labellhs7Heap: HeapType;
   var boolCur_3: bool;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var Used_13Heap: HeapType;
   var Used_13Mask: MaskType;
   var b_21: bool;
@@ -1053,8 +1053,8 @@ procedure test04() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: package true --* acc(P(), 1 / 1) && acc(Q(), 1 / 1) {
   //   fold acc(P(), write)
@@ -1074,15 +1074,15 @@ procedure test04() returns ()
     
     // -- Translating statement: label lhs7 -- issue198.vpr@29.11--29.50
       lhs7:
-      Labellhs7Heap := Ops_7Heap;
       Labellhs7Mask := Ops_7Mask;
+      Labellhs7Heap := Ops_7Heap;
       b_20 := b_20 && state(Ops_7Heap, Ops_7Mask);
     boolCur_3 := true;
     if (b_20) {
       
       // -- Translating statement: fold acc(P(), write) -- issue198.vpr@30.7--30.15
-        ExhaleWellDef0Heap := Ops_7Heap;
         ExhaleWellDef0Mask := Ops_7Mask;
+        ExhaleWellDef0Heap := Ops_7Heap;
         havoc Used_13Heap;
         Used_13Mask := ZeroMask;
         b_21 := b_21 && state(Used_13Heap, Used_13Mask);
@@ -1106,8 +1106,8 @@ procedure test04() returns ()
     if (b_20) {
       
       // -- Translating statement: fold acc(Q(), write) -- issue198.vpr@31.7--31.15
-        ExhaleWellDef0Heap := Ops_7Heap;
         ExhaleWellDef0Mask := Ops_7Mask;
+        ExhaleWellDef0Heap := Ops_7Heap;
         havoc Used_14Heap;
         Used_14Mask := ZeroMask;
         b_22 := b_22 && state(Used_14Heap, Used_14Mask);

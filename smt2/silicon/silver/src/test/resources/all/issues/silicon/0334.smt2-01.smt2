@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-27 10:09:16
+; Started: 2024-12-29 14:59:25
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -650,11 +650,11 @@
     (tree_size_fix%limited s@$ tree@0@00 i@1@00 b@2@00)
     (tree_size_fix s@$ tree@0@00 i@1@00 b@2@00))
   :pattern ((tree_size_fix s@$ tree@0@00 i@1@00 b@2@00))
-  :qid |quant-u-24252|)))
+  :qid |quant-u-24189|)))
 (assert (forall ((s@$ $Snap) (tree@0@00 $Ref) (i@1@00 Int) (b@2@00 Int)) (!
   (tree_size_fix%stateless tree@0@00 i@1@00 b@2@00)
   :pattern ((tree_size_fix%limited s@$ tree@0@00 i@1@00 b@2@00))
-  :qid |quant-u-24253|)))
+  :qid |quant-u-24190|)))
 (assert (forall ((s@$ $Snap) (tree@0@00 $Ref) (i@1@00 Int) (b@2@00 Int)) (!
   (=>
     (tree_size_fix%precondition s@$ tree@0@00 i@1@00 b@2@00)
@@ -679,7 +679,7 @@
             $Snap.unit) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second s@$)))) i@1@00 b@2@00)))))
   :pattern ((tree_size_fix s@$ tree@0@00 i@1@00 b@2@00))
   :pattern ((tree_size_fix%stateless tree@0@00 i@1@00 b@2@00) (BTree%trigger s@$ tree@0@00))
-  :qid |quant-u-24256|)))
+  :qid |quant-u-24193|)))
 (assert (forall ((s@$ $Snap) (tree@0@00 $Ref) (i@1@00 Int) (b@2@00 Int)) (!
   (=>
     (tree_size_fix%precondition s@$ tree@0@00 i@1@00 b@2@00)
@@ -699,15 +699,15 @@
           ($Snap.first ($Snap.second ($Snap.second ($Snap.second s@$))))
           $Snap.unit) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second s@$)))) i@1@00 b@2@00))))
   :pattern ((tree_size_fix s@$ tree@0@00 i@1@00 b@2@00))
-  :qid |quant-u-24257|)))
+  :qid |quant-u-24194|)))
 (assert (forall ((s@$ $Snap) (tree@4@00 $Ref)) (!
   (= (tree_size%limited s@$ tree@4@00) (tree_size s@$ tree@4@00))
   :pattern ((tree_size s@$ tree@4@00))
-  :qid |quant-u-24254|)))
+  :qid |quant-u-24191|)))
 (assert (forall ((s@$ $Snap) (tree@4@00 $Ref)) (!
   (tree_size%stateless tree@4@00)
   :pattern ((tree_size%limited s@$ tree@4@00))
-  :qid |quant-u-24255|)))
+  :qid |quant-u-24192|)))
 (assert (forall ((s@$ $Snap) (tree@4@00 $Ref)) (!
   (=>
     (tree_size%precondition s@$ tree@4@00)
@@ -732,7 +732,7 @@
             $Snap.unit) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second s@$)))))))))
   :pattern ((tree_size s@$ tree@4@00))
   :pattern ((tree_size%stateless tree@4@00) (BTree%trigger s@$ tree@4@00))
-  :qid |quant-u-24258|)))
+  :qid |quant-u-24195|)))
 (assert (forall ((s@$ $Snap) (tree@4@00 $Ref)) (!
   (=>
     (tree_size%precondition s@$ tree@4@00)
@@ -752,7 +752,7 @@
           ($Snap.first ($Snap.second ($Snap.second ($Snap.second s@$))))
           $Snap.unit) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second s@$))))))))
   :pattern ((tree_size s@$ tree@4@00))
-  :qid |quant-u-24259|)))
+  :qid |quant-u-24196|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- toArray ----------

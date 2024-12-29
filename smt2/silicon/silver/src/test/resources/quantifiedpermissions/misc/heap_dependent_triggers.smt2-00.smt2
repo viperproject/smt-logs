@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-27 10:01:19
+; Started: 2024-12-29 14:51:08
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -805,7 +805,7 @@
   :pattern ((Set_in x@17@00 xs@0@00))
   :pattern ((inv@18@00 s@$ xs@0@00 i@1@00 x@17@00))
   :pattern ((img@19@00 s@$ xs@0@00 i@1@00 x@17@00))
-  :qid |quant-u-12149|)))
+  :qid |quant-u-12105|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -826,11 +826,11 @@
 (assert (forall ((s@$ $Snap) (xs@0@00 Set<$Ref>) (i@1@00 Int)) (!
   (= (fun01%limited s@$ xs@0@00 i@1@00) (fun01 s@$ xs@0@00 i@1@00))
   :pattern ((fun01 s@$ xs@0@00 i@1@00))
-  :qid |quant-u-12136|)))
+  :qid |quant-u-12092|)))
 (assert (forall ((s@$ $Snap) (xs@0@00 Set<$Ref>) (i@1@00 Int)) (!
   (fun01%stateless xs@0@00 i@1@00)
   :pattern ((fun01%limited s@$ xs@0@00 i@1@00))
-  :qid |quant-u-12137|)))
+  :qid |quant-u-12093|)))
 ; ---------- FUNCTION foo----------
 (declare-fun xs@3@00 () Set<$Ref>)
 (declare-fun i@4@00 () Int)
@@ -872,7 +872,7 @@
   :pattern ((Set_in x@20@00 xs@3@00))
   :pattern ((inv@21@00 s@$ xs@3@00 i@4@00 x@20@00))
   :pattern ((img@22@00 s@$ xs@3@00 i@4@00 x@20@00))
-  :qid |quant-u-12151|)))
+  :qid |quant-u-12107|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -893,11 +893,11 @@
 (assert (forall ((s@$ $Snap) (xs@3@00 Set<$Ref>) (i@4@00 Int)) (!
   (= (foo%limited s@$ xs@3@00 i@4@00) (foo s@$ xs@3@00 i@4@00))
   :pattern ((foo s@$ xs@3@00 i@4@00))
-  :qid |quant-u-12138|)))
+  :qid |quant-u-12094|)))
 (assert (forall ((s@$ $Snap) (xs@3@00 Set<$Ref>) (i@4@00 Int)) (!
   (foo%stateless xs@3@00 i@4@00)
   :pattern ((foo%limited s@$ xs@3@00 i@4@00))
-  :qid |quant-u-12139|)))
+  :qid |quant-u-12095|)))
 ; ---------- FUNCTION hm2m----------
 (declare-fun hm@6@00 () HeapMatrix)
 (declare-fun result@7@00 () Matrix)
@@ -939,7 +939,7 @@
   :pattern ((Set_in cell@23@00 (hm2set<Set<Ref>> hm@6@00)))
   :pattern ((inv@24@00 s@$ hm@6@00 cell@23@00))
   :pattern ((img@25@00 s@$ hm@6@00 cell@23@00))
-  :qid |quant-u-12153|)))
+  :qid |quant-u-12109|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -980,7 +980,7 @@
     (Set_in (inv@24@00 s@$ hm@6@00 r) (hm2set<Set<Ref>> hm@6@00))
     ($FVF.loc_cell_value ($FVF.lookup_cell_value (sm@26@00 s@$ hm@6@00) r) r))
   :pattern ((inv@24@00 s@$ hm@6@00 r))
-  :qid |quant-u-12154|)))
+  :qid |quant-u-12110|)))
 (declare-const $t@27@00 $Snap)
 (assert (= $t@27@00 $Snap.unit))
 ; [eval] (forall i: Int, j: Int :: { loc(hm, i, j).cell_value } { get(result, i, j) } hm_in_range(hm, i, j) ==> get(result, i, j) == loc(hm, i, j).cell_value)
@@ -1111,11 +1111,11 @@
 (assert (forall ((s@$ $Snap) (hm@6@00 HeapMatrix)) (!
   (= (hm2m%limited s@$ hm@6@00) (hm2m s@$ hm@6@00))
   :pattern ((hm2m s@$ hm@6@00))
-  :qid |quant-u-12140|)))
+  :qid |quant-u-12096|)))
 (assert (forall ((s@$ $Snap) (hm@6@00 HeapMatrix)) (!
   (hm2m%stateless hm@6@00)
   :pattern ((hm2m%limited s@$ hm@6@00))
-  :qid |quant-u-12141|)))
+  :qid |quant-u-12097|)))
 (assert (forall ((s@$ $Snap) (hm@6@00 HeapMatrix)) (!
   (let ((result@7@00 (hm2m%limited s@$ hm@6@00))) (and
     (forall ((cell@23@00 $Ref)) (!
@@ -1127,7 +1127,7 @@
       :pattern ((Set_in cell@23@00 (hm2set<Set<Ref>> hm@6@00)))
       :pattern ((inv@24@00 s@$ hm@6@00 cell@23@00))
       :pattern ((img@25@00 s@$ hm@6@00 cell@23@00))
-      :qid |quant-u-12153|))
+      :qid |quant-u-12109|))
     (forall ((r $Ref)) (!
       (=>
         (and
@@ -1163,11 +1163,11 @@
         :pattern ((get<Int> result@7@00 i j))
         )))))
   :pattern ((hm2m%limited s@$ hm@6@00))
-  :qid |quant-u-12155|)))
+  :qid |quant-u-12111|)))
 (assert (forall ((s@$ $Snap) (hm@6@00 HeapMatrix)) (!
   (let ((result@7@00 (hm2m%limited s@$ hm@6@00))) true)
   :pattern ((hm2m%limited s@$ hm@6@00))
-  :qid |quant-u-12156|)))
+  :qid |quant-u-12112|)))
 ; ---------- FUNCTION bar01----------
 (declare-fun xs@8@00 () Set<$Ref>)
 (declare-fun i@9@00 () Int)
@@ -1209,7 +1209,7 @@
   :pattern ((Set_in x@30@00 xs@8@00))
   :pattern ((inv@31@00 s@$ xs@8@00 i@9@00 x@30@00))
   :pattern ((img@32@00 s@$ xs@8@00 i@9@00 x@30@00))
-  :qid |quant-u-12158|)))
+  :qid |quant-u-12114|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -1230,11 +1230,11 @@
 (assert (forall ((s@$ $Snap) (xs@8@00 Set<$Ref>) (i@9@00 Int)) (!
   (= (bar01%limited s@$ xs@8@00 i@9@00) (bar01 s@$ xs@8@00 i@9@00))
   :pattern ((bar01 s@$ xs@8@00 i@9@00))
-  :qid |quant-u-12142|)))
+  :qid |quant-u-12098|)))
 (assert (forall ((s@$ $Snap) (xs@8@00 Set<$Ref>) (i@9@00 Int)) (!
   (bar01%stateless xs@8@00 i@9@00)
   :pattern ((bar01%limited s@$ xs@8@00 i@9@00))
-  :qid |quant-u-12143|)))
+  :qid |quant-u-12099|)))
 ; ---------- FUNCTION bar02----------
 (declare-fun xs@11@00 () Set<$Ref>)
 (declare-fun i@12@00 () Int)
@@ -1276,7 +1276,7 @@
   :pattern ((Set_in x@33@00 xs@11@00))
   :pattern ((inv@34@00 s@$ xs@11@00 i@12@00 x@33@00))
   :pattern ((img@35@00 s@$ xs@11@00 i@12@00 x@33@00))
-  :qid |quant-u-12160|)))
+  :qid |quant-u-12116|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -1297,11 +1297,11 @@
 (assert (forall ((s@$ $Snap) (xs@11@00 Set<$Ref>) (i@12@00 Int)) (!
   (= (bar02%limited s@$ xs@11@00 i@12@00) (bar02 s@$ xs@11@00 i@12@00))
   :pattern ((bar02 s@$ xs@11@00 i@12@00))
-  :qid |quant-u-12144|)))
+  :qid |quant-u-12100|)))
 (assert (forall ((s@$ $Snap) (xs@11@00 Set<$Ref>) (i@12@00 Int)) (!
   (bar02%stateless xs@11@00 i@12@00)
   :pattern ((bar02%limited s@$ xs@11@00 i@12@00))
-  :qid |quant-u-12145|)))
+  :qid |quant-u-12101|)))
 ; ---------- FUNCTION fun02----------
 (declare-fun xs@14@00 () Set<$Ref>)
 (declare-fun i@15@00 () Int)
@@ -1343,7 +1343,7 @@
   :pattern ((Set_in x@36@00 xs@14@00))
   :pattern ((inv@37@00 s@$ xs@14@00 i@15@00 x@36@00))
   :pattern ((img@38@00 s@$ xs@14@00 i@15@00 x@36@00))
-  :qid |quant-u-12162|)))
+  :qid |quant-u-12118|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -1364,8 +1364,8 @@
 (assert (forall ((s@$ $Snap) (xs@14@00 Set<$Ref>) (i@15@00 Int)) (!
   (= (fun02%limited s@$ xs@14@00 i@15@00) (fun02 s@$ xs@14@00 i@15@00))
   :pattern ((fun02 s@$ xs@14@00 i@15@00))
-  :qid |quant-u-12146|)))
+  :qid |quant-u-12102|)))
 (assert (forall ((s@$ $Snap) (xs@14@00 Set<$Ref>) (i@15@00 Int)) (!
   (fun02%stateless xs@14@00 i@15@00)
   :pattern ((fun02%limited s@$ xs@14@00 i@15@00))
-  :qid |quant-u-12147|)))
+  :qid |quant-u-12103|)))

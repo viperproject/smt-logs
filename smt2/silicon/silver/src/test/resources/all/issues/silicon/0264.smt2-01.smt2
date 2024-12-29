@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-27 10:09:06
+; Started: 2024-12-29 14:59:14
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -287,41 +287,41 @@
 (assert (forall ((s@$ $Snap) (ref@0@00 $Ref)) (!
   (= (getWSet%limited s@$ ref@0@00) (getWSet s@$ ref@0@00))
   :pattern ((getWSet s@$ ref@0@00))
-  :qid |quant-u-23968|)))
+  :qid |quant-u-23905|)))
 (assert (forall ((s@$ $Snap) (ref@0@00 $Ref)) (!
   (getWSet%stateless ref@0@00)
   :pattern ((getWSet%limited s@$ ref@0@00))
-  :qid |quant-u-23969|)))
+  :qid |quant-u-23906|)))
 (assert (forall ((s@$ $Snap) (root@2@00 $Ref) (nodes@3@00 Set<$Ref>)) (!
   (=
     (validList_abstract%limited s@$ root@2@00 nodes@3@00)
     (validList_abstract s@$ root@2@00 nodes@3@00))
   :pattern ((validList_abstract s@$ root@2@00 nodes@3@00))
-  :qid |quant-u-23970|)))
+  :qid |quant-u-23907|)))
 (assert (forall ((s@$ $Snap) (root@2@00 $Ref) (nodes@3@00 Set<$Ref>)) (!
   (validList_abstract%stateless root@2@00 nodes@3@00)
   :pattern ((validList_abstract%limited s@$ root@2@00 nodes@3@00))
-  :qid |quant-u-23971|)))
+  :qid |quant-u-23908|)))
 (assert (forall ((s@$ $Snap) (root@5@00 $Ref) (nodes@6@00 Set<$Ref>)) (!
   (=
     (validList%limited s@$ root@5@00 nodes@6@00)
     (validList s@$ root@5@00 nodes@6@00))
   :pattern ((validList s@$ root@5@00 nodes@6@00))
-  :qid |quant-u-23972|)))
+  :qid |quant-u-23909|)))
 (assert (forall ((s@$ $Snap) (root@5@00 $Ref) (nodes@6@00 Set<$Ref>)) (!
   (validList%stateless root@5@00 nodes@6@00)
   :pattern ((validList%limited s@$ root@5@00 nodes@6@00))
-  :qid |quant-u-23973|)))
+  :qid |quant-u-23910|)))
 (assert (forall ((s@$ $Snap) (root@5@00 $Ref) (nodes@6@00 Set<$Ref>)) (!
   (=>
     (validList%precondition s@$ root@5@00 nodes@6@00)
     (= (validList s@$ root@5@00 nodes@6@00) true))
   :pattern ((validList s@$ root@5@00 nodes@6@00))
-  :qid |quant-u-23974|)))
+  :qid |quant-u-23911|)))
 (assert (forall ((s@$ $Snap) (root@5@00 $Ref) (nodes@6@00 Set<$Ref>)) (!
   true
   :pattern ((validList s@$ root@5@00 nodes@6@00))
-  :qid |quant-u-23975|)))
+  :qid |quant-u-23912|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- validList_method ----------

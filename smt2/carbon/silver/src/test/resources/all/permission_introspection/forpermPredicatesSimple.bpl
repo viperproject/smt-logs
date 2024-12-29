@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 10:37:43
+// Date:         2024-12-29 15:28:04
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/permission_introspection/forpermPredicatesSimple.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/permission_introspection/forpermPredicatesSimple-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -327,10 +327,10 @@ procedure P3#definedness(this: Ref) returns ()
 procedure noPredicates() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var r_36: Ref;
   var r_27: Ref;
   
@@ -342,12 +342,12 @@ procedure noPredicates() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert (forperm r: Ref [P1(r)] :: false) -- forpermPredicatesSimple.vpr@18.3--18.41
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forperm r: Ref [P1(r)] :: false)
       if (*) {
@@ -365,8 +365,8 @@ procedure noPredicates() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forperm r: Ref [P2(r)] :: false) -- forpermPredicatesSimple.vpr@19.3--19.41
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forperm r: Ref [P2(r)] :: false)
       if (*) {
@@ -391,12 +391,12 @@ procedure noPredicates() returns ()
 procedure noPredicates2() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var ref: Ref;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var r_28: Ref;
   var r_38: Ref;
   
@@ -408,8 +408,8 @@ procedure noPredicates2() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[ref, $allocated];
@@ -422,8 +422,8 @@ procedure noPredicates2() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forperm r: Ref [P1(r)] :: false) -- forpermPredicatesSimple.vpr@26.3--26.41
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forperm r: Ref [P1(r)] :: false)
       if (*) {
@@ -441,8 +441,8 @@ procedure noPredicates2() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forperm r: Ref [P2(r)] :: false) -- forpermPredicatesSimple.vpr@27.3--27.41
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forperm r: Ref [P2(r)] :: false)
       if (*) {
@@ -467,12 +467,12 @@ procedure noPredicates2() returns ()
 procedure permOnlyOnePredicate1() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var ref: Ref;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var r_12: Ref;
   
   // -- Initializing the state
@@ -483,8 +483,8 @@ procedure permOnlyOnePredicate1() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[ref, $allocated];
@@ -497,8 +497,8 @@ procedure permOnlyOnePredicate1() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forperm r: Ref [P1(r)] :: false) -- forpermPredicatesSimple.vpr@35.3--35.41
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forperm r: Ref [P1(r)] :: false)
       if (*) {
@@ -523,12 +523,12 @@ procedure permOnlyOnePredicate1() returns ()
 procedure permOnlyOnePredicate2() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var ref: Ref;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var r_41: Ref;
   var r_30: Ref;
   
@@ -540,8 +540,8 @@ procedure permOnlyOnePredicate2() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[ref, $allocated];
@@ -554,8 +554,8 @@ procedure permOnlyOnePredicate2() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forperm r: Ref [P2(r)] :: false) -- forpermPredicatesSimple.vpr@42.3--42.41
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forperm r: Ref [P2(r)] :: false)
       if (*) {
@@ -573,8 +573,8 @@ procedure permOnlyOnePredicate2() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forperm r: Ref [P1(r)] :: false) -- forpermPredicatesSimple.vpr@44.3--44.41
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forperm r: Ref [P1(r)] :: false)
       if (*) {
@@ -599,12 +599,12 @@ procedure permOnlyOnePredicate2() returns ()
 procedure permCheck() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var ref: Ref;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var r_32: Ref;
   var r_42: Ref;
@@ -617,8 +617,8 @@ procedure permCheck() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[ref, $allocated];
@@ -631,8 +631,8 @@ procedure permCheck() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(P1(ref), write) -- forpermPredicatesSimple.vpr@51.3--51.22
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Exhale might fail. There might be insufficient permission to access P1(ref) (forpermPredicatesSimple.vpr@51.10--51.22) [142853]"}
@@ -646,8 +646,8 @@ procedure permCheck() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forperm r: Ref [P1(r)] :: false) -- forpermPredicatesSimple.vpr@52.3--52.41
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forperm r: Ref [P1(r)] :: false)
       if (*) {
@@ -665,8 +665,8 @@ procedure permCheck() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forperm r: Ref [P2(r)] :: false) -- forpermPredicatesSimple.vpr@53.3--53.41
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forperm r: Ref [P2(r)] :: false)
       if (*) {

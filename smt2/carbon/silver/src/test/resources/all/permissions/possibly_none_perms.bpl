@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 10:44:42
+// Date:         2024-12-29 15:35:06
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/permissions/possibly_none_perms.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/permissions/possibly_none_perms-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -189,8 +189,8 @@ procedure test01(x: Ref, b_24: bool) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var a_2: int;
   
   // -- Initializing the state
@@ -213,8 +213,8 @@ procedure test01(x: Ref, b_24: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: a := x.f -- possibly_none_perms.vpr@10.3--10.20
     
@@ -233,11 +233,11 @@ procedure test02(x: Ref, b1: bool, b2: bool) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var a1: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var a2: int;
   var a3: int;
@@ -262,8 +262,8 @@ procedure test02(x: Ref, b1: bool, b2: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: a1 := x.f -- possibly_none_perms.vpr@16.3--16.21
     
@@ -274,8 +274,8 @@ procedure test02(x: Ref, b1: bool, b2: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(x.f, (b1 ? 1 / 5 : none)) -- possibly_none_perms.vpr@18.3--18.35
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := (if b1 then 1 / 5 else NoPerm);
     assert {:msg "  Exhale might fail. Fraction (b1 ? 1 / 5 : none) might be negative. (possibly_none_perms.vpr@18.10--18.35) [189908]"}
       perm >= NoPerm;
@@ -301,8 +301,8 @@ procedure test02(x: Ref, b1: bool, b2: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert true -- possibly_none_perms.vpr@20.3--20.14
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assume state(Heap, Mask);
   
   // -- Translating statement: a2 := x.f -- possibly_none_perms.vpr@21.3--21.21
@@ -314,8 +314,8 @@ procedure test02(x: Ref, b1: bool, b2: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(x.f, (b2 ? 1 / 5 : none)) -- possibly_none_perms.vpr@23.3--23.35
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := (if b2 then 1 / 5 else NoPerm);
     assert {:msg "  Exhale might fail. Fraction (b2 ? 1 / 5 : none) might be negative. (possibly_none_perms.vpr@23.10--23.35) [189913]"}
       perm >= NoPerm;
@@ -341,8 +341,8 @@ procedure test02(x: Ref, b1: bool, b2: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert true -- possibly_none_perms.vpr@25.3--25.14
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assume state(Heap, Mask);
   
   // -- Translating statement: a3 := x.f -- possibly_none_perms.vpr@26.3--26.21
@@ -354,8 +354,8 @@ procedure test02(x: Ref, b1: bool, b2: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert !b1 ==> a1 == a2 && a2 == a3 -- possibly_none_perms.vpr@28.3--28.38
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     if (!b1) {
       assert {:msg "  Assert might fail. Assertion a1 == a2 might not hold. (possibly_none_perms.vpr@28.10--28.38) [189918]"}
         a1 == a2;
@@ -365,8 +365,8 @@ procedure test02(x: Ref, b1: bool, b2: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert !b2 ==> a2 == a3 -- possibly_none_perms.vpr@29.3--29.26
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     if (!b2) {
       assert {:msg "  Assert might fail. Assertion a2 == a3 might not hold. (possibly_none_perms.vpr@29.10--29.26) [189920]"}
         a2 == a3;
@@ -374,8 +374,8 @@ procedure test02(x: Ref, b1: bool, b2: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert a1 == a3 || (a1 == a2 || a2 == a3) -- possibly_none_perms.vpr@32.3--32.42
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion a1 == a3 || (a1 == a2 || a2 == a3) might not hold. (possibly_none_perms.vpr@32.10--32.42) [189921]"}
       a1 == a3 || (a1 == a2 || a2 == a3);
     assume state(Heap, Mask);
@@ -389,10 +389,10 @@ procedure test03(x: Ref, b_24: bool) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var wildcard: real where wildcard > NoPerm;
   var ExhaleHeap: HeapType;
   
@@ -416,12 +416,12 @@ procedure test03(x: Ref, b_24: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: exhale acc(x.f, wildcard) -- possibly_none_perms.vpr@39.3--39.28
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (possibly_none_perms.vpr@39.10--39.28) [189923]"}
       Mask[x, f_7] > NoPerm;
     havoc wildcard;
@@ -441,8 +441,8 @@ procedure test03(x: Ref, b_24: bool) returns ()
 procedure permarg(k: Perm) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -452,6 +452,6 @@ procedure permarg(k: Perm) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
 }

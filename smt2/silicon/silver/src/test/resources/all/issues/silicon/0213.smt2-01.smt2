@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-27 10:10:05
+; Started: 2024-12-29 15:00:14
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -352,7 +352,7 @@
         ($Snap.combine $t@7@01 ($Snap.second ($Snap.second $t@4@01))))
       $Snap.unit))
   :pattern ((MWSF_apply mwsf@8@01 $t@7@01))
-  :qid |quant-u-25377|)))
+  :qid |quant-u-25315|)))
 ; [eval] old((unfolding acc(Foo(x), 1 / 2) in x.val))
 ; [eval] (unfolding acc(Foo(x), 1 / 2) in x.val)
 (set-option :timeout 0)
@@ -388,7 +388,7 @@
         ($Snap.combine $t@7@01 ($Snap.second ($Snap.second $t@4@01))))
       $Snap.unit))
   :pattern ((MWSF_apply mwsf@8@01 $t@7@01))
-  :qid |quant-u-25378|)))
+  :qid |quant-u-25316|)))
 (assert true)
 (push) ; 4
 (set-option :timeout 10)
@@ -591,7 +591,7 @@
         ($Snap.combine $t@16@01 ($SortWrappers.IntTo$Snap 10)))
       $Snap.unit))
   :pattern ((MWSF_apply mwsf@17@01 $t@16@01))
-  :qid |quant-u-25379|)))
+  :qid |quant-u-25317|)))
 (pop) ; 3
 (set-option :timeout 0)
 (push) ; 3
@@ -604,7 +604,7 @@
         ($Snap.combine $t@16@01 ($SortWrappers.IntTo$Snap 10)))
       $Snap.unit))
   :pattern ((MWSF_apply mwsf@17@01 $t@16@01))
-  :qid |quant-u-25380|)))
+  :qid |quant-u-25318|)))
 (assert true)
 (push) ; 4
 (set-option :timeout 10)
@@ -695,7 +695,7 @@
     (MWSF_apply mwsf@26@01 $t@25@01)
     ($Snap.combine ($Snap.second ($Snap.second $t@22@01)) $Snap.unit))
   :pattern ((MWSF_apply mwsf@26@01 $t@25@01))
-  :qid |quant-u-25381|)))
+  :qid |quant-u-25319|)))
 ; [eval] old(x.val)
 (pop) ; 3
 (set-option :timeout 0)
@@ -705,7 +705,7 @@
     (MWSF_apply mwsf@26@01 $t@25@01)
     ($Snap.combine ($Snap.second ($Snap.second $t@22@01)) $Snap.unit))
   :pattern ((MWSF_apply mwsf@26@01 $t@25@01))
-  :qid |quant-u-25382|)))
+  :qid |quant-u-25320|)))
 (assert true)
 (push) ; 4
 (set-option :timeout 10)

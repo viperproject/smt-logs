@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 10:37:25
+// Date:         2024-12-29 15:27:46
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/invariants/while1.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/invariants/while1-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -246,12 +246,12 @@ procedure test01(x: Ref) returns (b_24: bool)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var loopHeap: HeapType;
   var loopMask: MaskType;
@@ -274,8 +274,8 @@ procedure test01(x: Ref) returns (b_24: bool)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -302,8 +302,8 @@ procedure test01(x: Ref) returns (b_24: bool)
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := 1 / 2;
         assert {:msg "  Loop invariant acc(x.f, 1 / 2) might not hold on entry. Fraction 1 / 2 might be negative. (while1.vpr@11.15--11.28) [141492]"}
           perm >= NoPerm;
@@ -357,8 +357,8 @@ procedure test01(x: Ref) returns (b_24: bool)
             b_24 := !b_24;
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := 1 / 2;
         assert {:msg "  Loop invariant acc(x.f, 1 / 2) might not be preserved. Fraction 1 / 2 might be negative. (while1.vpr@11.15--11.28) [141496]"}
           perm >= NoPerm;
@@ -388,8 +388,8 @@ procedure test01(x: Ref) returns (b_24: bool)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of test01 might not hold. There might be insufficient permission to access x.f (while1.vpr@8.12--8.39) [141499]"}
@@ -411,10 +411,10 @@ procedure test01(x: Ref) returns (b_24: bool)
 procedure test02(x: Ref) returns (b_24: bool)
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var perm: Perm;
   var ExhaleHeap: HeapType;
   var loopHeap: HeapType;
@@ -431,16 +431,16 @@ procedure test02(x: Ref) returns (b_24: bool)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: while (b) -- while1.vpr@18.3--23.4
     
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := 1 / 2;
         assert {:msg "  Loop invariant acc(x.f, 1 / 2) might not hold on entry. Fraction 1 / 2 might be negative. (while1.vpr@20.15--20.28) [141501]"}
           perm >= NoPerm;
@@ -494,8 +494,8 @@ procedure test02(x: Ref) returns (b_24: bool)
             b_24 := !b_24;
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := 1 / 2;
         assert {:msg "  Loop invariant acc(x.f, 1 / 2) might not be preserved. Fraction 1 / 2 might be negative. (while1.vpr@20.15--20.28) [141505]"}
           perm >= NoPerm;
@@ -533,10 +533,10 @@ procedure test03(x: Ref) returns (b_24: bool)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var loopHeap: HeapType;
   var loopMask: MaskType;
@@ -559,16 +559,16 @@ procedure test03(x: Ref) returns (b_24: bool)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: while (b) -- while1.vpr@29.3--35.4
     
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := 1 / 2;
         assert {:msg "  Loop invariant acc(x.f, 1 / 2) might not hold on entry. Fraction 1 / 2 might be negative. (while1.vpr@31.15--31.28) [141508]"}
           perm >= NoPerm;
@@ -619,8 +619,8 @@ procedure test03(x: Ref) returns (b_24: bool)
         // -- Translate loop body
           
           // -- Translating statement: exhale acc(x.f, 1 / 4) -- while1.vpr@33.5--33.25
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             perm := 1 / 4;
             assert {:msg "  Exhale might fail. Fraction 1 / 4 might be negative. (while1.vpr@33.12--33.25) [141512]"}
               perm >= NoPerm;
@@ -639,8 +639,8 @@ procedure test03(x: Ref) returns (b_24: bool)
             b_24 := !b_24;
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := 1 / 2;
         assert {:msg "  Loop invariant acc(x.f, 1 / 2) might not be preserved. Fraction 1 / 2 might be negative. (while1.vpr@31.15--31.28) [141514]"}
           perm >= NoPerm;
@@ -679,12 +679,12 @@ procedure test20a(x: Ref, y: Ref) returns (n: int)
 {
   var brk_lblGuard: bool;
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var frameMask1: MaskType;
   var frameHeap1: HeapType;
@@ -692,8 +692,8 @@ procedure test20a(x: Ref, y: Ref) returns (n: int)
   var loopMask: MaskType;
   var LoopSumHeap: HeapType;
   var LoopSumMask: MaskType;
-  var LabelbrkHeap: HeapType;
   var LabelbrkMask: MaskType;
+  var LabelbrkHeap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -715,8 +715,8 @@ procedure test20a(x: Ref, y: Ref) returns (n: int)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -750,8 +750,8 @@ procedure test20a(x: Ref, y: Ref) returns (n: int)
     // -- Before loop head1
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := 1 / 2;
         assert {:msg "  Loop invariant acc(x.f, 1 / 2) might not hold on entry. Fraction 1 / 2 might be negative. (while1.vpr@44.15--44.28) [141519]"}
           perm >= NoPerm;
@@ -850,8 +850,8 @@ procedure test20a(x: Ref, y: Ref) returns (n: int)
   // inhale true -- <no position>
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := 1 / 2;
         assert {:msg "  Loop invariant acc(x.f, 1 / 2) might not be preserved. Fraction 1 / 2 might be negative. (while1.vpr@44.15--44.28) [141523]"}
           perm >= NoPerm;
@@ -884,8 +884,8 @@ procedure test20a(x: Ref, y: Ref) returns (n: int)
   // // LoopInfo(None,Set())
   // label brk -- while1.vpr@54.3--54.12
     brk:
-    LabelbrkHeap := Heap;
     LabelbrkMask := Mask;
+    LabelbrkHeap := Heap;
     brk_lblGuard := true;
     assume state(Heap, Mask);
   
@@ -894,8 +894,8 @@ procedure test20a(x: Ref, y: Ref) returns (n: int)
       
       // -- Translating statement: // id = 8
   // assert perm(y.f) == none -- while1.vpr@58.5--58.29
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Assert might fail. Assertion perm(y.f) == none might not hold. (while1.vpr@58.12--58.29) [141526]"}
           Mask[y, f_7] == NoPerm;
         assume state(Heap, Mask);
@@ -909,8 +909,8 @@ procedure test20a(x: Ref, y: Ref) returns (n: int)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     if (n == 42) {
       perm := FullPerm;
       if (perm != NoPerm) {
@@ -942,12 +942,12 @@ procedure test20b(x: Ref, y: Ref) returns (n: int)
 {
   var brk_lblGuard: bool;
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var frameMask1: MaskType;
   var frameHeap1: HeapType;
@@ -955,8 +955,8 @@ procedure test20b(x: Ref, y: Ref) returns (n: int)
   var loopMask: MaskType;
   var LoopSumHeap: HeapType;
   var LoopSumMask: MaskType;
-  var LabelbrkHeap: HeapType;
   var LabelbrkMask: MaskType;
+  var LabelbrkHeap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -979,8 +979,8 @@ procedure test20b(x: Ref, y: Ref) returns (n: int)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1014,8 +1014,8 @@ procedure test20b(x: Ref, y: Ref) returns (n: int)
     // -- Before loop head1
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := 1 / 2;
         assert {:msg "  Loop invariant acc(x.f, 1 / 2) might not hold on entry. Fraction 1 / 2 might be negative. (while1.vpr@68.15--68.28) [141532]"}
           perm >= NoPerm;
@@ -1114,8 +1114,8 @@ procedure test20b(x: Ref, y: Ref) returns (n: int)
   // inhale true -- <no position>
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := 1 / 2;
         assert {:msg "  Loop invariant acc(x.f, 1 / 2) might not be preserved. Fraction 1 / 2 might be negative. (while1.vpr@68.15--68.28) [141536]"}
           perm >= NoPerm;
@@ -1148,8 +1148,8 @@ procedure test20b(x: Ref, y: Ref) returns (n: int)
   // // LoopInfo(None,Set())
   // label brk -- while1.vpr@78.3--78.12
     brk:
-    LabelbrkHeap := Heap;
     LabelbrkMask := Mask;
+    LabelbrkHeap := Heap;
     brk_lblGuard := true;
     assume state(Heap, Mask);
   
@@ -1158,8 +1158,8 @@ procedure test20b(x: Ref, y: Ref) returns (n: int)
       
       // -- Translating statement: // id = 8
   // assert perm(y.f) == none -- while1.vpr@81.5--81.29
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Assert might fail. Assertion perm(y.f) == none might not hold. (while1.vpr@81.12--81.29) [141539]"}
           Mask[y, f_7] == NoPerm;
         assume state(Heap, Mask);
@@ -1173,8 +1173,8 @@ procedure test20b(x: Ref, y: Ref) returns (n: int)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     if (n == 42) {
       perm := FullPerm;
       if (perm != NoPerm) {

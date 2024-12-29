@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-27 09:59:41
+; Started: 2024-12-29 14:49:30
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -121,21 +121,21 @@
     (Option$discriminant%limited s@$ self@0@00)
     (Option$discriminant s@$ self@0@00))
   :pattern ((Option$discriminant s@$ self@0@00))
-  :qid |quant-u-5196|)))
+  :qid |quant-u-5152|)))
 (assert (forall ((s@$ $Snap) (self@0@00 $Ref)) (!
   (Option$discriminant%stateless self@0@00)
   :pattern ((Option$discriminant%limited s@$ self@0@00))
-  :qid |quant-u-5197|)))
+  :qid |quant-u-5153|)))
 (assert (forall ((s@$ $Snap) (self@0@00 $Ref)) (!
   (=>
     (Option$discriminant%precondition s@$ self@0@00)
     (= (Option$discriminant s@$ self@0@00) ($SortWrappers.$SnapToInt s@$)))
   :pattern ((Option$discriminant s@$ self@0@00))
-  :qid |quant-u-5198|)))
+  :qid |quant-u-5154|)))
 (assert (forall ((s@$ $Snap) (self@0@00 $Ref)) (!
   true
   :pattern ((Option$discriminant s@$ self@0@00))
-  :qid |quant-u-5199|)))
+  :qid |quant-u-5155|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- test ----------

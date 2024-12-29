@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-27 10:09:51
+; Started: 2024-12-29 15:00:00
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -770,7 +770,7 @@
     (Set_in a@7@00 as@0@00)
     (and (= (inv@9@00 s@$ as@0@00 a@7@00) a@7@00) (img@10@00 s@$ as@0@00 a@7@00)))
   :pattern (($FVF.loc_val ($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> s@$) a@7@00) a@7@00))
-  :qid |quant-u-24852|)))
+  :qid |quant-u-24790|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and (img@10@00 s@$ as@0@00 r) (Set_in (inv@9@00 s@$ as@0@00 r) as@0@00))
@@ -803,16 +803,16 @@
     (Set_in (inv@9@00 s@$ as@0@00 r) as@0@00)
     ($FVF.loc_val ($FVF.lookup_val (sm@11@00 s@$ as@0@00) r) r))
   :pattern ((inv@9@00 s@$ as@0@00 r))
-  :qid |quant-u-24853|)))
+  :qid |quant-u-24791|)))
 (pop) ; 1
 (assert (forall ((s@$ $Snap) (as@0@00 Set<$Ref>)) (!
   (= (foo_vals%limited s@$ as@0@00) (foo_vals s@$ as@0@00))
   :pattern ((foo_vals s@$ as@0@00))
-  :qid |quant-u-24845|)))
+  :qid |quant-u-24783|)))
 (assert (forall ((s@$ $Snap) (as@0@00 Set<$Ref>)) (!
   (foo_vals%stateless as@0@00)
   :pattern ((foo_vals%limited s@$ as@0@00))
-  :qid |quant-u-24846|)))
+  :qid |quant-u-24784|)))
 ; ---------- FUNCTION foo_twos----------
 (declare-fun as@2@00 () Set<$Ref>)
 (declare-fun is@3@00 () Set<Int>)
@@ -893,7 +893,7 @@
     ($SortWrappers.IntTo$Snap i@13@00))) ($Snap.combine
     ($SortWrappers.$RefTo$Snap a@12@00)
     ($SortWrappers.IntTo$Snap i@13@00))))
-  :qid |quant-u-24855|)))
+  :qid |quant-u-24793|)))
 (assert (forall ((a $Ref) (i Int)) (!
   (=>
     (and
@@ -945,16 +945,16 @@
       ($SortWrappers.$RefTo$Snap a)
       ($SortWrappers.IntTo$Snap i))))
   :pattern ((inv@16@00 s@$ as@2@00 is@3@00 a i) (inv@18@00 s@$ as@2@00 is@3@00 a i))
-  :qid |quant-u-24856|)))
+  :qid |quant-u-24794|)))
 (pop) ; 1
 (assert (forall ((s@$ $Snap) (as@2@00 Set<$Ref>) (is@3@00 Set<Int>)) (!
   (= (foo_twos%limited s@$ as@2@00 is@3@00) (foo_twos s@$ as@2@00 is@3@00))
   :pattern ((foo_twos s@$ as@2@00 is@3@00))
-  :qid |quant-u-24847|)))
+  :qid |quant-u-24785|)))
 (assert (forall ((s@$ $Snap) (as@2@00 Set<$Ref>) (is@3@00 Set<Int>)) (!
   (foo_twos%stateless as@2@00 is@3@00)
   :pattern ((foo_twos%limited s@$ as@2@00 is@3@00))
-  :qid |quant-u-24848|)))
+  :qid |quant-u-24786|)))
 ; ---------- FUNCTION foo_ones----------
 (declare-fun as@5@00 () Set<$Ref>)
 (declare-fun result@6@00 () Int)
@@ -996,7 +996,7 @@
       (= (inv@25@00 s@$ as@5@00 a@22@00) a@22@00)
       (img@26@00 s@$ as@5@00 a@22@00)))
   :pattern (($PSF.loc_one ($PSF.lookup_one ($SortWrappers.$SnapTo$PSF<one> s@$) ($SortWrappers.$RefTo$Snap a@22@00)) ($SortWrappers.$RefTo$Snap a@22@00)))
-  :qid |quant-u-24858|)))
+  :qid |quant-u-24796|)))
 (assert (forall ((a $Ref)) (!
   (=>
     (and (img@26@00 s@$ as@5@00 a) (Set_in (inv@25@00 s@$ as@5@00 a) as@5@00))
@@ -1029,16 +1029,16 @@
     (Set_in (inv@25@00 s@$ as@5@00 a) as@5@00)
     ($PSF.loc_one ($PSF.lookup_one (sm@27@00 s@$ as@5@00) ($SortWrappers.$RefTo$Snap a)) ($SortWrappers.$RefTo$Snap a)))
   :pattern ((inv@25@00 s@$ as@5@00 a))
-  :qid |quant-u-24859|)))
+  :qid |quant-u-24797|)))
 (pop) ; 1
 (assert (forall ((s@$ $Snap) (as@5@00 Set<$Ref>)) (!
   (= (foo_ones%limited s@$ as@5@00) (foo_ones s@$ as@5@00))
   :pattern ((foo_ones s@$ as@5@00))
-  :qid |quant-u-24849|)))
+  :qid |quant-u-24787|)))
 (assert (forall ((s@$ $Snap) (as@5@00 Set<$Ref>)) (!
   (foo_ones%stateless as@5@00)
   :pattern ((foo_ones%limited s@$ as@5@00))
-  :qid |quant-u-24850|)))
+  :qid |quant-u-24788|)))
 ; ---------- one ----------
 (declare-const a@29@00 $Ref)
 (push) ; 1

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 10:35:39
+// Date:         2024-12-29 15:26:00
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/new_syntax/AssertUnfolding.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/new_syntax/AssertUnfolding-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -263,8 +263,8 @@ procedure func#definedness(x: Ref) returns (Result: int)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -286,8 +286,8 @@ procedure func#definedness(x: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume P#trigger(UnfoldingHeap, P(x));
       assume UnfoldingHeap[null, P(x)] == FrameFragment(UnfoldingHeap[x, i_98]);
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access P(x) (AssertUnfolding.vpr@10.1--13.2) [138454]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, P(x)];
@@ -370,21 +370,21 @@ procedure test0(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var Ops_1Heap: HeapType;
   var Ops_1Mask: MaskType;
   var b_1_1: bool;
   var UsedHeap: HeapType;
   var UsedMask: MaskType;
   var b_2: bool;
-  var Labellhs1Mask: MaskType;
   var Labellhs1Heap: HeapType;
+  var Labellhs1Mask: MaskType;
   var boolCur: bool;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var Used_1Heap: HeapType;
   var Used_1Mask: MaskType;
   var b_2_1: bool;
@@ -405,8 +405,8 @@ procedure test0(x: Ref) returns ()
   var Result_1Mask: MaskType;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var ExhaleHeap: HeapType;
   var Used_2Heap: HeapType;
   var Used_2Mask: MaskType;
@@ -430,8 +430,8 @@ procedure test0(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: package true --* true {
   //   assert acc(P(x), write) && (unfolding acc(P(x), write) in x.i == func(x))
@@ -450,8 +450,8 @@ procedure test0(x: Ref) returns ()
     
     // -- Translating statement: label lhs1 -- AssertUnfolding.vpr@17.10--17.23
       lhs1:
-      Labellhs1Mask := Ops_1Mask;
       Labellhs1Heap := Ops_1Heap;
+      Labellhs1Mask := Ops_1Mask;
       b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);
     boolCur := true;
     if (b_1_1) {
@@ -459,8 +459,8 @@ procedure test0(x: Ref) returns ()
       // -- Translating statement: assert acc(P(x), write) && (unfolding acc(P(x), write) in x.i == func(x)) -- AssertUnfolding.vpr@19.3--19.52
         AssertHeap := Ops_1Heap;
         AssertMask := Ops_1Mask;
-        ExhaleWellDef0Mask := AssertMask;
         ExhaleWellDef0Heap := AssertHeap;
+        ExhaleWellDef0Mask := AssertMask;
         havoc Used_1Heap;
         Used_1Mask := ZeroMask;
         b_2_1 := b_2_1 && state(Used_1Heap, Used_1Mask);
@@ -583,8 +583,8 @@ procedure test0(x: Ref) returns ()
               UnfoldingMask := Result_1Mask;
               assume P#trigger(UnfoldingHeap, P(x));
               assume UnfoldingHeap[null, P(x)] == FrameFragment(UnfoldingHeap[x, i_98]);
-              ExhaleWellDef1Mask := UnfoldingMask;
               ExhaleWellDef1Heap := UnfoldingHeap;
+              ExhaleWellDef1Mask := UnfoldingMask;
               perm := FullPerm;
               if (perm != NoPerm) {
                 assert {:msg "  Assert might fail. There might be insufficient permission to access P(x) (AssertUnfolding.vpr@19.10--19.52) [138460]"}
@@ -600,8 +600,8 @@ procedure test0(x: Ref) returns ()
                 HasDirectPerm(UnfoldingMask, x, i_98);
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef1Mask := UnfoldingMask;
                 ExhaleWellDef1Heap := UnfoldingHeap;
+                ExhaleWellDef1Mask := UnfoldingMask;
                 perm := FullPerm;
                 assert {:msg "  Precondition of function func might not hold. There might be insufficient permission to access P(x) (AssertUnfolding.vpr@19.44--19.51) [138462]"}
                   NoPerm < perm ==> NoPerm < UnfoldingMask[null, P(x)];

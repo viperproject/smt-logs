@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 10:56:03
+// Date:         2024-12-29 15:46:32
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/adt/destructors_1.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/adt/destructors_1-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -293,12 +293,12 @@ axiom (forall <T> t_2: (TreeDomainType T) ::
 procedure destructors_1() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var tree_1: (TreeDomainType int);
   var left_1: (TreeDomainType int);
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var list_2: (ListDomainType bool);
   var bigTree: (TreeDomainType bool);
   
@@ -310,8 +310,8 @@ procedure destructors_1() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: tree := (Node(42, (Node(420, (Leaf(): Tree[Int]), (Leaf(): Tree[Int])): Tree[Int]),
   //   (Leaf(): Tree[Int])): Tree[Int]) -- destructors_1.vpr@17.5--17.56
@@ -323,16 +323,16 @@ procedure destructors_1() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert left == (get_Tree_left(tree): Tree[Int]) -- destructors_1.vpr@21.5--21.29
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion left == (get_Tree_left(tree): Tree[Int]) might not hold. (destructors_1.vpr@21.12--21.29) [222560]"}
       left_1 == (get_Tree_left(tree_1): TreeDomainType int);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert left ==
   //   (Node(420, (Leaf(): Tree[Int]), (Leaf(): Tree[Int])): Tree[Int]) -- destructors_1.vpr@22.5--22.45
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion left == (Node(420, (Leaf(): Tree[Int]), (Leaf(): Tree[Int])): Tree[Int]) might not hold. (destructors_1.vpr@22.12--22.45) [222561]"}
       left_1 == (Node_1(420, (Leaf(): TreeDomainType int), (Leaf(): TreeDomainType int)): TreeDomainType int);
     assume state(Heap, Mask);
@@ -343,22 +343,22 @@ procedure destructors_1() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (get_List_value(list): Bool) -- destructors_1.vpr@27.5--27.22
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion (get_List_value(list): Bool) might not hold. (destructors_1.vpr@27.12--27.22) [222562]"}
       (get_List_value(list_2): bool);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (get_List_value((get_List_tail(list): List[Bool])): Bool) -- destructors_1.vpr@28.5--28.27
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion (get_List_value((get_List_tail(list): List[Bool])): Bool) might not hold. (destructors_1.vpr@28.12--28.27) [222563]"}
       (get_List_value((get_List_tail(list_2): ListDomainType bool)): bool);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert !!(get_List_value((get_List_tail((get_List_tail((get_List_tail((get_List_tail((get_List_tail(list): List[Bool])): List[Bool])): List[Bool])): List[Bool])): List[Bool])): Bool) -- destructors_1.vpr@29.5--29.49
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion !!(get_List_value((get_List_tail((get_List_tail((get_List_tail((get_List_tail((get_List_tail(list): List[Bool])): List[Bool])): List[Bool])): List[Bool])): List[Bool])): Bool) might not hold. (destructors_1.vpr@29.12--29.49) [222564]"}
       (get_List_value((get_List_tail((get_List_tail((get_List_tail((get_List_tail((get_List_tail(list_2): ListDomainType bool)): ListDomainType bool)): ListDomainType bool)): ListDomainType bool)): ListDomainType bool)): bool);
     assume state(Heap, Mask);
@@ -376,22 +376,22 @@ procedure destructors_1() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (get_Tree_value((get_Tree_left((get_Tree_left((get_Tree_left((get_Tree_left(bigTree): Tree[Bool])): Tree[Bool])): Tree[Bool])): Tree[Bool])): Bool) -- destructors_1.vpr@73.5--73.45
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion (get_Tree_value((get_Tree_left((get_Tree_left((get_Tree_left((get_Tree_left(bigTree): Tree[Bool])): Tree[Bool])): Tree[Bool])): Tree[Bool])): Bool) might not hold. (destructors_1.vpr@73.12--73.45) [222565]"}
       (get_Tree_value((get_Tree_left((get_Tree_left((get_Tree_left((get_Tree_left(bigTree): TreeDomainType bool)): TreeDomainType bool)): TreeDomainType bool)): TreeDomainType bool)): bool);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (get_Tree_value((get_Tree_right((get_Tree_left((get_Tree_left(bigTree): Tree[Bool])): Tree[Bool])): Tree[Bool])): Bool) -- destructors_1.vpr@74.5--74.41
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion (get_Tree_value((get_Tree_right((get_Tree_left((get_Tree_left(bigTree): Tree[Bool])): Tree[Bool])): Tree[Bool])): Bool) might not hold. (destructors_1.vpr@74.12--74.41) [222566]"}
       (get_Tree_value((get_Tree_right((get_Tree_left((get_Tree_left(bigTree): TreeDomainType bool)): TreeDomainType bool)): TreeDomainType bool)): bool);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert !(get_Tree_value((get_Tree_right((get_Tree_right(bigTree): Tree[Bool])): Tree[Bool])): Bool) -- destructors_1.vpr@75.5--75.38
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion !(get_Tree_value((get_Tree_right((get_Tree_right(bigTree): Tree[Bool])): Tree[Bool])): Bool) might not hold. (destructors_1.vpr@75.12--75.38) [222567]"}
       !(get_Tree_value((get_Tree_right((get_Tree_right(bigTree): TreeDomainType bool)): TreeDomainType bool)): bool);
     assume state(Heap, Mask);

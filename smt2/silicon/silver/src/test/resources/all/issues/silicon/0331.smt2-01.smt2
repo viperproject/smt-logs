@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-27 10:10:29
+; Started: 2024-12-29 15:00:38
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -488,11 +488,11 @@
 (assert (forall ((s@$ $Snap) (r@0@00 $Ref)) (!
   (= (integer%limited s@$ r@0@00) (integer s@$ r@0@00))
   :pattern ((integer s@$ r@0@00))
-  :qid |quant-u-25772|)))
+  :qid |quant-u-25710|)))
 (assert (forall ((s@$ $Snap) (r@0@00 $Ref)) (!
   (integer%stateless r@0@00)
   :pattern ((integer%limited s@$ r@0@00))
-  :qid |quant-u-25773|)))
+  :qid |quant-u-25711|)))
 (assert (forall ((s@$ $Snap) (r@0@00 $Ref)) (!
   (=>
     (integer%precondition s@$ r@0@00)
@@ -506,7 +506,7 @@
           (integer%limited ($Snap.second s@$) ($SortWrappers.$SnapTo$Ref ($Snap.first s@$)))))))
   :pattern ((integer s@$ r@0@00))
   :pattern ((integer%stateless r@0@00) (Peano%trigger s@$ r@0@00))
-  :qid |quant-u-25776|)))
+  :qid |quant-u-25714|)))
 (assert (forall ((s@$ $Snap) (r@0@00 $Ref)) (!
   (=>
     (integer%precondition s@$ r@0@00)
@@ -515,27 +515,27 @@
       true
       (integer%precondition ($Snap.second s@$) ($SortWrappers.$SnapTo$Ref ($Snap.first s@$)))))
   :pattern ((integer s@$ r@0@00))
-  :qid |quant-u-25777|)))
+  :qid |quant-u-25715|)))
 (assert (forall ((s@$ $Snap) (r@2@00 $Ref) (k@3@00 Int)) (!
   (= (integer2%limited s@$ r@2@00 k@3@00) (integer2 s@$ r@2@00 k@3@00))
   :pattern ((integer2 s@$ r@2@00 k@3@00))
-  :qid |quant-u-25774|)))
+  :qid |quant-u-25712|)))
 (assert (forall ((s@$ $Snap) (r@2@00 $Ref) (k@3@00 Int)) (!
   (integer2%stateless r@2@00 k@3@00)
   :pattern ((integer2%limited s@$ r@2@00 k@3@00))
-  :qid |quant-u-25775|)))
+  :qid |quant-u-25713|)))
 (assert (forall ((s@$ $Snap) (r@2@00 $Ref) (k@3@00 Int)) (!
   (=>
     (integer2%precondition s@$ r@2@00 k@3@00)
     (= (integer2 s@$ r@2@00 k@3@00) (+ (integer s@$ r@2@00) k@3@00)))
   :pattern ((integer2 s@$ r@2@00 k@3@00))
-  :qid |quant-u-25778|)))
+  :qid |quant-u-25716|)))
 (assert (forall ((s@$ $Snap) (r@2@00 $Ref) (k@3@00 Int)) (!
   (=>
     (integer2%precondition s@$ r@2@00 k@3@00)
     (integer%precondition s@$ r@2@00))
   :pattern ((integer2 s@$ r@2@00 k@3@00))
-  :qid |quant-u-25779|)))
+  :qid |quant-u-25717|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- A ----------

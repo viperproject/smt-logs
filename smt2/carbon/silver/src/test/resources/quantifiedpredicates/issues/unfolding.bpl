@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 10:25:36
+// Date:         2024-12-29 15:15:54
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpredicates/issues/unfolding.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpredicates/issues/unfolding-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -454,15 +454,15 @@ procedure m2(x: Ref, xs: (Set Ref)) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var r_27: Ref;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var perm: Perm;
   var r_5: Ref;
   
@@ -523,14 +523,14 @@ procedure m2(x: Ref, xs: (Set Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert (forall r: Ref ::
   //     { (r in xs) }
   //     (r in xs) ==> (unfolding acc(p2(r), write) in r.f == 5)) -- unfolding.vpr@15.5--15.67
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall r: Ref :: { (r in xs) } (r in xs) ==> (unfolding acc(p2(r), write) in r.f == 5))
       if (*) {
@@ -539,8 +539,8 @@ procedure m2(x: Ref, xs: (Set Ref)) returns ()
           UnfoldingMask := ExhaleWellDef0Mask;
           assume p2#trigger(UnfoldingHeap, p2(r_27));
           assume UnfoldingHeap[null, p2(r_27)] == FrameFragment(UnfoldingHeap[r_27, f_7]);
-          ExhaleWellDef1Heap := UnfoldingHeap;
           ExhaleWellDef1Mask := UnfoldingMask;
+          ExhaleWellDef1Heap := UnfoldingHeap;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  Assert might fail. There might be insufficient permission to access p2(r) (unfolding.vpr@15.12--15.67) [109541]"}
@@ -570,8 +570,8 @@ procedure m2(x: Ref, xs: (Set Ref)) returns ()
           UnfoldingMask := ExhaleWellDef0Mask;
           assume p2#trigger(UnfoldingHeap, p2(r_5));
           assume UnfoldingHeap[null, p2(r_5)] == FrameFragment(UnfoldingHeap[r_5, f_7]);
-          ExhaleWellDef1Heap := UnfoldingHeap;
           ExhaleWellDef1Mask := UnfoldingMask;
+          ExhaleWellDef1Heap := UnfoldingHeap;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  Assert might fail. There might be insufficient permission to access p2(r) (unfolding.vpr@15.12--15.67) [109545]"}
@@ -604,15 +604,15 @@ procedure m3(x1_2: Ref, x2: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var r_28: Ref;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var r_1_1: Ref;
   
   // -- Initializing the state
@@ -637,14 +637,14 @@ procedure m3(x1_2: Ref, x2: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert (forall r: Ref ::
   //     { (r in Set(x1, x2)) }
   //     (r in Set(x1, x2)) ==> (unfolding acc(p2(r), write) in r.f == 5)) -- unfolding.vpr@26.5--26.76
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall r: Ref :: { (r in Set(x1, x2)) } (r in Set(x1, x2)) ==> (unfolding acc(p2(r), write) in r.f == 5))
       if (*) {
@@ -653,8 +653,8 @@ procedure m3(x1_2: Ref, x2: Ref) returns ()
           UnfoldingMask := ExhaleWellDef0Mask;
           assume p2#trigger(UnfoldingHeap, p2(r_28));
           assume UnfoldingHeap[null, p2(r_28)] == FrameFragment(UnfoldingHeap[r_28, f_7]);
-          ExhaleWellDef1Heap := UnfoldingHeap;
           ExhaleWellDef1Mask := UnfoldingMask;
+          ExhaleWellDef1Heap := UnfoldingHeap;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  Assert might fail. There might be insufficient permission to access p2(r) (unfolding.vpr@26.12--26.76) [109548]"}
@@ -684,8 +684,8 @@ procedure m3(x1_2: Ref, x2: Ref) returns ()
           UnfoldingMask := ExhaleWellDef0Mask;
           assume p2#trigger(UnfoldingHeap, p2(r_1_1));
           assume UnfoldingHeap[null, p2(r_1_1)] == FrameFragment(UnfoldingHeap[r_1_1, f_7]);
-          ExhaleWellDef1Heap := UnfoldingHeap;
           ExhaleWellDef1Mask := UnfoldingMask;
+          ExhaleWellDef1Heap := UnfoldingHeap;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  Assert might fail. There might be insufficient permission to access p2(r) (unfolding.vpr@26.12--26.76) [109552]"}
@@ -718,15 +718,15 @@ procedure m4(x1_2: Ref, x2: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var r_1: Ref;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -750,8 +750,8 @@ procedure m4(x1_2: Ref, x2: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[r_1, $allocated];
@@ -765,16 +765,16 @@ procedure m4(x1_2: Ref, x2: Ref) returns ()
     if (r_1 == x1_2) {
       
       // -- Translating statement: assert (unfolding acc(p2(r), write) in r.f == 5) -- unfolding.vpr@37.9--37.43
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         
         // -- Check definedness of (unfolding acc(p2(r), write) in r.f == 5)
           UnfoldingHeap := ExhaleWellDef0Heap;
           UnfoldingMask := ExhaleWellDef0Mask;
           assume p2#trigger(UnfoldingHeap, p2(r_1));
           assume UnfoldingHeap[null, p2(r_1)] == FrameFragment(UnfoldingHeap[r_1, f_7]);
-          ExhaleWellDef1Heap := UnfoldingHeap;
           ExhaleWellDef1Mask := UnfoldingMask;
+          ExhaleWellDef1Heap := UnfoldingHeap;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  Assert might fail. There might be insufficient permission to access p2(r) (unfolding.vpr@37.16--37.43) [109555]"}
@@ -803,16 +803,16 @@ procedure m4(x1_2: Ref, x2: Ref) returns ()
     } else {
       
       // -- Translating statement: assert (unfolding acc(p2(r), write) in r.f == 5) -- unfolding.vpr@39.9--39.43
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         
         // -- Check definedness of (unfolding acc(p2(r), write) in r.f == 5)
           UnfoldingHeap := ExhaleWellDef0Heap;
           UnfoldingMask := ExhaleWellDef0Mask;
           assume p2#trigger(UnfoldingHeap, p2(r_1));
           assume UnfoldingHeap[null, p2(r_1)] == FrameFragment(UnfoldingHeap[r_1, f_7]);
-          ExhaleWellDef1Heap := UnfoldingHeap;
           ExhaleWellDef1Mask := UnfoldingMask;
+          ExhaleWellDef1Heap := UnfoldingHeap;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  Assert might fail. There might be insufficient permission to access p2(r) (unfolding.vpr@39.16--39.43) [109558]"}

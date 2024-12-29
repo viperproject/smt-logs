@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 10:18:53
+// Date:         2024-12-29 15:09:07
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/third_party/test_kernel_example_v2_pvl.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/third_party/test_kernel_example_v2_pvl-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -617,8 +617,8 @@ procedure Ref__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: i
 {
   var wildcard: real where wildcard > NoPerm;
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var __flatten_2: Ref;
@@ -632,8 +632,8 @@ procedure Ref__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: i
   var __flatten_3: int;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var __flatten_1: int;
   var __flatten_7: int;
@@ -755,8 +755,8 @@ procedure Ref__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: i
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -974,8 +974,8 @@ procedure Ref__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: i
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       assert {:msg "  The precondition of method Ref__main_barrier might not hold. Assertion diz != null might not hold. (test_kernel_example_v2_pvl.vpr@68.3--68.108) [58741]"}
         diz != null;
       assert {:msg "  The precondition of method Ref__main_barrier might not hold. Assertion current_thread_id >= 0 might not hold. (test_kernel_example_v2_pvl.vpr@68.3--68.108) [58742]"}
@@ -1261,8 +1261,8 @@ procedure Ref__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: i
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of Ref__main_main might not hold. Assertion 0 <= tid might not hold. (test_kernel_example_v2_pvl.vpr@30.11--30.19) [58792]"}
       0 <= tid;
     assert {:msg "  Postcondition of Ref__main_main might not hold. Assertion tid < tcount might not hold. (test_kernel_example_v2_pvl.vpr@31.11--31.23) [58793]"}
@@ -1345,12 +1345,12 @@ procedure Ref__main_barrier(diz: Ref, current_thread_id: int, tcount: int, gsize
 {
   var wildcard: real where wildcard > NoPerm;
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -1548,8 +1548,8 @@ procedure Ref__main_barrier(diz: Ref, current_thread_id: int, tcount: int, gsize
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1781,8 +1781,8 @@ procedure Ref__main_barrier(diz: Ref, current_thread_id: int, tcount: int, gsize
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of Ref__main_barrier might not hold. Assertion 0 <= tid might not hold. (test_kernel_example_v2_pvl.vpr@103.11--103.19) [58897]"}
       0 <= tid;
     assert {:msg "  Postcondition of Ref__main_barrier might not hold. Assertion tid < tcount might not hold. (test_kernel_example_v2_pvl.vpr@104.11--104.23) [58898]"}
@@ -1917,16 +1917,16 @@ procedure Ref__main_resources_of_1(diz: Ref, current_thread_id: int, tcount: int
   var QPMask: MaskType;
   var tid_4: int;
   var tid_6: int;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var tid_8: int;
   var tid_10: int;
   var tid_12: int;
   var tid_18: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -2238,8 +2238,8 @@ procedure Ref__main_resources_of_1(diz: Ref, current_thread_id: int, tcount: int
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -2524,8 +2524,8 @@ procedure Ref__main_resources_of_1(diz: Ref, current_thread_id: int, tcount: int
   }
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of Ref__main_resources_of_1 might not hold. Assertion tcount == gsize might not hold. (test_kernel_example_v2_pvl.vpr@144.11--144.26) [58994]"}
       tcount == gsize;
     assert {:msg "  Postcondition of Ref__main_resources_of_1 might not hold. Assertion gid == 0 might not hold. (test_kernel_example_v2_pvl.vpr@145.11--145.19) [58995]"}
@@ -2760,12 +2760,12 @@ procedure Ref__main_post_check_1(diz: Ref, current_thread_id: int, tcount: int, 
   var _x_tid_4: int;
   var _x_tid_6: int;
   var _x_tid_16: int;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -3123,8 +3123,8 @@ procedure Ref__main_post_check_1(diz: Ref, current_thread_id: int, tcount: int, 
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -3303,8 +3303,8 @@ procedure Ref__main_post_check_1(diz: Ref, current_thread_id: int, tcount: int, 
   }
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of Ref__main_post_check_1 might not hold. Assertion 0 <= tid might not hold. (test_kernel_example_v2_pvl.vpr@184.11--184.19) [59100]"}
       0 <= tid;
     assert {:msg "  Postcondition of Ref__main_post_check_1 might not hold. Assertion tid < tcount might not hold. (test_kernel_example_v2_pvl.vpr@185.11--185.23) [59101]"}

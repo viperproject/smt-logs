@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 10:50:44
+// Date:         2024-12-29 15:41:11
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0502.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0502-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -414,10 +414,10 @@ procedure foo0(r1: Ref, r2: Ref, s_2: (Set Ref)) returns ()
 {
   var perm: Perm;
   var QPMask: MaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -482,12 +482,12 @@ procedure foo0(r1: Ref, r2: Ref, s_2: (Set Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert r1 != r2 -- 0502.vpr@10.3--10.18
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion r1 != r2 might not hold. (0502.vpr@10.10--10.18) [209203]"}
       r1 != r2;
     assume state(Heap, Mask);
@@ -502,10 +502,10 @@ procedure foo1(r1: Ref, r2: Ref, s_2: (Set Ref)) returns ()
 {
   var perm: Perm;
   var QPMask: MaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -570,12 +570,12 @@ procedure foo1(r1: Ref, r2: Ref, s_2: (Set Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert r1 != r2 -- 0502.vpr@17.3--17.18
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion r1 != r2 might not hold. (0502.vpr@17.10--17.18) [209205]"}
       r1 != r2;
     assume state(Heap, Mask);
@@ -590,10 +590,10 @@ procedure foo2(r1: Ref, r2: Ref, s_2: (Set Ref)) returns ()
 {
   var perm: Perm;
   var QPMask: MaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -658,12 +658,12 @@ procedure foo2(r1: Ref, r2: Ref, s_2: (Set Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert r1 != r2 -- 0502.vpr@25.3--25.18
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion r1 != r2 might not hold. (0502.vpr@25.10--25.18) [209207]"}
       r1 != r2;
     assume state(Heap, Mask);
@@ -675,8 +675,8 @@ procedure foo2(r1: Ref, r2: Ref, s_2: (Set Ref)) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert r1 != r2 -- 0502.vpr@27.3--27.18
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion r1 != r2 might not hold. (0502.vpr@27.10--27.18) [209209]"}
       r1 != r2;
     assume state(Heap, Mask);
@@ -691,10 +691,10 @@ procedure foo3(r1: Ref, r2: Ref, s_2: (Set Ref)) returns ()
 {
   var perm: Perm;
   var QPMask: MaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -759,8 +759,8 @@ procedure foo3(r1: Ref, r2: Ref, s_2: (Set Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: r1.f := 3 -- 0502.vpr@34.3--34.12
     assert {:msg "  Assignment might fail. There might be insufficient permission to access r1.f (0502.vpr@34.3--34.12) [209211]"}
@@ -769,15 +769,15 @@ procedure foo3(r1: Ref, r2: Ref, s_2: (Set Ref)) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert perm(r1.f) <= write -- 0502.vpr@35.3--35.29
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion perm(r1.f) <= write might not hold. (0502.vpr@35.10--35.29) [209212]"}
       Mask[r1, f_7] <= FullPerm;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert r1 != r2 -- 0502.vpr@36.3--36.18
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion r1 != r2 might not hold. (0502.vpr@36.10--36.18) [209213]"}
       r1 != r2;
     assume state(Heap, Mask);
@@ -792,10 +792,10 @@ procedure foo4(r1: Ref, r2: Ref, s_2: (Set Ref)) returns ()
 {
   var perm: Perm;
   var QPMask: MaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -860,12 +860,12 @@ procedure foo4(r1: Ref, r2: Ref, s_2: (Set Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert true -- 0502.vpr@43.3--43.14
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assume state(Heap, Mask);
   
   // -- Translating statement: r1.f := 3 -- 0502.vpr@44.3--44.12
@@ -875,8 +875,8 @@ procedure foo4(r1: Ref, r2: Ref, s_2: (Set Ref)) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert r1 != r2 -- 0502.vpr@45.3--45.18
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion r1 != r2 might not hold. (0502.vpr@45.10--45.18) [209217]"}
       r1 != r2;
     assume state(Heap, Mask);
@@ -891,10 +891,10 @@ procedure foo5(r1: Ref, r2: Ref, s_2: (Set Ref)) returns ()
 {
   var perm: Perm;
   var QPMask: MaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -944,8 +944,8 @@ procedure foo5(r1: Ref, r2: Ref, s_2: (Set Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: r1.f := 3 -- 0502.vpr@53.3--53.12
     assert {:msg "  Assignment might fail. There might be insufficient permission to access r1.f (0502.vpr@53.3--53.12) [209218]"}
@@ -954,8 +954,8 @@ procedure foo5(r1: Ref, r2: Ref, s_2: (Set Ref)) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert r1 != r2 -- 0502.vpr@54.3--54.18
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion r1 != r2 might not hold. (0502.vpr@54.10--54.18) [209219]"}
       r1 != r2;
     assume state(Heap, Mask);
@@ -970,10 +970,10 @@ procedure foo6_1(r1: Ref, r2: Ref, s_2: (Set Ref)) returns ()
 {
   var perm: Perm;
   var QPMask: MaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1023,8 +1023,8 @@ procedure foo6_1(r1: Ref, r2: Ref, s_2: (Set Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: r1.f := 3 -- 0502.vpr@61.3--61.12
     assert {:msg "  Assignment might fail. There might be insufficient permission to access r1.f (0502.vpr@61.3--61.12) [209220]"}
@@ -1033,8 +1033,8 @@ procedure foo6_1(r1: Ref, r2: Ref, s_2: (Set Ref)) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert r1 != r2 -- 0502.vpr@62.3--62.18
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion r1 != r2 might not hold. (0502.vpr@62.10--62.18) [209221]"}
       r1 != r2;
     assume state(Heap, Mask);

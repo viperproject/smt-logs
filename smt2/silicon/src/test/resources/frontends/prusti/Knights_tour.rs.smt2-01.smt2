@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-27 09:52:03
+; Started: 2024-12-29 14:41:55
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -45001,77 +45001,4 @@
 (push) ; 17
 (set-option :timeout 10)
 (assert (not (= ret@744@01 $t@1028@01)))
-(check-sat)
-; unknown
-(pop) ; 17
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 17
-(set-option :timeout 10)
-(assert (not (= ret@658@01 $t@1028@01)))
-(check-sat)
-; unknown
-(pop) ; 17
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 17
-(set-option :timeout 10)
-(assert (not (= ret@457@01 $t@1028@01)))
-(check-sat)
-; unknown
-(pop) ; 17
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 17
-(set-option :timeout 10)
-(assert (not (= $t@451@01 $t@1028@01)))
-(check-sat)
-; unknown
-(pop) ; 17
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 17
-(set-option :timeout 10)
-(assert (not (= $t@438@01 $t@1028@01)))
-(check-sat)
-; unknown
-(pop) ; 17
-; 0.00s
-; (get-info :all-statistics)
-(assert (not (= $t@1028@01 $Ref.null)))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [exec]
-; _139.tuple_0.val_int := _137.val_int * _138.val_int
-; [eval] _137.val_int * _138.val_int
-(declare-const val_int@1030@01 Int)
-(assert (= val_int@1030@01 (* $t@1020@01 $t@1023@01)))
-(set-option :timeout 0)
-(push) ; 17
-(set-option :timeout 10)
-(assert (not (= ret@1022@01 $t@1026@01)))
-(check-sat)
-; unknown
-(pop) ; 17
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 17
-(set-option :timeout 10)
-(assert (not (= ret@1019@01 $t@1026@01)))
-(check-sat)
-; unknown
-(pop) ; 17
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 17
-(set-option :timeout 10)
-(assert (not (= $t@1012@01 $t@1026@01)))
 (check-sat)

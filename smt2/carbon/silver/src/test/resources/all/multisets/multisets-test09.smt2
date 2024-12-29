@@ -481,7 +481,7 @@
  :skolemid |76|
  :pattern ( (|MultiSet#Subset_4552| a@@18 b@@13))
 )))
-; Invalid
+; Valid
 (push 1)
 (declare-fun ControlFlow (Int Int) Int)
 (declare-fun Heap@@15 () T@PolymorphicMapType_8644)

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-27 10:48:22
+// Date:         2024-12-29 15:38:48
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0252.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0252-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -287,8 +287,8 @@ procedure P#definedness(x: Ref) returns ()
 procedure test1(arr1: IArrayDomainType, arr2: IArrayDomainType) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var QPMask: MaskType;
   
   // -- Initializing the state
@@ -299,8 +299,8 @@ procedure test1(arr1: IArrayDomainType, arr2: IArrayDomainType) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale (forall i: Int ::
   //     { loc(arr1, i) }
@@ -373,15 +373,15 @@ procedure test1(arr1: IArrayDomainType, arr2: IArrayDomainType) returns ()
 procedure test2(arr1: IArrayDomainType, arr2: IArrayDomainType) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var QPMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var perm: Perm;
   var newVersion: FrameType;
   
@@ -393,8 +393,8 @@ procedure test2(arr1: IArrayDomainType, arr2: IArrayDomainType) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale (forall i: Int ::
   //     { loc(arr1, i) }
@@ -450,16 +450,16 @@ procedure test2(arr1: IArrayDomainType, arr2: IArrayDomainType) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (unfolding acc(P(loc(arr1, 0)), write) in loc(arr1, 0) != null) -- 0252.vpr@17.4--17.60
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (unfolding acc(P(loc(arr1, 0)), write) in loc(arr1, 0) != null)
       UnfoldingHeap := ExhaleWellDef0Heap;
       UnfoldingMask := ExhaleWellDef0Mask;
       assume P#trigger(UnfoldingHeap, P((loc(arr1, 0): Ref)));
       assume UnfoldingHeap[null, P((loc(arr1, 0): Ref))] == EmptyFrame;
-      ExhaleWellDef1Heap := UnfoldingHeap;
       ExhaleWellDef1Mask := UnfoldingMask;
+      ExhaleWellDef1Heap := UnfoldingHeap;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Assert might fail. There might be insufficient permission to access P(loc(arr1, 0)) (0252.vpr@17.11--17.60) [200970]"}
@@ -481,8 +481,8 @@ procedure test2(arr1: IArrayDomainType, arr2: IArrayDomainType) returns ()
   // -- Translating statement: unfold acc(P(loc(arr2, 0)), write) -- 0252.vpr@19.4--19.26
     assume P#trigger(Heap, P((loc(arr2, 0): Ref)));
     assume Heap[null, P((loc(arr2, 0): Ref))] == EmptyFrame;
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding P(loc(arr2, 0)) might fail. There might be insufficient permission to access P(loc(arr2, 0)) (0252.vpr@19.4--19.26) [200974]"}

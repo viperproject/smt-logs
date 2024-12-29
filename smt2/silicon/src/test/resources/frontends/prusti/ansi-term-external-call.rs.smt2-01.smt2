@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-27 09:53:08
+; Started: 2024-12-29 14:43:00
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -122197,62 +122197,3 @@
 (set-option :timeout 10)
 (assert (not (= ret@836@01 ret@886@01)))
 (check-sat)
-; unknown
-(pop) ; 15
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 15
-(set-option :timeout 10)
-(assert (not (= ret@832@01 ret@886@01)))
-(check-sat)
-; unknown
-(pop) ; 15
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 15
-(set-option :timeout 10)
-(assert (not (= ret@813@01 ret@886@01)))
-(check-sat)
-; unknown
-(pop) ; 15
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 15
-(set-option :timeout 10)
-(assert (not (= ret@809@01 ret@886@01)))
-(check-sat)
-; unknown
-(pop) ; 15
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 15
-(set-option :timeout 10)
-(assert (not (= ret@805@01 ret@886@01)))
-(check-sat)
-; unknown
-(pop) ; 15
-; 0.00s
-; (get-info :all-statistics)
-(assert (not (= ret@886@01 $Ref.null)))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [exec]
-; _27.val_bool := true
-(set-option :timeout 0)
-(push) ; 15
-(set-option :timeout 10)
-(assert (not (= ret@869@01 ret@886@01)))
-(check-sat)
-; unknown
-(pop) ; 15
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 15
-(set-option :timeout 10)
