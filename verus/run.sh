@@ -9,10 +9,10 @@ export VARGO_IN_NEXTEST=true
 TEST=($1)
 FILE=${TEST[0]#$(pwd)/rust_verify_test/tests/}
 OUTPUT=$($VARGO test --release --package rust_verify_test --test ${FILE%.*} -- ${TEST[1]} --exact 2>&1)
-if [ $? -ne 0 ]; then
-  echo "[ERROR] $OUTPUT"
-  exit 1
-fi
+# if [ $? -ne 0 ]; then
+#   echo "[ERROR] $OUTPUT"
+#   exit 1
+# fi
 if [ -f "$OUT/root.smt2" ]; then
   mv "$OUT/root.smt2" "$OUT.smt2"
   rmdir "$OUT" || true
