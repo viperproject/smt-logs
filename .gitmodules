@@ -10,3 +10,6 @@
 [submodule "fstar/fstar"]
 	path = fstar/fstar
 	url = https://github.com/FStarLang/FStar.git
+[submodule "verus/verus"]
+	path = verus/verus
+	url = https://github.com/verus-lang/verus.git
