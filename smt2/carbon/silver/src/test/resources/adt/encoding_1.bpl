@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-29 15:47:01
+// Date:         2024-12-29 20:53:16
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/adt/encoding_1.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/adt/encoding_1-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -248,10 +248,10 @@ axiom (forall <T> t_2: (ListDomainType T) ::
 procedure encoding_1() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var n: int;
   var dlist: (DListDomainType int);
   
@@ -263,36 +263,36 @@ procedure encoding_1() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert ((List_tag1((Cons(1, (Nil(): List[Int])): List[Int])): Int) == 1) ==
   //   false -- encoding_1.vpr@21.3--21.39
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion ((List_tag1((Cons(1, (Nil(): List[Int])): List[Int])): Int) == 1) == false might not hold. (encoding_1.vpr@21.10--21.39) [222874]"}
       !((List_tag1((Cons(1, (Nil(): ListDomainType int)): ListDomainType int)): int) == 1);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (List_tag1((Cons(1, (Nil(): List[Int])): List[Int])): Int) == 0 -- encoding_1.vpr@22.3--22.31
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion (List_tag1((Cons(1, (Nil(): List[Int])): List[Int])): Int) == 0 might not hold. (encoding_1.vpr@22.10--22.31) [222875]"}
       (List_tag1((Cons(1, (Nil(): ListDomainType int)): ListDomainType int)): int) == 0;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (get_List_value1((Cons(1, (Nil(): List[Int])): List[Int])): Int) ==
   //   1 -- encoding_1.vpr@23.3--23.35
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion (get_List_value1((Cons(1, (Nil(): List[Int])): List[Int])): Int) == 1 might not hold. (encoding_1.vpr@23.10--23.35) [222876]"}
       (get_List_value1((Cons(1, (Nil(): ListDomainType int)): ListDomainType int)): int) == 1;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (get_List_tail1((Cons(1, (Nil(): List[Int])): List[Int])): List[Int]) ==
   //   (Nil(): List[Int]) -- encoding_1.vpr@24.3--24.38
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion (get_List_tail1((Cons(1, (Nil(): List[Int])): List[Int])): List[Int]) == (Nil(): List[Int]) might not hold. (encoding_1.vpr@24.10--24.38) [222877]"}
       (get_List_tail1((Cons(1, (Nil(): ListDomainType int)): ListDomainType int)): ListDomainType int) == (Nil(): ListDomainType int);
     assume state(Heap, Mask);

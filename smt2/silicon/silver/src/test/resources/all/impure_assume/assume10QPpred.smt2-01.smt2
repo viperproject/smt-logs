@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-29 14:56:52
+; Started: 2024-12-29 20:03:35
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -1154,7 +1154,7 @@
       (and (Set_in y@79@01 ys@71@01) (Set_in z@80@01 zs@72@01)))
     (or (= q@73@01 $Perm.No) (< $Perm.No q@73@01)))
   
-  :qid |quant-u-21983|))))
+  :qid |quant-u-21874|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -1204,7 +1204,7 @@
         (img@85@01 x@78@01 y@79@01 z@80@01)
         (img@87@01 x@78@01 y@79@01 z@80@01))))
   :pattern ((Set_in x@78@01 xs@70@01) (Set_in y@79@01 ys@71@01) (Set_in z@80@01 zs@72@01))
-  :qid |quant-u-21984|)))
+  :qid |quant-u-21875|)))
 (assert (forall ((x $Ref) (y $Ref) (z $Ref)) (!
   (=>
     (and
@@ -1269,7 +1269,7 @@
       ($Snap.combine ($SortWrappers.$RefTo$Snap x) ($SortWrappers.$RefTo$Snap y))
       ($SortWrappers.$RefTo$Snap z))))
   :pattern ((inv@82@01 x y z) (inv@84@01 x y z) (inv@86@01 x y z))
-  :qid |quant-u-21985|)))
+  :qid |quant-u-21876|)))
 ; State saturation: after inhale
 (set-option :timeout 20)
 (check-sat)
@@ -17917,7 +17917,7 @@
       (pTaken@239@01 x y z))
     $Perm.No)
   
-  :qid |quant-u-21987|))))
+  :qid |quant-u-21878|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -17932,7 +17932,7 @@
     (and (= x a@74@01) (= y b@75@01) (= z c@76@01))
     (= (- q@73@01 (pTaken@239@01 x y z)) $Perm.No))
   
-  :qid |quant-u-21988|))))
+  :qid |quant-u-21879|))))
 (check-sat)
 ; unsat
 (pop) ; 3

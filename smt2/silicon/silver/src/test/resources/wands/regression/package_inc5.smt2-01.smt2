@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-29 14:56:01
+; Started: 2024-12-29 20:02:44
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -200,7 +200,7 @@
     (MWSF_apply mwsf@7@01 $t@5@01)
     ($Snap.combine $t@5@01 ($Snap.combine ($Snap.first $t@4@01) $t@6@01)))
   :pattern ((MWSF_apply mwsf@7@01 $t@5@01))
-  :qid |quant-u-20280|)))
+  :qid |quant-u-20171|)))
 (pop) ; 3
 (set-option :timeout 0)
 (push) ; 3
@@ -209,7 +209,7 @@
     (MWSF_apply mwsf@7@01 $t@5@01)
     ($Snap.combine $t@5@01 ($Snap.combine ($Snap.first $t@4@01) $t@6@01)))
   :pattern ((MWSF_apply mwsf@7@01 $t@5@01))
-  :qid |quant-u-20281|)))
+  :qid |quant-u-20172|)))
 (assert true)
 ; [exec]
 ; exhale acc(y.f, write)
@@ -317,7 +317,7 @@
     (MWSF_apply mwsf@15@01 $t@14@01)
     ($Snap.combine ($Snap.first $t@13@01) $Snap.unit))
   :pattern ((MWSF_apply mwsf@15@01 $t@14@01))
-  :qid |quant-u-20282|)))
+  :qid |quant-u-20173|)))
 (pop) ; 4
 (push) ; 4
 (assert (forall (($t@14@01 $Snap)) (!
@@ -329,13 +329,13 @@
       (MWSF_apply mwsf@15@01 $t@14@01)
       ($Snap.combine ($Snap.first $t@13@01) $Snap.unit)))
   :pattern ((MWSF_apply mwsf@15@01 $t@14@01))
-  :qid |quant-u-20283|)))
+  :qid |quant-u-20174|)))
 ; Create MagicWandSnapFunction for wand acc(x.f, 1 / 3) && x.f == 2 --* true
 (declare-const mwsf@16@01 $MWSF)
 (assert (forall (($t@13@01 $Snap)) (!
   (= (MWSF_apply mwsf@16@01 $t@13@01) $Snap.unit)
   :pattern ((MWSF_apply mwsf@16@01 $t@13@01))
-  :qid |quant-u-20284|)))
+  :qid |quant-u-20175|)))
 (pop) ; 4
 (pop) ; 3
 (push) ; 3
@@ -349,10 +349,10 @@
         (MWSF_apply mwsf@15@01 $t@14@01)
         ($Snap.combine ($Snap.first $t@13@01) $Snap.unit))
       :pattern ((MWSF_apply mwsf@15@01 $t@14@01))
-      :qid |quant-u-20282|))
+      :qid |quant-u-20173|))
     (= (MWSF_apply mwsf@16@01 $t@13@01) $Snap.unit))
   :pattern ((MWSF_apply mwsf@16@01 $t@13@01))
-  :qid |quant-u-20285|)))
+  :qid |quant-u-20176|)))
 ; [exec]
 ; exhale acc(x.f, 1 / 3)
 ; [exec]

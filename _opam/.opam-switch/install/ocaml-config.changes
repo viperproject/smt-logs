@@ -1,6 +1,0 @@
-opam-version: "2.0"
-added: [
-  "share/ocaml-config" {"D"}
-  "share/ocaml-config/gen_ocaml_config.ml"
-    {"F:81e5ddd60c92847461b838c1d76bb893"}
-]

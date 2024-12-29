@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-29 15:34:21
+// Date:         2024-12-29 20:40:46
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/basic/comparisons.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/basic/comparisons-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -735,10 +735,10 @@ axiom (forall<T> a: MultiSet T, b: MultiSet T :: { MultiSet#Disjoint(a,b) }
 procedure chain(i1: int, i2_1: int, i3_7: int, i4_1: int) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -754,33 +754,33 @@ procedure chain(i1: int, i2_1: int, i3_7: int, i4_1: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert i1 < i2 -- comparisons.vpr@7.5--7.19
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion i1 < i2 might not hold. (comparisons.vpr@7.12--7.19) [186156]"}
       i1 < i2_1;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert i2 <= i3 -- comparisons.vpr@8.5--8.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion i2 <= i3 might not hold. (comparisons.vpr@8.12--8.20) [186157]"}
       i2_1 <= i3_7;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert i3 > i4 -- comparisons.vpr@9.5--9.19
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion i3 > i4 might not hold. (comparisons.vpr@9.12--9.19) [186158]"}
       i3_7 > i4_1;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert i2 < i3 -- comparisons.vpr@11.5--11.19
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion i2 < i3 might not hold. (comparisons.vpr@11.12--11.19) [186159]"}
       i2_1 < i3_7;
     assume state(Heap, Mask);
@@ -793,10 +793,10 @@ procedure chain(i1: int, i2_1: int, i3_7: int, i4_1: int) returns ()
 procedure chain1In(s1: (Seq int), s2: (Seq (Seq int)), s3: (Seq (Seq (Seq int))), s4: (Set (Seq (Seq (Seq int))))) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -812,33 +812,33 @@ procedure chain1In(s1: (Seq int), s2: (Seq (Seq int)), s3: (Seq (Seq (Seq int)))
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert (s1 in s2) -- comparisons.vpr@17.5--17.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion (s1 in s2) might not hold. (comparisons.vpr@17.12--17.20) [186160]"}
       Seq#Contains(s2, s1);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (s3 in s4) -- comparisons.vpr@18.5--18.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion (s3 in s4) might not hold. (comparisons.vpr@18.12--18.20) [186161]"}
       s4[s3];
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (s2 in s3) -- comparisons.vpr@19.5--19.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion (s2 in s3) might not hold. (comparisons.vpr@19.12--19.20) [186162]"}
       Seq#Contains(s3, s2);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (3 in s1) -- comparisons.vpr@21.5--21.19
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion (3 in s1) might not hold. (comparisons.vpr@21.12--21.19) [186163]"}
       Seq#Contains(s1, 3);
     assume state(Heap, Mask);
@@ -851,10 +851,10 @@ procedure chain1In(s1: (Seq int), s2: (Seq (Seq int)), s3: (Seq (Seq (Seq int)))
 procedure chainEq(i1: int, i2_1: int, i3_7: int, i4_1: int) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -868,12 +868,12 @@ procedure chainEq(i1: int, i2_1: int, i3_7: int, i4_1: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert i1 < i2 -- comparisons.vpr@29.5--29.19
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion i1 < i2 might not hold. (comparisons.vpr@29.12--29.19) [186164]"}
       i1 < i2_1;
     assume state(Heap, Mask);
@@ -886,10 +886,10 @@ procedure chainEq(i1: int, i2_1: int, i3_7: int, i4_1: int) returns ()
 procedure nonChain(i1: int, i2_1: int, i3_7: int, i4_1: int) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -904,26 +904,26 @@ procedure nonChain(i1: int, i2_1: int, i3_7: int, i4_1: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert i1 < i2 -- comparisons.vpr@35.5--35.19
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion i1 < i2 might not hold. (comparisons.vpr@35.12--35.19) [186165]"}
       i1 < i2_1;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert i3 > i4 -- comparisons.vpr@36.5--36.19
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion i3 > i4 might not hold. (comparisons.vpr@36.12--36.19) [186166]"}
       i3_7 > i4_1;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert i2 <= i3 -- comparisons.vpr@38.5--38.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion i2 <= i3 might not hold. (comparisons.vpr@38.12--38.20) [186167]"}
       i2_1 <= i3_7;
     assume state(Heap, Mask);
@@ -936,10 +936,10 @@ procedure nonChain(i1: int, i2_1: int, i3_7: int, i4_1: int) returns ()
 procedure chainParen(i1: int, i2_1: (MultiSet int), i3_7: int, i4_1: int) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -954,12 +954,12 @@ procedure chainParen(i1: int, i2_1: (MultiSet int), i3_7: int, i4_1: int) return
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert i3 > i4 -- comparisons.vpr@44.5--44.19
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion i3 > i4 might not hold. (comparisons.vpr@44.12--44.19) [186168]"}
       i3_7 > i4_1;
     assume state(Heap, Mask);
@@ -970,8 +970,8 @@ procedure chainParen(i1: int, i2_1: (MultiSet int), i3_7: int, i4_1: int) return
     assume state(Heap, Mask);
   
   // -- Translating statement: assert 3 <= i3 -- comparisons.vpr@46.5--46.19
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion 3 <= i3 might not hold. (comparisons.vpr@46.12--46.19) [186169]"}
       3 <= i3_7;
     assume state(Heap, Mask);
@@ -984,10 +984,10 @@ procedure chainParen(i1: int, i2_1: (MultiSet int), i3_7: int, i4_1: int) return
 procedure chainParen2(i1: int, i2_1: int, i3_7: int, i4_1: (MultiSet int)) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1002,12 +1002,12 @@ procedure chainParen2(i1: int, i2_1: int, i3_7: int, i4_1: (MultiSet int)) retur
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert i1 < i2 -- comparisons.vpr@52.5--52.19
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion i1 < i2 might not hold. (comparisons.vpr@52.12--52.19) [186170]"}
       i1 < i2_1;
     assume state(Heap, Mask);
@@ -1018,8 +1018,8 @@ procedure chainParen2(i1: int, i2_1: int, i3_7: int, i4_1: (MultiSet int)) retur
     assume state(Heap, Mask);
   
   // -- Translating statement: assert i2 <= 3 -- comparisons.vpr@54.5--54.19
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion i2 <= 3 might not hold. (comparisons.vpr@54.12--54.19) [186171]"}
       i2_1 <= 3;
     assume state(Heap, Mask);

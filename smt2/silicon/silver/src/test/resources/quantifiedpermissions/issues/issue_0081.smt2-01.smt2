@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-29 14:51:31
+; Started: 2024-12-29 19:58:33
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -1661,7 +1661,7 @@
     (Seq_contains (Seq_range 0 (Seq_length S@1@01)) i@5@01)
     (or (= $k@6@01 $Perm.No) (< $Perm.No $k@6@01)))
   
-  :qid |quant-u-13183|))))
+  :qid |quant-u-13083|))))
 (check-sat)
 ; unsat
 (pop) ; 2
@@ -1697,7 +1697,7 @@
       (= (inv@7@01 (Seq_index S@1@01 i@5@01)) i@5@01)
       (img@8@01 (Seq_index S@1@01 i@5@01))))
   :pattern ((Seq_index S@1@01 i@5@01))
-  :qid |quant-u-13184|)))
+  :qid |quant-u-13084|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -1769,7 +1769,7 @@
     (Seq_contains (Seq_range 0 (Seq_length S@1@01)) i@9@01)
     (or (= $k@10@01 $Perm.No) (< $Perm.No $k@10@01)))
   
-  :qid |quant-u-13185|))))
+  :qid |quant-u-13085|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -1805,7 +1805,7 @@
       (= (inv@12@01 (Seq_index S@1@01 i@9@01)) i@9@01)
       (img@13@01 (Seq_index S@1@01 i@9@01))))
   :pattern ((Seq_index S@1@01 i@9@01))
-  :qid |quant-u-13186|)))
+  :qid |quant-u-13086|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -1924,7 +1924,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (= r (Seq_index S@1@01 0)) (= (- $k@14@01 (pTaken@15@01 r)) $Perm.No))
   
-  :qid |quant-u-13189|))))
+  :qid |quant-u-13089|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -1971,7 +1971,7 @@
     (Seq_contains (Seq_range 0 (- (Seq_length S@1@01) 2)) i1@16@01)
     (or (= $k@17@01 $Perm.No) (< $Perm.No $k@17@01)))
   
-  :qid |quant-u-13190|))))
+  :qid |quant-u-13090|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -2091,7 +2091,7 @@
       (= r (Seq_index S@1@01 (inv@18@01 r))))
     (= (- $k@17@01 (pTaken@20@01 r)) $Perm.No))
   
-  :qid |quant-u-13193|))))
+  :qid |quant-u-13093|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -2137,7 +2137,7 @@
     (Seq_contains (Seq_range 0 (Seq_length S@1@01)) i2@21@01)
     (or (= $k@22@01 $Perm.No) (< $Perm.No $k@22@01)))
   
-  :qid |quant-u-13194|))))
+  :qid |quant-u-13094|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -2261,7 +2261,7 @@
       (= r (Seq_index S@1@01 (inv@23@01 r))))
     (= (- $k@22@01 (pTaken@25@01 r)) $Perm.No))
   
-  :qid |quant-u-13197|))))
+  :qid |quant-u-13097|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -2305,7 +2305,7 @@
     (Seq_contains (Seq_range 0 (Seq_length S@1@01)) i@26@01)
     (or (= $k@27@01 $Perm.No) (< $Perm.No $k@27@01)))
   
-  :qid |quant-u-13198|))))
+  :qid |quant-u-13098|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -2429,7 +2429,7 @@
       (= r (Seq_index S@1@01 (inv@28@01 r))))
     (= (- $k@27@01 (pTaken@30@01 r)) $Perm.No))
   
-  :qid |quant-u-13201|))))
+  :qid |quant-u-13101|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -2507,7 +2507,7 @@
     (Seq_contains (Seq_range 0 (- (Seq_length S@1@01) 2)) i1@31@01)
     (or (= $k@32@01 $Perm.No) (< $Perm.No $k@32@01)))
   
-  :qid |quant-u-13202|))))
+  :qid |quant-u-13102|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -2627,7 +2627,7 @@
       (= r (Seq_index S@1@01 (inv@33@01 r))))
     (= (- $k@32@01 (pTaken@35@01 r)) $Perm.No))
   
-  :qid |quant-u-13205|))))
+  :qid |quant-u-13105|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -2673,7 +2673,7 @@
     (Seq_contains (Seq_range 0 (Seq_length S@1@01)) i2@36@01)
     (or (= $k@37@01 $Perm.No) (< $Perm.No $k@37@01)))
   
-  :qid |quant-u-13206|))))
+  :qid |quant-u-13106|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -2797,7 +2797,7 @@
       (= r (Seq_index S@1@01 (inv@38@01 r))))
     (= (- $k@37@01 (pTaken@40@01 r)) $Perm.No))
   
-  :qid |quant-u-13209|))))
+  :qid |quant-u-13109|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -2841,7 +2841,7 @@
     (Seq_contains (Seq_range 0 (Seq_length S@1@01)) i@41@01)
     (or (= $k@42@01 $Perm.No) (< $Perm.No $k@42@01)))
   
-  :qid |quant-u-13210|))))
+  :qid |quant-u-13110|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -2965,7 +2965,7 @@
       (= r (Seq_index S@1@01 (inv@43@01 r))))
     (= (- $k@42@01 (pTaken@45@01 r)) $Perm.No))
   
-  :qid |quant-u-13213|))))
+  :qid |quant-u-13113|))))
 (check-sat)
 ; unsat
 (pop) ; 4

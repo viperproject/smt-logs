@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-29 15:35:40
+// Date:         2024-12-29 20:42:04
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0274.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0274-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -461,12 +461,12 @@ procedure test1(curr_node: Ref, all_nodes: (Set Ref)) returns ()
   var n_85: Ref;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var perm: Perm;
   var nn: Ref;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -526,8 +526,8 @@ procedure test1(curr_node: Ref, all_nodes: (Set Ref)) returns ()
           UnfoldingMask := Mask;
           assume access_fields#trigger(UnfoldingHeap, access_fields(n_85));
           assume UnfoldingHeap[null, access_fields(n_85)] == CombineFrames(FrameFragment(UnfoldingHeap[n_85, neighbour]), FrameFragment(UnfoldingHeap[n_85, visited]));
-          ExhaleWellDef0Heap := UnfoldingHeap;
           ExhaleWellDef0Mask := UnfoldingMask;
+          ExhaleWellDef0Heap := UnfoldingHeap;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access access_fields(n) (0274.vpr@10.14--10.146) [191880]"}
@@ -571,8 +571,8 @@ procedure test1(curr_node: Ref, all_nodes: (Set Ref)) returns ()
             UnfoldingMask := Mask;
             assume access_fields#trigger(UnfoldingHeap, access_fields(nn));
             assume UnfoldingHeap[null, access_fields(nn)] == CombineFrames(FrameFragment(UnfoldingHeap[nn, neighbour]), FrameFragment(UnfoldingHeap[nn, visited]));
-            ExhaleWellDef0Heap := UnfoldingHeap;
             ExhaleWellDef0Mask := UnfoldingMask;
+            ExhaleWellDef0Heap := UnfoldingHeap;
             perm := FullPerm;
             if (perm != NoPerm) {
               assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access access_fields(nn) (0274.vpr@12.14--12.113) [191883]"}
@@ -610,8 +610,8 @@ procedure test1(curr_node: Ref, all_nodes: (Set Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale false -- <no position>
     assume false;
@@ -626,13 +626,13 @@ procedure test1(curr_node: Ref, all_nodes: (Set Ref)) returns ()
 procedure test2() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var nn_2: Ref;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var perm: Perm;
   
   // -- Initializing the state
@@ -643,8 +643,8 @@ procedure test2() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale (exists nn: Ref :: nn != null &&
   //     (unfolding acc(access_fields(nn), write) in true)) -- 0274.vpr@18.5--18.80
@@ -656,8 +656,8 @@ procedure test2() returns ()
           UnfoldingMask := Mask;
           assume access_fields#trigger(UnfoldingHeap, access_fields(nn_2));
           assume UnfoldingHeap[null, access_fields(nn_2)] == CombineFrames(FrameFragment(UnfoldingHeap[nn_2, neighbour]), FrameFragment(UnfoldingHeap[nn_2, visited]));
-          ExhaleWellDef0Heap := UnfoldingHeap;
           ExhaleWellDef0Mask := UnfoldingMask;
+          ExhaleWellDef0Heap := UnfoldingHeap;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  Inhale might fail. There might be insufficient permission to access access_fields(nn) (0274.vpr@18.12--18.80) [191886]"}

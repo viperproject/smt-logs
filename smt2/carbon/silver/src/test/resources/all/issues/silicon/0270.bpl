@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-29 15:41:14
+// Date:         2024-12-29 20:47:33
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0270.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0270-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -451,11 +451,11 @@ procedure P#definedness(x: Ref) returns ()
 procedure test(xs: (Set Ref), x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var QPMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var perm: Perm;
   var freshVersion: FrameType;
   var newVersion: FrameType;
@@ -472,8 +472,8 @@ procedure test(xs: (Set Ref), x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale (x in xs) -- 0270.vpr@9.3--9.17
     assume xs[x];
@@ -530,8 +530,8 @@ procedure test(xs: (Set Ref), x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(P(x), write) -- 0270.vpr@13.3--13.12
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding P(x) might fail. There might be insufficient permission to access x.f (0270.vpr@13.3--13.12) [209346]"}
@@ -556,8 +556,8 @@ procedure test(xs: (Set Ref), x: Ref) returns ()
   // -- Translating statement: unfold acc(P(x), write) -- 0270.vpr@14.3--14.14
     assume P#trigger(Heap, P(x));
     assume Heap[null, P(x)] == FrameFragment(Heap[x, f_7]);
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding P(x) might fail. There might be insufficient permission to access P(x) (0270.vpr@14.3--14.14) [209350]"}
@@ -578,8 +578,8 @@ procedure test(xs: (Set Ref), x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale x.f == 10 -- 0270.vpr@16.3--16.19
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of x.f == 10
       assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (0270.vpr@16.10--16.19) [209352]"}
@@ -589,8 +589,8 @@ procedure test(xs: (Set Ref), x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale (forall y: Ref :: { (y in xs) } (y in xs) ==> acc(y.f, write)) -- 0270.vpr@17.3--17.47
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall y: Ref :: { (y in xs) } (y in xs) ==> acc(y.f, write))
       if (*) {

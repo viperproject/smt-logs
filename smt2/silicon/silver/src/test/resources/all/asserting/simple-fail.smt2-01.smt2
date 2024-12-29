@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-29 14:57:04
+; Started: 2024-12-29 20:03:47
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -130,43 +130,43 @@
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   (= (fun2%limited s@$ x@0@00) (fun2 s@$ x@0@00))
   :pattern ((fun2 s@$ x@0@00))
-  :qid |quant-u-22096|)))
+  :qid |quant-u-21987|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   (fun2%stateless x@0@00)
   :pattern ((fun2%limited s@$ x@0@00))
-  :qid |quant-u-22097|)))
+  :qid |quant-u-21988|)))
 (assert (forall ((s@$ $Snap)) (!
   (= (fun%limited s@$) (fun s@$))
   :pattern ((fun s@$))
-  :qid |quant-u-22098|)))
+  :qid |quant-u-21989|)))
 (assert (forall ((s@$ $Snap)) (!
   (as fun%stateless  Bool)
   :pattern ((fun%limited s@$))
-  :qid |quant-u-22099|)))
+  :qid |quant-u-21990|)))
 (assert (forall ((s@$ $Snap) (x@3@00 $Ref)) (!
   (= (fun4%limited s@$ x@3@00) (fun4 s@$ x@3@00))
   :pattern ((fun4 s@$ x@3@00))
-  :qid |quant-u-22100|)))
+  :qid |quant-u-21991|)))
 (assert (forall ((s@$ $Snap) (x@3@00 $Ref)) (!
   (fun4%stateless x@3@00)
   :pattern ((fun4%limited s@$ x@3@00))
-  :qid |quant-u-22101|)))
+  :qid |quant-u-21992|)))
 (assert (forall ((s@$ $Snap) (x@3@00 $Ref)) (!
   (=> (fun4%precondition s@$ x@3@00) (= (fun4 s@$ x@3@00) 0))
   :pattern ((fun4 s@$ x@3@00))
-  :qid |quant-u-22104|)))
+  :qid |quant-u-21995|)))
 (assert (forall ((s@$ $Snap) (x@3@00 $Ref)) (!
   true
   :pattern ((fun4 s@$ x@3@00))
-  :qid |quant-u-22105|)))
+  :qid |quant-u-21996|)))
 (assert (forall ((s@$ $Snap) (x@5@00 $Ref)) (!
   (= (fun3%limited s@$ x@5@00) (fun3 s@$ x@5@00))
   :pattern ((fun3 s@$ x@5@00))
-  :qid |quant-u-22102|)))
+  :qid |quant-u-21993|)))
 (assert (forall ((s@$ $Snap) (x@5@00 $Ref)) (!
   (fun3%stateless x@5@00)
   :pattern ((fun3%limited s@$ x@5@00))
-  :qid |quant-u-22103|)))
+  :qid |quant-u-21994|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- assign ----------

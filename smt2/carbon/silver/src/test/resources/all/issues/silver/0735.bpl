@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-29 15:45:45
+// Date:         2024-12-29 20:52:01
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0735.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0735-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -1660,8 +1660,8 @@ function  __prim__int___box__#triggerStateless(prim: int): Ref;
 procedure __prim__int___box__#definedness(prim: int) returns (Result: Ref)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1677,8 +1677,8 @@ procedure __prim__int___box__#definedness(prim: int) returns (Result: Ref)
     // -- Check definedness of int___unbox__(result) == prim
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Precondition of function int___unbox__ might not hold. Assertion issubtype(typeof(result), int()) might not hold. (0735.vpr@609.11--609.32) [221456]"}
           (issubtype((typeof(Result): PyTypeDomainType), vint): bool);
         // Stop execution
@@ -1815,8 +1815,8 @@ function  __prim__bool___box__#triggerStateless(prim: bool): Ref;
 procedure __prim__bool___box__#definedness(prim: bool) returns (Result: Ref)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1832,8 +1832,8 @@ procedure __prim__bool___box__#definedness(prim: bool) returns (Result: Ref)
     // -- Check definedness of bool___unbox__(result) == prim
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Precondition of function bool___unbox__ might not hold. Assertion issubtype(typeof(result), bool()) might not hold. (0735.vpr@624.11--624.33) [221457]"}
           (issubtype((typeof(Result): PyTypeDomainType), vbool): bool);
         // Stop execution
@@ -1846,8 +1846,8 @@ procedure __prim__bool___box__#definedness(prim: bool) returns (Result: Ref)
     // -- Check definedness of int___unbox__(result) == (prim ? 1 : 0)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Precondition of function int___unbox__ might not hold. Assertion issubtype(typeof(result), int()) might not hold. (0735.vpr@625.11--625.32) [221458]"}
           (issubtype((typeof(Result): PyTypeDomainType), vint): bool);
         // Stop execution
@@ -2160,29 +2160,29 @@ procedure main(_cthread_155: Ref, _caller_measures_155: (Seq Measure$DomainType)
   modifies Heap, Mask;
 {
   var __end_lblGuard: bool;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var _r_1: Ref;
   var _r_1_2: Ref;
   var _r_1_4: Ref;
   var _r_1_6: Ref;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var _err: Ref;
   var r_1: Ref;
   var x_1: Ref;
   var _method_measures_155: (Seq Measure$DomainType);
   var huh_1: int;
   var __plugin_refute_nondet1: bool;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var __plugin_refute_nondet2: bool;
   var __plugin_refute_nondet3: bool;
   var __plugin_refute_nondet4: bool;
   var __plugin_refute_nondet5: bool;
   var __plugin_refute_nondet6: bool;
-  var Label__endHeap: HeapType;
   var Label__endMask: MaskType;
+  var Label__endHeap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -2210,8 +2210,8 @@ procedure main(_cthread_155: Ref, _caller_measures_155: (Seq Measure$DomainType)
         // -- Check definedness of int___gt__(int___unbox__(x_0), 10)
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             assert {:msg "  Precondition of function int___unbox__ might not hold. Assertion issubtype(typeof(x_0), int()) might not hold. (0735.vpr@658.23--658.41) [221459]"}
               (issubtype((typeof(x_0): PyTypeDomainType), vint): bool);
             // Stop execution
@@ -2292,8 +2292,8 @@ procedure main(_cthread_155: Ref, _caller_measures_155: (Seq Measure$DomainType)
       // -- Check definedness of int___gt__(int___unbox__(x_0), 10)
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           assert {:msg "  Precondition of function int___unbox__ might not hold. Assertion issubtype(typeof(x_0), int()) might not hold. (0735.vpr@658.23--658.41) [221464]"}
             (issubtype((typeof(x_0): PyTypeDomainType), vint): bool);
           // Stop execution
@@ -2310,8 +2310,8 @@ procedure main(_cthread_155: Ref, _caller_measures_155: (Seq Measure$DomainType)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[_err, $allocated];
@@ -2388,14 +2388,14 @@ procedure main(_cthread_155: Ref, _caller_measures_155: (Seq Measure$DomainType)
       
       // -- Translating statement: // id = 14
   // assert !int___gt__(int___unbox__(x_1), 0) -- 0735.vpr@675.3--675.44
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         
         // -- Check definedness of !int___gt__(int___unbox__(x_1), 0)
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Heap := ExhaleWellDef0Heap;
             ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+            ExhaleWellDef1Heap := ExhaleWellDef0Heap;
             assert {:msg "  Precondition of function int___unbox__ might not hold. Assertion issubtype(typeof(x_1), int()) might not hold. (0735.vpr@675.22--675.40) [221465]"}
               (issubtype((typeof(x_1): PyTypeDomainType), vint): bool);
             // Stop execution
@@ -2433,14 +2433,14 @@ procedure main(_cthread_155: Ref, _caller_measures_155: (Seq Measure$DomainType)
       
       // -- Translating statement: // id = 18
   // assert int___gt__(int___unbox__(x_1), 0) -- 0735.vpr@677.3--677.43
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         
         // -- Check definedness of int___gt__(int___unbox__(x_1), 0)
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Heap := ExhaleWellDef0Heap;
             ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+            ExhaleWellDef1Heap := ExhaleWellDef0Heap;
             assert {:msg "  Precondition of function int___unbox__ might not hold. Assertion issubtype(typeof(x_1), int()) might not hold. (0735.vpr@677.21--677.39) [221467]"}
               (issubtype((typeof(x_1): PyTypeDomainType), vint): bool);
             // Stop execution
@@ -2478,8 +2478,8 @@ procedure main(_cthread_155: Ref, _caller_measures_155: (Seq Measure$DomainType)
       
       // -- Translating statement: // id = 22
   // assert false -- 0735.vpr@678.3--678.15
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Assert might fail. Assertion false might not hold. (0735.vpr@678.10--678.15) [221469]"}
           false;
         assume state(Heap, Mask);
@@ -2508,8 +2508,8 @@ procedure main(_cthread_155: Ref, _caller_measures_155: (Seq Measure$DomainType)
       
       // -- Translating statement: // id = 26
   // assert true -- 0735.vpr@680.3--680.14
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assume state(Heap, Mask);
       
       // -- Translating statement: // id = 27
@@ -2536,8 +2536,8 @@ procedure main(_cthread_155: Ref, _caller_measures_155: (Seq Measure$DomainType)
       
       // -- Translating statement: // id = 30
   // assert false -- 0735.vpr@681.3--681.15
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Assert might fail. Assertion false might not hold. (0735.vpr@681.10--681.15) [221471]"}
           false;
         assume state(Heap, Mask);
@@ -2566,8 +2566,8 @@ procedure main(_cthread_155: Ref, _caller_measures_155: (Seq Measure$DomainType)
     // -- Check definedness of int___gt__(int___unbox__(x_1), 0)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Precondition of function int___unbox__ might not hold. Assertion issubtype(typeof(x_1), int()) might not hold. (0735.vpr@682.18--682.36) [221472]"}
           (issubtype((typeof(x_1): PyTypeDomainType), vint): bool);
         // Stop execution
@@ -2608,8 +2608,8 @@ procedure main(_cthread_155: Ref, _caller_measures_155: (Seq Measure$DomainType)
           
           // -- Translating statement: // id = 37
   // assert false -- 0735.vpr@687.5--687.17
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             assert {:msg "  Assert might fail. Assertion false might not hold. (0735.vpr@687.12--687.17) [221473]"}
               false;
             assume state(Heap, Mask);
@@ -2662,8 +2662,8 @@ procedure main(_cthread_155: Ref, _caller_measures_155: (Seq Measure$DomainType)
   // -- Translating statement: // id = 43
   // label __end -- 0735.vpr@692.3--692.14
     __end:
-    Label__endHeap := Heap;
     Label__endMask := Mask;
+    Label__endHeap := Heap;
     __end_lblGuard := true;
     assume state(Heap, Mask);
 }

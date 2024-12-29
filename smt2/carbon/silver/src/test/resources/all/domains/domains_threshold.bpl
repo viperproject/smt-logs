@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-29 15:28:05
+// Date:         2024-12-29 20:34:33
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/domains/domains_threshold.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/domains/domains_threshold-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -223,8 +223,8 @@ axiom (forall <T> z: (D1DomainType (D1DomainType T)) ::
 procedure m(x: (D1DomainType int)) returns (r_1: (D1DomainType bool))
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var y: int;
   var z: (D1DomainType (D1DomainType (D1DomainType int)));
   
@@ -236,8 +236,8 @@ procedure m(x: (D1DomainType int)) returns (r_1: (D1DomainType bool))
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: y := 5 -- domains_threshold.vpr@21.2--21.8
     y := 5;

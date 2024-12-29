@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-29 14:56:20
+; Started: 2024-12-29 20:03:03
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -686,7 +686,7 @@
   :pattern ((Set_in x@6@01 xs@3@01))
   :pattern ((inv@8@01 x@6@01))
   :pattern ((img@9@01 x@6@01))
-  :qid |quant-u-21582|)))
+  :qid |quant-u-21473|)))
 (assert (forall ((r $Ref)) (!
   (=> (and (img@9@01 r) (Set_in (inv@8@01 r) xs@3@01)) (= (inv@8@01 r) r))
   :pattern ((inv@8@01 r))
@@ -718,7 +718,7 @@
     (Set_in (inv@8@01 r) xs@3@01)
     ($FVF.loc_f ($FVF.lookup_f (as sm@10@01  $FVF<f>) r) r))
   :pattern ((inv@8@01 r))
-  :qid |quant-u-21583|)))
+  :qid |quant-u-21474|)))
 ; State saturation: after inhale
 (set-option :timeout 20)
 (check-sat)
@@ -756,7 +756,7 @@
     (and (= (inv@13@01 x@11@01) x@11@01) (img@14@01 x@11@01)))
   :pattern ((inv@13@01 x@11@01))
   :pattern ((img@14@01 x@11@01))
-  :qid |quant-u-21585|)))
+  :qid |quant-u-21476|)))
 (assert (forall ((r $Ref)) (!
   (=> (and (img@14@01 r) (= (inv@13@01 r) y@4@01)) (= (inv@13@01 r) r))
   :pattern ((inv@13@01 r))
@@ -778,7 +778,7 @@
       (and (img@14@01 r) (= (inv@13@01 r) y@4@01))
       (and (img@9@01 r) (Set_in (inv@8@01 r) xs@3@01))))
   
-  :qid |quant-u-21586|))))
+  :qid |quant-u-21477|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -811,7 +811,7 @@
     (= (inv@13@01 r) y@4@01)
     ($FVF.loc_f ($FVF.lookup_f (as sm@15@01  $FVF<f>) r) r))
   :pattern ((inv@13@01 r))
-  :qid |quant-u-21587|)))
+  :qid |quant-u-21478|)))
 ; State saturation: after inhale
 (set-option :timeout 20)
 (check-sat)
@@ -849,7 +849,7 @@
     (and (= (inv@18@01 x@16@01) x@16@01) (img@19@01 x@16@01)))
   :pattern ((inv@18@01 x@16@01))
   :pattern ((img@19@01 x@16@01))
-  :qid |quant-u-21589|)))
+  :qid |quant-u-21480|)))
 (assert (forall ((r $Ref)) (!
   (=> (and (img@19@01 r) (= (inv@18@01 r) z@5@01)) (= (inv@18@01 r) r))
   :pattern ((inv@18@01 r))
@@ -871,7 +871,7 @@
       (and (img@19@01 r) (= (inv@18@01 r) z@5@01))
       (and (img@14@01 r) (= (inv@13@01 r) y@4@01))))
   
-  :qid |quant-u-21590|))))
+  :qid |quant-u-21481|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -887,7 +887,7 @@
       (and (img@19@01 r) (= (inv@18@01 r) z@5@01))
       (and (img@9@01 r) (Set_in (inv@8@01 r) xs@3@01))))
   
-  :qid |quant-u-21591|))))
+  :qid |quant-u-21482|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -928,7 +928,7 @@
     (= (inv@18@01 r) z@5@01)
     ($FVF.loc_f ($FVF.lookup_f (as sm@20@01  $FVF<f>) r) r))
   :pattern ((inv@18@01 r))
-  :qid |quant-u-21592|)))
+  :qid |quant-u-21483|)))
 ; State saturation: after inhale
 (set-option :timeout 20)
 (check-sat)
@@ -1747,7 +1747,7 @@
     (Set_in x@32@01 xs@30@01)
     (and (= (inv@35@01 x@32@01) x@32@01) (img@36@01 x@32@01)))
   :pattern (($FVF.loc_f ($FVF.lookup_f $t@34@01 x@32@01) x@32@01))
-  :qid |quant-u-21594|)))
+  :qid |quant-u-21485|)))
 (assert (forall ((r $Ref)) (!
   (=> (and (img@36@01 r) (Set_in (inv@35@01 r) xs@30@01)) (= (inv@35@01 r) r))
   :pattern ((inv@35@01 r))
@@ -1777,7 +1777,7 @@
     (Set_in (inv@35@01 r) xs@30@01)
     ($FVF.loc_f ($FVF.lookup_f (as sm@37@01  $FVF<f>) r) r))
   :pattern ((inv@35@01 r))
-  :qid |quant-u-21595|)))
+  :qid |quant-u-21486|)))
 ; State saturation: after inhale
 (set-option :timeout 20)
 (check-sat)

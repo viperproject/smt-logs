@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-29 15:02:01
+; Started: 2024-12-29 20:08:40
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -161,21 +161,21 @@
 (assert (forall ((s@$ $Snap) (data@0@00 Int)) (!
   (= (wrapNot%limited s@$ data@0@00) (wrapNot s@$ data@0@00))
   :pattern ((wrapNot s@$ data@0@00))
-  :qid |quant-u-26470|)))
+  :qid |quant-u-26362|)))
 (assert (forall ((s@$ $Snap) (data@0@00 Int)) (!
   (wrapNot%stateless data@0@00)
   :pattern ((wrapNot%limited s@$ data@0@00))
-  :qid |quant-u-26471|)))
+  :qid |quant-u-26363|)))
 (assert (forall ((s@$ $Snap) (data@0@00 Int)) (!
   (let ((result@1@00 (wrapNot%limited s@$ data@0@00))) (=>
     (wrapNot%precondition s@$ data@0@00)
     (not (= (get_Wrap_data<Int> result@1@00) data@0@00))))
   :pattern ((wrapNot%limited s@$ data@0@00))
-  :qid |quant-u-26474|)))
+  :qid |quant-u-26366|)))
 (assert (forall ((s@$ $Snap) (data@0@00 Int)) (!
   (let ((result@1@00 (wrapNot%limited s@$ data@0@00))) true)
   :pattern ((wrapNot%limited s@$ data@0@00))
-  :qid |quant-u-26475|)))
+  :qid |quant-u-26367|)))
 ; ---------- FUNCTION wrap----------
 (declare-fun data@2@00 () Int)
 (declare-fun result@3@00 () Wrap)
@@ -190,18 +190,18 @@
 (assert (forall ((s@$ $Snap) (data@2@00 Int)) (!
   (= (wrap%limited s@$ data@2@00) (wrap s@$ data@2@00))
   :pattern ((wrap s@$ data@2@00))
-  :qid |quant-u-26472|)))
+  :qid |quant-u-26364|)))
 (assert (forall ((s@$ $Snap) (data@2@00 Int)) (!
   (wrap%stateless data@2@00)
   :pattern ((wrap%limited s@$ data@2@00))
-  :qid |quant-u-26473|)))
+  :qid |quant-u-26365|)))
 (assert (forall ((s@$ $Snap) (data@2@00 Int)) (!
   (let ((result@3@00 (wrap%limited s@$ data@2@00))) (=>
     (wrap%precondition s@$ data@2@00)
     (= (get_Wrap_data<Int> result@3@00) data@2@00)))
   :pattern ((wrap%limited s@$ data@2@00))
-  :qid |quant-u-26476|)))
+  :qid |quant-u-26368|)))
 (assert (forall ((s@$ $Snap) (data@2@00 Int)) (!
   (let ((result@3@00 (wrap%limited s@$ data@2@00))) true)
   :pattern ((wrap%limited s@$ data@2@00))
-  :qid |quant-u-26477|)))
+  :qid |quant-u-26369|)))

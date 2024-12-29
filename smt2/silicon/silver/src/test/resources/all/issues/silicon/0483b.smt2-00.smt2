@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-29 15:00:35
+; Started: 2024-12-29 20:07:16
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -698,7 +698,7 @@
       (= (inv@4@00 s@$ a@0@00 b@1@00 (loc<Ref> a@0@00 i$0@3@00)) i$0@3@00)
       (img@5@00 s@$ a@0@00 b@1@00 (loc<Ref> a@0@00 i$0@3@00))))
   :pattern ((loc<Ref> a@0@00 i$0@3@00))
-  :qid |quant-u-25624|)))
+  :qid |quant-u-25516|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and (img@5@00 s@$ a@0@00 b@1@00 r) (<= 0 (inv@4@00 s@$ a@0@00 b@1@00 r)))
@@ -745,7 +745,7 @@
       (= (inv@7@00 s@$ a@0@00 b@1@00 (loc<Ref> b@1@00 i$1@6@00)) i$1@6@00)
       (img@8@00 s@$ a@0@00 b@1@00 (loc<Ref> b@1@00 i$1@6@00))))
   :pattern ((loc<Ref> b@1@00 i$1@6@00))
-  :qid |quant-u-25626|)))
+  :qid |quant-u-25518|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and (img@8@00 s@$ a@0@00 b@1@00 r) (<= 0 (inv@7@00 s@$ a@0@00 b@1@00 r)))
@@ -767,7 +767,7 @@
       (and (img@8@00 s@$ a@0@00 b@1@00 r) (<= 0 (inv@7@00 s@$ a@0@00 b@1@00 r)))
       (and (img@5@00 s@$ a@0@00 b@1@00 r) (<= 0 (inv@4@00 s@$ a@0@00 b@1@00 r)))))
   
-  :qid |quant-u-25627|))))
+  :qid |quant-u-25519|))))
 (check-sat)
 ; unknown
 (pop) ; 2
@@ -777,11 +777,11 @@
 (assert (forall ((s@$ $Snap) (a@0@00 Array<Ref>) (b@1@00 Array<Ref>)) (!
   (= (Property%limited s@$ a@0@00 b@1@00) (Property s@$ a@0@00 b@1@00))
   :pattern ((Property s@$ a@0@00 b@1@00))
-  :qid |quant-u-25621|)))
+  :qid |quant-u-25513|)))
 (assert (forall ((s@$ $Snap) (a@0@00 Array<Ref>) (b@1@00 Array<Ref>)) (!
   (Property%stateless a@0@00 b@1@00)
   :pattern ((Property%limited s@$ a@0@00 b@1@00))
-  :qid |quant-u-25622|)))
+  :qid |quant-u-25514|)))
 ; ----- Verification of function body and postcondition -----
 (set-option :timeout 0)
 (push) ; 1
@@ -798,7 +798,7 @@
       (= (inv@7@00 s@$ a@0@00 b@1@00 (loc<Ref> b@1@00 i$1@6@00)) i$1@6@00)
       (img@8@00 s@$ a@0@00 b@1@00 (loc<Ref> b@1@00 i$1@6@00))))
   :pattern ((loc<Ref> b@1@00 i$1@6@00))
-  :qid |quant-u-25626|)))
+  :qid |quant-u-25518|)))
 (assert (forall ((i$1@6@00 Int)) (!
   (=> (<= 0 i$1@6@00) (not (= (loc<Ref> b@1@00 i$1@6@00) $Ref.null)))
   :pattern ((loc<Ref> b@1@00 i$1@6@00))
@@ -816,7 +816,7 @@
       (= (inv@4@00 s@$ a@0@00 b@1@00 (loc<Ref> a@0@00 i$0@3@00)) i$0@3@00)
       (img@5@00 s@$ a@0@00 b@1@00 (loc<Ref> a@0@00 i$0@3@00))))
   :pattern ((loc<Ref> a@0@00 i$0@3@00))
-  :qid |quant-u-25624|)))
+  :qid |quant-u-25516|)))
 (assert (forall ((i$0@3@00 Int)) (!
   (=> (<= 0 i$0@3@00) (not (= (loc<Ref> a@0@00 i$0@3@00) $Ref.null)))
   :pattern ((loc<Ref> a@0@00 i$0@3@00))
@@ -991,7 +991,7 @@
           (= (inv@4@00 s@$ a@0@00 b@1@00 (loc<Ref> a@0@00 i$0@3@00)) i$0@3@00)
           (img@5@00 s@$ a@0@00 b@1@00 (loc<Ref> a@0@00 i$0@3@00))))
       :pattern ((loc<Ref> a@0@00 i$0@3@00))
-      :qid |quant-u-25624|))
+      :qid |quant-u-25516|))
     (forall ((r $Ref)) (!
       (=>
         (and
@@ -1007,7 +1007,7 @@
           (= (inv@7@00 s@$ a@0@00 b@1@00 (loc<Ref> b@1@00 i$1@6@00)) i$1@6@00)
           (img@8@00 s@$ a@0@00 b@1@00 (loc<Ref> b@1@00 i$1@6@00))))
       :pattern ((loc<Ref> b@1@00 i$1@6@00))
-      :qid |quant-u-25626|))
+      :qid |quant-u-25518|))
     (forall ((r $Ref)) (!
       (=>
         (and
@@ -1049,8 +1049,8 @@
           :pattern ((loc<Ref> b@1@00 i))
           )))))
   :pattern ((Property s@$ a@0@00 b@1@00))
-  :qid |quant-u-25628|)))
+  :qid |quant-u-25520|)))
 (assert (forall ((s@$ $Snap) (a@0@00 Array<Ref>) (b@1@00 Array<Ref>)) (!
   true
   :pattern ((Property s@$ a@0@00 b@1@00))
-  :qid |quant-u-25629|)))
+  :qid |quant-u-25521|)))

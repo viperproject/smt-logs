@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-29 15:15:32
+// Date:         2024-12-29 20:22:04
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpredicates/arity/unfolding_arity.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpredicates/arity/unfolding_arity-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -572,17 +572,17 @@ procedure m1(xs: (Set Ref)) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var r_27: Ref;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var perm: Perm;
   var r_28: Ref;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var r_7: Ref;
   
   // -- Initializing the state
@@ -637,8 +637,8 @@ procedure m1(xs: (Set Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale (forall r: Ref ::
   //     { (r in xs) }
@@ -651,8 +651,8 @@ procedure m1(xs: (Set Ref)) returns ()
           UnfoldingMask := Mask;
           assume p1#trigger(UnfoldingHeap, p1(r_27));
           assume UnfoldingHeap[null, p1(r_27)] == FrameFragment(UnfoldingHeap[r_27, f_7]);
-          ExhaleWellDef0Heap := UnfoldingHeap;
           ExhaleWellDef0Mask := UnfoldingMask;
+          ExhaleWellDef0Heap := UnfoldingHeap;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  Inhale might fail. There might be insufficient permission to access p1(r) (unfolding_arity.vpr@26.12--26.67) [108814]"}
@@ -683,8 +683,8 @@ procedure m1(xs: (Set Ref)) returns ()
   // -- Translating statement: assert (forall r: Ref ::
   //     { (r in xs) }
   //     (r in xs) ==> (unfolding acc(p1(r), write) in r.f == 4)) -- unfolding_arity.vpr@27.5--27.67
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall r: Ref :: { (r in xs) } (r in xs) ==> (unfolding acc(p1(r), write) in r.f == 4))
       if (*) {
@@ -693,8 +693,8 @@ procedure m1(xs: (Set Ref)) returns ()
           UnfoldingMask := ExhaleWellDef0Mask;
           assume p1#trigger(UnfoldingHeap, p1(r_28));
           assume UnfoldingHeap[null, p1(r_28)] == FrameFragment(UnfoldingHeap[r_28, f_7]);
-          ExhaleWellDef1Heap := UnfoldingHeap;
           ExhaleWellDef1Mask := UnfoldingMask;
+          ExhaleWellDef1Heap := UnfoldingHeap;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  Assert might fail. There might be insufficient permission to access p1(r) (unfolding_arity.vpr@27.12--27.67) [108816]"}
@@ -723,8 +723,8 @@ procedure m1(xs: (Set Ref)) returns ()
           UnfoldingMask := ExhaleWellDef0Mask;
           assume p1#trigger(UnfoldingHeap, p1(r_7));
           assume UnfoldingHeap[null, p1(r_7)] == FrameFragment(UnfoldingHeap[r_7, f_7]);
-          ExhaleWellDef1Heap := UnfoldingHeap;
           ExhaleWellDef1Mask := UnfoldingMask;
+          ExhaleWellDef1Heap := UnfoldingHeap;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  Assert might fail. There might be insufficient permission to access p1(r) (unfolding_arity.vpr@27.12--27.67) [108820]"}
@@ -756,15 +756,15 @@ procedure m2(xs: (Set Ref)) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var r_12: Ref;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var perm: Perm;
   var r_5: Ref;
   
@@ -820,14 +820,14 @@ procedure m2(xs: (Set Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert (forall r: Ref ::
   //     { (r in xs) }
   //     (r in xs) ==> (unfolding acc(p2(r), write) in r.f == 5)) -- unfolding_arity.vpr@34.5--34.67
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall r: Ref :: { (r in xs) } (r in xs) ==> (unfolding acc(p2(r), write) in r.f == 5))
       if (*) {
@@ -836,8 +836,8 @@ procedure m2(xs: (Set Ref)) returns ()
           UnfoldingMask := ExhaleWellDef0Mask;
           assume p2#trigger(UnfoldingHeap, p2(r_12));
           assume UnfoldingHeap[null, p2(r_12)] == FrameFragment(UnfoldingHeap[r_12, f_7]);
-          ExhaleWellDef1Heap := UnfoldingHeap;
           ExhaleWellDef1Mask := UnfoldingMask;
+          ExhaleWellDef1Heap := UnfoldingHeap;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  Assert might fail. There might be insufficient permission to access p2(r) (unfolding_arity.vpr@34.12--34.67) [108824]"}
@@ -867,8 +867,8 @@ procedure m2(xs: (Set Ref)) returns ()
           UnfoldingMask := ExhaleWellDef0Mask;
           assume p2#trigger(UnfoldingHeap, p2(r_5));
           assume UnfoldingHeap[null, p2(r_5)] == FrameFragment(UnfoldingHeap[r_5, f_7]);
-          ExhaleWellDef1Heap := UnfoldingHeap;
           ExhaleWellDef1Mask := UnfoldingMask;
+          ExhaleWellDef1Heap := UnfoldingHeap;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  Assert might fail. There might be insufficient permission to access p2(r) (unfolding_arity.vpr@34.12--34.67) [108828]"}
@@ -901,17 +901,17 @@ procedure m3(xs: (Set Ref), i: int) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var r_30: Ref;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var perm: Perm;
   var r_32: Ref;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var r_7: Ref;
   
   // -- Initializing the state
@@ -966,8 +966,8 @@ procedure m3(xs: (Set Ref), i: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale (forall r: Ref ::
   //     { (r in xs) }
@@ -980,8 +980,8 @@ procedure m3(xs: (Set Ref), i: int) returns ()
           UnfoldingMask := Mask;
           assume p3#trigger(UnfoldingHeap, p3(r_30, i));
           assume UnfoldingHeap[null, p3(r_30, i)] == FrameFragment(UnfoldingHeap[r_30, f_7]);
-          ExhaleWellDef0Heap := UnfoldingHeap;
           ExhaleWellDef0Mask := UnfoldingMask;
+          ExhaleWellDef0Heap := UnfoldingHeap;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  Inhale might fail. There might be insufficient permission to access p3(r, i) (unfolding_arity.vpr@40.12--40.72) [108832]"}
@@ -1013,8 +1013,8 @@ procedure m3(xs: (Set Ref), i: int) returns ()
   // -- Translating statement: assert (forall r: Ref ::
   //     { (r in xs) }
   //     (r in xs) ==> (unfolding acc(p3(r, i), write) in r.f == i + 1)) -- unfolding_arity.vpr@41.5--41.72
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall r: Ref :: { (r in xs) } (r in xs) ==> (unfolding acc(p3(r, i), write) in r.f == i + 1))
       if (*) {
@@ -1023,8 +1023,8 @@ procedure m3(xs: (Set Ref), i: int) returns ()
           UnfoldingMask := ExhaleWellDef0Mask;
           assume p3#trigger(UnfoldingHeap, p3(r_32, i));
           assume UnfoldingHeap[null, p3(r_32, i)] == FrameFragment(UnfoldingHeap[r_32, f_7]);
-          ExhaleWellDef1Heap := UnfoldingHeap;
           ExhaleWellDef1Mask := UnfoldingMask;
+          ExhaleWellDef1Heap := UnfoldingHeap;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  Assert might fail. There might be insufficient permission to access p3(r, i) (unfolding_arity.vpr@41.12--41.72) [108834]"}
@@ -1054,8 +1054,8 @@ procedure m3(xs: (Set Ref), i: int) returns ()
           UnfoldingMask := ExhaleWellDef0Mask;
           assume p3#trigger(UnfoldingHeap, p3(r_7, i));
           assume UnfoldingHeap[null, p3(r_7, i)] == FrameFragment(UnfoldingHeap[r_7, f_7]);
-          ExhaleWellDef1Heap := UnfoldingHeap;
           ExhaleWellDef1Mask := UnfoldingMask;
+          ExhaleWellDef1Heap := UnfoldingHeap;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  Assert might fail. There might be insufficient permission to access p3(r, i) (unfolding_arity.vpr@41.12--41.72) [108838]"}
@@ -1088,17 +1088,17 @@ procedure m4(xs: (Set Ref), i: int) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var r_13: Ref;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var perm: Perm;
   var r_15: Ref;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var r_7: Ref;
   
   // -- Initializing the state
@@ -1153,8 +1153,8 @@ procedure m4(xs: (Set Ref), i: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale (forall r: Ref ::
   //     { (r in xs) }
@@ -1167,8 +1167,8 @@ procedure m4(xs: (Set Ref), i: int) returns ()
           UnfoldingMask := Mask;
           assume p3#trigger(UnfoldingHeap, p3(r_13, i));
           assume UnfoldingHeap[null, p3(r_13, i)] == FrameFragment(UnfoldingHeap[r_13, f_7]);
-          ExhaleWellDef0Heap := UnfoldingHeap;
           ExhaleWellDef0Mask := UnfoldingMask;
+          ExhaleWellDef0Heap := UnfoldingHeap;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  Inhale might fail. There might be insufficient permission to access p3(r, i) (unfolding_arity.vpr@47.11--47.71) [108842]"}
@@ -1200,8 +1200,8 @@ procedure m4(xs: (Set Ref), i: int) returns ()
   // -- Translating statement: assert (forall r: Ref ::
   //     { (r in xs) }
   //     (r in xs) ==> (unfolding acc(p3(r, i), write) in r.f == i)) -- unfolding_arity.vpr@49.4--49.69
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall r: Ref :: { (r in xs) } (r in xs) ==> (unfolding acc(p3(r, i), write) in r.f == i))
       if (*) {
@@ -1210,8 +1210,8 @@ procedure m4(xs: (Set Ref), i: int) returns ()
           UnfoldingMask := ExhaleWellDef0Mask;
           assume p3#trigger(UnfoldingHeap, p3(r_15, i));
           assume UnfoldingHeap[null, p3(r_15, i)] == FrameFragment(UnfoldingHeap[r_15, f_7]);
-          ExhaleWellDef1Heap := UnfoldingHeap;
           ExhaleWellDef1Mask := UnfoldingMask;
+          ExhaleWellDef1Heap := UnfoldingHeap;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  Assert might fail. There might be insufficient permission to access p3(r, i) (unfolding_arity.vpr@49.11--49.69) [108844]"}
@@ -1241,8 +1241,8 @@ procedure m4(xs: (Set Ref), i: int) returns ()
           UnfoldingMask := ExhaleWellDef0Mask;
           assume p3#trigger(UnfoldingHeap, p3(r_7, i));
           assume UnfoldingHeap[null, p3(r_7, i)] == FrameFragment(UnfoldingHeap[r_7, f_7]);
-          ExhaleWellDef1Heap := UnfoldingHeap;
           ExhaleWellDef1Mask := UnfoldingMask;
+          ExhaleWellDef1Heap := UnfoldingHeap;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  Assert might fail. There might be insufficient permission to access p3(r, i) (unfolding_arity.vpr@49.11--49.69) [108848]"}

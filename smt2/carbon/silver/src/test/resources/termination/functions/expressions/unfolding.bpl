@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-29 15:47:26
+// Date:         2024-12-29 20:53:41
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/termination/functions/expressions/unfolding.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/termination/functions/expressions/unfolding-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -242,8 +242,8 @@ procedure test#definedness(x: Ref) returns (Result: bool)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -265,8 +265,8 @@ procedure test#definedness(x: Ref) returns (Result: bool)
       UnfoldingMask := Mask;
       assume foo#trigger_1(UnfoldingHeap, foo_3(x));
       assume UnfoldingHeap[null, foo_3(x)] == FrameFragment(UnfoldingHeap[x, f_7]);
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access foo(x) (unfolding.vpr@13.1--19.2) [223064]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, foo_3(x)];
@@ -331,8 +331,8 @@ procedure test2#definedness(x: Ref) returns (Result: bool)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -355,8 +355,8 @@ procedure test2#definedness(x: Ref) returns (Result: bool)
       UnfoldingMask := Mask;
       assume foo#trigger_1(UnfoldingHeap, foo_3(x));
       assume UnfoldingHeap[null, foo_3(x)] == FrameFragment(UnfoldingHeap[x, f_7]);
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access foo(x) (unfolding.vpr@21.1--26.2) [223065]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, foo_3(x)];
@@ -368,8 +368,8 @@ procedure test2#definedness(x: Ref) returns (Result: bool)
       assume state(UnfoldingHeap, UnfoldingMask);
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := UnfoldingMask;
         ExhaleWellDef0Heap := UnfoldingHeap;
+        ExhaleWellDef0Mask := UnfoldingMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function partiallyTerminating might not hold. There might be insufficient permission to access x.f (unfolding.vpr@25.25--25.48) [223066]"}
           NoPerm < perm ==> NoPerm < UnfoldingMask[x, f_7];
@@ -551,11 +551,11 @@ procedure test_termination_proof(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var b_24: bool;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newVersion: FrameType;
   
   // -- Initializing the state
@@ -576,8 +576,8 @@ procedure test_termination_proof(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: if (b) -- <no position>
     if (b_24) {
@@ -585,8 +585,8 @@ procedure test_termination_proof(x: Ref) returns ()
       // -- Translating statement: unfold acc(foo(x), write) -- <no position>
         assume foo#trigger_1(Heap, foo_3(x));
         assume Heap[null, foo_3(x)] == FrameFragment(Heap[x, f_7]);
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Unfolding foo(x) might fail. There might be insufficient permission to access foo(x) (<no position>) [223070]"}
@@ -608,8 +608,8 @@ procedure test_termination_proof(x: Ref) returns ()
         assume state(Heap, Mask);
       
       // -- Translating statement: assert false -- <no position>
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Assert might fail. Assertion false might not hold. (<no position>) [223072]"}
           false;
         assume state(Heap, Mask);
@@ -629,8 +629,8 @@ procedure test_termination_proof(x: Ref) returns ()
 procedure test_pres_termination_proof(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var perm: Perm;
   
   // -- Initializing the state
@@ -645,8 +645,8 @@ procedure test_pres_termination_proof(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale acc(foo(x), write) -- unfolding.vpr@15.14--15.20
     perm := FullPerm;
@@ -664,11 +664,11 @@ procedure test2_termination_proof(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var b1: bool;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newVersion: FrameType;
   
   // -- Initializing the state
@@ -689,8 +689,8 @@ procedure test2_termination_proof(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: if (b1) -- <no position>
     if (b1) {
@@ -698,8 +698,8 @@ procedure test2_termination_proof(x: Ref) returns ()
       // -- Translating statement: unfold acc(foo(x), write) -- <no position>
         assume foo#trigger_1(Heap, foo_3(x));
         assume Heap[null, foo_3(x)] == FrameFragment(Heap[x, f_7]);
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Unfolding foo(x) might fail. There might be insufficient permission to access foo(x) (<no position>) [223076]"}
@@ -721,8 +721,8 @@ procedure test2_termination_proof(x: Ref) returns ()
         assume state(Heap, Mask);
       
       // -- Translating statement: assert x.f == 42 -- <no position>
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         
         // -- Check definedness of x.f == 42
           assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (unfolding.vpr@33.18--33.27) [223078]"}
@@ -746,8 +746,8 @@ procedure test2_termination_proof(x: Ref) returns ()
 procedure test2_pres_termination_proof(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var perm: Perm;
   
   // -- Initializing the state
@@ -762,8 +762,8 @@ procedure test2_pres_termination_proof(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale acc(foo(x), write) -- unfolding.vpr@23.14--23.20
     perm := FullPerm;
@@ -780,8 +780,8 @@ procedure test2_pres_termination_proof(x: Ref) returns ()
 procedure partiallyTerminating_pres_termination_proof(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var wildcard: real where wildcard > NoPerm;
   var perm: Perm;
   
@@ -797,8 +797,8 @@ procedure partiallyTerminating_pres_termination_proof(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale acc(x.f, wildcard) -- unfolding.vpr@32.14--32.32
     havoc wildcard;

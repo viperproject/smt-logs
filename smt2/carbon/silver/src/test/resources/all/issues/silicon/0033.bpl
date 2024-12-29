@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-29 15:41:46
+// Date:         2024-12-29 20:48:05
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0033.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0033-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -233,8 +233,8 @@ procedure size#definedness(this: Ref) returns (Result: int)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var newPMask: PMaskType;
   
@@ -260,8 +260,8 @@ procedure size#definedness(this: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume valid#trigger(UnfoldingHeap, valid(this));
       assume UnfoldingHeap[null, valid(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, next]), FrameFragment((if UnfoldingHeap[this, next] != null then UnfoldingHeap[null, valid(UnfoldingHeap[this, next])] else EmptyFrame)));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access valid(this) (0033.vpr@11.1--15.87) [210932]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, valid(this)];
@@ -286,8 +286,8 @@ procedure size#definedness(this: Ref) returns (Result: int)
           HasDirectPerm(UnfoldingMask, this, next);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
+          ExhaleWellDef0Mask := UnfoldingMask;
           assert {:msg "  Precondition of function size might not hold. Assertion this.next != null might not hold. (0033.vpr@15.69--15.84) [210935]"}
             UnfoldingHeap[this, next] != null;
           perm := FullPerm;
@@ -321,8 +321,8 @@ procedure size#definedness(this: Ref) returns (Result: int)
     Result := (if Heap[this, next] == null then 1 else 1 + size_2(Heap, Heap[this, next]));
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of size might not hold. Assertion result >= 1 might not hold. (0033.vpr@14.11--14.22) [210937]"}
       Result >= 1;
 }
@@ -375,8 +375,8 @@ procedure size_0#definedness(this: Ref) returns (Result: int)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var Unfolding1Heap: HeapType;
   var Unfolding1Mask: MaskType;
   var ExhaleHeap: HeapType;
@@ -404,8 +404,8 @@ procedure size_0#definedness(this: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume valid#trigger(UnfoldingHeap, valid(this));
       assume UnfoldingHeap[null, valid(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, next]), FrameFragment((if UnfoldingHeap[this, next] != null then UnfoldingHeap[null, valid(UnfoldingHeap[this, next])] else EmptyFrame)));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access valid(this) (0033.vpr@53.1--62.2) [210938]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, valid(this)];
@@ -430,8 +430,8 @@ procedure size_0#definedness(this: Ref) returns (Result: int)
         Unfolding1Mask := UnfoldingMask;
         assume valid#trigger(Unfolding1Heap, valid(Unfolding1Heap[this, next]));
         assume Unfolding1Heap[null, valid(Unfolding1Heap[this, next])] == CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[this, next], next]), FrameFragment((if Unfolding1Heap[Unfolding1Heap[this, next], next] != null then Unfolding1Heap[null, valid(Unfolding1Heap[Unfolding1Heap[this, next], next])] else EmptyFrame)));
-        ExhaleWellDef0Mask := Unfolding1Mask;
         ExhaleWellDef0Heap := Unfolding1Heap;
+        ExhaleWellDef0Mask := Unfolding1Mask;
         perm := FullPerm;
         assert {:msg "  Function might not be well-formed. There might be insufficient permission to access valid(this.next) (0033.vpr@53.1--62.2) [210940]"}
           NoPerm < perm ==> NoPerm < Unfolding1Mask[null, valid(Unfolding1Heap[this, next])];
@@ -462,8 +462,8 @@ procedure size_0#definedness(this: Ref) returns (Result: int)
             HasDirectPerm(Unfolding1Mask, Unfolding1Heap[this, next], next);
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := Unfolding1Mask;
             ExhaleWellDef0Heap := Unfolding1Heap;
+            ExhaleWellDef0Mask := Unfolding1Mask;
             assert {:msg "  Precondition of function size_0 might not hold. Assertion this.next.next != null might not hold. (0033.vpr@61.85--61.107) [210946]"}
               Unfolding1Heap[Unfolding1Heap[this, next], next] != null;
             perm := FullPerm;
@@ -520,8 +520,8 @@ procedure size_0#definedness(this: Ref) returns (Result: int)
     Result := (if Heap[this, next] == null then 1 else (if Heap[Heap[this, next], next] == null then 2 else 2 + size_0(Heap, Heap[Heap[this, next], next])));
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of size_0 might not hold. Assertion result >= 1 might not hold. (0033.vpr@56.11--56.22) [210948]"}
       Result >= 1;
 }
@@ -602,11 +602,11 @@ procedure unfoldOnce(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var newVersion: FrameType;
   
   // -- Initializing the state
@@ -630,8 +630,8 @@ procedure unfoldOnce(this: Ref) returns ()
     // -- Check definedness of size(this) == 1
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Precondition of function size might not hold. Assertion this != null might not hold. (0033.vpr@20.12--20.22) [210951]"}
           this != null;
         perm := FullPerm;
@@ -650,14 +650,14 @@ procedure unfoldOnce(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: unfold acc(valid(this), write) -- 0033.vpr@22.3--22.33
     assume valid#trigger(Heap, valid(this));
     assume Heap[null, valid(this)] == CombineFrames(FrameFragment(Heap[this, next]), FrameFragment((if Heap[this, next] != null then Heap[null, valid(Heap[this, next])] else EmptyFrame)));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding valid(this) might fail. There might be insufficient permission to access valid(this) (0033.vpr@22.3--22.33) [210955]"}
@@ -686,8 +686,8 @@ procedure unfoldOnce(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert this.next == null -- 0033.vpr@24.3--24.27
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of this.next == null
       assert {:msg "  Assert might fail. There might be insufficient permission to access this.next (0033.vpr@24.10--24.27) [210958]"}
@@ -697,8 +697,8 @@ procedure unfoldOnce(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert this.next != null -- 0033.vpr@27.3--27.27
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of this.next != null
       assert {:msg "  Assert might fail. There might be insufficient permission to access this.next (0033.vpr@27.10--27.27) [210960]"}
@@ -716,11 +716,11 @@ procedure unfoldTwice(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var newVersion: FrameType;
   
   // -- Initializing the state
@@ -744,8 +744,8 @@ procedure unfoldTwice(this: Ref) returns ()
     // -- Check definedness of size(this) == 2
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Precondition of function size might not hold. Assertion this != null might not hold. (0033.vpr@33.12--33.22) [210962]"}
           this != null;
         perm := FullPerm;
@@ -764,14 +764,14 @@ procedure unfoldTwice(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: unfold acc(valid(this), write) -- 0033.vpr@35.3--35.33
     assume valid#trigger(Heap, valid(this));
     assume Heap[null, valid(this)] == CombineFrames(FrameFragment(Heap[this, next]), FrameFragment((if Heap[this, next] != null then Heap[null, valid(Heap[this, next])] else EmptyFrame)));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding valid(this) might fail. There might be insufficient permission to access valid(this) (0033.vpr@35.3--35.33) [210966]"}
@@ -806,8 +806,8 @@ procedure unfoldTwice(this: Ref) returns ()
         HasDirectPerm(Mask, this, next);
     assume valid#trigger(Heap, valid(Heap[this, next]));
     assume Heap[null, valid(Heap[this, next])] == CombineFrames(FrameFragment(Heap[Heap[this, next], next]), FrameFragment((if Heap[Heap[this, next], next] != null then Heap[null, valid(Heap[Heap[this, next], next])] else EmptyFrame)));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding valid(this.next) might fail. There might be insufficient permission to access valid(this.next) (0033.vpr@36.3--36.38) [210972]"}
@@ -836,8 +836,8 @@ procedure unfoldTwice(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert this.next.next == null -- 0033.vpr@38.3--38.32
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of this.next.next == null
       assert {:msg "  Assert might fail. There might be insufficient permission to access this.next (0033.vpr@38.10--38.32) [210975]"}
@@ -857,11 +857,11 @@ procedure unfoldThrice(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var newVersion: FrameType;
   
   // -- Initializing the state
@@ -885,8 +885,8 @@ procedure unfoldThrice(this: Ref) returns ()
     // -- Check definedness of size(this) == 3
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Precondition of function size might not hold. Assertion this != null might not hold. (0033.vpr@44.12--44.22) [210978]"}
           this != null;
         perm := FullPerm;
@@ -905,14 +905,14 @@ procedure unfoldThrice(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: unfold acc(valid(this), write) -- 0033.vpr@46.3--46.33
     assume valid#trigger(Heap, valid(this));
     assume Heap[null, valid(this)] == CombineFrames(FrameFragment(Heap[this, next]), FrameFragment((if Heap[this, next] != null then Heap[null, valid(Heap[this, next])] else EmptyFrame)));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding valid(this) might fail. There might be insufficient permission to access valid(this) (0033.vpr@46.3--46.33) [210982]"}
@@ -947,8 +947,8 @@ procedure unfoldThrice(this: Ref) returns ()
         HasDirectPerm(Mask, this, next);
     assume valid#trigger(Heap, valid(Heap[this, next]));
     assume Heap[null, valid(Heap[this, next])] == CombineFrames(FrameFragment(Heap[Heap[this, next], next]), FrameFragment((if Heap[Heap[this, next], next] != null then Heap[null, valid(Heap[Heap[this, next], next])] else EmptyFrame)));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding valid(this.next) might fail. There might be insufficient permission to access valid(this.next) (0033.vpr@47.3--47.38) [210988]"}
@@ -985,8 +985,8 @@ procedure unfoldThrice(this: Ref) returns ()
         HasDirectPerm(Mask, Heap[this, next], next);
     assume valid#trigger(Heap, valid(Heap[Heap[this, next], next]));
     assume Heap[null, valid(Heap[Heap[this, next], next])] == CombineFrames(FrameFragment(Heap[Heap[Heap[this, next], next], next]), FrameFragment((if Heap[Heap[Heap[this, next], next], next] != null then Heap[null, valid(Heap[Heap[Heap[this, next], next], next])] else EmptyFrame)));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding valid(this.next.next) might fail. There might be insufficient permission to access valid(this.next.next) (0033.vpr@48.3--48.43) [210995]"}
@@ -1015,8 +1015,8 @@ procedure unfoldThrice(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert this.next.next.next == null -- 0033.vpr@50.3--50.37
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of this.next.next.next == null
       assert {:msg "  Assert might fail. There might be insufficient permission to access this.next (0033.vpr@50.10--50.37) [210998]"}
@@ -1038,15 +1038,15 @@ procedure unrollExpression(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var Unfolding1Heap: HeapType;
   var Unfolding1Mask: MaskType;
   var newPMask: PMaskType;
@@ -1072,8 +1072,8 @@ procedure unrollExpression(this: Ref) returns ()
     // -- Check definedness of size_0(this) == 2
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Precondition of function size_0 might not hold. Assertion this != null might not hold. (0033.vpr@67.12--67.24) [211002]"}
           this != null;
         perm := FullPerm;
@@ -1092,21 +1092,21 @@ procedure unrollExpression(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert (unfolding acc(valid(this), write) in
   //     (unfolding acc(valid(this.next), write) in this.next.next == null)) -- 0033.vpr@69.3--72.31
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (unfolding acc(valid(this), write) in (unfolding acc(valid(this.next), write) in this.next.next == null))
       UnfoldingHeap := ExhaleWellDef0Heap;
       UnfoldingMask := ExhaleWellDef0Mask;
       assume valid#trigger(UnfoldingHeap, valid(this));
       assume UnfoldingHeap[null, valid(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, next]), FrameFragment((if UnfoldingHeap[this, next] != null then UnfoldingHeap[null, valid(UnfoldingHeap[this, next])] else EmptyFrame)));
-      ExhaleWellDef1Mask := UnfoldingMask;
       ExhaleWellDef1Heap := UnfoldingHeap;
+      ExhaleWellDef1Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Assert might fail. There might be insufficient permission to access valid(this) (0033.vpr@70.5--72.31) [211004]"}
@@ -1130,8 +1130,8 @@ procedure unrollExpression(this: Ref) returns ()
       Unfolding1Mask := UnfoldingMask;
       assume valid#trigger(Unfolding1Heap, valid(Unfolding1Heap[this, next]));
       assume Unfolding1Heap[null, valid(Unfolding1Heap[this, next])] == CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[this, next], next]), FrameFragment((if Unfolding1Heap[Unfolding1Heap[this, next], next] != null then Unfolding1Heap[null, valid(Unfolding1Heap[Unfolding1Heap[this, next], next])] else EmptyFrame)));
-      ExhaleWellDef1Mask := Unfolding1Mask;
       ExhaleWellDef1Heap := Unfolding1Heap;
+      ExhaleWellDef1Mask := Unfolding1Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Assert might fail. There might be insufficient permission to access valid(this.next) (0033.vpr@70.5--72.31) [211005]"}

@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-29 14:49:53
+; Started: 2024-12-29 19:56:47
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -542,7 +542,7 @@
   :pattern ((Set_in n@4@01 xs@2@01))
   :pattern ((inv@6@01 n@4@01))
   :pattern ((img@7@01 n@4@01))
-  :qid |quant-u-6090|)))
+  :qid |quant-u-5990|)))
 (assert (forall ((r $Ref)) (!
   (=> (and (img@7@01 r) (Set_in (inv@6@01 r) xs@2@01)) (= (inv@6@01 r) r))
   :pattern ((inv@6@01 r))
@@ -576,7 +576,7 @@
     (Set_in (inv@6@01 r) xs@2@01)
     ($FVF.loc_left ($FVF.lookup_left (as sm@8@01  $FVF<left>) r) r))
   :pattern ((inv@6@01 r))
-  :qid |quant-u-6091|)))
+  :qid |quant-u-5991|)))
 ; State saturation: after inhale
 (set-option :timeout 20)
 (check-sat)
@@ -667,7 +667,7 @@
     (Set_in (inv@11@01 r) xs@2@01)
     ($FVF.loc_left ($FVF.lookup_left (as sm@8@01  $FVF<left>) r) r))
   :pattern ((inv@11@01 r))
-  :qid |quant-u-6093|)))
+  :qid |quant-u-5993|)))
 ; Precomputing data for removing quantified permissions
 (define-fun pTaken@13@01 ((r $Ref)) $Perm
   (ite
@@ -692,7 +692,7 @@
       (pTaken@13@01 r))
     $Perm.No)
   
-  :qid |quant-u-6095|))))
+  :qid |quant-u-5995|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -707,7 +707,7 @@
     (and (Set_in (inv@11@01 r) xs@2@01) (img@12@01 r) (= r (inv@11@01 r)))
     (= (- $Perm.Write (pTaken@13@01 r)) $Perm.No))
   
-  :qid |quant-u-6096|))))
+  :qid |quant-u-5996|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -752,7 +752,7 @@
   :pattern ((Set_in n@14@01 xs@2@01))
   :pattern ((inv@16@01 n@14@01))
   :pattern ((img@17@01 n@14@01))
-  :qid |quant-u-6098|)))
+  :qid |quant-u-5998|)))
 (assert (forall ((r $Ref)) (!
   (=> (and (img@17@01 r) (Set_in (inv@16@01 r) xs@2@01)) (= (inv@16@01 r) r))
   :pattern ((inv@16@01 r))
@@ -786,7 +786,7 @@
     (Set_in (inv@16@01 r) xs@2@01)
     ($FVF.loc_left ($FVF.lookup_left (as sm@18@01  $FVF<left>) r) r))
   :pattern ((inv@16@01 r))
-  :qid |quant-u-6099|)))
+  :qid |quant-u-5999|)))
 ; State saturation: after inhale
 (set-option :timeout 20)
 (check-sat)

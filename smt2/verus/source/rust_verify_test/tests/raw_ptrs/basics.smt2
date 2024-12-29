@@ -1,0 +1,6001 @@
+(set-option :auto_config false)
+(set-option :smt.mbqi false)
+(set-option :smt.case_split 3)
+(set-option :smt.qi.eager_threshold 100.0)
+(set-option :smt.delay_units true)
+(set-option :smt.arith.solver 2)
+(set-option :smt.arith.nl false)
+(set-option :pi.enabled false)
+(set-option :rewriter.sort_disjunctions false)
+
+;; Prelude
+
+;; AIR prelude
+(declare-sort %%Function%% 0)
+
+(declare-sort FuelId 0)
+(declare-sort Fuel 0)
+(declare-const zero Fuel)
+(declare-fun succ (Fuel) Fuel)
+(declare-fun fuel_bool (FuelId) Bool)
+(declare-fun fuel_bool_default (FuelId) Bool)
+(declare-const fuel_defaults Bool)
+(assert
+ (=>
+  fuel_defaults
+  (forall ((id FuelId)) (!
+    (= (fuel_bool id) (fuel_bool_default id))
+    :pattern ((fuel_bool id))
+    :qid prelude_fuel_defaults
+    :skolemid skolem_prelude_fuel_defaults
+))))
+(declare-datatypes ((fndef 0)) (((fndef_singleton))))
+(declare-sort Poly 0)
+(declare-sort Height 0)
+(declare-fun I (Int) Poly)
+(declare-fun B (Bool) Poly)
+(declare-fun F (fndef) Poly)
+(declare-fun %I (Poly) Int)
+(declare-fun %B (Poly) Bool)
+(declare-fun %F (Poly) fndef)
+(declare-sort Type 0)
+(declare-const BOOL Type)
+(declare-const INT Type)
+(declare-const NAT Type)
+(declare-const CHAR Type)
+(declare-fun UINT (Int) Type)
+(declare-fun SINT (Int) Type)
+(declare-fun CONST_INT (Int) Type)
+(declare-sort Dcr 0)
+(declare-const $ Dcr)
+(declare-fun REF (Dcr) Dcr)
+(declare-fun MUT_REF (Dcr) Dcr)
+(declare-fun BOX (Dcr Type Dcr) Dcr)
+(declare-fun RC (Dcr Type Dcr) Dcr)
+(declare-fun ARC (Dcr Type Dcr) Dcr)
+(declare-fun GHOST (Dcr) Dcr)
+(declare-fun TRACKED (Dcr) Dcr)
+(declare-fun NEVER (Dcr) Dcr)
+(declare-fun CONST_PTR (Dcr) Dcr)
+(declare-fun ARRAY (Dcr Type Dcr Type) Type)
+(declare-fun SLICE (Dcr Type) Type)
+(declare-const STRSLICE Type)
+(declare-const ALLOCATOR_GLOBAL Type)
+(declare-fun PTR (Dcr Type) Type)
+(declare-fun has_type (Poly Type) Bool)
+(declare-fun as_type (Poly Type) Poly)
+(declare-fun mk_fun (%%Function%%) %%Function%%)
+(declare-fun const_int (Type) Int)
+(assert
+ (forall ((i Int)) (!
+   (= i (const_int (CONST_INT i)))
+   :pattern ((CONST_INT i))
+   :qid prelude_type_id_const_int
+   :skolemid skolem_prelude_type_id_const_int
+)))
+(assert
+ (forall ((b Bool)) (!
+   (has_type (B b) BOOL)
+   :pattern ((has_type (B b) BOOL))
+   :qid prelude_has_type_bool
+   :skolemid skolem_prelude_has_type_bool
+)))
+(assert
+ (forall ((x Poly) (t Type)) (!
+   (and
+    (has_type (as_type x t) t)
+    (=>
+     (has_type x t)
+     (= x (as_type x t))
+   ))
+   :pattern ((as_type x t))
+   :qid prelude_as_type
+   :skolemid skolem_prelude_as_type
+)))
+(assert
+ (forall ((x %%Function%%)) (!
+   (= (mk_fun x) x)
+   :pattern ((mk_fun x))
+   :qid prelude_mk_fun
+   :skolemid skolem_prelude_mk_fun
+)))
+(assert
+ (forall ((x Bool)) (!
+   (= x (%B (B x)))
+   :pattern ((B x))
+   :qid prelude_unbox_box_bool
+   :skolemid skolem_prelude_unbox_box_bool
+)))
+(assert
+ (forall ((x Int)) (!
+   (= x (%I (I x)))
+   :pattern ((I x))
+   :qid prelude_unbox_box_int
+   :skolemid skolem_prelude_unbox_box_int
+)))
+(assert
+ (forall ((x Poly)) (!
+   (=>
+    (has_type x BOOL)
+    (= x (B (%B x)))
+   )
+   :pattern ((has_type x BOOL))
+   :qid prelude_box_unbox_bool
+   :skolemid skolem_prelude_box_unbox_bool
+)))
+(assert
+ (forall ((x Poly)) (!
+   (=>
+    (has_type x INT)
+    (= x (I (%I x)))
+   )
+   :pattern ((has_type x INT))
+   :qid prelude_box_unbox_int
+   :skolemid skolem_prelude_box_unbox_int
+)))
+(assert
+ (forall ((x Poly)) (!
+   (=>
+    (has_type x NAT)
+    (= x (I (%I x)))
+   )
+   :pattern ((has_type x NAT))
+   :qid prelude_box_unbox_nat
+   :skolemid skolem_prelude_box_unbox_nat
+)))
+(assert
+ (forall ((bits Int) (x Poly)) (!
+   (=>
+    (has_type x (UINT bits))
+    (= x (I (%I x)))
+   )
+   :pattern ((has_type x (UINT bits)))
+   :qid prelude_box_unbox_uint
+   :skolemid skolem_prelude_box_unbox_uint
+)))
+(assert
+ (forall ((bits Int) (x Poly)) (!
+   (=>
+    (has_type x (SINT bits))
+    (= x (I (%I x)))
+   )
+   :pattern ((has_type x (SINT bits)))
+   :qid prelude_box_unbox_sint
+   :skolemid skolem_prelude_box_unbox_sint
+)))
+(assert
+ (forall ((x Poly)) (!
+   (=>
+    (has_type x CHAR)
+    (= x (I (%I x)))
+   )
+   :pattern ((has_type x CHAR))
+   :qid prelude_box_unbox_char
+   :skolemid skolem_prelude_box_unbox_char
+)))
+(declare-fun ext_eq (Bool Type Poly Poly) Bool)
+(assert
+ (forall ((deep Bool) (t Type) (x Poly) (y Poly)) (!
+   (= (= x y) (ext_eq deep t x y))
+   :pattern ((ext_eq deep t x y))
+   :qid prelude_ext_eq
+   :skolemid skolem_prelude_ext_eq
+)))
+(declare-const SZ Int)
+(assert
+ (or
+  (= SZ 32)
+  (= SZ 64)
+))
+(declare-fun uHi (Int) Int)
+(declare-fun iLo (Int) Int)
+(declare-fun iHi (Int) Int)
+(assert
+ (= (uHi 8) 256)
+)
+(assert
+ (= (uHi 16) 65536)
+)
+(assert
+ (= (uHi 32) 4294967296)
+)
+(assert
+ (= (uHi 64) 18446744073709551616)
+)
+(assert
+ (= (uHi 128) (+ 1 340282366920938463463374607431768211455))
+)
+(assert
+ (= (iLo 8) (- 128))
+)
+(assert
+ (= (iLo 16) (- 32768))
+)
+(assert
+ (= (iLo 32) (- 2147483648))
+)
+(assert
+ (= (iLo 64) (- 9223372036854775808))
+)
+(assert
+ (= (iLo 128) (- 170141183460469231731687303715884105728))
+)
+(assert
+ (= (iHi 8) 128)
+)
+(assert
+ (= (iHi 16) 32768)
+)
+(assert
+ (= (iHi 32) 2147483648)
+)
+(assert
+ (= (iHi 64) 9223372036854775808)
+)
+(assert
+ (= (iHi 128) 170141183460469231731687303715884105728)
+)
+(declare-fun nClip (Int) Int)
+(declare-fun uClip (Int Int) Int)
+(declare-fun iClip (Int Int) Int)
+(declare-fun charClip (Int) Int)
+(assert
+ (forall ((i Int)) (!
+   (and
+    (<= 0 (nClip i))
+    (=>
+     (<= 0 i)
+     (= i (nClip i))
+   ))
+   :pattern ((nClip i))
+   :qid prelude_nat_clip
+   :skolemid skolem_prelude_nat_clip
+)))
+(assert
+ (forall ((bits Int) (i Int)) (!
+   (and
+    (<= 0 (uClip bits i))
+    (< (uClip bits i) (uHi bits))
+    (=>
+     (and
+      (<= 0 i)
+      (< i (uHi bits))
+     )
+     (= i (uClip bits i))
+   ))
+   :pattern ((uClip bits i))
+   :qid prelude_u_clip
+   :skolemid skolem_prelude_u_clip
+)))
+(assert
+ (forall ((bits Int) (i Int)) (!
+   (and
+    (<= (iLo bits) (iClip bits i))
+    (< (iClip bits i) (iHi bits))
+    (=>
+     (and
+      (<= (iLo bits) i)
+      (< i (iHi bits))
+     )
+     (= i (iClip bits i))
+   ))
+   :pattern ((iClip bits i))
+   :qid prelude_i_clip
+   :skolemid skolem_prelude_i_clip
+)))
+(assert
+ (forall ((i Int)) (!
+   (and
+    (or
+     (and
+      (<= 0 (charClip i))
+      (<= (charClip i) 55295)
+     )
+     (and
+      (<= 57344 (charClip i))
+      (<= (charClip i) 1114111)
+    ))
+    (=>
+     (or
+      (and
+       (<= 0 i)
+       (<= i 55295)
+      )
+      (and
+       (<= 57344 i)
+       (<= i 1114111)
+     ))
+     (= i (charClip i))
+   ))
+   :pattern ((charClip i))
+   :qid prelude_char_clip
+   :skolemid skolem_prelude_char_clip
+)))
+(declare-fun uInv (Int Int) Bool)
+(declare-fun iInv (Int Int) Bool)
+(declare-fun charInv (Int) Bool)
+(assert
+ (forall ((bits Int) (i Int)) (!
+   (= (uInv bits i) (and
+     (<= 0 i)
+     (< i (uHi bits))
+   ))
+   :pattern ((uInv bits i))
+   :qid prelude_u_inv
+   :skolemid skolem_prelude_u_inv
+)))
+(assert
+ (forall ((bits Int) (i Int)) (!
+   (= (iInv bits i) (and
+     (<= (iLo bits) i)
+     (< i (iHi bits))
+   ))
+   :pattern ((iInv bits i))
+   :qid prelude_i_inv
+   :skolemid skolem_prelude_i_inv
+)))
+(assert
+ (forall ((i Int)) (!
+   (= (charInv i) (or
+     (and
+      (<= 0 i)
+      (<= i 55295)
+     )
+     (and
+      (<= 57344 i)
+      (<= i 1114111)
+   )))
+   :pattern ((charInv i))
+   :qid prelude_char_inv
+   :skolemid skolem_prelude_char_inv
+)))
+(assert
+ (forall ((x Int)) (!
+   (has_type (I x) INT)
+   :pattern ((has_type (I x) INT))
+   :qid prelude_has_type_int
+   :skolemid skolem_prelude_has_type_int
+)))
+(assert
+ (forall ((x Int)) (!
+   (=>
+    (<= 0 x)
+    (has_type (I x) NAT)
+   )
+   :pattern ((has_type (I x) NAT))
+   :qid prelude_has_type_nat
+   :skolemid skolem_prelude_has_type_nat
+)))
+(assert
+ (forall ((bits Int) (x Int)) (!
+   (=>
+    (uInv bits x)
+    (has_type (I x) (UINT bits))
+   )
+   :pattern ((has_type (I x) (UINT bits)))
+   :qid prelude_has_type_uint
+   :skolemid skolem_prelude_has_type_uint
+)))
+(assert
+ (forall ((bits Int) (x Int)) (!
+   (=>
+    (iInv bits x)
+    (has_type (I x) (SINT bits))
+   )
+   :pattern ((has_type (I x) (SINT bits)))
+   :qid prelude_has_type_sint
+   :skolemid skolem_prelude_has_type_sint
+)))
+(assert
+ (forall ((x Int)) (!
+   (=>
+    (charInv x)
+    (has_type (I x) CHAR)
+   )
+   :pattern ((has_type (I x) CHAR))
+   :qid prelude_has_type_char
+   :skolemid skolem_prelude_has_type_char
+)))
+(assert
+ (forall ((x Poly)) (!
+   (=>
+    (has_type x NAT)
+    (<= 0 (%I x))
+   )
+   :pattern ((has_type x NAT))
+   :qid prelude_unbox_int
+   :skolemid skolem_prelude_unbox_int
+)))
+(assert
+ (forall ((bits Int) (x Poly)) (!
+   (=>
+    (has_type x (UINT bits))
+    (uInv bits (%I x))
+   )
+   :pattern ((has_type x (UINT bits)))
+   :qid prelude_unbox_uint
+   :skolemid skolem_prelude_unbox_uint
+)))
+(assert
+ (forall ((bits Int) (x Poly)) (!
+   (=>
+    (has_type x (SINT bits))
+    (iInv bits (%I x))
+   )
+   :pattern ((has_type x (SINT bits)))
+   :qid prelude_unbox_sint
+   :skolemid skolem_prelude_unbox_sint
+)))
+(declare-fun Add (Int Int) Int)
+(declare-fun Sub (Int Int) Int)
+(declare-fun Mul (Int Int) Int)
+(declare-fun EucDiv (Int Int) Int)
+(declare-fun EucMod (Int Int) Int)
+(assert
+ (forall ((x Int) (y Int)) (!
+   (= (Add x y) (+ x y))
+   :pattern ((Add x y))
+   :qid prelude_add
+   :skolemid skolem_prelude_add
+)))
+(assert
+ (forall ((x Int) (y Int)) (!
+   (= (Sub x y) (- x y))
+   :pattern ((Sub x y))
+   :qid prelude_sub
+   :skolemid skolem_prelude_sub
+)))
+(assert
+ (forall ((x Int) (y Int)) (!
+   (= (Mul x y) (* x y))
+   :pattern ((Mul x y))
+   :qid prelude_mul
+   :skolemid skolem_prelude_mul
+)))
+(assert
+ (forall ((x Int) (y Int)) (!
+   (= (EucDiv x y) (div x y))
+   :pattern ((EucDiv x y))
+   :qid prelude_eucdiv
+   :skolemid skolem_prelude_eucdiv
+)))
+(assert
+ (forall ((x Int) (y Int)) (!
+   (= (EucMod x y) (mod x y))
+   :pattern ((EucMod x y))
+   :qid prelude_eucmod
+   :skolemid skolem_prelude_eucmod
+)))
+(assert
+ (forall ((x Int) (y Int)) (!
+   (=>
+    (and
+     (<= 0 x)
+     (<= 0 y)
+    )
+    (<= 0 (Mul x y))
+   )
+   :pattern ((Mul x y))
+   :qid prelude_mul_nats
+   :skolemid skolem_prelude_mul_nats
+)))
+(assert
+ (forall ((x Int) (y Int)) (!
+   (=>
+    (and
+     (<= 0 x)
+     (< 0 y)
+    )
+    (and
+     (<= 0 (EucDiv x y))
+     (<= (EucDiv x y) x)
+   ))
+   :pattern ((EucDiv x y))
+   :qid prelude_div_unsigned_in_bounds
+   :skolemid skolem_prelude_div_unsigned_in_bounds
+)))
+(assert
+ (forall ((x Int) (y Int)) (!
+   (=>
+    (and
+     (<= 0 x)
+     (< 0 y)
+    )
+    (and
+     (<= 0 (EucMod x y))
+     (< (EucMod x y) y)
+   ))
+   :pattern ((EucMod x y))
+   :qid prelude_mod_unsigned_in_bounds
+   :skolemid skolem_prelude_mod_unsigned_in_bounds
+)))
+(declare-fun bitxor (Poly Poly) Int)
+(declare-fun bitand (Poly Poly) Int)
+(declare-fun bitor (Poly Poly) Int)
+(declare-fun bitshr (Poly Poly) Int)
+(declare-fun bitshl (Poly Poly) Int)
+(declare-fun bitnot (Poly) Int)
+(assert
+ (forall ((x Poly) (y Poly) (bits Int)) (!
+   (=>
+    (and
+     (uInv bits (%I x))
+     (uInv bits (%I y))
+    )
+    (uInv bits (bitxor x y))
+   )
+   :pattern ((uClip bits (bitxor x y)))
+   :qid prelude_bit_xor_u_inv
+   :skolemid skolem_prelude_bit_xor_u_inv
+)))
+(assert
+ (forall ((x Poly) (y Poly) (bits Int)) (!
+   (=>
+    (and
+     (iInv bits (%I x))
+     (iInv bits (%I y))
+    )
+    (iInv bits (bitxor x y))
+   )
+   :pattern ((iClip bits (bitxor x y)))
+   :qid prelude_bit_xor_i_inv
+   :skolemid skolem_prelude_bit_xor_i_inv
+)))
+(assert
+ (forall ((x Poly) (y Poly) (bits Int)) (!
+   (=>
+    (and
+     (uInv bits (%I x))
+     (uInv bits (%I y))
+    )
+    (uInv bits (bitor x y))
+   )
+   :pattern ((uClip bits (bitor x y)))
+   :qid prelude_bit_or_u_inv
+   :skolemid skolem_prelude_bit_or_u_inv
+)))
+(assert
+ (forall ((x Poly) (y Poly) (bits Int)) (!
+   (=>
+    (and
+     (iInv bits (%I x))
+     (iInv bits (%I y))
+    )
+    (iInv bits (bitor x y))
+   )
+   :pattern ((iClip bits (bitor x y)))
+   :qid prelude_bit_or_i_inv
+   :skolemid skolem_prelude_bit_or_i_inv
+)))
+(assert
+ (forall ((x Poly) (y Poly) (bits Int)) (!
+   (=>
+    (and
+     (uInv bits (%I x))
+     (uInv bits (%I y))
+    )
+    (uInv bits (bitand x y))
+   )
+   :pattern ((uClip bits (bitand x y)))
+   :qid prelude_bit_and_u_inv
+   :skolemid skolem_prelude_bit_and_u_inv
+)))
+(assert
+ (forall ((x Poly) (y Poly) (bits Int)) (!
+   (=>
+    (and
+     (iInv bits (%I x))
+     (iInv bits (%I y))
+    )
+    (iInv bits (bitand x y))
+   )
+   :pattern ((iClip bits (bitand x y)))
+   :qid prelude_bit_and_i_inv
+   :skolemid skolem_prelude_bit_and_i_inv
+)))
+(assert
+ (forall ((x Poly) (y Poly) (bits Int)) (!
+   (=>
+    (and
+     (uInv bits (%I x))
+     (<= 0 (%I y))
+    )
+    (uInv bits (bitshr x y))
+   )
+   :pattern ((uClip bits (bitshr x y)))
+   :qid prelude_bit_shr_u_inv
+   :skolemid skolem_prelude_bit_shr_u_inv
+)))
+(assert
+ (forall ((x Poly) (y Poly) (bits Int)) (!
+   (=>
+    (and
+     (iInv bits (%I x))
+     (<= 0 (%I y))
+    )
+    (iInv bits (bitshr x y))
+   )
+   :pattern ((iClip bits (bitshr x y)))
+   :qid prelude_bit_shr_i_inv
+   :skolemid skolem_prelude_bit_shr_i_inv
+)))
+(declare-fun singular_mod (Int Int) Int)
+(assert
+ (forall ((x Int) (y Int)) (!
+   (=>
+    (not (= y 0))
+    (= (EucMod x y) (singular_mod x y))
+   )
+   :pattern ((singular_mod x y))
+   :qid prelude_singularmod
+   :skolemid skolem_prelude_singularmod
+)))
+(declare-fun closure_req (Type Dcr Type Poly Poly) Bool)
+(declare-fun closure_ens (Type Dcr Type Poly Poly Poly) Bool)
+(declare-fun height (Poly) Height)
+(declare-fun height_lt (Height Height) Bool)
+(declare-fun fun_from_recursive_field (Poly) Poly)
+(declare-fun check_decrease_int (Int Int Bool) Bool)
+(assert
+ (forall ((cur Int) (prev Int) (otherwise Bool)) (!
+   (= (check_decrease_int cur prev otherwise) (or
+     (and
+      (<= 0 cur)
+      (< cur prev)
+     )
+     (and
+      (= cur prev)
+      otherwise
+   )))
+   :pattern ((check_decrease_int cur prev otherwise))
+   :qid prelude_check_decrease_int
+   :skolemid skolem_prelude_check_decrease_int
+)))
+(declare-fun check_decrease_height (Poly Poly Bool) Bool)
+(assert
+ (forall ((cur Poly) (prev Poly) (otherwise Bool)) (!
+   (= (check_decrease_height cur prev otherwise) (or
+     (height_lt (height cur) (height prev))
+     (and
+      (= (height cur) (height prev))
+      otherwise
+   )))
+   :pattern ((check_decrease_height cur prev otherwise))
+   :qid prelude_check_decrease_height
+   :skolemid skolem_prelude_check_decrease_height
+)))
+(assert
+ (forall ((x Height) (y Height)) (!
+   (= (height_lt x y) (and
+     ((_ partial-order 0) x y)
+     (not (= x y))
+   ))
+   :pattern ((height_lt x y))
+   :qid prelude_height_lt
+   :skolemid skolem_prelude_height_lt
+)))
+
+;; MODULE 'root module'
+
+;; Fuel
+(declare-const fuel%vstd!raw_ptr.ptr_mut_specs.spec_addr. FuelId)
+(declare-const fuel%vstd!raw_ptr.ptr_mut_specs.spec_with_addr. FuelId)
+(declare-const fuel%vstd!raw_ptr.ptr_const_specs.spec_addr. FuelId)
+(declare-const fuel%vstd!raw_ptr.ptr_const_specs.spec_with_addr. FuelId)
+(declare-const fuel%vstd!array.array_view. FuelId)
+(declare-const fuel%vstd!array.impl&%0.view. FuelId)
+(declare-const fuel%vstd!array.impl&%2.spec_index. FuelId)
+(declare-const fuel%vstd!array.lemma_array_index. FuelId)
+(declare-const fuel%vstd!array.array_len_matches_n. FuelId)
+(declare-const fuel%vstd!raw_ptr.impl&%2.arrow_0. FuelId)
+(declare-const fuel%vstd!raw_ptr.impl&%4.view. FuelId)
+(declare-const fuel%vstd!raw_ptr.impl&%6.ptr. FuelId)
+(declare-const fuel%vstd!raw_ptr.impl&%6.opt_value. FuelId)
+(declare-const fuel%vstd!raw_ptr.impl&%6.is_init. FuelId)
+(declare-const fuel%vstd!raw_ptr.impl&%6.is_uninit. FuelId)
+(declare-const fuel%vstd!raw_ptr.impl&%6.value. FuelId)
+(declare-const fuel%vstd!raw_ptr.impl&%7.is_init. FuelId)
+(declare-const fuel%vstd!raw_ptr.impl&%7.is_uninit. FuelId)
+(declare-const fuel%vstd!raw_ptr.impl&%7.value. FuelId)
+(declare-const fuel%vstd!raw_ptr.ptr_from_data. FuelId)
+(declare-const fuel%vstd!raw_ptr.axiom_ptr_mut_from_data. FuelId)
+(declare-const fuel%vstd!raw_ptr.ptrs_mut_eq. FuelId)
+(declare-const fuel%vstd!raw_ptr.ptr_null. FuelId)
+(declare-const fuel%vstd!raw_ptr.ptr_null_mut. FuelId)
+(declare-const fuel%vstd!raw_ptr.spec_cast_ptr_to_thin_ptr. FuelId)
+(declare-const fuel%vstd!raw_ptr.spec_cast_array_ptr_to_slice_ptr. FuelId)
+(declare-const fuel%vstd!seq.impl&%0.spec_index. FuelId)
+(declare-const fuel%vstd!seq.axiom_seq_index_decreases. FuelId)
+(declare-const fuel%vstd!seq.axiom_seq_new_len. FuelId)
+(declare-const fuel%vstd!seq.axiom_seq_new_index. FuelId)
+(declare-const fuel%vstd!seq.axiom_seq_ext_equal. FuelId)
+(declare-const fuel%vstd!seq.axiom_seq_ext_equal_deep. FuelId)
+(declare-const fuel%vstd!view.impl&%0.view. FuelId)
+(declare-const fuel%vstd!view.impl&%2.view. FuelId)
+(declare-const fuel%vstd!view.impl&%4.view. FuelId)
+(declare-const fuel%vstd!view.impl&%6.view. FuelId)
+(declare-const fuel%vstd!view.impl&%10.view. FuelId)
+(declare-const fuel%vstd!view.impl&%12.view. FuelId)
+(declare-const fuel%vstd!view.impl&%14.view. FuelId)
+(declare-const fuel%vstd!view.impl&%16.view. FuelId)
+(declare-const fuel%vstd!view.impl&%20.view. FuelId)
+(declare-const fuel%vstd!view.impl&%24.view. FuelId)
+(declare-const fuel%vstd!array.group_array_axioms. FuelId)
+(declare-const fuel%vstd!map.group_map_axioms. FuelId)
+(declare-const fuel%vstd!multiset.group_multiset_axioms. FuelId)
+(declare-const fuel%vstd!raw_ptr.group_raw_ptr_axioms. FuelId)
+(declare-const fuel%vstd!seq.group_seq_axioms. FuelId)
+(declare-const fuel%vstd!seq_lib.group_seq_lib_default. FuelId)
+(declare-const fuel%vstd!set.group_set_axioms. FuelId)
+(declare-const fuel%vstd!set_lib.group_set_lib_axioms. FuelId)
+(declare-const fuel%vstd!slice.group_slice_axioms. FuelId)
+(declare-const fuel%vstd!string.group_string_axioms. FuelId)
+(declare-const fuel%vstd!std_specs.bits.group_bits_axioms. FuelId)
+(declare-const fuel%vstd!std_specs.control_flow.group_control_flow_axioms. FuelId)
+(declare-const fuel%vstd!std_specs.range.group_range_axioms. FuelId)
+(declare-const fuel%vstd!std_specs.vec.group_vec_axioms. FuelId)
+(declare-const fuel%vstd!group_vstd_default. FuelId)
+(assert
+ (distinct fuel%vstd!raw_ptr.ptr_mut_specs.spec_addr. fuel%vstd!raw_ptr.ptr_mut_specs.spec_with_addr.
+  fuel%vstd!raw_ptr.ptr_const_specs.spec_addr. fuel%vstd!raw_ptr.ptr_const_specs.spec_with_addr.
+  fuel%vstd!array.array_view. fuel%vstd!array.impl&%0.view. fuel%vstd!array.impl&%2.spec_index.
+  fuel%vstd!array.lemma_array_index. fuel%vstd!array.array_len_matches_n. fuel%vstd!raw_ptr.impl&%2.arrow_0.
+  fuel%vstd!raw_ptr.impl&%4.view. fuel%vstd!raw_ptr.impl&%6.ptr. fuel%vstd!raw_ptr.impl&%6.opt_value.
+  fuel%vstd!raw_ptr.impl&%6.is_init. fuel%vstd!raw_ptr.impl&%6.is_uninit. fuel%vstd!raw_ptr.impl&%6.value.
+  fuel%vstd!raw_ptr.impl&%7.is_init. fuel%vstd!raw_ptr.impl&%7.is_uninit. fuel%vstd!raw_ptr.impl&%7.value.
+  fuel%vstd!raw_ptr.ptr_from_data. fuel%vstd!raw_ptr.axiom_ptr_mut_from_data. fuel%vstd!raw_ptr.ptrs_mut_eq.
+  fuel%vstd!raw_ptr.ptr_null. fuel%vstd!raw_ptr.ptr_null_mut. fuel%vstd!raw_ptr.spec_cast_ptr_to_thin_ptr.
+  fuel%vstd!raw_ptr.spec_cast_array_ptr_to_slice_ptr. fuel%vstd!seq.impl&%0.spec_index.
+  fuel%vstd!seq.axiom_seq_index_decreases. fuel%vstd!seq.axiom_seq_new_len. fuel%vstd!seq.axiom_seq_new_index.
+  fuel%vstd!seq.axiom_seq_ext_equal. fuel%vstd!seq.axiom_seq_ext_equal_deep. fuel%vstd!view.impl&%0.view.
+  fuel%vstd!view.impl&%2.view. fuel%vstd!view.impl&%4.view. fuel%vstd!view.impl&%6.view.
+  fuel%vstd!view.impl&%10.view. fuel%vstd!view.impl&%12.view. fuel%vstd!view.impl&%14.view.
+  fuel%vstd!view.impl&%16.view. fuel%vstd!view.impl&%20.view. fuel%vstd!view.impl&%24.view.
+  fuel%vstd!array.group_array_axioms. fuel%vstd!map.group_map_axioms. fuel%vstd!multiset.group_multiset_axioms.
+  fuel%vstd!raw_ptr.group_raw_ptr_axioms. fuel%vstd!seq.group_seq_axioms. fuel%vstd!seq_lib.group_seq_lib_default.
+  fuel%vstd!set.group_set_axioms. fuel%vstd!set_lib.group_set_lib_axioms. fuel%vstd!slice.group_slice_axioms.
+  fuel%vstd!string.group_string_axioms. fuel%vstd!std_specs.bits.group_bits_axioms.
+  fuel%vstd!std_specs.control_flow.group_control_flow_axioms. fuel%vstd!std_specs.range.group_range_axioms.
+  fuel%vstd!std_specs.vec.group_vec_axioms. fuel%vstd!group_vstd_default.
+))
+(assert
+ (=>
+  (fuel_bool_default fuel%vstd!array.group_array_axioms.)
+  (and
+   (fuel_bool_default fuel%vstd!array.array_len_matches_n.)
+   (fuel_bool_default fuel%vstd!array.lemma_array_index.)
+)))
+(assert
+ (=>
+  (fuel_bool_default fuel%vstd!raw_ptr.group_raw_ptr_axioms.)
+  (and
+   (fuel_bool_default fuel%vstd!raw_ptr.axiom_ptr_mut_from_data.)
+   (fuel_bool_default fuel%vstd!raw_ptr.ptrs_mut_eq.)
+)))
+(assert
+ (=>
+  (fuel_bool_default fuel%vstd!seq.group_seq_axioms.)
+  (and
+   (fuel_bool_default fuel%vstd!seq.axiom_seq_index_decreases.)
+   (fuel_bool_default fuel%vstd!seq.axiom_seq_new_len.)
+   (fuel_bool_default fuel%vstd!seq.axiom_seq_new_index.)
+   (fuel_bool_default fuel%vstd!seq.axiom_seq_ext_equal.)
+   (fuel_bool_default fuel%vstd!seq.axiom_seq_ext_equal_deep.)
+)))
+(assert
+ (fuel_bool_default fuel%vstd!group_vstd_default.)
+)
+(assert
+ (=>
+  (fuel_bool_default fuel%vstd!group_vstd_default.)
+  (and
+   (fuel_bool_default fuel%vstd!seq.group_seq_axioms.)
+   (fuel_bool_default fuel%vstd!seq_lib.group_seq_lib_default.)
+   (fuel_bool_default fuel%vstd!map.group_map_axioms.)
+   (fuel_bool_default fuel%vstd!set.group_set_axioms.)
+   (fuel_bool_default fuel%vstd!set_lib.group_set_lib_axioms.)
+   (fuel_bool_default fuel%vstd!std_specs.bits.group_bits_axioms.)
+   (fuel_bool_default fuel%vstd!std_specs.control_flow.group_control_flow_axioms.)
+   (fuel_bool_default fuel%vstd!std_specs.vec.group_vec_axioms.)
+   (fuel_bool_default fuel%vstd!slice.group_slice_axioms.)
+   (fuel_bool_default fuel%vstd!array.group_array_axioms.)
+   (fuel_bool_default fuel%vstd!multiset.group_multiset_axioms.)
+   (fuel_bool_default fuel%vstd!string.group_string_axioms.)
+   (fuel_bool_default fuel%vstd!std_specs.range.group_range_axioms.)
+   (fuel_bool_default fuel%vstd!raw_ptr.group_raw_ptr_axioms.)
+)))
+
+;; Associated-Type-Decls
+(declare-fun proj%%vstd!view.View./V (Dcr Type) Dcr)
+(declare-fun proj%vstd!view.View./V (Dcr Type) Type)
+(declare-fun proj%%core!ptr.metadata.Pointee./Metadata (Dcr Type) Dcr)
+(declare-fun proj%core!ptr.metadata.Pointee./Metadata (Dcr Type) Type)
+
+;; Datatypes
+(declare-sort vstd!raw_ptr.DynMetadata. 0)
+(declare-sort vstd!raw_ptr.PointsTo<u8.>. 0)
+(declare-sort vstd!raw_ptr.Provenance. 0)
+(declare-sort slice%<u8.>. 0)
+(declare-sort slice%<u64.>. 0)
+(declare-sort ptr_mut%<u8.>. 0)
+(declare-sort ptr_mut%<u16.>. 0)
+(declare-sort ptr_mut%<u64.>. 0)
+(declare-sort ptr_mut%<slice%<u8.>.>. 0)
+(declare-sort ptr_mut%<slice%<u64.>.>. 0)
+(declare-sort allocator_global%. 0)
+(declare-datatypes ((vstd!raw_ptr.Metadata. 0) (vstd!raw_ptr.PtrData. 0) (vstd!raw_ptr.MemContents.
+   0
+  ) (vstd!raw_ptr.PointsToData. 0) (tuple%0. 0)
+ ) (((vstd!raw_ptr.Metadata./Thin) (vstd!raw_ptr.Metadata./Length (vstd!raw_ptr.Metadata./Length/?0
+     Int
+    )
+   ) (vstd!raw_ptr.Metadata./Dyn (vstd!raw_ptr.Metadata./Dyn/?0 vstd!raw_ptr.DynMetadata.))
+  ) ((vstd!raw_ptr.PtrData./PtrData (vstd!raw_ptr.PtrData./PtrData/?addr Int) (vstd!raw_ptr.PtrData./PtrData/?provenance
+     vstd!raw_ptr.Provenance.
+    ) (vstd!raw_ptr.PtrData./PtrData/?metadata vstd!raw_ptr.Metadata.)
+   )
+  ) ((vstd!raw_ptr.MemContents./Uninit) (vstd!raw_ptr.MemContents./Init (vstd!raw_ptr.MemContents./Init/?0
+     Poly
+   ))
+  ) ((vstd!raw_ptr.PointsToData./PointsToData (vstd!raw_ptr.PointsToData./PointsToData/?ptr
+     Poly
+    ) (vstd!raw_ptr.PointsToData./PointsToData/?opt_value vstd!raw_ptr.MemContents.)
+   )
+  ) ((tuple%0./tuple%0))
+))
+(declare-fun vstd!raw_ptr.Metadata./Length/0 (vstd!raw_ptr.Metadata.) Int)
+(declare-fun vstd!raw_ptr.Metadata./Dyn/0 (vstd!raw_ptr.Metadata.) vstd!raw_ptr.DynMetadata.)
+(declare-fun vstd!raw_ptr.PtrData./PtrData/addr (vstd!raw_ptr.PtrData.) Int)
+(declare-fun vstd!raw_ptr.PtrData./PtrData/provenance (vstd!raw_ptr.PtrData.) vstd!raw_ptr.Provenance.)
+(declare-fun vstd!raw_ptr.PtrData./PtrData/metadata (vstd!raw_ptr.PtrData.) vstd!raw_ptr.Metadata.)
+(declare-fun vstd!raw_ptr.MemContents./Init/0 (vstd!raw_ptr.MemContents.) Poly)
+(declare-fun vstd!raw_ptr.PointsToData./PointsToData/ptr (vstd!raw_ptr.PointsToData.)
+ Poly
+)
+(declare-fun vstd!raw_ptr.PointsToData./PointsToData/opt_value (vstd!raw_ptr.PointsToData.)
+ vstd!raw_ptr.MemContents.
+)
+(declare-fun TYPE%fun%1. (Dcr Type Dcr Type) Type)
+(declare-const TYPE%vstd!raw_ptr.Provenance. Type)
+(declare-const TYPE%vstd!raw_ptr.Metadata. Type)
+(declare-const TYPE%vstd!raw_ptr.DynMetadata. Type)
+(declare-const TYPE%vstd!raw_ptr.PtrData. Type)
+(declare-fun TYPE%vstd!raw_ptr.PointsTo. (Dcr Type) Type)
+(declare-fun TYPE%vstd!raw_ptr.MemContents. (Dcr Type) Type)
+(declare-fun TYPE%vstd!raw_ptr.PointsToData. (Dcr Type) Type)
+(declare-fun TYPE%vstd!seq.Seq. (Dcr Type) Type)
+(declare-const TYPE%tuple%0. Type)
+(declare-fun Poly%fun%1. (%%Function%%) Poly)
+(declare-fun %Poly%fun%1. (Poly) %%Function%%)
+(declare-fun Poly%array%. (%%Function%%) Poly)
+(declare-fun %Poly%array%. (Poly) %%Function%%)
+(declare-fun Poly%vstd!raw_ptr.DynMetadata. (vstd!raw_ptr.DynMetadata.) Poly)
+(declare-fun %Poly%vstd!raw_ptr.DynMetadata. (Poly) vstd!raw_ptr.DynMetadata.)
+(declare-fun Poly%vstd!raw_ptr.PointsTo<u8.>. (vstd!raw_ptr.PointsTo<u8.>.) Poly)
+(declare-fun %Poly%vstd!raw_ptr.PointsTo<u8.>. (Poly) vstd!raw_ptr.PointsTo<u8.>.)
+(declare-fun Poly%vstd!raw_ptr.Provenance. (vstd!raw_ptr.Provenance.) Poly)
+(declare-fun %Poly%vstd!raw_ptr.Provenance. (Poly) vstd!raw_ptr.Provenance.)
+(declare-fun Poly%slice%<u8.>. (slice%<u8.>.) Poly)
+(declare-fun %Poly%slice%<u8.>. (Poly) slice%<u8.>.)
+(declare-fun Poly%slice%<u64.>. (slice%<u64.>.) Poly)
+(declare-fun %Poly%slice%<u64.>. (Poly) slice%<u64.>.)
+(declare-fun Poly%ptr_mut%<u8.>. (ptr_mut%<u8.>.) Poly)
+(declare-fun %Poly%ptr_mut%<u8.>. (Poly) ptr_mut%<u8.>.)
+(declare-fun Poly%ptr_mut%<u16.>. (ptr_mut%<u16.>.) Poly)
+(declare-fun %Poly%ptr_mut%<u16.>. (Poly) ptr_mut%<u16.>.)
+(declare-fun Poly%ptr_mut%<u64.>. (ptr_mut%<u64.>.) Poly)
+(declare-fun %Poly%ptr_mut%<u64.>. (Poly) ptr_mut%<u64.>.)
+(declare-fun Poly%ptr_mut%<slice%<u8.>.>. (ptr_mut%<slice%<u8.>.>.) Poly)
+(declare-fun %Poly%ptr_mut%<slice%<u8.>.>. (Poly) ptr_mut%<slice%<u8.>.>.)
+(declare-fun Poly%ptr_mut%<slice%<u64.>.>. (ptr_mut%<slice%<u64.>.>.) Poly)
+(declare-fun %Poly%ptr_mut%<slice%<u64.>.>. (Poly) ptr_mut%<slice%<u64.>.>.)
+(declare-fun Poly%allocator_global%. (allocator_global%.) Poly)
+(declare-fun %Poly%allocator_global%. (Poly) allocator_global%.)
+(declare-fun Poly%vstd!raw_ptr.Metadata. (vstd!raw_ptr.Metadata.) Poly)
+(declare-fun %Poly%vstd!raw_ptr.Metadata. (Poly) vstd!raw_ptr.Metadata.)
+(declare-fun Poly%vstd!raw_ptr.PtrData. (vstd!raw_ptr.PtrData.) Poly)
+(declare-fun %Poly%vstd!raw_ptr.PtrData. (Poly) vstd!raw_ptr.PtrData.)
+(declare-fun Poly%vstd!raw_ptr.MemContents. (vstd!raw_ptr.MemContents.) Poly)
+(declare-fun %Poly%vstd!raw_ptr.MemContents. (Poly) vstd!raw_ptr.MemContents.)
+(declare-fun Poly%vstd!raw_ptr.PointsToData. (vstd!raw_ptr.PointsToData.) Poly)
+(declare-fun %Poly%vstd!raw_ptr.PointsToData. (Poly) vstd!raw_ptr.PointsToData.)
+(declare-fun Poly%tuple%0. (tuple%0.) Poly)
+(declare-fun %Poly%tuple%0. (Poly) tuple%0.)
+(assert
+ (forall ((x %%Function%%)) (!
+   (= x (%Poly%fun%1. (Poly%fun%1. x)))
+   :pattern ((Poly%fun%1. x))
+   :qid internal_crate__fun__1_box_axiom_definition
+   :skolemid skolem_internal_crate__fun__1_box_axiom_definition
+)))
+(assert
+ (forall ((T%0&. Dcr) (T%0& Type) (T%1&. Dcr) (T%1& Type) (x Poly)) (!
+   (=>
+    (has_type x (TYPE%fun%1. T%0&. T%0& T%1&. T%1&))
+    (= x (Poly%fun%1. (%Poly%fun%1. x)))
+   )
+   :pattern ((has_type x (TYPE%fun%1. T%0&. T%0& T%1&. T%1&)))
+   :qid internal_crate__fun__1_unbox_axiom_definition
+   :skolemid skolem_internal_crate__fun__1_unbox_axiom_definition
+)))
+(declare-fun %%apply%%0 (%%Function%% Poly) Poly)
+(assert
+ (forall ((T%0&. Dcr) (T%0& Type) (T%1&. Dcr) (T%1& Type) (x %%Function%%)) (!
+   (=>
+    (forall ((T%0 Poly)) (!
+      (=>
+       (has_type T%0 T%0&)
+       (has_type (%%apply%%0 x T%0) T%1&)
+      )
+      :pattern ((has_type (%%apply%%0 x T%0) T%1&))
+      :qid internal_crate__fun__1_constructor_inner_definition
+      :skolemid skolem_internal_crate__fun__1_constructor_inner_definition
+    ))
+    (has_type (Poly%fun%1. (mk_fun x)) (TYPE%fun%1. T%0&. T%0& T%1&. T%1&))
+   )
+   :pattern ((has_type (Poly%fun%1. (mk_fun x)) (TYPE%fun%1. T%0&. T%0& T%1&. T%1&)))
+   :qid internal_crate__fun__1_constructor_definition
+   :skolemid skolem_internal_crate__fun__1_constructor_definition
+)))
+(assert
+ (forall ((T%0&. Dcr) (T%0& Type) (T%1&. Dcr) (T%1& Type) (T%0 Poly) (x %%Function%%))
+  (!
+   (=>
+    (and
+     (has_type (Poly%fun%1. x) (TYPE%fun%1. T%0&. T%0& T%1&. T%1&))
+     (has_type T%0 T%0&)
+    )
+    (has_type (%%apply%%0 x T%0) T%1&)
+   )
+   :pattern ((%%apply%%0 x T%0) (has_type (Poly%fun%1. x) (TYPE%fun%1. T%0&. T%0& T%1&.
+      T%1&
+   )))
+   :qid internal_crate__fun__1_apply_definition
+   :skolemid skolem_internal_crate__fun__1_apply_definition
+)))
+(assert
+ (forall ((T%0&. Dcr) (T%0& Type) (T%1&. Dcr) (T%1& Type) (T%0 Poly) (x %%Function%%))
+  (!
+   (=>
+    (and
+     (has_type (Poly%fun%1. x) (TYPE%fun%1. T%0&. T%0& T%1&. T%1&))
+     (has_type T%0 T%0&)
+    )
+    (height_lt (height (%%apply%%0 x T%0)) (height (fun_from_recursive_field (Poly%fun%1.
+        (mk_fun x)
+   )))))
+   :pattern ((height (%%apply%%0 x T%0)) (has_type (Poly%fun%1. x) (TYPE%fun%1. T%0&. T%0&
+      T%1&. T%1&
+   )))
+   :qid internal_crate__fun__1_height_apply_definition
+   :skolemid skolem_internal_crate__fun__1_height_apply_definition
+)))
+(assert
+ (forall ((T%0&. Dcr) (T%0& Type) (T%1&. Dcr) (T%1& Type) (deep Bool) (x Poly) (y Poly))
+  (!
+   (=>
+    (and
+     (has_type x (TYPE%fun%1. T%0&. T%0& T%1&. T%1&))
+     (has_type y (TYPE%fun%1. T%0&. T%0& T%1&. T%1&))
+     (forall ((T%0 Poly)) (!
+       (=>
+        (has_type T%0 T%0&)
+        (ext_eq deep T%1& (%%apply%%0 (%Poly%fun%1. x) T%0) (%%apply%%0 (%Poly%fun%1. y) T%0))
+       )
+       :pattern ((ext_eq deep T%1& (%%apply%%0 (%Poly%fun%1. x) T%0) (%%apply%%0 (%Poly%fun%1.
+           y
+          ) T%0
+       )))
+       :qid internal_crate__fun__1_inner_ext_equal_definition
+       :skolemid skolem_internal_crate__fun__1_inner_ext_equal_definition
+    )))
+    (ext_eq deep (TYPE%fun%1. T%0&. T%0& T%1&. T%1&) x y)
+   )
+   :pattern ((ext_eq deep (TYPE%fun%1. T%0&. T%0& T%1&. T%1&) x y))
+   :qid internal_crate__fun__1_ext_equal_definition
+   :skolemid skolem_internal_crate__fun__1_ext_equal_definition
+)))
+(assert
+ (forall ((x %%Function%%)) (!
+   (= x (%Poly%array%. (Poly%array%. x)))
+   :pattern ((Poly%array%. x))
+   :qid internal_crate__array___box_axiom_definition
+   :skolemid skolem_internal_crate__array___box_axiom_definition
+)))
+(assert
+ (forall ((T&. Dcr) (T& Type) (N&. Dcr) (N& Type) (x Poly)) (!
+   (=>
+    (has_type x (ARRAY T&. T& N&. N&))
+    (= x (Poly%array%. (%Poly%array%. x)))
+   )
+   :pattern ((has_type x (ARRAY T&. T& N&. N&)))
+   :qid internal_crate__array___unbox_axiom_definition
+   :skolemid skolem_internal_crate__array___unbox_axiom_definition
+)))
+(assert
+ (forall ((x vstd!raw_ptr.DynMetadata.)) (!
+   (= x (%Poly%vstd!raw_ptr.DynMetadata. (Poly%vstd!raw_ptr.DynMetadata. x)))
+   :pattern ((Poly%vstd!raw_ptr.DynMetadata. x))
+   :qid internal_vstd__raw_ptr__DynMetadata_box_axiom_definition
+   :skolemid skolem_internal_vstd__raw_ptr__DynMetadata_box_axiom_definition
+)))
+(assert
+ (forall ((x Poly)) (!
+   (=>
+    (has_type x TYPE%vstd!raw_ptr.DynMetadata.)
+    (= x (Poly%vstd!raw_ptr.DynMetadata. (%Poly%vstd!raw_ptr.DynMetadata. x)))
+   )
+   :pattern ((has_type x TYPE%vstd!raw_ptr.DynMetadata.))
+   :qid internal_vstd__raw_ptr__DynMetadata_unbox_axiom_definition
+   :skolemid skolem_internal_vstd__raw_ptr__DynMetadata_unbox_axiom_definition
+)))
+(assert
+ (forall ((x vstd!raw_ptr.DynMetadata.)) (!
+   (has_type (Poly%vstd!raw_ptr.DynMetadata. x) TYPE%vstd!raw_ptr.DynMetadata.)
+   :pattern ((has_type (Poly%vstd!raw_ptr.DynMetadata. x) TYPE%vstd!raw_ptr.DynMetadata.))
+   :qid internal_vstd__raw_ptr__DynMetadata_has_type_always_definition
+   :skolemid skolem_internal_vstd__raw_ptr__DynMetadata_has_type_always_definition
+)))
+(assert
+ (forall ((x vstd!raw_ptr.PointsTo<u8.>.)) (!
+   (= x (%Poly%vstd!raw_ptr.PointsTo<u8.>. (Poly%vstd!raw_ptr.PointsTo<u8.>. x)))
+   :pattern ((Poly%vstd!raw_ptr.PointsTo<u8.>. x))
+   :qid internal_vstd__raw_ptr__PointsTo<u8.>_box_axiom_definition
+   :skolemid skolem_internal_vstd__raw_ptr__PointsTo<u8.>_box_axiom_definition
+)))
+(assert
+ (forall ((x Poly)) (!
+   (=>
+    (has_type x (TYPE%vstd!raw_ptr.PointsTo. $ (UINT 8)))
+    (= x (Poly%vstd!raw_ptr.PointsTo<u8.>. (%Poly%vstd!raw_ptr.PointsTo<u8.>. x)))
+   )
+   :pattern ((has_type x (TYPE%vstd!raw_ptr.PointsTo. $ (UINT 8))))
+   :qid internal_vstd__raw_ptr__PointsTo<u8.>_unbox_axiom_definition
+   :skolemid skolem_internal_vstd__raw_ptr__PointsTo<u8.>_unbox_axiom_definition
+)))
+(assert
+ (forall ((x vstd!raw_ptr.PointsTo<u8.>.)) (!
+   (has_type (Poly%vstd!raw_ptr.PointsTo<u8.>. x) (TYPE%vstd!raw_ptr.PointsTo. $ (UINT
+      8
+   )))
+   :pattern ((has_type (Poly%vstd!raw_ptr.PointsTo<u8.>. x) (TYPE%vstd!raw_ptr.PointsTo.
+      $ (UINT 8)
+   )))
+   :qid internal_vstd__raw_ptr__PointsTo<u8.>_has_type_always_definition
+   :skolemid skolem_internal_vstd__raw_ptr__PointsTo<u8.>_has_type_always_definition
+)))
+(assert
+ (forall ((x vstd!raw_ptr.Provenance.)) (!
+   (= x (%Poly%vstd!raw_ptr.Provenance. (Poly%vstd!raw_ptr.Provenance. x)))
+   :pattern ((Poly%vstd!raw_ptr.Provenance. x))
+   :qid internal_vstd__raw_ptr__Provenance_box_axiom_definition
+   :skolemid skolem_internal_vstd__raw_ptr__Provenance_box_axiom_definition
+)))
+(assert
+ (forall ((x Poly)) (!
+   (=>
+    (has_type x TYPE%vstd!raw_ptr.Provenance.)
+    (= x (Poly%vstd!raw_ptr.Provenance. (%Poly%vstd!raw_ptr.Provenance. x)))
+   )
+   :pattern ((has_type x TYPE%vstd!raw_ptr.Provenance.))
+   :qid internal_vstd__raw_ptr__Provenance_unbox_axiom_definition
+   :skolemid skolem_internal_vstd__raw_ptr__Provenance_unbox_axiom_definition
+)))
+(assert
+ (forall ((x vstd!raw_ptr.Provenance.)) (!
+   (has_type (Poly%vstd!raw_ptr.Provenance. x) TYPE%vstd!raw_ptr.Provenance.)
+   :pattern ((has_type (Poly%vstd!raw_ptr.Provenance. x) TYPE%vstd!raw_ptr.Provenance.))
+   :qid internal_vstd__raw_ptr__Provenance_has_type_always_definition
+   :skolemid skolem_internal_vstd__raw_ptr__Provenance_has_type_always_definition
+)))
+(assert
+ (forall ((x slice%<u8.>.)) (!
+   (= x (%Poly%slice%<u8.>. (Poly%slice%<u8.>. x)))
+   :pattern ((Poly%slice%<u8.>. x))
+   :qid internal_crate__slice__<u8.>_box_axiom_definition
+   :skolemid skolem_internal_crate__slice__<u8.>_box_axiom_definition
+)))
+(assert
+ (forall ((x Poly)) (!
+   (=>
+    (has_type x (SLICE $ (UINT 8)))
+    (= x (Poly%slice%<u8.>. (%Poly%slice%<u8.>. x)))
+   )
+   :pattern ((has_type x (SLICE $ (UINT 8))))
+   :qid internal_crate__slice__<u8.>_unbox_axiom_definition
+   :skolemid skolem_internal_crate__slice__<u8.>_unbox_axiom_definition
+)))
+(assert
+ (forall ((x slice%<u8.>.)) (!
+   (has_type (Poly%slice%<u8.>. x) (SLICE $ (UINT 8)))
+   :pattern ((has_type (Poly%slice%<u8.>. x) (SLICE $ (UINT 8))))
+   :qid internal_crate__slice__<u8.>_has_type_always_definition
+   :skolemid skolem_internal_crate__slice__<u8.>_has_type_always_definition
+)))
+(assert
+ (forall ((x slice%<u64.>.)) (!
+   (= x (%Poly%slice%<u64.>. (Poly%slice%<u64.>. x)))
+   :pattern ((Poly%slice%<u64.>. x))
+   :qid internal_crate__slice__<u64.>_box_axiom_definition
+   :skolemid skolem_internal_crate__slice__<u64.>_box_axiom_definition
+)))
+(assert
+ (forall ((x Poly)) (!
+   (=>
+    (has_type x (SLICE $ (UINT 64)))
+    (= x (Poly%slice%<u64.>. (%Poly%slice%<u64.>. x)))
+   )
+   :pattern ((has_type x (SLICE $ (UINT 64))))
+   :qid internal_crate__slice__<u64.>_unbox_axiom_definition
+   :skolemid skolem_internal_crate__slice__<u64.>_unbox_axiom_definition
+)))
+(assert
+ (forall ((x slice%<u64.>.)) (!
+   (has_type (Poly%slice%<u64.>. x) (SLICE $ (UINT 64)))
+   :pattern ((has_type (Poly%slice%<u64.>. x) (SLICE $ (UINT 64))))
+   :qid internal_crate__slice__<u64.>_has_type_always_definition
+   :skolemid skolem_internal_crate__slice__<u64.>_has_type_always_definition
+)))
+(assert
+ (forall ((x ptr_mut%<u8.>.)) (!
+   (= x (%Poly%ptr_mut%<u8.>. (Poly%ptr_mut%<u8.>. x)))
+   :pattern ((Poly%ptr_mut%<u8.>. x))
+   :qid internal_crate__ptr_mut__<u8.>_box_axiom_definition
+   :skolemid skolem_internal_crate__ptr_mut__<u8.>_box_axiom_definition
+)))
+(assert
+ (forall ((x Poly)) (!
+   (=>
+    (has_type x (PTR $ (UINT 8)))
+    (= x (Poly%ptr_mut%<u8.>. (%Poly%ptr_mut%<u8.>. x)))
+   )
+   :pattern ((has_type x (PTR $ (UINT 8))))
+   :qid internal_crate__ptr_mut__<u8.>_unbox_axiom_definition
+   :skolemid skolem_internal_crate__ptr_mut__<u8.>_unbox_axiom_definition
+)))
+(assert
+ (forall ((x ptr_mut%<u8.>.)) (!
+   (has_type (Poly%ptr_mut%<u8.>. x) (PTR $ (UINT 8)))
+   :pattern ((has_type (Poly%ptr_mut%<u8.>. x) (PTR $ (UINT 8))))
+   :qid internal_crate__ptr_mut__<u8.>_has_type_always_definition
+   :skolemid skolem_internal_crate__ptr_mut__<u8.>_has_type_always_definition
+)))
+(assert
+ (forall ((x ptr_mut%<u16.>.)) (!
+   (= x (%Poly%ptr_mut%<u16.>. (Poly%ptr_mut%<u16.>. x)))
+   :pattern ((Poly%ptr_mut%<u16.>. x))
+   :qid internal_crate__ptr_mut__<u16.>_box_axiom_definition
+   :skolemid skolem_internal_crate__ptr_mut__<u16.>_box_axiom_definition
+)))
+(assert
+ (forall ((x Poly)) (!
+   (=>
+    (has_type x (PTR $ (UINT 16)))
+    (= x (Poly%ptr_mut%<u16.>. (%Poly%ptr_mut%<u16.>. x)))
+   )
+   :pattern ((has_type x (PTR $ (UINT 16))))
+   :qid internal_crate__ptr_mut__<u16.>_unbox_axiom_definition
+   :skolemid skolem_internal_crate__ptr_mut__<u16.>_unbox_axiom_definition
+)))
+(assert
+ (forall ((x ptr_mut%<u16.>.)) (!
+   (has_type (Poly%ptr_mut%<u16.>. x) (PTR $ (UINT 16)))
+   :pattern ((has_type (Poly%ptr_mut%<u16.>. x) (PTR $ (UINT 16))))
+   :qid internal_crate__ptr_mut__<u16.>_has_type_always_definition
+   :skolemid skolem_internal_crate__ptr_mut__<u16.>_has_type_always_definition
+)))
+(assert
+ (forall ((x ptr_mut%<u64.>.)) (!
+   (= x (%Poly%ptr_mut%<u64.>. (Poly%ptr_mut%<u64.>. x)))
+   :pattern ((Poly%ptr_mut%<u64.>. x))
+   :qid internal_crate__ptr_mut__<u64.>_box_axiom_definition
+   :skolemid skolem_internal_crate__ptr_mut__<u64.>_box_axiom_definition
+)))
+(assert
+ (forall ((x Poly)) (!
+   (=>
+    (has_type x (PTR $ (UINT 64)))
+    (= x (Poly%ptr_mut%<u64.>. (%Poly%ptr_mut%<u64.>. x)))
+   )
+   :pattern ((has_type x (PTR $ (UINT 64))))
+   :qid internal_crate__ptr_mut__<u64.>_unbox_axiom_definition
+   :skolemid skolem_internal_crate__ptr_mut__<u64.>_unbox_axiom_definition
+)))
+(assert
+ (forall ((x ptr_mut%<u64.>.)) (!
+   (has_type (Poly%ptr_mut%<u64.>. x) (PTR $ (UINT 64)))
+   :pattern ((has_type (Poly%ptr_mut%<u64.>. x) (PTR $ (UINT 64))))
+   :qid internal_crate__ptr_mut__<u64.>_has_type_always_definition
+   :skolemid skolem_internal_crate__ptr_mut__<u64.>_has_type_always_definition
+)))
+(assert
+ (forall ((x ptr_mut%<slice%<u8.>.>.)) (!
+   (= x (%Poly%ptr_mut%<slice%<u8.>.>. (Poly%ptr_mut%<slice%<u8.>.>. x)))
+   :pattern ((Poly%ptr_mut%<slice%<u8.>.>. x))
+   :qid internal_crate__ptr_mut__<slice__<u8.>.>_box_axiom_definition
+   :skolemid skolem_internal_crate__ptr_mut__<slice__<u8.>.>_box_axiom_definition
+)))
+(assert
+ (forall ((x Poly)) (!
+   (=>
+    (has_type x (PTR $ (SLICE $ (UINT 8))))
+    (= x (Poly%ptr_mut%<slice%<u8.>.>. (%Poly%ptr_mut%<slice%<u8.>.>. x)))
+   )
+   :pattern ((has_type x (PTR $ (SLICE $ (UINT 8)))))
+   :qid internal_crate__ptr_mut__<slice__<u8.>.>_unbox_axiom_definition
+   :skolemid skolem_internal_crate__ptr_mut__<slice__<u8.>.>_unbox_axiom_definition
+)))
+(assert
+ (forall ((x ptr_mut%<slice%<u8.>.>.)) (!
+   (has_type (Poly%ptr_mut%<slice%<u8.>.>. x) (PTR $ (SLICE $ (UINT 8))))
+   :pattern ((has_type (Poly%ptr_mut%<slice%<u8.>.>. x) (PTR $ (SLICE $ (UINT 8)))))
+   :qid internal_crate__ptr_mut__<slice__<u8.>.>_has_type_always_definition
+   :skolemid skolem_internal_crate__ptr_mut__<slice__<u8.>.>_has_type_always_definition
+)))
+(assert
+ (forall ((x ptr_mut%<slice%<u64.>.>.)) (!
+   (= x (%Poly%ptr_mut%<slice%<u64.>.>. (Poly%ptr_mut%<slice%<u64.>.>. x)))
+   :pattern ((Poly%ptr_mut%<slice%<u64.>.>. x))
+   :qid internal_crate__ptr_mut__<slice__<u64.>.>_box_axiom_definition
+   :skolemid skolem_internal_crate__ptr_mut__<slice__<u64.>.>_box_axiom_definition
+)))
+(assert
+ (forall ((x Poly)) (!
+   (=>
+    (has_type x (PTR $ (SLICE $ (UINT 64))))
+    (= x (Poly%ptr_mut%<slice%<u64.>.>. (%Poly%ptr_mut%<slice%<u64.>.>. x)))
+   )
+   :pattern ((has_type x (PTR $ (SLICE $ (UINT 64)))))
+   :qid internal_crate__ptr_mut__<slice__<u64.>.>_unbox_axiom_definition
+   :skolemid skolem_internal_crate__ptr_mut__<slice__<u64.>.>_unbox_axiom_definition
+)))
+(assert
+ (forall ((x ptr_mut%<slice%<u64.>.>.)) (!
+   (has_type (Poly%ptr_mut%<slice%<u64.>.>. x) (PTR $ (SLICE $ (UINT 64))))
+   :pattern ((has_type (Poly%ptr_mut%<slice%<u64.>.>. x) (PTR $ (SLICE $ (UINT 64)))))
+   :qid internal_crate__ptr_mut__<slice__<u64.>.>_has_type_always_definition
+   :skolemid skolem_internal_crate__ptr_mut__<slice__<u64.>.>_has_type_always_definition
+)))
+(assert
+ (forall ((x allocator_global%.)) (!
+   (= x (%Poly%allocator_global%. (Poly%allocator_global%. x)))
+   :pattern ((Poly%allocator_global%. x))
+   :qid internal_crate__allocator_global___box_axiom_definition
+   :skolemid skolem_internal_crate__allocator_global___box_axiom_definition
+)))
+(assert
+ (forall ((x Poly)) (!
+   (=>
+    (has_type x ALLOCATOR_GLOBAL)
+    (= x (Poly%allocator_global%. (%Poly%allocator_global%. x)))
+   )
+   :pattern ((has_type x ALLOCATOR_GLOBAL))
+   :qid internal_crate__allocator_global___unbox_axiom_definition
+   :skolemid skolem_internal_crate__allocator_global___unbox_axiom_definition
+)))
+(assert
+ (forall ((x allocator_global%.)) (!
+   (has_type (Poly%allocator_global%. x) ALLOCATOR_GLOBAL)
+   :pattern ((has_type (Poly%allocator_global%. x) ALLOCATOR_GLOBAL))
+   :qid internal_crate__allocator_global___has_type_always_definition
+   :skolemid skolem_internal_crate__allocator_global___has_type_always_definition
+)))
+(assert
+ (forall ((x vstd!raw_ptr.Metadata.)) (!
+   (= x (%Poly%vstd!raw_ptr.Metadata. (Poly%vstd!raw_ptr.Metadata. x)))
+   :pattern ((Poly%vstd!raw_ptr.Metadata. x))
+   :qid internal_vstd__raw_ptr__Metadata_box_axiom_definition
+   :skolemid skolem_internal_vstd__raw_ptr__Metadata_box_axiom_definition
+)))
+(assert
+ (forall ((x Poly)) (!
+   (=>
+    (has_type x TYPE%vstd!raw_ptr.Metadata.)
+    (= x (Poly%vstd!raw_ptr.Metadata. (%Poly%vstd!raw_ptr.Metadata. x)))
+   )
+   :pattern ((has_type x TYPE%vstd!raw_ptr.Metadata.))
+   :qid internal_vstd__raw_ptr__Metadata_unbox_axiom_definition
+   :skolemid skolem_internal_vstd__raw_ptr__Metadata_unbox_axiom_definition
+)))
+(assert
+ (has_type (Poly%vstd!raw_ptr.Metadata. vstd!raw_ptr.Metadata./Thin) TYPE%vstd!raw_ptr.Metadata.)
+)
+(assert
+ (forall ((_0! Int)) (!
+   (=>
+    (uInv SZ _0!)
+    (has_type (Poly%vstd!raw_ptr.Metadata. (vstd!raw_ptr.Metadata./Length _0!)) TYPE%vstd!raw_ptr.Metadata.)
+   )
+   :pattern ((has_type (Poly%vstd!raw_ptr.Metadata. (vstd!raw_ptr.Metadata./Length _0!))
+     TYPE%vstd!raw_ptr.Metadata.
+   ))
+   :qid internal_vstd!raw_ptr.Metadata./Length_constructor_definition
+   :skolemid skolem_internal_vstd!raw_ptr.Metadata./Length_constructor_definition
+)))
+(assert
+ (forall ((x vstd!raw_ptr.Metadata.)) (!
+   (= (vstd!raw_ptr.Metadata./Length/0 x) (vstd!raw_ptr.Metadata./Length/?0 x))
+   :pattern ((vstd!raw_ptr.Metadata./Length/0 x))
+   :qid internal_vstd!raw_ptr.Metadata./Length/0_accessor_definition
+   :skolemid skolem_internal_vstd!raw_ptr.Metadata./Length/0_accessor_definition
+)))
+(assert
+ (forall ((x Poly)) (!
+   (=>
+    (has_type x TYPE%vstd!raw_ptr.Metadata.)
+    (uInv SZ (vstd!raw_ptr.Metadata./Length/0 (%Poly%vstd!raw_ptr.Metadata. x)))
+   )
+   :pattern ((vstd!raw_ptr.Metadata./Length/0 (%Poly%vstd!raw_ptr.Metadata. x)) (has_type
+     x TYPE%vstd!raw_ptr.Metadata.
+   ))
+   :qid internal_vstd!raw_ptr.Metadata./Length/0_invariant_definition
+   :skolemid skolem_internal_vstd!raw_ptr.Metadata./Length/0_invariant_definition
+)))
+(assert
+ (forall ((_0! vstd!raw_ptr.DynMetadata.)) (!
+   (has_type (Poly%vstd!raw_ptr.Metadata. (vstd!raw_ptr.Metadata./Dyn _0!)) TYPE%vstd!raw_ptr.Metadata.)
+   :pattern ((has_type (Poly%vstd!raw_ptr.Metadata. (vstd!raw_ptr.Metadata./Dyn _0!))
+     TYPE%vstd!raw_ptr.Metadata.
+   ))
+   :qid internal_vstd!raw_ptr.Metadata./Dyn_constructor_definition
+   :skolemid skolem_internal_vstd!raw_ptr.Metadata./Dyn_constructor_definition
+)))
+(assert
+ (forall ((x vstd!raw_ptr.Metadata.)) (!
+   (= (vstd!raw_ptr.Metadata./Dyn/0 x) (vstd!raw_ptr.Metadata./Dyn/?0 x))
+   :pattern ((vstd!raw_ptr.Metadata./Dyn/0 x))
+   :qid internal_vstd!raw_ptr.Metadata./Dyn/0_accessor_definition
+   :skolemid skolem_internal_vstd!raw_ptr.Metadata./Dyn/0_accessor_definition
+)))
+(assert
+ (forall ((x vstd!raw_ptr.PtrData.)) (!
+   (= x (%Poly%vstd!raw_ptr.PtrData. (Poly%vstd!raw_ptr.PtrData. x)))
+   :pattern ((Poly%vstd!raw_ptr.PtrData. x))
+   :qid internal_vstd__raw_ptr__PtrData_box_axiom_definition
+   :skolemid skolem_internal_vstd__raw_ptr__PtrData_box_axiom_definition
+)))
+(assert
+ (forall ((x Poly)) (!
+   (=>
+    (has_type x TYPE%vstd!raw_ptr.PtrData.)
+    (= x (Poly%vstd!raw_ptr.PtrData. (%Poly%vstd!raw_ptr.PtrData. x)))
+   )
+   :pattern ((has_type x TYPE%vstd!raw_ptr.PtrData.))
+   :qid internal_vstd__raw_ptr__PtrData_unbox_axiom_definition
+   :skolemid skolem_internal_vstd__raw_ptr__PtrData_unbox_axiom_definition
+)))
+(assert
+ (forall ((_addr! Int) (_provenance! vstd!raw_ptr.Provenance.) (_metadata! vstd!raw_ptr.Metadata.))
+  (!
+   (=>
+    (and
+     (uInv SZ _addr!)
+     (has_type (Poly%vstd!raw_ptr.Metadata. _metadata!) TYPE%vstd!raw_ptr.Metadata.)
+    )
+    (has_type (Poly%vstd!raw_ptr.PtrData. (vstd!raw_ptr.PtrData./PtrData _addr! _provenance!
+       _metadata!
+      )
+     ) TYPE%vstd!raw_ptr.PtrData.
+   ))
+   :pattern ((has_type (Poly%vstd!raw_ptr.PtrData. (vstd!raw_ptr.PtrData./PtrData _addr!
+       _provenance! _metadata!
+      )
+     ) TYPE%vstd!raw_ptr.PtrData.
+   ))
+   :qid internal_vstd!raw_ptr.PtrData./PtrData_constructor_definition
+   :skolemid skolem_internal_vstd!raw_ptr.PtrData./PtrData_constructor_definition
+)))
+(assert
+ (forall ((x vstd!raw_ptr.PtrData.)) (!
+   (= (vstd!raw_ptr.PtrData./PtrData/addr x) (vstd!raw_ptr.PtrData./PtrData/?addr x))
+   :pattern ((vstd!raw_ptr.PtrData./PtrData/addr x))
+   :qid internal_vstd!raw_ptr.PtrData./PtrData/addr_accessor_definition
+   :skolemid skolem_internal_vstd!raw_ptr.PtrData./PtrData/addr_accessor_definition
+)))
+(assert
+ (forall ((x Poly)) (!
+   (=>
+    (has_type x TYPE%vstd!raw_ptr.PtrData.)
+    (uInv SZ (vstd!raw_ptr.PtrData./PtrData/addr (%Poly%vstd!raw_ptr.PtrData. x)))
+   )
+   :pattern ((vstd!raw_ptr.PtrData./PtrData/addr (%Poly%vstd!raw_ptr.PtrData. x)) (has_type
+     x TYPE%vstd!raw_ptr.PtrData.
+   ))
+   :qid internal_vstd!raw_ptr.PtrData./PtrData/addr_invariant_definition
+   :skolemid skolem_internal_vstd!raw_ptr.PtrData./PtrData/addr_invariant_definition
+)))
+(assert
+ (forall ((x vstd!raw_ptr.PtrData.)) (!
+   (= (vstd!raw_ptr.PtrData./PtrData/provenance x) (vstd!raw_ptr.PtrData./PtrData/?provenance
+     x
+   ))
+   :pattern ((vstd!raw_ptr.PtrData./PtrData/provenance x))
+   :qid internal_vstd!raw_ptr.PtrData./PtrData/provenance_accessor_definition
+   :skolemid skolem_internal_vstd!raw_ptr.PtrData./PtrData/provenance_accessor_definition
+)))
+(assert
+ (forall ((x vstd!raw_ptr.PtrData.)) (!
+   (= (vstd!raw_ptr.PtrData./PtrData/metadata x) (vstd!raw_ptr.PtrData./PtrData/?metadata
+     x
+   ))
+   :pattern ((vstd!raw_ptr.PtrData./PtrData/metadata x))
+   :qid internal_vstd!raw_ptr.PtrData./PtrData/metadata_accessor_definition
+   :skolemid skolem_internal_vstd!raw_ptr.PtrData./PtrData/metadata_accessor_definition
+)))
+(assert
+ (forall ((x Poly)) (!
+   (=>
+    (has_type x TYPE%vstd!raw_ptr.PtrData.)
+    (has_type (Poly%vstd!raw_ptr.Metadata. (vstd!raw_ptr.PtrData./PtrData/metadata (%Poly%vstd!raw_ptr.PtrData.
+        x
+      ))
+     ) TYPE%vstd!raw_ptr.Metadata.
+   ))
+   :pattern ((vstd!raw_ptr.PtrData./PtrData/metadata (%Poly%vstd!raw_ptr.PtrData. x))
+    (has_type x TYPE%vstd!raw_ptr.PtrData.)
+   )
+   :qid internal_vstd!raw_ptr.PtrData./PtrData/metadata_invariant_definition
+   :skolemid skolem_internal_vstd!raw_ptr.PtrData./PtrData/metadata_invariant_definition
+)))
+(assert
+ (forall ((x vstd!raw_ptr.MemContents.)) (!
+   (= x (%Poly%vstd!raw_ptr.MemContents. (Poly%vstd!raw_ptr.MemContents. x)))
+   :pattern ((Poly%vstd!raw_ptr.MemContents. x))
+   :qid internal_vstd__raw_ptr__MemContents_box_axiom_definition
+   :skolemid skolem_internal_vstd__raw_ptr__MemContents_box_axiom_definition
+)))
+(assert
+ (forall ((T&. Dcr) (T& Type) (x Poly)) (!
+   (=>
+    (has_type x (TYPE%vstd!raw_ptr.MemContents. T&. T&))
+    (= x (Poly%vstd!raw_ptr.MemContents. (%Poly%vstd!raw_ptr.MemContents. x)))
+   )
+   :pattern ((has_type x (TYPE%vstd!raw_ptr.MemContents. T&. T&)))
+   :qid internal_vstd__raw_ptr__MemContents_unbox_axiom_definition
+   :skolemid skolem_internal_vstd__raw_ptr__MemContents_unbox_axiom_definition
+)))
+(assert
+ (forall ((T&. Dcr) (T& Type)) (!
+   (has_type (Poly%vstd!raw_ptr.MemContents. vstd!raw_ptr.MemContents./Uninit) (TYPE%vstd!raw_ptr.MemContents.
+     T&. T&
+   ))
+   :pattern ((has_type (Poly%vstd!raw_ptr.MemContents. vstd!raw_ptr.MemContents./Uninit)
+     (TYPE%vstd!raw_ptr.MemContents. T&. T&)
+   ))
+   :qid internal_vstd!raw_ptr.MemContents./Uninit_constructor_definition
+   :skolemid skolem_internal_vstd!raw_ptr.MemContents./Uninit_constructor_definition
+)))
+(assert
+ (forall ((T&. Dcr) (T& Type) (_0! Poly)) (!
+   (=>
+    (has_type _0! T&)
+    (has_type (Poly%vstd!raw_ptr.MemContents. (vstd!raw_ptr.MemContents./Init _0!)) (TYPE%vstd!raw_ptr.MemContents.
+      T&. T&
+   )))
+   :pattern ((has_type (Poly%vstd!raw_ptr.MemContents. (vstd!raw_ptr.MemContents./Init _0!))
+     (TYPE%vstd!raw_ptr.MemContents. T&. T&)
+   ))
+   :qid internal_vstd!raw_ptr.MemContents./Init_constructor_definition
+   :skolemid skolem_internal_vstd!raw_ptr.MemContents./Init_constructor_definition
+)))
+(assert
+ (forall ((x vstd!raw_ptr.MemContents.)) (!
+   (= (vstd!raw_ptr.MemContents./Init/0 x) (vstd!raw_ptr.MemContents./Init/?0 x))
+   :pattern ((vstd!raw_ptr.MemContents./Init/0 x))
+   :qid internal_vstd!raw_ptr.MemContents./Init/0_accessor_definition
+   :skolemid skolem_internal_vstd!raw_ptr.MemContents./Init/0_accessor_definition
+)))
+(assert
+ (forall ((T&. Dcr) (T& Type) (x Poly)) (!
+   (=>
+    (has_type x (TYPE%vstd!raw_ptr.MemContents. T&. T&))
+    (has_type (vstd!raw_ptr.MemContents./Init/0 (%Poly%vstd!raw_ptr.MemContents. x)) T&)
+   )
+   :pattern ((vstd!raw_ptr.MemContents./Init/0 (%Poly%vstd!raw_ptr.MemContents. x)) (
+     has_type x (TYPE%vstd!raw_ptr.MemContents. T&. T&)
+   ))
+   :qid internal_vstd!raw_ptr.MemContents./Init/0_invariant_definition
+   :skolemid skolem_internal_vstd!raw_ptr.MemContents./Init/0_invariant_definition
+)))
+(assert
+ (forall ((x vstd!raw_ptr.MemContents.)) (!
+   (=>
+    (is-vstd!raw_ptr.MemContents./Init x)
+    (height_lt (height (vstd!raw_ptr.MemContents./Init/0 x)) (height (Poly%vstd!raw_ptr.MemContents.
+       x
+   ))))
+   :pattern ((height (vstd!raw_ptr.MemContents./Init/0 x)))
+   :qid prelude_datatype_height_vstd!raw_ptr.MemContents./Init/0
+   :skolemid skolem_prelude_datatype_height_vstd!raw_ptr.MemContents./Init/0
+)))
+(assert
+ (forall ((x vstd!raw_ptr.PointsToData.)) (!
+   (= x (%Poly%vstd!raw_ptr.PointsToData. (Poly%vstd!raw_ptr.PointsToData. x)))
+   :pattern ((Poly%vstd!raw_ptr.PointsToData. x))
+   :qid internal_vstd__raw_ptr__PointsToData_box_axiom_definition
+   :skolemid skolem_internal_vstd__raw_ptr__PointsToData_box_axiom_definition
+)))
+(assert
+ (forall ((T&. Dcr) (T& Type) (x Poly)) (!
+   (=>
+    (has_type x (TYPE%vstd!raw_ptr.PointsToData. T&. T&))
+    (= x (Poly%vstd!raw_ptr.PointsToData. (%Poly%vstd!raw_ptr.PointsToData. x)))
+   )
+   :pattern ((has_type x (TYPE%vstd!raw_ptr.PointsToData. T&. T&)))
+   :qid internal_vstd__raw_ptr__PointsToData_unbox_axiom_definition
+   :skolemid skolem_internal_vstd__raw_ptr__PointsToData_unbox_axiom_definition
+)))
+(assert
+ (forall ((T&. Dcr) (T& Type) (_ptr! Poly) (_opt_value! vstd!raw_ptr.MemContents.))
+  (!
+   (=>
+    (and
+     (has_type _ptr! (PTR T&. T&))
+     (has_type (Poly%vstd!raw_ptr.MemContents. _opt_value!) (TYPE%vstd!raw_ptr.MemContents.
+       T&. T&
+    )))
+    (has_type (Poly%vstd!raw_ptr.PointsToData. (vstd!raw_ptr.PointsToData./PointsToData
+       _ptr! _opt_value!
+      )
+     ) (TYPE%vstd!raw_ptr.PointsToData. T&. T&)
+   ))
+   :pattern ((has_type (Poly%vstd!raw_ptr.PointsToData. (vstd!raw_ptr.PointsToData./PointsToData
+       _ptr! _opt_value!
+      )
+     ) (TYPE%vstd!raw_ptr.PointsToData. T&. T&)
+   ))
+   :qid internal_vstd!raw_ptr.PointsToData./PointsToData_constructor_definition
+   :skolemid skolem_internal_vstd!raw_ptr.PointsToData./PointsToData_constructor_definition
+)))
+(assert
+ (forall ((x vstd!raw_ptr.PointsToData.)) (!
+   (= (vstd!raw_ptr.PointsToData./PointsToData/ptr x) (vstd!raw_ptr.PointsToData./PointsToData/?ptr
+     x
+   ))
+   :pattern ((vstd!raw_ptr.PointsToData./PointsToData/ptr x))
+   :qid internal_vstd!raw_ptr.PointsToData./PointsToData/ptr_accessor_definition
+   :skolemid skolem_internal_vstd!raw_ptr.PointsToData./PointsToData/ptr_accessor_definition
+)))
+(assert
+ (forall ((T&. Dcr) (T& Type) (x Poly)) (!
+   (=>
+    (has_type x (TYPE%vstd!raw_ptr.PointsToData. T&. T&))
+    (has_type (vstd!raw_ptr.PointsToData./PointsToData/ptr (%Poly%vstd!raw_ptr.PointsToData.
+       x
+      )
+     ) (PTR T&. T&)
+   ))
+   :pattern ((vstd!raw_ptr.PointsToData./PointsToData/ptr (%Poly%vstd!raw_ptr.PointsToData.
+      x
+     )
+    ) (has_type x (TYPE%vstd!raw_ptr.PointsToData. T&. T&))
+   )
+   :qid internal_vstd!raw_ptr.PointsToData./PointsToData/ptr_invariant_definition
+   :skolemid skolem_internal_vstd!raw_ptr.PointsToData./PointsToData/ptr_invariant_definition
+)))
+(assert
+ (forall ((x vstd!raw_ptr.PointsToData.)) (!
+   (= (vstd!raw_ptr.PointsToData./PointsToData/opt_value x) (vstd!raw_ptr.PointsToData./PointsToData/?opt_value
+     x
+   ))
+   :pattern ((vstd!raw_ptr.PointsToData./PointsToData/opt_value x))
+   :qid internal_vstd!raw_ptr.PointsToData./PointsToData/opt_value_accessor_definition
+   :skolemid skolem_internal_vstd!raw_ptr.PointsToData./PointsToData/opt_value_accessor_definition
+)))
+(assert
+ (forall ((T&. Dcr) (T& Type) (x Poly)) (!
+   (=>
+    (has_type x (TYPE%vstd!raw_ptr.PointsToData. T&. T&))
+    (has_type (Poly%vstd!raw_ptr.MemContents. (vstd!raw_ptr.PointsToData./PointsToData/opt_value
+       (%Poly%vstd!raw_ptr.PointsToData. x)
+      )
+     ) (TYPE%vstd!raw_ptr.MemContents. T&. T&)
+   ))
+   :pattern ((vstd!raw_ptr.PointsToData./PointsToData/opt_value (%Poly%vstd!raw_ptr.PointsToData.
+      x
+     )
+    ) (has_type x (TYPE%vstd!raw_ptr.PointsToData. T&. T&))
+   )
+   :qid internal_vstd!raw_ptr.PointsToData./PointsToData/opt_value_invariant_definition
+   :skolemid skolem_internal_vstd!raw_ptr.PointsToData./PointsToData/opt_value_invariant_definition
+)))
+(assert
+ (forall ((x vstd!raw_ptr.PointsToData.)) (!
+   (=>
+    (is-vstd!raw_ptr.PointsToData./PointsToData x)
+    (height_lt (height (vstd!raw_ptr.PointsToData./PointsToData/ptr x)) (height (Poly%vstd!raw_ptr.PointsToData.
+       x
+   ))))
+   :pattern ((height (vstd!raw_ptr.PointsToData./PointsToData/ptr x)))
+   :qid prelude_datatype_height_vstd!raw_ptr.PointsToData./PointsToData/ptr
+   :skolemid skolem_prelude_datatype_height_vstd!raw_ptr.PointsToData./PointsToData/ptr
+)))
+(assert
+ (forall ((x vstd!raw_ptr.PointsToData.)) (!
+   (=>
+    (is-vstd!raw_ptr.PointsToData./PointsToData x)
+    (height_lt (height (Poly%vstd!raw_ptr.MemContents. (vstd!raw_ptr.PointsToData./PointsToData/opt_value
+        x
+      ))
+     ) (height (Poly%vstd!raw_ptr.PointsToData. x))
+   ))
+   :pattern ((height (Poly%vstd!raw_ptr.MemContents. (vstd!raw_ptr.PointsToData./PointsToData/opt_value
+       x
+   ))))
+   :qid prelude_datatype_height_vstd!raw_ptr.PointsToData./PointsToData/opt_value
+   :skolemid skolem_prelude_datatype_height_vstd!raw_ptr.PointsToData./PointsToData/opt_value
+)))
+(assert
+ (forall ((x tuple%0.)) (!
+   (= x (%Poly%tuple%0. (Poly%tuple%0. x)))
+   :pattern ((Poly%tuple%0. x))
+   :qid internal_crate__tuple__0_box_axiom_definition
+   :skolemid skolem_internal_crate__tuple__0_box_axiom_definition
+)))
+(assert
+ (forall ((x Poly)) (!
+   (=>
+    (has_type x TYPE%tuple%0.)
+    (= x (Poly%tuple%0. (%Poly%tuple%0. x)))
+   )
+   :pattern ((has_type x TYPE%tuple%0.))
+   :qid internal_crate__tuple__0_unbox_axiom_definition
+   :skolemid skolem_internal_crate__tuple__0_unbox_axiom_definition
+)))
+(assert
+ (forall ((x tuple%0.)) (!
+   (has_type (Poly%tuple%0. x) TYPE%tuple%0.)
+   :pattern ((has_type (Poly%tuple%0. x) TYPE%tuple%0.))
+   :qid internal_crate__tuple__0_has_type_always_definition
+   :skolemid skolem_internal_crate__tuple__0_has_type_always_definition
+)))
+(declare-fun array_new (Dcr Type Int %%Function%%) Poly)
+(declare-fun array_index (Dcr Type Dcr Type %%Function%% Poly) Poly)
+(assert
+ (forall ((Tdcr Dcr) (T Type) (N Int) (Fn %%Function%%)) (!
+   (= (array_new Tdcr T N Fn) (Poly%array%. Fn))
+   :pattern ((array_new Tdcr T N Fn))
+   :qid prelude_array_new
+   :skolemid skolem_prelude_array_new
+)))
+(declare-fun %%apply%%1 (%%Function%% Int) Poly)
+(assert
+ (forall ((Tdcr Dcr) (T Type) (N Int) (Fn %%Function%%)) (!
+   (=>
+    (forall ((i Int)) (!
+      (=>
+       (and
+        (<= 0 i)
+        (< i N)
+       )
+       (has_type (%%apply%%1 Fn i) T)
+      )
+      :pattern ((has_type (%%apply%%1 Fn i) T))
+      :qid prelude_has_type_array_elts
+      :skolemid skolem_prelude_has_type_array_elts
+    ))
+    (has_type (array_new Tdcr T N Fn) (ARRAY Tdcr T $ (CONST_INT N)))
+   )
+   :pattern ((array_new Tdcr T N Fn))
+   :qid prelude_has_type_array_new
+   :skolemid skolem_prelude_has_type_array_new
+)))
+(assert
+ (forall ((Tdcr Dcr) (T Type) (Ndcr Dcr) (N Type) (Fn %%Function%%) (i Poly)) (!
+   (=>
+    (and
+     (has_type (Poly%array%. Fn) (ARRAY Tdcr T Ndcr N))
+     (has_type i INT)
+    )
+    (has_type (array_index Tdcr T $ N Fn i) T)
+   )
+   :pattern ((array_index Tdcr T $ N Fn i) (has_type (Poly%array%. Fn) (ARRAY Tdcr T Ndcr
+      N
+   )))
+   :qid prelude_has_type_array_index
+   :skolemid skolem_prelude_has_type_array_index
+)))
+(assert
+ (forall ((Tdcr Dcr) (T Type) (N Int) (Fn %%Function%%) (i Int)) (!
+   (= (array_index Tdcr T $ (CONST_INT N) Fn (I i)) (%%apply%%1 Fn i))
+   :pattern ((array_new Tdcr T N Fn) (%%apply%%1 Fn i))
+   :qid prelude_array_index_trigger
+   :skolemid skolem_prelude_array_index_trigger
+)))
+
+;; Traits
+(declare-fun tr_bound%vstd!array.ArrayAdditionalSpecFns. (Dcr Type Dcr Type) Bool)
+(declare-fun tr_bound%vstd!view.View. (Dcr Type) Bool)
+(declare-fun tr_bound%core!clone.Clone. (Dcr Type) Bool)
+(declare-fun tr_bound%core!alloc.Allocator. (Dcr Type) Bool)
+(declare-fun tr_bound%core!marker.Freeze. (Dcr Type) Bool)
+(declare-fun tr_bound%core!fmt.Debug. (Dcr Type) Bool)
+(declare-fun tr_bound%core!cmp.PartialEq. (Dcr Type Dcr Type) Bool)
+(declare-fun tr_bound%core!cmp.Eq. (Dcr Type) Bool)
+(declare-fun tr_bound%core!cmp.PartialOrd. (Dcr Type Dcr Type) Bool)
+(declare-fun tr_bound%core!cmp.Ord. (Dcr Type) Bool)
+(declare-fun tr_bound%core!hash.Hash. (Dcr Type) Bool)
+(declare-fun tr_bound%core!ptr.metadata.Pointee. (Dcr Type) Bool)
+(assert
+ (forall ((Self%&. Dcr) (Self%& Type) (T&. Dcr) (T& Type)) (!
+   (=>
+    (tr_bound%vstd!array.ArrayAdditionalSpecFns. Self%&. Self%& T&. T&)
+    (and
+     (tr_bound%vstd!view.View. Self%&. Self%&)
+     (and
+      (= $ (proj%%vstd!view.View./V Self%&. Self%&))
+      (= (TYPE%vstd!seq.Seq. T&. T&) (proj%vstd!view.View./V Self%&. Self%&))
+   )))
+   :pattern ((tr_bound%vstd!array.ArrayAdditionalSpecFns. Self%&. Self%& T&. T&))
+   :qid internal_vstd__array__ArrayAdditionalSpecFns_trait_type_bounds_definition
+   :skolemid skolem_internal_vstd__array__ArrayAdditionalSpecFns_trait_type_bounds_definition
+)))
+(assert
+ (forall ((Self%&. Dcr) (Self%& Type)) (!
+   true
+   :pattern ((tr_bound%vstd!view.View. Self%&. Self%&))
+   :qid internal_vstd__view__View_trait_type_bounds_definition
+   :skolemid skolem_internal_vstd__view__View_trait_type_bounds_definition
+)))
+(assert
+ (forall ((Self%&. Dcr) (Self%& Type)) (!
+   true
+   :pattern ((tr_bound%core!clone.Clone. Self%&. Self%&))
+   :qid internal_core__clone__Clone_trait_type_bounds_definition
+   :skolemid skolem_internal_core__clone__Clone_trait_type_bounds_definition
+)))
+(assert
+ (forall ((Self%&. Dcr) (Self%& Type)) (!
+   true
+   :pattern ((tr_bound%core!alloc.Allocator. Self%&. Self%&))
+   :qid internal_core__alloc__Allocator_trait_type_bounds_definition
+   :skolemid skolem_internal_core__alloc__Allocator_trait_type_bounds_definition
+)))
+(assert
+ (forall ((Self%&. Dcr) (Self%& Type)) (!
+   true
+   :pattern ((tr_bound%core!marker.Freeze. Self%&. Self%&))
+   :qid internal_core__marker__Freeze_trait_type_bounds_definition
+   :skolemid skolem_internal_core__marker__Freeze_trait_type_bounds_definition
+)))
+(assert
+ (forall ((Self%&. Dcr) (Self%& Type)) (!
+   true
+   :pattern ((tr_bound%core!fmt.Debug. Self%&. Self%&))
+   :qid internal_core__fmt__Debug_trait_type_bounds_definition
+   :skolemid skolem_internal_core__fmt__Debug_trait_type_bounds_definition
+)))
+(assert
+ (forall ((Self%&. Dcr) (Self%& Type) (Rhs&. Dcr) (Rhs& Type)) (!
+   true
+   :pattern ((tr_bound%core!cmp.PartialEq. Self%&. Self%& Rhs&. Rhs&))
+   :qid internal_core__cmp__PartialEq_trait_type_bounds_definition
+   :skolemid skolem_internal_core__cmp__PartialEq_trait_type_bounds_definition
+)))
+(assert
+ (forall ((Self%&. Dcr) (Self%& Type)) (!
+   (=>
+    (tr_bound%core!cmp.Eq. Self%&. Self%&)
+    (tr_bound%core!cmp.PartialEq. Self%&. Self%& Self%&. Self%&)
+   )
+   :pattern ((tr_bound%core!cmp.Eq. Self%&. Self%&))
+   :qid internal_core__cmp__Eq_trait_type_bounds_definition
+   :skolemid skolem_internal_core__cmp__Eq_trait_type_bounds_definition
+)))
+(assert
+ (forall ((Self%&. Dcr) (Self%& Type) (Rhs&. Dcr) (Rhs& Type)) (!
+   (=>
+    (tr_bound%core!cmp.PartialOrd. Self%&. Self%& Rhs&. Rhs&)
+    (tr_bound%core!cmp.PartialEq. Self%&. Self%& Rhs&. Rhs&)
+   )
+   :pattern ((tr_bound%core!cmp.PartialOrd. Self%&. Self%& Rhs&. Rhs&))
+   :qid internal_core__cmp__PartialOrd_trait_type_bounds_definition
+   :skolemid skolem_internal_core__cmp__PartialOrd_trait_type_bounds_definition
+)))
+(assert
+ (forall ((Self%&. Dcr) (Self%& Type)) (!
+   (=>
+    (tr_bound%core!cmp.Ord. Self%&. Self%&)
+    (and
+     (tr_bound%core!cmp.Eq. Self%&. Self%&)
+     (tr_bound%core!cmp.PartialOrd. Self%&. Self%& Self%&. Self%&)
+   ))
+   :pattern ((tr_bound%core!cmp.Ord. Self%&. Self%&))
+   :qid internal_core__cmp__Ord_trait_type_bounds_definition
+   :skolemid skolem_internal_core__cmp__Ord_trait_type_bounds_definition
+)))
+(assert
+ (forall ((Self%&. Dcr) (Self%& Type)) (!
+   true
+   :pattern ((tr_bound%core!hash.Hash. Self%&. Self%&))
+   :qid internal_core__hash__Hash_trait_type_bounds_definition
+   :skolemid skolem_internal_core__hash__Hash_trait_type_bounds_definition
+)))
+(assert
+ (forall ((Self%&. Dcr) (Self%& Type)) (!
+   (=>
+    (tr_bound%core!ptr.metadata.Pointee. Self%&. Self%&)
+    (and
+     (tr_bound%core!marker.Freeze. (proj%%core!ptr.metadata.Pointee./Metadata Self%&. Self%&)
+      (proj%core!ptr.metadata.Pointee./Metadata Self%&. Self%&)
+     )
+     (tr_bound%core!fmt.Debug. (proj%%core!ptr.metadata.Pointee./Metadata Self%&. Self%&)
+      (proj%core!ptr.metadata.Pointee./Metadata Self%&. Self%&)
+     )
+     (tr_bound%core!hash.Hash. (proj%%core!ptr.metadata.Pointee./Metadata Self%&. Self%&)
+      (proj%core!ptr.metadata.Pointee./Metadata Self%&. Self%&)
+     )
+     (tr_bound%core!cmp.Ord. (proj%%core!ptr.metadata.Pointee./Metadata Self%&. Self%&)
+      (proj%core!ptr.metadata.Pointee./Metadata Self%&. Self%&)
+     )
+     (tr_bound%core!cmp.PartialOrd. (proj%%core!ptr.metadata.Pointee./Metadata Self%&. Self%&)
+      (proj%core!ptr.metadata.Pointee./Metadata Self%&. Self%&) (proj%%core!ptr.metadata.Pointee./Metadata
+       Self%&. Self%&
+      ) (proj%core!ptr.metadata.Pointee./Metadata Self%&. Self%&)
+     )
+     (tr_bound%core!cmp.PartialEq. (proj%%core!ptr.metadata.Pointee./Metadata Self%&. Self%&)
+      (proj%core!ptr.metadata.Pointee./Metadata Self%&. Self%&) (proj%%core!ptr.metadata.Pointee./Metadata
+       Self%&. Self%&
+      ) (proj%core!ptr.metadata.Pointee./Metadata Self%&. Self%&)
+     )
+     (tr_bound%core!cmp.Eq. (proj%%core!ptr.metadata.Pointee./Metadata Self%&. Self%&)
+      (proj%core!ptr.metadata.Pointee./Metadata Self%&. Self%&)
+     )
+     (tr_bound%core!clone.Clone. (proj%%core!ptr.metadata.Pointee./Metadata Self%&. Self%&)
+      (proj%core!ptr.metadata.Pointee./Metadata Self%&. Self%&)
+   )))
+   :pattern ((tr_bound%core!ptr.metadata.Pointee. Self%&. Self%&))
+   :qid internal_core__ptr__metadata__Pointee_trait_type_bounds_definition
+   :skolemid skolem_internal_core__ptr__metadata__Pointee_trait_type_bounds_definition
+)))
+
+;; Associated-Type-Impls
+(assert
+ (forall ((T&. Dcr) (T& Type) (N&. Dcr) (N& Type)) (!
+   (= (proj%%vstd!view.View./V $ (ARRAY T&. T& N&. N&)) $)
+   :pattern ((proj%%vstd!view.View./V $ (ARRAY T&. T& N&. N&)))
+   :qid internal_proj____vstd!view.View./V_assoc_type_impl_true_definition
+   :skolemid skolem_internal_proj____vstd!view.View./V_assoc_type_impl_true_definition
+)))
+(assert
+ (forall ((T&. Dcr) (T& Type) (N&. Dcr) (N& Type)) (!
+   (= (proj%vstd!view.View./V $ (ARRAY T&. T& N&. N&)) (TYPE%vstd!seq.Seq. T&. T&))
+   :pattern ((proj%vstd!view.View./V $ (ARRAY T&. T& N&. N&)))
+   :qid internal_proj__vstd!view.View./V_assoc_type_impl_false_definition
+   :skolemid skolem_internal_proj__vstd!view.View./V_assoc_type_impl_false_definition
+)))
+(assert
+ (forall ((T&. Dcr) (T& Type)) (!
+   (= (proj%%vstd!view.View./V $ (PTR T&. T&)) $)
+   :pattern ((proj%%vstd!view.View./V $ (PTR T&. T&)))
+   :qid internal_proj____vstd!view.View./V_assoc_type_impl_true_definition
+   :skolemid skolem_internal_proj____vstd!view.View./V_assoc_type_impl_true_definition
+)))
+(assert
+ (forall ((T&. Dcr) (T& Type)) (!
+   (= (proj%vstd!view.View./V $ (PTR T&. T&)) TYPE%vstd!raw_ptr.PtrData.)
+   :pattern ((proj%vstd!view.View./V $ (PTR T&. T&)))
+   :qid internal_proj__vstd!view.View./V_assoc_type_impl_false_definition
+   :skolemid skolem_internal_proj__vstd!view.View./V_assoc_type_impl_false_definition
+)))
+(assert
+ (forall ((T&. Dcr) (T& Type)) (!
+   (= (proj%%vstd!view.View./V (CONST_PTR $) (PTR T&. T&)) $)
+   :pattern ((proj%%vstd!view.View./V (CONST_PTR $) (PTR T&. T&)))
+   :qid internal_proj____vstd!view.View./V_assoc_type_impl_true_definition
+   :skolemid skolem_internal_proj____vstd!view.View./V_assoc_type_impl_true_definition
+)))
+(assert
+ (forall ((T&. Dcr) (T& Type)) (!
+   (= (proj%vstd!view.View./V (CONST_PTR $) (PTR T&. T&)) TYPE%vstd!raw_ptr.PtrData.)
+   :pattern ((proj%vstd!view.View./V (CONST_PTR $) (PTR T&. T&)))
+   :qid internal_proj__vstd!view.View./V_assoc_type_impl_false_definition
+   :skolemid skolem_internal_proj__vstd!view.View./V_assoc_type_impl_false_definition
+)))
+(assert
+ (forall ((T&. Dcr) (T& Type)) (!
+   (= (proj%%vstd!view.View./V $ (TYPE%vstd!raw_ptr.PointsTo. T&. T&)) $)
+   :pattern ((proj%%vstd!view.View./V $ (TYPE%vstd!raw_ptr.PointsTo. T&. T&)))
+   :qid internal_proj____vstd!view.View./V_assoc_type_impl_true_definition
+   :skolemid skolem_internal_proj____vstd!view.View./V_assoc_type_impl_true_definition
+)))
+(assert
+ (forall ((T&. Dcr) (T& Type)) (!
+   (= (proj%vstd!view.View./V $ (TYPE%vstd!raw_ptr.PointsTo. T&. T&)) (TYPE%vstd!raw_ptr.PointsToData.
+     T&. T&
+   ))
+   :pattern ((proj%vstd!view.View./V $ (TYPE%vstd!raw_ptr.PointsTo. T&. T&)))
+   :qid internal_proj__vstd!view.View./V_assoc_type_impl_false_definition
+   :skolemid skolem_internal_proj__vstd!view.View./V_assoc_type_impl_false_definition
+)))
+(assert
+ (forall ((T&. Dcr) (T& Type)) (!
+   (= (proj%%vstd!view.View./V $ (SLICE T&. T&)) $)
+   :pattern ((proj%%vstd!view.View./V $ (SLICE T&. T&)))
+   :qid internal_proj____vstd!view.View./V_assoc_type_impl_true_definition
+   :skolemid skolem_internal_proj____vstd!view.View./V_assoc_type_impl_true_definition
+)))
+(assert
+ (forall ((T&. Dcr) (T& Type)) (!
+   (= (proj%vstd!view.View./V $ (SLICE T&. T&)) (TYPE%vstd!seq.Seq. T&. T&))
+   :pattern ((proj%vstd!view.View./V $ (SLICE T&. T&)))
+   :qid internal_proj__vstd!view.View./V_assoc_type_impl_false_definition
+   :skolemid skolem_internal_proj__vstd!view.View./V_assoc_type_impl_false_definition
+)))
+(assert
+ (forall ((A&. Dcr) (A& Type)) (!
+   (= (proj%%vstd!view.View./V (REF A&.) A&) (proj%%vstd!view.View./V A&. A&))
+   :pattern ((proj%%vstd!view.View./V (REF A&.) A&))
+   :qid internal_proj____vstd!view.View./V_assoc_type_impl_true_definition
+   :skolemid skolem_internal_proj____vstd!view.View./V_assoc_type_impl_true_definition
+)))
+(assert
+ (forall ((A&. Dcr) (A& Type)) (!
+   (= (proj%vstd!view.View./V (REF A&.) A&) (proj%vstd!view.View./V A&. A&))
+   :pattern ((proj%vstd!view.View./V (REF A&.) A&))
+   :qid internal_proj__vstd!view.View./V_assoc_type_impl_false_definition
+   :skolemid skolem_internal_proj__vstd!view.View./V_assoc_type_impl_false_definition
+)))
+(assert
+ (forall ((A&. Dcr) (A& Type)) (!
+   (= (proj%%vstd!view.View./V (BOX $ ALLOCATOR_GLOBAL A&.) A&) (proj%%vstd!view.View./V
+     A&. A&
+   ))
+   :pattern ((proj%%vstd!view.View./V (BOX $ ALLOCATOR_GLOBAL A&.) A&))
+   :qid internal_proj____vstd!view.View./V_assoc_type_impl_true_definition
+   :skolemid skolem_internal_proj____vstd!view.View./V_assoc_type_impl_true_definition
+)))
+(assert
+ (forall ((A&. Dcr) (A& Type)) (!
+   (= (proj%vstd!view.View./V (BOX $ ALLOCATOR_GLOBAL A&.) A&) (proj%vstd!view.View./V
+     A&. A&
+   ))
+   :pattern ((proj%vstd!view.View./V (BOX $ ALLOCATOR_GLOBAL A&.) A&))
+   :qid internal_proj__vstd!view.View./V_assoc_type_impl_false_definition
+   :skolemid skolem_internal_proj__vstd!view.View./V_assoc_type_impl_false_definition
+)))
+(assert
+ (forall ((A&. Dcr) (A& Type)) (!
+   (= (proj%%vstd!view.View./V (RC $ ALLOCATOR_GLOBAL A&.) A&) (proj%%vstd!view.View./V
+     A&. A&
+   ))
+   :pattern ((proj%%vstd!view.View./V (RC $ ALLOCATOR_GLOBAL A&.) A&))
+   :qid internal_proj____vstd!view.View./V_assoc_type_impl_true_definition
+   :skolemid skolem_internal_proj____vstd!view.View./V_assoc_type_impl_true_definition
+)))
+(assert
+ (forall ((A&. Dcr) (A& Type)) (!
+   (= (proj%vstd!view.View./V (RC $ ALLOCATOR_GLOBAL A&.) A&) (proj%vstd!view.View./V
+     A&. A&
+   ))
+   :pattern ((proj%vstd!view.View./V (RC $ ALLOCATOR_GLOBAL A&.) A&))
+   :qid internal_proj__vstd!view.View./V_assoc_type_impl_false_definition
+   :skolemid skolem_internal_proj__vstd!view.View./V_assoc_type_impl_false_definition
+)))
+(assert
+ (forall ((A&. Dcr) (A& Type)) (!
+   (= (proj%%vstd!view.View./V (ARC $ ALLOCATOR_GLOBAL A&.) A&) (proj%%vstd!view.View./V
+     A&. A&
+   ))
+   :pattern ((proj%%vstd!view.View./V (ARC $ ALLOCATOR_GLOBAL A&.) A&))
+   :qid internal_proj____vstd!view.View./V_assoc_type_impl_true_definition
+   :skolemid skolem_internal_proj____vstd!view.View./V_assoc_type_impl_true_definition
+)))
+(assert
+ (forall ((A&. Dcr) (A& Type)) (!
+   (= (proj%vstd!view.View./V (ARC $ ALLOCATOR_GLOBAL A&.) A&) (proj%vstd!view.View./V
+     A&. A&
+   ))
+   :pattern ((proj%vstd!view.View./V (ARC $ ALLOCATOR_GLOBAL A&.) A&))
+   :qid internal_proj__vstd!view.View./V_assoc_type_impl_false_definition
+   :skolemid skolem_internal_proj__vstd!view.View./V_assoc_type_impl_false_definition
+)))
+(assert
+ (= (proj%%vstd!view.View./V $ TYPE%tuple%0.) $)
+)
+(assert
+ (= (proj%vstd!view.View./V $ TYPE%tuple%0.) TYPE%tuple%0.)
+)
+(assert
+ (= (proj%%vstd!view.View./V $ BOOL) $)
+)
+(assert
+ (= (proj%vstd!view.View./V $ BOOL) BOOL)
+)
+(assert
+ (= (proj%%vstd!view.View./V $ (UINT 8)) $)
+)
+(assert
+ (= (proj%vstd!view.View./V $ (UINT 8)) (UINT 8))
+)
+(assert
+ (= (proj%%vstd!view.View./V $ (UINT 16)) $)
+)
+(assert
+ (= (proj%vstd!view.View./V $ (UINT 16)) (UINT 16))
+)
+(assert
+ (= (proj%%vstd!view.View./V $ (UINT 64)) $)
+)
+(assert
+ (= (proj%vstd!view.View./V $ (UINT 64)) (UINT 64))
+)
+(assert
+ (= (proj%%vstd!view.View./V $ (UINT SZ)) $)
+)
+(assert
+ (= (proj%vstd!view.View./V $ (UINT SZ)) (UINT SZ))
+)
+
+;; Function-Decl vstd::view::View::view
+(declare-fun vstd!view.View.view.? (Dcr Type Poly) Poly)
+(declare-fun vstd!view.View.view%default%.? (Dcr Type Poly) Poly)
+
+;; Function-Decl vstd::seq::Seq::len
+(declare-fun vstd!seq.Seq.len.? (Dcr Type Poly) Int)
+
+;; Function-Decl vstd::array::ArrayAdditionalSpecFns::spec_index
+(declare-fun vstd!array.ArrayAdditionalSpecFns.spec_index.? (Dcr Type Dcr Type Poly
+  Poly
+ ) Poly
+)
+(declare-fun vstd!array.ArrayAdditionalSpecFns.spec_index%default%.? (Dcr Type Dcr
+  Type Poly Poly
+ ) Poly
+)
+
+;; Function-Decl vstd::raw_ptr::ptr_mut_specs::spec_addr
+(declare-fun vstd!raw_ptr.ptr_mut_specs.spec_addr.? (Dcr Type Poly) Int)
+
+;; Function-Decl vstd::raw_ptr::ptr_mut_from_data
+(declare-fun vstd!raw_ptr.ptr_mut_from_data.? (Dcr Type Poly) Poly)
+
+;; Function-Decl vstd::raw_ptr::ptr_mut_specs::spec_with_addr
+(declare-fun vstd!raw_ptr.ptr_mut_specs.spec_with_addr.? (Dcr Type Poly Poly) Poly)
+
+;; Function-Decl vstd::raw_ptr::ptr_const_specs::spec_addr
+(declare-fun vstd!raw_ptr.ptr_const_specs.spec_addr.? (Dcr Type Poly) Int)
+
+;; Function-Decl vstd::raw_ptr::ptr_from_data
+(declare-fun vstd!raw_ptr.ptr_from_data.? (Dcr Type Poly) Poly)
+
+;; Function-Decl vstd::raw_ptr::ptr_const_specs::spec_with_addr
+(declare-fun vstd!raw_ptr.ptr_const_specs.spec_with_addr.? (Dcr Type Poly Poly) Poly)
+
+;; Function-Decl vstd::seq::Seq::new
+(declare-fun vstd!seq.Seq.new.? (Dcr Type Dcr Type Poly Poly) Poly)
+
+;; Function-Decl vstd::array::array_view
+(declare-fun vstd!array.array_view.? (Dcr Type Dcr Type Poly) Poly)
+
+;; Function-Decl vstd::seq::Seq::index
+(declare-fun vstd!seq.Seq.index.? (Dcr Type Poly Poly) Poly)
+
+;; Function-Decl vstd::seq::impl&%0::spec_index
+(declare-fun vstd!seq.impl&%0.spec_index.? (Dcr Type Poly Poly) Poly)
+
+;; Function-Decl vstd::raw_ptr::impl&%0::null
+(declare-fun vstd!raw_ptr.impl&%0.null.? (Poly) vstd!raw_ptr.Provenance.)
+
+;; Function-Decl vstd::raw_ptr::view_reverse_for_eq
+(declare-fun vstd!raw_ptr.view_reverse_for_eq.? (Dcr Type Poly) Poly)
+
+;; Function-Decl vstd::raw_ptr::ptr_null
+(declare-fun vstd!raw_ptr.ptr_null.? (Dcr Type) Poly)
+
+;; Function-Decl vstd::raw_ptr::ptr_null_mut
+(declare-fun vstd!raw_ptr.ptr_null_mut.? (Dcr Type) Poly)
+
+;; Function-Decl vstd::raw_ptr::spec_cast_ptr_to_thin_ptr
+(declare-fun vstd!raw_ptr.spec_cast_ptr_to_thin_ptr.? (Dcr Type Dcr Type Poly) Poly)
+
+;; Function-Decl vstd::raw_ptr::spec_cast_array_ptr_to_slice_ptr
+(declare-fun vstd!raw_ptr.spec_cast_array_ptr_to_slice_ptr.? (Dcr Type Dcr Type Poly)
+ Poly
+)
+
+;; Function-Decl vstd::raw_ptr::impl&%6::ptr
+(declare-fun vstd!raw_ptr.impl&%6.ptr.? (Dcr Type Poly) Poly)
+
+;; Function-Decl vstd::raw_ptr::impl&%7::is_uninit
+(declare-fun vstd!raw_ptr.impl&%7.is_uninit.? (Dcr Type Poly) Bool)
+
+;; Function-Decl vstd::raw_ptr::impl&%6::opt_value
+(declare-fun vstd!raw_ptr.impl&%6.opt_value.? (Dcr Type Poly) vstd!raw_ptr.MemContents.)
+
+;; Function-Decl vstd::raw_ptr::impl&%6::is_uninit
+(declare-fun vstd!raw_ptr.impl&%6.is_uninit.? (Dcr Type Poly) Bool)
+
+;; Function-Decl vstd::raw_ptr::impl&%7::is_init
+(declare-fun vstd!raw_ptr.impl&%7.is_init.? (Dcr Type Poly) Bool)
+
+;; Function-Decl vstd::raw_ptr::impl&%6::is_init
+(declare-fun vstd!raw_ptr.impl&%6.is_init.? (Dcr Type Poly) Bool)
+
+;; Function-Decl vstd::raw_ptr::impl&%2::arrow_0
+(declare-fun vstd!raw_ptr.impl&%2.arrow_0.? (Dcr Type Poly) Poly)
+
+;; Function-Decl vstd::raw_ptr::impl&%7::value
+(declare-fun vstd!raw_ptr.impl&%7.value.? (Dcr Type Poly) Poly)
+
+;; Function-Decl vstd::raw_ptr::impl&%6::value
+(declare-fun vstd!raw_ptr.impl&%6.value.? (Dcr Type Poly) Poly)
+
+;; Function-Axioms vstd::view::View::view
+(assert
+ (forall ((Self%&. Dcr) (Self%& Type) (self! Poly)) (!
+   (=>
+    (has_type self! Self%&)
+    (has_type (vstd!view.View.view.? Self%&. Self%& self!) (proj%vstd!view.View./V Self%&.
+      Self%&
+   )))
+   :pattern ((vstd!view.View.view.? Self%&. Self%& self!))
+   :qid internal_vstd!view.View.view.?_pre_post_definition
+   :skolemid skolem_internal_vstd!view.View.view.?_pre_post_definition
+)))
+
+;; Function-Axioms vstd::seq::Seq::len
+(assert
+ (forall ((A&. Dcr) (A& Type) (self! Poly)) (!
+   (=>
+    (has_type self! (TYPE%vstd!seq.Seq. A&. A&))
+    (<= 0 (vstd!seq.Seq.len.? A&. A& self!))
+   )
+   :pattern ((vstd!seq.Seq.len.? A&. A& self!))
+   :qid internal_vstd!seq.Seq.len.?_pre_post_definition
+   :skolemid skolem_internal_vstd!seq.Seq.len.?_pre_post_definition
+)))
+
+;; Function-Specs vstd::array::ArrayAdditionalSpecFns::spec_index
+(declare-fun req%vstd!array.ArrayAdditionalSpecFns.spec_index. (Dcr Type Dcr Type Poly
+  Poly
+ ) Bool
+)
+(declare-const %%global_location_label%%0 Bool)
+(assert
+ (forall ((Self%&. Dcr) (Self%& Type) (T&. Dcr) (T& Type) (self! Poly) (i! Poly)) (
+   !
+   (= (req%vstd!array.ArrayAdditionalSpecFns.spec_index. Self%&. Self%& T&. T& self! i!)
+    (=>
+     %%global_location_label%%0
+     (and
+      (<= 0 (%I i!))
+      (< (%I i!) (vstd!seq.Seq.len.? T&. T& (vstd!view.View.view.? Self%&. Self%& self!)))
+   )))
+   :pattern ((req%vstd!array.ArrayAdditionalSpecFns.spec_index. Self%&. Self%& T&. T&
+     self! i!
+   ))
+   :qid internal_req__vstd!array.ArrayAdditionalSpecFns.spec_index._definition
+   :skolemid skolem_internal_req__vstd!array.ArrayAdditionalSpecFns.spec_index._definition
+)))
+
+;; Function-Axioms vstd::array::ArrayAdditionalSpecFns::spec_index
+(assert
+ (forall ((Self%&. Dcr) (Self%& Type) (T&. Dcr) (T& Type) (self! Poly) (i! Poly)) (
+   !
+   (=>
+    (and
+     (has_type self! Self%&)
+     (has_type i! INT)
+    )
+    (has_type (vstd!array.ArrayAdditionalSpecFns.spec_index.? Self%&. Self%& T&. T& self!
+      i!
+     ) T&
+   ))
+   :pattern ((vstd!array.ArrayAdditionalSpecFns.spec_index.? Self%&. Self%& T&. T& self!
+     i!
+   ))
+   :qid internal_vstd!array.ArrayAdditionalSpecFns.spec_index.?_pre_post_definition
+   :skolemid skolem_internal_vstd!array.ArrayAdditionalSpecFns.spec_index.?_pre_post_definition
+)))
+
+;; Function-Axioms vstd::raw_ptr::ptr_mut_specs::spec_addr
+(assert
+ (fuel_bool_default fuel%vstd!raw_ptr.ptr_mut_specs.spec_addr.)
+)
+(assert
+ (=>
+  (fuel_bool fuel%vstd!raw_ptr.ptr_mut_specs.spec_addr.)
+  (forall ((T&. Dcr) (T& Type) (p! Poly)) (!
+    (= (vstd!raw_ptr.ptr_mut_specs.spec_addr.? T&. T& p!) (vstd!raw_ptr.PtrData./PtrData/addr
+      (%Poly%vstd!raw_ptr.PtrData. (vstd!view.View.view.? $ (PTR T&. T&) p!))
+    ))
+    :pattern ((vstd!raw_ptr.ptr_mut_specs.spec_addr.? T&. T& p!))
+    :qid internal_vstd!raw_ptr.ptr_mut_specs.spec_addr.?_definition
+    :skolemid skolem_internal_vstd!raw_ptr.ptr_mut_specs.spec_addr.?_definition
+))))
+(assert
+ (forall ((T&. Dcr) (T& Type) (p! Poly)) (!
+   (=>
+    (has_type p! (PTR T&. T&))
+    (uInv SZ (vstd!raw_ptr.ptr_mut_specs.spec_addr.? T&. T& p!))
+   )
+   :pattern ((vstd!raw_ptr.ptr_mut_specs.spec_addr.? T&. T& p!))
+   :qid internal_vstd!raw_ptr.ptr_mut_specs.spec_addr.?_pre_post_definition
+   :skolemid skolem_internal_vstd!raw_ptr.ptr_mut_specs.spec_addr.?_pre_post_definition
+)))
+
+;; Function-Specs core::ptr::mut_ptr::impl&%0::addr
+(declare-fun ens%core!ptr.mut_ptr.impl&%0.addr. (Dcr Type Poly Int) Bool)
+(assert
+ (forall ((T&. Dcr) (T& Type) (p! Poly) (addr! Int)) (!
+   (= (ens%core!ptr.mut_ptr.impl&%0.addr. T&. T& p! addr!) (and
+     (uInv SZ addr!)
+     (= addr! (vstd!raw_ptr.PtrData./PtrData/addr (%Poly%vstd!raw_ptr.PtrData. (vstd!view.View.view.?
+         $ (PTR T&. T&) p!
+   ))))))
+   :pattern ((ens%core!ptr.mut_ptr.impl&%0.addr. T&. T& p! addr!))
+   :qid internal_ens__core!ptr.mut_ptr.impl&__0.addr._definition
+   :skolemid skolem_internal_ens__core!ptr.mut_ptr.impl&__0.addr._definition
+)))
+
+;; Function-Axioms vstd::raw_ptr::ptr_mut_from_data
+(assert
+ (forall ((T&. Dcr) (T& Type) (data! Poly)) (!
+   (=>
+    (has_type data! TYPE%vstd!raw_ptr.PtrData.)
+    (has_type (vstd!raw_ptr.ptr_mut_from_data.? T&. T& data!) (PTR T&. T&))
+   )
+   :pattern ((vstd!raw_ptr.ptr_mut_from_data.? T&. T& data!))
+   :qid internal_vstd!raw_ptr.ptr_mut_from_data.?_pre_post_definition
+   :skolemid skolem_internal_vstd!raw_ptr.ptr_mut_from_data.?_pre_post_definition
+)))
+
+;; Function-Axioms vstd::raw_ptr::ptr_mut_specs::spec_with_addr
+(assert
+ (fuel_bool_default fuel%vstd!raw_ptr.ptr_mut_specs.spec_with_addr.)
+)
+(assert
+ (=>
+  (fuel_bool fuel%vstd!raw_ptr.ptr_mut_specs.spec_with_addr.)
+  (forall ((T&. Dcr) (T& Type) (p! Poly) (addr! Poly)) (!
+    (= (vstd!raw_ptr.ptr_mut_specs.spec_with_addr.? T&. T& p! addr!) (vstd!raw_ptr.ptr_mut_from_data.?
+      T&. T& (Poly%vstd!raw_ptr.PtrData. (let
+        ((tmp%%$ (%Poly%vstd!raw_ptr.PtrData. (vstd!view.View.view.? $ (PTR T&. T&) p!))))
+        (vstd!raw_ptr.PtrData./PtrData (%I addr!) (%Poly%vstd!raw_ptr.Provenance. (Poly%vstd!raw_ptr.Provenance.
+           (vstd!raw_ptr.PtrData./PtrData/provenance (%Poly%vstd!raw_ptr.PtrData. (Poly%vstd!raw_ptr.PtrData.
+              tmp%%$
+          ))))
+         ) (%Poly%vstd!raw_ptr.Metadata. (Poly%vstd!raw_ptr.Metadata. (vstd!raw_ptr.PtrData./PtrData/metadata
+            (%Poly%vstd!raw_ptr.PtrData. (Poly%vstd!raw_ptr.PtrData. tmp%%$))
+    ))))))))
+    :pattern ((vstd!raw_ptr.ptr_mut_specs.spec_with_addr.? T&. T& p! addr!))
+    :qid internal_vstd!raw_ptr.ptr_mut_specs.spec_with_addr.?_definition
+    :skolemid skolem_internal_vstd!raw_ptr.ptr_mut_specs.spec_with_addr.?_definition
+))))
+(assert
+ (forall ((T&. Dcr) (T& Type) (p! Poly) (addr! Poly)) (!
+   (=>
+    (and
+     (has_type p! (PTR T&. T&))
+     (has_type addr! (UINT SZ))
+    )
+    (has_type (vstd!raw_ptr.ptr_mut_specs.spec_with_addr.? T&. T& p! addr!) (PTR T&. T&))
+   )
+   :pattern ((vstd!raw_ptr.ptr_mut_specs.spec_with_addr.? T&. T& p! addr!))
+   :qid internal_vstd!raw_ptr.ptr_mut_specs.spec_with_addr.?_pre_post_definition
+   :skolemid skolem_internal_vstd!raw_ptr.ptr_mut_specs.spec_with_addr.?_pre_post_definition
+)))
+
+;; Function-Specs core::ptr::mut_ptr::impl&%0::with_addr
+(declare-fun ens%core!ptr.mut_ptr.impl&%0.with_addr. (Dcr Type Poly Int Poly) Bool)
+(assert
+ (forall ((T&. Dcr) (T& Type) (p! Poly) (addr! Int) (q! Poly)) (!
+   (= (ens%core!ptr.mut_ptr.impl&%0.with_addr. T&. T& p! addr! q!) (and
+     (has_type q! (PTR T&. T&))
+     (= q! (vstd!raw_ptr.ptr_mut_specs.spec_with_addr.? T&. T& p! (I addr!)))
+   ))
+   :pattern ((ens%core!ptr.mut_ptr.impl&%0.with_addr. T&. T& p! addr! q!))
+   :qid internal_ens__core!ptr.mut_ptr.impl&__0.with_addr._definition
+   :skolemid skolem_internal_ens__core!ptr.mut_ptr.impl&__0.with_addr._definition
+)))
+
+;; Function-Axioms vstd::raw_ptr::impl&%4::view
+(assert
+ (fuel_bool_default fuel%vstd!raw_ptr.impl&%4.view.)
+)
+(assert
+ (=>
+  (fuel_bool fuel%vstd!raw_ptr.impl&%4.view.)
+  (forall ((T&. Dcr) (T& Type) (self! Poly)) (!
+    (= (vstd!view.View.view.? (CONST_PTR $) (PTR T&. T&) self!) (vstd!view.View.view.?
+      $ (PTR T&. T&) self!
+    ))
+    :pattern ((vstd!view.View.view.? (CONST_PTR $) (PTR T&. T&) self!))
+    :qid internal_vstd!view.View.view.?_definition
+    :skolemid skolem_internal_vstd!view.View.view.?_definition
+))))
+
+;; Function-Axioms vstd::raw_ptr::ptr_const_specs::spec_addr
+(assert
+ (fuel_bool_default fuel%vstd!raw_ptr.ptr_const_specs.spec_addr.)
+)
+(assert
+ (=>
+  (fuel_bool fuel%vstd!raw_ptr.ptr_const_specs.spec_addr.)
+  (forall ((T&. Dcr) (T& Type) (p! Poly)) (!
+    (= (vstd!raw_ptr.ptr_const_specs.spec_addr.? T&. T& p!) (vstd!raw_ptr.PtrData./PtrData/addr
+      (%Poly%vstd!raw_ptr.PtrData. (vstd!view.View.view.? $ (PTR T&. T&) p!))
+    ))
+    :pattern ((vstd!raw_ptr.ptr_const_specs.spec_addr.? T&. T& p!))
+    :qid internal_vstd!raw_ptr.ptr_const_specs.spec_addr.?_definition
+    :skolemid skolem_internal_vstd!raw_ptr.ptr_const_specs.spec_addr.?_definition
+))))
+(assert
+ (forall ((T&. Dcr) (T& Type) (p! Poly)) (!
+   (=>
+    (has_type p! (PTR T&. T&))
+    (uInv SZ (vstd!raw_ptr.ptr_const_specs.spec_addr.? T&. T& p!))
+   )
+   :pattern ((vstd!raw_ptr.ptr_const_specs.spec_addr.? T&. T& p!))
+   :qid internal_vstd!raw_ptr.ptr_const_specs.spec_addr.?_pre_post_definition
+   :skolemid skolem_internal_vstd!raw_ptr.ptr_const_specs.spec_addr.?_pre_post_definition
+)))
+
+;; Function-Specs core::ptr::const_ptr::impl&%0::addr
+(declare-fun ens%core!ptr.const_ptr.impl&%0.addr. (Dcr Type Poly Int) Bool)
+(assert
+ (forall ((T&. Dcr) (T& Type) (p! Poly) (addr! Int)) (!
+   (= (ens%core!ptr.const_ptr.impl&%0.addr. T&. T& p! addr!) (and
+     (uInv SZ addr!)
+     (= addr! (vstd!raw_ptr.PtrData./PtrData/addr (%Poly%vstd!raw_ptr.PtrData. (vstd!view.View.view.?
+         $ (PTR T&. T&) p!
+   ))))))
+   :pattern ((ens%core!ptr.const_ptr.impl&%0.addr. T&. T& p! addr!))
+   :qid internal_ens__core!ptr.const_ptr.impl&__0.addr._definition
+   :skolemid skolem_internal_ens__core!ptr.const_ptr.impl&__0.addr._definition
+)))
+
+;; Function-Axioms vstd::raw_ptr::ptr_from_data
+(assert
+ (fuel_bool_default fuel%vstd!raw_ptr.ptr_from_data.)
+)
+(assert
+ (=>
+  (fuel_bool fuel%vstd!raw_ptr.ptr_from_data.)
+  (forall ((T&. Dcr) (T& Type) (data! Poly)) (!
+    (= (vstd!raw_ptr.ptr_from_data.? T&. T& data!) (vstd!raw_ptr.ptr_mut_from_data.? T&.
+      T& data!
+    ))
+    :pattern ((vstd!raw_ptr.ptr_from_data.? T&. T& data!))
+    :qid internal_vstd!raw_ptr.ptr_from_data.?_definition
+    :skolemid skolem_internal_vstd!raw_ptr.ptr_from_data.?_definition
+))))
+(assert
+ (forall ((T&. Dcr) (T& Type) (data! Poly)) (!
+   (=>
+    (has_type data! TYPE%vstd!raw_ptr.PtrData.)
+    (has_type (vstd!raw_ptr.ptr_from_data.? T&. T& data!) (PTR T&. T&))
+   )
+   :pattern ((vstd!raw_ptr.ptr_from_data.? T&. T& data!))
+   :qid internal_vstd!raw_ptr.ptr_from_data.?_pre_post_definition
+   :skolemid skolem_internal_vstd!raw_ptr.ptr_from_data.?_pre_post_definition
+)))
+
+;; Function-Axioms vstd::raw_ptr::ptr_const_specs::spec_with_addr
+(assert
+ (fuel_bool_default fuel%vstd!raw_ptr.ptr_const_specs.spec_with_addr.)
+)
+(assert
+ (=>
+  (fuel_bool fuel%vstd!raw_ptr.ptr_const_specs.spec_with_addr.)
+  (forall ((T&. Dcr) (T& Type) (p! Poly) (addr! Poly)) (!
+    (= (vstd!raw_ptr.ptr_const_specs.spec_with_addr.? T&. T& p! addr!) (vstd!raw_ptr.ptr_mut_from_data.?
+      T&. T& (Poly%vstd!raw_ptr.PtrData. (let
+        ((tmp%%$ (%Poly%vstd!raw_ptr.PtrData. (vstd!view.View.view.? $ (PTR T&. T&) p!))))
+        (vstd!raw_ptr.PtrData./PtrData (%I addr!) (%Poly%vstd!raw_ptr.Provenance. (Poly%vstd!raw_ptr.Provenance.
+           (vstd!raw_ptr.PtrData./PtrData/provenance (%Poly%vstd!raw_ptr.PtrData. (Poly%vstd!raw_ptr.PtrData.
+              tmp%%$
+          ))))
+         ) (%Poly%vstd!raw_ptr.Metadata. (Poly%vstd!raw_ptr.Metadata. (vstd!raw_ptr.PtrData./PtrData/metadata
+            (%Poly%vstd!raw_ptr.PtrData. (Poly%vstd!raw_ptr.PtrData. tmp%%$))
+    ))))))))
+    :pattern ((vstd!raw_ptr.ptr_const_specs.spec_with_addr.? T&. T& p! addr!))
+    :qid internal_vstd!raw_ptr.ptr_const_specs.spec_with_addr.?_definition
+    :skolemid skolem_internal_vstd!raw_ptr.ptr_const_specs.spec_with_addr.?_definition
+))))
+(assert
+ (forall ((T&. Dcr) (T& Type) (p! Poly) (addr! Poly)) (!
+   (=>
+    (and
+     (has_type p! (PTR T&. T&))
+     (has_type addr! (UINT SZ))
+    )
+    (has_type (vstd!raw_ptr.ptr_const_specs.spec_with_addr.? T&. T& p! addr!) (PTR T&.
+      T&
+   )))
+   :pattern ((vstd!raw_ptr.ptr_const_specs.spec_with_addr.? T&. T& p! addr!))
+   :qid internal_vstd!raw_ptr.ptr_const_specs.spec_with_addr.?_pre_post_definition
+   :skolemid skolem_internal_vstd!raw_ptr.ptr_const_specs.spec_with_addr.?_pre_post_definition
+)))
+
+;; Function-Specs core::ptr::const_ptr::impl&%0::with_addr
+(declare-fun ens%core!ptr.const_ptr.impl&%0.with_addr. (Dcr Type Poly Int Poly) Bool)
+(assert
+ (forall ((T&. Dcr) (T& Type) (p! Poly) (addr! Int) (q! Poly)) (!
+   (= (ens%core!ptr.const_ptr.impl&%0.with_addr. T&. T& p! addr! q!) (and
+     (has_type q! (PTR T&. T&))
+     (= q! (vstd!raw_ptr.ptr_const_specs.spec_with_addr.? T&. T& p! (I addr!)))
+   ))
+   :pattern ((ens%core!ptr.const_ptr.impl&%0.with_addr. T&. T& p! addr! q!))
+   :qid internal_ens__core!ptr.const_ptr.impl&__0.with_addr._definition
+   :skolemid skolem_internal_ens__core!ptr.const_ptr.impl&__0.with_addr._definition
+)))
+
+;; Function-Axioms vstd::seq::Seq::new
+(assert
+ (forall ((A&. Dcr) (A& Type) (impl%1&. Dcr) (impl%1& Type) (len! Poly) (f! Poly))
+  (!
+   (=>
+    (and
+     (has_type len! NAT)
+     (has_type f! impl%1&)
+    )
+    (has_type (vstd!seq.Seq.new.? A&. A& impl%1&. impl%1& len! f!) (TYPE%vstd!seq.Seq.
+      A&. A&
+   )))
+   :pattern ((vstd!seq.Seq.new.? A&. A& impl%1&. impl%1& len! f!))
+   :qid internal_vstd!seq.Seq.new.?_pre_post_definition
+   :skolemid skolem_internal_vstd!seq.Seq.new.?_pre_post_definition
+)))
+
+;; Function-Axioms vstd::array::array_view
+(assert
+ (fuel_bool_default fuel%vstd!array.array_view.)
+)
+(declare-fun %%lambda%%0 (Dcr Type Dcr Type %%Function%%) %%Function%%)
+(assert
+ (forall ((%%hole%%0 Dcr) (%%hole%%1 Type) (%%hole%%2 Dcr) (%%hole%%3 Type) (%%hole%%4
+    %%Function%%
+   ) (i$ Poly)
+  ) (!
+   (= (%%apply%%0 (%%lambda%%0 %%hole%%0 %%hole%%1 %%hole%%2 %%hole%%3 %%hole%%4) i$)
+    (array_index %%hole%%0 %%hole%%1 %%hole%%2 %%hole%%3 %%hole%%4 i$)
+   )
+   :pattern ((%%apply%%0 (%%lambda%%0 %%hole%%0 %%hole%%1 %%hole%%2 %%hole%%3 %%hole%%4)
+     i$
+)))))
+(assert
+ (=>
+  (fuel_bool fuel%vstd!array.array_view.)
+  (forall ((T&. Dcr) (T& Type) (N&. Dcr) (N& Type) (a! Poly)) (!
+    (= (vstd!array.array_view.? T&. T& N&. N& a!) (vstd!seq.Seq.new.? T&. T& $ (TYPE%fun%1.
+       $ INT T&. T&
+      ) (I (const_int N&)) (Poly%fun%1. (mk_fun (%%lambda%%0 T&. T& N&. N& (%Poly%array%. a!))))
+    ))
+    :pattern ((vstd!array.array_view.? T&. T& N&. N& a!))
+    :qid internal_vstd!array.array_view.?_definition
+    :skolemid skolem_internal_vstd!array.array_view.?_definition
+))))
+(assert
+ (forall ((T&. Dcr) (T& Type) (N&. Dcr) (N& Type) (a! Poly)) (!
+   (=>
+    (has_type a! (ARRAY T&. T& N&. N&))
+    (has_type (vstd!array.array_view.? T&. T& N&. N& a!) (TYPE%vstd!seq.Seq. T&. T&))
+   )
+   :pattern ((vstd!array.array_view.? T&. T& N&. N& a!))
+   :qid internal_vstd!array.array_view.?_pre_post_definition
+   :skolemid skolem_internal_vstd!array.array_view.?_pre_post_definition
+)))
+
+;; Function-Axioms vstd::array::impl&%0::view
+(assert
+ (fuel_bool_default fuel%vstd!array.impl&%0.view.)
+)
+(assert
+ (=>
+  (fuel_bool fuel%vstd!array.impl&%0.view.)
+  (forall ((T&. Dcr) (T& Type) (N&. Dcr) (N& Type) (self! Poly)) (!
+    (=>
+     (uInv SZ (const_int N&))
+     (= (vstd!view.View.view.? $ (ARRAY T&. T& N&. N&) self!) (vstd!array.array_view.? T&.
+       T& N&. N& self!
+    )))
+    :pattern ((vstd!view.View.view.? $ (ARRAY T&. T& N&. N&) self!))
+    :qid internal_vstd!view.View.view.?_definition
+    :skolemid skolem_internal_vstd!view.View.view.?_definition
+))))
+
+;; Function-Specs vstd::seq::Seq::index
+(declare-fun req%vstd!seq.Seq.index. (Dcr Type Poly Poly) Bool)
+(declare-const %%global_location_label%%1 Bool)
+(assert
+ (forall ((A&. Dcr) (A& Type) (self! Poly) (i! Poly)) (!
+   (= (req%vstd!seq.Seq.index. A&. A& self! i!) (=>
+     %%global_location_label%%1
+     (and
+      (<= 0 (%I i!))
+      (< (%I i!) (vstd!seq.Seq.len.? A&. A& self!))
+   )))
+   :pattern ((req%vstd!seq.Seq.index. A&. A& self! i!))
+   :qid internal_req__vstd!seq.Seq.index._definition
+   :skolemid skolem_internal_req__vstd!seq.Seq.index._definition
+)))
+
+;; Function-Axioms vstd::seq::Seq::index
+(assert
+ (forall ((A&. Dcr) (A& Type) (self! Poly) (i! Poly)) (!
+   (=>
+    (and
+     (has_type self! (TYPE%vstd!seq.Seq. A&. A&))
+     (has_type i! INT)
+    )
+    (has_type (vstd!seq.Seq.index.? A&. A& self! i!) A&)
+   )
+   :pattern ((vstd!seq.Seq.index.? A&. A& self! i!))
+   :qid internal_vstd!seq.Seq.index.?_pre_post_definition
+   :skolemid skolem_internal_vstd!seq.Seq.index.?_pre_post_definition
+)))
+
+;; Function-Axioms vstd::array::impl&%2::spec_index
+(assert
+ (fuel_bool_default fuel%vstd!array.impl&%2.spec_index.)
+)
+(assert
+ (=>
+  (fuel_bool fuel%vstd!array.impl&%2.spec_index.)
+  (forall ((T&. Dcr) (T& Type) (N&. Dcr) (N& Type) (self! Poly) (i! Poly)) (!
+    (=>
+     (uInv SZ (const_int N&))
+     (= (vstd!array.ArrayAdditionalSpecFns.spec_index.? $ (ARRAY T&. T& N&. N&) T&. T& self!
+       i!
+      ) (vstd!seq.Seq.index.? T&. T& (vstd!view.View.view.? $ (ARRAY T&. T& N&. N&) self!)
+       i!
+    )))
+    :pattern ((vstd!array.ArrayAdditionalSpecFns.spec_index.? $ (ARRAY T&. T& N&. N&) T&.
+      T& self! i!
+    ))
+    :qid internal_vstd!array.ArrayAdditionalSpecFns.spec_index.?_definition
+    :skolemid skolem_internal_vstd!array.ArrayAdditionalSpecFns.spec_index.?_definition
+))))
+
+;; Function-Specs vstd::seq::impl&%0::spec_index
+(declare-fun req%vstd!seq.impl&%0.spec_index. (Dcr Type Poly Poly) Bool)
+(declare-const %%global_location_label%%2 Bool)
+(assert
+ (forall ((A&. Dcr) (A& Type) (self! Poly) (i! Poly)) (!
+   (= (req%vstd!seq.impl&%0.spec_index. A&. A& self! i!) (=>
+     %%global_location_label%%2
+     (and
+      (<= 0 (%I i!))
+      (< (%I i!) (vstd!seq.Seq.len.? A&. A& self!))
+   )))
+   :pattern ((req%vstd!seq.impl&%0.spec_index. A&. A& self! i!))
+   :qid internal_req__vstd!seq.impl&__0.spec_index._definition
+   :skolemid skolem_internal_req__vstd!seq.impl&__0.spec_index._definition
+)))
+
+;; Function-Axioms vstd::seq::impl&%0::spec_index
+(assert
+ (fuel_bool_default fuel%vstd!seq.impl&%0.spec_index.)
+)
+(assert
+ (=>
+  (fuel_bool fuel%vstd!seq.impl&%0.spec_index.)
+  (forall ((A&. Dcr) (A& Type) (self! Poly) (i! Poly)) (!
+    (= (vstd!seq.impl&%0.spec_index.? A&. A& self! i!) (vstd!seq.Seq.index.? A&. A& self!
+      i!
+    ))
+    :pattern ((vstd!seq.impl&%0.spec_index.? A&. A& self! i!))
+    :qid internal_vstd!seq.impl&__0.spec_index.?_definition
+    :skolemid skolem_internal_vstd!seq.impl&__0.spec_index.?_definition
+))))
+(assert
+ (forall ((A&. Dcr) (A& Type) (self! Poly) (i! Poly)) (!
+   (=>
+    (and
+     (has_type self! (TYPE%vstd!seq.Seq. A&. A&))
+     (has_type i! INT)
+    )
+    (has_type (vstd!seq.impl&%0.spec_index.? A&. A& self! i!) A&)
+   )
+   :pattern ((vstd!seq.impl&%0.spec_index.? A&. A& self! i!))
+   :qid internal_vstd!seq.impl&__0.spec_index.?_pre_post_definition
+   :skolemid skolem_internal_vstd!seq.impl&__0.spec_index.?_pre_post_definition
+)))
+
+;; Broadcast vstd::array::lemma_array_index
+(assert
+ (=>
+  (fuel_bool fuel%vstd!array.lemma_array_index.)
+  (forall ((T&. Dcr) (T& Type) (N&. Dcr) (N& Type) (a! Poly) (i! Poly)) (!
+    (=>
+     (and
+      (has_type a! (ARRAY T&. T& N&. N&))
+      (has_type i! INT)
+     )
+     (=>
+      (and
+       (uInv SZ (const_int N&))
+       (and
+        (<= 0 (%I i!))
+        (< (%I i!) (const_int N&))
+      ))
+      (= (vstd!seq.Seq.index.? T&. T& (vstd!view.View.view.? $ (ARRAY T&. T& N&. N&) a!)
+        i!
+       ) (vstd!seq.Seq.index.? T&. T& (vstd!array.array_view.? T&. T& N&. N& a!) i!)
+    )))
+    :pattern ((array_index T&. T& N&. N& (%Poly%array%. a!) i!))
+    :qid user_vstd__array__lemma_array_index_0
+    :skolemid skolem_user_vstd__array__lemma_array_index_0
+))))
+
+;; Broadcast vstd::array::array_len_matches_n
+(assert
+ (=>
+  (fuel_bool fuel%vstd!array.array_len_matches_n.)
+  (forall ((T&. Dcr) (T& Type) (N&. Dcr) (N& Type) (ar! Poly)) (!
+    (=>
+     (has_type ar! (ARRAY T&. T& N&. N&))
+     (=>
+      (uInv SZ (const_int N&))
+      (= (vstd!seq.Seq.len.? T&. T& (vstd!view.View.view.? $ (ARRAY T&. T& N&. N&) ar!))
+       (const_int N&)
+    )))
+    :pattern ((vstd!seq.Seq.len.? T&. T& (vstd!view.View.view.? $ (ARRAY T&. T& N&. N&)
+       ar!
+    )))
+    :qid user_vstd__array__array_len_matches_n_1
+    :skolemid skolem_user_vstd__array__array_len_matches_n_1
+))))
+
+;; Broadcast vstd::raw_ptr::axiom_ptr_mut_from_data
+(assert
+ (=>
+  (fuel_bool fuel%vstd!raw_ptr.axiom_ptr_mut_from_data.)
+  (forall ((T&. Dcr) (T& Type) (data! Poly)) (!
+    (=>
+     (has_type data! TYPE%vstd!raw_ptr.PtrData.)
+     (= (vstd!view.View.view.? $ (PTR T&. T&) (vstd!raw_ptr.ptr_mut_from_data.? T&. T& data!))
+      data!
+    ))
+    :pattern ((vstd!raw_ptr.ptr_mut_from_data.? T&. T& data!))
+    :qid user_vstd__raw_ptr__axiom_ptr_mut_from_data_2
+    :skolemid skolem_user_vstd__raw_ptr__axiom_ptr_mut_from_data_2
+))))
+
+;; Function-Axioms vstd::raw_ptr::view_reverse_for_eq
+(assert
+ (forall ((T&. Dcr) (T& Type) (data! Poly)) (!
+   (=>
+    (has_type data! TYPE%vstd!raw_ptr.PtrData.)
+    (has_type (vstd!raw_ptr.view_reverse_for_eq.? T&. T& data!) (PTR T&. T&))
+   )
+   :pattern ((vstd!raw_ptr.view_reverse_for_eq.? T&. T& data!))
+   :qid internal_vstd!raw_ptr.view_reverse_for_eq.?_pre_post_definition
+   :skolemid skolem_internal_vstd!raw_ptr.view_reverse_for_eq.?_pre_post_definition
+)))
+
+;; Broadcast vstd::raw_ptr::ptrs_mut_eq
+(assert
+ (=>
+  (fuel_bool fuel%vstd!raw_ptr.ptrs_mut_eq.)
+  (forall ((T&. Dcr) (T& Type) (a! Poly)) (!
+    (=>
+     (has_type a! (PTR T&. T&))
+     (= (vstd!raw_ptr.view_reverse_for_eq.? T&. T& (vstd!view.View.view.? $ (PTR T&. T&)
+        a!
+       )
+      ) a!
+    ))
+    :pattern ((vstd!view.View.view.? $ (PTR T&. T&) a!))
+    :qid user_vstd__raw_ptr__ptrs_mut_eq_3
+    :skolemid skolem_user_vstd__raw_ptr__ptrs_mut_eq_3
+))))
+
+;; Function-Axioms vstd::raw_ptr::ptr_null
+(assert
+ (fuel_bool_default fuel%vstd!raw_ptr.ptr_null.)
+)
+(assert
+ (=>
+  (fuel_bool fuel%vstd!raw_ptr.ptr_null.)
+  (forall ((T&. Dcr) (T& Type)) (!
+    (= (vstd!raw_ptr.ptr_null.? T&. T&) (vstd!raw_ptr.ptr_mut_from_data.? T&. T& (Poly%vstd!raw_ptr.PtrData.
+       (vstd!raw_ptr.PtrData./PtrData (%I (I 0)) (%Poly%vstd!raw_ptr.Provenance. (Poly%vstd!raw_ptr.Provenance.
+          (vstd!raw_ptr.impl&%0.null.? (I 0))
+         )
+        ) (%Poly%vstd!raw_ptr.Metadata. (Poly%vstd!raw_ptr.Metadata. vstd!raw_ptr.Metadata./Thin))
+    ))))
+    :pattern ((vstd!raw_ptr.ptr_null.? T&. T&))
+    :qid internal_vstd!raw_ptr.ptr_null.?_definition
+    :skolemid skolem_internal_vstd!raw_ptr.ptr_null.?_definition
+))))
+(assert
+ (forall ((T&. Dcr) (T& Type)) (!
+   (has_type (vstd!raw_ptr.ptr_null.? T&. T&) (PTR T&. T&))
+   :pattern ((vstd!raw_ptr.ptr_null.? T&. T&))
+   :qid internal_vstd!raw_ptr.ptr_null.?_pre_post_definition
+   :skolemid skolem_internal_vstd!raw_ptr.ptr_null.?_pre_post_definition
+)))
+
+;; Function-Specs core::ptr::null
+(declare-fun ens%core!ptr.null. (Dcr Type Poly) Bool)
+(assert
+ (forall ((T&. Dcr) (T& Type) (res! Poly)) (!
+   (= (ens%core!ptr.null. T&. T& res!) (and
+     (has_type res! (PTR T&. T&))
+     (= res! (vstd!raw_ptr.ptr_mut_from_data.? T&. T& (Poly%vstd!raw_ptr.PtrData. (vstd!raw_ptr.PtrData./PtrData
+         (%I (I 0)) (%Poly%vstd!raw_ptr.Provenance. (Poly%vstd!raw_ptr.Provenance. (vstd!raw_ptr.impl&%0.null.?
+            (I 0)
+          ))
+         ) (%Poly%vstd!raw_ptr.Metadata. (Poly%vstd!raw_ptr.Metadata. vstd!raw_ptr.Metadata./Thin))
+   ))))))
+   :pattern ((ens%core!ptr.null. T&. T& res!))
+   :qid internal_ens__core!ptr.null._definition
+   :skolemid skolem_internal_ens__core!ptr.null._definition
+)))
+
+;; Function-Axioms vstd::raw_ptr::ptr_null_mut
+(assert
+ (fuel_bool_default fuel%vstd!raw_ptr.ptr_null_mut.)
+)
+(assert
+ (=>
+  (fuel_bool fuel%vstd!raw_ptr.ptr_null_mut.)
+  (forall ((T&. Dcr) (T& Type)) (!
+    (= (vstd!raw_ptr.ptr_null_mut.? T&. T&) (vstd!raw_ptr.ptr_mut_from_data.? T&. T& (Poly%vstd!raw_ptr.PtrData.
+       (vstd!raw_ptr.PtrData./PtrData (%I (I 0)) (%Poly%vstd!raw_ptr.Provenance. (Poly%vstd!raw_ptr.Provenance.
+          (vstd!raw_ptr.impl&%0.null.? (I 0))
+         )
+        ) (%Poly%vstd!raw_ptr.Metadata. (Poly%vstd!raw_ptr.Metadata. vstd!raw_ptr.Metadata./Thin))
+    ))))
+    :pattern ((vstd!raw_ptr.ptr_null_mut.? T&. T&))
+    :qid internal_vstd!raw_ptr.ptr_null_mut.?_definition
+    :skolemid skolem_internal_vstd!raw_ptr.ptr_null_mut.?_definition
+))))
+(assert
+ (forall ((T&. Dcr) (T& Type)) (!
+   (has_type (vstd!raw_ptr.ptr_null_mut.? T&. T&) (PTR T&. T&))
+   :pattern ((vstd!raw_ptr.ptr_null_mut.? T&. T&))
+   :qid internal_vstd!raw_ptr.ptr_null_mut.?_pre_post_definition
+   :skolemid skolem_internal_vstd!raw_ptr.ptr_null_mut.?_pre_post_definition
+)))
+
+;; Function-Specs core::ptr::null_mut
+(declare-fun ens%core!ptr.null_mut. (Dcr Type Poly) Bool)
+(assert
+ (forall ((T&. Dcr) (T& Type) (res! Poly)) (!
+   (= (ens%core!ptr.null_mut. T&. T& res!) (and
+     (has_type res! (PTR T&. T&))
+     (= res! (vstd!raw_ptr.ptr_mut_from_data.? T&. T& (Poly%vstd!raw_ptr.PtrData. (vstd!raw_ptr.PtrData./PtrData
+         (%I (I 0)) (%Poly%vstd!raw_ptr.Provenance. (Poly%vstd!raw_ptr.Provenance. (vstd!raw_ptr.impl&%0.null.?
+            (I 0)
+          ))
+         ) (%Poly%vstd!raw_ptr.Metadata. (Poly%vstd!raw_ptr.Metadata. vstd!raw_ptr.Metadata./Thin))
+   ))))))
+   :pattern ((ens%core!ptr.null_mut. T&. T& res!))
+   :qid internal_ens__core!ptr.null_mut._definition
+   :skolemid skolem_internal_ens__core!ptr.null_mut._definition
+)))
+
+;; Function-Axioms vstd::raw_ptr::spec_cast_ptr_to_thin_ptr
+(assert
+ (fuel_bool_default fuel%vstd!raw_ptr.spec_cast_ptr_to_thin_ptr.)
+)
+(assert
+ (=>
+  (fuel_bool fuel%vstd!raw_ptr.spec_cast_ptr_to_thin_ptr.)
+  (forall ((T&. Dcr) (T& Type) (U&. Dcr) (U& Type) (ptr! Poly)) (!
+    (= (vstd!raw_ptr.spec_cast_ptr_to_thin_ptr.? T&. T& U&. U& ptr!) (vstd!raw_ptr.ptr_mut_from_data.?
+      U&. U& (Poly%vstd!raw_ptr.PtrData. (vstd!raw_ptr.PtrData./PtrData (%I (I (vstd!raw_ptr.PtrData./PtrData/addr
+           (%Poly%vstd!raw_ptr.PtrData. (vstd!view.View.view.? $ (PTR T&. T&) ptr!))
+         ))
+        ) (%Poly%vstd!raw_ptr.Provenance. (Poly%vstd!raw_ptr.Provenance. (vstd!raw_ptr.PtrData./PtrData/provenance
+           (%Poly%vstd!raw_ptr.PtrData. (vstd!view.View.view.? $ (PTR T&. T&) ptr!))
+         ))
+        ) (%Poly%vstd!raw_ptr.Metadata. (Poly%vstd!raw_ptr.Metadata. vstd!raw_ptr.Metadata./Thin))
+    ))))
+    :pattern ((vstd!raw_ptr.spec_cast_ptr_to_thin_ptr.? T&. T& U&. U& ptr!))
+    :qid internal_vstd!raw_ptr.spec_cast_ptr_to_thin_ptr.?_definition
+    :skolemid skolem_internal_vstd!raw_ptr.spec_cast_ptr_to_thin_ptr.?_definition
+))))
+(assert
+ (forall ((T&. Dcr) (T& Type) (U&. Dcr) (U& Type) (ptr! Poly)) (!
+   (=>
+    (has_type ptr! (PTR T&. T&))
+    (has_type (vstd!raw_ptr.spec_cast_ptr_to_thin_ptr.? T&. T& U&. U& ptr!) (PTR U&. U&))
+   )
+   :pattern ((vstd!raw_ptr.spec_cast_ptr_to_thin_ptr.? T&. T& U&. U& ptr!))
+   :qid internal_vstd!raw_ptr.spec_cast_ptr_to_thin_ptr.?_pre_post_definition
+   :skolemid skolem_internal_vstd!raw_ptr.spec_cast_ptr_to_thin_ptr.?_pre_post_definition
+)))
+
+;; Function-Specs vstd::raw_ptr::cast_ptr_to_thin_ptr
+(declare-fun ens%vstd!raw_ptr.cast_ptr_to_thin_ptr. (Dcr Type Dcr Type Poly Poly)
+ Bool
+)
+(assert
+ (forall ((T&. Dcr) (T& Type) (U&. Dcr) (U& Type) (ptr! Poly) (result! Poly)) (!
+   (= (ens%vstd!raw_ptr.cast_ptr_to_thin_ptr. T&. T& U&. U& ptr! result!) (and
+     (has_type result! (PTR U&. U&))
+     (= result! (vstd!raw_ptr.spec_cast_ptr_to_thin_ptr.? T&. T& U&. U& ptr!))
+   ))
+   :pattern ((ens%vstd!raw_ptr.cast_ptr_to_thin_ptr. T&. T& U&. U& ptr! result!))
+   :qid internal_ens__vstd!raw_ptr.cast_ptr_to_thin_ptr._definition
+   :skolemid skolem_internal_ens__vstd!raw_ptr.cast_ptr_to_thin_ptr._definition
+)))
+
+;; Function-Axioms vstd::raw_ptr::spec_cast_array_ptr_to_slice_ptr
+(assert
+ (fuel_bool_default fuel%vstd!raw_ptr.spec_cast_array_ptr_to_slice_ptr.)
+)
+(assert
+ (=>
+  (fuel_bool fuel%vstd!raw_ptr.spec_cast_array_ptr_to_slice_ptr.)
+  (forall ((T&. Dcr) (T& Type) (N&. Dcr) (N& Type) (ptr! Poly)) (!
+    (= (vstd!raw_ptr.spec_cast_array_ptr_to_slice_ptr.? T&. T& N&. N& ptr!) (vstd!raw_ptr.ptr_mut_from_data.?
+      $ (SLICE T&. T&) (Poly%vstd!raw_ptr.PtrData. (vstd!raw_ptr.PtrData./PtrData (%I (I (vstd!raw_ptr.PtrData./PtrData/addr
+           (%Poly%vstd!raw_ptr.PtrData. (vstd!view.View.view.? $ (PTR $ (ARRAY T&. T& N&. N&))
+             ptr!
+         ))))
+        ) (%Poly%vstd!raw_ptr.Provenance. (Poly%vstd!raw_ptr.Provenance. (vstd!raw_ptr.PtrData./PtrData/provenance
+           (%Poly%vstd!raw_ptr.PtrData. (vstd!view.View.view.? $ (PTR $ (ARRAY T&. T& N&. N&))
+             ptr!
+         ))))
+        ) (%Poly%vstd!raw_ptr.Metadata. (Poly%vstd!raw_ptr.Metadata. (vstd!raw_ptr.Metadata./Length
+           (%I (I (const_int N&)))
+    )))))))
+    :pattern ((vstd!raw_ptr.spec_cast_array_ptr_to_slice_ptr.? T&. T& N&. N& ptr!))
+    :qid internal_vstd!raw_ptr.spec_cast_array_ptr_to_slice_ptr.?_definition
+    :skolemid skolem_internal_vstd!raw_ptr.spec_cast_array_ptr_to_slice_ptr.?_definition
+))))
+(assert
+ (forall ((T&. Dcr) (T& Type) (N&. Dcr) (N& Type) (ptr! Poly)) (!
+   (=>
+    (has_type ptr! (PTR $ (ARRAY T&. T& N&. N&)))
+    (has_type (vstd!raw_ptr.spec_cast_array_ptr_to_slice_ptr.? T&. T& N&. N& ptr!) (PTR
+      $ (SLICE T&. T&)
+   )))
+   :pattern ((vstd!raw_ptr.spec_cast_array_ptr_to_slice_ptr.? T&. T& N&. N& ptr!))
+   :qid internal_vstd!raw_ptr.spec_cast_array_ptr_to_slice_ptr.?_pre_post_definition
+   :skolemid skolem_internal_vstd!raw_ptr.spec_cast_array_ptr_to_slice_ptr.?_pre_post_definition
+)))
+
+;; Function-Specs vstd::raw_ptr::cast_array_ptr_to_slice_ptr
+(declare-fun ens%vstd!raw_ptr.cast_array_ptr_to_slice_ptr. (Dcr Type Dcr Type Poly
+  Poly
+ ) Bool
+)
+(assert
+ (forall ((T&. Dcr) (T& Type) (N&. Dcr) (N& Type) (ptr! Poly) (result! Poly)) (!
+   (= (ens%vstd!raw_ptr.cast_array_ptr_to_slice_ptr. T&. T& N&. N& ptr! result!) (and
+     (has_type result! (PTR $ (SLICE T&. T&)))
+     (= result! (vstd!raw_ptr.spec_cast_array_ptr_to_slice_ptr.? T&. T& N&. N& ptr!))
+   ))
+   :pattern ((ens%vstd!raw_ptr.cast_array_ptr_to_slice_ptr. T&. T& N&. N& ptr! result!))
+   :qid internal_ens__vstd!raw_ptr.cast_array_ptr_to_slice_ptr._definition
+   :skolemid skolem_internal_ens__vstd!raw_ptr.cast_array_ptr_to_slice_ptr._definition
+)))
+
+;; Function-Axioms vstd::raw_ptr::impl&%6::ptr
+(assert
+ (fuel_bool_default fuel%vstd!raw_ptr.impl&%6.ptr.)
+)
+(assert
+ (=>
+  (fuel_bool fuel%vstd!raw_ptr.impl&%6.ptr.)
+  (forall ((T&. Dcr) (T& Type) (self! Poly)) (!
+    (= (vstd!raw_ptr.impl&%6.ptr.? T&. T& self!) (vstd!raw_ptr.PointsToData./PointsToData/ptr
+      (%Poly%vstd!raw_ptr.PointsToData. (vstd!view.View.view.? $ (TYPE%vstd!raw_ptr.PointsTo.
+         T&. T&
+        ) self!
+    ))))
+    :pattern ((vstd!raw_ptr.impl&%6.ptr.? T&. T& self!))
+    :qid internal_vstd!raw_ptr.impl&__6.ptr.?_definition
+    :skolemid skolem_internal_vstd!raw_ptr.impl&__6.ptr.?_definition
+))))
+(assert
+ (forall ((T&. Dcr) (T& Type) (self! Poly)) (!
+   (=>
+    (has_type self! (TYPE%vstd!raw_ptr.PointsTo. T&. T&))
+    (has_type (vstd!raw_ptr.impl&%6.ptr.? T&. T& self!) (PTR T&. T&))
+   )
+   :pattern ((vstd!raw_ptr.impl&%6.ptr.? T&. T& self!))
+   :qid internal_vstd!raw_ptr.impl&__6.ptr.?_pre_post_definition
+   :skolemid skolem_internal_vstd!raw_ptr.impl&__6.ptr.?_pre_post_definition
+)))
+
+;; Function-Axioms vstd::raw_ptr::impl&%7::is_uninit
+(assert
+ (fuel_bool_default fuel%vstd!raw_ptr.impl&%7.is_uninit.)
+)
+(assert
+ (=>
+  (fuel_bool fuel%vstd!raw_ptr.impl&%7.is_uninit.)
+  (forall ((T&. Dcr) (T& Type) (self! Poly)) (!
+    (= (vstd!raw_ptr.impl&%7.is_uninit.? T&. T& self!) (is-vstd!raw_ptr.MemContents./Uninit
+      (%Poly%vstd!raw_ptr.MemContents. self!)
+    ))
+    :pattern ((vstd!raw_ptr.impl&%7.is_uninit.? T&. T& self!))
+    :qid internal_vstd!raw_ptr.impl&__7.is_uninit.?_definition
+    :skolemid skolem_internal_vstd!raw_ptr.impl&__7.is_uninit.?_definition
+))))
+
+;; Function-Axioms vstd::raw_ptr::impl&%6::opt_value
+(assert
+ (fuel_bool_default fuel%vstd!raw_ptr.impl&%6.opt_value.)
+)
+(assert
+ (=>
+  (fuel_bool fuel%vstd!raw_ptr.impl&%6.opt_value.)
+  (forall ((T&. Dcr) (T& Type) (self! Poly)) (!
+    (= (vstd!raw_ptr.impl&%6.opt_value.? T&. T& self!) (vstd!raw_ptr.PointsToData./PointsToData/opt_value
+      (%Poly%vstd!raw_ptr.PointsToData. (vstd!view.View.view.? $ (TYPE%vstd!raw_ptr.PointsTo.
+         T&. T&
+        ) self!
+    ))))
+    :pattern ((vstd!raw_ptr.impl&%6.opt_value.? T&. T& self!))
+    :qid internal_vstd!raw_ptr.impl&__6.opt_value.?_definition
+    :skolemid skolem_internal_vstd!raw_ptr.impl&__6.opt_value.?_definition
+))))
+(assert
+ (forall ((T&. Dcr) (T& Type) (self! Poly)) (!
+   (=>
+    (has_type self! (TYPE%vstd!raw_ptr.PointsTo. T&. T&))
+    (has_type (Poly%vstd!raw_ptr.MemContents. (vstd!raw_ptr.impl&%6.opt_value.? T&. T& self!))
+     (TYPE%vstd!raw_ptr.MemContents. T&. T&)
+   ))
+   :pattern ((vstd!raw_ptr.impl&%6.opt_value.? T&. T& self!))
+   :qid internal_vstd!raw_ptr.impl&__6.opt_value.?_pre_post_definition
+   :skolemid skolem_internal_vstd!raw_ptr.impl&__6.opt_value.?_pre_post_definition
+)))
+
+;; Function-Axioms vstd::raw_ptr::impl&%6::is_uninit
+(assert
+ (fuel_bool_default fuel%vstd!raw_ptr.impl&%6.is_uninit.)
+)
+(assert
+ (=>
+  (fuel_bool fuel%vstd!raw_ptr.impl&%6.is_uninit.)
+  (forall ((T&. Dcr) (T& Type) (self! Poly)) (!
+    (= (vstd!raw_ptr.impl&%6.is_uninit.? T&. T& self!) (is-vstd!raw_ptr.MemContents./Uninit
+      (vstd!raw_ptr.PointsToData./PointsToData/opt_value (%Poly%vstd!raw_ptr.PointsToData.
+        (vstd!view.View.view.? $ (TYPE%vstd!raw_ptr.PointsTo. T&. T&) self!)
+    ))))
+    :pattern ((vstd!raw_ptr.impl&%6.is_uninit.? T&. T& self!))
+    :qid internal_vstd!raw_ptr.impl&__6.is_uninit.?_definition
+    :skolemid skolem_internal_vstd!raw_ptr.impl&__6.is_uninit.?_definition
+))))
+
+;; Function-Specs vstd::raw_ptr::ptr_mut_write
+(declare-fun req%vstd!raw_ptr.ptr_mut_write. (Dcr Type Poly Poly Poly) Bool)
+(declare-const %%global_location_label%%3 Bool)
+(declare-const %%global_location_label%%4 Bool)
+(assert
+ (forall ((T&. Dcr) (T& Type) (ptr! Poly) (pre%perm! Poly) (v! Poly)) (!
+   (= (req%vstd!raw_ptr.ptr_mut_write. T&. T& ptr! pre%perm! v!) (and
+     (=>
+      %%global_location_label%%3
+      (= (vstd!raw_ptr.PointsToData./PointsToData/ptr (%Poly%vstd!raw_ptr.PointsToData. (vstd!view.View.view.?
+          $ (TYPE%vstd!raw_ptr.PointsTo. T&. T&) pre%perm!
+        ))
+       ) ptr!
+     ))
+     (=>
+      %%global_location_label%%4
+      (is-vstd!raw_ptr.MemContents./Uninit (vstd!raw_ptr.PointsToData./PointsToData/opt_value
+        (%Poly%vstd!raw_ptr.PointsToData. (vstd!view.View.view.? $ (TYPE%vstd!raw_ptr.PointsTo.
+           T&. T&
+          ) pre%perm!
+   )))))))
+   :pattern ((req%vstd!raw_ptr.ptr_mut_write. T&. T& ptr! pre%perm! v!))
+   :qid internal_req__vstd!raw_ptr.ptr_mut_write._definition
+   :skolemid skolem_internal_req__vstd!raw_ptr.ptr_mut_write._definition
+)))
+(declare-fun ens%vstd!raw_ptr.ptr_mut_write. (Dcr Type Poly Poly Poly Poly) Bool)
+(assert
+ (forall ((T&. Dcr) (T& Type) (ptr! Poly) (pre%perm! Poly) (perm! Poly) (v! Poly))
+  (!
+   (= (ens%vstd!raw_ptr.ptr_mut_write. T&. T& ptr! pre%perm! perm! v!) (and
+     (has_type perm! (TYPE%vstd!raw_ptr.PointsTo. T&. T&))
+     (= (vstd!raw_ptr.PointsToData./PointsToData/ptr (%Poly%vstd!raw_ptr.PointsToData. (vstd!view.View.view.?
+         $ (TYPE%vstd!raw_ptr.PointsTo. T&. T&) perm!
+       ))
+      ) ptr!
+     )
+     (= (vstd!raw_ptr.PointsToData./PointsToData/opt_value (%Poly%vstd!raw_ptr.PointsToData.
+        (vstd!view.View.view.? $ (TYPE%vstd!raw_ptr.PointsTo. T&. T&) perm!)
+       )
+      ) (vstd!raw_ptr.MemContents./Init v!)
+   )))
+   :pattern ((ens%vstd!raw_ptr.ptr_mut_write. T&. T& ptr! pre%perm! perm! v!))
+   :qid internal_ens__vstd!raw_ptr.ptr_mut_write._definition
+   :skolemid skolem_internal_ens__vstd!raw_ptr.ptr_mut_write._definition
+)))
+
+;; Function-Axioms vstd::raw_ptr::impl&%7::is_init
+(assert
+ (fuel_bool_default fuel%vstd!raw_ptr.impl&%7.is_init.)
+)
+(assert
+ (=>
+  (fuel_bool fuel%vstd!raw_ptr.impl&%7.is_init.)
+  (forall ((T&. Dcr) (T& Type) (self! Poly)) (!
+    (= (vstd!raw_ptr.impl&%7.is_init.? T&. T& self!) (is-vstd!raw_ptr.MemContents./Init
+      (%Poly%vstd!raw_ptr.MemContents. self!)
+    ))
+    :pattern ((vstd!raw_ptr.impl&%7.is_init.? T&. T& self!))
+    :qid internal_vstd!raw_ptr.impl&__7.is_init.?_definition
+    :skolemid skolem_internal_vstd!raw_ptr.impl&__7.is_init.?_definition
+))))
+
+;; Function-Axioms vstd::raw_ptr::impl&%6::is_init
+(assert
+ (fuel_bool_default fuel%vstd!raw_ptr.impl&%6.is_init.)
+)
+(assert
+ (=>
+  (fuel_bool fuel%vstd!raw_ptr.impl&%6.is_init.)
+  (forall ((T&. Dcr) (T& Type) (self! Poly)) (!
+    (= (vstd!raw_ptr.impl&%6.is_init.? T&. T& self!) (is-vstd!raw_ptr.MemContents./Init
+      (vstd!raw_ptr.PointsToData./PointsToData/opt_value (%Poly%vstd!raw_ptr.PointsToData.
+        (vstd!view.View.view.? $ (TYPE%vstd!raw_ptr.PointsTo. T&. T&) self!)
+    ))))
+    :pattern ((vstd!raw_ptr.impl&%6.is_init.? T&. T& self!))
+    :qid internal_vstd!raw_ptr.impl&__6.is_init.?_definition
+    :skolemid skolem_internal_vstd!raw_ptr.impl&__6.is_init.?_definition
+))))
+
+;; Function-Axioms vstd::raw_ptr::impl&%2::arrow_0
+(assert
+ (fuel_bool_default fuel%vstd!raw_ptr.impl&%2.arrow_0.)
+)
+(assert
+ (=>
+  (fuel_bool fuel%vstd!raw_ptr.impl&%2.arrow_0.)
+  (forall ((T&. Dcr) (T& Type) (self! Poly)) (!
+    (= (vstd!raw_ptr.impl&%2.arrow_0.? T&. T& self!) (vstd!raw_ptr.MemContents./Init/0
+      (%Poly%vstd!raw_ptr.MemContents. self!)
+    ))
+    :pattern ((vstd!raw_ptr.impl&%2.arrow_0.? T&. T& self!))
+    :qid internal_vstd!raw_ptr.impl&__2.arrow_0.?_definition
+    :skolemid skolem_internal_vstd!raw_ptr.impl&__2.arrow_0.?_definition
+))))
+(assert
+ (forall ((T&. Dcr) (T& Type) (self! Poly)) (!
+   (=>
+    (has_type self! (TYPE%vstd!raw_ptr.MemContents. T&. T&))
+    (has_type (vstd!raw_ptr.impl&%2.arrow_0.? T&. T& self!) T&)
+   )
+   :pattern ((vstd!raw_ptr.impl&%2.arrow_0.? T&. T& self!))
+   :qid internal_vstd!raw_ptr.impl&__2.arrow_0.?_pre_post_definition
+   :skolemid skolem_internal_vstd!raw_ptr.impl&__2.arrow_0.?_pre_post_definition
+)))
+
+;; Function-Axioms vstd::raw_ptr::impl&%7::value
+(assert
+ (fuel_bool_default fuel%vstd!raw_ptr.impl&%7.value.)
+)
+(assert
+ (=>
+  (fuel_bool fuel%vstd!raw_ptr.impl&%7.value.)
+  (forall ((T&. Dcr) (T& Type) (self! Poly)) (!
+    (= (vstd!raw_ptr.impl&%7.value.? T&. T& self!) (vstd!raw_ptr.MemContents./Init/0 (%Poly%vstd!raw_ptr.MemContents.
+       self!
+    )))
+    :pattern ((vstd!raw_ptr.impl&%7.value.? T&. T& self!))
+    :qid internal_vstd!raw_ptr.impl&__7.value.?_definition
+    :skolemid skolem_internal_vstd!raw_ptr.impl&__7.value.?_definition
+))))
+(assert
+ (forall ((T&. Dcr) (T& Type) (self! Poly)) (!
+   (=>
+    (has_type self! (TYPE%vstd!raw_ptr.MemContents. T&. T&))
+    (has_type (vstd!raw_ptr.impl&%7.value.? T&. T& self!) T&)
+   )
+   :pattern ((vstd!raw_ptr.impl&%7.value.? T&. T& self!))
+   :qid internal_vstd!raw_ptr.impl&__7.value.?_pre_post_definition
+   :skolemid skolem_internal_vstd!raw_ptr.impl&__7.value.?_pre_post_definition
+)))
+
+;; Function-Axioms vstd::raw_ptr::impl&%6::value
+(assert
+ (fuel_bool_default fuel%vstd!raw_ptr.impl&%6.value.)
+)
+(assert
+ (=>
+  (fuel_bool fuel%vstd!raw_ptr.impl&%6.value.)
+  (forall ((T&. Dcr) (T& Type) (self! Poly)) (!
+    (= (vstd!raw_ptr.impl&%6.value.? T&. T& self!) (vstd!raw_ptr.MemContents./Init/0 (%Poly%vstd!raw_ptr.MemContents.
+       (Poly%vstd!raw_ptr.MemContents. (vstd!raw_ptr.PointsToData./PointsToData/opt_value
+         (%Poly%vstd!raw_ptr.PointsToData. (vstd!view.View.view.? $ (TYPE%vstd!raw_ptr.PointsTo.
+            T&. T&
+           ) self!
+    )))))))
+    :pattern ((vstd!raw_ptr.impl&%6.value.? T&. T& self!))
+    :qid internal_vstd!raw_ptr.impl&__6.value.?_definition
+    :skolemid skolem_internal_vstd!raw_ptr.impl&__6.value.?_definition
+))))
+(assert
+ (forall ((T&. Dcr) (T& Type) (self! Poly)) (!
+   (=>
+    (has_type self! (TYPE%vstd!raw_ptr.PointsTo. T&. T&))
+    (has_type (vstd!raw_ptr.impl&%6.value.? T&. T& self!) T&)
+   )
+   :pattern ((vstd!raw_ptr.impl&%6.value.? T&. T& self!))
+   :qid internal_vstd!raw_ptr.impl&__6.value.?_pre_post_definition
+   :skolemid skolem_internal_vstd!raw_ptr.impl&__6.value.?_pre_post_definition
+)))
+
+;; Function-Specs vstd::raw_ptr::ptr_mut_read
+(declare-fun req%vstd!raw_ptr.ptr_mut_read. (Dcr Type Poly Poly) Bool)
+(declare-const %%global_location_label%%5 Bool)
+(declare-const %%global_location_label%%6 Bool)
+(assert
+ (forall ((T&. Dcr) (T& Type) (ptr! Poly) (pre%perm! Poly)) (!
+   (= (req%vstd!raw_ptr.ptr_mut_read. T&. T& ptr! pre%perm!) (and
+     (=>
+      %%global_location_label%%5
+      (= (vstd!raw_ptr.PointsToData./PointsToData/ptr (%Poly%vstd!raw_ptr.PointsToData. (vstd!view.View.view.?
+          $ (TYPE%vstd!raw_ptr.PointsTo. T&. T&) pre%perm!
+        ))
+       ) ptr!
+     ))
+     (=>
+      %%global_location_label%%6
+      (is-vstd!raw_ptr.MemContents./Init (vstd!raw_ptr.PointsToData./PointsToData/opt_value
+        (%Poly%vstd!raw_ptr.PointsToData. (vstd!view.View.view.? $ (TYPE%vstd!raw_ptr.PointsTo.
+           T&. T&
+          ) pre%perm!
+   )))))))
+   :pattern ((req%vstd!raw_ptr.ptr_mut_read. T&. T& ptr! pre%perm!))
+   :qid internal_req__vstd!raw_ptr.ptr_mut_read._definition
+   :skolemid skolem_internal_req__vstd!raw_ptr.ptr_mut_read._definition
+)))
+(declare-fun ens%vstd!raw_ptr.ptr_mut_read. (Dcr Type Poly Poly Poly Poly) Bool)
+(assert
+ (forall ((T&. Dcr) (T& Type) (ptr! Poly) (pre%perm! Poly) (perm! Poly) (v! Poly))
+  (!
+   (= (ens%vstd!raw_ptr.ptr_mut_read. T&. T& ptr! pre%perm! perm! v!) (and
+     (has_type v! T&)
+     (has_type perm! (TYPE%vstd!raw_ptr.PointsTo. T&. T&))
+     (= (vstd!raw_ptr.PointsToData./PointsToData/ptr (%Poly%vstd!raw_ptr.PointsToData. (vstd!view.View.view.?
+         $ (TYPE%vstd!raw_ptr.PointsTo. T&. T&) perm!
+       ))
+      ) ptr!
+     )
+     (is-vstd!raw_ptr.MemContents./Uninit (vstd!raw_ptr.PointsToData./PointsToData/opt_value
+       (%Poly%vstd!raw_ptr.PointsToData. (vstd!view.View.view.? $ (TYPE%vstd!raw_ptr.PointsTo.
+          T&. T&
+         ) perm!
+     ))))
+     (= v! (vstd!raw_ptr.MemContents./Init/0 (%Poly%vstd!raw_ptr.MemContents. (Poly%vstd!raw_ptr.MemContents.
+         (vstd!raw_ptr.PointsToData./PointsToData/opt_value (%Poly%vstd!raw_ptr.PointsToData.
+           (vstd!view.View.view.? $ (TYPE%vstd!raw_ptr.PointsTo. T&. T&) pre%perm!)
+   ))))))))
+   :pattern ((ens%vstd!raw_ptr.ptr_mut_read. T&. T& ptr! pre%perm! perm! v!))
+   :qid internal_ens__vstd!raw_ptr.ptr_mut_read._definition
+   :skolemid skolem_internal_ens__vstd!raw_ptr.ptr_mut_read._definition
+)))
+
+;; Function-Specs vstd::raw_ptr::ptr_ref
+(declare-fun req%vstd!raw_ptr.ptr_ref. (Dcr Type Poly Poly) Bool)
+(declare-const %%global_location_label%%7 Bool)
+(declare-const %%global_location_label%%8 Bool)
+(assert
+ (forall ((T&. Dcr) (T& Type) (ptr! Poly) (perm! Poly)) (!
+   (= (req%vstd!raw_ptr.ptr_ref. T&. T& ptr! perm!) (and
+     (=>
+      %%global_location_label%%7
+      (= (vstd!raw_ptr.PointsToData./PointsToData/ptr (%Poly%vstd!raw_ptr.PointsToData. (vstd!view.View.view.?
+          $ (TYPE%vstd!raw_ptr.PointsTo. T&. T&) perm!
+        ))
+       ) ptr!
+     ))
+     (=>
+      %%global_location_label%%8
+      (is-vstd!raw_ptr.MemContents./Init (vstd!raw_ptr.PointsToData./PointsToData/opt_value
+        (%Poly%vstd!raw_ptr.PointsToData. (vstd!view.View.view.? $ (TYPE%vstd!raw_ptr.PointsTo.
+           T&. T&
+          ) perm!
+   )))))))
+   :pattern ((req%vstd!raw_ptr.ptr_ref. T&. T& ptr! perm!))
+   :qid internal_req__vstd!raw_ptr.ptr_ref._definition
+   :skolemid skolem_internal_req__vstd!raw_ptr.ptr_ref._definition
+)))
+(declare-fun ens%vstd!raw_ptr.ptr_ref. (Dcr Type Poly Poly Poly) Bool)
+(assert
+ (forall ((T&. Dcr) (T& Type) (ptr! Poly) (perm! Poly) (v! Poly)) (!
+   (= (ens%vstd!raw_ptr.ptr_ref. T&. T& ptr! perm! v!) (and
+     (has_type v! T&)
+     (= v! (vstd!raw_ptr.MemContents./Init/0 (%Poly%vstd!raw_ptr.MemContents. (Poly%vstd!raw_ptr.MemContents.
+         (vstd!raw_ptr.PointsToData./PointsToData/opt_value (%Poly%vstd!raw_ptr.PointsToData.
+           (vstd!view.View.view.? $ (TYPE%vstd!raw_ptr.PointsTo. T&. T&) perm!)
+   ))))))))
+   :pattern ((ens%vstd!raw_ptr.ptr_ref. T&. T& ptr! perm! v!))
+   :qid internal_ens__vstd!raw_ptr.ptr_ref._definition
+   :skolemid skolem_internal_ens__vstd!raw_ptr.ptr_ref._definition
+)))
+
+;; Broadcast vstd::seq::axiom_seq_index_decreases
+(assert
+ (=>
+  (fuel_bool fuel%vstd!seq.axiom_seq_index_decreases.)
+  (forall ((A&. Dcr) (A& Type) (s! Poly) (i! Poly)) (!
+    (=>
+     (and
+      (has_type s! (TYPE%vstd!seq.Seq. A&. A&))
+      (has_type i! INT)
+     )
+     (=>
+      (and
+       (<= 0 (%I i!))
+       (< (%I i!) (vstd!seq.Seq.len.? A&. A& s!))
+      )
+      (height_lt (height (vstd!seq.Seq.index.? A&. A& s! i!)) (height s!))
+    ))
+    :pattern ((height (vstd!seq.Seq.index.? A&. A& s! i!)))
+    :qid user_vstd__seq__axiom_seq_index_decreases_4
+    :skolemid skolem_user_vstd__seq__axiom_seq_index_decreases_4
+))))
+
+;; Broadcast vstd::seq::axiom_seq_new_len
+(assert
+ (=>
+  (fuel_bool fuel%vstd!seq.axiom_seq_new_len.)
+  (forall ((A&. Dcr) (A& Type) (len! Poly) (f! Poly)) (!
+    (=>
+     (and
+      (has_type len! NAT)
+      (has_type f! (TYPE%fun%1. $ INT A&. A&))
+     )
+     (= (vstd!seq.Seq.len.? A&. A& (vstd!seq.Seq.new.? A&. A& $ (TYPE%fun%1. $ INT A&. A&)
+        len! f!
+       )
+      ) (%I len!)
+    ))
+    :pattern ((vstd!seq.Seq.len.? A&. A& (vstd!seq.Seq.new.? A&. A& $ (TYPE%fun%1. $ INT
+        A&. A&
+       ) len! f!
+    )))
+    :qid user_vstd__seq__axiom_seq_new_len_5
+    :skolemid skolem_user_vstd__seq__axiom_seq_new_len_5
+))))
+
+;; Broadcast vstd::seq::axiom_seq_new_index
+(assert
+ (=>
+  (fuel_bool fuel%vstd!seq.axiom_seq_new_index.)
+  (forall ((A&. Dcr) (A& Type) (len! Poly) (f! Poly) (i! Poly)) (!
+    (=>
+     (and
+      (has_type len! NAT)
+      (has_type f! (TYPE%fun%1. $ INT A&. A&))
+      (has_type i! INT)
+     )
+     (=>
+      (and
+       (<= 0 (%I i!))
+       (< (%I i!) (%I len!))
+      )
+      (= (vstd!seq.Seq.index.? A&. A& (vstd!seq.Seq.new.? A&. A& $ (TYPE%fun%1. $ INT A&. A&)
+         len! f!
+        ) i!
+       ) (%%apply%%0 (%Poly%fun%1. f!) i!)
+    )))
+    :pattern ((vstd!seq.Seq.index.? A&. A& (vstd!seq.Seq.new.? A&. A& $ (TYPE%fun%1. $ INT
+        A&. A&
+       ) len! f!
+      ) i!
+    ))
+    :qid user_vstd__seq__axiom_seq_new_index_6
+    :skolemid skolem_user_vstd__seq__axiom_seq_new_index_6
+))))
+
+;; Broadcast vstd::seq::axiom_seq_ext_equal
+(assert
+ (=>
+  (fuel_bool fuel%vstd!seq.axiom_seq_ext_equal.)
+  (forall ((A&. Dcr) (A& Type) (s1! Poly) (s2! Poly)) (!
+    (=>
+     (and
+      (has_type s1! (TYPE%vstd!seq.Seq. A&. A&))
+      (has_type s2! (TYPE%vstd!seq.Seq. A&. A&))
+     )
+     (= (ext_eq false (TYPE%vstd!seq.Seq. A&. A&) s1! s2!) (and
+       (= (vstd!seq.Seq.len.? A&. A& s1!) (vstd!seq.Seq.len.? A&. A& s2!))
+       (forall ((i$ Poly)) (!
+         (=>
+          (has_type i$ INT)
+          (=>
+           (and
+            (<= 0 (%I i$))
+            (< (%I i$) (vstd!seq.Seq.len.? A&. A& s1!))
+           )
+           (= (vstd!seq.Seq.index.? A&. A& s1! i$) (vstd!seq.Seq.index.? A&. A& s2! i$))
+         ))
+         :pattern ((vstd!seq.Seq.index.? A&. A& s1! i$))
+         :pattern ((vstd!seq.Seq.index.? A&. A& s2! i$))
+         :qid user_vstd__seq__axiom_seq_ext_equal_7
+         :skolemid skolem_user_vstd__seq__axiom_seq_ext_equal_7
+    )))))
+    :pattern ((ext_eq false (TYPE%vstd!seq.Seq. A&. A&) s1! s2!))
+    :qid user_vstd__seq__axiom_seq_ext_equal_8
+    :skolemid skolem_user_vstd__seq__axiom_seq_ext_equal_8
+))))
+
+;; Broadcast vstd::seq::axiom_seq_ext_equal_deep
+(assert
+ (=>
+  (fuel_bool fuel%vstd!seq.axiom_seq_ext_equal_deep.)
+  (forall ((A&. Dcr) (A& Type) (s1! Poly) (s2! Poly)) (!
+    (=>
+     (and
+      (has_type s1! (TYPE%vstd!seq.Seq. A&. A&))
+      (has_type s2! (TYPE%vstd!seq.Seq. A&. A&))
+     )
+     (= (ext_eq true (TYPE%vstd!seq.Seq. A&. A&) s1! s2!) (and
+       (= (vstd!seq.Seq.len.? A&. A& s1!) (vstd!seq.Seq.len.? A&. A& s2!))
+       (forall ((i$ Poly)) (!
+         (=>
+          (has_type i$ INT)
+          (=>
+           (and
+            (<= 0 (%I i$))
+            (< (%I i$) (vstd!seq.Seq.len.? A&. A& s1!))
+           )
+           (ext_eq true A& (vstd!seq.Seq.index.? A&. A& s1! i$) (vstd!seq.Seq.index.? A&. A& s2!
+             i$
+         ))))
+         :pattern ((vstd!seq.Seq.index.? A&. A& s1! i$))
+         :pattern ((vstd!seq.Seq.index.? A&. A& s2! i$))
+         :qid user_vstd__seq__axiom_seq_ext_equal_deep_9
+         :skolemid skolem_user_vstd__seq__axiom_seq_ext_equal_deep_9
+    )))))
+    :pattern ((ext_eq true (TYPE%vstd!seq.Seq. A&. A&) s1! s2!))
+    :qid user_vstd__seq__axiom_seq_ext_equal_deep_10
+    :skolemid skolem_user_vstd__seq__axiom_seq_ext_equal_deep_10
+))))
+
+;; Function-Axioms vstd::view::impl&%0::view
+(assert
+ (fuel_bool_default fuel%vstd!view.impl&%0.view.)
+)
+(assert
+ (=>
+  (fuel_bool fuel%vstd!view.impl&%0.view.)
+  (forall ((A&. Dcr) (A& Type) (self! Poly)) (!
+    (=>
+     (tr_bound%vstd!view.View. A&. A&)
+     (= (vstd!view.View.view.? (REF A&.) A& self!) (vstd!view.View.view.? A&. A& self!))
+    )
+    :pattern ((vstd!view.View.view.? (REF A&.) A& self!))
+    :qid internal_vstd!view.View.view.?_definition
+    :skolemid skolem_internal_vstd!view.View.view.?_definition
+))))
+
+;; Function-Axioms vstd::view::impl&%2::view
+(assert
+ (fuel_bool_default fuel%vstd!view.impl&%2.view.)
+)
+(assert
+ (=>
+  (fuel_bool fuel%vstd!view.impl&%2.view.)
+  (forall ((A&. Dcr) (A& Type) (self! Poly)) (!
+    (=>
+     (tr_bound%vstd!view.View. A&. A&)
+     (= (vstd!view.View.view.? (BOX $ ALLOCATOR_GLOBAL A&.) A& self!) (vstd!view.View.view.?
+       A&. A& self!
+    )))
+    :pattern ((vstd!view.View.view.? (BOX $ ALLOCATOR_GLOBAL A&.) A& self!))
+    :qid internal_vstd!view.View.view.?_definition
+    :skolemid skolem_internal_vstd!view.View.view.?_definition
+))))
+
+;; Function-Axioms vstd::view::impl&%4::view
+(assert
+ (fuel_bool_default fuel%vstd!view.impl&%4.view.)
+)
+(assert
+ (=>
+  (fuel_bool fuel%vstd!view.impl&%4.view.)
+  (forall ((A&. Dcr) (A& Type) (self! Poly)) (!
+    (=>
+     (tr_bound%vstd!view.View. A&. A&)
+     (= (vstd!view.View.view.? (RC $ ALLOCATOR_GLOBAL A&.) A& self!) (vstd!view.View.view.?
+       A&. A& self!
+    )))
+    :pattern ((vstd!view.View.view.? (RC $ ALLOCATOR_GLOBAL A&.) A& self!))
+    :qid internal_vstd!view.View.view.?_definition
+    :skolemid skolem_internal_vstd!view.View.view.?_definition
+))))
+
+;; Function-Axioms vstd::view::impl&%6::view
+(assert
+ (fuel_bool_default fuel%vstd!view.impl&%6.view.)
+)
+(assert
+ (=>
+  (fuel_bool fuel%vstd!view.impl&%6.view.)
+  (forall ((A&. Dcr) (A& Type) (self! Poly)) (!
+    (=>
+     (tr_bound%vstd!view.View. A&. A&)
+     (= (vstd!view.View.view.? (ARC $ ALLOCATOR_GLOBAL A&.) A& self!) (vstd!view.View.view.?
+       A&. A& self!
+    )))
+    :pattern ((vstd!view.View.view.? (ARC $ ALLOCATOR_GLOBAL A&.) A& self!))
+    :qid internal_vstd!view.View.view.?_definition
+    :skolemid skolem_internal_vstd!view.View.view.?_definition
+))))
+
+;; Function-Axioms vstd::view::impl&%10::view
+(assert
+ (fuel_bool_default fuel%vstd!view.impl&%10.view.)
+)
+(assert
+ (=>
+  (fuel_bool fuel%vstd!view.impl&%10.view.)
+  (forall ((self! Poly)) (!
+    (= (vstd!view.View.view.? $ TYPE%tuple%0. self!) self!)
+    :pattern ((vstd!view.View.view.? $ TYPE%tuple%0. self!))
+    :qid internal_vstd!view.View.view.?_definition
+    :skolemid skolem_internal_vstd!view.View.view.?_definition
+))))
+
+;; Function-Axioms vstd::view::impl&%12::view
+(assert
+ (fuel_bool_default fuel%vstd!view.impl&%12.view.)
+)
+(assert
+ (=>
+  (fuel_bool fuel%vstd!view.impl&%12.view.)
+  (forall ((self! Poly)) (!
+    (= (vstd!view.View.view.? $ BOOL self!) self!)
+    :pattern ((vstd!view.View.view.? $ BOOL self!))
+    :qid internal_vstd!view.View.view.?_definition
+    :skolemid skolem_internal_vstd!view.View.view.?_definition
+))))
+
+;; Function-Axioms vstd::view::impl&%14::view
+(assert
+ (fuel_bool_default fuel%vstd!view.impl&%14.view.)
+)
+(assert
+ (=>
+  (fuel_bool fuel%vstd!view.impl&%14.view.)
+  (forall ((self! Poly)) (!
+    (= (vstd!view.View.view.? $ (UINT 8) self!) self!)
+    :pattern ((vstd!view.View.view.? $ (UINT 8) self!))
+    :qid internal_vstd!view.View.view.?_definition
+    :skolemid skolem_internal_vstd!view.View.view.?_definition
+))))
+
+;; Function-Axioms vstd::view::impl&%16::view
+(assert
+ (fuel_bool_default fuel%vstd!view.impl&%16.view.)
+)
+(assert
+ (=>
+  (fuel_bool fuel%vstd!view.impl&%16.view.)
+  (forall ((self! Poly)) (!
+    (= (vstd!view.View.view.? $ (UINT 16) self!) self!)
+    :pattern ((vstd!view.View.view.? $ (UINT 16) self!))
+    :qid internal_vstd!view.View.view.?_definition
+    :skolemid skolem_internal_vstd!view.View.view.?_definition
+))))
+
+;; Function-Axioms vstd::view::impl&%20::view
+(assert
+ (fuel_bool_default fuel%vstd!view.impl&%20.view.)
+)
+(assert
+ (=>
+  (fuel_bool fuel%vstd!view.impl&%20.view.)
+  (forall ((self! Poly)) (!
+    (= (vstd!view.View.view.? $ (UINT 64) self!) self!)
+    :pattern ((vstd!view.View.view.? $ (UINT 64) self!))
+    :qid internal_vstd!view.View.view.?_definition
+    :skolemid skolem_internal_vstd!view.View.view.?_definition
+))))
+
+;; Function-Axioms vstd::view::impl&%24::view
+(assert
+ (fuel_bool_default fuel%vstd!view.impl&%24.view.)
+)
+(assert
+ (=>
+  (fuel_bool fuel%vstd!view.impl&%24.view.)
+  (forall ((self! Poly)) (!
+    (= (vstd!view.View.view.? $ (UINT SZ) self!) self!)
+    :pattern ((vstd!view.View.view.? $ (UINT SZ) self!))
+    :qid internal_vstd!view.View.view.?_definition
+    :skolemid skolem_internal_vstd!view.View.view.?_definition
+))))
+
+;; Trait-Impl-Axiom
+(assert
+ (forall ((T&. Dcr) (T& Type) (N&. Dcr) (N& Type)) (!
+   (=>
+    (uInv SZ (const_int N&))
+    (tr_bound%vstd!view.View. $ (ARRAY T&. T& N&. N&))
+   )
+   :pattern ((tr_bound%vstd!view.View. $ (ARRAY T&. T& N&. N&)))
+   :qid internal_vstd__array__impl&__0_trait_impl_definition
+   :skolemid skolem_internal_vstd__array__impl&__0_trait_impl_definition
+)))
+
+;; Trait-Impl-Axiom
+(assert
+ (forall ((T&. Dcr) (T& Type) (N&. Dcr) (N& Type)) (!
+   (=>
+    (uInv SZ (const_int N&))
+    (tr_bound%vstd!array.ArrayAdditionalSpecFns. $ (ARRAY T&. T& N&. N&) T&. T&)
+   )
+   :pattern ((tr_bound%vstd!array.ArrayAdditionalSpecFns. $ (ARRAY T&. T& N&. N&) T&.
+     T&
+   ))
+   :qid internal_vstd__array__impl&__2_trait_impl_definition
+   :skolemid skolem_internal_vstd__array__impl&__2_trait_impl_definition
+)))
+
+;; Trait-Impl-Axiom
+(assert
+ (forall ((T&. Dcr) (T& Type)) (!
+   (tr_bound%vstd!view.View. $ (PTR T&. T&))
+   :pattern ((tr_bound%vstd!view.View. $ (PTR T&. T&)))
+   :qid internal_vstd__raw_ptr__impl&__3_trait_impl_definition
+   :skolemid skolem_internal_vstd__raw_ptr__impl&__3_trait_impl_definition
+)))
+
+;; Trait-Impl-Axiom
+(assert
+ (forall ((T&. Dcr) (T& Type)) (!
+   (tr_bound%vstd!view.View. (CONST_PTR $) (PTR T&. T&))
+   :pattern ((tr_bound%vstd!view.View. (CONST_PTR $) (PTR T&. T&)))
+   :qid internal_vstd__raw_ptr__impl&__4_trait_impl_definition
+   :skolemid skolem_internal_vstd__raw_ptr__impl&__4_trait_impl_definition
+)))
+
+;; Trait-Impl-Axiom
+(assert
+ (forall ((T&. Dcr) (T& Type)) (!
+   (tr_bound%vstd!view.View. $ (TYPE%vstd!raw_ptr.PointsTo. T&. T&))
+   :pattern ((tr_bound%vstd!view.View. $ (TYPE%vstd!raw_ptr.PointsTo. T&. T&)))
+   :qid internal_vstd__raw_ptr__impl&__5_trait_impl_definition
+   :skolemid skolem_internal_vstd__raw_ptr__impl&__5_trait_impl_definition
+)))
+
+;; Trait-Impl-Axiom
+(assert
+ (forall ((T&. Dcr) (T& Type)) (!
+   (tr_bound%vstd!view.View. $ (SLICE T&. T&))
+   :pattern ((tr_bound%vstd!view.View. $ (SLICE T&. T&)))
+   :qid internal_vstd__slice__impl&__0_trait_impl_definition
+   :skolemid skolem_internal_vstd__slice__impl&__0_trait_impl_definition
+)))
+
+;; Trait-Impl-Axiom
+(assert
+ (forall ((A&. Dcr) (A& Type)) (!
+   (=>
+    (tr_bound%vstd!view.View. A&. A&)
+    (tr_bound%vstd!view.View. (REF A&.) A&)
+   )
+   :pattern ((tr_bound%vstd!view.View. (REF A&.) A&))
+   :qid internal_vstd__view__impl&__0_trait_impl_definition
+   :skolemid skolem_internal_vstd__view__impl&__0_trait_impl_definition
+)))
+
+;; Trait-Impl-Axiom
+(assert
+ (forall ((A&. Dcr) (A& Type)) (!
+   (=>
+    (tr_bound%vstd!view.View. A&. A&)
+    (tr_bound%vstd!view.View. (BOX $ ALLOCATOR_GLOBAL A&.) A&)
+   )
+   :pattern ((tr_bound%vstd!view.View. (BOX $ ALLOCATOR_GLOBAL A&.) A&))
+   :qid internal_vstd__view__impl&__2_trait_impl_definition
+   :skolemid skolem_internal_vstd__view__impl&__2_trait_impl_definition
+)))
+
+;; Trait-Impl-Axiom
+(assert
+ (forall ((A&. Dcr) (A& Type)) (!
+   (=>
+    (tr_bound%vstd!view.View. A&. A&)
+    (tr_bound%vstd!view.View. (RC $ ALLOCATOR_GLOBAL A&.) A&)
+   )
+   :pattern ((tr_bound%vstd!view.View. (RC $ ALLOCATOR_GLOBAL A&.) A&))
+   :qid internal_vstd__view__impl&__4_trait_impl_definition
+   :skolemid skolem_internal_vstd__view__impl&__4_trait_impl_definition
+)))
+
+;; Trait-Impl-Axiom
+(assert
+ (forall ((A&. Dcr) (A& Type)) (!
+   (=>
+    (tr_bound%vstd!view.View. A&. A&)
+    (tr_bound%vstd!view.View. (ARC $ ALLOCATOR_GLOBAL A&.) A&)
+   )
+   :pattern ((tr_bound%vstd!view.View. (ARC $ ALLOCATOR_GLOBAL A&.) A&))
+   :qid internal_vstd__view__impl&__6_trait_impl_definition
+   :skolemid skolem_internal_vstd__view__impl&__6_trait_impl_definition
+)))
+
+;; Trait-Impl-Axiom
+(assert
+ (tr_bound%vstd!view.View. $ TYPE%tuple%0.)
+)
+
+;; Trait-Impl-Axiom
+(assert
+ (tr_bound%vstd!view.View. $ BOOL)
+)
+
+;; Trait-Impl-Axiom
+(assert
+ (tr_bound%vstd!view.View. $ (UINT 8))
+)
+
+;; Trait-Impl-Axiom
+(assert
+ (tr_bound%vstd!view.View. $ (UINT 16))
+)
+
+;; Trait-Impl-Axiom
+(assert
+ (tr_bound%vstd!view.View. $ (UINT 64))
+)
+
+;; Trait-Impl-Axiom
+(assert
+ (tr_bound%vstd!view.View. $ (UINT SZ))
+)
+
+;; Trait-Impl-Axiom
+(assert
+ (tr_bound%core!cmp.PartialEq. $ (UINT 16) $ (UINT 16))
+)
+
+;; Trait-Impl-Axiom
+(assert
+ (tr_bound%core!cmp.Eq. $ (UINT 16))
+)
+
+;; Trait-Impl-Axiom
+(assert
+ (tr_bound%core!cmp.PartialEq. $ BOOL $ BOOL)
+)
+
+;; Trait-Impl-Axiom
+(assert
+ (tr_bound%core!cmp.Eq. $ BOOL)
+)
+
+;; Trait-Impl-Axiom
+(assert
+ (tr_bound%core!cmp.PartialEq. $ (UINT SZ) $ (UINT SZ))
+)
+
+;; Trait-Impl-Axiom
+(assert
+ (tr_bound%core!cmp.Eq. $ (UINT SZ))
+)
+
+;; Trait-Impl-Axiom
+(assert
+ (tr_bound%core!cmp.PartialEq. $ (UINT 8) $ (UINT 8))
+)
+
+;; Trait-Impl-Axiom
+(assert
+ (tr_bound%core!cmp.Eq. $ (UINT 8))
+)
+
+;; Trait-Impl-Axiom
+(assert
+ (tr_bound%core!cmp.PartialEq. $ (UINT 64) $ (UINT 64))
+)
+
+;; Trait-Impl-Axiom
+(assert
+ (tr_bound%core!cmp.Eq. $ (UINT 64))
+)
+
+;; Trait-Impl-Axiom
+(assert
+ (forall ((A&. Dcr) (A& Type) (B&. Dcr) (B& Type)) (!
+   (=>
+    (tr_bound%core!cmp.PartialEq. A&. A& B&. B&)
+    (tr_bound%core!cmp.PartialEq. (REF A&.) A& (REF B&.) B&)
+   )
+   :pattern ((tr_bound%core!cmp.PartialEq. (REF A&.) A& (REF B&.) B&))
+   :qid internal_core__cmp__impls__impl&__9_trait_impl_definition
+   :skolemid skolem_internal_core__cmp__impls__impl&__9_trait_impl_definition
+)))
+
+;; Trait-Impl-Axiom
+(assert
+ (forall ((A&. Dcr) (A& Type)) (!
+   (=>
+    (tr_bound%core!cmp.Eq. A&. A&)
+    (tr_bound%core!cmp.Eq. (REF A&.) A&)
+   )
+   :pattern ((tr_bound%core!cmp.Eq. (REF A&.) A&))
+   :qid internal_core__cmp__impls__impl&__12_trait_impl_definition
+   :skolemid skolem_internal_core__cmp__impls__impl&__12_trait_impl_definition
+)))
+
+;; Trait-Impl-Axiom
+(assert
+ (tr_bound%core!cmp.PartialEq. $ TYPE%tuple%0. $ TYPE%tuple%0.)
+)
+
+;; Trait-Impl-Axiom
+(assert
+ (tr_bound%core!cmp.Eq. $ TYPE%tuple%0.)
+)
+
+;; Trait-Impl-Axiom
+(assert
+ (forall ((T&. Dcr) (T& Type)) (!
+   (tr_bound%core!cmp.PartialEq. $ (PTR T&. T&) $ (PTR T&. T&))
+   :pattern ((tr_bound%core!cmp.PartialEq. $ (PTR T&. T&) $ (PTR T&. T&)))
+   :qid internal_core__ptr__mut_ptr__impl&__3_trait_impl_definition
+   :skolemid skolem_internal_core__ptr__mut_ptr__impl&__3_trait_impl_definition
+)))
+
+;; Trait-Impl-Axiom
+(assert
+ (forall ((T&. Dcr) (T& Type)) (!
+   (tr_bound%core!cmp.Eq. $ (PTR T&. T&))
+   :pattern ((tr_bound%core!cmp.Eq. $ (PTR T&. T&)))
+   :qid internal_core__ptr__mut_ptr__impl&__4_trait_impl_definition
+   :skolemid skolem_internal_core__ptr__mut_ptr__impl&__4_trait_impl_definition
+)))
+
+;; Trait-Impl-Axiom
+(assert
+ (forall ((T&. Dcr) (T& Type) (U&. Dcr) (U& Type)) (!
+   (=>
+    (tr_bound%core!cmp.PartialEq. T&. T& U&. U&)
+    (tr_bound%core!cmp.PartialEq. $ (SLICE T&. T&) $ (SLICE U&. U&))
+   )
+   :pattern ((tr_bound%core!cmp.PartialEq. $ (SLICE T&. T&) $ (SLICE U&. U&)))
+   :qid internal_core__slice__cmp__impl&__0_trait_impl_definition
+   :skolemid skolem_internal_core__slice__cmp__impl&__0_trait_impl_definition
+)))
+
+;; Trait-Impl-Axiom
+(assert
+ (forall ((T&. Dcr) (T& Type)) (!
+   (=>
+    (tr_bound%core!cmp.Eq. T&. T&)
+    (tr_bound%core!cmp.Eq. $ (SLICE T&. T&))
+   )
+   :pattern ((tr_bound%core!cmp.Eq. $ (SLICE T&. T&)))
+   :qid internal_core__slice__cmp__impl&__1_trait_impl_definition
+   :skolemid skolem_internal_core__slice__cmp__impl&__1_trait_impl_definition
+)))
+
+;; Trait-Impl-Axiom
+(assert
+ (forall ((T&. Dcr) (T& Type)) (!
+   (tr_bound%core!cmp.PartialEq. (CONST_PTR $) (PTR T&. T&) (CONST_PTR $) (PTR T&. T&))
+   :pattern ((tr_bound%core!cmp.PartialEq. (CONST_PTR $) (PTR T&. T&) (CONST_PTR $) (PTR
+      T&. T&
+   )))
+   :qid internal_core__ptr__const_ptr__impl&__3_trait_impl_definition
+   :skolemid skolem_internal_core__ptr__const_ptr__impl&__3_trait_impl_definition
+)))
+
+;; Trait-Impl-Axiom
+(assert
+ (forall ((T&. Dcr) (T& Type)) (!
+   (tr_bound%core!cmp.Eq. (CONST_PTR $) (PTR T&. T&))
+   :pattern ((tr_bound%core!cmp.Eq. (CONST_PTR $) (PTR T&. T&)))
+   :qid internal_core__ptr__const_ptr__impl&__4_trait_impl_definition
+   :skolemid skolem_internal_core__ptr__const_ptr__impl&__4_trait_impl_definition
+)))
+
+;; Trait-Impl-Axiom
+(assert
+ (forall ((T&. Dcr) (T& Type) (U&. Dcr) (U& Type) (N&. Dcr) (N& Type)) (!
+   (=>
+    (and
+     (uInv SZ (const_int N&))
+     (tr_bound%core!cmp.PartialEq. T&. T& U&. U&)
+    )
+    (tr_bound%core!cmp.PartialEq. $ (ARRAY T&. T& N&. N&) $ (ARRAY U&. U& N&. N&))
+   )
+   :pattern ((tr_bound%core!cmp.PartialEq. $ (ARRAY T&. T& N&. N&) $ (ARRAY U&. U& N&.
+      N&
+   )))
+   :qid internal_core__array__equality__impl&__0_trait_impl_definition
+   :skolemid skolem_internal_core__array__equality__impl&__0_trait_impl_definition
+)))
+
+;; Trait-Impl-Axiom
+(assert
+ (forall ((T&. Dcr) (T& Type) (N&. Dcr) (N& Type)) (!
+   (=>
+    (and
+     (uInv SZ (const_int N&))
+     (tr_bound%core!cmp.Eq. T&. T&)
+    )
+    (tr_bound%core!cmp.Eq. $ (ARRAY T&. T& N&. N&))
+   )
+   :pattern ((tr_bound%core!cmp.Eq. $ (ARRAY T&. T& N&. N&)))
+   :qid internal_core__array__equality__impl&__7_trait_impl_definition
+   :skolemid skolem_internal_core__array__equality__impl&__7_trait_impl_definition
+)))
+
+;; Trait-Impl-Axiom
+(assert
+ (forall ((T&. Dcr) (T& Type)) (!
+   (tr_bound%core!marker.Freeze. (CONST_PTR $) (PTR T&. T&))
+   :pattern ((tr_bound%core!marker.Freeze. (CONST_PTR $) (PTR T&. T&)))
+   :qid internal_core__marker__impl&__59_trait_impl_definition
+   :skolemid skolem_internal_core__marker__impl&__59_trait_impl_definition
+)))
+
+;; Trait-Impl-Axiom
+(assert
+ (forall ((T&. Dcr) (T& Type)) (!
+   (tr_bound%core!marker.Freeze. (REF T&.) T&)
+   :pattern ((tr_bound%core!marker.Freeze. (REF T&.) T&))
+   :qid internal_core__marker__impl&__61_trait_impl_definition
+   :skolemid skolem_internal_core__marker__impl&__61_trait_impl_definition
+)))
+
+;; Trait-Impl-Axiom
+(assert
+ (forall ((T&. Dcr) (T& Type)) (!
+   (tr_bound%core!marker.Freeze. $ (PTR T&. T&))
+   :pattern ((tr_bound%core!marker.Freeze. $ (PTR T&. T&)))
+   :qid internal_core__marker__impl&__60_trait_impl_definition
+   :skolemid skolem_internal_core__marker__impl&__60_trait_impl_definition
+)))
+
+;; Trait-Impl-Axiom
+(assert
+ (forall ((T&. Dcr) (T& Type)) (!
+   (tr_bound%core!fmt.Debug. $ (PTR T&. T&))
+   :pattern ((tr_bound%core!fmt.Debug. $ (PTR T&. T&)))
+   :qid internal_core__fmt__impl&__23_trait_impl_definition
+   :skolemid skolem_internal_core__fmt__impl&__23_trait_impl_definition
+)))
+
+;; Trait-Impl-Axiom
+(assert
+ (tr_bound%core!fmt.Debug. $ (UINT 16))
+)
+
+;; Trait-Impl-Axiom
+(assert
+ (tr_bound%core!fmt.Debug. $ (UINT SZ))
+)
+
+;; Trait-Impl-Axiom
+(assert
+ (forall ((T&. Dcr) (T& Type)) (!
+   (=>
+    (tr_bound%core!fmt.Debug. T&. T&)
+    (tr_bound%core!fmt.Debug. (REF T&.) T&)
+   )
+   :pattern ((tr_bound%core!fmt.Debug. (REF T&.) T&))
+   :qid internal_core__fmt__impl&__51_trait_impl_definition
+   :skolemid skolem_internal_core__fmt__impl&__51_trait_impl_definition
+)))
+
+;; Trait-Impl-Axiom
+(assert
+ (tr_bound%core!fmt.Debug. $ (UINT 8))
+)
+
+;; Trait-Impl-Axiom
+(assert
+ (tr_bound%core!fmt.Debug. $ TYPE%tuple%0.)
+)
+
+;; Trait-Impl-Axiom
+(assert
+ (forall ((T&. Dcr) (T& Type)) (!
+   (=>
+    (tr_bound%core!fmt.Debug. T&. T&)
+    (tr_bound%core!fmt.Debug. $ (SLICE T&. T&))
+   )
+   :pattern ((tr_bound%core!fmt.Debug. $ (SLICE T&. T&)))
+   :qid internal_core__fmt__impl&__24_trait_impl_definition
+   :skolemid skolem_internal_core__fmt__impl&__24_trait_impl_definition
+)))
+
+;; Trait-Impl-Axiom
+(assert
+ (forall ((T&. Dcr) (T& Type)) (!
+   (tr_bound%core!fmt.Debug. (CONST_PTR $) (PTR T&. T&))
+   :pattern ((tr_bound%core!fmt.Debug. (CONST_PTR $) (PTR T&. T&)))
+   :qid internal_core__fmt__impl&__22_trait_impl_definition
+   :skolemid skolem_internal_core__fmt__impl&__22_trait_impl_definition
+)))
+
+;; Trait-Impl-Axiom
+(assert
+ (tr_bound%core!fmt.Debug. $ BOOL)
+)
+
+;; Trait-Impl-Axiom
+(assert
+ (tr_bound%core!fmt.Debug. $ (UINT 64))
+)
+
+;; Trait-Impl-Axiom
+(assert
+ (forall ((T&. Dcr) (T& Type) (N&. Dcr) (N& Type)) (!
+   (=>
+    (and
+     (uInv SZ (const_int N&))
+     (tr_bound%core!fmt.Debug. T&. T&)
+    )
+    (tr_bound%core!fmt.Debug. $ (ARRAY T&. T& N&. N&))
+   )
+   :pattern ((tr_bound%core!fmt.Debug. $ (ARRAY T&. T& N&. N&)))
+   :qid internal_core__array__impl&__12_trait_impl_definition
+   :skolemid skolem_internal_core__array__impl&__12_trait_impl_definition
+)))
+
+;; Trait-Impl-Axiom
+(assert
+ (tr_bound%core!fmt.Debug. $ ALLOCATOR_GLOBAL)
+)
+
+;; Trait-Impl-Axiom
+(assert
+ (forall ((A&. Dcr) (A& Type)) (!
+   (=>
+    (tr_bound%core!alloc.Allocator. A&. A&)
+    (tr_bound%core!alloc.Allocator. (REF A&.) A&)
+   )
+   :pattern ((tr_bound%core!alloc.Allocator. (REF A&.) A&))
+   :qid internal_core__alloc__impl&__2_trait_impl_definition
+   :skolemid skolem_internal_core__alloc__impl&__2_trait_impl_definition
+)))
+
+;; Trait-Impl-Axiom
+(assert
+ (tr_bound%core!alloc.Allocator. $ ALLOCATOR_GLOBAL)
+)
+
+;; Trait-Impl-Axiom
+(assert
+ (forall ((T&. Dcr) (T& Type) (U&. Dcr) (U& Type) (N&. Dcr) (N& Type)) (!
+   (=>
+    (and
+     (uInv SZ (const_int N&))
+     (tr_bound%core!cmp.PartialEq. T&. T& U&. U&)
+    )
+    (tr_bound%core!cmp.PartialEq. (REF $) (SLICE T&. T&) $ (ARRAY U&. U& N&. N&))
+   )
+   :pattern ((tr_bound%core!cmp.PartialEq. (REF $) (SLICE T&. T&) $ (ARRAY U&. U& N&. N&)))
+   :qid internal_core__array__equality__impl&__4_trait_impl_definition
+   :skolemid skolem_internal_core__array__equality__impl&__4_trait_impl_definition
+)))
+
+;; Trait-Impl-Axiom
+(assert
+ (forall ((T&. Dcr) (T& Type) (U&. Dcr) (U& Type) (N&. Dcr) (N& Type)) (!
+   (=>
+    (and
+     (uInv SZ (const_int N&))
+     (tr_bound%core!cmp.PartialEq. T&. T& U&. U&)
+    )
+    (tr_bound%core!cmp.PartialEq. $ (ARRAY T&. T& N&. N&) $ (SLICE U&. U&))
+   )
+   :pattern ((tr_bound%core!cmp.PartialEq. $ (ARRAY T&. T& N&. N&) $ (SLICE U&. U&)))
+   :qid internal_core__array__equality__impl&__1_trait_impl_definition
+   :skolemid skolem_internal_core__array__equality__impl&__1_trait_impl_definition
+)))
+
+;; Trait-Impl-Axiom
+(assert
+ (forall ((T&. Dcr) (T& Type) (U&. Dcr) (U& Type) (N&. Dcr) (N& Type)) (!
+   (=>
+    (and
+     (uInv SZ (const_int N&))
+     (tr_bound%core!cmp.PartialEq. T&. T& U&. U&)
+    )
+    (tr_bound%core!cmp.PartialEq. $ (ARRAY T&. T& N&. N&) (REF $) (SLICE U&. U&))
+   )
+   :pattern ((tr_bound%core!cmp.PartialEq. $ (ARRAY T&. T& N&. N&) (REF $) (SLICE U&. U&)))
+   :qid internal_core__array__equality__impl&__3_trait_impl_definition
+   :skolemid skolem_internal_core__array__equality__impl&__3_trait_impl_definition
+)))
+
+;; Trait-Impl-Axiom
+(assert
+ (forall ((T&. Dcr) (T& Type) (U&. Dcr) (U& Type) (N&. Dcr) (N& Type)) (!
+   (=>
+    (and
+     (uInv SZ (const_int N&))
+     (tr_bound%core!cmp.PartialEq. T&. T& U&. U&)
+    )
+    (tr_bound%core!cmp.PartialEq. $ (SLICE T&. T&) $ (ARRAY U&. U& N&. N&))
+   )
+   :pattern ((tr_bound%core!cmp.PartialEq. $ (SLICE T&. T&) $ (ARRAY U&. U& N&. N&)))
+   :qid internal_core__array__equality__impl&__2_trait_impl_definition
+   :skolemid skolem_internal_core__array__equality__impl&__2_trait_impl_definition
+)))
+
+;; Trait-Impl-Axiom
+(assert
+ (forall ((A&. Dcr) (A& Type) (B&. Dcr) (B& Type)) (!
+   (=>
+    (tr_bound%core!cmp.PartialOrd. A&. A& B&. B&)
+    (tr_bound%core!cmp.PartialOrd. (REF A&.) A& (REF B&.) B&)
+   )
+   :pattern ((tr_bound%core!cmp.PartialOrd. (REF A&.) A& (REF B&.) B&))
+   :qid internal_core__cmp__impls__impl&__10_trait_impl_definition
+   :skolemid skolem_internal_core__cmp__impls__impl&__10_trait_impl_definition
+)))
+
+;; Trait-Impl-Axiom
+(assert
+ (tr_bound%core!cmp.PartialOrd. $ (UINT 8) $ (UINT 8))
+)
+
+;; Trait-Impl-Axiom
+(assert
+ (forall ((T&. Dcr) (T& Type)) (!
+   (tr_bound%core!cmp.PartialOrd. $ (PTR T&. T&) $ (PTR T&. T&))
+   :pattern ((tr_bound%core!cmp.PartialOrd. $ (PTR T&. T&) $ (PTR T&. T&)))
+   :qid internal_core__ptr__mut_ptr__impl&__6_trait_impl_definition
+   :skolemid skolem_internal_core__ptr__mut_ptr__impl&__6_trait_impl_definition
+)))
+
+;; Trait-Impl-Axiom
+(assert
+ (forall ((T&. Dcr) (T& Type)) (!
+   (=>
+    (tr_bound%core!cmp.PartialOrd. T&. T& T&. T&)
+    (tr_bound%core!cmp.PartialOrd. $ (SLICE T&. T&) $ (SLICE T&. T&))
+   )
+   :pattern ((tr_bound%core!cmp.PartialOrd. $ (SLICE T&. T&) $ (SLICE T&. T&)))
+   :qid internal_core__slice__cmp__impl&__3_trait_impl_definition
+   :skolemid skolem_internal_core__slice__cmp__impl&__3_trait_impl_definition
+)))
+
+;; Trait-Impl-Axiom
+(assert
+ (tr_bound%core!cmp.PartialOrd. $ (UINT 16) $ (UINT 16))
+)
+
+;; Trait-Impl-Axiom
+(assert
+ (tr_bound%core!cmp.PartialOrd. $ TYPE%tuple%0. $ TYPE%tuple%0.)
+)
+
+;; Trait-Impl-Axiom
+(assert
+ (forall ((T&. Dcr) (T& Type) (N&. Dcr) (N& Type)) (!
+   (=>
+    (and
+     (uInv SZ (const_int N&))
+     (tr_bound%core!cmp.PartialOrd. T&. T& T&. T&)
+    )
+    (tr_bound%core!cmp.PartialOrd. $ (ARRAY T&. T& N&. N&) $ (ARRAY T&. T& N&. N&))
+   )
+   :pattern ((tr_bound%core!cmp.PartialOrd. $ (ARRAY T&. T& N&. N&) $ (ARRAY T&. T& N&.
+      N&
+   )))
+   :qid internal_core__array__impl&__17_trait_impl_definition
+   :skolemid skolem_internal_core__array__impl&__17_trait_impl_definition
+)))
+
+;; Trait-Impl-Axiom
+(assert
+ (tr_bound%core!cmp.PartialOrd. $ BOOL $ BOOL)
+)
+
+;; Trait-Impl-Axiom
+(assert
+ (tr_bound%core!cmp.PartialOrd. $ (UINT SZ) $ (UINT SZ))
+)
+
+;; Trait-Impl-Axiom
+(assert
+ (forall ((T&. Dcr) (T& Type)) (!
+   (tr_bound%core!cmp.PartialOrd. (CONST_PTR $) (PTR T&. T&) (CONST_PTR $) (PTR T&. T&))
+   :pattern ((tr_bound%core!cmp.PartialOrd. (CONST_PTR $) (PTR T&. T&) (CONST_PTR $) (
+      PTR T&. T&
+   )))
+   :qid internal_core__ptr__const_ptr__impl&__6_trait_impl_definition
+   :skolemid skolem_internal_core__ptr__const_ptr__impl&__6_trait_impl_definition
+)))
+
+;; Trait-Impl-Axiom
+(assert
+ (tr_bound%core!cmp.PartialOrd. $ (UINT 64) $ (UINT 64))
+)
+
+;; Trait-Impl-Axiom
+(assert
+ (forall ((T&. Dcr) (T& Type)) (!
+   (tr_bound%core!cmp.Ord. $ (PTR T&. T&))
+   :pattern ((tr_bound%core!cmp.Ord. $ (PTR T&. T&)))
+   :qid internal_core__ptr__mut_ptr__impl&__5_trait_impl_definition
+   :skolemid skolem_internal_core__ptr__mut_ptr__impl&__5_trait_impl_definition
+)))
+
+;; Trait-Impl-Axiom
+(assert
+ (tr_bound%core!cmp.Ord. $ (UINT 64))
+)
+
+;; Trait-Impl-Axiom
+(assert
+ (tr_bound%core!cmp.Ord. $ (UINT SZ))
+)
+
+;; Trait-Impl-Axiom
+(assert
+ (forall ((T&. Dcr) (T& Type)) (!
+   (tr_bound%core!cmp.Ord. (CONST_PTR $) (PTR T&. T&))
+   :pattern ((tr_bound%core!cmp.Ord. (CONST_PTR $) (PTR T&. T&)))
+   :qid internal_core__ptr__const_ptr__impl&__5_trait_impl_definition
+   :skolemid skolem_internal_core__ptr__const_ptr__impl&__5_trait_impl_definition
+)))
+
+;; Trait-Impl-Axiom
+(assert
+ (tr_bound%core!cmp.Ord. $ (UINT 8))
+)
+
+;; Trait-Impl-Axiom
+(assert
+ (tr_bound%core!cmp.Ord. $ (UINT 16))
+)
+
+;; Trait-Impl-Axiom
+(assert
+ (tr_bound%core!cmp.Ord. $ BOOL)
+)
+
+;; Trait-Impl-Axiom
+(assert
+ (tr_bound%core!cmp.Ord. $ TYPE%tuple%0.)
+)
+
+;; Trait-Impl-Axiom
+(assert
+ (forall ((A&. Dcr) (A& Type)) (!
+   (=>
+    (tr_bound%core!cmp.Ord. A&. A&)
+    (tr_bound%core!cmp.Ord. (REF A&.) A&)
+   )
+   :pattern ((tr_bound%core!cmp.Ord. (REF A&.) A&))
+   :qid internal_core__cmp__impls__impl&__11_trait_impl_definition
+   :skolemid skolem_internal_core__cmp__impls__impl&__11_trait_impl_definition
+)))
+
+;; Trait-Impl-Axiom
+(assert
+ (forall ((T&. Dcr) (T& Type) (N&. Dcr) (N& Type)) (!
+   (=>
+    (and
+     (uInv SZ (const_int N&))
+     (tr_bound%core!cmp.Ord. T&. T&)
+    )
+    (tr_bound%core!cmp.Ord. $ (ARRAY T&. T& N&. N&))
+   )
+   :pattern ((tr_bound%core!cmp.Ord. $ (ARRAY T&. T& N&. N&)))
+   :qid internal_core__array__impl&__18_trait_impl_definition
+   :skolemid skolem_internal_core__array__impl&__18_trait_impl_definition
+)))
+
+;; Trait-Impl-Axiom
+(assert
+ (forall ((T&. Dcr) (T& Type)) (!
+   (=>
+    (tr_bound%core!cmp.Ord. T&. T&)
+    (tr_bound%core!cmp.Ord. $ (SLICE T&. T&))
+   )
+   :pattern ((tr_bound%core!cmp.Ord. $ (SLICE T&. T&)))
+   :qid internal_core__slice__cmp__impl&__2_trait_impl_definition
+   :skolemid skolem_internal_core__slice__cmp__impl&__2_trait_impl_definition
+)))
+
+;; Trait-Impl-Axiom
+(assert
+ (forall ((T&. Dcr) (T& Type)) (!
+   (=>
+    (tr_bound%core!hash.Hash. T&. T&)
+    (tr_bound%core!hash.Hash. (REF T&.) T&)
+   )
+   :pattern ((tr_bound%core!hash.Hash. (REF T&.) T&))
+   :qid internal_core__hash__impls__impl&__5_trait_impl_definition
+   :skolemid skolem_internal_core__hash__impls__impl&__5_trait_impl_definition
+)))
+
+;; Trait-Impl-Axiom
+(assert
+ (tr_bound%core!hash.Hash. $ (UINT 16))
+)
+
+;; Trait-Impl-Axiom
+(assert
+ (tr_bound%core!hash.Hash. $ (UINT SZ))
+)
+
+;; Trait-Impl-Axiom
+(assert
+ (tr_bound%core!hash.Hash. $ BOOL)
+)
+
+;; Trait-Impl-Axiom
+(assert
+ (forall ((T&. Dcr) (T& Type)) (!
+   (tr_bound%core!hash.Hash. (CONST_PTR $) (PTR T&. T&))
+   :pattern ((tr_bound%core!hash.Hash. (CONST_PTR $) (PTR T&. T&)))
+   :qid internal_core__hash__impls__impl&__7_trait_impl_definition
+   :skolemid skolem_internal_core__hash__impls__impl&__7_trait_impl_definition
+)))
+
+;; Trait-Impl-Axiom
+(assert
+ (forall ((T&. Dcr) (T& Type) (N&. Dcr) (N& Type)) (!
+   (=>
+    (and
+     (uInv SZ (const_int N&))
+     (tr_bound%core!hash.Hash. T&. T&)
+    )
+    (tr_bound%core!hash.Hash. $ (ARRAY T&. T& N&. N&))
+   )
+   :pattern ((tr_bound%core!hash.Hash. $ (ARRAY T&. T& N&. N&)))
+   :qid internal_core__array__impl&__11_trait_impl_definition
+   :skolemid skolem_internal_core__array__impl&__11_trait_impl_definition
+)))
+
+;; Trait-Impl-Axiom
+(assert
+ (tr_bound%core!hash.Hash. $ (UINT 8))
+)
+
+;; Trait-Impl-Axiom
+(assert
+ (tr_bound%core!hash.Hash. $ (UINT 64))
+)
+
+;; Trait-Impl-Axiom
+(assert
+ (tr_bound%core!hash.Hash. $ TYPE%tuple%0.)
+)
+
+;; Trait-Impl-Axiom
+(assert
+ (forall ((T&. Dcr) (T& Type)) (!
+   (=>
+    (tr_bound%core!hash.Hash. T&. T&)
+    (tr_bound%core!hash.Hash. $ (SLICE T&. T&))
+   )
+   :pattern ((tr_bound%core!hash.Hash. $ (SLICE T&. T&)))
+   :qid internal_core__hash__impls__impl&__4_trait_impl_definition
+   :skolemid skolem_internal_core__hash__impls__impl&__4_trait_impl_definition
+)))
+
+;; Trait-Impl-Axiom
+(assert
+ (forall ((T&. Dcr) (T& Type)) (!
+   (tr_bound%core!hash.Hash. $ (PTR T&. T&))
+   :pattern ((tr_bound%core!hash.Hash. $ (PTR T&. T&)))
+   :qid internal_core__hash__impls__impl&__8_trait_impl_definition
+   :skolemid skolem_internal_core__hash__impls__impl&__8_trait_impl_definition
+)))
+
+;; Trait-Impl-Axiom
+(assert
+ (tr_bound%core!clone.Clone. $ (UINT SZ))
+)
+
+;; Trait-Impl-Axiom
+(assert
+ (forall ((T&. Dcr) (T& Type) (N&. Dcr) (N& Type)) (!
+   (=>
+    (and
+     (uInv SZ (const_int N&))
+     (tr_bound%core!clone.Clone. T&. T&)
+    )
+    (tr_bound%core!clone.Clone. $ (ARRAY T&. T& N&. N&))
+   )
+   :pattern ((tr_bound%core!clone.Clone. $ (ARRAY T&. T& N&. N&)))
+   :qid internal_core__array__impl&__20_trait_impl_definition
+   :skolemid skolem_internal_core__array__impl&__20_trait_impl_definition
+)))
+
+;; Trait-Impl-Axiom
+(assert
+ (forall ((T&. Dcr) (T& Type)) (!
+   (tr_bound%core!clone.Clone. (CONST_PTR $) (PTR T&. T&))
+   :pattern ((tr_bound%core!clone.Clone. (CONST_PTR $) (PTR T&. T&)))
+   :qid internal_core__clone__impls__impl&__1_trait_impl_definition
+   :skolemid skolem_internal_core__clone__impls__impl&__1_trait_impl_definition
+)))
+
+;; Trait-Impl-Axiom
+(assert
+ (tr_bound%core!clone.Clone. $ (UINT 16))
+)
+
+;; Trait-Impl-Axiom
+(assert
+ (tr_bound%core!clone.Clone. $ (UINT 8))
+)
+
+;; Trait-Impl-Axiom
+(assert
+ (forall ((T&. Dcr) (T& Type)) (!
+   (tr_bound%core!clone.Clone. (REF T&.) T&)
+   :pattern ((tr_bound%core!clone.Clone. (REF T&.) T&))
+   :qid internal_core__clone__impls__impl&__3_trait_impl_definition
+   :skolemid skolem_internal_core__clone__impls__impl&__3_trait_impl_definition
+)))
+
+;; Trait-Impl-Axiom
+(assert
+ (tr_bound%core!clone.Clone. $ BOOL)
+)
+
+;; Trait-Impl-Axiom
+(assert
+ (forall ((T&. Dcr) (T& Type)) (!
+   (tr_bound%core!clone.Clone. $ (PTR T&. T&))
+   :pattern ((tr_bound%core!clone.Clone. $ (PTR T&. T&)))
+   :qid internal_core__clone__impls__impl&__2_trait_impl_definition
+   :skolemid skolem_internal_core__clone__impls__impl&__2_trait_impl_definition
+)))
+
+;; Trait-Impl-Axiom
+(assert
+ (tr_bound%core!clone.Clone. $ (UINT 64))
+)
+
+;; Trait-Impl-Axiom
+(assert
+ (tr_bound%core!clone.Clone. $ ALLOCATOR_GLOBAL)
+)
+
+;; Trait-Impl-Axiom
+(assert
+ (forall ((A&. Dcr) (A& Type)) (!
+   (tr_bound%core!clone.Clone. (TRACKED A&.) A&)
+   :pattern ((tr_bound%core!clone.Clone. (TRACKED A&.) A&))
+   :qid internal_builtin__impl&__4_trait_impl_definition
+   :skolemid skolem_internal_builtin__impl&__4_trait_impl_definition
+)))
+
+;; Trait-Impl-Axiom
+(assert
+ (forall ((A&. Dcr) (A& Type)) (!
+   (tr_bound%core!clone.Clone. (GHOST A&.) A&)
+   :pattern ((tr_bound%core!clone.Clone. (GHOST A&.) A&))
+   :qid internal_builtin__impl&__2_trait_impl_definition
+   :skolemid skolem_internal_builtin__impl&__2_trait_impl_definition
+)))
+
+;; Trait-Impl-Axiom
+(assert
+ (forall ((T&. Dcr) (T& Type) (A&. Dcr) (A& Type)) (!
+   (=>
+    (and
+     (tr_bound%core!clone.Clone. T&. T&)
+     (tr_bound%core!alloc.Allocator. A&. A&)
+     (tr_bound%core!clone.Clone. A&. A&)
+    )
+    (tr_bound%core!clone.Clone. (BOX A&. A& T&.) T&)
+   )
+   :pattern ((tr_bound%core!clone.Clone. (BOX A&. A& T&.) T&))
+   :qid internal_alloc__boxed__impl&__12_trait_impl_definition
+   :skolemid skolem_internal_alloc__boxed__impl&__12_trait_impl_definition
+)))
+
+;; Function-Def test_crate::test_mut_const_casts
+;; /home/runner/work/smt-logs/smt-logs/verus/verus/source/target/release/test_inputs/raw_ptrs-3e1b37f726a021e8-basics/test.rs:18:1: 18:36 (#0)
+(get-info :all-statistics)
+(push)
+ (declare-const x! ptr_mut%<u8.>.)
+ (declare-const tmp%1 Bool)
+ (declare-const tmp%2 Bool)
+ (declare-const y@ ptr_mut%<u8.>.)
+ (declare-const z@ ptr_mut%<u8.>.)
+ (assert
+  fuel_defaults
+ )
+ ;; assertion failed
+ (declare-const %%location_label%%0 Bool)
+ ;; assertion failed
+ (declare-const %%location_label%%1 Bool)
+ (assert
+  (not (=>
+    (= y@ x!)
+    (=>
+     (= z@ y@)
+     (=>
+      (= tmp%1 (= z@ x!))
+      (and
+       (=>
+        %%location_label%%0
+        tmp%1
+       )
+       (=>
+        tmp%1
+        (=>
+         (= tmp%2 (= z@ y@))
+         (=>
+          %%location_label%%1
+          tmp%2
+ )))))))))
+ (get-info :version)
+ (set-option :rlimit 30000000)
+ (check-sat)
+ (set-option :rlimit 0)
+(pop)
+
+;; Function-Def test_crate::test_addr_doesnt_imply_eq
+;; /home/runner/work/smt-logs/smt-logs/verus/verus/source/target/release/test_inputs/raw_ptrs-3e1b37f726a021e8-basics/test.rs:25:1: 25:53 (#0)
+(get-info :all-statistics)
+(push)
+ (declare-const x! ptr_mut%<u8.>.)
+ (declare-const y! ptr_mut%<u8.>.)
+ (declare-const tmp%1 Bool)
+ (assert
+  fuel_defaults
+ )
+ ;; assertion failed
+ (declare-const %%location_label%%0 Bool)
+ (assert
+  (not (=>
+    (= (vstd!raw_ptr.PtrData./PtrData/addr (%Poly%vstd!raw_ptr.PtrData. (vstd!view.View.view.?
+        $ (PTR $ (UINT 8)) (Poly%ptr_mut%<u8.>. x!)
+      ))
+     ) (vstd!raw_ptr.PtrData./PtrData/addr (%Poly%vstd!raw_ptr.PtrData. (vstd!view.View.view.?
+        $ (PTR $ (UINT 8)) (Poly%ptr_mut%<u8.>. y!)
+    ))))
+    (=>
+     (= tmp%1 (= x! y!))
+     (=>
+      %%location_label%%0
+      tmp%1
+ )))))
+ (get-info :version)
+ (set-option :rlimit 30000000)
+ (check-sat)
+ (set-option :rlimit 0)
+ (get-info :reason-unknown)
+ (get-model)
+ (assert
+  (not %%location_label%%0)
+ )
+ (get-info :version)
+ (set-option :rlimit 30000000)
+ (check-sat)
+ (set-option :rlimit 0)
+(pop)
+
+;; Function-Recommends test_crate::test_addr_doesnt_imply_eq
+;; /home/runner/work/smt-logs/smt-logs/verus/verus/source/target/release/test_inputs/raw_ptrs-3e1b37f726a021e8-basics/test.rs:25:1: 25:53 (#0)
+(get-info :all-statistics)
+(push)
+ (declare-const x! ptr_mut%<u8.>.)
+ (declare-const y! ptr_mut%<u8.>.)
+ (assert
+  fuel_defaults
+ )
+ (assert
+  (not true)
+ )
+ (get-info :version)
+ (set-option :rlimit 30000000)
+ (check-sat)
+ (set-option :rlimit 0)
+(pop)
+
+;; Function-Def test_crate::test_view_does_imply_eq
+;; /home/runner/work/smt-logs/smt-logs/verus/verus/source/target/release/test_inputs/raw_ptrs-3e1b37f726a021e8-basics/test.rs:30:1: 30:51 (#0)
+(get-info :all-statistics)
+(push)
+ (declare-const x! ptr_mut%<u8.>.)
+ (declare-const y! ptr_mut%<u8.>.)
+ (declare-const tmp%1 Bool)
+ (assert
+  fuel_defaults
+ )
+ ;; assertion failed
+ (declare-const %%location_label%%0 Bool)
+ (assert
+  (not (=>
+    (= (vstd!view.View.view.? $ (PTR $ (UINT 8)) (Poly%ptr_mut%<u8.>. x!)) (vstd!view.View.view.?
+      $ (PTR $ (UINT 8)) (Poly%ptr_mut%<u8.>. y!)
+    ))
+    (=>
+     (= tmp%1 (= x! y!))
+     (=>
+      %%location_label%%0
+      tmp%1
+ )))))
+ (get-info :version)
+ (set-option :rlimit 30000000)
+ (check-sat)
+ (set-option :rlimit 0)
+(pop)
+
+;; Function-Def test_crate::test_view_does_imply_eq_const
+;; /home/runner/work/smt-logs/smt-logs/verus/verus/source/target/release/test_inputs/raw_ptrs-3e1b37f726a021e8-basics/test.rs:35:1: 35:61 (#0)
+(get-info :all-statistics)
+(push)
+ (declare-const x! ptr_mut%<u8.>.)
+ (declare-const y! ptr_mut%<u8.>.)
+ (declare-const tmp%1 Bool)
+ (assert
+  fuel_defaults
+ )
+ ;; assertion failed
+ (declare-const %%location_label%%0 Bool)
+ (assert
+  (not (=>
+    (= (vstd!view.View.view.? $ (PTR $ (UINT 8)) (Poly%ptr_mut%<u8.>. x!)) (vstd!view.View.view.?
+      $ (PTR $ (UINT 8)) (Poly%ptr_mut%<u8.>. y!)
+    ))
+    (=>
+     (= tmp%1 (= x! y!))
+     (=>
+      %%location_label%%0
+      tmp%1
+ )))))
+ (get-info :version)
+ (set-option :rlimit 30000000)
+ (check-sat)
+ (set-option :rlimit 0)
+(pop)
+
+;; Function-Def test_crate::test_null
+;; /home/runner/work/smt-logs/smt-logs/verus/verus/source/target/release/test_inputs/raw_ptrs-3e1b37f726a021e8-basics/test.rs:40:1: 40:15 (#0)
+(get-info :all-statistics)
+(push)
+ (declare-const no%param Int)
+ (declare-const tmp%1 Poly)
+ (declare-const tmp%2 Poly)
+ (declare-const tmp%3 Bool)
+ (declare-const tmp%4 Bool)
+ (declare-const x@ ptr_mut%<u8.>.)
+ (declare-const y@ ptr_mut%<u8.>.)
+ (assert
+  fuel_defaults
+ )
+ ;; assertion failed
+ (declare-const %%location_label%%0 Bool)
+ ;; assertion failed
+ (declare-const %%location_label%%1 Bool)
+ (assert
+  (not (=>
+    (ens%core!ptr.null. $ (UINT 8) tmp%1)
+    (=>
+     (= x@ (%Poly%ptr_mut%<u8.>. tmp%1))
+     (=>
+      (ens%core!ptr.null_mut. $ (UINT 8) tmp%2)
+      (=>
+       (= y@ (%Poly%ptr_mut%<u8.>. tmp%2))
+       (=>
+        (= tmp%3 (= x@ y@))
+        (and
+         (=>
+          %%location_label%%0
+          tmp%3
+         )
+         (=>
+          tmp%3
+          (=>
+           (= tmp%4 (= (vstd!raw_ptr.PtrData./PtrData/addr (%Poly%vstd!raw_ptr.PtrData. (vstd!view.View.view.?
+                $ (PTR $ (UINT 8)) (Poly%ptr_mut%<u8.>. x@)
+              ))
+             ) 0
+           ))
+           (=>
+            %%location_label%%1
+            tmp%4
+ )))))))))))
+ (get-info :version)
+ (set-option :rlimit 30000000)
+ (check-sat)
+ (set-option :rlimit 0)
+(pop)
+
+;; Function-Def test_crate::test_manipulating
+;; /home/runner/work/smt-logs/smt-logs/verus/verus/source/target/release/test_inputs/raw_ptrs-3e1b37f726a021e8-basics/test.rs:47:1: 47:69 (#0)
+(get-info :all-statistics)
+(push)
+ (declare-const x! ptr_mut%<u8.>.)
+ (declare-const pt! vstd!raw_ptr.PointsTo<u8.>.)
+ (declare-const verus_tmp_pt@0 vstd!raw_ptr.PointsTo<u8.>.)
+ (declare-const tmp%1 Bool)
+ (declare-const tmp%2 Bool)
+ (declare-const tmp%3 Bool)
+ (declare-const tmp%4 Poly)
+ (declare-const tmp%5 Bool)
+ (declare-const tmp%6 Poly)
+ (declare-const tmp%7 Bool)
+ (declare-const tmp%8 Bool)
+ (declare-const tmp%9 Bool)
+ (declare-const verus_tmp@ vstd!raw_ptr.PointsTo<u8.>.)
+ (declare-const pt@0 vstd!raw_ptr.PointsTo<u8.>.)
+ (declare-const val@ Int)
+ (declare-const val$1@ Int)
+ (assert
+  fuel_defaults
+ )
+ (declare-const pt@1 vstd!raw_ptr.PointsTo<u8.>.)
+ (declare-const pt@2 vstd!raw_ptr.PointsTo<u8.>.)
+ (declare-const pt@3 vstd!raw_ptr.PointsTo<u8.>.)
+ ;; precondition not satisfied
+ (declare-const %%location_label%%0 Bool)
+ ;; assertion failed
+ (declare-const %%location_label%%1 Bool)
+ ;; assertion failed
+ (declare-const %%location_label%%2 Bool)
+ ;; assertion failed
+ (declare-const %%location_label%%3 Bool)
+ ;; precondition not satisfied
+ (declare-const %%location_label%%4 Bool)
+ ;; assertion failed
+ (declare-const %%location_label%%5 Bool)
+ ;; precondition not satisfied
+ (declare-const %%location_label%%6 Bool)
+ ;; assertion failed
+ (declare-const %%location_label%%7 Bool)
+ ;; assertion failed
+ (declare-const %%location_label%%8 Bool)
+ ;; assertion failed
+ (declare-const %%location_label%%9 Bool)
+ (assert
+  (not (=>
+    (= verus_tmp@ pt!)
+    (=>
+     (= verus_tmp_pt@0 verus_tmp@)
+     (=>
+      (= pt@1 verus_tmp_pt@0)
+      (=>
+       (= x! (%Poly%ptr_mut%<u8.>. (vstd!raw_ptr.PointsToData./PointsToData/ptr (%Poly%vstd!raw_ptr.PointsToData.
+           (vstd!view.View.view.? $ (TYPE%vstd!raw_ptr.PointsTo. $ (UINT 8)) (Poly%vstd!raw_ptr.PointsTo<u8.>.
+             pt@1
+       ))))))
+       (=>
+        (is-vstd!raw_ptr.MemContents./Uninit (vstd!raw_ptr.PointsToData./PointsToData/opt_value
+          (%Poly%vstd!raw_ptr.PointsToData. (vstd!view.View.view.? $ (TYPE%vstd!raw_ptr.PointsTo.
+             $ (UINT 8)
+            ) (Poly%vstd!raw_ptr.PointsTo<u8.>. pt@1)
+        ))))
+        (and
+         (=>
+          %%location_label%%0
+          (req%vstd!raw_ptr.ptr_mut_write. $ (UINT 8) (Poly%ptr_mut%<u8.>. x!) (Poly%vstd!raw_ptr.PointsTo<u8.>.
+            pt@1
+           ) (I 20)
+         ))
+         (=>
+          (ens%vstd!raw_ptr.ptr_mut_write. $ (UINT 8) (Poly%ptr_mut%<u8.>. x!) (Poly%vstd!raw_ptr.PointsTo<u8.>.
+            pt@1
+           ) (Poly%vstd!raw_ptr.PointsTo<u8.>. pt@2) (I 20)
+          )
+          (=>
+           (= tmp%1 (= x! (%Poly%ptr_mut%<u8.>. (vstd!raw_ptr.PointsToData./PointsToData/ptr (%Poly%vstd!raw_ptr.PointsToData.
+                (vstd!view.View.view.? $ (TYPE%vstd!raw_ptr.PointsTo. $ (UINT 8)) (Poly%vstd!raw_ptr.PointsTo<u8.>.
+                  pt@2
+           )))))))
+           (and
+            (=>
+             %%location_label%%1
+             tmp%1
+            )
+            (=>
+             tmp%1
+             (=>
+              (= tmp%2 (is-vstd!raw_ptr.MemContents./Init (vstd!raw_ptr.PointsToData./PointsToData/opt_value
+                 (%Poly%vstd!raw_ptr.PointsToData. (vstd!view.View.view.? $ (TYPE%vstd!raw_ptr.PointsTo.
+                    $ (UINT 8)
+                   ) (Poly%vstd!raw_ptr.PointsTo<u8.>. pt@2)
+              )))))
+              (and
+               (=>
+                %%location_label%%2
+                tmp%2
+               )
+               (=>
+                tmp%2
+                (=>
+                 (= tmp%3 (= (%I (vstd!raw_ptr.MemContents./Init/0 (%Poly%vstd!raw_ptr.MemContents. (Poly%vstd!raw_ptr.MemContents.
+                       (vstd!raw_ptr.PointsToData./PointsToData/opt_value (%Poly%vstd!raw_ptr.PointsToData.
+                         (vstd!view.View.view.? $ (TYPE%vstd!raw_ptr.PointsTo. $ (UINT 8)) (Poly%vstd!raw_ptr.PointsTo<u8.>.
+                           pt@2
+                    )))))))
+                   ) 20
+                 ))
+                 (and
+                  (=>
+                   %%location_label%%3
+                   tmp%3
+                  )
+                  (=>
+                   tmp%3
+                   (and
+                    (=>
+                     %%location_label%%4
+                     (req%vstd!raw_ptr.ptr_ref. $ (UINT 8) (Poly%ptr_mut%<u8.>. x!) (Poly%vstd!raw_ptr.PointsTo<u8.>.
+                       pt@2
+                    )))
+                    (=>
+                     (ens%vstd!raw_ptr.ptr_ref. $ (UINT 8) (Poly%ptr_mut%<u8.>. x!) (Poly%vstd!raw_ptr.PointsTo<u8.>.
+                       pt@2
+                      ) tmp%4
+                     )
+                     (=>
+                      (= val@ (%I tmp%4))
+                      (=>
+                       (= tmp%5 (= val@ 20))
+                       (and
+                        (=>
+                         %%location_label%%5
+                         tmp%5
+                        )
+                        (=>
+                         tmp%5
+                         (and
+                          (=>
+                           %%location_label%%6
+                           (req%vstd!raw_ptr.ptr_mut_read. $ (UINT 8) (Poly%ptr_mut%<u8.>. x!) (Poly%vstd!raw_ptr.PointsTo<u8.>.
+                             pt@2
+                          )))
+                          (=>
+                           (ens%vstd!raw_ptr.ptr_mut_read. $ (UINT 8) (Poly%ptr_mut%<u8.>. x!) (Poly%vstd!raw_ptr.PointsTo<u8.>.
+                             pt@2
+                            ) (Poly%vstd!raw_ptr.PointsTo<u8.>. pt@3) tmp%6
+                           )
+                           (=>
+                            (= val$1@ (%I tmp%6))
+                            (=>
+                             (= tmp%7 (= val$1@ 20))
+                             (and
+                              (=>
+                               %%location_label%%7
+                               tmp%7
+                              )
+                              (=>
+                               tmp%7
+                               (=>
+                                (= tmp%8 (= x! (%Poly%ptr_mut%<u8.>. (vstd!raw_ptr.PointsToData./PointsToData/ptr (%Poly%vstd!raw_ptr.PointsToData.
+                                     (vstd!view.View.view.? $ (TYPE%vstd!raw_ptr.PointsTo. $ (UINT 8)) (Poly%vstd!raw_ptr.PointsTo<u8.>.
+                                       pt@3
+                                )))))))
+                                (and
+                                 (=>
+                                  %%location_label%%8
+                                  tmp%8
+                                 )
+                                 (=>
+                                  tmp%8
+                                  (=>
+                                   (= tmp%9 (is-vstd!raw_ptr.MemContents./Uninit (vstd!raw_ptr.PointsToData./PointsToData/opt_value
+                                      (%Poly%vstd!raw_ptr.PointsToData. (vstd!view.View.view.? $ (TYPE%vstd!raw_ptr.PointsTo.
+                                         $ (UINT 8)
+                                        ) (Poly%vstd!raw_ptr.PointsTo<u8.>. pt@3)
+                                   )))))
+                                   (=>
+                                    %%location_label%%9
+                                    tmp%9
+ )))))))))))))))))))))))))))))))))))
+ (get-info :version)
+ (set-option :rlimit 30000000)
+ (check-sat)
+ (set-option :rlimit 0)
+(pop)
+
+;; Function-Def test_crate::test_manipulating2
+;; /home/runner/work/smt-logs/smt-logs/verus/verus/source/target/release/test_inputs/raw_ptrs-3e1b37f726a021e8-basics/test.rs:70:1: 70:70 (#0)
+(get-info :all-statistics)
+(push)
+ (declare-const x! ptr_mut%<u8.>.)
+ (declare-const pt! vstd!raw_ptr.PointsTo<u8.>.)
+ (declare-const verus_tmp_pt@0 vstd!raw_ptr.PointsTo<u8.>.)
+ (declare-const tmp%1 Bool)
+ (declare-const tmp%2 Bool)
+ (declare-const tmp%3 Bool)
+ (declare-const tmp%4 Poly)
+ (declare-const tmp%5 Bool)
+ (declare-const tmp%6 Poly)
+ (declare-const tmp%7 Bool)
+ (declare-const tmp%8 Bool)
+ (declare-const tmp%9 Bool)
+ (declare-const verus_tmp@ vstd!raw_ptr.PointsTo<u8.>.)
+ (declare-const pt@0 vstd!raw_ptr.PointsTo<u8.>.)
+ (declare-const val@ Int)
+ (declare-const val$1@ Int)
+ (assert
+  fuel_defaults
+ )
+ (declare-const pt@1 vstd!raw_ptr.PointsTo<u8.>.)
+ (declare-const pt@2 vstd!raw_ptr.PointsTo<u8.>.)
+ (declare-const pt@3 vstd!raw_ptr.PointsTo<u8.>.)
+ ;; precondition not satisfied
+ (declare-const %%location_label%%0 Bool)
+ ;; assertion failed
+ (declare-const %%location_label%%1 Bool)
+ ;; assertion failed
+ (declare-const %%location_label%%2 Bool)
+ ;; assertion failed
+ (declare-const %%location_label%%3 Bool)
+ ;; precondition not satisfied
+ (declare-const %%location_label%%4 Bool)
+ ;; assertion failed
+ (declare-const %%location_label%%5 Bool)
+ ;; precondition not satisfied
+ (declare-const %%location_label%%6 Bool)
+ ;; assertion failed
+ (declare-const %%location_label%%7 Bool)
+ ;; assertion failed
+ (declare-const %%location_label%%8 Bool)
+ ;; assertion failed
+ (declare-const %%location_label%%9 Bool)
+ ;; assertion failed
+ (declare-const %%location_label%%10 Bool)
+ (assert
+  (not (=>
+    (= verus_tmp@ pt!)
+    (=>
+     (= verus_tmp_pt@0 verus_tmp@)
+     (=>
+      (= pt@1 verus_tmp_pt@0)
+      (=>
+       (= x! (%Poly%ptr_mut%<u8.>. (vstd!raw_ptr.PointsToData./PointsToData/ptr (%Poly%vstd!raw_ptr.PointsToData.
+           (vstd!view.View.view.? $ (TYPE%vstd!raw_ptr.PointsTo. $ (UINT 8)) (Poly%vstd!raw_ptr.PointsTo<u8.>.
+             pt@1
+       ))))))
+       (=>
+        (is-vstd!raw_ptr.MemContents./Uninit (vstd!raw_ptr.PointsToData./PointsToData/opt_value
+          (%Poly%vstd!raw_ptr.PointsToData. (vstd!view.View.view.? $ (TYPE%vstd!raw_ptr.PointsTo.
+             $ (UINT 8)
+            ) (Poly%vstd!raw_ptr.PointsTo<u8.>. pt@1)
+        ))))
+        (and
+         (=>
+          %%location_label%%0
+          (req%vstd!raw_ptr.ptr_mut_write. $ (UINT 8) (Poly%ptr_mut%<u8.>. x!) (Poly%vstd!raw_ptr.PointsTo<u8.>.
+            pt@1
+           ) (I 20)
+         ))
+         (=>
+          (ens%vstd!raw_ptr.ptr_mut_write. $ (UINT 8) (Poly%ptr_mut%<u8.>. x!) (Poly%vstd!raw_ptr.PointsTo<u8.>.
+            pt@1
+           ) (Poly%vstd!raw_ptr.PointsTo<u8.>. pt@2) (I 20)
+          )
+          (=>
+           (= tmp%1 (= x! (%Poly%ptr_mut%<u8.>. (vstd!raw_ptr.PointsToData./PointsToData/ptr (%Poly%vstd!raw_ptr.PointsToData.
+                (vstd!view.View.view.? $ (TYPE%vstd!raw_ptr.PointsTo. $ (UINT 8)) (Poly%vstd!raw_ptr.PointsTo<u8.>.
+                  pt@2
+           )))))))
+           (and
+            (=>
+             %%location_label%%1
+             tmp%1
+            )
+            (=>
+             tmp%1
+             (=>
+              (= tmp%2 (is-vstd!raw_ptr.MemContents./Init (vstd!raw_ptr.PointsToData./PointsToData/opt_value
+                 (%Poly%vstd!raw_ptr.PointsToData. (vstd!view.View.view.? $ (TYPE%vstd!raw_ptr.PointsTo.
+                    $ (UINT 8)
+                   ) (Poly%vstd!raw_ptr.PointsTo<u8.>. pt@2)
+              )))))
+              (and
+               (=>
+                %%location_label%%2
+                tmp%2
+               )
+               (=>
+                tmp%2
+                (=>
+                 (= tmp%3 (= (%I (vstd!raw_ptr.MemContents./Init/0 (%Poly%vstd!raw_ptr.MemContents. (Poly%vstd!raw_ptr.MemContents.
+                       (vstd!raw_ptr.PointsToData./PointsToData/opt_value (%Poly%vstd!raw_ptr.PointsToData.
+                         (vstd!view.View.view.? $ (TYPE%vstd!raw_ptr.PointsTo. $ (UINT 8)) (Poly%vstd!raw_ptr.PointsTo<u8.>.
+                           pt@2
+                    )))))))
+                   ) 20
+                 ))
+                 (and
+                  (=>
+                   %%location_label%%3
+                   tmp%3
+                  )
+                  (=>
+                   tmp%3
+                   (and
+                    (=>
+                     %%location_label%%4
+                     (req%vstd!raw_ptr.ptr_ref. $ (UINT 8) (Poly%ptr_mut%<u8.>. x!) (Poly%vstd!raw_ptr.PointsTo<u8.>.
+                       pt@2
+                    )))
+                    (=>
+                     (ens%vstd!raw_ptr.ptr_ref. $ (UINT 8) (Poly%ptr_mut%<u8.>. x!) (Poly%vstd!raw_ptr.PointsTo<u8.>.
+                       pt@2
+                      ) tmp%4
+                     )
+                     (=>
+                      (= val@ (%I tmp%4))
+                      (=>
+                       (= tmp%5 (= val@ 20))
+                       (and
+                        (=>
+                         %%location_label%%5
+                         tmp%5
+                        )
+                        (=>
+                         tmp%5
+                         (and
+                          (=>
+                           %%location_label%%6
+                           (req%vstd!raw_ptr.ptr_mut_read. $ (UINT 8) (Poly%ptr_mut%<u8.>. x!) (Poly%vstd!raw_ptr.PointsTo<u8.>.
+                             pt@2
+                          )))
+                          (=>
+                           (ens%vstd!raw_ptr.ptr_mut_read. $ (UINT 8) (Poly%ptr_mut%<u8.>. x!) (Poly%vstd!raw_ptr.PointsTo<u8.>.
+                             pt@2
+                            ) (Poly%vstd!raw_ptr.PointsTo<u8.>. pt@3) tmp%6
+                           )
+                           (=>
+                            (= val$1@ (%I tmp%6))
+                            (=>
+                             (= tmp%7 (= val$1@ 20))
+                             (and
+                              (=>
+                               %%location_label%%7
+                               tmp%7
+                              )
+                              (=>
+                               tmp%7
+                               (=>
+                                (= tmp%8 (= x! (%Poly%ptr_mut%<u8.>. (vstd!raw_ptr.PointsToData./PointsToData/ptr (%Poly%vstd!raw_ptr.PointsToData.
+                                     (vstd!view.View.view.? $ (TYPE%vstd!raw_ptr.PointsTo. $ (UINT 8)) (Poly%vstd!raw_ptr.PointsTo<u8.>.
+                                       pt@3
+                                )))))))
+                                (and
+                                 (=>
+                                  %%location_label%%8
+                                  tmp%8
+                                 )
+                                 (=>
+                                  tmp%8
+                                  (=>
+                                   (= tmp%9 (is-vstd!raw_ptr.MemContents./Uninit (vstd!raw_ptr.PointsToData./PointsToData/opt_value
+                                      (%Poly%vstd!raw_ptr.PointsToData. (vstd!view.View.view.? $ (TYPE%vstd!raw_ptr.PointsTo.
+                                         $ (UINT 8)
+                                        ) (Poly%vstd!raw_ptr.PointsTo<u8.>. pt@3)
+                                   )))))
+                                   (and
+                                    (=>
+                                     %%location_label%%9
+                                     tmp%9
+                                    )
+                                    (=>
+                                     tmp%9
+                                     (=>
+                                      %%location_label%%10
+                                      false
+ )))))))))))))))))))))))))))))))))))))
+ (get-info :version)
+ (set-option :rlimit 30000000)
+ (check-sat)
+ (set-option :rlimit 0)
+ (get-info :reason-unknown)
+ (get-model)
+ (assert
+  (not %%location_label%%10)
+ )
+ (get-info :version)
+ (set-option :rlimit 30000000)
+ (check-sat)
+ (set-option :rlimit 0)
+(pop)
+
+;; Function-Recommends test_crate::test_manipulating2
+;; /home/runner/work/smt-logs/smt-logs/verus/verus/source/target/release/test_inputs/raw_ptrs-3e1b37f726a021e8-basics/test.rs:70:1: 70:70 (#0)
+(get-info :all-statistics)
+(push)
+ (declare-const x! ptr_mut%<u8.>.)
+ (declare-const pt! vstd!raw_ptr.PointsTo<u8.>.)
+ (declare-const verus_tmp_pt@0 vstd!raw_ptr.PointsTo<u8.>.)
+ (declare-const tmp%1 Poly)
+ (declare-const tmp%2 Poly)
+ (declare-const verus_tmp@ vstd!raw_ptr.PointsTo<u8.>.)
+ (declare-const pt@0 vstd!raw_ptr.PointsTo<u8.>.)
+ (declare-const val@ Int)
+ (declare-const val$1@ Int)
+ (assert
+  fuel_defaults
+ )
+ (declare-const pt@1 vstd!raw_ptr.PointsTo<u8.>.)
+ (declare-const pt@2 vstd!raw_ptr.PointsTo<u8.>.)
+ (declare-const pt@3 vstd!raw_ptr.PointsTo<u8.>.)
+ (assert
+  (not true)
+ )
+ (get-info :version)
+ (set-option :rlimit 30000000)
+ (check-sat)
+ (set-option :rlimit 0)
+(pop)
+
+;; Function-Def test_crate::test_ptr_mut_write_different
+;; /home/runner/work/smt-logs/smt-logs/verus/verus/source/target/release/test_inputs/raw_ptrs-3e1b37f726a021e8-basics/test.rs:95:1: 95:80 (#0)
+(get-info :all-statistics)
+(push)
+ (declare-const x! ptr_mut%<u8.>.)
+ (declare-const pt! vstd!raw_ptr.PointsTo<u8.>.)
+ (declare-const verus_tmp_pt@0 vstd!raw_ptr.PointsTo<u8.>.)
+ (declare-const verus_tmp@ vstd!raw_ptr.PointsTo<u8.>.)
+ (declare-const pt@0 vstd!raw_ptr.PointsTo<u8.>.)
+ (assert
+  fuel_defaults
+ )
+ (declare-const pt@1 vstd!raw_ptr.PointsTo<u8.>.)
+ (declare-const pt@2 vstd!raw_ptr.PointsTo<u8.>.)
+ ;; precondition not satisfied
+ (declare-const %%location_label%%0 Bool)
+ (assert
+  (not (=>
+    (= verus_tmp@ pt!)
+    (=>
+     (= verus_tmp_pt@0 verus_tmp@)
+     (=>
+      (= pt@1 verus_tmp_pt@0)
+      (=>
+       (is-vstd!raw_ptr.MemContents./Uninit (vstd!raw_ptr.PointsToData./PointsToData/opt_value
+         (%Poly%vstd!raw_ptr.PointsToData. (vstd!view.View.view.? $ (TYPE%vstd!raw_ptr.PointsTo.
+            $ (UINT 8)
+           ) (Poly%vstd!raw_ptr.PointsTo<u8.>. pt@1)
+       ))))
+       (=>
+        %%location_label%%0
+        (req%vstd!raw_ptr.ptr_mut_write. $ (UINT 8) (Poly%ptr_mut%<u8.>. x!) (Poly%vstd!raw_ptr.PointsTo<u8.>.
+          pt@1
+         ) (I 20)
+ ))))))))
+ (get-info :version)
+ (set-option :rlimit 30000000)
+ (check-sat)
+ (set-option :rlimit 0)
+ (get-info :reason-unknown)
+ (get-model)
+ (assert
+  (not %%location_label%%0)
+ )
+ (get-info :version)
+ (set-option :rlimit 30000000)
+ (check-sat)
+ (set-option :rlimit 0)
+(pop)
+
+;; Function-Recommends test_crate::test_ptr_mut_write_different
+;; /home/runner/work/smt-logs/smt-logs/verus/verus/source/target/release/test_inputs/raw_ptrs-3e1b37f726a021e8-basics/test.rs:95:1: 95:80 (#0)
+(get-info :all-statistics)
+(push)
+ (declare-const x! ptr_mut%<u8.>.)
+ (declare-const pt! vstd!raw_ptr.PointsTo<u8.>.)
+ (declare-const verus_tmp_pt@0 vstd!raw_ptr.PointsTo<u8.>.)
+ (declare-const verus_tmp@ vstd!raw_ptr.PointsTo<u8.>.)
+ (declare-const pt@0 vstd!raw_ptr.PointsTo<u8.>.)
+ (assert
+  fuel_defaults
+ )
+ (declare-const pt@1 vstd!raw_ptr.PointsTo<u8.>.)
+ (declare-const pt@2 vstd!raw_ptr.PointsTo<u8.>.)
+ (assert
+  (not true)
+ )
+ (get-info :version)
+ (set-option :rlimit 30000000)
+ (check-sat)
+ (set-option :rlimit 0)
+(pop)
+
+;; Function-Def test_crate::test_ptr_mut_read_different
+;; /home/runner/work/smt-logs/smt-logs/verus/verus/source/target/release/test_inputs/raw_ptrs-3e1b37f726a021e8-basics/test.rs:101:1: 101:79 (#0)
+(get-info :all-statistics)
+(push)
+ (declare-const x! ptr_mut%<u8.>.)
+ (declare-const pt! vstd!raw_ptr.PointsTo<u8.>.)
+ (declare-const verus_tmp_pt@0 vstd!raw_ptr.PointsTo<u8.>.)
+ (declare-const tmp%1 Poly)
+ (declare-const verus_tmp@ vstd!raw_ptr.PointsTo<u8.>.)
+ (declare-const pt@0 vstd!raw_ptr.PointsTo<u8.>.)
+ (declare-const tmp%%@ Int)
+ (assert
+  fuel_defaults
+ )
+ (declare-const pt@1 vstd!raw_ptr.PointsTo<u8.>.)
+ (declare-const pt@2 vstd!raw_ptr.PointsTo<u8.>.)
+ ;; precondition not satisfied
+ (declare-const %%location_label%%0 Bool)
+ (assert
+  (not (=>
+    (= verus_tmp@ pt!)
+    (=>
+     (= verus_tmp_pt@0 verus_tmp@)
+     (=>
+      (= pt@1 verus_tmp_pt@0)
+      (=>
+       (is-vstd!raw_ptr.MemContents./Init (vstd!raw_ptr.PointsToData./PointsToData/opt_value
+         (%Poly%vstd!raw_ptr.PointsToData. (vstd!view.View.view.? $ (TYPE%vstd!raw_ptr.PointsTo.
+            $ (UINT 8)
+           ) (Poly%vstd!raw_ptr.PointsTo<u8.>. pt@1)
+       ))))
+       (=>
+        %%location_label%%0
+        (req%vstd!raw_ptr.ptr_mut_read. $ (UINT 8) (Poly%ptr_mut%<u8.>. x!) (Poly%vstd!raw_ptr.PointsTo<u8.>.
+          pt@1
+ )))))))))
+ (get-info :version)
+ (set-option :rlimit 30000000)
+ (check-sat)
+ (set-option :rlimit 0)
+ (get-info :reason-unknown)
+ (get-model)
+ (assert
+  (not %%location_label%%0)
+ )
+ (get-info :version)
+ (set-option :rlimit 30000000)
+ (check-sat)
+ (set-option :rlimit 0)
+(pop)
+
+;; Function-Recommends test_crate::test_ptr_mut_read_different
+;; /home/runner/work/smt-logs/smt-logs/verus/verus/source/target/release/test_inputs/raw_ptrs-3e1b37f726a021e8-basics/test.rs:101:1: 101:79 (#0)
+(get-info :all-statistics)
+(push)
+ (declare-const x! ptr_mut%<u8.>.)
+ (declare-const pt! vstd!raw_ptr.PointsTo<u8.>.)
+ (declare-const verus_tmp_pt@0 vstd!raw_ptr.PointsTo<u8.>.)
+ (declare-const tmp%1 Poly)
+ (declare-const verus_tmp@ vstd!raw_ptr.PointsTo<u8.>.)
+ (declare-const pt@0 vstd!raw_ptr.PointsTo<u8.>.)
+ (declare-const tmp%%@ Int)
+ (assert
+  fuel_defaults
+ )
+ (declare-const pt@1 vstd!raw_ptr.PointsTo<u8.>.)
+ (declare-const pt@2 vstd!raw_ptr.PointsTo<u8.>.)
+ (assert
+  (not true)
+ )
+ (get-info :version)
+ (set-option :rlimit 30000000)
+ (check-sat)
+ (set-option :rlimit 0)
+(pop)
+
+;; Function-Def test_crate::test_ptr_ref_different
+;; /home/runner/work/smt-logs/smt-logs/verus/verus/source/target/release/test_inputs/raw_ptrs-3e1b37f726a021e8-basics/test.rs:107:1: 107:74 (#0)
+(get-info :all-statistics)
+(push)
+ (declare-const x! ptr_mut%<u8.>.)
+ (declare-const pt! vstd!raw_ptr.PointsTo<u8.>.)
+ (declare-const tmp%1 Poly)
+ (declare-const tmp%%@ Int)
+ (assert
+  fuel_defaults
+ )
+ ;; precondition not satisfied
+ (declare-const %%location_label%%0 Bool)
+ (assert
+  (not (=>
+    (is-vstd!raw_ptr.MemContents./Init (vstd!raw_ptr.PointsToData./PointsToData/opt_value
+      (%Poly%vstd!raw_ptr.PointsToData. (vstd!view.View.view.? $ (TYPE%vstd!raw_ptr.PointsTo.
+         $ (UINT 8)
+        ) (Poly%vstd!raw_ptr.PointsTo<u8.>. pt!)
+    ))))
+    (=>
+     %%location_label%%0
+     (req%vstd!raw_ptr.ptr_ref. $ (UINT 8) (Poly%ptr_mut%<u8.>. x!) (Poly%vstd!raw_ptr.PointsTo<u8.>.
+       pt!
+ ))))))
+ (get-info :version)
+ (set-option :rlimit 30000000)
+ (check-sat)
+ (set-option :rlimit 0)
+ (get-info :reason-unknown)
+ (get-model)
+ (assert
+  (not %%location_label%%0)
+ )
+ (get-info :version)
+ (set-option :rlimit 30000000)
+ (check-sat)
+ (set-option :rlimit 0)
+(pop)
+
+;; Function-Recommends test_crate::test_ptr_ref_different
+;; /home/runner/work/smt-logs/smt-logs/verus/verus/source/target/release/test_inputs/raw_ptrs-3e1b37f726a021e8-basics/test.rs:107:1: 107:74 (#0)
+(get-info :all-statistics)
+(push)
+ (declare-const x! ptr_mut%<u8.>.)
+ (declare-const pt! vstd!raw_ptr.PointsTo<u8.>.)
+ (declare-const tmp%1 Poly)
+ (declare-const tmp%%@ Int)
+ (assert
+  fuel_defaults
+ )
+ (assert
+  (not true)
+ )
+ (get-info :version)
+ (set-option :rlimit 30000000)
+ (check-sat)
+ (set-option :rlimit 0)
+(pop)
+
+;; Function-Def test_crate::test_ptr_mut_read_uninit
+;; /home/runner/work/smt-logs/smt-logs/verus/verus/source/target/release/test_inputs/raw_ptrs-3e1b37f726a021e8-basics/test.rs:112:1: 112:76 (#0)
+(get-info :all-statistics)
+(push)
+ (declare-const x! ptr_mut%<u8.>.)
+ (declare-const pt! vstd!raw_ptr.PointsTo<u8.>.)
+ (declare-const verus_tmp_pt@0 vstd!raw_ptr.PointsTo<u8.>.)
+ (declare-const tmp%1 Poly)
+ (declare-const verus_tmp@ vstd!raw_ptr.PointsTo<u8.>.)
+ (declare-const pt@0 vstd!raw_ptr.PointsTo<u8.>.)
+ (declare-const tmp%%@ Int)
+ (assert
+  fuel_defaults
+ )
+ (declare-const pt@1 vstd!raw_ptr.PointsTo<u8.>.)
+ (declare-const pt@2 vstd!raw_ptr.PointsTo<u8.>.)
+ ;; precondition not satisfied
+ (declare-const %%location_label%%0 Bool)
+ (assert
+  (not (=>
+    (= verus_tmp@ pt!)
+    (=>
+     (= verus_tmp_pt@0 verus_tmp@)
+     (=>
+      (= pt@1 verus_tmp_pt@0)
+      (=>
+       (= (%Poly%ptr_mut%<u8.>. (vstd!raw_ptr.PointsToData./PointsToData/ptr (%Poly%vstd!raw_ptr.PointsToData.
+           (vstd!view.View.view.? $ (TYPE%vstd!raw_ptr.PointsTo. $ (UINT 8)) (Poly%vstd!raw_ptr.PointsTo<u8.>.
+             pt@1
+         ))))
+        ) x!
+       )
+       (=>
+        %%location_label%%0
+        (req%vstd!raw_ptr.ptr_mut_read. $ (UINT 8) (Poly%ptr_mut%<u8.>. x!) (Poly%vstd!raw_ptr.PointsTo<u8.>.
+          pt@1
+ )))))))))
+ (get-info :version)
+ (set-option :rlimit 30000000)
+ (check-sat)
+ (set-option :rlimit 0)
+ (get-info :reason-unknown)
+ (get-model)
+ (assert
+  (not %%location_label%%0)
+ )
+ (get-info :version)
+ (set-option :rlimit 30000000)
+ (check-sat)
+ (set-option :rlimit 0)
+(pop)
+
+;; Function-Recommends test_crate::test_ptr_mut_read_uninit
+;; /home/runner/work/smt-logs/smt-logs/verus/verus/source/target/release/test_inputs/raw_ptrs-3e1b37f726a021e8-basics/test.rs:112:1: 112:76 (#0)
+(get-info :all-statistics)
+(push)
+ (declare-const x! ptr_mut%<u8.>.)
+ (declare-const pt! vstd!raw_ptr.PointsTo<u8.>.)
+ (declare-const verus_tmp_pt@0 vstd!raw_ptr.PointsTo<u8.>.)
+ (declare-const tmp%1 Poly)
+ (declare-const verus_tmp@ vstd!raw_ptr.PointsTo<u8.>.)
+ (declare-const pt@0 vstd!raw_ptr.PointsTo<u8.>.)
+ (declare-const tmp%%@ Int)
+ (assert
+  fuel_defaults
+ )
+ (declare-const pt@1 vstd!raw_ptr.PointsTo<u8.>.)
+ (declare-const pt@2 vstd!raw_ptr.PointsTo<u8.>.)
+ (assert
+  (not true)
+ )
+ (get-info :version)
+ (set-option :rlimit 30000000)
+ (check-sat)
+ (set-option :rlimit 0)
+(pop)
+
+;; Function-Def test_crate::test_ptr_ref_uninit
+;; /home/runner/work/smt-logs/smt-logs/verus/verus/source/target/release/test_inputs/raw_ptrs-3e1b37f726a021e8-basics/test.rs:118:1: 118:71 (#0)
+(get-info :all-statistics)
+(push)
+ (declare-const x! ptr_mut%<u8.>.)
+ (declare-const pt! vstd!raw_ptr.PointsTo<u8.>.)
+ (declare-const tmp%1 Poly)
+ (declare-const tmp%%@ Int)
+ (assert
+  fuel_defaults
+ )
+ ;; precondition not satisfied
+ (declare-const %%location_label%%0 Bool)
+ (assert
+  (not (=>
+    (= (%Poly%ptr_mut%<u8.>. (vstd!raw_ptr.PointsToData./PointsToData/ptr (%Poly%vstd!raw_ptr.PointsToData.
+        (vstd!view.View.view.? $ (TYPE%vstd!raw_ptr.PointsTo. $ (UINT 8)) (Poly%vstd!raw_ptr.PointsTo<u8.>.
+          pt!
+      ))))
+     ) x!
+    )
+    (=>
+     %%location_label%%0
+     (req%vstd!raw_ptr.ptr_ref. $ (UINT 8) (Poly%ptr_mut%<u8.>. x!) (Poly%vstd!raw_ptr.PointsTo<u8.>.
+       pt!
+ ))))))
+ (get-info :version)
+ (set-option :rlimit 30000000)
+ (check-sat)
+ (set-option :rlimit 0)
+ (get-info :reason-unknown)
+ (get-model)
+ (assert
+  (not %%location_label%%0)
+ )
+ (get-info :version)
+ (set-option :rlimit 30000000)
+ (check-sat)
+ (set-option :rlimit 0)
+(pop)
+
+;; Function-Recommends test_crate::test_ptr_ref_uninit
+;; /home/runner/work/smt-logs/smt-logs/verus/verus/source/target/release/test_inputs/raw_ptrs-3e1b37f726a021e8-basics/test.rs:118:1: 118:71 (#0)
+(get-info :all-statistics)
+(push)
+ (declare-const x! ptr_mut%<u8.>.)
+ (declare-const pt! vstd!raw_ptr.PointsTo<u8.>.)
+ (declare-const tmp%1 Poly)
+ (declare-const tmp%%@ Int)
+ (assert
+  fuel_defaults
+ )
+ (assert
+  (not true)
+ )
+ (get-info :version)
+ (set-option :rlimit 30000000)
+ (check-sat)
+ (set-option :rlimit 0)
+(pop)
+
+;; Function-Def test_crate::cast_test
+;; /home/runner/work/smt-logs/smt-logs/verus/verus/source/target/release/test_inputs/raw_ptrs-3e1b37f726a021e8-basics/test.rs:123:1: 123:25 (#0)
+(get-info :all-statistics)
+(push)
+ (declare-const x! ptr_mut%<u8.>.)
+ (declare-const tmp%1 Poly)
+ (declare-const tmp%2 Bool)
+ (declare-const tmp%3 Bool)
+ (declare-const tmp%4 Bool)
+ (declare-const y@ ptr_mut%<u16.>.)
+ (assert
+  fuel_defaults
+ )
+ ;; assertion failed
+ (declare-const %%location_label%%0 Bool)
+ ;; assertion failed
+ (declare-const %%location_label%%1 Bool)
+ ;; assertion failed
+ (declare-const %%location_label%%2 Bool)
+ (assert
+  (not (=>
+    (ens%vstd!raw_ptr.cast_ptr_to_thin_ptr. $ (UINT 8) $ (UINT 16) (Poly%ptr_mut%<u8.>.
+      x!
+     ) tmp%1
+    )
+    (=>
+     (= y@ (%Poly%ptr_mut%<u16.>. tmp%1))
+     (=>
+      (= tmp%2 (= (vstd!raw_ptr.PtrData./PtrData/addr (%Poly%vstd!raw_ptr.PtrData. (vstd!view.View.view.?
+           $ (PTR $ (UINT 16)) (Poly%ptr_mut%<u16.>. y@)
+         ))
+        ) (vstd!raw_ptr.PtrData./PtrData/addr (%Poly%vstd!raw_ptr.PtrData. (vstd!view.View.view.?
+           $ (PTR $ (UINT 8)) (Poly%ptr_mut%<u8.>. x!)
+      )))))
+      (and
+       (=>
+        %%location_label%%0
+        tmp%2
+       )
+       (=>
+        tmp%2
+        (=>
+         (= tmp%3 (= (vstd!raw_ptr.PtrData./PtrData/provenance (%Poly%vstd!raw_ptr.PtrData. (vstd!view.View.view.?
+              $ (PTR $ (UINT 16)) (Poly%ptr_mut%<u16.>. y@)
+            ))
+           ) (vstd!raw_ptr.PtrData./PtrData/provenance (%Poly%vstd!raw_ptr.PtrData. (vstd!view.View.view.?
+              $ (PTR $ (UINT 8)) (Poly%ptr_mut%<u8.>. x!)
+         )))))
+         (and
+          (=>
+           %%location_label%%1
+           tmp%3
+          )
+          (=>
+           tmp%3
+           (=>
+            (= tmp%4 (= (vstd!raw_ptr.PtrData./PtrData/metadata (%Poly%vstd!raw_ptr.PtrData. (vstd!view.View.view.?
+                 $ (PTR $ (UINT 16)) (Poly%ptr_mut%<u16.>. y@)
+               ))
+              ) vstd!raw_ptr.Metadata./Thin
+            ))
+            (=>
+             %%location_label%%2
+             tmp%4
+ ))))))))))))
+ (get-info :version)
+ (set-option :rlimit 30000000)
+ (check-sat)
+ (set-option :rlimit 0)
+(pop)
+
+;; Function-Def test_crate::cast_test2
+;; /home/runner/work/smt-logs/smt-logs/verus/verus/source/target/release/test_inputs/raw_ptrs-3e1b37f726a021e8-basics/test.rs:130:1: 130:28 (#0)
+(get-info :all-statistics)
+(push)
+ (declare-const x! ptr_mut%<slice%<u8.>.>.)
+ (declare-const tmp%1 Poly)
+ (declare-const tmp%2 Bool)
+ (declare-const tmp%3 Bool)
+ (declare-const tmp%4 Bool)
+ (declare-const y@ ptr_mut%<u16.>.)
+ (assert
+  fuel_defaults
+ )
+ ;; assertion failed
+ (declare-const %%location_label%%0 Bool)
+ ;; assertion failed
+ (declare-const %%location_label%%1 Bool)
+ ;; assertion failed
+ (declare-const %%location_label%%2 Bool)
+ (assert
+  (not (=>
+    (ens%vstd!raw_ptr.cast_ptr_to_thin_ptr. $ (SLICE $ (UINT 8)) $ (UINT 16) (Poly%ptr_mut%<slice%<u8.>.>.
+      x!
+     ) tmp%1
+    )
+    (=>
+     (= y@ (%Poly%ptr_mut%<u16.>. tmp%1))
+     (=>
+      (= tmp%2 (= (vstd!raw_ptr.PtrData./PtrData/addr (%Poly%vstd!raw_ptr.PtrData. (vstd!view.View.view.?
+           $ (PTR $ (UINT 16)) (Poly%ptr_mut%<u16.>. y@)
+         ))
+        ) (vstd!raw_ptr.PtrData./PtrData/addr (%Poly%vstd!raw_ptr.PtrData. (vstd!view.View.view.?
+           $ (PTR $ (SLICE $ (UINT 8))) (Poly%ptr_mut%<slice%<u8.>.>. x!)
+      )))))
+      (and
+       (=>
+        %%location_label%%0
+        tmp%2
+       )
+       (=>
+        tmp%2
+        (=>
+         (= tmp%3 (= (vstd!raw_ptr.PtrData./PtrData/provenance (%Poly%vstd!raw_ptr.PtrData. (vstd!view.View.view.?
+              $ (PTR $ (UINT 16)) (Poly%ptr_mut%<u16.>. y@)
+            ))
+           ) (vstd!raw_ptr.PtrData./PtrData/provenance (%Poly%vstd!raw_ptr.PtrData. (vstd!view.View.view.?
+              $ (PTR $ (SLICE $ (UINT 8))) (Poly%ptr_mut%<slice%<u8.>.>. x!)
+         )))))
+         (and
+          (=>
+           %%location_label%%1
+           tmp%3
+          )
+          (=>
+           tmp%3
+           (=>
+            (= tmp%4 (= (vstd!raw_ptr.PtrData./PtrData/metadata (%Poly%vstd!raw_ptr.PtrData. (vstd!view.View.view.?
+                 $ (PTR $ (UINT 16)) (Poly%ptr_mut%<u16.>. y@)
+               ))
+              ) vstd!raw_ptr.Metadata./Thin
+            ))
+            (=>
+             %%location_label%%2
+             tmp%4
+ ))))))))))))
+ (get-info :version)
+ (set-option :rlimit 30000000)
+ (check-sat)
+ (set-option :rlimit 0)
+(pop)
+
+;; Function-Def test_crate::cast_test3
+;; /home/runner/work/smt-logs/smt-logs/verus/verus/source/target/release/test_inputs/raw_ptrs-3e1b37f726a021e8-basics/test.rs:137:1: 137:33 (#0)
+(get-info :all-statistics)
+(push)
+ (declare-const x! Poly)
+ (declare-const tmp%1 Poly)
+ (declare-const tmp%2 Bool)
+ (declare-const tmp%3 Bool)
+ (declare-const tmp%4 Bool)
+ (declare-const y@ ptr_mut%<slice%<u64.>.>.)
+ (assert
+  fuel_defaults
+ )
+ (assert
+  (has_type x! (PTR $ (ARRAY $ (UINT 64) $ (CONST_INT 16))))
+ )
+ ;; assertion failed
+ (declare-const %%location_label%%0 Bool)
+ ;; assertion failed
+ (declare-const %%location_label%%1 Bool)
+ ;; assertion failed
+ (declare-const %%location_label%%2 Bool)
+ (assert
+  (not (=>
+    (ens%vstd!raw_ptr.cast_array_ptr_to_slice_ptr. $ (UINT 64) $ (CONST_INT 16) x! tmp%1)
+    (=>
+     (= y@ (%Poly%ptr_mut%<slice%<u64.>.>. tmp%1))
+     (=>
+      (= tmp%2 (= (vstd!raw_ptr.PtrData./PtrData/addr (%Poly%vstd!raw_ptr.PtrData. (vstd!view.View.view.?
+           $ (PTR $ (SLICE $ (UINT 64))) (Poly%ptr_mut%<slice%<u64.>.>. y@)
+         ))
+        ) (vstd!raw_ptr.PtrData./PtrData/addr (%Poly%vstd!raw_ptr.PtrData. (vstd!view.View.view.?
+           $ (PTR $ (ARRAY $ (UINT 64) $ (CONST_INT 16))) x!
+      )))))
+      (and
+       (=>
+        %%location_label%%0
+        tmp%2
+       )
+       (=>
+        tmp%2
+        (=>
+         (= tmp%3 (= (vstd!raw_ptr.PtrData./PtrData/provenance (%Poly%vstd!raw_ptr.PtrData. (vstd!view.View.view.?
+              $ (PTR $ (SLICE $ (UINT 64))) (Poly%ptr_mut%<slice%<u64.>.>. y@)
+            ))
+           ) (vstd!raw_ptr.PtrData./PtrData/provenance (%Poly%vstd!raw_ptr.PtrData. (vstd!view.View.view.?
+              $ (PTR $ (ARRAY $ (UINT 64) $ (CONST_INT 16))) x!
+         )))))
+         (and
+          (=>
+           %%location_label%%1
+           tmp%3
+          )
+          (=>
+           tmp%3
+           (=>
+            (= tmp%4 (= (vstd!raw_ptr.PtrData./PtrData/metadata (%Poly%vstd!raw_ptr.PtrData. (vstd!view.View.view.?
+                 $ (PTR $ (SLICE $ (UINT 64))) (Poly%ptr_mut%<slice%<u64.>.>. y@)
+               ))
+              ) (vstd!raw_ptr.Metadata./Length (%I (I 16)))
+            ))
+            (=>
+             %%location_label%%2
+             tmp%4
+ ))))))))))))
+ (get-info :version)
+ (set-option :rlimit 30000000)
+ (check-sat)
+ (set-option :rlimit 0)
+(pop)
+
+;; Function-Def test_crate::cast_proof_test
+;; /home/runner/work/smt-logs/smt-logs/verus/verus/source/target/release/test_inputs/raw_ptrs-3e1b37f726a021e8-basics/test.rs:144:7: 144:37 (#0)
+(get-info :all-statistics)
+(push)
+ (declare-const x! ptr_mut%<u8.>.)
+ (declare-const tmp%1 Bool)
+ (declare-const tmp%2 Bool)
+ (declare-const tmp%3 Bool)
+ (declare-const y@ ptr_mut%<u16.>.)
+ (assert
+  fuel_defaults
+ )
+ ;; assertion failed
+ (declare-const %%location_label%%0 Bool)
+ ;; assertion failed
+ (declare-const %%location_label%%1 Bool)
+ ;; assertion failed
+ (declare-const %%location_label%%2 Bool)
+ (assert
+  (not (=>
+    (= y@ (%Poly%ptr_mut%<u16.>. (vstd!raw_ptr.spec_cast_ptr_to_thin_ptr.? $ (UINT 8) $
+       (UINT 16) (Poly%ptr_mut%<u8.>. x!)
+    )))
+    (=>
+     (= tmp%1 (= (vstd!raw_ptr.PtrData./PtrData/addr (%Poly%vstd!raw_ptr.PtrData. (vstd!view.View.view.?
+          $ (PTR $ (UINT 16)) (Poly%ptr_mut%<u16.>. y@)
+        ))
+       ) (vstd!raw_ptr.PtrData./PtrData/addr (%Poly%vstd!raw_ptr.PtrData. (vstd!view.View.view.?
+          $ (PTR $ (UINT 8)) (Poly%ptr_mut%<u8.>. x!)
+     )))))
+     (and
+      (=>
+       %%location_label%%0
+       tmp%1
+      )
+      (=>
+       tmp%1
+       (=>
+        (= tmp%2 (= (vstd!raw_ptr.PtrData./PtrData/provenance (%Poly%vstd!raw_ptr.PtrData. (vstd!view.View.view.?
+             $ (PTR $ (UINT 16)) (Poly%ptr_mut%<u16.>. y@)
+           ))
+          ) (vstd!raw_ptr.PtrData./PtrData/provenance (%Poly%vstd!raw_ptr.PtrData. (vstd!view.View.view.?
+             $ (PTR $ (UINT 8)) (Poly%ptr_mut%<u8.>. x!)
+        )))))
+        (and
+         (=>
+          %%location_label%%1
+          tmp%2
+         )
+         (=>
+          tmp%2
+          (=>
+           (= tmp%3 (= (vstd!raw_ptr.PtrData./PtrData/metadata (%Poly%vstd!raw_ptr.PtrData. (vstd!view.View.view.?
+                $ (PTR $ (UINT 16)) (Poly%ptr_mut%<u16.>. y@)
+              ))
+             ) vstd!raw_ptr.Metadata./Thin
+           ))
+           (=>
+            %%location_label%%2
+            tmp%3
+ )))))))))))
+ (get-info :version)
+ (set-option :rlimit 30000000)
+ (check-sat)
+ (set-option :rlimit 0)
+(pop)
+
+;; Function-Def test_crate::cast_proof_test2
+;; /home/runner/work/smt-logs/smt-logs/verus/verus/source/target/release/test_inputs/raw_ptrs-3e1b37f726a021e8-basics/test.rs:151:7: 151:40 (#0)
+(get-info :all-statistics)
+(push)
+ (declare-const x! ptr_mut%<slice%<u8.>.>.)
+ (declare-const tmp%1 Bool)
+ (declare-const tmp%2 Bool)
+ (declare-const tmp%3 Bool)
+ (declare-const y@ ptr_mut%<u16.>.)
+ (assert
+  fuel_defaults
+ )
+ ;; assertion failed
+ (declare-const %%location_label%%0 Bool)
+ ;; assertion failed
+ (declare-const %%location_label%%1 Bool)
+ ;; assertion failed
+ (declare-const %%location_label%%2 Bool)
+ (assert
+  (not (=>
+    (= y@ (%Poly%ptr_mut%<u16.>. (vstd!raw_ptr.spec_cast_ptr_to_thin_ptr.? $ (SLICE $ (UINT
+         8
+        )
+       ) $ (UINT 16) (Poly%ptr_mut%<slice%<u8.>.>. x!)
+    )))
+    (=>
+     (= tmp%1 (= (vstd!raw_ptr.PtrData./PtrData/addr (%Poly%vstd!raw_ptr.PtrData. (vstd!view.View.view.?
+          $ (PTR $ (UINT 16)) (Poly%ptr_mut%<u16.>. y@)
+        ))
+       ) (vstd!raw_ptr.PtrData./PtrData/addr (%Poly%vstd!raw_ptr.PtrData. (vstd!view.View.view.?
+          $ (PTR $ (SLICE $ (UINT 8))) (Poly%ptr_mut%<slice%<u8.>.>. x!)
+     )))))
+     (and
+      (=>
+       %%location_label%%0
+       tmp%1
+      )
+      (=>
+       tmp%1
+       (=>
+        (= tmp%2 (= (vstd!raw_ptr.PtrData./PtrData/provenance (%Poly%vstd!raw_ptr.PtrData. (vstd!view.View.view.?
+             $ (PTR $ (UINT 16)) (Poly%ptr_mut%<u16.>. y@)
+           ))
+          ) (vstd!raw_ptr.PtrData./PtrData/provenance (%Poly%vstd!raw_ptr.PtrData. (vstd!view.View.view.?
+             $ (PTR $ (SLICE $ (UINT 8))) (Poly%ptr_mut%<slice%<u8.>.>. x!)
+        )))))
+        (and
+         (=>
+          %%location_label%%1
+          tmp%2
+         )
+         (=>
+          tmp%2
+          (=>
+           (= tmp%3 (= (vstd!raw_ptr.PtrData./PtrData/metadata (%Poly%vstd!raw_ptr.PtrData. (vstd!view.View.view.?
+                $ (PTR $ (UINT 16)) (Poly%ptr_mut%<u16.>. y@)
+              ))
+             ) vstd!raw_ptr.Metadata./Thin
+           ))
+           (=>
+            %%location_label%%2
+            tmp%3
+ )))))))))))
+ (get-info :version)
+ (set-option :rlimit 30000000)
+ (check-sat)
+ (set-option :rlimit 0)
+(pop)
+
+;; Function-Def test_crate::cast_proof_test3
+;; /home/runner/work/smt-logs/smt-logs/verus/verus/source/target/release/test_inputs/raw_ptrs-3e1b37f726a021e8-basics/test.rs:158:7: 158:45 (#0)
+(get-info :all-statistics)
+(push)
+ (declare-const x! Poly)
+ (declare-const tmp%1 Bool)
+ (declare-const tmp%2 Bool)
+ (declare-const tmp%3 Bool)
+ (declare-const y@ ptr_mut%<slice%<u64.>.>.)
+ (assert
+  fuel_defaults
+ )
+ (assert
+  (has_type x! (PTR $ (ARRAY $ (UINT 64) $ (CONST_INT 16))))
+ )
+ ;; assertion failed
+ (declare-const %%location_label%%0 Bool)
+ ;; assertion failed
+ (declare-const %%location_label%%1 Bool)
+ ;; assertion failed
+ (declare-const %%location_label%%2 Bool)
+ (assert
+  (not (=>
+    (= y@ (%Poly%ptr_mut%<slice%<u64.>.>. (vstd!raw_ptr.spec_cast_array_ptr_to_slice_ptr.?
+       $ (UINT 64) $ (CONST_INT 16) x!
+    )))
+    (=>
+     (= tmp%1 (= (vstd!raw_ptr.PtrData./PtrData/addr (%Poly%vstd!raw_ptr.PtrData. (vstd!view.View.view.?
+          $ (PTR $ (SLICE $ (UINT 64))) (Poly%ptr_mut%<slice%<u64.>.>. y@)
+        ))
+       ) (vstd!raw_ptr.PtrData./PtrData/addr (%Poly%vstd!raw_ptr.PtrData. (vstd!view.View.view.?
+          $ (PTR $ (ARRAY $ (UINT 64) $ (CONST_INT 16))) x!
+     )))))
+     (and
+      (=>
+       %%location_label%%0
+       tmp%1
+      )
+      (=>
+       tmp%1
+       (=>
+        (= tmp%2 (= (vstd!raw_ptr.PtrData./PtrData/provenance (%Poly%vstd!raw_ptr.PtrData. (vstd!view.View.view.?
+             $ (PTR $ (SLICE $ (UINT 64))) (Poly%ptr_mut%<slice%<u64.>.>. y@)
+           ))
+          ) (vstd!raw_ptr.PtrData./PtrData/provenance (%Poly%vstd!raw_ptr.PtrData. (vstd!view.View.view.?
+             $ (PTR $ (ARRAY $ (UINT 64) $ (CONST_INT 16))) x!
+        )))))
+        (and
+         (=>
+          %%location_label%%1
+          tmp%2
+         )
+         (=>
+          tmp%2
+          (=>
+           (= tmp%3 (= (vstd!raw_ptr.PtrData./PtrData/metadata (%Poly%vstd!raw_ptr.PtrData. (vstd!view.View.view.?
+                $ (PTR $ (SLICE $ (UINT 64))) (Poly%ptr_mut%<slice%<u64.>.>. y@)
+              ))
+             ) (vstd!raw_ptr.Metadata./Length (%I (I 16)))
+           ))
+           (=>
+            %%location_label%%2
+            tmp%3
+ )))))))))))
+ (get-info :version)
+ (set-option :rlimit 30000000)
+ (check-sat)
+ (set-option :rlimit 0)
+(pop)
+
+;; Function-Def test_crate::test_strict_provenance
+;; /home/runner/work/smt-logs/smt-logs/verus/verus/source/target/release/test_inputs/raw_ptrs-3e1b37f726a021e8-basics/test.rs:165:1: 165:39 (#0)
+(get-info :all-statistics)
+(push)
+ (declare-const a! ptr_mut%<u64.>.)
+ (declare-const tmp%1 Bool)
+ (declare-const tmp%2 Poly)
+ (declare-const tmp%3 Bool)
+ (declare-const tmp%4 Bool)
+ (declare-const tmp%5 Bool)
+ (declare-const tmp%6 Bool)
+ (declare-const ad@ Int)
+ (declare-const b@ ptr_mut%<u64.>.)
+ (assert
+  fuel_defaults
+ )
+ ;; assertion failed
+ (declare-const %%location_label%%0 Bool)
+ ;; assertion failed
+ (declare-const %%location_label%%1 Bool)
+ ;; assertion failed
+ (declare-const %%location_label%%2 Bool)
+ ;; assertion failed
+ (declare-const %%location_label%%3 Bool)
+ ;; assertion failed
+ (declare-const %%location_label%%4 Bool)
+ (assert
+  (not (=>
+    (ens%core!ptr.mut_ptr.impl&%0.addr. $ (UINT 64) (Poly%ptr_mut%<u64.>. a!) ad@)
+    (=>
+     (= tmp%1 (= ad@ (vstd!raw_ptr.PtrData./PtrData/addr (%Poly%vstd!raw_ptr.PtrData. (vstd!view.View.view.?
+          $ (PTR $ (UINT 64)) (Poly%ptr_mut%<u64.>. a!)
+     )))))
+     (and
+      (=>
+       %%location_label%%0
+       tmp%1
+      )
+      (=>
+       tmp%1
+       (=>
+        (ens%core!ptr.mut_ptr.impl&%0.with_addr. $ (UINT 64) (Poly%ptr_mut%<u64.>. a!) 7 tmp%2)
+        (=>
+         (= b@ (%Poly%ptr_mut%<u64.>. tmp%2))
+         (=>
+          (= tmp%3 (= (vstd!raw_ptr.PtrData./PtrData/addr (%Poly%vstd!raw_ptr.PtrData. (vstd!view.View.view.?
+               $ (PTR $ (UINT 64)) (Poly%ptr_mut%<u64.>. b@)
+             ))
+            ) 7
+          ))
+          (and
+           (=>
+            %%location_label%%1
+            tmp%3
+           )
+           (=>
+            tmp%3
+            (=>
+             (= tmp%4 (= (vstd!raw_ptr.PtrData./PtrData/provenance (%Poly%vstd!raw_ptr.PtrData. (vstd!view.View.view.?
+                  $ (PTR $ (UINT 64)) (Poly%ptr_mut%<u64.>. b@)
+                ))
+               ) (vstd!raw_ptr.PtrData./PtrData/provenance (%Poly%vstd!raw_ptr.PtrData. (vstd!view.View.view.?
+                  $ (PTR $ (UINT 64)) (Poly%ptr_mut%<u64.>. a!)
+             )))))
+             (and
+              (=>
+               %%location_label%%2
+               tmp%4
+              )
+              (=>
+               tmp%4
+               (=>
+                (= tmp%5 (= (vstd!raw_ptr.PtrData./PtrData/metadata (%Poly%vstd!raw_ptr.PtrData. (vstd!view.View.view.?
+                     $ (PTR $ (UINT 64)) (Poly%ptr_mut%<u64.>. b@)
+                   ))
+                  ) (vstd!raw_ptr.PtrData./PtrData/metadata (%Poly%vstd!raw_ptr.PtrData. (vstd!view.View.view.?
+                     $ (PTR $ (UINT 64)) (Poly%ptr_mut%<u64.>. a!)
+                )))))
+                (and
+                 (=>
+                  %%location_label%%3
+                  tmp%5
+                 )
+                 (=>
+                  tmp%5
+                  (=>
+                   (= tmp%6 (= a! b@))
+                   (=>
+                    %%location_label%%4
+                    tmp%6
+ )))))))))))))))))))
+ (get-info :version)
+ (set-option :rlimit 30000000)
+ (check-sat)
+ (set-option :rlimit 0)
+ (get-info :reason-unknown)
+ (get-model)
+ (assert
+  (not %%location_label%%4)
+ )
+ (get-info :version)
+ (set-option :rlimit 30000000)
+ (check-sat)
+ (set-option :rlimit 0)
+(pop)
+
+;; Function-Recommends test_crate::test_strict_provenance
+;; /home/runner/work/smt-logs/smt-logs/verus/verus/source/target/release/test_inputs/raw_ptrs-3e1b37f726a021e8-basics/test.rs:165:1: 165:39 (#0)
+(get-info :all-statistics)
+(push)
+ (declare-const a! ptr_mut%<u64.>.)
+ (declare-const tmp%1 Poly)
+ (declare-const ad@ Int)
+ (declare-const b@ ptr_mut%<u64.>.)
+ (assert
+  fuel_defaults
+ )
+ (assert
+  (not true)
+ )
+ (get-info :version)
+ (set-option :rlimit 30000000)
+ (check-sat)
+ (set-option :rlimit 0)
+(pop)
+
+;; Function-Def test_crate::test_strict_provenance_const
+;; /home/runner/work/smt-logs/smt-logs/verus/verus/source/target/release/test_inputs/raw_ptrs-3e1b37f726a021e8-basics/test.rs:177:1: 177:47 (#0)
+(get-info :all-statistics)
+(push)
+ (declare-const a! ptr_mut%<u64.>.)
+ (declare-const tmp%1 Bool)
+ (declare-const tmp%2 Poly)
+ (declare-const tmp%3 Bool)
+ (declare-const tmp%4 Bool)
+ (declare-const tmp%5 Bool)
+ (declare-const ad@ Int)
+ (declare-const b@ ptr_mut%<u64.>.)
+ (assert
+  fuel_defaults
+ )
+ ;; assertion failed
+ (declare-const %%location_label%%0 Bool)
+ ;; assertion failed
+ (declare-const %%location_label%%1 Bool)
+ ;; assertion failed
+ (declare-const %%location_label%%2 Bool)
+ ;; assertion failed
+ (declare-const %%location_label%%3 Bool)
+ (assert
+  (not (=>
+    (ens%core!ptr.const_ptr.impl&%0.addr. $ (UINT 64) (Poly%ptr_mut%<u64.>. a!) ad@)
+    (=>
+     (= tmp%1 (= ad@ (vstd!raw_ptr.PtrData./PtrData/addr (%Poly%vstd!raw_ptr.PtrData. (vstd!view.View.view.?
+          $ (PTR $ (UINT 64)) (Poly%ptr_mut%<u64.>. a!)
+     )))))
+     (and
+      (=>
+       %%location_label%%0
+       tmp%1
+      )
+      (=>
+       tmp%1
+       (=>
+        (ens%core!ptr.const_ptr.impl&%0.with_addr. $ (UINT 64) (Poly%ptr_mut%<u64.>. a!) 7
+         tmp%2
+        )
+        (=>
+         (= b@ (%Poly%ptr_mut%<u64.>. tmp%2))
+         (=>
+          (= tmp%3 (= (vstd!raw_ptr.PtrData./PtrData/addr (%Poly%vstd!raw_ptr.PtrData. (vstd!view.View.view.?
+               $ (PTR $ (UINT 64)) (Poly%ptr_mut%<u64.>. b@)
+             ))
+            ) 7
+          ))
+          (and
+           (=>
+            %%location_label%%1
+            tmp%3
+           )
+           (=>
+            tmp%3
+            (=>
+             (= tmp%4 (= (vstd!raw_ptr.PtrData./PtrData/provenance (%Poly%vstd!raw_ptr.PtrData. (vstd!view.View.view.?
+                  $ (PTR $ (UINT 64)) (Poly%ptr_mut%<u64.>. b@)
+                ))
+               ) (vstd!raw_ptr.PtrData./PtrData/provenance (%Poly%vstd!raw_ptr.PtrData. (vstd!view.View.view.?
+                  $ (PTR $ (UINT 64)) (Poly%ptr_mut%<u64.>. a!)
+             )))))
+             (and
+              (=>
+               %%location_label%%2
+               tmp%4
+              )
+              (=>
+               tmp%4
+               (=>
+                (= tmp%5 (= (vstd!raw_ptr.PtrData./PtrData/metadata (%Poly%vstd!raw_ptr.PtrData. (vstd!view.View.view.?
+                     $ (PTR $ (UINT 64)) (Poly%ptr_mut%<u64.>. b@)
+                   ))
+                  ) (vstd!raw_ptr.PtrData./PtrData/metadata (%Poly%vstd!raw_ptr.PtrData. (vstd!view.View.view.?
+                     $ (PTR $ (UINT 64)) (Poly%ptr_mut%<u64.>. a!)
+                )))))
+                (=>
+                 %%location_label%%3
+                 tmp%5
+ ))))))))))))))))
+ (get-info :version)
+ (set-option :rlimit 30000000)
+ (check-sat)
+ (set-option :rlimit 0)
+(pop)

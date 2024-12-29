@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-29 15:01:20
+; Started: 2024-12-29 20:08:00
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -912,11 +912,11 @@
 (assert (forall ((s@$ $Snap) (i@0@00 Int) (j@1@00 Int)) (!
   (= (matrix%limited s@$ i@0@00 j@1@00) (matrix s@$ i@0@00 j@1@00))
   :pattern ((matrix s@$ i@0@00 j@1@00))
-  :qid |quant-u-26113|)))
+  :qid |quant-u-26005|)))
 (assert (forall ((s@$ $Snap) (i@0@00 Int) (j@1@00 Int)) (!
   (matrix%stateless i@0@00 j@1@00)
   :pattern ((matrix%limited s@$ i@0@00 j@1@00))
-  :qid |quant-u-26114|)))
+  :qid |quant-u-26006|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- minimal_example ----------
@@ -1266,7 +1266,7 @@
 (check-sat)
 ; unknown
 (pop) ; 3
-; 2.43s
+; 2.40s
 ; (get-info :all-statistics)
 (pop) ; 2
 (pop) ; 1
@@ -1446,7 +1446,7 @@
           (img@20@01 (matrix $Snap.unit i@16@01 j@17@01))
           (matrix%precondition $Snap.unit i@16@01 j@17@01)))))
   :pattern ((matrix $Snap.unit i@16@01 j@17@01))
-  :qid |quant-u-26116|)))
+  :qid |quant-u-26008|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and (img@20@01 r) (img@22@01 r))
@@ -1463,7 +1463,7 @@
       (img@20@01 (matrix $Snap.unit i@16@01 j@17@01))
       (img@22@01 (matrix $Snap.unit i@16@01 j@17@01))))
   :pattern ((matrix $Snap.unit i@16@01 j@17@01))
-  :qid |quant-u-26116|)))
+  :qid |quant-u-26008|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and (img@20@01 r) (img@22@01 r))
@@ -1515,7 +1515,7 @@
       (pTaken@23@01 r))
     $Perm.No)
   
-  :qid |quant-u-26118|))))
+  :qid |quant-u-26010|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -1527,7 +1527,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@23@01 r) $Perm.No)
   
-  :qid |quant-u-26119|))))
+  :qid |quant-u-26011|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -1542,7 +1542,7 @@
     (= r (matrix $Snap.unit 3 4))
     (= (- $Perm.Write (pTaken@23@01 r)) $Perm.No))
   
-  :qid |quant-u-26120|))))
+  :qid |quant-u-26012|))))
 (check-sat)
 ; unsat
 (pop) ; 3

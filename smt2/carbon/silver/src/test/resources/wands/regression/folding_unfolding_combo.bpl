@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-29 15:24:34
+// Date:         2024-12-29 20:31:02
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/folding_unfolding_combo.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/folding_unfolding_combo-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -330,8 +330,8 @@ procedure sum#definedness(p_1: Ref) returns (Result: int)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -353,8 +353,8 @@ procedure sum#definedness(p_1: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume Single#trigger(UnfoldingHeap, Single(p_1));
       assume UnfoldingHeap[null, Single(p_1)] == FrameFragment(UnfoldingHeap[p_1, f_7]);
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Single(p) (folding_unfolding_combo.vpr@11.1--15.2) [133737]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, Single(p_1)];
@@ -437,10 +437,10 @@ procedure t01(xs: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newVersion: FrameType;
   var freshVersion: FrameType;
   var Ops_1Heap: HeapType;
@@ -449,8 +449,8 @@ procedure t01(xs: Ref) returns ()
   var UsedHeap: HeapType;
   var UsedMask: MaskType;
   var b_2: bool;
-  var Labellhs1Mask: MaskType;
   var Labellhs1Heap: HeapType;
+  var Labellhs1Mask: MaskType;
   var boolCur: bool;
   var Used_1Heap: HeapType;
   var Used_1Mask: MaskType;
@@ -492,14 +492,14 @@ procedure t01(xs: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: unfold acc(Single(xs), write) -- folding_unfolding_combo.vpr@22.3--22.20
     assume Single#trigger(Heap, Single(xs));
     assume Heap[null, Single(xs)] == FrameFragment(Heap[xs, f_7]);
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Single(xs) might fail. There might be insufficient permission to access Single(xs) (folding_unfolding_combo.vpr@22.3--22.20) [133741]"}
@@ -526,8 +526,8 @@ procedure t01(xs: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Single(xs), write) -- folding_unfolding_combo.vpr@24.3--24.18
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding Single(xs) might fail. There might be insufficient permission to access xs.f (folding_unfolding_combo.vpr@24.3--24.18) [133746]"}
@@ -566,8 +566,8 @@ procedure t01(xs: Ref) returns ()
     
     // -- Translating statement: label lhs1 -- folding_unfolding_combo.vpr@26.11--26.40
       lhs1:
-      Labellhs1Mask := Ops_1Mask;
       Labellhs1Heap := Ops_1Heap;
+      Labellhs1Mask := Ops_1Mask;
       b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);
     boolCur := true;
     if (b_1_1) {
@@ -575,8 +575,8 @@ procedure t01(xs: Ref) returns ()
       // -- Translating statement: unfold acc(Single(xs), write) -- folding_unfolding_combo.vpr@27.7--27.29
         assume Single#trigger(Ops_1Heap, Single(xs));
         assume Ops_1Heap[null, Single(xs)] == FrameFragment(Ops_1Heap[xs, f_7]);
-        ExhaleWellDef0Mask := Ops_1Mask;
         ExhaleWellDef0Heap := Ops_1Heap;
+        ExhaleWellDef0Mask := Ops_1Mask;
         havoc Used_1Heap;
         Used_1Mask := ZeroMask;
         b_2_1 := b_2_1 && state(Used_1Heap, Used_1Mask);
@@ -732,8 +732,8 @@ procedure t01(xs: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- folding_unfolding_combo.vpr@31.3--31.15
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion false might not hold. (folding_unfolding_combo.vpr@31.10--31.15) [133756]"}
       false;
     assume state(Heap, Mask);
@@ -747,10 +747,10 @@ procedure t02(xs: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var Ops_3Heap: HeapType;
   var Ops_3Mask: MaskType;
@@ -758,8 +758,8 @@ procedure t02(xs: Ref) returns ()
   var Used_3Heap: HeapType;
   var Used_3Mask: MaskType;
   var b_6: bool;
-  var Labellhs3Mask: MaskType;
   var Labellhs3Heap: HeapType;
+  var Labellhs3Mask: MaskType;
   var boolCur_1: bool;
   var Used_4Heap: HeapType;
   var Used_4Mask: MaskType;
@@ -809,8 +809,8 @@ procedure t02(xs: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale sum(xs) == 3 -- folding_unfolding_combo.vpr@39.11--39.23
     assume state(Heap, Mask);
@@ -818,8 +818,8 @@ procedure t02(xs: Ref) returns ()
     // -- Check definedness of sum(xs) == 3
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function sum might not hold. There might be insufficient permission to access Single(xs) (folding_unfolding_combo.vpr@39.11--39.18) [133757]"}
           NoPerm < perm ==> NoPerm < Mask[null, Single(xs)];
@@ -852,8 +852,8 @@ procedure t02(xs: Ref) returns ()
     
     // -- Translating statement: label lhs3 -- folding_unfolding_combo.vpr@40.11--40.51
       lhs3:
-      Labellhs3Mask := Ops_3Mask;
       Labellhs3Heap := Ops_3Heap;
+      Labellhs3Mask := Ops_3Mask;
       b_7 := b_7 && state(Ops_3Heap, Ops_3Mask);
     boolCur_1 := true;
     if (b_7) {
@@ -861,8 +861,8 @@ procedure t02(xs: Ref) returns ()
       // -- Translating statement: unfold acc(Single(xs), write) -- folding_unfolding_combo.vpr@41.7--41.29
         assume Single#trigger(Ops_3Heap, Single(xs));
         assume Ops_3Heap[null, Single(xs)] == FrameFragment(Ops_3Heap[xs, f_7]);
-        ExhaleWellDef0Mask := Ops_3Mask;
         ExhaleWellDef0Heap := Ops_3Heap;
+        ExhaleWellDef0Mask := Ops_3Mask;
         havoc Used_4Heap;
         Used_4Mask := ZeroMask;
         b_8 := b_8 && state(Used_4Heap, Used_4Mask);
@@ -943,8 +943,8 @@ procedure t02(xs: Ref) returns ()
     if (b_7) {
       
       // -- Translating statement: fold acc(Single(xs), write) -- folding_unfolding_combo.vpr@42.7--42.27
-        ExhaleWellDef0Mask := Ops_3Mask;
         ExhaleWellDef0Heap := Ops_3Heap;
+        ExhaleWellDef0Mask := Ops_3Mask;
         havoc Used_5Heap;
         Used_5Mask := ZeroMask;
         b_10 := b_10 && state(Used_5Heap, Used_5Mask);
@@ -1099,8 +1099,8 @@ procedure t02(xs: Ref) returns ()
         // -- Check definedness of sum(xs) == 3
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := Result_4Mask;
             ExhaleWellDef0Heap := Result_4Heap;
+            ExhaleWellDef0Mask := Result_4Mask;
             perm := FullPerm;
             assert {:msg "  Precondition of function sum might not hold. There might be insufficient permission to access Single(xs) (folding_unfolding_combo.vpr@40.39--40.46) [133768]"}
               NoPerm < perm ==> NoPerm < Result_4Mask[null, Single(xs)];
@@ -1122,8 +1122,8 @@ procedure t02(xs: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- folding_unfolding_combo.vpr@46.3--46.15
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion false might not hold. (folding_unfolding_combo.vpr@46.10--46.15) [133770]"}
       false;
     assume state(Heap, Mask);
@@ -1136,8 +1136,8 @@ procedure t02(xs: Ref) returns ()
 procedure t03(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var perm: Perm;
   var Ops_5Heap: HeapType;
   var Ops_5Mask: MaskType;
@@ -1145,8 +1145,8 @@ procedure t03(x: Ref) returns ()
   var Used_7Heap: HeapType;
   var Used_7Mask: MaskType;
   var b_14: bool;
-  var Labellhs5Mask: MaskType;
   var Labellhs5Heap: HeapType;
+  var Labellhs5Mask: MaskType;
   var boolCur_2: bool;
   var Used_8Heap: HeapType;
   var Used_8Mask: MaskType;
@@ -1166,8 +1166,8 @@ procedure t03(x: Ref) returns ()
   var b_18: bool;
   var Result_6Heap: HeapType;
   var Result_6Mask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1181,8 +1181,8 @@ procedure t03(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale acc(Single(x), write) -- folding_unfolding_combo.vpr@53.3--53.24
     perm := FullPerm;
@@ -1215,8 +1215,8 @@ procedure t03(x: Ref) returns ()
     
     // -- Translating statement: label lhs5 -- folding_unfolding_combo.vpr@56.11--56.44
       lhs5:
-      Labellhs5Mask := Ops_5Mask;
       Labellhs5Heap := Ops_5Heap;
+      Labellhs5Mask := Ops_5Mask;
       b_15 := b_15 && state(Ops_5Heap, Ops_5Mask);
     boolCur_2 := true;
     // Translating exec of non-ghost operationacc(Single(x), write) && acc(x.g, write)
@@ -1352,8 +1352,8 @@ procedure t03(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- folding_unfolding_combo.vpr@59.3--59.15
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion false might not hold. (folding_unfolding_combo.vpr@59.10--59.15) [133777]"}
       false;
     assume state(Heap, Mask);

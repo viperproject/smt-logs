@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-29 14:59:57
+; Started: 2024-12-29 20:06:39
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -150,12 +150,12 @@
 (declare-const data@7@01 Int)
 (declare-const next_child@8@01 $Ref)
 (declare-const next_sibling@9@01 $Ref)
-(assert (not (= t@6@01 t1@2@01)))
-(assert (not (= t@6@01 t@0@01)))
 (assert (not (= t@6@01 t5@4@01)))
-(assert (not (= t@6@01 t2@3@01)))
-(assert (not (= t@6@01 ctr@5@01)))
 (assert (not (= t@6@01 t0@1@01)))
+(assert (not (= t@6@01 t1@2@01)))
+(assert (not (= t@6@01 t2@3@01)))
+(assert (not (= t@6@01 t@0@01)))
+(assert (not (= t@6@01 ctr@5@01)))
 ; [exec]
 ; t.next_child := null
 ; [exec]
@@ -203,12 +203,12 @@
 (declare-const data@11@01 Int)
 (declare-const next_child@12@01 $Ref)
 (declare-const next_sibling@13@01 $Ref)
-(assert (not (= t0@10@01 t1@2@01)))
 (assert (not (= t0@10@01 t5@4@01)))
-(assert (not (= t0@10@01 t2@3@01)))
-(assert (not (= t0@10@01 t@6@01)))
-(assert (not (= t0@10@01 ctr@5@01)))
 (assert (not (= t0@10@01 t0@1@01)))
+(assert (not (= t0@10@01 t@6@01)))
+(assert (not (= t0@10@01 t1@2@01)))
+(assert (not (= t0@10@01 t2@3@01)))
+(assert (not (= t0@10@01 ctr@5@01)))
 ; [exec]
 ; t0.next_child := null
 ; [exec]
@@ -264,11 +264,11 @@
 (declare-const data@15@01 Int)
 (declare-const next_child@16@01 $Ref)
 (declare-const next_sibling@17@01 $Ref)
-(assert (not (= t1@14@01 t1@2@01)))
-(assert (not (= t1@14@01 t0@10@01)))
 (assert (not (= t1@14@01 t5@4@01)))
-(assert (not (= t1@14@01 t2@3@01)))
+(assert (not (= t1@14@01 t0@10@01)))
 (assert (not (= t1@14@01 t@6@01)))
+(assert (not (= t1@14@01 t1@2@01)))
+(assert (not (= t1@14@01 t2@3@01)))
 (assert (not (= t1@14@01 ctr@5@01)))
 ; [exec]
 ; t1.next_child := t
@@ -404,11 +404,11 @@
 (declare-const data@19@01 Int)
 (declare-const next_child@20@01 $Ref)
 (declare-const next_sibling@21@01 $Ref)
-(assert (not (= t2@18@01 t0@10@01)))
 (assert (not (= t2@18@01 t5@4@01)))
 (assert (not (= t2@18@01 t1@14@01)))
-(assert (not (= t2@18@01 t2@3@01)))
+(assert (not (= t2@18@01 t0@10@01)))
 (assert (not (= t2@18@01 t@6@01)))
+(assert (not (= t2@18@01 t2@3@01)))
 (assert (not (= t2@18@01 ctr@5@01)))
 ; [exec]
 ; t2.next_child := null

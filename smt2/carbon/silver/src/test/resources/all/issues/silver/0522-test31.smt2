@@ -1530,7 +1530,7 @@
  :skolemid |34|
  :pattern ( (select (|Set#Union_9846| a@@20 b@@13) o@@4))
 )))
-; Invalid
+; Valid
 (push 1)
 (declare-fun ControlFlow (Int Int) Int)
 (declare-fun wildcard () Real)

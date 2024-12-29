@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-29 15:10:57
+// Date:         2024-12-29 20:17:33
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/issues/issue_0179.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/issues/issue_0179-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -400,8 +400,8 @@ axiom !IsWandField(val);
 procedure test04() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var s1: Ref;
   var s2: Ref;
   var s3: Ref;
@@ -409,8 +409,8 @@ procedure test04() returns ()
   var S: (Set Ref);
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var QPMask: MaskType;
   var s_5: Ref;
   
@@ -422,8 +422,8 @@ procedure test04() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[s1, $allocated];
@@ -461,8 +461,8 @@ procedure test04() returns ()
   // -- Translating statement: assert (forall s: Ref :: { (s in S) } (s in S) ==> acc(s.val, write)) -- issue_0179.vpr@12.3--12.48
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
+    ExhaleWellDef0Mask := AssertMask;
     
     // -- Check definedness of (forall s: Ref :: { (s in S) } (s in S) ==> acc(s.val, write))
       if (*) {
@@ -512,8 +512,8 @@ procedure test04() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (s1 in S) && ((s2 in S) && (s3 in S)) -- issue_0179.vpr@13.3--13.39
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion (s1 in S) might not hold. (issue_0179.vpr@13.10--13.39) [76900]"}
       S[s1];
     assert {:msg "  Assert might fail. Assertion (s2 in S) might not hold. (issue_0179.vpr@13.10--13.39) [76901]"}
@@ -548,14 +548,14 @@ procedure test(x1_2: Ref, x2: Ref) returns (xs: (Set Ref))
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var QPMask: MaskType;
   var y_5: Ref;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var y_5_2: Ref;
   var ExhaleHeap: HeapType;
   
@@ -593,8 +593,8 @@ procedure test(x1_2: Ref, x2: Ref) returns (xs: (Set Ref))
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -663,8 +663,8 @@ procedure test(x1_2: Ref, x2: Ref) returns (xs: (Set Ref))
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     havoc QPMask;
     
     // -- check that the permission amount is positive

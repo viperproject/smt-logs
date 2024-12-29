@@ -1,4 +1,0 @@
-PKG alcotest
-
-S lib
-B _build/**

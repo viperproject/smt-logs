@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-29 15:37:33
+// Date:         2024-12-29 20:43:55
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0293.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0293-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -379,12 +379,12 @@ axiom !IsWandField(val);
 procedure client() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var a_2: Ref;
   var freshObj: Ref;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var refSet_b1: (Set Ref);
   
   // -- Initializing the state
@@ -395,8 +395,8 @@ procedure client() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[a_2, $allocated];
@@ -410,8 +410,8 @@ procedure client() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert !((a in refSet_b1)) -- 0293.vpr@11.3--11.27
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion !((a in refSet_b1)) might not hold. (0293.vpr@11.10--11.27) [196350]"}
       !refSet_b1[a_2];
     assume state(Heap, Mask);
@@ -432,8 +432,8 @@ procedure client() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- 0293.vpr@14.3--14.15
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion false might not hold. (0293.vpr@14.10--14.15) [196351]"}
       false;
     assume state(Heap, Mask);
@@ -446,8 +446,8 @@ procedure client() returns ()
 procedure vhavoc() returns (xs: (Set Ref))
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -457,8 +457,8 @@ procedure vhavoc() returns (xs: (Set Ref))
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale false -- <no position>
     assume false;

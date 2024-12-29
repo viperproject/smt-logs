@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-29 15:24:13
+// Date:         2024-12-29 20:30:42
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/packaging_nested.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/packaging_nested-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -356,16 +356,16 @@ axiom !IsWandField(next);
 procedure t01(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var Ops_1Heap: HeapType;
   var Ops_1Mask: MaskType;
   var b_1_1: bool;
   var UsedHeap: HeapType;
   var UsedMask: MaskType;
   var b_2: bool;
-  var Labellhs3Mask: MaskType;
   var Labellhs3Heap: HeapType;
+  var Labellhs3Mask: MaskType;
   var boolCur: bool;
   var Ops_3Heap: HeapType;
   var Ops_3Mask: MaskType;
@@ -373,8 +373,8 @@ procedure t01(x: Ref) returns ()
   var Used_1Heap: HeapType;
   var Used_1Mask: MaskType;
   var b_2_1: bool;
-  var Labellhs6Mask: MaskType;
   var Labellhs6Heap: HeapType;
+  var Labellhs6Mask: MaskType;
   var boolCur_1: bool;
   var Ops_5Heap: HeapType;
   var Ops_5Mask: MaskType;
@@ -382,8 +382,8 @@ procedure t01(x: Ref) returns ()
   var Used_2Heap: HeapType;
   var Used_2Mask: MaskType;
   var b_4: bool;
-  var Labellhs8Mask: MaskType;
   var Labellhs8Heap: HeapType;
+  var Labellhs8Mask: MaskType;
   var boolCur_2: bool;
   var Used_3Heap: HeapType;
   var Used_3Mask: MaskType;
@@ -393,8 +393,8 @@ procedure t01(x: Ref) returns ()
   var b_7: bool;
   var WandDefLHSHeap: HeapType;
   var WandDefLHSMask: MaskType;
-  var Labellhs10Mask: MaskType;
   var Labellhs10Heap: HeapType;
+  var Labellhs10Mask: MaskType;
   var WandDefRHSHeap: HeapType;
   var WandDefRHSMask: MaskType;
   var neededTransfer: Perm;
@@ -408,21 +408,21 @@ procedure t01(x: Ref) returns ()
   var Used_5Heap: HeapType;
   var Used_5Mask: MaskType;
   var b_9: bool;
-  var Labellhs11Mask: MaskType;
   var Labellhs11Heap: HeapType;
-  var Labellhs12Mask: MaskType;
+  var Labellhs11Mask: MaskType;
   var Labellhs12Heap: HeapType;
+  var Labellhs12Mask: MaskType;
   var b_10: bool;
   var Result_1Heap: HeapType;
   var Result_1Mask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
-  var Labellhs13Mask: MaskType;
+  var ExhaleWellDef0Mask: MaskType;
   var Labellhs13Heap: HeapType;
-  var Labellhs14Mask: MaskType;
+  var Labellhs13Mask: MaskType;
   var Labellhs14Heap: HeapType;
-  var Labellhs15Mask: MaskType;
+  var Labellhs14Mask: MaskType;
   var Labellhs15Heap: HeapType;
+  var Labellhs15Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -436,8 +436,8 @@ procedure t01(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: package true --* false --* true --* false {
   //   package false --* true --* false {
@@ -459,8 +459,8 @@ procedure t01(x: Ref) returns ()
     
     // -- Translating statement: label lhs3 -- packaging_nested.vpr@12.9--12.48
       lhs3:
-      Labellhs3Mask := Ops_1Mask;
       Labellhs3Heap := Ops_1Heap;
+      Labellhs3Mask := Ops_1Mask;
       b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);
     boolCur := true;
     if (b_1_1) {
@@ -483,8 +483,8 @@ procedure t01(x: Ref) returns ()
         
         // -- Translating statement: label lhs6 -- packaging_nested.vpr@13.14--13.38
           lhs6:
-          Labellhs6Mask := Ops_3Mask;
           Labellhs6Heap := Ops_3Heap;
+          Labellhs6Mask := Ops_3Mask;
           b_3 := b_3 && state(Ops_3Heap, Ops_3Mask);
         boolCur_1 := true;
         if (b_3 && b_1_1) {
@@ -505,8 +505,8 @@ procedure t01(x: Ref) returns ()
             
             // -- Translating statement: label lhs8 -- packaging_nested.vpr@14.18--14.32
               lhs8:
-              Labellhs8Mask := Ops_5Mask;
               Labellhs8Heap := Ops_5Heap;
+              Labellhs8Mask := Ops_5Mask;
               b_5 := b_5 && state(Ops_5Heap, Ops_5Mask);
             boolCur_2 := true;
             // Translating exec of non-ghost operationfalse
@@ -539,8 +539,8 @@ procedure t01(x: Ref) returns ()
                     
                     // -- Translating statement: label lhs10 -- packaging_nested.vpr@13.24--13.38
                       lhs10:
-                      Labellhs10Mask := WandDefLHSMask;
                       Labellhs10Heap := WandDefLHSHeap;
+                      Labellhs10Mask := WandDefLHSMask;
                       assume state(WandDefLHSHeap, WandDefLHSMask);
                     havoc WandDefRHSHeap;
                     WandDefRHSMask := ZeroMask;
@@ -646,8 +646,8 @@ procedure t01(x: Ref) returns ()
                 
                 // -- Translating statement: label lhs11 -- packaging_nested.vpr@12.21--12.47
                   lhs11:
-                  Labellhs11Mask := WandDefLHSMask;
                   Labellhs11Heap := WandDefLHSHeap;
+                  Labellhs11Mask := WandDefLHSMask;
                   assume state(WandDefLHSHeap, WandDefLHSMask);
                 havoc WandDefRHSHeap;
                 WandDefRHSMask := ZeroMask;
@@ -660,8 +660,8 @@ procedure t01(x: Ref) returns ()
                     
                     // -- Translating statement: label lhs12 -- packaging_nested.vpr@12.32--12.46
                       lhs12:
-                      Labellhs12Mask := WandDefLHSMask;
                       Labellhs12Heap := WandDefLHSHeap;
+                      Labellhs12Mask := WandDefLHSMask;
                       assume state(WandDefLHSHeap, WandDefLHSMask);
                     havoc WandDefRHSHeap;
                     WandDefRHSMask := ZeroMask;
@@ -734,8 +734,8 @@ procedure t01(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale true --* false --* true --* false -- packaging_nested.vpr@19.1--19.45
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of true --* false --* true --* false
       if (*) {
@@ -745,8 +745,8 @@ procedure t01(x: Ref) returns ()
         
         // -- Translating statement: label lhs13 -- packaging_nested.vpr@19.8--19.45
           lhs13:
-          Labellhs13Mask := WandDefLHSMask;
           Labellhs13Heap := WandDefLHSHeap;
+          Labellhs13Mask := WandDefLHSMask;
           assume state(WandDefLHSHeap, WandDefLHSMask);
         havoc WandDefRHSHeap;
         WandDefRHSMask := ZeroMask;
@@ -760,8 +760,8 @@ procedure t01(x: Ref) returns ()
             
             // -- Translating statement: label lhs14 -- packaging_nested.vpr@19.18--19.44
               lhs14:
-              Labellhs14Mask := WandDefLHSMask;
               Labellhs14Heap := WandDefLHSHeap;
+              Labellhs14Mask := WandDefLHSMask;
               assume state(WandDefLHSHeap, WandDefLHSMask);
             havoc WandDefRHSHeap;
             WandDefRHSMask := ZeroMask;
@@ -774,8 +774,8 @@ procedure t01(x: Ref) returns ()
                 
                 // -- Translating statement: label lhs15 -- packaging_nested.vpr@19.29--19.43
                   lhs15:
-                  Labellhs15Mask := WandDefLHSMask;
                   Labellhs15Heap := WandDefLHSHeap;
+                  Labellhs15Mask := WandDefLHSMask;
                   assume state(WandDefLHSHeap, WandDefLHSMask);
                 havoc WandDefRHSHeap;
                 WandDefRHSMask := ZeroMask;
@@ -804,8 +804,8 @@ procedure t01(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- packaging_nested.vpr@22.1--22.13
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion false might not hold. (packaging_nested.vpr@22.8--22.13) [133426]"}
       false;
     assume state(Heap, Mask);
@@ -818,8 +818,8 @@ procedure t01(x: Ref) returns ()
 procedure t03(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var y: Ref;
   var Ops_7Heap: HeapType;
   var Ops_7Mask: MaskType;
@@ -828,8 +828,8 @@ procedure t03(x: Ref) returns ()
   var Used_6Mask: MaskType;
   var b_11: bool;
   var perm: Perm;
-  var Labellhs17Mask: MaskType;
   var Labellhs17Heap: HeapType;
+  var Labellhs17Mask: MaskType;
   var boolCur_3: bool;
   var Ops_9Heap: HeapType;
   var Ops_9Mask: MaskType;
@@ -837,8 +837,8 @@ procedure t03(x: Ref) returns ()
   var Used_7Heap: HeapType;
   var Used_7Mask: MaskType;
   var b_13: bool;
-  var Labellhs19Mask: MaskType;
   var Labellhs19Heap: HeapType;
+  var Labellhs19Mask: MaskType;
   var boolCur_4: bool;
   var Used_8Heap: HeapType;
   var Used_8Mask: MaskType;
@@ -857,19 +857,19 @@ procedure t03(x: Ref) returns ()
   var b_17: bool;
   var WandDefLHSHeap: HeapType;
   var WandDefLHSMask: MaskType;
-  var Labellhs21Mask: MaskType;
   var Labellhs21Heap: HeapType;
+  var Labellhs21Mask: MaskType;
   var WandDefRHSHeap: HeapType;
   var WandDefRHSMask: MaskType;
   var b_18: bool;
   var Result_3Heap: HeapType;
   var Result_3Mask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
-  var Labellhs22Mask: MaskType;
+  var ExhaleWellDef0Mask: MaskType;
   var Labellhs22Heap: HeapType;
-  var Labellhs23Mask: MaskType;
+  var Labellhs22Mask: MaskType;
   var Labellhs23Heap: HeapType;
+  var Labellhs23Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -883,8 +883,8 @@ procedure t03(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[y, $allocated];
@@ -923,8 +923,8 @@ procedure t03(x: Ref) returns ()
     
     // -- Translating statement: label lhs17 -- packaging_nested.vpr@30.9--30.66
       lhs17:
-      Labellhs17Mask := Ops_7Mask;
       Labellhs17Heap := Ops_7Heap;
+      Labellhs17Mask := Ops_7Mask;
       b_12 := b_12 && state(Ops_7Heap, Ops_7Mask);
     boolCur_3 := true;
     if (b_12) {
@@ -950,8 +950,8 @@ procedure t03(x: Ref) returns ()
         
         // -- Translating statement: label lhs19 -- packaging_nested.vpr@31.14--31.43
           lhs19:
-          Labellhs19Mask := Ops_9Mask;
           Labellhs19Heap := Ops_9Heap;
+          Labellhs19Mask := Ops_9Mask;
           b_14 := b_14 && state(Ops_9Heap, Ops_9Mask);
         boolCur_4 := true;
         // Translating exec of non-ghost operationacc(x.f, 3 / 4)
@@ -1067,8 +1067,8 @@ procedure t03(x: Ref) returns ()
                 
                 // -- Translating statement: label lhs21 -- packaging_nested.vpr@30.37--30.65
                   lhs21:
-                  Labellhs21Mask := WandDefLHSMask;
                   Labellhs21Heap := WandDefLHSHeap;
+                  Labellhs21Mask := WandDefLHSMask;
                   assume state(WandDefLHSHeap, WandDefLHSMask);
                 havoc WandDefRHSHeap;
                 WandDefRHSMask := ZeroMask;
@@ -1145,8 +1145,8 @@ procedure t03(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(y.f, 1 / 2) && y.f == 2 --* acc(y.f, 1 / 4) --* acc(y.f, 3 / 4) -- packaging_nested.vpr@36.1--36.63
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of acc(y.f, 1 / 2) && y.f == 2 --* acc(y.f, 1 / 4) --* acc(y.f, 3 / 4)
       if (*) {
@@ -1167,8 +1167,8 @@ procedure t03(x: Ref) returns ()
         
         // -- Translating statement: label lhs22 -- packaging_nested.vpr@36.8--36.63
           lhs22:
-          Labellhs22Mask := WandDefLHSMask;
           Labellhs22Heap := WandDefLHSHeap;
+          Labellhs22Mask := WandDefLHSMask;
           assume state(WandDefLHSHeap, WandDefLHSMask);
         havoc WandDefRHSHeap;
         WandDefRHSMask := ZeroMask;
@@ -1187,8 +1187,8 @@ procedure t03(x: Ref) returns ()
             
             // -- Translating statement: label lhs23 -- packaging_nested.vpr@36.34--36.62
               lhs23:
-              Labellhs23Mask := WandDefLHSMask;
               Labellhs23Heap := WandDefLHSHeap;
+              Labellhs23Mask := WandDefLHSMask;
               assume state(WandDefLHSHeap, WandDefLHSMask);
             havoc WandDefRHSHeap;
             WandDefRHSMask := ZeroMask;
@@ -1217,8 +1217,8 @@ procedure t03(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- packaging_nested.vpr@39.1--39.13
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion false might not hold. (packaging_nested.vpr@39.8--39.13) [133441]"}
       false;
     assume state(Heap, Mask);

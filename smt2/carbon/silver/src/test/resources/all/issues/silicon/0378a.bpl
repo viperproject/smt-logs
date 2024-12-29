@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-29 15:40:28
+// Date:         2024-12-29 20:46:48
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0378a.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0378a-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -279,8 +279,8 @@ procedure foo#definedness(self: Ref) returns (Result: bool)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var QPMask: MaskType;
   var i_14: int;
   var ExhaleHeap: HeapType;
@@ -306,8 +306,8 @@ procedure foo#definedness(self: Ref) returns (Result: bool)
       UnfoldingMask := Mask;
       assume P#trigger(UnfoldingHeap, P(self));
       assume UnfoldingHeap[null, P(self)] == CombineFrames(FrameFragment(UnfoldingHeap[self, elements_1]), FrameFragment(P#condqp1(UnfoldingHeap, self)));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access P(self) (0378a.vpr@36.1--44.2) [206661]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, P(self)];
@@ -369,8 +369,8 @@ procedure foo#definedness(self: Ref) returns (Result: bool)
             HasDirectPerm(UnfoldingMask, self, elements_1);
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := UnfoldingHeap;
             ExhaleWellDef0Mask := UnfoldingMask;
+            ExhaleWellDef0Heap := UnfoldingHeap;
             perm := FullPerm;
             assert {:msg "  Precondition of function foo might not hold. There might be insufficient permission to access P(loc(self.elements, i)) (0378a.vpr@42.17--42.43) [206665]"}
               NoPerm < perm ==> NoPerm < UnfoldingMask[null, P((loc(UnfoldingHeap[self, elements_1], i_14): Ref))];

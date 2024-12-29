@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-29 15:31:07
+// Date:         2024-12-29 20:37:33
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/third_party/testHistoryApplication.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/third_party/testHistoryApplication-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -400,15 +400,15 @@ procedure Ref__do_incr(diz: Ref, h_2: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
   var arg_p: ProcessDomainType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var __flatten_49: int;
   var __flatten_18: int;
@@ -441,8 +441,8 @@ procedure Ref__do_incr(diz: Ref, h_2: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -469,8 +469,8 @@ procedure Ref__do_incr(diz: Ref, h_2: Ref) returns ()
     arg_p := (p_empty(): ProcessDomainType);
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       assert {:msg "  The precondition of method Ref__incr_begin might not hold. Assertion h != null might not hold. (testHistoryApplication.vpr@69.3--69.37) [158267]"}
         h_2 != null;
       perm := FullPerm;
@@ -533,8 +533,8 @@ procedure Ref__do_incr(diz: Ref, h_2: Ref) returns ()
     arg_p_1 := (p_empty(): ProcessDomainType);
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       assert {:msg "  The precondition of method Ref__incr_commit might not hold. Assertion h != null might not hold. (testHistoryApplication.vpr@73.3--73.38) [158273]"}
         h_2 != null;
       perm := FullPerm;
@@ -577,8 +577,8 @@ procedure Ref__do_incr(diz: Ref, h_2: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of Ref__do_incr might not hold. There might be insufficient permission to access diz.Ref__x (testHistoryApplication.vpr@62.11--62.33) [158279]"}
@@ -607,15 +607,15 @@ procedure Ref__do_incr_twice(diz: Ref, h_2: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
   var arg_p: ProcessDomainType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var __flatten_54: int;
   var __flatten_23: int;
@@ -652,8 +652,8 @@ procedure Ref__do_incr_twice(diz: Ref, h_2: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -680,8 +680,8 @@ procedure Ref__do_incr_twice(diz: Ref, h_2: Ref) returns ()
     arg_p := (p_empty(): ProcessDomainType);
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       assert {:msg "  The precondition of method Ref__incr_begin might not hold. Assertion h != null might not hold. (testHistoryApplication.vpr@90.3--90.37) [158282]"}
         h_2 != null;
       perm := FullPerm;
@@ -744,8 +744,8 @@ procedure Ref__do_incr_twice(diz: Ref, h_2: Ref) returns ()
     arg_p_1 := (p_empty(): ProcessDomainType);
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       assert {:msg "  The precondition of method Ref__incr_commit might not hold. Assertion h != null might not hold. (testHistoryApplication.vpr@94.3--94.38) [158288]"}
         h_2 != null;
       perm := FullPerm;
@@ -793,8 +793,8 @@ procedure Ref__do_incr_twice(diz: Ref, h_2: Ref) returns ()
     arg_p_2 := (p_single(1): ProcessDomainType);
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       assert {:msg "  The precondition of method Ref__incr_begin might not hold. Assertion h != null might not hold. (testHistoryApplication.vpr@95.3--95.39) [158294]"}
         h_2 != null;
       perm := FullPerm;
@@ -857,8 +857,8 @@ procedure Ref__do_incr_twice(diz: Ref, h_2: Ref) returns ()
     arg_p_3 := (p_single(1): ProcessDomainType);
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       assert {:msg "  The precondition of method Ref__incr_commit might not hold. Assertion h != null might not hold. (testHistoryApplication.vpr@99.3--99.40) [158300]"}
         h_2 != null;
       perm := FullPerm;
@@ -901,8 +901,8 @@ procedure Ref__do_incr_twice(diz: Ref, h_2: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of Ref__do_incr_twice might not hold. There might be insufficient permission to access diz.Ref__x (testHistoryApplication.vpr@81.11--81.33) [158306]"}
@@ -931,13 +931,13 @@ procedure Ref__main_og(diz: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var hh: Ref;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
   var ExhaleHeap: HeapType;
@@ -968,8 +968,8 @@ procedure Ref__main_og(diz: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -994,8 +994,8 @@ procedure Ref__main_og(diz: Ref) returns ()
     assume Heap[hh, $allocated];
   
   // -- Translating statement: assert diz.Ref__x == 0 -- testHistoryApplication.vpr@111.3--111.25
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of diz.Ref__x == 0
       assert {:msg "  Assert might fail. There might be insufficient permission to access diz.Ref__x (testHistoryApplication.vpr@111.10--111.25) [158311]"}
@@ -1017,8 +1017,8 @@ procedure Ref__main_og(diz: Ref) returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       assert {:msg "  The precondition of method Ref__do_incr might not hold. Assertion diz != null might not hold. (testHistoryApplication.vpr@113.3--113.24) [158314]"}
         diz != null;
       perm := FullPerm;
@@ -1053,8 +1053,8 @@ procedure Ref__main_og(diz: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale hh != null && acc(Ref__hist_idle(hh, diz, p_single(1)), write) -- testHistoryApplication.vpr@114.3--114.74
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Exhale might fail. Assertion hh != null might not hold. (testHistoryApplication.vpr@114.10--114.74) [158318]"}
       hh != null;
     perm := FullPerm;
@@ -1079,8 +1079,8 @@ procedure Ref__main_og(diz: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of Ref__main_og might not hold. There might be insufficient permission to access diz.Ref__x (testHistoryApplication.vpr@106.11--106.33) [158322]"}
@@ -1102,8 +1102,8 @@ procedure Ref__main_og(diz: Ref) returns ()
 procedure Ref__Ref() returns (sys__result: Ref)
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var perm: Perm;
@@ -1112,8 +1112,8 @@ procedure Ref__Ref() returns (sys__result: Ref)
   var freshObj: Ref;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -1124,8 +1124,8 @@ procedure Ref__Ref() returns (sys__result: Ref)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1179,8 +1179,8 @@ procedure Ref__Ref() returns (sys__result: Ref)
   //   (acc(sys__result.Ref__x, write) && sys__result.Ref__x == 0) -- testHistoryApplication.vpr@128.3--128.96
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
+    ExhaleWellDef0Mask := AssertMask;
     assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (testHistoryApplication.vpr@128.10--128.96) [158326]"}
       sys__result != null;
     perm := FullPerm;
@@ -1203,8 +1203,8 @@ procedure Ref__Ref() returns (sys__result: Ref)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of Ref__Ref might not hold. Assertion sys__result != null might not hold. (testHistoryApplication.vpr@119.11--119.30) [158331]"}
       sys__result != null;
     perm := FullPerm;
@@ -1229,12 +1229,12 @@ procedure Ref__empty_begin(diz: Ref, ref: Ref, p_1: ProcessDomainType) returns (
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -1262,8 +1262,8 @@ procedure Ref__empty_begin(diz: Ref, ref: Ref, p_1: ProcessDomainType) returns (
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1311,8 +1311,8 @@ procedure Ref__empty_begin(diz: Ref, ref: Ref, p_1: ProcessDomainType) returns (
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of Ref__empty_begin might not hold. There might be insufficient permission to access Ref__hist_empty(diz, ref, p) (testHistoryApplication.vpr@136.11--136.51) [158339]"}
@@ -1351,12 +1351,12 @@ procedure Ref__empty_commit(diz: Ref, ref: Ref, p_1: ProcessDomainType) returns 
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -1399,8 +1399,8 @@ procedure Ref__empty_commit(diz: Ref, ref: Ref, p_1: ProcessDomainType) returns 
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1433,8 +1433,8 @@ procedure Ref__empty_commit(diz: Ref, ref: Ref, p_1: ProcessDomainType) returns 
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of Ref__empty_commit might not hold. There might be insufficient permission to access Ref__hist_idle(diz, ref, p_seq(p, p_empty())) (testHistoryApplication.vpr@151.11--151.68) [158350]"}
@@ -1463,12 +1463,12 @@ procedure Ref__incr_begin(diz: Ref, ref: Ref, p_1: ProcessDomainType) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -1496,8 +1496,8 @@ procedure Ref__incr_begin(diz: Ref, ref: Ref, p_1: ProcessDomainType) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1545,8 +1545,8 @@ procedure Ref__incr_begin(diz: Ref, ref: Ref, p_1: ProcessDomainType) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of Ref__incr_begin might not hold. There might be insufficient permission to access Ref__hist_incr(diz, ref, p) (testHistoryApplication.vpr@162.11--162.50) [158358]"}
@@ -1585,12 +1585,12 @@ procedure Ref__incr_commit(diz: Ref, ref: Ref, p_1: ProcessDomainType) returns (
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -1633,8 +1633,8 @@ procedure Ref__incr_commit(diz: Ref, ref: Ref, p_1: ProcessDomainType) returns (
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1667,8 +1667,8 @@ procedure Ref__incr_commit(diz: Ref, ref: Ref, p_1: ProcessDomainType) returns (
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of Ref__incr_commit might not hold. There might be insufficient permission to access Ref__hist_idle(diz, ref, p_seq(p, p_incr())) (testHistoryApplication.vpr@177.11--177.67) [158369]"}
@@ -1696,8 +1696,8 @@ procedure Ref__incr_commit(diz: Ref, ref: Ref, p_1: ProcessDomainType) returns (
 procedure Ref__if_any_random(diz: Ref) returns (sys__result: bool)
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1714,8 +1714,8 @@ procedure Ref__if_any_random(diz: Ref) returns (sys__result: bool)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale false -- testHistoryApplication.vpr@187.3--187.15
     assume false;

@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-29 14:56:21
+; Started: 2024-12-29 20:03:05
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -965,7 +965,7 @@
   :pattern ((Seq_contains_trigger xs@3@01 x@7@01))
   :pattern ((inv@9@01 x@7@01))
   :pattern ((img@10@01 x@7@01))
-  :qid |quant-u-21684|)))
+  :qid |quant-u-21575|)))
 (assert (forall ((r $Ref)) (!
   (=> (and (img@10@01 r) (Seq_contains xs@3@01 (inv@9@01 r))) (= (inv@9@01 r) r))
   :pattern ((inv@9@01 r))
@@ -999,7 +999,7 @@
     (Seq_contains xs@3@01 (inv@9@01 r))
     ($FVF.loc_f ($FVF.lookup_f (as sm@11@01  $FVF<f>) r) r))
   :pattern ((inv@9@01 r))
-  :qid |quant-u-21685|)))
+  :qid |quant-u-21576|)))
 ; State saturation: after inhale
 (set-option :timeout 20)
 (check-sat)

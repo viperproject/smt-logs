@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-29 15:37:13
+// Date:         2024-12-29 20:43:35
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0211.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0211-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -188,10 +188,10 @@ axiom !IsWandField(f_7);
 procedure test(x: int) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -201,54 +201,54 @@ procedure test(x: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert x > 3 -- 0211.vpr@9.3--9.13
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion x > 3 might not hold. (0211.vpr@9.10--9.13) [195199]"}
       x > 3;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert x > 4 -- 0211.vpr@12.3--12.13
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion x > 4 might not hold. (0211.vpr@12.10--12.13) [195200]"}
       x > 4;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert x > 5 -- 0211.vpr@15.3--15.13
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion x > 5 might not hold. (0211.vpr@15.10--15.13) [195201]"}
       x > 5;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert x > 6 -- 0211.vpr@18.3--18.13
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion x > 6 might not hold. (0211.vpr@18.10--18.13) [195202]"}
       x > 6;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert x > 7 -- 0211.vpr@21.3--21.13
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion x > 7 might not hold. (0211.vpr@21.10--21.13) [195203]"}
       x > 7;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert x > 8 -- 0211.vpr@24.3--24.13
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion x > 8 might not hold. (0211.vpr@24.10--24.13) [195204]"}
       x > 8;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert x > 9 -- 0211.vpr@27.3--27.13
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion x > 9 might not hold. (0211.vpr@27.10--27.13) [195205]"}
       x > 9;
     assume state(Heap, Mask);

@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-29 14:55:50
+; Started: 2024-12-29 20:02:33
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -234,7 +234,7 @@
     (MWSF_apply mwsf@4@01 $t@3@01)
     ($Snap.combine ($Snap.first $t@3@01) ($Snap.second $t@3@01)))
   :pattern ((MWSF_apply mwsf@4@01 $t@3@01))
-  :qid |quant-u-20000|)))
+  :qid |quant-u-19891|)))
 (pop) ; 3
 (set-option :timeout 0)
 (push) ; 3
@@ -243,7 +243,7 @@
     (MWSF_apply mwsf@4@01 $t@3@01)
     ($Snap.combine ($Snap.first $t@3@01) ($Snap.second $t@3@01)))
   :pattern ((MWSF_apply mwsf@4@01 $t@3@01))
-  :qid |quant-u-20001|)))
+  :qid |quant-u-19892|)))
 (assert true)
 (pop) ; 3
 (pop) ; 2

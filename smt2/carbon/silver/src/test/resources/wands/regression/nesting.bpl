@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-29 15:23:40
+// Date:         2024-12-29 20:30:09
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/nesting.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/nesting-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -264,16 +264,16 @@ procedure test01(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var Ops_1Heap: HeapType;
   var Ops_1Mask: MaskType;
   var b_1_1: bool;
   var UsedHeap: HeapType;
   var UsedMask: MaskType;
   var b_2: bool;
-  var Labellhs1Heap: HeapType;
   var Labellhs1Mask: MaskType;
+  var Labellhs1Heap: HeapType;
   var boolCur: bool;
   var Used_1Heap: HeapType;
   var Used_1Mask: MaskType;
@@ -296,8 +296,8 @@ procedure test01(x: Ref) returns ()
   var Used_2Heap: HeapType;
   var Used_2Mask: MaskType;
   var b_5: bool;
-  var Labellhs4Heap: HeapType;
   var Labellhs4Mask: MaskType;
+  var Labellhs4Heap: HeapType;
   var boolCur_1: bool;
   var Used_3Heap: HeapType;
   var Used_3Mask: MaskType;
@@ -307,8 +307,8 @@ procedure test01(x: Ref) returns ()
   var Result_2Mask: MaskType;
   var WandDefLHSHeap: HeapType;
   var WandDefLHSMask: MaskType;
-  var Labellhs6Heap: HeapType;
   var Labellhs6Mask: MaskType;
+  var Labellhs6Heap: HeapType;
   var WandDefRHSHeap: HeapType;
   var WandDefRHSMask: MaskType;
   var b_9: bool;
@@ -316,8 +316,8 @@ procedure test01(x: Ref) returns ()
   var Result_3Mask: MaskType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -346,8 +346,8 @@ procedure test01(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: package acc(x.f, write) --* acc(x.f, write) && acc(x.g, write) {
   // } -- nesting.vpr@15.3--15.25
@@ -368,8 +368,8 @@ procedure test01(x: Ref) returns ()
     
     // -- Translating statement: label lhs1 -- nesting.vpr@15.11--15.25
       lhs1:
-      Labellhs1Heap := Ops_1Heap;
       Labellhs1Mask := Ops_1Mask;
+      Labellhs1Heap := Ops_1Heap;
       b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);
     boolCur := true;
     // Translating exec of non-ghost operationacc(x.f, write) && acc(x.g, write)
@@ -517,8 +517,8 @@ procedure test01(x: Ref) returns ()
     
     // -- Translating statement: label lhs4 -- nesting.vpr@16.11--16.40
       lhs4:
-      Labellhs4Heap := Ops_3Heap;
       Labellhs4Mask := Ops_3Mask;
+      Labellhs4Heap := Ops_3Heap;
       b_6 := b_6 && state(Ops_3Heap, Ops_3Mask);
     boolCur_1 := true;
     // Translating exec of non-ghost operationacc(x.h, write) && (acc(x.f, write) --* acc(x.f, write) && acc(x.g, write))
@@ -602,8 +602,8 @@ procedure test01(x: Ref) returns ()
                 
                 // -- Translating statement: label lhs6 -- nesting.vpr@16.24--16.38
                   lhs6:
-                  Labellhs6Heap := WandDefLHSHeap;
                   Labellhs6Mask := WandDefLHSMask;
+                  Labellhs6Heap := WandDefLHSHeap;
                   assume state(WandDefLHSHeap, WandDefLHSMask);
                 havoc WandDefRHSHeap;
                 WandDefRHSMask := ZeroMask;
@@ -682,8 +682,8 @@ procedure test01(x: Ref) returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       // permLe
       assert {:msg "  The precondition of method test02 might not hold. Magic wand instance not found. (nesting.vpr@18.3--18.12) [132853]"}
         FullPerm <= Mask[null, wand_1(x, FullPerm, x, FullPerm, x, FullPerm, x, FullPerm, x, FullPerm)];
@@ -720,16 +720,16 @@ procedure test02(x: Ref) returns ()
   var WandDefLHSHeap: HeapType;
   var WandDefLHSMask: MaskType;
   var perm: Perm;
-  var Labellhs7Heap: HeapType;
   var Labellhs7Mask: MaskType;
+  var Labellhs7Heap: HeapType;
   var WandDefRHSHeap: HeapType;
   var WandDefRHSMask: MaskType;
-  var Labellhs8Heap: HeapType;
   var Labellhs8Mask: MaskType;
-  var oldHeap: HeapType;
+  var Labellhs8Heap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
@@ -756,8 +756,8 @@ procedure test02(x: Ref) returns ()
         
         // -- Translating statement: label lhs7 -- nesting.vpr@22.12--22.111
           lhs7:
-          Labellhs7Heap := WandDefLHSHeap;
           Labellhs7Mask := WandDefLHSMask;
+          Labellhs7Heap := WandDefLHSHeap;
           assume state(WandDefLHSHeap, WandDefLHSMask);
         havoc WandDefRHSHeap;
         WandDefRHSMask := ZeroMask;
@@ -778,8 +778,8 @@ procedure test02(x: Ref) returns ()
             
             // -- Translating statement: label lhs8 -- nesting.vpr@22.53--22.109
               lhs8:
-              Labellhs8Heap := WandDefLHSHeap;
               Labellhs8Mask := WandDefLHSMask;
+              Labellhs8Heap := WandDefLHSHeap;
               assume state(WandDefLHSHeap, WandDefLHSMask);
             havoc WandDefRHSHeap;
             WandDefRHSMask := ZeroMask;
@@ -815,16 +815,16 @@ procedure test02(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: apply acc(x.h, write) --*
   //   acc(x.h, write) &&
   //   (acc(x.f, write) --* acc(x.f, write) && acc(x.g, write)) -- nesting.vpr@25.3--25.108
     
     // -- check if wand is held and remove an instance
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       // permLe
       assert {:msg "  Applying wand might fail. Magic wand instance not found. (nesting.vpr@25.3--25.108) [132856]"}
         FullPerm <= Mask[null, wand_1(x, FullPerm, x, FullPerm, x, FullPerm, x, FullPerm, x, FullPerm)];
@@ -832,8 +832,8 @@ procedure test02(x: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- check if LHS holds and remove permissions 
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Applying wand might fail. There might be insufficient permission to access x.h (nesting.vpr@25.3--25.108) [132858]"}
@@ -859,8 +859,8 @@ procedure test02(x: Ref) returns ()
   // -- Translating statement: apply acc(x.f, write) --* acc(x.f, write) && acc(x.g, write) -- nesting.vpr@26.3--26.65
     
     // -- check if wand is held and remove an instance
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       // permLe
       assert {:msg "  Applying wand might fail. Magic wand instance not found. (nesting.vpr@26.3--26.65) [132860]"}
         FullPerm <= Mask[null, wand(x, FullPerm, x, FullPerm, x, FullPerm)];
@@ -868,8 +868,8 @@ procedure test02(x: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- check if LHS holds and remove permissions 
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Applying wand might fail. There might be insufficient permission to access x.f (nesting.vpr@26.3--26.65) [132862]"}
@@ -897,8 +897,8 @@ procedure test02(x: Ref) returns ()
   // -- Translating statement: assert acc(x.g, write) -- nesting.vpr@28.3--28.25
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Heap := AssertHeap;
     ExhaleWellDef0Mask := AssertMask;
+    ExhaleWellDef0Heap := AssertHeap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Assert might fail. There might be insufficient permission to access x.g (nesting.vpr@28.10--28.25) [132866]"}

@@ -1,0 +1,1521 @@
+(set-option :auto_config false)
+(set-option :smt.mbqi false)
+(set-option :smt.case_split 3)
+(set-option :smt.qi.eager_threshold 100.0)
+(set-option :smt.delay_units true)
+(set-option :smt.arith.solver 2)
+(set-option :smt.arith.nl false)
+(set-option :pi.enabled false)
+(set-option :rewriter.sort_disjunctions false)
+
+;; Prelude
+
+;; AIR prelude
+(declare-sort %%Function%% 0)
+
+(declare-sort FuelId 0)
+(declare-sort Fuel 0)
+(declare-const zero Fuel)
+(declare-fun succ (Fuel) Fuel)
+(declare-fun fuel_bool (FuelId) Bool)
+(declare-fun fuel_bool_default (FuelId) Bool)
+(declare-const fuel_defaults Bool)
+(assert
+ (=>
+  fuel_defaults
+  (forall ((id FuelId)) (!
+    (= (fuel_bool id) (fuel_bool_default id))
+    :pattern ((fuel_bool id))
+    :qid prelude_fuel_defaults
+    :skolemid skolem_prelude_fuel_defaults
+))))
+(declare-datatypes ((fndef 0)) (((fndef_singleton))))
+(declare-sort Poly 0)
+(declare-sort Height 0)
+(declare-fun I (Int) Poly)
+(declare-fun B (Bool) Poly)
+(declare-fun F (fndef) Poly)
+(declare-fun %I (Poly) Int)
+(declare-fun %B (Poly) Bool)
+(declare-fun %F (Poly) fndef)
+(declare-sort Type 0)
+(declare-const BOOL Type)
+(declare-const INT Type)
+(declare-const NAT Type)
+(declare-const CHAR Type)
+(declare-fun UINT (Int) Type)
+(declare-fun SINT (Int) Type)
+(declare-fun CONST_INT (Int) Type)
+(declare-sort Dcr 0)
+(declare-const $ Dcr)
+(declare-fun REF (Dcr) Dcr)
+(declare-fun MUT_REF (Dcr) Dcr)
+(declare-fun BOX (Dcr Type Dcr) Dcr)
+(declare-fun RC (Dcr Type Dcr) Dcr)
+(declare-fun ARC (Dcr Type Dcr) Dcr)
+(declare-fun GHOST (Dcr) Dcr)
+(declare-fun TRACKED (Dcr) Dcr)
+(declare-fun NEVER (Dcr) Dcr)
+(declare-fun CONST_PTR (Dcr) Dcr)
+(declare-fun ARRAY (Dcr Type Dcr Type) Type)
+(declare-fun SLICE (Dcr Type) Type)
+(declare-const STRSLICE Type)
+(declare-const ALLOCATOR_GLOBAL Type)
+(declare-fun PTR (Dcr Type) Type)
+(declare-fun has_type (Poly Type) Bool)
+(declare-fun as_type (Poly Type) Poly)
+(declare-fun mk_fun (%%Function%%) %%Function%%)
+(declare-fun const_int (Type) Int)
+(assert
+ (forall ((i Int)) (!
+   (= i (const_int (CONST_INT i)))
+   :pattern ((CONST_INT i))
+   :qid prelude_type_id_const_int
+   :skolemid skolem_prelude_type_id_const_int
+)))
+(assert
+ (forall ((b Bool)) (!
+   (has_type (B b) BOOL)
+   :pattern ((has_type (B b) BOOL))
+   :qid prelude_has_type_bool
+   :skolemid skolem_prelude_has_type_bool
+)))
+(assert
+ (forall ((x Poly) (t Type)) (!
+   (and
+    (has_type (as_type x t) t)
+    (=>
+     (has_type x t)
+     (= x (as_type x t))
+   ))
+   :pattern ((as_type x t))
+   :qid prelude_as_type
+   :skolemid skolem_prelude_as_type
+)))
+(assert
+ (forall ((x %%Function%%)) (!
+   (= (mk_fun x) x)
+   :pattern ((mk_fun x))
+   :qid prelude_mk_fun
+   :skolemid skolem_prelude_mk_fun
+)))
+(assert
+ (forall ((x Bool)) (!
+   (= x (%B (B x)))
+   :pattern ((B x))
+   :qid prelude_unbox_box_bool
+   :skolemid skolem_prelude_unbox_box_bool
+)))
+(assert
+ (forall ((x Int)) (!
+   (= x (%I (I x)))
+   :pattern ((I x))
+   :qid prelude_unbox_box_int
+   :skolemid skolem_prelude_unbox_box_int
+)))
+(assert
+ (forall ((x Poly)) (!
+   (=>
+    (has_type x BOOL)
+    (= x (B (%B x)))
+   )
+   :pattern ((has_type x BOOL))
+   :qid prelude_box_unbox_bool
+   :skolemid skolem_prelude_box_unbox_bool
+)))
+(assert
+ (forall ((x Poly)) (!
+   (=>
+    (has_type x INT)
+    (= x (I (%I x)))
+   )
+   :pattern ((has_type x INT))
+   :qid prelude_box_unbox_int
+   :skolemid skolem_prelude_box_unbox_int
+)))
+(assert
+ (forall ((x Poly)) (!
+   (=>
+    (has_type x NAT)
+    (= x (I (%I x)))
+   )
+   :pattern ((has_type x NAT))
+   :qid prelude_box_unbox_nat
+   :skolemid skolem_prelude_box_unbox_nat
+)))
+(assert
+ (forall ((bits Int) (x Poly)) (!
+   (=>
+    (has_type x (UINT bits))
+    (= x (I (%I x)))
+   )
+   :pattern ((has_type x (UINT bits)))
+   :qid prelude_box_unbox_uint
+   :skolemid skolem_prelude_box_unbox_uint
+)))
+(assert
+ (forall ((bits Int) (x Poly)) (!
+   (=>
+    (has_type x (SINT bits))
+    (= x (I (%I x)))
+   )
+   :pattern ((has_type x (SINT bits)))
+   :qid prelude_box_unbox_sint
+   :skolemid skolem_prelude_box_unbox_sint
+)))
+(assert
+ (forall ((x Poly)) (!
+   (=>
+    (has_type x CHAR)
+    (= x (I (%I x)))
+   )
+   :pattern ((has_type x CHAR))
+   :qid prelude_box_unbox_char
+   :skolemid skolem_prelude_box_unbox_char
+)))
+(declare-fun ext_eq (Bool Type Poly Poly) Bool)
+(assert
+ (forall ((deep Bool) (t Type) (x Poly) (y Poly)) (!
+   (= (= x y) (ext_eq deep t x y))
+   :pattern ((ext_eq deep t x y))
+   :qid prelude_ext_eq
+   :skolemid skolem_prelude_ext_eq
+)))
+(declare-const SZ Int)
+(assert
+ (or
+  (= SZ 32)
+  (= SZ 64)
+))
+(declare-fun uHi (Int) Int)
+(declare-fun iLo (Int) Int)
+(declare-fun iHi (Int) Int)
+(assert
+ (= (uHi 8) 256)
+)
+(assert
+ (= (uHi 16) 65536)
+)
+(assert
+ (= (uHi 32) 4294967296)
+)
+(assert
+ (= (uHi 64) 18446744073709551616)
+)
+(assert
+ (= (uHi 128) (+ 1 340282366920938463463374607431768211455))
+)
+(assert
+ (= (iLo 8) (- 128))
+)
+(assert
+ (= (iLo 16) (- 32768))
+)
+(assert
+ (= (iLo 32) (- 2147483648))
+)
+(assert
+ (= (iLo 64) (- 9223372036854775808))
+)
+(assert
+ (= (iLo 128) (- 170141183460469231731687303715884105728))
+)
+(assert
+ (= (iHi 8) 128)
+)
+(assert
+ (= (iHi 16) 32768)
+)
+(assert
+ (= (iHi 32) 2147483648)
+)
+(assert
+ (= (iHi 64) 9223372036854775808)
+)
+(assert
+ (= (iHi 128) 170141183460469231731687303715884105728)
+)
+(declare-fun nClip (Int) Int)
+(declare-fun uClip (Int Int) Int)
+(declare-fun iClip (Int Int) Int)
+(declare-fun charClip (Int) Int)
+(assert
+ (forall ((i Int)) (!
+   (and
+    (<= 0 (nClip i))
+    (=>
+     (<= 0 i)
+     (= i (nClip i))
+   ))
+   :pattern ((nClip i))
+   :qid prelude_nat_clip
+   :skolemid skolem_prelude_nat_clip
+)))
+(assert
+ (forall ((bits Int) (i Int)) (!
+   (and
+    (<= 0 (uClip bits i))
+    (< (uClip bits i) (uHi bits))
+    (=>
+     (and
+      (<= 0 i)
+      (< i (uHi bits))
+     )
+     (= i (uClip bits i))
+   ))
+   :pattern ((uClip bits i))
+   :qid prelude_u_clip
+   :skolemid skolem_prelude_u_clip
+)))
+(assert
+ (forall ((bits Int) (i Int)) (!
+   (and
+    (<= (iLo bits) (iClip bits i))
+    (< (iClip bits i) (iHi bits))
+    (=>
+     (and
+      (<= (iLo bits) i)
+      (< i (iHi bits))
+     )
+     (= i (iClip bits i))
+   ))
+   :pattern ((iClip bits i))
+   :qid prelude_i_clip
+   :skolemid skolem_prelude_i_clip
+)))
+(assert
+ (forall ((i Int)) (!
+   (and
+    (or
+     (and
+      (<= 0 (charClip i))
+      (<= (charClip i) 55295)
+     )
+     (and
+      (<= 57344 (charClip i))
+      (<= (charClip i) 1114111)
+    ))
+    (=>
+     (or
+      (and
+       (<= 0 i)
+       (<= i 55295)
+      )
+      (and
+       (<= 57344 i)
+       (<= i 1114111)
+     ))
+     (= i (charClip i))
+   ))
+   :pattern ((charClip i))
+   :qid prelude_char_clip
+   :skolemid skolem_prelude_char_clip
+)))
+(declare-fun uInv (Int Int) Bool)
+(declare-fun iInv (Int Int) Bool)
+(declare-fun charInv (Int) Bool)
+(assert
+ (forall ((bits Int) (i Int)) (!
+   (= (uInv bits i) (and
+     (<= 0 i)
+     (< i (uHi bits))
+   ))
+   :pattern ((uInv bits i))
+   :qid prelude_u_inv
+   :skolemid skolem_prelude_u_inv
+)))
+(assert
+ (forall ((bits Int) (i Int)) (!
+   (= (iInv bits i) (and
+     (<= (iLo bits) i)
+     (< i (iHi bits))
+   ))
+   :pattern ((iInv bits i))
+   :qid prelude_i_inv
+   :skolemid skolem_prelude_i_inv
+)))
+(assert
+ (forall ((i Int)) (!
+   (= (charInv i) (or
+     (and
+      (<= 0 i)
+      (<= i 55295)
+     )
+     (and
+      (<= 57344 i)
+      (<= i 1114111)
+   )))
+   :pattern ((charInv i))
+   :qid prelude_char_inv
+   :skolemid skolem_prelude_char_inv
+)))
+(assert
+ (forall ((x Int)) (!
+   (has_type (I x) INT)
+   :pattern ((has_type (I x) INT))
+   :qid prelude_has_type_int
+   :skolemid skolem_prelude_has_type_int
+)))
+(assert
+ (forall ((x Int)) (!
+   (=>
+    (<= 0 x)
+    (has_type (I x) NAT)
+   )
+   :pattern ((has_type (I x) NAT))
+   :qid prelude_has_type_nat
+   :skolemid skolem_prelude_has_type_nat
+)))
+(assert
+ (forall ((bits Int) (x Int)) (!
+   (=>
+    (uInv bits x)
+    (has_type (I x) (UINT bits))
+   )
+   :pattern ((has_type (I x) (UINT bits)))
+   :qid prelude_has_type_uint
+   :skolemid skolem_prelude_has_type_uint
+)))
+(assert
+ (forall ((bits Int) (x Int)) (!
+   (=>
+    (iInv bits x)
+    (has_type (I x) (SINT bits))
+   )
+   :pattern ((has_type (I x) (SINT bits)))
+   :qid prelude_has_type_sint
+   :skolemid skolem_prelude_has_type_sint
+)))
+(assert
+ (forall ((x Int)) (!
+   (=>
+    (charInv x)
+    (has_type (I x) CHAR)
+   )
+   :pattern ((has_type (I x) CHAR))
+   :qid prelude_has_type_char
+   :skolemid skolem_prelude_has_type_char
+)))
+(assert
+ (forall ((x Poly)) (!
+   (=>
+    (has_type x NAT)
+    (<= 0 (%I x))
+   )
+   :pattern ((has_type x NAT))
+   :qid prelude_unbox_int
+   :skolemid skolem_prelude_unbox_int
+)))
+(assert
+ (forall ((bits Int) (x Poly)) (!
+   (=>
+    (has_type x (UINT bits))
+    (uInv bits (%I x))
+   )
+   :pattern ((has_type x (UINT bits)))
+   :qid prelude_unbox_uint
+   :skolemid skolem_prelude_unbox_uint
+)))
+(assert
+ (forall ((bits Int) (x Poly)) (!
+   (=>
+    (has_type x (SINT bits))
+    (iInv bits (%I x))
+   )
+   :pattern ((has_type x (SINT bits)))
+   :qid prelude_unbox_sint
+   :skolemid skolem_prelude_unbox_sint
+)))
+(declare-fun Add (Int Int) Int)
+(declare-fun Sub (Int Int) Int)
+(declare-fun Mul (Int Int) Int)
+(declare-fun EucDiv (Int Int) Int)
+(declare-fun EucMod (Int Int) Int)
+(assert
+ (forall ((x Int) (y Int)) (!
+   (= (Add x y) (+ x y))
+   :pattern ((Add x y))
+   :qid prelude_add
+   :skolemid skolem_prelude_add
+)))
+(assert
+ (forall ((x Int) (y Int)) (!
+   (= (Sub x y) (- x y))
+   :pattern ((Sub x y))
+   :qid prelude_sub
+   :skolemid skolem_prelude_sub
+)))
+(assert
+ (forall ((x Int) (y Int)) (!
+   (= (Mul x y) (* x y))
+   :pattern ((Mul x y))
+   :qid prelude_mul
+   :skolemid skolem_prelude_mul
+)))
+(assert
+ (forall ((x Int) (y Int)) (!
+   (= (EucDiv x y) (div x y))
+   :pattern ((EucDiv x y))
+   :qid prelude_eucdiv
+   :skolemid skolem_prelude_eucdiv
+)))
+(assert
+ (forall ((x Int) (y Int)) (!
+   (= (EucMod x y) (mod x y))
+   :pattern ((EucMod x y))
+   :qid prelude_eucmod
+   :skolemid skolem_prelude_eucmod
+)))
+(assert
+ (forall ((x Int) (y Int)) (!
+   (=>
+    (and
+     (<= 0 x)
+     (<= 0 y)
+    )
+    (<= 0 (Mul x y))
+   )
+   :pattern ((Mul x y))
+   :qid prelude_mul_nats
+   :skolemid skolem_prelude_mul_nats
+)))
+(assert
+ (forall ((x Int) (y Int)) (!
+   (=>
+    (and
+     (<= 0 x)
+     (< 0 y)
+    )
+    (and
+     (<= 0 (EucDiv x y))
+     (<= (EucDiv x y) x)
+   ))
+   :pattern ((EucDiv x y))
+   :qid prelude_div_unsigned_in_bounds
+   :skolemid skolem_prelude_div_unsigned_in_bounds
+)))
+(assert
+ (forall ((x Int) (y Int)) (!
+   (=>
+    (and
+     (<= 0 x)
+     (< 0 y)
+    )
+    (and
+     (<= 0 (EucMod x y))
+     (< (EucMod x y) y)
+   ))
+   :pattern ((EucMod x y))
+   :qid prelude_mod_unsigned_in_bounds
+   :skolemid skolem_prelude_mod_unsigned_in_bounds
+)))
+(declare-fun bitxor (Poly Poly) Int)
+(declare-fun bitand (Poly Poly) Int)
+(declare-fun bitor (Poly Poly) Int)
+(declare-fun bitshr (Poly Poly) Int)
+(declare-fun bitshl (Poly Poly) Int)
+(declare-fun bitnot (Poly) Int)
+(assert
+ (forall ((x Poly) (y Poly) (bits Int)) (!
+   (=>
+    (and
+     (uInv bits (%I x))
+     (uInv bits (%I y))
+    )
+    (uInv bits (bitxor x y))
+   )
+   :pattern ((uClip bits (bitxor x y)))
+   :qid prelude_bit_xor_u_inv
+   :skolemid skolem_prelude_bit_xor_u_inv
+)))
+(assert
+ (forall ((x Poly) (y Poly) (bits Int)) (!
+   (=>
+    (and
+     (iInv bits (%I x))
+     (iInv bits (%I y))
+    )
+    (iInv bits (bitxor x y))
+   )
+   :pattern ((iClip bits (bitxor x y)))
+   :qid prelude_bit_xor_i_inv
+   :skolemid skolem_prelude_bit_xor_i_inv
+)))
+(assert
+ (forall ((x Poly) (y Poly) (bits Int)) (!
+   (=>
+    (and
+     (uInv bits (%I x))
+     (uInv bits (%I y))
+    )
+    (uInv bits (bitor x y))
+   )
+   :pattern ((uClip bits (bitor x y)))
+   :qid prelude_bit_or_u_inv
+   :skolemid skolem_prelude_bit_or_u_inv
+)))
+(assert
+ (forall ((x Poly) (y Poly) (bits Int)) (!
+   (=>
+    (and
+     (iInv bits (%I x))
+     (iInv bits (%I y))
+    )
+    (iInv bits (bitor x y))
+   )
+   :pattern ((iClip bits (bitor x y)))
+   :qid prelude_bit_or_i_inv
+   :skolemid skolem_prelude_bit_or_i_inv
+)))
+(assert
+ (forall ((x Poly) (y Poly) (bits Int)) (!
+   (=>
+    (and
+     (uInv bits (%I x))
+     (uInv bits (%I y))
+    )
+    (uInv bits (bitand x y))
+   )
+   :pattern ((uClip bits (bitand x y)))
+   :qid prelude_bit_and_u_inv
+   :skolemid skolem_prelude_bit_and_u_inv
+)))
+(assert
+ (forall ((x Poly) (y Poly) (bits Int)) (!
+   (=>
+    (and
+     (iInv bits (%I x))
+     (iInv bits (%I y))
+    )
+    (iInv bits (bitand x y))
+   )
+   :pattern ((iClip bits (bitand x y)))
+   :qid prelude_bit_and_i_inv
+   :skolemid skolem_prelude_bit_and_i_inv
+)))
+(assert
+ (forall ((x Poly) (y Poly) (bits Int)) (!
+   (=>
+    (and
+     (uInv bits (%I x))
+     (<= 0 (%I y))
+    )
+    (uInv bits (bitshr x y))
+   )
+   :pattern ((uClip bits (bitshr x y)))
+   :qid prelude_bit_shr_u_inv
+   :skolemid skolem_prelude_bit_shr_u_inv
+)))
+(assert
+ (forall ((x Poly) (y Poly) (bits Int)) (!
+   (=>
+    (and
+     (iInv bits (%I x))
+     (<= 0 (%I y))
+    )
+    (iInv bits (bitshr x y))
+   )
+   :pattern ((iClip bits (bitshr x y)))
+   :qid prelude_bit_shr_i_inv
+   :skolemid skolem_prelude_bit_shr_i_inv
+)))
+(declare-fun singular_mod (Int Int) Int)
+(assert
+ (forall ((x Int) (y Int)) (!
+   (=>
+    (not (= y 0))
+    (= (EucMod x y) (singular_mod x y))
+   )
+   :pattern ((singular_mod x y))
+   :qid prelude_singularmod
+   :skolemid skolem_prelude_singularmod
+)))
+(declare-fun closure_req (Type Dcr Type Poly Poly) Bool)
+(declare-fun closure_ens (Type Dcr Type Poly Poly Poly) Bool)
+(declare-fun height (Poly) Height)
+(declare-fun height_lt (Height Height) Bool)
+(declare-fun fun_from_recursive_field (Poly) Poly)
+(declare-fun check_decrease_int (Int Int Bool) Bool)
+(assert
+ (forall ((cur Int) (prev Int) (otherwise Bool)) (!
+   (= (check_decrease_int cur prev otherwise) (or
+     (and
+      (<= 0 cur)
+      (< cur prev)
+     )
+     (and
+      (= cur prev)
+      otherwise
+   )))
+   :pattern ((check_decrease_int cur prev otherwise))
+   :qid prelude_check_decrease_int
+   :skolemid skolem_prelude_check_decrease_int
+)))
+(declare-fun check_decrease_height (Poly Poly Bool) Bool)
+(assert
+ (forall ((cur Poly) (prev Poly) (otherwise Bool)) (!
+   (= (check_decrease_height cur prev otherwise) (or
+     (height_lt (height cur) (height prev))
+     (and
+      (= (height cur) (height prev))
+      otherwise
+   )))
+   :pattern ((check_decrease_height cur prev otherwise))
+   :qid prelude_check_decrease_height
+   :skolemid skolem_prelude_check_decrease_height
+)))
+(assert
+ (forall ((x Height) (y Height)) (!
+   (= (height_lt x y) (and
+     ((_ partial-order 0) x y)
+     (not (= x y))
+   ))
+   :pattern ((height_lt x y))
+   :qid prelude_height_lt
+   :skolemid skolem_prelude_height_lt
+)))
+
+;; MODULE 'root module'
+
+;; Fuel
+(declare-const fuel%apply_to_1. FuelId)
+(declare-const fuel%polytestfun. FuelId)
+(declare-const fuel%specf. FuelId)
+(assert
+ (distinct fuel%apply_to_1. fuel%polytestfun. fuel%specf.)
+)
+
+;; Datatypes
+(declare-datatypes ((S. 0) (tuple%0. 0)) (((S./S (S./S/?f %%Function%%))) ((tuple%0./tuple%0))))
+(declare-fun S./S/f (S.) %%Function%%)
+(declare-fun TYPE%fun%1. (Dcr Type Dcr Type) Type)
+(declare-fun TYPE%fun%2. (Dcr Type Dcr Type Dcr Type) Type)
+(declare-const TYPE%S. Type)
+(declare-const TYPE%tuple%0. Type)
+(declare-fun Poly%fun%1. (%%Function%%) Poly)
+(declare-fun %Poly%fun%1. (Poly) %%Function%%)
+(declare-fun Poly%fun%2. (%%Function%%) Poly)
+(declare-fun %Poly%fun%2. (Poly) %%Function%%)
+(declare-fun Poly%S. (S.) Poly)
+(declare-fun %Poly%S. (Poly) S.)
+(declare-fun Poly%tuple%0. (tuple%0.) Poly)
+(declare-fun %Poly%tuple%0. (Poly) tuple%0.)
+(assert
+ (forall ((x %%Function%%)) (!
+   (= x (%Poly%fun%1. (Poly%fun%1. x)))
+   :pattern ((Poly%fun%1. x))
+   :qid internal_crate__fun__1_box_axiom_definition
+   :skolemid skolem_internal_crate__fun__1_box_axiom_definition
+)))
+(assert
+ (forall ((T%0&. Dcr) (T%0& Type) (T%1&. Dcr) (T%1& Type) (x Poly)) (!
+   (=>
+    (has_type x (TYPE%fun%1. T%0&. T%0& T%1&. T%1&))
+    (= x (Poly%fun%1. (%Poly%fun%1. x)))
+   )
+   :pattern ((has_type x (TYPE%fun%1. T%0&. T%0& T%1&. T%1&)))
+   :qid internal_crate__fun__1_unbox_axiom_definition
+   :skolemid skolem_internal_crate__fun__1_unbox_axiom_definition
+)))
+(declare-fun %%apply%%0 (%%Function%% Poly) Poly)
+(assert
+ (forall ((T%0&. Dcr) (T%0& Type) (T%1&. Dcr) (T%1& Type) (x %%Function%%)) (!
+   (=>
+    (forall ((T%0 Poly)) (!
+      (=>
+       (has_type T%0 T%0&)
+       (has_type (%%apply%%0 x T%0) T%1&)
+      )
+      :pattern ((has_type (%%apply%%0 x T%0) T%1&))
+      :qid internal_crate__fun__1_constructor_inner_definition
+      :skolemid skolem_internal_crate__fun__1_constructor_inner_definition
+    ))
+    (has_type (Poly%fun%1. (mk_fun x)) (TYPE%fun%1. T%0&. T%0& T%1&. T%1&))
+   )
+   :pattern ((has_type (Poly%fun%1. (mk_fun x)) (TYPE%fun%1. T%0&. T%0& T%1&. T%1&)))
+   :qid internal_crate__fun__1_constructor_definition
+   :skolemid skolem_internal_crate__fun__1_constructor_definition
+)))
+(assert
+ (forall ((T%0&. Dcr) (T%0& Type) (T%1&. Dcr) (T%1& Type) (T%0 Poly) (x %%Function%%))
+  (!
+   (=>
+    (and
+     (has_type (Poly%fun%1. x) (TYPE%fun%1. T%0&. T%0& T%1&. T%1&))
+     (has_type T%0 T%0&)
+    )
+    (has_type (%%apply%%0 x T%0) T%1&)
+   )
+   :pattern ((%%apply%%0 x T%0) (has_type (Poly%fun%1. x) (TYPE%fun%1. T%0&. T%0& T%1&.
+      T%1&
+   )))
+   :qid internal_crate__fun__1_apply_definition
+   :skolemid skolem_internal_crate__fun__1_apply_definition
+)))
+(assert
+ (forall ((T%0&. Dcr) (T%0& Type) (T%1&. Dcr) (T%1& Type) (T%0 Poly) (x %%Function%%))
+  (!
+   (=>
+    (and
+     (has_type (Poly%fun%1. x) (TYPE%fun%1. T%0&. T%0& T%1&. T%1&))
+     (has_type T%0 T%0&)
+    )
+    (height_lt (height (%%apply%%0 x T%0)) (height (fun_from_recursive_field (Poly%fun%1.
+        (mk_fun x)
+   )))))
+   :pattern ((height (%%apply%%0 x T%0)) (has_type (Poly%fun%1. x) (TYPE%fun%1. T%0&. T%0&
+      T%1&. T%1&
+   )))
+   :qid internal_crate__fun__1_height_apply_definition
+   :skolemid skolem_internal_crate__fun__1_height_apply_definition
+)))
+(assert
+ (forall ((T%0&. Dcr) (T%0& Type) (T%1&. Dcr) (T%1& Type) (deep Bool) (x Poly) (y Poly))
+  (!
+   (=>
+    (and
+     (has_type x (TYPE%fun%1. T%0&. T%0& T%1&. T%1&))
+     (has_type y (TYPE%fun%1. T%0&. T%0& T%1&. T%1&))
+     (forall ((T%0 Poly)) (!
+       (=>
+        (has_type T%0 T%0&)
+        (ext_eq deep T%1& (%%apply%%0 (%Poly%fun%1. x) T%0) (%%apply%%0 (%Poly%fun%1. y) T%0))
+       )
+       :pattern ((ext_eq deep T%1& (%%apply%%0 (%Poly%fun%1. x) T%0) (%%apply%%0 (%Poly%fun%1.
+           y
+          ) T%0
+       )))
+       :qid internal_crate__fun__1_inner_ext_equal_definition
+       :skolemid skolem_internal_crate__fun__1_inner_ext_equal_definition
+    )))
+    (ext_eq deep (TYPE%fun%1. T%0&. T%0& T%1&. T%1&) x y)
+   )
+   :pattern ((ext_eq deep (TYPE%fun%1. T%0&. T%0& T%1&. T%1&) x y))
+   :qid internal_crate__fun__1_ext_equal_definition
+   :skolemid skolem_internal_crate__fun__1_ext_equal_definition
+)))
+(assert
+ (forall ((x %%Function%%)) (!
+   (= x (%Poly%fun%2. (Poly%fun%2. x)))
+   :pattern ((Poly%fun%2. x))
+   :qid internal_crate__fun__2_box_axiom_definition
+   :skolemid skolem_internal_crate__fun__2_box_axiom_definition
+)))
+(assert
+ (forall ((T%0&. Dcr) (T%0& Type) (T%1&. Dcr) (T%1& Type) (T%2&. Dcr) (T%2& Type) (x
+    Poly
+   )
+  ) (!
+   (=>
+    (has_type x (TYPE%fun%2. T%0&. T%0& T%1&. T%1& T%2&. T%2&))
+    (= x (Poly%fun%2. (%Poly%fun%2. x)))
+   )
+   :pattern ((has_type x (TYPE%fun%2. T%0&. T%0& T%1&. T%1& T%2&. T%2&)))
+   :qid internal_crate__fun__2_unbox_axiom_definition
+   :skolemid skolem_internal_crate__fun__2_unbox_axiom_definition
+)))
+(declare-fun %%apply%%1 (%%Function%% Poly Poly) Poly)
+(assert
+ (forall ((T%0&. Dcr) (T%0& Type) (T%1&. Dcr) (T%1& Type) (T%2&. Dcr) (T%2& Type) (x
+    %%Function%%
+   )
+  ) (!
+   (=>
+    (forall ((T%0 Poly) (T%1 Poly)) (!
+      (=>
+       (and
+        (has_type T%0 T%0&)
+        (has_type T%1 T%1&)
+       )
+       (has_type (%%apply%%1 x T%0 T%1) T%2&)
+      )
+      :pattern ((has_type (%%apply%%1 x T%0 T%1) T%2&))
+      :qid internal_crate__fun__2_constructor_inner_definition
+      :skolemid skolem_internal_crate__fun__2_constructor_inner_definition
+    ))
+    (has_type (Poly%fun%2. (mk_fun x)) (TYPE%fun%2. T%0&. T%0& T%1&. T%1& T%2&. T%2&))
+   )
+   :pattern ((has_type (Poly%fun%2. (mk_fun x)) (TYPE%fun%2. T%0&. T%0& T%1&. T%1& T%2&.
+      T%2&
+   )))
+   :qid internal_crate__fun__2_constructor_definition
+   :skolemid skolem_internal_crate__fun__2_constructor_definition
+)))
+(assert
+ (forall ((T%0&. Dcr) (T%0& Type) (T%1&. Dcr) (T%1& Type) (T%2&. Dcr) (T%2& Type) (T%0
+    Poly
+   ) (T%1 Poly) (x %%Function%%)
+  ) (!
+   (=>
+    (and
+     (has_type (Poly%fun%2. x) (TYPE%fun%2. T%0&. T%0& T%1&. T%1& T%2&. T%2&))
+     (has_type T%0 T%0&)
+     (has_type T%1 T%1&)
+    )
+    (has_type (%%apply%%1 x T%0 T%1) T%2&)
+   )
+   :pattern ((%%apply%%1 x T%0 T%1) (has_type (Poly%fun%2. x) (TYPE%fun%2. T%0&. T%0& T%1&.
+      T%1& T%2&. T%2&
+   )))
+   :qid internal_crate__fun__2_apply_definition
+   :skolemid skolem_internal_crate__fun__2_apply_definition
+)))
+(assert
+ (forall ((T%0&. Dcr) (T%0& Type) (T%1&. Dcr) (T%1& Type) (T%2&. Dcr) (T%2& Type) (T%0
+    Poly
+   ) (T%1 Poly) (x %%Function%%)
+  ) (!
+   (=>
+    (and
+     (has_type (Poly%fun%2. x) (TYPE%fun%2. T%0&. T%0& T%1&. T%1& T%2&. T%2&))
+     (has_type T%0 T%0&)
+     (has_type T%1 T%1&)
+    )
+    (height_lt (height (%%apply%%1 x T%0 T%1)) (height (fun_from_recursive_field (Poly%fun%2.
+        (mk_fun x)
+   )))))
+   :pattern ((height (%%apply%%1 x T%0 T%1)) (has_type (Poly%fun%2. x) (TYPE%fun%2. T%0&.
+      T%0& T%1&. T%1& T%2&. T%2&
+   )))
+   :qid internal_crate__fun__2_height_apply_definition
+   :skolemid skolem_internal_crate__fun__2_height_apply_definition
+)))
+(assert
+ (forall ((T%0&. Dcr) (T%0& Type) (T%1&. Dcr) (T%1& Type) (T%2&. Dcr) (T%2& Type) (deep
+    Bool
+   ) (x Poly) (y Poly)
+  ) (!
+   (=>
+    (and
+     (has_type x (TYPE%fun%2. T%0&. T%0& T%1&. T%1& T%2&. T%2&))
+     (has_type y (TYPE%fun%2. T%0&. T%0& T%1&. T%1& T%2&. T%2&))
+     (forall ((T%0 Poly) (T%1 Poly)) (!
+       (=>
+        (and
+         (has_type T%0 T%0&)
+         (has_type T%1 T%1&)
+        )
+        (ext_eq deep T%2& (%%apply%%1 (%Poly%fun%2. x) T%0 T%1) (%%apply%%1 (%Poly%fun%2. y)
+          T%0 T%1
+       )))
+       :pattern ((ext_eq deep T%2& (%%apply%%1 (%Poly%fun%2. x) T%0 T%1) (%%apply%%1 (%Poly%fun%2.
+           y
+          ) T%0 T%1
+       )))
+       :qid internal_crate__fun__2_inner_ext_equal_definition
+       :skolemid skolem_internal_crate__fun__2_inner_ext_equal_definition
+    )))
+    (ext_eq deep (TYPE%fun%2. T%0&. T%0& T%1&. T%1& T%2&. T%2&) x y)
+   )
+   :pattern ((ext_eq deep (TYPE%fun%2. T%0&. T%0& T%1&. T%1& T%2&. T%2&) x y))
+   :qid internal_crate__fun__2_ext_equal_definition
+   :skolemid skolem_internal_crate__fun__2_ext_equal_definition
+)))
+(assert
+ (forall ((x S.)) (!
+   (= x (%Poly%S. (Poly%S. x)))
+   :pattern ((Poly%S. x))
+   :qid internal_crate__S_box_axiom_definition
+   :skolemid skolem_internal_crate__S_box_axiom_definition
+)))
+(assert
+ (forall ((x Poly)) (!
+   (=>
+    (has_type x TYPE%S.)
+    (= x (Poly%S. (%Poly%S. x)))
+   )
+   :pattern ((has_type x TYPE%S.))
+   :qid internal_crate__S_unbox_axiom_definition
+   :skolemid skolem_internal_crate__S_unbox_axiom_definition
+)))
+(assert
+ (forall ((_f! %%Function%%)) (!
+   (=>
+    (has_type (Poly%fun%1. _f!) (TYPE%fun%1. $ (UINT 8) $ (UINT 8)))
+    (has_type (Poly%S. (S./S _f!)) TYPE%S.)
+   )
+   :pattern ((has_type (Poly%S. (S./S _f!)) TYPE%S.))
+   :qid internal_S./S_constructor_definition
+   :skolemid skolem_internal_S./S_constructor_definition
+)))
+(assert
+ (forall ((x S.)) (!
+   (= (S./S/f x) (S./S/?f x))
+   :pattern ((S./S/f x))
+   :qid internal_S./S/f_accessor_definition
+   :skolemid skolem_internal_S./S/f_accessor_definition
+)))
+(assert
+ (forall ((x Poly)) (!
+   (=>
+    (has_type x TYPE%S.)
+    (has_type (Poly%fun%1. (S./S/f (%Poly%S. x))) (TYPE%fun%1. $ (UINT 8) $ (UINT 8)))
+   )
+   :pattern ((S./S/f (%Poly%S. x)) (has_type x TYPE%S.))
+   :qid internal_S./S/f_invariant_definition
+   :skolemid skolem_internal_S./S/f_invariant_definition
+)))
+(assert
+ (forall ((x tuple%0.)) (!
+   (= x (%Poly%tuple%0. (Poly%tuple%0. x)))
+   :pattern ((Poly%tuple%0. x))
+   :qid internal_crate__tuple__0_box_axiom_definition
+   :skolemid skolem_internal_crate__tuple__0_box_axiom_definition
+)))
+(assert
+ (forall ((x Poly)) (!
+   (=>
+    (has_type x TYPE%tuple%0.)
+    (= x (Poly%tuple%0. (%Poly%tuple%0. x)))
+   )
+   :pattern ((has_type x TYPE%tuple%0.))
+   :qid internal_crate__tuple__0_unbox_axiom_definition
+   :skolemid skolem_internal_crate__tuple__0_unbox_axiom_definition
+)))
+(assert
+ (forall ((x tuple%0.)) (!
+   (has_type (Poly%tuple%0. x) TYPE%tuple%0.)
+   :pattern ((has_type (Poly%tuple%0. x) TYPE%tuple%0.))
+   :qid internal_crate__tuple__0_has_type_always_definition
+   :skolemid skolem_internal_crate__tuple__0_has_type_always_definition
+)))
+
+;; Function-Decl crate::apply_to_1
+(declare-fun apply_to_1.? (Poly) Int)
+
+;; Function-Decl crate::polytestfun
+(declare-fun polytestfun.? (Dcr Type Poly Poly) Poly)
+
+;; Function-Decl crate::specf
+(declare-fun specf.? (Poly Poly) Int)
+
+;; Function-Axioms crate::apply_to_1
+(assert
+ (=>
+  (fuel_bool fuel%apply_to_1.)
+  (forall ((f! Poly)) (!
+    (= (apply_to_1.? f!) (%I (%%apply%%0 (%Poly%fun%1. f!) (I 1))))
+    :pattern ((apply_to_1.? f!))
+    :qid internal_apply_to_1.?_definition
+    :skolemid skolem_internal_apply_to_1.?_definition
+))))
+(assert
+ (forall ((f! Poly)) (!
+   (=>
+    (has_type f! (TYPE%fun%1. $ (UINT 8) $ (UINT 8)))
+    (uInv 8 (apply_to_1.? f!))
+   )
+   :pattern ((apply_to_1.? f!))
+   :qid internal_apply_to_1.?_pre_post_definition
+   :skolemid skolem_internal_apply_to_1.?_pre_post_definition
+)))
+
+;; Function-Axioms crate::polytestfun
+(assert
+ (fuel_bool_default fuel%polytestfun.)
+)
+(assert
+ (=>
+  (fuel_bool fuel%polytestfun.)
+  (forall ((A&. Dcr) (A& Type) (a! Poly) (f! Poly)) (!
+    (= (polytestfun.? A&. A& a! f!) (%%apply%%1 (%Poly%fun%2. f!) a! a!))
+    :pattern ((polytestfun.? A&. A& a! f!))
+    :qid internal_polytestfun.?_definition
+    :skolemid skolem_internal_polytestfun.?_definition
+))))
+(assert
+ (forall ((A&. Dcr) (A& Type) (a! Poly) (f! Poly)) (!
+   (=>
+    (and
+     (has_type a! A&)
+     (has_type f! (TYPE%fun%2. A&. A& A&. A& A&. A&))
+    )
+    (has_type (polytestfun.? A&. A& a! f!) A&)
+   )
+   :pattern ((polytestfun.? A&. A& a! f!))
+   :qid internal_polytestfun.?_pre_post_definition
+   :skolemid skolem_internal_polytestfun.?_pre_post_definition
+)))
+
+;; Function-Axioms crate::specf
+(assert
+ (fuel_bool_default fuel%specf.)
+)
+(assert
+ (=>
+  (fuel_bool fuel%specf.)
+  (forall ((x! Poly) (f! Poly)) (!
+    (= (specf.? x! f!) (%I (%%apply%%0 (%Poly%fun%1. f!) (%%apply%%0 (%Poly%fun%1. f!) x!))))
+    :pattern ((specf.? x! f!))
+    :qid internal_specf.?_definition
+    :skolemid skolem_internal_specf.?_definition
+))))
+(assert
+ (forall ((x! Poly) (f! Poly)) (!
+   (=>
+    (and
+     (has_type x! (UINT 32))
+     (has_type f! (TYPE%fun%1. $ (UINT 32) $ (UINT 32)))
+    )
+    (uInv 32 (specf.? x! f!))
+   )
+   :pattern ((specf.? x! f!))
+   :qid internal_specf.?_pre_post_definition
+   :skolemid skolem_internal_specf.?_pre_post_definition
+)))
+
+;; Function-Def crate::testfun1
+;; /home/runner/work/smt-logs/smt-logs/verus/verus/source/target/release/test_inputs/closures-126f5b55da384ca6-test1/test.rs:15:7: 15:20 (#0)
+(get-info :all-statistics)
+(push)
+ (declare-const no%param Int)
+ (declare-const tmp%1 Bool)
+ (declare-const tmp%2 Bool)
+ (declare-const f@ %%Function%%)
+ (assert
+  fuel_defaults
+ )
+ (declare-fun %%lambda%%0 (Int) %%Function%%)
+ (assert
+  (forall ((%%hole%%0 Int) (x$ Poly)) (!
+    (= (%%apply%%0 (%%lambda%%0 %%hole%%0) x$) (I (Add (%I x$) %%hole%%0)))
+    :pattern ((%%apply%%0 (%%lambda%%0 %%hole%%0) x$))
+ )))
+ ;; assertion failed
+ (declare-const %%location_label%%0 Bool)
+ ;; assertion failed
+ (declare-const %%location_label%%1 Bool)
+ (assert
+  (not (=>
+    (= f@ (mk_fun (%%lambda%%0 1)))
+    (=>
+     (= tmp%1 (= (%I (%%apply%%0 f@ (I 10))) 11))
+     (and
+      (=>
+       %%location_label%%0
+       tmp%1
+      )
+      (=>
+       tmp%1
+       (=>
+        (= tmp%2 (= (%I (%%apply%%0 f@ (I 20))) 21))
+        (=>
+         %%location_label%%1
+         tmp%2
+ ))))))))
+ (get-info :version)
+ (set-option :rlimit 30000000)
+ (check-sat)
+ (set-option :rlimit 0)
+(pop)
+
+;; Function-Specs crate::takefun
+(declare-fun ens%takefun. (%%Function%% Bool) Bool)
+(assert
+ (forall ((f! %%Function%%) (b! Bool)) (!
+   (= (ens%takefun. f! b!) (= b! (%B (%%apply%%1 f! (I 10) (I 20)))))
+   :pattern ((ens%takefun. f! b!))
+   :qid internal_ens__takefun._definition
+   :skolemid skolem_internal_ens__takefun._definition
+)))
+
+;; Function-Def crate::takefun
+;; /home/runner/work/smt-logs/smt-logs/verus/verus/source/target/release/test_inputs/closures-126f5b55da384ca6-test1/test.rs:21:7: 21:59 (#0)
+(get-info :all-statistics)
+(push)
+ (declare-const b! Bool)
+ (declare-const f! %%Function%%)
+ (assert
+  fuel_defaults
+ )
+ (assert
+  (has_type (Poly%fun%2. f!) (TYPE%fun%2. $ (UINT 32) $ (UINT 64) $ BOOL))
+ )
+ ;; postcondition not satisfied
+ (declare-const %%location_label%%0 Bool)
+ (assert
+  (not (=>
+    (= b! (let
+      ((b$ (%B (%%apply%%1 f! (I 10) (I 20)))))
+      b$
+    ))
+    (=>
+     %%location_label%%0
+     (= b! (%B (%%apply%%1 f! (I 10) (I 20))))
+ ))))
+ (get-info :version)
+ (set-option :rlimit 30000000)
+ (check-sat)
+ (set-option :rlimit 0)
+(pop)
+
+;; Function-Def crate::testtake
+;; /home/runner/work/smt-logs/smt-logs/verus/verus/source/target/release/test_inputs/closures-126f5b55da384ca6-test1/test.rs:29:7: 29:20 (#0)
+(get-info :all-statistics)
+(push)
+ (declare-const no%param Int)
+ (declare-const tmp%1 %%Function%%)
+ (declare-const b@ Bool)
+ (assert
+  fuel_defaults
+ )
+ (declare-fun %%lambda%%1 (Int) %%Function%%)
+ (assert
+  (forall ((%%hole%%0 Int) (x$ Poly) (y$ Poly)) (!
+    (= (%%apply%%1 (%%lambda%%1 %%hole%%0) x$ y$) (B (< (uClip %%hole%%0 (%I x$)) (%I y$))))
+    :pattern ((%%apply%%1 (%%lambda%%1 %%hole%%0) x$ y$))
+ )))
+ ;; assertion failed
+ (declare-const %%location_label%%0 Bool)
+ (assert
+  (not (=>
+    (= tmp%1 (mk_fun (%%lambda%%1 64)))
+    (=>
+     (ens%takefun. tmp%1 b@)
+     (=>
+      %%location_label%%0
+      b@
+ )))))
+ (get-info :version)
+ (set-option :rlimit 30000000)
+ (check-sat)
+ (set-option :rlimit 0)
+(pop)
+
+;; Function-Def crate::refine_takefun
+;; /home/runner/work/smt-logs/smt-logs/verus/verus/source/target/release/test_inputs/closures-126f5b55da384ca6-test1/test.rs:39:7: 39:55 (#0)
+(get-info :all-statistics)
+(push)
+ (declare-const f! %%Function%%)
+ (declare-const tmp%1 Bool)
+ (assert
+  fuel_defaults
+ )
+ (assert
+  (has_type (Poly%fun%2. f!) (TYPE%fun%2. $ BOOL $ BOOL $ NAT))
+ )
+ ;; assertion failed
+ (declare-const %%location_label%%0 Bool)
+ (assert
+  (not (=>
+    (= tmp%1 (>= (%I (%%apply%%1 f! (B true) (B false))) 0))
+    (=>
+     %%location_label%%0
+     tmp%1
+ ))))
+ (get-info :version)
+ (set-option :rlimit 30000000)
+ (check-sat)
+ (set-option :rlimit 0)
+(pop)
+
+;; Function-Def crate::test_refine
+;; /home/runner/work/smt-logs/smt-logs/verus/verus/source/target/release/test_inputs/closures-126f5b55da384ca6-test1/test.rs:43:7: 43:52 (#0)
+(get-info :all-statistics)
+(push)
+ (declare-const f! %%Function%%)
+ (declare-const tmp%1 %%Function%%)
+ (declare-const tmp%2 Bool)
+ (assert
+  fuel_defaults
+ )
+ (assert
+  (has_type (Poly%fun%2. f!) (TYPE%fun%2. $ BOOL $ BOOL $ NAT))
+ )
+ (declare-fun %%lambda%%2 (Poly) %%Function%%)
+ (assert
+  (forall ((%%hole%%0 Poly) (x$ Poly) (y$ Poly)) (!
+    (= (%%apply%%1 (%%lambda%%2 %%hole%%0) x$ y$) %%hole%%0)
+    :pattern ((%%apply%%1 (%%lambda%%2 %%hole%%0) x$ y$))
+ )))
+ (declare-fun %%lambda%%3 (Poly) %%Function%%)
+ (assert
+  (forall ((%%hole%%0 Poly) (u$ Poly)) (!
+    (= (%%apply%%0 (%%lambda%%3 %%hole%%0) u$) %%hole%%0)
+    :pattern ((%%apply%%0 (%%lambda%%3 %%hole%%0) u$))
+ )))
+ ;; assertion failed
+ (declare-const %%location_label%%0 Bool)
+ (assert
+  (not (=>
+    (= tmp%1 (mk_fun (%%lambda%%2 (I 10))))
+    (=>
+     (= tmp%2 (>= (apply_to_1.? (Poly%fun%1. (mk_fun (%%lambda%%3 (I 10))))) 0))
+     (=>
+      %%location_label%%0
+      tmp%2
+ )))))
+ (get-info :version)
+ (set-option :rlimit 30000000)
+ (check-sat)
+ (set-option :rlimit 0)
+(pop)
+
+;; Function-Def crate::testfun
+;; /home/runner/work/smt-logs/smt-logs/verus/verus/source/target/release/test_inputs/closures-126f5b55da384ca6-test1/test.rs:52:7: 52:35 (#0)
+(get-info :all-statistics)
+(push)
+ (declare-const A&. Dcr)
+ (declare-const A& Type)
+ (declare-const a! Poly)
+ (declare-const b! Bool)
+ (declare-const tmp%1 Bool)
+ (declare-const aa@ Poly)
+ (assert
+  fuel_defaults
+ )
+ (assert
+  (has_type a! A&)
+ )
+ (declare-fun %%lambda%%4 (Bool) %%Function%%)
+ (assert
+  (forall ((%%hole%%0 Bool) (x$ Poly) (y$ Poly)) (!
+    (= (%%apply%%1 (%%lambda%%4 %%hole%%0) x$ y$) (ite
+      %%hole%%0
+      x$
+      y$
+    ))
+    :pattern ((%%apply%%1 (%%lambda%%4 %%hole%%0) x$ y$))
+ )))
+ ;; assertion failed
+ (declare-const %%location_label%%0 Bool)
+ (assert
+  (not (=>
+    (= aa@ (polytestfun.? A&. A& a! (Poly%fun%2. (mk_fun (%%lambda%%4 b!)))))
+    (=>
+     (= tmp%1 (= a! aa@))
+     (=>
+      %%location_label%%0
+      tmp%1
+ )))))
+ (get-info :version)
+ (set-option :rlimit 30000000)
+ (check-sat)
+ (set-option :rlimit 0)
+(pop)
+
+;; Function-Specs crate::test_specf
+(declare-fun req%test_specf. (Int) Bool)
+(declare-const %%global_location_label%%0 Bool)
+(assert
+ (forall ((p! Int)) (!
+   (= (req%test_specf. p!) (=>
+     %%global_location_label%%0
+     (< p! 100)
+   ))
+   :pattern ((req%test_specf. p!))
+   :qid internal_req__test_specf._definition
+   :skolemid skolem_internal_req__test_specf._definition
+)))
+
+;; Function-Def crate::test_specf
+;; /home/runner/work/smt-logs/smt-logs/verus/verus/source/target/release/test_inputs/closures-126f5b55da384ca6-test1/test.rs:61:7: 61:28 (#0)
+(get-info :all-statistics)
+(push)
+ (declare-const p! Int)
+ (declare-const tmp%1 Bool)
+ (declare-const q@ Int)
+ (assert
+  fuel_defaults
+ )
+ (assert
+  (uInv 32 p!)
+ )
+ (assert
+  (< p! 100)
+ )
+ (declare-fun %%lambda%%5 (Int Int Int Int Int Int) %%Function%%)
+ (assert
+  (forall ((%%hole%%0 Int) (%%hole%%1 Int) (%%hole%%2 Int) (%%hole%%3 Int) (%%hole%%4
+     Int
+    ) (%%hole%%5 Int) (z$ Poly)
+   ) (!
+    (= (%%apply%%0 (%%lambda%%5 %%hole%%0 %%hole%%1 %%hole%%2 %%hole%%3 %%hole%%4 %%hole%%5)
+      z$
+     ) (I (uClip %%hole%%5 (Add (uClip %%hole%%3 (Add (uClip %%hole%%1 (Add (%I z$) %%hole%%0))
+          %%hole%%2
+         )
+        ) %%hole%%4
+    ))))
+    :pattern ((%%apply%%0 (%%lambda%%5 %%hole%%0 %%hole%%1 %%hole%%2 %%hole%%3 %%hole%%4
+       %%hole%%5
+      ) z$
+ )))))
+ ;; assertion failed
+ (declare-const %%location_label%%0 Bool)
+ (assert
+  (not (=>
+    (= q@ 3)
+    (=>
+     (= tmp%1 (= (specf.? (I 10) (Poly%fun%1. (mk_fun (%%lambda%%5 1 32 p! 32 q@ 32))))
+       (uClip 32 (Add 18 (uClip 32 (Mul 2 p!))))
+     ))
+     (=>
+      %%location_label%%0
+      tmp%1
+ )))))
+ (get-info :version)
+ (set-option :rlimit 30000000)
+ (check-sat)
+ (set-option :rlimit 0)
+(pop)
+
+;; Function-Specs crate::test_specf_inference
+(declare-fun req%test_specf_inference. (Int) Bool)
+(declare-const %%global_location_label%%1 Bool)
+(assert
+ (forall ((p! Int)) (!
+   (= (req%test_specf_inference. p!) (=>
+     %%global_location_label%%1
+     (< p! 100)
+   ))
+   :pattern ((req%test_specf_inference. p!))
+   :qid internal_req__test_specf_inference._definition
+   :skolemid skolem_internal_req__test_specf_inference._definition
+)))
+
+;; Function-Def crate::test_specf_inference
+;; /home/runner/work/smt-logs/smt-logs/verus/verus/source/target/release/test_inputs/closures-126f5b55da384ca6-test1/test.rs:69:7: 69:38 (#0)
+(get-info :all-statistics)
+(push)
+ (declare-const p! Int)
+ (declare-const tmp%1 Bool)
+ (declare-const q@ Int)
+ (assert
+  fuel_defaults
+ )
+ (assert
+  (uInv 32 p!)
+ )
+ (assert
+  (< p! 100)
+ )
+ (declare-fun %%lambda%%6 (Int Int Int Int Int Int) %%Function%%)
+ (assert
+  (forall ((%%hole%%0 Int) (%%hole%%1 Int) (%%hole%%2 Int) (%%hole%%3 Int) (%%hole%%4
+     Int
+    ) (%%hole%%5 Int) (z$ Poly)
+   ) (!
+    (= (%%apply%%0 (%%lambda%%6 %%hole%%0 %%hole%%1 %%hole%%2 %%hole%%3 %%hole%%4 %%hole%%5)
+      z$
+     ) (I (uClip %%hole%%5 (Add (uClip %%hole%%3 (Add (uClip %%hole%%1 (Add (%I z$) %%hole%%0))
+          %%hole%%2
+         )
+        ) %%hole%%4
+    ))))
+    :pattern ((%%apply%%0 (%%lambda%%6 %%hole%%0 %%hole%%1 %%hole%%2 %%hole%%3 %%hole%%4
+       %%hole%%5
+      ) z$
+ )))))
+ ;; assertion failed
+ (declare-const %%location_label%%0 Bool)
+ (assert
+  (not (=>
+    (= q@ 3)
+    (=>
+     (= tmp%1 (= (specf.? (I 10) (Poly%fun%1. (mk_fun (%%lambda%%6 1 32 p! 32 q@ 32))))
+       (uClip 32 (Add 18 (uClip 32 (Mul 2 p!))))
+     ))
+     (=>
+      %%location_label%%0
+      tmp%1
+ )))))
+ (get-info :version)
+ (set-option :rlimit 30000000)
+ (check-sat)
+ (set-option :rlimit 0)
+(pop)
+
+;; Function-Def crate::test_refine_inference
+;; /home/runner/work/smt-logs/smt-logs/verus/verus/source/target/release/test_inputs/closures-126f5b55da384ca6-test1/test.rs:77:7: 77:62 (#0)
+(get-info :all-statistics)
+(push)
+ (declare-const f! %%Function%%)
+ (declare-const tmp%1 %%Function%%)
+ (declare-const tmp%2 Bool)
+ (assert
+  fuel_defaults
+ )
+ (assert
+  (has_type (Poly%fun%2. f!) (TYPE%fun%2. $ BOOL $ BOOL $ NAT))
+ )
+ (declare-fun %%lambda%%7 (Poly) %%Function%%)
+ (assert
+  (forall ((%%hole%%0 Poly) (x$ Poly) (y$ Poly)) (!
+    (= (%%apply%%1 (%%lambda%%7 %%hole%%0) x$ y$) %%hole%%0)
+    :pattern ((%%apply%%1 (%%lambda%%7 %%hole%%0) x$ y$))
+ )))
+ (declare-fun %%lambda%%8 (Poly) %%Function%%)
+ (assert
+  (forall ((%%hole%%0 Poly) (u$ Poly)) (!
+    (= (%%apply%%0 (%%lambda%%8 %%hole%%0) u$) %%hole%%0)
+    :pattern ((%%apply%%0 (%%lambda%%8 %%hole%%0) u$))
+ )))
+ ;; assertion failed
+ (declare-const %%location_label%%0 Bool)
+ (assert
+  (not (=>
+    (= tmp%1 (mk_fun (%%lambda%%7 (I 10))))
+    (=>
+     (= tmp%2 (>= (apply_to_1.? (Poly%fun%1. (mk_fun (%%lambda%%8 (I 10))))) 0))
+     (=>
+      %%location_label%%0
+      tmp%2
+ )))))
+ (get-info :version)
+ (set-option :rlimit 30000000)
+ (check-sat)
+ (set-option :rlimit 0)
+(pop)
+
+;; Function-Def crate::test_fnspec_refinement_types
+;; /home/runner/work/smt-logs/smt-logs/verus/verus/source/target/release/test_inputs/closures-126f5b55da384ca6-test1/test.rs:86:7: 86:66 (#0)
+(get-info :all-statistics)
+(push)
+ (declare-const f! %%Function%%)
+ (declare-const s! S.)
+ (declare-const tmp%1 Bool)
+ (declare-const tmp%2 Bool)
+ (declare-const x@ Int)
+ (declare-const g@ %%Function%%)
+ (declare-const y@ Int)
+ (assert
+  fuel_defaults
+ )
+ (assert
+  (has_type (Poly%fun%1. f!) (TYPE%fun%1. $ (UINT 8) $ (UINT 8)))
+ )
+ (assert
+  (has_type (Poly%S. s!) TYPE%S.)
+ )
+ ;; assertion failed
+ (declare-const %%location_label%%0 Bool)
+ ;; assertion failed
+ (declare-const %%location_label%%1 Bool)
+ (assert
+  (not (=>
+    (= x@ (%I (%%apply%%0 f! (I 10))))
+    (=>
+     (= tmp%1 (< x@ 300))
+     (and
+      (=>
+       %%location_label%%0
+       tmp%1
+      )
+      (=>
+       tmp%1
+       (=>
+        (= g@ (S./S/f (%Poly%S. (Poly%S. s!))))
+        (=>
+         (= y@ (%I (%%apply%%0 g@ (I 10))))
+         (=>
+          (= tmp%2 (< y@ 300))
+          (=>
+           %%location_label%%1
+           tmp%2
+ ))))))))))
+ (get-info :version)
+ (set-option :rlimit 30000000)
+ (check-sat)
+ (set-option :rlimit 0)
+(pop)

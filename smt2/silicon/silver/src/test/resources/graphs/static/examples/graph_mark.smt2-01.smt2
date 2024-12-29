@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-29 14:52:43
+; Started: 2024-12-29 19:59:44
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -814,29 +814,29 @@
 (assert (forall ((s@$ $Snap) (s@0@00 Set<$Ref>)) (!
   (= (get%limited s@$ s@0@00) (get s@$ s@0@00))
   :pattern ((get s@$ s@0@00))
-  :qid |quant-u-14955|)))
+  :qid |quant-u-14852|)))
 (assert (forall ((s@$ $Snap) (s@0@00 Set<$Ref>)) (!
   (get%stateless s@0@00)
   :pattern ((get%limited s@$ s@0@00))
-  :qid |quant-u-14956|)))
+  :qid |quant-u-14853|)))
 (assert (forall ((s@$ $Snap) (s@0@00 Set<$Ref>)) (!
   (let ((result@1@00 (get%limited s@$ s@0@00))) (=>
     (get%precondition s@$ s@0@00)
     (Set_in result@1@00 s@0@00)))
   :pattern ((get%limited s@$ s@0@00))
-  :qid |quant-u-14959|)))
+  :qid |quant-u-14856|)))
 (assert (forall ((s@$ $Snap) (s@0@00 Set<$Ref>)) (!
   (let ((result@1@00 (get%limited s@$ s@0@00))) true)
   :pattern ((get%limited s@$ s@0@00))
-  :qid |quant-u-14960|)))
+  :qid |quant-u-14857|)))
 (assert (forall ((s@$ $Snap) (refs@2@00 Set<$Ref>)) (!
   (= ($$%limited s@$ refs@2@00) ($$ s@$ refs@2@00))
   :pattern (($$ s@$ refs@2@00))
-  :qid |quant-u-14957|)))
+  :qid |quant-u-14854|)))
 (assert (forall ((s@$ $Snap) (refs@2@00 Set<$Ref>)) (!
   ($$%stateless refs@2@00)
   :pattern (($$%limited s@$ refs@2@00))
-  :qid |quant-u-14958|)))
+  :qid |quant-u-14855|)))
 (assert (forall ((s@$ $Snap) (refs@2@00 Set<$Ref>)) (!
   (let ((result@3@00 ($$%limited s@$ refs@2@00))) (and
     (forall ((n@5@00 $Ref)) (!
@@ -846,7 +846,7 @@
           (= (inv@7@00 s@$ refs@2@00 n@5@00) n@5@00)
           (img@8@00 s@$ refs@2@00 n@5@00)))
       :pattern (($FVF.loc_car ($FVF.lookup_car ($SortWrappers.$SnapTo$FVF<car> ($Snap.first ($Snap.second s@$))) n@5@00) n@5@00))
-      :qid |quant-u-14962|))
+      :qid |quant-u-14859|))
     (forall ((r $Ref)) (!
       (=>
         (and
@@ -862,7 +862,7 @@
           (= (inv@12@00 s@$ refs@2@00 n$0@10@00) n$0@10@00)
           (img@13@00 s@$ refs@2@00 n$0@10@00)))
       :pattern (($FVF.loc_cdr ($FVF.lookup_cdr ($SortWrappers.$SnapTo$FVF<cdr> ($Snap.second ($Snap.second s@$))) n$0@10@00) n$0@10@00))
-      :qid |quant-u-14965|))
+      :qid |quant-u-14862|))
     (forall ((r $Ref)) (!
       (=>
         (and
@@ -924,11 +924,11 @@
         :pattern ((Set_in (create_edge<Edge> p s) result@3@00))
         )))))
   :pattern (($$%limited s@$ refs@2@00))
-  :qid |quant-u-14967|)))
+  :qid |quant-u-14864|)))
 (assert (forall ((s@$ $Snap) (refs@2@00 Set<$Ref>)) (!
   (let ((result@3@00 ($$%limited s@$ refs@2@00))) true)
   :pattern (($$%limited s@$ refs@2@00))
-  :qid |quant-u-14968|)))
+  :qid |quant-u-14865|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- mark ----------
@@ -999,7 +999,7 @@
     (Set_in n$1@7@01 g@3@01)
     (and (= (inv@9@01 n$1@7@01) n$1@7@01) (img@10@01 n$1@7@01)))
   :pattern (($FVF.loc_car ($FVF.lookup_car ($SortWrappers.$SnapTo$FVF<car> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@6@01))))) n$1@7@01) n$1@7@01))
-  :qid |quant-u-14970|)))
+  :qid |quant-u-14867|)))
 (assert (forall ((r $Ref)) (!
   (=> (and (img@10@01 r) (Set_in (inv@9@01 r) g@3@01)) (= (inv@9@01 r) r))
   :pattern ((inv@9@01 r))
@@ -1031,7 +1031,7 @@
     (Set_in (inv@9@01 r) g@3@01)
     ($FVF.loc_car ($FVF.lookup_car (as sm@11@01  $FVF<car>) r) r))
   :pattern ((inv@9@01 r))
-  :qid |quant-u-14971|)))
+  :qid |quant-u-14868|)))
 (assert (=
   ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@6@01))))
   ($Snap.combine
@@ -1070,7 +1070,7 @@
     (Set_in n$2@12@01 g@3@01)
     (and (= (inv@14@01 n$2@12@01) n$2@12@01) (img@15@01 n$2@12@01)))
   :pattern (($FVF.loc_cdr ($FVF.lookup_cdr ($SortWrappers.$SnapTo$FVF<cdr> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@6@01)))))) n$2@12@01) n$2@12@01))
-  :qid |quant-u-14973|)))
+  :qid |quant-u-14870|)))
 (assert (forall ((r $Ref)) (!
   (=> (and (img@15@01 r) (Set_in (inv@14@01 r) g@3@01)) (= (inv@14@01 r) r))
   :pattern ((inv@14@01 r))
@@ -1102,7 +1102,7 @@
     (Set_in (inv@14@01 r) g@3@01)
     ($FVF.loc_cdr ($FVF.lookup_cdr (as sm@16@01  $FVF<cdr>) r) r))
   :pattern ((inv@14@01 r))
-  :qid |quant-u-14974|)))
+  :qid |quant-u-14871|)))
 (assert (=
   ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@6@01)))))
   ($Snap.combine
@@ -1407,7 +1407,7 @@
     (Set_in n$5@20@01 g@3@01)
     (and (= (inv@22@01 n$5@20@01) n$5@20@01) (img@23@01 n$5@20@01)))
   :pattern (($FVF.loc_car ($FVF.lookup_car ($SortWrappers.$SnapTo$FVF<car> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@19@01)))))) n$5@20@01) n$5@20@01))
-  :qid |quant-u-14976|)))
+  :qid |quant-u-14873|)))
 (assert (forall ((r $Ref)) (!
   (=> (and (img@23@01 r) (Set_in (inv@22@01 r) g@3@01)) (= (inv@22@01 r) r))
   :pattern ((inv@22@01 r))
@@ -1439,7 +1439,7 @@
     (Set_in (inv@22@01 r) g@3@01)
     ($FVF.loc_car ($FVF.lookup_car (as sm@24@01  $FVF<car>) r) r))
   :pattern ((inv@22@01 r))
-  :qid |quant-u-14977|)))
+  :qid |quant-u-14874|)))
 (assert (=
   ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@19@01)))))
   ($Snap.combine
@@ -1478,7 +1478,7 @@
     (Set_in n$6@25@01 g@3@01)
     (and (= (inv@27@01 n$6@25@01) n$6@25@01) (img@28@01 n$6@25@01)))
   :pattern (($FVF.loc_cdr ($FVF.lookup_cdr ($SortWrappers.$SnapTo$FVF<cdr> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@19@01))))))) n$6@25@01) n$6@25@01))
-  :qid |quant-u-14979|)))
+  :qid |quant-u-14876|)))
 (assert (forall ((r $Ref)) (!
   (=> (and (img@28@01 r) (Set_in (inv@27@01 r) g@3@01)) (= (inv@27@01 r) r))
   :pattern ((inv@27@01 r))
@@ -1510,7 +1510,7 @@
     (Set_in (inv@27@01 r) g@3@01)
     ($FVF.loc_cdr ($FVF.lookup_cdr (as sm@29@01  $FVF<cdr>) r) r))
   :pattern ((inv@27@01 r))
-  :qid |quant-u-14980|)))
+  :qid |quant-u-14877|)))
 (assert (=
   ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@19@01))))))
   ($Snap.combine
@@ -1816,7 +1816,7 @@
     (Set_in (inv@34@01 r) g@3@01)
     ($FVF.loc_car ($FVF.lookup_car (as sm@24@01  $FVF<car>) r) r))
   :pattern ((inv@34@01 r))
-  :qid |quant-u-14982|)))
+  :qid |quant-u-14879|)))
 (push) ; 9
 (assert (not (forall ((r $Ref)) (!
   (=>
@@ -1828,7 +1828,7 @@
         $Perm.No)
       $Perm.No))
   
-  :qid |quant-u-14983|))))
+  :qid |quant-u-14880|))))
 (check-sat)
 ; unsat
 (pop) ; 9
@@ -1911,5 +1911,5 @@
     (Set_in (inv@38@01 r) g@3@01)
     ($FVF.loc_cdr ($FVF.lookup_cdr (as sm@29@01  $FVF<cdr>) r) r))
   :pattern ((inv@38@01 r))
-  :qid |quant-u-14985|)))
+  :qid |quant-u-14882|)))
 (push) ; 9

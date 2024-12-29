@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-29 15:35:05
+// Date:         2024-12-29 20:41:29
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/permissions/aliasing.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/permissions/aliasing-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -621,11 +621,11 @@ procedure Inv#definedness(r_1: Ref) returns ()
 procedure test(x: Ref, y: Ref, b_24: bool, k: Perm) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -639,8 +639,8 @@ procedure test(x: Ref, y: Ref, b_24: bool, k: Perm) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale none < k -- aliasing.vpr@7.3--7.18
     assume NoPerm < k;
@@ -669,8 +669,8 @@ procedure test(x: Ref, y: Ref, b_24: bool, k: Perm) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale b ==> x.f == y.f -- aliasing.vpr@11.3--11.26
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     if (b_24) {
       
       // -- Check definedness of x.f == y.f
@@ -693,18 +693,18 @@ procedure test02(s_2: (Seq Ref), r_1: Ref) returns ()
 {
   var i_14: int;
   var j_5: int;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var i_2: int;
   var QPMask: MaskType;
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var i_4: int;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var Unfolding1Heap: HeapType;
   var Unfolding1Mask: MaskType;
   var i_6_1: int;
@@ -742,8 +742,8 @@ procedure test02(s_2: (Seq Ref), r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale (forall i: Int ::
   //     { s[i] }
@@ -810,8 +810,8 @@ procedure test02(s_2: (Seq Ref), r_1: Ref) returns ()
   //     0 <= i && i < |s| ==>
   //     (unfolding acc(Inv(r), write) in
   //       (unfolding acc(Inv(s[i]), write) in s[i] != r))) -- aliasing.vpr@22.3--22.110
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall i: Int :: { s[i] } 0 <= i && i < |s| ==> (unfolding acc(Inv(r), write) in (unfolding acc(Inv(s[i]), write) in s[i] != r)))
       if (*) {
@@ -820,8 +820,8 @@ procedure test02(s_2: (Seq Ref), r_1: Ref) returns ()
           UnfoldingMask := ExhaleWellDef0Mask;
           assume Inv#trigger(UnfoldingHeap, Inv(r_1));
           assume UnfoldingHeap[null, Inv(r_1)] == FrameFragment(UnfoldingHeap[r_1, f_7]);
-          ExhaleWellDef1Mask := UnfoldingMask;
           ExhaleWellDef1Heap := UnfoldingHeap;
+          ExhaleWellDef1Mask := UnfoldingMask;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  Assert might fail. There might be insufficient permission to access Inv(r) (aliasing.vpr@22.10--22.110) [189852]"}
@@ -837,8 +837,8 @@ procedure test02(s_2: (Seq Ref), r_1: Ref) returns ()
           Unfolding1Mask := UnfoldingMask;
           assume Inv#trigger(Unfolding1Heap, Inv(Seq#Index(s_2, i_4)));
           assume Unfolding1Heap[null, Inv(Seq#Index(s_2, i_4))] == FrameFragment(Unfolding1Heap[Seq#Index(s_2, i_4), f_7]);
-          ExhaleWellDef1Mask := Unfolding1Mask;
           ExhaleWellDef1Heap := Unfolding1Heap;
+          ExhaleWellDef1Mask := Unfolding1Mask;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  Assert might fail. There might be insufficient permission to access Inv(s[i]) (aliasing.vpr@22.10--22.110) [189853]"}
@@ -879,8 +879,8 @@ procedure test02(s_2: (Seq Ref), r_1: Ref) returns ()
           UnfoldingMask := ExhaleWellDef0Mask;
           assume Inv#trigger(UnfoldingHeap, Inv(r_1));
           assume UnfoldingHeap[null, Inv(r_1)] == FrameFragment(UnfoldingHeap[r_1, f_7]);
-          ExhaleWellDef1Mask := UnfoldingMask;
           ExhaleWellDef1Heap := UnfoldingHeap;
+          ExhaleWellDef1Mask := UnfoldingMask;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  Assert might fail. There might be insufficient permission to access Inv(r) (aliasing.vpr@22.10--22.110) [189860]"}
@@ -898,8 +898,8 @@ procedure test02(s_2: (Seq Ref), r_1: Ref) returns ()
           Unfolding1Mask := UnfoldingMask;
           assume Inv#trigger(Unfolding1Heap, Inv(Seq#Index(s_2, i_6_1)));
           assume Unfolding1Heap[null, Inv(Seq#Index(s_2, i_6_1))] == FrameFragment(Unfolding1Heap[Seq#Index(s_2, i_6_1), f_7]);
-          ExhaleWellDef1Mask := Unfolding1Mask;
           ExhaleWellDef1Heap := Unfolding1Heap;
+          ExhaleWellDef1Mask := Unfolding1Mask;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  Assert might fail. There might be insufficient permission to access Inv(s[i]) (aliasing.vpr@22.10--22.110) [189864]"}

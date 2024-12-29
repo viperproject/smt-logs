@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-29 15:43:01
+// Date:         2024-12-29 20:49:19
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0383a.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0383a-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -456,18 +456,18 @@ procedure foo_1(curr_node: Ref, all_nodes: (Set Ref)) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var perm: Perm;
   var newVersion: FrameType;
   var freshVersion: FrameType;
   var nn_3: Ref;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var nn_1: Ref;
   
   // -- Initializing the state
@@ -527,14 +527,14 @@ procedure foo_1(curr_node: Ref, all_nodes: (Set Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: unfold acc(Node(curr_node), write) -- 0383a.vpr@15.3--15.25
     assume Node#trigger(Heap, Node(curr_node));
     assume Heap[null, Node(curr_node)] == CombineFrames(FrameFragment(Heap[curr_node, visited]), FrameFragment(Heap[curr_node, bad_field]));
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Node(curr_node) might fail. There might be insufficient permission to access Node(curr_node) (0383a.vpr@15.3--15.25) [216881]"}
@@ -565,8 +565,8 @@ procedure foo_1(curr_node: Ref, all_nodes: (Set Ref)) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Node(curr_node), write) -- 0383a.vpr@17.3--17.23
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding Node(curr_node) might fail. There might be insufficient permission to access curr_node.visited (0383a.vpr@17.3--17.23) [216887]"}
@@ -598,8 +598,8 @@ procedure foo_1(curr_node: Ref, all_nodes: (Set Ref)) returns ()
   // -- Translating statement: assert (forall nn: Ref ::
   //     { (nn in all_nodes) }
   //     (nn in all_nodes) ==> (unfolding acc(Node(nn), write) in nn.visited)) -- 0383a.vpr@21.3--21.97
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall nn: Ref :: { (nn in all_nodes) } (nn in all_nodes) ==> (unfolding acc(Node(nn), write) in nn.visited))
       if (*) {
@@ -608,8 +608,8 @@ procedure foo_1(curr_node: Ref, all_nodes: (Set Ref)) returns ()
           UnfoldingMask := ExhaleWellDef0Mask;
           assume Node#trigger(UnfoldingHeap, Node(nn_3));
           assume UnfoldingHeap[null, Node(nn_3)] == CombineFrames(FrameFragment(UnfoldingHeap[nn_3, visited]), FrameFragment(UnfoldingHeap[nn_3, bad_field]));
-          ExhaleWellDef1Heap := UnfoldingHeap;
           ExhaleWellDef1Mask := UnfoldingMask;
+          ExhaleWellDef1Heap := UnfoldingHeap;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  Assert might fail. There might be insufficient permission to access Node(nn) (0383a.vpr@21.10--21.97) [216891]"}
@@ -643,8 +643,8 @@ procedure foo_1(curr_node: Ref, all_nodes: (Set Ref)) returns ()
           UnfoldingMask := ExhaleWellDef0Mask;
           assume Node#trigger(UnfoldingHeap, Node(nn_1));
           assume UnfoldingHeap[null, Node(nn_1)] == CombineFrames(FrameFragment(UnfoldingHeap[nn_1, visited]), FrameFragment(UnfoldingHeap[nn_1, bad_field]));
-          ExhaleWellDef1Heap := UnfoldingHeap;
           ExhaleWellDef1Mask := UnfoldingMask;
+          ExhaleWellDef1Heap := UnfoldingHeap;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  Assert might fail. There might be insufficient permission to access Node(nn) (0383a.vpr@21.10--21.97) [216895]"}

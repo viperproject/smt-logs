@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-29 14:59:19
+; Started: 2024-12-29 20:06:01
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -1248,11 +1248,11 @@
     (sumContrib%limited s@$ A@0@00 i@1@00 P@2@00)
     (sumContrib s@$ A@0@00 i@1@00 P@2@00))
   :pattern ((sumContrib s@$ A@0@00 i@1@00 P@2@00))
-  :qid |quant-u-24032|)))
+  :qid |quant-u-23923|)))
 (assert (forall ((s@$ $Snap) (A@0@00 VCTArray<Ref>) (i@1@00 Int) (P@2@00 $Perm)) (!
   (sumContrib%stateless A@0@00 i@1@00 P@2@00)
   :pattern ((sumContrib%limited s@$ A@0@00 i@1@00 P@2@00))
-  :qid |quant-u-24033|)))
+  :qid |quant-u-23924|)))
 (assert (forall ((s@$ $Snap) (A@0@00 VCTArray<Ref>) (i@1@00 Int) (P@2@00 $Perm)) (!
   (and
     (forall ((j@10@00 Int)) (!
@@ -1266,7 +1266,7 @@
             j@10@00)
           (img@13@00 s@$ A@0@00 i@1@00 P@2@00 (loc<Ref> A@0@00 j@10@00))))
       :pattern ((loc<Ref> A@0@00 j@10@00))
-      :qid |quant-u-24039|))
+      :qid |quant-u-23930|))
     (forall ((r $Ref)) (!
       (=>
         (and
@@ -1369,7 +1369,7 @@
               i@1@00
               1) P@2@00))))))
   :pattern ((sumContrib s@$ A@0@00 i@1@00 P@2@00))
-  :qid |quant-u-24042|)))
+  :qid |quant-u-23933|)))
 (assert (forall ((s@$ $Snap) (A@0@00 VCTArray<Ref>) (i@1@00 Int) (P@2@00 $Perm)) (!
   (=>
     (sumContrib%precondition s@$ A@0@00 i@1@00 P@2@00)
@@ -1388,17 +1388,17 @@
         i@1@00
         1) P@2@00)))
   :pattern ((sumContrib s@$ A@0@00 i@1@00 P@2@00))
-  :qid |quant-u-24043|)))
+  :qid |quant-u-23934|)))
 (assert (forall ((s@$ $Snap) (xs@4@00 Seq<$Ref>) (i@5@00 Int)) (!
   (=
     (seqToSeqHelper_wild%limited s@$ xs@4@00 i@5@00)
     (seqToSeqHelper_wild s@$ xs@4@00 i@5@00))
   :pattern ((seqToSeqHelper_wild s@$ xs@4@00 i@5@00))
-  :qid |quant-u-24034|)))
+  :qid |quant-u-23925|)))
 (assert (forall ((s@$ $Snap) (xs@4@00 Seq<$Ref>) (i@5@00 Int)) (!
   (seqToSeqHelper_wild%stateless xs@4@00 i@5@00)
   :pattern ((seqToSeqHelper_wild%limited s@$ xs@4@00 i@5@00))
-  :qid |quant-u-24035|)))
+  :qid |quant-u-23926|)))
 (assert (forall ((s@$ $Snap) (xs@4@00 Seq<$Ref>) (i@5@00 Int)) (!
   (let ((result@6@00 (seqToSeqHelper_wild%limited s@$ xs@4@00 i@5@00))) (and
     (forall ((j@21@00 Int)) (!
@@ -1410,7 +1410,7 @@
           (= (inv@23@00 s@$ xs@4@00 i@5@00 (Seq_index xs@4@00 j@21@00)) j@21@00)
           (img@24@00 s@$ xs@4@00 i@5@00 (Seq_index xs@4@00 j@21@00))))
       :pattern ((Seq_index xs@4@00 j@21@00))
-      :qid |quant-u-24045|))
+      :qid |quant-u-23936|))
     (forall ((r $Ref)) (!
       (=>
         (and
@@ -1439,15 +1439,15 @@
           :pattern ((Seq_index xs@4@00 j))
           ))))))
   :pattern ((seqToSeqHelper_wild%limited s@$ xs@4@00 i@5@00))
-  :qid |quant-u-24046|)))
+  :qid |quant-u-23937|)))
 (assert (forall ((s@$ $Snap) (xs@4@00 Seq<$Ref>) (i@5@00 Int)) (!
   (let ((result@6@00 (seqToSeqHelper_wild%limited s@$ xs@4@00 i@5@00))) true)
   :pattern ((seqToSeqHelper_wild%limited s@$ xs@4@00 i@5@00))
-  :qid |quant-u-24047|)))
+  :qid |quant-u-23938|)))
 (assert (forall ((s@$ $Snap) (xs@4@00 Seq<$Ref>) (i@5@00 Int)) (!
   (let ((result@6@00 (seqToSeqHelper_wild%limited s@$ xs@4@00 i@5@00))) true)
   :pattern ((seqToSeqHelper_wild%limited s@$ xs@4@00 i@5@00))
-  :qid |quant-u-24048|)))
+  :qid |quant-u-23939|)))
 (assert (forall ((s@$ $Snap) (xs@4@00 Seq<$Ref>) (i@5@00 Int)) (!
   (and
     (forall ((j@21@00 Int)) (!
@@ -1459,7 +1459,7 @@
           (= (inv@23@00 s@$ xs@4@00 i@5@00 (Seq_index xs@4@00 j@21@00)) j@21@00)
           (img@24@00 s@$ xs@4@00 i@5@00 (Seq_index xs@4@00 j@21@00))))
       :pattern ((Seq_index xs@4@00 j@21@00))
-      :qid |quant-u-24045|))
+      :qid |quant-u-23936|))
     (forall ((r $Ref)) (!
       (=>
         (and
@@ -1557,7 +1557,7 @@
                   ($SortWrappers.$FVF<item>To$Snap (sm@33@00 s@$ xs@4@00 i@5@00))
                   $Snap.unit)))) xs@4@00 (+ i@5@00 1))))))
   :pattern ((seqToSeqHelper_wild s@$ xs@4@00 i@5@00))
-  :qid |quant-u-24051|)))
+  :qid |quant-u-23942|)))
 (assert (forall ((s@$ $Snap) (xs@4@00 Seq<$Ref>) (i@5@00 Int)) (!
   (=>
     (seqToSeqHelper_wild%precondition s@$ xs@4@00 i@5@00)
@@ -1571,17 +1571,17 @@
             ($SortWrappers.$FVF<item>To$Snap (sm@33@00 s@$ xs@4@00 i@5@00))
             $Snap.unit)))) xs@4@00 (+ i@5@00 1)))
   :pattern ((seqToSeqHelper_wild s@$ xs@4@00 i@5@00))
-  :qid |quant-u-24052|)))
+  :qid |quant-u-23943|)))
 (assert (forall ((s@$ $Snap) (xs@7@00 Seq<$Ref>) (i@8@00 Int)) (!
   (=
     (seqToSeqHelper_frac%limited s@$ xs@7@00 i@8@00)
     (seqToSeqHelper_frac s@$ xs@7@00 i@8@00))
   :pattern ((seqToSeqHelper_frac s@$ xs@7@00 i@8@00))
-  :qid |quant-u-24036|)))
+  :qid |quant-u-23927|)))
 (assert (forall ((s@$ $Snap) (xs@7@00 Seq<$Ref>) (i@8@00 Int)) (!
   (seqToSeqHelper_frac%stateless xs@7@00 i@8@00)
   :pattern ((seqToSeqHelper_frac%limited s@$ xs@7@00 i@8@00))
-  :qid |quant-u-24037|)))
+  :qid |quant-u-23928|)))
 (assert (forall ((s@$ $Snap) (xs@7@00 Seq<$Ref>) (i@8@00 Int)) (!
   (let ((result@9@00 (seqToSeqHelper_frac%limited s@$ xs@7@00 i@8@00))) (and
     (forall ((j@37@00 Int)) (!
@@ -1591,7 +1591,7 @@
           (= (inv@38@00 s@$ xs@7@00 i@8@00 (Seq_index xs@7@00 j@37@00)) j@37@00)
           (img@39@00 s@$ xs@7@00 i@8@00 (Seq_index xs@7@00 j@37@00))))
       :pattern ((Seq_index xs@7@00 j@37@00))
-      :qid |quant-u-24054|))
+      :qid |quant-u-23945|))
     (forall ((r $Ref)) (!
       (=>
         (and
@@ -1617,15 +1617,15 @@
           :pattern ((Seq_index xs@7@00 j))
           ))))))
   :pattern ((seqToSeqHelper_frac%limited s@$ xs@7@00 i@8@00))
-  :qid |quant-u-24055|)))
+  :qid |quant-u-23946|)))
 (assert (forall ((s@$ $Snap) (xs@7@00 Seq<$Ref>) (i@8@00 Int)) (!
   (let ((result@9@00 (seqToSeqHelper_frac%limited s@$ xs@7@00 i@8@00))) true)
   :pattern ((seqToSeqHelper_frac%limited s@$ xs@7@00 i@8@00))
-  :qid |quant-u-24056|)))
+  :qid |quant-u-23947|)))
 (assert (forall ((s@$ $Snap) (xs@7@00 Seq<$Ref>) (i@8@00 Int)) (!
   (let ((result@9@00 (seqToSeqHelper_frac%limited s@$ xs@7@00 i@8@00))) true)
   :pattern ((seqToSeqHelper_frac%limited s@$ xs@7@00 i@8@00))
-  :qid |quant-u-24057|)))
+  :qid |quant-u-23948|)))
 (assert (forall ((s@$ $Snap) (xs@7@00 Seq<$Ref>) (i@8@00 Int)) (!
   (and
     (forall ((j@37@00 Int)) (!
@@ -1635,7 +1635,7 @@
           (= (inv@38@00 s@$ xs@7@00 i@8@00 (Seq_index xs@7@00 j@37@00)) j@37@00)
           (img@39@00 s@$ xs@7@00 i@8@00 (Seq_index xs@7@00 j@37@00))))
       :pattern ((Seq_index xs@7@00 j@37@00))
-      :qid |quant-u-24054|))
+      :qid |quant-u-23945|))
     (forall ((r $Ref)) (!
       (=>
         (and
@@ -1719,7 +1719,7 @@
                   ($SortWrappers.$FVF<item>To$Snap (sm@47@00 s@$ xs@7@00 i@8@00))
                   $Snap.unit)))) xs@7@00 (+ i@8@00 1))))))
   :pattern ((seqToSeqHelper_frac s@$ xs@7@00 i@8@00))
-  :qid |quant-u-24060|)))
+  :qid |quant-u-23951|)))
 (assert (forall ((s@$ $Snap) (xs@7@00 Seq<$Ref>) (i@8@00 Int)) (!
   (=>
     (seqToSeqHelper_frac%precondition s@$ xs@7@00 i@8@00)
@@ -1733,7 +1733,7 @@
             ($SortWrappers.$FVF<item>To$Snap (sm@47@00 s@$ xs@7@00 i@8@00))
             $Snap.unit)))) xs@7@00 (+ i@8@00 1)))
   :pattern ((seqToSeqHelper_frac s@$ xs@7@00 i@8@00))
-  :qid |quant-u-24061|)))
+  :qid |quant-u-23952|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- method_seqToSeqHelper ----------
@@ -2051,7 +2051,7 @@
     (and (<= 0 j@9@01) (< j@9@01 (Seq_length xs@3@01)))
     (or (= $k@10@01 $Perm.No) (< $Perm.No $k@10@01)))
   
-  :qid |quant-u-24062|))))
+  :qid |quant-u-23953|))))
 (check-sat)
 ; unsat
 (pop) ; 2
@@ -2087,7 +2087,7 @@
       (= (inv@11@01 (Seq_index xs@3@01 j@9@01)) j@9@01)
       (img@12@01 (Seq_index xs@3@01 j@9@01))))
   :pattern ((Seq_index xs@3@01 j@9@01))
-  :qid |quant-u-24063|)))
+  :qid |quant-u-23954|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -2190,7 +2190,7 @@
     (and (<= 0 j@14@01) (< j@14@01 (Seq_length xs@3@01)))
     (or (= $k@15@01 $Perm.No) (< $Perm.No $k@15@01)))
   
-  :qid |quant-u-24064|))))
+  :qid |quant-u-23955|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -2226,7 +2226,7 @@
       (= (inv@16@01 (Seq_index xs@3@01 j@14@01)) j@14@01)
       (img@17@01 (Seq_index xs@3@01 j@14@01))))
   :pattern ((Seq_index xs@3@01 j@14@01))
-  :qid |quant-u-24065|)))
+  :qid |quant-u-23956|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -2728,7 +2728,7 @@
     (and (<= 0 j@22@01) (< j@22@01 (Seq_length xs@3@01)))
     (or (= $k@23@01 $Perm.No) (< $Perm.No $k@23@01)))
   
-  :qid |quant-u-24066|))))
+  :qid |quant-u-23957|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -2847,7 +2847,7 @@
       (= r (Seq_index xs@3@01 (inv@24@01 r))))
     (= (- $k@23@01 (pTaken@26@01 r)) $Perm.No))
   
-  :qid |quant-u-24069|))))
+  :qid |quant-u-23960|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -2924,7 +2924,7 @@
     (and (<= 0 j@29@01) (< j@29@01 (Seq_length xs@3@01)))
     (or (= $k@30@01 $Perm.No) (< $Perm.No $k@30@01)))
   
-  :qid |quant-u-24070|))))
+  :qid |quant-u-23961|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -2960,7 +2960,7 @@
       (= (inv@31@01 (Seq_index xs@3@01 j@29@01)) j@29@01)
       (img@32@01 (Seq_index xs@3@01 j@29@01))))
   :pattern ((Seq_index xs@3@01 j@29@01))
-  :qid |quant-u-24071|)))
+  :qid |quant-u-23962|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -3003,7 +3003,7 @@
         (img@12@01 r)
         (and (<= 0 (inv@11@01 r)) (< (inv@11@01 r) (Seq_length xs@3@01))))))
   
-  :qid |quant-u-24072|))))
+  :qid |quant-u-23963|))))
 (check-sat)
 ; unknown
 (pop) ; 4
@@ -3396,7 +3396,7 @@
     (and (<= 0 j@37@01) (< j@37@01 (Seq_length xs@3@01)))
     (or (= $k@38@01 $Perm.No) (< $Perm.No $k@38@01)))
   
-  :qid |quant-u-24073|))))
+  :qid |quant-u-23964|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -3530,7 +3530,7 @@
       (= r (Seq_index xs@3@01 (inv@39@01 r))))
     (= (- $k@38@01 (pTaken@41@01 r)) $Perm.No))
   
-  :qid |quant-u-24076|))))
+  :qid |quant-u-23967|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -3846,7 +3846,7 @@
     (and (<= 0 j@44@01) (< j@44@01 (Seq_length xs@3@01)))
     (or (= $k@45@01 $Perm.No) (< $Perm.No $k@45@01)))
   
-  :qid |quant-u-24077|))))
+  :qid |quant-u-23968|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -3965,7 +3965,7 @@
       (= r (Seq_index xs@3@01 (inv@46@01 r))))
     (= (- $k@45@01 (pTaken@48@01 r)) $Perm.No))
   
-  :qid |quant-u-24080|))))
+  :qid |quant-u-23971|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -4427,7 +4427,7 @@
     (and (<= 0 j@59@01) (< j@59@01 (Seq_length xs@53@01)))
     (or (= $k@60@01 $Perm.No) (< $Perm.No $k@60@01)))
   
-  :qid |quant-u-24081|))))
+  :qid |quant-u-23972|))))
 (check-sat)
 ; unsat
 (pop) ; 2
@@ -4463,7 +4463,7 @@
       (= (inv@61@01 (Seq_index xs@53@01 j@59@01)) j@59@01)
       (img@62@01 (Seq_index xs@53@01 j@59@01))))
   :pattern ((Seq_index xs@53@01 j@59@01))
-  :qid |quant-u-24082|)))
+  :qid |quant-u-23973|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -4566,7 +4566,7 @@
     (and (<= 0 j@64@01) (< j@64@01 (Seq_length xs@53@01)))
     (or (= $k@65@01 $Perm.No) (< $Perm.No $k@65@01)))
   
-  :qid |quant-u-24083|))))
+  :qid |quant-u-23974|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -4602,7 +4602,7 @@
       (= (inv@66@01 (Seq_index xs@53@01 j@64@01)) j@64@01)
       (img@67@01 (Seq_index xs@53@01 j@64@01))))
   :pattern ((Seq_index xs@53@01 j@64@01))
-  :qid |quant-u-24084|)))
+  :qid |quant-u-23975|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -5056,7 +5056,7 @@
     (and (<= 0 j@72@01) (< j@72@01 (Seq_length xs@53@01)))
     (or (= $k@73@01 $Perm.No) (< $Perm.No $k@73@01)))
   
-  :qid |quant-u-24085|))))
+  :qid |quant-u-23976|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -5121,7 +5121,7 @@
         $Perm.No)
       $Perm.No))
   
-  :qid |quant-u-24086|))))
+  :qid |quant-u-23977|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -5367,7 +5367,7 @@
     (and (<= 0 j@79@01) (< j@79@01 (Seq_length xs@53@01)))
     (or (= $k@80@01 $Perm.No) (< $Perm.No $k@80@01)))
   
-  :qid |quant-u-24087|))))
+  :qid |quant-u-23978|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -5486,7 +5486,7 @@
       (= r (Seq_index xs@53@01 (inv@81@01 r))))
     (= (- $k@80@01 (pTaken@83@01 r)) $Perm.No))
   
-  :qid |quant-u-24090|))))
+  :qid |quant-u-23981|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -5710,7 +5710,7 @@
     (and (<= 0 j@85@01) (< j@85@01 (Seq_length xs@53@01)))
     (or (= $k@86@01 $Perm.No) (< $Perm.No $k@86@01)))
   
-  :qid |quant-u-24091|))))
+  :qid |quant-u-23982|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -5829,7 +5829,7 @@
       (= r (Seq_index xs@53@01 (inv@87@01 r))))
     (= (- $k@86@01 (pTaken@89@01 r)) $Perm.No))
   
-  :qid |quant-u-24094|))))
+  :qid |quant-u-23985|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -6042,7 +6042,7 @@
     (and (<= 0 i_fresh_rw_0@98@01) (< i_fresh_rw_0@98@01 (alen<Int> xs@94@01)))
     (or (= $k@99@01 $Perm.No) (< $Perm.No $k@99@01)))
   
-  :qid |quant-u-24095|))))
+  :qid |quant-u-23986|))))
 (check-sat)
 ; unsat
 (pop) ; 2
@@ -6084,7 +6084,7 @@
       (= (inv@100@01 (loc<Ref> xs@94@01 i_fresh_rw_0@98@01)) i_fresh_rw_0@98@01)
       (img@101@01 (loc<Ref> xs@94@01 i_fresh_rw_0@98@01))))
   :pattern ((loc<Ref> xs@94@01 i_fresh_rw_0@98@01))
-  :qid |quant-u-24096|)))
+  :qid |quant-u-23987|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -6277,7 +6277,7 @@
     (and (<= 0 j@103@01) (< j@103@01 (alen<Int> xs@94@01)))
     (or (= $k@104@01 $Perm.No) (< $Perm.No $k@104@01)))
   
-  :qid |quant-u-24097|))))
+  :qid |quant-u-23988|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -6342,7 +6342,7 @@
         $Perm.No)
       $Perm.No))
   
-  :qid |quant-u-24098|))))
+  :qid |quant-u-23989|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -6583,7 +6583,7 @@
     (and (<= 0 j@108@01) (< j@108@01 (alen<Int> xs@94@01)))
     (or (= $k@109@01 $Perm.No) (< $Perm.No $k@109@01)))
   
-  :qid |quant-u-24099|))))
+  :qid |quant-u-23990|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -6648,7 +6648,7 @@
         $Perm.No)
       $Perm.No))
   
-  :qid |quant-u-24100|))))
+  :qid |quant-u-23991|))))
 (check-sat)
 ; unsat
 (pop) ; 6

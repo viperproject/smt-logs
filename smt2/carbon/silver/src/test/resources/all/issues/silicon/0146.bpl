@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-29 15:39:43
+// Date:         2024-12-29 20:46:03
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0146.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0146-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -607,12 +607,12 @@ procedure idx00#definedness(a_2: int, b_24: int, c: int, n: int) returns (Result
 procedure test00(xs: (Seq int), n: int) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var i_14: int;
   var j_5: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -623,8 +623,8 @@ procedure test00(xs: (Seq int), n: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale 10 < n -- 0146.vpr@10.3--10.16
     assume 10 < n;
@@ -664,8 +664,8 @@ procedure test00(xs: (Seq int), n: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert xs[idx00(5, 2, 3, n)] == 7 -- 0146.vpr@18.3--18.36
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of xs[idx00(5, 2, 3, n)] == 7
       if (*) {

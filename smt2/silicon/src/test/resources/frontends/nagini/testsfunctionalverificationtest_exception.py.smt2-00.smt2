@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-29 14:48:34
+; Started: 2024-12-29 19:55:28
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -1838,11 +1838,11 @@
 (assert (forall ((s@$ $Snap) (self@0@00 $Ref)) (!
   (= (tuple___val__%limited s@$ self@0@00) (tuple___val__ s@$ self@0@00))
   :pattern ((tuple___val__ s@$ self@0@00))
-  :qid |quant-u-4508|)))
+  :qid |quant-u-4408|)))
 (assert (forall ((s@$ $Snap) (self@0@00 $Ref)) (!
   (tuple___val__%stateless self@0@00)
   :pattern ((tuple___val__%limited s@$ self@0@00))
-  :qid |quant-u-4509|)))
+  :qid |quant-u-4409|)))
 ; ---------- FUNCTION str___val__----------
 (declare-fun self@2@00 () $Ref)
 (declare-fun result@3@00 () Int)
@@ -1852,11 +1852,11 @@
 (assert (forall ((s@$ $Snap) (self@2@00 $Ref)) (!
   (= (str___val__%limited s@$ self@2@00) (str___val__ s@$ self@2@00))
   :pattern ((str___val__ s@$ self@2@00))
-  :qid |quant-u-4510|)))
+  :qid |quant-u-4410|)))
 (assert (forall ((s@$ $Snap) (self@2@00 $Ref)) (!
   (str___val__%stateless self@2@00)
   :pattern ((str___val__%limited s@$ self@2@00))
-  :qid |quant-u-4511|)))
+  :qid |quant-u-4411|)))
 ; ---------- FUNCTION str___len__----------
 (declare-fun self@4@00 () $Ref)
 (declare-fun result@5@00 () Int)
@@ -1870,21 +1870,21 @@
 (assert (forall ((s@$ $Snap) (self@4@00 $Ref)) (!
   (= (str___len__%limited s@$ self@4@00) (str___len__ s@$ self@4@00))
   :pattern ((str___len__ s@$ self@4@00))
-  :qid |quant-u-4512|)))
+  :qid |quant-u-4412|)))
 (assert (forall ((s@$ $Snap) (self@4@00 $Ref)) (!
   (str___len__%stateless self@4@00)
   :pattern ((str___len__%limited s@$ self@4@00))
-  :qid |quant-u-4513|)))
+  :qid |quant-u-4413|)))
 (assert (forall ((s@$ $Snap) (self@4@00 $Ref)) (!
   (let ((result@5@00 (str___len__%limited s@$ self@4@00))) (=>
     (str___len__%precondition s@$ self@4@00)
     (>= result@5@00 0)))
   :pattern ((str___len__%limited s@$ self@4@00))
-  :qid |quant-u-4552|)))
+  :qid |quant-u-4452|)))
 (assert (forall ((s@$ $Snap) (self@4@00 $Ref)) (!
   (let ((result@5@00 (str___len__%limited s@$ self@4@00))) true)
   :pattern ((str___len__%limited s@$ self@4@00))
-  :qid |quant-u-4553|)))
+  :qid |quant-u-4453|)))
 ; ---------- FUNCTION tuple___len__----------
 (declare-fun self@6@00 () $Ref)
 (declare-fun result@7@00 () Int)
@@ -1912,11 +1912,11 @@
 (assert (forall ((s@$ $Snap) (self@6@00 $Ref)) (!
   (= (tuple___len__%limited s@$ self@6@00) (tuple___len__ s@$ self@6@00))
   :pattern ((tuple___len__ s@$ self@6@00))
-  :qid |quant-u-4514|)))
+  :qid |quant-u-4414|)))
 (assert (forall ((s@$ $Snap) (self@6@00 $Ref)) (!
   (tuple___len__%stateless self@6@00)
   :pattern ((tuple___len__%limited s@$ self@6@00))
-  :qid |quant-u-4515|)))
+  :qid |quant-u-4415|)))
 (assert (forall ((s@$ $Snap) (self@6@00 $Ref)) (!
   (let ((result@7@00 (tuple___len__%limited s@$ self@6@00))) (=>
     (tuple___len__%precondition s@$ self@6@00)
@@ -1926,17 +1926,17 @@
         (Seq_length (tuple_args<Seq<PyType>> (typeof<PyType> self@6@00))))
       (= result@7@00 (Seq_length (tuple___val__ $Snap.unit self@6@00))))))
   :pattern ((tuple___len__%limited s@$ self@6@00))
-  :qid |quant-u-4554|)))
+  :qid |quant-u-4454|)))
 (assert (forall ((s@$ $Snap) (self@6@00 $Ref)) (!
   (let ((result@7@00 (tuple___len__%limited s@$ self@6@00))) true)
   :pattern ((tuple___len__%limited s@$ self@6@00))
-  :qid |quant-u-4555|)))
+  :qid |quant-u-4455|)))
 (assert (forall ((s@$ $Snap) (self@6@00 $Ref)) (!
   (let ((result@7@00 (tuple___len__%limited s@$ self@6@00))) (=>
     (tuple___len__%precondition s@$ self@6@00)
     (tuple___val__%precondition $Snap.unit self@6@00)))
   :pattern ((tuple___len__%limited s@$ self@6@00))
-  :qid |quant-u-4556|)))
+  :qid |quant-u-4456|)))
 ; ---------- FUNCTION _isDefined----------
 (declare-fun id@8@00 () Int)
 (declare-fun result@9@00 () Bool)
@@ -1946,11 +1946,11 @@
 (assert (forall ((s@$ $Snap) (id@8@00 Int)) (!
   (= (_isDefined%limited s@$ id@8@00) (_isDefined s@$ id@8@00))
   :pattern ((_isDefined s@$ id@8@00))
-  :qid |quant-u-4516|)))
+  :qid |quant-u-4416|)))
 (assert (forall ((s@$ $Snap) (id@8@00 Int)) (!
   (_isDefined%stateless id@8@00)
   :pattern ((_isDefined%limited s@$ id@8@00))
-  :qid |quant-u-4517|)))
+  :qid |quant-u-4417|)))
 ; ---------- FUNCTION bool___unbox__----------
 (declare-fun box@10@00 () $Ref)
 (declare-fun result@11@00 () Bool)
@@ -1975,23 +1975,23 @@
 (assert (forall ((s@$ $Snap) (box@10@00 $Ref)) (!
   (= (bool___unbox__%limited s@$ box@10@00) (bool___unbox__ s@$ box@10@00))
   :pattern ((bool___unbox__ s@$ box@10@00))
-  :qid |quant-u-4518|)))
+  :qid |quant-u-4418|)))
 (assert (forall ((s@$ $Snap) (box@10@00 $Ref)) (!
   (bool___unbox__%stateless box@10@00)
   :pattern ((bool___unbox__%limited s@$ box@10@00))
-  :qid |quant-u-4519|)))
+  :qid |quant-u-4419|)))
 (assert (forall ((s@$ $Snap) (box@10@00 $Ref)) (!
   (let ((result@11@00 (bool___unbox__%limited s@$ box@10@00))) (=>
     (bool___unbox__%precondition s@$ box@10@00)
     (= (__prim__bool___box__%limited $Snap.unit result@11@00) box@10@00)))
   :pattern ((bool___unbox__%limited s@$ box@10@00))
-  :qid |quant-u-4557|)))
+  :qid |quant-u-4457|)))
 (assert (forall ((s@$ $Snap) (box@10@00 $Ref)) (!
   (let ((result@11@00 (bool___unbox__%limited s@$ box@10@00))) (=>
     (bool___unbox__%precondition s@$ box@10@00)
     (__prim__bool___box__%precondition $Snap.unit result@11@00)))
   :pattern ((bool___unbox__%limited s@$ box@10@00))
-  :qid |quant-u-4558|)))
+  :qid |quant-u-4458|)))
 ; ---------- FUNCTION __prim__bool___box__----------
 (declare-fun prim@12@00 () Bool)
 (declare-fun result@13@00 () $Ref)
@@ -2093,11 +2093,11 @@
     (__prim__bool___box__%limited s@$ prim@12@00)
     (__prim__bool___box__ s@$ prim@12@00))
   :pattern ((__prim__bool___box__ s@$ prim@12@00))
-  :qid |quant-u-4520|)))
+  :qid |quant-u-4420|)))
 (assert (forall ((s@$ $Snap) (prim@12@00 Bool)) (!
   (__prim__bool___box__%stateless prim@12@00)
   :pattern ((__prim__bool___box__%limited s@$ prim@12@00))
-  :qid |quant-u-4521|)))
+  :qid |quant-u-4421|)))
 (assert (forall ((s@$ $Snap) (prim@12@00 Bool)) (!
   (let ((result@13@00 (__prim__bool___box__%limited s@$ prim@12@00))) (=>
     (__prim__bool___box__%precondition s@$ prim@12@00)
@@ -2106,23 +2106,23 @@
       (= (bool___unbox__%limited $Snap.unit result@13@00) prim@12@00)
       (= (int___unbox__%limited $Snap.unit result@13@00) (ite prim@12@00 1 0)))))
   :pattern ((__prim__bool___box__%limited s@$ prim@12@00))
-  :qid |quant-u-4559|)))
+  :qid |quant-u-4459|)))
 (assert (forall ((s@$ $Snap) (prim@12@00 Bool)) (!
   (let ((result@13@00 (__prim__bool___box__%limited s@$ prim@12@00))) true)
   :pattern ((__prim__bool___box__%limited s@$ prim@12@00))
-  :qid |quant-u-4560|)))
+  :qid |quant-u-4460|)))
 (assert (forall ((s@$ $Snap) (prim@12@00 Bool)) (!
   (let ((result@13@00 (__prim__bool___box__%limited s@$ prim@12@00))) (=>
     (__prim__bool___box__%precondition s@$ prim@12@00)
     (bool___unbox__%precondition $Snap.unit result@13@00)))
   :pattern ((__prim__bool___box__%limited s@$ prim@12@00))
-  :qid |quant-u-4561|)))
+  :qid |quant-u-4461|)))
 (assert (forall ((s@$ $Snap) (prim@12@00 Bool)) (!
   (let ((result@13@00 (__prim__bool___box__%limited s@$ prim@12@00))) (=>
     (__prim__bool___box__%precondition s@$ prim@12@00)
     (int___unbox__%precondition $Snap.unit result@13@00)))
   :pattern ((__prim__bool___box__%limited s@$ prim@12@00))
-  :qid |quant-u-4562|)))
+  :qid |quant-u-4462|)))
 ; ---------- FUNCTION int___unbox__----------
 (declare-fun box@14@00 () $Ref)
 (declare-fun result@15@00 () Int)
@@ -2251,11 +2251,11 @@
 (assert (forall ((s@$ $Snap) (box@14@00 $Ref)) (!
   (= (int___unbox__%limited s@$ box@14@00) (int___unbox__ s@$ box@14@00))
   :pattern ((int___unbox__ s@$ box@14@00))
-  :qid |quant-u-4522|)))
+  :qid |quant-u-4422|)))
 (assert (forall ((s@$ $Snap) (box@14@00 $Ref)) (!
   (int___unbox__%stateless box@14@00)
   :pattern ((int___unbox__%limited s@$ box@14@00))
-  :qid |quant-u-4523|)))
+  :qid |quant-u-4423|)))
 (assert (forall ((s@$ $Snap) (box@14@00 $Ref)) (!
   (let ((result@15@00 (int___unbox__%limited s@$ box@14@00))) (=>
     (int___unbox__%precondition s@$ box@14@00)
@@ -2270,7 +2270,7 @@
           (__prim__bool___box__%limited $Snap.unit (not (= result@15@00 0)))
           box@14@00)))))
   :pattern ((int___unbox__%limited s@$ box@14@00))
-  :qid |quant-u-4563|)))
+  :qid |quant-u-4463|)))
 (assert (forall ((s@$ $Snap) (box@14@00 $Ref)) (!
   (let ((result@15@00 (int___unbox__%limited s@$ box@14@00))) (=>
     (and
@@ -2279,7 +2279,7 @@
         (issubtype<Bool> (typeof<PyType> box@14@00) (as bool<PyType>  PyType))))
     (__prim__int___box__%precondition $Snap.unit result@15@00)))
   :pattern ((int___unbox__%limited s@$ box@14@00))
-  :qid |quant-u-4564|)))
+  :qid |quant-u-4464|)))
 (assert (forall ((s@$ $Snap) (box@14@00 $Ref)) (!
   (let ((result@15@00 (int___unbox__%limited s@$ box@14@00))) (=>
     (and
@@ -2287,7 +2287,7 @@
       (issubtype<Bool> (typeof<PyType> box@14@00) (as bool<PyType>  PyType)))
     (__prim__bool___box__%precondition $Snap.unit (not (= result@15@00 0)))))
   :pattern ((int___unbox__%limited s@$ box@14@00))
-  :qid |quant-u-4565|)))
+  :qid |quant-u-4465|)))
 ; ---------- FUNCTION __prim__int___box__----------
 (declare-fun prim@16@00 () Int)
 (declare-fun result@17@00 () $Ref)
@@ -2328,11 +2328,11 @@
     (__prim__int___box__%limited s@$ prim@16@00)
     (__prim__int___box__ s@$ prim@16@00))
   :pattern ((__prim__int___box__ s@$ prim@16@00))
-  :qid |quant-u-4524|)))
+  :qid |quant-u-4424|)))
 (assert (forall ((s@$ $Snap) (prim@16@00 Int)) (!
   (__prim__int___box__%stateless prim@16@00)
   :pattern ((__prim__int___box__%limited s@$ prim@16@00))
-  :qid |quant-u-4525|)))
+  :qid |quant-u-4425|)))
 (assert (forall ((s@$ $Snap) (prim@16@00 Int)) (!
   (let ((result@17@00 (__prim__int___box__%limited s@$ prim@16@00))) (=>
     (__prim__int___box__%precondition s@$ prim@16@00)
@@ -2340,17 +2340,17 @@
       (= (typeof<PyType> result@17@00) (as int<PyType>  PyType))
       (= (int___unbox__%limited $Snap.unit result@17@00) prim@16@00))))
   :pattern ((__prim__int___box__%limited s@$ prim@16@00))
-  :qid |quant-u-4566|)))
+  :qid |quant-u-4466|)))
 (assert (forall ((s@$ $Snap) (prim@16@00 Int)) (!
   (let ((result@17@00 (__prim__int___box__%limited s@$ prim@16@00))) true)
   :pattern ((__prim__int___box__%limited s@$ prim@16@00))
-  :qid |quant-u-4567|)))
+  :qid |quant-u-4467|)))
 (assert (forall ((s@$ $Snap) (prim@16@00 Int)) (!
   (let ((result@17@00 (__prim__int___box__%limited s@$ prim@16@00))) (=>
     (__prim__int___box__%precondition s@$ prim@16@00)
     (int___unbox__%precondition $Snap.unit result@17@00)))
   :pattern ((__prim__int___box__%limited s@$ prim@16@00))
-  :qid |quant-u-4568|)))
+  :qid |quant-u-4468|)))
 ; ---------- FUNCTION Level----------
 (declare-fun r@18@00 () $Ref)
 (declare-fun result@19@00 () $Perm)
@@ -2360,11 +2360,11 @@
 (assert (forall ((s@$ $Snap) (r@18@00 $Ref)) (!
   (= (Level%limited s@$ r@18@00) (Level s@$ r@18@00))
   :pattern ((Level s@$ r@18@00))
-  :qid |quant-u-4526|)))
+  :qid |quant-u-4426|)))
 (assert (forall ((s@$ $Snap) (r@18@00 $Ref)) (!
   (Level%stateless r@18@00)
   :pattern ((Level%limited s@$ r@18@00))
-  :qid |quant-u-4527|)))
+  :qid |quant-u-4427|)))
 ; ---------- FUNCTION object___eq__----------
 (declare-fun self@20@00 () $Ref)
 (declare-fun other@21@00 () $Ref)
@@ -2460,11 +2460,11 @@
     (object___eq__%limited s@$ self@20@00 other@21@00)
     (object___eq__ s@$ self@20@00 other@21@00))
   :pattern ((object___eq__ s@$ self@20@00 other@21@00))
-  :qid |quant-u-4528|)))
+  :qid |quant-u-4428|)))
 (assert (forall ((s@$ $Snap) (self@20@00 $Ref) (other@21@00 $Ref)) (!
   (object___eq__%stateless self@20@00 other@21@00)
   :pattern ((object___eq__%limited s@$ self@20@00 other@21@00))
-  :qid |quant-u-4529|)))
+  :qid |quant-u-4429|)))
 (assert (forall ((s@$ $Snap) (self@20@00 $Ref) (other@21@00 $Ref)) (!
   (let ((result@22@00 (object___eq__%limited s@$ self@20@00 other@21@00))) (=>
     (object___eq__%precondition s@$ self@20@00 other@21@00)
@@ -2474,15 +2474,15 @@
         (not (= (= self@20@00 $Ref.null) (= other@21@00 $Ref.null)))
         (not result@22@00)))))
   :pattern ((object___eq__%limited s@$ self@20@00 other@21@00))
-  :qid |quant-u-4569|)))
+  :qid |quant-u-4469|)))
 (assert (forall ((s@$ $Snap) (self@20@00 $Ref) (other@21@00 $Ref)) (!
   (let ((result@22@00 (object___eq__%limited s@$ self@20@00 other@21@00))) true)
   :pattern ((object___eq__%limited s@$ self@20@00 other@21@00))
-  :qid |quant-u-4570|)))
+  :qid |quant-u-4470|)))
 (assert (forall ((s@$ $Snap) (self@20@00 $Ref) (other@21@00 $Ref)) (!
   (let ((result@22@00 (object___eq__%limited s@$ self@20@00 other@21@00))) true)
   :pattern ((object___eq__%limited s@$ self@20@00 other@21@00))
-  :qid |quant-u-4571|)))
+  :qid |quant-u-4471|)))
 ; ---------- FUNCTION str___create__----------
 (declare-fun len@23@00 () Int)
 (declare-fun value@24@00 () Int)
@@ -2525,11 +2525,11 @@
     (str___create__%limited s@$ len@23@00 value@24@00)
     (str___create__ s@$ len@23@00 value@24@00))
   :pattern ((str___create__ s@$ len@23@00 value@24@00))
-  :qid |quant-u-4530|)))
+  :qid |quant-u-4430|)))
 (assert (forall ((s@$ $Snap) (len@23@00 Int) (value@24@00 Int)) (!
   (str___create__%stateless len@23@00 value@24@00)
   :pattern ((str___create__%limited s@$ len@23@00 value@24@00))
-  :qid |quant-u-4531|)))
+  :qid |quant-u-4431|)))
 (assert (forall ((s@$ $Snap) (len@23@00 Int) (value@24@00 Int)) (!
   (let ((result@25@00 (str___create__%limited s@$ len@23@00 value@24@00))) (=>
     (str___create__%precondition s@$ len@23@00 value@24@00)
@@ -2538,23 +2538,23 @@
       (= (str___val__ $Snap.unit result@25@00) value@24@00)
       (= (typeof<PyType> result@25@00) (as str<PyType>  PyType)))))
   :pattern ((str___create__%limited s@$ len@23@00 value@24@00))
-  :qid |quant-u-4572|)))
+  :qid |quant-u-4472|)))
 (assert (forall ((s@$ $Snap) (len@23@00 Int) (value@24@00 Int)) (!
   (let ((result@25@00 (str___create__%limited s@$ len@23@00 value@24@00))) (=>
     (str___create__%precondition s@$ len@23@00 value@24@00)
     (str___len__%precondition $Snap.unit result@25@00)))
   :pattern ((str___create__%limited s@$ len@23@00 value@24@00))
-  :qid |quant-u-4573|)))
+  :qid |quant-u-4473|)))
 (assert (forall ((s@$ $Snap) (len@23@00 Int) (value@24@00 Int)) (!
   (let ((result@25@00 (str___create__%limited s@$ len@23@00 value@24@00))) (=>
     (str___create__%precondition s@$ len@23@00 value@24@00)
     (str___val__%precondition $Snap.unit result@25@00)))
   :pattern ((str___create__%limited s@$ len@23@00 value@24@00))
-  :qid |quant-u-4574|)))
+  :qid |quant-u-4474|)))
 (assert (forall ((s@$ $Snap) (len@23@00 Int) (value@24@00 Int)) (!
   (let ((result@25@00 (str___create__%limited s@$ len@23@00 value@24@00))) true)
   :pattern ((str___create__%limited s@$ len@23@00 value@24@00))
-  :qid |quant-u-4575|)))
+  :qid |quant-u-4475|)))
 ; ---------- FUNCTION str___eq__----------
 (declare-fun self@26@00 () $Ref)
 (declare-fun other@27@00 () $Ref)
@@ -2649,11 +2649,11 @@
     (str___eq__%limited s@$ self@26@00 other@27@00)
     (str___eq__ s@$ self@26@00 other@27@00))
   :pattern ((str___eq__ s@$ self@26@00 other@27@00))
-  :qid |quant-u-4532|)))
+  :qid |quant-u-4432|)))
 (assert (forall ((s@$ $Snap) (self@26@00 $Ref) (other@27@00 $Ref)) (!
   (str___eq__%stateless self@26@00 other@27@00)
   :pattern ((str___eq__%limited s@$ self@26@00 other@27@00))
-  :qid |quant-u-4533|)))
+  :qid |quant-u-4433|)))
 (assert (forall ((s@$ $Snap) (self@26@00 $Ref) (other@27@00 $Ref)) (!
   (let ((result@28@00 (str___eq__%limited s@$ self@26@00 other@27@00))) (=>
     (str___eq__%precondition s@$ self@26@00 other@27@00)
@@ -2669,7 +2669,7 @@
           (str___len__ $Snap.unit self@26@00)
           (str___len__ $Snap.unit other@27@00))))))
   :pattern ((str___eq__%limited s@$ self@26@00 other@27@00))
-  :qid |quant-u-4576|)))
+  :qid |quant-u-4476|)))
 (assert (forall ((s@$ $Snap) (self@26@00 $Ref) (other@27@00 $Ref)) (!
   (let ((result@28@00 (str___eq__%limited s@$ self@26@00 other@27@00))) (=>
     (str___eq__%precondition s@$ self@26@00 other@27@00)
@@ -2677,7 +2677,7 @@
       (str___val__%precondition $Snap.unit self@26@00)
       (str___val__%precondition $Snap.unit other@27@00))))
   :pattern ((str___eq__%limited s@$ self@26@00 other@27@00))
-  :qid |quant-u-4577|)))
+  :qid |quant-u-4477|)))
 (assert (forall ((s@$ $Snap) (self@26@00 $Ref) (other@27@00 $Ref)) (!
   (let ((result@28@00 (str___eq__%limited s@$ self@26@00 other@27@00))) (=>
     (and (str___eq__%precondition s@$ self@26@00 other@27@00) result@28@00)
@@ -2685,7 +2685,7 @@
       (str___len__%precondition $Snap.unit self@26@00)
       (str___len__%precondition $Snap.unit other@27@00))))
   :pattern ((str___eq__%limited s@$ self@26@00 other@27@00))
-  :qid |quant-u-4578|)))
+  :qid |quant-u-4478|)))
 ; ---------- FUNCTION int___gt__----------
 (declare-fun self@29@00 () Int)
 (declare-fun other@30@00 () Int)
@@ -2698,11 +2698,11 @@
     (int___gt__%limited s@$ self@29@00 other@30@00)
     (int___gt__ s@$ self@29@00 other@30@00))
   :pattern ((int___gt__ s@$ self@29@00 other@30@00))
-  :qid |quant-u-4534|)))
+  :qid |quant-u-4434|)))
 (assert (forall ((s@$ $Snap) (self@29@00 Int) (other@30@00 Int)) (!
   (int___gt__%stateless self@29@00 other@30@00)
   :pattern ((int___gt__%limited s@$ self@29@00 other@30@00))
-  :qid |quant-u-4535|)))
+  :qid |quant-u-4435|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -2717,11 +2717,11 @@
     (int___gt__%precondition s@$ self@29@00 other@30@00)
     (= (int___gt__ s@$ self@29@00 other@30@00) (> self@29@00 other@30@00)))
   :pattern ((int___gt__ s@$ self@29@00 other@30@00))
-  :qid |quant-u-4579|)))
+  :qid |quant-u-4479|)))
 (assert (forall ((s@$ $Snap) (self@29@00 Int) (other@30@00 Int)) (!
   true
   :pattern ((int___gt__ s@$ self@29@00 other@30@00))
-  :qid |quant-u-4580|)))
+  :qid |quant-u-4480|)))
 ; ---------- FUNCTION int___mul__----------
 (declare-fun self@32@00 () Int)
 (declare-fun other@33@00 () Int)
@@ -2735,11 +2735,11 @@
     (int___mul__%limited s@$ self@32@00 other@33@00)
     (int___mul__ s@$ self@32@00 other@33@00))
   :pattern ((int___mul__ s@$ self@32@00 other@33@00))
-  :qid |quant-u-4536|)))
+  :qid |quant-u-4436|)))
 (assert (forall ((s@$ $Snap) (self@32@00 Int) (other@33@00 Int)) (!
   (int___mul__%stateless self@32@00 other@33@00)
   :pattern ((int___mul__%limited s@$ self@32@00 other@33@00))
-  :qid |quant-u-4537|)))
+  :qid |quant-u-4437|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -2754,11 +2754,11 @@
     (int___mul__%precondition s@$ self@32@00 other@33@00)
     (= (int___mul__ s@$ self@32@00 other@33@00) (* self@32@00 other@33@00)))
   :pattern ((int___mul__ s@$ self@32@00 other@33@00))
-  :qid |quant-u-4581|)))
+  :qid |quant-u-4481|)))
 (assert (forall ((s@$ $Snap) (self@32@00 Int) (other@33@00 Int)) (!
   true
   :pattern ((int___mul__ s@$ self@32@00 other@33@00))
-  :qid |quant-u-4582|)))
+  :qid |quant-u-4482|)))
 ; ---------- FUNCTION int___add__----------
 (declare-fun self@35@00 () Int)
 (declare-fun other@36@00 () Int)
@@ -2772,11 +2772,11 @@
     (int___add__%limited s@$ self@35@00 other@36@00)
     (int___add__ s@$ self@35@00 other@36@00))
   :pattern ((int___add__ s@$ self@35@00 other@36@00))
-  :qid |quant-u-4538|)))
+  :qid |quant-u-4438|)))
 (assert (forall ((s@$ $Snap) (self@35@00 Int) (other@36@00 Int)) (!
   (int___add__%stateless self@35@00 other@36@00)
   :pattern ((int___add__%limited s@$ self@35@00 other@36@00))
-  :qid |quant-u-4539|)))
+  :qid |quant-u-4439|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -2791,11 +2791,11 @@
     (int___add__%precondition s@$ self@35@00 other@36@00)
     (= (int___add__ s@$ self@35@00 other@36@00) (+ self@35@00 other@36@00)))
   :pattern ((int___add__ s@$ self@35@00 other@36@00))
-  :qid |quant-u-4583|)))
+  :qid |quant-u-4483|)))
 (assert (forall ((s@$ $Snap) (self@35@00 Int) (other@36@00 Int)) (!
   true
   :pattern ((int___add__ s@$ self@35@00 other@36@00))
-  :qid |quant-u-4584|)))
+  :qid |quant-u-4484|)))
 ; ---------- FUNCTION int___sub__----------
 (declare-fun self@38@00 () Int)
 (declare-fun other@39@00 () Int)
@@ -2809,11 +2809,11 @@
     (int___sub__%limited s@$ self@38@00 other@39@00)
     (int___sub__ s@$ self@38@00 other@39@00))
   :pattern ((int___sub__ s@$ self@38@00 other@39@00))
-  :qid |quant-u-4540|)))
+  :qid |quant-u-4440|)))
 (assert (forall ((s@$ $Snap) (self@38@00 Int) (other@39@00 Int)) (!
   (int___sub__%stateless self@38@00 other@39@00)
   :pattern ((int___sub__%limited s@$ self@38@00 other@39@00))
-  :qid |quant-u-4541|)))
+  :qid |quant-u-4441|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -2828,11 +2828,11 @@
     (int___sub__%precondition s@$ self@38@00 other@39@00)
     (= (int___sub__ s@$ self@38@00 other@39@00) (- self@38@00 other@39@00)))
   :pattern ((int___sub__ s@$ self@38@00 other@39@00))
-  :qid |quant-u-4585|)))
+  :qid |quant-u-4485|)))
 (assert (forall ((s@$ $Snap) (self@38@00 Int) (other@39@00 Int)) (!
   true
   :pattern ((int___sub__ s@$ self@38@00 other@39@00))
-  :qid |quant-u-4586|)))
+  :qid |quant-u-4486|)))
 ; ---------- FUNCTION tuple___create0__----------
 (declare-fun result@41@00 () $Ref)
 ; ----- Well-definedness of specifications -----
@@ -2899,11 +2899,11 @@
 (assert (forall ((s@$ $Snap)) (!
   (= (tuple___create0__%limited s@$) (tuple___create0__ s@$))
   :pattern ((tuple___create0__ s@$))
-  :qid |quant-u-4542|)))
+  :qid |quant-u-4442|)))
 (assert (forall ((s@$ $Snap)) (!
   (as tuple___create0__%stateless  Bool)
   :pattern ((tuple___create0__%limited s@$))
-  :qid |quant-u-4543|)))
+  :qid |quant-u-4443|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@41@00 (tuple___create0__%limited s@$))) (=>
     (tuple___create0__%precondition s@$)
@@ -2920,31 +2920,31 @@
         (tuple___val__ $Snap.unit result@41@00)
         (as Seq_empty  Seq<$Ref>)))))
   :pattern ((tuple___create0__%limited s@$))
-  :qid |quant-u-4587|)))
+  :qid |quant-u-4487|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@41@00 (tuple___create0__%limited s@$))) true)
   :pattern ((tuple___create0__%limited s@$))
-  :qid |quant-u-4588|)))
+  :qid |quant-u-4488|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@41@00 (tuple___create0__%limited s@$))) true)
   :pattern ((tuple___create0__%limited s@$))
-  :qid |quant-u-4589|)))
+  :qid |quant-u-4489|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@41@00 (tuple___create0__%limited s@$))) (=>
     (tuple___create0__%precondition s@$)
     (tuple___len__%precondition $Snap.unit result@41@00)))
   :pattern ((tuple___create0__%limited s@$))
-  :qid |quant-u-4590|)))
+  :qid |quant-u-4490|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@41@00 (tuple___create0__%limited s@$))) true)
   :pattern ((tuple___create0__%limited s@$))
-  :qid |quant-u-4591|)))
+  :qid |quant-u-4491|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@41@00 (tuple___create0__%limited s@$))) (=>
     (tuple___create0__%precondition s@$)
     (tuple___val__%precondition $Snap.unit result@41@00)))
   :pattern ((tuple___create0__%limited s@$))
-  :qid |quant-u-4592|)))
+  :qid |quant-u-4492|)))
 ; ---------- FUNCTION __file__----------
 (declare-fun result@42@00 () $Ref)
 ; ----- Well-definedness of specifications -----
@@ -2953,11 +2953,11 @@
 (assert (forall ((s@$ $Snap)) (!
   (= (__file__%limited s@$) (__file__ s@$))
   :pattern ((__file__ s@$))
-  :qid |quant-u-4544|)))
+  :qid |quant-u-4444|)))
 (assert (forall ((s@$ $Snap)) (!
   (as __file__%stateless  Bool)
   :pattern ((__file__%limited s@$))
-  :qid |quant-u-4545|)))
+  :qid |quant-u-4445|)))
 ; ---------- FUNCTION _checkDefined----------
 (declare-fun val@43@00 () $Ref)
 (declare-fun id@44@00 () Int)
@@ -2978,11 +2978,11 @@
     (_checkDefined%limited s@$ val@43@00 id@44@00)
     (_checkDefined s@$ val@43@00 id@44@00))
   :pattern ((_checkDefined s@$ val@43@00 id@44@00))
-  :qid |quant-u-4546|)))
+  :qid |quant-u-4446|)))
 (assert (forall ((s@$ $Snap) (val@43@00 $Ref) (id@44@00 Int)) (!
   (_checkDefined%stateless val@43@00 id@44@00)
   :pattern ((_checkDefined%limited s@$ val@43@00 id@44@00))
-  :qid |quant-u-4547|)))
+  :qid |quant-u-4447|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (= s@$ $Snap.unit))
@@ -2999,11 +2999,11 @@
     (_checkDefined%precondition s@$ val@43@00 id@44@00)
     (= (_checkDefined s@$ val@43@00 id@44@00) val@43@00))
   :pattern ((_checkDefined s@$ val@43@00 id@44@00))
-  :qid |quant-u-4593|)))
+  :qid |quant-u-4493|)))
 (assert (forall ((s@$ $Snap) (val@43@00 $Ref) (id@44@00 Int)) (!
   true
   :pattern ((_checkDefined s@$ val@43@00 id@44@00))
-  :qid |quant-u-4594|)))
+  :qid |quant-u-4494|)))
 ; ---------- FUNCTION int___eq__----------
 (declare-fun self@46@00 () $Ref)
 (declare-fun other@47@00 () $Ref)
@@ -3028,11 +3028,11 @@
     (int___eq__%limited s@$ self@46@00 other@47@00)
     (int___eq__ s@$ self@46@00 other@47@00))
   :pattern ((int___eq__ s@$ self@46@00 other@47@00))
-  :qid |quant-u-4548|)))
+  :qid |quant-u-4448|)))
 (assert (forall ((s@$ $Snap) (self@46@00 $Ref) (other@47@00 $Ref)) (!
   (int___eq__%stateless self@46@00 other@47@00)
   :pattern ((int___eq__%limited s@$ self@46@00 other@47@00))
-  :qid |quant-u-4549|)))
+  :qid |quant-u-4449|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (= s@$ ($Snap.combine ($Snap.first s@$) ($Snap.second s@$))))
@@ -3079,7 +3079,7 @@
         (int___unbox__ $Snap.unit self@46@00)
         (int___unbox__ $Snap.unit other@47@00))))
   :pattern ((int___eq__ s@$ self@46@00 other@47@00))
-  :qid |quant-u-4595|)))
+  :qid |quant-u-4495|)))
 (assert (forall ((s@$ $Snap) (self@46@00 $Ref) (other@47@00 $Ref)) (!
   (=>
     (int___eq__%precondition s@$ self@46@00 other@47@00)
@@ -3087,7 +3087,7 @@
       (int___unbox__%precondition $Snap.unit self@46@00)
       (int___unbox__%precondition $Snap.unit other@47@00)))
   :pattern ((int___eq__ s@$ self@46@00 other@47@00))
-  :qid |quant-u-4596|)))
+  :qid |quant-u-4496|)))
 ; ---------- FUNCTION __name__----------
 (declare-fun result@49@00 () $Ref)
 ; ----- Well-definedness of specifications -----
@@ -3096,11 +3096,11 @@
 (assert (forall ((s@$ $Snap)) (!
   (= (__name__%limited s@$) (__name__ s@$))
   :pattern ((__name__ s@$))
-  :qid |quant-u-4550|)))
+  :qid |quant-u-4450|)))
 (assert (forall ((s@$ $Snap)) (!
   (as __name__%stateless  Bool)
   :pattern ((__name__%limited s@$))
-  :qid |quant-u-4551|)))
+  :qid |quant-u-4451|)))
 ; ---------- MustTerminate ----------
 (declare-const r@60@00 $Ref)
 ; ---------- MustInvokeBounded ----------

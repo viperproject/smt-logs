@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-29 15:16:11
+// Date:         2024-12-29 20:22:43
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/examples/longest-common-prefix/longest-common-prefix.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/examples/longest-common-prefix/longest-common-prefix-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -256,13 +256,13 @@ procedure lcp(a_2: IArrayDomainType, x: int, y: int) returns (n: int)
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var k_4: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var k_6: int;
   var ExhaleHeap: HeapType;
   var k_10: int;
@@ -326,8 +326,8 @@ procedure lcp(a_2: IArrayDomainType, x: int, y: int) returns (n: int)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -416,8 +416,8 @@ procedure lcp(a_2: IArrayDomainType, x: int, y: int) returns (n: int)
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Loop invariant n >= 0 might not hold on entry. Assertion n >= 0 might not hold. (longest-common-prefix.vpr@29.16--29.22) [110726]"}
           n >= 0;
         havoc QPMask;
@@ -620,8 +620,8 @@ procedure lcp(a_2: IArrayDomainType, x: int, y: int) returns (n: int)
             n := n + 1;
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Loop invariant n >= 0 might not be preserved. Assertion n >= 0 might not hold. (longest-common-prefix.vpr@29.16--29.22) [110738]"}
           n >= 0;
         havoc QPMask;
@@ -736,8 +736,8 @@ procedure lcp(a_2: IArrayDomainType, x: int, y: int) returns (n: int)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     havoc QPMask;
     
     // -- check that the permission amount is positive

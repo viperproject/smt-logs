@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-29 15:09:30
+// Date:         2024-12-29 20:16:07
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/sequences/exhaleseqparts.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/sequences/exhaleseqparts-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -592,11 +592,11 @@ procedure m(S: (Seq Ref), start: int, end: int) returns ()
   var j_5: int;
   var i_2: int;
   var QPMask: MaskType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var k: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var i_4: int;
   var ExhaleHeap: HeapType;
   var i_6: int;
@@ -683,8 +683,8 @@ procedure m(S: (Seq Ref), start: int, end: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: k := start + (end - start) \ 2 -- exhaleseqparts.vpr@16.5--16.41
     k := start + (end - start) div 2;
@@ -694,8 +694,8 @@ procedure m(S: (Seq Ref), start: int, end: int) returns ()
   //     { (i in [start..k)) }
   //     { S[i] }
   //     (i in [start..k)) ==> acc(S[i].f, write)) -- exhaleseqparts.vpr@17.5--17.66
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall i: Int :: { (i in [start..k)) } { S[i] } (i in [start..k)) ==> acc(S[i].f, write))
       if (*) {
@@ -758,8 +758,8 @@ procedure m(S: (Seq Ref), start: int, end: int) returns ()
   //     { (i in [k..end)) }
   //     { S[i] }
   //     (i in [k..end)) ==> acc(S[i].f, write)) -- exhaleseqparts.vpr@18.5--18.64
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall i: Int :: { (i in [k..end)) } { S[i] } (i in [k..end)) ==> acc(S[i].f, write))
       if (*) {
@@ -830,12 +830,12 @@ procedure m2(S: (Seq Ref), start: int, end: int) returns ()
   var j_7: int;
   var i_8: int;
   var QPMask: MaskType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var k: int;
   var k2: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var i_9: int;
   var ExhaleHeap: HeapType;
   var i_10: int;
@@ -923,8 +923,8 @@ procedure m2(S: (Seq Ref), start: int, end: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: k := start + (end - start) \ 3 -- exhaleseqparts.vpr@28.5--28.41
     k := start + (end - start) div 3;
@@ -938,8 +938,8 @@ procedure m2(S: (Seq Ref), start: int, end: int) returns ()
   //     { (i in [start..k)) }
   //     { S[i] }
   //     (i in [start..k)) ==> acc(S[i].f, write)) -- exhaleseqparts.vpr@30.5--30.66
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall i: Int :: { (i in [start..k)) } { S[i] } (i in [start..k)) ==> acc(S[i].f, write))
       if (*) {
@@ -1002,8 +1002,8 @@ procedure m2(S: (Seq Ref), start: int, end: int) returns ()
   //     { (i in [k..k2)) }
   //     { S[i] }
   //     (i in [k..k2)) ==> acc(S[i].f, write)) -- exhaleseqparts.vpr@31.5--31.63
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall i: Int :: { (i in [k..k2)) } { S[i] } (i in [k..k2)) ==> acc(S[i].f, write))
       if (*) {
@@ -1066,8 +1066,8 @@ procedure m2(S: (Seq Ref), start: int, end: int) returns ()
   //     { (i in [k2..end)) }
   //     { S[i] }
   //     (i in [k2..end)) ==> acc(S[i].f, write)) -- exhaleseqparts.vpr@32.5--32.64
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall i: Int :: { (i in [k2..end)) } { S[i] } (i in [k2..end)) ==> acc(S[i].f, write))
       if (*) {

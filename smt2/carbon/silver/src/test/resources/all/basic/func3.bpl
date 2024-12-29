@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-29 15:34:46
+// Date:         2024-12-29 20:41:11
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/basic/func3.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/basic/func3-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -237,8 +237,8 @@ procedure f1#definedness(r_1: Ref) returns (Result: int)
 {
   var wildcard: real where wildcard > NoPerm;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -265,8 +265,8 @@ procedure f1#definedness(r_1: Ref) returns (Result: int)
     Result := Heap[r_1, f_7];
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of result == r.f
       assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.f (func3.vpr@10.13--10.28) [188282]"}
@@ -322,8 +322,8 @@ procedure f2#definedness(r_1: Ref) returns (Result: int)
 {
   var wildcard: real where wildcard > NoPerm;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -350,8 +350,8 @@ procedure f2#definedness(r_1: Ref) returns (Result: int)
     Result := Heap[r_1, f_7];
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of f2 might not hold. Assertion result == 2 might not hold. (func3.vpr@18.13--18.24) [188285]"}
       Result == 2;
 }
@@ -403,8 +403,8 @@ procedure f3#definedness(r_1: Ref) returns (Result: int)
 {
   var wildcard: real where wildcard > NoPerm;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -437,8 +437,8 @@ procedure f3#definedness(r_1: Ref) returns (Result: int)
     Result := Heap[r_1, f_7];
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of f3 might not hold. Assertion result == 2 might not hold. (func3.vpr@26.13--26.24) [188288]"}
       Result == 2;
 }
@@ -518,12 +518,12 @@ procedure t1(r_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
-  var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -545,8 +545,8 @@ procedure t1(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: r.f := 2 -- func3.vpr@38.5--38.13
     assert {:msg "  Assignment might fail. There might be insufficient permission to access r.f (func3.vpr@38.5--38.13) [188290]"}
@@ -555,14 +555,14 @@ procedure t1(r_1: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert f3(r) == 2 -- func3.vpr@39.5--39.22
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of f3(r) == 2
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function f3 might not hold. There might be insufficient permission to access r.f (func3.vpr@39.12--39.17) [188291]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[r_1, f_7];
@@ -580,14 +580,14 @@ procedure t1(r_1: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert f3(r) == 1 -- func3.vpr@41.5--41.22
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of f3(r) == 1
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function f3 might not hold. There might be insufficient permission to access r.f (func3.vpr@41.12--41.17) [188294]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[r_1, f_7];
@@ -614,12 +614,12 @@ procedure t3(r_1: Ref) returns ()
 {
   var wildcard: real where wildcard > NoPerm;
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var y: Ref;
   var x: Ref;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var freshObj: Ref;
   
@@ -643,8 +643,8 @@ procedure t3(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[y, $allocated];
@@ -655,8 +655,8 @@ procedure t3(r_1: Ref) returns ()
     // -- Check definedness of f4(r)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function f4 might not hold. There might be insufficient permission to access r.fr (func3.vpr@61.19--61.24) [188297]"}
           NoPerm < perm ==> NoPerm < Mask[r_1, fr_1];
@@ -678,8 +678,8 @@ procedure t3(r_1: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert x != y -- func3.vpr@64.5--64.18
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion x != y might not hold. (func3.vpr@64.12--64.18) [188298]"}
       x != y;
     assume state(Heap, Mask);

@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-29 14:58:45
+; Started: 2024-12-29 20:05:26
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -674,7 +674,7 @@
     (Set_in w@2@00 (Set_singleton x@0@00))
     (and (= (inv@3@00 s@$ x@0@00 w@2@00) w@2@00) (img@4@00 s@$ x@0@00 w@2@00)))
   :pattern ((Set_in w@2@00 (Set_singleton x@0@00)))
-  :qid |quant-u-23203|)))
+  :qid |quant-u-23094|)))
 (assert (forall ((x $Ref)) (!
   (=>
     (and
@@ -688,11 +688,11 @@
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   (= (get%limited s@$ x@0@00) (get s@$ x@0@00))
   :pattern ((get s@$ x@0@00))
-  :qid |quant-u-23200|)))
+  :qid |quant-u-23091|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   (get%stateless x@0@00)
   :pattern ((get%limited s@$ x@0@00))
-  :qid |quant-u-23201|)))
+  :qid |quant-u-23092|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (forall ((x $Ref)) (!
@@ -708,7 +708,7 @@
     (Set_in w@2@00 (Set_singleton x@0@00))
     (and (= (inv@3@00 s@$ x@0@00 w@2@00) w@2@00) (img@4@00 s@$ x@0@00 w@2@00)))
   :pattern ((Set_in w@2@00 (Set_singleton x@0@00)))
-  :qid |quant-u-23203|)))
+  :qid |quant-u-23094|)))
 ; State saturation: after contract
 (set-option :timeout 50)
 (check-sat)
@@ -740,7 +740,7 @@
         $Perm.No)
       $Perm.No))
   
-  :qid |quant-u-23204|))))
+  :qid |quant-u-23095|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -787,7 +787,7 @@
           (= (inv@3@00 s@$ x@0@00 w@2@00) w@2@00)
           (img@4@00 s@$ x@0@00 w@2@00)))
       :pattern ((Set_in w@2@00 (Set_singleton x@0@00)))
-      :qid |quant-u-23203|))
+      :qid |quant-u-23094|))
     (forall ((x $Ref)) (!
       (=>
         (and
@@ -815,11 +815,11 @@
         (get s@$ x@0@00)
         ($PSF.lookup_bar (sm@5@00 s@$ x@0@00) ($SortWrappers.$RefTo$Snap x@0@00)))))
   :pattern ((get s@$ x@0@00))
-  :qid |quant-u-23205|)))
+  :qid |quant-u-23096|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   true
   :pattern ((get s@$ x@0@00))
-  :qid |quant-u-23206|)))
+  :qid |quant-u-23097|)))
 ; ---------- bar ----------
 (declare-const x@7@00 $Ref)
 (push) ; 1

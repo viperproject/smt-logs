@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-29 14:55:51
+; Started: 2024-12-29 20:02:34
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -309,7 +309,7 @@
     (MWSF_apply mwsf@4@01 $t@3@01)
     ($Snap.combine $t@3@01 ($Snap.second $t@2@01)))
   :pattern ((MWSF_apply mwsf@4@01 $t@3@01))
-  :qid |quant-u-20022|)))
+  :qid |quant-u-19913|)))
 (pop) ; 3
 (set-option :timeout 0)
 (push) ; 3
@@ -343,7 +343,7 @@
       (MWSF_apply mwsf@4@01 $t@3@01)
       ($Snap.combine $t@3@01 ($Snap.second $t@2@01))))
   :pattern ((MWSF_apply mwsf@4@01 $t@3@01))
-  :qid |quant-u-20023|)))
+  :qid |quant-u-19914|)))
 (assert true)
 ; [exec]
 ; apply acc(x.f, write) --* acc(x.f, write) && acc(x.g, (x.f ? write : none))
@@ -1041,7 +1041,7 @@
     (MWSF_apply mwsf@10@01 $t@9@01)
     ($Snap.combine $t@9@01 ($Snap.second $t@8@01)))
   :pattern ((MWSF_apply mwsf@10@01 $t@9@01))
-  :qid |quant-u-20024|)))
+  :qid |quant-u-19915|)))
 (pop) ; 3
 (set-option :timeout 0)
 (push) ; 3
@@ -1075,7 +1075,7 @@
       (MWSF_apply mwsf@10@01 $t@9@01)
       ($Snap.combine $t@9@01 ($Snap.second $t@8@01))))
   :pattern ((MWSF_apply mwsf@10@01 $t@9@01))
-  :qid |quant-u-20025|)))
+  :qid |quant-u-19916|)))
 (assert true)
 ; [exec]
 ; apply acc(x.f, write) --* acc(x.f, write) && acc(x.g, (x.f ? write : none))
@@ -1672,7 +1672,7 @@
         ($Snap.first ($Snap.second $t@14@01))
         ($Snap.second ($Snap.second $t@14@01)))))
   :pattern ((MWSF_apply mwsf@16@01 $t@15@01))
-  :qid |quant-u-20026|)))
+  :qid |quant-u-19917|)))
 (pop) ; 3
 (set-option :timeout 0)
 (push) ; 3
@@ -1737,7 +1737,7 @@
           ($Snap.first ($Snap.second $t@14@01))
           ($Snap.second ($Snap.second $t@14@01))))))
   :pattern ((MWSF_apply mwsf@16@01 $t@15@01))
-  :qid |quant-u-20027|)))
+  :qid |quant-u-19918|)))
 (assert true)
 ; [exec]
 ; apply acc(x.f, write) --*
@@ -2564,7 +2564,7 @@
         ($Snap.first ($Snap.second $t@21@01))
         ($Snap.second ($Snap.second $t@21@01)))))
   :pattern ((MWSF_apply mwsf@23@01 $t@22@01))
-  :qid |quant-u-20028|)))
+  :qid |quant-u-19919|)))
 (pop) ; 3
 (set-option :timeout 0)
 (push) ; 3
@@ -2629,7 +2629,7 @@
           ($Snap.first ($Snap.second $t@21@01))
           ($Snap.second ($Snap.second $t@21@01))))))
   :pattern ((MWSF_apply mwsf@23@01 $t@22@01))
-  :qid |quant-u-20029|)))
+  :qid |quant-u-19920|)))
 (assert true)
 ; [exec]
 ; assert perm(x.g) == write && perm(x.h) == none ||

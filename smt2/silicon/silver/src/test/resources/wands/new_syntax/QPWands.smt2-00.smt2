@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-29 14:56:09
+; Started: 2024-12-29 20:02:53
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -51,9 +51,9 @@
 (declare-sort Set<$Snap> 0)
 (declare-sort $FVF<f> 0)
 (declare-sort $PSF<wand@2> 0)
+(declare-sort $PSF<wand@4> 0)
 (declare-sort $PSF<wand@1> 0)
 (declare-sort $PSF<wand@0> 0)
-(declare-sort $PSF<wand@4> 0)
 (declare-sort $MWSF 0)
 ; ////////// Sort wrappers
 ; Declaring additional sort wrappers
@@ -181,6 +181,18 @@
     :pattern (($SortWrappers.$SnapTo$PSF<wand@2> x))
     :qid |$Snap.$PSF<wand@2>To$SnapTo$PSF<wand@2>|
     )))
+(declare-fun $SortWrappers.$PSF<wand@4>To$Snap ($PSF<wand@4>) $Snap)
+(declare-fun $SortWrappers.$SnapTo$PSF<wand@4> ($Snap) $PSF<wand@4>)
+(assert (forall ((x $PSF<wand@4>)) (!
+    (= x ($SortWrappers.$SnapTo$PSF<wand@4>($SortWrappers.$PSF<wand@4>To$Snap x)))
+    :pattern (($SortWrappers.$PSF<wand@4>To$Snap x))
+    :qid |$Snap.$SnapTo$PSF<wand@4>To$Snap|
+    )))
+(assert (forall ((x $Snap)) (!
+    (= x ($SortWrappers.$PSF<wand@4>To$Snap($SortWrappers.$SnapTo$PSF<wand@4> x)))
+    :pattern (($SortWrappers.$SnapTo$PSF<wand@4> x))
+    :qid |$Snap.$PSF<wand@4>To$SnapTo$PSF<wand@4>|
+    )))
 (declare-fun $SortWrappers.$PSF<wand@1>To$Snap ($PSF<wand@1>) $Snap)
 (declare-fun $SortWrappers.$SnapTo$PSF<wand@1> ($Snap) $PSF<wand@1>)
 (assert (forall ((x $PSF<wand@1>)) (!
@@ -204,18 +216,6 @@
     (= x ($SortWrappers.$PSF<wand@0>To$Snap($SortWrappers.$SnapTo$PSF<wand@0> x)))
     :pattern (($SortWrappers.$SnapTo$PSF<wand@0> x))
     :qid |$Snap.$PSF<wand@0>To$SnapTo$PSF<wand@0>|
-    )))
-(declare-fun $SortWrappers.$PSF<wand@4>To$Snap ($PSF<wand@4>) $Snap)
-(declare-fun $SortWrappers.$SnapTo$PSF<wand@4> ($Snap) $PSF<wand@4>)
-(assert (forall ((x $PSF<wand@4>)) (!
-    (= x ($SortWrappers.$SnapTo$PSF<wand@4>($SortWrappers.$PSF<wand@4>To$Snap x)))
-    :pattern (($SortWrappers.$PSF<wand@4>To$Snap x))
-    :qid |$Snap.$SnapTo$PSF<wand@4>To$Snap|
-    )))
-(assert (forall ((x $Snap)) (!
-    (= x ($SortWrappers.$PSF<wand@4>To$Snap($SortWrappers.$SnapTo$PSF<wand@4> x)))
-    :pattern (($SortWrappers.$SnapTo$PSF<wand@4> x))
-    :qid |$Snap.$PSF<wand@4>To$SnapTo$PSF<wand@4>|
     )))
 ; Declaring additional sort wrappers
 (declare-fun $SortWrappers.$MWSFTo$Snap ($MWSF) $Snap)

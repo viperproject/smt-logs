@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-29 15:28:01
+// Date:         2024-12-29 20:34:30
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/permission_introspection/forpermFields.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/permission_introspection/forpermFields-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -194,12 +194,12 @@ axiom !IsWandField(f3);
 procedure noFields() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var r1: Ref;
   var r2: Ref;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var r_36: Ref;
   var r_27: Ref;
   var r_28: Ref;
@@ -215,16 +215,16 @@ procedure noFields() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[r1, $allocated];
     assume Heap[r2, $allocated];
   
   // -- Translating statement: assert (forperm r: Ref [r.f1] :: r.f1 > 0) -- forpermFields.vpr@12.3--12.43
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forperm r: Ref [r.f1] :: r.f1 > 0)
       if (*) {
@@ -244,8 +244,8 @@ procedure noFields() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forperm r: Ref [r.f2] :: r.f1 > 0) -- forpermFields.vpr@13.3--13.43
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forperm r: Ref [r.f2] :: r.f1 > 0)
       if (*) {
@@ -265,8 +265,8 @@ procedure noFields() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forperm r: Ref [r.f1] :: r.f2 > 0) -- forpermFields.vpr@14.3--14.43
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forperm r: Ref [r.f1] :: r.f2 > 0)
       if (*) {
@@ -286,8 +286,8 @@ procedure noFields() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forperm r: Ref [r.f2] :: r.f2 > 0) -- forpermFields.vpr@15.3--15.43
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forperm r: Ref [r.f2] :: r.f2 > 0)
       if (*) {
@@ -307,8 +307,8 @@ procedure noFields() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forperm r: Ref [r.f1] :: r.f1 > 0 && r.f2 > 0) -- forpermFields.vpr@16.3--16.55
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forperm r: Ref [r.f1] :: r.f1 > 0 && r.f2 > 0)
       if (*) {
@@ -332,8 +332,8 @@ procedure noFields() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forperm r: Ref [r.f2] :: r.f1 > 0 && r.f2 > 0) -- forpermFields.vpr@17.3--17.55
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forperm r: Ref [r.f2] :: r.f1 > 0 && r.f2 > 0)
       if (*) {
@@ -364,13 +364,13 @@ procedure noFields() returns ()
 procedure noFields2() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var r1: Ref;
   var r2: Ref;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var r_30: Ref;
   var r_32: Ref;
   var r_42: Ref;
@@ -386,8 +386,8 @@ procedure noFields2() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[r1, $allocated];
@@ -402,8 +402,8 @@ procedure noFields2() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forperm r: Ref [r.f1] :: r.f1 > 0) -- forpermFields.vpr@25.3--25.43
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forperm r: Ref [r.f1] :: r.f1 > 0)
       if (*) {
@@ -423,8 +423,8 @@ procedure noFields2() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forperm r: Ref [r.f2] :: r.f1 > 0) -- forpermFields.vpr@26.3--26.43
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forperm r: Ref [r.f2] :: r.f1 > 0)
       if (*) {
@@ -444,8 +444,8 @@ procedure noFields2() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forperm r: Ref [r.f1] :: r.f2 > 0) -- forpermFields.vpr@27.3--27.43
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forperm r: Ref [r.f1] :: r.f2 > 0)
       if (*) {
@@ -465,8 +465,8 @@ procedure noFields2() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forperm r: Ref [r.f2] :: r.f2 > 0) -- forpermFields.vpr@28.3--28.43
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forperm r: Ref [r.f2] :: r.f2 > 0)
       if (*) {
@@ -486,8 +486,8 @@ procedure noFields2() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forperm r: Ref [r.f1] :: r.f1 > 0 && r.f2 > 0) -- forpermFields.vpr@29.3--29.55
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forperm r: Ref [r.f1] :: r.f1 > 0 && r.f2 > 0)
       if (*) {
@@ -511,8 +511,8 @@ procedure noFields2() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forperm r: Ref [r.f2] :: r.f1 > 0 && r.f2 > 0) -- forpermFields.vpr@30.3--30.55
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forperm r: Ref [r.f2] :: r.f1 > 0 && r.f2 > 0)
       if (*) {
@@ -543,13 +543,13 @@ procedure noFields2() returns ()
 procedure permOnlyOneField() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var r1: Ref;
   var r2: Ref;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var r_18: Ref;
   var r_46: Ref;
   var r_21: Ref;
@@ -562,8 +562,8 @@ procedure permOnlyOneField() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[r1, $allocated];
@@ -583,8 +583,8 @@ procedure permOnlyOneField() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forperm r: Ref [r.f1] :: r.f1 > 0) -- forpermFields.vpr@38.3--38.43
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forperm r: Ref [r.f1] :: r.f1 > 0)
       if (*) {
@@ -604,8 +604,8 @@ procedure permOnlyOneField() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forperm r: Ref [r.f2] :: r.f2 > 0) -- forpermFields.vpr@39.3--39.43
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forperm r: Ref [r.f2] :: r.f2 > 0)
       if (*) {
@@ -625,8 +625,8 @@ procedure permOnlyOneField() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forperm r: Ref [r.f2] :: r.f1 > 0) -- forpermFields.vpr@40.3--40.43
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forperm r: Ref [r.f2] :: r.f1 > 0)
       if (*) {
@@ -653,13 +653,13 @@ procedure permOnlyOneField() returns ()
 procedure permOnlyOneField1() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var r1: Ref;
   var r2: Ref;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var r_50: Ref;
   var r_23: Ref;
   
@@ -671,8 +671,8 @@ procedure permOnlyOneField1() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[r1, $allocated];
@@ -692,8 +692,8 @@ procedure permOnlyOneField1() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forperm r: Ref [r.f1] :: r.f2 >= r.f2) -- forpermFields.vpr@49.3--49.47
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forperm r: Ref [r.f1] :: r.f2 >= r.f2)
       if (*) {
@@ -715,8 +715,8 @@ procedure permOnlyOneField1() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forperm r: Ref [r.f2] :: r.f2 >= r.f2) -- forpermFields.vpr@50.3--50.47
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forperm r: Ref [r.f2] :: r.f2 >= r.f2)
       if (*) {
@@ -745,13 +745,13 @@ procedure permOnlyOneField1() returns ()
 procedure permOnlyOneField2() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var r1: Ref;
   var r2: Ref;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var r_10: Ref;
   var r_11: Ref;
   
@@ -763,8 +763,8 @@ procedure permOnlyOneField2() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[r1, $allocated];
@@ -784,8 +784,8 @@ procedure permOnlyOneField2() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forperm r: Ref [r.f1] :: r.f1 > 0 && r.f2 >= r.f2) -- forpermFields.vpr@59.3--59.59
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forperm r: Ref [r.f1] :: r.f1 > 0 && r.f2 >= r.f2)
       if (*) {
@@ -811,8 +811,8 @@ procedure permOnlyOneField2() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forperm r: Ref [r.f2] :: r.f1 > 0 && r.f2 >= r.f2) -- forpermFields.vpr@60.3--60.59
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forperm r: Ref [r.f2] :: r.f1 > 0 && r.f2 >= r.f2)
       if (*) {
@@ -845,12 +845,12 @@ procedure permOnlyOneField2() returns ()
 procedure permCheck1() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var r1: Ref;
   var r2: Ref;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var r_24: Ref;
   var r_26: Ref;
   
@@ -862,16 +862,16 @@ procedure permCheck1() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[r1, $allocated];
     assume Heap[r2, $allocated];
   
   // -- Translating statement: assert (forperm r: Ref [r.f1] :: false) -- forpermFields.vpr@67.3--67.40
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forperm r: Ref [r.f1] :: false)
       if (*) {
@@ -889,8 +889,8 @@ procedure permCheck1() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forperm r: Ref [r.f2] :: false) -- forpermFields.vpr@68.3--68.40
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forperm r: Ref [r.f2] :: false)
       if (*) {
@@ -915,13 +915,13 @@ procedure permCheck1() returns ()
 procedure permCheck2() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var r1: Ref;
   var r2: Ref;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var r_53: Ref;
   var r_56: Ref;
   
@@ -933,8 +933,8 @@ procedure permCheck2() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[r1, $allocated];
@@ -949,8 +949,8 @@ procedure permCheck2() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forperm r: Ref [r.f1] :: false) -- forpermFields.vpr@77.3--77.40
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forperm r: Ref [r.f1] :: false)
       if (*) {
@@ -968,8 +968,8 @@ procedure permCheck2() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forperm r: Ref [r.f2] :: false) -- forpermFields.vpr@78.3--78.40
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forperm r: Ref [r.f2] :: false)
       if (*) {
@@ -994,13 +994,13 @@ procedure permCheck2() returns ()
 procedure permCheck3() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var r1: Ref;
   var r2: Ref;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var r_59: Ref;
   var r_61: Ref;
@@ -1013,8 +1013,8 @@ procedure permCheck3() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[r1, $allocated];
@@ -1029,8 +1029,8 @@ procedure permCheck3() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(r1.f1, write) -- forpermFields.vpr@86.3--86.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Exhale might fail. There might be insufficient permission to access r1.f1 (forpermFields.vpr@86.10--86.20) [142696]"}
@@ -1044,8 +1044,8 @@ procedure permCheck3() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forperm r: Ref [r.f1] :: false) -- forpermFields.vpr@87.3--87.40
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forperm r: Ref [r.f1] :: false)
       if (*) {
@@ -1063,8 +1063,8 @@ procedure permCheck3() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forperm r: Ref [r.f2] :: false) -- forpermFields.vpr@88.3--88.40
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forperm r: Ref [r.f2] :: false)
       if (*) {

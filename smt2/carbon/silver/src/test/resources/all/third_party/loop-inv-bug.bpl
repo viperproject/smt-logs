@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-29 15:31:18
+// Date:         2024-12-29 20:37:44
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/third_party/loop-inv-bug.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/third_party/loop-inv-bug-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -191,12 +191,12 @@ axiom !IsWandField(Ref__Integer_value);
 procedure test05(n: int) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var i: int;
   var res: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -206,8 +206,8 @@ procedure test05(n: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale i == n -- loop-inv-bug.vpr@15.10--15.16
     assume i == n;
@@ -220,8 +220,8 @@ procedure test05(n: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert res == n * n -- loop-inv-bug.vpr@17.3--17.22
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion res == n * n might not hold. (loop-inv-bug.vpr@17.10--17.22) [159727]"}
       res == n * n;
     assume state(Heap, Mask);
@@ -235,13 +235,13 @@ procedure Ref__Mul(diz: Ref, n: int) returns (sys__result: int)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var i: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var loopHeap: HeapType;
   var loopMask: MaskType;
@@ -274,8 +274,8 @@ procedure Ref__Mul(diz: Ref, n: int) returns (sys__result: int)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -313,8 +313,8 @@ procedure Ref__Mul(diz: Ref, n: int) returns (sys__result: int)
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Loop invariant acc(diz.Ref__res, write) might not hold on entry. There might be insufficient permission to access diz.Ref__res (loop-inv-bug.vpr@39.15--39.39) [159731]"}
@@ -386,8 +386,8 @@ procedure Ref__Mul(diz: Ref, n: int) returns (sys__result: int)
             i := i + 1;
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Loop invariant acc(diz.Ref__res, write) might not be preserved. There might be insufficient permission to access diz.Ref__res (loop-inv-bug.vpr@39.15--39.39) [159737]"}
@@ -419,15 +419,15 @@ procedure Ref__Mul(diz: Ref, n: int) returns (sys__result: int)
     assume state(Heap, Mask);
   
   // -- Translating statement: assert i == n -- loop-inv-bug.vpr@46.3--46.16
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion i == n might not hold. (loop-inv-bug.vpr@46.10--46.16) [159740]"}
       i == n;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert diz.Ref__res == i * n -- loop-inv-bug.vpr@47.3--47.31
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of diz.Ref__res == i * n
       assert {:msg "  Assert might fail. There might be insufficient permission to access diz.Ref__res (loop-inv-bug.vpr@47.10--47.31) [159741]"}
@@ -437,8 +437,8 @@ procedure Ref__Mul(diz: Ref, n: int) returns (sys__result: int)
     assume state(Heap, Mask);
   
   // -- Translating statement: assert diz.Ref__res == n * n -- loop-inv-bug.vpr@48.3--48.31
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of diz.Ref__res == n * n
       assert {:msg "  Assert might fail. There might be insufficient permission to access diz.Ref__res (loop-inv-bug.vpr@48.10--48.31) [159743]"}
@@ -448,8 +448,8 @@ procedure Ref__Mul(diz: Ref, n: int) returns (sys__result: int)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of Ref__Mul might not hold. There might be insufficient permission to access diz.Ref__res (loop-inv-bug.vpr@31.11--31.35) [159745]"}

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-29 15:43:37
+// Date:         2024-12-29 20:49:55
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0328a.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0328a-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -220,8 +220,8 @@ function  Vector9D_f9(v_4: Vector9DDomainType): int;
 procedure main() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var v1: Vector9DDomainType;
   
   // -- Initializing the state
@@ -232,8 +232,8 @@ procedure main() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: v1 := Vector9D_ctor(1, 2, 3, 4, 5, 6, 7, 8, 9) -- 0328a.vpr@21.3--21.49
     v1 := (Vector9D_ctor(1, 2, 3, 4, 5, 6, 7, 8, 9): Vector9DDomainType);

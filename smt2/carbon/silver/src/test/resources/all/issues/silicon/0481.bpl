@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-29 15:43:38
+// Date:         2024-12-29 20:49:56
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0481.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0481-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -816,12 +816,12 @@ procedure array#definedness(arr: (Seq Ref)) returns ()
 procedure test() returns (res: Ref)
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var perm: Perm;
   var arr: (Seq Ref);
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newVersion: FrameType;
   var QPMask: MaskType;
   
@@ -834,8 +834,8 @@ procedure test() returns (res: Ref)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale acc(array(arr), read()) -- 0481.vpr@22.3--22.33
     assume state(Heap, Mask);
@@ -870,8 +870,8 @@ procedure test() returns (res: Ref)
       read_1(Heap) > NoPerm;
     assume array#trigger(Heap, array(arr));
     assume Heap[null, array(arr)] == FrameFragment(array#condqp1(Heap, arr));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := read_1(Heap);
     assert {:msg "  Unfolding array(arr) might fail. Fraction read() might be negative. (0481.vpr@23.3--23.33) [218762]"}
       perm >= NoPerm;
@@ -956,8 +956,8 @@ procedure test() returns (res: Ref)
       read_1(Heap) > NoPerm;
     assume P#trigger(Heap, P(Seq#Index(arr, 1)));
     assume Heap[null, P(Seq#Index(arr, 1))] == FrameFragment(Heap[Seq#Index(arr, 1), val]);
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := read_1(Heap);
     assert {:msg "  Unfolding P(arr[1]) might fail. Fraction read() might be negative. (0481.vpr@24.3--24.32) [218768]"}
       perm >= NoPerm;

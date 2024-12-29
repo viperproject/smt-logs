@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-29 14:49:34
+; Started: 2024-12-29 19:56:27
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -1134,11 +1134,11 @@
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref) (n@1@00 Int) (i@2@00 Int)) (!
   (= (fun04%limited s@$ x@0@00 n@1@00 i@2@00) (fun04 s@$ x@0@00 n@1@00 i@2@00))
   :pattern ((fun04 s@$ x@0@00 n@1@00 i@2@00))
-  :qid |quant-u-5198|)))
+  :qid |quant-u-5098|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref) (n@1@00 Int) (i@2@00 Int)) (!
   (fun04%stateless x@0@00 n@1@00 i@2@00)
   :pattern ((fun04%limited s@$ x@0@00 n@1@00 i@2@00))
-  :qid |quant-u-5199|)))
+  :qid |quant-u-5099|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (= s@$ ($Snap.combine ($Snap.first s@$) ($Snap.second s@$))))
@@ -1708,7 +1708,7 @@
   :pattern ((Seq_index
     ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.first s@$)))
     j@6@00))
-  :qid |quant-u-5201|)))
+  :qid |quant-u-5101|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -1827,7 +1827,7 @@
   :pattern ((Seq_index
     ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.first s@$)))
     j@9@00))
-  :qid |quant-u-5203|)))
+  :qid |quant-u-5103|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -1880,7 +1880,7 @@
           (<= 0 (inv@7@00 s@$ x@0@00 n@1@00 i@2@00 r))
           (< (inv@7@00 s@$ x@0@00 n@1@00 i@2@00 r) 3)))))
   
-  :qid |quant-u-5204|))))
+  :qid |quant-u-5104|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -2242,7 +2242,7 @@
     :pattern ((Seq_index
       ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.first s@$)))
       j@6@00))
-    :qid |quant-u-5201|))
+    :qid |quant-u-5101|))
   (forall ((j@6@00 Int)) (!
     (=>
       (and (<= 0 j@6@00) (< j@6@00 3))
@@ -2280,7 +2280,7 @@
     :pattern ((Seq_index
       ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.first s@$)))
       j@9@00))
-    :qid |quant-u-5203|))
+    :qid |quant-u-5103|))
   (forall ((j@9@00 Int)) (!
     (=>
       (and (<= 3 j@9@00) (< j@9@00 n@1@00))
@@ -2317,7 +2317,7 @@
       :pattern ((Seq_index
         ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.first s@$)))
         j@6@00))
-      :qid |quant-u-5201|))
+      :qid |quant-u-5101|))
     (forall ((r $Ref)) (!
       (=>
         (and
@@ -2347,7 +2347,7 @@
       :pattern ((Seq_index
         ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.first s@$)))
         j@9@00))
-      :qid |quant-u-5203|))
+      :qid |quant-u-5103|))
     (forall ((r $Ref)) (!
       (=>
         (and
@@ -2396,11 +2396,11 @@
           ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.first s@$)))
           i@2@00)))))
   :pattern ((fun04 s@$ x@0@00 n@1@00 i@2@00))
-  :qid |quant-u-5205|)))
+  :qid |quant-u-5105|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref) (n@1@00 Int) (i@2@00 Int)) (!
   true
   :pattern ((fun04 s@$ x@0@00 n@1@00 i@2@00))
-  :qid |quant-u-5206|)))
+  :qid |quant-u-5106|)))
 ; ---------- P01 ----------
 (declare-const x@14@00 $Ref)
 (declare-const n@15@00 Int)
@@ -2917,7 +2917,7 @@
   :pattern ((Seq_index
     ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first $t@16@00))
     j@19@00))
-  :qid |quant-u-5208|)))
+  :qid |quant-u-5108|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and (img@21@00 r) (and (<= 0 (inv@20@00 r)) (< (inv@20@00 r) 3)))
@@ -3031,7 +3031,7 @@
   :pattern ((Seq_index
     ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first $t@16@00))
     j@22@00))
-  :qid |quant-u-5210|)))
+  :qid |quant-u-5110|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and (img@24@00 r) (and (<= 3 (inv@23@00 r)) (< (inv@23@00 r) n@15@00)))
@@ -3069,7 +3069,7 @@
       (and (img@24@00 r) (and (<= 3 (inv@23@00 r)) (< (inv@23@00 r) n@15@00)))
       (and (img@21@00 r) (and (<= 0 (inv@20@00 r)) (< (inv@20@00 r) 3)))))
   
-  :qid |quant-u-5211|))))
+  :qid |quant-u-5111|))))
 (check-sat)
 ; unknown
 (pop) ; 2

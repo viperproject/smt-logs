@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-29 15:38:47
+// Date:         2024-12-29 20:45:08
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0072.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0072-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -554,8 +554,8 @@ procedure test01(s_2: (Seq Ref)) returns ()
 {
   var perm: Perm;
   var i_14: int;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -603,8 +603,8 @@ procedure test01(s_2: (Seq Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
 }
 
 // ==================================================
@@ -616,8 +616,8 @@ procedure test02(s_2: (Seq Ref)) returns ()
 {
   var perm: Perm;
   var i_2: int;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -665,8 +665,8 @@ procedure test02(s_2: (Seq Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
 }
 
 // ==================================================
@@ -676,14 +676,14 @@ procedure test02(s_2: (Seq Ref)) returns ()
 procedure test02ProofObligation(s_2: (Seq Ref)) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var perm: Perm;
   var i: int;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -693,8 +693,8 @@ procedure test02ProofObligation(s_2: (Seq Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale |s| > 2 && (acc(s[0].f, write) && acc(s[1].f, write)) -- 0072.vpr@18.3--18.47
     assume Seq#Length(s_2) > 2;
@@ -726,8 +726,8 @@ procedure test02ProofObligation(s_2: (Seq Ref)) returns ()
   // -- Translating statement: assert acc(s[i].f, write) -- 0072.vpr@24.3--24.21
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
+    ExhaleWellDef0Mask := AssertMask;
     
     // -- Check definedness of acc(s[i].f, write)
       assert {:msg "  Assert might fail. Index s[i] into s might be negative. (0072.vpr@24.10--24.21) [200932]"}
@@ -750,13 +750,13 @@ procedure test02ProofObligation(s_2: (Seq Ref)) returns ()
 procedure test04(s_2: (Seq int)) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var i_4: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var i_2_1: int;
   
   // -- Initializing the state
@@ -781,8 +781,8 @@ procedure test04(s_2: (Seq int)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -809,8 +809,8 @@ procedure test04(s_2: (Seq int)) returns ()
   }
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     if (*) {
       if (Seq#Contains(Seq#Range(0, 2), i_2_1)) {
         assert {:msg "  Postcondition of test04 might not hold. Assertion s[i] > 0 might not hold. (0072.vpr@29.11--29.52) [200940]"}
@@ -832,8 +832,8 @@ procedure test05(s_2: (Seq Ref)) returns ()
   modifies Heap, Mask;
 {
   var i_6: int;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -876,6 +876,6 @@ procedure test05(s_2: (Seq Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
 }

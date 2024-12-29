@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-29 14:54:37
+; Started: 2024-12-29 20:01:35
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -958,11 +958,11 @@
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   (= (e%limited s@$ x@0@00) (e s@$ x@0@00))
   :pattern ((e s@$ x@0@00))
-  :qid |quant-u-18151|)))
+  :qid |quant-u-18048|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   (e%stateless x@0@00)
   :pattern ((e%limited s@$ x@0@00))
-  :qid |quant-u-18152|)))
+  :qid |quant-u-18049|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- m ----------
@@ -1340,7 +1340,7 @@
         (= (inv@6@01 (e $Snap.unit x@5@01)) x@5@01)
         (e%precondition $Snap.unit x@5@01))))
   :pattern ((e $Snap.unit x@5@01))
-  :qid |quant-u-18154|)))
+  :qid |quant-u-18051|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and (img@7@01 r) (Seq_contains xs@1@01 (inv@6@01 r)))
@@ -1354,7 +1354,7 @@
       (= (inv@6@01 (e $Snap.unit x@5@01)) x@5@01)
       (img@7@01 (e $Snap.unit x@5@01))))
   :pattern ((e $Snap.unit x@5@01))
-  :qid |quant-u-18154|)))
+  :qid |quant-u-18051|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and (img@7@01 r) (Seq_contains xs@1@01 (inv@6@01 r)))
@@ -1426,7 +1426,7 @@
         (= (inv@10@01 (e $Snap.unit x@8@01)) x@8@01)
         (e%precondition $Snap.unit x@8@01))))
   :pattern ((e $Snap.unit x@8@01))
-  :qid |quant-u-18156|)))
+  :qid |quant-u-18053|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and (img@11@01 r) (Seq_contains xs@1@01 (inv@10@01 r)))
@@ -1440,7 +1440,7 @@
       (= (inv@10@01 (e $Snap.unit x@8@01)) x@8@01)
       (img@11@01 (e $Snap.unit x@8@01))))
   :pattern ((e $Snap.unit x@8@01))
-  :qid |quant-u-18156|)))
+  :qid |quant-u-18053|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and (img@11@01 r) (Seq_contains xs@1@01 (inv@10@01 r)))
@@ -1563,7 +1563,7 @@
       (pTaken@15@01 r))
     $Perm.No)
   
-  :qid |quant-u-18159|))))
+  :qid |quant-u-18056|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -1581,7 +1581,7 @@
       (= r (e $Snap.unit (inv@13@01 r))))
     (= (- $Perm.Write (pTaken@15@01 r)) $Perm.No))
   
-  :qid |quant-u-18160|))))
+  :qid |quant-u-18057|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -1985,7 +1985,7 @@
         (= (inv@24@01 (e $Snap.unit x@23@01) (+ i@19@01 1)) x@23@01)
         (e%precondition $Snap.unit x@23@01))))
   :pattern ((e $Snap.unit x@23@01))
-  :qid |quant-u-18162|)))
+  :qid |quant-u-18059|)))
 (assert (forall ((r $Ref) (i Int)) (!
   (=>
     (and (img@25@01 r i) (Seq_contains xs@18@01 (inv@24@01 r i)))
@@ -1999,7 +1999,7 @@
       (= (inv@24@01 (e $Snap.unit x@23@01) (+ i@19@01 1)) x@23@01)
       (img@25@01 (e $Snap.unit x@23@01) (+ i@19@01 1))))
   :pattern ((e $Snap.unit x@23@01))
-  :qid |quant-u-18162|)))
+  :qid |quant-u-18059|)))
 (assert (forall ((r $Ref) (i Int)) (!
   (=>
     (and (img@25@01 r i) (Seq_contains xs@18@01 (inv@24@01 r i)))
@@ -2068,7 +2068,7 @@
         (= (inv@28@01 (e $Snap.unit x@26@01) (+ i@19@01 1)) x@26@01)
         (e%precondition $Snap.unit x@26@01))))
   :pattern ((e $Snap.unit x@26@01))
-  :qid |quant-u-18164|)))
+  :qid |quant-u-18061|)))
 (assert (forall ((r $Ref) (i Int)) (!
   (=>
     (and (img@29@01 r i) (Seq_contains xs@18@01 (inv@28@01 r i)))
@@ -2082,7 +2082,7 @@
       (= (inv@28@01 (e $Snap.unit x@26@01) (+ i@19@01 1)) x@26@01)
       (img@29@01 (e $Snap.unit x@26@01) (+ i@19@01 1))))
   :pattern ((e $Snap.unit x@26@01))
-  :qid |quant-u-18164|)))
+  :qid |quant-u-18061|)))
 (assert (forall ((r $Ref) (i Int)) (!
   (=>
     (and (img@29@01 r i) (Seq_contains xs@18@01 (inv@28@01 r i)))
@@ -2200,7 +2200,7 @@
       (pTaken@33@01 r i))
     $Perm.No)
   
-  :qid |quant-u-18167|))))
+  :qid |quant-u-18064|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -2218,7 +2218,7 @@
       (and (= r (e $Snap.unit (inv@31@01 r i))) (= i (+ i@19@01 1))))
     (= (- $Perm.Write (pTaken@33@01 r i)) $Perm.No))
   
-  :qid |quant-u-18168|))))
+  :qid |quant-u-18065|))))
 (check-sat)
 ; unsat
 (pop) ; 3

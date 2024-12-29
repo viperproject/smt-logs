@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-29 15:00:36
+; Started: 2024-12-29 20:07:17
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -824,11 +824,11 @@
 (assert (forall ((s@$ $Snap) (n@0@00 $Ref)) (!
   (= ($%limited s@$ n@0@00) ($ s@$ n@0@00))
   :pattern (($ s@$ n@0@00))
-  :qid |quant-u-25651|)))
+  :qid |quant-u-25543|)))
 (assert (forall ((s@$ $Snap) (n@0@00 $Ref)) (!
   ($%stateless n@0@00)
   :pattern (($%limited s@$ n@0@00))
-  :qid |quant-u-25652|)))
+  :qid |quant-u-25544|)))
 ; ---------- FUNCTION purify_graph----------
 (declare-fun nodes@2@00 () Set<$Ref>)
 (declare-fun result@3@00 () Set<Node>)
@@ -869,7 +869,7 @@
   :pattern ((Set_in n@4@00 nodes@2@00))
   :pattern ((inv@5@00 s@$ nodes@2@00 n@4@00))
   :pattern ((img@6@00 s@$ nodes@2@00 n@4@00))
-  :qid |quant-u-25656|)))
+  :qid |quant-u-25548|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -915,7 +915,7 @@
         $Perm.No)
       $Perm.No))
   
-  :qid |quant-u-25657|))))
+  :qid |quant-u-25549|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -1012,11 +1012,11 @@
 (assert (forall ((s@$ $Snap) (nodes@2@00 Set<$Ref>)) (!
   (= (purify_graph%limited s@$ nodes@2@00) (purify_graph s@$ nodes@2@00))
   :pattern ((purify_graph s@$ nodes@2@00))
-  :qid |quant-u-25653|)))
+  :qid |quant-u-25545|)))
 (assert (forall ((s@$ $Snap) (nodes@2@00 Set<$Ref>)) (!
   (purify_graph%stateless nodes@2@00)
   :pattern ((purify_graph%limited s@$ nodes@2@00))
-  :qid |quant-u-25654|)))
+  :qid |quant-u-25546|)))
 (assert (forall ((s@$ $Snap) (nodes@2@00 Set<$Ref>)) (!
   (let ((result@3@00 (purify_graph%limited s@$ nodes@2@00))) (and
     (forall ((n@4@00 $Ref)) (!
@@ -1028,7 +1028,7 @@
       :pattern ((Set_in n@4@00 nodes@2@00))
       :pattern ((inv@5@00 s@$ nodes@2@00 n@4@00))
       :pattern ((img@6@00 s@$ nodes@2@00 n@4@00))
-      :qid |quant-u-25656|))
+      :qid |quant-u-25548|))
     (forall ((r $Ref)) (!
       (=>
         (and
@@ -1058,7 +1058,7 @@
         :pattern ((Set_in ($ ($SortWrappers.IntTo$Snap ($FVF.lookup_m (sm@9@00 s@$ nodes@2@00) n)) n) result@3@00))
         )))))
   :pattern ((purify_graph%limited s@$ nodes@2@00))
-  :qid |quant-u-25658|)))
+  :qid |quant-u-25550|)))
 (assert (forall ((s@$ $Snap) (nodes@2@00 Set<$Ref>)) (!
   (let ((result@3@00 (purify_graph%limited s@$ nodes@2@00))) (=>
     (purify_graph%precondition s@$ nodes@2@00)
@@ -1070,4 +1070,4 @@
       :pattern ((Set_in ($ ($SortWrappers.IntTo$Snap ($FVF.lookup_m (sm@9@00 s@$ nodes@2@00) n)) n) result@3@00))
       ))))
   :pattern ((purify_graph%limited s@$ nodes@2@00))
-  :qid |quant-u-25659|)))
+  :qid |quant-u-25551|)))

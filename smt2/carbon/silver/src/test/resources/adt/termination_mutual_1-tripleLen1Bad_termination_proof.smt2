@@ -878,7 +878,7 @@
  :skolemid |88|
  :pattern ( (state Heap@@58 Mask@@39) (mlen2 Heap@@58 l_2@@27))
 )))
-; Valid
+; Invalid
 (push 1)
 (declare-fun ControlFlow (Int Int) Int)
 (declare-fun t_2@@30 () T@Triple1DomainType)

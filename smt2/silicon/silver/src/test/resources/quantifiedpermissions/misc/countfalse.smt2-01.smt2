@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-29 14:51:08
+; Started: 2024-12-29 19:58:10
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -683,11 +683,11 @@
     (countFalseX%limited s@$ a@0@00 from@1@00)
     (countFalseX s@$ a@0@00 from@1@00))
   :pattern ((countFalseX s@$ a@0@00 from@1@00))
-  :qid |quant-u-12058|)))
+  :qid |quant-u-11958|)))
 (assert (forall ((s@$ $Snap) (a@0@00 Array_) (from@1@00 Int)) (!
   (countFalseX%stateless a@0@00 from@1@00)
   :pattern ((countFalseX%limited s@$ a@0@00 from@1@00))
-  :qid |quant-u-12059|)))
+  :qid |quant-u-11959|)))
 (assert (forall ((s@$ $Snap) (a@0@00 Array_) (from@1@00 Int)) (!
   (and
     (forall ((z@7@00 Int)) (!
@@ -697,7 +697,7 @@
           (= (inv@8@00 s@$ a@0@00 from@1@00 (loc<Ref> a@0@00 z@7@00)) z@7@00)
           (img@9@00 s@$ a@0@00 from@1@00 (loc<Ref> a@0@00 z@7@00))))
       :pattern ((loc<Ref> a@0@00 z@7@00))
-      :qid |quant-u-12063|))
+      :qid |quant-u-11963|))
     (forall ((r $Ref)) (!
       (=>
         (and
@@ -778,7 +778,7 @@
             from@1@00
             1))))))
   :pattern ((countFalseX s@$ a@0@00 from@1@00))
-  :qid |quant-u-12066|)))
+  :qid |quant-u-11966|)))
 (assert (forall ((s@$ $Snap) (a@0@00 Array_) (from@1@00 Int)) (!
   (=>
     (countFalseX%precondition s@$ a@0@00 from@1@00)
@@ -793,17 +793,17 @@
         from@1@00
         1))))
   :pattern ((countFalseX s@$ a@0@00 from@1@00))
-  :qid |quant-u-12067|)))
+  :qid |quant-u-11967|)))
 (assert (forall ((s@$ $Snap) (a@3@00 Array_) (from@4@00 Int) (to@5@00 Int)) (!
   (=
     (countFalse%limited s@$ a@3@00 from@4@00 to@5@00)
     (countFalse s@$ a@3@00 from@4@00 to@5@00))
   :pattern ((countFalse s@$ a@3@00 from@4@00 to@5@00))
-  :qid |quant-u-12060|)))
+  :qid |quant-u-11960|)))
 (assert (forall ((s@$ $Snap) (a@3@00 Array_) (from@4@00 Int) (to@5@00 Int)) (!
   (countFalse%stateless a@3@00 from@4@00 to@5@00)
   :pattern ((countFalse%limited s@$ a@3@00 from@4@00 to@5@00))
-  :qid |quant-u-12061|)))
+  :qid |quant-u-11961|)))
 (assert (forall ((s@$ $Snap) (a@3@00 Array_) (from@4@00 Int) (to@5@00 Int)) (!
   (and
     (forall ((z@14@00 Int)) (!
@@ -815,7 +815,7 @@
             z@14@00)
           (img@16@00 s@$ a@3@00 from@4@00 to@5@00 (loc<Ref> a@3@00 z@14@00))))
       :pattern ((loc<Ref> a@3@00 z@14@00))
-      :qid |quant-u-12069|))
+      :qid |quant-u-11969|))
     (forall ((r $Ref)) (!
       (=>
         (and
@@ -905,7 +905,7 @@
               from@4@00
               1) to@5@00))))))
   :pattern ((countFalse s@$ a@3@00 from@4@00 to@5@00))
-  :qid |quant-u-12072|)))
+  :qid |quant-u-11972|)))
 (assert (forall ((s@$ $Snap) (a@3@00 Array_) (from@4@00 Int) (to@5@00 Int)) (!
   (=>
     (countFalse%precondition s@$ a@3@00 from@4@00 to@5@00)
@@ -922,7 +922,7 @@
         from@4@00
         1) to@5@00)))
   :pattern ((countFalse s@$ a@3@00 from@4@00 to@5@00))
-  :qid |quant-u-12073|)))
+  :qid |quant-u-11973|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- lemmaFrontX ----------
@@ -1004,7 +1004,7 @@
       (= (inv@6@01 (loc<Ref> a@2@01 z@5@01)) z@5@01)
       (img@7@01 (loc<Ref> a@2@01 z@5@01))))
   :pattern ((loc<Ref> a@2@01 z@5@01))
-  :qid |quant-u-12075|)))
+  :qid |quant-u-11975|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -1122,7 +1122,7 @@
         $Perm.No)
       $Perm.No))
   
-  :qid |quant-u-12077|))))
+  :qid |quant-u-11977|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -1364,7 +1364,7 @@
         $Perm.No)
       $Perm.No))
   
-  :qid |quant-u-12079|))))
+  :qid |quant-u-11979|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -1681,7 +1681,7 @@
       (= (inv@22@01 (loc<Ref> a@18@01 z@21@01)) z@21@01)
       (img@23@01 (loc<Ref> a@18@01 z@21@01))))
   :pattern ((loc<Ref> a@18@01 z@21@01))
-  :qid |quant-u-12081|)))
+  :qid |quant-u-11981|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -1801,7 +1801,7 @@
         $Perm.No)
       $Perm.No))
   
-  :qid |quant-u-12083|))))
+  :qid |quant-u-11983|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -2061,7 +2061,7 @@
         $Perm.No)
       $Perm.No))
   
-  :qid |quant-u-12085|))))
+  :qid |quant-u-11985|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -2439,7 +2439,7 @@
       (= (inv@42@01 (loc<Ref> a@37@01 z@41@01)) z@41@01)
       (img@43@01 (loc<Ref> a@37@01 z@41@01))))
   :pattern ((loc<Ref> a@37@01 z@41@01))
-  :qid |quant-u-12087|)))
+  :qid |quant-u-11987|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -2559,7 +2559,7 @@
         $Perm.No)
       $Perm.No))
   
-  :qid |quant-u-12089|))))
+  :qid |quant-u-11989|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -2852,7 +2852,7 @@
         $Perm.No)
       $Perm.No))
   
-  :qid |quant-u-12091|))))
+  :qid |quant-u-11991|))))
 (check-sat)
 ; unsat
 (pop) ; 6

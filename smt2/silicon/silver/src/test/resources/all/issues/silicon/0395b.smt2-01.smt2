@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-29 15:00:48
+; Started: 2024-12-29 20:07:28
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -541,7 +541,7 @@
     ($SortWrappers.IntTo$Snap a@3@01))) ($Snap.combine
     ($SortWrappers.IntTo$Snap s@2@01)
     ($SortWrappers.IntTo$Snap a@3@01))))
-  :qid |quant-u-25882|)))
+  :qid |quant-u-25774|)))
 (assert (forall ((sender Int) (amount Int)) (!
   (=>
     (and
@@ -585,7 +585,7 @@
       ($SortWrappers.IntTo$Snap sender)
       ($SortWrappers.IntTo$Snap amount))))
   :pattern ((inv@7@01 sender amount) (inv@9@01 sender amount))
-  :qid |quant-u-25883|)))
+  :qid |quant-u-25775|)))
 ; State saturation: after inhale
 (set-option :timeout 20)
 (check-sat)

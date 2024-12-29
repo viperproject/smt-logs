@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-29 14:57:38
+; Started: 2024-12-29 20:04:20
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -462,9 +462,9 @@
 ; diz := new()
 (declare-const diz@73@01 $Ref)
 (assert (not (= diz@73@01 $Ref.null)))
+(assert (not (= diz@73@01 diz@72@01)))
 (assert (not (= diz@73@01 sys__thrown@68@01)))
 (assert (not (= diz@73@01 sys__result@69@01)))
-(assert (not (= diz@73@01 diz@72@01)))
 ; [exec]
 ; inhale type_of(diz) == class_Thread()
 (declare-const $t@74@01 $Snap)
@@ -1738,8 +1738,8 @@
 (declare-const diz@291@01 $Ref)
 (assert (not (= diz@291@01 $Ref.null)))
 (assert (not (= diz@291@01 sys__result@287@01)))
-(assert (not (= diz@291@01 diz@290@01)))
 (assert (not (= diz@291@01 sys__thrown@286@01)))
+(assert (not (= diz@291@01 diz@290@01)))
 ; [exec]
 ; inhale type_of(diz) == class_Main()
 (declare-const $t@292@01 $Snap)

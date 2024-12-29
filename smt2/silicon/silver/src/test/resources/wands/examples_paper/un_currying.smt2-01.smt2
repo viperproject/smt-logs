@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-29 14:55:34
+; Started: 2024-12-29 20:02:18
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -233,7 +233,7 @@
     (MWSF_apply mwsf@3@01 $t@2@01)
     (MWSF_apply ($SortWrappers.$SnapTo$MWSF (MWSF_apply $t@0@01 ($Snap.first $t@2@01))) ($Snap.second $t@2@01)))
   :pattern ((MWSF_apply mwsf@3@01 $t@2@01))
-  :qid |quant-u-19622|)))
+  :qid |quant-u-19513|)))
 (pop) ; 3
 (set-option :timeout 0)
 (push) ; 3
@@ -242,7 +242,7 @@
     (MWSF_apply mwsf@3@01 $t@2@01)
     (MWSF_apply ($SortWrappers.$SnapTo$MWSF (MWSF_apply $t@0@01 ($Snap.first $t@2@01))) ($Snap.second $t@2@01)))
   :pattern ((MWSF_apply mwsf@3@01 $t@2@01))
-  :qid |quant-u-19623|)))
+  :qid |quant-u-19514|)))
 (assert true)
 (pop) ; 3
 (pop) ; 2
@@ -345,7 +345,7 @@
     (MWSF_apply mwsf@8@01 $t@7@01)
     (MWSF_apply $t@4@01 ($Snap.combine $t@6@01 $t@7@01)))
   :pattern ((MWSF_apply mwsf@8@01 $t@7@01))
-  :qid |quant-u-19624|)))
+  :qid |quant-u-19515|)))
 (pop) ; 4
 (set-option :timeout 0)
 (push) ; 4
@@ -354,7 +354,7 @@
     (MWSF_apply mwsf@8@01 $t@7@01)
     (MWSF_apply $t@4@01 ($Snap.combine $t@6@01 $t@7@01)))
   :pattern ((MWSF_apply mwsf@8@01 $t@7@01))
-  :qid |quant-u-19625|)))
+  :qid |quant-u-19516|)))
 (assert true)
 (push) ; 5
 (set-option :timeout 10)
@@ -371,7 +371,7 @@
 (assert (forall (($t@6@01 $Snap)) (!
   (= (MWSF_apply mwsf@9@01 $t@6@01) ($SortWrappers.$MWSFTo$Snap mwsf@8@01))
   :pattern ((MWSF_apply mwsf@9@01 $t@6@01))
-  :qid |quant-u-19626|)))
+  :qid |quant-u-19517|)))
 (pop) ; 4
 (pop) ; 3
 (set-option :timeout 0)
@@ -383,10 +383,10 @@
         (MWSF_apply mwsf@8@01 $t@7@01)
         (MWSF_apply $t@4@01 ($Snap.combine $t@6@01 $t@7@01)))
       :pattern ((MWSF_apply mwsf@8@01 $t@7@01))
-      :qid |quant-u-19624|))
+      :qid |quant-u-19515|))
     (= (MWSF_apply mwsf@9@01 $t@6@01) ($SortWrappers.$MWSFTo$Snap mwsf@8@01)))
   :pattern ((MWSF_apply mwsf@9@01 $t@6@01))
-  :qid |quant-u-19627|)))
+  :qid |quant-u-19518|)))
 (assert true)
 (pop) ; 3
 (pop) ; 2
