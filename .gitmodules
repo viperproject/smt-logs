@@ -1,4 +1,4 @@
-[submodule "dafny"]
+[submodule "dafny/dafny"]
 	path = dafny/dafny
 	url = https://github.com/dafny-lang/dafny.git
 [submodule "viper/viperserver"]
@@ -13,3 +13,6 @@
 [submodule "verus/verus"]
 	path = verus/verus
 	url = https://github.com/verus-lang/verus.git
+[submodule "smt-comp/smt-comp"]
+	path = smt-comp/smt-comp
+	url = https://github.com/SMT-LIB/benchmark-submission.git
