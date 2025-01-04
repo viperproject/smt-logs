@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-29 19:51:26
+; Started: 2025-01-04 00:20:14
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -10477,7 +10477,7 @@
 (check-sat)
 ; unsat
 (pop) ; 13
-; 0.10s
+; 0.28s
 ; (get-info :all-statistics)
 (assert (=>
   (forall ((q$i@393@01 Int)) (!
@@ -10641,7 +10641,7 @@
 (check-sat)
 ; unsat
 (pop) ; 16
-; 0.06s
+; 0.12s
 ; (get-info :all-statistics)
 (assert (<=
   0
@@ -10659,7 +10659,7 @@
 (check-sat)
 ; unsat
 (pop) ; 16
-; 0.05s
+; 0.12s
 ; (get-info :all-statistics)
 (assert (>
   ($unwrap<Int> ($wrap<$Int> (+
@@ -12420,7 +12420,7 @@
 (check-sat)
 ; unsat
 (pop) ; 24
-; 0.45s
+; 0.61s
 ; (get-info :all-statistics)
 (assert (=>
   (forall ((q$i@397@01 Int)) (!
@@ -12839,7 +12839,7 @@
 (check-sat)
 ; unsat
 (pop) ; 28
-; 0.36s
+; 0.44s
 ; (get-info :all-statistics)
 (assert (=>
   (forall ((q$i@399@01 Int)) (!
@@ -13227,7 +13227,7 @@
 (check-sat)
 ; unsat
 (pop) ; 29
-; 0.34s
+; 0.22s
 ; (get-info :all-statistics)
 (assert (=>
   (forall ((q$i@402@01 Int)) (!
@@ -13912,7 +13912,7 @@
 (check-sat)
 ; unsat
 (pop) ; 28
-; 0.26s
+; 0.48s
 ; (get-info :all-statistics)
 (assert (=>
   (forall ((q$i@406@01 Int)) (!
@@ -14300,7 +14300,7 @@
 (check-sat)
 ; unsat
 (pop) ; 29
-; 0.49s
+; 0.38s
 ; (get-info :all-statistics)
 (assert (=>
   (forall ((q$i@409@01 Int)) (!
@@ -14760,7 +14760,7 @@
 (check-sat)
 ; unknown
 (pop) ; 14
-; 0.02s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 14
@@ -14830,7 +14830,7 @@
 (check-sat)
 ; unsat
 (pop) ; 13
-; 0.17s
+; 0.09s
 ; (get-info :all-statistics)
 (assert (=>
   (forall ((q$i@413@01 Int)) (!
@@ -17113,7 +17113,7 @@
 (check-sat)
 ; unknown
 (pop) ; 18
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 18
@@ -17124,7 +17124,7 @@
 (check-sat)
 ; unsat
 (pop) ; 18
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 232 | 0 <= $unwrap[Int](l$i0$i@481@01) && $unwrap[Int](l$i0$i@481@01) < |l$i0$result@480@01| | live]
 ; [else-branch: 232 | !(0 <= $unwrap[Int](l$i0$i@481@01) && $unwrap[Int](l$i0$i@481@01) < |l$i0$result@480@01|) | dead]
@@ -17214,7 +17214,7 @@
 (check-sat)
 ; unknown
 (pop) ; 19
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 19
@@ -18221,7 +18221,7 @@
 (check-sat)
 ; unknown
 (pop) ; 26
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 256 | True | live]
 ; [else-branch: 256 | False | dead]
@@ -18579,7 +18579,7 @@
 (check-sat)
 ; unsat
 (pop) ; 28
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 268 | $unwrap[Int]($w_div[$Int]($wrap[$Int]($unwrap[Int](l$D@487@01) * 1000000000000000000), l$token_supply@492@01)) < 0 | dead]
 ; [else-branch: 268 | !($unwrap[Int]($w_div[$Int]($wrap[$Int]($unwrap[Int](l$D@487@01) * 1000000000000000000), l$token_supply@492@01)) < 0) | live]
@@ -18635,7 +18635,7 @@
 (check-sat)
 ; unsat
 (pop) ; 28
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 270 | !($unwrap[Int]($w_div[$Int]($wrap[$Int]($unwrap[Int](l$D@487@01) * 1000000000000000000), l$token_supply@492@01)) < 0) | live]
 ; [else-branch: 270 | $unwrap[Int]($w_div[$Int]($wrap[$Int]($unwrap[Int](l$D@487@01) * 1000000000000000000), l$token_supply@492@01)) < 0 | dead]

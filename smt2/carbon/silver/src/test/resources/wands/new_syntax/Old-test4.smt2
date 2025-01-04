@@ -3169,8 +3169,3 @@ PreconditionGeneratedEntry_correct))))))))))))))))))))))))))))))))
 (check-sat)
 (get-info :reason-unknown)
 (get-info :rlimit)
-(assert (not (= (ControlFlow 0 4) (- 3))))
-(check-sat)
-(get-info :rlimit)
-(pop 1)
-; Invalid

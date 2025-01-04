@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-29 20:03:43
+; Started: 2025-01-04 00:32:46
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -213,21 +213,21 @@
 (assert (forall ((s@$ $Snap) (i@0@00 Int)) (!
   (= (isGreaterOne%limited s@$ i@0@00) (isGreaterOne s@$ i@0@00))
   :pattern ((isGreaterOne s@$ i@0@00))
-  :qid |quant-u-21897|)))
+  :qid |quant-u-21912|)))
 (assert (forall ((s@$ $Snap) (i@0@00 Int)) (!
   (isGreaterOne%stateless i@0@00)
   :pattern ((isGreaterOne%limited s@$ i@0@00))
-  :qid |quant-u-21898|)))
+  :qid |quant-u-21913|)))
 (assert (forall ((s@$ $Snap) (i@0@00 Int)) (!
   (let ((result@1@00 (isGreaterOne%limited s@$ i@0@00))) (=>
     (and (isGreaterOne%precondition s@$ i@0@00) (> i@0@00 60))
     result@1@00))
   :pattern ((isGreaterOne%limited s@$ i@0@00))
-  :qid |quant-u-21923|)))
+  :qid |quant-u-21938|)))
 (assert (forall ((s@$ $Snap) (i@0@00 Int)) (!
   (let ((result@1@00 (isGreaterOne%limited s@$ i@0@00))) true)
   :pattern ((isGreaterOne%limited s@$ i@0@00))
-  :qid |quant-u-21924|)))
+  :qid |quant-u-21939|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (= s@$ $Snap.unit))
@@ -288,11 +288,11 @@
     (isGreaterOne%precondition s@$ i@0@00)
     (= (isGreaterOne s@$ i@0@00) (> i@0@00 1)))
   :pattern ((isGreaterOne s@$ i@0@00))
-  :qid |quant-u-21925|)))
+  :qid |quant-u-21940|)))
 (assert (forall ((s@$ $Snap) (i@0@00 Int)) (!
   true
   :pattern ((isGreaterOne s@$ i@0@00))
-  :qid |quant-u-21926|)))
+  :qid |quant-u-21941|)))
 ; ---------- FUNCTION fac1----------
 (declare-fun i@2@00 () Int)
 (declare-fun result@3@00 () Int)
@@ -302,11 +302,11 @@
 (assert (forall ((s@$ $Snap) (i@2@00 Int)) (!
   (= (fac1%limited s@$ i@2@00) (fac1 s@$ i@2@00))
   :pattern ((fac1 s@$ i@2@00))
-  :qid |quant-u-21899|)))
+  :qid |quant-u-21914|)))
 (assert (forall ((s@$ $Snap) (i@2@00 Int)) (!
   (fac1%stateless i@2@00)
   :pattern ((fac1%limited s@$ i@2@00))
-  :qid |quant-u-21900|)))
+  :qid |quant-u-21915|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -369,13 +369,13 @@
       (fac1 s@$ i@2@00)
       (ite (<= i@2@00 1) 1 (* i@2@00 (fac1%limited $Snap.unit (- i@2@00 1))))))
   :pattern ((fac1 s@$ i@2@00))
-  :qid |quant-u-21927|)))
+  :qid |quant-u-21942|)))
 (assert (forall ((s@$ $Snap) (i@2@00 Int)) (!
   (=>
     (fac1%precondition s@$ i@2@00)
     (ite (<= i@2@00 1) true (fac1%precondition $Snap.unit (- i@2@00 1))))
   :pattern ((fac1 s@$ i@2@00))
-  :qid |quant-u-21928|)))
+  :qid |quant-u-21943|)))
 ; ---------- FUNCTION fac3----------
 (declare-fun i@4@00 () Int)
 (declare-fun result@5@00 () Int)
@@ -385,11 +385,11 @@
 (assert (forall ((s@$ $Snap) (i@4@00 Int)) (!
   (= (fac3%limited s@$ i@4@00) (fac3 s@$ i@4@00))
   :pattern ((fac3 s@$ i@4@00))
-  :qid |quant-u-21901|)))
+  :qid |quant-u-21916|)))
 (assert (forall ((s@$ $Snap) (i@4@00 Int)) (!
   (fac3%stateless i@4@00)
   :pattern ((fac3%limited s@$ i@4@00))
-  :qid |quant-u-21902|)))
+  :qid |quant-u-21917|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -452,13 +452,13 @@
       (fac3 s@$ i@4@00)
       (ite (<= i@4@00 1) 1 (* i@4@00 (fac3%limited $Snap.unit (- i@4@00 1))))))
   :pattern ((fac3 s@$ i@4@00))
-  :qid |quant-u-21929|)))
+  :qid |quant-u-21944|)))
 (assert (forall ((s@$ $Snap) (i@4@00 Int)) (!
   (=>
     (fac3%precondition s@$ i@4@00)
     (ite (<= i@4@00 1) true (fac3%precondition $Snap.unit (- i@4@00 1))))
   :pattern ((fac3 s@$ i@4@00))
-  :qid |quant-u-21930|)))
+  :qid |quant-u-21945|)))
 ; ---------- FUNCTION funP2----------
 (declare-fun x@6@00 () $Ref)
 (declare-fun result@7@00 () Int)
@@ -468,11 +468,11 @@
 (assert (forall ((s@$ $Snap) (x@6@00 $Ref)) (!
   (= (funP2%limited s@$ x@6@00) (funP2 s@$ x@6@00))
   :pattern ((funP2 s@$ x@6@00))
-  :qid |quant-u-21903|)))
+  :qid |quant-u-21918|)))
 (assert (forall ((s@$ $Snap) (x@6@00 $Ref)) (!
   (funP2%stateless x@6@00)
   :pattern ((funP2%limited s@$ x@6@00))
-  :qid |quant-u-21904|)))
+  :qid |quant-u-21919|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -494,11 +494,11 @@
     (funP2%precondition s@$ x@6@00)
     (= (funP2 s@$ x@6@00) ($SortWrappers.$SnapToInt s@$)))
   :pattern ((funP2 s@$ x@6@00))
-  :qid |quant-u-21931|)))
+  :qid |quant-u-21946|)))
 (assert (forall ((s@$ $Snap) (x@6@00 $Ref)) (!
   true
   :pattern ((funP2 s@$ x@6@00))
-  :qid |quant-u-21932|)))
+  :qid |quant-u-21947|)))
 ; ---------- FUNCTION isGreaterOne35----------
 (declare-fun r@8@00 () $Ref)
 (declare-fun result@9@00 () Bool)
@@ -554,11 +554,11 @@
 (assert (forall ((s@$ $Snap) (r@8@00 $Ref)) (!
   (= (isGreaterOne35%limited s@$ r@8@00) (isGreaterOne35 s@$ r@8@00))
   :pattern ((isGreaterOne35 s@$ r@8@00))
-  :qid |quant-u-21905|)))
+  :qid |quant-u-21920|)))
 (assert (forall ((s@$ $Snap) (r@8@00 $Ref)) (!
   (isGreaterOne35%stateless r@8@00)
   :pattern ((isGreaterOne35%limited s@$ r@8@00))
-  :qid |quant-u-21906|)))
+  :qid |quant-u-21921|)))
 (assert (forall ((s@$ $Snap) (r@8@00 $Ref)) (!
   (let ((result@9@00 (isGreaterOne35%limited s@$ r@8@00))) (=>
     (and
@@ -566,11 +566,11 @@
       (> ($SortWrappers.$SnapToInt ($Snap.first s@$)) 60))
     result@9@00))
   :pattern ((isGreaterOne35%limited s@$ r@8@00))
-  :qid |quant-u-21933|)))
+  :qid |quant-u-21948|)))
 (assert (forall ((s@$ $Snap) (r@8@00 $Ref)) (!
   (let ((result@9@00 (isGreaterOne35%limited s@$ r@8@00))) true)
   :pattern ((isGreaterOne35%limited s@$ r@8@00))
-  :qid |quant-u-21934|)))
+  :qid |quant-u-21949|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (= s@$ ($Snap.combine ($Snap.first s@$) ($Snap.second s@$))))
@@ -656,13 +656,13 @@
       (isGreaterOne35 s@$ r@8@00)
       (isGreaterOne%limited $Snap.unit ($SortWrappers.$SnapToInt ($Snap.first s@$)))))
   :pattern ((isGreaterOne35 s@$ r@8@00))
-  :qid |quant-u-21935|)))
+  :qid |quant-u-21950|)))
 (assert (forall ((s@$ $Snap) (r@8@00 $Ref)) (!
   (=>
     (isGreaterOne35%precondition s@$ r@8@00)
     (isGreaterOne%precondition $Snap.unit ($SortWrappers.$SnapToInt ($Snap.first s@$))))
   :pattern ((isGreaterOne35 s@$ r@8@00))
-  :qid |quant-u-21936|)))
+  :qid |quant-u-21951|)))
 ; ---------- FUNCTION isGreaterOne32----------
 (declare-fun r@10@00 () $Ref)
 (declare-fun result@11@00 () Bool)
@@ -723,11 +723,11 @@
 (assert (forall ((s@$ $Snap) (r@10@00 $Ref)) (!
   (= (isGreaterOne32%limited s@$ r@10@00) (isGreaterOne32 s@$ r@10@00))
   :pattern ((isGreaterOne32 s@$ r@10@00))
-  :qid |quant-u-21907|)))
+  :qid |quant-u-21922|)))
 (assert (forall ((s@$ $Snap) (r@10@00 $Ref)) (!
   (isGreaterOne32%stateless r@10@00)
   :pattern ((isGreaterOne32%limited s@$ r@10@00))
-  :qid |quant-u-21908|)))
+  :qid |quant-u-21923|)))
 (assert (forall ((s@$ $Snap) (r@10@00 $Ref)) (!
   (let ((result@11@00 (isGreaterOne32%limited s@$ r@10@00))) (=>
     (isGreaterOne32%precondition s@$ r@10@00)
@@ -735,15 +735,15 @@
       (=> (> ($SortWrappers.$SnapToInt ($Snap.first s@$)) 60) result@11@00)
       (= result@11@00 (> ($SortWrappers.$SnapToInt ($Snap.first s@$)) 1)))))
   :pattern ((isGreaterOne32%limited s@$ r@10@00))
-  :qid |quant-u-21937|)))
+  :qid |quant-u-21952|)))
 (assert (forall ((s@$ $Snap) (r@10@00 $Ref)) (!
   (let ((result@11@00 (isGreaterOne32%limited s@$ r@10@00))) true)
   :pattern ((isGreaterOne32%limited s@$ r@10@00))
-  :qid |quant-u-21938|)))
+  :qid |quant-u-21953|)))
 (assert (forall ((s@$ $Snap) (r@10@00 $Ref)) (!
   (let ((result@11@00 (isGreaterOne32%limited s@$ r@10@00))) true)
   :pattern ((isGreaterOne32%limited s@$ r@10@00))
-  :qid |quant-u-21939|)))
+  :qid |quant-u-21954|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (= s@$ ($Snap.combine ($Snap.first s@$) ($Snap.second s@$))))
@@ -839,13 +839,13 @@
       (isGreaterOne32 s@$ r@10@00)
       (isGreaterOne $Snap.unit ($SortWrappers.$SnapToInt ($Snap.first s@$)))))
   :pattern ((isGreaterOne32 s@$ r@10@00))
-  :qid |quant-u-21940|)))
+  :qid |quant-u-21955|)))
 (assert (forall ((s@$ $Snap) (r@10@00 $Ref)) (!
   (=>
     (isGreaterOne32%precondition s@$ r@10@00)
     (isGreaterOne%precondition $Snap.unit ($SortWrappers.$SnapToInt ($Snap.first s@$))))
   :pattern ((isGreaterOne32 s@$ r@10@00))
-  :qid |quant-u-21941|)))
+  :qid |quant-u-21956|)))
 ; ---------- FUNCTION isGreaterOne34----------
 (declare-fun r@12@00 () $Ref)
 (declare-fun result@13@00 () Bool)
@@ -901,11 +901,11 @@
 (assert (forall ((s@$ $Snap) (r@12@00 $Ref)) (!
   (= (isGreaterOne34%limited s@$ r@12@00) (isGreaterOne34 s@$ r@12@00))
   :pattern ((isGreaterOne34 s@$ r@12@00))
-  :qid |quant-u-21909|)))
+  :qid |quant-u-21924|)))
 (assert (forall ((s@$ $Snap) (r@12@00 $Ref)) (!
   (isGreaterOne34%stateless r@12@00)
   :pattern ((isGreaterOne34%limited s@$ r@12@00))
-  :qid |quant-u-21910|)))
+  :qid |quant-u-21925|)))
 (assert (forall ((s@$ $Snap) (r@12@00 $Ref)) (!
   (let ((result@13@00 (isGreaterOne34%limited s@$ r@12@00))) (=>
     (and
@@ -913,11 +913,11 @@
       (> ($SortWrappers.$SnapToInt ($Snap.first s@$)) 60))
     result@13@00))
   :pattern ((isGreaterOne34%limited s@$ r@12@00))
-  :qid |quant-u-21942|)))
+  :qid |quant-u-21957|)))
 (assert (forall ((s@$ $Snap) (r@12@00 $Ref)) (!
   (let ((result@13@00 (isGreaterOne34%limited s@$ r@12@00))) true)
   :pattern ((isGreaterOne34%limited s@$ r@12@00))
-  :qid |quant-u-21943|)))
+  :qid |quant-u-21958|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (= s@$ ($Snap.combine ($Snap.first s@$) ($Snap.second s@$))))
@@ -1003,13 +1003,13 @@
       (isGreaterOne34 s@$ r@12@00)
       (isGreaterOne $Snap.unit ($SortWrappers.$SnapToInt ($Snap.first s@$)))))
   :pattern ((isGreaterOne34 s@$ r@12@00))
-  :qid |quant-u-21944|)))
+  :qid |quant-u-21959|)))
 (assert (forall ((s@$ $Snap) (r@12@00 $Ref)) (!
   (=>
     (isGreaterOne34%precondition s@$ r@12@00)
     (isGreaterOne%precondition $Snap.unit ($SortWrappers.$SnapToInt ($Snap.first s@$))))
   :pattern ((isGreaterOne34 s@$ r@12@00))
-  :qid |quant-u-21945|)))
+  :qid |quant-u-21960|)))
 ; ---------- FUNCTION funP----------
 (declare-fun x@14@00 () $Ref)
 (declare-fun result@15@00 () Int)
@@ -1019,11 +1019,11 @@
 (assert (forall ((s@$ $Snap) (x@14@00 $Ref)) (!
   (= (funP%limited s@$ x@14@00) (funP s@$ x@14@00))
   :pattern ((funP s@$ x@14@00))
-  :qid |quant-u-21911|)))
+  :qid |quant-u-21926|)))
 (assert (forall ((s@$ $Snap) (x@14@00 $Ref)) (!
   (funP%stateless x@14@00)
   :pattern ((funP%limited s@$ x@14@00))
-  :qid |quant-u-21912|)))
+  :qid |quant-u-21927|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -1045,11 +1045,11 @@
     (funP%precondition s@$ x@14@00)
     (= (funP s@$ x@14@00) ($SortWrappers.$SnapToInt s@$)))
   :pattern ((funP s@$ x@14@00))
-  :qid |quant-u-21946|)))
+  :qid |quant-u-21961|)))
 (assert (forall ((s@$ $Snap) (x@14@00 $Ref)) (!
   true
   :pattern ((funP s@$ x@14@00))
-  :qid |quant-u-21947|)))
+  :qid |quant-u-21962|)))
 ; ---------- FUNCTION isGreaterOne22----------
 (declare-fun r@16@00 () $Ref)
 (declare-fun result@17@00 () Bool)
@@ -1110,11 +1110,11 @@
 (assert (forall ((s@$ $Snap) (r@16@00 $Ref)) (!
   (= (isGreaterOne22%limited s@$ r@16@00) (isGreaterOne22 s@$ r@16@00))
   :pattern ((isGreaterOne22 s@$ r@16@00))
-  :qid |quant-u-21913|)))
+  :qid |quant-u-21928|)))
 (assert (forall ((s@$ $Snap) (r@16@00 $Ref)) (!
   (isGreaterOne22%stateless r@16@00)
   :pattern ((isGreaterOne22%limited s@$ r@16@00))
-  :qid |quant-u-21914|)))
+  :qid |quant-u-21929|)))
 (assert (forall ((s@$ $Snap) (r@16@00 $Ref)) (!
   (let ((result@17@00 (isGreaterOne22%limited s@$ r@16@00))) (=>
     (isGreaterOne22%precondition s@$ r@16@00)
@@ -1122,15 +1122,15 @@
       (=> (> ($SortWrappers.$SnapToInt ($Snap.first s@$)) 60) result@17@00)
       (= result@17@00 (> ($SortWrappers.$SnapToInt ($Snap.first s@$)) 1)))))
   :pattern ((isGreaterOne22%limited s@$ r@16@00))
-  :qid |quant-u-21948|)))
+  :qid |quant-u-21963|)))
 (assert (forall ((s@$ $Snap) (r@16@00 $Ref)) (!
   (let ((result@17@00 (isGreaterOne22%limited s@$ r@16@00))) true)
   :pattern ((isGreaterOne22%limited s@$ r@16@00))
-  :qid |quant-u-21949|)))
+  :qid |quant-u-21964|)))
 (assert (forall ((s@$ $Snap) (r@16@00 $Ref)) (!
   (let ((result@17@00 (isGreaterOne22%limited s@$ r@16@00))) true)
   :pattern ((isGreaterOne22%limited s@$ r@16@00))
-  :qid |quant-u-21950|)))
+  :qid |quant-u-21965|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (= s@$ ($Snap.combine ($Snap.first s@$) ($Snap.second s@$))))
@@ -1318,11 +1318,11 @@
 (assert (forall ((s@$ $Snap) (r@18@00 $Ref)) (!
   (= (isGreaterOne2%limited s@$ r@18@00) (isGreaterOne2 s@$ r@18@00))
   :pattern ((isGreaterOne2 s@$ r@18@00))
-  :qid |quant-u-21915|)))
+  :qid |quant-u-21930|)))
 (assert (forall ((s@$ $Snap) (r@18@00 $Ref)) (!
   (isGreaterOne2%stateless r@18@00)
   :pattern ((isGreaterOne2%limited s@$ r@18@00))
-  :qid |quant-u-21916|)))
+  :qid |quant-u-21931|)))
 (assert (forall ((s@$ $Snap) (r@18@00 $Ref)) (!
   (let ((result@19@00 (isGreaterOne2%limited s@$ r@18@00))) (=>
     (and
@@ -1330,11 +1330,11 @@
       (> ($SortWrappers.$SnapToInt ($Snap.first s@$)) 60))
     result@19@00))
   :pattern ((isGreaterOne2%limited s@$ r@18@00))
-  :qid |quant-u-21951|)))
+  :qid |quant-u-21966|)))
 (assert (forall ((s@$ $Snap) (r@18@00 $Ref)) (!
   (let ((result@19@00 (isGreaterOne2%limited s@$ r@18@00))) true)
   :pattern ((isGreaterOne2%limited s@$ r@18@00))
-  :qid |quant-u-21952|)))
+  :qid |quant-u-21967|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (= s@$ ($Snap.combine ($Snap.first s@$) ($Snap.second s@$))))
@@ -1420,13 +1420,13 @@
       (isGreaterOne2 s@$ r@18@00)
       (isGreaterOne%limited $Snap.unit ($SortWrappers.$SnapToInt ($Snap.first s@$)))))
   :pattern ((isGreaterOne2 s@$ r@18@00))
-  :qid |quant-u-21953|)))
+  :qid |quant-u-21968|)))
 (assert (forall ((s@$ $Snap) (r@18@00 $Ref)) (!
   (=>
     (isGreaterOne2%precondition s@$ r@18@00)
     (isGreaterOne%precondition $Snap.unit ($SortWrappers.$SnapToInt ($Snap.first s@$))))
   :pattern ((isGreaterOne2 s@$ r@18@00))
-  :qid |quant-u-21954|)))
+  :qid |quant-u-21969|)))
 ; ---------- FUNCTION fac2----------
 (declare-fun i@20@00 () Int)
 (declare-fun result@21@00 () Int)
@@ -1436,11 +1436,11 @@
 (assert (forall ((s@$ $Snap) (i@20@00 Int)) (!
   (= (fac2%limited s@$ i@20@00) (fac2 s@$ i@20@00))
   :pattern ((fac2 s@$ i@20@00))
-  :qid |quant-u-21917|)))
+  :qid |quant-u-21932|)))
 (assert (forall ((s@$ $Snap) (i@20@00 Int)) (!
   (fac2%stateless i@20@00)
   :pattern ((fac2%limited s@$ i@20@00))
-  :qid |quant-u-21918|)))
+  :qid |quant-u-21933|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -1505,13 +1505,13 @@
       (fac2 s@$ i@20@00)
       (ite (<= i@20@00 1) 1 (* i@20@00 (fac2%limited $Snap.unit (- i@20@00 1))))))
   :pattern ((fac2 s@$ i@20@00))
-  :qid |quant-u-21955|)))
+  :qid |quant-u-21970|)))
 (assert (forall ((s@$ $Snap) (i@20@00 Int)) (!
   (=>
     (fac2%precondition s@$ i@20@00)
     (ite (<= i@20@00 1) true (fac2%precondition $Snap.unit (- i@20@00 1))))
   :pattern ((fac2 s@$ i@20@00))
-  :qid |quant-u-21956|)))
+  :qid |quant-u-21971|)))
 ; ---------- FUNCTION isGreaterOne33----------
 (declare-fun r@22@00 () $Ref)
 (declare-fun result@23@00 () Bool)
@@ -1562,11 +1562,11 @@
 (assert (forall ((s@$ $Snap) (r@22@00 $Ref)) (!
   (= (isGreaterOne33%limited s@$ r@22@00) (isGreaterOne33 s@$ r@22@00))
   :pattern ((isGreaterOne33 s@$ r@22@00))
-  :qid |quant-u-21919|)))
+  :qid |quant-u-21934|)))
 (assert (forall ((s@$ $Snap) (r@22@00 $Ref)) (!
   (isGreaterOne33%stateless r@22@00)
   :pattern ((isGreaterOne33%limited s@$ r@22@00))
-  :qid |quant-u-21920|)))
+  :qid |quant-u-21935|)))
 (assert (forall ((s@$ $Snap) (r@22@00 $Ref)) (!
   (let ((result@23@00 (isGreaterOne33%limited s@$ r@22@00))) (=>
     (and
@@ -1574,11 +1574,11 @@
       (> ($SortWrappers.$SnapToInt s@$) 60))
     result@23@00))
   :pattern ((isGreaterOne33%limited s@$ r@22@00))
-  :qid |quant-u-21957|)))
+  :qid |quant-u-21972|)))
 (assert (forall ((s@$ $Snap) (r@22@00 $Ref)) (!
   (let ((result@23@00 (isGreaterOne33%limited s@$ r@22@00))) true)
   :pattern ((isGreaterOne33%limited s@$ r@22@00))
-  :qid |quant-u-21958|)))
+  :qid |quant-u-21973|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (not (= r@22@00 $Ref.null)))
@@ -1700,11 +1700,11 @@
 (assert (forall ((s@$ $Snap) (r@24@00 $Ref)) (!
   (= (isGreaterOne3%limited s@$ r@24@00) (isGreaterOne3 s@$ r@24@00))
   :pattern ((isGreaterOne3 s@$ r@24@00))
-  :qid |quant-u-21921|)))
+  :qid |quant-u-21936|)))
 (assert (forall ((s@$ $Snap) (r@24@00 $Ref)) (!
   (isGreaterOne3%stateless r@24@00)
   :pattern ((isGreaterOne3%limited s@$ r@24@00))
-  :qid |quant-u-21922|)))
+  :qid |quant-u-21937|)))
 (assert (forall ((s@$ $Snap) (r@24@00 $Ref)) (!
   (let ((result@25@00 (isGreaterOne3%limited s@$ r@24@00))) (=>
     (and
@@ -1712,11 +1712,11 @@
       (> ($SortWrappers.$SnapToInt ($Snap.first s@$)) 60))
     result@25@00))
   :pattern ((isGreaterOne3%limited s@$ r@24@00))
-  :qid |quant-u-21959|)))
+  :qid |quant-u-21974|)))
 (assert (forall ((s@$ $Snap) (r@24@00 $Ref)) (!
   (let ((result@25@00 (isGreaterOne3%limited s@$ r@24@00))) true)
   :pattern ((isGreaterOne3%limited s@$ r@24@00))
-  :qid |quant-u-21960|)))
+  :qid |quant-u-21975|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (= s@$ ($Snap.combine ($Snap.first s@$) ($Snap.second s@$))))
@@ -1802,13 +1802,13 @@
       (isGreaterOne3 s@$ r@24@00)
       (isGreaterOne $Snap.unit ($SortWrappers.$SnapToInt ($Snap.first s@$)))))
   :pattern ((isGreaterOne3 s@$ r@24@00))
-  :qid |quant-u-21961|)))
+  :qid |quant-u-21976|)))
 (assert (forall ((s@$ $Snap) (r@24@00 $Ref)) (!
   (=>
     (isGreaterOne3%precondition s@$ r@24@00)
     (isGreaterOne%precondition $Snap.unit ($SortWrappers.$SnapToInt ($Snap.first s@$))))
   :pattern ((isGreaterOne3 s@$ r@24@00))
-  :qid |quant-u-21962|)))
+  :qid |quant-u-21977|)))
 ; ---------- P ----------
 (declare-const x@34@00 $Ref)
 (push) ; 1

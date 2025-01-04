@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-29 20:43:43
+// Date:         2025-01-04 01:13:10
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0209.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0209-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -537,15 +537,15 @@ procedure append(g_1: (Set Ref), x: Ref) returns ()
   var l0_lblGuard: bool;
   var QPMask: MaskType;
   var n_86: Ref;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var Labell0Mask: MaskType;
+  var oldMask: MaskType;
   var Labell0Heap: HeapType;
-  var ExhaleWellDef1Mask: MaskType;
+  var Labell0Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var old_g: (Set int);
   
   // -- Initializing the state
@@ -608,8 +608,8 @@ procedure append(g_1: (Set Ref), x: Ref) returns ()
         if (g_1[n_86]) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             havoc QPMask;
             
             // -- check that the permission amount is positive
@@ -657,25 +657,25 @@ procedure append(g_1: (Set Ref), x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: label l0 -- 0209.vpr@18.5--18.13
     l0:
-    Labell0Mask := Mask;
     Labell0Heap := Heap;
+    Labell0Mask := Mask;
     l0_lblGuard := true;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert $$(g) == old[l0]($$(g)) -- 0209.vpr@20.5--20.35
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of $$(g) == old[l0]($$(g))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         havoc QPMask;
         
         // -- check that the permission amount is positive
@@ -715,8 +715,8 @@ procedure append(g_1: (Set Ref), x: Ref) returns ()
         l0_lblGuard;
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := Labell0Mask;
         ExhaleWellDef1Heap := Labell0Heap;
+        ExhaleWellDef1Mask := Labell0Mask;
         havoc QPMask;
         
         // -- check that the permission amount is positive
@@ -757,14 +757,14 @@ procedure append(g_1: (Set Ref), x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert $$(g) == old($$(g)) -- 0209.vpr@21.5--21.31
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of $$(g) == old($$(g))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         havoc QPMask;
         
         // -- check that the permission amount is positive
@@ -802,8 +802,8 @@ procedure append(g_1: (Set Ref), x: Ref) returns ()
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := oldMask;
         ExhaleWellDef1Heap := oldHeap;
+        ExhaleWellDef1Mask := oldMask;
         havoc QPMask;
         
         // -- check that the permission amount is positive
@@ -845,8 +845,8 @@ procedure append(g_1: (Set Ref), x: Ref) returns ()
     // -- Check definedness of $$(g)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         havoc QPMask;
         
         // -- check that the permission amount is positive
@@ -886,16 +886,16 @@ procedure append(g_1: (Set Ref), x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert old_g == old[l0]($$(g)) -- 0209.vpr@24.5--24.35
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of old_g == old[l0]($$(g))
       assert {:msg "  Assert might fail. Did not reach labelled state l0 required to evaluate old[l0]($$(g)). (0209.vpr@24.12--24.35) [195669]"}
         l0_lblGuard;
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := Labell0Mask;
         ExhaleWellDef1Heap := Labell0Heap;
+        ExhaleWellDef1Mask := Labell0Mask;
         havoc QPMask;
         
         // -- check that the permission amount is positive
@@ -936,14 +936,14 @@ procedure append(g_1: (Set Ref), x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert old_g == old($$(g)) -- 0209.vpr@25.5--25.31
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of old_g == old($$(g))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := oldMask;
         ExhaleWellDef1Heap := oldHeap;
+        ExhaleWellDef1Mask := oldMask;
         havoc QPMask;
         
         // -- check that the permission amount is positive
@@ -987,16 +987,16 @@ procedure append(g_1: (Set Ref), x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert old_g == old[l0]($$(g)) -- 0209.vpr@28.5--28.35
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of old_g == old[l0]($$(g))
       assert {:msg "  Assert might fail. Did not reach labelled state l0 required to evaluate old[l0]($$(g)). (0209.vpr@28.12--28.35) [195677]"}
         l0_lblGuard;
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := Labell0Mask;
         ExhaleWellDef1Heap := Labell0Heap;
+        ExhaleWellDef1Mask := Labell0Mask;
         havoc QPMask;
         
         // -- check that the permission amount is positive
@@ -1037,14 +1037,14 @@ procedure append(g_1: (Set Ref), x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert old_g == old($$(g)) -- 0209.vpr@29.5--29.31
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of old_g == old($$(g))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := oldMask;
         ExhaleWellDef1Heap := oldHeap;
+        ExhaleWellDef1Mask := oldMask;
         havoc QPMask;
         
         // -- check that the permission amount is positive

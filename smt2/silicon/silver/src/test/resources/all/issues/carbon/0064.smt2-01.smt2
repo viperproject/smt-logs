@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-29 20:05:16
+; Started: 2025-01-04 00:34:26
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -120,31 +120,31 @@
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (= (Nodesize%limited s@$ this@0@00) (Nodesize s@$ this@0@00))
   :pattern ((Nodesize s@$ this@0@00))
-  :qid |quant-u-23006|)))
+  :qid |quant-u-23021|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (Nodesize%stateless this@0@00)
   :pattern ((Nodesize%limited s@$ this@0@00))
-  :qid |quant-u-23007|)))
+  :qid |quant-u-23022|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (let ((result@1@00 (Nodesize%limited s@$ this@0@00))) (and
     ($Perm.isReadVar $k@2@00)
     (=> (Nodesize%precondition s@$ this@0@00) (> result@1@00 0))))
   :pattern ((Nodesize%limited s@$ this@0@00))
-  :qid |quant-u-23008|)))
+  :qid |quant-u-23023|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (let ((result@1@00 (Nodesize%limited s@$ this@0@00))) true)
   :pattern ((Nodesize%limited s@$ this@0@00))
-  :qid |quant-u-23009|)))
+  :qid |quant-u-23024|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (and
     ($Perm.isReadVar $k@2@00)
     (=> (Nodesize%precondition s@$ this@0@00) (= (Nodesize s@$ this@0@00) 1)))
   :pattern ((Nodesize s@$ this@0@00))
-  :qid |quant-u-23010|)))
+  :qid |quant-u-23025|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   true
   :pattern ((Nodesize s@$ this@0@00))
-  :qid |quant-u-23011|)))
+  :qid |quant-u-23026|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- Nodeinit ----------

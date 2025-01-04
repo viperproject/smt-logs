@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-29 20:42:57
+// Date:         2025-01-04 01:12:24
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0270.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0270-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -246,8 +246,8 @@ procedure m(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var l_lblGuard: bool;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var perm: Perm;
   var frameMask3: MaskType;
   var frameHeap3: HeapType;
@@ -256,10 +256,10 @@ procedure m(x: Ref) returns ()
   var loopMask: MaskType;
   var LoopSumHeap: HeapType;
   var LoopSumMask: MaskType;
-  var LabellMask: MaskType;
   var LabellHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var LabellMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -273,8 +273,8 @@ procedure m(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: // id = 1
   // // LoopDummyStmtInfo()
@@ -371,8 +371,8 @@ procedure m(x: Ref) returns ()
   // // LoopInfo(None,Set())
   // label l -- 0270.vpr@16.5--16.12
     l_9:
-    LabellMask := Mask;
     LabellHeap := Heap;
+    LabellMask := Mask;
     l_lblGuard := true;
     assume state(Heap, Mask);
   
@@ -384,8 +384,8 @@ procedure m(x: Ref) returns ()
   
   // -- Translating statement: // id = 10
   // assert perm(x.g) == 0 / 1 -- 0270.vpr@23.5--23.28
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion perm(x.g) == 0 / 1 might not hold. (0270.vpr@23.12--23.28) [193252]"}
       Mask[x, g] == 0 / 1;
     assume state(Heap, Mask);

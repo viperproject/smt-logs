@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-29 20:15:33
+// Date:         2025-01-04 00:44:50
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/third_party/testHistogram.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/third_party/testHistogram-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -804,8 +804,8 @@ function  sum_list#triggerStateless(i: int, hi: int, ar: (Seq int)): int;
 procedure sum_list#definedness(i: int, hi: int, ar: (Seq int)) returns (Result: int)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -830,8 +830,8 @@ procedure sum_list#definedness(i: int, hi: int, ar: (Seq int)) returns (Result: 
           i < Seq#Length(ar);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           assert {:msg "  Precondition of function sum_list might not hold. Assertion 0 <= i + 1 might not hold. (testHistogram.vpr@24.21--24.44) [56020]"}
             0 <= i + 1;
           assert {:msg "  Precondition of function sum_list might not hold. Assertion i + 1 <= hi might not hold. (testHistogram.vpr@24.21--24.44) [56021]"}
@@ -907,8 +907,8 @@ procedure sum_array#definedness(i: int, lo: int, hi: int, ar: (Seq Ref)) returns
   var k_2: int;
   var QPMask: MaskType;
   var wildcard: real where wildcard > 0.000000000;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var j_4_1: int;
   var k_9: int;
   var ExhaleHeap: HeapType;
@@ -1005,8 +1005,8 @@ procedure sum_array#definedness(i: int, lo: int, hi: int, ar: (Seq Ref)) returns
           HasDirectPerm(Mask, Seq#Index(ar, i), Ref__Integer_value);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           assert {:msg "  Precondition of function sum_array might not hold. Assertion 0 <= lo might not hold. (testHistogram.vpr@33.40--33.68) [56033]"}
             0 <= lo;
           assert {:msg "  Precondition of function sum_array might not hold. Assertion lo <= i + 1 might not hold. (testHistogram.vpr@33.40--33.68) [56034]"}
@@ -1142,8 +1142,8 @@ procedure sum_square#definedness(i: int, lo: int, hi: int, step: int, vmin: int,
   var k_7: int;
   var QPMask: MaskType;
   var wildcard: real where wildcard > 0.000000000;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var j_4_1: int;
   var k_9: int;
   var ExhaleHeap: HeapType;
@@ -1263,8 +1263,8 @@ procedure sum_square#definedness(i: int, lo: int, hi: int, step: int, vmin: int,
         }
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           assert {:msg "  Precondition of function sum_square might not hold. Assertion 0 <= lo might not hold. (testHistogram.vpr@43.85--43.130) [56056]"}
             0 <= lo;
           assert {:msg "  Precondition of function sum_square might not hold. Assertion lo <= hi might not hold. (testHistogram.vpr@43.85--43.130) [56057]"}
@@ -1408,8 +1408,8 @@ procedure count_square#definedness(i: int, lo: int, hi: int, step: int, vmin: in
   var k_12: int;
   var QPMask: MaskType;
   var wildcard: real where wildcard > 0.000000000;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var j_4_1: int;
   var k_9: int;
   var ExhaleHeap: HeapType;
@@ -1529,8 +1529,8 @@ procedure count_square#definedness(i: int, lo: int, hi: int, step: int, vmin: in
         }
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           assert {:msg "  Precondition of function count_square might not hold. Assertion 0 <= lo might not hold. (testHistogram.vpr@53.97--53.147) [56083]"}
             0 <= lo;
           assert {:msg "  Precondition of function count_square might not hold. Assertion lo <= hi might not hold. (testHistogram.vpr@53.97--53.147) [56084]"}
@@ -1656,8 +1656,8 @@ function  count_list#triggerStateless(i: int, hi: int, ar: (Seq int), v_2: int):
 procedure count_list#definedness(i: int, hi: int, ar: (Seq int), v_2: int) returns (Result: int)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1682,8 +1682,8 @@ procedure count_list#definedness(i: int, hi: int, ar: (Seq int), v_2: int) retur
           i < Seq#Length(ar);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           assert {:msg "  Precondition of function count_list might not hold. Assertion 0 <= i + 1 might not hold. (testHistogram.vpr@60.36--60.64) [56098]"}
             0 <= i + 1;
           assert {:msg "  Precondition of function count_list might not hold. Assertion i + 1 <= hi might not hold. (testHistogram.vpr@60.36--60.64) [56099]"}
@@ -1759,8 +1759,8 @@ procedure count_array#definedness(i: int, hi: int, ar: (Seq Ref), v_2: int) retu
   var k_16: int;
   var QPMask: MaskType;
   var wildcard: real where wildcard > 0.000000000;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var j_4_1: int;
   var k_9: int;
   var ExhaleHeap: HeapType;
@@ -1856,8 +1856,8 @@ procedure count_array#definedness(i: int, hi: int, ar: (Seq Ref), v_2: int) retu
           HasDirectPerm(Mask, Seq#Index(ar, i), Ref__Integer_value);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           assert {:msg "  Precondition of function count_array might not hold. Assertion 0 <= i + 1 might not hold. (testHistogram.vpr@69.55--69.84) [56111]"}
             0 <= i + 1;
           assert {:msg "  Precondition of function count_array might not hold. Assertion i + 1 <= hi might not hold. (testHistogram.vpr@69.55--69.84) [56112]"}
@@ -1945,14 +1945,14 @@ procedure Ref__loop_main_76(diz: Ref, current_thread_id: int, P_1: int, hist: (S
   var k_17: int;
   var k_18: int;
   var QPMask: MaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var k_19: int;
   var k_20: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var k_9: int;
   var ExhaleHeap: HeapType;
   
@@ -2042,8 +2042,8 @@ procedure Ref__loop_main_76(diz: Ref, current_thread_id: int, P_1: int, hist: (S
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -2123,8 +2123,8 @@ procedure Ref__loop_main_76(diz: Ref, current_thread_id: int, P_1: int, hist: (S
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     havoc QPMask;
     
     // -- check that the permission amount is positive
@@ -2191,14 +2191,14 @@ procedure Ref__loop_body_76(diz: Ref, current_thread_id: int, k: int, P_1: int, 
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var __flatten_4: Ref;
   var __flatten_5: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -2235,8 +2235,8 @@ procedure Ref__loop_body_76(diz: Ref, current_thread_id: int, k: int, P_1: int, 
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -2294,8 +2294,8 @@ procedure Ref__loop_body_76(diz: Ref, current_thread_id: int, k: int, P_1: int, 
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of Ref__loop_body_76 might not hold. Assertion 0 <= k might not hold. (testHistogram.vpr@90.11--90.30) [56145]"}
       0 <= k;
     assert {:msg "  Postcondition of Ref__loop_body_76 might not hold. Assertion k < P might not hold. (testHistogram.vpr@90.11--90.30) [56146]"}
@@ -2330,12 +2330,12 @@ procedure Ref__loop_main_96(diz: Ref, current_thread_id: int, P_1: int, N: int, 
   var j_15: int;
   var i_29: int;
   var j_16: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var i_30: int;
   var j_22: int;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var j_19: int;
@@ -2514,8 +2514,8 @@ procedure Ref__loop_main_96(diz: Ref, current_thread_id: int, P_1: int, N: int, 
         if (0 <= i_29 && (i_29 < M && (0 <= j_16 && j_16 < N))) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             assert {:msg "  Precondition of function Ref__multidim_index_2 might not hold. Assertion 0 <= i might not hold. (testHistogram.vpr@111.85--111.118) [56164]"}
               0 <= i_29;
             assert {:msg "  Precondition of function Ref__multidim_index_2 might not hold. Assertion i < M might not hold. (testHistogram.vpr@111.85--111.118) [56165]"}
@@ -2546,8 +2546,8 @@ procedure Ref__loop_main_96(diz: Ref, current_thread_id: int, P_1: int, N: int, 
         if (0 <= i_30 && (i_30 < M && (0 <= j_22 && j_22 < N))) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             assert {:msg "  Precondition of function Ref__multidim_index_2 might not hold. Assertion 0 <= i might not hold. (testHistogram.vpr@112.98--112.131) [56170]"}
               0 <= i_30;
             assert {:msg "  Precondition of function Ref__multidim_index_2 might not hold. Assertion i < M might not hold. (testHistogram.vpr@112.98--112.131) [56171]"}
@@ -2572,8 +2572,8 @@ procedure Ref__loop_main_96(diz: Ref, current_thread_id: int, P_1: int, N: int, 
           if (0 <= Heap[Seq#Index(matrix, Ref__multidim_index_2(Heap, M, N, i_30, j_22)), Ref__Integer_value]) {
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               assert {:msg "  Precondition of function Ref__multidim_index_2 might not hold. Assertion 0 <= i might not hold. (testHistogram.vpr@112.164--112.197) [56179]"}
                 0 <= i_30;
               assert {:msg "  Precondition of function Ref__multidim_index_2 might not hold. Assertion i < M might not hold. (testHistogram.vpr@112.164--112.197) [56180]"}
@@ -2608,8 +2608,8 @@ procedure Ref__loop_main_96(diz: Ref, current_thread_id: int, P_1: int, N: int, 
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -2736,8 +2736,8 @@ procedure Ref__loop_main_96(diz: Ref, current_thread_id: int, P_1: int, N: int, 
             HasDirectPerm(oldMask, Seq#Index(hist, k_26), Ref__Integer_value);
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := PostMask;
             ExhaleWellDef0Heap := PostHeap;
+            ExhaleWellDef0Mask := PostMask;
             assert {:msg "  Precondition of function count_array might not hold. Assertion 0 <= M * N might not hold. (testHistogram.vpr@116.118--116.150) [56201]"}
               0 <= M * N;
             assert {:msg "  Precondition of function count_array might not hold. Assertion M * N <= |matrix| might not hold. (testHistogram.vpr@116.118--116.150) [56202]"}
@@ -2821,8 +2821,8 @@ procedure Ref__loop_main_96(diz: Ref, current_thread_id: int, P_1: int, N: int, 
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of Ref__loop_main_96 might not hold. Assertion M > 0 might not hold. (testHistogram.vpr@113.11--113.40) [56208]"}
       M > 0;
     assert {:msg "  Postcondition of Ref__loop_main_96 might not hold. Assertion N > 0 might not hold. (testHistogram.vpr@113.11--113.40) [56209]"}
@@ -2944,11 +2944,11 @@ procedure Ref__loop_body_96(diz: Ref, current_thread_id: int, matrix: (Seq Ref),
   var k_28: int;
   var QPMask: MaskType;
   var k_29: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var k_35: int;
@@ -3077,8 +3077,8 @@ procedure Ref__loop_body_96(diz: Ref, current_thread_id: int, matrix: (Seq Ref),
     // -- Check definedness of Ref__multidim_index_2(M, N, i, j) < |matrix|
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Precondition of function Ref__multidim_index_2 might not hold. Assertion 0 <= i might not hold. (testHistogram.vpr@130.12--130.45) [56227]"}
           0 <= i;
         assert {:msg "  Precondition of function Ref__multidim_index_2 might not hold. Assertion i < M might not hold. (testHistogram.vpr@130.12--130.45) [56228]"}
@@ -3101,8 +3101,8 @@ procedure Ref__loop_body_96(diz: Ref, current_thread_id: int, matrix: (Seq Ref),
     // -- Check definedness of acc(matrix[Ref__multidim_index_2(M, N, i, j)].Ref__Integer_value, 1 / 4)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Precondition of function Ref__multidim_index_2 might not hold. Assertion 0 <= i might not hold. (testHistogram.vpr@131.23--131.56) [56233]"}
           0 <= i;
         assert {:msg "  Precondition of function Ref__multidim_index_2 might not hold. Assertion i < M might not hold. (testHistogram.vpr@131.23--131.56) [56234]"}
@@ -3134,8 +3134,8 @@ procedure Ref__loop_body_96(diz: Ref, current_thread_id: int, matrix: (Seq Ref),
     // -- Check definedness of 0 <= matrix[Ref__multidim_index_2(M, N, i, j)].Ref__Integer_value
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Precondition of function Ref__multidim_index_2 might not hold. Assertion 0 <= i might not hold. (testHistogram.vpr@132.25--132.58) [56242]"}
           0 <= i;
         assert {:msg "  Precondition of function Ref__multidim_index_2 might not hold. Assertion i < M might not hold. (testHistogram.vpr@132.25--132.58) [56243]"}
@@ -3163,8 +3163,8 @@ procedure Ref__loop_body_96(diz: Ref, current_thread_id: int, matrix: (Seq Ref),
     // -- Check definedness of matrix[Ref__multidim_index_2(M, N, i, j)].Ref__Integer_value < P
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Precondition of function Ref__multidim_index_2 might not hold. Assertion 0 <= i might not hold. (testHistogram.vpr@132.91--132.124) [56251]"}
           0 <= i;
         assert {:msg "  Precondition of function Ref__multidim_index_2 might not hold. Assertion i < M might not hold. (testHistogram.vpr@132.91--132.124) [56252]"}
@@ -3192,8 +3192,8 @@ procedure Ref__loop_body_96(diz: Ref, current_thread_id: int, matrix: (Seq Ref),
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -3213,8 +3213,8 @@ procedure Ref__loop_body_96(diz: Ref, current_thread_id: int, matrix: (Seq Ref),
     // -- Check definedness of acc(matrix[Ref__multidim_index_2(M, N, i, j)].Ref__Integer_value, 1 / 4)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
+        ExhaleWellDef0Mask := PostMask;
         assert {:msg "  Precondition of function Ref__multidim_index_2 might not hold. Assertion 0 <= i might not hold. (testHistogram.vpr@135.22--135.55) [56260]"}
           0 <= i;
         assert {:msg "  Precondition of function Ref__multidim_index_2 might not hold. Assertion i < M might not hold. (testHistogram.vpr@135.22--135.55) [56261]"}
@@ -3300,8 +3300,8 @@ procedure Ref__loop_body_96(diz: Ref, current_thread_id: int, matrix: (Seq Ref),
             HasDirectPerm(PostMask, Seq#Index(hist, k_33), Ref__Integer_value);
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := PostMask;
             ExhaleWellDef0Heap := PostHeap;
+            ExhaleWellDef0Mask := PostMask;
             assert {:msg "  Precondition of function Ref__multidim_index_2 might not hold. Assertion 0 <= i might not hold. (testHistogram.vpr@137.92--137.125) [56275]"}
               0 <= i;
             assert {:msg "  Precondition of function Ref__multidim_index_2 might not hold. Assertion i < M might not hold. (testHistogram.vpr@137.92--137.125) [56276]"}
@@ -3346,8 +3346,8 @@ procedure Ref__loop_body_96(diz: Ref, current_thread_id: int, matrix: (Seq Ref),
     // -- Check definedness of Ref__multidim_index_2(M, N, i, j)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Precondition of function Ref__multidim_index_2 might not hold. Assertion 0 <= i might not hold. (testHistogram.vpr@146.18--146.51) [56284]"}
           0 <= i;
         assert {:msg "  Precondition of function Ref__multidim_index_2 might not hold. Assertion i < M might not hold. (testHistogram.vpr@146.18--146.51) [56285]"}
@@ -3429,8 +3429,8 @@ procedure Ref__loop_body_96(diz: Ref, current_thread_id: int, matrix: (Seq Ref),
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of Ref__loop_body_96 might not hold. Assertion M > 0 might not hold. (testHistogram.vpr@133.11--133.40) [56302]"}
       M > 0;
     assert {:msg "  Postcondition of Ref__loop_body_96 might not hold. Assertion N > 0 might not hold. (testHistogram.vpr@133.11--133.40) [56303]"}
@@ -3524,13 +3524,13 @@ procedure Ref__histogram(diz: Ref, current_thread_id: int, M: int, N: int, matri
   var QPMask: MaskType;
   var i1_15: int;
   var j1_13: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var j_34: int;
   var k_40: int;
   var i1_16: int;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var j1_20: int;
@@ -3657,8 +3657,8 @@ procedure Ref__histogram(diz: Ref, current_thread_id: int, M: int, N: int, matri
         if (0 <= i1_15 && (i1_15 < M && (0 <= j1_13 && j1_13 < N))) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             assert {:msg "  Precondition of function Ref__multidim_index_2 might not hold. Assertion 0 <= i1 might not hold. (testHistogram.vpr@163.104--163.139) [56322]"}
               0 <= i1_15;
             assert {:msg "  Precondition of function Ref__multidim_index_2 might not hold. Assertion i1 < M might not hold. (testHistogram.vpr@163.104--163.139) [56323]"}
@@ -3683,8 +3683,8 @@ procedure Ref__histogram(diz: Ref, current_thread_id: int, M: int, N: int, matri
           if (0 <= Heap[Seq#Index(matrix, Ref__multidim_index_2(Heap, M, N, i1_15, j1_13)), Ref__Integer_value]) {
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               assert {:msg "  Precondition of function Ref__multidim_index_2 might not hold. Assertion 0 <= i1 might not hold. (testHistogram.vpr@163.172--163.207) [56331]"}
                 0 <= i1_15;
               assert {:msg "  Precondition of function Ref__multidim_index_2 might not hold. Assertion i1 < M might not hold. (testHistogram.vpr@163.172--163.207) [56332]"}
@@ -3787,8 +3787,8 @@ procedure Ref__histogram(diz: Ref, current_thread_id: int, M: int, N: int, matri
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -3905,8 +3905,8 @@ procedure Ref__histogram(diz: Ref, current_thread_id: int, M: int, N: int, matri
             HasDirectPerm(PostMask, Seq#Index(hist, k_41), Ref__Integer_value);
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := PostMask;
             ExhaleWellDef0Heap := PostHeap;
+            ExhaleWellDef0Mask := PostMask;
             assert {:msg "  Precondition of function count_array might not hold. Assertion 0 <= M * N might not hold. (testHistogram.vpr@170.84--170.116) [56357]"}
               0 <= M * N;
             assert {:msg "  Precondition of function count_array might not hold. Assertion M * N <= |matrix| might not hold. (testHistogram.vpr@170.84--170.116) [56358]"}
@@ -3987,8 +3987,8 @@ procedure Ref__histogram(diz: Ref, current_thread_id: int, M: int, N: int, matri
         if (0 <= i1_11 && (i1_11 < M && (0 <= j1_21 && j1_21 < N))) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := PostMask;
             ExhaleWellDef0Heap := PostHeap;
+            ExhaleWellDef0Mask := PostMask;
             assert {:msg "  Precondition of function Ref__multidim_index_2 might not hold. Assertion 0 <= i1 might not hold. (testHistogram.vpr@171.98--171.133) [56364]"}
               0 <= i1_11;
             assert {:msg "  Precondition of function Ref__multidim_index_2 might not hold. Assertion i1 < M might not hold. (testHistogram.vpr@171.98--171.133) [56365]"}
@@ -4012,8 +4012,8 @@ procedure Ref__histogram(diz: Ref, current_thread_id: int, M: int, N: int, matri
             HasDirectPerm(PostMask, Seq#Index(matrix, Ref__multidim_index_2(PostHeap, M, N, i1_11, j1_21)), Ref__Integer_value);
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := oldMask;
             ExhaleWellDef0Heap := oldHeap;
+            ExhaleWellDef0Mask := oldMask;
             assert {:msg "  Precondition of function Ref__multidim_index_2 might not hold. Assertion 0 <= i1 might not hold. (testHistogram.vpr@171.168--171.203) [56373]"}
               0 <= i1_11;
             assert {:msg "  Precondition of function Ref__multidim_index_2 might not hold. Assertion i1 < M might not hold. (testHistogram.vpr@171.168--171.203) [56374]"}
@@ -4052,8 +4052,8 @@ procedure Ref__histogram(diz: Ref, current_thread_id: int, M: int, N: int, matri
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       assert {:msg "  The precondition of method Ref__loop_main_76 might not hold. Assertion diz != null might not hold. (testHistogram.vpr@173.3--173.53) [56382]"}
         diz != null;
       assert {:msg "  The precondition of method Ref__loop_main_76 might not hold. Assertion current_thread_id >= 0 might not hold. (testHistogram.vpr@173.3--173.53) [56383]"}
@@ -4164,8 +4164,8 @@ procedure Ref__histogram(diz: Ref, current_thread_id: int, M: int, N: int, matri
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       assert {:msg "  The precondition of method Ref__loop_main_96 might not hold. Assertion diz != null might not hold. (testHistogram.vpr@174.3--174.67) [56389]"}
         diz != null;
       assert {:msg "  The precondition of method Ref__loop_main_96 might not hold. Assertion current_thread_id >= 0 might not hold. (testHistogram.vpr@174.3--174.67) [56390]"}
@@ -4404,8 +4404,8 @@ procedure Ref__histogram(diz: Ref, current_thread_id: int, M: int, N: int, matri
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     havoc QPMask;
     
     // -- check that the permission amount is positive

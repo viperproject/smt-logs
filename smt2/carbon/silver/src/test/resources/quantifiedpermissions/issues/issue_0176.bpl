@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-29 20:17:07
+// Date:         2025-01-04 00:46:26
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/issues/issue_0176.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/issues/issue_0176-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -579,14 +579,14 @@ axiom !IsWandField(val);
 procedure main() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var tmp: Ref;
   var v_2: (Seq Ref);
   var res: int;
   var i: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var i1: int;
   var i2_1: int;
   var QPMask: MaskType;
@@ -613,8 +613,8 @@ procedure main() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[tmp, $allocated];
@@ -636,8 +636,8 @@ procedure main() returns ()
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Loop invariant i <= 10 might not hold on entry. Assertion i <= 10 might not hold. (issue_0176.vpr@15.15--15.22) [71863]"}
           i <= 10;
         assert {:msg "  Loop invariant |v| == i might not hold on entry. Assertion |v| == i might not hold. (issue_0176.vpr@16.15--16.23) [71864]"}
@@ -888,8 +888,8 @@ procedure main() returns ()
             i := i + 1;
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Loop invariant i <= 10 might not be preserved. Assertion i <= 10 might not hold. (issue_0176.vpr@15.15--15.22) [71881]"}
           i <= 10;
         assert {:msg "  Loop invariant |v| == i might not be preserved. Assertion |v| == i might not hold. (issue_0176.vpr@16.15--16.23) [71882]"}
@@ -1019,8 +1019,8 @@ procedure main() returns ()
   //     { (j in [0..10)) }
   //     { v[j] }
   //     (j in [0..10)) ==> v[j].val > 0) -- issue_0176.vpr@27.3--27.55
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall j: Int :: { (j in [0..10)) } { v[j] } (j in [0..10)) ==> v[j].val > 0)
       if (*) {

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-29 20:44:34
+// Date:         2025-01-04 01:14:02
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0365.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0365-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -384,15 +384,15 @@ procedure readers#definedness() returns (Result: Ref)
 procedure try_lock_shared() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
   var v1: int;
   var perm: Perm;
   var v0: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
   
@@ -405,8 +405,8 @@ procedure try_lock_shared() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: v1 := havocedInt() -- 0365.vpr@42.5--42.23
     PreCallHeap := Heap;
@@ -475,8 +475,8 @@ procedure try_lock_shared() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert perm(tokCountRef(readers()).tokCount) >= 1 / 1 - v0 * eps() / 1 -- 0365.vpr@53.5--53.74
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of perm(tokCountRef(readers()).tokCount) >= 1 / 1 - v0 * eps() / 1
       if (*) {
@@ -494,8 +494,8 @@ procedure try_lock_shared() returns ()
   // -- Translating statement: assert acc(tokCountRef(readers()).tokCount, 1 / 1 - v0 * eps() / 1) -- 0365.vpr@54.5--54.75
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Heap := AssertHeap;
     ExhaleWellDef0Mask := AssertMask;
+    ExhaleWellDef0Heap := AssertHeap;
     
     // -- Check definedness of acc(tokCountRef(readers()).tokCount, 1 / 1 - v0 * eps() / 1)
       if (*) {
@@ -524,8 +524,8 @@ procedure try_lock_shared() returns ()
 procedure havocedInt() returns (res: int)
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -536,8 +536,8 @@ procedure havocedInt() returns (res: int)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale false -- <no position>
     assume false;

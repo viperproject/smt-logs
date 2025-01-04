@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-29 20:03:22
+; Started: 2025-01-04 00:32:25
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -124,39 +124,39 @@
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (= (getX%limited s@$ this@0@00) (getX s@$ this@0@00))
   :pattern ((getX s@$ this@0@00))
-  :qid |quant-u-21714|)))
+  :qid |quant-u-21729|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (getX%stateless this@0@00)
   :pattern ((getX%limited s@$ this@0@00))
-  :qid |quant-u-21715|)))
+  :qid |quant-u-21730|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (=>
     (getX%precondition s@$ this@0@00)
     (= (getX s@$ this@0@00) ($SortWrappers.$SnapToInt s@$)))
   :pattern ((getX s@$ this@0@00))
-  :qid |quant-u-21718|)))
+  :qid |quant-u-21733|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   true
   :pattern ((getX s@$ this@0@00))
-  :qid |quant-u-21719|)))
+  :qid |quant-u-21734|)))
 (assert (forall ((s@$ $Snap) (this@2@00 $Ref)) (!
   (= (getY%limited s@$ this@2@00) (getY s@$ this@2@00))
   :pattern ((getY s@$ this@2@00))
-  :qid |quant-u-21716|)))
+  :qid |quant-u-21731|)))
 (assert (forall ((s@$ $Snap) (this@2@00 $Ref)) (!
   (getY%stateless this@2@00)
   :pattern ((getY%limited s@$ this@2@00))
-  :qid |quant-u-21717|)))
+  :qid |quant-u-21732|)))
 (assert (forall ((s@$ $Snap) (this@2@00 $Ref)) (!
   (=>
     (getY%precondition s@$ this@2@00)
     (= (getY s@$ this@2@00) ($SortWrappers.$SnapToInt s@$)))
   :pattern ((getY s@$ this@2@00))
-  :qid |quant-u-21720|)))
+  :qid |quant-u-21735|)))
 (assert (forall ((s@$ $Snap) (this@2@00 $Ref)) (!
   true
   :pattern ((getY s@$ this@2@00))
-  :qid |quant-u-21721|)))
+  :qid |quant-u-21736|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- setX ----------

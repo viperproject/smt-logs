@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-29 20:21:36
+// Date:         2025-01-04 00:50:58
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpredicates/basic/functions1.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpredicates/basic/functions1-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -637,8 +637,8 @@ procedure fun_P#definedness(xs: (Seq Ref), j_9: int) returns (Result: int)
   var jx: int;
   var i_2: int;
   var QPMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var perm: Perm;
   var ExhaleHeap: HeapType;
   
@@ -730,8 +730,8 @@ procedure fun_P#definedness(xs: (Seq Ref), j_9: int) returns (Result: int)
         j_9 < Seq#Length(xs);
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function get_P might not hold. There might be insufficient permission to access P(xs[j]) (functions1.vpr@10.3--10.15) [106875]"}
           NoPerm < perm ==> NoPerm < Mask[null, P(Seq#Index(xs, j_9))];
@@ -852,8 +852,8 @@ procedure fun_f#definedness(xs: (Seq Ref), j_9: int) returns (Result: int)
   var jx_2: int;
   var i_6: int;
   var QPMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var perm: Perm;
   var ExhaleHeap: HeapType;
   
@@ -943,8 +943,8 @@ procedure fun_f#definedness(xs: (Seq Ref), j_9: int) returns (Result: int)
         j_9 < Seq#Length(xs);
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function get_f might not hold. There might be insufficient permission to access xs[j].f (functions1.vpr@34.3--34.15) [106885]"}
           NoPerm < perm ==> NoPerm < Mask[Seq#Index(xs, j_9), f_7];
@@ -1052,21 +1052,21 @@ axiom (forall Heap: HeapType, x: Ref ::
 procedure test_P() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var k: int;
   var ys: (Seq Ref);
   var ix_21: int;
   var jx_21: int;
   var i_8: int;
   var QPMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ix_2_1: int;
   var jx_2_1: int;
   var ExhaleHeap: HeapType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var perm: Perm;
   
   // -- Initializing the state
@@ -1078,8 +1078,8 @@ procedure test_P() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale 0 <= k -- functions1.vpr@18.10--18.16
     assume 0 <= k;
@@ -1176,8 +1176,8 @@ procedure test_P() returns ()
     // -- Check definedness of fun_P(ys, k) == 0
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         if (*) {
           if (ix_2_1 >= 0 && (ix_2_1 < Seq#Length(ys) && (jx_2_1 >= 0 && (jx_2_1 < Seq#Length(ys) && ix_2_1 != jx_2_1)))) {
             assert {:msg "  Precondition of function fun_P might not hold. Assertion ys[ix] != ys[jx] might not hold. (functions1.vpr@22.10--22.22) [106893]"}
@@ -1233,8 +1233,8 @@ procedure test_P() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale get_P(ys[k]) == 0 -- functions1.vpr@23.3--23.27
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of get_P(ys[k]) == 0
       assert {:msg "  Exhale might fail. Index ys[k] into ys might be negative. (functions1.vpr@23.10--23.27) [106898]"}
@@ -1243,8 +1243,8 @@ procedure test_P() returns ()
         k < Seq#Length(ys);
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function get_P might not hold. There might be insufficient permission to access P(ys[k]) (functions1.vpr@23.10--23.22) [106900]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, P(Seq#Index(ys, k))];
@@ -1267,21 +1267,21 @@ procedure test_P() returns ()
 procedure test_f() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var k: int;
   var ys: (Seq Ref);
   var ix_22: int;
   var jx_22: int;
   var i_10: int;
   var QPMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ix_2_1: int;
   var jx_2_1: int;
   var ExhaleHeap: HeapType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var perm: Perm;
   
   // -- Initializing the state
@@ -1293,8 +1293,8 @@ procedure test_f() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale 0 <= k -- functions1.vpr@42.10--42.16
     assume 0 <= k;
@@ -1389,8 +1389,8 @@ procedure test_f() returns ()
     // -- Check definedness of fun_f(ys, k) == 0
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         if (*) {
           if (ix_2_1 >= 0 && (ix_2_1 < Seq#Length(ys) && (jx_2_1 >= 0 && (jx_2_1 < Seq#Length(ys) && ix_2_1 != jx_2_1)))) {
             assert {:msg "  Precondition of function fun_f might not hold. Assertion ys[ix] != ys[jx] might not hold. (functions1.vpr@46.10--46.22) [106909]"}
@@ -1446,8 +1446,8 @@ procedure test_f() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale get_f(ys[k]) == 0 -- functions1.vpr@47.3--47.27
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of get_f(ys[k]) == 0
       assert {:msg "  Exhale might fail. Index ys[k] into ys might be negative. (functions1.vpr@47.10--47.27) [106914]"}
@@ -1456,8 +1456,8 @@ procedure test_f() returns ()
         k < Seq#Length(ys);
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function get_f might not hold. There might be insufficient permission to access ys[k].f (functions1.vpr@47.10--47.22) [106916]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[Seq#Index(ys, k), f_7];

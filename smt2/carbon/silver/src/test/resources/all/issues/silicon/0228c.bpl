@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-29 20:48:54
+// Date:         2025-01-04 01:18:23
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0228c.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0228c-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -268,8 +268,8 @@ procedure get#definedness(x: Ref) returns (Result: int)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -291,8 +291,8 @@ procedure get#definedness(x: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume pred#trigger(UnfoldingHeap, pred_3(x));
       assume UnfoldingHeap[null, pred_3(x)] == CombineFrames(FrameFragment(UnfoldingHeap[x, f_7]), FrameFragment(UnfoldingHeap[x, f_7]));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access pred(x) (0228c.vpr@19.1--21.34) [215555]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, pred_3(x)];
@@ -391,17 +391,17 @@ procedure pred#definedness(x: Ref) returns ()
 procedure test01(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
   var i_14: int;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var i_2: int;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var i_3: int;
   
   // -- Initializing the state
@@ -416,8 +416,8 @@ procedure test01(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale acc(pred(x), write) -- 0228c.vpr@12.3--12.22
     perm := FullPerm;
@@ -438,8 +438,8 @@ procedure test01(x: Ref) returns ()
           UnfoldingMask := Mask;
           assume pred#trigger(UnfoldingHeap, pred_3(x));
           assume UnfoldingHeap[null, pred_3(x)] == CombineFrames(FrameFragment(UnfoldingHeap[x, f_7]), FrameFragment(UnfoldingHeap[x, f_7]));
-          ExhaleWellDef0Heap := UnfoldingHeap;
           ExhaleWellDef0Mask := UnfoldingMask;
+          ExhaleWellDef0Heap := UnfoldingHeap;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  Inhale might fail. There might be insufficient permission to access pred(x) (0228c.vpr@13.10--13.85) [215562]"}
@@ -488,8 +488,8 @@ procedure test01(x: Ref) returns ()
   // -- Translating statement: assert (forall i: Int ::
   //     { fun((unfolding acc(pred(x), write) in x.f), i) }
   //     0 <= i && i < 10 ==> fun((unfolding acc(pred(x), write) in x.f), i)) -- 0228c.vpr@14.3--14.85
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall i: Int :: { fun((unfolding acc(pred(x), write) in x.f), i) } 0 <= i && i < 10 ==> fun((unfolding acc(pred(x), write) in x.f), i))
       if (*) {
@@ -498,8 +498,8 @@ procedure test01(x: Ref) returns ()
           UnfoldingMask := ExhaleWellDef0Mask;
           assume pred#trigger(UnfoldingHeap, pred_3(x));
           assume UnfoldingHeap[null, pred_3(x)] == CombineFrames(FrameFragment(UnfoldingHeap[x, f_7]), FrameFragment(UnfoldingHeap[x, f_7]));
-          ExhaleWellDef1Heap := UnfoldingHeap;
           ExhaleWellDef1Mask := UnfoldingMask;
+          ExhaleWellDef1Heap := UnfoldingHeap;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  Assert might fail. There might be insufficient permission to access pred(x) (0228c.vpr@14.10--14.85) [215566]"}
@@ -559,16 +559,16 @@ procedure test01(x: Ref) returns ()
 procedure test02(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
   var i_4: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var i_6: int;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var i_3: int;
   
   // -- Initializing the state
@@ -583,8 +583,8 @@ procedure test02(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale acc(pred(x), write) -- 0228c.vpr@24.3--24.22
     perm := FullPerm;
@@ -603,8 +603,8 @@ procedure test02(x: Ref) returns ()
         if (0 <= i_4 && i_4 < 10) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             perm := FullPerm;
             assert {:msg "  Precondition of function get might not hold. There might be insufficient permission to access pred(x) (0228c.vpr@25.52--25.58) [215572]"}
               NoPerm < perm ==> NoPerm < Mask[null, pred_3(x)];
@@ -632,16 +632,16 @@ procedure test02(x: Ref) returns ()
   // -- Translating statement: assert (forall i: Int ::
   //     { fun(get(x), i) }
   //     0 <= i && i < 10 ==> fun(get(x), i)) -- 0228c.vpr@26.3--26.62
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall i: Int :: { fun(get(x), i) } 0 <= i && i < 10 ==> fun(get(x), i))
       if (*) {
         if (0 <= i_6 && i_6 < 10) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Heap := ExhaleWellDef0Heap;
             ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+            ExhaleWellDef1Heap := ExhaleWellDef0Heap;
             perm := FullPerm;
             assert {:msg "  Precondition of function get might not hold. There might be insufficient permission to access pred(x) (0228c.vpr@26.52--26.58) [215573]"}
               NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, pred_3(x)];
@@ -680,13 +680,13 @@ procedure test02(x: Ref) returns ()
 procedure test03(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var v_2: int;
   var i_7: int;
   var i_8: int;
@@ -704,8 +704,8 @@ procedure test03(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale acc(pred(x), write) -- 0228c.vpr@30.3--30.22
     perm := FullPerm;
@@ -721,8 +721,8 @@ procedure test03(x: Ref) returns ()
       UnfoldingMask := Mask;
       assume pred#trigger(UnfoldingHeap, pred_3(x));
       assume UnfoldingHeap[null, pred_3(x)] == CombineFrames(FrameFragment(UnfoldingHeap[x, f_7]), FrameFragment(UnfoldingHeap[x, f_7]));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Assignment might fail. There might be insufficient permission to access pred(x) (0228c.vpr@31.3--31.46) [215576]"}
@@ -773,8 +773,8 @@ procedure test03(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forall i: Int :: { fun(v, i) } 0 <= i && i < 10 ==> fun(v, i)) -- 0228c.vpr@33.3--33.57
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall i: Int :: { fun(v, i) } 0 <= i && i < 10 ==> fun(v, i))
       if (*) {
@@ -807,11 +807,11 @@ procedure test03(x: Ref) returns ()
 procedure test04(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var newVersion: FrameType;
   var i_9: int;
   var i_10: int;
@@ -829,8 +829,8 @@ procedure test04(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale acc(pred(x), write) -- 0228c.vpr@37.3--37.22
     perm := FullPerm;
@@ -842,8 +842,8 @@ procedure test04(x: Ref) returns ()
   // -- Translating statement: unfold acc(pred(x), write) -- 0228c.vpr@38.3--38.22
     assume pred#trigger(Heap, pred_3(x));
     assume Heap[null, pred_3(x)] == CombineFrames(FrameFragment(Heap[x, f_7]), FrameFragment(Heap[x, f_7]));
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding pred(x) might fail. There might be insufficient permission to access pred(x) (0228c.vpr@38.3--38.22) [215584]"}
@@ -894,8 +894,8 @@ procedure test04(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forall i: Int :: { fun(x.f, i) } 0 <= i && i < 10 ==> fun(x.f, i)) -- 0228c.vpr@40.3--40.59
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall i: Int :: { fun(x.f, i) } 0 <= i && i < 10 ==> fun(x.f, i))
       if (*) {

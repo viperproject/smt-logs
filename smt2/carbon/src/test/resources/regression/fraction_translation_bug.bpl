@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-29 20:09:56
+// Date:         2025-01-04 00:39:12
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/src/test/resources/regression/fraction_translation_bug.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/src/test/resources/regression/fraction_translation_bug-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -188,11 +188,11 @@ axiom !IsWandField(f_7);
 procedure test01(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var p_1: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -205,16 +205,16 @@ procedure test01(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: p := 1 / 3 -- fraction_translation_bug.vpr@15.3--15.11
     p_1 := 1 / 3;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert p + p + p == 1 / 1 -- fraction_translation_bug.vpr@16.3--16.22
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion p + p + p == 1 / 1 might not hold. (fraction_translation_bug.vpr@16.10--16.22) [1113]"}
       p_1 + p_1 + p_1 == 1 / 1;
     assume state(Heap, Mask);
@@ -228,11 +228,11 @@ procedure test02(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var p_1: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -254,16 +254,16 @@ procedure test02(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: p := 1 / 3 -- fraction_translation_bug.vpr@23.3--23.11
     p_1 := 1 / 3;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert p + p + p == 999999999 / 1000000000 -- fraction_translation_bug.vpr@24.3--24.39
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion p + p + p == 999999999 / 1000000000 might not hold. (fraction_translation_bug.vpr@24.10--24.39) [1115]"}
       p_1 + p_1 + p_1 == 999999999 / 1000000000;
     assume state(Heap, Mask);

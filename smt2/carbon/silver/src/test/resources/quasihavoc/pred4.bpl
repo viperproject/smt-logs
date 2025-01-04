@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-29 20:17:41
+// Date:         2025-01-04 00:47:01
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quasihavoc/pred4.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quasihavoc/pred4-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -243,10 +243,10 @@ procedure foo_1(x: Ref, y: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var freshVersion: FrameType;
   var perm_temp_quasihavoc_: Perm;
   var ExhaleHeap: HeapType;
@@ -276,12 +276,12 @@ procedure foo_1(x: Ref, y: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: fold acc(p(x), write) -- pred4.vpr@10.5--10.14
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding p(x) might fail. There might be insufficient permission to access x.f (pred4.vpr@10.5--10.14) [77413]"}
@@ -311,8 +311,8 @@ procedure foo_1(x: Ref, y: Ref) returns ()
         assume state(Heap, Mask);
       
       // -- Translating statement: exhale acc(p(y), perm_temp_quasihavoc_) -- <no position>
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := perm_temp_quasihavoc_;
         assert {:msg "  Exhale might fail. Fraction perm_temp_quasihavoc_ might be negative. (<no position>) [77415]"}
           perm >= NoPerm;
@@ -346,8 +346,8 @@ procedure foo_1(x: Ref, y: Ref) returns ()
   // -- Translating statement: unfold acc(p(x), write) -- pred4.vpr@14.5--14.16
     assume p#trigger(Heap, p_14(x));
     assume Heap[null, p_14(x)] == FrameFragment(Heap[x, f_7]);
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding p(x) might fail. There might be insufficient permission to access p(x) (pred4.vpr@14.5--14.16) [77420]"}
@@ -368,8 +368,8 @@ procedure foo_1(x: Ref, y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert x.f == 42 -- pred4.vpr@15.5--15.21
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of x.f == 42
       assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (pred4.vpr@15.12--15.21) [77422]"}

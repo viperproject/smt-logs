@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-29 20:17:40
+// Date:         2025-01-04 00:46:59
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quasihavoc/havoc_qp1.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quasihavoc/havoc_qp1-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -400,11 +400,11 @@ procedure foo_1(x: Ref, y: Ref, z: Ref, s_2: (Set Ref)) returns ()
   var QPMask: MaskType;
   var a_4: Ref;
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm_temp_quasihavoc_: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var a_5: Ref;
   var a_5_1: Ref;
@@ -502,16 +502,16 @@ procedure foo_1(x: Ref, y: Ref, z: Ref, s_2: (Set Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: perm_temp_quasihavoc_ := perm(x.f) -- <no position>
     perm_temp_quasihavoc_ := Mask[x, f_7];
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(x.f, perm_temp_quasihavoc_) -- <no position>
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := perm_temp_quasihavoc_;
     assert {:msg "  Exhale might fail. Fraction perm_temp_quasihavoc_ might be negative. (<no position>) [77378]"}
       perm >= NoPerm;
@@ -537,8 +537,8 @@ procedure foo_1(x: Ref, y: Ref, z: Ref, s_2: (Set Ref)) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert y.f == 3 -- havoc_qp1.vpr@15.5--15.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of y.f == 3
       assert {:msg "  Assert might fail. There might be insufficient permission to access y.f (havoc_qp1.vpr@15.12--15.20) [77381]"}
@@ -548,8 +548,8 @@ procedure foo_1(x: Ref, y: Ref, z: Ref, s_2: (Set Ref)) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert z.f == 3 -- havoc_qp1.vpr@16.5--16.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of z.f == 3
       assert {:msg "  Assert might fail. There might be insufficient permission to access z.f (havoc_qp1.vpr@16.12--16.20) [77383]"}
@@ -559,8 +559,8 @@ procedure foo_1(x: Ref, y: Ref, z: Ref, s_2: (Set Ref)) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert x.g == 3 -- havoc_qp1.vpr@17.5--17.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of x.g == 3
       assert {:msg "  Assert might fail. There might be insufficient permission to access x.g (havoc_qp1.vpr@17.12--17.20) [77385]"}
@@ -570,8 +570,8 @@ procedure foo_1(x: Ref, y: Ref, z: Ref, s_2: (Set Ref)) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forall a: Ref :: { (a in s) } (a in s) && a != x ==> a.f == 3) -- havoc_qp1.vpr@19.5--19.58
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall a: Ref :: { (a in s) } (a in s) && a != x ==> a.f == 3)
       if (*) {

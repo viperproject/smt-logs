@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-29 20:27:30
+// Date:         2025-01-04 00:56:52
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/PackageStateConsolidation.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/PackageStateConsolidation-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -225,8 +225,8 @@ axiom !IsWandField(f_7);
 procedure test01(x: Ref, y: Ref, z: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
   var Ops_1Heap: HeapType;
   var Ops_1Mask: MaskType;
@@ -234,11 +234,11 @@ procedure test01(x: Ref, y: Ref, z: Ref) returns ()
   var UsedHeap: HeapType;
   var UsedMask: MaskType;
   var b_2: bool;
-  var Labellhs1Heap: HeapType;
   var Labellhs1Mask: MaskType;
+  var Labellhs1Heap: HeapType;
   var boolCur: bool;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var Used_1Heap: HeapType;
   var Used_1Mask: MaskType;
   var b_2_1: bool;
@@ -261,8 +261,8 @@ procedure test01(x: Ref, y: Ref, z: Ref) returns ()
   var Used_3Heap: HeapType;
   var Used_3Mask: MaskType;
   var b_5: bool;
-  var Labellhs3Heap: HeapType;
   var Labellhs3Mask: MaskType;
+  var Labellhs3Heap: HeapType;
   var boolCur_1: bool;
   var Used_4Heap: HeapType;
   var Used_4Mask: MaskType;
@@ -290,8 +290,8 @@ procedure test01(x: Ref, y: Ref, z: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale acc(x.f, 1 / 2) -- PackageStateConsolidation.vpr@8.3--8.23
     perm := 1 / 2;
@@ -349,15 +349,15 @@ procedure test01(x: Ref, y: Ref, z: Ref) returns ()
     
     // -- Translating statement: label lhs1 -- PackageStateConsolidation.vpr@13.11--13.24
       lhs1:
-      Labellhs1Heap := Ops_1Heap;
       Labellhs1Mask := Ops_1Mask;
+      Labellhs1Heap := Ops_1Heap;
       b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);
     boolCur := true;
     if (b_1_1) {
       
       // -- Translating statement: assert z != x -- PackageStateConsolidation.vpr@14.5--14.18
-        ExhaleWellDef0Heap := Ops_1Heap;
         ExhaleWellDef0Mask := Ops_1Mask;
+        ExhaleWellDef0Heap := Ops_1Heap;
         havoc Used_1Heap;
         Used_1Mask := ZeroMask;
         b_2_1 := b_2_1 && state(Used_1Heap, Used_1Mask);
@@ -369,8 +369,8 @@ procedure test01(x: Ref, y: Ref, z: Ref) returns ()
     if (b_1_1) {
       
       // -- Translating statement: exhale acc(x.f, write) -- PackageStateConsolidation.vpr@15.5--15.20
-        ExhaleWellDef0Heap := Ops_1Heap;
         ExhaleWellDef0Mask := Ops_1Mask;
+        ExhaleWellDef0Heap := Ops_1Heap;
         havoc Used_2Heap;
         Used_2Mask := ZeroMask;
         b_3 := b_3 && state(Used_2Heap, Used_2Mask);
@@ -486,15 +486,15 @@ procedure test01(x: Ref, y: Ref, z: Ref) returns ()
         
         // -- Translating statement: label lhs3 -- PackageStateConsolidation.vpr@18.13--18.26
           lhs3:
-          Labellhs3Heap := Ops_3Heap;
           Labellhs3Mask := Ops_3Mask;
+          Labellhs3Heap := Ops_3Heap;
           b_6 := b_6 && state(Ops_3Heap, Ops_3Mask);
         boolCur_1 := true;
         if (b_6 && b_1_1) {
           
           // -- Translating statement: exhale acc(y.f, write) -- PackageStateConsolidation.vpr@19.7--19.22
-            ExhaleWellDef0Heap := Ops_3Heap;
             ExhaleWellDef0Mask := Ops_3Mask;
+            ExhaleWellDef0Heap := Ops_3Heap;
             havoc Used_4Heap;
             Used_4Mask := ZeroMask;
             b_7 := b_7 && state(Used_4Heap, Used_4Mask);
@@ -610,8 +610,8 @@ procedure test01(x: Ref, y: Ref, z: Ref) returns ()
 procedure test02(x: Ref, z: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
   var Ops_5Heap: HeapType;
   var Ops_5Mask: MaskType;
@@ -619,11 +619,11 @@ procedure test02(x: Ref, z: Ref) returns ()
   var Used_7Heap: HeapType;
   var Used_7Mask: MaskType;
   var b_11: bool;
-  var Labellhs5Heap: HeapType;
   var Labellhs5Mask: MaskType;
+  var Labellhs5Heap: HeapType;
   var boolCur_2: bool;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var Used_8Heap: HeapType;
   var Used_8Mask: MaskType;
   var b_13: bool;
@@ -653,8 +653,8 @@ procedure test02(x: Ref, z: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale acc(x.f, 1 / 2) -- PackageStateConsolidation.vpr@26.3--26.23
     perm := 1 / 2;
@@ -696,8 +696,8 @@ procedure test02(x: Ref, z: Ref) returns ()
     
     // -- Translating statement: label lhs5 -- PackageStateConsolidation.vpr@28.11--28.24
       lhs5:
-      Labellhs5Heap := Ops_5Heap;
       Labellhs5Mask := Ops_5Mask;
+      Labellhs5Heap := Ops_5Heap;
       b_12 := b_12 && state(Ops_5Heap, Ops_5Mask);
     boolCur_2 := true;
     if (b_12) {
@@ -715,8 +715,8 @@ procedure test02(x: Ref, z: Ref) returns ()
     if (b_12) {
       
       // -- Translating statement: exhale acc(x.f, write) -- PackageStateConsolidation.vpr@30.5--30.20
-        ExhaleWellDef0Heap := Ops_5Heap;
         ExhaleWellDef0Mask := Ops_5Mask;
+        ExhaleWellDef0Heap := Ops_5Heap;
         havoc Used_8Heap;
         Used_8Mask := ZeroMask;
         b_13 := b_13 && state(Used_8Heap, Used_8Mask);
@@ -802,8 +802,8 @@ procedure test02(x: Ref, z: Ref) returns ()
 procedure test03(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
   var Ops_7Heap: HeapType;
   var Ops_7Mask: MaskType;
@@ -811,8 +811,8 @@ procedure test03(x: Ref) returns ()
   var Used_10Heap: HeapType;
   var Used_10Mask: MaskType;
   var b_16: bool;
-  var Labellhs7Heap: HeapType;
   var Labellhs7Mask: MaskType;
+  var Labellhs7Heap: HeapType;
   var boolCur_3: bool;
   var Ops_9Heap: HeapType;
   var Ops_9Mask: MaskType;
@@ -820,11 +820,11 @@ procedure test03(x: Ref) returns ()
   var Used_11Heap: HeapType;
   var Used_11Mask: MaskType;
   var b_18: bool;
-  var Labellhs9Heap: HeapType;
   var Labellhs9Mask: MaskType;
+  var Labellhs9Heap: HeapType;
   var boolCur_4: bool;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var Used_12Heap: HeapType;
   var Used_12Mask: MaskType;
   var b_20: bool;
@@ -856,8 +856,8 @@ procedure test03(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale acc(x.f, 1 / 3) -- PackageStateConsolidation.vpr@36.3--36.23
     perm := 1 / 3;
@@ -890,8 +890,8 @@ procedure test03(x: Ref) returns ()
     
     // -- Translating statement: label lhs7 -- PackageStateConsolidation.vpr@37.11--37.24
       lhs7:
-      Labellhs7Heap := Ops_7Heap;
       Labellhs7Mask := Ops_7Mask;
+      Labellhs7Heap := Ops_7Heap;
       b_17 := b_17 && state(Ops_7Heap, Ops_7Mask);
     boolCur_3 := true;
     if (b_17) {
@@ -928,8 +928,8 @@ procedure test03(x: Ref) returns ()
         
         // -- Translating statement: label lhs9 -- PackageStateConsolidation.vpr@39.13--39.26
           lhs9:
-          Labellhs9Heap := Ops_9Heap;
           Labellhs9Mask := Ops_9Mask;
+          Labellhs9Heap := Ops_9Heap;
           b_19 := b_19 && state(Ops_9Heap, Ops_9Mask);
         boolCur_4 := true;
         if (b_19 && b_17) {
@@ -949,8 +949,8 @@ procedure test03(x: Ref) returns ()
         if (b_19 && b_17) {
           
           // -- Translating statement: exhale acc(x.f, write) -- PackageStateConsolidation.vpr@41.7--41.22
-            ExhaleWellDef0Heap := Ops_9Heap;
             ExhaleWellDef0Mask := Ops_9Mask;
+            ExhaleWellDef0Heap := Ops_9Heap;
             havoc Used_12Heap;
             Used_12Mask := ZeroMask;
             b_20 := b_20 && state(Used_12Heap, Used_12Mask);
@@ -1066,20 +1066,20 @@ procedure test03(x: Ref) returns ()
 procedure test04(x: Ref, y: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var Ops_11Heap: HeapType;
   var Ops_11Mask: MaskType;
   var b_25: bool;
   var Used_15Heap: HeapType;
   var Used_15Mask: MaskType;
   var b_24_1: bool;
-  var Labellhs11Heap: HeapType;
   var Labellhs11Mask: MaskType;
+  var Labellhs11Heap: HeapType;
   var boolCur_5: bool;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var Used_16Heap: HeapType;
   var Used_16Mask: MaskType;
   var b_26: bool;
@@ -1099,8 +1099,8 @@ procedure test04(x: Ref, y: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: package true --* true {
   //   inhale acc(x.f, write)
@@ -1121,8 +1121,8 @@ procedure test04(x: Ref, y: Ref) returns ()
     
     // -- Translating statement: label lhs11 -- PackageStateConsolidation.vpr@48.11--48.24
       lhs11:
-      Labellhs11Heap := Ops_11Heap;
       Labellhs11Mask := Ops_11Mask;
+      Labellhs11Heap := Ops_11Heap;
       b_25 := b_25 && state(Ops_11Heap, Ops_11Mask);
     boolCur_5 := true;
     if (b_25) {
@@ -1152,8 +1152,8 @@ procedure test04(x: Ref, y: Ref) returns ()
     if (b_25) {
       
       // -- Translating statement: assert x != y -- PackageStateConsolidation.vpr@51.5--51.18
-        ExhaleWellDef0Heap := Ops_11Heap;
         ExhaleWellDef0Mask := Ops_11Mask;
+        ExhaleWellDef0Heap := Ops_11Heap;
         havoc Used_16Heap;
         Used_16Mask := ZeroMask;
         b_26 := b_26 && state(Used_16Heap, Used_16Mask);
@@ -1179,20 +1179,20 @@ procedure test04(x: Ref, y: Ref) returns ()
 procedure test05(x: Ref, y: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var Ops_13Heap: HeapType;
   var Ops_13Mask: MaskType;
   var b_29: bool;
   var Used_18Heap: HeapType;
   var Used_18Mask: MaskType;
   var b_28: bool;
-  var Labellhs13Heap: HeapType;
   var Labellhs13Mask: MaskType;
+  var Labellhs13Heap: HeapType;
   var boolCur_6: bool;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var Used_19Heap: HeapType;
   var Used_19Mask: MaskType;
   var b_30: bool;
@@ -1212,8 +1212,8 @@ procedure test05(x: Ref, y: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: package true --* true {
   //   inhale acc(x.f, 1 / 2)
@@ -1236,8 +1236,8 @@ procedure test05(x: Ref, y: Ref) returns ()
     
     // -- Translating statement: label lhs13 -- PackageStateConsolidation.vpr@57.11--57.24
       lhs13:
-      Labellhs13Heap := Ops_13Heap;
       Labellhs13Mask := Ops_13Mask;
+      Labellhs13Heap := Ops_13Heap;
       b_29 := b_29 && state(Ops_13Heap, Ops_13Mask);
     boolCur_6 := true;
     if (b_29) {
@@ -1299,8 +1299,8 @@ procedure test05(x: Ref, y: Ref) returns ()
     if (b_29) {
       
       // -- Translating statement: assert x != y -- PackageStateConsolidation.vpr@61.5--61.18
-        ExhaleWellDef0Heap := Ops_13Heap;
         ExhaleWellDef0Mask := Ops_13Mask;
+        ExhaleWellDef0Heap := Ops_13Heap;
         havoc Used_19Heap;
         Used_19Mask := ZeroMask;
         b_30 := b_30 && state(Used_19Heap, Used_19Mask);

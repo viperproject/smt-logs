@@ -983,7 +983,7 @@
  :skolemid |34|
  :pattern ( (select (|Set#Union_9453| a@@22 b@@15) o@@5))
 )))
-; Valid
+; Invalid
 (push 1)
 (declare-fun ControlFlow (Int Int) Int)
 (declare-fun QPMask@1 () T@PolymorphicMapType_15636)

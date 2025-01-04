@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-29 19:54:12
+; Started: 2025-01-04 00:23:03
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -2656,19 +2656,19 @@
 (assert (forall ((s@$ $Snap) (self@0@00 $Ref)) (!
   (= (tuple___val__%limited s@$ self@0@00) (tuple___val__ s@$ self@0@00))
   :pattern ((tuple___val__ s@$ self@0@00))
-  :qid |quant-u-2693|)))
+  :qid |quant-u-2757|)))
 (assert (forall ((s@$ $Snap) (self@0@00 $Ref)) (!
   (tuple___val__%stateless self@0@00)
   :pattern ((tuple___val__%limited s@$ self@0@00))
-  :qid |quant-u-2694|)))
+  :qid |quant-u-2758|)))
 (assert (forall ((s@$ $Snap) (self@2@00 $Ref)) (!
   (= (tuple___len__%limited s@$ self@2@00) (tuple___len__ s@$ self@2@00))
   :pattern ((tuple___len__ s@$ self@2@00))
-  :qid |quant-u-2695|)))
+  :qid |quant-u-2759|)))
 (assert (forall ((s@$ $Snap) (self@2@00 $Ref)) (!
   (tuple___len__%stateless self@2@00)
   :pattern ((tuple___len__%limited s@$ self@2@00))
-  :qid |quant-u-2696|)))
+  :qid |quant-u-2760|)))
 (assert (forall ((s@$ $Snap) (self@2@00 $Ref)) (!
   (let ((result@3@00 (tuple___len__%limited s@$ self@2@00))) (=>
     (tuple___len__%precondition s@$ self@2@00)
@@ -2678,69 +2678,69 @@
         (Seq_length (tuple_args<Seq<PyType>> (typeof<PyType> self@2@00))))
       (= result@3@00 (Seq_length (tuple___val__ $Snap.unit self@2@00))))))
   :pattern ((tuple___len__%limited s@$ self@2@00))
-  :qid |quant-u-2745|)))
+  :qid |quant-u-2809|)))
 (assert (forall ((s@$ $Snap) (self@2@00 $Ref)) (!
   (let ((result@3@00 (tuple___len__%limited s@$ self@2@00))) true)
   :pattern ((tuple___len__%limited s@$ self@2@00))
-  :qid |quant-u-2746|)))
+  :qid |quant-u-2810|)))
 (assert (forall ((s@$ $Snap) (self@2@00 $Ref)) (!
   (let ((result@3@00 (tuple___len__%limited s@$ self@2@00))) (=>
     (tuple___len__%precondition s@$ self@2@00)
     (tuple___val__%precondition $Snap.unit self@2@00)))
   :pattern ((tuple___len__%limited s@$ self@2@00))
-  :qid |quant-u-2747|)))
+  :qid |quant-u-2811|)))
 (assert (forall ((s@$ $Snap) (self@4@00 $Ref)) (!
   (= (str___val__%limited s@$ self@4@00) (str___val__ s@$ self@4@00))
   :pattern ((str___val__ s@$ self@4@00))
-  :qid |quant-u-2697|)))
+  :qid |quant-u-2761|)))
 (assert (forall ((s@$ $Snap) (self@4@00 $Ref)) (!
   (str___val__%stateless self@4@00)
   :pattern ((str___val__%limited s@$ self@4@00))
-  :qid |quant-u-2698|)))
+  :qid |quant-u-2762|)))
 (assert (forall ((s@$ $Snap) (self@6@00 $Ref)) (!
   (= (str___len__%limited s@$ self@6@00) (str___len__ s@$ self@6@00))
   :pattern ((str___len__ s@$ self@6@00))
-  :qid |quant-u-2699|)))
+  :qid |quant-u-2763|)))
 (assert (forall ((s@$ $Snap) (self@6@00 $Ref)) (!
   (str___len__%stateless self@6@00)
   :pattern ((str___len__%limited s@$ self@6@00))
-  :qid |quant-u-2700|)))
+  :qid |quant-u-2764|)))
 (assert (forall ((s@$ $Snap) (self@6@00 $Ref)) (!
   (let ((result@7@00 (str___len__%limited s@$ self@6@00))) (=>
     (str___len__%precondition s@$ self@6@00)
     (>= result@7@00 0)))
   :pattern ((str___len__%limited s@$ self@6@00))
-  :qid |quant-u-2748|)))
+  :qid |quant-u-2812|)))
 (assert (forall ((s@$ $Snap) (self@6@00 $Ref)) (!
   (let ((result@7@00 (str___len__%limited s@$ self@6@00))) true)
   :pattern ((str___len__%limited s@$ self@6@00))
-  :qid |quant-u-2749|)))
+  :qid |quant-u-2813|)))
 (assert (forall ((s@$ $Snap) (id@8@00 Int)) (!
   (= (_isDefined%limited s@$ id@8@00) (_isDefined s@$ id@8@00))
   :pattern ((_isDefined s@$ id@8@00))
-  :qid |quant-u-2701|)))
+  :qid |quant-u-2765|)))
 (assert (forall ((s@$ $Snap) (id@8@00 Int)) (!
   (_isDefined%stateless id@8@00)
   :pattern ((_isDefined%limited s@$ id@8@00))
-  :qid |quant-u-2702|)))
+  :qid |quant-u-2766|)))
 (assert (forall ((s@$ $Snap) (box@10@00 $Ref)) (!
   (= (PSeq___sil_seq__%limited s@$ box@10@00) (PSeq___sil_seq__ s@$ box@10@00))
   :pattern ((PSeq___sil_seq__ s@$ box@10@00))
-  :qid |quant-u-2703|)))
+  :qid |quant-u-2767|)))
 (assert (forall ((s@$ $Snap) (box@10@00 $Ref)) (!
   (PSeq___sil_seq__%stateless box@10@00)
   :pattern ((PSeq___sil_seq__%limited s@$ box@10@00))
-  :qid |quant-u-2704|)))
+  :qid |quant-u-2768|)))
 (assert (forall ((s@$ $Snap) (self@12@00 $Ref) (key@13@00 Int)) (!
   (=
     (tuple___getitem__%limited s@$ self@12@00 key@13@00)
     (tuple___getitem__ s@$ self@12@00 key@13@00))
   :pattern ((tuple___getitem__ s@$ self@12@00 key@13@00))
-  :qid |quant-u-2705|)))
+  :qid |quant-u-2769|)))
 (assert (forall ((s@$ $Snap) (self@12@00 $Ref) (key@13@00 Int)) (!
   (tuple___getitem__%stateless self@12@00 key@13@00)
   :pattern ((tuple___getitem__%limited s@$ self@12@00 key@13@00))
-  :qid |quant-u-2706|)))
+  :qid |quant-u-2770|)))
 (assert (forall ((s@$ $Snap) (self@12@00 $Ref) (key@13@00 Int)) (!
   (let ((result@14@00 (tuple___getitem__%limited s@$ self@12@00 key@13@00))) (=>
     (tuple___getitem__%precondition s@$ self@12@00 key@13@00)
@@ -2766,11 +2766,11 @@
             (tuple___val__ $Snap.unit self@12@00)
             (+ (tuple___len__ $Snap.unit self@12@00) key@13@00)))))))
   :pattern ((tuple___getitem__%limited s@$ self@12@00 key@13@00))
-  :qid |quant-u-2750|)))
+  :qid |quant-u-2814|)))
 (assert (forall ((s@$ $Snap) (self@12@00 $Ref) (key@13@00 Int)) (!
   (let ((result@14@00 (tuple___getitem__%limited s@$ self@12@00 key@13@00))) true)
   :pattern ((tuple___getitem__%limited s@$ self@12@00 key@13@00))
-  :qid |quant-u-2751|)))
+  :qid |quant-u-2815|)))
 (assert (forall ((s@$ $Snap) (self@12@00 $Ref) (key@13@00 Int)) (!
   (let ((result@14@00 (tuple___getitem__%limited s@$ self@12@00 key@13@00))) (=>
     (and
@@ -2778,7 +2778,7 @@
       (< key@13@00 0))
     (tuple___len__%precondition $Snap.unit self@12@00)))
   :pattern ((tuple___getitem__%limited s@$ self@12@00 key@13@00))
-  :qid |quant-u-2752|)))
+  :qid |quant-u-2816|)))
 (assert (forall ((s@$ $Snap) (self@12@00 $Ref) (key@13@00 Int)) (!
   (let ((result@14@00 (tuple___getitem__%limited s@$ self@12@00 key@13@00))) (=>
     (and
@@ -2786,7 +2786,7 @@
       (>= key@13@00 0))
     (tuple___val__%precondition $Snap.unit self@12@00)))
   :pattern ((tuple___getitem__%limited s@$ self@12@00 key@13@00))
-  :qid |quant-u-2753|)))
+  :qid |quant-u-2817|)))
 (assert (forall ((s@$ $Snap) (self@12@00 $Ref) (key@13@00 Int)) (!
   (let ((result@14@00 (tuple___getitem__%limited s@$ self@12@00 key@13@00))) (=>
     (and
@@ -2796,37 +2796,37 @@
       (tuple___val__%precondition $Snap.unit self@12@00)
       (tuple___len__%precondition $Snap.unit self@12@00))))
   :pattern ((tuple___getitem__%limited s@$ self@12@00 key@13@00))
-  :qid |quant-u-2754|)))
+  :qid |quant-u-2818|)))
 (assert (forall ((s@$ $Snap) (box@15@00 $Ref)) (!
   (= (bool___unbox__%limited s@$ box@15@00) (bool___unbox__ s@$ box@15@00))
   :pattern ((bool___unbox__ s@$ box@15@00))
-  :qid |quant-u-2707|)))
+  :qid |quant-u-2771|)))
 (assert (forall ((s@$ $Snap) (box@15@00 $Ref)) (!
   (bool___unbox__%stateless box@15@00)
   :pattern ((bool___unbox__%limited s@$ box@15@00))
-  :qid |quant-u-2708|)))
+  :qid |quant-u-2772|)))
 (assert (forall ((s@$ $Snap) (box@15@00 $Ref)) (!
   (let ((result@16@00 (bool___unbox__%limited s@$ box@15@00))) (=>
     (bool___unbox__%precondition s@$ box@15@00)
     (= (__prim__bool___box__%limited $Snap.unit result@16@00) box@15@00)))
   :pattern ((bool___unbox__%limited s@$ box@15@00))
-  :qid |quant-u-2755|)))
+  :qid |quant-u-2819|)))
 (assert (forall ((s@$ $Snap) (box@15@00 $Ref)) (!
   (let ((result@16@00 (bool___unbox__%limited s@$ box@15@00))) (=>
     (bool___unbox__%precondition s@$ box@15@00)
     (__prim__bool___box__%precondition $Snap.unit result@16@00)))
   :pattern ((bool___unbox__%limited s@$ box@15@00))
-  :qid |quant-u-2756|)))
+  :qid |quant-u-2820|)))
 (assert (forall ((s@$ $Snap) (prim@17@00 Bool)) (!
   (=
     (__prim__bool___box__%limited s@$ prim@17@00)
     (__prim__bool___box__ s@$ prim@17@00))
   :pattern ((__prim__bool___box__ s@$ prim@17@00))
-  :qid |quant-u-2709|)))
+  :qid |quant-u-2773|)))
 (assert (forall ((s@$ $Snap) (prim@17@00 Bool)) (!
   (__prim__bool___box__%stateless prim@17@00)
   :pattern ((__prim__bool___box__%limited s@$ prim@17@00))
-  :qid |quant-u-2710|)))
+  :qid |quant-u-2774|)))
 (assert (forall ((s@$ $Snap) (prim@17@00 Bool)) (!
   (let ((result@18@00 (__prim__bool___box__%limited s@$ prim@17@00))) (=>
     (__prim__bool___box__%precondition s@$ prim@17@00)
@@ -2835,31 +2835,31 @@
       (= (bool___unbox__%limited $Snap.unit result@18@00) prim@17@00)
       (= (int___unbox__%limited $Snap.unit result@18@00) (ite prim@17@00 1 0)))))
   :pattern ((__prim__bool___box__%limited s@$ prim@17@00))
-  :qid |quant-u-2757|)))
+  :qid |quant-u-2821|)))
 (assert (forall ((s@$ $Snap) (prim@17@00 Bool)) (!
   (let ((result@18@00 (__prim__bool___box__%limited s@$ prim@17@00))) true)
   :pattern ((__prim__bool___box__%limited s@$ prim@17@00))
-  :qid |quant-u-2758|)))
+  :qid |quant-u-2822|)))
 (assert (forall ((s@$ $Snap) (prim@17@00 Bool)) (!
   (let ((result@18@00 (__prim__bool___box__%limited s@$ prim@17@00))) (=>
     (__prim__bool___box__%precondition s@$ prim@17@00)
     (bool___unbox__%precondition $Snap.unit result@18@00)))
   :pattern ((__prim__bool___box__%limited s@$ prim@17@00))
-  :qid |quant-u-2759|)))
+  :qid |quant-u-2823|)))
 (assert (forall ((s@$ $Snap) (prim@17@00 Bool)) (!
   (let ((result@18@00 (__prim__bool___box__%limited s@$ prim@17@00))) (=>
     (__prim__bool___box__%precondition s@$ prim@17@00)
     (int___unbox__%precondition $Snap.unit result@18@00)))
   :pattern ((__prim__bool___box__%limited s@$ prim@17@00))
-  :qid |quant-u-2760|)))
+  :qid |quant-u-2824|)))
 (assert (forall ((s@$ $Snap) (box@19@00 $Ref)) (!
   (= (int___unbox__%limited s@$ box@19@00) (int___unbox__ s@$ box@19@00))
   :pattern ((int___unbox__ s@$ box@19@00))
-  :qid |quant-u-2711|)))
+  :qid |quant-u-2775|)))
 (assert (forall ((s@$ $Snap) (box@19@00 $Ref)) (!
   (int___unbox__%stateless box@19@00)
   :pattern ((int___unbox__%limited s@$ box@19@00))
-  :qid |quant-u-2712|)))
+  :qid |quant-u-2776|)))
 (assert (forall ((s@$ $Snap) (box@19@00 $Ref)) (!
   (let ((result@20@00 (int___unbox__%limited s@$ box@19@00))) (=>
     (int___unbox__%precondition s@$ box@19@00)
@@ -2874,7 +2874,7 @@
           (__prim__bool___box__%limited $Snap.unit (not (= result@20@00 0)))
           box@19@00)))))
   :pattern ((int___unbox__%limited s@$ box@19@00))
-  :qid |quant-u-2761|)))
+  :qid |quant-u-2825|)))
 (assert (forall ((s@$ $Snap) (box@19@00 $Ref)) (!
   (let ((result@20@00 (int___unbox__%limited s@$ box@19@00))) (=>
     (and
@@ -2883,7 +2883,7 @@
         (issubtype<Bool> (typeof<PyType> box@19@00) (as bool<PyType>  PyType))))
     (__prim__int___box__%precondition $Snap.unit result@20@00)))
   :pattern ((int___unbox__%limited s@$ box@19@00))
-  :qid |quant-u-2762|)))
+  :qid |quant-u-2826|)))
 (assert (forall ((s@$ $Snap) (box@19@00 $Ref)) (!
   (let ((result@20@00 (int___unbox__%limited s@$ box@19@00))) (=>
     (and
@@ -2891,17 +2891,17 @@
       (issubtype<Bool> (typeof<PyType> box@19@00) (as bool<PyType>  PyType)))
     (__prim__bool___box__%precondition $Snap.unit (not (= result@20@00 0)))))
   :pattern ((int___unbox__%limited s@$ box@19@00))
-  :qid |quant-u-2763|)))
+  :qid |quant-u-2827|)))
 (assert (forall ((s@$ $Snap) (prim@21@00 Int)) (!
   (=
     (__prim__int___box__%limited s@$ prim@21@00)
     (__prim__int___box__ s@$ prim@21@00))
   :pattern ((__prim__int___box__ s@$ prim@21@00))
-  :qid |quant-u-2713|)))
+  :qid |quant-u-2777|)))
 (assert (forall ((s@$ $Snap) (prim@21@00 Int)) (!
   (__prim__int___box__%stateless prim@21@00)
   :pattern ((__prim__int___box__%limited s@$ prim@21@00))
-  :qid |quant-u-2714|)))
+  :qid |quant-u-2778|)))
 (assert (forall ((s@$ $Snap) (prim@21@00 Int)) (!
   (let ((result@22@00 (__prim__int___box__%limited s@$ prim@21@00))) (=>
     (__prim__int___box__%precondition s@$ prim@21@00)
@@ -2909,35 +2909,35 @@
       (= (typeof<PyType> result@22@00) (as int<PyType>  PyType))
       (= (int___unbox__%limited $Snap.unit result@22@00) prim@21@00))))
   :pattern ((__prim__int___box__%limited s@$ prim@21@00))
-  :qid |quant-u-2764|)))
+  :qid |quant-u-2828|)))
 (assert (forall ((s@$ $Snap) (prim@21@00 Int)) (!
   (let ((result@22@00 (__prim__int___box__%limited s@$ prim@21@00))) true)
   :pattern ((__prim__int___box__%limited s@$ prim@21@00))
-  :qid |quant-u-2765|)))
+  :qid |quant-u-2829|)))
 (assert (forall ((s@$ $Snap) (prim@21@00 Int)) (!
   (let ((result@22@00 (__prim__int___box__%limited s@$ prim@21@00))) (=>
     (__prim__int___box__%precondition s@$ prim@21@00)
     (int___unbox__%precondition $Snap.unit result@22@00)))
   :pattern ((__prim__int___box__%limited s@$ prim@21@00))
-  :qid |quant-u-2766|)))
+  :qid |quant-u-2830|)))
 (assert (forall ((s@$ $Snap) (r@23@00 $Ref)) (!
   (= (Level%limited s@$ r@23@00) (Level s@$ r@23@00))
   :pattern ((Level s@$ r@23@00))
-  :qid |quant-u-2715|)))
+  :qid |quant-u-2779|)))
 (assert (forall ((s@$ $Snap) (r@23@00 $Ref)) (!
   (Level%stateless r@23@00)
   :pattern ((Level%limited s@$ r@23@00))
-  :qid |quant-u-2716|)))
+  :qid |quant-u-2780|)))
 (assert (forall ((s@$ $Snap) (len@25@00 Int) (value@26@00 Int)) (!
   (=
     (str___create__%limited s@$ len@25@00 value@26@00)
     (str___create__ s@$ len@25@00 value@26@00))
   :pattern ((str___create__ s@$ len@25@00 value@26@00))
-  :qid |quant-u-2717|)))
+  :qid |quant-u-2781|)))
 (assert (forall ((s@$ $Snap) (len@25@00 Int) (value@26@00 Int)) (!
   (str___create__%stateless len@25@00 value@26@00)
   :pattern ((str___create__%limited s@$ len@25@00 value@26@00))
-  :qid |quant-u-2718|)))
+  :qid |quant-u-2782|)))
 (assert (forall ((s@$ $Snap) (len@25@00 Int) (value@26@00 Int)) (!
   (let ((result@27@00 (str___create__%limited s@$ len@25@00 value@26@00))) (=>
     (str___create__%precondition s@$ len@25@00 value@26@00)
@@ -2946,59 +2946,59 @@
       (= (str___val__ $Snap.unit result@27@00) value@26@00)
       (= (typeof<PyType> result@27@00) (as str<PyType>  PyType)))))
   :pattern ((str___create__%limited s@$ len@25@00 value@26@00))
-  :qid |quant-u-2767|)))
+  :qid |quant-u-2831|)))
 (assert (forall ((s@$ $Snap) (len@25@00 Int) (value@26@00 Int)) (!
   (let ((result@27@00 (str___create__%limited s@$ len@25@00 value@26@00))) (=>
     (str___create__%precondition s@$ len@25@00 value@26@00)
     (str___len__%precondition $Snap.unit result@27@00)))
   :pattern ((str___create__%limited s@$ len@25@00 value@26@00))
-  :qid |quant-u-2768|)))
+  :qid |quant-u-2832|)))
 (assert (forall ((s@$ $Snap) (len@25@00 Int) (value@26@00 Int)) (!
   (let ((result@27@00 (str___create__%limited s@$ len@25@00 value@26@00))) (=>
     (str___create__%precondition s@$ len@25@00 value@26@00)
     (str___val__%precondition $Snap.unit result@27@00)))
   :pattern ((str___create__%limited s@$ len@25@00 value@26@00))
-  :qid |quant-u-2769|)))
+  :qid |quant-u-2833|)))
 (assert (forall ((s@$ $Snap) (len@25@00 Int) (value@26@00 Int)) (!
   (let ((result@27@00 (str___create__%limited s@$ len@25@00 value@26@00))) true)
   :pattern ((str___create__%limited s@$ len@25@00 value@26@00))
-  :qid |quant-u-2770|)))
+  :qid |quant-u-2834|)))
 (assert (forall ((s@$ $Snap)) (!
   (= (__file__%limited s@$) (__file__ s@$))
   :pattern ((__file__ s@$))
-  :qid |quant-u-2719|)))
+  :qid |quant-u-2783|)))
 (assert (forall ((s@$ $Snap)) (!
   (as __file__%stateless  Bool)
   :pattern ((__file__%limited s@$))
-  :qid |quant-u-2720|)))
+  :qid |quant-u-2784|)))
 (assert (forall ((s@$ $Snap) (val@29@00 $Ref) (id@30@00 Int)) (!
   (=
     (_checkDefined%limited s@$ val@29@00 id@30@00)
     (_checkDefined s@$ val@29@00 id@30@00))
   :pattern ((_checkDefined s@$ val@29@00 id@30@00))
-  :qid |quant-u-2721|)))
+  :qid |quant-u-2785|)))
 (assert (forall ((s@$ $Snap) (val@29@00 $Ref) (id@30@00 Int)) (!
   (_checkDefined%stateless val@29@00 id@30@00)
   :pattern ((_checkDefined%limited s@$ val@29@00 id@30@00))
-  :qid |quant-u-2722|)))
+  :qid |quant-u-2786|)))
 (assert (forall ((s@$ $Snap) (val@29@00 $Ref) (id@30@00 Int)) (!
   (=>
     (_checkDefined%precondition s@$ val@29@00 id@30@00)
     (= (_checkDefined s@$ val@29@00 id@30@00) val@29@00))
   :pattern ((_checkDefined s@$ val@29@00 id@30@00))
-  :qid |quant-u-2771|)))
+  :qid |quant-u-2835|)))
 (assert (forall ((s@$ $Snap) (val@29@00 $Ref) (id@30@00 Int)) (!
   true
   :pattern ((_checkDefined s@$ val@29@00 id@30@00))
-  :qid |quant-u-2772|)))
+  :qid |quant-u-2836|)))
 (assert (forall ((s@$ $Snap) (self@32@00 $Ref)) (!
   (= (list___sil_seq__%limited s@$ self@32@00) (list___sil_seq__ s@$ self@32@00))
   :pattern ((list___sil_seq__ s@$ self@32@00))
-  :qid |quant-u-2723|)))
+  :qid |quant-u-2787|)))
 (assert (forall ((s@$ $Snap) (self@32@00 $Ref)) (!
   (list___sil_seq__%stateless self@32@00)
   :pattern ((list___sil_seq__%limited s@$ self@32@00))
-  :qid |quant-u-2724|)))
+  :qid |quant-u-2788|)))
 (assert (forall ((s@$ $Snap) (self@32@00 $Ref)) (!
   (and
     ($Perm.isReadVar $k@73@00)
@@ -3006,21 +3006,21 @@
       (list___sil_seq__%precondition s@$ self@32@00)
       (= (list___sil_seq__ s@$ self@32@00) ($SortWrappers.$SnapToSeq<$Ref> s@$))))
   :pattern ((list___sil_seq__ s@$ self@32@00))
-  :qid |quant-u-2773|)))
+  :qid |quant-u-2837|)))
 (assert (forall ((s@$ $Snap) (self@32@00 $Ref)) (!
   true
   :pattern ((list___sil_seq__ s@$ self@32@00))
-  :qid |quant-u-2774|)))
+  :qid |quant-u-2838|)))
 (assert (forall ((s@$ $Snap) (prim@34@00 Seq<$Ref>) (cont_type@35@00 PyType)) (!
   (=
     (PSeq___create__%limited s@$ prim@34@00 cont_type@35@00)
     (PSeq___create__ s@$ prim@34@00 cont_type@35@00))
   :pattern ((PSeq___create__ s@$ prim@34@00 cont_type@35@00))
-  :qid |quant-u-2725|)))
+  :qid |quant-u-2789|)))
 (assert (forall ((s@$ $Snap) (prim@34@00 Seq<$Ref>) (cont_type@35@00 PyType)) (!
   (PSeq___create__%stateless prim@34@00 cont_type@35@00)
   :pattern ((PSeq___create__%limited s@$ prim@34@00 cont_type@35@00))
-  :qid |quant-u-2726|)))
+  :qid |quant-u-2790|)))
 (assert (forall ((s@$ $Snap) (prim@34@00 Seq<$Ref>) (cont_type@35@00 PyType)) (!
   (let ((result@36@00 (PSeq___create__%limited s@$ prim@34@00 cont_type@35@00))) (=>
     (PSeq___create__%precondition s@$ prim@34@00 cont_type@35@00)
@@ -3028,27 +3028,27 @@
       (= (typeof<PyType> result@36@00) (PSeq<PyType> cont_type@35@00))
       (Seq_equal (PSeq___sil_seq__ $Snap.unit result@36@00) prim@34@00))))
   :pattern ((PSeq___create__%limited s@$ prim@34@00 cont_type@35@00))
-  :qid |quant-u-2775|)))
+  :qid |quant-u-2839|)))
 (assert (forall ((s@$ $Snap) (prim@34@00 Seq<$Ref>) (cont_type@35@00 PyType)) (!
   (let ((result@36@00 (PSeq___create__%limited s@$ prim@34@00 cont_type@35@00))) true)
   :pattern ((PSeq___create__%limited s@$ prim@34@00 cont_type@35@00))
-  :qid |quant-u-2776|)))
+  :qid |quant-u-2840|)))
 (assert (forall ((s@$ $Snap) (prim@34@00 Seq<$Ref>) (cont_type@35@00 PyType)) (!
   (let ((result@36@00 (PSeq___create__%limited s@$ prim@34@00 cont_type@35@00))) (=>
     (PSeq___create__%precondition s@$ prim@34@00 cont_type@35@00)
     (PSeq___sil_seq__%precondition $Snap.unit result@36@00)))
   :pattern ((PSeq___create__%limited s@$ prim@34@00 cont_type@35@00))
-  :qid |quant-u-2777|)))
+  :qid |quant-u-2841|)))
 (assert (forall ((s@$ $Snap) (arg0@37@00 $Ref) (arg1@38@00 $Ref) (t0@39@00 PyType) (t1@40@00 PyType) (ctr@41@00 Int)) (!
   (=
     (tuple___create2__%limited s@$ arg0@37@00 arg1@38@00 t0@39@00 t1@40@00 ctr@41@00)
     (tuple___create2__ s@$ arg0@37@00 arg1@38@00 t0@39@00 t1@40@00 ctr@41@00))
   :pattern ((tuple___create2__ s@$ arg0@37@00 arg1@38@00 t0@39@00 t1@40@00 ctr@41@00))
-  :qid |quant-u-2727|)))
+  :qid |quant-u-2791|)))
 (assert (forall ((s@$ $Snap) (arg0@37@00 $Ref) (arg1@38@00 $Ref) (t0@39@00 PyType) (t1@40@00 PyType) (ctr@41@00 Int)) (!
   (tuple___create2__%stateless arg0@37@00 arg1@38@00 t0@39@00 t1@40@00 ctr@41@00)
   :pattern ((tuple___create2__%limited s@$ arg0@37@00 arg1@38@00 t0@39@00 t1@40@00 ctr@41@00))
-  :qid |quant-u-2728|)))
+  :qid |quant-u-2792|)))
 (assert (forall ((s@$ $Snap) (arg0@37@00 $Ref) (arg1@38@00 $Ref) (t0@39@00 PyType) (t1@40@00 PyType) (ctr@41@00 Int)) (!
   (let ((result@42@00 (tuple___create2__%limited s@$ arg0@37@00 arg1@38@00 t0@39@00 t1@40@00 ctr@41@00))) (=>
     (tuple___create2__%precondition s@$ arg0@37@00 arg1@38@00 t0@39@00 t1@40@00 ctr@41@00)
@@ -3071,29 +3071,29 @@
           (= (tuple___getitem__ $Snap.unit result@42@00 0) arg0@37@00)
           (= (tuple___getitem__ $Snap.unit result@42@00 1) arg1@38@00))))))
   :pattern ((tuple___create2__%limited s@$ arg0@37@00 arg1@38@00 t0@39@00 t1@40@00 ctr@41@00))
-  :qid |quant-u-2778|)))
+  :qid |quant-u-2842|)))
 (assert (forall ((s@$ $Snap) (arg0@37@00 $Ref) (arg1@38@00 $Ref) (t0@39@00 PyType) (t1@40@00 PyType) (ctr@41@00 Int)) (!
   (let ((result@42@00 (tuple___create2__%limited s@$ arg0@37@00 arg1@38@00 t0@39@00 t1@40@00 ctr@41@00))) true)
   :pattern ((tuple___create2__%limited s@$ arg0@37@00 arg1@38@00 t0@39@00 t1@40@00 ctr@41@00))
-  :qid |quant-u-2779|)))
+  :qid |quant-u-2843|)))
 (assert (forall ((s@$ $Snap) (arg0@37@00 $Ref) (arg1@38@00 $Ref) (t0@39@00 PyType) (t1@40@00 PyType) (ctr@41@00 Int)) (!
   (let ((result@42@00 (tuple___create2__%limited s@$ arg0@37@00 arg1@38@00 t0@39@00 t1@40@00 ctr@41@00))) true)
   :pattern ((tuple___create2__%limited s@$ arg0@37@00 arg1@38@00 t0@39@00 t1@40@00 ctr@41@00))
-  :qid |quant-u-2780|)))
+  :qid |quant-u-2844|)))
 (assert (forall ((s@$ $Snap) (arg0@37@00 $Ref) (arg1@38@00 $Ref) (t0@39@00 PyType) (t1@40@00 PyType) (ctr@41@00 Int)) (!
   (let ((result@42@00 (tuple___create2__%limited s@$ arg0@37@00 arg1@38@00 t0@39@00 t1@40@00 ctr@41@00))) true)
   :pattern ((tuple___create2__%limited s@$ arg0@37@00 arg1@38@00 t0@39@00 t1@40@00 ctr@41@00))
-  :qid |quant-u-2781|)))
+  :qid |quant-u-2845|)))
 (assert (forall ((s@$ $Snap) (arg0@37@00 $Ref) (arg1@38@00 $Ref) (t0@39@00 PyType) (t1@40@00 PyType) (ctr@41@00 Int)) (!
   (let ((result@42@00 (tuple___create2__%limited s@$ arg0@37@00 arg1@38@00 t0@39@00 t1@40@00 ctr@41@00))) true)
   :pattern ((tuple___create2__%limited s@$ arg0@37@00 arg1@38@00 t0@39@00 t1@40@00 ctr@41@00))
-  :qid |quant-u-2782|)))
+  :qid |quant-u-2846|)))
 (assert (forall ((s@$ $Snap) (arg0@37@00 $Ref) (arg1@38@00 $Ref) (t0@39@00 PyType) (t1@40@00 PyType) (ctr@41@00 Int)) (!
   (let ((result@42@00 (tuple___create2__%limited s@$ arg0@37@00 arg1@38@00 t0@39@00 t1@40@00 ctr@41@00))) (=>
     (tuple___create2__%precondition s@$ arg0@37@00 arg1@38@00 t0@39@00 t1@40@00 ctr@41@00)
     (tuple___val__%precondition $Snap.unit result@42@00)))
   :pattern ((tuple___create2__%limited s@$ arg0@37@00 arg1@38@00 t0@39@00 t1@40@00 ctr@41@00))
-  :qid |quant-u-2783|)))
+  :qid |quant-u-2847|)))
 (assert (forall ((s@$ $Snap) (arg0@37@00 $Ref) (arg1@38@00 $Ref) (t0@39@00 PyType) (t1@40@00 PyType) (ctr@41@00 Int)) (!
   (let ((result@42@00 (tuple___create2__%limited s@$ arg0@37@00 arg1@38@00 t0@39@00 t1@40@00 ctr@41@00))) (=>
     (tuple___create2__%precondition s@$ arg0@37@00 arg1@38@00 t0@39@00 t1@40@00 ctr@41@00)
@@ -3107,17 +3107,17 @@
             (= (tuple___getitem__ $Snap.unit result@42@00 0) arg0@37@00)
             (tuple___getitem__%precondition $Snap.unit result@42@00 1)))))))
   :pattern ((tuple___create2__%limited s@$ arg0@37@00 arg1@38@00 t0@39@00 t1@40@00 ctr@41@00))
-  :qid |quant-u-2784|)))
+  :qid |quant-u-2848|)))
 (assert (forall ((s@$ $Snap) (map@43@00 Seq<Measure$>) (key@44@00 $Ref) (value@45@00 Int)) (!
   (=
     (Measure$check%limited s@$ map@43@00 key@44@00 value@45@00)
     (Measure$check s@$ map@43@00 key@44@00 value@45@00))
   :pattern ((Measure$check s@$ map@43@00 key@44@00 value@45@00))
-  :qid |quant-u-2729|)))
+  :qid |quant-u-2793|)))
 (assert (forall ((s@$ $Snap) (map@43@00 Seq<Measure$>) (key@44@00 $Ref) (value@45@00 Int)) (!
   (Measure$check%stateless map@43@00 key@44@00 value@45@00)
   :pattern ((Measure$check%limited s@$ map@43@00 key@44@00 value@45@00))
-  :qid |quant-u-2730|)))
+  :qid |quant-u-2794|)))
 (assert (forall ((s@$ $Snap) (map@43@00 Seq<Measure$>) (key@44@00 $Ref) (value@45@00 Int)) (!
   (=>
     (Measure$check%precondition s@$ map@43@00 key@44@00 value@45@00)
@@ -3134,21 +3134,21 @@
         :pattern ((Seq_contains_trigger map@43@00 m))
         ))))
   :pattern ((Measure$check s@$ map@43@00 key@44@00 value@45@00))
-  :qid |quant-u-2785|)))
+  :qid |quant-u-2849|)))
 (assert (forall ((s@$ $Snap) (map@43@00 Seq<Measure$>) (key@44@00 $Ref) (value@45@00 Int)) (!
   true
   :pattern ((Measure$check s@$ map@43@00 key@44@00 value@45@00))
-  :qid |quant-u-2786|)))
+  :qid |quant-u-2850|)))
 (assert (forall ((s@$ $Snap) (self@47@00 $Ref) (other@48@00 $Ref)) (!
   (=
     (str___eq__%limited s@$ self@47@00 other@48@00)
     (str___eq__ s@$ self@47@00 other@48@00))
   :pattern ((str___eq__ s@$ self@47@00 other@48@00))
-  :qid |quant-u-2731|)))
+  :qid |quant-u-2795|)))
 (assert (forall ((s@$ $Snap) (self@47@00 $Ref) (other@48@00 $Ref)) (!
   (str___eq__%stateless self@47@00 other@48@00)
   :pattern ((str___eq__%limited s@$ self@47@00 other@48@00))
-  :qid |quant-u-2732|)))
+  :qid |quant-u-2796|)))
 (assert (forall ((s@$ $Snap) (self@47@00 $Ref) (other@48@00 $Ref)) (!
   (let ((result@49@00 (str___eq__%limited s@$ self@47@00 other@48@00))) (=>
     (str___eq__%precondition s@$ self@47@00 other@48@00)
@@ -3164,7 +3164,7 @@
           (str___len__ $Snap.unit self@47@00)
           (str___len__ $Snap.unit other@48@00))))))
   :pattern ((str___eq__%limited s@$ self@47@00 other@48@00))
-  :qid |quant-u-2787|)))
+  :qid |quant-u-2851|)))
 (assert (forall ((s@$ $Snap) (self@47@00 $Ref) (other@48@00 $Ref)) (!
   (let ((result@49@00 (str___eq__%limited s@$ self@47@00 other@48@00))) (=>
     (str___eq__%precondition s@$ self@47@00 other@48@00)
@@ -3172,7 +3172,7 @@
       (str___val__%precondition $Snap.unit self@47@00)
       (str___val__%precondition $Snap.unit other@48@00))))
   :pattern ((str___eq__%limited s@$ self@47@00 other@48@00))
-  :qid |quant-u-2788|)))
+  :qid |quant-u-2852|)))
 (assert (forall ((s@$ $Snap) (self@47@00 $Ref) (other@48@00 $Ref)) (!
   (let ((result@49@00 (str___eq__%limited s@$ self@47@00 other@48@00))) (=>
     (and (str___eq__%precondition s@$ self@47@00 other@48@00) result@49@00)
@@ -3180,55 +3180,55 @@
       (str___len__%precondition $Snap.unit self@47@00)
       (str___len__%precondition $Snap.unit other@48@00))))
   :pattern ((str___eq__%limited s@$ self@47@00 other@48@00))
-  :qid |quant-u-2789|)))
+  :qid |quant-u-2853|)))
 (assert (forall ((s@$ $Snap) (self@50@00 Int) (other@51@00 Int)) (!
   (=
     (int___gt__%limited s@$ self@50@00 other@51@00)
     (int___gt__ s@$ self@50@00 other@51@00))
   :pattern ((int___gt__ s@$ self@50@00 other@51@00))
-  :qid |quant-u-2733|)))
+  :qid |quant-u-2797|)))
 (assert (forall ((s@$ $Snap) (self@50@00 Int) (other@51@00 Int)) (!
   (int___gt__%stateless self@50@00 other@51@00)
   :pattern ((int___gt__%limited s@$ self@50@00 other@51@00))
-  :qid |quant-u-2734|)))
+  :qid |quant-u-2798|)))
 (assert (forall ((s@$ $Snap) (self@50@00 Int) (other@51@00 Int)) (!
   (=>
     (int___gt__%precondition s@$ self@50@00 other@51@00)
     (= (int___gt__ s@$ self@50@00 other@51@00) (> self@50@00 other@51@00)))
   :pattern ((int___gt__ s@$ self@50@00 other@51@00))
-  :qid |quant-u-2790|)))
+  :qid |quant-u-2854|)))
 (assert (forall ((s@$ $Snap) (self@50@00 Int) (other@51@00 Int)) (!
   true
   :pattern ((int___gt__ s@$ self@50@00 other@51@00))
-  :qid |quant-u-2791|)))
+  :qid |quant-u-2855|)))
 (assert (forall ((s@$ $Snap) (self@53@00 Int) (other@54@00 Int)) (!
   (=
     (int___sub__%limited s@$ self@53@00 other@54@00)
     (int___sub__ s@$ self@53@00 other@54@00))
   :pattern ((int___sub__ s@$ self@53@00 other@54@00))
-  :qid |quant-u-2735|)))
+  :qid |quant-u-2799|)))
 (assert (forall ((s@$ $Snap) (self@53@00 Int) (other@54@00 Int)) (!
   (int___sub__%stateless self@53@00 other@54@00)
   :pattern ((int___sub__%limited s@$ self@53@00 other@54@00))
-  :qid |quant-u-2736|)))
+  :qid |quant-u-2800|)))
 (assert (forall ((s@$ $Snap) (self@53@00 Int) (other@54@00 Int)) (!
   (=>
     (int___sub__%precondition s@$ self@53@00 other@54@00)
     (= (int___sub__ s@$ self@53@00 other@54@00) (- self@53@00 other@54@00)))
   :pattern ((int___sub__ s@$ self@53@00 other@54@00))
-  :qid |quant-u-2792|)))
+  :qid |quant-u-2856|)))
 (assert (forall ((s@$ $Snap) (self@53@00 Int) (other@54@00 Int)) (!
   true
   :pattern ((int___sub__ s@$ self@53@00 other@54@00))
-  :qid |quant-u-2793|)))
+  :qid |quant-u-2857|)))
 (assert (forall ((s@$ $Snap) (self@56@00 $Ref)) (!
   (= (list___len__%limited s@$ self@56@00) (list___len__ s@$ self@56@00))
   :pattern ((list___len__ s@$ self@56@00))
-  :qid |quant-u-2737|)))
+  :qid |quant-u-2801|)))
 (assert (forall ((s@$ $Snap) (self@56@00 $Ref)) (!
   (list___len__%stateless self@56@00)
   :pattern ((list___len__%limited s@$ self@56@00))
-  :qid |quant-u-2738|)))
+  :qid |quant-u-2802|)))
 (assert (forall ((s@$ $Snap) (self@56@00 $Ref)) (!
   (and
     ($Perm.isReadVar $k@80@00)
@@ -3238,41 +3238,41 @@
         (list___len__ s@$ self@56@00)
         (Seq_length ($SortWrappers.$SnapToSeq<$Ref> ($Snap.second s@$))))))
   :pattern ((list___len__ s@$ self@56@00))
-  :qid |quant-u-2794|)))
+  :qid |quant-u-2858|)))
 (assert (forall ((s@$ $Snap) (self@56@00 $Ref)) (!
   true
   :pattern ((list___len__ s@$ self@56@00))
-  :qid |quant-u-2795|)))
+  :qid |quant-u-2859|)))
 (assert (forall ((s@$ $Snap) (self@58@00 $Ref)) (!
   (= (PSeq___len__%limited s@$ self@58@00) (PSeq___len__ s@$ self@58@00))
   :pattern ((PSeq___len__ s@$ self@58@00))
-  :qid |quant-u-2739|)))
+  :qid |quant-u-2803|)))
 (assert (forall ((s@$ $Snap) (self@58@00 $Ref)) (!
   (PSeq___len__%stateless self@58@00)
   :pattern ((PSeq___len__%limited s@$ self@58@00))
-  :qid |quant-u-2740|)))
+  :qid |quant-u-2804|)))
 (assert (forall ((s@$ $Snap) (self@58@00 $Ref)) (!
   (let ((result@59@00 (PSeq___len__%limited s@$ self@58@00))) (=>
     (PSeq___len__%precondition s@$ self@58@00)
     (= result@59@00 (Seq_length (PSeq___sil_seq__ $Snap.unit self@58@00)))))
   :pattern ((PSeq___len__%limited s@$ self@58@00))
-  :qid |quant-u-2796|)))
+  :qid |quant-u-2860|)))
 (assert (forall ((s@$ $Snap) (self@58@00 $Ref)) (!
   (let ((result@59@00 (PSeq___len__%limited s@$ self@58@00))) (=>
     (PSeq___len__%precondition s@$ self@58@00)
     (PSeq___sil_seq__%precondition $Snap.unit self@58@00)))
   :pattern ((PSeq___len__%limited s@$ self@58@00))
-  :qid |quant-u-2797|)))
+  :qid |quant-u-2861|)))
 (assert (forall ((s@$ $Snap) (self@60@00 $Ref) (other@61@00 $Ref)) (!
   (=
     (int___eq__%limited s@$ self@60@00 other@61@00)
     (int___eq__ s@$ self@60@00 other@61@00))
   :pattern ((int___eq__ s@$ self@60@00 other@61@00))
-  :qid |quant-u-2741|)))
+  :qid |quant-u-2805|)))
 (assert (forall ((s@$ $Snap) (self@60@00 $Ref) (other@61@00 $Ref)) (!
   (int___eq__%stateless self@60@00 other@61@00)
   :pattern ((int___eq__%limited s@$ self@60@00 other@61@00))
-  :qid |quant-u-2742|)))
+  :qid |quant-u-2806|)))
 (assert (forall ((s@$ $Snap) (self@60@00 $Ref) (other@61@00 $Ref)) (!
   (=>
     (int___eq__%precondition s@$ self@60@00 other@61@00)
@@ -3282,7 +3282,7 @@
         (int___unbox__ $Snap.unit self@60@00)
         (int___unbox__ $Snap.unit other@61@00))))
   :pattern ((int___eq__ s@$ self@60@00 other@61@00))
-  :qid |quant-u-2798|)))
+  :qid |quant-u-2862|)))
 (assert (forall ((s@$ $Snap) (self@60@00 $Ref) (other@61@00 $Ref)) (!
   (=>
     (int___eq__%precondition s@$ self@60@00 other@61@00)
@@ -3290,15 +3290,15 @@
       (int___unbox__%precondition $Snap.unit self@60@00)
       (int___unbox__%precondition $Snap.unit other@61@00)))
   :pattern ((int___eq__ s@$ self@60@00 other@61@00))
-  :qid |quant-u-2799|)))
+  :qid |quant-u-2863|)))
 (assert (forall ((s@$ $Snap)) (!
   (= (__name__%limited s@$) (__name__ s@$))
   :pattern ((__name__ s@$))
-  :qid |quant-u-2743|)))
+  :qid |quant-u-2807|)))
 (assert (forall ((s@$ $Snap)) (!
   (as __name__%stateless  Bool)
   :pattern ((__name__%limited s@$))
-  :qid |quant-u-2744|)))
+  :qid |quant-u-2808|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- get_seats ----------
@@ -6613,7 +6613,7 @@
 (check-sat)
 ; unknown
 (pop) ; 8
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 43 | True | live]
 ; [else-branch: 43 | False | dead]
@@ -6821,7 +6821,7 @@
 (check-sat)
 ; unknown
 (pop) ; 8
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 8
@@ -6830,7 +6830,7 @@
 (check-sat)
 ; unknown
 (pop) ; 8
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 46 | iter_err@97@01 == Null | live]
 ; [else-branch: 46 | iter_err@97@01 != Null | live]
@@ -7007,7 +7007,7 @@
 (check-sat)
 ; unknown
 (pop) ; 8
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 8
@@ -7068,7 +7068,7 @@
 (check-sat)
 ; unknown
 (pop) ; 8
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 50 | |First:(Second:(Second:(Second:(Second:($t@101@01)))))| > 0 | live]
 ; [else-branch: 50 | !(|First:(Second:(Second:(Second:(Second:($t@101@01)))))| > 0) | dead]
@@ -7977,7 +7977,7 @@
   :pattern ((Seq_contains_trigger
     ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@101@01))))))))))))))))))))))))))
     lambda46_30$t@105@01))
-  :qid |quant-u-2801|)))
+  :qid |quant-u-2865|)))
 (assert (forall ((self_1 $Ref)) (!
   (=>
     (and
@@ -8162,7 +8162,7 @@
   :pattern ((Seq_contains_trigger
     ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@101@01))))))))))))))))))))))))))
     lambda46_30$t@108@01))
-  :qid |quant-u-2803|)))
+  :qid |quant-u-2867|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -8730,7 +8730,7 @@
 (check-sat)
 ; unknown
 (pop) ; 7
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 7
@@ -8915,7 +8915,7 @@
 (check-sat)
 ; unknown
 (pop) ; 8
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 77 | |First:(Second:(Second:(Second:(Second:($t@78@01)))))| > 0 | live]
 ; [else-branch: 77 | !(|First:(Second:(Second:(Second:(Second:($t@78@01)))))| > 0) | dead]
@@ -9064,7 +9064,7 @@
 (check-sat)
 ; unknown
 (pop) ; 8
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 80 | |First:(Second:(Second:(Second:(Second:($t@78@01)))))| > 0 | live]
 ; [else-branch: 80 | !(|First:(Second:(Second:(Second:(Second:($t@78@01)))))| > 0) | dead]
@@ -9133,7 +9133,7 @@
 (check-sat)
 ; unknown
 (pop) ; 8
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 81 | |First:(Second:(Second:(Second:(Second:($t@78@01)))))| > 0 | live]
 ; [else-branch: 81 | !(|First:(Second:(Second:(Second:(Second:($t@78@01)))))| > 0) | dead]
@@ -9161,7 +9161,7 @@
 (check-sat)
 ; unknown
 (pop) ; 11
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 82 | True | live]
 ; [else-branch: 82 | False | dead]
@@ -9295,7 +9295,7 @@
 (check-sat)
 ; unknown
 (pop) ; 11
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 87 | True | live]
 ; [else-branch: 87 | False | dead]
@@ -9483,7 +9483,7 @@
 (check-sat)
 ; unknown
 (pop) ; 8
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 8
@@ -9492,7 +9492,7 @@
 (check-sat)
 ; unknown
 (pop) ; 8
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 8
@@ -9783,7 +9783,7 @@
       (= self_1 (inv@118@01 self_1)))
     false)
   
-  :qid |quant-u-2805|))))
+  :qid |quant-u-2869|))))
 (check-sat)
 ; unsat
 (pop) ; 7
@@ -10021,7 +10021,7 @@
       (= r (inv@121@01 r)))
     false)
   
-  :qid |quant-u-2807|))))
+  :qid |quant-u-2871|))))
 (check-sat)
 ; unsat
 (pop) ; 7
@@ -10624,7 +10624,7 @@
   :pattern ((Seq_contains_trigger
     ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@101@01))))))))))))))))))))))))))
     lambda46_30$t@108@01))
-  :qid |quant-u-2803|)))
+  :qid |quant-u-2867|)))
 (assert (forall ((lambda46_30$t@108@01 $Ref)) (!
   (=>
     (and
@@ -10848,7 +10848,7 @@
   :pattern ((Seq_contains_trigger
     ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@101@01))))))))))))))))))))))))))
     lambda46_30$t@105@01))
-  :qid |quant-u-2801|)))
+  :qid |quant-u-2865|)))
 (assert (=
   ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@101@01))))))))))))))))))))))))))))
   ($Snap.combine
@@ -11452,23 +11452,22 @@
 ; Ticket_res := new()
 (declare-const Ticket_res@131@01 $Ref)
 (assert (not (= Ticket_res@131@01 $Ref.null)))
-(assert (not (= Ticket_res@131@01 iter_err@97@01)))
-(assert (not (= Ticket_res@131@01 row_0@98@01)))
-(assert (not (= Ticket_res@131@01 num_1@32@01)))
 (assert (not (= Ticket_res@131@01 show_id@33@01)))
-(assert (not (= Ticket_res@131@01 code_0@34@01)))
-(assert (not (= Ticket_res@131@01 iterable@75@01)))
-(assert (not (= Ticket_res@131@01 _res@65@01)))
-(assert (not (= Ticket_res@131@01 _cthread_160@29@01)))
-(assert (not (= Ticket_res@131@01 ticket@95@01)))
-(assert (not (= Ticket_res@131@01 (_checkDefined $Snap.unit res@71@01 7562610))))
-(assert (not (= Ticket_res@131@01 Ticket_res@93@01)))
-(assert (not (= Ticket_res@131@01 seat_0@99@01)))
-(assert (not (= Ticket_res@131@01 loop_target@96@01)))
 (assert (not (= Ticket_res@131@01 res@71@01)))
+(assert (not (= Ticket_res@131@01 ticket@95@01)))
+(assert (not (= Ticket_res@131@01 seat_0@99@01)))
+(assert (not (= Ticket_res@131@01 row_0@98@01)))
 (assert (not (= Ticket_res@131@01 _res@77@01)))
+(assert (not (= Ticket_res@131@01 _cthread_160@29@01)))
 (assert (not (= Ticket_res@131@01 _err@66@01)))
-(assert (not (Seq_contains seqtmp@90@01 Ticket_res@131@01)))
+(assert (not (= Ticket_res@131@01 code_0@34@01)))
+(assert (not (= Ticket_res@131@01 num_1@32@01)))
+(assert (not (= Ticket_res@131@01 Ticket_res@93@01)))
+(assert (not (= Ticket_res@131@01 iterable@75@01)))
+(assert (not (= Ticket_res@131@01 loop_target@96@01)))
+(assert (not (= Ticket_res@131@01 iter_err@97@01)))
+(assert (not (= Ticket_res@131@01 (_checkDefined $Snap.unit res@71@01 7562610))))
+(assert (not (= Ticket_res@131@01 _res@65@01)))
 (assert (not
   (Seq_contains
     ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@101@01))))))))))))))))))))))))))
@@ -11485,6 +11484,7 @@
   (Seq_contains
     ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@101@01)))))
     Ticket_res@131@01)))
+(assert (not (Seq_contains seqtmp@90@01 Ticket_res@131@01)))
 ; [exec]
 ; inhale typeof(Ticket_res) == Ticket()
 (declare-const $t@132@01 $Snap)
@@ -11944,7 +11944,7 @@
     (= r (_checkDefined $Snap.unit Ticket_res@131@01 127978942196084))
     (= (- $Perm.Write (pTaken@143@01 r)) $Perm.No))
   
-  :qid |quant-u-2810|))))
+  :qid |quant-u-2874|))))
 (check-sat)
 ; unsat
 (pop) ; 11
@@ -14889,7 +14889,7 @@
       (pTaken@167@01 self_1))
     $Perm.No)
   
-  :qid |quant-u-2813|))))
+  :qid |quant-u-2877|))))
 (check-sat)
 ; unsat
 (pop) ; 12
@@ -14911,11 +14911,11 @@
       (= self_1 (inv@165@01 self_1)))
     (= (- $Perm.Write (pTaken@167@01 self_1)) $Perm.No))
   
-  :qid |quant-u-2814|))))
+  :qid |quant-u-2878|))))
 (check-sat)
 ; unknown
 (pop) ; 12
-; 0.01s
+; 0.03s
 ; (get-info :all-statistics)
 ; Chunk depleted?
 (set-option :timeout 0)
@@ -14925,7 +14925,7 @@
 (check-sat)
 ; unsat
 (pop) ; 12
-; 0.02s
+; 0.01s
 ; (get-info :all-statistics)
 ; Intermediate check if already taken enough permissions
 (set-option :timeout 0)
@@ -14945,11 +14945,11 @@
       (- (- $Perm.Write (pTaken@167@01 self_1)) (pTaken@168@01 self_1))
       $Perm.No))
   
-  :qid |quant-u-2816|))))
+  :qid |quant-u-2880|))))
 (check-sat)
 ; unsat
 (pop) ; 12
-; 0.03s
+; 0.04s
 ; (get-info :all-statistics)
 ; Final check if taken enough permissions
 ; Done removing quantified permissions
@@ -15209,11 +15209,11 @@
       (pTaken@172@01 r))
     $Perm.No)
   
-  :qid |quant-u-2819|))))
+  :qid |quant-u-2883|))))
 (check-sat)
 ; unsat
 (pop) ; 12
-; 0.02s
+; 0.03s
 ; (get-info :all-statistics)
 ; Intermediate check if already taken enough permissions
 (set-option :timeout 0)
@@ -15233,11 +15233,11 @@
       (= r (inv@170@01 r)))
     (= (- $Perm.Write (pTaken@172@01 r)) $Perm.No))
   
-  :qid |quant-u-2820|))))
+  :qid |quant-u-2884|))))
 (check-sat)
 ; unknown
 (pop) ; 12
-; 0.02s
+; 0.04s
 ; (get-info :all-statistics)
 ; Chunk depleted?
 (set-option :timeout 0)
@@ -15276,11 +15276,11 @@
       (= r (inv@170@01 r)))
     (= (- (- $Perm.Write (pTaken@172@01 r)) (pTaken@173@01 r)) $Perm.No))
   
-  :qid |quant-u-2822|))))
+  :qid |quant-u-2886|))))
 (check-sat)
 ; unsat
 (pop) ; 12
-; 0.02s
+; 0.03s
 ; (get-info :all-statistics)
 ; Final check if taken enough permissions
 ; Done removing quantified permissions
@@ -15433,7 +15433,7 @@
 (check-sat)
 ; unsat
 (pop) ; 15
-; 0.02s
+; 0.03s
 ; (get-info :all-statistics)
 ; [eval] str()
 (pop) ; 14
@@ -15711,7 +15711,7 @@
 (check-sat)
 ; unsat
 (pop) ; 12
-; 0.01s
+; 0.03s
 ; (get-info :all-statistics)
 (assert (forall ((lambda46_30$t@174@01 $Ref)) (!
   (=>
@@ -17176,7 +17176,7 @@
       (pTaken@187@01 self_1))
     $Perm.No)
   
-  :qid |quant-u-2825|))))
+  :qid |quant-u-2889|))))
 (check-sat)
 ; unsat
 (pop) ; 12
@@ -17198,7 +17198,7 @@
       (= self_1 (inv@185@01 self_1)))
     (= (- $Perm.Write (pTaken@187@01 self_1)) $Perm.No))
   
-  :qid |quant-u-2826|))))
+  :qid |quant-u-2890|))))
 (check-sat)
 ; unknown
 (pop) ; 12
@@ -17232,7 +17232,7 @@
       (- (- $Perm.Write (pTaken@187@01 self_1)) (pTaken@188@01 self_1))
       $Perm.No))
   
-  :qid |quant-u-2828|))))
+  :qid |quant-u-2892|))))
 (check-sat)
 ; unsat
 (pop) ; 12
@@ -17496,11 +17496,11 @@
       (pTaken@192@01 r))
     $Perm.No)
   
-  :qid |quant-u-2831|))))
+  :qid |quant-u-2895|))))
 (check-sat)
 ; unsat
 (pop) ; 12
-; 0.02s
+; 0.04s
 ; (get-info :all-statistics)
 ; Intermediate check if already taken enough permissions
 (set-option :timeout 0)
@@ -17520,7 +17520,7 @@
       (= r (inv@190@01 r)))
     (= (- $Perm.Write (pTaken@192@01 r)) $Perm.No))
   
-  :qid |quant-u-2832|))))
+  :qid |quant-u-2896|))))
 (check-sat)
 ; unknown
 (pop) ; 12
@@ -17563,11 +17563,11 @@
       (= r (inv@190@01 r)))
     (= (- (- $Perm.Write (pTaken@192@01 r)) (pTaken@193@01 r)) $Perm.No))
   
-  :qid |quant-u-2834|))))
+  :qid |quant-u-2898|))))
 (check-sat)
 ; unsat
 (pop) ; 12
-; 0.02s
+; 0.03s
 ; (get-info :all-statistics)
 ; Final check if taken enough permissions
 ; Done removing quantified permissions
@@ -17720,7 +17720,7 @@
 (check-sat)
 ; unsat
 (pop) ; 15
-; 0.02s
+; 0.03s
 ; (get-info :all-statistics)
 ; [eval] str()
 (pop) ; 14
@@ -21108,11 +21108,11 @@
       (pTaken@218@01 self_1))
     $Perm.No)
   
-  :qid |quant-u-2837|))))
+  :qid |quant-u-2901|))))
 (check-sat)
 ; unsat
 (pop) ; 11
-; 0.07s
+; 0.02s
 ; (get-info :all-statistics)
 ; Intermediate check if already taken enough permissions
 (set-option :timeout 0)
@@ -21130,11 +21130,11 @@
       (= self_1 (inv@216@01 self_1)))
     (= (- $Perm.Write (pTaken@218@01 self_1)) $Perm.No))
   
-  :qid |quant-u-2838|))))
+  :qid |quant-u-2902|))))
 (check-sat)
 ; unknown
 (pop) ; 11
-; 0.08s
+; 0.04s
 ; (get-info :all-statistics)
 ; Chunk depleted?
 (set-option :timeout 0)
@@ -21144,7 +21144,7 @@
 (check-sat)
 ; unsat
 (pop) ; 11
-; 0.04s
+; 0.02s
 ; (get-info :all-statistics)
 ; Intermediate check if already taken enough permissions
 (set-option :timeout 0)
@@ -21164,11 +21164,11 @@
       (- (- $Perm.Write (pTaken@218@01 self_1)) (pTaken@219@01 self_1))
       $Perm.No))
   
-  :qid |quant-u-2840|))))
+  :qid |quant-u-2904|))))
 (check-sat)
 ; unsat
 (pop) ; 11
-; 0.08s
+; 0.06s
 ; (get-info :all-statistics)
 ; Final check if taken enough permissions
 ; Done removing quantified permissions
@@ -21409,7 +21409,7 @@
       (pTaken@223@01 r))
     $Perm.No)
   
-  :qid |quant-u-2843|))))
+  :qid |quant-u-2907|))))
 (check-sat)
 ; unsat
 (pop) ; 11
@@ -21433,7 +21433,7 @@
       (= r (inv@221@01 r)))
     (= (- $Perm.Write (pTaken@223@01 r)) $Perm.No))
   
-  :qid |quant-u-2844|))))
+  :qid |quant-u-2908|))))
 (check-sat)
 ; unsat
 (pop) ; 11
@@ -23192,39 +23192,7 @@
       (pTaken@235@01 self_1))
     $Perm.No)
   
-  :qid |quant-u-2847|))))
-(check-sat)
-; unsat
-(pop) ; 11
-; 0.03s
-; (get-info :all-statistics)
-; Intermediate check if already taken enough permissions
-(set-option :timeout 0)
-(push) ; 11
-(set-option :timeout 500)
-(assert (not (forall ((self_1 $Ref)) (!
-  (=>
-    (and
-      (and
-        (issubtype<Bool> (typeof<PyType> (inv@233@01 self_1)) (as Ticket<PyType>  PyType))
-        (Seq_contains
-          ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@198@01)))))
-          (inv@233@01 self_1)))
-      (img@234@01 self_1)
-      (= self_1 (inv@233@01 self_1)))
-    (= (- $Perm.Write (pTaken@235@01 self_1)) $Perm.No))
-  
-  :qid |quant-u-2848|))))
-(check-sat)
-; unknown
-(pop) ; 11
-; 0.01s
-; (get-info :all-statistics)
-; Chunk depleted?
-(set-option :timeout 0)
-(push) ; 11
-(set-option :timeout 500)
-(assert (not (= (- $Perm.Write (pTaken@236@01 Ticket_res@131@01)) $Perm.No)))
+  :qid |quant-u-2911|))))
 (check-sat)
 ; unsat
 (pop) ; 11
@@ -23244,11 +23212,43 @@
           (inv@233@01 self_1)))
       (img@234@01 self_1)
       (= self_1 (inv@233@01 self_1)))
+    (= (- $Perm.Write (pTaken@235@01 self_1)) $Perm.No))
+  
+  :qid |quant-u-2912|))))
+(check-sat)
+; unknown
+(pop) ; 11
+; 0.01s
+; (get-info :all-statistics)
+; Chunk depleted?
+(set-option :timeout 0)
+(push) ; 11
+(set-option :timeout 500)
+(assert (not (= (- $Perm.Write (pTaken@236@01 Ticket_res@131@01)) $Perm.No)))
+(check-sat)
+; unsat
+(pop) ; 11
+; 0.01s
+; (get-info :all-statistics)
+; Intermediate check if already taken enough permissions
+(set-option :timeout 0)
+(push) ; 11
+(set-option :timeout 500)
+(assert (not (forall ((self_1 $Ref)) (!
+  (=>
+    (and
+      (and
+        (issubtype<Bool> (typeof<PyType> (inv@233@01 self_1)) (as Ticket<PyType>  PyType))
+        (Seq_contains
+          ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@198@01)))))
+          (inv@233@01 self_1)))
+      (img@234@01 self_1)
+      (= self_1 (inv@233@01 self_1)))
     (=
       (- (- $Perm.Write (pTaken@235@01 self_1)) (pTaken@236@01 self_1))
       $Perm.No))
   
-  :qid |quant-u-2850|))))
+  :qid |quant-u-2914|))))
 (check-sat)
 ; unsat
 (pop) ; 11
@@ -23493,7 +23493,7 @@
       (pTaken@240@01 r))
     $Perm.No)
   
-  :qid |quant-u-2853|))))
+  :qid |quant-u-2917|))))
 (check-sat)
 ; unsat
 (pop) ; 11
@@ -23517,7 +23517,7 @@
       (= r (inv@238@01 r)))
     (= (- $Perm.Write (pTaken@240@01 r)) $Perm.No))
   
-  :qid |quant-u-2854|))))
+  :qid |quant-u-2918|))))
 (check-sat)
 ; unsat
 (pop) ; 11
@@ -24203,105 +24203,13 @@
 (assert (not (not
   (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@78@01)))))))))) (set<PyType> (set_arg<PyType> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@78@01)))))))))) 0))))))
 (check-sat)
-; unknown
+; unsat
 (pop) ; 12
 ; 0.01s
 ; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 12
-(set-option :timeout 10)
-(assert (not (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@78@01)))))))))) (set<PyType> (set_arg<PyType> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@78@01)))))))))) 0)))))
-(check-sat)
-; unknown
-(pop) ; 12
-; 0.01s
-; (get-info :all-statistics)
-; [then-branch: 294 | issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@78@01))))))))), set[PyType](set_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@78@01))))))))), 0))) | live]
+; [then-branch: 294 | issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@78@01))))))))), set[PyType](set_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@78@01))))))))), 0))) | dead]
 ; [else-branch: 294 | !(issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@78@01))))))))), set[PyType](set_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@78@01))))))))), 0)))) | live]
 (set-option :timeout 0)
-(push) ; 12
-; [then-branch: 294 | issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@78@01))))))))), set[PyType](set_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@78@01))))))))), 0)))]
-(assert (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@78@01)))))))))) (set<PyType> (set_arg<PyType> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@78@01)))))))))) 0))))
-(assert (not
-  (=
-    ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@78@01)))))))))
-    $Ref.null)))
-; State saturation: after contract
-(set-option :timeout 50)
-(check-sat)
-; unsat
-; [exec]
-; _res := null
-; [exec]
-; _err := null
-; [exec]
-; label post_loop
-; [exec]
-; _res := null
-; [exec]
-; _err := null
-; [exec]
-; _res := _checkDefined(res, 7562610)
-; [eval] _checkDefined(res, 7562610)
-(set-option :timeout 0)
-(push) ; 13
-; [eval] _isDefined(id)
-(push) ; 14
-(pop) ; 14
-; Joined path conditions
-(pop) ; 13
-; Joined path conditions
-(declare-const _res@244@01 $Ref)
-(assert (= _res@244@01 (_checkDefined $Snap.unit res@71@01 7562610)))
-; [exec]
-; label __end
-; [eval] _err == null ==> issubtype(typeof(_res), list(Ticket()))
-; [eval] _err == null
-(push) ; 13
-(push) ; 14
-(set-option :timeout 10)
-(assert (not false))
-(check-sat)
-; unsat
-(pop) ; 14
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 295 | True | dead]
-; [else-branch: 295 | False | live]
-(set-option :timeout 0)
-(push) ; 14
-; [else-branch: 295 | False]
-(assert false)
-(pop) ; 14
-(pop) ; 13
-; Joined path conditions
-(assert false)
-; [eval] _err != null && issubtype(typeof(_err), SoldoutException()) ==> true
-; [eval] _err != null && issubtype(typeof(_err), SoldoutException())
-; [eval] _err != null
-(push) ; 13
-; [then-branch: 296 | False | dead]
-; [else-branch: 296 | True | live]
-(push) ; 14
-; [else-branch: 296 | True]
-(pop) ; 14
-(pop) ; 13
-; Joined path conditions
-; [eval] _err != null ==> issubtype(typeof(_err), SoldoutException())
-; [eval] _err != null
-(push) ; 13
-; [then-branch: 297 | False | dead]
-; [else-branch: 297 | True | live]
-(push) ; 14
-; [else-branch: 297 | True]
-(pop) ; 14
-(pop) ; 13
-; Joined path conditions
-; [eval] (forperm _r_4: Ref [MustInvokeBounded(_r_4)] :: false)
-; [eval] (forperm _r_4: Ref [MustInvokeUnbounded(_r_4)] :: false)
-; [eval] (forperm _r_4: Ref [_r_4.MustReleaseBounded] :: false)
-; [eval] (forperm _r_4: Ref [_r_4.MustReleaseUnbounded] :: false)
-(pop) ; 12
 (push) ; 12
 ; [else-branch: 294 | !(issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@78@01))))))))), set[PyType](set_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@78@01))))))))), 0))))]
 (assert (not
@@ -24334,8 +24242,8 @@
 ; Joined path conditions
 (pop) ; 13
 ; Joined path conditions
-(declare-const _res@245@01 $Ref)
-(assert (= _res@245@01 (_checkDefined $Snap.unit res@71@01 7562610)))
+(declare-const _res@244@01 $Ref)
+(assert (= _res@244@01 (_checkDefined $Snap.unit res@71@01 7562610)))
 ; [exec]
 ; label __end
 ; [eval] _err == null ==> issubtype(typeof(_res), list(Ticket()))
@@ -24349,11 +24257,11 @@
 (pop) ; 14
 ; 0.01s
 ; (get-info :all-statistics)
-; [then-branch: 298 | True | live]
-; [else-branch: 298 | False | dead]
+; [then-branch: 295 | True | live]
+; [else-branch: 295 | False | dead]
 (set-option :timeout 0)
 (push) ; 14
-; [then-branch: 298 | True]
+; [then-branch: 295 | True]
 ; [eval] issubtype(typeof(_res), list(Ticket()))
 ; [eval] typeof(_res)
 ; [eval] list(Ticket())
@@ -24362,31 +24270,31 @@
 (pop) ; 13
 ; Joined path conditions
 (push) ; 13
-(assert (not (issubtype<Bool> (typeof<PyType> _res@245@01) (list<PyType> (as Ticket<PyType>  PyType)))))
+(assert (not (issubtype<Bool> (typeof<PyType> _res@244@01) (list<PyType> (as Ticket<PyType>  PyType)))))
 (check-sat)
 ; unsat
 (pop) ; 13
 ; 0.00s
 ; (get-info :all-statistics)
-(assert (issubtype<Bool> (typeof<PyType> _res@245@01) (list<PyType> (as Ticket<PyType>  PyType))))
+(assert (issubtype<Bool> (typeof<PyType> _res@244@01) (list<PyType> (as Ticket<PyType>  PyType))))
 ; [eval] _err != null && issubtype(typeof(_err), SoldoutException()) ==> true
 ; [eval] _err != null && issubtype(typeof(_err), SoldoutException())
 ; [eval] _err != null
 (push) ; 13
-; [then-branch: 299 | False | dead]
-; [else-branch: 299 | True | live]
+; [then-branch: 296 | False | dead]
+; [else-branch: 296 | True | live]
 (push) ; 14
-; [else-branch: 299 | True]
+; [else-branch: 296 | True]
 (pop) ; 14
 (pop) ; 13
 ; Joined path conditions
 ; [eval] _err != null ==> issubtype(typeof(_err), SoldoutException())
 ; [eval] _err != null
 (push) ; 13
-; [then-branch: 300 | False | dead]
-; [else-branch: 300 | True | live]
+; [then-branch: 297 | False | dead]
+; [else-branch: 297 | True | live]
 (push) ; 14
-; [else-branch: 300 | True]
+; [else-branch: 297 | True]
 (pop) ; 14
 (pop) ; 13
 ; Joined path conditions
@@ -24416,11 +24324,11 @@
 (pop) ; 5
 ; 0.00s
 ; (get-info :all-statistics)
-; [then-branch: 301 | _err@81@01 != Null | dead]
-; [else-branch: 301 | _err@81@01 == Null | live]
+; [then-branch: 298 | _err@81@01 != Null | dead]
+; [else-branch: 298 | _err@81@01 == Null | live]
 (set-option :timeout 0)
 (push) ; 5
-; [else-branch: 301 | _err@81@01 == Null]
+; [else-branch: 298 | _err@81@01 == Null]
 (assert (= _err@81@01 $Ref.null))
 (pop) ; 5
 (pop) ; 4
@@ -24442,10 +24350,10 @@
 ; [eval] _err == null ==> int___eq__(__prim__int___box__(list___len__(_res)), num_0)
 ; [eval] _err == null
 (push) ; 4
-; [then-branch: 302 | _err@66@01 == Null | dead]
-; [else-branch: 302 | _err@66@01 != Null | live]
+; [then-branch: 299 | _err@66@01 == Null | dead]
+; [else-branch: 299 | _err@66@01 != Null | live]
 (push) ; 5
-; [else-branch: 302 | _err@66@01 != Null]
+; [else-branch: 299 | _err@66@01 != Null]
 (pop) ; 5
 (pop) ; 4
 ; Joined path conditions
@@ -24461,14 +24369,14 @@
 ; [eval] _err != null && issubtype(typeof(_err), SoldoutException())
 ; [eval] _err != null
 (push) ; 4
-; [then-branch: 303 | _err@66@01 == Null | live]
-; [else-branch: 303 | _err@66@01 != Null | live]
+; [then-branch: 300 | _err@66@01 == Null | live]
+; [else-branch: 300 | _err@66@01 != Null | live]
 (push) ; 5
-; [then-branch: 303 | _err@66@01 == Null]
+; [then-branch: 300 | _err@66@01 == Null]
 (assert (= _err@66@01 $Ref.null))
 (pop) ; 5
 (push) ; 5
-; [else-branch: 303 | _err@66@01 != Null]
+; [else-branch: 300 | _err@66@01 != Null]
 ; [eval] issubtype(typeof(_err), SoldoutException())
 ; [eval] typeof(_err)
 ; [eval] SoldoutException()
@@ -24499,17 +24407,17 @@
 (pop) ; 5
 ; 0.00s
 ; (get-info :all-statistics)
-; [then-branch: 304 | _err@66@01 != Null && issubtype[Bool](typeof[PyType](_err@66@01), SoldoutException[PyType]) | live]
-; [else-branch: 304 | !(_err@66@01 != Null && issubtype[Bool](typeof[PyType](_err@66@01), SoldoutException[PyType])) | live]
+; [then-branch: 301 | _err@66@01 != Null && issubtype[Bool](typeof[PyType](_err@66@01), SoldoutException[PyType]) | live]
+; [else-branch: 301 | !(_err@66@01 != Null && issubtype[Bool](typeof[PyType](_err@66@01), SoldoutException[PyType])) | live]
 (set-option :timeout 0)
 (push) ; 5
-; [then-branch: 304 | _err@66@01 != Null && issubtype[Bool](typeof[PyType](_err@66@01), SoldoutException[PyType])]
+; [then-branch: 301 | _err@66@01 != Null && issubtype[Bool](typeof[PyType](_err@66@01), SoldoutException[PyType])]
 (assert (and
   (not (= _err@66@01 $Ref.null))
   (issubtype<Bool> (typeof<PyType> _err@66@01) (as SoldoutException<PyType>  PyType))))
 (pop) ; 5
 (push) ; 5
-; [else-branch: 304 | !(_err@66@01 != Null && issubtype[Bool](typeof[PyType](_err@66@01), SoldoutException[PyType]))]
+; [else-branch: 301 | !(_err@66@01 != Null && issubtype[Bool](typeof[PyType](_err@66@01), SoldoutException[PyType]))]
 (assert (not
   (and
     (not (= _err@66@01 $Ref.null))
@@ -24549,11 +24457,11 @@
 (pop) ; 5
 ; 0.00s
 ; (get-info :all-statistics)
-; [then-branch: 305 | _err@66@01 != Null | live]
-; [else-branch: 305 | _err@66@01 == Null | dead]
+; [then-branch: 302 | _err@66@01 != Null | live]
+; [else-branch: 302 | _err@66@01 == Null | dead]
 (set-option :timeout 0)
 (push) ; 5
-; [then-branch: 305 | _err@66@01 != Null]
+; [then-branch: 302 | _err@66@01 != Null]
 (assert (not (= _err@66@01 $Ref.null)))
 ; [eval] issubtype(typeof(_err), SoldoutException())
 ; [eval] typeof(_err)
@@ -24579,11 +24487,11 @@
 (pop) ; 4
 ; 0.00s
 ; (get-info :all-statistics)
-; [then-branch: 306 | _err@66@01 != Null | live]
-; [else-branch: 306 | _err@66@01 == Null | dead]
+; [then-branch: 303 | _err@66@01 != Null | live]
+; [else-branch: 303 | _err@66@01 == Null | dead]
 (set-option :timeout 0)
 (push) ; 4
-; [then-branch: 306 | _err@66@01 != Null]
+; [then-branch: 303 | _err@66@01 != Null]
 ; [exec]
 ; _err := _err
 ; [exec]
@@ -24591,10 +24499,10 @@
 ; [eval] _err == null ==> issubtype(typeof(_res), list(Ticket()))
 ; [eval] _err == null
 (push) ; 5
-; [then-branch: 307 | _err@66@01 == Null | dead]
-; [else-branch: 307 | _err@66@01 != Null | live]
+; [then-branch: 304 | _err@66@01 == Null | dead]
+; [else-branch: 304 | _err@66@01 != Null | live]
 (push) ; 6
-; [else-branch: 307 | _err@66@01 != Null]
+; [else-branch: 304 | _err@66@01 != Null]
 (pop) ; 6
 (pop) ; 5
 ; Joined path conditions
@@ -24602,14 +24510,14 @@
 ; [eval] _err != null && issubtype(typeof(_err), SoldoutException())
 ; [eval] _err != null
 (push) ; 5
-; [then-branch: 308 | _err@66@01 == Null | live]
-; [else-branch: 308 | _err@66@01 != Null | live]
+; [then-branch: 305 | _err@66@01 == Null | live]
+; [else-branch: 305 | _err@66@01 != Null | live]
 (push) ; 6
-; [then-branch: 308 | _err@66@01 == Null]
+; [then-branch: 305 | _err@66@01 == Null]
 (assert (= _err@66@01 $Ref.null))
 (pop) ; 6
 (push) ; 6
-; [else-branch: 308 | _err@66@01 != Null]
+; [else-branch: 305 | _err@66@01 != Null]
 ; [eval] issubtype(typeof(_err), SoldoutException())
 ; [eval] typeof(_err)
 ; [eval] SoldoutException()
@@ -24640,11 +24548,11 @@
 (pop) ; 6
 ; 0.00s
 ; (get-info :all-statistics)
-; [then-branch: 309 | _err@66@01 != Null && issubtype[Bool](typeof[PyType](_err@66@01), SoldoutException[PyType]) | live]
-; [else-branch: 309 | !(_err@66@01 != Null && issubtype[Bool](typeof[PyType](_err@66@01), SoldoutException[PyType])) | dead]
+; [then-branch: 306 | _err@66@01 != Null && issubtype[Bool](typeof[PyType](_err@66@01), SoldoutException[PyType]) | live]
+; [else-branch: 306 | !(_err@66@01 != Null && issubtype[Bool](typeof[PyType](_err@66@01), SoldoutException[PyType])) | dead]
 (set-option :timeout 0)
 (push) ; 6
-; [then-branch: 309 | _err@66@01 != Null && issubtype[Bool](typeof[PyType](_err@66@01), SoldoutException[PyType])]
+; [then-branch: 306 | _err@66@01 != Null && issubtype[Bool](typeof[PyType](_err@66@01), SoldoutException[PyType])]
 (assert (and
   (not (= _err@66@01 $Ref.null))
   (issubtype<Bool> (typeof<PyType> _err@66@01) (as SoldoutException<PyType>  PyType))))
@@ -24665,11 +24573,11 @@
 (pop) ; 6
 ; 0.00s
 ; (get-info :all-statistics)
-; [then-branch: 310 | _err@66@01 != Null | live]
-; [else-branch: 310 | _err@66@01 == Null | dead]
+; [then-branch: 307 | _err@66@01 != Null | live]
+; [else-branch: 307 | _err@66@01 == Null | dead]
 (set-option :timeout 0)
 (push) ; 6
-; [then-branch: 310 | _err@66@01 != Null]
+; [then-branch: 307 | _err@66@01 != Null]
 ; [eval] issubtype(typeof(_err), SoldoutException())
 ; [eval] typeof(_err)
 ; [eval] SoldoutException()
@@ -24691,57 +24599,220 @@
 (pop) ; 4
 ; 0.00s
 ; (get-info :all-statistics)
-; [then-branch: 311 | _err@66@01 == Null | dead]
-; [else-branch: 311 | _err@66@01 != Null | live]
+; [then-branch: 308 | _err@66@01 == Null | dead]
+; [else-branch: 308 | _err@66@01 != Null | live]
 (set-option :timeout 0)
 (push) ; 4
-; [else-branch: 311 | _err@66@01 != Null]
+; [else-branch: 308 | _err@66@01 != Null]
 (assert (not (= _err@66@01 $Ref.null)))
 (pop) ; 4
 (pop) ; 3
 (pop) ; 2
 (pop) ; 1
 ; ---------- Ticket___init__ ----------
-(declare-const _cthread_156@246@01 $Ref)
-(declare-const _caller_measures_156@247@01 Seq<Measure$>)
-(declare-const _residue_156@248@01 $Perm)
-(declare-const self@249@01 $Ref)
-(declare-const show@250@01 $Ref)
-(declare-const row@251@01 $Ref)
-(declare-const seat@252@01 $Ref)
-(declare-const _current_wait_level_156@253@01 $Perm)
-(declare-const _cthread_156@254@01 $Ref)
-(declare-const _caller_measures_156@255@01 Seq<Measure$>)
-(declare-const _residue_156@256@01 $Perm)
-(declare-const self@257@01 $Ref)
-(declare-const show@258@01 $Ref)
-(declare-const row@259@01 $Ref)
-(declare-const seat@260@01 $Ref)
-(declare-const _current_wait_level_156@261@01 $Perm)
+(declare-const _cthread_156@245@01 $Ref)
+(declare-const _caller_measures_156@246@01 Seq<Measure$>)
+(declare-const _residue_156@247@01 $Perm)
+(declare-const self@248@01 $Ref)
+(declare-const show@249@01 $Ref)
+(declare-const row@250@01 $Ref)
+(declare-const seat@251@01 $Ref)
+(declare-const _current_wait_level_156@252@01 $Perm)
+(declare-const _cthread_156@253@01 $Ref)
+(declare-const _caller_measures_156@254@01 Seq<Measure$>)
+(declare-const _residue_156@255@01 $Perm)
+(declare-const self@256@01 $Ref)
+(declare-const show@257@01 $Ref)
+(declare-const row@258@01 $Ref)
+(declare-const seat@259@01 $Ref)
+(declare-const _current_wait_level_156@260@01 $Perm)
 (push) ; 1
+(declare-const $t@261@01 $Snap)
+(assert (= $t@261@01 ($Snap.combine ($Snap.first $t@261@01) ($Snap.second $t@261@01))))
+(assert (= ($Snap.first $t@261@01) $Snap.unit))
+; [eval] _cthread_156 != null
+(assert (not (= _cthread_156@253@01 $Ref.null)))
+(assert (=
+  ($Snap.second $t@261@01)
+  ($Snap.combine
+    ($Snap.first ($Snap.second $t@261@01))
+    ($Snap.second ($Snap.second $t@261@01)))))
+(assert (= ($Snap.first ($Snap.second $t@261@01)) $Snap.unit))
+; [eval] issubtype(typeof(_cthread_156), Thread_0())
+; [eval] typeof(_cthread_156)
+; [eval] Thread_0()
+(assert (issubtype<Bool> (typeof<PyType> _cthread_156@253@01) (as Thread_0<PyType>  PyType)))
+(assert (=
+  ($Snap.second ($Snap.second $t@261@01))
+  ($Snap.combine
+    ($Snap.first ($Snap.second ($Snap.second $t@261@01)))
+    ($Snap.second ($Snap.second ($Snap.second $t@261@01))))))
+(assert (= ($Snap.first ($Snap.second ($Snap.second $t@261@01))) $Snap.unit))
+; [eval] self != null
+(assert (not (= self@256@01 $Ref.null)))
+(assert (=
+  ($Snap.second ($Snap.second ($Snap.second $t@261@01)))
+  ($Snap.combine
+    ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@261@01))))
+    ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@261@01)))))))
+(assert (=
+  ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@261@01))))
+  ($Snap.combine
+    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@261@01)))))
+    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@261@01))))))))
+(push) ; 2
+(set-option :timeout 10)
+(assert (not false))
+(check-sat)
+; unknown
+(pop) ; 2
+; 0.00s
+; (get-info :all-statistics)
+(assert (=
+  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@261@01)))))
+  ($Snap.combine
+    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@261@01))))))
+    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@261@01)))))))))
+(set-option :timeout 0)
+(push) ; 2
+(set-option :timeout 10)
+(assert (not false))
+(check-sat)
+; unknown
+(pop) ; 2
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 2
+(set-option :timeout 10)
+(assert (not false))
+(check-sat)
+; unknown
+(pop) ; 2
+; 0.00s
+; (get-info :all-statistics)
+(assert (=
+  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@261@01))))))
+  ($Snap.combine
+    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@261@01)))))))
+    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@261@01))))))))))
+(set-option :timeout 0)
+(push) ; 2
+(set-option :timeout 10)
+(assert (not false))
+(check-sat)
+; unknown
+(pop) ; 2
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 2
+(set-option :timeout 10)
+(assert (not false))
+(check-sat)
+; unknown
+(pop) ; 2
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 2
+(set-option :timeout 10)
+(assert (not false))
+(check-sat)
+; unknown
+(pop) ; 2
+; 0.00s
+; (get-info :all-statistics)
+(assert (=
+  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@261@01)))))))
+  ($Snap.combine
+    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@261@01))))))))
+    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@261@01)))))))))))
+(assert (=
+  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@261@01))))))))
+  $Snap.unit))
+; [eval] issubtype(typeof(self), Ticket())
+; [eval] typeof(self)
+; [eval] Ticket()
+(assert (issubtype<Bool> (typeof<PyType> self@256@01) (as Ticket<PyType>  PyType)))
+(assert (=
+  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@261@01))))))))
+  ($Snap.combine
+    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@261@01)))))))))
+    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@261@01))))))))))))
+(assert (=
+  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@261@01)))))))))
+  $Snap.unit))
+; [eval] issubtype(typeof(show), int())
+; [eval] typeof(show)
+; [eval] int()
+(assert (issubtype<Bool> (typeof<PyType> show@257@01) (as int<PyType>  PyType)))
+(assert (=
+  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@261@01)))))))))
+  ($Snap.combine
+    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@261@01))))))))))
+    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@261@01)))))))))))))
+(assert (=
+  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@261@01))))))))))
+  $Snap.unit))
+; [eval] issubtype(typeof(row), int())
+; [eval] typeof(row)
+; [eval] int()
+(assert (issubtype<Bool> (typeof<PyType> row@258@01) (as int<PyType>  PyType)))
+(assert (=
+  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@261@01))))))))))
+  ($Snap.combine
+    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@261@01)))))))))))
+    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@261@01))))))))))))))
+(assert (=
+  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@261@01)))))))))))
+  $Snap.unit))
+; [eval] issubtype(typeof(seat), int())
+; [eval] typeof(seat)
+; [eval] int()
+(assert (issubtype<Bool> (typeof<PyType> seat@259@01) (as int<PyType>  PyType)))
+(assert (=
+  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@261@01)))))))))))
+  ($Snap.combine
+    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@261@01))))))))))))
+    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@261@01)))))))))))))))
+(assert (=
+  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@261@01))))))))))))
+  $Snap.unit))
+; [eval] self != null
+(assert (=
+  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@261@01))))))))))))
+  ($Snap.combine
+    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@261@01)))))))))))))
+    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@261@01))))))))))))))))
+(assert (=
+  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@261@01)))))))))))))
+  $Snap.unit))
+; State saturation: after contract
+(set-option :timeout 50)
+(check-sat)
+; unknown
+(set-option :timeout 0)
+(push) ; 2
 (declare-const $t@262@01 $Snap)
 (assert (= $t@262@01 ($Snap.combine ($Snap.first $t@262@01) ($Snap.second $t@262@01))))
 (assert (= ($Snap.first $t@262@01) $Snap.unit))
-; [eval] _cthread_156 != null
-(assert (not (= _cthread_156@254@01 $Ref.null)))
+; [eval] (forperm _r_6: Ref [_r_6.MustReleaseBounded] :: Level(_r_6) <= _current_wait_level_156)
 (assert (=
   ($Snap.second $t@262@01)
   ($Snap.combine
     ($Snap.first ($Snap.second $t@262@01))
     ($Snap.second ($Snap.second $t@262@01)))))
 (assert (= ($Snap.first ($Snap.second $t@262@01)) $Snap.unit))
-; [eval] issubtype(typeof(_cthread_156), Thread_0())
-; [eval] typeof(_cthread_156)
-; [eval] Thread_0()
-(assert (issubtype<Bool> (typeof<PyType> _cthread_156@254@01) (as Thread_0<PyType>  PyType)))
+; [eval] (forperm _r_6: Ref [_r_6.MustReleaseUnbounded] :: Level(_r_6) <= _current_wait_level_156)
 (assert (=
   ($Snap.second ($Snap.second $t@262@01))
   ($Snap.combine
     ($Snap.first ($Snap.second ($Snap.second $t@262@01)))
     ($Snap.second ($Snap.second ($Snap.second $t@262@01))))))
 (assert (= ($Snap.first ($Snap.second ($Snap.second $t@262@01))) $Snap.unit))
-; [eval] self != null
-(assert (not (= self@257@01 $Ref.null)))
+; [eval] _residue_156 <= _current_wait_level_156
+(assert (<= _residue_156@255@01 _current_wait_level_156@260@01))
 (assert (=
   ($Snap.second ($Snap.second ($Snap.second $t@262@01)))
   ($Snap.combine
@@ -24752,215 +24823,52 @@
   ($Snap.combine
     ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@262@01)))))
     ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@262@01))))))))
-(push) ; 2
-(set-option :timeout 10)
-(assert (not false))
-(check-sat)
-; unknown
-(pop) ; 2
-; 0.00s
-; (get-info :all-statistics)
 (assert (=
   ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@262@01)))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@262@01))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@262@01)))))))))
-(set-option :timeout 0)
-(push) ; 2
-(set-option :timeout 10)
-(assert (not false))
-(check-sat)
-; unknown
-(pop) ; 2
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 2
-(set-option :timeout 10)
-(assert (not false))
-(check-sat)
-; unknown
-(pop) ; 2
-; 0.00s
-; (get-info :all-statistics)
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@262@01))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@262@01)))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@262@01))))))))))
-(set-option :timeout 0)
-(push) ; 2
-(set-option :timeout 10)
-(assert (not false))
-(check-sat)
-; unknown
-(pop) ; 2
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 2
-(set-option :timeout 10)
-(assert (not false))
-(check-sat)
-; unknown
-(pop) ; 2
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 2
-(set-option :timeout 10)
-(assert (not false))
-(check-sat)
-; unknown
-(pop) ; 2
-; 0.00s
-; (get-info :all-statistics)
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@262@01)))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@262@01))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@262@01)))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@262@01))))))))
-  $Snap.unit))
-; [eval] issubtype(typeof(self), Ticket())
-; [eval] typeof(self)
-; [eval] Ticket()
-(assert (issubtype<Bool> (typeof<PyType> self@257@01) (as Ticket<PyType>  PyType)))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@262@01))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@262@01)))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@262@01))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@262@01)))))))))
-  $Snap.unit))
-; [eval] issubtype(typeof(show), int())
-; [eval] typeof(show)
-; [eval] int()
-(assert (issubtype<Bool> (typeof<PyType> show@258@01) (as int<PyType>  PyType)))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@262@01)))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@262@01))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@262@01)))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@262@01))))))))))
-  $Snap.unit))
-; [eval] issubtype(typeof(row), int())
-; [eval] typeof(row)
-; [eval] int()
-(assert (issubtype<Bool> (typeof<PyType> row@259@01) (as int<PyType>  PyType)))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@262@01))))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@262@01)))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@262@01))))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@262@01)))))))))))
-  $Snap.unit))
-; [eval] issubtype(typeof(seat), int())
-; [eval] typeof(seat)
-; [eval] int()
-(assert (issubtype<Bool> (typeof<PyType> seat@260@01) (as int<PyType>  PyType)))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@262@01)))))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@262@01))))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@262@01)))))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@262@01))))))))))))
-  $Snap.unit))
-; [eval] self != null
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@262@01))))))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@262@01)))))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@262@01))))))))))))))))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@262@01)))))))))))))
-  $Snap.unit))
-; State saturation: after contract
-(set-option :timeout 50)
-(check-sat)
-; unknown
-(set-option :timeout 0)
-(push) ; 2
-(declare-const $t@263@01 $Snap)
-(assert (= $t@263@01 ($Snap.combine ($Snap.first $t@263@01) ($Snap.second $t@263@01))))
-(assert (= ($Snap.first $t@263@01) $Snap.unit))
-; [eval] (forperm _r_6: Ref [_r_6.MustReleaseBounded] :: Level(_r_6) <= _current_wait_level_156)
-(assert (=
-  ($Snap.second $t@263@01)
-  ($Snap.combine
-    ($Snap.first ($Snap.second $t@263@01))
-    ($Snap.second ($Snap.second $t@263@01)))))
-(assert (= ($Snap.first ($Snap.second $t@263@01)) $Snap.unit))
-; [eval] (forperm _r_6: Ref [_r_6.MustReleaseUnbounded] :: Level(_r_6) <= _current_wait_level_156)
-(assert (=
-  ($Snap.second ($Snap.second $t@263@01))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second $t@263@01)))
-    ($Snap.second ($Snap.second ($Snap.second $t@263@01))))))
-(assert (= ($Snap.first ($Snap.second ($Snap.second $t@263@01))) $Snap.unit))
-; [eval] _residue_156 <= _current_wait_level_156
-(assert (<= _residue_156@256@01 _current_wait_level_156@261@01))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second $t@263@01)))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@263@01))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@263@01)))))))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@263@01))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@263@01)))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@263@01))))))))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@263@01)))))
   $Snap.unit))
 (pop) ; 2
 (push) ; 2
 ; [exec]
 ; var _err: Ref
-(declare-const _err@264@01 $Ref)
+(declare-const _err@263@01 $Ref)
 ; [exec]
 ; var self_2: Ref
-(declare-const self_2@265@01 $Ref)
+(declare-const self_2@264@01 $Ref)
 ; [exec]
 ; var show_0: Ref
-(declare-const show_0@266@01 $Ref)
+(declare-const show_0@265@01 $Ref)
 ; [exec]
 ; var row_1: Ref
-(declare-const row_1@267@01 $Ref)
+(declare-const row_1@266@01 $Ref)
 ; [exec]
 ; var seat_1: Ref
-(declare-const seat_1@268@01 $Ref)
+(declare-const seat_1@267@01 $Ref)
 ; [exec]
 ; var _cwl_156: Perm
-(declare-const _cwl_156@269@01 $Perm)
+(declare-const _cwl_156@268@01 $Perm)
 ; [exec]
 ; var _method_measures_156: Seq[Measure$]
-(declare-const _method_measures_156@270@01 Seq<Measure$>)
+(declare-const _method_measures_156@269@01 Seq<Measure$>)
 ; [exec]
 ; _method_measures_156 := Seq(Measure$create(true, _cthread_156, 1))
 ; [eval] Seq(Measure$create(true, _cthread_156, 1))
 ; [eval] Measure$create(true, _cthread_156, 1)
 (assert (=
   (Seq_length
-    (Seq_singleton (Measure$create<Measure$> true _cthread_156@254@01 1)))
+    (Seq_singleton (Measure$create<Measure$> true _cthread_156@253@01 1)))
   1))
-(declare-const _method_measures_156@271@01 Seq<Measure$>)
+(declare-const _method_measures_156@270@01 Seq<Measure$>)
 (assert (=
-  _method_measures_156@271@01
-  (Seq_singleton (Measure$create<Measure$> true _cthread_156@254@01 1))))
+  _method_measures_156@270@01
+  (Seq_singleton (Measure$create<Measure$> true _cthread_156@253@01 1))))
 ; [exec]
 ; inhale typeof(self) == Ticket()
-(declare-const $t@272@01 $Snap)
-(assert (= $t@272@01 $Snap.unit))
+(declare-const $t@271@01 $Snap)
+(assert (= $t@271@01 $Snap.unit))
 ; [eval] typeof(self) == Ticket()
 ; [eval] typeof(self)
 ; [eval] Ticket()
-(assert (= (typeof<PyType> self@257@01) (as Ticket<PyType>  PyType)))
+(assert (= (typeof<PyType> self@256@01) (as Ticket<PyType>  PyType)))
 ; State saturation: after inhale
 (set-option :timeout 20)
 (check-sat)
@@ -24986,16 +24894,16 @@
 (pop) ; 3
 ; 0.00s
 ; (get-info :all-statistics)
-; [then-branch: 312 | True | live]
-; [else-branch: 312 | False | dead]
+; [then-branch: 309 | True | live]
+; [else-branch: 309 | False | dead]
 (set-option :timeout 0)
 (push) ; 3
-; [then-branch: 312 | True]
+; [then-branch: 309 | True]
 ; [exec]
 ; exhale acc(_MaySet(self_2, 2036589462893379814238060391131476), write)
 ; [exec]
 ; inhale acc(self_2.Ticket_show_id, write)
-(declare-const $t@273@01 $Ref)
+(declare-const $t@272@01 $Ref)
 ; State saturation: after inhale
 (set-option :timeout 20)
 (check-sat)
@@ -25013,16 +24921,16 @@
 (pop) ; 4
 ; 0.00s
 ; (get-info :all-statistics)
-; [then-branch: 313 | True | live]
-; [else-branch: 313 | False | dead]
+; [then-branch: 310 | True | live]
+; [else-branch: 310 | False | dead]
 (set-option :timeout 0)
 (push) ; 4
-; [then-branch: 313 | True]
+; [then-branch: 310 | True]
 ; [exec]
 ; exhale acc(_MaySet(self_2, 564017441487491594152276), write)
 ; [exec]
 ; inhale acc(self_2.Ticket_row, write)
-(declare-const $t@274@01 $Ref)
+(declare-const $t@273@01 $Ref)
 ; State saturation: after inhale
 (set-option :timeout 20)
 (check-sat)
@@ -25040,28 +24948,28 @@
 ; [eval] typeof(arg0)
 ; [eval] issubtype(typeof(arg1), t1)
 ; [eval] typeof(arg1)
-(assert (tuple___create2__%precondition ($Snap.combine $Snap.unit $Snap.unit) row@259@01 seat@260@01 (as int<PyType>  PyType) (as int<PyType>  PyType) 0))
+(assert (tuple___create2__%precondition ($Snap.combine $Snap.unit $Snap.unit) row@258@01 seat@259@01 (as int<PyType>  PyType) (as int<PyType>  PyType) 0))
 (pop) ; 5
 ; Joined path conditions
-(assert (tuple___create2__%precondition ($Snap.combine $Snap.unit $Snap.unit) row@259@01 seat@260@01 (as int<PyType>  PyType) (as int<PyType>  PyType) 0))
+(assert (tuple___create2__%precondition ($Snap.combine $Snap.unit $Snap.unit) row@258@01 seat@259@01 (as int<PyType>  PyType) (as int<PyType>  PyType) 0))
 (push) ; 5
 ; [eval] (let ln == (tuple___len__(self)) in (key >= 0 ==> key < ln) && (key < 0 ==> key >= -ln))
 ; [eval] tuple___len__(self)
 (push) ; 6
 (assert (tuple___len__%precondition $Snap.unit (tuple___create2__ ($Snap.combine
   $Snap.unit
-  $Snap.unit) row@259@01 seat@260@01 (as int<PyType>  PyType) (as int<PyType>  PyType) 0)))
+  $Snap.unit) row@258@01 seat@259@01 (as int<PyType>  PyType) (as int<PyType>  PyType) 0)))
 (pop) ; 6
 ; Joined path conditions
 (assert (tuple___len__%precondition $Snap.unit (tuple___create2__ ($Snap.combine
   $Snap.unit
-  $Snap.unit) row@259@01 seat@260@01 (as int<PyType>  PyType) (as int<PyType>  PyType) 0)))
-(declare-const letvar@275@01 Int)
+  $Snap.unit) row@258@01 seat@259@01 (as int<PyType>  PyType) (as int<PyType>  PyType) 0)))
+(declare-const letvar@274@01 Int)
 (assert (=
-  (as letvar@275@01  Int)
+  (as letvar@274@01  Int)
   (tuple___len__ $Snap.unit (tuple___create2__ ($Snap.combine
     $Snap.unit
-    $Snap.unit) row@259@01 seat@260@01 (as int<PyType>  PyType) (as int<PyType>  PyType) 0))))
+    $Snap.unit) row@258@01 seat@259@01 (as int<PyType>  PyType) (as int<PyType>  PyType) 0))))
 ; [eval] (key >= 0 ==> key < ln) && (key < 0 ==> key >= -ln)
 ; [eval] key >= 0 ==> key < ln
 ; [eval] key >= 0
@@ -25074,41 +24982,41 @@
 (pop) ; 7
 ; 0.00s
 ; (get-info :all-statistics)
-; [then-branch: 314 | True | live]
-; [else-branch: 314 | False | dead]
+; [then-branch: 311 | True | live]
+; [else-branch: 311 | False | dead]
 (set-option :timeout 0)
 (push) ; 7
-; [then-branch: 314 | True]
+; [then-branch: 311 | True]
 ; [eval] key < ln
 (pop) ; 7
 (pop) ; 6
 ; Joined path conditions
 (push) ; 6
-; [then-branch: 315 | !(0 < tuple___len__(_, tuple___create2__((_, _), row@259@01, seat@260@01, int[PyType], int[PyType], 0))) | live]
-; [else-branch: 315 | 0 < tuple___len__(_, tuple___create2__((_, _), row@259@01, seat@260@01, int[PyType], int[PyType], 0)) | live]
+; [then-branch: 312 | !(0 < tuple___len__(_, tuple___create2__((_, _), row@258@01, seat@259@01, int[PyType], int[PyType], 0))) | live]
+; [else-branch: 312 | 0 < tuple___len__(_, tuple___create2__((_, _), row@258@01, seat@259@01, int[PyType], int[PyType], 0)) | live]
 (push) ; 7
-; [then-branch: 315 | !(0 < tuple___len__(_, tuple___create2__((_, _), row@259@01, seat@260@01, int[PyType], int[PyType], 0)))]
+; [then-branch: 312 | !(0 < tuple___len__(_, tuple___create2__((_, _), row@258@01, seat@259@01, int[PyType], int[PyType], 0)))]
 (assert (not
   (<
     0
     (tuple___len__ $Snap.unit (tuple___create2__ ($Snap.combine
       $Snap.unit
-      $Snap.unit) row@259@01 seat@260@01 (as int<PyType>  PyType) (as int<PyType>  PyType) 0)))))
+      $Snap.unit) row@258@01 seat@259@01 (as int<PyType>  PyType) (as int<PyType>  PyType) 0)))))
 (pop) ; 7
 (push) ; 7
-; [else-branch: 315 | 0 < tuple___len__(_, tuple___create2__((_, _), row@259@01, seat@260@01, int[PyType], int[PyType], 0))]
+; [else-branch: 312 | 0 < tuple___len__(_, tuple___create2__((_, _), row@258@01, seat@259@01, int[PyType], int[PyType], 0))]
 (assert (<
   0
   (tuple___len__ $Snap.unit (tuple___create2__ ($Snap.combine
     $Snap.unit
-    $Snap.unit) row@259@01 seat@260@01 (as int<PyType>  PyType) (as int<PyType>  PyType) 0))))
+    $Snap.unit) row@258@01 seat@259@01 (as int<PyType>  PyType) (as int<PyType>  PyType) 0))))
 ; [eval] key < 0 ==> key >= -ln
 ; [eval] key < 0
 (push) ; 8
-; [then-branch: 316 | False | dead]
-; [else-branch: 316 | True | live]
+; [then-branch: 313 | False | dead]
+; [else-branch: 313 | True | live]
 (push) ; 9
-; [else-branch: 316 | True]
+; [else-branch: 313 | True]
 (pop) ; 9
 (pop) ; 8
 ; Joined path conditions
@@ -25121,19 +25029,19 @@
     0
     (tuple___len__ $Snap.unit (tuple___create2__ ($Snap.combine
       $Snap.unit
-      $Snap.unit) row@259@01 seat@260@01 (as int<PyType>  PyType) (as int<PyType>  PyType) 0)))
+      $Snap.unit) row@258@01 seat@259@01 (as int<PyType>  PyType) (as int<PyType>  PyType) 0)))
   (not
     (<
       0
       (tuple___len__ $Snap.unit (tuple___create2__ ($Snap.combine
         $Snap.unit
-        $Snap.unit) row@259@01 seat@260@01 (as int<PyType>  PyType) (as int<PyType>  PyType) 0))))))
+        $Snap.unit) row@258@01 seat@259@01 (as int<PyType>  PyType) (as int<PyType>  PyType) 0))))))
 (push) ; 6
 (assert (not (<
   0
   (tuple___len__ $Snap.unit (tuple___create2__ ($Snap.combine
     $Snap.unit
-    $Snap.unit) row@259@01 seat@260@01 (as int<PyType>  PyType) (as int<PyType>  PyType) 0)))))
+    $Snap.unit) row@258@01 seat@259@01 (as int<PyType>  PyType) (as int<PyType>  PyType) 0)))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -25143,47 +25051,47 @@
   0
   (tuple___len__ $Snap.unit (tuple___create2__ ($Snap.combine
     $Snap.unit
-    $Snap.unit) row@259@01 seat@260@01 (as int<PyType>  PyType) (as int<PyType>  PyType) 0))))
+    $Snap.unit) row@258@01 seat@259@01 (as int<PyType>  PyType) (as int<PyType>  PyType) 0))))
 (assert (tuple___getitem__%precondition $Snap.unit (tuple___create2__ ($Snap.combine
   $Snap.unit
-  $Snap.unit) row@259@01 seat@260@01 (as int<PyType>  PyType) (as int<PyType>  PyType) 0) 0))
+  $Snap.unit) row@258@01 seat@259@01 (as int<PyType>  PyType) (as int<PyType>  PyType) 0) 0))
 (pop) ; 5
 ; Joined path conditions
 (assert (and
   (tuple___len__%precondition $Snap.unit (tuple___create2__ ($Snap.combine
     $Snap.unit
-    $Snap.unit) row@259@01 seat@260@01 (as int<PyType>  PyType) (as int<PyType>  PyType) 0))
+    $Snap.unit) row@258@01 seat@259@01 (as int<PyType>  PyType) (as int<PyType>  PyType) 0))
   (=
-    (as letvar@275@01  Int)
+    (as letvar@274@01  Int)
     (tuple___len__ $Snap.unit (tuple___create2__ ($Snap.combine
       $Snap.unit
-      $Snap.unit) row@259@01 seat@260@01 (as int<PyType>  PyType) (as int<PyType>  PyType) 0)))
+      $Snap.unit) row@258@01 seat@259@01 (as int<PyType>  PyType) (as int<PyType>  PyType) 0)))
   (or
     (<
       0
       (tuple___len__ $Snap.unit (tuple___create2__ ($Snap.combine
         $Snap.unit
-        $Snap.unit) row@259@01 seat@260@01 (as int<PyType>  PyType) (as int<PyType>  PyType) 0)))
+        $Snap.unit) row@258@01 seat@259@01 (as int<PyType>  PyType) (as int<PyType>  PyType) 0)))
     (not
       (<
         0
         (tuple___len__ $Snap.unit (tuple___create2__ ($Snap.combine
           $Snap.unit
-          $Snap.unit) row@259@01 seat@260@01 (as int<PyType>  PyType) (as int<PyType>  PyType) 0)))))
+          $Snap.unit) row@258@01 seat@259@01 (as int<PyType>  PyType) (as int<PyType>  PyType) 0)))))
   (<
     0
     (tuple___len__ $Snap.unit (tuple___create2__ ($Snap.combine
       $Snap.unit
-      $Snap.unit) row@259@01 seat@260@01 (as int<PyType>  PyType) (as int<PyType>  PyType) 0)))
+      $Snap.unit) row@258@01 seat@259@01 (as int<PyType>  PyType) (as int<PyType>  PyType) 0)))
   (tuple___getitem__%precondition $Snap.unit (tuple___create2__ ($Snap.combine
     $Snap.unit
-    $Snap.unit) row@259@01 seat@260@01 (as int<PyType>  PyType) (as int<PyType>  PyType) 0) 0)))
-(declare-const Ticket_row@276@01 $Ref)
+    $Snap.unit) row@258@01 seat@259@01 (as int<PyType>  PyType) (as int<PyType>  PyType) 0) 0)))
+(declare-const Ticket_row@275@01 $Ref)
 (assert (=
-  Ticket_row@276@01
+  Ticket_row@275@01
   (tuple___getitem__ $Snap.unit (tuple___create2__ ($Snap.combine
     $Snap.unit
-    $Snap.unit) row@259@01 seat@260@01 (as int<PyType>  PyType) (as int<PyType>  PyType) 0) 0)))
+    $Snap.unit) row@258@01 seat@259@01 (as int<PyType>  PyType) (as int<PyType>  PyType) 0) 0)))
 ; [eval] perm(_MaySet(self_2, 140695336058778200607779156)) > none
 ; [eval] perm(_MaySet(self_2, 140695336058778200607779156))
 (push) ; 5
@@ -25194,16 +25102,16 @@
 (pop) ; 5
 ; 0.00s
 ; (get-info :all-statistics)
-; [then-branch: 317 | True | live]
-; [else-branch: 317 | False | dead]
+; [then-branch: 314 | True | live]
+; [else-branch: 314 | False | dead]
 (set-option :timeout 0)
 (push) ; 5
-; [then-branch: 317 | True]
+; [then-branch: 314 | True]
 ; [exec]
 ; exhale acc(_MaySet(self_2, 140695336058778200607779156), write)
 ; [exec]
 ; inhale acc(self_2.Ticket_seat, write)
-(declare-const $t@277@01 $Ref)
+(declare-const $t@276@01 $Ref)
 ; State saturation: after inhale
 (set-option :timeout 20)
 (check-sat)
@@ -25229,12 +25137,12 @@
 (push) ; 7
 (pop) ; 7
 ; Joined path conditions
-(declare-const letvar@278@01 Int)
+(declare-const letvar@277@01 Int)
 (assert (=
-  (as letvar@278@01  Int)
+  (as letvar@277@01  Int)
   (tuple___len__ $Snap.unit (tuple___create2__ ($Snap.combine
     $Snap.unit
-    $Snap.unit) row@259@01 seat@260@01 (as int<PyType>  PyType) (as int<PyType>  PyType) 0))))
+    $Snap.unit) row@258@01 seat@259@01 (as int<PyType>  PyType) (as int<PyType>  PyType) 0))))
 ; [eval] (key >= 0 ==> key < ln) && (key < 0 ==> key >= -ln)
 ; [eval] key >= 0 ==> key < ln
 ; [eval] key >= 0
@@ -25247,41 +25155,41 @@
 (pop) ; 8
 ; 0.00s
 ; (get-info :all-statistics)
-; [then-branch: 318 | True | live]
-; [else-branch: 318 | False | dead]
+; [then-branch: 315 | True | live]
+; [else-branch: 315 | False | dead]
 (set-option :timeout 0)
 (push) ; 8
-; [then-branch: 318 | True]
+; [then-branch: 315 | True]
 ; [eval] key < ln
 (pop) ; 8
 (pop) ; 7
 ; Joined path conditions
 (push) ; 7
-; [then-branch: 319 | !(1 < tuple___len__(_, tuple___create2__((_, _), row@259@01, seat@260@01, int[PyType], int[PyType], 0))) | live]
-; [else-branch: 319 | 1 < tuple___len__(_, tuple___create2__((_, _), row@259@01, seat@260@01, int[PyType], int[PyType], 0)) | live]
+; [then-branch: 316 | !(1 < tuple___len__(_, tuple___create2__((_, _), row@258@01, seat@259@01, int[PyType], int[PyType], 0))) | live]
+; [else-branch: 316 | 1 < tuple___len__(_, tuple___create2__((_, _), row@258@01, seat@259@01, int[PyType], int[PyType], 0)) | live]
 (push) ; 8
-; [then-branch: 319 | !(1 < tuple___len__(_, tuple___create2__((_, _), row@259@01, seat@260@01, int[PyType], int[PyType], 0)))]
+; [then-branch: 316 | !(1 < tuple___len__(_, tuple___create2__((_, _), row@258@01, seat@259@01, int[PyType], int[PyType], 0)))]
 (assert (not
   (<
     1
     (tuple___len__ $Snap.unit (tuple___create2__ ($Snap.combine
       $Snap.unit
-      $Snap.unit) row@259@01 seat@260@01 (as int<PyType>  PyType) (as int<PyType>  PyType) 0)))))
+      $Snap.unit) row@258@01 seat@259@01 (as int<PyType>  PyType) (as int<PyType>  PyType) 0)))))
 (pop) ; 8
 (push) ; 8
-; [else-branch: 319 | 1 < tuple___len__(_, tuple___create2__((_, _), row@259@01, seat@260@01, int[PyType], int[PyType], 0))]
+; [else-branch: 316 | 1 < tuple___len__(_, tuple___create2__((_, _), row@258@01, seat@259@01, int[PyType], int[PyType], 0))]
 (assert (<
   1
   (tuple___len__ $Snap.unit (tuple___create2__ ($Snap.combine
     $Snap.unit
-    $Snap.unit) row@259@01 seat@260@01 (as int<PyType>  PyType) (as int<PyType>  PyType) 0))))
+    $Snap.unit) row@258@01 seat@259@01 (as int<PyType>  PyType) (as int<PyType>  PyType) 0))))
 ; [eval] key < 0 ==> key >= -ln
 ; [eval] key < 0
 (push) ; 9
-; [then-branch: 320 | False | dead]
-; [else-branch: 320 | True | live]
+; [then-branch: 317 | False | dead]
+; [else-branch: 317 | True | live]
 (push) ; 10
-; [else-branch: 320 | True]
+; [else-branch: 317 | True]
 (pop) ; 10
 (pop) ; 9
 ; Joined path conditions
@@ -25294,19 +25202,19 @@
     1
     (tuple___len__ $Snap.unit (tuple___create2__ ($Snap.combine
       $Snap.unit
-      $Snap.unit) row@259@01 seat@260@01 (as int<PyType>  PyType) (as int<PyType>  PyType) 0)))
+      $Snap.unit) row@258@01 seat@259@01 (as int<PyType>  PyType) (as int<PyType>  PyType) 0)))
   (not
     (<
       1
       (tuple___len__ $Snap.unit (tuple___create2__ ($Snap.combine
         $Snap.unit
-        $Snap.unit) row@259@01 seat@260@01 (as int<PyType>  PyType) (as int<PyType>  PyType) 0))))))
+        $Snap.unit) row@258@01 seat@259@01 (as int<PyType>  PyType) (as int<PyType>  PyType) 0))))))
 (push) ; 7
 (assert (not (<
   1
   (tuple___len__ $Snap.unit (tuple___create2__ ($Snap.combine
     $Snap.unit
-    $Snap.unit) row@259@01 seat@260@01 (as int<PyType>  PyType) (as int<PyType>  PyType) 0)))))
+    $Snap.unit) row@258@01 seat@259@01 (as int<PyType>  PyType) (as int<PyType>  PyType) 0)))))
 (check-sat)
 ; unsat
 (pop) ; 7
@@ -25316,44 +25224,44 @@
   1
   (tuple___len__ $Snap.unit (tuple___create2__ ($Snap.combine
     $Snap.unit
-    $Snap.unit) row@259@01 seat@260@01 (as int<PyType>  PyType) (as int<PyType>  PyType) 0))))
+    $Snap.unit) row@258@01 seat@259@01 (as int<PyType>  PyType) (as int<PyType>  PyType) 0))))
 (assert (tuple___getitem__%precondition $Snap.unit (tuple___create2__ ($Snap.combine
   $Snap.unit
-  $Snap.unit) row@259@01 seat@260@01 (as int<PyType>  PyType) (as int<PyType>  PyType) 0) 1))
+  $Snap.unit) row@258@01 seat@259@01 (as int<PyType>  PyType) (as int<PyType>  PyType) 0) 1))
 (pop) ; 6
 ; Joined path conditions
 (assert (and
   (=
-    (as letvar@278@01  Int)
+    (as letvar@277@01  Int)
     (tuple___len__ $Snap.unit (tuple___create2__ ($Snap.combine
       $Snap.unit
-      $Snap.unit) row@259@01 seat@260@01 (as int<PyType>  PyType) (as int<PyType>  PyType) 0)))
+      $Snap.unit) row@258@01 seat@259@01 (as int<PyType>  PyType) (as int<PyType>  PyType) 0)))
   (or
     (<
       1
       (tuple___len__ $Snap.unit (tuple___create2__ ($Snap.combine
         $Snap.unit
-        $Snap.unit) row@259@01 seat@260@01 (as int<PyType>  PyType) (as int<PyType>  PyType) 0)))
+        $Snap.unit) row@258@01 seat@259@01 (as int<PyType>  PyType) (as int<PyType>  PyType) 0)))
     (not
       (<
         1
         (tuple___len__ $Snap.unit (tuple___create2__ ($Snap.combine
           $Snap.unit
-          $Snap.unit) row@259@01 seat@260@01 (as int<PyType>  PyType) (as int<PyType>  PyType) 0)))))
+          $Snap.unit) row@258@01 seat@259@01 (as int<PyType>  PyType) (as int<PyType>  PyType) 0)))))
   (<
     1
     (tuple___len__ $Snap.unit (tuple___create2__ ($Snap.combine
       $Snap.unit
-      $Snap.unit) row@259@01 seat@260@01 (as int<PyType>  PyType) (as int<PyType>  PyType) 0)))
+      $Snap.unit) row@258@01 seat@259@01 (as int<PyType>  PyType) (as int<PyType>  PyType) 0)))
   (tuple___getitem__%precondition $Snap.unit (tuple___create2__ ($Snap.combine
     $Snap.unit
-    $Snap.unit) row@259@01 seat@260@01 (as int<PyType>  PyType) (as int<PyType>  PyType) 0) 1)))
-(declare-const Ticket_seat@279@01 $Ref)
+    $Snap.unit) row@258@01 seat@259@01 (as int<PyType>  PyType) (as int<PyType>  PyType) 0) 1)))
+(declare-const Ticket_seat@278@01 $Ref)
 (assert (=
-  Ticket_seat@279@01
+  Ticket_seat@278@01
   (tuple___getitem__ $Snap.unit (tuple___create2__ ($Snap.combine
     $Snap.unit
-    $Snap.unit) row@259@01 seat@260@01 (as int<PyType>  PyType) (as int<PyType>  PyType) 0) 1)))
+    $Snap.unit) row@258@01 seat@259@01 (as int<PyType>  PyType) (as int<PyType>  PyType) 0) 1)))
 ; [exec]
 ; fold acc(Ticket_state(self_2), write)
 ; [eval] issubtype(typeof(self_1), Ticket())
@@ -25364,17 +25272,17 @@
 ; [eval] Ticket()
 (push) ; 6
 (set-option :timeout 10)
-(assert (not (not (issubtype<Bool> (typeof<PyType> self@257@01) (as Ticket<PyType>  PyType)))))
+(assert (not (not (issubtype<Bool> (typeof<PyType> self@256@01) (as Ticket<PyType>  PyType)))))
 (check-sat)
 ; unknown
 (pop) ; 6
 ; 0.00s
 ; (get-info :all-statistics)
-; [then-branch: 321 | issubtype[Bool](typeof[PyType](self@257@01), Ticket[PyType]) | live]
-; [else-branch: 321 | !(issubtype[Bool](typeof[PyType](self@257@01), Ticket[PyType])) | dead]
+; [then-branch: 318 | issubtype[Bool](typeof[PyType](self@256@01), Ticket[PyType]) | live]
+; [else-branch: 318 | !(issubtype[Bool](typeof[PyType](self@256@01), Ticket[PyType])) | dead]
 (set-option :timeout 0)
 (push) ; 6
-; [then-branch: 321 | issubtype[Bool](typeof[PyType](self@257@01), Ticket[PyType])]
+; [then-branch: 318 | issubtype[Bool](typeof[PyType](self@256@01), Ticket[PyType])]
 ; [eval] issubtype(typeof(self_1.Ticket_show_id), int())
 ; [eval] typeof(self_1.Ticket_show_id)
 ; [eval] int()
@@ -25382,39 +25290,39 @@
 ; [eval] typeof(self_1.Ticket_row)
 ; [eval] int()
 (push) ; 7
-(assert (not (issubtype<Bool> (typeof<PyType> Ticket_row@276@01) (as int<PyType>  PyType))))
+(assert (not (issubtype<Bool> (typeof<PyType> Ticket_row@275@01) (as int<PyType>  PyType))))
 (check-sat)
 ; unsat
 (pop) ; 7
 ; 0.00s
 ; (get-info :all-statistics)
-(assert (issubtype<Bool> (typeof<PyType> Ticket_row@276@01) (as int<PyType>  PyType)))
+(assert (issubtype<Bool> (typeof<PyType> Ticket_row@275@01) (as int<PyType>  PyType)))
 ; [eval] issubtype(typeof(self_1.Ticket_seat), int())
 ; [eval] typeof(self_1.Ticket_seat)
 ; [eval] int()
 (push) ; 7
-(assert (not (issubtype<Bool> (typeof<PyType> Ticket_seat@279@01) (as int<PyType>  PyType))))
+(assert (not (issubtype<Bool> (typeof<PyType> Ticket_seat@278@01) (as int<PyType>  PyType))))
 (check-sat)
 ; unsat
 (pop) ; 7
 ; 0.00s
 ; (get-info :all-statistics)
-(assert (issubtype<Bool> (typeof<PyType> Ticket_seat@279@01) (as int<PyType>  PyType)))
+(assert (issubtype<Bool> (typeof<PyType> Ticket_seat@278@01) (as int<PyType>  PyType)))
 (assert (Ticket_state%trigger ($Snap.combine
   $Snap.unit
   ($Snap.combine
     $Snap.unit
     ($Snap.combine
-      ($SortWrappers.$RefTo$Snap show@258@01)
+      ($SortWrappers.$RefTo$Snap show@257@01)
       ($Snap.combine
         $Snap.unit
         ($Snap.combine
-          ($SortWrappers.$RefTo$Snap Ticket_row@276@01)
+          ($SortWrappers.$RefTo$Snap Ticket_row@275@01)
           ($Snap.combine
             $Snap.unit
             ($Snap.combine
-              ($SortWrappers.$RefTo$Snap Ticket_seat@279@01)
-              $Snap.unit))))))) self@257@01))
+              ($SortWrappers.$RefTo$Snap Ticket_seat@278@01)
+              $Snap.unit))))))) self@256@01))
 ; [exec]
 ; label __end
 ; [eval] (forperm _r_7: Ref [MustInvokeBounded(_r_7)] :: false)
@@ -25426,99 +25334,99 @@
 ; [eval] !(perm(_MaySet(self_2, 140695336058778200607779156)) > none)
 ; [eval] perm(_MaySet(self_2, 140695336058778200607779156)) > none
 ; [eval] perm(_MaySet(self_2, 140695336058778200607779156))
-; [then-branch: 322 | False | dead]
-; [else-branch: 322 | True | live]
+; [then-branch: 319 | False | dead]
+; [else-branch: 319 | True | live]
 (push) ; 5
-; [else-branch: 322 | True]
+; [else-branch: 319 | True]
 (pop) ; 5
 (pop) ; 4
 ; [eval] !(perm(_MaySet(self_2, 564017441487491594152276)) > none)
 ; [eval] perm(_MaySet(self_2, 564017441487491594152276)) > none
 ; [eval] perm(_MaySet(self_2, 564017441487491594152276))
-; [then-branch: 323 | False | dead]
-; [else-branch: 323 | True | live]
+; [then-branch: 320 | False | dead]
+; [else-branch: 320 | True | live]
 (push) ; 4
-; [else-branch: 323 | True]
+; [else-branch: 320 | True]
 (pop) ; 4
 (pop) ; 3
 ; [eval] !(perm(_MaySet(self_2, 2036589462893379814238060391131476)) > none)
 ; [eval] perm(_MaySet(self_2, 2036589462893379814238060391131476)) > none
 ; [eval] perm(_MaySet(self_2, 2036589462893379814238060391131476))
-; [then-branch: 324 | False | dead]
-; [else-branch: 324 | True | live]
+; [then-branch: 321 | False | dead]
+; [else-branch: 321 | True | live]
 (push) ; 3
-; [else-branch: 324 | True]
+; [else-branch: 321 | True]
 (pop) ; 3
 (pop) ; 2
 (pop) ; 1
 ; ---------- Ticket_set_discount ----------
-(declare-const _cthread_157@280@01 $Ref)
-(declare-const _caller_measures_157@281@01 Seq<Measure$>)
-(declare-const _residue_157@282@01 $Perm)
-(declare-const self_0@283@01 $Ref)
-(declare-const code@284@01 $Ref)
-(declare-const _current_wait_level_157@285@01 $Perm)
-(declare-const _cthread_157@286@01 $Ref)
-(declare-const _caller_measures_157@287@01 Seq<Measure$>)
-(declare-const _residue_157@288@01 $Perm)
-(declare-const self_0@289@01 $Ref)
-(declare-const code@290@01 $Ref)
-(declare-const _current_wait_level_157@291@01 $Perm)
+(declare-const _cthread_157@279@01 $Ref)
+(declare-const _caller_measures_157@280@01 Seq<Measure$>)
+(declare-const _residue_157@281@01 $Perm)
+(declare-const self_0@282@01 $Ref)
+(declare-const code@283@01 $Ref)
+(declare-const _current_wait_level_157@284@01 $Perm)
+(declare-const _cthread_157@285@01 $Ref)
+(declare-const _caller_measures_157@286@01 Seq<Measure$>)
+(declare-const _residue_157@287@01 $Perm)
+(declare-const self_0@288@01 $Ref)
+(declare-const code@289@01 $Ref)
+(declare-const _current_wait_level_157@290@01 $Perm)
 (push) ; 1
-(declare-const $t@292@01 $Snap)
-(assert (= $t@292@01 ($Snap.combine ($Snap.first $t@292@01) ($Snap.second $t@292@01))))
-(assert (= ($Snap.first $t@292@01) $Snap.unit))
+(declare-const $t@291@01 $Snap)
+(assert (= $t@291@01 ($Snap.combine ($Snap.first $t@291@01) ($Snap.second $t@291@01))))
+(assert (= ($Snap.first $t@291@01) $Snap.unit))
 ; [eval] _cthread_157 != null
-(assert (not (= _cthread_157@286@01 $Ref.null)))
+(assert (not (= _cthread_157@285@01 $Ref.null)))
 (assert (=
-  ($Snap.second $t@292@01)
+  ($Snap.second $t@291@01)
   ($Snap.combine
-    ($Snap.first ($Snap.second $t@292@01))
-    ($Snap.second ($Snap.second $t@292@01)))))
-(assert (= ($Snap.first ($Snap.second $t@292@01)) $Snap.unit))
+    ($Snap.first ($Snap.second $t@291@01))
+    ($Snap.second ($Snap.second $t@291@01)))))
+(assert (= ($Snap.first ($Snap.second $t@291@01)) $Snap.unit))
 ; [eval] issubtype(typeof(_cthread_157), Thread_0())
 ; [eval] typeof(_cthread_157)
 ; [eval] Thread_0()
-(assert (issubtype<Bool> (typeof<PyType> _cthread_157@286@01) (as Thread_0<PyType>  PyType)))
+(assert (issubtype<Bool> (typeof<PyType> _cthread_157@285@01) (as Thread_0<PyType>  PyType)))
 (assert (=
-  ($Snap.second ($Snap.second $t@292@01))
+  ($Snap.second ($Snap.second $t@291@01))
   ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second $t@292@01)))
-    ($Snap.second ($Snap.second ($Snap.second $t@292@01))))))
-(assert (= ($Snap.first ($Snap.second ($Snap.second $t@292@01))) $Snap.unit))
+    ($Snap.first ($Snap.second ($Snap.second $t@291@01)))
+    ($Snap.second ($Snap.second ($Snap.second $t@291@01))))))
+(assert (= ($Snap.first ($Snap.second ($Snap.second $t@291@01))) $Snap.unit))
 ; [eval] issubtype(typeof(self_0), Ticket())
 ; [eval] typeof(self_0)
 ; [eval] Ticket()
-(assert (issubtype<Bool> (typeof<PyType> self_0@289@01) (as Ticket<PyType>  PyType)))
+(assert (issubtype<Bool> (typeof<PyType> self_0@288@01) (as Ticket<PyType>  PyType)))
 (assert (=
-  ($Snap.second ($Snap.second ($Snap.second $t@292@01)))
+  ($Snap.second ($Snap.second ($Snap.second $t@291@01)))
   ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@292@01))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@292@01)))))))
+    ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@291@01))))
+    ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@291@01)))))))
 (assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@292@01))))
+  ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@291@01))))
   $Snap.unit))
 ; [eval] issubtype(typeof(code), str())
 ; [eval] typeof(code)
 ; [eval] str()
-(assert (issubtype<Bool> (typeof<PyType> code@290@01) (as str<PyType>  PyType)))
+(assert (issubtype<Bool> (typeof<PyType> code@289@01) (as str<PyType>  PyType)))
 (assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@292@01))))
+  ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@291@01))))
   ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@292@01)))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@292@01))))))))
+    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@291@01)))))
+    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@291@01))))))))
 (assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@292@01)))))
+  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@291@01)))))
   $Snap.unit))
 ; [eval] self_0 != null
-(assert (not (= self_0@289@01 $Ref.null)))
+(assert (not (= self_0@288@01 $Ref.null)))
 (assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@292@01)))))
+  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@291@01)))))
   ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@292@01))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@292@01)))))))))
+    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@291@01))))))
+    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@291@01)))))))))
 (assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@292@01))))))
+  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@291@01))))))
   $Snap.unit))
 ; State saturation: after contract
 (set-option :timeout 50)
@@ -25526,54 +25434,54 @@
 ; unknown
 (set-option :timeout 0)
 (push) ; 2
-(declare-const $t@293@01 $Snap)
-(assert (= $t@293@01 ($Snap.combine ($Snap.first $t@293@01) ($Snap.second $t@293@01))))
-(assert (= ($Snap.first $t@293@01) $Snap.unit))
+(declare-const $t@292@01 $Snap)
+(assert (= $t@292@01 ($Snap.combine ($Snap.first $t@292@01) ($Snap.second $t@292@01))))
+(assert (= ($Snap.first $t@292@01) $Snap.unit))
 ; [eval] (forperm _r_9: Ref [_r_9.MustReleaseBounded] :: Level(_r_9) <= _current_wait_level_157)
 (assert (=
-  ($Snap.second $t@293@01)
+  ($Snap.second $t@292@01)
   ($Snap.combine
-    ($Snap.first ($Snap.second $t@293@01))
-    ($Snap.second ($Snap.second $t@293@01)))))
-(assert (= ($Snap.first ($Snap.second $t@293@01)) $Snap.unit))
+    ($Snap.first ($Snap.second $t@292@01))
+    ($Snap.second ($Snap.second $t@292@01)))))
+(assert (= ($Snap.first ($Snap.second $t@292@01)) $Snap.unit))
 ; [eval] (forperm _r_9: Ref [_r_9.MustReleaseUnbounded] :: Level(_r_9) <= _current_wait_level_157)
 (assert (=
-  ($Snap.second ($Snap.second $t@293@01))
+  ($Snap.second ($Snap.second $t@292@01))
   ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second $t@293@01)))
-    ($Snap.second ($Snap.second ($Snap.second $t@293@01))))))
-(assert (= ($Snap.first ($Snap.second ($Snap.second $t@293@01))) $Snap.unit))
+    ($Snap.first ($Snap.second ($Snap.second $t@292@01)))
+    ($Snap.second ($Snap.second ($Snap.second $t@292@01))))))
+(assert (= ($Snap.first ($Snap.second ($Snap.second $t@292@01))) $Snap.unit))
 ; [eval] _residue_157 <= _current_wait_level_157
-(assert (<= _residue_157@288@01 _current_wait_level_157@291@01))
-(assert (= ($Snap.second ($Snap.second ($Snap.second $t@293@01))) $Snap.unit))
+(assert (<= _residue_157@287@01 _current_wait_level_157@290@01))
+(assert (= ($Snap.second ($Snap.second ($Snap.second $t@292@01))) $Snap.unit))
 (pop) ; 2
 (push) ; 2
 ; [exec]
 ; var _err: Ref
-(declare-const _err@294@01 $Ref)
+(declare-const _err@293@01 $Ref)
 ; [exec]
 ; var self_3: Ref
-(declare-const self_3@295@01 $Ref)
+(declare-const self_3@294@01 $Ref)
 ; [exec]
 ; var code_2: Ref
-(declare-const code_2@296@01 $Ref)
+(declare-const code_2@295@01 $Ref)
 ; [exec]
 ; var _cwl_157: Perm
-(declare-const _cwl_157@297@01 $Perm)
+(declare-const _cwl_157@296@01 $Perm)
 ; [exec]
 ; var _method_measures_157: Seq[Measure$]
-(declare-const _method_measures_157@298@01 Seq<Measure$>)
+(declare-const _method_measures_157@297@01 Seq<Measure$>)
 ; [exec]
 ; _method_measures_157 := Seq[Measure$]()
 ; [eval] Seq[Measure$]()
 ; [exec]
 ; inhale typeof(self_0) == Ticket()
-(declare-const $t@299@01 $Snap)
-(assert (= $t@299@01 $Snap.unit))
+(declare-const $t@298@01 $Snap)
+(assert (= $t@298@01 $Snap.unit))
 ; [eval] typeof(self_0) == Ticket()
 ; [eval] typeof(self_0)
 ; [eval] Ticket()
-(assert (= (typeof<PyType> self_0@289@01) (as Ticket<PyType>  PyType)))
+(assert (= (typeof<PyType> self_0@288@01) (as Ticket<PyType>  PyType)))
 ; State saturation: after inhale
 (set-option :timeout 20)
 (check-sat)
@@ -25595,16 +25503,16 @@
 (pop) ; 3
 ; 0.00s
 ; (get-info :all-statistics)
-; [then-branch: 325 | True | live]
-; [else-branch: 325 | False | dead]
+; [then-branch: 322 | True | live]
+; [else-branch: 322 | False | dead]
 (set-option :timeout 0)
 (push) ; 3
-; [then-branch: 325 | True]
+; [then-branch: 322 | True]
 ; [exec]
 ; exhale acc(_MaySet(self_3, 578847845651634811226368290157834565233854867796), write)
 ; [exec]
 ; inhale acc(self_3.Ticket_discount_code, write)
-(declare-const $t@300@01 $Ref)
+(declare-const $t@299@01 $Ref)
 ; State saturation: after inhale
 (set-option :timeout 20)
 (check-sat)
@@ -25621,80 +25529,80 @@
 ; [eval] !(perm(_MaySet(self_3, 578847845651634811226368290157834565233854867796)) > none)
 ; [eval] perm(_MaySet(self_3, 578847845651634811226368290157834565233854867796)) > none
 ; [eval] perm(_MaySet(self_3, 578847845651634811226368290157834565233854867796))
-; [then-branch: 326 | False | dead]
-; [else-branch: 326 | True | live]
+; [then-branch: 323 | False | dead]
+; [else-branch: 323 | True | live]
 (set-option :timeout 0)
 (push) ; 3
-; [else-branch: 326 | True]
+; [else-branch: 323 | True]
 (pop) ; 3
 (pop) ; 2
 (pop) ; 1
 ; ---------- main ----------
-(declare-const _cthread_161@301@01 $Ref)
-(declare-const _caller_measures_161@302@01 Seq<Measure$>)
-(declare-const _residue_162@303@01 $Perm)
-(declare-const _current_wait_level_161@304@01 $Perm)
-(declare-const _cthread_161@305@01 $Ref)
-(declare-const _caller_measures_161@306@01 Seq<Measure$>)
-(declare-const _residue_162@307@01 $Perm)
-(declare-const _current_wait_level_161@308@01 $Perm)
+(declare-const _cthread_161@300@01 $Ref)
+(declare-const _caller_measures_161@301@01 Seq<Measure$>)
+(declare-const _residue_162@302@01 $Perm)
+(declare-const _current_wait_level_161@303@01 $Perm)
+(declare-const _cthread_161@304@01 $Ref)
+(declare-const _caller_measures_161@305@01 Seq<Measure$>)
+(declare-const _residue_162@306@01 $Perm)
+(declare-const _current_wait_level_161@307@01 $Perm)
 (push) ; 1
-(declare-const $t@309@01 $Snap)
-(assert (= $t@309@01 ($Snap.combine ($Snap.first $t@309@01) ($Snap.second $t@309@01))))
-(assert (= ($Snap.first $t@309@01) $Snap.unit))
+(declare-const $t@308@01 $Snap)
+(assert (= $t@308@01 ($Snap.combine ($Snap.first $t@308@01) ($Snap.second $t@308@01))))
+(assert (= ($Snap.first $t@308@01) $Snap.unit))
 ; [eval] _cthread_161 != null
-(assert (not (= _cthread_161@305@01 $Ref.null)))
+(assert (not (= _cthread_161@304@01 $Ref.null)))
 (assert (=
-  ($Snap.second $t@309@01)
+  ($Snap.second $t@308@01)
   ($Snap.combine
-    ($Snap.first ($Snap.second $t@309@01))
-    ($Snap.second ($Snap.second $t@309@01)))))
-(assert (= ($Snap.first ($Snap.second $t@309@01)) $Snap.unit))
+    ($Snap.first ($Snap.second $t@308@01))
+    ($Snap.second ($Snap.second $t@308@01)))))
+(assert (= ($Snap.first ($Snap.second $t@308@01)) $Snap.unit))
 ; [eval] issubtype(typeof(_cthread_161), Thread_0())
 ; [eval] typeof(_cthread_161)
 ; [eval] Thread_0()
-(assert (issubtype<Bool> (typeof<PyType> _cthread_161@305@01) (as Thread_0<PyType>  PyType)))
-(assert (= ($Snap.second ($Snap.second $t@309@01)) $Snap.unit))
+(assert (issubtype<Bool> (typeof<PyType> _cthread_161@304@01) (as Thread_0<PyType>  PyType)))
+(assert (= ($Snap.second ($Snap.second $t@308@01)) $Snap.unit))
 ; State saturation: after contract
 (set-option :timeout 50)
 (check-sat)
 ; unknown
 (set-option :timeout 0)
 (push) ; 2
-(declare-const $t@310@01 $Snap)
-(assert (= $t@310@01 ($Snap.combine ($Snap.first $t@310@01) ($Snap.second $t@310@01))))
-(assert (= ($Snap.first $t@310@01) $Snap.unit))
+(declare-const $t@309@01 $Snap)
+(assert (= $t@309@01 ($Snap.combine ($Snap.first $t@309@01) ($Snap.second $t@309@01))))
+(assert (= ($Snap.first $t@309@01) $Snap.unit))
 ; [eval] (forperm _r_12: Ref [_r_12.MustReleaseBounded] :: Level(_r_12) <= _current_wait_level_161)
 (assert (=
-  ($Snap.second $t@310@01)
+  ($Snap.second $t@309@01)
   ($Snap.combine
-    ($Snap.first ($Snap.second $t@310@01))
-    ($Snap.second ($Snap.second $t@310@01)))))
-(assert (= ($Snap.first ($Snap.second $t@310@01)) $Snap.unit))
+    ($Snap.first ($Snap.second $t@309@01))
+    ($Snap.second ($Snap.second $t@309@01)))))
+(assert (= ($Snap.first ($Snap.second $t@309@01)) $Snap.unit))
 ; [eval] (forperm _r_12: Ref [_r_12.MustReleaseUnbounded] :: Level(_r_12) <= _current_wait_level_161)
 (assert (=
-  ($Snap.second ($Snap.second $t@310@01))
+  ($Snap.second ($Snap.second $t@309@01))
   ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second $t@310@01)))
-    ($Snap.second ($Snap.second ($Snap.second $t@310@01))))))
-(assert (= ($Snap.first ($Snap.second ($Snap.second $t@310@01))) $Snap.unit))
+    ($Snap.first ($Snap.second ($Snap.second $t@309@01)))
+    ($Snap.second ($Snap.second ($Snap.second $t@309@01))))))
+(assert (= ($Snap.first ($Snap.second ($Snap.second $t@309@01))) $Snap.unit))
 ; [eval] _residue_162 <= _current_wait_level_161
-(assert (<= _residue_162@307@01 _current_wait_level_161@308@01))
-(assert (= ($Snap.second ($Snap.second ($Snap.second $t@310@01))) $Snap.unit))
+(assert (<= _residue_162@306@01 _current_wait_level_161@307@01))
+(assert (= ($Snap.second ($Snap.second ($Snap.second $t@309@01))) $Snap.unit))
 (pop) ; 2
 (push) ; 2
 ; [exec]
 ; var module_defined_0: Bool
-(declare-const module_defined_0@311@01 Bool)
+(declare-const module_defined_0@310@01 Bool)
 ; [exec]
 ; var module_names_0: Set[_Name]
-(declare-const module_names_0@312@01 Set<_Name>)
+(declare-const module_names_0@311@01 Set<_Name>)
 ; [exec]
 ; var _cwl_161: Perm
-(declare-const _cwl_161@313@01 $Perm)
+(declare-const _cwl_161@312@01 $Perm)
 ; [exec]
 ; var _method_measures_161: Seq[Measure$]
-(declare-const _method_measures_161@314@01 Seq<Measure$>)
+(declare-const _method_measures_161@313@01 Seq<Measure$>)
 ; [exec]
 ; _method_measures_161 := Seq[Measure$]()
 ; [eval] Seq[Measure$]()
@@ -25708,16 +25616,16 @@
 ; [eval] (module_names_0 union Set(_single(6872323072689856351)))
 ; [eval] Set(_single(6872323072689856351))
 ; [eval] _single(6872323072689856351)
-(declare-const module_names_0@315@01 Set<_Name>)
+(declare-const module_names_0@314@01 Set<_Name>)
 (assert (=
-  module_names_0@315@01
+  module_names_0@314@01
   (Set_union (as Set_empty  Set<_Name>) (Set_singleton (_single<_Name> 6872323072689856351)))))
 ; [exec]
 ; inhale acc(__file__()._val, 99 / 100) &&
 ;   (issubtype(typeof(__file__()._val), str()) &&
 ;   issubtype(typeof(__file__()._val), str()))
-(declare-const $t@316@01 $Snap)
-(assert (= $t@316@01 ($Snap.combine ($Snap.first $t@316@01) ($Snap.second $t@316@01))))
+(declare-const $t@315@01 $Snap)
+(assert (= $t@315@01 ($Snap.combine ($Snap.first $t@315@01) ($Snap.second $t@315@01))))
 ; [eval] __file__()
 (push) ; 3
 (assert (__file__%precondition $Snap.unit))
@@ -25726,11 +25634,11 @@
 (assert (__file__%precondition $Snap.unit))
 (assert (not (= (__file__ $Snap.unit) $Ref.null)))
 (assert (=
-  ($Snap.second $t@316@01)
+  ($Snap.second $t@315@01)
   ($Snap.combine
-    ($Snap.first ($Snap.second $t@316@01))
-    ($Snap.second ($Snap.second $t@316@01)))))
-(assert (= ($Snap.first ($Snap.second $t@316@01)) $Snap.unit))
+    ($Snap.first ($Snap.second $t@315@01))
+    ($Snap.second ($Snap.second $t@315@01)))))
+(assert (= ($Snap.first ($Snap.second $t@315@01)) $Snap.unit))
 ; [eval] issubtype(typeof(__file__()._val), str())
 ; [eval] typeof(__file__()._val)
 ; [eval] __file__()
@@ -25738,8 +25646,8 @@
 (pop) ; 3
 ; Joined path conditions
 ; [eval] str()
-(assert (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first $t@316@01))) (as str<PyType>  PyType)))
-(assert (= ($Snap.second ($Snap.second $t@316@01)) $Snap.unit))
+(assert (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first $t@315@01))) (as str<PyType>  PyType)))
+(assert (= ($Snap.second ($Snap.second $t@315@01)) $Snap.unit))
 ; [eval] issubtype(typeof(__file__()._val), str())
 ; [eval] typeof(__file__()._val)
 ; [eval] __file__()
@@ -25756,17 +25664,17 @@
 ; [eval] (module_names_0 union Set(_single(6872323076851130207)))
 ; [eval] Set(_single(6872323076851130207))
 ; [eval] _single(6872323076851130207)
-(declare-const module_names_0@317@01 Set<_Name>)
+(declare-const module_names_0@316@01 Set<_Name>)
 (assert (=
-  module_names_0@317@01
-  (Set_union module_names_0@315@01 (Set_singleton (_single<_Name> 6872323076851130207)))))
+  module_names_0@316@01
+  (Set_union module_names_0@314@01 (Set_singleton (_single<_Name> 6872323076851130207)))))
 ; [exec]
 ; inhale acc(__name__()._val, 99 / 100) &&
 ;   (issubtype(typeof(__name__()._val), str()) &&
 ;   (issubtype(typeof(__name__()._val), str()) &&
 ;   str___eq__(str___create__(8, 6872332955275845471), __name__()._val)))
-(declare-const $t@318@01 $Snap)
-(assert (= $t@318@01 ($Snap.combine ($Snap.first $t@318@01) ($Snap.second $t@318@01))))
+(declare-const $t@317@01 $Snap)
+(assert (= $t@317@01 ($Snap.combine ($Snap.first $t@317@01) ($Snap.second $t@317@01))))
 ; [eval] __name__()
 (set-option :timeout 0)
 (push) ; 3
@@ -25784,11 +25692,11 @@
 ; (get-info :all-statistics)
 (assert (not (= (__name__ $Snap.unit) $Ref.null)))
 (assert (=
-  ($Snap.second $t@318@01)
+  ($Snap.second $t@317@01)
   ($Snap.combine
-    ($Snap.first ($Snap.second $t@318@01))
-    ($Snap.second ($Snap.second $t@318@01)))))
-(assert (= ($Snap.first ($Snap.second $t@318@01)) $Snap.unit))
+    ($Snap.first ($Snap.second $t@317@01))
+    ($Snap.second ($Snap.second $t@317@01)))))
+(assert (= ($Snap.first ($Snap.second $t@317@01)) $Snap.unit))
 ; [eval] issubtype(typeof(__name__()._val), str())
 ; [eval] typeof(__name__()._val)
 ; [eval] __name__()
@@ -25797,13 +25705,13 @@
 (pop) ; 3
 ; Joined path conditions
 ; [eval] str()
-(assert (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first $t@318@01))) (as str<PyType>  PyType)))
+(assert (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first $t@317@01))) (as str<PyType>  PyType)))
 (assert (=
-  ($Snap.second ($Snap.second $t@318@01))
+  ($Snap.second ($Snap.second $t@317@01))
   ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second $t@318@01)))
-    ($Snap.second ($Snap.second ($Snap.second $t@318@01))))))
-(assert (= ($Snap.first ($Snap.second ($Snap.second $t@318@01))) $Snap.unit))
+    ($Snap.first ($Snap.second ($Snap.second $t@317@01)))
+    ($Snap.second ($Snap.second ($Snap.second $t@317@01))))))
+(assert (= ($Snap.first ($Snap.second ($Snap.second $t@317@01))) $Snap.unit))
 ; [eval] issubtype(typeof(__name__()._val), str())
 ; [eval] typeof(__name__()._val)
 ; [eval] __name__()
@@ -25811,7 +25719,7 @@
 (pop) ; 3
 ; Joined path conditions
 ; [eval] str()
-(assert (= ($Snap.second ($Snap.second ($Snap.second $t@318@01))) $Snap.unit))
+(assert (= ($Snap.second ($Snap.second ($Snap.second $t@317@01))) $Snap.unit))
 ; [eval] str___eq__(str___create__(8, 6872332955275845471), __name__()._val)
 ; [eval] str___create__(8, 6872332955275845471)
 (push) ; 3
@@ -25835,13 +25743,13 @@
 ; 0.00s
 ; (get-info :all-statistics)
 (assert (issubtype<Bool> (typeof<PyType> (str___create__ $Snap.unit 8 6872332955275845471)) (as str<PyType>  PyType)))
-(assert (str___eq__%precondition $Snap.unit (str___create__ $Snap.unit 8 6872332955275845471) ($SortWrappers.$SnapTo$Ref ($Snap.first $t@318@01))))
+(assert (str___eq__%precondition $Snap.unit (str___create__ $Snap.unit 8 6872332955275845471) ($SortWrappers.$SnapTo$Ref ($Snap.first $t@317@01))))
 (pop) ; 3
 ; Joined path conditions
 (assert (and
   (issubtype<Bool> (typeof<PyType> (str___create__ $Snap.unit 8 6872332955275845471)) (as str<PyType>  PyType))
-  (str___eq__%precondition $Snap.unit (str___create__ $Snap.unit 8 6872332955275845471) ($SortWrappers.$SnapTo$Ref ($Snap.first $t@318@01)))))
-(assert (str___eq__ $Snap.unit (str___create__ $Snap.unit 8 6872332955275845471) ($SortWrappers.$SnapTo$Ref ($Snap.first $t@318@01))))
+  (str___eq__%precondition $Snap.unit (str___create__ $Snap.unit 8 6872332955275845471) ($SortWrappers.$SnapTo$Ref ($Snap.first $t@317@01)))))
+(assert (str___eq__ $Snap.unit (str___create__ $Snap.unit 8 6872332955275845471) ($SortWrappers.$SnapTo$Ref ($Snap.first $t@317@01))))
 ; State saturation: after inhale
 (set-option :timeout 20)
 (check-sat)
@@ -25852,86 +25760,86 @@
 ; [eval] (module_names_0 union Set(_single(8038062462289584464661321053517)))
 ; [eval] Set(_single(8038062462289584464661321053517))
 ; [eval] _single(8038062462289584464661321053517)
-(declare-const module_names_0@319@01 Set<_Name>)
+(declare-const module_names_0@318@01 Set<_Name>)
 (assert (=
-  module_names_0@319@01
-  (Set_union module_names_0@317@01 (Set_singleton (_single<_Name> 8038062462289584464661321053517)))))
+  module_names_0@318@01
+  (Set_union module_names_0@316@01 (Set_singleton (_single<_Name> 8038062462289584464661321053517)))))
 ; [exec]
 ; module_names_0 := (module_names_0 union Set(_single(1953720652)))
 ; [eval] (module_names_0 union Set(_single(1953720652)))
 ; [eval] Set(_single(1953720652))
 ; [eval] _single(1953720652)
-(declare-const module_names_0@320@01 Set<_Name>)
+(declare-const module_names_0@319@01 Set<_Name>)
 (assert (=
-  module_names_0@320@01
-  (Set_union module_names_0@319@01 (Set_singleton (_single<_Name> 1953720652)))))
+  module_names_0@319@01
+  (Set_union module_names_0@318@01 (Set_singleton (_single<_Name> 1953720652)))))
 ; [exec]
 ; module_names_0 := (module_names_0 union Set(_single(435611006292)))
 ; [eval] (module_names_0 union Set(_single(435611006292)))
 ; [eval] Set(_single(435611006292))
 ; [eval] _single(435611006292)
-(declare-const module_names_0@321@01 Set<_Name>)
+(declare-const module_names_0@320@01 Set<_Name>)
 (assert (=
-  module_names_0@321@01
-  (Set_union module_names_0@320@01 (Set_singleton (_single<_Name> 435611006292)))))
+  module_names_0@320@01
+  (Set_union module_names_0@319@01 (Set_singleton (_single<_Name> 435611006292)))))
 ; [exec]
 ; module_names_0 := (module_names_0 union
 ;   Set(_single(146793563365898239306910909426909867859)))
 ; [eval] (module_names_0 union Set(_single(146793563365898239306910909426909867859)))
 ; [eval] Set(_single(146793563365898239306910909426909867859))
 ; [eval] _single(146793563365898239306910909426909867859)
-(declare-const module_names_0@322@01 Set<_Name>)
+(declare-const module_names_0@321@01 Set<_Name>)
 (assert (=
-  module_names_0@322@01
-  (Set_union module_names_0@321@01 (Set_singleton (_single<_Name> 146793563365898239306910909426909867859)))))
+  module_names_0@321@01
+  (Set_union module_names_0@320@01 (Set_singleton (_single<_Name> 146793563365898239306910909426909867859)))))
 ; [exec]
 ; module_names_0 := (module_names_0 union
 ;   Set(_single(2129761664003936118119)))
 ; [eval] (module_names_0 union Set(_single(2129761664003936118119)))
 ; [eval] Set(_single(2129761664003936118119))
 ; [eval] _single(2129761664003936118119)
-(declare-const module_names_0@323@01 Set<_Name>)
+(declare-const module_names_0@322@01 Set<_Name>)
 (assert (=
-  module_names_0@323@01
-  (Set_union module_names_0@322@01 (Set_singleton (_single<_Name> 2129761664003936118119)))))
+  module_names_0@322@01
+  (Set_union module_names_0@321@01 (Set_singleton (_single<_Name> 2129761664003936118119)))))
 ; [exec]
 ; module_names_0 := (module_names_0 union Set(_single(6872339552563453791)))
 ; [eval] (module_names_0 union Set(_single(6872339552563453791)))
 ; [eval] Set(_single(6872339552563453791))
 ; [eval] _single(6872339552563453791)
-(declare-const module_names_0@324@01 Set<_Name>)
+(declare-const module_names_0@323@01 Set<_Name>)
 (assert (=
-  module_names_0@324@01
-  (Set_union module_names_0@323@01 (Set_singleton (_single<_Name> 6872339552563453791)))))
+  module_names_0@323@01
+  (Set_union module_names_0@322@01 (Set_singleton (_single<_Name> 6872339552563453791)))))
 ; [exec]
 ; module_names_0 := (module_names_0 union
 ;   Set(_single(36033797551066912423438214515)))
 ; [eval] (module_names_0 union Set(_single(36033797551066912423438214515)))
 ; [eval] Set(_single(36033797551066912423438214515))
 ; [eval] _single(36033797551066912423438214515)
-(declare-const module_names_0@325@01 Set<_Name>)
+(declare-const module_names_0@324@01 Set<_Name>)
 (assert (=
-  module_names_0@325@01
-  (Set_union module_names_0@324@01 (Set_singleton (_single<_Name> 36033797551066912423438214515)))))
+  module_names_0@324@01
+  (Set_union module_names_0@323@01 (Set_singleton (_single<_Name> 36033797551066912423438214515)))))
 ; [exec]
 ; module_names_0 := (module_names_0 union Set(_single(127978942196052)))
 ; [eval] (module_names_0 union Set(_single(127978942196052)))
 ; [eval] Set(_single(127978942196052))
 ; [eval] _single(127978942196052)
-(declare-const module_names_0@326@01 Set<_Name>)
+(declare-const module_names_0@325@01 Set<_Name>)
 (assert (=
-  module_names_0@326@01
-  (Set_union module_names_0@325@01 (Set_singleton (_single<_Name> 127978942196052)))))
+  module_names_0@325@01
+  (Set_union module_names_0@324@01 (Set_singleton (_single<_Name> 127978942196052)))))
 ; [exec]
 ; module_names_0 := (module_names_0 union
 ;   Set(_single(9147261558914496062541770551919)))
 ; [eval] (module_names_0 union Set(_single(9147261558914496062541770551919)))
 ; [eval] Set(_single(9147261558914496062541770551919))
 ; [eval] _single(9147261558914496062541770551919)
-(declare-const module_names_0@327@01 Set<_Name>)
+(declare-const module_names_0@326@01 Set<_Name>)
 (assert (=
-  module_names_0@327@01
-  (Set_union module_names_0@326@01 (Set_singleton (_single<_Name> 9147261558914496062541770551919)))))
+  module_names_0@326@01
+  (Set_union module_names_0@325@01 (Set_singleton (_single<_Name> 9147261558914496062541770551919)))))
 ; [exec]
 ; label __end
 ; [eval] (forperm _r_13: Ref [MustInvokeBounded(_r_13)] :: false)
@@ -25941,68 +25849,68 @@
 (pop) ; 2
 (pop) ; 1
 ; ---------- Iterator___next__ ----------
-(declare-const _cthread_149@328@01 $Ref)
-(declare-const _caller_measures_149@329@01 Seq<Measure$>)
-(declare-const _residue_149@330@01 $Perm)
-(declare-const self@331@01 $Ref)
-(declare-const _current_wait_level_149@332@01 $Perm)
-(declare-const _res@333@01 $Ref)
-(declare-const _err@334@01 $Ref)
-(declare-const _cthread_149@335@01 $Ref)
-(declare-const _caller_measures_149@336@01 Seq<Measure$>)
-(declare-const _residue_149@337@01 $Perm)
-(declare-const self@338@01 $Ref)
-(declare-const _current_wait_level_149@339@01 $Perm)
-(declare-const _res@340@01 $Ref)
-(declare-const _err@341@01 $Ref)
+(declare-const _cthread_149@327@01 $Ref)
+(declare-const _caller_measures_149@328@01 Seq<Measure$>)
+(declare-const _residue_149@329@01 $Perm)
+(declare-const self@330@01 $Ref)
+(declare-const _current_wait_level_149@331@01 $Perm)
+(declare-const _res@332@01 $Ref)
+(declare-const _err@333@01 $Ref)
+(declare-const _cthread_149@334@01 $Ref)
+(declare-const _caller_measures_149@335@01 Seq<Measure$>)
+(declare-const _residue_149@336@01 $Perm)
+(declare-const self@337@01 $Ref)
+(declare-const _current_wait_level_149@338@01 $Perm)
+(declare-const _res@339@01 $Ref)
+(declare-const _err@340@01 $Ref)
 (set-option :timeout 0)
 (push) ; 1
-(declare-const $t@342@01 $Snap)
-(assert (= $t@342@01 ($Snap.combine ($Snap.first $t@342@01) ($Snap.second $t@342@01))))
-(assert (= ($Snap.first $t@342@01) $Snap.unit))
+(declare-const $t@341@01 $Snap)
+(assert (= $t@341@01 ($Snap.combine ($Snap.first $t@341@01) ($Snap.second $t@341@01))))
+(assert (= ($Snap.first $t@341@01) $Snap.unit))
 ; [eval] _cthread_149 != null
-(assert (not (= _cthread_149@335@01 $Ref.null)))
+(assert (not (= _cthread_149@334@01 $Ref.null)))
 (assert (=
-  ($Snap.second $t@342@01)
+  ($Snap.second $t@341@01)
   ($Snap.combine
-    ($Snap.first ($Snap.second $t@342@01))
-    ($Snap.second ($Snap.second $t@342@01)))))
-(assert (= ($Snap.first ($Snap.second $t@342@01)) $Snap.unit))
+    ($Snap.first ($Snap.second $t@341@01))
+    ($Snap.second ($Snap.second $t@341@01)))))
+(assert (= ($Snap.first ($Snap.second $t@341@01)) $Snap.unit))
 ; [eval] Measure$check(_caller_measures_149, _cthread_149, 1)
 (push) ; 2
-(assert (Measure$check%precondition $Snap.unit _caller_measures_149@336@01 _cthread_149@335@01 1))
+(assert (Measure$check%precondition $Snap.unit _caller_measures_149@335@01 _cthread_149@334@01 1))
 (pop) ; 2
 ; Joined path conditions
-(assert (Measure$check%precondition $Snap.unit _caller_measures_149@336@01 _cthread_149@335@01 1))
-(assert (Measure$check $Snap.unit _caller_measures_149@336@01 _cthread_149@335@01 1))
+(assert (Measure$check%precondition $Snap.unit _caller_measures_149@335@01 _cthread_149@334@01 1))
+(assert (Measure$check $Snap.unit _caller_measures_149@335@01 _cthread_149@334@01 1))
 (assert (=
-  ($Snap.second ($Snap.second $t@342@01))
+  ($Snap.second ($Snap.second $t@341@01))
   ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second $t@342@01)))
-    ($Snap.second ($Snap.second ($Snap.second $t@342@01))))))
-(assert (= ($Snap.first ($Snap.second ($Snap.second $t@342@01))) $Snap.unit))
+    ($Snap.first ($Snap.second ($Snap.second $t@341@01)))
+    ($Snap.second ($Snap.second ($Snap.second $t@341@01))))))
+(assert (= ($Snap.first ($Snap.second ($Snap.second $t@341@01))) $Snap.unit))
 ; [eval] issubtype(typeof(_cthread_149), Thread_0())
 ; [eval] typeof(_cthread_149)
 ; [eval] Thread_0()
-(assert (issubtype<Bool> (typeof<PyType> _cthread_149@335@01) (as Thread_0<PyType>  PyType)))
+(assert (issubtype<Bool> (typeof<PyType> _cthread_149@334@01) (as Thread_0<PyType>  PyType)))
 (assert (=
-  ($Snap.second ($Snap.second ($Snap.second $t@342@01)))
+  ($Snap.second ($Snap.second ($Snap.second $t@341@01)))
   ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
-(assert (not (= self@338@01 $Ref.null)))
+    ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@341@01))))
+    ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@341@01)))))))
+(assert (not (= self@337@01 $Ref.null)))
 (assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01))))
+  ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@341@01))))
   ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01))))))))
+    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@341@01)))))
+    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@341@01))))))))
 (assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))
+  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@341@01)))))
   ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))))
+    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@341@01))))))
+    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@341@01)))))))))
 (assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01))))))
+  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@341@01))))))
   $Snap.unit))
 ; State saturation: after contract
 (set-option :timeout 50)
@@ -26010,72 +25918,72 @@
 ; unknown
 (set-option :timeout 0)
 (push) ; 2
-(declare-const $t@343@01 $Snap)
-(assert (= $t@343@01 ($Snap.combine ($Snap.first $t@343@01) ($Snap.second $t@343@01))))
-(assert (= ($Snap.first $t@343@01) $Snap.unit))
+(declare-const $t@342@01 $Snap)
+(assert (= $t@342@01 ($Snap.combine ($Snap.first $t@342@01) ($Snap.second $t@342@01))))
+(assert (= ($Snap.first $t@342@01) $Snap.unit))
 ; [eval] (forperm _r_15: Ref [_r_15.MustReleaseBounded] :: Level(_r_15) <= _current_wait_level_149)
 (assert (=
-  ($Snap.second $t@343@01)
+  ($Snap.second $t@342@01)
   ($Snap.combine
-    ($Snap.first ($Snap.second $t@343@01))
-    ($Snap.second ($Snap.second $t@343@01)))))
-(assert (= ($Snap.first ($Snap.second $t@343@01)) $Snap.unit))
+    ($Snap.first ($Snap.second $t@342@01))
+    ($Snap.second ($Snap.second $t@342@01)))))
+(assert (= ($Snap.first ($Snap.second $t@342@01)) $Snap.unit))
 ; [eval] (forperm _r_15: Ref [_r_15.MustReleaseUnbounded] :: Level(_r_15) <= _current_wait_level_149)
 (assert (=
-  ($Snap.second ($Snap.second $t@343@01))
+  ($Snap.second ($Snap.second $t@342@01))
   ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second $t@343@01)))
-    ($Snap.second ($Snap.second ($Snap.second $t@343@01))))))
-(assert (= ($Snap.first ($Snap.second ($Snap.second $t@343@01))) $Snap.unit))
+    ($Snap.first ($Snap.second ($Snap.second $t@342@01)))
+    ($Snap.second ($Snap.second ($Snap.second $t@342@01))))))
+(assert (= ($Snap.first ($Snap.second ($Snap.second $t@342@01))) $Snap.unit))
 ; [eval] _residue_149 <= _current_wait_level_149
-(assert (<= _residue_149@337@01 _current_wait_level_149@339@01))
+(assert (<= _residue_149@336@01 _current_wait_level_149@338@01))
 (assert (=
-  ($Snap.second ($Snap.second ($Snap.second $t@343@01)))
+  ($Snap.second ($Snap.second ($Snap.second $t@342@01)))
   ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+    ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01))))
+    ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
 (assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01))))
+  ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01))))
   ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01))))))))
+    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))
+    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01))))))))
 (assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))
+  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))
   $Snap.unit))
 ; [eval] self.list_acc == old(self.list_acc)
 ; [eval] old(self.list_acc)
 (assert (Seq_equal
-  ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))
-  ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
+  ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))
+  ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@341@01)))))))
 (assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))
+  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))
   ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))))
+    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01))))))
+    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))))
 (assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01))))))
+  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01))))))
   ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01))))))))))
+    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
+    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01))))))))))
 (assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
   $Snap.unit))
 ; [eval] self.__iter_index <= |self.list_acc| + 1
 ; [eval] |self.list_acc| + 1
 ; [eval] |self.list_acc|
 (assert (<=
-  ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+  ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
   (+
     (Seq_length
-      ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01))))))
+      ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01))))))
     1)))
 (assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
   ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))))))
+    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01))))))))
+    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))))))
 (assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01))))))))
+  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01))))))))
   $Snap.unit))
 ; [eval] old(self.__iter_index == |self.list_acc|) == (_err != null)
 ; [eval] old(self.__iter_index == |self.list_acc|)
@@ -26084,29 +25992,29 @@
 ; [eval] _err != null
 (assert (=
   (=
-    ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01))))))
+    ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@341@01))))))
     (Seq_length
-      ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
-  (not (= _err@341@01 $Ref.null))))
+      ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@341@01)))))))
+  (not (= _err@340@01 $Ref.null))))
 (assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01))))))))
+  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01))))))))
   ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01))))))))))))
+    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))))
+    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01))))))))))))
 (assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))))
+  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))))
   ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))))))))
+    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01))))))))))
+    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))))))))
 (assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01))))))))))
+  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01))))))))))
   $Snap.unit))
 ; [eval] _err == null ==> self.__iter_index == old(self.__iter_index) + 1
 ; [eval] _err == null
 (push) ; 3
 (push) ; 4
 (set-option :timeout 10)
-(assert (not (not (= _err@341@01 $Ref.null))))
+(assert (not (not (= _err@340@01 $Ref.null))))
 (check-sat)
 ; unknown
 (pop) ; 4
@@ -26115,51 +26023,51 @@
 (set-option :timeout 0)
 (push) ; 4
 (set-option :timeout 10)
-(assert (not (= _err@341@01 $Ref.null)))
+(assert (not (= _err@340@01 $Ref.null)))
 (check-sat)
 ; unknown
 (pop) ; 4
 ; 0.00s
 ; (get-info :all-statistics)
-; [then-branch: 327 | _err@341@01 == Null | live]
-; [else-branch: 327 | _err@341@01 != Null | live]
+; [then-branch: 324 | _err@340@01 == Null | live]
+; [else-branch: 324 | _err@340@01 != Null | live]
 (set-option :timeout 0)
 (push) ; 4
-; [then-branch: 327 | _err@341@01 == Null]
-(assert (= _err@341@01 $Ref.null))
+; [then-branch: 324 | _err@340@01 == Null]
+(assert (= _err@340@01 $Ref.null))
 ; [eval] self.__iter_index == old(self.__iter_index) + 1
 ; [eval] old(self.__iter_index) + 1
 ; [eval] old(self.__iter_index)
 (pop) ; 4
 (push) ; 4
-; [else-branch: 327 | _err@341@01 != Null]
-(assert (not (= _err@341@01 $Ref.null)))
+; [else-branch: 324 | _err@340@01 != Null]
+(assert (not (= _err@340@01 $Ref.null)))
 (pop) ; 4
 (pop) ; 3
 ; Joined path conditions
 ; Joined path conditions
-(assert (or (not (= _err@341@01 $Ref.null)) (= _err@341@01 $Ref.null)))
+(assert (or (not (= _err@340@01 $Ref.null)) (= _err@340@01 $Ref.null)))
 (assert (=>
-  (= _err@341@01 $Ref.null)
+  (= _err@340@01 $Ref.null)
   (=
-    ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+    ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
     (+
-      ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01))))))
+      ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@341@01))))))
       1))))
 (assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01))))))))))
+  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01))))))))))
   ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01))))))))))))))
+    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))))))
+    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01))))))))))))))
 (assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))))))
+  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))))))
   $Snap.unit))
 ; [eval] _err == null ==> self.__iter_index > 0
 ; [eval] _err == null
 (push) ; 3
 (push) ; 4
 (set-option :timeout 10)
-(assert (not (not (= _err@341@01 $Ref.null))))
+(assert (not (not (= _err@340@01 $Ref.null))))
 (check-sat)
 ; unknown
 (pop) ; 4
@@ -26168,46 +26076,46 @@
 (set-option :timeout 0)
 (push) ; 4
 (set-option :timeout 10)
-(assert (not (= _err@341@01 $Ref.null)))
+(assert (not (= _err@340@01 $Ref.null)))
 (check-sat)
 ; unknown
 (pop) ; 4
 ; 0.00s
 ; (get-info :all-statistics)
-; [then-branch: 328 | _err@341@01 == Null | live]
-; [else-branch: 328 | _err@341@01 != Null | live]
+; [then-branch: 325 | _err@340@01 == Null | live]
+; [else-branch: 325 | _err@340@01 != Null | live]
 (set-option :timeout 0)
 (push) ; 4
-; [then-branch: 328 | _err@341@01 == Null]
-(assert (= _err@341@01 $Ref.null))
+; [then-branch: 325 | _err@340@01 == Null]
+(assert (= _err@340@01 $Ref.null))
 ; [eval] self.__iter_index > 0
 (pop) ; 4
 (push) ; 4
-; [else-branch: 328 | _err@341@01 != Null]
-(assert (not (= _err@341@01 $Ref.null)))
+; [else-branch: 325 | _err@340@01 != Null]
+(assert (not (= _err@340@01 $Ref.null)))
 (pop) ; 4
 (pop) ; 3
 ; Joined path conditions
 ; Joined path conditions
 (assert (=>
-  (= _err@341@01 $Ref.null)
+  (= _err@340@01 $Ref.null)
   (>
-    ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+    ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
     0)))
 (assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))))))
+  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))))))
   ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01))))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))))))))))
+    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01))))))))))))
+    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))))))))))
 (assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01))))))))))))
+  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01))))))))))))
   $Snap.unit))
 ; [eval] _err == null ==> self.__previous == self.list_acc[..self.__iter_index - 1]
 ; [eval] _err == null
 (push) ; 3
 (push) ; 4
 (set-option :timeout 10)
-(assert (not (not (= _err@341@01 $Ref.null))))
+(assert (not (not (= _err@340@01 $Ref.null))))
 (check-sat)
 ; unknown
 (pop) ; 4
@@ -26216,45 +26124,45 @@
 (set-option :timeout 0)
 (push) ; 4
 (set-option :timeout 10)
-(assert (not (= _err@341@01 $Ref.null)))
+(assert (not (= _err@340@01 $Ref.null)))
 (check-sat)
 ; unknown
 (pop) ; 4
 ; 0.00s
 ; (get-info :all-statistics)
-; [then-branch: 329 | _err@341@01 == Null | live]
-; [else-branch: 329 | _err@341@01 != Null | live]
+; [then-branch: 326 | _err@340@01 == Null | live]
+; [else-branch: 326 | _err@340@01 != Null | live]
 (set-option :timeout 0)
 (push) ; 4
-; [then-branch: 329 | _err@341@01 == Null]
-(assert (= _err@341@01 $Ref.null))
+; [then-branch: 326 | _err@340@01 == Null]
+(assert (= _err@340@01 $Ref.null))
 ; [eval] self.__previous == self.list_acc[..self.__iter_index - 1]
 ; [eval] self.list_acc[..self.__iter_index - 1]
 ; [eval] self.__iter_index - 1
 (pop) ; 4
 (push) ; 4
-; [else-branch: 329 | _err@341@01 != Null]
-(assert (not (= _err@341@01 $Ref.null)))
+; [else-branch: 326 | _err@340@01 != Null]
+(assert (not (= _err@340@01 $Ref.null)))
 (pop) ; 4
 (pop) ; 3
 ; Joined path conditions
 ; Joined path conditions
 (assert (=>
-  (= _err@341@01 $Ref.null)
+  (= _err@340@01 $Ref.null)
   (Seq_equal
-    ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01))))))))))
+    ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01))))))))))
     (Seq_take
-      ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))
+      ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))
       (-
-        ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+        ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
         1)))))
 (assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01))))))))))))
+  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01))))))))))))
   ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01))))))))))))))))
+    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))))))))
+    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01))))))))))))))))
 (assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))))))))
+  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))))))))
   $Snap.unit))
 ; [eval] |self.list_acc| > 0 ==> self.__iter_index > 0
 ; [eval] |self.list_acc| > 0
@@ -26265,7 +26173,7 @@
 (assert (not (not
   (>
     (Seq_length
-      ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01))))))
+      ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01))))))
     0))))
 (check-sat)
 ; unknown
@@ -26277,30 +26185,30 @@
 (set-option :timeout 10)
 (assert (not (>
   (Seq_length
-    ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01))))))
+    ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01))))))
   0)))
 (check-sat)
 ; unknown
 (pop) ; 4
 ; 0.00s
 ; (get-info :all-statistics)
-; [then-branch: 330 | |First:(Second:(Second:(Second:($t@343@01))))| > 0 | live]
-; [else-branch: 330 | !(|First:(Second:(Second:(Second:($t@343@01))))| > 0) | live]
+; [then-branch: 327 | |First:(Second:(Second:(Second:($t@342@01))))| > 0 | live]
+; [else-branch: 327 | !(|First:(Second:(Second:(Second:($t@342@01))))| > 0) | live]
 (set-option :timeout 0)
 (push) ; 4
-; [then-branch: 330 | |First:(Second:(Second:(Second:($t@343@01))))| > 0]
+; [then-branch: 327 | |First:(Second:(Second:(Second:($t@342@01))))| > 0]
 (assert (>
   (Seq_length
-    ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01))))))
+    ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01))))))
   0))
 ; [eval] self.__iter_index > 0
 (pop) ; 4
 (push) ; 4
-; [else-branch: 330 | !(|First:(Second:(Second:(Second:($t@343@01))))| > 0)]
+; [else-branch: 327 | !(|First:(Second:(Second:(Second:($t@342@01))))| > 0)]
 (assert (not
   (>
     (Seq_length
-      ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01))))))
+      ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01))))))
     0)))
 (pop) ; 4
 (pop) ; 3
@@ -26310,34 +26218,34 @@
   (not
     (>
       (Seq_length
-        ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01))))))
+        ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01))))))
       0))
   (>
     (Seq_length
-      ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01))))))
+      ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01))))))
     0)))
 (assert (=>
   (>
     (Seq_length
-      ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01))))))
+      ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01))))))
     0)
   (>
-    ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+    ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
     0)))
 (assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))))))))
+  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))))))))
   ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01))))))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))))))))))))
+    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01))))))))))))))
+    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))))))))))))
 (assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01))))))))))))))
+  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01))))))))))))))
   $Snap.unit))
 ; [eval] _err != null ==> self.__previous == self.list_acc
 ; [eval] _err != null
 (push) ; 3
 (push) ; 4
 (set-option :timeout 10)
-(assert (not (= _err@341@01 $Ref.null)))
+(assert (not (= _err@340@01 $Ref.null)))
 (check-sat)
 ; unknown
 (pop) ; 4
@@ -26346,47 +26254,47 @@
 (set-option :timeout 0)
 (push) ; 4
 (set-option :timeout 10)
-(assert (not (not (= _err@341@01 $Ref.null))))
+(assert (not (not (= _err@340@01 $Ref.null))))
 (check-sat)
 ; unknown
 (pop) ; 4
 ; 0.00s
 ; (get-info :all-statistics)
-; [then-branch: 331 | _err@341@01 != Null | live]
-; [else-branch: 331 | _err@341@01 == Null | live]
+; [then-branch: 328 | _err@340@01 != Null | live]
+; [else-branch: 328 | _err@340@01 == Null | live]
 (set-option :timeout 0)
 (push) ; 4
-; [then-branch: 331 | _err@341@01 != Null]
-(assert (not (= _err@341@01 $Ref.null)))
+; [then-branch: 328 | _err@340@01 != Null]
+(assert (not (= _err@340@01 $Ref.null)))
 ; [eval] self.__previous == self.list_acc
 (pop) ; 4
 (push) ; 4
-; [else-branch: 331 | _err@341@01 == Null]
-(assert (= _err@341@01 $Ref.null))
+; [else-branch: 328 | _err@340@01 == Null]
+(assert (= _err@340@01 $Ref.null))
 (pop) ; 4
 (pop) ; 3
 ; Joined path conditions
 ; Joined path conditions
-(assert (or (= _err@341@01 $Ref.null) (not (= _err@341@01 $Ref.null))))
+(assert (or (= _err@340@01 $Ref.null) (not (= _err@340@01 $Ref.null))))
 (assert (=>
-  (not (= _err@341@01 $Ref.null))
+  (not (= _err@340@01 $Ref.null))
   (Seq_equal
-    ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01))))))))))
-    ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01))))))))
+    ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01))))))))))
+    ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01))))))))
 (assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01))))))))))))))
+  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01))))))))))))))
   ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01))))))))))))))))))
+    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))))))))))
+    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01))))))))))))))))))
 (assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))))))))))
+  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))))))))))
   $Snap.unit))
 ; [eval] _err != null ==> self.__iter_index == |self.list_acc|
 ; [eval] _err != null
 (push) ; 3
 (push) ; 4
 (set-option :timeout 10)
-(assert (not (= _err@341@01 $Ref.null)))
+(assert (not (= _err@340@01 $Ref.null)))
 (check-sat)
 ; unknown
 (pop) ; 4
@@ -26395,41 +26303,41 @@
 (set-option :timeout 0)
 (push) ; 4
 (set-option :timeout 10)
-(assert (not (not (= _err@341@01 $Ref.null))))
+(assert (not (not (= _err@340@01 $Ref.null))))
 (check-sat)
 ; unknown
 (pop) ; 4
 ; 0.00s
 ; (get-info :all-statistics)
-; [then-branch: 332 | _err@341@01 != Null | live]
-; [else-branch: 332 | _err@341@01 == Null | live]
+; [then-branch: 329 | _err@340@01 != Null | live]
+; [else-branch: 329 | _err@340@01 == Null | live]
 (set-option :timeout 0)
 (push) ; 4
-; [then-branch: 332 | _err@341@01 != Null]
-(assert (not (= _err@341@01 $Ref.null)))
+; [then-branch: 329 | _err@340@01 != Null]
+(assert (not (= _err@340@01 $Ref.null)))
 ; [eval] self.__iter_index == |self.list_acc|
 ; [eval] |self.list_acc|
 (pop) ; 4
 (push) ; 4
-; [else-branch: 332 | _err@341@01 == Null]
-(assert (= _err@341@01 $Ref.null))
+; [else-branch: 329 | _err@340@01 == Null]
+(assert (= _err@340@01 $Ref.null))
 (pop) ; 4
 (pop) ; 3
 ; Joined path conditions
 ; Joined path conditions
 (assert (=>
-  (not (= _err@341@01 $Ref.null))
+  (not (= _err@340@01 $Ref.null))
   (=
-    ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+    ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
     (Seq_length
-      ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))))
+      ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))))
 (assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))))))))))
+  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))))))))))
   ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01))))))))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))))))))))))))
+    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01))))))))))))))))
+    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))))))))))))))
 (assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01))))))))))))))))
+  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01))))))))))))))))
   $Snap.unit))
 ; [eval] |self.list_acc| > 0 ==> _res == self.list_acc[self.__iter_index - 1] && (_res in self.list_acc)
 ; [eval] |self.list_acc| > 0
@@ -26440,7 +26348,7 @@
 (assert (not (not
   (>
     (Seq_length
-      ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01))))))
+      ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01))))))
     0))))
 (check-sat)
 ; unknown
@@ -26452,21 +26360,21 @@
 (set-option :timeout 10)
 (assert (not (>
   (Seq_length
-    ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01))))))
+    ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01))))))
   0)))
 (check-sat)
 ; unknown
 (pop) ; 4
 ; 0.00s
 ; (get-info :all-statistics)
-; [then-branch: 333 | |First:(Second:(Second:(Second:($t@343@01))))| > 0 | live]
-; [else-branch: 333 | !(|First:(Second:(Second:(Second:($t@343@01))))| > 0) | live]
+; [then-branch: 330 | |First:(Second:(Second:(Second:($t@342@01))))| > 0 | live]
+; [else-branch: 330 | !(|First:(Second:(Second:(Second:($t@342@01))))| > 0) | live]
 (set-option :timeout 0)
 (push) ; 4
-; [then-branch: 333 | |First:(Second:(Second:(Second:($t@343@01))))| > 0]
+; [then-branch: 330 | |First:(Second:(Second:(Second:($t@342@01))))| > 0]
 (assert (>
   (Seq_length
-    ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01))))))
+    ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01))))))
   0))
 ; [eval] _res == self.list_acc[self.__iter_index - 1] && (_res in self.list_acc)
 ; [eval] _res == self.list_acc[self.__iter_index - 1]
@@ -26475,7 +26383,7 @@
 (push) ; 5
 (assert (not (>=
   (-
-    ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+    ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
     1)
   0)))
 (check-sat)
@@ -26486,37 +26394,37 @@
 (push) ; 5
 (assert (not (<
   (-
-    ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+    ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
     1)
   (Seq_length
-    ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))))
+    ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))))
 (check-sat)
 ; unsat
 (pop) ; 5
 ; 0.00s
 ; (get-info :all-statistics)
 (push) ; 5
-; [then-branch: 334 | _res@340@01 != First:(Second:(Second:(Second:($t@343@01))))[First:(Second:(Second:(Second:(Second:(Second:($t@343@01)))))) - 1] | live]
-; [else-branch: 334 | _res@340@01 == First:(Second:(Second:(Second:($t@343@01))))[First:(Second:(Second:(Second:(Second:(Second:($t@343@01)))))) - 1] | live]
+; [then-branch: 331 | _res@339@01 != First:(Second:(Second:(Second:($t@342@01))))[First:(Second:(Second:(Second:(Second:(Second:($t@342@01)))))) - 1] | live]
+; [else-branch: 331 | _res@339@01 == First:(Second:(Second:(Second:($t@342@01))))[First:(Second:(Second:(Second:(Second:(Second:($t@342@01)))))) - 1] | live]
 (push) ; 6
-; [then-branch: 334 | _res@340@01 != First:(Second:(Second:(Second:($t@343@01))))[First:(Second:(Second:(Second:(Second:(Second:($t@343@01)))))) - 1]]
+; [then-branch: 331 | _res@339@01 != First:(Second:(Second:(Second:($t@342@01))))[First:(Second:(Second:(Second:(Second:(Second:($t@342@01)))))) - 1]]
 (assert (not
   (=
-    _res@340@01
+    _res@339@01
     (Seq_index
-      ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))
+      ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))
       (-
-        ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+        ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
         1)))))
 (pop) ; 6
 (push) ; 6
-; [else-branch: 334 | _res@340@01 == First:(Second:(Second:(Second:($t@343@01))))[First:(Second:(Second:(Second:(Second:(Second:($t@343@01)))))) - 1]]
+; [else-branch: 331 | _res@339@01 == First:(Second:(Second:(Second:($t@342@01))))[First:(Second:(Second:(Second:(Second:(Second:($t@342@01)))))) - 1]]
 (assert (=
-  _res@340@01
+  _res@339@01
   (Seq_index
-    ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))
+    ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))
     (-
-      ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+      ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
       1))))
 ; [eval] (_res in self.list_acc)
 (pop) ; 6
@@ -26525,27 +26433,27 @@
 ; Joined path conditions
 (assert (or
   (=
-    _res@340@01
+    _res@339@01
     (Seq_index
-      ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))
+      ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))
       (-
-        ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+        ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
         1)))
   (not
     (=
-      _res@340@01
+      _res@339@01
       (Seq_index
-        ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))
+        ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))
         (-
-          ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+          ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
           1))))))
 (pop) ; 4
 (push) ; 4
-; [else-branch: 333 | !(|First:(Second:(Second:(Second:($t@343@01))))| > 0)]
+; [else-branch: 330 | !(|First:(Second:(Second:(Second:($t@342@01))))| > 0)]
 (assert (not
   (>
     (Seq_length
-      ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01))))))
+      ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01))))))
     0)))
 (pop) ; 4
 (pop) ; 3
@@ -26553,53 +26461,53 @@
 (assert (=>
   (>
     (Seq_length
-      ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01))))))
+      ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01))))))
     0)
   (and
     (>
       (Seq_length
-        ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01))))))
+        ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01))))))
       0)
     (or
       (=
-        _res@340@01
+        _res@339@01
         (Seq_index
-          ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))
+          ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))
           (-
-            ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+            ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
             1)))
       (not
         (=
-          _res@340@01
+          _res@339@01
           (Seq_index
-            ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))
+            ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))
             (-
-              ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+              ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
               1))))))))
 ; Joined path conditions
 (assert (=>
   (>
     (Seq_length
-      ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01))))))
+      ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01))))))
     0)
   (and
     (=
-      _res@340@01
+      _res@339@01
       (Seq_index
-        ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))
+        ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))
         (-
-          ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+          ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
           1)))
     (Seq_contains
-      ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))
-      _res@340@01))))
+      ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))
+      _res@339@01))))
 (assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01))))))))))))))))
+  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01))))))))))))))))
   ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01))))))))))))))))))))
+    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))))))))))))
+    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01))))))))))))))))))))
 (assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))))))))))))
+  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))))))))))))
   $Snap.unit))
 ; [eval] |self.list_acc| > 0 ==> issubtype(typeof(_res), Iterator_arg(typeof(self), 0))
 ; [eval] |self.list_acc| > 0
@@ -26610,7 +26518,7 @@
 (assert (not (not
   (>
     (Seq_length
-      ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01))))))
+      ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01))))))
     0))))
 (check-sat)
 ; unknown
@@ -26622,21 +26530,21 @@
 (set-option :timeout 10)
 (assert (not (>
   (Seq_length
-    ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01))))))
+    ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01))))))
   0)))
 (check-sat)
 ; unknown
 (pop) ; 4
 ; 0.00s
 ; (get-info :all-statistics)
-; [then-branch: 335 | |First:(Second:(Second:(Second:($t@343@01))))| > 0 | live]
-; [else-branch: 335 | !(|First:(Second:(Second:(Second:($t@343@01))))| > 0) | live]
+; [then-branch: 332 | |First:(Second:(Second:(Second:($t@342@01))))| > 0 | live]
+; [else-branch: 332 | !(|First:(Second:(Second:(Second:($t@342@01))))| > 0) | live]
 (set-option :timeout 0)
 (push) ; 4
-; [then-branch: 335 | |First:(Second:(Second:(Second:($t@343@01))))| > 0]
+; [then-branch: 332 | |First:(Second:(Second:(Second:($t@342@01))))| > 0]
 (assert (>
   (Seq_length
-    ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01))))))
+    ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01))))))
   0))
 ; [eval] issubtype(typeof(_res), Iterator_arg(typeof(self), 0))
 ; [eval] typeof(_res)
@@ -26644,11 +26552,11 @@
 ; [eval] typeof(self)
 (pop) ; 4
 (push) ; 4
-; [else-branch: 335 | !(|First:(Second:(Second:(Second:($t@343@01))))| > 0)]
+; [else-branch: 332 | !(|First:(Second:(Second:(Second:($t@342@01))))| > 0)]
 (assert (not
   (>
     (Seq_length
-      ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01))))))
+      ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01))))))
     0)))
 (pop) ; 4
 (pop) ; 3
@@ -26657,14 +26565,14 @@
 (assert (=>
   (>
     (Seq_length
-      ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01))))))
+      ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01))))))
     0)
-  (issubtype<Bool> (typeof<PyType> _res@340@01) (Iterator_arg<PyType> (typeof<PyType> self@338@01) 0))))
+  (issubtype<Bool> (typeof<PyType> _res@339@01) (Iterator_arg<PyType> (typeof<PyType> self@337@01) 0))))
 (assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))))))))))))
+  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))))))))))))
   $Snap.unit))
 ; [eval] (forall r: Ref :: { (r in self.__previous) } (r in self.__previous) == ((r in old(self.__previous)) || (self.__iter_index > 1 && (r == self.list_acc[self.__iter_index - 2] && _err == null) || self.__iter_index > 0 && (_err != null && r == self.list_acc[self.__iter_index - 1]))))
-(declare-const r@344@01 $Ref)
+(declare-const r@343@01 $Ref)
 (push) ; 3
 ; [eval] (r in self.__previous) == ((r in old(self.__previous)) || (self.__iter_index > 1 && (r == self.list_acc[self.__iter_index - 2] && _err == null) || self.__iter_index > 0 && (_err != null && r == self.list_acc[self.__iter_index - 1])))
 ; [eval] (r in self.__previous)
@@ -26672,36 +26580,36 @@
 ; [eval] (r in old(self.__previous))
 ; [eval] old(self.__previous)
 (push) ; 4
-; [then-branch: 336 | r@344@01 in First:(Second:(Second:(Second:(Second:(Second:($t@342@01)))))) | live]
-; [else-branch: 336 | !(r@344@01 in First:(Second:(Second:(Second:(Second:(Second:($t@342@01))))))) | live]
+; [then-branch: 333 | r@343@01 in First:(Second:(Second:(Second:(Second:(Second:($t@341@01)))))) | live]
+; [else-branch: 333 | !(r@343@01 in First:(Second:(Second:(Second:(Second:(Second:($t@341@01))))))) | live]
 (push) ; 5
-; [then-branch: 336 | r@344@01 in First:(Second:(Second:(Second:(Second:(Second:($t@342@01))))))]
+; [then-branch: 333 | r@343@01 in First:(Second:(Second:(Second:(Second:(Second:($t@341@01))))))]
 (assert (Seq_contains
-  ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
-  r@344@01))
+  ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@341@01)))))))
+  r@343@01))
 (pop) ; 5
 (push) ; 5
-; [else-branch: 336 | !(r@344@01 in First:(Second:(Second:(Second:(Second:(Second:($t@342@01)))))))]
+; [else-branch: 333 | !(r@343@01 in First:(Second:(Second:(Second:(Second:(Second:($t@341@01)))))))]
 (assert (not
   (Seq_contains
-    ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
-    r@344@01)))
+    ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@341@01)))))))
+    r@343@01)))
 ; [eval] self.__iter_index > 1 && (r == self.list_acc[self.__iter_index - 2] && _err == null)
 ; [eval] self.__iter_index > 1
 (push) ; 6
-; [then-branch: 337 | !(First:(Second:(Second:(Second:(Second:(Second:($t@343@01)))))) > 1) | live]
-; [else-branch: 337 | First:(Second:(Second:(Second:(Second:(Second:($t@343@01)))))) > 1 | live]
+; [then-branch: 334 | !(First:(Second:(Second:(Second:(Second:(Second:($t@342@01)))))) > 1) | live]
+; [else-branch: 334 | First:(Second:(Second:(Second:(Second:(Second:($t@342@01)))))) > 1 | live]
 (push) ; 7
-; [then-branch: 337 | !(First:(Second:(Second:(Second:(Second:(Second:($t@343@01)))))) > 1)]
+; [then-branch: 334 | !(First:(Second:(Second:(Second:(Second:(Second:($t@342@01)))))) > 1)]
 (assert (not
   (>
-    ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+    ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
     1)))
 (pop) ; 7
 (push) ; 7
-; [else-branch: 337 | First:(Second:(Second:(Second:(Second:(Second:($t@343@01)))))) > 1]
+; [else-branch: 334 | First:(Second:(Second:(Second:(Second:(Second:($t@342@01)))))) > 1]
 (assert (>
-  ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+  ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
   1))
 ; [eval] r == self.list_acc[self.__iter_index - 2]
 ; [eval] self.list_acc[self.__iter_index - 2]
@@ -26709,7 +26617,7 @@
 (push) ; 8
 (assert (not (>=
   (-
-    ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+    ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
     2)
   0)))
 (check-sat)
@@ -26720,37 +26628,37 @@
 (push) ; 8
 (assert (not (<
   (-
-    ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+    ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
     2)
   (Seq_length
-    ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))))
+    ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))))
 (check-sat)
 ; unsat
 (pop) ; 8
 ; 0.00s
 ; (get-info :all-statistics)
 (push) ; 8
-; [then-branch: 338 | r@344@01 != First:(Second:(Second:(Second:($t@343@01))))[First:(Second:(Second:(Second:(Second:(Second:($t@343@01)))))) - 2] | live]
-; [else-branch: 338 | r@344@01 == First:(Second:(Second:(Second:($t@343@01))))[First:(Second:(Second:(Second:(Second:(Second:($t@343@01)))))) - 2] | live]
+; [then-branch: 335 | r@343@01 != First:(Second:(Second:(Second:($t@342@01))))[First:(Second:(Second:(Second:(Second:(Second:($t@342@01)))))) - 2] | live]
+; [else-branch: 335 | r@343@01 == First:(Second:(Second:(Second:($t@342@01))))[First:(Second:(Second:(Second:(Second:(Second:($t@342@01)))))) - 2] | live]
 (push) ; 9
-; [then-branch: 338 | r@344@01 != First:(Second:(Second:(Second:($t@343@01))))[First:(Second:(Second:(Second:(Second:(Second:($t@343@01)))))) - 2]]
+; [then-branch: 335 | r@343@01 != First:(Second:(Second:(Second:($t@342@01))))[First:(Second:(Second:(Second:(Second:(Second:($t@342@01)))))) - 2]]
 (assert (not
   (=
-    r@344@01
+    r@343@01
     (Seq_index
-      ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))
+      ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))
       (-
-        ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+        ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
         2)))))
 (pop) ; 9
 (push) ; 9
-; [else-branch: 338 | r@344@01 == First:(Second:(Second:(Second:($t@343@01))))[First:(Second:(Second:(Second:(Second:(Second:($t@343@01)))))) - 2]]
+; [else-branch: 335 | r@343@01 == First:(Second:(Second:(Second:($t@342@01))))[First:(Second:(Second:(Second:(Second:(Second:($t@342@01)))))) - 2]]
 (assert (=
-  r@344@01
+  r@343@01
   (Seq_index
-    ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))
+    ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))
     (-
-      ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+      ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
       2))))
 ; [eval] _err == null
 (pop) ; 9
@@ -26759,19 +26667,19 @@
 ; Joined path conditions
 (assert (or
   (=
-    r@344@01
+    r@343@01
     (Seq_index
-      ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))
+      ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))
       (-
-        ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+        ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
         2)))
   (not
     (=
-      r@344@01
+      r@343@01
       (Seq_index
-        ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))
+        ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))
         (-
-          ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+          ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
           2))))))
 (pop) ; 7
 (pop) ; 6
@@ -26779,106 +26687,106 @@
 ; Joined path conditions
 (assert (=>
   (>
-    ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+    ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
     1)
   (and
     (>
-      ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+      ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
       1)
     (or
       (=
-        r@344@01
+        r@343@01
         (Seq_index
-          ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))
+          ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))
           (-
-            ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+            ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
             2)))
       (not
         (=
-          r@344@01
+          r@343@01
           (Seq_index
-            ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))
+            ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))
             (-
-              ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+              ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
               2))))))))
 (assert (or
   (>
-    ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+    ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
     1)
   (not
     (>
-      ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+      ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
       1))))
 (push) ; 6
-; [then-branch: 339 | First:(Second:(Second:(Second:(Second:(Second:($t@343@01)))))) > 1 && r@344@01 == First:(Second:(Second:(Second:($t@343@01))))[First:(Second:(Second:(Second:(Second:(Second:($t@343@01)))))) - 2] && _err@341@01 == Null | live]
-; [else-branch: 339 | !(First:(Second:(Second:(Second:(Second:(Second:($t@343@01)))))) > 1 && r@344@01 == First:(Second:(Second:(Second:($t@343@01))))[First:(Second:(Second:(Second:(Second:(Second:($t@343@01)))))) - 2] && _err@341@01 == Null) | live]
+; [then-branch: 336 | First:(Second:(Second:(Second:(Second:(Second:($t@342@01)))))) > 1 && r@343@01 == First:(Second:(Second:(Second:($t@342@01))))[First:(Second:(Second:(Second:(Second:(Second:($t@342@01)))))) - 2] && _err@340@01 == Null | live]
+; [else-branch: 336 | !(First:(Second:(Second:(Second:(Second:(Second:($t@342@01)))))) > 1 && r@343@01 == First:(Second:(Second:(Second:($t@342@01))))[First:(Second:(Second:(Second:(Second:(Second:($t@342@01)))))) - 2] && _err@340@01 == Null) | live]
 (push) ; 7
-; [then-branch: 339 | First:(Second:(Second:(Second:(Second:(Second:($t@343@01)))))) > 1 && r@344@01 == First:(Second:(Second:(Second:($t@343@01))))[First:(Second:(Second:(Second:(Second:(Second:($t@343@01)))))) - 2] && _err@341@01 == Null]
+; [then-branch: 336 | First:(Second:(Second:(Second:(Second:(Second:($t@342@01)))))) > 1 && r@343@01 == First:(Second:(Second:(Second:($t@342@01))))[First:(Second:(Second:(Second:(Second:(Second:($t@342@01)))))) - 2] && _err@340@01 == Null]
 (assert (and
   (>
-    ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+    ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
     1)
   (and
     (=
-      r@344@01
+      r@343@01
       (Seq_index
-        ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))
+        ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))
         (-
-          ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+          ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
           2)))
-    (= _err@341@01 $Ref.null))))
+    (= _err@340@01 $Ref.null))))
 (pop) ; 7
 (push) ; 7
-; [else-branch: 339 | !(First:(Second:(Second:(Second:(Second:(Second:($t@343@01)))))) > 1 && r@344@01 == First:(Second:(Second:(Second:($t@343@01))))[First:(Second:(Second:(Second:(Second:(Second:($t@343@01)))))) - 2] && _err@341@01 == Null)]
+; [else-branch: 336 | !(First:(Second:(Second:(Second:(Second:(Second:($t@342@01)))))) > 1 && r@343@01 == First:(Second:(Second:(Second:($t@342@01))))[First:(Second:(Second:(Second:(Second:(Second:($t@342@01)))))) - 2] && _err@340@01 == Null)]
 (assert (not
   (and
     (>
-      ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+      ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
       1)
     (and
       (=
-        r@344@01
+        r@343@01
         (Seq_index
-          ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))
+          ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))
           (-
-            ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+            ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
             2)))
-      (= _err@341@01 $Ref.null)))))
+      (= _err@340@01 $Ref.null)))))
 ; [eval] self.__iter_index > 0 && (_err != null && r == self.list_acc[self.__iter_index - 1])
 ; [eval] self.__iter_index > 0
 (push) ; 8
-; [then-branch: 340 | !(First:(Second:(Second:(Second:(Second:(Second:($t@343@01)))))) > 0) | live]
-; [else-branch: 340 | First:(Second:(Second:(Second:(Second:(Second:($t@343@01)))))) > 0 | live]
+; [then-branch: 337 | !(First:(Second:(Second:(Second:(Second:(Second:($t@342@01)))))) > 0) | live]
+; [else-branch: 337 | First:(Second:(Second:(Second:(Second:(Second:($t@342@01)))))) > 0 | live]
 (push) ; 9
-; [then-branch: 340 | !(First:(Second:(Second:(Second:(Second:(Second:($t@343@01)))))) > 0)]
+; [then-branch: 337 | !(First:(Second:(Second:(Second:(Second:(Second:($t@342@01)))))) > 0)]
 (assert (not
   (>
-    ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+    ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
     0)))
 (pop) ; 9
 (push) ; 9
-; [else-branch: 340 | First:(Second:(Second:(Second:(Second:(Second:($t@343@01)))))) > 0]
+; [else-branch: 337 | First:(Second:(Second:(Second:(Second:(Second:($t@342@01)))))) > 0]
 (assert (>
-  ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+  ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
   0))
 ; [eval] _err != null
 (push) ; 10
-; [then-branch: 341 | _err@341@01 == Null | live]
-; [else-branch: 341 | _err@341@01 != Null | live]
+; [then-branch: 338 | _err@340@01 == Null | live]
+; [else-branch: 338 | _err@340@01 != Null | live]
 (push) ; 11
-; [then-branch: 341 | _err@341@01 == Null]
-(assert (= _err@341@01 $Ref.null))
+; [then-branch: 338 | _err@340@01 == Null]
+(assert (= _err@340@01 $Ref.null))
 (pop) ; 11
 (push) ; 11
-; [else-branch: 341 | _err@341@01 != Null]
-(assert (not (= _err@341@01 $Ref.null)))
+; [else-branch: 338 | _err@340@01 != Null]
+(assert (not (= _err@340@01 $Ref.null)))
 ; [eval] r == self.list_acc[self.__iter_index - 1]
 ; [eval] self.list_acc[self.__iter_index - 1]
 ; [eval] self.__iter_index - 1
 (push) ; 12
 (assert (not (>=
   (-
-    ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+    ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
     1)
   0)))
 (check-sat)
@@ -26889,10 +26797,10 @@
 (push) ; 12
 (assert (not (<
   (-
-    ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+    ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
     1)
   (Seq_length
-    ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))))
+    ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))))
 (check-sat)
 ; unsat
 (pop) ; 12
@@ -26908,11 +26816,11 @@
 ; Joined path conditions
 (assert (or
   (>
-    ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+    ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
     0)
   (not
     (>
-      ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+      ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
       0))))
 (pop) ; 7
 (pop) ; 6
@@ -26920,96 +26828,96 @@
 (assert (=>
   (and
     (>
-      ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+      ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
       1)
     (and
       (=
-        r@344@01
+        r@343@01
         (Seq_index
-          ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))
+          ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))
           (-
-            ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+            ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
             2)))
-      (= _err@341@01 $Ref.null)))
+      (= _err@340@01 $Ref.null)))
   (and
     (>
-      ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+      ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
       1)
     (=
-      r@344@01
+      r@343@01
       (Seq_index
-        ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))
+        ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))
         (-
-          ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+          ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
           2)))
-    (= _err@341@01 $Ref.null))))
+    (= _err@340@01 $Ref.null))))
 ; Joined path conditions
 (assert (=>
   (not
     (and
       (>
-        ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+        ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
         1)
       (and
         (=
-          r@344@01
+          r@343@01
           (Seq_index
-            ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))
+            ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))
             (-
-              ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+              ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
               2)))
-        (= _err@341@01 $Ref.null))))
+        (= _err@340@01 $Ref.null))))
   (and
     (not
       (and
         (>
-          ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+          ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
           1)
         (and
           (=
-            r@344@01
+            r@343@01
             (Seq_index
-              ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))
+              ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))
               (-
-                ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+                ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
                 2)))
-          (= _err@341@01 $Ref.null))))
+          (= _err@340@01 $Ref.null))))
     (or
       (>
-        ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+        ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
         0)
       (not
         (>
-          ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+          ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
           0))))))
 (assert (or
   (not
     (and
       (>
-        ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+        ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
         1)
       (and
         (=
-          r@344@01
+          r@343@01
           (Seq_index
-            ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))
+            ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))
             (-
-              ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+              ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
               2)))
-        (= _err@341@01 $Ref.null))))
+        (= _err@340@01 $Ref.null))))
   (and
     (>
-      ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+      ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
       1)
     (and
       (=
-        r@344@01
+        r@343@01
         (Seq_index
-          ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))
+          ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))
           (-
-            ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+            ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
             2)))
-      (= _err@341@01 $Ref.null)))))
+      (= _err@340@01 $Ref.null)))))
 (pop) ; 5
 (pop) ; 4
 ; Joined path conditions
@@ -27017,552 +26925,552 @@
 (assert (=>
   (not
     (Seq_contains
-      ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
-      r@344@01))
+      ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@341@01)))))))
+      r@343@01))
   (and
     (not
       (Seq_contains
-        ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
-        r@344@01))
+        ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@341@01)))))))
+        r@343@01))
     (=>
       (>
-        ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+        ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
         1)
       (and
         (>
-          ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+          ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
           1)
         (or
           (=
-            r@344@01
+            r@343@01
             (Seq_index
-              ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))
+              ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))
               (-
-                ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+                ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
                 2)))
           (not
             (=
-              r@344@01
+              r@343@01
               (Seq_index
-                ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))
+                ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))
                 (-
-                  ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+                  ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
                   2)))))))
     (or
       (>
-        ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+        ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
         1)
       (not
         (>
-          ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+          ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
           1)))
     (=>
       (and
         (>
-          ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+          ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
           1)
         (and
           (=
-            r@344@01
+            r@343@01
             (Seq_index
-              ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))
+              ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))
               (-
-                ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+                ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
                 2)))
-          (= _err@341@01 $Ref.null)))
+          (= _err@340@01 $Ref.null)))
       (and
         (>
-          ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+          ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
           1)
         (=
-          r@344@01
+          r@343@01
           (Seq_index
-            ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))
+            ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))
             (-
-              ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+              ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
               2)))
-        (= _err@341@01 $Ref.null)))
+        (= _err@340@01 $Ref.null)))
     (=>
       (not
         (and
           (>
-            ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+            ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
             1)
           (and
             (=
-              r@344@01
+              r@343@01
               (Seq_index
-                ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))
+                ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))
                 (-
-                  ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+                  ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
                   2)))
-            (= _err@341@01 $Ref.null))))
+            (= _err@340@01 $Ref.null))))
       (and
         (not
           (and
             (>
-              ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+              ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
               1)
             (and
               (=
-                r@344@01
+                r@343@01
                 (Seq_index
-                  ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))
+                  ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))
                   (-
-                    ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+                    ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
                     2)))
-              (= _err@341@01 $Ref.null))))
+              (= _err@340@01 $Ref.null))))
         (or
           (>
-            ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+            ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
             0)
           (not
             (>
-              ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+              ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
               0)))))
     (or
       (not
         (and
           (>
-            ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+            ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
             1)
           (and
             (=
-              r@344@01
+              r@343@01
               (Seq_index
-                ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))
+                ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))
                 (-
-                  ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+                  ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
                   2)))
-            (= _err@341@01 $Ref.null))))
+            (= _err@340@01 $Ref.null))))
       (and
         (>
-          ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+          ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
           1)
         (and
           (=
-            r@344@01
+            r@343@01
             (Seq_index
-              ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))
+              ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))
               (-
-                ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+                ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
                 2)))
-          (= _err@341@01 $Ref.null)))))))
+          (= _err@340@01 $Ref.null)))))))
 (assert (or
   (not
     (Seq_contains
-      ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
-      r@344@01))
+      ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@341@01)))))))
+      r@343@01))
   (Seq_contains
-    ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
-    r@344@01)))
+    ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@341@01)))))))
+    r@343@01)))
 (pop) ; 3
 ; Nested auxiliary terms: globals (aux)
 ; Nested auxiliary terms: non-globals (aux)
-(assert (forall ((r@344@01 $Ref)) (!
+(assert (forall ((r@343@01 $Ref)) (!
   (and
     (=>
       (not
         (Seq_contains
-          ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
-          r@344@01))
+          ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@341@01)))))))
+          r@343@01))
       (and
         (not
           (Seq_contains
-            ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
-            r@344@01))
+            ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@341@01)))))))
+            r@343@01))
         (=>
           (>
-            ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+            ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
             1)
           (and
             (>
-              ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+              ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
               1)
             (or
               (=
-                r@344@01
+                r@343@01
                 (Seq_index
-                  ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))
+                  ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))
                   (-
-                    ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+                    ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
                     2)))
               (not
                 (=
-                  r@344@01
+                  r@343@01
                   (Seq_index
-                    ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))
+                    ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))
                     (-
-                      ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+                      ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
                       2)))))))
         (or
           (>
-            ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+            ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
             1)
           (not
             (>
-              ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+              ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
               1)))
         (=>
           (and
             (>
-              ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+              ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
               1)
             (and
               (=
-                r@344@01
+                r@343@01
                 (Seq_index
-                  ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))
+                  ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))
                   (-
-                    ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+                    ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
                     2)))
-              (= _err@341@01 $Ref.null)))
+              (= _err@340@01 $Ref.null)))
           (and
             (>
-              ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+              ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
               1)
             (=
-              r@344@01
+              r@343@01
               (Seq_index
-                ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))
+                ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))
                 (-
-                  ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+                  ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
                   2)))
-            (= _err@341@01 $Ref.null)))
+            (= _err@340@01 $Ref.null)))
         (=>
           (not
             (and
               (>
-                ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+                ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
                 1)
               (and
                 (=
-                  r@344@01
+                  r@343@01
                   (Seq_index
-                    ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))
+                    ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))
                     (-
-                      ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+                      ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
                       2)))
-                (= _err@341@01 $Ref.null))))
+                (= _err@340@01 $Ref.null))))
           (and
             (not
               (and
                 (>
-                  ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+                  ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
                   1)
                 (and
                   (=
-                    r@344@01
+                    r@343@01
                     (Seq_index
-                      ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))
+                      ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))
                       (-
-                        ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+                        ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
                         2)))
-                  (= _err@341@01 $Ref.null))))
+                  (= _err@340@01 $Ref.null))))
             (or
               (>
-                ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+                ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
                 0)
               (not
                 (>
-                  ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+                  ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
                   0)))))
         (or
           (not
             (and
               (>
-                ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+                ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
                 1)
               (and
                 (=
-                  r@344@01
+                  r@343@01
                   (Seq_index
-                    ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))
+                    ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))
                     (-
-                      ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+                      ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
                       2)))
-                (= _err@341@01 $Ref.null))))
+                (= _err@340@01 $Ref.null))))
           (and
             (>
-              ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+              ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
               1)
             (and
               (=
-                r@344@01
+                r@343@01
                 (Seq_index
-                  ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))
+                  ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))
                   (-
-                    ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+                    ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
                     2)))
-              (= _err@341@01 $Ref.null))))))
+              (= _err@340@01 $Ref.null))))))
     (or
       (not
         (Seq_contains
-          ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
-          r@344@01))
+          ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@341@01)))))))
+          r@343@01))
       (Seq_contains
-        ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
-        r@344@01)))
+        ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@341@01)))))))
+        r@343@01)))
   :pattern ((Seq_contains
-    ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01))))))))))
-    r@344@01))
+    ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01))))))))))
+    r@343@01))
   :pattern ((Seq_contains_trigger
-    ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01))))))))))
-    r@344@01))
+    ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01))))))))))
+    r@343@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/nagini/testsfunctionalverificationexamplescav_example.py.vpr@902@12@902@289-aux|)))
-(assert (forall ((r@344@01 $Ref)) (!
+(assert (forall ((r@343@01 $Ref)) (!
   (and
     (=>
       (not
         (Seq_contains
-          ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
-          r@344@01))
+          ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@341@01)))))))
+          r@343@01))
       (and
         (not
           (Seq_contains
-            ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
-            r@344@01))
+            ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@341@01)))))))
+            r@343@01))
         (=>
           (>
-            ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+            ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
             1)
           (and
             (>
-              ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+              ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
               1)
             (or
               (=
-                r@344@01
+                r@343@01
                 (Seq_index
-                  ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))
+                  ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))
                   (-
-                    ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+                    ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
                     2)))
               (not
                 (=
-                  r@344@01
+                  r@343@01
                   (Seq_index
-                    ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))
+                    ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))
                     (-
-                      ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+                      ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
                       2)))))))
         (or
           (>
-            ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+            ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
             1)
           (not
             (>
-              ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+              ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
               1)))
         (=>
           (and
             (>
-              ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+              ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
               1)
             (and
               (=
-                r@344@01
+                r@343@01
                 (Seq_index
-                  ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))
+                  ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))
                   (-
-                    ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+                    ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
                     2)))
-              (= _err@341@01 $Ref.null)))
+              (= _err@340@01 $Ref.null)))
           (and
             (>
-              ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+              ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
               1)
             (=
-              r@344@01
+              r@343@01
               (Seq_index
-                ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))
+                ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))
                 (-
-                  ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+                  ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
                   2)))
-            (= _err@341@01 $Ref.null)))
+            (= _err@340@01 $Ref.null)))
         (=>
           (not
             (and
               (>
-                ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+                ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
                 1)
               (and
                 (=
-                  r@344@01
+                  r@343@01
                   (Seq_index
-                    ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))
+                    ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))
                     (-
-                      ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+                      ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
                       2)))
-                (= _err@341@01 $Ref.null))))
+                (= _err@340@01 $Ref.null))))
           (and
             (not
               (and
                 (>
-                  ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+                  ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
                   1)
                 (and
                   (=
-                    r@344@01
+                    r@343@01
                     (Seq_index
-                      ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))
+                      ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))
                       (-
-                        ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+                        ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
                         2)))
-                  (= _err@341@01 $Ref.null))))
+                  (= _err@340@01 $Ref.null))))
             (or
               (>
-                ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+                ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
                 0)
               (not
                 (>
-                  ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+                  ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
                   0)))))
         (or
           (not
             (and
               (>
-                ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+                ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
                 1)
               (and
                 (=
-                  r@344@01
+                  r@343@01
                   (Seq_index
-                    ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))
+                    ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))
                     (-
-                      ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+                      ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
                       2)))
-                (= _err@341@01 $Ref.null))))
+                (= _err@340@01 $Ref.null))))
           (and
             (>
-              ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+              ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
               1)
             (and
               (=
-                r@344@01
+                r@343@01
                 (Seq_index
-                  ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))
+                  ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))
                   (-
-                    ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+                    ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
                     2)))
-              (= _err@341@01 $Ref.null))))))
+              (= _err@340@01 $Ref.null))))))
     (or
       (not
         (Seq_contains
-          ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
-          r@344@01))
+          ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@341@01)))))))
+          r@343@01))
       (Seq_contains
-        ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
-        r@344@01)))
+        ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@341@01)))))))
+        r@343@01)))
   :pattern ((Seq_contains_trigger
-    ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01))))))))))
-    r@344@01))
+    ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01))))))))))
+    r@343@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/nagini/testsfunctionalverificationexamplescav_example.py.vpr@902@12@902@289-aux|)))
-(assert (forall ((r@344@01 $Ref)) (!
+(assert (forall ((r@343@01 $Ref)) (!
   (=
     (Seq_contains
-      ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01))))))))))
-      r@344@01)
+      ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01))))))))))
+      r@343@01)
     (or
       (Seq_contains
-        ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
-        r@344@01)
+        ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@341@01)))))))
+        r@343@01)
       (or
         (and
           (>
-            ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+            ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
             1)
           (and
             (=
-              r@344@01
+              r@343@01
               (Seq_index
-                ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))
+                ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))
                 (-
-                  ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+                  ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
                   2)))
-            (= _err@341@01 $Ref.null)))
+            (= _err@340@01 $Ref.null)))
         (and
           (>
-            ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+            ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
             0)
           (and
-            (not (= _err@341@01 $Ref.null))
+            (not (= _err@340@01 $Ref.null))
             (=
-              r@344@01
+              r@343@01
               (Seq_index
-                ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))
+                ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))
                 (-
-                  ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01)))))))
+                  ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01)))))))
                   1))))))))
   :pattern ((Seq_contains
-    ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01))))))))))
-    r@344@01))
+    ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01))))))))))
+    r@343@01))
   :pattern ((Seq_contains_trigger
-    ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@343@01))))))))))
-    r@344@01))
+    ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01))))))))))
+    r@343@01))
   :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/nagini/testsfunctionalverificationexamplescav_example.py.vpr@902@12@902@289|)))
 (pop) ; 2
 (push) ; 2
 ; [exec]
 ; var _cwl_149: Perm
-(declare-const _cwl_149@345@01 $Perm)
+(declare-const _cwl_149@344@01 $Perm)
 ; [exec]
 ; inhale false
 (pop) ; 2
 (pop) ; 1
 ; ---------- Iterator___del__ ----------
-(declare-const _cthread_150@346@01 $Ref)
-(declare-const _caller_measures_150@347@01 Seq<Measure$>)
-(declare-const _residue_150@348@01 $Perm)
-(declare-const self@349@01 $Ref)
-(declare-const _current_wait_level_150@350@01 $Perm)
-(declare-const _cthread_150@351@01 $Ref)
-(declare-const _caller_measures_150@352@01 Seq<Measure$>)
-(declare-const _residue_150@353@01 $Perm)
-(declare-const self@354@01 $Ref)
-(declare-const _current_wait_level_150@355@01 $Perm)
+(declare-const _cthread_150@345@01 $Ref)
+(declare-const _caller_measures_150@346@01 Seq<Measure$>)
+(declare-const _residue_150@347@01 $Perm)
+(declare-const self@348@01 $Ref)
+(declare-const _current_wait_level_150@349@01 $Perm)
+(declare-const _cthread_150@350@01 $Ref)
+(declare-const _caller_measures_150@351@01 Seq<Measure$>)
+(declare-const _residue_150@352@01 $Perm)
+(declare-const self@353@01 $Ref)
+(declare-const _current_wait_level_150@354@01 $Perm)
 (push) ; 1
-(declare-const $t@356@01 $Snap)
-(assert (= $t@356@01 ($Snap.combine ($Snap.first $t@356@01) ($Snap.second $t@356@01))))
-(assert (= ($Snap.first $t@356@01) $Snap.unit))
+(declare-const $t@355@01 $Snap)
+(assert (= $t@355@01 ($Snap.combine ($Snap.first $t@355@01) ($Snap.second $t@355@01))))
+(assert (= ($Snap.first $t@355@01) $Snap.unit))
 ; [eval] _cthread_150 != null
-(assert (not (= _cthread_150@351@01 $Ref.null)))
+(assert (not (= _cthread_150@350@01 $Ref.null)))
 (assert (=
-  ($Snap.second $t@356@01)
+  ($Snap.second $t@355@01)
   ($Snap.combine
-    ($Snap.first ($Snap.second $t@356@01))
-    ($Snap.second ($Snap.second $t@356@01)))))
-(assert (= ($Snap.first ($Snap.second $t@356@01)) $Snap.unit))
+    ($Snap.first ($Snap.second $t@355@01))
+    ($Snap.second ($Snap.second $t@355@01)))))
+(assert (= ($Snap.first ($Snap.second $t@355@01)) $Snap.unit))
 ; [eval] Measure$check(_caller_measures_150, _cthread_150, 1)
 (push) ; 2
-(assert (Measure$check%precondition $Snap.unit _caller_measures_150@352@01 _cthread_150@351@01 1))
+(assert (Measure$check%precondition $Snap.unit _caller_measures_150@351@01 _cthread_150@350@01 1))
 (pop) ; 2
 ; Joined path conditions
-(assert (Measure$check%precondition $Snap.unit _caller_measures_150@352@01 _cthread_150@351@01 1))
-(assert (Measure$check $Snap.unit _caller_measures_150@352@01 _cthread_150@351@01 1))
+(assert (Measure$check%precondition $Snap.unit _caller_measures_150@351@01 _cthread_150@350@01 1))
+(assert (Measure$check $Snap.unit _caller_measures_150@351@01 _cthread_150@350@01 1))
 (assert (=
-  ($Snap.second ($Snap.second $t@356@01))
+  ($Snap.second ($Snap.second $t@355@01))
   ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second $t@356@01)))
-    ($Snap.second ($Snap.second ($Snap.second $t@356@01))))))
-(assert (= ($Snap.first ($Snap.second ($Snap.second $t@356@01))) $Snap.unit))
+    ($Snap.first ($Snap.second ($Snap.second $t@355@01)))
+    ($Snap.second ($Snap.second ($Snap.second $t@355@01))))))
+(assert (= ($Snap.first ($Snap.second ($Snap.second $t@355@01))) $Snap.unit))
 ; [eval] issubtype(typeof(_cthread_150), Thread_0())
 ; [eval] typeof(_cthread_150)
 ; [eval] Thread_0()
-(assert (issubtype<Bool> (typeof<PyType> _cthread_150@351@01) (as Thread_0<PyType>  PyType)))
+(assert (issubtype<Bool> (typeof<PyType> _cthread_150@350@01) (as Thread_0<PyType>  PyType)))
 (assert (=
-  ($Snap.second ($Snap.second ($Snap.second $t@356@01)))
+  ($Snap.second ($Snap.second ($Snap.second $t@355@01)))
   ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@356@01))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@356@01)))))))
-(assert (not (= self@354@01 $Ref.null)))
+    ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@355@01))))
+    ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@355@01)))))))
+(assert (not (= self@353@01 $Ref.null)))
 (assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@356@01))))
+  ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@355@01))))
   ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@356@01)))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@356@01))))))))
+    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@355@01)))))
+    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@355@01))))))))
 (assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@356@01)))))
+  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@355@01)))))
   $Snap.unit))
 ; State saturation: after contract
 (set-option :timeout 50)
@@ -27570,35 +27478,35 @@
 ; unknown
 (set-option :timeout 0)
 (push) ; 2
-(declare-const $t@357@01 $Snap)
-(assert (= $t@357@01 ($Snap.combine ($Snap.first $t@357@01) ($Snap.second $t@357@01))))
-(assert (= ($Snap.first $t@357@01) $Snap.unit))
+(declare-const $t@356@01 $Snap)
+(assert (= $t@356@01 ($Snap.combine ($Snap.first $t@356@01) ($Snap.second $t@356@01))))
+(assert (= ($Snap.first $t@356@01) $Snap.unit))
 ; [eval] (forperm _r_17: Ref [_r_17.MustReleaseBounded] :: Level(_r_17) <= _current_wait_level_150)
 (assert (=
-  ($Snap.second $t@357@01)
+  ($Snap.second $t@356@01)
   ($Snap.combine
-    ($Snap.first ($Snap.second $t@357@01))
-    ($Snap.second ($Snap.second $t@357@01)))))
-(assert (= ($Snap.first ($Snap.second $t@357@01)) $Snap.unit))
+    ($Snap.first ($Snap.second $t@356@01))
+    ($Snap.second ($Snap.second $t@356@01)))))
+(assert (= ($Snap.first ($Snap.second $t@356@01)) $Snap.unit))
 ; [eval] (forperm _r_17: Ref [_r_17.MustReleaseUnbounded] :: Level(_r_17) <= _current_wait_level_150)
 (assert (=
-  ($Snap.second ($Snap.second $t@357@01))
+  ($Snap.second ($Snap.second $t@356@01))
   ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second $t@357@01)))
-    ($Snap.second ($Snap.second ($Snap.second $t@357@01))))))
-(assert (= ($Snap.first ($Snap.second ($Snap.second $t@357@01))) $Snap.unit))
+    ($Snap.first ($Snap.second ($Snap.second $t@356@01)))
+    ($Snap.second ($Snap.second ($Snap.second $t@356@01))))))
+(assert (= ($Snap.first ($Snap.second ($Snap.second $t@356@01))) $Snap.unit))
 ; [eval] _residue_150 <= _current_wait_level_150
-(assert (<= _residue_150@353@01 _current_wait_level_150@355@01))
+(assert (<= _residue_150@352@01 _current_wait_level_150@354@01))
 (assert (=
-  ($Snap.second ($Snap.second ($Snap.second $t@357@01)))
+  ($Snap.second ($Snap.second ($Snap.second $t@356@01)))
   ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@357@01))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@357@01)))))))
+    ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@356@01))))
+    ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@356@01)))))))
 (assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@357@01))))
+  ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@356@01))))
   ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@357@01)))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@357@01))))))))
+    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@356@01)))))
+    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@356@01))))))))
 ; [eval] issubtype(typeof(self.__container), list(list_arg(typeof(self.__container), 0)))
 ; [eval] typeof(self.__container)
 ; [eval] list(list_arg(typeof(self.__container), 0))
@@ -27607,7 +27515,7 @@
 (push) ; 3
 (set-option :timeout 10)
 (assert (not (not
-  (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@357@01)))))) (list<PyType> (list_arg<PyType> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@357@01)))))) 0))))))
+  (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@356@01)))))) (list<PyType> (list_arg<PyType> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@356@01)))))) 0))))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -27616,27 +27524,27 @@
 (set-option :timeout 0)
 (push) ; 3
 (set-option :timeout 10)
-(assert (not (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@357@01)))))) (list<PyType> (list_arg<PyType> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@357@01)))))) 0)))))
+(assert (not (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@356@01)))))) (list<PyType> (list_arg<PyType> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@356@01)))))) 0)))))
 (check-sat)
 ; unknown
 (pop) ; 3
 ; 0.00s
 ; (get-info :all-statistics)
-; [then-branch: 342 | issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@357@01))))), list[PyType](list_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@357@01))))), 0))) | live]
-; [else-branch: 342 | !(issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@357@01))))), list[PyType](list_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@357@01))))), 0)))) | live]
+; [then-branch: 339 | issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@356@01))))), list[PyType](list_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@356@01))))), 0))) | live]
+; [else-branch: 339 | !(issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@356@01))))), list[PyType](list_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@356@01))))), 0)))) | live]
 (set-option :timeout 0)
 (push) ; 3
-; [then-branch: 342 | issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@357@01))))), list[PyType](list_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@357@01))))), 0)))]
-(assert (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@357@01)))))) (list<PyType> (list_arg<PyType> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@357@01)))))) 0))))
+; [then-branch: 339 | issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@356@01))))), list[PyType](list_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@356@01))))), 0)))]
+(assert (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@356@01)))))) (list<PyType> (list_arg<PyType> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@356@01)))))) 0))))
 (assert (not
   (=
-    ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@357@01)))))
+    ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@356@01)))))
     $Ref.null)))
 (assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@357@01)))))
+  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@356@01)))))
   ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@357@01))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@357@01)))))))))
+    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@356@01))))))
+    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@356@01)))))))))
 ; [eval] issubtype(typeof(self.__container), dict(dict_arg(typeof(self.__container), 0), dict_arg(typeof(self.__container), 1)))
 ; [eval] typeof(self.__container)
 ; [eval] dict(dict_arg(typeof(self.__container), 0), dict_arg(typeof(self.__container), 1))
@@ -27647,21 +27555,21 @@
 (push) ; 4
 (set-option :timeout 10)
 (assert (not (not
-  (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@357@01)))))) (dict<PyType> (dict_arg<PyType> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@357@01)))))) 0) (dict_arg<PyType> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@357@01)))))) 1))))))
+  (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@356@01)))))) (dict<PyType> (dict_arg<PyType> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@356@01)))))) 0) (dict_arg<PyType> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@356@01)))))) 1))))))
 (check-sat)
 ; unsat
 (pop) ; 4
 ; 0.00s
 ; (get-info :all-statistics)
-; [then-branch: 343 | issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@357@01))))), dict[PyType](dict_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@357@01))))), 0), dict_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@357@01))))), 1))) | dead]
-; [else-branch: 343 | !(issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@357@01))))), dict[PyType](dict_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@357@01))))), 0), dict_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@357@01))))), 1)))) | live]
+; [then-branch: 340 | issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@356@01))))), dict[PyType](dict_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@356@01))))), 0), dict_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@356@01))))), 1))) | dead]
+; [else-branch: 340 | !(issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@356@01))))), dict[PyType](dict_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@356@01))))), 0), dict_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@356@01))))), 1)))) | live]
 (set-option :timeout 0)
 (push) ; 4
-; [else-branch: 343 | !(issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@357@01))))), dict[PyType](dict_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@357@01))))), 0), dict_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@357@01))))), 1))))]
+; [else-branch: 340 | !(issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@356@01))))), dict[PyType](dict_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@356@01))))), 0), dict_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@356@01))))), 1))))]
 (assert (not
-  (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@357@01)))))) (dict<PyType> (dict_arg<PyType> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@357@01)))))) 0) (dict_arg<PyType> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@357@01)))))) 1)))))
+  (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@356@01)))))) (dict<PyType> (dict_arg<PyType> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@356@01)))))) 0) (dict_arg<PyType> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@356@01)))))) 1)))))
 (assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@357@01))))))
+  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@356@01))))))
   $Snap.unit))
 ; [eval] issubtype(typeof(self.__container), set(set_arg(typeof(self.__container), 0)))
 ; [eval] typeof(self.__container)
@@ -27671,37 +27579,37 @@
 (push) ; 5
 (set-option :timeout 10)
 (assert (not (not
-  (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@357@01)))))) (set<PyType> (set_arg<PyType> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@357@01)))))) 0))))))
+  (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@356@01)))))) (set<PyType> (set_arg<PyType> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@356@01)))))) 0))))))
 (check-sat)
 ; unsat
 (pop) ; 5
 ; 0.00s
 ; (get-info :all-statistics)
-; [then-branch: 344 | issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@357@01))))), set[PyType](set_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@357@01))))), 0))) | dead]
-; [else-branch: 344 | !(issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@357@01))))), set[PyType](set_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@357@01))))), 0)))) | live]
+; [then-branch: 341 | issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@356@01))))), set[PyType](set_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@356@01))))), 0))) | dead]
+; [else-branch: 341 | !(issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@356@01))))), set[PyType](set_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@356@01))))), 0)))) | live]
 (set-option :timeout 0)
 (push) ; 5
-; [else-branch: 344 | !(issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@357@01))))), set[PyType](set_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@357@01))))), 0))))]
+; [else-branch: 341 | !(issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@356@01))))), set[PyType](set_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@356@01))))), 0))))]
 (assert (not
-  (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@357@01)))))) (set<PyType> (set_arg<PyType> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@357@01)))))) 0)))))
+  (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@356@01)))))) (set<PyType> (set_arg<PyType> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@356@01)))))) 0)))))
 (assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@357@01))))))
+  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@356@01))))))
   $Snap.unit))
 (pop) ; 5
 (pop) ; 4
 (pop) ; 3
 (push) ; 3
-; [else-branch: 342 | !(issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@357@01))))), list[PyType](list_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@357@01))))), 0))))]
+; [else-branch: 339 | !(issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@356@01))))), list[PyType](list_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@356@01))))), 0))))]
 (assert (not
-  (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@357@01)))))) (list<PyType> (list_arg<PyType> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@357@01)))))) 0)))))
+  (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@356@01)))))) (list<PyType> (list_arg<PyType> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@356@01)))))) 0)))))
 (assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@357@01)))))
+  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@356@01)))))
   $Snap.unit))
 (assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@357@01)))))
+  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@356@01)))))
   ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@357@01))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@357@01)))))))))
+    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@356@01))))))
+    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@356@01)))))))))
 ; [eval] issubtype(typeof(self.__container), dict(dict_arg(typeof(self.__container), 0), dict_arg(typeof(self.__container), 1)))
 ; [eval] typeof(self.__container)
 ; [eval] dict(dict_arg(typeof(self.__container), 0), dict_arg(typeof(self.__container), 1))
@@ -27712,7 +27620,7 @@
 (push) ; 4
 (set-option :timeout 10)
 (assert (not (not
-  (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@357@01)))))) (dict<PyType> (dict_arg<PyType> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@357@01)))))) 0) (dict_arg<PyType> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@357@01)))))) 1))))))
+  (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@356@01)))))) (dict<PyType> (dict_arg<PyType> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@356@01)))))) 0) (dict_arg<PyType> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@356@01)))))) 1))))))
 (check-sat)
 ; unknown
 (pop) ; 4
@@ -27721,26 +27629,26 @@
 (set-option :timeout 0)
 (push) ; 4
 (set-option :timeout 10)
-(assert (not (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@357@01)))))) (dict<PyType> (dict_arg<PyType> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@357@01)))))) 0) (dict_arg<PyType> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@357@01)))))) 1)))))
+(assert (not (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@356@01)))))) (dict<PyType> (dict_arg<PyType> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@356@01)))))) 0) (dict_arg<PyType> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@356@01)))))) 1)))))
 (check-sat)
 ; unknown
 (pop) ; 4
 ; 0.00s
 ; (get-info :all-statistics)
-; [then-branch: 345 | issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@357@01))))), dict[PyType](dict_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@357@01))))), 0), dict_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@357@01))))), 1))) | live]
-; [else-branch: 345 | !(issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@357@01))))), dict[PyType](dict_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@357@01))))), 0), dict_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@357@01))))), 1)))) | live]
+; [then-branch: 342 | issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@356@01))))), dict[PyType](dict_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@356@01))))), 0), dict_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@356@01))))), 1))) | live]
+; [else-branch: 342 | !(issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@356@01))))), dict[PyType](dict_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@356@01))))), 0), dict_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@356@01))))), 1)))) | live]
 (set-option :timeout 0)
 (push) ; 4
-; [then-branch: 345 | issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@357@01))))), dict[PyType](dict_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@357@01))))), 0), dict_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@357@01))))), 1)))]
-(assert (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@357@01)))))) (dict<PyType> (dict_arg<PyType> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@357@01)))))) 0) (dict_arg<PyType> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@357@01)))))) 1))))
+; [then-branch: 342 | issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@356@01))))), dict[PyType](dict_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@356@01))))), 0), dict_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@356@01))))), 1)))]
+(assert (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@356@01)))))) (dict<PyType> (dict_arg<PyType> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@356@01)))))) 0) (dict_arg<PyType> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@356@01)))))) 1))))
 (assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@357@01))))))
+  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@356@01))))))
   ($Snap.combine
-    ($Snap.first ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@357@01)))))))
-    ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@357@01))))))))))
+    ($Snap.first ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@356@01)))))))
+    ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@356@01))))))))))
 (assert (not
   (=
-    ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@357@01)))))
+    ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@356@01)))))
     $Ref.null)))
 ; [eval] issubtype(typeof(self.__container), set(set_arg(typeof(self.__container), 0)))
 ; [eval] typeof(self.__container)
@@ -27750,30 +27658,30 @@
 (push) ; 5
 (set-option :timeout 10)
 (assert (not (not
-  (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@357@01)))))) (set<PyType> (set_arg<PyType> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@357@01)))))) 0))))))
+  (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@356@01)))))) (set<PyType> (set_arg<PyType> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@356@01)))))) 0))))))
 (check-sat)
 ; unsat
 (pop) ; 5
 ; 0.00s
 ; (get-info :all-statistics)
-; [then-branch: 346 | issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@357@01))))), set[PyType](set_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@357@01))))), 0))) | dead]
-; [else-branch: 346 | !(issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@357@01))))), set[PyType](set_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@357@01))))), 0)))) | live]
+; [then-branch: 343 | issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@356@01))))), set[PyType](set_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@356@01))))), 0))) | dead]
+; [else-branch: 343 | !(issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@356@01))))), set[PyType](set_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@356@01))))), 0)))) | live]
 (set-option :timeout 0)
 (push) ; 5
-; [else-branch: 346 | !(issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@357@01))))), set[PyType](set_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@357@01))))), 0))))]
+; [else-branch: 343 | !(issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@356@01))))), set[PyType](set_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@356@01))))), 0))))]
 (assert (not
-  (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@357@01)))))) (set<PyType> (set_arg<PyType> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@357@01)))))) 0)))))
+  (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@356@01)))))) (set<PyType> (set_arg<PyType> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@356@01)))))) 0)))))
 (assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@357@01))))))
+  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@356@01))))))
   $Snap.unit))
 (pop) ; 5
 (pop) ; 4
 (push) ; 4
-; [else-branch: 345 | !(issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@357@01))))), dict[PyType](dict_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@357@01))))), 0), dict_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@357@01))))), 1))))]
+; [else-branch: 342 | !(issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@356@01))))), dict[PyType](dict_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@356@01))))), 0), dict_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@356@01))))), 1))))]
 (assert (not
-  (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@357@01)))))) (dict<PyType> (dict_arg<PyType> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@357@01)))))) 0) (dict_arg<PyType> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@357@01)))))) 1)))))
+  (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@356@01)))))) (dict<PyType> (dict_arg<PyType> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@356@01)))))) 0) (dict_arg<PyType> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@356@01)))))) 1)))))
 (assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@357@01))))))
+  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@356@01))))))
   $Snap.unit))
 ; [eval] issubtype(typeof(self.__container), set(set_arg(typeof(self.__container), 0)))
 ; [eval] typeof(self.__container)
@@ -27783,7 +27691,7 @@
 (push) ; 5
 (set-option :timeout 10)
 (assert (not (not
-  (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@357@01)))))) (set<PyType> (set_arg<PyType> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@357@01)))))) 0))))))
+  (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@356@01)))))) (set<PyType> (set_arg<PyType> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@356@01)))))) 0))))))
 (check-sat)
 ; unknown
 (pop) ; 5
@@ -27792,29 +27700,29 @@
 (set-option :timeout 0)
 (push) ; 5
 (set-option :timeout 10)
-(assert (not (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@357@01)))))) (set<PyType> (set_arg<PyType> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@357@01)))))) 0)))))
+(assert (not (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@356@01)))))) (set<PyType> (set_arg<PyType> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@356@01)))))) 0)))))
 (check-sat)
 ; unknown
 (pop) ; 5
 ; 0.00s
 ; (get-info :all-statistics)
-; [then-branch: 347 | issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@357@01))))), set[PyType](set_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@357@01))))), 0))) | live]
-; [else-branch: 347 | !(issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@357@01))))), set[PyType](set_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@357@01))))), 0)))) | live]
+; [then-branch: 344 | issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@356@01))))), set[PyType](set_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@356@01))))), 0))) | live]
+; [else-branch: 344 | !(issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@356@01))))), set[PyType](set_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@356@01))))), 0)))) | live]
 (set-option :timeout 0)
 (push) ; 5
-; [then-branch: 347 | issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@357@01))))), set[PyType](set_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@357@01))))), 0)))]
-(assert (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@357@01)))))) (set<PyType> (set_arg<PyType> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@357@01)))))) 0))))
+; [then-branch: 344 | issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@356@01))))), set[PyType](set_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@356@01))))), 0)))]
+(assert (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@356@01)))))) (set<PyType> (set_arg<PyType> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@356@01)))))) 0))))
 (assert (not
   (=
-    ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@357@01)))))
+    ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@356@01)))))
     $Ref.null)))
 (pop) ; 5
 (push) ; 5
-; [else-branch: 347 | !(issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@357@01))))), set[PyType](set_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@357@01))))), 0))))]
+; [else-branch: 344 | !(issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@356@01))))), set[PyType](set_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@356@01))))), 0))))]
 (assert (not
-  (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@357@01)))))) (set<PyType> (set_arg<PyType> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@357@01)))))) 0)))))
+  (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@356@01)))))) (set<PyType> (set_arg<PyType> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@356@01)))))) 0)))))
 (assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@357@01))))))
+  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@356@01))))))
   $Snap.unit))
 (pop) ; 5
 (pop) ; 4
@@ -27823,103 +27731,103 @@
 (push) ; 2
 ; [exec]
 ; var _cwl_150: Perm
-(declare-const _cwl_150@358@01 $Perm)
+(declare-const _cwl_150@357@01 $Perm)
 ; [exec]
 ; inhale false
 (pop) ; 2
 (pop) ; 1
 ; ---------- list___init__ ----------
-(declare-const _cthread_8@359@01 $Ref)
-(declare-const _caller_measures_8@360@01 Seq<Measure$>)
-(declare-const _residue_8@361@01 $Perm)
-(declare-const _current_wait_level_8@362@01 $Perm)
-(declare-const res@363@01 $Ref)
-(declare-const _cthread_8@364@01 $Ref)
-(declare-const _caller_measures_8@365@01 Seq<Measure$>)
-(declare-const _residue_8@366@01 $Perm)
-(declare-const _current_wait_level_8@367@01 $Perm)
-(declare-const res@368@01 $Ref)
+(declare-const _cthread_8@358@01 $Ref)
+(declare-const _caller_measures_8@359@01 Seq<Measure$>)
+(declare-const _residue_8@360@01 $Perm)
+(declare-const _current_wait_level_8@361@01 $Perm)
+(declare-const res@362@01 $Ref)
+(declare-const _cthread_8@363@01 $Ref)
+(declare-const _caller_measures_8@364@01 Seq<Measure$>)
+(declare-const _residue_8@365@01 $Perm)
+(declare-const _current_wait_level_8@366@01 $Perm)
+(declare-const res@367@01 $Ref)
 (push) ; 1
-(declare-const $t@369@01 $Snap)
-(assert (= $t@369@01 ($Snap.combine ($Snap.first $t@369@01) ($Snap.second $t@369@01))))
-(assert (= ($Snap.first $t@369@01) $Snap.unit))
+(declare-const $t@368@01 $Snap)
+(assert (= $t@368@01 ($Snap.combine ($Snap.first $t@368@01) ($Snap.second $t@368@01))))
+(assert (= ($Snap.first $t@368@01) $Snap.unit))
 ; [eval] _cthread_8 != null
-(assert (not (= _cthread_8@364@01 $Ref.null)))
+(assert (not (= _cthread_8@363@01 $Ref.null)))
 (assert (=
-  ($Snap.second $t@369@01)
+  ($Snap.second $t@368@01)
   ($Snap.combine
-    ($Snap.first ($Snap.second $t@369@01))
-    ($Snap.second ($Snap.second $t@369@01)))))
-(assert (= ($Snap.first ($Snap.second $t@369@01)) $Snap.unit))
+    ($Snap.first ($Snap.second $t@368@01))
+    ($Snap.second ($Snap.second $t@368@01)))))
+(assert (= ($Snap.first ($Snap.second $t@368@01)) $Snap.unit))
 ; [eval] Measure$check(_caller_measures_8, _cthread_8, 1)
 (push) ; 2
-(assert (Measure$check%precondition $Snap.unit _caller_measures_8@365@01 _cthread_8@364@01 1))
+(assert (Measure$check%precondition $Snap.unit _caller_measures_8@364@01 _cthread_8@363@01 1))
 (pop) ; 2
 ; Joined path conditions
-(assert (Measure$check%precondition $Snap.unit _caller_measures_8@365@01 _cthread_8@364@01 1))
-(assert (Measure$check $Snap.unit _caller_measures_8@365@01 _cthread_8@364@01 1))
+(assert (Measure$check%precondition $Snap.unit _caller_measures_8@364@01 _cthread_8@363@01 1))
+(assert (Measure$check $Snap.unit _caller_measures_8@364@01 _cthread_8@363@01 1))
 (assert (=
-  ($Snap.second ($Snap.second $t@369@01))
+  ($Snap.second ($Snap.second $t@368@01))
   ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second $t@369@01)))
-    ($Snap.second ($Snap.second ($Snap.second $t@369@01))))))
-(assert (= ($Snap.first ($Snap.second ($Snap.second $t@369@01))) $Snap.unit))
+    ($Snap.first ($Snap.second ($Snap.second $t@368@01)))
+    ($Snap.second ($Snap.second ($Snap.second $t@368@01))))))
+(assert (= ($Snap.first ($Snap.second ($Snap.second $t@368@01))) $Snap.unit))
 ; [eval] issubtype(typeof(_cthread_8), Thread_0())
 ; [eval] typeof(_cthread_8)
 ; [eval] Thread_0()
-(assert (issubtype<Bool> (typeof<PyType> _cthread_8@364@01) (as Thread_0<PyType>  PyType)))
-(assert (= ($Snap.second ($Snap.second ($Snap.second $t@369@01))) $Snap.unit))
+(assert (issubtype<Bool> (typeof<PyType> _cthread_8@363@01) (as Thread_0<PyType>  PyType)))
+(assert (= ($Snap.second ($Snap.second ($Snap.second $t@368@01))) $Snap.unit))
 ; State saturation: after contract
 (set-option :timeout 50)
 (check-sat)
 ; unknown
 (set-option :timeout 0)
 (push) ; 2
-(declare-const $t@370@01 $Snap)
-(assert (= $t@370@01 ($Snap.combine ($Snap.first $t@370@01) ($Snap.second $t@370@01))))
-(assert (= ($Snap.first $t@370@01) $Snap.unit))
+(declare-const $t@369@01 $Snap)
+(assert (= $t@369@01 ($Snap.combine ($Snap.first $t@369@01) ($Snap.second $t@369@01))))
+(assert (= ($Snap.first $t@369@01) $Snap.unit))
 ; [eval] (forperm _r_19: Ref [_r_19.MustReleaseBounded] :: Level(_r_19) <= _current_wait_level_8)
 (assert (=
-  ($Snap.second $t@370@01)
+  ($Snap.second $t@369@01)
   ($Snap.combine
-    ($Snap.first ($Snap.second $t@370@01))
-    ($Snap.second ($Snap.second $t@370@01)))))
-(assert (= ($Snap.first ($Snap.second $t@370@01)) $Snap.unit))
+    ($Snap.first ($Snap.second $t@369@01))
+    ($Snap.second ($Snap.second $t@369@01)))))
+(assert (= ($Snap.first ($Snap.second $t@369@01)) $Snap.unit))
 ; [eval] (forperm _r_19: Ref [_r_19.MustReleaseUnbounded] :: Level(_r_19) <= _current_wait_level_8)
 (assert (=
-  ($Snap.second ($Snap.second $t@370@01))
+  ($Snap.second ($Snap.second $t@369@01))
   ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second $t@370@01)))
-    ($Snap.second ($Snap.second ($Snap.second $t@370@01))))))
-(assert (= ($Snap.first ($Snap.second ($Snap.second $t@370@01))) $Snap.unit))
+    ($Snap.first ($Snap.second ($Snap.second $t@369@01)))
+    ($Snap.second ($Snap.second ($Snap.second $t@369@01))))))
+(assert (= ($Snap.first ($Snap.second ($Snap.second $t@369@01))) $Snap.unit))
 ; [eval] _residue_8 <= _current_wait_level_8
-(assert (<= _residue_8@366@01 _current_wait_level_8@367@01))
+(assert (<= _residue_8@365@01 _current_wait_level_8@366@01))
 (assert (=
-  ($Snap.second ($Snap.second ($Snap.second $t@370@01)))
+  ($Snap.second ($Snap.second ($Snap.second $t@369@01)))
   ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@370@01))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@370@01)))))))
-(assert (not (= res@368@01 $Ref.null)))
+    ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@369@01))))
+    ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@369@01)))))))
+(assert (not (= res@367@01 $Ref.null)))
 (assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@370@01))))
+  ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@369@01))))
   ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@370@01)))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@370@01))))))))
+    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@369@01)))))
+    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@369@01))))))))
 (assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@370@01)))))
+  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@369@01)))))
   $Snap.unit))
 ; [eval] res.list_acc == Seq[Ref]()
 ; [eval] Seq[Ref]()
 (assert (Seq_equal
-  ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@370@01)))))
+  ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@369@01)))))
   (as Seq_empty  Seq<$Ref>)))
 (assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@370@01)))))
+  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@369@01)))))
   ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@370@01))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@370@01)))))))))
+    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@369@01))))))
+    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@369@01)))))))))
 (assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@370@01))))))
+  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@369@01))))))
   $Snap.unit))
 ; [eval] typeof(res) == list(list_arg(typeof(res), 0))
 ; [eval] typeof(res)
@@ -27927,99 +27835,99 @@
 ; [eval] list_arg(typeof(res), 0)
 ; [eval] typeof(res)
 (assert (=
-  (typeof<PyType> res@368@01)
-  (list<PyType> (list_arg<PyType> (typeof<PyType> res@368@01) 0))))
+  (typeof<PyType> res@367@01)
+  (list<PyType> (list_arg<PyType> (typeof<PyType> res@367@01) 0))))
 (assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@370@01))))))
+  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@369@01))))))
   $Snap.unit))
 ; [eval] (Low(res): Bool)
-(assert (Low<Bool> res@368@01))
+(assert (Low<Bool> res@367@01))
 (pop) ; 2
 (push) ; 2
 ; [exec]
 ; var _cwl_8: Perm
-(declare-const _cwl_8@371@01 $Perm)
+(declare-const _cwl_8@370@01 $Perm)
 ; [exec]
 ; inhale false
 (pop) ; 2
 (pop) ; 1
 ; ---------- list_append ----------
-(declare-const _cthread_9@372@01 $Ref)
-(declare-const _caller_measures_9@373@01 Seq<Measure$>)
-(declare-const _residue_9@374@01 $Perm)
-(declare-const self@375@01 $Ref)
-(declare-const item@376@01 $Ref)
-(declare-const _current_wait_level_9@377@01 $Perm)
-(declare-const _cthread_9@378@01 $Ref)
-(declare-const _caller_measures_9@379@01 Seq<Measure$>)
-(declare-const _residue_9@380@01 $Perm)
-(declare-const self@381@01 $Ref)
-(declare-const item@382@01 $Ref)
-(declare-const _current_wait_level_9@383@01 $Perm)
+(declare-const _cthread_9@371@01 $Ref)
+(declare-const _caller_measures_9@372@01 Seq<Measure$>)
+(declare-const _residue_9@373@01 $Perm)
+(declare-const self@374@01 $Ref)
+(declare-const item@375@01 $Ref)
+(declare-const _current_wait_level_9@376@01 $Perm)
+(declare-const _cthread_9@377@01 $Ref)
+(declare-const _caller_measures_9@378@01 Seq<Measure$>)
+(declare-const _residue_9@379@01 $Perm)
+(declare-const self@380@01 $Ref)
+(declare-const item@381@01 $Ref)
+(declare-const _current_wait_level_9@382@01 $Perm)
 (push) ; 1
-(declare-const $t@384@01 $Snap)
-(assert (= $t@384@01 ($Snap.combine ($Snap.first $t@384@01) ($Snap.second $t@384@01))))
-(assert (= ($Snap.first $t@384@01) $Snap.unit))
+(declare-const $t@383@01 $Snap)
+(assert (= $t@383@01 ($Snap.combine ($Snap.first $t@383@01) ($Snap.second $t@383@01))))
+(assert (= ($Snap.first $t@383@01) $Snap.unit))
 ; [eval] _cthread_9 != null
-(assert (not (= _cthread_9@378@01 $Ref.null)))
+(assert (not (= _cthread_9@377@01 $Ref.null)))
 (assert (=
-  ($Snap.second $t@384@01)
+  ($Snap.second $t@383@01)
   ($Snap.combine
-    ($Snap.first ($Snap.second $t@384@01))
-    ($Snap.second ($Snap.second $t@384@01)))))
-(assert (= ($Snap.first ($Snap.second $t@384@01)) $Snap.unit))
+    ($Snap.first ($Snap.second $t@383@01))
+    ($Snap.second ($Snap.second $t@383@01)))))
+(assert (= ($Snap.first ($Snap.second $t@383@01)) $Snap.unit))
 ; [eval] Measure$check(_caller_measures_9, _cthread_9, 1)
 (push) ; 2
-(assert (Measure$check%precondition $Snap.unit _caller_measures_9@379@01 _cthread_9@378@01 1))
+(assert (Measure$check%precondition $Snap.unit _caller_measures_9@378@01 _cthread_9@377@01 1))
 (pop) ; 2
 ; Joined path conditions
-(assert (Measure$check%precondition $Snap.unit _caller_measures_9@379@01 _cthread_9@378@01 1))
-(assert (Measure$check $Snap.unit _caller_measures_9@379@01 _cthread_9@378@01 1))
+(assert (Measure$check%precondition $Snap.unit _caller_measures_9@378@01 _cthread_9@377@01 1))
+(assert (Measure$check $Snap.unit _caller_measures_9@378@01 _cthread_9@377@01 1))
 (assert (=
-  ($Snap.second ($Snap.second $t@384@01))
+  ($Snap.second ($Snap.second $t@383@01))
   ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second $t@384@01)))
-    ($Snap.second ($Snap.second ($Snap.second $t@384@01))))))
-(assert (= ($Snap.first ($Snap.second ($Snap.second $t@384@01))) $Snap.unit))
+    ($Snap.first ($Snap.second ($Snap.second $t@383@01)))
+    ($Snap.second ($Snap.second ($Snap.second $t@383@01))))))
+(assert (= ($Snap.first ($Snap.second ($Snap.second $t@383@01))) $Snap.unit))
 ; [eval] issubtype(typeof(_cthread_9), Thread_0())
 ; [eval] typeof(_cthread_9)
 ; [eval] Thread_0()
-(assert (issubtype<Bool> (typeof<PyType> _cthread_9@378@01) (as Thread_0<PyType>  PyType)))
+(assert (issubtype<Bool> (typeof<PyType> _cthread_9@377@01) (as Thread_0<PyType>  PyType)))
 (assert (=
-  ($Snap.second ($Snap.second ($Snap.second $t@384@01)))
+  ($Snap.second ($Snap.second ($Snap.second $t@383@01)))
   ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@384@01))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@384@01)))))))
+    ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@383@01))))
+    ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@383@01)))))))
 (assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@384@01))))
+  ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@383@01))))
   $Snap.unit))
 ; [eval] issubtype(typeof(self), list(list_arg(typeof(self), 0)))
 ; [eval] typeof(self)
 ; [eval] list(list_arg(typeof(self), 0))
 ; [eval] list_arg(typeof(self), 0)
 ; [eval] typeof(self)
-(assert (issubtype<Bool> (typeof<PyType> self@381@01) (list<PyType> (list_arg<PyType> (typeof<PyType> self@381@01) 0))))
+(assert (issubtype<Bool> (typeof<PyType> self@380@01) (list<PyType> (list_arg<PyType> (typeof<PyType> self@380@01) 0))))
 (assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@384@01))))
+  ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@383@01))))
   ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@384@01)))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@384@01))))))))
-(assert (not (= self@381@01 $Ref.null)))
+    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@383@01)))))
+    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@383@01))))))))
+(assert (not (= self@380@01 $Ref.null)))
 (assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@384@01)))))
+  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@383@01)))))
   ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@384@01))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@384@01)))))))))
+    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@383@01))))))
+    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@383@01)))))))))
 (assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@384@01))))))
+  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@383@01))))))
   $Snap.unit))
 ; [eval] issubtype(typeof(item), list_arg(typeof(self), 0))
 ; [eval] typeof(item)
 ; [eval] list_arg(typeof(self), 0)
 ; [eval] typeof(self)
-(assert (issubtype<Bool> (typeof<PyType> item@382@01) (list_arg<PyType> (typeof<PyType> self@381@01) 0)))
+(assert (issubtype<Bool> (typeof<PyType> item@381@01) (list_arg<PyType> (typeof<PyType> self@380@01) 0)))
 (assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@384@01))))))
+  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@383@01))))))
   $Snap.unit))
 ; State saturation: after contract
 (set-option :timeout 50)
@@ -28027,94 +27935,142 @@
 ; unknown
 (set-option :timeout 0)
 (push) ; 2
-(declare-const $t@385@01 $Snap)
-(assert (= $t@385@01 ($Snap.combine ($Snap.first $t@385@01) ($Snap.second $t@385@01))))
-(assert (= ($Snap.first $t@385@01) $Snap.unit))
+(declare-const $t@384@01 $Snap)
+(assert (= $t@384@01 ($Snap.combine ($Snap.first $t@384@01) ($Snap.second $t@384@01))))
+(assert (= ($Snap.first $t@384@01) $Snap.unit))
 ; [eval] (forperm _r_21: Ref [_r_21.MustReleaseBounded] :: Level(_r_21) <= _current_wait_level_9)
 (assert (=
-  ($Snap.second $t@385@01)
+  ($Snap.second $t@384@01)
   ($Snap.combine
-    ($Snap.first ($Snap.second $t@385@01))
-    ($Snap.second ($Snap.second $t@385@01)))))
-(assert (= ($Snap.first ($Snap.second $t@385@01)) $Snap.unit))
+    ($Snap.first ($Snap.second $t@384@01))
+    ($Snap.second ($Snap.second $t@384@01)))))
+(assert (= ($Snap.first ($Snap.second $t@384@01)) $Snap.unit))
 ; [eval] (forperm _r_21: Ref [_r_21.MustReleaseUnbounded] :: Level(_r_21) <= _current_wait_level_9)
 (assert (=
-  ($Snap.second ($Snap.second $t@385@01))
+  ($Snap.second ($Snap.second $t@384@01))
   ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second $t@385@01)))
-    ($Snap.second ($Snap.second ($Snap.second $t@385@01))))))
-(assert (= ($Snap.first ($Snap.second ($Snap.second $t@385@01))) $Snap.unit))
+    ($Snap.first ($Snap.second ($Snap.second $t@384@01)))
+    ($Snap.second ($Snap.second ($Snap.second $t@384@01))))))
+(assert (= ($Snap.first ($Snap.second ($Snap.second $t@384@01))) $Snap.unit))
 ; [eval] _residue_9 <= _current_wait_level_9
-(assert (<= _residue_9@380@01 _current_wait_level_9@383@01))
+(assert (<= _residue_9@379@01 _current_wait_level_9@382@01))
 (assert (=
-  ($Snap.second ($Snap.second ($Snap.second $t@385@01)))
+  ($Snap.second ($Snap.second ($Snap.second $t@384@01)))
   ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@385@01))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@385@01)))))))
+    ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@384@01))))
+    ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@384@01)))))))
 (assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@385@01))))
+  ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@384@01))))
   $Snap.unit))
 ; [eval] self.list_acc == old(self.list_acc) ++ Seq(item)
 ; [eval] old(self.list_acc) ++ Seq(item)
 ; [eval] old(self.list_acc)
 ; [eval] Seq(item)
-(assert (= (Seq_length (Seq_singleton item@382@01)) 1))
+(assert (= (Seq_length (Seq_singleton item@381@01)) 1))
 (assert (Seq_equal
-  ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@385@01)))))
+  ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@384@01)))))
   (Seq_append
-    ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@384@01))))))
-    (Seq_singleton item@382@01))))
+    ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@383@01))))))
+    (Seq_singleton item@381@01))))
 (pop) ; 2
 (push) ; 2
 ; [exec]
 ; var _cwl_9: Perm
-(declare-const _cwl_9@386@01 $Perm)
+(declare-const _cwl_9@385@01 $Perm)
 ; [exec]
 ; inhale false
 (pop) ; 2
 (pop) ; 1
 ; ---------- list___iter__ ----------
-(declare-const _cthread_13@387@01 $Ref)
-(declare-const _caller_measures_13@388@01 Seq<Measure$>)
-(declare-const _residue_13@389@01 $Perm)
-(declare-const self@390@01 $Ref)
-(declare-const _current_wait_level_13@391@01 $Perm)
-(declare-const _res@392@01 $Ref)
-(declare-const _cthread_13@393@01 $Ref)
-(declare-const _caller_measures_13@394@01 Seq<Measure$>)
-(declare-const _residue_13@395@01 $Perm)
-(declare-const self@396@01 $Ref)
-(declare-const _current_wait_level_13@397@01 $Perm)
-(declare-const _res@398@01 $Ref)
+(declare-const _cthread_13@386@01 $Ref)
+(declare-const _caller_measures_13@387@01 Seq<Measure$>)
+(declare-const _residue_13@388@01 $Perm)
+(declare-const self@389@01 $Ref)
+(declare-const _current_wait_level_13@390@01 $Perm)
+(declare-const _res@391@01 $Ref)
+(declare-const _cthread_13@392@01 $Ref)
+(declare-const _caller_measures_13@393@01 Seq<Measure$>)
+(declare-const _residue_13@394@01 $Perm)
+(declare-const self@395@01 $Ref)
+(declare-const _current_wait_level_13@396@01 $Perm)
+(declare-const _res@397@01 $Ref)
 (push) ; 1
+(declare-const $t@398@01 $Snap)
+(assert (= $t@398@01 ($Snap.combine ($Snap.first $t@398@01) ($Snap.second $t@398@01))))
+(assert (= ($Snap.first $t@398@01) $Snap.unit))
+; [eval] _cthread_13 != null
+(assert (not (= _cthread_13@392@01 $Ref.null)))
+(assert (=
+  ($Snap.second $t@398@01)
+  ($Snap.combine
+    ($Snap.first ($Snap.second $t@398@01))
+    ($Snap.second ($Snap.second $t@398@01)))))
+(assert (= ($Snap.first ($Snap.second $t@398@01)) $Snap.unit))
+; [eval] Measure$check(_caller_measures_13, _cthread_13, 1)
+(push) ; 2
+(assert (Measure$check%precondition $Snap.unit _caller_measures_13@393@01 _cthread_13@392@01 1))
+(pop) ; 2
+; Joined path conditions
+(assert (Measure$check%precondition $Snap.unit _caller_measures_13@393@01 _cthread_13@392@01 1))
+(assert (Measure$check $Snap.unit _caller_measures_13@393@01 _cthread_13@392@01 1))
+(assert (=
+  ($Snap.second ($Snap.second $t@398@01))
+  ($Snap.combine
+    ($Snap.first ($Snap.second ($Snap.second $t@398@01)))
+    ($Snap.second ($Snap.second ($Snap.second $t@398@01))))))
+(assert (= ($Snap.first ($Snap.second ($Snap.second $t@398@01))) $Snap.unit))
+; [eval] issubtype(typeof(_cthread_13), Thread_0())
+; [eval] typeof(_cthread_13)
+; [eval] Thread_0()
+(assert (issubtype<Bool> (typeof<PyType> _cthread_13@392@01) (as Thread_0<PyType>  PyType)))
+(assert (=
+  ($Snap.second ($Snap.second ($Snap.second $t@398@01)))
+  ($Snap.combine
+    ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@398@01))))
+    ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@398@01)))))))
+(assert (=
+  ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@398@01))))
+  $Snap.unit))
+; [eval] issubtype(typeof(self), list(list_arg(typeof(self), 0)))
+; [eval] typeof(self)
+; [eval] list(list_arg(typeof(self), 0))
+; [eval] list_arg(typeof(self), 0)
+; [eval] typeof(self)
+(assert (issubtype<Bool> (typeof<PyType> self@395@01) (list<PyType> (list_arg<PyType> (typeof<PyType> self@395@01) 0))))
+(assert (=
+  ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@398@01))))
+  ($Snap.combine
+    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@398@01)))))
+    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@398@01))))))))
+(assert (not (= self@395@01 $Ref.null)))
+(assert (=
+  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@398@01)))))
+  $Snap.unit))
+; State saturation: after contract
+(set-option :timeout 50)
+(check-sat)
+; unknown
+(set-option :timeout 0)
+(push) ; 2
 (declare-const $t@399@01 $Snap)
 (assert (= $t@399@01 ($Snap.combine ($Snap.first $t@399@01) ($Snap.second $t@399@01))))
 (assert (= ($Snap.first $t@399@01) $Snap.unit))
-; [eval] _cthread_13 != null
-(assert (not (= _cthread_13@393@01 $Ref.null)))
+; [eval] (forperm _r_23: Ref [_r_23.MustReleaseBounded] :: Level(_r_23) <= _current_wait_level_13)
 (assert (=
   ($Snap.second $t@399@01)
   ($Snap.combine
     ($Snap.first ($Snap.second $t@399@01))
     ($Snap.second ($Snap.second $t@399@01)))))
 (assert (= ($Snap.first ($Snap.second $t@399@01)) $Snap.unit))
-; [eval] Measure$check(_caller_measures_13, _cthread_13, 1)
-(push) ; 2
-(assert (Measure$check%precondition $Snap.unit _caller_measures_13@394@01 _cthread_13@393@01 1))
-(pop) ; 2
-; Joined path conditions
-(assert (Measure$check%precondition $Snap.unit _caller_measures_13@394@01 _cthread_13@393@01 1))
-(assert (Measure$check $Snap.unit _caller_measures_13@394@01 _cthread_13@393@01 1))
+; [eval] (forperm _r_23: Ref [_r_23.MustReleaseUnbounded] :: Level(_r_23) <= _current_wait_level_13)
 (assert (=
   ($Snap.second ($Snap.second $t@399@01))
   ($Snap.combine
     ($Snap.first ($Snap.second ($Snap.second $t@399@01)))
     ($Snap.second ($Snap.second ($Snap.second $t@399@01))))))
 (assert (= ($Snap.first ($Snap.second ($Snap.second $t@399@01))) $Snap.unit))
-; [eval] issubtype(typeof(_cthread_13), Thread_0())
-; [eval] typeof(_cthread_13)
-; [eval] Thread_0()
-(assert (issubtype<Bool> (typeof<PyType> _cthread_13@393@01) (as Thread_0<PyType>  PyType)))
+; [eval] _residue_13 <= _current_wait_level_13
+(assert (<= _residue_13@394@01 _current_wait_level_13@396@01))
 (assert (=
   ($Snap.second ($Snap.second ($Snap.second $t@399@01)))
   ($Snap.combine
@@ -28123,154 +28079,106 @@
 (assert (=
   ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@399@01))))
   $Snap.unit))
-; [eval] issubtype(typeof(self), list(list_arg(typeof(self), 0)))
-; [eval] typeof(self)
-; [eval] list(list_arg(typeof(self), 0))
-; [eval] list_arg(typeof(self), 0)
-; [eval] typeof(self)
-(assert (issubtype<Bool> (typeof<PyType> self@396@01) (list<PyType> (list_arg<PyType> (typeof<PyType> self@396@01) 0))))
+; [eval] _res != self
+(assert (not (= _res@397@01 self@395@01)))
 (assert (=
   ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@399@01))))
   ($Snap.combine
     ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@399@01)))))
     ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@399@01))))))))
-(assert (not (= self@396@01 $Ref.null)))
+(assert (not (= _res@397@01 $Ref.null)))
 (assert (=
   ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@399@01)))))
-  $Snap.unit))
-; State saturation: after contract
-(set-option :timeout 50)
-(check-sat)
-; unknown
-(set-option :timeout 0)
-(push) ; 2
-(declare-const $t@400@01 $Snap)
-(assert (= $t@400@01 ($Snap.combine ($Snap.first $t@400@01) ($Snap.second $t@400@01))))
-(assert (= ($Snap.first $t@400@01) $Snap.unit))
-; [eval] (forperm _r_23: Ref [_r_23.MustReleaseBounded] :: Level(_r_23) <= _current_wait_level_13)
-(assert (=
-  ($Snap.second $t@400@01)
   ($Snap.combine
-    ($Snap.first ($Snap.second $t@400@01))
-    ($Snap.second ($Snap.second $t@400@01)))))
-(assert (= ($Snap.first ($Snap.second $t@400@01)) $Snap.unit))
-; [eval] (forperm _r_23: Ref [_r_23.MustReleaseUnbounded] :: Level(_r_23) <= _current_wait_level_13)
-(assert (=
-  ($Snap.second ($Snap.second $t@400@01))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second $t@400@01)))
-    ($Snap.second ($Snap.second ($Snap.second $t@400@01))))))
-(assert (= ($Snap.first ($Snap.second ($Snap.second $t@400@01))) $Snap.unit))
-; [eval] _residue_13 <= _current_wait_level_13
-(assert (<= _residue_13@395@01 _current_wait_level_13@397@01))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second $t@400@01)))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@400@01))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@400@01)))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@400@01))))
-  $Snap.unit))
-; [eval] _res != self
-(assert (not (= _res@398@01 self@396@01)))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@400@01))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@400@01)))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@400@01))))))))
-(assert (not (= _res@398@01 $Ref.null)))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@400@01)))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@400@01))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@400@01)))))))))
+    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@399@01))))))
+    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@399@01)))))))))
 (push) ; 3
 (set-option :timeout 10)
-(assert (not (= _res@398@01 self@396@01)))
+(assert (not (= _res@397@01 self@395@01)))
 (check-sat)
 ; unknown
 (pop) ; 3
 ; 0.00s
 ; (get-info :all-statistics)
 (assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@400@01))))))
+  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@399@01))))))
   ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@400@01)))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@400@01))))))))))
+    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@399@01)))))))
+    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@399@01))))))))))
 (assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@400@01)))))))
+  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@399@01)))))))
   $Snap.unit))
 ; [eval] _res.list_acc == self.list_acc
 (assert (Seq_equal
-  ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@400@01))))))
-  ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@400@01)))))))))
+  ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@399@01))))))
+  ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@399@01)))))))))
 (assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@400@01)))))))
+  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@399@01)))))))
   ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@400@01))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@400@01)))))))))))
+    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@399@01))))))))
+    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@399@01)))))))))))
 (assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@400@01))))))))
+  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@399@01))))))))
   ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@400@01)))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@400@01))))))))))))
+    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@399@01)))))))))
+    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@399@01))))))))))))
 (assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@400@01)))))))))
+  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@399@01)))))))))
   $Snap.unit))
 ; [eval] _res.__container == self
 (assert (=
-  ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@400@01)))))))))
-  self@396@01))
+  ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@399@01)))))))))
+  self@395@01))
 (assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@400@01)))))))))
+  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@399@01)))))))))
   ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@400@01))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@400@01)))))))))))))
+    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@399@01))))))))))
+    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@399@01)))))))))))))
 (assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@400@01))))))))))
+  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@399@01))))))))))
   ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@400@01)))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@400@01))))))))))))))
+    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@399@01)))))))))))
+    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@399@01))))))))))))))
 (assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@400@01)))))))))))
+  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@399@01)))))))))))
   $Snap.unit))
 ; [eval] _res.__iter_index == 0
 (assert (=
-  ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@400@01)))))))))))
+  ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@399@01)))))))))))
   0))
 (assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@400@01)))))))))))
+  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@399@01)))))))))))
   ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@400@01))))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@400@01)))))))))))))))
+    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@399@01))))))))))))
+    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@399@01)))))))))))))))
 (assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@400@01))))))))))))
+  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@399@01))))))))))))
   ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@400@01)))))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@400@01))))))))))))))))
+    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@399@01)))))))))))))
+    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@399@01))))))))))))))))
 (assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@400@01)))))))))))))
+  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@399@01)))))))))))))
   $Snap.unit))
 ; [eval] _res.__previous == Seq[Ref]()
 ; [eval] Seq[Ref]()
 (assert (Seq_equal
-  ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@400@01)))))))))))))
+  ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@399@01)))))))))))))
   (as Seq_empty  Seq<$Ref>)))
 (assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@400@01)))))))))))))
+  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@399@01)))))))))))))
   $Snap.unit))
 ; [eval] issubtype(typeof(_res), Iterator(list_arg(typeof(self), 0)))
 ; [eval] typeof(_res)
 ; [eval] Iterator(list_arg(typeof(self), 0))
 ; [eval] list_arg(typeof(self), 0)
 ; [eval] typeof(self)
-(assert (issubtype<Bool> (typeof<PyType> _res@398@01) (Iterator<PyType> (list_arg<PyType> (typeof<PyType> self@396@01) 0))))
+(assert (issubtype<Bool> (typeof<PyType> _res@397@01) (Iterator<PyType> (list_arg<PyType> (typeof<PyType> self@395@01) 0))))
 (pop) ; 2
 (set-option :timeout 0)
 (push) ; 2
 ; [exec]
 ; var _cwl_13: Perm
-(declare-const _cwl_13@401@01 $Perm)
+(declare-const _cwl_13@400@01 $Perm)
 ; [exec]
 ; inhale false
 (pop) ; 2

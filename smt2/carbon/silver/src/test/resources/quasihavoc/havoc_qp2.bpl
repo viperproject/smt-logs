@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-29 20:17:48
+// Date:         2025-01-04 00:47:07
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quasihavoc/havoc_qp2.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quasihavoc/havoc_qp2-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -396,12 +396,12 @@ procedure foo_1(x: Ref, y: Ref, s_2: (Set Ref)) returns ()
 {
   var QPMask: MaskType;
   var a_4: Ref;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var perm: Perm;
   var perm_temp_quasihavoc_: Perm;
   var ExhaleHeap: HeapType;
@@ -477,14 +477,14 @@ procedure foo_1(x: Ref, y: Ref, s_2: (Set Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert acc(y.f, write) && y.f == 3 -- havoc_qp2.vpr@8.5--8.32
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
+    ExhaleWellDef0Mask := AssertMask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Assert might fail. There might be insufficient permission to access y.f (havoc_qp2.vpr@8.12--8.32) [77736]"}
@@ -504,8 +504,8 @@ procedure foo_1(x: Ref, y: Ref, s_2: (Set Ref)) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(x.f, perm_temp_quasihavoc_) -- <no position>
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := perm_temp_quasihavoc_;
     assert {:msg "  Exhale might fail. Fraction perm_temp_quasihavoc_ might be negative. (<no position>) [77739]"}
       perm >= NoPerm;
@@ -533,8 +533,8 @@ procedure foo_1(x: Ref, y: Ref, s_2: (Set Ref)) returns ()
   // -- Translating statement: assert acc(y.f, write) -- havoc_qp2.vpr@11.5--11.20
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
+    ExhaleWellDef0Mask := AssertMask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Assert might fail. There might be insufficient permission to access y.f (havoc_qp2.vpr@11.12--11.20) [77743]"}
@@ -544,8 +544,8 @@ procedure foo_1(x: Ref, y: Ref, s_2: (Set Ref)) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert y.f == 3 -- havoc_qp2.vpr@13.5--13.20
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of y.f == 3
       assert {:msg "  Assert might fail. There might be insufficient permission to access y.f (havoc_qp2.vpr@13.12--13.20) [77744]"}

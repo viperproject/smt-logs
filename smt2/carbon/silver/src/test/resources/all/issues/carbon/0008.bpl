@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-29 20:43:16
+// Date:         2025-01-04 01:12:43
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0008.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0008-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -601,13 +601,13 @@ procedure reqIGt0#definedness(i: int) returns (Result: int)
 procedure succeedsRange10(a_2: int) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var i_14: int;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var i_1: int;
   
   // -- Initializing the state
@@ -623,20 +623,20 @@ procedure succeedsRange10(a_2: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert (forall i: Int :: { reqIGt0(i) } 1 <= i ==> reqIGt0(i) == i) -- 0008.vpr@11.2--11.56
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall i: Int :: { reqIGt0(i) } 1 <= i ==> reqIGt0(i) == i)
       if (*) {
         if (1 <= i_14) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Mask := ExhaleWellDef0Mask;
             ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+            ExhaleWellDef1Mask := ExhaleWellDef0Mask;
             assert {:msg "  Precondition of function reqIGt0 might not hold. Assertion i >= 0 might not hold. (0008.vpr@11.40--11.50) [194241]"}
               i_14 >= 0;
             // Stop execution
@@ -666,13 +666,13 @@ procedure succeedsRange10(a_2: int) returns ()
 procedure succeedsExplicit10(a_2: int) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var i_2: int;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var i_1: int;
   var i_4: int;
   var i_4_1: int;
@@ -686,22 +686,22 @@ procedure succeedsExplicit10(a_2: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert (forall i: Int ::
   //     { (i in Seq(2, 4, 6, 8)) }
   //     (i in Seq(2, 4, 6, 8)) ==> reqIGt0(i * i) > i) -- 0008.vpr@16.3--16.69
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall i: Int :: { (i in Seq(2, 4, 6, 8)) } (i in Seq(2, 4, 6, 8)) ==> reqIGt0(i * i) > i)
       if (*) {
         if (Seq#Contains(Seq#Append(Seq#Append(Seq#Append(Seq#Singleton(2), Seq#Singleton(4)), Seq#Singleton(6)), Seq#Singleton(8)), i_2)) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Mask := ExhaleWellDef0Mask;
             ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+            ExhaleWellDef1Mask := ExhaleWellDef0Mask;
             assert {:msg "  Precondition of function reqIGt0 might not hold. Assertion i * i >= 0 might not hold. (0008.vpr@16.52--16.64) [194243]"}
               i_2 * i_2 >= 0;
             // Stop execution
@@ -726,16 +726,16 @@ procedure succeedsExplicit10(a_2: int) returns ()
   // -- Translating statement: assert (forall i: Int, fresh__403: Int ::
   //     { (i in Seq(fresh__403, 2, 4, 6, 8)) }
   //     (i in Seq(-2, 2, 4, 6, 8)) ==> reqIGt0(i * i) > i) -- 0008.vpr@17.3--17.72
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall i: Int, fresh__403: Int :: { (i in Seq(fresh__403, 2, 4, 6, 8)) } (i in Seq(-2, 2, 4, 6, 8)) ==> reqIGt0(i * i) > i)
       if (*) {
         if (Seq#Contains(Seq#Append(Seq#Append(Seq#Append(Seq#Append(Seq#Singleton(-2), Seq#Singleton(2)), Seq#Singleton(4)), Seq#Singleton(6)), Seq#Singleton(8)), i_4)) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Mask := ExhaleWellDef0Mask;
             ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+            ExhaleWellDef1Mask := ExhaleWellDef0Mask;
             assert {:msg "  Precondition of function reqIGt0 might not hold. Assertion i * i >= 0 might not hold. (0008.vpr@17.55--17.67) [194245]"}
               i_4 * i_4 >= 0;
             // Stop execution

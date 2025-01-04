@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-29 19:50:06
+; Started: 2025-01-04 00:18:54
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -119827,4 +119827,238 @@
 (push) ; 27
 (set-option :timeout 10)
 (assert (not (= ret@813@01 ret@880@01)))
+(check-sat)
+; unknown
+(pop) ; 27
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 27
+(set-option :timeout 10)
+(assert (not (= ret@809@01 ret@880@01)))
+(check-sat)
+; unknown
+(pop) ; 27
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 27
+(set-option :timeout 10)
+(assert (not (= ret@805@01 ret@880@01)))
+(check-sat)
+; unknown
+(pop) ; 27
+; 0.00s
+; (get-info :all-statistics)
+; [exec]
+; label bb12
+; [exec]
+; __t26 := true
+; [exec]
+; __t43 := _23.val_bool
+; [eval] !__t43
+(set-option :timeout 0)
+(push) ; 27
+(set-option :timeout 10)
+(assert (not false))
+(check-sat)
+; unknown
+(pop) ; 27
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 333 | True | live]
+; [else-branch: 333 | False | dead]
+(set-option :timeout 0)
+(push) ; 27
+; [then-branch: 333 | True]
+; [exec]
+; label l57
+(push) ; 28
+(set-option :timeout 10)
+(assert (not false))
+(check-sat)
+; unknown
+(pop) ; 28
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 334 | True | live]
+; [else-branch: 334 | False | dead]
+(set-option :timeout 0)
+(push) ; 28
+; [then-branch: 334 | True]
+; [exec]
+; exhale acc(bool(_22.val_ref), read$())
+; [eval] read$()
+(push) ; 29
+(pop) ; 29
+; Joined path conditions
+(push) ; 29
+(assert (not (or (= (read$ $Snap.unit) $Perm.No) (< $Perm.No (read$ $Snap.unit)))))
+(check-sat)
+; unsat
+(pop) ; 29
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 29
+(set-option :timeout 10)
+(assert (not (=
+  ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@764@01))))))))))))))))
+  val_ref@802@01)))
+(check-sat)
+; unsat
+(pop) ; 29
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 29
+(set-option :timeout 10)
+(assert (not (=
+  (-
+    (+ (read$ $Snap.unit) (read$ $Snap.unit))
+    ($Perm.min (+ (read$ $Snap.unit) (read$ $Snap.unit)) (read$ $Snap.unit)))
+  $Perm.No)))
+(check-sat)
+; unknown
+(pop) ; 29
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 29
+(assert (not (or
+  (=
+    (-
+      (read$ $Snap.unit)
+      ($Perm.min (+ (read$ $Snap.unit) (read$ $Snap.unit)) (read$ $Snap.unit)))
+    $Perm.No)
+  (<
+    (-
+      (read$ $Snap.unit)
+      ($Perm.min (+ (read$ $Snap.unit) (read$ $Snap.unit)) (read$ $Snap.unit)))
+    $Perm.No))))
+(check-sat)
+; unsat
+(pop) ; 29
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 29
+(set-option :timeout 10)
+(assert (not false))
+(check-sat)
+; unknown
+(pop) ; 29
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 335 | True | live]
+; [else-branch: 335 | False | dead]
+(set-option :timeout 0)
+(push) ; 29
+; [then-branch: 335 | True]
+; [exec]
+; exhale acc(bool(_12.val_ref), read$())
+; [eval] read$()
+(push) ; 30
+(pop) ; 30
+; Joined path conditions
+(push) ; 30
+(assert (not (or (= (read$ $Snap.unit) $Perm.No) (< $Perm.No (read$ $Snap.unit)))))
+(check-sat)
+; unsat
+(pop) ; 30
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 30
+(set-option :timeout 10)
+(assert (not (=
+  ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@719@01))))))))))))))))
+  val_ref@757@01)))
+(check-sat)
+; unsat
+(pop) ; 30
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 30
+(set-option :timeout 10)
+(assert (not (=
+  (-
+    (+ (read$ $Snap.unit) (read$ $Snap.unit))
+    ($Perm.min (+ (read$ $Snap.unit) (read$ $Snap.unit)) (read$ $Snap.unit)))
+  $Perm.No)))
+(check-sat)
+; unknown
+(pop) ; 30
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 30
+(assert (not (or
+  (=
+    (-
+      (read$ $Snap.unit)
+      ($Perm.min (+ (read$ $Snap.unit) (read$ $Snap.unit)) (read$ $Snap.unit)))
+    $Perm.No)
+  (<
+    (-
+      (read$ $Snap.unit)
+      ($Perm.min (+ (read$ $Snap.unit) (read$ $Snap.unit)) (read$ $Snap.unit)))
+    $Perm.No))))
+(check-sat)
+; unsat
+(pop) ; 30
+; 0.00s
+; (get-info :all-statistics)
+; [exec]
+; label bb6
+; [exec]
+; __t29 := true
+; [exec]
+; _0 := builtin$havoc_ref()
+(declare-const ret@882@01 $Ref)
+; State saturation: after contract
+(set-option :timeout 50)
+(check-sat)
+; unknown
+; [exec]
+; inhale acc(_0.val_bool, write)
+(declare-const $t@883@01 Bool)
+(set-option :timeout 0)
+(push) ; 30
+(set-option :timeout 10)
+(assert (not (= ret@880@01 ret@882@01)))
+(check-sat)
+; unknown
+(pop) ; 30
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 30
+(set-option :timeout 10)
+(assert (not (= ret@878@01 ret@882@01)))
+(check-sat)
+; unknown
+(pop) ; 30
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 30
+(set-option :timeout 10)
+(assert (not (= ret@876@01 ret@882@01)))
+(check-sat)
+; unknown
+(pop) ; 30
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 30
+(set-option :timeout 10)
+(assert (not (= ret@874@01 ret@882@01)))
+(check-sat)
+; unknown
+(pop) ; 30
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 30
+(set-option :timeout 10)
+(assert (not (= ret@872@01 ret@882@01)))
 (check-sat)

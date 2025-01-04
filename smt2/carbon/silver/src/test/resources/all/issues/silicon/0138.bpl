@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-29 20:49:24
+// Date:         2025-01-04 01:18:53
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0138.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0138-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -279,11 +279,11 @@ procedure Ref__hist_idle#definedness(diz: Ref, ref: Ref, p_1: ProcessDomainType)
 procedure test01() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var loopHeap: HeapType;
   var loopMask: MaskType;
@@ -296,8 +296,8 @@ procedure test01() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale acc(P(), write) -- 0138.vpr@7.3--7.18
     perm := FullPerm;
@@ -311,8 +311,8 @@ procedure test01() returns ()
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Loop invariant acc(P(), write) might not hold on entry. There might be insufficient permission to access P() (0138.vpr@11.15--11.23) [217186]"}
@@ -352,14 +352,14 @@ procedure test01() returns ()
         // -- Translate loop body
           
           // -- Translating statement: assert false -- 0138.vpr@14.5--14.17
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             assert {:msg "  Assert might fail. Assertion false might not hold. (0138.vpr@14.12--14.17) [217187]"}
               false;
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Loop invariant acc(P(), write) might not be preserved. There might be insufficient permission to access P() (0138.vpr@11.15--11.23) [217188]"}
@@ -392,11 +392,11 @@ procedure Ref__do_incr_loop(diz: Ref, n: int, k: int, h_2: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var i: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var loopHeap: HeapType;
   var loopMask: MaskType;
@@ -427,8 +427,8 @@ procedure Ref__do_incr_loop(diz: Ref, n: int, k: int, h_2: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: i := 0 -- 0138.vpr@38.3--38.9
     i := 0;
@@ -439,8 +439,8 @@ procedure Ref__do_incr_loop(diz: Ref, n: int, k: int, h_2: Ref) returns ()
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Loop invariant k >= 0 might not hold on entry. Assertion k >= 0 might not hold. (0138.vpr@40.15--40.21) [217189]"}
           k >= 0;
         assert {:msg "  Loop invariant 0 <= i might not hold on entry. Assertion 0 <= i might not hold. (0138.vpr@41.15--41.21) [217190]"}
@@ -500,14 +500,14 @@ procedure Ref__do_incr_loop(diz: Ref, n: int, k: int, h_2: Ref) returns ()
         // -- Translate loop body
           
           // -- Translating statement: assert false -- 0138.vpr@48.5--48.17
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             assert {:msg "  Assert might fail. Assertion false might not hold. (0138.vpr@48.12--48.17) [217194]"}
               false;
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Loop invariant k >= 0 might not be preserved. Assertion k >= 0 might not hold. (0138.vpr@40.15--40.21) [217195]"}
           k >= 0;
         assert {:msg "  Loop invariant 0 <= i might not be preserved. Assertion 0 <= i might not hold. (0138.vpr@41.15--41.21) [217196]"}

@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-29 20:06:54
+; Started: 2025-01-04 00:36:08
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -687,11 +687,11 @@
 (assert (forall ((s@$ $Snap) (a@0@00 $Ref) (i@1@00 Int)) (!
   (= (loc%limited s@$ a@0@00 i@1@00) (loc s@$ a@0@00 i@1@00))
   :pattern ((loc s@$ a@0@00 i@1@00))
-  :qid |quant-u-25190|)))
+  :qid |quant-u-25205|)))
 (assert (forall ((s@$ $Snap) (a@0@00 $Ref) (i@1@00 Int)) (!
   (loc%stateless a@0@00 i@1@00)
   :pattern ((loc%limited s@$ a@0@00 i@1@00))
-  :qid |quant-u-25191|)))
+  :qid |quant-u-25206|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- foo ----------
@@ -724,7 +724,7 @@
 (assert (forall ((i@2@01 Int)) (!
   (and (= (inv@5@01 s@1@01 i@2@01) i@2@01) (img@6@01 s@1@01 i@2@01))
   :pattern (($FVF.loc_val ($FVF.lookup_val (as sm@3@01  $FVF<val>) (loc $Snap.unit s@1@01 i@2@01)) (loc $Snap.unit s@1@01 i@2@01)))
-  :qid |quant-u-25193|)))
+  :qid |quant-u-25208|)))
 (assert (forall ((s $Ref) (i Int)) (!
   (=> (img@6@01 s i) (and (= s@1@01 s) (= (inv@5@01 s i) i)))
   :pattern ((inv@5@01 s i))

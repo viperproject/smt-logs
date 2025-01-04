@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-29 20:16:58
+// Date:         2025-01-04 00:46:17
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/issues/issue_0078-working.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/issues/issue_0078-working-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -585,13 +585,13 @@ procedure inv#definedness(this: Ref) returns ()
 procedure goo() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var x: Ref;
   var t_2: Ref;
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newVersion: FrameType;
   var QPMask: MaskType;
   var ExhaleHeap: HeapType;
@@ -604,8 +604,8 @@ procedure goo() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[x, $allocated];
@@ -621,8 +621,8 @@ procedure goo() returns ()
   // -- Translating statement: unfold acc(inv(t), write) -- issue_0078-working.vpr@18.3--18.21
     assume inv#trigger(Heap, inv(t_2));
     assume Heap[null, inv(t_2)] == CombineFrames(FrameFragment(Heap[t_2, all]), CombineFrames(FrameFragment(inv#condqp1(Heap, t_2)), FrameFragment(inv#condqp2(Heap, t_2))));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding inv(t) might fail. There might be insufficient permission to access inv(t) (issue_0078-working.vpr@18.3--18.21) [70672]"}
@@ -737,8 +737,8 @@ procedure goo() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(x.left, write) -- issue_0078-working.vpr@20.3--20.21
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Exhale might fail. There might be insufficient permission to access x.left (issue_0078-working.vpr@20.10--20.21) [70681]"}
@@ -759,14 +759,14 @@ procedure goo() returns ()
 procedure doo() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var y: Ref;
   var z: Ref;
   var x: (Set Ref);
   var QPMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -776,8 +776,8 @@ procedure doo() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[y, $allocated];
@@ -840,8 +840,8 @@ procedure doo() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert y.left == z.left -- issue_0078-working.vpr@32.3--32.26
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of y.left == z.left
       assert {:msg "  Assert might fail. There might be insufficient permission to access y.left (issue_0078-working.vpr@32.10--32.26) [70684]"}

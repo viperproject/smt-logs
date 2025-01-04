@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-29 19:54:34
+; Started: 2025-01-04 00:23:25
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -2534,75 +2534,75 @@
 (assert (forall ((s@$ $Snap) (self@0@00 $Ref)) (!
   (= (str___val__%limited s@$ self@0@00) (str___val__ s@$ self@0@00))
   :pattern ((str___val__ s@$ self@0@00))
-  :qid |quant-u-3164|)))
+  :qid |quant-u-3228|)))
 (assert (forall ((s@$ $Snap) (self@0@00 $Ref)) (!
   (str___val__%stateless self@0@00)
   :pattern ((str___val__%limited s@$ self@0@00))
-  :qid |quant-u-3165|)))
+  :qid |quant-u-3229|)))
 (assert (forall ((s@$ $Snap) (self@2@00 $Ref)) (!
   (= (str___len__%limited s@$ self@2@00) (str___len__ s@$ self@2@00))
   :pattern ((str___len__ s@$ self@2@00))
-  :qid |quant-u-3166|)))
+  :qid |quant-u-3230|)))
 (assert (forall ((s@$ $Snap) (self@2@00 $Ref)) (!
   (str___len__%stateless self@2@00)
   :pattern ((str___len__%limited s@$ self@2@00))
-  :qid |quant-u-3167|)))
+  :qid |quant-u-3231|)))
 (assert (forall ((s@$ $Snap) (self@2@00 $Ref)) (!
   (let ((result@3@00 (str___len__%limited s@$ self@2@00))) (=>
     (str___len__%precondition s@$ self@2@00)
     (>= result@3@00 0)))
   :pattern ((str___len__%limited s@$ self@2@00))
-  :qid |quant-u-3206|)))
+  :qid |quant-u-3270|)))
 (assert (forall ((s@$ $Snap) (self@2@00 $Ref)) (!
   (let ((result@3@00 (str___len__%limited s@$ self@2@00))) true)
   :pattern ((str___len__%limited s@$ self@2@00))
-  :qid |quant-u-3207|)))
+  :qid |quant-u-3271|)))
 (assert (forall ((s@$ $Snap) (box@4@00 $Ref)) (!
   (= (PSeq___sil_seq__%limited s@$ box@4@00) (PSeq___sil_seq__ s@$ box@4@00))
   :pattern ((PSeq___sil_seq__ s@$ box@4@00))
-  :qid |quant-u-3168|)))
+  :qid |quant-u-3232|)))
 (assert (forall ((s@$ $Snap) (box@4@00 $Ref)) (!
   (PSeq___sil_seq__%stateless box@4@00)
   :pattern ((PSeq___sil_seq__%limited s@$ box@4@00))
-  :qid |quant-u-3169|)))
+  :qid |quant-u-3233|)))
 (assert (forall ((s@$ $Snap) (id@6@00 Int)) (!
   (= (_isDefined%limited s@$ id@6@00) (_isDefined s@$ id@6@00))
   :pattern ((_isDefined s@$ id@6@00))
-  :qid |quant-u-3170|)))
+  :qid |quant-u-3234|)))
 (assert (forall ((s@$ $Snap) (id@6@00 Int)) (!
   (_isDefined%stateless id@6@00)
   :pattern ((_isDefined%limited s@$ id@6@00))
-  :qid |quant-u-3171|)))
+  :qid |quant-u-3235|)))
 (assert (forall ((s@$ $Snap) (box@8@00 $Ref)) (!
   (= (bool___unbox__%limited s@$ box@8@00) (bool___unbox__ s@$ box@8@00))
   :pattern ((bool___unbox__ s@$ box@8@00))
-  :qid |quant-u-3172|)))
+  :qid |quant-u-3236|)))
 (assert (forall ((s@$ $Snap) (box@8@00 $Ref)) (!
   (bool___unbox__%stateless box@8@00)
   :pattern ((bool___unbox__%limited s@$ box@8@00))
-  :qid |quant-u-3173|)))
+  :qid |quant-u-3237|)))
 (assert (forall ((s@$ $Snap) (box@8@00 $Ref)) (!
   (let ((result@9@00 (bool___unbox__%limited s@$ box@8@00))) (=>
     (bool___unbox__%precondition s@$ box@8@00)
     (= (__prim__bool___box__%limited $Snap.unit result@9@00) box@8@00)))
   :pattern ((bool___unbox__%limited s@$ box@8@00))
-  :qid |quant-u-3208|)))
+  :qid |quant-u-3272|)))
 (assert (forall ((s@$ $Snap) (box@8@00 $Ref)) (!
   (let ((result@9@00 (bool___unbox__%limited s@$ box@8@00))) (=>
     (bool___unbox__%precondition s@$ box@8@00)
     (__prim__bool___box__%precondition $Snap.unit result@9@00)))
   :pattern ((bool___unbox__%limited s@$ box@8@00))
-  :qid |quant-u-3209|)))
+  :qid |quant-u-3273|)))
 (assert (forall ((s@$ $Snap) (prim@10@00 Bool)) (!
   (=
     (__prim__bool___box__%limited s@$ prim@10@00)
     (__prim__bool___box__ s@$ prim@10@00))
   :pattern ((__prim__bool___box__ s@$ prim@10@00))
-  :qid |quant-u-3174|)))
+  :qid |quant-u-3238|)))
 (assert (forall ((s@$ $Snap) (prim@10@00 Bool)) (!
   (__prim__bool___box__%stateless prim@10@00)
   :pattern ((__prim__bool___box__%limited s@$ prim@10@00))
-  :qid |quant-u-3175|)))
+  :qid |quant-u-3239|)))
 (assert (forall ((s@$ $Snap) (prim@10@00 Bool)) (!
   (let ((result@11@00 (__prim__bool___box__%limited s@$ prim@10@00))) (=>
     (__prim__bool___box__%precondition s@$ prim@10@00)
@@ -2611,31 +2611,31 @@
       (= (bool___unbox__%limited $Snap.unit result@11@00) prim@10@00)
       (= (int___unbox__%limited $Snap.unit result@11@00) (ite prim@10@00 1 0)))))
   :pattern ((__prim__bool___box__%limited s@$ prim@10@00))
-  :qid |quant-u-3210|)))
+  :qid |quant-u-3274|)))
 (assert (forall ((s@$ $Snap) (prim@10@00 Bool)) (!
   (let ((result@11@00 (__prim__bool___box__%limited s@$ prim@10@00))) true)
   :pattern ((__prim__bool___box__%limited s@$ prim@10@00))
-  :qid |quant-u-3211|)))
+  :qid |quant-u-3275|)))
 (assert (forall ((s@$ $Snap) (prim@10@00 Bool)) (!
   (let ((result@11@00 (__prim__bool___box__%limited s@$ prim@10@00))) (=>
     (__prim__bool___box__%precondition s@$ prim@10@00)
     (bool___unbox__%precondition $Snap.unit result@11@00)))
   :pattern ((__prim__bool___box__%limited s@$ prim@10@00))
-  :qid |quant-u-3212|)))
+  :qid |quant-u-3276|)))
 (assert (forall ((s@$ $Snap) (prim@10@00 Bool)) (!
   (let ((result@11@00 (__prim__bool___box__%limited s@$ prim@10@00))) (=>
     (__prim__bool___box__%precondition s@$ prim@10@00)
     (int___unbox__%precondition $Snap.unit result@11@00)))
   :pattern ((__prim__bool___box__%limited s@$ prim@10@00))
-  :qid |quant-u-3213|)))
+  :qid |quant-u-3277|)))
 (assert (forall ((s@$ $Snap) (box@12@00 $Ref)) (!
   (= (int___unbox__%limited s@$ box@12@00) (int___unbox__ s@$ box@12@00))
   :pattern ((int___unbox__ s@$ box@12@00))
-  :qid |quant-u-3176|)))
+  :qid |quant-u-3240|)))
 (assert (forall ((s@$ $Snap) (box@12@00 $Ref)) (!
   (int___unbox__%stateless box@12@00)
   :pattern ((int___unbox__%limited s@$ box@12@00))
-  :qid |quant-u-3177|)))
+  :qid |quant-u-3241|)))
 (assert (forall ((s@$ $Snap) (box@12@00 $Ref)) (!
   (let ((result@13@00 (int___unbox__%limited s@$ box@12@00))) (=>
     (int___unbox__%precondition s@$ box@12@00)
@@ -2650,7 +2650,7 @@
           (__prim__bool___box__%limited $Snap.unit (not (= result@13@00 0)))
           box@12@00)))))
   :pattern ((int___unbox__%limited s@$ box@12@00))
-  :qid |quant-u-3214|)))
+  :qid |quant-u-3278|)))
 (assert (forall ((s@$ $Snap) (box@12@00 $Ref)) (!
   (let ((result@13@00 (int___unbox__%limited s@$ box@12@00))) (=>
     (and
@@ -2659,7 +2659,7 @@
         (issubtype<Bool> (typeof<PyType> box@12@00) (as bool<PyType>  PyType))))
     (__prim__int___box__%precondition $Snap.unit result@13@00)))
   :pattern ((int___unbox__%limited s@$ box@12@00))
-  :qid |quant-u-3215|)))
+  :qid |quant-u-3279|)))
 (assert (forall ((s@$ $Snap) (box@12@00 $Ref)) (!
   (let ((result@13@00 (int___unbox__%limited s@$ box@12@00))) (=>
     (and
@@ -2667,17 +2667,17 @@
       (issubtype<Bool> (typeof<PyType> box@12@00) (as bool<PyType>  PyType)))
     (__prim__bool___box__%precondition $Snap.unit (not (= result@13@00 0)))))
   :pattern ((int___unbox__%limited s@$ box@12@00))
-  :qid |quant-u-3216|)))
+  :qid |quant-u-3280|)))
 (assert (forall ((s@$ $Snap) (prim@14@00 Int)) (!
   (=
     (__prim__int___box__%limited s@$ prim@14@00)
     (__prim__int___box__ s@$ prim@14@00))
   :pattern ((__prim__int___box__ s@$ prim@14@00))
-  :qid |quant-u-3178|)))
+  :qid |quant-u-3242|)))
 (assert (forall ((s@$ $Snap) (prim@14@00 Int)) (!
   (__prim__int___box__%stateless prim@14@00)
   :pattern ((__prim__int___box__%limited s@$ prim@14@00))
-  :qid |quant-u-3179|)))
+  :qid |quant-u-3243|)))
 (assert (forall ((s@$ $Snap) (prim@14@00 Int)) (!
   (let ((result@15@00 (__prim__int___box__%limited s@$ prim@14@00))) (=>
     (__prim__int___box__%precondition s@$ prim@14@00)
@@ -2685,33 +2685,33 @@
       (= (typeof<PyType> result@15@00) (as int<PyType>  PyType))
       (= (int___unbox__%limited $Snap.unit result@15@00) prim@14@00))))
   :pattern ((__prim__int___box__%limited s@$ prim@14@00))
-  :qid |quant-u-3217|)))
+  :qid |quant-u-3281|)))
 (assert (forall ((s@$ $Snap) (prim@14@00 Int)) (!
   (let ((result@15@00 (__prim__int___box__%limited s@$ prim@14@00))) true)
   :pattern ((__prim__int___box__%limited s@$ prim@14@00))
-  :qid |quant-u-3218|)))
+  :qid |quant-u-3282|)))
 (assert (forall ((s@$ $Snap) (prim@14@00 Int)) (!
   (let ((result@15@00 (__prim__int___box__%limited s@$ prim@14@00))) (=>
     (__prim__int___box__%precondition s@$ prim@14@00)
     (int___unbox__%precondition $Snap.unit result@15@00)))
   :pattern ((__prim__int___box__%limited s@$ prim@14@00))
-  :qid |quant-u-3219|)))
+  :qid |quant-u-3283|)))
 (assert (forall ((s@$ $Snap) (r@16@00 $Ref)) (!
   (= (Level%limited s@$ r@16@00) (Level s@$ r@16@00))
   :pattern ((Level s@$ r@16@00))
-  :qid |quant-u-3180|)))
+  :qid |quant-u-3244|)))
 (assert (forall ((s@$ $Snap) (r@16@00 $Ref)) (!
   (Level%stateless r@16@00)
   :pattern ((Level%limited s@$ r@16@00))
-  :qid |quant-u-3181|)))
+  :qid |quant-u-3245|)))
 (assert (forall ((s@$ $Snap) (self@18@00 $Ref)) (!
   (= (list___sil_seq__%limited s@$ self@18@00) (list___sil_seq__ s@$ self@18@00))
   :pattern ((list___sil_seq__ s@$ self@18@00))
-  :qid |quant-u-3182|)))
+  :qid |quant-u-3246|)))
 (assert (forall ((s@$ $Snap) (self@18@00 $Ref)) (!
   (list___sil_seq__%stateless self@18@00)
   :pattern ((list___sil_seq__%limited s@$ self@18@00))
-  :qid |quant-u-3183|)))
+  :qid |quant-u-3247|)))
 (assert (forall ((s@$ $Snap) (self@18@00 $Ref)) (!
   (and
     ($Perm.isReadVar $k@52@00)
@@ -2719,21 +2719,21 @@
       (list___sil_seq__%precondition s@$ self@18@00)
       (= (list___sil_seq__ s@$ self@18@00) ($SortWrappers.$SnapToSeq<$Ref> s@$))))
   :pattern ((list___sil_seq__ s@$ self@18@00))
-  :qid |quant-u-3220|)))
+  :qid |quant-u-3284|)))
 (assert (forall ((s@$ $Snap) (self@18@00 $Ref)) (!
   true
   :pattern ((list___sil_seq__ s@$ self@18@00))
-  :qid |quant-u-3221|)))
+  :qid |quant-u-3285|)))
 (assert (forall ((s@$ $Snap) (len@20@00 Int) (value@21@00 Int)) (!
   (=
     (str___create__%limited s@$ len@20@00 value@21@00)
     (str___create__ s@$ len@20@00 value@21@00))
   :pattern ((str___create__ s@$ len@20@00 value@21@00))
-  :qid |quant-u-3184|)))
+  :qid |quant-u-3248|)))
 (assert (forall ((s@$ $Snap) (len@20@00 Int) (value@21@00 Int)) (!
   (str___create__%stateless len@20@00 value@21@00)
   :pattern ((str___create__%limited s@$ len@20@00 value@21@00))
-  :qid |quant-u-3185|)))
+  :qid |quant-u-3249|)))
 (assert (forall ((s@$ $Snap) (len@20@00 Int) (value@21@00 Int)) (!
   (let ((result@22@00 (str___create__%limited s@$ len@20@00 value@21@00))) (=>
     (str___create__%precondition s@$ len@20@00 value@21@00)
@@ -2742,33 +2742,33 @@
       (= (str___val__ $Snap.unit result@22@00) value@21@00)
       (= (typeof<PyType> result@22@00) (as str<PyType>  PyType)))))
   :pattern ((str___create__%limited s@$ len@20@00 value@21@00))
-  :qid |quant-u-3222|)))
+  :qid |quant-u-3286|)))
 (assert (forall ((s@$ $Snap) (len@20@00 Int) (value@21@00 Int)) (!
   (let ((result@22@00 (str___create__%limited s@$ len@20@00 value@21@00))) (=>
     (str___create__%precondition s@$ len@20@00 value@21@00)
     (str___len__%precondition $Snap.unit result@22@00)))
   :pattern ((str___create__%limited s@$ len@20@00 value@21@00))
-  :qid |quant-u-3223|)))
+  :qid |quant-u-3287|)))
 (assert (forall ((s@$ $Snap) (len@20@00 Int) (value@21@00 Int)) (!
   (let ((result@22@00 (str___create__%limited s@$ len@20@00 value@21@00))) (=>
     (str___create__%precondition s@$ len@20@00 value@21@00)
     (str___val__%precondition $Snap.unit result@22@00)))
   :pattern ((str___create__%limited s@$ len@20@00 value@21@00))
-  :qid |quant-u-3224|)))
+  :qid |quant-u-3288|)))
 (assert (forall ((s@$ $Snap) (len@20@00 Int) (value@21@00 Int)) (!
   (let ((result@22@00 (str___create__%limited s@$ len@20@00 value@21@00))) true)
   :pattern ((str___create__%limited s@$ len@20@00 value@21@00))
-  :qid |quant-u-3225|)))
+  :qid |quant-u-3289|)))
 (assert (forall ((s@$ $Snap) (prim@23@00 Seq<$Ref>) (cont_type@24@00 PyType)) (!
   (=
     (PSeq___create__%limited s@$ prim@23@00 cont_type@24@00)
     (PSeq___create__ s@$ prim@23@00 cont_type@24@00))
   :pattern ((PSeq___create__ s@$ prim@23@00 cont_type@24@00))
-  :qid |quant-u-3186|)))
+  :qid |quant-u-3250|)))
 (assert (forall ((s@$ $Snap) (prim@23@00 Seq<$Ref>) (cont_type@24@00 PyType)) (!
   (PSeq___create__%stateless prim@23@00 cont_type@24@00)
   :pattern ((PSeq___create__%limited s@$ prim@23@00 cont_type@24@00))
-  :qid |quant-u-3187|)))
+  :qid |quant-u-3251|)))
 (assert (forall ((s@$ $Snap) (prim@23@00 Seq<$Ref>) (cont_type@24@00 PyType)) (!
   (let ((result@25@00 (PSeq___create__%limited s@$ prim@23@00 cont_type@24@00))) (=>
     (PSeq___create__%precondition s@$ prim@23@00 cont_type@24@00)
@@ -2776,27 +2776,27 @@
       (= (typeof<PyType> result@25@00) (PSeq<PyType> cont_type@24@00))
       (Seq_equal (PSeq___sil_seq__ $Snap.unit result@25@00) prim@23@00))))
   :pattern ((PSeq___create__%limited s@$ prim@23@00 cont_type@24@00))
-  :qid |quant-u-3226|)))
+  :qid |quant-u-3290|)))
 (assert (forall ((s@$ $Snap) (prim@23@00 Seq<$Ref>) (cont_type@24@00 PyType)) (!
   (let ((result@25@00 (PSeq___create__%limited s@$ prim@23@00 cont_type@24@00))) true)
   :pattern ((PSeq___create__%limited s@$ prim@23@00 cont_type@24@00))
-  :qid |quant-u-3227|)))
+  :qid |quant-u-3291|)))
 (assert (forall ((s@$ $Snap) (prim@23@00 Seq<$Ref>) (cont_type@24@00 PyType)) (!
   (let ((result@25@00 (PSeq___create__%limited s@$ prim@23@00 cont_type@24@00))) (=>
     (PSeq___create__%precondition s@$ prim@23@00 cont_type@24@00)
     (PSeq___sil_seq__%precondition $Snap.unit result@25@00)))
   :pattern ((PSeq___create__%limited s@$ prim@23@00 cont_type@24@00))
-  :qid |quant-u-3228|)))
+  :qid |quant-u-3292|)))
 (assert (forall ((s@$ $Snap) (map@26@00 Seq<Measure$>) (key@27@00 $Ref) (value@28@00 Int)) (!
   (=
     (Measure$check%limited s@$ map@26@00 key@27@00 value@28@00)
     (Measure$check s@$ map@26@00 key@27@00 value@28@00))
   :pattern ((Measure$check s@$ map@26@00 key@27@00 value@28@00))
-  :qid |quant-u-3188|)))
+  :qid |quant-u-3252|)))
 (assert (forall ((s@$ $Snap) (map@26@00 Seq<Measure$>) (key@27@00 $Ref) (value@28@00 Int)) (!
   (Measure$check%stateless map@26@00 key@27@00 value@28@00)
   :pattern ((Measure$check%limited s@$ map@26@00 key@27@00 value@28@00))
-  :qid |quant-u-3189|)))
+  :qid |quant-u-3253|)))
 (assert (forall ((s@$ $Snap) (map@26@00 Seq<Measure$>) (key@27@00 $Ref) (value@28@00 Int)) (!
   (=>
     (Measure$check%precondition s@$ map@26@00 key@27@00 value@28@00)
@@ -2813,21 +2813,21 @@
         :pattern ((Seq_contains_trigger map@26@00 m))
         ))))
   :pattern ((Measure$check s@$ map@26@00 key@27@00 value@28@00))
-  :qid |quant-u-3229|)))
+  :qid |quant-u-3293|)))
 (assert (forall ((s@$ $Snap) (map@26@00 Seq<Measure$>) (key@27@00 $Ref) (value@28@00 Int)) (!
   true
   :pattern ((Measure$check s@$ map@26@00 key@27@00 value@28@00))
-  :qid |quant-u-3230|)))
+  :qid |quant-u-3294|)))
 (assert (forall ((s@$ $Snap) (self@30@00 $Ref) (other@31@00 $Ref)) (!
   (=
     (str___eq__%limited s@$ self@30@00 other@31@00)
     (str___eq__ s@$ self@30@00 other@31@00))
   :pattern ((str___eq__ s@$ self@30@00 other@31@00))
-  :qid |quant-u-3190|)))
+  :qid |quant-u-3254|)))
 (assert (forall ((s@$ $Snap) (self@30@00 $Ref) (other@31@00 $Ref)) (!
   (str___eq__%stateless self@30@00 other@31@00)
   :pattern ((str___eq__%limited s@$ self@30@00 other@31@00))
-  :qid |quant-u-3191|)))
+  :qid |quant-u-3255|)))
 (assert (forall ((s@$ $Snap) (self@30@00 $Ref) (other@31@00 $Ref)) (!
   (let ((result@32@00 (str___eq__%limited s@$ self@30@00 other@31@00))) (=>
     (str___eq__%precondition s@$ self@30@00 other@31@00)
@@ -2843,7 +2843,7 @@
           (str___len__ $Snap.unit self@30@00)
           (str___len__ $Snap.unit other@31@00))))))
   :pattern ((str___eq__%limited s@$ self@30@00 other@31@00))
-  :qid |quant-u-3231|)))
+  :qid |quant-u-3295|)))
 (assert (forall ((s@$ $Snap) (self@30@00 $Ref) (other@31@00 $Ref)) (!
   (let ((result@32@00 (str___eq__%limited s@$ self@30@00 other@31@00))) (=>
     (str___eq__%precondition s@$ self@30@00 other@31@00)
@@ -2851,7 +2851,7 @@
       (str___val__%precondition $Snap.unit self@30@00)
       (str___val__%precondition $Snap.unit other@31@00))))
   :pattern ((str___eq__%limited s@$ self@30@00 other@31@00))
-  :qid |quant-u-3232|)))
+  :qid |quant-u-3296|)))
 (assert (forall ((s@$ $Snap) (self@30@00 $Ref) (other@31@00 $Ref)) (!
   (let ((result@32@00 (str___eq__%limited s@$ self@30@00 other@31@00))) (=>
     (and (str___eq__%precondition s@$ self@30@00 other@31@00) result@32@00)
@@ -2859,15 +2859,15 @@
       (str___len__%precondition $Snap.unit self@30@00)
       (str___len__%precondition $Snap.unit other@31@00))))
   :pattern ((str___eq__%limited s@$ self@30@00 other@31@00))
-  :qid |quant-u-3233|)))
+  :qid |quant-u-3297|)))
 (assert (forall ((s@$ $Snap) (self@33@00 $Ref)) (!
   (= (set___sil_seq__%limited s@$ self@33@00) (set___sil_seq__ s@$ self@33@00))
   :pattern ((set___sil_seq__ s@$ self@33@00))
-  :qid |quant-u-3192|)))
+  :qid |quant-u-3256|)))
 (assert (forall ((s@$ $Snap) (self@33@00 $Ref)) (!
   (set___sil_seq__%stateless self@33@00)
   :pattern ((set___sil_seq__%limited s@$ self@33@00))
-  :qid |quant-u-3193|)))
+  :qid |quant-u-3257|)))
 (assert (forall ((s@$ $Snap) (self@33@00 $Ref)) (!
   (let ((result@34@00 (set___sil_seq__%limited s@$ self@33@00))) (and
     ($Perm.isReadVar $k@57@00)
@@ -2901,39 +2901,39 @@
           :pattern ((Seq_contains_trigger result@34@00 r))
           ))))))
   :pattern ((set___sil_seq__%limited s@$ self@33@00))
-  :qid |quant-u-3234|)))
+  :qid |quant-u-3298|)))
 (assert (forall ((s@$ $Snap) (self@33@00 $Ref)) (!
   (let ((result@34@00 (set___sil_seq__%limited s@$ self@33@00))) true)
   :pattern ((set___sil_seq__%limited s@$ self@33@00))
-  :qid |quant-u-3235|)))
+  :qid |quant-u-3299|)))
 (assert (forall ((s@$ $Snap) (self@33@00 $Ref)) (!
   (let ((result@34@00 (set___sil_seq__%limited s@$ self@33@00))) true)
   :pattern ((set___sil_seq__%limited s@$ self@33@00))
-  :qid |quant-u-3236|)))
+  :qid |quant-u-3300|)))
 (assert (forall ((s@$ $Snap) (self@33@00 $Ref)) (!
   (let ((result@34@00 (set___sil_seq__%limited s@$ self@33@00))) true)
   :pattern ((set___sil_seq__%limited s@$ self@33@00))
-  :qid |quant-u-3237|)))
+  :qid |quant-u-3301|)))
 (assert (forall ((s@$ $Snap) (self@33@00 $Ref)) (!
   (let ((result@34@00 (set___sil_seq__%limited s@$ self@33@00))) true)
   :pattern ((set___sil_seq__%limited s@$ self@33@00))
-  :qid |quant-u-3238|)))
+  :qid |quant-u-3302|)))
 (assert (forall ((s@$ $Snap)) (!
   (= (__file__%limited s@$) (__file__ s@$))
   :pattern ((__file__ s@$))
-  :qid |quant-u-3194|)))
+  :qid |quant-u-3258|)))
 (assert (forall ((s@$ $Snap)) (!
   (as __file__%stateless  Bool)
   :pattern ((__file__%limited s@$))
-  :qid |quant-u-3195|)))
+  :qid |quant-u-3259|)))
 (assert (forall ((s@$ $Snap) (self@36@00 $Ref)) (!
   (= (list___len__%limited s@$ self@36@00) (list___len__ s@$ self@36@00))
   :pattern ((list___len__ s@$ self@36@00))
-  :qid |quant-u-3196|)))
+  :qid |quant-u-3260|)))
 (assert (forall ((s@$ $Snap) (self@36@00 $Ref)) (!
   (list___len__%stateless self@36@00)
   :pattern ((list___len__%limited s@$ self@36@00))
-  :qid |quant-u-3197|)))
+  :qid |quant-u-3261|)))
 (assert (forall ((s@$ $Snap) (self@36@00 $Ref)) (!
   (and
     ($Perm.isReadVar $k@62@00)
@@ -2943,61 +2943,61 @@
         (list___len__ s@$ self@36@00)
         (Seq_length ($SortWrappers.$SnapToSeq<$Ref> ($Snap.second s@$))))))
   :pattern ((list___len__ s@$ self@36@00))
-  :qid |quant-u-3239|)))
+  :qid |quant-u-3303|)))
 (assert (forall ((s@$ $Snap) (self@36@00 $Ref)) (!
   true
   :pattern ((list___len__ s@$ self@36@00))
-  :qid |quant-u-3240|)))
+  :qid |quant-u-3304|)))
 (assert (forall ((s@$ $Snap) (self@38@00 $Ref)) (!
   (= (PSeq___len__%limited s@$ self@38@00) (PSeq___len__ s@$ self@38@00))
   :pattern ((PSeq___len__ s@$ self@38@00))
-  :qid |quant-u-3198|)))
+  :qid |quant-u-3262|)))
 (assert (forall ((s@$ $Snap) (self@38@00 $Ref)) (!
   (PSeq___len__%stateless self@38@00)
   :pattern ((PSeq___len__%limited s@$ self@38@00))
-  :qid |quant-u-3199|)))
+  :qid |quant-u-3263|)))
 (assert (forall ((s@$ $Snap) (self@38@00 $Ref)) (!
   (let ((result@39@00 (PSeq___len__%limited s@$ self@38@00))) (=>
     (PSeq___len__%precondition s@$ self@38@00)
     (= result@39@00 (Seq_length (PSeq___sil_seq__ $Snap.unit self@38@00)))))
   :pattern ((PSeq___len__%limited s@$ self@38@00))
-  :qid |quant-u-3241|)))
+  :qid |quant-u-3305|)))
 (assert (forall ((s@$ $Snap) (self@38@00 $Ref)) (!
   (let ((result@39@00 (PSeq___len__%limited s@$ self@38@00))) (=>
     (PSeq___len__%precondition s@$ self@38@00)
     (PSeq___sil_seq__%precondition $Snap.unit self@38@00)))
   :pattern ((PSeq___len__%limited s@$ self@38@00))
-  :qid |quant-u-3242|)))
+  :qid |quant-u-3306|)))
 (assert (forall ((s@$ $Snap) (val@40@00 $Ref) (id@41@00 Int)) (!
   (=
     (_checkDefined%limited s@$ val@40@00 id@41@00)
     (_checkDefined s@$ val@40@00 id@41@00))
   :pattern ((_checkDefined s@$ val@40@00 id@41@00))
-  :qid |quant-u-3200|)))
+  :qid |quant-u-3264|)))
 (assert (forall ((s@$ $Snap) (val@40@00 $Ref) (id@41@00 Int)) (!
   (_checkDefined%stateless val@40@00 id@41@00)
   :pattern ((_checkDefined%limited s@$ val@40@00 id@41@00))
-  :qid |quant-u-3201|)))
+  :qid |quant-u-3265|)))
 (assert (forall ((s@$ $Snap) (val@40@00 $Ref) (id@41@00 Int)) (!
   (=>
     (_checkDefined%precondition s@$ val@40@00 id@41@00)
     (= (_checkDefined s@$ val@40@00 id@41@00) val@40@00))
   :pattern ((_checkDefined s@$ val@40@00 id@41@00))
-  :qid |quant-u-3243|)))
+  :qid |quant-u-3307|)))
 (assert (forall ((s@$ $Snap) (val@40@00 $Ref) (id@41@00 Int)) (!
   true
   :pattern ((_checkDefined s@$ val@40@00 id@41@00))
-  :qid |quant-u-3244|)))
+  :qid |quant-u-3308|)))
 (assert (forall ((s@$ $Snap) (self@43@00 $Ref) (other@44@00 $Ref)) (!
   (=
     (int___eq__%limited s@$ self@43@00 other@44@00)
     (int___eq__ s@$ self@43@00 other@44@00))
   :pattern ((int___eq__ s@$ self@43@00 other@44@00))
-  :qid |quant-u-3202|)))
+  :qid |quant-u-3266|)))
 (assert (forall ((s@$ $Snap) (self@43@00 $Ref) (other@44@00 $Ref)) (!
   (int___eq__%stateless self@43@00 other@44@00)
   :pattern ((int___eq__%limited s@$ self@43@00 other@44@00))
-  :qid |quant-u-3203|)))
+  :qid |quant-u-3267|)))
 (assert (forall ((s@$ $Snap) (self@43@00 $Ref) (other@44@00 $Ref)) (!
   (=>
     (int___eq__%precondition s@$ self@43@00 other@44@00)
@@ -3007,7 +3007,7 @@
         (int___unbox__ $Snap.unit self@43@00)
         (int___unbox__ $Snap.unit other@44@00))))
   :pattern ((int___eq__ s@$ self@43@00 other@44@00))
-  :qid |quant-u-3245|)))
+  :qid |quant-u-3309|)))
 (assert (forall ((s@$ $Snap) (self@43@00 $Ref) (other@44@00 $Ref)) (!
   (=>
     (int___eq__%precondition s@$ self@43@00 other@44@00)
@@ -3015,15 +3015,15 @@
       (int___unbox__%precondition $Snap.unit self@43@00)
       (int___unbox__%precondition $Snap.unit other@44@00)))
   :pattern ((int___eq__ s@$ self@43@00 other@44@00))
-  :qid |quant-u-3246|)))
+  :qid |quant-u-3310|)))
 (assert (forall ((s@$ $Snap)) (!
   (= (__name__%limited s@$) (__name__ s@$))
   :pattern ((__name__ s@$))
-  :qid |quant-u-3204|)))
+  :qid |quant-u-3268|)))
 (assert (forall ((s@$ $Snap)) (!
   (as __name__%stateless  Bool)
   :pattern ((__name__%limited s@$))
-  :qid |quant-u-3205|)))
+  :qid |quant-u-3269|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- set_loop ----------
@@ -3342,7 +3342,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (= r res@31@01) (= (- $Perm.Write (pTaken@35@01 r)) $Perm.No))
   
-  :qid |quant-u-3249|))))
+  :qid |quant-u-3313|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -3772,7 +3772,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (= r res@46@01) (= (- $Perm.Write (pTaken@52@01 r)) $Perm.No))
   
-  :qid |quant-u-3252|))))
+  :qid |quant-u-3316|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -3845,7 +3845,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (= r res@39@01) (= (- $Perm.Write (pTaken@56@01 r)) $Perm.No))
   
-  :qid |quant-u-3255|))))
+  :qid |quant-u-3319|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -3965,7 +3965,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@62@01 r) $Perm.No)
   
-  :qid |quant-u-3258|))))
+  :qid |quant-u-3322|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -3980,7 +3980,7 @@
     (= r iterable@61@01)
     (= (- (/ (to_real 1) (to_real 10)) (pTaken@62@01 r)) $Perm.No))
   
-  :qid |quant-u-3259|))))
+  :qid |quant-u-3323|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -4061,7 +4061,7 @@
   :pattern (($FVF.lookup_set_acc (as sm@59@01  $FVF<set_acc>) r))
   :pattern (($FVF.lookup_set_acc (as sm@68@01  $FVF<set_acc>) r))
   :pattern (($FVF.lookup_set_acc $t@69@01 r))
-  :qid |quant-u-3260|)))
+  :qid |quant-u-3324|)))
 (assert (not (= iterable@61@01 $Ref.null)))
 (assert (=
   ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@67@01))))))
@@ -4124,7 +4124,7 @@
         (ite (= r res@31@01) $Perm.Write $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-3261|))))
+  :qid |quant-u-3325|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -5754,7 +5754,7 @@
         (ite (= r res@31@01) $Perm.Write $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-3262|))))
+  :qid |quant-u-3326|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -5846,7 +5846,7 @@
     (and (= r iterable@61@01) (> $k@89@01 $Perm.No))
     (> (ite (= r iterable@61@01) (/ (to_real 1) (to_real 20)) $Perm.No) $Perm.No))
   
-  :qid |quant-u-3263|))))
+  :qid |quant-u-3327|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -5900,7 +5900,7 @@
     (and (= r iterable@61@01) (> $k@91@01 $Perm.No))
     (> (ite (= r iterable@61@01) (/ (to_real 1) (to_real 20)) $Perm.No) $Perm.No))
   
-  :qid |quant-u-3264|))))
+  :qid |quant-u-3328|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -6679,7 +6679,7 @@
     (issubtype<Bool> (typeof<PyType> lambda12_28$l@92@01) (set<PyType> (as int<PyType>  PyType)))
     (_checkDefined%precondition $Snap.unit res@39@01 97))
   :pattern ((Set_in lambda12_28$l@92@01 ($FVF.lookup_set_acc (as sm@90@01  $FVF<set_acc>) (_checkDefined $Snap.unit res@39@01 97))))
-  :qid |quant-u-3266|)))
+  :qid |quant-u-3330|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -6697,7 +6697,7 @@
       (= (inv@93@01 lambda12_28$l@92@01) lambda12_28$l@92@01)
       (img@94@01 lambda12_28$l@92@01)))
   :pattern ((Set_in lambda12_28$l@92@01 ($FVF.lookup_set_acc (as sm@90@01  $FVF<set_acc>) (_checkDefined $Snap.unit res@39@01 97))))
-  :qid |quant-u-3266|)))
+  :qid |quant-u-3330|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -6808,7 +6808,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@95@01 r) $Perm.No)
   
-  :qid |quant-u-3269|))))
+  :qid |quant-u-3333|))))
 (check-sat)
 ; unknown
 (pop) ; 5
@@ -6823,7 +6823,7 @@
     (= r iterable@61@01)
     (= (- (/ (to_real 1) (to_real 20)) (pTaken@95@01 r)) $Perm.No))
   
-  :qid |quant-u-3270|))))
+  :qid |quant-u-3334|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -6884,7 +6884,7 @@
         (ite (= r res@31@01) $Perm.Write $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-3271|))))
+  :qid |quant-u-3335|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -6947,7 +6947,7 @@
         (ite (= r res@31@01) $Perm.Write $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-3272|))))
+  :qid |quant-u-3336|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -7734,7 +7734,7 @@
       (= r (inv@101@01 r)))
     (= (- $Perm.Write (pTaken@103@01 r)) $Perm.No))
   
-  :qid |quant-u-3276|))))
+  :qid |quant-u-3340|))))
 (check-sat)
 ; unknown
 (pop) ; 5
@@ -7764,7 +7764,7 @@
       (= r (inv@101@01 r)))
     (= (- (- $Perm.Write (pTaken@103@01 r)) (pTaken@104@01 r)) $Perm.No))
   
-  :qid |quant-u-3278|))))
+  :qid |quant-u-3342|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -7917,7 +7917,7 @@
     (issubtype<Bool> (typeof<PyType> lambda12_28$l@92@01) (set<PyType> (as int<PyType>  PyType)))
     (_checkDefined%precondition $Snap.unit res@39@01 97))
   :pattern ((Set_in lambda12_28$l@92@01 ($FVF.lookup_set_acc (as sm@90@01  $FVF<set_acc>) (_checkDefined $Snap.unit res@39@01 97))))
-  :qid |quant-u-3266|)))
+  :qid |quant-u-3330|)))
 (assert (forall ((lambda12_28$l@92@01 $Ref)) (!
   (=>
     (and
@@ -7927,7 +7927,7 @@
       (= (inv@93@01 lambda12_28$l@92@01) lambda12_28$l@92@01)
       (img@94@01 lambda12_28$l@92@01)))
   :pattern ((Set_in lambda12_28$l@92@01 ($FVF.lookup_set_acc (as sm@90@01  $FVF<set_acc>) (_checkDefined $Snap.unit res@39@01 97))))
-  :qid |quant-u-3266|)))
+  :qid |quant-u-3330|)))
 (assert (forall ((lambda12_28$l@92@01 $Ref)) (!
   (=>
     (and
@@ -8412,11 +8412,11 @@
       (pTaken@106@01 r))
     $Perm.No)
   
-  :qid |quant-u-3280|))))
+  :qid |quant-u-3344|))))
 (check-sat)
 ; unknown
 (pop) ; 7
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 7
@@ -8424,7 +8424,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@106@01 r) $Perm.No)
   
-  :qid |quant-u-3281|))))
+  :qid |quant-u-3345|))))
 (check-sat)
 ; unknown
 (pop) ; 7
@@ -8439,7 +8439,7 @@
     (= r (_checkDefined $Snap.unit c@85@01 99))
     (= (- $Perm.Write (pTaken@106@01 r)) $Perm.No))
   
-  :qid |quant-u-3282|))))
+  :qid |quant-u-3346|))))
 (check-sat)
 ; unsat
 (pop) ; 7
@@ -8787,7 +8787,7 @@
 (check-sat)
 ; unknown
 (pop) ; 8
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 51 | _err@117@01 == Null | live]
 ; [else-branch: 51 | _err@117@01 != Null | live]
@@ -8840,7 +8840,7 @@
 (check-sat)
 ; unknown
 (pop) ; 8
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 52 | _err@117@01 == Null | live]
 ; [else-branch: 52 | _err@117@01 != Null | live]
@@ -10190,7 +10190,7 @@
     (= r iterable@61@01)
     (= (- (/ (to_real 1) (to_real 20)) (pTaken@121@01 r)) $Perm.No))
   
-  :qid |quant-u-3285|))))
+  :qid |quant-u-3349|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -10228,7 +10228,7 @@
         (ite (= r (_checkDefined $Snap.unit c@85@01 99)) $Perm.Write $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-3286|))))
+  :qid |quant-u-3350|))))
 (check-sat)
 ; unsat
 (pop) ; 9
@@ -10331,7 +10331,7 @@
         (ite (= r (_checkDefined $Snap.unit c@85@01 99)) $Perm.Write $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-3287|))))
+  :qid |quant-u-3351|))))
 (check-sat)
 ; unsat
 (pop) ; 9
@@ -11091,7 +11091,7 @@
       (pTaken@129@01 r))
     $Perm.No)
   
-  :qid |quant-u-3290|))))
+  :qid |quant-u-3354|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -11111,7 +11111,7 @@
       (= r (inv@127@01 r)))
     (= (- $Perm.Write (pTaken@129@01 r)) $Perm.No))
   
-  :qid |quant-u-3291|))))
+  :qid |quant-u-3355|))))
 (check-sat)
 ; unknown
 (pop) ; 8
@@ -11150,7 +11150,7 @@
       (= r (inv@127@01 r)))
     (= (- (- $Perm.Write (pTaken@129@01 r)) (pTaken@130@01 r)) $Perm.No))
   
-  :qid |quant-u-3293|))))
+  :qid |quant-u-3357|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -11328,7 +11328,7 @@
     (= r iterable@61@01)
     (= (- (/ (to_real 1) (to_real 20)) (pTaken@131@01 r)) $Perm.No))
   
-  :qid |quant-u-3296|))))
+  :qid |quant-u-3360|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -11366,7 +11366,7 @@
         (ite (= r (_checkDefined $Snap.unit c@85@01 99)) $Perm.Write $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-3297|))))
+  :qid |quant-u-3361|))))
 (check-sat)
 ; unsat
 (pop) ; 9
@@ -11469,7 +11469,7 @@
         (ite (= r (_checkDefined $Snap.unit c@85@01 99)) $Perm.Write $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-3298|))))
+  :qid |quant-u-3362|))))
 (check-sat)
 ; unsat
 (pop) ; 9
@@ -12201,7 +12201,7 @@
       (pTaken@139@01 r))
     $Perm.No)
   
-  :qid |quant-u-3301|))))
+  :qid |quant-u-3365|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -12221,7 +12221,7 @@
       (= r (inv@137@01 r)))
     (= (- $Perm.Write (pTaken@139@01 r)) $Perm.No))
   
-  :qid |quant-u-3302|))))
+  :qid |quant-u-3366|))))
 (check-sat)
 ; unknown
 (pop) ; 8
@@ -12260,7 +12260,7 @@
       (= r (inv@137@01 r)))
     (= (- (- $Perm.Write (pTaken@139@01 r)) (pTaken@140@01 r)) $Perm.No))
   
-  :qid |quant-u-3304|))))
+  :qid |quant-u-3368|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -12379,7 +12379,7 @@
   :pattern (($FVF.lookup_set_acc (as sm@88@01  $FVF<set_acc>) r))
   :pattern (($FVF.lookup_set_acc $t@69@01 r))
   :pattern (($FVF.lookup_set_acc $t@141@01 r))
-  :qid |quant-u-3305|)))
+  :qid |quant-u-3369|)))
 ; [eval] !(iter_err == null)
 ; [eval] iter_err == null
 (set-option :timeout 0)
@@ -12599,7 +12599,7 @@
   :pattern (($FVF.lookup_set_acc $t@141@01 r))
   :pattern (($FVF.lookup_set_acc (as sm@144@01  $FVF<set_acc>) r))
   :pattern (($FVF.lookup_set_acc $t@145@01 r))
-  :qid |quant-u-3306|)))
+  :qid |quant-u-3370|)))
 (assert (<=
   $Perm.No
   (ite
@@ -12878,7 +12878,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (= r res@147@01) (= (- $Perm.Write (pTaken@153@01 r)) $Perm.No))
   
-  :qid |quant-u-3309|))))
+  :qid |quant-u-3373|))))
 (check-sat)
 ; unsat
 (pop) ; 11
@@ -13005,7 +13005,7 @@
     (= r (_checkDefined $Snap.unit res@39@01 97))
     (= (- $Perm.Write (pTaken@157@01 r)) $Perm.No))
   
-  :qid |quant-u-3312|))))
+  :qid |quant-u-3376|))))
 (check-sat)
 ; unsat
 (pop) ; 11
@@ -13599,7 +13599,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (= r res@198@01) (= (- $Perm.Write (pTaken@202@01 r)) $Perm.No))
   
-  :qid |quant-u-3315|))))
+  :qid |quant-u-3379|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -14029,7 +14029,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (= r res@213@01) (= (- $Perm.Write (pTaken@219@01 r)) $Perm.No))
   
-  :qid |quant-u-3318|))))
+  :qid |quant-u-3382|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -14102,7 +14102,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (= r res@206@01) (= (- $Perm.Write (pTaken@223@01 r)) $Perm.No))
   
-  :qid |quant-u-3321|))))
+  :qid |quant-u-3385|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -14222,7 +14222,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@229@01 r) $Perm.No)
   
-  :qid |quant-u-3324|))))
+  :qid |quant-u-3388|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -14237,7 +14237,7 @@
     (= r iterable_0@228@01)
     (= (- (/ (to_real 1) (to_real 10)) (pTaken@229@01 r)) $Perm.No))
   
-  :qid |quant-u-3325|))))
+  :qid |quant-u-3389|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -14318,7 +14318,7 @@
   :pattern (($FVF.lookup_set_acc (as sm@226@01  $FVF<set_acc>) r))
   :pattern (($FVF.lookup_set_acc (as sm@235@01  $FVF<set_acc>) r))
   :pattern (($FVF.lookup_set_acc $t@236@01 r))
-  :qid |quant-u-3326|)))
+  :qid |quant-u-3390|)))
 (assert (not (= iterable_0@228@01 $Ref.null)))
 (assert (=
   ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@234@01))))))
@@ -14381,7 +14381,7 @@
         (ite (= r res@198@01) $Perm.Write $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-3327|))))
+  :qid |quant-u-3391|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -15004,7 +15004,7 @@
 (check-sat)
 ; unknown
 (pop) ; 4
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 120 | |First:(Second:(Second:(Second:(Second:($t@234@01)))))| > 0 | live]
 ; [else-branch: 120 | !(|First:(Second:(Second:(Second:(Second:($t@234@01)))))| > 0) | dead]
@@ -15923,7 +15923,7 @@
 (check-sat)
 ; unknown
 (pop) ; 3
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 3
@@ -16011,7 +16011,7 @@
         (ite (= r res@198@01) $Perm.Write $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-3328|))))
+  :qid |quant-u-3392|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -16105,7 +16105,7 @@
       (ite (= r iterable_0@228@01) (/ (to_real 1) (to_real 20)) $Perm.No)
       $Perm.No))
   
-  :qid |quant-u-3329|))))
+  :qid |quant-u-3393|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -16161,7 +16161,7 @@
       (ite (= r iterable_0@228@01) (/ (to_real 1) (to_real 20)) $Perm.No)
       $Perm.No))
   
-  :qid |quant-u-3330|))))
+  :qid |quant-u-3394|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -16722,7 +16722,7 @@
 (check-sat)
 ; unknown
 (pop) ; 6
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 6
@@ -16944,7 +16944,7 @@
     (issubtype<Bool> (typeof<PyType> lambda21_28$l@259@01) (set<PyType> (as int<PyType>  PyType)))
     (_checkDefined%precondition $Snap.unit res@206@01 3170145))
   :pattern ((Set_in lambda21_28$l@259@01 ($FVF.lookup_set_acc (as sm@257@01  $FVF<set_acc>) (_checkDefined $Snap.unit res@206@01 3170145))))
-  :qid |quant-u-3332|)))
+  :qid |quant-u-3396|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -16962,7 +16962,7 @@
       (= (inv@260@01 lambda21_28$l@259@01) lambda21_28$l@259@01)
       (img@261@01 lambda21_28$l@259@01)))
   :pattern ((Set_in lambda21_28$l@259@01 ($FVF.lookup_set_acc (as sm@257@01  $FVF<set_acc>) (_checkDefined $Snap.unit res@206@01 3170145))))
-  :qid |quant-u-3332|)))
+  :qid |quant-u-3396|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -17004,7 +17004,7 @@
 (check-sat)
 ; unknown
 (pop) ; 5
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 5
@@ -17073,7 +17073,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@262@01 r) $Perm.No)
   
-  :qid |quant-u-3335|))))
+  :qid |quant-u-3399|))))
 (check-sat)
 ; unknown
 (pop) ; 5
@@ -17088,7 +17088,7 @@
     (= r iterable_0@228@01)
     (= (- (/ (to_real 1) (to_real 20)) (pTaken@262@01 r)) $Perm.No))
   
-  :qid |quant-u-3336|))))
+  :qid |quant-u-3400|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -17149,7 +17149,7 @@
         (ite (= r res@198@01) $Perm.Write $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-3337|))))
+  :qid |quant-u-3401|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -17212,7 +17212,7 @@
         (ite (= r res@198@01) $Perm.Write $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-3338|))))
+  :qid |quant-u-3402|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -18001,7 +18001,7 @@
       (= r (inv@268@01 r)))
     (= (- $Perm.Write (pTaken@270@01 r)) $Perm.No))
   
-  :qid |quant-u-3342|))))
+  :qid |quant-u-3406|))))
 (check-sat)
 ; unknown
 (pop) ; 5
@@ -18031,7 +18031,7 @@
       (= r (inv@268@01 r)))
     (= (- (- $Perm.Write (pTaken@270@01 r)) (pTaken@271@01 r)) $Perm.No))
   
-  :qid |quant-u-3344|))))
+  :qid |quant-u-3408|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -18184,7 +18184,7 @@
     (issubtype<Bool> (typeof<PyType> lambda21_28$l@259@01) (set<PyType> (as int<PyType>  PyType)))
     (_checkDefined%precondition $Snap.unit res@206@01 3170145))
   :pattern ((Set_in lambda21_28$l@259@01 ($FVF.lookup_set_acc (as sm@257@01  $FVF<set_acc>) (_checkDefined $Snap.unit res@206@01 3170145))))
-  :qid |quant-u-3332|)))
+  :qid |quant-u-3396|)))
 (assert (forall ((lambda21_28$l@259@01 $Ref)) (!
   (=>
     (and
@@ -18194,7 +18194,7 @@
       (= (inv@260@01 lambda21_28$l@259@01) lambda21_28$l@259@01)
       (img@261@01 lambda21_28$l@259@01)))
   :pattern ((Set_in lambda21_28$l@259@01 ($FVF.lookup_set_acc (as sm@257@01  $FVF<set_acc>) (_checkDefined $Snap.unit res@206@01 3170145))))
-  :qid |quant-u-3332|)))
+  :qid |quant-u-3396|)))
 (assert (forall ((lambda21_28$l@259@01 $Ref)) (!
   (=>
     (and
@@ -18968,7 +18968,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (= r res@306@01) (= (- $Perm.Write (pTaken@310@01 r)) $Perm.No))
   
-  :qid |quant-u-3347|))))
+  :qid |quant-u-3411|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -19398,7 +19398,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (= r res@321@01) (= (- $Perm.Write (pTaken@327@01 r)) $Perm.No))
   
-  :qid |quant-u-3350|))))
+  :qid |quant-u-3414|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -19471,7 +19471,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (= r res@314@01) (= (- $Perm.Write (pTaken@331@01 r)) $Perm.No))
   
-  :qid |quant-u-3353|))))
+  :qid |quant-u-3417|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -19591,7 +19591,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@337@01 r) $Perm.No)
   
-  :qid |quant-u-3356|))))
+  :qid |quant-u-3420|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -19606,7 +19606,7 @@
     (= r iterable_1@336@01)
     (= (- (/ (to_real 1) (to_real 10)) (pTaken@337@01 r)) $Perm.No))
   
-  :qid |quant-u-3357|))))
+  :qid |quant-u-3421|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -19687,7 +19687,7 @@
   :pattern (($FVF.lookup_set_acc (as sm@334@01  $FVF<set_acc>) r))
   :pattern (($FVF.lookup_set_acc (as sm@343@01  $FVF<set_acc>) r))
   :pattern (($FVF.lookup_set_acc $t@344@01 r))
-  :qid |quant-u-3358|)))
+  :qid |quant-u-3422|)))
 (assert (not (= iterable_1@336@01 $Ref.null)))
 (assert (=
   ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@342@01))))))
@@ -19750,7 +19750,7 @@
         (ite (= r res@306@01) $Perm.Write $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-3359|))))
+  :qid |quant-u-3423|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -21380,7 +21380,7 @@
         (ite (= r res@306@01) $Perm.Write $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-3360|))))
+  :qid |quant-u-3424|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -21475,7 +21475,7 @@
       (ite (= r iterable_1@336@01) (/ (to_real 1) (to_real 20)) $Perm.No)
       $Perm.No))
   
-  :qid |quant-u-3361|))))
+  :qid |quant-u-3425|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -21531,7 +21531,7 @@
       (ite (= r iterable_1@336@01) (/ (to_real 1) (to_real 20)) $Perm.No)
       $Perm.No))
   
-  :qid |quant-u-3362|))))
+  :qid |quant-u-3426|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -21891,7 +21891,7 @@
 (check-sat)
 ; unknown
 (pop) ; 6
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 184 | |First:(Second:(Second:(Second:(Second:($t@363@01)))))| > 0 | live]
 ; [else-branch: 184 | !(|First:(Second:(Second:(Second:(Second:($t@363@01)))))| > 0) | dead]
@@ -22314,7 +22314,7 @@
     (issubtype<Bool> (typeof<PyType> lambda32_28$l@368@01) (set<PyType> (as int<PyType>  PyType)))
     (_checkDefined%precondition $Snap.unit res@314@01 3235681))
   :pattern ((Set_in lambda32_28$l@368@01 ($FVF.lookup_set_acc (as sm@366@01  $FVF<set_acc>) (_checkDefined $Snap.unit res@314@01 3235681))))
-  :qid |quant-u-3364|)))
+  :qid |quant-u-3428|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -22332,7 +22332,7 @@
       (= (inv@369@01 lambda32_28$l@368@01) lambda32_28$l@368@01)
       (img@370@01 lambda32_28$l@368@01)))
   :pattern ((Set_in lambda32_28$l@368@01 ($FVF.lookup_set_acc (as sm@366@01  $FVF<set_acc>) (_checkDefined $Snap.unit res@314@01 3235681))))
-  :qid |quant-u-3364|)))
+  :qid |quant-u-3428|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -22443,7 +22443,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@371@01 r) $Perm.No)
   
-  :qid |quant-u-3367|))))
+  :qid |quant-u-3431|))))
 (check-sat)
 ; unknown
 (pop) ; 5
@@ -22458,7 +22458,7 @@
     (= r iterable_1@336@01)
     (= (- (/ (to_real 1) (to_real 20)) (pTaken@371@01 r)) $Perm.No))
   
-  :qid |quant-u-3368|))))
+  :qid |quant-u-3432|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -22519,7 +22519,7 @@
         (ite (= r res@306@01) $Perm.Write $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-3369|))))
+  :qid |quant-u-3433|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -22582,7 +22582,7 @@
         (ite (= r res@306@01) $Perm.Write $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-3370|))))
+  :qid |quant-u-3434|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -23371,7 +23371,7 @@
       (= r (inv@377@01 r)))
     (= (- $Perm.Write (pTaken@379@01 r)) $Perm.No))
   
-  :qid |quant-u-3374|))))
+  :qid |quant-u-3438|))))
 (check-sat)
 ; unknown
 (pop) ; 5
@@ -23401,7 +23401,7 @@
       (= r (inv@377@01 r)))
     (= (- (- $Perm.Write (pTaken@379@01 r)) (pTaken@380@01 r)) $Perm.No))
   
-  :qid |quant-u-3376|))))
+  :qid |quant-u-3440|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -23554,7 +23554,7 @@
     (issubtype<Bool> (typeof<PyType> lambda32_28$l@368@01) (set<PyType> (as int<PyType>  PyType)))
     (_checkDefined%precondition $Snap.unit res@314@01 3235681))
   :pattern ((Set_in lambda32_28$l@368@01 ($FVF.lookup_set_acc (as sm@366@01  $FVF<set_acc>) (_checkDefined $Snap.unit res@314@01 3235681))))
-  :qid |quant-u-3364|)))
+  :qid |quant-u-3428|)))
 (assert (forall ((lambda32_28$l@368@01 $Ref)) (!
   (=>
     (and
@@ -23564,7 +23564,7 @@
       (= (inv@369@01 lambda32_28$l@368@01) lambda32_28$l@368@01)
       (img@370@01 lambda32_28$l@368@01)))
   :pattern ((Set_in lambda32_28$l@368@01 ($FVF.lookup_set_acc (as sm@366@01  $FVF<set_acc>) (_checkDefined $Snap.unit res@314@01 3235681))))
-  :qid |quant-u-3364|)))
+  :qid |quant-u-3428|)))
 (assert (forall ((lambda32_28$l@368@01 $Ref)) (!
   (=>
     (and
@@ -24051,11 +24051,11 @@
       (pTaken@382@01 r))
     $Perm.No)
   
-  :qid |quant-u-3378|))))
+  :qid |quant-u-3442|))))
 (check-sat)
 ; unknown
 (pop) ; 7
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 7
@@ -24063,7 +24063,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@382@01 r) $Perm.No)
   
-  :qid |quant-u-3379|))))
+  :qid |quant-u-3443|))))
 (check-sat)
 ; unknown
 (pop) ; 7
@@ -24078,7 +24078,7 @@
     (= r (_checkDefined $Snap.unit c_1@361@01 3235683))
     (= (- $Perm.Write (pTaken@382@01 r)) $Perm.No))
   
-  :qid |quant-u-3380|))))
+  :qid |quant-u-3444|))))
 (check-sat)
 ; unsat
 (pop) ; 7
@@ -24555,7 +24555,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (= r res@392@01) (= (- $Perm.Write (pTaken@398@01 r)) $Perm.No))
   
-  :qid |quant-u-3383|))))
+  :qid |quant-u-3447|))))
 (check-sat)
 ; unsat
 (pop) ; 7
@@ -24684,7 +24684,7 @@
     (= r (_checkDefined $Snap.unit res@314@01 3235681))
     (= (- $Perm.Write (pTaken@403@01 r)) $Perm.No))
   
-  :qid |quant-u-3386|))))
+  :qid |quant-u-3450|))))
 (check-sat)
 ; unknown
 (pop) ; 7
@@ -24706,7 +24706,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@404@01 r) $Perm.No)
   
-  :qid |quant-u-3388|))))
+  :qid |quant-u-3452|))))
 (check-sat)
 ; unsat
 (pop) ; 7
@@ -24721,7 +24721,7 @@
     (= r (_checkDefined $Snap.unit res@314@01 3235681))
     (= (- (- $Perm.Write (pTaken@403@01 r)) (pTaken@404@01 r)) $Perm.No))
   
-  :qid |quant-u-3389|))))
+  :qid |quant-u-3453|))))
 (check-sat)
 ; unknown
 (pop) ; 7
@@ -24752,7 +24752,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@405@01 r) $Perm.No)
   
-  :qid |quant-u-3391|))))
+  :qid |quant-u-3455|))))
 (check-sat)
 ; unsat
 (pop) ; 7
@@ -24771,7 +24771,7 @@
         (pTaken@405@01 r))
       $Perm.No))
   
-  :qid |quant-u-3392|))))
+  :qid |quant-u-3456|))))
 (check-sat)
 ; unknown
 (pop) ; 7
@@ -24795,7 +24795,7 @@
       (pTaken@406@01 r))
     $Perm.No)
   
-  :qid |quant-u-3393|))))
+  :qid |quant-u-3457|))))
 (check-sat)
 ; unknown
 (pop) ; 7
@@ -24807,7 +24807,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@406@01 r) $Perm.No)
   
-  :qid |quant-u-3394|))))
+  :qid |quant-u-3458|))))
 (check-sat)
 ; unsat
 (pop) ; 7
@@ -24828,7 +24828,7 @@
         (pTaken@406@01 r))
       $Perm.No))
   
-  :qid |quant-u-3395|))))
+  :qid |quant-u-3459|))))
 (check-sat)
 ; unknown
 (pop) ; 7
@@ -24848,7 +24848,7 @@
         (pTaken@406@01 r))
       $Perm.No))
   
-  :qid |quant-u-3395|))))
+  :qid |quant-u-3459|))))
 (check-sat)
 ; unknown
 (pop) ; 7
@@ -25201,11 +25201,11 @@
     (= r (_checkDefined $Snap.unit res@314@01 3235681))
     (= (- $Perm.Write (pTaken@409@01 r)) $Perm.No))
   
-  :qid |quant-u-3398|))))
+  :qid |quant-u-3462|))))
 (check-sat)
 ; unknown
 (pop) ; 7
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; Chunk depleted?
 (set-option :timeout 0)
@@ -25225,7 +25225,7 @@
       (pTaken@410@01 r))
     $Perm.No)
   
-  :qid |quant-u-3399|))))
+  :qid |quant-u-3463|))))
 (check-sat)
 ; unknown
 (pop) ; 7
@@ -25237,7 +25237,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@410@01 r) $Perm.No)
   
-  :qid |quant-u-3400|))))
+  :qid |quant-u-3464|))))
 (check-sat)
 ; unsat
 (pop) ; 7
@@ -25252,7 +25252,7 @@
     (= r (_checkDefined $Snap.unit res@314@01 3235681))
     (= (- (- $Perm.Write (pTaken@409@01 r)) (pTaken@410@01 r)) $Perm.No))
   
-  :qid |quant-u-3401|))))
+  :qid |quant-u-3465|))))
 (check-sat)
 ; unknown
 (pop) ; 7
@@ -25283,7 +25283,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@411@01 r) $Perm.No)
   
-  :qid |quant-u-3403|))))
+  :qid |quant-u-3467|))))
 (check-sat)
 ; unsat
 (pop) ; 7
@@ -25302,11 +25302,11 @@
         (pTaken@411@01 r))
       $Perm.No))
   
-  :qid |quant-u-3404|))))
+  :qid |quant-u-3468|))))
 (check-sat)
 ; unknown
 (pop) ; 7
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; Chunk depleted?
 (set-option :timeout 0)
@@ -25324,7 +25324,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@412@01 r) $Perm.No)
   
-  :qid |quant-u-3406|))))
+  :qid |quant-u-3470|))))
 (check-sat)
 ; unsat
 (pop) ; 7
@@ -25345,7 +25345,7 @@
         (pTaken@412@01 r))
       $Perm.No))
   
-  :qid |quant-u-3407|))))
+  :qid |quant-u-3471|))))
 (check-sat)
 ; unknown
 (pop) ; 7
@@ -25365,11 +25365,11 @@
         (pTaken@412@01 r))
       $Perm.No))
   
-  :qid |quant-u-3407|))))
+  :qid |quant-u-3471|))))
 (check-sat)
 ; unknown
 (pop) ; 7
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; Done removing quantified permissions
 (pop) ; 6
@@ -25696,7 +25696,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (= r res@445@01) (= (- $Perm.Write (pTaken@449@01 r)) $Perm.No))
   
-  :qid |quant-u-3410|))))
+  :qid |quant-u-3474|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -26126,7 +26126,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (= r res@460@01) (= (- $Perm.Write (pTaken@466@01 r)) $Perm.No))
   
-  :qid |quant-u-3413|))))
+  :qid |quant-u-3477|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -26199,7 +26199,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (= r res@453@01) (= (- $Perm.Write (pTaken@470@01 r)) $Perm.No))
   
-  :qid |quant-u-3416|))))
+  :qid |quant-u-3480|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -26431,7 +26431,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@481@01 r) $Perm.No)
   
-  :qid |quant-u-3419|))))
+  :qid |quant-u-3483|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -26446,7 +26446,7 @@
     (= r iterable_2@480@01)
     (= (- (/ (to_real 1) (to_real 10)) (pTaken@481@01 r)) $Perm.No))
   
-  :qid |quant-u-3420|))))
+  :qid |quant-u-3484|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -26536,7 +26536,7 @@
   :pattern (($FVF.lookup_set_acc (as sm@473@01  $FVF<set_acc>) r))
   :pattern (($FVF.lookup_set_acc (as sm@487@01  $FVF<set_acc>) r))
   :pattern (($FVF.lookup_set_acc $t@488@01 r))
-  :qid |quant-u-3421|)))
+  :qid |quant-u-3485|)))
 (assert (not (= iterable_2@480@01 $Ref.null)))
 (assert (=
   ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@486@01))))))
@@ -26599,7 +26599,7 @@
         (ite (= r res@445@01) $Perm.Write $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-3422|))))
+  :qid |quant-u-3486|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -28229,7 +28229,7 @@
         (ite (= r res@445@01) $Perm.Write $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-3423|))))
+  :qid |quant-u-3487|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -28323,7 +28323,7 @@
       (ite (= r iterable_2@480@01) (/ (to_real 1) (to_real 20)) $Perm.No)
       $Perm.No))
   
-  :qid |quant-u-3424|))))
+  :qid |quant-u-3488|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -28379,7 +28379,7 @@
       (ite (= r iterable_2@480@01) (/ (to_real 1) (to_real 20)) $Perm.No)
       $Perm.No))
   
-  :qid |quant-u-3425|))))
+  :qid |quant-u-3489|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -29162,7 +29162,7 @@
     (issubtype<Bool> (typeof<PyType> lambda43_28$l@511@01) (set<PyType> (as int<PyType>  PyType)))
     (_checkDefined%precondition $Snap.unit res@453@01 3301217))
   :pattern ((Set_in lambda43_28$l@511@01 ($FVF.lookup_set_acc (as sm@509@01  $FVF<set_acc>) (_checkDefined $Snap.unit res@453@01 3301217))))
-  :qid |quant-u-3427|)))
+  :qid |quant-u-3491|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -29180,7 +29180,7 @@
       (= (inv@512@01 lambda43_28$l@511@01) lambda43_28$l@511@01)
       (img@513@01 lambda43_28$l@511@01)))
   :pattern ((Set_in lambda43_28$l@511@01 ($FVF.lookup_set_acc (as sm@509@01  $FVF<set_acc>) (_checkDefined $Snap.unit res@453@01 3301217))))
-  :qid |quant-u-3427|)))
+  :qid |quant-u-3491|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -29458,7 +29458,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@515@01 r) $Perm.No)
   
-  :qid |quant-u-3430|))))
+  :qid |quant-u-3494|))))
 (check-sat)
 ; unknown
 (pop) ; 5
@@ -29473,7 +29473,7 @@
     (= r iterable_2@480@01)
     (= (- (/ (to_real 1) (to_real 20)) (pTaken@515@01 r)) $Perm.No))
   
-  :qid |quant-u-3431|))))
+  :qid |quant-u-3495|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -29534,7 +29534,7 @@
         (ite (= r res@445@01) $Perm.Write $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-3432|))))
+  :qid |quant-u-3496|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -29597,7 +29597,7 @@
         (ite (= r res@445@01) $Perm.Write $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-3433|))))
+  :qid |quant-u-3497|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -30386,7 +30386,7 @@
       (= r (inv@521@01 r)))
     (= (- $Perm.Write (pTaken@523@01 r)) $Perm.No))
   
-  :qid |quant-u-3437|))))
+  :qid |quant-u-3501|))))
 (check-sat)
 ; unknown
 (pop) ; 5
@@ -30416,7 +30416,7 @@
       (= r (inv@521@01 r)))
     (= (- (- $Perm.Write (pTaken@523@01 r)) (pTaken@524@01 r)) $Perm.No))
   
-  :qid |quant-u-3439|))))
+  :qid |quant-u-3503|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -30750,7 +30750,7 @@
     (issubtype<Bool> (typeof<PyType> lambda43_28$l@511@01) (set<PyType> (as int<PyType>  PyType)))
     (_checkDefined%precondition $Snap.unit res@453@01 3301217))
   :pattern ((Set_in lambda43_28$l@511@01 ($FVF.lookup_set_acc (as sm@509@01  $FVF<set_acc>) (_checkDefined $Snap.unit res@453@01 3301217))))
-  :qid |quant-u-3427|)))
+  :qid |quant-u-3491|)))
 (assert (forall ((lambda43_28$l@511@01 $Ref)) (!
   (=>
     (and
@@ -30760,7 +30760,7 @@
       (= (inv@512@01 lambda43_28$l@511@01) lambda43_28$l@511@01)
       (img@513@01 lambda43_28$l@511@01)))
   :pattern ((Set_in lambda43_28$l@511@01 ($FVF.lookup_set_acc (as sm@509@01  $FVF<set_acc>) (_checkDefined $Snap.unit res@453@01 3301217))))
-  :qid |quant-u-3427|)))
+  :qid |quant-u-3491|)))
 (assert (forall ((lambda43_28$l@511@01 $Ref)) (!
   (=>
     (and
@@ -31178,7 +31178,7 @@
 (check-sat)
 ; unknown
 (pop) ; 6
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 264 | iter_err_2@503@01 == Null | live]
 ; [else-branch: 264 | iter_err_2@503@01 != Null | live]
@@ -31281,7 +31281,7 @@
       (pTaken@527@01 r))
     $Perm.No)
   
-  :qid |quant-u-3441|))))
+  :qid |quant-u-3505|))))
 (check-sat)
 ; unknown
 (pop) ; 7
@@ -31293,11 +31293,11 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@527@01 r) $Perm.No)
   
-  :qid |quant-u-3442|))))
+  :qid |quant-u-3506|))))
 (check-sat)
 ; unknown
 (pop) ; 7
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; Intermediate check if already taken enough permissions
 (set-option :timeout 0)
@@ -31308,7 +31308,7 @@
     (= r (_checkDefined $Snap.unit c_2@504@01 3301219))
     (= (- $Perm.Write (pTaken@527@01 r)) $Perm.No))
   
-  :qid |quant-u-3443|))))
+  :qid |quant-u-3507|))))
 (check-sat)
 ; unsat
 (pop) ; 7
@@ -31604,7 +31604,7 @@
 (check-sat)
 ; unknown
 (pop) ; 7
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (assert (=
   ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@537@01))))
@@ -31643,7 +31643,7 @@
 (check-sat)
 ; unknown
 (pop) ; 7
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [eval] Measure$check(_caller_measures_149, _cthread_149, 1)
 (set-option :timeout 0)
@@ -33168,7 +33168,7 @@
     (= r iterable_2@480@01)
     (= (- (/ (to_real 1) (to_real 20)) (pTaken@544@01 r)) $Perm.No))
   
-  :qid |quant-u-3446|))))
+  :qid |quant-u-3510|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -33209,7 +33209,7 @@
           $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-3447|))))
+  :qid |quant-u-3511|))))
 (check-sat)
 ; unsat
 (pop) ; 9
@@ -33315,7 +33315,7 @@
           $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-3448|))))
+  :qid |quant-u-3512|))))
 (check-sat)
 ; unsat
 (pop) ; 9
@@ -33405,7 +33405,7 @@
 (check-sat)
 ; unknown
 (pop) ; 9
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 284 | _err@540@01 == Null | live]
 ; [else-branch: 284 | _err@540@01 != Null | dead]
@@ -33583,7 +33583,7 @@
 (check-sat)
 ; unknown
 (pop) ; 9
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 287 | |First:(Second:(Second:(Second:(Second:($t@506@01)))))| > 0 | live]
 ; [else-branch: 287 | !(|First:(Second:(Second:(Second:(Second:($t@506@01)))))| > 0) | dead]
@@ -33652,7 +33652,7 @@
 (check-sat)
 ; unknown
 (pop) ; 9
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 289 | |First:(Second:(Second:(Second:(Second:($t@506@01)))))| > 0 | live]
 ; [else-branch: 289 | !(|First:(Second:(Second:(Second:(Second:($t@506@01)))))| > 0) | dead]
@@ -34080,7 +34080,7 @@
       (pTaken@552@01 r))
     $Perm.No)
   
-  :qid |quant-u-3451|))))
+  :qid |quant-u-3515|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -34100,7 +34100,7 @@
       (= r (inv@550@01 r)))
     (= (- $Perm.Write (pTaken@552@01 r)) $Perm.No))
   
-  :qid |quant-u-3452|))))
+  :qid |quant-u-3516|))))
 (check-sat)
 ; unknown
 (pop) ; 8
@@ -34139,7 +34139,7 @@
       (= r (inv@550@01 r)))
     (= (- (- $Perm.Write (pTaken@552@01 r)) (pTaken@553@01 r)) $Perm.No))
   
-  :qid |quant-u-3454|))))
+  :qid |quant-u-3518|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -34461,7 +34461,7 @@
     (= r iterable_2@480@01)
     (= (- (/ (to_real 1) (to_real 20)) (pTaken@555@01 r)) $Perm.No))
   
-  :qid |quant-u-3457|))))
+  :qid |quant-u-3521|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -34502,7 +34502,7 @@
           $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-3458|))))
+  :qid |quant-u-3522|))))
 (check-sat)
 ; unsat
 (pop) ; 9
@@ -34608,7 +34608,7 @@
           $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-3459|))))
+  :qid |quant-u-3523|))))
 (check-sat)
 ; unsat
 (pop) ; 9
@@ -35345,7 +35345,7 @@
       (pTaken@563@01 r))
     $Perm.No)
   
-  :qid |quant-u-3462|))))
+  :qid |quant-u-3526|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -35365,7 +35365,7 @@
       (= r (inv@561@01 r)))
     (= (- $Perm.Write (pTaken@563@01 r)) $Perm.No))
   
-  :qid |quant-u-3463|))))
+  :qid |quant-u-3527|))))
 (check-sat)
 ; unknown
 (pop) ; 8
@@ -35404,7 +35404,7 @@
       (= r (inv@561@01 r)))
     (= (- (- $Perm.Write (pTaken@563@01 r)) (pTaken@564@01 r)) $Perm.No))
   
-  :qid |quant-u-3465|))))
+  :qid |quant-u-3529|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -35664,7 +35664,7 @@
   :pattern (($FVF.lookup_set_acc (as sm@507@01  $FVF<set_acc>) r))
   :pattern (($FVF.lookup_set_acc $t@488@01 r))
   :pattern (($FVF.lookup_set_acc $t@566@01 r))
-  :qid |quant-u-3466|)))
+  :qid |quant-u-3530|)))
 ; [eval] !(iter_err_2 == null)
 ; [eval] iter_err_2 == null
 (set-option :timeout 0)
@@ -35683,7 +35683,7 @@
 (check-sat)
 ; unknown
 (pop) ; 6
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 320 | iter_err_2@503@01 != Null | live]
 ; [else-branch: 320 | iter_err_2@503@01 == Null | live]
@@ -35982,7 +35982,7 @@
   :pattern (($FVF.lookup_set_acc $t@566@01 r))
   :pattern (($FVF.lookup_set_acc (as sm@569@01  $FVF<set_acc>) r))
   :pattern (($FVF.lookup_set_acc $t@570@01 r))
-  :qid |quant-u-3467|)))
+  :qid |quant-u-3531|)))
 (assert (<=
   $Perm.No
   (ite
@@ -36369,7 +36369,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (= r res@603@01) (= (- $Perm.Write (pTaken@607@01 r)) $Perm.No))
   
-  :qid |quant-u-3470|))))
+  :qid |quant-u-3534|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -36799,7 +36799,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (= r res@618@01) (= (- $Perm.Write (pTaken@624@01 r)) $Perm.No))
   
-  :qid |quant-u-3473|))))
+  :qid |quant-u-3537|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -36872,7 +36872,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (= r res@611@01) (= (- $Perm.Write (pTaken@628@01 r)) $Perm.No))
   
-  :qid |quant-u-3476|))))
+  :qid |quant-u-3540|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -37104,7 +37104,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@639@01 r) $Perm.No)
   
-  :qid |quant-u-3479|))))
+  :qid |quant-u-3543|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -37119,7 +37119,7 @@
     (= r iterable_3@638@01)
     (= (- (/ (to_real 1) (to_real 10)) (pTaken@639@01 r)) $Perm.No))
   
-  :qid |quant-u-3480|))))
+  :qid |quant-u-3544|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -37209,7 +37209,7 @@
   :pattern (($FVF.lookup_set_acc (as sm@631@01  $FVF<set_acc>) r))
   :pattern (($FVF.lookup_set_acc (as sm@645@01  $FVF<set_acc>) r))
   :pattern (($FVF.lookup_set_acc $t@646@01 r))
-  :qid |quant-u-3481|)))
+  :qid |quant-u-3545|)))
 (assert (not (= iterable_3@638@01 $Ref.null)))
 (assert (=
   ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@644@01))))))
@@ -37272,7 +37272,7 @@
         (ite (= r res@603@01) $Perm.Write $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-3482|))))
+  :qid |quant-u-3546|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -37581,7 +37581,7 @@
 (check-sat)
 ; unknown
 (pop) ; 4
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 329 | _err@651@01 == Null | live]
 ; [else-branch: 329 | _err@651@01 != Null | dead]
@@ -38902,7 +38902,7 @@
         (ite (= r res@603@01) $Perm.Write $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-3483|))))
+  :qid |quant-u-3547|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -38996,7 +38996,7 @@
       (ite (= r iterable_3@638@01) (/ (to_real 1) (to_real 20)) $Perm.No)
       $Perm.No))
   
-  :qid |quant-u-3484|))))
+  :qid |quant-u-3548|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -39052,7 +39052,7 @@
       (ite (= r iterable_3@638@01) (/ (to_real 1) (to_real 20)) $Perm.No)
       $Perm.No))
   
-  :qid |quant-u-3485|))))
+  :qid |quant-u-3549|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -39158,7 +39158,7 @@
 (check-sat)
 ; unknown
 (pop) ; 6
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 345 | iter_err_3@661@01 != Null | live]
 ; [else-branch: 345 | iter_err_3@661@01 == Null | live]
@@ -39200,7 +39200,7 @@
 (check-sat)
 ; unknown
 (pop) ; 6
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 6
@@ -39448,7 +39448,7 @@
 (check-sat)
 ; unknown
 (pop) ; 6
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 6
@@ -39507,7 +39507,7 @@
 (check-sat)
 ; unknown
 (pop) ; 6
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 351 | |First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0 | live]
 ; [else-branch: 351 | !(|First:(Second:(Second:(Second:(Second:($t@664@01)))))| > 0) | dead]
@@ -39613,7 +39613,7 @@
 (check-sat)
 ; unknown
 (pop) ; 6
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 6
@@ -39622,7 +39622,7 @@
 (check-sat)
 ; unknown
 (pop) ; 6
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 354 | iter_err_3@661@01 != Null | live]
 ; [else-branch: 354 | iter_err_3@661@01 == Null | live]
@@ -39835,7 +39835,7 @@
     (issubtype<Bool> (typeof<PyType> lambda55_28$l@669@01) (set<PyType> (as int<PyType>  PyType)))
     (_checkDefined%precondition $Snap.unit res@611@01 3366753))
   :pattern ((Set_in lambda55_28$l@669@01 ($FVF.lookup_set_acc (as sm@667@01  $FVF<set_acc>) (_checkDefined $Snap.unit res@611@01 3366753))))
-  :qid |quant-u-3487|)))
+  :qid |quant-u-3551|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -39853,7 +39853,7 @@
       (= (inv@670@01 lambda55_28$l@669@01) lambda55_28$l@669@01)
       (img@671@01 lambda55_28$l@669@01)))
   :pattern ((Set_in lambda55_28$l@669@01 ($FVF.lookup_set_acc (as sm@667@01  $FVF<set_acc>) (_checkDefined $Snap.unit res@611@01 3366753))))
-  :qid |quant-u-3487|)))
+  :qid |quant-u-3551|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -40131,7 +40131,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@673@01 r) $Perm.No)
   
-  :qid |quant-u-3490|))))
+  :qid |quant-u-3554|))))
 (check-sat)
 ; unknown
 (pop) ; 5
@@ -40146,7 +40146,7 @@
     (= r iterable_3@638@01)
     (= (- (/ (to_real 1) (to_real 20)) (pTaken@673@01 r)) $Perm.No))
   
-  :qid |quant-u-3491|))))
+  :qid |quant-u-3555|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -40207,7 +40207,7 @@
         (ite (= r res@603@01) $Perm.Write $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-3492|))))
+  :qid |quant-u-3556|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -40270,7 +40270,7 @@
         (ite (= r res@603@01) $Perm.Write $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-3493|))))
+  :qid |quant-u-3557|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -41059,7 +41059,7 @@
       (= r (inv@679@01 r)))
     (= (- $Perm.Write (pTaken@681@01 r)) $Perm.No))
   
-  :qid |quant-u-3497|))))
+  :qid |quant-u-3561|))))
 (check-sat)
 ; unknown
 (pop) ; 5
@@ -41089,7 +41089,7 @@
       (= r (inv@679@01 r)))
     (= (- (- $Perm.Write (pTaken@681@01 r)) (pTaken@682@01 r)) $Perm.No))
   
-  :qid |quant-u-3499|))))
+  :qid |quant-u-3563|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -41286,7 +41286,7 @@
 (check-sat)
 ; unknown
 (pop) ; 6
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 370 | True | live]
 ; [else-branch: 370 | False | dead]
@@ -41423,7 +41423,7 @@
     (issubtype<Bool> (typeof<PyType> lambda55_28$l@669@01) (set<PyType> (as int<PyType>  PyType)))
     (_checkDefined%precondition $Snap.unit res@611@01 3366753))
   :pattern ((Set_in lambda55_28$l@669@01 ($FVF.lookup_set_acc (as sm@667@01  $FVF<set_acc>) (_checkDefined $Snap.unit res@611@01 3366753))))
-  :qid |quant-u-3487|)))
+  :qid |quant-u-3551|)))
 (assert (forall ((lambda55_28$l@669@01 $Ref)) (!
   (=>
     (and
@@ -41433,7 +41433,7 @@
       (= (inv@670@01 lambda55_28$l@669@01) lambda55_28$l@669@01)
       (img@671@01 lambda55_28$l@669@01)))
   :pattern ((Set_in lambda55_28$l@669@01 ($FVF.lookup_set_acc (as sm@667@01  $FVF<set_acc>) (_checkDefined $Snap.unit res@611@01 3366753))))
-  :qid |quant-u-3487|)))
+  :qid |quant-u-3551|)))
 (assert (forall ((lambda55_28$l@669@01 $Ref)) (!
   (=>
     (and
@@ -41954,7 +41954,7 @@
       (pTaken@685@01 r))
     $Perm.No)
   
-  :qid |quant-u-3501|))))
+  :qid |quant-u-3565|))))
 (check-sat)
 ; unknown
 (pop) ; 7
@@ -41966,7 +41966,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@685@01 r) $Perm.No)
   
-  :qid |quant-u-3502|))))
+  :qid |quant-u-3566|))))
 (check-sat)
 ; unknown
 (pop) ; 7
@@ -41981,7 +41981,7 @@
     (= r (_checkDefined $Snap.unit c_3@662@01 3366755))
     (= (- $Perm.Write (pTaken@685@01 r)) $Perm.No))
   
-  :qid |quant-u-3503|))))
+  :qid |quant-u-3567|))))
 (check-sat)
 ; unsat
 (pop) ; 7
@@ -42046,7 +42046,7 @@
 (check-sat)
 ; unknown
 (pop) ; 7
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (assert (<=
   $Perm.No
@@ -43931,7 +43931,7 @@
     (= r iterable_3@638@01)
     (= (- (/ (to_real 1) (to_real 20)) (pTaken@704@01 r)) $Perm.No))
   
-  :qid |quant-u-3506|))))
+  :qid |quant-u-3570|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -43972,7 +43972,7 @@
           $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-3507|))))
+  :qid |quant-u-3571|))))
 (check-sat)
 ; unsat
 (pop) ; 9
@@ -44078,7 +44078,7 @@
           $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-3508|))))
+  :qid |quant-u-3572|))))
 (check-sat)
 ; unsat
 (pop) ; 9
@@ -44843,7 +44843,7 @@
       (pTaken@712@01 r))
     $Perm.No)
   
-  :qid |quant-u-3511|))))
+  :qid |quant-u-3575|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -44863,7 +44863,7 @@
       (= r (inv@710@01 r)))
     (= (- $Perm.Write (pTaken@712@01 r)) $Perm.No))
   
-  :qid |quant-u-3512|))))
+  :qid |quant-u-3576|))))
 (check-sat)
 ; unknown
 (pop) ; 8
@@ -44902,7 +44902,7 @@
       (= r (inv@710@01 r)))
     (= (- (- $Perm.Write (pTaken@712@01 r)) (pTaken@713@01 r)) $Perm.No))
   
-  :qid |quant-u-3514|))))
+  :qid |quant-u-3578|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -47574,7 +47574,7 @@
 (check-sat)
 ; unsat
 (pop) ; 5
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 426 | issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), set[PyType](set_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), 0))) | dead]
 ; [else-branch: 426 | !(issubtype[Bool](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), set[PyType](set_arg[PyType](typeof[PyType](First:(Second:(Second:(Second:($t@772@01))))), 0)))) | live]

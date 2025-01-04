@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-29 20:05:50
+; Started: 2025-01-04 00:35:02
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -506,7 +506,7 @@
 (assert (forall ((i@0@01 Int)) (!
   (=> (= i@0@01 0) (and (= (as inv@2@01  Int) i@0@01) (as img@3@01  Bool)))
   
-  :qid |quant-u-23651|)))
+  :qid |quant-u-23666|)))
 ; Permissions are non-negative
 ; State saturation: after contract
 (set-option :timeout 50)
@@ -575,7 +575,7 @@
 (assert (forall ((i@8@01 Int)) (!
   (=> (= i@8@01 0) (and (= (as inv@10@01  Int) i@8@01) (as img@11@01  Bool)))
   
-  :qid |quant-u-23654|)))
+  :qid |quant-u-23669|)))
 ; Permissions are non-negative
 (pop) ; 2
 (push) ; 2

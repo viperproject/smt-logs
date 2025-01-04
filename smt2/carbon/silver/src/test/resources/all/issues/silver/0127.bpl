@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-29 20:51:13
+// Date:         2025-01-04 01:20:43
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0127.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0127-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -386,8 +386,8 @@ procedure idp#definedness(r_1: Ref) returns ()
 procedure F3(r_1: Ref) returns (res: bool)
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -401,8 +401,8 @@ procedure F3(r_1: Ref) returns (res: bool)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale false -- <no position>
     assume false;
@@ -417,8 +417,8 @@ procedure F3(r_1: Ref) returns (res: bool)
 procedure idm(r_1: Ref) returns (res: Ref)
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -432,8 +432,8 @@ procedure idm(r_1: Ref) returns (res: Ref)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: res := r -- 0127.vpr@14.9--14.17
     res := r_1;
@@ -447,8 +447,8 @@ procedure idm(r_1: Ref) returns (res: Ref)
 procedure main1(r_1: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var perm: Perm;
   
   // -- Initializing the state
@@ -463,8 +463,8 @@ procedure main1(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale acc(F1(r), write) -- 0127.vpr@21.9--21.21
     perm := FullPerm;
@@ -481,8 +481,8 @@ procedure main1(r_1: Ref) returns ()
 procedure main2(r_1: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -496,8 +496,8 @@ procedure main2(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale F2(r) -- 0127.vpr@26.9--26.21
     assume state(Heap, Mask);
@@ -519,8 +519,8 @@ procedure main2(r_1: Ref) returns ()
 procedure main3(r_1: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var perm: Perm;
   
   // -- Initializing the state
@@ -535,8 +535,8 @@ procedure main3(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale acc(F1(r), write) -- 0127.vpr@31.9--31.26
     perm := FullPerm;
@@ -554,10 +554,10 @@ procedure main4(r_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newVersion: FrameType;
   
   // -- Initializing the state
@@ -578,14 +578,14 @@ procedure main4(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: unfold acc(F1(r), write) -- 0127.vpr@37.9--37.27
     assume F1#trigger(Heap, F1(r_1));
     assume Heap[null, F1(r_1)] == EmptyFrame;
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding F1(r) might fail. There might be insufficient permission to access F1(r) (0127.vpr@37.9--37.27) [220692]"}
@@ -610,10 +610,10 @@ procedure main5(r_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newVersion: FrameType;
   
   // -- Initializing the state
@@ -634,14 +634,14 @@ procedure main5(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: unfold acc(F1(r), write) -- 0127.vpr@43.9--43.22
     assume F1#trigger(Heap, F1(r_1));
     assume Heap[null, F1(r_1)] == EmptyFrame;
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding F1(r) might fail. There might be insufficient permission to access F1(r) (0127.vpr@43.9--43.22) [220695]"}
@@ -665,8 +665,8 @@ procedure main5(r_1: Ref) returns ()
 procedure main6(r_1: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var tmp: bool;
   
   // -- Initializing the state
@@ -681,8 +681,8 @@ procedure main6(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: tmp := F2(r) -- 0127.vpr@49.9--49.21
     
@@ -702,8 +702,8 @@ procedure main6(r_1: Ref) returns ()
 procedure main(r_1: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
   var arg_r: Ref;
@@ -721,8 +721,8 @@ procedure main(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: tmp := F3(idf(r)) -- 0127.vpr@55.9--55.26
     PreCallHeap := Heap;

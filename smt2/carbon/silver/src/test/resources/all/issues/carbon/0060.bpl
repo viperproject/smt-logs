@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-29 20:41:55
+// Date:         2025-01-04 01:11:22
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0060.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0060-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -296,12 +296,12 @@ procedure TestuseZZ$(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newVersion: FrameType;
   var freshVersion: FrameType;
   var newPMask: PMaskType;
@@ -325,14 +325,14 @@ procedure TestuseZZ$(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert acc(ZZ(this), 100 / 100) -- 0060.vpr@20.3--20.34
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
+    ExhaleWellDef0Mask := AssertMask;
     perm := 100 / 100;
     assert {:msg "  Assert might fail. Fraction 100 / 100 might be negative. (0060.vpr@20.10--20.34) [191416]"}
       perm >= NoPerm;
@@ -346,8 +346,8 @@ procedure TestuseZZ$(this: Ref) returns ()
   // -- Translating statement: unfold acc(ZZ(this), 40 / 100) -- 0060.vpr@22.3--22.33
     assume ZZ#trigger(Heap, ZZ(this));
     assume Heap[null, ZZ(this)] == Heap[null, Z_2(this)];
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := 40 / 100;
     assert {:msg "  Unfolding ZZ(this) might fail. Fraction 40 / 100 might be negative. (0060.vpr@22.3--22.33) [191419]"}
       perm >= NoPerm;
@@ -376,8 +376,8 @@ procedure TestuseZZ$(this: Ref) returns ()
   // -- Translating statement: assert acc(ZZ(this), 60 / 100) -- 0060.vpr@24.3--24.33
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
+    ExhaleWellDef0Mask := AssertMask;
     perm := 60 / 100;
     assert {:msg "  Assert might fail. Fraction 60 / 100 might be negative. (0060.vpr@24.10--24.33) [191422]"}
       perm >= NoPerm;
@@ -391,8 +391,8 @@ procedure TestuseZZ$(this: Ref) returns ()
   // -- Translating statement: assert acc(Z(this), 40 / 100) -- 0060.vpr@25.3--25.32
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
+    ExhaleWellDef0Mask := AssertMask;
     perm := 40 / 100;
     assert {:msg "  Assert might fail. Fraction 40 / 100 might be negative. (0060.vpr@25.10--25.32) [191424]"}
       perm >= NoPerm;
@@ -406,8 +406,8 @@ procedure TestuseZZ$(this: Ref) returns ()
   // -- Translating statement: unfold acc(Z(this), 20 / 100) -- 0060.vpr@27.3--27.32
     assume Z#trigger(Heap, Z_2(this));
     assume Heap[null, Z_2(this)] == FrameFragment(Heap[this, z_22]);
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := 20 / 100;
     assert {:msg "  Unfolding Z(this) might fail. Fraction 20 / 100 might be negative. (0060.vpr@27.3--27.32) [191427]"}
       perm >= NoPerm;
@@ -434,8 +434,8 @@ procedure TestuseZZ$(this: Ref) returns ()
   // -- Translating statement: assert acc(ZZ(this), 60 / 100) -- 0060.vpr@29.3--29.33
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
+    ExhaleWellDef0Mask := AssertMask;
     perm := 60 / 100;
     assert {:msg "  Assert might fail. Fraction 60 / 100 might be negative. (0060.vpr@29.10--29.33) [191430]"}
       perm >= NoPerm;
@@ -449,8 +449,8 @@ procedure TestuseZZ$(this: Ref) returns ()
   // -- Translating statement: assert acc(Z(this), 20 / 100) -- 0060.vpr@30.3--30.32
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
+    ExhaleWellDef0Mask := AssertMask;
     perm := 20 / 100;
     assert {:msg "  Assert might fail. Fraction 20 / 100 might be negative. (0060.vpr@30.10--30.32) [191432]"}
       perm >= NoPerm;
@@ -464,8 +464,8 @@ procedure TestuseZZ$(this: Ref) returns ()
   // -- Translating statement: assert acc(this.z, 20 / 100) -- 0060.vpr@31.3--31.31
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
+    ExhaleWellDef0Mask := AssertMask;
     perm := 20 / 100;
     assert {:msg "  Assert might fail. Fraction 20 / 100 might be negative. (0060.vpr@31.10--31.31) [191434]"}
       perm >= NoPerm;
@@ -477,8 +477,8 @@ procedure TestuseZZ$(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Z(this), 10 / 100) -- 0060.vpr@33.3--33.30
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm * (10 / 100);
     assert {:msg "  Folding Z(this) might fail. Fraction write * (10 / 100) might be negative. (0060.vpr@33.3--33.30) [191437]"}
       perm >= NoPerm;
@@ -507,8 +507,8 @@ procedure TestuseZZ$(this: Ref) returns ()
   // -- Translating statement: assert acc(ZZ(this), 60 / 100) -- 0060.vpr@35.3--35.33
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
+    ExhaleWellDef0Mask := AssertMask;
     perm := 60 / 100;
     assert {:msg "  Assert might fail. Fraction 60 / 100 might be negative. (0060.vpr@35.10--35.33) [191440]"}
       perm >= NoPerm;
@@ -522,8 +522,8 @@ procedure TestuseZZ$(this: Ref) returns ()
   // -- Translating statement: assert acc(Z(this), 30 / 100) -- 0060.vpr@36.3--36.32
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
+    ExhaleWellDef0Mask := AssertMask;
     perm := 30 / 100;
     assert {:msg "  Assert might fail. Fraction 30 / 100 might be negative. (0060.vpr@36.10--36.32) [191442]"}
       perm >= NoPerm;
@@ -537,8 +537,8 @@ procedure TestuseZZ$(this: Ref) returns ()
   // -- Translating statement: assert acc(this.z, 10 / 100) -- 0060.vpr@37.3--37.31
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
+    ExhaleWellDef0Mask := AssertMask;
     perm := 10 / 100;
     assert {:msg "  Assert might fail. Fraction 10 / 100 might be negative. (0060.vpr@37.10--37.31) [191444]"}
       perm >= NoPerm;
@@ -550,8 +550,8 @@ procedure TestuseZZ$(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(ZZ(this), 30 / 100) -- 0060.vpr@39.3--39.31
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm * (30 / 100);
     assert {:msg "  Folding ZZ(this) might fail. Fraction write * (30 / 100) might be negative. (0060.vpr@39.3--39.31) [191447]"}
       perm >= NoPerm;
@@ -588,8 +588,8 @@ procedure TestuseZZ$(this: Ref) returns ()
   // -- Translating statement: assert acc(ZZ(this), 90 / 100) -- 0060.vpr@41.3--41.33
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
+    ExhaleWellDef0Mask := AssertMask;
     perm := 90 / 100;
     assert {:msg "  Assert might fail. Fraction 90 / 100 might be negative. (0060.vpr@41.10--41.33) [191450]"}
       perm >= NoPerm;
@@ -603,8 +603,8 @@ procedure TestuseZZ$(this: Ref) returns ()
   // -- Translating statement: assert acc(this.z, 10 / 100) -- 0060.vpr@42.3--42.31
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
+    ExhaleWellDef0Mask := AssertMask;
     perm := 10 / 100;
     assert {:msg "  Assert might fail. Fraction 10 / 100 might be negative. (0060.vpr@42.10--42.31) [191452]"}
       perm >= NoPerm;

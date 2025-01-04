@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-29 20:07:21
+; Started: 2025-01-04 00:36:35
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -192,11 +192,11 @@
 (assert (forall ((s@$ $Snap) (y@0@00 $Ref) (x@1@00 $Ref)) (!
   (= (foo_2_2%limited s@$ y@0@00 x@1@00) (foo_2_2 s@$ y@0@00 x@1@00))
   :pattern ((foo_2_2 s@$ y@0@00 x@1@00))
-  :qid |quant-u-25616|)))
+  :qid |quant-u-25631|)))
 (assert (forall ((s@$ $Snap) (y@0@00 $Ref) (x@1@00 $Ref)) (!
   (foo_2_2%stateless y@0@00 x@1@00)
   :pattern ((foo_2_2%limited s@$ y@0@00 x@1@00))
-  :qid |quant-u-25617|)))
+  :qid |quant-u-25632|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (guard<Bool> y@0@00))
@@ -258,11 +258,11 @@
       (foo_2_2 s@$ y@0@00 x@1@00)
       (=> (guard<Bool> y@0@00) ($SortWrappers.$SnapToBool ($Snap.second s@$)))))
   :pattern ((foo_2_2 s@$ y@0@00 x@1@00))
-  :qid |quant-u-25624|)))
+  :qid |quant-u-25639|)))
 (assert (forall ((s@$ $Snap) (y@0@00 $Ref) (x@1@00 $Ref)) (!
   true
   :pattern ((foo_2_2 s@$ y@0@00 x@1@00))
-  :qid |quant-u-25625|)))
+  :qid |quant-u-25640|)))
 ; ---------- FUNCTION foo_2_1----------
 (declare-fun y@3@00 () $Ref)
 (declare-fun x@4@00 () $Ref)
@@ -315,11 +315,11 @@
 (assert (forall ((s@$ $Snap) (y@3@00 $Ref) (x@4@00 $Ref)) (!
   (= (foo_2_1%limited s@$ y@3@00 x@4@00) (foo_2_1 s@$ y@3@00 x@4@00))
   :pattern ((foo_2_1 s@$ y@3@00 x@4@00))
-  :qid |quant-u-25618|)))
+  :qid |quant-u-25633|)))
 (assert (forall ((s@$ $Snap) (y@3@00 $Ref) (x@4@00 $Ref)) (!
   (foo_2_1%stateless y@3@00 x@4@00)
   :pattern ((foo_2_1%limited s@$ y@3@00 x@4@00))
-  :qid |quant-u-25619|)))
+  :qid |quant-u-25634|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (guard<Bool> y@3@00))
@@ -399,11 +399,11 @@
           ($SortWrappers.$SnapToBool ($Snap.second s@$))
           ($SortWrappers.$SnapToBool s@$)))))
   :pattern ((foo_2_1 s@$ y@3@00 x@4@00))
-  :qid |quant-u-25626|)))
+  :qid |quant-u-25641|)))
 (assert (forall ((s@$ $Snap) (y@3@00 $Ref) (x@4@00 $Ref)) (!
   true
   :pattern ((foo_2_1 s@$ y@3@00 x@4@00))
-  :qid |quant-u-25627|)))
+  :qid |quant-u-25642|)))
 ; ---------- FUNCTION foo_1_2----------
 (declare-fun y@6@00 () $Ref)
 (declare-fun x@7@00 () $Ref)
@@ -457,11 +457,11 @@
 (assert (forall ((s@$ $Snap) (y@6@00 $Ref) (x@7@00 $Ref)) (!
   (= (foo_1_2%limited s@$ y@6@00 x@7@00) (foo_1_2 s@$ y@6@00 x@7@00))
   :pattern ((foo_1_2 s@$ y@6@00 x@7@00))
-  :qid |quant-u-25620|)))
+  :qid |quant-u-25635|)))
 (assert (forall ((s@$ $Snap) (y@6@00 $Ref) (x@7@00 $Ref)) (!
   (foo_1_2%stateless y@6@00 x@7@00)
   :pattern ((foo_1_2%limited s@$ y@6@00 x@7@00))
-  :qid |quant-u-25621|)))
+  :qid |quant-u-25636|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (guard<Bool> y@6@00))
@@ -525,11 +525,11 @@
       (foo_1_2 s@$ y@6@00 x@7@00)
       (=> (guard<Bool> y@6@00) ($SortWrappers.$SnapToBool ($Snap.second s@$)))))
   :pattern ((foo_1_2 s@$ y@6@00 x@7@00))
-  :qid |quant-u-25628|)))
+  :qid |quant-u-25643|)))
 (assert (forall ((s@$ $Snap) (y@6@00 $Ref) (x@7@00 $Ref)) (!
   true
   :pattern ((foo_1_2 s@$ y@6@00 x@7@00))
-  :qid |quant-u-25629|)))
+  :qid |quant-u-25644|)))
 ; ---------- FUNCTION foo_1_1----------
 (declare-fun y@9@00 () $Ref)
 (declare-fun x@10@00 () $Ref)
@@ -582,11 +582,11 @@
 (assert (forall ((s@$ $Snap) (y@9@00 $Ref) (x@10@00 $Ref)) (!
   (= (foo_1_1%limited s@$ y@9@00 x@10@00) (foo_1_1 s@$ y@9@00 x@10@00))
   :pattern ((foo_1_1 s@$ y@9@00 x@10@00))
-  :qid |quant-u-25622|)))
+  :qid |quant-u-25637|)))
 (assert (forall ((s@$ $Snap) (y@9@00 $Ref) (x@10@00 $Ref)) (!
   (foo_1_1%stateless y@9@00 x@10@00)
   :pattern ((foo_1_1%limited s@$ y@9@00 x@10@00))
-  :qid |quant-u-25623|)))
+  :qid |quant-u-25638|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (guard<Bool> y@9@00))
@@ -670,8 +670,8 @@
           ($SortWrappers.$SnapToBool ($Snap.second s@$))
           ($SortWrappers.$SnapToBool ($Snap.first s@$))))))
   :pattern ((foo_1_1 s@$ y@9@00 x@10@00))
-  :qid |quant-u-25630|)))
+  :qid |quant-u-25645|)))
 (assert (forall ((s@$ $Snap) (y@9@00 $Ref) (x@10@00 $Ref)) (!
   true
   :pattern ((foo_1_1 s@$ y@9@00 x@10@00))
-  :qid |quant-u-25631|)))
+  :qid |quant-u-25646|)))

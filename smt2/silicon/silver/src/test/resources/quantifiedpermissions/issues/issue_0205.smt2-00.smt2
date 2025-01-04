@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-29 19:58:26
+; Started: 2025-01-04 00:27:15
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -1464,7 +1464,7 @@
       (= (ite (= j@20@00 i@1@00) $Perm.Write $Perm.No) $Perm.No)
       (= j@20@00 i@1@00)))
   
-  :qid |quant-u-12721|))))
+  :qid |quant-u-12785|))))
 (check-sat)
 ; unsat
 (pop) ; 2
@@ -1522,7 +1522,7 @@
   :pattern ((Seq_index
     ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first s@$))
     j@20@00))
-  :qid |quant-u-12722|)))
+  :qid |quant-u-12786|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -1570,11 +1570,11 @@
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref) (i@1@00 Int)) (!
   (= (fun04qp%limited s@$ x@0@00 i@1@00) (fun04qp s@$ x@0@00 i@1@00))
   :pattern ((fun04qp s@$ x@0@00 i@1@00))
-  :qid |quant-u-12709|)))
+  :qid |quant-u-12773|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref) (i@1@00 Int)) (!
   (fun04qp%stateless x@0@00 i@1@00)
   :pattern ((fun04qp%limited s@$ x@0@00 i@1@00))
-  :qid |quant-u-12710|)))
+  :qid |quant-u-12774|)))
 ; ---------- FUNCTION fun01qp----------
 (declare-fun xs@3@00 () Seq<$Ref>)
 (declare-fun i@4@00 () Int)
@@ -1696,7 +1696,7 @@
       (= (inv@24@00 s@$ xs@3@00 i@4@00 (Seq_index xs@3@00 j@23@00)) j@23@00)
       (img@25@00 s@$ xs@3@00 i@4@00 (Seq_index xs@3@00 j@23@00))))
   :pattern ((Seq_index xs@3@00 j@23@00))
-  :qid |quant-u-12724|)))
+  :qid |quant-u-12788|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -1723,11 +1723,11 @@
 (assert (forall ((s@$ $Snap) (xs@3@00 Seq<$Ref>) (i@4@00 Int)) (!
   (= (fun01qp%limited s@$ xs@3@00 i@4@00) (fun01qp s@$ xs@3@00 i@4@00))
   :pattern ((fun01qp s@$ xs@3@00 i@4@00))
-  :qid |quant-u-12711|)))
+  :qid |quant-u-12775|)))
 (assert (forall ((s@$ $Snap) (xs@3@00 Seq<$Ref>) (i@4@00 Int)) (!
   (fun01qp%stateless xs@3@00 i@4@00)
   :pattern ((fun01qp%limited s@$ xs@3@00 i@4@00))
-  :qid |quant-u-12712|)))
+  :qid |quant-u-12776|)))
 ; ---------- FUNCTION fun01----------
 (declare-fun x@6@00 () $Ref)
 (declare-fun y@7@00 () $Ref)
@@ -1769,11 +1769,11 @@
 (assert (forall ((s@$ $Snap) (x@6@00 $Ref) (y@7@00 $Ref) (b@8@00 Bool)) (!
   (= (fun01%limited s@$ x@6@00 y@7@00 b@8@00) (fun01 s@$ x@6@00 y@7@00 b@8@00))
   :pattern ((fun01 s@$ x@6@00 y@7@00 b@8@00))
-  :qid |quant-u-12713|)))
+  :qid |quant-u-12777|)))
 (assert (forall ((s@$ $Snap) (x@6@00 $Ref) (y@7@00 $Ref) (b@8@00 Bool)) (!
   (fun01%stateless x@6@00 y@7@00 b@8@00)
   :pattern ((fun01%limited s@$ x@6@00 y@7@00 b@8@00))
-  :qid |quant-u-12714|)))
+  :qid |quant-u-12778|)))
 ; ---------- FUNCTION fun02qp----------
 (declare-fun xs@10@00 () Seq<$Ref>)
 (declare-fun i@11@00 () Int)
@@ -1861,7 +1861,7 @@
       (= (ite (= j@26@00 i@11@00) $Perm.Write $Perm.No) $Perm.No)
       (= j@26@00 i@11@00)))
   
-  :qid |quant-u-12725|))))
+  :qid |quant-u-12789|))))
 (check-sat)
 ; unsat
 (pop) ; 2
@@ -1897,7 +1897,7 @@
       (= (inv@27@00 s@$ xs@10@00 i@11@00 (Seq_index xs@10@00 j@26@00)) j@26@00)
       (img@28@00 s@$ xs@10@00 i@11@00 (Seq_index xs@10@00 j@26@00))))
   :pattern ((Seq_index xs@10@00 j@26@00))
-  :qid |quant-u-12726|)))
+  :qid |quant-u-12790|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -1928,11 +1928,11 @@
 (assert (forall ((s@$ $Snap) (xs@10@00 Seq<$Ref>) (i@11@00 Int)) (!
   (= (fun02qp%limited s@$ xs@10@00 i@11@00) (fun02qp s@$ xs@10@00 i@11@00))
   :pattern ((fun02qp s@$ xs@10@00 i@11@00))
-  :qid |quant-u-12715|)))
+  :qid |quant-u-12779|)))
 (assert (forall ((s@$ $Snap) (xs@10@00 Seq<$Ref>) (i@11@00 Int)) (!
   (fun02qp%stateless xs@10@00 i@11@00)
   :pattern ((fun02qp%limited s@$ xs@10@00 i@11@00))
-  :qid |quant-u-12716|)))
+  :qid |quant-u-12780|)))
 ; ---------- FUNCTION fun03qp----------
 (declare-fun x@13@00 () $Ref)
 (declare-fun i@14@00 () Int)
@@ -2105,7 +2105,7 @@
   :pattern ((Seq_index
     ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first s@$))
     j@29@00))
-  :qid |quant-u-12728|)))
+  :qid |quant-u-12792|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -2147,11 +2147,11 @@
 (assert (forall ((s@$ $Snap) (x@13@00 $Ref) (i@14@00 Int)) (!
   (= (fun03qp%limited s@$ x@13@00 i@14@00) (fun03qp s@$ x@13@00 i@14@00))
   :pattern ((fun03qp s@$ x@13@00 i@14@00))
-  :qid |quant-u-12717|)))
+  :qid |quant-u-12781|)))
 (assert (forall ((s@$ $Snap) (x@13@00 $Ref) (i@14@00 Int)) (!
   (fun03qp%stateless x@13@00 i@14@00)
   :pattern ((fun03qp%limited s@$ x@13@00 i@14@00))
-  :qid |quant-u-12718|)))
+  :qid |quant-u-12782|)))
 ; ---------- FUNCTION fun02----------
 (declare-fun x@16@00 () $Ref)
 (declare-fun y@17@00 () $Ref)
@@ -2261,8 +2261,8 @@
     (fun02%limited s@$ x@16@00 y@17@00 b@18@00)
     (fun02 s@$ x@16@00 y@17@00 b@18@00))
   :pattern ((fun02 s@$ x@16@00 y@17@00 b@18@00))
-  :qid |quant-u-12719|)))
+  :qid |quant-u-12783|)))
 (assert (forall ((s@$ $Snap) (x@16@00 $Ref) (y@17@00 $Ref) (b@18@00 Bool)) (!
   (fun02%stateless x@16@00 y@17@00 b@18@00)
   :pattern ((fun02%limited s@$ x@16@00 y@17@00 b@18@00))
-  :qid |quant-u-12720|)))
+  :qid |quant-u-12784|)))

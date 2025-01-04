@@ -138,7 +138,6 @@
 (declare-fun $IsGoodHeap (T@U) Bool)
 (declare-fun $Heap@0 () T@U)
 (declare-fun $IsHeapAnchor (T@U) Bool)
-(declare-fun |one#0| () Int)
 (declare-fun |##x#0@0| () Int)
 (declare-fun $LZ () T@U)
 (set-option :timeout 10000)
@@ -156,8 +155,8 @@
 (set-option :pp.bv_literals false)
 (set-option :smt.arith.solver 2)
 (assert (not
- (=> (= (ControlFlow 0 0) 4) (let ((anon0_correct  (=> (= $_ModifiesFrame@0 (|lambda#0| null $Heap alloc false)) (=> (and (and ($IsGoodHeap $Heap@0) ($IsHeapAnchor $Heap@0)) (and (= $Heap $Heap@0) reveal_LayerQuantifiers._default.f)) (and (=> (= (ControlFlow 0 2) (- 0 3)) ($Is intType (int_2_U (+ |one#0| |one#0|)) Tclass._System.nat)) (=> ($Is intType (int_2_U (+ |one#0| |one#0|)) Tclass._System.nat) (=> (= |##x#0@0| (+ |one#0| |one#0|)) (=> (and (and ($IsAlloc intType (int_2_U |##x#0@0|) Tclass._System.nat $Heap@0) (|LayerQuantifiers.__default.f#canCall| (+ |one#0| |one#0|))) (and (|LayerQuantifiers.__default.f#canCall| (+ |one#0| |one#0|)) (= (ControlFlow 0 2) (- 0 1)))) (LayerQuantifiers.__default.f ($LS ($LS $LZ)) reveal_LayerQuantifiers._default.f (+ |one#0| |one#0|))))))))))
-(let ((PreconditionGeneratedEntry_correct  (=> (and (and (and ($IsGoodHeap $Heap) ($IsHeapAnchor $Heap)) (= 1 $FunctionContextHeight)) (and (= |one#0| (LitInt 1)) (= (ControlFlow 0 4) 2))) anon0_correct)))
+ (=> (= (ControlFlow 0 0) 4) (let ((anon0_correct  (=> (= $_ModifiesFrame@0 (|lambda#0| null $Heap alloc false)) (=> (and (and ($IsGoodHeap $Heap@0) ($IsHeapAnchor $Heap@0)) (and (= $Heap $Heap@0) reveal_LayerQuantifiers._default.f)) (and (=> (= (ControlFlow 0 2) (- 0 3)) ($Is intType (int_2_U (LitInt 1)) Tclass._System.nat)) (=> ($Is intType (int_2_U (LitInt 1)) Tclass._System.nat) (=> (= |##x#0@0| (LitInt 1)) (=> (and (and ($IsAlloc intType (int_2_U |##x#0@0|) Tclass._System.nat $Heap@0) (|LayerQuantifiers.__default.f#canCall| (LitInt 1))) (and (|LayerQuantifiers.__default.f#canCall| (LitInt 1)) (= (ControlFlow 0 2) (- 0 1)))) (LayerQuantifiers.__default.f ($LS ($LS $LZ)) reveal_LayerQuantifiers._default.f (LitInt 1))))))))))
+(let ((PreconditionGeneratedEntry_correct  (=> (and (and ($IsGoodHeap $Heap) ($IsHeapAnchor $Heap)) (and (= 1 $FunctionContextHeight) (= (ControlFlow 0 4) 2))) anon0_correct)))
 PreconditionGeneratedEntry_correct)))
 ))
 (check-sat)

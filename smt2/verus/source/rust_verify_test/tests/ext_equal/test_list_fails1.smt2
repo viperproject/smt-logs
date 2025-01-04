@@ -682,8 +682,8 @@
 (declare-const fuel%vstd!seq.axiom_seq_index_decreases. FuelId)
 (declare-const fuel%vstd!seq.axiom_seq_ext_equal. FuelId)
 (declare-const fuel%vstd!seq.axiom_seq_ext_equal_deep. FuelId)
-(declare-const fuel%test_crate!impl&%0.arrow_1. FuelId)
 (declare-const fuel%test_crate!impl&%0.arrow_0. FuelId)
+(declare-const fuel%test_crate!impl&%0.arrow_1. FuelId)
 (declare-const fuel%test_crate!impl&%0.arrow_Cons_0. FuelId)
 (declare-const fuel%test_crate!impl&%0.arrow_Cons_1. FuelId)
 (declare-const fuel%vstd!array.group_array_axioms. FuelId)
@@ -703,8 +703,8 @@
 (declare-const fuel%vstd!group_vstd_default. FuelId)
 (assert
  (distinct fuel%vstd!seq.impl&%0.spec_index. fuel%vstd!seq.axiom_seq_index_decreases.
-  fuel%vstd!seq.axiom_seq_ext_equal. fuel%vstd!seq.axiom_seq_ext_equal_deep. fuel%test_crate!impl&%0.arrow_1.
-  fuel%test_crate!impl&%0.arrow_0. fuel%test_crate!impl&%0.arrow_Cons_0. fuel%test_crate!impl&%0.arrow_Cons_1.
+  fuel%vstd!seq.axiom_seq_ext_equal. fuel%vstd!seq.axiom_seq_ext_equal_deep. fuel%test_crate!impl&%0.arrow_0.
+  fuel%test_crate!impl&%0.arrow_1. fuel%test_crate!impl&%0.arrow_Cons_0. fuel%test_crate!impl&%0.arrow_Cons_1.
   fuel%vstd!array.group_array_axioms. fuel%vstd!map.group_map_axioms. fuel%vstd!multiset.group_multiset_axioms.
   fuel%vstd!raw_ptr.group_raw_ptr_axioms. fuel%vstd!seq.group_seq_axioms. fuel%vstd!seq_lib.group_seq_lib_default.
   fuel%vstd!set.group_set_axioms. fuel%vstd!set_lib.group_set_lib_axioms. fuel%vstd!slice.group_slice_axioms.
@@ -895,11 +895,11 @@
 ;; Function-Decl vstd::seq::impl&%0::spec_index
 (declare-fun vstd!seq.impl&%0.spec_index.? (Dcr Type Poly Poly) Poly)
 
-;; Function-Decl test_crate::List::arrow_1
-(declare-fun test_crate!impl&%0.arrow_1.? (Poly) test_crate!List.)
-
 ;; Function-Decl test_crate::List::arrow_0
 (declare-fun test_crate!impl&%0.arrow_0.? (Poly) vstd!seq.Seq<u8.>.)
+
+;; Function-Decl test_crate::List::arrow_1
+(declare-fun test_crate!impl&%0.arrow_1.? (Poly) test_crate!List.)
 
 ;; Function-Decl test_crate::List::arrow_Cons_0
 (declare-fun test_crate!impl&%0.arrow_Cons_0.? (Poly) vstd!seq.Seq<u8.>.)
@@ -1082,22 +1082,6 @@
     :skolemid skolem_user_vstd__seq__axiom_seq_ext_equal_deep_4
 ))))
 
-;; Function-Axioms test_crate::List::arrow_1
-(assert
- (fuel_bool_default fuel%test_crate!impl&%0.arrow_1.)
-)
-(assert
- (=>
-  (fuel_bool fuel%test_crate!impl&%0.arrow_1.)
-  (forall ((self! Poly)) (!
-    (= (test_crate!impl&%0.arrow_1.? self!) (test_crate!List./Cons/1 (%Poly%test_crate!List.
-       self!
-    )))
-    :pattern ((test_crate!impl&%0.arrow_1.? self!))
-    :qid internal_test_crate!impl&__0.arrow_1.?_definition
-    :skolemid skolem_internal_test_crate!impl&__0.arrow_1.?_definition
-))))
-
 ;; Function-Axioms test_crate::List::arrow_0
 (assert
  (fuel_bool_default fuel%test_crate!impl&%0.arrow_0.)
@@ -1112,6 +1096,22 @@
     :pattern ((test_crate!impl&%0.arrow_0.? self!))
     :qid internal_test_crate!impl&__0.arrow_0.?_definition
     :skolemid skolem_internal_test_crate!impl&__0.arrow_0.?_definition
+))))
+
+;; Function-Axioms test_crate::List::arrow_1
+(assert
+ (fuel_bool_default fuel%test_crate!impl&%0.arrow_1.)
+)
+(assert
+ (=>
+  (fuel_bool fuel%test_crate!impl&%0.arrow_1.)
+  (forall ((self! Poly)) (!
+    (= (test_crate!impl&%0.arrow_1.? self!) (test_crate!List./Cons/1 (%Poly%test_crate!List.
+       self!
+    )))
+    :pattern ((test_crate!impl&%0.arrow_1.? self!))
+    :qid internal_test_crate!impl&__0.arrow_1.?_definition
+    :skolemid skolem_internal_test_crate!impl&__0.arrow_1.?_definition
 ))))
 
 ;; Function-Axioms test_crate::List::arrow_Cons_0

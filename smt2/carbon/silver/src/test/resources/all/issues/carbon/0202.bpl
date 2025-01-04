@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-29 20:42:54
+// Date:         2025-01-04 01:12:20
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0202.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0202-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -301,10 +301,10 @@ procedure qpTest(a_2: ArrayDomainType, j_9: int) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -361,8 +361,8 @@ procedure qpTest(a_2: ArrayDomainType, j_9: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale dummy(j - 2) -- 0202.vpr@33.10--33.20
     assume state(Heap, Mask);
@@ -383,8 +383,8 @@ procedure qpTest(a_2: ArrayDomainType, j_9: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (exists k: Int :: dummy(k - 2) && 0 <= k) -- 0202.vpr@36.3--36.46
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (exists k: Int :: dummy(k - 2) && 0 <= k)
       if (*) {
@@ -410,10 +410,10 @@ procedure qpTestTwo(a_2: ArrayDomainType, j_9: int) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -469,8 +469,8 @@ procedure qpTestTwo(a_2: ArrayDomainType, j_9: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale other_dummy(j - 2) -- 0202.vpr@47.10--47.26
     assume (other_dummy(j_9 - 2): bool);
@@ -484,8 +484,8 @@ procedure qpTestTwo(a_2: ArrayDomainType, j_9: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (exists k: Int :: other_dummy(k - 2) ==> 0 <= k) -- 0202.vpr@49.3--49.53
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (exists k: Int :: other_dummy(k - 2) ==> 0 <= k)
       if (*) {

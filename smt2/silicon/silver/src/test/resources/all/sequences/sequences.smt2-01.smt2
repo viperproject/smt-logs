@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-29 20:04:46
+; Started: 2025-01-04 00:33:55
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -666,19 +666,19 @@
 (assert (forall ((s@$ $Snap) (i@0@00 Int)) (!
   (= (trivial%limited s@$ i@0@00) (trivial s@$ i@0@00))
   :pattern ((trivial s@$ i@0@00))
-  :qid |quant-u-22710|)))
+  :qid |quant-u-22725|)))
 (assert (forall ((s@$ $Snap) (i@0@00 Int)) (!
   (trivial%stateless i@0@00)
   :pattern ((trivial%limited s@$ i@0@00))
-  :qid |quant-u-22711|)))
+  :qid |quant-u-22726|)))
 (assert (forall ((s@$ $Snap) (i@0@00 Int)) (!
   (=> (trivial%precondition s@$ i@0@00) (= (trivial s@$ i@0@00) true))
   :pattern ((trivial s@$ i@0@00))
-  :qid |quant-u-22712|)))
+  :qid |quant-u-22727|)))
 (assert (forall ((s@$ $Snap) (i@0@00 Int)) (!
   true
   :pattern ((trivial s@$ i@0@00))
-  :qid |quant-u-22713|)))
+  :qid |quant-u-22728|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- t1 ----------
@@ -1632,6 +1632,42 @@
 (check-sat)
 ; unknown
 (pop) ; 3
+; 0.00s
+; (get-info :all-statistics)
+; [state consolidation]
+; State saturation: before repetition
+(set-option :timeout 10)
+(check-sat)
+; unknown
+; [eval] |s[j..]| == |s| - j
+; [eval] |s[j..]|
+; [eval] s[j..]
+; [eval] |s| - j
+; [eval] |s|
+(set-option :timeout 0)
+(push) ; 3
+(assert (not (= (Seq_length (Seq_drop s@14@01 j@16@01)) (- (Seq_length s@14@01) j@16@01))))
+(check-sat)
+; unknown
+(pop) ; 3
+; 0.00s
+; (get-info :all-statistics)
+; [state consolidation]
+; State saturation: before repetition
+(set-option :timeout 10)
+(check-sat)
+; unknown
+; [eval] |s[j..]| == |s| - j
+; [eval] |s[j..]|
+; [eval] s[j..]
+; [eval] |s| - j
+; [eval] |s|
+(set-option :timeout 0)
+(push) ; 3
+(assert (not (= (Seq_length (Seq_drop s@14@01 j@16@01)) (- (Seq_length s@14@01) j@16@01))))
+(check-sat)
+; unknown
+(pop) ; 3
 ; 0.01s
 ; (get-info :all-statistics)
 ; [state consolidation]
@@ -1650,43 +1686,7 @@
 (check-sat)
 ; unknown
 (pop) ; 3
-; 0.00s
-; (get-info :all-statistics)
-; [state consolidation]
-; State saturation: before repetition
-(set-option :timeout 10)
-(check-sat)
-; unknown
-; [eval] |s[j..]| == |s| - j
-; [eval] |s[j..]|
-; [eval] s[j..]
-; [eval] |s| - j
-; [eval] |s|
-(set-option :timeout 0)
-(push) ; 3
-(assert (not (= (Seq_length (Seq_drop s@14@01 j@16@01)) (- (Seq_length s@14@01) j@16@01))))
-(check-sat)
-; unknown
-(pop) ; 3
-; 0.00s
-; (get-info :all-statistics)
-; [state consolidation]
-; State saturation: before repetition
-(set-option :timeout 10)
-(check-sat)
-; unknown
-; [eval] |s[j..]| == |s| - j
-; [eval] |s[j..]|
-; [eval] s[j..]
-; [eval] |s| - j
-; [eval] |s|
-(set-option :timeout 0)
-(push) ; 3
-(assert (not (= (Seq_length (Seq_drop s@14@01 j@16@01)) (- (Seq_length s@14@01) j@16@01))))
-(check-sat)
-; unknown
-(pop) ; 3
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (pop) ; 2
 (pop) ; 1

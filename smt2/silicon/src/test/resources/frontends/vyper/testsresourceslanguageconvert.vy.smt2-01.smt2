@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-29 19:51:06
+; Started: 2025-01-04 00:19:54
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -6725,52 +6725,52 @@
 (check-sat)
 ; unknown
 (pop) ; 21
+; 0.36s
+; (get-info :all-statistics)
+; [state consolidation]
+; State saturation: before repetition
+(set-option :timeout 10)
+(check-sat)
+; unknown
+; [eval] l$i == l$u + 1
+; [eval] l$u + 1
+(set-option :timeout 0)
+(push) ; 21
+(assert (not false))
+(check-sat)
+; unknown
+(pop) ; 21
+; 0.38s
+; (get-info :all-statistics)
+; [state consolidation]
+; State saturation: before repetition
+(set-option :timeout 10)
+(check-sat)
+; unknown
+; [eval] l$i == l$u + 1
+; [eval] l$u + 1
+(set-option :timeout 0)
+(push) ; 21
+(assert (not false))
+(check-sat)
+; unknown
+(pop) ; 21
+; 0.34s
+; (get-info :all-statistics)
+; [state consolidation]
+; State saturation: before repetition
+(set-option :timeout 10)
+(check-sat)
+; unknown
+; [eval] l$i == l$u + 1
+; [eval] l$u + 1
+(set-option :timeout 0)
+(push) ; 21
+(assert (not false))
+(check-sat)
+; unknown
+(pop) ; 21
 ; 0.41s
-; (get-info :all-statistics)
-; [state consolidation]
-; State saturation: before repetition
-(set-option :timeout 10)
-(check-sat)
-; unknown
-; [eval] l$i == l$u + 1
-; [eval] l$u + 1
-(set-option :timeout 0)
-(push) ; 21
-(assert (not false))
-(check-sat)
-; unknown
-(pop) ; 21
-; 0.40s
-; (get-info :all-statistics)
-; [state consolidation]
-; State saturation: before repetition
-(set-option :timeout 10)
-(check-sat)
-; unknown
-; [eval] l$i == l$u + 1
-; [eval] l$u + 1
-(set-option :timeout 0)
-(push) ; 21
-(assert (not false))
-(check-sat)
-; unknown
-(pop) ; 21
-; 0.45s
-; (get-info :all-statistics)
-; [state consolidation]
-; State saturation: before repetition
-(set-option :timeout 10)
-(check-sat)
-; unknown
-; [eval] l$i == l$u + 1
-; [eval] l$u + 1
-(set-option :timeout 0)
-(push) ; 21
-(assert (not false))
-(check-sat)
-; unknown
-(pop) ; 21
-; 0.42s
 ; (get-info :all-statistics)
 (pop) ; 20
 (pop) ; 19
@@ -11769,7 +11769,7 @@
 (check-sat)
 ; unsat
 (pop) ; 5
-; 0.65s
+; 0.33s
 ; (get-info :all-statistics)
 (assert (=
   (not

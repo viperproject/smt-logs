@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-29 20:03:40
+; Started: 2025-01-04 00:32:44
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -119,11 +119,11 @@
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref) (b@1@00 Bool)) (!
   (= (fun%limited s@$ x@0@00 b@1@00) (fun s@$ x@0@00 b@1@00))
   :pattern ((fun s@$ x@0@00 b@1@00))
-  :qid |quant-u-21883|)))
+  :qid |quant-u-21898|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref) (b@1@00 Bool)) (!
   (fun%stateless x@0@00 b@1@00)
   :pattern ((fun%limited s@$ x@0@00 b@1@00))
-  :qid |quant-u-21884|)))
+  :qid |quant-u-21899|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref) (b@1@00 Bool)) (!
   (=>
     (fun%precondition s@$ x@0@00 b@1@00)
@@ -134,11 +134,11 @@
         (not (= ($SortWrappers.$SnapToInt s@$) 0))
         (not ($SortWrappers.$SnapToBool s@$)))))
   :pattern ((fun s@$ x@0@00 b@1@00))
-  :qid |quant-u-21885|)))
+  :qid |quant-u-21900|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref) (b@1@00 Bool)) (!
   true
   :pattern ((fun s@$ x@0@00 b@1@00))
-  :qid |quant-u-21886|)))
+  :qid |quant-u-21901|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- test1 ----------

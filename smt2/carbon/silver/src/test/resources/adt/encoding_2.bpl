@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-29 20:52:49
+// Date:         2025-01-04 01:22:20
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/adt/encoding_2.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/adt/encoding_2-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -304,10 +304,10 @@ axiom (forall <T> t_2: (ADTDomainType T) ::
 procedure encoding_2(a_2: (ADTDomainType bool)) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -317,30 +317,30 @@ procedure encoding_2(a_2: (ADTDomainType bool)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert (ADT_tag(a): Int) == 0 ||
   //   ((ADT_tag(a): Int) == 1 ||
   //   ((ADT_tag(a): Int) == 2 ||
   //   ((ADT_tag(a): Int) == 3 ||
   //   ((ADT_tag(a): Int) == 4 || (ADT_tag(a): Int) == 5)))) -- encoding_2.vpr@12.3--12.66
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion (ADT_tag(a): Int) == 0 || ((ADT_tag(a): Int) == 1 || ((ADT_tag(a): Int) == 2 || ((ADT_tag(a): Int) == 3 || ((ADT_tag(a): Int) == 4 || (ADT_tag(a): Int) == 5)))) might not hold. (encoding_2.vpr@12.10--12.66) [222588]"}
       (ADT_tag(a_2): int) == 0 || ((ADT_tag(a_2): int) == 1 || ((ADT_tag(a_2): int) == 2 || ((ADT_tag(a_2): int) == 3 || ((ADT_tag(a_2): int) == 4 || (ADT_tag(a_2): int) == 5))));
     assume state(Heap, Mask);
   
   // -- Translating statement: assert ((ADT_tag(a): Int) == 0) == (a == (C1(): ADT[Bool])) -- encoding_2.vpr@14.3--14.31
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion ((ADT_tag(a): Int) == 0) == (a == (C1(): ADT[Bool])) might not hold. (encoding_2.vpr@14.10--14.31) [222589]"}
       ((ADT_tag(a_2): int) == 0) == (a_2 == (C1(): ADTDomainType bool));
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (ADT_tag(a): Int) == 1 ==> a != (C1(): ADT[Bool]) -- encoding_2.vpr@15.3--15.30
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     if ((ADT_tag(a_2): int) == 1) {
       assert {:msg "  Assert might fail. Assertion a != (C1(): ADT[Bool]) might not hold. (encoding_2.vpr@15.10--15.30) [222590]"}
         a_2 != (C1(): ADTDomainType bool);
@@ -350,8 +350,8 @@ procedure encoding_2(a_2: (ADTDomainType bool)) returns ()
   // -- Translating statement: assert ((ADT_tag(a): Int) == 1) ==
   //   (a ==
   //   (C2((get_ADT_p21(a): Bool), (get_ADT_p22(a): ADT[Bool])): ADT[Bool])) -- encoding_2.vpr@16.3--16.43
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion ((ADT_tag(a): Int) == 1) == (a == (C2((get_ADT_p21(a): Bool), (get_ADT_p22(a): ADT[Bool])): ADT[Bool])) might not hold. (encoding_2.vpr@16.10--16.43) [222591]"}
       ((ADT_tag(a_2): int) == 1) == (a_2 == (C2((get_ADT_p21(a_2): bool), (get_ADT_p22(a_2): ADTDomainType bool)): ADTDomainType bool));
     assume state(Heap, Mask);

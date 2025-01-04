@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-29 20:06:12
+; Started: 2025-01-04 00:35:24
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -407,11 +407,11 @@
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref) (last@1@00 $Ref)) (!
   (= (degrees%limited s@$ this@0@00 last@1@00) (degrees s@$ this@0@00 last@1@00))
   :pattern ((degrees s@$ this@0@00 last@1@00))
-  :qid |quant-u-24222|)))
+  :qid |quant-u-24237|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref) (last@1@00 $Ref)) (!
   (degrees%stateless this@0@00 last@1@00)
   :pattern ((degrees%limited s@$ this@0@00 last@1@00))
-  :qid |quant-u-24223|)))
+  :qid |quant-u-24238|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref) (last@1@00 $Ref)) (!
   (=>
     (degrees%precondition s@$ this@0@00 last@1@00)
@@ -432,7 +432,7 @@
               ($Snap.second ($Snap.second ($Snap.second s@$)))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$))) last@1@00))))))
   :pattern ((degrees s@$ this@0@00 last@1@00))
   :pattern ((degrees%stateless this@0@00 last@1@00) (lseg%trigger ($Snap.second s@$) this@0@00 last@1@00))
-  :qid |quant-u-24224|)))
+  :qid |quant-u-24239|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref) (last@1@00 $Ref)) (!
   (=>
     (degrees%precondition s@$ this@0@00 last@1@00)
@@ -448,7 +448,7 @@
           $Snap.unit
           ($Snap.second ($Snap.second ($Snap.second s@$)))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$))) last@1@00))))
   :pattern ((degrees s@$ this@0@00 last@1@00))
-  :qid |quant-u-24225|)))
+  :qid |quant-u-24240|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- join ----------

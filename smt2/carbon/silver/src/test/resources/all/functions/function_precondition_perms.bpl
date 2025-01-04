@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-29 20:37:02
+// Date:         2025-01-04 01:06:27
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/functions/function_precondition_perms.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/functions/function_precondition_perms-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -1028,8 +1028,8 @@ procedure nonAliasF#definedness(x: Ref, y: Ref) returns (Result: int)
   var perm: Perm;
   var assertingHeap: HeapType;
   var assertingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1056,8 +1056,8 @@ procedure nonAliasF#definedness(x: Ref, y: Ref) returns (Result: int)
       assertingHeap := Heap;
       assertingMask := Mask;
       // Exhale assertion of asserting
-      ExhaleWellDef0Heap := assertingHeap;
       ExhaleWellDef0Mask := assertingMask;
+      ExhaleWellDef0Heap := assertingHeap;
       assert {:msg "  Function might not be well-formed. Assertion x != y might not hold. (function_precondition_perms.vpr@43.1--47.2) [155437]"}
         x != y;
       
@@ -1111,8 +1111,8 @@ procedure bar#definedness(x: Ref) returns (Result: int)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -1137,8 +1137,8 @@ procedure bar#definedness(x: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume P#trigger(UnfoldingHeap, P(x));
       assume UnfoldingHeap[null, P(x)] == FrameFragment(UnfoldingHeap[x, f_7]);
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := 1 / 2;
       assert {:msg "  Function might not be well-formed. Fraction 1 / 2 might be negative. (function_precondition_perms.vpr@58.1--62.2) [155440]"}
         perm >= NoPerm;
@@ -1153,8 +1153,8 @@ procedure bar#definedness(x: Ref) returns (Result: int)
       assume state(UnfoldingHeap, UnfoldingMask);
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := UnfoldingHeap;
         ExhaleWellDef0Mask := UnfoldingMask;
+        ExhaleWellDef0Heap := UnfoldingHeap;
         perm := FullPerm;
         assert {:msg "  Precondition of function foo might not hold. There might be insufficient permission to access x.f (function_precondition_perms.vpr@61.31--61.37) [155443]"}
           NoPerm < perm ==> NoPerm < UnfoldingMask[x, f_7];
@@ -1216,8 +1216,8 @@ procedure bar2#definedness(x: Ref) returns (Result: int)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -1240,8 +1240,8 @@ procedure bar2#definedness(x: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume P#trigger(UnfoldingHeap, P(x));
       assume UnfoldingHeap[null, P(x)] == FrameFragment(UnfoldingHeap[x, f_7]);
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := 1 / 2;
       assert {:msg "  Function might not be well-formed. Fraction 1 / 2 might be negative. (function_precondition_perms.vpr@65.1--69.2) [155444]"}
         perm >= NoPerm;
@@ -1256,8 +1256,8 @@ procedure bar2#definedness(x: Ref) returns (Result: int)
       assume state(UnfoldingHeap, UnfoldingMask);
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := UnfoldingHeap;
         ExhaleWellDef0Mask := UnfoldingMask;
+        ExhaleWellDef0Heap := UnfoldingHeap;
         perm := FullPerm;
         assert {:msg "  Precondition of function foo might not hold. There might be insufficient permission to access x.f (function_precondition_perms.vpr@68.31--68.37) [155447]"}
           NoPerm < perm ==> NoPerm < UnfoldingMask[x, f_7];
@@ -1319,8 +1319,8 @@ procedure bar3#definedness(x: Ref) returns (Result: int)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1342,8 +1342,8 @@ procedure bar3#definedness(x: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume P#trigger(UnfoldingHeap, P(x));
       assume UnfoldingHeap[null, P(x)] == FrameFragment(UnfoldingHeap[x, f_7]);
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := 1 / 2;
       assert {:msg "  Function might not be well-formed. Fraction 1 / 2 might be negative. (function_precondition_perms.vpr@72.1--76.2) [155448]"}
         perm >= NoPerm;
@@ -1403,8 +1403,8 @@ procedure bar4#definedness(x: Ref) returns (Result: int)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1425,8 +1425,8 @@ procedure bar4#definedness(x: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume P#trigger(UnfoldingHeap, P(x));
       assume UnfoldingHeap[null, P(x)] == FrameFragment(UnfoldingHeap[x, f_7]);
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access P(x) (function_precondition_perms.vpr@79.12--79.55) [155453]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, P(x)];
@@ -1447,8 +1447,8 @@ procedure bar4#definedness(x: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume P#trigger(UnfoldingHeap, P(x));
       assume UnfoldingHeap[null, P(x)] == FrameFragment(UnfoldingHeap[x, f_7]);
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       perm := FullPerm;
       assume x != null;
@@ -1494,8 +1494,8 @@ procedure bar5#definedness(x: Ref) returns (Result: int)
 {
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var perm: Perm;
   
   // -- Initializing the state
@@ -1512,8 +1512,8 @@ procedure bar5#definedness(x: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume P#trigger(UnfoldingHeap, P(x));
       assume UnfoldingHeap[null, P(x)] == FrameFragment(UnfoldingHeap[x, f_7]);
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access P(x) (function_precondition_perms.vpr@84.12--84.37) [155455]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, P(x)];
@@ -1534,8 +1534,8 @@ procedure bar5#definedness(x: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume P#trigger(UnfoldingHeap, P(x));
       assume UnfoldingHeap[null, P(x)] == FrameFragment(UnfoldingHeap[x, f_7]);
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       perm := FullPerm;
       assume x != null;
@@ -1728,8 +1728,8 @@ procedure nonAliasPred#definedness(x: Ref, y: Ref) returns ()
   var perm: Perm;
   var assertingHeap: HeapType;
   var assertingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Check definedness of predicate body of nonAliasPred
     
@@ -1753,8 +1753,8 @@ procedure nonAliasPred#definedness(x: Ref, y: Ref) returns ()
       assertingHeap := Heap;
       assertingMask := Mask;
       // Exhale assertion of asserting
-      ExhaleWellDef0Heap := assertingHeap;
       ExhaleWellDef0Mask := assertingMask;
+      ExhaleWellDef0Heap := assertingHeap;
       assert {:msg "  Predicate might not be well-formed. Assertion x != y might not hold. (function_precondition_perms.vpr@49.1--51.2) [155457]"}
         x != y;
     assume state(Heap, Mask);
@@ -1767,11 +1767,11 @@ procedure nonAliasPred#definedness(x: Ref, y: Ref) returns ()
 procedure nonAliasM(x: Ref, y: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1786,8 +1786,8 @@ procedure nonAliasM(x: Ref, y: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale acc(x.f, write) && acc(y.f, write) -- function_precondition_perms.vpr@54.5--54.32
     perm := FullPerm;
@@ -1802,8 +1802,8 @@ procedure nonAliasM(x: Ref, y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert x != y -- function_precondition_perms.vpr@55.5--55.18
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion x != y might not hold. (function_precondition_perms.vpr@55.12--55.18) [155460]"}
       x != y;
     assume state(Heap, Mask);
@@ -1816,11 +1816,11 @@ procedure nonAliasM(x: Ref, y: Ref) returns ()
 procedure test0(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var tmp: int;
   
@@ -1836,8 +1836,8 @@ procedure test0(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale acc(x.f, 1 / 2) -- function_precondition_perms.vpr@92.4--92.24
     perm := 1 / 2;
@@ -1854,8 +1854,8 @@ procedure test0(x: Ref) returns ()
     // -- Check definedness of foo(x)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function foo might not hold. There might be insufficient permission to access x.f (function_precondition_perms.vpr@94.11--94.17) [155462]"}
           NoPerm < perm ==> NoPerm < Mask[x, f_7];
@@ -1877,11 +1877,11 @@ procedure test0(x: Ref) returns ()
 procedure test0mce(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var tmp: int;
   
@@ -1897,8 +1897,8 @@ procedure test0mce(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale acc(x.f, 1 / 2) -- function_precondition_perms.vpr@100.4--100.24
     perm := 1 / 2;
@@ -1915,8 +1915,8 @@ procedure test0mce(x: Ref) returns ()
     // -- Check definedness of foo(x)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function foo might not hold. There might be insufficient permission to access x.f (function_precondition_perms.vpr@102.11--102.17) [155464]"}
           NoPerm < perm ==> NoPerm < Mask[x, f_7];
@@ -1938,11 +1938,11 @@ procedure test0mce(x: Ref) returns ()
 procedure test0qp(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var QPMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var perm: Perm;
   var ExhaleHeap: HeapType;
   var tmp: int;
@@ -1959,8 +1959,8 @@ procedure test0qp(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale (forall y: Ref ::y == x ==> acc(y.f, 1 / 2)) -- function_precondition_perms.vpr@107.4--107.52
     
@@ -2016,8 +2016,8 @@ procedure test0qp(x: Ref) returns ()
     // -- Check definedness of foo(x)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function foo might not hold. There might be insufficient permission to access x.f (function_precondition_perms.vpr@109.11--109.17) [155467]"}
           NoPerm < perm ==> NoPerm < Mask[x, f_7];
@@ -2039,11 +2039,11 @@ procedure test0qp(x: Ref) returns ()
 procedure test0p(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var tmp: int;
   
@@ -2059,8 +2059,8 @@ procedure test0p(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale acc(P(x), 1 / 2) -- function_precondition_perms.vpr@114.4--114.25
     perm := 1 / 2;
@@ -2076,8 +2076,8 @@ procedure test0p(x: Ref) returns ()
     // -- Check definedness of foop(x)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function foop might not hold. There might be insufficient permission to access P(x) (function_precondition_perms.vpr@116.11--116.18) [155469]"}
           NoPerm < perm ==> NoPerm < Mask[null, P(x)];
@@ -2099,11 +2099,11 @@ procedure test0p(x: Ref) returns ()
 procedure test0pmce(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var tmp: int;
   
@@ -2119,8 +2119,8 @@ procedure test0pmce(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale acc(P(x), 1 / 2) -- function_precondition_perms.vpr@122.4--122.25
     perm := 1 / 2;
@@ -2136,8 +2136,8 @@ procedure test0pmce(x: Ref) returns ()
     // -- Check definedness of foop(x)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function foop might not hold. There might be insufficient permission to access P(x) (function_precondition_perms.vpr@124.11--124.18) [155471]"}
           NoPerm < perm ==> NoPerm < Mask[null, P(x)];
@@ -2159,11 +2159,11 @@ procedure test0pmce(x: Ref) returns ()
 procedure test0pqp(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var QPMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var perm: Perm;
   var ExhaleHeap: HeapType;
   var tmp: int;
@@ -2180,8 +2180,8 @@ procedure test0pqp(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale (forall y: Ref ::y == x ==> acc(P(y), 1 / 2)) -- function_precondition_perms.vpr@129.4--129.53
     
@@ -2239,8 +2239,8 @@ procedure test0pqp(x: Ref) returns ()
     // -- Check definedness of foop(x)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function foop might not hold. There might be insufficient permission to access P(x) (function_precondition_perms.vpr@131.11--131.18) [155474]"}
           NoPerm < perm ==> NoPerm < Mask[null, P(x)];
@@ -2262,11 +2262,11 @@ procedure test0pqp(x: Ref) returns ()
 procedure test1(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var tmp: int;
   
@@ -2282,8 +2282,8 @@ procedure test1(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale acc(x.f, none) -- function_precondition_perms.vpr@136.4--136.25
     perm := NoPerm;
@@ -2297,8 +2297,8 @@ procedure test1(x: Ref) returns ()
     // -- Check definedness of foo(x)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function foo might not hold. There might be insufficient permission to access x.f (function_precondition_perms.vpr@139.11--139.17) [155476]"}
           NoPerm < perm ==> NoPerm < Mask[x, f_7];
@@ -2320,11 +2320,11 @@ procedure test1(x: Ref) returns ()
 procedure test1mce(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var tmp: int;
   
@@ -2340,8 +2340,8 @@ procedure test1mce(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale acc(x.f, none) -- function_precondition_perms.vpr@145.4--145.25
     perm := NoPerm;
@@ -2355,8 +2355,8 @@ procedure test1mce(x: Ref) returns ()
     // -- Check definedness of foo(x)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function foo might not hold. There might be insufficient permission to access x.f (function_precondition_perms.vpr@148.11--148.17) [155478]"}
           NoPerm < perm ==> NoPerm < Mask[x, f_7];
@@ -2378,11 +2378,11 @@ procedure test1mce(x: Ref) returns ()
 procedure test1qp(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var QPMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var perm: Perm;
   var ExhaleHeap: HeapType;
   var tmp: int;
@@ -2399,8 +2399,8 @@ procedure test1qp(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale (forall y: Ref ::y == x ==> acc(y.f, none)) -- function_precondition_perms.vpr@153.4--153.53
     
@@ -2453,8 +2453,8 @@ procedure test1qp(x: Ref) returns ()
     // -- Check definedness of foo(x)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function foo might not hold. There might be insufficient permission to access x.f (function_precondition_perms.vpr@156.11--156.17) [155481]"}
           NoPerm < perm ==> NoPerm < Mask[x, f_7];
@@ -2476,11 +2476,11 @@ procedure test1qp(x: Ref) returns ()
 procedure test1p(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var tmp: int;
   
@@ -2496,8 +2496,8 @@ procedure test1p(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale acc(P(x), none) -- function_precondition_perms.vpr@161.4--161.26
     perm := NoPerm;
@@ -2511,8 +2511,8 @@ procedure test1p(x: Ref) returns ()
     // -- Check definedness of foop(x)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function foop might not hold. There might be insufficient permission to access P(x) (function_precondition_perms.vpr@164.11--164.18) [155483]"}
           NoPerm < perm ==> NoPerm < Mask[null, P(x)];
@@ -2534,11 +2534,11 @@ procedure test1p(x: Ref) returns ()
 procedure test1pmce(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var tmp: int;
   
@@ -2554,8 +2554,8 @@ procedure test1pmce(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale acc(P(x), none) -- function_precondition_perms.vpr@170.4--170.26
     perm := NoPerm;
@@ -2569,8 +2569,8 @@ procedure test1pmce(x: Ref) returns ()
     // -- Check definedness of foop(x)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function foop might not hold. There might be insufficient permission to access P(x) (function_precondition_perms.vpr@173.11--173.18) [155485]"}
           NoPerm < perm ==> NoPerm < Mask[null, P(x)];
@@ -2592,11 +2592,11 @@ procedure test1pmce(x: Ref) returns ()
 procedure test1pqp(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var QPMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var perm: Perm;
   var ExhaleHeap: HeapType;
   var tmp: int;
@@ -2613,8 +2613,8 @@ procedure test1pqp(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale (forall y: Ref ::y == x ==> acc(P(y), none)) -- function_precondition_perms.vpr@178.4--178.54
     
@@ -2672,8 +2672,8 @@ procedure test1pqp(x: Ref) returns ()
     // -- Check definedness of foop(x)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function foop might not hold. There might be insufficient permission to access P(x) (function_precondition_perms.vpr@181.11--181.18) [155488]"}
           NoPerm < perm ==> NoPerm < Mask[null, P(x)];
@@ -2695,11 +2695,11 @@ procedure test1pqp(x: Ref) returns ()
 procedure test2(x: Ref, b_24: bool) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var tmp: int;
   
@@ -2715,8 +2715,8 @@ procedure test2(x: Ref, b_24: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale acc(x.f, (b ? 1 / 2 : none)) -- function_precondition_perms.vpr@186.4--186.35
     perm := (if b_24 then 1 / 2 else NoPerm);
@@ -2733,8 +2733,8 @@ procedure test2(x: Ref, b_24: bool) returns ()
     // -- Check definedness of foo2(x, b)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := (if b_24 then FullPerm else NoPerm);
         assert {:msg "  Precondition of function foo2 might not hold. Fraction (b ? write : none) might be negative. (function_precondition_perms.vpr@188.11--188.21) [155490]"}
           perm >= NoPerm;
@@ -2758,11 +2758,11 @@ procedure test2(x: Ref, b_24: bool) returns ()
 procedure test2mce(x: Ref, b_24: bool) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var tmp: int;
   
@@ -2778,8 +2778,8 @@ procedure test2mce(x: Ref, b_24: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale acc(x.f, (b ? 1 / 2 : none)) -- function_precondition_perms.vpr@194.4--194.35
     perm := (if b_24 then 1 / 2 else NoPerm);
@@ -2796,8 +2796,8 @@ procedure test2mce(x: Ref, b_24: bool) returns ()
     // -- Check definedness of foo2(x, b)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := (if b_24 then FullPerm else NoPerm);
         assert {:msg "  Precondition of function foo2 might not hold. Fraction (b ? write : none) might be negative. (function_precondition_perms.vpr@196.11--196.21) [155493]"}
           perm >= NoPerm;
@@ -2821,11 +2821,11 @@ procedure test2mce(x: Ref, b_24: bool) returns ()
 procedure test2qp(x: Ref, b_24: bool) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var QPMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var perm: Perm;
   var ExhaleHeap: HeapType;
   var tmp: int;
@@ -2842,8 +2842,8 @@ procedure test2qp(x: Ref, b_24: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale (forall y: Ref ::y == x ==> acc(y.f, (b ? 1 / 2 : none))) -- function_precondition_perms.vpr@201.4--201.63
     
@@ -2899,8 +2899,8 @@ procedure test2qp(x: Ref, b_24: bool) returns ()
     // -- Check definedness of foo2(x, b)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := (if b_24 then FullPerm else NoPerm);
         assert {:msg "  Precondition of function foo2 might not hold. Fraction (b ? write : none) might be negative. (function_precondition_perms.vpr@203.11--203.21) [155497]"}
           perm >= NoPerm;
@@ -2924,11 +2924,11 @@ procedure test2qp(x: Ref, b_24: bool) returns ()
 procedure test3(x: Ref, b_24: bool) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var tmp: int;
   
@@ -2944,8 +2944,8 @@ procedure test3(x: Ref, b_24: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale acc(x.f, (b ? 1 / 2 : none)) -- function_precondition_perms.vpr@209.4--209.35
     perm := (if b_24 then 1 / 2 else NoPerm);
@@ -2962,8 +2962,8 @@ procedure test3(x: Ref, b_24: bool) returns ()
     // -- Check definedness of foo2(x, !b)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := (if !b_24 then FullPerm else NoPerm);
         assert {:msg "  Precondition of function foo2 might not hold. Fraction (!b ? write : none) might be negative. (function_precondition_perms.vpr@212.11--212.22) [155500]"}
           perm >= NoPerm;
@@ -2987,11 +2987,11 @@ procedure test3(x: Ref, b_24: bool) returns ()
 procedure test3mce(x: Ref, b_24: bool) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var tmp: int;
   
@@ -3007,8 +3007,8 @@ procedure test3mce(x: Ref, b_24: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale acc(x.f, (b ? 1 / 2 : none)) -- function_precondition_perms.vpr@218.4--218.35
     perm := (if b_24 then 1 / 2 else NoPerm);
@@ -3025,8 +3025,8 @@ procedure test3mce(x: Ref, b_24: bool) returns ()
     // -- Check definedness of foo2(x, !b)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := (if !b_24 then FullPerm else NoPerm);
         assert {:msg "  Precondition of function foo2 might not hold. Fraction (!b ? write : none) might be negative. (function_precondition_perms.vpr@221.11--221.22) [155503]"}
           perm >= NoPerm;
@@ -3050,11 +3050,11 @@ procedure test3mce(x: Ref, b_24: bool) returns ()
 procedure test3qp(x: Ref, b_24: bool) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var QPMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var perm: Perm;
   var ExhaleHeap: HeapType;
   var tmp: int;
@@ -3071,8 +3071,8 @@ procedure test3qp(x: Ref, b_24: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale (forall y: Ref ::y == x ==> acc(y.f, (b ? 1 / 2 : none))) -- function_precondition_perms.vpr@226.4--226.63
     
@@ -3128,8 +3128,8 @@ procedure test3qp(x: Ref, b_24: bool) returns ()
     // -- Check definedness of foo2(x, !b)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := (if !b_24 then FullPerm else NoPerm);
         assert {:msg "  Precondition of function foo2 might not hold. Fraction (!b ? write : none) might be negative. (function_precondition_perms.vpr@229.11--229.22) [155507]"}
           perm >= NoPerm;
@@ -3153,11 +3153,11 @@ procedure test3qp(x: Ref, b_24: bool) returns ()
 procedure test2w(x: Ref, b_24: bool) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var tmp: int;
   
@@ -3173,8 +3173,8 @@ procedure test2w(x: Ref, b_24: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale acc(x.f, (b ? 1 / 2 : none)) -- function_precondition_perms.vpr@234.4--234.35
     perm := (if b_24 then 1 / 2 else NoPerm);
@@ -3191,8 +3191,8 @@ procedure test2w(x: Ref, b_24: bool) returns ()
     // -- Check definedness of foo2w(x, b)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := (if b_24 then FullPerm else NoPerm);
         assert {:msg "  Precondition of function foo2w might not hold. Fraction (b ? wildcard : none) might be negative. (function_precondition_perms.vpr@236.11--236.22) [155510]"}
           perm >= NoPerm;
@@ -3216,11 +3216,11 @@ procedure test2w(x: Ref, b_24: bool) returns ()
 procedure test2mcew(x: Ref, b_24: bool) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var tmp: int;
   
@@ -3236,8 +3236,8 @@ procedure test2mcew(x: Ref, b_24: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale acc(x.f, (b ? 1 / 2 : none)) -- function_precondition_perms.vpr@242.4--242.35
     perm := (if b_24 then 1 / 2 else NoPerm);
@@ -3254,8 +3254,8 @@ procedure test2mcew(x: Ref, b_24: bool) returns ()
     // -- Check definedness of foo2w(x, b)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := (if b_24 then FullPerm else NoPerm);
         assert {:msg "  Precondition of function foo2w might not hold. Fraction (b ? wildcard : none) might be negative. (function_precondition_perms.vpr@244.11--244.22) [155513]"}
           perm >= NoPerm;
@@ -3279,11 +3279,11 @@ procedure test2mcew(x: Ref, b_24: bool) returns ()
 procedure test2qpw(x: Ref, b_24: bool) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var QPMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var perm: Perm;
   var ExhaleHeap: HeapType;
   var tmp: int;
@@ -3300,8 +3300,8 @@ procedure test2qpw(x: Ref, b_24: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale (forall y: Ref ::y == x ==> acc(y.f, (b ? 1 / 2 : none))) -- function_precondition_perms.vpr@249.4--249.63
     
@@ -3357,8 +3357,8 @@ procedure test2qpw(x: Ref, b_24: bool) returns ()
     // -- Check definedness of foo2w(x, b)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := (if b_24 then FullPerm else NoPerm);
         assert {:msg "  Precondition of function foo2w might not hold. Fraction (b ? wildcard : none) might be negative. (function_precondition_perms.vpr@251.11--251.22) [155517]"}
           perm >= NoPerm;
@@ -3382,11 +3382,11 @@ procedure test2qpw(x: Ref, b_24: bool) returns ()
 procedure test3w(x: Ref, b_24: bool) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var tmp: int;
   
@@ -3402,8 +3402,8 @@ procedure test3w(x: Ref, b_24: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale acc(x.f, (b ? 1 / 2 : none)) -- function_precondition_perms.vpr@257.4--257.35
     perm := (if b_24 then 1 / 2 else NoPerm);
@@ -3420,8 +3420,8 @@ procedure test3w(x: Ref, b_24: bool) returns ()
     // -- Check definedness of foo2w(x, !b)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := (if !b_24 then FullPerm else NoPerm);
         assert {:msg "  Precondition of function foo2w might not hold. Fraction (!b ? wildcard : none) might be negative. (function_precondition_perms.vpr@260.11--260.23) [155520]"}
           perm >= NoPerm;
@@ -3445,11 +3445,11 @@ procedure test3w(x: Ref, b_24: bool) returns ()
 procedure test3mcew(x: Ref, b_24: bool) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var tmp: int;
   
@@ -3465,8 +3465,8 @@ procedure test3mcew(x: Ref, b_24: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale acc(x.f, (b ? 1 / 2 : none)) -- function_precondition_perms.vpr@266.4--266.35
     perm := (if b_24 then 1 / 2 else NoPerm);
@@ -3483,8 +3483,8 @@ procedure test3mcew(x: Ref, b_24: bool) returns ()
     // -- Check definedness of foo2w(x, !b)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := (if !b_24 then FullPerm else NoPerm);
         assert {:msg "  Precondition of function foo2w might not hold. Fraction (!b ? wildcard : none) might be negative. (function_precondition_perms.vpr@269.11--269.23) [155523]"}
           perm >= NoPerm;
@@ -3508,11 +3508,11 @@ procedure test3mcew(x: Ref, b_24: bool) returns ()
 procedure test3qpw(x: Ref, b_24: bool) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var QPMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var perm: Perm;
   var ExhaleHeap: HeapType;
   var tmp: int;
@@ -3529,8 +3529,8 @@ procedure test3qpw(x: Ref, b_24: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale (forall y: Ref ::y == x ==> acc(y.f, (b ? 1 / 2 : none))) -- function_precondition_perms.vpr@274.4--274.63
     
@@ -3586,8 +3586,8 @@ procedure test3qpw(x: Ref, b_24: bool) returns ()
     // -- Check definedness of foo2w(x, !b)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := (if !b_24 then FullPerm else NoPerm);
         assert {:msg "  Precondition of function foo2w might not hold. Fraction (!b ? wildcard : none) might be negative. (function_precondition_perms.vpr@277.11--277.23) [155527]"}
           perm >= NoPerm;
@@ -3611,11 +3611,11 @@ procedure test3qpw(x: Ref, b_24: bool) returns ()
 procedure test4(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var tmp: int;
   
@@ -3631,8 +3631,8 @@ procedure test4(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale acc(x.f, 1 / 2) -- function_precondition_perms.vpr@282.4--282.24
     perm := 1 / 2;
@@ -3649,8 +3649,8 @@ procedure test4(x: Ref) returns ()
     // -- Check definedness of foo3(x)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function foo3 might not hold. There might be insufficient permission to access x.f (function_precondition_perms.vpr@284.11--284.18) [155530]"}
           NoPerm < perm ==> NoPerm < Mask[x, f_7];
@@ -3672,11 +3672,11 @@ procedure test4(x: Ref) returns ()
 procedure test4mce(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var tmp: int;
   
@@ -3692,8 +3692,8 @@ procedure test4mce(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale acc(x.f, 1 / 2) -- function_precondition_perms.vpr@290.4--290.24
     perm := 1 / 2;
@@ -3710,8 +3710,8 @@ procedure test4mce(x: Ref) returns ()
     // -- Check definedness of foo3(x)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function foo3 might not hold. There might be insufficient permission to access x.f (function_precondition_perms.vpr@292.11--292.18) [155532]"}
           NoPerm < perm ==> NoPerm < Mask[x, f_7];
@@ -3733,11 +3733,11 @@ procedure test4mce(x: Ref) returns ()
 procedure test4qp(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var QPMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var perm: Perm;
   var ExhaleHeap: HeapType;
   var tmp: int;
@@ -3754,8 +3754,8 @@ procedure test4qp(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale (forall y: Ref ::y == x ==> acc(y.f, 1 / 2)) -- function_precondition_perms.vpr@297.4--297.52
     
@@ -3811,8 +3811,8 @@ procedure test4qp(x: Ref) returns ()
     // -- Check definedness of foo3(x)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function foo3 might not hold. There might be insufficient permission to access x.f (function_precondition_perms.vpr@299.11--299.18) [155535]"}
           NoPerm < perm ==> NoPerm < Mask[x, f_7];
@@ -3834,10 +3834,10 @@ procedure test4qp(x: Ref) returns ()
 procedure test4f(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var perm: Perm;
   var ExhaleHeap: HeapType;
   var tmp: int;
@@ -3854,16 +3854,16 @@ procedure test4f(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: tmp := foo3(x) -- function_precondition_perms.vpr@306.4--306.18
     
     // -- Check definedness of foo3(x)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function foo3 might not hold. There might be insufficient permission to access x.f (function_precondition_perms.vpr@306.11--306.18) [155536]"}
           NoPerm < perm ==> NoPerm < Mask[x, f_7];
@@ -3885,10 +3885,10 @@ procedure test4f(x: Ref) returns ()
 procedure test4mcef(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var perm: Perm;
   var ExhaleHeap: HeapType;
   var tmp: int;
@@ -3905,16 +3905,16 @@ procedure test4mcef(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: tmp := foo3(x) -- function_precondition_perms.vpr@314.4--314.18
     
     // -- Check definedness of foo3(x)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function foo3 might not hold. There might be insufficient permission to access x.f (function_precondition_perms.vpr@314.11--314.18) [155537]"}
           NoPerm < perm ==> NoPerm < Mask[x, f_7];
@@ -3936,11 +3936,11 @@ procedure test4mcef(x: Ref) returns ()
 procedure test4qpf(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var QPMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var perm: Perm;
   var ExhaleHeap: HeapType;
   var tmp: int;
@@ -3957,8 +3957,8 @@ procedure test4qpf(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale (forall y: Ref ::false ==> acc(y.f, 1 / 2)) -- function_precondition_perms.vpr@319.4--319.51
     
@@ -3993,8 +3993,8 @@ procedure test4qpf(x: Ref) returns ()
     // -- Check definedness of foo3(x)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function foo3 might not hold. There might be insufficient permission to access x.f (function_precondition_perms.vpr@322.11--322.18) [155539]"}
           NoPerm < perm ==> NoPerm < Mask[x, f_7];
@@ -4016,11 +4016,11 @@ procedure test4qpf(x: Ref) returns ()
 procedure test5(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var tmp: int;
   
@@ -4036,8 +4036,8 @@ procedure test5(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale acc(x.f, 1 / 2) -- function_precondition_perms.vpr@327.4--327.24
     perm := 1 / 2;
@@ -4054,8 +4054,8 @@ procedure test5(x: Ref) returns ()
     // -- Check definedness of foo4(x)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function foo4 might not hold. There might be insufficient permission to access x.f (function_precondition_perms.vpr@329.11--329.18) [155541]"}
           NoPerm < perm ==> NoPerm < Mask[x, f_7];
@@ -4080,11 +4080,11 @@ procedure test5(x: Ref) returns ()
 procedure test5mce(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var tmp: int;
   
@@ -4100,8 +4100,8 @@ procedure test5mce(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale acc(x.f, 1 / 2) -- function_precondition_perms.vpr@335.4--335.24
     perm := 1 / 2;
@@ -4118,8 +4118,8 @@ procedure test5mce(x: Ref) returns ()
     // -- Check definedness of foo4(x)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function foo4 might not hold. There might be insufficient permission to access x.f (function_precondition_perms.vpr@337.11--337.18) [155544]"}
           NoPerm < perm ==> NoPerm < Mask[x, f_7];
@@ -4144,11 +4144,11 @@ procedure test5mce(x: Ref) returns ()
 procedure test5qp(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var QPMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var perm: Perm;
   var ExhaleHeap: HeapType;
   var tmp: int;
@@ -4165,8 +4165,8 @@ procedure test5qp(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale (forall y: Ref ::y == x ==> acc(y.f, 1 / 2)) -- function_precondition_perms.vpr@342.4--342.52
     
@@ -4222,8 +4222,8 @@ procedure test5qp(x: Ref) returns ()
     // -- Check definedness of foo4(x)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function foo4 might not hold. There might be insufficient permission to access x.f (function_precondition_perms.vpr@344.11--344.18) [155548]"}
           NoPerm < perm ==> NoPerm < Mask[x, f_7];
@@ -4248,10 +4248,10 @@ procedure test5qp(x: Ref) returns ()
 procedure test5f(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var perm: Perm;
   var ExhaleHeap: HeapType;
   var tmp: int;
@@ -4268,16 +4268,16 @@ procedure test5f(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: tmp := foo4(x) -- function_precondition_perms.vpr@351.4--351.18
     
     // -- Check definedness of foo4(x)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function foo4 might not hold. There might be insufficient permission to access x.f (function_precondition_perms.vpr@351.11--351.18) [155550]"}
           NoPerm < perm ==> NoPerm < Mask[x, f_7];
@@ -4302,10 +4302,10 @@ procedure test5f(x: Ref) returns ()
 procedure test5mcef(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var perm: Perm;
   var ExhaleHeap: HeapType;
   var tmp: int;
@@ -4322,16 +4322,16 @@ procedure test5mcef(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: tmp := foo4(x) -- function_precondition_perms.vpr@359.4--359.18
     
     // -- Check definedness of foo4(x)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function foo4 might not hold. There might be insufficient permission to access x.f (function_precondition_perms.vpr@359.11--359.18) [155552]"}
           NoPerm < perm ==> NoPerm < Mask[x, f_7];
@@ -4356,11 +4356,11 @@ procedure test5mcef(x: Ref) returns ()
 procedure test5qpf(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var QPMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var perm: Perm;
   var ExhaleHeap: HeapType;
   var tmp: int;
@@ -4377,8 +4377,8 @@ procedure test5qpf(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale (forall y: Ref ::false ==> acc(y.f, 1 / 2)) -- function_precondition_perms.vpr@364.4--364.51
     
@@ -4413,8 +4413,8 @@ procedure test5qpf(x: Ref) returns ()
     // -- Check definedness of foo4(x)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function foo4 might not hold. There might be insufficient permission to access x.f (function_precondition_perms.vpr@367.11--367.18) [155555]"}
           NoPerm < perm ==> NoPerm < Mask[x, f_7];
@@ -4439,16 +4439,16 @@ procedure test5qpf(x: Ref) returns ()
 procedure test6(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var freshVersion: FrameType;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var ExhaleHeap: HeapType;
   var tmp: int;
   
@@ -4464,8 +4464,8 @@ procedure test6(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale acc(x.f, 1 / 4) -- function_precondition_perms.vpr@372.4--372.24
     perm := 1 / 4;
@@ -4487,8 +4487,8 @@ procedure test6(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(P(x), 1 / 4) -- function_precondition_perms.vpr@374.4--374.23
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := 1 / 4;
     assert {:msg "  Folding P(x) might fail. Fraction 1 / 4 might be negative. (function_precondition_perms.vpr@374.4--374.23) [155560]"}
       perm >= NoPerm;
@@ -4519,8 +4519,8 @@ procedure test6(x: Ref) returns ()
     // -- Check definedness of bar4(x)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := 1 / 2;
         assert {:msg "  Precondition of function bar4 might not hold. Fraction 1 / 2 might be negative. (function_precondition_perms.vpr@376.11--376.18) [155563]"}
           perm >= NoPerm;
@@ -4532,8 +4532,8 @@ procedure test6(x: Ref) returns ()
           UnfoldingMask := ExhaleWellDef0Mask;
           assume P#trigger(UnfoldingHeap, P(x));
           assume UnfoldingHeap[null, P(x)] == FrameFragment(UnfoldingHeap[x, f_7]);
-          ExhaleWellDef1Heap := UnfoldingHeap;
           ExhaleWellDef1Mask := UnfoldingMask;
+          ExhaleWellDef1Heap := UnfoldingHeap;
           perm := FullPerm;
           assert {:msg "  Precondition of function bar4 might not hold. There might be insufficient permission to access P(x) (function_precondition_perms.vpr@376.11--376.18) [155565]"}
             NoPerm < perm ==> NoPerm < UnfoldingMask[null, P(x)];
@@ -4566,16 +4566,16 @@ procedure test6(x: Ref) returns ()
 procedure test6f(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var freshVersion: FrameType;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var ExhaleHeap: HeapType;
   var tmp: int;
   
@@ -4591,8 +4591,8 @@ procedure test6f(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale acc(x.f, 1 / 4) -- function_precondition_perms.vpr@381.4--381.24
     perm := 1 / 4;
@@ -4614,8 +4614,8 @@ procedure test6f(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(P(x), 1 / 4) -- function_precondition_perms.vpr@383.4--383.23
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := 1 / 4;
     assert {:msg "  Folding P(x) might fail. Fraction 1 / 4 might be negative. (function_precondition_perms.vpr@383.4--383.23) [155570]"}
       perm >= NoPerm;
@@ -4646,8 +4646,8 @@ procedure test6f(x: Ref) returns ()
     // -- Check definedness of bar4(x)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := 1 / 2;
         assert {:msg "  Precondition of function bar4 might not hold. Fraction 1 / 2 might be negative. (function_precondition_perms.vpr@386.11--386.18) [155573]"}
           perm >= NoPerm;
@@ -4659,8 +4659,8 @@ procedure test6f(x: Ref) returns ()
           UnfoldingMask := ExhaleWellDef0Mask;
           assume P#trigger(UnfoldingHeap, P(x));
           assume UnfoldingHeap[null, P(x)] == FrameFragment(UnfoldingHeap[x, f_7]);
-          ExhaleWellDef1Heap := UnfoldingHeap;
           ExhaleWellDef1Mask := UnfoldingMask;
+          ExhaleWellDef1Heap := UnfoldingHeap;
           perm := FullPerm;
           assert {:msg "  Precondition of function bar4 might not hold. There might be insufficient permission to access P(x) (function_precondition_perms.vpr@386.11--386.18) [155575]"}
             NoPerm < perm ==> NoPerm < UnfoldingMask[null, P(x)];
@@ -4693,11 +4693,11 @@ procedure test6f(x: Ref) returns ()
 procedure test7(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var QPMask: MaskType;
   var ExhaleHeap: HeapType;
   var tmp: int;
@@ -4714,8 +4714,8 @@ procedure test7(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale acc(x.f, 1 / 2) -- function_precondition_perms.vpr@392.4--392.24
     perm := 1 / 2;
@@ -4732,8 +4732,8 @@ procedure test7(x: Ref) returns ()
     // -- Check definedness of foo5(x)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         havoc QPMask;
         
         // -- check that the permission amount is positive
@@ -4780,10 +4780,10 @@ procedure test7(x: Ref) returns ()
 procedure test7f(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var QPMask: MaskType;
   var ExhaleHeap: HeapType;
   var tmp: int;
@@ -4800,16 +4800,16 @@ procedure test7f(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: tmp := foo5(x) -- function_precondition_perms.vpr@401.4--401.18
     
     // -- Check definedness of foo5(x)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         havoc QPMask;
         
         // -- check that the permission amount is positive
@@ -4856,11 +4856,11 @@ procedure test7f(x: Ref) returns ()
 procedure test7p(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var QPMask: MaskType;
   var ExhaleHeap: HeapType;
   var tmp: int;
@@ -4877,8 +4877,8 @@ procedure test7p(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale acc(P(x), 1 / 2) -- function_precondition_perms.vpr@406.4--406.25
     perm := 1 / 2;
@@ -4894,8 +4894,8 @@ procedure test7p(x: Ref) returns ()
     // -- Check definedness of foo5p(x)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         havoc QPMask;
         
         // -- check that the permission amount is positive
@@ -4942,10 +4942,10 @@ procedure test7p(x: Ref) returns ()
 procedure test7pf(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var QPMask: MaskType;
   var ExhaleHeap: HeapType;
   var tmp: int;
@@ -4962,16 +4962,16 @@ procedure test7pf(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: tmp := foo5p(x) -- function_precondition_perms.vpr@415.4--415.19
     
     // -- Check definedness of foo5p(x)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         havoc QPMask;
         
         // -- check that the permission amount is positive
@@ -5018,11 +5018,11 @@ procedure test7pf(x: Ref) returns ()
 procedure test8(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var QPMask: MaskType;
   var wildcard: real where wildcard > 0.000000000;
   var ExhaleHeap: HeapType;
@@ -5040,8 +5040,8 @@ procedure test8(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale acc(x.f, 1 / 2) -- function_precondition_perms.vpr@420.4--420.24
     perm := 1 / 2;
@@ -5058,8 +5058,8 @@ procedure test8(x: Ref) returns ()
     // -- Check definedness of foo5w(x)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         havoc QPMask;
         // wild card assumptions
         havoc wildcard;
@@ -5121,10 +5121,10 @@ procedure test8(x: Ref) returns ()
 procedure test8f(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var QPMask: MaskType;
   var wildcard: real where wildcard > 0.000000000;
   var ExhaleHeap: HeapType;
@@ -5142,16 +5142,16 @@ procedure test8f(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: tmp := foo5w(x) -- function_precondition_perms.vpr@429.4--429.19
     
     // -- Check definedness of foo5w(x)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         havoc QPMask;
         // wild card assumptions
         havoc wildcard;
@@ -5213,11 +5213,11 @@ procedure test8f(x: Ref) returns ()
 procedure test8p(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var QPMask: MaskType;
   var wildcard: real where wildcard > 0.000000000;
   var ExhaleHeap: HeapType;
@@ -5235,8 +5235,8 @@ procedure test8p(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale acc(P(x), 1 / 2) -- function_precondition_perms.vpr@434.4--434.25
     perm := 1 / 2;
@@ -5252,8 +5252,8 @@ procedure test8p(x: Ref) returns ()
     // -- Check definedness of foo5pw(x)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         havoc QPMask;
         // wildcard assumptions
         havoc wildcard;
@@ -5315,10 +5315,10 @@ procedure test8p(x: Ref) returns ()
 procedure test8pf(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var QPMask: MaskType;
   var wildcard: real where wildcard > 0.000000000;
   var ExhaleHeap: HeapType;
@@ -5336,16 +5336,16 @@ procedure test8pf(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: tmp := foo5pw(x) -- function_precondition_perms.vpr@443.4--443.20
     
     // -- Check definedness of foo5pw(x)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         havoc QPMask;
         // wildcard assumptions
         havoc wildcard;

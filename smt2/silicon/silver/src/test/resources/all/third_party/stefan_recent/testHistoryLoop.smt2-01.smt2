@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-29 20:04:01
+; Started: 2025-01-04 00:33:05
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -203,11 +203,11 @@
     (History__hist_get_x%limited s@$ diz@0@00)
     (History__hist_get_x s@$ diz@0@00))
   :pattern ((History__hist_get_x s@$ diz@0@00))
-  :qid |quant-u-22303|)))
+  :qid |quant-u-22318|)))
 (assert (forall ((s@$ $Snap) (diz@0@00 $Ref)) (!
   (History__hist_get_x%stateless diz@0@00)
   :pattern ((History__hist_get_x%limited s@$ diz@0@00))
-  :qid |quant-u-22304|)))
+  :qid |quant-u-22319|)))
 (assert (forall ((s@$ $Snap) (diz@0@00 $Ref)) (!
   (and
     ($Perm.isReadVar $k@4@00)
@@ -217,21 +217,21 @@
         (History__hist_get_x s@$ diz@0@00)
         ($SortWrappers.$SnapToInt ($Snap.second s@$)))))
   :pattern ((History__hist_get_x s@$ diz@0@00))
-  :qid |quant-u-22307|)))
+  :qid |quant-u-22322|)))
 (assert (forall ((s@$ $Snap) (diz@0@00 $Ref)) (!
   true
   :pattern ((History__hist_get_x s@$ diz@0@00))
-  :qid |quant-u-22308|)))
+  :qid |quant-u-22323|)))
 (assert (forall ((s@$ $Snap) (diz@2@00 $Ref)) (!
   (=
     (History__free_get_x%limited s@$ diz@2@00)
     (History__free_get_x s@$ diz@2@00))
   :pattern ((History__free_get_x s@$ diz@2@00))
-  :qid |quant-u-22305|)))
+  :qid |quant-u-22320|)))
 (assert (forall ((s@$ $Snap) (diz@2@00 $Ref)) (!
   (History__free_get_x%stateless diz@2@00)
   :pattern ((History__free_get_x%limited s@$ diz@2@00))
-  :qid |quant-u-22306|)))
+  :qid |quant-u-22321|)))
 (assert (forall ((s@$ $Snap) (diz@2@00 $Ref)) (!
   (and
     ($Perm.isReadVar $k@5@00)
@@ -241,11 +241,11 @@
         (History__free_get_x s@$ diz@2@00)
         ($SortWrappers.$SnapToInt ($Snap.second s@$)))))
   :pattern ((History__free_get_x s@$ diz@2@00))
-  :qid |quant-u-22309|)))
+  :qid |quant-u-22324|)))
 (assert (forall ((s@$ $Snap) (diz@2@00 $Ref)) (!
   true
   :pattern ((History__free_get_x s@$ diz@2@00))
-  :qid |quant-u-22310|)))
+  :qid |quant-u-22325|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- History__incr_begin ----------
@@ -965,8 +965,8 @@
 (declare-const History__x_hist_mode@87@01 Int)
 (declare-const History__x_hist_init@88@01 Int)
 (declare-const History__x_hist_act@89@01 Int)
-(assert (not (= diz@85@01 sys__result@73@01)))
 (assert (not (= diz@85@01 diz@76@01)))
+(assert (not (= diz@85@01 sys__result@73@01)))
 ; [exec]
 ; __flatten_31 := 0
 ; [exec]
@@ -1792,8 +1792,8 @@
 ; diz := new()
 (declare-const diz@143@01 $Ref)
 (assert (not (= diz@143@01 $Ref.null)))
-(assert (not (= diz@143@01 sys__result@139@01)))
 (assert (not (= diz@143@01 diz@142@01)))
+(assert (not (= diz@143@01 sys__result@139@01)))
 ; [exec]
 ; sys__result := diz
 ; [exec]

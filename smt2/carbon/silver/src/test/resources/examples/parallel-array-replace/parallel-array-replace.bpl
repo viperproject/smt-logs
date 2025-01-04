@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-29 20:23:30
+// Date:         2025-01-04 00:52:51
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/examples/parallel-array-replace/parallel-array-replace.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/examples/parallel-array-replace/parallel-array-replace-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -371,14 +371,14 @@ procedure Replace(a_2: ArrayDomainType, left_1: int, right: int, from: int, to: 
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var i$1_6: int;
   var mid: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var i$5: int;
   var i$7: int;
@@ -439,8 +439,8 @@ procedure Replace(a_2: ArrayDomainType, left_1: int, right: int, from: int, to: 
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -537,8 +537,8 @@ procedure Replace(a_2: ArrayDomainType, left_1: int, right: int, from: int, to: 
         assume state(Heap, Mask);
       
       // -- Translating statement: exhale 0 <= left && (left < mid && mid <= len(a)) -- parallel-array-replace.vpr@26.5--26.30
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Exhale might fail. Assertion 0 <= left might not hold. (parallel-array-replace.vpr@26.12--26.30) [116505]"}
           0 <= left_1;
         assert {:msg "  Exhale might fail. Assertion left < mid might not hold. (parallel-array-replace.vpr@26.12--26.30) [116506]"}
@@ -550,8 +550,8 @@ procedure Replace(a_2: ArrayDomainType, left_1: int, right: int, from: int, to: 
       // -- Translating statement: exhale (forall i$2: Int ::
   //     { loc(a, i$2) }
   //     left <= i$2 && i$2 < mid ==> acc(loc(a, i$2).val, write)) -- parallel-array-replace.vpr@27.5--27.30
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         
         // -- Check definedness of (forall i$2: Int :: { loc(a, i$2) } left <= i$2 && i$2 < mid ==> acc(loc(a, i$2).val, write))
           if (*) {
@@ -605,8 +605,8 @@ procedure Replace(a_2: ArrayDomainType, left_1: int, right: int, from: int, to: 
         assume state(Heap, Mask);
       
       // -- Translating statement: exhale 0 <= mid && (mid < right && right <= len(a)) -- parallel-array-replace.vpr@30.5--30.31
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Exhale might fail. Assertion 0 <= mid might not hold. (parallel-array-replace.vpr@30.12--30.31) [116511]"}
           0 <= mid;
         assert {:msg "  Exhale might fail. Assertion mid < right might not hold. (parallel-array-replace.vpr@30.12--30.31) [116512]"}
@@ -618,8 +618,8 @@ procedure Replace(a_2: ArrayDomainType, left_1: int, right: int, from: int, to: 
       // -- Translating statement: exhale (forall i$3: Int ::
   //     { loc(a, i$3) }
   //     mid <= i$3 && i$3 < right ==> acc(loc(a, i$3).val, write)) -- parallel-array-replace.vpr@31.5--31.31
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         
         // -- Check definedness of (forall i$3: Int :: { loc(a, i$3) } mid <= i$3 && i$3 < right ==> acc(loc(a, i$3).val, write))
           if (*) {
@@ -829,8 +829,8 @@ procedure Replace(a_2: ArrayDomainType, left_1: int, right: int, from: int, to: 
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     havoc QPMask;
     
     // -- check that the permission amount is positive
@@ -902,16 +902,16 @@ procedure Client(a_2: ArrayDomainType) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
   var arg_right: int;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -967,8 +967,8 @@ procedure Client(a_2: ArrayDomainType) returns ()
     // -- Check definedness of Contains(a, 5, 1)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Precondition of function Contains might not hold. Assertion 1 <= len(a) might not hold. (parallel-array-replace.vpr@46.12--46.29) [116532]"}
           1 <= (len_1(a_2): int);
         havoc QPMask;
@@ -1012,8 +1012,8 @@ procedure Client(a_2: ArrayDomainType) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: Replace(a, 1, len(a), 5, 7) -- parallel-array-replace.vpr@48.3--48.30
     PreCallHeap := Heap;
@@ -1021,8 +1021,8 @@ procedure Client(a_2: ArrayDomainType) returns ()
     arg_right := (len_1(a_2): int);
     
     // -- Exhaling precondition
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       assert {:msg "  The precondition of method Replace might not hold. Assertion 1 < len(a) might not hold. (parallel-array-replace.vpr@48.3--48.30) [116535]"}
         1 < arg_right;
       assert {:msg "  The precondition of method Replace might not hold. Assertion len(a) <= len(a) might not hold. (parallel-array-replace.vpr@48.3--48.30) [116536]"}
@@ -1116,14 +1116,14 @@ procedure Client(a_2: ArrayDomainType) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert Contains(a, 5, 1) -- parallel-array-replace.vpr@49.3--49.27
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of Contains(a, 5, 1)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         assert {:msg "  Precondition of function Contains might not hold. Assertion 1 <= len(a) might not hold. (parallel-array-replace.vpr@49.10--49.27) [116540]"}
           1 <= (len_1(a_2): int);
         havoc QPMask;

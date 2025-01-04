@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-29 20:49:54
+// Date:         2025-01-04 01:19:23
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0163.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0163-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -300,8 +300,8 @@ function  onlyWorksWithInhale#triggerStateless(i: int): int;
 procedure onlyWorksWithInhale#definedness(i: int) returns (Result: int)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -325,8 +325,8 @@ procedure onlyWorksWithInhale#definedness(i: int) returns (Result: int)
     Result := i;
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of onlyWorksWithInhale might not hold. Assertion result > 17 might not hold. (0163.vpr@14.13--14.24) [218701]"}
       Result > 17;
 }
@@ -370,8 +370,8 @@ function  onlyWorksWithPreExhale#triggerStateless(i2_1: int): int;
 procedure onlyWorksWithPreExhale#definedness(i2_1: int) returns (Result: int)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -384,8 +384,8 @@ procedure onlyWorksWithPreExhale#definedness(i2_1: int) returns (Result: int)
     // -- Check definedness of onlyWorksWithInhale(i2)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         // Stop execution
         assume false;
       }
@@ -439,8 +439,8 @@ function  onlyWorksWithInhale2#triggerStateless(i: int): int;
 procedure onlyWorksWithInhale2#definedness(i: int) returns (Result: int)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -464,8 +464,8 @@ procedure onlyWorksWithInhale2#definedness(i: int) returns (Result: int)
     Result := i;
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of onlyWorksWithInhale2 might not hold. Assertion result > 17 might not hold. (0163.vpr@27.13--27.24) [218702]"}
       Result > 17;
 }
@@ -509,8 +509,8 @@ function  onlyWorksWithPreExhale2#triggerStateless(i2_1: int): int;
 procedure onlyWorksWithPreExhale2#definedness(i2_1: int) returns (Result: int)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -523,8 +523,8 @@ procedure onlyWorksWithPreExhale2#definedness(i2_1: int) returns (Result: int)
     // -- Check definedness of onlyWorksWithInhale2(i2)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Precondition of function onlyWorksWithInhale2 might not hold. Assertion i2 > 17 might not hold. (0163.vpr@35.5--35.29) [218703]"}
           i2_1 > 17;
         // Stop execution
@@ -663,8 +663,8 @@ function  postInhale#triggerStateless(r_1: Ref): Ref;
 procedure postInhale#definedness(r_1: Ref) returns (Result: Ref)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -701,8 +701,8 @@ procedure postInhale#definedness(r_1: Ref) returns (Result: Ref)
       }
     
     // -- Normally exhale the exhale part.
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
 }
 
 // ==================================================
@@ -750,8 +750,8 @@ function  main#triggerStateless(r2: Ref): Ref;
 procedure main#definedness(r2: Ref) returns (Result: Ref)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -772,8 +772,8 @@ procedure main#definedness(r2: Ref) returns (Result: Ref)
     Result := postInhale(Heap, r2);
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of helper(result) == 2
       if (*) {
@@ -829,8 +829,8 @@ function  main2#triggerStateless(i3_7: int): int;
 procedure main2#definedness(i3_7: int) returns (Result: int)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -843,8 +843,8 @@ procedure main2#definedness(i3_7: int) returns (Result: int)
     // -- Check definedness of onlyWorksWithInhale(i3)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         // Stop execution
         assume false;
       }
@@ -853,8 +853,8 @@ procedure main2#definedness(i3_7: int) returns (Result: int)
     Result := onlyWorksWithInhale(Heap, i3_7);
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of main2 might not hold. Assertion result > 17 might not hold. (0163.vpr@55.13--55.24) [218705]"}
       Result > 17;
 }

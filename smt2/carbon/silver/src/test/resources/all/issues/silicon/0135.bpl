@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-29 20:48:37
+// Date:         2025-01-04 01:18:06
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0135.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0135-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -342,10 +342,10 @@ procedure token#definedness(diz: Ref) returns ()
 procedure test02(x: int) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -356,12 +356,12 @@ procedure test02(x: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert unknown(x) >= none -- 0135.vpr@14.3--14.28
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion unknown(x) >= none might not hold. (0135.vpr@14.10--14.28) [214787]"}
       NoPerm <= (unknown(x): Perm);
     assume state(Heap, Mask);
@@ -374,10 +374,10 @@ procedure test02(x: int) returns ()
 procedure test03(x: int) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -388,12 +388,12 @@ procedure test03(x: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert fun01(x) >= none -- 0135.vpr@23.3--23.26
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of fun01(x) >= none
       if (*) {
@@ -413,12 +413,12 @@ procedure test01(diz: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newVersion: FrameType;
   var wildcard: real where wildcard > NoPerm;
   var freshVersion: FrameType;
@@ -442,8 +442,8 @@ procedure test01(diz: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -460,8 +460,8 @@ procedure test01(diz: Ref) returns ()
   // -- Translating statement: unfold acc(token(diz), write) -- 0135.vpr@34.3--34.25
     assume token#trigger(Heap, token(diz));
     assume Heap[null, token(diz)] == CombineFrames(FrameFragment(Heap[diz, unknown_x]), ConditionalFrame((unknown(Heap[diz, unknown_x]): Perm), FrameFragment(Heap[diz, unknown_y])));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding token(diz) might fail. There might be insufficient permission to access token(diz) (0135.vpr@34.3--34.25) [214791]"}
@@ -490,8 +490,8 @@ procedure test01(diz: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(token(diz), write) -- 0135.vpr@35.3--35.23
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Folding token(diz) might fail. There might be insufficient permission to access diz.unknown_x (0135.vpr@35.3--35.23) [214794]"}
       Mask[diz, unknown_x] > NoPerm;
     havoc wildcard;
@@ -524,8 +524,8 @@ procedure test01(diz: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(token(diz), write) -- 0135.vpr@37.3--37.23
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Folding token(diz) might fail. There might be insufficient permission to access diz.unknown_x (0135.vpr@37.3--37.23) [214800]"}
       Mask[diz, unknown_x] > NoPerm;
     havoc wildcard;
@@ -558,8 +558,8 @@ procedure test01(diz: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of test01 might not hold. There might be insufficient permission to access token(diz) (0135.vpr@32.12--32.27) [214805]"}

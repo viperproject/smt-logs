@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-29 20:17:46
+// Date:         2025-01-04 00:47:05
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quasihavoc/havoc_qp6.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quasihavoc/havoc_qp6-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -452,11 +452,11 @@ procedure foo_1(s_2: (Set Ref), y: Ref) returns ()
   var x_33: Ref;
   var QPMask: MaskType;
   var x_10: Ref;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm_temp_quasihavoc_: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var perm: Perm;
   var ExhaleHeap: HeapType;
   var x_31: Ref;
@@ -543,16 +543,16 @@ procedure foo_1(s_2: (Set Ref), y: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: perm_temp_quasihavoc_ := perm(y.f) -- <no position>
     perm_temp_quasihavoc_ := Mask[y, f_7];
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(y.f, perm_temp_quasihavoc_) -- <no position>
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := perm_temp_quasihavoc_;
     assert {:msg "  Exhale might fail. Fraction perm_temp_quasihavoc_ might be negative. (<no position>) [77690]"}
       perm >= NoPerm;
@@ -578,8 +578,8 @@ procedure foo_1(s_2: (Set Ref), y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forall x: Ref :: { (x in s) } (x in s) && x != y ==> x.f == 3) -- havoc_qp6.vpr@14.5--14.58
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall x: Ref :: { (x in s) } (x in s) && x != y ==> x.f == 3)
       if (*) {

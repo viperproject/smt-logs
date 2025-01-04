@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-29 20:18:49
+// Date:         2025-01-04 00:48:09
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/smoke/infinite_loop-goto.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/smoke/infinite_loop-goto-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -238,10 +238,10 @@ procedure test() returns ()
   modifies Heap, Mask;
 {
   var l0_lblGuard: bool;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var Labell0Heap: HeapType;
+  var oldHeap: HeapType;
   var Labell0Mask: MaskType;
+  var Labell0Heap: HeapType;
   var frameMask1: MaskType;
   var frameHeap1: HeapType;
   
@@ -254,15 +254,15 @@ procedure test() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: // id = 1
   // // LoopInfo(Some(1),Set(1))
   // label l0 -- infinite_loop-goto.vpr@4.5--4.13
     l0:
-    Labell0Heap := Heap;
     Labell0Mask := Mask;
+    Labell0Heap := Heap;
     l0_lblGuard := true;
     
     // -- Before loop head1

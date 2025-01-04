@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-29 20:02:48
+; Started: 2025-01-04 00:31:50
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -428,29 +428,29 @@
 (assert (forall ((s@$ $Snap) (xs@0@00 $Ref)) (!
   (= (head%limited s@$ xs@0@00) (head s@$ xs@0@00))
   :pattern ((head s@$ xs@0@00))
-  :qid |quant-u-20237|)))
+  :qid |quant-u-20252|)))
 (assert (forall ((s@$ $Snap) (xs@0@00 $Ref)) (!
   (head%stateless xs@0@00)
   :pattern ((head%limited s@$ xs@0@00))
-  :qid |quant-u-20238|)))
+  :qid |quant-u-20253|)))
 (assert (forall ((s@$ $Snap) (xs@0@00 $Ref)) (!
   (=>
     (head%precondition s@$ xs@0@00)
     (= (head s@$ xs@0@00) ($SortWrappers.$SnapToInt ($Snap.first s@$))))
   :pattern ((head s@$ xs@0@00))
-  :qid |quant-u-20241|)))
+  :qid |quant-u-20256|)))
 (assert (forall ((s@$ $Snap) (xs@0@00 $Ref)) (!
   true
   :pattern ((head s@$ xs@0@00))
-  :qid |quant-u-20242|)))
+  :qid |quant-u-20257|)))
 (assert (forall ((s@$ $Snap) (xs@2@00 $Ref)) (!
   (= (elems%limited s@$ xs@2@00) (elems s@$ xs@2@00))
   :pattern ((elems s@$ xs@2@00))
-  :qid |quant-u-20239|)))
+  :qid |quant-u-20254|)))
 (assert (forall ((s@$ $Snap) (xs@2@00 $Ref)) (!
   (elems%stateless xs@2@00)
   :pattern ((elems%limited s@$ xs@2@00))
-  :qid |quant-u-20240|)))
+  :qid |quant-u-20255|)))
 (assert (forall ((s@$ $Snap) (xs@2@00 $Ref)) (!
   (=>
     (elems%precondition s@$ xs@2@00)
@@ -466,7 +466,7 @@
           (elems%limited ($Snap.second ($Snap.second s@$)) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$))))))))
   :pattern ((elems s@$ xs@2@00))
   :pattern ((elems%stateless xs@2@00) (List%trigger s@$ xs@2@00))
-  :qid |quant-u-20243|)))
+  :qid |quant-u-20258|)))
 (assert (forall ((s@$ $Snap) (xs@2@00 $Ref)) (!
   (=>
     (elems%precondition s@$ xs@2@00)
@@ -475,7 +475,7 @@
       true
       (elems%precondition ($Snap.second ($Snap.second s@$)) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$))))))
   :pattern ((elems s@$ xs@2@00))
-  :qid |quant-u-20244|)))
+  :qid |quant-u-20259|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- insert ----------
@@ -700,7 +700,7 @@
     (MWSF_apply mwsf@15@01 $t@14@01)
     ($Snap.combine ($Snap.first $t@14@01) $Snap.unit))
   :pattern ((MWSF_apply mwsf@15@01 $t@14@01))
-  :qid |quant-u-20245|)))
+  :qid |quant-u-20260|)))
 ; [eval] Seq(x) ++ crtElems
 ; [eval] Seq(x)
 ; [eval] old(elems(xs))[0..i] ++ (Seq(x) ++ crtElems)
@@ -720,7 +720,7 @@
     (MWSF_apply mwsf@15@01 $t@14@01)
     ($Snap.combine ($Snap.first $t@14@01) $Snap.unit))
   :pattern ((MWSF_apply mwsf@15@01 $t@14@01))
-  :qid |quant-u-20246|)))
+  :qid |quant-u-20261|)))
 (assert true)
 (declare-const prev@16@01 $Ref)
 (declare-const oElems@17@01 Seq<Int>)
@@ -1451,7 +1451,7 @@
 (check-sat)
 ; unknown
 (pop) ; 8
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 8
@@ -1464,7 +1464,7 @@
 (check-sat)
 ; unknown
 (pop) ; 8
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 11 | nxt@21@01 != Null && head(First:(First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@23@01))))))))), nxt@21@01) < x@4@01 | live]
 ; [else-branch: 11 | !(nxt@21@01 != Null && head(First:(First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@23@01))))))))), nxt@21@01) < x@4@01) | live]
@@ -1583,7 +1583,7 @@
 (check-sat)
 ; unknown
 (pop) ; 9
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [eval] xs.next != null
 (set-option :timeout 0)
@@ -1595,7 +1595,7 @@
 (check-sat)
 ; unknown
 (pop) ; 9
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 9
@@ -1670,7 +1670,7 @@
 (check-sat)
 ; unknown
 (pop) ; 11
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (check-sat)
 ; unknown
@@ -1685,7 +1685,7 @@
 (check-sat)
 ; unknown
 (pop) ; 11
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (check-sat)
 ; unknown
@@ -1703,7 +1703,7 @@
 (check-sat)
 ; unknown
 (pop) ; 11
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 13 | First:(Second:(Second:(Second:(Second:($t@23@01))))) != Null | live]
 ; [else-branch: 13 | First:(Second:(Second:(Second:(Second:($t@23@01))))) == Null | dead]
@@ -1716,7 +1716,7 @@
 (check-sat)
 ; unknown
 (pop) ; 12
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (check-sat)
 ; unknown
@@ -1750,7 +1750,7 @@
 (check-sat)
 ; unknown
 (pop) ; 12
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (check-sat)
 ; unknown
@@ -1765,93 +1765,41 @@
 (check-sat)
 ; unknown
 (pop) ; 12
-; 0.00s
-; (get-info :all-statistics)
-(check-sat)
-; unknown
-; [eval] elems(prev) == Seq(x) ++ oElems
-; [eval] elems(prev)
-(set-option :timeout 0)
-(push) ; 12
-(assert (elems%precondition ($Snap.combine
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@23@01))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@23@01)))))
-    ($Snap.first $t@30@01))) crt@20@01))
-(pop) ; 12
-; Joined path conditions
-(assert (elems%precondition ($Snap.combine
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@23@01))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@23@01)))))
-    ($Snap.first $t@30@01))) crt@20@01))
-; [eval] Seq(x) ++ oElems
-; [eval] Seq(x)
-(push) ; 12
-(assert (not (Seq_equal
-  (elems ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@23@01))))
-    ($Snap.combine
-      ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@23@01)))))
-      ($Snap.first $t@30@01))) crt@20@01)
-  (Seq_append (Seq_singleton x@4@01) crtElems@19@01))))
-(check-sat)
-; unknown
-(pop) ; 12
-; 0.00s
-; (get-info :all-statistics)
-; [state consolidation]
-; State saturation: before repetition
-(set-option :timeout 10)
-(check-sat)
-; unknown
-; [eval] elems(prev) == Seq(x) ++ oElems
-; [eval] elems(prev)
-(set-option :timeout 0)
-(push) ; 12
-(pop) ; 12
-; Joined path conditions
-; [eval] Seq(x) ++ oElems
-; [eval] Seq(x)
-(push) ; 12
-(assert (not (Seq_equal
-  (elems ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@23@01))))
-    ($Snap.combine
-      ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@23@01)))))
-      ($Snap.first $t@30@01))) crt@20@01)
-  (Seq_append (Seq_singleton x@4@01) crtElems@19@01))))
-(check-sat)
-; unknown
-(pop) ; 12
-; 0.00s
-; (get-info :all-statistics)
-; [state consolidation]
-; State saturation: before repetition
-(set-option :timeout 10)
-(check-sat)
-; unknown
-; [eval] elems(prev) == Seq(x) ++ oElems
-; [eval] elems(prev)
-(set-option :timeout 0)
-(push) ; 12
-(pop) ; 12
-; Joined path conditions
-; [eval] Seq(x) ++ oElems
-; [eval] Seq(x)
-(push) ; 12
-(assert (not (Seq_equal
-  (elems ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@23@01))))
-    ($Snap.combine
-      ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@23@01)))))
-      ($Snap.first $t@30@01))) crt@20@01)
-  (Seq_append (Seq_singleton x@4@01) crtElems@19@01))))
-(check-sat)
-; unknown
-(pop) ; 12
 ; 0.01s
 ; (get-info :all-statistics)
+(check-sat)
+; unknown
+; [eval] elems(prev) == Seq(x) ++ oElems
+; [eval] elems(prev)
+(set-option :timeout 0)
+(push) ; 12
+(assert (elems%precondition ($Snap.combine
+  ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@23@01))))
+  ($Snap.combine
+    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@23@01)))))
+    ($Snap.first $t@30@01))) crt@20@01))
+(pop) ; 12
+; Joined path conditions
+(assert (elems%precondition ($Snap.combine
+  ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@23@01))))
+  ($Snap.combine
+    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@23@01)))))
+    ($Snap.first $t@30@01))) crt@20@01))
+; [eval] Seq(x) ++ oElems
+; [eval] Seq(x)
+(push) ; 12
+(assert (not (Seq_equal
+  (elems ($Snap.combine
+    ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@23@01))))
+    ($Snap.combine
+      ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@23@01)))))
+      ($Snap.first $t@30@01))) crt@20@01)
+  (Seq_append (Seq_singleton x@4@01) crtElems@19@01))))
+(check-sat)
+; unknown
+(pop) ; 12
+; 0.06s
+; (get-info :all-statistics)
 ; [state consolidation]
 ; State saturation: before repetition
 (set-option :timeout 10)
@@ -1876,7 +1824,59 @@
 (check-sat)
 ; unknown
 (pop) ; 12
-; 0.00s
+; 0.06s
+; (get-info :all-statistics)
+; [state consolidation]
+; State saturation: before repetition
+(set-option :timeout 10)
+(check-sat)
+; unknown
+; [eval] elems(prev) == Seq(x) ++ oElems
+; [eval] elems(prev)
+(set-option :timeout 0)
+(push) ; 12
+(pop) ; 12
+; Joined path conditions
+; [eval] Seq(x) ++ oElems
+; [eval] Seq(x)
+(push) ; 12
+(assert (not (Seq_equal
+  (elems ($Snap.combine
+    ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@23@01))))
+    ($Snap.combine
+      ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@23@01)))))
+      ($Snap.first $t@30@01))) crt@20@01)
+  (Seq_append (Seq_singleton x@4@01) crtElems@19@01))))
+(check-sat)
+; unknown
+(pop) ; 12
+; 0.02s
+; (get-info :all-statistics)
+; [state consolidation]
+; State saturation: before repetition
+(set-option :timeout 10)
+(check-sat)
+; unknown
+; [eval] elems(prev) == Seq(x) ++ oElems
+; [eval] elems(prev)
+(set-option :timeout 0)
+(push) ; 12
+(pop) ; 12
+; Joined path conditions
+; [eval] Seq(x) ++ oElems
+; [eval] Seq(x)
+(push) ; 12
+(assert (not (Seq_equal
+  (elems ($Snap.combine
+    ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@23@01))))
+    ($Snap.combine
+      ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@23@01)))))
+      ($Snap.first $t@30@01))) crt@20@01)
+  (Seq_append (Seq_singleton x@4@01) crtElems@19@01))))
+(check-sat)
+; unknown
+(pop) ; 12
+; 0.07s
 ; (get-info :all-statistics)
 (pop) ; 11
 (pop) ; 10
@@ -1887,7 +1887,7 @@
 (assert (forall (($t@31@01 $Snap)) (!
   (= (MWSF_apply mwsf@33@01 $t@31@01) $t@32@01)
   :pattern ((MWSF_apply mwsf@33@01 $t@31@01))
-  :qid |quant-u-20247|)))
+  :qid |quant-u-20262|)))
 ; [eval] Seq(x) ++ crtElems
 ; [eval] Seq(x)
 ; [eval] old(elems(xs))[0..i] ++ (Seq(x) ++ crtElems)

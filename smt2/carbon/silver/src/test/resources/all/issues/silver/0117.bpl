@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-29 20:50:44
+// Date:         2025-01-04 01:20:14
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0117.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0117-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -180,12 +180,12 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 procedure m1(a_2: int, b_24: int, c: bool) returns (res: bool)
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -195,8 +195,8 @@ procedure m1(a_2: int, b_24: int, c: bool) returns (res: bool)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -213,8 +213,8 @@ procedure m1(a_2: int, b_24: int, c: bool) returns (res: bool)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of m1 might not hold. Assertion res == (a > b == c) might not hold. (0117.vpr@5.11--5.32) [220110]"}
       res == ((a_2 > b_24) == c);
 }
@@ -226,12 +226,12 @@ procedure m1(a_2: int, b_24: int, c: bool) returns (res: bool)
 procedure m2(a_2: int, b_24: int, c: bool) returns (res: bool)
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -241,8 +241,8 @@ procedure m2(a_2: int, b_24: int, c: bool) returns (res: bool)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -259,8 +259,8 @@ procedure m2(a_2: int, b_24: int, c: bool) returns (res: bool)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of m2 might not hold. Assertion res == (a > b == c) might not hold. (0117.vpr@11.11--11.32) [220111]"}
       res == ((a_2 > b_24) == c);
 }
@@ -272,12 +272,12 @@ procedure m2(a_2: int, b_24: int, c: bool) returns (res: bool)
 procedure m3(a_2: int, b_24: int, c: bool) returns (res: bool)
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -287,8 +287,8 @@ procedure m3(a_2: int, b_24: int, c: bool) returns (res: bool)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -305,8 +305,8 @@ procedure m3(a_2: int, b_24: int, c: bool) returns (res: bool)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of m3 might not hold. Assertion res == (a <= b != c) might not hold. (0117.vpr@17.11--17.33) [220112]"}
       res == ((a_2 <= b_24) != c);
 }
@@ -318,12 +318,12 @@ procedure m3(a_2: int, b_24: int, c: bool) returns (res: bool)
 procedure m4(a_2: bool, b_24: bool, c: bool) returns (res: bool)
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -333,8 +333,8 @@ procedure m4(a_2: bool, b_24: bool, c: bool) returns (res: bool)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -351,8 +351,8 @@ procedure m4(a_2: bool, b_24: bool, c: bool) returns (res: bool)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of m4 might not hold. Assertion res == (a != (b != c)) might not hold. (0117.vpr@23.11--23.33) [220113]"}
       res == (a_2 != (b_24 != c));
 }

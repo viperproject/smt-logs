@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-29 20:30:52
+// Date:         2025-01-04 01:00:16
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/closures_encoded.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/closures_encoded-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -714,18 +714,18 @@ procedure triple_not_nested(x: Ref) returns ()
   var perm: Perm;
   var WandDefLHSHeap: HeapType;
   var WandDefLHSMask: MaskType;
-  var Labellhs1Heap: HeapType;
   var Labellhs1Mask: MaskType;
+  var Labellhs1Heap: HeapType;
   var WandDefRHSHeap: HeapType;
   var WandDefRHSMask: MaskType;
-  var Labellhs2Heap: HeapType;
   var Labellhs2Mask: MaskType;
-  var oldHeap: HeapType;
+  var Labellhs2Heap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -753,8 +753,8 @@ procedure triple_not_nested(x: Ref) returns ()
         
         // -- Translating statement: label lhs1 -- closures_encoded.vpr@16.12--16.46
           lhs1:
-          Labellhs1Heap := WandDefLHSHeap;
           Labellhs1Mask := WandDefLHSMask;
+          Labellhs1Heap := WandDefLHSHeap;
           assume state(WandDefLHSHeap, WandDefLHSMask);
         havoc WandDefRHSHeap;
         WandDefRHSMask := ZeroMask;
@@ -779,8 +779,8 @@ procedure triple_not_nested(x: Ref) returns ()
         
         // -- Translating statement: label lhs2 -- closures_encoded.vpr@17.12--17.46
           lhs2:
-          Labellhs2Heap := WandDefLHSHeap;
           Labellhs2Mask := WandDefLHSMask;
+          Labellhs2Heap := WandDefLHSHeap;
           assume state(WandDefLHSHeap, WandDefLHSMask);
         havoc WandDefRHSHeap;
         WandDefRHSMask := ZeroMask;
@@ -797,8 +797,8 @@ procedure triple_not_nested(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -813,8 +813,8 @@ procedure triple_not_nested(x: Ref) returns ()
   }
   
   // -- Translating statement: exhale acc(c1_pre(x), write) -- closures_encoded.vpr@20.3--20.24
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Exhale might fail. There might be insufficient permission to access c1_pre(x) (closures_encoded.vpr@20.10--20.24) [133580]"}
@@ -837,8 +837,8 @@ procedure triple_not_nested(x: Ref) returns ()
   // -- Translating statement: apply acc(c1_post(x), write) --* acc(c2_pre(x), write) -- closures_encoded.vpr@23.3--23.43
     
     // -- check if wand is held and remove an instance
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       // permLe
       assert {:msg "  Applying wand might fail. Magic wand instance not found. (closures_encoded.vpr@23.3--23.43) [133582]"}
         FullPerm <= Mask[null, wand(x, x)];
@@ -846,8 +846,8 @@ procedure triple_not_nested(x: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- check if LHS holds and remove permissions 
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Applying wand might fail. There might be insufficient permission to access c1_post(x) (closures_encoded.vpr@23.3--23.43) [133584]"}
@@ -868,8 +868,8 @@ procedure triple_not_nested(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(c2_pre(x), write) -- closures_encoded.vpr@25.3--25.24
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Exhale might fail. There might be insufficient permission to access c2_pre(x) (closures_encoded.vpr@25.10--25.24) [133587]"}
@@ -892,8 +892,8 @@ procedure triple_not_nested(x: Ref) returns ()
   // -- Translating statement: apply acc(c2_post(x), write) --* acc(c3_pre(x), write) -- closures_encoded.vpr@28.3--28.43
     
     // -- check if wand is held and remove an instance
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       // permLe
       assert {:msg "  Applying wand might fail. Magic wand instance not found. (closures_encoded.vpr@28.3--28.43) [133589]"}
         FullPerm <= Mask[null, wand_1(x, x)];
@@ -901,8 +901,8 @@ procedure triple_not_nested(x: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- check if LHS holds and remove permissions 
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Applying wand might fail. There might be insufficient permission to access c2_post(x) (closures_encoded.vpr@28.3--28.43) [133591]"}
@@ -923,8 +923,8 @@ procedure triple_not_nested(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(c3_pre(x), write) -- closures_encoded.vpr@30.3--30.24
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Exhale might fail. There might be insufficient permission to access c3_pre(x) (closures_encoded.vpr@30.10--30.24) [133594]"}
@@ -945,8 +945,8 @@ procedure triple_not_nested(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of triple_not_nested might not hold. There might be insufficient permission to access c3_post(x) (closures_encoded.vpr@18.11--18.26) [133596]"}
@@ -966,8 +966,8 @@ procedure triple_not_nested(x: Ref) returns ()
 procedure call_triple_not_nested() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var x: Ref;
   var freshObj: Ref;
   var w_2: int;
@@ -978,8 +978,8 @@ procedure call_triple_not_nested() returns ()
   var UsedMask: MaskType;
   var b_2: bool;
   var perm: Perm;
-  var Labellhs5Heap: HeapType;
   var Labellhs5Mask: MaskType;
+  var Labellhs5Heap: HeapType;
   var boolCur: bool;
   var Used_1Heap: HeapType;
   var Used_1Mask: MaskType;
@@ -999,8 +999,8 @@ procedure call_triple_not_nested() returns ()
   var Used_2Heap: HeapType;
   var Used_2Mask: MaskType;
   var b_4: bool;
-  var Labellhs7Heap: HeapType;
   var Labellhs7Mask: MaskType;
+  var Labellhs7Heap: HeapType;
   var boolCur_1: bool;
   var Used_3Heap: HeapType;
   var Used_3Mask: MaskType;
@@ -1008,16 +1008,16 @@ procedure call_triple_not_nested() returns ()
   var b_7: bool;
   var Result_1Heap: HeapType;
   var Result_1Mask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var WandDefLHSHeap: HeapType;
   var WandDefLHSMask: MaskType;
-  var Labellhs9Heap: HeapType;
   var Labellhs9Mask: MaskType;
+  var Labellhs9Heap: HeapType;
   var WandDefRHSHeap: HeapType;
   var WandDefRHSMask: MaskType;
-  var Labellhs10Heap: HeapType;
   var Labellhs10Mask: MaskType;
+  var Labellhs10Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -1028,8 +1028,8 @@ procedure call_triple_not_nested() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[x, $allocated];
@@ -1086,8 +1086,8 @@ procedure call_triple_not_nested() returns ()
     
     // -- Translating statement: label lhs5 -- closures_encoded.vpr@41.11--41.48
       lhs5:
-      Labellhs5Heap := Ops_1Heap;
       Labellhs5Mask := Ops_1Mask;
+      Labellhs5Heap := Ops_1Heap;
       b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);
     boolCur := true;
     // Translating exec of non-ghost operationacc(x.f, write)
@@ -1187,8 +1187,8 @@ procedure call_triple_not_nested() returns ()
     
     // -- Translating statement: label lhs7 -- closures_encoded.vpr@42.11--42.59
       lhs7:
-      Labellhs7Heap := Ops_3Heap;
       Labellhs7Mask := Ops_3Mask;
+      Labellhs7Heap := Ops_3Heap;
       b_5 := b_5 && state(Ops_3Heap, Ops_3Mask);
     boolCur_1 := true;
     // Translating exec of non-ghost operationacc(x.f, write) && x.f > 0
@@ -1277,8 +1277,8 @@ procedure call_triple_not_nested() returns ()
   // -- Translating statement: exhale acc(x.f, write) &&
   //   ((acc(x.f, write) && x.f == w + 1 --* acc(x.f, write) && x.f > 0) &&
   //   (acc(x.f, write) && x.f == w - 2 --* acc(x.f, write))) -- closures_encoded.vpr@47.3--49.52
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (closures_encoded.vpr@47.14--49.52) [133609]"}
@@ -1303,8 +1303,8 @@ procedure call_triple_not_nested() returns ()
         
         // -- Translating statement: label lhs9 -- closures_encoded.vpr@48.14--48.62
           lhs9:
-          Labellhs9Heap := WandDefLHSHeap;
           Labellhs9Mask := WandDefLHSMask;
+          Labellhs9Heap := WandDefLHSHeap;
           assume state(WandDefLHSHeap, WandDefLHSMask);
         havoc WandDefRHSHeap;
         WandDefRHSMask := ZeroMask;
@@ -1342,8 +1342,8 @@ procedure call_triple_not_nested() returns ()
         
         // -- Translating statement: label lhs10 -- closures_encoded.vpr@49.14--49.51
           lhs10:
-          Labellhs10Heap := WandDefLHSHeap;
           Labellhs10Mask := WandDefLHSMask;
+          Labellhs10Heap := WandDefLHSHeap;
           assume state(WandDefLHSHeap, WandDefLHSMask);
         havoc WandDefRHSHeap;
         WandDefRHSMask := ZeroMask;
@@ -1375,18 +1375,18 @@ procedure triple_nested(x: Ref) returns ()
   var perm: Perm;
   var WandDefLHSHeap: HeapType;
   var WandDefLHSMask: MaskType;
-  var Labellhs11Heap: HeapType;
   var Labellhs11Mask: MaskType;
+  var Labellhs11Heap: HeapType;
   var WandDefRHSHeap: HeapType;
   var WandDefRHSMask: MaskType;
-  var Labellhs12Heap: HeapType;
   var Labellhs12Mask: MaskType;
-  var oldHeap: HeapType;
+  var Labellhs12Heap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -1414,8 +1414,8 @@ procedure triple_nested(x: Ref) returns ()
         
         // -- Translating statement: label lhs11 -- closures_encoded.vpr@54.12--56.54
           lhs11:
-          Labellhs11Heap := WandDefLHSHeap;
           Labellhs11Mask := WandDefLHSMask;
+          Labellhs11Heap := WandDefLHSHeap;
           assume state(WandDefLHSHeap, WandDefLHSMask);
         havoc WandDefRHSHeap;
         WandDefRHSMask := ZeroMask;
@@ -1434,8 +1434,8 @@ procedure triple_nested(x: Ref) returns ()
             
             // -- Translating statement: label lhs12 -- closures_encoded.vpr@56.18--56.52
               lhs12:
-              Labellhs12Heap := WandDefLHSHeap;
               Labellhs12Mask := WandDefLHSMask;
+              Labellhs12Heap := WandDefLHSHeap;
               assume state(WandDefLHSHeap, WandDefLHSMask);
             havoc WandDefRHSHeap;
             WandDefRHSMask := ZeroMask;
@@ -1457,8 +1457,8 @@ procedure triple_nested(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1473,8 +1473,8 @@ procedure triple_nested(x: Ref) returns ()
   }
   
   // -- Translating statement: exhale acc(c1_pre(x), write) -- closures_encoded.vpr@59.3--59.24
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Exhale might fail. There might be insufficient permission to access c1_pre(x) (closures_encoded.vpr@59.10--59.24) [133616]"}
@@ -1499,8 +1499,8 @@ procedure triple_nested(x: Ref) returns ()
   //   (acc(c2_post(x), write) --* acc(c3_pre(x), write)) -- closures_encoded.vpr@62.3--64.53
     
     // -- check if wand is held and remove an instance
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       // permLe
       assert {:msg "  Applying wand might fail. Magic wand instance not found. (closures_encoded.vpr@62.3--64.53) [133618]"}
         FullPerm <= Mask[null, wand_4(x, x, x, x)];
@@ -1508,8 +1508,8 @@ procedure triple_nested(x: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- check if LHS holds and remove permissions 
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Applying wand might fail. There might be insufficient permission to access c1_post(x) (closures_encoded.vpr@62.3--64.53) [133620]"}
@@ -1532,8 +1532,8 @@ procedure triple_nested(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(c2_pre(x), write) -- closures_encoded.vpr@66.3--66.24
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Exhale might fail. There might be insufficient permission to access c2_pre(x) (closures_encoded.vpr@66.10--66.24) [133623]"}
@@ -1556,8 +1556,8 @@ procedure triple_nested(x: Ref) returns ()
   // -- Translating statement: apply acc(c2_post(x), write) --* acc(c3_pre(x), write) -- closures_encoded.vpr@69.3--69.43
     
     // -- check if wand is held and remove an instance
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       // permLe
       assert {:msg "  Applying wand might fail. Magic wand instance not found. (closures_encoded.vpr@69.3--69.43) [133625]"}
         FullPerm <= Mask[null, wand_1(x, x)];
@@ -1565,8 +1565,8 @@ procedure triple_nested(x: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- check if LHS holds and remove permissions 
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Applying wand might fail. There might be insufficient permission to access c2_post(x) (closures_encoded.vpr@69.3--69.43) [133627]"}
@@ -1587,8 +1587,8 @@ procedure triple_nested(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(c3_pre(x), write) -- closures_encoded.vpr@71.3--71.24
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Exhale might fail. There might be insufficient permission to access c3_pre(x) (closures_encoded.vpr@71.10--71.24) [133630]"}
@@ -1609,8 +1609,8 @@ procedure triple_nested(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of triple_nested might not hold. There might be insufficient permission to access c3_post(x) (closures_encoded.vpr@57.11--57.26) [133632]"}
@@ -1630,8 +1630,8 @@ procedure triple_nested(x: Ref) returns ()
 procedure call_triple_nested() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var x: Ref;
   var freshObj: Ref;
   var a_2: int;
@@ -1641,8 +1641,8 @@ procedure call_triple_nested() returns ()
   var Used_4Heap: HeapType;
   var Used_4Mask: MaskType;
   var b_8: bool;
-  var Labellhs15Heap: HeapType;
   var Labellhs15Mask: MaskType;
+  var Labellhs15Heap: HeapType;
   var boolCur_2: bool;
   var Used_5Heap: HeapType;
   var Used_5Mask: MaskType;
@@ -1653,16 +1653,16 @@ procedure call_triple_nested() returns ()
   var Used_6Heap: HeapType;
   var Used_6Mask: MaskType;
   var b_11: bool;
-  var Labellhs18Heap: HeapType;
   var Labellhs18Mask: MaskType;
+  var Labellhs18Heap: HeapType;
   var boolCur_3: bool;
   var Used_7Heap: HeapType;
   var Used_7Mask: MaskType;
   var b_13: bool;
   var WandDefLHSHeap: HeapType;
   var WandDefLHSMask: MaskType;
-  var Labellhs20Heap: HeapType;
   var Labellhs20Mask: MaskType;
+  var Labellhs20Heap: HeapType;
   var WandDefRHSHeap: HeapType;
   var WandDefRHSMask: MaskType;
   var neededTransfer: Perm;
@@ -1682,8 +1682,8 @@ procedure call_triple_nested() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[x, $allocated];
@@ -1726,8 +1726,8 @@ procedure call_triple_nested() returns ()
     
     // -- Translating statement: label lhs15 -- closures_encoded.vpr@85.11--85.24
       lhs15:
-      Labellhs15Heap := Ops_5Heap;
       Labellhs15Mask := Ops_5Mask;
+      Labellhs15Heap := Ops_5Heap;
       b_9 := b_9 && state(Ops_5Heap, Ops_5Mask);
     boolCur_2 := true;
     // Translating exec of non-ghost operationtrue
@@ -1755,8 +1755,8 @@ procedure call_triple_nested() returns ()
     
     // -- Translating statement: label lhs18 -- closures_encoded.vpr@86.11--86.35
       lhs18:
-      Labellhs18Heap := Ops_7Heap;
       Labellhs18Mask := Ops_7Mask;
+      Labellhs18Heap := Ops_7Heap;
       b_12 := b_12 && state(Ops_7Heap, Ops_7Mask);
     boolCur_3 := true;
     // Translating exec of non-ghost operationtrue --* true
@@ -1778,8 +1778,8 @@ procedure call_triple_nested() returns ()
                 
                 // -- Translating statement: label lhs20 -- closures_encoded.vpr@86.21--86.34
                   lhs20:
-                  Labellhs20Heap := WandDefLHSHeap;
                   Labellhs20Mask := WandDefLHSMask;
+                  Labellhs20Heap := WandDefLHSHeap;
                   assume state(WandDefLHSHeap, WandDefLHSMask);
                 havoc WandDefRHSHeap;
                 WandDefRHSMask := ZeroMask;

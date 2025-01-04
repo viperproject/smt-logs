@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-29 20:05:32
+; Started: 2025-01-04 00:34:43
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -681,19 +681,19 @@
 (assert (forall ((s@$ $Snap) (j@0@00 Int)) (!
   (= (dummy%limited s@$ j@0@00) (dummy s@$ j@0@00))
   :pattern ((dummy s@$ j@0@00))
-  :qid |quant-u-23207|)))
+  :qid |quant-u-23222|)))
 (assert (forall ((s@$ $Snap) (j@0@00 Int)) (!
   (dummy%stateless j@0@00)
   :pattern ((dummy%limited s@$ j@0@00))
-  :qid |quant-u-23208|)))
+  :qid |quant-u-23223|)))
 (assert (forall ((s@$ $Snap) (j@0@00 Int)) (!
   (=> (dummy%precondition s@$ j@0@00) (= (dummy s@$ j@0@00) true))
   :pattern ((dummy s@$ j@0@00))
-  :qid |quant-u-23209|)))
+  :qid |quant-u-23224|)))
 (assert (forall ((s@$ $Snap) (j@0@00 Int)) (!
   true
   :pattern ((dummy s@$ j@0@00))
-  :qid |quant-u-23210|)))
+  :qid |quant-u-23225|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- qpTest ----------
@@ -773,7 +773,7 @@
       (= (inv@6@01 (loc<Ref> a@2@01 (+ i@5@01 2))) i@5@01)
       (img@7@01 (loc<Ref> a@2@01 (+ i@5@01 2)))))
   :pattern ((dummy $Snap.unit i@5@01))
-  :qid |quant-u-23212|)))
+  :qid |quant-u-23227|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and (img@7@01 r) (and (<= (- 0 2) (inv@6@01 r)) (< (inv@6@01 r) 8)))
@@ -857,7 +857,7 @@
       (pTaken@9@01 r))
     $Perm.No)
   
-  :qid |quant-u-23214|))))
+  :qid |quant-u-23229|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -869,7 +869,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@9@01 r) $Perm.No)
   
-  :qid |quant-u-23215|))))
+  :qid |quant-u-23230|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -884,7 +884,7 @@
     (= r (loc<Ref> a@2@01 j@3@01))
     (= (- $Perm.Write (pTaken@9@01 r)) $Perm.No))
   
-  :qid |quant-u-23216|))))
+  :qid |quant-u-23231|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -1050,7 +1050,7 @@
       (= (inv@18@01 (loc<Ref> a@14@01 (+ i@17@01 2))) i@17@01)
       (img@19@01 (loc<Ref> a@14@01 (+ i@17@01 2)))))
   :pattern ((other_dummy<Bool> i@17@01))
-  :qid |quant-u-23218|)))
+  :qid |quant-u-23233|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and (img@19@01 r) (and (<= (- 0 2) (inv@18@01 r)) (< (inv@18@01 r) 8)))
@@ -1129,7 +1129,7 @@
       (pTaken@21@01 r))
     $Perm.No)
   
-  :qid |quant-u-23220|))))
+  :qid |quant-u-23235|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -1141,7 +1141,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@21@01 r) $Perm.No)
   
-  :qid |quant-u-23221|))))
+  :qid |quant-u-23236|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -1156,7 +1156,7 @@
     (= r (loc<Ref> a@14@01 j@15@01))
     (= (- $Perm.Write (pTaken@21@01 r)) $Perm.No))
   
-  :qid |quant-u-23222|))))
+  :qid |quant-u-23237|))))
 (check-sat)
 ; unsat
 (pop) ; 3

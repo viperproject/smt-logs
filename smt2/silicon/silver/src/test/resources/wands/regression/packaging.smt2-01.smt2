@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-29 20:02:40
+; Started: 2025-01-04 00:31:41
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -208,7 +208,7 @@
 (assert (forall (($t@4@01 $Snap)) (!
   (= (MWSF_apply mwsf@6@01 $t@4@01) $t@5@01)
   :pattern ((MWSF_apply mwsf@6@01 $t@4@01))
-  :qid |quant-u-20039|)))
+  :qid |quant-u-20054|)))
 (pop) ; 3
 (declare-const $t@7@01 $Snap)
 (declare-const $t@8@01 $Snap)
@@ -217,7 +217,7 @@
 (assert (forall (($t@7@01 $Snap)) (!
   (= (MWSF_apply mwsf@9@01 $t@7@01) $t@8@01)
   :pattern ((MWSF_apply mwsf@9@01 $t@7@01))
-  :qid |quant-u-20041|)))
+  :qid |quant-u-20056|)))
 (pop) ; 2
 (pop) ; 1
 ; ---------- test02 ----------
@@ -262,14 +262,14 @@
 (assert (forall (($t@13@01 $Snap)) (!
   (= (MWSF_apply mwsf@14@01 $t@13@01) $t@13@01)
   :pattern ((MWSF_apply mwsf@14@01 $t@13@01))
-  :qid |quant-u-20043|)))
+  :qid |quant-u-20058|)))
 (pop) ; 4
 (set-option :timeout 0)
 (push) ; 4
 (assert (forall (($t@13@01 $Snap)) (!
   (= (MWSF_apply mwsf@14@01 $t@13@01) $t@13@01)
   :pattern ((MWSF_apply mwsf@14@01 $t@13@01))
-  :qid |quant-u-20044|)))
+  :qid |quant-u-20059|)))
 (assert true)
 (push) ; 5
 (set-option :timeout 10)
@@ -286,7 +286,7 @@
 (assert (forall (($t@12@01 $Snap)) (!
   (= (MWSF_apply mwsf@15@01 $t@12@01) ($SortWrappers.$MWSFTo$Snap mwsf@14@01))
   :pattern ((MWSF_apply mwsf@15@01 $t@12@01))
-  :qid |quant-u-20045|)))
+  :qid |quant-u-20060|)))
 (pop) ; 4
 (pop) ; 3
 (set-option :timeout 0)
@@ -294,12 +294,12 @@
 (assert (forall (($t@12@01 $Snap)) (!
   (= (MWSF_apply mwsf@15@01 $t@12@01) ($SortWrappers.$MWSFTo$Snap mwsf@14@01))
   :pattern ((MWSF_apply mwsf@15@01 $t@12@01))
-  :qid |quant-u-20046|)))
+  :qid |quant-u-20061|)))
 (assert true)
 (assert (forall (($t@13@01 $Snap)) (!
   (= (MWSF_apply mwsf@14@01 $t@13@01) $t@13@01)
   :pattern ((MWSF_apply mwsf@14@01 $t@13@01))
-  :qid |quant-u-20043|)))
+  :qid |quant-u-20058|)))
 ; [exec]
 ; inhale acc(x.f, write)
 (declare-const $t@16@01 $Ref)
@@ -417,14 +417,14 @@
 (assert (forall (($t@21@01 $Snap)) (!
   (= (MWSF_apply mwsf@22@01 $t@21@01) $t@21@01)
   :pattern ((MWSF_apply mwsf@22@01 $t@21@01))
-  :qid |quant-u-20047|)))
+  :qid |quant-u-20062|)))
 (pop) ; 4
 (set-option :timeout 0)
 (push) ; 4
 (assert (forall (($t@21@01 $Snap)) (!
   (= (MWSF_apply mwsf@22@01 $t@21@01) $t@21@01)
   :pattern ((MWSF_apply mwsf@22@01 $t@21@01))
-  :qid |quant-u-20048|)))
+  :qid |quant-u-20063|)))
 (assert true)
 (push) ; 5
 (set-option :timeout 10)
@@ -441,7 +441,7 @@
 (assert (forall (($t@20@01 $Snap)) (!
   (= (MWSF_apply mwsf@23@01 $t@20@01) ($SortWrappers.$MWSFTo$Snap mwsf@22@01))
   :pattern ((MWSF_apply mwsf@23@01 $t@20@01))
-  :qid |quant-u-20049|)))
+  :qid |quant-u-20064|)))
 (pop) ; 4
 (pop) ; 3
 (set-option :timeout 0)
@@ -449,12 +449,12 @@
 (assert (forall (($t@20@01 $Snap)) (!
   (= (MWSF_apply mwsf@23@01 $t@20@01) ($SortWrappers.$MWSFTo$Snap mwsf@22@01))
   :pattern ((MWSF_apply mwsf@23@01 $t@20@01))
-  :qid |quant-u-20050|)))
+  :qid |quant-u-20065|)))
 (assert true)
 (assert (forall (($t@21@01 $Snap)) (!
   (= (MWSF_apply mwsf@22@01 $t@21@01) $t@21@01)
   :pattern ((MWSF_apply mwsf@22@01 $t@21@01))
-  :qid |quant-u-20047|)))
+  :qid |quant-u-20062|)))
 ; [exec]
 ; apply acc(x.f, write) --* acc(x.f, write) --* acc(x.f, write)
 ; [state consolidation]
@@ -572,14 +572,14 @@
 (assert (forall (($t@28@01 $Snap)) (!
   (= (MWSF_apply mwsf@29@01 $t@28@01) ($SortWrappers.$RefTo$Snap $t@26@01))
   :pattern ((MWSF_apply mwsf@29@01 $t@28@01))
-  :qid |quant-u-20051|)))
+  :qid |quant-u-20066|)))
 (pop) ; 4
 (set-option :timeout 0)
 (push) ; 4
 (assert (forall (($t@28@01 $Snap)) (!
   (= (MWSF_apply mwsf@29@01 $t@28@01) ($SortWrappers.$RefTo$Snap $t@26@01))
   :pattern ((MWSF_apply mwsf@29@01 $t@28@01))
-  :qid |quant-u-20052|)))
+  :qid |quant-u-20067|)))
 (assert true)
 (push) ; 5
 (set-option :timeout 10)
@@ -742,6 +742,6 @@
 (assert (forall (($t@30@01 $Snap)) (!
   (= (MWSF_apply mwsf@32@01 $t@30@01) $t@31@01)
   :pattern ((MWSF_apply mwsf@32@01 $t@30@01))
-  :qid |quant-u-20053|)))
+  :qid |quant-u-20068|)))
 (pop) ; 2
 (pop) ; 1

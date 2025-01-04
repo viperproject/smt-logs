@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-29 20:01:37
+; Started: 2025-01-04 00:30:30
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -786,7 +786,7 @@
       (img@11@01 a@4@01 i@9@01@rw0)))
   :pattern ((inv@10@01 a@4@01 i@9@01@rw0))
   :pattern ((img@11@01 a@4@01 i@9@01@rw0))
-  :qid |quant-u-18351|)))
+  :qid |quant-u-18416|)))
 (assert (forall ((a IArray) (i Int)) (!
   (=>
     (and (img@11@01 a i) (and (> (inv@10@01 a i) 0) (< (inv@10@01 a i) n@5@01)))
@@ -860,7 +860,7 @@
       (img@15@01 a@4@01 i@12@01@rw1)))
   :pattern ((inv@14@01 a@4@01 i@12@01@rw1))
   :pattern ((img@15@01 a@4@01 i@12@01@rw1))
-  :qid |quant-u-18353|)))
+  :qid |quant-u-18418|)))
 (assert (forall ((a IArray) (i Int)) (!
   (=>
     (and (img@15@01 a i) (and (> (inv@14@01 a i) 0) (< (inv@14@01 a i) n@5@01)))
@@ -973,7 +973,7 @@
       (pTaken@19@01 a i))
     $Perm.No)
   
-  :qid |quant-u-18356|))))
+  :qid |quant-u-18421|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -991,7 +991,7 @@
       (and (= a a@4@01) (= i (+ (inv@17@01 a i) 1))))
     (= (- $Perm.Write (pTaken@19@01 a i)) $Perm.No))
   
-  :qid |quant-u-18357|))))
+  :qid |quant-u-18422|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -1075,7 +1075,7 @@
       (= (inv@30@01 (loc<Ref> a@24@01 i@29@01@rw3)) (- i@29@01@rw3 1))
       (img@31@01 (loc<Ref> a@24@01 i@29@01@rw3))))
   :pattern ((loc<Ref> a@24@01 i@29@01@rw3))
-  :qid |quant-u-18359|)))
+  :qid |quant-u-18424|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and (img@31@01 r) (and (> (inv@30@01 r) 0) (< (inv@30@01 r) n@25@01)))
@@ -1156,7 +1156,7 @@
       (= (inv@34@01 (loc<Ref> a@24@01 i@32@01@rw4)) (- i@32@01@rw4 1))
       (img@35@01 (loc<Ref> a@24@01 i@32@01@rw4))))
   :pattern ((loc<Ref> a@24@01 i@32@01@rw4))
-  :qid |quant-u-18361|)))
+  :qid |quant-u-18426|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and (img@35@01 r) (and (> (inv@34@01 r) 0) (< (inv@34@01 r) n@25@01)))
@@ -1272,7 +1272,7 @@
       (pTaken@39@01 r))
     $Perm.No)
   
-  :qid |quant-u-18364|))))
+  :qid |quant-u-18429|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -1290,7 +1290,7 @@
       (= r (loc<Ref> a@24@01 (+ (inv@37@01 r) 1))))
     (= (- $Perm.Write (pTaken@39@01 r)) $Perm.No))
   
-  :qid |quant-u-18365|))))
+  :qid |quant-u-18430|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -1375,7 +1375,7 @@
       (img@51@01 a@44@01 i@49@01@rw6)))
   :pattern ((inv@50@01 a@44@01 i@49@01@rw6))
   :pattern ((img@51@01 a@44@01 i@49@01@rw6))
-  :qid |quant-u-18367|)))
+  :qid |quant-u-18432|)))
 (assert (forall ((a IArray) (i Int)) (!
   (=>
     (and (img@51@01 a i) (and (> (inv@50@01 a i) 0) (< (inv@50@01 a i) n@45@01)))
@@ -1434,7 +1434,7 @@
       (pTaken@54@01 a i))
     $Perm.No)
   
-  :qid |quant-u-18369|))))
+  :qid |quant-u-18434|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -1446,7 +1446,7 @@
 (assert (not (forall ((a IArray) (i Int)) (!
   (= (pTaken@54@01 a i) $Perm.No)
   
-  :qid |quant-u-18370|))))
+  :qid |quant-u-18435|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -1461,7 +1461,7 @@
     (and (= a a@44@01) (= i 1))
     (= (- $Perm.Write (pTaken@54@01 a i)) $Perm.No))
   
-  :qid |quant-u-18371|))))
+  :qid |quant-u-18436|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -1475,7 +1475,7 @@
     (and (= a a@44@01) (= i 1))
     (= (- $Perm.Write (pTaken@54@01 a i)) $Perm.No))
   
-  :qid |quant-u-18371|))))
+  :qid |quant-u-18436|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -1520,7 +1520,7 @@
       (pTaken@55@01 a i))
     $Perm.No)
   
-  :qid |quant-u-18373|))))
+  :qid |quant-u-18438|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -1532,7 +1532,7 @@
 (assert (not (forall ((a IArray) (i Int)) (!
   (= (pTaken@55@01 a i) $Perm.No)
   
-  :qid |quant-u-18374|))))
+  :qid |quant-u-18439|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -1547,7 +1547,7 @@
     (and (= a a@44@01) (= i 1))
     (= (- $Perm.Write (pTaken@55@01 a i)) $Perm.No))
   
-  :qid |quant-u-18375|))))
+  :qid |quant-u-18440|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -1561,7 +1561,7 @@
     (and (= a a@44@01) (= i 1))
     (= (- $Perm.Write (pTaken@55@01 a i)) $Perm.No))
   
-  :qid |quant-u-18375|))))
+  :qid |quant-u-18440|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -1643,7 +1643,7 @@
       (= (inv@66@01 (loc<Ref> a@60@01 i@65@01@rw7)) (- i@65@01@rw7 1))
       (img@67@01 (loc<Ref> a@60@01 i@65@01@rw7))))
   :pattern ((loc<Ref> a@60@01 i@65@01@rw7))
-  :qid |quant-u-18377|)))
+  :qid |quant-u-18442|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and (img@67@01 r) (and (> (inv@66@01 r) 0) (< (inv@66@01 r) n@61@01)))
@@ -1712,7 +1712,7 @@
       (pTaken@70@01 r))
     $Perm.No)
   
-  :qid |quant-u-18379|))))
+  :qid |quant-u-18444|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -1724,7 +1724,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@70@01 r) $Perm.No)
   
-  :qid |quant-u-18380|))))
+  :qid |quant-u-18445|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -1737,7 +1737,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (= r (loc<Ref> a@60@01 1)) (= (- $Perm.Write (pTaken@70@01 r)) $Perm.No))
   
-  :qid |quant-u-18381|))))
+  :qid |quant-u-18446|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -1749,7 +1749,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (= r (loc<Ref> a@60@01 1)) (= (- $Perm.Write (pTaken@70@01 r)) $Perm.No))
   
-  :qid |quant-u-18381|))))
+  :qid |quant-u-18446|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -1817,7 +1817,7 @@
       (pTaken@73@01 r))
     $Perm.No)
   
-  :qid |quant-u-18383|))))
+  :qid |quant-u-18448|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -1829,7 +1829,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@73@01 r) $Perm.No)
   
-  :qid |quant-u-18384|))))
+  :qid |quant-u-18449|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -1842,7 +1842,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (= r (loc<Ref> a@60@01 1)) (= (- $Perm.Write (pTaken@73@01 r)) $Perm.No))
   
-  :qid |quant-u-18385|))))
+  :qid |quant-u-18450|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -1854,7 +1854,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (= r (loc<Ref> a@60@01 1)) (= (- $Perm.Write (pTaken@73@01 r)) $Perm.No))
   
-  :qid |quant-u-18385|))))
+  :qid |quant-u-18450|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -1937,7 +1937,7 @@
       (img@85@01 a@78@01 i@83@01@rw8)))
   :pattern ((inv@84@01 a@78@01 i@83@01@rw8))
   :pattern ((img@85@01 a@78@01 i@83@01@rw8))
-  :qid |quant-u-18387|)))
+  :qid |quant-u-18452|)))
 (assert (forall ((a IArray) (i Int)) (!
   (=>
     (and (img@85@01 a i) (and (> (inv@84@01 a i) 0) (< (inv@84@01 a i) n@79@01)))
@@ -2009,7 +2009,7 @@
     (and (= (inv@88@01 a@78@01 i@86@01) i@86@01) (img@89@01 a@78@01 i@86@01)))
   :pattern ((inv@88@01 a@78@01 i@86@01))
   :pattern ((img@89@01 a@78@01 i@86@01))
-  :qid |quant-u-18389|)))
+  :qid |quant-u-18454|)))
 (assert (forall ((a IArray) (i Int)) (!
   (=>
     (and
@@ -2092,7 +2092,7 @@
 (assert (not (forall ((i@90@01 Int)) (!
   (= i@90@01 (+ i@90@01 1))
   
-  :qid |quant-u-18391|))))
+  :qid |quant-u-18456|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -2134,7 +2134,7 @@
       (pTaken@93@01 a i))
     $Perm.No)
   
-  :qid |quant-u-18393|))))
+  :qid |quant-u-18458|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -2152,7 +2152,7 @@
       (and (= a a@78@01) (= i (inv@91@01 a i))))
     (= (- $Perm.Write (pTaken@93@01 a i)) $Perm.No))
   
-  :qid |quant-u-18394|))))
+  :qid |quant-u-18459|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -2236,7 +2236,7 @@
       (= (inv@104@01 (loc<Ref> a@98@01 i@103@01@rw9)) (- i@103@01@rw9 1))
       (img@105@01 (loc<Ref> a@98@01 i@103@01@rw9))))
   :pattern ((loc<Ref> a@98@01 i@103@01@rw9))
-  :qid |quant-u-18396|)))
+  :qid |quant-u-18461|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and (img@105@01 r) (and (> (inv@104@01 r) 0) (< (inv@104@01 r) n@99@01)))
@@ -2317,7 +2317,7 @@
       (= (inv@108@01 (loc<Ref> a@98@01 i@106@01)) i@106@01)
       (img@109@01 (loc<Ref> a@98@01 i@106@01))))
   :pattern ((loc<Ref> a@98@01 i@106@01))
-  :qid |quant-u-18398|)))
+  :qid |quant-u-18463|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -2409,7 +2409,7 @@
 (assert (not (forall ((i@110@01 Int)) (!
   (= (loc<Ref> a@98@01 i@110@01) (loc<Ref> a@98@01 (+ i@110@01 1)))
   
-  :qid |quant-u-18400|))))
+  :qid |quant-u-18465|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -2451,7 +2451,7 @@
       (pTaken@113@01 r))
     $Perm.No)
   
-  :qid |quant-u-18402|))))
+  :qid |quant-u-18467|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -2469,7 +2469,7 @@
       (= r (loc<Ref> a@98@01 (inv@111@01 r))))
     (= (- $Perm.Write (pTaken@113@01 r)) $Perm.No))
   
-  :qid |quant-u-18403|))))
+  :qid |quant-u-18468|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -2554,7 +2554,7 @@
       (img@125@01 a@118@01 i@123@01)))
   :pattern ((inv@124@01 a@118@01 i@123@01))
   :pattern ((img@125@01 a@118@01 i@123@01))
-  :qid |quant-u-18405|)))
+  :qid |quant-u-18470|)))
 (assert (forall ((a IArray) (i Int)) (!
   (=>
     (and
@@ -2630,7 +2630,7 @@
       (img@129@01 a@118@01 i@126@01@rw10)))
   :pattern ((inv@128@01 a@118@01 i@126@01@rw10))
   :pattern ((img@129@01 a@118@01 i@126@01@rw10))
-  :qid |quant-u-18407|)))
+  :qid |quant-u-18472|)))
 (assert (forall ((a IArray) (i Int)) (!
   (=>
     (and
@@ -2715,7 +2715,7 @@
 (assert (not (forall ((i@130@01 Int)) (!
   (= (+ i@130@01 1) i@130@01)
   
-  :qid |quant-u-18409|))))
+  :qid |quant-u-18474|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -2757,7 +2757,7 @@
       (pTaken@133@01 a i))
     $Perm.No)
   
-  :qid |quant-u-18411|))))
+  :qid |quant-u-18476|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -2775,7 +2775,7 @@
       (and (= a a@118@01) (= i (+ (inv@131@01 a i) 1))))
     (= (- $Perm.Write (pTaken@133@01 a i)) $Perm.No))
   
-  :qid |quant-u-18412|))))
+  :qid |quant-u-18477|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -2859,7 +2859,7 @@
       (= (inv@144@01 (loc<Ref> a@138@01 i@143@01)) i@143@01)
       (img@145@01 (loc<Ref> a@138@01 i@143@01))))
   :pattern ((loc<Ref> a@138@01 i@143@01))
-  :qid |quant-u-18414|)))
+  :qid |quant-u-18479|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -2942,7 +2942,7 @@
       (= (inv@148@01 (loc<Ref> a@138@01 i@146@01@rw12)) (- i@146@01@rw12 1))
       (img@149@01 (loc<Ref> a@138@01 i@146@01@rw12))))
   :pattern ((loc<Ref> a@138@01 i@146@01@rw12))
-  :qid |quant-u-18416|)))
+  :qid |quant-u-18481|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and (img@149@01 r) (and (> (inv@148@01 r) 0) (< (inv@148@01 r) n@139@01)))
@@ -3030,7 +3030,7 @@
 (assert (not (forall ((i@150@01 Int)) (!
   (= (loc<Ref> a@138@01 (+ i@150@01 1)) (loc<Ref> a@138@01 i@150@01))
   
-  :qid |quant-u-18418|))))
+  :qid |quant-u-18483|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -3072,7 +3072,7 @@
       (pTaken@153@01 r))
     $Perm.No)
   
-  :qid |quant-u-18420|))))
+  :qid |quant-u-18485|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -3090,7 +3090,7 @@
       (= r (loc<Ref> a@138@01 (+ (inv@151@01 r) 1))))
     (= (- $Perm.Write (pTaken@153@01 r)) $Perm.No))
   
-  :qid |quant-u-18421|))))
+  :qid |quant-u-18486|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -3170,7 +3170,7 @@
       (img@161@01 a@156@01 i@159@01)))
   :pattern ((inv@160@01 a@156@01 i@159@01))
   :pattern ((img@161@01 a@156@01 i@159@01))
-  :qid |quant-u-18423|)))
+  :qid |quant-u-18488|)))
 (assert (forall ((a IArray) (i Int)) (!
   (=>
     (and
@@ -3246,7 +3246,7 @@
       (img@165@01 a@156@01 i@163@01)))
   :pattern ((inv@164@01 a@156@01 i@163@01))
   :pattern ((img@165@01 a@156@01 i@163@01))
-  :qid |quant-u-18425|)))
+  :qid |quant-u-18490|)))
 (assert (forall ((a IArray) (i Int)) (!
   (=>
     (and
@@ -3314,7 +3314,7 @@
       (img@168@01 a@156@01 i@166@01)))
   :pattern ((inv@167@01 a@156@01 i@166@01))
   :pattern ((img@168@01 a@156@01 i@166@01))
-  :qid |quant-u-18427|)))
+  :qid |quant-u-18492|)))
 (assert (forall ((a IArray) (i Int)) (!
   (=>
     (and (img@168@01 a i) (and (> (inv@167@01 a i) 0) (< (inv@167@01 a i) 4)))
@@ -3331,7 +3331,7 @@
       (img@165@01 a i)
       (and (> (inv@164@01 a i) 4) (< (inv@164@01 a i) n@157@01))))
   
-  :qid |quant-u-18428|))))
+  :qid |quant-u-18493|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -3444,7 +3444,7 @@
       (pTaken@172@01 a i))
     $Perm.No)
   
-  :qid |quant-u-18431|))))
+  :qid |quant-u-18496|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -3456,7 +3456,7 @@
 (assert (not (forall ((a IArray) (i Int)) (!
   (= (pTaken@172@01 a i) $Perm.No)
   
-  :qid |quant-u-18432|))))
+  :qid |quant-u-18497|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -3474,7 +3474,7 @@
       (and (= a a@156@01) (= i (inv@170@01 a i))))
     (= (- $Perm.Write (pTaken@172@01 a i)) $Perm.No))
   
-  :qid |quant-u-18433|))))
+  :qid |quant-u-18498|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -3585,7 +3585,7 @@
       (pTaken@176@01 a i))
     $Perm.No)
   
-  :qid |quant-u-18436|))))
+  :qid |quant-u-18501|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -3597,7 +3597,7 @@
 (assert (not (forall ((a IArray) (i Int)) (!
   (= (pTaken@176@01 a i) $Perm.No)
   
-  :qid |quant-u-18437|))))
+  :qid |quant-u-18502|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -3615,7 +3615,7 @@
       (and (= a a@156@01) (= i (inv@174@01 a i))))
     (= (- $Perm.Write (pTaken@176@01 a i)) $Perm.No))
   
-  :qid |quant-u-18438|))))
+  :qid |quant-u-18503|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -3694,7 +3694,7 @@
       (= (inv@183@01 (loc<Ref> a@179@01 i@182@01)) i@182@01)
       (img@184@01 (loc<Ref> a@179@01 i@182@01))))
   :pattern ((loc<Ref> a@179@01 i@182@01))
-  :qid |quant-u-18440|)))
+  :qid |quant-u-18505|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and (img@184@01 r) (and (> (inv@183@01 r) 0) (< (inv@183@01 r) n@180@01)))
@@ -3775,7 +3775,7 @@
       (= (inv@187@01 (loc<Ref> a@179@01 i@186@01)) i@186@01)
       (img@188@01 (loc<Ref> a@179@01 i@186@01))))
   :pattern ((loc<Ref> a@179@01 i@186@01))
-  :qid |quant-u-18442|)))
+  :qid |quant-u-18507|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and (img@188@01 r) (and (> (inv@187@01 r) 4) (< (inv@187@01 r) n@180@01)))
@@ -3848,7 +3848,7 @@
       (= (inv@190@01 (loc<Ref> a@179@01 i@189@01)) i@189@01)
       (img@191@01 (loc<Ref> a@179@01 i@189@01))))
   :pattern ((loc<Ref> a@179@01 i@189@01))
-  :qid |quant-u-18444|)))
+  :qid |quant-u-18509|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and (img@191@01 r) (and (> (inv@190@01 r) 0) (< (inv@190@01 r) 4)))
@@ -3873,7 +3873,7 @@
       (and (img@191@01 r) (and (> (inv@190@01 r) 0) (< (inv@190@01 r) 4)))
       (and (img@188@01 r) (and (> (inv@187@01 r) 4) (< (inv@187@01 r) n@180@01)))))
   
-  :qid |quant-u-18445|))))
+  :qid |quant-u-18510|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -3983,7 +3983,7 @@
       (pTaken@195@01 r))
     $Perm.No)
   
-  :qid |quant-u-18448|))))
+  :qid |quant-u-18513|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -3995,7 +3995,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@195@01 r) $Perm.No)
   
-  :qid |quant-u-18449|))))
+  :qid |quant-u-18514|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -4013,7 +4013,7 @@
       (= r (loc<Ref> a@179@01 (inv@193@01 r))))
     (= (- $Perm.Write (pTaken@195@01 r)) $Perm.No))
   
-  :qid |quant-u-18450|))))
+  :qid |quant-u-18515|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -4123,7 +4123,7 @@
       (pTaken@199@01 r))
     $Perm.No)
   
-  :qid |quant-u-18453|))))
+  :qid |quant-u-18518|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -4135,7 +4135,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@199@01 r) $Perm.No)
   
-  :qid |quant-u-18454|))))
+  :qid |quant-u-18519|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -4153,7 +4153,7 @@
       (= r (loc<Ref> a@179@01 (inv@197@01 r))))
     (= (- $Perm.Write (pTaken@199@01 r)) $Perm.No))
   
-  :qid |quant-u-18455|))))
+  :qid |quant-u-18520|))))
 (check-sat)
 ; unsat
 (pop) ; 3

@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-29 20:07:23
+; Started: 2025-01-04 00:36:37
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -506,11 +506,11 @@
 (assert (forall ((s@$ $Snap) (address@0@00 $Ref)) (!
   (= (loopkup%limited s@$ address@0@00) (loopkup s@$ address@0@00))
   :pattern ((loopkup s@$ address@0@00))
-  :qid |quant-u-25660|)))
+  :qid |quant-u-25675|)))
 (assert (forall ((s@$ $Snap) (address@0@00 $Ref)) (!
   (loopkup%stateless address@0@00)
   :pattern ((loopkup%limited s@$ address@0@00))
-  :qid |quant-u-25661|)))
+  :qid |quant-u-25676|)))
 ; ---------- P1 ----------
 (declare-const address@3@00 $Ref)
 ; ---------- P2 ----------

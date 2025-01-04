@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-29 20:51:09
+// Date:         2025-01-04 01:20:39
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0239-3.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0239-3-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -575,12 +575,12 @@ procedure foo_1(tree_1: Ref, leftArray: (Seq Ref), rightArray: (Seq Ref), array_
   var i$1_7: int;
   var i$1_8: int;
   var QPMask: MaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var i_6: int;
   
   // -- Initializing the state
@@ -676,8 +676,8 @@ procedure foo_1(tree_1: Ref, leftArray: (Seq Ref), rightArray: (Seq Ref), array_
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert (forall i: Int ::
   //     { array[i] }
@@ -685,8 +685,8 @@ procedure foo_1(tree_1: Ref, leftArray: (Seq Ref), rightArray: (Seq Ref), array_
   //     acc(array[i].value, write)) -- 0239-3.vpr@23.5--23.108
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
+    ExhaleWellDef0Mask := AssertMask;
     
     // -- Check definedness of (forall i: Int :: { array[i] } 0 <= i - |leftArray| - 1 && i - |leftArray| - 1 < |rightArray| ==> acc(array[i].value, write))
       if (*) {

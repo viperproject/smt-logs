@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-29 20:06:58
+; Started: 2025-01-04 00:36:11
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -1513,11 +1513,11 @@
     (peek_neighbors%limited s@$ graph@0@00 i@1@00)
     (peek_neighbors s@$ graph@0@00 i@1@00))
   :pattern ((peek_neighbors s@$ graph@0@00 i@1@00))
-  :qid |quant-u-25253|)))
+  :qid |quant-u-25268|)))
 (assert (forall ((s@$ $Snap) (graph@0@00 Seq<$Ref>) (i@1@00 Int)) (!
   (peek_neighbors%stateless graph@0@00 i@1@00)
   :pattern ((peek_neighbors%limited s@$ graph@0@00 i@1@00))
-  :qid |quant-u-25254|)))
+  :qid |quant-u-25269|)))
 (assert (forall ((s@$ $Snap) (graph@0@00 Seq<$Ref>) (i@1@00 Int)) (!
   (and
     ($Perm.isReadVar $k@3@00)
@@ -1527,10 +1527,10 @@
       (peek_neighbors%precondition s@$ graph@0@00 i@1@00)
       (= (peek_neighbors s@$ graph@0@00 i@1@00) true)))
   :pattern ((peek_neighbors s@$ graph@0@00 i@1@00))
-  :qid |quant-u-25255|)))
+  :qid |quant-u-25270|)))
 (assert (forall ((s@$ $Snap) (graph@0@00 Seq<$Ref>) (i@1@00 Int)) (!
   true
   :pattern ((peek_neighbors s@$ graph@0@00 i@1@00))
-  :qid |quant-u-25256|)))
+  :qid |quant-u-25271|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------

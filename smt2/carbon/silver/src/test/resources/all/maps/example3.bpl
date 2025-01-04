@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-29 20:37:22
+// Date:         2025-01-04 01:06:47
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/maps/example3.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/maps/example3-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -496,12 +496,12 @@ axiom (forall <T> x: T, s_2: (Set T) ::
 procedure test1() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var m_17: (Map (Set int) int);
   var s_2: (Set int);
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -511,8 +511,8 @@ procedure test1() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: m := Map(Set(5, 7) := 12) -- example3.vpr@18.3--18.53
     m_17 := Map#Build((Map#Empty(): Map (Set int) int), Set#UnionOne(Set#Singleton(7), 5), 12);
@@ -523,22 +523,22 @@ procedure test1() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert s == Set(5, 7) -- example3.vpr@20.3--20.24
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion s == Set(5, 7) might not hold. (example3.vpr@20.10--20.24) [157808]"}
       Set#Equal(s_2, Set#UnionOne(Set#Singleton(7), 5));
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (s in m) -- example3.vpr@21.3--21.16
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion (s in m) might not hold. (example3.vpr@21.10--21.16) [157809]"}
       Map#Domain(m_17)[s_2];
     assume state(Heap, Mask);
   
   // -- Translating statement: assert m[s] == 12 -- example3.vpr@22.3--22.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of m[s] == 12
       assert {:msg "  Assert might fail. Map m might not contain an entry at key s. (example3.vpr@22.10--22.20) [157810]"}
@@ -555,10 +555,10 @@ procedure test1() returns ()
 procedure test2() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var s_2: (Set int);
   
   // -- Initializing the state
@@ -569,12 +569,12 @@ procedure test2() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert (Set(1, 2, 3) in (f(2): Map[Set[Int],Int])) -- example3.vpr@27.3--27.30
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion (Set(1, 2, 3) in (f(2): Map[Set[Int],Int])) might not hold. (example3.vpr@27.10--27.30) [157812]"}
       Map#Domain((f_198(2): Map (Set int) int))[Set#UnionOne(Set#UnionOne(Set#Singleton(3), 2), 1)];
     assume state(Heap, Mask);
@@ -584,8 +584,8 @@ procedure test2() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (f(2): Map[Set[Int],Int])[s] == 2 -- example3.vpr@29.3--29.22
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (f(2): Map[Set[Int],Int])[s] == 2
       assert {:msg "  Assert might fail. Map (f(2): Map[Set[Int],Int]) might not contain an entry at key s. (example3.vpr@29.10--29.22) [157813]"}
@@ -602,11 +602,11 @@ procedure test2() returns ()
 procedure test3() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var m_17: (Map int bool);
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var k: int;
   
   // -- Initializing the state
@@ -617,8 +617,8 @@ procedure test3() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale domain(m[4 := true]) == Set(4) -- example3.vpr@36.10--36.40
     assume Set#Equal(Map#Domain(Map#Build(m_17, 4, true)), Set#Singleton(4));
@@ -626,8 +626,8 @@ procedure test3() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (k in domain(m)) ==> k == 4 -- example3.vpr@37.3--37.37
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     if (Map#Domain(m_17)[k]) {
       assert {:msg "  Assert might fail. Assertion k == 4 might not hold. (example3.vpr@37.11--37.36) [157815]"}
         k == 4;
@@ -642,11 +642,11 @@ procedure test3() returns ()
 procedure test4() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var m_17: (Map int bool);
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var k: int;
   
   // -- Initializing the state
@@ -657,8 +657,8 @@ procedure test4() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale m[4 := true] == Map(4 := false, 5 := true) -- example3.vpr@44.10--44.52
     assume Map#Equal(Map#Build(m_17, 4, true), Map#Build(Map#Build((Map#Empty(): Map int bool), 4, false), 5, true));
@@ -666,8 +666,8 @@ procedure test4() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (k in domain(m)) ==> m[k] -- example3.vpr@45.3--45.35
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     if (Map#Domain(m_17)[k]) {
       
       // -- Check definedness of m[k]
@@ -686,12 +686,12 @@ procedure test4() returns ()
 procedure test5() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var m_17: (Map int bool);
   var k: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -701,8 +701,8 @@ procedure test5() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale (k in domain(m)) -- example3.vpr@52.10--52.24
     assume Map#Domain(m_17)[k];
@@ -710,8 +710,8 @@ procedure test5() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert range(m) != Set[Bool]() -- example3.vpr@53.3--53.27
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion range(m) != Set[Bool]() might not hold. (example3.vpr@53.10--53.27) [157818]"}
       !Set#Equal(Map#Values(m_17), (Set#Empty(): Set bool));
     assume state(Heap, Mask);

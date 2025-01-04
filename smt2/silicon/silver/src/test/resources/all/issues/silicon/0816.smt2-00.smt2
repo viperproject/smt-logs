@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-29 20:07:06
+; Started: 2025-01-04 00:36:20
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -689,11 +689,11 @@
     (keydict___item__inv%limited s@$ self@0@00 val_ref@1@00)
     (keydict___item__inv s@$ self@0@00 val_ref@1@00))
   :pattern ((keydict___item__inv s@$ self@0@00 val_ref@1@00))
-  :qid |quant-u-25294|)))
+  :qid |quant-u-25309|)))
 (assert (forall ((s@$ $Snap) (self@0@00 $Ref) (val_ref@1@00 $Ref)) (!
   (keydict___item__inv%stateless self@0@00 val_ref@1@00)
   :pattern ((keydict___item__inv%limited s@$ self@0@00 val_ref@1@00))
-  :qid |quant-u-25295|)))
+  :qid |quant-u-25310|)))
 ; ---------- FUNCTION keydict___item__----------
 (declare-fun self@3@00 () $Ref)
 (declare-fun key@4@00 () $Ref)
@@ -716,23 +716,23 @@
     (keydict___item__%limited s@$ self@3@00 key@4@00)
     (keydict___item__ s@$ self@3@00 key@4@00))
   :pattern ((keydict___item__ s@$ self@3@00 key@4@00))
-  :qid |quant-u-25296|)))
+  :qid |quant-u-25311|)))
 (assert (forall ((s@$ $Snap) (self@3@00 $Ref) (key@4@00 $Ref)) (!
   (keydict___item__%stateless self@3@00 key@4@00)
   :pattern ((keydict___item__%limited s@$ self@3@00 key@4@00))
-  :qid |quant-u-25297|)))
+  :qid |quant-u-25312|)))
 (assert (forall ((s@$ $Snap) (self@3@00 $Ref) (key@4@00 $Ref)) (!
   (let ((result@5@00 (keydict___item__%limited s@$ self@3@00 key@4@00))) (=>
     (keydict___item__%precondition s@$ self@3@00 key@4@00)
     (= (keydict___item__inv $Snap.unit self@3@00 result@5@00) key@4@00)))
   :pattern ((keydict___item__%limited s@$ self@3@00 key@4@00))
-  :qid |quant-u-25300|)))
+  :qid |quant-u-25315|)))
 (assert (forall ((s@$ $Snap) (self@3@00 $Ref) (key@4@00 $Ref)) (!
   (let ((result@5@00 (keydict___item__%limited s@$ self@3@00 key@4@00))) (=>
     (keydict___item__%precondition s@$ self@3@00 key@4@00)
     (keydict___item__inv%precondition $Snap.unit self@3@00 result@5@00)))
   :pattern ((keydict___item__%limited s@$ self@3@00 key@4@00))
-  :qid |quant-u-25301|)))
+  :qid |quant-u-25316|)))
 ; ---------- FUNCTION keydict___contains__----------
 (declare-fun self@6@00 () $Ref)
 (declare-fun key@7@00 () $Ref)
@@ -775,11 +775,11 @@
     (keydict___contains__%limited s@$ self@6@00 key@7@00)
     (keydict___contains__ s@$ self@6@00 key@7@00))
   :pattern ((keydict___contains__ s@$ self@6@00 key@7@00))
-  :qid |quant-u-25298|)))
+  :qid |quant-u-25313|)))
 (assert (forall ((s@$ $Snap) (self@6@00 $Ref) (key@7@00 $Ref)) (!
   (keydict___contains__%stateless self@6@00 key@7@00)
   :pattern ((keydict___contains__%limited s@$ self@6@00 key@7@00))
-  :qid |quant-u-25299|)))
+  :qid |quant-u-25314|)))
 (assert (forall ((s@$ $Snap) (self@6@00 $Ref) (key@7@00 $Ref)) (!
   (let ((result@8@00 (keydict___contains__%limited s@$ self@6@00 key@7@00))) (and
     ($Perm.isReadVar $k@10@00)
@@ -789,8 +789,8 @@
         result@8@00
         (= (Option_tag<Int> ($SortWrappers.$SnapToOption<Ref> s@$)) 1)))))
   :pattern ((keydict___contains__%limited s@$ self@6@00 key@7@00))
-  :qid |quant-u-25302|)))
+  :qid |quant-u-25317|)))
 (assert (forall ((s@$ $Snap) (self@6@00 $Ref) (key@7@00 $Ref)) (!
   (let ((result@8@00 (keydict___contains__%limited s@$ self@6@00 key@7@00))) true)
   :pattern ((keydict___contains__%limited s@$ self@6@00 key@7@00))
-  :qid |quant-u-25303|)))
+  :qid |quant-u-25318|)))

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-29 20:15:07
+// Date:         2025-01-04 00:44:23
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/third_party/array_problem.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/third_party/array_problem-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -644,8 +644,8 @@ procedure count#definedness(l_2: (Seq Ref), n: int) returns (Result: int)
   var i2: int;
   var i_4: int;
   var QPMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var i_9_1: int;
   var i1_4_1: int;
   var i2_4: int;
@@ -763,8 +763,8 @@ procedure count#definedness(l_2: (Seq Ref), n: int) returns (Result: int)
       } else {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           assert {:msg "  Precondition of function count might not hold. Assertion 0 <= n - 1 might not hold. (array_problem.vpr@19.15--19.27) [50955]"}
             0 <= n - 1;
           assert {:msg "  Precondition of function count might not hold. Assertion n - 1 <= |l| might not hold. (array_problem.vpr@19.15--19.27) [50956]"}
@@ -863,19 +863,19 @@ procedure main(this: Ref) returns ()
   var i2_2: int;
   var i_8: int;
   var QPMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var i_4_1: int;
   var i1_2_1: int;
   var i2_2_1: int;
   var ExhaleHeap: HeapType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var i_7_1: int;
   var i1_4_1: int;
   var i2_4: int;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var i_10_1: int;
   var i1_6_1: int;
   var i2_6: int;
@@ -1017,8 +1017,8 @@ procedure main(this: Ref) returns ()
         HasDirectPerm(Mask, this, ar_1);
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Precondition of function count might not hold. Assertion 0 <= |this.ar| might not hold. (array_problem.vpr@28.12--28.36) [50987]"}
           0 <= Seq#Length(Heap[this, ar_1]);
         assert {:msg "  Precondition of function count might not hold. Assertion |this.ar| <= |this.ar| might not hold. (array_problem.vpr@28.12--28.36) [50988]"}
@@ -1122,8 +1122,8 @@ procedure main(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: this.ar[3].val := false -- array_problem.vpr@33.3--33.24
     
@@ -1147,8 +1147,8 @@ procedure main(this: Ref) returns ()
         HasDirectPerm(Mask, this, ar_1);
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Precondition of function count might not hold. Assertion 0 <= |this.ar| might not hold. (array_problem.vpr@35.10--35.34) [51006]"}
           0 <= Seq#Length(Heap[this, ar_1]);
         assert {:msg "  Precondition of function count might not hold. Assertion |this.ar| <= |this.ar| might not hold. (array_problem.vpr@35.10--35.34) [51007]"}
@@ -1223,8 +1223,8 @@ procedure main(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert count(this.ar, |this.ar|) == 3 -- array_problem.vpr@36.3--36.37
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of count(this.ar, |this.ar|) == 3
       assert {:msg "  Assert might fail. There might be insufficient permission to access this.ar (array_problem.vpr@36.10--36.37) [51014]"}
@@ -1233,8 +1233,8 @@ procedure main(this: Ref) returns ()
         HasDirectPerm(ExhaleWellDef0Mask, this, ar_1);
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         assert {:msg "  Precondition of function count might not hold. Assertion 0 <= |this.ar| might not hold. (array_problem.vpr@36.10--36.34) [51016]"}
           0 <= Seq#Length(ExhaleWellDef0Heap[this, ar_1]);
         assert {:msg "  Precondition of function count might not hold. Assertion |this.ar| <= |this.ar| might not hold. (array_problem.vpr@36.10--36.34) [51017]"}

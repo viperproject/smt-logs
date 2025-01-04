@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-29 20:17:31
+// Date:         2025-01-04 00:46:50
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/issues/issue_0078.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/issues/issue_0078-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -607,10 +607,10 @@ procedure Dmm(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var QPMask: MaskType;
   var x_11: Ref;
   var ExhaleHeap: HeapType;
@@ -649,16 +649,16 @@ procedure Dmm(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: exhale acc(this.s, write) &&
   //   ((forall x: Ref :: { (x in this.s) } (x in this.s) ==> acc(x.p, 1 / 2)) &&
   //   (forall x: Ref ::
   //     { (x in this.s) }
   //     (x in this.s) && x.p == null ==> acc(x.p, 1 / 2))) -- issue_0078.vpr@17.3--19.76
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Exhale might fail. There might be insufficient permission to access this.s (issue_0078.vpr@17.13--19.76) [76710]"}
@@ -788,10 +788,10 @@ procedure Dmm2(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var QPMask: MaskType;
   var x_32: Ref;
   var ExhaleHeap: HeapType;
@@ -830,16 +830,16 @@ procedure Dmm2(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: exhale acc(this.s, write) &&
   //   ((forall x: Ref :: { (x in this.s) } (x in this.s) ==> acc(x.p, 1 / 2)) &&
   //   (forall x: Ref ::
   //     { (x in this.s) }
   //     (x in this.s) && x.p == null ==> acc(x.p, 1 / 2))) -- issue_0078.vpr@28.3--31.76
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Exhale might fail. There might be insufficient permission to access this.s (issue_0078.vpr@28.13--31.76) [76723]"}
@@ -968,13 +968,13 @@ procedure Dmm2(this: Ref) returns ()
 procedure foo_1() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var x: Ref;
   var t_2: Ref;
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var QPMask: MaskType;
   var freshVersion: FrameType;
   var newPMask: PMaskType;
@@ -987,8 +987,8 @@ procedure foo_1() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[x, $allocated];
@@ -1021,8 +1021,8 @@ procedure foo_1() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(inv(t), write) -- issue_0078.vpr@50.3--50.19
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding inv(t) might fail. There might be insufficient permission to access t.all (issue_0078.vpr@50.3--50.19) [76739]"}
@@ -1164,13 +1164,13 @@ procedure foo_1() returns ()
 procedure goo() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var x: Ref;
   var t_2: Ref;
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newVersion: FrameType;
   var QPMask: MaskType;
   var ExhaleHeap: HeapType;
@@ -1183,8 +1183,8 @@ procedure goo() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[x, $allocated];
@@ -1200,8 +1200,8 @@ procedure goo() returns ()
   // -- Translating statement: unfold acc(inv(t), write) -- issue_0078.vpr@58.3--58.21
     assume inv#trigger(Heap, inv(t_2));
     assume Heap[null, inv(t_2)] == CombineFrames(FrameFragment(Heap[t_2, all]), CombineFrames(FrameFragment(inv#condqp1(Heap, t_2)), FrameFragment(inv#condqp2(Heap, t_2))));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding inv(t) might fail. There might be insufficient permission to access inv(t) (issue_0078.vpr@58.3--58.21) [76750]"}
@@ -1316,8 +1316,8 @@ procedure goo() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(x.left, write) -- issue_0078.vpr@60.3--60.21
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Exhale might fail. There might be insufficient permission to access x.left (issue_0078.vpr@60.10--60.21) [76759]"}

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-29 20:47:45
+// Date:         2025-01-04 01:17:14
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/unofficial008.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/unofficial008-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -246,8 +246,8 @@ procedure get_idx#definedness(self: Ref) returns (Result: Ref)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var newPMask: PMaskType;
   
@@ -271,8 +271,8 @@ procedure get_idx#definedness(self: Ref) returns (Result: Ref)
       UnfoldingMask := Mask;
       assume Packet#trigger(UnfoldingHeap, Packet(self));
       assume UnfoldingHeap[null, Packet(self)] == CombineFrames(FrameFragment(UnfoldingHeap[self, path]), FrameFragment((if UnfoldingHeap[self, path] != null then UnfoldingHeap[null, Path(UnfoldingHeap[self, path])] else EmptyFrame)));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Packet(self) (unofficial008.vpr@21.1--26.2) [209689]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, Packet(self)];
@@ -292,8 +292,8 @@ procedure get_idx#definedness(self: Ref) returns (Result: Ref)
       assume state(UnfoldingHeap, UnfoldingMask);
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := UnfoldingHeap;
         ExhaleWellDef0Mask := UnfoldingMask;
+        ExhaleWellDef0Heap := UnfoldingHeap;
         perm := FullPerm;
         assert {:msg "  Precondition of function get_idx_1 might not hold. There might be insufficient permission to access self.path (unofficial008.vpr@25.42--25.57) [209690]"}
           NoPerm < perm ==> NoPerm < UnfoldingMask[self, path];
@@ -324,8 +324,8 @@ procedure get_idx#definedness(self: Ref) returns (Result: Ref)
     Result := get_idx_1(Heap, self);
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of get_idx might not hold. Assertion isInt(result) might not hold. (unofficial008.vpr@23.11--23.24) [209692]"}
       (isInt_1(Result): bool);
 }
@@ -378,8 +378,8 @@ procedure get_idx_1#definedness(self: Ref) returns (Result: Ref)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -410,8 +410,8 @@ procedure get_idx_1#definedness(self: Ref) returns (Result: Ref)
       UnfoldingMask := Mask;
       assume Path#trigger(UnfoldingHeap, Path(UnfoldingHeap[self, path]));
       assume UnfoldingHeap[null, Path(UnfoldingHeap[self, path])] == FrameFragment(UnfoldingHeap[UnfoldingHeap[self, path], idx_3]);
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Path(self.path) (unofficial008.vpr@28.1--35.1) [209694]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, Path(UnfoldingHeap[self, path])];
@@ -436,8 +436,8 @@ procedure get_idx_1#definedness(self: Ref) returns (Result: Ref)
     Result := Heap[Heap[self, path], idx_3];
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of get_idx_1 might not hold. Assertion isInt(result) might not hold. (unofficial008.vpr@31.11--31.24) [209698]"}
       (isInt_1(Result): bool);
 }

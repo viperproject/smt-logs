@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-29 20:04:19
+; Started: 2025-01-04 00:33:24
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -222,14 +222,14 @@
 (assert (not (= diz@15@01 $Ref.null)))
 (declare-const Main__q1@16@01 $Ref)
 (declare-const Main__q2@17@01 $Ref)
-(assert (not (= diz@15@01 __flatten_24@13@01)))
-(assert (not (= diz@15@01 sys__result@3@01)))
-(assert (not (= diz@15@01 __flatten_3@11@01)))
 (assert (not (= diz@15@01 __flatten_26@14@01)))
+(assert (not (= diz@15@01 __flatten_3@11@01)))
+(assert (not (= diz@15@01 sys__result@3@01)))
 (assert (not (= diz@15@01 diz@8@01)))
-(assert (not (= diz@15@01 __flatten_1@9@01)))
+(assert (not (= diz@15@01 __flatten_24@13@01)))
 (assert (not (= diz@15@01 __flatten_4@12@01)))
 (assert (not (= diz@15@01 __flatten_2@10@01)))
+(assert (not (= diz@15@01 __flatten_1@9@01)))
 ; [exec]
 ; __flatten_2 := Queue__Queue(current_thread_id)
 ; [eval] current_thread_id >= 0
@@ -890,13 +890,13 @@
 (assert (not (= diz@66@01 $Ref.null)))
 (declare-const Worker__q1@67@01 $Ref)
 (declare-const Worker__q2@68@01 $Ref)
+(assert (not (= diz@66@01 __flatten_13@62@01)))
 (assert (not (= diz@66@01 __flatten_35@64@01)))
-(assert (not (= diz@66@01 q1@54@01)))
-(assert (not (= diz@66@01 sys__result@56@01)))
+(assert (not (= diz@66@01 __flatten_36@65@01)))
 (assert (not (= diz@66@01 diz@61@01)))
 (assert (not (= diz@66@01 q2@55@01)))
-(assert (not (= diz@66@01 __flatten_13@62@01)))
-(assert (not (= diz@66@01 __flatten_36@65@01)))
+(assert (not (= diz@66@01 q1@54@01)))
+(assert (not (= diz@66@01 sys__result@56@01)))
 (assert (not (= diz@66@01 __flatten_14@63@01)))
 ; [exec]
 ; __flatten_13 := q1
@@ -1607,8 +1607,8 @@
 (assert (not (= diz@120@01 $Ref.null)))
 (declare-const Queue__data@121@01 Int)
 (declare-const Queue__used@122@01 Bool)
-(assert (not (= diz@120@01 sys__result@112@01)))
 (assert (not (= diz@120@01 diz@115@01)))
+(assert (not (= diz@120@01 sys__result@112@01)))
 ; [exec]
 ; __flatten_17 := 37
 ; [exec]

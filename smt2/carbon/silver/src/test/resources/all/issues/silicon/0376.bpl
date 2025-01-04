@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-29 20:46:02
+// Date:         2025-01-04 01:15:30
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0376.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0376-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -233,8 +233,8 @@ procedure Void$discriminant#definedness(self: Ref) returns (Result: int)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -256,8 +256,8 @@ procedure Void$discriminant#definedness(self: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume Void#trigger(UnfoldingHeap, Void(self));
       assume UnfoldingHeap[null, Void(self)] == EmptyFrame;
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Void(self) (0376.vpr@4.1--9.2) [203172]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, Void(self)];
@@ -271,8 +271,8 @@ procedure Void$discriminant#definedness(self: Ref) returns (Result: int)
     Result := 8;
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of Void$discriminant might not hold. Assertion false might not hold. (0376.vpr@6.11--6.16) [203173]"}
       false;
 }
@@ -323,8 +323,8 @@ procedure foo#definedness(x: Ref) returns (Result: int)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -354,8 +354,8 @@ procedure foo#definedness(x: Ref) returns (Result: int)
     Result := Heap[x, f_7];
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of foo might not hold. Assertion false might not hold. (0376.vpr@27.11--27.16) [203175]"}
       false;
 }
@@ -418,10 +418,10 @@ procedure Void#definedness(self: Ref) returns ()
 procedure m_void$$unreachable$opensqu$0$closesqu$() returns (_0: Ref)
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -432,12 +432,12 @@ procedure m_void$$unreachable$opensqu$0$closesqu$() returns (_0: Ref)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert false -- 0376.vpr@18.3--18.15
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion false might not hold. (0376.vpr@18.10--18.15) [203176]"}
       false;
     assume state(Heap, Mask);
@@ -450,10 +450,10 @@ procedure m_void$$unreachable$opensqu$0$closesqu$() returns (_0: Ref)
 procedure m() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -464,12 +464,12 @@ procedure m() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert false -- 0376.vpr@32.3--32.15
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion false might not hold. (0376.vpr@32.10--32.15) [203177]"}
       false;
     assume state(Heap, Mask);

@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-29 20:08:38
+; Started: 2025-01-04 00:37:53
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -705,11 +705,11 @@
 (assert (forall ((s@$ $Snap) (t@0@00 Triple3)) (!
   (= (tripleLen3Bad%limited s@$ t@0@00) (tripleLen3Bad s@$ t@0@00))
   :pattern ((tripleLen3Bad s@$ t@0@00))
-  :qid |quant-u-26270|)))
+  :qid |quant-u-26285|)))
 (assert (forall ((s@$ $Snap) (t@0@00 Triple3)) (!
   (tripleLen3Bad%stateless t@0@00)
   :pattern ((tripleLen3Bad%limited s@$ t@0@00))
-  :qid |quant-u-26271|)))
+  :qid |quant-u-26286|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -779,7 +779,7 @@
         0
         (+ 3 (tripleLen3Bad%limited $Snap.unit t@0@00)))))
   :pattern ((tripleLen3Bad s@$ t@0@00))
-  :qid |quant-u-26292|)))
+  :qid |quant-u-26307|)))
 (assert (forall ((s@$ $Snap) (t@0@00 Triple3)) (!
   (=>
     (tripleLen3Bad%precondition s@$ t@0@00)
@@ -788,7 +788,7 @@
       true
       (tripleLen3Bad%precondition $Snap.unit t@0@00)))
   :pattern ((tripleLen3Bad s@$ t@0@00))
-  :qid |quant-u-26293|)))
+  :qid |quant-u-26308|)))
 ; ---------- FUNCTION len1----------
 (declare-fun l@2@00 () List1)
 (declare-fun result@3@00 () Int)
@@ -798,11 +798,11 @@
 (assert (forall ((s@$ $Snap) (l@2@00 List1)) (!
   (= (len1%limited s@$ l@2@00) (len1 s@$ l@2@00))
   :pattern ((len1 s@$ l@2@00))
-  :qid |quant-u-26272|)))
+  :qid |quant-u-26287|)))
 (assert (forall ((s@$ $Snap) (l@2@00 List1)) (!
   (len1%stateless l@2@00)
   :pattern ((len1%limited s@$ l@2@00))
-  :qid |quant-u-26273|)))
+  :qid |quant-u-26288|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -882,7 +882,7 @@
           1
           (len1%limited $Snap.unit (get_List2_l<List1> (get_List1_l<List2> l@2@00)))))))
   :pattern ((len1 s@$ l@2@00))
-  :qid |quant-u-26294|)))
+  :qid |quant-u-26309|)))
 (assert (forall ((s@$ $Snap) (l@2@00 List1)) (!
   (=>
     (len1%precondition s@$ l@2@00)
@@ -891,7 +891,7 @@
       true
       (len1%precondition $Snap.unit (get_List2_l<List1> (get_List1_l<List2> l@2@00)))))
   :pattern ((len1 s@$ l@2@00))
-  :qid |quant-u-26295|)))
+  :qid |quant-u-26310|)))
 ; ---------- FUNCTION tripleLen1----------
 (declare-fun t@4@00 () Triple1)
 (declare-fun result@5@00 () Int)
@@ -901,11 +901,11 @@
 (assert (forall ((s@$ $Snap) (t@4@00 Triple1)) (!
   (= (tripleLen1%limited s@$ t@4@00) (tripleLen1 s@$ t@4@00))
   :pattern ((tripleLen1 s@$ t@4@00))
-  :qid |quant-u-26274|)))
+  :qid |quant-u-26289|)))
 (assert (forall ((s@$ $Snap) (t@4@00 Triple1)) (!
   (tripleLen1%stateless t@4@00)
   :pattern ((tripleLen1%limited s@$ t@4@00))
-  :qid |quant-u-26275|)))
+  :qid |quant-u-26290|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -1010,7 +1010,7 @@
           0
           (tripleLen1%limited $Snap.unit (get_Triple3_x<Triple1> (get_Triple2_x<Triple3> (get_Triple1_x<Triple2> t@4@00))))))))
   :pattern ((tripleLen1 s@$ t@4@00))
-  :qid |quant-u-26296|)))
+  :qid |quant-u-26311|)))
 (assert (forall ((s@$ $Snap) (t@4@00 Triple1)) (!
   (=>
     (tripleLen1%precondition s@$ t@4@00)
@@ -1021,7 +1021,7 @@
       true
       (tripleLen1%precondition $Snap.unit (get_Triple3_x<Triple1> (get_Triple2_x<Triple3> (get_Triple1_x<Triple2> t@4@00))))))
   :pattern ((tripleLen1 s@$ t@4@00))
-  :qid |quant-u-26297|)))
+  :qid |quant-u-26312|)))
 ; ---------- FUNCTION mlen2----------
 (declare-fun l@6@00 () MList2)
 (declare-fun result@7@00 () Int)
@@ -1031,11 +1031,11 @@
 (assert (forall ((s@$ $Snap) (l@6@00 MList2)) (!
   (= (mlen2%limited s@$ l@6@00) (mlen2 s@$ l@6@00))
   :pattern ((mlen2 s@$ l@6@00))
-  :qid |quant-u-26276|)))
+  :qid |quant-u-26291|)))
 (assert (forall ((s@$ $Snap) (l@6@00 MList2)) (!
   (mlen2%stateless l@6@00)
   :pattern ((mlen2%limited s@$ l@6@00))
-  :qid |quant-u-26277|)))
+  :qid |quant-u-26292|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -1114,7 +1114,7 @@
           1
           (mlen2%limited $Snap.unit (get_MList1_y<MList2> (get_MList2_l<MList1> l@6@00)))))))
   :pattern ((mlen2 s@$ l@6@00))
-  :qid |quant-u-26298|)))
+  :qid |quant-u-26313|)))
 (assert (forall ((s@$ $Snap) (l@6@00 MList2)) (!
   (=>
     (mlen2%precondition s@$ l@6@00)
@@ -1123,7 +1123,7 @@
       true
       (mlen2%precondition $Snap.unit (get_MList1_y<MList2> (get_MList2_l<MList1> l@6@00)))))
   :pattern ((mlen2 s@$ l@6@00))
-  :qid |quant-u-26299|)))
+  :qid |quant-u-26314|)))
 ; ---------- FUNCTION tripleLen1Bad----------
 (declare-fun t@8@00 () Triple1)
 (declare-fun result@9@00 () Int)
@@ -1133,11 +1133,11 @@
 (assert (forall ((s@$ $Snap) (t@8@00 Triple1)) (!
   (= (tripleLen1Bad%limited s@$ t@8@00) (tripleLen1Bad s@$ t@8@00))
   :pattern ((tripleLen1Bad s@$ t@8@00))
-  :qid |quant-u-26278|)))
+  :qid |quant-u-26293|)))
 (assert (forall ((s@$ $Snap) (t@8@00 Triple1)) (!
   (tripleLen1Bad%stateless t@8@00)
   :pattern ((tripleLen1Bad%limited s@$ t@8@00))
-  :qid |quant-u-26279|)))
+  :qid |quant-u-26294|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -1239,7 +1239,7 @@
           0
           (tripleLen1Bad%limited $Snap.unit t@8@00)))))
   :pattern ((tripleLen1Bad s@$ t@8@00))
-  :qid |quant-u-26300|)))
+  :qid |quant-u-26315|)))
 (assert (forall ((s@$ $Snap) (t@8@00 Triple1)) (!
   (=>
     (tripleLen1Bad%precondition s@$ t@8@00)
@@ -1250,7 +1250,7 @@
       true
       (tripleLen1Bad%precondition $Snap.unit t@8@00)))
   :pattern ((tripleLen1Bad s@$ t@8@00))
-  :qid |quant-u-26301|)))
+  :qid |quant-u-26316|)))
 ; ---------- FUNCTION len2----------
 (declare-fun l@10@00 () List2)
 (declare-fun result@11@00 () Int)
@@ -1260,11 +1260,11 @@
 (assert (forall ((s@$ $Snap) (l@10@00 List2)) (!
   (= (len2%limited s@$ l@10@00) (len2 s@$ l@10@00))
   :pattern ((len2 s@$ l@10@00))
-  :qid |quant-u-26280|)))
+  :qid |quant-u-26295|)))
 (assert (forall ((s@$ $Snap) (l@10@00 List2)) (!
   (len2%stateless l@10@00)
   :pattern ((len2%limited s@$ l@10@00))
-  :qid |quant-u-26281|)))
+  :qid |quant-u-26296|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -1343,7 +1343,7 @@
           1
           (len2%limited $Snap.unit (get_List1_l<List2> (get_List2_l<List1> l@10@00)))))))
   :pattern ((len2 s@$ l@10@00))
-  :qid |quant-u-26302|)))
+  :qid |quant-u-26317|)))
 (assert (forall ((s@$ $Snap) (l@10@00 List2)) (!
   (=>
     (len2%precondition s@$ l@10@00)
@@ -1352,7 +1352,7 @@
       true
       (len2%precondition $Snap.unit (get_List1_l<List2> (get_List2_l<List1> l@10@00)))))
   :pattern ((len2 s@$ l@10@00))
-  :qid |quant-u-26303|)))
+  :qid |quant-u-26318|)))
 ; ---------- FUNCTION tripleLen3----------
 (declare-fun t@12@00 () Triple3)
 (declare-fun result@13@00 () Int)
@@ -1362,11 +1362,11 @@
 (assert (forall ((s@$ $Snap) (t@12@00 Triple3)) (!
   (= (tripleLen3%limited s@$ t@12@00) (tripleLen3 s@$ t@12@00))
   :pattern ((tripleLen3 s@$ t@12@00))
-  :qid |quant-u-26282|)))
+  :qid |quant-u-26297|)))
 (assert (forall ((s@$ $Snap) (t@12@00 Triple3)) (!
   (tripleLen3%stateless t@12@00)
   :pattern ((tripleLen3%limited s@$ t@12@00))
-  :qid |quant-u-26283|)))
+  :qid |quant-u-26298|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -1446,7 +1446,7 @@
           3
           (tripleLen3%limited $Snap.unit (get_Triple2_x<Triple3> (get_Triple1_x<Triple2> (get_Triple3_x<Triple1> t@12@00))))))))
   :pattern ((tripleLen3 s@$ t@12@00))
-  :qid |quant-u-26304|)))
+  :qid |quant-u-26319|)))
 (assert (forall ((s@$ $Snap) (t@12@00 Triple3)) (!
   (=>
     (tripleLen3%precondition s@$ t@12@00)
@@ -1455,7 +1455,7 @@
       true
       (tripleLen3%precondition $Snap.unit (get_Triple2_x<Triple3> (get_Triple1_x<Triple2> (get_Triple3_x<Triple1> t@12@00))))))
   :pattern ((tripleLen3 s@$ t@12@00))
-  :qid |quant-u-26305|)))
+  :qid |quant-u-26320|)))
 ; ---------- FUNCTION len1Bad----------
 (declare-fun l@14@00 () List1)
 (declare-fun result@15@00 () Int)
@@ -1465,11 +1465,11 @@
 (assert (forall ((s@$ $Snap) (l@14@00 List1)) (!
   (= (len1Bad%limited s@$ l@14@00) (len1Bad s@$ l@14@00))
   :pattern ((len1Bad s@$ l@14@00))
-  :qid |quant-u-26284|)))
+  :qid |quant-u-26299|)))
 (assert (forall ((s@$ $Snap) (l@14@00 List1)) (!
   (len1Bad%stateless l@14@00)
   :pattern ((len1Bad%limited s@$ l@14@00))
-  :qid |quant-u-26285|)))
+  :qid |quant-u-26300|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -1545,7 +1545,7 @@
         0
         (+ 1 (len1Bad%limited $Snap.unit l@14@00)))))
   :pattern ((len1Bad s@$ l@14@00))
-  :qid |quant-u-26306|)))
+  :qid |quant-u-26321|)))
 (assert (forall ((s@$ $Snap) (l@14@00 List1)) (!
   (=>
     (len1Bad%precondition s@$ l@14@00)
@@ -1554,7 +1554,7 @@
       true
       (len1Bad%precondition $Snap.unit l@14@00)))
   :pattern ((len1Bad s@$ l@14@00))
-  :qid |quant-u-26307|)))
+  :qid |quant-u-26322|)))
 ; ---------- FUNCTION tripleLen2Bad----------
 (declare-fun t@16@00 () Triple2)
 (declare-fun result@17@00 () Int)
@@ -1564,11 +1564,11 @@
 (assert (forall ((s@$ $Snap) (t@16@00 Triple2)) (!
   (= (tripleLen2Bad%limited s@$ t@16@00) (tripleLen2Bad s@$ t@16@00))
   :pattern ((tripleLen2Bad s@$ t@16@00))
-  :qid |quant-u-26286|)))
+  :qid |quant-u-26301|)))
 (assert (forall ((s@$ $Snap) (t@16@00 Triple2)) (!
   (tripleLen2Bad%stateless t@16@00)
   :pattern ((tripleLen2Bad%limited s@$ t@16@00))
-  :qid |quant-u-26287|)))
+  :qid |quant-u-26302|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -1649,7 +1649,7 @@
           0
           (+ 1 (tripleLen2Bad%limited $Snap.unit t@16@00))))))
   :pattern ((tripleLen2Bad s@$ t@16@00))
-  :qid |quant-u-26308|)))
+  :qid |quant-u-26323|)))
 (assert (forall ((s@$ $Snap) (t@16@00 Triple2)) (!
   (=>
     (tripleLen2Bad%precondition s@$ t@16@00)
@@ -1658,7 +1658,7 @@
       true
       (tripleLen2Bad%precondition $Snap.unit t@16@00)))
   :pattern ((tripleLen2Bad s@$ t@16@00))
-  :qid |quant-u-26309|)))
+  :qid |quant-u-26324|)))
 ; ---------- FUNCTION tripleLen2----------
 (declare-fun t@18@00 () Triple2)
 (declare-fun result@19@00 () Int)
@@ -1668,11 +1668,11 @@
 (assert (forall ((s@$ $Snap) (t@18@00 Triple2)) (!
   (= (tripleLen2%limited s@$ t@18@00) (tripleLen2 s@$ t@18@00))
   :pattern ((tripleLen2 s@$ t@18@00))
-  :qid |quant-u-26288|)))
+  :qid |quant-u-26303|)))
 (assert (forall ((s@$ $Snap) (t@18@00 Triple2)) (!
   (tripleLen2%stateless t@18@00)
   :pattern ((tripleLen2%limited s@$ t@18@00))
-  :qid |quant-u-26289|)))
+  :qid |quant-u-26304|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -1760,7 +1760,7 @@
             1
             (tripleLen2%limited $Snap.unit (get_Triple1_x<Triple2> (get_Triple3_x<Triple1> (get_Triple2_x<Triple3> t@18@00)))))))))
   :pattern ((tripleLen2 s@$ t@18@00))
-  :qid |quant-u-26310|)))
+  :qid |quant-u-26325|)))
 (assert (forall ((s@$ $Snap) (t@18@00 Triple2)) (!
   (=>
     (tripleLen2%precondition s@$ t@18@00)
@@ -1769,7 +1769,7 @@
       true
       (tripleLen2%precondition $Snap.unit (get_Triple1_x<Triple2> (get_Triple3_x<Triple1> (get_Triple2_x<Triple3> t@18@00))))))
   :pattern ((tripleLen2 s@$ t@18@00))
-  :qid |quant-u-26311|)))
+  :qid |quant-u-26326|)))
 ; ---------- FUNCTION len2Bad----------
 (declare-fun l@20@00 () List2)
 (declare-fun result@21@00 () Int)
@@ -1779,11 +1779,11 @@
 (assert (forall ((s@$ $Snap) (l@20@00 List2)) (!
   (= (len2Bad%limited s@$ l@20@00) (len2Bad s@$ l@20@00))
   :pattern ((len2Bad s@$ l@20@00))
-  :qid |quant-u-26290|)))
+  :qid |quant-u-26305|)))
 (assert (forall ((s@$ $Snap) (l@20@00 List2)) (!
   (len2Bad%stateless l@20@00)
   :pattern ((len2Bad%limited s@$ l@20@00))
-  :qid |quant-u-26291|)))
+  :qid |quant-u-26306|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -1855,7 +1855,7 @@
         0
         (+ 1 (len2Bad%limited $Snap.unit l@20@00)))))
   :pattern ((len2Bad s@$ l@20@00))
-  :qid |quant-u-26312|)))
+  :qid |quant-u-26327|)))
 (assert (forall ((s@$ $Snap) (l@20@00 List2)) (!
   (=>
     (len2Bad%precondition s@$ l@20@00)
@@ -1864,4 +1864,4 @@
       true
       (len2Bad%precondition $Snap.unit l@20@00)))
   :pattern ((len2Bad s@$ l@20@00))
-  :qid |quant-u-26313|)))
+  :qid |quant-u-26328|)))

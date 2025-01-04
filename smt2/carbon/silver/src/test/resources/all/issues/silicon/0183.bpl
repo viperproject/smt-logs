@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-29 20:46:09
+// Date:         2025-01-04 01:15:37
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0183.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0183-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -247,10 +247,10 @@ procedure foo_ok(self: Ref) returns ()
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
-  var oldHeap: HeapType;
+  var ExhaleWellDef0Heap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -273,8 +273,8 @@ procedure foo_ok(self: Ref) returns ()
       UnfoldingMask := Mask;
       assume valid__Cell#trigger(UnfoldingHeap, valid__Cell(self, 1 / 2));
       assume UnfoldingHeap[null, valid__Cell(self, 1 / 2)] == ConditionalFrame(1 / 2, FrameFragment(UnfoldingHeap[self, v_36]));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := 1 / 2;
       assert {:msg "  Contract might not be well-formed. Fraction 1 / 2 might be negative. (0183.vpr@13.12--13.71) [203561]"}
         perm >= NoPerm;
@@ -306,8 +306,8 @@ procedure foo_ok(self: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
 }
 
 // ==================================================
@@ -320,10 +320,10 @@ procedure foo_fail(self: Ref, rd_1: Perm) returns ()
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
-  var oldHeap: HeapType;
+  var ExhaleWellDef0Heap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -351,8 +351,8 @@ procedure foo_fail(self: Ref, rd_1: Perm) returns ()
         rd_1 > NoPerm;
       assume valid__Cell#trigger(UnfoldingHeap, valid__Cell(self, rd_1));
       assume UnfoldingHeap[null, valid__Cell(self, rd_1)] == ConditionalFrame(rd_1, FrameFragment(UnfoldingHeap[self, v_36]));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := rd_1;
       assert {:msg "  Contract might not be well-formed. Fraction rd might be negative. (0183.vpr@21.12--21.69) [203567]"}
         perm >= NoPerm;
@@ -384,8 +384,8 @@ procedure foo_fail(self: Ref, rd_1: Perm) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
 }
 
 // ==================================================
@@ -395,10 +395,10 @@ procedure foo_fail(self: Ref, rd_1: Perm) returns ()
 procedure foo_fail_gist(self: Ref, rd_1: Perm) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -416,12 +416,12 @@ procedure foo_fail_gist(self: Ref, rd_1: Perm) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert none < rd * rd -- 0183.vpr@29.3--29.24
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion none < rd * rd might not hold. (0183.vpr@29.10--29.24) [203571]"}
       NoPerm < rd_1 * rd_1;
     assume state(Heap, Mask);
@@ -435,10 +435,10 @@ procedure bar_1(self: Ref, rd_1: Perm) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var newVersion: FrameType;
   
   // -- Initializing the state
@@ -463,16 +463,16 @@ procedure bar_1(self: Ref, rd_1: Perm) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: unfold acc(valid__Cell(self, rd), rd) -- 0183.vpr@36.3--36.40
     assert {:msg "  Unfolding valid__Cell(self, rd) might fail. Fraction rd might not be positive. (0183.vpr@36.3--36.40) [203573]"}
       rd_1 > NoPerm;
     assume valid__Cell#trigger(Heap, valid__Cell(self, rd_1));
     assume Heap[null, valid__Cell(self, rd_1)] == ConditionalFrame(rd_1, FrameFragment(Heap[self, v_36]));
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := rd_1;
     assert {:msg "  Unfolding valid__Cell(self, rd) might fail. Fraction rd might be negative. (0183.vpr@36.3--36.40) [203574]"}
       perm >= NoPerm;
@@ -497,8 +497,8 @@ procedure bar_1(self: Ref, rd_1: Perm) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert self.v >= self.v -- 0183.vpr@39.3--39.26
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of self.v >= self.v
       assert {:msg "  Assert might fail. There might be insufficient permission to access self.v (0183.vpr@39.10--39.26) [203577]"}
@@ -517,10 +517,10 @@ procedure bar_1(self: Ref, rd_1: Perm) returns ()
 procedure bar_gist(self: Ref, rd_1: Perm) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -538,12 +538,12 @@ procedure bar_gist(self: Ref, rd_1: Perm) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert none < rd * rd -- 0183.vpr@47.3--47.24
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion none < rd * rd might not hold. (0183.vpr@47.10--47.24) [203580]"}
       NoPerm < rd_1 * rd_1;
     assume state(Heap, Mask);

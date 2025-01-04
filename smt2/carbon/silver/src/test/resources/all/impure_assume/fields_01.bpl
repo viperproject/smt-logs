@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-29 20:36:14
+// Date:         2025-01-04 01:05:39
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/impure_assume/fields_01.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/impure_assume/fields_01-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -213,12 +213,12 @@ axiom !IsWandField(f_7);
 procedure test00_single() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var x: Ref;
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -228,8 +228,8 @@ procedure test00_single() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[x, $allocated];
@@ -250,8 +250,8 @@ procedure test00_single() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- fields_01.vpr@12.3--12.15
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion false might not hold. (fields_01.vpr@12.10--12.15) [150328]"}
       false;
     assume state(Heap, Mask);
@@ -264,12 +264,12 @@ procedure test00_single() returns ()
 procedure test00_same_tight_first() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var x: Ref;
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -279,8 +279,8 @@ procedure test00_same_tight_first() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[x, $allocated];
@@ -304,8 +304,8 @@ procedure test00_same_tight_first() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- fields_01.vpr@21.3--21.15
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion false might not hold. (fields_01.vpr@21.10--21.15) [150330]"}
       false;
     assume state(Heap, Mask);
@@ -318,12 +318,12 @@ procedure test00_same_tight_first() returns ()
 procedure test00_same_tight_second() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var x: Ref;
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -333,8 +333,8 @@ procedure test00_same_tight_second() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[x, $allocated];
@@ -358,8 +358,8 @@ procedure test00_same_tight_second() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- fields_01.vpr@30.3--30.15
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion false might not hold. (fields_01.vpr@30.10--30.15) [150332]"}
       false;
     assume state(Heap, Mask);
@@ -372,12 +372,12 @@ procedure test00_same_tight_second() returns ()
 procedure test00_same_tight_three_left_leaning() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var x: Ref;
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -387,8 +387,8 @@ procedure test00_same_tight_three_left_leaning() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[x, $allocated];
@@ -418,8 +418,8 @@ procedure test00_same_tight_three_left_leaning() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- fields_01.vpr@39.3--39.15
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion false might not hold. (fields_01.vpr@39.10--39.15) [150334]"}
       false;
     assume state(Heap, Mask);
@@ -432,12 +432,12 @@ procedure test00_same_tight_three_left_leaning() returns ()
 procedure test00_same_tight_three_right_leaning() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var x: Ref;
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -447,8 +447,8 @@ procedure test00_same_tight_three_right_leaning() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[x, $allocated];
@@ -478,8 +478,8 @@ procedure test00_same_tight_three_right_leaning() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- fields_01.vpr@48.3--48.15
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion false might not hold. (fields_01.vpr@48.10--48.15) [150336]"}
       false;
     assume state(Heap, Mask);
@@ -492,13 +492,13 @@ procedure test00_same_tight_three_right_leaning() returns ()
 procedure test01_diff() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var x: Ref;
   var y: Ref;
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -508,8 +508,8 @@ procedure test01_diff() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[x, $allocated];
@@ -534,15 +534,15 @@ procedure test01_diff() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert x == y -- fields_01.vpr@59.3--59.16
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion x == y might not hold. (fields_01.vpr@59.10--59.16) [150338]"}
       x == y;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- fields_01.vpr@61.3--61.15
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion false might not hold. (fields_01.vpr@61.10--61.15) [150339]"}
       false;
     assume state(Heap, Mask);
@@ -555,12 +555,12 @@ procedure test01_diff() returns ()
 procedure test01_same1() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var x: Ref;
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -570,8 +570,8 @@ procedure test01_same1() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[x, $allocated];
@@ -597,8 +597,8 @@ procedure test01_same1() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- fields_01.vpr@70.3--70.15
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion false might not hold. (fields_01.vpr@70.10--70.15) [150341]"}
       false;
     assume state(Heap, Mask);
@@ -611,12 +611,12 @@ procedure test01_same1() returns ()
 procedure test01_same2() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var x: Ref;
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -626,8 +626,8 @@ procedure test01_same2() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[x, $allocated];
@@ -651,8 +651,8 @@ procedure test01_same2() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- fields_01.vpr@80.3--80.15
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion false might not hold. (fields_01.vpr@80.10--80.15) [150343]"}
       false;
     assume state(Heap, Mask);
@@ -665,15 +665,15 @@ procedure test01_same2() returns ()
 procedure test02() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var x: Ref;
   var y: Ref;
   var px: Perm;
   var py: Perm;
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -683,8 +683,8 @@ procedure test02() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[x, $allocated];
@@ -721,15 +721,15 @@ procedure test02() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert px <= 1 / 10 -- fields_01.vpr@93.3--93.20
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion px <= 1 / 10 might not hold. (fields_01.vpr@93.10--93.20) [150345]"}
       px <= 1 / 10;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert y == x -- fields_01.vpr@94.3--94.16
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion y == x might not hold. (fields_01.vpr@94.10--94.16) [150346]"}
       y == x;
     assume state(Heap, Mask);
@@ -742,8 +742,8 @@ procedure test02() returns ()
 procedure test03() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var x: Ref;
   var y: Ref;
   var z: Ref;
@@ -751,8 +751,8 @@ procedure test03() returns ()
   var py: Perm;
   var pz: Perm;
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -762,8 +762,8 @@ procedure test03() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[x, $allocated];
@@ -817,8 +817,8 @@ procedure test03() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert z == x || z == y -- fields_01.vpr@109.3--109.26
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion z == x || z == y might not hold. (fields_01.vpr@109.10--109.26) [150349]"}
       z == x || z == y;
     assume state(Heap, Mask);
@@ -827,8 +827,8 @@ procedure test03() returns ()
     if (x != y) {
       
       // -- Translating statement: assert px <= 1 / 5 && py <= 1 / 10 -- fields_01.vpr@112.5--112.35
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Assert might fail. Assertion px <= 1 / 5 might not hold. (fields_01.vpr@112.12--112.35) [150350]"}
           px <= 1 / 5;
         assert {:msg "  Assert might fail. Assertion py <= 1 / 10 might not hold. (fields_01.vpr@112.12--112.35) [150351]"}
@@ -837,8 +837,8 @@ procedure test03() returns ()
     } else {
       
       // -- Translating statement: assert px <= 3 / 10 && py <= 3 / 10 -- fields_01.vpr@114.5--114.36
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Assert might fail. Assertion px <= 3 / 10 might not hold. (fields_01.vpr@114.12--114.36) [150352]"}
           px <= 3 / 10;
         assert {:msg "  Assert might fail. Assertion py <= 3 / 10 might not hold. (fields_01.vpr@114.12--114.36) [150353]"}

@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-29 20:08:38
+; Started: 2025-01-04 00:37:53
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -198,21 +198,21 @@
 (assert (forall ((s@$ $Snap) (l@0@00 List<Val>) (v@1@00 Val)) (!
   (= (lenBad%limited s@$ l@0@00 v@1@00) (lenBad s@$ l@0@00 v@1@00))
   :pattern ((lenBad s@$ l@0@00 v@1@00))
-  :qid |quant-u-26314|)))
+  :qid |quant-u-26329|)))
 (assert (forall ((s@$ $Snap) (l@0@00 List<Val>) (v@1@00 Val)) (!
   (lenBad%stateless l@0@00 v@1@00)
   :pattern ((lenBad%limited s@$ l@0@00 v@1@00))
-  :qid |quant-u-26315|)))
+  :qid |quant-u-26330|)))
 (assert (forall ((s@$ $Snap) (l@0@00 List<Val>) (v@1@00 Val)) (!
   (let ((result@2@00 (lenBad%limited s@$ l@0@00 v@1@00))) (=>
     (lenBad%precondition s@$ l@0@00 v@1@00)
     (>= result@2@00 0)))
   :pattern ((lenBad%limited s@$ l@0@00 v@1@00))
-  :qid |quant-u-26322|)))
+  :qid |quant-u-26337|)))
 (assert (forall ((s@$ $Snap) (l@0@00 List<Val>) (v@1@00 Val)) (!
   (let ((result@2@00 (lenBad%limited s@$ l@0@00 v@1@00))) true)
   :pattern ((lenBad%limited s@$ l@0@00 v@1@00))
-  :qid |quant-u-26323|)))
+  :qid |quant-u-26338|)))
 (assert (forall ((s@$ $Snap) (l@0@00 List<Val>) (v@1@00 Val)) (!
   (=>
     (lenBad%precondition s@$ l@0@00 v@1@00)
@@ -220,31 +220,31 @@
       (lenBad s@$ l@0@00 v@1@00)
       (lenBad%limited $Snap.unit (Cons<List<Val>> v@1@00 (as Nil<List<Val>>  List<Val>)) v@1@00)))
   :pattern ((lenBad s@$ l@0@00 v@1@00))
-  :qid |quant-u-26324|)))
+  :qid |quant-u-26339|)))
 (assert (forall ((s@$ $Snap) (l@0@00 List<Val>) (v@1@00 Val)) (!
   (=>
     (lenBad%precondition s@$ l@0@00 v@1@00)
     (lenBad%precondition $Snap.unit (Cons<List<Val>> v@1@00 (as Nil<List<Val>>  List<Val>)) v@1@00))
   :pattern ((lenBad s@$ l@0@00 v@1@00))
-  :qid |quant-u-26325|)))
+  :qid |quant-u-26340|)))
 (assert (forall ((s@$ $Snap) (l@3@00 List<Val>)) (!
   (= (len%limited s@$ l@3@00) (len s@$ l@3@00))
   :pattern ((len s@$ l@3@00))
-  :qid |quant-u-26316|)))
+  :qid |quant-u-26331|)))
 (assert (forall ((s@$ $Snap) (l@3@00 List<Val>)) (!
   (len%stateless l@3@00)
   :pattern ((len%limited s@$ l@3@00))
-  :qid |quant-u-26317|)))
+  :qid |quant-u-26332|)))
 (assert (forall ((s@$ $Snap) (l@3@00 List<Val>)) (!
   (let ((result@4@00 (len%limited s@$ l@3@00))) (=>
     (len%precondition s@$ l@3@00)
     (>= result@4@00 0)))
   :pattern ((len%limited s@$ l@3@00))
-  :qid |quant-u-26326|)))
+  :qid |quant-u-26341|)))
 (assert (forall ((s@$ $Snap) (l@3@00 List<Val>)) (!
   (let ((result@4@00 (len%limited s@$ l@3@00))) true)
   :pattern ((len%limited s@$ l@3@00))
-  :qid |quant-u-26327|)))
+  :qid |quant-u-26342|)))
 (assert (forall ((s@$ $Snap) (l@3@00 List<Val>)) (!
   (=>
     (len%precondition s@$ l@3@00)
@@ -255,7 +255,7 @@
         0
         (+ 1 (len%limited $Snap.unit (get_List_tail<List<Val>> l@3@00))))))
   :pattern ((len s@$ l@3@00))
-  :qid |quant-u-26328|)))
+  :qid |quant-u-26343|)))
 (assert (forall ((s@$ $Snap) (l@3@00 List<Val>)) (!
   (=>
     (len%precondition s@$ l@3@00)
@@ -264,25 +264,25 @@
       true
       (len%precondition $Snap.unit (get_List_tail<List<Val>> l@3@00))))
   :pattern ((len s@$ l@3@00))
-  :qid |quant-u-26329|)))
+  :qid |quant-u-26344|)))
 (assert (forall ((s@$ $Snap) (l@5@00 List<Val>)) (!
   (= (len2%limited s@$ l@5@00) (len2 s@$ l@5@00))
   :pattern ((len2 s@$ l@5@00))
-  :qid |quant-u-26318|)))
+  :qid |quant-u-26333|)))
 (assert (forall ((s@$ $Snap) (l@5@00 List<Val>)) (!
   (len2%stateless l@5@00)
   :pattern ((len2%limited s@$ l@5@00))
-  :qid |quant-u-26319|)))
+  :qid |quant-u-26334|)))
 (assert (forall ((s@$ $Snap) (l@5@00 List<Val>)) (!
   (let ((result@6@00 (len2%limited s@$ l@5@00))) (=>
     (len2%precondition s@$ l@5@00)
     (>= result@6@00 0)))
   :pattern ((len2%limited s@$ l@5@00))
-  :qid |quant-u-26330|)))
+  :qid |quant-u-26345|)))
 (assert (forall ((s@$ $Snap) (l@5@00 List<Val>)) (!
   (let ((result@6@00 (len2%limited s@$ l@5@00))) true)
   :pattern ((len2%limited s@$ l@5@00))
-  :qid |quant-u-26331|)))
+  :qid |quant-u-26346|)))
 (assert (forall ((s@$ $Snap) (l@5@00 List<Val>)) (!
   (=>
     (len2%precondition s@$ l@5@00)
@@ -298,7 +298,7 @@
             2
             (len2%limited $Snap.unit (get_List_tail<List<Val>> (get_List_tail<List<Val>> l@5@00))))))))
   :pattern ((len2 s@$ l@5@00))
-  :qid |quant-u-26332|)))
+  :qid |quant-u-26347|)))
 (assert (forall ((s@$ $Snap) (l@5@00 List<Val>)) (!
   (=>
     (len2%precondition s@$ l@5@00)
@@ -310,35 +310,35 @@
         true
         (len2%precondition $Snap.unit (get_List_tail<List<Val>> (get_List_tail<List<Val>> l@5@00))))))
   :pattern ((len2 s@$ l@5@00))
-  :qid |quant-u-26333|)))
+  :qid |quant-u-26348|)))
 (assert (forall ((s@$ $Snap) (l@7@00 List<Val>)) (!
   (= (lenBad2%limited s@$ l@7@00) (lenBad2 s@$ l@7@00))
   :pattern ((lenBad2 s@$ l@7@00))
-  :qid |quant-u-26320|)))
+  :qid |quant-u-26335|)))
 (assert (forall ((s@$ $Snap) (l@7@00 List<Val>)) (!
   (lenBad2%stateless l@7@00)
   :pattern ((lenBad2%limited s@$ l@7@00))
-  :qid |quant-u-26321|)))
+  :qid |quant-u-26336|)))
 (assert (forall ((s@$ $Snap) (l@7@00 List<Val>)) (!
   (let ((result@8@00 (lenBad2%limited s@$ l@7@00))) (=>
     (lenBad2%precondition s@$ l@7@00)
     (>= result@8@00 0)))
   :pattern ((lenBad2%limited s@$ l@7@00))
-  :qid |quant-u-26334|)))
+  :qid |quant-u-26349|)))
 (assert (forall ((s@$ $Snap) (l@7@00 List<Val>)) (!
   (let ((result@8@00 (lenBad2%limited s@$ l@7@00))) true)
   :pattern ((lenBad2%limited s@$ l@7@00))
-  :qid |quant-u-26335|)))
+  :qid |quant-u-26350|)))
 (assert (forall ((s@$ $Snap) (l@7@00 List<Val>)) (!
   (=>
     (lenBad2%precondition s@$ l@7@00)
     (= (lenBad2 s@$ l@7@00) (+ 1 (lenBad2%limited $Snap.unit l@7@00))))
   :pattern ((lenBad2 s@$ l@7@00))
-  :qid |quant-u-26336|)))
+  :qid |quant-u-26351|)))
 (assert (forall ((s@$ $Snap) (l@7@00 List<Val>)) (!
   (=> (lenBad2%precondition s@$ l@7@00) (lenBad2%precondition $Snap.unit l@7@00))
   :pattern ((lenBad2 s@$ l@7@00))
-  :qid |quant-u-26337|)))
+  :qid |quant-u-26352|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- len_termination_proof ----------

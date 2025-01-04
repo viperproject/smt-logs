@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-29 20:07:27
+; Started: 2025-01-04 00:36:42
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -725,7 +725,7 @@
       (= (inv@4@00 (loc<Ref> a@0@00 i@1@00)) i@1@00)
       (img@5@00 (loc<Ref> a@0@00 i@1@00))))
   :pattern (($FVF.loc_val ($FVF.lookup_val $t@3@00 (loc<Ref> a@0@00 i@1@00)) (loc<Ref> a@0@00 i@1@00)))
-  :qid |quant-u-25727|)))
+  :qid |quant-u-25742|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -763,7 +763,7 @@
     (and (<= 0 (inv@4@00 r)) (< (inv@4@00 r) (len<Int> a@0@00)))
     ($FVF.loc_val ($FVF.lookup_val (as sm@6@00  $FVF<val>) r) r))
   :pattern ((inv@4@00 r))
-  :qid |quant-u-25728|)))
+  :qid |quant-u-25743|)))
 (pop) ; 1
 ; ---------- tree ----------
 (declare-const root@7@00 $Ref)

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-29 20:36:02
+// Date:         2025-01-04 01:05:26
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/impure_assume/assume10QPwand.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/impure_assume/assume10QPwand-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -783,8 +783,8 @@ axiom (forall Heap: HeapType, x: Ref, y: Ref, z: Ref ::
 procedure m(xs: (Set Ref), ys: (Set Ref), zs: (Set Ref), q_1: Perm, xs1: (Set Ref), xs2: (Set Ref), xs3: (Set Ref), xs4: (Set Ref), xs5: (Set Ref), xs6: (Set Ref), xs7: (Set Ref), xs8: (Set Ref), xs9: (Set Ref), xs10: (Set Ref), xs11: (Set Ref), ys1: (Set Ref), ys2: (Set Ref), ys3: (Set Ref), ys4: (Set Ref), ys5: (Set Ref), ys6: (Set Ref), ys7: (Set Ref), ys8: (Set Ref), ys9: (Set Ref), ys10: (Set Ref), ys11: (Set Ref), zs1: (Set Ref), zs2: (Set Ref), zs3: (Set Ref), zs4: (Set Ref), zs5: (Set Ref), zs6: (Set Ref), zs7: (Set Ref), zs8: (Set Ref), zs9: (Set Ref), zs10: (Set Ref), zs11: (Set Ref)) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var a_2: Ref;
   var b_24: Ref;
   var c: Ref;
@@ -794,8 +794,8 @@ procedure m(xs: (Set Ref), ys: (Set Ref), zs: (Set Ref), q_1: Perm, xs1: (Set Re
   var WandDefLHSHeap: HeapType;
   var WandDefLHSMask: MaskType;
   var perm: Perm;
-  var Labellhs1Mask: MaskType;
   var Labellhs1Heap: HeapType;
+  var Labellhs1Mask: MaskType;
   var WandDefRHSHeap: HeapType;
   var WandDefRHSMask: MaskType;
   var QPMask: MaskType;
@@ -809,8 +809,8 @@ procedure m(xs: (Set Ref), ys: (Set Ref), zs: (Set Ref), q_1: Perm, xs1: (Set Re
   var x7_2: Ref;
   var x8_2: Ref;
   var x9_2: Perm;
-  var Labellhs2Mask: MaskType;
   var Labellhs2Heap: HeapType;
+  var Labellhs2Mask: MaskType;
   var x0_4: Ref;
   var x1_9: Perm;
   var x2_7: Ref;
@@ -821,8 +821,8 @@ procedure m(xs: (Set Ref), ys: (Set Ref), zs: (Set Ref), q_1: Perm, xs1: (Set Re
   var x7_4: Ref;
   var x8_4: Ref;
   var x9_4: Perm;
-  var Labellhs3Mask: MaskType;
   var Labellhs3Heap: HeapType;
+  var Labellhs3Mask: MaskType;
   var x0_5: Ref;
   var x1_11: Perm;
   var x2_9: Ref;
@@ -833,8 +833,8 @@ procedure m(xs: (Set Ref), ys: (Set Ref), zs: (Set Ref), q_1: Perm, xs1: (Set Re
   var x7_5: Ref;
   var x8_5: Ref;
   var x9_5: Perm;
-  var Labellhs4Mask: MaskType;
   var Labellhs4Heap: HeapType;
+  var Labellhs4Mask: MaskType;
   var x0_7: Ref;
   var x1_12: Perm;
   var x2_11: Ref;
@@ -845,8 +845,8 @@ procedure m(xs: (Set Ref), ys: (Set Ref), zs: (Set Ref), q_1: Perm, xs1: (Set Re
   var x7_7: Ref;
   var x8_7: Ref;
   var x9_7: Perm;
-  var Labellhs5Mask: MaskType;
   var Labellhs5Heap: HeapType;
+  var Labellhs5Mask: MaskType;
   var x0_9: Ref;
   var x1_14: Perm;
   var x2_12: Ref;
@@ -857,8 +857,8 @@ procedure m(xs: (Set Ref), ys: (Set Ref), zs: (Set Ref), q_1: Perm, xs1: (Set Re
   var x7_9: Ref;
   var x8_9: Ref;
   var x9_9: Perm;
-  var Labellhs6Mask: MaskType;
   var Labellhs6Heap: HeapType;
+  var Labellhs6Mask: MaskType;
   var x0_10: Ref;
   var x1_16: Perm;
   var x2_14: Ref;
@@ -869,8 +869,8 @@ procedure m(xs: (Set Ref), ys: (Set Ref), zs: (Set Ref), q_1: Perm, xs1: (Set Re
   var x7_10: Ref;
   var x8_10: Ref;
   var x9_10: Perm;
-  var Labellhs7Mask: MaskType;
   var Labellhs7Heap: HeapType;
+  var Labellhs7Mask: MaskType;
   var x0_12: Ref;
   var x1_17: Perm;
   var x2_16: Ref;
@@ -881,8 +881,8 @@ procedure m(xs: (Set Ref), ys: (Set Ref), zs: (Set Ref), q_1: Perm, xs1: (Set Re
   var x7_12: Ref;
   var x8_12: Ref;
   var x9_12: Perm;
-  var Labellhs8Mask: MaskType;
   var Labellhs8Heap: HeapType;
+  var Labellhs8Mask: MaskType;
   var x0_14: Ref;
   var x1_19: Perm;
   var x2_17: Ref;
@@ -893,8 +893,8 @@ procedure m(xs: (Set Ref), ys: (Set Ref), zs: (Set Ref), q_1: Perm, xs1: (Set Re
   var x7_14: Ref;
   var x8_14: Ref;
   var x9_14: Perm;
-  var Labellhs9Mask: MaskType;
   var Labellhs9Heap: HeapType;
+  var Labellhs9Mask: MaskType;
   var x0_15: Ref;
   var x1_21: Perm;
   var x2_19: Ref;
@@ -905,8 +905,8 @@ procedure m(xs: (Set Ref), ys: (Set Ref), zs: (Set Ref), q_1: Perm, xs1: (Set Re
   var x7_15: Ref;
   var x8_15: Ref;
   var x9_15: Perm;
-  var Labellhs10Mask: MaskType;
   var Labellhs10Heap: HeapType;
+  var Labellhs10Mask: MaskType;
   var x0_17: Ref;
   var x1_22: Perm;
   var x2_21: Ref;
@@ -917,8 +917,8 @@ procedure m(xs: (Set Ref), ys: (Set Ref), zs: (Set Ref), q_1: Perm, xs1: (Set Re
   var x7_17: Ref;
   var x8_17: Ref;
   var x9_17: Perm;
-  var Labellhs11Mask: MaskType;
   var Labellhs11Heap: HeapType;
+  var Labellhs11Mask: MaskType;
   var x0_19: Ref;
   var x1_24: Perm;
   var x2_22: Ref;
@@ -929,16 +929,16 @@ procedure m(xs: (Set Ref), ys: (Set Ref), zs: (Set Ref), q_1: Perm, xs1: (Set Re
   var x7_19: Ref;
   var x8_19: Ref;
   var x9_19: Perm;
-  var Labellhs12Mask: MaskType;
   var Labellhs12Heap: HeapType;
+  var Labellhs12Mask: MaskType;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
-  var Labellhs13Mask: MaskType;
+  var ExhaleWellDef0Mask: MaskType;
   var Labellhs13Heap: HeapType;
-  var Labellhs14Mask: MaskType;
+  var Labellhs13Mask: MaskType;
   var Labellhs14Heap: HeapType;
+  var Labellhs14Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -948,8 +948,8 @@ procedure m(xs: (Set Ref), ys: (Set Ref), zs: (Set Ref), q_1: Perm, xs1: (Set Re
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[a_2, $allocated];
@@ -989,8 +989,8 @@ procedure m(xs: (Set Ref), ys: (Set Ref), zs: (Set Ref), q_1: Perm, xs1: (Set Re
             
             // -- Translating statement: label lhs1 -- assume10QPwand.vpr@25.78--25.98
               lhs1:
-              Labellhs1Mask := WandDefLHSMask;
               Labellhs1Heap := WandDefLHSHeap;
+              Labellhs1Mask := WandDefLHSMask;
               assume state(WandDefLHSHeap, WandDefLHSMask);
             havoc WandDefRHSHeap;
             WandDefRHSMask := ZeroMask;
@@ -1129,8 +1129,8 @@ procedure m(xs: (Set Ref), ys: (Set Ref), zs: (Set Ref), q_1: Perm, xs1: (Set Re
             
             // -- Translating statement: label lhs2 -- assume10QPwand.vpr@27.122--27.141
               lhs2:
-              Labellhs2Mask := WandDefLHSMask;
               Labellhs2Heap := WandDefLHSHeap;
+              Labellhs2Mask := WandDefLHSMask;
               assume state(WandDefLHSHeap, WandDefLHSMask);
             havoc WandDefRHSHeap;
             WandDefRHSMask := ZeroMask;
@@ -1271,8 +1271,8 @@ procedure m(xs: (Set Ref), ys: (Set Ref), zs: (Set Ref), q_1: Perm, xs1: (Set Re
             
             // -- Translating statement: label lhs3 -- assume10QPwand.vpr@28.122--28.141
               lhs3:
-              Labellhs3Mask := WandDefLHSMask;
               Labellhs3Heap := WandDefLHSHeap;
+              Labellhs3Mask := WandDefLHSMask;
               assume state(WandDefLHSHeap, WandDefLHSMask);
             havoc WandDefRHSHeap;
             WandDefRHSMask := ZeroMask;
@@ -1413,8 +1413,8 @@ procedure m(xs: (Set Ref), ys: (Set Ref), zs: (Set Ref), q_1: Perm, xs1: (Set Re
             
             // -- Translating statement: label lhs4 -- assume10QPwand.vpr@29.122--29.141
               lhs4:
-              Labellhs4Mask := WandDefLHSMask;
               Labellhs4Heap := WandDefLHSHeap;
+              Labellhs4Mask := WandDefLHSMask;
               assume state(WandDefLHSHeap, WandDefLHSMask);
             havoc WandDefRHSHeap;
             WandDefRHSMask := ZeroMask;
@@ -1555,8 +1555,8 @@ procedure m(xs: (Set Ref), ys: (Set Ref), zs: (Set Ref), q_1: Perm, xs1: (Set Re
             
             // -- Translating statement: label lhs5 -- assume10QPwand.vpr@30.122--30.141
               lhs5:
-              Labellhs5Mask := WandDefLHSMask;
               Labellhs5Heap := WandDefLHSHeap;
+              Labellhs5Mask := WandDefLHSMask;
               assume state(WandDefLHSHeap, WandDefLHSMask);
             havoc WandDefRHSHeap;
             WandDefRHSMask := ZeroMask;
@@ -1697,8 +1697,8 @@ procedure m(xs: (Set Ref), ys: (Set Ref), zs: (Set Ref), q_1: Perm, xs1: (Set Re
             
             // -- Translating statement: label lhs6 -- assume10QPwand.vpr@31.122--31.141
               lhs6:
-              Labellhs6Mask := WandDefLHSMask;
               Labellhs6Heap := WandDefLHSHeap;
+              Labellhs6Mask := WandDefLHSMask;
               assume state(WandDefLHSHeap, WandDefLHSMask);
             havoc WandDefRHSHeap;
             WandDefRHSMask := ZeroMask;
@@ -1839,8 +1839,8 @@ procedure m(xs: (Set Ref), ys: (Set Ref), zs: (Set Ref), q_1: Perm, xs1: (Set Re
             
             // -- Translating statement: label lhs7 -- assume10QPwand.vpr@32.122--32.141
               lhs7:
-              Labellhs7Mask := WandDefLHSMask;
               Labellhs7Heap := WandDefLHSHeap;
+              Labellhs7Mask := WandDefLHSMask;
               assume state(WandDefLHSHeap, WandDefLHSMask);
             havoc WandDefRHSHeap;
             WandDefRHSMask := ZeroMask;
@@ -1981,8 +1981,8 @@ procedure m(xs: (Set Ref), ys: (Set Ref), zs: (Set Ref), q_1: Perm, xs1: (Set Re
             
             // -- Translating statement: label lhs8 -- assume10QPwand.vpr@33.122--33.141
               lhs8:
-              Labellhs8Mask := WandDefLHSMask;
               Labellhs8Heap := WandDefLHSHeap;
+              Labellhs8Mask := WandDefLHSMask;
               assume state(WandDefLHSHeap, WandDefLHSMask);
             havoc WandDefRHSHeap;
             WandDefRHSMask := ZeroMask;
@@ -2123,8 +2123,8 @@ procedure m(xs: (Set Ref), ys: (Set Ref), zs: (Set Ref), q_1: Perm, xs1: (Set Re
             
             // -- Translating statement: label lhs9 -- assume10QPwand.vpr@34.122--34.141
               lhs9:
-              Labellhs9Mask := WandDefLHSMask;
               Labellhs9Heap := WandDefLHSHeap;
+              Labellhs9Mask := WandDefLHSMask;
               assume state(WandDefLHSHeap, WandDefLHSMask);
             havoc WandDefRHSHeap;
             WandDefRHSMask := ZeroMask;
@@ -2265,8 +2265,8 @@ procedure m(xs: (Set Ref), ys: (Set Ref), zs: (Set Ref), q_1: Perm, xs1: (Set Re
             
             // -- Translating statement: label lhs10 -- assume10QPwand.vpr@35.122--35.141
               lhs10:
-              Labellhs10Mask := WandDefLHSMask;
               Labellhs10Heap := WandDefLHSHeap;
+              Labellhs10Mask := WandDefLHSMask;
               assume state(WandDefLHSHeap, WandDefLHSMask);
             havoc WandDefRHSHeap;
             WandDefRHSMask := ZeroMask;
@@ -2407,8 +2407,8 @@ procedure m(xs: (Set Ref), ys: (Set Ref), zs: (Set Ref), q_1: Perm, xs1: (Set Re
             
             // -- Translating statement: label lhs11 -- assume10QPwand.vpr@36.122--36.144
               lhs11:
-              Labellhs11Mask := WandDefLHSMask;
               Labellhs11Heap := WandDefLHSHeap;
+              Labellhs11Mask := WandDefLHSMask;
               assume state(WandDefLHSHeap, WandDefLHSMask);
             havoc WandDefRHSHeap;
             WandDefRHSMask := ZeroMask;
@@ -2549,8 +2549,8 @@ procedure m(xs: (Set Ref), ys: (Set Ref), zs: (Set Ref), q_1: Perm, xs1: (Set Re
             
             // -- Translating statement: label lhs12 -- assume10QPwand.vpr@37.122--37.144
               lhs12:
-              Labellhs12Mask := WandDefLHSMask;
               Labellhs12Heap := WandDefLHSHeap;
+              Labellhs12Mask := WandDefLHSMask;
               assume state(WandDefLHSHeap, WandDefLHSMask);
             havoc WandDefRHSHeap;
             WandDefRHSMask := ZeroMask;
@@ -2638,8 +2638,8 @@ procedure m(xs: (Set Ref), ys: (Set Ref), zs: (Set Ref), q_1: Perm, xs1: (Set Re
   //   (acc(a.f, q) && (acc(b.f, q) && acc(c.f, q)) --* acc(p(a, b, c), q)) -- assume10QPwand.vpr@47.3--47.46
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
+    ExhaleWellDef0Mask := AssertMask;
     
     // -- Check definedness of acc(a.f, q) && (acc(b.f, q) && acc(c.f, q)) --* acc(p(a, b, c), q)
       if (*) {
@@ -2667,8 +2667,8 @@ procedure m(xs: (Set Ref), ys: (Set Ref), zs: (Set Ref), q_1: Perm, xs1: (Set Re
         
         // -- Translating statement: label lhs13 -- assume10QPwand.vpr@47.10--47.26
           lhs13:
-          Labellhs13Mask := WandDefLHSMask;
           Labellhs13Heap := WandDefLHSHeap;
+          Labellhs13Mask := WandDefLHSMask;
           assume state(WandDefLHSHeap, WandDefLHSMask);
         havoc WandDefRHSHeap;
         WandDefRHSMask := ZeroMask;
@@ -2711,8 +2711,8 @@ procedure m(xs: (Set Ref), ys: (Set Ref), zs: (Set Ref), q_1: Perm, xs1: (Set Re
         
         // -- Translating statement: label lhs14 -- assume10QPwand.vpr@47.30--47.46
           lhs14:
-          Labellhs14Mask := WandDefLHSMask;
           Labellhs14Heap := WandDefLHSHeap;
+          Labellhs14Mask := WandDefLHSMask;
           assume state(WandDefLHSHeap, WandDefLHSMask);
         havoc WandDefRHSHeap;
         WandDefRHSMask := ZeroMask;
@@ -2731,8 +2731,8 @@ procedure m(xs: (Set Ref), ys: (Set Ref), zs: (Set Ref), q_1: Perm, xs1: (Set Re
     assume state(Heap, Mask);
   
   // -- Translating statement: assert q == write ==> false -- assume10QPwand.vpr@50.3--50.30
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     if (q_1 == FullPerm) {
       assert {:msg "  Assert might fail. Assertion false might not hold. (assume10QPwand.vpr@50.10--50.30) [149702]"}
         false;

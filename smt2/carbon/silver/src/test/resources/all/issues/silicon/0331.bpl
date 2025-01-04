@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-29 20:49:23
+// Date:         2025-01-04 01:18:52
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0331.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0331-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -227,8 +227,8 @@ procedure integer#definedness(r_1: Ref) returns (Result: int)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var newPMask: PMaskType;
   
@@ -252,8 +252,8 @@ procedure integer#definedness(r_1: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume Peano#trigger(UnfoldingHeap, Peano(r_1));
       assume UnfoldingHeap[null, Peano(r_1)] == FrameFragment((if r_1 != null then CombineFrames(FrameFragment(UnfoldingHeap[r_1, nx]), UnfoldingHeap[null, Peano(UnfoldingHeap[r_1, nx])]) else EmptyFrame));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Peano(r) (0331.vpr@8.1--10.60) [217099]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, Peano(r_1)];
@@ -276,8 +276,8 @@ procedure integer#definedness(r_1: Ref) returns (Result: int)
           HasDirectPerm(UnfoldingMask, r_1, nx);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := UnfoldingHeap;
           ExhaleWellDef0Mask := UnfoldingMask;
+          ExhaleWellDef0Heap := UnfoldingHeap;
           perm := FullPerm;
           assert {:msg "  Precondition of function integer might not hold. There might be insufficient permission to access Peano(r.nx) (0331.vpr@10.45--10.58) [217101]"}
             NoPerm < perm ==> NoPerm < UnfoldingMask[null, Peano(UnfoldingHeap[r_1, nx])];
@@ -349,8 +349,8 @@ procedure integer2#definedness(r_1: Ref, k: int) returns (Result: int)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -371,8 +371,8 @@ procedure integer2#definedness(r_1: Ref, k: int) returns (Result: int)
     // -- Check definedness of integer(r) + k
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function integer might not hold. There might be insufficient permission to access Peano(r) (0331.vpr@14.3--14.13) [217102]"}
           NoPerm < perm ==> NoPerm < Mask[null, Peano(r_1)];
@@ -460,15 +460,15 @@ procedure A_2(r_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var newPMask: PMaskType;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var ExhaleHeap: HeapType;
   var k_15: int;
   var k_1_1: int;
@@ -493,8 +493,8 @@ procedure A_2(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale (unfolding acc(Peano(r), write) in r.nx == r) -- 0331.vpr@20.3--20.41
     
@@ -503,8 +503,8 @@ procedure A_2(r_1: Ref) returns ()
       UnfoldingMask := Mask;
       assume Peano#trigger(UnfoldingHeap, Peano(r_1));
       assume UnfoldingHeap[null, Peano(r_1)] == FrameFragment((if r_1 != null then CombineFrames(FrameFragment(UnfoldingHeap[r_1, nx]), UnfoldingHeap[null, Peano(UnfoldingHeap[r_1, nx])]) else EmptyFrame));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Inhale might fail. There might be insufficient permission to access Peano(r) (0331.vpr@20.10--20.41) [217104]"}
@@ -544,8 +544,8 @@ procedure A_2(r_1: Ref) returns ()
       UnfoldingMask := Mask;
       assume Peano#trigger(UnfoldingHeap, Peano(r_1));
       assume UnfoldingHeap[null, Peano(r_1)] == FrameFragment((if r_1 != null then CombineFrames(FrameFragment(UnfoldingHeap[r_1, nx]), UnfoldingHeap[null, Peano(UnfoldingHeap[r_1, nx])]) else EmptyFrame));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       UnfoldingMask := UnfoldingMask[null, Peano(r_1):=UnfoldingMask[null, Peano(r_1)] - perm];
       if (r_1 != null) {
@@ -569,8 +569,8 @@ procedure A_2(r_1: Ref) returns ()
   //     { integer2(r.nx, k) }
   //     (unfolding acc(Peano(r), write) in integer2(r.nx, k) >= 0) ==>
   //     integer2(r, k) > 0) -- 0331.vpr@21.3--23.72
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall k: Int :: { integer2(r.nx, k) } (unfolding acc(Peano(r), write) in integer2(r.nx, k) >= 0) ==> integer2(r, k) > 0)
       if (*) {
@@ -578,8 +578,8 @@ procedure A_2(r_1: Ref) returns ()
         UnfoldingMask := ExhaleWellDef0Mask;
         assume Peano#trigger(UnfoldingHeap, Peano(r_1));
         assume UnfoldingHeap[null, Peano(r_1)] == FrameFragment((if r_1 != null then CombineFrames(FrameFragment(UnfoldingHeap[r_1, nx]), UnfoldingHeap[null, Peano(UnfoldingHeap[r_1, nx])]) else EmptyFrame));
-        ExhaleWellDef1Heap := UnfoldingHeap;
         ExhaleWellDef1Mask := UnfoldingMask;
+        ExhaleWellDef1Heap := UnfoldingHeap;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Assert might fail. There might be insufficient permission to access Peano(r) (0331.vpr@21.10--23.72) [217106]"}
@@ -603,8 +603,8 @@ procedure A_2(r_1: Ref) returns ()
           HasDirectPerm(UnfoldingMask, r_1, nx);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef1Heap := UnfoldingHeap;
           ExhaleWellDef1Mask := UnfoldingMask;
+          ExhaleWellDef1Heap := UnfoldingHeap;
           perm := FullPerm;
           assert {:msg "  Precondition of function integer2 might not hold. There might be insufficient permission to access Peano(r.nx) (0331.vpr@23.28--23.44) [217108]"}
             NoPerm < perm ==> NoPerm < UnfoldingMask[null, Peano(UnfoldingHeap[r_1, nx])];
@@ -630,8 +630,8 @@ procedure A_2(r_1: Ref) returns ()
         if (integer2(Heap, Heap[r_1, nx], k_15) >= 0) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Heap := ExhaleWellDef0Heap;
             ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+            ExhaleWellDef1Heap := ExhaleWellDef0Heap;
             perm := FullPerm;
             assert {:msg "  Precondition of function integer2 might not hold. There might be insufficient permission to access Peano(r) (0331.vpr@23.55--23.68) [217109]"}
               NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, Peano(r_1)];
@@ -667,14 +667,14 @@ procedure B_3(r_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var ExhaleHeap: HeapType;
   var newPMask: PMaskType;
   var k_18: int;
@@ -700,15 +700,15 @@ procedure B_3(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert (forall k: Int ::
   //     { integer2(r, k) }
   //     (unfolding acc(Peano(r), write) in integer2(r.nx, k) >= 0) ==>
   //     integer2(r, k) > 0) -- 0331.vpr@30.3--32.72
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall k: Int :: { integer2(r, k) } (unfolding acc(Peano(r), write) in integer2(r.nx, k) >= 0) ==> integer2(r, k) > 0)
       if (*) {
@@ -716,8 +716,8 @@ procedure B_3(r_1: Ref) returns ()
         UnfoldingMask := ExhaleWellDef0Mask;
         assume Peano#trigger(UnfoldingHeap, Peano(r_1));
         assume UnfoldingHeap[null, Peano(r_1)] == FrameFragment((if r_1 != null then CombineFrames(FrameFragment(UnfoldingHeap[r_1, nx]), UnfoldingHeap[null, Peano(UnfoldingHeap[r_1, nx])]) else EmptyFrame));
-        ExhaleWellDef1Heap := UnfoldingHeap;
         ExhaleWellDef1Mask := UnfoldingMask;
+        ExhaleWellDef1Heap := UnfoldingHeap;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Assert might fail. There might be insufficient permission to access Peano(r) (0331.vpr@30.10--32.72) [217111]"}
@@ -741,8 +741,8 @@ procedure B_3(r_1: Ref) returns ()
           HasDirectPerm(UnfoldingMask, r_1, nx);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef1Heap := UnfoldingHeap;
           ExhaleWellDef1Mask := UnfoldingMask;
+          ExhaleWellDef1Heap := UnfoldingHeap;
           perm := FullPerm;
           assert {:msg "  Precondition of function integer2 might not hold. There might be insufficient permission to access Peano(r.nx) (0331.vpr@32.28--32.44) [217113]"}
             NoPerm < perm ==> NoPerm < UnfoldingMask[null, Peano(UnfoldingHeap[r_1, nx])];
@@ -768,8 +768,8 @@ procedure B_3(r_1: Ref) returns ()
         if (integer2(Heap, Heap[r_1, nx], k_18) >= 0) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Heap := ExhaleWellDef0Heap;
             ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+            ExhaleWellDef1Heap := ExhaleWellDef0Heap;
             perm := FullPerm;
             assert {:msg "  Precondition of function integer2 might not hold. There might be insufficient permission to access Peano(r) (0331.vpr@32.55--32.68) [217114]"}
               NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, Peano(r_1)];

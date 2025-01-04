@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-29 19:57:50
+; Started: 2025-01-04 00:26:37
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -1195,11 +1195,11 @@
 (assert (forall ((s@$ $Snap) (a@0@00 Int) (i@1@00 Int) (b@2@00 Int)) (!
   (= (exp%limited s@$ a@0@00 i@1@00 b@2@00) (exp_ s@$ a@0@00 i@1@00 b@2@00))
   :pattern ((exp_ s@$ a@0@00 i@1@00 b@2@00))
-  :qid |quant-u-10280|)))
+  :qid |quant-u-10344|)))
 (assert (forall ((s@$ $Snap) (a@0@00 Int) (i@1@00 Int) (b@2@00 Int)) (!
   (exp%stateless a@0@00 i@1@00 b@2@00)
   :pattern ((exp%limited s@$ a@0@00 i@1@00 b@2@00))
-  :qid |quant-u-10281|)))
+  :qid |quant-u-10345|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -1215,8 +1215,8 @@
     (exp%precondition s@$ a@0@00 i@1@00 b@2@00)
     (= (exp_ s@$ a@0@00 i@1@00 b@2@00) (+ a@0@00 (* i@1@00 b@2@00))))
   :pattern ((exp_ s@$ a@0@00 i@1@00 b@2@00))
-  :qid |quant-u-10282|)))
+  :qid |quant-u-10346|)))
 (assert (forall ((s@$ $Snap) (a@0@00 Int) (i@1@00 Int) (b@2@00 Int)) (!
   true
   :pattern ((exp_ s@$ a@0@00 i@1@00 b@2@00))
-  :qid |quant-u-10283|)))
+  :qid |quant-u-10347|)))

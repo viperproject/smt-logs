@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-29 20:14:39
+// Date:         2025-01-04 00:43:56
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/third_party/test_binomial_auto.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/third_party/test_binomial_auto-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -653,8 +653,8 @@ function  demo__bin#triggerStateless(N: int, k: int): int;
 procedure demo__bin#definedness(N: int, k: int) returns (Result: int)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -677,8 +677,8 @@ procedure demo__bin#definedness(N: int, k: int) returns (Result: int)
       } else {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           assert {:msg "  Precondition of function demo__bin might not hold. Assertion N - 1 >= 0 might not hold. (test_binomial_auto.vpr@15.43--15.66) [45668]"}
             N - 1 >= 0;
           assert {:msg "  Precondition of function demo__bin might not hold. Assertion 0 <= k - 1 might not hold. (test_binomial_auto.vpr@15.43--15.66) [45669]"}
@@ -693,8 +693,8 @@ procedure demo__bin#definedness(N: int, k: int) returns (Result: int)
         }
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           assert {:msg "  Precondition of function demo__bin might not hold. Assertion N - 1 >= 0 might not hold. (test_binomial_auto.vpr@15.69--15.88) [45671]"}
             N - 1 >= 0;
           assert {:msg "  Precondition of function demo__bin might not hold. Assertion 0 <= k might not hold. (test_binomial_auto.vpr@15.69--15.88) [45672]"}
@@ -722,12 +722,12 @@ procedure demo__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: 
 {
   var wildcard: real where wildcard > NoPerm;
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var __flatten_3: Ref;
   var __flatten_5: Ref;
   var __flatten_7: Ref;
@@ -746,8 +746,8 @@ procedure demo__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: 
   var loopMask: MaskType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -829,8 +829,8 @@ procedure demo__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: 
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -914,8 +914,8 @@ procedure demo__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: 
         HasDirectPerm(PostMask, Seq#Index(PostHeap[diz, demo__ar], tid), Ref__Integer_value);
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
+        ExhaleWellDef0Mask := PostMask;
         assert {:msg "  Precondition of function demo__bin might not hold. Assertion gsize - 1 >= 0 might not hold. (test_binomial_auto.vpr@46.51--46.76) [45695]"}
           gsize - 1 >= 0;
         assert {:msg "  Precondition of function demo__bin might not hold. Assertion 0 <= tid might not hold. (test_binomial_auto.vpr@46.51--46.76) [45696]"}
@@ -974,8 +974,8 @@ procedure demo__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: 
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Loop invariant 0 <= tid might not hold on entry. Assertion 0 <= tid might not hold. (test_binomial_auto.vpr@67.15--67.23) [45702]"}
           0 <= tid;
         assert {:msg "  Loop invariant tid < tcount might not hold on entry. Assertion tid < tcount might not hold. (test_binomial_auto.vpr@68.15--68.27) [45703]"}
@@ -1208,8 +1208,8 @@ procedure demo__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: 
           if (tid < N) {
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               assert {:msg "  Precondition of function demo__bin might not hold. Assertion N >= 0 might not hold. (test_binomial_auto.vpr@83.66--83.83) [45746]"}
                 N >= 0;
               assert {:msg "  Precondition of function demo__bin might not hold. Assertion 0 <= tid might not hold. (test_binomial_auto.vpr@83.66--83.83) [45747]"}
@@ -1339,8 +1339,8 @@ procedure demo__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: 
             PreCallMask := Mask;
             
             // -- Exhaling precondition
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               assert {:msg "  The precondition of method demo__main_barrier might not hold. Assertion diz != null might not hold. (test_binomial_auto.vpr@89.5--89.114) [45757]"}
                 diz != null;
               assert {:msg "  The precondition of method demo__main_barrier might not hold. Assertion current_thread_id >= 0 might not hold. (test_binomial_auto.vpr@89.5--89.114) [45758]"}
@@ -1512,8 +1512,8 @@ procedure demo__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: 
               // -- Translating statement: assert diz.demo__tmp[tid - 1].Ref__Integer_value ==
   //   demo__bin(N - 1, tid - 1) &&
   //   diz.demo__ar[tid].Ref__Integer_value == demo__bin(N - 1, tid) -- test_binomial_auto.vpr@93.7--93.153
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 
                 // -- Check definedness of diz.demo__tmp[tid - 1].Ref__Integer_value == demo__bin(N - 1, tid - 1)
                   assert {:msg "  Assert might fail. There might be insufficient permission to access diz.demo__tmp (test_binomial_auto.vpr@93.14--93.153) [45780]"}
@@ -1526,8 +1526,8 @@ procedure demo__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: 
                     HasDirectPerm(ExhaleWellDef0Mask, Seq#Index(Heap[diz, demo__tmp], tid - 1), Ref__Integer_value);
                   if (*) {
                     // Exhale precondition of function application
-                    ExhaleWellDef1Mask := ExhaleWellDef0Mask;
                     ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+                    ExhaleWellDef1Mask := ExhaleWellDef0Mask;
                     assert {:msg "  Precondition of function demo__bin might not hold. Assertion N - 1 >= 0 might not hold. (test_binomial_auto.vpr@93.60--93.85) [45784]"}
                       N - 1 >= 0;
                     assert {:msg "  Precondition of function demo__bin might not hold. Assertion 0 <= tid - 1 might not hold. (test_binomial_auto.vpr@93.60--93.85) [45785]"}
@@ -1551,8 +1551,8 @@ procedure demo__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: 
                     HasDirectPerm(ExhaleWellDef0Mask, Seq#Index(Heap[diz, demo__ar], tid), Ref__Integer_value);
                   if (*) {
                     // Exhale precondition of function application
-                    ExhaleWellDef1Mask := ExhaleWellDef0Mask;
                     ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+                    ExhaleWellDef1Mask := ExhaleWellDef0Mask;
                     assert {:msg "  Precondition of function demo__bin might not hold. Assertion N - 1 >= 0 might not hold. (test_binomial_auto.vpr@93.131--93.152) [45792]"}
                       N - 1 >= 0;
                     assert {:msg "  Precondition of function demo__bin might not hold. Assertion 0 <= tid might not hold. (test_binomial_auto.vpr@93.131--93.152) [45793]"}
@@ -1620,8 +1620,8 @@ procedure demo__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: 
                 assume state(Heap, Mask);
               
               // -- Translating statement: assert diz.demo__ar[tid].Ref__Integer_value == demo__bin(N, tid) -- test_binomial_auto.vpr@99.7--99.71
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 
                 // -- Check definedness of diz.demo__ar[tid].Ref__Integer_value == demo__bin(N, tid)
                   assert {:msg "  Assert might fail. There might be insufficient permission to access diz.demo__ar (test_binomial_auto.vpr@99.14--99.71) [45808]"}
@@ -1634,8 +1634,8 @@ procedure demo__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: 
                     HasDirectPerm(ExhaleWellDef0Mask, Seq#Index(Heap[diz, demo__ar], tid), Ref__Integer_value);
                   if (*) {
                     // Exhale precondition of function application
-                    ExhaleWellDef1Mask := ExhaleWellDef0Mask;
                     ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+                    ExhaleWellDef1Mask := ExhaleWellDef0Mask;
                     assert {:msg "  Precondition of function demo__bin might not hold. Assertion N >= 0 might not hold. (test_binomial_auto.vpr@99.54--99.71) [45812]"}
                       N >= 0;
                     assert {:msg "  Precondition of function demo__bin might not hold. Assertion 0 <= tid might not hold. (test_binomial_auto.vpr@99.54--99.71) [45813]"}
@@ -1657,8 +1657,8 @@ procedure demo__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: 
             PreCallMask := Mask;
             
             // -- Exhaling precondition
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               assert {:msg "  The precondition of method demo__main_barrier might not hold. Assertion diz != null might not hold. (test_binomial_auto.vpr@101.5--101.114) [45816]"}
                 diz != null;
               assert {:msg "  The precondition of method demo__main_barrier might not hold. Assertion current_thread_id >= 0 might not hold. (test_binomial_auto.vpr@101.5--101.114) [45817]"}
@@ -1814,8 +1814,8 @@ procedure demo__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: 
             __last_barrier := __flatten_2;
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Loop invariant 0 <= tid might not be preserved. Assertion 0 <= tid might not hold. (test_binomial_auto.vpr@67.15--67.23) [45838]"}
           0 <= tid;
         assert {:msg "  Loop invariant tid < tcount might not be preserved. Assertion tid < tcount might not hold. (test_binomial_auto.vpr@68.15--68.27) [45839]"}
@@ -1964,8 +1964,8 @@ procedure demo__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: 
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of demo__main_main might not hold. Assertion 0 <= tid might not hold. (test_binomial_auto.vpr@33.11--33.19) [45858]"}
       0 <= tid;
     assert {:msg "  Postcondition of demo__main_main might not hold. Assertion tid < tcount might not hold. (test_binomial_auto.vpr@34.11--34.23) [45859]"}
@@ -2019,10 +2019,10 @@ procedure demo__main_barrier(diz: Ref, current_thread_id: int, tcount: int, gsiz
 {
   var wildcard: real where wildcard > NoPerm;
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
-  var oldMask: MaskType;
+  var ExhaleWellDef0Mask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var ExhaleHeap: HeapType;
@@ -2193,8 +2193,8 @@ procedure demo__main_barrier(diz: Ref, current_thread_id: int, tcount: int, gsiz
         if (tid < N) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             assert {:msg "  Precondition of function demo__bin might not hold. Assertion N >= 0 might not hold. (test_binomial_auto.vpr@126.88--126.105) [45896]"}
               N >= 0;
             assert {:msg "  Precondition of function demo__bin might not hold. Assertion 0 <= tid might not hold. (test_binomial_auto.vpr@126.88--126.105) [45897]"}
@@ -2257,8 +2257,8 @@ procedure demo__main_barrier(diz: Ref, current_thread_id: int, tcount: int, gsiz
         if (tid < N) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             assert {:msg "  Precondition of function demo__bin might not hold. Assertion N >= 0 might not hold. (test_binomial_auto.vpr@131.88--131.105) [45911]"}
               N >= 0;
             assert {:msg "  Precondition of function demo__bin might not hold. Assertion 0 <= tid might not hold. (test_binomial_auto.vpr@131.88--131.105) [45912]"}
@@ -2276,8 +2276,8 @@ procedure demo__main_barrier(diz: Ref, current_thread_id: int, tcount: int, gsiz
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -2445,8 +2445,8 @@ procedure demo__main_barrier(diz: Ref, current_thread_id: int, tcount: int, gsiz
             HasDirectPerm(PostMask, Seq#Index(PostHeap[diz, demo__tmp], tid - 1), Ref__Integer_value);
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := PostMask;
             ExhaleWellDef0Heap := PostHeap;
+            ExhaleWellDef0Mask := PostMask;
             assert {:msg "  Precondition of function demo__bin might not hold. Assertion N >= 0 might not hold. (test_binomial_auto.vpr@150.109--150.130) [45942]"}
               N >= 0;
             assert {:msg "  Precondition of function demo__bin might not hold. Assertion 0 <= tid - 1 might not hold. (test_binomial_auto.vpr@150.109--150.130) [45943]"}
@@ -2475,8 +2475,8 @@ procedure demo__main_barrier(diz: Ref, current_thread_id: int, tcount: int, gsiz
         if (tid < N) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := PostMask;
             ExhaleWellDef0Heap := PostHeap;
+            ExhaleWellDef0Mask := PostMask;
             assert {:msg "  Precondition of function demo__bin might not hold. Assertion N >= 0 might not hold. (test_binomial_auto.vpr@151.87--151.104) [45949]"}
               N >= 0;
             assert {:msg "  Precondition of function demo__bin might not hold. Assertion 0 <= tid might not hold. (test_binomial_auto.vpr@151.87--151.104) [45950]"}
@@ -2517,8 +2517,8 @@ procedure demo__main_barrier(diz: Ref, current_thread_id: int, tcount: int, gsiz
         if (tid < N) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := PostMask;
             ExhaleWellDef0Heap := PostHeap;
+            ExhaleWellDef0Mask := PostMask;
             assert {:msg "  Precondition of function demo__bin might not hold. Assertion N >= 0 might not hold. (test_binomial_auto.vpr@155.87--155.104) [45956]"}
               N >= 0;
             assert {:msg "  Precondition of function demo__bin might not hold. Assertion 0 <= tid might not hold. (test_binomial_auto.vpr@155.87--155.104) [45957]"}
@@ -2542,8 +2542,8 @@ procedure demo__main_barrier(diz: Ref, current_thread_id: int, tcount: int, gsiz
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of demo__main_barrier might not hold. Assertion 0 <= tid might not hold. (test_binomial_auto.vpr@132.11--132.19) [45959]"}
       0 <= tid;
     assert {:msg "  Postcondition of demo__main_barrier might not hold. Assertion tid < tcount might not hold. (test_binomial_auto.vpr@133.11--133.23) [45960]"}
@@ -2678,14 +2678,14 @@ procedure demo__main_resources_of_1(diz: Ref, current_thread_id: int, tcount: in
   var tid_20: int;
   var QPMask: MaskType;
   var tid_2: int;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var tid_4: int;
   var tid_6: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -2900,8 +2900,8 @@ procedure demo__main_resources_of_1(diz: Ref, current_thread_id: int, tcount: in
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -3054,8 +3054,8 @@ procedure demo__main_resources_of_1(diz: Ref, current_thread_id: int, tcount: in
   }
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of demo__main_resources_of_1 might not hold. Assertion tcount == gsize might not hold. (test_binomial_auto.vpr@174.11--174.26) [46026]"}
       tcount == gsize;
     assert {:msg "  Postcondition of demo__main_resources_of_1 might not hold. Assertion gid == 0 might not hold. (test_binomial_auto.vpr@175.11--175.19) [46027]"}
@@ -3184,14 +3184,14 @@ procedure demo__main_resources_of_2(diz: Ref, current_thread_id: int, tcount: in
   var tid_12: int;
   var QPMask: MaskType;
   var tid_18: int;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var tid_26: int;
   var tid_27: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -3406,8 +3406,8 @@ procedure demo__main_resources_of_2(diz: Ref, current_thread_id: int, tcount: in
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -3560,8 +3560,8 @@ procedure demo__main_resources_of_2(diz: Ref, current_thread_id: int, tcount: in
   }
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of demo__main_resources_of_2 might not hold. Assertion tcount == gsize might not hold. (test_binomial_auto.vpr@202.11--202.26) [46079]"}
       tcount == gsize;
     assert {:msg "  Postcondition of demo__main_resources_of_2 might not hold. Assertion gid == 0 might not hold. (test_binomial_auto.vpr@203.11--203.19) [46080]"}
@@ -3691,11 +3691,11 @@ procedure demo__main_post_check_1(diz: Ref, current_thread_id: int, tcount: int,
   var QPMask: MaskType;
   var _x_tid_4: int;
   var _x_tid_6: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var _x_tid_16: int;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var ExhaleHeap: HeapType;
@@ -3934,8 +3934,8 @@ procedure demo__main_post_check_1(diz: Ref, current_thread_id: int, tcount: int,
           if (_x_tid_6 < N) {
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               assert {:msg "  Precondition of function demo__bin might not hold. Assertion N >= 0 might not hold. (test_binomial_auto.vpr@235.131--235.151) [46122]"}
                 N >= 0;
               assert {:msg "  Precondition of function demo__bin might not hold. Assertion 0 <= _x_tid might not hold. (test_binomial_auto.vpr@235.131--235.151) [46123]"}
@@ -3986,8 +3986,8 @@ procedure demo__main_post_check_1(diz: Ref, current_thread_id: int, tcount: int,
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -4091,8 +4091,8 @@ procedure demo__main_post_check_1(diz: Ref, current_thread_id: int, tcount: int,
           HasDirectPerm(PostMask, Seq#Index(PostHeap[diz, demo__tmp], tid - 1), Ref__Integer_value);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := PostMask;
           ExhaleWellDef0Heap := PostHeap;
+          ExhaleWellDef0Mask := PostMask;
           assert {:msg "  Precondition of function demo__bin might not hold. Assertion N >= 0 might not hold. (test_binomial_auto.vpr@253.85--253.106) [46149]"}
             N >= 0;
           assert {:msg "  Precondition of function demo__bin might not hold. Assertion 0 <= tid - 1 might not hold. (test_binomial_auto.vpr@253.85--253.106) [46150]"}
@@ -4119,8 +4119,8 @@ procedure demo__main_post_check_1(diz: Ref, current_thread_id: int, tcount: int,
       if (tid < N) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := PostMask;
           ExhaleWellDef0Heap := PostHeap;
+          ExhaleWellDef0Mask := PostMask;
           assert {:msg "  Precondition of function demo__bin might not hold. Assertion N >= 0 might not hold. (test_binomial_auto.vpr@254.62--254.79) [46156]"}
             N >= 0;
           assert {:msg "  Precondition of function demo__bin might not hold. Assertion 0 <= tid might not hold. (test_binomial_auto.vpr@254.62--254.79) [46157]"}
@@ -4138,8 +4138,8 @@ procedure demo__main_post_check_1(diz: Ref, current_thread_id: int, tcount: int,
   }
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of demo__main_post_check_1 might not hold. Assertion 0 <= tid might not hold. (test_binomial_auto.vpr@237.11--237.19) [46159]"}
       0 <= tid;
     assert {:msg "  Postcondition of demo__main_post_check_1 might not hold. Assertion tid < tcount might not hold. (test_binomial_auto.vpr@238.11--238.23) [46160]"}
@@ -4217,10 +4217,10 @@ procedure demo__main_post_check_2(diz: Ref, current_thread_id: int, tcount: int,
   var QPMask: MaskType;
   var _x_tid_18: int;
   var _x_tid_19: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
-  var oldMask: MaskType;
+  var ExhaleWellDef0Mask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var ExhaleHeap: HeapType;
@@ -4459,8 +4459,8 @@ procedure demo__main_post_check_2(diz: Ref, current_thread_id: int, tcount: int,
           if (_x_tid_19 < N) {
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               assert {:msg "  Precondition of function demo__bin might not hold. Assertion N >= 0 might not hold. (test_binomial_auto.vpr@277.131--277.151) [46207]"}
                 N >= 0;
               assert {:msg "  Precondition of function demo__bin might not hold. Assertion 0 <= _x_tid might not hold. (test_binomial_auto.vpr@277.131--277.151) [46208]"}
@@ -4483,8 +4483,8 @@ procedure demo__main_post_check_2(diz: Ref, current_thread_id: int, tcount: int,
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -4586,8 +4586,8 @@ procedure demo__main_post_check_2(diz: Ref, current_thread_id: int, tcount: int,
       if (tid < N) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := PostMask;
           ExhaleWellDef0Heap := PostHeap;
+          ExhaleWellDef0Mask := PostMask;
           assert {:msg "  Precondition of function demo__bin might not hold. Assertion N >= 0 might not hold. (test_binomial_auto.vpr@294.62--294.79) [46226]"}
             N >= 0;
           assert {:msg "  Precondition of function demo__bin might not hold. Assertion 0 <= tid might not hold. (test_binomial_auto.vpr@294.62--294.79) [46227]"}
@@ -4605,8 +4605,8 @@ procedure demo__main_post_check_2(diz: Ref, current_thread_id: int, tcount: int,
   }
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of demo__main_post_check_2 might not hold. Assertion 0 <= tid might not hold. (test_binomial_auto.vpr@278.11--278.19) [46229]"}
       0 <= tid;
     assert {:msg "  Postcondition of demo__main_post_check_2 might not hold. Assertion tid < tcount might not hold. (test_binomial_auto.vpr@279.11--279.23) [46230]"}

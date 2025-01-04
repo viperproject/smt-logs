@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-29 20:04:52
+; Started: 2025-01-04 00:34:02
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -175,11 +175,11 @@
 (declare-const e@13@01 $Ref)
 (assert (not (= e@13@01 $Ref.null)))
 (declare-const n@14@01 $Ref)
-(assert (not (= e@13@01 $t@12@01)))
-(assert (not (= e@13@01 b@6@01)))
 (assert (not (= e@13@01 x@10@01)))
-(assert (not (= e@13@01 a@5@01)))
+(assert (not (= e@13@01 b@6@01)))
+(assert (not (= e@13@01 $t@12@01)))
 (assert (not (= e@13@01 y@11@01)))
+(assert (not (= e@13@01 a@5@01)))
 (assert (not (= e@13@01 e@9@01)))
 ; [exec]
 ; var _receiver0: Ref
@@ -250,16 +250,16 @@
 (declare-const _target0@22@01 $Ref)
 (assert (not (= _target0@22@01 $Ref.null)))
 (declare-const n@23@01 $Ref)
-(assert (not (= _target0@22@01 n@14@01)))
-(assert (not (= _target0@22@01 $t@19@01)))
-(assert (not (= _target0@22@01 x@17@01)))
-(assert (not (= _target0@22@01 b@6@01)))
-(assert (not (= _target0@22@01 x@10@01)))
 (assert (not (= _target0@22@01 _target0@21@01)))
-(assert (not (= _target0@22@01 a@5@01)))
-(assert (not (= _target0@22@01 y@11@01)))
-(assert (not (= _target0@22@01 y@18@01)))
+(assert (not (= _target0@22@01 x@10@01)))
+(assert (not (= _target0@22@01 $t@19@01)))
 (assert (not (= _target0@22@01 e@13@01)))
+(assert (not (= _target0@22@01 b@6@01)))
+(assert (not (= _target0@22@01 x@17@01)))
+(assert (not (= _target0@22@01 y@18@01)))
+(assert (not (= _target0@22@01 n@14@01)))
+(assert (not (= _target0@22@01 y@11@01)))
+(assert (not (= _target0@22@01 a@5@01)))
 ; [exec]
 ; _receiver0.n := _target0
 (set-option :timeout 0)

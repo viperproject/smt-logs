@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2024-12-29 20:46:29
+// Date:         2025-01-04 01:15:57
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0242a.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0242a-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -447,19 +447,19 @@ procedure foo#definedness(n: Ref) returns (Result: bool)
 procedure test() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var vroot: Ref;
   var root: Ref;
   var graph: (Set Ref);
   var QPMask: MaskType;
   var q_19: Ref;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var perm: Perm;
   var ExhaleHeap: HeapType;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -470,8 +470,8 @@ procedure test() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[vroot, $allocated];
@@ -540,8 +540,8 @@ procedure test() returns ()
         if (graph[q_19]) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             perm := FullPerm;
             assert {:msg "  Precondition of function foo might not hold. There might be insufficient permission to access q.m (0242a.vpr@17.42--17.48) [204845]"}
               NoPerm < perm ==> NoPerm < Mask[q_19, m_22];
@@ -563,14 +563,14 @@ procedure test() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert foo(vroot) == foo(root) -- 0242a.vpr@18.3--18.33
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of foo(vroot) == foo(root)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function foo might not hold. There might be insufficient permission to access vroot.m (0242a.vpr@18.10--18.20) [204846]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[vroot, m_22];
@@ -583,8 +583,8 @@ procedure test() returns ()
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function foo might not hold. There might be insufficient permission to access root.m (0242a.vpr@18.24--18.33) [204847]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[root, m_22];
@@ -600,8 +600,8 @@ procedure test() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- 0242a.vpr@21.3--21.15
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion false might not hold. (0242a.vpr@21.10--21.15) [204849]"}
       false;
     assume state(Heap, Mask);

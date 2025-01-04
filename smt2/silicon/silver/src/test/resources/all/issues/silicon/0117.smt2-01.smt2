@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2024-12-29 20:06:20
+; Started: 2025-01-04 00:35:32
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -129,50 +129,50 @@
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (= (fun1%limited s@$ this@0@00) (fun1 s@$ this@0@00))
   :pattern ((fun1 s@$ this@0@00))
-  :qid |quant-u-24333|)))
+  :qid |quant-u-24348|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (fun1%stateless this@0@00)
   :pattern ((fun1%limited s@$ this@0@00))
-  :qid |quant-u-24334|)))
+  :qid |quant-u-24349|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (=> (fun1%precondition s@$ this@0@00) (= (fun1 s@$ this@0@00) true))
   :pattern ((fun1 s@$ this@0@00))
-  :qid |quant-u-24339|)))
+  :qid |quant-u-24354|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   true
   :pattern ((fun1 s@$ this@0@00))
-  :qid |quant-u-24340|)))
+  :qid |quant-u-24355|)))
 (assert (forall ((s@$ $Snap) (this@2@00 $Ref)) (!
   (= (fun2%limited s@$ this@2@00) (fun2 s@$ this@2@00))
   :pattern ((fun2 s@$ this@2@00))
-  :qid |quant-u-24335|)))
+  :qid |quant-u-24350|)))
 (assert (forall ((s@$ $Snap) (this@2@00 $Ref)) (!
   (fun2%stateless this@2@00)
   :pattern ((fun2%limited s@$ this@2@00))
-  :qid |quant-u-24336|)))
+  :qid |quant-u-24351|)))
 (assert (forall ((s@$ $Snap) (this@2@00 $Ref)) (!
   (=> (fun2%precondition s@$ this@2@00) (= (fun2 s@$ this@2@00) true))
   :pattern ((fun2 s@$ this@2@00))
-  :qid |quant-u-24341|)))
+  :qid |quant-u-24356|)))
 (assert (forall ((s@$ $Snap) (this@2@00 $Ref)) (!
   true
   :pattern ((fun2 s@$ this@2@00))
-  :qid |quant-u-24342|)))
+  :qid |quant-u-24357|)))
 (assert (forall ((s@$ $Snap) (this@4@00 $Ref)) (!
   (= (fun%limited s@$ this@4@00) (fun s@$ this@4@00))
   :pattern ((fun s@$ this@4@00))
-  :qid |quant-u-24337|)))
+  :qid |quant-u-24352|)))
 (assert (forall ((s@$ $Snap) (this@4@00 $Ref)) (!
   (fun%stateless this@4@00)
   :pattern ((fun%limited s@$ this@4@00))
-  :qid |quant-u-24338|)))
+  :qid |quant-u-24353|)))
 (assert (forall ((s@$ $Snap) (this@4@00 $Ref)) (!
   (=> (fun%precondition s@$ this@4@00) (= (fun s@$ this@4@00) true))
   :pattern ((fun s@$ this@4@00))
-  :qid |quant-u-24343|)))
+  :qid |quant-u-24358|)))
 (assert (forall ((s@$ $Snap) (this@4@00 $Ref)) (!
   true
   :pattern ((fun s@$ this@4@00))
-  :qid |quant-u-24344|)))
+  :qid |quant-u-24359|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
