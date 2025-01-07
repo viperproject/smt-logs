@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-04 00:36:20
+; Started: 2025-01-07 13:50:06
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -853,11 +853,11 @@
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (= (length%limited s@$ this@0@00) (length s@$ this@0@00))
   :pattern ((length s@$ this@0@00))
-  :qid |quant-u-25322|)))
+  :qid |quant-u-25336|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (length%stateless this@0@00)
   :pattern ((length%limited s@$ this@0@00))
-  :qid |quant-u-25323|)))
+  :qid |quant-u-25337|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -910,7 +910,7 @@
   :pattern ((Set_in r@3@00 ($SortWrappers.$SnapToSet<$Ref> ($Snap.first s@$))))
   :pattern ((inv@4@00 s@$ this@0@00 r@3@00))
   :pattern ((img@5@00 s@$ this@0@00 r@3@00))
-  :qid |quant-u-25327|)))
+  :qid |quant-u-25341|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -969,7 +969,7 @@
   :pattern ((Set_in r@6@00 ($SortWrappers.$SnapToSet<$Ref> ($Snap.first s@$))))
   :pattern ((inv@7@00 s@$ this@0@00 r@6@00))
   :pattern ((img@8@00 s@$ this@0@00 r@6@00))
-  :qid |quant-u-25329|)))
+  :qid |quant-u-25343|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -1010,7 +1010,7 @@
     (Set_in (inv@7@00 s@$ this@0@00 r) ($SortWrappers.$SnapToSet<$Ref> ($Snap.first s@$)))
     ($FVF.loc_next ($FVF.lookup_next (sm@9@00 s@$ this@0@00) r) r))
   :pattern ((inv@7@00 s@$ this@0@00 r))
-  :qid |quant-u-25330|)))
+  :qid |quant-u-25344|)))
 (assert (= ($Snap.second ($Snap.second ($Snap.second s@$))) $Snap.unit))
 ; [eval] (forall r: Ref :: { r.next } (r in this.nodes) && r.next != null ==> (r.next in this.nodes))
 (declare-const r@10@00 $Ref)
@@ -1267,7 +1267,7 @@
     :pattern ((Set_in r@3@00 ($SortWrappers.$SnapToSet<$Ref> ($Snap.first s@$))))
     :pattern ((inv@4@00 s@$ this@0@00 r@3@00))
     :pattern ((img@5@00 s@$ this@0@00 r@3@00))
-    :qid |quant-u-25327|))
+    :qid |quant-u-25341|))
   (forall ((r@3@00 $Ref)) (!
     (=>
       (Set_in r@3@00 ($SortWrappers.$SnapToSet<$Ref> ($Snap.first s@$)))
@@ -1291,7 +1291,7 @@
     :pattern ((Set_in r@6@00 ($SortWrappers.$SnapToSet<$Ref> ($Snap.first s@$))))
     :pattern ((inv@7@00 s@$ this@0@00 r@6@00))
     :pattern ((img@8@00 s@$ this@0@00 r@6@00))
-    :qid |quant-u-25329|))
+    :qid |quant-u-25343|))
   (forall ((r@6@00 $Ref)) (!
     (=>
       (Set_in r@6@00 ($SortWrappers.$SnapToSet<$Ref> ($Snap.first s@$)))
@@ -1305,7 +1305,7 @@
       (Set_in (inv@7@00 s@$ this@0@00 r) ($SortWrappers.$SnapToSet<$Ref> ($Snap.first s@$)))
       ($FVF.loc_next ($FVF.lookup_next (sm@9@00 s@$ this@0@00) r) r))
     :pattern ((inv@7@00 s@$ this@0@00 r))
-    :qid |quant-u-25330|))
+    :qid |quant-u-25344|))
   (= ($Snap.second ($Snap.second ($Snap.second s@$))) $Snap.unit)
   (forall ((r@10@00 $Ref)) (!
     (and
@@ -1357,7 +1357,7 @@
       :pattern ((Set_in r@3@00 ($SortWrappers.$SnapToSet<$Ref> ($Snap.first s@$))))
       :pattern ((inv@4@00 s@$ this@0@00 r@3@00))
       :pattern ((img@5@00 s@$ this@0@00 r@3@00))
-      :qid |quant-u-25327|))
+      :qid |quant-u-25341|))
     (forall ((r $Ref)) (!
       (=>
         (and
@@ -1375,7 +1375,7 @@
       :pattern ((Set_in r@6@00 ($SortWrappers.$SnapToSet<$Ref> ($Snap.first s@$))))
       :pattern ((inv@7@00 s@$ this@0@00 r@6@00))
       :pattern ((img@8@00 s@$ this@0@00 r@6@00))
-      :qid |quant-u-25329|))
+      :qid |quant-u-25343|))
     (forall ((r $Ref)) (!
       (=>
         (and
@@ -1405,11 +1405,11 @@
         (length s@$ this@0@00)
         (Set_card ($SortWrappers.$SnapToSet<$Ref> ($Snap.first s@$))))))
   :pattern ((length s@$ this@0@00))
-  :qid |quant-u-25331|)))
+  :qid |quant-u-25345|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   true
   :pattern ((length s@$ this@0@00))
-  :qid |quant-u-25332|)))
+  :qid |quant-u-25346|)))
 ; ---------- FUNCTION set----------
 (declare-fun result@2@00 () Set<$Ref>)
 ; ----- Well-definedness of specifications -----
@@ -1423,21 +1423,21 @@
 (assert (forall ((s@$ $Snap)) (!
   (= (set%limited s@$) (set s@$))
   :pattern ((set s@$))
-  :qid |quant-u-25324|)))
+  :qid |quant-u-25338|)))
 (assert (forall ((s@$ $Snap)) (!
   (as set%stateless  Bool)
   :pattern ((set%limited s@$))
-  :qid |quant-u-25325|)))
+  :qid |quant-u-25339|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@2@00 (set%limited s@$))) (=>
     (set%precondition s@$)
     (= (Set_card result@2@00) 0)))
   :pattern ((set%limited s@$))
-  :qid |quant-u-25333|)))
+  :qid |quant-u-25347|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@2@00 (set%limited s@$))) true)
   :pattern ((set%limited s@$))
-  :qid |quant-u-25334|)))
+  :qid |quant-u-25348|)))
 ; ---------- List ----------
 (declare-const this@12@00 $Ref)
 (push) ; 1
@@ -1482,7 +1482,7 @@
   :pattern ((Set_in r@14@00 ($SortWrappers.$SnapToSet<$Ref> ($Snap.first $t@13@00))))
   :pattern ((inv@15@00 r@14@00))
   :pattern ((img@16@00 r@14@00))
-  :qid |quant-u-25336|)))
+  :qid |quant-u-25350|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -1540,7 +1540,7 @@
   :pattern ((Set_in r@17@00 ($SortWrappers.$SnapToSet<$Ref> ($Snap.first $t@13@00))))
   :pattern ((inv@18@00 r@17@00))
   :pattern ((img@19@00 r@17@00))
-  :qid |quant-u-25338|)))
+  :qid |quant-u-25352|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -1582,7 +1582,7 @@
     (Set_in (inv@18@00 r) ($SortWrappers.$SnapToSet<$Ref> ($Snap.first $t@13@00)))
     ($FVF.loc_next ($FVF.lookup_next (as sm@20@00  $FVF<next>) r) r))
   :pattern ((inv@18@00 r))
-  :qid |quant-u-25339|)))
+  :qid |quant-u-25353|)))
 (assert (= ($Snap.second ($Snap.second ($Snap.second $t@13@00))) $Snap.unit))
 ; [eval] (forall r: Ref :: { r.next } (r in this.nodes) && r.next != null ==> (r.next in this.nodes))
 (declare-const r@21@00 $Ref)

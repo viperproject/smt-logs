@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-04 00:41:53
+// Date:         2025-01-07 13:55:43
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/third_party/shift.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/third_party/shift-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -575,10 +575,10 @@ procedure test1(len: int, ar: (Seq Ref)) returns ()
   var i_2: int;
   var QPMask: MaskType;
   var i_4: int;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var i_6: int;
   var i_7_1: int;
   var i_7: int;
@@ -688,14 +688,14 @@ procedure test1(len: int, ar: (Seq Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert (forall i: Int ::
   //     { ar[i] }
   //     1 <= i && i < len ==> ar[i].Integer_value == 0) -- shift.vpr@17.3--17.81
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall i: Int :: { ar[i] } 1 <= i && i < len ==> ar[i].Integer_value == 0)
       if (*) {
@@ -725,8 +725,8 @@ procedure test1(len: int, ar: (Seq Ref)) returns ()
   // -- Translating statement: assert (forall i: Int, fresh__231: Int ::
   //     { (i in [0..fresh__231)) }
   //     (i in [0..len - 1)) ==> ar[i + 1].Integer_value == 0) -- shift.vpr@18.3--18.81
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall i: Int, fresh__231: Int :: { (i in [0..fresh__231)) } (i in [0..len - 1)) ==> ar[i + 1].Integer_value == 0)
       if (*) {
@@ -755,8 +755,8 @@ procedure test1(len: int, ar: (Seq Ref)) returns ()
   
   // -- Translating statement: assert (forall i: Int ::0 <= i && i < len - 1 ==>
   //     ar[i + 1].Integer_value == 0) -- shift.vpr@19.3--19.87
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall i: Int ::0 <= i && i < len - 1 ==> ar[i + 1].Integer_value == 0)
       if (*) {
@@ -796,10 +796,10 @@ procedure test2(len: int, ar: (Seq Ref)) returns ()
   var i_10: int;
   var QPMask: MaskType;
   var i_11: int;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var i_12: int;
   var i_7_1: int;
   var i_16: int;
@@ -909,14 +909,14 @@ procedure test2(len: int, ar: (Seq Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert (forall i: Int ::
   //     { ar[i] }
   //     0 <= i && i < len - 1 ==> ar[i].Integer_value == 0) -- shift.vpr@28.3--28.83
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall i: Int :: { ar[i] } 0 <= i && i < len - 1 ==> ar[i].Integer_value == 0)
       if (*) {
@@ -946,8 +946,8 @@ procedure test2(len: int, ar: (Seq Ref)) returns ()
   // -- Translating statement: assert (forall i: Int ::
   //     { (i in [1..len)) }
   //     (i in [1..len)) ==> ar[i - 1].Integer_value == 0) -- shift.vpr@29.3--29.77
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall i: Int :: { (i in [1..len)) } (i in [1..len)) ==> ar[i - 1].Integer_value == 0)
       if (*) {
@@ -975,8 +975,8 @@ procedure test2(len: int, ar: (Seq Ref)) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forall i: Int ::1 <= i && i < len ==> ar[i - 1].Integer_value == 0) -- shift.vpr@30.3--30.83
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall i: Int ::1 <= i && i < len ==> ar[i - 1].Integer_value == 0)
       if (*) {

@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-04 00:35:57
+; Started: 2025-01-07 13:49:43
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -1340,11 +1340,11 @@
 (assert (forall ((s@$ $Snap) (lft@0@00 Map<Int~_Map<$Ref~_$Perm>>)) (!
   (= (valid_lft%limited s@$ lft@0@00) (valid_lft s@$ lft@0@00))
   :pattern ((valid_lft s@$ lft@0@00))
-  :qid |quant-u-24926|)))
+  :qid |quant-u-24940|)))
 (assert (forall ((s@$ $Snap) (lft@0@00 Map<Int~_Map<$Ref~_$Perm>>)) (!
   (valid_lft%stateless lft@0@00)
   :pattern ((valid_lft%limited s@$ lft@0@00))
-  :qid |quant-u-24927|)))
+  :qid |quant-u-24941|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -1381,11 +1381,11 @@
       (valid_lft s@$ lft@0@00)
       (and (Set_in 0 (Map_domain lft@0@00)) (Set_in 1 (Map_domain lft@0@00)))))
   :pattern ((valid_lft s@$ lft@0@00))
-  :qid |quant-u-24930|)))
+  :qid |quant-u-24944|)))
 (assert (forall ((s@$ $Snap) (lft@0@00 Map<Int~_Map<$Ref~_$Perm>>)) (!
   true
   :pattern ((valid_lft s@$ lft@0@00))
-  :qid |quant-u-24931|)))
+  :qid |quant-u-24945|)))
 ; ---------- FUNCTION get_disc----------
 (declare-fun x@2@00 () $Ref)
 (declare-fun lft@3@00 () Map<Int~_Map<$Ref~_$Perm>>)
@@ -1446,11 +1446,11 @@
 (assert (forall ((s@$ $Snap) (x@2@00 $Ref) (lft@3@00 Map<Int~_Map<$Ref~_$Perm>>)) (!
   (= (get_disc%limited s@$ x@2@00 lft@3@00) (get_disc s@$ x@2@00 lft@3@00))
   :pattern ((get_disc s@$ x@2@00 lft@3@00))
-  :qid |quant-u-24928|)))
+  :qid |quant-u-24942|)))
 (assert (forall ((s@$ $Snap) (x@2@00 $Ref) (lft@3@00 Map<Int~_Map<$Ref~_$Perm>>)) (!
   (get_disc%stateless x@2@00 lft@3@00)
   :pattern ((get_disc%limited s@$ x@2@00 lft@3@00))
-  :qid |quant-u-24929|)))
+  :qid |quant-u-24943|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (= s@$ ($Snap.combine ($Snap.first s@$) ($Snap.second s@$))))
@@ -1671,7 +1671,7 @@
       (= (Map_apply (Map_apply lft@3@00 0) x@7@00) $Perm.No)
       (< $Perm.No (Map_apply (Map_apply lft@3@00 0) x@7@00))))
   
-  :qid |quant-u-24932|))))
+  :qid |quant-u-24946|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -1710,7 +1710,7 @@
   :pattern ((Map_apply (Map_apply lft@3@00 0) x@7@00))
   :pattern ((inv@8@00 s@$ x@2@00 lft@3@00 x@7@00))
   :pattern ((img@9@00 s@$ x@2@00 lft@3@00 x@7@00))
-  :qid |quant-u-24933|)))
+  :qid |quant-u-24947|)))
 (assert (forall ((x $Ref)) (!
   (=>
     (and
@@ -1905,7 +1905,7 @@
       (= (Map_apply (Map_apply lft@3@00 1) x@12@00) $Perm.No)
       (< $Perm.No (Map_apply (Map_apply lft@3@00 1) x@12@00))))
   
-  :qid |quant-u-24934|))))
+  :qid |quant-u-24948|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -1944,7 +1944,7 @@
   :pattern ((Map_apply (Map_apply lft@3@00 1) x@12@00))
   :pattern ((inv@13@00 s@$ x@2@00 lft@3@00 x@12@00))
   :pattern ((img@14@00 s@$ x@2@00 lft@3@00 x@12@00))
-  :qid |quant-u-24935|)))
+  :qid |quant-u-24949|)))
 (assert (forall ((x $Ref)) (!
   (=>
     (and
@@ -1991,7 +1991,7 @@
         $Perm.No)
       $Perm.No))
   
-  :qid |quant-u-24936|))))
+  :qid |quant-u-24950|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -2171,7 +2171,7 @@
     :pattern ((Map_apply (Map_apply lft@3@00 0) x@7@00))
     :pattern ((inv@8@00 s@$ x@2@00 lft@3@00 x@7@00))
     :pattern ((img@9@00 s@$ x@2@00 lft@3@00 x@7@00))
-    :qid |quant-u-24933|))
+    :qid |quant-u-24947|))
   (forall ((x@7@00 $Ref)) (!
     (<= $Perm.No (Map_apply (Map_apply lft@3@00 0) x@7@00))
     :pattern ((Set_in x@7@00 (Map_domain (Map_apply lft@3@00 0))))
@@ -2246,7 +2246,7 @@
     :pattern ((Map_apply (Map_apply lft@3@00 1) x@12@00))
     :pattern ((inv@13@00 s@$ x@2@00 lft@3@00 x@12@00))
     :pattern ((img@14@00 s@$ x@2@00 lft@3@00 x@12@00))
-    :qid |quant-u-24935|))
+    :qid |quant-u-24949|))
   (forall ((x@12@00 $Ref)) (!
     (<= $Perm.No (Map_apply (Map_apply lft@3@00 1) x@12@00))
     :pattern ((Set_in x@12@00 (Map_domain (Map_apply lft@3@00 1))))
@@ -2294,7 +2294,7 @@
       :pattern ((Map_apply (Map_apply lft@3@00 0) x@7@00))
       :pattern ((inv@8@00 s@$ x@2@00 lft@3@00 x@7@00))
       :pattern ((img@9@00 s@$ x@2@00 lft@3@00 x@7@00))
-      :qid |quant-u-24933|))
+      :qid |quant-u-24947|))
     (forall ((x $Ref)) (!
       (=>
         (and
@@ -2319,7 +2319,7 @@
       :pattern ((Map_apply (Map_apply lft@3@00 1) x@12@00))
       :pattern ((inv@13@00 s@$ x@2@00 lft@3@00 x@12@00))
       :pattern ((img@14@00 s@$ x@2@00 lft@3@00 x@12@00))
-      :qid |quant-u-24935|))
+      :qid |quant-u-24949|))
     (forall ((x $Ref)) (!
       (=>
         (and
@@ -2358,11 +2358,11 @@
         (get_disc s@$ x@2@00 lft@3@00)
         ($SortWrappers.$SnapTo$Ref ($Snap.first ($PSF.lookup_lft_List (sm@17@00 s@$ x@2@00 lft@3@00) ($SortWrappers.$RefTo$Snap x@2@00)))))))
   :pattern ((get_disc s@$ x@2@00 lft@3@00))
-  :qid |quant-u-24937|)))
+  :qid |quant-u-24951|)))
 (assert (forall ((s@$ $Snap) (x@2@00 $Ref) (lft@3@00 Map<Int~_Map<$Ref~_$Perm>>)) (!
   true
   :pattern ((get_disc s@$ x@2@00 lft@3@00))
-  :qid |quant-u-24938|)))
+  :qid |quant-u-24952|)))
 ; ---------- List ----------
 (declare-const x@19@00 $Ref)
 (set-option :timeout 0)
@@ -2643,7 +2643,7 @@
       (= (Map_apply (Map_apply lft@34@00 0) x@38@00) $Perm.No)
       (< $Perm.No (Map_apply (Map_apply lft@34@00 0) x@38@00))))
   
-  :qid |quant-u-24939|))))
+  :qid |quant-u-24953|))))
 (check-sat)
 ; unsat
 (pop) ; 2
@@ -2680,7 +2680,7 @@
   :pattern ((Map_apply (Map_apply lft@34@00 0) x@38@00))
   :pattern ((inv@39@00 x@38@00))
   :pattern ((img@40@00 x@38@00))
-  :qid |quant-u-24940|)))
+  :qid |quant-u-24954|)))
 (assert (forall ((x $Ref)) (!
   (=>
     (and
@@ -2873,7 +2873,7 @@
       (= (Map_apply (Map_apply lft@34@00 1) x@43@00) $Perm.No)
       (< $Perm.No (Map_apply (Map_apply lft@34@00 1) x@43@00))))
   
-  :qid |quant-u-24941|))))
+  :qid |quant-u-24955|))))
 (check-sat)
 ; unsat
 (pop) ; 2
@@ -2910,7 +2910,7 @@
   :pattern ((Map_apply (Map_apply lft@34@00 1) x@43@00))
   :pattern ((inv@44@00 x@43@00))
   :pattern ((img@45@00 x@43@00))
-  :qid |quant-u-24942|)))
+  :qid |quant-u-24956|)))
 (assert (forall ((x $Ref)) (!
   (=>
     (and

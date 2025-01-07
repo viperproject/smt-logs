@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-04 00:46:10
+// Date:         2025-01-07 14:00:03
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/misc/misc1.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/misc/misc1-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -263,12 +263,12 @@ procedure clone(data_1: Ref, count_1: Ref, ghost: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var QPMask: MaskType;
   var t_2: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -303,8 +303,8 @@ procedure clone(data_1: Ref, count_1: Ref, ghost: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale (forall d: Ref ::false ==> acc(d.val, none)) -- misc1.vpr@43.3--43.53
     
@@ -356,8 +356,8 @@ procedure clone(data_1: Ref, count_1: Ref, ghost: Ref) returns ()
   //   (write - rds(t + 1) < perm(temp(data).val) ?
   //     write - rds(t + 1) :
   //     perm(temp(data).val))) -- misc1.vpr@49.5--54.47
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm - (rds(t_2 + 1): Perm) - (if FullPerm - (rds(t_2 + 1): Perm) < Mask[(temp(data_1): Ref), val] then FullPerm - (rds(t_2 + 1): Perm) else Mask[(temp(data_1): Ref), val]);
         assert {:msg "  Exhale might fail. Fraction write - rds(t + 1) - (write - rds(t + 1) < perm(temp(data).val) ? write - rds(t + 1) : perm(temp(data).val)) might be negative. (misc1.vpr@49.12--54.47) [70121]"}
           perm >= NoPerm;

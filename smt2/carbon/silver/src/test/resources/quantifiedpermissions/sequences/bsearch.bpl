@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-04 00:45:34
+// Date:         2025-01-07 13:59:27
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/sequences/bsearch.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/sequences/bsearch-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -653,8 +653,8 @@ procedure bfind_orig(S: (Seq Ref), x: int, p_1: Perm) returns (index: int)
   var i_2: int;
   var QPMask: MaskType;
   var i_4: int;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var i_6: int;
@@ -663,8 +663,8 @@ procedure bfind_orig(S: (Seq Ref), x: int, p_1: Perm) returns (index: int)
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
   var arg_S: (Seq Ref);
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var i_13_1: int;
   var j_2_1: int;
   var i_16_1: int;
@@ -784,8 +784,8 @@ procedure bfind_orig(S: (Seq Ref), x: int, p_1: Perm) returns (index: int)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -926,8 +926,8 @@ procedure bfind_orig(S: (Seq Ref), x: int, p_1: Perm) returns (index: int)
                 arg_S := Seq#Drop(Seq#Take(S, k), 0);
                 
                 // -- Exhaling precondition
-                  ExhaleWellDef0Mask := Mask;
                   ExhaleWellDef0Heap := Heap;
+                  ExhaleWellDef0Mask := Mask;
                   assert {:msg "  The precondition of method bfind_orig might not hold. Assertion p > none might not hold. (bsearch.vpr@30.7--30.41) [65986]"}
                     NoPerm < p_1;
                   assert {:msg "  The precondition of method bfind_orig might not hold. Assertion p < write might not hold. (bsearch.vpr@30.7--30.41) [65987]"}
@@ -1068,8 +1068,8 @@ procedure bfind_orig(S: (Seq Ref), x: int, p_1: Perm) returns (index: int)
                 arg_S_1 := Seq#Drop(Seq#Take(S, Seq#Length(S)), k);
                 
                 // -- Exhaling precondition
-                  ExhaleWellDef0Mask := Mask;
                   ExhaleWellDef0Heap := Heap;
+                  ExhaleWellDef0Mask := Mask;
                   assert {:msg "  The precondition of method bfind_orig might not hold. Assertion p > none might not hold. (bsearch.vpr@32.7--32.43) [65995]"}
                     NoPerm < p_1;
                   assert {:msg "  The precondition of method bfind_orig might not hold. Assertion p < write might not hold. (bsearch.vpr@32.7--32.43) [65996]"}
@@ -1210,8 +1210,8 @@ procedure bfind_orig(S: (Seq Ref), x: int, p_1: Perm) returns (index: int)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     havoc QPMask;
     
     // -- check that the permission amount is positive
@@ -1295,8 +1295,8 @@ procedure bfind_fixed_ineq(S: (Seq Ref), x: int, p_1: Perm) returns (index: int)
   var QPMask: MaskType;
   var i_10: int;
   var j_4: int;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var i_11: int;
@@ -1306,8 +1306,8 @@ procedure bfind_fixed_ineq(S: (Seq Ref), x: int, p_1: Perm) returns (index: int)
   var PreCallMask: MaskType;
   var arg_S: (Seq Ref);
   var arg_p: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var i_13_1: int;
   var j_4_1: int;
   var i_16_1: int;
@@ -1430,8 +1430,8 @@ procedure bfind_fixed_ineq(S: (Seq Ref), x: int, p_1: Perm) returns (index: int)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1574,8 +1574,8 @@ procedure bfind_fixed_ineq(S: (Seq Ref), x: int, p_1: Perm) returns (index: int)
                 arg_p := p_1 / 2;
                 
                 // -- Exhaling precondition
-                  ExhaleWellDef0Mask := Mask;
                   ExhaleWellDef0Heap := Heap;
+                  ExhaleWellDef0Mask := Mask;
                   assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Assertion p / 2 > none might not hold. (bsearch.vpr@57.7--57.49) [66039]"}
                     NoPerm < arg_p;
                   assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Assertion p / 2 < write might not hold. (bsearch.vpr@57.7--57.49) [66040]"}
@@ -1718,8 +1718,8 @@ procedure bfind_fixed_ineq(S: (Seq Ref), x: int, p_1: Perm) returns (index: int)
                 arg_p_1 := p_1 / 2;
                 
                 // -- Exhaling precondition
-                  ExhaleWellDef0Mask := Mask;
                   ExhaleWellDef0Heap := Heap;
+                  ExhaleWellDef0Mask := Mask;
                   assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Assertion p / 2 > none might not hold. (bsearch.vpr@59.7--59.51) [66048]"}
                     NoPerm < arg_p_1;
                   assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Assertion p / 2 < write might not hold. (bsearch.vpr@59.7--59.51) [66049]"}
@@ -1865,8 +1865,8 @@ procedure bfind_fixed_ineq(S: (Seq Ref), x: int, p_1: Perm) returns (index: int)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     havoc QPMask;
     
     // -- check that the permission amount is positive
@@ -1952,8 +1952,8 @@ procedure bfind_fixed_seqin(S: (Seq Ref), x: int, p_1: Perm) returns (index: int
   var QPMask: MaskType;
   var j_12: int;
   var i_13: int;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var i_20: int;
@@ -1963,8 +1963,8 @@ procedure bfind_fixed_seqin(S: (Seq Ref), x: int, p_1: Perm) returns (index: int
   var PreCallMask: MaskType;
   var arg_S: (Seq Ref);
   var arg_p: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var i_13_1: int;
   var j_4_1: int;
   var i_16_1: int;
@@ -2087,8 +2087,8 @@ procedure bfind_fixed_seqin(S: (Seq Ref), x: int, p_1: Perm) returns (index: int
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -2230,8 +2230,8 @@ procedure bfind_fixed_seqin(S: (Seq Ref), x: int, p_1: Perm) returns (index: int
                 arg_p := p_1 / 2;
                 
                 // -- Exhaling precondition
-                  ExhaleWellDef0Mask := Mask;
                   ExhaleWellDef0Heap := Heap;
+                  ExhaleWellDef0Mask := Mask;
                   assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Assertion p / 2 > none might not hold. (bsearch.vpr@87.7--87.49) [66093]"}
                     NoPerm < arg_p;
                   assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Assertion p / 2 < write might not hold. (bsearch.vpr@87.7--87.49) [66094]"}
@@ -2374,8 +2374,8 @@ procedure bfind_fixed_seqin(S: (Seq Ref), x: int, p_1: Perm) returns (index: int
                 arg_p_1 := p_1 / 2;
                 
                 // -- Exhaling precondition
-                  ExhaleWellDef0Mask := Mask;
                   ExhaleWellDef0Heap := Heap;
+                  ExhaleWellDef0Mask := Mask;
                   assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Assertion p / 2 > none might not hold. (bsearch.vpr@89.7--89.51) [66102]"}
                     NoPerm < arg_p_1;
                   assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Assertion p / 2 < write might not hold. (bsearch.vpr@89.7--89.51) [66103]"}
@@ -2521,8 +2521,8 @@ procedure bfind_fixed_seqin(S: (Seq Ref), x: int, p_1: Perm) returns (index: int
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     havoc QPMask;
     
     // -- check that the permission amount is positive
@@ -2606,8 +2606,8 @@ procedure bfind_fixed_seqin_heap_dep_triggers(S: (Seq Ref), x: int, p_1: Perm) r
   var QPMask: MaskType;
   var j_22: int;
   var i_30: int;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var i_31: int;
@@ -2617,8 +2617,8 @@ procedure bfind_fixed_seqin_heap_dep_triggers(S: (Seq Ref), x: int, p_1: Perm) r
   var PreCallMask: MaskType;
   var arg_S: (Seq Ref);
   var arg_p: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var i_13_1: int;
   var j_4_1: int;
   var i_16_1: int;
@@ -2741,8 +2741,8 @@ procedure bfind_fixed_seqin_heap_dep_triggers(S: (Seq Ref), x: int, p_1: Perm) r
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -2884,8 +2884,8 @@ procedure bfind_fixed_seqin_heap_dep_triggers(S: (Seq Ref), x: int, p_1: Perm) r
                 arg_p := p_1 / 2;
                 
                 // -- Exhaling precondition
-                  ExhaleWellDef0Mask := Mask;
                   ExhaleWellDef0Heap := Heap;
+                  ExhaleWellDef0Mask := Mask;
                   assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Assertion p / 2 > none might not hold. (bsearch.vpr@117.7--117.49) [66146]"}
                     NoPerm < arg_p;
                   assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Assertion p / 2 < write might not hold. (bsearch.vpr@117.7--117.49) [66147]"}
@@ -3028,8 +3028,8 @@ procedure bfind_fixed_seqin_heap_dep_triggers(S: (Seq Ref), x: int, p_1: Perm) r
                 arg_p_1 := p_1 / 2;
                 
                 // -- Exhaling precondition
-                  ExhaleWellDef0Mask := Mask;
                   ExhaleWellDef0Heap := Heap;
+                  ExhaleWellDef0Mask := Mask;
                   assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Assertion p / 2 > none might not hold. (bsearch.vpr@119.7--119.51) [66155]"}
                     NoPerm < arg_p_1;
                   assert {:msg "  The precondition of method bfind_fixed_ineq might not hold. Assertion p / 2 < write might not hold. (bsearch.vpr@119.7--119.51) [66156]"}
@@ -3175,8 +3175,8 @@ procedure bfind_fixed_seqin_heap_dep_triggers(S: (Seq Ref), x: int, p_1: Perm) r
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     havoc QPMask;
     
     // -- check that the permission amount is positive

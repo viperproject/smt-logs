@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-04 00:32:27
+; Started: 2025-01-07 13:46:12
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -128,11 +128,11 @@
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (= (balance%limited s@$ this@0@00) (balance s@$ this@0@00))
   :pattern ((balance s@$ this@0@00))
-  :qid |quant-u-21759|)))
+  :qid |quant-u-21774|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (balance%stateless this@0@00)
   :pattern ((balance%limited s@$ this@0@00))
-  :qid |quant-u-21760|)))
+  :qid |quant-u-21775|)))
 ; ---------- FUNCTION length----------
 (declare-fun this@2@00 () $Ref)
 (declare-fun result@3@00 () Int)
@@ -142,11 +142,11 @@
 (assert (forall ((s@$ $Snap) (this@2@00 $Ref)) (!
   (= (length%limited s@$ this@2@00) (length s@$ this@2@00))
   :pattern ((length s@$ this@2@00))
-  :qid |quant-u-21761|)))
+  :qid |quant-u-21776|)))
 (assert (forall ((s@$ $Snap) (this@2@00 $Ref)) (!
   (length%stateless this@2@00)
   :pattern ((length%limited s@$ this@2@00))
-  :qid |quant-u-21762|)))
+  :qid |quant-u-21777|)))
 ; ---------- list ----------
 (declare-const this@4@00 $Ref)
 ; ---------- account ----------

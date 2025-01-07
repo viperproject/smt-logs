@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-04 01:03:28
+// Date:         2025-01-07 14:17:41
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/heap-dependent_triggers/triggerPred.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/heap-dependent_triggers/triggerPred-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -454,14 +454,14 @@ procedure p#definedness(x: Ref) returns ()
 procedure m1(xs: (Set Ref)) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var y: Ref;
   var QPMask: MaskType;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var perm: Perm;
   
   // -- Initializing the state
@@ -472,8 +472,8 @@ procedure m1(xs: (Set Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[y, $allocated];
@@ -531,8 +531,8 @@ procedure m1(xs: (Set Ref)) returns ()
   // -- Translating statement: assert acc(p(y), write) -- triggerPred.vpr@10.5--10.16
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Heap := AssertHeap;
     ExhaleWellDef0Mask := AssertMask;
+    ExhaleWellDef0Heap := AssertHeap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Assert might fail. There might be insufficient permission to access p(y) (triggerPred.vpr@10.12--10.16) [140390]"}
@@ -549,12 +549,12 @@ procedure m1(xs: (Set Ref)) returns ()
 procedure m2(xs: (Set Ref)) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var y: Ref;
   var QPMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var perm: Perm;
   var newVersion: FrameType;
   var freshVersion: FrameType;
@@ -569,8 +569,8 @@ procedure m2(xs: (Set Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[y, $allocated];
@@ -628,8 +628,8 @@ procedure m2(xs: (Set Ref)) returns ()
   // -- Translating statement: unfold acc(p(y), write) -- triggerPred.vpr@17.5--17.16
     assume p#trigger(Heap, p_14(y));
     assume Heap[null, p_14(y)] == FrameFragment(Heap[y, f_7]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding p(y) might fail. There might be insufficient permission to access p(y) (triggerPred.vpr@17.5--17.16) [140394]"}
@@ -650,15 +650,15 @@ procedure m2(xs: (Set Ref)) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert perm(p(y)) == none -- triggerPred.vpr@18.5--18.30
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion perm(p(y)) == none might not hold. (triggerPred.vpr@18.12--18.30) [140396]"}
       Mask[null, p_14(y)] == NoPerm;
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(p(y), write) -- triggerPred.vpr@19.5--19.14
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding p(y) might fail. There might be insufficient permission to access y.f (triggerPred.vpr@19.5--19.14) [140399]"}
@@ -683,8 +683,8 @@ procedure m2(xs: (Set Ref)) returns ()
   // -- Translating statement: assert acc(p(y), write) -- triggerPred.vpr@20.5--20.16
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Heap := AssertHeap;
     ExhaleWellDef0Mask := AssertMask;
+    ExhaleWellDef0Heap := AssertHeap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Assert might fail. There might be insufficient permission to access p(y) (triggerPred.vpr@20.12--20.16) [140402]"}
@@ -701,12 +701,12 @@ procedure m2(xs: (Set Ref)) returns ()
 procedure m3(xs: (Set Ref)) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var y: Ref;
   var QPMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -716,8 +716,8 @@ procedure m3(xs: (Set Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[y, $allocated];
@@ -773,8 +773,8 @@ procedure m3(xs: (Set Ref)) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert perm(p(y)) == write -- triggerPred.vpr@27.5--27.31
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion perm(p(y)) == write might not hold. (triggerPred.vpr@27.12--27.31) [140404]"}
       Mask[null, p_14(y)] == FullPerm;
     assume state(Heap, Mask);

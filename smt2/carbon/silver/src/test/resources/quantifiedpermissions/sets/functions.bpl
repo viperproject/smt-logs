@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-04 00:39:35
+// Date:         2025-01-07 13:53:25
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/sets/functions.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/sets/functions-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -695,8 +695,8 @@ procedure fun3#definedness(x: Ref, y: Ref, z: Ref) returns (Result: int)
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -765,8 +765,8 @@ procedure fun3#definedness(x: Ref, y: Ref, z: Ref) returns (Result: int)
         HasDirectPerm(Mask, z, f_7);
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Precondition of function fun2 might not hold. Assertion (x in Set(x, z)) might not hold. (functions.vpr@19.21--19.42) [3609]"}
           Set#UnionOne(Set#Singleton(z), x)[x];
         havoc QPMask;
@@ -849,8 +849,8 @@ procedure fun4#definedness(x: Ref, y: Ref, z: Ref) returns (Result: int)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var QPMask: MaskType;
   var ExhaleHeap: HeapType;
   
@@ -889,8 +889,8 @@ procedure fun4#definedness(x: Ref, y: Ref, z: Ref) returns (Result: int)
         HasDirectPerm(Mask, z, f_7);
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Precondition of function fun1 might not hold. Assertion (x in Set(x)) might not hold. (functions.vpr@23.21--23.36) [3615]"}
           Set#Singleton(x)[x];
         havoc QPMask;
@@ -973,8 +973,8 @@ procedure fun5#definedness(x: Ref, y: Ref, z: Ref) returns (Result: int)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var QPMask: MaskType;
   var ExhaleHeap: HeapType;
   
@@ -1013,8 +1013,8 @@ procedure fun5#definedness(x: Ref, y: Ref, z: Ref) returns (Result: int)
         HasDirectPerm(Mask, z, f_7);
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Precondition of function fun1 might not hold. Assertion (x in Set(x, y)) might not hold. (functions.vpr@27.21--27.39) [3621]"}
           Set#UnionOne(Set#Singleton(y), x)[x];
         havoc QPMask;
@@ -1097,8 +1097,8 @@ procedure fun6#definedness(x: Ref, y: Ref, z: Ref) returns (Result: int)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var QPMask: MaskType;
   var ExhaleHeap: HeapType;
   
@@ -1137,8 +1137,8 @@ procedure fun6#definedness(x: Ref, y: Ref, z: Ref) returns (Result: int)
         HasDirectPerm(Mask, z, f_7);
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Precondition of function fun2 might not hold. Assertion (x in Set(x, z)) might not hold. (functions.vpr@31.21--31.42) [3627]"}
           Set#UnionOne(Set#Singleton(z), x)[x];
         havoc QPMask;

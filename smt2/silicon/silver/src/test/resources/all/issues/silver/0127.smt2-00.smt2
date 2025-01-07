@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-04 00:37:14
+; Started: 2025-01-07 13:51:01
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -128,11 +128,11 @@
 (assert (forall ((s@$ $Snap) (r@0@00 $Ref)) (!
   (= (F2%limited s@$ r@0@00) (F2 s@$ r@0@00))
   :pattern ((F2 s@$ r@0@00))
-  :qid |quant-u-26012|)))
+  :qid |quant-u-26026|)))
 (assert (forall ((s@$ $Snap) (r@0@00 $Ref)) (!
   (F2%stateless r@0@00)
   :pattern ((F2%limited s@$ r@0@00))
-  :qid |quant-u-26013|)))
+  :qid |quant-u-26027|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -144,11 +144,11 @@
 (assert (forall ((s@$ $Snap) (r@0@00 $Ref)) (!
   (=> (F2%precondition s@$ r@0@00) (= (F2 s@$ r@0@00) true))
   :pattern ((F2 s@$ r@0@00))
-  :qid |quant-u-26016|)))
+  :qid |quant-u-26030|)))
 (assert (forall ((s@$ $Snap) (r@0@00 $Ref)) (!
   true
   :pattern ((F2 s@$ r@0@00))
-  :qid |quant-u-26017|)))
+  :qid |quant-u-26031|)))
 ; ---------- FUNCTION idf----------
 (declare-fun r@2@00 () $Ref)
 (declare-fun result@3@00 () $Ref)
@@ -159,11 +159,11 @@
 (assert (forall ((s@$ $Snap) (r@2@00 $Ref)) (!
   (= (idf%limited s@$ r@2@00) (idf s@$ r@2@00))
   :pattern ((idf s@$ r@2@00))
-  :qid |quant-u-26014|)))
+  :qid |quant-u-26028|)))
 (assert (forall ((s@$ $Snap) (r@2@00 $Ref)) (!
   (idf%stateless r@2@00)
   :pattern ((idf%limited s@$ r@2@00))
-  :qid |quant-u-26015|)))
+  :qid |quant-u-26029|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -175,11 +175,11 @@
 (assert (forall ((s@$ $Snap) (r@2@00 $Ref)) (!
   (=> (idf%precondition s@$ r@2@00) (= (idf s@$ r@2@00) r@2@00))
   :pattern ((idf s@$ r@2@00))
-  :qid |quant-u-26018|)))
+  :qid |quant-u-26032|)))
 (assert (forall ((s@$ $Snap) (r@2@00 $Ref)) (!
   true
   :pattern ((idf s@$ r@2@00))
-  :qid |quant-u-26019|)))
+  :qid |quant-u-26033|)))
 ; ---------- F1 ----------
 (declare-const r@4@00 $Ref)
 (set-option :timeout 0)

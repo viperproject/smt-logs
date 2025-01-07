@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-04 01:22:02
+// Date:         2025-01-07 14:36:47
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0140.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0140-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -249,20 +249,20 @@ axiom (forall arg1: bool, arg2: bool, arg1_2: bool, arg2_2: bool ::
 procedure test(b_24: bool) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var WandDefLHSHeap: HeapType;
   var WandDefLHSMask: MaskType;
-  var Labellhs1Heap: HeapType;
   var Labellhs1Mask: MaskType;
+  var Labellhs1Heap: HeapType;
   var WandDefRHSHeap: HeapType;
   var WandDefRHSMask: MaskType;
-  var Labellhs2Heap: HeapType;
   var Labellhs2Mask: MaskType;
+  var Labellhs2Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -272,14 +272,14 @@ procedure test(b_24: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert true --* (b ==> true --* true) -- 0140.vpr@6.3--6.40
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Heap := AssertHeap;
     ExhaleWellDef0Mask := AssertMask;
+    ExhaleWellDef0Heap := AssertHeap;
     
     // -- Check definedness of true --* (b ==> true --* true)
       if (*) {
@@ -289,8 +289,8 @@ procedure test(b_24: bool) returns ()
         
         // -- Translating statement: label lhs1 -- 0140.vpr@6.10--6.40
           lhs1:
-          Labellhs1Heap := WandDefLHSHeap;
           Labellhs1Mask := WandDefLHSMask;
+          Labellhs1Heap := WandDefLHSHeap;
           assume state(WandDefLHSHeap, WandDefLHSMask);
         havoc WandDefRHSHeap;
         WandDefRHSMask := ZeroMask;
@@ -304,8 +304,8 @@ procedure test(b_24: bool) returns ()
               
               // -- Translating statement: label lhs2 -- 0140.vpr@6.26--6.39
                 lhs2:
-                Labellhs2Heap := WandDefLHSHeap;
                 Labellhs2Mask := WandDefLHSMask;
+                Labellhs2Heap := WandDefLHSHeap;
                 assume state(WandDefLHSHeap, WandDefLHSMask);
               havoc WandDefRHSHeap;
               WandDefRHSMask := ZeroMask;

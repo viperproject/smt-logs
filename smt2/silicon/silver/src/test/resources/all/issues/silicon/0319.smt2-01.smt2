@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-04 00:36:00
+; Started: 2025-01-07 13:49:45
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -118,21 +118,21 @@
 (assert (forall ((s@$ $Snap)) (!
   (= (globalRd%limited s@$) (globalRd s@$))
   :pattern ((globalRd s@$))
-  :qid |quant-u-24983|)))
+  :qid |quant-u-24997|)))
 (assert (forall ((s@$ $Snap)) (!
   (as globalRd%stateless  Bool)
   :pattern ((globalRd%limited s@$))
-  :qid |quant-u-24984|)))
+  :qid |quant-u-24998|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@0@00 (globalRd%limited s@$))) (=>
     (globalRd%precondition s@$)
     (and (< $Perm.No result@0@00) (< result@0@00 $Perm.Write))))
   :pattern ((globalRd%limited s@$))
-  :qid |quant-u-24985|)))
+  :qid |quant-u-24999|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@0@00 (globalRd%limited s@$))) true)
   :pattern ((globalRd%limited s@$))
-  :qid |quant-u-24986|)))
+  :qid |quant-u-25000|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- client ----------

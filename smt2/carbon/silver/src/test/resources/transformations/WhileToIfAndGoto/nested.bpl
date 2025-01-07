@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-04 00:48:27
+// Date:         2025-01-07 14:02:25
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/transformations/WhileToIfAndGoto/nested.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/transformations/WhileToIfAndGoto/nested-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -180,12 +180,12 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 procedure main() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var i: int;
   var j_9: bool;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var loopHeap: HeapType;
   var loopMask: MaskType;
   
@@ -197,8 +197,8 @@ procedure main() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: i := 1 -- nested.vpr@6.5--6.19
     i := 1;
@@ -213,8 +213,8 @@ procedure main() returns ()
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Loop invariant i <= 5 might not hold on entry. Assertion i <= 5 might not hold. (nested.vpr@10.19--10.25) [92308]"}
           i <= 5;
     
@@ -249,8 +249,8 @@ procedure main() returns ()
             // -- Before loop head
               
               // -- Exhale loop invariant before loop
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 assert {:msg "  Loop invariant i <= 5 might not hold on entry. Assertion i <= 5 might not hold. (nested.vpr@13.23--13.29) [92309]"}
                   i <= 5;
             
@@ -284,8 +284,8 @@ procedure main() returns ()
                     j_9 := false;
                     assume state(Heap, Mask);
                 // Exhale invariant
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 assert {:msg "  Loop invariant i <= 5 might not be preserved. Assertion i <= 5 might not hold. (nested.vpr@13.23--13.29) [92310]"}
                   i <= 5;
                 // Terminate execution
@@ -303,8 +303,8 @@ procedure main() returns ()
             i := i + 1;
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Loop invariant i <= 5 might not be preserved. Assertion i <= 5 might not hold. (nested.vpr@10.19--10.25) [92311]"}
           i <= 5;
         // Terminate execution
@@ -319,8 +319,8 @@ procedure main() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert i == 5 -- nested.vpr@20.5--20.19
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion i == 5 might not hold. (nested.vpr@20.12--20.18) [92312]"}
       i == 5;
     assume state(Heap, Mask);

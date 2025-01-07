@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-04 01:04:12
+// Date:         2025-01-07 14:18:26
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/domains/domains.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/domains/domains-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -434,11 +434,11 @@ axiom (forall <A> a_2: A ::
 procedure test(x: int, xs: (ListDomainType int)) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var n: (ListDomainType int);
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -448,30 +448,30 @@ procedure test(x: int, xs: (ListDomainType int)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: n := (nil(): List[Int]) -- domains.vpr@20.5--20.30
     n := (nil(): ListDomainType int);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (length(n): Int) == 0 -- domains.vpr@21.5--21.26
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion (length(n): Int) == 0 might not hold. (domains.vpr@21.12--21.26) [142955]"}
       (length_1(n): int) == 0;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert n != (cons(x, xs): List[Int]) -- domains.vpr@22.5--22.28
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion n != (cons(x, xs): List[Int]) might not hold. (domains.vpr@22.12--22.28) [142956]"}
       n != (cons(x, xs): ListDomainType int);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (length((cons(1, n): List[Int])): Int) == 1 -- domains.vpr@23.5--23.35
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion (length((cons(1, n): List[Int])): Int) == 1 might not hold. (domains.vpr@23.12--23.35) [142957]"}
       (length_1((cons(1, n): ListDomainType int)): int) == 1;
     assume state(Heap, Mask);
@@ -484,10 +484,10 @@ procedure test(x: int, xs: (ListDomainType int)) returns ()
 procedure test2(a_2: int, b_24: bool) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var b2: bool;
   
   // -- Initializing the state
@@ -498,19 +498,19 @@ procedure test2(a_2: int, b_24: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert (Pair_first((Pair_pair(a, b): Pair[Int, Bool])): Int) == a -- domains.vpr@68.3--68.42
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion (Pair_first((Pair_pair(a, b): Pair[Int, Bool])): Int) == a might not hold. (domains.vpr@68.10--68.42) [142958]"}
       (Pair_first((Pair_pair(a_2, b_24): PairDomainType int bool)): int) == a_2;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (Pair_second((Pair_pair(a, b): Pair[Int, Bool])): Bool) == b -- domains.vpr@69.3--69.43
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion (Pair_second((Pair_pair(a, b): Pair[Int, Bool])): Bool) == b might not hold. (domains.vpr@69.10--69.43) [142959]"}
       (Pair_second((Pair_pair(a_2, b_24): PairDomainType int bool)): bool) == b_24;
     assume state(Heap, Mask);
@@ -520,8 +520,8 @@ procedure test2(a_2: int, b_24: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (Pair_second((Pair_pair(a, b): Pair[Int, Bool])): Bool) == b2 -- domains.vpr@73.3--73.44
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion (Pair_second((Pair_pair(a, b): Pair[Int, Bool])): Bool) == b2 might not hold. (domains.vpr@73.10--73.44) [142960]"}
       (Pair_second((Pair_pair(a_2, b_24): PairDomainType int bool)): bool) == b2;
     assume state(Heap, Mask);
@@ -534,10 +534,10 @@ procedure test2(a_2: int, b_24: bool) returns ()
 procedure test3(a_2: int, b_24: bool, c: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var b2: bool;
   
   // -- Initializing the state
@@ -551,29 +551,29 @@ procedure test3(a_2: int, b_24: bool, c: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert (Triple_first((Triple_triple(a, b, c): Triple[Int, Bool, Ref])): Int) ==
   //   a -- domains.vpr@77.3--77.51
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion (Triple_first((Triple_triple(a, b, c): Triple[Int, Bool, Ref])): Int) == a might not hold. (domains.vpr@77.10--77.51) [142961]"}
       (Triple_first((Triple_triple(a_2, b_24, c): TripleDomainType int bool Ref)): int) == a_2;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (Triple_second((Triple_triple(a, b, c): Triple[Int, Bool, Ref])): Bool) ==
   //   b -- domains.vpr@78.3--78.52
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion (Triple_second((Triple_triple(a, b, c): Triple[Int, Bool, Ref])): Bool) == b might not hold. (domains.vpr@78.10--78.52) [142962]"}
       (Triple_second((Triple_triple(a_2, b_24, c): TripleDomainType int bool Ref)): bool) == b_24;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (Triple_third((Triple_triple(a, b, c): Triple[Int, Bool, Ref])): Ref) ==
   //   c -- domains.vpr@79.3--79.51
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion (Triple_third((Triple_triple(a, b, c): Triple[Int, Bool, Ref])): Ref) == c might not hold. (domains.vpr@79.10--79.51) [142963]"}
       (Triple_third((Triple_triple(a_2, b_24, c): TripleDomainType int bool Ref)): Ref) == c;
     assume state(Heap, Mask);
@@ -584,8 +584,8 @@ procedure test3(a_2: int, b_24: bool, c: Ref) returns ()
   
   // -- Translating statement: assert (Triple_second((Triple_triple(a, b, c): Triple[Int, Bool, Ref])): Bool) ==
   //   b2 -- domains.vpr@83.3--83.53
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion (Triple_second((Triple_triple(a, b, c): Triple[Int, Bool, Ref])): Bool) == b2 might not hold. (domains.vpr@83.10--83.53) [142964]"}
       (Triple_second((Triple_triple(a_2, b_24, c): TripleDomainType int bool Ref)): bool) == b2;
     assume state(Heap, Mask);
@@ -598,12 +598,12 @@ procedure test3(a_2: int, b_24: bool, c: Ref) returns ()
 procedure test4(a_2: int, b_24: bool, c: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var p_1: (PairDomainType int bool);
   var t_2: (TripleDomainType int bool Ref);
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var t2_1: (TripleDomainType int bool Ref);
   
   // -- Initializing the state
@@ -617,8 +617,8 @@ procedure test4(a_2: int, b_24: bool, c: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: p := (Pair_pair(a, b): Pair[Int, Bool]) -- domains.vpr@87.3--87.44
     p_1 := (Pair_pair(a_2, b_24): PairDomainType int bool);
@@ -629,8 +629,8 @@ procedure test4(a_2: int, b_24: bool, c: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (Triple_isPrefix(p, t): Bool) -- domains.vpr@89.3--89.31
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion (Triple_isPrefix(p, t): Bool) might not hold. (domains.vpr@89.10--89.31) [142965]"}
       (Triple_isPrefix(p_1, t_2): bool);
     assume state(Heap, Mask);
@@ -640,8 +640,8 @@ procedure test4(a_2: int, b_24: bool, c: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (Triple_isPrefix(p, t2): Bool) -- domains.vpr@93.3--93.32
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion (Triple_isPrefix(p, t2): Bool) might not hold. (domains.vpr@93.10--93.32) [142966]"}
       (Triple_isPrefix(p_1, t2_1): bool);
     assume state(Heap, Mask);
@@ -654,8 +654,8 @@ procedure test4(a_2: int, b_24: bool, c: Ref) returns ()
 procedure t5() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -665,8 +665,8 @@ procedure t5() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale (forall i: Int :: { f1(i), f2(i) } f1(i) > 0) -- domains.vpr@103.10--103.50
     
@@ -689,10 +689,10 @@ procedure t5() returns ()
 procedure t6() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -702,26 +702,26 @@ procedure t6() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert (foo(1): Int) > 0 -- domains.vpr@119.3--119.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion (foo(1): Int) > 0 might not hold. (domains.vpr@119.10--119.20) [142967]"}
       (foo(1): int) > 0;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (foo(null): Int) > 0 -- domains.vpr@120.3--120.23
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion (foo(null): Int) > 0 might not hold. (domains.vpr@120.10--120.23) [142968]"}
       (foo(null): int) > 0;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (foo(none): Int) > 0 -- domains.vpr@121.3--121.23
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion (foo(none): Int) > 0 might not hold. (domains.vpr@121.10--121.23) [142969]"}
       (foo(NoPerm): int) > 0;
     assume state(Heap, Mask);
@@ -734,10 +734,10 @@ procedure t6() returns ()
 procedure test7() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -747,12 +747,12 @@ procedure test7() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert (barfoo2(101): Int) != 0 -- domains.vpr@140.3--140.27
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion (barfoo2(101): Int) != 0 might not hold. (domains.vpr@140.10--140.27) [142970]"}
       (barfoo2(101): int) != 0;
     assume state(Heap, Mask);
@@ -765,10 +765,10 @@ procedure test7() returns ()
 procedure test8() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -778,19 +778,19 @@ procedure test8() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert (hide2(101): Int) > 0 -- domains.vpr@156.3--156.24
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion (hide2(101): Int) > 0 might not hold. (domains.vpr@156.10--156.24) [142971]"}
       (hide2(101): int) > 0;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (hide2(null): Int) < 0 -- domains.vpr@157.3--157.25
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion (hide2(null): Int) < 0 might not hold. (domains.vpr@157.10--157.25) [142972]"}
       (hide2(null): int) < 0;
     assume state(Heap, Mask);
@@ -803,11 +803,11 @@ procedure test8() returns ()
 procedure test9() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var c1: (CellDomainType int);
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var c2: (CellDomainType Ref);
   
   // -- Initializing the state
@@ -818,30 +818,30 @@ procedure test9() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: c1 := (Cell_cell(0): Cell[Int]) -- domains.vpr@168.2--168.35
     c1 := (Cell_cell(0): CellDomainType int);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert c1 == (Cell_cell(0): Cell[Int]) -- domains.vpr@170.3--170.28
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion c1 == (Cell_cell(0): Cell[Int]) might not hold. (domains.vpr@170.10--170.28) [142973]"}
       c1 == (Cell_cell(0): CellDomainType int);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (Cell_get(c1): Int) == 0 -- domains.vpr@171.2--171.26
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion (Cell_get(c1): Int) == 0 might not hold. (domains.vpr@171.9--171.26) [142974]"}
       (Cell_get(c1): int) == 0;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (Cell_get(c1): Int) == (Cell_get((Cell_cell(0): Cell[Int])): Int) -- domains.vpr@172.2--172.47
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion (Cell_get(c1): Int) == (Cell_get((Cell_cell(0): Cell[Int])): Int) might not hold. (domains.vpr@172.9--172.47) [142975]"}
       (Cell_get(c1): int) == (Cell_get((Cell_cell(0): CellDomainType int)): int);
     assume state(Heap, Mask);
@@ -851,8 +851,8 @@ procedure test9() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (Cell_get(c2): Ref) == null -- domains.vpr@176.2--176.29
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion (Cell_get(c2): Ref) == null might not hold. (domains.vpr@176.9--176.29) [142976]"}
       (Cell_get(c2): Ref) == null;
     assume state(Heap, Mask);

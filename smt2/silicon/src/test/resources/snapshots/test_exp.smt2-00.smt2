@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-04 00:25:15
+; Started: 2025-01-07 13:38:59
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -649,11 +649,11 @@
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   (= (dangling%limited s@$ x@0@00) (dangling s@$ x@0@00))
   :pattern ((dangling s@$ x@0@00))
-  :qid |quant-u-4773|)))
+  :qid |quant-u-4719|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   (dangling%stateless x@0@00)
   :pattern ((dangling%limited s@$ x@0@00))
-  :qid |quant-u-4774|)))
+  :qid |quant-u-4720|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -668,11 +668,11 @@
     (dangling%precondition s@$ x@0@00)
     (= (dangling s@$ x@0@00) (= x@0@00 $Ref.null)))
   :pattern ((dangling s@$ x@0@00))
-  :qid |quant-u-4777|)))
+  :qid |quant-u-4723|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   true
   :pattern ((dangling s@$ x@0@00))
-  :qid |quant-u-4778|)))
+  :qid |quant-u-4724|)))
 ; ---------- FUNCTION zero----------
 (declare-fun x@2@00 () $Ref)
 (declare-fun result@3@00 () Bool)
@@ -684,11 +684,11 @@
 (assert (forall ((s@$ $Snap) (x@2@00 $Ref)) (!
   (= (zero%limited s@$ x@2@00) (zero s@$ x@2@00))
   :pattern ((zero s@$ x@2@00))
-  :qid |quant-u-4775|)))
+  :qid |quant-u-4721|)))
 (assert (forall ((s@$ $Snap) (x@2@00 $Ref)) (!
   (zero%stateless x@2@00)
   :pattern ((zero%limited s@$ x@2@00))
-  :qid |quant-u-4776|)))
+  :qid |quant-u-4722|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (not (= x@2@00 $Ref.null)))
@@ -704,8 +704,8 @@
     (zero%precondition s@$ x@2@00)
     (= (zero s@$ x@2@00) (= ($SortWrappers.$SnapToInt s@$) 0)))
   :pattern ((zero s@$ x@2@00))
-  :qid |quant-u-4779|)))
+  :qid |quant-u-4725|)))
 (assert (forall ((s@$ $Snap) (x@2@00 $Ref)) (!
   true
   :pattern ((zero s@$ x@2@00))
-  :qid |quant-u-4780|)))
+  :qid |quant-u-4726|)))

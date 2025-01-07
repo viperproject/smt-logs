@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-04 00:31:16
+; Started: 2025-01-07 13:45:00
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -542,9 +542,9 @@
 (assert (not (= r@26@01 $Ref.null)))
 (declare-const elem@27@01 Int)
 (declare-const next@28@01 $Ref)
+(assert (not (= r@26@01 r@23@01)))
 (assert (not (= r@26@01 first@19@01)))
 (assert (not (= r@26@01 last@20@01)))
-(assert (not (= r@26@01 r@23@01)))
 ; [exec]
 ; r.elem := toAdd
 ; [exec]
@@ -648,8 +648,8 @@
 (declare-const elem@42@01 Int)
 (declare-const next@43@01 $Ref)
 (assert (not (= r@41@01 r@38@01)))
-(assert (not (= r@41@01 last@35@01)))
 (assert (not (= r@41@01 first@34@01)))
+(assert (not (= r@41@01 last@35@01)))
 ; [exec]
 ; r.elem := toAdd
 ; [exec]

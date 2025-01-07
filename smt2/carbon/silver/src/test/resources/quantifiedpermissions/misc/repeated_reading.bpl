@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-04 00:46:09
+// Date:         2025-01-07 14:00:02
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/misc/repeated_reading.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/misc/repeated_reading-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -768,8 +768,8 @@ procedure test01(xs: (Seq Ref)) returns ()
   var j_5: int;
   var i_2: int;
   var QPMask: MaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var a_2: int;
   
   // -- Initializing the state
@@ -850,8 +850,8 @@ procedure test01(xs: (Seq Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: a := xs[1].f -- repeated_reading.vpr@15.3--15.15
     
@@ -891,15 +891,15 @@ procedure test01(xs: (Seq Ref)) returns ()
 procedure test02(xs: (Seq Ref)) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var i_4: int;
   var j_6: int;
   var i_6: int;
   var QPMask: MaskType;
   var i_7: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var i_8: int;
   var i_7_1: int;
   var i_9: int;
@@ -914,8 +914,8 @@ procedure test02(xs: (Seq Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale |xs| > 3 -- repeated_reading.vpr@21.3--21.18
     assume Seq#Length(xs) > 3;
@@ -1030,8 +1030,8 @@ procedure test02(xs: (Seq Ref)) returns ()
   //     { (i in [0..|xs|)) }
   //     { xs[i] }
   //     (i in [0..|xs|)) ==> xs[i].f >= 1) -- repeated_reading.vpr@26.3--26.58
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall i: Int :: { (i in [0..|xs|)) } { xs[i] } (i in [0..|xs|)) ==> xs[i].f >= 1)
       if (*) {
@@ -1086,8 +1086,8 @@ procedure test02(xs: (Seq Ref)) returns ()
   //     { (i in [0..|xs|)) }
   //     { xs[i] }
   //     (i in [0..|xs|)) ==> xs[i].f > 1) -- repeated_reading.vpr@29.3--29.57
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall i: Int :: { (i in [0..|xs|)) } { xs[i] } (i in [0..|xs|)) ==> xs[i].f > 1)
       if (*) {
@@ -1122,12 +1122,12 @@ procedure test02(xs: (Seq Ref)) returns ()
 procedure test03(xs: (Set Ref)) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var QPMask: MaskType;
   var x_13: Ref;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var x_14: Ref;
   var x_5: Ref;
   var x_25: Ref;
@@ -1142,8 +1142,8 @@ procedure test03(xs: (Set Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale |xs| > 3 -- repeated_reading.vpr@33.3--33.18
     assume Set#Card(xs) > 3;
@@ -1211,8 +1211,8 @@ procedure test03(xs: (Set Ref)) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forall x: Ref :: { (x in xs) } (x in xs) ==> x.f >= 1) -- repeated_reading.vpr@37.3--37.47
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall x: Ref :: { (x in xs) } (x in xs) ==> x.f >= 1)
       if (*) {
@@ -1253,8 +1253,8 @@ procedure test03(xs: (Set Ref)) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forall x: Ref :: { (x in xs) } (x in xs) ==> x.f > 1) -- repeated_reading.vpr@40.3--40.46
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall x: Ref :: { (x in xs) } (x in xs) ==> x.f > 1)
       if (*) {

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-04 00:45:45
+// Date:         2025-01-07 13:59:37
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/sequences/wildcardedold.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/sequences/wildcardedold-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -581,14 +581,14 @@ procedure m(a_2: Ref) returns ()
 {
   var wildcard: real where wildcard > NoPerm;
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -610,8 +610,8 @@ procedure m(a_2: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -632,8 +632,8 @@ procedure m(a_2: Ref) returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       assert {:msg "  The precondition of method m might not hold. There might be insufficient permission to access a.f (wildcardedold.vpr@10.3--10.7) [66285]"}
         Mask[a_2, f_7] > NoPerm;
       havoc wildcard;
@@ -654,8 +654,8 @@ procedure m(a_2: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert a.f == old(a.f) -- wildcardedold.vpr@11.3--11.26
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of a.f == old(a.f)
       assert {:msg "  Assert might fail. There might be insufficient permission to access a.f (wildcardedold.vpr@11.10--11.25) [66286]"}
@@ -667,8 +667,8 @@ procedure m(a_2: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of m might not hold. There might be insufficient permission to access a.f (wildcardedold.vpr@8.11--8.28) [66289]"}
       Mask[a_2, f_7] > NoPerm;
     havoc wildcard;
@@ -688,14 +688,14 @@ procedure m2(a_2: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -716,8 +716,8 @@ procedure m2(a_2: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -737,8 +737,8 @@ procedure m2(a_2: Ref) returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  The precondition of method m2 might not hold. There might be insufficient permission to access a.f (wildcardedold.vpr@18.3--18.8) [66290]"}
@@ -759,8 +759,8 @@ procedure m2(a_2: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert a.f == old(a.f) -- wildcardedold.vpr@20.3--20.26
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of a.f == old(a.f)
       assert {:msg "  Assert might fail. There might be insufficient permission to access a.f (wildcardedold.vpr@20.10--20.25) [66291]"}
@@ -772,8 +772,8 @@ procedure m2(a_2: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of m2 might not hold. There might be insufficient permission to access a.f (wildcardedold.vpr@16.11--16.25) [66294]"}
@@ -798,16 +798,16 @@ procedure m3(a_2: (Seq Ref)) returns ()
   var i_2: int;
   var QPMask: MaskType;
   var wildcard: real where wildcard > 0.000000000;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var j_6: int;
   var l_7: int;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var i1_2_1: int;
   var i2_2_1: int;
   var ExhaleHeap: HeapType;
@@ -889,8 +889,8 @@ procedure m3(a_2: (Seq Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -975,8 +975,8 @@ procedure m3(a_2: (Seq Ref)) returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       if (*) {
         if (Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i1_2_1) && (Seq#Contains(Seq#Range(0, Seq#Length(a_2)), i2_2_1) && i1_2_1 != i2_2_1)) {
           assert {:msg "  The precondition of method m3 might not hold. Assertion a[i1] != a[i2] might not hold. (wildcardedold.vpr@29.3--29.8) [66311]"}
@@ -1092,8 +1092,8 @@ procedure m3(a_2: (Seq Ref)) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     havoc QPMask;
     // wild card assumptions
     havoc wildcard;

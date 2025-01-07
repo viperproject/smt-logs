@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-04 00:35:37
+; Started: 2025-01-07 13:49:22
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -826,29 +826,29 @@
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (= (getptr%limited s@$ this@0@00) (getptr s@$ this@0@00))
   :pattern ((getptr s@$ this@0@00))
-  :qid |quant-u-24452|)))
+  :qid |quant-u-24466|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (getptr%stateless this@0@00)
   :pattern ((getptr%limited s@$ this@0@00))
-  :qid |quant-u-24453|)))
+  :qid |quant-u-24467|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (=>
     (getptr%precondition s@$ this@0@00)
     (= (getptr s@$ this@0@00) ($SortWrappers.$SnapToPtr ($Snap.first s@$))))
   :pattern ((getptr s@$ this@0@00))
-  :qid |quant-u-24456|)))
+  :qid |quant-u-24470|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   true
   :pattern ((getptr s@$ this@0@00))
-  :qid |quant-u-24457|)))
+  :qid |quant-u-24471|)))
 (assert (forall ((s@$ $Snap) (this@2@00 $Ref) (j@3@00 Int)) (!
   (= (cond%limited s@$ this@2@00 j@3@00) (cond s@$ this@2@00 j@3@00))
   :pattern ((cond s@$ this@2@00 j@3@00))
-  :qid |quant-u-24454|)))
+  :qid |quant-u-24468|)))
 (assert (forall ((s@$ $Snap) (this@2@00 $Ref) (j@3@00 Int)) (!
   (cond%stateless this@2@00 j@3@00)
   :pattern ((cond%limited s@$ this@2@00 j@3@00))
-  :qid |quant-u-24455|)))
+  :qid |quant-u-24469|)))
 (assert (forall ((s@$ $Snap) (this@2@00 $Ref) (j@3@00 Int)) (!
   (=>
     (cond%precondition s@$ this@2@00 j@3@00)
@@ -858,11 +858,11 @@
         (<= 0 j@3@00)
         (< j@3@00 ($SortWrappers.$SnapToInt ($Snap.second s@$))))))
   :pattern ((cond s@$ this@2@00 j@3@00))
-  :qid |quant-u-24458|)))
+  :qid |quant-u-24472|)))
 (assert (forall ((s@$ $Snap) (this@2@00 $Ref) (j@3@00 Int)) (!
   true
   :pattern ((cond s@$ this@2@00 j@3@00))
-  :qid |quant-u-24459|)))
+  :qid |quant-u-24473|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- not_ok ----------
@@ -950,7 +950,7 @@
             j@3@01)
           (getptr%precondition ($Snap.first $t@2@01) this@1@01)))))
   :pattern ((loc<Ref> (getptr ($Snap.first $t@2@01) this@1@01) j@3@01))
-  :qid |quant-u-24461|)))
+  :qid |quant-u-24475|)))
 (assert (forall ((r $Ref)) (!
   (and
     (=>
@@ -970,7 +970,7 @@
         j@3@01)
       (img@5@01 (loc<Ref> (getptr ($Snap.first $t@2@01) this@1@01) j@3@01))))
   :pattern ((loc<Ref> (getptr ($Snap.first $t@2@01) this@1@01) j@3@01))
-  :qid |quant-u-24461|)))
+  :qid |quant-u-24475|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and (img@5@01 r) (cond ($Snap.first $t@2@01) this@1@01 (inv@4@01 r)))

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-04 01:06:11
+// Date:         2025-01-07 14:20:28
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/asserting/simple-fail.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/asserting/simple-fail-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -228,8 +228,8 @@ procedure fun#definedness() returns (Result: int)
 {
   var assertingHeap: HeapType;
   var assertingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -243,8 +243,8 @@ procedure fun#definedness() returns (Result: int)
       assertingHeap := Heap;
       assertingMask := Mask;
       // Exhale assertion of asserting
-      ExhaleWellDef0Heap := assertingHeap;
       ExhaleWellDef0Mask := assertingMask;
+      ExhaleWellDef0Heap := assertingHeap;
       assert {:msg "  Function might not be well-formed. Assertion false might not hold. (simple-fail.vpr@44.1--47.2) [153387]"}
         false;
   
@@ -293,8 +293,8 @@ procedure fun2#definedness(x: Ref) returns (Result: int)
 {
   var assertingHeap: HeapType;
   var assertingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var perm: Perm;
   var ExhaleHeap: HeapType;
   
@@ -315,8 +315,8 @@ procedure fun2#definedness(x: Ref) returns (Result: int)
       assertingHeap := Heap;
       assertingMask := Mask;
       // Exhale assertion of asserting
-      ExhaleWellDef0Heap := assertingHeap;
       ExhaleWellDef0Mask := assertingMask;
+      ExhaleWellDef0Heap := assertingHeap;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.f (simple-fail.vpr@50.1--53.2) [153389]"}
         NoPerm < perm ==> NoPerm < assertingMask[x, f_7];
@@ -377,8 +377,8 @@ procedure fun3#definedness(x: Ref) returns (Result: int)
   var perm: Perm;
   var assertingHeap: HeapType;
   var assertingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -405,8 +405,8 @@ procedure fun3#definedness(x: Ref) returns (Result: int)
       assertingHeap := Heap;
       assertingMask := Mask;
       // Exhale assertion of asserting
-      ExhaleWellDef0Heap := assertingHeap;
       ExhaleWellDef0Mask := assertingMask;
+      ExhaleWellDef0Heap := assertingHeap;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.f (simple-fail.vpr@56.1--60.2) [153393]"}
         NoPerm < perm ==> NoPerm < assertingMask[x, f_7];
@@ -467,8 +467,8 @@ procedure fun4#definedness(x: Ref) returns (Result: int)
   var perm: Perm;
   var assertingHeap: HeapType;
   var assertingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -500,8 +500,8 @@ procedure fun4#definedness(x: Ref) returns (Result: int)
       assertingHeap := Heap;
       assertingMask := Mask;
       // Exhale assertion of asserting
-      ExhaleWellDef0Heap := assertingHeap;
       ExhaleWellDef0Mask := assertingMask;
+      ExhaleWellDef0Heap := assertingHeap;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access x.f (simple-fail.vpr@62.1--66.2) [153398]"}
         NoPerm < perm ==> NoPerm < assertingMask[x, f_7];
@@ -527,12 +527,12 @@ procedure fun4#definedness(x: Ref) returns (Result: int)
 procedure assign() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var assertingHeap: HeapType;
   var assertingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var x: int;
   
   // -- Initializing the state
@@ -544,8 +544,8 @@ procedure assign() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: x := (asserting (false) in
   //     0) -- simple-fail.vpr@8.3--8.39
@@ -554,8 +554,8 @@ procedure assign() returns ()
       assertingHeap := Heap;
       assertingMask := Mask;
       // Exhale assertion of asserting
-      ExhaleWellDef0Heap := assertingHeap;
       ExhaleWellDef0Mask := assertingMask;
+      ExhaleWellDef0Heap := assertingHeap;
       assert {:msg "  Assignment might fail. Assertion false might not hold. (simple-fail.vpr@8.3--8.39) [153401]"}
         false;
     x := 0;
@@ -569,12 +569,12 @@ procedure assign() returns ()
 procedure assign2(i: int) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var assertingHeap: HeapType;
   var assertingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var x: int;
   
   // -- Initializing the state
@@ -586,8 +586,8 @@ procedure assign2(i: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: x := (asserting (i > 0) in
   //     0) -- simple-fail.vpr@13.3--13.39
@@ -596,8 +596,8 @@ procedure assign2(i: int) returns ()
       assertingHeap := Heap;
       assertingMask := Mask;
       // Exhale assertion of asserting
-      ExhaleWellDef0Heap := assertingHeap;
       ExhaleWellDef0Mask := assertingMask;
+      ExhaleWellDef0Heap := assertingHeap;
       assert {:msg "  Assignment might fail. Assertion i > 0 might not hold. (simple-fail.vpr@13.3--13.39) [153402]"}
         i > 0;
     x := 0;
@@ -611,12 +611,12 @@ procedure assign2(i: int) returns ()
 procedure assign3(i: int) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var assertingHeap: HeapType;
   var assertingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var x: int;
   
   // -- Initializing the state
@@ -632,8 +632,8 @@ procedure assign3(i: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: x := (asserting (i > 0) in
   //     0) -- simple-fail.vpr@19.3--19.39
@@ -642,8 +642,8 @@ procedure assign3(i: int) returns ()
       assertingHeap := Heap;
       assertingMask := Mask;
       // Exhale assertion of asserting
-      ExhaleWellDef0Heap := assertingHeap;
       ExhaleWellDef0Mask := assertingMask;
+      ExhaleWellDef0Heap := assertingHeap;
       assert {:msg "  Assignment might fail. Assertion i > 0 might not hold. (simple-fail.vpr@19.3--19.39) [153403]"}
         i > 0;
     x := 0;
@@ -659,10 +659,10 @@ procedure pres() returns ()
 {
   var assertingHeap: HeapType;
   var assertingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
-  var oldHeap: HeapType;
+  var ExhaleWellDef0Heap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -676,8 +676,8 @@ procedure pres() returns ()
       assertingHeap := Heap;
       assertingMask := Mask;
       // Exhale assertion of asserting
-      ExhaleWellDef0Heap := assertingHeap;
       ExhaleWellDef0Mask := assertingMask;
+      ExhaleWellDef0Heap := assertingHeap;
       assert {:msg "  Contract might not be well-formed. Assertion false might not hold. (simple-fail.vpr@24.12--24.38) [153404]"}
         false;
     assume false;
@@ -686,12 +686,12 @@ procedure pres() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert false -- simple-fail.vpr@26.3--26.15
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion false might not hold. (simple-fail.vpr@26.10--26.15) [153405]"}
       false;
     assume state(Heap, Mask);
@@ -706,12 +706,12 @@ procedure pres2(x: Ref) returns ()
 {
   var assertingHeap: HeapType;
   var assertingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var perm: Perm;
   var ExhaleHeap: HeapType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -728,8 +728,8 @@ procedure pres2(x: Ref) returns ()
       assertingHeap := Heap;
       assertingMask := Mask;
       // Exhale assertion of asserting
-      ExhaleWellDef0Heap := assertingHeap;
       ExhaleWellDef0Mask := assertingMask;
+      ExhaleWellDef0Heap := assertingHeap;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (simple-fail.vpr@31.12--31.41) [153406]"}
@@ -746,12 +746,12 @@ procedure pres2(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert false -- simple-fail.vpr@33.3--33.15
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion false might not hold. (simple-fail.vpr@33.10--33.15) [153407]"}
       false;
     assume state(Heap, Mask);
@@ -767,11 +767,11 @@ procedure pres3(x: Ref) returns ()
   var perm: Perm;
   var assertingHeap: HeapType;
   var assertingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -793,8 +793,8 @@ procedure pres3(x: Ref) returns ()
       assertingHeap := Heap;
       assertingMask := Mask;
       // Exhale assertion of asserting
-      ExhaleWellDef0Heap := assertingHeap;
       ExhaleWellDef0Mask := assertingMask;
+      ExhaleWellDef0Heap := assertingHeap;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access x.f (simple-fail.vpr@38.12--38.41) [153408]"}
@@ -811,12 +811,12 @@ procedure pres3(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert false -- simple-fail.vpr@40.3--40.15
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion false might not hold. (simple-fail.vpr@40.10--40.15) [153409]"}
       false;
     assume state(Heap, Mask);
@@ -830,12 +830,12 @@ procedure stateUnchanged(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var assertingHeap: HeapType;
   var assertingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var y: int;
   var AssertHeap: HeapType;
@@ -860,8 +860,8 @@ procedure stateUnchanged(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: y := (asserting (acc(x.f, write)) in
   //     x.f) -- simple-fail.vpr@71.3--71.44
@@ -870,8 +870,8 @@ procedure stateUnchanged(x: Ref) returns ()
       assertingHeap := Heap;
       assertingMask := Mask;
       // Exhale assertion of asserting
-      ExhaleWellDef0Heap := assertingHeap;
       ExhaleWellDef0Mask := assertingMask;
+      ExhaleWellDef0Heap := assertingHeap;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (simple-fail.vpr@71.3--71.44) [153410]"}
@@ -892,8 +892,8 @@ procedure stateUnchanged(x: Ref) returns ()
   // -- Translating statement: assert acc(x.f, write) -- simple-fail.vpr@72.3--72.18
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Heap := AssertHeap;
     ExhaleWellDef0Mask := AssertMask;
+    ExhaleWellDef0Heap := AssertHeap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (simple-fail.vpr@72.10--72.18) [153413]"}

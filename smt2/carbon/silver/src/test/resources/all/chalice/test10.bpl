@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-04 01:05:07
+// Date:         2025-01-07 14:19:22
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/chalice/test10.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/chalice/test10-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -229,8 +229,8 @@ procedure get#definedness(this: Ref) returns (Result: int)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newPMask: PMaskType;
   
   // -- Initializing the state
@@ -253,8 +253,8 @@ procedure get#definedness(this: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume inv#trigger(UnfoldingHeap, inv(this));
       assume UnfoldingHeap[null, inv(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, value]), CombineFrames(FrameFragment(UnfoldingHeap[this, next]), FrameFragment((if UnfoldingHeap[this, next] != null then UnfoldingHeap[null, inv(UnfoldingHeap[this, next])] else EmptyFrame))));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access inv(this) (test10.vpr@7.3--9.54) [148169]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, inv(this)];
@@ -377,15 +377,15 @@ procedure foo_1(this: Ref) returns ()
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newPMask: PMaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var Unfolding1Heap: HeapType;
   var Unfolding1Mask: MaskType;
   var ExhaleHeap: HeapType;
@@ -409,8 +409,8 @@ procedure foo_1(this: Ref) returns ()
       UnfoldingMask := Mask;
       assume inv#trigger(UnfoldingHeap, inv(this));
       assume UnfoldingHeap[null, inv(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, value]), CombineFrames(FrameFragment(UnfoldingHeap[this, next]), FrameFragment((if UnfoldingHeap[this, next] != null then UnfoldingHeap[null, inv(UnfoldingHeap[this, next])] else EmptyFrame))));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access inv(this) (test10.vpr@11.14--11.99) [148173]"}
@@ -455,8 +455,8 @@ procedure foo_1(this: Ref) returns ()
       UnfoldingMask := Mask;
       assume inv#trigger(UnfoldingHeap, inv(this));
       assume UnfoldingHeap[null, inv(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, value]), CombineFrames(FrameFragment(UnfoldingHeap[this, next]), FrameFragment((if UnfoldingHeap[this, next] != null then UnfoldingHeap[null, inv(UnfoldingHeap[this, next])] else EmptyFrame))));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       UnfoldingMask := UnfoldingMask[null, inv(this):=UnfoldingMask[null, inv(this)] - perm];
       perm := FullPerm;
@@ -482,8 +482,8 @@ procedure foo_1(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -498,8 +498,8 @@ procedure foo_1(this: Ref) returns ()
       UnfoldingMask := PostMask;
       assume inv#trigger(UnfoldingHeap, inv(this));
       assume UnfoldingHeap[null, inv(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, value]), CombineFrames(FrameFragment(UnfoldingHeap[this, next]), FrameFragment((if UnfoldingHeap[this, next] != null then UnfoldingHeap[null, inv(UnfoldingHeap[this, next])] else EmptyFrame))));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access inv(this) (test10.vpr@12.13--12.98) [148175]"}
@@ -544,8 +544,8 @@ procedure foo_1(this: Ref) returns ()
       UnfoldingMask := PostMask;
       assume inv#trigger(UnfoldingHeap, inv(this));
       assume UnfoldingHeap[null, inv(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, value]), CombineFrames(FrameFragment(UnfoldingHeap[this, next]), FrameFragment((if UnfoldingHeap[this, next] != null then UnfoldingHeap[null, inv(UnfoldingHeap[this, next])] else EmptyFrame))));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       UnfoldingMask := UnfoldingMask[null, inv(this):=UnfoldingMask[null, inv(this)] - perm];
       perm := FullPerm;
@@ -573,16 +573,16 @@ procedure foo_1(this: Ref) returns ()
   
   // -- Translating statement: assert (unfolding acc(inv(this), write) in
   //     (unfolding acc(inv(this.next), write) in true)) -- test10.vpr@14.5--14.95
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (unfolding acc(inv(this), write) in (unfolding acc(inv(this.next), write) in true))
       UnfoldingHeap := ExhaleWellDef0Heap;
       UnfoldingMask := ExhaleWellDef0Mask;
       assume inv#trigger(UnfoldingHeap, inv(this));
       assume UnfoldingHeap[null, inv(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, value]), CombineFrames(FrameFragment(UnfoldingHeap[this, next]), FrameFragment((if UnfoldingHeap[this, next] != null then UnfoldingHeap[null, inv(UnfoldingHeap[this, next])] else EmptyFrame))));
-      ExhaleWellDef1Mask := UnfoldingMask;
       ExhaleWellDef1Heap := UnfoldingHeap;
+      ExhaleWellDef1Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Assert might fail. There might be insufficient permission to access inv(this) (test10.vpr@14.13--14.94) [148177]"}
@@ -610,8 +610,8 @@ procedure foo_1(this: Ref) returns ()
       Unfolding1Mask := UnfoldingMask;
       assume inv#trigger(Unfolding1Heap, inv(Unfolding1Heap[this, next]));
       assume Unfolding1Heap[null, inv(Unfolding1Heap[this, next])] == CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[this, next], value]), CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[this, next], next]), FrameFragment((if Unfolding1Heap[Unfolding1Heap[this, next], next] != null then Unfolding1Heap[null, inv(Unfolding1Heap[Unfolding1Heap[this, next], next])] else EmptyFrame))));
-      ExhaleWellDef1Mask := Unfolding1Mask;
       ExhaleWellDef1Heap := Unfolding1Heap;
+      ExhaleWellDef1Mask := Unfolding1Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Assert might fail. There might be insufficient permission to access inv(this.next) (test10.vpr@14.13--14.94) [148178]"}
@@ -701,8 +701,8 @@ procedure foo_1(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of foo might not hold. There might be insufficient permission to access inv(this) (test10.vpr@12.13--12.98) [148181]"}
@@ -715,8 +715,8 @@ procedure foo_1(this: Ref) returns ()
       UnfoldingMask := ExhaleWellDef0Mask;
       assume inv#trigger(UnfoldingHeap, inv(this));
       assume UnfoldingHeap[null, inv(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, value]), CombineFrames(FrameFragment(UnfoldingHeap[this, next]), FrameFragment((if UnfoldingHeap[this, next] != null then UnfoldingHeap[null, inv(UnfoldingHeap[this, next])] else EmptyFrame))));
-      ExhaleWellDef1Mask := UnfoldingMask;
       ExhaleWellDef1Heap := UnfoldingHeap;
+      ExhaleWellDef1Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Postcondition of foo might not hold. There might be insufficient permission to access inv(this) (test10.vpr@12.13--12.98) [148182]"}

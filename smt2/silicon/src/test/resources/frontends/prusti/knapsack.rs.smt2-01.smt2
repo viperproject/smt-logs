@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-04 00:17:34
+; Started: 2025-01-07 13:30:58
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -17664,7 +17664,7 @@
 (check-sat)
 ; unsat
 (pop) ; 7
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 7
@@ -65552,86 +65552,4 @@
 (push) ; 11
 (set-option :timeout 10)
 (assert (not (= ret@358@01 ret@531@01)))
-(check-sat)
-; unknown
-(pop) ; 11
-; 0.01s
-; (get-info :all-statistics)
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [exec]
-; label loop9_group3_loop17_group4_bb17
-; [exec]
-; __t11 := true
-; [exec]
-; _54 := builtin$havoc_int()
-(declare-const ret@533@01 Int)
-; State saturation: after contract
-(set-option :timeout 50)
-(check-sat)
-; unknown
-; [exec]
-; inhale true
-(declare-const $t@534@01 $Snap)
-(assert (= $t@534@01 $Snap.unit))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [exec]
-; _54 := _51.val_int
-; [exec]
-; label l60
-; [exec]
-; _55 := builtin$havoc_int()
-(declare-const ret@535@01 Int)
-; State saturation: after contract
-(set-option :timeout 50)
-(check-sat)
-; unknown
-; [exec]
-; inhale true
-(declare-const $t@536@01 $Snap)
-(assert (= $t@536@01 $Snap.unit))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [exec]
-; inhale _2 >= 0
-(declare-const $t@537@01 $Snap)
-(assert (= $t@537@01 $Snap.unit))
-; [eval] _2 >= 0
-; State saturation: after inhale
-(check-sat)
-; unknown
-; [exec]
-; _55 := _2
-; [exec]
-; label l61
-; [exec]
-; _53 := builtin$havoc_ref()
-(declare-const ret@538@01 $Ref)
-; State saturation: after contract
-(set-option :timeout 50)
-(check-sat)
-; unknown
-; [exec]
-; inhale acc(_53.val_bool, write)
-(declare-const $t@539@01 Bool)
-(set-option :timeout 0)
-(push) ; 11
-(set-option :timeout 10)
-(assert (not (= $t@528@01 ret@538@01)))
-(check-sat)
-; unknown
-(pop) ; 11
-; 0.01s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 11
-(set-option :timeout 10)
-(assert (not (= ret@473@01 ret@538@01)))
 (check-sat)

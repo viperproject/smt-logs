@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-04 01:17:48
+// Date:         2025-01-07 14:32:26
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0328b.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0328b-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -232,11 +232,11 @@ axiom (forall f1: int, f2: int, f3_3: int, f4_2: int, f5_2: int, f6_2: int, f7_2
 procedure main() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var v1: Vector9DDomainType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -246,8 +246,8 @@ procedure main() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: v1 := Vector9D_ctor(1, 2, 3, 4, 5, 6, 7, 8, 9) -- 0328b.vpr@51.3--51.49
     v1 := (Vector9D_ctor(1, 2, 3, 4, 5, 6, 7, 8, 9): Vector9DDomainType);
@@ -284,64 +284,64 @@ procedure main() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert Vector9D_f1(v1) == 1 -- 0328b.vpr@60.3--60.30
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion Vector9D_f1(v1) == 1 might not hold. (0328b.vpr@60.10--60.30) [214308]"}
       (Vector9D_f1(v1): int) == 1;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert Vector9D_f2(v1) == 2 -- 0328b.vpr@61.3--61.30
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion Vector9D_f2(v1) == 2 might not hold. (0328b.vpr@61.10--61.30) [214309]"}
       (Vector9D_f2(v1): int) == 2;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert Vector9D_f3(v1) == 3 -- 0328b.vpr@62.3--62.30
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion Vector9D_f3(v1) == 3 might not hold. (0328b.vpr@62.10--62.30) [214310]"}
       (Vector9D_f3(v1): int) == 3;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert Vector9D_f4(v1) == 4 -- 0328b.vpr@63.3--63.30
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion Vector9D_f4(v1) == 4 might not hold. (0328b.vpr@63.10--63.30) [214311]"}
       (Vector9D_f4(v1): int) == 4;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert Vector9D_f5(v1) == 5 -- 0328b.vpr@64.3--64.30
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion Vector9D_f5(v1) == 5 might not hold. (0328b.vpr@64.10--64.30) [214312]"}
       (Vector9D_f5(v1): int) == 5;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert Vector9D_f6(v1) == 6 -- 0328b.vpr@65.3--65.30
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion Vector9D_f6(v1) == 6 might not hold. (0328b.vpr@65.10--65.30) [214313]"}
       (Vector9D_f6(v1): int) == 6;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert Vector9D_f7(v1) == 7 -- 0328b.vpr@66.3--66.30
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion Vector9D_f7(v1) == 7 might not hold. (0328b.vpr@66.10--66.30) [214314]"}
       (Vector9D_f7(v1): int) == 7;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert Vector9D_f8(v1) == 8 -- 0328b.vpr@67.3--67.30
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion Vector9D_f8(v1) == 8 might not hold. (0328b.vpr@67.10--67.30) [214315]"}
       (Vector9D_f8(v1): int) == 8;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert Vector9D_f9(v1) == 9 -- 0328b.vpr@68.3--68.30
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion Vector9D_f9(v1) == 9 might not hold. (0328b.vpr@68.10--68.30) [214316]"}
       (Vector9D_f9(v1): int) == 9;
     assume state(Heap, Mask);

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-04 01:22:44
+// Date:         2025-01-07 14:37:30
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/adt/type_ascriptions_1.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/adt/type_ascriptions_1-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -232,10 +232,10 @@ axiom (forall <T> t_2: (ListDomainType T) ::
 procedure type_ascriptions_1() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -245,26 +245,26 @@ procedure type_ascriptions_1() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert (Nil(): List[Bool]) == (Nil(): List[Bool]) -- type_ascriptions_1.vpr@9.5--9.54
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion (Nil(): List[Bool]) == (Nil(): List[Bool]) might not hold. (type_ascriptions_1.vpr@9.12--9.54) [222861]"}
       (Nil(): ListDomainType bool) == (Nil(): ListDomainType bool);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (Nil(): List[List[Int]]) == (Nil(): List[List[Int]]) -- type_ascriptions_1.vpr@11.5--11.64
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion (Nil(): List[List[Int]]) == (Nil(): List[List[Int]]) might not hold. (type_ascriptions_1.vpr@11.12--11.64) [222862]"}
       (Nil(): ListDomainType (ListDomainType int)) == (Nil(): ListDomainType (ListDomainType int));
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (Nil(): List[Int]) == (Nil(): List[Int]) -- type_ascriptions_1.vpr@14.5--14.26
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion (Nil(): List[Int]) == (Nil(): List[Int]) might not hold. (type_ascriptions_1.vpr@14.12--14.26) [222863]"}
       (Nil(): ListDomainType int) == (Nil(): ListDomainType int);
     assume state(Heap, Mask);

@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-04 00:31:16
+; Started: 2025-01-07 13:45:00
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -118,19 +118,19 @@
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   (= (foo%limited s@$ x@0@00) (foo s@$ x@0@00))
   :pattern ((foo s@$ x@0@00))
-  :qid |quant-u-19502|)))
+  :qid |quant-u-19517|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   (foo%stateless x@0@00)
   :pattern ((foo%limited s@$ x@0@00))
-  :qid |quant-u-19503|)))
+  :qid |quant-u-19518|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   (=> (foo%precondition s@$ x@0@00) (= (foo s@$ x@0@00) true))
   :pattern ((foo s@$ x@0@00))
-  :qid |quant-u-19504|)))
+  :qid |quant-u-19519|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   true
   :pattern ((foo s@$ x@0@00))
-  :qid |quant-u-19505|)))
+  :qid |quant-u-19520|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- bar ----------

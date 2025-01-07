@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-04 00:45:27
+// Date:         2025-01-07 13:59:19
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/sequences/self_framing.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/sequences/self_framing-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -580,8 +580,8 @@ procedure foo_1(s_2: (Seq Ref)) returns ()
   var j_5: int;
   var i_2: int;
   var QPMask: MaskType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -661,8 +661,8 @@ procedure foo_1(s_2: (Seq Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale |s| > 3 ==> s[2].f == 1 -- self_framing.vpr@12.3--12.33
     if (Seq#Length(s_2) > 3) {
@@ -689,8 +689,8 @@ procedure foo1(s_2: (Seq Ref)) returns ()
   var i2_8: int;
   var i1_23: int;
   var QPMask: MaskType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -778,8 +778,8 @@ procedure foo1(s_2: (Seq Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
 }
 
 // ==================================================
@@ -790,8 +790,8 @@ procedure foo2(s_2: (Seq Ref)) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var i2_2: int;
   
   // -- Initializing the state
@@ -822,8 +822,8 @@ procedure foo2(s_2: (Seq Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale (forall i2: Int ::
   //     { (i2 in [0..2)) }
@@ -861,8 +861,8 @@ procedure foo2korbinian(s_2: (Seq Ref)) returns ()
   var QPMask: MaskType;
   var i_9: int;
   var i_10: int;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -986,8 +986,8 @@ procedure foo2korbinian(s_2: (Seq Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
 }
 
 // ==================================================
@@ -999,8 +999,8 @@ procedure foo3(s_2: (Seq Ref)) returns ()
 {
   var perm: Perm;
   var i3_9: int;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var i3_10: int;
   
   // -- Initializing the state
@@ -1047,8 +1047,8 @@ procedure foo3(s_2: (Seq Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale (forall i3: Int ::
   //     { (i3 in [0..|s|)) }

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-04 01:16:25
+// Date:         2025-01-07 14:31:00
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0695.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0695-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -685,8 +685,8 @@ procedure get_disc#definedness(x: Ref, lft_1: (Map int (Map Ref Perm))) returns 
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var QPMask: MaskType;
   var Unfolding1Heap: HeapType;
   var Unfolding1Mask: MaskType;
@@ -735,8 +735,8 @@ procedure get_disc#definedness(x: Ref, lft_1: (Map int (Map Ref Perm))) returns 
       UnfoldingMask := Mask;
       assume LifetimeP#trigger(UnfoldingHeap, LifetimeP(lft_1));
       assume UnfoldingHeap[null, LifetimeP(lft_1)] == CombineFrames(FrameFragment(LifetimeP#condqp1(UnfoldingHeap, lft_1)), FrameFragment(LifetimeP#condqp2(UnfoldingHeap, lft_1)));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access LifetimeP(lft) (0695.vpr@39.1--44.2) [207856]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, LifetimeP(lft_1)];
@@ -847,8 +847,8 @@ procedure get_disc#definedness(x: Ref, lft_1: (Map int (Map Ref Perm))) returns 
       Unfolding1Mask := UnfoldingMask;
       assume lft_List#trigger(Unfolding1Heap, lft_List(x));
       assume Unfolding1Heap[null, lft_List(x)] == CombineFrames(FrameFragment(Unfolding1Heap[x, ref_2]), Unfolding1Heap[null, List(Unfolding1Heap[x, ref_2])]);
-      ExhaleWellDef0Mask := Unfolding1Mask;
       ExhaleWellDef0Heap := Unfolding1Heap;
+      ExhaleWellDef0Mask := Unfolding1Mask;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access lft_List(x) (0695.vpr@39.1--44.2) [207861]"}
         NoPerm < perm ==> NoPerm < Unfolding1Mask[null, lft_List(x)];
@@ -1510,18 +1510,18 @@ procedure foo_1(x: Ref, lft_1: (Map int (Map Ref Perm))) returns (res: Ref, new_
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var WandDefLHSHeap: HeapType;
   var WandDefLHSMask: MaskType;
-  var Labellhs1Mask: MaskType;
   var Labellhs1Heap: HeapType;
+  var Labellhs1Mask: MaskType;
   var WandDefRHSHeap: HeapType;
   var WandDefRHSMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var freshVersion: FrameType;
   var newPMask: PMaskType;
   var ExhaleHeap: HeapType;
@@ -1585,8 +1585,8 @@ procedure foo_1(x: Ref, lft_1: (Map int (Map Ref Perm))) returns (res: Ref, new_
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1647,8 +1647,8 @@ procedure foo_1(x: Ref, lft_1: (Map int (Map Ref Perm))) returns (res: Ref, new_
         
         // -- Translating statement: label lhs1 -- 0695.vpr@53.10--53.45
           lhs1:
-          Labellhs1Mask := WandDefLHSMask;
           Labellhs1Heap := WandDefLHSHeap;
+          Labellhs1Mask := WandDefLHSMask;
           assume state(WandDefLHSHeap, WandDefLHSMask);
         havoc WandDefRHSHeap;
         WandDefRHSMask := ZeroMask;
@@ -1690,8 +1690,8 @@ procedure foo_1(x: Ref, lft_1: (Map int (Map Ref Perm))) returns (res: Ref, new_
     // -- Check definedness of acc(ListRef(res.ref, new_lft, false), write)
       assert {:msg "  Folding ListRef(res.ref, new_lft, false) might fail. There might be insufficient permission to access res.ref (0695.vpr@57.3--57.40) [207893]"}
         HasDirectPerm(Mask, res, ref_2);
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     if (Heap[res, ref_2] != null) {
       perm := FullPerm;
       if (perm != NoPerm) {
@@ -1737,8 +1737,8 @@ procedure foo_1(x: Ref, lft_1: (Map int (Map Ref Perm))) returns (res: Ref, new_
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Loop invariant valid_lft(new_lft) && acc(LifetimeP(new_lft), write) might not hold on entry. Assertion valid_lft(new_lft) might not hold. (0695.vpr@60.15--60.32) [207900]"}
           valid_lft(Heap, new_lft);
         perm := FullPerm;
@@ -1861,8 +1861,8 @@ procedure foo_1(x: Ref, lft_1: (Map int (Map Ref Perm))) returns (res: Ref, new_
             HasDirectPerm(Mask, x, ref_2);
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             assert {:msg "  Precondition of function get_disc might not hold. Assertion valid_lft(new_lft) might not hold. (0695.vpr@59.10--59.34) [207911]"}
               valid_lft(Heap, new_lft);
             perm := FullPerm;
@@ -1890,8 +1890,8 @@ procedure foo_1(x: Ref, lft_1: (Map int (Map Ref Perm))) returns (res: Ref, new_
           // -- Translating statement: unfold acc(LifetimeP(new_lft), write) -- 0695.vpr@64.5--64.30
             assume LifetimeP#trigger(Heap, LifetimeP(new_lft));
             assume Heap[null, LifetimeP(new_lft)] == CombineFrames(FrameFragment(LifetimeP#condqp1(Heap, new_lft)), FrameFragment(LifetimeP#condqp2(Heap, new_lft)));
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
             if (perm != NoPerm) {
               assert {:msg "  Unfolding LifetimeP(new_lft) might fail. There might be insufficient permission to access LifetimeP(new_lft) (0695.vpr@64.5--64.30) [207915]"}
@@ -2010,8 +2010,8 @@ procedure foo_1(x: Ref, lft_1: (Map int (Map Ref Perm))) returns (res: Ref, new_
             assume state(Heap, Mask);
           
           // -- Translating statement: assert (x.ref in new_lft[1]) -- 0695.vpr@65.5--65.37
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             
             // -- Check definedness of (x.ref in new_lft[1])
               assert {:msg "  Assert might fail. There might be insufficient permission to access x.ref (0695.vpr@65.12--65.37) [207920]"}
@@ -2045,8 +2045,8 @@ procedure foo_1(x: Ref, lft_1: (Map int (Map Ref Perm))) returns (res: Ref, new_
               Map#Elements(Map#Elements(new_lft)[1])[Heap[x, ref_2]] > NoPerm;
             assume lft_List#trigger(Heap, lft_List(Heap[x, ref_2]));
             assume Heap[null, lft_List(Heap[x, ref_2])] == CombineFrames(FrameFragment(Heap[Heap[x, ref_2], ref_2]), Heap[null, List(Heap[Heap[x, ref_2], ref_2])]);
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             perm := Map#Elements(Map#Elements(new_lft)[1])[Heap[x, ref_2]];
             assert {:msg "  Unfolding lft_List(x.ref) might fail. Fraction new_lft[1][x.ref] might be negative. (0695.vpr@66.5--66.57) [207931]"}
               perm >= NoPerm;
@@ -2097,8 +2097,8 @@ procedure foo_1(x: Ref, lft_1: (Map int (Map Ref Perm))) returns (res: Ref, new_
             arg_p := Map#Elements(Map#Elements(new_lft)[1])[Heap[x, ref_2]];
             
             // -- Exhaling precondition
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               assert {:msg "  The precondition of method sh_borrow might not hold. Assertion new_lft[1][x.ref] > 0 / 1 might not hold. (0695.vpr@68.5--68.55) [207939]"}
                 0 / 1 < arg_p;
               perm := arg_p;
@@ -2137,8 +2137,8 @@ procedure foo_1(x: Ref, lft_1: (Map int (Map Ref Perm))) returns (res: Ref, new_
             assume state(Heap, Mask);
           
           // -- Translating statement: assert x_nxt.ref == x.ref.ref -- 0695.vpr@69.5--69.34
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             
             // -- Check definedness of x_nxt.ref == x.ref.ref
               assert {:msg "  Assert might fail. There might be insufficient permission to access x_nxt.ref (0695.vpr@69.12--69.34) [207944]"}
@@ -2172,8 +2172,8 @@ procedure foo_1(x: Ref, lft_1: (Map int (Map Ref Perm))) returns (res: Ref, new_
                 Map#Domain(Map#Elements(new_lft)[1])[Heap[x, ref_2]];
             assert {:msg "  Folding lft_List(x.ref) might fail. Fraction new_lft[1][x.ref] / 2 might not be positive. (0695.vpr@71.5--71.57) [207955]"}
               Map#Elements(Map#Elements(new_lft)[1])[Heap[x, ref_2]] > NoPerm;
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             perm := Map#Elements(Map#Elements(new_lft)[1])[Heap[x, ref_2]] / 2;
             assert {:msg "  Folding lft_List(x.ref) might fail. Fraction new_lft[1][x.ref] / 2 might be negative. (0695.vpr@71.5--71.57) [207956]"}
               perm >= NoPerm;
@@ -2217,8 +2217,8 @@ procedure foo_1(x: Ref, lft_1: (Map int (Map Ref Perm))) returns (res: Ref, new_
             assume state(Heap, Mask);
           
           // -- Translating statement: fold acc(LifetimeP(new_lft), write) -- 0695.vpr@74.5--74.28
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             assert {:msg "  Folding LifetimeP(new_lft) might fail. Assertion valid_lft(new_lft) might not hold. (0695.vpr@74.5--74.28) [207961]"}
               valid_lft(Heap, new_lft);
             if (*) {
@@ -2396,8 +2396,8 @@ procedure foo_1(x: Ref, lft_1: (Map int (Map Ref Perm))) returns (res: Ref, new_
                 Map#Domain(Map#Elements(new_lft)[1])[Heap[x, ref_2]];
             assert {:msg "  Folding lft_List(x_nxt) might fail. Fraction new_lft[1][x.ref] might not be positive. (0695.vpr@76.5--76.55) [207978]"}
               Map#Elements(Map#Elements(new_lft)[1])[Heap[x, ref_2]] > NoPerm;
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             perm := Map#Elements(Map#Elements(new_lft)[1])[Heap[x, ref_2]];
             assert {:msg "  Folding lft_List(x_nxt) might fail. Fraction new_lft[1][x.ref] might be negative. (0695.vpr@76.5--76.55) [207979]"}
               perm >= NoPerm;
@@ -2444,8 +2444,8 @@ procedure foo_1(x: Ref, lft_1: (Map int (Map Ref Perm))) returns (res: Ref, new_
             new_lft := new_lft;
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Loop invariant valid_lft(new_lft) && acc(LifetimeP(new_lft), write) might not be preserved. Assertion valid_lft(new_lft) might not hold. (0695.vpr@60.15--60.32) [207984]"}
           valid_lft(Heap, new_lft);
         perm := FullPerm;
@@ -2510,8 +2510,8 @@ procedure foo_1(x: Ref, lft_1: (Map int (Map Ref Perm))) returns (res: Ref, new_
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of foo might not hold. Assertion valid_lft(new_lft) might not hold. (0695.vpr@49.11--49.28) [207991]"}
       valid_lft(Heap, new_lft);
     perm := FullPerm;
@@ -2546,8 +2546,8 @@ procedure sh_borrow(a_2: Ref, p_1: Perm) returns (bw: Ref)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var Ops_1Heap: HeapType;
@@ -2556,8 +2556,8 @@ procedure sh_borrow(a_2: Ref, p_1: Perm) returns (bw: Ref)
   var UsedHeap: HeapType;
   var UsedMask: MaskType;
   var b_2: bool;
-  var Labellhs2Mask: MaskType;
   var Labellhs2Heap: HeapType;
+  var Labellhs2Mask: MaskType;
   var boolCur: bool;
   var Used_1Heap: HeapType;
   var Used_1Mask: MaskType;
@@ -2571,8 +2571,8 @@ procedure sh_borrow(a_2: Ref, p_1: Perm) returns (bw: Ref)
   var b_3: bool;
   var ResultHeap: HeapType;
   var ResultMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -2597,8 +2597,8 @@ procedure sh_borrow(a_2: Ref, p_1: Perm) returns (bw: Ref)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -2662,8 +2662,8 @@ procedure sh_borrow(a_2: Ref, p_1: Perm) returns (bw: Ref)
     
     // -- Translating statement: label lhs2 -- 0695.vpr@88.11--88.76
       lhs2:
-      Labellhs2Mask := Ops_1Mask;
       Labellhs2Heap := Ops_1Heap;
+      Labellhs2Mask := Ops_1Mask;
       b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);
     boolCur := true;
     // Translating exec of non-ghost operationacc(a.ref, p / 2) && old[lhs](bw.ref) == a.ref
@@ -2746,8 +2746,8 @@ procedure sh_borrow(a_2: Ref, p_1: Perm) returns (bw: Ref)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := p_1 / 2;
     assert {:msg "  Postcondition of sh_borrow might not hold. Fraction p / 2 might be negative. (0695.vpr@84.11--84.49) [208008]"}
       perm >= NoPerm;
@@ -2781,13 +2781,13 @@ procedure sh_borrow(a_2: Ref, p_1: Perm) returns (bw: Ref)
 procedure simple() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var y: Ref;
   var z: Ref;
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var freshVersion: FrameType;
   var ExhaleHeap: HeapType;
   var QPMask: MaskType;
@@ -2801,8 +2801,8 @@ procedure simple() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[y, $allocated];
@@ -2819,8 +2819,8 @@ procedure simple() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(P(y), 1 / 2) -- 0695.vpr@98.3--98.22
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := 1 / 2;
     assert {:msg "  Folding P(y) might fail. Fraction 1 / 2 might be negative. (0695.vpr@98.3--98.22) [208017]"}
       perm >= NoPerm;
@@ -2838,8 +2838,8 @@ procedure simple() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(z.f, write) -- 0695.vpr@101.3--101.18
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Exhale might fail. There might be insufficient permission to access z.f (0695.vpr@101.10--101.18) [208019]"}

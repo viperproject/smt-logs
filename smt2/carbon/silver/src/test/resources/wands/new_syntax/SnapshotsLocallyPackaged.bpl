@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-04 01:02:43
+// Date:         2025-01-07 14:16:56
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/new_syntax/SnapshotsLocallyPackaged.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/new_syntax/SnapshotsLocallyPackaged-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -494,8 +494,8 @@ procedure length#definedness(x: Ref) returns (Result: int)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var newPMask: PMaskType;
   
@@ -519,8 +519,8 @@ procedure length#definedness(x: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume List#trigger(UnfoldingHeap, List(x));
       assume UnfoldingHeap[null, List(x)] == CombineFrames(FrameFragment(UnfoldingHeap[x, f_7]), CombineFrames(FrameFragment(UnfoldingHeap[x, next]), FrameFragment((if UnfoldingHeap[x, next] != null then UnfoldingHeap[null, List(UnfoldingHeap[x, next])] else EmptyFrame))));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access List(x) (SnapshotsLocallyPackaged.vpr@13.1--17.2) [139903]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, List(x)];
@@ -549,8 +549,8 @@ procedure length#definedness(x: Ref) returns (Result: int)
           HasDirectPerm(UnfoldingMask, x, next);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
+          ExhaleWellDef0Mask := UnfoldingMask;
           perm := FullPerm;
           assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access List(x.next) (SnapshotsLocallyPackaged.vpr@16.52--16.66) [139906]"}
             NoPerm < perm ==> NoPerm < UnfoldingMask[null, List(UnfoldingHeap[x, next])];
@@ -625,8 +625,8 @@ procedure sum#definedness(x: Ref) returns (Result: int)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -648,8 +648,8 @@ procedure sum#definedness(x: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume pair#trigger(UnfoldingHeap, pair(x));
       assume UnfoldingHeap[null, pair(x)] == CombineFrames(FrameFragment(UnfoldingHeap[x, f_7]), FrameFragment(UnfoldingHeap[x, g]));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access pair(x) (SnapshotsLocallyPackaged.vpr@23.1--26.2) [139907]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, pair(x)];
@@ -815,19 +815,19 @@ procedure test0(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var Ops_1Heap: HeapType;
   var Ops_1Mask: MaskType;
   var b_1_1: bool;
   var UsedHeap: HeapType;
   var UsedMask: MaskType;
   var b_2: bool;
-  var Labellhs1Mask: MaskType;
   var Labellhs1Heap: HeapType;
+  var Labellhs1Mask: MaskType;
   var boolCur: bool;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var Used_1Heap: HeapType;
   var Used_1Mask: MaskType;
   var b_2_1: bool;
@@ -854,8 +854,8 @@ procedure test0(x: Ref) returns ()
   var Result_2Heap: HeapType;
   var Result_2Mask: MaskType;
   var ExhaleHeap: HeapType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -880,8 +880,8 @@ procedure test0(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: x.g := 1 -- SnapshotsLocallyPackaged.vpr@30.5--30.13
     assert {:msg "  Assignment might fail. There might be insufficient permission to access x.g (SnapshotsLocallyPackaged.vpr@30.5--30.13) [139912]"}
@@ -909,15 +909,15 @@ procedure test0(x: Ref) returns ()
     
     // -- Translating statement: label lhs1 -- SnapshotsLocallyPackaged.vpr@31.13--31.33
       lhs1:
-      Labellhs1Mask := Ops_1Mask;
       Labellhs1Heap := Ops_1Heap;
+      Labellhs1Mask := Ops_1Mask;
       b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);
     boolCur := true;
     if (b_1_1) {
       
       // -- Translating statement: fold acc(pair(x), write) -- SnapshotsLocallyPackaged.vpr@32.9--32.21
-        ExhaleWellDef0Mask := Ops_1Mask;
         ExhaleWellDef0Heap := Ops_1Heap;
+        ExhaleWellDef0Mask := Ops_1Mask;
         havoc Used_1Heap;
         Used_1Mask := ZeroMask;
         b_2_1 := b_2_1 && state(Used_1Heap, Used_1Mask);
@@ -1141,8 +1141,8 @@ procedure test0(x: Ref) returns ()
   // -- Translating statement: apply acc(x.f, write) --* acc(pair(x), write) -- SnapshotsLocallyPackaged.vpr@35.5--35.31
     
     // -- check if wand is held and remove an instance
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       // permLe
       assert {:msg "  Applying wand might fail. Magic wand instance not found. (SnapshotsLocallyPackaged.vpr@35.5--35.31) [139922]"}
         FullPerm <= Mask[null, wand(x, FullPerm, x)];
@@ -1150,8 +1150,8 @@ procedure test0(x: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- check if LHS holds and remove permissions 
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Applying wand might fail. There might be insufficient permission to access x.f (SnapshotsLocallyPackaged.vpr@35.5--35.31) [139924]"}
@@ -1172,14 +1172,14 @@ procedure test0(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert sum(x) == 3 -- SnapshotsLocallyPackaged.vpr@36.5--36.23
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of sum(x) == 3
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function sum might not hold. There might be insufficient permission to access pair(x) (SnapshotsLocallyPackaged.vpr@36.12--36.18) [139926]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, pair(x)];
@@ -1203,16 +1203,16 @@ procedure test1(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var Ops_3Heap: HeapType;
   var Ops_3Mask: MaskType;
   var b_8: bool;
   var Used_3Heap: HeapType;
   var Used_3Mask: MaskType;
   var b_7: bool;
-  var Labellhs4Mask: MaskType;
   var Labellhs4Heap: HeapType;
+  var Labellhs4Mask: MaskType;
   var boolCur_1: bool;
   var Used_4Heap: HeapType;
   var Used_4Mask: MaskType;
@@ -1229,8 +1229,8 @@ procedure test1(x: Ref) returns ()
   var b_11: bool;
   var Result_4Heap: HeapType;
   var Result_4Mask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -1256,8 +1256,8 @@ procedure test1(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: x.g := 1 -- SnapshotsLocallyPackaged.vpr@41.5--41.13
     assert {:msg "  Assignment might fail. There might be insufficient permission to access x.g (SnapshotsLocallyPackaged.vpr@41.5--41.13) [139928]"}
@@ -1284,8 +1284,8 @@ procedure test1(x: Ref) returns ()
     
     // -- Translating statement: label lhs4 -- SnapshotsLocallyPackaged.vpr@42.13--42.46
       lhs4:
-      Labellhs4Mask := Ops_3Mask;
       Labellhs4Heap := Ops_3Heap;
+      Labellhs4Mask := Ops_3Mask;
       b_8 := b_8 && state(Ops_3Heap, Ops_3Mask);
     boolCur_1 := true;
     // Translating exec of non-ghost operationacc(x.f, write) && acc(x.g, write)
@@ -1422,8 +1422,8 @@ procedure test1(x: Ref) returns ()
   // -- Translating statement: apply acc(x.f, write) --* acc(x.f, write) && acc(x.g, write) -- SnapshotsLocallyPackaged.vpr@44.5--44.44
     
     // -- check if wand is held and remove an instance
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       // permLe
       assert {:msg "  Applying wand might fail. Magic wand instance not found. (SnapshotsLocallyPackaged.vpr@44.5--44.44) [139934]"}
         FullPerm <= Mask[null, wand_1(x, FullPerm, x, FullPerm, x, FullPerm)];
@@ -1431,8 +1431,8 @@ procedure test1(x: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- check if LHS holds and remove permissions 
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Applying wand might fail. There might be insufficient permission to access x.f (SnapshotsLocallyPackaged.vpr@44.5--44.44) [139936]"}
@@ -1458,8 +1458,8 @@ procedure test1(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert x.f == 2 && x.g == 1 -- SnapshotsLocallyPackaged.vpr@45.5--45.32
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of x.f == 2
       assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (SnapshotsLocallyPackaged.vpr@45.12--45.32) [139939]"}
@@ -1483,10 +1483,10 @@ procedure test2(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var freshVersion: FrameType;
   var Ops_5Heap: HeapType;
   var Ops_5Mask: MaskType;
@@ -1494,8 +1494,8 @@ procedure test2(x: Ref) returns ()
   var Used_5Heap: HeapType;
   var Used_5Mask: MaskType;
   var b_12: bool;
-  var Labellhs7Mask: MaskType;
   var Labellhs7Heap: HeapType;
+  var Labellhs7Mask: MaskType;
   var boolCur_2: bool;
   var Used_6Heap: HeapType;
   var Used_6Mask: MaskType;
@@ -1512,8 +1512,8 @@ procedure test2(x: Ref) returns ()
   var Result_5Heap: HeapType;
   var Result_5Mask: MaskType;
   var ExhaleHeap: HeapType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1538,8 +1538,8 @@ procedure test2(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: x.f := 2 -- SnapshotsLocallyPackaged.vpr@50.5--50.13
     assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (SnapshotsLocallyPackaged.vpr@50.5--50.13) [139943]"}
@@ -1554,8 +1554,8 @@ procedure test2(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(pair(x), write) -- SnapshotsLocallyPackaged.vpr@52.5--52.17
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding pair(x) might fail. There might be insufficient permission to access x.f (SnapshotsLocallyPackaged.vpr@52.5--52.17) [139947]"}
@@ -1600,8 +1600,8 @@ procedure test2(x: Ref) returns ()
     
     // -- Translating statement: label lhs7 -- SnapshotsLocallyPackaged.vpr@53.13--53.29
       lhs7:
-      Labellhs7Mask := Ops_5Mask;
       Labellhs7Heap := Ops_5Heap;
+      Labellhs7Mask := Ops_5Mask;
       b_13 := b_13 && state(Ops_5Heap, Ops_5Mask);
     boolCur_2 := true;
     // Translating exec of non-ghost operationacc(pair(x), write)
@@ -1681,8 +1681,8 @@ procedure test2(x: Ref) returns ()
   // -- Translating statement: apply true --* acc(pair(x), write) -- SnapshotsLocallyPackaged.vpr@54.5--54.27
     
     // -- check if wand is held and remove an instance
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       // permLe
       assert {:msg "  Applying wand might fail. Magic wand instance not found. (SnapshotsLocallyPackaged.vpr@54.5--54.27) [139953]"}
         FullPerm <= Mask[null, wand_2(true, x)];
@@ -1690,8 +1690,8 @@ procedure test2(x: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- check if LHS holds and remove permissions 
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
     assume state(Heap, Mask);
     
     // -- inhale the RHS of the wand
@@ -1706,14 +1706,14 @@ procedure test2(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert sum(x) == 3 -- SnapshotsLocallyPackaged.vpr@55.5--55.23
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of sum(x) == 3
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function sum might not hold. There might be insufficient permission to access pair(x) (SnapshotsLocallyPackaged.vpr@55.12--55.18) [139956]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, pair(x)];
@@ -1737,12 +1737,12 @@ procedure test3(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var Ops_7Heap: HeapType;
   var Ops_7Mask: MaskType;
@@ -1750,8 +1750,8 @@ procedure test3(x: Ref) returns ()
   var Used_7Heap: HeapType;
   var Used_7Mask: MaskType;
   var b_16: bool;
-  var Labellhs10Mask: MaskType;
   var Labellhs10Heap: HeapType;
+  var Labellhs10Mask: MaskType;
   var boolCur_3: bool;
   var Used_8Heap: HeapType;
   var Used_8Mask: MaskType;
@@ -1786,8 +1786,8 @@ procedure test3(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1801,8 +1801,8 @@ procedure test3(x: Ref) returns ()
     // -- Check definedness of length(x) == old(length(x))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
+        ExhaleWellDef0Mask := PostMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access List(x) (SnapshotsLocallyPackaged.vpr@60.20--60.29) [139958]"}
           NoPerm < perm ==> NoPerm < PostMask[null, List(x)];
@@ -1815,8 +1815,8 @@ procedure test3(x: Ref) returns ()
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := oldMask;
         ExhaleWellDef0Heap := oldHeap;
+        ExhaleWellDef0Mask := oldMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access List(x) (SnapshotsLocallyPackaged.vpr@60.37--60.46) [139959]"}
           NoPerm < perm ==> NoPerm < oldMask[null, List(x)];
@@ -1849,8 +1849,8 @@ procedure test3(x: Ref) returns ()
     
     // -- Translating statement: label lhs10 -- SnapshotsLocallyPackaged.vpr@61.13--61.32
       lhs10:
-      Labellhs10Mask := Ops_7Mask;
       Labellhs10Heap := Ops_7Heap;
+      Labellhs10Mask := Ops_7Mask;
       b_17 := b_17 && state(Ops_7Heap, Ops_7Mask);
     boolCur_3 := true;
     // Translating exec of non-ghost operationacc(List(x), write)
@@ -1930,8 +1930,8 @@ procedure test3(x: Ref) returns ()
   // -- Translating statement: apply acc(List(x), write) --* acc(List(x), write) -- SnapshotsLocallyPackaged.vpr@62.5--62.30
     
     // -- check if wand is held and remove an instance
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       // permLe
       assert {:msg "  Applying wand might fail. Magic wand instance not found. (SnapshotsLocallyPackaged.vpr@62.5--62.30) [139962]"}
         FullPerm <= Mask[null, wand_3(x, x)];
@@ -1939,8 +1939,8 @@ procedure test3(x: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- check if LHS holds and remove permissions 
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Applying wand might fail. There might be insufficient permission to access List(x) (SnapshotsLocallyPackaged.vpr@62.5--62.30) [139964]"}
@@ -1961,8 +1961,8 @@ procedure test3(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of test3 might not hold. There might be insufficient permission to access List(x) (SnapshotsLocallyPackaged.vpr@60.9--60.47) [139966]"}
@@ -1985,16 +1985,16 @@ procedure test4(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var Ops_9Heap: HeapType;
   var Ops_9Mask: MaskType;
   var b_21: bool;
   var Used_9Heap: HeapType;
   var Used_9Mask: MaskType;
   var b_20: bool;
-  var Labellhs13Mask: MaskType;
   var Labellhs13Heap: HeapType;
+  var Labellhs13Mask: MaskType;
   var boolCur_4: bool;
   var Used_10Heap: HeapType;
   var Used_10Mask: MaskType;
@@ -2014,8 +2014,8 @@ procedure test4(x: Ref) returns ()
   var Used_11Heap: HeapType;
   var Used_11Mask: MaskType;
   var b_24_1: bool;
-  var Labellhs16Mask: MaskType;
   var Labellhs16Heap: HeapType;
+  var Labellhs16Mask: MaskType;
   var boolCur_5: bool;
   var Ops_13Heap: HeapType;
   var Ops_13Mask: MaskType;
@@ -2023,8 +2023,8 @@ procedure test4(x: Ref) returns ()
   var Used_12Heap: HeapType;
   var Used_12Mask: MaskType;
   var b_26: bool;
-  var Labellhs18Mask: MaskType;
   var Labellhs18Heap: HeapType;
+  var Labellhs18Mask: MaskType;
   var boolCur_6: bool;
   var Used_13Heap: HeapType;
   var Used_13Mask: MaskType;
@@ -2032,15 +2032,15 @@ procedure test4(x: Ref) returns ()
   var b_29: bool;
   var Result_8Heap: HeapType;
   var Result_8Mask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var Used_14Heap: HeapType;
   var Used_14Mask: MaskType;
   var b_30: bool;
   var WandDefLHSHeap: HeapType;
   var WandDefLHSMask: MaskType;
-  var Labellhs21Mask: MaskType;
   var Labellhs21Heap: HeapType;
+  var Labellhs21Mask: MaskType;
   var WandDefRHSHeap: HeapType;
   var WandDefRHSMask: MaskType;
   var b_31: bool;
@@ -2059,14 +2059,14 @@ procedure test4(x: Ref) returns ()
   var Used_16Heap: HeapType;
   var Used_16Mask: MaskType;
   var b_34: bool;
-  var Labellhs22Mask: MaskType;
   var Labellhs22Heap: HeapType;
+  var Labellhs22Mask: MaskType;
   var boolCur_7: bool;
   var Used_17Heap: HeapType;
   var Used_17Mask: MaskType;
   var b_36: bool;
-  var Labellhs25Mask: MaskType;
   var Labellhs25Heap: HeapType;
+  var Labellhs25Mask: MaskType;
   var b_37: bool;
   var Result_11Heap: HeapType;
   var Result_11Mask: MaskType;
@@ -2088,8 +2088,8 @@ procedure test4(x: Ref) returns ()
   var b_43: bool;
   var Result_14Heap: HeapType;
   var Result_14Mask: MaskType;
-  var Labellhs26Mask: MaskType;
   var Labellhs26Heap: HeapType;
+  var Labellhs26Mask: MaskType;
   var b_44: bool;
   var Result_15Heap: HeapType;
   var Result_15Mask: MaskType;
@@ -2118,8 +2118,8 @@ procedure test4(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: package acc(x.f, 1 / 2) --* acc(x.f, 1 / 2) {
   // } -- SnapshotsLocallyPackaged.vpr@67.5--67.44
@@ -2142,8 +2142,8 @@ procedure test4(x: Ref) returns ()
     
     // -- Translating statement: label lhs13 -- SnapshotsLocallyPackaged.vpr@67.13--67.44
       lhs13:
-      Labellhs13Mask := Ops_9Mask;
       Labellhs13Heap := Ops_9Heap;
+      Labellhs13Mask := Ops_9Mask;
       b_21 := b_21 && state(Ops_9Heap, Ops_9Mask);
     boolCur_4 := true;
     // Translating exec of non-ghost operationacc(x.f, 1 / 2)
@@ -2239,8 +2239,8 @@ procedure test4(x: Ref) returns ()
     
     // -- Translating statement: label lhs16 -- SnapshotsLocallyPackaged.vpr@68.13--68.61
       lhs16:
-      Labellhs16Mask := Ops_11Mask;
       Labellhs16Heap := Ops_11Heap;
+      Labellhs16Mask := Ops_11Mask;
       b_25 := b_25 && state(Ops_11Heap, Ops_11Mask);
     boolCur_5 := true;
     if (b_25) {
@@ -2266,8 +2266,8 @@ procedure test4(x: Ref) returns ()
         
         // -- Translating statement: label lhs18 -- SnapshotsLocallyPackaged.vpr@69.21--69.52
           lhs18:
-          Labellhs18Mask := Ops_13Mask;
           Labellhs18Heap := Ops_13Heap;
+          Labellhs18Mask := Ops_13Mask;
           b_27 := b_27 && state(Ops_13Heap, Ops_13Mask);
         boolCur_6 := true;
         // Translating exec of non-ghost operationacc(x.f, 1 / 2)
@@ -2363,8 +2363,8 @@ procedure test4(x: Ref) returns ()
       // -- Translating statement: apply acc(x.f, 1 / 2) --* acc(x.f, 1 / 2) -- SnapshotsLocallyPackaged.vpr@70.13--70.50
         
         // -- check if wand is held and remove an instance
-          ExhaleWellDef0Mask := Ops_11Mask;
           ExhaleWellDef0Heap := Ops_11Heap;
+          ExhaleWellDef0Mask := Ops_11Mask;
           havoc Used_14Heap;
           Used_14Mask := ZeroMask;
           b_30 := b_30 && state(Used_14Heap, Used_14Mask);
@@ -2389,8 +2389,8 @@ procedure test4(x: Ref) returns ()
                       
                       // -- Translating statement: label lhs21 -- SnapshotsLocallyPackaged.vpr@70.19--70.50
                         lhs21:
-                        Labellhs21Mask := WandDefLHSMask;
                         Labellhs21Heap := WandDefLHSHeap;
+                        Labellhs21Mask := WandDefLHSMask;
                         assume state(WandDefLHSHeap, WandDefLHSMask);
                       havoc WandDefRHSHeap;
                       WandDefRHSMask := ZeroMask;
@@ -2462,8 +2462,8 @@ procedure test4(x: Ref) returns ()
         b_25 := b_25 && state(Ops_11Heap, Ops_11Mask);
         
         // -- check if LHS holds and remove permissions 
-          ExhaleWellDef0Mask := Ops_11Mask;
           ExhaleWellDef0Heap := Ops_11Heap;
+          ExhaleWellDef0Mask := Ops_11Mask;
           havoc Used_15Heap;
           Used_15Mask := ZeroMask;
           b_32 := b_32 && state(Used_15Heap, Used_15Mask);
@@ -2565,8 +2565,8 @@ procedure test4(x: Ref) returns ()
         
         // -- Translating statement: label lhs22 -- SnapshotsLocallyPackaged.vpr@71.21--71.42
           lhs22:
-          Labellhs22Mask := Ops_15Mask;
           Labellhs22Heap := Ops_15Heap;
+          Labellhs22Mask := Ops_15Mask;
           b_35 := b_35 && state(Ops_15Heap, Ops_15Mask);
         boolCur_7 := true;
         if (b_35 && b_25) {
@@ -2574,8 +2574,8 @@ procedure test4(x: Ref) returns ()
           // -- Translating statement: apply acc(x.f, 1 / 2) --* acc(x.f, 1 / 2) -- SnapshotsLocallyPackaged.vpr@72.17--72.54
             
             // -- check if wand is held and remove an instance
-              ExhaleWellDef0Mask := Ops_15Mask;
               ExhaleWellDef0Heap := Ops_15Heap;
+              ExhaleWellDef0Mask := Ops_15Mask;
               havoc Used_17Heap;
               Used_17Mask := ZeroMask;
               b_36 := b_36 && state(Used_17Heap, Used_17Mask);
@@ -2600,8 +2600,8 @@ procedure test4(x: Ref) returns ()
                           
                           // -- Translating statement: label lhs25 -- SnapshotsLocallyPackaged.vpr@72.23--72.54
                             lhs25:
-                            Labellhs25Mask := WandDefLHSMask;
                             Labellhs25Heap := WandDefLHSHeap;
+                            Labellhs25Mask := WandDefLHSMask;
                             assume state(WandDefLHSHeap, WandDefLHSMask);
                           havoc WandDefRHSHeap;
                           WandDefRHSMask := ZeroMask;
@@ -2692,8 +2692,8 @@ procedure test4(x: Ref) returns ()
             b_35 := b_35 && state(Ops_15Heap, Ops_15Mask);
             
             // -- check if LHS holds and remove permissions 
-              ExhaleWellDef0Mask := Ops_15Mask;
               ExhaleWellDef0Heap := Ops_15Heap;
+              ExhaleWellDef0Mask := Ops_15Mask;
               havoc Used_18Heap;
               Used_18Mask := ZeroMask;
               b_38 := b_38 && state(Used_18Heap, Used_18Mask);
@@ -2963,8 +2963,8 @@ procedure test4(x: Ref) returns ()
                 
                 // -- Translating statement: label lhs26 -- SnapshotsLocallyPackaged.vpr@68.39--68.60
                   lhs26:
-                  Labellhs26Mask := WandDefLHSMask;
                   Labellhs26Heap := WandDefLHSHeap;
+                  Labellhs26Mask := WandDefLHSMask;
                   assume state(WandDefLHSHeap, WandDefLHSMask);
                 havoc WandDefRHSHeap;
                 WandDefRHSMask := ZeroMask;
@@ -3038,8 +3038,8 @@ procedure test4(x: Ref) returns ()
   //   acc(x.f, write) && (acc(x.f, write) --* acc(x.f, write)) -- SnapshotsLocallyPackaged.vpr@75.5--75.59
     
     // -- check if wand is held and remove an instance
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       // permLe
       assert {:msg "  Applying wand might fail. Magic wand instance not found. (SnapshotsLocallyPackaged.vpr@75.5--75.59) [139995]"}
         FullPerm <= Mask[null, wand_5(x, FullPerm, x, FullPerm, x, FullPerm, x, FullPerm)];
@@ -3047,8 +3047,8 @@ procedure test4(x: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- check if LHS holds and remove permissions 
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Applying wand might fail. There might be insufficient permission to access x.f (SnapshotsLocallyPackaged.vpr@75.5--75.59) [139997]"}
@@ -3080,8 +3080,8 @@ procedure test4(x: Ref) returns ()
   // -- Translating statement: apply acc(x.f, write) --* acc(x.f, write) -- SnapshotsLocallyPackaged.vpr@77.5--77.32
     
     // -- check if wand is held and remove an instance
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       // permLe
       assert {:msg "  Applying wand might fail. Magic wand instance not found. (SnapshotsLocallyPackaged.vpr@77.5--77.32) [140000]"}
         FullPerm <= Mask[null, wand_6(x, FullPerm, x, FullPerm)];
@@ -3089,8 +3089,8 @@ procedure test4(x: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- check if LHS holds and remove permissions 
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Applying wand might fail. There might be insufficient permission to access x.f (SnapshotsLocallyPackaged.vpr@77.5--77.32) [140002]"}
@@ -3112,8 +3112,8 @@ procedure test4(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert x.f == 2 -- SnapshotsLocallyPackaged.vpr@78.5--78.20
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of x.f == 2
       assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (SnapshotsLocallyPackaged.vpr@78.12--78.20) [140004]"}
@@ -3123,8 +3123,8 @@ procedure test4(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- SnapshotsLocallyPackaged.vpr@81.5--81.17
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion false might not hold. (SnapshotsLocallyPackaged.vpr@81.12--81.17) [140006]"}
       false;
     assume state(Heap, Mask);
@@ -3138,16 +3138,16 @@ procedure test5(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var Ops_17Heap: HeapType;
   var Ops_17Mask: MaskType;
   var b_46: bool;
   var Used_21Heap: HeapType;
   var Used_21Mask: MaskType;
   var b_45: bool;
-  var Labellhs29Mask: MaskType;
   var Labellhs29Heap: HeapType;
+  var Labellhs29Mask: MaskType;
   var boolCur_8: bool;
   var Used_22Heap: HeapType;
   var Used_22Mask: MaskType;
@@ -3161,8 +3161,8 @@ procedure test5(x: Ref) returns ()
   var b_48: bool;
   var Result_16Heap: HeapType;
   var Result_16Mask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -3188,8 +3188,8 @@ procedure test5(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: package acc(x.f, 1 / 2) && x.f == 1 --* acc(x.f, write) && false {
   // } -- SnapshotsLocallyPackaged.vpr@86.5--86.60
@@ -3223,8 +3223,8 @@ procedure test5(x: Ref) returns ()
     
     // -- Translating statement: label lhs29 -- SnapshotsLocallyPackaged.vpr@86.13--86.60
       lhs29:
-      Labellhs29Mask := Ops_17Mask;
       Labellhs29Heap := Ops_17Heap;
+      Labellhs29Mask := Ops_17Mask;
       b_46 := b_46 && state(Ops_17Heap, Ops_17Mask);
     boolCur_8 := true;
     // Translating exec of non-ghost operationacc(x.f, write) && false
@@ -3297,8 +3297,8 @@ procedure test5(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- SnapshotsLocallyPackaged.vpr@89.5--89.17
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion false might not hold. (SnapshotsLocallyPackaged.vpr@89.12--89.17) [140013]"}
       false;
     assume state(Heap, Mask);

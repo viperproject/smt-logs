@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-04 01:16:19
+// Date:         2025-01-07 14:30:54
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0630.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0630-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -360,14 +360,14 @@ procedure tt#definedness(self: Ref) returns ()
 procedure m_test1() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var _1: Ref;
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var Unfolding1Heap: HeapType;
   var Unfolding1Mask: MaskType;
   var newPMask: PMaskType;
@@ -380,8 +380,8 @@ procedure m_test1() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[_1, $allocated];
@@ -402,8 +402,8 @@ procedure m_test1() returns ()
       UnfoldingMask := Mask;
       assume pred#trigger(UnfoldingHeap, pred_3(_1));
       assume UnfoldingHeap[null, pred_3(_1)] == CombineFrames(FrameFragment(UnfoldingHeap[_1, discriminant]), CombineFrames(FrameFragment(UnfoldingHeap[_1, field1]), FrameFragment((if UnfoldingHeap[_1, discriminant] == 4 then UnfoldingHeap[null, predFive(UnfoldingHeap[_1, field1])] else FrameFragment(EmptyFrame)))));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Inhale might fail. There might be insufficient permission to access pred(_1) (0630.vpr@28.11--29.44) [206777]"}
@@ -434,8 +434,8 @@ procedure m_test1() returns ()
         Unfolding1Mask := UnfoldingMask;
         assume predFive#trigger(Unfolding1Heap, predFive(Unfolding1Heap[_1, field1]));
         assume Unfolding1Heap[null, predFive(Unfolding1Heap[_1, field1])] == EmptyFrame;
-        ExhaleWellDef0Heap := Unfolding1Heap;
         ExhaleWellDef0Mask := Unfolding1Mask;
+        ExhaleWellDef0Heap := Unfolding1Heap;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Inhale might fail. There might be insufficient permission to access predFive(_1.field1) (0630.vpr@28.11--29.44) [206779]"}
@@ -469,8 +469,8 @@ procedure m_test1() returns ()
       UnfoldingMask := Mask;
       assume pred#trigger(UnfoldingHeap, pred_3(_1));
       assume UnfoldingHeap[null, pred_3(_1)] == CombineFrames(FrameFragment(UnfoldingHeap[_1, discriminant]), CombineFrames(FrameFragment(UnfoldingHeap[_1, field1]), FrameFragment((if UnfoldingHeap[_1, discriminant] == 4 then UnfoldingHeap[null, predFive(UnfoldingHeap[_1, field1])] else FrameFragment(EmptyFrame)))));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       UnfoldingMask := UnfoldingMask[null, pred_3(_1):=UnfoldingMask[null, pred_3(_1)] - perm];
       perm := FullPerm;
@@ -495,8 +495,8 @@ procedure m_test1() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- 0630.vpr@32.3--32.15
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion false might not hold. (0630.vpr@32.10--32.15) [206781]"}
       false;
     assume state(Heap, Mask);

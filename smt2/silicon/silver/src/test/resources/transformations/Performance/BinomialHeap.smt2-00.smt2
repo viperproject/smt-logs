@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-04 00:29:48
+; Started: 2025-01-07 13:43:38
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -169,21 +169,21 @@
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (= (treeDegree%limited s@$ this@0@00) (treeDegree s@$ this@0@00))
   :pattern ((treeDegree s@$ this@0@00))
-  :qid |quant-u-15814|)))
+  :qid |quant-u-15753|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (treeDegree%stateless this@0@00)
   :pattern ((treeDegree%limited s@$ this@0@00))
-  :qid |quant-u-15815|)))
+  :qid |quant-u-15754|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (let ((result@1@00 (treeDegree%limited s@$ this@0@00))) (=>
     (treeDegree%precondition s@$ this@0@00)
     (<= 0 result@1@00)))
   :pattern ((treeDegree%limited s@$ this@0@00))
-  :qid |quant-u-15836|)))
+  :qid |quant-u-15775|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (let ((result@1@00 (treeDegree%limited s@$ this@0@00))) true)
   :pattern ((treeDegree%limited s@$ this@0@00))
-  :qid |quant-u-15837|)))
+  :qid |quant-u-15776|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -582,11 +582,11 @@
       (treeDegree s@$ this@0@00)
       ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second s@$)))))
   :pattern ((treeDegree s@$ this@0@00))
-  :qid |quant-u-15838|)))
+  :qid |quant-u-15777|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   true
   :pattern ((treeDegree s@$ this@0@00))
-  :qid |quant-u-15839|)))
+  :qid |quant-u-15778|)))
 ; ---------- FUNCTION segLength----------
 (declare-fun this@2@00 () $Ref)
 (declare-fun last@3@00 () $Ref)
@@ -603,21 +603,21 @@
     (segLength%limited s@$ this@2@00 last@3@00)
     (segLength s@$ this@2@00 last@3@00))
   :pattern ((segLength s@$ this@2@00 last@3@00))
-  :qid |quant-u-15816|)))
+  :qid |quant-u-15755|)))
 (assert (forall ((s@$ $Snap) (this@2@00 $Ref) (last@3@00 $Ref)) (!
   (segLength%stateless this@2@00 last@3@00)
   :pattern ((segLength%limited s@$ this@2@00 last@3@00))
-  :qid |quant-u-15817|)))
+  :qid |quant-u-15756|)))
 (assert (forall ((s@$ $Snap) (this@2@00 $Ref) (last@3@00 $Ref)) (!
   (let ((result@4@00 (segLength%limited s@$ this@2@00 last@3@00))) (=>
     (segLength%precondition s@$ this@2@00 last@3@00)
     (<= 0 result@4@00)))
   :pattern ((segLength%limited s@$ this@2@00 last@3@00))
-  :qid |quant-u-15840|)))
+  :qid |quant-u-15779|)))
 (assert (forall ((s@$ $Snap) (this@2@00 $Ref) (last@3@00 $Ref)) (!
   (let ((result@4@00 (segLength%limited s@$ this@2@00 last@3@00))) true)
   :pattern ((segLength%limited s@$ this@2@00 last@3@00))
-  :qid |quant-u-15841|)))
+  :qid |quant-u-15780|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -916,7 +916,7 @@
           (segLength%limited ($Snap.first ($Snap.second ($Snap.second s@$))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$))) last@3@00)))))
   :pattern ((segLength s@$ this@2@00 last@3@00))
   :pattern ((segLength%stateless this@2@00 last@3@00) (heapseg%trigger s@$ this@2@00 last@3@00))
-  :qid |quant-u-15842|)))
+  :qid |quant-u-15781|)))
 (assert (forall ((s@$ $Snap) (this@2@00 $Ref) (last@3@00 $Ref)) (!
   (=>
     (segLength%precondition s@$ this@2@00 last@3@00)
@@ -925,7 +925,7 @@
       true
       (segLength%precondition ($Snap.first ($Snap.second ($Snap.second s@$))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$))) last@3@00)))
   :pattern ((segLength s@$ this@2@00 last@3@00))
-  :qid |quant-u-15843|)))
+  :qid |quant-u-15782|)))
 ; ---------- FUNCTION segDegree----------
 (declare-fun this@5@00 () $Ref)
 (declare-fun last@6@00 () $Ref)
@@ -961,21 +961,21 @@
     (segDegree%limited s@$ this@5@00 last@6@00 index@7@00)
     (segDegree s@$ this@5@00 last@6@00 index@7@00))
   :pattern ((segDegree s@$ this@5@00 last@6@00 index@7@00))
-  :qid |quant-u-15818|)))
+  :qid |quant-u-15757|)))
 (assert (forall ((s@$ $Snap) (this@5@00 $Ref) (last@6@00 $Ref) (index@7@00 Int)) (!
   (segDegree%stateless this@5@00 last@6@00 index@7@00)
   :pattern ((segDegree%limited s@$ this@5@00 last@6@00 index@7@00))
-  :qid |quant-u-15819|)))
+  :qid |quant-u-15758|)))
 (assert (forall ((s@$ $Snap) (this@5@00 $Ref) (last@6@00 $Ref) (index@7@00 Int)) (!
   (let ((result@8@00 (segDegree%limited s@$ this@5@00 last@6@00 index@7@00))) (=>
     (segDegree%precondition s@$ this@5@00 last@6@00 index@7@00)
     (<= 0 result@8@00)))
   :pattern ((segDegree%limited s@$ this@5@00 last@6@00 index@7@00))
-  :qid |quant-u-15844|)))
+  :qid |quant-u-15783|)))
 (assert (forall ((s@$ $Snap) (this@5@00 $Ref) (last@6@00 $Ref) (index@7@00 Int)) (!
   (let ((result@8@00 (segDegree%limited s@$ this@5@00 last@6@00 index@7@00))) true)
   :pattern ((segDegree%limited s@$ this@5@00 last@6@00 index@7@00))
-  :qid |quant-u-15845|)))
+  :qid |quant-u-15784|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (= s@$ ($Snap.combine ($Snap.first s@$) ($Snap.second s@$))))
@@ -1365,7 +1365,7 @@
           1)))))
   :pattern ((segDegree s@$ this@5@00 last@6@00 index@7@00))
   :pattern ((segDegree%stateless this@5@00 last@6@00 index@7@00) (heapseg%trigger ($Snap.first s@$) this@5@00 last@6@00))
-  :qid |quant-u-15846|)))
+  :qid |quant-u-15785|)))
 (assert (forall ((s@$ $Snap) (this@5@00 $Ref) (last@6@00 $Ref) (index@7@00 Int)) (!
   (=>
     (segDegree%precondition s@$ this@5@00 last@6@00 index@7@00)
@@ -1378,7 +1378,7 @@
         index@7@00
         1))))
   :pattern ((segDegree s@$ this@5@00 last@6@00 index@7@00))
-  :qid |quant-u-15847|)))
+  :qid |quant-u-15786|)))
 ; ---------- FUNCTION treeParent----------
 (declare-fun this@9@00 () $Ref)
 (declare-fun result@10@00 () $Ref)
@@ -1388,11 +1388,11 @@
 (assert (forall ((s@$ $Snap) (this@9@00 $Ref)) (!
   (= (treeParent%limited s@$ this@9@00) (treeParent s@$ this@9@00))
   :pattern ((treeParent s@$ this@9@00))
-  :qid |quant-u-15820|)))
+  :qid |quant-u-15759|)))
 (assert (forall ((s@$ $Snap) (this@9@00 $Ref)) (!
   (treeParent%stateless this@9@00)
   :pattern ((treeParent%limited s@$ this@9@00))
-  :qid |quant-u-15821|)))
+  :qid |quant-u-15760|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -1784,11 +1784,11 @@
       (treeParent s@$ this@9@00)
       ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second s@$)))))))
   :pattern ((treeParent s@$ this@9@00))
-  :qid |quant-u-15848|)))
+  :qid |quant-u-15787|)))
 (assert (forall ((s@$ $Snap) (this@9@00 $Ref)) (!
   true
   :pattern ((treeParent s@$ this@9@00))
-  :qid |quant-u-15849|)))
+  :qid |quant-u-15788|)))
 ; ---------- FUNCTION presorted----------
 (declare-fun this@11@00 () $Ref)
 (declare-fun last@12@00 () $Ref)
@@ -1801,11 +1801,11 @@
     (presorted%limited s@$ this@11@00 last@12@00)
     (presorted s@$ this@11@00 last@12@00))
   :pattern ((presorted s@$ this@11@00 last@12@00))
-  :qid |quant-u-15822|)))
+  :qid |quant-u-15761|)))
 (assert (forall ((s@$ $Snap) (this@11@00 $Ref) (last@12@00 $Ref)) (!
   (presorted%stateless this@11@00 last@12@00)
   :pattern ((presorted%limited s@$ this@11@00 last@12@00))
-  :qid |quant-u-15823|)))
+  :qid |quant-u-15762|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -2620,7 +2620,7 @@
             (segDegree ($Snap.combine s@$ ($Snap.combine $Snap.unit $Snap.unit)) this@11@00 last@12@00 2))))))
   :pattern ((presorted s@$ this@11@00 last@12@00))
   :pattern ((presorted%stateless this@11@00 last@12@00) (heapseg%trigger s@$ this@11@00 last@12@00))
-  :qid |quant-u-15850|)))
+  :qid |quant-u-15789|)))
 (assert (forall ((s@$ $Snap) (this@11@00 $Ref) (last@12@00 $Ref)) (!
   (=>
     (presorted%precondition s@$ this@11@00 last@12@00)
@@ -2682,7 +2682,7 @@
                 s@$
                 ($Snap.combine $Snap.unit $Snap.unit)) this@11@00 last@12@00 2)))))))
   :pattern ((presorted s@$ this@11@00 last@12@00))
-  :qid |quant-u-15851|)))
+  :qid |quant-u-15790|)))
 ; ---------- FUNCTION segParent----------
 (declare-fun this@14@00 () $Ref)
 (declare-fun last@15@00 () $Ref)
@@ -2699,11 +2699,11 @@
     (segParent%limited s@$ this@14@00 last@15@00)
     (segParent s@$ this@14@00 last@15@00))
   :pattern ((segParent s@$ this@14@00 last@15@00))
-  :qid |quant-u-15824|)))
+  :qid |quant-u-15763|)))
 (assert (forall ((s@$ $Snap) (this@14@00 $Ref) (last@15@00 $Ref)) (!
   (segParent%stateless this@14@00 last@15@00)
   :pattern ((segParent%limited s@$ this@14@00 last@15@00))
-  :qid |quant-u-15825|)))
+  :qid |quant-u-15764|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (= s@$ ($Snap.combine ($Snap.first s@$) ($Snap.second s@$))))
@@ -2926,13 +2926,13 @@
       (treeParent ($Snap.first ($Snap.first s@$)) this@14@00)))
   :pattern ((segParent s@$ this@14@00 last@15@00))
   :pattern ((segParent%stateless this@14@00 last@15@00) (heapseg%trigger ($Snap.first s@$) this@14@00 last@15@00))
-  :qid |quant-u-15852|)))
+  :qid |quant-u-15791|)))
 (assert (forall ((s@$ $Snap) (this@14@00 $Ref) (last@15@00 $Ref)) (!
   (=>
     (segParent%precondition s@$ this@14@00 last@15@00)
     (treeParent%precondition ($Snap.first ($Snap.first s@$)) this@14@00))
   :pattern ((segParent s@$ this@14@00 last@15@00))
-  :qid |quant-u-15853|)))
+  :qid |quant-u-15792|)))
 ; ---------- FUNCTION sorted----------
 (declare-fun this@17@00 () $Ref)
 (declare-fun last@18@00 () $Ref)
@@ -2991,23 +2991,23 @@
     (sorted%limited s@$ this@17@00 last@18@00)
     (sorted s@$ this@17@00 last@18@00))
   :pattern ((sorted s@$ this@17@00 last@18@00))
-  :qid |quant-u-15826|)))
+  :qid |quant-u-15765|)))
 (assert (forall ((s@$ $Snap) (this@17@00 $Ref) (last@18@00 $Ref)) (!
   (sorted%stateless this@17@00 last@18@00)
   :pattern ((sorted%limited s@$ this@17@00 last@18@00))
-  :qid |quant-u-15827|)))
+  :qid |quant-u-15766|)))
 (assert (forall ((s@$ $Snap) (this@17@00 $Ref) (last@18@00 $Ref)) (!
   (let ((result@19@00 (sorted%limited s@$ this@17@00 last@18@00))) (=>
     (and (sorted%precondition s@$ this@17@00 last@18@00) result@19@00)
     (presorted s@$ this@17@00 last@18@00)))
   :pattern ((sorted%limited s@$ this@17@00 last@18@00))
-  :qid |quant-u-15854|)))
+  :qid |quant-u-15793|)))
 (assert (forall ((s@$ $Snap) (this@17@00 $Ref) (last@18@00 $Ref)) (!
   (let ((result@19@00 (sorted%limited s@$ this@17@00 last@18@00))) (=>
     (and (sorted%precondition s@$ this@17@00 last@18@00) result@19@00)
     (presorted%precondition s@$ this@17@00 last@18@00)))
   :pattern ((sorted%limited s@$ this@17@00 last@18@00))
-  :qid |quant-u-15855|)))
+  :qid |quant-u-15794|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -3530,7 +3530,7 @@
           (sorted%limited ($Snap.first ($Snap.second ($Snap.second s@$))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$))) last@18@00)))))
   :pattern ((sorted s@$ this@17@00 last@18@00))
   :pattern ((sorted%stateless this@17@00 last@18@00) (heapseg%trigger s@$ this@17@00 last@18@00))
-  :qid |quant-u-15856|)))
+  :qid |quant-u-15795|)))
 (assert (forall ((s@$ $Snap) (this@17@00 $Ref) (last@18@00 $Ref)) (!
   (=>
     (sorted%precondition s@$ this@17@00 last@18@00)
@@ -3552,7 +3552,7 @@
                 ($Snap.combine $Snap.unit $Snap.unit)) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$))) last@18@00 0))
             (sorted%precondition ($Snap.first ($Snap.second ($Snap.second s@$))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$))) last@18@00))))))
   :pattern ((sorted s@$ this@17@00 last@18@00))
-  :qid |quant-u-15857|)))
+  :qid |quant-u-15796|)))
 ; ---------- FUNCTION treeKey----------
 (declare-fun this@20@00 () $Ref)
 (declare-fun result@21@00 () Int)
@@ -3562,11 +3562,11 @@
 (assert (forall ((s@$ $Snap) (this@20@00 $Ref)) (!
   (= (treeKey%limited s@$ this@20@00) (treeKey s@$ this@20@00))
   :pattern ((treeKey s@$ this@20@00))
-  :qid |quant-u-15828|)))
+  :qid |quant-u-15767|)))
 (assert (forall ((s@$ $Snap) (this@20@00 $Ref)) (!
   (treeKey%stateless this@20@00)
   :pattern ((treeKey%limited s@$ this@20@00))
-  :qid |quant-u-15829|)))
+  :qid |quant-u-15768|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -3954,11 +3954,11 @@
     (treeKey%precondition s@$ this@20@00)
     (= (treeKey s@$ this@20@00) ($SortWrappers.$SnapToInt ($Snap.first s@$))))
   :pattern ((treeKey s@$ this@20@00))
-  :qid |quant-u-15858|)))
+  :qid |quant-u-15797|)))
 (assert (forall ((s@$ $Snap) (this@20@00 $Ref)) (!
   true
   :pattern ((treeKey s@$ this@20@00))
-  :qid |quant-u-15859|)))
+  :qid |quant-u-15798|)))
 ; ---------- FUNCTION validChildren----------
 (declare-fun this@22@00 () $Ref)
 (declare-fun last@23@00 () $Ref)
@@ -3971,11 +3971,11 @@
     (validChildren%limited s@$ this@22@00 last@23@00)
     (validChildren s@$ this@22@00 last@23@00))
   :pattern ((validChildren s@$ this@22@00 last@23@00))
-  :qid |quant-u-15830|)))
+  :qid |quant-u-15769|)))
 (assert (forall ((s@$ $Snap) (this@22@00 $Ref) (last@23@00 $Ref)) (!
   (validChildren%stateless this@22@00 last@23@00)
   :pattern ((validChildren%limited s@$ this@22@00 last@23@00))
-  :qid |quant-u-15831|)))
+  :qid |quant-u-15770|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -4480,7 +4480,7 @@
           (validChildren%limited ($Snap.first ($Snap.second ($Snap.second s@$))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$))) last@23@00)))))
   :pattern ((validChildren s@$ this@22@00 last@23@00))
   :pattern ((validChildren%stateless this@22@00 last@23@00) (heapseg%trigger s@$ this@22@00 last@23@00))
-  :qid |quant-u-15860|)))
+  :qid |quant-u-15799|)))
 (assert (forall ((s@$ $Snap) (this@22@00 $Ref) (last@23@00 $Ref)) (!
   (=>
     (validChildren%precondition s@$ this@22@00 last@23@00)
@@ -4504,7 +4504,7 @@
                 1))
             (validChildren%precondition ($Snap.first ($Snap.second ($Snap.second s@$))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$))) last@23@00))))))
   :pattern ((validChildren s@$ this@22@00 last@23@00))
-  :qid |quant-u-15861|)))
+  :qid |quant-u-15800|)))
 ; ---------- FUNCTION segSize----------
 (declare-fun this@25@00 () $Ref)
 (declare-fun last@26@00 () $Ref)
@@ -4556,11 +4556,11 @@
     (segSize%limited s@$ this@25@00 last@26@00)
     (segSize s@$ this@25@00 last@26@00))
   :pattern ((segSize s@$ this@25@00 last@26@00))
-  :qid |quant-u-15832|)))
+  :qid |quant-u-15771|)))
 (assert (forall ((s@$ $Snap) (this@25@00 $Ref) (last@26@00 $Ref)) (!
   (segSize%stateless this@25@00 last@26@00)
   :pattern ((segSize%limited s@$ this@25@00 last@26@00))
-  :qid |quant-u-15833|)))
+  :qid |quant-u-15772|)))
 (assert (forall ((s@$ $Snap) (this@25@00 $Ref) (last@26@00 $Ref)) (!
   (let ((result@27@00 (segSize%limited s@$ this@25@00 last@26@00))) (=>
     (and
@@ -4568,11 +4568,11 @@
       (= this@25@00 last@26@00))
     (= result@27@00 0)))
   :pattern ((segSize%limited s@$ this@25@00 last@26@00))
-  :qid |quant-u-15862|)))
+  :qid |quant-u-15801|)))
 (assert (forall ((s@$ $Snap) (this@25@00 $Ref) (last@26@00 $Ref)) (!
   (let ((result@27@00 (segSize%limited s@$ this@25@00 last@26@00))) true)
   :pattern ((segSize%limited s@$ this@25@00 last@26@00))
-  :qid |quant-u-15863|)))
+  :qid |quant-u-15802|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -4913,7 +4913,7 @@
           (segSize%limited ($Snap.first ($Snap.second ($Snap.second s@$))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$))) last@26@00)))))
   :pattern ((segSize s@$ this@25@00 last@26@00))
   :pattern ((segSize%stateless this@25@00 last@26@00) (heapseg%trigger s@$ this@25@00 last@26@00))
-  :qid |quant-u-15864|)))
+  :qid |quant-u-15803|)))
 (assert (forall ((s@$ $Snap) (this@25@00 $Ref) (last@26@00 $Ref)) (!
   (=>
     (segSize%precondition s@$ this@25@00 last@26@00)
@@ -4924,7 +4924,7 @@
         (treeSize%precondition ($Snap.first s@$) this@25@00)
         (segSize%precondition ($Snap.first ($Snap.second ($Snap.second s@$))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$))) last@26@00))))
   :pattern ((segSize s@$ this@25@00 last@26@00))
-  :qid |quant-u-15865|)))
+  :qid |quant-u-15804|)))
 ; ---------- FUNCTION treeSize----------
 (declare-fun this@28@00 () $Ref)
 (declare-fun result@29@00 () Int)
@@ -4934,11 +4934,11 @@
 (assert (forall ((s@$ $Snap) (this@28@00 $Ref)) (!
   (= (treeSize%limited s@$ this@28@00) (treeSize s@$ this@28@00))
   :pattern ((treeSize s@$ this@28@00))
-  :qid |quant-u-15834|)))
+  :qid |quant-u-15773|)))
 (assert (forall ((s@$ $Snap) (this@28@00 $Ref)) (!
   (treeSize%stateless this@28@00)
   :pattern ((treeSize%limited s@$ this@28@00))
-  :qid |quant-u-15835|)))
+  :qid |quant-u-15774|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -5398,7 +5398,7 @@
           (segSize%limited ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second s@$)))))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second s@$)))) $Ref.null)))))
   :pattern ((treeSize s@$ this@28@00))
   :pattern ((treeSize%stateless this@28@00) (tree%trigger s@$ this@28@00))
-  :qid |quant-u-15866|)))
+  :qid |quant-u-15805|)))
 (assert (forall ((s@$ $Snap) (this@28@00 $Ref)) (!
   (=>
     (treeSize%precondition s@$ this@28@00)
@@ -5407,7 +5407,7 @@
       true
       (segSize%precondition ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second s@$)))))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second s@$)))) $Ref.null)))
   :pattern ((treeSize s@$ this@28@00))
-  :qid |quant-u-15867|)))
+  :qid |quant-u-15806|)))
 ; ---------- tree ----------
 (declare-const this@35@00 $Ref)
 (push) ; 1

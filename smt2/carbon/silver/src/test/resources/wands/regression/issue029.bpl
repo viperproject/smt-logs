@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-04 00:57:26
+// Date:         2025-01-07 14:11:36
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/issue029.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/issue029-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -575,8 +575,8 @@ procedure LLC#definedness(x: Ref, i: int) returns ()
 procedure test01(b_24: bool) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var Ops_1Heap: HeapType;
   var Ops_1Mask: MaskType;
   var b_1_1: bool;
@@ -586,11 +586,11 @@ procedure test01(b_24: bool) returns ()
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newPMask: PMaskType;
-  var Labellhs1Mask: MaskType;
   var Labellhs1Heap: HeapType;
+  var Labellhs1Mask: MaskType;
   var boolCur: bool;
   var Used_1Heap: HeapType;
   var Used_1Mask: MaskType;
@@ -604,8 +604,8 @@ procedure test01(b_24: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: package acc(Q(b), write) && (unfolding acc(Q(b), write) in true) --* true {
   // } -- issue029.vpr@11.3--11.57
@@ -631,8 +631,8 @@ procedure test01(b_24: bool) returns ()
             UnfoldingMask := Ops_1Mask;
             b_1_1 := b_1_1 && Q#trigger(UnfoldingHeap, Q(b_24));
             b_1_1 := b_1_1 && UnfoldingHeap[null, Q(b_24)] == FrameFragment((if b_24 then UnfoldingHeap[null, P()] else EmptyFrame));
-            ExhaleWellDef0Mask := UnfoldingMask;
             ExhaleWellDef0Heap := UnfoldingHeap;
+            ExhaleWellDef0Mask := UnfoldingMask;
             perm := FullPerm;
             if (perm != NoPerm) {
               assert {:msg "  Packaging wand might fail. There might be insufficient permission to access Q(b) (issue029.vpr@11.3--11.57) [129114]"}
@@ -666,8 +666,8 @@ procedure test01(b_24: bool) returns ()
           UnfoldingMask := Ops_1Mask;
           b_1_1 := b_1_1 && Q#trigger(UnfoldingHeap, Q(b_24));
           b_1_1 := b_1_1 && UnfoldingHeap[null, Q(b_24)] == FrameFragment((if b_24 then UnfoldingHeap[null, P()] else EmptyFrame));
-          ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
+          ExhaleWellDef0Mask := UnfoldingMask;
           perm := FullPerm;
           UnfoldingMask := UnfoldingMask[null, Q(b_24):=UnfoldingMask[null, Q(b_24)] - perm];
           if (b_24) {
@@ -698,8 +698,8 @@ procedure test01(b_24: bool) returns ()
     
     // -- Translating statement: label lhs1 -- issue029.vpr@11.11--11.57
       lhs1:
-      Labellhs1Mask := Ops_1Mask;
       Labellhs1Heap := Ops_1Heap;
+      Labellhs1Mask := Ops_1Mask;
       b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);
     boolCur := true;
     // Translating exec of non-ghost operationtrue
@@ -719,8 +719,8 @@ procedure test01(b_24: bool) returns ()
 procedure test04(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var perm: Perm;
   var Ops_3Heap: HeapType;
   var Ops_3Mask: MaskType;
@@ -730,13 +730,13 @@ procedure test04(x: Ref) returns ()
   var b_3: bool;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newPMask: PMaskType;
   var Unfolding1Heap: HeapType;
   var Unfolding1Mask: MaskType;
-  var Labellhs3Mask: MaskType;
   var Labellhs3Heap: HeapType;
+  var Labellhs3Mask: MaskType;
   var boolCur_1: bool;
   var Used_3Heap: HeapType;
   var Used_3Mask: MaskType;
@@ -751,8 +751,8 @@ procedure test04(x: Ref) returns ()
   var b_6: bool;
   var ResultHeap: HeapType;
   var ResultMask: MaskType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -766,8 +766,8 @@ procedure test04(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale acc(LL(x), write) -- issue029.vpr@28.3--28.20
     perm := FullPerm;
@@ -805,8 +805,8 @@ procedure test04(x: Ref) returns ()
               UnfoldingMask := Ops_3Mask;
               b_4 := b_4 && LL#trigger(UnfoldingHeap, LL(x));
               b_4 := b_4 && UnfoldingHeap[null, LL(x)] == CombineFrames(FrameFragment(UnfoldingHeap[x, val]), CombineFrames(FrameFragment(UnfoldingHeap[x, next]), FrameFragment((if UnfoldingHeap[x, next] != null then UnfoldingHeap[null, LL(UnfoldingHeap[x, next])] else EmptyFrame))));
-              ExhaleWellDef0Mask := UnfoldingMask;
               ExhaleWellDef0Heap := UnfoldingHeap;
+              ExhaleWellDef0Mask := UnfoldingMask;
               perm := FullPerm;
               if (perm != NoPerm) {
                 assert {:msg "  Packaging wand might fail. There might be insufficient permission to access LL(x) (issue029.vpr@29.3--29.20) [129117]"}
@@ -852,8 +852,8 @@ procedure test04(x: Ref) returns ()
             UnfoldingMask := Ops_3Mask;
             b_4 := b_4 && LL#trigger(UnfoldingHeap, LL(x));
             b_4 := b_4 && UnfoldingHeap[null, LL(x)] == CombineFrames(FrameFragment(UnfoldingHeap[x, val]), CombineFrames(FrameFragment(UnfoldingHeap[x, next]), FrameFragment((if UnfoldingHeap[x, next] != null then UnfoldingHeap[null, LL(UnfoldingHeap[x, next])] else EmptyFrame))));
-            ExhaleWellDef0Mask := UnfoldingMask;
             ExhaleWellDef0Heap := UnfoldingHeap;
+            ExhaleWellDef0Mask := UnfoldingMask;
             perm := FullPerm;
             UnfoldingMask := UnfoldingMask[null, LL(x):=UnfoldingMask[null, LL(x)] - perm];
             perm := FullPerm;
@@ -897,8 +897,8 @@ procedure test04(x: Ref) returns ()
               UnfoldingMask := Ops_3Mask;
               b_4 := b_4 && LL#trigger(UnfoldingHeap, LL(x));
               b_4 := b_4 && UnfoldingHeap[null, LL(x)] == CombineFrames(FrameFragment(UnfoldingHeap[x, val]), CombineFrames(FrameFragment(UnfoldingHeap[x, next]), FrameFragment((if UnfoldingHeap[x, next] != null then UnfoldingHeap[null, LL(UnfoldingHeap[x, next])] else EmptyFrame))));
-              ExhaleWellDef0Mask := UnfoldingMask;
               ExhaleWellDef0Heap := UnfoldingHeap;
+              ExhaleWellDef0Mask := UnfoldingMask;
               perm := FullPerm;
               if (perm != NoPerm) {
                 assert {:msg "  Packaging wand might fail. There might be insufficient permission to access LL(x) (issue029.vpr@29.3--29.20) [129119]"}
@@ -929,8 +929,8 @@ procedure test04(x: Ref) returns ()
                 Unfolding1Mask := UnfoldingMask;
                 b_4 := b_4 && LL#trigger(Unfolding1Heap, LL(Unfolding1Heap[x, next]));
                 b_4 := b_4 && Unfolding1Heap[null, LL(Unfolding1Heap[x, next])] == CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[x, next], val]), CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[x, next], next]), FrameFragment((if Unfolding1Heap[Unfolding1Heap[x, next], next] != null then Unfolding1Heap[null, LL(Unfolding1Heap[Unfolding1Heap[x, next], next])] else EmptyFrame))));
-                ExhaleWellDef0Mask := Unfolding1Mask;
                 ExhaleWellDef0Heap := Unfolding1Heap;
+                ExhaleWellDef0Mask := Unfolding1Mask;
                 perm := FullPerm;
                 if (perm != NoPerm) {
                   assert {:msg "  Packaging wand might fail. There might be insufficient permission to access LL(x.next) (issue029.vpr@29.3--29.20) [129121]"}
@@ -1005,8 +1005,8 @@ procedure test04(x: Ref) returns ()
             UnfoldingMask := Ops_3Mask;
             b_4 := b_4 && LL#trigger(UnfoldingHeap, LL(x));
             b_4 := b_4 && UnfoldingHeap[null, LL(x)] == CombineFrames(FrameFragment(UnfoldingHeap[x, val]), CombineFrames(FrameFragment(UnfoldingHeap[x, next]), FrameFragment((if UnfoldingHeap[x, next] != null then UnfoldingHeap[null, LL(UnfoldingHeap[x, next])] else EmptyFrame))));
-            ExhaleWellDef0Mask := UnfoldingMask;
             ExhaleWellDef0Heap := UnfoldingHeap;
+            ExhaleWellDef0Mask := UnfoldingMask;
             perm := FullPerm;
             UnfoldingMask := UnfoldingMask[null, LL(x):=UnfoldingMask[null, LL(x)] - perm];
             perm := FullPerm;
@@ -1059,8 +1059,8 @@ procedure test04(x: Ref) returns ()
     
     // -- Translating statement: label lhs3 -- issue029.vpr@29.11--29.20
       lhs3:
-      Labellhs3Mask := Ops_3Mask;
       Labellhs3Heap := Ops_3Heap;
+      Labellhs3Mask := Ops_3Mask;
       b_4 := b_4 && state(Ops_3Heap, Ops_3Mask);
     boolCur_1 := true;
     // Translating exec of non-ghost operationacc(LL(x), write)
@@ -1145,8 +1145,8 @@ procedure test04(x: Ref) returns ()
   //   acc(LL(x), write) -- issue029.vpr@32.3--32.18
     
     // -- check if wand is held and remove an instance
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       // permLe
       assert {:msg "  Applying wand might fail. Magic wand instance not found. (issue029.vpr@32.3--32.18) [129127]"}
         FullPerm <= Mask[null, wand_1(x, x, x, 10, x, x, null, x, x, 20, x)];
@@ -1154,8 +1154,8 @@ procedure test04(x: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- check if LHS holds and remove permissions 
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Applying wand might fail. There might be insufficient permission to access LL(x) (issue029.vpr@32.3--32.18) [129129]"}
@@ -1168,8 +1168,8 @@ procedure test04(x: Ref) returns ()
         UnfoldingMask := ExhaleWellDef0Mask;
         assume LL#trigger(UnfoldingHeap, LL(x));
         assume UnfoldingHeap[null, LL(x)] == CombineFrames(FrameFragment(UnfoldingHeap[x, val]), CombineFrames(FrameFragment(UnfoldingHeap[x, next]), FrameFragment((if UnfoldingHeap[x, next] != null then UnfoldingHeap[null, LL(UnfoldingHeap[x, next])] else EmptyFrame))));
-        ExhaleWellDef1Mask := UnfoldingMask;
         ExhaleWellDef1Heap := UnfoldingHeap;
+        ExhaleWellDef1Mask := UnfoldingMask;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Applying wand might fail. There might be insufficient permission to access LL(x) (issue029.vpr@32.3--32.18) [129132]"}
@@ -1201,8 +1201,8 @@ procedure test04(x: Ref) returns ()
         UnfoldingMask := ExhaleWellDef0Mask;
         assume LL#trigger(UnfoldingHeap, LL(x));
         assume UnfoldingHeap[null, LL(x)] == CombineFrames(FrameFragment(UnfoldingHeap[x, val]), CombineFrames(FrameFragment(UnfoldingHeap[x, next]), FrameFragment((if UnfoldingHeap[x, next] != null then UnfoldingHeap[null, LL(UnfoldingHeap[x, next])] else EmptyFrame))));
-        ExhaleWellDef1Mask := UnfoldingMask;
         ExhaleWellDef1Heap := UnfoldingHeap;
+        ExhaleWellDef1Mask := UnfoldingMask;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Applying wand might fail. There might be insufficient permission to access LL(x) (issue029.vpr@32.3--32.18) [129139]"}
@@ -1233,8 +1233,8 @@ procedure test04(x: Ref) returns ()
           Unfolding1Mask := UnfoldingMask;
           assume LL#trigger(Unfolding1Heap, LL(Unfolding1Heap[x, next]));
           assume Unfolding1Heap[null, LL(Unfolding1Heap[x, next])] == CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[x, next], val]), CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[x, next], next]), FrameFragment((if Unfolding1Heap[Unfolding1Heap[x, next], next] != null then Unfolding1Heap[null, LL(Unfolding1Heap[Unfolding1Heap[x, next], next])] else EmptyFrame))));
-          ExhaleWellDef1Mask := Unfolding1Mask;
           ExhaleWellDef1Heap := Unfolding1Heap;
+          ExhaleWellDef1Mask := Unfolding1Mask;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  Applying wand might fail. There might be insufficient permission to access LL(x.next) (issue029.vpr@32.3--32.18) [129145]"}
@@ -1317,13 +1317,13 @@ procedure test04(x: Ref) returns ()
 procedure test05() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var x: Ref;
   var y: Ref;
   var freshObj: Ref;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var perm: Perm;
   var freshVersion: FrameType;
   var newPMask: PMaskType;
@@ -1337,8 +1337,8 @@ procedure test05() returns ()
   var UnfoldingMask: MaskType;
   var Unfolding1Heap: HeapType;
   var Unfolding1Mask: MaskType;
-  var Labellhs6Mask: MaskType;
   var Labellhs6Heap: HeapType;
+  var Labellhs6Mask: MaskType;
   var boolCur_2: bool;
   var Used_5Heap: HeapType;
   var Used_5Mask: MaskType;
@@ -1353,8 +1353,8 @@ procedure test05() returns ()
   var b_10: bool;
   var Result_1Heap: HeapType;
   var Result_1Mask: MaskType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -1365,8 +1365,8 @@ procedure test05() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[x, $allocated];
@@ -1427,8 +1427,8 @@ procedure test05() returns ()
     // -- Check definedness of acc(LL(x.next), write)
       assert {:msg "  Folding LL(x.next) might fail. There might be insufficient permission to access x.next (issue029.vpr@43.3--43.18) [129157]"}
         HasDirectPerm(Mask, x, next);
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding LL(x.next) might fail. There might be insufficient permission to access x.next.val (issue029.vpr@43.3--43.18) [129160]"}
@@ -1477,8 +1477,8 @@ procedure test05() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(LL(x), write) -- issue029.vpr@44.3--44.13
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding LL(x) might fail. There might be insufficient permission to access x.val (issue029.vpr@44.3--44.13) [129168]"}
@@ -1555,8 +1555,8 @@ procedure test05() returns ()
               UnfoldingMask := Ops_5Mask;
               b_8 := b_8 && LL#trigger(UnfoldingHeap, LL(x));
               b_8 := b_8 && UnfoldingHeap[null, LL(x)] == CombineFrames(FrameFragment(UnfoldingHeap[x, val]), CombineFrames(FrameFragment(UnfoldingHeap[x, next]), FrameFragment((if UnfoldingHeap[x, next] != null then UnfoldingHeap[null, LL(UnfoldingHeap[x, next])] else EmptyFrame))));
-              ExhaleWellDef0Mask := UnfoldingMask;
               ExhaleWellDef0Heap := UnfoldingHeap;
+              ExhaleWellDef0Mask := UnfoldingMask;
               perm := FullPerm;
               if (perm != NoPerm) {
                 assert {:msg "  Packaging wand might fail. There might be insufficient permission to access LL(x) (issue029.vpr@46.3--46.20) [129174]"}
@@ -1602,8 +1602,8 @@ procedure test05() returns ()
             UnfoldingMask := Ops_5Mask;
             b_8 := b_8 && LL#trigger(UnfoldingHeap, LL(x));
             b_8 := b_8 && UnfoldingHeap[null, LL(x)] == CombineFrames(FrameFragment(UnfoldingHeap[x, val]), CombineFrames(FrameFragment(UnfoldingHeap[x, next]), FrameFragment((if UnfoldingHeap[x, next] != null then UnfoldingHeap[null, LL(UnfoldingHeap[x, next])] else EmptyFrame))));
-            ExhaleWellDef0Mask := UnfoldingMask;
             ExhaleWellDef0Heap := UnfoldingHeap;
+            ExhaleWellDef0Mask := UnfoldingMask;
             perm := FullPerm;
             UnfoldingMask := UnfoldingMask[null, LL(x):=UnfoldingMask[null, LL(x)] - perm];
             perm := FullPerm;
@@ -1647,8 +1647,8 @@ procedure test05() returns ()
               UnfoldingMask := Ops_5Mask;
               b_8 := b_8 && LL#trigger(UnfoldingHeap, LL(x));
               b_8 := b_8 && UnfoldingHeap[null, LL(x)] == CombineFrames(FrameFragment(UnfoldingHeap[x, val]), CombineFrames(FrameFragment(UnfoldingHeap[x, next]), FrameFragment((if UnfoldingHeap[x, next] != null then UnfoldingHeap[null, LL(UnfoldingHeap[x, next])] else EmptyFrame))));
-              ExhaleWellDef0Mask := UnfoldingMask;
               ExhaleWellDef0Heap := UnfoldingHeap;
+              ExhaleWellDef0Mask := UnfoldingMask;
               perm := FullPerm;
               if (perm != NoPerm) {
                 assert {:msg "  Packaging wand might fail. There might be insufficient permission to access LL(x) (issue029.vpr@46.3--46.20) [129176]"}
@@ -1679,8 +1679,8 @@ procedure test05() returns ()
                 Unfolding1Mask := UnfoldingMask;
                 b_8 := b_8 && LL#trigger(Unfolding1Heap, LL(Unfolding1Heap[x, next]));
                 b_8 := b_8 && Unfolding1Heap[null, LL(Unfolding1Heap[x, next])] == CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[x, next], val]), CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[x, next], next]), FrameFragment((if Unfolding1Heap[Unfolding1Heap[x, next], next] != null then Unfolding1Heap[null, LL(Unfolding1Heap[Unfolding1Heap[x, next], next])] else EmptyFrame))));
-                ExhaleWellDef0Mask := Unfolding1Mask;
                 ExhaleWellDef0Heap := Unfolding1Heap;
+                ExhaleWellDef0Mask := Unfolding1Mask;
                 perm := FullPerm;
                 if (perm != NoPerm) {
                   assert {:msg "  Packaging wand might fail. There might be insufficient permission to access LL(x.next) (issue029.vpr@46.3--46.20) [129178]"}
@@ -1755,8 +1755,8 @@ procedure test05() returns ()
             UnfoldingMask := Ops_5Mask;
             b_8 := b_8 && LL#trigger(UnfoldingHeap, LL(x));
             b_8 := b_8 && UnfoldingHeap[null, LL(x)] == CombineFrames(FrameFragment(UnfoldingHeap[x, val]), CombineFrames(FrameFragment(UnfoldingHeap[x, next]), FrameFragment((if UnfoldingHeap[x, next] != null then UnfoldingHeap[null, LL(UnfoldingHeap[x, next])] else EmptyFrame))));
-            ExhaleWellDef0Mask := UnfoldingMask;
             ExhaleWellDef0Heap := UnfoldingHeap;
+            ExhaleWellDef0Mask := UnfoldingMask;
             perm := FullPerm;
             UnfoldingMask := UnfoldingMask[null, LL(x):=UnfoldingMask[null, LL(x)] - perm];
             perm := FullPerm;
@@ -1809,8 +1809,8 @@ procedure test05() returns ()
     
     // -- Translating statement: label lhs6 -- issue029.vpr@46.11--46.20
       lhs6:
-      Labellhs6Mask := Ops_5Mask;
       Labellhs6Heap := Ops_5Heap;
+      Labellhs6Mask := Ops_5Mask;
       b_8 := b_8 && state(Ops_5Heap, Ops_5Mask);
     boolCur_2 := true;
     // Translating exec of non-ghost operationacc(LL(x), write)
@@ -1895,8 +1895,8 @@ procedure test05() returns ()
   //   acc(LL(x), write) -- issue029.vpr@47.3--47.18
     
     // -- check if wand is held and remove an instance
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       // permLe
       assert {:msg "  Applying wand might fail. Magic wand instance not found. (issue029.vpr@47.3--47.18) [129184]"}
         FullPerm <= Mask[null, wand_1(x, x, x, 10, x, x, null, x, x, 20, x)];
@@ -1904,8 +1904,8 @@ procedure test05() returns ()
     assume state(Heap, Mask);
     
     // -- check if LHS holds and remove permissions 
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Applying wand might fail. There might be insufficient permission to access LL(x) (issue029.vpr@47.3--47.18) [129186]"}
@@ -1918,8 +1918,8 @@ procedure test05() returns ()
         UnfoldingMask := ExhaleWellDef0Mask;
         assume LL#trigger(UnfoldingHeap, LL(x));
         assume UnfoldingHeap[null, LL(x)] == CombineFrames(FrameFragment(UnfoldingHeap[x, val]), CombineFrames(FrameFragment(UnfoldingHeap[x, next]), FrameFragment((if UnfoldingHeap[x, next] != null then UnfoldingHeap[null, LL(UnfoldingHeap[x, next])] else EmptyFrame))));
-        ExhaleWellDef1Mask := UnfoldingMask;
         ExhaleWellDef1Heap := UnfoldingHeap;
+        ExhaleWellDef1Mask := UnfoldingMask;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Applying wand might fail. There might be insufficient permission to access LL(x) (issue029.vpr@47.3--47.18) [129189]"}
@@ -1951,8 +1951,8 @@ procedure test05() returns ()
         UnfoldingMask := ExhaleWellDef0Mask;
         assume LL#trigger(UnfoldingHeap, LL(x));
         assume UnfoldingHeap[null, LL(x)] == CombineFrames(FrameFragment(UnfoldingHeap[x, val]), CombineFrames(FrameFragment(UnfoldingHeap[x, next]), FrameFragment((if UnfoldingHeap[x, next] != null then UnfoldingHeap[null, LL(UnfoldingHeap[x, next])] else EmptyFrame))));
-        ExhaleWellDef1Mask := UnfoldingMask;
         ExhaleWellDef1Heap := UnfoldingHeap;
+        ExhaleWellDef1Mask := UnfoldingMask;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Applying wand might fail. There might be insufficient permission to access LL(x) (issue029.vpr@47.3--47.18) [129196]"}
@@ -1983,8 +1983,8 @@ procedure test05() returns ()
           Unfolding1Mask := UnfoldingMask;
           assume LL#trigger(Unfolding1Heap, LL(Unfolding1Heap[x, next]));
           assume Unfolding1Heap[null, LL(Unfolding1Heap[x, next])] == CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[x, next], val]), CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[x, next], next]), FrameFragment((if Unfolding1Heap[Unfolding1Heap[x, next], next] != null then Unfolding1Heap[null, LL(Unfolding1Heap[Unfolding1Heap[x, next], next])] else EmptyFrame))));
-          ExhaleWellDef1Mask := Unfolding1Mask;
           ExhaleWellDef1Heap := Unfolding1Heap;
+          ExhaleWellDef1Mask := Unfolding1Mask;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  Applying wand might fail. There might be insufficient permission to access LL(x.next) (issue029.vpr@47.3--47.18) [129202]"}
@@ -2067,24 +2067,24 @@ procedure test05() returns ()
 procedure test06(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newPMask: PMaskType;
   var Unfolding1Heap: HeapType;
   var Unfolding1Mask: MaskType;
   var WandDefLHSHeap: HeapType;
   var WandDefLHSMask: MaskType;
-  var Labellhs9Mask: MaskType;
   var Labellhs9Heap: HeapType;
+  var Labellhs9Mask: MaskType;
   var WandDefRHSHeap: HeapType;
   var WandDefRHSMask: MaskType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -2098,8 +2098,8 @@ procedure test06(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale acc(LL(x), write) &&
   //   ((unfolding acc(LL(x), write) in x.val == 10) &&
@@ -2115,8 +2115,8 @@ procedure test06(x: Ref) returns ()
       UnfoldingMask := Mask;
       assume LL#trigger(UnfoldingHeap, LL(x));
       assume UnfoldingHeap[null, LL(x)] == CombineFrames(FrameFragment(UnfoldingHeap[x, val]), CombineFrames(FrameFragment(UnfoldingHeap[x, next]), FrameFragment((if UnfoldingHeap[x, next] != null then UnfoldingHeap[null, LL(UnfoldingHeap[x, next])] else EmptyFrame))));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Inhale might fail. There might be insufficient permission to access LL(x) (issue029.vpr@51.10--51.12) [129209]"}
@@ -2161,8 +2161,8 @@ procedure test06(x: Ref) returns ()
       UnfoldingMask := Mask;
       assume LL#trigger(UnfoldingHeap, LL(x));
       assume UnfoldingHeap[null, LL(x)] == CombineFrames(FrameFragment(UnfoldingHeap[x, val]), CombineFrames(FrameFragment(UnfoldingHeap[x, next]), FrameFragment((if UnfoldingHeap[x, next] != null then UnfoldingHeap[null, LL(UnfoldingHeap[x, next])] else EmptyFrame))));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       UnfoldingMask := UnfoldingMask[null, LL(x):=UnfoldingMask[null, LL(x)] - perm];
       perm := FullPerm;
@@ -2189,8 +2189,8 @@ procedure test06(x: Ref) returns ()
       UnfoldingMask := Mask;
       assume LL#trigger(UnfoldingHeap, LL(x));
       assume UnfoldingHeap[null, LL(x)] == CombineFrames(FrameFragment(UnfoldingHeap[x, val]), CombineFrames(FrameFragment(UnfoldingHeap[x, next]), FrameFragment((if UnfoldingHeap[x, next] != null then UnfoldingHeap[null, LL(UnfoldingHeap[x, next])] else EmptyFrame))));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Inhale might fail. There might be insufficient permission to access LL(x) (issue029.vpr@51.10--51.12) [129211]"}
@@ -2221,8 +2221,8 @@ procedure test06(x: Ref) returns ()
         Unfolding1Mask := UnfoldingMask;
         assume LL#trigger(Unfolding1Heap, LL(Unfolding1Heap[x, next]));
         assume Unfolding1Heap[null, LL(Unfolding1Heap[x, next])] == CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[x, next], val]), CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[x, next], next]), FrameFragment((if Unfolding1Heap[Unfolding1Heap[x, next], next] != null then Unfolding1Heap[null, LL(Unfolding1Heap[Unfolding1Heap[x, next], next])] else EmptyFrame))));
-        ExhaleWellDef0Mask := Unfolding1Mask;
         ExhaleWellDef0Heap := Unfolding1Heap;
+        ExhaleWellDef0Mask := Unfolding1Mask;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Inhale might fail. There might be insufficient permission to access LL(x.next) (issue029.vpr@51.10--51.12) [129213]"}
@@ -2296,8 +2296,8 @@ procedure test06(x: Ref) returns ()
       UnfoldingMask := Mask;
       assume LL#trigger(UnfoldingHeap, LL(x));
       assume UnfoldingHeap[null, LL(x)] == CombineFrames(FrameFragment(UnfoldingHeap[x, val]), CombineFrames(FrameFragment(UnfoldingHeap[x, next]), FrameFragment((if UnfoldingHeap[x, next] != null then UnfoldingHeap[null, LL(UnfoldingHeap[x, next])] else EmptyFrame))));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       UnfoldingMask := UnfoldingMask[null, LL(x):=UnfoldingMask[null, LL(x)] - perm];
       perm := FullPerm;
@@ -2341,8 +2341,8 @@ procedure test06(x: Ref) returns ()
           UnfoldingMask := WandDefLHSMask;
           assume LL#trigger(UnfoldingHeap, LL(x));
           assume UnfoldingHeap[null, LL(x)] == CombineFrames(FrameFragment(UnfoldingHeap[x, val]), CombineFrames(FrameFragment(UnfoldingHeap[x, next]), FrameFragment((if UnfoldingHeap[x, next] != null then UnfoldingHeap[null, LL(UnfoldingHeap[x, next])] else EmptyFrame))));
-          ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
+          ExhaleWellDef0Mask := UnfoldingMask;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  Inhale might fail. There might be insufficient permission to access LL(x) (issue029.vpr@52.10--52.19) [129217]"}
@@ -2387,8 +2387,8 @@ procedure test06(x: Ref) returns ()
           UnfoldingMask := WandDefLHSMask;
           assume LL#trigger(UnfoldingHeap, LL(x));
           assume UnfoldingHeap[null, LL(x)] == CombineFrames(FrameFragment(UnfoldingHeap[x, val]), CombineFrames(FrameFragment(UnfoldingHeap[x, next]), FrameFragment((if UnfoldingHeap[x, next] != null then UnfoldingHeap[null, LL(UnfoldingHeap[x, next])] else EmptyFrame))));
-          ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
+          ExhaleWellDef0Mask := UnfoldingMask;
           perm := FullPerm;
           UnfoldingMask := UnfoldingMask[null, LL(x):=UnfoldingMask[null, LL(x)] - perm];
           perm := FullPerm;
@@ -2415,8 +2415,8 @@ procedure test06(x: Ref) returns ()
           UnfoldingMask := WandDefLHSMask;
           assume LL#trigger(UnfoldingHeap, LL(x));
           assume UnfoldingHeap[null, LL(x)] == CombineFrames(FrameFragment(UnfoldingHeap[x, val]), CombineFrames(FrameFragment(UnfoldingHeap[x, next]), FrameFragment((if UnfoldingHeap[x, next] != null then UnfoldingHeap[null, LL(UnfoldingHeap[x, next])] else EmptyFrame))));
-          ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
+          ExhaleWellDef0Mask := UnfoldingMask;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  Inhale might fail. There might be insufficient permission to access LL(x) (issue029.vpr@52.10--52.19) [129219]"}
@@ -2447,8 +2447,8 @@ procedure test06(x: Ref) returns ()
             Unfolding1Mask := UnfoldingMask;
             assume LL#trigger(Unfolding1Heap, LL(Unfolding1Heap[x, next]));
             assume Unfolding1Heap[null, LL(Unfolding1Heap[x, next])] == CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[x, next], val]), CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[x, next], next]), FrameFragment((if Unfolding1Heap[Unfolding1Heap[x, next], next] != null then Unfolding1Heap[null, LL(Unfolding1Heap[Unfolding1Heap[x, next], next])] else EmptyFrame))));
-            ExhaleWellDef0Mask := Unfolding1Mask;
             ExhaleWellDef0Heap := Unfolding1Heap;
+            ExhaleWellDef0Mask := Unfolding1Mask;
             perm := FullPerm;
             if (perm != NoPerm) {
               assert {:msg "  Inhale might fail. There might be insufficient permission to access LL(x.next) (issue029.vpr@52.10--52.19) [129221]"}
@@ -2522,8 +2522,8 @@ procedure test06(x: Ref) returns ()
           UnfoldingMask := WandDefLHSMask;
           assume LL#trigger(UnfoldingHeap, LL(x));
           assume UnfoldingHeap[null, LL(x)] == CombineFrames(FrameFragment(UnfoldingHeap[x, val]), CombineFrames(FrameFragment(UnfoldingHeap[x, next]), FrameFragment((if UnfoldingHeap[x, next] != null then UnfoldingHeap[null, LL(UnfoldingHeap[x, next])] else EmptyFrame))));
-          ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
+          ExhaleWellDef0Mask := UnfoldingMask;
           perm := FullPerm;
           UnfoldingMask := UnfoldingMask[null, LL(x):=UnfoldingMask[null, LL(x)] - perm];
           perm := FullPerm;
@@ -2548,8 +2548,8 @@ procedure test06(x: Ref) returns ()
         
         // -- Translating statement: label lhs9 -- issue029.vpr@52.10--52.19
           lhs9:
-          Labellhs9Mask := WandDefLHSMask;
           Labellhs9Heap := WandDefLHSHeap;
+          Labellhs9Mask := WandDefLHSMask;
           assume state(WandDefLHSHeap, WandDefLHSMask);
         havoc WandDefRHSHeap;
         WandDefRHSMask := ZeroMask;
@@ -2572,8 +2572,8 @@ procedure test06(x: Ref) returns ()
   //   acc(LL(x), write) -- issue029.vpr@53.3--53.18
     
     // -- check if wand is held and remove an instance
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       // permLe
       assert {:msg "  Applying wand might fail. Magic wand instance not found. (issue029.vpr@53.3--53.18) [129225]"}
         FullPerm <= Mask[null, wand_1(x, x, x, 10, x, x, null, x, x, 20, x)];
@@ -2581,8 +2581,8 @@ procedure test06(x: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- check if LHS holds and remove permissions 
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Applying wand might fail. There might be insufficient permission to access LL(x) (issue029.vpr@53.3--53.18) [129227]"}
@@ -2595,8 +2595,8 @@ procedure test06(x: Ref) returns ()
         UnfoldingMask := ExhaleWellDef0Mask;
         assume LL#trigger(UnfoldingHeap, LL(x));
         assume UnfoldingHeap[null, LL(x)] == CombineFrames(FrameFragment(UnfoldingHeap[x, val]), CombineFrames(FrameFragment(UnfoldingHeap[x, next]), FrameFragment((if UnfoldingHeap[x, next] != null then UnfoldingHeap[null, LL(UnfoldingHeap[x, next])] else EmptyFrame))));
-        ExhaleWellDef1Mask := UnfoldingMask;
         ExhaleWellDef1Heap := UnfoldingHeap;
+        ExhaleWellDef1Mask := UnfoldingMask;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Applying wand might fail. There might be insufficient permission to access LL(x) (issue029.vpr@53.3--53.18) [129230]"}
@@ -2628,8 +2628,8 @@ procedure test06(x: Ref) returns ()
         UnfoldingMask := ExhaleWellDef0Mask;
         assume LL#trigger(UnfoldingHeap, LL(x));
         assume UnfoldingHeap[null, LL(x)] == CombineFrames(FrameFragment(UnfoldingHeap[x, val]), CombineFrames(FrameFragment(UnfoldingHeap[x, next]), FrameFragment((if UnfoldingHeap[x, next] != null then UnfoldingHeap[null, LL(UnfoldingHeap[x, next])] else EmptyFrame))));
-        ExhaleWellDef1Mask := UnfoldingMask;
         ExhaleWellDef1Heap := UnfoldingHeap;
+        ExhaleWellDef1Mask := UnfoldingMask;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Applying wand might fail. There might be insufficient permission to access LL(x) (issue029.vpr@53.3--53.18) [129237]"}
@@ -2660,8 +2660,8 @@ procedure test06(x: Ref) returns ()
           Unfolding1Mask := UnfoldingMask;
           assume LL#trigger(Unfolding1Heap, LL(Unfolding1Heap[x, next]));
           assume Unfolding1Heap[null, LL(Unfolding1Heap[x, next])] == CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[x, next], val]), CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[x, next], next]), FrameFragment((if Unfolding1Heap[Unfolding1Heap[x, next], next] != null then Unfolding1Heap[null, LL(Unfolding1Heap[Unfolding1Heap[x, next], next])] else EmptyFrame))));
-          ExhaleWellDef1Mask := Unfolding1Mask;
           ExhaleWellDef1Heap := Unfolding1Heap;
+          ExhaleWellDef1Mask := Unfolding1Mask;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  Applying wand might fail. There might be insufficient permission to access LL(x.next) (issue029.vpr@53.3--53.18) [129243]"}
@@ -2739,16 +2739,16 @@ procedure test06(x: Ref) returns ()
   // -- Translating statement: assert (unfolding acc(LL(x), write) in
   //     x.next != null ==>
   //     (unfolding acc(LL(x.next), write) in x.next.val == 2 * x.val)) -- issue029.vpr@56.3--56.95
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (unfolding acc(LL(x), write) in x.next != null ==> (unfolding acc(LL(x.next), write) in x.next.val == 2 * x.val))
       UnfoldingHeap := ExhaleWellDef0Heap;
       UnfoldingMask := ExhaleWellDef0Mask;
       assume LL#trigger(UnfoldingHeap, LL(x));
       assume UnfoldingHeap[null, LL(x)] == CombineFrames(FrameFragment(UnfoldingHeap[x, val]), CombineFrames(FrameFragment(UnfoldingHeap[x, next]), FrameFragment((if UnfoldingHeap[x, next] != null then UnfoldingHeap[null, LL(UnfoldingHeap[x, next])] else EmptyFrame))));
-      ExhaleWellDef1Mask := UnfoldingMask;
       ExhaleWellDef1Heap := UnfoldingHeap;
+      ExhaleWellDef1Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Assert might fail. There might be insufficient permission to access LL(x) (issue029.vpr@56.10--56.95) [129249]"}
@@ -2779,8 +2779,8 @@ procedure test06(x: Ref) returns ()
         Unfolding1Mask := UnfoldingMask;
         assume LL#trigger(Unfolding1Heap, LL(Unfolding1Heap[x, next]));
         assume Unfolding1Heap[null, LL(Unfolding1Heap[x, next])] == CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[x, next], val]), CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[x, next], next]), FrameFragment((if Unfolding1Heap[Unfolding1Heap[x, next], next] != null then Unfolding1Heap[null, LL(Unfolding1Heap[Unfolding1Heap[x, next], next])] else EmptyFrame))));
-        ExhaleWellDef1Mask := Unfolding1Mask;
         ExhaleWellDef1Heap := Unfolding1Heap;
+        ExhaleWellDef1Mask := Unfolding1Mask;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Assert might fail. There might be insufficient permission to access LL(x.next) (issue029.vpr@56.10--56.95) [129251]"}
@@ -2888,8 +2888,8 @@ procedure test06(x: Ref) returns ()
 procedure test07(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var Ops_7Heap: HeapType;
   var Ops_7Mask: MaskType;
   var b_12: bool;
@@ -2899,13 +2899,13 @@ procedure test07(x: Ref) returns ()
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newPMask: PMaskType;
   var Unfolding1Heap: HeapType;
   var Unfolding1Mask: MaskType;
-  var Labellhs11Mask: MaskType;
   var Labellhs11Heap: HeapType;
+  var Labellhs11Mask: MaskType;
   var boolCur_3: bool;
   var Used_7Heap: HeapType;
   var Used_7Mask: MaskType;
@@ -2932,8 +2932,8 @@ procedure test07(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: package acc(LL(x), write) &&
   // ((unfolding acc(LL(x), write) in x.val == 10) &&
@@ -2967,8 +2967,8 @@ procedure test07(x: Ref) returns ()
               UnfoldingMask := Ops_7Mask;
               b_12 := b_12 && LL#trigger(UnfoldingHeap, LL(x));
               b_12 := b_12 && UnfoldingHeap[null, LL(x)] == CombineFrames(FrameFragment(UnfoldingHeap[x, val]), CombineFrames(FrameFragment(UnfoldingHeap[x, next]), FrameFragment((if UnfoldingHeap[x, next] != null then UnfoldingHeap[null, LL(UnfoldingHeap[x, next])] else EmptyFrame))));
-              ExhaleWellDef0Mask := UnfoldingMask;
               ExhaleWellDef0Heap := UnfoldingHeap;
+              ExhaleWellDef0Mask := UnfoldingMask;
               perm := FullPerm;
               if (perm != NoPerm) {
                 assert {:msg "  Packaging wand might fail. There might be insufficient permission to access LL(x) (issue029.vpr@64.3--64.20) [129257]"}
@@ -3014,8 +3014,8 @@ procedure test07(x: Ref) returns ()
             UnfoldingMask := Ops_7Mask;
             b_12 := b_12 && LL#trigger(UnfoldingHeap, LL(x));
             b_12 := b_12 && UnfoldingHeap[null, LL(x)] == CombineFrames(FrameFragment(UnfoldingHeap[x, val]), CombineFrames(FrameFragment(UnfoldingHeap[x, next]), FrameFragment((if UnfoldingHeap[x, next] != null then UnfoldingHeap[null, LL(UnfoldingHeap[x, next])] else EmptyFrame))));
-            ExhaleWellDef0Mask := UnfoldingMask;
             ExhaleWellDef0Heap := UnfoldingHeap;
+            ExhaleWellDef0Mask := UnfoldingMask;
             perm := FullPerm;
             UnfoldingMask := UnfoldingMask[null, LL(x):=UnfoldingMask[null, LL(x)] - perm];
             perm := FullPerm;
@@ -3059,8 +3059,8 @@ procedure test07(x: Ref) returns ()
               UnfoldingMask := Ops_7Mask;
               b_12 := b_12 && LL#trigger(UnfoldingHeap, LL(x));
               b_12 := b_12 && UnfoldingHeap[null, LL(x)] == CombineFrames(FrameFragment(UnfoldingHeap[x, val]), CombineFrames(FrameFragment(UnfoldingHeap[x, next]), FrameFragment((if UnfoldingHeap[x, next] != null then UnfoldingHeap[null, LL(UnfoldingHeap[x, next])] else EmptyFrame))));
-              ExhaleWellDef0Mask := UnfoldingMask;
               ExhaleWellDef0Heap := UnfoldingHeap;
+              ExhaleWellDef0Mask := UnfoldingMask;
               perm := FullPerm;
               if (perm != NoPerm) {
                 assert {:msg "  Packaging wand might fail. There might be insufficient permission to access LL(x) (issue029.vpr@64.3--64.20) [129259]"}
@@ -3091,8 +3091,8 @@ procedure test07(x: Ref) returns ()
                 Unfolding1Mask := UnfoldingMask;
                 b_12 := b_12 && LL#trigger(Unfolding1Heap, LL(Unfolding1Heap[x, next]));
                 b_12 := b_12 && Unfolding1Heap[null, LL(Unfolding1Heap[x, next])] == CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[x, next], val]), CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[x, next], next]), FrameFragment((if Unfolding1Heap[Unfolding1Heap[x, next], next] != null then Unfolding1Heap[null, LL(Unfolding1Heap[Unfolding1Heap[x, next], next])] else EmptyFrame))));
-                ExhaleWellDef0Mask := Unfolding1Mask;
                 ExhaleWellDef0Heap := Unfolding1Heap;
+                ExhaleWellDef0Mask := Unfolding1Mask;
                 perm := FullPerm;
                 if (perm != NoPerm) {
                   assert {:msg "  Packaging wand might fail. There might be insufficient permission to access LL(x.next) (issue029.vpr@64.3--64.20) [129261]"}
@@ -3167,8 +3167,8 @@ procedure test07(x: Ref) returns ()
             UnfoldingMask := Ops_7Mask;
             b_12 := b_12 && LL#trigger(UnfoldingHeap, LL(x));
             b_12 := b_12 && UnfoldingHeap[null, LL(x)] == CombineFrames(FrameFragment(UnfoldingHeap[x, val]), CombineFrames(FrameFragment(UnfoldingHeap[x, next]), FrameFragment((if UnfoldingHeap[x, next] != null then UnfoldingHeap[null, LL(UnfoldingHeap[x, next])] else EmptyFrame))));
-            ExhaleWellDef0Mask := UnfoldingMask;
             ExhaleWellDef0Heap := UnfoldingHeap;
+            ExhaleWellDef0Mask := UnfoldingMask;
             perm := FullPerm;
             UnfoldingMask := UnfoldingMask[null, LL(x):=UnfoldingMask[null, LL(x)] - perm];
             perm := FullPerm;
@@ -3221,8 +3221,8 @@ procedure test07(x: Ref) returns ()
     
     // -- Translating statement: label lhs11 -- issue029.vpr@64.11--64.20
       lhs11:
-      Labellhs11Mask := Ops_7Mask;
       Labellhs11Heap := Ops_7Heap;
+      Labellhs11Mask := Ops_7Mask;
       b_12 := b_12 && state(Ops_7Heap, Ops_7Mask);
     boolCur_3 := true;
     // Translating exec of non-ghost operationacc(LL(x), write) && (unfolding acc(LL(x), write) in x.next != null ==> (unfolding acc(LL(x.next), write) in x.val < x.next.val))
@@ -3302,8 +3302,8 @@ procedure test07(x: Ref) returns ()
           UnfoldingMask := Result_2Mask;
           assume LL#trigger(UnfoldingHeap, LL(x));
           assume UnfoldingHeap[null, LL(x)] == CombineFrames(FrameFragment(UnfoldingHeap[x, val]), CombineFrames(FrameFragment(UnfoldingHeap[x, next]), FrameFragment((if UnfoldingHeap[x, next] != null then UnfoldingHeap[null, LL(UnfoldingHeap[x, next])] else EmptyFrame))));
-          ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
+          ExhaleWellDef0Mask := UnfoldingMask;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  Packaging wand might fail. There might be insufficient permission to access LL(x) (issue029.vpr@64.3--64.20) [129267]"}
@@ -3334,8 +3334,8 @@ procedure test07(x: Ref) returns ()
             Unfolding1Mask := UnfoldingMask;
             assume LL#trigger(Unfolding1Heap, LL(Unfolding1Heap[x, next]));
             assume Unfolding1Heap[null, LL(Unfolding1Heap[x, next])] == CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[x, next], val]), CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[x, next], next]), FrameFragment((if Unfolding1Heap[Unfolding1Heap[x, next], next] != null then Unfolding1Heap[null, LL(Unfolding1Heap[Unfolding1Heap[x, next], next])] else EmptyFrame))));
-            ExhaleWellDef0Mask := Unfolding1Mask;
             ExhaleWellDef0Heap := Unfolding1Heap;
+            ExhaleWellDef0Mask := Unfolding1Mask;
             perm := FullPerm;
             if (perm != NoPerm) {
               assert {:msg "  Packaging wand might fail. There might be insufficient permission to access LL(x.next) (issue029.vpr@64.3--64.20) [129269]"}
@@ -3422,24 +3422,24 @@ procedure test07(x: Ref) returns ()
 procedure test08(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newPMask: PMaskType;
   var Unfolding1Heap: HeapType;
   var Unfolding1Mask: MaskType;
   var WandDefLHSHeap: HeapType;
   var WandDefLHSMask: MaskType;
-  var Labellhs13Mask: MaskType;
   var Labellhs13Heap: HeapType;
+  var Labellhs13Mask: MaskType;
   var WandDefRHSHeap: HeapType;
   var WandDefRHSMask: MaskType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -3453,8 +3453,8 @@ procedure test08(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale acc(LL(x), write) &&
   //   ((unfolding acc(LL(x), write) in x.val == 10) &&
@@ -3470,8 +3470,8 @@ procedure test08(x: Ref) returns ()
       UnfoldingMask := Mask;
       assume LL#trigger(UnfoldingHeap, LL(x));
       assume UnfoldingHeap[null, LL(x)] == CombineFrames(FrameFragment(UnfoldingHeap[x, val]), CombineFrames(FrameFragment(UnfoldingHeap[x, next]), FrameFragment((if UnfoldingHeap[x, next] != null then UnfoldingHeap[null, LL(UnfoldingHeap[x, next])] else EmptyFrame))));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Inhale might fail. There might be insufficient permission to access LL(x) (issue029.vpr@69.10--69.12) [129276]"}
@@ -3516,8 +3516,8 @@ procedure test08(x: Ref) returns ()
       UnfoldingMask := Mask;
       assume LL#trigger(UnfoldingHeap, LL(x));
       assume UnfoldingHeap[null, LL(x)] == CombineFrames(FrameFragment(UnfoldingHeap[x, val]), CombineFrames(FrameFragment(UnfoldingHeap[x, next]), FrameFragment((if UnfoldingHeap[x, next] != null then UnfoldingHeap[null, LL(UnfoldingHeap[x, next])] else EmptyFrame))));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       UnfoldingMask := UnfoldingMask[null, LL(x):=UnfoldingMask[null, LL(x)] - perm];
       perm := FullPerm;
@@ -3544,8 +3544,8 @@ procedure test08(x: Ref) returns ()
       UnfoldingMask := Mask;
       assume LL#trigger(UnfoldingHeap, LL(x));
       assume UnfoldingHeap[null, LL(x)] == CombineFrames(FrameFragment(UnfoldingHeap[x, val]), CombineFrames(FrameFragment(UnfoldingHeap[x, next]), FrameFragment((if UnfoldingHeap[x, next] != null then UnfoldingHeap[null, LL(UnfoldingHeap[x, next])] else EmptyFrame))));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Inhale might fail. There might be insufficient permission to access LL(x) (issue029.vpr@69.10--69.12) [129278]"}
@@ -3576,8 +3576,8 @@ procedure test08(x: Ref) returns ()
         Unfolding1Mask := UnfoldingMask;
         assume LL#trigger(Unfolding1Heap, LL(Unfolding1Heap[x, next]));
         assume Unfolding1Heap[null, LL(Unfolding1Heap[x, next])] == CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[x, next], val]), CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[x, next], next]), FrameFragment((if Unfolding1Heap[Unfolding1Heap[x, next], next] != null then Unfolding1Heap[null, LL(Unfolding1Heap[Unfolding1Heap[x, next], next])] else EmptyFrame))));
-        ExhaleWellDef0Mask := Unfolding1Mask;
         ExhaleWellDef0Heap := Unfolding1Heap;
+        ExhaleWellDef0Mask := Unfolding1Mask;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Inhale might fail. There might be insufficient permission to access LL(x.next) (issue029.vpr@69.10--69.12) [129280]"}
@@ -3651,8 +3651,8 @@ procedure test08(x: Ref) returns ()
       UnfoldingMask := Mask;
       assume LL#trigger(UnfoldingHeap, LL(x));
       assume UnfoldingHeap[null, LL(x)] == CombineFrames(FrameFragment(UnfoldingHeap[x, val]), CombineFrames(FrameFragment(UnfoldingHeap[x, next]), FrameFragment((if UnfoldingHeap[x, next] != null then UnfoldingHeap[null, LL(UnfoldingHeap[x, next])] else EmptyFrame))));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       UnfoldingMask := UnfoldingMask[null, LL(x):=UnfoldingMask[null, LL(x)] - perm];
       perm := FullPerm;
@@ -3699,8 +3699,8 @@ procedure test08(x: Ref) returns ()
           UnfoldingMask := WandDefLHSMask;
           assume LL#trigger(UnfoldingHeap, LL(x));
           assume UnfoldingHeap[null, LL(x)] == CombineFrames(FrameFragment(UnfoldingHeap[x, val]), CombineFrames(FrameFragment(UnfoldingHeap[x, next]), FrameFragment((if UnfoldingHeap[x, next] != null then UnfoldingHeap[null, LL(UnfoldingHeap[x, next])] else EmptyFrame))));
-          ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
+          ExhaleWellDef0Mask := UnfoldingMask;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  Inhale might fail. There might be insufficient permission to access LL(x) (issue029.vpr@70.10--70.19) [129284]"}
@@ -3745,8 +3745,8 @@ procedure test08(x: Ref) returns ()
           UnfoldingMask := WandDefLHSMask;
           assume LL#trigger(UnfoldingHeap, LL(x));
           assume UnfoldingHeap[null, LL(x)] == CombineFrames(FrameFragment(UnfoldingHeap[x, val]), CombineFrames(FrameFragment(UnfoldingHeap[x, next]), FrameFragment((if UnfoldingHeap[x, next] != null then UnfoldingHeap[null, LL(UnfoldingHeap[x, next])] else EmptyFrame))));
-          ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
+          ExhaleWellDef0Mask := UnfoldingMask;
           perm := FullPerm;
           UnfoldingMask := UnfoldingMask[null, LL(x):=UnfoldingMask[null, LL(x)] - perm];
           perm := FullPerm;
@@ -3773,8 +3773,8 @@ procedure test08(x: Ref) returns ()
           UnfoldingMask := WandDefLHSMask;
           assume LL#trigger(UnfoldingHeap, LL(x));
           assume UnfoldingHeap[null, LL(x)] == CombineFrames(FrameFragment(UnfoldingHeap[x, val]), CombineFrames(FrameFragment(UnfoldingHeap[x, next]), FrameFragment((if UnfoldingHeap[x, next] != null then UnfoldingHeap[null, LL(UnfoldingHeap[x, next])] else EmptyFrame))));
-          ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
+          ExhaleWellDef0Mask := UnfoldingMask;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  Inhale might fail. There might be insufficient permission to access LL(x) (issue029.vpr@70.10--70.19) [129286]"}
@@ -3805,8 +3805,8 @@ procedure test08(x: Ref) returns ()
             Unfolding1Mask := UnfoldingMask;
             assume LL#trigger(Unfolding1Heap, LL(Unfolding1Heap[x, next]));
             assume Unfolding1Heap[null, LL(Unfolding1Heap[x, next])] == CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[x, next], val]), CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[x, next], next]), FrameFragment((if Unfolding1Heap[Unfolding1Heap[x, next], next] != null then Unfolding1Heap[null, LL(Unfolding1Heap[Unfolding1Heap[x, next], next])] else EmptyFrame))));
-            ExhaleWellDef0Mask := Unfolding1Mask;
             ExhaleWellDef0Heap := Unfolding1Heap;
+            ExhaleWellDef0Mask := Unfolding1Mask;
             perm := FullPerm;
             if (perm != NoPerm) {
               assert {:msg "  Inhale might fail. There might be insufficient permission to access LL(x.next) (issue029.vpr@70.10--70.19) [129288]"}
@@ -3880,8 +3880,8 @@ procedure test08(x: Ref) returns ()
           UnfoldingMask := WandDefLHSMask;
           assume LL#trigger(UnfoldingHeap, LL(x));
           assume UnfoldingHeap[null, LL(x)] == CombineFrames(FrameFragment(UnfoldingHeap[x, val]), CombineFrames(FrameFragment(UnfoldingHeap[x, next]), FrameFragment((if UnfoldingHeap[x, next] != null then UnfoldingHeap[null, LL(UnfoldingHeap[x, next])] else EmptyFrame))));
-          ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
+          ExhaleWellDef0Mask := UnfoldingMask;
           perm := FullPerm;
           UnfoldingMask := UnfoldingMask[null, LL(x):=UnfoldingMask[null, LL(x)] - perm];
           perm := FullPerm;
@@ -3906,8 +3906,8 @@ procedure test08(x: Ref) returns ()
         
         // -- Translating statement: label lhs13 -- issue029.vpr@70.10--70.19
           lhs13:
-          Labellhs13Mask := WandDefLHSMask;
           Labellhs13Heap := WandDefLHSHeap;
+          Labellhs13Mask := WandDefLHSMask;
           assume state(WandDefLHSHeap, WandDefLHSMask);
         havoc WandDefRHSHeap;
         WandDefRHSMask := ZeroMask;
@@ -3920,8 +3920,8 @@ procedure test08(x: Ref) returns ()
           UnfoldingMask := WandDefRHSMask;
           assume LL#trigger(UnfoldingHeap, LL(x));
           assume UnfoldingHeap[null, LL(x)] == CombineFrames(FrameFragment(UnfoldingHeap[x, val]), CombineFrames(FrameFragment(UnfoldingHeap[x, next]), FrameFragment((if UnfoldingHeap[x, next] != null then UnfoldingHeap[null, LL(UnfoldingHeap[x, next])] else EmptyFrame))));
-          ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
+          ExhaleWellDef0Mask := UnfoldingMask;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  Inhale might fail. There might be insufficient permission to access LL(x) (issue029.vpr@70.10--70.19) [129292]"}
@@ -3952,8 +3952,8 @@ procedure test08(x: Ref) returns ()
             Unfolding1Mask := UnfoldingMask;
             assume LL#trigger(Unfolding1Heap, LL(Unfolding1Heap[x, next]));
             assume Unfolding1Heap[null, LL(Unfolding1Heap[x, next])] == CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[x, next], val]), CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[x, next], next]), FrameFragment((if Unfolding1Heap[Unfolding1Heap[x, next], next] != null then Unfolding1Heap[null, LL(Unfolding1Heap[Unfolding1Heap[x, next], next])] else EmptyFrame))));
-            ExhaleWellDef0Mask := Unfolding1Mask;
             ExhaleWellDef0Heap := Unfolding1Heap;
+            ExhaleWellDef0Mask := Unfolding1Mask;
             perm := FullPerm;
             if (perm != NoPerm) {
               assert {:msg "  Inhale might fail. There might be insufficient permission to access LL(x.next) (issue029.vpr@70.10--70.19) [129294]"}
@@ -4029,8 +4029,8 @@ procedure test08(x: Ref) returns ()
           UnfoldingMask := WandDefRHSMask;
           assume LL#trigger(UnfoldingHeap, LL(x));
           assume UnfoldingHeap[null, LL(x)] == CombineFrames(FrameFragment(UnfoldingHeap[x, val]), CombineFrames(FrameFragment(UnfoldingHeap[x, next]), FrameFragment((if UnfoldingHeap[x, next] != null then UnfoldingHeap[null, LL(UnfoldingHeap[x, next])] else EmptyFrame))));
-          ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
+          ExhaleWellDef0Mask := UnfoldingMask;
           perm := FullPerm;
           UnfoldingMask := UnfoldingMask[null, LL(x):=UnfoldingMask[null, LL(x)] - perm];
           perm := FullPerm;
@@ -4070,8 +4070,8 @@ procedure test08(x: Ref) returns ()
   //     (unfolding acc(LL(x.next), write) in x.val < x.next.val)) -- issue029.vpr@71.3--71.18
     
     // -- check if wand is held and remove an instance
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       // permLe
       assert {:msg "  Applying wand might fail. Magic wand instance not found. (issue029.vpr@71.3--71.18) [129299]"}
         FullPerm <= Mask[null, wand_2(x, x, x, 10, x, x, null, x, x, 20, x, x, x, null, x, x, x)];
@@ -4079,8 +4079,8 @@ procedure test08(x: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- check if LHS holds and remove permissions 
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Applying wand might fail. There might be insufficient permission to access LL(x) (issue029.vpr@71.3--71.18) [129301]"}
@@ -4093,8 +4093,8 @@ procedure test08(x: Ref) returns ()
         UnfoldingMask := ExhaleWellDef0Mask;
         assume LL#trigger(UnfoldingHeap, LL(x));
         assume UnfoldingHeap[null, LL(x)] == CombineFrames(FrameFragment(UnfoldingHeap[x, val]), CombineFrames(FrameFragment(UnfoldingHeap[x, next]), FrameFragment((if UnfoldingHeap[x, next] != null then UnfoldingHeap[null, LL(UnfoldingHeap[x, next])] else EmptyFrame))));
-        ExhaleWellDef1Mask := UnfoldingMask;
         ExhaleWellDef1Heap := UnfoldingHeap;
+        ExhaleWellDef1Mask := UnfoldingMask;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Applying wand might fail. There might be insufficient permission to access LL(x) (issue029.vpr@71.3--71.18) [129304]"}
@@ -4126,8 +4126,8 @@ procedure test08(x: Ref) returns ()
         UnfoldingMask := ExhaleWellDef0Mask;
         assume LL#trigger(UnfoldingHeap, LL(x));
         assume UnfoldingHeap[null, LL(x)] == CombineFrames(FrameFragment(UnfoldingHeap[x, val]), CombineFrames(FrameFragment(UnfoldingHeap[x, next]), FrameFragment((if UnfoldingHeap[x, next] != null then UnfoldingHeap[null, LL(UnfoldingHeap[x, next])] else EmptyFrame))));
-        ExhaleWellDef1Mask := UnfoldingMask;
         ExhaleWellDef1Heap := UnfoldingHeap;
+        ExhaleWellDef1Mask := UnfoldingMask;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Applying wand might fail. There might be insufficient permission to access LL(x) (issue029.vpr@71.3--71.18) [129311]"}
@@ -4158,8 +4158,8 @@ procedure test08(x: Ref) returns ()
           Unfolding1Mask := UnfoldingMask;
           assume LL#trigger(Unfolding1Heap, LL(Unfolding1Heap[x, next]));
           assume Unfolding1Heap[null, LL(Unfolding1Heap[x, next])] == CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[x, next], val]), CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[x, next], next]), FrameFragment((if Unfolding1Heap[Unfolding1Heap[x, next], next] != null then Unfolding1Heap[null, LL(Unfolding1Heap[Unfolding1Heap[x, next], next])] else EmptyFrame))));
-          ExhaleWellDef1Mask := Unfolding1Mask;
           ExhaleWellDef1Heap := Unfolding1Heap;
+          ExhaleWellDef1Mask := Unfolding1Mask;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  Applying wand might fail. There might be insufficient permission to access LL(x.next) (issue029.vpr@71.3--71.18) [129317]"}
@@ -4233,8 +4233,8 @@ procedure test08(x: Ref) returns ()
         UnfoldingMask := Mask;
         assume LL#trigger(UnfoldingHeap, LL(x));
         assume UnfoldingHeap[null, LL(x)] == CombineFrames(FrameFragment(UnfoldingHeap[x, val]), CombineFrames(FrameFragment(UnfoldingHeap[x, next]), FrameFragment((if UnfoldingHeap[x, next] != null then UnfoldingHeap[null, LL(UnfoldingHeap[x, next])] else EmptyFrame))));
-        ExhaleWellDef0Mask := UnfoldingMask;
         ExhaleWellDef0Heap := UnfoldingHeap;
+        ExhaleWellDef0Mask := UnfoldingMask;
         perm := FullPerm;
         UnfoldingMask := UnfoldingMask[null, LL(x):=UnfoldingMask[null, LL(x)] - perm];
         perm := FullPerm;
@@ -4289,16 +4289,16 @@ procedure test08(x: Ref) returns ()
   // -- Translating statement: assert (unfolding acc(LL(x), write) in
   //     x.next != null ==>
   //     (unfolding acc(LL(x.next), write) in x.val <= x.next.val)) -- issue029.vpr@73.3--73.91
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (unfolding acc(LL(x), write) in x.next != null ==> (unfolding acc(LL(x.next), write) in x.val <= x.next.val))
       UnfoldingHeap := ExhaleWellDef0Heap;
       UnfoldingMask := ExhaleWellDef0Mask;
       assume LL#trigger(UnfoldingHeap, LL(x));
       assume UnfoldingHeap[null, LL(x)] == CombineFrames(FrameFragment(UnfoldingHeap[x, val]), CombineFrames(FrameFragment(UnfoldingHeap[x, next]), FrameFragment((if UnfoldingHeap[x, next] != null then UnfoldingHeap[null, LL(UnfoldingHeap[x, next])] else EmptyFrame))));
-      ExhaleWellDef1Mask := UnfoldingMask;
       ExhaleWellDef1Heap := UnfoldingHeap;
+      ExhaleWellDef1Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Assert might fail. There might be insufficient permission to access LL(x) (issue029.vpr@73.10--73.91) [129323]"}
@@ -4329,8 +4329,8 @@ procedure test08(x: Ref) returns ()
         Unfolding1Mask := UnfoldingMask;
         assume LL#trigger(Unfolding1Heap, LL(Unfolding1Heap[x, next]));
         assume Unfolding1Heap[null, LL(Unfolding1Heap[x, next])] == CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[x, next], val]), CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[x, next], next]), FrameFragment((if Unfolding1Heap[Unfolding1Heap[x, next], next] != null then Unfolding1Heap[null, LL(Unfolding1Heap[Unfolding1Heap[x, next], next])] else EmptyFrame))));
-        ExhaleWellDef1Mask := Unfolding1Mask;
         ExhaleWellDef1Heap := Unfolding1Heap;
+        ExhaleWellDef1Mask := Unfolding1Mask;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Assert might fail. There might be insufficient permission to access LL(x.next) (issue029.vpr@73.10--73.91) [129325]"}
@@ -4438,8 +4438,8 @@ procedure test08(x: Ref) returns ()
 procedure test02(b_24: bool) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var perm: Perm;
   var Ops_9Heap: HeapType;
   var Ops_9Mask: MaskType;
@@ -4447,11 +4447,11 @@ procedure test02(b_24: bool) returns ()
   var Used_8Heap: HeapType;
   var Used_8Mask: MaskType;
   var b_15: bool;
-  var Labellhs15Mask: MaskType;
   var Labellhs15Heap: HeapType;
+  var Labellhs15Mask: MaskType;
   var boolCur_4: bool;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var Used_9Heap: HeapType;
   var Used_9Mask: MaskType;
   var b_17: bool;
@@ -4488,8 +4488,8 @@ procedure test02(b_24: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale acc(P(), write) -- issue029.vpr@81.3--81.18
     perm := FullPerm;
@@ -4515,15 +4515,15 @@ procedure test02(b_24: bool) returns ()
     
     // -- Translating statement: label lhs15 -- issue029.vpr@82.11--82.31
       lhs15:
-      Labellhs15Mask := Ops_9Mask;
       Labellhs15Heap := Ops_9Heap;
+      Labellhs15Mask := Ops_9Mask;
       b_16 := b_16 && state(Ops_9Heap, Ops_9Mask);
     boolCur_4 := true;
     if (b_16) {
       
       // -- Translating statement: fold acc(Q(b), write) -- issue029.vpr@83.7--83.16
-        ExhaleWellDef0Mask := Ops_9Mask;
         ExhaleWellDef0Heap := Ops_9Heap;
+        ExhaleWellDef0Mask := Ops_9Mask;
         havoc Used_9Heap;
         Used_9Mask := ZeroMask;
         b_17 := b_17 && state(Used_9Heap, Used_9Mask);
@@ -4703,8 +4703,8 @@ procedure test02(b_24: bool) returns ()
   // -- Translating statement: assert !b ==> acc(P(), write) -- issue029.vpr@86.3--86.25
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
+    ExhaleWellDef0Mask := AssertMask;
     if (!b_24) {
       perm := FullPerm;
       if (perm != NoPerm) {
@@ -4718,8 +4718,8 @@ procedure test02(b_24: bool) returns ()
   // -- Translating statement: apply true --* acc(Q(b), write) -- issue029.vpr@88.3--88.27
     
     // -- check if wand is held and remove an instance
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       // permLe
       assert {:msg "  Applying wand might fail. Magic wand instance not found. (issue029.vpr@88.3--88.27) [129340]"}
         FullPerm <= Mask[null, wand_3(true, b_24)];
@@ -4727,8 +4727,8 @@ procedure test02(b_24: bool) returns ()
     assume state(Heap, Mask);
     
     // -- check if LHS holds and remove permissions 
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
     assume state(Heap, Mask);
     
     // -- inhale the RHS of the wand
@@ -4745,8 +4745,8 @@ procedure test02(b_24: bool) returns ()
   // -- Translating statement: assert acc(Q(b), write) -- issue029.vpr@89.3--89.19
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
+    ExhaleWellDef0Mask := AssertMask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Assert might fail. There might be insufficient permission to access Q(b) (issue029.vpr@89.10--89.19) [129344]"}
@@ -4758,8 +4758,8 @@ procedure test02(b_24: bool) returns ()
   // -- Translating statement: assert acc(P(), write) -- issue029.vpr@92.3--92.18
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
+    ExhaleWellDef0Mask := AssertMask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Assert might fail. There might be insufficient permission to access P() (issue029.vpr@92.10--92.18) [129346]"}
@@ -4776,8 +4776,8 @@ procedure test02(b_24: bool) returns ()
 procedure test03(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var Ops_11Heap: HeapType;
   var Ops_11Mask: MaskType;
   var b_23: bool;
@@ -4785,8 +4785,8 @@ procedure test03(x: Ref) returns ()
   var Used_11Mask: MaskType;
   var b_22: bool;
   var perm: Perm;
-  var Labellhs18Mask: MaskType;
   var Labellhs18Heap: HeapType;
+  var Labellhs18Mask: MaskType;
   var boolCur_5: bool;
   var Used_12Heap: HeapType;
   var Used_12Mask: MaskType;
@@ -4805,8 +4805,8 @@ procedure test03(x: Ref) returns ()
   var Result_6Mask: MaskType;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var Unfolding1Heap: HeapType;
   var Unfolding1Mask: MaskType;
   var ExhaleHeap: HeapType;
@@ -4824,8 +4824,8 @@ procedure test03(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: package acc(LLC(x, 0), write) --*
   // acc(LLC(x, 0), write) &&
@@ -4850,8 +4850,8 @@ procedure test03(x: Ref) returns ()
     
     // -- Translating statement: label lhs18 -- issue029.vpr@110.11--110.18
       lhs18:
-      Labellhs18Mask := Ops_11Mask;
       Labellhs18Heap := Ops_11Heap;
+      Labellhs18Mask := Ops_11Mask;
       b_23 := b_23 && state(Ops_11Heap, Ops_11Mask);
     boolCur_5 := true;
     // Translating exec of non-ghost operationacc(LLC(x, 0), write) && (unfolding acc(LLC(x, 0), write) in x.next != null ==> (unfolding acc(LLC(x.next, 1), write) in x.next.val == 1))
@@ -4932,8 +4932,8 @@ procedure test03(x: Ref) returns ()
           UnfoldingMask := Result_6Mask;
           assume LLC#trigger(UnfoldingHeap, LLC(x, 0));
           assume UnfoldingHeap[null, LLC(x, 0)] == CombineFrames(FrameFragment(UnfoldingHeap[x, val]), CombineFrames(FrameFragment(UnfoldingHeap[x, next]), FrameFragment((if UnfoldingHeap[x, next] != null then UnfoldingHeap[null, LLC(UnfoldingHeap[x, next], 1)] else EmptyFrame))));
-          ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
+          ExhaleWellDef0Mask := UnfoldingMask;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  Packaging wand might fail. There might be insufficient permission to access LLC(x, 0) (issue029.vpr@110.3--110.18) [129349]"}
@@ -4965,8 +4965,8 @@ procedure test03(x: Ref) returns ()
             Unfolding1Mask := UnfoldingMask;
             assume LLC#trigger(Unfolding1Heap, LLC(Unfolding1Heap[x, next], 1));
             assume Unfolding1Heap[null, LLC(Unfolding1Heap[x, next], 1)] == CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[x, next], val]), CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[x, next], next]), FrameFragment((if Unfolding1Heap[Unfolding1Heap[x, next], next] != null then Unfolding1Heap[null, LLC(Unfolding1Heap[Unfolding1Heap[x, next], next], 2)] else EmptyFrame))));
-            ExhaleWellDef0Mask := Unfolding1Mask;
             ExhaleWellDef0Heap := Unfolding1Heap;
+            ExhaleWellDef0Mask := Unfolding1Mask;
             perm := FullPerm;
             if (perm != NoPerm) {
               assert {:msg "  Packaging wand might fail. There might be insufficient permission to access LLC(x.next, 1) (issue029.vpr@110.3--110.18) [129351]"}
@@ -5058,8 +5058,8 @@ procedure test03(x: Ref) returns ()
   //     (unfolding acc(LLC(x.next, 1), write) in x.next.val == 1)) -- issue029.vpr@113.3--113.16
     
     // -- check if wand is held and remove an instance
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       // permLe
       assert {:msg "  Applying wand might fail. Magic wand instance not found. (issue029.vpr@113.3--113.16) [129357]"}
         FullPerm <= Mask[null, wand_4(x, 0, x, 0, x, 0, x, null, x, 1, x, 1)];
@@ -5067,8 +5067,8 @@ procedure test03(x: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- check if LHS holds and remove permissions 
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Applying wand might fail. There might be insufficient permission to access LLC(x, 0) (issue029.vpr@113.3--113.16) [129359]"}
@@ -5087,8 +5087,8 @@ procedure test03(x: Ref) returns ()
         UnfoldingMask := Mask;
         assume LLC#trigger(UnfoldingHeap, LLC(x, 0));
         assume UnfoldingHeap[null, LLC(x, 0)] == CombineFrames(FrameFragment(UnfoldingHeap[x, val]), CombineFrames(FrameFragment(UnfoldingHeap[x, next]), FrameFragment((if UnfoldingHeap[x, next] != null then UnfoldingHeap[null, LLC(UnfoldingHeap[x, next], 1)] else EmptyFrame))));
-        ExhaleWellDef0Mask := UnfoldingMask;
         ExhaleWellDef0Heap := UnfoldingHeap;
+        ExhaleWellDef0Mask := UnfoldingMask;
         perm := FullPerm;
         UnfoldingMask := UnfoldingMask[null, LLC(x, 0):=UnfoldingMask[null, LLC(x, 0)] - perm];
         perm := FullPerm;
@@ -5144,8 +5144,8 @@ procedure test03(x: Ref) returns ()
   // -- Translating statement: assert acc(LLC(x, 0), write) -- issue029.vpr@115.3--115.24
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
+    ExhaleWellDef0Mask := AssertMask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Assert might fail. There might be insufficient permission to access LLC(x, 0) (issue029.vpr@115.10--115.24) [129362]"}
@@ -5155,8 +5155,8 @@ procedure test03(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- issue029.vpr@118.3--118.15
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion false might not hold. (issue029.vpr@118.10--118.15) [129363]"}
       false;
     assume state(Heap, Mask);

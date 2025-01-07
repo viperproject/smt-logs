@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-04 00:36:08
+; Started: 2025-01-07 13:49:54
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -139,21 +139,21 @@
 (assert (forall ((s@$ $Snap) (self@0@00 $Ref)) (!
   (= (get_idx_1%limited s@$ self@0@00) (get_idx_1 s@$ self@0@00))
   :pattern ((get_idx_1 s@$ self@0@00))
-  :qid |quant-u-25210|)))
+  :qid |quant-u-25224|)))
 (assert (forall ((s@$ $Snap) (self@0@00 $Ref)) (!
   (get_idx_1%stateless self@0@00)
   :pattern ((get_idx_1%limited s@$ self@0@00))
-  :qid |quant-u-25211|)))
+  :qid |quant-u-25225|)))
 (assert (forall ((s@$ $Snap) (self@0@00 $Ref)) (!
   (let ((result@1@00 (get_idx_1%limited s@$ self@0@00))) (=>
     (get_idx_1%precondition s@$ self@0@00)
     (isInt<Bool> result@1@00)))
   :pattern ((get_idx_1%limited s@$ self@0@00))
-  :qid |quant-u-25214|)))
+  :qid |quant-u-25228|)))
 (assert (forall ((s@$ $Snap) (self@0@00 $Ref)) (!
   (let ((result@1@00 (get_idx_1%limited s@$ self@0@00))) true)
   :pattern ((get_idx_1%limited s@$ self@0@00))
-  :qid |quant-u-25215|)))
+  :qid |quant-u-25229|)))
 (assert (forall ((s@$ $Snap) (self@0@00 $Ref)) (!
   (=>
     (get_idx_1%precondition s@$ self@0@00)
@@ -161,29 +161,29 @@
       (get_idx_1 s@$ self@0@00)
       ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$)))))
   :pattern ((get_idx_1 s@$ self@0@00))
-  :qid |quant-u-25216|)))
+  :qid |quant-u-25230|)))
 (assert (forall ((s@$ $Snap) (self@0@00 $Ref)) (!
   true
   :pattern ((get_idx_1 s@$ self@0@00))
-  :qid |quant-u-25217|)))
+  :qid |quant-u-25231|)))
 (assert (forall ((s@$ $Snap) (self@2@00 $Ref)) (!
   (= (get_idx%limited s@$ self@2@00) (get_idx s@$ self@2@00))
   :pattern ((get_idx s@$ self@2@00))
-  :qid |quant-u-25212|)))
+  :qid |quant-u-25226|)))
 (assert (forall ((s@$ $Snap) (self@2@00 $Ref)) (!
   (get_idx%stateless self@2@00)
   :pattern ((get_idx%limited s@$ self@2@00))
-  :qid |quant-u-25213|)))
+  :qid |quant-u-25227|)))
 (assert (forall ((s@$ $Snap) (self@2@00 $Ref)) (!
   (let ((result@3@00 (get_idx%limited s@$ self@2@00))) (=>
     (get_idx%precondition s@$ self@2@00)
     (isInt<Bool> result@3@00)))
   :pattern ((get_idx%limited s@$ self@2@00))
-  :qid |quant-u-25218|)))
+  :qid |quant-u-25232|)))
 (assert (forall ((s@$ $Snap) (self@2@00 $Ref)) (!
   (let ((result@3@00 (get_idx%limited s@$ self@2@00))) true)
   :pattern ((get_idx%limited s@$ self@2@00))
-  :qid |quant-u-25219|)))
+  :qid |quant-u-25233|)))
 (assert (forall ((s@$ $Snap) (self@2@00 $Ref)) (!
   (=>
     (get_idx%precondition s@$ self@2@00)
@@ -194,7 +194,7 @@
         ($Snap.first ($Snap.second s@$))) self@2@00)))
   :pattern ((get_idx s@$ self@2@00))
   :pattern ((get_idx%stateless self@2@00) (Packet%trigger s@$ self@2@00))
-  :qid |quant-u-25220|)))
+  :qid |quant-u-25234|)))
 (assert (forall ((s@$ $Snap) (self@2@00 $Ref)) (!
   (=>
     (get_idx%precondition s@$ self@2@00)
@@ -202,6 +202,6 @@
       ($Snap.first s@$)
       ($Snap.first ($Snap.second s@$))) self@2@00))
   :pattern ((get_idx s@$ self@2@00))
-  :qid |quant-u-25221|)))
+  :qid |quant-u-25235|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------

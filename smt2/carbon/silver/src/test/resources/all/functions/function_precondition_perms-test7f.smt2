@@ -1744,7 +1744,7 @@
  :pattern ( (state Heap@@101 Mask@@79) (bar2 Heap@@101 x@@70))
  :pattern ( (state Heap@@101 Mask@@79) (|bar2#triggerStateless| x@@70) (|P#trigger_21974| Heap@@101 (P x@@70)))
 )))
-; Invalid
+; Valid
 (push 1)
 (declare-fun ControlFlow (Int Int) Int)
 (declare-fun neverTriggered19 (T@Ref) Bool)

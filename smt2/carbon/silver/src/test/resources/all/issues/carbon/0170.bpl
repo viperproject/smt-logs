@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-04 01:12:16
+// Date:         2025-01-07 14:26:42
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0170.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0170-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -192,13 +192,13 @@ procedure test1(a_2: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var r_36: Ref;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -219,8 +219,8 @@ procedure test1(a_2: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -261,8 +261,8 @@ procedure test1(a_2: Ref) returns ()
   }
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm - Mask[a_2, f1_1];
     assert {:msg "  Postcondition of test1 might not hold. Fraction write - perm(a.f1) might be negative. (0170.vpr@10.13--10.50) [192993]"}
       perm >= NoPerm;
@@ -289,11 +289,11 @@ procedure test1(a_2: Ref) returns ()
 procedure test2(a_2: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var r_27: Ref;
   
@@ -308,8 +308,8 @@ procedure test2(a_2: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale acc(a.f2, write) -- 0170.vpr@17.5--17.28
     perm := FullPerm;
@@ -320,8 +320,8 @@ procedure test2(a_2: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(a.f2, write - perm(a.f1)) -- 0170.vpr@18.5--18.41
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm - Mask[a_2, f1_1];
     assert {:msg "  Exhale might fail. Fraction write - perm(a.f1) might be negative. (0170.vpr@18.12--18.41) [192997]"}
       perm >= NoPerm;
@@ -337,8 +337,8 @@ procedure test2(a_2: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale (forperm r: Ref [r.f2] :: false) -- 0170.vpr@19.5--19.44
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forperm r: Ref [r.f2] :: false)
       if (*) {

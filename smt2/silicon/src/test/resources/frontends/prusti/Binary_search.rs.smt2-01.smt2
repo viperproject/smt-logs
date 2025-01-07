@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-04 00:18:26
+; Started: 2025-01-07 13:31:50
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -34395,7 +34395,7 @@
 (check-sat)
 ; unknown
 (pop) ; 14
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 14
@@ -36588,7 +36588,7 @@
 (check-sat)
 ; unknown
 (pop) ; 16
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [eval] -2147483648 <= self.val_int
 ; [eval] -2147483648
@@ -37827,7 +37827,7 @@
 (check-sat)
 ; unknown
 (pop) ; 13
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (assert (<=
   $Perm.No
@@ -37930,7 +37930,7 @@
 (check-sat)
 ; unknown
 (pop) ; 13
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (assert (=>
   (<

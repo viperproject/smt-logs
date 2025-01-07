@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-04 00:21:49
+; Started: 2025-01-07 13:35:27
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -40656,12 +40656,12 @@
     ($unwrap<Int> l$i@568@01)
     (Seq_length ($struct_get<Seq<Int>> ($struct_loc<Int> self@567@01 0)))))))
 (check-sat)
-; unsat
+; unknown
 (pop) ; 8
 ; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 387 | 0 <= $unwrap[Int](l$i@568@01) && $unwrap[Int](l$i@568@01) < |$struct_get[Seq[Int]]($struct_loc[Int](self@567@01, 0))| | live]
-; [else-branch: 387 | !(0 <= $unwrap[Int](l$i@568@01) && $unwrap[Int](l$i@568@01) < |$struct_get[Seq[Int]]($struct_loc[Int](self@567@01, 0))|) | dead]
+; [else-branch: 387 | !(0 <= $unwrap[Int](l$i@568@01) && $unwrap[Int](l$i@568@01) < |$struct_get[Seq[Int]]($struct_loc[Int](self@567@01, 0))|) | live]
 (set-option :timeout 0)
 (push) ; 8
 ; [then-branch: 387 | 0 <= $unwrap[Int](l$i@568@01) && $unwrap[Int](l$i@568@01) < |$struct_get[Seq[Int]]($struct_loc[Int](self@567@01, 0))|]
@@ -40965,7 +40965,7 @@
 (check-sat)
 ; unsat
 (pop) ; 10
-; 0.01s
+; 0.02s
 ; (get-info :all-statistics)
 (assert (forall ((q$i@572@01 Int)) (!
   (=>
@@ -41454,7 +41454,7 @@
 ; State saturation: after inhale
 (set-option :timeout 20)
 (check-sat)
-; unsat
+; unknown
 ; [exec]
 ; self := ($struct_set(self, 5, ($struct_get($struct_loc(self, 5)): Int) +
 ;   l$havoc): $Struct)
@@ -41861,7 +41861,7 @@
 (check-sat)
 ; unsat
 (pop) ; 12
-; 0.03s
+; 0.05s
 ; (get-info :all-statistics)
 (assert (forall ((q$i@582@01 Int)) (!
   (=>
@@ -42757,7 +42757,7 @@
 (check-sat)
 ; unsat
 (pop) ; 14
-; 0.04s
+; 0.03s
 ; (get-info :all-statistics)
 (assert (forall ((q$i@592@01 Int)) (!
   (=>
@@ -43476,7 +43476,7 @@
 (check-sat)
 ; unsat
 (pop) ; 20
-; 0.02s
+; 0.03s
 ; (get-info :all-statistics)
 (pop) ; 19
 (push) ; 19
@@ -43570,7 +43570,7 @@
 (check-sat)
 ; unsat
 (pop) ; 15
-; 0.80s
+; 0.57s
 ; (get-info :all-statistics)
 (assert (forall ((q$i@601@01 Int)) (!
   (=>
@@ -43714,6 +43714,15 @@
       ($unwrap<Int> l$i@571@01)
       (Seq_length ($struct_get<Seq<Int>> ($struct_loc<Int> self@570@01 0)))))))
 (pop) ; 9
+(pop) ; 8
+(push) ; 8
+; [else-branch: 387 | !(0 <= $unwrap[Int](l$i@568@01) && $unwrap[Int](l$i@568@01) < |$struct_get[Seq[Int]]($struct_loc[Int](self@567@01, 0))|)]
+(assert (not
+  (and
+    (<= 0 ($unwrap<Int> l$i@568@01))
+    (<
+      ($unwrap<Int> l$i@568@01)
+      (Seq_length ($struct_get<Seq<Int>> ($struct_loc<Int> self@567@01 0)))))))
 (pop) ; 8
 (pop) ; 7
 (pop) ; 6

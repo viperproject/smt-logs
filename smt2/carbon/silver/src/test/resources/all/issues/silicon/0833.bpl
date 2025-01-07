@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-04 01:15:23
+// Date:         2025-01-07 14:29:57
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0833.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0833-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -518,15 +518,15 @@ procedure processRequest_4e2a3fe_F(id_V0: int) returns ()
   var returnLabel_lblGuard: bool;
   var fn$$0: (ShStruct2DomainType Ref Ref);
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var id_V0_CN0: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newVersion: FrameType;
   var QPMask: MaskType;
-  var LabelreturnLabelMask: MaskType;
   var LabelreturnLabelHeap: HeapType;
+  var LabelreturnLabelMask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -564,8 +564,8 @@ procedure processRequest_4e2a3fe_F(id_V0: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale id_V0_CN0 == 0 -- 0833.vpr@67.5--67.26
     assume id_V0_CN0 == 0;
@@ -579,8 +579,8 @@ procedure processRequest_4e2a3fe_F(id_V0: int) returns ()
   // -- Translating statement: unfold acc(SharedInv_4e2a3fe_F(), write) -- 0833.vpr@75.5--75.45
     assume SharedInv_4e2a3fe_F#trigger(Heap, SharedInv_4e2a3fe_F());
     assume Heap[null, SharedInv_4e2a3fe_F()] == CombineFrames(FrameFragment(SharedInv_4e2a3fe_F#condqp1(Heap)), FrameFragment(SharedInv_4e2a3fe_F#condqp2(Heap)));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding SharedInv_4e2a3fe_F() might fail. There might be insufficient permission to access SharedInv_4e2a3fe_F() (0833.vpr@75.5--75.45) [202844]"}
@@ -679,16 +679,16 @@ procedure processRequest_4e2a3fe_F(id_V0: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- 0833.vpr@79.5--79.17
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion false might not hold. (0833.vpr@79.12--79.17) [202849]"}
       false;
     assume state(Heap, Mask);
   
   // -- Translating statement: label returnLabel -- 0833.vpr@80.5--80.22
     returnLabel:
-    LabelreturnLabelMask := Mask;
     LabelreturnLabelHeap := Heap;
+    LabelreturnLabelMask := Mask;
     returnLabel_lblGuard := true;
     assume state(Heap, Mask);
 }

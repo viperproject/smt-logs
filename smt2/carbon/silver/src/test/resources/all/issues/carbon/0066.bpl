@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-04 01:12:15
+// Date:         2025-01-07 14:26:41
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0066.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0066-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -188,8 +188,8 @@ axiom !IsWandField(x_36);
 procedure test1(this: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var perm: Perm;
   
   // -- Initializing the state
@@ -203,8 +203,8 @@ procedure test1(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale [acc(this.x, write) && this.x == 1, true] -- 0066.vpr@8.3--8.44
     perm := FullPerm;
@@ -227,8 +227,8 @@ procedure test1(this: Ref) returns ()
 procedure test2(this: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -241,8 +241,8 @@ procedure test2(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale [true, acc(this.x, write) && this.x == 1] -- 0066.vpr@13.3--13.44
     assume state(Heap, Mask);
@@ -256,10 +256,10 @@ procedure test2(this: Ref) returns ()
 procedure test3(this: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -272,12 +272,12 @@ procedure test3(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: exhale [acc(this.x, write) && this.x == 1, true] -- 0066.vpr@18.3--18.44
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assume state(Heap, Mask);
 }
 
@@ -288,11 +288,11 @@ procedure test3(this: Ref) returns ()
 procedure test4(this: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -306,8 +306,8 @@ procedure test4(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale acc(this.x, write) && this.x == 1 -- 0066.vpr@23.3--23.36
     perm := FullPerm;
@@ -323,8 +323,8 @@ procedure test4(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale [true, acc(this.x, write) && this.x == 1] -- 0066.vpr@24.3--24.44
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Exhale might fail. There might be insufficient permission to access this.x (0066.vpr@24.10--24.44) [192944]"}
@@ -351,8 +351,8 @@ procedure test4(this: Ref) returns ()
 procedure test5(this: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var perm: Perm;
   
   // -- Initializing the state
@@ -366,8 +366,8 @@ procedure test5(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale acc(this.x, write) && this.x == 1 -- 0066.vpr@29.3--29.36
     perm := FullPerm;
@@ -390,8 +390,8 @@ procedure test5(this: Ref) returns ()
 procedure test6(this: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var perm: Perm;
   
   // -- Initializing the state
@@ -405,8 +405,8 @@ procedure test6(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale [acc(this.x, write), true] && [this.x == 1, true] -- 0066.vpr@34.3--34.52
     perm := FullPerm;
@@ -429,8 +429,8 @@ procedure test6(this: Ref) returns ()
 procedure test10(this: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var perm: Perm;
   
   // -- Initializing the state
@@ -444,8 +444,8 @@ procedure test10(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale true && [acc(this.x, write) && this.x == 1, true] -- 0066.vpr@39.3--39.52
     perm := FullPerm;
@@ -468,8 +468,8 @@ procedure test10(this: Ref) returns ()
 procedure test11(this: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -482,8 +482,8 @@ procedure test11(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale true && [true, acc(this.x, write) && this.x == 1] -- 0066.vpr@44.3--44.52
     assume state(Heap, Mask);
@@ -497,10 +497,10 @@ procedure test11(this: Ref) returns ()
 procedure test12(this: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -513,12 +513,12 @@ procedure test12(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: exhale true && [acc(this.x, write) && this.x == 1, true] -- 0066.vpr@49.3--49.52
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assume state(Heap, Mask);
 }
 
@@ -529,11 +529,11 @@ procedure test12(this: Ref) returns ()
 procedure test13(this: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -547,8 +547,8 @@ procedure test13(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale acc(this.x, write) && this.x == 1 -- 0066.vpr@54.3--54.36
     perm := FullPerm;
@@ -564,8 +564,8 @@ procedure test13(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale true && [true, acc(this.x, write) && this.x == 1] -- 0066.vpr@55.3--55.52
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Exhale might fail. There might be insufficient permission to access this.x (0066.vpr@55.10--55.52) [192959]"}
@@ -592,8 +592,8 @@ procedure test13(this: Ref) returns ()
 procedure test14(this: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -606,8 +606,8 @@ procedure test14(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale [true, this.x == 1] -- 0066.vpr@62.3--62.29
     assume state(Heap, Mask);
@@ -621,10 +621,10 @@ procedure test14(this: Ref) returns ()
 procedure test15(this: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -637,12 +637,12 @@ procedure test15(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: exhale [this.x == 1, true] -- 0066.vpr@69.3--69.29
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assume state(Heap, Mask);
 }
 
@@ -653,8 +653,8 @@ procedure test15(this: Ref) returns ()
 procedure e0_1(this: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -683,8 +683,8 @@ procedure e0_1(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
 }
 
 // ==================================================
@@ -694,13 +694,13 @@ procedure e0_1(this: Ref) returns ()
 procedure e1_1(this: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -713,8 +713,8 @@ procedure e1_1(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -752,8 +752,8 @@ procedure e1_1(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of e1 might not hold. Assertion this.x == 0 might not hold. (0066.vpr@82.11--82.30) [192967]"}
       Heap[this, x_36] == 0;
 }

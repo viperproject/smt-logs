@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-04 00:19:54
+; Started: 2025-01-07 13:33:22
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -6725,7 +6725,7 @@
 (check-sat)
 ; unknown
 (pop) ; 21
-; 0.36s
+; 0.59s
 ; (get-info :all-statistics)
 ; [state consolidation]
 ; State saturation: before repetition
@@ -6740,7 +6740,7 @@
 (check-sat)
 ; unknown
 (pop) ; 21
-; 0.38s
+; 0.61s
 ; (get-info :all-statistics)
 ; [state consolidation]
 ; State saturation: before repetition
@@ -6755,7 +6755,7 @@
 (check-sat)
 ; unknown
 (pop) ; 21
-; 0.34s
+; 0.45s
 ; (get-info :all-statistics)
 ; [state consolidation]
 ; State saturation: before repetition
@@ -6770,7 +6770,7 @@
 (check-sat)
 ; unknown
 (pop) ; 21
-; 0.41s
+; 0.91s
 ; (get-info :all-statistics)
 (pop) ; 20
 (pop) ; 19
@@ -11769,7 +11769,7 @@
 (check-sat)
 ; unsat
 (pop) ; 5
-; 0.33s
+; 0.22s
 ; (get-info :all-statistics)
 (assert (=
   (not

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-04 01:21:13
+// Date:         2025-01-07 14:35:57
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0230.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0230-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -226,18 +226,18 @@ procedure m(x: Ref, y: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var WandDefLHSHeap: HeapType;
   var WandDefLHSMask: MaskType;
-  var Labellhs1Heap: HeapType;
   var Labellhs1Mask: MaskType;
+  var Labellhs1Heap: HeapType;
   var WandDefRHSHeap: HeapType;
   var WandDefRHSMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
-  var Labellhs2Heap: HeapType;
+  var ExhaleWellDef0Heap: HeapType;
   var Labellhs2Mask: MaskType;
+  var Labellhs2Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -263,8 +263,8 @@ procedure m(x: Ref, y: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale true --* old(x.f) + old(y.f) == 4 -- 0230.vpr@9.5--9.45
     
@@ -276,8 +276,8 @@ procedure m(x: Ref, y: Ref) returns ()
         
         // -- Translating statement: label lhs1 -- 0230.vpr@9.12--9.45
           lhs1:
-          Labellhs1Heap := WandDefLHSHeap;
           Labellhs1Mask := WandDefLHSMask;
+          Labellhs1Heap := WandDefLHSHeap;
           assume state(WandDefLHSHeap, WandDefLHSMask);
         havoc WandDefRHSHeap;
         WandDefRHSMask := ZeroMask;
@@ -297,8 +297,8 @@ procedure m(x: Ref, y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale true --* old(x.f + y.f) == 4 -- 0230.vpr@10.5--10.40
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of true --* old(x.f + y.f) == 4
       if (*) {
@@ -308,8 +308,8 @@ procedure m(x: Ref, y: Ref) returns ()
         
         // -- Translating statement: label lhs2 -- 0230.vpr@10.12--10.40
           lhs2:
-          Labellhs2Heap := WandDefLHSHeap;
           Labellhs2Mask := WandDefLHSMask;
+          Labellhs2Heap := WandDefLHSHeap;
           assume state(WandDefLHSHeap, WandDefLHSMask);
         havoc WandDefRHSHeap;
         WandDefRHSMask := ZeroMask;
@@ -342,18 +342,18 @@ procedure n_12(x: Ref, y: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var WandDefLHSHeap: HeapType;
   var WandDefLHSMask: MaskType;
-  var Labellhs3Heap: HeapType;
   var Labellhs3Mask: MaskType;
+  var Labellhs3Heap: HeapType;
   var WandDefRHSHeap: HeapType;
   var WandDefRHSMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
-  var Labellhs4Heap: HeapType;
+  var ExhaleWellDef0Heap: HeapType;
   var Labellhs4Mask: MaskType;
+  var Labellhs4Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -379,8 +379,8 @@ procedure n_12(x: Ref, y: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale true --* old(x.f + y.f) == 4 -- 0230.vpr@16.5--16.40
     
@@ -392,8 +392,8 @@ procedure n_12(x: Ref, y: Ref) returns ()
         
         // -- Translating statement: label lhs3 -- 0230.vpr@16.12--16.40
           lhs3:
-          Labellhs3Heap := WandDefLHSHeap;
           Labellhs3Mask := WandDefLHSMask;
+          Labellhs3Heap := WandDefLHSHeap;
           assume state(WandDefLHSHeap, WandDefLHSMask);
         havoc WandDefRHSHeap;
         WandDefRHSMask := ZeroMask;
@@ -413,8 +413,8 @@ procedure n_12(x: Ref, y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale true --* old(x.f) + old(y.f) == 4 -- 0230.vpr@17.5--17.45
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of true --* old(x.f) + old(y.f) == 4
       if (*) {
@@ -424,8 +424,8 @@ procedure n_12(x: Ref, y: Ref) returns ()
         
         // -- Translating statement: label lhs4 -- 0230.vpr@17.12--17.45
           lhs4:
-          Labellhs4Heap := WandDefLHSHeap;
           Labellhs4Mask := WandDefLHSMask;
+          Labellhs4Heap := WandDefLHSHeap;
           assume state(WandDefLHSHeap, WandDefLHSMask);
         havoc WandDefRHSHeap;
         WandDefRHSMask := ZeroMask;
@@ -458,18 +458,18 @@ procedure o_195(x: Ref, y: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var WandDefLHSHeap: HeapType;
   var WandDefLHSMask: MaskType;
-  var Labellhs5Heap: HeapType;
   var Labellhs5Mask: MaskType;
+  var Labellhs5Heap: HeapType;
   var WandDefRHSHeap: HeapType;
   var WandDefRHSMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
-  var Labellhs6Heap: HeapType;
+  var ExhaleWellDef0Heap: HeapType;
   var Labellhs6Mask: MaskType;
+  var Labellhs6Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -495,8 +495,8 @@ procedure o_195(x: Ref, y: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale old(x.f) + old(y.f) == 4 --* true -- 0230.vpr@23.5--23.45
     
@@ -515,8 +515,8 @@ procedure o_195(x: Ref, y: Ref) returns ()
         
         // -- Translating statement: label lhs5 -- 0230.vpr@23.12--23.45
           lhs5:
-          Labellhs5Heap := WandDefLHSHeap;
           Labellhs5Mask := WandDefLHSMask;
+          Labellhs5Heap := WandDefLHSHeap;
           assume state(WandDefLHSHeap, WandDefLHSMask);
         havoc WandDefRHSHeap;
         WandDefRHSMask := ZeroMask;
@@ -529,8 +529,8 @@ procedure o_195(x: Ref, y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale old(x.f + y.f) == 4 --* true -- 0230.vpr@24.5--24.40
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of old(x.f + y.f) == 4 --* true
       if (*) {
@@ -547,8 +547,8 @@ procedure o_195(x: Ref, y: Ref) returns ()
         
         // -- Translating statement: label lhs6 -- 0230.vpr@24.12--24.40
           lhs6:
-          Labellhs6Heap := WandDefLHSHeap;
           Labellhs6Mask := WandDefLHSMask;
+          Labellhs6Heap := WandDefLHSHeap;
           assume state(WandDefLHSHeap, WandDefLHSMask);
         havoc WandDefRHSHeap;
         WandDefRHSMask := ZeroMask;
@@ -574,18 +574,18 @@ procedure p_20(x: Ref, y: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var WandDefLHSHeap: HeapType;
   var WandDefLHSMask: MaskType;
-  var Labellhs7Heap: HeapType;
   var Labellhs7Mask: MaskType;
+  var Labellhs7Heap: HeapType;
   var WandDefRHSHeap: HeapType;
   var WandDefRHSMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
-  var Labellhs8Heap: HeapType;
+  var ExhaleWellDef0Heap: HeapType;
   var Labellhs8Mask: MaskType;
+  var Labellhs8Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -611,8 +611,8 @@ procedure p_20(x: Ref, y: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale old(x.f + y.f) == 4 --* true -- 0230.vpr@30.5--30.40
     
@@ -631,8 +631,8 @@ procedure p_20(x: Ref, y: Ref) returns ()
         
         // -- Translating statement: label lhs7 -- 0230.vpr@30.12--30.40
           lhs7:
-          Labellhs7Heap := WandDefLHSHeap;
           Labellhs7Mask := WandDefLHSMask;
+          Labellhs7Heap := WandDefLHSHeap;
           assume state(WandDefLHSHeap, WandDefLHSMask);
         havoc WandDefRHSHeap;
         WandDefRHSMask := ZeroMask;
@@ -645,8 +645,8 @@ procedure p_20(x: Ref, y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale old(x.f) + old(y.f) == 4 --* true -- 0230.vpr@31.5--31.45
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of old(x.f) + old(y.f) == 4 --* true
       if (*) {
@@ -663,8 +663,8 @@ procedure p_20(x: Ref, y: Ref) returns ()
         
         // -- Translating statement: label lhs8 -- 0230.vpr@31.12--31.45
           lhs8:
-          Labellhs8Heap := WandDefLHSHeap;
           Labellhs8Mask := WandDefLHSMask;
+          Labellhs8Heap := WandDefLHSHeap;
           assume state(WandDefLHSHeap, WandDefLHSMask);
         havoc WandDefRHSHeap;
         WandDefRHSMask := ZeroMask;

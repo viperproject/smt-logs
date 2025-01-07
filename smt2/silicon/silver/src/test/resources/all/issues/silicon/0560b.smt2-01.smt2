@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-04 00:35:40
+; Started: 2025-01-07 13:49:25
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -461,11 +461,11 @@
 (assert (forall ((s@$ $Snap) (t@0@00 Tree)) (!
   (= (height%limited s@$ t@0@00) (height s@$ t@0@00))
   :pattern ((height s@$ t@0@00))
-  :qid |quant-u-24499|)))
+  :qid |quant-u-24513|)))
 (assert (forall ((s@$ $Snap) (t@0@00 Tree)) (!
   (height%stateless t@0@00)
   :pattern ((height%limited s@$ t@0@00))
-  :qid |quant-u-24500|)))
+  :qid |quant-u-24514|)))
 (assert (forall ((s@$ $Snap) (t@0@00 Tree)) (!
   (=>
     (height%precondition s@$ t@0@00)
@@ -481,7 +481,7 @@
           (+ (height%limited $Snap.unit (getLeft<Tree> t@0@00)) 1)
           (+ (height%limited $Snap.unit (getRight<Tree> t@0@00)) 1)))))
   :pattern ((height s@$ t@0@00))
-  :qid |quant-u-24501|)))
+  :qid |quant-u-24515|)))
 (assert (forall ((s@$ $Snap) (t@0@00 Tree)) (!
   (=>
     (height%precondition s@$ t@0@00)
@@ -499,7 +499,7 @@
           (height%precondition $Snap.unit (getLeft<Tree> t@0@00))
           (height%precondition $Snap.unit (getRight<Tree> t@0@00))))))
   :pattern ((height s@$ t@0@00))
-  :qid |quant-u-24502|)))
+  :qid |quant-u-24516|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- computeTreeHeight ----------

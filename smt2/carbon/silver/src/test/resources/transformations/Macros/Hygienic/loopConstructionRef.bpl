@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-04 00:49:48
+// Date:         2025-01-07 14:03:48
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/transformations/Macros/Hygienic/loopConstructionRef.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/transformations/Macros/Hygienic/loopConstructionRef-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -239,23 +239,23 @@ procedure main() returns ()
 {
   var loop_lblGuard: bool;
   var loop$0_lblGuard: bool;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var value_1: int;
   var oldX: int;
   var ctr: int;
-  var LabelloopHeap: HeapType;
   var LabelloopMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var LabelloopHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var frameMask8: MaskType;
   var frameHeap8: HeapType;
   var LoopSumHeap: HeapType;
   var LoopSumMask: MaskType;
   var oldX$0: int;
   var ctr$0: int;
-  var Labelloop$0Heap: HeapType;
   var Labelloop$0Mask: MaskType;
+  var Labelloop$0Heap: HeapType;
   var frameMask20: MaskType;
   var frameHeap20: HeapType;
   
@@ -269,8 +269,8 @@ procedure main() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: // id = 1
   // // LoopDummyStmtInfo()
@@ -313,15 +313,15 @@ procedure main() returns ()
   // label loop
   //   invariant ctr < 5 && value == oldX + ctr -- loopConstructionRef.vpr@13.5--13.56
     loop:
-    LabelloopHeap := Heap;
     LabelloopMask := Mask;
+    LabelloopHeap := Heap;
     loop_lblGuard := true;
     
     // -- Before loop head8
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Loop invariant ctr < 5 && value == oldX + ctr might not hold on entry. Assertion ctr < 5 might not hold. (loopConstructionRef.vpr@13.26--13.56) [101744]"}
           ctr < 5;
         assert {:msg "  Loop invariant ctr < 5 && value == oldX + ctr might not hold on entry. Assertion value == oldX + ctr might not hold. (loopConstructionRef.vpr@13.26--13.56) [101745]"}
@@ -381,8 +381,8 @@ procedure main() returns ()
               assume false;
             }
           // Exhale invariant
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           assert {:msg "  Loop invariant ctr < 5 && value == oldX + ctr might not be preserved. Assertion ctr < 5 might not hold. (loopConstructionRef.vpr@13.26--13.56) [101746]"}
             ctr < 5;
           assert {:msg "  Loop invariant ctr < 5 && value == oldX + ctr might not be preserved. Assertion value == oldX + ctr might not hold. (loopConstructionRef.vpr@13.26--13.56) [101747]"}
@@ -411,16 +411,16 @@ procedure main() returns ()
   
   // -- Translating statement: // id = 13
   // assert ctr == 5 -- loopConstructionRef.vpr@19.5--19.21
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion ctr == 5 might not hold. (loopConstructionRef.vpr@19.12--19.20) [101748]"}
       ctr == 5;
     assume state(Heap, Mask);
   
   // -- Translating statement: // id = 14
   // assert oldX + 5 == value -- loopConstructionRef.vpr@20.5--20.30
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion oldX + 5 == value might not hold. (loopConstructionRef.vpr@20.12--20.29) [101749]"}
       oldX + 5 == value_1;
     assume state(Heap, Mask);
@@ -456,15 +456,15 @@ procedure main() returns ()
   // label loop$0
   //   invariant ctr$0 < 5 && value == oldX$0 + ctr$0 -- loopConstructionRef.vpr@26.5--26.64
     loop$0:
-    Labelloop$0Heap := Heap;
     Labelloop$0Mask := Mask;
+    Labelloop$0Heap := Heap;
     loop$0_lblGuard := true;
     
     // -- Before loop head20
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Loop invariant ctr$0 < 5 && value == oldX$0 + ctr$0 might not hold on entry. Assertion ctr$0 < 5 might not hold. (loopConstructionRef.vpr@26.28--26.64) [101750]"}
           ctr$0 < 5;
         assert {:msg "  Loop invariant ctr$0 < 5 && value == oldX$0 + ctr$0 might not hold on entry. Assertion value == oldX$0 + ctr$0 might not hold. (loopConstructionRef.vpr@26.28--26.64) [101751]"}
@@ -524,8 +524,8 @@ procedure main() returns ()
               assume false;
             }
           // Exhale invariant
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           assert {:msg "  Loop invariant ctr$0 < 5 && value == oldX$0 + ctr$0 might not be preserved. Assertion ctr$0 < 5 might not hold. (loopConstructionRef.vpr@26.28--26.64) [101752]"}
             ctr$0 < 5;
           assert {:msg "  Loop invariant ctr$0 < 5 && value == oldX$0 + ctr$0 might not be preserved. Assertion value == oldX$0 + ctr$0 might not hold. (loopConstructionRef.vpr@26.28--26.64) [101753]"}
@@ -554,24 +554,24 @@ procedure main() returns ()
   
   // -- Translating statement: // id = 25
   // assert ctr$0 == 5 -- loopConstructionRef.vpr@32.5--32.23
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion ctr$0 == 5 might not hold. (loopConstructionRef.vpr@32.12--32.22) [101754]"}
       ctr$0 == 5;
     assume state(Heap, Mask);
   
   // -- Translating statement: // id = 26
   // assert oldX$0 + 5 == value -- loopConstructionRef.vpr@33.5--33.32
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion oldX$0 + 5 == value might not hold. (loopConstructionRef.vpr@33.12--33.31) [101755]"}
       oldX$0 + 5 == value_1;
     assume state(Heap, Mask);
   
   // -- Translating statement: // id = 27
   // assert value == 10 -- loopConstructionRef.vpr@35.5--35.24
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion value == 10 might not hold. (loopConstructionRef.vpr@35.12--35.23) [101756]"}
       value_1 == 10;
     assume state(Heap, Mask);

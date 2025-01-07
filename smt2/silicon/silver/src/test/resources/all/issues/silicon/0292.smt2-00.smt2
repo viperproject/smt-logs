@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-04 00:36:36
+; Started: 2025-01-07 13:50:22
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -768,11 +768,11 @@
 (assert (forall ((s@$ $Snap) (r@0@00 $Ref)) (!
   (= (is_int%limited s@$ r@0@00) (is_int_ s@$ r@0@00))
   :pattern ((is_int_ s@$ r@0@00))
-  :qid |quant-u-25661|)))
+  :qid |quant-u-25675|)))
 (assert (forall ((s@$ $Snap) (r@0@00 $Ref)) (!
   (is_int%stateless r@0@00)
   :pattern ((is_int%limited s@$ r@0@00))
-  :qid |quant-u-25662|)))
+  :qid |quant-u-25676|)))
 ; ---------- FUNCTION SCIONPath_get_iof----------
 (declare-fun self@2@00 () $Ref)
 (declare-fun result@3@00 () $Ref)
@@ -782,11 +782,11 @@
 (assert (forall ((s@$ $Snap) (self@2@00 $Ref)) (!
   (= (SCIONPath_get_iof%limited s@$ self@2@00) (SCIONPath_get_iof s@$ self@2@00))
   :pattern ((SCIONPath_get_iof s@$ self@2@00))
-  :qid |quant-u-25663|)))
+  :qid |quant-u-25677|)))
 (assert (forall ((s@$ $Snap) (self@2@00 $Ref)) (!
   (SCIONPath_get_iof%stateless self@2@00)
   :pattern ((SCIONPath_get_iof%limited s@$ self@2@00))
-  :qid |quant-u-25664|)))
+  :qid |quant-u-25678|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -973,7 +973,7 @@
   :pattern ((Seq_contains_trigger
     (OpaqueFieldList_contents $Snap.unit ($SortWrappers.$SnapTo$Ref ($Snap.first s@$)))
     x@8@00))
-  :qid |quant-u-25668|)))
+  :qid |quant-u-25682|)))
 (assert (forall ((self $Ref)) (!
   (=>
     (img@10@00 s@$ self@2@00 self)
@@ -996,7 +996,7 @@
   :pattern ((Seq_contains_trigger
     (OpaqueFieldList_contents $Snap.unit ($SortWrappers.$SnapTo$Ref ($Snap.first s@$)))
     x@8@00))
-  :qid |quant-u-25668|)))
+  :qid |quant-u-25682|)))
 (assert (forall ((self $Ref)) (!
   (=>
     (and
@@ -1076,7 +1076,7 @@
     :pattern ((Seq_contains_trigger
       (OpaqueFieldList_contents $Snap.unit ($SortWrappers.$SnapTo$Ref ($Snap.first s@$)))
       x@8@00))
-    :qid |quant-u-25668|))
+    :qid |quant-u-25682|))
   (forall ((x@8@00 $Ref)) (!
     (=>
       (and
@@ -1093,7 +1093,7 @@
     :pattern ((Seq_contains_trigger
       (OpaqueFieldList_contents $Snap.unit ($SortWrappers.$SnapTo$Ref ($Snap.first s@$)))
       x@8@00))
-    :qid |quant-u-25668|))
+    :qid |quant-u-25682|))
   (forall ((x@8@00 $Ref)) (!
     (<= $Perm.No $k@6@00)
     :pattern ((Seq_contains
@@ -1170,7 +1170,7 @@
     :pattern ((Seq_contains_trigger
       (OpaqueFieldList_contents $Snap.unit ($SortWrappers.$SnapTo$Ref ($Snap.first s@$)))
       x@8@00))
-    :qid |quant-u-25668|))
+    :qid |quant-u-25682|))
   (forall ((x@8@00 $Ref)) (!
     (=>
       (and
@@ -1187,7 +1187,7 @@
     :pattern ((Seq_contains_trigger
       (OpaqueFieldList_contents $Snap.unit ($SortWrappers.$SnapTo$Ref ($Snap.first s@$)))
       x@8@00))
-    :qid |quant-u-25668|))
+    :qid |quant-u-25682|))
   (forall ((x@8@00 $Ref)) (!
     (<= $Perm.No $k@6@00)
     :pattern ((Seq_contains
@@ -1270,7 +1270,7 @@
       :pattern ((Seq_contains_trigger
         (OpaqueFieldList_contents $Snap.unit ($SortWrappers.$SnapTo$Ref ($Snap.first s@$)))
         x@8@00))
-      :qid |quant-u-25668|))
+      :qid |quant-u-25682|))
     (forall ((x@8@00 $Ref)) (!
       (=>
         (and
@@ -1287,7 +1287,7 @@
       :pattern ((Seq_contains_trigger
         (OpaqueFieldList_contents $Snap.unit ($SortWrappers.$SnapTo$Ref ($Snap.first s@$)))
         x@8@00))
-      :qid |quant-u-25668|))
+      :qid |quant-u-25682|))
     (forall ((x@8@00 $Ref)) (!
       (<= $Perm.No $k@6@00)
       :pattern ((Seq_contains
@@ -1318,7 +1318,7 @@
       :pattern ((Seq_contains_trigger
         (OpaqueFieldList_contents $Snap.unit ($SortWrappers.$SnapTo$Ref ($Snap.first s@$)))
         x@8@00))
-      :qid |quant-u-25668|))
+      :qid |quant-u-25682|))
     (forall ((self $Ref)) (!
       (=>
         (and
@@ -1337,11 +1337,11 @@
       (SCIONPath_get_iof%precondition s@$ self@2@00)
       (= (SCIONPath_get_iof s@$ self@2@00) $Ref.null)))
   :pattern ((SCIONPath_get_iof s@$ self@2@00))
-  :qid |quant-u-25669|)))
+  :qid |quant-u-25683|)))
 (assert (forall ((s@$ $Snap) (self@2@00 $Ref)) (!
   true
   :pattern ((SCIONPath_get_iof s@$ self@2@00))
-  :qid |quant-u-25670|)))
+  :qid |quant-u-25684|)))
 ; ---------- FUNCTION OpaqueFieldList_contents----------
 (declare-fun self@4@00 () $Ref)
 (declare-fun result@5@00 () Seq<$Ref>)
@@ -1353,11 +1353,11 @@
     (OpaqueFieldList_contents%limited s@$ self@4@00)
     (OpaqueFieldList_contents s@$ self@4@00))
   :pattern ((OpaqueFieldList_contents s@$ self@4@00))
-  :qid |quant-u-25665|)))
+  :qid |quant-u-25679|)))
 (assert (forall ((s@$ $Snap) (self@4@00 $Ref)) (!
   (OpaqueFieldList_contents%stateless self@4@00)
   :pattern ((OpaqueFieldList_contents%limited s@$ self@4@00))
-  :qid |quant-u-25666|)))
+  :qid |quant-u-25680|)))
 ; ---------- OpaqueField_State ----------
 (declare-const self@11@00 $Ref)
 (push) ; 1
@@ -1430,7 +1430,7 @@
   :pattern ((Seq_contains_trigger
     (OpaqueFieldList_contents $Snap.unit self@13@00)
     x@14@00))
-  :qid |quant-u-25672|)))
+  :qid |quant-u-25686|)))
 (assert (forall ((self $Ref)) (!
   (=>
     (img@17@00 self)
@@ -1447,7 +1447,7 @@
   :pattern ((Seq_contains_trigger
     (OpaqueFieldList_contents $Snap.unit self@13@00)
     x@14@00))
-  :qid |quant-u-25672|)))
+  :qid |quant-u-25686|)))
 (assert (forall ((self $Ref)) (!
   (=>
     (and
@@ -1547,7 +1547,7 @@
   :pattern ((Seq_contains_trigger
     (OpaqueFieldList_contents $Snap.unit ($SortWrappers.$SnapTo$Ref ($Snap.first $t@19@00)))
     x@20@00))
-  :qid |quant-u-25674|)))
+  :qid |quant-u-25688|)))
 (assert (forall ((self $Ref)) (!
   (=>
     (img@22@00 self)
@@ -1566,7 +1566,7 @@
   :pattern ((Seq_contains_trigger
     (OpaqueFieldList_contents $Snap.unit ($SortWrappers.$SnapTo$Ref ($Snap.first $t@19@00)))
     x@20@00))
-  :qid |quant-u-25674|)))
+  :qid |quant-u-25688|)))
 (assert (forall ((self $Ref)) (!
   (=>
     (and
@@ -1633,7 +1633,7 @@
     :pattern ((Seq_contains_trigger
       (OpaqueFieldList_contents $Snap.unit ($SortWrappers.$SnapTo$Ref ($Snap.first $t@19@00)))
       x@20@00))
-    :qid |quant-u-25674|))
+    :qid |quant-u-25688|))
   (forall ((x@20@00 $Ref)) (!
     (=>
       (Seq_contains
@@ -1646,5 +1646,5 @@
     :pattern ((Seq_contains_trigger
       (OpaqueFieldList_contents $Snap.unit ($SortWrappers.$SnapTo$Ref ($Snap.first $t@19@00)))
       x@20@00))
-    :qid |quant-u-25674|))))
+    :qid |quant-u-25688|))))
 (pop) ; 1

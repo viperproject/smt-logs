@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-04 00:48:28
+// Date:         2025-01-07 14:02:26
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/transformations/WhileToIfAndGoto/simpleRef.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/transformations/WhileToIfAndGoto/simpleRef-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -239,19 +239,19 @@ procedure main() returns ()
 {
   var skiploop1_lblGuard: bool;
   var loop1_lblGuard: bool;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var i: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
-  var Labelloop1Heap: HeapType;
+  var ExhaleWellDef0Heap: HeapType;
   var Labelloop1Mask: MaskType;
+  var Labelloop1Heap: HeapType;
   var frameMask5: MaskType;
   var frameHeap5: HeapType;
   var LoopSumHeap: HeapType;
   var LoopSumMask: MaskType;
-  var Labelskiploop1Heap: HeapType;
   var Labelskiploop1Mask: MaskType;
+  var Labelskiploop1Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -263,8 +263,8 @@ procedure main() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: // id = 1
   // i := 1 -- simpleRef.vpr@6.5--6.19
@@ -273,8 +273,8 @@ procedure main() returns ()
   
   // -- Translating statement: // id = 2
   // assert i <= 5 -- simpleRef.vpr@8.5--8.18
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion i <= 5 might not hold. (simpleRef.vpr@8.12--8.18) [92320]"}
       i <= 5;
     assume state(Heap, Mask);
@@ -301,15 +301,15 @@ procedure main() returns ()
   // label loop1
   //   invariant true -- simpleRef.vpr@12.5--12.31
     loop1:
-    Labelloop1Heap := Heap;
     Labelloop1Mask := Mask;
+    Labelloop1Heap := Heap;
     loop1_lblGuard := true;
     
     // -- Before loop head5
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
       
       // -- Store frame in mask associated with loop
         frameMask5 := Mask;
@@ -342,8 +342,8 @@ procedure main() returns ()
   // -- Translating statement: // id = 7
   // // LoopInfo(None,Set(5))
   // assert i <= 5 -- simpleRef.vpr@14.9--14.22
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion i <= 5 might not hold. (simpleRef.vpr@14.16--14.22) [92321]"}
       i <= 5;
     assume state(Heap, Mask);
@@ -362,8 +362,8 @@ procedure main() returns ()
               assume false;
             }
           // Exhale invariant
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           // Terminate execution
           assume false;
         assume state(Heap, Mask);
@@ -390,15 +390,15 @@ procedure main() returns ()
   // label skiploop1
   //   invariant true -- simpleRef.vpr@18.5--18.35
     skiploop1:
-    Labelskiploop1Heap := Heap;
     Labelskiploop1Mask := Mask;
+    Labelskiploop1Heap := Heap;
     skiploop1_lblGuard := true;
     assume state(Heap, Mask);
   
   // -- Translating statement: // id = 11
   // assert i == 5 -- simpleRef.vpr@20.5--20.19
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion i == 5 might not hold. (simpleRef.vpr@20.12--20.18) [92322]"}
       i == 5;
     assume state(Heap, Mask);

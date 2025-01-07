@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-04 01:10:58
+// Date:         2025-01-07 14:25:22
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/permissions/forperm.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/permissions/forperm-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -192,10 +192,10 @@ procedure test01(x: Ref, b_24: bool) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var y_16: Ref;
   var y_4: Ref;
   var y_18: Ref;
@@ -222,12 +222,12 @@ procedure test01(x: Ref, b_24: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert b || (forperm y: Ref [y.f] :: false) -- forperm.vpr@10.3--10.44
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of b || (forperm y: Ref [y.f] :: false)
       if (!b_24) {
@@ -247,8 +247,8 @@ procedure test01(x: Ref, b_24: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forperm y: Ref [y.f] :: false) ==> (forperm y: Ref [y.f] :: true) -- forperm.vpr@12.3--12.76
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forperm y: Ref [y.f] :: false)
       if (*) {
@@ -275,8 +275,8 @@ procedure test01(x: Ref, b_24: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forperm y: Ref [y.f] :: false) ==> !b -- forperm.vpr@13.3--13.48
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forperm y: Ref [y.f] :: false)
       if (*) {
@@ -296,8 +296,8 @@ procedure test01(x: Ref, b_24: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forperm y: Ref [y.f] :: false) -- forperm.vpr@16.3--16.39
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forperm y: Ref [y.f] :: false)
       if (*) {
@@ -323,10 +323,10 @@ procedure test01b(x: Ref, b_24: bool) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var y_14: Ref;
   var y_12: Ref;
   var y_3: Ref;
@@ -353,12 +353,12 @@ procedure test01b(x: Ref, b_24: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert b || (forperm y: Ref [y.f] :: false) -- forperm.vpr@22.3--22.44
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of b || (forperm y: Ref [y.f] :: false)
       if (!b_24) {
@@ -378,8 +378,8 @@ procedure test01b(x: Ref, b_24: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forperm y: Ref [y.f] :: false) ==> (forperm y: Ref [y.f] :: true) -- forperm.vpr@24.3--24.76
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forperm y: Ref [y.f] :: false)
       if (*) {
@@ -406,8 +406,8 @@ procedure test01b(x: Ref, b_24: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forperm y: Ref [y.f] :: false) ==> !b -- forperm.vpr@26.3--26.48
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forperm y: Ref [y.f] :: false)
       if (*) {
@@ -427,8 +427,8 @@ procedure test01b(x: Ref, b_24: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forperm y: Ref [y.f] :: false) -- forperm.vpr@29.3--29.39
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forperm y: Ref [y.f] :: false)
       if (*) {
@@ -454,10 +454,10 @@ procedure test02(x: Ref, b1: bool, b2: bool) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var y_22: Ref;
   var y_24: Ref;
   
@@ -481,12 +481,12 @@ procedure test02(x: Ref, b1: bool, b2: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert (forperm y: Ref [y.f] :: y != null) -- forperm.vpr@35.3--35.43
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forperm y: Ref [y.f] :: y != null)
       if (*) {
@@ -504,8 +504,8 @@ procedure test02(x: Ref, b1: bool, b2: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forperm y: Ref [y.g] :: y != null) -- forperm.vpr@36.3--36.43
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forperm y: Ref [y.g] :: y != null)
       if (*) {
@@ -531,11 +531,11 @@ procedure test03(x: Ref, b1: bool, b2: bool) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var a1: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var y_26: Ref;
   var y_28: Ref;
   
@@ -559,8 +559,8 @@ procedure test03(x: Ref, b1: bool, b2: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: a1 := x.f -- forperm.vpr@42.3--42.21
     
@@ -587,8 +587,8 @@ procedure test03(x: Ref, b1: bool, b2: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forperm y: Ref [y.g] :: y.f > a1) -- forperm.vpr@47.3--47.42
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forperm y: Ref [y.g] :: y.f > a1)
       if (*) {
@@ -608,8 +608,8 @@ procedure test03(x: Ref, b1: bool, b2: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forperm y: Ref [y.f] :: y.g > y.g - 1) -- forperm.vpr@50.3--50.47
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forperm y: Ref [y.f] :: y.g > y.g - 1)
       if (*) {
@@ -639,11 +639,11 @@ procedure test04(x: Ref, b1: bool, b2: bool) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var a1: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var y_30: Ref;
   var y_32: Ref;
   var y_7: Ref;
@@ -669,8 +669,8 @@ procedure test04(x: Ref, b1: bool, b2: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: a1 := x.f -- forperm.vpr@56.3--56.21
     
@@ -697,8 +697,8 @@ procedure test04(x: Ref, b1: bool, b2: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forperm y: Ref [y.f] :: y.f > a1) -- forperm.vpr@61.3--61.42
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forperm y: Ref [y.f] :: y.f > a1)
       if (*) {
@@ -718,8 +718,8 @@ procedure test04(x: Ref, b1: bool, b2: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forperm y: Ref [y.f] :: y.f > old(y.f)) -- forperm.vpr@63.3--63.48
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forperm y: Ref [y.f] :: y.f > old(y.f))
       if (*) {
@@ -741,8 +741,8 @@ procedure test04(x: Ref, b1: bool, b2: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forperm y: Ref [y.f] :: old(y.f) <= old(y.f)) -- forperm.vpr@65.3--65.54
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forperm y: Ref [y.f] :: old(y.f) <= old(y.f))
       if (*) {
@@ -764,8 +764,8 @@ procedure test04(x: Ref, b1: bool, b2: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forperm y: Ref [y.g] :: old(y.f) <= old(y.f)) -- forperm.vpr@66.3--66.54
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forperm y: Ref [y.g] :: old(y.f) <= old(y.f))
       if (*) {

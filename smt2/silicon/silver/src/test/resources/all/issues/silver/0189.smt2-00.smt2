@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-04 00:37:00
+; Started: 2025-01-07 13:50:47
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -126,11 +126,11 @@
 (assert (forall ((s@$ $Snap) (i@0@00 Int)) (!
   (= (otherDummy%limited s@$ i@0@00) (otherDummy s@$ i@0@00))
   :pattern ((otherDummy s@$ i@0@00))
-  :qid |quant-u-25951|)))
+  :qid |quant-u-25965|)))
 (assert (forall ((s@$ $Snap) (i@0@00 Int)) (!
   (otherDummy%stateless i@0@00)
   :pattern ((otherDummy%limited s@$ i@0@00))
-  :qid |quant-u-25952|)))
+  :qid |quant-u-25966|)))
 ; ---------- FUNCTION thirdDummy----------
 (declare-fun i@2@00 () Int)
 (declare-fun result@3@00 () Bool)
@@ -140,8 +140,8 @@
 (assert (forall ((s@$ $Snap) (i@2@00 Int)) (!
   (= (thirdDummy%limited s@$ i@2@00) (thirdDummy s@$ i@2@00))
   :pattern ((thirdDummy s@$ i@2@00))
-  :qid |quant-u-25953|)))
+  :qid |quant-u-25967|)))
 (assert (forall ((s@$ $Snap) (i@2@00 Int)) (!
   (thirdDummy%stateless i@2@00)
   :pattern ((thirdDummy%limited s@$ i@2@00))
-  :qid |quant-u-25954|)))
+  :qid |quant-u-25968|)))

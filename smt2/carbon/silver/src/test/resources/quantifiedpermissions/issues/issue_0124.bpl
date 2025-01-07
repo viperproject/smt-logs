@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-04 00:46:11
+// Date:         2025-01-07 14:00:04
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/issues/issue_0124.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/issues/issue_0124-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -570,12 +570,12 @@ axiom !IsWandField(f_7);
 procedure test01(xs: (Seq int), k: int) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var i_14: int;
   var ys: (Seq int);
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var i_2: int;
   var i_3: int;
   
@@ -587,8 +587,8 @@ procedure test01(xs: (Seq int), k: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale 0 <= k && k < |xs| -- issue_0124.vpr@7.3--7.28
     assume 0 <= k;
@@ -628,8 +628,8 @@ procedure test01(xs: (Seq int), k: int) returns ()
   // -- Translating statement: exhale (forall i: Int ::
   //     { ys[i] }
   //     (i in [0..|ys| - 1)) ==> ys[i] < ys[i + 1]) -- issue_0124.vpr@13.3--13.65
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall i: Int :: { ys[i] } (i in [0..|ys| - 1)) ==> ys[i] < ys[i + 1])
       if (*) {
@@ -666,16 +666,16 @@ procedure test01(xs: (Seq int), k: int) returns ()
 procedure test02(xs: (Seq Ref), k: int) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var i1_18: int;
   var i2_8: int;
   var i_6: int;
   var QPMask: MaskType;
   var i_7: int;
   var ys: (Seq Ref);
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var i_8: int;
   var i_5: int;
   
@@ -687,8 +687,8 @@ procedure test02(xs: (Seq Ref), k: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale 0 <= k && k < |xs| -- issue_0124.vpr@18.3--18.28
     assume 0 <= k;
@@ -803,8 +803,8 @@ procedure test02(xs: (Seq Ref), k: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale (forall i: Int :: { ys[i] } (i in [0..|ys| - 1)) ==> ys[i].f != 0) -- issue_0124.vpr@25.3--25.60
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall i: Int :: { ys[i] } (i in [0..|ys| - 1)) ==> ys[i].f != 0)
       if (*) {
@@ -839,16 +839,16 @@ procedure test02(xs: (Seq Ref), k: int) returns ()
 procedure test03(xs: (Seq Ref), k: int) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var i1_19: int;
   var i2_9: int;
   var i_10: int;
   var QPMask: MaskType;
   var i_11: int;
   var ys: (Seq Ref);
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var i_12: int;
   var i_5: int;
   
@@ -860,8 +860,8 @@ procedure test03(xs: (Seq Ref), k: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale 0 <= k && k < |xs| -- issue_0124.vpr@29.3--29.28
     assume 0 <= k;
@@ -986,8 +986,8 @@ procedure test03(xs: (Seq Ref), k: int) returns ()
   // -- Translating statement: exhale (forall i: Int ::
   //     { ys[i] }
   //     (i in [0..|ys| - 1)) ==> ys[i].f < ys[i + 1].f) -- issue_0124.vpr@37.3--37.69
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall i: Int :: { ys[i] } (i in [0..|ys| - 1)) ==> ys[i].f < ys[i + 1].f)
       if (*) {

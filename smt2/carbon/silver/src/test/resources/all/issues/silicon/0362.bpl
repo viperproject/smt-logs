@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-04 01:17:10
+// Date:         2025-01-07 14:31:47
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0362.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0362-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -668,15 +668,15 @@ procedure test01() returns ()
   modifies Heap, Mask;
 {
   var pre_havoc_lblGuard: bool;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var QPMask: MaskType;
   var rs: (Seq Ref);
   var xs: (Seq int);
-  var Labelpre_havocHeap: HeapType;
   var Labelpre_havocMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var Labelpre_havocHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var nondet: int;
   var r_38: Ref;
@@ -695,8 +695,8 @@ procedure test01() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale (forall r: Ref, x: Int ::
   //     { P(r, x) }
@@ -747,16 +747,16 @@ procedure test01() returns ()
   
   // -- Translating statement: label pre_havoc -- 0362.vpr@12.3--12.18
     pre_havoc:
-    Labelpre_havocHeap := Heap;
     Labelpre_havocMask := Mask;
+    Labelpre_havocHeap := Heap;
     pre_havoc_lblGuard := true;
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale (forall r: Ref, x: Int ::
   //     { P(r, x) }
   //     acc(P(r, x), old[pre_havoc](perm(P(r, x))))) -- 0362.vpr@14.3--14.88
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall r: Ref, x: Int :: { P(r, x) } acc(P(r, x), old[pre_havoc](perm(P(r, x)))))
       if (*) {
@@ -889,8 +889,8 @@ procedure test01() returns ()
             if (NoPerm < Labelpre_havocMask[null, P(r_38, x_11)]) {
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Heap := Heap;
                 ExhaleWellDef0Mask := Mask;
+                ExhaleWellDef0Heap := Heap;
                 perm := FullPerm;
                 assert {:msg "  Precondition of function P_state might not hold. There might be insufficient permission to access P(r, x) (0362.vpr@22.9--22.22) [209533]"}
                   NoPerm < perm ==> NoPerm < Mask[null, P(r_38, x_11)];
@@ -919,8 +919,8 @@ procedure test01() returns ()
   //     acc(P(r, x), write)) -- 0362.vpr@24.5--26.21
             AssertHeap := Heap;
             AssertMask := Mask;
-            ExhaleWellDef0Heap := AssertHeap;
             ExhaleWellDef0Mask := AssertMask;
+            ExhaleWellDef0Heap := AssertHeap;
             
             // -- Check definedness of (forall r: Ref, x: Int ::none < old[pre_havoc](perm(P(r, x))) ==> acc(P(r, x), write))
               if (*) {
@@ -983,8 +983,8 @@ procedure test01() returns ()
   //     acc(P(r, x), write)) -- 0362.vpr@28.5--30.21
                 AssertHeap := Heap;
                 AssertMask := Mask;
-                ExhaleWellDef0Heap := AssertHeap;
                 ExhaleWellDef0Mask := AssertMask;
+                ExhaleWellDef0Heap := AssertHeap;
                 
                 // -- Check definedness of (forall r: Ref, x: Int ::none < perm(P(r, x)) ==> acc(P(r, x), write))
                   if (*) {
@@ -1043,8 +1043,8 @@ procedure test01() returns ()
   //     (r in rs) && (x in xs) ==> acc(P(r, x), write)) -- 0362.vpr@32.5--34.21
                 AssertHeap := Heap;
                 AssertMask := Mask;
-                ExhaleWellDef0Heap := AssertHeap;
                 ExhaleWellDef0Mask := AssertMask;
+                ExhaleWellDef0Heap := AssertHeap;
                 
                 // -- Check definedness of (forall r: Ref, x: Int :: { (r in rs), (x in xs) } (r in rs) && (x in xs) ==> acc(P(r, x), write))
                   if (*) {

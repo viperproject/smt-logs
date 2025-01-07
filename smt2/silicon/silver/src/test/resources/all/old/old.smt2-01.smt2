@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-04 00:32:57
+; Started: 2025-01-07 13:46:43
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -286,8 +286,8 @@
 ; r := new()
 (declare-const r@17@01 $Ref)
 (assert (not (= r@17@01 $Ref.null)))
-(assert (not (= r@17@01 this@15@01)))
 (assert (not (= r@17@01 r@16@01)))
+(assert (not (= r@17@01 this@15@01)))
 ; [exec]
 ; exhale old(r.f) > 0
 ; [eval] old(r.f) > 0

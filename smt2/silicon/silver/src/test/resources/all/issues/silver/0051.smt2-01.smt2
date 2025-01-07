@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-04 00:37:10
+; Started: 2025-01-07 13:50:57
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -406,11 +406,11 @@
 (assert (forall ((s@$ $Snap)) (!
   (= (Nodes%limited s@$) (Nodes s@$))
   :pattern ((Nodes s@$))
-  :qid |quant-u-25982|)))
+  :qid |quant-u-25996|)))
 (assert (forall ((s@$ $Snap)) (!
   (as Nodes%stateless  Bool)
   :pattern ((Nodes%limited s@$))
-  :qid |quant-u-25983|)))
+  :qid |quant-u-25997|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@0@00 (Nodes%limited s@$))) (=>
     (Nodes%precondition s@$)
@@ -421,18 +421,18 @@
       :pattern ((Seq_contains_trigger (Seq_range 0 result@0@00) i))
       ))))
   :pattern ((Nodes%limited s@$))
-  :qid |quant-u-25984|)))
+  :qid |quant-u-25998|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@0@00 (Nodes%limited s@$))) true)
   :pattern ((Nodes%limited s@$))
-  :qid |quant-u-25985|)))
+  :qid |quant-u-25999|)))
 (assert (forall ((s@$ $Snap)) (!
   (=> (Nodes%precondition s@$) (= (Nodes s@$) 5))
   :pattern ((Nodes s@$))
-  :qid |quant-u-25986|)))
+  :qid |quant-u-26000|)))
 (assert (forall ((s@$ $Snap)) (!
   true
   :pattern ((Nodes s@$))
-  :qid |quant-u-25987|)))
+  :qid |quant-u-26001|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------

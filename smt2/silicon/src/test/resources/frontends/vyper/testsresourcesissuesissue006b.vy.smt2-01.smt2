@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-04 00:22:17
+; Started: 2025-01-07 13:35:55
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -1666,11 +1666,11 @@
 (assert (forall ((s@$ $Snap) (x@0@00 $Struct)) (!
   (= ($pure$success_get%limited s@$ x@0@00) ($pure$success_get s@$ x@0@00))
   :pattern (($pure$success_get s@$ x@0@00))
-  :qid |quant-u-1616|)))
+  :qid |quant-u-1652|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Struct)) (!
   ($pure$success_get%stateless x@0@00)
   :pattern (($pure$success_get%limited s@$ x@0@00))
-  :qid |quant-u-1617|)))
+  :qid |quant-u-1653|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Struct)) (!
   (=>
     ($pure$success_get%precondition s@$ x@0@00)
@@ -1678,39 +1678,39 @@
       ($pure$success_get s@$ x@0@00)
       ($struct_get<Bool> ($struct_loc<Int> x@0@00 0))))
   :pattern (($pure$success_get s@$ x@0@00))
-  :qid |quant-u-1642|)))
+  :qid |quant-u-1668|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Struct)) (!
   true
   :pattern (($pure$success_get s@$ x@0@00))
-  :qid |quant-u-1643|)))
+  :qid |quant-u-1669|)))
 (assert (forall ((s@$ $Snap) (x@2@00 $Struct)) (!
   (= ($pure$return_get%limited s@$ x@2@00) ($pure$return_get s@$ x@2@00))
   :pattern (($pure$return_get s@$ x@2@00))
-  :qid |quant-u-1618|)))
+  :qid |quant-u-1654|)))
 (assert (forall ((s@$ $Snap) (x@2@00 $Struct)) (!
   ($pure$return_get%stateless x@2@00)
   :pattern (($pure$return_get%limited s@$ x@2@00))
-  :qid |quant-u-1619|)))
+  :qid |quant-u-1655|)))
 (assert (forall ((s@$ $Snap) (x@2@00 $Struct)) (!
   (=>
     ($pure$return_get%precondition s@$ x@2@00)
     (= ($pure$return_get s@$ x@2@00) ($struct_loc<Int> x@2@00 1)))
   :pattern (($pure$return_get s@$ x@2@00))
-  :qid |quant-u-1644|)))
+  :qid |quant-u-1671|)))
 (assert (forall ((s@$ $Snap) (x@2@00 $Struct)) (!
   true
   :pattern (($pure$return_get s@$ x@2@00))
-  :qid |quant-u-1645|)))
+  :qid |quant-u-1672|)))
 (assert (forall ((s@$ $Snap) ($addr@4@00 Int) ($self@5@00 $Struct)) (!
   (=
     (g$_totalSupply%limited s@$ $addr@4@00 $self@5@00)
     (g$_totalSupply s@$ $addr@4@00 $self@5@00))
   :pattern ((g$_totalSupply s@$ $addr@4@00 $self@5@00))
-  :qid |quant-u-1620|)))
+  :qid |quant-u-1656|)))
 (assert (forall ((s@$ $Snap) ($addr@4@00 Int) ($self@5@00 $Struct)) (!
   (g$_totalSupply%stateless $addr@4@00 $self@5@00)
   :pattern ((g$_totalSupply%limited s@$ $addr@4@00 $self@5@00))
-  :qid |quant-u-1621|)))
+  :qid |quant-u-1657|)))
 (assert (forall ((s@$ $Snap) ($addr@4@00 Int) ($self@5@00 $Struct)) (!
   (let ((result@6@00 (g$_totalSupply%limited s@$ $addr@4@00 $self@5@00))) (=>
     (g$_totalSupply%precondition s@$ $addr@4@00 $self@5@00)
@@ -1724,23 +1724,23 @@
         (= $addr@4@00 (as $self_address<Int>  Int))
         (= result@6@00 ($struct_get<Int> ($struct_loc<Int> $self@5@00 0)))))))
   :pattern ((g$_totalSupply%limited s@$ $addr@4@00 $self@5@00))
-  :qid |quant-u-1646|)))
+  :qid |quant-u-1673|)))
 (assert (forall ((s@$ $Snap) ($addr@4@00 Int) ($self@5@00 $Struct)) (!
   (let ((result@6@00 (g$_totalSupply%limited s@$ $addr@4@00 $self@5@00))) true)
   :pattern ((g$_totalSupply%limited s@$ $addr@4@00 $self@5@00))
-  :qid |quant-u-1647|)))
+  :qid |quant-u-1674|)))
 (assert (forall ((s@$ $Snap) ($addr@4@00 Int) ($self@5@00 $Struct)) (!
   (let ((result@6@00 (g$_totalSupply%limited s@$ $addr@4@00 $self@5@00))) true)
   :pattern ((g$_totalSupply%limited s@$ $addr@4@00 $self@5@00))
-  :qid |quant-u-1648|)))
+  :qid |quant-u-1675|)))
 (assert (forall ((s@$ $Snap) ($x@7@00 Int) ($y@8@00 Int)) (!
   (= ($range_sum%limited s@$ $x@7@00 $y@8@00) ($range_sum s@$ $x@7@00 $y@8@00))
   :pattern (($range_sum s@$ $x@7@00 $y@8@00))
-  :qid |quant-u-1622|)))
+  :qid |quant-u-1658|)))
 (assert (forall ((s@$ $Snap) ($x@7@00 Int) ($y@8@00 Int)) (!
   ($range_sum%stateless $x@7@00 $y@8@00)
   :pattern (($range_sum%limited s@$ $x@7@00 $y@8@00))
-  :qid |quant-u-1623|)))
+  :qid |quant-u-1659|)))
 (assert (forall ((s@$ $Snap) ($x@7@00 Int) ($y@8@00 Int)) (!
   (=>
     ($range_sum%precondition s@$ $x@7@00 $y@8@00)
@@ -1760,7 +1760,7 @@
           (+ (- $y_exclusive $x_exclusive) $x@7@00)
           (+ (- (- $y_exclusive $y@8@00) $x_exclusive) $x@7@00)))))))))
   :pattern (($range_sum s@$ $x@7@00 $y@8@00))
-  :qid |quant-u-1652|)))
+  :qid |quant-u-1681|)))
 (assert (forall ((s@$ $Snap) ($x@7@00 Int) ($y@8@00 Int)) (!
   (=>
     ($range_sum%precondition s@$ $x@7@00 $y@8@00)
@@ -1772,7 +1772,7 @@
       (div (* (- $y@8@00 1) $y@8@00) 2)
       (div (* (- (- 0 $y@8@00) 1) (- 0 $y@8@00)) 2)))) true)))))
   :pattern (($range_sum s@$ $x@7@00 $y@8@00))
-  :qid |quant-u-1654|)))
+  :qid |quant-u-1682|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- $transitivity_check ----------

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-04 01:12:50
+// Date:         2025-01-07 14:27:18
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0118.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0118-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -581,10 +581,10 @@ procedure foo_1(S: (Seq Ref)) returns ()
 {
   var i_14: int;
   var j_5: int;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var i_2: int;
   var QPMask: MaskType;
   var ExhaleHeap: HeapType;
@@ -619,12 +619,12 @@ procedure foo_1(S: (Seq Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: exhale (forall i: Int :: { S[i] } 0 <= i && i < |S| ==> acc(S[i].f, write)) -- 0118.vpr@10.3--10.65
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall i: Int :: { S[i] } 0 <= i && i < |S| ==> acc(S[i].f, write))
       if (*) {
@@ -693,11 +693,11 @@ procedure bar_1(S: (Seq Ref)) returns ()
 {
   var i_4: int;
   var j_6: int;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var QPMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var i_7: int;
   var ExhaleHeap: HeapType;
   
@@ -731,8 +731,8 @@ procedure bar_1(S: (Seq Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale (forall r: Ref :: { (r in S) } (r in S) ==> acc(r.f, 1 / 2)) -- 0118.vpr@17.3--17.49
     
@@ -784,8 +784,8 @@ procedure bar_1(S: (Seq Ref)) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale (forall i: Int :: { S[i] } 0 <= i && i < |S| ==> acc(S[i].f, 1 / 2)) -- 0118.vpr@18.3--18.63
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall i: Int :: { S[i] } 0 <= i && i < |S| ==> acc(S[i].f, 1 / 2))
       if (*) {
@@ -858,11 +858,11 @@ procedure test(S: (Seq Ref), x: Ref) returns ()
 {
   var i_8: int;
   var j_3: int;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var QPMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var i_10: int;
   var ExhaleHeap: HeapType;
   
@@ -899,8 +899,8 @@ procedure test(S: (Seq Ref), x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale (forall r: Ref ::
   //     { (r in S) }
@@ -948,8 +948,8 @@ procedure test(S: (Seq Ref), x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale (forall i: Int :: { S[i] } 0 <= i && i < |S| ==> acc(S[i].f, write)) -- 0118.vpr@26.3--26.65
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall i: Int :: { S[i] } 0 <= i && i < |S| ==> acc(S[i].f, write))
       if (*) {

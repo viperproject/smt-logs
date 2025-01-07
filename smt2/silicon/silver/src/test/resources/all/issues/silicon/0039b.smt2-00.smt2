@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-04 00:36:45
+; Started: 2025-01-07 13:50:32
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -136,21 +136,21 @@
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (= (Node_size%limited s@$ this@0@00) (Node_size s@$ this@0@00))
   :pattern ((Node_size s@$ this@0@00))
-  :qid |quant-u-25846|)))
+  :qid |quant-u-25860|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (Node_size%stateless this@0@00)
   :pattern ((Node_size%limited s@$ this@0@00))
-  :qid |quant-u-25847|)))
+  :qid |quant-u-25861|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (let ((result@1@00 (Node_size%limited s@$ this@0@00))) (=>
     (Node_size%precondition s@$ this@0@00)
     (>= result@1@00 1)))
   :pattern ((Node_size%limited s@$ this@0@00))
-  :qid |quant-u-25852|)))
+  :qid |quant-u-25866|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (let ((result@1@00 (Node_size%limited s@$ this@0@00))) true)
   :pattern ((Node_size%limited s@$ this@0@00))
-  :qid |quant-u-25853|)))
+  :qid |quant-u-25867|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -326,7 +326,7 @@
           0))))
   :pattern ((Node_size s@$ this@0@00))
   :pattern ((Node_size%stateless this@0@00) (Node_valid%trigger s@$ this@0@00))
-  :qid |quant-u-25854|)))
+  :qid |quant-u-25868|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (=>
     (Node_size%precondition s@$ this@0@00)
@@ -338,7 +338,7 @@
       (Node_size%precondition ($Snap.second ($Snap.second s@$)) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$))))
       true))
   :pattern ((Node_size s@$ this@0@00))
-  :qid |quant-u-25855|)))
+  :qid |quant-u-25869|)))
 ; ---------- FUNCTION Node_val----------
 (declare-fun this@2@00 () $Ref)
 (declare-fun result@3@00 () Int)
@@ -348,11 +348,11 @@
 (assert (forall ((s@$ $Snap) (this@2@00 $Ref)) (!
   (= (Node_val%limited s@$ this@2@00) (Node_val s@$ this@2@00))
   :pattern ((Node_val s@$ this@2@00))
-  :qid |quant-u-25848|)))
+  :qid |quant-u-25862|)))
 (assert (forall ((s@$ $Snap) (this@2@00 $Ref)) (!
   (Node_val%stateless this@2@00)
   :pattern ((Node_val%limited s@$ this@2@00))
-  :qid |quant-u-25849|)))
+  :qid |quant-u-25863|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -458,11 +458,11 @@
     (Node_val%precondition s@$ this@2@00)
     (= (Node_val s@$ this@2@00) ($SortWrappers.$SnapToInt ($Snap.first s@$))))
   :pattern ((Node_val s@$ this@2@00))
-  :qid |quant-u-25856|)))
+  :qid |quant-u-25870|)))
 (assert (forall ((s@$ $Snap) (this@2@00 $Ref)) (!
   true
   :pattern ((Node_val s@$ this@2@00))
-  :qid |quant-u-25857|)))
+  :qid |quant-u-25871|)))
 ; ---------- FUNCTION List_size----------
 (declare-fun this@4@00 () $Ref)
 (declare-fun result@5@00 () Int)
@@ -476,21 +476,21 @@
 (assert (forall ((s@$ $Snap) (this@4@00 $Ref)) (!
   (= (List_size%limited s@$ this@4@00) (List_size s@$ this@4@00))
   :pattern ((List_size s@$ this@4@00))
-  :qid |quant-u-25850|)))
+  :qid |quant-u-25864|)))
 (assert (forall ((s@$ $Snap) (this@4@00 $Ref)) (!
   (List_size%stateless this@4@00)
   :pattern ((List_size%limited s@$ this@4@00))
-  :qid |quant-u-25851|)))
+  :qid |quant-u-25865|)))
 (assert (forall ((s@$ $Snap) (this@4@00 $Ref)) (!
   (let ((result@5@00 (List_size%limited s@$ this@4@00))) (=>
     (List_size%precondition s@$ this@4@00)
     (>= result@5@00 0)))
   :pattern ((List_size%limited s@$ this@4@00))
-  :qid |quant-u-25858|)))
+  :qid |quant-u-25872|)))
 (assert (forall ((s@$ $Snap) (this@4@00 $Ref)) (!
   (let ((result@5@00 (List_size%limited s@$ this@4@00))) true)
   :pattern ((List_size%limited s@$ this@4@00))
-  :qid |quant-u-25859|)))
+  :qid |quant-u-25873|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -628,7 +628,7 @@
         (Node_size ($Snap.second s@$) ($SortWrappers.$SnapTo$Ref ($Snap.first s@$))))))
   :pattern ((List_size s@$ this@4@00))
   :pattern ((List_size%stateless this@4@00) (List_valid%trigger s@$ this@4@00))
-  :qid |quant-u-25860|)))
+  :qid |quant-u-25874|)))
 (assert (forall ((s@$ $Snap) (this@4@00 $Ref)) (!
   (=>
     (List_size%precondition s@$ this@4@00)
@@ -637,7 +637,7 @@
       true
       (Node_size%precondition ($Snap.second s@$) ($SortWrappers.$SnapTo$Ref ($Snap.first s@$)))))
   :pattern ((List_size s@$ this@4@00))
-  :qid |quant-u-25861|)))
+  :qid |quant-u-25875|)))
 ; ---------- List_valid ----------
 (declare-const this@11@00 $Ref)
 (push) ; 1

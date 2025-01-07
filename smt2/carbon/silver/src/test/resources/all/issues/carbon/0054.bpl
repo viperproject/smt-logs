@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-04 01:11:28
+// Date:         2025-01-07 14:25:52
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0054.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0054-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -243,13 +243,13 @@ procedure Test02test04$(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var wildcard: real where wildcard > NoPerm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var newVersion: FrameType;
   var freshVersion: FrameType;
   var ExhaleHeap: HeapType;
@@ -273,8 +273,8 @@ procedure Test02test04$(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -297,8 +297,8 @@ procedure Test02test04$(this: Ref) returns ()
   // -- Translating statement: unfold acc(V(this), 20 / 100) -- 0054.vpr@18.3--18.32
     assume V#trigger(Heap, V_12(this));
     assume Heap[null, V_12(this)] == FrameFragment(Heap[this, f_7]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := 20 / 100;
     assert {:msg "  Unfolding V(this) might fail. Fraction 20 / 100 might be negative. (0054.vpr@18.3--18.32) [191784]"}
       perm >= NoPerm;
@@ -325,8 +325,8 @@ procedure Test02test04$(this: Ref) returns ()
   // -- Translating statement: unfold acc(V(this), 30 / 100) -- 0054.vpr@19.3--19.32
     assume V#trigger(Heap, V_12(this));
     assume Heap[null, V_12(this)] == FrameFragment(Heap[this, f_7]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := 30 / 100;
     assert {:msg "  Unfolding V(this) might fail. Fraction 30 / 100 might be negative. (0054.vpr@19.3--19.32) [191788]"}
       perm >= NoPerm;
@@ -351,8 +351,8 @@ procedure Test02test04$(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(V(this), 50 / 100) -- 0054.vpr@20.3--20.30
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm * (50 / 100);
     assert {:msg "  Folding V(this) might fail. Fraction write * (50 / 100) might be negative. (0054.vpr@20.3--20.30) [191792]"}
       perm >= NoPerm;
@@ -379,8 +379,8 @@ procedure Test02test04$(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of Test02test04$ might not hold. There might be insufficient permission to access V(this) (0054.vpr@14.11--14.30) [191795]"}

@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-04 00:36:19
+; Started: 2025-01-07 13:50:05
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -610,7 +610,7 @@
 (assert (forall ((i@0@01 Int)) (!
   (=> (= i@0@01 0) (and (= (as inv@2@01  Int) i@0@01) (as img@3@01  Bool)))
   
-  :qid |quant-u-25302|)))
+  :qid |quant-u-25316|)))
 ; Permissions are non-negative
 ; State saturation: after contract
 (set-option :timeout 50)
@@ -651,7 +651,7 @@
 (assert (forall ((i@4@01 Int)) (!
   (=> (= i@4@01 0) (and (= (inv@6@01 0) i@4@01) (img@7@01 0)))
   
-  :qid |quant-u-25304|)))
+  :qid |quant-u-25318|)))
 (assert (forall ((n Int)) (!
   (=> (and (img@7@01 n) (= (inv@6@01 n) 0)) (= 0 n))
   :pattern ((inv@6@01 n))
@@ -696,7 +696,7 @@
 (assert (forall ((i@8@01 Int)) (!
   (=> (= i@8@01 0) (and (= (inv@10@01 0) i@8@01) (img@11@01 0)))
   
-  :qid |quant-u-25306|)))
+  :qid |quant-u-25320|)))
 (assert (forall ((x0 Int)) (!
   (=> (and (img@11@01 x0) (= (inv@10@01 x0) 0)) (= 0 x0))
   :pattern ((inv@10@01 x0))

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-04 00:42:50
+// Date:         2025-01-07 13:56:41
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/third_party/testZeroArraySilicon.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/third_party/testZeroArraySilicon-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -592,8 +592,8 @@ procedure ZeroArray__zero_array(diz: Ref, current_thread_id: int, ar: (Seq Ref))
   var k_1: int;
   var k_2: int;
   var QPMask: MaskType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var k_4: int;
@@ -601,8 +601,8 @@ procedure ZeroArray__zero_array(diz: Ref, current_thread_id: int, ar: (Seq Ref))
   var __flatten_1: Ref;
   var i: int;
   var N: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var k_12_2: int;
   var ExhaleHeap: HeapType;
   var __flatten_2: int;
@@ -696,8 +696,8 @@ procedure ZeroArray__zero_array(diz: Ref, current_thread_id: int, ar: (Seq Ref))
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -787,8 +787,8 @@ procedure ZeroArray__zero_array(diz: Ref, current_thread_id: int, ar: (Seq Ref))
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Loop invariant 0 <= i && (i <= N && N == |ar|) might not hold on entry. Assertion 0 <= i might not hold. (testZeroArraySilicon.vpr@21.15--21.50) [32071]"}
           0 <= i;
         assert {:msg "  Loop invariant 0 <= i && (i <= N && N == |ar|) might not hold on entry. Assertion i <= N might not hold. (testZeroArraySilicon.vpr@21.15--21.50) [32072]"}
@@ -1009,8 +1009,8 @@ procedure ZeroArray__zero_array(diz: Ref, current_thread_id: int, ar: (Seq Ref))
             i := i + 1;
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Loop invariant 0 <= i && (i <= N && N == |ar|) might not be preserved. Assertion 0 <= i might not hold. (testZeroArraySilicon.vpr@21.15--21.50) [32087]"}
           0 <= i;
         assert {:msg "  Loop invariant 0 <= i && (i <= N && N == |ar|) might not be preserved. Assertion i <= N might not hold. (testZeroArraySilicon.vpr@21.15--21.50) [32088]"}
@@ -1125,8 +1125,8 @@ procedure ZeroArray__zero_array(diz: Ref, current_thread_id: int, ar: (Seq Ref))
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     havoc QPMask;
     
     // -- check that the permission amount is positive
@@ -1192,14 +1192,14 @@ procedure ZeroArray__zero_array(diz: Ref, current_thread_id: int, ar: (Seq Ref))
 procedure ZeroArray__ZeroArray(current_thread_id: int) returns (sys__result: Ref)
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var diz: Ref;
   var freshObj: Ref;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1213,8 +1213,8 @@ procedure ZeroArray__ZeroArray(current_thread_id: int) returns (sys__result: Ref
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1241,8 +1241,8 @@ procedure ZeroArray__ZeroArray(current_thread_id: int) returns (sys__result: Ref
     assume state(Heap, Mask);
   
   // -- Translating statement: assert sys__result != null -- testZeroArraySilicon.vpr@39.3--39.29
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (testZeroArraySilicon.vpr@39.10--39.29) [32097]"}
       sys__result != null;
     assume state(Heap, Mask);
@@ -1253,8 +1253,8 @@ procedure ZeroArray__ZeroArray(current_thread_id: int) returns (sys__result: Ref
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of ZeroArray__ZeroArray might not hold. Assertion sys__result != null might not hold. (testZeroArraySilicon.vpr@34.11--34.30) [32098]"}
       sys__result != null;
 }

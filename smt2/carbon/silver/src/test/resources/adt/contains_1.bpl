@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-04 01:22:25
+// Date:         2025-01-07 14:37:11
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/adt/contains_1.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/adt/contains_1-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -346,13 +346,13 @@ axiom (forall a_2: int, b_24: (ListDomainType int), c: (TreeDomainType (ListDoma
 procedure contains_1a() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var a_2: (ListDomainType int);
   var b_24: (ListDomainType int);
   var c: (ListDomainType int);
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -362,8 +362,8 @@ procedure contains_1a() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: a := (Nil(): List[Int]) -- contains_1.vpr@21.3--21.13
     a_2 := (Nil(): ListDomainType int);
@@ -378,29 +378,29 @@ procedure contains_1a() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (contains(a, b): Bool) -- contains_1.vpr@29.3--29.23
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion (contains(a, b): Bool) might not hold. (contains_1.vpr@29.10--29.23) [222680]"}
       (contains_1(a_2, b_24): bool);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (contains(b, c): Bool) -- contains_1.vpr@30.3--30.23
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion (contains(b, c): Bool) might not hold. (contains_1.vpr@30.10--30.23) [222681]"}
       (contains_1(b_24, c): bool);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (contains(a, c): Bool) -- contains_1.vpr@31.3--31.23
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion (contains(a, c): Bool) might not hold. (contains_1.vpr@31.10--31.23) [222682]"}
       (contains_1(a_2, c): bool);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (contains(2, c): Bool) -- contains_1.vpr@32.3--32.23
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion (contains(2, c): Bool) might not hold. (contains_1.vpr@32.10--32.23) [222683]"}
       (contains_1(2, c): bool);
     assume state(Heap, Mask);
@@ -413,12 +413,12 @@ procedure contains_1a() returns ()
 procedure contains_1b() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var list_2: (ListDomainType int);
   var tree_1: (TreeDomainType (ListDomainType int));
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -428,8 +428,8 @@ procedure contains_1b() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: list := (Cons(42, (Nil(): List[Int])): List[Int]) -- contains_1.vpr@39.3--39.26
     list_2 := (Cons(42, (Nil(): ListDomainType int)): ListDomainType int);
@@ -440,22 +440,22 @@ procedure contains_1b() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (contains(42, list): Bool) -- contains_1.vpr@45.3--45.28
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion (contains(42, list): Bool) might not hold. (contains_1.vpr@45.10--45.28) [222684]"}
       (contains_1(42, list_2): bool);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (contains(list, tree): Bool) -- contains_1.vpr@46.3--46.30
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion (contains(list, tree): Bool) might not hold. (contains_1.vpr@46.10--46.30) [222685]"}
       (contains_1(list_2, tree_1): bool);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (contains(42, tree): Bool) -- contains_1.vpr@47.3--47.28
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion (contains(42, tree): Bool) might not hold. (contains_1.vpr@47.10--47.28) [222686]"}
       (contains_1(42, tree_1): bool);
     assume state(Heap, Mask);

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-04 01:05:38
+// Date:         2025-01-07 14:19:55
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/impure_assume/assume10.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/impure_assume/assume10-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -285,11 +285,11 @@ axiom !IsWandField(f_7);
 procedure m(x1_2: Ref, x2: Ref, x3: Ref, x4: Ref, x5: Ref, x6: Ref, x7_20: Ref, x8_20: Ref, x9_20: Ref, x10: Ref, x11: Ref, x12: Ref, p_1: Perm) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -317,8 +317,8 @@ procedure m(x1_2: Ref, x2: Ref, x3: Ref, x4: Ref, x5: Ref, x6: Ref, x7_20: Ref, 
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale acc(x1.f, p) -- assume10.vpr@10.5--10.24
     perm := p_1;
@@ -403,8 +403,8 @@ procedure m(x1_2: Ref, x2: Ref, x3: Ref, x4: Ref, x5: Ref, x6: Ref, x7_20: Ref, 
     assume state(Heap, Mask);
   
   // -- Translating statement: assert p > none ==> false -- assume10.vpr@15.5--15.30
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     if (NoPerm < p_1) {
       assert {:msg "  Assert might fail. Assertion false might not hold. (assume10.vpr@15.12--15.30) [150223]"}
         false;

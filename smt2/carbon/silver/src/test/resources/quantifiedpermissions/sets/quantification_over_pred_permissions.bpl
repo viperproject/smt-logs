@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-04 00:39:48
+// Date:         2025-01-07 13:53:38
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/sets/quantification_over_pred_permissions.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/sets/quantification_over_pred_permissions-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -460,14 +460,14 @@ procedure m(S: (Set Ref)) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var b_24: Ref;
   var v_2: Ref;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var perm: Perm;
   var newVersion: FrameType;
   var freshVersion: FrameType;
@@ -525,8 +525,8 @@ procedure m(S: (Set Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -590,8 +590,8 @@ procedure m(S: (Set Ref)) returns ()
   // -- Translating statement: unfold acc(inv(b), write) -- quantification_over_pred_permissions.vpr@17.3--17.28
     assume inv#trigger(Heap, inv(b_24));
     assume Heap[null, inv(b_24)] == FrameFragment(Heap[b_24, f_7]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding inv(b) might fail. There might be insufficient permission to access inv(b) (quantification_over_pred_permissions.vpr@17.3--17.28) [4193]"}
@@ -622,8 +622,8 @@ procedure m(S: (Set Ref)) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(inv(b), write) -- quantification_over_pred_permissions.vpr@19.3--19.26
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := 1 / 2;
     assert {:msg "  Folding inv(b) might fail. Fraction 1 / 2 might be negative. (quantification_over_pred_permissions.vpr@19.3--19.26) [4197]"}
       perm >= NoPerm;
@@ -648,8 +648,8 @@ procedure m(S: (Set Ref)) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     havoc QPMask;
     
     // -- check that the permission amount is positive

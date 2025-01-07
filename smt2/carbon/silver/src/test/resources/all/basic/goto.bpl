@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-04 01:10:11
+// Date:         2025-01-07 14:24:33
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/basic/goto.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/basic/goto-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -238,14 +238,14 @@ procedure t1(n: int) returns (r_1: int)
   modifies Heap, Mask;
 {
   var lbl_lblGuard: bool;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var LabellblMask: MaskType;
   var LabellblHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var LabellblMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -260,8 +260,8 @@ procedure t1(n: int) returns (r_1: int)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -286,14 +286,14 @@ procedure t1(n: int) returns (r_1: int)
   // -- Translating statement: // id = 3
   // label lbl -- goto.vpr@12.1--12.10
     lbl:
-    LabellblMask := Mask;
     LabellblHeap := Heap;
+    LabellblMask := Mask;
     lbl_lblGuard := true;
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of t1 might not hold. Assertion r > 0 might not hold. (goto.vpr@8.13--8.18) [186139]"}
       r_1 > 0;
 }

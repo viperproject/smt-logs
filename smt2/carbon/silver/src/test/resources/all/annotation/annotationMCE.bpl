@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-04 01:06:02
+// Date:         2025-01-07 14:20:20
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/annotation/annotationMCE.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/annotation/annotationMCE-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -189,8 +189,8 @@ procedure disjAlias(r1: Ref, r2: Ref, r3: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -219,8 +219,8 @@ procedure disjAlias(r1: Ref, r2: Ref, r3: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: r3.f := 4 -- annotationMCE.vpr@17.5--17.14
     assert {:msg "  Assignment might fail. There might be insufficient permission to access r3.f (annotationMCE.vpr@17.5--17.14) [152959]"}
@@ -237,8 +237,8 @@ procedure disjAlias1(r1: Ref, r2: Ref, r3: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -267,8 +267,8 @@ procedure disjAlias1(r1: Ref, r2: Ref, r3: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: r3.f := 4 -- annotationMCE.vpr@26.5--26.14
     assert {:msg "  Assignment might fail. There might be insufficient permission to access r3.f (annotationMCE.vpr@26.5--26.14) [152960]"}
@@ -285,8 +285,8 @@ procedure disjAlias2(r1: Ref, r2: Ref, r3: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -315,8 +315,8 @@ procedure disjAlias2(r1: Ref, r2: Ref, r3: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: r3.f := 4 -- annotationMCE.vpr@36.5--36.14
     assert {:msg "  Assignment might fail. There might be insufficient permission to access r3.f (annotationMCE.vpr@36.5--36.14) [152961]"}
@@ -333,8 +333,8 @@ procedure disjAlias3(r1: Ref, r2: Ref, r3: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -363,8 +363,8 @@ procedure disjAlias3(r1: Ref, r2: Ref, r3: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: r3.f := 4 -- annotationMCE.vpr@45.5--45.14
     assert {:msg "  Assignment might fail. There might be insufficient permission to access r3.f (annotationMCE.vpr@45.5--45.14) [152962]"}
@@ -381,8 +381,8 @@ procedure disjAlias4(r1: Ref, r2: Ref, r3: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -411,8 +411,8 @@ procedure disjAlias4(r1: Ref, r2: Ref, r3: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: r3.f := 4 -- annotationMCE.vpr@55.5--55.14
     assert {:msg "  Assignment might fail. There might be insufficient permission to access r3.f (annotationMCE.vpr@55.5--55.14) [152963]"}
@@ -429,8 +429,8 @@ procedure disjAlias5(r1: Ref, r2: Ref, r3: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -459,8 +459,8 @@ procedure disjAlias5(r1: Ref, r2: Ref, r3: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: r3.f := 4 -- annotationMCE.vpr@65.5--65.14
     assert {:msg "  Assignment might fail. There might be insufficient permission to access r3.f (annotationMCE.vpr@65.5--65.14) [152964]"}

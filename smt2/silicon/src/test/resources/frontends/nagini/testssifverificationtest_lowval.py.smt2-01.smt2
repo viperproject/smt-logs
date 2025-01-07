@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-04 00:23:50
+; Started: 2025-01-07 13:37:32
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -1805,19 +1805,19 @@
 (assert (forall ((s@$ $Snap) (self@0@00 $Ref)) (!
   (= (tuple___val__%limited s@$ self@0@00) (tuple___val__ s@$ self@0@00))
   :pattern ((tuple___val__ s@$ self@0@00))
-  :qid |quant-u-4004|)))
+  :qid |quant-u-3950|)))
 (assert (forall ((s@$ $Snap) (self@0@00 $Ref)) (!
   (tuple___val__%stateless self@0@00)
   :pattern ((tuple___val__%limited s@$ self@0@00))
-  :qid |quant-u-4005|)))
+  :qid |quant-u-3951|)))
 (assert (forall ((s@$ $Snap) (self@2@00 $Ref)) (!
   (= (tuple___len__%limited s@$ self@2@00) (tuple___len__ s@$ self@2@00))
   :pattern ((tuple___len__ s@$ self@2@00))
-  :qid |quant-u-4006|)))
+  :qid |quant-u-3952|)))
 (assert (forall ((s@$ $Snap) (self@2@00 $Ref)) (!
   (tuple___len__%stateless self@2@00)
   :pattern ((tuple___len__%limited s@$ self@2@00))
-  :qid |quant-u-4007|)))
+  :qid |quant-u-3953|)))
 (assert (forall ((s@$ $Snap) (self@2@00 $Ref)) (!
   (let ((result@3@00 (tuple___len__%limited s@$ self@2@00))) (=>
     (tuple___len__%precondition s@$ self@2@00)
@@ -1827,53 +1827,53 @@
         (Seq_length (tuple_args<Seq<PyType>> (typeof<PyType> self@2@00))))
       (= result@3@00 (Seq_length (tuple___val__ $Snap.unit self@2@00))))))
   :pattern ((tuple___len__%limited s@$ self@2@00))
-  :qid |quant-u-4044|)))
+  :qid |quant-u-3990|)))
 (assert (forall ((s@$ $Snap) (self@2@00 $Ref)) (!
   (let ((result@3@00 (tuple___len__%limited s@$ self@2@00))) true)
   :pattern ((tuple___len__%limited s@$ self@2@00))
-  :qid |quant-u-4045|)))
+  :qid |quant-u-3991|)))
 (assert (forall ((s@$ $Snap) (self@2@00 $Ref)) (!
   (let ((result@3@00 (tuple___len__%limited s@$ self@2@00))) (=>
     (tuple___len__%precondition s@$ self@2@00)
     (tuple___val__%precondition $Snap.unit self@2@00)))
   :pattern ((tuple___len__%limited s@$ self@2@00))
-  :qid |quant-u-4046|)))
+  :qid |quant-u-3992|)))
 (assert (forall ((s@$ $Snap) (self@4@00 $Ref)) (!
   (= (str___val__%limited s@$ self@4@00) (str___val__ s@$ self@4@00))
   :pattern ((str___val__ s@$ self@4@00))
-  :qid |quant-u-4008|)))
+  :qid |quant-u-3954|)))
 (assert (forall ((s@$ $Snap) (self@4@00 $Ref)) (!
   (str___val__%stateless self@4@00)
   :pattern ((str___val__%limited s@$ self@4@00))
-  :qid |quant-u-4009|)))
+  :qid |quant-u-3955|)))
 (assert (forall ((s@$ $Snap) (self@6@00 $Ref)) (!
   (= (str___len__%limited s@$ self@6@00) (str___len__ s@$ self@6@00))
   :pattern ((str___len__ s@$ self@6@00))
-  :qid |quant-u-4010|)))
+  :qid |quant-u-3956|)))
 (assert (forall ((s@$ $Snap) (self@6@00 $Ref)) (!
   (str___len__%stateless self@6@00)
   :pattern ((str___len__%limited s@$ self@6@00))
-  :qid |quant-u-4011|)))
+  :qid |quant-u-3957|)))
 (assert (forall ((s@$ $Snap) (self@6@00 $Ref)) (!
   (let ((result@7@00 (str___len__%limited s@$ self@6@00))) (=>
     (str___len__%precondition s@$ self@6@00)
     (>= result@7@00 0)))
   :pattern ((str___len__%limited s@$ self@6@00))
-  :qid |quant-u-4047|)))
+  :qid |quant-u-3993|)))
 (assert (forall ((s@$ $Snap) (self@6@00 $Ref)) (!
   (let ((result@7@00 (str___len__%limited s@$ self@6@00))) true)
   :pattern ((str___len__%limited s@$ self@6@00))
-  :qid |quant-u-4048|)))
+  :qid |quant-u-3994|)))
 (assert (forall ((s@$ $Snap) (self@8@00 $Ref) (key@9@00 Int)) (!
   (=
     (tuple___getitem__%limited s@$ self@8@00 key@9@00)
     (tuple___getitem__ s@$ self@8@00 key@9@00))
   :pattern ((tuple___getitem__ s@$ self@8@00 key@9@00))
-  :qid |quant-u-4012|)))
+  :qid |quant-u-3958|)))
 (assert (forall ((s@$ $Snap) (self@8@00 $Ref) (key@9@00 Int)) (!
   (tuple___getitem__%stateless self@8@00 key@9@00)
   :pattern ((tuple___getitem__%limited s@$ self@8@00 key@9@00))
-  :qid |quant-u-4013|)))
+  :qid |quant-u-3959|)))
 (assert (forall ((s@$ $Snap) (self@8@00 $Ref) (key@9@00 Int)) (!
   (let ((result@10@00 (tuple___getitem__%limited s@$ self@8@00 key@9@00))) (=>
     (tuple___getitem__%precondition s@$ self@8@00 key@9@00)
@@ -1899,23 +1899,23 @@
             (tuple___val__ $Snap.unit self@8@00)
             (+ (tuple___len__ $Snap.unit self@8@00) key@9@00)))))))
   :pattern ((tuple___getitem__%limited s@$ self@8@00 key@9@00))
-  :qid |quant-u-4049|)))
+  :qid |quant-u-3995|)))
 (assert (forall ((s@$ $Snap) (self@8@00 $Ref) (key@9@00 Int)) (!
   (let ((result@10@00 (tuple___getitem__%limited s@$ self@8@00 key@9@00))) true)
   :pattern ((tuple___getitem__%limited s@$ self@8@00 key@9@00))
-  :qid |quant-u-4050|)))
+  :qid |quant-u-3996|)))
 (assert (forall ((s@$ $Snap) (self@8@00 $Ref) (key@9@00 Int)) (!
   (let ((result@10@00 (tuple___getitem__%limited s@$ self@8@00 key@9@00))) (=>
     (and (tuple___getitem__%precondition s@$ self@8@00 key@9@00) (< key@9@00 0))
     (tuple___len__%precondition $Snap.unit self@8@00)))
   :pattern ((tuple___getitem__%limited s@$ self@8@00 key@9@00))
-  :qid |quant-u-4051|)))
+  :qid |quant-u-3997|)))
 (assert (forall ((s@$ $Snap) (self@8@00 $Ref) (key@9@00 Int)) (!
   (let ((result@10@00 (tuple___getitem__%limited s@$ self@8@00 key@9@00))) (=>
     (and (tuple___getitem__%precondition s@$ self@8@00 key@9@00) (>= key@9@00 0))
     (tuple___val__%precondition $Snap.unit self@8@00)))
   :pattern ((tuple___getitem__%limited s@$ self@8@00 key@9@00))
-  :qid |quant-u-4052|)))
+  :qid |quant-u-3998|)))
 (assert (forall ((s@$ $Snap) (self@8@00 $Ref) (key@9@00 Int)) (!
   (let ((result@10@00 (tuple___getitem__%limited s@$ self@8@00 key@9@00))) (=>
     (and (tuple___getitem__%precondition s@$ self@8@00 key@9@00) (< key@9@00 0))
@@ -1923,45 +1923,45 @@
       (tuple___val__%precondition $Snap.unit self@8@00)
       (tuple___len__%precondition $Snap.unit self@8@00))))
   :pattern ((tuple___getitem__%limited s@$ self@8@00 key@9@00))
-  :qid |quant-u-4053|)))
+  :qid |quant-u-3999|)))
 (assert (forall ((s@$ $Snap) (id@11@00 Int)) (!
   (= (_isDefined%limited s@$ id@11@00) (_isDefined s@$ id@11@00))
   :pattern ((_isDefined s@$ id@11@00))
-  :qid |quant-u-4014|)))
+  :qid |quant-u-3960|)))
 (assert (forall ((s@$ $Snap) (id@11@00 Int)) (!
   (_isDefined%stateless id@11@00)
   :pattern ((_isDefined%limited s@$ id@11@00))
-  :qid |quant-u-4015|)))
+  :qid |quant-u-3961|)))
 (assert (forall ((s@$ $Snap) (box@13@00 $Ref)) (!
   (= (bool___unbox__%limited s@$ box@13@00) (bool___unbox__ s@$ box@13@00))
   :pattern ((bool___unbox__ s@$ box@13@00))
-  :qid |quant-u-4016|)))
+  :qid |quant-u-3962|)))
 (assert (forall ((s@$ $Snap) (box@13@00 $Ref)) (!
   (bool___unbox__%stateless box@13@00)
   :pattern ((bool___unbox__%limited s@$ box@13@00))
-  :qid |quant-u-4017|)))
+  :qid |quant-u-3963|)))
 (assert (forall ((s@$ $Snap) (box@13@00 $Ref)) (!
   (let ((result@14@00 (bool___unbox__%limited s@$ box@13@00))) (=>
     (bool___unbox__%precondition s@$ box@13@00)
     (= (__prim__bool___box__%limited $Snap.unit result@14@00) box@13@00)))
   :pattern ((bool___unbox__%limited s@$ box@13@00))
-  :qid |quant-u-4054|)))
+  :qid |quant-u-4000|)))
 (assert (forall ((s@$ $Snap) (box@13@00 $Ref)) (!
   (let ((result@14@00 (bool___unbox__%limited s@$ box@13@00))) (=>
     (bool___unbox__%precondition s@$ box@13@00)
     (__prim__bool___box__%precondition $Snap.unit result@14@00)))
   :pattern ((bool___unbox__%limited s@$ box@13@00))
-  :qid |quant-u-4055|)))
+  :qid |quant-u-4001|)))
 (assert (forall ((s@$ $Snap) (prim@15@00 Bool)) (!
   (=
     (__prim__bool___box__%limited s@$ prim@15@00)
     (__prim__bool___box__ s@$ prim@15@00))
   :pattern ((__prim__bool___box__ s@$ prim@15@00))
-  :qid |quant-u-4018|)))
+  :qid |quant-u-3964|)))
 (assert (forall ((s@$ $Snap) (prim@15@00 Bool)) (!
   (__prim__bool___box__%stateless prim@15@00)
   :pattern ((__prim__bool___box__%limited s@$ prim@15@00))
-  :qid |quant-u-4019|)))
+  :qid |quant-u-3965|)))
 (assert (forall ((s@$ $Snap) (prim@15@00 Bool)) (!
   (let ((result@16@00 (__prim__bool___box__%limited s@$ prim@15@00))) (=>
     (__prim__bool___box__%precondition s@$ prim@15@00)
@@ -1970,31 +1970,31 @@
       (= (bool___unbox__%limited $Snap.unit result@16@00) prim@15@00)
       (= (int___unbox__%limited $Snap.unit result@16@00) (ite prim@15@00 1 0)))))
   :pattern ((__prim__bool___box__%limited s@$ prim@15@00))
-  :qid |quant-u-4056|)))
+  :qid |quant-u-4002|)))
 (assert (forall ((s@$ $Snap) (prim@15@00 Bool)) (!
   (let ((result@16@00 (__prim__bool___box__%limited s@$ prim@15@00))) true)
   :pattern ((__prim__bool___box__%limited s@$ prim@15@00))
-  :qid |quant-u-4057|)))
+  :qid |quant-u-4003|)))
 (assert (forall ((s@$ $Snap) (prim@15@00 Bool)) (!
   (let ((result@16@00 (__prim__bool___box__%limited s@$ prim@15@00))) (=>
     (__prim__bool___box__%precondition s@$ prim@15@00)
     (bool___unbox__%precondition $Snap.unit result@16@00)))
   :pattern ((__prim__bool___box__%limited s@$ prim@15@00))
-  :qid |quant-u-4058|)))
+  :qid |quant-u-4004|)))
 (assert (forall ((s@$ $Snap) (prim@15@00 Bool)) (!
   (let ((result@16@00 (__prim__bool___box__%limited s@$ prim@15@00))) (=>
     (__prim__bool___box__%precondition s@$ prim@15@00)
     (int___unbox__%precondition $Snap.unit result@16@00)))
   :pattern ((__prim__bool___box__%limited s@$ prim@15@00))
-  :qid |quant-u-4059|)))
+  :qid |quant-u-4005|)))
 (assert (forall ((s@$ $Snap) (box@17@00 $Ref)) (!
   (= (int___unbox__%limited s@$ box@17@00) (int___unbox__ s@$ box@17@00))
   :pattern ((int___unbox__ s@$ box@17@00))
-  :qid |quant-u-4020|)))
+  :qid |quant-u-3966|)))
 (assert (forall ((s@$ $Snap) (box@17@00 $Ref)) (!
   (int___unbox__%stateless box@17@00)
   :pattern ((int___unbox__%limited s@$ box@17@00))
-  :qid |quant-u-4021|)))
+  :qid |quant-u-3967|)))
 (assert (forall ((s@$ $Snap) (box@17@00 $Ref)) (!
   (let ((result@18@00 (int___unbox__%limited s@$ box@17@00))) (=>
     (int___unbox__%precondition s@$ box@17@00)
@@ -2009,7 +2009,7 @@
           (__prim__bool___box__%limited $Snap.unit (not (= result@18@00 0)))
           box@17@00)))))
   :pattern ((int___unbox__%limited s@$ box@17@00))
-  :qid |quant-u-4060|)))
+  :qid |quant-u-4006|)))
 (assert (forall ((s@$ $Snap) (box@17@00 $Ref)) (!
   (let ((result@18@00 (int___unbox__%limited s@$ box@17@00))) (=>
     (and
@@ -2018,7 +2018,7 @@
         (issubtype<Bool> (typeof<PyType> box@17@00) (as bool<PyType>  PyType))))
     (__prim__int___box__%precondition $Snap.unit result@18@00)))
   :pattern ((int___unbox__%limited s@$ box@17@00))
-  :qid |quant-u-4061|)))
+  :qid |quant-u-4007|)))
 (assert (forall ((s@$ $Snap) (box@17@00 $Ref)) (!
   (let ((result@18@00 (int___unbox__%limited s@$ box@17@00))) (=>
     (and
@@ -2026,17 +2026,17 @@
       (issubtype<Bool> (typeof<PyType> box@17@00) (as bool<PyType>  PyType)))
     (__prim__bool___box__%precondition $Snap.unit (not (= result@18@00 0)))))
   :pattern ((int___unbox__%limited s@$ box@17@00))
-  :qid |quant-u-4062|)))
+  :qid |quant-u-4008|)))
 (assert (forall ((s@$ $Snap) (prim@19@00 Int)) (!
   (=
     (__prim__int___box__%limited s@$ prim@19@00)
     (__prim__int___box__ s@$ prim@19@00))
   :pattern ((__prim__int___box__ s@$ prim@19@00))
-  :qid |quant-u-4022|)))
+  :qid |quant-u-3968|)))
 (assert (forall ((s@$ $Snap) (prim@19@00 Int)) (!
   (__prim__int___box__%stateless prim@19@00)
   :pattern ((__prim__int___box__%limited s@$ prim@19@00))
-  :qid |quant-u-4023|)))
+  :qid |quant-u-3969|)))
 (assert (forall ((s@$ $Snap) (prim@19@00 Int)) (!
   (let ((result@20@00 (__prim__int___box__%limited s@$ prim@19@00))) (=>
     (__prim__int___box__%precondition s@$ prim@19@00)
@@ -2044,35 +2044,35 @@
       (= (typeof<PyType> result@20@00) (as int<PyType>  PyType))
       (= (int___unbox__%limited $Snap.unit result@20@00) prim@19@00))))
   :pattern ((__prim__int___box__%limited s@$ prim@19@00))
-  :qid |quant-u-4063|)))
+  :qid |quant-u-4009|)))
 (assert (forall ((s@$ $Snap) (prim@19@00 Int)) (!
   (let ((result@20@00 (__prim__int___box__%limited s@$ prim@19@00))) true)
   :pattern ((__prim__int___box__%limited s@$ prim@19@00))
-  :qid |quant-u-4064|)))
+  :qid |quant-u-4010|)))
 (assert (forall ((s@$ $Snap) (prim@19@00 Int)) (!
   (let ((result@20@00 (__prim__int___box__%limited s@$ prim@19@00))) (=>
     (__prim__int___box__%precondition s@$ prim@19@00)
     (int___unbox__%precondition $Snap.unit result@20@00)))
   :pattern ((__prim__int___box__%limited s@$ prim@19@00))
-  :qid |quant-u-4065|)))
+  :qid |quant-u-4011|)))
 (assert (forall ((s@$ $Snap) (r@21@00 $Ref)) (!
   (= (Level%limited s@$ r@21@00) (Level s@$ r@21@00))
   :pattern ((Level s@$ r@21@00))
-  :qid |quant-u-4024|)))
+  :qid |quant-u-3970|)))
 (assert (forall ((s@$ $Snap) (r@21@00 $Ref)) (!
   (Level%stateless r@21@00)
   :pattern ((Level%limited s@$ r@21@00))
-  :qid |quant-u-4025|)))
+  :qid |quant-u-3971|)))
 (assert (forall ((s@$ $Snap) (len@23@00 Int) (value@24@00 Int)) (!
   (=
     (str___create__%limited s@$ len@23@00 value@24@00)
     (str___create__ s@$ len@23@00 value@24@00))
   :pattern ((str___create__ s@$ len@23@00 value@24@00))
-  :qid |quant-u-4026|)))
+  :qid |quant-u-3972|)))
 (assert (forall ((s@$ $Snap) (len@23@00 Int) (value@24@00 Int)) (!
   (str___create__%stateless len@23@00 value@24@00)
   :pattern ((str___create__%limited s@$ len@23@00 value@24@00))
-  :qid |quant-u-4027|)))
+  :qid |quant-u-3973|)))
 (assert (forall ((s@$ $Snap) (len@23@00 Int) (value@24@00 Int)) (!
   (let ((result@25@00 (str___create__%limited s@$ len@23@00 value@24@00))) (=>
     (str___create__%precondition s@$ len@23@00 value@24@00)
@@ -2081,33 +2081,33 @@
       (= (str___val__ $Snap.unit result@25@00) value@24@00)
       (= (typeof<PyType> result@25@00) (as str<PyType>  PyType)))))
   :pattern ((str___create__%limited s@$ len@23@00 value@24@00))
-  :qid |quant-u-4066|)))
+  :qid |quant-u-4012|)))
 (assert (forall ((s@$ $Snap) (len@23@00 Int) (value@24@00 Int)) (!
   (let ((result@25@00 (str___create__%limited s@$ len@23@00 value@24@00))) (=>
     (str___create__%precondition s@$ len@23@00 value@24@00)
     (str___len__%precondition $Snap.unit result@25@00)))
   :pattern ((str___create__%limited s@$ len@23@00 value@24@00))
-  :qid |quant-u-4067|)))
+  :qid |quant-u-4013|)))
 (assert (forall ((s@$ $Snap) (len@23@00 Int) (value@24@00 Int)) (!
   (let ((result@25@00 (str___create__%limited s@$ len@23@00 value@24@00))) (=>
     (str___create__%precondition s@$ len@23@00 value@24@00)
     (str___val__%precondition $Snap.unit result@25@00)))
   :pattern ((str___create__%limited s@$ len@23@00 value@24@00))
-  :qid |quant-u-4068|)))
+  :qid |quant-u-4014|)))
 (assert (forall ((s@$ $Snap) (len@23@00 Int) (value@24@00 Int)) (!
   (let ((result@25@00 (str___create__%limited s@$ len@23@00 value@24@00))) true)
   :pattern ((str___create__%limited s@$ len@23@00 value@24@00))
-  :qid |quant-u-4069|)))
+  :qid |quant-u-4015|)))
 (assert (forall ((s@$ $Snap) (arg0@26@00 $Ref) (arg1@27@00 $Ref) (t0@28@00 PyType) (t1@29@00 PyType) (ctr@30@00 Int)) (!
   (=
     (tuple___create2__%limited s@$ arg0@26@00 arg1@27@00 t0@28@00 t1@29@00 ctr@30@00)
     (tuple___create2__ s@$ arg0@26@00 arg1@27@00 t0@28@00 t1@29@00 ctr@30@00))
   :pattern ((tuple___create2__ s@$ arg0@26@00 arg1@27@00 t0@28@00 t1@29@00 ctr@30@00))
-  :qid |quant-u-4028|)))
+  :qid |quant-u-3974|)))
 (assert (forall ((s@$ $Snap) (arg0@26@00 $Ref) (arg1@27@00 $Ref) (t0@28@00 PyType) (t1@29@00 PyType) (ctr@30@00 Int)) (!
   (tuple___create2__%stateless arg0@26@00 arg1@27@00 t0@28@00 t1@29@00 ctr@30@00)
   :pattern ((tuple___create2__%limited s@$ arg0@26@00 arg1@27@00 t0@28@00 t1@29@00 ctr@30@00))
-  :qid |quant-u-4029|)))
+  :qid |quant-u-3975|)))
 (assert (forall ((s@$ $Snap) (arg0@26@00 $Ref) (arg1@27@00 $Ref) (t0@28@00 PyType) (t1@29@00 PyType) (ctr@30@00 Int)) (!
   (let ((result@31@00 (tuple___create2__%limited s@$ arg0@26@00 arg1@27@00 t0@28@00 t1@29@00 ctr@30@00))) (=>
     (tuple___create2__%precondition s@$ arg0@26@00 arg1@27@00 t0@28@00 t1@29@00 ctr@30@00)
@@ -2130,29 +2130,29 @@
           (= (tuple___getitem__ $Snap.unit result@31@00 0) arg0@26@00)
           (= (tuple___getitem__ $Snap.unit result@31@00 1) arg1@27@00))))))
   :pattern ((tuple___create2__%limited s@$ arg0@26@00 arg1@27@00 t0@28@00 t1@29@00 ctr@30@00))
-  :qid |quant-u-4070|)))
+  :qid |quant-u-4016|)))
 (assert (forall ((s@$ $Snap) (arg0@26@00 $Ref) (arg1@27@00 $Ref) (t0@28@00 PyType) (t1@29@00 PyType) (ctr@30@00 Int)) (!
   (let ((result@31@00 (tuple___create2__%limited s@$ arg0@26@00 arg1@27@00 t0@28@00 t1@29@00 ctr@30@00))) true)
   :pattern ((tuple___create2__%limited s@$ arg0@26@00 arg1@27@00 t0@28@00 t1@29@00 ctr@30@00))
-  :qid |quant-u-4071|)))
+  :qid |quant-u-4017|)))
 (assert (forall ((s@$ $Snap) (arg0@26@00 $Ref) (arg1@27@00 $Ref) (t0@28@00 PyType) (t1@29@00 PyType) (ctr@30@00 Int)) (!
   (let ((result@31@00 (tuple___create2__%limited s@$ arg0@26@00 arg1@27@00 t0@28@00 t1@29@00 ctr@30@00))) true)
   :pattern ((tuple___create2__%limited s@$ arg0@26@00 arg1@27@00 t0@28@00 t1@29@00 ctr@30@00))
-  :qid |quant-u-4072|)))
+  :qid |quant-u-4018|)))
 (assert (forall ((s@$ $Snap) (arg0@26@00 $Ref) (arg1@27@00 $Ref) (t0@28@00 PyType) (t1@29@00 PyType) (ctr@30@00 Int)) (!
   (let ((result@31@00 (tuple___create2__%limited s@$ arg0@26@00 arg1@27@00 t0@28@00 t1@29@00 ctr@30@00))) true)
   :pattern ((tuple___create2__%limited s@$ arg0@26@00 arg1@27@00 t0@28@00 t1@29@00 ctr@30@00))
-  :qid |quant-u-4073|)))
+  :qid |quant-u-4019|)))
 (assert (forall ((s@$ $Snap) (arg0@26@00 $Ref) (arg1@27@00 $Ref) (t0@28@00 PyType) (t1@29@00 PyType) (ctr@30@00 Int)) (!
   (let ((result@31@00 (tuple___create2__%limited s@$ arg0@26@00 arg1@27@00 t0@28@00 t1@29@00 ctr@30@00))) true)
   :pattern ((tuple___create2__%limited s@$ arg0@26@00 arg1@27@00 t0@28@00 t1@29@00 ctr@30@00))
-  :qid |quant-u-4074|)))
+  :qid |quant-u-4020|)))
 (assert (forall ((s@$ $Snap) (arg0@26@00 $Ref) (arg1@27@00 $Ref) (t0@28@00 PyType) (t1@29@00 PyType) (ctr@30@00 Int)) (!
   (let ((result@31@00 (tuple___create2__%limited s@$ arg0@26@00 arg1@27@00 t0@28@00 t1@29@00 ctr@30@00))) (=>
     (tuple___create2__%precondition s@$ arg0@26@00 arg1@27@00 t0@28@00 t1@29@00 ctr@30@00)
     (tuple___val__%precondition $Snap.unit result@31@00)))
   :pattern ((tuple___create2__%limited s@$ arg0@26@00 arg1@27@00 t0@28@00 t1@29@00 ctr@30@00))
-  :qid |quant-u-4075|)))
+  :qid |quant-u-4021|)))
 (assert (forall ((s@$ $Snap) (arg0@26@00 $Ref) (arg1@27@00 $Ref) (t0@28@00 PyType) (t1@29@00 PyType) (ctr@30@00 Int)) (!
   (let ((result@31@00 (tuple___create2__%limited s@$ arg0@26@00 arg1@27@00 t0@28@00 t1@29@00 ctr@30@00))) (=>
     (tuple___create2__%precondition s@$ arg0@26@00 arg1@27@00 t0@28@00 t1@29@00 ctr@30@00)
@@ -2166,17 +2166,17 @@
             (= (tuple___getitem__ $Snap.unit result@31@00 0) arg0@26@00)
             (tuple___getitem__%precondition $Snap.unit result@31@00 1)))))))
   :pattern ((tuple___create2__%limited s@$ arg0@26@00 arg1@27@00 t0@28@00 t1@29@00 ctr@30@00))
-  :qid |quant-u-4076|)))
+  :qid |quant-u-4022|)))
 (assert (forall ((s@$ $Snap) (self@32@00 $Ref) (other@33@00 $Ref)) (!
   (=
     (str___eq__%limited s@$ self@32@00 other@33@00)
     (str___eq__ s@$ self@32@00 other@33@00))
   :pattern ((str___eq__ s@$ self@32@00 other@33@00))
-  :qid |quant-u-4030|)))
+  :qid |quant-u-3976|)))
 (assert (forall ((s@$ $Snap) (self@32@00 $Ref) (other@33@00 $Ref)) (!
   (str___eq__%stateless self@32@00 other@33@00)
   :pattern ((str___eq__%limited s@$ self@32@00 other@33@00))
-  :qid |quant-u-4031|)))
+  :qid |quant-u-3977|)))
 (assert (forall ((s@$ $Snap) (self@32@00 $Ref) (other@33@00 $Ref)) (!
   (let ((result@34@00 (str___eq__%limited s@$ self@32@00 other@33@00))) (=>
     (str___eq__%precondition s@$ self@32@00 other@33@00)
@@ -2192,7 +2192,7 @@
           (str___len__ $Snap.unit self@32@00)
           (str___len__ $Snap.unit other@33@00))))))
   :pattern ((str___eq__%limited s@$ self@32@00 other@33@00))
-  :qid |quant-u-4077|)))
+  :qid |quant-u-4023|)))
 (assert (forall ((s@$ $Snap) (self@32@00 $Ref) (other@33@00 $Ref)) (!
   (let ((result@34@00 (str___eq__%limited s@$ self@32@00 other@33@00))) (=>
     (str___eq__%precondition s@$ self@32@00 other@33@00)
@@ -2200,7 +2200,7 @@
       (str___val__%precondition $Snap.unit self@32@00)
       (str___val__%precondition $Snap.unit other@33@00))))
   :pattern ((str___eq__%limited s@$ self@32@00 other@33@00))
-  :qid |quant-u-4078|)))
+  :qid |quant-u-4024|)))
 (assert (forall ((s@$ $Snap) (self@32@00 $Ref) (other@33@00 $Ref)) (!
   (let ((result@34@00 (str___eq__%limited s@$ self@32@00 other@33@00))) (=>
     (and (str___eq__%precondition s@$ self@32@00 other@33@00) result@34@00)
@@ -2208,37 +2208,37 @@
       (str___len__%precondition $Snap.unit self@32@00)
       (str___len__%precondition $Snap.unit other@33@00))))
   :pattern ((str___eq__%limited s@$ self@32@00 other@33@00))
-  :qid |quant-u-4079|)))
+  :qid |quant-u-4025|)))
 (assert (forall ((s@$ $Snap) (self@35@00 Int) (other@36@00 Int)) (!
   (=
     (int___add__%limited s@$ self@35@00 other@36@00)
     (int___add__ s@$ self@35@00 other@36@00))
   :pattern ((int___add__ s@$ self@35@00 other@36@00))
-  :qid |quant-u-4032|)))
+  :qid |quant-u-3978|)))
 (assert (forall ((s@$ $Snap) (self@35@00 Int) (other@36@00 Int)) (!
   (int___add__%stateless self@35@00 other@36@00)
   :pattern ((int___add__%limited s@$ self@35@00 other@36@00))
-  :qid |quant-u-4033|)))
+  :qid |quant-u-3979|)))
 (assert (forall ((s@$ $Snap) (self@35@00 Int) (other@36@00 Int)) (!
   (=>
     (int___add__%precondition s@$ self@35@00 other@36@00)
     (= (int___add__ s@$ self@35@00 other@36@00) (+ self@35@00 other@36@00)))
   :pattern ((int___add__ s@$ self@35@00 other@36@00))
-  :qid |quant-u-4080|)))
+  :qid |quant-u-4026|)))
 (assert (forall ((s@$ $Snap) (self@35@00 Int) (other@36@00 Int)) (!
   true
   :pattern ((int___add__ s@$ self@35@00 other@36@00))
-  :qid |quant-u-4081|)))
+  :qid |quant-u-4027|)))
 (assert (forall ((s@$ $Snap) (self@38@00 $Ref) (other@39@00 $Ref)) (!
   (=
     (tuple___eq__%limited s@$ self@38@00 other@39@00)
     (tuple___eq__ s@$ self@38@00 other@39@00))
   :pattern ((tuple___eq__ s@$ self@38@00 other@39@00))
-  :qid |quant-u-4034|)))
+  :qid |quant-u-3980|)))
 (assert (forall ((s@$ $Snap) (self@38@00 $Ref) (other@39@00 $Ref)) (!
   (tuple___eq__%stateless self@38@00 other@39@00)
   :pattern ((tuple___eq__%limited s@$ self@38@00 other@39@00))
-  :qid |quant-u-4035|)))
+  :qid |quant-u-3981|)))
 (assert (forall ((s@$ $Snap) (self@38@00 $Ref) (other@39@00 $Ref)) (!
   (let ((result@40@00 (tuple___eq__%limited s@$ self@38@00 other@39@00))) (=>
     (and
@@ -2257,7 +2257,7 @@
           ))))
     result@40@00))
   :pattern ((tuple___eq__%limited s@$ self@38@00 other@39@00))
-  :qid |quant-u-4082|)))
+  :qid |quant-u-4028|)))
 (assert (forall ((s@$ $Snap) (self@38@00 $Ref) (other@39@00 $Ref)) (!
   (let ((result@40@00 (tuple___eq__%limited s@$ self@38@00 other@39@00))) (=>
     (tuple___eq__%precondition s@$ self@38@00 other@39@00)
@@ -2280,45 +2280,45 @@
           :pattern ((tuple___getitem__%limited $Snap.unit self@38@00 i) (tuple___getitem__%limited $Snap.unit other@39@00 i))
           ))))))
   :pattern ((tuple___eq__%limited s@$ self@38@00 other@39@00))
-  :qid |quant-u-4083|)))
+  :qid |quant-u-4029|)))
 (assert (forall ((s@$ $Snap)) (!
   (= (__file__%limited s@$) (__file__ s@$))
   :pattern ((__file__ s@$))
-  :qid |quant-u-4036|)))
+  :qid |quant-u-3982|)))
 (assert (forall ((s@$ $Snap)) (!
   (as __file__%stateless  Bool)
   :pattern ((__file__%limited s@$))
-  :qid |quant-u-4037|)))
+  :qid |quant-u-3983|)))
 (assert (forall ((s@$ $Snap) (val@42@00 $Ref) (id@43@00 Int)) (!
   (=
     (_checkDefined%limited s@$ val@42@00 id@43@00)
     (_checkDefined s@$ val@42@00 id@43@00))
   :pattern ((_checkDefined s@$ val@42@00 id@43@00))
-  :qid |quant-u-4038|)))
+  :qid |quant-u-3984|)))
 (assert (forall ((s@$ $Snap) (val@42@00 $Ref) (id@43@00 Int)) (!
   (_checkDefined%stateless val@42@00 id@43@00)
   :pattern ((_checkDefined%limited s@$ val@42@00 id@43@00))
-  :qid |quant-u-4039|)))
+  :qid |quant-u-3985|)))
 (assert (forall ((s@$ $Snap) (val@42@00 $Ref) (id@43@00 Int)) (!
   (=>
     (_checkDefined%precondition s@$ val@42@00 id@43@00)
     (= (_checkDefined s@$ val@42@00 id@43@00) val@42@00))
   :pattern ((_checkDefined s@$ val@42@00 id@43@00))
-  :qid |quant-u-4084|)))
+  :qid |quant-u-4030|)))
 (assert (forall ((s@$ $Snap) (val@42@00 $Ref) (id@43@00 Int)) (!
   true
   :pattern ((_checkDefined s@$ val@42@00 id@43@00))
-  :qid |quant-u-4085|)))
+  :qid |quant-u-4031|)))
 (assert (forall ((s@$ $Snap) (self@45@00 $Ref) (other@46@00 $Ref)) (!
   (=
     (int___eq__%limited s@$ self@45@00 other@46@00)
     (int___eq__ s@$ self@45@00 other@46@00))
   :pattern ((int___eq__ s@$ self@45@00 other@46@00))
-  :qid |quant-u-4040|)))
+  :qid |quant-u-3986|)))
 (assert (forall ((s@$ $Snap) (self@45@00 $Ref) (other@46@00 $Ref)) (!
   (int___eq__%stateless self@45@00 other@46@00)
   :pattern ((int___eq__%limited s@$ self@45@00 other@46@00))
-  :qid |quant-u-4041|)))
+  :qid |quant-u-3987|)))
 (assert (forall ((s@$ $Snap) (self@45@00 $Ref) (other@46@00 $Ref)) (!
   (=>
     (int___eq__%precondition s@$ self@45@00 other@46@00)
@@ -2328,7 +2328,7 @@
         (int___unbox__ $Snap.unit self@45@00)
         (int___unbox__ $Snap.unit other@46@00))))
   :pattern ((int___eq__ s@$ self@45@00 other@46@00))
-  :qid |quant-u-4086|)))
+  :qid |quant-u-4032|)))
 (assert (forall ((s@$ $Snap) (self@45@00 $Ref) (other@46@00 $Ref)) (!
   (=>
     (int___eq__%precondition s@$ self@45@00 other@46@00)
@@ -2336,15 +2336,15 @@
       (int___unbox__%precondition $Snap.unit self@45@00)
       (int___unbox__%precondition $Snap.unit other@46@00)))
   :pattern ((int___eq__ s@$ self@45@00 other@46@00))
-  :qid |quant-u-4087|)))
+  :qid |quant-u-4033|)))
 (assert (forall ((s@$ $Snap)) (!
   (= (__name__%limited s@$) (__name__ s@$))
   :pattern ((__name__ s@$))
-  :qid |quant-u-4042|)))
+  :qid |quant-u-3988|)))
 (assert (forall ((s@$ $Snap)) (!
   (as __name__%stateless  Bool)
   :pattern ((__name__%limited s@$))
-  :qid |quant-u-4043|)))
+  :qid |quant-u-3989|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- example_low ----------
@@ -4113,20 +4113,20 @@
 ; tmp := new()
 (declare-const tmp@55@01 $Ref)
 (assert (not (= tmp@55@01 $Ref.null)))
-(assert (not (= tmp@55@01 b_6@37@01)))
-(assert (not (= tmp@55@01 Example_res@40@01)))
-(assert (not (= tmp@55@01 a_6@35@01)))
-(assert (not (= tmp@55@01 b@36@01)))
-(assert (not (= tmp@55@01 secret_23@23@01)))
-(assert (not (= tmp@55@01 _cthread_158@16@01)))
-(assert (not (= tmp@55@01 a@34@01)))
-(assert (not (= tmp@55@01 tmp@48@01)))
 (assert (not (= tmp@55@01 Example_res_0_0@43@01)))
+(assert (not (= tmp@55@01 b@36@01)))
+(assert (not (= tmp@55@01 _cthread_158@16@01)))
+(assert (not (= tmp@55@01 secret@22@01)))
+(assert (not (= tmp@55@01 secret_23@23@01)))
+(assert (not (= tmp@55@01 Example_res_0@42@01)))
+(assert (not (= tmp@55@01 tmp@48@01)))
+(assert (not (= tmp@55@01 _cthread_158_0@17@01)))
+(assert (not (= tmp@55@01 b_6@37@01)))
 (assert (not (= tmp@55@01 tmp_0@49@01)))
 (assert (not (= tmp@55@01 Example_res_9@41@01)))
-(assert (not (= tmp@55@01 Example_res_0@42@01)))
-(assert (not (= tmp@55@01 secret@22@01)))
-(assert (not (= tmp@55@01 _cthread_158_0@17@01)))
+(assert (not (= tmp@55@01 Example_res@40@01)))
+(assert (not (= tmp@55@01 a@34@01)))
+(assert (not (= tmp@55@01 a_6@35@01)))
 ; [eval] p1 && !ret1
 (push) ; 5
 ; [then-branch: 63 | !(p1@14@01) | live]
@@ -5759,10 +5759,8 @@
 ; tmp_0 := new()
 (declare-const tmp_0@77@01 $Ref)
 (assert (not (= tmp_0@77@01 $Ref.null)))
-(assert (not (= tmp_0@77@01 b_6@37@01)))
-(assert (not (= tmp_0@77@01 tmp@55@01)))
+(assert (not (= tmp_0@77@01 Example_res_0_0@43@01)))
 (assert (not (= tmp_0@77@01 b@36@01)))
-(assert (not (= tmp_0@77@01 secret_23@23@01)))
 (assert (not (= tmp_0@77@01 _cthread_158@16@01)))
 (assert (not
   (=
@@ -5780,11 +5778,13 @@
   (=
     tmp_0@77@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second $t@74@01)))))))
-(assert (not (= tmp_0@77@01 Example_res_0_0@43@01)))
-(assert (not (= tmp_0@77@01 tmp_0@49@01)))
-(assert (not (= tmp_0@77@01 Example_res_0@42@01)))
 (assert (not (= tmp_0@77@01 secret@22@01)))
+(assert (not (= tmp_0@77@01 secret_23@23@01)))
+(assert (not (= tmp_0@77@01 Example_res_0@42@01)))
 (assert (not (= tmp_0@77@01 _cthread_158_0@17@01)))
+(assert (not (= tmp_0@77@01 b_6@37@01)))
+(assert (not (= tmp_0@77@01 tmp_0@49@01)))
+(assert (not (= tmp_0@77@01 tmp@55@01)))
 ; [eval] p1 && !ret1
 (set-option :timeout 0)
 (push) ; 24
@@ -12123,19 +12123,19 @@
 (declare-const tmp_1@159@01 $Ref)
 (assert (not (= tmp_1@159@01 $Ref.null)))
 (assert (not (= tmp_1@159@01 secret_0_0@127@01)))
-(assert (not (= tmp_1@159@01 Example_res_1_0@145@01)))
-(assert (not (= tmp_1@159@01 secret_0@126@01)))
-(assert (not (= tmp_1@159@01 a_0_0@139@01)))
-(assert (not (= tmp_1@159@01 Example_res_2@146@01)))
-(assert (not (= tmp_1@159@01 tmp_2@153@01)))
 (assert (not (= tmp_1@159@01 tmp_1@152@01)))
-(assert (not (= tmp_1@159@01 Example_res_2_0@147@01)))
-(assert (not (= tmp_1@159@01 _cthread_159@120@01)))
 (assert (not (= tmp_1@159@01 b_0@140@01)))
-(assert (not (= tmp_1@159@01 Example_res_1@144@01)))
-(assert (not (= tmp_1@159@01 b_0_0@141@01)))
-(assert (not (= tmp_1@159@01 _cthread_159_0@121@01)))
 (assert (not (= tmp_1@159@01 a_0@138@01)))
+(assert (not (= tmp_1@159@01 Example_res_1_0@145@01)))
+(assert (not (= tmp_1@159@01 Example_res_1@144@01)))
+(assert (not (= tmp_1@159@01 tmp_2@153@01)))
+(assert (not (= tmp_1@159@01 _cthread_159_0@121@01)))
+(assert (not (= tmp_1@159@01 secret_0@126@01)))
+(assert (not (= tmp_1@159@01 Example_res_2@146@01)))
+(assert (not (= tmp_1@159@01 Example_res_2_0@147@01)))
+(assert (not (= tmp_1@159@01 b_0_0@141@01)))
+(assert (not (= tmp_1@159@01 a_0_0@139@01)))
+(assert (not (= tmp_1@159@01 _cthread_159@120@01)))
 ; [eval] p1_1 && !ret1_0
 (push) ; 5
 ; [then-branch: 336 | !(p1_1@118@01) | live]
@@ -13768,11 +13768,16 @@
 ; tmp_2 := new()
 (declare-const tmp_2@181@01 $Ref)
 (assert (not (= tmp_2@181@01 $Ref.null)))
+(assert (not (= tmp_2@181@01 tmp_1@159@01)))
 (assert (not (= tmp_2@181@01 secret_0_0@127@01)))
+(assert (not (= tmp_2@181@01 b_0@140@01)))
+(assert (not (= tmp_2@181@01 tmp_2@153@01)))
+(assert (not (= tmp_2@181@01 _cthread_159_0@121@01)))
 (assert (not (= tmp_2@181@01 secret_0@126@01)))
 (assert (not (= tmp_2@181@01 Example_res_2@146@01)))
-(assert (not (= tmp_2@181@01 tmp_1@159@01)))
-(assert (not (= tmp_2@181@01 tmp_2@153@01)))
+(assert (not (= tmp_2@181@01 Example_res_2_0@147@01)))
+(assert (not (= tmp_2@181@01 b_0_0@141@01)))
+(assert (not (= tmp_2@181@01 _cthread_159@120@01)))
 (assert (not
   (=
     tmp_2@181@01
@@ -13789,11 +13794,6 @@
   (=
     tmp_2@181@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second $t@178@01)))))))
-(assert (not (= tmp_2@181@01 Example_res_2_0@147@01)))
-(assert (not (= tmp_2@181@01 _cthread_159@120@01)))
-(assert (not (= tmp_2@181@01 b_0@140@01)))
-(assert (not (= tmp_2@181@01 b_0_0@141@01)))
-(assert (not (= tmp_2@181@01 _cthread_159_0@121@01)))
 ; [eval] p1_1 && !ret1_0
 (set-option :timeout 0)
 (push) ; 24
@@ -20212,20 +20212,20 @@
 ; tmp_3 := new()
 (declare-const tmp_3@263@01 $Ref)
 (assert (not (= tmp_3@263@01 $Ref.null)))
-(assert (not (= tmp_3@263@01 Example_res_4@250@01)))
-(assert (not (= tmp_3@263@01 secret_1@230@01)))
-(assert (not (= tmp_3@263@01 Example_res_3@248@01)))
 (assert (not (= tmp_3@263@01 Example_res_4_0@251@01)))
-(assert (not (= tmp_3@263@01 tmp_4@257@01)))
-(assert (not (= tmp_3@263@01 b_1_0@245@01)))
-(assert (not (= tmp_3@263@01 _cthread_160_0@225@01)))
-(assert (not (= tmp_3@263@01 a_1@242@01)))
-(assert (not (= tmp_3@263@01 tmp_3@256@01)))
-(assert (not (= tmp_3@263@01 secret_1_0@231@01)))
-(assert (not (= tmp_3@263@01 b_1@244@01)))
+(assert (not (= tmp_3@263@01 Example_res_3@248@01)))
+(assert (not (= tmp_3@263@01 secret_1@230@01)))
 (assert (not (= tmp_3@263@01 _cthread_160@224@01)))
 (assert (not (= tmp_3@263@01 Example_res_3_0@249@01)))
 (assert (not (= tmp_3@263@01 a_1_0@243@01)))
+(assert (not (= tmp_3@263@01 secret_1_0@231@01)))
+(assert (not (= tmp_3@263@01 tmp_4@257@01)))
+(assert (not (= tmp_3@263@01 b_1@244@01)))
+(assert (not (= tmp_3@263@01 b_1_0@245@01)))
+(assert (not (= tmp_3@263@01 Example_res_4@250@01)))
+(assert (not (= tmp_3@263@01 _cthread_160_0@225@01)))
+(assert (not (= tmp_3@263@01 tmp_3@256@01)))
+(assert (not (= tmp_3@263@01 a_1@242@01)))
 ; [eval] p1_3 && !ret1_1
 (push) ; 5
 ; [then-branch: 609 | !(p1_3@222@01) | live]
@@ -21858,7 +21858,6 @@
 ; tmp_4 := new()
 (declare-const tmp_4@285@01 $Ref)
 (assert (not (= tmp_4@285@01 $Ref.null)))
-(assert (not (= tmp_4@285@01 Example_res_4@250@01)))
 (assert (not
   (=
     tmp_4@285@01
@@ -21875,15 +21874,16 @@
   (=
     tmp_4@285@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second $t@282@01)))))))
-(assert (not (= tmp_4@285@01 secret_1@230@01)))
 (assert (not (= tmp_4@285@01 Example_res_4_0@251@01)))
-(assert (not (= tmp_4@285@01 tmp_4@257@01)))
-(assert (not (= tmp_4@285@01 b_1_0@245@01)))
-(assert (not (= tmp_4@285@01 _cthread_160_0@225@01)))
+(assert (not (= tmp_4@285@01 secret_1@230@01)))
 (assert (not (= tmp_4@285@01 tmp_3@263@01)))
-(assert (not (= tmp_4@285@01 secret_1_0@231@01)))
-(assert (not (= tmp_4@285@01 b_1@244@01)))
 (assert (not (= tmp_4@285@01 _cthread_160@224@01)))
+(assert (not (= tmp_4@285@01 secret_1_0@231@01)))
+(assert (not (= tmp_4@285@01 tmp_4@257@01)))
+(assert (not (= tmp_4@285@01 b_1@244@01)))
+(assert (not (= tmp_4@285@01 b_1_0@245@01)))
+(assert (not (= tmp_4@285@01 Example_res_4@250@01)))
+(assert (not (= tmp_4@285@01 _cthread_160_0@225@01)))
 ; [eval] p1_3 && !ret1_1
 (set-option :timeout 0)
 (push) ; 24
@@ -24432,7 +24432,7 @@
 (check-sat)
 ; unknown
 (pop) ; 51
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [state consolidation]
 ; State saturation: before repetition
@@ -25074,7 +25074,7 @@
 (check-sat)
 ; unknown
 (pop) ; 51
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [state consolidation]
 ; State saturation: before repetition
@@ -25564,7 +25564,7 @@
 (check-sat)
 ; unknown
 (pop) ; 51
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [state consolidation]
 ; State saturation: before repetition
@@ -26189,7 +26189,7 @@
 (check-sat)
 ; unknown
 (pop) ; 51
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (pop) ; 50
 (pop) ; 49
@@ -27260,7 +27260,7 @@
 (check-sat)
 ; unknown
 (pop) ; 8
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 816 | p2_5@327@01 | live]
 ; [else-branch: 816 | !(p2_5@327@01) | dead]
@@ -28104,19 +28104,19 @@
 (declare-const tmp_5@367@01 $Ref)
 (assert (not (= tmp_5@367@01 $Ref.null)))
 (assert (not (= tmp_5@367@01 secret_2@334@01)))
-(assert (not (= tmp_5@367@01 secret_2_0@335@01)))
-(assert (not (= tmp_5@367@01 Example_res_6_0@355@01)))
-(assert (not (= tmp_5@367@01 _cthread_161_0@329@01)))
 (assert (not (= tmp_5@367@01 _cthread_161@328@01)))
-(assert (not (= tmp_5@367@01 Example_res_6@354@01)))
-(assert (not (= tmp_5@367@01 a_2@346@01)))
-(assert (not (= tmp_5@367@01 tmp_5@360@01)))
-(assert (not (= tmp_5@367@01 Example_res_5@352@01)))
-(assert (not (= tmp_5@367@01 b_2_0@349@01)))
-(assert (not (= tmp_5@367@01 tmp_6@361@01)))
-(assert (not (= tmp_5@367@01 a_2_0@347@01)))
-(assert (not (= tmp_5@367@01 b_2@348@01)))
 (assert (not (= tmp_5@367@01 Example_res_5_0@353@01)))
+(assert (not (= tmp_5@367@01 tmp_5@360@01)))
+(assert (not (= tmp_5@367@01 Example_res_6@354@01)))
+(assert (not (= tmp_5@367@01 Example_res_5@352@01)))
+(assert (not (= tmp_5@367@01 a_2_0@347@01)))
+(assert (not (= tmp_5@367@01 a_2@346@01)))
+(assert (not (= tmp_5@367@01 _cthread_161_0@329@01)))
+(assert (not (= tmp_5@367@01 b_2@348@01)))
+(assert (not (= tmp_5@367@01 tmp_6@361@01)))
+(assert (not (= tmp_5@367@01 secret_2_0@335@01)))
+(assert (not (= tmp_5@367@01 b_2_0@349@01)))
+(assert (not (= tmp_5@367@01 Example_res_6_0@355@01)))
 ; [eval] p1_5 && !ret1_2
 (push) ; 5
 ; [then-branch: 852 | !(p1_5@326@01) | live]
@@ -29750,10 +29750,14 @@
 (declare-const tmp_6@389@01 $Ref)
 (assert (not (= tmp_6@389@01 $Ref.null)))
 (assert (not (= tmp_6@389@01 secret_2@334@01)))
-(assert (not (= tmp_6@389@01 secret_2_0@335@01)))
-(assert (not (= tmp_6@389@01 Example_res_6_0@355@01)))
+(assert (not (= tmp_6@389@01 _cthread_161@328@01)))
+(assert (not (= tmp_6@389@01 Example_res_6@354@01)))
 (assert (not (= tmp_6@389@01 tmp_5@367@01)))
 (assert (not (= tmp_6@389@01 _cthread_161_0@329@01)))
+(assert (not (= tmp_6@389@01 b_2@348@01)))
+(assert (not (= tmp_6@389@01 tmp_6@361@01)))
+(assert (not (= tmp_6@389@01 secret_2_0@335@01)))
+(assert (not (= tmp_6@389@01 b_2_0@349@01)))
 (assert (not
   (=
     tmp_6@389@01
@@ -29770,11 +29774,7 @@
   (=
     tmp_6@389@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second $t@386@01)))))))
-(assert (not (= tmp_6@389@01 _cthread_161@328@01)))
-(assert (not (= tmp_6@389@01 Example_res_6@354@01)))
-(assert (not (= tmp_6@389@01 b_2_0@349@01)))
-(assert (not (= tmp_6@389@01 tmp_6@361@01)))
-(assert (not (= tmp_6@389@01 b_2@348@01)))
+(assert (not (= tmp_6@389@01 Example_res_6_0@355@01)))
 ; [eval] p1_5 && !ret1_2
 (set-option :timeout 0)
 (push) ; 24
@@ -32343,7 +32343,7 @@
 (check-sat)
 ; unknown
 (pop) ; 51
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [state consolidation]
 ; State saturation: before repetition
@@ -33005,7 +33005,7 @@
 (check-sat)
 ; unknown
 (pop) ; 51
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [state consolidation]
 ; State saturation: before repetition
@@ -33515,7 +33515,7 @@
 (check-sat)
 ; unknown
 (pop) ; 51
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [state consolidation]
 ; State saturation: before repetition
@@ -34155,7 +34155,7 @@
 (check-sat)
 ; unknown
 (pop) ; 51
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (pop) ; 50
 (pop) ; 49
@@ -36198,20 +36198,20 @@
 ; tmp_7 := new()
 (declare-const tmp_7@471@01 $Ref)
 (assert (not (= tmp_7@471@01 $Ref.null)))
-(assert (not (= tmp_7@471@01 b_3_0@453@01)))
+(assert (not (= tmp_7@471@01 tmp_8@465@01)))
 (assert (not (= tmp_7@471@01 Example_res_7_0@457@01)))
 (assert (not (= tmp_7@471@01 secret_3@438@01)))
-(assert (not (= tmp_7@471@01 secret_3_0@439@01)))
-(assert (not (= tmp_7@471@01 _cthread_162_0@433@01)))
-(assert (not (= tmp_7@471@01 Example_res_8_0@459@01)))
 (assert (not (= tmp_7@471@01 a_3_0@451@01)))
 (assert (not (= tmp_7@471@01 b_3@452@01)))
-(assert (not (= tmp_7@471@01 Example_res_8@458@01)))
-(assert (not (= tmp_7@471@01 tmp_7@464@01)))
-(assert (not (= tmp_7@471@01 tmp_8@465@01)))
+(assert (not (= tmp_7@471@01 Example_res_8_0@459@01)))
+(assert (not (= tmp_7@471@01 b_3_0@453@01)))
 (assert (not (= tmp_7@471@01 _cthread_162@432@01)))
+(assert (not (= tmp_7@471@01 Example_res_8@458@01)))
+(assert (not (= tmp_7@471@01 _cthread_162_0@433@01)))
+(assert (not (= tmp_7@471@01 tmp_7@464@01)))
 (assert (not (= tmp_7@471@01 Example_res_7@456@01)))
 (assert (not (= tmp_7@471@01 a_3@450@01)))
+(assert (not (= tmp_7@471@01 secret_3_0@439@01)))
 ; [eval] p1_7 && !ret1_3
 (push) ; 5
 ; [then-branch: 1103 | !(p1_7@430@01) | live]
@@ -37844,6 +37844,7 @@
 ; tmp_8 := new()
 (declare-const tmp_8@493@01 $Ref)
 (assert (not (= tmp_8@493@01 $Ref.null)))
+(assert (not (= tmp_8@493@01 tmp_8@465@01)))
 (assert (not
   (=
     tmp_8@493@01
@@ -37860,16 +37861,15 @@
   (=
     tmp_8@493@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second $t@490@01)))))))
-(assert (not (= tmp_8@493@01 b_3_0@453@01)))
 (assert (not (= tmp_8@493@01 secret_3@438@01)))
-(assert (not (= tmp_8@493@01 secret_3_0@439@01)))
-(assert (not (= tmp_8@493@01 _cthread_162_0@433@01)))
-(assert (not (= tmp_8@493@01 Example_res_8_0@459@01)))
 (assert (not (= tmp_8@493@01 b_3@452@01)))
-(assert (not (= tmp_8@493@01 Example_res_8@458@01)))
-(assert (not (= tmp_8@493@01 tmp_7@471@01)))
-(assert (not (= tmp_8@493@01 tmp_8@465@01)))
+(assert (not (= tmp_8@493@01 Example_res_8_0@459@01)))
+(assert (not (= tmp_8@493@01 b_3_0@453@01)))
 (assert (not (= tmp_8@493@01 _cthread_162@432@01)))
+(assert (not (= tmp_8@493@01 Example_res_8@458@01)))
+(assert (not (= tmp_8@493@01 _cthread_162_0@433@01)))
+(assert (not (= tmp_8@493@01 secret_3_0@439@01)))
+(assert (not (= tmp_8@493@01 tmp_7@471@01)))
 ; [eval] p1_7 && !ret1_3
 (set-option :timeout 0)
 (push) ; 24
@@ -43949,23 +43949,23 @@
 ; tmp_7 := new()
 (declare-const tmp_7@522@01 $Ref)
 (assert (not (= tmp_7@522@01 $Ref.null)))
+(assert (not (= tmp_7@522@01 tmp_8@465@01)))
 (assert (not (= tmp_7@522@01 _res_4@443@01)))
-(assert (not (= tmp_7@522@01 b_3_0@453@01)))
 (assert (not (= tmp_7@522@01 Example_res_7_0@457@01)))
 (assert (not (= tmp_7@522@01 secret_3@438@01)))
-(assert (not (= tmp_7@522@01 secret_3_0@439@01)))
-(assert (not (= tmp_7@522@01 _cthread_162_0@433@01)))
-(assert (not (= tmp_7@522@01 Example_res_8_0@459@01)))
 (assert (not (= tmp_7@522@01 a_3_0@451@01)))
-(assert (not (= tmp_7@522@01 _err_4@449@01)))
 (assert (not (= tmp_7@522@01 b_3@452@01)))
-(assert (not (= tmp_7@522@01 Example_res_8@458@01)))
-(assert (not (= tmp_7@522@01 secret_15_0@455@01)))
-(assert (not (= tmp_7@522@01 tmp_7@464@01)))
-(assert (not (= tmp_7@522@01 tmp_8@465@01)))
+(assert (not (= tmp_7@522@01 Example_res_8_0@459@01)))
+(assert (not (= tmp_7@522@01 b_3_0@453@01)))
 (assert (not (= tmp_7@522@01 _cthread_162@432@01)))
+(assert (not (= tmp_7@522@01 Example_res_8@458@01)))
+(assert (not (= tmp_7@522@01 _cthread_162_0@433@01)))
+(assert (not (= tmp_7@522@01 tmp_7@464@01)))
 (assert (not (= tmp_7@522@01 Example_res_7@456@01)))
 (assert (not (= tmp_7@522@01 a_3@450@01)))
+(assert (not (= tmp_7@522@01 secret_15_0@455@01)))
+(assert (not (= tmp_7@522@01 secret_3_0@439@01)))
+(assert (not (= tmp_7@522@01 _err_4@449@01)))
 ; [eval] p1_7 && !ret1_3
 (push) ; 5
 ; [then-branch: 1441 | !(p1_7@430@01) | live]
@@ -45295,23 +45295,11 @@
 ; tmp_8 := new()
 (declare-const tmp_8@540@01 $Ref)
 (assert (not (= tmp_8@540@01 $Ref.null)))
-(assert (not (= tmp_8@540@01 tmp2_39@527@01)))
+(assert (not (= tmp_8@540@01 tmp_8@465@01)))
 (assert (not (= tmp_8@540@01 _res_4@443@01)))
-(assert (not (= tmp_8@540@01 b_3_0@453@01)))
 (assert (not (= tmp_8@540@01 Example_res_7_0@457@01)))
 (assert (not (= tmp_8@540@01 secret_3@438@01)))
 (assert (not (= tmp_8@540@01 tmp2_42@533@01)))
-(assert (not (= tmp_8@540@01 secret_3_0@439@01)))
-(assert (not (= tmp_8@540@01 _cthread_162_0@433@01)))
-(assert (not (= tmp_8@540@01 Example_res_8_0@459@01)))
-(assert (not (= tmp_8@540@01 a_3_0@451@01)))
-(assert (not (= tmp_8@540@01 _err_4@449@01)))
-(assert (not (= tmp_8@540@01 b_3@452@01)))
-(assert (not (= tmp_8@540@01 Example_res_8@458@01)))
-(assert (not (= tmp_8@540@01 secret_15_0@455@01)))
-(assert (not (= tmp_8@540@01 tmp_8@465@01)))
-(assert (not (= tmp_8@540@01 tmp_7@522@01)))
-(assert (not (= tmp_8@540@01 _cthread_162@432@01)))
 (assert (not
   (=
     tmp_8@540@01
@@ -45320,6 +45308,18 @@
   (=
     tmp_8@540@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second $t@538@01)))))))
+(assert (not (= tmp_8@540@01 tmp2_39@527@01)))
+(assert (not (= tmp_8@540@01 a_3_0@451@01)))
+(assert (not (= tmp_8@540@01 b_3@452@01)))
+(assert (not (= tmp_8@540@01 Example_res_8_0@459@01)))
+(assert (not (= tmp_8@540@01 b_3_0@453@01)))
+(assert (not (= tmp_8@540@01 _cthread_162@432@01)))
+(assert (not (= tmp_8@540@01 Example_res_8@458@01)))
+(assert (not (= tmp_8@540@01 _cthread_162_0@433@01)))
+(assert (not (= tmp_8@540@01 secret_15_0@455@01)))
+(assert (not (= tmp_8@540@01 tmp_7@522@01)))
+(assert (not (= tmp_8@540@01 secret_3_0@439@01)))
+(assert (not (= tmp_8@540@01 _err_4@449@01)))
 ; [eval] p1_7 && !ret1_3
 (push) ; 24
 ; [then-branch: 1515 | !(p1_7@430@01) | live]
@@ -69103,22 +69103,22 @@
 ; tmp_9 := new()
 (declare-const tmp_9@921@01 $Ref)
 (assert (not (= tmp_9@921@01 $Ref.null)))
-(assert (not (= tmp_9@921@01 a_4_0@899@01)))
-(assert (not (= tmp_9@921@01 _cthread_168@878@01)))
-(assert (not (= tmp_9@921@01 StringContainer_res@906@01)))
-(assert (not (= tmp_9@921@01 secret_9_0@885@01)))
-(assert (not (= tmp_9@921@01 secret_9@884@01)))
-(assert (not (= tmp_9@921@01 b_4_0@901@01)))
-(assert (not (= tmp_9@921@01 StringContainer_res_3@907@01)))
+(assert (not (= tmp_9@921@01 b_4@900@01)))
 (assert (not (= tmp_9@921@01 StringContainer_res_0_0@909@01)))
+(assert (not (= tmp_9@921@01 a_4@898@01)))
+(assert (not (= tmp_9@921@01 StringContainer_res_0@908@01)))
+(assert (not (= tmp_9@921@01 a_4_0@899@01)))
+(assert (not (= tmp_9@921@01 x_2_0@887@01)))
+(assert (not (= tmp_9@921@01 _cthread_168@878@01)))
+(assert (not (= tmp_9@921@01 StringContainer_res_3@907@01)))
+(assert (not (= tmp_9@921@01 StringContainer_res@906@01)))
+(assert (not (= tmp_9@921@01 tmp_9@914@01)))
 (assert (not (= tmp_9@921@01 x_2@886@01)))
 (assert (not (= tmp_9@921@01 tmp_10@915@01)))
+(assert (not (= tmp_9@921@01 b_4_0@901@01)))
 (assert (not (= tmp_9@921@01 _cthread_168_0@879@01)))
-(assert (not (= tmp_9@921@01 x_2_0@887@01)))
-(assert (not (= tmp_9@921@01 StringContainer_res_0@908@01)))
-(assert (not (= tmp_9@921@01 tmp_9@914@01)))
-(assert (not (= tmp_9@921@01 b_4@900@01)))
-(assert (not (= tmp_9@921@01 a_4@898@01)))
+(assert (not (= tmp_9@921@01 secret_9@884@01)))
+(assert (not (= tmp_9@921@01 secret_9_0@885@01)))
 ; [eval] p1_19 && !ret1_9
 (push) ; 5
 ; [then-branch: 2507 | !(p1_19@876@01) | live]
@@ -70460,15 +70460,11 @@
 ; tmp_10 := new()
 (declare-const tmp_10@943@01 $Ref)
 (assert (not (= tmp_10@943@01 $Ref.null)))
-(assert (not (= tmp_10@943@01 _cthread_168@878@01)))
-(assert (not (= tmp_10@943@01 secret_9_0@885@01)))
-(assert (not (= tmp_10@943@01 secret_9@884@01)))
-(assert (not (= tmp_10@943@01 b_4_0@901@01)))
+(assert (not (= tmp_10@943@01 b_4@900@01)))
 (assert (not (= tmp_10@943@01 StringContainer_res_0_0@909@01)))
-(assert (not (= tmp_10@943@01 x_2@886@01)))
-(assert (not (= tmp_10@943@01 tmp_10@915@01)))
-(assert (not (= tmp_10@943@01 _cthread_168_0@879@01)))
+(assert (not (= tmp_10@943@01 StringContainer_res_0@908@01)))
 (assert (not (= tmp_10@943@01 x_2_0@887@01)))
+(assert (not (= tmp_10@943@01 _cthread_168@878@01)))
 (assert (not
   (=
     tmp_10@943@01
@@ -70477,9 +70473,13 @@
   (=
     tmp_10@943@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second $t@940@01)))))))
-(assert (not (= tmp_10@943@01 StringContainer_res_0@908@01)))
+(assert (not (= tmp_10@943@01 x_2@886@01)))
+(assert (not (= tmp_10@943@01 tmp_10@915@01)))
 (assert (not (= tmp_10@943@01 tmp_9@921@01)))
-(assert (not (= tmp_10@943@01 b_4@900@01)))
+(assert (not (= tmp_10@943@01 b_4_0@901@01)))
+(assert (not (= tmp_10@943@01 _cthread_168_0@879@01)))
+(assert (not (= tmp_10@943@01 secret_9@884@01)))
+(assert (not (= tmp_10@943@01 secret_9_0@885@01)))
 ; [eval] p1_19 && !ret1_9
 (set-option :timeout 0)
 (push) ; 20
@@ -75941,22 +75941,22 @@
 ; tmp_11 := new()
 (declare-const tmp_11@1032@01 $Ref)
 (assert (not (= tmp_11@1032@01 $Ref.null)))
+(assert (not (= tmp_11@1032@01 x_3@997@01)))
+(assert (not (= tmp_11@1032@01 StringContainer_res_2_0@1020@01)))
 (assert (not (= tmp_11@1032@01 StringContainer_res_2@1019@01)))
-(assert (not (= tmp_11@1032@01 _cthread_169_0@990@01)))
+(assert (not (= tmp_11@1032@01 _cthread_169@989@01)))
 (assert (not (= tmp_11@1032@01 b_5_0@1012@01)))
-(assert (not (= tmp_11@1032@01 secret_10@995@01)))
-(assert (not (= tmp_11@1032@01 tmp_12@1026@01)))
-(assert (not (= tmp_11@1032@01 x_3_0@998@01)))
-(assert (not (= tmp_11@1032@01 a_5_0@1010@01)))
 (assert (not (= tmp_11@1032@01 tmp_11@1025@01)))
+(assert (not (= tmp_11@1032@01 StringContainer_res_1@1017@01)))
+(assert (not (= tmp_11@1032@01 _cthread_169_0@990@01)))
+(assert (not (= tmp_11@1032@01 StringContainer_res_1_0@1018@01)))
+(assert (not (= tmp_11@1032@01 secret_10_0@996@01)))
+(assert (not (= tmp_11@1032@01 a_5_0@1010@01)))
 (assert (not (= tmp_11@1032@01 b_5@1011@01)))
 (assert (not (= tmp_11@1032@01 a_5@1009@01)))
-(assert (not (= tmp_11@1032@01 StringContainer_res_1_0@1018@01)))
-(assert (not (= tmp_11@1032@01 StringContainer_res_1@1017@01)))
-(assert (not (= tmp_11@1032@01 secret_10_0@996@01)))
-(assert (not (= tmp_11@1032@01 StringContainer_res_2_0@1020@01)))
-(assert (not (= tmp_11@1032@01 _cthread_169@989@01)))
-(assert (not (= tmp_11@1032@01 x_3@997@01)))
+(assert (not (= tmp_11@1032@01 x_3_0@998@01)))
+(assert (not (= tmp_11@1032@01 tmp_12@1026@01)))
+(assert (not (= tmp_11@1032@01 secret_10@995@01)))
 ; [eval] p1_21 && !ret1_10
 (push) ; 5
 ; [then-branch: 2708 | !(p1_21@987@01) | live]
@@ -77298,14 +77298,14 @@
 ; tmp_12 := new()
 (declare-const tmp_12@1054@01 $Ref)
 (assert (not (= tmp_12@1054@01 $Ref.null)))
+(assert (not (= tmp_12@1054@01 x_3@997@01)))
+(assert (not (= tmp_12@1054@01 StringContainer_res_2_0@1020@01)))
 (assert (not (= tmp_12@1054@01 StringContainer_res_2@1019@01)))
-(assert (not (= tmp_12@1054@01 _cthread_169_0@990@01)))
+(assert (not (= tmp_12@1054@01 _cthread_169@989@01)))
 (assert (not (= tmp_12@1054@01 b_5_0@1012@01)))
-(assert (not (= tmp_12@1054@01 secret_10@995@01)))
-(assert (not (= tmp_12@1054@01 tmp_12@1026@01)))
-(assert (not (= tmp_12@1054@01 x_3_0@998@01)))
 (assert (not (= tmp_12@1054@01 tmp_11@1032@01)))
-(assert (not (= tmp_12@1054@01 b_5@1011@01)))
+(assert (not (= tmp_12@1054@01 _cthread_169_0@990@01)))
+(assert (not (= tmp_12@1054@01 secret_10_0@996@01)))
 (assert (not
   (=
     tmp_12@1054@01
@@ -77314,10 +77314,10 @@
   (=
     tmp_12@1054@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second $t@1051@01)))))))
-(assert (not (= tmp_12@1054@01 secret_10_0@996@01)))
-(assert (not (= tmp_12@1054@01 StringContainer_res_2_0@1020@01)))
-(assert (not (= tmp_12@1054@01 _cthread_169@989@01)))
-(assert (not (= tmp_12@1054@01 x_3@997@01)))
+(assert (not (= tmp_12@1054@01 b_5@1011@01)))
+(assert (not (= tmp_12@1054@01 x_3_0@998@01)))
+(assert (not (= tmp_12@1054@01 tmp_12@1026@01)))
+(assert (not (= tmp_12@1054@01 secret_10@995@01)))
 ; [eval] p1_21 && !ret1_10
 (set-option :timeout 0)
 (push) ; 20
@@ -82352,26 +82352,26 @@
 ; tmp_11 := new()
 (declare-const tmp_11@1087@01 $Ref)
 (assert (not (= tmp_11@1087@01 $Ref.null)))
-(assert (not (= tmp_11@1087@01 StringContainer_res_2@1019@01)))
-(assert (not (= tmp_11@1087@01 _cthread_169_0@990@01)))
-(assert (not (= tmp_11@1087@01 b_5_0@1012@01)))
-(assert (not (= tmp_11@1087@01 secret_10@995@01)))
-(assert (not (= tmp_11@1087@01 tmp_12@1026@01)))
-(assert (not (= tmp_11@1087@01 _res_11@1002@01)))
-(assert (not (= tmp_11@1087@01 x_3_0@998@01)))
-(assert (not (= tmp_11@1087@01 _err_11@1008@01)))
-(assert (not (= tmp_11@1087@01 secret_22_0@1014@01)))
-(assert (not (= tmp_11@1087@01 a_5_0@1010@01)))
-(assert (not (= tmp_11@1087@01 tmp_11@1025@01)))
-(assert (not (= tmp_11@1087@01 b_5@1011@01)))
-(assert (not (= tmp_11@1087@01 x_7_0@1016@01)))
-(assert (not (= tmp_11@1087@01 a_5@1009@01)))
-(assert (not (= tmp_11@1087@01 StringContainer_res_1_0@1018@01)))
-(assert (not (= tmp_11@1087@01 StringContainer_res_1@1017@01)))
-(assert (not (= tmp_11@1087@01 secret_10_0@996@01)))
-(assert (not (= tmp_11@1087@01 StringContainer_res_2_0@1020@01)))
-(assert (not (= tmp_11@1087@01 _cthread_169@989@01)))
 (assert (not (= tmp_11@1087@01 x_3@997@01)))
+(assert (not (= tmp_11@1087@01 StringContainer_res_2_0@1020@01)))
+(assert (not (= tmp_11@1087@01 StringContainer_res_2@1019@01)))
+(assert (not (= tmp_11@1087@01 _cthread_169@989@01)))
+(assert (not (= tmp_11@1087@01 b_5_0@1012@01)))
+(assert (not (= tmp_11@1087@01 tmp_11@1025@01)))
+(assert (not (= tmp_11@1087@01 _res_11@1002@01)))
+(assert (not (= tmp_11@1087@01 secret_22_0@1014@01)))
+(assert (not (= tmp_11@1087@01 StringContainer_res_1@1017@01)))
+(assert (not (= tmp_11@1087@01 _cthread_169_0@990@01)))
+(assert (not (= tmp_11@1087@01 StringContainer_res_1_0@1018@01)))
+(assert (not (= tmp_11@1087@01 x_7_0@1016@01)))
+(assert (not (= tmp_11@1087@01 secret_10_0@996@01)))
+(assert (not (= tmp_11@1087@01 a_5_0@1010@01)))
+(assert (not (= tmp_11@1087@01 _err_11@1008@01)))
+(assert (not (= tmp_11@1087@01 b_5@1011@01)))
+(assert (not (= tmp_11@1087@01 a_5@1009@01)))
+(assert (not (= tmp_11@1087@01 x_3_0@998@01)))
+(assert (not (= tmp_11@1087@01 tmp_12@1026@01)))
+(assert (not (= tmp_11@1087@01 secret_10@995@01)))
 ; [eval] p1_21 && !ret1_10
 (push) ; 5
 ; [then-branch: 3006 | !(p1_21@987@01) | live]
@@ -83518,31 +83518,31 @@
 ; tmp_12 := new()
 (declare-const tmp_12@1106@01 $Ref)
 (assert (not (= tmp_12@1106@01 $Ref.null)))
+(assert (not (= tmp_12@1106@01 x_3@997@01)))
+(assert (not (= tmp_12@1106@01 StringContainer_res_2_0@1020@01)))
 (assert (not (= tmp_12@1106@01 StringContainer_res_2@1019@01)))
-(assert (not (= tmp_12@1106@01 _cthread_169_0@990@01)))
+(assert (not (= tmp_12@1106@01 _cthread_169@989@01)))
 (assert (not (= tmp_12@1106@01 b_5_0@1012@01)))
-(assert (not (= tmp_12@1106@01 secret_10@995@01)))
-(assert (not (= tmp_12@1106@01 tmp_12@1026@01)))
 (assert (not (= tmp_12@1106@01 _res_11@1002@01)))
-(assert (not (= tmp_12@1106@01 x_3_0@998@01)))
-(assert (not (= tmp_12@1106@01 _err_11@1008@01)))
+(assert (not (= tmp_12@1106@01 tmp_11@1087@01)))
 (assert (not (= tmp_12@1106@01 secret_22_0@1014@01)))
-(assert (not (= tmp_12@1106@01 a_5_0@1010@01)))
+(assert (not (= tmp_12@1106@01 _cthread_169_0@990@01)))
+(assert (not (= tmp_12@1106@01 StringContainer_res_1_0@1018@01)))
+(assert (not (= tmp_12@1106@01 x_7_0@1016@01)))
+(assert (not (= tmp_12@1106@01 tmp2_61@1091@01)))
+(assert (not (= tmp_12@1106@01 secret_10_0@996@01)))
 (assert (not (= tmp_12@1106@01 tmp2_65@1099@01)))
+(assert (not (= tmp_12@1106@01 tmp2_64@1097@01)))
+(assert (not (= tmp_12@1106@01 a_5_0@1010@01)))
+(assert (not (= tmp_12@1106@01 _err_11@1008@01)))
+(assert (not (= tmp_12@1106@01 b_5@1011@01)))
 (assert (not
   (=
     tmp_12@1106@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second $t@1104@01)))))))
-(assert (not (= tmp_12@1106@01 b_5@1011@01)))
-(assert (not (= tmp_12@1106@01 tmp2_64@1097@01)))
-(assert (not (= tmp_12@1106@01 tmp2_61@1091@01)))
-(assert (not (= tmp_12@1106@01 tmp_11@1087@01)))
-(assert (not (= tmp_12@1106@01 x_7_0@1016@01)))
-(assert (not (= tmp_12@1106@01 StringContainer_res_1_0@1018@01)))
-(assert (not (= tmp_12@1106@01 secret_10_0@996@01)))
-(assert (not (= tmp_12@1106@01 StringContainer_res_2_0@1020@01)))
-(assert (not (= tmp_12@1106@01 _cthread_169@989@01)))
-(assert (not (= tmp_12@1106@01 x_3@997@01)))
+(assert (not (= tmp_12@1106@01 x_3_0@998@01)))
+(assert (not (= tmp_12@1106@01 tmp_12@1026@01)))
+(assert (not (= tmp_12@1106@01 secret_10@995@01)))
 ; [eval] p1_21 && !ret1_10
 (push) ; 20
 ; [then-branch: 3074 | !(p1_21@987@01) | live]
@@ -87277,7339 +87277,3 @@
 (set-option :timeout 10)
 (assert (not (not p1_23@1143@01)))
 (check-sat)
-; unknown
-(pop) ; 12
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3268 | p1_23@1143@01 | live]
-; [else-branch: 3268 | !(p1_23@1143@01) | dead]
-(set-option :timeout 0)
-(push) ; 12
-; [then-branch: 3268 | p1_23@1143@01]
-; [eval] int___eq__(self.Example_g, __prim__int___box__(1))
-; [eval] __prim__int___box__(1)
-(push) ; 13
-(assert (__prim__int___box__%precondition $Snap.unit 1))
-(pop) ; 13
-; Joined path conditions
-(assert (__prim__int___box__%precondition $Snap.unit 1))
-(push) ; 13
-; [eval] issubtype(typeof(self), int())
-; [eval] typeof(self)
-; [eval] int()
-(push) ; 14
-(assert (not (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1156@01))))))))) (as int<PyType>  PyType))))
-(check-sat)
-; unsat
-(pop) ; 14
-; 0.00s
-; (get-info :all-statistics)
-(assert (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1156@01))))))))) (as int<PyType>  PyType)))
-; [eval] issubtype(typeof(other), int())
-; [eval] typeof(other)
-; [eval] int()
-(push) ; 14
-(assert (not (issubtype<Bool> (typeof<PyType> (__prim__int___box__ $Snap.unit 1)) (as int<PyType>  PyType))))
-(check-sat)
-; unsat
-(pop) ; 14
-; 0.00s
-; (get-info :all-statistics)
-(assert (issubtype<Bool> (typeof<PyType> (__prim__int___box__ $Snap.unit 1)) (as int<PyType>  PyType)))
-(assert (int___eq__%precondition ($Snap.combine $Snap.unit $Snap.unit) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1156@01)))))))) (__prim__int___box__ $Snap.unit 1)))
-(pop) ; 13
-; Joined path conditions
-(assert (and
-  (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1156@01))))))))) (as int<PyType>  PyType))
-  (issubtype<Bool> (typeof<PyType> (__prim__int___box__ $Snap.unit 1)) (as int<PyType>  PyType))
-  (int___eq__%precondition ($Snap.combine $Snap.unit $Snap.unit) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1156@01)))))))) (__prim__int___box__ $Snap.unit 1))))
-(pop) ; 12
-(pop) ; 11
-; Joined path conditions
-(assert (=>
-  p1_23@1143@01
-  (and
-    (__prim__int___box__%precondition $Snap.unit 1)
-    (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1156@01))))))))) (as int<PyType>  PyType))
-    (issubtype<Bool> (typeof<PyType> (__prim__int___box__ $Snap.unit 1)) (as int<PyType>  PyType))
-    (int___eq__%precondition ($Snap.combine $Snap.unit $Snap.unit) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1156@01)))))))) (__prim__int___box__ $Snap.unit 1)))))
-(assert (=>
-  p1_23@1143@01
-  (int___eq__ ($Snap.combine $Snap.unit $Snap.unit) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1156@01)))))))) (__prim__int___box__ $Snap.unit 1))))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1156@01)))))))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1156@01))))))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1156@01)))))))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1156@01))))))))))))))
-  $Snap.unit))
-; [eval] p2_23 ==> int___eq__(self_3.Example_gp, __prim__int___box__(1))
-(push) ; 11
-(push) ; 12
-(set-option :timeout 10)
-(assert (not (not p2_23@1144@01)))
-(check-sat)
-; unknown
-(pop) ; 12
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3269 | p2_23@1144@01 | live]
-; [else-branch: 3269 | !(p2_23@1144@01) | dead]
-(set-option :timeout 0)
-(push) ; 12
-; [then-branch: 3269 | p2_23@1144@01]
-; [eval] int___eq__(self_3.Example_gp, __prim__int___box__(1))
-; [eval] __prim__int___box__(1)
-(push) ; 13
-(assert (__prim__int___box__%precondition $Snap.unit 1))
-(pop) ; 13
-; Joined path conditions
-(assert (__prim__int___box__%precondition $Snap.unit 1))
-(push) ; 13
-; [eval] issubtype(typeof(self), int())
-; [eval] typeof(self)
-; [eval] int()
-(push) ; 14
-(assert (not (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1156@01)))))))))) (as int<PyType>  PyType))))
-(check-sat)
-; unsat
-(pop) ; 14
-; 0.00s
-; (get-info :all-statistics)
-(assert (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1156@01)))))))))) (as int<PyType>  PyType)))
-; [eval] issubtype(typeof(other), int())
-; [eval] typeof(other)
-; [eval] int()
-(push) ; 14
-(assert (not (issubtype<Bool> (typeof<PyType> (__prim__int___box__ $Snap.unit 1)) (as int<PyType>  PyType))))
-(check-sat)
-; unsat
-(pop) ; 14
-; 0.00s
-; (get-info :all-statistics)
-(assert (issubtype<Bool> (typeof<PyType> (__prim__int___box__ $Snap.unit 1)) (as int<PyType>  PyType)))
-(assert (int___eq__%precondition ($Snap.combine $Snap.unit $Snap.unit) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1156@01))))))))) (__prim__int___box__ $Snap.unit 1)))
-(pop) ; 13
-; Joined path conditions
-(assert (and
-  (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1156@01)))))))))) (as int<PyType>  PyType))
-  (issubtype<Bool> (typeof<PyType> (__prim__int___box__ $Snap.unit 1)) (as int<PyType>  PyType))
-  (int___eq__%precondition ($Snap.combine $Snap.unit $Snap.unit) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1156@01))))))))) (__prim__int___box__ $Snap.unit 1))))
-(pop) ; 12
-(pop) ; 11
-; Joined path conditions
-(assert (=>
-  p2_23@1144@01
-  (and
-    (__prim__int___box__%precondition $Snap.unit 1)
-    (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1156@01)))))))))) (as int<PyType>  PyType))
-    (issubtype<Bool> (typeof<PyType> (__prim__int___box__ $Snap.unit 1)) (as int<PyType>  PyType))
-    (int___eq__%precondition ($Snap.combine $Snap.unit $Snap.unit) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1156@01))))))))) (__prim__int___box__ $Snap.unit 1)))))
-(assert (=>
-  p2_23@1144@01
-  (int___eq__ ($Snap.combine $Snap.unit $Snap.unit) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1156@01))))))))) (__prim__int___box__ $Snap.unit 1))))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1156@01))))))))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1156@01)))))))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1156@01))))))))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1156@01)))))))))))))))
-  $Snap.unit))
-; [eval] p1_23 ==> true
-(push) ; 11
-(push) ; 12
-(set-option :timeout 10)
-(assert (not (not p1_23@1143@01)))
-(check-sat)
-; unknown
-(pop) ; 12
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3270 | p1_23@1143@01 | live]
-; [else-branch: 3270 | !(p1_23@1143@01) | dead]
-(set-option :timeout 0)
-(push) ; 12
-; [then-branch: 3270 | p1_23@1143@01]
-(pop) ; 12
-(pop) ; 11
-; Joined path conditions
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1156@01)))))))))))))))
-  $Snap.unit))
-; [eval] p2_23 ==> true
-(push) ; 11
-(push) ; 12
-(set-option :timeout 10)
-(assert (not (not p2_23@1144@01)))
-(check-sat)
-; unknown
-(pop) ; 12
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3271 | p2_23@1144@01 | live]
-; [else-branch: 3271 | !(p2_23@1144@01) | dead]
-(set-option :timeout 0)
-(push) ; 12
-; [then-branch: 3271 | p2_23@1144@01]
-(pop) ; 12
-(pop) ; 11
-; Joined path conditions
-(pop) ; 10
-(pop) ; 9
-(pop) ; 8
-(pop) ; 7
-(pop) ; 6
-(push) ; 6
-; [exec]
-; var _err: Ref
-(declare-const _err@1157@01 $Ref)
-; [exec]
-; var _err_12: Ref
-(declare-const _err_12@1158@01 $Ref)
-; [exec]
-; var self_1: Ref
-(declare-const self_1@1159@01 $Ref)
-; [exec]
-; var self_1_0: Ref
-(declare-const self_1_0@1160@01 $Ref)
-; [exec]
-; var _cwl_156: Perm
-(declare-const _cwl_156@1161@01 $Perm)
-; [exec]
-; var _cwl_156_0: Perm
-(declare-const _cwl_156_0@1162@01 $Perm)
-; [exec]
-; var _method_measures_156: Seq[Measure$]
-(declare-const _method_measures_156@1163@01 Seq<Measure$>)
-; [exec]
-; var _method_measures_156_0: Seq[Measure$]
-(declare-const _method_measures_156_0@1164@01 Seq<Measure$>)
-; [exec]
-; var p1_24: Bool
-(declare-const p1_24@1165@01 Bool)
-; [exec]
-; var p2_24: Bool
-(declare-const p2_24@1166@01 Bool)
-; [exec]
-; var p3_11: Bool
-(declare-const p3_11@1167@01 Bool)
-; [exec]
-; var p4_11: Bool
-(declare-const p4_11@1168@01 Bool)
-; [exec]
-; var p1_25: Bool
-(declare-const p1_25@1169@01 Bool)
-; [exec]
-; var p2_25: Bool
-(declare-const p2_25@1170@01 Bool)
-; [exec]
-; var p3_12: Bool
-(declare-const p3_12@1171@01 Bool)
-; [exec]
-; var p4_12: Bool
-(declare-const p4_12@1172@01 Bool)
-; [exec]
-; inhale p1_23
-(declare-const $t@1173@01 $Snap)
-(assert (= $t@1173@01 $Snap.unit))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-(set-option :timeout 0)
-(push) ; 7
-(set-option :timeout 10)
-(assert (not (not p1_23@1143@01)))
-(check-sat)
-; unknown
-(pop) ; 7
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3272 | p1_23@1143@01 | live]
-; [else-branch: 3272 | !(p1_23@1143@01) | dead]
-(set-option :timeout 0)
-(push) ; 7
-; [then-branch: 3272 | p1_23@1143@01]
-; [exec]
-; _method_measures_156 := Seq[Measure$]()
-; [eval] Seq[Measure$]()
-; [exec]
-; inhale typeof(self) == Example()
-(declare-const $t@1174@01 $Snap)
-(assert (= $t@1174@01 $Snap.unit))
-; [eval] typeof(self) == Example()
-; [eval] typeof(self)
-; [eval] Example()
-(assert (= (typeof<PyType> self@1151@01) (as Example<PyType>  PyType)))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [exec]
-; _err := null
-; [exec]
-; self_1 := self
-(set-option :timeout 0)
-(push) ; 8
-(set-option :timeout 10)
-(assert (not (not p2_23@1144@01)))
-(check-sat)
-; unknown
-(pop) ; 8
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3273 | p2_23@1144@01 | live]
-; [else-branch: 3273 | !(p2_23@1144@01) | dead]
-(set-option :timeout 0)
-(push) ; 8
-; [then-branch: 3273 | p2_23@1144@01]
-; [exec]
-; _method_measures_156_0 := Seq[Measure$]()
-; [eval] Seq[Measure$]()
-; [exec]
-; inhale typeof(self_3) == Example()
-(declare-const $t@1175@01 $Snap)
-(assert (= $t@1175@01 $Snap.unit))
-; [eval] typeof(self_3) == Example()
-; [eval] typeof(self_3)
-; [eval] Example()
-(assert (= (typeof<PyType> self_3@1152@01) (as Example<PyType>  PyType)))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [exec]
-; _err_12 := null
-; [exec]
-; self_1_0 := self_3
-; [exec]
-; p1_24 := p1_23 && perm(_MaySet(self_1, 1888441915154752436293)) > none
-; [eval] p1_23 && perm(_MaySet(self_1, 1888441915154752436293)) > none
-(set-option :timeout 0)
-(push) ; 9
-; [then-branch: 3274 | !(p1_23@1143@01) | live]
-; [else-branch: 3274 | p1_23@1143@01 | live]
-(push) ; 10
-; [then-branch: 3274 | !(p1_23@1143@01)]
-(assert (not p1_23@1143@01))
-(pop) ; 10
-(push) ; 10
-; [else-branch: 3274 | p1_23@1143@01]
-; [eval] perm(_MaySet(self_1, 1888441915154752436293)) > none
-; [eval] perm(_MaySet(self_1, 1888441915154752436293))
-(pop) ; 10
-(pop) ; 9
-; Joined path conditions
-; Joined path conditions
-(assert (or p1_23@1143@01 (not p1_23@1143@01)))
-; [exec]
-; p2_24 := p2_23 && perm(_MaySet_0(self_1_0, 1888441915154752436293)) > none
-; [eval] p2_23 && perm(_MaySet_0(self_1_0, 1888441915154752436293)) > none
-(push) ; 9
-; [then-branch: 3275 | !(p2_23@1144@01) | live]
-; [else-branch: 3275 | p2_23@1144@01 | live]
-(push) ; 10
-; [then-branch: 3275 | !(p2_23@1144@01)]
-(assert (not p2_23@1144@01))
-(pop) ; 10
-(push) ; 10
-; [else-branch: 3275 | p2_23@1144@01]
-; [eval] perm(_MaySet_0(self_1_0, 1888441915154752436293)) > none
-; [eval] perm(_MaySet_0(self_1_0, 1888441915154752436293))
-(pop) ; 10
-(pop) ; 9
-; Joined path conditions
-; Joined path conditions
-(assert (or p2_23@1144@01 (not p2_23@1144@01)))
-; [exec]
-; p3_11 := p1_23 && !(perm(_MaySet(self_1, 1888441915154752436293)) > none)
-; [eval] p1_23 && !(perm(_MaySet(self_1, 1888441915154752436293)) > none)
-(push) ; 9
-; [then-branch: 3276 | !(p1_23@1143@01) | live]
-; [else-branch: 3276 | p1_23@1143@01 | live]
-(push) ; 10
-; [then-branch: 3276 | !(p1_23@1143@01)]
-(assert (not p1_23@1143@01))
-(pop) ; 10
-(push) ; 10
-; [else-branch: 3276 | p1_23@1143@01]
-; [eval] !(perm(_MaySet(self_1, 1888441915154752436293)) > none)
-; [eval] perm(_MaySet(self_1, 1888441915154752436293)) > none
-; [eval] perm(_MaySet(self_1, 1888441915154752436293))
-(pop) ; 10
-(pop) ; 9
-; Joined path conditions
-; Joined path conditions
-; [exec]
-; p4_11 := p2_23 &&
-;   !(perm(_MaySet_0(self_1_0, 1888441915154752436293)) > none)
-; [eval] p2_23 && !(perm(_MaySet_0(self_1_0, 1888441915154752436293)) > none)
-(push) ; 9
-; [then-branch: 3277 | !(p2_23@1144@01) | live]
-; [else-branch: 3277 | p2_23@1144@01 | live]
-(push) ; 10
-; [then-branch: 3277 | !(p2_23@1144@01)]
-(assert (not p2_23@1144@01))
-(pop) ; 10
-(push) ; 10
-; [else-branch: 3277 | p2_23@1144@01]
-; [eval] !(perm(_MaySet_0(self_1_0, 1888441915154752436293)) > none)
-; [eval] perm(_MaySet_0(self_1_0, 1888441915154752436293)) > none
-; [eval] perm(_MaySet_0(self_1_0, 1888441915154752436293))
-(pop) ; 10
-(pop) ; 9
-; Joined path conditions
-; Joined path conditions
-(push) ; 9
-(set-option :timeout 10)
-(assert (not (not p1_23@1143@01)))
-(check-sat)
-; unknown
-(pop) ; 9
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3278 | p1_23@1143@01 | live]
-; [else-branch: 3278 | !(p1_23@1143@01) | dead]
-(set-option :timeout 0)
-(push) ; 9
-; [then-branch: 3278 | p1_23@1143@01]
-; [exec]
-; exhale acc(_MaySet(self_1, 1888441915154752436293), write)
-; [exec]
-; inhale acc(self_1.Example_f, write)
-(declare-const $t@1176@01 $Ref)
-(assert (not (= self@1151@01 $Ref.null)))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-(set-option :timeout 0)
-(push) ; 10
-(set-option :timeout 10)
-(assert (not (not p2_23@1144@01)))
-(check-sat)
-; unknown
-(pop) ; 10
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3279 | p2_23@1144@01 | live]
-; [else-branch: 3279 | !(p2_23@1144@01) | dead]
-(set-option :timeout 0)
-(push) ; 10
-; [then-branch: 3279 | p2_23@1144@01]
-; [exec]
-; exhale acc(_MaySet_0(self_1_0, 1888441915154752436293), write)
-; [exec]
-; inhale acc(self_1_0.Example_fp, write)
-(declare-const $t@1177@01 $Ref)
-(assert (not (= self_3@1152@01 $Ref.null)))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-(set-option :timeout 0)
-(push) ; 11
-(set-option :timeout 10)
-(assert (not (not p1_23@1143@01)))
-(check-sat)
-; unknown
-(pop) ; 11
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3280 | p1_23@1143@01 | live]
-; [else-branch: 3280 | !(p1_23@1143@01) | dead]
-(set-option :timeout 0)
-(push) ; 11
-; [then-branch: 3280 | p1_23@1143@01]
-; [exec]
-; self_1.Example_f := __prim__int___box__(0)
-; [eval] __prim__int___box__(0)
-(push) ; 12
-(assert (__prim__int___box__%precondition $Snap.unit 0))
-(pop) ; 12
-; Joined path conditions
-(assert (__prim__int___box__%precondition $Snap.unit 0))
-(declare-const Example_f@1178@01 $Ref)
-(assert (= Example_f@1178@01 (__prim__int___box__ $Snap.unit 0)))
-(push) ; 12
-(set-option :timeout 10)
-(assert (not (not p2_23@1144@01)))
-(check-sat)
-; unknown
-(pop) ; 12
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3281 | p2_23@1144@01 | live]
-; [else-branch: 3281 | !(p2_23@1144@01) | dead]
-(set-option :timeout 0)
-(push) ; 12
-; [then-branch: 3281 | p2_23@1144@01]
-; [exec]
-; self_1_0.Example_fp := __prim__int___box__(0)
-; [eval] __prim__int___box__(0)
-(push) ; 13
-(pop) ; 13
-; Joined path conditions
-(declare-const Example_fp@1179@01 $Ref)
-(assert (= Example_fp@1179@01 (__prim__int___box__ $Snap.unit 0)))
-; [exec]
-; p1_25 := p1_23 && perm(_MaySet(self_1, 1906888659228461987909)) > none
-; [eval] p1_23 && perm(_MaySet(self_1, 1906888659228461987909)) > none
-(push) ; 13
-; [then-branch: 3282 | !(p1_23@1143@01) | live]
-; [else-branch: 3282 | p1_23@1143@01 | live]
-(push) ; 14
-; [then-branch: 3282 | !(p1_23@1143@01)]
-(assert (not p1_23@1143@01))
-(pop) ; 14
-(push) ; 14
-; [else-branch: 3282 | p1_23@1143@01]
-; [eval] perm(_MaySet(self_1, 1906888659228461987909)) > none
-; [eval] perm(_MaySet(self_1, 1906888659228461987909))
-(pop) ; 14
-(pop) ; 13
-; Joined path conditions
-; Joined path conditions
-; [exec]
-; p2_25 := p2_23 && perm(_MaySet_0(self_1_0, 1906888659228461987909)) > none
-; [eval] p2_23 && perm(_MaySet_0(self_1_0, 1906888659228461987909)) > none
-(push) ; 13
-; [then-branch: 3283 | !(p2_23@1144@01) | live]
-; [else-branch: 3283 | p2_23@1144@01 | live]
-(push) ; 14
-; [then-branch: 3283 | !(p2_23@1144@01)]
-(assert (not p2_23@1144@01))
-(pop) ; 14
-(push) ; 14
-; [else-branch: 3283 | p2_23@1144@01]
-; [eval] perm(_MaySet_0(self_1_0, 1906888659228461987909)) > none
-; [eval] perm(_MaySet_0(self_1_0, 1906888659228461987909))
-(pop) ; 14
-(pop) ; 13
-; Joined path conditions
-; Joined path conditions
-; [exec]
-; p3_12 := p1_23 && !(perm(_MaySet(self_1, 1906888659228461987909)) > none)
-; [eval] p1_23 && !(perm(_MaySet(self_1, 1906888659228461987909)) > none)
-(push) ; 13
-; [then-branch: 3284 | !(p1_23@1143@01) | live]
-; [else-branch: 3284 | p1_23@1143@01 | live]
-(push) ; 14
-; [then-branch: 3284 | !(p1_23@1143@01)]
-(assert (not p1_23@1143@01))
-(pop) ; 14
-(push) ; 14
-; [else-branch: 3284 | p1_23@1143@01]
-; [eval] !(perm(_MaySet(self_1, 1906888659228461987909)) > none)
-; [eval] perm(_MaySet(self_1, 1906888659228461987909)) > none
-; [eval] perm(_MaySet(self_1, 1906888659228461987909))
-(pop) ; 14
-(pop) ; 13
-; Joined path conditions
-; Joined path conditions
-; [exec]
-; p4_12 := p2_23 &&
-;   !(perm(_MaySet_0(self_1_0, 1906888659228461987909)) > none)
-; [eval] p2_23 && !(perm(_MaySet_0(self_1_0, 1906888659228461987909)) > none)
-(push) ; 13
-; [then-branch: 3285 | !(p2_23@1144@01) | live]
-; [else-branch: 3285 | p2_23@1144@01 | live]
-(push) ; 14
-; [then-branch: 3285 | !(p2_23@1144@01)]
-(assert (not p2_23@1144@01))
-(pop) ; 14
-(push) ; 14
-; [else-branch: 3285 | p2_23@1144@01]
-; [eval] !(perm(_MaySet_0(self_1_0, 1906888659228461987909)) > none)
-; [eval] perm(_MaySet_0(self_1_0, 1906888659228461987909)) > none
-; [eval] perm(_MaySet_0(self_1_0, 1906888659228461987909))
-(pop) ; 14
-(pop) ; 13
-; Joined path conditions
-; Joined path conditions
-(push) ; 13
-(set-option :timeout 10)
-(assert (not (not p1_23@1143@01)))
-(check-sat)
-; unknown
-(pop) ; 13
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3286 | p1_23@1143@01 | live]
-; [else-branch: 3286 | !(p1_23@1143@01) | dead]
-(set-option :timeout 0)
-(push) ; 13
-; [then-branch: 3286 | p1_23@1143@01]
-; [exec]
-; exhale acc(_MaySet(self_1, 1906888659228461987909), write)
-; [exec]
-; inhale acc(self_1.Example_g, write)
-(declare-const $t@1180@01 $Ref)
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-(set-option :timeout 0)
-(push) ; 14
-(set-option :timeout 10)
-(assert (not (not p2_23@1144@01)))
-(check-sat)
-; unknown
-(pop) ; 14
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3287 | p2_23@1144@01 | live]
-; [else-branch: 3287 | !(p2_23@1144@01) | dead]
-(set-option :timeout 0)
-(push) ; 14
-; [then-branch: 3287 | p2_23@1144@01]
-; [exec]
-; exhale acc(_MaySet_0(self_1_0, 1906888659228461987909), write)
-; [exec]
-; inhale acc(self_1_0.Example_gp, write)
-(declare-const $t@1181@01 $Ref)
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-(set-option :timeout 0)
-(push) ; 15
-(set-option :timeout 10)
-(assert (not (not p1_23@1143@01)))
-(check-sat)
-; unknown
-(pop) ; 15
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3288 | p1_23@1143@01 | live]
-; [else-branch: 3288 | !(p1_23@1143@01) | dead]
-(set-option :timeout 0)
-(push) ; 15
-; [then-branch: 3288 | p1_23@1143@01]
-; [exec]
-; self_1.Example_g := __prim__int___box__(1)
-; [eval] __prim__int___box__(1)
-(push) ; 16
-(assert (__prim__int___box__%precondition $Snap.unit 1))
-(pop) ; 16
-; Joined path conditions
-(assert (__prim__int___box__%precondition $Snap.unit 1))
-(declare-const Example_g@1182@01 $Ref)
-(assert (= Example_g@1182@01 (__prim__int___box__ $Snap.unit 1)))
-(push) ; 16
-(set-option :timeout 10)
-(assert (not (not p2_23@1144@01)))
-(check-sat)
-; unknown
-(pop) ; 16
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3289 | p2_23@1144@01 | live]
-; [else-branch: 3289 | !(p2_23@1144@01) | dead]
-(set-option :timeout 0)
-(push) ; 16
-; [then-branch: 3289 | p2_23@1144@01]
-; [exec]
-; self_1_0.Example_gp := __prim__int___box__(1)
-; [eval] __prim__int___box__(1)
-(push) ; 17
-(pop) ; 17
-; Joined path conditions
-(declare-const Example_gp@1183@01 $Ref)
-(assert (= Example_gp@1183@01 (__prim__int___box__ $Snap.unit 1)))
-; [exec]
-; assert true
-; [eval] p1_23 ==> true
-(push) ; 17
-(push) ; 18
-(set-option :timeout 10)
-(assert (not (not p1_23@1143@01)))
-(check-sat)
-; unknown
-(pop) ; 18
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3290 | p1_23@1143@01 | live]
-; [else-branch: 3290 | !(p1_23@1143@01) | dead]
-(set-option :timeout 0)
-(push) ; 18
-; [then-branch: 3290 | p1_23@1143@01]
-(pop) ; 18
-(pop) ; 17
-; Joined path conditions
-; [eval] p2_23 ==> true
-(push) ; 17
-(push) ; 18
-(set-option :timeout 10)
-(assert (not (not p2_23@1144@01)))
-(check-sat)
-; unknown
-(pop) ; 18
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3291 | p2_23@1144@01 | live]
-; [else-branch: 3291 | !(p2_23@1144@01) | dead]
-(set-option :timeout 0)
-(push) ; 18
-; [then-branch: 3291 | p2_23@1144@01]
-(pop) ; 18
-(pop) ; 17
-; Joined path conditions
-(push) ; 17
-(set-option :timeout 10)
-(assert (not (not p1_23@1143@01)))
-(check-sat)
-; unknown
-(pop) ; 17
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3292 | p1_23@1143@01 | live]
-; [else-branch: 3292 | !(p1_23@1143@01) | dead]
-(set-option :timeout 0)
-(push) ; 17
-; [then-branch: 3292 | p1_23@1143@01]
-(push) ; 18
-(set-option :timeout 10)
-(assert (not (not p2_23@1144@01)))
-(check-sat)
-; unknown
-(pop) ; 18
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3293 | p2_23@1144@01 | live]
-; [else-branch: 3293 | !(p2_23@1144@01) | dead]
-(set-option :timeout 0)
-(push) ; 18
-; [then-branch: 3293 | p2_23@1144@01]
-; [eval] p1_23 ==> issubtype(typeof(self.Example_f), int())
-(push) ; 19
-(push) ; 20
-(set-option :timeout 10)
-(assert (not (not p1_23@1143@01)))
-(check-sat)
-; unknown
-(pop) ; 20
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3294 | p1_23@1143@01 | live]
-; [else-branch: 3294 | !(p1_23@1143@01) | dead]
-(set-option :timeout 0)
-(push) ; 20
-; [then-branch: 3294 | p1_23@1143@01]
-; [eval] issubtype(typeof(self.Example_f), int())
-; [eval] typeof(self.Example_f)
-; [eval] int()
-(pop) ; 20
-(pop) ; 19
-; Joined path conditions
-(push) ; 19
-(assert (not (=>
-  p1_23@1143@01
-  (issubtype<Bool> (typeof<PyType> Example_f@1178@01) (as int<PyType>  PyType)))))
-(check-sat)
-; unsat
-(pop) ; 19
-; 0.00s
-; (get-info :all-statistics)
-(assert (=>
-  p1_23@1143@01
-  (issubtype<Bool> (typeof<PyType> Example_f@1178@01) (as int<PyType>  PyType))))
-; [eval] p2_23 ==> issubtype(typeof(self_3.Example_fp), int())
-(push) ; 19
-(push) ; 20
-(set-option :timeout 10)
-(assert (not (not p2_23@1144@01)))
-(check-sat)
-; unknown
-(pop) ; 20
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3295 | p2_23@1144@01 | live]
-; [else-branch: 3295 | !(p2_23@1144@01) | dead]
-(set-option :timeout 0)
-(push) ; 20
-; [then-branch: 3295 | p2_23@1144@01]
-; [eval] issubtype(typeof(self_3.Example_fp), int())
-; [eval] typeof(self_3.Example_fp)
-; [eval] int()
-(pop) ; 20
-(pop) ; 19
-; Joined path conditions
-(push) ; 19
-(assert (not (=>
-  p2_23@1144@01
-  (issubtype<Bool> (typeof<PyType> Example_fp@1179@01) (as int<PyType>  PyType)))))
-(check-sat)
-; unsat
-(pop) ; 19
-; 0.00s
-; (get-info :all-statistics)
-(assert (=>
-  p2_23@1144@01
-  (issubtype<Bool> (typeof<PyType> Example_fp@1179@01) (as int<PyType>  PyType))))
-(push) ; 19
-(set-option :timeout 10)
-(assert (not (not p1_23@1143@01)))
-(check-sat)
-; unknown
-(pop) ; 19
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3296 | p1_23@1143@01 | live]
-; [else-branch: 3296 | !(p1_23@1143@01) | dead]
-(set-option :timeout 0)
-(push) ; 19
-; [then-branch: 3296 | p1_23@1143@01]
-(push) ; 20
-(set-option :timeout 10)
-(assert (not (not p2_23@1144@01)))
-(check-sat)
-; unknown
-(pop) ; 20
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3297 | p2_23@1144@01 | live]
-; [else-branch: 3297 | !(p2_23@1144@01) | dead]
-(set-option :timeout 0)
-(push) ; 20
-; [then-branch: 3297 | p2_23@1144@01]
-; [eval] p1_23 ==> issubtype(typeof(self.Example_g), int())
-(push) ; 21
-(push) ; 22
-(set-option :timeout 10)
-(assert (not (not p1_23@1143@01)))
-(check-sat)
-; unknown
-(pop) ; 22
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3298 | p1_23@1143@01 | live]
-; [else-branch: 3298 | !(p1_23@1143@01) | dead]
-(set-option :timeout 0)
-(push) ; 22
-; [then-branch: 3298 | p1_23@1143@01]
-; [eval] issubtype(typeof(self.Example_g), int())
-; [eval] typeof(self.Example_g)
-; [eval] int()
-(pop) ; 22
-(pop) ; 21
-; Joined path conditions
-(push) ; 21
-(assert (not (=>
-  p1_23@1143@01
-  (issubtype<Bool> (typeof<PyType> Example_g@1182@01) (as int<PyType>  PyType)))))
-(check-sat)
-; unsat
-(pop) ; 21
-; 0.00s
-; (get-info :all-statistics)
-(assert (=>
-  p1_23@1143@01
-  (issubtype<Bool> (typeof<PyType> Example_g@1182@01) (as int<PyType>  PyType))))
-; [eval] p2_23 ==> issubtype(typeof(self_3.Example_gp), int())
-(push) ; 21
-(push) ; 22
-(set-option :timeout 10)
-(assert (not (not p2_23@1144@01)))
-(check-sat)
-; unknown
-(pop) ; 22
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3299 | p2_23@1144@01 | live]
-; [else-branch: 3299 | !(p2_23@1144@01) | dead]
-(set-option :timeout 0)
-(push) ; 22
-; [then-branch: 3299 | p2_23@1144@01]
-; [eval] issubtype(typeof(self_3.Example_gp), int())
-; [eval] typeof(self_3.Example_gp)
-; [eval] int()
-(pop) ; 22
-(pop) ; 21
-; Joined path conditions
-(push) ; 21
-(assert (not (=>
-  p2_23@1144@01
-  (issubtype<Bool> (typeof<PyType> Example_gp@1183@01) (as int<PyType>  PyType)))))
-(check-sat)
-; unsat
-(pop) ; 21
-; 0.00s
-; (get-info :all-statistics)
-(assert (=>
-  p2_23@1144@01
-  (issubtype<Bool> (typeof<PyType> Example_gp@1183@01) (as int<PyType>  PyType))))
-; [eval] p1_23 ==> int___eq__(self.Example_f, __prim__int___box__(0))
-(push) ; 21
-(push) ; 22
-(set-option :timeout 10)
-(assert (not (not p1_23@1143@01)))
-(check-sat)
-; unknown
-(pop) ; 22
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3300 | p1_23@1143@01 | live]
-; [else-branch: 3300 | !(p1_23@1143@01) | dead]
-(set-option :timeout 0)
-(push) ; 22
-; [then-branch: 3300 | p1_23@1143@01]
-; [eval] int___eq__(self.Example_f, __prim__int___box__(0))
-; [eval] __prim__int___box__(0)
-(push) ; 23
-(pop) ; 23
-; Joined path conditions
-(push) ; 23
-; [eval] issubtype(typeof(self), int())
-; [eval] typeof(self)
-; [eval] int()
-(push) ; 24
-(assert (not (issubtype<Bool> (typeof<PyType> Example_f@1178@01) (as int<PyType>  PyType))))
-(check-sat)
-; unsat
-(pop) ; 24
-; 0.00s
-; (get-info :all-statistics)
-(assert (issubtype<Bool> (typeof<PyType> Example_f@1178@01) (as int<PyType>  PyType)))
-; [eval] issubtype(typeof(other), int())
-; [eval] typeof(other)
-; [eval] int()
-(push) ; 24
-(assert (not (issubtype<Bool> (typeof<PyType> (__prim__int___box__ $Snap.unit 0)) (as int<PyType>  PyType))))
-(check-sat)
-; unsat
-(pop) ; 24
-; 0.00s
-; (get-info :all-statistics)
-(assert (issubtype<Bool> (typeof<PyType> (__prim__int___box__ $Snap.unit 0)) (as int<PyType>  PyType)))
-(assert (int___eq__%precondition ($Snap.combine $Snap.unit $Snap.unit) Example_f@1178@01 (__prim__int___box__ $Snap.unit 0)))
-(pop) ; 23
-; Joined path conditions
-(assert (and
-  (issubtype<Bool> (typeof<PyType> Example_f@1178@01) (as int<PyType>  PyType))
-  (issubtype<Bool> (typeof<PyType> (__prim__int___box__ $Snap.unit 0)) (as int<PyType>  PyType))
-  (int___eq__%precondition ($Snap.combine $Snap.unit $Snap.unit) Example_f@1178@01 (__prim__int___box__ $Snap.unit 0))))
-(pop) ; 22
-(pop) ; 21
-; Joined path conditions
-(assert (=>
-  p1_23@1143@01
-  (and
-    (issubtype<Bool> (typeof<PyType> Example_f@1178@01) (as int<PyType>  PyType))
-    (issubtype<Bool> (typeof<PyType> (__prim__int___box__ $Snap.unit 0)) (as int<PyType>  PyType))
-    (int___eq__%precondition ($Snap.combine $Snap.unit $Snap.unit) Example_f@1178@01 (__prim__int___box__ $Snap.unit 0)))))
-(push) ; 21
-(assert (not (=>
-  p1_23@1143@01
-  (int___eq__ ($Snap.combine $Snap.unit $Snap.unit) Example_f@1178@01 (__prim__int___box__ $Snap.unit 0)))))
-(check-sat)
-; unsat
-(pop) ; 21
-; 0.00s
-; (get-info :all-statistics)
-(assert (=>
-  p1_23@1143@01
-  (int___eq__ ($Snap.combine $Snap.unit $Snap.unit) Example_f@1178@01 (__prim__int___box__ $Snap.unit 0))))
-; [eval] p2_23 ==> int___eq__(self_3.Example_fp, __prim__int___box__(0))
-(push) ; 21
-(push) ; 22
-(set-option :timeout 10)
-(assert (not (not p2_23@1144@01)))
-(check-sat)
-; unknown
-(pop) ; 22
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3301 | p2_23@1144@01 | live]
-; [else-branch: 3301 | !(p2_23@1144@01) | dead]
-(set-option :timeout 0)
-(push) ; 22
-; [then-branch: 3301 | p2_23@1144@01]
-; [eval] int___eq__(self_3.Example_fp, __prim__int___box__(0))
-; [eval] __prim__int___box__(0)
-(push) ; 23
-(pop) ; 23
-; Joined path conditions
-(push) ; 23
-; [eval] issubtype(typeof(self), int())
-; [eval] typeof(self)
-; [eval] int()
-(push) ; 24
-(assert (not (issubtype<Bool> (typeof<PyType> Example_fp@1179@01) (as int<PyType>  PyType))))
-(check-sat)
-; unsat
-(pop) ; 24
-; 0.00s
-; (get-info :all-statistics)
-(assert (issubtype<Bool> (typeof<PyType> Example_fp@1179@01) (as int<PyType>  PyType)))
-; [eval] issubtype(typeof(other), int())
-; [eval] typeof(other)
-; [eval] int()
-(push) ; 24
-(assert (not (issubtype<Bool> (typeof<PyType> (__prim__int___box__ $Snap.unit 0)) (as int<PyType>  PyType))))
-(check-sat)
-; unsat
-(pop) ; 24
-; 0.00s
-; (get-info :all-statistics)
-(assert (issubtype<Bool> (typeof<PyType> (__prim__int___box__ $Snap.unit 0)) (as int<PyType>  PyType)))
-(assert (int___eq__%precondition ($Snap.combine $Snap.unit $Snap.unit) Example_fp@1179@01 (__prim__int___box__ $Snap.unit 0)))
-(pop) ; 23
-; Joined path conditions
-(assert (and
-  (issubtype<Bool> (typeof<PyType> Example_fp@1179@01) (as int<PyType>  PyType))
-  (issubtype<Bool> (typeof<PyType> (__prim__int___box__ $Snap.unit 0)) (as int<PyType>  PyType))
-  (int___eq__%precondition ($Snap.combine $Snap.unit $Snap.unit) Example_fp@1179@01 (__prim__int___box__ $Snap.unit 0))))
-(pop) ; 22
-(pop) ; 21
-; Joined path conditions
-(assert (=>
-  p2_23@1144@01
-  (and
-    (issubtype<Bool> (typeof<PyType> Example_fp@1179@01) (as int<PyType>  PyType))
-    (issubtype<Bool> (typeof<PyType> (__prim__int___box__ $Snap.unit 0)) (as int<PyType>  PyType))
-    (int___eq__%precondition ($Snap.combine $Snap.unit $Snap.unit) Example_fp@1179@01 (__prim__int___box__ $Snap.unit 0)))))
-(push) ; 21
-(assert (not (=>
-  p2_23@1144@01
-  (int___eq__ ($Snap.combine $Snap.unit $Snap.unit) Example_fp@1179@01 (__prim__int___box__ $Snap.unit 0)))))
-(check-sat)
-; unsat
-(pop) ; 21
-; 0.00s
-; (get-info :all-statistics)
-(assert (=>
-  p2_23@1144@01
-  (int___eq__ ($Snap.combine $Snap.unit $Snap.unit) Example_fp@1179@01 (__prim__int___box__ $Snap.unit 0))))
-; [eval] p1_23 ==> int___eq__(self.Example_g, __prim__int___box__(1))
-(push) ; 21
-(push) ; 22
-(set-option :timeout 10)
-(assert (not (not p1_23@1143@01)))
-(check-sat)
-; unknown
-(pop) ; 22
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3302 | p1_23@1143@01 | live]
-; [else-branch: 3302 | !(p1_23@1143@01) | dead]
-(set-option :timeout 0)
-(push) ; 22
-; [then-branch: 3302 | p1_23@1143@01]
-; [eval] int___eq__(self.Example_g, __prim__int___box__(1))
-; [eval] __prim__int___box__(1)
-(push) ; 23
-(pop) ; 23
-; Joined path conditions
-(push) ; 23
-; [eval] issubtype(typeof(self), int())
-; [eval] typeof(self)
-; [eval] int()
-(push) ; 24
-(assert (not (issubtype<Bool> (typeof<PyType> Example_g@1182@01) (as int<PyType>  PyType))))
-(check-sat)
-; unsat
-(pop) ; 24
-; 0.00s
-; (get-info :all-statistics)
-(assert (issubtype<Bool> (typeof<PyType> Example_g@1182@01) (as int<PyType>  PyType)))
-; [eval] issubtype(typeof(other), int())
-; [eval] typeof(other)
-; [eval] int()
-(push) ; 24
-(assert (not (issubtype<Bool> (typeof<PyType> (__prim__int___box__ $Snap.unit 1)) (as int<PyType>  PyType))))
-(check-sat)
-; unsat
-(pop) ; 24
-; 0.00s
-; (get-info :all-statistics)
-(assert (issubtype<Bool> (typeof<PyType> (__prim__int___box__ $Snap.unit 1)) (as int<PyType>  PyType)))
-(assert (int___eq__%precondition ($Snap.combine $Snap.unit $Snap.unit) Example_g@1182@01 (__prim__int___box__ $Snap.unit 1)))
-(pop) ; 23
-; Joined path conditions
-(assert (and
-  (issubtype<Bool> (typeof<PyType> Example_g@1182@01) (as int<PyType>  PyType))
-  (issubtype<Bool> (typeof<PyType> (__prim__int___box__ $Snap.unit 1)) (as int<PyType>  PyType))
-  (int___eq__%precondition ($Snap.combine $Snap.unit $Snap.unit) Example_g@1182@01 (__prim__int___box__ $Snap.unit 1))))
-(pop) ; 22
-(pop) ; 21
-; Joined path conditions
-(assert (=>
-  p1_23@1143@01
-  (and
-    (issubtype<Bool> (typeof<PyType> Example_g@1182@01) (as int<PyType>  PyType))
-    (issubtype<Bool> (typeof<PyType> (__prim__int___box__ $Snap.unit 1)) (as int<PyType>  PyType))
-    (int___eq__%precondition ($Snap.combine $Snap.unit $Snap.unit) Example_g@1182@01 (__prim__int___box__ $Snap.unit 1)))))
-(push) ; 21
-(assert (not (=>
-  p1_23@1143@01
-  (int___eq__ ($Snap.combine $Snap.unit $Snap.unit) Example_g@1182@01 (__prim__int___box__ $Snap.unit 1)))))
-(check-sat)
-; unsat
-(pop) ; 21
-; 0.00s
-; (get-info :all-statistics)
-(assert (=>
-  p1_23@1143@01
-  (int___eq__ ($Snap.combine $Snap.unit $Snap.unit) Example_g@1182@01 (__prim__int___box__ $Snap.unit 1))))
-; [eval] p2_23 ==> int___eq__(self_3.Example_gp, __prim__int___box__(1))
-(push) ; 21
-(push) ; 22
-(set-option :timeout 10)
-(assert (not (not p2_23@1144@01)))
-(check-sat)
-; unknown
-(pop) ; 22
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3303 | p2_23@1144@01 | live]
-; [else-branch: 3303 | !(p2_23@1144@01) | dead]
-(set-option :timeout 0)
-(push) ; 22
-; [then-branch: 3303 | p2_23@1144@01]
-; [eval] int___eq__(self_3.Example_gp, __prim__int___box__(1))
-; [eval] __prim__int___box__(1)
-(push) ; 23
-(pop) ; 23
-; Joined path conditions
-(push) ; 23
-; [eval] issubtype(typeof(self), int())
-; [eval] typeof(self)
-; [eval] int()
-(push) ; 24
-(assert (not (issubtype<Bool> (typeof<PyType> Example_gp@1183@01) (as int<PyType>  PyType))))
-(check-sat)
-; unsat
-(pop) ; 24
-; 0.00s
-; (get-info :all-statistics)
-(assert (issubtype<Bool> (typeof<PyType> Example_gp@1183@01) (as int<PyType>  PyType)))
-; [eval] issubtype(typeof(other), int())
-; [eval] typeof(other)
-; [eval] int()
-(push) ; 24
-(assert (not (issubtype<Bool> (typeof<PyType> (__prim__int___box__ $Snap.unit 1)) (as int<PyType>  PyType))))
-(check-sat)
-; unsat
-(pop) ; 24
-; 0.00s
-; (get-info :all-statistics)
-(assert (issubtype<Bool> (typeof<PyType> (__prim__int___box__ $Snap.unit 1)) (as int<PyType>  PyType)))
-(assert (int___eq__%precondition ($Snap.combine $Snap.unit $Snap.unit) Example_gp@1183@01 (__prim__int___box__ $Snap.unit 1)))
-(pop) ; 23
-; Joined path conditions
-(assert (and
-  (issubtype<Bool> (typeof<PyType> Example_gp@1183@01) (as int<PyType>  PyType))
-  (issubtype<Bool> (typeof<PyType> (__prim__int___box__ $Snap.unit 1)) (as int<PyType>  PyType))
-  (int___eq__%precondition ($Snap.combine $Snap.unit $Snap.unit) Example_gp@1183@01 (__prim__int___box__ $Snap.unit 1))))
-(pop) ; 22
-(pop) ; 21
-; Joined path conditions
-(assert (=>
-  p2_23@1144@01
-  (and
-    (issubtype<Bool> (typeof<PyType> Example_gp@1183@01) (as int<PyType>  PyType))
-    (issubtype<Bool> (typeof<PyType> (__prim__int___box__ $Snap.unit 1)) (as int<PyType>  PyType))
-    (int___eq__%precondition ($Snap.combine $Snap.unit $Snap.unit) Example_gp@1183@01 (__prim__int___box__ $Snap.unit 1)))))
-(push) ; 21
-(assert (not (=>
-  p2_23@1144@01
-  (int___eq__ ($Snap.combine $Snap.unit $Snap.unit) Example_gp@1183@01 (__prim__int___box__ $Snap.unit 1)))))
-(check-sat)
-; unsat
-(pop) ; 21
-; 0.00s
-; (get-info :all-statistics)
-(assert (=>
-  p2_23@1144@01
-  (int___eq__ ($Snap.combine $Snap.unit $Snap.unit) Example_gp@1183@01 (__prim__int___box__ $Snap.unit 1))))
-; [eval] p1_23 ==> (forperm _r_36: Ref [MustInvokeBounded(_r_36)] :: false) && ((forperm _r_36: Ref [MustInvokeUnbounded(_r_36)] :: false) && ((forperm _r_36: Ref [_r_36.MustReleaseBounded] :: false) && (forperm _r_36: Ref [_r_36.MustReleaseUnbounded] :: false)))
-(push) ; 21
-(push) ; 22
-(set-option :timeout 10)
-(assert (not (not p1_23@1143@01)))
-(check-sat)
-; unknown
-(pop) ; 22
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3304 | p1_23@1143@01 | live]
-; [else-branch: 3304 | !(p1_23@1143@01) | dead]
-(set-option :timeout 0)
-(push) ; 22
-; [then-branch: 3304 | p1_23@1143@01]
-; [eval] (forperm _r_36: Ref [MustInvokeBounded(_r_36)] :: false) && ((forperm _r_36: Ref [MustInvokeUnbounded(_r_36)] :: false) && ((forperm _r_36: Ref [_r_36.MustReleaseBounded] :: false) && (forperm _r_36: Ref [_r_36.MustReleaseUnbounded] :: false)))
-; [eval] (forperm _r_36: Ref [MustInvokeBounded(_r_36)] :: false)
-(push) ; 23
-; [then-branch: 3305 | False | live]
-; [else-branch: 3305 | True | live]
-(push) ; 24
-; [then-branch: 3305 | False]
-(assert false)
-(pop) ; 24
-(push) ; 24
-; [else-branch: 3305 | True]
-; [eval] (forperm _r_36: Ref [MustInvokeUnbounded(_r_36)] :: false)
-(push) ; 25
-; [then-branch: 3306 | False | live]
-; [else-branch: 3306 | True | live]
-(push) ; 26
-; [then-branch: 3306 | False]
-(assert false)
-(pop) ; 26
-(push) ; 26
-; [else-branch: 3306 | True]
-; [eval] (forperm _r_36: Ref [_r_36.MustReleaseBounded] :: false)
-(push) ; 27
-; [then-branch: 3307 | False | live]
-; [else-branch: 3307 | True | live]
-(push) ; 28
-; [then-branch: 3307 | False]
-(assert false)
-(pop) ; 28
-(push) ; 28
-; [else-branch: 3307 | True]
-; [eval] (forperm _r_36: Ref [_r_36.MustReleaseUnbounded] :: false)
-(pop) ; 28
-(pop) ; 27
-; Joined path conditions
-; Joined path conditions
-(pop) ; 26
-(pop) ; 25
-; Joined path conditions
-; Joined path conditions
-(pop) ; 24
-(pop) ; 23
-; Joined path conditions
-; Joined path conditions
-(pop) ; 22
-(pop) ; 21
-; Joined path conditions
-; [eval] p2_23 ==> (forperm _r_36: Ref [MustInvokeBounded_0(_r_36)] :: false) && ((forperm _r_36: Ref [MustInvokeUnbounded_0(_r_36)] :: false) && ((forperm _r_36: Ref [_r_36.MustReleaseBoundedp] :: false) && (forperm _r_36: Ref [_r_36.MustReleaseUnboundedp] :: false)))
-(push) ; 21
-(push) ; 22
-(set-option :timeout 10)
-(assert (not (not p2_23@1144@01)))
-(check-sat)
-; unknown
-(pop) ; 22
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3308 | p2_23@1144@01 | live]
-; [else-branch: 3308 | !(p2_23@1144@01) | dead]
-(set-option :timeout 0)
-(push) ; 22
-; [then-branch: 3308 | p2_23@1144@01]
-; [eval] (forperm _r_36: Ref [MustInvokeBounded_0(_r_36)] :: false) && ((forperm _r_36: Ref [MustInvokeUnbounded_0(_r_36)] :: false) && ((forperm _r_36: Ref [_r_36.MustReleaseBoundedp] :: false) && (forperm _r_36: Ref [_r_36.MustReleaseUnboundedp] :: false)))
-; [eval] (forperm _r_36: Ref [MustInvokeBounded_0(_r_36)] :: false)
-(push) ; 23
-; [then-branch: 3309 | False | live]
-; [else-branch: 3309 | True | live]
-(push) ; 24
-; [then-branch: 3309 | False]
-(assert false)
-(pop) ; 24
-(push) ; 24
-; [else-branch: 3309 | True]
-; [eval] (forperm _r_36: Ref [MustInvokeUnbounded_0(_r_36)] :: false)
-(push) ; 25
-; [then-branch: 3310 | False | live]
-; [else-branch: 3310 | True | live]
-(push) ; 26
-; [then-branch: 3310 | False]
-(assert false)
-(pop) ; 26
-(push) ; 26
-; [else-branch: 3310 | True]
-; [eval] (forperm _r_36: Ref [_r_36.MustReleaseBoundedp] :: false)
-(push) ; 27
-; [then-branch: 3311 | False | live]
-; [else-branch: 3311 | True | live]
-(push) ; 28
-; [then-branch: 3311 | False]
-(assert false)
-(pop) ; 28
-(push) ; 28
-; [else-branch: 3311 | True]
-; [eval] (forperm _r_36: Ref [_r_36.MustReleaseUnboundedp] :: false)
-(pop) ; 28
-(pop) ; 27
-; Joined path conditions
-; Joined path conditions
-(pop) ; 26
-(pop) ; 25
-; Joined path conditions
-; Joined path conditions
-(pop) ; 24
-(pop) ; 23
-; Joined path conditions
-; Joined path conditions
-(pop) ; 22
-(pop) ; 21
-; Joined path conditions
-(pop) ; 20
-(pop) ; 19
-(pop) ; 18
-(pop) ; 17
-(pop) ; 16
-; [eval] !p2_23
-; [then-branch: 3312 | !(p2_23@1144@01) | dead]
-; [else-branch: 3312 | p2_23@1144@01 | live]
-(push) ; 16
-; [else-branch: 3312 | p2_23@1144@01]
-(pop) ; 16
-(pop) ; 15
-; [eval] !p1_23
-; [then-branch: 3313 | !(p1_23@1143@01) | dead]
-; [else-branch: 3313 | p1_23@1143@01 | live]
-(push) ; 15
-; [else-branch: 3313 | p1_23@1143@01]
-(pop) ; 15
-(pop) ; 14
-; [eval] !p2_25
-; [then-branch: 3314 | !(p2_23@1144@01) | dead]
-; [else-branch: 3314 | p2_23@1144@01 | live]
-(push) ; 14
-; [else-branch: 3314 | p2_23@1144@01]
-(pop) ; 14
-(pop) ; 13
-; [eval] !p1_25
-; [then-branch: 3315 | !(p1_23@1143@01) | dead]
-; [else-branch: 3315 | p1_23@1143@01 | live]
-(push) ; 13
-; [else-branch: 3315 | p1_23@1143@01]
-(pop) ; 13
-(pop) ; 12
-; [eval] !p2_23
-; [then-branch: 3316 | !(p2_23@1144@01) | dead]
-; [else-branch: 3316 | p2_23@1144@01 | live]
-(push) ; 12
-; [else-branch: 3316 | p2_23@1144@01]
-(pop) ; 12
-(pop) ; 11
-; [eval] !p1_23
-; [then-branch: 3317 | !(p1_23@1143@01) | dead]
-; [else-branch: 3317 | p1_23@1143@01 | live]
-(push) ; 11
-; [else-branch: 3317 | p1_23@1143@01]
-(pop) ; 11
-(pop) ; 10
-; [eval] !p2_24
-; [then-branch: 3318 | !(p2_23@1144@01) | dead]
-; [else-branch: 3318 | p2_23@1144@01 | live]
-(push) ; 10
-; [else-branch: 3318 | p2_23@1144@01]
-(pop) ; 10
-(pop) ; 9
-; [eval] !p1_24
-; [then-branch: 3319 | !(p1_23@1143@01) | dead]
-; [else-branch: 3319 | p1_23@1143@01 | live]
-(push) ; 9
-; [else-branch: 3319 | p1_23@1143@01]
-(pop) ; 9
-(pop) ; 8
-; [eval] !p2_23
-; [then-branch: 3320 | !(p2_23@1144@01) | dead]
-; [else-branch: 3320 | p2_23@1144@01 | live]
-(push) ; 8
-; [else-branch: 3320 | p2_23@1144@01]
-(pop) ; 8
-(pop) ; 7
-; [eval] !p1_23
-; [then-branch: 3321 | !(p1_23@1143@01) | dead]
-; [else-branch: 3321 | p1_23@1143@01 | live]
-(push) ; 7
-; [else-branch: 3321 | p1_23@1143@01]
-(pop) ; 7
-(pop) ; 6
-(pop) ; 5
-(pop) ; 4
-(pop) ; 3
-(push) ; 3
-; [else-branch: 3243 | !(p2_23@1144@01)]
-(assert (not p2_23@1144@01))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01))))))))
-  $Snap.unit))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01)))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01))))))))))))
-(push) ; 4
-(set-option :timeout 10)
-(assert (not (not p1_23@1143@01)))
-(check-sat)
-; unknown
-(pop) ; 4
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3322 | p1_23@1143@01 | live]
-; [else-branch: 3322 | !(p1_23@1143@01) | dead]
-(set-option :timeout 0)
-(push) ; 4
-; [then-branch: 3322 | p1_23@1143@01]
-(push) ; 5
-(set-option :timeout 10)
-(assert (not false))
-(check-sat)
-; unknown
-(pop) ; 5
-; 0.00s
-; (get-info :all-statistics)
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01)))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01)))))))))))))
-; [then-branch: 3323 | p2_23@1144@01 | dead]
-; [else-branch: 3323 | !(p2_23@1144@01) | live]
-(set-option :timeout 0)
-(push) ; 5
-; [else-branch: 3323 | !(p2_23@1144@01)]
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01))))))))))
-  $Snap.unit))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01))))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01)))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01))))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01)))))))))))
-  $Snap.unit))
-; [eval] p1_23 ==> issubtype(typeof(self), Example())
-(push) ; 6
-(push) ; 7
-(set-option :timeout 10)
-(assert (not (not p1_23@1143@01)))
-(check-sat)
-; unknown
-(pop) ; 7
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3324 | p1_23@1143@01 | live]
-; [else-branch: 3324 | !(p1_23@1143@01) | dead]
-(set-option :timeout 0)
-(push) ; 7
-; [then-branch: 3324 | p1_23@1143@01]
-; [eval] issubtype(typeof(self), Example())
-; [eval] typeof(self)
-; [eval] Example()
-(pop) ; 7
-(pop) ; 6
-; Joined path conditions
-(assert (=>
-  p1_23@1143@01
-  (issubtype<Bool> (typeof<PyType> self@1151@01) (as Example<PyType>  PyType))))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01)))))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01))))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01)))))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01))))))))))))
-  $Snap.unit))
-; [eval] p2_23 ==> issubtype(typeof(self_3), Example())
-(push) ; 6
-; [then-branch: 3325 | p2_23@1144@01 | dead]
-; [else-branch: 3325 | !(p2_23@1144@01) | live]
-(push) ; 7
-; [else-branch: 3325 | !(p2_23@1144@01)]
-(pop) ; 7
-(pop) ; 6
-; Joined path conditions
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01))))))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01)))))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01))))))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01)))))))))))))
-  $Snap.unit))
-; [eval] p1_23 ==> self != null
-(push) ; 6
-(push) ; 7
-(set-option :timeout 10)
-(assert (not (not p1_23@1143@01)))
-(check-sat)
-; unknown
-(pop) ; 7
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3326 | p1_23@1143@01 | live]
-; [else-branch: 3326 | !(p1_23@1143@01) | dead]
-(set-option :timeout 0)
-(push) ; 7
-; [then-branch: 3326 | p1_23@1143@01]
-; [eval] self != null
-(pop) ; 7
-(pop) ; 6
-; Joined path conditions
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01)))))))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01))))))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01)))))))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01))))))))))))))
-  $Snap.unit))
-; [eval] p2_23 ==> self_3 != null
-(push) ; 6
-; [then-branch: 3327 | p2_23@1144@01 | dead]
-; [else-branch: 3327 | !(p2_23@1144@01) | live]
-(push) ; 7
-; [else-branch: 3327 | !(p2_23@1144@01)]
-(pop) ; 7
-(pop) ; 6
-; Joined path conditions
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01))))))))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01)))))))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01))))))))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01)))))))))))))))
-  $Snap.unit))
-; [eval] p1_23 ==> true
-(push) ; 6
-(push) ; 7
-(set-option :timeout 10)
-(assert (not (not p1_23@1143@01)))
-(check-sat)
-; unknown
-(pop) ; 7
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3328 | p1_23@1143@01 | live]
-; [else-branch: 3328 | !(p1_23@1143@01) | dead]
-(set-option :timeout 0)
-(push) ; 7
-; [then-branch: 3328 | p1_23@1143@01]
-(pop) ; 7
-(pop) ; 6
-; Joined path conditions
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01)))))))))))))))
-  $Snap.unit))
-; [eval] p2_23 ==> true
-(push) ; 6
-; [then-branch: 3329 | p2_23@1144@01 | dead]
-; [else-branch: 3329 | !(p2_23@1144@01) | live]
-(push) ; 7
-; [else-branch: 3329 | !(p2_23@1144@01)]
-(pop) ; 7
-(pop) ; 6
-; Joined path conditions
-; State saturation: after contract
-(set-option :timeout 50)
-(check-sat)
-; unknown
-(set-option :timeout 0)
-(push) ; 6
-(declare-const $t@1184@01 $Snap)
-(assert (= $t@1184@01 ($Snap.combine ($Snap.first $t@1184@01) ($Snap.second $t@1184@01))))
-(assert (= ($Snap.first $t@1184@01) $Snap.unit))
-; [eval] p1_23 ==> (forperm _r_35: Ref [_r_35.MustReleaseBounded] :: Level(_r_35) <= _current_wait_level_156) && ((forperm _r_35: Ref [_r_35.MustReleaseUnbounded] :: Level(_r_35) <= _current_wait_level_156) && _residue_156 <= _current_wait_level_156)
-(push) ; 7
-(push) ; 8
-(set-option :timeout 10)
-(assert (not (not p1_23@1143@01)))
-(check-sat)
-; unknown
-(pop) ; 8
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3330 | p1_23@1143@01 | live]
-; [else-branch: 3330 | !(p1_23@1143@01) | dead]
-(set-option :timeout 0)
-(push) ; 8
-; [then-branch: 3330 | p1_23@1143@01]
-; [eval] (forperm _r_35: Ref [_r_35.MustReleaseBounded] :: Level(_r_35) <= _current_wait_level_156) && ((forperm _r_35: Ref [_r_35.MustReleaseUnbounded] :: Level(_r_35) <= _current_wait_level_156) && _residue_156 <= _current_wait_level_156)
-; [eval] (forperm _r_35: Ref [_r_35.MustReleaseBounded] :: Level(_r_35) <= _current_wait_level_156)
-(push) ; 9
-; [then-branch: 3331 | False | live]
-; [else-branch: 3331 | True | live]
-(push) ; 10
-; [then-branch: 3331 | False]
-(assert false)
-(pop) ; 10
-(push) ; 10
-; [else-branch: 3331 | True]
-; [eval] (forperm _r_35: Ref [_r_35.MustReleaseUnbounded] :: Level(_r_35) <= _current_wait_level_156)
-(push) ; 11
-; [then-branch: 3332 | False | live]
-; [else-branch: 3332 | True | live]
-(push) ; 12
-; [then-branch: 3332 | False]
-(assert false)
-(pop) ; 12
-(push) ; 12
-; [else-branch: 3332 | True]
-; [eval] _residue_156 <= _current_wait_level_156
-(pop) ; 12
-(pop) ; 11
-; Joined path conditions
-; Joined path conditions
-(pop) ; 10
-(pop) ; 9
-; Joined path conditions
-; Joined path conditions
-(pop) ; 8
-(pop) ; 7
-; Joined path conditions
-(assert (=> p1_23@1143@01 (<= _residue_156@1149@01 _current_wait_level_156@1153@01)))
-(assert (=
-  ($Snap.second $t@1184@01)
-  ($Snap.combine
-    ($Snap.first ($Snap.second $t@1184@01))
-    ($Snap.second ($Snap.second $t@1184@01)))))
-(assert (= ($Snap.first ($Snap.second $t@1184@01)) $Snap.unit))
-; [eval] p2_23 ==> (forperm _r_35: Ref [_r_35.MustReleaseBoundedp] :: Level(_r_35) <= _current_wait_level_156_0) && ((forperm _r_35: Ref [_r_35.MustReleaseUnboundedp] :: Level(_r_35) <= _current_wait_level_156_0) && _residue_156_0 <= _current_wait_level_156_0)
-(push) ; 7
-; [then-branch: 3333 | p2_23@1144@01 | dead]
-; [else-branch: 3333 | !(p2_23@1144@01) | live]
-(push) ; 8
-; [else-branch: 3333 | !(p2_23@1144@01)]
-(pop) ; 8
-(pop) ; 7
-; Joined path conditions
-(assert (=
-  ($Snap.second ($Snap.second $t@1184@01))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second $t@1184@01)))
-    ($Snap.second ($Snap.second ($Snap.second $t@1184@01))))))
-(push) ; 7
-(set-option :timeout 10)
-(assert (not (not p1_23@1143@01)))
-(check-sat)
-; unknown
-(pop) ; 7
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3334 | p1_23@1143@01 | live]
-; [else-branch: 3334 | !(p1_23@1143@01) | dead]
-(set-option :timeout 0)
-(push) ; 7
-; [then-branch: 3334 | p1_23@1143@01]
-(assert (not (= self@1151@01 $Ref.null)))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second $t@1184@01)))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@1184@01))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1184@01)))))))
-; [then-branch: 3335 | p2_23@1144@01 | dead]
-; [else-branch: 3335 | !(p2_23@1144@01) | live]
-(push) ; 8
-; [else-branch: 3335 | !(p2_23@1144@01)]
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@1184@01))))
-  $Snap.unit))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1184@01))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1184@01)))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1184@01))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1184@01)))))
-  $Snap.unit))
-; [eval] p1_23 ==> issubtype(typeof(self.Example_f), int())
-(push) ; 9
-(push) ; 10
-(set-option :timeout 10)
-(assert (not (not p1_23@1143@01)))
-(check-sat)
-; unknown
-(pop) ; 10
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3336 | p1_23@1143@01 | live]
-; [else-branch: 3336 | !(p1_23@1143@01) | dead]
-(set-option :timeout 0)
-(push) ; 10
-; [then-branch: 3336 | p1_23@1143@01]
-; [eval] issubtype(typeof(self.Example_f), int())
-; [eval] typeof(self.Example_f)
-; [eval] int()
-(pop) ; 10
-(pop) ; 9
-; Joined path conditions
-(assert (=>
-  p1_23@1143@01
-  (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second $t@1184@01))))) (as int<PyType>  PyType))))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1184@01)))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1184@01))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1184@01)))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1184@01))))))
-  $Snap.unit))
-; [eval] p2_23 ==> issubtype(typeof(self_3.Example_fp), int())
-(push) ; 9
-; [then-branch: 3337 | p2_23@1144@01 | dead]
-; [else-branch: 3337 | !(p2_23@1144@01) | live]
-(push) ; 10
-; [else-branch: 3337 | !(p2_23@1144@01)]
-(pop) ; 10
-(pop) ; 9
-; Joined path conditions
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1184@01))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1184@01)))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1184@01))))))))))
-(push) ; 9
-(set-option :timeout 10)
-(assert (not (not p1_23@1143@01)))
-(check-sat)
-; unknown
-(pop) ; 9
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3338 | p1_23@1143@01 | live]
-; [else-branch: 3338 | !(p1_23@1143@01) | dead]
-(set-option :timeout 0)
-(push) ; 9
-; [then-branch: 3338 | p1_23@1143@01]
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1184@01)))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1184@01))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1184@01)))))))))))
-; [then-branch: 3339 | p2_23@1144@01 | dead]
-; [else-branch: 3339 | !(p2_23@1144@01) | live]
-(push) ; 10
-; [else-branch: 3339 | !(p2_23@1144@01)]
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1184@01))))))))
-  $Snap.unit))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1184@01))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1184@01)))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1184@01))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1184@01)))))))))
-  $Snap.unit))
-; [eval] p1_23 ==> issubtype(typeof(self.Example_g), int())
-(push) ; 11
-(push) ; 12
-(set-option :timeout 10)
-(assert (not (not p1_23@1143@01)))
-(check-sat)
-; unknown
-(pop) ; 12
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3340 | p1_23@1143@01 | live]
-; [else-branch: 3340 | !(p1_23@1143@01) | dead]
-(set-option :timeout 0)
-(push) ; 12
-; [then-branch: 3340 | p1_23@1143@01]
-; [eval] issubtype(typeof(self.Example_g), int())
-; [eval] typeof(self.Example_g)
-; [eval] int()
-(pop) ; 12
-(pop) ; 11
-; Joined path conditions
-(assert (=>
-  p1_23@1143@01
-  (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1184@01))))))))) (as int<PyType>  PyType))))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1184@01)))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1184@01))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1184@01)))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1184@01))))))))))
-  $Snap.unit))
-; [eval] p2_23 ==> issubtype(typeof(self_3.Example_gp), int())
-(push) ; 11
-; [then-branch: 3341 | p2_23@1144@01 | dead]
-; [else-branch: 3341 | !(p2_23@1144@01) | live]
-(push) ; 12
-; [else-branch: 3341 | !(p2_23@1144@01)]
-(pop) ; 12
-(pop) ; 11
-; Joined path conditions
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1184@01))))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1184@01)))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1184@01))))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1184@01)))))))))))
-  $Snap.unit))
-; [eval] p1_23 ==> int___eq__(self.Example_f, __prim__int___box__(0))
-(push) ; 11
-(push) ; 12
-(set-option :timeout 10)
-(assert (not (not p1_23@1143@01)))
-(check-sat)
-; unknown
-(pop) ; 12
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3342 | p1_23@1143@01 | live]
-; [else-branch: 3342 | !(p1_23@1143@01) | dead]
-(set-option :timeout 0)
-(push) ; 12
-; [then-branch: 3342 | p1_23@1143@01]
-; [eval] int___eq__(self.Example_f, __prim__int___box__(0))
-; [eval] __prim__int___box__(0)
-(push) ; 13
-(assert (__prim__int___box__%precondition $Snap.unit 0))
-(pop) ; 13
-; Joined path conditions
-(assert (__prim__int___box__%precondition $Snap.unit 0))
-(push) ; 13
-; [eval] issubtype(typeof(self), int())
-; [eval] typeof(self)
-; [eval] int()
-(push) ; 14
-(assert (not (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second $t@1184@01))))) (as int<PyType>  PyType))))
-(check-sat)
-; unsat
-(pop) ; 14
-; 0.00s
-; (get-info :all-statistics)
-(assert (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second $t@1184@01))))) (as int<PyType>  PyType)))
-; [eval] issubtype(typeof(other), int())
-; [eval] typeof(other)
-; [eval] int()
-(push) ; 14
-(assert (not (issubtype<Bool> (typeof<PyType> (__prim__int___box__ $Snap.unit 0)) (as int<PyType>  PyType))))
-(check-sat)
-; unsat
-(pop) ; 14
-; 0.00s
-; (get-info :all-statistics)
-(assert (issubtype<Bool> (typeof<PyType> (__prim__int___box__ $Snap.unit 0)) (as int<PyType>  PyType)))
-(assert (int___eq__%precondition ($Snap.combine $Snap.unit $Snap.unit) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second $t@1184@01)))) (__prim__int___box__ $Snap.unit 0)))
-(pop) ; 13
-; Joined path conditions
-(assert (and
-  (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second $t@1184@01))))) (as int<PyType>  PyType))
-  (issubtype<Bool> (typeof<PyType> (__prim__int___box__ $Snap.unit 0)) (as int<PyType>  PyType))
-  (int___eq__%precondition ($Snap.combine $Snap.unit $Snap.unit) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second $t@1184@01)))) (__prim__int___box__ $Snap.unit 0))))
-(pop) ; 12
-(pop) ; 11
-; Joined path conditions
-(assert (=>
-  p1_23@1143@01
-  (and
-    (__prim__int___box__%precondition $Snap.unit 0)
-    (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second $t@1184@01))))) (as int<PyType>  PyType))
-    (issubtype<Bool> (typeof<PyType> (__prim__int___box__ $Snap.unit 0)) (as int<PyType>  PyType))
-    (int___eq__%precondition ($Snap.combine $Snap.unit $Snap.unit) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second $t@1184@01)))) (__prim__int___box__ $Snap.unit 0)))))
-(assert (=>
-  p1_23@1143@01
-  (int___eq__ ($Snap.combine $Snap.unit $Snap.unit) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second $t@1184@01)))) (__prim__int___box__ $Snap.unit 0))))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1184@01)))))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1184@01))))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1184@01)))))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1184@01))))))))))))
-  $Snap.unit))
-; [eval] p2_23 ==> int___eq__(self_3.Example_fp, __prim__int___box__(0))
-(push) ; 11
-; [then-branch: 3343 | p2_23@1144@01 | dead]
-; [else-branch: 3343 | !(p2_23@1144@01) | live]
-(push) ; 12
-; [else-branch: 3343 | !(p2_23@1144@01)]
-(pop) ; 12
-(pop) ; 11
-; Joined path conditions
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1184@01))))))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1184@01)))))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1184@01))))))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1184@01)))))))))))))
-  $Snap.unit))
-; [eval] p1_23 ==> int___eq__(self.Example_g, __prim__int___box__(1))
-(push) ; 11
-(push) ; 12
-(set-option :timeout 10)
-(assert (not (not p1_23@1143@01)))
-(check-sat)
-; unknown
-(pop) ; 12
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3344 | p1_23@1143@01 | live]
-; [else-branch: 3344 | !(p1_23@1143@01) | dead]
-(set-option :timeout 0)
-(push) ; 12
-; [then-branch: 3344 | p1_23@1143@01]
-; [eval] int___eq__(self.Example_g, __prim__int___box__(1))
-; [eval] __prim__int___box__(1)
-(push) ; 13
-(assert (__prim__int___box__%precondition $Snap.unit 1))
-(pop) ; 13
-; Joined path conditions
-(assert (__prim__int___box__%precondition $Snap.unit 1))
-(push) ; 13
-; [eval] issubtype(typeof(self), int())
-; [eval] typeof(self)
-; [eval] int()
-(push) ; 14
-(assert (not (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1184@01))))))))) (as int<PyType>  PyType))))
-(check-sat)
-; unsat
-(pop) ; 14
-; 0.00s
-; (get-info :all-statistics)
-(assert (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1184@01))))))))) (as int<PyType>  PyType)))
-; [eval] issubtype(typeof(other), int())
-; [eval] typeof(other)
-; [eval] int()
-(push) ; 14
-(assert (not (issubtype<Bool> (typeof<PyType> (__prim__int___box__ $Snap.unit 1)) (as int<PyType>  PyType))))
-(check-sat)
-; unsat
-(pop) ; 14
-; 0.00s
-; (get-info :all-statistics)
-(assert (issubtype<Bool> (typeof<PyType> (__prim__int___box__ $Snap.unit 1)) (as int<PyType>  PyType)))
-(assert (int___eq__%precondition ($Snap.combine $Snap.unit $Snap.unit) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1184@01)))))))) (__prim__int___box__ $Snap.unit 1)))
-(pop) ; 13
-; Joined path conditions
-(assert (and
-  (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1184@01))))))))) (as int<PyType>  PyType))
-  (issubtype<Bool> (typeof<PyType> (__prim__int___box__ $Snap.unit 1)) (as int<PyType>  PyType))
-  (int___eq__%precondition ($Snap.combine $Snap.unit $Snap.unit) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1184@01)))))))) (__prim__int___box__ $Snap.unit 1))))
-(pop) ; 12
-(pop) ; 11
-; Joined path conditions
-(assert (=>
-  p1_23@1143@01
-  (and
-    (__prim__int___box__%precondition $Snap.unit 1)
-    (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1184@01))))))))) (as int<PyType>  PyType))
-    (issubtype<Bool> (typeof<PyType> (__prim__int___box__ $Snap.unit 1)) (as int<PyType>  PyType))
-    (int___eq__%precondition ($Snap.combine $Snap.unit $Snap.unit) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1184@01)))))))) (__prim__int___box__ $Snap.unit 1)))))
-(assert (=>
-  p1_23@1143@01
-  (int___eq__ ($Snap.combine $Snap.unit $Snap.unit) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1184@01)))))))) (__prim__int___box__ $Snap.unit 1))))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1184@01)))))))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1184@01))))))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1184@01)))))))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1184@01))))))))))))))
-  $Snap.unit))
-; [eval] p2_23 ==> int___eq__(self_3.Example_gp, __prim__int___box__(1))
-(push) ; 11
-; [then-branch: 3345 | p2_23@1144@01 | dead]
-; [else-branch: 3345 | !(p2_23@1144@01) | live]
-(push) ; 12
-; [else-branch: 3345 | !(p2_23@1144@01)]
-(pop) ; 12
-(pop) ; 11
-; Joined path conditions
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1184@01))))))))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1184@01)))))))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1184@01))))))))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1184@01)))))))))))))))
-  $Snap.unit))
-; [eval] p1_23 ==> true
-(push) ; 11
-(push) ; 12
-(set-option :timeout 10)
-(assert (not (not p1_23@1143@01)))
-(check-sat)
-; unknown
-(pop) ; 12
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3346 | p1_23@1143@01 | live]
-; [else-branch: 3346 | !(p1_23@1143@01) | dead]
-(set-option :timeout 0)
-(push) ; 12
-; [then-branch: 3346 | p1_23@1143@01]
-(pop) ; 12
-(pop) ; 11
-; Joined path conditions
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1184@01)))))))))))))))
-  $Snap.unit))
-; [eval] p2_23 ==> true
-(push) ; 11
-; [then-branch: 3347 | p2_23@1144@01 | dead]
-; [else-branch: 3347 | !(p2_23@1144@01) | live]
-(push) ; 12
-; [else-branch: 3347 | !(p2_23@1144@01)]
-(pop) ; 12
-(pop) ; 11
-; Joined path conditions
-(pop) ; 10
-(pop) ; 9
-(pop) ; 8
-(pop) ; 7
-(pop) ; 6
-(push) ; 6
-; [exec]
-; var _err: Ref
-(declare-const _err@1185@01 $Ref)
-; [exec]
-; var _err_12: Ref
-(declare-const _err_12@1186@01 $Ref)
-; [exec]
-; var self_1: Ref
-(declare-const self_1@1187@01 $Ref)
-; [exec]
-; var self_1_0: Ref
-(declare-const self_1_0@1188@01 $Ref)
-; [exec]
-; var _cwl_156: Perm
-(declare-const _cwl_156@1189@01 $Perm)
-; [exec]
-; var _cwl_156_0: Perm
-(declare-const _cwl_156_0@1190@01 $Perm)
-; [exec]
-; var _method_measures_156: Seq[Measure$]
-(declare-const _method_measures_156@1191@01 Seq<Measure$>)
-; [exec]
-; var _method_measures_156_0: Seq[Measure$]
-(declare-const _method_measures_156_0@1192@01 Seq<Measure$>)
-; [exec]
-; var p1_24: Bool
-(declare-const p1_24@1193@01 Bool)
-; [exec]
-; var p2_24: Bool
-(declare-const p2_24@1194@01 Bool)
-; [exec]
-; var p3_11: Bool
-(declare-const p3_11@1195@01 Bool)
-; [exec]
-; var p4_11: Bool
-(declare-const p4_11@1196@01 Bool)
-; [exec]
-; var p1_25: Bool
-(declare-const p1_25@1197@01 Bool)
-; [exec]
-; var p2_25: Bool
-(declare-const p2_25@1198@01 Bool)
-; [exec]
-; var p3_12: Bool
-(declare-const p3_12@1199@01 Bool)
-; [exec]
-; var p4_12: Bool
-(declare-const p4_12@1200@01 Bool)
-; [exec]
-; inhale p1_23
-(declare-const $t@1201@01 $Snap)
-(assert (= $t@1201@01 $Snap.unit))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-(set-option :timeout 0)
-(push) ; 7
-(set-option :timeout 10)
-(assert (not (not p1_23@1143@01)))
-(check-sat)
-; unknown
-(pop) ; 7
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3348 | p1_23@1143@01 | live]
-; [else-branch: 3348 | !(p1_23@1143@01) | dead]
-(set-option :timeout 0)
-(push) ; 7
-; [then-branch: 3348 | p1_23@1143@01]
-; [exec]
-; _method_measures_156 := Seq[Measure$]()
-; [eval] Seq[Measure$]()
-; [exec]
-; inhale typeof(self) == Example()
-(declare-const $t@1202@01 $Snap)
-(assert (= $t@1202@01 $Snap.unit))
-; [eval] typeof(self) == Example()
-; [eval] typeof(self)
-; [eval] Example()
-(assert (= (typeof<PyType> self@1151@01) (as Example<PyType>  PyType)))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [exec]
-; _err := null
-; [exec]
-; self_1 := self
-; [then-branch: 3349 | p2_23@1144@01 | dead]
-; [else-branch: 3349 | !(p2_23@1144@01) | live]
-(set-option :timeout 0)
-(push) ; 8
-; [else-branch: 3349 | !(p2_23@1144@01)]
-(pop) ; 8
-; [eval] !p2_23
-(push) ; 8
-(set-option :timeout 10)
-(assert (not p2_23@1144@01))
-(check-sat)
-; unknown
-(pop) ; 8
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3350 | !(p2_23@1144@01) | live]
-; [else-branch: 3350 | p2_23@1144@01 | dead]
-(set-option :timeout 0)
-(push) ; 8
-; [then-branch: 3350 | !(p2_23@1144@01)]
-; [exec]
-; p1_24 := p1_23 && perm(_MaySet(self_1, 1888441915154752436293)) > none
-; [eval] p1_23 && perm(_MaySet(self_1, 1888441915154752436293)) > none
-(push) ; 9
-; [then-branch: 3351 | !(p1_23@1143@01) | live]
-; [else-branch: 3351 | p1_23@1143@01 | live]
-(push) ; 10
-; [then-branch: 3351 | !(p1_23@1143@01)]
-(assert (not p1_23@1143@01))
-(pop) ; 10
-(push) ; 10
-; [else-branch: 3351 | p1_23@1143@01]
-; [eval] perm(_MaySet(self_1, 1888441915154752436293)) > none
-; [eval] perm(_MaySet(self_1, 1888441915154752436293))
-(pop) ; 10
-(pop) ; 9
-; Joined path conditions
-; Joined path conditions
-(assert (or p1_23@1143@01 (not p1_23@1143@01)))
-; [exec]
-; p2_24 := p2_23 && perm(_MaySet_0(self_1_0, 1888441915154752436293)) > none
-; [eval] p2_23 && perm(_MaySet_0(self_1_0, 1888441915154752436293)) > none
-(push) ; 9
-; [then-branch: 3352 | !(p2_23@1144@01) | live]
-; [else-branch: 3352 | p2_23@1144@01 | live]
-(push) ; 10
-; [then-branch: 3352 | !(p2_23@1144@01)]
-(pop) ; 10
-(push) ; 10
-; [else-branch: 3352 | p2_23@1144@01]
-(assert p2_23@1144@01)
-; [eval] perm(_MaySet_0(self_1_0, 1888441915154752436293)) > none
-; [eval] perm(_MaySet_0(self_1_0, 1888441915154752436293))
-(pop) ; 10
-(pop) ; 9
-; Joined path conditions
-; Joined path conditions
-(assert (or p2_23@1144@01 (not p2_23@1144@01)))
-; [exec]
-; p3_11 := p1_23 && !(perm(_MaySet(self_1, 1888441915154752436293)) > none)
-; [eval] p1_23 && !(perm(_MaySet(self_1, 1888441915154752436293)) > none)
-(push) ; 9
-; [then-branch: 3353 | !(p1_23@1143@01) | live]
-; [else-branch: 3353 | p1_23@1143@01 | live]
-(push) ; 10
-; [then-branch: 3353 | !(p1_23@1143@01)]
-(assert (not p1_23@1143@01))
-(pop) ; 10
-(push) ; 10
-; [else-branch: 3353 | p1_23@1143@01]
-; [eval] !(perm(_MaySet(self_1, 1888441915154752436293)) > none)
-; [eval] perm(_MaySet(self_1, 1888441915154752436293)) > none
-; [eval] perm(_MaySet(self_1, 1888441915154752436293))
-(pop) ; 10
-(pop) ; 9
-; Joined path conditions
-; Joined path conditions
-; [exec]
-; p4_11 := p2_23 &&
-;   !(perm(_MaySet_0(self_1_0, 1888441915154752436293)) > none)
-; [eval] p2_23 && !(perm(_MaySet_0(self_1_0, 1888441915154752436293)) > none)
-(push) ; 9
-; [then-branch: 3354 | !(p2_23@1144@01) | live]
-; [else-branch: 3354 | p2_23@1144@01 | live]
-(push) ; 10
-; [then-branch: 3354 | !(p2_23@1144@01)]
-(pop) ; 10
-(push) ; 10
-; [else-branch: 3354 | p2_23@1144@01]
-(assert p2_23@1144@01)
-; [eval] !(perm(_MaySet_0(self_1_0, 1888441915154752436293)) > none)
-; [eval] perm(_MaySet_0(self_1_0, 1888441915154752436293)) > none
-; [eval] perm(_MaySet_0(self_1_0, 1888441915154752436293))
-(pop) ; 10
-(pop) ; 9
-; Joined path conditions
-; Joined path conditions
-(push) ; 9
-(set-option :timeout 10)
-(assert (not (not p1_23@1143@01)))
-(check-sat)
-; unknown
-(pop) ; 9
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3355 | p1_23@1143@01 | live]
-; [else-branch: 3355 | !(p1_23@1143@01) | dead]
-(set-option :timeout 0)
-(push) ; 9
-; [then-branch: 3355 | p1_23@1143@01]
-; [exec]
-; exhale acc(_MaySet(self_1, 1888441915154752436293), write)
-; [exec]
-; inhale acc(self_1.Example_f, write)
-(declare-const $t@1203@01 $Ref)
-(assert (not (= self@1151@01 $Ref.null)))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [then-branch: 3356 | False | dead]
-; [else-branch: 3356 | True | live]
-(set-option :timeout 0)
-(push) ; 10
-; [else-branch: 3356 | True]
-(pop) ; 10
-; [eval] !p2_24
-(push) ; 10
-(set-option :timeout 10)
-(assert (not false))
-(check-sat)
-; unknown
-(pop) ; 10
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3357 | True | live]
-; [else-branch: 3357 | False | dead]
-(set-option :timeout 0)
-(push) ; 10
-; [then-branch: 3357 | True]
-(push) ; 11
-(set-option :timeout 10)
-(assert (not (not p1_23@1143@01)))
-(check-sat)
-; unknown
-(pop) ; 11
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3358 | p1_23@1143@01 | live]
-; [else-branch: 3358 | !(p1_23@1143@01) | dead]
-(set-option :timeout 0)
-(push) ; 11
-; [then-branch: 3358 | p1_23@1143@01]
-; [exec]
-; self_1.Example_f := __prim__int___box__(0)
-; [eval] __prim__int___box__(0)
-(push) ; 12
-(assert (__prim__int___box__%precondition $Snap.unit 0))
-(pop) ; 12
-; Joined path conditions
-(assert (__prim__int___box__%precondition $Snap.unit 0))
-(declare-const Example_f@1204@01 $Ref)
-(assert (= Example_f@1204@01 (__prim__int___box__ $Snap.unit 0)))
-; [then-branch: 3359 | p2_23@1144@01 | dead]
-; [else-branch: 3359 | !(p2_23@1144@01) | live]
-(push) ; 12
-; [else-branch: 3359 | !(p2_23@1144@01)]
-(pop) ; 12
-; [eval] !p2_23
-(push) ; 12
-(set-option :timeout 10)
-(assert (not p2_23@1144@01))
-(check-sat)
-; unknown
-(pop) ; 12
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3360 | !(p2_23@1144@01) | live]
-; [else-branch: 3360 | p2_23@1144@01 | dead]
-(set-option :timeout 0)
-(push) ; 12
-; [then-branch: 3360 | !(p2_23@1144@01)]
-; [exec]
-; p1_25 := p1_23 && perm(_MaySet(self_1, 1906888659228461987909)) > none
-; [eval] p1_23 && perm(_MaySet(self_1, 1906888659228461987909)) > none
-(push) ; 13
-; [then-branch: 3361 | !(p1_23@1143@01) | live]
-; [else-branch: 3361 | p1_23@1143@01 | live]
-(push) ; 14
-; [then-branch: 3361 | !(p1_23@1143@01)]
-(assert (not p1_23@1143@01))
-(pop) ; 14
-(push) ; 14
-; [else-branch: 3361 | p1_23@1143@01]
-; [eval] perm(_MaySet(self_1, 1906888659228461987909)) > none
-; [eval] perm(_MaySet(self_1, 1906888659228461987909))
-(pop) ; 14
-(pop) ; 13
-; Joined path conditions
-; Joined path conditions
-; [exec]
-; p2_25 := p2_23 && perm(_MaySet_0(self_1_0, 1906888659228461987909)) > none
-; [eval] p2_23 && perm(_MaySet_0(self_1_0, 1906888659228461987909)) > none
-(push) ; 13
-; [then-branch: 3362 | !(p2_23@1144@01) | live]
-; [else-branch: 3362 | p2_23@1144@01 | live]
-(push) ; 14
-; [then-branch: 3362 | !(p2_23@1144@01)]
-(pop) ; 14
-(push) ; 14
-; [else-branch: 3362 | p2_23@1144@01]
-(assert p2_23@1144@01)
-; [eval] perm(_MaySet_0(self_1_0, 1906888659228461987909)) > none
-; [eval] perm(_MaySet_0(self_1_0, 1906888659228461987909))
-(pop) ; 14
-(pop) ; 13
-; Joined path conditions
-; Joined path conditions
-; [exec]
-; p3_12 := p1_23 && !(perm(_MaySet(self_1, 1906888659228461987909)) > none)
-; [eval] p1_23 && !(perm(_MaySet(self_1, 1906888659228461987909)) > none)
-(push) ; 13
-; [then-branch: 3363 | !(p1_23@1143@01) | live]
-; [else-branch: 3363 | p1_23@1143@01 | live]
-(push) ; 14
-; [then-branch: 3363 | !(p1_23@1143@01)]
-(assert (not p1_23@1143@01))
-(pop) ; 14
-(push) ; 14
-; [else-branch: 3363 | p1_23@1143@01]
-; [eval] !(perm(_MaySet(self_1, 1906888659228461987909)) > none)
-; [eval] perm(_MaySet(self_1, 1906888659228461987909)) > none
-; [eval] perm(_MaySet(self_1, 1906888659228461987909))
-(pop) ; 14
-(pop) ; 13
-; Joined path conditions
-; Joined path conditions
-; [exec]
-; p4_12 := p2_23 &&
-;   !(perm(_MaySet_0(self_1_0, 1906888659228461987909)) > none)
-; [eval] p2_23 && !(perm(_MaySet_0(self_1_0, 1906888659228461987909)) > none)
-(push) ; 13
-; [then-branch: 3364 | !(p2_23@1144@01) | live]
-; [else-branch: 3364 | p2_23@1144@01 | live]
-(push) ; 14
-; [then-branch: 3364 | !(p2_23@1144@01)]
-(pop) ; 14
-(push) ; 14
-; [else-branch: 3364 | p2_23@1144@01]
-(assert p2_23@1144@01)
-; [eval] !(perm(_MaySet_0(self_1_0, 1906888659228461987909)) > none)
-; [eval] perm(_MaySet_0(self_1_0, 1906888659228461987909)) > none
-; [eval] perm(_MaySet_0(self_1_0, 1906888659228461987909))
-(pop) ; 14
-(pop) ; 13
-; Joined path conditions
-; Joined path conditions
-(push) ; 13
-(set-option :timeout 10)
-(assert (not (not p1_23@1143@01)))
-(check-sat)
-; unknown
-(pop) ; 13
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3365 | p1_23@1143@01 | live]
-; [else-branch: 3365 | !(p1_23@1143@01) | dead]
-(set-option :timeout 0)
-(push) ; 13
-; [then-branch: 3365 | p1_23@1143@01]
-; [exec]
-; exhale acc(_MaySet(self_1, 1906888659228461987909), write)
-; [exec]
-; inhale acc(self_1.Example_g, write)
-(declare-const $t@1205@01 $Ref)
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [then-branch: 3366 | False | dead]
-; [else-branch: 3366 | True | live]
-(set-option :timeout 0)
-(push) ; 14
-; [else-branch: 3366 | True]
-(pop) ; 14
-; [eval] !p2_25
-(push) ; 14
-(set-option :timeout 10)
-(assert (not false))
-(check-sat)
-; unknown
-(pop) ; 14
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3367 | True | live]
-; [else-branch: 3367 | False | dead]
-(set-option :timeout 0)
-(push) ; 14
-; [then-branch: 3367 | True]
-(push) ; 15
-(set-option :timeout 10)
-(assert (not (not p1_23@1143@01)))
-(check-sat)
-; unknown
-(pop) ; 15
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3368 | p1_23@1143@01 | live]
-; [else-branch: 3368 | !(p1_23@1143@01) | dead]
-(set-option :timeout 0)
-(push) ; 15
-; [then-branch: 3368 | p1_23@1143@01]
-; [exec]
-; self_1.Example_g := __prim__int___box__(1)
-; [eval] __prim__int___box__(1)
-(push) ; 16
-(assert (__prim__int___box__%precondition $Snap.unit 1))
-(pop) ; 16
-; Joined path conditions
-(assert (__prim__int___box__%precondition $Snap.unit 1))
-(declare-const Example_g@1206@01 $Ref)
-(assert (= Example_g@1206@01 (__prim__int___box__ $Snap.unit 1)))
-; [then-branch: 3369 | p2_23@1144@01 | dead]
-; [else-branch: 3369 | !(p2_23@1144@01) | live]
-(push) ; 16
-; [else-branch: 3369 | !(p2_23@1144@01)]
-(pop) ; 16
-; [eval] !p2_23
-(push) ; 16
-(set-option :timeout 10)
-(assert (not p2_23@1144@01))
-(check-sat)
-; unknown
-(pop) ; 16
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3370 | !(p2_23@1144@01) | live]
-; [else-branch: 3370 | p2_23@1144@01 | dead]
-(set-option :timeout 0)
-(push) ; 16
-; [then-branch: 3370 | !(p2_23@1144@01)]
-; [exec]
-; assert true
-; [eval] p1_23 ==> true
-(push) ; 17
-(push) ; 18
-(set-option :timeout 10)
-(assert (not (not p1_23@1143@01)))
-(check-sat)
-; unknown
-(pop) ; 18
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3371 | p1_23@1143@01 | live]
-; [else-branch: 3371 | !(p1_23@1143@01) | dead]
-(set-option :timeout 0)
-(push) ; 18
-; [then-branch: 3371 | p1_23@1143@01]
-(pop) ; 18
-(pop) ; 17
-; Joined path conditions
-; [eval] p2_23 ==> true
-(push) ; 17
-; [then-branch: 3372 | p2_23@1144@01 | dead]
-; [else-branch: 3372 | !(p2_23@1144@01) | live]
-(push) ; 18
-; [else-branch: 3372 | !(p2_23@1144@01)]
-(pop) ; 18
-(pop) ; 17
-; Joined path conditions
-(push) ; 17
-(set-option :timeout 10)
-(assert (not (not p1_23@1143@01)))
-(check-sat)
-; unknown
-(pop) ; 17
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3373 | p1_23@1143@01 | live]
-; [else-branch: 3373 | !(p1_23@1143@01) | dead]
-(set-option :timeout 0)
-(push) ; 17
-; [then-branch: 3373 | p1_23@1143@01]
-; [then-branch: 3374 | p2_23@1144@01 | dead]
-; [else-branch: 3374 | !(p2_23@1144@01) | live]
-(push) ; 18
-; [else-branch: 3374 | !(p2_23@1144@01)]
-; [eval] p1_23 ==> issubtype(typeof(self.Example_f), int())
-(push) ; 19
-(push) ; 20
-(set-option :timeout 10)
-(assert (not (not p1_23@1143@01)))
-(check-sat)
-; unknown
-(pop) ; 20
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3375 | p1_23@1143@01 | live]
-; [else-branch: 3375 | !(p1_23@1143@01) | dead]
-(set-option :timeout 0)
-(push) ; 20
-; [then-branch: 3375 | p1_23@1143@01]
-; [eval] issubtype(typeof(self.Example_f), int())
-; [eval] typeof(self.Example_f)
-; [eval] int()
-(pop) ; 20
-(pop) ; 19
-; Joined path conditions
-(push) ; 19
-(assert (not (=>
-  p1_23@1143@01
-  (issubtype<Bool> (typeof<PyType> Example_f@1204@01) (as int<PyType>  PyType)))))
-(check-sat)
-; unsat
-(pop) ; 19
-; 0.00s
-; (get-info :all-statistics)
-(assert (=>
-  p1_23@1143@01
-  (issubtype<Bool> (typeof<PyType> Example_f@1204@01) (as int<PyType>  PyType))))
-; [eval] p2_23 ==> issubtype(typeof(self_3.Example_fp), int())
-(push) ; 19
-; [then-branch: 3376 | p2_23@1144@01 | dead]
-; [else-branch: 3376 | !(p2_23@1144@01) | live]
-(push) ; 20
-; [else-branch: 3376 | !(p2_23@1144@01)]
-(pop) ; 20
-(pop) ; 19
-; Joined path conditions
-(push) ; 19
-(set-option :timeout 10)
-(assert (not (not p1_23@1143@01)))
-(check-sat)
-; unknown
-(pop) ; 19
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3377 | p1_23@1143@01 | live]
-; [else-branch: 3377 | !(p1_23@1143@01) | dead]
-(set-option :timeout 0)
-(push) ; 19
-; [then-branch: 3377 | p1_23@1143@01]
-; [then-branch: 3378 | p2_23@1144@01 | dead]
-; [else-branch: 3378 | !(p2_23@1144@01) | live]
-(push) ; 20
-; [else-branch: 3378 | !(p2_23@1144@01)]
-; [eval] p1_23 ==> issubtype(typeof(self.Example_g), int())
-(push) ; 21
-(push) ; 22
-(set-option :timeout 10)
-(assert (not (not p1_23@1143@01)))
-(check-sat)
-; unknown
-(pop) ; 22
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3379 | p1_23@1143@01 | live]
-; [else-branch: 3379 | !(p1_23@1143@01) | dead]
-(set-option :timeout 0)
-(push) ; 22
-; [then-branch: 3379 | p1_23@1143@01]
-; [eval] issubtype(typeof(self.Example_g), int())
-; [eval] typeof(self.Example_g)
-; [eval] int()
-(pop) ; 22
-(pop) ; 21
-; Joined path conditions
-(push) ; 21
-(assert (not (=>
-  p1_23@1143@01
-  (issubtype<Bool> (typeof<PyType> Example_g@1206@01) (as int<PyType>  PyType)))))
-(check-sat)
-; unsat
-(pop) ; 21
-; 0.00s
-; (get-info :all-statistics)
-(assert (=>
-  p1_23@1143@01
-  (issubtype<Bool> (typeof<PyType> Example_g@1206@01) (as int<PyType>  PyType))))
-; [eval] p2_23 ==> issubtype(typeof(self_3.Example_gp), int())
-(push) ; 21
-; [then-branch: 3380 | p2_23@1144@01 | dead]
-; [else-branch: 3380 | !(p2_23@1144@01) | live]
-(push) ; 22
-; [else-branch: 3380 | !(p2_23@1144@01)]
-(pop) ; 22
-(pop) ; 21
-; Joined path conditions
-; [eval] p1_23 ==> int___eq__(self.Example_f, __prim__int___box__(0))
-(push) ; 21
-(push) ; 22
-(set-option :timeout 10)
-(assert (not (not p1_23@1143@01)))
-(check-sat)
-; unknown
-(pop) ; 22
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3381 | p1_23@1143@01 | live]
-; [else-branch: 3381 | !(p1_23@1143@01) | dead]
-(set-option :timeout 0)
-(push) ; 22
-; [then-branch: 3381 | p1_23@1143@01]
-; [eval] int___eq__(self.Example_f, __prim__int___box__(0))
-; [eval] __prim__int___box__(0)
-(push) ; 23
-(pop) ; 23
-; Joined path conditions
-(push) ; 23
-; [eval] issubtype(typeof(self), int())
-; [eval] typeof(self)
-; [eval] int()
-(push) ; 24
-(assert (not (issubtype<Bool> (typeof<PyType> Example_f@1204@01) (as int<PyType>  PyType))))
-(check-sat)
-; unsat
-(pop) ; 24
-; 0.00s
-; (get-info :all-statistics)
-(assert (issubtype<Bool> (typeof<PyType> Example_f@1204@01) (as int<PyType>  PyType)))
-; [eval] issubtype(typeof(other), int())
-; [eval] typeof(other)
-; [eval] int()
-(push) ; 24
-(assert (not (issubtype<Bool> (typeof<PyType> (__prim__int___box__ $Snap.unit 0)) (as int<PyType>  PyType))))
-(check-sat)
-; unsat
-(pop) ; 24
-; 0.00s
-; (get-info :all-statistics)
-(assert (issubtype<Bool> (typeof<PyType> (__prim__int___box__ $Snap.unit 0)) (as int<PyType>  PyType)))
-(assert (int___eq__%precondition ($Snap.combine $Snap.unit $Snap.unit) Example_f@1204@01 (__prim__int___box__ $Snap.unit 0)))
-(pop) ; 23
-; Joined path conditions
-(assert (and
-  (issubtype<Bool> (typeof<PyType> Example_f@1204@01) (as int<PyType>  PyType))
-  (issubtype<Bool> (typeof<PyType> (__prim__int___box__ $Snap.unit 0)) (as int<PyType>  PyType))
-  (int___eq__%precondition ($Snap.combine $Snap.unit $Snap.unit) Example_f@1204@01 (__prim__int___box__ $Snap.unit 0))))
-(pop) ; 22
-(pop) ; 21
-; Joined path conditions
-(assert (=>
-  p1_23@1143@01
-  (and
-    (issubtype<Bool> (typeof<PyType> Example_f@1204@01) (as int<PyType>  PyType))
-    (issubtype<Bool> (typeof<PyType> (__prim__int___box__ $Snap.unit 0)) (as int<PyType>  PyType))
-    (int___eq__%precondition ($Snap.combine $Snap.unit $Snap.unit) Example_f@1204@01 (__prim__int___box__ $Snap.unit 0)))))
-(push) ; 21
-(assert (not (=>
-  p1_23@1143@01
-  (int___eq__ ($Snap.combine $Snap.unit $Snap.unit) Example_f@1204@01 (__prim__int___box__ $Snap.unit 0)))))
-(check-sat)
-; unsat
-(pop) ; 21
-; 0.00s
-; (get-info :all-statistics)
-(assert (=>
-  p1_23@1143@01
-  (int___eq__ ($Snap.combine $Snap.unit $Snap.unit) Example_f@1204@01 (__prim__int___box__ $Snap.unit 0))))
-; [eval] p2_23 ==> int___eq__(self_3.Example_fp, __prim__int___box__(0))
-(push) ; 21
-; [then-branch: 3382 | p2_23@1144@01 | dead]
-; [else-branch: 3382 | !(p2_23@1144@01) | live]
-(push) ; 22
-; [else-branch: 3382 | !(p2_23@1144@01)]
-(pop) ; 22
-(pop) ; 21
-; Joined path conditions
-; [eval] p1_23 ==> int___eq__(self.Example_g, __prim__int___box__(1))
-(push) ; 21
-(push) ; 22
-(set-option :timeout 10)
-(assert (not (not p1_23@1143@01)))
-(check-sat)
-; unknown
-(pop) ; 22
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3383 | p1_23@1143@01 | live]
-; [else-branch: 3383 | !(p1_23@1143@01) | dead]
-(set-option :timeout 0)
-(push) ; 22
-; [then-branch: 3383 | p1_23@1143@01]
-; [eval] int___eq__(self.Example_g, __prim__int___box__(1))
-; [eval] __prim__int___box__(1)
-(push) ; 23
-(pop) ; 23
-; Joined path conditions
-(push) ; 23
-; [eval] issubtype(typeof(self), int())
-; [eval] typeof(self)
-; [eval] int()
-(push) ; 24
-(assert (not (issubtype<Bool> (typeof<PyType> Example_g@1206@01) (as int<PyType>  PyType))))
-(check-sat)
-; unsat
-(pop) ; 24
-; 0.00s
-; (get-info :all-statistics)
-(assert (issubtype<Bool> (typeof<PyType> Example_g@1206@01) (as int<PyType>  PyType)))
-; [eval] issubtype(typeof(other), int())
-; [eval] typeof(other)
-; [eval] int()
-(push) ; 24
-(assert (not (issubtype<Bool> (typeof<PyType> (__prim__int___box__ $Snap.unit 1)) (as int<PyType>  PyType))))
-(check-sat)
-; unsat
-(pop) ; 24
-; 0.00s
-; (get-info :all-statistics)
-(assert (issubtype<Bool> (typeof<PyType> (__prim__int___box__ $Snap.unit 1)) (as int<PyType>  PyType)))
-(assert (int___eq__%precondition ($Snap.combine $Snap.unit $Snap.unit) Example_g@1206@01 (__prim__int___box__ $Snap.unit 1)))
-(pop) ; 23
-; Joined path conditions
-(assert (and
-  (issubtype<Bool> (typeof<PyType> Example_g@1206@01) (as int<PyType>  PyType))
-  (issubtype<Bool> (typeof<PyType> (__prim__int___box__ $Snap.unit 1)) (as int<PyType>  PyType))
-  (int___eq__%precondition ($Snap.combine $Snap.unit $Snap.unit) Example_g@1206@01 (__prim__int___box__ $Snap.unit 1))))
-(pop) ; 22
-(pop) ; 21
-; Joined path conditions
-(assert (=>
-  p1_23@1143@01
-  (and
-    (issubtype<Bool> (typeof<PyType> Example_g@1206@01) (as int<PyType>  PyType))
-    (issubtype<Bool> (typeof<PyType> (__prim__int___box__ $Snap.unit 1)) (as int<PyType>  PyType))
-    (int___eq__%precondition ($Snap.combine $Snap.unit $Snap.unit) Example_g@1206@01 (__prim__int___box__ $Snap.unit 1)))))
-(push) ; 21
-(assert (not (=>
-  p1_23@1143@01
-  (int___eq__ ($Snap.combine $Snap.unit $Snap.unit) Example_g@1206@01 (__prim__int___box__ $Snap.unit 1)))))
-(check-sat)
-; unsat
-(pop) ; 21
-; 0.00s
-; (get-info :all-statistics)
-(assert (=>
-  p1_23@1143@01
-  (int___eq__ ($Snap.combine $Snap.unit $Snap.unit) Example_g@1206@01 (__prim__int___box__ $Snap.unit 1))))
-; [eval] p2_23 ==> int___eq__(self_3.Example_gp, __prim__int___box__(1))
-(push) ; 21
-; [then-branch: 3384 | p2_23@1144@01 | dead]
-; [else-branch: 3384 | !(p2_23@1144@01) | live]
-(push) ; 22
-; [else-branch: 3384 | !(p2_23@1144@01)]
-(pop) ; 22
-(pop) ; 21
-; Joined path conditions
-; [eval] p1_23 ==> (forperm _r_36: Ref [MustInvokeBounded(_r_36)] :: false) && ((forperm _r_36: Ref [MustInvokeUnbounded(_r_36)] :: false) && ((forperm _r_36: Ref [_r_36.MustReleaseBounded] :: false) && (forperm _r_36: Ref [_r_36.MustReleaseUnbounded] :: false)))
-(push) ; 21
-(push) ; 22
-(set-option :timeout 10)
-(assert (not (not p1_23@1143@01)))
-(check-sat)
-; unknown
-(pop) ; 22
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3385 | p1_23@1143@01 | live]
-; [else-branch: 3385 | !(p1_23@1143@01) | dead]
-(set-option :timeout 0)
-(push) ; 22
-; [then-branch: 3385 | p1_23@1143@01]
-; [eval] (forperm _r_36: Ref [MustInvokeBounded(_r_36)] :: false) && ((forperm _r_36: Ref [MustInvokeUnbounded(_r_36)] :: false) && ((forperm _r_36: Ref [_r_36.MustReleaseBounded] :: false) && (forperm _r_36: Ref [_r_36.MustReleaseUnbounded] :: false)))
-; [eval] (forperm _r_36: Ref [MustInvokeBounded(_r_36)] :: false)
-(push) ; 23
-; [then-branch: 3386 | False | live]
-; [else-branch: 3386 | True | live]
-(push) ; 24
-; [then-branch: 3386 | False]
-(assert false)
-(pop) ; 24
-(push) ; 24
-; [else-branch: 3386 | True]
-; [eval] (forperm _r_36: Ref [MustInvokeUnbounded(_r_36)] :: false)
-(push) ; 25
-; [then-branch: 3387 | False | live]
-; [else-branch: 3387 | True | live]
-(push) ; 26
-; [then-branch: 3387 | False]
-(assert false)
-(pop) ; 26
-(push) ; 26
-; [else-branch: 3387 | True]
-; [eval] (forperm _r_36: Ref [_r_36.MustReleaseBounded] :: false)
-(push) ; 27
-; [then-branch: 3388 | False | live]
-; [else-branch: 3388 | True | live]
-(push) ; 28
-; [then-branch: 3388 | False]
-(assert false)
-(pop) ; 28
-(push) ; 28
-; [else-branch: 3388 | True]
-; [eval] (forperm _r_36: Ref [_r_36.MustReleaseUnbounded] :: false)
-(pop) ; 28
-(pop) ; 27
-; Joined path conditions
-; Joined path conditions
-(pop) ; 26
-(pop) ; 25
-; Joined path conditions
-; Joined path conditions
-(pop) ; 24
-(pop) ; 23
-; Joined path conditions
-; Joined path conditions
-(pop) ; 22
-(pop) ; 21
-; Joined path conditions
-; [eval] p2_23 ==> (forperm _r_36: Ref [MustInvokeBounded_0(_r_36)] :: false) && ((forperm _r_36: Ref [MustInvokeUnbounded_0(_r_36)] :: false) && ((forperm _r_36: Ref [_r_36.MustReleaseBoundedp] :: false) && (forperm _r_36: Ref [_r_36.MustReleaseUnboundedp] :: false)))
-(push) ; 21
-; [then-branch: 3389 | p2_23@1144@01 | dead]
-; [else-branch: 3389 | !(p2_23@1144@01) | live]
-(push) ; 22
-; [else-branch: 3389 | !(p2_23@1144@01)]
-(pop) ; 22
-(pop) ; 21
-; Joined path conditions
-(pop) ; 20
-(pop) ; 19
-(pop) ; 18
-(pop) ; 17
-(pop) ; 16
-(pop) ; 15
-; [eval] !p1_23
-; [then-branch: 3390 | !(p1_23@1143@01) | dead]
-; [else-branch: 3390 | p1_23@1143@01 | live]
-(push) ; 15
-; [else-branch: 3390 | p1_23@1143@01]
-(pop) ; 15
-(pop) ; 14
-(pop) ; 13
-; [eval] !p1_25
-; [then-branch: 3391 | !(p1_23@1143@01) | dead]
-; [else-branch: 3391 | p1_23@1143@01 | live]
-(push) ; 13
-; [else-branch: 3391 | p1_23@1143@01]
-(pop) ; 13
-(pop) ; 12
-(pop) ; 11
-; [eval] !p1_23
-; [then-branch: 3392 | !(p1_23@1143@01) | dead]
-; [else-branch: 3392 | p1_23@1143@01 | live]
-(push) ; 11
-; [else-branch: 3392 | p1_23@1143@01]
-(pop) ; 11
-(pop) ; 10
-(pop) ; 9
-; [eval] !p1_24
-; [then-branch: 3393 | !(p1_23@1143@01) | dead]
-; [else-branch: 3393 | p1_23@1143@01 | live]
-(push) ; 9
-; [else-branch: 3393 | p1_23@1143@01]
-(pop) ; 9
-(pop) ; 8
-(pop) ; 7
-; [eval] !p1_23
-; [then-branch: 3394 | !(p1_23@1143@01) | dead]
-; [else-branch: 3394 | p1_23@1143@01 | live]
-(push) ; 7
-; [else-branch: 3394 | p1_23@1143@01]
-(pop) ; 7
-(pop) ; 6
-(pop) ; 5
-(pop) ; 4
-(pop) ; 3
-(pop) ; 2
-(push) ; 2
-; [else-branch: 3242 | !(p1_23@1143@01)]
-(assert (not p1_23@1143@01))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01)))))))
-  $Snap.unit))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01)))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01)))))))))))
-(push) ; 3
-(set-option :timeout 10)
-(assert (not (not p2_23@1144@01)))
-(check-sat)
-; unknown
-(pop) ; 3
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 3
-(set-option :timeout 10)
-(assert (not p2_23@1144@01))
-(check-sat)
-; unknown
-(pop) ; 3
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3395 | p2_23@1144@01 | live]
-; [else-branch: 3395 | !(p2_23@1144@01) | live]
-(set-option :timeout 0)
-(push) ; 3
-; [then-branch: 3395 | p2_23@1144@01]
-(assert p2_23@1144@01)
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01)))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01))))))))))))
-; [then-branch: 3396 | p1_23@1143@01 | dead]
-; [else-branch: 3396 | !(p1_23@1143@01) | live]
-(push) ; 4
-; [else-branch: 3396 | !(p1_23@1143@01)]
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01)))))))))
-  $Snap.unit))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01)))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01)))))))))))))
-(push) ; 5
-(set-option :timeout 10)
-(assert (not (not p2_23@1144@01)))
-(check-sat)
-; unknown
-(pop) ; 5
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3397 | p2_23@1144@01 | live]
-; [else-branch: 3397 | !(p2_23@1144@01) | dead]
-(set-option :timeout 0)
-(push) ; 5
-; [then-branch: 3397 | p2_23@1144@01]
-(push) ; 6
-(set-option :timeout 10)
-(assert (not false))
-(check-sat)
-; unknown
-(pop) ; 6
-; 0.00s
-; (get-info :all-statistics)
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01))))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01)))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01))))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01)))))))))))
-  $Snap.unit))
-; [eval] p1_23 ==> issubtype(typeof(self), Example())
-(set-option :timeout 0)
-(push) ; 6
-; [then-branch: 3398 | p1_23@1143@01 | dead]
-; [else-branch: 3398 | !(p1_23@1143@01) | live]
-(push) ; 7
-; [else-branch: 3398 | !(p1_23@1143@01)]
-(pop) ; 7
-(pop) ; 6
-; Joined path conditions
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01)))))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01))))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01)))))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01))))))))))))
-  $Snap.unit))
-; [eval] p2_23 ==> issubtype(typeof(self_3), Example())
-(push) ; 6
-(push) ; 7
-(set-option :timeout 10)
-(assert (not (not p2_23@1144@01)))
-(check-sat)
-; unknown
-(pop) ; 7
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3399 | p2_23@1144@01 | live]
-; [else-branch: 3399 | !(p2_23@1144@01) | dead]
-(set-option :timeout 0)
-(push) ; 7
-; [then-branch: 3399 | p2_23@1144@01]
-; [eval] issubtype(typeof(self_3), Example())
-; [eval] typeof(self_3)
-; [eval] Example()
-(pop) ; 7
-(pop) ; 6
-; Joined path conditions
-(assert (=>
-  p2_23@1144@01
-  (issubtype<Bool> (typeof<PyType> self_3@1152@01) (as Example<PyType>  PyType))))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01))))))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01)))))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01))))))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01)))))))))))))
-  $Snap.unit))
-; [eval] p1_23 ==> self != null
-(push) ; 6
-; [then-branch: 3400 | p1_23@1143@01 | dead]
-; [else-branch: 3400 | !(p1_23@1143@01) | live]
-(push) ; 7
-; [else-branch: 3400 | !(p1_23@1143@01)]
-(pop) ; 7
-(pop) ; 6
-; Joined path conditions
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01)))))))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01))))))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01)))))))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01))))))))))))))
-  $Snap.unit))
-; [eval] p2_23 ==> self_3 != null
-(push) ; 6
-(push) ; 7
-(set-option :timeout 10)
-(assert (not (not p2_23@1144@01)))
-(check-sat)
-; unknown
-(pop) ; 7
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3401 | p2_23@1144@01 | live]
-; [else-branch: 3401 | !(p2_23@1144@01) | dead]
-(set-option :timeout 0)
-(push) ; 7
-; [then-branch: 3401 | p2_23@1144@01]
-; [eval] self_3 != null
-(pop) ; 7
-(pop) ; 6
-; Joined path conditions
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01))))))))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01)))))))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01))))))))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01)))))))))))))))
-  $Snap.unit))
-; [eval] p1_23 ==> true
-(push) ; 6
-; [then-branch: 3402 | p1_23@1143@01 | dead]
-; [else-branch: 3402 | !(p1_23@1143@01) | live]
-(push) ; 7
-; [else-branch: 3402 | !(p1_23@1143@01)]
-(pop) ; 7
-(pop) ; 6
-; Joined path conditions
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01)))))))))))))))
-  $Snap.unit))
-; [eval] p2_23 ==> true
-(push) ; 6
-(push) ; 7
-(set-option :timeout 10)
-(assert (not (not p2_23@1144@01)))
-(check-sat)
-; unknown
-(pop) ; 7
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3403 | p2_23@1144@01 | live]
-; [else-branch: 3403 | !(p2_23@1144@01) | dead]
-(set-option :timeout 0)
-(push) ; 7
-; [then-branch: 3403 | p2_23@1144@01]
-(pop) ; 7
-(pop) ; 6
-; Joined path conditions
-; State saturation: after contract
-(set-option :timeout 50)
-(check-sat)
-; unknown
-(set-option :timeout 0)
-(push) ; 6
-(declare-const $t@1207@01 $Snap)
-(assert (= $t@1207@01 ($Snap.combine ($Snap.first $t@1207@01) ($Snap.second $t@1207@01))))
-(assert (= ($Snap.first $t@1207@01) $Snap.unit))
-; [eval] p1_23 ==> (forperm _r_35: Ref [_r_35.MustReleaseBounded] :: Level(_r_35) <= _current_wait_level_156) && ((forperm _r_35: Ref [_r_35.MustReleaseUnbounded] :: Level(_r_35) <= _current_wait_level_156) && _residue_156 <= _current_wait_level_156)
-(push) ; 7
-; [then-branch: 3404 | p1_23@1143@01 | dead]
-; [else-branch: 3404 | !(p1_23@1143@01) | live]
-(push) ; 8
-; [else-branch: 3404 | !(p1_23@1143@01)]
-(pop) ; 8
-(pop) ; 7
-; Joined path conditions
-(assert (=
-  ($Snap.second $t@1207@01)
-  ($Snap.combine
-    ($Snap.first ($Snap.second $t@1207@01))
-    ($Snap.second ($Snap.second $t@1207@01)))))
-(assert (= ($Snap.first ($Snap.second $t@1207@01)) $Snap.unit))
-; [eval] p2_23 ==> (forperm _r_35: Ref [_r_35.MustReleaseBoundedp] :: Level(_r_35) <= _current_wait_level_156_0) && ((forperm _r_35: Ref [_r_35.MustReleaseUnboundedp] :: Level(_r_35) <= _current_wait_level_156_0) && _residue_156_0 <= _current_wait_level_156_0)
-(push) ; 7
-(push) ; 8
-(set-option :timeout 10)
-(assert (not (not p2_23@1144@01)))
-(check-sat)
-; unknown
-(pop) ; 8
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3405 | p2_23@1144@01 | live]
-; [else-branch: 3405 | !(p2_23@1144@01) | dead]
-(set-option :timeout 0)
-(push) ; 8
-; [then-branch: 3405 | p2_23@1144@01]
-; [eval] (forperm _r_35: Ref [_r_35.MustReleaseBoundedp] :: Level(_r_35) <= _current_wait_level_156_0) && ((forperm _r_35: Ref [_r_35.MustReleaseUnboundedp] :: Level(_r_35) <= _current_wait_level_156_0) && _residue_156_0 <= _current_wait_level_156_0)
-; [eval] (forperm _r_35: Ref [_r_35.MustReleaseBoundedp] :: Level(_r_35) <= _current_wait_level_156_0)
-(push) ; 9
-; [then-branch: 3406 | False | live]
-; [else-branch: 3406 | True | live]
-(push) ; 10
-; [then-branch: 3406 | False]
-(assert false)
-(pop) ; 10
-(push) ; 10
-; [else-branch: 3406 | True]
-; [eval] (forperm _r_35: Ref [_r_35.MustReleaseUnboundedp] :: Level(_r_35) <= _current_wait_level_156_0)
-(push) ; 11
-; [then-branch: 3407 | False | live]
-; [else-branch: 3407 | True | live]
-(push) ; 12
-; [then-branch: 3407 | False]
-(assert false)
-(pop) ; 12
-(push) ; 12
-; [else-branch: 3407 | True]
-; [eval] _residue_156_0 <= _current_wait_level_156_0
-(pop) ; 12
-(pop) ; 11
-; Joined path conditions
-; Joined path conditions
-(pop) ; 10
-(pop) ; 9
-; Joined path conditions
-; Joined path conditions
-(pop) ; 8
-(pop) ; 7
-; Joined path conditions
-(assert (=> p2_23@1144@01 (<= _residue_156_0@1150@01 _current_wait_level_156_0@1154@01)))
-(assert (=
-  ($Snap.second ($Snap.second $t@1207@01))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second $t@1207@01)))
-    ($Snap.second ($Snap.second ($Snap.second $t@1207@01))))))
-; [then-branch: 3408 | p1_23@1143@01 | dead]
-; [else-branch: 3408 | !(p1_23@1143@01) | live]
-(push) ; 7
-; [else-branch: 3408 | !(p1_23@1143@01)]
-(assert (= ($Snap.first ($Snap.second ($Snap.second $t@1207@01))) $Snap.unit))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second $t@1207@01)))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@1207@01))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1207@01)))))))
-(push) ; 8
-(set-option :timeout 10)
-(assert (not (not p2_23@1144@01)))
-(check-sat)
-; unknown
-(pop) ; 8
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3409 | p2_23@1144@01 | live]
-; [else-branch: 3409 | !(p2_23@1144@01) | dead]
-(set-option :timeout 0)
-(push) ; 8
-; [then-branch: 3409 | p2_23@1144@01]
-(assert (not (= self_3@1152@01 $Ref.null)))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1207@01))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1207@01)))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1207@01))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1207@01)))))
-  $Snap.unit))
-; [eval] p1_23 ==> issubtype(typeof(self.Example_f), int())
-(push) ; 9
-; [then-branch: 3410 | p1_23@1143@01 | dead]
-; [else-branch: 3410 | !(p1_23@1143@01) | live]
-(push) ; 10
-; [else-branch: 3410 | !(p1_23@1143@01)]
-(pop) ; 10
-(pop) ; 9
-; Joined path conditions
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1207@01)))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1207@01))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1207@01)))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1207@01))))))
-  $Snap.unit))
-; [eval] p2_23 ==> issubtype(typeof(self_3.Example_fp), int())
-(push) ; 9
-(push) ; 10
-(set-option :timeout 10)
-(assert (not (not p2_23@1144@01)))
-(check-sat)
-; unknown
-(pop) ; 10
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3411 | p2_23@1144@01 | live]
-; [else-branch: 3411 | !(p2_23@1144@01) | dead]
-(set-option :timeout 0)
-(push) ; 10
-; [then-branch: 3411 | p2_23@1144@01]
-; [eval] issubtype(typeof(self_3.Example_fp), int())
-; [eval] typeof(self_3.Example_fp)
-; [eval] int()
-(pop) ; 10
-(pop) ; 9
-; Joined path conditions
-(assert (=>
-  p2_23@1144@01
-  (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@1207@01)))))) (as int<PyType>  PyType))))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1207@01))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1207@01)))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1207@01))))))))))
-; [then-branch: 3412 | p1_23@1143@01 | dead]
-; [else-branch: 3412 | !(p1_23@1143@01) | live]
-(push) ; 9
-; [else-branch: 3412 | !(p1_23@1143@01)]
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1207@01)))))))
-  $Snap.unit))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1207@01)))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1207@01))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1207@01)))))))))))
-(push) ; 10
-(set-option :timeout 10)
-(assert (not (not p2_23@1144@01)))
-(check-sat)
-; unknown
-(pop) ; 10
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3413 | p2_23@1144@01 | live]
-; [else-branch: 3413 | !(p2_23@1144@01) | dead]
-(set-option :timeout 0)
-(push) ; 10
-; [then-branch: 3413 | p2_23@1144@01]
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1207@01))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1207@01)))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1207@01))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1207@01)))))))))
-  $Snap.unit))
-; [eval] p1_23 ==> issubtype(typeof(self.Example_g), int())
-(push) ; 11
-; [then-branch: 3414 | p1_23@1143@01 | dead]
-; [else-branch: 3414 | !(p1_23@1143@01) | live]
-(push) ; 12
-; [else-branch: 3414 | !(p1_23@1143@01)]
-(pop) ; 12
-(pop) ; 11
-; Joined path conditions
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1207@01)))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1207@01))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1207@01)))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1207@01))))))))))
-  $Snap.unit))
-; [eval] p2_23 ==> issubtype(typeof(self_3.Example_gp), int())
-(push) ; 11
-(push) ; 12
-(set-option :timeout 10)
-(assert (not (not p2_23@1144@01)))
-(check-sat)
-; unknown
-(pop) ; 12
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3415 | p2_23@1144@01 | live]
-; [else-branch: 3415 | !(p2_23@1144@01) | dead]
-(set-option :timeout 0)
-(push) ; 12
-; [then-branch: 3415 | p2_23@1144@01]
-; [eval] issubtype(typeof(self_3.Example_gp), int())
-; [eval] typeof(self_3.Example_gp)
-; [eval] int()
-(pop) ; 12
-(pop) ; 11
-; Joined path conditions
-(assert (=>
-  p2_23@1144@01
-  (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1207@01)))))))))) (as int<PyType>  PyType))))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1207@01))))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1207@01)))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1207@01))))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1207@01)))))))))))
-  $Snap.unit))
-; [eval] p1_23 ==> int___eq__(self.Example_f, __prim__int___box__(0))
-(push) ; 11
-; [then-branch: 3416 | p1_23@1143@01 | dead]
-; [else-branch: 3416 | !(p1_23@1143@01) | live]
-(push) ; 12
-; [else-branch: 3416 | !(p1_23@1143@01)]
-(pop) ; 12
-(pop) ; 11
-; Joined path conditions
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1207@01)))))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1207@01))))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1207@01)))))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1207@01))))))))))))
-  $Snap.unit))
-; [eval] p2_23 ==> int___eq__(self_3.Example_fp, __prim__int___box__(0))
-(push) ; 11
-(push) ; 12
-(set-option :timeout 10)
-(assert (not (not p2_23@1144@01)))
-(check-sat)
-; unknown
-(pop) ; 12
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3417 | p2_23@1144@01 | live]
-; [else-branch: 3417 | !(p2_23@1144@01) | dead]
-(set-option :timeout 0)
-(push) ; 12
-; [then-branch: 3417 | p2_23@1144@01]
-; [eval] int___eq__(self_3.Example_fp, __prim__int___box__(0))
-; [eval] __prim__int___box__(0)
-(push) ; 13
-(assert (__prim__int___box__%precondition $Snap.unit 0))
-(pop) ; 13
-; Joined path conditions
-(assert (__prim__int___box__%precondition $Snap.unit 0))
-(push) ; 13
-; [eval] issubtype(typeof(self), int())
-; [eval] typeof(self)
-; [eval] int()
-(push) ; 14
-(assert (not (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@1207@01)))))) (as int<PyType>  PyType))))
-(check-sat)
-; unsat
-(pop) ; 14
-; 0.00s
-; (get-info :all-statistics)
-(assert (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@1207@01)))))) (as int<PyType>  PyType)))
-; [eval] issubtype(typeof(other), int())
-; [eval] typeof(other)
-; [eval] int()
-(push) ; 14
-(assert (not (issubtype<Bool> (typeof<PyType> (__prim__int___box__ $Snap.unit 0)) (as int<PyType>  PyType))))
-(check-sat)
-; unsat
-(pop) ; 14
-; 0.00s
-; (get-info :all-statistics)
-(assert (issubtype<Bool> (typeof<PyType> (__prim__int___box__ $Snap.unit 0)) (as int<PyType>  PyType)))
-(assert (int___eq__%precondition ($Snap.combine $Snap.unit $Snap.unit) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@1207@01))))) (__prim__int___box__ $Snap.unit 0)))
-(pop) ; 13
-; Joined path conditions
-(assert (and
-  (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@1207@01)))))) (as int<PyType>  PyType))
-  (issubtype<Bool> (typeof<PyType> (__prim__int___box__ $Snap.unit 0)) (as int<PyType>  PyType))
-  (int___eq__%precondition ($Snap.combine $Snap.unit $Snap.unit) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@1207@01))))) (__prim__int___box__ $Snap.unit 0))))
-(pop) ; 12
-(pop) ; 11
-; Joined path conditions
-(assert (=>
-  p2_23@1144@01
-  (and
-    (__prim__int___box__%precondition $Snap.unit 0)
-    (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@1207@01)))))) (as int<PyType>  PyType))
-    (issubtype<Bool> (typeof<PyType> (__prim__int___box__ $Snap.unit 0)) (as int<PyType>  PyType))
-    (int___eq__%precondition ($Snap.combine $Snap.unit $Snap.unit) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@1207@01))))) (__prim__int___box__ $Snap.unit 0)))))
-(assert (=>
-  p2_23@1144@01
-  (int___eq__ ($Snap.combine $Snap.unit $Snap.unit) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@1207@01))))) (__prim__int___box__ $Snap.unit 0))))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1207@01))))))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1207@01)))))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1207@01))))))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1207@01)))))))))))))
-  $Snap.unit))
-; [eval] p1_23 ==> int___eq__(self.Example_g, __prim__int___box__(1))
-(push) ; 11
-; [then-branch: 3418 | p1_23@1143@01 | dead]
-; [else-branch: 3418 | !(p1_23@1143@01) | live]
-(push) ; 12
-; [else-branch: 3418 | !(p1_23@1143@01)]
-(pop) ; 12
-(pop) ; 11
-; Joined path conditions
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1207@01)))))))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1207@01))))))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1207@01)))))))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1207@01))))))))))))))
-  $Snap.unit))
-; [eval] p2_23 ==> int___eq__(self_3.Example_gp, __prim__int___box__(1))
-(push) ; 11
-(push) ; 12
-(set-option :timeout 10)
-(assert (not (not p2_23@1144@01)))
-(check-sat)
-; unknown
-(pop) ; 12
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3419 | p2_23@1144@01 | live]
-; [else-branch: 3419 | !(p2_23@1144@01) | dead]
-(set-option :timeout 0)
-(push) ; 12
-; [then-branch: 3419 | p2_23@1144@01]
-; [eval] int___eq__(self_3.Example_gp, __prim__int___box__(1))
-; [eval] __prim__int___box__(1)
-(push) ; 13
-(assert (__prim__int___box__%precondition $Snap.unit 1))
-(pop) ; 13
-; Joined path conditions
-(assert (__prim__int___box__%precondition $Snap.unit 1))
-(push) ; 13
-; [eval] issubtype(typeof(self), int())
-; [eval] typeof(self)
-; [eval] int()
-(push) ; 14
-(assert (not (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1207@01)))))))))) (as int<PyType>  PyType))))
-(check-sat)
-; unsat
-(pop) ; 14
-; 0.00s
-; (get-info :all-statistics)
-(assert (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1207@01)))))))))) (as int<PyType>  PyType)))
-; [eval] issubtype(typeof(other), int())
-; [eval] typeof(other)
-; [eval] int()
-(push) ; 14
-(assert (not (issubtype<Bool> (typeof<PyType> (__prim__int___box__ $Snap.unit 1)) (as int<PyType>  PyType))))
-(check-sat)
-; unsat
-(pop) ; 14
-; 0.00s
-; (get-info :all-statistics)
-(assert (issubtype<Bool> (typeof<PyType> (__prim__int___box__ $Snap.unit 1)) (as int<PyType>  PyType)))
-(assert (int___eq__%precondition ($Snap.combine $Snap.unit $Snap.unit) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1207@01))))))))) (__prim__int___box__ $Snap.unit 1)))
-(pop) ; 13
-; Joined path conditions
-(assert (and
-  (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1207@01)))))))))) (as int<PyType>  PyType))
-  (issubtype<Bool> (typeof<PyType> (__prim__int___box__ $Snap.unit 1)) (as int<PyType>  PyType))
-  (int___eq__%precondition ($Snap.combine $Snap.unit $Snap.unit) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1207@01))))))))) (__prim__int___box__ $Snap.unit 1))))
-(pop) ; 12
-(pop) ; 11
-; Joined path conditions
-(assert (=>
-  p2_23@1144@01
-  (and
-    (__prim__int___box__%precondition $Snap.unit 1)
-    (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1207@01)))))))))) (as int<PyType>  PyType))
-    (issubtype<Bool> (typeof<PyType> (__prim__int___box__ $Snap.unit 1)) (as int<PyType>  PyType))
-    (int___eq__%precondition ($Snap.combine $Snap.unit $Snap.unit) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1207@01))))))))) (__prim__int___box__ $Snap.unit 1)))))
-(assert (=>
-  p2_23@1144@01
-  (int___eq__ ($Snap.combine $Snap.unit $Snap.unit) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1207@01))))))))) (__prim__int___box__ $Snap.unit 1))))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1207@01))))))))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1207@01)))))))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1207@01))))))))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1207@01)))))))))))))))
-  $Snap.unit))
-; [eval] p1_23 ==> true
-(push) ; 11
-; [then-branch: 3420 | p1_23@1143@01 | dead]
-; [else-branch: 3420 | !(p1_23@1143@01) | live]
-(push) ; 12
-; [else-branch: 3420 | !(p1_23@1143@01)]
-(pop) ; 12
-(pop) ; 11
-; Joined path conditions
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1207@01)))))))))))))))
-  $Snap.unit))
-; [eval] p2_23 ==> true
-(push) ; 11
-(push) ; 12
-(set-option :timeout 10)
-(assert (not (not p2_23@1144@01)))
-(check-sat)
-; unknown
-(pop) ; 12
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3421 | p2_23@1144@01 | live]
-; [else-branch: 3421 | !(p2_23@1144@01) | dead]
-(set-option :timeout 0)
-(push) ; 12
-; [then-branch: 3421 | p2_23@1144@01]
-(pop) ; 12
-(pop) ; 11
-; Joined path conditions
-(pop) ; 10
-(pop) ; 9
-(pop) ; 8
-(pop) ; 7
-(pop) ; 6
-(push) ; 6
-; [exec]
-; var _err: Ref
-(declare-const _err@1208@01 $Ref)
-; [exec]
-; var _err_12: Ref
-(declare-const _err_12@1209@01 $Ref)
-; [exec]
-; var self_1: Ref
-(declare-const self_1@1210@01 $Ref)
-; [exec]
-; var self_1_0: Ref
-(declare-const self_1_0@1211@01 $Ref)
-; [exec]
-; var _cwl_156: Perm
-(declare-const _cwl_156@1212@01 $Perm)
-; [exec]
-; var _cwl_156_0: Perm
-(declare-const _cwl_156_0@1213@01 $Perm)
-; [exec]
-; var _method_measures_156: Seq[Measure$]
-(declare-const _method_measures_156@1214@01 Seq<Measure$>)
-; [exec]
-; var _method_measures_156_0: Seq[Measure$]
-(declare-const _method_measures_156_0@1215@01 Seq<Measure$>)
-; [exec]
-; var p1_24: Bool
-(declare-const p1_24@1216@01 Bool)
-; [exec]
-; var p2_24: Bool
-(declare-const p2_24@1217@01 Bool)
-; [exec]
-; var p3_11: Bool
-(declare-const p3_11@1218@01 Bool)
-; [exec]
-; var p4_11: Bool
-(declare-const p4_11@1219@01 Bool)
-; [exec]
-; var p1_25: Bool
-(declare-const p1_25@1220@01 Bool)
-; [exec]
-; var p2_25: Bool
-(declare-const p2_25@1221@01 Bool)
-; [exec]
-; var p3_12: Bool
-(declare-const p3_12@1222@01 Bool)
-; [exec]
-; var p4_12: Bool
-(declare-const p4_12@1223@01 Bool)
-; [exec]
-; inhale p1_23
-(declare-const $t@1224@01 $Snap)
-(assert (= $t@1224@01 $Snap.unit))
-(assert p1_23@1143@01)
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unsat
-; [then-branch: 3422 | p1_23@1143@01 | dead]
-; [else-branch: 3422 | !(p1_23@1143@01) | live]
-(set-option :timeout 0)
-(push) ; 7
-; [else-branch: 3422 | !(p1_23@1143@01)]
-(pop) ; 7
-; [eval] !p1_23
-; [then-branch: 3423 | !(p1_23@1143@01) | dead]
-; [else-branch: 3423 | p1_23@1143@01 | live]
-(push) ; 7
-; [else-branch: 3423 | p1_23@1143@01]
-(pop) ; 7
-(pop) ; 6
-(pop) ; 5
-(pop) ; 4
-(pop) ; 3
-(push) ; 3
-; [else-branch: 3395 | !(p2_23@1144@01)]
-(assert (not p2_23@1144@01))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01))))))))
-  $Snap.unit))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01)))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01))))))))))))
-; [then-branch: 3424 | p1_23@1143@01 | dead]
-; [else-branch: 3424 | !(p1_23@1143@01) | live]
-(push) ; 4
-; [else-branch: 3424 | !(p1_23@1143@01)]
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01)))))))))
-  $Snap.unit))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01)))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01)))))))))))))
-; [then-branch: 3425 | p2_23@1144@01 | dead]
-; [else-branch: 3425 | !(p2_23@1144@01) | live]
-(push) ; 5
-; [else-branch: 3425 | !(p2_23@1144@01)]
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01))))))))))
-  $Snap.unit))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01))))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01)))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01))))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01)))))))))))
-  $Snap.unit))
-; [eval] p1_23 ==> issubtype(typeof(self), Example())
-(push) ; 6
-; [then-branch: 3426 | p1_23@1143@01 | dead]
-; [else-branch: 3426 | !(p1_23@1143@01) | live]
-(push) ; 7
-; [else-branch: 3426 | !(p1_23@1143@01)]
-(pop) ; 7
-(pop) ; 6
-; Joined path conditions
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01)))))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01))))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01)))))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01))))))))))))
-  $Snap.unit))
-; [eval] p2_23 ==> issubtype(typeof(self_3), Example())
-(push) ; 6
-; [then-branch: 3427 | p2_23@1144@01 | dead]
-; [else-branch: 3427 | !(p2_23@1144@01) | live]
-(push) ; 7
-; [else-branch: 3427 | !(p2_23@1144@01)]
-(pop) ; 7
-(pop) ; 6
-; Joined path conditions
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01))))))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01)))))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01))))))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01)))))))))))))
-  $Snap.unit))
-; [eval] p1_23 ==> self != null
-(push) ; 6
-; [then-branch: 3428 | p1_23@1143@01 | dead]
-; [else-branch: 3428 | !(p1_23@1143@01) | live]
-(push) ; 7
-; [else-branch: 3428 | !(p1_23@1143@01)]
-(pop) ; 7
-(pop) ; 6
-; Joined path conditions
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01)))))))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01))))))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01)))))))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01))))))))))))))
-  $Snap.unit))
-; [eval] p2_23 ==> self_3 != null
-(push) ; 6
-; [then-branch: 3429 | p2_23@1144@01 | dead]
-; [else-branch: 3429 | !(p2_23@1144@01) | live]
-(push) ; 7
-; [else-branch: 3429 | !(p2_23@1144@01)]
-(pop) ; 7
-(pop) ; 6
-; Joined path conditions
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01))))))))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01)))))))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01))))))))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01)))))))))))))))
-  $Snap.unit))
-; [eval] p1_23 ==> true
-(push) ; 6
-; [then-branch: 3430 | p1_23@1143@01 | dead]
-; [else-branch: 3430 | !(p1_23@1143@01) | live]
-(push) ; 7
-; [else-branch: 3430 | !(p1_23@1143@01)]
-(pop) ; 7
-(pop) ; 6
-; Joined path conditions
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1155@01)))))))))))))))
-  $Snap.unit))
-; [eval] p2_23 ==> true
-(push) ; 6
-; [then-branch: 3431 | p2_23@1144@01 | dead]
-; [else-branch: 3431 | !(p2_23@1144@01) | live]
-(push) ; 7
-; [else-branch: 3431 | !(p2_23@1144@01)]
-(pop) ; 7
-(pop) ; 6
-; Joined path conditions
-; State saturation: after contract
-(set-option :timeout 50)
-(check-sat)
-; unknown
-(set-option :timeout 0)
-(push) ; 6
-(declare-const $t@1225@01 $Snap)
-(assert (= $t@1225@01 ($Snap.combine ($Snap.first $t@1225@01) ($Snap.second $t@1225@01))))
-(assert (= ($Snap.first $t@1225@01) $Snap.unit))
-; [eval] p1_23 ==> (forperm _r_35: Ref [_r_35.MustReleaseBounded] :: Level(_r_35) <= _current_wait_level_156) && ((forperm _r_35: Ref [_r_35.MustReleaseUnbounded] :: Level(_r_35) <= _current_wait_level_156) && _residue_156 <= _current_wait_level_156)
-(push) ; 7
-; [then-branch: 3432 | p1_23@1143@01 | dead]
-; [else-branch: 3432 | !(p1_23@1143@01) | live]
-(push) ; 8
-; [else-branch: 3432 | !(p1_23@1143@01)]
-(pop) ; 8
-(pop) ; 7
-; Joined path conditions
-(assert (=
-  ($Snap.second $t@1225@01)
-  ($Snap.combine
-    ($Snap.first ($Snap.second $t@1225@01))
-    ($Snap.second ($Snap.second $t@1225@01)))))
-(assert (= ($Snap.first ($Snap.second $t@1225@01)) $Snap.unit))
-; [eval] p2_23 ==> (forperm _r_35: Ref [_r_35.MustReleaseBoundedp] :: Level(_r_35) <= _current_wait_level_156_0) && ((forperm _r_35: Ref [_r_35.MustReleaseUnboundedp] :: Level(_r_35) <= _current_wait_level_156_0) && _residue_156_0 <= _current_wait_level_156_0)
-(push) ; 7
-; [then-branch: 3433 | p2_23@1144@01 | dead]
-; [else-branch: 3433 | !(p2_23@1144@01) | live]
-(push) ; 8
-; [else-branch: 3433 | !(p2_23@1144@01)]
-(pop) ; 8
-(pop) ; 7
-; Joined path conditions
-(assert (=
-  ($Snap.second ($Snap.second $t@1225@01))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second $t@1225@01)))
-    ($Snap.second ($Snap.second ($Snap.second $t@1225@01))))))
-; [then-branch: 3434 | p1_23@1143@01 | dead]
-; [else-branch: 3434 | !(p1_23@1143@01) | live]
-(push) ; 7
-; [else-branch: 3434 | !(p1_23@1143@01)]
-(assert (= ($Snap.first ($Snap.second ($Snap.second $t@1225@01))) $Snap.unit))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second $t@1225@01)))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@1225@01))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1225@01)))))))
-; [then-branch: 3435 | p2_23@1144@01 | dead]
-; [else-branch: 3435 | !(p2_23@1144@01) | live]
-(push) ; 8
-; [else-branch: 3435 | !(p2_23@1144@01)]
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@1225@01))))
-  $Snap.unit))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1225@01))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1225@01)))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1225@01))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1225@01)))))
-  $Snap.unit))
-; [eval] p1_23 ==> issubtype(typeof(self.Example_f), int())
-(push) ; 9
-; [then-branch: 3436 | p1_23@1143@01 | dead]
-; [else-branch: 3436 | !(p1_23@1143@01) | live]
-(push) ; 10
-; [else-branch: 3436 | !(p1_23@1143@01)]
-(pop) ; 10
-(pop) ; 9
-; Joined path conditions
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1225@01)))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1225@01))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1225@01)))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1225@01))))))
-  $Snap.unit))
-; [eval] p2_23 ==> issubtype(typeof(self_3.Example_fp), int())
-(push) ; 9
-; [then-branch: 3437 | p2_23@1144@01 | dead]
-; [else-branch: 3437 | !(p2_23@1144@01) | live]
-(push) ; 10
-; [else-branch: 3437 | !(p2_23@1144@01)]
-(pop) ; 10
-(pop) ; 9
-; Joined path conditions
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1225@01))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1225@01)))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1225@01))))))))))
-; [then-branch: 3438 | p1_23@1143@01 | dead]
-; [else-branch: 3438 | !(p1_23@1143@01) | live]
-(push) ; 9
-; [else-branch: 3438 | !(p1_23@1143@01)]
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1225@01)))))))
-  $Snap.unit))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1225@01)))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1225@01))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1225@01)))))))))))
-; [then-branch: 3439 | p2_23@1144@01 | dead]
-; [else-branch: 3439 | !(p2_23@1144@01) | live]
-(push) ; 10
-; [else-branch: 3439 | !(p2_23@1144@01)]
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1225@01))))))))
-  $Snap.unit))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1225@01))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1225@01)))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1225@01))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1225@01)))))))))
-  $Snap.unit))
-; [eval] p1_23 ==> issubtype(typeof(self.Example_g), int())
-(push) ; 11
-; [then-branch: 3440 | p1_23@1143@01 | dead]
-; [else-branch: 3440 | !(p1_23@1143@01) | live]
-(push) ; 12
-; [else-branch: 3440 | !(p1_23@1143@01)]
-(pop) ; 12
-(pop) ; 11
-; Joined path conditions
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1225@01)))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1225@01))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1225@01)))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1225@01))))))))))
-  $Snap.unit))
-; [eval] p2_23 ==> issubtype(typeof(self_3.Example_gp), int())
-(push) ; 11
-; [then-branch: 3441 | p2_23@1144@01 | dead]
-; [else-branch: 3441 | !(p2_23@1144@01) | live]
-(push) ; 12
-; [else-branch: 3441 | !(p2_23@1144@01)]
-(pop) ; 12
-(pop) ; 11
-; Joined path conditions
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1225@01))))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1225@01)))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1225@01))))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1225@01)))))))))))
-  $Snap.unit))
-; [eval] p1_23 ==> int___eq__(self.Example_f, __prim__int___box__(0))
-(push) ; 11
-; [then-branch: 3442 | p1_23@1143@01 | dead]
-; [else-branch: 3442 | !(p1_23@1143@01) | live]
-(push) ; 12
-; [else-branch: 3442 | !(p1_23@1143@01)]
-(pop) ; 12
-(pop) ; 11
-; Joined path conditions
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1225@01)))))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1225@01))))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1225@01)))))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1225@01))))))))))))
-  $Snap.unit))
-; [eval] p2_23 ==> int___eq__(self_3.Example_fp, __prim__int___box__(0))
-(push) ; 11
-; [then-branch: 3443 | p2_23@1144@01 | dead]
-; [else-branch: 3443 | !(p2_23@1144@01) | live]
-(push) ; 12
-; [else-branch: 3443 | !(p2_23@1144@01)]
-(pop) ; 12
-(pop) ; 11
-; Joined path conditions
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1225@01))))))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1225@01)))))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1225@01))))))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1225@01)))))))))))))
-  $Snap.unit))
-; [eval] p1_23 ==> int___eq__(self.Example_g, __prim__int___box__(1))
-(push) ; 11
-; [then-branch: 3444 | p1_23@1143@01 | dead]
-; [else-branch: 3444 | !(p1_23@1143@01) | live]
-(push) ; 12
-; [else-branch: 3444 | !(p1_23@1143@01)]
-(pop) ; 12
-(pop) ; 11
-; Joined path conditions
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1225@01)))))))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1225@01))))))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1225@01)))))))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1225@01))))))))))))))
-  $Snap.unit))
-; [eval] p2_23 ==> int___eq__(self_3.Example_gp, __prim__int___box__(1))
-(push) ; 11
-; [then-branch: 3445 | p2_23@1144@01 | dead]
-; [else-branch: 3445 | !(p2_23@1144@01) | live]
-(push) ; 12
-; [else-branch: 3445 | !(p2_23@1144@01)]
-(pop) ; 12
-(pop) ; 11
-; Joined path conditions
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1225@01))))))))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1225@01)))))))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1225@01))))))))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1225@01)))))))))))))))
-  $Snap.unit))
-; [eval] p1_23 ==> true
-(push) ; 11
-; [then-branch: 3446 | p1_23@1143@01 | dead]
-; [else-branch: 3446 | !(p1_23@1143@01) | live]
-(push) ; 12
-; [else-branch: 3446 | !(p1_23@1143@01)]
-(pop) ; 12
-(pop) ; 11
-; Joined path conditions
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1225@01)))))))))))))))
-  $Snap.unit))
-; [eval] p2_23 ==> true
-(push) ; 11
-; [then-branch: 3447 | p2_23@1144@01 | dead]
-; [else-branch: 3447 | !(p2_23@1144@01) | live]
-(push) ; 12
-; [else-branch: 3447 | !(p2_23@1144@01)]
-(pop) ; 12
-(pop) ; 11
-; Joined path conditions
-(pop) ; 10
-(pop) ; 9
-(pop) ; 8
-(pop) ; 7
-(pop) ; 6
-(push) ; 6
-; [exec]
-; var _err: Ref
-(declare-const _err@1226@01 $Ref)
-; [exec]
-; var _err_12: Ref
-(declare-const _err_12@1227@01 $Ref)
-; [exec]
-; var self_1: Ref
-(declare-const self_1@1228@01 $Ref)
-; [exec]
-; var self_1_0: Ref
-(declare-const self_1_0@1229@01 $Ref)
-; [exec]
-; var _cwl_156: Perm
-(declare-const _cwl_156@1230@01 $Perm)
-; [exec]
-; var _cwl_156_0: Perm
-(declare-const _cwl_156_0@1231@01 $Perm)
-; [exec]
-; var _method_measures_156: Seq[Measure$]
-(declare-const _method_measures_156@1232@01 Seq<Measure$>)
-; [exec]
-; var _method_measures_156_0: Seq[Measure$]
-(declare-const _method_measures_156_0@1233@01 Seq<Measure$>)
-; [exec]
-; var p1_24: Bool
-(declare-const p1_24@1234@01 Bool)
-; [exec]
-; var p2_24: Bool
-(declare-const p2_24@1235@01 Bool)
-; [exec]
-; var p3_11: Bool
-(declare-const p3_11@1236@01 Bool)
-; [exec]
-; var p4_11: Bool
-(declare-const p4_11@1237@01 Bool)
-; [exec]
-; var p1_25: Bool
-(declare-const p1_25@1238@01 Bool)
-; [exec]
-; var p2_25: Bool
-(declare-const p2_25@1239@01 Bool)
-; [exec]
-; var p3_12: Bool
-(declare-const p3_12@1240@01 Bool)
-; [exec]
-; var p4_12: Bool
-(declare-const p4_12@1241@01 Bool)
-; [exec]
-; inhale p1_23
-(declare-const $t@1242@01 $Snap)
-(assert (= $t@1242@01 $Snap.unit))
-(assert p1_23@1143@01)
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unsat
-; [then-branch: 3448 | p1_23@1143@01 | dead]
-; [else-branch: 3448 | !(p1_23@1143@01) | live]
-(set-option :timeout 0)
-(push) ; 7
-; [else-branch: 3448 | !(p1_23@1143@01)]
-(pop) ; 7
-; [eval] !p1_23
-; [then-branch: 3449 | !(p1_23@1143@01) | dead]
-; [else-branch: 3449 | p1_23@1143@01 | live]
-(push) ; 7
-; [else-branch: 3449 | p1_23@1143@01]
-(pop) ; 7
-(pop) ; 6
-(pop) ; 5
-(pop) ; 4
-(pop) ; 3
-(pop) ; 2
-(pop) ; 1
-; ---------- StringContainer___init__ ----------
-(declare-const p1_26@1243@01 Bool)
-(declare-const p2_26@1244@01 Bool)
-(declare-const _cthread_157@1245@01 $Ref)
-(declare-const _cthread_157_0@1246@01 $Ref)
-(declare-const _caller_measures_157@1247@01 Seq<Measure$>)
-(declare-const _caller_measures_157_0@1248@01 Seq<Measure$>)
-(declare-const _residue_157@1249@01 $Perm)
-(declare-const _residue_157_0@1250@01 $Perm)
-(declare-const self_0@1251@01 $Ref)
-(declare-const self_0_0@1252@01 $Ref)
-(declare-const s@1253@01 $Ref)
-(declare-const s_1@1254@01 $Ref)
-(declare-const _current_wait_level_157@1255@01 $Perm)
-(declare-const _current_wait_level_157_0@1256@01 $Perm)
-(declare-const p1_26@1257@01 Bool)
-(declare-const p2_26@1258@01 Bool)
-(declare-const _cthread_157@1259@01 $Ref)
-(declare-const _cthread_157_0@1260@01 $Ref)
-(declare-const _caller_measures_157@1261@01 Seq<Measure$>)
-(declare-const _caller_measures_157_0@1262@01 Seq<Measure$>)
-(declare-const _residue_157@1263@01 $Perm)
-(declare-const _residue_157_0@1264@01 $Perm)
-(declare-const self_0@1265@01 $Ref)
-(declare-const self_0_0@1266@01 $Ref)
-(declare-const s@1267@01 $Ref)
-(declare-const s_1@1268@01 $Ref)
-(declare-const _current_wait_level_157@1269@01 $Perm)
-(declare-const _current_wait_level_157_0@1270@01 $Perm)
-(push) ; 1
-(declare-const $t@1271@01 $Snap)
-(assert (= $t@1271@01 ($Snap.combine ($Snap.first $t@1271@01) ($Snap.second $t@1271@01))))
-(assert (= ($Snap.first $t@1271@01) $Snap.unit))
-; [eval] p1_26 ==> _cthread_157 != null
-(push) ; 2
-(push) ; 3
-(set-option :timeout 10)
-(assert (not (not p1_26@1257@01)))
-(check-sat)
-; unknown
-(pop) ; 3
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 3
-(set-option :timeout 10)
-(assert (not p1_26@1257@01))
-(check-sat)
-; unknown
-(pop) ; 3
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3450 | p1_26@1257@01 | live]
-; [else-branch: 3450 | !(p1_26@1257@01) | live]
-(set-option :timeout 0)
-(push) ; 3
-; [then-branch: 3450 | p1_26@1257@01]
-(assert p1_26@1257@01)
-; [eval] _cthread_157 != null
-(pop) ; 3
-(push) ; 3
-; [else-branch: 3450 | !(p1_26@1257@01)]
-(assert (not p1_26@1257@01))
-(pop) ; 3
-(pop) ; 2
-; Joined path conditions
-; Joined path conditions
-(assert (or (not p1_26@1257@01) p1_26@1257@01))
-(assert (=> p1_26@1257@01 (not (= _cthread_157@1259@01 $Ref.null))))
-(assert (=
-  ($Snap.second $t@1271@01)
-  ($Snap.combine
-    ($Snap.first ($Snap.second $t@1271@01))
-    ($Snap.second ($Snap.second $t@1271@01)))))
-(assert (= ($Snap.first ($Snap.second $t@1271@01)) $Snap.unit))
-; [eval] p2_26 ==> _cthread_157_0 != null
-(push) ; 2
-(push) ; 3
-(set-option :timeout 10)
-(assert (not (not p2_26@1258@01)))
-(check-sat)
-; unknown
-(pop) ; 3
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 3
-(set-option :timeout 10)
-(assert (not p2_26@1258@01))
-(check-sat)
-; unknown
-(pop) ; 3
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3451 | p2_26@1258@01 | live]
-; [else-branch: 3451 | !(p2_26@1258@01) | live]
-(set-option :timeout 0)
-(push) ; 3
-; [then-branch: 3451 | p2_26@1258@01]
-(assert p2_26@1258@01)
-; [eval] _cthread_157_0 != null
-(pop) ; 3
-(push) ; 3
-; [else-branch: 3451 | !(p2_26@1258@01)]
-(assert (not p2_26@1258@01))
-(pop) ; 3
-(pop) ; 2
-; Joined path conditions
-; Joined path conditions
-(assert (or (not p2_26@1258@01) p2_26@1258@01))
-(assert (=> p2_26@1258@01 (not (= _cthread_157_0@1260@01 $Ref.null))))
-(assert (=
-  ($Snap.second ($Snap.second $t@1271@01))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second $t@1271@01)))
-    ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))
-(assert (= ($Snap.first ($Snap.second ($Snap.second $t@1271@01))) $Snap.unit))
-; [eval] p1_26 ==> issubtype(typeof(_cthread_157), Thread_0())
-(push) ; 2
-(push) ; 3
-(set-option :timeout 10)
-(assert (not (not p1_26@1257@01)))
-(check-sat)
-; unknown
-(pop) ; 3
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 3
-(set-option :timeout 10)
-(assert (not p1_26@1257@01))
-(check-sat)
-; unknown
-(pop) ; 3
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3452 | p1_26@1257@01 | live]
-; [else-branch: 3452 | !(p1_26@1257@01) | live]
-(set-option :timeout 0)
-(push) ; 3
-; [then-branch: 3452 | p1_26@1257@01]
-(assert p1_26@1257@01)
-; [eval] issubtype(typeof(_cthread_157), Thread_0())
-; [eval] typeof(_cthread_157)
-; [eval] Thread_0()
-(pop) ; 3
-(push) ; 3
-; [else-branch: 3452 | !(p1_26@1257@01)]
-(assert (not p1_26@1257@01))
-(pop) ; 3
-(pop) ; 2
-; Joined path conditions
-; Joined path conditions
-(assert (=>
-  p1_26@1257@01
-  (issubtype<Bool> (typeof<PyType> _cthread_157@1259@01) (as Thread_0<PyType>  PyType))))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))
-  $Snap.unit))
-; [eval] p2_26 ==> issubtype(typeof(_cthread_157_0), Thread_0())
-(push) ; 2
-(push) ; 3
-(set-option :timeout 10)
-(assert (not (not p2_26@1258@01)))
-(check-sat)
-; unknown
-(pop) ; 3
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 3
-(set-option :timeout 10)
-(assert (not p2_26@1258@01))
-(check-sat)
-; unknown
-(pop) ; 3
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3453 | p2_26@1258@01 | live]
-; [else-branch: 3453 | !(p2_26@1258@01) | live]
-(set-option :timeout 0)
-(push) ; 3
-; [then-branch: 3453 | p2_26@1258@01]
-(assert p2_26@1258@01)
-; [eval] issubtype(typeof(_cthread_157_0), Thread_0())
-; [eval] typeof(_cthread_157_0)
-; [eval] Thread_0()
-(pop) ; 3
-(push) ; 3
-; [else-branch: 3453 | !(p2_26@1258@01)]
-(assert (not p2_26@1258@01))
-(pop) ; 3
-(pop) ; 2
-; Joined path conditions
-; Joined path conditions
-(assert (=>
-  p2_26@1258@01
-  (issubtype<Bool> (typeof<PyType> _cthread_157_0@1260@01) (as Thread_0<PyType>  PyType))))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))
-  $Snap.unit))
-; [eval] p1_26 ==> self_0 != null
-(push) ; 2
-(push) ; 3
-(set-option :timeout 10)
-(assert (not (not p1_26@1257@01)))
-(check-sat)
-; unknown
-(pop) ; 3
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 3
-(set-option :timeout 10)
-(assert (not p1_26@1257@01))
-(check-sat)
-; unknown
-(pop) ; 3
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3454 | p1_26@1257@01 | live]
-; [else-branch: 3454 | !(p1_26@1257@01) | live]
-(set-option :timeout 0)
-(push) ; 3
-; [then-branch: 3454 | p1_26@1257@01]
-(assert p1_26@1257@01)
-; [eval] self_0 != null
-(pop) ; 3
-(push) ; 3
-; [else-branch: 3454 | !(p1_26@1257@01)]
-(assert (not p1_26@1257@01))
-(pop) ; 3
-(pop) ; 2
-; Joined path conditions
-; Joined path conditions
-(assert (=> p1_26@1257@01 (not (= self_0@1265@01 $Ref.null))))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))
-  $Snap.unit))
-; [eval] p2_26 ==> self_0_0 != null
-(push) ; 2
-(push) ; 3
-(set-option :timeout 10)
-(assert (not (not p2_26@1258@01)))
-(check-sat)
-; unknown
-(pop) ; 3
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 3
-(set-option :timeout 10)
-(assert (not p2_26@1258@01))
-(check-sat)
-; unknown
-(pop) ; 3
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3455 | p2_26@1258@01 | live]
-; [else-branch: 3455 | !(p2_26@1258@01) | live]
-(set-option :timeout 0)
-(push) ; 3
-; [then-branch: 3455 | p2_26@1258@01]
-(assert p2_26@1258@01)
-; [eval] self_0_0 != null
-(pop) ; 3
-(push) ; 3
-; [else-branch: 3455 | !(p2_26@1258@01)]
-(assert (not p2_26@1258@01))
-(pop) ; 3
-(pop) ; 2
-; Joined path conditions
-; Joined path conditions
-(assert (=> p2_26@1258@01 (not (= self_0_0@1266@01 $Ref.null))))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))))
-(push) ; 2
-(set-option :timeout 10)
-(assert (not (not p1_26@1257@01)))
-(check-sat)
-; unknown
-(pop) ; 2
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 2
-(set-option :timeout 10)
-(assert (not p1_26@1257@01))
-(check-sat)
-; unknown
-(pop) ; 2
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3456 | p1_26@1257@01 | live]
-; [else-branch: 3456 | !(p1_26@1257@01) | live]
-(set-option :timeout 0)
-(push) ; 2
-; [then-branch: 3456 | p1_26@1257@01]
-(assert p1_26@1257@01)
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))))
-(push) ; 3
-(set-option :timeout 10)
-(assert (not (not p2_26@1258@01)))
-(check-sat)
-; unknown
-(pop) ; 3
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 3
-(set-option :timeout 10)
-(assert (not p2_26@1258@01))
-(check-sat)
-; unknown
-(pop) ; 3
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3457 | p2_26@1258@01 | live]
-; [else-branch: 3457 | !(p2_26@1258@01) | live]
-(set-option :timeout 0)
-(push) ; 3
-; [then-branch: 3457 | p2_26@1258@01]
-(assert p2_26@1258@01)
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))
-  $Snap.unit))
-; [eval] p1_26 ==> issubtype(typeof(self_0), StringContainer())
-(push) ; 4
-(push) ; 5
-(set-option :timeout 10)
-(assert (not (not p1_26@1257@01)))
-(check-sat)
-; unknown
-(pop) ; 5
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3458 | p1_26@1257@01 | live]
-; [else-branch: 3458 | !(p1_26@1257@01) | dead]
-(set-option :timeout 0)
-(push) ; 5
-; [then-branch: 3458 | p1_26@1257@01]
-; [eval] issubtype(typeof(self_0), StringContainer())
-; [eval] typeof(self_0)
-; [eval] StringContainer()
-(pop) ; 5
-(pop) ; 4
-; Joined path conditions
-(assert (=>
-  p1_26@1257@01
-  (issubtype<Bool> (typeof<PyType> self_0@1265@01) (as StringContainer<PyType>  PyType))))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))))
-  $Snap.unit))
-; [eval] p2_26 ==> issubtype(typeof(self_0_0), StringContainer())
-(push) ; 4
-(push) ; 5
-(set-option :timeout 10)
-(assert (not (not p2_26@1258@01)))
-(check-sat)
-; unknown
-(pop) ; 5
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3459 | p2_26@1258@01 | live]
-; [else-branch: 3459 | !(p2_26@1258@01) | dead]
-(set-option :timeout 0)
-(push) ; 5
-; [then-branch: 3459 | p2_26@1258@01]
-; [eval] issubtype(typeof(self_0_0), StringContainer())
-; [eval] typeof(self_0_0)
-; [eval] StringContainer()
-(pop) ; 5
-(pop) ; 4
-; Joined path conditions
-(assert (=>
-  p2_26@1258@01
-  (issubtype<Bool> (typeof<PyType> self_0_0@1266@01) (as StringContainer<PyType>  PyType))))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))))
-  $Snap.unit))
-; [eval] p1_26 ==> issubtype(typeof(s), str())
-(push) ; 4
-(push) ; 5
-(set-option :timeout 10)
-(assert (not (not p1_26@1257@01)))
-(check-sat)
-; unknown
-(pop) ; 5
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3460 | p1_26@1257@01 | live]
-; [else-branch: 3460 | !(p1_26@1257@01) | dead]
-(set-option :timeout 0)
-(push) ; 5
-; [then-branch: 3460 | p1_26@1257@01]
-; [eval] issubtype(typeof(s), str())
-; [eval] typeof(s)
-; [eval] str()
-(pop) ; 5
-(pop) ; 4
-; Joined path conditions
-(assert (=>
-  p1_26@1257@01
-  (issubtype<Bool> (typeof<PyType> s@1267@01) (as str<PyType>  PyType))))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))))))
-  $Snap.unit))
-; [eval] p2_26 ==> issubtype(typeof(s_1), str())
-(push) ; 4
-(push) ; 5
-(set-option :timeout 10)
-(assert (not (not p2_26@1258@01)))
-(check-sat)
-; unknown
-(pop) ; 5
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3461 | p2_26@1258@01 | live]
-; [else-branch: 3461 | !(p2_26@1258@01) | dead]
-(set-option :timeout 0)
-(push) ; 5
-; [then-branch: 3461 | p2_26@1258@01]
-; [eval] issubtype(typeof(s_1), str())
-; [eval] typeof(s_1)
-; [eval] str()
-(pop) ; 5
-(pop) ; 4
-; Joined path conditions
-(assert (=>
-  p2_26@1258@01
-  (issubtype<Bool> (typeof<PyType> s_1@1268@01) (as str<PyType>  PyType))))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))))))
-  $Snap.unit))
-; [eval] p1_26 ==> self_0 != null
-(push) ; 4
-(push) ; 5
-(set-option :timeout 10)
-(assert (not (not p1_26@1257@01)))
-(check-sat)
-; unknown
-(pop) ; 5
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3462 | p1_26@1257@01 | live]
-; [else-branch: 3462 | !(p1_26@1257@01) | dead]
-(set-option :timeout 0)
-(push) ; 5
-; [then-branch: 3462 | p1_26@1257@01]
-; [eval] self_0 != null
-(pop) ; 5
-(pop) ; 4
-; Joined path conditions
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))))))))
-  $Snap.unit))
-; [eval] p2_26 ==> self_0_0 != null
-(push) ; 4
-(push) ; 5
-(set-option :timeout 10)
-(assert (not (not p2_26@1258@01)))
-(check-sat)
-; unknown
-(pop) ; 5
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3463 | p2_26@1258@01 | live]
-; [else-branch: 3463 | !(p2_26@1258@01) | dead]
-(set-option :timeout 0)
-(push) ; 5
-; [then-branch: 3463 | p2_26@1258@01]
-; [eval] self_0_0 != null
-(pop) ; 5
-(pop) ; 4
-; Joined path conditions
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))))))))
-  $Snap.unit))
-; [eval] p1_26 ==> true
-(push) ; 4
-(push) ; 5
-(set-option :timeout 10)
-(assert (not (not p1_26@1257@01)))
-(check-sat)
-; unknown
-(pop) ; 5
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3464 | p1_26@1257@01 | live]
-; [else-branch: 3464 | !(p1_26@1257@01) | dead]
-(set-option :timeout 0)
-(push) ; 5
-; [then-branch: 3464 | p1_26@1257@01]
-(pop) ; 5
-(pop) ; 4
-; Joined path conditions
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))))))))
-  $Snap.unit))
-; [eval] p2_26 ==> true
-(push) ; 4
-(push) ; 5
-(set-option :timeout 10)
-(assert (not (not p2_26@1258@01)))
-(check-sat)
-; unknown
-(pop) ; 5
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3465 | p2_26@1258@01 | live]
-; [else-branch: 3465 | !(p2_26@1258@01) | dead]
-(set-option :timeout 0)
-(push) ; 5
-; [then-branch: 3465 | p2_26@1258@01]
-(pop) ; 5
-(pop) ; 4
-; Joined path conditions
-; State saturation: after contract
-(set-option :timeout 50)
-(check-sat)
-; unknown
-(set-option :timeout 0)
-(push) ; 4
-(declare-const $t@1272@01 $Snap)
-(assert (= $t@1272@01 ($Snap.combine ($Snap.first $t@1272@01) ($Snap.second $t@1272@01))))
-(assert (= ($Snap.first $t@1272@01) $Snap.unit))
-; [eval] p1_26 ==> (forperm _r_38: Ref [_r_38.MustReleaseBounded] :: Level(_r_38) <= _current_wait_level_157) && ((forperm _r_38: Ref [_r_38.MustReleaseUnbounded] :: Level(_r_38) <= _current_wait_level_157) && _residue_157 <= _current_wait_level_157)
-(push) ; 5
-(push) ; 6
-(set-option :timeout 10)
-(assert (not (not p1_26@1257@01)))
-(check-sat)
-; unknown
-(pop) ; 6
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3466 | p1_26@1257@01 | live]
-; [else-branch: 3466 | !(p1_26@1257@01) | dead]
-(set-option :timeout 0)
-(push) ; 6
-; [then-branch: 3466 | p1_26@1257@01]
-; [eval] (forperm _r_38: Ref [_r_38.MustReleaseBounded] :: Level(_r_38) <= _current_wait_level_157) && ((forperm _r_38: Ref [_r_38.MustReleaseUnbounded] :: Level(_r_38) <= _current_wait_level_157) && _residue_157 <= _current_wait_level_157)
-; [eval] (forperm _r_38: Ref [_r_38.MustReleaseBounded] :: Level(_r_38) <= _current_wait_level_157)
-(push) ; 7
-; [then-branch: 3467 | False | live]
-; [else-branch: 3467 | True | live]
-(push) ; 8
-; [then-branch: 3467 | False]
-(assert false)
-(pop) ; 8
-(push) ; 8
-; [else-branch: 3467 | True]
-; [eval] (forperm _r_38: Ref [_r_38.MustReleaseUnbounded] :: Level(_r_38) <= _current_wait_level_157)
-(push) ; 9
-; [then-branch: 3468 | False | live]
-; [else-branch: 3468 | True | live]
-(push) ; 10
-; [then-branch: 3468 | False]
-(assert false)
-(pop) ; 10
-(push) ; 10
-; [else-branch: 3468 | True]
-; [eval] _residue_157 <= _current_wait_level_157
-(pop) ; 10
-(pop) ; 9
-; Joined path conditions
-; Joined path conditions
-(pop) ; 8
-(pop) ; 7
-; Joined path conditions
-; Joined path conditions
-(pop) ; 6
-(pop) ; 5
-; Joined path conditions
-(assert (=> p1_26@1257@01 (<= _residue_157@1263@01 _current_wait_level_157@1269@01)))
-(assert (=
-  ($Snap.second $t@1272@01)
-  ($Snap.combine
-    ($Snap.first ($Snap.second $t@1272@01))
-    ($Snap.second ($Snap.second $t@1272@01)))))
-(assert (= ($Snap.first ($Snap.second $t@1272@01)) $Snap.unit))
-; [eval] p2_26 ==> (forperm _r_38: Ref [_r_38.MustReleaseBoundedp] :: Level(_r_38) <= _current_wait_level_157_0) && ((forperm _r_38: Ref [_r_38.MustReleaseUnboundedp] :: Level(_r_38) <= _current_wait_level_157_0) && _residue_157_0 <= _current_wait_level_157_0)
-(push) ; 5
-(push) ; 6
-(set-option :timeout 10)
-(assert (not (not p2_26@1258@01)))
-(check-sat)
-; unknown
-(pop) ; 6
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3469 | p2_26@1258@01 | live]
-; [else-branch: 3469 | !(p2_26@1258@01) | dead]
-(set-option :timeout 0)
-(push) ; 6
-; [then-branch: 3469 | p2_26@1258@01]
-; [eval] (forperm _r_38: Ref [_r_38.MustReleaseBoundedp] :: Level(_r_38) <= _current_wait_level_157_0) && ((forperm _r_38: Ref [_r_38.MustReleaseUnboundedp] :: Level(_r_38) <= _current_wait_level_157_0) && _residue_157_0 <= _current_wait_level_157_0)
-; [eval] (forperm _r_38: Ref [_r_38.MustReleaseBoundedp] :: Level(_r_38) <= _current_wait_level_157_0)
-(push) ; 7
-; [then-branch: 3470 | False | live]
-; [else-branch: 3470 | True | live]
-(push) ; 8
-; [then-branch: 3470 | False]
-(assert false)
-(pop) ; 8
-(push) ; 8
-; [else-branch: 3470 | True]
-; [eval] (forperm _r_38: Ref [_r_38.MustReleaseUnboundedp] :: Level(_r_38) <= _current_wait_level_157_0)
-(push) ; 9
-; [then-branch: 3471 | False | live]
-; [else-branch: 3471 | True | live]
-(push) ; 10
-; [then-branch: 3471 | False]
-(assert false)
-(pop) ; 10
-(push) ; 10
-; [else-branch: 3471 | True]
-; [eval] _residue_157_0 <= _current_wait_level_157_0
-(pop) ; 10
-(pop) ; 9
-; Joined path conditions
-; Joined path conditions
-(pop) ; 8
-(pop) ; 7
-; Joined path conditions
-; Joined path conditions
-(pop) ; 6
-(pop) ; 5
-; Joined path conditions
-(assert (=> p2_26@1258@01 (<= _residue_157_0@1264@01 _current_wait_level_157_0@1270@01)))
-(assert (=
-  ($Snap.second ($Snap.second $t@1272@01))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second $t@1272@01)))
-    ($Snap.second ($Snap.second ($Snap.second $t@1272@01))))))
-(push) ; 5
-(set-option :timeout 10)
-(assert (not (not p1_26@1257@01)))
-(check-sat)
-; unknown
-(pop) ; 5
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3472 | p1_26@1257@01 | live]
-; [else-branch: 3472 | !(p1_26@1257@01) | dead]
-(set-option :timeout 0)
-(push) ; 5
-; [then-branch: 3472 | p1_26@1257@01]
-(assert (not (= self_0@1265@01 $Ref.null)))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second $t@1272@01)))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@1272@01))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1272@01)))))))
-(push) ; 6
-(set-option :timeout 10)
-(assert (not (not p2_26@1258@01)))
-(check-sat)
-; unknown
-(pop) ; 6
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3473 | p2_26@1258@01 | live]
-; [else-branch: 3473 | !(p2_26@1258@01) | dead]
-(set-option :timeout 0)
-(push) ; 6
-; [then-branch: 3473 | p2_26@1258@01]
-(assert (not (= self_0_0@1266@01 $Ref.null)))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1272@01))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1272@01)))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1272@01))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1272@01)))))
-  $Snap.unit))
-; [eval] p1_26 ==> issubtype(typeof(self_0.StringContainer_s), str())
-(push) ; 7
-(push) ; 8
-(set-option :timeout 10)
-(assert (not (not p1_26@1257@01)))
-(check-sat)
-; unknown
-(pop) ; 8
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3474 | p1_26@1257@01 | live]
-; [else-branch: 3474 | !(p1_26@1257@01) | dead]
-(set-option :timeout 0)
-(push) ; 8
-; [then-branch: 3474 | p1_26@1257@01]
-; [eval] issubtype(typeof(self_0.StringContainer_s), str())
-; [eval] typeof(self_0.StringContainer_s)
-; [eval] str()
-(pop) ; 8
-(pop) ; 7
-; Joined path conditions
-(assert (=>
-  p1_26@1257@01
-  (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second $t@1272@01))))) (as str<PyType>  PyType))))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1272@01)))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1272@01))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1272@01)))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1272@01))))))
-  $Snap.unit))
-; [eval] p2_26 ==> issubtype(typeof(self_0_0.StringContainer_sp), str())
-(push) ; 7
-(push) ; 8
-(set-option :timeout 10)
-(assert (not (not p2_26@1258@01)))
-(check-sat)
-; unknown
-(pop) ; 8
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3475 | p2_26@1258@01 | live]
-; [else-branch: 3475 | !(p2_26@1258@01) | dead]
-(set-option :timeout 0)
-(push) ; 8
-; [then-branch: 3475 | p2_26@1258@01]
-; [eval] issubtype(typeof(self_0_0.StringContainer_sp), str())
-; [eval] typeof(self_0_0.StringContainer_sp)
-; [eval] str()
-(pop) ; 8
-(pop) ; 7
-; Joined path conditions
-(assert (=>
-  p2_26@1258@01
-  (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@1272@01)))))) (as str<PyType>  PyType))))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1272@01))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1272@01)))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1272@01))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1272@01)))))))
-  $Snap.unit))
-; [eval] p1_26 ==> str___eq__(self_0.StringContainer_s, s)
-(push) ; 7
-(push) ; 8
-(set-option :timeout 10)
-(assert (not (not p1_26@1257@01)))
-(check-sat)
-; unknown
-(pop) ; 8
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3476 | p1_26@1257@01 | live]
-; [else-branch: 3476 | !(p1_26@1257@01) | dead]
-(set-option :timeout 0)
-(push) ; 8
-; [then-branch: 3476 | p1_26@1257@01]
-; [eval] str___eq__(self_0.StringContainer_s, s)
-(push) ; 9
-; [eval] issubtype(typeof(self), str())
-; [eval] typeof(self)
-; [eval] str()
-(push) ; 10
-(assert (not (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second $t@1272@01))))) (as str<PyType>  PyType))))
-(check-sat)
-; unsat
-(pop) ; 10
-; 0.00s
-; (get-info :all-statistics)
-(assert (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second $t@1272@01))))) (as str<PyType>  PyType)))
-(assert (str___eq__%precondition $Snap.unit ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second $t@1272@01)))) s@1267@01))
-(pop) ; 9
-; Joined path conditions
-(assert (and
-  (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second $t@1272@01))))) (as str<PyType>  PyType))
-  (str___eq__%precondition $Snap.unit ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second $t@1272@01)))) s@1267@01)))
-(pop) ; 8
-(pop) ; 7
-; Joined path conditions
-(assert (=>
-  p1_26@1257@01
-  (and
-    (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second $t@1272@01))))) (as str<PyType>  PyType))
-    (str___eq__%precondition $Snap.unit ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second $t@1272@01)))) s@1267@01))))
-(assert (=>
-  p1_26@1257@01
-  (str___eq__ $Snap.unit ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second $t@1272@01)))) s@1267@01)))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1272@01)))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1272@01))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1272@01)))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1272@01))))))))
-  $Snap.unit))
-; [eval] p2_26 ==> str___eq__(self_0_0.StringContainer_sp, s_1)
-(push) ; 7
-(push) ; 8
-(set-option :timeout 10)
-(assert (not (not p2_26@1258@01)))
-(check-sat)
-; unknown
-(pop) ; 8
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3477 | p2_26@1258@01 | live]
-; [else-branch: 3477 | !(p2_26@1258@01) | dead]
-(set-option :timeout 0)
-(push) ; 8
-; [then-branch: 3477 | p2_26@1258@01]
-; [eval] str___eq__(self_0_0.StringContainer_sp, s_1)
-(push) ; 9
-; [eval] issubtype(typeof(self), str())
-; [eval] typeof(self)
-; [eval] str()
-(push) ; 10
-(assert (not (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@1272@01)))))) (as str<PyType>  PyType))))
-(check-sat)
-; unsat
-(pop) ; 10
-; 0.00s
-; (get-info :all-statistics)
-(assert (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@1272@01)))))) (as str<PyType>  PyType)))
-(assert (str___eq__%precondition $Snap.unit ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@1272@01))))) s_1@1268@01))
-(pop) ; 9
-; Joined path conditions
-(assert (and
-  (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@1272@01)))))) (as str<PyType>  PyType))
-  (str___eq__%precondition $Snap.unit ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@1272@01))))) s_1@1268@01)))
-(pop) ; 8
-(pop) ; 7
-; Joined path conditions
-(assert (=>
-  p2_26@1258@01
-  (and
-    (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@1272@01)))))) (as str<PyType>  PyType))
-    (str___eq__%precondition $Snap.unit ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@1272@01))))) s_1@1268@01))))
-(assert (=>
-  p2_26@1258@01
-  (str___eq__ $Snap.unit ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@1272@01))))) s_1@1268@01)))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1272@01))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1272@01)))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1272@01))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1272@01)))))))))
-  $Snap.unit))
-; [eval] p1_26 ==> true
-(push) ; 7
-(push) ; 8
-(set-option :timeout 10)
-(assert (not (not p1_26@1257@01)))
-(check-sat)
-; unknown
-(pop) ; 8
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3478 | p1_26@1257@01 | live]
-; [else-branch: 3478 | !(p1_26@1257@01) | dead]
-(set-option :timeout 0)
-(push) ; 8
-; [then-branch: 3478 | p1_26@1257@01]
-(pop) ; 8
-(pop) ; 7
-; Joined path conditions
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1272@01)))))))))
-  $Snap.unit))
-; [eval] p2_26 ==> true
-(push) ; 7
-(push) ; 8
-(set-option :timeout 10)
-(assert (not (not p2_26@1258@01)))
-(check-sat)
-; unknown
-(pop) ; 8
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3479 | p2_26@1258@01 | live]
-; [else-branch: 3479 | !(p2_26@1258@01) | dead]
-(set-option :timeout 0)
-(push) ; 8
-; [then-branch: 3479 | p2_26@1258@01]
-(pop) ; 8
-(pop) ; 7
-; Joined path conditions
-(pop) ; 6
-(pop) ; 5
-(pop) ; 4
-(push) ; 4
-; [exec]
-; var _err: Ref
-(declare-const _err@1273@01 $Ref)
-; [exec]
-; var _err_13: Ref
-(declare-const _err_13@1274@01 $Ref)
-; [exec]
-; var self_2: Ref
-(declare-const self_2@1275@01 $Ref)
-; [exec]
-; var self_2_0: Ref
-(declare-const self_2_0@1276@01 $Ref)
-; [exec]
-; var s_0: Ref
-(declare-const s_0@1277@01 $Ref)
-; [exec]
-; var s_0_0: Ref
-(declare-const s_0_0@1278@01 $Ref)
-; [exec]
-; var _cwl_157: Perm
-(declare-const _cwl_157@1279@01 $Perm)
-; [exec]
-; var _cwl_157_0: Perm
-(declare-const _cwl_157_0@1280@01 $Perm)
-; [exec]
-; var _method_measures_157: Seq[Measure$]
-(declare-const _method_measures_157@1281@01 Seq<Measure$>)
-; [exec]
-; var _method_measures_157_0: Seq[Measure$]
-(declare-const _method_measures_157_0@1282@01 Seq<Measure$>)
-; [exec]
-; var p1_27: Bool
-(declare-const p1_27@1283@01 Bool)
-; [exec]
-; var p2_27: Bool
-(declare-const p2_27@1284@01 Bool)
-; [exec]
-; var p3_13: Bool
-(declare-const p3_13@1285@01 Bool)
-; [exec]
-; var p4_13: Bool
-(declare-const p4_13@1286@01 Bool)
-; [exec]
-; inhale p1_26
-(declare-const $t@1287@01 $Snap)
-(assert (= $t@1287@01 $Snap.unit))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-(set-option :timeout 0)
-(push) ; 5
-(set-option :timeout 10)
-(assert (not (not p1_26@1257@01)))
-(check-sat)
-; unknown
-(pop) ; 5
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3480 | p1_26@1257@01 | live]
-; [else-branch: 3480 | !(p1_26@1257@01) | dead]
-(set-option :timeout 0)
-(push) ; 5
-; [then-branch: 3480 | p1_26@1257@01]
-; [exec]
-; _method_measures_157 := Seq[Measure$]()
-; [eval] Seq[Measure$]()
-; [exec]
-; inhale typeof(self_0) == StringContainer()
-(declare-const $t@1288@01 $Snap)
-(assert (= $t@1288@01 $Snap.unit))
-; [eval] typeof(self_0) == StringContainer()
-; [eval] typeof(self_0)
-; [eval] StringContainer()
-(assert (= (typeof<PyType> self_0@1265@01) (as StringContainer<PyType>  PyType)))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [exec]
-; _err := null
-; [exec]
-; self_2 := self_0
-; [exec]
-; s_0 := s
-(set-option :timeout 0)
-(push) ; 6
-(set-option :timeout 10)
-(assert (not (not p2_26@1258@01)))
-(check-sat)
-; unknown
-(pop) ; 6
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3481 | p2_26@1258@01 | live]
-; [else-branch: 3481 | !(p2_26@1258@01) | dead]
-(set-option :timeout 0)
-(push) ; 6
-; [then-branch: 3481 | p2_26@1258@01]
-; [exec]
-; _method_measures_157_0 := Seq[Measure$]()
-; [eval] Seq[Measure$]()
-; [exec]
-; inhale typeof(self_0_0) == StringContainer()
-(declare-const $t@1289@01 $Snap)
-(assert (= $t@1289@01 $Snap.unit))
-; [eval] typeof(self_0_0) == StringContainer()
-; [eval] typeof(self_0_0)
-; [eval] StringContainer()
-(assert (= (typeof<PyType> self_0_0@1266@01) (as StringContainer<PyType>  PyType)))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [exec]
-; _err_13 := null
-; [exec]
-; self_2_0 := self_0_0
-; [exec]
-; s_0_0 := s_1
-; [exec]
-; p1_27 := p1_26 &&
-;   perm(_MaySet(self_2, 39259342834620444863618799033642229331027)) > none
-; [eval] p1_26 && perm(_MaySet(self_2, 39259342834620444863618799033642229331027)) > none
-(set-option :timeout 0)
-(push) ; 7
-; [then-branch: 3482 | !(p1_26@1257@01) | live]
-; [else-branch: 3482 | p1_26@1257@01 | live]
-(push) ; 8
-; [then-branch: 3482 | !(p1_26@1257@01)]
-(assert (not p1_26@1257@01))
-(pop) ; 8
-(push) ; 8
-; [else-branch: 3482 | p1_26@1257@01]
-; [eval] perm(_MaySet(self_2, 39259342834620444863618799033642229331027)) > none
-; [eval] perm(_MaySet(self_2, 39259342834620444863618799033642229331027))
-(pop) ; 8
-(pop) ; 7
-; Joined path conditions
-; Joined path conditions
-(assert (or p1_26@1257@01 (not p1_26@1257@01)))
-; [exec]
-; p2_27 := p2_26 &&
-;   perm(_MaySet_0(self_2_0, 39259342834620444863618799033642229331027)) >
-;   none
-; [eval] p2_26 && perm(_MaySet_0(self_2_0, 39259342834620444863618799033642229331027)) > none
-(push) ; 7
-; [then-branch: 3483 | !(p2_26@1258@01) | live]
-; [else-branch: 3483 | p2_26@1258@01 | live]
-(push) ; 8
-; [then-branch: 3483 | !(p2_26@1258@01)]
-(assert (not p2_26@1258@01))
-(pop) ; 8
-(push) ; 8
-; [else-branch: 3483 | p2_26@1258@01]
-; [eval] perm(_MaySet_0(self_2_0, 39259342834620444863618799033642229331027)) > none
-; [eval] perm(_MaySet_0(self_2_0, 39259342834620444863618799033642229331027))
-(pop) ; 8
-(pop) ; 7
-; Joined path conditions
-; Joined path conditions
-(assert (or p2_26@1258@01 (not p2_26@1258@01)))
-; [exec]
-; p3_13 := p1_26 &&
-;   !(perm(_MaySet(self_2, 39259342834620444863618799033642229331027)) > none)
-; [eval] p1_26 && !(perm(_MaySet(self_2, 39259342834620444863618799033642229331027)) > none)
-(push) ; 7
-; [then-branch: 3484 | !(p1_26@1257@01) | live]
-; [else-branch: 3484 | p1_26@1257@01 | live]
-(push) ; 8
-; [then-branch: 3484 | !(p1_26@1257@01)]
-(assert (not p1_26@1257@01))
-(pop) ; 8
-(push) ; 8
-; [else-branch: 3484 | p1_26@1257@01]
-; [eval] !(perm(_MaySet(self_2, 39259342834620444863618799033642229331027)) > none)
-; [eval] perm(_MaySet(self_2, 39259342834620444863618799033642229331027)) > none
-; [eval] perm(_MaySet(self_2, 39259342834620444863618799033642229331027))
-(pop) ; 8
-(pop) ; 7
-; Joined path conditions
-; Joined path conditions
-; [exec]
-; p4_13 := p2_26 &&
-;   !(perm(_MaySet_0(self_2_0, 39259342834620444863618799033642229331027)) >
-;   none)
-; [eval] p2_26 && !(perm(_MaySet_0(self_2_0, 39259342834620444863618799033642229331027)) > none)
-(push) ; 7
-; [then-branch: 3485 | !(p2_26@1258@01) | live]
-; [else-branch: 3485 | p2_26@1258@01 | live]
-(push) ; 8
-; [then-branch: 3485 | !(p2_26@1258@01)]
-(assert (not p2_26@1258@01))
-(pop) ; 8
-(push) ; 8
-; [else-branch: 3485 | p2_26@1258@01]
-; [eval] !(perm(_MaySet_0(self_2_0, 39259342834620444863618799033642229331027)) > none)
-; [eval] perm(_MaySet_0(self_2_0, 39259342834620444863618799033642229331027)) > none
-; [eval] perm(_MaySet_0(self_2_0, 39259342834620444863618799033642229331027))
-(pop) ; 8
-(pop) ; 7
-; Joined path conditions
-; Joined path conditions
-(push) ; 7
-(set-option :timeout 10)
-(assert (not (not p1_26@1257@01)))
-(check-sat)
-; unknown
-(pop) ; 7
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3486 | p1_26@1257@01 | live]
-; [else-branch: 3486 | !(p1_26@1257@01) | dead]
-(set-option :timeout 0)
-(push) ; 7
-; [then-branch: 3486 | p1_26@1257@01]
-; [exec]
-; exhale acc(_MaySet(self_2, 39259342834620444863618799033642229331027), write)
-; [exec]
-; inhale acc(self_2.StringContainer_s, write)
-(declare-const $t@1290@01 $Ref)
-(assert (not (= self_0@1265@01 $Ref.null)))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-(set-option :timeout 0)
-(push) ; 8
-(set-option :timeout 10)
-(assert (not (not p2_26@1258@01)))
-(check-sat)
-; unknown
-(pop) ; 8
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3487 | p2_26@1258@01 | live]
-; [else-branch: 3487 | !(p2_26@1258@01) | dead]
-(set-option :timeout 0)
-(push) ; 8
-; [then-branch: 3487 | p2_26@1258@01]
-; [exec]
-; exhale acc(_MaySet_0(self_2_0, 39259342834620444863618799033642229331027), write)
-; [exec]
-; inhale acc(self_2_0.StringContainer_sp, write)
-(declare-const $t@1291@01 $Ref)
-(assert (not (= self_0_0@1266@01 $Ref.null)))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-(set-option :timeout 0)
-(push) ; 9
-(set-option :timeout 10)
-(assert (not (not p1_26@1257@01)))
-(check-sat)
-; unknown
-(pop) ; 9
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3488 | p1_26@1257@01 | live]
-; [else-branch: 3488 | !(p1_26@1257@01) | dead]
-(set-option :timeout 0)
-(push) ; 9
-; [then-branch: 3488 | p1_26@1257@01]
-; [exec]
-; self_2.StringContainer_s := s_0
-(push) ; 10
-(set-option :timeout 10)
-(assert (not (not p2_26@1258@01)))
-(check-sat)
-; unknown
-(pop) ; 10
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3489 | p2_26@1258@01 | live]
-; [else-branch: 3489 | !(p2_26@1258@01) | dead]
-(set-option :timeout 0)
-(push) ; 10
-; [then-branch: 3489 | p2_26@1258@01]
-; [exec]
-; self_2_0.StringContainer_sp := s_0_0
-; [exec]
-; assert true
-; [eval] p1_26 ==> true
-(push) ; 11
-(push) ; 12
-(set-option :timeout 10)
-(assert (not (not p1_26@1257@01)))
-(check-sat)
-; unknown
-(pop) ; 12
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3490 | p1_26@1257@01 | live]
-; [else-branch: 3490 | !(p1_26@1257@01) | dead]
-(set-option :timeout 0)
-(push) ; 12
-; [then-branch: 3490 | p1_26@1257@01]
-(pop) ; 12
-(pop) ; 11
-; Joined path conditions
-; [eval] p2_26 ==> true
-(push) ; 11
-(push) ; 12
-(set-option :timeout 10)
-(assert (not (not p2_26@1258@01)))
-(check-sat)
-; unknown
-(pop) ; 12
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3491 | p2_26@1258@01 | live]
-; [else-branch: 3491 | !(p2_26@1258@01) | dead]
-(set-option :timeout 0)
-(push) ; 12
-; [then-branch: 3491 | p2_26@1258@01]
-(pop) ; 12
-(pop) ; 11
-; Joined path conditions
-(push) ; 11
-(set-option :timeout 10)
-(assert (not (not p1_26@1257@01)))
-(check-sat)
-; unknown
-(pop) ; 11
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3492 | p1_26@1257@01 | live]
-; [else-branch: 3492 | !(p1_26@1257@01) | dead]
-(set-option :timeout 0)
-(push) ; 11
-; [then-branch: 3492 | p1_26@1257@01]
-(push) ; 12
-(set-option :timeout 10)
-(assert (not (not p2_26@1258@01)))
-(check-sat)
-; unknown
-(pop) ; 12
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3493 | p2_26@1258@01 | live]
-; [else-branch: 3493 | !(p2_26@1258@01) | dead]
-(set-option :timeout 0)
-(push) ; 12
-; [then-branch: 3493 | p2_26@1258@01]
-; [eval] p1_26 ==> issubtype(typeof(self_0.StringContainer_s), str())
-(push) ; 13
-(push) ; 14
-(set-option :timeout 10)
-(assert (not (not p1_26@1257@01)))
-(check-sat)
-; unknown
-(pop) ; 14
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3494 | p1_26@1257@01 | live]
-; [else-branch: 3494 | !(p1_26@1257@01) | dead]
-(set-option :timeout 0)
-(push) ; 14
-; [then-branch: 3494 | p1_26@1257@01]
-; [eval] issubtype(typeof(self_0.StringContainer_s), str())
-; [eval] typeof(self_0.StringContainer_s)
-; [eval] str()
-(pop) ; 14
-(pop) ; 13
-; Joined path conditions
-; [eval] p2_26 ==> issubtype(typeof(self_0_0.StringContainer_sp), str())
-(push) ; 13
-(push) ; 14
-(set-option :timeout 10)
-(assert (not (not p2_26@1258@01)))
-(check-sat)
-; unknown
-(pop) ; 14
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3495 | p2_26@1258@01 | live]
-; [else-branch: 3495 | !(p2_26@1258@01) | dead]
-(set-option :timeout 0)
-(push) ; 14
-; [then-branch: 3495 | p2_26@1258@01]
-; [eval] issubtype(typeof(self_0_0.StringContainer_sp), str())
-; [eval] typeof(self_0_0.StringContainer_sp)
-; [eval] str()
-(pop) ; 14
-(pop) ; 13
-; Joined path conditions
-; [eval] p1_26 ==> str___eq__(self_0.StringContainer_s, s)
-(push) ; 13
-(push) ; 14
-(set-option :timeout 10)
-(assert (not (not p1_26@1257@01)))
-(check-sat)
-; unknown
-(pop) ; 14
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3496 | p1_26@1257@01 | live]
-; [else-branch: 3496 | !(p1_26@1257@01) | dead]
-(set-option :timeout 0)
-(push) ; 14
-; [then-branch: 3496 | p1_26@1257@01]
-; [eval] str___eq__(self_0.StringContainer_s, s)
-(push) ; 15
-; [eval] issubtype(typeof(self), str())
-; [eval] typeof(self)
-; [eval] str()
-(push) ; 16
-(assert (not (issubtype<Bool> (typeof<PyType> s@1267@01) (as str<PyType>  PyType))))
-(check-sat)
-; unsat
-(pop) ; 16
-; 0.00s
-; (get-info :all-statistics)
-(assert (issubtype<Bool> (typeof<PyType> s@1267@01) (as str<PyType>  PyType)))
-(assert (str___eq__%precondition $Snap.unit s@1267@01 s@1267@01))
-(pop) ; 15
-; Joined path conditions
-(assert (and
-  (issubtype<Bool> (typeof<PyType> s@1267@01) (as str<PyType>  PyType))
-  (str___eq__%precondition $Snap.unit s@1267@01 s@1267@01)))
-(pop) ; 14
-(pop) ; 13
-; Joined path conditions
-(assert (=>
-  p1_26@1257@01
-  (and
-    (issubtype<Bool> (typeof<PyType> s@1267@01) (as str<PyType>  PyType))
-    (str___eq__%precondition $Snap.unit s@1267@01 s@1267@01))))
-(push) ; 13
-(assert (not (=> p1_26@1257@01 (str___eq__ $Snap.unit s@1267@01 s@1267@01))))
-(check-sat)
-; unsat
-(pop) ; 13
-; 0.00s
-; (get-info :all-statistics)
-(assert (=> p1_26@1257@01 (str___eq__ $Snap.unit s@1267@01 s@1267@01)))
-; [eval] p2_26 ==> str___eq__(self_0_0.StringContainer_sp, s_1)
-(push) ; 13
-(push) ; 14
-(set-option :timeout 10)
-(assert (not (not p2_26@1258@01)))
-(check-sat)
-; unknown
-(pop) ; 14
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3497 | p2_26@1258@01 | live]
-; [else-branch: 3497 | !(p2_26@1258@01) | dead]
-(set-option :timeout 0)
-(push) ; 14
-; [then-branch: 3497 | p2_26@1258@01]
-; [eval] str___eq__(self_0_0.StringContainer_sp, s_1)
-(push) ; 15
-; [eval] issubtype(typeof(self), str())
-; [eval] typeof(self)
-; [eval] str()
-(push) ; 16
-(assert (not (issubtype<Bool> (typeof<PyType> s_1@1268@01) (as str<PyType>  PyType))))
-(check-sat)
-; unsat
-(pop) ; 16
-; 0.00s
-; (get-info :all-statistics)
-(assert (issubtype<Bool> (typeof<PyType> s_1@1268@01) (as str<PyType>  PyType)))
-(assert (str___eq__%precondition $Snap.unit s_1@1268@01 s_1@1268@01))
-(pop) ; 15
-; Joined path conditions
-(assert (and
-  (issubtype<Bool> (typeof<PyType> s_1@1268@01) (as str<PyType>  PyType))
-  (str___eq__%precondition $Snap.unit s_1@1268@01 s_1@1268@01)))
-(pop) ; 14
-(pop) ; 13
-; Joined path conditions
-(assert (=>
-  p2_26@1258@01
-  (and
-    (issubtype<Bool> (typeof<PyType> s_1@1268@01) (as str<PyType>  PyType))
-    (str___eq__%precondition $Snap.unit s_1@1268@01 s_1@1268@01))))
-(push) ; 13
-(assert (not (=> p2_26@1258@01 (str___eq__ $Snap.unit s_1@1268@01 s_1@1268@01))))
-(check-sat)
-; unsat
-(pop) ; 13
-; 0.00s
-; (get-info :all-statistics)
-(assert (=> p2_26@1258@01 (str___eq__ $Snap.unit s_1@1268@01 s_1@1268@01)))
-; [eval] p1_26 ==> (forperm _r_39: Ref [MustInvokeBounded(_r_39)] :: false) && ((forperm _r_39: Ref [MustInvokeUnbounded(_r_39)] :: false) && ((forperm _r_39: Ref [_r_39.MustReleaseBounded] :: false) && (forperm _r_39: Ref [_r_39.MustReleaseUnbounded] :: false)))
-(push) ; 13
-(push) ; 14
-(set-option :timeout 10)
-(assert (not (not p1_26@1257@01)))
-(check-sat)
-; unknown
-(pop) ; 14
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3498 | p1_26@1257@01 | live]
-; [else-branch: 3498 | !(p1_26@1257@01) | dead]
-(set-option :timeout 0)
-(push) ; 14
-; [then-branch: 3498 | p1_26@1257@01]
-; [eval] (forperm _r_39: Ref [MustInvokeBounded(_r_39)] :: false) && ((forperm _r_39: Ref [MustInvokeUnbounded(_r_39)] :: false) && ((forperm _r_39: Ref [_r_39.MustReleaseBounded] :: false) && (forperm _r_39: Ref [_r_39.MustReleaseUnbounded] :: false)))
-; [eval] (forperm _r_39: Ref [MustInvokeBounded(_r_39)] :: false)
-(push) ; 15
-; [then-branch: 3499 | False | live]
-; [else-branch: 3499 | True | live]
-(push) ; 16
-; [then-branch: 3499 | False]
-(assert false)
-(pop) ; 16
-(push) ; 16
-; [else-branch: 3499 | True]
-; [eval] (forperm _r_39: Ref [MustInvokeUnbounded(_r_39)] :: false)
-(push) ; 17
-; [then-branch: 3500 | False | live]
-; [else-branch: 3500 | True | live]
-(push) ; 18
-; [then-branch: 3500 | False]
-(assert false)
-(pop) ; 18
-(push) ; 18
-; [else-branch: 3500 | True]
-; [eval] (forperm _r_39: Ref [_r_39.MustReleaseBounded] :: false)
-(push) ; 19
-; [then-branch: 3501 | False | live]
-; [else-branch: 3501 | True | live]
-(push) ; 20
-; [then-branch: 3501 | False]
-(assert false)
-(pop) ; 20
-(push) ; 20
-; [else-branch: 3501 | True]
-; [eval] (forperm _r_39: Ref [_r_39.MustReleaseUnbounded] :: false)
-(pop) ; 20
-(pop) ; 19
-; Joined path conditions
-; Joined path conditions
-(pop) ; 18
-(pop) ; 17
-; Joined path conditions
-; Joined path conditions
-(pop) ; 16
-(pop) ; 15
-; Joined path conditions
-; Joined path conditions
-(pop) ; 14
-(pop) ; 13
-; Joined path conditions
-; [eval] p2_26 ==> (forperm _r_39: Ref [MustInvokeBounded_0(_r_39)] :: false) && ((forperm _r_39: Ref [MustInvokeUnbounded_0(_r_39)] :: false) && ((forperm _r_39: Ref [_r_39.MustReleaseBoundedp] :: false) && (forperm _r_39: Ref [_r_39.MustReleaseUnboundedp] :: false)))
-(push) ; 13
-(push) ; 14
-(set-option :timeout 10)
-(assert (not (not p2_26@1258@01)))
-(check-sat)
-; unknown
-(pop) ; 14
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3502 | p2_26@1258@01 | live]
-; [else-branch: 3502 | !(p2_26@1258@01) | dead]
-(set-option :timeout 0)
-(push) ; 14
-; [then-branch: 3502 | p2_26@1258@01]
-; [eval] (forperm _r_39: Ref [MustInvokeBounded_0(_r_39)] :: false) && ((forperm _r_39: Ref [MustInvokeUnbounded_0(_r_39)] :: false) && ((forperm _r_39: Ref [_r_39.MustReleaseBoundedp] :: false) && (forperm _r_39: Ref [_r_39.MustReleaseUnboundedp] :: false)))
-; [eval] (forperm _r_39: Ref [MustInvokeBounded_0(_r_39)] :: false)
-(push) ; 15
-; [then-branch: 3503 | False | live]
-; [else-branch: 3503 | True | live]
-(push) ; 16
-; [then-branch: 3503 | False]
-(assert false)
-(pop) ; 16
-(push) ; 16
-; [else-branch: 3503 | True]
-; [eval] (forperm _r_39: Ref [MustInvokeUnbounded_0(_r_39)] :: false)
-(push) ; 17
-; [then-branch: 3504 | False | live]
-; [else-branch: 3504 | True | live]
-(push) ; 18
-; [then-branch: 3504 | False]
-(assert false)
-(pop) ; 18
-(push) ; 18
-; [else-branch: 3504 | True]
-; [eval] (forperm _r_39: Ref [_r_39.MustReleaseBoundedp] :: false)
-(push) ; 19
-; [then-branch: 3505 | False | live]
-; [else-branch: 3505 | True | live]
-(push) ; 20
-; [then-branch: 3505 | False]
-(assert false)
-(pop) ; 20
-(push) ; 20
-; [else-branch: 3505 | True]
-; [eval] (forperm _r_39: Ref [_r_39.MustReleaseUnboundedp] :: false)
-(pop) ; 20
-(pop) ; 19
-; Joined path conditions
-; Joined path conditions
-(pop) ; 18
-(pop) ; 17
-; Joined path conditions
-; Joined path conditions
-(pop) ; 16
-(pop) ; 15
-; Joined path conditions
-; Joined path conditions
-(pop) ; 14
-(pop) ; 13
-; Joined path conditions
-(pop) ; 12
-(pop) ; 11
-(pop) ; 10
-; [eval] !p2_26
-; [then-branch: 3506 | !(p2_26@1258@01) | dead]
-; [else-branch: 3506 | p2_26@1258@01 | live]
-(push) ; 10
-; [else-branch: 3506 | p2_26@1258@01]
-(pop) ; 10
-(pop) ; 9
-; [eval] !p1_26
-; [then-branch: 3507 | !(p1_26@1257@01) | dead]
-; [else-branch: 3507 | p1_26@1257@01 | live]
-(push) ; 9
-; [else-branch: 3507 | p1_26@1257@01]
-(pop) ; 9
-(pop) ; 8
-; [eval] !p2_27
-; [then-branch: 3508 | !(p2_26@1258@01) | dead]
-; [else-branch: 3508 | p2_26@1258@01 | live]
-(push) ; 8
-; [else-branch: 3508 | p2_26@1258@01]
-(pop) ; 8
-(pop) ; 7
-; [eval] !p1_27
-; [then-branch: 3509 | !(p1_26@1257@01) | dead]
-; [else-branch: 3509 | p1_26@1257@01 | live]
-(push) ; 7
-; [else-branch: 3509 | p1_26@1257@01]
-(pop) ; 7
-(pop) ; 6
-; [eval] !p2_26
-; [then-branch: 3510 | !(p2_26@1258@01) | dead]
-; [else-branch: 3510 | p2_26@1258@01 | live]
-(push) ; 6
-; [else-branch: 3510 | p2_26@1258@01]
-(pop) ; 6
-(pop) ; 5
-; [eval] !p1_26
-; [then-branch: 3511 | !(p1_26@1257@01) | dead]
-; [else-branch: 3511 | p1_26@1257@01 | live]
-(push) ; 5
-; [else-branch: 3511 | p1_26@1257@01]
-(pop) ; 5
-(pop) ; 4
-(pop) ; 3
-(push) ; 3
-; [else-branch: 3457 | !(p2_26@1258@01)]
-(assert (not p2_26@1258@01))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))
-  $Snap.unit))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))
-  $Snap.unit))
-; [eval] p1_26 ==> issubtype(typeof(self_0), StringContainer())
-(push) ; 4
-(push) ; 5
-(set-option :timeout 10)
-(assert (not (not p1_26@1257@01)))
-(check-sat)
-; unknown
-(pop) ; 5
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3512 | p1_26@1257@01 | live]
-; [else-branch: 3512 | !(p1_26@1257@01) | dead]
-(set-option :timeout 0)
-(push) ; 5
-; [then-branch: 3512 | p1_26@1257@01]
-; [eval] issubtype(typeof(self_0), StringContainer())
-; [eval] typeof(self_0)
-; [eval] StringContainer()
-(pop) ; 5
-(pop) ; 4
-; Joined path conditions
-(assert (=>
-  p1_26@1257@01
-  (issubtype<Bool> (typeof<PyType> self_0@1265@01) (as StringContainer<PyType>  PyType))))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))))
-  $Snap.unit))
-; [eval] p2_26 ==> issubtype(typeof(self_0_0), StringContainer())
-(push) ; 4
-; [then-branch: 3513 | p2_26@1258@01 | dead]
-; [else-branch: 3513 | !(p2_26@1258@01) | live]
-(push) ; 5
-; [else-branch: 3513 | !(p2_26@1258@01)]
-(pop) ; 5
-(pop) ; 4
-; Joined path conditions
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))))
-  $Snap.unit))
-; [eval] p1_26 ==> issubtype(typeof(s), str())
-(push) ; 4
-(push) ; 5
-(set-option :timeout 10)
-(assert (not (not p1_26@1257@01)))
-(check-sat)
-; unknown
-(pop) ; 5
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3514 | p1_26@1257@01 | live]
-; [else-branch: 3514 | !(p1_26@1257@01) | dead]
-(set-option :timeout 0)
-(push) ; 5
-; [then-branch: 3514 | p1_26@1257@01]
-; [eval] issubtype(typeof(s), str())
-; [eval] typeof(s)
-; [eval] str()
-(pop) ; 5
-(pop) ; 4
-; Joined path conditions
-(assert (=>
-  p1_26@1257@01
-  (issubtype<Bool> (typeof<PyType> s@1267@01) (as str<PyType>  PyType))))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))))))
-  $Snap.unit))
-; [eval] p2_26 ==> issubtype(typeof(s_1), str())
-(push) ; 4
-; [then-branch: 3515 | p2_26@1258@01 | dead]
-; [else-branch: 3515 | !(p2_26@1258@01) | live]
-(push) ; 5
-; [else-branch: 3515 | !(p2_26@1258@01)]
-(pop) ; 5
-(pop) ; 4
-; Joined path conditions
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))))))
-  $Snap.unit))
-; [eval] p1_26 ==> self_0 != null
-(push) ; 4
-(push) ; 5
-(set-option :timeout 10)
-(assert (not (not p1_26@1257@01)))
-(check-sat)
-; unknown
-(pop) ; 5
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3516 | p1_26@1257@01 | live]
-; [else-branch: 3516 | !(p1_26@1257@01) | dead]
-(set-option :timeout 0)
-(push) ; 5
-; [then-branch: 3516 | p1_26@1257@01]
-; [eval] self_0 != null
-(pop) ; 5
-(pop) ; 4
-; Joined path conditions
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))))))))
-  $Snap.unit))
-; [eval] p2_26 ==> self_0_0 != null
-(push) ; 4
-; [then-branch: 3517 | p2_26@1258@01 | dead]
-; [else-branch: 3517 | !(p2_26@1258@01) | live]
-(push) ; 5
-; [else-branch: 3517 | !(p2_26@1258@01)]
-(pop) ; 5
-(pop) ; 4
-; Joined path conditions
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))))))))
-  $Snap.unit))
-; [eval] p1_26 ==> true
-(push) ; 4
-(push) ; 5
-(set-option :timeout 10)
-(assert (not (not p1_26@1257@01)))
-(check-sat)
-; unknown
-(pop) ; 5
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3518 | p1_26@1257@01 | live]
-; [else-branch: 3518 | !(p1_26@1257@01) | dead]
-(set-option :timeout 0)
-(push) ; 5
-; [then-branch: 3518 | p1_26@1257@01]
-(pop) ; 5
-(pop) ; 4
-; Joined path conditions
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))))))))
-  $Snap.unit))
-; [eval] p2_26 ==> true
-(push) ; 4
-; [then-branch: 3519 | p2_26@1258@01 | dead]
-; [else-branch: 3519 | !(p2_26@1258@01) | live]
-(push) ; 5
-; [else-branch: 3519 | !(p2_26@1258@01)]
-(pop) ; 5
-(pop) ; 4
-; Joined path conditions
-; State saturation: after contract
-(set-option :timeout 50)
-(check-sat)
-; unknown
-(set-option :timeout 0)
-(push) ; 4
-(declare-const $t@1292@01 $Snap)
-(assert (= $t@1292@01 ($Snap.combine ($Snap.first $t@1292@01) ($Snap.second $t@1292@01))))
-(assert (= ($Snap.first $t@1292@01) $Snap.unit))
-; [eval] p1_26 ==> (forperm _r_38: Ref [_r_38.MustReleaseBounded] :: Level(_r_38) <= _current_wait_level_157) && ((forperm _r_38: Ref [_r_38.MustReleaseUnbounded] :: Level(_r_38) <= _current_wait_level_157) && _residue_157 <= _current_wait_level_157)
-(push) ; 5
-(push) ; 6
-(set-option :timeout 10)
-(assert (not (not p1_26@1257@01)))
-(check-sat)
-; unknown
-(pop) ; 6
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3520 | p1_26@1257@01 | live]
-; [else-branch: 3520 | !(p1_26@1257@01) | dead]
-(set-option :timeout 0)
-(push) ; 6
-; [then-branch: 3520 | p1_26@1257@01]
-; [eval] (forperm _r_38: Ref [_r_38.MustReleaseBounded] :: Level(_r_38) <= _current_wait_level_157) && ((forperm _r_38: Ref [_r_38.MustReleaseUnbounded] :: Level(_r_38) <= _current_wait_level_157) && _residue_157 <= _current_wait_level_157)
-; [eval] (forperm _r_38: Ref [_r_38.MustReleaseBounded] :: Level(_r_38) <= _current_wait_level_157)
-(push) ; 7
-; [then-branch: 3521 | False | live]
-; [else-branch: 3521 | True | live]
-(push) ; 8
-; [then-branch: 3521 | False]
-(assert false)
-(pop) ; 8
-(push) ; 8
-; [else-branch: 3521 | True]
-; [eval] (forperm _r_38: Ref [_r_38.MustReleaseUnbounded] :: Level(_r_38) <= _current_wait_level_157)
-(push) ; 9
-; [then-branch: 3522 | False | live]
-; [else-branch: 3522 | True | live]
-(push) ; 10
-; [then-branch: 3522 | False]
-(assert false)
-(pop) ; 10
-(push) ; 10
-; [else-branch: 3522 | True]
-; [eval] _residue_157 <= _current_wait_level_157
-(pop) ; 10
-(pop) ; 9
-; Joined path conditions
-; Joined path conditions
-(pop) ; 8
-(pop) ; 7
-; Joined path conditions
-; Joined path conditions
-(pop) ; 6
-(pop) ; 5
-; Joined path conditions
-(assert (=> p1_26@1257@01 (<= _residue_157@1263@01 _current_wait_level_157@1269@01)))
-(assert (=
-  ($Snap.second $t@1292@01)
-  ($Snap.combine
-    ($Snap.first ($Snap.second $t@1292@01))
-    ($Snap.second ($Snap.second $t@1292@01)))))
-(assert (= ($Snap.first ($Snap.second $t@1292@01)) $Snap.unit))
-; [eval] p2_26 ==> (forperm _r_38: Ref [_r_38.MustReleaseBoundedp] :: Level(_r_38) <= _current_wait_level_157_0) && ((forperm _r_38: Ref [_r_38.MustReleaseUnboundedp] :: Level(_r_38) <= _current_wait_level_157_0) && _residue_157_0 <= _current_wait_level_157_0)
-(push) ; 5
-; [then-branch: 3523 | p2_26@1258@01 | dead]
-; [else-branch: 3523 | !(p2_26@1258@01) | live]
-(push) ; 6
-; [else-branch: 3523 | !(p2_26@1258@01)]
-(pop) ; 6
-(pop) ; 5
-; Joined path conditions
-(assert (=
-  ($Snap.second ($Snap.second $t@1292@01))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second $t@1292@01)))
-    ($Snap.second ($Snap.second ($Snap.second $t@1292@01))))))
-(push) ; 5
-(set-option :timeout 10)
-(assert (not (not p1_26@1257@01)))
-(check-sat)
-; unknown
-(pop) ; 5
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3524 | p1_26@1257@01 | live]
-; [else-branch: 3524 | !(p1_26@1257@01) | dead]
-(set-option :timeout 0)
-(push) ; 5
-; [then-branch: 3524 | p1_26@1257@01]
-(assert (not (= self_0@1265@01 $Ref.null)))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second $t@1292@01)))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@1292@01))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1292@01)))))))
-; [then-branch: 3525 | p2_26@1258@01 | dead]
-; [else-branch: 3525 | !(p2_26@1258@01) | live]
-(push) ; 6
-; [else-branch: 3525 | !(p2_26@1258@01)]
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@1292@01))))
-  $Snap.unit))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1292@01))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1292@01)))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1292@01))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1292@01)))))
-  $Snap.unit))
-; [eval] p1_26 ==> issubtype(typeof(self_0.StringContainer_s), str())
-(push) ; 7
-(push) ; 8
-(set-option :timeout 10)
-(assert (not (not p1_26@1257@01)))
-(check-sat)
-; unknown
-(pop) ; 8
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3526 | p1_26@1257@01 | live]
-; [else-branch: 3526 | !(p1_26@1257@01) | dead]
-(set-option :timeout 0)
-(push) ; 8
-; [then-branch: 3526 | p1_26@1257@01]
-; [eval] issubtype(typeof(self_0.StringContainer_s), str())
-; [eval] typeof(self_0.StringContainer_s)
-; [eval] str()
-(pop) ; 8
-(pop) ; 7
-; Joined path conditions
-(assert (=>
-  p1_26@1257@01
-  (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second $t@1292@01))))) (as str<PyType>  PyType))))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1292@01)))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1292@01))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1292@01)))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1292@01))))))
-  $Snap.unit))
-; [eval] p2_26 ==> issubtype(typeof(self_0_0.StringContainer_sp), str())
-(push) ; 7
-; [then-branch: 3527 | p2_26@1258@01 | dead]
-; [else-branch: 3527 | !(p2_26@1258@01) | live]
-(push) ; 8
-; [else-branch: 3527 | !(p2_26@1258@01)]
-(pop) ; 8
-(pop) ; 7
-; Joined path conditions
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1292@01))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1292@01)))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1292@01))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1292@01)))))))
-  $Snap.unit))
-; [eval] p1_26 ==> str___eq__(self_0.StringContainer_s, s)
-(push) ; 7
-(push) ; 8
-(set-option :timeout 10)
-(assert (not (not p1_26@1257@01)))
-(check-sat)
-; unknown
-(pop) ; 8
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3528 | p1_26@1257@01 | live]
-; [else-branch: 3528 | !(p1_26@1257@01) | dead]
-(set-option :timeout 0)
-(push) ; 8
-; [then-branch: 3528 | p1_26@1257@01]
-; [eval] str___eq__(self_0.StringContainer_s, s)
-(push) ; 9
-; [eval] issubtype(typeof(self), str())
-; [eval] typeof(self)
-; [eval] str()
-(push) ; 10
-(assert (not (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second $t@1292@01))))) (as str<PyType>  PyType))))
-(check-sat)
-; unsat
-(pop) ; 10
-; 0.00s
-; (get-info :all-statistics)
-(assert (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second $t@1292@01))))) (as str<PyType>  PyType)))
-(assert (str___eq__%precondition $Snap.unit ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second $t@1292@01)))) s@1267@01))
-(pop) ; 9
-; Joined path conditions
-(assert (and
-  (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second $t@1292@01))))) (as str<PyType>  PyType))
-  (str___eq__%precondition $Snap.unit ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second $t@1292@01)))) s@1267@01)))
-(pop) ; 8
-(pop) ; 7
-; Joined path conditions
-(assert (=>
-  p1_26@1257@01
-  (and
-    (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second $t@1292@01))))) (as str<PyType>  PyType))
-    (str___eq__%precondition $Snap.unit ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second $t@1292@01)))) s@1267@01))))
-(assert (=>
-  p1_26@1257@01
-  (str___eq__ $Snap.unit ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second $t@1292@01)))) s@1267@01)))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1292@01)))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1292@01))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1292@01)))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1292@01))))))))
-  $Snap.unit))
-; [eval] p2_26 ==> str___eq__(self_0_0.StringContainer_sp, s_1)
-(push) ; 7
-; [then-branch: 3529 | p2_26@1258@01 | dead]
-; [else-branch: 3529 | !(p2_26@1258@01) | live]
-(push) ; 8
-; [else-branch: 3529 | !(p2_26@1258@01)]
-(pop) ; 8
-(pop) ; 7
-; Joined path conditions
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1292@01))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1292@01)))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1292@01))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1292@01)))))))))
-  $Snap.unit))
-; [eval] p1_26 ==> true
-(push) ; 7
-(push) ; 8
-(set-option :timeout 10)
-(assert (not (not p1_26@1257@01)))
-(check-sat)
-; unknown
-(pop) ; 8
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3530 | p1_26@1257@01 | live]
-; [else-branch: 3530 | !(p1_26@1257@01) | dead]
-(set-option :timeout 0)
-(push) ; 8
-; [then-branch: 3530 | p1_26@1257@01]
-(pop) ; 8
-(pop) ; 7
-; Joined path conditions
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1292@01)))))))))
-  $Snap.unit))
-; [eval] p2_26 ==> true
-(push) ; 7
-; [then-branch: 3531 | p2_26@1258@01 | dead]
-; [else-branch: 3531 | !(p2_26@1258@01) | live]
-(push) ; 8
-; [else-branch: 3531 | !(p2_26@1258@01)]
-(pop) ; 8
-(pop) ; 7
-; Joined path conditions
-(pop) ; 6
-(pop) ; 5
-(pop) ; 4
-(push) ; 4
-; [exec]
-; var _err: Ref
-(declare-const _err@1293@01 $Ref)
-; [exec]
-; var _err_13: Ref
-(declare-const _err_13@1294@01 $Ref)
-; [exec]
-; var self_2: Ref
-(declare-const self_2@1295@01 $Ref)
-; [exec]
-; var self_2_0: Ref
-(declare-const self_2_0@1296@01 $Ref)
-; [exec]
-; var s_0: Ref
-(declare-const s_0@1297@01 $Ref)
-; [exec]
-; var s_0_0: Ref
-(declare-const s_0_0@1298@01 $Ref)
-; [exec]
-; var _cwl_157: Perm
-(declare-const _cwl_157@1299@01 $Perm)
-; [exec]
-; var _cwl_157_0: Perm
-(declare-const _cwl_157_0@1300@01 $Perm)
-; [exec]
-; var _method_measures_157: Seq[Measure$]
-(declare-const _method_measures_157@1301@01 Seq<Measure$>)
-; [exec]
-; var _method_measures_157_0: Seq[Measure$]
-(declare-const _method_measures_157_0@1302@01 Seq<Measure$>)
-; [exec]
-; var p1_27: Bool
-(declare-const p1_27@1303@01 Bool)
-; [exec]
-; var p2_27: Bool
-(declare-const p2_27@1304@01 Bool)
-; [exec]
-; var p3_13: Bool
-(declare-const p3_13@1305@01 Bool)
-; [exec]
-; var p4_13: Bool
-(declare-const p4_13@1306@01 Bool)
-; [exec]
-; inhale p1_26
-(declare-const $t@1307@01 $Snap)
-(assert (= $t@1307@01 $Snap.unit))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-(set-option :timeout 0)
-(push) ; 5
-(set-option :timeout 10)
-(assert (not (not p1_26@1257@01)))
-(check-sat)
-; unknown
-(pop) ; 5
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3532 | p1_26@1257@01 | live]
-; [else-branch: 3532 | !(p1_26@1257@01) | dead]
-(set-option :timeout 0)
-(push) ; 5
-; [then-branch: 3532 | p1_26@1257@01]
-; [exec]
-; _method_measures_157 := Seq[Measure$]()
-; [eval] Seq[Measure$]()
-; [exec]
-; inhale typeof(self_0) == StringContainer()
-(declare-const $t@1308@01 $Snap)
-(assert (= $t@1308@01 $Snap.unit))
-; [eval] typeof(self_0) == StringContainer()
-; [eval] typeof(self_0)
-; [eval] StringContainer()
-(assert (= (typeof<PyType> self_0@1265@01) (as StringContainer<PyType>  PyType)))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [exec]
-; _err := null
-; [exec]
-; self_2 := self_0
-; [exec]
-; s_0 := s
-; [then-branch: 3533 | p2_26@1258@01 | dead]
-; [else-branch: 3533 | !(p2_26@1258@01) | live]
-(set-option :timeout 0)
-(push) ; 6
-; [else-branch: 3533 | !(p2_26@1258@01)]
-(pop) ; 6
-; [eval] !p2_26
-(push) ; 6
-(set-option :timeout 10)
-(assert (not p2_26@1258@01))
-(check-sat)
-; unknown
-(pop) ; 6
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3534 | !(p2_26@1258@01) | live]
-; [else-branch: 3534 | p2_26@1258@01 | dead]
-(set-option :timeout 0)
-(push) ; 6
-; [then-branch: 3534 | !(p2_26@1258@01)]
-; [exec]
-; p1_27 := p1_26 &&
-;   perm(_MaySet(self_2, 39259342834620444863618799033642229331027)) > none
-; [eval] p1_26 && perm(_MaySet(self_2, 39259342834620444863618799033642229331027)) > none
-(push) ; 7
-; [then-branch: 3535 | !(p1_26@1257@01) | live]
-; [else-branch: 3535 | p1_26@1257@01 | live]
-(push) ; 8
-; [then-branch: 3535 | !(p1_26@1257@01)]
-(assert (not p1_26@1257@01))
-(pop) ; 8
-(push) ; 8
-; [else-branch: 3535 | p1_26@1257@01]
-; [eval] perm(_MaySet(self_2, 39259342834620444863618799033642229331027)) > none
-; [eval] perm(_MaySet(self_2, 39259342834620444863618799033642229331027))
-(pop) ; 8
-(pop) ; 7
-; Joined path conditions
-; Joined path conditions
-(assert (or p1_26@1257@01 (not p1_26@1257@01)))
-; [exec]
-; p2_27 := p2_26 &&
-;   perm(_MaySet_0(self_2_0, 39259342834620444863618799033642229331027)) >
-;   none
-; [eval] p2_26 && perm(_MaySet_0(self_2_0, 39259342834620444863618799033642229331027)) > none
-(push) ; 7
-; [then-branch: 3536 | !(p2_26@1258@01) | live]
-; [else-branch: 3536 | p2_26@1258@01 | live]
-(push) ; 8
-; [then-branch: 3536 | !(p2_26@1258@01)]
-(pop) ; 8
-(push) ; 8
-; [else-branch: 3536 | p2_26@1258@01]
-(assert p2_26@1258@01)
-; [eval] perm(_MaySet_0(self_2_0, 39259342834620444863618799033642229331027)) > none
-; [eval] perm(_MaySet_0(self_2_0, 39259342834620444863618799033642229331027))
-(pop) ; 8
-(pop) ; 7
-; Joined path conditions
-; Joined path conditions
-(assert (or p2_26@1258@01 (not p2_26@1258@01)))
-; [exec]
-; p3_13 := p1_26 &&
-;   !(perm(_MaySet(self_2, 39259342834620444863618799033642229331027)) > none)
-; [eval] p1_26 && !(perm(_MaySet(self_2, 39259342834620444863618799033642229331027)) > none)
-(push) ; 7
-; [then-branch: 3537 | !(p1_26@1257@01) | live]
-; [else-branch: 3537 | p1_26@1257@01 | live]
-(push) ; 8
-; [then-branch: 3537 | !(p1_26@1257@01)]
-(assert (not p1_26@1257@01))
-(pop) ; 8
-(push) ; 8
-; [else-branch: 3537 | p1_26@1257@01]
-; [eval] !(perm(_MaySet(self_2, 39259342834620444863618799033642229331027)) > none)
-; [eval] perm(_MaySet(self_2, 39259342834620444863618799033642229331027)) > none
-; [eval] perm(_MaySet(self_2, 39259342834620444863618799033642229331027))
-(pop) ; 8
-(pop) ; 7
-; Joined path conditions
-; Joined path conditions
-; [exec]
-; p4_13 := p2_26 &&
-;   !(perm(_MaySet_0(self_2_0, 39259342834620444863618799033642229331027)) >
-;   none)
-; [eval] p2_26 && !(perm(_MaySet_0(self_2_0, 39259342834620444863618799033642229331027)) > none)
-(push) ; 7
-; [then-branch: 3538 | !(p2_26@1258@01) | live]
-; [else-branch: 3538 | p2_26@1258@01 | live]
-(push) ; 8
-; [then-branch: 3538 | !(p2_26@1258@01)]
-(pop) ; 8
-(push) ; 8
-; [else-branch: 3538 | p2_26@1258@01]
-(assert p2_26@1258@01)
-; [eval] !(perm(_MaySet_0(self_2_0, 39259342834620444863618799033642229331027)) > none)
-; [eval] perm(_MaySet_0(self_2_0, 39259342834620444863618799033642229331027)) > none
-; [eval] perm(_MaySet_0(self_2_0, 39259342834620444863618799033642229331027))
-(pop) ; 8
-(pop) ; 7
-; Joined path conditions
-; Joined path conditions
-(push) ; 7
-(set-option :timeout 10)
-(assert (not (not p1_26@1257@01)))
-(check-sat)
-; unknown
-(pop) ; 7
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3539 | p1_26@1257@01 | live]
-; [else-branch: 3539 | !(p1_26@1257@01) | dead]
-(set-option :timeout 0)
-(push) ; 7
-; [then-branch: 3539 | p1_26@1257@01]
-; [exec]
-; exhale acc(_MaySet(self_2, 39259342834620444863618799033642229331027), write)
-; [exec]
-; inhale acc(self_2.StringContainer_s, write)
-(declare-const $t@1309@01 $Ref)
-(assert (not (= self_0@1265@01 $Ref.null)))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [then-branch: 3540 | False | dead]
-; [else-branch: 3540 | True | live]
-(set-option :timeout 0)
-(push) ; 8
-; [else-branch: 3540 | True]
-(pop) ; 8
-; [eval] !p2_27
-(push) ; 8
-(set-option :timeout 10)
-(assert (not false))
-(check-sat)
-; unknown
-(pop) ; 8
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3541 | True | live]
-; [else-branch: 3541 | False | dead]
-(set-option :timeout 0)
-(push) ; 8
-; [then-branch: 3541 | True]
-(push) ; 9
-(set-option :timeout 10)
-(assert (not (not p1_26@1257@01)))
-(check-sat)
-; unknown
-(pop) ; 9
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3542 | p1_26@1257@01 | live]
-; [else-branch: 3542 | !(p1_26@1257@01) | dead]
-(set-option :timeout 0)
-(push) ; 9
-; [then-branch: 3542 | p1_26@1257@01]
-; [exec]
-; self_2.StringContainer_s := s_0
-; [then-branch: 3543 | p2_26@1258@01 | dead]
-; [else-branch: 3543 | !(p2_26@1258@01) | live]
-(push) ; 10
-; [else-branch: 3543 | !(p2_26@1258@01)]
-(pop) ; 10
-; [eval] !p2_26
-(push) ; 10
-(set-option :timeout 10)
-(assert (not p2_26@1258@01))
-(check-sat)
-; unknown
-(pop) ; 10
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3544 | !(p2_26@1258@01) | live]
-; [else-branch: 3544 | p2_26@1258@01 | dead]
-(set-option :timeout 0)
-(push) ; 10
-; [then-branch: 3544 | !(p2_26@1258@01)]
-; [exec]
-; assert true
-; [eval] p1_26 ==> true
-(push) ; 11
-(push) ; 12
-(set-option :timeout 10)
-(assert (not (not p1_26@1257@01)))
-(check-sat)
-; unknown
-(pop) ; 12
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3545 | p1_26@1257@01 | live]
-; [else-branch: 3545 | !(p1_26@1257@01) | dead]
-(set-option :timeout 0)
-(push) ; 12
-; [then-branch: 3545 | p1_26@1257@01]
-(pop) ; 12
-(pop) ; 11
-; Joined path conditions
-; [eval] p2_26 ==> true
-(push) ; 11
-; [then-branch: 3546 | p2_26@1258@01 | dead]
-; [else-branch: 3546 | !(p2_26@1258@01) | live]
-(push) ; 12
-; [else-branch: 3546 | !(p2_26@1258@01)]
-(pop) ; 12
-(pop) ; 11
-; Joined path conditions
-(push) ; 11
-(set-option :timeout 10)
-(assert (not (not p1_26@1257@01)))
-(check-sat)
-; unknown
-(pop) ; 11
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3547 | p1_26@1257@01 | live]
-; [else-branch: 3547 | !(p1_26@1257@01) | dead]
-(set-option :timeout 0)
-(push) ; 11
-; [then-branch: 3547 | p1_26@1257@01]
-; [then-branch: 3548 | p2_26@1258@01 | dead]
-; [else-branch: 3548 | !(p2_26@1258@01) | live]
-(push) ; 12
-; [else-branch: 3548 | !(p2_26@1258@01)]
-; [eval] p1_26 ==> issubtype(typeof(self_0.StringContainer_s), str())
-(push) ; 13
-(push) ; 14
-(set-option :timeout 10)
-(assert (not (not p1_26@1257@01)))
-(check-sat)
-; unknown
-(pop) ; 14
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3549 | p1_26@1257@01 | live]
-; [else-branch: 3549 | !(p1_26@1257@01) | dead]
-(set-option :timeout 0)
-(push) ; 14
-; [then-branch: 3549 | p1_26@1257@01]
-; [eval] issubtype(typeof(self_0.StringContainer_s), str())
-; [eval] typeof(self_0.StringContainer_s)
-; [eval] str()
-(pop) ; 14
-(pop) ; 13
-; Joined path conditions
-; [eval] p2_26 ==> issubtype(typeof(self_0_0.StringContainer_sp), str())
-(push) ; 13
-; [then-branch: 3550 | p2_26@1258@01 | dead]
-; [else-branch: 3550 | !(p2_26@1258@01) | live]
-(push) ; 14
-; [else-branch: 3550 | !(p2_26@1258@01)]
-(pop) ; 14
-(pop) ; 13
-; Joined path conditions
-; [eval] p1_26 ==> str___eq__(self_0.StringContainer_s, s)
-(push) ; 13
-(push) ; 14
-(set-option :timeout 10)
-(assert (not (not p1_26@1257@01)))
-(check-sat)
-; unknown
-(pop) ; 14
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3551 | p1_26@1257@01 | live]
-; [else-branch: 3551 | !(p1_26@1257@01) | dead]
-(set-option :timeout 0)
-(push) ; 14
-; [then-branch: 3551 | p1_26@1257@01]
-; [eval] str___eq__(self_0.StringContainer_s, s)
-(push) ; 15
-; [eval] issubtype(typeof(self), str())
-; [eval] typeof(self)
-; [eval] str()
-(push) ; 16
-(assert (not (issubtype<Bool> (typeof<PyType> s@1267@01) (as str<PyType>  PyType))))
-(check-sat)
-; unsat
-(pop) ; 16
-; 0.00s
-; (get-info :all-statistics)
-(assert (issubtype<Bool> (typeof<PyType> s@1267@01) (as str<PyType>  PyType)))
-(assert (str___eq__%precondition $Snap.unit s@1267@01 s@1267@01))
-(pop) ; 15
-; Joined path conditions
-(assert (and
-  (issubtype<Bool> (typeof<PyType> s@1267@01) (as str<PyType>  PyType))
-  (str___eq__%precondition $Snap.unit s@1267@01 s@1267@01)))
-(pop) ; 14
-(pop) ; 13
-; Joined path conditions
-(assert (=>
-  p1_26@1257@01
-  (and
-    (issubtype<Bool> (typeof<PyType> s@1267@01) (as str<PyType>  PyType))
-    (str___eq__%precondition $Snap.unit s@1267@01 s@1267@01))))
-(push) ; 13
-(assert (not (=> p1_26@1257@01 (str___eq__ $Snap.unit s@1267@01 s@1267@01))))
-(check-sat)
-; unsat
-(pop) ; 13
-; 0.00s
-; (get-info :all-statistics)
-(assert (=> p1_26@1257@01 (str___eq__ $Snap.unit s@1267@01 s@1267@01)))
-; [eval] p2_26 ==> str___eq__(self_0_0.StringContainer_sp, s_1)
-(push) ; 13
-; [then-branch: 3552 | p2_26@1258@01 | dead]
-; [else-branch: 3552 | !(p2_26@1258@01) | live]
-(push) ; 14
-; [else-branch: 3552 | !(p2_26@1258@01)]
-(pop) ; 14
-(pop) ; 13
-; Joined path conditions
-; [eval] p1_26 ==> (forperm _r_39: Ref [MustInvokeBounded(_r_39)] :: false) && ((forperm _r_39: Ref [MustInvokeUnbounded(_r_39)] :: false) && ((forperm _r_39: Ref [_r_39.MustReleaseBounded] :: false) && (forperm _r_39: Ref [_r_39.MustReleaseUnbounded] :: false)))
-(push) ; 13
-(push) ; 14
-(set-option :timeout 10)
-(assert (not (not p1_26@1257@01)))
-(check-sat)
-; unknown
-(pop) ; 14
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3553 | p1_26@1257@01 | live]
-; [else-branch: 3553 | !(p1_26@1257@01) | dead]
-(set-option :timeout 0)
-(push) ; 14
-; [then-branch: 3553 | p1_26@1257@01]
-; [eval] (forperm _r_39: Ref [MustInvokeBounded(_r_39)] :: false) && ((forperm _r_39: Ref [MustInvokeUnbounded(_r_39)] :: false) && ((forperm _r_39: Ref [_r_39.MustReleaseBounded] :: false) && (forperm _r_39: Ref [_r_39.MustReleaseUnbounded] :: false)))
-; [eval] (forperm _r_39: Ref [MustInvokeBounded(_r_39)] :: false)
-(push) ; 15
-; [then-branch: 3554 | False | live]
-; [else-branch: 3554 | True | live]
-(push) ; 16
-; [then-branch: 3554 | False]
-(assert false)
-(pop) ; 16
-(push) ; 16
-; [else-branch: 3554 | True]
-; [eval] (forperm _r_39: Ref [MustInvokeUnbounded(_r_39)] :: false)
-(push) ; 17
-; [then-branch: 3555 | False | live]
-; [else-branch: 3555 | True | live]
-(push) ; 18
-; [then-branch: 3555 | False]
-(assert false)
-(pop) ; 18
-(push) ; 18
-; [else-branch: 3555 | True]
-; [eval] (forperm _r_39: Ref [_r_39.MustReleaseBounded] :: false)
-(push) ; 19
-; [then-branch: 3556 | False | live]
-; [else-branch: 3556 | True | live]
-(push) ; 20
-; [then-branch: 3556 | False]
-(assert false)
-(pop) ; 20
-(push) ; 20
-; [else-branch: 3556 | True]
-; [eval] (forperm _r_39: Ref [_r_39.MustReleaseUnbounded] :: false)
-(pop) ; 20
-(pop) ; 19
-; Joined path conditions
-; Joined path conditions
-(pop) ; 18
-(pop) ; 17
-; Joined path conditions
-; Joined path conditions
-(pop) ; 16
-(pop) ; 15
-; Joined path conditions
-; Joined path conditions
-(pop) ; 14
-(pop) ; 13
-; Joined path conditions
-; [eval] p2_26 ==> (forperm _r_39: Ref [MustInvokeBounded_0(_r_39)] :: false) && ((forperm _r_39: Ref [MustInvokeUnbounded_0(_r_39)] :: false) && ((forperm _r_39: Ref [_r_39.MustReleaseBoundedp] :: false) && (forperm _r_39: Ref [_r_39.MustReleaseUnboundedp] :: false)))
-(push) ; 13
-; [then-branch: 3557 | p2_26@1258@01 | dead]
-; [else-branch: 3557 | !(p2_26@1258@01) | live]
-(push) ; 14
-; [else-branch: 3557 | !(p2_26@1258@01)]
-(pop) ; 14
-(pop) ; 13
-; Joined path conditions
-(pop) ; 12
-(pop) ; 11
-(pop) ; 10
-(pop) ; 9
-; [eval] !p1_26
-; [then-branch: 3558 | !(p1_26@1257@01) | dead]
-; [else-branch: 3558 | p1_26@1257@01 | live]
-(push) ; 9
-; [else-branch: 3558 | p1_26@1257@01]
-(pop) ; 9
-(pop) ; 8
-(pop) ; 7
-; [eval] !p1_27
-; [then-branch: 3559 | !(p1_26@1257@01) | dead]
-; [else-branch: 3559 | p1_26@1257@01 | live]
-(push) ; 7
-; [else-branch: 3559 | p1_26@1257@01]
-(pop) ; 7
-(pop) ; 6
-(pop) ; 5
-; [eval] !p1_26
-; [then-branch: 3560 | !(p1_26@1257@01) | dead]
-; [else-branch: 3560 | p1_26@1257@01 | live]
-(push) ; 5
-; [else-branch: 3560 | p1_26@1257@01]
-(pop) ; 5
-(pop) ; 4
-(pop) ; 3
-(pop) ; 2
-(push) ; 2
-; [else-branch: 3456 | !(p1_26@1257@01)]
-(assert (not p1_26@1257@01))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))
-  $Snap.unit))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))))
-(push) ; 3
-(set-option :timeout 10)
-(assert (not (not p2_26@1258@01)))
-(check-sat)
-; unknown
-(pop) ; 3
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 3
-(set-option :timeout 10)
-(assert (not p2_26@1258@01))
-(check-sat)
-; unknown
-(pop) ; 3
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3561 | p2_26@1258@01 | live]
-; [else-branch: 3561 | !(p2_26@1258@01) | live]
-(set-option :timeout 0)
-(push) ; 3
-; [then-branch: 3561 | p2_26@1258@01]
-(assert p2_26@1258@01)
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))
-  $Snap.unit))
-; [eval] p1_26 ==> issubtype(typeof(self_0), StringContainer())
-(push) ; 4
-; [then-branch: 3562 | p1_26@1257@01 | dead]
-; [else-branch: 3562 | !(p1_26@1257@01) | live]
-(push) ; 5
-; [else-branch: 3562 | !(p1_26@1257@01)]
-(pop) ; 5
-(pop) ; 4
-; Joined path conditions
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))))
-  $Snap.unit))
-; [eval] p2_26 ==> issubtype(typeof(self_0_0), StringContainer())
-(push) ; 4
-(push) ; 5
-(set-option :timeout 10)
-(assert (not (not p2_26@1258@01)))
-(check-sat)
-; unknown
-(pop) ; 5
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3563 | p2_26@1258@01 | live]
-; [else-branch: 3563 | !(p2_26@1258@01) | dead]
-(set-option :timeout 0)
-(push) ; 5
-; [then-branch: 3563 | p2_26@1258@01]
-; [eval] issubtype(typeof(self_0_0), StringContainer())
-; [eval] typeof(self_0_0)
-; [eval] StringContainer()
-(pop) ; 5
-(pop) ; 4
-; Joined path conditions
-(assert (=>
-  p2_26@1258@01
-  (issubtype<Bool> (typeof<PyType> self_0_0@1266@01) (as StringContainer<PyType>  PyType))))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))))
-  $Snap.unit))
-; [eval] p1_26 ==> issubtype(typeof(s), str())
-(push) ; 4
-; [then-branch: 3564 | p1_26@1257@01 | dead]
-; [else-branch: 3564 | !(p1_26@1257@01) | live]
-(push) ; 5
-; [else-branch: 3564 | !(p1_26@1257@01)]
-(pop) ; 5
-(pop) ; 4
-; Joined path conditions
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))))))
-  $Snap.unit))
-; [eval] p2_26 ==> issubtype(typeof(s_1), str())
-(push) ; 4
-(push) ; 5
-(set-option :timeout 10)
-(assert (not (not p2_26@1258@01)))
-(check-sat)
-; unknown
-(pop) ; 5
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3565 | p2_26@1258@01 | live]
-; [else-branch: 3565 | !(p2_26@1258@01) | dead]
-(set-option :timeout 0)
-(push) ; 5
-; [then-branch: 3565 | p2_26@1258@01]
-; [eval] issubtype(typeof(s_1), str())
-; [eval] typeof(s_1)
-; [eval] str()
-(pop) ; 5
-(pop) ; 4
-; Joined path conditions
-(assert (=>
-  p2_26@1258@01
-  (issubtype<Bool> (typeof<PyType> s_1@1268@01) (as str<PyType>  PyType))))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))))))
-  $Snap.unit))
-; [eval] p1_26 ==> self_0 != null
-(push) ; 4
-; [then-branch: 3566 | p1_26@1257@01 | dead]
-; [else-branch: 3566 | !(p1_26@1257@01) | live]
-(push) ; 5
-; [else-branch: 3566 | !(p1_26@1257@01)]
-(pop) ; 5
-(pop) ; 4
-; Joined path conditions
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))))))))
-  $Snap.unit))
-; [eval] p2_26 ==> self_0_0 != null
-(push) ; 4
-(push) ; 5
-(set-option :timeout 10)
-(assert (not (not p2_26@1258@01)))
-(check-sat)
-; unknown
-(pop) ; 5
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3567 | p2_26@1258@01 | live]
-; [else-branch: 3567 | !(p2_26@1258@01) | dead]
-(set-option :timeout 0)
-(push) ; 5
-; [then-branch: 3567 | p2_26@1258@01]
-; [eval] self_0_0 != null
-(pop) ; 5
-(pop) ; 4
-; Joined path conditions
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))))))))
-  $Snap.unit))
-; [eval] p1_26 ==> true
-(push) ; 4
-; [then-branch: 3568 | p1_26@1257@01 | dead]
-; [else-branch: 3568 | !(p1_26@1257@01) | live]
-(push) ; 5
-; [else-branch: 3568 | !(p1_26@1257@01)]
-(pop) ; 5
-(pop) ; 4
-; Joined path conditions
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))))))))
-  $Snap.unit))
-; [eval] p2_26 ==> true
-(push) ; 4
-(push) ; 5
-(set-option :timeout 10)
-(assert (not (not p2_26@1258@01)))
-(check-sat)
-; unknown
-(pop) ; 5
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3569 | p2_26@1258@01 | live]
-; [else-branch: 3569 | !(p2_26@1258@01) | dead]
-(set-option :timeout 0)
-(push) ; 5
-; [then-branch: 3569 | p2_26@1258@01]
-(pop) ; 5
-(pop) ; 4
-; Joined path conditions
-; State saturation: after contract
-(set-option :timeout 50)
-(check-sat)
-; unknown
-(set-option :timeout 0)
-(push) ; 4
-(declare-const $t@1310@01 $Snap)
-(assert (= $t@1310@01 ($Snap.combine ($Snap.first $t@1310@01) ($Snap.second $t@1310@01))))
-(assert (= ($Snap.first $t@1310@01) $Snap.unit))
-; [eval] p1_26 ==> (forperm _r_38: Ref [_r_38.MustReleaseBounded] :: Level(_r_38) <= _current_wait_level_157) && ((forperm _r_38: Ref [_r_38.MustReleaseUnbounded] :: Level(_r_38) <= _current_wait_level_157) && _residue_157 <= _current_wait_level_157)
-(push) ; 5
-; [then-branch: 3570 | p1_26@1257@01 | dead]
-; [else-branch: 3570 | !(p1_26@1257@01) | live]
-(push) ; 6
-; [else-branch: 3570 | !(p1_26@1257@01)]
-(pop) ; 6
-(pop) ; 5
-; Joined path conditions
-(assert (=
-  ($Snap.second $t@1310@01)
-  ($Snap.combine
-    ($Snap.first ($Snap.second $t@1310@01))
-    ($Snap.second ($Snap.second $t@1310@01)))))
-(assert (= ($Snap.first ($Snap.second $t@1310@01)) $Snap.unit))
-; [eval] p2_26 ==> (forperm _r_38: Ref [_r_38.MustReleaseBoundedp] :: Level(_r_38) <= _current_wait_level_157_0) && ((forperm _r_38: Ref [_r_38.MustReleaseUnboundedp] :: Level(_r_38) <= _current_wait_level_157_0) && _residue_157_0 <= _current_wait_level_157_0)
-(push) ; 5
-(push) ; 6
-(set-option :timeout 10)
-(assert (not (not p2_26@1258@01)))
-(check-sat)
-; unknown
-(pop) ; 6
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3571 | p2_26@1258@01 | live]
-; [else-branch: 3571 | !(p2_26@1258@01) | dead]
-(set-option :timeout 0)
-(push) ; 6
-; [then-branch: 3571 | p2_26@1258@01]
-; [eval] (forperm _r_38: Ref [_r_38.MustReleaseBoundedp] :: Level(_r_38) <= _current_wait_level_157_0) && ((forperm _r_38: Ref [_r_38.MustReleaseUnboundedp] :: Level(_r_38) <= _current_wait_level_157_0) && _residue_157_0 <= _current_wait_level_157_0)
-; [eval] (forperm _r_38: Ref [_r_38.MustReleaseBoundedp] :: Level(_r_38) <= _current_wait_level_157_0)
-(push) ; 7
-; [then-branch: 3572 | False | live]
-; [else-branch: 3572 | True | live]
-(push) ; 8
-; [then-branch: 3572 | False]
-(assert false)
-(pop) ; 8
-(push) ; 8
-; [else-branch: 3572 | True]
-; [eval] (forperm _r_38: Ref [_r_38.MustReleaseUnboundedp] :: Level(_r_38) <= _current_wait_level_157_0)
-(push) ; 9
-; [then-branch: 3573 | False | live]
-; [else-branch: 3573 | True | live]
-(push) ; 10
-; [then-branch: 3573 | False]
-(assert false)
-(pop) ; 10
-(push) ; 10
-; [else-branch: 3573 | True]
-; [eval] _residue_157_0 <= _current_wait_level_157_0
-(pop) ; 10
-(pop) ; 9
-; Joined path conditions
-; Joined path conditions
-(pop) ; 8
-(pop) ; 7
-; Joined path conditions
-; Joined path conditions
-(pop) ; 6
-(pop) ; 5
-; Joined path conditions
-(assert (=> p2_26@1258@01 (<= _residue_157_0@1264@01 _current_wait_level_157_0@1270@01)))
-(assert (=
-  ($Snap.second ($Snap.second $t@1310@01))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second $t@1310@01)))
-    ($Snap.second ($Snap.second ($Snap.second $t@1310@01))))))
-; [then-branch: 3574 | p1_26@1257@01 | dead]
-; [else-branch: 3574 | !(p1_26@1257@01) | live]
-(push) ; 5
-; [else-branch: 3574 | !(p1_26@1257@01)]
-(assert (= ($Snap.first ($Snap.second ($Snap.second $t@1310@01))) $Snap.unit))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second $t@1310@01)))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@1310@01))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1310@01)))))))
-(push) ; 6
-(set-option :timeout 10)
-(assert (not (not p2_26@1258@01)))
-(check-sat)
-; unknown
-(pop) ; 6
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3575 | p2_26@1258@01 | live]
-; [else-branch: 3575 | !(p2_26@1258@01) | dead]
-(set-option :timeout 0)
-(push) ; 6
-; [then-branch: 3575 | p2_26@1258@01]
-(assert (not (= self_0_0@1266@01 $Ref.null)))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1310@01))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1310@01)))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1310@01))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1310@01)))))
-  $Snap.unit))
-; [eval] p1_26 ==> issubtype(typeof(self_0.StringContainer_s), str())
-(push) ; 7
-; [then-branch: 3576 | p1_26@1257@01 | dead]
-; [else-branch: 3576 | !(p1_26@1257@01) | live]
-(push) ; 8
-; [else-branch: 3576 | !(p1_26@1257@01)]
-(pop) ; 8
-(pop) ; 7
-; Joined path conditions
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1310@01)))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1310@01))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1310@01)))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1310@01))))))
-  $Snap.unit))
-; [eval] p2_26 ==> issubtype(typeof(self_0_0.StringContainer_sp), str())
-(push) ; 7
-(push) ; 8
-(set-option :timeout 10)
-(assert (not (not p2_26@1258@01)))
-(check-sat)
-; unknown
-(pop) ; 8
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3577 | p2_26@1258@01 | live]
-; [else-branch: 3577 | !(p2_26@1258@01) | dead]
-(set-option :timeout 0)
-(push) ; 8
-; [then-branch: 3577 | p2_26@1258@01]
-; [eval] issubtype(typeof(self_0_0.StringContainer_sp), str())
-; [eval] typeof(self_0_0.StringContainer_sp)
-; [eval] str()
-(pop) ; 8
-(pop) ; 7
-; Joined path conditions
-(assert (=>
-  p2_26@1258@01
-  (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@1310@01)))))) (as str<PyType>  PyType))))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1310@01))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1310@01)))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1310@01))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1310@01)))))))
-  $Snap.unit))
-; [eval] p1_26 ==> str___eq__(self_0.StringContainer_s, s)
-(push) ; 7
-; [then-branch: 3578 | p1_26@1257@01 | dead]
-; [else-branch: 3578 | !(p1_26@1257@01) | live]
-(push) ; 8
-; [else-branch: 3578 | !(p1_26@1257@01)]
-(pop) ; 8
-(pop) ; 7
-; Joined path conditions
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1310@01)))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1310@01))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1310@01)))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1310@01))))))))
-  $Snap.unit))
-; [eval] p2_26 ==> str___eq__(self_0_0.StringContainer_sp, s_1)
-(push) ; 7
-(push) ; 8
-(set-option :timeout 10)
-(assert (not (not p2_26@1258@01)))
-(check-sat)
-; unknown
-(pop) ; 8
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3579 | p2_26@1258@01 | live]
-; [else-branch: 3579 | !(p2_26@1258@01) | dead]
-(set-option :timeout 0)
-(push) ; 8
-; [then-branch: 3579 | p2_26@1258@01]
-; [eval] str___eq__(self_0_0.StringContainer_sp, s_1)
-(push) ; 9
-; [eval] issubtype(typeof(self), str())
-; [eval] typeof(self)
-; [eval] str()
-(push) ; 10
-(assert (not (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@1310@01)))))) (as str<PyType>  PyType))))
-(check-sat)
-; unsat
-(pop) ; 10
-; 0.00s
-; (get-info :all-statistics)
-(assert (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@1310@01)))))) (as str<PyType>  PyType)))
-(assert (str___eq__%precondition $Snap.unit ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@1310@01))))) s_1@1268@01))
-(pop) ; 9
-; Joined path conditions
-(assert (and
-  (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@1310@01)))))) (as str<PyType>  PyType))
-  (str___eq__%precondition $Snap.unit ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@1310@01))))) s_1@1268@01)))
-(pop) ; 8
-(pop) ; 7
-; Joined path conditions
-(assert (=>
-  p2_26@1258@01
-  (and
-    (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@1310@01)))))) (as str<PyType>  PyType))
-    (str___eq__%precondition $Snap.unit ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@1310@01))))) s_1@1268@01))))
-(assert (=>
-  p2_26@1258@01
-  (str___eq__ $Snap.unit ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@1310@01))))) s_1@1268@01)))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1310@01))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1310@01)))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1310@01))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1310@01)))))))))
-  $Snap.unit))
-; [eval] p1_26 ==> true
-(push) ; 7
-; [then-branch: 3580 | p1_26@1257@01 | dead]
-; [else-branch: 3580 | !(p1_26@1257@01) | live]
-(push) ; 8
-; [else-branch: 3580 | !(p1_26@1257@01)]
-(pop) ; 8
-(pop) ; 7
-; Joined path conditions
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1310@01)))))))))
-  $Snap.unit))
-; [eval] p2_26 ==> true
-(push) ; 7
-(push) ; 8
-(set-option :timeout 10)
-(assert (not (not p2_26@1258@01)))
-(check-sat)
-; unknown
-(pop) ; 8
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 3581 | p2_26@1258@01 | live]
-; [else-branch: 3581 | !(p2_26@1258@01) | dead]
-(set-option :timeout 0)
-(push) ; 8
-; [then-branch: 3581 | p2_26@1258@01]
-(pop) ; 8
-(pop) ; 7
-; Joined path conditions
-(pop) ; 6
-(pop) ; 5
-(pop) ; 4
-(push) ; 4
-; [exec]
-; var _err: Ref
-(declare-const _err@1311@01 $Ref)
-; [exec]
-; var _err_13: Ref
-(declare-const _err_13@1312@01 $Ref)
-; [exec]
-; var self_2: Ref
-(declare-const self_2@1313@01 $Ref)
-; [exec]
-; var self_2_0: Ref
-(declare-const self_2_0@1314@01 $Ref)
-; [exec]
-; var s_0: Ref
-(declare-const s_0@1315@01 $Ref)
-; [exec]
-; var s_0_0: Ref
-(declare-const s_0_0@1316@01 $Ref)
-; [exec]
-; var _cwl_157: Perm
-(declare-const _cwl_157@1317@01 $Perm)
-; [exec]
-; var _cwl_157_0: Perm
-(declare-const _cwl_157_0@1318@01 $Perm)
-; [exec]
-; var _method_measures_157: Seq[Measure$]
-(declare-const _method_measures_157@1319@01 Seq<Measure$>)
-; [exec]
-; var _method_measures_157_0: Seq[Measure$]
-(declare-const _method_measures_157_0@1320@01 Seq<Measure$>)
-; [exec]
-; var p1_27: Bool
-(declare-const p1_27@1321@01 Bool)
-; [exec]
-; var p2_27: Bool
-(declare-const p2_27@1322@01 Bool)
-; [exec]
-; var p3_13: Bool
-(declare-const p3_13@1323@01 Bool)
-; [exec]
-; var p4_13: Bool
-(declare-const p4_13@1324@01 Bool)
-; [exec]
-; inhale p1_26
-(declare-const $t@1325@01 $Snap)
-(assert (= $t@1325@01 $Snap.unit))
-(assert p1_26@1257@01)
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unsat
-; [then-branch: 3582 | p1_26@1257@01 | dead]
-; [else-branch: 3582 | !(p1_26@1257@01) | live]
-(set-option :timeout 0)
-(push) ; 5
-; [else-branch: 3582 | !(p1_26@1257@01)]
-(pop) ; 5
-; [eval] !p1_26
-; [then-branch: 3583 | !(p1_26@1257@01) | dead]
-; [else-branch: 3583 | p1_26@1257@01 | live]
-(push) ; 5
-; [else-branch: 3583 | p1_26@1257@01]
-(pop) ; 5
-(pop) ; 4
-(pop) ; 3
-(push) ; 3
-; [else-branch: 3561 | !(p2_26@1258@01)]
-(assert (not p2_26@1258@01))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))
-  $Snap.unit))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))
-  $Snap.unit))
-; [eval] p1_26 ==> issubtype(typeof(self_0), StringContainer())
-(push) ; 4
-; [then-branch: 3584 | p1_26@1257@01 | dead]
-; [else-branch: 3584 | !(p1_26@1257@01) | live]
-(push) ; 5
-; [else-branch: 3584 | !(p1_26@1257@01)]
-(pop) ; 5
-(pop) ; 4
-; Joined path conditions
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))))
-  $Snap.unit))
-; [eval] p2_26 ==> issubtype(typeof(self_0_0), StringContainer())
-(push) ; 4
-; [then-branch: 3585 | p2_26@1258@01 | dead]
-; [else-branch: 3585 | !(p2_26@1258@01) | live]
-(push) ; 5
-; [else-branch: 3585 | !(p2_26@1258@01)]
-(pop) ; 5
-(pop) ; 4
-; Joined path conditions
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))))
-  $Snap.unit))
-; [eval] p1_26 ==> issubtype(typeof(s), str())
-(push) ; 4
-; [then-branch: 3586 | p1_26@1257@01 | dead]
-; [else-branch: 3586 | !(p1_26@1257@01) | live]
-(push) ; 5
-; [else-branch: 3586 | !(p1_26@1257@01)]
-(pop) ; 5
-(pop) ; 4
-; Joined path conditions
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))))))
-  $Snap.unit))
-; [eval] p2_26 ==> issubtype(typeof(s_1), str())
-(push) ; 4
-; [then-branch: 3587 | p2_26@1258@01 | dead]
-; [else-branch: 3587 | !(p2_26@1258@01) | live]
-(push) ; 5
-; [else-branch: 3587 | !(p2_26@1258@01)]
-(pop) ; 5
-(pop) ; 4
-; Joined path conditions
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))))))
-  $Snap.unit))
-; [eval] p1_26 ==> self_0 != null
-(push) ; 4
-; [then-branch: 3588 | p1_26@1257@01 | dead]
-; [else-branch: 3588 | !(p1_26@1257@01) | live]
-(push) ; 5
-; [else-branch: 3588 | !(p1_26@1257@01)]
-(pop) ; 5
-(pop) ; 4
-; Joined path conditions
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))))))))
-  $Snap.unit))
-; [eval] p2_26 ==> self_0_0 != null
-(push) ; 4
-; [then-branch: 3589 | p2_26@1258@01 | dead]
-; [else-branch: 3589 | !(p2_26@1258@01) | live]
-(push) ; 5
-; [else-branch: 3589 | !(p2_26@1258@01)]
-(pop) ; 5
-(pop) ; 4
-; Joined path conditions
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))))))))
-  $Snap.unit))
-; [eval] p1_26 ==> true
-(push) ; 4
-; [then-branch: 3590 | p1_26@1257@01 | dead]
-; [else-branch: 3590 | !(p1_26@1257@01) | live]
-(push) ; 5
-; [else-branch: 3590 | !(p1_26@1257@01)]
-(pop) ; 5
-(pop) ; 4
-; Joined path conditions
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))))))))
-  $Snap.unit))
-; [eval] p2_26 ==> true
-(push) ; 4
-; [then-branch: 3591 | p2_26@1258@01 | dead]
-; [else-branch: 3591 | !(p2_26@1258@01) | live]
-(push) ; 5
-; [else-branch: 3591 | !(p2_26@1258@01)]
-(pop) ; 5
-(pop) ; 4
-; Joined path conditions
-; State saturation: after contract
-(set-option :timeout 50)
-(check-sat)
-; unknown
-(set-option :timeout 0)
-(push) ; 4
-(declare-const $t@1326@01 $Snap)
-(assert (= $t@1326@01 ($Snap.combine ($Snap.first $t@1326@01) ($Snap.second $t@1326@01))))
-(assert (= ($Snap.first $t@1326@01) $Snap.unit))
-; [eval] p1_26 ==> (forperm _r_38: Ref [_r_38.MustReleaseBounded] :: Level(_r_38) <= _current_wait_level_157) && ((forperm _r_38: Ref [_r_38.MustReleaseUnbounded] :: Level(_r_38) <= _current_wait_level_157) && _residue_157 <= _current_wait_level_157)
-(push) ; 5
-; [then-branch: 3592 | p1_26@1257@01 | dead]
-; [else-branch: 3592 | !(p1_26@1257@01) | live]
-(push) ; 6
-; [else-branch: 3592 | !(p1_26@1257@01)]
-(pop) ; 6
-(pop) ; 5
-; Joined path conditions
-(assert (=
-  ($Snap.second $t@1326@01)
-  ($Snap.combine
-    ($Snap.first ($Snap.second $t@1326@01))
-    ($Snap.second ($Snap.second $t@1326@01)))))
-(assert (= ($Snap.first ($Snap.second $t@1326@01)) $Snap.unit))
-; [eval] p2_26 ==> (forperm _r_38: Ref [_r_38.MustReleaseBoundedp] :: Level(_r_38) <= _current_wait_level_157_0) && ((forperm _r_38: Ref [_r_38.MustReleaseUnboundedp] :: Level(_r_38) <= _current_wait_level_157_0) && _residue_157_0 <= _current_wait_level_157_0)
-(push) ; 5
-; [then-branch: 3593 | p2_26@1258@01 | dead]
-; [else-branch: 3593 | !(p2_26@1258@01) | live]
-(push) ; 6
-; [else-branch: 3593 | !(p2_26@1258@01)]
-(pop) ; 6
-(pop) ; 5
-; Joined path conditions
-(assert (=
-  ($Snap.second ($Snap.second $t@1326@01))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second $t@1326@01)))
-    ($Snap.second ($Snap.second ($Snap.second $t@1326@01))))))
-; [then-branch: 3594 | p1_26@1257@01 | dead]
-; [else-branch: 3594 | !(p1_26@1257@01) | live]
-(push) ; 5
-; [else-branch: 3594 | !(p1_26@1257@01)]
-(assert (= ($Snap.first ($Snap.second ($Snap.second $t@1326@01))) $Snap.unit))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second $t@1326@01)))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@1326@01))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1326@01)))))))
-; [then-branch: 3595 | p2_26@1258@01 | dead]
-; [else-branch: 3595 | !(p2_26@1258@01) | live]
-(push) ; 6
-; [else-branch: 3595 | !(p2_26@1258@01)]
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@1326@01))))
-  $Snap.unit))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1326@01))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1326@01)))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1326@01))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1326@01)))))
-  $Snap.unit))
-; [eval] p1_26 ==> issubtype(typeof(self_0.StringContainer_s), str())
-(push) ; 7
-; [then-branch: 3596 | p1_26@1257@01 | dead]
-; [else-branch: 3596 | !(p1_26@1257@01) | live]
-(push) ; 8
-; [else-branch: 3596 | !(p1_26@1257@01)]
-(pop) ; 8
-(pop) ; 7
-; Joined path conditions
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1326@01)))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1326@01))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1326@01)))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1326@01))))))
-  $Snap.unit))
-; [eval] p2_26 ==> issubtype(typeof(self_0_0.StringContainer_sp), str())
-(push) ; 7

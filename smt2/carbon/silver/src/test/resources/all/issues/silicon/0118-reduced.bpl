@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-04 01:18:32
+// Date:         2025-01-07 14:33:11
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0118-reduced.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0118-reduced-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -284,8 +284,8 @@ procedure get#definedness(this: Ref, i: int) returns (Result: int)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
@@ -310,8 +310,8 @@ procedure get#definedness(this: Ref, i: int) returns (Result: int)
     // -- Check definedness of i < length(this)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access Node(this) (0118-reduced.vpr@13.16--13.28) [216352]"}
           NoPerm < perm ==> NoPerm < Mask[null, Node(this)];
@@ -332,8 +332,8 @@ procedure get#definedness(this: Ref, i: int) returns (Result: int)
       UnfoldingMask := Mask;
       assume Node#trigger(UnfoldingHeap, Node(this));
       assume UnfoldingHeap[null, Node(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, next]), UnfoldingHeap[null, Node(UnfoldingHeap[this, next])]);
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Node(this) (0118-reduced.vpr@10.1--22.2) [216353]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, Node(this)];
@@ -354,8 +354,8 @@ procedure get#definedness(this: Ref, i: int) returns (Result: int)
           HasDirectPerm(UnfoldingMask, this, next);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
+          ExhaleWellDef0Mask := UnfoldingMask;
           perm := FullPerm;
           assert {:msg "  Precondition of function get might not hold. There might be insufficient permission to access Node(this.next) (0118-reduced.vpr@21.19--21.40) [216355]"}
             NoPerm < perm ==> NoPerm < UnfoldingMask[null, Node(UnfoldingHeap[this, next])];

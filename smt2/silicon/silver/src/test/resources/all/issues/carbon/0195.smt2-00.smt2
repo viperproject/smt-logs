@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-04 00:34:30
+; Started: 2025-01-07 13:48:13
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -126,21 +126,21 @@
 (assert (forall ((s@$ $Snap) (r@0@00 $Ref)) (!
   (= (func%limited s@$ r@0@00) (func s@$ r@0@00))
   :pattern ((func s@$ r@0@00))
-  :qid |quant-u-23054|)))
+  :qid |quant-u-23069|)))
 (assert (forall ((s@$ $Snap) (r@0@00 $Ref)) (!
   (func%stateless r@0@00)
   :pattern ((func%limited s@$ r@0@00))
-  :qid |quant-u-23055|)))
+  :qid |quant-u-23070|)))
 (assert (forall ((s@$ $Snap) (r@0@00 $Ref)) (!
   (let ((result@1@00 (func%limited s@$ r@0@00))) (=>
     (func%precondition s@$ r@0@00)
     result@1@00))
   :pattern ((func%limited s@$ r@0@00))
-  :qid |quant-u-23056|)))
+  :qid |quant-u-23071|)))
 (assert (forall ((s@$ $Snap) (r@0@00 $Ref)) (!
   (let ((result@1@00 (func%limited s@$ r@0@00))) true)
   :pattern ((func%limited s@$ r@0@00))
-  :qid |quant-u-23057|)))
+  :qid |quant-u-23072|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -182,13 +182,13 @@
         v1
         ($SortWrappers.$SnapToInt s@$)))))
   :pattern ((func s@$ r@0@00))
-  :qid |quant-u-23058|)))
+  :qid |quant-u-23073|)))
 (assert (forall ((s@$ $Snap) (r@0@00 $Ref)) (!
   (=>
     (func%precondition s@$ r@0@00)
     (let ((v1 ($SortWrappers.$SnapToInt s@$))) true))
   :pattern ((func s@$ r@0@00))
-  :qid |quant-u-23059|)))
+  :qid |quant-u-23074|)))
 ; ---------- vperm ----------
 (declare-const r@4@00 $Ref)
 (push) ; 1

@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-04 00:33:04
+; Started: 2025-01-07 13:46:50
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -750,10 +750,10 @@
 (assert (not (= diz@48@01 $Ref.null)))
 (declare-const Lock__owner@49@01 $Ref)
 (declare-const Lock__user@50@01 $Ref)
-(assert (not (= diz@48@01 user@41@01)))
-(assert (not (= diz@48@01 owner@40@01)))
-(assert (not (= diz@48@01 diz@47@01)))
 (assert (not (= diz@48@01 sys__result@42@01)))
+(assert (not (= diz@48@01 owner@40@01)))
+(assert (not (= diz@48@01 user@41@01)))
+(assert (not (= diz@48@01 diz@47@01)))
 ; [exec]
 ; inhale false
 (pop) ; 2

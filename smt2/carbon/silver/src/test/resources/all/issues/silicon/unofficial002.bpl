@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-04 01:14:23
+// Date:         2025-01-07 14:28:56
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/unofficial002.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/unofficial002-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -590,8 +590,8 @@ procedure degrees#definedness(this: Ref, last: Ref) returns (Result: (Seq int))
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var newPMask: PMaskType;
   
@@ -619,8 +619,8 @@ procedure degrees#definedness(this: Ref, last: Ref) returns (Result: (Seq int))
         UnfoldingMask := Mask;
         assume lseg#trigger(UnfoldingHeap, lseg(this, last));
         assume UnfoldingHeap[null, lseg(this, last)] == FrameFragment((if this != last then CombineFrames(FrameFragment(UnfoldingHeap[this, sibling]), UnfoldingHeap[null, lseg(UnfoldingHeap[this, sibling], last)]) else EmptyFrame));
-        ExhaleWellDef0Heap := UnfoldingHeap;
         ExhaleWellDef0Mask := UnfoldingMask;
+        ExhaleWellDef0Heap := UnfoldingHeap;
         perm := FullPerm;
         assert {:msg "  Function might not be well-formed. There might be insufficient permission to access lseg(this, last) (unofficial002.vpr@17.1--24.2) [200420]"}
           NoPerm < perm ==> NoPerm < UnfoldingMask[null, lseg(this, last)];
@@ -646,8 +646,8 @@ procedure degrees#definedness(this: Ref, last: Ref) returns (Result: (Seq int))
             HasDirectPerm(UnfoldingMask, this, sibling);
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := UnfoldingHeap;
             ExhaleWellDef0Mask := UnfoldingMask;
+            ExhaleWellDef0Heap := UnfoldingHeap;
             assert {:msg "  Precondition of function degrees might not hold. Assertion this.sibling != null might not hold. (unofficial002.vpr@23.52--23.79) [200423]"}
               UnfoldingHeap[this, sibling] != null;
             perm := FullPerm;
@@ -760,12 +760,12 @@ procedure join(s1: Ref, m1_3: Ref, l1_3: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var newVersion: FrameType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
@@ -805,8 +805,8 @@ procedure join(s1: Ref, m1_3: Ref, l1_3: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -828,8 +828,8 @@ procedure join(s1: Ref, m1_3: Ref, l1_3: Ref) returns ()
   // -- Translating statement: unfold acc(lseg(s1, m1), write) -- unofficial002.vpr@34.3--34.27
     assume lseg#trigger(Heap, lseg(s1, m1_3));
     assume Heap[null, lseg(s1, m1_3)] == FrameFragment((if s1 != m1_3 then CombineFrames(FrameFragment(Heap[s1, sibling]), Heap[null, lseg(Heap[s1, sibling], m1_3)]) else EmptyFrame));
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding lseg(s1, m1) might fail. There might be insufficient permission to access lseg(s1, m1) (unofficial002.vpr@34.3--34.27) [200429]"}
@@ -868,8 +868,8 @@ procedure join(s1: Ref, m1_3: Ref, l1_3: Ref) returns ()
     arg_s1 := Heap[s1, sibling];
     
     // -- Exhaling precondition
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       assert {:msg "  The precondition of method join might not hold. Assertion s1.sibling != null might not hold. (unofficial002.vpr@35.3--35.27) [200433]"}
         arg_s1 != null;
       assert {:msg "  The precondition of method join might not hold. Assertion m1 != null might not hold. (unofficial002.vpr@35.3--35.27) [200434]"}
@@ -899,8 +899,8 @@ procedure join(s1: Ref, m1_3: Ref, l1_3: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(lseg(s1, l1), write) -- unofficial002.vpr@36.3--36.25
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     if (s1 != l1_3) {
       perm := FullPerm;
       if (perm != NoPerm) {
@@ -953,8 +953,8 @@ procedure join(s1: Ref, m1_3: Ref, l1_3: Ref) returns ()
     // -- Check definedness of degrees(s1, l1)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Precondition of function degrees might not hold. Assertion s1 != null might not hold. (unofficial002.vpr@40.23--40.38) [200444]"}
           s1 != null;
         perm := FullPerm;
@@ -978,8 +978,8 @@ procedure join(s1: Ref, m1_3: Ref, l1_3: Ref) returns ()
       UnfoldingMask := Mask;
       assume lseg#trigger(UnfoldingHeap, lseg(s1, l1_3));
       assume UnfoldingHeap[null, lseg(s1, l1_3)] == FrameFragment((if s1 != l1_3 then CombineFrames(FrameFragment(UnfoldingHeap[s1, sibling]), UnfoldingHeap[null, lseg(UnfoldingHeap[s1, sibling], l1_3)]) else EmptyFrame));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Assignment might fail. There might be insufficient permission to access lseg(s1, l1) (unofficial002.vpr@41.3--41.89) [200446]"}
@@ -1004,8 +1004,8 @@ procedure join(s1: Ref, m1_3: Ref, l1_3: Ref) returns ()
         HasDirectPerm(UnfoldingMask, s1, sibling);
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := UnfoldingHeap;
         ExhaleWellDef0Mask := UnfoldingMask;
+        ExhaleWellDef0Heap := UnfoldingHeap;
         assert {:msg "  Precondition of function degrees might not hold. Assertion s1.sibling != null might not hold. (unofficial002.vpr@41.65--41.88) [200448]"}
           UnfoldingHeap[s1, sibling] != null;
         perm := FullPerm;
@@ -1034,15 +1034,15 @@ procedure join(s1: Ref, m1_3: Ref, l1_3: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert xs == ys -- unofficial002.vpr@43.3--43.18
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion xs == ys might not hold. (unofficial002.vpr@43.10--43.18) [200450]"}
       Seq#Equal(xs, ys);
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of join might not hold. There might be insufficient permission to access lseg(s1, l1) (unofficial002.vpr@30.12--30.29) [200451]"}

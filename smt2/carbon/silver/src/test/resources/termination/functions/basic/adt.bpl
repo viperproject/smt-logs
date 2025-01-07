@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-04 01:23:30
+// Date:         2025-01-07 14:38:17
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/termination/functions/basic/adt.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/termination/functions/basic/adt-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -335,8 +335,8 @@ function  f#triggerStateless(xs: listDomainType): int;
 procedure f#definedness(xs: listDomainType) returns (Result: int)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -354,8 +354,8 @@ procedure f#definedness(xs: listDomainType) returns (Result: int)
       if ((size_3(xs): int) > 0) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           assert {:msg "  Precondition of function f might not hold. Assertion size(tail_Cons(xs)) >= 0 might not hold. (adt.vpr@83.20--83.36) [223905]"}
             (size_3((tail_Cons(xs): listDomainType)): int) >= 0;
           // Stop execution
@@ -377,10 +377,10 @@ procedure f#definedness(xs: listDomainType) returns (Result: int)
 procedure f_termination_proof(xs: listDomainType) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -395,16 +395,16 @@ procedure f_termination_proof(xs: listDomainType) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: if (size(xs) > 0) -- <no position>
     if ((size_3(xs): int) > 0) {
       
       // -- Translating statement: assert (decreasing(size(tail_Cons(xs)), old(size(xs))): Bool) &&
   //   (bounded(old(size(xs))): Bool) -- <no position>
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Assert might fail. Assertion (decreasing(size(tail_Cons(xs)), old(size(xs))): Bool) might not hold. (<no position>) [223906]"}
           (decreasing((size_3((tail_Cons(xs): listDomainType)): int), (size_3(xs): int)): bool);
         assert {:msg "  Assert might fail. Assertion (bounded(old(size(xs))): Bool) might not hold. (<no position>) [223907]"}

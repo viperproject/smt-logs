@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-04 00:25:07
+; Started: 2025-01-07 13:38:51
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -1464,7 +1464,7 @@
 (check-sat)
 ; unsat
 (pop) ; 3
-; 0.22s
+; 0.23s
 ; (get-info :all-statistics)
 (assert (Seq_equal
   (Seq_append
@@ -1758,7 +1758,7 @@
 (check-sat)
 ; unsat
 (pop) ; 3
-; 0.02s
+; 0.03s
 ; (get-info :all-statistics)
 (assert (Seq_equal
   (Seq_append

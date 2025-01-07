@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-04 01:11:44
+// Date:         2025-01-07 14:26:09
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0080.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0080-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -226,8 +226,8 @@ procedure readValid#definedness(self: Ref) returns (Result: int)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -251,8 +251,8 @@ procedure readValid#definedness(self: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume valid#trigger(UnfoldingHeap, valid(self));
       assume UnfoldingHeap[null, valid(self)] == FrameFragment(UnfoldingHeap[self, f_7]);
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := 1 / 4;
       assert {:msg "  Function might not be well-formed. Fraction 1 / 4 might be negative. (0080.vpr@10.1--14.2) [192189]"}
         perm >= NoPerm;
@@ -339,14 +339,14 @@ procedure read(a_2: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
-  var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var ExhaleHeap: HeapType;
   var newVersion: FrameType;
   var freshVersion: FrameType;
@@ -369,8 +369,8 @@ procedure read(a_2: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -385,14 +385,14 @@ procedure read(a_2: Ref) returns ()
   }
   
   // -- Translating statement: assert readValid(a) >= readValid(a) -- 0080.vpr@20.5--20.40
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of readValid(a) >= readValid(a)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := 1 / 4;
         assert {:msg "  Precondition of function readValid might not hold. Fraction 1 / 4 might be negative. (0080.vpr@20.12--20.24) [192193]"}
           perm >= NoPerm;
@@ -407,8 +407,8 @@ procedure read(a_2: Ref) returns ()
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := 1 / 4;
         assert {:msg "  Precondition of function readValid might not hold. Fraction 1 / 4 might be negative. (0080.vpr@20.28--20.40) [192195]"}
           perm >= NoPerm;
@@ -426,15 +426,15 @@ procedure read(a_2: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert perm(valid(a)) == write -- 0080.vpr@21.5--21.35
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion perm(valid(a)) == write might not hold. (0080.vpr@21.12--21.35) [192198]"}
       Mask[null, valid(a_2)] == FullPerm;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert a != null ==> perm(a.f) == none -- 0080.vpr@22.5--22.41
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     if (a_2 != null) {
       assert {:msg "  Assert might fail. Assertion perm(a.f) == none might not hold. (0080.vpr@22.12--22.41) [192199]"}
         Mask[a_2, f_7] == NoPerm;
@@ -444,8 +444,8 @@ procedure read(a_2: Ref) returns ()
   // -- Translating statement: unfold acc(valid(a), 1 / 3) -- 0080.vpr@24.5--24.30
     assume valid#trigger(Heap, valid(a_2));
     assume Heap[null, valid(a_2)] == FrameFragment(Heap[a_2, f_7]);
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := 1 / 3;
     assert {:msg "  Unfolding valid(a) might fail. Fraction 1 / 3 might be negative. (0080.vpr@24.5--24.30) [192201]"}
       perm >= NoPerm;
@@ -470,30 +470,30 @@ procedure read(a_2: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert perm(valid(a)) == 2 / 3 -- 0080.vpr@26.5--26.33
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion perm(valid(a)) == 2 / 3 might not hold. (0080.vpr@26.12--26.33) [192204]"}
       Mask[null, valid(a_2)] == 2 / 3;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert perm(a.f) == 1 / 3 -- 0080.vpr@27.5--27.28
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion perm(a.f) == 1 / 3 might not hold. (0080.vpr@27.12--27.28) [192205]"}
       Mask[a_2, f_7] == 1 / 3;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert a.f == readValid(a) -- 0080.vpr@28.5--28.31
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of a.f == readValid(a)
       assert {:msg "  Assert might fail. There might be insufficient permission to access a.f (0080.vpr@28.12--28.31) [192206]"}
         HasDirectPerm(ExhaleWellDef0Mask, a_2, f_7);
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := 1 / 4;
         assert {:msg "  Precondition of function readValid might not hold. Fraction 1 / 4 might be negative. (0080.vpr@28.19--28.31) [192207]"}
           perm >= NoPerm;
@@ -513,8 +513,8 @@ procedure read(a_2: Ref) returns ()
   // -- Translating statement: unfold acc(valid(a), 2 / 3) -- 0080.vpr@30.5--30.30
     assume valid#trigger(Heap, valid(a_2));
     assume Heap[null, valid(a_2)] == FrameFragment(Heap[a_2, f_7]);
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := 2 / 3;
     assert {:msg "  Unfolding valid(a) might fail. Fraction 2 / 3 might be negative. (0080.vpr@30.5--30.30) [192211]"}
       perm >= NoPerm;
@@ -539,15 +539,15 @@ procedure read(a_2: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert perm(valid(a)) == none -- 0080.vpr@32.5--32.34
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion perm(valid(a)) == none might not hold. (0080.vpr@32.12--32.34) [192214]"}
       Mask[null, valid(a_2)] == NoPerm;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert perm(a.f) == write -- 0080.vpr@33.5--33.30
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion perm(a.f) == write might not hold. (0080.vpr@33.12--33.30) [192215]"}
       Mask[a_2, f_7] == FullPerm;
     assume state(Heap, Mask);
@@ -563,16 +563,16 @@ procedure read(a_2: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert a.f == old(readValid(a)) + 1 -- 0080.vpr@35.5--35.40
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of a.f == old(readValid(a)) + 1
       assert {:msg "  Assert might fail. There might be insufficient permission to access a.f (0080.vpr@35.12--35.40) [192218]"}
         HasDirectPerm(ExhaleWellDef0Mask, a_2, f_7);
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := oldMask;
         ExhaleWellDef1Heap := oldHeap;
+        ExhaleWellDef1Mask := oldMask;
         perm := 1 / 4;
         assert {:msg "  Precondition of function readValid might not hold. Fraction 1 / 4 might be negative. (0080.vpr@35.23--35.35) [192219]"}
           perm >= NoPerm;
@@ -587,8 +587,8 @@ procedure read(a_2: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(valid(a), 1 / 3) -- 0080.vpr@37.5--37.28
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := 1 / 3;
     assert {:msg "  Folding valid(a) might fail. Fraction 1 / 3 might be negative. (0080.vpr@37.5--37.28) [192223]"}
       perm >= NoPerm;
@@ -615,30 +615,30 @@ procedure read(a_2: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert perm(valid(a)) == 1 / 3 -- 0080.vpr@39.5--39.33
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion perm(valid(a)) == 1 / 3 might not hold. (0080.vpr@39.12--39.33) [192226]"}
       Mask[null, valid(a_2)] == 1 / 3;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert perm(a.f) == 2 / 3 -- 0080.vpr@40.5--40.28
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion perm(a.f) == 2 / 3 might not hold. (0080.vpr@40.12--40.28) [192227]"}
       Mask[a_2, f_7] == 2 / 3;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert a.f == readValid(a) -- 0080.vpr@41.5--41.31
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of a.f == readValid(a)
       assert {:msg "  Assert might fail. There might be insufficient permission to access a.f (0080.vpr@41.12--41.31) [192228]"}
         HasDirectPerm(ExhaleWellDef0Mask, a_2, f_7);
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := 1 / 4;
         assert {:msg "  Precondition of function readValid might not hold. Fraction 1 / 4 might be negative. (0080.vpr@41.19--41.31) [192229]"}
           perm >= NoPerm;
@@ -656,14 +656,14 @@ procedure read(a_2: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert readValid(a) == old(readValid(a)) + 1 -- 0080.vpr@42.5--42.49
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of readValid(a) == old(readValid(a)) + 1
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := 1 / 4;
         assert {:msg "  Precondition of function readValid might not hold. Fraction 1 / 4 might be negative. (0080.vpr@42.12--42.24) [192232]"}
           perm >= NoPerm;
@@ -678,8 +678,8 @@ procedure read(a_2: Ref) returns ()
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := oldMask;
         ExhaleWellDef1Heap := oldHeap;
+        ExhaleWellDef1Mask := oldMask;
         perm := 1 / 4;
         assert {:msg "  Precondition of function readValid might not hold. Fraction 1 / 4 might be negative. (0080.vpr@42.32--42.44) [192234]"}
           perm >= NoPerm;
@@ -694,8 +694,8 @@ procedure read(a_2: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(valid(a), 2 / 3) -- 0080.vpr@44.5--44.28
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := 2 / 3;
     assert {:msg "  Folding valid(a) might fail. Fraction 2 / 3 might be negative. (0080.vpr@44.5--44.28) [192238]"}
       perm >= NoPerm;
@@ -722,28 +722,28 @@ procedure read(a_2: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert perm(valid(a)) == write -- 0080.vpr@46.5--46.35
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion perm(valid(a)) == write might not hold. (0080.vpr@46.12--46.35) [192241]"}
       Mask[null, valid(a_2)] == FullPerm;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert perm(a.f) == none -- 0080.vpr@47.5--47.29
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion perm(a.f) == none might not hold. (0080.vpr@47.12--47.29) [192242]"}
       Mask[a_2, f_7] == NoPerm;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert readValid(a) == old(readValid(a)) + 1 -- 0080.vpr@48.5--48.49
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of readValid(a) == old(readValid(a)) + 1
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := 1 / 4;
         assert {:msg "  Precondition of function readValid might not hold. Fraction 1 / 4 might be negative. (0080.vpr@48.12--48.24) [192243]"}
           perm >= NoPerm;
@@ -758,8 +758,8 @@ procedure read(a_2: Ref) returns ()
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := oldMask;
         ExhaleWellDef1Heap := oldHeap;
+        ExhaleWellDef1Mask := oldMask;
         perm := 1 / 4;
         assert {:msg "  Precondition of function readValid might not hold. Fraction 1 / 4 might be negative. (0080.vpr@48.32--48.44) [192245]"}
           perm >= NoPerm;
@@ -774,23 +774,23 @@ procedure read(a_2: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert old(perm(a.f)) == none -- 0080.vpr@49.5--49.34
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion old(perm(a.f)) == none might not hold. (0080.vpr@49.12--49.34) [192248]"}
       oldMask[a_2, f_7] == NoPerm;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert a.f == readValid(a) -- 0080.vpr@52.5--52.31
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of a.f == readValid(a)
       assert {:msg "  Assert might fail. There might be insufficient permission to access a.f (0080.vpr@52.12--52.31) [192249]"}
         HasDirectPerm(ExhaleWellDef0Mask, a_2, f_7);
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := 1 / 4;
         assert {:msg "  Precondition of function readValid might not hold. Fraction 1 / 4 might be negative. (0080.vpr@52.19--52.31) [192250]"}
           perm >= NoPerm;
@@ -808,8 +808,8 @@ procedure read(a_2: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of read might not hold. There might be insufficient permission to access valid(a) (0080.vpr@18.13--18.33) [192253]"}

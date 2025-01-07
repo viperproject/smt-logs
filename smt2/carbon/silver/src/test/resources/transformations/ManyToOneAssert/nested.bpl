@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-04 00:48:59
+// Date:         2025-01-07 14:02:58
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/transformations/ManyToOneAssert/nested.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/transformations/ManyToOneAssert/nested-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -180,12 +180,12 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 procedure main() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var b_24: bool;
   var c: bool;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var loopHeap: HeapType;
   var loopMask: MaskType;
   
@@ -197,8 +197,8 @@ procedure main() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: b := true -- nested.vpr@6.5--6.24
     b_24 := true;
@@ -209,13 +209,13 @@ procedure main() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert true -- nested.vpr@8.5--8.17
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert true -- nested.vpr@9.5--9.17
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assume state(Heap, Mask);
   
   // -- Translating statement: while (b == true) -- nested.vpr@10.5--17.6
@@ -241,13 +241,13 @@ procedure main() returns ()
         // -- Translate loop body
           
           // -- Translating statement: assert true -- nested.vpr@11.9--11.21
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             assume state(Heap, Mask);
           
           // -- Translating statement: assert b -- nested.vpr@12.9--12.18
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             assert {:msg "  Assert might fail. Assertion b might not hold. (nested.vpr@12.16--12.17) [92817]"}
               b_24;
             assume state(Heap, Mask);
@@ -256,15 +256,15 @@ procedure main() returns ()
             if (c) {
               
               // -- Translating statement: assert b -- nested.vpr@14.13--14.22
-                ExhaleWellDef0Heap := Heap;
                 ExhaleWellDef0Mask := Mask;
+                ExhaleWellDef0Heap := Heap;
                 assert {:msg "  Assert might fail. Assertion b might not hold. (nested.vpr@14.20--14.21) [92818]"}
                   b_24;
                 assume state(Heap, Mask);
               
               // -- Translating statement: assert c -- nested.vpr@15.13--15.22
-                ExhaleWellDef0Heap := Heap;
                 ExhaleWellDef0Mask := Mask;
+                ExhaleWellDef0Heap := Heap;
                 assert {:msg "  Assert might fail. Assertion c might not hold. (nested.vpr@15.20--15.21) [92819]"}
                   c;
                 assume state(Heap, Mask);

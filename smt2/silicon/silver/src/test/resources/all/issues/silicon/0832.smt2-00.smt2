@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-04 00:36:29
+; Started: 2025-01-07 13:50:15
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -739,11 +739,11 @@
 (assert (forall ((s@$ $Snap) (a@0@00 Array_) (i@1@00 Int)) (!
   (= (aloc%limited s@$ a@0@00 i@1@00) (aloc s@$ a@0@00 i@1@00))
   :pattern ((aloc s@$ a@0@00 i@1@00))
-  :qid |quant-u-25506|)))
+  :qid |quant-u-25520|)))
 (assert (forall ((s@$ $Snap) (a@0@00 Array_) (i@1@00 Int)) (!
   (aloc%stateless a@0@00 i@1@00)
   :pattern ((aloc%limited s@$ a@0@00 i@1@00))
-  :qid |quant-u-25507|)))
+  :qid |quant-u-25521|)))
 (assert (forall ((s@$ $Snap) (a@0@00 Array_) (i@1@00 Int)) (!
   (let ((result@2@00 (aloc%limited s@$ a@0@00 i@1@00))) (=>
     (aloc%precondition s@$ a@0@00 i@1@00)
@@ -751,15 +751,15 @@
       (= (loc_inv_1<Array> result@2@00) a@0@00)
       (= (loc_inv_2<Int> result@2@00) i@1@00))))
   :pattern ((aloc%limited s@$ a@0@00 i@1@00))
-  :qid |quant-u-25508|)))
+  :qid |quant-u-25522|)))
 (assert (forall ((s@$ $Snap) (a@0@00 Array_) (i@1@00 Int)) (!
   (let ((result@2@00 (aloc%limited s@$ a@0@00 i@1@00))) true)
   :pattern ((aloc%limited s@$ a@0@00 i@1@00))
-  :qid |quant-u-25509|)))
+  :qid |quant-u-25523|)))
 (assert (forall ((s@$ $Snap) (a@0@00 Array_) (i@1@00 Int)) (!
   (let ((result@2@00 (aloc%limited s@$ a@0@00 i@1@00))) true)
   :pattern ((aloc%limited s@$ a@0@00 i@1@00))
-  :qid |quant-u-25510|)))
+  :qid |quant-u-25524|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (= s@$ ($Snap.combine ($Snap.first s@$) ($Snap.second s@$))))
@@ -800,11 +800,11 @@
     (aloc%precondition s@$ a@0@00 i@1@00)
     (= (aloc s@$ a@0@00 i@1@00) (array_loc<Ref> a@0@00 i@1@00)))
   :pattern ((aloc s@$ a@0@00 i@1@00))
-  :qid |quant-u-25511|)))
+  :qid |quant-u-25525|)))
 (assert (forall ((s@$ $Snap) (a@0@00 Array_) (i@1@00 Int)) (!
   true
   :pattern ((aloc s@$ a@0@00 i@1@00))
-  :qid |quant-u-25512|)))
+  :qid |quant-u-25526|)))
 ; ---------- arrR ----------
 (declare-const x@4@00 Int)
 (declare-const a@5@00 Array_)
@@ -947,7 +947,7 @@
           i@11@00)
         (aloc%precondition ($Snap.combine $Snap.unit $Snap.unit) a@8@00 i@11@00))))
   :pattern ((aloc%limited ($Snap.combine $Snap.unit $Snap.unit) a@8@00 i@11@00))
-  :qid |quant-u-25514|)))
+  :qid |quant-u-25528|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -965,7 +965,7 @@
         i@11@00)
       (img@13@00 (aloc ($Snap.combine $Snap.unit $Snap.unit) a@8@00 i@11@00))))
   :pattern ((aloc%limited ($Snap.combine $Snap.unit $Snap.unit) a@8@00 i@11@00))
-  :qid |quant-u-25514|)))
+  :qid |quant-u-25528|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and

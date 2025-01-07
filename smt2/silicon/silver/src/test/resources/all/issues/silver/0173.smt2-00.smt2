@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-04 00:37:02
+; Started: 2025-01-07 13:50:49
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -460,11 +460,11 @@
     (trigger_issue%limited s@$ lo@0@00 hi@1@00)
     (trigger_issue s@$ lo@0@00 hi@1@00))
   :pattern ((trigger_issue s@$ lo@0@00 hi@1@00))
-  :qid |quant-u-25955|)))
+  :qid |quant-u-25969|)))
 (assert (forall ((s@$ $Snap) (lo@0@00 Int) (hi@1@00 Int)) (!
   (trigger_issue%stateless lo@0@00 hi@1@00)
   :pattern ((trigger_issue%limited s@$ lo@0@00 hi@1@00))
-  :qid |quant-u-25956|)))
+  :qid |quant-u-25970|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (= s@$ $Snap.unit))
@@ -497,8 +497,8 @@
     (trigger_issue%precondition s@$ lo@0@00 hi@1@00)
     (= (trigger_issue s@$ lo@0@00 hi@1@00) true))
   :pattern ((trigger_issue s@$ lo@0@00 hi@1@00))
-  :qid |quant-u-25957|)))
+  :qid |quant-u-25971|)))
 (assert (forall ((s@$ $Snap) (lo@0@00 Int) (hi@1@00 Int)) (!
   true
   :pattern ((trigger_issue s@$ lo@0@00 hi@1@00))
-  :qid |quant-u-25958|)))
+  :qid |quant-u-25972|)))

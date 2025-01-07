@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-04 00:31:51
+; Started: 2025-01-07 13:45:35
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -159,11 +159,11 @@
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (= (Node_get_prev%limited s@$ this@0@00) (Node_get_prev s@$ this@0@00))
   :pattern ((Node_get_prev s@$ this@0@00))
-  :qid |quant-u-20264|)))
+  :qid |quant-u-20279|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (Node_get_prev%stateless this@0@00)
   :pattern ((Node_get_prev%limited s@$ this@0@00))
-  :qid |quant-u-20265|)))
+  :qid |quant-u-20280|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -310,11 +310,11 @@
       (Node_get_prev s@$ this@0@00)
       ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$)))))
   :pattern ((Node_get_prev s@$ this@0@00))
-  :qid |quant-u-20274|)))
+  :qid |quant-u-20289|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   true
   :pattern ((Node_get_prev s@$ this@0@00))
-  :qid |quant-u-20275|)))
+  :qid |quant-u-20290|)))
 ; ---------- FUNCTION Node_get_next----------
 (declare-fun this@2@00 () $Ref)
 (declare-fun result@3@00 () $Ref)
@@ -324,11 +324,11 @@
 (assert (forall ((s@$ $Snap) (this@2@00 $Ref)) (!
   (= (Node_get_next%limited s@$ this@2@00) (Node_get_next s@$ this@2@00))
   :pattern ((Node_get_next s@$ this@2@00))
-  :qid |quant-u-20266|)))
+  :qid |quant-u-20281|)))
 (assert (forall ((s@$ $Snap) (this@2@00 $Ref)) (!
   (Node_get_next%stateless this@2@00)
   :pattern ((Node_get_next%limited s@$ this@2@00))
-  :qid |quant-u-20267|)))
+  :qid |quant-u-20282|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -475,11 +475,11 @@
       (Node_get_next s@$ this@2@00)
       ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second s@$))))))
   :pattern ((Node_get_next s@$ this@2@00))
-  :qid |quant-u-20276|)))
+  :qid |quant-u-20291|)))
 (assert (forall ((s@$ $Snap) (this@2@00 $Ref)) (!
   true
   :pattern ((Node_get_next s@$ this@2@00))
-  :qid |quant-u-20277|)))
+  :qid |quant-u-20292|)))
 ; ---------- FUNCTION Node_rev_prev----------
 (declare-fun this@4@00 () $Ref)
 (declare-fun result@5@00 () $Ref)
@@ -489,11 +489,11 @@
 (assert (forall ((s@$ $Snap) (this@4@00 $Ref)) (!
   (= (Node_rev_prev%limited s@$ this@4@00) (Node_rev_prev s@$ this@4@00))
   :pattern ((Node_rev_prev s@$ this@4@00))
-  :qid |quant-u-20268|)))
+  :qid |quant-u-20283|)))
 (assert (forall ((s@$ $Snap) (this@4@00 $Ref)) (!
   (Node_rev_prev%stateless this@4@00)
   :pattern ((Node_rev_prev%limited s@$ this@4@00))
-  :qid |quant-u-20269|)))
+  :qid |quant-u-20284|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -650,11 +650,11 @@
       (Node_rev_prev s@$ this@4@00)
       ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$)))))
   :pattern ((Node_rev_prev s@$ this@4@00))
-  :qid |quant-u-20278|)))
+  :qid |quant-u-20293|)))
 (assert (forall ((s@$ $Snap) (this@4@00 $Ref)) (!
   true
   :pattern ((Node_rev_prev s@$ this@4@00))
-  :qid |quant-u-20279|)))
+  :qid |quant-u-20294|)))
 ; ---------- FUNCTION Node_rev_next----------
 (declare-fun this@6@00 () $Ref)
 (declare-fun result@7@00 () $Ref)
@@ -664,11 +664,11 @@
 (assert (forall ((s@$ $Snap) (this@6@00 $Ref)) (!
   (= (Node_rev_next%limited s@$ this@6@00) (Node_rev_next s@$ this@6@00))
   :pattern ((Node_rev_next s@$ this@6@00))
-  :qid |quant-u-20270|)))
+  :qid |quant-u-20285|)))
 (assert (forall ((s@$ $Snap) (this@6@00 $Ref)) (!
   (Node_rev_next%stateless this@6@00)
   :pattern ((Node_rev_next%limited s@$ this@6@00))
-  :qid |quant-u-20271|)))
+  :qid |quant-u-20286|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -825,11 +825,11 @@
       (Node_rev_next s@$ this@6@00)
       ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second s@$))))))
   :pattern ((Node_rev_next s@$ this@6@00))
-  :qid |quant-u-20280|)))
+  :qid |quant-u-20295|)))
 (assert (forall ((s@$ $Snap) (this@6@00 $Ref)) (!
   true
   :pattern ((Node_rev_next s@$ this@6@00))
-  :qid |quant-u-20281|)))
+  :qid |quant-u-20296|)))
 ; ---------- FUNCTION Node_first----------
 (declare-fun this@8@00 () $Ref)
 (declare-fun result@9@00 () $Ref)
@@ -839,11 +839,11 @@
 (assert (forall ((s@$ $Snap) (this@8@00 $Ref)) (!
   (= (Node_first%limited s@$ this@8@00) (Node_first s@$ this@8@00))
   :pattern ((Node_first s@$ this@8@00))
-  :qid |quant-u-20272|)))
+  :qid |quant-u-20287|)))
 (assert (forall ((s@$ $Snap) (this@8@00 $Ref)) (!
   (Node_first%stateless this@8@00)
   :pattern ((Node_first%limited s@$ this@8@00))
-  :qid |quant-u-20273|)))
+  :qid |quant-u-20288|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -1049,7 +1049,7 @@
         (Node_first%limited ($Snap.first ($Snap.second ($Snap.second ($Snap.second s@$)))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$)))))))
   :pattern ((Node_first s@$ this@8@00))
   :pattern ((Node_first%stateless this@8@00) (Node_reverse%trigger s@$ this@8@00))
-  :qid |quant-u-20282|)))
+  :qid |quant-u-20297|)))
 (assert (forall ((s@$ $Snap) (this@8@00 $Ref)) (!
   (=>
     (Node_first%precondition s@$ this@8@00)
@@ -1058,7 +1058,7 @@
       true
       (Node_first%precondition ($Snap.first ($Snap.second ($Snap.second ($Snap.second s@$)))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$))))))
   :pattern ((Node_first s@$ this@8@00))
-  :qid |quant-u-20283|)))
+  :qid |quant-u-20298|)))
 ; ---------- Iterator_ready ----------
 (declare-const this@15@00 $Ref)
 (push) ; 1

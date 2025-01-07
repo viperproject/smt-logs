@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-04 00:36:03
+; Started: 2025-01-07 13:49:48
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -416,11 +416,11 @@
 (assert (forall ((s@$ $Snap) (start@0@00 $Ref)) (!
   (= (elems%limited s@$ start@0@00) (elems s@$ start@0@00))
   :pattern ((elems s@$ start@0@00))
-  :qid |quant-u-25066|)))
+  :qid |quant-u-25080|)))
 (assert (forall ((s@$ $Snap) (start@0@00 $Ref)) (!
   (elems%stateless start@0@00)
   :pattern ((elems%limited s@$ start@0@00))
-  :qid |quant-u-25067|)))
+  :qid |quant-u-25081|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -611,7 +611,7 @@
           (elems%limited ($Snap.second ($Snap.second s@$)) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$))))))))
   :pattern ((elems s@$ start@0@00))
   :pattern ((elems%stateless start@0@00) (list%trigger s@$ start@0@00))
-  :qid |quant-u-25070|)))
+  :qid |quant-u-25084|)))
 (assert (forall ((s@$ $Snap) (start@0@00 $Ref)) (!
   (=>
     (elems%precondition s@$ start@0@00)
@@ -620,7 +620,7 @@
       true
       (elems%precondition ($Snap.second ($Snap.second s@$)) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$))))))
   :pattern ((elems s@$ start@0@00))
-  :qid |quant-u-25071|)))
+  :qid |quant-u-25085|)))
 ; ---------- FUNCTION lsegelems----------
 (declare-fun start@2@00 () $Ref)
 (declare-fun end@3@00 () $Ref)
@@ -633,11 +633,11 @@
     (lsegelems%limited s@$ start@2@00 end@3@00)
     (lsegelems s@$ start@2@00 end@3@00))
   :pattern ((lsegelems s@$ start@2@00 end@3@00))
-  :qid |quant-u-25068|)))
+  :qid |quant-u-25082|)))
 (assert (forall ((s@$ $Snap) (start@2@00 $Ref) (end@3@00 $Ref)) (!
   (lsegelems%stateless start@2@00 end@3@00)
   :pattern ((lsegelems%limited s@$ start@2@00 end@3@00))
-  :qid |quant-u-25069|)))
+  :qid |quant-u-25083|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -820,7 +820,7 @@
           (lsegelems%limited ($Snap.second ($Snap.second s@$)) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$))) end@3@00)))))
   :pattern ((lsegelems s@$ start@2@00 end@3@00))
   :pattern ((lsegelems%stateless start@2@00 end@3@00) (lseg%trigger s@$ start@2@00 end@3@00))
-  :qid |quant-u-25072|)))
+  :qid |quant-u-25086|)))
 (assert (forall ((s@$ $Snap) (start@2@00 $Ref) (end@3@00 $Ref)) (!
   (=>
     (lsegelems%precondition s@$ start@2@00 end@3@00)
@@ -829,7 +829,7 @@
       true
       (lsegelems%precondition ($Snap.second ($Snap.second s@$)) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$))) end@3@00)))
   :pattern ((lsegelems s@$ start@2@00 end@3@00))
-  :qid |quant-u-25073|)))
+  :qid |quant-u-25087|)))
 ; ---------- list ----------
 (declare-const start@7@00 $Ref)
 (push) ; 1

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-04 01:16:46
+// Date:         2025-01-07 14:31:22
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0199.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0199-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -289,8 +289,8 @@ axiom !IsWandField(f_7);
 procedure test01(x: Ref, b_24: bool) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
   var Ops_1Heap: HeapType;
   var Ops_1Mask: MaskType;
@@ -298,8 +298,8 @@ procedure test01(x: Ref, b_24: bool) returns ()
   var UsedHeap: HeapType;
   var UsedMask: MaskType;
   var b_2: bool;
-  var Labellhs1Heap: HeapType;
   var Labellhs1Mask: MaskType;
+  var Labellhs1Heap: HeapType;
   var boolCur: bool;
   var Used_1Heap: HeapType;
   var Used_1Mask: MaskType;
@@ -316,8 +316,8 @@ procedure test01(x: Ref, b_24: bool) returns ()
   var b_4: bool;
   var Result_1Heap: HeapType;
   var Result_1Mask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -331,8 +331,8 @@ procedure test01(x: Ref, b_24: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale acc(x.f, 2 / 4) -- 0199.vpr@4.3--4.22
     perm := 2 / 4;
@@ -371,8 +371,8 @@ procedure test01(x: Ref, b_24: bool) returns ()
     
     // -- Translating statement: label lhs1 -- 0199.vpr@6.11--8.47
       lhs1:
-      Labellhs1Heap := Ops_1Heap;
       Labellhs1Mask := Ops_1Mask;
+      Labellhs1Heap := Ops_1Heap;
       b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);
     boolCur := true;
     // Translating exec of non-ghost operationacc(x.f, 1 / 4) && acc(x.f, (b ? 2 / 4 : 1 / 4))
@@ -501,8 +501,8 @@ procedure test01(x: Ref, b_24: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(x.f, 1 / 4) -- 0199.vpr@10.3--10.22
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := 1 / 4;
     assert {:msg "  Exhale might fail. Fraction 1 / 4 might be negative. (0199.vpr@10.10--10.22) [208418]"}
       perm >= NoPerm;
@@ -525,8 +525,8 @@ procedure test01(x: Ref, b_24: bool) returns ()
 procedure test02(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
   var Ops_3Heap: HeapType;
   var Ops_3Mask: MaskType;
@@ -534,8 +534,8 @@ procedure test02(x: Ref) returns ()
   var Used_2Heap: HeapType;
   var Used_2Mask: MaskType;
   var b_5: bool;
-  var Labellhs3Heap: HeapType;
   var Labellhs3Mask: MaskType;
+  var Labellhs3Heap: HeapType;
   var boolCur_1: bool;
   var Used_3Heap: HeapType;
   var Used_3Mask: MaskType;
@@ -552,8 +552,8 @@ procedure test02(x: Ref) returns ()
   var b_9: bool;
   var Result_3Heap: HeapType;
   var Result_3Mask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -567,8 +567,8 @@ procedure test02(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale acc(x.f, 2 / 4) -- 0199.vpr@14.3--14.22
     perm := 2 / 4;
@@ -613,8 +613,8 @@ procedure test02(x: Ref) returns ()
     
     // -- Translating statement: label lhs3 -- 0199.vpr@16.11--18.53
       lhs3:
-      Labellhs3Heap := Ops_3Heap;
       Labellhs3Mask := Ops_3Mask;
+      Labellhs3Heap := Ops_3Heap;
       b_6 := b_6 && state(Ops_3Heap, Ops_3Mask);
     boolCur_1 := true;
     // Translating exec of non-ghost operationacc(x.f, 1 / 4) && acc(x.f, (x.f > 0 ? 2 / 4 : 1 / 4))
@@ -753,8 +753,8 @@ procedure test02(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(x.f, 1 / 4) -- 0199.vpr@20.3--20.22
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := 1 / 4;
     assert {:msg "  Exhale might fail. Fraction 1 / 4 might be negative. (0199.vpr@20.10--20.22) [208428]"}
       perm >= NoPerm;
@@ -777,8 +777,8 @@ procedure test02(x: Ref) returns ()
 procedure test03(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
   var Ops_5Heap: HeapType;
   var Ops_5Mask: MaskType;
@@ -786,8 +786,8 @@ procedure test03(x: Ref) returns ()
   var Used_4Heap: HeapType;
   var Used_4Mask: MaskType;
   var b_10: bool;
-  var Labellhs5Heap: HeapType;
   var Labellhs5Mask: MaskType;
+  var Labellhs5Heap: HeapType;
   var boolCur_2: bool;
   var Used_5Heap: HeapType;
   var Used_5Mask: MaskType;
@@ -807,8 +807,8 @@ procedure test03(x: Ref) returns ()
   var b_15: bool;
   var Result_6Heap: HeapType;
   var Result_6Mask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -822,8 +822,8 @@ procedure test03(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale acc(x.f, 2 / 4) -- 0199.vpr@24.3--24.22
     perm := 2 / 4;
@@ -868,8 +868,8 @@ procedure test03(x: Ref) returns ()
     
     // -- Translating statement: label lhs5 -- 0199.vpr@27.5--29.63
       lhs5:
-      Labellhs5Heap := Ops_5Heap;
       Labellhs5Mask := Ops_5Mask;
+      Labellhs5Heap := Ops_5Heap;
       b_11 := b_11 && state(Ops_5Heap, Ops_5Mask);
     boolCur_2 := true;
     // Translating exec of non-ghost operationacc(x.f, 1 / 4) && (x.f > 0 ? acc(x.f, 2 / 4) : acc(x.f, 1 / 4))
@@ -1061,8 +1061,8 @@ procedure test03(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(x.f, 1 / 4) -- 0199.vpr@31.3--31.22
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := 1 / 4;
     assert {:msg "  Exhale might fail. Fraction 1 / 4 might be negative. (0199.vpr@31.10--31.22) [208439]"}
       perm >= NoPerm;

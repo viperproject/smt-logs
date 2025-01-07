@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-04 00:56:39
+// Date:         2025-01-07 14:10:48
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/lhs.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/lhs-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -266,8 +266,8 @@ procedure sum#definedness(p_1: Ref) returns (Result: int)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -289,8 +289,8 @@ procedure sum#definedness(p_1: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume Pair#trigger(UnfoldingHeap, Pair(p_1));
       assume UnfoldingHeap[null, Pair(p_1)] == CombineFrames(FrameFragment(UnfoldingHeap[p_1, f_7]), FrameFragment(UnfoldingHeap[p_1, g]));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Pair(p) (lhs.vpr@13.1--15.35) [127163]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, Pair(p_1)];
@@ -384,19 +384,19 @@ procedure test1(p_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var Ops_1Heap: HeapType;
   var Ops_1Mask: MaskType;
   var b_1_1: bool;
   var UsedHeap: HeapType;
   var UsedMask: MaskType;
   var b_2: bool;
-  var Labellhs1Heap: HeapType;
   var Labellhs1Mask: MaskType;
+  var Labellhs1Heap: HeapType;
   var boolCur: bool;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var Used_1Heap: HeapType;
   var Used_1Mask: MaskType;
   var b_2_1: bool;
@@ -448,8 +448,8 @@ procedure test1(p_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: p.f := 10 -- lhs.vpr@21.3--21.12
     assert {:msg "  Assignment might fail. There might be insufficient permission to access p.f (lhs.vpr@21.3--21.12) [127166]"}
@@ -478,15 +478,15 @@ procedure test1(p_1: Ref) returns ()
     
     // -- Translating statement: label lhs1 -- lhs.vpr@23.11--23.70
       lhs1:
-      Labellhs1Heap := Ops_1Heap;
       Labellhs1Mask := Ops_1Mask;
+      Labellhs1Heap := Ops_1Heap;
       b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);
     boolCur := true;
     if (b_1_1) {
       
       // -- Translating statement: fold acc(Pair(p), write) -- lhs.vpr@24.7--24.19
-        ExhaleWellDef0Heap := Ops_1Heap;
         ExhaleWellDef0Mask := Ops_1Mask;
+        ExhaleWellDef0Heap := Ops_1Heap;
         havoc Used_1Heap;
         Used_1Mask := ZeroMask;
         b_2_1 := b_2_1 && state(Used_1Heap, Used_1Mask);
@@ -702,8 +702,8 @@ procedure test1(p_1: Ref) returns ()
         // -- Check definedness of sum(p) == 10 + old[lhs](p.g)
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := Result_2Heap;
             ExhaleWellDef0Mask := Result_2Mask;
+            ExhaleWellDef0Heap := Result_2Heap;
             perm := FullPerm;
             assert {:msg "  Precondition of function sum might not hold. There might be insufficient permission to access Pair(p) (lhs.vpr@23.42--23.48) [127175]"}
               NoPerm < perm ==> NoPerm < Result_2Mask[null, Pair(p_1)];
@@ -737,18 +737,18 @@ procedure test2(p_1: Ref) returns ()
   var perm: Perm;
   var WandDefLHSHeap: HeapType;
   var WandDefLHSMask: MaskType;
-  var Labellhs3Heap: HeapType;
   var Labellhs3Mask: MaskType;
+  var Labellhs3Heap: HeapType;
   var WandDefRHSHeap: HeapType;
   var WandDefRHSMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var Labellhs4Heap: HeapType;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -779,8 +779,8 @@ procedure test2(p_1: Ref) returns ()
         
         // -- Translating statement: label lhs3 -- lhs.vpr@31.12--31.69
           lhs3:
-          Labellhs3Heap := WandDefLHSHeap;
           Labellhs3Mask := WandDefLHSMask;
+          Labellhs3Heap := WandDefLHSHeap;
           assume state(WandDefLHSHeap, WandDefLHSMask);
         havoc WandDefRHSHeap;
         WandDefRHSMask := ZeroMask;
@@ -792,8 +792,8 @@ procedure test2(p_1: Ref) returns ()
         // -- Check definedness of sum(p) == 10 + old[lhs](p.g)
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := WandDefRHSHeap;
             ExhaleWellDef0Mask := WandDefRHSMask;
+            ExhaleWellDef0Heap := WandDefRHSHeap;
             perm := FullPerm;
             assert {:msg "  Precondition of function sum might not hold. There might be insufficient permission to access Pair(p) (lhs.vpr@31.41--31.47) [127178]"}
               NoPerm < perm ==> NoPerm < WandDefRHSMask[null, Pair(p_1)];
@@ -817,8 +817,8 @@ procedure test2(p_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: p.g := 3 -- lhs.vpr@33.3--33.11
     assert {:msg "  Assignment might fail. There might be insufficient permission to access p.g (lhs.vpr@33.3--33.11) [127180]"}
@@ -830,8 +830,8 @@ procedure test2(p_1: Ref) returns ()
   //   acc(Pair(p), write) && sum(p) == 10 + old[lhs](p.g) -- lhs.vpr@34.3--34.66
     
     // -- check if wand is held and remove an instance
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       // permLe
       assert {:msg "  Applying wand might fail. Magic wand instance not found. (lhs.vpr@34.3--34.66) [127181]"}
         FullPerm <= Mask[null, wand(p_1, FullPerm, p_1, p_1, 10, p_1)];
@@ -839,8 +839,8 @@ procedure test2(p_1: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- check if LHS holds and remove permissions 
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Applying wand might fail. There might be insufficient permission to access p.g (lhs.vpr@34.3--34.66) [127183]"}
@@ -863,14 +863,14 @@ procedure test2(p_1: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert sum(p) == 13 -- lhs.vpr@35.3--35.22
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of sum(p) == 13
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function sum might not hold. There might be insufficient permission to access Pair(p) (lhs.vpr@35.10--35.16) [127185]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, Pair(p_1)];

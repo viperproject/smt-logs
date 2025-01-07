@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-04 01:03:30
+// Date:         2025-01-07 14:17:43
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/heap-dependent_triggers/triggerFoldPackage.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/heap-dependent_triggers/triggerFoldPackage-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -875,16 +875,16 @@ procedure p1#definedness(x: Ref) returns ()
 procedure m1(xs: (Set Ref), y: Ref, zs: (Seq Ref)) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var z: Ref;
   var QPMask: MaskType;
   var x_10: Ref;
   var WandDefLHSHeap: HeapType;
   var WandDefLHSMask: MaskType;
   var perm: Perm;
-  var Labellhs1Mask: MaskType;
   var Labellhs1Heap: HeapType;
+  var Labellhs1Mask: MaskType;
   var WandDefRHSHeap: HeapType;
   var WandDefRHSMask: MaskType;
   var Ops_1Heap: HeapType;
@@ -893,8 +893,8 @@ procedure m1(xs: (Set Ref), y: Ref, zs: (Seq Ref)) returns ()
   var UsedHeap: HeapType;
   var UsedMask: MaskType;
   var b_2: bool;
-  var Labellhs2Mask: MaskType;
   var Labellhs2Heap: HeapType;
+  var Labellhs2Mask: MaskType;
   var boolCur: bool;
   var Used_1Heap: HeapType;
   var Used_1Mask: MaskType;
@@ -908,8 +908,8 @@ procedure m1(xs: (Set Ref), y: Ref, zs: (Seq Ref)) returns ()
   var b_3: bool;
   var ResultHeap: HeapType;
   var ResultMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -922,8 +922,8 @@ procedure m1(xs: (Set Ref), y: Ref, zs: (Seq Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[z, $allocated];
@@ -989,8 +989,8 @@ procedure m1(xs: (Set Ref), y: Ref, zs: (Seq Ref)) returns ()
             
             // -- Translating statement: label lhs1 -- triggerFoldPackage.vpr@8.65--8.86
               lhs1:
-              Labellhs1Mask := WandDefLHSMask;
               Labellhs1Heap := WandDefLHSHeap;
+              Labellhs1Mask := WandDefLHSMask;
               assume state(WandDefLHSHeap, WandDefLHSMask);
             havoc WandDefRHSHeap;
             WandDefRHSMask := ZeroMask;
@@ -1087,8 +1087,8 @@ procedure m1(xs: (Set Ref), y: Ref, zs: (Seq Ref)) returns ()
     
     // -- Translating statement: label lhs2 -- triggerFoldPackage.vpr@14.13--14.34
       lhs2:
-      Labellhs2Mask := Ops_1Mask;
       Labellhs2Heap := Ops_1Heap;
+      Labellhs2Mask := Ops_1Mask;
       b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);
     boolCur := true;
     // Translating exec of non-ghost operationacc(y.f, write)
@@ -1159,8 +1159,8 @@ procedure m1(xs: (Set Ref), y: Ref, zs: (Seq Ref)) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert z != y -- triggerFoldPackage.vpr@17.5--17.18
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion z != y might not hold. (triggerFoldPackage.vpr@17.12--17.18) [140541]"}
       z != y;
     assume state(Heap, Mask);
@@ -1173,13 +1173,13 @@ procedure m1(xs: (Set Ref), y: Ref, zs: (Seq Ref)) returns ()
 procedure m2(xs: (Set Ref), ys: (Set Ref), z: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var y: Ref;
   var QPMask: MaskType;
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var freshVersion: FrameType;
   
   // -- Initializing the state
@@ -1193,8 +1193,8 @@ procedure m2(xs: (Set Ref), ys: (Set Ref), z: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[y, $allocated];
@@ -1328,8 +1328,8 @@ procedure m2(xs: (Set Ref), ys: (Set Ref), z: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(p1(y), write) -- triggerFoldPackage.vpr@30.5--30.15
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding p1(y) might fail. There might be insufficient permission to access y.f (triggerFoldPackage.vpr@30.5--30.15) [140548]"}
@@ -1354,8 +1354,8 @@ procedure m2(xs: (Set Ref), ys: (Set Ref), z: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert y != z -- triggerFoldPackage.vpr@34.5--34.18
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion y != z might not hold. (triggerFoldPackage.vpr@34.12--34.18) [140551]"}
       y != z;
     assume state(Heap, Mask);
@@ -1368,16 +1368,16 @@ procedure m2(xs: (Set Ref), ys: (Set Ref), z: Ref) returns ()
 procedure m3(xs: (Seq Ref), y: Ref, zs: (Seq Ref)) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var z: Ref;
   var QPMask: MaskType;
   var x_18: Ref;
   var WandDefLHSHeap: HeapType;
   var WandDefLHSMask: MaskType;
   var perm: Perm;
-  var Labellhs4Mask: MaskType;
   var Labellhs4Heap: HeapType;
+  var Labellhs4Mask: MaskType;
   var WandDefRHSHeap: HeapType;
   var WandDefRHSMask: MaskType;
   var Ops_3Heap: HeapType;
@@ -1386,8 +1386,8 @@ procedure m3(xs: (Seq Ref), y: Ref, zs: (Seq Ref)) returns ()
   var Used_2Heap: HeapType;
   var Used_2Mask: MaskType;
   var b_4: bool;
-  var Labellhs5Mask: MaskType;
   var Labellhs5Heap: HeapType;
+  var Labellhs5Mask: MaskType;
   var boolCur_1: bool;
   var Used_3Heap: HeapType;
   var Used_3Mask: MaskType;
@@ -1401,8 +1401,8 @@ procedure m3(xs: (Seq Ref), y: Ref, zs: (Seq Ref)) returns ()
   var b_7: bool;
   var Result_1Heap: HeapType;
   var Result_1Mask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1415,8 +1415,8 @@ procedure m3(xs: (Seq Ref), y: Ref, zs: (Seq Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[z, $allocated];
@@ -1482,8 +1482,8 @@ procedure m3(xs: (Seq Ref), y: Ref, zs: (Seq Ref)) returns ()
             
             // -- Translating statement: label lhs4 -- triggerFoldPackage.vpr@39.69--39.90
               lhs4:
-              Labellhs4Mask := WandDefLHSMask;
               Labellhs4Heap := WandDefLHSHeap;
+              Labellhs4Mask := WandDefLHSMask;
               assume state(WandDefLHSHeap, WandDefLHSMask);
             havoc WandDefRHSHeap;
             WandDefRHSMask := ZeroMask;
@@ -1565,8 +1565,8 @@ procedure m3(xs: (Seq Ref), y: Ref, zs: (Seq Ref)) returns ()
     
     // -- Translating statement: label lhs5 -- triggerFoldPackage.vpr@44.17--44.38
       lhs5:
-      Labellhs5Mask := Ops_3Mask;
       Labellhs5Heap := Ops_3Heap;
+      Labellhs5Mask := Ops_3Mask;
       b_5 := b_5 && state(Ops_3Heap, Ops_3Mask);
     boolCur_1 := true;
     // Translating exec of non-ghost operationacc(y.f, write)
@@ -1652,8 +1652,8 @@ procedure m3(xs: (Seq Ref), y: Ref, zs: (Seq Ref)) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert z != y -- triggerFoldPackage.vpr@47.9--47.22
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion z != y might not hold. (triggerFoldPackage.vpr@47.16--47.22) [140556]"}
       z != y;
     assume state(Heap, Mask);
@@ -1666,13 +1666,13 @@ procedure m3(xs: (Seq Ref), y: Ref, zs: (Seq Ref)) returns ()
 procedure m4(xs: (Set Ref), ys: (Set Ref), z: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var y: Ref;
   var QPMask: MaskType;
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var freshVersion: FrameType;
   
   // -- Initializing the state
@@ -1686,8 +1686,8 @@ procedure m4(xs: (Set Ref), ys: (Set Ref), z: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[y, $allocated];
@@ -1808,8 +1808,8 @@ procedure m4(xs: (Set Ref), ys: (Set Ref), z: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(p1(y), write) -- triggerFoldPackage.vpr@59.5--59.15
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding p1(y) might fail. There might be insufficient permission to access y.f (triggerFoldPackage.vpr@59.5--59.15) [140563]"}
@@ -1847,8 +1847,8 @@ procedure m4(xs: (Set Ref), ys: (Set Ref), z: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert y != z -- triggerFoldPackage.vpr@61.5--61.18
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion y != z might not hold. (triggerFoldPackage.vpr@61.12--61.18) [140566]"}
       y != z;
     assume state(Heap, Mask);

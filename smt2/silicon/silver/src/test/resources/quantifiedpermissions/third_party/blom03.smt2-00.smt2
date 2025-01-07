@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-04 00:26:30
+; Started: 2025-01-07 13:40:16
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -1497,7 +1497,7 @@
     (and (<= 0 i@5@00) (< i@5@00 (Seq_length ar@1@00)))
     (or (= p@0@00 $Perm.No) (< $Perm.No p@0@00)))
   
-  :qid |quant-u-9871|))))
+  :qid |quant-u-9817|))))
 (check-sat)
 ; unsat
 (pop) ; 2
@@ -1531,7 +1531,7 @@
       (= (inv@6@00 s@$ p@0@00 ar@1@00 (Seq_index ar@1@00 i@5@00)) i@5@00)
       (img@7@00 s@$ p@0@00 ar@1@00 (Seq_index ar@1@00 i@5@00))))
   :pattern ((Seq_index ar@1@00 i@5@00))
-  :qid |quant-u-9872|)))
+  :qid |quant-u-9818|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -1678,11 +1678,11 @@
 (assert (forall ((s@$ $Snap) (p@0@00 $Perm) (ar@1@00 Seq<$Ref>)) (!
   (= (vals%limited s@$ p@0@00 ar@1@00) (vals s@$ p@0@00 ar@1@00))
   :pattern ((vals s@$ p@0@00 ar@1@00))
-  :qid |quant-u-9869|)))
+  :qid |quant-u-9815|)))
 (assert (forall ((s@$ $Snap) (p@0@00 $Perm) (ar@1@00 Seq<$Ref>)) (!
   (vals%stateless p@0@00 ar@1@00)
   :pattern ((vals%limited s@$ p@0@00 ar@1@00))
-  :qid |quant-u-9870|)))
+  :qid |quant-u-9816|)))
 (assert (forall ((s@$ $Snap) (p@0@00 $Perm) (ar@1@00 Seq<$Ref>)) (!
   (let ((result@2@00 (vals%limited s@$ p@0@00 ar@1@00))) (and
     (forall ((i@5@00 Int)) (!
@@ -1694,7 +1694,7 @@
           (= (inv@6@00 s@$ p@0@00 ar@1@00 (Seq_index ar@1@00 i@5@00)) i@5@00)
           (img@7@00 s@$ p@0@00 ar@1@00 (Seq_index ar@1@00 i@5@00))))
       :pattern ((Seq_index ar@1@00 i@5@00))
-      :qid |quant-u-9872|))
+      :qid |quant-u-9818|))
     (forall ((r $Ref)) (!
       (=>
         (and
@@ -1723,12 +1723,12 @@
           :pattern ((Seq_index result@2@00 i))
           ))))))
   :pattern ((vals%limited s@$ p@0@00 ar@1@00))
-  :qid |quant-u-9873|)))
+  :qid |quant-u-9819|)))
 (assert (forall ((s@$ $Snap) (p@0@00 $Perm) (ar@1@00 Seq<$Ref>)) (!
   (let ((result@2@00 (vals%limited s@$ p@0@00 ar@1@00))) true)
   :pattern ((vals%limited s@$ p@0@00 ar@1@00))
-  :qid |quant-u-9874|)))
+  :qid |quant-u-9820|)))
 (assert (forall ((s@$ $Snap) (p@0@00 $Perm) (ar@1@00 Seq<$Ref>)) (!
   (let ((result@2@00 (vals%limited s@$ p@0@00 ar@1@00))) true)
   :pattern ((vals%limited s@$ p@0@00 ar@1@00))
-  :qid |quant-u-9875|)))
+  :qid |quant-u-9821|)))

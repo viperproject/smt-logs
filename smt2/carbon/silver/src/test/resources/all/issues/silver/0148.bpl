@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-04 01:21:01
+// Date:         2025-01-07 14:35:45
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0148.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0148-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -572,11 +572,11 @@ axiom (forall <T> x: T ::
 procedure test() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var s_2: (Seq int);
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -586,8 +586,8 @@ procedure test() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: s := Seq[Int]() -- 0148.vpr@21.3--21.18
     s_2 := (Seq#Empty(): Seq int);
@@ -595,16 +595,16 @@ procedure test() returns ()
   
   // -- Translating statement: assert (MultiSet_Empty(): MultiSet[Int]) ==
   //   (MultiSet_FromSeq(s): MultiSet[Int]) -- 0148.vpr@22.3--22.47
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion (MultiSet_Empty(): MultiSet[Int]) == (MultiSet_FromSeq(s): MultiSet[Int]) might not hold. (0148.vpr@22.10--22.47) [220920]"}
       (MultiSet_Empty(): MultiSetDomainType int) == (MultiSet_FromSeq(s_2): MultiSetDomainType int);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (MultiSet_FromSeq(Seq(2)): MultiSet[Int]) ==
   //   (MultiSet_Singleton(2): MultiSet[Int]) -- 0148.vpr@23.3--23.59
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion (MultiSet_FromSeq(Seq(2)): MultiSet[Int]) == (MultiSet_Singleton(2): MultiSet[Int]) might not hold. (0148.vpr@23.10--23.59) [220921]"}
       (MultiSet_FromSeq(Seq#Singleton(2)): MultiSetDomainType int) == (MultiSet_Singleton(2): MultiSetDomainType int);
     assume state(Heap, Mask);

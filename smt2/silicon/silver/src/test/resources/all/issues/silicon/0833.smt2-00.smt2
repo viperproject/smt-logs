@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-04 00:35:38
+; Started: 2025-01-07 13:49:23
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -676,11 +676,11 @@
 (assert (forall ((s@$ $Snap) (s@0@00 ShStruct2<Ref~_Ref>)) (!
   (= (witness_rev%limited s@$ s@0@00) (witness_rev s@$ s@0@00))
   :pattern ((witness_rev s@$ s@0@00))
-  :qid |quant-u-24463|)))
+  :qid |quant-u-24477|)))
 (assert (forall ((s@$ $Snap) (s@0@00 ShStruct2<Ref~_Ref>)) (!
   (witness_rev%stateless s@0@00)
   :pattern ((witness_rev%limited s@$ s@0@00))
-  :qid |quant-u-24464|)))
+  :qid |quant-u-24478|)))
 ; ---------- FUNCTION witness_4e2a3fe_F----------
 (declare-fun P0_PI0@2@00 () Int)
 (declare-fun result@3@00 () ShStruct2<Ref~_Ref>)
@@ -702,23 +702,23 @@
     (witness_4e2a3fe_F%limited s@$ P0_PI0@2@00)
     (witness_4e2a3fe_F s@$ P0_PI0@2@00))
   :pattern ((witness_4e2a3fe_F s@$ P0_PI0@2@00))
-  :qid |quant-u-24465|)))
+  :qid |quant-u-24479|)))
 (assert (forall ((s@$ $Snap) (P0_PI0@2@00 Int)) (!
   (witness_4e2a3fe_F%stateless P0_PI0@2@00)
   :pattern ((witness_4e2a3fe_F%limited s@$ P0_PI0@2@00))
-  :qid |quant-u-24466|)))
+  :qid |quant-u-24480|)))
 (assert (forall ((s@$ $Snap) (P0_PI0@2@00 Int)) (!
   (let ((result@3@00 (witness_4e2a3fe_F%limited s@$ P0_PI0@2@00))) (=>
     (witness_4e2a3fe_F%precondition s@$ P0_PI0@2@00)
     (= (witness_rev $Snap.unit result@3@00) P0_PI0@2@00)))
   :pattern ((witness_4e2a3fe_F%limited s@$ P0_PI0@2@00))
-  :qid |quant-u-24467|)))
+  :qid |quant-u-24481|)))
 (assert (forall ((s@$ $Snap) (P0_PI0@2@00 Int)) (!
   (let ((result@3@00 (witness_4e2a3fe_F%limited s@$ P0_PI0@2@00))) (=>
     (witness_4e2a3fe_F%precondition s@$ P0_PI0@2@00)
     (witness_rev%precondition $Snap.unit result@3@00)))
   :pattern ((witness_4e2a3fe_F%limited s@$ P0_PI0@2@00))
-  :qid |quant-u-24468|)))
+  :qid |quant-u-24482|)))
 ; ---------- SharedInv_4e2a3fe_F ----------
 (push) ; 1
 (declare-const $t@5@00 $Snap)
@@ -798,7 +798,7 @@
         i_V0@6@00)
       (witness_4e2a3fe_F%precondition $Snap.unit i_V0@6@00)))
   :pattern ((ShStructget0of2<Ref> (witness_4e2a3fe_F $Snap.unit i_V0@6@00)))
-  :qid |quant-u-24470|)))
+  :qid |quant-u-24484|)))
 (assert (forall ((r $Ref)) (!
   (=> (img@9@00 r) (witness_4e2a3fe_F%precondition $Snap.unit (inv@8@00 r)))
   :pattern ((inv@8@00 r))
@@ -810,7 +810,7 @@
       i_V0@6@00)
     (img@9@00 (ShStructget0of2<Ref> (witness_4e2a3fe_F $Snap.unit i_V0@6@00))))
   :pattern ((ShStructget0of2<Ref> (witness_4e2a3fe_F $Snap.unit i_V0@6@00)))
-  :qid |quant-u-24470|)))
+  :qid |quant-u-24484|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (img@9@00 r)
@@ -900,7 +900,7 @@
         i_V0@10@00)
       (witness_4e2a3fe_F%precondition $Snap.unit i_V0@10@00)))
   :pattern ((ShStructget1of2<Ref> (witness_4e2a3fe_F $Snap.unit i_V0@10@00)))
-  :qid |quant-u-24472|)))
+  :qid |quant-u-24486|)))
 (assert (forall ((r $Ref)) (!
   (=> (img@13@00 r) (witness_4e2a3fe_F%precondition $Snap.unit (inv@12@00 r)))
   :pattern ((inv@12@00 r))
@@ -912,7 +912,7 @@
       i_V0@10@00)
     (img@13@00 (ShStructget1of2<Ref> (witness_4e2a3fe_F $Snap.unit i_V0@10@00))))
   :pattern ((ShStructget1of2<Ref> (witness_4e2a3fe_F $Snap.unit i_V0@10@00)))
-  :qid |quant-u-24472|)))
+  :qid |quant-u-24486|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (img@13@00 r)
@@ -938,7 +938,7 @@
       (ShStructget0of2<Ref> (witness_4e2a3fe_F $Snap.unit i_V0@6@00)))
     (= (img@13@00 r) (img@9@00 r)))
   
-  :qid |quant-u-24473|))))
+  :qid |quant-u-24487|))))
 (check-sat)
 ; unknown
 (pop) ; 2

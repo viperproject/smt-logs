@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-04 00:33:50
+; Started: 2025-01-07 13:47:32
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -415,11 +415,11 @@
 (assert (forall ((s@$ $Snap) (diz@0@00 $Ref)) (!
   (= (node__contents%limited s@$ diz@0@00) (node__contents s@$ diz@0@00))
   :pattern ((node__contents s@$ diz@0@00))
-  :qid |quant-u-22496|)))
+  :qid |quant-u-22511|)))
 (assert (forall ((s@$ $Snap) (diz@0@00 $Ref)) (!
   (node__contents%stateless diz@0@00)
   :pattern ((node__contents%limited s@$ diz@0@00))
-  :qid |quant-u-22497|)))
+  :qid |quant-u-22512|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (= s@$ ($Snap.combine ($Snap.first s@$) ($Snap.second s@$))))
@@ -683,7 +683,7 @@
             ($Snap.second ($Snap.second ($Snap.second s@$)))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second s@$)))))))))
   :pattern ((node__contents s@$ diz@0@00))
   :pattern ((node__contents%stateless diz@0@00) (node__state%trigger ($Snap.second s@$) diz@0@00))
-  :qid |quant-u-22498|)))
+  :qid |quant-u-22513|)))
 (assert (forall ((s@$ $Snap) (diz@0@00 $Ref)) (!
   (=>
     (node__contents%precondition s@$ diz@0@00)
@@ -696,7 +696,7 @@
         $Snap.unit
         ($Snap.second ($Snap.second ($Snap.second s@$)))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second s@$)))))))
   :pattern ((node__contents s@$ diz@0@00))
-  :qid |quant-u-22499|)))
+  :qid |quant-u-22514|)))
 ; ---------- node__state ----------
 (declare-const diz@3@00 $Ref)
 (push) ; 1

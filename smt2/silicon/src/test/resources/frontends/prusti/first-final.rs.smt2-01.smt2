@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-04 00:18:21
+; Started: 2025-01-07 13:31:45
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -17779,7 +17779,7 @@
 (check-sat)
 ; unknown
 (pop) ; 6
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 72 | m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$5$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_first_final$$List$opensqu$0$closesqu$$_beg_$_end_$$int$(($t@492@01, _), ret@441@01) > 0 | live]
 ; [else-branch: 72 | !(m_first_final$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$5$closesqu$$$len$opensqu$0$closesqu$__$TY$__m_first_final$$List$opensqu$0$closesqu$$_beg_$_end_$$int$(($t@492@01, _), ret@441@01) > 0) | dead]

@@ -175,6 +175,7 @@
 (declare-fun |a#0| () T@U)
 (declare-fun |b#0| () T@U)
 (declare-fun |c#0| () T@U)
+(declare-fun |d#0| () T@U)
 (declare-fun $IsGoodHeap (T@U) Bool)
 (declare-fun $IsHeapAnchor (T@U) Bool)
 (declare-fun $FunctionContextHeight () Int)
@@ -193,8 +194,8 @@
 (set-option :pp.bv_literals false)
 (set-option :smt.arith.solver 2)
 (assert (not
- (=> (= (ControlFlow 0 0) 5) (let ((anon0_correct  (=> (= $_ModifiesFrame@0 (|lambda#0| null $Heap alloc false)) (and (=> (= (ControlFlow 0 2) (- 0 4)) (|Set#Disjoint| |a#0| |b#0|)) (=> (|Set#Disjoint| |a#0| |b#0|) (and (=> (= (ControlFlow 0 2) (- 0 3)) (|Set#Disjoint| |a#0| |c#0|)) (=> (|Set#Disjoint| |a#0| |c#0|) (=> (= (ControlFlow 0 2) (- 0 1)) (|Set#Disjoint| |b#0| |c#0|)))))))))
-(let ((PreconditionGeneratedEntry_correct  (=> (and ($IsGoodHeap $Heap) ($IsHeapAnchor $Heap)) (=> (and (and ($Is SetType |a#0| (TSet TInt)) ($IsAlloc SetType |a#0| (TSet TInt) $Heap)) (and ($Is SetType |b#0| (TSet TInt)) ($IsAlloc SetType |b#0| (TSet TInt) $Heap))) (=> (and (and (and ($Is SetType |c#0| (TSet TInt)) ($IsAlloc SetType |c#0| (TSet TInt) $Heap)) (= 0 $FunctionContextHeight)) (and (and (|Set#Disjoint| |a#0| |b#0|) (|Set#Disjoint| |a#0| |b#0|)) (and (|Set#Disjoint| (|Set#Union| |a#0| |b#0|) |c#0|) (= (ControlFlow 0 5) 2)))) anon0_correct)))))
+ (=> (= (ControlFlow 0 0) 8) (let ((anon0_correct  (=> (= $_ModifiesFrame@0 (|lambda#0| null $Heap alloc false)) (and (=> (= (ControlFlow 0 2) (- 0 7)) (|Set#Disjoint| |a#0| |b#0|)) (=> (|Set#Disjoint| |a#0| |b#0|) (and (=> (= (ControlFlow 0 2) (- 0 6)) (|Set#Disjoint| |a#0| |c#0|)) (=> (|Set#Disjoint| |a#0| |c#0|) (and (=> (= (ControlFlow 0 2) (- 0 5)) (|Set#Disjoint| |b#0| |c#0|)) (=> (|Set#Disjoint| |b#0| |c#0|) (and (=> (= (ControlFlow 0 2) (- 0 4)) (|Set#Disjoint| |a#0| |d#0|)) (=> (|Set#Disjoint| |a#0| |d#0|) (and (=> (= (ControlFlow 0 2) (- 0 3)) (|Set#Disjoint| |b#0| |d#0|)) (=> (|Set#Disjoint| |b#0| |d#0|) (=> (= (ControlFlow 0 2) (- 0 1)) (|Set#Disjoint| |c#0| |d#0|)))))))))))))))
+(let ((PreconditionGeneratedEntry_correct  (=> (and (and (and (and ($IsGoodHeap $Heap) ($IsHeapAnchor $Heap)) (and ($Is SetType |a#0| (TSet TInt)) ($IsAlloc SetType |a#0| (TSet TInt) $Heap))) (and (and ($Is SetType |b#0| (TSet TInt)) ($IsAlloc SetType |b#0| (TSet TInt) $Heap)) (and ($Is SetType |c#0| (TSet TInt)) ($IsAlloc SetType |c#0| (TSet TInt) $Heap)))) (and (and (and ($Is SetType |d#0| (TSet TInt)) ($IsAlloc SetType |d#0| (TSet TInt) $Heap)) (and (= 0 $FunctionContextHeight) (|Set#Disjoint| |a#0| |b#0|))) (and (and (|Set#Disjoint| |a#0| |b#0|) (|Set#Disjoint| (|Set#Union| |a#0| |b#0|) |c#0|)) (and (|Set#Disjoint| (|Set#Union| (|Set#Union| |a#0| |b#0|) |c#0|) |d#0|) (= (ControlFlow 0 8) 2))))) anon0_correct)))
 PreconditionGeneratedEntry_correct)))
 ))
 (check-sat)

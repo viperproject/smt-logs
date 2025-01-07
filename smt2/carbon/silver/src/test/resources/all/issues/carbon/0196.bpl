@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-04 01:11:01
+// Date:         2025-01-07 14:25:25
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0196.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0196-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -1266,12 +1266,12 @@ procedure pred1_1(r_1: Ref) returns ()
 {
   var wildcard: real where wildcard > 0.000000000;
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var r2: Ref;
   var r3: Ref;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newVersion: FrameType;
   var QPMask: MaskType;
   var freshVersion: FrameType;
@@ -1296,8 +1296,8 @@ procedure pred1_1(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[r2, $allocated];
@@ -1306,8 +1306,8 @@ procedure pred1_1(r_1: Ref) returns ()
   // -- Translating statement: unfold acc(P(r), wildcard) -- 0196.vpr@32.5--32.31
     assume P#trigger(Heap, P(r_1));
     assume Heap[null, P(r_1)] == FrameFragment(P#condqp1(Heap, r_1));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Unfolding P(r) might fail. There might be insufficient permission to access P(r) (0196.vpr@32.5--32.31) [190646]"}
       Mask[null, P(r_1)] > NoPerm;
     havoc wildcard;
@@ -1361,8 +1361,8 @@ procedure pred1_1(r_1: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(P(r), wildcard) -- 0196.vpr@33.5--33.29
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     havoc QPMask;
     // wildcard assumptions
     havoc wildcard;
@@ -1441,8 +1441,8 @@ procedure pred1_1(r_1: Ref) returns ()
   // -- Translating statement: unfold acc(P(r), wildcard) -- 0196.vpr@34.5--34.31
     assume P#trigger(Heap, P(r_1));
     assume Heap[null, P(r_1)] == FrameFragment(P#condqp1(Heap, r_1));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Unfolding P(r) might fail. There might be insufficient permission to access P(r) (0196.vpr@34.5--34.31) [190654]"}
       Mask[null, P(r_1)] > NoPerm;
     havoc wildcard;
@@ -1504,8 +1504,8 @@ procedure pred1_1(r_1: Ref) returns ()
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function tester might not hold. There might be insufficient permission to access Q(get(r)) (0196.vpr@35.21--35.35) [190656]"}
           NoPerm < perm ==> NoPerm < Mask[null, Q(get(Heap, r_1))];
@@ -1528,8 +1528,8 @@ procedure pred1_1(r_1: Ref) returns ()
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function testerFull might not hold. There might be insufficient permission to access Q(get(r)) (0196.vpr@37.21--37.39) [190657]"}
           NoPerm < perm ==> NoPerm < Mask[null, Q(get(Heap, r_1))];
@@ -1552,12 +1552,12 @@ procedure pred2_1(r_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var r2: Ref;
   var r3: Ref;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newVersion: FrameType;
   var QPMask: MaskType;
   var wildcard: real where wildcard > 0.000000000;
@@ -1582,8 +1582,8 @@ procedure pred2_1(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[r2, $allocated];
@@ -1592,8 +1592,8 @@ procedure pred2_1(r_1: Ref) returns ()
   // -- Translating statement: unfold acc(P(r), write) -- 0196.vpr@43.5--43.21
     assume P#trigger(Heap, P(r_1));
     assume Heap[null, P(r_1)] == FrameFragment(P#condqp1(Heap, r_1));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding P(r) might fail. There might be insufficient permission to access P(r) (0196.vpr@43.5--43.21) [190660]"}
@@ -1648,8 +1648,8 @@ procedure pred2_1(r_1: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(P(r), write) -- 0196.vpr@44.5--44.19
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     havoc QPMask;
     // wildcard assumptions
     havoc wildcard;
@@ -1727,8 +1727,8 @@ procedure pred2_1(r_1: Ref) returns ()
   // -- Translating statement: unfold acc(P(r), write) -- 0196.vpr@45.5--45.21
     assume P#trigger(Heap, P(r_1));
     assume Heap[null, P(r_1)] == FrameFragment(P#condqp1(Heap, r_1));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding P(r) might fail. There might be insufficient permission to access P(r) (0196.vpr@45.5--45.21) [190670]"}
@@ -1791,8 +1791,8 @@ procedure pred2_1(r_1: Ref) returns ()
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function tester might not hold. There might be insufficient permission to access Q(get(r)) (0196.vpr@46.21--46.35) [190672]"}
           NoPerm < perm ==> NoPerm < Mask[null, Q(get(Heap, r_1))];
@@ -1815,8 +1815,8 @@ procedure pred2_1(r_1: Ref) returns ()
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function testerFull might not hold. There might be insufficient permission to access Q(get(r)) (0196.vpr@48.21--48.39) [190673]"}
           NoPerm < perm ==> NoPerm < Mask[null, Q(get(Heap, r_1))];
@@ -1839,12 +1839,12 @@ procedure pred3(r_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var r2: Ref;
   var r3: Ref;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newVersion: FrameType;
   var QPMask: MaskType;
   var wildcard: real where wildcard > 0.000000000;
@@ -1869,8 +1869,8 @@ procedure pred3(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[r2, $allocated];
@@ -1879,8 +1879,8 @@ procedure pred3(r_1: Ref) returns ()
   // -- Translating statement: unfold acc(P(r), 1 / 2) -- 0196.vpr@54.5--54.26
     assume P#trigger(Heap, P(r_1));
     assume Heap[null, P(r_1)] == FrameFragment(P#condqp1(Heap, r_1));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := 1 / 2;
     assert {:msg "  Unfolding P(r) might fail. Fraction 1 / 2 might be negative. (0196.vpr@54.5--54.26) [190675]"}
       perm >= NoPerm;
@@ -1937,8 +1937,8 @@ procedure pred3(r_1: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(P(r), 1 / 2) -- 0196.vpr@55.5--55.24
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     havoc QPMask;
     // wildcard assumptions
     havoc wildcard;
@@ -2018,8 +2018,8 @@ procedure pred3(r_1: Ref) returns ()
   // -- Translating statement: unfold acc(P(r), 1 / 2) -- 0196.vpr@56.5--56.26
     assume P#trigger(Heap, P(r_1));
     assume Heap[null, P(r_1)] == FrameFragment(P#condqp1(Heap, r_1));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := 1 / 2;
     assert {:msg "  Unfolding P(r) might fail. Fraction 1 / 2 might be negative. (0196.vpr@56.5--56.26) [190685]"}
       perm >= NoPerm;
@@ -2084,8 +2084,8 @@ procedure pred3(r_1: Ref) returns ()
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function tester might not hold. There might be insufficient permission to access Q(get(r)) (0196.vpr@57.21--57.35) [190688]"}
           NoPerm < perm ==> NoPerm < Mask[null, Q(get(Heap, r_1))];
@@ -2108,8 +2108,8 @@ procedure pred3(r_1: Ref) returns ()
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function testerFull might not hold. There might be insufficient permission to access Q(get(r)) (0196.vpr@59.21--59.39) [190689]"}
           NoPerm < perm ==> NoPerm < Mask[null, Q(get(Heap, r_1))];
@@ -2132,12 +2132,12 @@ procedure pred4(r_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var r2: Ref;
   var r3: Ref;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var wildcard: real where wildcard > 0.000000000;
   var newVersion: FrameType;
   var QPMask: MaskType;
@@ -2162,8 +2162,8 @@ procedure pred4(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[r2, $allocated];
@@ -2172,8 +2172,8 @@ procedure pred4(r_1: Ref) returns ()
   // -- Translating statement: unfold acc(P2(r), wildcard) -- 0196.vpr@65.5--65.32
     assume P2#trigger(Heap, P2(r_1));
     assume Heap[null, P2(r_1)] == FrameFragment(P2#condqp2(Heap, r_1));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Unfolding P2(r) might fail. There might be insufficient permission to access P2(r) (0196.vpr@65.5--65.32) [190691]"}
       Mask[null, P2(r_1)] > NoPerm;
     havoc wildcard;
@@ -2227,8 +2227,8 @@ procedure pred4(r_1: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(P2(r), wildcard) -- 0196.vpr@66.5--66.30
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     havoc QPMask;
     // wildcard assumptions
     havoc wildcard;
@@ -2307,8 +2307,8 @@ procedure pred4(r_1: Ref) returns ()
   // -- Translating statement: unfold acc(P2(r), wildcard) -- 0196.vpr@67.5--67.32
     assume P2#trigger(Heap, P2(r_1));
     assume Heap[null, P2(r_1)] == FrameFragment(P2#condqp2(Heap, r_1));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Unfolding P2(r) might fail. There might be insufficient permission to access P2(r) (0196.vpr@67.5--67.32) [190699]"}
       Mask[null, P2(r_1)] > NoPerm;
     havoc wildcard;
@@ -2370,8 +2370,8 @@ procedure pred4(r_1: Ref) returns ()
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function tester might not hold. There might be insufficient permission to access Q(get(r)) (0196.vpr@68.21--68.35) [190701]"}
           NoPerm < perm ==> NoPerm < Mask[null, Q(get(Heap, r_1))];
@@ -2394,8 +2394,8 @@ procedure pred4(r_1: Ref) returns ()
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function testerFull might not hold. There might be insufficient permission to access Q(get(r)) (0196.vpr@70.21--70.39) [190702]"}
           NoPerm < perm ==> NoPerm < Mask[null, Q(get(Heap, r_1))];
@@ -2419,12 +2419,12 @@ procedure func1(r_1: Ref) returns ()
 {
   var wildcard: real where wildcard > NoPerm;
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var r2: Ref;
   var r3: Ref;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newVersion: FrameType;
   var QPMask: MaskType;
   var freshVersion: FrameType;
@@ -2450,8 +2450,8 @@ procedure func1(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[r2, $allocated];
@@ -2460,8 +2460,8 @@ procedure func1(r_1: Ref) returns ()
   // -- Translating statement: unfold acc(R(r), wildcard) -- 0196.vpr@76.5--76.31
     assume R#trigger(Heap, R(r_1));
     assume Heap[null, R(r_1)] == FrameFragment(R#condqp3(Heap, r_1));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Unfolding R(r) might fail. There might be insufficient permission to access R(r) (0196.vpr@76.5--76.31) [190704]"}
       Mask[null, R(r_1)] > NoPerm;
     havoc wildcard;
@@ -2512,8 +2512,8 @@ procedure func1(r_1: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(R(r), wildcard) -- 0196.vpr@77.5--77.29
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     havoc QPMask;
     // wild card assumptions
     havoc wildcard;
@@ -2599,8 +2599,8 @@ procedure func1(r_1: Ref) returns ()
   // -- Translating statement: unfold acc(R(r), wildcard) -- 0196.vpr@78.5--78.31
     assume R#trigger(Heap, R(r_1));
     assume Heap[null, R(r_1)] == FrameFragment(R#condqp3(Heap, r_1));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Unfolding R(r) might fail. There might be insufficient permission to access R(r) (0196.vpr@78.5--78.31) [190712]"}
       Mask[null, R(r_1)] > NoPerm;
     havoc wildcard;
@@ -2659,8 +2659,8 @@ procedure func1(r_1: Ref) returns ()
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function testerfield might not hold. There might be insufficient permission to access get(r).q (0196.vpr@79.21--79.40) [190714]"}
           NoPerm < perm ==> NoPerm < Mask[get(Heap, r_1), q_18];
@@ -2683,8 +2683,8 @@ procedure func1(r_1: Ref) returns ()
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function testerfieldFull might not hold. There might be insufficient permission to access get(r).q (0196.vpr@81.21--81.44) [190715]"}
           NoPerm < perm ==> NoPerm < Mask[get(Heap, r_1), q_18];
@@ -2707,12 +2707,12 @@ procedure func2(r_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var r2: Ref;
   var r3: Ref;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newVersion: FrameType;
   var QPMask: MaskType;
   var wildcard: real where wildcard > 0.000000000;
@@ -2738,8 +2738,8 @@ procedure func2(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[r2, $allocated];
@@ -2748,8 +2748,8 @@ procedure func2(r_1: Ref) returns ()
   // -- Translating statement: unfold acc(R(r), write) -- 0196.vpr@87.5--87.21
     assume R#trigger(Heap, R(r_1));
     assume Heap[null, R(r_1)] == FrameFragment(R#condqp3(Heap, r_1));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding R(r) might fail. There might be insufficient permission to access R(r) (0196.vpr@87.5--87.21) [190718]"}
@@ -2801,8 +2801,8 @@ procedure func2(r_1: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(R(r), write) -- 0196.vpr@88.5--88.19
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     havoc QPMask;
     // wild card assumptions
     havoc wildcard;
@@ -2887,8 +2887,8 @@ procedure func2(r_1: Ref) returns ()
   // -- Translating statement: unfold acc(R(r), write) -- 0196.vpr@89.5--89.21
     assume R#trigger(Heap, R(r_1));
     assume Heap[null, R(r_1)] == FrameFragment(R#condqp3(Heap, r_1));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding R(r) might fail. There might be insufficient permission to access R(r) (0196.vpr@89.5--89.21) [190728]"}
@@ -2948,8 +2948,8 @@ procedure func2(r_1: Ref) returns ()
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function testerfield might not hold. There might be insufficient permission to access get(r).q (0196.vpr@90.21--90.40) [190730]"}
           NoPerm < perm ==> NoPerm < Mask[get(Heap, r_1), q_18];
@@ -2972,8 +2972,8 @@ procedure func2(r_1: Ref) returns ()
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function testerfieldFull might not hold. There might be insufficient permission to access get(r).q (0196.vpr@92.21--92.44) [190731]"}
           NoPerm < perm ==> NoPerm < Mask[get(Heap, r_1), q_18];
@@ -2996,12 +2996,12 @@ procedure func3(r_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var r2: Ref;
   var r3: Ref;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newVersion: FrameType;
   var QPMask: MaskType;
   var wildcard: real where wildcard > 0.000000000;
@@ -3027,8 +3027,8 @@ procedure func3(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[r2, $allocated];
@@ -3037,8 +3037,8 @@ procedure func3(r_1: Ref) returns ()
   // -- Translating statement: unfold acc(R(r), 1 / 2) -- 0196.vpr@98.5--98.26
     assume R#trigger(Heap, R(r_1));
     assume Heap[null, R(r_1)] == FrameFragment(R#condqp3(Heap, r_1));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := 1 / 2;
     assert {:msg "  Unfolding R(r) might fail. Fraction 1 / 2 might be negative. (0196.vpr@98.5--98.26) [190733]"}
       perm >= NoPerm;
@@ -3092,8 +3092,8 @@ procedure func3(r_1: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(R(r), 1 / 2) -- 0196.vpr@99.5--99.24
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     havoc QPMask;
     // wild card assumptions
     havoc wildcard;
@@ -3180,8 +3180,8 @@ procedure func3(r_1: Ref) returns ()
   // -- Translating statement: unfold acc(R(r), 1 / 2) -- 0196.vpr@100.5--100.26
     assume R#trigger(Heap, R(r_1));
     assume Heap[null, R(r_1)] == FrameFragment(R#condqp3(Heap, r_1));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := 1 / 2;
     assert {:msg "  Unfolding R(r) might fail. Fraction 1 / 2 might be negative. (0196.vpr@100.5--100.26) [190743]"}
       perm >= NoPerm;
@@ -3243,8 +3243,8 @@ procedure func3(r_1: Ref) returns ()
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function testerfield might not hold. There might be insufficient permission to access get(r).q (0196.vpr@101.21--101.40) [190746]"}
           NoPerm < perm ==> NoPerm < Mask[get(Heap, r_1), q_18];
@@ -3267,8 +3267,8 @@ procedure func3(r_1: Ref) returns ()
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function testerfieldFull might not hold. There might be insufficient permission to access get(r).q (0196.vpr@103.21--103.44) [190747]"}
           NoPerm < perm ==> NoPerm < Mask[get(Heap, r_1), q_18];
@@ -3291,12 +3291,12 @@ procedure func4(r_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var r2: Ref;
   var r3: Ref;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var wildcard: real where wildcard > NoPerm;
   var newVersion: FrameType;
   var QPMask: MaskType;
@@ -3322,8 +3322,8 @@ procedure func4(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[r2, $allocated];
@@ -3332,8 +3332,8 @@ procedure func4(r_1: Ref) returns ()
   // -- Translating statement: unfold acc(R2(r), wildcard) -- 0196.vpr@109.5--109.32
     assume R2#trigger(Heap, R2(r_1));
     assume Heap[null, R2(r_1)] == FrameFragment(R2#condqp4(Heap, r_1));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Unfolding R2(r) might fail. There might be insufficient permission to access R2(r) (0196.vpr@109.5--109.32) [190749]"}
       Mask[null, R2(r_1)] > NoPerm;
     havoc wildcard;
@@ -3384,8 +3384,8 @@ procedure func4(r_1: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(R2(r), wildcard) -- 0196.vpr@110.5--110.30
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     havoc QPMask;
     // wild card assumptions
     havoc wildcard;
@@ -3471,8 +3471,8 @@ procedure func4(r_1: Ref) returns ()
   // -- Translating statement: unfold acc(R2(r), wildcard) -- 0196.vpr@111.5--111.32
     assume R2#trigger(Heap, R2(r_1));
     assume Heap[null, R2(r_1)] == FrameFragment(R2#condqp4(Heap, r_1));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Unfolding R2(r) might fail. There might be insufficient permission to access R2(r) (0196.vpr@111.5--111.32) [190757]"}
       Mask[null, R2(r_1)] > NoPerm;
     havoc wildcard;
@@ -3531,8 +3531,8 @@ procedure func4(r_1: Ref) returns ()
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function testerfield might not hold. There might be insufficient permission to access get(r).q (0196.vpr@112.21--112.40) [190759]"}
           NoPerm < perm ==> NoPerm < Mask[get(Heap, r_1), q_18];
@@ -3555,8 +3555,8 @@ procedure func4(r_1: Ref) returns ()
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function testerfieldFull might not hold. There might be insufficient permission to access get(r).q (0196.vpr@114.21--114.44) [190760]"}
           NoPerm < perm ==> NoPerm < Mask[get(Heap, r_1), q_18];

@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-04 00:34:40
+; Started: 2025-01-07 13:48:23
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -641,11 +641,11 @@
 (assert (forall ((s@$ $Snap) (b@0@00 Bool)) (!
   (= (bool2Ref%limited s@$ b@0@00) (bool2Ref s@$ b@0@00))
   :pattern ((bool2Ref s@$ b@0@00))
-  :qid |quant-u-23175|)))
+  :qid |quant-u-23190|)))
 (assert (forall ((s@$ $Snap) (b@0@00 Bool)) (!
   (bool2Ref%stateless b@0@00)
   :pattern ((bool2Ref%limited s@$ b@0@00))
-  :qid |quant-u-23176|)))
+  :qid |quant-u-23191|)))
 (assert (forall ((s@$ $Snap) (b@0@00 Bool)) (!
   (let ((result@1@00 (bool2Ref%limited s@$ b@0@00))) (=>
     (bool2Ref%precondition s@$ b@0@00)
@@ -656,7 +656,7 @@
           (bool2Ref%limited $Snap.unit true)
           (bool2Ref%limited $Snap.unit false))))))
   :pattern ((bool2Ref%limited s@$ b@0@00))
-  :qid |quant-u-23177|)))
+  :qid |quant-u-23192|)))
 (assert (forall ((s@$ $Snap) (b@0@00 Bool)) (!
   (let ((result@1@00 (bool2Ref%limited s@$ b@0@00))) (=>
     (and (bool2Ref%precondition s@$ b@0@00) (not (= result@1@00 $Ref.null)))
@@ -664,7 +664,7 @@
       (bool2Ref%precondition $Snap.unit true)
       (bool2Ref%precondition $Snap.unit false))))
   :pattern ((bool2Ref%limited s@$ b@0@00))
-  :qid |quant-u-23178|)))
+  :qid |quant-u-23193|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- m ----------
@@ -717,7 +717,7 @@
       (= (inv@4@01 (bool2Ref $Snap.unit b@2@01)) b@2@01)
       (bool2Ref%precondition $Snap.unit b@2@01)))
   :pattern ((bool2Ref $Snap.unit b@2@01))
-  :qid |quant-u-23180|)))
+  :qid |quant-u-23195|)))
 (assert (forall ((r $Ref)) (!
   (=> (img@5@01 r) (bool2Ref%precondition $Snap.unit (inv@4@01 r)))
   :pattern ((inv@4@01 r))
@@ -727,7 +727,7 @@
     (= (inv@4@01 (bool2Ref $Snap.unit b@2@01)) b@2@01)
     (img@5@01 (bool2Ref $Snap.unit b@2@01)))
   :pattern ((bool2Ref $Snap.unit b@2@01))
-  :qid |quant-u-23180|)))
+  :qid |quant-u-23195|)))
 (assert (forall ((r $Ref)) (!
   (=> (img@5@01 r) (= (bool2Ref $Snap.unit (inv@4@01 r)) r))
   :pattern ((inv@4@01 r))
@@ -767,7 +767,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (- (ite (img@5@01 r) $Perm.Write $Perm.No) (pTaken@6@01 r)) $Perm.No)
   
-  :qid |quant-u-23182|))))
+  :qid |quant-u-23197|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -779,7 +779,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@6@01 r) $Perm.No)
   
-  :qid |quant-u-23183|))))
+  :qid |quant-u-23198|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -792,7 +792,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (= r x@1@01) (= (- $Perm.Write (pTaken@6@01 r)) $Perm.No))
   
-  :qid |quant-u-23184|))))
+  :qid |quant-u-23199|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -804,7 +804,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (= r x@1@01) (= (- $Perm.Write (pTaken@6@01 r)) $Perm.No))
   
-  :qid |quant-u-23184|))))
+  :qid |quant-u-23199|))))
 (check-sat)
 ; unknown
 (pop) ; 3

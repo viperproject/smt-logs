@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-04 00:43:54
+// Date:         2025-01-07 13:57:45
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/third_party/test_array.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/third_party/test_array-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -592,16 +592,16 @@ procedure array__main(diz: Ref, current_thread_id: int, x: (Seq Ref)) returns ()
   var k_1: int;
   var k_2: int;
   var QPMask: MaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var k_4: int;
   var k_7: int;
   var __flatten_1: Ref;
   var i: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var k_12_2: int;
   var ExhaleHeap: HeapType;
   var __flatten_2: int;
@@ -695,8 +695,8 @@ procedure array__main(diz: Ref, current_thread_id: int, x: (Seq Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -782,8 +782,8 @@ procedure array__main(diz: Ref, current_thread_id: int, x: (Seq Ref)) returns ()
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Loop invariant 0 <= i && i <= |x| might not hold on entry. Assertion 0 <= i might not hold. (test_array.vpr@19.15--19.37) [43548]"}
           0 <= i;
         assert {:msg "  Loop invariant 0 <= i && i <= |x| might not hold on entry. Assertion i <= |x| might not hold. (test_array.vpr@19.15--19.37) [43549]"}
@@ -1000,8 +1000,8 @@ procedure array__main(diz: Ref, current_thread_id: int, x: (Seq Ref)) returns ()
             i := i + 1;
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Loop invariant 0 <= i && i <= |x| might not be preserved. Assertion 0 <= i might not hold. (test_array.vpr@19.15--19.37) [43563]"}
           0 <= i;
         assert {:msg "  Loop invariant 0 <= i && i <= |x| might not be preserved. Assertion i <= |x| might not hold. (test_array.vpr@19.15--19.37) [43564]"}
@@ -1113,8 +1113,8 @@ procedure array__main(diz: Ref, current_thread_id: int, x: (Seq Ref)) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     havoc QPMask;
     
     // -- check that the permission amount is positive
@@ -1180,14 +1180,14 @@ procedure array__main(diz: Ref, current_thread_id: int, x: (Seq Ref)) returns ()
 procedure array__array(current_thread_id: int) returns (sys__result: Ref)
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var diz: Ref;
   var freshObj: Ref;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1201,8 +1201,8 @@ procedure array__array(current_thread_id: int) returns (sys__result: Ref)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1229,8 +1229,8 @@ procedure array__array(current_thread_id: int) returns (sys__result: Ref)
     assume state(Heap, Mask);
   
   // -- Translating statement: assert sys__result != null -- test_array.vpr@37.3--37.29
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (test_array.vpr@37.10--37.29) [43572]"}
       sys__result != null;
     assume state(Heap, Mask);
@@ -1241,8 +1241,8 @@ procedure array__array(current_thread_id: int) returns (sys__result: Ref)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of array__array might not hold. Assertion sys__result != null might not hold. (test_array.vpr@32.11--32.30) [43573]"}
       sys__result != null;
 }

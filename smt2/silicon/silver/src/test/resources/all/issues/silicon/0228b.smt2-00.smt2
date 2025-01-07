@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-04 00:35:37
+; Started: 2025-01-07 13:49:22
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -830,11 +830,11 @@
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (= (getptr%limited s@$ this@0@00) (getptr s@$ this@0@00))
   :pattern ((getptr s@$ this@0@00))
-  :qid |quant-u-24452|)))
+  :qid |quant-u-24466|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (getptr%stateless this@0@00)
   :pattern ((getptr%limited s@$ this@0@00))
-  :qid |quant-u-24453|)))
+  :qid |quant-u-24467|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -860,11 +860,11 @@
     (getptr%precondition s@$ this@0@00)
     (= (getptr s@$ this@0@00) ($SortWrappers.$SnapToPtr ($Snap.first s@$))))
   :pattern ((getptr s@$ this@0@00))
-  :qid |quant-u-24456|)))
+  :qid |quant-u-24470|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   true
   :pattern ((getptr s@$ this@0@00))
-  :qid |quant-u-24457|)))
+  :qid |quant-u-24471|)))
 ; ---------- FUNCTION cond----------
 (declare-fun this@2@00 () $Ref)
 (declare-fun j@3@00 () Int)
@@ -875,11 +875,11 @@
 (assert (forall ((s@$ $Snap) (this@2@00 $Ref) (j@3@00 Int)) (!
   (= (cond%limited s@$ this@2@00 j@3@00) (cond s@$ this@2@00 j@3@00))
   :pattern ((cond s@$ this@2@00 j@3@00))
-  :qid |quant-u-24454|)))
+  :qid |quant-u-24468|)))
 (assert (forall ((s@$ $Snap) (this@2@00 $Ref) (j@3@00 Int)) (!
   (cond%stateless this@2@00 j@3@00)
   :pattern ((cond%limited s@$ this@2@00 j@3@00))
-  :qid |quant-u-24455|)))
+  :qid |quant-u-24469|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -936,11 +936,11 @@
         (<= 0 j@3@00)
         (< j@3@00 ($SortWrappers.$SnapToInt ($Snap.second s@$))))))
   :pattern ((cond s@$ this@2@00 j@3@00))
-  :qid |quant-u-24458|)))
+  :qid |quant-u-24472|)))
 (assert (forall ((s@$ $Snap) (this@2@00 $Ref) (j@3@00 Int)) (!
   true
   :pattern ((cond s@$ this@2@00 j@3@00))
-  :qid |quant-u-24459|)))
+  :qid |quant-u-24473|)))
 ; ---------- valid ----------
 (declare-const this@5@00 $Ref)
 (push) ; 1

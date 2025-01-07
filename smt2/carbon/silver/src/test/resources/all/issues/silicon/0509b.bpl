@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-04 01:16:22
+// Date:         2025-01-07 14:30:57
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0509b.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0509b-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -485,16 +485,16 @@ procedure main(r1: Ref, r2: Ref) returns ()
 {
   var before_lblGuard: bool;
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var s_2: (Set Ref);
-  var LabelbeforeHeap: HeapType;
   var LabelbeforeMask: MaskType;
-  var ExhaleWellDef1Heap: HeapType;
+  var LabelbeforeHeap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -521,8 +521,8 @@ procedure main(r1: Ref, r2: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale r1.f == 1 -- 0509b.vpr@16.10--16.19
     
@@ -534,8 +534,8 @@ procedure main(r1: Ref, r2: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(r1.f, write) && acc(r2.f, write) -- 0509b.vpr@17.3--17.32
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Exhale might fail. There might be insufficient permission to access r1.f (0509b.vpr@17.10--17.32) [207031]"}
@@ -585,8 +585,8 @@ procedure main(r1: Ref, r2: Ref) returns ()
     // -- Check definedness of lookup(r1, 5) > 3
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function lookup might not hold. There might be insufficient permission to access r1.f (0509b.vpr@22.10--22.23) [207037]"}
           NoPerm < perm ==> NoPerm < Mask[r1, f_7];
@@ -603,14 +603,14 @@ procedure main(r1: Ref, r2: Ref) returns ()
   
   // -- Translating statement: label before -- 0509b.vpr@23.3--23.15
     before_1:
-    LabelbeforeHeap := Heap;
     LabelbeforeMask := Mask;
+    LabelbeforeHeap := Heap;
     before_lblGuard := true;
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(r1.f, write) && acc(r2.f, write) -- 0509b.vpr@24.3--24.32
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Exhale might fail. There might be insufficient permission to access r1.f (0509b.vpr@24.10--24.32) [207039]"}
@@ -659,8 +659,8 @@ procedure main(r1: Ref, r2: Ref) returns ()
       if (*) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           perm := FullPerm;
           assert {:msg "  Precondition of function lookup2 might not hold. There might be insufficient permission to access r1.f (0509b.vpr@27.58--27.72) [207045]"}
             NoPerm < perm ==> NoPerm < Mask[r1, f_7];
@@ -675,8 +675,8 @@ procedure main(r1: Ref, r2: Ref) returns ()
           before_lblGuard;
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := LabelbeforeHeap;
           ExhaleWellDef0Mask := LabelbeforeMask;
+          ExhaleWellDef0Heap := LabelbeforeHeap;
           perm := FullPerm;
           assert {:msg "  Precondition of function lookup might not hold. There might be insufficient permission to access r1.f (0509b.vpr@27.88--27.101) [207047]"}
             NoPerm < perm ==> NoPerm < LabelbeforeMask[r1, f_7];
@@ -697,14 +697,14 @@ procedure main(r1: Ref, r2: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert lookup2(r1, 5) > 2 -- 0509b.vpr@29.3--29.28
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of lookup2(r1, 5) > 2
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function lookup2 might not hold. There might be insufficient permission to access r1.f (0509b.vpr@29.10--29.24) [207048]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[r1, f_7];
@@ -729,16 +729,16 @@ procedure main_fail_1(r1: Ref, r2: Ref) returns ()
 {
   var before_lblGuard: bool;
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var s_2: (Set Ref);
-  var LabelbeforeHeap: HeapType;
   var LabelbeforeMask: MaskType;
-  var ExhaleWellDef1Heap: HeapType;
+  var LabelbeforeHeap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -765,8 +765,8 @@ procedure main_fail_1(r1: Ref, r2: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale r1.f == 1 -- 0509b.vpr@35.10--35.19
     
@@ -778,8 +778,8 @@ procedure main_fail_1(r1: Ref, r2: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(r1.f, write) && acc(r2.f, write) -- 0509b.vpr@36.3--36.32
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Exhale might fail. There might be insufficient permission to access r1.f (0509b.vpr@36.10--36.32) [207052]"}
@@ -829,8 +829,8 @@ procedure main_fail_1(r1: Ref, r2: Ref) returns ()
     // -- Check definedness of lookup(r1, 5) > 3
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function lookup might not hold. There might be insufficient permission to access r1.f (0509b.vpr@41.10--41.23) [207058]"}
           NoPerm < perm ==> NoPerm < Mask[r1, f_7];
@@ -847,14 +847,14 @@ procedure main_fail_1(r1: Ref, r2: Ref) returns ()
   
   // -- Translating statement: label before -- 0509b.vpr@42.3--42.15
     before_1:
-    LabelbeforeHeap := Heap;
     LabelbeforeMask := Mask;
+    LabelbeforeHeap := Heap;
     before_lblGuard := true;
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(r1.f, write) && acc(r2.f, write) -- 0509b.vpr@43.3--43.32
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Exhale might fail. There might be insufficient permission to access r1.f (0509b.vpr@43.10--43.32) [207060]"}
@@ -903,8 +903,8 @@ procedure main_fail_1(r1: Ref, r2: Ref) returns ()
       if (*) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           perm := FullPerm;
           assert {:msg "  Precondition of function lookup2 might not hold. There might be insufficient permission to access r1.f (0509b.vpr@46.45--46.59) [207066]"}
             NoPerm < perm ==> NoPerm < Mask[r1, f_7];
@@ -919,8 +919,8 @@ procedure main_fail_1(r1: Ref, r2: Ref) returns ()
           before_lblGuard;
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := LabelbeforeHeap;
           ExhaleWellDef0Mask := LabelbeforeMask;
+          ExhaleWellDef0Heap := LabelbeforeHeap;
           perm := FullPerm;
           assert {:msg "  Precondition of function lookup might not hold. There might be insufficient permission to access r1.f (0509b.vpr@46.75--46.88) [207068]"}
             NoPerm < perm ==> NoPerm < LabelbeforeMask[r1, f_7];
@@ -941,14 +941,14 @@ procedure main_fail_1(r1: Ref, r2: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert lookup2(r1, 5) > 2 -- 0509b.vpr@49.3--49.28
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of lookup2(r1, 5) > 2
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function lookup2 might not hold. There might be insufficient permission to access r1.f (0509b.vpr@49.10--49.24) [207069]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[r1, f_7];
@@ -973,16 +973,16 @@ procedure main_fail_2(r1: Ref, r2: Ref) returns ()
 {
   var before_lblGuard: bool;
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var s_2: (Set Ref);
-  var LabelbeforeHeap: HeapType;
   var LabelbeforeMask: MaskType;
-  var ExhaleWellDef1Heap: HeapType;
+  var LabelbeforeHeap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1009,8 +1009,8 @@ procedure main_fail_2(r1: Ref, r2: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale r1.f == 1 -- 0509b.vpr@55.10--55.19
     
@@ -1022,8 +1022,8 @@ procedure main_fail_2(r1: Ref, r2: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(r1.f, write) && acc(r2.f, write) -- 0509b.vpr@56.3--56.32
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Exhale might fail. There might be insufficient permission to access r1.f (0509b.vpr@56.10--56.32) [207073]"}
@@ -1073,8 +1073,8 @@ procedure main_fail_2(r1: Ref, r2: Ref) returns ()
     // -- Check definedness of lookup(r1, 5) > 3
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function lookup might not hold. There might be insufficient permission to access r1.f (0509b.vpr@61.10--61.23) [207079]"}
           NoPerm < perm ==> NoPerm < Mask[r1, f_7];
@@ -1091,14 +1091,14 @@ procedure main_fail_2(r1: Ref, r2: Ref) returns ()
   
   // -- Translating statement: label before -- 0509b.vpr@62.3--62.15
     before_1:
-    LabelbeforeHeap := Heap;
     LabelbeforeMask := Mask;
+    LabelbeforeHeap := Heap;
     before_lblGuard := true;
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(r1.f, write) && acc(r2.f, write) -- 0509b.vpr@63.3--63.32
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Exhale might fail. There might be insufficient permission to access r1.f (0509b.vpr@63.10--63.32) [207081]"}
@@ -1147,8 +1147,8 @@ procedure main_fail_2(r1: Ref, r2: Ref) returns ()
       if (*) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           perm := FullPerm;
           assert {:msg "  Precondition of function lookup2 might not hold. There might be insufficient permission to access r1.f (0509b.vpr@66.50--66.64) [207087]"}
             NoPerm < perm ==> NoPerm < Mask[r1, f_7];
@@ -1163,8 +1163,8 @@ procedure main_fail_2(r1: Ref, r2: Ref) returns ()
           before_lblGuard;
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := LabelbeforeHeap;
           ExhaleWellDef0Mask := LabelbeforeMask;
+          ExhaleWellDef0Heap := LabelbeforeHeap;
           perm := FullPerm;
           assert {:msg "  Precondition of function lookup might not hold. There might be insufficient permission to access r1.f (0509b.vpr@66.80--66.93) [207089]"}
             NoPerm < perm ==> NoPerm < LabelbeforeMask[r1, f_7];
@@ -1185,14 +1185,14 @@ procedure main_fail_2(r1: Ref, r2: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert lookup2(r1, 5) > 2 -- 0509b.vpr@69.3--69.28
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of lookup2(r1, 5) > 2
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function lookup2 might not hold. There might be insufficient permission to access r1.f (0509b.vpr@69.10--69.24) [207090]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[r1, f_7];

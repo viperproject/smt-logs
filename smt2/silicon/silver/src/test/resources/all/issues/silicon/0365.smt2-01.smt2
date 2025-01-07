@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-04 00:35:20
+; Started: 2025-01-07 13:49:05
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -177,39 +177,39 @@
 (assert (forall ((s@$ $Snap)) (!
   (= (resource%limited s@$) (resource s@$))
   :pattern ((resource s@$))
-  :qid |quant-u-24161|)))
+  :qid |quant-u-24176|)))
 (assert (forall ((s@$ $Snap)) (!
   (as resource%stateless  Bool)
   :pattern ((resource%limited s@$))
-  :qid |quant-u-24162|)))
+  :qid |quant-u-24177|)))
 (assert (forall ((s@$ $Snap) (r@1@00 $Ref)) (!
   (= (tokCountRef%limited s@$ r@1@00) (tokCountRef s@$ r@1@00))
   :pattern ((tokCountRef s@$ r@1@00))
-  :qid |quant-u-24163|)))
+  :qid |quant-u-24178|)))
 (assert (forall ((s@$ $Snap) (r@1@00 $Ref)) (!
   (tokCountRef%stateless r@1@00)
   :pattern ((tokCountRef%limited s@$ r@1@00))
-  :qid |quant-u-24164|)))
+  :qid |quant-u-24179|)))
 (assert (forall ((s@$ $Snap) (r@1@00 $Ref)) (!
   (let ((result@2@00 (tokCountRef%limited s@$ r@1@00))) (=>
     (tokCountRef%precondition s@$ r@1@00)
     (= (tokCountRef%limited $Snap.unit (temp<Ref> r@1@00)) result@2@00)))
   :pattern ((tokCountRef%limited s@$ r@1@00))
-  :qid |quant-u-24167|)))
+  :qid |quant-u-24182|)))
 (assert (forall ((s@$ $Snap) (r@1@00 $Ref)) (!
   (let ((result@2@00 (tokCountRef%limited s@$ r@1@00))) (=>
     (tokCountRef%precondition s@$ r@1@00)
     (tokCountRef%precondition $Snap.unit (temp<Ref> r@1@00))))
   :pattern ((tokCountRef%limited s@$ r@1@00))
-  :qid |quant-u-24168|)))
+  :qid |quant-u-24183|)))
 (assert (forall ((s@$ $Snap)) (!
   (= (readers%limited s@$) (readers s@$))
   :pattern ((readers s@$))
-  :qid |quant-u-24165|)))
+  :qid |quant-u-24180|)))
 (assert (forall ((s@$ $Snap)) (!
   (as readers%stateless  Bool)
   :pattern ((readers%limited s@$))
-  :qid |quant-u-24166|)))
+  :qid |quant-u-24181|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- try_lock_shared ----------

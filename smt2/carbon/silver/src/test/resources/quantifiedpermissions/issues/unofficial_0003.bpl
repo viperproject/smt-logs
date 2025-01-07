@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-04 00:46:38
+// Date:         2025-01-07 14:00:32
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/issues/unofficial_0003.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/issues/unofficial_0003-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -823,10 +823,10 @@ procedure append(this: Ref, elem: int) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newVersion: FrameType;
   var QPMask: MaskType;
   var i_6: int;
@@ -850,14 +850,14 @@ procedure append(this: Ref, elem: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: unfold acc(List(this), write) -- unofficial_0003.vpr@25.2--25.24
     assume List#trigger(Heap, List(this));
     assume Heap[null, List(this)] == CombineFrames(FrameFragment(Heap[this, nodes]), FrameFragment(List#condqp1(Heap, this)));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding List(this) might fail. There might be insufficient permission to access List(this) (unofficial_0003.vpr@25.2--25.24) [74371]"}
@@ -927,8 +927,8 @@ procedure append(this: Ref, elem: int) returns ()
   //     (trigger(i) && i < |this.nodes| - 1 ?
   //       true :
   //       this.nodes[i].next == null)) -- unofficial_0003.vpr@36.3--41.10
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall i: Int :: { trigger(i) } { this.nodes[i] } 0 <= i && i < |this.nodes| ==> (trigger(i) && i < |this.nodes| - 1 ? true : this.nodes[i].next == null))
       if (*) {

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-04 01:21:40
+// Date:         2025-01-07 14:36:25
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0688.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0688-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -314,8 +314,8 @@ procedure lemmaLEqualR67#definedness() returns (Result: UnitDomainType)
   modifies Heap, Mask;
 {
   var x_1: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -332,8 +332,8 @@ procedure lemmaLEqualR67#definedness() returns (Result: UnitDomainType)
     Result := (unit(): UnitDomainType);
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of lemmaLEqualR67 might not hold. Assertion L67() == R67() might not hold. (0688.vpr@23.10--23.24) [221481]"}
       (L67(): int) == (R67(): int);
 }

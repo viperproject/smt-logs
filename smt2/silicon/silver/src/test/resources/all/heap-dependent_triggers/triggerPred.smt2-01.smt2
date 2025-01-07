@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-04 00:32:04
+; Started: 2025-01-07 13:45:50
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -687,7 +687,7 @@
     (Set_in x@3@01 xs@1@01)
     (and (= (inv@7@01 x@3@01) x@3@01) (img@8@01 x@3@01)))
   :pattern (($PSF.loc_p ($PSF.lookup_p $t@6@01 ($SortWrappers.$RefTo$Snap x@3@01)) ($SortWrappers.$RefTo$Snap x@3@01)))
-  :qid |quant-u-21468|)))
+  :qid |quant-u-21483|)))
 (assert (forall ((x $Ref)) (!
   (=> (and (img@8@01 x) (Set_in (inv@7@01 x) xs@1@01)) (= (inv@7@01 x) x))
   :pattern ((inv@7@01 x))
@@ -718,7 +718,7 @@
     (Set_in (inv@7@01 x) xs@1@01)
     ($PSF.loc_p ($PSF.lookup_p (as sm@9@01  $PSF<p>) ($SortWrappers.$RefTo$Snap x)) ($SortWrappers.$RefTo$Snap x)))
   :pattern ((inv@7@01 x))
-  :qid |quant-u-21469|)))
+  :qid |quant-u-21484|)))
 ; State saturation: after inhale
 (set-option :timeout 20)
 (check-sat)
@@ -760,7 +760,7 @@
       (pTaken@12@01 x))
     $Perm.No)
   
-  :qid |quant-u-21471|))))
+  :qid |quant-u-21486|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -772,7 +772,7 @@
 (assert (not (forall ((x $Ref)) (!
   (= (pTaken@12@01 x) $Perm.No)
   
-  :qid |quant-u-21472|))))
+  :qid |quant-u-21487|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -785,7 +785,7 @@
 (assert (not (forall ((x $Ref)) (!
   (=> (= x y@2@01) (= (- $Perm.Write (pTaken@12@01 x)) $Perm.No))
   
-  :qid |quant-u-21473|))))
+  :qid |quant-u-21488|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -848,7 +848,7 @@
     (Set_in x@16@01 xs@14@01)
     (and (= (inv@20@01 x@16@01) x@16@01) (img@21@01 x@16@01)))
   :pattern (($PSF.loc_p ($PSF.lookup_p $t@19@01 ($SortWrappers.$RefTo$Snap x@16@01)) ($SortWrappers.$RefTo$Snap x@16@01)))
-  :qid |quant-u-21475|)))
+  :qid |quant-u-21490|)))
 (assert (forall ((x $Ref)) (!
   (=> (and (img@21@01 x) (Set_in (inv@20@01 x) xs@14@01)) (= (inv@20@01 x) x))
   :pattern ((inv@20@01 x))
@@ -879,7 +879,7 @@
     (Set_in (inv@20@01 x) xs@14@01)
     ($PSF.loc_p ($PSF.lookup_p (as sm@22@01  $PSF<p>) ($SortWrappers.$RefTo$Snap x)) ($SortWrappers.$RefTo$Snap x)))
   :pattern ((inv@20@01 x))
-  :qid |quant-u-21476|)))
+  :qid |quant-u-21491|)))
 ; State saturation: after inhale
 (set-option :timeout 20)
 (check-sat)
@@ -927,7 +927,7 @@
       (pTaken@25@01 x))
     $Perm.No)
   
-  :qid |quant-u-21478|))))
+  :qid |quant-u-21493|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -939,7 +939,7 @@
 (assert (not (forall ((x $Ref)) (!
   (= (pTaken@25@01 x) $Perm.No)
   
-  :qid |quant-u-21479|))))
+  :qid |quant-u-21494|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -952,7 +952,7 @@
 (assert (not (forall ((x $Ref)) (!
   (=> (= x y@15@01) (= (- $Perm.Write (pTaken@25@01 x)) $Perm.No))
   
-  :qid |quant-u-21480|))))
+  :qid |quant-u-21495|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -1123,7 +1123,7 @@
 (assert (not (forall ((x $Ref)) (!
   (=> (= x y@15@01) (= (- $Perm.Write (pTaken@32@01 x)) $Perm.No))
   
-  :qid |quant-u-21483|))))
+  :qid |quant-u-21498|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -1186,7 +1186,7 @@
     (Set_in x@37@01 xs@35@01)
     (and (= (inv@41@01 x@37@01) x@37@01) (img@42@01 x@37@01)))
   :pattern (($PSF.loc_p ($PSF.lookup_p $t@40@01 ($SortWrappers.$RefTo$Snap x@37@01)) ($SortWrappers.$RefTo$Snap x@37@01)))
-  :qid |quant-u-21485|)))
+  :qid |quant-u-21500|)))
 (assert (forall ((x $Ref)) (!
   (=> (and (img@42@01 x) (Set_in (inv@41@01 x) xs@35@01)) (= (inv@41@01 x) x))
   :pattern ((inv@41@01 x))
@@ -1217,7 +1217,7 @@
     (Set_in (inv@41@01 x) xs@35@01)
     ($PSF.loc_p ($PSF.lookup_p (as sm@43@01  $PSF<p>) ($SortWrappers.$RefTo$Snap x)) ($SortWrappers.$RefTo$Snap x)))
   :pattern ((inv@41@01 x))
-  :qid |quant-u-21486|)))
+  :qid |quant-u-21501|)))
 ; State saturation: after inhale
 (set-option :timeout 20)
 (check-sat)
