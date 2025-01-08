@@ -678,16 +678,16 @@
 ;; MODULE 'root module'
 
 ;; Fuel
-(declare-const fuel%impl&%2.arrow_3. FuelId)
+(declare-const fuel%impl&%2.arrow_0. FuelId)
 (declare-const fuel%impl&%2.arrow_1. FuelId)
 (declare-const fuel%impl&%2.arrow_2. FuelId)
-(declare-const fuel%impl&%2.arrow_0. FuelId)
+(declare-const fuel%impl&%2.arrow_3. FuelId)
 (declare-const fuel%impl&%2.arrow_Bar_0. FuelId)
 (declare-const fuel%impl&%2.arrow_Bar_1. FuelId)
 (declare-const fuel%impl&%2.arrow_Bar_2. FuelId)
 (declare-const fuel%impl&%2.arrow_Bar_3. FuelId)
 (assert
- (distinct fuel%impl&%2.arrow_3. fuel%impl&%2.arrow_1. fuel%impl&%2.arrow_2. fuel%impl&%2.arrow_0.
+ (distinct fuel%impl&%2.arrow_0. fuel%impl&%2.arrow_1. fuel%impl&%2.arrow_2. fuel%impl&%2.arrow_3.
   fuel%impl&%2.arrow_Bar_0. fuel%impl&%2.arrow_Bar_1. fuel%impl&%2.arrow_Bar_2. fuel%impl&%2.arrow_Bar_3.
 ))
 
@@ -1045,8 +1045,8 @@
    :skolemid skolem_internal_tuple__4./tuple__4_ext_equal_definition
 )))
 
-;; Function-Decl crate::Foo::arrow_3
-(declare-fun impl&%2.arrow_3.? (Poly) R.)
+;; Function-Decl crate::Foo::arrow_0
+(declare-fun impl&%2.arrow_0.? (Poly) Int)
 
 ;; Function-Decl crate::Foo::arrow_1
 (declare-fun impl&%2.arrow_1.? (Poly) Bool)
@@ -1054,8 +1054,8 @@
 ;; Function-Decl crate::Foo::arrow_2
 (declare-fun impl&%2.arrow_2.? (Poly) Int)
 
-;; Function-Decl crate::Foo::arrow_0
-(declare-fun impl&%2.arrow_0.? (Poly) Int)
+;; Function-Decl crate::Foo::arrow_3
+(declare-fun impl&%2.arrow_3.? (Poly) R.)
 
 ;; Function-Decl crate::Foo::arrow_Bar_0
 (declare-fun impl&%2.arrow_Bar_0.? (Poly) Int)
@@ -1069,19 +1069,29 @@
 ;; Function-Decl crate::Foo::arrow_Bar_3
 (declare-fun impl&%2.arrow_Bar_3.? (Poly) R.)
 
-;; Function-Axioms crate::Foo::arrow_3
+;; Function-Axioms crate::Foo::arrow_0
 (assert
- (fuel_bool_default fuel%impl&%2.arrow_3.)
+ (fuel_bool_default fuel%impl&%2.arrow_0.)
 )
 (assert
  (=>
-  (fuel_bool fuel%impl&%2.arrow_3.)
+  (fuel_bool fuel%impl&%2.arrow_0.)
   (forall ((self! Poly)) (!
-    (= (impl&%2.arrow_3.? self!) (Foo./Bar/3 (%Poly%Foo. self!)))
-    :pattern ((impl&%2.arrow_3.? self!))
-    :qid internal_impl&__2.arrow_3.?_definition
-    :skolemid skolem_internal_impl&__2.arrow_3.?_definition
+    (= (impl&%2.arrow_0.? self!) (Foo./Bar/0 (%Poly%Foo. self!)))
+    :pattern ((impl&%2.arrow_0.? self!))
+    :qid internal_impl&__2.arrow_0.?_definition
+    :skolemid skolem_internal_impl&__2.arrow_0.?_definition
 ))))
+(assert
+ (forall ((self! Poly)) (!
+   (=>
+    (has_type self! TYPE%Foo.)
+    (uInv 8 (impl&%2.arrow_0.? self!))
+   )
+   :pattern ((impl&%2.arrow_0.? self!))
+   :qid internal_impl&__2.arrow_0.?_pre_post_definition
+   :skolemid skolem_internal_impl&__2.arrow_0.?_pre_post_definition
+)))
 
 ;; Function-Axioms crate::Foo::arrow_1
 (assert
@@ -1121,29 +1131,19 @@
    :skolemid skolem_internal_impl&__2.arrow_2.?_pre_post_definition
 )))
 
-;; Function-Axioms crate::Foo::arrow_0
+;; Function-Axioms crate::Foo::arrow_3
 (assert
- (fuel_bool_default fuel%impl&%2.arrow_0.)
+ (fuel_bool_default fuel%impl&%2.arrow_3.)
 )
 (assert
  (=>
-  (fuel_bool fuel%impl&%2.arrow_0.)
+  (fuel_bool fuel%impl&%2.arrow_3.)
   (forall ((self! Poly)) (!
-    (= (impl&%2.arrow_0.? self!) (Foo./Bar/0 (%Poly%Foo. self!)))
-    :pattern ((impl&%2.arrow_0.? self!))
-    :qid internal_impl&__2.arrow_0.?_definition
-    :skolemid skolem_internal_impl&__2.arrow_0.?_definition
+    (= (impl&%2.arrow_3.? self!) (Foo./Bar/3 (%Poly%Foo. self!)))
+    :pattern ((impl&%2.arrow_3.? self!))
+    :qid internal_impl&__2.arrow_3.?_definition
+    :skolemid skolem_internal_impl&__2.arrow_3.?_definition
 ))))
-(assert
- (forall ((self! Poly)) (!
-   (=>
-    (has_type self! TYPE%Foo.)
-    (uInv 8 (impl&%2.arrow_0.? self!))
-   )
-   :pattern ((impl&%2.arrow_0.? self!))
-   :qid internal_impl&__2.arrow_0.?_pre_post_definition
-   :skolemid skolem_internal_impl&__2.arrow_0.?_pre_post_definition
-)))
 
 ;; Function-Axioms crate::Foo::arrow_Bar_0
 (assert

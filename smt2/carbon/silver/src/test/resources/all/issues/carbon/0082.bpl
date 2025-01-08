@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-07 14:25:34
+// Date:         2025-01-08 22:00:38
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0082.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0082-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -227,8 +227,8 @@ procedure readValid#definedness(self: Ref) returns (Result: int)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -251,8 +251,8 @@ procedure readValid#definedness(self: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume valid#trigger(UnfoldingHeap, valid(self));
       assume UnfoldingHeap[null, valid(self)] == FrameFragment(UnfoldingHeap[self, f_7]);
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access valid(self) (0082.vpr@10.1--14.2) [191072]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, valid(self)];

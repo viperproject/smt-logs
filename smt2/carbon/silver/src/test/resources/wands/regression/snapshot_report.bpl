@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-07 14:10:27
+// Date:         2025-01-08 21:45:37
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/snapshot_report.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/snapshot_report-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -228,8 +228,8 @@ axiom !IsWandField(g);
 procedure test01(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
   var Ops_1Heap: HeapType;
   var Ops_1Mask: MaskType;
@@ -237,8 +237,8 @@ procedure test01(x: Ref) returns ()
   var UsedHeap: HeapType;
   var UsedMask: MaskType;
   var b_2: bool;
-  var Labellhs1Heap: HeapType;
   var Labellhs1Mask: MaskType;
+  var Labellhs1Heap: HeapType;
   var boolCur: bool;
   var Used_1Heap: HeapType;
   var Used_1Mask: MaskType;
@@ -255,8 +255,8 @@ procedure test01(x: Ref) returns ()
   var b_4: bool;
   var Result_1Heap: HeapType;
   var Result_1Mask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -270,8 +270,8 @@ procedure test01(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale acc(x.g, write) && acc(x.f, write) -- snapshot_report.vpr@10.3--10.28
     perm := FullPerm;
@@ -329,8 +329,8 @@ procedure test01(x: Ref) returns ()
     
     // -- Translating statement: label lhs1 -- snapshot_report.vpr@13.11--13.58
       lhs1:
-      Labellhs1Heap := Ops_1Heap;
       Labellhs1Mask := Ops_1Mask;
+      Labellhs1Heap := Ops_1Heap;
       b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);
     boolCur := true;
     // Translating exec of non-ghost operationacc(x.f, 1 / 2) && acc(x.g, write)
@@ -461,8 +461,8 @@ procedure test01(x: Ref) returns ()
   // -- Translating statement: apply acc(x.f, 1 / 2) && x.f == 1 --* acc(x.f, 1 / 2) && acc(x.g, write) -- snapshot_report.vpr@14.3--14.56
     
     // -- check if wand is held and remove an instance
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       // permLe
       assert {:msg "  Applying wand might fail. Magic wand instance not found. (snapshot_report.vpr@14.3--14.56) [126849]"}
         FullPerm <= Mask[null, wand(x, 1 / 2, x, 1, x, 1 / 2, x, FullPerm)];
@@ -470,8 +470,8 @@ procedure test01(x: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- check if LHS holds and remove permissions 
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       perm := 1 / 2;
       assert {:msg "  Applying wand might fail. Fraction 1 / 2 might be negative. (snapshot_report.vpr@14.3--14.56) [126850]"}
         perm >= NoPerm;
@@ -503,8 +503,8 @@ procedure test01(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert x.f == 1 -- snapshot_report.vpr@15.3--15.16
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of x.f == 1
       assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (snapshot_report.vpr@15.10--15.16) [126855]"}
@@ -514,8 +514,8 @@ procedure test01(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert x.g == 1 -- snapshot_report.vpr@17.3--17.16
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of x.g == 1
       assert {:msg "  Assert might fail. There might be insufficient permission to access x.g (snapshot_report.vpr@17.10--17.16) [126857]"}

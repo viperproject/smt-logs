@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-07 14:34:51
+// Date:         2025-01-08 22:09:51
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0091.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0091-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -371,11 +371,11 @@ axiom (forall<T> a: MultiSet T, b: MultiSet T :: { MultiSet#Disjoint(a,b) }
 procedure test09(B_2: (MultiSet int), x: int, xc: int, y: int, yc: int) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var B1: (MultiSet int);
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -391,16 +391,16 @@ procedure test09(B_2: (MultiSet int), x: int, xc: int, y: int, yc: int) returns 
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: B1 := (B union Multiset(x, y, x)) -- 0091.vpr@8.3--8.53
     B1 := MultiSet#Union(B_2, MultiSet#UnionOne(MultiSet#UnionOne(MultiSet#Singleton(x), y), x));
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (y in B1) == yc + 1 && (x in B1) == xc + 2 -- 0091.vpr@11.3--11.52
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion (y in B1) == yc + 1 might not hold. (0091.vpr@11.10--11.52) [220077]"}
       MultiSet#Select(B1, y) == yc + 1;
     assert {:msg "  Assert might fail. Assertion (x in B1) == xc + 2 might not hold. (0091.vpr@11.10--11.52) [220078]"}
@@ -415,11 +415,11 @@ procedure test09(B_2: (MultiSet int), x: int, xc: int, y: int, yc: int) returns 
 procedure test09_fixed(B_2: (MultiSet int), x: int, xc: int, y: int, yc: int) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var B1: (MultiSet int);
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -437,16 +437,16 @@ procedure test09_fixed(B_2: (MultiSet int), x: int, xc: int, y: int, yc: int) re
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: B1 := (B union Multiset(x, y, x)) -- 0091.vpr@19.3--19.53
     B1 := MultiSet#Union(B_2, MultiSet#UnionOne(MultiSet#UnionOne(MultiSet#Singleton(x), y), x));
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (y in B1) == yc + 1 && (x in B1) == xc + 2 -- 0091.vpr@21.3--21.52
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion (y in B1) == yc + 1 might not hold. (0091.vpr@21.10--21.52) [220079]"}
       MultiSet#Select(B1, y) == yc + 1;
     assert {:msg "  Assert might fail. Assertion (x in B1) == xc + 2 might not hold. (0091.vpr@21.10--21.52) [220080]"}
@@ -461,11 +461,11 @@ procedure test09_fixed(B_2: (MultiSet int), x: int, xc: int, y: int, yc: int) re
 procedure test10(B_2: (MultiSet int), x: int, xc: int, y: int, yc: int) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var B1: (MultiSet int);
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -484,16 +484,16 @@ procedure test10(B_2: (MultiSet int), x: int, xc: int, y: int, yc: int) returns 
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: B1 := (B setminus Multiset(x, y, y)) -- 0091.vpr@29.3--29.56
     B1 := MultiSet#Difference(B_2, MultiSet#UnionOne(MultiSet#UnionOne(MultiSet#Singleton(y), y), x));
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (y in B1) == yc - 2 && (x in B1) == xc - 1 -- 0091.vpr@32.3--32.52
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion (y in B1) == yc - 2 might not hold. (0091.vpr@32.10--32.52) [220081]"}
       MultiSet#Select(B1, y) == yc - 2;
     assert {:msg "  Assert might fail. Assertion (x in B1) == xc - 1 might not hold. (0091.vpr@32.10--32.52) [220082]"}
@@ -508,11 +508,11 @@ procedure test10(B_2: (MultiSet int), x: int, xc: int, y: int, yc: int) returns 
 procedure test10_fixed(B_2: (MultiSet int), x: int, xc: int, y: int, yc: int) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var B1: (MultiSet int);
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -533,16 +533,16 @@ procedure test10_fixed(B_2: (MultiSet int), x: int, xc: int, y: int, yc: int) re
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: B1 := (B setminus Multiset(x, y, y)) -- 0091.vpr@41.3--41.56
     B1 := MultiSet#Difference(B_2, MultiSet#UnionOne(MultiSet#UnionOne(MultiSet#Singleton(y), y), x));
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (y in B1) == yc - 2 && (x in B1) == xc - 1 -- 0091.vpr@43.3--43.52
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion (y in B1) == yc - 2 might not hold. (0091.vpr@43.10--43.52) [220083]"}
       MultiSet#Select(B1, y) == yc - 2;
     assert {:msg "  Assert might fail. Assertion (x in B1) == xc - 1 might not hold. (0091.vpr@43.10--43.52) [220084]"}

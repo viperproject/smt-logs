@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-07 14:27:38
+// Date:         2025-01-08 22:02:38
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0097.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0097-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -232,8 +232,8 @@ procedure sum_fail#definedness(l_2: Ref) returns (Result: int)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var c_1: Ref;
   var c_2: Ref;
   
@@ -258,8 +258,8 @@ procedure sum_fail#definedness(l_2: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume valid__List#trigger(UnfoldingHeap, valid__List(l_2));
       assume UnfoldingHeap[null, valid__List(l_2)] == CombineFrames(FrameFragment(UnfoldingHeap[l_2, List__Node__0]), FrameFragment(UnfoldingHeap[UnfoldingHeap[l_2, List__Node__0], Int__v]));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access valid__List(l) (0097.vpr@4.1--9.2) [195486]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, valid__List(l_2)];
@@ -333,8 +333,8 @@ procedure sum_ok#definedness(l_2: Ref) returns (Result: Ref)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var c_1: Ref;
   var c_2: Ref;
   
@@ -359,8 +359,8 @@ procedure sum_ok#definedness(l_2: Ref) returns (Result: Ref)
       UnfoldingMask := Mask;
       assume valid__List#trigger(UnfoldingHeap, valid__List(l_2));
       assume UnfoldingHeap[null, valid__List(l_2)] == CombineFrames(FrameFragment(UnfoldingHeap[l_2, List__Node__0]), FrameFragment(UnfoldingHeap[UnfoldingHeap[l_2, List__Node__0], Int__v]));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access valid__List(l) (0097.vpr@11.1--16.2) [195489]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, valid__List(l_2)];
@@ -436,8 +436,8 @@ procedure func3#definedness(x: int, y: int, z: bool) returns (Result: bool)
 {
   var eq_0_1: bool;
   var something_0_1: bool;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -455,8 +455,8 @@ procedure func3#definedness(x: int, y: int, z: bool) returns (Result: bool)
     Result := x == y && (y == x || x == x);
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of func3 might not hold. Assertion result == (x != y) might not hold. (0097.vpr@35.11--35.29) [195491]"}
       Result == (x != y);
 }
@@ -535,12 +535,12 @@ procedure test(l_2: Ref) returns ()
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var c: Ref;
   var c_1: Ref;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -563,8 +563,8 @@ procedure test(l_2: Ref) returns ()
       UnfoldingMask := Mask;
       assume valid__List#trigger(UnfoldingHeap, valid__List(l_2));
       assume UnfoldingHeap[null, valid__List(l_2)] == CombineFrames(FrameFragment(UnfoldingHeap[l_2, List__Node__0]), FrameFragment(UnfoldingHeap[UnfoldingHeap[l_2, List__Node__0], Int__v]));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access valid__List(l) (0097.vpr@21.13--22.62) [195493]"}
         UnfoldingMask[null, valid__List(l_2)] > NoPerm;
       havoc wildcard;
@@ -598,8 +598,8 @@ procedure test(l_2: Ref) returns ()
       UnfoldingMask := Mask;
       assume valid__List#trigger(UnfoldingHeap, valid__List(l_2));
       assume UnfoldingHeap[null, valid__List(l_2)] == CombineFrames(FrameFragment(UnfoldingHeap[l_2, List__Node__0]), FrameFragment(UnfoldingHeap[UnfoldingHeap[l_2, List__Node__0], Int__v]));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       havoc wildcard;
       assume wildcard < UnfoldingMask[null, valid__List(l_2)];
       UnfoldingMask := UnfoldingMask[null, valid__List(l_2):=UnfoldingMask[null, valid__List(l_2)] - wildcard];
@@ -620,6 +620,6 @@ procedure test(l_2: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
 }

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-07 13:53:52
+// Date:         2025-01-08 21:29:18
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/sets/unionone.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/sets/unionone-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -401,16 +401,16 @@ procedure test() returns ()
   modifies Heap, Mask;
 {
   var pre_lblGuard: bool;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var a_2: Ref;
   var b_24: Ref;
   var xs: (Set Ref);
   var QPMask: MaskType;
-  var LabelpreHeap: HeapType;
   var LabelpreMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var LabelpreHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var n_11: Ref;
   
@@ -423,8 +423,8 @@ procedure test() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[a_2, $allocated];
@@ -489,14 +489,14 @@ procedure test() returns ()
   
   // -- Translating statement: label pre -- unionone.vpr@15.1--15.10
     pre:
-    LabelpreHeap := Heap;
     LabelpreMask := Mask;
+    LabelpreHeap := Heap;
     pre_lblGuard := true;
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale (forall n: Ref :: { (n in xs) } (n in xs) ==> acc(n.left, write)) -- unionone.vpr@16.3--16.50
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall n: Ref :: { (n in xs) } (n in xs) ==> acc(n.left, write))
       if (*) {
@@ -616,8 +616,8 @@ procedure test() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert a.left == b -- unionone.vpr@20.3--20.21
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of a.left == b
       assert {:msg "  Assert might fail. There might be insufficient permission to access a.left (unionone.vpr@20.10--20.21) [5027]"}

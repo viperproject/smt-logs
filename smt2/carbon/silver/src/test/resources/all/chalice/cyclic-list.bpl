@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-07 14:18:53
+// Date:         2025-01-08 21:54:01
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/chalice/cyclic-list.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/chalice/cyclic-list-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -236,8 +236,8 @@ procedure length#definedness(this: Ref) returns (Result: int)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var newPMask: PMaskType;
   
@@ -261,8 +261,8 @@ procedure length#definedness(this: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume valid#trigger(UnfoldingHeap, valid(this));
       assume UnfoldingHeap[null, valid(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, value]), CombineFrames(FrameFragment(UnfoldingHeap[this, next]), FrameFragment((if UnfoldingHeap[this, next] != null then UnfoldingHeap[null, valid(UnfoldingHeap[this, next])] else EmptyFrame))));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access valid(this) (cyclic-list.vpr@15.1--18.97) [146392]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, valid(this)];
@@ -291,8 +291,8 @@ procedure length#definedness(this: Ref) returns (Result: int)
           HasDirectPerm(UnfoldingMask, this, next);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := UnfoldingHeap;
           ExhaleWellDef0Mask := UnfoldingMask;
+          ExhaleWellDef0Heap := UnfoldingHeap;
           perm := FullPerm;
           assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access valid(this.next) (cyclic-list.vpr@18.76--18.93) [146395]"}
             NoPerm < perm ==> NoPerm < UnfoldingMask[null, valid(UnfoldingHeap[this, next])];
@@ -325,8 +325,8 @@ procedure length#definedness(this: Ref) returns (Result: int)
     Result := (if Heap[this, next] == null then 1 else 1 + length(Heap, Heap[this, next]));
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of length might not hold. Assertion result > 0 might not hold. (cyclic-list.vpr@17.11--17.21) [146396]"}
       Result > 0;
 }
@@ -371,8 +371,8 @@ procedure itemAt#definedness(this: Ref, i: int) returns (Result: int)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
@@ -397,8 +397,8 @@ procedure itemAt#definedness(this: Ref, i: int) returns (Result: int)
     // -- Check definedness of i < length(this)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access valid(this) (cyclic-list.vpr@23.16--23.28) [146397]"}
           NoPerm < perm ==> NoPerm < Mask[null, valid(this)];
@@ -419,8 +419,8 @@ procedure itemAt#definedness(this: Ref, i: int) returns (Result: int)
       UnfoldingMask := Mask;
       assume valid#trigger(UnfoldingHeap, valid(this));
       assume UnfoldingHeap[null, valid(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, value]), CombineFrames(FrameFragment(UnfoldingHeap[this, next]), FrameFragment((if UnfoldingHeap[this, next] != null then UnfoldingHeap[null, valid(UnfoldingHeap[this, next])] else EmptyFrame))));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access valid(this) (cyclic-list.vpr@20.1--24.125) [146398]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, valid(this)];
@@ -453,8 +453,8 @@ procedure itemAt#definedness(this: Ref, i: int) returns (Result: int)
           HasDirectPerm(UnfoldingMask, this, next);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := UnfoldingHeap;
           ExhaleWellDef0Mask := UnfoldingMask;
+          ExhaleWellDef0Heap := UnfoldingHeap;
           perm := FullPerm;
           assert {:msg "  Precondition of function itemAt might not hold. There might be insufficient permission to access valid(this.next) (cyclic-list.vpr@24.97--24.121) [146402]"}
             NoPerm < perm ==> NoPerm < UnfoldingMask[null, valid(UnfoldingHeap[this, next])];
@@ -570,12 +570,12 @@ procedure valid#definedness(this: Ref) returns ()
 procedure test1(this: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var x: Ref;
   var freshObj: Ref;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var perm: Perm;
   var freshVersion: FrameType;
   var newPMask: PMaskType;
@@ -592,8 +592,8 @@ procedure test1(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[x, $allocated];
@@ -614,8 +614,8 @@ procedure test1(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(valid(x), write) -- cyclic-list.vpr@34.3--34.28
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding valid(x) might fail. There might be insufficient permission to access x.value (cyclic-list.vpr@34.3--34.28) [146410]"}
@@ -671,14 +671,14 @@ procedure test1(this: Ref) returns ()
 procedure test2(this: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var x: Ref;
   var freshObj: Ref;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
-  var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var perm: Perm;
   var ExhaleHeap: HeapType;
   
@@ -694,8 +694,8 @@ procedure test2(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[x, $allocated];
@@ -716,14 +716,14 @@ procedure test2(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert length(x) == length(x.next) + 1 -- cyclic-list.vpr@45.3--45.47
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of length(x) == length(x.next) + 1
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access valid(x) (cyclic-list.vpr@45.12--45.21) [146417]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, valid(x)];
@@ -738,8 +738,8 @@ procedure test2(this: Ref) returns ()
         HasDirectPerm(ExhaleWellDef0Mask, x, next);
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access valid(x.next) (cyclic-list.vpr@45.27--45.41) [146419]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, valid(ExhaleWellDef0Heap[x, next])];

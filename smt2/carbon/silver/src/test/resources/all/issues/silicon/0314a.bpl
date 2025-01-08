@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-07 14:30:30
+// Date:         2025-01-08 22:05:31
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0314a.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0314a-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -401,11 +401,11 @@ axiom !IsWandField(h);
 procedure test01(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -418,8 +418,8 @@ procedure test01(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale acc(x.f, write) -- 0314a.vpr@15.3--15.18
     perm := FullPerm;
@@ -458,8 +458,8 @@ procedure test01(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert bar(x.f) -- 0314a.vpr@20.3--20.18
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of bar(x.f)
       assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (0314a.vpr@20.10--20.18) [204685]"}
@@ -476,13 +476,13 @@ procedure test01(x: Ref) returns ()
 procedure test02(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var y: Ref;
   var z: Ref;
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -495,8 +495,8 @@ procedure test02(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[y, $allocated];
@@ -568,8 +568,8 @@ procedure test02(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert bar(z.f) -- 0314a.vpr@33.3--33.18
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of bar(z.f)
       assert {:msg "  Assert might fail. There might be insufficient permission to access z.f (0314a.vpr@33.10--33.18) [204695]"}
@@ -586,13 +586,13 @@ procedure test02(x: Ref) returns ()
 procedure test03(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var z1: Ref;
   var z2: Ref;
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -605,8 +605,8 @@ procedure test03(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[z1, $allocated];
@@ -652,8 +652,8 @@ procedure test03(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert bar(num(z1)) -- 0314a.vpr@43.3--43.22
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion bar(num(z1)) might not hold. (0314a.vpr@43.10--43.22) [204700]"}
       (bar_3((num(z1): int)): bool);
     assume state(Heap, Mask);
@@ -678,8 +678,8 @@ procedure test03(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert bar(num(x.g)) -- 0314a.vpr@47.3--47.23
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of bar(num(x.g))
       assert {:msg "  Assert might fail. There might be insufficient permission to access x.g (0314a.vpr@47.10--47.23) [204704]"}
@@ -689,8 +689,8 @@ procedure test03(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert bar(num(z2)) -- 0314a.vpr@51.3--51.22
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion bar(num(z2)) might not hold. (0314a.vpr@51.10--51.22) [204706]"}
       (bar_3((num(z2): int)): bool);
     assume state(Heap, Mask);

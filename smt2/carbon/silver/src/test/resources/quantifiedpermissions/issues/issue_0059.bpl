@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-07 14:00:14
+// Date:         2025-01-08 21:35:36
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/issues/issue_0059.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/issues/issue_0059-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -500,13 +500,13 @@ procedure m1(this: (Set Ref)) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var t_2: Ref;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newVersion: FrameType;
   var QPMask: MaskType;
   var a_2: int;
@@ -528,8 +528,8 @@ procedure m1(this: (Set Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -549,8 +549,8 @@ procedure m1(this: (Set Ref)) returns ()
   // -- Translating statement: unfold acc(inv(this), write) -- issue_0059.vpr@14.5--14.33
     assume inv#trigger(Heap, inv(this));
     assume Heap[null, inv(this)] == FrameFragment(inv#condqp1(Heap, this));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding inv(this) might fail. There might be insufficient permission to access inv(this) (issue_0059.vpr@14.5--14.33) [71214]"}
@@ -614,8 +614,8 @@ procedure m1(this: (Set Ref)) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(inv(this), write) -- issue_0059.vpr@18.5--18.31
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     havoc QPMask;
     
     // -- check that the permission amount is positive
@@ -683,8 +683,8 @@ procedure m1(this: (Set Ref)) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of m1 might not hold. There might be insufficient permission to access inv(this) (issue_0059.vpr@12.9--12.30) [71222]"}

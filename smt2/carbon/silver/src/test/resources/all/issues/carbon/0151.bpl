@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-07 14:27:39
+// Date:         2025-01-08 22:02:39
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0151.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0151-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -282,12 +282,12 @@ procedure Tree_work(_cthread: Ref, self: Ref, call_height: int) returns ()
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
-  var oldMask: MaskType;
+  var ExhaleWellDef0Mask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef1Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -310,8 +310,8 @@ procedure Tree_work(_cthread: Ref, self: Ref, call_height: int) returns ()
       UnfoldingMask := Mask;
       assume Tree_valid#trigger(UnfoldingHeap, Tree_valid(self));
       assume UnfoldingHeap[null, Tree_valid(self)] == FrameFragment(UnfoldingHeap[self, Tree_height]);
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access Tree_valid(self) (0151.vpr@14.13--14.86) [195534]"}
@@ -337,8 +337,8 @@ procedure Tree_work(_cthread: Ref, self: Ref, call_height: int) returns ()
       UnfoldingMask := Mask;
       assume Tree_valid#trigger(UnfoldingHeap, Tree_valid(self));
       assume UnfoldingHeap[null, Tree_valid(self)] == FrameFragment(UnfoldingHeap[self, Tree_height]);
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       UnfoldingMask := UnfoldingMask[null, Tree_valid(self):=UnfoldingMask[null, Tree_valid(self)] - perm];
       perm := 1 / 10;
@@ -360,12 +360,12 @@ procedure Tree_work(_cthread: Ref, self: Ref, call_height: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert perm(MustTerminate(_cthread)) == 2 * write -- 0151.vpr@18.3--18.52
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion perm(MustTerminate(_cthread)) == 2 * write might not hold. (0151.vpr@18.10--18.52) [195538]"}
       Mask[null, MustTerminate(_cthread)] == real(2) * FullPerm;
     assume state(Heap, Mask);
@@ -373,16 +373,16 @@ procedure Tree_work(_cthread: Ref, self: Ref, call_height: int) returns ()
   // -- Translating statement: exhale (unfolding acc(Tree_valid(self), write) in
   //     self.Tree_height == call_height) &&
   //   acc(MustTerminate(_cthread), write) -- 0151.vpr@19.3--20.49
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (unfolding acc(Tree_valid(self), write) in self.Tree_height == call_height)
       UnfoldingHeap := ExhaleWellDef0Heap;
       UnfoldingMask := ExhaleWellDef0Mask;
       assume Tree_valid#trigger(UnfoldingHeap, Tree_valid(self));
       assume UnfoldingHeap[null, Tree_valid(self)] == FrameFragment(UnfoldingHeap[self, Tree_height]);
-      ExhaleWellDef1Mask := UnfoldingMask;
       ExhaleWellDef1Heap := UnfoldingHeap;
+      ExhaleWellDef1Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Exhale might fail. There might be insufficient permission to access Tree_valid(self) (0151.vpr@19.11--20.48) [195539]"}
@@ -421,15 +421,15 @@ procedure Tree_work(_cthread: Ref, self: Ref, call_height: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert perm(MustTerminate(_cthread)) == 1 * write -- 0151.vpr@22.3--22.52
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion perm(MustTerminate(_cthread)) == 1 * write might not hold. (0151.vpr@22.10--22.52) [195545]"}
       Mask[null, MustTerminate(_cthread)] == real(1) * FullPerm;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert perm(MustTerminate(_cthread)) == 2 * write -- 0151.vpr@24.3--24.52
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion perm(MustTerminate(_cthread)) == 2 * write might not hold. (0151.vpr@24.10--24.52) [195546]"}
       Mask[null, MustTerminate(_cthread)] == real(2) * FullPerm;
     assume state(Heap, Mask);

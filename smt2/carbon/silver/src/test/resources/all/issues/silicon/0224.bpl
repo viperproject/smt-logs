@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-07 14:28:49
+// Date:         2025-01-08 22:03:48
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0224.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0224-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -426,8 +426,8 @@ procedure f_loop#definedness(a_2: IArrayDomainType, x: int, y: int, n: int) retu
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -501,8 +501,8 @@ procedure f_loop#definedness(a_2: IArrayDomainType, x: int, y: int, n: int) retu
       if (x + n < (length_1(a_2): int) && (y + n < (length_1(a_2): int) && Heap[(loc(a_2, x + n): Ref), val] == Heap[(loc(a_2, y + n): Ref), val])) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           havoc QPMask;
           
           // -- check that the permission amount is positive
@@ -561,8 +561,8 @@ procedure f_loop#definedness(a_2: IArrayDomainType, x: int, y: int, n: int) retu
     Result := (if x + n < (length_1(a_2): int) && (y + n < (length_1(a_2): int) && Heap[(loc(a_2, x + n): Ref), val] == Heap[(loc(a_2, y + n): Ref), val]) then f_loop(Heap, a_2, x, y, n + 1) else n);
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of f_loop might not hold. Assertion 0 <= result might not hold. (0224.vpr@29.11--29.72) [199815]"}
       0 <= Result;
     assert {:msg "  Postcondition of f_loop might not hold. Assertion x + result <= length(a) might not hold. (0224.vpr@29.11--29.72) [199816]"}
@@ -641,8 +641,8 @@ procedure f_lcp#definedness(a_2: IArrayDomainType, x: int, y: int) returns (Resu
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -703,8 +703,8 @@ procedure f_lcp#definedness(a_2: IArrayDomainType, x: int, y: int) returns (Resu
     // -- Check definedness of f_loop(a, x, y, 0)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         havoc QPMask;
         
         // -- check that the permission amount is positive
@@ -757,8 +757,8 @@ procedure f_lcp#definedness(a_2: IArrayDomainType, x: int, y: int) returns (Resu
     Result := f_loop(Heap, a_2, x, y, 0);
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of f_lcp might not hold. Assertion 0 <= result might not hold. (0224.vpr@40.10--40.71) [199830]"}
       0 <= Result;
     assert {:msg "  Postcondition of f_lcp might not hold. Assertion x + result <= length(a) might not hold. (0224.vpr@40.10--40.71) [199831]"}
@@ -785,10 +785,10 @@ procedure test01(a_2: IArrayDomainType) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var res: int;
   
@@ -844,16 +844,16 @@ procedure test01(a_2: IArrayDomainType) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: res := f_loop_simpl(a) -- 0224.vpr@17.3--17.34
     
     // -- Check definedness of f_loop_simpl(a)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         havoc QPMask;
         
         // -- check that the permission amount is positive
@@ -893,8 +893,8 @@ procedure test01(a_2: IArrayDomainType) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert loc(a, res).val != 0 -- 0224.vpr@18.3--18.29
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of loc(a, res).val != 0
       assert {:msg "  Assert might fail. There might be insufficient permission to access loc(a, res).val (0224.vpr@18.10--18.29) [199839]"}
@@ -911,11 +911,11 @@ procedure test01(a_2: IArrayDomainType) returns ()
 procedure test02(a_2: IArrayDomainType, x: int, y: int) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var QPMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var res: int;
   
@@ -928,8 +928,8 @@ procedure test02(a_2: IArrayDomainType, x: int, y: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale (forall k: Int ::
   //     { loc(a, k) }
@@ -1000,8 +1000,8 @@ procedure test02(a_2: IArrayDomainType, x: int, y: int) returns ()
       if (x < (length_1(a_2): int) && (y < (length_1(a_2): int) && Heap[(loc(a_2, x): Ref), val] == Heap[(loc(a_2, y): Ref), val])) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           havoc QPMask;
           
           // -- check that the permission amount is positive
@@ -1076,8 +1076,8 @@ procedure test02(a_2: IArrayDomainType, x: int, y: int) returns ()
   
   // -- Translating statement: exhale x + res < length(a) && y + res < length(a) ==>
   //   loc(a, x + res).val != loc(a, y + res).val -- 0224.vpr@58.3--58.91
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     if (x + res < (length_1(a_2): int) && y + res < (length_1(a_2): int)) {
       
       // -- Check definedness of loc(a, x + res).val != loc(a, y + res).val

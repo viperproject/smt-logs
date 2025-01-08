@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-07 14:03:29
+// Date:         2025-01-08 21:38:44
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/transformations/Performance/BinomialHeap.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/transformations/Performance/BinomialHeap-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -253,8 +253,8 @@ procedure treeKey#definedness(this: Ref) returns (Result: int)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newPMask: PMaskType;
   
   // -- Initializing the state
@@ -277,8 +277,8 @@ procedure treeKey#definedness(this: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume tree#trigger(UnfoldingHeap, tree(this));
       assume UnfoldingHeap[null, tree(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, key]), CombineFrames(FrameFragment(UnfoldingHeap[this, degree]), CombineFrames(FrameFragment(UnfoldingHeap[this, child]), CombineFrames(FrameFragment(UnfoldingHeap[this, parent]), CombineFrames(UnfoldingHeap[null, heapseg(UnfoldingHeap[this, child], null)], CombineFrames(FrameFragment((if 0 < UnfoldingHeap[this, degree] then EmptyFrame else EmptyFrame)), FrameFragment((if UnfoldingHeap[this, child] != null then EmptyFrame else EmptyFrame))))))));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access tree(this) (BinomialHeap.vpr@32.1--36.2) [100101]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, tree(this)];
@@ -386,8 +386,8 @@ procedure treeDegree#definedness(this: Ref) returns (Result: int)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newPMask: PMaskType;
   
   // -- Initializing the state
@@ -410,8 +410,8 @@ procedure treeDegree#definedness(this: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume tree#trigger(UnfoldingHeap, tree(this));
       assume UnfoldingHeap[null, tree(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, key]), CombineFrames(FrameFragment(UnfoldingHeap[this, degree]), CombineFrames(FrameFragment(UnfoldingHeap[this, child]), CombineFrames(FrameFragment(UnfoldingHeap[this, parent]), CombineFrames(UnfoldingHeap[null, heapseg(UnfoldingHeap[this, child], null)], CombineFrames(FrameFragment((if 0 < UnfoldingHeap[this, degree] then EmptyFrame else EmptyFrame)), FrameFragment((if UnfoldingHeap[this, child] != null then EmptyFrame else EmptyFrame))))))));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access tree(this) (BinomialHeap.vpr@38.1--43.2) [100103]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, tree(this)];
@@ -471,8 +471,8 @@ procedure treeDegree#definedness(this: Ref) returns (Result: int)
     Result := Heap[this, degree];
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of treeDegree might not hold. Assertion 0 <= result might not hold. (BinomialHeap.vpr@40.10--40.21) [100105]"}
       0 <= Result;
 }
@@ -519,8 +519,8 @@ procedure treeSize#definedness(this: Ref) returns (Result: int)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var newPMask: PMaskType;
   
@@ -544,8 +544,8 @@ procedure treeSize#definedness(this: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume tree#trigger(UnfoldingHeap, tree(this));
       assume UnfoldingHeap[null, tree(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, key]), CombineFrames(FrameFragment(UnfoldingHeap[this, degree]), CombineFrames(FrameFragment(UnfoldingHeap[this, child]), CombineFrames(FrameFragment(UnfoldingHeap[this, parent]), CombineFrames(UnfoldingHeap[null, heapseg(UnfoldingHeap[this, child], null)], CombineFrames(FrameFragment((if 0 < UnfoldingHeap[this, degree] then EmptyFrame else EmptyFrame)), FrameFragment((if UnfoldingHeap[this, child] != null then EmptyFrame else EmptyFrame))))))));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access tree(this) (BinomialHeap.vpr@45.1--49.2) [100106]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, tree(this)];
@@ -593,8 +593,8 @@ procedure treeSize#definedness(this: Ref) returns (Result: int)
           HasDirectPerm(UnfoldingMask, this, child);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
+          ExhaleWellDef0Mask := UnfoldingMask;
           perm := FullPerm;
           assert {:msg "  Precondition of function segSize might not hold. There might be insufficient permission to access heapseg(this.child, null) (BinomialHeap.vpr@48.52--48.77) [100109]"}
             NoPerm < perm ==> NoPerm < UnfoldingMask[null, heapseg(UnfoldingHeap[this, child], null)];
@@ -666,8 +666,8 @@ procedure treeParent#definedness(this: Ref) returns (Result: Ref)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newPMask: PMaskType;
   
   // -- Initializing the state
@@ -690,8 +690,8 @@ procedure treeParent#definedness(this: Ref) returns (Result: Ref)
       UnfoldingMask := Mask;
       assume tree#trigger(UnfoldingHeap, tree(this));
       assume UnfoldingHeap[null, tree(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, key]), CombineFrames(FrameFragment(UnfoldingHeap[this, degree]), CombineFrames(FrameFragment(UnfoldingHeap[this, child]), CombineFrames(FrameFragment(UnfoldingHeap[this, parent]), CombineFrames(UnfoldingHeap[null, heapseg(UnfoldingHeap[this, child], null)], CombineFrames(FrameFragment((if 0 < UnfoldingHeap[this, degree] then EmptyFrame else EmptyFrame)), FrameFragment((if UnfoldingHeap[this, child] != null then EmptyFrame else EmptyFrame))))))));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access tree(this) (BinomialHeap.vpr@51.1--55.2) [100110]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, tree(this)];
@@ -799,8 +799,8 @@ procedure segLength#definedness(this: Ref, last: Ref) returns (Result: int)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var newPMask: PMaskType;
   
@@ -827,8 +827,8 @@ procedure segLength#definedness(this: Ref, last: Ref) returns (Result: int)
         UnfoldingMask := Mask;
         assume heapseg#trigger(UnfoldingHeap, heapseg(this, last));
         assume UnfoldingHeap[null, heapseg(this, last)] == FrameFragment((if this != last then CombineFrames(UnfoldingHeap[null, tree(this)], CombineFrames(FrameFragment(UnfoldingHeap[this, sibling]), CombineFrames(UnfoldingHeap[null, heapseg(UnfoldingHeap[this, sibling], last)], FrameFragment((if UnfoldingHeap[this, sibling] != last then EmptyFrame else EmptyFrame))))) else EmptyFrame));
-        ExhaleWellDef0Mask := UnfoldingMask;
         ExhaleWellDef0Heap := UnfoldingHeap;
+        ExhaleWellDef0Mask := UnfoldingMask;
         perm := FullPerm;
         assert {:msg "  Function might not be well-formed. There might be insufficient permission to access heapseg(this, last) (BinomialHeap.vpr@64.1--69.2) [100112]"}
           NoPerm < perm ==> NoPerm < UnfoldingMask[null, heapseg(this, last)];
@@ -859,8 +859,8 @@ procedure segLength#definedness(this: Ref, last: Ref) returns (Result: int)
           HasDirectPerm(UnfoldingMask, this, sibling);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
+          ExhaleWellDef0Mask := UnfoldingMask;
           perm := FullPerm;
           assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(this.sibling, last) (BinomialHeap.vpr@68.57--68.86) [100114]"}
             NoPerm < perm ==> NoPerm < UnfoldingMask[null, heapseg(UnfoldingHeap[this, sibling], last)];
@@ -916,8 +916,8 @@ procedure segLength#definedness(this: Ref, last: Ref) returns (Result: int)
     Result := (if this == last then 0 else 1 + segLength(Heap, Heap[this, sibling], last));
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of segLength might not hold. Assertion 0 <= result might not hold. (BinomialHeap.vpr@66.10--66.21) [100115]"}
       0 <= Result;
 }
@@ -970,8 +970,8 @@ procedure segSize#definedness(this: Ref, last: Ref) returns (Result: int)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var newPMask: PMaskType;
   
@@ -998,8 +998,8 @@ procedure segSize#definedness(this: Ref, last: Ref) returns (Result: int)
         UnfoldingMask := Mask;
         assume heapseg#trigger(UnfoldingHeap, heapseg(this, last));
         assume UnfoldingHeap[null, heapseg(this, last)] == FrameFragment((if this != last then CombineFrames(UnfoldingHeap[null, tree(this)], CombineFrames(FrameFragment(UnfoldingHeap[this, sibling]), CombineFrames(UnfoldingHeap[null, heapseg(UnfoldingHeap[this, sibling], last)], FrameFragment((if UnfoldingHeap[this, sibling] != last then EmptyFrame else EmptyFrame))))) else EmptyFrame));
-        ExhaleWellDef0Mask := UnfoldingMask;
         ExhaleWellDef0Heap := UnfoldingHeap;
+        ExhaleWellDef0Mask := UnfoldingMask;
         perm := FullPerm;
         assert {:msg "  Function might not be well-formed. There might be insufficient permission to access heapseg(this, last) (BinomialHeap.vpr@71.1--76.2) [100116]"}
           NoPerm < perm ==> NoPerm < UnfoldingMask[null, heapseg(this, last)];
@@ -1028,8 +1028,8 @@ procedure segSize#definedness(this: Ref, last: Ref) returns (Result: int)
         assume state(UnfoldingHeap, UnfoldingMask);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
+          ExhaleWellDef0Mask := UnfoldingMask;
           perm := FullPerm;
           assert {:msg "  Precondition of function treeSize might not hold. There might be insufficient permission to access tree(this) (BinomialHeap.vpr@75.53--75.67) [100117]"}
             NoPerm < perm ==> NoPerm < UnfoldingMask[null, tree(this)];
@@ -1044,8 +1044,8 @@ procedure segSize#definedness(this: Ref, last: Ref) returns (Result: int)
           HasDirectPerm(UnfoldingMask, this, sibling);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
+          ExhaleWellDef0Mask := UnfoldingMask;
           perm := FullPerm;
           assert {:msg "  Precondition of function segSize might not hold. There might be insufficient permission to access heapseg(this.sibling, last) (BinomialHeap.vpr@75.70--75.97) [100119]"}
             NoPerm < perm ==> NoPerm < UnfoldingMask[null, heapseg(UnfoldingHeap[this, sibling], last)];
@@ -1083,8 +1083,8 @@ procedure segSize#definedness(this: Ref, last: Ref) returns (Result: int)
     Result := (if this == last then 0 else treeSize(Heap, this) + segSize(Heap, Heap[this, sibling], last));
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     if (this == last) {
       assert {:msg "  Postcondition of segSize might not hold. Assertion result == 0 might not hold. (BinomialHeap.vpr@73.10--73.38) [100120]"}
         Result == 0;
@@ -1137,8 +1137,8 @@ procedure segDegree#definedness(this: Ref, last: Ref, index: int) returns (Resul
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
@@ -1163,8 +1163,8 @@ procedure segDegree#definedness(this: Ref, last: Ref, index: int) returns (Resul
     // -- Check definedness of index < segLength(this, last)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(this, last) (BinomialHeap.vpr@80.33--80.54) [100121]"}
           NoPerm < perm ==> NoPerm < Mask[null, heapseg(this, last)];
@@ -1185,8 +1185,8 @@ procedure segDegree#definedness(this: Ref, last: Ref, index: int) returns (Resul
       UnfoldingMask := Mask;
       assume heapseg#trigger(UnfoldingHeap, heapseg(this, last));
       assume UnfoldingHeap[null, heapseg(this, last)] == FrameFragment((if this != last then CombineFrames(UnfoldingHeap[null, tree(this)], CombineFrames(FrameFragment(UnfoldingHeap[this, sibling]), CombineFrames(UnfoldingHeap[null, heapseg(UnfoldingHeap[this, sibling], last)], FrameFragment((if UnfoldingHeap[this, sibling] != last then EmptyFrame else EmptyFrame))))) else EmptyFrame));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access heapseg(this, last) (BinomialHeap.vpr@78.1--85.2) [100122]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, heapseg(this, last)];
@@ -1216,8 +1216,8 @@ procedure segDegree#definedness(this: Ref, last: Ref, index: int) returns (Resul
       if (index == 0) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
+          ExhaleWellDef0Mask := UnfoldingMask;
           perm := FullPerm;
           assert {:msg "  Precondition of function treeDegree might not hold. There might be insufficient permission to access tree(this) (BinomialHeap.vpr@84.16--84.32) [100123]"}
             NoPerm < perm ==> NoPerm < UnfoldingMask[null, tree(this)];
@@ -1233,8 +1233,8 @@ procedure segDegree#definedness(this: Ref, last: Ref, index: int) returns (Resul
           HasDirectPerm(UnfoldingMask, this, sibling);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
+          ExhaleWellDef0Mask := UnfoldingMask;
           perm := FullPerm;
           assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(this.sibling, last) (BinomialHeap.vpr@84.34--84.74) [100125]"}
             NoPerm < perm ==> NoPerm < UnfoldingMask[null, heapseg(UnfoldingHeap[this, sibling], last)];
@@ -1276,8 +1276,8 @@ procedure segDegree#definedness(this: Ref, last: Ref, index: int) returns (Resul
     Result := (if index == 0 then treeDegree(Heap, this) else segDegree(Heap, Heap[this, sibling], last, index - 1));
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of segDegree might not hold. Assertion 0 <= result might not hold. (BinomialHeap.vpr@81.10--81.21) [100128]"}
       0 <= Result;
 }
@@ -1324,8 +1324,8 @@ procedure segParent#definedness(this: Ref, last: Ref) returns (Result: Ref)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var newPMask: PMaskType;
   
@@ -1351,8 +1351,8 @@ procedure segParent#definedness(this: Ref, last: Ref) returns (Result: Ref)
       UnfoldingMask := Mask;
       assume heapseg#trigger(UnfoldingHeap, heapseg(this, last));
       assume UnfoldingHeap[null, heapseg(this, last)] == FrameFragment((if this != last then CombineFrames(UnfoldingHeap[null, tree(this)], CombineFrames(FrameFragment(UnfoldingHeap[this, sibling]), CombineFrames(UnfoldingHeap[null, heapseg(UnfoldingHeap[this, sibling], last)], FrameFragment((if UnfoldingHeap[this, sibling] != last then EmptyFrame else EmptyFrame))))) else EmptyFrame));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access heapseg(this, last) (BinomialHeap.vpr@87.1--91.2) [100129]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, heapseg(this, last)];
@@ -1381,8 +1381,8 @@ procedure segParent#definedness(this: Ref, last: Ref) returns (Result: Ref)
       assume state(UnfoldingHeap, UnfoldingMask);
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := UnfoldingMask;
         ExhaleWellDef0Heap := UnfoldingHeap;
+        ExhaleWellDef0Mask := UnfoldingMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function treeParent might not hold. There might be insufficient permission to access tree(this) (BinomialHeap.vpr@90.35--90.51) [100130]"}
           NoPerm < perm ==> NoPerm < UnfoldingMask[null, tree(this)];
@@ -1462,14 +1462,14 @@ procedure sorted#definedness(this: Ref, last: Ref) returns (Result: bool)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
   var newPMask: PMaskType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1490,8 +1490,8 @@ procedure sorted#definedness(this: Ref, last: Ref) returns (Result: bool)
     // -- Check definedness of 1 < segLength(this, last) ==> (unfolding acc(heapseg(this, last), write) in treeDegree(this) < segDegree(this.sibling, last, 0) && sorted(this.sibling, last))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(this, last) (BinomialHeap.vpr@97.6--97.27) [100131]"}
           NoPerm < perm ==> NoPerm < Mask[null, heapseg(this, last)];
@@ -1507,8 +1507,8 @@ procedure sorted#definedness(this: Ref, last: Ref) returns (Result: bool)
         UnfoldingMask := Mask;
         assume heapseg#trigger(UnfoldingHeap, heapseg(this, last));
         assume UnfoldingHeap[null, heapseg(this, last)] == FrameFragment((if this != last then CombineFrames(UnfoldingHeap[null, tree(this)], CombineFrames(FrameFragment(UnfoldingHeap[this, sibling]), CombineFrames(UnfoldingHeap[null, heapseg(UnfoldingHeap[this, sibling], last)], FrameFragment((if UnfoldingHeap[this, sibling] != last then EmptyFrame else EmptyFrame))))) else EmptyFrame));
-        ExhaleWellDef0Mask := UnfoldingMask;
         ExhaleWellDef0Heap := UnfoldingHeap;
+        ExhaleWellDef0Mask := UnfoldingMask;
         perm := FullPerm;
         assert {:msg "  Function might not be well-formed. There might be insufficient permission to access heapseg(this, last) (BinomialHeap.vpr@93.1--98.2) [100132]"}
           NoPerm < perm ==> NoPerm < UnfoldingMask[null, heapseg(this, last)];
@@ -1537,8 +1537,8 @@ procedure sorted#definedness(this: Ref, last: Ref) returns (Result: bool)
         assume state(UnfoldingHeap, UnfoldingMask);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
+          ExhaleWellDef0Mask := UnfoldingMask;
           perm := FullPerm;
           assert {:msg "  Precondition of function treeDegree might not hold. There might be insufficient permission to access tree(this) (BinomialHeap.vpr@97.65--97.81) [100133]"}
             NoPerm < perm ==> NoPerm < UnfoldingMask[null, tree(this)];
@@ -1553,8 +1553,8 @@ procedure sorted#definedness(this: Ref, last: Ref) returns (Result: bool)
           HasDirectPerm(UnfoldingMask, this, sibling);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
+          ExhaleWellDef0Mask := UnfoldingMask;
           perm := FullPerm;
           assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(this.sibling, last) (BinomialHeap.vpr@97.84--97.116) [100135]"}
             NoPerm < perm ==> NoPerm < UnfoldingMask[null, heapseg(UnfoldingHeap[this, sibling], last)];
@@ -1572,8 +1572,8 @@ procedure sorted#definedness(this: Ref, last: Ref) returns (Result: bool)
             HasDirectPerm(UnfoldingMask, this, sibling);
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := UnfoldingMask;
             ExhaleWellDef0Heap := UnfoldingHeap;
+            ExhaleWellDef0Mask := UnfoldingMask;
             perm := FullPerm;
             assert {:msg "  Precondition of function sorted might not hold. There might be insufficient permission to access heapseg(this.sibling, last) (BinomialHeap.vpr@97.120--97.146) [100138]"}
               NoPerm < perm ==> NoPerm < UnfoldingMask[null, heapseg(UnfoldingHeap[this, sibling], last)];
@@ -1612,15 +1612,15 @@ procedure sorted#definedness(this: Ref, last: Ref) returns (Result: bool)
     Result := 1 < segLength(Heap, this, last) ==> treeDegree(Heap, this) < segDegree(Heap, Heap[this, sibling], last, 0) && sorted(Heap, Heap[this, sibling], last);
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     if (Result) {
       
       // -- Check definedness of presorted(this, last)
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef1Mask := ExhaleWellDef0Mask;
           ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+          ExhaleWellDef1Mask := ExhaleWellDef0Mask;
           perm := FullPerm;
           assert {:msg "  Precondition of function presorted might not hold. There might be insufficient permission to access heapseg(this, last) (BinomialHeap.vpr@95.21--95.42) [100139]"}
             NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, heapseg(this, last)];
@@ -1676,8 +1676,8 @@ procedure presorted#definedness(this: Ref, last: Ref) returns (Result: bool)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
@@ -1702,8 +1702,8 @@ procedure presorted#definedness(this: Ref, last: Ref) returns (Result: bool)
     // -- Check definedness of (1 < segLength(this, last) ==> (unfolding acc(heapseg(this, last), write) in treeDegree(this) <= segDegree(this.sibling, last, 0) && presorted(this.sibling, last))) && (2 < segLength(this, last) && segDegree(this, last, 0) == segDegree(this, last, 1) ==> segDegree(this, last, 1) < segDegree(this, last, 2))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(this, last) (BinomialHeap.vpr@103.7--103.28) [100141]"}
           NoPerm < perm ==> NoPerm < Mask[null, heapseg(this, last)];
@@ -1719,8 +1719,8 @@ procedure presorted#definedness(this: Ref, last: Ref) returns (Result: bool)
         UnfoldingMask := Mask;
         assume heapseg#trigger(UnfoldingHeap, heapseg(this, last));
         assume UnfoldingHeap[null, heapseg(this, last)] == FrameFragment((if this != last then CombineFrames(UnfoldingHeap[null, tree(this)], CombineFrames(FrameFragment(UnfoldingHeap[this, sibling]), CombineFrames(UnfoldingHeap[null, heapseg(UnfoldingHeap[this, sibling], last)], FrameFragment((if UnfoldingHeap[this, sibling] != last then EmptyFrame else EmptyFrame))))) else EmptyFrame));
-        ExhaleWellDef0Mask := UnfoldingMask;
         ExhaleWellDef0Heap := UnfoldingHeap;
+        ExhaleWellDef0Mask := UnfoldingMask;
         perm := FullPerm;
         assert {:msg "  Function might not be well-formed. There might be insufficient permission to access heapseg(this, last) (BinomialHeap.vpr@100.1--105.2) [100142]"}
           NoPerm < perm ==> NoPerm < UnfoldingMask[null, heapseg(this, last)];
@@ -1749,8 +1749,8 @@ procedure presorted#definedness(this: Ref, last: Ref) returns (Result: bool)
         assume state(UnfoldingHeap, UnfoldingMask);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
+          ExhaleWellDef0Mask := UnfoldingMask;
           perm := FullPerm;
           assert {:msg "  Precondition of function treeDegree might not hold. There might be insufficient permission to access tree(this) (BinomialHeap.vpr@103.66--103.82) [100143]"}
             NoPerm < perm ==> NoPerm < UnfoldingMask[null, tree(this)];
@@ -1765,8 +1765,8 @@ procedure presorted#definedness(this: Ref, last: Ref) returns (Result: bool)
           HasDirectPerm(UnfoldingMask, this, sibling);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
+          ExhaleWellDef0Mask := UnfoldingMask;
           perm := FullPerm;
           assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(this.sibling, last) (BinomialHeap.vpr@103.86--103.118) [100145]"}
             NoPerm < perm ==> NoPerm < UnfoldingMask[null, heapseg(UnfoldingHeap[this, sibling], last)];
@@ -1784,8 +1784,8 @@ procedure presorted#definedness(this: Ref, last: Ref) returns (Result: bool)
             HasDirectPerm(UnfoldingMask, this, sibling);
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := UnfoldingMask;
             ExhaleWellDef0Heap := UnfoldingHeap;
+            ExhaleWellDef0Mask := UnfoldingMask;
             perm := FullPerm;
             assert {:msg "  Precondition of function presorted might not hold. There might be insufficient permission to access heapseg(this.sibling, last) (BinomialHeap.vpr@103.122--103.151) [100148]"}
               NoPerm < perm ==> NoPerm < UnfoldingMask[null, heapseg(UnfoldingHeap[this, sibling], last)];
@@ -1822,8 +1822,8 @@ procedure presorted#definedness(this: Ref, last: Ref) returns (Result: bool)
       if (1 < segLength(Heap, this, last) ==> treeDegree(Heap, this) <= segDegree(Heap, Heap[this, sibling], last, 0) && presorted(Heap, Heap[this, sibling], last)) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           perm := FullPerm;
           assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(this, last) (BinomialHeap.vpr@104.7--104.28) [100149]"}
             NoPerm < perm ==> NoPerm < Mask[null, heapseg(this, last)];
@@ -1837,8 +1837,8 @@ procedure presorted#definedness(this: Ref, last: Ref) returns (Result: bool)
         if (2 < segLength(Heap, this, last)) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
             assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(this, last) (BinomialHeap.vpr@104.32--104.56) [100150]"}
               NoPerm < perm ==> NoPerm < Mask[null, heapseg(this, last)];
@@ -1853,8 +1853,8 @@ procedure presorted#definedness(this: Ref, last: Ref) returns (Result: bool)
           }
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
             assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(this, last) (BinomialHeap.vpr@104.60--104.84) [100152]"}
               NoPerm < perm ==> NoPerm < Mask[null, heapseg(this, last)];
@@ -1871,8 +1871,8 @@ procedure presorted#definedness(this: Ref, last: Ref) returns (Result: bool)
         if (2 < segLength(Heap, this, last) && segDegree(Heap, this, last, 0) == segDegree(Heap, this, last, 1)) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
             assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(this, last) (BinomialHeap.vpr@104.89--104.113) [100154]"}
               NoPerm < perm ==> NoPerm < Mask[null, heapseg(this, last)];
@@ -1887,8 +1887,8 @@ procedure presorted#definedness(this: Ref, last: Ref) returns (Result: bool)
           }
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
             assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(this, last) (BinomialHeap.vpr@104.116--104.140) [100156]"}
               NoPerm < perm ==> NoPerm < Mask[null, heapseg(this, last)];
@@ -1948,8 +1948,8 @@ procedure validChildren#definedness(this: Ref, last: Ref) returns (Result: bool)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
@@ -1974,8 +1974,8 @@ procedure validChildren#definedness(this: Ref, last: Ref) returns (Result: bool)
     // -- Check definedness of 1 < segLength(this, last) ==> (unfolding acc(heapseg(this, last), write) in treeDegree(this) == segDegree(this.sibling, last, 0) + 1 && validChildren(this.sibling, last))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(this, last) (BinomialHeap.vpr@110.6--110.27) [100158]"}
           NoPerm < perm ==> NoPerm < Mask[null, heapseg(this, last)];
@@ -1991,8 +1991,8 @@ procedure validChildren#definedness(this: Ref, last: Ref) returns (Result: bool)
         UnfoldingMask := Mask;
         assume heapseg#trigger(UnfoldingHeap, heapseg(this, last));
         assume UnfoldingHeap[null, heapseg(this, last)] == FrameFragment((if this != last then CombineFrames(UnfoldingHeap[null, tree(this)], CombineFrames(FrameFragment(UnfoldingHeap[this, sibling]), CombineFrames(UnfoldingHeap[null, heapseg(UnfoldingHeap[this, sibling], last)], FrameFragment((if UnfoldingHeap[this, sibling] != last then EmptyFrame else EmptyFrame))))) else EmptyFrame));
-        ExhaleWellDef0Mask := UnfoldingMask;
         ExhaleWellDef0Heap := UnfoldingHeap;
+        ExhaleWellDef0Mask := UnfoldingMask;
         perm := FullPerm;
         assert {:msg "  Function might not be well-formed. There might be insufficient permission to access heapseg(this, last) (BinomialHeap.vpr@107.1--111.2) [100159]"}
           NoPerm < perm ==> NoPerm < UnfoldingMask[null, heapseg(this, last)];
@@ -2021,8 +2021,8 @@ procedure validChildren#definedness(this: Ref, last: Ref) returns (Result: bool)
         assume state(UnfoldingHeap, UnfoldingMask);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
+          ExhaleWellDef0Mask := UnfoldingMask;
           perm := FullPerm;
           assert {:msg "  Precondition of function treeDegree might not hold. There might be insufficient permission to access tree(this) (BinomialHeap.vpr@110.65--110.81) [100160]"}
             NoPerm < perm ==> NoPerm < UnfoldingMask[null, tree(this)];
@@ -2037,8 +2037,8 @@ procedure validChildren#definedness(this: Ref, last: Ref) returns (Result: bool)
           HasDirectPerm(UnfoldingMask, this, sibling);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
+          ExhaleWellDef0Mask := UnfoldingMask;
           perm := FullPerm;
           assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(this.sibling, last) (BinomialHeap.vpr@110.85--110.117) [100162]"}
             NoPerm < perm ==> NoPerm < UnfoldingMask[null, heapseg(UnfoldingHeap[this, sibling], last)];
@@ -2056,8 +2056,8 @@ procedure validChildren#definedness(this: Ref, last: Ref) returns (Result: bool)
             HasDirectPerm(UnfoldingMask, this, sibling);
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := UnfoldingMask;
             ExhaleWellDef0Heap := UnfoldingHeap;
+            ExhaleWellDef0Mask := UnfoldingMask;
             perm := FullPerm;
             assert {:msg "  Precondition of function validChildren might not hold. There might be insufficient permission to access heapseg(this.sibling, last) (BinomialHeap.vpr@110.125--110.158) [100165]"}
               NoPerm < perm ==> NoPerm < UnfoldingMask[null, heapseg(UnfoldingHeap[this, sibling], last)];
@@ -2135,8 +2135,8 @@ procedure tree#definedness(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Check definedness of predicate body of tree
@@ -2184,8 +2184,8 @@ procedure tree#definedness(this: Ref) returns ()
         HasDirectPerm(Mask, this, child);
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(this.child, null) (BinomialHeap.vpr@26.17--26.44) [100170]"}
           NoPerm < perm ==> NoPerm < Mask[null, heapseg(Heap[this, child], null)];
@@ -2209,8 +2209,8 @@ procedure tree#definedness(this: Ref) returns ()
           HasDirectPerm(Mask, this, child);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           perm := FullPerm;
           assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(this.child, null) (BinomialHeap.vpr@27.23--27.53) [100173]"}
             NoPerm < perm ==> NoPerm < Mask[null, heapseg(Heap[this, child], null)];
@@ -2234,8 +2234,8 @@ procedure tree#definedness(this: Ref) returns ()
         HasDirectPerm(Mask, this, child);
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function validChildren might not hold. There might be insufficient permission to access heapseg(this.child, null) (BinomialHeap.vpr@28.2--28.33) [100177]"}
           NoPerm < perm ==> NoPerm < Mask[null, heapseg(Heap[this, child], null)];
@@ -2259,8 +2259,8 @@ procedure tree#definedness(this: Ref) returns ()
           HasDirectPerm(Mask, this, child);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           perm := FullPerm;
           assert {:msg "  Precondition of function segParent might not hold. There might be insufficient permission to access heapseg(this.child, null) (BinomialHeap.vpr@29.26--29.53) [100180]"}
             NoPerm < perm ==> NoPerm < Mask[null, heapseg(Heap[this, child], null)];
@@ -2317,8 +2317,8 @@ procedure heapseg#definedness(this: Ref, last: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Check definedness of predicate body of heapseg
@@ -2355,8 +2355,8 @@ procedure heapseg#definedness(this: Ref, last: Ref) returns ()
         // -- Check definedness of treeParent(this) == segParent(this.sibling, last)
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
             assert {:msg "  Precondition of function treeParent might not hold. There might be insufficient permission to access tree(this) (BinomialHeap.vpr@61.28--61.44) [100184]"}
               NoPerm < perm ==> NoPerm < Mask[null, tree(this)];
@@ -2371,8 +2371,8 @@ procedure heapseg#definedness(this: Ref, last: Ref) returns ()
             HasDirectPerm(Mask, this, sibling);
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
             assert {:msg "  Precondition of function segParent might not hold. There might be insufficient permission to access heapseg(this.sibling, last) (BinomialHeap.vpr@61.48--61.77) [100186]"}
               NoPerm < perm ==> NoPerm < Mask[null, heapseg(Heap[this, sibling], last)];
@@ -2430,8 +2430,8 @@ procedure heap#definedness(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Check definedness of predicate body of heap
@@ -2460,8 +2460,8 @@ procedure heap#definedness(this: Ref) returns ()
         HasDirectPerm(Mask, this, Nodes);
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function sorted might not hold. There might be insufficient permission to access heapseg(this.Nodes, null) (BinomialHeap.vpr@239.31--239.55) [100190]"}
           NoPerm < perm ==> NoPerm < Mask[null, heapseg(Heap[this, Nodes], null)];
@@ -2485,8 +2485,8 @@ procedure heap#definedness(this: Ref) returns ()
           HasDirectPerm(Mask, this, Nodes);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           perm := FullPerm;
           assert {:msg "  Precondition of function segParent might not hold. There might be insufficient permission to access heapseg(this.Nodes, null) (BinomialHeap.vpr@240.26--240.53) [100193]"}
             NoPerm < perm ==> NoPerm < Mask[null, heapseg(Heap[this, Nodes], null)];
@@ -2514,8 +2514,8 @@ procedure heap#definedness(this: Ref) returns ()
         HasDirectPerm(Mask, this, Nodes);
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function segSize might not hold. There might be insufficient permission to access heapseg(this.Nodes, null) (BinomialHeap.vpr@242.15--242.40) [100197]"}
           NoPerm < perm ==> NoPerm < Mask[null, heapseg(Heap[this, Nodes], null)];
@@ -2538,11 +2538,11 @@ procedure reverse2(this: Ref, sibl: Ref) returns (res: Ref)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var newVersion: FrameType;
@@ -2571,8 +2571,8 @@ procedure reverse2(this: Ref, sibl: Ref) returns (res: Ref)
     // -- Check definedness of validChildren(this, null)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function validChildren might not hold. There might be insufficient permission to access heapseg(this, null) (BinomialHeap.vpr@114.34--114.59) [100198]"}
           NoPerm < perm ==> NoPerm < Mask[null, heapseg(this, null)];
@@ -2589,8 +2589,8 @@ procedure reverse2(this: Ref, sibl: Ref) returns (res: Ref)
     // -- Check definedness of 0 < segLength(this, null)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(this, null) (BinomialHeap.vpr@114.67--114.88) [100199]"}
           NoPerm < perm ==> NoPerm < Mask[null, heapseg(this, null)];
@@ -2611,8 +2611,8 @@ procedure reverse2(this: Ref, sibl: Ref) returns (res: Ref)
     // -- Check definedness of sorted(sibl, null)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function sorted might not hold. There might be insufficient permission to access heapseg(sibl, null) (BinomialHeap.vpr@115.34--115.52) [100200]"}
           NoPerm < perm ==> NoPerm < Mask[null, heapseg(sibl, null)];
@@ -2631,8 +2631,8 @@ procedure reverse2(this: Ref, sibl: Ref) returns (res: Ref)
       // -- Check definedness of segDegree(this, null, 0) < segDegree(sibl, null, 0)
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           perm := FullPerm;
           assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(this, null) (BinomialHeap.vpr@116.28--116.52) [100201]"}
             NoPerm < perm ==> NoPerm < Mask[null, heapseg(this, null)];
@@ -2647,8 +2647,8 @@ procedure reverse2(this: Ref, sibl: Ref) returns (res: Ref)
         }
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           perm := FullPerm;
           assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(sibl, null) (BinomialHeap.vpr@116.55--116.79) [100203]"}
             NoPerm < perm ==> NoPerm < Mask[null, heapseg(sibl, null)];
@@ -2670,8 +2670,8 @@ procedure reverse2(this: Ref, sibl: Ref) returns (res: Ref)
       // -- Check definedness of segParent(this, null) == segParent(sibl, null)
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           perm := FullPerm;
           assert {:msg "  Precondition of function segParent might not hold. There might be insufficient permission to access heapseg(this, null) (BinomialHeap.vpr@117.28--117.49) [100205]"}
             NoPerm < perm ==> NoPerm < Mask[null, heapseg(this, null)];
@@ -2686,8 +2686,8 @@ procedure reverse2(this: Ref, sibl: Ref) returns (res: Ref)
         }
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           perm := FullPerm;
           assert {:msg "  Precondition of function segParent might not hold. There might be insufficient permission to access heapseg(sibl, null) (BinomialHeap.vpr@117.53--117.74) [100207]"}
             NoPerm < perm ==> NoPerm < Mask[null, heapseg(sibl, null)];
@@ -2707,8 +2707,8 @@ procedure reverse2(this: Ref, sibl: Ref) returns (res: Ref)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -2725,8 +2725,8 @@ procedure reverse2(this: Ref, sibl: Ref) returns (res: Ref)
     // -- Check definedness of sorted(res, null)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
+        ExhaleWellDef0Mask := PostMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function sorted might not hold. There might be insufficient permission to access heapseg(res, null) (BinomialHeap.vpr@120.10--120.27) [100209]"}
           NoPerm < perm ==> NoPerm < PostMask[null, heapseg(res, null)];
@@ -2744,8 +2744,8 @@ procedure reverse2(this: Ref, sibl: Ref) returns (res: Ref)
     // -- Check definedness of segSize(res, null) == old(segSize(this, null)) + old(segSize(sibl, null))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
+        ExhaleWellDef0Mask := PostMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function segSize might not hold. There might be insufficient permission to access heapseg(res, null) (BinomialHeap.vpr@121.10--121.28) [100210]"}
           NoPerm < perm ==> NoPerm < PostMask[null, heapseg(res, null)];
@@ -2758,8 +2758,8 @@ procedure reverse2(this: Ref, sibl: Ref) returns (res: Ref)
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := oldMask;
         ExhaleWellDef0Heap := oldHeap;
+        ExhaleWellDef0Mask := oldMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function segSize might not hold. There might be insufficient permission to access heapseg(this, null) (BinomialHeap.vpr@121.36--121.55) [100211]"}
           NoPerm < perm ==> NoPerm < oldMask[null, heapseg(this, null)];
@@ -2769,8 +2769,8 @@ procedure reverse2(this: Ref, sibl: Ref) returns (res: Ref)
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := oldMask;
         ExhaleWellDef0Heap := oldHeap;
+        ExhaleWellDef0Mask := oldMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function segSize might not hold. There might be insufficient permission to access heapseg(sibl, null) (BinomialHeap.vpr@121.63--121.82) [100212]"}
           NoPerm < perm ==> NoPerm < oldMask[null, heapseg(sibl, null)];
@@ -2785,8 +2785,8 @@ procedure reverse2(this: Ref, sibl: Ref) returns (res: Ref)
     // -- Check definedness of segParent(res, null) == old(segParent(this, null))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
+        ExhaleWellDef0Mask := PostMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function segParent might not hold. There might be insufficient permission to access heapseg(res, null) (BinomialHeap.vpr@122.10--122.30) [100213]"}
           NoPerm < perm ==> NoPerm < PostMask[null, heapseg(res, null)];
@@ -2801,8 +2801,8 @@ procedure reverse2(this: Ref, sibl: Ref) returns (res: Ref)
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := oldMask;
         ExhaleWellDef0Heap := oldHeap;
+        ExhaleWellDef0Mask := oldMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function segParent might not hold. There might be insufficient permission to access heapseg(this, null) (BinomialHeap.vpr@122.38--122.59) [100215]"}
           NoPerm < perm ==> NoPerm < oldMask[null, heapseg(this, null)];
@@ -2821,8 +2821,8 @@ procedure reverse2(this: Ref, sibl: Ref) returns (res: Ref)
   // -- Translating statement: unfold acc(heapseg(this, null), write) -- BinomialHeap.vpr@124.2--124.28
     assume heapseg#trigger(Heap, heapseg(this, null));
     assume Heap[null, heapseg(this, null)] == FrameFragment((if this != null then CombineFrames(Heap[null, tree(this)], CombineFrames(FrameFragment(Heap[this, sibling]), CombineFrames(Heap[null, heapseg(Heap[this, sibling], null)], FrameFragment((if Heap[this, sibling] != null then EmptyFrame else EmptyFrame))))) else EmptyFrame));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding heapseg(this, null) might fail. There might be insufficient permission to access heapseg(this, null) (BinomialHeap.vpr@124.2--124.28) [100219]"}
@@ -2885,8 +2885,8 @@ procedure reverse2(this: Ref, sibl: Ref) returns (res: Ref)
         assume state(Heap, Mask);
       
       // -- Translating statement: fold acc(heapseg(this, null), write) -- BinomialHeap.vpr@129.3--129.27
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         if (this != null) {
           perm := FullPerm;
           if (perm != NoPerm) {
@@ -2951,8 +2951,8 @@ procedure reverse2(this: Ref, sibl: Ref) returns (res: Ref)
         PreCallMask := Mask;
         
         // -- Exhaling precondition
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  The precondition of method reverse2 might not hold. There might be insufficient permission to access heapseg(ss, null) (BinomialHeap.vpr@130.3--130.28) [100235]"}
@@ -3014,8 +3014,8 @@ procedure reverse2(this: Ref, sibl: Ref) returns (res: Ref)
         assume state(Heap, Mask);
       
       // -- Translating statement: fold acc(heapseg(res, null), write) -- BinomialHeap.vpr@135.3--135.26
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         if (res != null) {
           perm := FullPerm;
           if (perm != NoPerm) {
@@ -3078,8 +3078,8 @@ procedure reverse2(this: Ref, sibl: Ref) returns (res: Ref)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of reverse2 might not hold. Assertion res != null might not hold. (BinomialHeap.vpr@118.10--118.21) [100252]"}
       res != null;
     perm := FullPerm;
@@ -3108,11 +3108,11 @@ procedure vconcat(a_2: Ref, b_24: Ref, c: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var i_92: int;
@@ -3123,8 +3123,8 @@ procedure vconcat(a_2: Ref, b_24: Ref, c: Ref) returns ()
   var arg_a: Ref;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var Unfolding1Heap: HeapType;
   var Unfolding1Mask: MaskType;
   var newPMask: PMaskType;
@@ -3163,8 +3163,8 @@ procedure vconcat(a_2: Ref, b_24: Ref, c: Ref) returns ()
       // -- Check definedness of segParent(a, b) == segParent(b, c)
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           perm := FullPerm;
           assert {:msg "  Precondition of function segParent might not hold. There might be insufficient permission to access heapseg(a, b) (BinomialHeap.vpr@142.32--142.47) [100257]"}
             NoPerm < perm ==> NoPerm < Mask[null, heapseg(a_2, b_24)];
@@ -3179,8 +3179,8 @@ procedure vconcat(a_2: Ref, b_24: Ref, c: Ref) returns ()
         }
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           perm := FullPerm;
           assert {:msg "  Precondition of function segParent might not hold. There might be insufficient permission to access heapseg(b, c) (BinomialHeap.vpr@142.51--142.66) [100259]"}
             NoPerm < perm ==> NoPerm < Mask[null, heapseg(b_24, c)];
@@ -3200,8 +3200,8 @@ procedure vconcat(a_2: Ref, b_24: Ref, c: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -3216,8 +3216,8 @@ procedure vconcat(a_2: Ref, b_24: Ref, c: Ref) returns ()
     // -- Check definedness of segLength(a, c) == old(segLength(a, b)) + old(segLength(b, c))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
+        ExhaleWellDef0Mask := PostMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(a, c) (BinomialHeap.vpr@144.10--144.25) [100261]"}
           NoPerm < perm ==> NoPerm < PostMask[null, heapseg(a_2, c)];
@@ -3230,8 +3230,8 @@ procedure vconcat(a_2: Ref, b_24: Ref, c: Ref) returns ()
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := oldMask;
         ExhaleWellDef0Heap := oldHeap;
+        ExhaleWellDef0Mask := oldMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(a, b) (BinomialHeap.vpr@144.33--144.48) [100262]"}
           NoPerm < perm ==> NoPerm < oldMask[null, heapseg(a_2, b_24)];
@@ -3241,8 +3241,8 @@ procedure vconcat(a_2: Ref, b_24: Ref, c: Ref) returns ()
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := oldMask;
         ExhaleWellDef0Heap := oldHeap;
+        ExhaleWellDef0Mask := oldMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(b, c) (BinomialHeap.vpr@144.56--144.71) [100263]"}
           NoPerm < perm ==> NoPerm < oldMask[null, heapseg(b_24, c)];
@@ -3259,8 +3259,8 @@ procedure vconcat(a_2: Ref, b_24: Ref, c: Ref) returns ()
         if (0 <= i_92) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := oldMask;
             ExhaleWellDef0Heap := oldHeap;
+            ExhaleWellDef0Mask := oldMask;
             perm := FullPerm;
             assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(a, b) (BinomialHeap.vpr@145.44--145.59) [100264]"}
               NoPerm < perm ==> NoPerm < oldMask[null, heapseg(a_2, b_24)];
@@ -3272,8 +3272,8 @@ procedure vconcat(a_2: Ref, b_24: Ref, c: Ref) returns ()
         if (0 <= i_92 && i_92 < segLength(oldHeap, a_2, b_24)) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := PostMask;
             ExhaleWellDef0Heap := PostHeap;
+            ExhaleWellDef0Mask := PostMask;
             perm := FullPerm;
             assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(a, c) (BinomialHeap.vpr@145.65--145.83) [100265]"}
               NoPerm < perm ==> NoPerm < PostMask[null, heapseg(a_2, c)];
@@ -3290,8 +3290,8 @@ procedure vconcat(a_2: Ref, b_24: Ref, c: Ref) returns ()
           }
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := oldMask;
             ExhaleWellDef0Heap := oldHeap;
+            ExhaleWellDef0Mask := oldMask;
             perm := FullPerm;
             assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(a, b) (BinomialHeap.vpr@145.91--145.109) [100268]"}
               NoPerm < perm ==> NoPerm < oldMask[null, heapseg(a_2, b_24)];
@@ -3317,8 +3317,8 @@ procedure vconcat(a_2: Ref, b_24: Ref, c: Ref) returns ()
       if (*) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := oldMask;
           ExhaleWellDef0Heap := oldHeap;
+          ExhaleWellDef0Mask := oldMask;
           perm := FullPerm;
           assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(a, b) (BinomialHeap.vpr@146.30--146.45) [100271]"}
             NoPerm < perm ==> NoPerm < oldMask[null, heapseg(a_2, b_24)];
@@ -3329,8 +3329,8 @@ procedure vconcat(a_2: Ref, b_24: Ref, c: Ref) returns ()
         if (segLength(oldHeap, a_2, b_24) <= i_93) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := PostMask;
             ExhaleWellDef0Heap := PostHeap;
+            ExhaleWellDef0Mask := PostMask;
             perm := FullPerm;
             assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(a, c) (BinomialHeap.vpr@146.59--146.74) [100272]"}
               NoPerm < perm ==> NoPerm < PostMask[null, heapseg(a_2, c)];
@@ -3345,8 +3345,8 @@ procedure vconcat(a_2: Ref, b_24: Ref, c: Ref) returns ()
         if (segLength(oldHeap, a_2, b_24) <= i_93 && i_93 < segLength(PostHeap, a_2, c)) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := PostMask;
             ExhaleWellDef0Heap := PostHeap;
+            ExhaleWellDef0Mask := PostMask;
             perm := FullPerm;
             assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(a, c) (BinomialHeap.vpr@146.79--146.97) [100273]"}
               NoPerm < perm ==> NoPerm < PostMask[null, heapseg(a_2, c)];
@@ -3363,8 +3363,8 @@ procedure vconcat(a_2: Ref, b_24: Ref, c: Ref) returns ()
           }
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := oldMask;
             ExhaleWellDef0Heap := oldHeap;
+            ExhaleWellDef0Mask := oldMask;
             perm := FullPerm;
             assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(a, b) (BinomialHeap.vpr@146.125--146.140) [100276]"}
               NoPerm < perm ==> NoPerm < oldMask[null, heapseg(a_2, b_24)];
@@ -3374,8 +3374,8 @@ procedure vconcat(a_2: Ref, b_24: Ref, c: Ref) returns ()
           }
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := oldMask;
             ExhaleWellDef0Heap := oldHeap;
+            ExhaleWellDef0Mask := oldMask;
             perm := FullPerm;
             assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(b, c) (BinomialHeap.vpr@146.105--146.141) [100277]"}
               NoPerm < perm ==> NoPerm < oldMask[null, heapseg(b_24, c)];
@@ -3404,8 +3404,8 @@ procedure vconcat(a_2: Ref, b_24: Ref, c: Ref) returns ()
       // -- Check definedness of treeDegree(c) == old(treeDegree(c))
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := PostMask;
           ExhaleWellDef0Heap := PostHeap;
+          ExhaleWellDef0Mask := PostMask;
           perm := FullPerm;
           assert {:msg "  Precondition of function treeDegree might not hold. There might be insufficient permission to access tree(c) (BinomialHeap.vpr@147.35--147.48) [100280]"}
             NoPerm < perm ==> NoPerm < PostMask[null, tree(c)];
@@ -3418,8 +3418,8 @@ procedure vconcat(a_2: Ref, b_24: Ref, c: Ref) returns ()
         }
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := oldMask;
           ExhaleWellDef0Heap := oldHeap;
+          ExhaleWellDef0Mask := oldMask;
           perm := FullPerm;
           assert {:msg "  Precondition of function treeDegree might not hold. There might be insufficient permission to access tree(c) (BinomialHeap.vpr@147.56--147.69) [100281]"}
             NoPerm < perm ==> NoPerm < oldMask[null, tree(c)];
@@ -3433,8 +3433,8 @@ procedure vconcat(a_2: Ref, b_24: Ref, c: Ref) returns ()
       // -- Check definedness of treeSize(c) == old(treeSize(c))
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := PostMask;
           ExhaleWellDef0Heap := PostHeap;
+          ExhaleWellDef0Mask := PostMask;
           perm := FullPerm;
           assert {:msg "  Precondition of function treeSize might not hold. There might be insufficient permission to access tree(c) (BinomialHeap.vpr@147.74--147.85) [100282]"}
             NoPerm < perm ==> NoPerm < PostMask[null, tree(c)];
@@ -3447,8 +3447,8 @@ procedure vconcat(a_2: Ref, b_24: Ref, c: Ref) returns ()
         }
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := oldMask;
           ExhaleWellDef0Heap := oldHeap;
+          ExhaleWellDef0Mask := oldMask;
           perm := FullPerm;
           assert {:msg "  Precondition of function treeSize might not hold. There might be insufficient permission to access tree(c) (BinomialHeap.vpr@147.93--147.104) [100283]"}
             NoPerm < perm ==> NoPerm < oldMask[null, tree(c)];
@@ -3462,8 +3462,8 @@ procedure vconcat(a_2: Ref, b_24: Ref, c: Ref) returns ()
       // -- Check definedness of treeParent(c) == old(treeParent(c))
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := PostMask;
           ExhaleWellDef0Heap := PostHeap;
+          ExhaleWellDef0Mask := PostMask;
           perm := FullPerm;
           assert {:msg "  Precondition of function treeParent might not hold. There might be insufficient permission to access tree(c) (BinomialHeap.vpr@147.109--147.122) [100284]"}
             NoPerm < perm ==> NoPerm < PostMask[null, tree(c)];
@@ -3476,8 +3476,8 @@ procedure vconcat(a_2: Ref, b_24: Ref, c: Ref) returns ()
         }
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := oldMask;
           ExhaleWellDef0Heap := oldHeap;
+          ExhaleWellDef0Mask := oldMask;
           perm := FullPerm;
           assert {:msg "  Precondition of function treeParent might not hold. There might be insufficient permission to access tree(c) (BinomialHeap.vpr@147.130--147.143) [100285]"}
             NoPerm < perm ==> NoPerm < oldMask[null, tree(c)];
@@ -3492,8 +3492,8 @@ procedure vconcat(a_2: Ref, b_24: Ref, c: Ref) returns ()
     // -- Check definedness of old(sorted(a, b)) && (old(sorted(b, c)) && old(0 < segLength(a, b) && 0 < segLength(b, c) ==> segDegree(a, b, segLength(a, b) - 1) < segDegree(b, c, 0)))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := oldMask;
         ExhaleWellDef0Heap := oldHeap;
+        ExhaleWellDef0Mask := oldMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function sorted might not hold. There might be insufficient permission to access heapseg(a, b) (BinomialHeap.vpr@149.14--149.26) [100286]"}
           NoPerm < perm ==> NoPerm < oldMask[null, heapseg(a_2, b_24)];
@@ -3504,8 +3504,8 @@ procedure vconcat(a_2: Ref, b_24: Ref, c: Ref) returns ()
       if (sorted(oldHeap, a_2, b_24)) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := oldMask;
           ExhaleWellDef0Heap := oldHeap;
+          ExhaleWellDef0Mask := oldMask;
           perm := FullPerm;
           assert {:msg "  Precondition of function sorted might not hold. There might be insufficient permission to access heapseg(b, c) (BinomialHeap.vpr@149.35--149.47) [100287]"}
             NoPerm < perm ==> NoPerm < oldMask[null, heapseg(b_24, c)];
@@ -3516,8 +3516,8 @@ procedure vconcat(a_2: Ref, b_24: Ref, c: Ref) returns ()
         if (sorted(oldHeap, b_24, c)) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := oldMask;
             ExhaleWellDef0Heap := oldHeap;
+            ExhaleWellDef0Mask := oldMask;
             perm := FullPerm;
             assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(a, b) (BinomialHeap.vpr@150.9--150.24) [100288]"}
               NoPerm < perm ==> NoPerm < oldMask[null, heapseg(a_2, b_24)];
@@ -3528,8 +3528,8 @@ procedure vconcat(a_2: Ref, b_24: Ref, c: Ref) returns ()
           if (0 < segLength(oldHeap, a_2, b_24)) {
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := oldMask;
               ExhaleWellDef0Heap := oldHeap;
+              ExhaleWellDef0Mask := oldMask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(b, c) (BinomialHeap.vpr@150.32--150.47) [100289]"}
                 NoPerm < perm ==> NoPerm < oldMask[null, heapseg(b_24, c)];
@@ -3541,8 +3541,8 @@ procedure vconcat(a_2: Ref, b_24: Ref, c: Ref) returns ()
           if (0 < segLength(oldHeap, a_2, b_24) && 0 < segLength(oldHeap, b_24, c)) {
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := oldMask;
               ExhaleWellDef0Heap := oldHeap;
+              ExhaleWellDef0Mask := oldMask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(a, b) (BinomialHeap.vpr@150.68--150.83) [100290]"}
                 NoPerm < perm ==> NoPerm < oldMask[null, heapseg(a_2, b_24)];
@@ -3552,8 +3552,8 @@ procedure vconcat(a_2: Ref, b_24: Ref, c: Ref) returns ()
             }
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := oldMask;
               ExhaleWellDef0Heap := oldHeap;
+              ExhaleWellDef0Mask := oldMask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(a, b) (BinomialHeap.vpr@150.52--150.88) [100291]"}
                 NoPerm < perm ==> NoPerm < oldMask[null, heapseg(a_2, b_24)];
@@ -3567,8 +3567,8 @@ procedure vconcat(a_2: Ref, b_24: Ref, c: Ref) returns ()
             }
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := oldMask;
               ExhaleWellDef0Heap := oldHeap;
+              ExhaleWellDef0Mask := oldMask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(b, c) (BinomialHeap.vpr@150.91--150.109) [100294]"}
                 NoPerm < perm ==> NoPerm < oldMask[null, heapseg(b_24, c)];
@@ -3587,8 +3587,8 @@ procedure vconcat(a_2: Ref, b_24: Ref, c: Ref) returns ()
       // -- Check definedness of sorted(a, c)
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := PostMask;
           ExhaleWellDef0Heap := PostHeap;
+          ExhaleWellDef0Mask := PostMask;
           perm := FullPerm;
           assert {:msg "  Precondition of function sorted might not hold. There might be insufficient permission to access heapseg(a, c) (BinomialHeap.vpr@150.115--150.127) [100296]"}
             NoPerm < perm ==> NoPerm < PostMask[null, heapseg(a_2, c)];
@@ -3606,8 +3606,8 @@ procedure vconcat(a_2: Ref, b_24: Ref, c: Ref) returns ()
     // -- Check definedness of old(presorted(a, b)) && (old(presorted(b, c)) && old(0 < segLength(a, b) && 0 < segLength(b, c) ==> segDegree(a, b, segLength(a, b) - 1) <= segDegree(b, c, 0) && ((2 <= segLength(a, b) && segDegree(a, b, segLength(a, b) - 1) == segDegree(a, b, segLength(a, b) - 2) ==> segDegree(a, b, segLength(a, b) - 1) < segDegree(b, c, 0)) && (2 <= segLength(b, c) && segDegree(b, c, 0) == segDegree(b, c, 1) ==> segDegree(a, b, segLength(a, b) - 1) < segDegree(b, c, 0)))))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := oldMask;
         ExhaleWellDef0Heap := oldHeap;
+        ExhaleWellDef0Mask := oldMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function presorted might not hold. There might be insufficient permission to access heapseg(a, b) (BinomialHeap.vpr@152.14--152.29) [100297]"}
           NoPerm < perm ==> NoPerm < oldMask[null, heapseg(a_2, b_24)];
@@ -3618,8 +3618,8 @@ procedure vconcat(a_2: Ref, b_24: Ref, c: Ref) returns ()
       if (presorted(oldHeap, a_2, b_24)) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := oldMask;
           ExhaleWellDef0Heap := oldHeap;
+          ExhaleWellDef0Mask := oldMask;
           perm := FullPerm;
           assert {:msg "  Precondition of function presorted might not hold. There might be insufficient permission to access heapseg(b, c) (BinomialHeap.vpr@152.38--152.53) [100298]"}
             NoPerm < perm ==> NoPerm < oldMask[null, heapseg(b_24, c)];
@@ -3630,8 +3630,8 @@ procedure vconcat(a_2: Ref, b_24: Ref, c: Ref) returns ()
         if (presorted(oldHeap, b_24, c)) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := oldMask;
             ExhaleWellDef0Heap := oldHeap;
+            ExhaleWellDef0Mask := oldMask;
             perm := FullPerm;
             assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(a, b) (BinomialHeap.vpr@153.9--153.24) [100299]"}
               NoPerm < perm ==> NoPerm < oldMask[null, heapseg(a_2, b_24)];
@@ -3642,8 +3642,8 @@ procedure vconcat(a_2: Ref, b_24: Ref, c: Ref) returns ()
           if (0 < segLength(oldHeap, a_2, b_24)) {
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := oldMask;
               ExhaleWellDef0Heap := oldHeap;
+              ExhaleWellDef0Mask := oldMask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(b, c) (BinomialHeap.vpr@153.32--153.47) [100300]"}
                 NoPerm < perm ==> NoPerm < oldMask[null, heapseg(b_24, c)];
@@ -3655,8 +3655,8 @@ procedure vconcat(a_2: Ref, b_24: Ref, c: Ref) returns ()
           if (0 < segLength(oldHeap, a_2, b_24) && 0 < segLength(oldHeap, b_24, c)) {
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := oldMask;
               ExhaleWellDef0Heap := oldHeap;
+              ExhaleWellDef0Mask := oldMask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(a, b) (BinomialHeap.vpr@153.68--153.83) [100301]"}
                 NoPerm < perm ==> NoPerm < oldMask[null, heapseg(a_2, b_24)];
@@ -3666,8 +3666,8 @@ procedure vconcat(a_2: Ref, b_24: Ref, c: Ref) returns ()
             }
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := oldMask;
               ExhaleWellDef0Heap := oldHeap;
+              ExhaleWellDef0Mask := oldMask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(a, b) (BinomialHeap.vpr@153.52--153.88) [100302]"}
                 NoPerm < perm ==> NoPerm < oldMask[null, heapseg(a_2, b_24)];
@@ -3681,8 +3681,8 @@ procedure vconcat(a_2: Ref, b_24: Ref, c: Ref) returns ()
             }
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := oldMask;
               ExhaleWellDef0Heap := oldHeap;
+              ExhaleWellDef0Mask := oldMask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(b, c) (BinomialHeap.vpr@153.92--153.110) [100305]"}
                 NoPerm < perm ==> NoPerm < oldMask[null, heapseg(b_24, c)];
@@ -3695,8 +3695,8 @@ procedure vconcat(a_2: Ref, b_24: Ref, c: Ref) returns ()
             if (segDegree(oldHeap, a_2, b_24, segLength(oldHeap, a_2, b_24) - 1) <= segDegree(oldHeap, b_24, c, 0)) {
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Mask := oldMask;
                 ExhaleWellDef0Heap := oldHeap;
+                ExhaleWellDef0Mask := oldMask;
                 perm := FullPerm;
                 assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(a, b) (BinomialHeap.vpr@154.7--154.22) [100307]"}
                   NoPerm < perm ==> NoPerm < oldMask[null, heapseg(a_2, b_24)];
@@ -3707,8 +3707,8 @@ procedure vconcat(a_2: Ref, b_24: Ref, c: Ref) returns ()
               if (2 <= segLength(oldHeap, a_2, b_24)) {
                 if (*) {
                   // Exhale precondition of function application
-                  ExhaleWellDef0Mask := oldMask;
                   ExhaleWellDef0Heap := oldHeap;
+                  ExhaleWellDef0Mask := oldMask;
                   perm := FullPerm;
                   assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(a, b) (BinomialHeap.vpr@154.42--154.57) [100308]"}
                     NoPerm < perm ==> NoPerm < oldMask[null, heapseg(a_2, b_24)];
@@ -3718,8 +3718,8 @@ procedure vconcat(a_2: Ref, b_24: Ref, c: Ref) returns ()
                 }
                 if (*) {
                   // Exhale precondition of function application
-                  ExhaleWellDef0Mask := oldMask;
                   ExhaleWellDef0Heap := oldHeap;
+                  ExhaleWellDef0Mask := oldMask;
                   perm := FullPerm;
                   assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(a, b) (BinomialHeap.vpr@154.26--154.62) [100309]"}
                     NoPerm < perm ==> NoPerm < oldMask[null, heapseg(a_2, b_24)];
@@ -3733,8 +3733,8 @@ procedure vconcat(a_2: Ref, b_24: Ref, c: Ref) returns ()
                 }
                 if (*) {
                   // Exhale precondition of function application
-                  ExhaleWellDef0Mask := oldMask;
                   ExhaleWellDef0Heap := oldHeap;
+                  ExhaleWellDef0Mask := oldMask;
                   perm := FullPerm;
                   assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(a, b) (BinomialHeap.vpr@154.82--154.97) [100312]"}
                     NoPerm < perm ==> NoPerm < oldMask[null, heapseg(a_2, b_24)];
@@ -3744,8 +3744,8 @@ procedure vconcat(a_2: Ref, b_24: Ref, c: Ref) returns ()
                 }
                 if (*) {
                   // Exhale precondition of function application
-                  ExhaleWellDef0Mask := oldMask;
                   ExhaleWellDef0Heap := oldHeap;
+                  ExhaleWellDef0Mask := oldMask;
                   perm := FullPerm;
                   assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(a, b) (BinomialHeap.vpr@154.66--154.102) [100313]"}
                     NoPerm < perm ==> NoPerm < oldMask[null, heapseg(a_2, b_24)];
@@ -3761,8 +3761,8 @@ procedure vconcat(a_2: Ref, b_24: Ref, c: Ref) returns ()
               if (2 <= segLength(oldHeap, a_2, b_24) && segDegree(oldHeap, a_2, b_24, segLength(oldHeap, a_2, b_24) - 1) == segDegree(oldHeap, a_2, b_24, segLength(oldHeap, a_2, b_24) - 2)) {
                 if (*) {
                   // Exhale precondition of function application
-                  ExhaleWellDef0Mask := oldMask;
                   ExhaleWellDef0Heap := oldHeap;
+                  ExhaleWellDef0Mask := oldMask;
                   perm := FullPerm;
                   assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(a, b) (BinomialHeap.vpr@154.123--154.138) [100316]"}
                     NoPerm < perm ==> NoPerm < oldMask[null, heapseg(a_2, b_24)];
@@ -3772,8 +3772,8 @@ procedure vconcat(a_2: Ref, b_24: Ref, c: Ref) returns ()
                 }
                 if (*) {
                   // Exhale precondition of function application
-                  ExhaleWellDef0Mask := oldMask;
                   ExhaleWellDef0Heap := oldHeap;
+                  ExhaleWellDef0Mask := oldMask;
                   perm := FullPerm;
                   assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(a, b) (BinomialHeap.vpr@154.107--154.143) [100317]"}
                     NoPerm < perm ==> NoPerm < oldMask[null, heapseg(a_2, b_24)];
@@ -3787,8 +3787,8 @@ procedure vconcat(a_2: Ref, b_24: Ref, c: Ref) returns ()
                 }
                 if (*) {
                   // Exhale precondition of function application
-                  ExhaleWellDef0Mask := oldMask;
                   ExhaleWellDef0Heap := oldHeap;
+                  ExhaleWellDef0Mask := oldMask;
                   perm := FullPerm;
                   assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(b, c) (BinomialHeap.vpr@154.146--154.164) [100320]"}
                     NoPerm < perm ==> NoPerm < oldMask[null, heapseg(b_24, c)];
@@ -3802,8 +3802,8 @@ procedure vconcat(a_2: Ref, b_24: Ref, c: Ref) returns ()
               if (2 <= segLength(oldHeap, a_2, b_24) && segDegree(oldHeap, a_2, b_24, segLength(oldHeap, a_2, b_24) - 1) == segDegree(oldHeap, a_2, b_24, segLength(oldHeap, a_2, b_24) - 2) ==> segDegree(oldHeap, a_2, b_24, segLength(oldHeap, a_2, b_24) - 1) < segDegree(oldHeap, b_24, c, 0)) {
                 if (*) {
                   // Exhale precondition of function application
-                  ExhaleWellDef0Mask := oldMask;
                   ExhaleWellDef0Heap := oldHeap;
+                  ExhaleWellDef0Mask := oldMask;
                   perm := FullPerm;
                   assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(b, c) (BinomialHeap.vpr@155.7--155.22) [100322]"}
                     NoPerm < perm ==> NoPerm < oldMask[null, heapseg(b_24, c)];
@@ -3814,8 +3814,8 @@ procedure vconcat(a_2: Ref, b_24: Ref, c: Ref) returns ()
                 if (2 <= segLength(oldHeap, b_24, c)) {
                   if (*) {
                     // Exhale precondition of function application
-                    ExhaleWellDef0Mask := oldMask;
                     ExhaleWellDef0Heap := oldHeap;
+                    ExhaleWellDef0Mask := oldMask;
                     perm := FullPerm;
                     assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(b, c) (BinomialHeap.vpr@155.26--155.44) [100323]"}
                       NoPerm < perm ==> NoPerm < oldMask[null, heapseg(b_24, c)];
@@ -3827,8 +3827,8 @@ procedure vconcat(a_2: Ref, b_24: Ref, c: Ref) returns ()
                   }
                   if (*) {
                     // Exhale precondition of function application
-                    ExhaleWellDef0Mask := oldMask;
                     ExhaleWellDef0Heap := oldHeap;
+                    ExhaleWellDef0Mask := oldMask;
                     perm := FullPerm;
                     assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(b, c) (BinomialHeap.vpr@155.48--155.66) [100325]"}
                       NoPerm < perm ==> NoPerm < oldMask[null, heapseg(b_24, c)];
@@ -3842,8 +3842,8 @@ procedure vconcat(a_2: Ref, b_24: Ref, c: Ref) returns ()
                 if (2 <= segLength(oldHeap, b_24, c) && segDegree(oldHeap, b_24, c, 0) == segDegree(oldHeap, b_24, c, 1)) {
                   if (*) {
                     // Exhale precondition of function application
-                    ExhaleWellDef0Mask := oldMask;
                     ExhaleWellDef0Heap := oldHeap;
+                    ExhaleWellDef0Mask := oldMask;
                     perm := FullPerm;
                     assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(a, b) (BinomialHeap.vpr@155.87--155.102) [100327]"}
                       NoPerm < perm ==> NoPerm < oldMask[null, heapseg(a_2, b_24)];
@@ -3853,8 +3853,8 @@ procedure vconcat(a_2: Ref, b_24: Ref, c: Ref) returns ()
                   }
                   if (*) {
                     // Exhale precondition of function application
-                    ExhaleWellDef0Mask := oldMask;
                     ExhaleWellDef0Heap := oldHeap;
+                    ExhaleWellDef0Mask := oldMask;
                     perm := FullPerm;
                     assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(a, b) (BinomialHeap.vpr@155.71--155.107) [100328]"}
                       NoPerm < perm ==> NoPerm < oldMask[null, heapseg(a_2, b_24)];
@@ -3868,8 +3868,8 @@ procedure vconcat(a_2: Ref, b_24: Ref, c: Ref) returns ()
                   }
                   if (*) {
                     // Exhale precondition of function application
-                    ExhaleWellDef0Mask := oldMask;
                     ExhaleWellDef0Heap := oldHeap;
+                    ExhaleWellDef0Mask := oldMask;
                     perm := FullPerm;
                     assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(b, c) (BinomialHeap.vpr@155.110--155.128) [100331]"}
                       NoPerm < perm ==> NoPerm < oldMask[null, heapseg(b_24, c)];
@@ -3891,8 +3891,8 @@ procedure vconcat(a_2: Ref, b_24: Ref, c: Ref) returns ()
       // -- Check definedness of presorted(a, c)
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := PostMask;
           ExhaleWellDef0Heap := PostHeap;
+          ExhaleWellDef0Mask := PostMask;
           perm := FullPerm;
           assert {:msg "  Precondition of function presorted might not hold. There might be insufficient permission to access heapseg(a, c) (BinomialHeap.vpr@156.5--156.20) [100333]"}
             NoPerm < perm ==> NoPerm < PostMask[null, heapseg(a_2, c)];
@@ -3910,8 +3910,8 @@ procedure vconcat(a_2: Ref, b_24: Ref, c: Ref) returns ()
     // -- Check definedness of old(validChildren(a, b)) && (old(validChildren(b, c)) && old(0 < segLength(a, b) && 0 < segLength(b, c) ==> segDegree(a, b, segLength(a, b) - 1) == segDegree(b, c, 0) + 1))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := oldMask;
         ExhaleWellDef0Heap := oldHeap;
+        ExhaleWellDef0Mask := oldMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function validChildren might not hold. There might be insufficient permission to access heapseg(a, b) (BinomialHeap.vpr@157.14--157.33) [100334]"}
           NoPerm < perm ==> NoPerm < oldMask[null, heapseg(a_2, b_24)];
@@ -3922,8 +3922,8 @@ procedure vconcat(a_2: Ref, b_24: Ref, c: Ref) returns ()
       if (validChildren(oldHeap, a_2, b_24)) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := oldMask;
           ExhaleWellDef0Heap := oldHeap;
+          ExhaleWellDef0Mask := oldMask;
           perm := FullPerm;
           assert {:msg "  Precondition of function validChildren might not hold. There might be insufficient permission to access heapseg(b, c) (BinomialHeap.vpr@157.42--157.61) [100335]"}
             NoPerm < perm ==> NoPerm < oldMask[null, heapseg(b_24, c)];
@@ -3934,8 +3934,8 @@ procedure vconcat(a_2: Ref, b_24: Ref, c: Ref) returns ()
         if (validChildren(oldHeap, b_24, c)) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := oldMask;
             ExhaleWellDef0Heap := oldHeap;
+            ExhaleWellDef0Mask := oldMask;
             perm := FullPerm;
             assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(a, b) (BinomialHeap.vpr@158.9--158.24) [100336]"}
               NoPerm < perm ==> NoPerm < oldMask[null, heapseg(a_2, b_24)];
@@ -3946,8 +3946,8 @@ procedure vconcat(a_2: Ref, b_24: Ref, c: Ref) returns ()
           if (0 < segLength(oldHeap, a_2, b_24)) {
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := oldMask;
               ExhaleWellDef0Heap := oldHeap;
+              ExhaleWellDef0Mask := oldMask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(b, c) (BinomialHeap.vpr@158.32--158.47) [100337]"}
                 NoPerm < perm ==> NoPerm < oldMask[null, heapseg(b_24, c)];
@@ -3959,8 +3959,8 @@ procedure vconcat(a_2: Ref, b_24: Ref, c: Ref) returns ()
           if (0 < segLength(oldHeap, a_2, b_24) && 0 < segLength(oldHeap, b_24, c)) {
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := oldMask;
               ExhaleWellDef0Heap := oldHeap;
+              ExhaleWellDef0Mask := oldMask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(a, b) (BinomialHeap.vpr@158.68--158.83) [100338]"}
                 NoPerm < perm ==> NoPerm < oldMask[null, heapseg(a_2, b_24)];
@@ -3970,8 +3970,8 @@ procedure vconcat(a_2: Ref, b_24: Ref, c: Ref) returns ()
             }
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := oldMask;
               ExhaleWellDef0Heap := oldHeap;
+              ExhaleWellDef0Mask := oldMask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(a, b) (BinomialHeap.vpr@158.52--158.88) [100339]"}
                 NoPerm < perm ==> NoPerm < oldMask[null, heapseg(a_2, b_24)];
@@ -3985,8 +3985,8 @@ procedure vconcat(a_2: Ref, b_24: Ref, c: Ref) returns ()
             }
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := oldMask;
               ExhaleWellDef0Heap := oldHeap;
+              ExhaleWellDef0Mask := oldMask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(b, c) (BinomialHeap.vpr@158.92--158.110) [100342]"}
                 NoPerm < perm ==> NoPerm < oldMask[null, heapseg(b_24, c)];
@@ -4005,8 +4005,8 @@ procedure vconcat(a_2: Ref, b_24: Ref, c: Ref) returns ()
       // -- Check definedness of validChildren(a, c)
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := PostMask;
           ExhaleWellDef0Heap := PostHeap;
+          ExhaleWellDef0Mask := PostMask;
           perm := FullPerm;
           assert {:msg "  Precondition of function validChildren might not hold. There might be insufficient permission to access heapseg(a, c) (BinomialHeap.vpr@160.1--160.20) [100344]"}
             NoPerm < perm ==> NoPerm < PostMask[null, heapseg(a_2, c)];
@@ -4025,8 +4025,8 @@ procedure vconcat(a_2: Ref, b_24: Ref, c: Ref) returns ()
     // -- Check definedness of segSize(a, c) == old(segSize(a, b)) + old(segSize(b, c))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
+        ExhaleWellDef0Mask := PostMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function segSize might not hold. There might be insufficient permission to access heapseg(a, c) (BinomialHeap.vpr@161.10--161.23) [100345]"}
           NoPerm < perm ==> NoPerm < PostMask[null, heapseg(a_2, c)];
@@ -4039,8 +4039,8 @@ procedure vconcat(a_2: Ref, b_24: Ref, c: Ref) returns ()
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := oldMask;
         ExhaleWellDef0Heap := oldHeap;
+        ExhaleWellDef0Mask := oldMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function segSize might not hold. There might be insufficient permission to access heapseg(a, b) (BinomialHeap.vpr@161.31--161.44) [100346]"}
           NoPerm < perm ==> NoPerm < oldMask[null, heapseg(a_2, b_24)];
@@ -4050,8 +4050,8 @@ procedure vconcat(a_2: Ref, b_24: Ref, c: Ref) returns ()
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := oldMask;
         ExhaleWellDef0Heap := oldHeap;
+        ExhaleWellDef0Mask := oldMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function segSize might not hold. There might be insufficient permission to access heapseg(b, c) (BinomialHeap.vpr@161.52--161.65) [100347]"}
           NoPerm < perm ==> NoPerm < oldMask[null, heapseg(b_24, c)];
@@ -4067,8 +4067,8 @@ procedure vconcat(a_2: Ref, b_24: Ref, c: Ref) returns ()
       // -- Check definedness of segParent(a, c) == old(segParent(a, b))
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := PostMask;
           ExhaleWellDef0Heap := PostHeap;
+          ExhaleWellDef0Mask := PostMask;
           perm := FullPerm;
           assert {:msg "  Precondition of function segParent might not hold. There might be insufficient permission to access heapseg(a, c) (BinomialHeap.vpr@162.21--162.36) [100348]"}
             NoPerm < perm ==> NoPerm < PostMask[null, heapseg(a_2, c)];
@@ -4083,8 +4083,8 @@ procedure vconcat(a_2: Ref, b_24: Ref, c: Ref) returns ()
         }
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := oldMask;
           ExhaleWellDef0Heap := oldHeap;
+          ExhaleWellDef0Mask := oldMask;
           perm := FullPerm;
           assert {:msg "  Precondition of function segParent might not hold. There might be insufficient permission to access heapseg(a, b) (BinomialHeap.vpr@162.44--162.59) [100350]"}
             NoPerm < perm ==> NoPerm < oldMask[null, heapseg(a_2, b_24)];
@@ -4103,8 +4103,8 @@ procedure vconcat(a_2: Ref, b_24: Ref, c: Ref) returns ()
       // -- Check definedness of segParent(a, c) == old(segParent(b, c))
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := PostMask;
           ExhaleWellDef0Heap := PostHeap;
+          ExhaleWellDef0Mask := PostMask;
           perm := FullPerm;
           assert {:msg "  Precondition of function segParent might not hold. There might be insufficient permission to access heapseg(a, c) (BinomialHeap.vpr@163.21--163.36) [100352]"}
             NoPerm < perm ==> NoPerm < PostMask[null, heapseg(a_2, c)];
@@ -4119,8 +4119,8 @@ procedure vconcat(a_2: Ref, b_24: Ref, c: Ref) returns ()
         }
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := oldMask;
           ExhaleWellDef0Heap := oldHeap;
+          ExhaleWellDef0Mask := oldMask;
           perm := FullPerm;
           assert {:msg "  Precondition of function segParent might not hold. There might be insufficient permission to access heapseg(b, c) (BinomialHeap.vpr@163.44--163.59) [100354]"}
             NoPerm < perm ==> NoPerm < oldMask[null, heapseg(b_24, c)];
@@ -4143,8 +4143,8 @@ procedure vconcat(a_2: Ref, b_24: Ref, c: Ref) returns ()
       // -- Translating statement: unfold acc(heapseg(a, b), write) -- BinomialHeap.vpr@166.3--166.23
         assume heapseg#trigger(Heap, heapseg(a_2, b_24));
         assume Heap[null, heapseg(a_2, b_24)] == FrameFragment((if a_2 != b_24 then CombineFrames(Heap[null, tree(a_2)], CombineFrames(FrameFragment(Heap[a_2, sibling]), CombineFrames(Heap[null, heapseg(Heap[a_2, sibling], b_24)], FrameFragment((if Heap[a_2, sibling] != b_24 then EmptyFrame else EmptyFrame))))) else EmptyFrame));
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Unfolding heapseg(a, b) might fail. There might be insufficient permission to access heapseg(a, b) (BinomialHeap.vpr@166.3--166.23) [100358]"}
@@ -4192,8 +4192,8 @@ procedure vconcat(a_2: Ref, b_24: Ref, c: Ref) returns ()
         arg_a := Heap[a_2, sibling];
         
         // -- Exhaling precondition
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  The precondition of method concat might not hold. There might be insufficient permission to access heapseg(a.sibling, b) (BinomialHeap.vpr@167.3--167.26) [100363]"}
@@ -4278,8 +4278,8 @@ procedure vconcat(a_2: Ref, b_24: Ref, c: Ref) returns ()
       // -- Translating statement: assert c != null ==>
   //   (unfolding acc(tree(a), write) in
   //     (unfolding acc(tree(c), 1 / 2) in a != c)) -- BinomialHeap.vpr@168.3--168.82
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         if (c != null) {
           
           // -- Check definedness of (unfolding acc(tree(a), write) in (unfolding acc(tree(c), 1 / 2) in a != c))
@@ -4287,8 +4287,8 @@ procedure vconcat(a_2: Ref, b_24: Ref, c: Ref) returns ()
             UnfoldingMask := ExhaleWellDef0Mask;
             assume tree#trigger(UnfoldingHeap, tree(a_2));
             assume UnfoldingHeap[null, tree(a_2)] == CombineFrames(FrameFragment(UnfoldingHeap[a_2, key]), CombineFrames(FrameFragment(UnfoldingHeap[a_2, degree]), CombineFrames(FrameFragment(UnfoldingHeap[a_2, child]), CombineFrames(FrameFragment(UnfoldingHeap[a_2, parent]), CombineFrames(UnfoldingHeap[null, heapseg(UnfoldingHeap[a_2, child], null)], CombineFrames(FrameFragment((if 0 < UnfoldingHeap[a_2, degree] then EmptyFrame else EmptyFrame)), FrameFragment((if UnfoldingHeap[a_2, child] != null then EmptyFrame else EmptyFrame))))))));
-            ExhaleWellDef1Mask := UnfoldingMask;
             ExhaleWellDef1Heap := UnfoldingHeap;
+            ExhaleWellDef1Mask := UnfoldingMask;
             perm := FullPerm;
             if (perm != NoPerm) {
               assert {:msg "  Assert might fail. There might be insufficient permission to access tree(a) (BinomialHeap.vpr@168.10--168.82) [100367]"}
@@ -4335,8 +4335,8 @@ procedure vconcat(a_2: Ref, b_24: Ref, c: Ref) returns ()
             Unfolding1Mask := UnfoldingMask;
             assume tree#trigger(Unfolding1Heap, tree(c));
             assume Unfolding1Heap[null, tree(c)] == CombineFrames(FrameFragment(Unfolding1Heap[c, key]), CombineFrames(FrameFragment(Unfolding1Heap[c, degree]), CombineFrames(FrameFragment(Unfolding1Heap[c, child]), CombineFrames(FrameFragment(Unfolding1Heap[c, parent]), CombineFrames(Unfolding1Heap[null, heapseg(Unfolding1Heap[c, child], null)], CombineFrames(FrameFragment((if 0 < Unfolding1Heap[c, degree] then EmptyFrame else EmptyFrame)), FrameFragment((if Unfolding1Heap[c, child] != null then EmptyFrame else EmptyFrame))))))));
-            ExhaleWellDef1Mask := Unfolding1Mask;
             ExhaleWellDef1Heap := Unfolding1Heap;
+            ExhaleWellDef1Mask := Unfolding1Mask;
             perm := 1 / 2;
             assert {:msg "  Assert might fail. Fraction 1 / 2 might be negative. (BinomialHeap.vpr@168.10--168.82) [100368]"}
               perm >= NoPerm;
@@ -4458,8 +4458,8 @@ procedure vconcat(a_2: Ref, b_24: Ref, c: Ref) returns ()
         assume state(Heap, Mask);
       
       // -- Translating statement: fold acc(heapseg(a, c), write) -- BinomialHeap.vpr@169.3--169.21
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         if (a_2 != c) {
           perm := FullPerm;
           if (perm != NoPerm) {
@@ -4522,8 +4522,8 @@ procedure vconcat(a_2: Ref, b_24: Ref, c: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of concat might not hold. There might be insufficient permission to access heapseg(a, c) (BinomialHeap.vpr@143.10--143.23) [100385]"}
@@ -4604,11 +4604,11 @@ procedure findMinNode(arg: Ref) returns (res: Ref)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var x: Ref;
@@ -4643,8 +4643,8 @@ procedure findMinNode(arg: Ref) returns (res: Ref)
     // -- Check definedness of sorted(arg, null)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function sorted might not hold. There might be insufficient permission to access heapseg(arg, null) (BinomialHeap.vpr@177.48--177.65) [100399]"}
           NoPerm < perm ==> NoPerm < Mask[null, heapseg(arg, null)];
@@ -4661,8 +4661,8 @@ procedure findMinNode(arg: Ref) returns (res: Ref)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -4678,8 +4678,8 @@ procedure findMinNode(arg: Ref) returns (res: Ref)
     // -- Check definedness of sorted(arg, res)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
+        ExhaleWellDef0Mask := PostMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function sorted might not hold. There might be insufficient permission to access heapseg(arg, res) (BinomialHeap.vpr@179.31--179.47) [100400]"}
           NoPerm < perm ==> NoPerm < PostMask[null, heapseg(arg, res)];
@@ -4700,8 +4700,8 @@ procedure findMinNode(arg: Ref) returns (res: Ref)
     // -- Check definedness of sorted(res, null)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
+        ExhaleWellDef0Mask := PostMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function sorted might not hold. There might be insufficient permission to access heapseg(res, null) (BinomialHeap.vpr@180.32--180.49) [100401]"}
           NoPerm < perm ==> NoPerm < PostMask[null, heapseg(res, null)];
@@ -4720,8 +4720,8 @@ procedure findMinNode(arg: Ref) returns (res: Ref)
       // -- Check definedness of segDegree(arg, res, segLength(arg, res) - 1) < segDegree(res, null, 0)
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := PostMask;
           ExhaleWellDef0Heap := PostHeap;
+          ExhaleWellDef0Mask := PostMask;
           perm := FullPerm;
           assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(arg, res) (BinomialHeap.vpr@181.45--181.64) [100402]"}
             NoPerm < perm ==> NoPerm < PostMask[null, heapseg(arg, res)];
@@ -4734,8 +4734,8 @@ procedure findMinNode(arg: Ref) returns (res: Ref)
         }
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := PostMask;
           ExhaleWellDef0Heap := PostHeap;
+          ExhaleWellDef0Mask := PostMask;
           perm := FullPerm;
           assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(arg, res) (BinomialHeap.vpr@181.25--181.69) [100403]"}
             NoPerm < perm ==> NoPerm < PostMask[null, heapseg(arg, res)];
@@ -4752,8 +4752,8 @@ procedure findMinNode(arg: Ref) returns (res: Ref)
         }
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := PostMask;
           ExhaleWellDef0Heap := PostHeap;
+          ExhaleWellDef0Mask := PostMask;
           perm := FullPerm;
           assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(res, null) (BinomialHeap.vpr@181.72--181.95) [100406]"}
             NoPerm < perm ==> NoPerm < PostMask[null, heapseg(res, null)];
@@ -4774,8 +4774,8 @@ procedure findMinNode(arg: Ref) returns (res: Ref)
     // -- Check definedness of segSize(arg, res) + segSize(res, null) == old(segSize(arg, null))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
+        ExhaleWellDef0Mask := PostMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function segSize might not hold. There might be insufficient permission to access heapseg(arg, res) (BinomialHeap.vpr@182.10--182.27) [100408]"}
           NoPerm < perm ==> NoPerm < PostMask[null, heapseg(arg, res)];
@@ -4788,8 +4788,8 @@ procedure findMinNode(arg: Ref) returns (res: Ref)
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
+        ExhaleWellDef0Mask := PostMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function segSize might not hold. There might be insufficient permission to access heapseg(res, null) (BinomialHeap.vpr@182.30--182.48) [100409]"}
           NoPerm < perm ==> NoPerm < PostMask[null, heapseg(res, null)];
@@ -4802,8 +4802,8 @@ procedure findMinNode(arg: Ref) returns (res: Ref)
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := oldMask;
         ExhaleWellDef0Heap := oldHeap;
+        ExhaleWellDef0Mask := oldMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function segSize might not hold. There might be insufficient permission to access heapseg(arg, null) (BinomialHeap.vpr@182.56--182.74) [100410]"}
           NoPerm < perm ==> NoPerm < oldMask[null, heapseg(arg, null)];
@@ -4819,8 +4819,8 @@ procedure findMinNode(arg: Ref) returns (res: Ref)
       // -- Check definedness of segParent(arg, res) == old(segParent(arg, null))
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := PostMask;
           ExhaleWellDef0Heap := PostHeap;
+          ExhaleWellDef0Mask := PostMask;
           perm := FullPerm;
           assert {:msg "  Precondition of function segParent might not hold. There might be insufficient permission to access heapseg(arg, res) (BinomialHeap.vpr@183.25--183.44) [100411]"}
             NoPerm < perm ==> NoPerm < PostMask[null, heapseg(arg, res)];
@@ -4835,8 +4835,8 @@ procedure findMinNode(arg: Ref) returns (res: Ref)
         }
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := oldMask;
           ExhaleWellDef0Heap := oldHeap;
+          ExhaleWellDef0Mask := oldMask;
           perm := FullPerm;
           assert {:msg "  Precondition of function segParent might not hold. There might be insufficient permission to access heapseg(arg, null) (BinomialHeap.vpr@183.52--183.72) [100413]"}
             NoPerm < perm ==> NoPerm < oldMask[null, heapseg(arg, null)];
@@ -4854,8 +4854,8 @@ procedure findMinNode(arg: Ref) returns (res: Ref)
     // -- Check definedness of segParent(res, null) == old(segParent(arg, null))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
+        ExhaleWellDef0Mask := PostMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function segParent might not hold. There might be insufficient permission to access heapseg(res, null) (BinomialHeap.vpr@184.10--184.30) [100415]"}
           NoPerm < perm ==> NoPerm < PostMask[null, heapseg(res, null)];
@@ -4870,8 +4870,8 @@ procedure findMinNode(arg: Ref) returns (res: Ref)
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := oldMask;
         ExhaleWellDef0Heap := oldHeap;
+        ExhaleWellDef0Mask := oldMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function segParent might not hold. There might be insufficient permission to access heapseg(arg, null) (BinomialHeap.vpr@184.38--184.58) [100417]"}
           NoPerm < perm ==> NoPerm < oldMask[null, heapseg(arg, null)];
@@ -4905,8 +4905,8 @@ procedure findMinNode(arg: Ref) returns (res: Ref)
       UnfoldingMask := Mask;
       assume heapseg#trigger(UnfoldingHeap, heapseg(x, null));
       assume UnfoldingHeap[null, heapseg(x, null)] == FrameFragment((if x != null then CombineFrames(UnfoldingHeap[null, tree(x)], CombineFrames(FrameFragment(UnfoldingHeap[x, sibling]), CombineFrames(UnfoldingHeap[null, heapseg(UnfoldingHeap[x, sibling], null)], FrameFragment((if UnfoldingHeap[x, sibling] != null then EmptyFrame else EmptyFrame))))) else EmptyFrame));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Assignment might fail. There might be insufficient permission to access heapseg(x, null) (BinomialHeap.vpr@190.2--190.49) [100419]"}
@@ -4938,8 +4938,8 @@ procedure findMinNode(arg: Ref) returns (res: Ref)
       assume state(UnfoldingHeap, UnfoldingMask);
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := UnfoldingMask;
         ExhaleWellDef0Heap := UnfoldingHeap;
+        ExhaleWellDef0Mask := UnfoldingMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function treeKey might not hold. There might be insufficient permission to access tree(x) (BinomialHeap.vpr@190.39--190.49) [100420]"}
           NoPerm < perm ==> NoPerm < UnfoldingMask[null, tree(x)];
@@ -4972,8 +4972,8 @@ procedure findMinNode(arg: Ref) returns (res: Ref)
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(heapseg(arg, res), write) -- BinomialHeap.vpr@191.2--191.24
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     if (arg != res) {
       perm := FullPerm;
       if (perm != NoPerm) {
@@ -5034,8 +5034,8 @@ procedure findMinNode(arg: Ref) returns (res: Ref)
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(heapseg(res, x), write) -- BinomialHeap.vpr@192.2--192.22
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     if (res != x) {
       perm := FullPerm;
       if (perm != NoPerm) {
@@ -5100,8 +5100,8 @@ procedure findMinNode(arg: Ref) returns (res: Ref)
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Loop invariant acc(heapseg(arg, res), write) && sorted(arg, res) might not hold on entry. There might be insufficient permission to access heapseg(arg, res) (BinomialHeap.vpr@195.13--195.50) [100439]"}
@@ -5186,8 +5186,8 @@ procedure findMinNode(arg: Ref) returns (res: Ref)
         // -- Check definedness of sorted(arg, res)
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
             assert {:msg "  Precondition of function sorted might not hold. There might be insufficient permission to access heapseg(arg, res) (BinomialHeap.vpr@195.34--195.50) [100456]"}
               NoPerm < perm ==> NoPerm < Mask[null, heapseg(arg, res)];
@@ -5208,8 +5208,8 @@ procedure findMinNode(arg: Ref) returns (res: Ref)
         // -- Check definedness of sorted(res, x)
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
             assert {:msg "  Precondition of function sorted might not hold. There might be insufficient permission to access heapseg(res, x) (BinomialHeap.vpr@196.32--196.46) [100457]"}
               NoPerm < perm ==> NoPerm < Mask[null, heapseg(res, x)];
@@ -5230,8 +5230,8 @@ procedure findMinNode(arg: Ref) returns (res: Ref)
         // -- Check definedness of sorted(x, null)
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
             assert {:msg "  Precondition of function sorted might not hold. There might be insufficient permission to access heapseg(x, null) (BinomialHeap.vpr@197.33--197.48) [100458]"}
               NoPerm < perm ==> NoPerm < Mask[null, heapseg(x, null)];
@@ -5250,8 +5250,8 @@ procedure findMinNode(arg: Ref) returns (res: Ref)
           // -- Check definedness of segDegree(arg, res, segLength(arg, res) - 1) < segDegree(res, x, 0)
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(arg, res) (BinomialHeap.vpr@198.60--198.79) [100459]"}
                 NoPerm < perm ==> NoPerm < Mask[null, heapseg(arg, res)];
@@ -5264,8 +5264,8 @@ procedure findMinNode(arg: Ref) returns (res: Ref)
             }
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(arg, res) (BinomialHeap.vpr@198.40--198.84) [100460]"}
                 NoPerm < perm ==> NoPerm < Mask[null, heapseg(arg, res)];
@@ -5282,8 +5282,8 @@ procedure findMinNode(arg: Ref) returns (res: Ref)
             }
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(res, x) (BinomialHeap.vpr@198.87--198.107) [100463]"}
                 NoPerm < perm ==> NoPerm < Mask[null, heapseg(res, x)];
@@ -5305,8 +5305,8 @@ procedure findMinNode(arg: Ref) returns (res: Ref)
           // -- Check definedness of segDegree(res, x, segLength(res, x) - 1) < segDegree(x, null, 0)
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(res, x) (BinomialHeap.vpr@199.57--199.74) [100465]"}
                 NoPerm < perm ==> NoPerm < Mask[null, heapseg(res, x)];
@@ -5319,8 +5319,8 @@ procedure findMinNode(arg: Ref) returns (res: Ref)
             }
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(res, x) (BinomialHeap.vpr@199.39--199.79) [100466]"}
                 NoPerm < perm ==> NoPerm < Mask[null, heapseg(res, x)];
@@ -5337,8 +5337,8 @@ procedure findMinNode(arg: Ref) returns (res: Ref)
             }
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(x, null) (BinomialHeap.vpr@199.82--199.103) [100469]"}
                 NoPerm < perm ==> NoPerm < Mask[null, heapseg(x, null)];
@@ -5360,8 +5360,8 @@ procedure findMinNode(arg: Ref) returns (res: Ref)
           // -- Check definedness of segDegree(arg, res, segLength(arg, res) - 1) < segDegree(x, null, 0)
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(arg, res) (BinomialHeap.vpr@200.73--200.92) [100471]"}
                 NoPerm < perm ==> NoPerm < Mask[null, heapseg(arg, res)];
@@ -5374,8 +5374,8 @@ procedure findMinNode(arg: Ref) returns (res: Ref)
             }
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(arg, res) (BinomialHeap.vpr@200.53--200.97) [100472]"}
                 NoPerm < perm ==> NoPerm < Mask[null, heapseg(arg, res)];
@@ -5392,8 +5392,8 @@ procedure findMinNode(arg: Ref) returns (res: Ref)
             }
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(x, null) (BinomialHeap.vpr@200.100--200.121) [100475]"}
                 NoPerm < perm ==> NoPerm < Mask[null, heapseg(x, null)];
@@ -5416,8 +5416,8 @@ procedure findMinNode(arg: Ref) returns (res: Ref)
         // -- Check definedness of segSize(arg, res) + segSize(res, x) + segSize(x, null) == old(segSize(arg, null))
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
             assert {:msg "  Precondition of function segSize might not hold. There might be insufficient permission to access heapseg(arg, res) (BinomialHeap.vpr@202.13--202.30) [100477]"}
               NoPerm < perm ==> NoPerm < Mask[null, heapseg(arg, res)];
@@ -5430,8 +5430,8 @@ procedure findMinNode(arg: Ref) returns (res: Ref)
           }
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
             assert {:msg "  Precondition of function segSize might not hold. There might be insufficient permission to access heapseg(res, x) (BinomialHeap.vpr@202.33--202.48) [100478]"}
               NoPerm < perm ==> NoPerm < Mask[null, heapseg(res, x)];
@@ -5444,8 +5444,8 @@ procedure findMinNode(arg: Ref) returns (res: Ref)
           }
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
             assert {:msg "  Precondition of function segSize might not hold. There might be insufficient permission to access heapseg(x, null) (BinomialHeap.vpr@202.51--202.67) [100479]"}
               NoPerm < perm ==> NoPerm < Mask[null, heapseg(x, null)];
@@ -5458,8 +5458,8 @@ procedure findMinNode(arg: Ref) returns (res: Ref)
           }
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := oldMask;
             ExhaleWellDef0Heap := oldHeap;
+            ExhaleWellDef0Mask := oldMask;
             perm := FullPerm;
             assert {:msg "  Precondition of function segSize might not hold. There might be insufficient permission to access heapseg(arg, null) (BinomialHeap.vpr@202.75--202.93) [100480]"}
               NoPerm < perm ==> NoPerm < oldMask[null, heapseg(arg, null)];
@@ -5475,8 +5475,8 @@ procedure findMinNode(arg: Ref) returns (res: Ref)
           // -- Check definedness of segParent(arg, res) == segParent(res, x)
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segParent might not hold. There might be insufficient permission to access heapseg(arg, res) (BinomialHeap.vpr@203.40--203.59) [100481]"}
                 NoPerm < perm ==> NoPerm < Mask[null, heapseg(arg, res)];
@@ -5491,8 +5491,8 @@ procedure findMinNode(arg: Ref) returns (res: Ref)
             }
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segParent might not hold. There might be insufficient permission to access heapseg(res, x) (BinomialHeap.vpr@203.63--203.80) [100483]"}
                 NoPerm < perm ==> NoPerm < Mask[null, heapseg(res, x)];
@@ -5514,8 +5514,8 @@ procedure findMinNode(arg: Ref) returns (res: Ref)
           // -- Check definedness of segParent(res, x) == segParent(x, null)
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segParent might not hold. There might be insufficient permission to access heapseg(res, x) (BinomialHeap.vpr@204.39--204.56) [100485]"}
                 NoPerm < perm ==> NoPerm < Mask[null, heapseg(res, x)];
@@ -5530,8 +5530,8 @@ procedure findMinNode(arg: Ref) returns (res: Ref)
             }
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segParent might not hold. There might be insufficient permission to access heapseg(x, null) (BinomialHeap.vpr@204.60--204.78) [100487]"}
                 NoPerm < perm ==> NoPerm < Mask[null, heapseg(x, null)];
@@ -5553,8 +5553,8 @@ procedure findMinNode(arg: Ref) returns (res: Ref)
           // -- Check definedness of segParent(arg, res) == segParent(x, null)
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segParent might not hold. There might be insufficient permission to access heapseg(arg, res) (BinomialHeap.vpr@205.41--205.60) [100489]"}
                 NoPerm < perm ==> NoPerm < Mask[null, heapseg(arg, res)];
@@ -5569,8 +5569,8 @@ procedure findMinNode(arg: Ref) returns (res: Ref)
             }
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segParent might not hold. There might be insufficient permission to access heapseg(x, null) (BinomialHeap.vpr@205.64--205.82) [100491]"}
                 NoPerm < perm ==> NoPerm < Mask[null, heapseg(x, null)];
@@ -5592,8 +5592,8 @@ procedure findMinNode(arg: Ref) returns (res: Ref)
           // -- Check definedness of segParent(arg, res) == old(segParent(arg, null))
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segParent might not hold. There might be insufficient permission to access heapseg(arg, res) (BinomialHeap.vpr@206.28--206.47) [100493]"}
                 NoPerm < perm ==> NoPerm < Mask[null, heapseg(arg, res)];
@@ -5608,8 +5608,8 @@ procedure findMinNode(arg: Ref) returns (res: Ref)
             }
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := oldMask;
               ExhaleWellDef0Heap := oldHeap;
+              ExhaleWellDef0Mask := oldMask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segParent might not hold. There might be insufficient permission to access heapseg(arg, null) (BinomialHeap.vpr@206.55--206.75) [100495]"}
                 NoPerm < perm ==> NoPerm < oldMask[null, heapseg(arg, null)];
@@ -5628,8 +5628,8 @@ procedure findMinNode(arg: Ref) returns (res: Ref)
           // -- Check definedness of segParent(res, x) == old(segParent(arg, null))
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segParent might not hold. There might be insufficient permission to access heapseg(res, x) (BinomialHeap.vpr@207.26--207.43) [100497]"}
                 NoPerm < perm ==> NoPerm < Mask[null, heapseg(res, x)];
@@ -5644,8 +5644,8 @@ procedure findMinNode(arg: Ref) returns (res: Ref)
             }
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := oldMask;
               ExhaleWellDef0Heap := oldHeap;
+              ExhaleWellDef0Mask := oldMask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segParent might not hold. There might be insufficient permission to access heapseg(arg, null) (BinomialHeap.vpr@207.51--207.71) [100499]"}
                 NoPerm < perm ==> NoPerm < oldMask[null, heapseg(arg, null)];
@@ -5664,8 +5664,8 @@ procedure findMinNode(arg: Ref) returns (res: Ref)
           // -- Check definedness of segParent(x, null) == old(segParent(arg, null))
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segParent might not hold. There might be insufficient permission to access heapseg(x, null) (BinomialHeap.vpr@208.27--208.45) [100501]"}
                 NoPerm < perm ==> NoPerm < Mask[null, heapseg(x, null)];
@@ -5680,8 +5680,8 @@ procedure findMinNode(arg: Ref) returns (res: Ref)
             }
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := oldMask;
               ExhaleWellDef0Heap := oldHeap;
+              ExhaleWellDef0Mask := oldMask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segParent might not hold. There might be insufficient permission to access heapseg(arg, null) (BinomialHeap.vpr@208.53--208.73) [100503]"}
                 NoPerm < perm ==> NoPerm < oldMask[null, heapseg(arg, null)];
@@ -5772,8 +5772,8 @@ procedure findMinNode(arg: Ref) returns (res: Ref)
           // -- Translating statement: unfold acc(heapseg(x, null), write) -- BinomialHeap.vpr@210.3--210.26
             assume heapseg#trigger(Heap, heapseg(x, null));
             assume Heap[null, heapseg(x, null)] == FrameFragment((if x != null then CombineFrames(Heap[null, tree(x)], CombineFrames(FrameFragment(Heap[x, sibling]), CombineFrames(Heap[null, heapseg(Heap[x, sibling], null)], FrameFragment((if Heap[x, sibling] != null then EmptyFrame else EmptyFrame))))) else EmptyFrame));
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
             if (perm != NoPerm) {
               assert {:msg "  Unfolding heapseg(x, null) might fail. There might be insufficient permission to access heapseg(x, null) (BinomialHeap.vpr@210.3--210.26) [100505]"}
@@ -5816,8 +5816,8 @@ procedure findMinNode(arg: Ref) returns (res: Ref)
             // -- Check definedness of treeKey(x) < min
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 perm := FullPerm;
                 assert {:msg "  Precondition of function treeKey might not hold. There might be insufficient permission to access tree(x) (BinomialHeap.vpr@211.6--211.16) [100506]"}
                   NoPerm < perm ==> NoPerm < Mask[null, tree(x)];
@@ -5835,8 +5835,8 @@ procedure findMinNode(arg: Ref) returns (res: Ref)
                 PreCallMask := Mask;
                 
                 // -- Exhaling precondition
-                  ExhaleWellDef0Mask := Mask;
                   ExhaleWellDef0Heap := Heap;
+                  ExhaleWellDef0Mask := Mask;
                   perm := FullPerm;
                   if (perm != NoPerm) {
                     assert {:msg "  The precondition of method concat might not hold. There might be insufficient permission to access heapseg(arg, res) (BinomialHeap.vpr@212.4--212.23) [100507]"}
@@ -5927,8 +5927,8 @@ procedure findMinNode(arg: Ref) returns (res: Ref)
                 // -- Check definedness of treeKey(x)
                   if (*) {
                     // Exhale precondition of function application
-                    ExhaleWellDef0Mask := Mask;
                     ExhaleWellDef0Heap := Heap;
+                    ExhaleWellDef0Mask := Mask;
                     perm := FullPerm;
                     assert {:msg "  Precondition of function treeKey might not hold. There might be insufficient permission to access tree(x) (BinomialHeap.vpr@214.11--214.21) [100511]"}
                       NoPerm < perm ==> NoPerm < Mask[null, tree(x)];
@@ -5943,8 +5943,8 @@ procedure findMinNode(arg: Ref) returns (res: Ref)
                 assume state(Heap, Mask);
               
               // -- Translating statement: fold acc(heapseg(res, res), write) -- BinomialHeap.vpr@215.4--215.26
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 if (res != res) {
                   perm := FullPerm;
                   if (perm != NoPerm) {
@@ -6019,8 +6019,8 @@ procedure findMinNode(arg: Ref) returns (res: Ref)
             assume state(Heap, Mask);
           
           // -- Translating statement: fold acc(heapseg(x, x), write) -- BinomialHeap.vpr@220.3--220.21
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             if (x != x) {
               perm := FullPerm;
               if (perm != NoPerm) {
@@ -6081,8 +6081,8 @@ procedure findMinNode(arg: Ref) returns (res: Ref)
             assume state(Heap, Mask);
           
           // -- Translating statement: fold acc(heapseg(tmp, x), write) -- BinomialHeap.vpr@221.3--221.23
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             if (tmp != x) {
               perm := FullPerm;
               if (perm != NoPerm) {
@@ -6145,8 +6145,8 @@ procedure findMinNode(arg: Ref) returns (res: Ref)
           // -- Translating statement: unfold acc(heapseg(x, null), write) -- BinomialHeap.vpr@222.3--222.26
             assume heapseg#trigger(Heap, heapseg(x, null));
             assume Heap[null, heapseg(x, null)] == FrameFragment((if x != null then CombineFrames(Heap[null, tree(x)], CombineFrames(FrameFragment(Heap[x, sibling]), CombineFrames(Heap[null, heapseg(Heap[x, sibling], null)], FrameFragment((if Heap[x, sibling] != null then EmptyFrame else EmptyFrame))))) else EmptyFrame));
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
             if (perm != NoPerm) {
               assert {:msg "  Unfolding heapseg(x, null) might fail. There might be insufficient permission to access heapseg(x, null) (BinomialHeap.vpr@222.3--222.26) [100525]"}
@@ -6189,8 +6189,8 @@ procedure findMinNode(arg: Ref) returns (res: Ref)
             PreCallMask := Mask;
             
             // -- Exhaling precondition
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               if (perm != NoPerm) {
                 assert {:msg "  The precondition of method concat might not hold. There might be insufficient permission to access heapseg(res, tmp) (BinomialHeap.vpr@224.3--224.22) [100526]"}
@@ -6273,8 +6273,8 @@ procedure findMinNode(arg: Ref) returns (res: Ref)
             assume state(Heap, Mask);
           
           // -- Translating statement: fold acc(heapseg(x, null), write) -- BinomialHeap.vpr@225.3--225.24
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             if (x != null) {
               perm := FullPerm;
               if (perm != NoPerm) {
@@ -6334,8 +6334,8 @@ procedure findMinNode(arg: Ref) returns (res: Ref)
             assume state(Heap, Mask);
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Loop invariant acc(heapseg(arg, res), write) && sorted(arg, res) might not be preserved. There might be insufficient permission to access heapseg(arg, res) (BinomialHeap.vpr@195.13--195.50) [100534]"}
@@ -6469,8 +6469,8 @@ procedure findMinNode(arg: Ref) returns (res: Ref)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of findMinNode might not hold. Assertion res != null might not hold. (BinomialHeap.vpr@178.10--178.21) [100551]"}
       res != null;
     perm := FullPerm;
@@ -6515,11 +6515,11 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var temp1: Ref;
@@ -6530,8 +6530,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
   var loopMask: MaskType;
   var tmp: Ref;
   var newVersion: FrameType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
   var PreCallHeap: HeapType;
@@ -6576,8 +6576,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
         HasDirectPerm(Mask, this, Nodes);
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function sorted might not hold. There might be insufficient permission to access heapseg(this.Nodes, null) (BinomialHeap.vpr@248.30--248.54) [100562]"}
           NoPerm < perm ==> NoPerm < Mask[null, heapseg(Heap[this, Nodes], null)];
@@ -6604,8 +6604,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
     // -- Check definedness of sorted(binHeap, null)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function sorted might not hold. There might be insufficient permission to access heapseg(binHeap, null) (BinomialHeap.vpr@250.37--250.58) [100564]"}
           NoPerm < perm ==> NoPerm < Mask[null, heapseg(binHeap, null)];
@@ -6626,8 +6626,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
           HasDirectPerm(Mask, this, Nodes);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           perm := FullPerm;
           assert {:msg "  Precondition of function segParent might not hold. There might be insufficient permission to access heapseg(this.Nodes, null) (BinomialHeap.vpr@251.31--251.58) [100566]"}
             NoPerm < perm ==> NoPerm < Mask[null, heapseg(Heap[this, Nodes], null)];
@@ -6642,8 +6642,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
         }
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           perm := FullPerm;
           assert {:msg "  Precondition of function segParent might not hold. There might be insufficient permission to access heapseg(binHeap, null) (BinomialHeap.vpr@251.62--251.86) [100568]"}
             NoPerm < perm ==> NoPerm < Mask[null, heapseg(binHeap, null)];
@@ -6663,8 +6663,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -6693,8 +6693,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
         HasDirectPerm(PostMask, this, Nodes);
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
+        ExhaleWellDef0Mask := PostMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function presorted might not hold. There might be insufficient permission to access heapseg(this.Nodes, null) (BinomialHeap.vpr@252.80--252.107) [100573]"}
           NoPerm < perm ==> NoPerm < PostMask[null, heapseg(PostHeap[this, Nodes], null)];
@@ -6714,8 +6714,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
         HasDirectPerm(PostMask, this, Nodes);
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
+        ExhaleWellDef0Mask := PostMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function segSize might not hold. There might be insufficient permission to access heapseg(this.Nodes, null) (BinomialHeap.vpr@253.10--253.35) [100575]"}
           NoPerm < perm ==> NoPerm < PostMask[null, heapseg(PostHeap[this, Nodes], null)];
@@ -6730,8 +6730,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
         HasDirectPerm(oldMask, this, Nodes);
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := oldMask;
         ExhaleWellDef0Heap := oldHeap;
+        ExhaleWellDef0Mask := oldMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function segSize might not hold. There might be insufficient permission to access heapseg(this.Nodes, null) (BinomialHeap.vpr@253.43--253.68) [100577]"}
           NoPerm < perm ==> NoPerm < oldMask[null, heapseg(oldHeap[this, Nodes], null)];
@@ -6741,8 +6741,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := oldMask;
         ExhaleWellDef0Heap := oldHeap;
+        ExhaleWellDef0Mask := oldMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function segSize might not hold. There might be insufficient permission to access heapseg(binHeap, null) (BinomialHeap.vpr@253.76--253.98) [100578]"}
           NoPerm < perm ==> NoPerm < oldMask[null, heapseg(binHeap, null)];
@@ -6759,8 +6759,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
         HasDirectPerm(PostMask, this, Nodes);
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
+        ExhaleWellDef0Mask := PostMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function segParent might not hold. There might be insufficient permission to access heapseg(this.Nodes, null) (BinomialHeap.vpr@254.10--254.37) [100580]"}
           NoPerm < perm ==> NoPerm < PostMask[null, heapseg(PostHeap[this, Nodes], null)];
@@ -6777,8 +6777,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
         HasDirectPerm(oldMask, this, Nodes);
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := oldMask;
         ExhaleWellDef0Heap := oldHeap;
+        ExhaleWellDef0Mask := oldMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function segParent might not hold. There might be insufficient permission to access heapseg(this.Nodes, null) (BinomialHeap.vpr@254.45--254.72) [100583]"}
           NoPerm < perm ==> NoPerm < oldMask[null, heapseg(oldHeap[this, Nodes], null)];
@@ -6815,8 +6815,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
     // -- Check definedness of acc(heapseg(this.Nodes, temp1), write)
       assert {:msg "  Folding heapseg(this.Nodes, temp1) might fail. There might be insufficient permission to access this.Nodes (BinomialHeap.vpr@261.2--261.33) [100586]"}
         HasDirectPerm(Mask, this, Nodes);
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     if (Heap[this, Nodes] != temp1) {
       perm := FullPerm;
       if (perm != NoPerm) {
@@ -6881,8 +6881,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Loop invariant acc(heapseg(temp1, null), write) && sorted(temp1, null) might not hold on entry. There might be insufficient permission to access heapseg(temp1, null) (BinomialHeap.vpr@263.13--263.56) [100596]"}
@@ -6985,8 +6985,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
         // -- Check definedness of sorted(temp1, null)
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
             assert {:msg "  Precondition of function sorted might not hold. There might be insufficient permission to access heapseg(temp1, null) (BinomialHeap.vpr@263.37--263.56) [100617]"}
               NoPerm < perm ==> NoPerm < Mask[null, heapseg(temp1, null)];
@@ -7007,8 +7007,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
         // -- Check definedness of sorted(temp2, null)
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
             assert {:msg "  Precondition of function sorted might not hold. There might be insufficient permission to access heapseg(temp2, null) (BinomialHeap.vpr@264.37--264.56) [100618]"}
               NoPerm < perm ==> NoPerm < Mask[null, heapseg(temp2, null)];
@@ -7045,8 +7045,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
             HasDirectPerm(Mask, this, Nodes);
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
             assert {:msg "  Precondition of function presorted might not hold. There might be insufficient permission to access heapseg(this.Nodes, temp1) (BinomialHeap.vpr@266.43--266.71) [100622]"}
               NoPerm < perm ==> NoPerm < Mask[null, heapseg(Heap[this, Nodes], temp1)];
@@ -7065,8 +7065,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
             HasDirectPerm(Mask, this, Nodes);
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
             assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(this.Nodes, temp1) (BinomialHeap.vpr@267.17--267.45) [100624]"}
               NoPerm < perm ==> NoPerm < Mask[null, heapseg(Heap[this, Nodes], temp1)];
@@ -7080,8 +7080,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
           if (0 < segLength(Heap, Heap[this, Nodes], temp1)) {
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(temp1, null) (BinomialHeap.vpr@267.53--267.75) [100625]"}
                 NoPerm < perm ==> NoPerm < Mask[null, heapseg(temp1, null)];
@@ -7103,8 +7103,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
               HasDirectPerm(Mask, this, Nodes);
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(this.Nodes, temp1) (BinomialHeap.vpr@268.31--268.59) [100628]"}
                 NoPerm < perm ==> NoPerm < Mask[null, heapseg(Heap[this, Nodes], temp1)];
@@ -7117,8 +7117,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
             }
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(this.Nodes, temp1) (BinomialHeap.vpr@268.2--268.64) [100629]"}
                 NoPerm < perm ==> NoPerm < Mask[null, heapseg(Heap[this, Nodes], temp1)];
@@ -7135,8 +7135,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
             }
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(temp1, null) (BinomialHeap.vpr@268.68--268.93) [100632]"}
                 NoPerm < perm ==> NoPerm < Mask[null, heapseg(temp1, null)];
@@ -7156,8 +7156,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
               HasDirectPerm(Mask, this, Nodes);
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(this.Nodes, temp1) (BinomialHeap.vpr@269.8--269.36) [100635]"}
                 NoPerm < perm ==> NoPerm < Mask[null, heapseg(Heap[this, Nodes], temp1)];
@@ -7175,8 +7175,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                 HasDirectPerm(Mask, this, Nodes);
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 perm := FullPerm;
                 assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(this.Nodes, temp1) (BinomialHeap.vpr@270.31--270.59) [100638]"}
                   NoPerm < perm ==> NoPerm < Mask[null, heapseg(Heap[this, Nodes], temp1)];
@@ -7189,8 +7189,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
               }
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 perm := FullPerm;
                 assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(this.Nodes, temp1) (BinomialHeap.vpr@270.2--270.64) [100639]"}
                   NoPerm < perm ==> NoPerm < Mask[null, heapseg(Heap[this, Nodes], temp1)];
@@ -7211,8 +7211,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                 HasDirectPerm(Mask, this, Nodes);
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 perm := FullPerm;
                 assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(this.Nodes, temp1) (BinomialHeap.vpr@270.97--270.125) [100644]"}
                   NoPerm < perm ==> NoPerm < Mask[null, heapseg(Heap[this, Nodes], temp1)];
@@ -7225,8 +7225,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
               }
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 perm := FullPerm;
                 assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(this.Nodes, temp1) (BinomialHeap.vpr@270.68--270.130) [100645]"}
                   NoPerm < perm ==> NoPerm < Mask[null, heapseg(Heap[this, Nodes], temp1)];
@@ -7252,8 +7252,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                 HasDirectPerm(Mask, this, Nodes);
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 perm := FullPerm;
                 assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(this.Nodes, temp1) (BinomialHeap.vpr@271.31--271.59) [100650]"}
                   NoPerm < perm ==> NoPerm < Mask[null, heapseg(Heap[this, Nodes], temp1)];
@@ -7266,8 +7266,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
               }
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 perm := FullPerm;
                 assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(this.Nodes, temp1) (BinomialHeap.vpr@271.2--271.64) [100651]"}
                   NoPerm < perm ==> NoPerm < Mask[null, heapseg(Heap[this, Nodes], temp1)];
@@ -7284,8 +7284,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
               }
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 perm := FullPerm;
                 assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(temp1, null) (BinomialHeap.vpr@271.67--271.92) [100654]"}
                   NoPerm < perm ==> NoPerm < Mask[null, heapseg(temp1, null)];
@@ -7308,8 +7308,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
             HasDirectPerm(Mask, this, Nodes);
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
             assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(this.Nodes, temp1) (BinomialHeap.vpr@272.17--272.45) [100657]"}
               NoPerm < perm ==> NoPerm < Mask[null, heapseg(Heap[this, Nodes], temp1)];
@@ -7323,8 +7323,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
           if (0 < segLength(Heap, Heap[this, Nodes], temp1)) {
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(temp2, null) (BinomialHeap.vpr@272.53--272.75) [100658]"}
                 NoPerm < perm ==> NoPerm < Mask[null, heapseg(temp2, null)];
@@ -7346,8 +7346,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
               HasDirectPerm(Mask, this, Nodes);
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(this.Nodes, temp1) (BinomialHeap.vpr@273.31--273.59) [100661]"}
                 NoPerm < perm ==> NoPerm < Mask[null, heapseg(Heap[this, Nodes], temp1)];
@@ -7360,8 +7360,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
             }
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(this.Nodes, temp1) (BinomialHeap.vpr@273.2--273.64) [100662]"}
                 NoPerm < perm ==> NoPerm < Mask[null, heapseg(Heap[this, Nodes], temp1)];
@@ -7378,8 +7378,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
             }
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(temp2, null) (BinomialHeap.vpr@273.68--273.93) [100665]"}
                 NoPerm < perm ==> NoPerm < Mask[null, heapseg(temp2, null)];
@@ -7399,8 +7399,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
               HasDirectPerm(Mask, this, Nodes);
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(this.Nodes, temp1) (BinomialHeap.vpr@274.8--274.36) [100668]"}
                 NoPerm < perm ==> NoPerm < Mask[null, heapseg(Heap[this, Nodes], temp1)];
@@ -7418,8 +7418,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                 HasDirectPerm(Mask, this, Nodes);
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 perm := FullPerm;
                 assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(this.Nodes, temp1) (BinomialHeap.vpr@275.31--275.59) [100671]"}
                   NoPerm < perm ==> NoPerm < Mask[null, heapseg(Heap[this, Nodes], temp1)];
@@ -7432,8 +7432,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
               }
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 perm := FullPerm;
                 assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(this.Nodes, temp1) (BinomialHeap.vpr@275.2--275.64) [100672]"}
                   NoPerm < perm ==> NoPerm < Mask[null, heapseg(Heap[this, Nodes], temp1)];
@@ -7454,8 +7454,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                 HasDirectPerm(Mask, this, Nodes);
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 perm := FullPerm;
                 assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(this.Nodes, temp1) (BinomialHeap.vpr@275.97--275.125) [100677]"}
                   NoPerm < perm ==> NoPerm < Mask[null, heapseg(Heap[this, Nodes], temp1)];
@@ -7468,8 +7468,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
               }
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 perm := FullPerm;
                 assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(this.Nodes, temp1) (BinomialHeap.vpr@275.68--275.130) [100678]"}
                   NoPerm < perm ==> NoPerm < Mask[null, heapseg(Heap[this, Nodes], temp1)];
@@ -7495,8 +7495,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                 HasDirectPerm(Mask, this, Nodes);
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 perm := FullPerm;
                 assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(this.Nodes, temp1) (BinomialHeap.vpr@276.31--276.59) [100683]"}
                   NoPerm < perm ==> NoPerm < Mask[null, heapseg(Heap[this, Nodes], temp1)];
@@ -7509,8 +7509,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
               }
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 perm := FullPerm;
                 assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(this.Nodes, temp1) (BinomialHeap.vpr@276.2--276.64) [100684]"}
                   NoPerm < perm ==> NoPerm < Mask[null, heapseg(Heap[this, Nodes], temp1)];
@@ -7527,8 +7527,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
               }
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 perm := FullPerm;
                 assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(temp2, null) (BinomialHeap.vpr@276.67--276.92) [100687]"}
                   NoPerm < perm ==> NoPerm < Mask[null, heapseg(temp2, null)];
@@ -7551,8 +7551,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
             HasDirectPerm(Mask, this, Nodes);
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
             assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(this.Nodes, temp1) (BinomialHeap.vpr@277.17--277.45) [100690]"}
               NoPerm < perm ==> NoPerm < Mask[null, heapseg(Heap[this, Nodes], temp1)];
@@ -7566,8 +7566,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
           if (0 < segLength(Heap, Heap[this, Nodes], temp1)) {
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(temp1, null) (BinomialHeap.vpr@277.53--277.75) [100691]"}
                 NoPerm < perm ==> NoPerm < Mask[null, heapseg(temp1, null)];
@@ -7581,8 +7581,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
             if (0 < segLength(Heap, temp1, null)) {
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 perm := FullPerm;
                 assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(temp2, null) (BinomialHeap.vpr@277.83--277.105) [100692]"}
                   NoPerm < perm ==> NoPerm < Mask[null, heapseg(temp2, null)];
@@ -7605,8 +7605,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
               HasDirectPerm(Mask, this, Nodes);
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(this.Nodes, temp1) (BinomialHeap.vpr@278.32--278.60) [100695]"}
                 NoPerm < perm ==> NoPerm < Mask[null, heapseg(Heap[this, Nodes], temp1)];
@@ -7619,8 +7619,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
             }
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(this.Nodes, temp1) (BinomialHeap.vpr@278.3--278.65) [100696]"}
                 NoPerm < perm ==> NoPerm < Mask[null, heapseg(Heap[this, Nodes], temp1)];
@@ -7637,8 +7637,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
             }
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(temp1, null) (BinomialHeap.vpr@278.68--278.93) [100699]"}
                 NoPerm < perm ==> NoPerm < Mask[null, heapseg(temp1, null)];
@@ -7658,8 +7658,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                 HasDirectPerm(Mask, this, Nodes);
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 perm := FullPerm;
                 assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(this.Nodes, temp1) (BinomialHeap.vpr@279.31--279.59) [100703]"}
                   NoPerm < perm ==> NoPerm < Mask[null, heapseg(Heap[this, Nodes], temp1)];
@@ -7672,8 +7672,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
               }
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 perm := FullPerm;
                 assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(this.Nodes, temp1) (BinomialHeap.vpr@279.2--279.64) [100704]"}
                   NoPerm < perm ==> NoPerm < Mask[null, heapseg(Heap[this, Nodes], temp1)];
@@ -7690,8 +7690,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
               }
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 perm := FullPerm;
                 assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(temp2, null) (BinomialHeap.vpr@279.67--279.92) [100707]"}
                   NoPerm < perm ==> NoPerm < Mask[null, heapseg(temp2, null)];
@@ -7715,8 +7715,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
           if (temp1 != Heap[this, Nodes]) {
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(temp1, null) (BinomialHeap.vpr@280.40--280.62) [100710]"}
                 NoPerm < perm ==> NoPerm < Mask[null, heapseg(temp1, null)];
@@ -7730,8 +7730,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
             if (0 < segLength(Heap, temp1, null)) {
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 perm := FullPerm;
                 assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(temp2, null) (BinomialHeap.vpr@280.70--280.92) [100711]"}
                   NoPerm < perm ==> NoPerm < Mask[null, heapseg(temp2, null)];
@@ -7750,8 +7750,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
           // -- Check definedness of segDegree(temp1, null, 0) <= segDegree(temp2, null, 0)
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(temp1, null) (BinomialHeap.vpr@281.2--281.27) [100712]"}
                 NoPerm < perm ==> NoPerm < Mask[null, heapseg(temp1, null)];
@@ -7766,8 +7766,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
             }
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(temp2, null) (BinomialHeap.vpr@281.31--281.56) [100714]"}
                 NoPerm < perm ==> NoPerm < Mask[null, heapseg(temp2, null)];
@@ -7790,8 +7790,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
             HasDirectPerm(Mask, this, Nodes);
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
             assert {:msg "  Precondition of function segSize might not hold. There might be insufficient permission to access heapseg(this.Nodes, temp1) (BinomialHeap.vpr@282.13--282.39) [100717]"}
               NoPerm < perm ==> NoPerm < Mask[null, heapseg(Heap[this, Nodes], temp1)];
@@ -7804,8 +7804,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
           }
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
             assert {:msg "  Precondition of function segSize might not hold. There might be insufficient permission to access heapseg(temp1, null) (BinomialHeap.vpr@282.42--282.62) [100718]"}
               NoPerm < perm ==> NoPerm < Mask[null, heapseg(temp1, null)];
@@ -7818,8 +7818,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
           }
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
             assert {:msg "  Precondition of function segSize might not hold. There might be insufficient permission to access heapseg(temp2, null) (BinomialHeap.vpr@282.65--282.85) [100719]"}
               NoPerm < perm ==> NoPerm < Mask[null, heapseg(temp2, null)];
@@ -7834,8 +7834,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
             HasDirectPerm(oldMask, this, Nodes);
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := oldMask;
             ExhaleWellDef0Heap := oldHeap;
+            ExhaleWellDef0Mask := oldMask;
             perm := FullPerm;
             assert {:msg "  Precondition of function segSize might not hold. There might be insufficient permission to access heapseg(this.Nodes, null) (BinomialHeap.vpr@282.93--282.118) [100721]"}
               NoPerm < perm ==> NoPerm < oldMask[null, heapseg(oldHeap[this, Nodes], null)];
@@ -7845,8 +7845,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
           }
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := oldMask;
             ExhaleWellDef0Heap := oldHeap;
+            ExhaleWellDef0Mask := oldMask;
             perm := FullPerm;
             assert {:msg "  Precondition of function segSize might not hold. There might be insufficient permission to access heapseg(binHeap, null) (BinomialHeap.vpr@282.126--282.148) [100722]"}
               NoPerm < perm ==> NoPerm < oldMask[null, heapseg(binHeap, null)];
@@ -7862,8 +7862,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
           // -- Check definedness of segParent(temp1, null) == segParent(temp2, null)
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segParent might not hold. There might be insufficient permission to access heapseg(temp1, null) (BinomialHeap.vpr@283.48--283.70) [100723]"}
                 NoPerm < perm ==> NoPerm < Mask[null, heapseg(temp1, null)];
@@ -7878,8 +7878,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
             }
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segParent might not hold. There might be insufficient permission to access heapseg(temp2, null) (BinomialHeap.vpr@283.74--283.96) [100725]"}
                 NoPerm < perm ==> NoPerm < Mask[null, heapseg(temp2, null)];
@@ -7907,8 +7907,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
               HasDirectPerm(Mask, this, Nodes);
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segParent might not hold. There might be insufficient permission to access heapseg(this.Nodes, temp1) (BinomialHeap.vpr@284.54--284.82) [100729]"}
                 NoPerm < perm ==> NoPerm < Mask[null, heapseg(Heap[this, Nodes], temp1)];
@@ -7923,8 +7923,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
             }
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segParent might not hold. There might be insufficient permission to access heapseg(temp1, null) (BinomialHeap.vpr@284.86--284.108) [100731]"}
                 NoPerm < perm ==> NoPerm < Mask[null, heapseg(temp1, null)];
@@ -7952,8 +7952,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
               HasDirectPerm(Mask, this, Nodes);
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segParent might not hold. There might be insufficient permission to access heapseg(this.Nodes, temp1) (BinomialHeap.vpr@285.54--285.82) [100735]"}
                 NoPerm < perm ==> NoPerm < Mask[null, heapseg(Heap[this, Nodes], temp1)];
@@ -7968,8 +7968,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
             }
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segParent might not hold. There might be insufficient permission to access heapseg(temp2, null) (BinomialHeap.vpr@285.86--285.108) [100737]"}
                 NoPerm < perm ==> NoPerm < Mask[null, heapseg(temp2, null)];
@@ -7997,8 +7997,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
               HasDirectPerm(Mask, this, Nodes);
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segParent might not hold. There might be insufficient permission to access heapseg(this.Nodes, temp1) (BinomialHeap.vpr@286.37--286.65) [100741]"}
                 NoPerm < perm ==> NoPerm < Mask[null, heapseg(Heap[this, Nodes], temp1)];
@@ -8015,8 +8015,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
               HasDirectPerm(oldMask, this, Nodes);
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := oldMask;
               ExhaleWellDef0Heap := oldHeap;
+              ExhaleWellDef0Mask := oldMask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segParent might not hold. There might be insufficient permission to access heapseg(this.Nodes, null) (BinomialHeap.vpr@286.73--286.100) [100744]"}
                 NoPerm < perm ==> NoPerm < oldMask[null, heapseg(oldHeap[this, Nodes], null)];
@@ -8035,8 +8035,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
           // -- Check definedness of segParent(temp1, null) == old(segParent(this.Nodes, null))
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segParent might not hold. There might be insufficient permission to access heapseg(temp1, null) (BinomialHeap.vpr@287.31--287.53) [100746]"}
                 NoPerm < perm ==> NoPerm < Mask[null, heapseg(temp1, null)];
@@ -8053,8 +8053,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
               HasDirectPerm(oldMask, this, Nodes);
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := oldMask;
               ExhaleWellDef0Heap := oldHeap;
+              ExhaleWellDef0Mask := oldMask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segParent might not hold. There might be insufficient permission to access heapseg(this.Nodes, null) (BinomialHeap.vpr@287.61--287.88) [100749]"}
                 NoPerm < perm ==> NoPerm < oldMask[null, heapseg(oldHeap[this, Nodes], null)];
@@ -8073,8 +8073,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
           // -- Check definedness of segParent(temp2, null) == old(segParent(this.Nodes, null))
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segParent might not hold. There might be insufficient permission to access heapseg(temp2, null) (BinomialHeap.vpr@288.31--288.53) [100751]"}
                 NoPerm < perm ==> NoPerm < Mask[null, heapseg(temp2, null)];
@@ -8091,8 +8091,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
               HasDirectPerm(oldMask, this, Nodes);
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := oldMask;
               ExhaleWellDef0Heap := oldHeap;
+              ExhaleWellDef0Mask := oldMask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segParent might not hold. There might be insufficient permission to access heapseg(this.Nodes, null) (BinomialHeap.vpr@288.61--288.88) [100754]"}
                 NoPerm < perm ==> NoPerm < oldMask[null, heapseg(oldHeap[this, Nodes], null)];
@@ -8199,8 +8199,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
           // -- Translating statement: unfold acc(heapseg(temp1, null), write) -- BinomialHeap.vpr@291.3--291.30
             assume heapseg#trigger(Heap, heapseg(temp1, null));
             assume Heap[null, heapseg(temp1, null)] == FrameFragment((if temp1 != null then CombineFrames(Heap[null, tree(temp1)], CombineFrames(FrameFragment(Heap[temp1, sibling]), CombineFrames(Heap[null, heapseg(Heap[temp1, sibling], null)], FrameFragment((if Heap[temp1, sibling] != null then EmptyFrame else EmptyFrame))))) else EmptyFrame));
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
             if (perm != NoPerm) {
               assert {:msg "  Unfolding heapseg(temp1, null) might fail. There might be insufficient permission to access heapseg(temp1, null) (BinomialHeap.vpr@291.3--291.30) [100756]"}
@@ -8241,8 +8241,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
           // -- Translating statement: unfold acc(heapseg(temp2, null), write) -- BinomialHeap.vpr@292.3--292.30
             assume heapseg#trigger(Heap, heapseg(temp2, null));
             assume Heap[null, heapseg(temp2, null)] == FrameFragment((if temp2 != null then CombineFrames(Heap[null, tree(temp2)], CombineFrames(FrameFragment(Heap[temp2, sibling]), CombineFrames(Heap[null, heapseg(Heap[temp2, sibling], null)], FrameFragment((if Heap[temp2, sibling] != null then EmptyFrame else EmptyFrame))))) else EmptyFrame));
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
             if (perm != NoPerm) {
               assert {:msg "  Unfolding heapseg(temp2, null) might fail. There might be insufficient permission to access heapseg(temp2, null) (BinomialHeap.vpr@292.3--292.30) [100757]"}
@@ -8285,8 +8285,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
             // -- Check definedness of treeDegree(temp1) == treeDegree(temp2)
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 perm := FullPerm;
                 assert {:msg "  Precondition of function treeDegree might not hold. There might be insufficient permission to access tree(temp1) (BinomialHeap.vpr@294.6--294.23) [100758]"}
                   NoPerm < perm ==> NoPerm < Mask[null, tree(temp1)];
@@ -8299,8 +8299,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
               }
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 perm := FullPerm;
                 assert {:msg "  Precondition of function treeDegree might not hold. There might be insufficient permission to access tree(temp2) (BinomialHeap.vpr@294.27--294.44) [100759]"}
                   NoPerm < perm ==> NoPerm < Mask[null, tree(temp2)];
@@ -8342,8 +8342,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                 assume state(Heap, Mask);
               
               // -- Translating statement: fold acc(heapseg(tmp, tmp), write) -- BinomialHeap.vpr@300.4--300.26
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 if (tmp != tmp) {
                   perm := FullPerm;
                   if (perm != NoPerm) {
@@ -8404,8 +8404,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                 assume state(Heap, Mask);
               
               // -- Translating statement: fold acc(heapseg(temp1, tmp), write) -- BinomialHeap.vpr@301.4--301.28
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 if (temp1 != tmp) {
                   perm := FullPerm;
                   if (perm != NoPerm) {
@@ -8467,14 +8467,14 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
               
               // -- Translating statement: assert segSize(temp1, tmp) ==
   //   (unfolding acc(heapseg(temp1, tmp), write) in treeSize(temp1)) -- BinomialHeap.vpr@302.4--302.82
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 
                 // -- Check definedness of segSize(temp1, tmp) == (unfolding acc(heapseg(temp1, tmp), write) in treeSize(temp1))
                   if (*) {
                     // Exhale precondition of function application
-                    ExhaleWellDef1Mask := ExhaleWellDef0Mask;
                     ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+                    ExhaleWellDef1Mask := ExhaleWellDef0Mask;
                     perm := FullPerm;
                     assert {:msg "  Precondition of function segSize might not hold. There might be insufficient permission to access heapseg(temp1, tmp) (BinomialHeap.vpr@302.11--302.30) [100772]"}
                       NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, heapseg(temp1, tmp)];
@@ -8489,8 +8489,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                   UnfoldingMask := ExhaleWellDef0Mask;
                   assume heapseg#trigger(UnfoldingHeap, heapseg(temp1, tmp));
                   assume UnfoldingHeap[null, heapseg(temp1, tmp)] == FrameFragment((if temp1 != tmp then CombineFrames(UnfoldingHeap[null, tree(temp1)], CombineFrames(FrameFragment(UnfoldingHeap[temp1, sibling]), CombineFrames(UnfoldingHeap[null, heapseg(UnfoldingHeap[temp1, sibling], tmp)], FrameFragment((if UnfoldingHeap[temp1, sibling] != tmp then EmptyFrame else EmptyFrame))))) else EmptyFrame));
-                  ExhaleWellDef1Mask := UnfoldingMask;
                   ExhaleWellDef1Heap := UnfoldingHeap;
+                  ExhaleWellDef1Mask := UnfoldingMask;
                   perm := FullPerm;
                   if (perm != NoPerm) {
                     assert {:msg "  Assert might fail. There might be insufficient permission to access heapseg(temp1, tmp) (BinomialHeap.vpr@302.11--302.82) [100773]"}
@@ -8522,8 +8522,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                   assume state(UnfoldingHeap, UnfoldingMask);
                   if (*) {
                     // Exhale precondition of function application
-                    ExhaleWellDef1Mask := UnfoldingMask;
                     ExhaleWellDef1Heap := UnfoldingHeap;
+                    ExhaleWellDef1Mask := UnfoldingMask;
                     perm := FullPerm;
                     assert {:msg "  Precondition of function treeSize might not hold. There might be insufficient permission to access tree(temp1) (BinomialHeap.vpr@302.67--302.82) [100774]"}
                       NoPerm < perm ==> NoPerm < UnfoldingMask[null, tree(temp1)];
@@ -8602,8 +8602,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                 arg_a := Heap[this, Nodes];
                 
                 // -- Exhaling precondition
-                  ExhaleWellDef0Mask := Mask;
                   ExhaleWellDef0Heap := Heap;
+                  ExhaleWellDef0Mask := Mask;
                   perm := FullPerm;
                   if (perm != NoPerm) {
                     assert {:msg "  The precondition of method concat might not hold. There might be insufficient permission to access heapseg(this.Nodes, temp1) (BinomialHeap.vpr@303.4--303.34) [100777]"}
@@ -8690,8 +8690,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                 assume state(Heap, Mask);
               
               // -- Translating statement: fold acc(heapseg(tmp, null), write) -- BinomialHeap.vpr@309.4--309.27
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 if (tmp != null) {
                   perm := FullPerm;
                   if (perm != NoPerm) {
@@ -8757,8 +8757,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                 // -- Check definedness of treeDegree(temp1) < treeDegree(temp2)
                   if (*) {
                     // Exhale precondition of function application
-                    ExhaleWellDef0Mask := Mask;
                     ExhaleWellDef0Heap := Heap;
+                    ExhaleWellDef0Mask := Mask;
                     perm := FullPerm;
                     assert {:msg "  Precondition of function treeDegree might not hold. There might be insufficient permission to access tree(temp1) (BinomialHeap.vpr@311.7--311.24) [100785]"}
                       NoPerm < perm ==> NoPerm < Mask[null, tree(temp1)];
@@ -8771,8 +8771,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                   }
                   if (*) {
                     // Exhale precondition of function application
-                    ExhaleWellDef0Mask := Mask;
                     ExhaleWellDef0Heap := Heap;
+                    ExhaleWellDef0Mask := Mask;
                     perm := FullPerm;
                     assert {:msg "  Precondition of function treeDegree might not hold. There might be insufficient permission to access tree(temp2) (BinomialHeap.vpr@311.27--311.44) [100786]"}
                       NoPerm < perm ==> NoPerm < Mask[null, tree(temp2)];
@@ -8795,8 +8795,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                           HasDirectPerm(Mask, temp1, sibling);
                         if (*) {
                           // Exhale precondition of function application
-                          ExhaleWellDef0Mask := Mask;
                           ExhaleWellDef0Heap := Heap;
+                          ExhaleWellDef0Mask := Mask;
                           perm := FullPerm;
                           assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(temp1.sibling, null) (BinomialHeap.vpr@313.5--313.38) [100789]"}
                             NoPerm < perm ==> NoPerm < Mask[null, heapseg(Heap[temp1, sibling], null)];
@@ -8811,8 +8811,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                         }
                         if (*) {
                           // Exhale precondition of function application
-                          ExhaleWellDef0Mask := Mask;
                           ExhaleWellDef0Heap := Heap;
+                          ExhaleWellDef0Mask := Mask;
                           perm := FullPerm;
                           assert {:msg "  Precondition of function treeDegree might not hold. There might be insufficient permission to access tree(temp2) (BinomialHeap.vpr@313.41--313.58) [100791]"}
                             NoPerm < perm ==> NoPerm < Mask[null, tree(temp2)];
@@ -8855,8 +8855,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                         assume state(Heap, Mask);
                       
                       // -- Translating statement: fold acc(heapseg(tmp, tmp), write) -- BinomialHeap.vpr@318.6--318.28
-                        ExhaleWellDef0Mask := Mask;
                         ExhaleWellDef0Heap := Heap;
+                        ExhaleWellDef0Mask := Mask;
                         if (tmp != tmp) {
                           perm := FullPerm;
                           if (perm != NoPerm) {
@@ -8917,8 +8917,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                         assume state(Heap, Mask);
                       
                       // -- Translating statement: fold acc(heapseg(temp1, tmp), write) -- BinomialHeap.vpr@319.6--319.30
-                        ExhaleWellDef0Mask := Mask;
                         ExhaleWellDef0Heap := Heap;
+                        ExhaleWellDef0Mask := Mask;
                         if (temp1 != tmp) {
                           perm := FullPerm;
                           if (perm != NoPerm) {
@@ -8988,8 +8988,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                         arg_a_1 := Heap[this, Nodes];
                         
                         // -- Exhaling precondition
-                          ExhaleWellDef0Mask := Mask;
                           ExhaleWellDef0Heap := Heap;
+                          ExhaleWellDef0Mask := Mask;
                           perm := FullPerm;
                           if (perm != NoPerm) {
                             assert {:msg "  The precondition of method concat might not hold. There might be insufficient permission to access heapseg(this.Nodes, temp1) (BinomialHeap.vpr@320.6--320.36) [100805]"}
@@ -9076,8 +9076,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                         assume state(Heap, Mask);
                       
                       // -- Translating statement: fold acc(heapseg(tmp, null), write) -- BinomialHeap.vpr@326.6--326.29
-                        ExhaleWellDef0Mask := Mask;
                         ExhaleWellDef0Heap := Heap;
+                        ExhaleWellDef0Mask := Mask;
                         if (tmp != null) {
                           perm := FullPerm;
                           if (perm != NoPerm) {
@@ -9147,8 +9147,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                         assume state(Heap, Mask);
                       
                       // -- Translating statement: fold acc(heapseg(temp2, null), write) -- BinomialHeap.vpr@329.6--329.31
-                        ExhaleWellDef0Mask := Mask;
                         ExhaleWellDef0Heap := Heap;
+                        ExhaleWellDef0Mask := Mask;
                         if (temp2 != null) {
                           perm := FullPerm;
                           if (perm != NoPerm) {
@@ -9209,8 +9209,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                         assume state(Heap, Mask);
                       
                       // -- Translating statement: fold acc(heapseg(tmp, tmp), write) -- BinomialHeap.vpr@330.6--330.28
-                        ExhaleWellDef0Mask := Mask;
                         ExhaleWellDef0Heap := Heap;
+                        ExhaleWellDef0Mask := Mask;
                         if (tmp != tmp) {
                           perm := FullPerm;
                           if (perm != NoPerm) {
@@ -9271,8 +9271,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                         assume state(Heap, Mask);
                       
                       // -- Translating statement: fold acc(heapseg(temp1, tmp), write) -- BinomialHeap.vpr@331.6--331.30
-                        ExhaleWellDef0Mask := Mask;
                         ExhaleWellDef0Heap := Heap;
+                        ExhaleWellDef0Mask := Mask;
                         if (temp1 != tmp) {
                           perm := FullPerm;
                           if (perm != NoPerm) {
@@ -9335,8 +9335,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                       // -- Translating statement: unfold acc(heapseg(tmp, null), write) -- BinomialHeap.vpr@332.6--332.31
                         assume heapseg#trigger(Heap, heapseg(tmp, null));
                         assume Heap[null, heapseg(tmp, null)] == FrameFragment((if tmp != null then CombineFrames(Heap[null, tree(tmp)], CombineFrames(FrameFragment(Heap[tmp, sibling]), CombineFrames(Heap[null, heapseg(Heap[tmp, sibling], null)], FrameFragment((if Heap[tmp, sibling] != null then EmptyFrame else EmptyFrame))))) else EmptyFrame));
-                        ExhaleWellDef0Mask := Mask;
                         ExhaleWellDef0Heap := Heap;
+                        ExhaleWellDef0Mask := Mask;
                         perm := FullPerm;
                         if (perm != NoPerm) {
                           assert {:msg "  Unfolding heapseg(tmp, null) might fail. There might be insufficient permission to access heapseg(tmp, null) (BinomialHeap.vpr@332.6--332.31) [100826]"}
@@ -9384,8 +9384,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                         arg_a_2 := Heap[this, Nodes];
                         
                         // -- Exhaling precondition
-                          ExhaleWellDef0Mask := Mask;
                           ExhaleWellDef0Heap := Heap;
+                          ExhaleWellDef0Mask := Mask;
                           perm := FullPerm;
                           if (perm != NoPerm) {
                             assert {:msg "  The precondition of method concat might not hold. There might be insufficient permission to access heapseg(this.Nodes, temp1) (BinomialHeap.vpr@333.6--333.36) [100828]"}
@@ -9468,8 +9468,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                         assume state(Heap, Mask);
                       
                       // -- Translating statement: fold acc(heapseg(tmp, null), write) -- BinomialHeap.vpr@334.6--334.29
-                        ExhaleWellDef0Mask := Mask;
                         ExhaleWellDef0Heap := Heap;
+                        ExhaleWellDef0Mask := Mask;
                         if (tmp != null) {
                           perm := FullPerm;
                           if (perm != NoPerm) {
@@ -9559,8 +9559,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                     assume state(Heap, Mask);
                   
                   // -- Translating statement: fold acc(heapseg(tmp, null), write) -- BinomialHeap.vpr@342.5--342.28
-                    ExhaleWellDef0Mask := Mask;
                     ExhaleWellDef0Heap := Heap;
+                    ExhaleWellDef0Mask := Mask;
                     if (tmp != null) {
                       perm := FullPerm;
                       if (perm != NoPerm) {
@@ -9621,8 +9621,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                     assume state(Heap, Mask);
                   
                   // -- Translating statement: fold acc(heapseg(temp1, null), write) -- BinomialHeap.vpr@343.5--343.30
-                    ExhaleWellDef0Mask := Mask;
                     ExhaleWellDef0Heap := Heap;
+                    ExhaleWellDef0Mask := Mask;
                     if (temp1 != null) {
                       perm := FullPerm;
                       if (perm != NoPerm) {
@@ -9700,8 +9700,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                         // -- Check definedness of acc(heapseg(this.Nodes, temp1), write)
                           assert {:msg "  Folding heapseg(this.Nodes, temp1) might fail. There might be insufficient permission to access this.Nodes (BinomialHeap.vpr@346.6--346.37) [100848]"}
                             HasDirectPerm(Mask, this, Nodes);
-                        ExhaleWellDef0Mask := Mask;
                         ExhaleWellDef0Heap := Heap;
+                        ExhaleWellDef0Mask := Mask;
                         if (Heap[this, Nodes] != temp1) {
                           perm := FullPerm;
                           if (perm != NoPerm) {
@@ -9763,8 +9763,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                     } else {
                       
                       // -- Translating statement: assert false -- BinomialHeap.vpr@348.6--348.18
-                        ExhaleWellDef0Mask := Mask;
                         ExhaleWellDef0Heap := Heap;
+                        ExhaleWellDef0Mask := Mask;
                         assert {:msg "  Assert might fail. Assertion false might not hold. (BinomialHeap.vpr@348.13--348.18) [100853]"}
                           false;
                         assume state(Heap, Mask);
@@ -9775,8 +9775,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
             }
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Loop invariant acc(heapseg(temp1, null), write) && sorted(temp1, null) might not be preserved. There might be insufficient permission to access heapseg(temp1, null) (BinomialHeap.vpr@263.13--263.56) [100854]"}
@@ -9959,8 +9959,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
         // -- Check definedness of acc(heapseg(this.Nodes, temp1), write)
           assert {:msg "  Folding heapseg(this.Nodes, temp1) might fail. There might be insufficient permission to access this.Nodes (BinomialHeap.vpr@355.3--355.34) [100876]"}
             HasDirectPerm(Mask, this, Nodes);
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         if (Heap[this, Nodes] != temp1) {
           perm := FullPerm;
           if (perm != NoPerm) {
@@ -10025,8 +10025,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
         // -- Before loop head
           
           // -- Exhale loop invariant before loop
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             assert {:msg "  Loop invariant temp1 != null might not hold on entry. Assertion temp1 != null might not hold. (BinomialHeap.vpr@358.14--358.27) [100886]"}
               temp1 != null;
             perm := FullPerm;
@@ -10124,8 +10124,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
             // -- Check definedness of presorted(temp1, null)
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 perm := FullPerm;
                 assert {:msg "  Precondition of function presorted might not hold. There might be insufficient permission to access heapseg(temp1, null) (BinomialHeap.vpr@359.38--359.60) [100907]"}
                   NoPerm < perm ==> NoPerm < Mask[null, heapseg(temp1, null)];
@@ -10146,8 +10146,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
             // -- Check definedness of sorted(temp2, null)
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 perm := FullPerm;
                 assert {:msg "  Precondition of function sorted might not hold. There might be insufficient permission to access heapseg(temp2, null) (BinomialHeap.vpr@360.38--360.57) [100908]"}
                   NoPerm < perm ==> NoPerm < Mask[null, heapseg(temp2, null)];
@@ -10184,8 +10184,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                 HasDirectPerm(Mask, this, Nodes);
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 perm := FullPerm;
                 assert {:msg "  Precondition of function presorted might not hold. There might be insufficient permission to access heapseg(this.Nodes, temp1) (BinomialHeap.vpr@362.44--362.72) [100912]"}
                   NoPerm < perm ==> NoPerm < Mask[null, heapseg(Heap[this, Nodes], temp1)];
@@ -10203,8 +10203,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
             // -- Check definedness of 0 < segLength(temp1, null)
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 perm := FullPerm;
                 assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(temp1, null) (BinomialHeap.vpr@363.18--363.40) [100913]"}
                   NoPerm < perm ==> NoPerm < Mask[null, heapseg(temp1, null)];
@@ -10223,8 +10223,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                 HasDirectPerm(Mask, this, Nodes);
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 perm := FullPerm;
                 assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(this.Nodes, temp1) (BinomialHeap.vpr@364.18--364.46) [100915]"}
                   NoPerm < perm ==> NoPerm < Mask[null, heapseg(Heap[this, Nodes], temp1)];
@@ -10245,8 +10245,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                   HasDirectPerm(Mask, this, Nodes);
                 if (*) {
                   // Exhale precondition of function application
-                  ExhaleWellDef0Mask := Mask;
                   ExhaleWellDef0Heap := Heap;
+                  ExhaleWellDef0Mask := Mask;
                   perm := FullPerm;
                   assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(this.Nodes, temp1) (BinomialHeap.vpr@365.32--365.60) [100918]"}
                     NoPerm < perm ==> NoPerm < Mask[null, heapseg(Heap[this, Nodes], temp1)];
@@ -10259,8 +10259,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                 }
                 if (*) {
                   // Exhale precondition of function application
-                  ExhaleWellDef0Mask := Mask;
                   ExhaleWellDef0Heap := Heap;
+                  ExhaleWellDef0Mask := Mask;
                   perm := FullPerm;
                   assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(this.Nodes, temp1) (BinomialHeap.vpr@365.3--365.65) [100919]"}
                     NoPerm < perm ==> NoPerm < Mask[null, heapseg(Heap[this, Nodes], temp1)];
@@ -10277,8 +10277,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                 }
                 if (*) {
                   // Exhale precondition of function application
-                  ExhaleWellDef0Mask := Mask;
                   ExhaleWellDef0Heap := Heap;
+                  ExhaleWellDef0Mask := Mask;
                   perm := FullPerm;
                   assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(temp1, null) (BinomialHeap.vpr@365.69--365.94) [100922]"}
                     NoPerm < perm ==> NoPerm < Mask[null, heapseg(temp1, null)];
@@ -10298,8 +10298,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                   HasDirectPerm(Mask, this, Nodes);
                 if (*) {
                   // Exhale precondition of function application
-                  ExhaleWellDef0Mask := Mask;
                   ExhaleWellDef0Heap := Heap;
+                  ExhaleWellDef0Mask := Mask;
                   perm := FullPerm;
                   assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(this.Nodes, temp1) (BinomialHeap.vpr@367.9--367.37) [100925]"}
                     NoPerm < perm ==> NoPerm < Mask[null, heapseg(Heap[this, Nodes], temp1)];
@@ -10317,8 +10317,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                     HasDirectPerm(Mask, this, Nodes);
                   if (*) {
                     // Exhale precondition of function application
-                    ExhaleWellDef0Mask := Mask;
                     ExhaleWellDef0Heap := Heap;
+                    ExhaleWellDef0Mask := Mask;
                     perm := FullPerm;
                     assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(this.Nodes, temp1) (BinomialHeap.vpr@368.32--368.60) [100928]"}
                       NoPerm < perm ==> NoPerm < Mask[null, heapseg(Heap[this, Nodes], temp1)];
@@ -10331,8 +10331,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                   }
                   if (*) {
                     // Exhale precondition of function application
-                    ExhaleWellDef0Mask := Mask;
                     ExhaleWellDef0Heap := Heap;
+                    ExhaleWellDef0Mask := Mask;
                     perm := FullPerm;
                     assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(this.Nodes, temp1) (BinomialHeap.vpr@368.3--368.65) [100929]"}
                       NoPerm < perm ==> NoPerm < Mask[null, heapseg(Heap[this, Nodes], temp1)];
@@ -10353,8 +10353,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                     HasDirectPerm(Mask, this, Nodes);
                   if (*) {
                     // Exhale precondition of function application
-                    ExhaleWellDef0Mask := Mask;
                     ExhaleWellDef0Heap := Heap;
+                    ExhaleWellDef0Mask := Mask;
                     perm := FullPerm;
                     assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(this.Nodes, temp1) (BinomialHeap.vpr@368.98--368.126) [100934]"}
                       NoPerm < perm ==> NoPerm < Mask[null, heapseg(Heap[this, Nodes], temp1)];
@@ -10367,8 +10367,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                   }
                   if (*) {
                     // Exhale precondition of function application
-                    ExhaleWellDef0Mask := Mask;
                     ExhaleWellDef0Heap := Heap;
+                    ExhaleWellDef0Mask := Mask;
                     perm := FullPerm;
                     assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(this.Nodes, temp1) (BinomialHeap.vpr@368.69--368.131) [100935]"}
                       NoPerm < perm ==> NoPerm < Mask[null, heapseg(Heap[this, Nodes], temp1)];
@@ -10394,8 +10394,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                     HasDirectPerm(Mask, this, Nodes);
                   if (*) {
                     // Exhale precondition of function application
-                    ExhaleWellDef0Mask := Mask;
                     ExhaleWellDef0Heap := Heap;
+                    ExhaleWellDef0Mask := Mask;
                     perm := FullPerm;
                     assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(this.Nodes, temp1) (BinomialHeap.vpr@369.32--369.60) [100940]"}
                       NoPerm < perm ==> NoPerm < Mask[null, heapseg(Heap[this, Nodes], temp1)];
@@ -10408,8 +10408,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                   }
                   if (*) {
                     // Exhale precondition of function application
-                    ExhaleWellDef0Mask := Mask;
                     ExhaleWellDef0Heap := Heap;
+                    ExhaleWellDef0Mask := Mask;
                     perm := FullPerm;
                     assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(this.Nodes, temp1) (BinomialHeap.vpr@369.3--369.65) [100941]"}
                       NoPerm < perm ==> NoPerm < Mask[null, heapseg(Heap[this, Nodes], temp1)];
@@ -10426,8 +10426,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                   }
                   if (*) {
                     // Exhale precondition of function application
-                    ExhaleWellDef0Mask := Mask;
                     ExhaleWellDef0Heap := Heap;
+                    ExhaleWellDef0Mask := Mask;
                     perm := FullPerm;
                     assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(temp1, null) (BinomialHeap.vpr@369.68--369.93) [100944]"}
                       NoPerm < perm ==> NoPerm < Mask[null, heapseg(temp1, null)];
@@ -10446,8 +10446,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
               // -- Check definedness of 2 <= segLength(temp1, null) && segDegree(temp1, null, 0) == segDegree(temp1, null, 1)
                 if (*) {
                   // Exhale precondition of function application
-                  ExhaleWellDef0Mask := Mask;
                   ExhaleWellDef0Heap := Heap;
+                  ExhaleWellDef0Mask := Mask;
                   perm := FullPerm;
                   assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(temp1, null) (BinomialHeap.vpr@371.9--371.31) [100946]"}
                     NoPerm < perm ==> NoPerm < Mask[null, heapseg(temp1, null)];
@@ -10461,8 +10461,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                 if (2 <= segLength(Heap, temp1, null)) {
                   if (*) {
                     // Exhale precondition of function application
-                    ExhaleWellDef0Mask := Mask;
                     ExhaleWellDef0Heap := Heap;
+                    ExhaleWellDef0Mask := Mask;
                     perm := FullPerm;
                     assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(temp1, null) (BinomialHeap.vpr@372.3--372.28) [100947]"}
                       NoPerm < perm ==> NoPerm < Mask[null, heapseg(temp1, null)];
@@ -10477,8 +10477,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                   }
                   if (*) {
                     // Exhale precondition of function application
-                    ExhaleWellDef0Mask := Mask;
                     ExhaleWellDef0Heap := Heap;
+                    ExhaleWellDef0Mask := Mask;
                     perm := FullPerm;
                     assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(temp1, null) (BinomialHeap.vpr@372.32--372.57) [100949]"}
                       NoPerm < perm ==> NoPerm < Mask[null, heapseg(temp1, null)];
@@ -10502,8 +10502,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                     HasDirectPerm(Mask, this, Nodes);
                   if (*) {
                     // Exhale precondition of function application
-                    ExhaleWellDef0Mask := Mask;
                     ExhaleWellDef0Heap := Heap;
+                    ExhaleWellDef0Mask := Mask;
                     perm := FullPerm;
                     assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(this.Nodes, temp1) (BinomialHeap.vpr@373.32--373.60) [100953]"}
                       NoPerm < perm ==> NoPerm < Mask[null, heapseg(Heap[this, Nodes], temp1)];
@@ -10516,8 +10516,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                   }
                   if (*) {
                     // Exhale precondition of function application
-                    ExhaleWellDef0Mask := Mask;
                     ExhaleWellDef0Heap := Heap;
+                    ExhaleWellDef0Mask := Mask;
                     perm := FullPerm;
                     assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(this.Nodes, temp1) (BinomialHeap.vpr@373.3--373.65) [100954]"}
                       NoPerm < perm ==> NoPerm < Mask[null, heapseg(Heap[this, Nodes], temp1)];
@@ -10534,8 +10534,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                   }
                   if (*) {
                     // Exhale precondition of function application
-                    ExhaleWellDef0Mask := Mask;
                     ExhaleWellDef0Heap := Heap;
+                    ExhaleWellDef0Mask := Mask;
                     perm := FullPerm;
                     assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(temp1, null) (BinomialHeap.vpr@373.68--373.93) [100957]"}
                       NoPerm < perm ==> NoPerm < Mask[null, heapseg(temp1, null)];
@@ -10556,8 +10556,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
             // -- Check definedness of 0 < segLength(temp2, null)
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 perm := FullPerm;
                 assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(temp2, null) (BinomialHeap.vpr@374.18--374.40) [100959]"}
                   NoPerm < perm ==> NoPerm < Mask[null, heapseg(temp2, null)];
@@ -10574,8 +10574,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
               // -- Check definedness of segDegree(temp1, null, segLength(temp1, null) - 1) <= segDegree(temp2, null, 0)
                 if (*) {
                   // Exhale precondition of function application
-                  ExhaleWellDef0Mask := Mask;
                   ExhaleWellDef0Heap := Heap;
+                  ExhaleWellDef0Mask := Mask;
                   perm := FullPerm;
                   assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(temp1, null) (BinomialHeap.vpr@375.26--375.48) [100960]"}
                     NoPerm < perm ==> NoPerm < Mask[null, heapseg(temp1, null)];
@@ -10588,8 +10588,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                 }
                 if (*) {
                   // Exhale precondition of function application
-                  ExhaleWellDef0Mask := Mask;
                   ExhaleWellDef0Heap := Heap;
+                  ExhaleWellDef0Mask := Mask;
                   perm := FullPerm;
                   assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(temp1, null) (BinomialHeap.vpr@375.3--375.53) [100961]"}
                     NoPerm < perm ==> NoPerm < Mask[null, heapseg(temp1, null)];
@@ -10606,8 +10606,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                 }
                 if (*) {
                   // Exhale precondition of function application
-                  ExhaleWellDef0Mask := Mask;
                   ExhaleWellDef0Heap := Heap;
+                  ExhaleWellDef0Mask := Mask;
                   perm := FullPerm;
                   assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(temp2, null) (BinomialHeap.vpr@375.57--375.82) [100964]"}
                     NoPerm < perm ==> NoPerm < Mask[null, heapseg(temp2, null)];
@@ -10627,8 +10627,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                   HasDirectPerm(Mask, this, Nodes);
                 if (*) {
                   // Exhale precondition of function application
-                  ExhaleWellDef0Mask := Mask;
                   ExhaleWellDef0Heap := Heap;
+                  ExhaleWellDef0Mask := Mask;
                   perm := FullPerm;
                   assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(this.Nodes, temp1) (BinomialHeap.vpr@377.9--377.37) [100967]"}
                     NoPerm < perm ==> NoPerm < Mask[null, heapseg(Heap[this, Nodes], temp1)];
@@ -10641,8 +10641,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                 }
                 if (*) {
                   // Exhale precondition of function application
-                  ExhaleWellDef0Mask := Mask;
                   ExhaleWellDef0Heap := Heap;
+                  ExhaleWellDef0Mask := Mask;
                   perm := FullPerm;
                   assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(temp1, null) (BinomialHeap.vpr@377.40--377.62) [100968]"}
                     NoPerm < perm ==> NoPerm < Mask[null, heapseg(temp1, null)];
@@ -10656,8 +10656,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                 if (2 <= segLength(Heap, Heap[this, Nodes], temp1) + segLength(Heap, temp1, null)) {
                   if (*) {
                     // Exhale precondition of function application
-                    ExhaleWellDef0Mask := Mask;
                     ExhaleWellDef0Heap := Heap;
+                    ExhaleWellDef0Mask := Mask;
                     perm := FullPerm;
                     assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(temp1, null) (BinomialHeap.vpr@378.9--378.31) [100969]"}
                       NoPerm < perm ==> NoPerm < Mask[null, heapseg(temp1, null)];
@@ -10671,8 +10671,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                   if (2 <= segLength(Heap, temp1, null)) {
                     if (*) {
                       // Exhale precondition of function application
-                      ExhaleWellDef0Mask := Mask;
                       ExhaleWellDef0Heap := Heap;
+                      ExhaleWellDef0Mask := Mask;
                       perm := FullPerm;
                       assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(temp1, null) (BinomialHeap.vpr@378.57--378.79) [100970]"}
                         NoPerm < perm ==> NoPerm < Mask[null, heapseg(temp1, null)];
@@ -10685,8 +10685,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                     }
                     if (*) {
                       // Exhale precondition of function application
-                      ExhaleWellDef0Mask := Mask;
                       ExhaleWellDef0Heap := Heap;
+                      ExhaleWellDef0Mask := Mask;
                       perm := FullPerm;
                       assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(temp1, null) (BinomialHeap.vpr@378.34--378.84) [100971]"}
                         NoPerm < perm ==> NoPerm < Mask[null, heapseg(temp1, null)];
@@ -10708,8 +10708,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                       HasDirectPerm(Mask, this, Nodes);
                     if (*) {
                       // Exhale precondition of function application
-                      ExhaleWellDef0Mask := Mask;
                       ExhaleWellDef0Heap := Heap;
+                      ExhaleWellDef0Mask := Mask;
                       perm := FullPerm;
                       assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(this.Nodes, temp1) (BinomialHeap.vpr@378.115--378.143) [100976]"}
                         NoPerm < perm ==> NoPerm < Mask[null, heapseg(Heap[this, Nodes], temp1)];
@@ -10722,8 +10722,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                     }
                     if (*) {
                       // Exhale precondition of function application
-                      ExhaleWellDef0Mask := Mask;
                       ExhaleWellDef0Heap := Heap;
+                      ExhaleWellDef0Mask := Mask;
                       perm := FullPerm;
                       assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(this.Nodes, temp1) (BinomialHeap.vpr@378.86--378.148) [100977]"}
                         NoPerm < perm ==> NoPerm < Mask[null, heapseg(Heap[this, Nodes], temp1)];
@@ -10741,8 +10741,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                   }
                   if (*) {
                     // Exhale precondition of function application
-                    ExhaleWellDef0Mask := Mask;
                     ExhaleWellDef0Heap := Heap;
+                    ExhaleWellDef0Mask := Mask;
                     perm := FullPerm;
                     assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(temp1, null) (BinomialHeap.vpr@378.176--378.198) [100980]"}
                       NoPerm < perm ==> NoPerm < Mask[null, heapseg(temp1, null)];
@@ -10755,8 +10755,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                   }
                   if (*) {
                     // Exhale precondition of function application
-                    ExhaleWellDef0Mask := Mask;
                     ExhaleWellDef0Heap := Heap;
+                    ExhaleWellDef0Mask := Mask;
                     perm := FullPerm;
                     assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(temp1, null) (BinomialHeap.vpr@378.153--378.203) [100981]"}
                       NoPerm < perm ==> NoPerm < Mask[null, heapseg(temp1, null)];
@@ -10778,8 +10778,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                 // -- Check definedness of segDegree(temp1, null, segLength(temp1, null) - 1) < segDegree(temp2, null, 0)
                   if (*) {
                     // Exhale precondition of function application
-                    ExhaleWellDef0Mask := Mask;
                     ExhaleWellDef0Heap := Heap;
+                    ExhaleWellDef0Mask := Mask;
                     perm := FullPerm;
                     assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(temp1, null) (BinomialHeap.vpr@379.26--379.48) [100984]"}
                       NoPerm < perm ==> NoPerm < Mask[null, heapseg(temp1, null)];
@@ -10792,8 +10792,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                   }
                   if (*) {
                     // Exhale precondition of function application
-                    ExhaleWellDef0Mask := Mask;
                     ExhaleWellDef0Heap := Heap;
+                    ExhaleWellDef0Mask := Mask;
                     perm := FullPerm;
                     assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(temp1, null) (BinomialHeap.vpr@379.3--379.53) [100985]"}
                       NoPerm < perm ==> NoPerm < Mask[null, heapseg(temp1, null)];
@@ -10810,8 +10810,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                   }
                   if (*) {
                     // Exhale precondition of function application
-                    ExhaleWellDef0Mask := Mask;
                     ExhaleWellDef0Heap := Heap;
+                    ExhaleWellDef0Mask := Mask;
                     perm := FullPerm;
                     assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(temp2, null) (BinomialHeap.vpr@379.56--379.81) [100988]"}
                       NoPerm < perm ==> NoPerm < Mask[null, heapseg(temp2, null)];
@@ -10835,8 +10835,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                 HasDirectPerm(Mask, this, Nodes);
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 perm := FullPerm;
                 assert {:msg "  Precondition of function segSize might not hold. There might be insufficient permission to access heapseg(this.Nodes, temp1) (BinomialHeap.vpr@380.14--380.40) [100991]"}
                   NoPerm < perm ==> NoPerm < Mask[null, heapseg(Heap[this, Nodes], temp1)];
@@ -10849,8 +10849,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
               }
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 perm := FullPerm;
                 assert {:msg "  Precondition of function segSize might not hold. There might be insufficient permission to access heapseg(temp1, null) (BinomialHeap.vpr@380.43--380.63) [100992]"}
                   NoPerm < perm ==> NoPerm < Mask[null, heapseg(temp1, null)];
@@ -10863,8 +10863,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
               }
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 perm := FullPerm;
                 assert {:msg "  Precondition of function segSize might not hold. There might be insufficient permission to access heapseg(temp2, null) (BinomialHeap.vpr@380.66--380.86) [100993]"}
                   NoPerm < perm ==> NoPerm < Mask[null, heapseg(temp2, null)];
@@ -10879,8 +10879,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                 HasDirectPerm(oldMask, this, Nodes);
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Mask := oldMask;
                 ExhaleWellDef0Heap := oldHeap;
+                ExhaleWellDef0Mask := oldMask;
                 perm := FullPerm;
                 assert {:msg "  Precondition of function segSize might not hold. There might be insufficient permission to access heapseg(this.Nodes, null) (BinomialHeap.vpr@380.94--380.119) [100995]"}
                   NoPerm < perm ==> NoPerm < oldMask[null, heapseg(oldHeap[this, Nodes], null)];
@@ -10890,8 +10890,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
               }
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Mask := oldMask;
                 ExhaleWellDef0Heap := oldHeap;
+                ExhaleWellDef0Mask := oldMask;
                 perm := FullPerm;
                 assert {:msg "  Precondition of function segSize might not hold. There might be insufficient permission to access heapseg(binHeap, null) (BinomialHeap.vpr@380.127--380.149) [100996]"}
                   NoPerm < perm ==> NoPerm < oldMask[null, heapseg(binHeap, null)];
@@ -10907,8 +10907,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
               // -- Check definedness of segParent(temp1, null) == segParent(temp2, null)
                 if (*) {
                   // Exhale precondition of function application
-                  ExhaleWellDef0Mask := Mask;
                   ExhaleWellDef0Heap := Heap;
+                  ExhaleWellDef0Mask := Mask;
                   perm := FullPerm;
                   assert {:msg "  Precondition of function segParent might not hold. There might be insufficient permission to access heapseg(temp1, null) (BinomialHeap.vpr@381.32--381.54) [100997]"}
                     NoPerm < perm ==> NoPerm < Mask[null, heapseg(temp1, null)];
@@ -10923,8 +10923,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                 }
                 if (*) {
                   // Exhale precondition of function application
-                  ExhaleWellDef0Mask := Mask;
                   ExhaleWellDef0Heap := Heap;
+                  ExhaleWellDef0Mask := Mask;
                   perm := FullPerm;
                   assert {:msg "  Precondition of function segParent might not hold. There might be insufficient permission to access heapseg(temp2, null) (BinomialHeap.vpr@381.58--381.80) [100999]"}
                     NoPerm < perm ==> NoPerm < Mask[null, heapseg(temp2, null)];
@@ -10952,8 +10952,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                   HasDirectPerm(Mask, this, Nodes);
                 if (*) {
                   // Exhale precondition of function application
-                  ExhaleWellDef0Mask := Mask;
                   ExhaleWellDef0Heap := Heap;
+                  ExhaleWellDef0Mask := Mask;
                   perm := FullPerm;
                   assert {:msg "  Precondition of function segParent might not hold. There might be insufficient permission to access heapseg(this.Nodes, temp1) (BinomialHeap.vpr@382.38--382.66) [101003]"}
                     NoPerm < perm ==> NoPerm < Mask[null, heapseg(Heap[this, Nodes], temp1)];
@@ -10968,8 +10968,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                 }
                 if (*) {
                   // Exhale precondition of function application
-                  ExhaleWellDef0Mask := Mask;
                   ExhaleWellDef0Heap := Heap;
+                  ExhaleWellDef0Mask := Mask;
                   perm := FullPerm;
                   assert {:msg "  Precondition of function segParent might not hold. There might be insufficient permission to access heapseg(temp1, null) (BinomialHeap.vpr@382.70--382.92) [101005]"}
                     NoPerm < perm ==> NoPerm < Mask[null, heapseg(temp1, null)];
@@ -10997,8 +10997,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                   HasDirectPerm(Mask, this, Nodes);
                 if (*) {
                   // Exhale precondition of function application
-                  ExhaleWellDef0Mask := Mask;
                   ExhaleWellDef0Heap := Heap;
+                  ExhaleWellDef0Mask := Mask;
                   perm := FullPerm;
                   assert {:msg "  Precondition of function segParent might not hold. There might be insufficient permission to access heapseg(this.Nodes, temp1) (BinomialHeap.vpr@383.55--383.83) [101009]"}
                     NoPerm < perm ==> NoPerm < Mask[null, heapseg(Heap[this, Nodes], temp1)];
@@ -11013,8 +11013,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                 }
                 if (*) {
                   // Exhale precondition of function application
-                  ExhaleWellDef0Mask := Mask;
                   ExhaleWellDef0Heap := Heap;
+                  ExhaleWellDef0Mask := Mask;
                   perm := FullPerm;
                   assert {:msg "  Precondition of function segParent might not hold. There might be insufficient permission to access heapseg(temp2, null) (BinomialHeap.vpr@383.87--383.109) [101011]"}
                     NoPerm < perm ==> NoPerm < Mask[null, heapseg(temp2, null)];
@@ -11035,8 +11035,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
             // -- Check definedness of segParent(temp1, null) == old(segParent(this.Nodes, null))
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 perm := FullPerm;
                 assert {:msg "  Precondition of function segParent might not hold. There might be insufficient permission to access heapseg(temp1, null) (BinomialHeap.vpr@384.14--384.36) [101013]"}
                   NoPerm < perm ==> NoPerm < Mask[null, heapseg(temp1, null)];
@@ -11053,8 +11053,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                 HasDirectPerm(oldMask, this, Nodes);
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Mask := oldMask;
                 ExhaleWellDef0Heap := oldHeap;
+                ExhaleWellDef0Mask := oldMask;
                 perm := FullPerm;
                 assert {:msg "  Precondition of function segParent might not hold. There might be insufficient permission to access heapseg(this.Nodes, null) (BinomialHeap.vpr@384.44--384.71) [101016]"}
                   NoPerm < perm ==> NoPerm < oldMask[null, heapseg(oldHeap[this, Nodes], null)];
@@ -11072,8 +11072,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
               // -- Check definedness of segParent(temp2, null) == old(segParent(this.Nodes, null))
                 if (*) {
                   // Exhale precondition of function application
-                  ExhaleWellDef0Mask := Mask;
                   ExhaleWellDef0Heap := Heap;
+                  ExhaleWellDef0Mask := Mask;
                   perm := FullPerm;
                   assert {:msg "  Precondition of function segParent might not hold. There might be insufficient permission to access heapseg(temp2, null) (BinomialHeap.vpr@385.32--385.54) [101018]"}
                     NoPerm < perm ==> NoPerm < Mask[null, heapseg(temp2, null)];
@@ -11090,8 +11090,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                   HasDirectPerm(oldMask, this, Nodes);
                 if (*) {
                   // Exhale precondition of function application
-                  ExhaleWellDef0Mask := oldMask;
                   ExhaleWellDef0Heap := oldHeap;
+                  ExhaleWellDef0Mask := oldMask;
                   perm := FullPerm;
                   assert {:msg "  Precondition of function segParent might not hold. There might be insufficient permission to access heapseg(this.Nodes, null) (BinomialHeap.vpr@385.62--385.89) [101021]"}
                     NoPerm < perm ==> NoPerm < oldMask[null, heapseg(oldHeap[this, Nodes], null)];
@@ -11186,8 +11186,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
               UnfoldingMask := Mask;
               assume heapseg#trigger(UnfoldingHeap, heapseg(temp1, null));
               assume UnfoldingHeap[null, heapseg(temp1, null)] == FrameFragment((if temp1 != null then CombineFrames(UnfoldingHeap[null, tree(temp1)], CombineFrames(FrameFragment(UnfoldingHeap[temp1, sibling]), CombineFrames(UnfoldingHeap[null, heapseg(UnfoldingHeap[temp1, sibling], null)], FrameFragment((if UnfoldingHeap[temp1, sibling] != null then EmptyFrame else EmptyFrame))))) else EmptyFrame));
-              ExhaleWellDef0Mask := UnfoldingMask;
               ExhaleWellDef0Heap := UnfoldingHeap;
+              ExhaleWellDef0Mask := UnfoldingMask;
               perm := FullPerm;
               if (perm != NoPerm) {
                 assert {:msg "  While statement might fail. There might be insufficient permission to access heapseg(temp1, null) (BinomialHeap.vpr@357.9--357.64) [101023]"}
@@ -11248,8 +11248,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
               // -- Translating statement: unfold acc(heapseg(temp1, null), write) -- BinomialHeap.vpr@387.4--387.31
                 assume heapseg#trigger(Heap, heapseg(temp1, null));
                 assume Heap[null, heapseg(temp1, null)] == FrameFragment((if temp1 != null then CombineFrames(Heap[null, tree(temp1)], CombineFrames(FrameFragment(Heap[temp1, sibling]), CombineFrames(Heap[null, heapseg(Heap[temp1, sibling], null)], FrameFragment((if Heap[temp1, sibling] != null then EmptyFrame else EmptyFrame))))) else EmptyFrame));
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 perm := FullPerm;
                 if (perm != NoPerm) {
                   assert {:msg "  Unfolding heapseg(temp1, null) might fail. There might be insufficient permission to access heapseg(temp1, null) (BinomialHeap.vpr@387.4--387.31) [101025]"}
@@ -11302,16 +11302,16 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
               // -- Translating statement: assert (unfolding acc(heapseg(temp1, null), write) in
   //     (unfolding acc(tree(t), write) in
   //       (unfolding acc(tree(temp1), write) in t != temp1))) -- BinomialHeap.vpr@390.4--390.101
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 
                 // -- Check definedness of (unfolding acc(heapseg(temp1, null), write) in (unfolding acc(tree(t), write) in (unfolding acc(tree(temp1), write) in t != temp1)))
                   UnfoldingHeap := ExhaleWellDef0Heap;
                   UnfoldingMask := ExhaleWellDef0Mask;
                   assume heapseg#trigger(UnfoldingHeap, heapseg(temp1, null));
                   assume UnfoldingHeap[null, heapseg(temp1, null)] == FrameFragment((if temp1 != null then CombineFrames(UnfoldingHeap[null, tree(temp1)], CombineFrames(FrameFragment(UnfoldingHeap[temp1, sibling]), CombineFrames(UnfoldingHeap[null, heapseg(UnfoldingHeap[temp1, sibling], null)], FrameFragment((if UnfoldingHeap[temp1, sibling] != null then EmptyFrame else EmptyFrame))))) else EmptyFrame));
-                  ExhaleWellDef1Mask := UnfoldingMask;
                   ExhaleWellDef1Heap := UnfoldingHeap;
+                  ExhaleWellDef1Mask := UnfoldingMask;
                   perm := FullPerm;
                   if (perm != NoPerm) {
                     assert {:msg "  Assert might fail. There might be insufficient permission to access heapseg(temp1, null) (BinomialHeap.vpr@390.11--390.101) [101027]"}
@@ -11345,8 +11345,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                   Unfolding1Mask := UnfoldingMask;
                   assume tree#trigger(Unfolding1Heap, tree(t_2));
                   assume Unfolding1Heap[null, tree(t_2)] == CombineFrames(FrameFragment(Unfolding1Heap[t_2, key]), CombineFrames(FrameFragment(Unfolding1Heap[t_2, degree]), CombineFrames(FrameFragment(Unfolding1Heap[t_2, child]), CombineFrames(FrameFragment(Unfolding1Heap[t_2, parent]), CombineFrames(Unfolding1Heap[null, heapseg(Unfolding1Heap[t_2, child], null)], CombineFrames(FrameFragment((if 0 < Unfolding1Heap[t_2, degree] then EmptyFrame else EmptyFrame)), FrameFragment((if Unfolding1Heap[t_2, child] != null then EmptyFrame else EmptyFrame))))))));
-                  ExhaleWellDef1Mask := Unfolding1Mask;
                   ExhaleWellDef1Heap := Unfolding1Heap;
+                  ExhaleWellDef1Mask := Unfolding1Mask;
                   perm := FullPerm;
                   if (perm != NoPerm) {
                     assert {:msg "  Assert might fail. There might be insufficient permission to access tree(t) (BinomialHeap.vpr@390.11--390.101) [101028]"}
@@ -11393,8 +11393,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                   Unfolding2Mask := Unfolding1Mask;
                   assume tree#trigger(Unfolding2Heap, tree(temp1));
                   assume Unfolding2Heap[null, tree(temp1)] == CombineFrames(FrameFragment(Unfolding2Heap[temp1, key]), CombineFrames(FrameFragment(Unfolding2Heap[temp1, degree]), CombineFrames(FrameFragment(Unfolding2Heap[temp1, child]), CombineFrames(FrameFragment(Unfolding2Heap[temp1, parent]), CombineFrames(Unfolding2Heap[null, heapseg(Unfolding2Heap[temp1, child], null)], CombineFrames(FrameFragment((if 0 < Unfolding2Heap[temp1, degree] then EmptyFrame else EmptyFrame)), FrameFragment((if Unfolding2Heap[temp1, child] != null then EmptyFrame else EmptyFrame))))))));
-                  ExhaleWellDef1Mask := Unfolding2Mask;
                   ExhaleWellDef1Heap := Unfolding2Heap;
+                  ExhaleWellDef1Mask := Unfolding2Mask;
                   perm := FullPerm;
                   if (perm != NoPerm) {
                     assert {:msg "  Assert might fail. There might be insufficient permission to access tree(temp1) (BinomialHeap.vpr@390.11--390.101) [101029]"}
@@ -11559,8 +11559,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                 assume state(Heap, Mask);
               
               // -- Translating statement: fold acc(heapseg(temp1, temp1), write) -- BinomialHeap.vpr@392.4--392.30
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 if (temp1 != temp1) {
                   perm := FullPerm;
                   if (perm != NoPerm) {
@@ -11621,8 +11621,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                 assume state(Heap, Mask);
               
               // -- Translating statement: fold acc(heapseg(t, temp1), write) -- BinomialHeap.vpr@393.4--393.26
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 if (t_2 != temp1) {
                   perm := FullPerm;
                   if (perm != NoPerm) {
@@ -11685,8 +11685,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
               // -- Translating statement: unfold acc(heapseg(temp1, null), write) -- BinomialHeap.vpr@394.4--394.31
                 assume heapseg#trigger(Heap, heapseg(temp1, null));
                 assume Heap[null, heapseg(temp1, null)] == FrameFragment((if temp1 != null then CombineFrames(Heap[null, tree(temp1)], CombineFrames(FrameFragment(Heap[temp1, sibling]), CombineFrames(Heap[null, heapseg(Heap[temp1, sibling], null)], FrameFragment((if Heap[temp1, sibling] != null then EmptyFrame else EmptyFrame))))) else EmptyFrame));
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 perm := FullPerm;
                 if (perm != NoPerm) {
                   assert {:msg "  Unfolding heapseg(temp1, null) might fail. There might be insufficient permission to access heapseg(temp1, null) (BinomialHeap.vpr@394.4--394.31) [101039]"}
@@ -11734,8 +11734,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                 arg_a_3 := Heap[this, Nodes];
                 
                 // -- Exhaling precondition
-                  ExhaleWellDef0Mask := Mask;
                   ExhaleWellDef0Heap := Heap;
+                  ExhaleWellDef0Mask := Mask;
                   perm := FullPerm;
                   if (perm != NoPerm) {
                     assert {:msg "  The precondition of method concat might not hold. There might be insufficient permission to access heapseg(this.Nodes, t) (BinomialHeap.vpr@395.4--395.32) [101041]"}
@@ -11818,8 +11818,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                 assume state(Heap, Mask);
               
               // -- Translating statement: fold acc(heapseg(temp1, null), write) -- BinomialHeap.vpr@396.4--396.29
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 if (temp1 != null) {
                   perm := FullPerm;
                   if (perm != NoPerm) {
@@ -11879,8 +11879,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
                 assume state(Heap, Mask);
                 assume state(Heap, Mask);
             // Exhale invariant
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             assert {:msg "  Loop invariant temp1 != null might not be preserved. Assertion temp1 != null might not hold. (BinomialHeap.vpr@358.14--358.27) [101049]"}
               temp1 != null;
             perm := FullPerm;
@@ -12037,8 +12037,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
       // -- Translating statement: unfold acc(heapseg(temp1, null), write) -- BinomialHeap.vpr@400.3--400.30
         assume heapseg#trigger(Heap, heapseg(temp1, null));
         assume Heap[null, heapseg(temp1, null)] == FrameFragment((if temp1 != null then CombineFrames(Heap[null, tree(temp1)], CombineFrames(FrameFragment(Heap[temp1, sibling]), CombineFrames(Heap[null, heapseg(Heap[temp1, sibling], null)], FrameFragment((if Heap[temp1, sibling] != null then EmptyFrame else EmptyFrame))))) else EmptyFrame));
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Unfolding heapseg(temp1, null) might fail. There might be insufficient permission to access heapseg(temp1, null) (BinomialHeap.vpr@400.3--400.30) [101072]"}
@@ -12078,14 +12078,14 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
       
       // -- Translating statement: assert 1 < segLength(temp2, null) ==>
   //   segDegree(temp2, null, 0) < segDegree(temp2, null, 1) -- BinomialHeap.vpr@403.3--403.94
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         
         // -- Check definedness of 1 < segLength(temp2, null)
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Mask := ExhaleWellDef0Mask;
             ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+            ExhaleWellDef1Mask := ExhaleWellDef0Mask;
             perm := FullPerm;
             assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(temp2, null) (BinomialHeap.vpr@403.14--403.36) [101076]"}
               NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, heapseg(temp2, null)];
@@ -12101,8 +12101,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
           // -- Check definedness of segDegree(temp2, null, 0) < segDegree(temp2, null, 1)
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef1Mask := ExhaleWellDef0Mask;
               ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+              ExhaleWellDef1Mask := ExhaleWellDef0Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(temp2, null) (BinomialHeap.vpr@403.41--403.66) [101077]"}
                 NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, heapseg(temp2, null)];
@@ -12117,8 +12117,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
             }
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef1Mask := ExhaleWellDef0Mask;
               ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+              ExhaleWellDef1Mask := ExhaleWellDef0Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(temp2, null) (BinomialHeap.vpr@403.69--403.94) [101079]"}
                 NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, heapseg(temp2, null)];
@@ -12143,8 +12143,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
         assume state(Heap, Mask);
       
       // -- Translating statement: fold acc(heapseg(temp1, null), write) -- BinomialHeap.vpr@405.3--405.28
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         if (temp1 != null) {
           perm := FullPerm;
           if (perm != NoPerm) {
@@ -12216,8 +12216,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
     arg_a_4 := Heap[this, Nodes];
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  The precondition of method concat might not hold. There might be insufficient permission to access heapseg(this.Nodes, temp1) (BinomialHeap.vpr@408.2--408.33) [101093]"}
@@ -12300,8 +12300,8 @@ procedure merge(this: Ref, binHeap: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of merge might not hold. There might be insufficient permission to access this.Nodes (BinomialHeap.vpr@252.10--252.107) [101097]"}
@@ -12336,11 +12336,11 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var prevTemp: Ref;
@@ -12385,8 +12385,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
         HasDirectPerm(Mask, this, Nodes);
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function sorted might not hold. There might be insufficient permission to access heapseg(this.Nodes, null) (BinomialHeap.vpr@420.30--420.54) [101105]"}
           NoPerm < perm ==> NoPerm < Mask[null, heapseg(Heap[this, Nodes], null)];
@@ -12413,8 +12413,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
     // -- Check definedness of sorted(binHeap, null)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function sorted might not hold. There might be insufficient permission to access heapseg(binHeap, null) (BinomialHeap.vpr@422.37--422.58) [101107]"}
           NoPerm < perm ==> NoPerm < Mask[null, heapseg(binHeap, null)];
@@ -12435,8 +12435,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
           HasDirectPerm(Mask, this, Nodes);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           perm := FullPerm;
           assert {:msg "  Precondition of function segParent might not hold. There might be insufficient permission to access heapseg(this.Nodes, null) (BinomialHeap.vpr@423.31--423.58) [101109]"}
             NoPerm < perm ==> NoPerm < Mask[null, heapseg(Heap[this, Nodes], null)];
@@ -12451,8 +12451,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
         }
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           perm := FullPerm;
           assert {:msg "  Precondition of function segParent might not hold. There might be insufficient permission to access heapseg(binHeap, null) (BinomialHeap.vpr@423.62--423.86) [101111]"}
             NoPerm < perm ==> NoPerm < Mask[null, heapseg(binHeap, null)];
@@ -12472,8 +12472,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -12497,8 +12497,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
         HasDirectPerm(PostMask, this, Nodes);
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
+        ExhaleWellDef0Mask := PostMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function sorted might not hold. There might be insufficient permission to access heapseg(this.Nodes, null) (BinomialHeap.vpr@425.30--425.54) [101115]"}
           NoPerm < perm ==> NoPerm < PostMask[null, heapseg(PostHeap[this, Nodes], null)];
@@ -12524,8 +12524,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
         HasDirectPerm(PostMask, this, Nodes);
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
+        ExhaleWellDef0Mask := PostMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function segSize might not hold. There might be insufficient permission to access heapseg(this.Nodes, null) (BinomialHeap.vpr@427.10--427.35) [101118]"}
           NoPerm < perm ==> NoPerm < PostMask[null, heapseg(PostHeap[this, Nodes], null)];
@@ -12540,8 +12540,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
         HasDirectPerm(oldMask, this, Nodes);
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := oldMask;
         ExhaleWellDef0Heap := oldHeap;
+        ExhaleWellDef0Mask := oldMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function segSize might not hold. There might be insufficient permission to access heapseg(this.Nodes, null) (BinomialHeap.vpr@427.43--427.68) [101120]"}
           NoPerm < perm ==> NoPerm < oldMask[null, heapseg(oldHeap[this, Nodes], null)];
@@ -12551,8 +12551,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := oldMask;
         ExhaleWellDef0Heap := oldHeap;
+        ExhaleWellDef0Mask := oldMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function segSize might not hold. There might be insufficient permission to access heapseg(binHeap, null) (BinomialHeap.vpr@427.76--427.98) [101121]"}
           NoPerm < perm ==> NoPerm < oldMask[null, heapseg(binHeap, null)];
@@ -12569,8 +12569,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
         HasDirectPerm(PostMask, this, Nodes);
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
+        ExhaleWellDef0Mask := PostMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function segParent might not hold. There might be insufficient permission to access heapseg(this.Nodes, null) (BinomialHeap.vpr@428.10--428.37) [101123]"}
           NoPerm < perm ==> NoPerm < PostMask[null, heapseg(PostHeap[this, Nodes], null)];
@@ -12587,8 +12587,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
         HasDirectPerm(oldMask, this, Nodes);
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := oldMask;
         ExhaleWellDef0Heap := oldHeap;
+        ExhaleWellDef0Mask := oldMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function segParent might not hold. There might be insufficient permission to access heapseg(this.Nodes, null) (BinomialHeap.vpr@428.45--428.72) [101126]"}
           NoPerm < perm ==> NoPerm < oldMask[null, heapseg(oldHeap[this, Nodes], null)];
@@ -12614,8 +12614,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  The precondition of method merge might not hold. There might be insufficient permission to access this.Nodes (BinomialHeap.vpr@430.2--430.22) [101128]"}
@@ -12686,8 +12686,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
         HasDirectPerm(Mask, this, Nodes);
     assume heapseg#trigger(Heap, heapseg(Heap[this, Nodes], null));
     assume Heap[null, heapseg(Heap[this, Nodes], null)] == FrameFragment((if Heap[this, Nodes] != null then CombineFrames(Heap[null, tree(Heap[this, Nodes])], CombineFrames(FrameFragment(Heap[Heap[this, Nodes], sibling]), CombineFrames(Heap[null, heapseg(Heap[Heap[this, Nodes], sibling], null)], FrameFragment((if Heap[Heap[this, Nodes], sibling] != null then EmptyFrame else EmptyFrame))))) else EmptyFrame));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding heapseg(this.Nodes, null) might fail. There might be insufficient permission to access heapseg(this.Nodes, null) (BinomialHeap.vpr@437.2--437.34) [101139]"}
@@ -12738,8 +12738,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Loop invariant acc(this.Nodes, write) might not hold on entry. There might be insufficient permission to access this.Nodes (BinomialHeap.vpr@441.13--441.28) [101144]"}
@@ -12873,8 +12873,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
               HasDirectPerm(Mask, this, Nodes);
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function sorted might not hold. There might be insufficient permission to access heapseg(this.Nodes, prevTemp) (BinomialHeap.vpr@442.67--442.95) [101171]"}
                 NoPerm < perm ==> NoPerm < Mask[null, heapseg(Heap[this, Nodes], prevTemp)];
@@ -12904,8 +12904,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
         // -- Check definedness of presorted(nextTemp, null)
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
             assert {:msg "  Precondition of function presorted might not hold. There might be insufficient permission to access heapseg(nextTemp, null) (BinomialHeap.vpr@444.40--444.65) [101173]"}
               NoPerm < perm ==> NoPerm < Mask[null, heapseg(nextTemp, null)];
@@ -12936,8 +12936,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
           // -- Check definedness of treeDegree(temp) <= segDegree(nextTemp, null, 0)
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function treeDegree might not hold. There might be insufficient permission to access tree(temp) (BinomialHeap.vpr@446.24--446.40) [101175]"}
                 NoPerm < perm ==> NoPerm < Mask[null, tree(temp_1)];
@@ -12950,8 +12950,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
             }
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(nextTemp, null) (BinomialHeap.vpr@446.44--446.72) [101176]"}
                 NoPerm < perm ==> NoPerm < Mask[null, heapseg(nextTemp, null)];
@@ -12970,8 +12970,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
           // -- Check definedness of treeParent(temp) == segParent(nextTemp, null)
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function treeParent might not hold. There might be insufficient permission to access tree(temp) (BinomialHeap.vpr@447.2--447.18) [101178]"}
                 NoPerm < perm ==> NoPerm < Mask[null, tree(temp_1)];
@@ -12984,8 +12984,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
             }
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segParent might not hold. There might be insufficient permission to access heapseg(nextTemp, null) (BinomialHeap.vpr@447.22--447.47) [101179]"}
                 NoPerm < perm ==> NoPerm < Mask[null, heapseg(nextTemp, null)];
@@ -13019,8 +13019,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
           // -- Check definedness of treeDegree(prevTemp) <= treeDegree(temp)
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function treeDegree might not hold. There might be insufficient permission to access tree(prevTemp) (BinomialHeap.vpr@449.2--449.22) [101182]"}
                 NoPerm < perm ==> NoPerm < Mask[null, tree(prevTemp)];
@@ -13033,8 +13033,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
             }
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function treeDegree might not hold. There might be insufficient permission to access tree(temp) (BinomialHeap.vpr@449.26--449.42) [101183]"}
                 NoPerm < perm ==> NoPerm < Mask[null, tree(temp_1)];
@@ -13051,8 +13051,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
           // -- Check definedness of treeParent(prevTemp) == treeParent(temp)
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function treeParent might not hold. There might be insufficient permission to access tree(prevTemp) (BinomialHeap.vpr@450.2--450.22) [101184]"}
                 NoPerm < perm ==> NoPerm < Mask[null, tree(prevTemp)];
@@ -13065,8 +13065,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
             }
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function treeParent might not hold. There might be insufficient permission to access tree(temp) (BinomialHeap.vpr@450.26--450.42) [101185]"}
                 NoPerm < perm ==> NoPerm < Mask[null, tree(temp_1)];
@@ -13087,8 +13087,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
               HasDirectPerm(Mask, this, Nodes);
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(this.Nodes, prevTemp) (BinomialHeap.vpr@451.37--451.68) [101187]"}
                 NoPerm < perm ==> NoPerm < Mask[null, heapseg(Heap[this, Nodes], prevTemp)];
@@ -13102,8 +13102,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
             if (0 < segLength(Heap, Heap[this, Nodes], prevTemp)) {
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 perm := FullPerm;
                 assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(nextTemp, null) (BinomialHeap.vpr@451.77--451.102) [101188]"}
                   NoPerm < perm ==> NoPerm < Mask[null, heapseg(nextTemp, null)];
@@ -13117,8 +13117,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
               if (2 <= segLength(Heap, nextTemp, null)) {
                 if (*) {
                   // Exhale precondition of function application
-                  ExhaleWellDef0Mask := Mask;
                   ExhaleWellDef0Heap := Heap;
+                  ExhaleWellDef0Mask := Mask;
                   perm := FullPerm;
                   assert {:msg "  Precondition of function treeDegree might not hold. There might be insufficient permission to access tree(temp) (BinomialHeap.vpr@452.2--452.18) [101189]"}
                     NoPerm < perm ==> NoPerm < Mask[null, tree(temp_1)];
@@ -13131,8 +13131,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
                 }
                 if (*) {
                   // Exhale precondition of function application
-                  ExhaleWellDef0Mask := Mask;
                   ExhaleWellDef0Heap := Heap;
+                  ExhaleWellDef0Mask := Mask;
                   perm := FullPerm;
                   assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(nextTemp, null) (BinomialHeap.vpr@452.22--452.50) [101190]"}
                     NoPerm < perm ==> NoPerm < Mask[null, heapseg(nextTemp, null)];
@@ -13148,8 +13148,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
                 if (treeDegree(Heap, temp_1) == segDegree(Heap, nextTemp, null, 0)) {
                   if (*) {
                     // Exhale precondition of function application
-                    ExhaleWellDef0Mask := Mask;
                     ExhaleWellDef0Heap := Heap;
+                    ExhaleWellDef0Mask := Mask;
                     perm := FullPerm;
                     assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(nextTemp, null) (BinomialHeap.vpr@452.54--452.82) [101192]"}
                       NoPerm < perm ==> NoPerm < Mask[null, heapseg(nextTemp, null)];
@@ -13164,8 +13164,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
                   }
                   if (*) {
                     // Exhale precondition of function application
-                    ExhaleWellDef0Mask := Mask;
                     ExhaleWellDef0Heap := Heap;
+                    ExhaleWellDef0Mask := Mask;
                     perm := FullPerm;
                     assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(nextTemp, null) (BinomialHeap.vpr@452.86--452.114) [101194]"}
                       NoPerm < perm ==> NoPerm < Mask[null, heapseg(nextTemp, null)];
@@ -13188,8 +13188,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
           // -- Check definedness of treeDegree(prevTemp) < treeDegree(temp)
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function treeDegree might not hold. There might be insufficient permission to access tree(prevTemp) (BinomialHeap.vpr@454.2--454.22) [101196]"}
                 NoPerm < perm ==> NoPerm < Mask[null, tree(prevTemp)];
@@ -13202,8 +13202,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
             }
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function treeDegree might not hold. There might be insufficient permission to access tree(temp) (BinomialHeap.vpr@454.25--454.41) [101197]"}
                 NoPerm < perm ==> NoPerm < Mask[null, tree(temp_1)];
@@ -13222,8 +13222,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
           if (prevTemp != null) {
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function treeDegree might not hold. There might be insufficient permission to access tree(prevTemp) (BinomialHeap.vpr@455.33--455.53) [101198]"}
                 NoPerm < perm ==> NoPerm < Mask[null, tree(prevTemp)];
@@ -13236,8 +13236,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
             }
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function treeDegree might not hold. There might be insufficient permission to access tree(temp) (BinomialHeap.vpr@455.57--455.73) [101199]"}
                 NoPerm < perm ==> NoPerm < Mask[null, tree(temp_1)];
@@ -13255,8 +13255,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
           // -- Check definedness of 0 < segLength(nextTemp, null)
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(nextTemp, null) (BinomialHeap.vpr@457.6--457.31) [101200]"}
                 NoPerm < perm ==> NoPerm < Mask[null, heapseg(nextTemp, null)];
@@ -13273,8 +13273,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
           // -- Check definedness of treeDegree(temp) == segDegree(nextTemp, null, 0)
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function treeDegree might not hold. There might be insufficient permission to access tree(temp) (BinomialHeap.vpr@457.35--457.51) [101201]"}
                 NoPerm < perm ==> NoPerm < Mask[null, tree(temp_1)];
@@ -13287,8 +13287,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
             }
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(nextTemp, null) (BinomialHeap.vpr@457.55--457.83) [101202]"}
                 NoPerm < perm ==> NoPerm < Mask[null, heapseg(nextTemp, null)];
@@ -13306,8 +13306,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
           // -- Check definedness of 2 <= segLength(nextTemp, null)
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(nextTemp, null) (BinomialHeap.vpr@458.8--458.33) [101204]"}
                 NoPerm < perm ==> NoPerm < Mask[null, heapseg(nextTemp, null)];
@@ -13324,8 +13324,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
             // -- Check definedness of segDegree(nextTemp, null, 0) < segDegree(nextTemp, null, 1)
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 perm := FullPerm;
                 assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(nextTemp, null) (BinomialHeap.vpr@458.38--458.66) [101205]"}
                   NoPerm < perm ==> NoPerm < Mask[null, heapseg(nextTemp, null)];
@@ -13340,8 +13340,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
               }
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 perm := FullPerm;
                 assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(nextTemp, null) (BinomialHeap.vpr@458.69--458.97) [101207]"}
                   NoPerm < perm ==> NoPerm < Mask[null, heapseg(nextTemp, null)];
@@ -13365,8 +13365,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
               HasDirectPerm(Mask, this, Nodes);
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(this.Nodes, prevTemp) (BinomialHeap.vpr@459.37--459.68) [101210]"}
                 NoPerm < perm ==> NoPerm < Mask[null, heapseg(Heap[this, Nodes], prevTemp)];
@@ -13388,8 +13388,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
               HasDirectPerm(Mask, this, Nodes);
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(this.Nodes, prevTemp) (BinomialHeap.vpr@461.34--461.65) [101213]"}
                 NoPerm < perm ==> NoPerm < Mask[null, heapseg(Heap[this, Nodes], prevTemp)];
@@ -13402,8 +13402,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
             }
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(this.Nodes, prevTemp) (BinomialHeap.vpr@461.2--461.70) [101214]"}
                 NoPerm < perm ==> NoPerm < Mask[null, heapseg(Heap[this, Nodes], prevTemp)];
@@ -13420,8 +13420,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
             }
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function treeDegree might not hold. There might be insufficient permission to access tree(prevTemp) (BinomialHeap.vpr@461.73--461.93) [101217]"}
                 NoPerm < perm ==> NoPerm < Mask[null, tree(prevTemp)];
@@ -13443,8 +13443,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
               HasDirectPerm(Mask, this, Nodes);
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segSize might not hold. There might be insufficient permission to access heapseg(this.Nodes, prevTemp) (BinomialHeap.vpr@463.2--463.31) [101219]"}
                 NoPerm < perm ==> NoPerm < Mask[null, heapseg(Heap[this, Nodes], prevTemp)];
@@ -13457,8 +13457,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
             }
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function treeSize might not hold. There might be insufficient permission to access tree(prevTemp) (BinomialHeap.vpr@463.34--463.52) [101220]"}
                 NoPerm < perm ==> NoPerm < Mask[null, tree(prevTemp)];
@@ -13471,8 +13471,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
             }
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function treeSize might not hold. There might be insufficient permission to access tree(temp) (BinomialHeap.vpr@463.55--463.69) [101221]"}
                 NoPerm < perm ==> NoPerm < Mask[null, tree(temp_1)];
@@ -13485,8 +13485,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
             }
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segSize might not hold. There might be insufficient permission to access heapseg(nextTemp, null) (BinomialHeap.vpr@463.72--463.95) [101222]"}
                 NoPerm < perm ==> NoPerm < Mask[null, heapseg(nextTemp, null)];
@@ -13501,8 +13501,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
               HasDirectPerm(oldMask, this, Nodes);
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := oldMask;
               ExhaleWellDef0Heap := oldHeap;
+              ExhaleWellDef0Mask := oldMask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segSize might not hold. There might be insufficient permission to access heapseg(this.Nodes, null) (BinomialHeap.vpr@463.103--463.128) [101224]"}
                 NoPerm < perm ==> NoPerm < oldMask[null, heapseg(oldHeap[this, Nodes], null)];
@@ -13512,8 +13512,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
             }
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := oldMask;
               ExhaleWellDef0Heap := oldHeap;
+              ExhaleWellDef0Mask := oldMask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segSize might not hold. There might be insufficient permission to access heapseg(binHeap, null) (BinomialHeap.vpr@463.136--463.158) [101225]"}
                 NoPerm < perm ==> NoPerm < oldMask[null, heapseg(binHeap, null)];
@@ -13530,8 +13530,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
           // -- Check definedness of treeSize(temp) + segSize(nextTemp, null) == old(segSize(this.Nodes, null)) + old(segSize(binHeap, null))
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function treeSize might not hold. There might be insufficient permission to access tree(temp) (BinomialHeap.vpr@465.2--465.16) [101226]"}
                 NoPerm < perm ==> NoPerm < Mask[null, tree(temp_1)];
@@ -13544,8 +13544,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
             }
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segSize might not hold. There might be insufficient permission to access heapseg(nextTemp, null) (BinomialHeap.vpr@465.19--465.42) [101227]"}
                 NoPerm < perm ==> NoPerm < Mask[null, heapseg(nextTemp, null)];
@@ -13560,8 +13560,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
               HasDirectPerm(oldMask, this, Nodes);
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := oldMask;
               ExhaleWellDef0Heap := oldHeap;
+              ExhaleWellDef0Mask := oldMask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segSize might not hold. There might be insufficient permission to access heapseg(this.Nodes, null) (BinomialHeap.vpr@465.50--465.75) [101229]"}
                 NoPerm < perm ==> NoPerm < oldMask[null, heapseg(oldHeap[this, Nodes], null)];
@@ -13571,8 +13571,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
             }
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := oldMask;
               ExhaleWellDef0Heap := oldHeap;
+              ExhaleWellDef0Mask := oldMask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segSize might not hold. There might be insufficient permission to access heapseg(binHeap, null) (BinomialHeap.vpr@465.83--465.105) [101230]"}
                 NoPerm < perm ==> NoPerm < oldMask[null, heapseg(binHeap, null)];
@@ -13597,8 +13597,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
               HasDirectPerm(Mask, this, Nodes);
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function segParent might not hold. There might be insufficient permission to access heapseg(this.Nodes, prevTemp) (BinomialHeap.vpr@466.60--466.91) [101233]"}
                 NoPerm < perm ==> NoPerm < Mask[null, heapseg(Heap[this, Nodes], prevTemp)];
@@ -13613,8 +13613,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
             }
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               assert {:msg "  Precondition of function treeParent might not hold. There might be insufficient permission to access tree(prevTemp) (BinomialHeap.vpr@466.95--466.115) [101235]"}
                 NoPerm < perm ==> NoPerm < Mask[null, tree(prevTemp)];
@@ -13633,8 +13633,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
         // -- Check definedness of treeParent(temp) == old(segParent(this.Nodes, null))
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
             assert {:msg "  Precondition of function treeParent might not hold. There might be insufficient permission to access tree(temp) (BinomialHeap.vpr@467.13--467.29) [101236]"}
               NoPerm < perm ==> NoPerm < Mask[null, tree(temp_1)];
@@ -13649,8 +13649,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
             HasDirectPerm(oldMask, this, Nodes);
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := oldMask;
             ExhaleWellDef0Heap := oldHeap;
+            ExhaleWellDef0Mask := oldMask;
             perm := FullPerm;
             assert {:msg "  Precondition of function segParent might not hold. There might be insufficient permission to access heapseg(this.Nodes, null) (BinomialHeap.vpr@467.37--467.64) [101238]"}
               NoPerm < perm ==> NoPerm < oldMask[null, heapseg(oldHeap[this, Nodes], null)];
@@ -13762,8 +13762,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
           // -- Translating statement: unfold acc(heapseg(nextTemp, null), write) -- BinomialHeap.vpr@469.3--469.33
             assume heapseg#trigger(Heap, heapseg(nextTemp, null));
             assume Heap[null, heapseg(nextTemp, null)] == FrameFragment((if nextTemp != null then CombineFrames(Heap[null, tree(nextTemp)], CombineFrames(FrameFragment(Heap[nextTemp, sibling]), CombineFrames(Heap[null, heapseg(Heap[nextTemp, sibling], null)], FrameFragment((if Heap[nextTemp, sibling] != null then EmptyFrame else EmptyFrame))))) else EmptyFrame));
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
             if (perm != NoPerm) {
               assert {:msg "  Unfolding heapseg(nextTemp, null) might fail. There might be insufficient permission to access heapseg(nextTemp, null) (BinomialHeap.vpr@469.3--469.33) [101240]"}
@@ -13806,8 +13806,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
             // -- Check definedness of treeDegree(temp) != treeDegree(nextTemp) || nextTemp.sibling != null && segDegree(nextTemp.sibling, null, 0) == treeDegree(temp)
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 perm := FullPerm;
                 assert {:msg "  Precondition of function treeDegree might not hold. There might be insufficient permission to access tree(temp) (BinomialHeap.vpr@470.6--470.22) [101241]"}
                   NoPerm < perm ==> NoPerm < Mask[null, tree(temp_1)];
@@ -13820,8 +13820,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
               }
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 perm := FullPerm;
                 assert {:msg "  Precondition of function treeDegree might not hold. There might be insufficient permission to access tree(nextTemp) (BinomialHeap.vpr@470.26--470.46) [101242]"}
                   NoPerm < perm ==> NoPerm < Mask[null, tree(nextTemp)];
@@ -13840,8 +13840,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
                     HasDirectPerm(Mask, nextTemp, sibling);
                   if (*) {
                     // Exhale precondition of function application
-                    ExhaleWellDef0Mask := Mask;
                     ExhaleWellDef0Heap := Heap;
+                    ExhaleWellDef0Mask := Mask;
                     perm := FullPerm;
                     assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(nextTemp.sibling, null) (BinomialHeap.vpr@471.34--471.70) [101245]"}
                       NoPerm < perm ==> NoPerm < Mask[null, heapseg(Heap[nextTemp, sibling], null)];
@@ -13856,8 +13856,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
                   }
                   if (*) {
                     // Exhale precondition of function application
-                    ExhaleWellDef0Mask := Mask;
                     ExhaleWellDef0Heap := Heap;
+                    ExhaleWellDef0Mask := Mask;
                     perm := FullPerm;
                     assert {:msg "  Precondition of function treeDegree might not hold. There might be insufficient permission to access tree(temp) (BinomialHeap.vpr@471.74--471.90) [101247]"}
                       NoPerm < perm ==> NoPerm < Mask[null, tree(temp_1)];
@@ -13880,8 +13880,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
                     // -- Check definedness of acc(heapseg(this.Nodes, temp), write)
                       assert {:msg "  Folding heapseg(this.Nodes, temp) might fail. There might be insufficient permission to access this.Nodes (BinomialHeap.vpr@474.5--474.35) [101248]"}
                         HasDirectPerm(Mask, this, Nodes);
-                    ExhaleWellDef0Mask := Mask;
                     ExhaleWellDef0Heap := Heap;
+                    ExhaleWellDef0Mask := Mask;
                     if (Heap[this, Nodes] != temp_1) {
                       perm := FullPerm;
                       if (perm != NoPerm) {
@@ -13943,8 +13943,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
                 } else {
                   
                   // -- Translating statement: fold acc(heapseg(temp, temp), write) -- BinomialHeap.vpr@476.5--476.29
-                    ExhaleWellDef0Mask := Mask;
                     ExhaleWellDef0Heap := Heap;
+                    ExhaleWellDef0Mask := Mask;
                     if (temp_1 != temp_1) {
                       perm := FullPerm;
                       if (perm != NoPerm) {
@@ -14005,8 +14005,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
                     assume state(Heap, Mask);
                   
                   // -- Translating statement: fold acc(heapseg(prevTemp, temp), write) -- BinomialHeap.vpr@477.5--477.33
-                    ExhaleWellDef0Mask := Mask;
                     ExhaleWellDef0Heap := Heap;
+                    ExhaleWellDef0Mask := Mask;
                     if (prevTemp != temp_1) {
                       perm := FullPerm;
                       if (perm != NoPerm) {
@@ -14076,8 +14076,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
                     arg_a := Heap[this, Nodes];
                     
                     // -- Exhaling precondition
-                      ExhaleWellDef0Mask := Mask;
                       ExhaleWellDef0Heap := Heap;
+                      ExhaleWellDef0Mask := Mask;
                       perm := FullPerm;
                       if (perm != NoPerm) {
                         assert {:msg "  The precondition of method concat might not hold. There might be insufficient permission to access heapseg(this.Nodes, prevTemp) (BinomialHeap.vpr@478.5--478.39) [101262]"}
@@ -14175,8 +14175,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
                 // -- Check definedness of treeKey(temp) <= treeKey(nextTemp)
                   if (*) {
                     // Exhale precondition of function application
-                    ExhaleWellDef0Mask := Mask;
                     ExhaleWellDef0Heap := Heap;
+                    ExhaleWellDef0Mask := Mask;
                     perm := FullPerm;
                     assert {:msg "  Precondition of function treeKey might not hold. There might be insufficient permission to access tree(temp) (BinomialHeap.vpr@483.7--483.20) [101266]"}
                       NoPerm < perm ==> NoPerm < Mask[null, tree(temp_1)];
@@ -14189,8 +14189,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
                   }
                   if (*) {
                     // Exhale precondition of function application
-                    ExhaleWellDef0Mask := Mask;
                     ExhaleWellDef0Heap := Heap;
+                    ExhaleWellDef0Mask := Mask;
                     perm := FullPerm;
                     assert {:msg "  Precondition of function treeKey might not hold. There might be insufficient permission to access tree(nextTemp) (BinomialHeap.vpr@483.24--483.41) [101267]"}
                       NoPerm < perm ==> NoPerm < Mask[null, tree(nextTemp)];
@@ -14216,8 +14216,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
                   // -- Translating statement: unfold acc(tree(nextTemp), write) -- BinomialHeap.vpr@485.5--485.26
                     assume tree#trigger(Heap, tree(nextTemp));
                     assume Heap[null, tree(nextTemp)] == CombineFrames(FrameFragment(Heap[nextTemp, key]), CombineFrames(FrameFragment(Heap[nextTemp, degree]), CombineFrames(FrameFragment(Heap[nextTemp, child]), CombineFrames(FrameFragment(Heap[nextTemp, parent]), CombineFrames(Heap[null, heapseg(Heap[nextTemp, child], null)], CombineFrames(FrameFragment((if 0 < Heap[nextTemp, degree] then EmptyFrame else EmptyFrame)), FrameFragment((if Heap[nextTemp, child] != null then EmptyFrame else EmptyFrame))))))));
-                    ExhaleWellDef0Mask := Mask;
                     ExhaleWellDef0Heap := Heap;
+                    ExhaleWellDef0Mask := Mask;
                     perm := FullPerm;
                     if (perm != NoPerm) {
                       assert {:msg "  Unfolding tree(nextTemp) might fail. There might be insufficient permission to access tree(nextTemp) (BinomialHeap.vpr@485.5--485.26) [101270]"}
@@ -14275,8 +14275,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
                     assume state(Heap, Mask);
                   
                   // -- Translating statement: fold acc(tree(nextTemp), write) -- BinomialHeap.vpr@487.5--487.24
-                    ExhaleWellDef0Mask := Mask;
                     ExhaleWellDef0Heap := Heap;
+                    ExhaleWellDef0Mask := Mask;
                     perm := FullPerm;
                     if (perm != NoPerm) {
                       assert {:msg "  Folding tree(nextTemp) might fail. There might be insufficient permission to access nextTemp.key (BinomialHeap.vpr@487.5--487.24) [101272]"}
@@ -14351,8 +14351,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
                   // -- Translating statement: unfold acc(tree(temp), write) -- BinomialHeap.vpr@488.5--488.22
                     assume tree#trigger(Heap, tree(temp_1));
                     assume Heap[null, tree(temp_1)] == CombineFrames(FrameFragment(Heap[temp_1, key]), CombineFrames(FrameFragment(Heap[temp_1, degree]), CombineFrames(FrameFragment(Heap[temp_1, child]), CombineFrames(FrameFragment(Heap[temp_1, parent]), CombineFrames(Heap[null, heapseg(Heap[temp_1, child], null)], CombineFrames(FrameFragment((if 0 < Heap[temp_1, degree] then EmptyFrame else EmptyFrame)), FrameFragment((if Heap[temp_1, child] != null then EmptyFrame else EmptyFrame))))))));
-                    ExhaleWellDef0Mask := Mask;
                     ExhaleWellDef0Heap := Heap;
+                    ExhaleWellDef0Mask := Mask;
                     perm := FullPerm;
                     if (perm != NoPerm) {
                       assert {:msg "  Unfolding tree(temp) might fail. There might be insufficient permission to access tree(temp) (BinomialHeap.vpr@488.5--488.22) [101282]"}
@@ -14434,8 +14434,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
                     // -- Check definedness of acc(heapseg(temp.child, null), write)
                       assert {:msg "  Folding heapseg(temp.child, null) might fail. There might be insufficient permission to access temp.child (BinomialHeap.vpr@492.5--492.35) [101288]"}
                         HasDirectPerm(Mask, temp_1, child);
-                    ExhaleWellDef0Mask := Mask;
                     ExhaleWellDef0Heap := Heap;
+                    ExhaleWellDef0Mask := Mask;
                     if (Heap[temp_1, child] != null) {
                       perm := FullPerm;
                       if (perm != NoPerm) {
@@ -14496,8 +14496,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
                     assume state(Heap, Mask);
                   
                   // -- Translating statement: fold acc(tree(temp), write) -- BinomialHeap.vpr@493.5--493.20
-                    ExhaleWellDef0Mask := Mask;
                     ExhaleWellDef0Heap := Heap;
+                    ExhaleWellDef0Mask := Mask;
                     perm := FullPerm;
                     if (perm != NoPerm) {
                       assert {:msg "  Folding tree(temp) might fail. There might be insufficient permission to access temp.key (BinomialHeap.vpr@493.5--493.20) [101293]"}
@@ -14591,8 +14591,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
                   // -- Translating statement: unfold acc(tree(temp), write) -- BinomialHeap.vpr@500.5--500.22
                     assume tree#trigger(Heap, tree(temp_1));
                     assume Heap[null, tree(temp_1)] == CombineFrames(FrameFragment(Heap[temp_1, key]), CombineFrames(FrameFragment(Heap[temp_1, degree]), CombineFrames(FrameFragment(Heap[temp_1, child]), CombineFrames(FrameFragment(Heap[temp_1, parent]), CombineFrames(Heap[null, heapseg(Heap[temp_1, child], null)], CombineFrames(FrameFragment((if 0 < Heap[temp_1, degree] then EmptyFrame else EmptyFrame)), FrameFragment((if Heap[temp_1, child] != null then EmptyFrame else EmptyFrame))))))));
-                    ExhaleWellDef0Mask := Mask;
                     ExhaleWellDef0Heap := Heap;
+                    ExhaleWellDef0Mask := Mask;
                     perm := FullPerm;
                     if (perm != NoPerm) {
                       assert {:msg "  Unfolding tree(temp) might fail. There might be insufficient permission to access tree(temp) (BinomialHeap.vpr@500.5--500.22) [101305]"}
@@ -14650,8 +14650,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
                     assume state(Heap, Mask);
                   
                   // -- Translating statement: fold acc(tree(temp), write) -- BinomialHeap.vpr@502.5--502.20
-                    ExhaleWellDef0Mask := Mask;
                     ExhaleWellDef0Heap := Heap;
+                    ExhaleWellDef0Mask := Mask;
                     perm := FullPerm;
                     if (perm != NoPerm) {
                       assert {:msg "  Folding tree(temp) might fail. There might be insufficient permission to access temp.key (BinomialHeap.vpr@502.5--502.20) [101307]"}
@@ -14726,8 +14726,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
                   // -- Translating statement: unfold acc(tree(nextTemp), write) -- BinomialHeap.vpr@503.5--503.26
                     assume tree#trigger(Heap, tree(nextTemp));
                     assume Heap[null, tree(nextTemp)] == CombineFrames(FrameFragment(Heap[nextTemp, key]), CombineFrames(FrameFragment(Heap[nextTemp, degree]), CombineFrames(FrameFragment(Heap[nextTemp, child]), CombineFrames(FrameFragment(Heap[nextTemp, parent]), CombineFrames(Heap[null, heapseg(Heap[nextTemp, child], null)], CombineFrames(FrameFragment((if 0 < Heap[nextTemp, degree] then EmptyFrame else EmptyFrame)), FrameFragment((if Heap[nextTemp, child] != null then EmptyFrame else EmptyFrame))))))));
-                    ExhaleWellDef0Mask := Mask;
                     ExhaleWellDef0Heap := Heap;
+                    ExhaleWellDef0Mask := Mask;
                     perm := FullPerm;
                     if (perm != NoPerm) {
                       assert {:msg "  Unfolding tree(nextTemp) might fail. There might be insufficient permission to access tree(nextTemp) (BinomialHeap.vpr@503.5--503.26) [101317]"}
@@ -14789,8 +14789,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
                     assume state(Heap, Mask);
                   
                   // -- Translating statement: fold acc(heapseg(temp, null), write) -- BinomialHeap.vpr@505.5--505.29
-                    ExhaleWellDef0Mask := Mask;
                     ExhaleWellDef0Heap := Heap;
+                    ExhaleWellDef0Mask := Mask;
                     if (temp_1 != null) {
                       perm := FullPerm;
                       if (perm != NoPerm) {
@@ -14867,8 +14867,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
                     assume state(Heap, Mask);
                   
                   // -- Translating statement: fold acc(tree(nextTemp), write) -- BinomialHeap.vpr@508.5--508.24
-                    ExhaleWellDef0Mask := Mask;
                     ExhaleWellDef0Heap := Heap;
+                    ExhaleWellDef0Mask := Mask;
                     perm := FullPerm;
                     if (perm != NoPerm) {
                       assert {:msg "  Folding tree(nextTemp) might fail. There might be insufficient permission to access nextTemp.key (BinomialHeap.vpr@508.5--508.24) [101327]"}
@@ -14956,8 +14956,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
             nextTemp := Heap[temp_1, sibling];
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Loop invariant acc(this.Nodes, write) might not be preserved. There might be insufficient permission to access this.Nodes (BinomialHeap.vpr@441.13--441.28) [101338]"}
@@ -15152,8 +15152,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(heapseg(nextTemp, null), write) -- BinomialHeap.vpr@516.2--516.30
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     if (nextTemp != null) {
       perm := FullPerm;
       if (perm != NoPerm) {
@@ -15214,8 +15214,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(heapseg(temp, null), write) -- BinomialHeap.vpr@517.2--517.26
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     if (temp_1 != null) {
       perm := FullPerm;
       if (perm != NoPerm) {
@@ -15276,8 +15276,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(heapseg(prevTemp, null), write) -- BinomialHeap.vpr@518.2--518.30
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     if (prevTemp != null) {
       perm := FullPerm;
       if (perm != NoPerm) {
@@ -15347,8 +15347,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
     arg_a_1 := Heap[this, Nodes];
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  The precondition of method concat might not hold. There might be insufficient permission to access heapseg(this.Nodes, prevTemp) (BinomialHeap.vpr@519.2--519.36) [101391]"}
@@ -15431,8 +15431,8 @@ procedure unionNodes(this: Ref, binHeap: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of unionNodes might not hold. There might be insufficient permission to access this.Nodes (BinomialHeap.vpr@424.10--425.54) [101395]"}
@@ -15467,13 +15467,13 @@ procedure extractMin(this: Ref) returns (res: Ref)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var nodes_1: Ref;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newVersion: FrameType;
   var temp_1: Ref;
   var prevTemp: Ref;
@@ -15509,8 +15509,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -15530,8 +15530,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
   // -- Translating statement: unfold acc(heap(this), write) -- BinomialHeap.vpr@532.2--532.19
     assume heap#trigger(Heap, heap_1(this));
     assume Heap[null, heap_1(this)] == CombineFrames(FrameFragment(Heap[this, Nodes]), CombineFrames(Heap[null, heapseg(Heap[this, Nodes], null)], CombineFrames(FrameFragment((if Heap[this, Nodes] != null then EmptyFrame else EmptyFrame)), FrameFragment(Heap[this, size]))));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding heap(this) might fail. There might be insufficient permission to access heap(this) (BinomialHeap.vpr@532.2--532.19) [101403]"}
@@ -15605,8 +15605,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
         PreCallMask := Mask;
         
         // -- Exhaling precondition
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           assert {:msg "  The precondition of method findMinNode might not hold. Assertion nodes != null might not hold. (BinomialHeap.vpr@540.3--540.32) [101408]"}
             nodes_1 != null;
           perm := FullPerm;
@@ -15659,8 +15659,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
           // -- Translating statement: unfold acc(heapseg(temp, null), write) -- BinomialHeap.vpr@544.4--544.30
             assume heapseg#trigger(Heap, heapseg(temp_1, null));
             assume Heap[null, heapseg(temp_1, null)] == FrameFragment((if temp_1 != null then CombineFrames(Heap[null, tree(temp_1)], CombineFrames(FrameFragment(Heap[temp_1, sibling]), CombineFrames(Heap[null, heapseg(Heap[temp_1, sibling], null)], FrameFragment((if Heap[temp_1, sibling] != null then EmptyFrame else EmptyFrame))))) else EmptyFrame));
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
             if (perm != NoPerm) {
               assert {:msg "  Unfolding heapseg(temp, null) might fail. There might be insufficient permission to access heapseg(temp, null) (BinomialHeap.vpr@544.4--544.30) [101413]"}
@@ -15721,8 +15721,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
                     UnfoldingMask := oldMask;
                     assume heap#trigger(UnfoldingHeap, heap_1(this));
                     assume UnfoldingHeap[null, heap_1(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, Nodes]), CombineFrames(UnfoldingHeap[null, heapseg(UnfoldingHeap[this, Nodes], null)], CombineFrames(FrameFragment((if UnfoldingHeap[this, Nodes] != null then EmptyFrame else EmptyFrame)), FrameFragment(UnfoldingHeap[this, size]))));
-                    ExhaleWellDef0Mask := UnfoldingMask;
                     ExhaleWellDef0Heap := UnfoldingHeap;
+                    ExhaleWellDef0Mask := UnfoldingMask;
                     perm := FullPerm;
                     if (perm != NoPerm) {
                       assert {:msg "  Loop invariant prevTemp != null ==> segSize(nodes, prevTemp) + treeSize(prevTemp) + segSize(temp, minNode) + segSize(minNode, null) == old((unfolding acc(heap(this), write) in segSize(this.Nodes, null))) might not hold on entry. There might be insufficient permission to access heap(this) (BinomialHeap.vpr@557.15--557.189) [101419]"}
@@ -15760,8 +15760,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
                     UnfoldingMask := oldMask;
                     assume heap#trigger(UnfoldingHeap, heap_1(this));
                     assume UnfoldingHeap[null, heap_1(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, Nodes]), CombineFrames(UnfoldingHeap[null, heapseg(UnfoldingHeap[this, Nodes], null)], CombineFrames(FrameFragment((if UnfoldingHeap[this, Nodes] != null then EmptyFrame else EmptyFrame)), FrameFragment(UnfoldingHeap[this, size]))));
-                    ExhaleWellDef0Mask := UnfoldingMask;
                     ExhaleWellDef0Heap := UnfoldingHeap;
+                    ExhaleWellDef0Mask := UnfoldingMask;
                     perm := FullPerm;
                     if (perm != NoPerm) {
                       assert {:msg "  Loop invariant prevTemp == null ==> segSize(temp, minNode) + segSize(minNode, null) == old((unfolding acc(heap(this), write) in segSize(this.Nodes, null))) might not hold on entry. There might be insufficient permission to access heap(this) (BinomialHeap.vpr@558.15--558.141) [101420]"}
@@ -15792,8 +15792,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
                     assume UnfoldingHeap[this, size] == segSize(UnfoldingHeap, UnfoldingHeap[this, Nodes], null);
                     assume state(UnfoldingHeap, UnfoldingMask);
                   }
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 perm := FullPerm;
                 if (perm != NoPerm) {
                   assert {:msg "  Loop invariant acc(heapseg(temp, minNode), write) && sorted(temp, minNode) might not hold on entry. There might be insufficient permission to access heapseg(temp, minNode) (BinomialHeap.vpr@548.15--548.62) [101421]"}
@@ -15900,8 +15900,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
                 // -- Check definedness of sorted(temp, minNode)
                   if (*) {
                     // Exhale precondition of function application
-                    ExhaleWellDef0Mask := Mask;
                     ExhaleWellDef0Heap := Heap;
+                    ExhaleWellDef0Mask := Mask;
                     perm := FullPerm;
                     assert {:msg "  Precondition of function sorted might not hold. There might be insufficient permission to access heapseg(temp, minNode) (BinomialHeap.vpr@548.41--548.62) [101441]"}
                       NoPerm < perm ==> NoPerm < Mask[null, heapseg(temp_1, minNode)];
@@ -15922,8 +15922,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
                 // -- Check definedness of sorted(minNode, null)
                   if (*) {
                     // Exhale precondition of function application
-                    ExhaleWellDef0Mask := Mask;
                     ExhaleWellDef0Heap := Heap;
+                    ExhaleWellDef0Mask := Mask;
                     perm := FullPerm;
                     assert {:msg "  Precondition of function sorted might not hold. There might be insufficient permission to access heapseg(minNode, null) (BinomialHeap.vpr@549.41--549.62) [101442]"}
                       NoPerm < perm ==> NoPerm < Mask[null, heapseg(minNode, null)];
@@ -15949,8 +15949,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
                   // -- Check definedness of sorted(nodes, prevTemp)
                     if (*) {
                       // Exhale precondition of function application
-                      ExhaleWellDef0Mask := Mask;
                       ExhaleWellDef0Heap := Heap;
+                      ExhaleWellDef0Mask := Mask;
                       perm := FullPerm;
                       assert {:msg "  Precondition of function sorted might not hold. There might be insufficient permission to access heapseg(nodes, prevTemp) (BinomialHeap.vpr@551.64--551.87) [101443]"}
                         NoPerm < perm ==> NoPerm < Mask[null, heapseg(nodes_1, prevTemp)];
@@ -15985,8 +15985,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
                   // -- Check definedness of segDegree(nodes, prevTemp, segLength(nodes, prevTemp) - 1) < treeDegree(prevTemp)
                     if (*) {
                       // Exhale precondition of function application
-                      ExhaleWellDef0Mask := Mask;
                       ExhaleWellDef0Heap := Heap;
+                      ExhaleWellDef0Mask := Mask;
                       perm := FullPerm;
                       assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(nodes, prevTemp) (BinomialHeap.vpr@553.84--553.110) [101445]"}
                         NoPerm < perm ==> NoPerm < Mask[null, heapseg(nodes_1, prevTemp)];
@@ -15999,8 +15999,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
                     }
                     if (*) {
                       // Exhale precondition of function application
-                      ExhaleWellDef0Mask := Mask;
                       ExhaleWellDef0Heap := Heap;
+                      ExhaleWellDef0Mask := Mask;
                       perm := FullPerm;
                       assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(nodes, prevTemp) (BinomialHeap.vpr@553.57--553.115) [101446]"}
                         NoPerm < perm ==> NoPerm < Mask[null, heapseg(nodes_1, prevTemp)];
@@ -16017,8 +16017,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
                     }
                     if (*) {
                       // Exhale precondition of function application
-                      ExhaleWellDef0Mask := Mask;
                       ExhaleWellDef0Heap := Heap;
+                      ExhaleWellDef0Mask := Mask;
                       perm := FullPerm;
                       assert {:msg "  Precondition of function treeDegree might not hold. There might be insufficient permission to access tree(prevTemp) (BinomialHeap.vpr@553.118--553.138) [101449]"}
                         NoPerm < perm ==> NoPerm < Mask[null, tree(prevTemp)];
@@ -16038,8 +16038,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
                   // -- Check definedness of treeDegree(prevTemp) < segDegree(temp, minNode, 0)
                     if (*) {
                       // Exhale precondition of function application
-                      ExhaleWellDef0Mask := Mask;
                       ExhaleWellDef0Heap := Heap;
+                      ExhaleWellDef0Mask := Mask;
                       perm := FullPerm;
                       assert {:msg "  Precondition of function treeDegree might not hold. There might be insufficient permission to access tree(prevTemp) (BinomialHeap.vpr@554.55--554.75) [101450]"}
                         NoPerm < perm ==> NoPerm < Mask[null, tree(prevTemp)];
@@ -16052,8 +16052,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
                     }
                     if (*) {
                       // Exhale precondition of function application
-                      ExhaleWellDef0Mask := Mask;
                       ExhaleWellDef0Heap := Heap;
+                      ExhaleWellDef0Mask := Mask;
                       perm := FullPerm;
                       assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(temp, minNode) (BinomialHeap.vpr@554.78--554.105) [101451]"}
                         NoPerm < perm ==> NoPerm < Mask[null, heapseg(temp_1, minNode)];
@@ -16075,8 +16075,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
                   // -- Check definedness of treeDegree(prevTemp) < segDegree(minNode, null, 0)
                     if (*) {
                       // Exhale precondition of function application
-                      ExhaleWellDef0Mask := Mask;
                       ExhaleWellDef0Heap := Heap;
+                      ExhaleWellDef0Mask := Mask;
                       perm := FullPerm;
                       assert {:msg "  Precondition of function treeDegree might not hold. There might be insufficient permission to access tree(prevTemp) (BinomialHeap.vpr@555.55--555.75) [101453]"}
                         NoPerm < perm ==> NoPerm < Mask[null, tree(prevTemp)];
@@ -16089,8 +16089,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
                     }
                     if (*) {
                       // Exhale precondition of function application
-                      ExhaleWellDef0Mask := Mask;
                       ExhaleWellDef0Heap := Heap;
+                      ExhaleWellDef0Mask := Mask;
                       perm := FullPerm;
                       assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(minNode, null) (BinomialHeap.vpr@555.78--555.105) [101454]"}
                         NoPerm < perm ==> NoPerm < Mask[null, heapseg(minNode, null)];
@@ -16112,8 +16112,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
                   // -- Check definedness of segDegree(temp, minNode, segLength(temp, minNode) - 1) < segDegree(minNode, null, 0)
                     if (*) {
                       // Exhale precondition of function application
-                      ExhaleWellDef0Mask := Mask;
                       ExhaleWellDef0Heap := Heap;
+                      ExhaleWellDef0Mask := Mask;
                       perm := FullPerm;
                       assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(temp, minNode) (BinomialHeap.vpr@556.60--556.84) [101456]"}
                         NoPerm < perm ==> NoPerm < Mask[null, heapseg(temp_1, minNode)];
@@ -16126,8 +16126,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
                     }
                     if (*) {
                       // Exhale precondition of function application
-                      ExhaleWellDef0Mask := Mask;
                       ExhaleWellDef0Heap := Heap;
+                      ExhaleWellDef0Mask := Mask;
                       perm := FullPerm;
                       assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(temp, minNode) (BinomialHeap.vpr@556.35--556.89) [101457]"}
                         NoPerm < perm ==> NoPerm < Mask[null, heapseg(temp_1, minNode)];
@@ -16144,8 +16144,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
                     }
                     if (*) {
                       // Exhale precondition of function application
-                      ExhaleWellDef0Mask := Mask;
                       ExhaleWellDef0Heap := Heap;
+                      ExhaleWellDef0Mask := Mask;
                       perm := FullPerm;
                       assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(minNode, null) (BinomialHeap.vpr@556.92--556.119) [101460]"}
                         NoPerm < perm ==> NoPerm < Mask[null, heapseg(minNode, null)];
@@ -16167,8 +16167,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
                   // -- Check definedness of segSize(nodes, prevTemp) + treeSize(prevTemp) + segSize(temp, minNode) + segSize(minNode, null) == old((unfolding acc(heap(this), write) in segSize(this.Nodes, null)))
                     if (*) {
                       // Exhale precondition of function application
-                      ExhaleWellDef0Mask := Mask;
                       ExhaleWellDef0Heap := Heap;
+                      ExhaleWellDef0Mask := Mask;
                       perm := FullPerm;
                       assert {:msg "  Precondition of function segSize might not hold. There might be insufficient permission to access heapseg(nodes, prevTemp) (BinomialHeap.vpr@557.36--557.60) [101462]"}
                         NoPerm < perm ==> NoPerm < Mask[null, heapseg(nodes_1, prevTemp)];
@@ -16181,8 +16181,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
                     }
                     if (*) {
                       // Exhale precondition of function application
-                      ExhaleWellDef0Mask := Mask;
                       ExhaleWellDef0Heap := Heap;
+                      ExhaleWellDef0Mask := Mask;
                       perm := FullPerm;
                       assert {:msg "  Precondition of function treeSize might not hold. There might be insufficient permission to access tree(prevTemp) (BinomialHeap.vpr@557.63--557.81) [101463]"}
                         NoPerm < perm ==> NoPerm < Mask[null, tree(prevTemp)];
@@ -16195,8 +16195,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
                     }
                     if (*) {
                       // Exhale precondition of function application
-                      ExhaleWellDef0Mask := Mask;
                       ExhaleWellDef0Heap := Heap;
+                      ExhaleWellDef0Mask := Mask;
                       perm := FullPerm;
                       assert {:msg "  Precondition of function segSize might not hold. There might be insufficient permission to access heapseg(temp, minNode) (BinomialHeap.vpr@557.84--557.106) [101464]"}
                         NoPerm < perm ==> NoPerm < Mask[null, heapseg(temp_1, minNode)];
@@ -16209,8 +16209,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
                     }
                     if (*) {
                       // Exhale precondition of function application
-                      ExhaleWellDef0Mask := Mask;
                       ExhaleWellDef0Heap := Heap;
+                      ExhaleWellDef0Mask := Mask;
                       perm := FullPerm;
                       assert {:msg "  Precondition of function segSize might not hold. There might be insufficient permission to access heapseg(minNode, null) (BinomialHeap.vpr@557.109--557.131) [101465]"}
                         NoPerm < perm ==> NoPerm < Mask[null, heapseg(minNode, null)];
@@ -16225,8 +16225,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
                     UnfoldingMask := oldMask;
                     assume heap#trigger(UnfoldingHeap, heap_1(this));
                     assume UnfoldingHeap[null, heap_1(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, Nodes]), CombineFrames(UnfoldingHeap[null, heapseg(UnfoldingHeap[this, Nodes], null)], CombineFrames(FrameFragment((if UnfoldingHeap[this, Nodes] != null then EmptyFrame else EmptyFrame)), FrameFragment(UnfoldingHeap[this, size]))));
-                    ExhaleWellDef0Mask := UnfoldingMask;
                     ExhaleWellDef0Heap := UnfoldingHeap;
+                    ExhaleWellDef0Mask := UnfoldingMask;
                     perm := FullPerm;
                     if (perm != NoPerm) {
                       assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access heap(this) (BinomialHeap.vpr@557.15--557.189) [101466]"}
@@ -16260,8 +16260,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
                       HasDirectPerm(UnfoldingMask, this, Nodes);
                     if (*) {
                       // Exhale precondition of function application
-                      ExhaleWellDef0Mask := UnfoldingMask;
                       ExhaleWellDef0Heap := UnfoldingHeap;
+                      ExhaleWellDef0Mask := UnfoldingMask;
                       perm := FullPerm;
                       assert {:msg "  Precondition of function segSize might not hold. There might be insufficient permission to access heapseg(this.Nodes, null) (BinomialHeap.vpr@557.163--557.188) [101468]"}
                         NoPerm < perm ==> NoPerm < UnfoldingMask[null, heapseg(UnfoldingHeap[this, Nodes], null)];
@@ -16281,8 +16281,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
                   // -- Check definedness of segSize(temp, minNode) + segSize(minNode, null) == old((unfolding acc(heap(this), write) in segSize(this.Nodes, null)))
                     if (*) {
                       // Exhale precondition of function application
-                      ExhaleWellDef0Mask := Mask;
                       ExhaleWellDef0Heap := Heap;
+                      ExhaleWellDef0Mask := Mask;
                       perm := FullPerm;
                       assert {:msg "  Precondition of function segSize might not hold. There might be insufficient permission to access heapseg(temp, minNode) (BinomialHeap.vpr@558.36--558.58) [101469]"}
                         NoPerm < perm ==> NoPerm < Mask[null, heapseg(temp_1, minNode)];
@@ -16295,8 +16295,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
                     }
                     if (*) {
                       // Exhale precondition of function application
-                      ExhaleWellDef0Mask := Mask;
                       ExhaleWellDef0Heap := Heap;
+                      ExhaleWellDef0Mask := Mask;
                       perm := FullPerm;
                       assert {:msg "  Precondition of function segSize might not hold. There might be insufficient permission to access heapseg(minNode, null) (BinomialHeap.vpr@558.61--558.83) [101470]"}
                         NoPerm < perm ==> NoPerm < Mask[null, heapseg(minNode, null)];
@@ -16311,8 +16311,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
                     UnfoldingMask := oldMask;
                     assume heap#trigger(UnfoldingHeap, heap_1(this));
                     assume UnfoldingHeap[null, heap_1(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, Nodes]), CombineFrames(UnfoldingHeap[null, heapseg(UnfoldingHeap[this, Nodes], null)], CombineFrames(FrameFragment((if UnfoldingHeap[this, Nodes] != null then EmptyFrame else EmptyFrame)), FrameFragment(UnfoldingHeap[this, size]))));
-                    ExhaleWellDef0Mask := UnfoldingMask;
                     ExhaleWellDef0Heap := UnfoldingHeap;
+                    ExhaleWellDef0Mask := UnfoldingMask;
                     perm := FullPerm;
                     if (perm != NoPerm) {
                       assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access heap(this) (BinomialHeap.vpr@558.15--558.141) [101471]"}
@@ -16346,8 +16346,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
                       HasDirectPerm(UnfoldingMask, this, Nodes);
                     if (*) {
                       // Exhale precondition of function application
-                      ExhaleWellDef0Mask := UnfoldingMask;
                       ExhaleWellDef0Heap := UnfoldingHeap;
+                      ExhaleWellDef0Mask := UnfoldingMask;
                       perm := FullPerm;
                       assert {:msg "  Precondition of function segSize might not hold. There might be insufficient permission to access heapseg(this.Nodes, null) (BinomialHeap.vpr@558.115--558.140) [101473]"}
                         NoPerm < perm ==> NoPerm < UnfoldingMask[null, heapseg(UnfoldingHeap[this, Nodes], null)];
@@ -16367,8 +16367,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
                   // -- Check definedness of segParent(temp, minNode) == null
                     if (*) {
                       // Exhale precondition of function application
-                      ExhaleWellDef0Mask := Mask;
                       ExhaleWellDef0Heap := Heap;
+                      ExhaleWellDef0Mask := Mask;
                       perm := FullPerm;
                       assert {:msg "  Precondition of function segParent might not hold. There might be insufficient permission to access heapseg(temp, minNode) (BinomialHeap.vpr@559.35--559.59) [101474]"}
                         NoPerm < perm ==> NoPerm < Mask[null, heapseg(temp_1, minNode)];
@@ -16390,8 +16390,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
                   // -- Check definedness of segParent(minNode, null) == null
                     if (*) {
                       // Exhale precondition of function application
-                      ExhaleWellDef0Mask := Mask;
                       ExhaleWellDef0Heap := Heap;
+                      ExhaleWellDef0Mask := Mask;
                       perm := FullPerm;
                       assert {:msg "  Precondition of function segParent might not hold. There might be insufficient permission to access heapseg(minNode, null) (BinomialHeap.vpr@560.35--560.59) [101476]"}
                         NoPerm < perm ==> NoPerm < Mask[null, heapseg(minNode, null)];
@@ -16413,8 +16413,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
                   // -- Check definedness of segParent(nodes, prevTemp) == null
                     if (*) {
                       // Exhale precondition of function application
-                      ExhaleWellDef0Mask := Mask;
                       ExhaleWellDef0Heap := Heap;
+                      ExhaleWellDef0Mask := Mask;
                       perm := FullPerm;
                       assert {:msg "  Precondition of function segParent might not hold. There might be insufficient permission to access heapseg(nodes, prevTemp) (BinomialHeap.vpr@561.57--561.83) [101478]"}
                         NoPerm < perm ==> NoPerm < Mask[null, heapseg(nodes_1, prevTemp)];
@@ -16436,8 +16436,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
                   // -- Check definedness of treeParent(prevTemp) == null
                     if (*) {
                       // Exhale precondition of function application
-                      ExhaleWellDef0Mask := Mask;
                       ExhaleWellDef0Heap := Heap;
+                      ExhaleWellDef0Mask := Mask;
                       perm := FullPerm;
                       assert {:msg "  Precondition of function treeParent might not hold. There might be insufficient permission to access tree(prevTemp) (BinomialHeap.vpr@562.36--562.56) [101480]"}
                         NoPerm < perm ==> NoPerm < Mask[null, tree(prevTemp)];
@@ -16540,8 +16540,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
                     UnfoldingMask := oldMask;
                     assume heap#trigger(UnfoldingHeap, heap_1(this));
                     assume UnfoldingHeap[null, heap_1(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, Nodes]), CombineFrames(UnfoldingHeap[null, heapseg(UnfoldingHeap[this, Nodes], null)], CombineFrames(FrameFragment((if UnfoldingHeap[this, Nodes] != null then EmptyFrame else EmptyFrame)), FrameFragment(UnfoldingHeap[this, size]))));
-                    ExhaleWellDef0Mask := UnfoldingMask;
                     ExhaleWellDef0Heap := UnfoldingHeap;
+                    ExhaleWellDef0Mask := UnfoldingMask;
                     perm := FullPerm;
                     if (perm != NoPerm) {
                       assert {:msg "  An internal error occurred. There might be insufficient permission to access heap(this) (BinomialHeap.vpr@557.15--557.189) [101481]"}
@@ -16579,8 +16579,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
                     UnfoldingMask := oldMask;
                     assume heap#trigger(UnfoldingHeap, heap_1(this));
                     assume UnfoldingHeap[null, heap_1(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, Nodes]), CombineFrames(UnfoldingHeap[null, heapseg(UnfoldingHeap[this, Nodes], null)], CombineFrames(FrameFragment((if UnfoldingHeap[this, Nodes] != null then EmptyFrame else EmptyFrame)), FrameFragment(UnfoldingHeap[this, size]))));
-                    ExhaleWellDef0Mask := UnfoldingMask;
                     ExhaleWellDef0Heap := UnfoldingHeap;
+                    ExhaleWellDef0Mask := UnfoldingMask;
                     perm := FullPerm;
                     if (perm != NoPerm) {
                       assert {:msg "  An internal error occurred. There might be insufficient permission to access heap(this) (BinomialHeap.vpr@558.15--558.141) [101482]"}
@@ -16620,8 +16620,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
                   // -- Translating statement: unfold acc(heapseg(temp, minNode), write) -- BinomialHeap.vpr@564.5--564.34
                     assume heapseg#trigger(Heap, heapseg(temp_1, minNode));
                     assume Heap[null, heapseg(temp_1, minNode)] == FrameFragment((if temp_1 != minNode then CombineFrames(Heap[null, tree(temp_1)], CombineFrames(FrameFragment(Heap[temp_1, sibling]), CombineFrames(Heap[null, heapseg(Heap[temp_1, sibling], minNode)], FrameFragment((if Heap[temp_1, sibling] != minNode then EmptyFrame else EmptyFrame))))) else EmptyFrame));
-                    ExhaleWellDef0Mask := Mask;
                     ExhaleWellDef0Heap := Heap;
+                    ExhaleWellDef0Mask := Mask;
                     perm := FullPerm;
                     if (perm != NoPerm) {
                       assert {:msg "  Unfolding heapseg(temp, minNode) might fail. There might be insufficient permission to access heapseg(temp, minNode) (BinomialHeap.vpr@564.5--564.34) [101483]"}
@@ -16663,8 +16663,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
                     if (prevTemp == null) {
                       
                       // -- Translating statement: fold acc(heapseg(nodes, temp), write) -- BinomialHeap.vpr@567.6--567.31
-                        ExhaleWellDef0Mask := Mask;
                         ExhaleWellDef0Heap := Heap;
+                        ExhaleWellDef0Mask := Mask;
                         if (nodes_1 != temp_1) {
                           perm := FullPerm;
                           if (perm != NoPerm) {
@@ -16726,8 +16726,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
                     } else {
                       
                       // -- Translating statement: fold acc(heapseg(temp, temp), write) -- BinomialHeap.vpr@569.6--569.30
-                        ExhaleWellDef0Mask := Mask;
                         ExhaleWellDef0Heap := Heap;
+                        ExhaleWellDef0Mask := Mask;
                         if (temp_1 != temp_1) {
                           perm := FullPerm;
                           if (perm != NoPerm) {
@@ -16788,8 +16788,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
                         assume state(Heap, Mask);
                       
                       // -- Translating statement: fold acc(heapseg(prevTemp, temp), write) -- BinomialHeap.vpr@570.6--570.34
-                        ExhaleWellDef0Mask := Mask;
                         ExhaleWellDef0Heap := Heap;
+                        ExhaleWellDef0Mask := Mask;
                         if (prevTemp != temp_1) {
                           perm := FullPerm;
                           if (perm != NoPerm) {
@@ -16854,8 +16854,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
                         PreCallMask := Mask;
                         
                         // -- Exhaling precondition
-                          ExhaleWellDef0Mask := Mask;
                           ExhaleWellDef0Heap := Heap;
+                          ExhaleWellDef0Mask := Mask;
                           perm := FullPerm;
                           if (perm != NoPerm) {
                             assert {:msg "  The precondition of method concat might not hold. There might be insufficient permission to access heapseg(nodes, prevTemp) (BinomialHeap.vpr@571.6--571.35) [101496]"}
@@ -16958,8 +16958,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
                     UnfoldingMask := oldMask;
                     assume heap#trigger(UnfoldingHeap, heap_1(this));
                     assume UnfoldingHeap[null, heap_1(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, Nodes]), CombineFrames(UnfoldingHeap[null, heapseg(UnfoldingHeap[this, Nodes], null)], CombineFrames(FrameFragment((if UnfoldingHeap[this, Nodes] != null then EmptyFrame else EmptyFrame)), FrameFragment(UnfoldingHeap[this, size]))));
-                    ExhaleWellDef0Mask := UnfoldingMask;
                     ExhaleWellDef0Heap := UnfoldingHeap;
+                    ExhaleWellDef0Mask := UnfoldingMask;
                     perm := FullPerm;
                     if (perm != NoPerm) {
                       assert {:msg "  Loop invariant prevTemp != null ==> segSize(nodes, prevTemp) + treeSize(prevTemp) + segSize(temp, minNode) + segSize(minNode, null) == old((unfolding acc(heap(this), write) in segSize(this.Nodes, null))) might not be preserved. There might be insufficient permission to access heap(this) (BinomialHeap.vpr@557.15--557.189) [101501]"}
@@ -16997,8 +16997,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
                     UnfoldingMask := oldMask;
                     assume heap#trigger(UnfoldingHeap, heap_1(this));
                     assume UnfoldingHeap[null, heap_1(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, Nodes]), CombineFrames(UnfoldingHeap[null, heapseg(UnfoldingHeap[this, Nodes], null)], CombineFrames(FrameFragment((if UnfoldingHeap[this, Nodes] != null then EmptyFrame else EmptyFrame)), FrameFragment(UnfoldingHeap[this, size]))));
-                    ExhaleWellDef0Mask := UnfoldingMask;
                     ExhaleWellDef0Heap := UnfoldingHeap;
+                    ExhaleWellDef0Mask := UnfoldingMask;
                     perm := FullPerm;
                     if (perm != NoPerm) {
                       assert {:msg "  Loop invariant prevTemp == null ==> segSize(temp, minNode) + segSize(minNode, null) == old((unfolding acc(heap(this), write) in segSize(this.Nodes, null))) might not be preserved. There might be insufficient permission to access heap(this) (BinomialHeap.vpr@558.15--558.141) [101502]"}
@@ -17029,8 +17029,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
                     assume UnfoldingHeap[this, size] == segSize(UnfoldingHeap, UnfoldingHeap[this, Nodes], null);
                     assume state(UnfoldingHeap, UnfoldingMask);
                   }
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 perm := FullPerm;
                 if (perm != NoPerm) {
                   assert {:msg "  Loop invariant acc(heapseg(temp, minNode), write) && sorted(temp, minNode) might not be preserved. There might be insufficient permission to access heapseg(temp, minNode) (BinomialHeap.vpr@548.15--548.62) [101503]"}
@@ -17206,8 +17206,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
                   UnfoldingMask := oldMask;
                   assume heap#trigger(UnfoldingHeap, heap_1(this));
                   assume UnfoldingHeap[null, heap_1(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, Nodes]), CombineFrames(UnfoldingHeap[null, heapseg(UnfoldingHeap[this, Nodes], null)], CombineFrames(FrameFragment((if UnfoldingHeap[this, Nodes] != null then EmptyFrame else EmptyFrame)), FrameFragment(UnfoldingHeap[this, size]))));
-                  ExhaleWellDef0Mask := UnfoldingMask;
                   ExhaleWellDef0Heap := UnfoldingHeap;
+                  ExhaleWellDef0Mask := UnfoldingMask;
                   perm := FullPerm;
                   if (perm != NoPerm) {
                     assert {:msg "  An internal error occurred. There might be insufficient permission to access heap(this) (BinomialHeap.vpr@557.15--557.189) [101523]"}
@@ -17245,8 +17245,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
                   UnfoldingMask := oldMask;
                   assume heap#trigger(UnfoldingHeap, heap_1(this));
                   assume UnfoldingHeap[null, heap_1(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, Nodes]), CombineFrames(UnfoldingHeap[null, heapseg(UnfoldingHeap[this, Nodes], null)], CombineFrames(FrameFragment((if UnfoldingHeap[this, Nodes] != null then EmptyFrame else EmptyFrame)), FrameFragment(UnfoldingHeap[this, size]))));
-                  ExhaleWellDef0Mask := UnfoldingMask;
                   ExhaleWellDef0Heap := UnfoldingHeap;
+                  ExhaleWellDef0Mask := UnfoldingMask;
                   perm := FullPerm;
                   if (perm != NoPerm) {
                     assert {:msg "  An internal error occurred. There might be insufficient permission to access heap(this) (BinomialHeap.vpr@558.15--558.141) [101524]"}
@@ -17282,8 +17282,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
           // -- Translating statement: unfold acc(heapseg(minNode, null), write) -- BinomialHeap.vpr@578.4--578.33
             assume heapseg#trigger(Heap, heapseg(minNode, null));
             assume Heap[null, heapseg(minNode, null)] == FrameFragment((if minNode != null then CombineFrames(Heap[null, tree(minNode)], CombineFrames(FrameFragment(Heap[minNode, sibling]), CombineFrames(Heap[null, heapseg(Heap[minNode, sibling], null)], FrameFragment((if Heap[minNode, sibling] != null then EmptyFrame else EmptyFrame))))) else EmptyFrame));
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
             if (perm != NoPerm) {
               assert {:msg "  Unfolding heapseg(minNode, null) might fail. There might be insufficient permission to access heapseg(minNode, null) (BinomialHeap.vpr@578.4--578.33) [101527]"}
@@ -17332,8 +17332,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
             assume state(Heap, Mask);
           
           // -- Translating statement: fold acc(heapseg(prevTemp, null), write) -- BinomialHeap.vpr@580.4--580.32
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             if (prevTemp != null) {
               perm := FullPerm;
               if (perm != NoPerm) {
@@ -17398,8 +17398,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
             PreCallMask := Mask;
             
             // -- Exhaling precondition
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               perm := FullPerm;
               if (perm != NoPerm) {
                 assert {:msg "  The precondition of method concat might not hold. There might be insufficient permission to access heapseg(nodes, prevTemp) (BinomialHeap.vpr@581.4--581.33) [101542]"}
@@ -17488,8 +17488,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
         // -- Check definedness of treeSize(temp)
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
             assert {:msg "  Precondition of function treeSize might not hold. There might be insufficient permission to access tree(temp) (BinomialHeap.vpr@584.27--584.41) [101546]"}
               NoPerm < perm ==> NoPerm < Mask[null, tree(temp_1)];
@@ -17506,8 +17506,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
       // -- Translating statement: unfold acc(tree(temp), write) -- BinomialHeap.vpr@585.3--585.20
         assume tree#trigger(Heap, tree(temp_1));
         assume Heap[null, tree(temp_1)] == CombineFrames(FrameFragment(Heap[temp_1, key]), CombineFrames(FrameFragment(Heap[temp_1, degree]), CombineFrames(FrameFragment(Heap[temp_1, child]), CombineFrames(FrameFragment(Heap[temp_1, parent]), CombineFrames(Heap[null, heapseg(Heap[temp_1, child], null)], CombineFrames(FrameFragment((if 0 < Heap[temp_1, degree] then EmptyFrame else EmptyFrame)), FrameFragment((if Heap[temp_1, child] != null then EmptyFrame else EmptyFrame))))))));
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Unfolding tree(temp) might fail. There might be insufficient permission to access tree(temp) (BinomialHeap.vpr@585.3--585.20) [101549]"}
@@ -17571,8 +17571,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
         assume state(Heap, Mask);
       
       // -- Translating statement: fold acc(heapseg(fakeNode, temp), write) -- BinomialHeap.vpr@591.3--591.31
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         if (fakeNode != temp_1) {
           perm := FullPerm;
           if (perm != NoPerm) {
@@ -17637,8 +17637,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
         // -- Before loop head
           
           // -- Exhale loop invariant before loop
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
             if (perm != NoPerm) {
               assert {:msg "  Loop invariant acc(heapseg(fakeNode, temp), write) might not hold on entry. There might be insufficient permission to access heapseg(fakeNode, temp) (BinomialHeap.vpr@593.14--593.37) [101565]"}
@@ -17690,8 +17690,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
             // -- Check definedness of validChildren(fakeNode, temp)
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 perm := FullPerm;
                 assert {:msg "  Precondition of function validChildren might not hold. There might be insufficient permission to access heapseg(fakeNode, temp) (BinomialHeap.vpr@595.14--595.43) [101572]"}
                   NoPerm < perm ==> NoPerm < Mask[null, heapseg(fakeNode, temp_1)];
@@ -17709,8 +17709,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
             // -- Check definedness of validChildren(temp, null)
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 perm := FullPerm;
                 assert {:msg "  Precondition of function validChildren might not hold. There might be insufficient permission to access heapseg(temp, null) (BinomialHeap.vpr@596.14--596.39) [101573]"}
                   NoPerm < perm ==> NoPerm < Mask[null, heapseg(temp_1, null)];
@@ -17727,8 +17727,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
             // -- Check definedness of 0 < segLength(fakeNode, temp) && 0 < segLength(temp, null)
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 perm := FullPerm;
                 assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(fakeNode, temp) (BinomialHeap.vpr@597.18--597.43) [101574]"}
                   NoPerm < perm ==> NoPerm < Mask[null, heapseg(fakeNode, temp_1)];
@@ -17742,8 +17742,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
               if (0 < segLength(Heap, fakeNode, temp_1)) {
                 if (*) {
                   // Exhale precondition of function application
-                  ExhaleWellDef0Mask := Mask;
                   ExhaleWellDef0Heap := Heap;
+                  ExhaleWellDef0Mask := Mask;
                   perm := FullPerm;
                   assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(temp, null) (BinomialHeap.vpr@597.51--597.72) [101575]"}
                     NoPerm < perm ==> NoPerm < Mask[null, heapseg(temp_1, null)];
@@ -17761,8 +17761,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
               // -- Check definedness of segDegree(fakeNode, temp, segLength(fakeNode, temp) - 1) == segDegree(temp, null, 0) + 1
                 if (*) {
                   // Exhale precondition of function application
-                  ExhaleWellDef0Mask := Mask;
                   ExhaleWellDef0Heap := Heap;
+                  ExhaleWellDef0Mask := Mask;
                   perm := FullPerm;
                   assert {:msg "  Precondition of function segLength might not hold. There might be insufficient permission to access heapseg(fakeNode, temp) (BinomialHeap.vpr@598.33--598.58) [101576]"}
                     NoPerm < perm ==> NoPerm < Mask[null, heapseg(fakeNode, temp_1)];
@@ -17775,8 +17775,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
                 }
                 if (*) {
                   // Exhale precondition of function application
-                  ExhaleWellDef0Mask := Mask;
                   ExhaleWellDef0Heap := Heap;
+                  ExhaleWellDef0Mask := Mask;
                   perm := FullPerm;
                   assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(fakeNode, temp) (BinomialHeap.vpr@598.7--598.63) [101577]"}
                     NoPerm < perm ==> NoPerm < Mask[null, heapseg(fakeNode, temp_1)];
@@ -17793,8 +17793,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
                 }
                 if (*) {
                   // Exhale precondition of function application
-                  ExhaleWellDef0Mask := Mask;
                   ExhaleWellDef0Heap := Heap;
+                  ExhaleWellDef0Mask := Mask;
                   perm := FullPerm;
                   assert {:msg "  Precondition of function segDegree might not hold. There might be insufficient permission to access heapseg(temp, null) (BinomialHeap.vpr@598.67--598.91) [101580]"}
                     NoPerm < perm ==> NoPerm < Mask[null, heapseg(temp_1, null)];
@@ -17816,8 +17816,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
               // -- Check definedness of segParent(fakeNode, temp) == null
                 if (*) {
                   // Exhale precondition of function application
-                  ExhaleWellDef0Mask := Mask;
                   ExhaleWellDef0Heap := Heap;
+                  ExhaleWellDef0Mask := Mask;
                   perm := FullPerm;
                   assert {:msg "  Precondition of function segParent might not hold. There might be insufficient permission to access heapseg(fakeNode, temp) (BinomialHeap.vpr@599.35--599.60) [101582]"}
                     NoPerm < perm ==> NoPerm < Mask[null, heapseg(fakeNode, temp_1)];
@@ -17838,8 +17838,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
             // -- Check definedness of segSize(fakeNode, temp) + segSize(temp, null) == oldTreeSize - 1
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 perm := FullPerm;
                 assert {:msg "  Precondition of function segSize might not hold. There might be insufficient permission to access heapseg(fakeNode, temp) (BinomialHeap.vpr@600.14--600.37) [101584]"}
                   NoPerm < perm ==> NoPerm < Mask[null, heapseg(fakeNode, temp_1)];
@@ -17852,8 +17852,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
               }
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 perm := FullPerm;
                 assert {:msg "  Precondition of function segSize might not hold. There might be insufficient permission to access heapseg(temp, null) (BinomialHeap.vpr@600.40--600.59) [101585]"}
                   NoPerm < perm ==> NoPerm < Mask[null, heapseg(temp_1, null)];
@@ -17907,8 +17907,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
               // -- Translating statement: unfold acc(heapseg(temp, null), write) -- BinomialHeap.vpr@602.4--602.30
                 assume heapseg#trigger(Heap, heapseg(temp_1, null));
                 assume Heap[null, heapseg(temp_1, null)] == FrameFragment((if temp_1 != null then CombineFrames(Heap[null, tree(temp_1)], CombineFrames(FrameFragment(Heap[temp_1, sibling]), CombineFrames(Heap[null, heapseg(Heap[temp_1, sibling], null)], FrameFragment((if Heap[temp_1, sibling] != null then EmptyFrame else EmptyFrame))))) else EmptyFrame));
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 perm := FullPerm;
                 if (perm != NoPerm) {
                   assert {:msg "  Unfolding heapseg(temp, null) might fail. There might be insufficient permission to access heapseg(temp, null) (BinomialHeap.vpr@602.4--602.30) [101586]"}
@@ -17949,8 +17949,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
               // -- Translating statement: unfold acc(tree(temp), write) -- BinomialHeap.vpr@603.4--603.21
                 assume tree#trigger(Heap, tree(temp_1));
                 assume Heap[null, tree(temp_1)] == CombineFrames(FrameFragment(Heap[temp_1, key]), CombineFrames(FrameFragment(Heap[temp_1, degree]), CombineFrames(FrameFragment(Heap[temp_1, child]), CombineFrames(FrameFragment(Heap[temp_1, parent]), CombineFrames(Heap[null, heapseg(Heap[temp_1, child], null)], CombineFrames(FrameFragment((if 0 < Heap[temp_1, degree] then EmptyFrame else EmptyFrame)), FrameFragment((if Heap[temp_1, child] != null then EmptyFrame else EmptyFrame))))))));
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 perm := FullPerm;
                 if (perm != NoPerm) {
                   assert {:msg "  Unfolding tree(temp) might fail. There might be insufficient permission to access tree(temp) (BinomialHeap.vpr@603.4--603.21) [101587]"}
@@ -18008,8 +18008,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
                 assume state(Heap, Mask);
               
               // -- Translating statement: fold acc(tree(temp), write) -- BinomialHeap.vpr@605.4--605.19
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 perm := FullPerm;
                 if (perm != NoPerm) {
                   assert {:msg "  Folding tree(temp) might fail. There might be insufficient permission to access temp.key (BinomialHeap.vpr@605.4--605.19) [101589]"}
@@ -18094,8 +18094,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
                 assume state(Heap, Mask);
               
               // -- Translating statement: fold acc(heapseg(temp, temp), write) -- BinomialHeap.vpr@608.4--608.28
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 if (temp_1 != temp_1) {
                   perm := FullPerm;
                   if (perm != NoPerm) {
@@ -18156,8 +18156,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
                 assume state(Heap, Mask);
               
               // -- Translating statement: fold acc(heapseg(prevTemp, temp), write) -- BinomialHeap.vpr@609.4--609.32
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 if (prevTemp != temp_1) {
                   perm := FullPerm;
                   if (perm != NoPerm) {
@@ -18220,8 +18220,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
               // -- Translating statement: unfold acc(heapseg(temp, null), write) -- BinomialHeap.vpr@610.4--610.30
                 assume heapseg#trigger(Heap, heapseg(temp_1, null));
                 assume Heap[null, heapseg(temp_1, null)] == FrameFragment((if temp_1 != null then CombineFrames(Heap[null, tree(temp_1)], CombineFrames(FrameFragment(Heap[temp_1, sibling]), CombineFrames(Heap[null, heapseg(Heap[temp_1, sibling], null)], FrameFragment((if Heap[temp_1, sibling] != null then EmptyFrame else EmptyFrame))))) else EmptyFrame));
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 perm := FullPerm;
                 if (perm != NoPerm) {
                   assert {:msg "  Unfolding heapseg(temp, null) might fail. There might be insufficient permission to access heapseg(temp, null) (BinomialHeap.vpr@610.4--610.30) [101608]"}
@@ -18264,8 +18264,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
                 PreCallMask := Mask;
                 
                 // -- Exhaling precondition
-                  ExhaleWellDef0Mask := Mask;
                   ExhaleWellDef0Heap := Heap;
+                  ExhaleWellDef0Mask := Mask;
                   perm := FullPerm;
                   if (perm != NoPerm) {
                     assert {:msg "  The precondition of method concat might not hold. There might be insufficient permission to access heapseg(fakeNode, prevTemp) (BinomialHeap.vpr@611.4--611.36) [101609]"}
@@ -18348,8 +18348,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
                 assume state(Heap, Mask);
               
               // -- Translating statement: fold acc(heapseg(temp, null), write) -- BinomialHeap.vpr@612.4--612.28
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 if (temp_1 != null) {
                   perm := FullPerm;
                   if (perm != NoPerm) {
@@ -18409,8 +18409,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
                 assume state(Heap, Mask);
                 assume state(Heap, Mask);
             // Exhale invariant
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
             if (perm != NoPerm) {
               assert {:msg "  Loop invariant acc(heapseg(fakeNode, temp), write) might not be preserved. There might be insufficient permission to access heapseg(fakeNode, temp) (BinomialHeap.vpr@593.14--593.37) [101617]"}
@@ -18497,8 +18497,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
                 PreCallMask := Mask;
                 
                 // -- Exhaling precondition
-                  ExhaleWellDef0Mask := Mask;
                   ExhaleWellDef0Heap := Heap;
+                  ExhaleWellDef0Mask := Mask;
                   perm := FullPerm;
                   if (perm != NoPerm) {
                     assert {:msg "  The precondition of method reverse2 might not hold. There might be insufficient permission to access heapseg(fakeNode, null) (BinomialHeap.vpr@622.5--622.34) [101627]"}
@@ -18584,8 +18584,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
                 } else {
                   
                   // -- Translating statement: fold acc(heapseg(null, null), write) -- BinomialHeap.vpr@630.6--630.30
-                    ExhaleWellDef0Mask := Mask;
                     ExhaleWellDef0Heap := Heap;
+                    ExhaleWellDef0Mask := Mask;
                     if (null != null) {
                       perm := FullPerm;
                       if (perm != NoPerm) {
@@ -18650,8 +18650,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
                     PreCallMask := Mask;
                     
                     // -- Exhaling precondition
-                      ExhaleWellDef0Mask := Mask;
                       ExhaleWellDef0Heap := Heap;
+                      ExhaleWellDef0Mask := Mask;
                       perm := FullPerm;
                       if (perm != NoPerm) {
                         assert {:msg "  The precondition of method reverse2 might not hold. There might be insufficient permission to access heapseg(fakeNode, null) (BinomialHeap.vpr@631.6--631.35) [101649]"}
@@ -18706,8 +18706,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
                     PreCallMask := Mask;
                     
                     // -- Exhaling precondition
-                      ExhaleWellDef0Mask := Mask;
                       ExhaleWellDef0Heap := Heap;
+                      ExhaleWellDef0Mask := Mask;
                       perm := FullPerm;
                       if (perm != NoPerm) {
                         assert {:msg "  The precondition of method unionNodes might not hold. There might be insufficient permission to access this.Nodes (BinomialHeap.vpr@632.6--632.25) [101656]"}
@@ -18782,8 +18782,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(heap(this), write) -- BinomialHeap.vpr@640.2--640.17
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding heap(this) might fail. There might be insufficient permission to access this.Nodes (BinomialHeap.vpr@640.2--640.17) [101667]"}
@@ -18836,8 +18836,8 @@ procedure extractMin(this: Ref) returns (res: Ref)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of extractMin might not hold. There might be insufficient permission to access heap(this) (BinomialHeap.vpr@530.10--530.20) [101676]"}

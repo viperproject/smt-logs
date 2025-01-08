@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-07 14:35:01
+// Date:         2025-01-08 22:10:02
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0637.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0637-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -580,8 +580,8 @@ procedure test1(xs: (Seq Ref)) returns ()
   var QPMask: MaskType;
   var i_4: int;
   var j_5_1: int;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -692,8 +692,8 @@ procedure test1(xs: (Seq Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
 }
 
 // ==================================================
@@ -705,8 +705,8 @@ procedure test2(x: Ref) returns ()
 {
   var j_9: int;
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -734,8 +734,8 @@ procedure test2(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
 }
 
 // ==================================================
@@ -752,10 +752,10 @@ procedure test3(xs: (Seq Ref), ys: (Seq int)) returns ()
   var QPMask: MaskType;
   var i_8: int;
   var j_5_1: int;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -870,8 +870,8 @@ procedure test3(xs: (Seq Ref), ys: (Seq int)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale |xs| > 3 -- 0637.vpr@26.12--26.20
     assume Seq#Length(xs) > 3;
@@ -879,8 +879,8 @@ procedure test3(xs: (Seq Ref), ys: (Seq int)) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert xs[2].f == ys[2] -- 0637.vpr@27.5--27.28
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of xs[2].f == ys[2]
       assert {:msg "  Assert might fail. Index xs[2] into xs might exceed sequence length. (0637.vpr@27.12--27.28) [220400]"}
@@ -894,8 +894,8 @@ procedure test3(xs: (Seq Ref), ys: (Seq int)) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- 0637.vpr@29.5--29.17
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion false might not hold. (0637.vpr@29.12--29.17) [220404]"}
       false;
     assume state(Heap, Mask);
@@ -915,10 +915,10 @@ procedure test4(xs: (Seq Ref), ys: (Seq int)) returns ()
   var QPMask: MaskType;
   var i_11: int;
   var j_5_1: int;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1025,8 +1025,8 @@ procedure test4(xs: (Seq Ref), ys: (Seq int)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale |xs| > 3 -- 0637.vpr@37.12--37.20
     assume Seq#Length(xs) > 3;
@@ -1034,8 +1034,8 @@ procedure test4(xs: (Seq Ref), ys: (Seq int)) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert xs[2].f == 0 -- 0637.vpr@38.5--38.24
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of xs[2].f == 0
       assert {:msg "  Assert might fail. Index xs[2] into xs might exceed sequence length. (0637.vpr@38.12--38.24) [220416]"}
@@ -1047,8 +1047,8 @@ procedure test4(xs: (Seq Ref), ys: (Seq int)) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- 0637.vpr@40.5--40.17
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion false might not hold. (0637.vpr@40.12--40.17) [220419]"}
       false;
     assume state(Heap, Mask);

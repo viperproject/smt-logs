@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-07 14:20:25
+// Date:         2025-01-08 21:55:31
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/asserting/qp.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/asserting/qp-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -409,12 +409,12 @@ axiom !IsWandField(f_7);
 procedure m1(s_2: (Set Ref)) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var assertingHeap: HeapType;
   var assertingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var QPMask: MaskType;
   
   // -- Initializing the state
@@ -429,8 +429,8 @@ procedure m1(s_2: (Set Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale (forall x: Ref ::(x in (asserting (|s| > 0) in s)) ==>
   //     acc(x.f, write)) -- qp.vpr@9.3--9.70
@@ -440,8 +440,8 @@ procedure m1(s_2: (Set Ref)) returns ()
         assertingHeap := Heap;
         assertingMask := Mask;
         // Exhale assertion of asserting
-        ExhaleWellDef0Mask := assertingMask;
         ExhaleWellDef0Heap := assertingHeap;
+        ExhaleWellDef0Mask := assertingMask;
         assert {:msg "  Inhale might fail. Assertion |s| > 0 might not hold. (qp.vpr@9.10--9.70) [153164]"}
           Set#Card(s_2) > 0;
         assume false;
@@ -491,12 +491,12 @@ procedure m1(s_2: (Set Ref)) returns ()
 procedure m1Fail(s_2: (Set Ref)) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var assertingHeap: HeapType;
   var assertingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var QPMask: MaskType;
   
   // -- Initializing the state
@@ -507,8 +507,8 @@ procedure m1Fail(s_2: (Set Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale (forall x: Ref ::(x in (asserting (|s| > 0) in s)) ==>
   //     acc(x.f, write)) -- qp.vpr@15.3--15.70
@@ -518,8 +518,8 @@ procedure m1Fail(s_2: (Set Ref)) returns ()
         assertingHeap := Heap;
         assertingMask := Mask;
         // Exhale assertion of asserting
-        ExhaleWellDef0Mask := assertingMask;
         ExhaleWellDef0Heap := assertingHeap;
+        ExhaleWellDef0Mask := assertingMask;
         assert {:msg "  Inhale might fail. Assertion |s| > 0 might not hold. (qp.vpr@15.10--15.70) [153166]"}
           Set#Card(s_2) > 0;
         assume false;
@@ -569,13 +569,13 @@ procedure m1Fail(s_2: (Set Ref)) returns ()
 procedure m2(s_2: (Set Ref)) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var x_31: Ref;
   var assertingHeap: HeapType;
   var assertingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var QPMask: MaskType;
   
   // -- Initializing the state
@@ -592,8 +592,8 @@ procedure m2(s_2: (Set Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale (forall x: Ref ::
   //     { (x in s) }
@@ -605,8 +605,8 @@ procedure m2(s_2: (Set Ref)) returns ()
           assertingHeap := Heap;
           assertingMask := Mask;
           // Exhale assertion of asserting
-          ExhaleWellDef0Mask := assertingMask;
           ExhaleWellDef0Heap := assertingHeap;
+          ExhaleWellDef0Mask := assertingMask;
           assert {:msg "  Inhale might fail. Assertion x != null might not hold. (qp.vpr@22.10--22.73) [153168]"}
             x_31 != null;
         }
@@ -657,13 +657,13 @@ procedure m2(s_2: (Set Ref)) returns ()
 procedure m2Fail(s_2: (Set Ref)) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var x_11: Ref;
   var assertingHeap: HeapType;
   var assertingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var QPMask: MaskType;
   
   // -- Initializing the state
@@ -678,8 +678,8 @@ procedure m2Fail(s_2: (Set Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale (forall x: Ref ::
   //     { (x in s) }
@@ -691,8 +691,8 @@ procedure m2Fail(s_2: (Set Ref)) returns ()
           assertingHeap := Heap;
           assertingMask := Mask;
           // Exhale assertion of asserting
-          ExhaleWellDef0Mask := assertingMask;
           ExhaleWellDef0Heap := assertingHeap;
+          ExhaleWellDef0Mask := assertingMask;
           assert {:msg "  Inhale might fail. Assertion x != null might not hold. (qp.vpr@29.10--29.73) [153170]"}
             x_11 != null;
         }
@@ -743,13 +743,13 @@ procedure m2Fail(s_2: (Set Ref)) returns ()
 procedure m3(s_2: (Set Ref)) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var x_38: Ref;
   var assertingHeap: HeapType;
   var assertingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var QPMask: MaskType;
   
   // -- Initializing the state
@@ -766,8 +766,8 @@ procedure m3(s_2: (Set Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale (forall x: Ref ::
   //     { (x in s) }
@@ -779,8 +779,8 @@ procedure m3(s_2: (Set Ref)) returns ()
           assertingHeap := Heap;
           assertingMask := Mask;
           // Exhale assertion of asserting
-          ExhaleWellDef0Mask := assertingMask;
           ExhaleWellDef0Heap := assertingHeap;
+          ExhaleWellDef0Mask := assertingMask;
           assert {:msg "  Inhale might fail. Assertion x != null might not hold. (qp.vpr@36.10--36.78) [153172]"}
             x_38 != null;
         }
@@ -831,13 +831,13 @@ procedure m3(s_2: (Set Ref)) returns ()
 procedure m3Fail(s_2: (Set Ref)) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var x_32: Ref;
   var assertingHeap: HeapType;
   var assertingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var QPMask: MaskType;
   
   // -- Initializing the state
@@ -852,8 +852,8 @@ procedure m3Fail(s_2: (Set Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale (forall x: Ref ::
   //     { (x in s) }
@@ -865,8 +865,8 @@ procedure m3Fail(s_2: (Set Ref)) returns ()
           assertingHeap := Heap;
           assertingMask := Mask;
           // Exhale assertion of asserting
-          ExhaleWellDef0Mask := assertingMask;
           ExhaleWellDef0Heap := assertingHeap;
+          ExhaleWellDef0Mask := assertingMask;
           assert {:msg "  Inhale might fail. Assertion x != null might not hold. (qp.vpr@43.10--43.78) [153174]"}
             x_32 != null;
         }

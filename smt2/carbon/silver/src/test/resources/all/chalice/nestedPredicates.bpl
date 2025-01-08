@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-07 14:18:54
+// Date:         2025-01-08 21:54:02
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/chalice/nestedPredicates.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/chalice/nestedPredicates-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -230,8 +230,8 @@ procedure getNext#definedness(this: Ref) returns (Result: Ref)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var newPMask: PMaskType;
   
   // -- Initializing the state
@@ -255,8 +255,8 @@ procedure getNext#definedness(this: Ref) returns (Result: Ref)
       UnfoldingMask := Mask;
       assume valid#trigger(UnfoldingHeap, valid(this));
       assume UnfoldingHeap[null, valid(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, next]), CombineFrames(FrameFragment(UnfoldingHeap[this, value]), FrameFragment((if UnfoldingHeap[this, next] != null then UnfoldingHeap[null, valid(UnfoldingHeap[this, next])] else EmptyFrame))));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access valid(this) (nestedPredicates.vpr@106.3--108.58) [146753]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, valid(this)];
@@ -537,10 +537,10 @@ procedure testNestingUnfold(this: Ref) returns ()
 {
   var wildcard: real where wildcard > NoPerm;
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var newVersion: FrameType;
   
   // -- Initializing the state
@@ -562,14 +562,14 @@ procedure testNestingUnfold(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: unfold acc(valid(this), wildcard) -- nestedPredicates.vpr@16.5--16.38
     assume valid#trigger(Heap, valid(this));
     assume Heap[null, valid(this)] == CombineFrames(FrameFragment(Heap[this, next]), CombineFrames(FrameFragment(Heap[this, value]), FrameFragment((if Heap[this, next] != null then Heap[null, valid(Heap[this, next])] else EmptyFrame))));
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Unfolding valid(this) might fail. There might be insufficient permission to access valid(this) (nestedPredicates.vpr@16.5--16.38) [146762]"}
       Mask[null, valid(this)] > NoPerm;
     havoc wildcard;
@@ -604,8 +604,8 @@ procedure testNestingUnfold(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert this != this.next -- nestedPredicates.vpr@17.5--17.35
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of this != this.next
       assert {:msg "  Assert might fail. There might be insufficient permission to access this.next (nestedPredicates.vpr@17.13--17.34) [146763]"}
@@ -628,8 +628,8 @@ procedure testNestingUnfold(this: Ref) returns ()
             HasDirectPerm(Mask, this, next);
         assume valid#trigger(Heap, valid(Heap[this, next]));
         assume Heap[null, valid(Heap[this, next])] == CombineFrames(FrameFragment(Heap[Heap[this, next], next]), CombineFrames(FrameFragment(Heap[Heap[this, next], value]), FrameFragment((if Heap[Heap[this, next], next] != null then Heap[null, valid(Heap[Heap[this, next], next])] else EmptyFrame))));
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Unfolding valid(this.next) might fail. There might be insufficient permission to access valid(this.next) (nestedPredicates.vpr@19.7--19.45) [146768]"}
           Mask[null, valid(Heap[this, next])] > NoPerm;
         havoc wildcard;
@@ -664,8 +664,8 @@ procedure testNestingUnfold(this: Ref) returns ()
         assume state(Heap, Mask);
       
       // -- Translating statement: assert this.next != this.next.next -- nestedPredicates.vpr@20.7--20.47
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         
         // -- Check definedness of this.next != this.next.next
           assert {:msg "  Assert might fail. There might be insufficient permission to access this.next (nestedPredicates.vpr@20.15--20.46) [146769]"}
@@ -679,8 +679,8 @@ procedure testNestingUnfold(this: Ref) returns ()
         assume state(Heap, Mask);
       
       // -- Translating statement: assert this != this.next.next -- nestedPredicates.vpr@21.7--21.42
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         
         // -- Check definedness of this != this.next.next
           assert {:msg "  Assert might fail. There might be insufficient permission to access this.next (nestedPredicates.vpr@21.15--21.41) [146773]"}
@@ -703,10 +703,10 @@ procedure testNestingFold(this: Ref) returns ()
 {
   var wildcard: real where wildcard > NoPerm;
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var freshVersion: FrameType;
   var newPMask: PMaskType;
   
@@ -779,16 +779,16 @@ procedure testNestingFold(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: fold acc(valid(this.next), wildcard) -- nestedPredicates.vpr@31.5--31.41
     
     // -- Check definedness of acc(valid(this.next), wildcard)
       assert {:msg "  Folding valid(this.next) might fail. There might be insufficient permission to access this.next (nestedPredicates.vpr@31.5--31.41) [146783]"}
         HasDirectPerm(Mask, this, next);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Folding valid(this.next) might fail. There might be insufficient permission to access this.next.next (nestedPredicates.vpr@31.5--31.41) [146785]"}
       Mask[Heap[this, next], next] > NoPerm;
     havoc wildcard;
@@ -835,8 +835,8 @@ procedure testNestingFold(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert this.next != this.next.next -- nestedPredicates.vpr@32.5--32.45
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of this.next != this.next.next
       assert {:msg "  Assert might fail. There might be insufficient permission to access this.next (nestedPredicates.vpr@32.13--32.44) [146788]"}
@@ -850,8 +850,8 @@ procedure testNestingFold(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(valid(this), wildcard) -- nestedPredicates.vpr@33.5--33.36
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Folding valid(this) might fail. There might be insufficient permission to access this.next (nestedPredicates.vpr@33.5--33.36) [146793]"}
       Mask[this, next] > NoPerm;
     havoc wildcard;
@@ -898,8 +898,8 @@ procedure testNestingFold(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert this != this.next -- nestedPredicates.vpr@34.5--34.35
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of this != this.next
       assert {:msg "  Assert might fail. There might be insufficient permission to access this.next (nestedPredicates.vpr@34.13--34.34) [146796]"}
@@ -909,8 +909,8 @@ procedure testNestingFold(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert this != this.next.next -- nestedPredicates.vpr@35.5--35.40
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of this != this.next.next
       assert {:msg "  Assert might fail. There might be insufficient permission to access this.next (nestedPredicates.vpr@35.13--35.39) [146798]"}
@@ -930,14 +930,14 @@ procedure testNestingUnfolding(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var wildcard: real where wildcard > NoPerm;
   var newPMask: PMaskType;
   var Unfolding1Heap: HeapType;
@@ -961,20 +961,20 @@ procedure testNestingUnfolding(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert this != (unfolding acc(valid(this), write) in this.next) -- nestedPredicates.vpr@40.5--40.74
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of this != (unfolding acc(valid(this), write) in this.next)
       UnfoldingHeap := ExhaleWellDef0Heap;
       UnfoldingMask := ExhaleWellDef0Mask;
       assume valid#trigger(UnfoldingHeap, valid(this));
       assume UnfoldingHeap[null, valid(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, next]), CombineFrames(FrameFragment(UnfoldingHeap[this, value]), FrameFragment((if UnfoldingHeap[this, next] != null then UnfoldingHeap[null, valid(UnfoldingHeap[this, next])] else EmptyFrame))));
-      ExhaleWellDef1Heap := UnfoldingHeap;
       ExhaleWellDef1Mask := UnfoldingMask;
+      ExhaleWellDef1Heap := UnfoldingHeap;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Assert might fail. There might be insufficient permission to access valid(this) (nestedPredicates.vpr@40.13--40.73) [146801]"}
@@ -1053,8 +1053,8 @@ procedure testNestingUnfolding(this: Ref) returns ()
       UnfoldingMask := Mask;
       assume valid#trigger(UnfoldingHeap, valid(this));
       assume UnfoldingHeap[null, valid(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, next]), CombineFrames(FrameFragment(UnfoldingHeap[this, value]), FrameFragment((if UnfoldingHeap[this, next] != null then UnfoldingHeap[null, valid(UnfoldingHeap[this, next])] else EmptyFrame))));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       assert {:msg "  Conditional statement might fail. There might be insufficient permission to access valid(this) (nestedPredicates.vpr@41.10--41.73) [146804]"}
         UnfoldingMask[null, valid(this)] > NoPerm;
       havoc wildcard;
@@ -1113,16 +1113,16 @@ procedure testNestingUnfolding(this: Ref) returns ()
       // -- Translating statement: assert (unfolding acc(valid(this), wildcard) in this.next) !=
   //   (unfolding acc(valid(this), wildcard) in
   //     (unfolding acc(valid(this.next), wildcard) in this.next.next)) -- nestedPredicates.vpr@42.7--42.178
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         
         // -- Check definedness of (unfolding acc(valid(this), wildcard) in this.next) != (unfolding acc(valid(this), wildcard) in (unfolding acc(valid(this.next), wildcard) in this.next.next))
           UnfoldingHeap := ExhaleWellDef0Heap;
           UnfoldingMask := ExhaleWellDef0Mask;
           assume valid#trigger(UnfoldingHeap, valid(this));
           assume UnfoldingHeap[null, valid(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, next]), CombineFrames(FrameFragment(UnfoldingHeap[this, value]), FrameFragment((if UnfoldingHeap[this, next] != null then UnfoldingHeap[null, valid(UnfoldingHeap[this, next])] else EmptyFrame))));
-          ExhaleWellDef1Heap := UnfoldingHeap;
           ExhaleWellDef1Mask := UnfoldingMask;
+          ExhaleWellDef1Heap := UnfoldingHeap;
           assert {:msg "  Assert might fail. There might be insufficient permission to access valid(this) (nestedPredicates.vpr@42.15--42.177) [146806]"}
             UnfoldingMask[null, valid(this)] > NoPerm;
           havoc wildcard;
@@ -1167,8 +1167,8 @@ procedure testNestingUnfolding(this: Ref) returns ()
           UnfoldingMask := ExhaleWellDef0Mask;
           assume valid#trigger(UnfoldingHeap, valid(this));
           assume UnfoldingHeap[null, valid(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, next]), CombineFrames(FrameFragment(UnfoldingHeap[this, value]), FrameFragment((if UnfoldingHeap[this, next] != null then UnfoldingHeap[null, valid(UnfoldingHeap[this, next])] else EmptyFrame))));
-          ExhaleWellDef1Heap := UnfoldingHeap;
           ExhaleWellDef1Mask := UnfoldingMask;
+          ExhaleWellDef1Heap := UnfoldingHeap;
           assert {:msg "  Assert might fail. There might be insufficient permission to access valid(this) (nestedPredicates.vpr@42.15--42.177) [146808]"}
             UnfoldingMask[null, valid(this)] > NoPerm;
           havoc wildcard;
@@ -1198,8 +1198,8 @@ procedure testNestingUnfolding(this: Ref) returns ()
           Unfolding1Mask := UnfoldingMask;
           assume valid#trigger(Unfolding1Heap, valid(Unfolding1Heap[this, next]));
           assume Unfolding1Heap[null, valid(Unfolding1Heap[this, next])] == CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[this, next], next]), CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[this, next], value]), FrameFragment((if Unfolding1Heap[Unfolding1Heap[this, next], next] != null then Unfolding1Heap[null, valid(Unfolding1Heap[Unfolding1Heap[this, next], next])] else EmptyFrame))));
-          ExhaleWellDef1Heap := Unfolding1Heap;
           ExhaleWellDef1Mask := Unfolding1Mask;
+          ExhaleWellDef1Heap := Unfolding1Heap;
           assert {:msg "  Assert might fail. There might be insufficient permission to access valid(this.next) (nestedPredicates.vpr@42.15--42.177) [146809]"}
             Unfolding1Mask[null, valid(Unfolding1Heap[this, next])] > NoPerm;
           havoc wildcard;
@@ -1345,16 +1345,16 @@ procedure testNestingUnfolding(this: Ref) returns ()
       // -- Translating statement: assert this !=
   //   (unfolding acc(valid(this), wildcard) in
   //     (unfolding acc(valid(this.next), wildcard) in this.next.next)) -- nestedPredicates.vpr@43.7--43.131
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         
         // -- Check definedness of this != (unfolding acc(valid(this), wildcard) in (unfolding acc(valid(this.next), wildcard) in this.next.next))
           UnfoldingHeap := ExhaleWellDef0Heap;
           UnfoldingMask := ExhaleWellDef0Mask;
           assume valid#trigger(UnfoldingHeap, valid(this));
           assume UnfoldingHeap[null, valid(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, next]), CombineFrames(FrameFragment(UnfoldingHeap[this, value]), FrameFragment((if UnfoldingHeap[this, next] != null then UnfoldingHeap[null, valid(UnfoldingHeap[this, next])] else EmptyFrame))));
-          ExhaleWellDef1Heap := UnfoldingHeap;
           ExhaleWellDef1Mask := UnfoldingMask;
+          ExhaleWellDef1Heap := UnfoldingHeap;
           assert {:msg "  Assert might fail. There might be insufficient permission to access valid(this) (nestedPredicates.vpr@43.15--43.130) [146814]"}
             UnfoldingMask[null, valid(this)] > NoPerm;
           havoc wildcard;
@@ -1384,8 +1384,8 @@ procedure testNestingUnfolding(this: Ref) returns ()
           Unfolding1Mask := UnfoldingMask;
           assume valid#trigger(Unfolding1Heap, valid(Unfolding1Heap[this, next]));
           assume Unfolding1Heap[null, valid(Unfolding1Heap[this, next])] == CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[this, next], next]), CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[this, next], value]), FrameFragment((if Unfolding1Heap[Unfolding1Heap[this, next], next] != null then Unfolding1Heap[null, valid(Unfolding1Heap[Unfolding1Heap[this, next], next])] else EmptyFrame))));
-          ExhaleWellDef1Heap := Unfolding1Heap;
           ExhaleWellDef1Mask := Unfolding1Mask;
+          ExhaleWellDef1Heap := Unfolding1Heap;
           assert {:msg "  Assert might fail. There might be insufficient permission to access valid(this.next) (nestedPredicates.vpr@43.15--43.130) [146815]"}
             Unfolding1Mask[null, valid(Unfolding1Heap[this, next])] > NoPerm;
           havoc wildcard;
@@ -1518,10 +1518,10 @@ procedure testNestingUnfoldTwo(this: Ref) returns ()
 {
   var wildcard: real where wildcard > NoPerm;
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var newVersion: FrameType;
   
   // -- Initializing the state
@@ -1543,14 +1543,14 @@ procedure testNestingUnfoldTwo(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: unfold acc(p(this), wildcard) -- nestedPredicates.vpr@51.5--51.34
     assume p#trigger(Heap, p_14(this));
     assume Heap[null, p_14(this)] == CombineFrames(FrameFragment(Heap[this, next]), CombineFrames(FrameFragment(Heap[this, value]), FrameFragment((if Heap[this, next] != null then Heap[null, q_18(Heap[this, next])] else EmptyFrame))));
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Unfolding p(this) might fail. There might be insufficient permission to access p(this) (nestedPredicates.vpr@51.5--51.34) [146821]"}
       Mask[null, p_14(this)] > NoPerm;
     havoc wildcard;
@@ -1585,8 +1585,8 @@ procedure testNestingUnfoldTwo(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert this != this.next -- nestedPredicates.vpr@53.5--53.35
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of this != this.next
       assert {:msg "  Assert might fail. There might be insufficient permission to access this.next (nestedPredicates.vpr@53.13--53.34) [146822]"}
@@ -1609,8 +1609,8 @@ procedure testNestingUnfoldTwo(this: Ref) returns ()
             HasDirectPerm(Mask, this, next);
         assume q#trigger(Heap, q_18(Heap[this, next]));
         assume Heap[null, q_18(Heap[this, next])] == CombineFrames(FrameFragment(Heap[Heap[this, next], next]), CombineFrames(FrameFragment(Heap[Heap[this, next], value]), FrameFragment((if Heap[Heap[this, next], next] != null then Heap[null, p_14(Heap[Heap[this, next], next])] else EmptyFrame))));
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Unfolding q(this.next) might fail. There might be insufficient permission to access q(this.next) (nestedPredicates.vpr@55.7--55.41) [146827]"}
           Mask[null, q_18(Heap[this, next])] > NoPerm;
         havoc wildcard;
@@ -1645,8 +1645,8 @@ procedure testNestingUnfoldTwo(this: Ref) returns ()
         assume state(Heap, Mask);
       
       // -- Translating statement: assert this.next != this.next.next -- nestedPredicates.vpr@57.7--57.47
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         
         // -- Check definedness of this.next != this.next.next
           assert {:msg "  Assert might fail. There might be insufficient permission to access this.next (nestedPredicates.vpr@57.15--57.46) [146828]"}
@@ -1660,8 +1660,8 @@ procedure testNestingUnfoldTwo(this: Ref) returns ()
         assume state(Heap, Mask);
       
       // -- Translating statement: assert this != this.next.next -- nestedPredicates.vpr@58.7--58.42
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         
         // -- Check definedness of this != this.next.next
           assert {:msg "  Assert might fail. There might be insufficient permission to access this.next (nestedPredicates.vpr@58.15--58.41) [146832]"}
@@ -1684,10 +1684,10 @@ procedure testNestingFoldTwo(this: Ref) returns ()
 {
   var wildcard: real where wildcard > NoPerm;
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var freshVersion: FrameType;
   var newPMask: PMaskType;
   
@@ -1760,16 +1760,16 @@ procedure testNestingFoldTwo(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: fold acc(q(this.next), wildcard) -- nestedPredicates.vpr@68.5--68.37
     
     // -- Check definedness of acc(q(this.next), wildcard)
       assert {:msg "  Folding q(this.next) might fail. There might be insufficient permission to access this.next (nestedPredicates.vpr@68.5--68.37) [146842]"}
         HasDirectPerm(Mask, this, next);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Folding q(this.next) might fail. There might be insufficient permission to access this.next.next (nestedPredicates.vpr@68.5--68.37) [146844]"}
       Mask[Heap[this, next], next] > NoPerm;
     havoc wildcard;
@@ -1816,8 +1816,8 @@ procedure testNestingFoldTwo(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert this != this.next -- nestedPredicates.vpr@70.5--70.35
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of this != this.next
       assert {:msg "  Assert might fail. There might be insufficient permission to access this.next (nestedPredicates.vpr@70.13--70.34) [146847]"}
@@ -1827,8 +1827,8 @@ procedure testNestingFoldTwo(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert this.next != this.next.next -- nestedPredicates.vpr@72.5--72.45
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of this.next != this.next.next
       assert {:msg "  Assert might fail. There might be insufficient permission to access this.next (nestedPredicates.vpr@72.13--72.44) [146849]"}
@@ -1842,8 +1842,8 @@ procedure testNestingFoldTwo(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert this != this.next.next -- nestedPredicates.vpr@74.5--74.40
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of this != this.next.next
       assert {:msg "  Assert might fail. There might be insufficient permission to access this.next (nestedPredicates.vpr@74.13--74.39) [146853]"}
@@ -1864,10 +1864,10 @@ procedure testNestingFoldThree(this: Ref) returns ()
 {
   var wildcard: real where wildcard > NoPerm;
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var freshVersion: FrameType;
   var newPMask: PMaskType;
   
@@ -1940,16 +1940,16 @@ procedure testNestingFoldThree(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: fold acc(q(this.next), wildcard) -- nestedPredicates.vpr@83.5--83.37
     
     // -- Check definedness of acc(q(this.next), wildcard)
       assert {:msg "  Folding q(this.next) might fail. There might be insufficient permission to access this.next (nestedPredicates.vpr@83.5--83.37) [146863]"}
         HasDirectPerm(Mask, this, next);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Folding q(this.next) might fail. There might be insufficient permission to access this.next.next (nestedPredicates.vpr@83.5--83.37) [146865]"}
       Mask[Heap[this, next], next] > NoPerm;
     havoc wildcard;
@@ -1996,8 +1996,8 @@ procedure testNestingFoldThree(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(p(this), wildcard) -- nestedPredicates.vpr@84.5--84.32
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Folding p(this) might fail. There might be insufficient permission to access this.next (nestedPredicates.vpr@84.5--84.32) [146869]"}
       Mask[this, next] > NoPerm;
     havoc wildcard;
@@ -2044,8 +2044,8 @@ procedure testNestingFoldThree(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert this != this.next -- nestedPredicates.vpr@85.5--85.35
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of this != this.next
       assert {:msg "  Assert might fail. There might be insufficient permission to access this.next (nestedPredicates.vpr@85.13--85.34) [146872]"}
@@ -2055,8 +2055,8 @@ procedure testNestingFoldThree(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert this.next != this.next.next -- nestedPredicates.vpr@87.5--87.45
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of this.next != this.next.next
       assert {:msg "  Assert might fail. There might be insufficient permission to access this.next (nestedPredicates.vpr@87.13--87.44) [146874]"}
@@ -2070,8 +2070,8 @@ procedure testNestingFoldThree(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert this != this.next.next -- nestedPredicates.vpr@88.5--88.40
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of this != this.next.next
       assert {:msg "  Assert might fail. There might be insufficient permission to access this.next (nestedPredicates.vpr@88.13--88.39) [146878]"}
@@ -2092,14 +2092,14 @@ procedure testNestingUnfoldingTwo(this: Ref) returns ()
 {
   var wildcard: real where wildcard > NoPerm;
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var newPMask: PMaskType;
   var Unfolding1Heap: HeapType;
   var Unfolding1Mask: MaskType;
@@ -2123,20 +2123,20 @@ procedure testNestingUnfoldingTwo(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert this != (unfolding acc(p(this), wildcard) in this.next) -- nestedPredicates.vpr@94.5--94.73
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of this != (unfolding acc(p(this), wildcard) in this.next)
       UnfoldingHeap := ExhaleWellDef0Heap;
       UnfoldingMask := ExhaleWellDef0Mask;
       assume p#trigger(UnfoldingHeap, p_14(this));
       assume UnfoldingHeap[null, p_14(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, next]), CombineFrames(FrameFragment(UnfoldingHeap[this, value]), FrameFragment((if UnfoldingHeap[this, next] != null then UnfoldingHeap[null, q_18(UnfoldingHeap[this, next])] else EmptyFrame))));
-      ExhaleWellDef1Heap := UnfoldingHeap;
       ExhaleWellDef1Mask := UnfoldingMask;
+      ExhaleWellDef1Heap := UnfoldingHeap;
       assert {:msg "  Assert might fail. There might be insufficient permission to access p(this) (nestedPredicates.vpr@94.13--94.72) [146881]"}
         UnfoldingMask[null, p_14(this)] > NoPerm;
       havoc wildcard;
@@ -2214,8 +2214,8 @@ procedure testNestingUnfoldingTwo(this: Ref) returns ()
       UnfoldingMask := Mask;
       assume p#trigger(UnfoldingHeap, p_14(this));
       assume UnfoldingHeap[null, p_14(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, next]), CombineFrames(FrameFragment(UnfoldingHeap[this, value]), FrameFragment((if UnfoldingHeap[this, next] != null then UnfoldingHeap[null, q_18(UnfoldingHeap[this, next])] else EmptyFrame))));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       assert {:msg "  Conditional statement might fail. There might be insufficient permission to access p(this) (nestedPredicates.vpr@95.10--95.69) [146884]"}
         UnfoldingMask[null, p_14(this)] > NoPerm;
       havoc wildcard;
@@ -2274,16 +2274,16 @@ procedure testNestingUnfoldingTwo(this: Ref) returns ()
       // -- Translating statement: assert (unfolding acc(p(this), wildcard) in this.next) !=
   //   (unfolding acc(p(this), wildcard) in
   //     (unfolding acc(q(this.next), wildcard) in this.next.next)) -- nestedPredicates.vpr@97.7--97.166
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         
         // -- Check definedness of (unfolding acc(p(this), wildcard) in this.next) != (unfolding acc(p(this), wildcard) in (unfolding acc(q(this.next), wildcard) in this.next.next))
           UnfoldingHeap := ExhaleWellDef0Heap;
           UnfoldingMask := ExhaleWellDef0Mask;
           assume p#trigger(UnfoldingHeap, p_14(this));
           assume UnfoldingHeap[null, p_14(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, next]), CombineFrames(FrameFragment(UnfoldingHeap[this, value]), FrameFragment((if UnfoldingHeap[this, next] != null then UnfoldingHeap[null, q_18(UnfoldingHeap[this, next])] else EmptyFrame))));
-          ExhaleWellDef1Heap := UnfoldingHeap;
           ExhaleWellDef1Mask := UnfoldingMask;
+          ExhaleWellDef1Heap := UnfoldingHeap;
           assert {:msg "  Assert might fail. There might be insufficient permission to access p(this) (nestedPredicates.vpr@97.15--97.165) [146886]"}
             UnfoldingMask[null, p_14(this)] > NoPerm;
           havoc wildcard;
@@ -2328,8 +2328,8 @@ procedure testNestingUnfoldingTwo(this: Ref) returns ()
           UnfoldingMask := ExhaleWellDef0Mask;
           assume p#trigger(UnfoldingHeap, p_14(this));
           assume UnfoldingHeap[null, p_14(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, next]), CombineFrames(FrameFragment(UnfoldingHeap[this, value]), FrameFragment((if UnfoldingHeap[this, next] != null then UnfoldingHeap[null, q_18(UnfoldingHeap[this, next])] else EmptyFrame))));
-          ExhaleWellDef1Heap := UnfoldingHeap;
           ExhaleWellDef1Mask := UnfoldingMask;
+          ExhaleWellDef1Heap := UnfoldingHeap;
           assert {:msg "  Assert might fail. There might be insufficient permission to access p(this) (nestedPredicates.vpr@97.15--97.165) [146888]"}
             UnfoldingMask[null, p_14(this)] > NoPerm;
           havoc wildcard;
@@ -2359,8 +2359,8 @@ procedure testNestingUnfoldingTwo(this: Ref) returns ()
           Unfolding1Mask := UnfoldingMask;
           assume q#trigger(Unfolding1Heap, q_18(Unfolding1Heap[this, next]));
           assume Unfolding1Heap[null, q_18(Unfolding1Heap[this, next])] == CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[this, next], next]), CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[this, next], value]), FrameFragment((if Unfolding1Heap[Unfolding1Heap[this, next], next] != null then Unfolding1Heap[null, p_14(Unfolding1Heap[Unfolding1Heap[this, next], next])] else EmptyFrame))));
-          ExhaleWellDef1Heap := Unfolding1Heap;
           ExhaleWellDef1Mask := Unfolding1Mask;
+          ExhaleWellDef1Heap := Unfolding1Heap;
           assert {:msg "  Assert might fail. There might be insufficient permission to access q(this.next) (nestedPredicates.vpr@97.15--97.165) [146889]"}
             Unfolding1Mask[null, q_18(Unfolding1Heap[this, next])] > NoPerm;
           havoc wildcard;
@@ -2506,16 +2506,16 @@ procedure testNestingUnfoldingTwo(this: Ref) returns ()
       // -- Translating statement: assert this !=
   //   (unfolding acc(p(this), wildcard) in
   //     (unfolding acc(q(this.next), wildcard) in this.next.next)) -- nestedPredicates.vpr@98.7--98.123
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         
         // -- Check definedness of this != (unfolding acc(p(this), wildcard) in (unfolding acc(q(this.next), wildcard) in this.next.next))
           UnfoldingHeap := ExhaleWellDef0Heap;
           UnfoldingMask := ExhaleWellDef0Mask;
           assume p#trigger(UnfoldingHeap, p_14(this));
           assume UnfoldingHeap[null, p_14(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, next]), CombineFrames(FrameFragment(UnfoldingHeap[this, value]), FrameFragment((if UnfoldingHeap[this, next] != null then UnfoldingHeap[null, q_18(UnfoldingHeap[this, next])] else EmptyFrame))));
-          ExhaleWellDef1Heap := UnfoldingHeap;
           ExhaleWellDef1Mask := UnfoldingMask;
+          ExhaleWellDef1Heap := UnfoldingHeap;
           assert {:msg "  Assert might fail. There might be insufficient permission to access p(this) (nestedPredicates.vpr@98.15--98.122) [146894]"}
             UnfoldingMask[null, p_14(this)] > NoPerm;
           havoc wildcard;
@@ -2545,8 +2545,8 @@ procedure testNestingUnfoldingTwo(this: Ref) returns ()
           Unfolding1Mask := UnfoldingMask;
           assume q#trigger(Unfolding1Heap, q_18(Unfolding1Heap[this, next]));
           assume Unfolding1Heap[null, q_18(Unfolding1Heap[this, next])] == CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[this, next], next]), CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[this, next], value]), FrameFragment((if Unfolding1Heap[Unfolding1Heap[this, next], next] != null then Unfolding1Heap[null, p_14(Unfolding1Heap[Unfolding1Heap[this, next], next])] else EmptyFrame))));
-          ExhaleWellDef1Heap := Unfolding1Heap;
           ExhaleWellDef1Mask := Unfolding1Mask;
+          ExhaleWellDef1Heap := Unfolding1Heap;
           assert {:msg "  Assert might fail. There might be insufficient permission to access q(this.next) (nestedPredicates.vpr@98.15--98.122) [146895]"}
             Unfolding1Mask[null, q_18(Unfolding1Heap[this, next])] > NoPerm;
           havoc wildcard;
@@ -2681,11 +2681,11 @@ procedure testNestingUnfoldingPrecondition(this: Ref, x: Ref) returns ()
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var newPMask: PMaskType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -2708,8 +2708,8 @@ procedure testNestingUnfoldingPrecondition(this: Ref, x: Ref) returns ()
       UnfoldingMask := Mask;
       assume valid#trigger(UnfoldingHeap, valid(this));
       assume UnfoldingHeap[null, valid(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, next]), CombineFrames(FrameFragment(UnfoldingHeap[this, value]), FrameFragment((if UnfoldingHeap[this, next] != null then UnfoldingHeap[null, valid(UnfoldingHeap[this, next])] else EmptyFrame))));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access valid(this) (nestedPredicates.vpr@102.14--102.106) [146900]"}
         UnfoldingMask[null, valid(this)] > NoPerm;
       havoc wildcard;
@@ -2756,8 +2756,8 @@ procedure testNestingUnfoldingPrecondition(this: Ref, x: Ref) returns ()
       UnfoldingMask := Mask;
       assume valid#trigger(UnfoldingHeap, valid(this));
       assume UnfoldingHeap[null, valid(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, next]), CombineFrames(FrameFragment(UnfoldingHeap[this, value]), FrameFragment((if UnfoldingHeap[this, next] != null then UnfoldingHeap[null, valid(UnfoldingHeap[this, next])] else EmptyFrame))));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       havoc wildcard;
       assume wildcard < UnfoldingMask[null, valid(this)];
       UnfoldingMask := UnfoldingMask[null, valid(this):=UnfoldingMask[null, valid(this)] - wildcard];
@@ -2787,12 +2787,12 @@ procedure testNestingUnfoldingPrecondition(this: Ref, x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert this != x -- nestedPredicates.vpr@104.5--104.27
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion this != x might not hold. (nestedPredicates.vpr@104.13--104.26) [146902]"}
       this != x;
     assume state(Heap, Mask);
@@ -2807,17 +2807,17 @@ procedure testNestingUnfoldingPostcondition(this: Ref, x: Ref) returns ()
 {
   var wildcard: real where wildcard > NoPerm;
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var newPMask: PMaskType;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -2840,8 +2840,8 @@ procedure testNestingUnfoldingPostcondition(this: Ref, x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -2857,8 +2857,8 @@ procedure testNestingUnfoldingPostcondition(this: Ref, x: Ref) returns ()
       UnfoldingMask := PostMask;
       assume valid#trigger(UnfoldingHeap, valid(this));
       assume UnfoldingHeap[null, valid(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, next]), CombineFrames(FrameFragment(UnfoldingHeap[this, value]), FrameFragment((if UnfoldingHeap[this, next] != null then UnfoldingHeap[null, valid(UnfoldingHeap[this, next])] else EmptyFrame))));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access valid(this) (nestedPredicates.vpr@111.13--111.89) [146903]"}
         UnfoldingMask[null, valid(this)] > NoPerm;
       havoc wildcard;
@@ -2903,8 +2903,8 @@ procedure testNestingUnfoldingPostcondition(this: Ref, x: Ref) returns ()
       UnfoldingMask := PostMask;
       assume valid#trigger(UnfoldingHeap, valid(this));
       assume UnfoldingHeap[null, valid(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, next]), CombineFrames(FrameFragment(UnfoldingHeap[this, value]), FrameFragment((if UnfoldingHeap[this, next] != null then UnfoldingHeap[null, valid(UnfoldingHeap[this, next])] else EmptyFrame))));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       havoc wildcard;
       assume wildcard < UnfoldingMask[null, valid(this)];
       UnfoldingMask := UnfoldingMask[null, valid(this):=UnfoldingMask[null, valid(this)] - wildcard];
@@ -2934,8 +2934,8 @@ procedure testNestingUnfoldingPostcondition(this: Ref, x: Ref) returns ()
   }
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of testNestingUnfoldingPostcondition might not hold. There might be insufficient permission to access valid(this) (nestedPredicates.vpr@111.13--111.89) [146904]"}
       Mask[null, valid(this)] > NoPerm;
     havoc wildcard;
@@ -2947,8 +2947,8 @@ procedure testNestingUnfoldingPostcondition(this: Ref, x: Ref) returns ()
       UnfoldingMask := ExhaleWellDef0Mask;
       assume valid#trigger(UnfoldingHeap, valid(this));
       assume UnfoldingHeap[null, valid(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, next]), CombineFrames(FrameFragment(UnfoldingHeap[this, value]), FrameFragment((if UnfoldingHeap[this, next] != null then UnfoldingHeap[null, valid(UnfoldingHeap[this, next])] else EmptyFrame))));
-      ExhaleWellDef1Heap := UnfoldingHeap;
       ExhaleWellDef1Mask := UnfoldingMask;
+      ExhaleWellDef1Heap := UnfoldingHeap;
       assert {:msg "  Postcondition of testNestingUnfoldingPostcondition might not hold. There might be insufficient permission to access valid(this) (nestedPredicates.vpr@111.13--111.89) [146905]"}
         UnfoldingMask[null, valid(this)] > NoPerm;
       havoc wildcard;

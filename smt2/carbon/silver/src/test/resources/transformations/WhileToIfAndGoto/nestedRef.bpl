@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-07 14:02:27
+// Date:         2025-01-08 21:37:44
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/transformations/WhileToIfAndGoto/nestedRef.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/transformations/WhileToIfAndGoto/nestedRef-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -334,7 +334,7 @@ procedure main() returns ()
     // -- Code for loop head 6
       
       // -- Havoc loop written variables (except locals)
-        havoc j_9, i;
+        havoc i, j_9;
       
       // -- Check definedness of invariant
         if (*) {

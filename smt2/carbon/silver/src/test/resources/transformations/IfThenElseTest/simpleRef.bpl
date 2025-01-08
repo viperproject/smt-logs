@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-07 14:02:29
+// Date:         2025-01-08 21:37:46
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/transformations/IfThenElseTest/simpleRef.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/transformations/IfThenElseTest/simpleRef-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -180,12 +180,12 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 procedure main() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var x: int;
   var y: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -195,8 +195,8 @@ procedure main() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: x := 0 -- simpleRef.vpr@6.4--6.19
     x := 0;
@@ -207,15 +207,15 @@ procedure main() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert x + y >= x -- simpleRef.vpr@9.4--9.22
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion x + y >= x might not hold. (simpleRef.vpr@9.11--9.21) [92347]"}
       x + y >= x;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert x + y == x + y -- simpleRef.vpr@10.4--10.22
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion x + y == x + y might not hold. (simpleRef.vpr@10.11--10.21) [92348]"}
       x + y == x + y;
     assume state(Heap, Mask);

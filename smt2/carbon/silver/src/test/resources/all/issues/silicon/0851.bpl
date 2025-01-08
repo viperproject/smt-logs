@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-07 14:27:47
+// Date:         2025-01-08 22:02:48
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0851.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0851-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -279,12 +279,12 @@ procedure test01(x: Ref, b1: bool, b2: bool) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
-  var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -306,8 +306,8 @@ procedure test01(x: Ref, b1: bool, b2: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: x.v := 4 -- 0851.vpr@21.3--21.11
     assert {:msg "  Assignment might fail. There might be insufficient permission to access x.v (0851.vpr@21.3--21.11) [196089]"}
@@ -316,14 +316,14 @@ procedure test01(x: Ref, b1: bool, b2: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert fun01(x, b2, b1) == 4 -- 0851.vpr@22.3--22.31
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of fun01(x, b2, b1) == 4
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         perm := 1 / 3;
         assert {:msg "  Precondition of function fun01 might not hold. Fraction 1 / 3 might be negative. (0851.vpr@22.10--22.26) [196090]"}
           perm >= NoPerm;
@@ -351,8 +351,8 @@ procedure test01(x: Ref, b1: bool, b2: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- 0851.vpr@24.3--24.15
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion false might not hold. (0851.vpr@24.10--24.15) [196097]"}
       false;
     assume state(Heap, Mask);

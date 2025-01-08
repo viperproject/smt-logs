@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-07 13:59:18
+// Date:         2025-01-08 21:34:41
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/sequences/linked-list-qp-append.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/sequences/linked-list-qp-append-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -645,8 +645,8 @@ procedure length#definedness(this: Ref) returns (Result: int)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var QPMask: MaskType;
   var newPMask: PMaskType;
   
@@ -670,8 +670,8 @@ procedure length#definedness(this: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume List#trigger(UnfoldingHeap, List(this));
       assume UnfoldingHeap[null, List(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, nodes]), CombineFrames(FrameFragment(List#condqp1(UnfoldingHeap, this)), FrameFragment(List#condqp2(UnfoldingHeap, this))));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access List(this) (linked-list-qp-append.vpr@24.1--28.2) [63073]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, List(this)];
@@ -829,8 +829,8 @@ procedure itemAt#definedness(this: Ref, index: int) returns (Result: int)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
@@ -855,8 +855,8 @@ procedure itemAt#definedness(this: Ref, index: int) returns (Result: int)
     // -- Check definedness of index < length(this)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access List(this) (linked-list-qp-append.vpr@32.34--32.46) [63077]"}
           NoPerm < perm ==> NoPerm < Mask[null, List(this)];
@@ -877,8 +877,8 @@ procedure itemAt#definedness(this: Ref, index: int) returns (Result: int)
       UnfoldingMask := Mask;
       assume List#trigger(UnfoldingHeap, List(this));
       assume UnfoldingHeap[null, List(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, nodes]), CombineFrames(FrameFragment(List#condqp1(UnfoldingHeap, this)), FrameFragment(List#condqp2(UnfoldingHeap, this))));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access List(this) (linked-list-qp-append.vpr@30.1--35.2) [63078]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, List(this)];
@@ -1276,11 +1276,11 @@ procedure append(this: Ref, elem: int) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var i_13: int;
@@ -1314,8 +1314,8 @@ procedure append(this: Ref, elem: int) returns ()
     // -- Check definedness of 0 < length(this)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access List(this) (linked-list-qp-append.vpr@39.16--39.28) [63120]"}
           NoPerm < perm ==> NoPerm < Mask[null, List(this)];
@@ -1332,8 +1332,8 @@ procedure append(this: Ref, elem: int) returns ()
       // -- Check definedness of itemAt(this, length(this) - 1) <= elem
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           perm := FullPerm;
           assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access List(this) (linked-list-qp-append.vpr@39.46--39.58) [63121]"}
             NoPerm < perm ==> NoPerm < Mask[null, List(this)];
@@ -1346,8 +1346,8 @@ procedure append(this: Ref, elem: int) returns ()
         }
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           perm := FullPerm;
           assert {:msg "  Precondition of function itemAt might not hold. There might be insufficient permission to access List(this) (linked-list-qp-append.vpr@39.33--39.63) [63122]"}
             NoPerm < perm ==> NoPerm < Mask[null, List(this)];
@@ -1369,8 +1369,8 @@ procedure append(this: Ref, elem: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1385,8 +1385,8 @@ procedure append(this: Ref, elem: int) returns ()
     // -- Check definedness of length(this) == old(length(this)) + 1
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := PostHeap;
         ExhaleWellDef0Mask := PostMask;
+        ExhaleWellDef0Heap := PostHeap;
         perm := FullPerm;
         assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access List(this) (linked-list-qp-append.vpr@41.11--41.23) [63125]"}
           NoPerm < perm ==> NoPerm < PostMask[null, List(this)];
@@ -1399,8 +1399,8 @@ procedure append(this: Ref, elem: int) returns ()
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := oldHeap;
         ExhaleWellDef0Mask := oldMask;
+        ExhaleWellDef0Heap := oldHeap;
         perm := FullPerm;
         assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access List(this) (linked-list-qp-append.vpr@41.31--41.43) [63126]"}
           NoPerm < perm ==> NoPerm < oldMask[null, List(this)];
@@ -1415,8 +1415,8 @@ procedure append(this: Ref, elem: int) returns ()
     // -- Check definedness of itemAt(this, length(this) - 1) == elem
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := PostHeap;
         ExhaleWellDef0Mask := PostMask;
+        ExhaleWellDef0Heap := PostHeap;
         perm := FullPerm;
         assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access List(this) (linked-list-qp-append.vpr@42.24--42.36) [63127]"}
           NoPerm < perm ==> NoPerm < PostMask[null, List(this)];
@@ -1429,8 +1429,8 @@ procedure append(this: Ref, elem: int) returns ()
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := PostHeap;
         ExhaleWellDef0Mask := PostMask;
+        ExhaleWellDef0Heap := PostHeap;
         perm := FullPerm;
         assert {:msg "  Precondition of function itemAt might not hold. There might be insufficient permission to access List(this) (linked-list-qp-append.vpr@42.11--42.41) [63128]"}
           NoPerm < perm ==> NoPerm < PostMask[null, List(this)];
@@ -1454,8 +1454,8 @@ procedure append(this: Ref, elem: int) returns ()
         if (0 <= i_13) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := PostHeap;
             ExhaleWellDef0Mask := PostMask;
+            ExhaleWellDef0Heap := PostHeap;
             perm := FullPerm;
             assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access List(this) (linked-list-qp-append.vpr@43.42--43.54) [63131]"}
               NoPerm < perm ==> NoPerm < PostMask[null, List(this)];
@@ -1470,8 +1470,8 @@ procedure append(this: Ref, elem: int) returns ()
         if (0 <= i_13 && i_13 < length(PostHeap, this) - 1) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := PostHeap;
             ExhaleWellDef0Mask := PostMask;
+            ExhaleWellDef0Heap := PostHeap;
             perm := FullPerm;
             assert {:msg "  Precondition of function itemAt might not hold. There might be insufficient permission to access List(this) (linked-list-qp-append.vpr@43.63--43.78) [63132]"}
               NoPerm < perm ==> NoPerm < PostMask[null, List(this)];
@@ -1488,8 +1488,8 @@ procedure append(this: Ref, elem: int) returns ()
           }
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := oldHeap;
             ExhaleWellDef0Mask := oldMask;
+            ExhaleWellDef0Heap := oldHeap;
             perm := FullPerm;
             assert {:msg "  Precondition of function itemAt might not hold. There might be insufficient permission to access List(this) (linked-list-qp-append.vpr@43.86--43.101) [63135]"}
               NoPerm < perm ==> NoPerm < oldMask[null, List(this)];
@@ -1519,8 +1519,8 @@ procedure append(this: Ref, elem: int) returns ()
   // -- Translating statement: unfold acc(List(this), write) -- linked-list-qp-append.vpr@45.2--45.24
     assume List#trigger(Heap, List(this));
     assume Heap[null, List(this)] == CombineFrames(FrameFragment(Heap[this, nodes]), CombineFrames(FrameFragment(List#condqp1(Heap, this)), FrameFragment(List#condqp2(Heap, this))));
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding List(this) might fail. There might be insufficient permission to access List(this) (linked-list-qp-append.vpr@45.2--45.24) [63140]"}
@@ -1715,8 +1715,8 @@ procedure append(this: Ref, elem: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(List(this), write) -- linked-list-qp-append.vpr@60.2--60.22
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding List(this) might fail. There might be insufficient permission to access this.nodes (linked-list-qp-append.vpr@60.2--60.22) [63163]"}
@@ -1872,8 +1872,8 @@ procedure append(this: Ref, elem: int) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of append might not hold. There might be insufficient permission to access List(this) (linked-list-qp-append.vpr@40.11--40.26) [63175]"}

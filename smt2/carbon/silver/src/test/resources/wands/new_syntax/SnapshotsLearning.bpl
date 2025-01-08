@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-07 14:15:31
+// Date:         2025-01-08 21:50:40
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/new_syntax/SnapshotsLearning.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/new_syntax/SnapshotsLearning-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -330,8 +330,8 @@ procedure get#definedness(x: Ref) returns (Result: int)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -353,8 +353,8 @@ procedure get#definedness(x: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume Cell#trigger(UnfoldingHeap, Cell(x));
       assume UnfoldingHeap[null, Cell(x)] == FrameFragment(UnfoldingHeap[x, f_7]);
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Cell(x) (SnapshotsLearning.vpr@11.1--14.2) [137080]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, Cell(x)];
@@ -436,22 +436,22 @@ procedure Cell#definedness(x: Ref) returns ()
 procedure test0(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var WandDefLHSHeap: HeapType;
   var WandDefLHSMask: MaskType;
-  var Labellhs1Mask: MaskType;
   var Labellhs1Heap: HeapType;
+  var Labellhs1Mask: MaskType;
   var WandDefRHSHeap: HeapType;
   var WandDefRHSMask: MaskType;
   var perm: Perm;
   var ApplyingHeap: HeapType;
   var ApplyingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
-  var Labellhs3Mask: MaskType;
   var Labellhs3Heap: HeapType;
+  var Labellhs3Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -465,8 +465,8 @@ procedure test0(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale (true --* acc(x.f, write)) &&
   //   (applying true --* acc(x.f, write) in
@@ -480,8 +480,8 @@ procedure test0(x: Ref) returns ()
         
         // -- Translating statement: label lhs1 -- SnapshotsLearning.vpr@17.13--17.30
           lhs1:
-          Labellhs1Mask := WandDefLHSMask;
           Labellhs1Heap := WandDefLHSHeap;
+          Labellhs1Mask := WandDefLHSMask;
           assume state(WandDefLHSHeap, WandDefLHSMask);
         havoc WandDefRHSHeap;
         WandDefRHSMask := ZeroMask;
@@ -500,8 +500,8 @@ procedure test0(x: Ref) returns ()
       ApplyingMask := Mask;
       
       // -- check if wand is held and remove an instance
-        ExhaleWellDef0Mask := ApplyingMask;
         ExhaleWellDef0Heap := ApplyingHeap;
+        ExhaleWellDef0Mask := ApplyingMask;
         // permLe
         assert {:msg "  Inhale might fail. Magic wand instance not found. (SnapshotsLearning.vpr@17.12--17.75) [137082]"}
           FullPerm <= ApplyingMask[null, wand(true, x, FullPerm)];
@@ -509,8 +509,8 @@ procedure test0(x: Ref) returns ()
       assume state(ApplyingHeap, ApplyingMask);
       
       // -- check if LHS holds and remove permissions 
-        ExhaleWellDef0Mask := ApplyingMask;
         ExhaleWellDef0Heap := ApplyingHeap;
+        ExhaleWellDef0Mask := ApplyingMask;
       assume state(ApplyingHeap, ApplyingMask);
       
       // -- inhale the RHS of the wand
@@ -530,8 +530,8 @@ procedure test0(x: Ref) returns ()
         
         // -- Translating statement: label lhs3 -- SnapshotsLearning.vpr@17.45--17.62
           lhs3:
-          Labellhs3Mask := WandDefLHSMask;
           Labellhs3Heap := WandDefLHSHeap;
+          Labellhs3Mask := WandDefLHSMask;
           assume state(WandDefLHSHeap, WandDefLHSMask);
         havoc WandDefRHSHeap;
         WandDefRHSMask := ZeroMask;
@@ -551,8 +551,8 @@ procedure test0(x: Ref) returns ()
   // -- Translating statement: apply true --* acc(x.f, write) -- SnapshotsLearning.vpr@18.5--18.28
     
     // -- check if wand is held and remove an instance
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       // permLe
       assert {:msg "  Applying wand might fail. Magic wand instance not found. (SnapshotsLearning.vpr@18.5--18.28) [137084]"}
         FullPerm <= Mask[null, wand(true, x, FullPerm)];
@@ -560,8 +560,8 @@ procedure test0(x: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- check if LHS holds and remove permissions 
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
     assume state(Heap, Mask);
     
     // -- inhale the RHS of the wand
@@ -577,8 +577,8 @@ procedure test0(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert x.f == 0 -- SnapshotsLearning.vpr@19.5--19.20
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of x.f == 0
       assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (SnapshotsLearning.vpr@19.12--19.20) [137087]"}
@@ -595,22 +595,22 @@ procedure test0(x: Ref) returns ()
 procedure test1(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var WandDefLHSHeap: HeapType;
   var WandDefLHSMask: MaskType;
-  var Labellhs5Mask: MaskType;
   var Labellhs5Heap: HeapType;
+  var Labellhs5Mask: MaskType;
   var WandDefRHSHeap: HeapType;
   var WandDefRHSMask: MaskType;
   var perm: Perm;
   var ApplyingHeap: HeapType;
   var ApplyingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
-  var Labellhs7Mask: MaskType;
   var Labellhs7Heap: HeapType;
+  var Labellhs7Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -624,8 +624,8 @@ procedure test1(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale (true --* acc(x.f, write) && (x.f == 0 ==> acc(x.g, write))) &&
   //   (applying true --* acc(x.f, write) && (x.f == 0 ==> acc(x.g, write)) in
@@ -639,8 +639,8 @@ procedure test1(x: Ref) returns ()
         
         // -- Translating statement: label lhs5 -- SnapshotsLearning.vpr@23.13--23.57
           lhs5:
-          Labellhs5Mask := WandDefLHSMask;
           Labellhs5Heap := WandDefLHSHeap;
+          Labellhs5Mask := WandDefLHSMask;
           assume state(WandDefLHSHeap, WandDefLHSMask);
         havoc WandDefRHSHeap;
         WandDefRHSMask := ZeroMask;
@@ -669,8 +669,8 @@ procedure test1(x: Ref) returns ()
       ApplyingMask := Mask;
       
       // -- check if wand is held and remove an instance
-        ExhaleWellDef0Mask := ApplyingMask;
         ExhaleWellDef0Heap := ApplyingHeap;
+        ExhaleWellDef0Mask := ApplyingMask;
         // permLe
         assert {:msg "  Inhale might fail. Magic wand instance not found. (SnapshotsLearning.vpr@23.12--24.28) [137090]"}
           FullPerm <= ApplyingMask[null, wand_1(true, x, FullPerm, x, 0, x, FullPerm)];
@@ -678,8 +678,8 @@ procedure test1(x: Ref) returns ()
       assume state(ApplyingHeap, ApplyingMask);
       
       // -- check if LHS holds and remove permissions 
-        ExhaleWellDef0Mask := ApplyingMask;
         ExhaleWellDef0Heap := ApplyingHeap;
+        ExhaleWellDef0Mask := ApplyingMask;
       assume state(ApplyingHeap, ApplyingMask);
       
       // -- inhale the RHS of the wand
@@ -705,8 +705,8 @@ procedure test1(x: Ref) returns ()
         
         // -- Translating statement: label lhs7 -- SnapshotsLearning.vpr@23.72--23.116
           lhs7:
-          Labellhs7Mask := WandDefLHSMask;
           Labellhs7Heap := WandDefLHSHeap;
+          Labellhs7Mask := WandDefLHSMask;
           assume state(WandDefLHSHeap, WandDefLHSMask);
         havoc WandDefRHSHeap;
         WandDefRHSMask := ZeroMask;
@@ -740,8 +740,8 @@ procedure test1(x: Ref) returns ()
   // -- Translating statement: apply true --* acc(x.f, write) && (x.f == 0 ==> acc(x.g, write)) -- SnapshotsLearning.vpr@25.5--25.55
     
     // -- check if wand is held and remove an instance
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       // permLe
       assert {:msg "  Applying wand might fail. Magic wand instance not found. (SnapshotsLearning.vpr@25.5--25.55) [137094]"}
         FullPerm <= Mask[null, wand_1(true, x, FullPerm, x, 0, x, FullPerm)];
@@ -749,8 +749,8 @@ procedure test1(x: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- check if LHS holds and remove permissions 
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
     assume state(Heap, Mask);
     
     // -- inhale the RHS of the wand
@@ -779,8 +779,8 @@ procedure test1(x: Ref) returns ()
     if (Heap[x, f_7] == 0) {
       
       // -- Translating statement: assert x.g == 0 -- SnapshotsLearning.vpr@27.9--27.24
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         
         // -- Check definedness of x.g == 0
           assert {:msg "  Assert might fail. There might be insufficient permission to access x.g (SnapshotsLearning.vpr@27.16--27.24) [137099]"}
@@ -799,22 +799,22 @@ procedure test1(x: Ref) returns ()
 procedure test2(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var WandDefLHSHeap: HeapType;
   var WandDefLHSMask: MaskType;
-  var Labellhs9Mask: MaskType;
   var Labellhs9Heap: HeapType;
+  var Labellhs9Mask: MaskType;
   var WandDefRHSHeap: HeapType;
   var WandDefRHSMask: MaskType;
   var perm: Perm;
   var ApplyingHeap: HeapType;
   var ApplyingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
-  var Labellhs11Mask: MaskType;
   var Labellhs11Heap: HeapType;
+  var Labellhs11Mask: MaskType;
   var newVersion: FrameType;
   
   // -- Initializing the state
@@ -829,8 +829,8 @@ procedure test2(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale (true --* acc(Cell(x), write)) &&
   //   (applying true --* acc(Cell(x), write) in
@@ -844,8 +844,8 @@ procedure test2(x: Ref) returns ()
         
         // -- Translating statement: label lhs9 -- SnapshotsLearning.vpr@32.13--32.29
           lhs9:
-          Labellhs9Mask := WandDefLHSMask;
           Labellhs9Heap := WandDefLHSHeap;
+          Labellhs9Mask := WandDefLHSMask;
           assume state(WandDefLHSHeap, WandDefLHSMask);
         havoc WandDefRHSHeap;
         WandDefRHSMask := ZeroMask;
@@ -864,8 +864,8 @@ procedure test2(x: Ref) returns ()
       ApplyingMask := Mask;
       
       // -- check if wand is held and remove an instance
-        ExhaleWellDef0Mask := ApplyingMask;
         ExhaleWellDef0Heap := ApplyingHeap;
+        ExhaleWellDef0Mask := ApplyingMask;
         // permLe
         assert {:msg "  Inhale might fail. Magic wand instance not found. (SnapshotsLearning.vpr@32.12--32.76) [137101]"}
           FullPerm <= ApplyingMask[null, wand_2(true, x)];
@@ -873,8 +873,8 @@ procedure test2(x: Ref) returns ()
       assume state(ApplyingHeap, ApplyingMask);
       
       // -- check if LHS holds and remove permissions 
-        ExhaleWellDef0Mask := ApplyingMask;
         ExhaleWellDef0Heap := ApplyingHeap;
+        ExhaleWellDef0Mask := ApplyingMask;
       assume state(ApplyingHeap, ApplyingMask);
       
       // -- inhale the RHS of the wand
@@ -893,8 +893,8 @@ procedure test2(x: Ref) returns ()
         
         // -- Translating statement: label lhs11 -- SnapshotsLearning.vpr@32.44--32.60
           lhs11:
-          Labellhs11Mask := WandDefLHSMask;
           Labellhs11Heap := WandDefLHSHeap;
+          Labellhs11Mask := WandDefLHSMask;
           assume state(WandDefLHSHeap, WandDefLHSMask);
         havoc WandDefRHSHeap;
         WandDefRHSMask := ZeroMask;
@@ -906,8 +906,8 @@ procedure test2(x: Ref) returns ()
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := ApplyingMask;
         ExhaleWellDef0Heap := ApplyingHeap;
+        ExhaleWellDef0Mask := ApplyingMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function get might not hold. There might be insufficient permission to access Cell(x) (SnapshotsLearning.vpr@32.65--32.71) [137102]"}
           NoPerm < perm ==> NoPerm < ApplyingMask[null, Cell(x)];
@@ -925,8 +925,8 @@ procedure test2(x: Ref) returns ()
   // -- Translating statement: apply true --* acc(Cell(x), write) -- SnapshotsLearning.vpr@33.5--33.27
     
     // -- check if wand is held and remove an instance
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       // permLe
       assert {:msg "  Applying wand might fail. Magic wand instance not found. (SnapshotsLearning.vpr@33.5--33.27) [137103]"}
         FullPerm <= Mask[null, wand_2(true, x)];
@@ -934,8 +934,8 @@ procedure test2(x: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- check if LHS holds and remove permissions 
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
     assume state(Heap, Mask);
     
     // -- inhale the RHS of the wand
@@ -952,8 +952,8 @@ procedure test2(x: Ref) returns ()
   // -- Translating statement: unfold acc(Cell(x), write) -- SnapshotsLearning.vpr@34.5--34.19
     assume Cell#trigger(Heap, Cell(x));
     assume Heap[null, Cell(x)] == FrameFragment(Heap[x, f_7]);
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Cell(x) might fail. There might be insufficient permission to access Cell(x) (SnapshotsLearning.vpr@34.5--34.19) [137108]"}
@@ -974,8 +974,8 @@ procedure test2(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert x.f == 0 -- SnapshotsLearning.vpr@35.5--35.20
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of x.f == 0
       assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (SnapshotsLearning.vpr@35.12--35.20) [137110]"}

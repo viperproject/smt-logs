@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-07 14:29:58
+// Date:         2025-01-08 22:04:59
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0508b.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0508b-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -288,12 +288,12 @@ procedure some_method(trees: (VCTArrayDomainType Ref), g_1: int) returns ()
   var i_2: int;
   var j: int;
   var i_4: int;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var j_2: int;
   
   // -- Initializing the state
@@ -409,16 +409,16 @@ procedure some_method(trees: (VCTArrayDomainType Ref), g_1: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert (forall j: Int ::
   //     { (loc(trees, j): Ref).item.bool_prop }
   //     0 <= j && j < g ==> acc((loc(trees, j): Ref).item.bool_prop, wildcard)) -- 0508b.vpr@24.3--24.121
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Heap := AssertHeap;
     ExhaleWellDef0Mask := AssertMask;
+    ExhaleWellDef0Heap := AssertHeap;
     
     // -- Check definedness of (forall j: Int :: { (loc(trees, j): Ref).item.bool_prop } 0 <= j && j < g ==> acc((loc(trees, j): Ref).item.bool_prop, wildcard))
       if (*) {

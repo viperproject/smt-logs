@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-07 14:30:34
+// Date:         2025-01-08 22:05:35
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0400.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0400-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -544,11 +544,11 @@ axiom (forall min: int, max: int, v: int :: {Seq#Contains(Seq#Range(min, max),v)
 procedure test_take_01() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var a_2: (Seq int);
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -558,37 +558,37 @@ procedure test_take_01() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: a := Seq(1, 4, 5, 7, 8) -- 0400.vpr@12.3--12.26
     a_2 := Seq#Append(Seq#Append(Seq#Append(Seq#Append(Seq#Singleton(1), Seq#Singleton(4)), Seq#Singleton(5)), Seq#Singleton(7)), Seq#Singleton(8));
     assume state(Heap, Mask);
   
   // -- Translating statement: assert a[..0] == Seq[Int]() -- 0400.vpr@13.3--13.25
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion a[..0] == Seq[Int]() might not hold. (0400.vpr@13.10--13.25) [205011]"}
       Seq#Equal(Seq#Take(a_2, 0), (Seq#Empty(): Seq int));
     assume state(Heap, Mask);
   
   // -- Translating statement: assert a[..1] == Seq(1) -- 0400.vpr@14.3--14.26
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion a[..1] == Seq(1) might not hold. (0400.vpr@14.10--14.26) [205012]"}
       Seq#Equal(Seq#Take(a_2, 1), Seq#Singleton(1));
     assume state(Heap, Mask);
   
   // -- Translating statement: assert a[..2] == Seq(1, 4) -- 0400.vpr@15.3--15.28
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion a[..2] == Seq(1, 4) might not hold. (0400.vpr@15.10--15.28) [205013]"}
       Seq#Equal(Seq#Take(a_2, 2), Seq#Append(Seq#Singleton(1), Seq#Singleton(4)));
     assume state(Heap, Mask);
   
   // -- Translating statement: assert a[..5] == a -- 0400.vpr@16.3--16.21
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion a[..5] == a might not hold. (0400.vpr@16.10--16.21) [205014]"}
       Seq#Equal(Seq#Take(a_2, 5), a_2);
     assume state(Heap, Mask);
@@ -601,11 +601,11 @@ procedure test_take_01() returns ()
 procedure test_take_length_01() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var a_2: (Seq int);
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -615,37 +615,37 @@ procedure test_take_length_01() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: a := Seq(1, 4, 5, 7, 8) -- 0400.vpr@21.3--21.26
     a_2 := Seq#Append(Seq#Append(Seq#Append(Seq#Append(Seq#Singleton(1), Seq#Singleton(4)), Seq#Singleton(5)), Seq#Singleton(7)), Seq#Singleton(8));
     assume state(Heap, Mask);
   
   // -- Translating statement: assert |a[..0]| == 0 -- 0400.vpr@22.3--22.23
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion |a[..0]| == 0 might not hold. (0400.vpr@22.10--22.23) [205015]"}
       Seq#Length(Seq#Take(a_2, 0)) == 0;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert |a[..1]| == 1 -- 0400.vpr@23.3--23.23
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion |a[..1]| == 1 might not hold. (0400.vpr@23.10--23.23) [205016]"}
       Seq#Length(Seq#Take(a_2, 1)) == 1;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert |a[..2]| == 2 -- 0400.vpr@24.3--24.23
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion |a[..2]| == 2 might not hold. (0400.vpr@24.10--24.23) [205017]"}
       Seq#Length(Seq#Take(a_2, 2)) == 2;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert |a[..5]| == |a| -- 0400.vpr@25.3--25.25
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion |a[..5]| == |a| might not hold. (0400.vpr@25.10--25.25) [205018]"}
       Seq#Length(Seq#Take(a_2, 5)) == Seq#Length(a_2);
     assume state(Heap, Mask);
@@ -658,11 +658,11 @@ procedure test_take_length_01() returns ()
 procedure test_drop_01() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var a_2: (Seq int);
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -672,37 +672,37 @@ procedure test_drop_01() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: a := Seq(1, 4, 5, 7, 8) -- 0400.vpr@30.3--30.26
     a_2 := Seq#Append(Seq#Append(Seq#Append(Seq#Append(Seq#Singleton(1), Seq#Singleton(4)), Seq#Singleton(5)), Seq#Singleton(7)), Seq#Singleton(8));
     assume state(Heap, Mask);
   
   // -- Translating statement: assert a[0..] == a -- 0400.vpr@31.3--31.21
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion a[0..] == a might not hold. (0400.vpr@31.10--31.21) [205019]"}
       Seq#Equal(Seq#Drop(a_2, 0), a_2);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert a[2..] == Seq(5, 7, 8) -- 0400.vpr@32.3--32.32
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion a[2..] == Seq(5, 7, 8) might not hold. (0400.vpr@32.10--32.32) [205020]"}
       Seq#Equal(Seq#Drop(a_2, 2), Seq#Append(Seq#Append(Seq#Singleton(5), Seq#Singleton(7)), Seq#Singleton(8)));
     assume state(Heap, Mask);
   
   // -- Translating statement: assert a[4..] == Seq(8) -- 0400.vpr@33.3--33.26
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion a[4..] == Seq(8) might not hold. (0400.vpr@33.10--33.26) [205021]"}
       Seq#Equal(Seq#Drop(a_2, 4), Seq#Singleton(8));
     assume state(Heap, Mask);
   
   // -- Translating statement: assert a[5..] == Seq[Int]() -- 0400.vpr@34.3--34.25
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion a[5..] == Seq[Int]() might not hold. (0400.vpr@34.10--34.25) [205022]"}
       Seq#Equal(Seq#Drop(a_2, 5), (Seq#Empty(): Seq int));
     assume state(Heap, Mask);
@@ -715,11 +715,11 @@ procedure test_drop_01() returns ()
 procedure test_drop_length_01() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var a_2: (Seq int);
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -729,37 +729,37 @@ procedure test_drop_length_01() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: a := Seq(1, 4, 5, 7, 8) -- 0400.vpr@39.3--39.26
     a_2 := Seq#Append(Seq#Append(Seq#Append(Seq#Append(Seq#Singleton(1), Seq#Singleton(4)), Seq#Singleton(5)), Seq#Singleton(7)), Seq#Singleton(8));
     assume state(Heap, Mask);
   
   // -- Translating statement: assert |a[0..]| == |a| -- 0400.vpr@40.3--40.25
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion |a[0..]| == |a| might not hold. (0400.vpr@40.10--40.25) [205023]"}
       Seq#Length(Seq#Drop(a_2, 0)) == Seq#Length(a_2);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert |a[2..]| == 3 -- 0400.vpr@41.3--41.23
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion |a[2..]| == 3 might not hold. (0400.vpr@41.10--41.23) [205024]"}
       Seq#Length(Seq#Drop(a_2, 2)) == 3;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert |a[4..]| == 1 -- 0400.vpr@42.3--42.23
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion |a[4..]| == 1 might not hold. (0400.vpr@42.10--42.23) [205025]"}
       Seq#Length(Seq#Drop(a_2, 4)) == 1;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert |a[5..]| == 0 -- 0400.vpr@43.3--43.23
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion |a[5..]| == 0 might not hold. (0400.vpr@43.10--43.23) [205026]"}
       Seq#Length(Seq#Drop(a_2, 5)) == 0;
     assume state(Heap, Mask);
@@ -772,11 +772,11 @@ procedure test_drop_length_01() returns ()
 procedure test_take_drop_01() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var a_2: (Seq int);
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -786,37 +786,37 @@ procedure test_take_drop_01() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: a := Seq(1, 4, 5, 7, 8) -- 0400.vpr@48.3--48.26
     a_2 := Seq#Append(Seq#Append(Seq#Append(Seq#Append(Seq#Singleton(1), Seq#Singleton(4)), Seq#Singleton(5)), Seq#Singleton(7)), Seq#Singleton(8));
     assume state(Heap, Mask);
   
   // -- Translating statement: assert a[0..2] == a[0..2] -- 0400.vpr@49.3--49.32
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion a[0..2] == a[0..2] might not hold. (0400.vpr@49.10--49.32) [205027]"}
       Seq#Equal(Seq#Drop(Seq#Take(a_2, 2), 0), Seq#Drop(Seq#Take(a_2, 2), 0));
     assume state(Heap, Mask);
   
   // -- Translating statement: assert a[2..4] == a[2..4] -- 0400.vpr@50.3--50.32
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion a[2..4] == a[2..4] might not hold. (0400.vpr@50.10--50.32) [205028]"}
       Seq#Equal(Seq#Drop(Seq#Take(a_2, 4), 2), Seq#Drop(Seq#Take(a_2, 4), 2));
     assume state(Heap, Mask);
   
   // -- Translating statement: assert a[0..5] == a[0..5] -- 0400.vpr@51.3--51.32
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion a[0..5] == a[0..5] might not hold. (0400.vpr@51.10--51.32) [205029]"}
       Seq#Equal(Seq#Drop(Seq#Take(a_2, 5), 0), Seq#Drop(Seq#Take(a_2, 5), 0));
     assume state(Heap, Mask);
   
   // -- Translating statement: assert a[1..1] == a[1..1] -- 0400.vpr@52.3--52.32
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion a[1..1] == a[1..1] might not hold. (0400.vpr@52.10--52.32) [205030]"}
       Seq#Equal(Seq#Drop(Seq#Take(a_2, 1), 1), Seq#Drop(Seq#Take(a_2, 1), 1));
     assume state(Heap, Mask);
@@ -829,11 +829,11 @@ procedure test_take_drop_01() returns ()
 procedure test_take_drop_length_01() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var a_2: (Seq int);
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -843,37 +843,37 @@ procedure test_take_drop_length_01() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: a := Seq(1, 4, 5, 7, 8) -- 0400.vpr@57.3--57.26
     a_2 := Seq#Append(Seq#Append(Seq#Append(Seq#Append(Seq#Singleton(1), Seq#Singleton(4)), Seq#Singleton(5)), Seq#Singleton(7)), Seq#Singleton(8));
     assume state(Heap, Mask);
   
   // -- Translating statement: assert |a[0..2]| == 2 -- 0400.vpr@58.3--58.24
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion |a[0..2]| == 2 might not hold. (0400.vpr@58.10--58.24) [205031]"}
       Seq#Length(Seq#Drop(Seq#Take(a_2, 2), 0)) == 2;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert |a[2..4]| == 2 -- 0400.vpr@59.3--59.24
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion |a[2..4]| == 2 might not hold. (0400.vpr@59.10--59.24) [205032]"}
       Seq#Length(Seq#Drop(Seq#Take(a_2, 4), 2)) == 2;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert |a[0..5]| == 5 -- 0400.vpr@60.3--60.24
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion |a[0..5]| == 5 might not hold. (0400.vpr@60.10--60.24) [205033]"}
       Seq#Length(Seq#Drop(Seq#Take(a_2, 5), 0)) == 5;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert |a[1..1]| == 0 -- 0400.vpr@61.3--61.24
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion |a[1..1]| == 0 might not hold. (0400.vpr@61.10--61.24) [205034]"}
       Seq#Length(Seq#Drop(Seq#Take(a_2, 1), 1)) == 0;
     assume state(Heap, Mask);
@@ -886,11 +886,11 @@ procedure test_take_drop_length_01() returns ()
 procedure test_take_02() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var a_2: (Seq int);
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var e1_2: int;
   var e2_1: int;
   
@@ -902,16 +902,16 @@ procedure test_take_02() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: a := Seq(1, 4, 5, 7, 8) -- 0400.vpr@70.3--70.26
     a_2 := Seq#Append(Seq#Append(Seq#Append(Seq#Append(Seq#Singleton(1), Seq#Singleton(4)), Seq#Singleton(5)), Seq#Singleton(7)), Seq#Singleton(8));
     assume state(Heap, Mask);
   
   // -- Translating statement: assert a[..-1] == Seq[Int]() -- 0400.vpr@72.3--72.26
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion a[..-1] == Seq[Int]() might not hold. (0400.vpr@72.10--72.26) [205035]"}
       Seq#Equal(Seq#Take(a_2, -1), (Seq#Empty(): Seq int));
     assume state(Heap, Mask);
@@ -922,15 +922,15 @@ procedure test_take_02() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert a[..e1] == Seq[Int]() -- 0400.vpr@75.3--75.26
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion a[..e1] == Seq[Int]() might not hold. (0400.vpr@75.10--75.26) [205036]"}
       Seq#Equal(Seq#Take(a_2, e1_2), (Seq#Empty(): Seq int));
     assume state(Heap, Mask);
   
   // -- Translating statement: assert a[..6] == a -- 0400.vpr@77.3--77.21
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion a[..6] == a might not hold. (0400.vpr@77.10--77.21) [205037]"}
       Seq#Equal(Seq#Take(a_2, 6), a_2);
     assume state(Heap, Mask);
@@ -941,15 +941,15 @@ procedure test_take_02() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert a[..e2] == a -- 0400.vpr@80.3--80.22
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion a[..e2] == a might not hold. (0400.vpr@80.10--80.22) [205038]"}
       Seq#Equal(Seq#Take(a_2, e2_1), a_2);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- 0400.vpr@83.3--83.15
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion false might not hold. (0400.vpr@83.10--83.15) [205039]"}
       false;
     assume state(Heap, Mask);
@@ -962,11 +962,11 @@ procedure test_take_02() returns ()
 procedure test_take_length_02() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var a_2: (Seq int);
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var e1_2: int;
   var e2_1: int;
   
@@ -978,16 +978,16 @@ procedure test_take_length_02() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: a := Seq(1, 4, 5, 7, 8) -- 0400.vpr@88.3--88.26
     a_2 := Seq#Append(Seq#Append(Seq#Append(Seq#Append(Seq#Singleton(1), Seq#Singleton(4)), Seq#Singleton(5)), Seq#Singleton(7)), Seq#Singleton(8));
     assume state(Heap, Mask);
   
   // -- Translating statement: assert |a[..-1]| == 0 -- 0400.vpr@90.3--90.24
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion |a[..-1]| == 0 might not hold. (0400.vpr@90.10--90.24) [205040]"}
       Seq#Length(Seq#Take(a_2, -1)) == 0;
     assume state(Heap, Mask);
@@ -998,15 +998,15 @@ procedure test_take_length_02() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert |a[..e1]| == 0 -- 0400.vpr@93.3--93.24
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion |a[..e1]| == 0 might not hold. (0400.vpr@93.10--93.24) [205041]"}
       Seq#Length(Seq#Take(a_2, e1_2)) == 0;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert |a[..6]| == 5 -- 0400.vpr@95.3--95.23
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion |a[..6]| == 5 might not hold. (0400.vpr@95.10--95.23) [205042]"}
       Seq#Length(Seq#Take(a_2, 6)) == 5;
     assume state(Heap, Mask);
@@ -1017,8 +1017,8 @@ procedure test_take_length_02() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert |a[..e2]| == 5 -- 0400.vpr@98.3--98.24
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion |a[..e2]| == 5 might not hold. (0400.vpr@98.10--98.24) [205043]"}
       Seq#Length(Seq#Take(a_2, e2_1)) == 5;
     assume state(Heap, Mask);
@@ -1031,11 +1031,11 @@ procedure test_take_length_02() returns ()
 procedure test_take_index_01() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var a_2: (Seq int);
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1045,16 +1045,16 @@ procedure test_take_index_01() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: a := Seq(1, 4, 5, 7, 8) -- 0400.vpr@103.3--103.26
     a_2 := Seq#Append(Seq#Append(Seq#Append(Seq#Append(Seq#Singleton(1), Seq#Singleton(4)), Seq#Singleton(5)), Seq#Singleton(7)), Seq#Singleton(8));
     assume state(Heap, Mask);
   
   // -- Translating statement: assert a[..10][3] == 7 -- 0400.vpr@105.3--105.25
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of a[..10][3] == 7
       assert {:msg "  Assert might fail. Index a[..10][3] into a[..10] might exceed sequence length. (0400.vpr@105.10--105.25) [205044]"}
@@ -1071,11 +1071,11 @@ procedure test_take_index_01() returns ()
 procedure test_drop_02() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var a_2: (Seq int);
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var e1_2: int;
   var e2_1: int;
   
@@ -1087,16 +1087,16 @@ procedure test_drop_02() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: a := Seq(1, 4, 5, 7, 8) -- 0400.vpr@114.3--114.26
     a_2 := Seq#Append(Seq#Append(Seq#Append(Seq#Append(Seq#Singleton(1), Seq#Singleton(4)), Seq#Singleton(5)), Seq#Singleton(7)), Seq#Singleton(8));
     assume state(Heap, Mask);
   
   // -- Translating statement: assert a[-1..] == a -- 0400.vpr@116.3--116.22
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion a[-1..] == a might not hold. (0400.vpr@116.10--116.22) [205046]"}
       Seq#Equal(Seq#Drop(a_2, -1), a_2);
     assume state(Heap, Mask);
@@ -1107,15 +1107,15 @@ procedure test_drop_02() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert a[e1..] == a -- 0400.vpr@119.3--119.22
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion a[e1..] == a might not hold. (0400.vpr@119.10--119.22) [205047]"}
       Seq#Equal(Seq#Drop(a_2, e1_2), a_2);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert a[6..] == Seq[Int]() -- 0400.vpr@121.3--121.25
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion a[6..] == Seq[Int]() might not hold. (0400.vpr@121.10--121.25) [205048]"}
       Seq#Equal(Seq#Drop(a_2, 6), (Seq#Empty(): Seq int));
     assume state(Heap, Mask);
@@ -1126,8 +1126,8 @@ procedure test_drop_02() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert a[e2..] == Seq[Int]() -- 0400.vpr@124.3--124.26
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion a[e2..] == Seq[Int]() might not hold. (0400.vpr@124.10--124.26) [205049]"}
       Seq#Equal(Seq#Drop(a_2, e2_1), (Seq#Empty(): Seq int));
     assume state(Heap, Mask);
@@ -1140,11 +1140,11 @@ procedure test_drop_02() returns ()
 procedure test_drop_length_02() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var a_2: (Seq int);
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var e1_2: int;
   var e2_1: int;
   
@@ -1156,16 +1156,16 @@ procedure test_drop_length_02() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: a := Seq(1, 4, 5, 7, 8) -- 0400.vpr@129.3--129.26
     a_2 := Seq#Append(Seq#Append(Seq#Append(Seq#Append(Seq#Singleton(1), Seq#Singleton(4)), Seq#Singleton(5)), Seq#Singleton(7)), Seq#Singleton(8));
     assume state(Heap, Mask);
   
   // -- Translating statement: assert |a[-1..]| == 5 -- 0400.vpr@131.3--131.24
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion |a[-1..]| == 5 might not hold. (0400.vpr@131.10--131.24) [205050]"}
       Seq#Length(Seq#Drop(a_2, -1)) == 5;
     assume state(Heap, Mask);
@@ -1176,15 +1176,15 @@ procedure test_drop_length_02() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert |a[e1..]| == 5 -- 0400.vpr@134.3--134.24
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion |a[e1..]| == 5 might not hold. (0400.vpr@134.10--134.24) [205051]"}
       Seq#Length(Seq#Drop(a_2, e1_2)) == 5;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert |a[6..]| == 0 -- 0400.vpr@136.3--136.23
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion |a[6..]| == 0 might not hold. (0400.vpr@136.10--136.23) [205052]"}
       Seq#Length(Seq#Drop(a_2, 6)) == 0;
     assume state(Heap, Mask);
@@ -1195,15 +1195,15 @@ procedure test_drop_length_02() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert |a[e2..]| == 0 -- 0400.vpr@139.3--139.24
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion |a[e2..]| == 0 might not hold. (0400.vpr@139.10--139.24) [205053]"}
       Seq#Length(Seq#Drop(a_2, e2_1)) == 0;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- 0400.vpr@142.3--142.15
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion false might not hold. (0400.vpr@142.10--142.15) [205054]"}
       false;
     assume state(Heap, Mask);
@@ -1216,11 +1216,11 @@ procedure test_drop_length_02() returns ()
 procedure test_drop_index_01() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var a_2: (Seq int);
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1230,16 +1230,16 @@ procedure test_drop_index_01() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: a := Seq(1, 4, 5, 7, 8) -- 0400.vpr@147.3--147.26
     a_2 := Seq#Append(Seq#Append(Seq#Append(Seq#Append(Seq#Singleton(1), Seq#Singleton(4)), Seq#Singleton(5)), Seq#Singleton(7)), Seq#Singleton(8));
     assume state(Heap, Mask);
   
   // -- Translating statement: assert a[0..][3] == 7 -- 0400.vpr@149.3--149.24
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of a[0..][3] == 7
       assert {:msg "  Assert might fail. Index a[0..][3] into a[0..] might exceed sequence length. (0400.vpr@149.10--149.24) [205055]"}
@@ -1249,8 +1249,8 @@ procedure test_drop_index_01() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert a[-1..][3] == 7 -- 0400.vpr@150.3--150.25
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of a[-1..][3] == 7
       assert {:msg "  Assert might fail. Index a[-1..][3] into a[-1..] might exceed sequence length. (0400.vpr@150.10--150.25) [205057]"}
@@ -1267,11 +1267,11 @@ procedure test_drop_index_01() returns ()
 procedure test_take_drop_02() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var a_2: (Seq int);
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var e2_1: int;
   var e1_2: int;
   var e4: int;
@@ -1285,23 +1285,23 @@ procedure test_take_drop_02() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: a := Seq(1, 4, 5, 7, 8) -- 0400.vpr@159.3--159.26
     a_2 := Seq#Append(Seq#Append(Seq#Append(Seq#Append(Seq#Singleton(1), Seq#Singleton(4)), Seq#Singleton(5)), Seq#Singleton(7)), Seq#Singleton(8));
     assume state(Heap, Mask);
   
   // -- Translating statement: assert a[2..2] == Seq[Int]() -- 0400.vpr@161.3--161.26
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion a[2..2] == Seq[Int]() might not hold. (0400.vpr@161.10--161.26) [205059]"}
       Seq#Equal(Seq#Drop(Seq#Take(a_2, 2), 2), (Seq#Empty(): Seq int));
     assume state(Heap, Mask);
   
   // -- Translating statement: assert a[3..2] == Seq[Int]() -- 0400.vpr@162.3--162.26
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion a[3..2] == Seq[Int]() might not hold. (0400.vpr@162.10--162.26) [205060]"}
       Seq#Equal(Seq#Drop(Seq#Take(a_2, 2), 3), (Seq#Empty(): Seq int));
     assume state(Heap, Mask);
@@ -1322,8 +1322,8 @@ procedure test_take_drop_02() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert a[e1..e2] == Seq[Int]() -- 0400.vpr@168.3--168.28
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion a[e1..e2] == Seq[Int]() might not hold. (0400.vpr@168.10--168.28) [205061]"}
       Seq#Equal(Seq#Drop(Seq#Take(a_2, e2_1), e1_2), (Seq#Empty(): Seq int));
     assume state(Heap, Mask);
@@ -1334,8 +1334,8 @@ procedure test_take_drop_02() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert a[e3..e4] == Seq[Int]() -- 0400.vpr@174.3--174.28
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion a[e3..e4] == Seq[Int]() might not hold. (0400.vpr@174.10--174.28) [205062]"}
       Seq#Equal(Seq#Drop(Seq#Take(a_2, e4), e3_1), (Seq#Empty(): Seq int));
     assume state(Heap, Mask);
@@ -1348,11 +1348,11 @@ procedure test_take_drop_02() returns ()
 procedure test_take_drop_length_02() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var a_2: (Seq int);
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var e2_1: int;
   var e1_2: int;
   var e4: int;
@@ -1366,23 +1366,23 @@ procedure test_take_drop_length_02() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: a := Seq(1, 4, 5, 7, 8) -- 0400.vpr@179.3--179.26
     a_2 := Seq#Append(Seq#Append(Seq#Append(Seq#Append(Seq#Singleton(1), Seq#Singleton(4)), Seq#Singleton(5)), Seq#Singleton(7)), Seq#Singleton(8));
     assume state(Heap, Mask);
   
   // -- Translating statement: assert |a[2..2]| == 0 -- 0400.vpr@181.3--181.24
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion |a[2..2]| == 0 might not hold. (0400.vpr@181.10--181.24) [205063]"}
       Seq#Length(Seq#Drop(Seq#Take(a_2, 2), 2)) == 0;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert |a[3..2]| == 0 -- 0400.vpr@182.3--182.24
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion |a[3..2]| == 0 might not hold. (0400.vpr@182.10--182.24) [205064]"}
       Seq#Length(Seq#Drop(Seq#Take(a_2, 2), 3)) == 0;
     assume state(Heap, Mask);
@@ -1403,8 +1403,8 @@ procedure test_take_drop_length_02() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert |a[e1..e2]| == 0 -- 0400.vpr@188.3--188.26
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion |a[e1..e2]| == 0 might not hold. (0400.vpr@188.10--188.26) [205065]"}
       Seq#Length(Seq#Drop(Seq#Take(a_2, e2_1), e1_2)) == 0;
     assume state(Heap, Mask);
@@ -1415,8 +1415,8 @@ procedure test_take_drop_length_02() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert |a[e3..e4]| == 0 -- 0400.vpr@194.3--194.26
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion |a[e3..e4]| == 0 might not hold. (0400.vpr@194.10--194.26) [205066]"}
       Seq#Length(Seq#Drop(Seq#Take(a_2, e4), e3_1)) == 0;
     assume state(Heap, Mask);
@@ -1429,11 +1429,11 @@ procedure test_take_drop_length_02() returns ()
 procedure reported_example() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var a_2: (Seq int);
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1443,16 +1443,16 @@ procedure reported_example() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: a := Seq(1, 4, 5, 7, 8) -- 0400.vpr@199.3--199.26
     a_2 := Seq#Append(Seq#Append(Seq#Append(Seq#Append(Seq#Singleton(1), Seq#Singleton(4)), Seq#Singleton(5)), Seq#Singleton(7)), Seq#Singleton(8));
     assume state(Heap, Mask);
   
   // -- Translating statement: assert a[-1..1] == a[0..1] -- 0400.vpr@200.3--200.29
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion a[-1..1] == a[0..1] might not hold. (0400.vpr@200.10--200.29) [205067]"}
       Seq#Equal(Seq#Drop(Seq#Take(a_2, 1), -1), Seq#Drop(Seq#Take(a_2, 1), 0));
     assume state(Heap, Mask);

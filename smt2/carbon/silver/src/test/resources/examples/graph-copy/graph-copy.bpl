@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-07 14:07:22
+// Date:         2025-01-08 21:42:35
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/examples/graph-copy/graph-copy.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/examples/graph-copy/graph-copy-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -997,8 +997,8 @@ procedure graph_copy_rec(this: Ref, node_map_1: INodeMapDomainType, setOfRef: (S
   var QPMask: MaskType;
   var x_31: Ref;
   var i_4: int;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var x_18: Ref;
@@ -1006,8 +1006,8 @@ procedure graph_copy_rec(this: Ref, node_map_1: INodeMapDomainType, setOfRef: (S
   var x_14: Ref;
   var i_16: int;
   var freshObj: Ref;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var S: (Set int);
   var x_41_1: Ref;
   var x_44_1: Ref;
@@ -1268,8 +1268,8 @@ procedure graph_copy_rec(this: Ref, node_map_1: INodeMapDomainType, setOfRef: (S
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1564,8 +1564,8 @@ procedure graph_copy_rec(this: Ref, node_map_1: INodeMapDomainType, setOfRef: (S
       // -- Translating statement: assert ((setOfRef intersection node_map_image) union
   //   (setOfRef intersection Set(nodeCopy))) ==
   //   (setOfRef intersection res_copy_nodes) -- graph-copy.vpr@137.5--138.51
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Assert might fail. Assertion ((setOfRef intersection node_map_image) union (setOfRef intersection Set(nodeCopy))) == (setOfRef intersection res_copy_nodes) might not hold. (graph-copy.vpr@137.12--138.51) [119696]"}
           Set#Equal(Set#Union(Set#Intersection(setOfRef, node_map_image), Set#Intersection(setOfRef, Set#Singleton(nodeCopy))), Set#Intersection(setOfRef, res_copy_nodes));
         assume state(Heap, Mask);
@@ -1583,8 +1583,8 @@ procedure graph_copy_rec(this: Ref, node_map_1: INodeMapDomainType, setOfRef: (S
         // -- Before loop head
           
           // -- Exhale loop invariant before loop
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             assert {:msg "  Loop invariant (nodeCopy in res_copy_nodes) might not hold on entry. Assertion (nodeCopy in res_copy_nodes) might not hold. (graph-copy.vpr@143.17--143.43) [119698]"}
               res_copy_nodes[nodeCopy];
             assert {:msg "  Loop invariant (this in setOfRef) might not hold on entry. Assertion (this in setOfRef) might not hold. (graph-copy.vpr@144.17--144.33) [119699]"}
@@ -2284,8 +2284,8 @@ procedure graph_copy_rec(this: Ref, node_map_1: INodeMapDomainType, setOfRef: (S
                 arg_s1 := S;
                 
                 // -- Exhaling precondition
-                  ExhaleWellDef0Heap := Heap;
                   ExhaleWellDef0Mask := Mask;
+                  ExhaleWellDef0Heap := Heap;
                   assert {:msg "  The precondition of method pop might not hold. Assertion 0 < |S| might not hold. (graph-copy.vpr@157.7--157.21) [119736]"}
                     0 < Set#Card(arg_s1);
                 
@@ -2315,8 +2315,8 @@ procedure graph_copy_rec(this: Ref, node_map_1: INodeMapDomainType, setOfRef: (S
                 arg_rd := rd_1 / 2;
                 
                 // -- Exhaling precondition
-                  ExhaleWellDef0Heap := Heap;
                   ExhaleWellDef0Mask := Mask;
+                  ExhaleWellDef0Heap := Heap;
                   assert {:msg "  The precondition of method graph_copy_rec might not hold. Assertion none < rd / 2 might not hold. (graph-copy.vpr@165.7--165.119) [119738]"}
                     NoPerm < arg_rd;
                   assert {:msg "  The precondition of method graph_copy_rec might not hold. Assertion nodeForId != null might not hold. (graph-copy.vpr@165.7--165.119) [119739]"}
@@ -2710,8 +2710,8 @@ procedure graph_copy_rec(this: Ref, node_map_1: INodeMapDomainType, setOfRef: (S
                 Heap := Heap[nodeCopy, edges:=(insert_edge(Heap[nodeCopy, edges], i_6_1, newNode): IEdgesDomainType)];
                 assume state(Heap, Mask);
             // Exhale invariant
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             assert {:msg "  Loop invariant (nodeCopy in res_copy_nodes) might not be preserved. Assertion (nodeCopy in res_copy_nodes) might not hold. (graph-copy.vpr@143.17--143.43) [119762]"}
               res_copy_nodes[nodeCopy];
             assert {:msg "  Loop invariant (this in setOfRef) might not be preserved. Assertion (this in setOfRef) might not hold. (graph-copy.vpr@144.17--144.33) [119763]"}
@@ -3136,8 +3136,8 @@ procedure graph_copy_rec(this: Ref, node_map_1: INodeMapDomainType, setOfRef: (S
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of graph_copy_rec might not hold. Assertion nodeCopy != null might not hold. (graph-copy.vpr@104.11--104.57) [119787]"}
       nodeCopy != null;
     assert {:msg "  Postcondition of graph_copy_rec might not hold. Assertion (nodeCopy in res_copy_nodes) might not hold. (graph-copy.vpr@104.11--104.57) [119788]"}
@@ -3375,12 +3375,12 @@ procedure graph_copy_rec(this: Ref, node_map_1: INodeMapDomainType, setOfRef: (S
 procedure vpop(s1: (Set int)) returns (s2: (Set int), i: int)
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -3394,8 +3394,8 @@ procedure vpop(s1: (Set int)) returns (s2: (Set int), i: int)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -3415,8 +3415,8 @@ procedure vpop(s1: (Set int)) returns (s2: (Set int), i: int)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of pop might not hold. Assertion (i in s1) might not hold. (graph-copy.vpr@175.11--175.18) [119805]"}
       s1[i];
     assert {:msg "  Postcondition of pop might not hold. Assertion s2 == (s1 setminus Set(i)) might not hold. (graph-copy.vpr@176.12--176.36) [119806]"}

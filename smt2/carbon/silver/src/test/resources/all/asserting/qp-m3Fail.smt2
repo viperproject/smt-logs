@@ -517,7 +517,7 @@
  :skolemid |34|
  :pattern ( (select (|Set#Union_5798| a@@20 b@@13) o@@4))
 )))
-; Invalid
+; Valid
 (push 1)
 (declare-fun ControlFlow (Int Int) Int)
 (declare-fun s_2 () (Array T@Ref Bool))

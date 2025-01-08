@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-07 14:05:53
+// Date:         2025-01-08 21:41:06
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpredicates/issues/wildcards.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpredicates/issues/wildcards-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -429,13 +429,13 @@ procedure test01(x: Ref) returns ()
 {
   var wildcard: real where wildcard > NoPerm;
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var QPMask: MaskType;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -455,8 +455,8 @@ procedure test01(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale (forall d: Ref ::false ==> acc(P(d, 0), none)) -- wildcards.vpr@9.3--9.55
     
@@ -492,8 +492,8 @@ procedure test01(x: Ref) returns ()
   // -- Translating statement: assert acc(P(x, 0), wildcard) -- wildcards.vpr@11.3--11.32
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Heap := AssertHeap;
     ExhaleWellDef0Mask := AssertMask;
+    ExhaleWellDef0Heap := AssertHeap;
     assert {:msg "  Assert might fail. There might be insufficient permission to access P(x, 0) (wildcards.vpr@11.10--11.32) [109572]"}
       AssertMask[null, P(x, 0)] > NoPerm;
     havoc wildcard;
@@ -511,11 +511,11 @@ procedure test02(x: Ref) returns ()
 {
   var wildcard: real where wildcard > NoPerm;
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var QPMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var xs: (Set Ref);
   var ExhaleHeap: HeapType;
   
@@ -537,8 +537,8 @@ procedure test02(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale (forall d: Ref ::false ==> acc(P(d, 0), none)) -- wildcards.vpr@17.3--17.55
     
@@ -574,8 +574,8 @@ procedure test02(x: Ref) returns ()
   // -- Translating statement: exhale (forall r: Ref ::
   //     { (r in xs) }
   //     (r in xs) ==> acc(P(r, 0), perm(P(r, 0)))) -- wildcards.vpr@21.3--21.66
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall r: Ref :: { (r in xs) } (r in xs) ==> acc(P(r, 0), perm(P(r, 0))))
       if (*) {

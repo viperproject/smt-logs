@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-07 14:26:48
+// Date:         2025-01-08 22:01:50
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0059.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0059-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -317,18 +317,18 @@ procedure Lalakoko$(this$_2: Ref, k$: Perm) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var n$: Ref;
   var a$: Ref;
   var b$: Ref;
   var c$: Ref;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -353,8 +353,8 @@ procedure Lalakoko$(this$_2: Ref, k$: Perm) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[n$, $allocated];
@@ -364,16 +364,16 @@ procedure Lalakoko$(this$_2: Ref, k$: Perm) returns ()
   
   // -- Translating statement: assert (unfolding acc(Lalainv$(this$_2), write) in this$_2.Lalax$) ==
   //   old((unfolding acc(Lalainv$(this$_2), write) in this$_2.Lalax$)) -- 0059.vpr@42.3--42.137
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (unfolding acc(Lalainv$(this$_2), write) in this$_2.Lalax$) == old((unfolding acc(Lalainv$(this$_2), write) in this$_2.Lalax$))
       UnfoldingHeap := ExhaleWellDef0Heap;
       UnfoldingMask := ExhaleWellDef0Mask;
       assume Lalainv$#trigger(UnfoldingHeap, Lalainv$(this$_2));
       assume UnfoldingHeap[null, Lalainv$(this$_2)] == FrameFragment(UnfoldingHeap[this$_2, Lalax$]);
-      ExhaleWellDef1Mask := UnfoldingMask;
       ExhaleWellDef1Heap := UnfoldingHeap;
+      ExhaleWellDef1Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Assert might fail. There might be insufficient permission to access Lalainv$(this$_2) (0059.vpr@42.10--42.137) [193098]"}
@@ -395,8 +395,8 @@ procedure Lalakoko$(this$_2: Ref, k$: Perm) returns ()
       UnfoldingMask := oldMask;
       assume Lalainv$#trigger(UnfoldingHeap, Lalainv$(this$_2));
       assume UnfoldingHeap[null, Lalainv$(this$_2)] == FrameFragment(UnfoldingHeap[this$_2, Lalax$]);
-      ExhaleWellDef1Mask := UnfoldingMask;
       ExhaleWellDef1Heap := UnfoldingHeap;
+      ExhaleWellDef1Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Assert might fail. There might be insufficient permission to access Lalainv$(this$_2) (0059.vpr@42.10--42.137) [193100]"}

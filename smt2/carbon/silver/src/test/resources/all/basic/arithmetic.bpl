@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-07 14:24:27
+// Date:         2025-01-08 21:59:30
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/basic/arithmetic.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/basic/arithmetic-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -180,10 +180,10 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 procedure t1() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -193,37 +193,37 @@ procedure t1() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert 1 == 1 * 1 -- arithmetic.vpr@7.5--7.26
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert 2 == 1 + 1 -- arithmetic.vpr@8.5--8.26
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert 1 == 3 % 2 -- arithmetic.vpr@9.5--9.26
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert -1 == 0 - 1 -- arithmetic.vpr@10.5--10.27
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert 1 == 1 -- arithmetic.vpr@11.5--11.20
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert 0 == 1 \ 2 -- arithmetic.vpr@12.5--12.26
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assume state(Heap, Mask);
 }
 
@@ -234,8 +234,8 @@ procedure t1() returns ()
 procedure t2() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var i: int;
   
   // -- Initializing the state
@@ -246,8 +246,8 @@ procedure t2() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: i := 1 \ 2 -- arithmetic.vpr@17.5--17.15
     i := 0;
@@ -269,8 +269,8 @@ procedure t2() returns ()
 procedure t3() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var i: int;
   
   // -- Initializing the state
@@ -281,8 +281,8 @@ procedure t3() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: i := 1 % 2 -- arithmetic.vpr@24.5--24.15
     i := 1;
@@ -304,8 +304,8 @@ procedure t3() returns ()
 procedure t4() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var i: Perm;
   
   // -- Initializing the state
@@ -316,8 +316,8 @@ procedure t4() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: i := 1 / 2 -- arithmetic.vpr@31.5--31.15
     i := 1 / 2;
@@ -339,10 +339,10 @@ procedure t4() returns ()
 procedure t5() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -352,17 +352,17 @@ procedure t5() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert 2 \ 3 == 0 -- arithmetic.vpr@37.5--37.20
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert 2 / 3 == none -- arithmetic.vpr@39.5--39.23
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion 2 / 3 == none might not hold. (arithmetic.vpr@39.12--39.23) [185687]"}
       2 / 3 == NoPerm;
     assume state(Heap, Mask);
@@ -375,10 +375,10 @@ procedure t5() returns ()
 procedure t6() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -388,22 +388,22 @@ procedure t6() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert 2 \ 3 == 3 \ 4 + 0 -- arithmetic.vpr@43.5--43.26
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert 2 \ 3 == 3 \ 4 -- arithmetic.vpr@44.5--44.22
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert 2 / 3 == 3 / 4 -- arithmetic.vpr@46.5--46.22
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion 2 / 3 == 3 / 4 might not hold. (arithmetic.vpr@46.12--46.22) [185690]"}
       2 / 3 == 3 / 4;
     assume state(Heap, Mask);
@@ -416,13 +416,13 @@ procedure t6() returns ()
 procedure t7(p_1: Perm) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var one: Perm;
   var r1: Perm;
   var r2: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -432,8 +432,8 @@ procedure t7(p_1: Perm) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: one := 1 / 1 -- arithmetic.vpr@54.5--54.17
     one := 1 / 1;
@@ -452,22 +452,22 @@ procedure t7(p_1: Perm) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert r1 == p -- arithmetic.vpr@57.5--57.19
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion r1 == p might not hold. (arithmetic.vpr@57.12--57.19) [185692]"}
       r1 == p_1;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert 2 / 1 * r2 == p -- arithmetic.vpr@58.5--58.27
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion 2 / 1 * r2 == p might not hold. (arithmetic.vpr@58.12--58.27) [185693]"}
       2 / 1 * r2 == p_1;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert r2 == p -- arithmetic.vpr@61.5--61.19
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion r2 == p might not hold. (arithmetic.vpr@61.12--61.19) [185694]"}
       r2 == p_1;
     assume state(Heap, Mask);
@@ -480,8 +480,8 @@ procedure t7(p_1: Perm) returns ()
 procedure t8(p_1: Perm) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var r1: Perm;
   
   // -- Initializing the state
@@ -492,8 +492,8 @@ procedure t8(p_1: Perm) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: r1 := 1 / 2 / p -- arithmetic.vpr@68.5--68.20
     

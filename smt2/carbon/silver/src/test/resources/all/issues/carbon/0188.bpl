@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-07 14:27:34
+// Date:         2025-01-08 22:02:35
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0188.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0188-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -326,8 +326,8 @@ function  h#triggerStateless(a_2: int): bool;
 procedure h#definedness(a_2: int) returns (Result: bool)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var i_14: int;
   
   // -- Initializing the state
@@ -343,8 +343,8 @@ procedure h#definedness(a_2: int) returns (Result: bool)
       if (*) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           if (a_2 > i_14) {
             assert {:msg "  Precondition of function g might not hold. Assertion f(a, i) might not hold. (0188.vpr@13.41--13.48) [195288]"}
               f_6(Heap, a_2, i_14);

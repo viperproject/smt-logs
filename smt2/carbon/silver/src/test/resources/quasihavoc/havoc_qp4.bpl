@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-07 14:01:05
+// Date:         2025-01-08 21:36:25
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quasihavoc/havoc_qp4.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quasihavoc/havoc_qp4-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -456,11 +456,11 @@ procedure foo_1(x: Ref, s_2: (Set Ref)) returns ()
   var QPMask: MaskType;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm_temp_quasihavoc_: Perm;
   var ExhaleHeap: HeapType;
   var newVersion: FrameType;
@@ -524,8 +524,8 @@ procedure foo_1(x: Ref, s_2: (Set Ref)) returns ()
       UnfoldingMask := Mask;
       assume Pred#trigger(UnfoldingHeap, Pred(x));
       assume UnfoldingHeap[null, Pred(x)] == FrameFragment(UnfoldingHeap[x, f_7]);
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access Pred(x) (havoc_qp4.vpr@10.14--10.43) [77843]"}
@@ -550,8 +550,8 @@ procedure foo_1(x: Ref, s_2: (Set Ref)) returns ()
       UnfoldingMask := Mask;
       assume Pred#trigger(UnfoldingHeap, Pred(x));
       assume UnfoldingHeap[null, Pred(x)] == FrameFragment(UnfoldingHeap[x, f_7]);
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       UnfoldingMask := UnfoldingMask[null, Pred(x):=UnfoldingMask[null, Pred(x)] - perm];
       perm := FullPerm;
@@ -566,16 +566,16 @@ procedure foo_1(x: Ref, s_2: (Set Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: perm_temp_quasihavoc_ := perm(Pred(x)) -- <no position>
     perm_temp_quasihavoc_ := Mask[null, Pred(x)];
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(Pred(x), perm_temp_quasihavoc_) -- <no position>
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := perm_temp_quasihavoc_;
     assert {:msg "  Exhale might fail. Fraction perm_temp_quasihavoc_ might be negative. (<no position>) [77845]"}
       perm >= NoPerm;
@@ -602,8 +602,8 @@ procedure foo_1(x: Ref, s_2: (Set Ref)) returns ()
   // -- Translating statement: unfold acc(Pred(x), write) -- havoc_qp4.vpr@13.5--13.19
     assume Pred#trigger(Heap, Pred(x));
     assume Heap[null, Pred(x)] == FrameFragment(Heap[x, f_7]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Pred(x) might fail. There might be insufficient permission to access Pred(x) (havoc_qp4.vpr@13.5--13.19) [77850]"}
@@ -625,8 +625,8 @@ procedure foo_1(x: Ref, s_2: (Set Ref)) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert x.f >= 3 -- havoc_qp4.vpr@15.5--15.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of x.f >= 3
       assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (havoc_qp4.vpr@15.12--15.20) [77852]"}
@@ -636,8 +636,8 @@ procedure foo_1(x: Ref, s_2: (Set Ref)) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert x.f == 3 -- havoc_qp4.vpr@17.5--17.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of x.f == 3
       assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (havoc_qp4.vpr@17.12--17.20) [77854]"}

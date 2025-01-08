@@ -17121,3 +17121,668 @@
 (set-option :model.compact false)
 (set-option :model.v2 true)
 (set-option :pp.bv_literals false)
+(assert (not
+ (=> (= (ControlFlow 0 0) 14) (let ((anon6_Else_correct  (=> (valid_lft Heap@@173 lft_1@@27) (and (=> (= (ControlFlow 0 4) (- 0 11)) (select (|Map#Domain_5159_45192| lft_1@@27) 1)) (=> (select (|Map#Domain_5159_45192| lft_1@@27) 1) (=> (and (and (select (|Map#Domain_20446_645| (select (|Map#Elements_5453_45984| lft_1@@27) 1)) x@@101) (state Heap@@173 Mask@0)) (and (|LifetimeP#trigger_20756| Heap@@173 (LifetimeP lft_1@@27)) (= (select (|PolymorphicMapType_35797_20756_20757#PolymorphicMapType_35797| Heap@@173) null (LifetimeP lft_1@@27)) (CombineFrames (FrameFragment_9216 (|LifetimeP#condqp1| Heap@@173 lft_1@@27)) (FrameFragment_9216 (|LifetimeP#condqp2| Heap@@173 lft_1@@27)))))) (and (=> (= (ControlFlow 0 4) (- 0 10)) (=> (< NoPerm FullPerm) (< NoPerm (select (|PolymorphicMapType_35818_20756_20757#PolymorphicMapType_35818| Mask@0) null (LifetimeP lft_1@@27))))) (=> (=> (< NoPerm FullPerm) (< NoPerm (select (|PolymorphicMapType_35818_20756_20757#PolymorphicMapType_35818| Mask@0) null (LifetimeP lft_1@@27)))) (=> (and (and (state Heap@@173 Mask@0) (valid_lft Heap@@173 lft_1@@27)) (and (forall ((x$0 T@Ref) ) (!  (=> (select (|Map#Domain_20446_645| (select (|Map#Elements_5453_45984| lft_1@@27) 0)) x$0) (< (/ (to_real 0) (to_real 1)) (select (|Map#Elements_20483_645| (select (|Map#Elements_5453_45984| lft_1@@27) 0)) x$0)))
+ :qid |stdinbpl.745:22|
+ :skolemid |125|
+ :pattern ( (select (|Map#Domain_20446_645| (select (|Map#Elements_5453_45984| lft_1@@27) 0)) x$0))
+ :pattern ( (select (|Map#Elements_20483_645| (select (|Map#Elements_5453_45984| lft_1@@27) 0)) x$0))
+)) (forall ((x$0_1 T@Ref) ) (!  (=> (select (|Map#Domain_20446_645| (select (|Map#Elements_5453_45984| lft_1@@27) 0)) x$0_1) (<= (select (|Map#Elements_20483_645| (select (|Map#Elements_5453_45984| lft_1@@27) 0)) x$0_1) (/ (to_real 1) (to_real 1))))
+ :qid |stdinbpl.749:22|
+ :skolemid |126|
+ :pattern ( (select (|Map#Domain_20446_645| (select (|Map#Elements_5453_45984| lft_1@@27) 0)) x$0_1))
+ :pattern ( (select (|Map#Elements_20483_645| (select (|Map#Elements_5453_45984| lft_1@@27) 0)) x$0_1))
+)))) (and (=> (= (ControlFlow 0 4) (- 0 9)) (forall ((x$0_2 T@Ref) (x$0_2_1 T@Ref) ) (!  (=> (and (and (and (and (not (= x$0_2 x$0_2_1)) (select (|Map#Domain_20446_645| (select (|Map#Elements_5453_45984| lft_1@@27) 0)) x$0_2)) (select (|Map#Domain_20446_645| (select (|Map#Elements_5453_45984| lft_1@@27) 0)) x$0_2_1)) (< NoPerm (select (|Map#Elements_20483_645| (select (|Map#Elements_5453_45984| lft_1@@27) 0)) x$0_2))) (< NoPerm (select (|Map#Elements_20483_645| (select (|Map#Elements_5453_45984| lft_1@@27) 0)) x$0_2_1))) (not (= x$0_2 x$0_2_1)))
+ :qid |stdinbpl.757:19|
+ :skolemid |127|
+ :pattern ( (neverTriggered1 x$0_2) (neverTriggered1 x$0_2_1))
+))) (=> (forall ((x$0_2@@0 T@Ref) (x$0_2_1@@0 T@Ref) ) (!  (=> (and (and (and (and (not (= x$0_2@@0 x$0_2_1@@0)) (select (|Map#Domain_20446_645| (select (|Map#Elements_5453_45984| lft_1@@27) 0)) x$0_2@@0)) (select (|Map#Domain_20446_645| (select (|Map#Elements_5453_45984| lft_1@@27) 0)) x$0_2_1@@0)) (< NoPerm (select (|Map#Elements_20483_645| (select (|Map#Elements_5453_45984| lft_1@@27) 0)) x$0_2@@0))) (< NoPerm (select (|Map#Elements_20483_645| (select (|Map#Elements_5453_45984| lft_1@@27) 0)) x$0_2_1@@0))) (not (= x$0_2@@0 x$0_2_1@@0)))
+ :qid |stdinbpl.757:19|
+ :skolemid |127|
+ :pattern ( (neverTriggered1 x$0_2@@0) (neverTriggered1 x$0_2_1@@0))
+)) (=> (and (forall ((x$0_2@@1 T@Ref) ) (!  (=> (and (select (|Map#Domain_20446_645| (select (|Map#Elements_5453_45984| lft_1@@27) 0)) x$0_2@@1) (< NoPerm (select (|Map#Elements_20483_645| (select (|Map#Elements_5453_45984| lft_1@@27) 0)) x$0_2@@1))) (and (= (invRecv1 x$0_2@@1) x$0_2@@1) (qpRange1 x$0_2@@1)))
+ :qid |stdinbpl.763:24|
+ :skolemid |128|
+ :pattern ( (select (|PolymorphicMapType_35797_20706_20707#PolymorphicMapType_35797| Heap@@173) null (lft_T x$0_2@@1)))
+ :pattern ( (select (|PolymorphicMapType_35818_20706_20707#PolymorphicMapType_35818| Mask@0) null (lft_T x$0_2@@1)))
+ :pattern ( (select (|Map#Domain_20446_645| (select (|Map#Elements_5453_45984| lft_1@@27) 0)) x$0_2@@1))
+ :pattern ( (select (|Map#Elements_20483_645| (select (|Map#Elements_5453_45984| lft_1@@27) 0)) x$0_2@@1))
+)) (forall ((x_2_1 T@Ref) ) (!  (=> (and (and (select (|Map#Domain_20446_645| (select (|Map#Elements_5453_45984| lft_1@@27) 0)) (invRecv1 x_2_1)) (< NoPerm (select (|Map#Elements_20483_645| (select (|Map#Elements_5453_45984| lft_1@@27) 0)) (invRecv1 x_2_1)))) (qpRange1 x_2_1)) (= (invRecv1 x_2_1) x_2_1))
+ :qid |stdinbpl.767:24|
+ :skolemid |129|
+ :pattern ( (invRecv1 x_2_1))
+))) (and (=> (= (ControlFlow 0 4) (- 0 8)) (forall ((x$0_2@@2 T@Ref) ) (!  (=> (select (|Map#Domain_20446_645| (select (|Map#Elements_5453_45984| lft_1@@27) 0)) x$0_2@@2) (>= (select (|Map#Elements_20483_645| (select (|Map#Elements_5453_45984| lft_1@@27) 0)) x$0_2@@2) NoPerm))
+ :qid |stdinbpl.773:17|
+ :skolemid |130|
+ :pattern ( (select (|PolymorphicMapType_35797_20706_20707#PolymorphicMapType_35797| Heap@@173) null (lft_T x$0_2@@2)))
+ :pattern ( (select (|PolymorphicMapType_35818_20706_20707#PolymorphicMapType_35818| Mask@0) null (lft_T x$0_2@@2)))
+ :pattern ( (select (|Map#Domain_20446_645| (select (|Map#Elements_5453_45984| lft_1@@27) 0)) x$0_2@@2))
+ :pattern ( (select (|Map#Elements_20483_645| (select (|Map#Elements_5453_45984| lft_1@@27) 0)) x$0_2@@2))
+))) (=> (forall ((x$0_2@@3 T@Ref) ) (!  (=> (select (|Map#Domain_20446_645| (select (|Map#Elements_5453_45984| lft_1@@27) 0)) x$0_2@@3) (>= (select (|Map#Elements_20483_645| (select (|Map#Elements_5453_45984| lft_1@@27) 0)) x$0_2@@3) NoPerm))
+ :qid |stdinbpl.773:17|
+ :skolemid |130|
+ :pattern ( (select (|PolymorphicMapType_35797_20706_20707#PolymorphicMapType_35797| Heap@@173) null (lft_T x$0_2@@3)))
+ :pattern ( (select (|PolymorphicMapType_35818_20706_20707#PolymorphicMapType_35818| Mask@0) null (lft_T x$0_2@@3)))
+ :pattern ( (select (|Map#Domain_20446_645| (select (|Map#Elements_5453_45984| lft_1@@27) 0)) x$0_2@@3))
+ :pattern ( (select (|Map#Elements_20483_645| (select (|Map#Elements_5453_45984| lft_1@@27) 0)) x$0_2@@3))
+)) (=> (forall ((x_2_1@@0 T@Ref) ) (!  (=> (and (and (select (|Map#Domain_20446_645| (select (|Map#Elements_5453_45984| lft_1@@27) 0)) (invRecv1 x_2_1@@0)) (< NoPerm (select (|Map#Elements_20483_645| (select (|Map#Elements_5453_45984| lft_1@@27) 0)) (invRecv1 x_2_1@@0)))) (qpRange1 x_2_1@@0)) (and (=> (< NoPerm (select (|Map#Elements_20483_645| (select (|Map#Elements_5453_45984| lft_1@@27) 0)) (invRecv1 x_2_1@@0))) (= (invRecv1 x_2_1@@0) x_2_1@@0)) (= (select (|PolymorphicMapType_35818_20706_20707#PolymorphicMapType_35818| QPMask@0) null (lft_T x_2_1@@0)) (+ (select (|PolymorphicMapType_35818_20706_20707#PolymorphicMapType_35818| Mask@0) null (lft_T x_2_1@@0)) (select (|Map#Elements_20483_645| (select (|Map#Elements_5453_45984| lft_1@@27) 0)) (invRecv1 x_2_1@@0))))))
+ :qid |stdinbpl.779:24|
+ :skolemid |131|
+ :pattern ( (select (|PolymorphicMapType_35818_20706_20707#PolymorphicMapType_35818| QPMask@0) null (lft_T x_2_1@@0)))
+)) (=> (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (forall ((o_4 T@Ref) (f_5 T@Field_43157_4202) ) (!  (=> (or (or (not (= o_4 null)) (not (IsPredicateField_20192_4202 f_5))) (not (= (getPredWandId_20192_4202 f_5) 0))) (= (select (|PolymorphicMapType_35818_20192_4202#PolymorphicMapType_35818| Mask@0) o_4 f_5) (select (|PolymorphicMapType_35818_20192_4202#PolymorphicMapType_35818| QPMask@0) o_4 f_5)))
+ :qid |stdinbpl.785:31|
+ :skolemid |132|
+ :pattern ( (select (|PolymorphicMapType_35818_20192_4202#PolymorphicMapType_35818| Mask@0) o_4 f_5))
+ :pattern ( (select (|PolymorphicMapType_35818_20192_4202#PolymorphicMapType_35818| QPMask@0) o_4 f_5))
+)) (forall ((o_4@@0 T@Ref) (f_5@@0 T@Field_43222_43223) ) (!  (=> (or (or (not (= o_4@@0 null)) (not (IsPredicateField_20213_20214 f_5@@0))) (not (= (getPredWandId_20192_20214 f_5@@0) 0))) (= (select (|PolymorphicMapType_35818_20192_20757#PolymorphicMapType_35818| Mask@0) o_4@@0 f_5@@0) (select (|PolymorphicMapType_35818_20192_20757#PolymorphicMapType_35818| QPMask@0) o_4@@0 f_5@@0)))
+ :qid |stdinbpl.785:31|
+ :skolemid |132|
+ :pattern ( (select (|PolymorphicMapType_35818_20192_20757#PolymorphicMapType_35818| Mask@0) o_4@@0 f_5@@0))
+ :pattern ( (select (|PolymorphicMapType_35818_20192_20757#PolymorphicMapType_35818| QPMask@0) o_4@@0 f_5@@0))
+))) (forall ((o_4@@1 T@Ref) (f_5@@1 T@Field_43157_20355) ) (!  (=> (or (or (not (= o_4@@1 null)) (not (IsPredicateField_20192_20355 f_5@@1))) (not (= (getPredWandId_20192_20355 f_5@@1) 0))) (= (select (|PolymorphicMapType_35818_20192_20355#PolymorphicMapType_35818| Mask@0) o_4@@1 f_5@@1) (select (|PolymorphicMapType_35818_20192_20355#PolymorphicMapType_35818| QPMask@0) o_4@@1 f_5@@1)))
+ :qid |stdinbpl.785:31|
+ :skolemid |132|
+ :pattern ( (select (|PolymorphicMapType_35818_20192_20355#PolymorphicMapType_35818| Mask@0) o_4@@1 f_5@@1))
+ :pattern ( (select (|PolymorphicMapType_35818_20192_20355#PolymorphicMapType_35818| QPMask@0) o_4@@1 f_5@@1))
+))) (forall ((o_4@@2 T@Ref) (f_5@@2 T@Field_43157_53) ) (!  (=> (or (or (not (= o_4@@2 null)) (not (IsPredicateField_20192_53 f_5@@2))) (not (= (getPredWandId_20192_53 f_5@@2) 0))) (= (select (|PolymorphicMapType_35818_20192_53#PolymorphicMapType_35818| Mask@0) o_4@@2 f_5@@2) (select (|PolymorphicMapType_35818_20192_53#PolymorphicMapType_35818| QPMask@0) o_4@@2 f_5@@2)))
+ :qid |stdinbpl.785:31|
+ :skolemid |132|
+ :pattern ( (select (|PolymorphicMapType_35818_20192_53#PolymorphicMapType_35818| Mask@0) o_4@@2 f_5@@2))
+ :pattern ( (select (|PolymorphicMapType_35818_20192_53#PolymorphicMapType_35818| QPMask@0) o_4@@2 f_5@@2))
+))) (forall ((o_4@@3 T@Ref) (f_5@@3 T@Field_43188_43193) ) (!  (=> (or (or (not (= o_4@@3 null)) (not (IsPredicateField_20192_185391 f_5@@3))) (not (= (getPredWandId_20192_367192 f_5@@3) 0))) (= (select (|PolymorphicMapType_35818_20192_173483#PolymorphicMapType_35818| Mask@0) o_4@@3 f_5@@3) (select (|PolymorphicMapType_35818_20192_173483#PolymorphicMapType_35818| QPMask@0) o_4@@3 f_5@@3)))
+ :qid |stdinbpl.785:31|
+ :skolemid |132|
+ :pattern ( (select (|PolymorphicMapType_35818_20192_173483#PolymorphicMapType_35818| Mask@0) o_4@@3 f_5@@3))
+ :pattern ( (select (|PolymorphicMapType_35818_20192_173483#PolymorphicMapType_35818| QPMask@0) o_4@@3 f_5@@3))
+))) (forall ((o_4@@4 T@Ref) (f_5@@4 T@Field_43983_4612) ) (!  (=> (or (or (not (= o_4@@4 null)) (not (IsPredicateField_20286_4612 f_5@@4))) (not (= (getPredWandId_20286_4612 f_5@@4) 0))) (= (select (|PolymorphicMapType_35818_20286_4612#PolymorphicMapType_35818| Mask@0) o_4@@4 f_5@@4) (select (|PolymorphicMapType_35818_20286_4612#PolymorphicMapType_35818| QPMask@0) o_4@@4 f_5@@4)))
+ :qid |stdinbpl.785:31|
+ :skolemid |132|
+ :pattern ( (select (|PolymorphicMapType_35818_20286_4612#PolymorphicMapType_35818| Mask@0) o_4@@4 f_5@@4))
+ :pattern ( (select (|PolymorphicMapType_35818_20286_4612#PolymorphicMapType_35818| QPMask@0) o_4@@4 f_5@@4))
+))) (forall ((o_4@@5 T@Ref) (f_5@@5 T@Field_44016_44017) ) (!  (=> (or (or (not (= o_4@@5 null)) (not (IsPredicateField_20303_20304 f_5@@5))) (not (= (getPredWandId_20286_20214 f_5@@5) 0))) (= (select (|PolymorphicMapType_35818_20286_20757#PolymorphicMapType_35818| Mask@0) o_4@@5 f_5@@5) (select (|PolymorphicMapType_35818_20286_20757#PolymorphicMapType_35818| QPMask@0) o_4@@5 f_5@@5)))
+ :qid |stdinbpl.785:31|
+ :skolemid |132|
+ :pattern ( (select (|PolymorphicMapType_35818_20286_20757#PolymorphicMapType_35818| Mask@0) o_4@@5 f_5@@5))
+ :pattern ( (select (|PolymorphicMapType_35818_20286_20757#PolymorphicMapType_35818| QPMask@0) o_4@@5 f_5@@5))
+))) (forall ((o_4@@6 T@Ref) (f_5@@6 T@Field_43983_20355) ) (!  (=> (or (or (not (= o_4@@6 null)) (not (IsPredicateField_20286_20355 f_5@@6))) (not (= (getPredWandId_20286_20355 f_5@@6) 0))) (= (select (|PolymorphicMapType_35818_20286_20355#PolymorphicMapType_35818| Mask@0) o_4@@6 f_5@@6) (select (|PolymorphicMapType_35818_20286_20355#PolymorphicMapType_35818| QPMask@0) o_4@@6 f_5@@6)))
+ :qid |stdinbpl.785:31|
+ :skolemid |132|
+ :pattern ( (select (|PolymorphicMapType_35818_20286_20355#PolymorphicMapType_35818| Mask@0) o_4@@6 f_5@@6))
+ :pattern ( (select (|PolymorphicMapType_35818_20286_20355#PolymorphicMapType_35818| QPMask@0) o_4@@6 f_5@@6))
+))) (forall ((o_4@@7 T@Ref) (f_5@@7 T@Field_43983_53) ) (!  (=> (or (or (not (= o_4@@7 null)) (not (IsPredicateField_20286_53 f_5@@7))) (not (= (getPredWandId_20286_53 f_5@@7) 0))) (= (select (|PolymorphicMapType_35818_20286_53#PolymorphicMapType_35818| Mask@0) o_4@@7 f_5@@7) (select (|PolymorphicMapType_35818_20286_53#PolymorphicMapType_35818| QPMask@0) o_4@@7 f_5@@7)))
+ :qid |stdinbpl.785:31|
+ :skolemid |132|
+ :pattern ( (select (|PolymorphicMapType_35818_20286_53#PolymorphicMapType_35818| Mask@0) o_4@@7 f_5@@7))
+ :pattern ( (select (|PolymorphicMapType_35818_20286_53#PolymorphicMapType_35818| QPMask@0) o_4@@7 f_5@@7))
+))) (forall ((o_4@@8 T@Ref) (f_5@@8 T@Field_43998_44003) ) (!  (=> (or (or (not (= o_4@@8 null)) (not (IsPredicateField_20286_186208 f_5@@8))) (not (= (getPredWandId_20286_368001 f_5@@8) 0))) (= (select (|PolymorphicMapType_35818_20286_173897#PolymorphicMapType_35818| Mask@0) o_4@@8 f_5@@8) (select (|PolymorphicMapType_35818_20286_173897#PolymorphicMapType_35818| QPMask@0) o_4@@8 f_5@@8)))
+ :qid |stdinbpl.785:31|
+ :skolemid |132|
+ :pattern ( (select (|PolymorphicMapType_35818_20286_173897#PolymorphicMapType_35818| Mask@0) o_4@@8 f_5@@8))
+ :pattern ( (select (|PolymorphicMapType_35818_20286_173897#PolymorphicMapType_35818| QPMask@0) o_4@@8 f_5@@8))
+))) (forall ((o_4@@9 T@Ref) (f_5@@9 T@Field_20354_4202) ) (!  (=> (or (or (not (= o_4@@9 null)) (not (IsPredicateField_20354_4202 f_5@@9))) (not (= (getPredWandId_20354_4202 f_5@@9) 0))) (= (select (|PolymorphicMapType_35818_20354_4202#PolymorphicMapType_35818| Mask@0) o_4@@9 f_5@@9) (select (|PolymorphicMapType_35818_20354_4202#PolymorphicMapType_35818| QPMask@0) o_4@@9 f_5@@9)))
+ :qid |stdinbpl.785:31|
+ :skolemid |132|
+ :pattern ( (select (|PolymorphicMapType_35818_20354_4202#PolymorphicMapType_35818| Mask@0) o_4@@9 f_5@@9))
+ :pattern ( (select (|PolymorphicMapType_35818_20354_4202#PolymorphicMapType_35818| QPMask@0) o_4@@9 f_5@@9))
+))) (forall ((o_4@@10 T@Ref) (f_5@@10 T@Field_20354_20576) ) (!  (=> (or (or (not (= o_4@@10 null)) (not (IsPredicateField_20354_127891 f_5@@10))) (not (= (getPredWandId_20354_20214 f_5@@10) 0))) (= (select (|PolymorphicMapType_35818_20354_20757#PolymorphicMapType_35818| Mask@0) o_4@@10 f_5@@10) (select (|PolymorphicMapType_35818_20354_20757#PolymorphicMapType_35818| QPMask@0) o_4@@10 f_5@@10)))
+ :qid |stdinbpl.785:31|
+ :skolemid |132|
+ :pattern ( (select (|PolymorphicMapType_35818_20354_20757#PolymorphicMapType_35818| Mask@0) o_4@@10 f_5@@10))
+ :pattern ( (select (|PolymorphicMapType_35818_20354_20757#PolymorphicMapType_35818| QPMask@0) o_4@@10 f_5@@10))
+))) (forall ((o_4@@11 T@Ref) (f_5@@11 T@Field_35870_35871) ) (!  (=> (or (or (not (= o_4@@11 null)) (not (IsPredicateField_20354_20355 f_5@@11))) (not (= (getPredWandId_20354_20355 f_5@@11) 0))) (= (select (|PolymorphicMapType_35818_20354_20355#PolymorphicMapType_35818| Mask@0) o_4@@11 f_5@@11) (select (|PolymorphicMapType_35818_20354_20355#PolymorphicMapType_35818| QPMask@0) o_4@@11 f_5@@11)))
+ :qid |stdinbpl.785:31|
+ :skolemid |132|
+ :pattern ( (select (|PolymorphicMapType_35818_20354_20355#PolymorphicMapType_35818| Mask@0) o_4@@11 f_5@@11))
+ :pattern ( (select (|PolymorphicMapType_35818_20354_20355#PolymorphicMapType_35818| QPMask@0) o_4@@11 f_5@@11))
+))) (forall ((o_4@@12 T@Ref) (f_5@@12 T@Field_35857_53) ) (!  (=> (or (or (not (= o_4@@12 null)) (not (IsPredicateField_20354_53 f_5@@12))) (not (= (getPredWandId_20354_53 f_5@@12) 0))) (= (select (|PolymorphicMapType_35818_20354_53#PolymorphicMapType_35818| Mask@0) o_4@@12 f_5@@12) (select (|PolymorphicMapType_35818_20354_53#PolymorphicMapType_35818| QPMask@0) o_4@@12 f_5@@12)))
+ :qid |stdinbpl.785:31|
+ :skolemid |132|
+ :pattern ( (select (|PolymorphicMapType_35818_20354_53#PolymorphicMapType_35818| Mask@0) o_4@@12 f_5@@12))
+ :pattern ( (select (|PolymorphicMapType_35818_20354_53#PolymorphicMapType_35818| QPMask@0) o_4@@12 f_5@@12))
+))) (forall ((o_4@@13 T@Ref) (f_5@@13 T@Field_20354_43193) ) (!  (=> (or (or (not (= o_4@@13 null)) (not (IsPredicateField_20354_181250 f_5@@13))) (not (= (getPredWandId_20354_368817 f_5@@13) 0))) (= (select (|PolymorphicMapType_35818_20354_171425#PolymorphicMapType_35818| Mask@0) o_4@@13 f_5@@13) (select (|PolymorphicMapType_35818_20354_171425#PolymorphicMapType_35818| QPMask@0) o_4@@13 f_5@@13)))
+ :qid |stdinbpl.785:31|
+ :skolemid |132|
+ :pattern ( (select (|PolymorphicMapType_35818_20354_171425#PolymorphicMapType_35818| Mask@0) o_4@@13 f_5@@13))
+ :pattern ( (select (|PolymorphicMapType_35818_20354_171425#PolymorphicMapType_35818| QPMask@0) o_4@@13 f_5@@13))
+))) (forall ((o_4@@14 T@Ref) (f_5@@14 T@Field_52884_4202) ) (!  (=> (or (or (not (= o_4@@14 null)) (not (IsPredicateField_20524_4202 f_5@@14))) (not (= (getPredWandId_20524_4202 f_5@@14) 0))) (= (select (|PolymorphicMapType_35818_20524_4202#PolymorphicMapType_35818| Mask@0) o_4@@14 f_5@@14) (select (|PolymorphicMapType_35818_20524_4202#PolymorphicMapType_35818| QPMask@0) o_4@@14 f_5@@14)))
+ :qid |stdinbpl.785:31|
+ :skolemid |132|
+ :pattern ( (select (|PolymorphicMapType_35818_20524_4202#PolymorphicMapType_35818| Mask@0) o_4@@14 f_5@@14))
+ :pattern ( (select (|PolymorphicMapType_35818_20524_4202#PolymorphicMapType_35818| QPMask@0) o_4@@14 f_5@@14))
+))) (forall ((o_4@@15 T@Ref) (f_5@@15 T@Field_52884_52885) ) (!  (=> (or (or (not (= o_4@@15 null)) (not (IsPredicateField_20524_20525 f_5@@15))) (not (= (getPredWandId_20524_20525 f_5@@15) 0))) (= (select (|PolymorphicMapType_35818_20524_20525#PolymorphicMapType_35818| Mask@0) o_4@@15 f_5@@15) (select (|PolymorphicMapType_35818_20524_20525#PolymorphicMapType_35818| QPMask@0) o_4@@15 f_5@@15)))
+ :qid |stdinbpl.785:31|
+ :skolemid |132|
+ :pattern ( (select (|PolymorphicMapType_35818_20524_20525#PolymorphicMapType_35818| Mask@0) o_4@@15 f_5@@15))
+ :pattern ( (select (|PolymorphicMapType_35818_20524_20525#PolymorphicMapType_35818| QPMask@0) o_4@@15 f_5@@15))
+))) (forall ((o_4@@16 T@Ref) (f_5@@16 T@Field_52884_20355) ) (!  (=> (or (or (not (= o_4@@16 null)) (not (IsPredicateField_20524_20355 f_5@@16))) (not (= (getPredWandId_20524_20355 f_5@@16) 0))) (= (select (|PolymorphicMapType_35818_20524_20355#PolymorphicMapType_35818| Mask@0) o_4@@16 f_5@@16) (select (|PolymorphicMapType_35818_20524_20355#PolymorphicMapType_35818| QPMask@0) o_4@@16 f_5@@16)))
+ :qid |stdinbpl.785:31|
+ :skolemid |132|
+ :pattern ( (select (|PolymorphicMapType_35818_20524_20355#PolymorphicMapType_35818| Mask@0) o_4@@16 f_5@@16))
+ :pattern ( (select (|PolymorphicMapType_35818_20524_20355#PolymorphicMapType_35818| QPMask@0) o_4@@16 f_5@@16))
+))) (forall ((o_4@@17 T@Ref) (f_5@@17 T@Field_52884_53) ) (!  (=> (or (or (not (= o_4@@17 null)) (not (IsPredicateField_20524_53 f_5@@17))) (not (= (getPredWandId_20524_53 f_5@@17) 0))) (= (select (|PolymorphicMapType_35818_20524_53#PolymorphicMapType_35818| Mask@0) o_4@@17 f_5@@17) (select (|PolymorphicMapType_35818_20524_53#PolymorphicMapType_35818| QPMask@0) o_4@@17 f_5@@17)))
+ :qid |stdinbpl.785:31|
+ :skolemid |132|
+ :pattern ( (select (|PolymorphicMapType_35818_20524_53#PolymorphicMapType_35818| Mask@0) o_4@@17 f_5@@17))
+ :pattern ( (select (|PolymorphicMapType_35818_20524_53#PolymorphicMapType_35818| QPMask@0) o_4@@17 f_5@@17))
+))) (forall ((o_4@@18 T@Ref) (f_5@@18 T@Field_54199_54204) ) (!  (=> (or (or (not (= o_4@@18 null)) (not (IsPredicateField_20524_182081 f_5@@18))) (not (= (getPredWandId_20524_369626 f_5@@18) 0))) (= (select (|PolymorphicMapType_35818_20524_171836#PolymorphicMapType_35818| Mask@0) o_4@@18 f_5@@18) (select (|PolymorphicMapType_35818_20524_171836#PolymorphicMapType_35818| QPMask@0) o_4@@18 f_5@@18)))
+ :qid |stdinbpl.785:31|
+ :skolemid |132|
+ :pattern ( (select (|PolymorphicMapType_35818_20524_171836#PolymorphicMapType_35818| Mask@0) o_4@@18 f_5@@18))
+ :pattern ( (select (|PolymorphicMapType_35818_20524_171836#PolymorphicMapType_35818| QPMask@0) o_4@@18 f_5@@18))
+))) (forall ((o_4@@19 T@Ref) (f_5@@19 T@Field_56169_4202) ) (!  (=> (or (or (not (= o_4@@19 null)) (not (IsPredicateField_20549_4202 f_5@@19))) (not (= (getPredWandId_20549_4202 f_5@@19) 0))) (= (select (|PolymorphicMapType_35818_20549_4202#PolymorphicMapType_35818| Mask@0) o_4@@19 f_5@@19) (select (|PolymorphicMapType_35818_20549_4202#PolymorphicMapType_35818| QPMask@0) o_4@@19 f_5@@19)))
+ :qid |stdinbpl.785:31|
+ :skolemid |132|
+ :pattern ( (select (|PolymorphicMapType_35818_20549_4202#PolymorphicMapType_35818| Mask@0) o_4@@19 f_5@@19))
+ :pattern ( (select (|PolymorphicMapType_35818_20549_4202#PolymorphicMapType_35818| QPMask@0) o_4@@19 f_5@@19))
+))) (forall ((o_4@@20 T@Ref) (f_5@@20 T@Field_56169_56170) ) (!  (=> (or (or (not (= o_4@@20 null)) (not (IsPredicateField_20549_20550 f_5@@20))) (not (= (getPredWandId_20549_20550 f_5@@20) 0))) (= (select (|PolymorphicMapType_35818_20549_20550#PolymorphicMapType_35818| Mask@0) o_4@@20 f_5@@20) (select (|PolymorphicMapType_35818_20549_20550#PolymorphicMapType_35818| QPMask@0) o_4@@20 f_5@@20)))
+ :qid |stdinbpl.785:31|
+ :skolemid |132|
+ :pattern ( (select (|PolymorphicMapType_35818_20549_20550#PolymorphicMapType_35818| Mask@0) o_4@@20 f_5@@20))
+ :pattern ( (select (|PolymorphicMapType_35818_20549_20550#PolymorphicMapType_35818| QPMask@0) o_4@@20 f_5@@20))
+))) (forall ((o_4@@21 T@Ref) (f_5@@21 T@Field_56169_20355) ) (!  (=> (or (or (not (= o_4@@21 null)) (not (IsPredicateField_20549_20355 f_5@@21))) (not (= (getPredWandId_20549_20355 f_5@@21) 0))) (= (select (|PolymorphicMapType_35818_20549_20355#PolymorphicMapType_35818| Mask@0) o_4@@21 f_5@@21) (select (|PolymorphicMapType_35818_20549_20355#PolymorphicMapType_35818| QPMask@0) o_4@@21 f_5@@21)))
+ :qid |stdinbpl.785:31|
+ :skolemid |132|
+ :pattern ( (select (|PolymorphicMapType_35818_20549_20355#PolymorphicMapType_35818| Mask@0) o_4@@21 f_5@@21))
+ :pattern ( (select (|PolymorphicMapType_35818_20549_20355#PolymorphicMapType_35818| QPMask@0) o_4@@21 f_5@@21))
+))) (forall ((o_4@@22 T@Ref) (f_5@@22 T@Field_56169_53) ) (!  (=> (or (or (not (= o_4@@22 null)) (not (IsPredicateField_20549_53 f_5@@22))) (not (= (getPredWandId_20549_53 f_5@@22) 0))) (= (select (|PolymorphicMapType_35818_20549_53#PolymorphicMapType_35818| Mask@0) o_4@@22 f_5@@22) (select (|PolymorphicMapType_35818_20549_53#PolymorphicMapType_35818| QPMask@0) o_4@@22 f_5@@22)))
+ :qid |stdinbpl.785:31|
+ :skolemid |132|
+ :pattern ( (select (|PolymorphicMapType_35818_20549_53#PolymorphicMapType_35818| Mask@0) o_4@@22 f_5@@22))
+ :pattern ( (select (|PolymorphicMapType_35818_20549_53#PolymorphicMapType_35818| QPMask@0) o_4@@22 f_5@@22))
+))) (forall ((o_4@@23 T@Ref) (f_5@@23 T@Field_56424_56429) ) (!  (=> (or (or (not (= o_4@@23 null)) (not (IsPredicateField_20549_182912 f_5@@23))) (not (= (getPredWandId_20549_370435 f_5@@23) 0))) (= (select (|PolymorphicMapType_35818_20549_172247#PolymorphicMapType_35818| Mask@0) o_4@@23 f_5@@23) (select (|PolymorphicMapType_35818_20549_172247#PolymorphicMapType_35818| QPMask@0) o_4@@23 f_5@@23)))
+ :qid |stdinbpl.785:31|
+ :skolemid |132|
+ :pattern ( (select (|PolymorphicMapType_35818_20549_172247#PolymorphicMapType_35818| Mask@0) o_4@@23 f_5@@23))
+ :pattern ( (select (|PolymorphicMapType_35818_20549_172247#PolymorphicMapType_35818| QPMask@0) o_4@@23 f_5@@23))
+))) (forall ((o_4@@24 T@Ref) (f_5@@24 T@Field_20575_4202) ) (!  (=> (or (or (not (= o_4@@24 null)) (not (IsPredicateField_20575_4202 f_5@@24))) (not (= (getPredWandId_20575_4202 f_5@@24) 0))) (= (select (|PolymorphicMapType_35818_20575_4202#PolymorphicMapType_35818| Mask@0) o_4@@24 f_5@@24) (select (|PolymorphicMapType_35818_20575_4202#PolymorphicMapType_35818| QPMask@0) o_4@@24 f_5@@24)))
+ :qid |stdinbpl.785:31|
+ :skolemid |132|
+ :pattern ( (select (|PolymorphicMapType_35818_20575_4202#PolymorphicMapType_35818| Mask@0) o_4@@24 f_5@@24))
+ :pattern ( (select (|PolymorphicMapType_35818_20575_4202#PolymorphicMapType_35818| QPMask@0) o_4@@24 f_5@@24))
+))) (forall ((o_4@@25 T@Ref) (f_5@@25 T@Field_56951_56952) ) (!  (=> (or (or (not (= o_4@@25 null)) (not (IsPredicateField_20575_20576 f_5@@25))) (not (= (getPredWandId_20575_20576 f_5@@25) 0))) (= (select (|PolymorphicMapType_35818_20575_20576#PolymorphicMapType_35818| Mask@0) o_4@@25 f_5@@25) (select (|PolymorphicMapType_35818_20575_20576#PolymorphicMapType_35818| QPMask@0) o_4@@25 f_5@@25)))
+ :qid |stdinbpl.785:31|
+ :skolemid |132|
+ :pattern ( (select (|PolymorphicMapType_35818_20575_20576#PolymorphicMapType_35818| Mask@0) o_4@@25 f_5@@25))
+ :pattern ( (select (|PolymorphicMapType_35818_20575_20576#PolymorphicMapType_35818| QPMask@0) o_4@@25 f_5@@25))
+))) (forall ((o_4@@26 T@Ref) (f_5@@26 T@Field_20575_20355) ) (!  (=> (or (or (not (= o_4@@26 null)) (not (IsPredicateField_20575_20355 f_5@@26))) (not (= (getPredWandId_20575_20355 f_5@@26) 0))) (= (select (|PolymorphicMapType_35818_20575_20355#PolymorphicMapType_35818| Mask@0) o_4@@26 f_5@@26) (select (|PolymorphicMapType_35818_20575_20355#PolymorphicMapType_35818| QPMask@0) o_4@@26 f_5@@26)))
+ :qid |stdinbpl.785:31|
+ :skolemid |132|
+ :pattern ( (select (|PolymorphicMapType_35818_20575_20355#PolymorphicMapType_35818| Mask@0) o_4@@26 f_5@@26))
+ :pattern ( (select (|PolymorphicMapType_35818_20575_20355#PolymorphicMapType_35818| QPMask@0) o_4@@26 f_5@@26))
+))) (forall ((o_4@@27 T@Ref) (f_5@@27 T@Field_20575_53) ) (!  (=> (or (or (not (= o_4@@27 null)) (not (IsPredicateField_20575_53 f_5@@27))) (not (= (getPredWandId_20575_53 f_5@@27) 0))) (= (select (|PolymorphicMapType_35818_20575_53#PolymorphicMapType_35818| Mask@0) o_4@@27 f_5@@27) (select (|PolymorphicMapType_35818_20575_53#PolymorphicMapType_35818| QPMask@0) o_4@@27 f_5@@27)))
+ :qid |stdinbpl.785:31|
+ :skolemid |132|
+ :pattern ( (select (|PolymorphicMapType_35818_20575_53#PolymorphicMapType_35818| Mask@0) o_4@@27 f_5@@27))
+ :pattern ( (select (|PolymorphicMapType_35818_20575_53#PolymorphicMapType_35818| QPMask@0) o_4@@27 f_5@@27))
+))) (forall ((o_4@@28 T@Ref) (f_5@@28 T@Field_56974_56979) ) (!  (=> (or (or (not (= o_4@@28 null)) (not (IsPredicateField_20575_184574 f_5@@28))) (not (= (getPredWandId_20575_371244 f_5@@28) 0))) (= (select (|PolymorphicMapType_35818_20575_173069#PolymorphicMapType_35818| Mask@0) o_4@@28 f_5@@28) (select (|PolymorphicMapType_35818_20575_173069#PolymorphicMapType_35818| QPMask@0) o_4@@28 f_5@@28)))
+ :qid |stdinbpl.785:31|
+ :skolemid |132|
+ :pattern ( (select (|PolymorphicMapType_35818_20575_173069#PolymorphicMapType_35818| Mask@0) o_4@@28 f_5@@28))
+ :pattern ( (select (|PolymorphicMapType_35818_20575_173069#PolymorphicMapType_35818| QPMask@0) o_4@@28 f_5@@28))
+))) (forall ((o_4@@29 T@Ref) (f_5@@29 T@Field_58189_4202) ) (!  (=> (or (or (not (= o_4@@29 null)) (not (IsPredicateField_20648_4202 f_5@@29))) (not (= (getPredWandId_20648_4202 f_5@@29) 0))) (= (select (|PolymorphicMapType_35818_20648_4202#PolymorphicMapType_35818| Mask@0) o_4@@29 f_5@@29) (select (|PolymorphicMapType_35818_20648_4202#PolymorphicMapType_35818| QPMask@0) o_4@@29 f_5@@29)))
+ :qid |stdinbpl.785:31|
+ :skolemid |132|
+ :pattern ( (select (|PolymorphicMapType_35818_20648_4202#PolymorphicMapType_35818| Mask@0) o_4@@29 f_5@@29))
+ :pattern ( (select (|PolymorphicMapType_35818_20648_4202#PolymorphicMapType_35818| QPMask@0) o_4@@29 f_5@@29))
+))) (forall ((o_4@@30 T@Ref) (f_5@@30 T@Field_58189_58190) ) (!  (=> (or (or (not (= o_4@@30 null)) (not (IsPredicateField_20648_20649 f_5@@30))) (not (= (getPredWandId_20648_20649 f_5@@30) 0))) (= (select (|PolymorphicMapType_35818_20648_20649#PolymorphicMapType_35818| Mask@0) o_4@@30 f_5@@30) (select (|PolymorphicMapType_35818_20648_20649#PolymorphicMapType_35818| QPMask@0) o_4@@30 f_5@@30)))
+ :qid |stdinbpl.785:31|
+ :skolemid |132|
+ :pattern ( (select (|PolymorphicMapType_35818_20648_20649#PolymorphicMapType_35818| Mask@0) o_4@@30 f_5@@30))
+ :pattern ( (select (|PolymorphicMapType_35818_20648_20649#PolymorphicMapType_35818| QPMask@0) o_4@@30 f_5@@30))
+))) (forall ((o_4@@31 T@Ref) (f_5@@31 T@Field_58189_20355) ) (!  (=> (or (or (not (= o_4@@31 null)) (not (IsPredicateField_20648_20355 f_5@@31))) (not (= (getPredWandId_20648_20355 f_5@@31) 0))) (= (select (|PolymorphicMapType_35818_20648_20355#PolymorphicMapType_35818| Mask@0) o_4@@31 f_5@@31) (select (|PolymorphicMapType_35818_20648_20355#PolymorphicMapType_35818| QPMask@0) o_4@@31 f_5@@31)))
+ :qid |stdinbpl.785:31|
+ :skolemid |132|
+ :pattern ( (select (|PolymorphicMapType_35818_20648_20355#PolymorphicMapType_35818| Mask@0) o_4@@31 f_5@@31))
+ :pattern ( (select (|PolymorphicMapType_35818_20648_20355#PolymorphicMapType_35818| QPMask@0) o_4@@31 f_5@@31))
+))) (forall ((o_4@@32 T@Ref) (f_5@@32 T@Field_58189_53) ) (!  (=> (or (or (not (= o_4@@32 null)) (not (IsPredicateField_20648_53 f_5@@32))) (not (= (getPredWandId_20648_53 f_5@@32) 0))) (= (select (|PolymorphicMapType_35818_20648_53#PolymorphicMapType_35818| Mask@0) o_4@@32 f_5@@32) (select (|PolymorphicMapType_35818_20648_53#PolymorphicMapType_35818| QPMask@0) o_4@@32 f_5@@32)))
+ :qid |stdinbpl.785:31|
+ :skolemid |132|
+ :pattern ( (select (|PolymorphicMapType_35818_20648_53#PolymorphicMapType_35818| Mask@0) o_4@@32 f_5@@32))
+ :pattern ( (select (|PolymorphicMapType_35818_20648_53#PolymorphicMapType_35818| QPMask@0) o_4@@32 f_5@@32))
+))) (forall ((o_4@@33 T@Ref) (f_5@@33 T@Field_58490_58495) ) (!  (=> (or (or (not (= o_4@@33 null)) (not (IsPredicateField_20648_183743 f_5@@33))) (not (= (getPredWandId_20648_372053 f_5@@33) 0))) (= (select (|PolymorphicMapType_35818_20648_172658#PolymorphicMapType_35818| Mask@0) o_4@@33 f_5@@33) (select (|PolymorphicMapType_35818_20648_172658#PolymorphicMapType_35818| QPMask@0) o_4@@33 f_5@@33)))
+ :qid |stdinbpl.785:31|
+ :skolemid |132|
+ :pattern ( (select (|PolymorphicMapType_35818_20648_172658#PolymorphicMapType_35818| Mask@0) o_4@@33 f_5@@33))
+ :pattern ( (select (|PolymorphicMapType_35818_20648_172658#PolymorphicMapType_35818| QPMask@0) o_4@@33 f_5@@33))
+))) (forall ((o_4@@34 T@Ref) (f_5@@34 T@Field_48667_4202) ) (!  (=> (or (or (not (= o_4@@34 null)) (not (IsPredicateField_20706_4202 f_5@@34))) (not (= (getPredWandId_20706_4202 f_5@@34) 0))) (= (select (|PolymorphicMapType_35818_20706_4202#PolymorphicMapType_35818| Mask@0) o_4@@34 f_5@@34) (select (|PolymorphicMapType_35818_20706_4202#PolymorphicMapType_35818| QPMask@0) o_4@@34 f_5@@34)))
+ :qid |stdinbpl.785:31|
+ :skolemid |132|
+ :pattern ( (select (|PolymorphicMapType_35818_20706_4202#PolymorphicMapType_35818| Mask@0) o_4@@34 f_5@@34))
+ :pattern ( (select (|PolymorphicMapType_35818_20706_4202#PolymorphicMapType_35818| QPMask@0) o_4@@34 f_5@@34))
+))) (forall ((o_4@@35 T@Ref) (f_5@@35 T@Field_48667_48668) ) (!  (=> (or (or (not (= o_4@@35 null)) (not (IsPredicateField_20706_20707 f_5@@35))) (not (= (getPredWandId_20706_20707 f_5@@35) 0))) (= (select (|PolymorphicMapType_35818_20706_20707#PolymorphicMapType_35818| Mask@0) o_4@@35 f_5@@35) (select (|PolymorphicMapType_35818_20706_20707#PolymorphicMapType_35818| QPMask@0) o_4@@35 f_5@@35)))
+ :qid |stdinbpl.785:31|
+ :skolemid |132|
+ :pattern ( (select (|PolymorphicMapType_35818_20706_20707#PolymorphicMapType_35818| Mask@0) o_4@@35 f_5@@35))
+ :pattern ( (select (|PolymorphicMapType_35818_20706_20707#PolymorphicMapType_35818| QPMask@0) o_4@@35 f_5@@35))
+))) (forall ((o_4@@36 T@Ref) (f_5@@36 T@Field_48667_20355) ) (!  (=> (or (or (not (= o_4@@36 null)) (not (IsPredicateField_20706_20355 f_5@@36))) (not (= (getPredWandId_20706_20355 f_5@@36) 0))) (= (select (|PolymorphicMapType_35818_20706_20355#PolymorphicMapType_35818| Mask@0) o_4@@36 f_5@@36) (select (|PolymorphicMapType_35818_20706_20355#PolymorphicMapType_35818| QPMask@0) o_4@@36 f_5@@36)))
+ :qid |stdinbpl.785:31|
+ :skolemid |132|
+ :pattern ( (select (|PolymorphicMapType_35818_20706_20355#PolymorphicMapType_35818| Mask@0) o_4@@36 f_5@@36))
+ :pattern ( (select (|PolymorphicMapType_35818_20706_20355#PolymorphicMapType_35818| QPMask@0) o_4@@36 f_5@@36))
+))) (forall ((o_4@@37 T@Ref) (f_5@@37 T@Field_48667_53) ) (!  (=> (or (or (not (= o_4@@37 null)) (not (IsPredicateField_20706_53 f_5@@37))) (not (= (getPredWandId_20706_53 f_5@@37) 0))) (= (select (|PolymorphicMapType_35818_20706_53#PolymorphicMapType_35818| Mask@0) o_4@@37 f_5@@37) (select (|PolymorphicMapType_35818_20706_53#PolymorphicMapType_35818| QPMask@0) o_4@@37 f_5@@37)))
+ :qid |stdinbpl.785:31|
+ :skolemid |132|
+ :pattern ( (select (|PolymorphicMapType_35818_20706_53#PolymorphicMapType_35818| Mask@0) o_4@@37 f_5@@37))
+ :pattern ( (select (|PolymorphicMapType_35818_20706_53#PolymorphicMapType_35818| QPMask@0) o_4@@37 f_5@@37))
+))) (forall ((o_4@@38 T@Ref) (f_5@@38 T@Field_59245_59250) ) (!  (=> (or (or (not (= o_4@@38 null)) (not (IsPredicateField_20706_179602 f_5@@38))) (not (= (getPredWandId_20706_372862 f_5@@38) 0))) (= (select (|PolymorphicMapType_35818_20706_170603#PolymorphicMapType_35818| Mask@0) o_4@@38 f_5@@38) (select (|PolymorphicMapType_35818_20706_170603#PolymorphicMapType_35818| QPMask@0) o_4@@38 f_5@@38)))
+ :qid |stdinbpl.785:31|
+ :skolemid |132|
+ :pattern ( (select (|PolymorphicMapType_35818_20706_170603#PolymorphicMapType_35818| Mask@0) o_4@@38 f_5@@38))
+ :pattern ( (select (|PolymorphicMapType_35818_20706_170603#PolymorphicMapType_35818| QPMask@0) o_4@@38 f_5@@38))
+))) (forall ((o_4@@39 T@Ref) (f_5@@39 T@Field_20728_4202) ) (!  (=> (or (or (not (= o_4@@39 null)) (not (IsPredicateField_20728_4202 f_5@@39))) (not (= (getPredWandId_20728_4202 f_5@@39) 0))) (= (select (|PolymorphicMapType_35818_20728_4202#PolymorphicMapType_35818| Mask@0) o_4@@39 f_5@@39) (select (|PolymorphicMapType_35818_20728_4202#PolymorphicMapType_35818| QPMask@0) o_4@@39 f_5@@39)))
+ :qid |stdinbpl.785:31|
+ :skolemid |132|
+ :pattern ( (select (|PolymorphicMapType_35818_20728_4202#PolymorphicMapType_35818| Mask@0) o_4@@39 f_5@@39))
+ :pattern ( (select (|PolymorphicMapType_35818_20728_4202#PolymorphicMapType_35818| QPMask@0) o_4@@39 f_5@@39))
+))) (forall ((o_4@@40 T@Ref) (f_5@@40 T@Field_51131_51132) ) (!  (=> (or (or (not (= o_4@@40 null)) (not (IsPredicateField_20728_20729 f_5@@40))) (not (= (getPredWandId_20728_20729 f_5@@40) 0))) (= (select (|PolymorphicMapType_35818_20728_20729#PolymorphicMapType_35818| Mask@0) o_4@@40 f_5@@40) (select (|PolymorphicMapType_35818_20728_20729#PolymorphicMapType_35818| QPMask@0) o_4@@40 f_5@@40)))
+ :qid |stdinbpl.785:31|
+ :skolemid |132|
+ :pattern ( (select (|PolymorphicMapType_35818_20728_20729#PolymorphicMapType_35818| Mask@0) o_4@@40 f_5@@40))
+ :pattern ( (select (|PolymorphicMapType_35818_20728_20729#PolymorphicMapType_35818| QPMask@0) o_4@@40 f_5@@40))
+))) (forall ((o_4@@41 T@Ref) (f_5@@41 T@Field_20728_20355) ) (!  (=> (or (or (not (= o_4@@41 null)) (not (IsPredicateField_20728_20355 f_5@@41))) (not (= (getPredWandId_20728_20355 f_5@@41) 0))) (= (select (|PolymorphicMapType_35818_20728_20355#PolymorphicMapType_35818| Mask@0) o_4@@41 f_5@@41) (select (|PolymorphicMapType_35818_20728_20355#PolymorphicMapType_35818| QPMask@0) o_4@@41 f_5@@41)))
+ :qid |stdinbpl.785:31|
+ :skolemid |132|
+ :pattern ( (select (|PolymorphicMapType_35818_20728_20355#PolymorphicMapType_35818| Mask@0) o_4@@41 f_5@@41))
+ :pattern ( (select (|PolymorphicMapType_35818_20728_20355#PolymorphicMapType_35818| QPMask@0) o_4@@41 f_5@@41))
+))) (forall ((o_4@@42 T@Ref) (f_5@@42 T@Field_20728_53) ) (!  (=> (or (or (not (= o_4@@42 null)) (not (IsPredicateField_20728_53 f_5@@42))) (not (= (getPredWandId_20728_53 f_5@@42) 0))) (= (select (|PolymorphicMapType_35818_20728_53#PolymorphicMapType_35818| Mask@0) o_4@@42 f_5@@42) (select (|PolymorphicMapType_35818_20728_53#PolymorphicMapType_35818| QPMask@0) o_4@@42 f_5@@42)))
+ :qid |stdinbpl.785:31|
+ :skolemid |132|
+ :pattern ( (select (|PolymorphicMapType_35818_20728_53#PolymorphicMapType_35818| Mask@0) o_4@@42 f_5@@42))
+ :pattern ( (select (|PolymorphicMapType_35818_20728_53#PolymorphicMapType_35818| QPMask@0) o_4@@42 f_5@@42))
+))) (forall ((o_4@@43 T@Ref) (f_5@@43 T@Field_53810_53815) ) (!  (=> (or (or (not (= o_4@@43 null)) (not (IsPredicateField_20728_180433 f_5@@43))) (not (= (getPredWandId_20728_373671 f_5@@43) 0))) (= (select (|PolymorphicMapType_35818_20728_171014#PolymorphicMapType_35818| Mask@0) o_4@@43 f_5@@43) (select (|PolymorphicMapType_35818_20728_171014#PolymorphicMapType_35818| QPMask@0) o_4@@43 f_5@@43)))
+ :qid |stdinbpl.785:31|
+ :skolemid |132|
+ :pattern ( (select (|PolymorphicMapType_35818_20728_171014#PolymorphicMapType_35818| Mask@0) o_4@@43 f_5@@43))
+ :pattern ( (select (|PolymorphicMapType_35818_20728_171014#PolymorphicMapType_35818| QPMask@0) o_4@@43 f_5@@43))
+))) (forall ((o_4@@44 T@Ref) (f_5@@44 T@Field_20756_4202) ) (!  (=> (or (or (not (= o_4@@44 null)) (not (IsPredicateField_20756_4202 f_5@@44))) (not (= (getPredWandId_20756_4202 f_5@@44) 0))) (= (select (|PolymorphicMapType_35818_20756_4202#PolymorphicMapType_35818| Mask@0) o_4@@44 f_5@@44) (select (|PolymorphicMapType_35818_20756_4202#PolymorphicMapType_35818| QPMask@0) o_4@@44 f_5@@44)))
+ :qid |stdinbpl.785:31|
+ :skolemid |132|
+ :pattern ( (select (|PolymorphicMapType_35818_20756_4202#PolymorphicMapType_35818| Mask@0) o_4@@44 f_5@@44))
+ :pattern ( (select (|PolymorphicMapType_35818_20756_4202#PolymorphicMapType_35818| QPMask@0) o_4@@44 f_5@@44))
+))) (forall ((o_4@@45 T@Ref) (f_5@@45 T@Field_46129_46130) ) (!  (=> (or (or (not (= o_4@@45 null)) (not (IsPredicateField_20756_20757 f_5@@45))) (not (= (getPredWandId_20756_20757 f_5@@45) 0))) (= (select (|PolymorphicMapType_35818_20756_20757#PolymorphicMapType_35818| Mask@0) o_4@@45 f_5@@45) (select (|PolymorphicMapType_35818_20756_20757#PolymorphicMapType_35818| QPMask@0) o_4@@45 f_5@@45)))
+ :qid |stdinbpl.785:31|
+ :skolemid |132|
+ :pattern ( (select (|PolymorphicMapType_35818_20756_20757#PolymorphicMapType_35818| Mask@0) o_4@@45 f_5@@45))
+ :pattern ( (select (|PolymorphicMapType_35818_20756_20757#PolymorphicMapType_35818| QPMask@0) o_4@@45 f_5@@45))
+))) (forall ((o_4@@46 T@Ref) (f_5@@46 T@Field_20756_20355) ) (!  (=> (or (or (not (= o_4@@46 null)) (not (IsPredicateField_20756_20355 f_5@@46))) (not (= (getPredWandId_20756_20355 f_5@@46) 0))) (= (select (|PolymorphicMapType_35818_20756_20355#PolymorphicMapType_35818| Mask@0) o_4@@46 f_5@@46) (select (|PolymorphicMapType_35818_20756_20355#PolymorphicMapType_35818| QPMask@0) o_4@@46 f_5@@46)))
+ :qid |stdinbpl.785:31|
+ :skolemid |132|
+ :pattern ( (select (|PolymorphicMapType_35818_20756_20355#PolymorphicMapType_35818| Mask@0) o_4@@46 f_5@@46))
+ :pattern ( (select (|PolymorphicMapType_35818_20756_20355#PolymorphicMapType_35818| QPMask@0) o_4@@46 f_5@@46))
+))) (forall ((o_4@@47 T@Ref) (f_5@@47 T@Field_20756_53) ) (!  (=> (or (or (not (= o_4@@47 null)) (not (IsPredicateField_20756_53 f_5@@47))) (not (= (getPredWandId_20756_53 f_5@@47) 0))) (= (select (|PolymorphicMapType_35818_20756_53#PolymorphicMapType_35818| Mask@0) o_4@@47 f_5@@47) (select (|PolymorphicMapType_35818_20756_53#PolymorphicMapType_35818| QPMask@0) o_4@@47 f_5@@47)))
+ :qid |stdinbpl.785:31|
+ :skolemid |132|
+ :pattern ( (select (|PolymorphicMapType_35818_20756_53#PolymorphicMapType_35818| Mask@0) o_4@@47 f_5@@47))
+ :pattern ( (select (|PolymorphicMapType_35818_20756_53#PolymorphicMapType_35818| QPMask@0) o_4@@47 f_5@@47))
+))) (forall ((o_4@@48 T@Ref) (f_5@@48 T@Field_60906_60911) ) (!  (=> (or (or (not (= o_4@@48 null)) (not (IsPredicateField_20756_178771 f_5@@48))) (not (= (getPredWandId_20756_374480 f_5@@48) 0))) (= (select (|PolymorphicMapType_35818_20756_170192#PolymorphicMapType_35818| Mask@0) o_4@@48 f_5@@48) (select (|PolymorphicMapType_35818_20756_170192#PolymorphicMapType_35818| QPMask@0) o_4@@48 f_5@@48)))
+ :qid |stdinbpl.785:31|
+ :skolemid |132|
+ :pattern ( (select (|PolymorphicMapType_35818_20756_170192#PolymorphicMapType_35818| Mask@0) o_4@@48 f_5@@48))
+ :pattern ( (select (|PolymorphicMapType_35818_20756_170192#PolymorphicMapType_35818| QPMask@0) o_4@@48 f_5@@48))
+))) (forall ((o_4@@49 T@Ref) (f_5@@49 T@Field_20866_4202) ) (!  (=> (or (or (not (= o_4@@49 null)) (not (IsPredicateField_20866_4202 f_5@@49))) (not (= (getPredWandId_20866_4202 f_5@@49) 0))) (= (select (|PolymorphicMapType_35818_20866_4202#PolymorphicMapType_35818| Mask@0) o_4@@49 f_5@@49) (select (|PolymorphicMapType_35818_20866_4202#PolymorphicMapType_35818| QPMask@0) o_4@@49 f_5@@49)))
+ :qid |stdinbpl.785:31|
+ :skolemid |132|
+ :pattern ( (select (|PolymorphicMapType_35818_20866_4202#PolymorphicMapType_35818| Mask@0) o_4@@49 f_5@@49))
+ :pattern ( (select (|PolymorphicMapType_35818_20866_4202#PolymorphicMapType_35818| QPMask@0) o_4@@49 f_5@@49))
+))) (forall ((o_4@@50 T@Ref) (f_5@@50 T@Field_69392_69393) ) (!  (=> (or (or (not (= o_4@@50 null)) (not (IsPredicateField_20866_20867 f_5@@50))) (not (= (getPredWandId_20866_20867 f_5@@50) 0))) (= (select (|PolymorphicMapType_35818_20866_20867#PolymorphicMapType_35818| Mask@0) o_4@@50 f_5@@50) (select (|PolymorphicMapType_35818_20866_20867#PolymorphicMapType_35818| QPMask@0) o_4@@50 f_5@@50)))
+ :qid |stdinbpl.785:31|
+ :skolemid |132|
+ :pattern ( (select (|PolymorphicMapType_35818_20866_20867#PolymorphicMapType_35818| Mask@0) o_4@@50 f_5@@50))
+ :pattern ( (select (|PolymorphicMapType_35818_20866_20867#PolymorphicMapType_35818| QPMask@0) o_4@@50 f_5@@50))
+))) (forall ((o_4@@51 T@Ref) (f_5@@51 T@Field_20866_20355) ) (!  (=> (or (or (not (= o_4@@51 null)) (not (IsPredicateField_20866_20355 f_5@@51))) (not (= (getPredWandId_20866_20355 f_5@@51) 0))) (= (select (|PolymorphicMapType_35818_20866_20355#PolymorphicMapType_35818| Mask@0) o_4@@51 f_5@@51) (select (|PolymorphicMapType_35818_20866_20355#PolymorphicMapType_35818| QPMask@0) o_4@@51 f_5@@51)))
+ :qid |stdinbpl.785:31|
+ :skolemid |132|
+ :pattern ( (select (|PolymorphicMapType_35818_20866_20355#PolymorphicMapType_35818| Mask@0) o_4@@51 f_5@@51))
+ :pattern ( (select (|PolymorphicMapType_35818_20866_20355#PolymorphicMapType_35818| QPMask@0) o_4@@51 f_5@@51))
+))) (forall ((o_4@@52 T@Ref) (f_5@@52 T@Field_20866_53) ) (!  (=> (or (or (not (= o_4@@52 null)) (not (IsPredicateField_20866_53 f_5@@52))) (not (= (getPredWandId_20866_53 f_5@@52) 0))) (= (select (|PolymorphicMapType_35818_20866_53#PolymorphicMapType_35818| Mask@0) o_4@@52 f_5@@52) (select (|PolymorphicMapType_35818_20866_53#PolymorphicMapType_35818| QPMask@0) o_4@@52 f_5@@52)))
+ :qid |stdinbpl.785:31|
+ :skolemid |132|
+ :pattern ( (select (|PolymorphicMapType_35818_20866_53#PolymorphicMapType_35818| Mask@0) o_4@@52 f_5@@52))
+ :pattern ( (select (|PolymorphicMapType_35818_20866_53#PolymorphicMapType_35818| QPMask@0) o_4@@52 f_5@@52))
+))) (forall ((o_4@@53 T@Ref) (f_5@@53 T@Field_69405_69410) ) (!  (=> (or (or (not (= o_4@@53 null)) (not (IsPredicateField_20866_187039 f_5@@53))) (not (= (getPredWandId_20866_375289 f_5@@53) 0))) (= (select (|PolymorphicMapType_35818_20866_174308#PolymorphicMapType_35818| Mask@0) o_4@@53 f_5@@53) (select (|PolymorphicMapType_35818_20866_174308#PolymorphicMapType_35818| QPMask@0) o_4@@53 f_5@@53)))
+ :qid |stdinbpl.785:31|
+ :skolemid |132|
+ :pattern ( (select (|PolymorphicMapType_35818_20866_174308#PolymorphicMapType_35818| Mask@0) o_4@@53 f_5@@53))
+ :pattern ( (select (|PolymorphicMapType_35818_20866_174308#PolymorphicMapType_35818| QPMask@0) o_4@@53 f_5@@53))
+))) (and (and (forall ((x_2_1@@1 T@Ref) ) (!  (=> (not (and (and (select (|Map#Domain_20446_645| (select (|Map#Elements_5453_45984| lft_1@@27) 0)) (invRecv1 x_2_1@@1)) (< NoPerm (select (|Map#Elements_20483_645| (select (|Map#Elements_5453_45984| lft_1@@27) 0)) (invRecv1 x_2_1@@1)))) (qpRange1 x_2_1@@1))) (= (select (|PolymorphicMapType_35818_20706_20707#PolymorphicMapType_35818| QPMask@0) null (lft_T x_2_1@@1)) (select (|PolymorphicMapType_35818_20706_20707#PolymorphicMapType_35818| Mask@0) null (lft_T x_2_1@@1))))
+ :qid |stdinbpl.789:24|
+ :skolemid |133|
+ :pattern ( (select (|PolymorphicMapType_35818_20706_20707#PolymorphicMapType_35818| QPMask@0) null (lft_T x_2_1@@1)))
+)) (state Heap@@173 QPMask@0)) (and (forall ((x$0_4 T@Ref) ) (!  (=> (select (|Map#Domain_20446_645| (select (|Map#Elements_5453_45984| lft_1@@27) 1)) x$0_4) (< (/ (to_real 0) (to_real 1)) (select (|Map#Elements_20483_645| (select (|Map#Elements_5453_45984| lft_1@@27) 1)) x$0_4)))
+ :qid |stdinbpl.795:22|
+ :skolemid |134|
+ :pattern ( (select (|Map#Domain_20446_645| (select (|Map#Elements_5453_45984| lft_1@@27) 1)) x$0_4))
+ :pattern ( (select (|Map#Elements_20483_645| (select (|Map#Elements_5453_45984| lft_1@@27) 1)) x$0_4))
+)) (forall ((x$0_5 T@Ref) ) (!  (=> (select (|Map#Domain_20446_645| (select (|Map#Elements_5453_45984| lft_1@@27) 1)) x$0_5) (<= (select (|Map#Elements_20483_645| (select (|Map#Elements_5453_45984| lft_1@@27) 1)) x$0_5) (/ (to_real 1) (to_real 1))))
+ :qid |stdinbpl.799:22|
+ :skolemid |135|
+ :pattern ( (select (|Map#Domain_20446_645| (select (|Map#Elements_5453_45984| lft_1@@27) 1)) x$0_5))
+ :pattern ( (select (|Map#Elements_20483_645| (select (|Map#Elements_5453_45984| lft_1@@27) 1)) x$0_5))
+))))) (and (=> (= (ControlFlow 0 4) (- 0 7)) (forall ((x$0_6 T@Ref) (x$0_6_1 T@Ref) ) (!  (=> (and (and (and (and (not (= x$0_6 x$0_6_1)) (select (|Map#Domain_20446_645| (select (|Map#Elements_5453_45984| lft_1@@27) 1)) x$0_6)) (select (|Map#Domain_20446_645| (select (|Map#Elements_5453_45984| lft_1@@27) 1)) x$0_6_1)) (< NoPerm (select (|Map#Elements_20483_645| (select (|Map#Elements_5453_45984| lft_1@@27) 1)) x$0_6))) (< NoPerm (select (|Map#Elements_20483_645| (select (|Map#Elements_5453_45984| lft_1@@27) 1)) x$0_6_1))) (not (= x$0_6 x$0_6_1)))
+ :qid |stdinbpl.807:19|
+ :skolemid |136|
+ :pattern ( (neverTriggered2 x$0_6) (neverTriggered2 x$0_6_1))
+))) (=> (forall ((x$0_6@@0 T@Ref) (x$0_6_1@@0 T@Ref) ) (!  (=> (and (and (and (and (not (= x$0_6@@0 x$0_6_1@@0)) (select (|Map#Domain_20446_645| (select (|Map#Elements_5453_45984| lft_1@@27) 1)) x$0_6@@0)) (select (|Map#Domain_20446_645| (select (|Map#Elements_5453_45984| lft_1@@27) 1)) x$0_6_1@@0)) (< NoPerm (select (|Map#Elements_20483_645| (select (|Map#Elements_5453_45984| lft_1@@27) 1)) x$0_6@@0))) (< NoPerm (select (|Map#Elements_20483_645| (select (|Map#Elements_5453_45984| lft_1@@27) 1)) x$0_6_1@@0))) (not (= x$0_6@@0 x$0_6_1@@0)))
+ :qid |stdinbpl.807:19|
+ :skolemid |136|
+ :pattern ( (neverTriggered2 x$0_6@@0) (neverTriggered2 x$0_6_1@@0))
+)) (=> (and (forall ((x$0_6@@1 T@Ref) ) (!  (=> (and (select (|Map#Domain_20446_645| (select (|Map#Elements_5453_45984| lft_1@@27) 1)) x$0_6@@1) (< NoPerm (select (|Map#Elements_20483_645| (select (|Map#Elements_5453_45984| lft_1@@27) 1)) x$0_6@@1))) (and (= (invRecv2 x$0_6@@1) x$0_6@@1) (qpRange2 x$0_6@@1)))
+ :qid |stdinbpl.813:24|
+ :skolemid |137|
+ :pattern ( (select (|PolymorphicMapType_35797_20728_20729#PolymorphicMapType_35797| Heap@@173) null (lft_List x$0_6@@1)))
+ :pattern ( (select (|PolymorphicMapType_35818_20728_20729#PolymorphicMapType_35818| QPMask@0) null (lft_List x$0_6@@1)))
+ :pattern ( (select (|Map#Domain_20446_645| (select (|Map#Elements_5453_45984| lft_1@@27) 1)) x$0_6@@1))
+ :pattern ( (select (|Map#Elements_20483_645| (select (|Map#Elements_5453_45984| lft_1@@27) 1)) x$0_6@@1))
+)) (forall ((x_3_1_1 T@Ref) ) (!  (=> (and (and (select (|Map#Domain_20446_645| (select (|Map#Elements_5453_45984| lft_1@@27) 1)) (invRecv2 x_3_1_1)) (< NoPerm (select (|Map#Elements_20483_645| (select (|Map#Elements_5453_45984| lft_1@@27) 1)) (invRecv2 x_3_1_1)))) (qpRange2 x_3_1_1)) (= (invRecv2 x_3_1_1) x_3_1_1))
+ :qid |stdinbpl.817:24|
+ :skolemid |138|
+ :pattern ( (invRecv2 x_3_1_1))
+))) (and (=> (= (ControlFlow 0 4) (- 0 6)) (forall ((x$0_6@@2 T@Ref) ) (!  (=> (select (|Map#Domain_20446_645| (select (|Map#Elements_5453_45984| lft_1@@27) 1)) x$0_6@@2) (>= (select (|Map#Elements_20483_645| (select (|Map#Elements_5453_45984| lft_1@@27) 1)) x$0_6@@2) NoPerm))
+ :qid |stdinbpl.823:17|
+ :skolemid |139|
+ :pattern ( (select (|PolymorphicMapType_35797_20728_20729#PolymorphicMapType_35797| Heap@@173) null (lft_List x$0_6@@2)))
+ :pattern ( (select (|PolymorphicMapType_35818_20728_20729#PolymorphicMapType_35818| QPMask@0) null (lft_List x$0_6@@2)))
+ :pattern ( (select (|Map#Domain_20446_645| (select (|Map#Elements_5453_45984| lft_1@@27) 1)) x$0_6@@2))
+ :pattern ( (select (|Map#Elements_20483_645| (select (|Map#Elements_5453_45984| lft_1@@27) 1)) x$0_6@@2))
+))) (=> (forall ((x$0_6@@3 T@Ref) ) (!  (=> (select (|Map#Domain_20446_645| (select (|Map#Elements_5453_45984| lft_1@@27) 1)) x$0_6@@3) (>= (select (|Map#Elements_20483_645| (select (|Map#Elements_5453_45984| lft_1@@27) 1)) x$0_6@@3) NoPerm))
+ :qid |stdinbpl.823:17|
+ :skolemid |139|
+ :pattern ( (select (|PolymorphicMapType_35797_20728_20729#PolymorphicMapType_35797| Heap@@173) null (lft_List x$0_6@@3)))
+ :pattern ( (select (|PolymorphicMapType_35818_20728_20729#PolymorphicMapType_35818| QPMask@0) null (lft_List x$0_6@@3)))
+ :pattern ( (select (|Map#Domain_20446_645| (select (|Map#Elements_5453_45984| lft_1@@27) 1)) x$0_6@@3))
+ :pattern ( (select (|Map#Elements_20483_645| (select (|Map#Elements_5453_45984| lft_1@@27) 1)) x$0_6@@3))
+)) (=> (forall ((x_3_1_1@@0 T@Ref) ) (!  (=> (and (and (select (|Map#Domain_20446_645| (select (|Map#Elements_5453_45984| lft_1@@27) 1)) (invRecv2 x_3_1_1@@0)) (< NoPerm (select (|Map#Elements_20483_645| (select (|Map#Elements_5453_45984| lft_1@@27) 1)) (invRecv2 x_3_1_1@@0)))) (qpRange2 x_3_1_1@@0)) (and (=> (< NoPerm (select (|Map#Elements_20483_645| (select (|Map#Elements_5453_45984| lft_1@@27) 1)) (invRecv2 x_3_1_1@@0))) (= (invRecv2 x_3_1_1@@0) x_3_1_1@@0)) (= (select (|PolymorphicMapType_35818_20728_20729#PolymorphicMapType_35818| QPMask@1) null (lft_List x_3_1_1@@0)) (+ (select (|PolymorphicMapType_35818_20728_20729#PolymorphicMapType_35818| QPMask@0) null (lft_List x_3_1_1@@0)) (select (|Map#Elements_20483_645| (select (|Map#Elements_5453_45984| lft_1@@27) 1)) (invRecv2 x_3_1_1@@0))))))
+ :qid |stdinbpl.829:24|
+ :skolemid |140|
+ :pattern ( (select (|PolymorphicMapType_35818_20728_20729#PolymorphicMapType_35818| QPMask@1) null (lft_List x_3_1_1@@0)))
+)) (=> (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (forall ((o_4@@54 T@Ref) (f_5@@54 T@Field_43157_4202) ) (!  (=> (or (or (not (= o_4@@54 null)) (not (IsPredicateField_20192_4202 f_5@@54))) (not (= (getPredWandId_20192_4202 f_5@@54) 1))) (= (select (|PolymorphicMapType_35818_20192_4202#PolymorphicMapType_35818| QPMask@0) o_4@@54 f_5@@54) (select (|PolymorphicMapType_35818_20192_4202#PolymorphicMapType_35818| QPMask@1) o_4@@54 f_5@@54)))
+ :qid |stdinbpl.835:31|
+ :skolemid |141|
+ :pattern ( (select (|PolymorphicMapType_35818_20192_4202#PolymorphicMapType_35818| QPMask@0) o_4@@54 f_5@@54))
+ :pattern ( (select (|PolymorphicMapType_35818_20192_4202#PolymorphicMapType_35818| QPMask@1) o_4@@54 f_5@@54))
+)) (forall ((o_4@@55 T@Ref) (f_5@@55 T@Field_43222_43223) ) (!  (=> (or (or (not (= o_4@@55 null)) (not (IsPredicateField_20213_20214 f_5@@55))) (not (= (getPredWandId_20192_20214 f_5@@55) 1))) (= (select (|PolymorphicMapType_35818_20192_20757#PolymorphicMapType_35818| QPMask@0) o_4@@55 f_5@@55) (select (|PolymorphicMapType_35818_20192_20757#PolymorphicMapType_35818| QPMask@1) o_4@@55 f_5@@55)))
+ :qid |stdinbpl.835:31|
+ :skolemid |141|
+ :pattern ( (select (|PolymorphicMapType_35818_20192_20757#PolymorphicMapType_35818| QPMask@0) o_4@@55 f_5@@55))
+ :pattern ( (select (|PolymorphicMapType_35818_20192_20757#PolymorphicMapType_35818| QPMask@1) o_4@@55 f_5@@55))
+))) (forall ((o_4@@56 T@Ref) (f_5@@56 T@Field_43157_20355) ) (!  (=> (or (or (not (= o_4@@56 null)) (not (IsPredicateField_20192_20355 f_5@@56))) (not (= (getPredWandId_20192_20355 f_5@@56) 1))) (= (select (|PolymorphicMapType_35818_20192_20355#PolymorphicMapType_35818| QPMask@0) o_4@@56 f_5@@56) (select (|PolymorphicMapType_35818_20192_20355#PolymorphicMapType_35818| QPMask@1) o_4@@56 f_5@@56)))
+ :qid |stdinbpl.835:31|
+ :skolemid |141|
+ :pattern ( (select (|PolymorphicMapType_35818_20192_20355#PolymorphicMapType_35818| QPMask@0) o_4@@56 f_5@@56))
+ :pattern ( (select (|PolymorphicMapType_35818_20192_20355#PolymorphicMapType_35818| QPMask@1) o_4@@56 f_5@@56))
+))) (forall ((o_4@@57 T@Ref) (f_5@@57 T@Field_43157_53) ) (!  (=> (or (or (not (= o_4@@57 null)) (not (IsPredicateField_20192_53 f_5@@57))) (not (= (getPredWandId_20192_53 f_5@@57) 1))) (= (select (|PolymorphicMapType_35818_20192_53#PolymorphicMapType_35818| QPMask@0) o_4@@57 f_5@@57) (select (|PolymorphicMapType_35818_20192_53#PolymorphicMapType_35818| QPMask@1) o_4@@57 f_5@@57)))
+ :qid |stdinbpl.835:31|
+ :skolemid |141|
+ :pattern ( (select (|PolymorphicMapType_35818_20192_53#PolymorphicMapType_35818| QPMask@0) o_4@@57 f_5@@57))
+ :pattern ( (select (|PolymorphicMapType_35818_20192_53#PolymorphicMapType_35818| QPMask@1) o_4@@57 f_5@@57))
+))) (forall ((o_4@@58 T@Ref) (f_5@@58 T@Field_43188_43193) ) (!  (=> (or (or (not (= o_4@@58 null)) (not (IsPredicateField_20192_185391 f_5@@58))) (not (= (getPredWandId_20192_367192 f_5@@58) 1))) (= (select (|PolymorphicMapType_35818_20192_173483#PolymorphicMapType_35818| QPMask@0) o_4@@58 f_5@@58) (select (|PolymorphicMapType_35818_20192_173483#PolymorphicMapType_35818| QPMask@1) o_4@@58 f_5@@58)))
+ :qid |stdinbpl.835:31|
+ :skolemid |141|
+ :pattern ( (select (|PolymorphicMapType_35818_20192_173483#PolymorphicMapType_35818| QPMask@0) o_4@@58 f_5@@58))
+ :pattern ( (select (|PolymorphicMapType_35818_20192_173483#PolymorphicMapType_35818| QPMask@1) o_4@@58 f_5@@58))
+))) (forall ((o_4@@59 T@Ref) (f_5@@59 T@Field_43983_4612) ) (!  (=> (or (or (not (= o_4@@59 null)) (not (IsPredicateField_20286_4612 f_5@@59))) (not (= (getPredWandId_20286_4612 f_5@@59) 1))) (= (select (|PolymorphicMapType_35818_20286_4612#PolymorphicMapType_35818| QPMask@0) o_4@@59 f_5@@59) (select (|PolymorphicMapType_35818_20286_4612#PolymorphicMapType_35818| QPMask@1) o_4@@59 f_5@@59)))
+ :qid |stdinbpl.835:31|
+ :skolemid |141|
+ :pattern ( (select (|PolymorphicMapType_35818_20286_4612#PolymorphicMapType_35818| QPMask@0) o_4@@59 f_5@@59))
+ :pattern ( (select (|PolymorphicMapType_35818_20286_4612#PolymorphicMapType_35818| QPMask@1) o_4@@59 f_5@@59))
+))) (forall ((o_4@@60 T@Ref) (f_5@@60 T@Field_44016_44017) ) (!  (=> (or (or (not (= o_4@@60 null)) (not (IsPredicateField_20303_20304 f_5@@60))) (not (= (getPredWandId_20286_20214 f_5@@60) 1))) (= (select (|PolymorphicMapType_35818_20286_20757#PolymorphicMapType_35818| QPMask@0) o_4@@60 f_5@@60) (select (|PolymorphicMapType_35818_20286_20757#PolymorphicMapType_35818| QPMask@1) o_4@@60 f_5@@60)))
+ :qid |stdinbpl.835:31|
+ :skolemid |141|
+ :pattern ( (select (|PolymorphicMapType_35818_20286_20757#PolymorphicMapType_35818| QPMask@0) o_4@@60 f_5@@60))
+ :pattern ( (select (|PolymorphicMapType_35818_20286_20757#PolymorphicMapType_35818| QPMask@1) o_4@@60 f_5@@60))
+))) (forall ((o_4@@61 T@Ref) (f_5@@61 T@Field_43983_20355) ) (!  (=> (or (or (not (= o_4@@61 null)) (not (IsPredicateField_20286_20355 f_5@@61))) (not (= (getPredWandId_20286_20355 f_5@@61) 1))) (= (select (|PolymorphicMapType_35818_20286_20355#PolymorphicMapType_35818| QPMask@0) o_4@@61 f_5@@61) (select (|PolymorphicMapType_35818_20286_20355#PolymorphicMapType_35818| QPMask@1) o_4@@61 f_5@@61)))
+ :qid |stdinbpl.835:31|
+ :skolemid |141|
+ :pattern ( (select (|PolymorphicMapType_35818_20286_20355#PolymorphicMapType_35818| QPMask@0) o_4@@61 f_5@@61))
+ :pattern ( (select (|PolymorphicMapType_35818_20286_20355#PolymorphicMapType_35818| QPMask@1) o_4@@61 f_5@@61))
+))) (forall ((o_4@@62 T@Ref) (f_5@@62 T@Field_43983_53) ) (!  (=> (or (or (not (= o_4@@62 null)) (not (IsPredicateField_20286_53 f_5@@62))) (not (= (getPredWandId_20286_53 f_5@@62) 1))) (= (select (|PolymorphicMapType_35818_20286_53#PolymorphicMapType_35818| QPMask@0) o_4@@62 f_5@@62) (select (|PolymorphicMapType_35818_20286_53#PolymorphicMapType_35818| QPMask@1) o_4@@62 f_5@@62)))
+ :qid |stdinbpl.835:31|
+ :skolemid |141|
+ :pattern ( (select (|PolymorphicMapType_35818_20286_53#PolymorphicMapType_35818| QPMask@0) o_4@@62 f_5@@62))
+ :pattern ( (select (|PolymorphicMapType_35818_20286_53#PolymorphicMapType_35818| QPMask@1) o_4@@62 f_5@@62))
+))) (forall ((o_4@@63 T@Ref) (f_5@@63 T@Field_43998_44003) ) (!  (=> (or (or (not (= o_4@@63 null)) (not (IsPredicateField_20286_186208 f_5@@63))) (not (= (getPredWandId_20286_368001 f_5@@63) 1))) (= (select (|PolymorphicMapType_35818_20286_173897#PolymorphicMapType_35818| QPMask@0) o_4@@63 f_5@@63) (select (|PolymorphicMapType_35818_20286_173897#PolymorphicMapType_35818| QPMask@1) o_4@@63 f_5@@63)))
+ :qid |stdinbpl.835:31|
+ :skolemid |141|
+ :pattern ( (select (|PolymorphicMapType_35818_20286_173897#PolymorphicMapType_35818| QPMask@0) o_4@@63 f_5@@63))
+ :pattern ( (select (|PolymorphicMapType_35818_20286_173897#PolymorphicMapType_35818| QPMask@1) o_4@@63 f_5@@63))
+))) (forall ((o_4@@64 T@Ref) (f_5@@64 T@Field_20354_4202) ) (!  (=> (or (or (not (= o_4@@64 null)) (not (IsPredicateField_20354_4202 f_5@@64))) (not (= (getPredWandId_20354_4202 f_5@@64) 1))) (= (select (|PolymorphicMapType_35818_20354_4202#PolymorphicMapType_35818| QPMask@0) o_4@@64 f_5@@64) (select (|PolymorphicMapType_35818_20354_4202#PolymorphicMapType_35818| QPMask@1) o_4@@64 f_5@@64)))
+ :qid |stdinbpl.835:31|
+ :skolemid |141|
+ :pattern ( (select (|PolymorphicMapType_35818_20354_4202#PolymorphicMapType_35818| QPMask@0) o_4@@64 f_5@@64))
+ :pattern ( (select (|PolymorphicMapType_35818_20354_4202#PolymorphicMapType_35818| QPMask@1) o_4@@64 f_5@@64))
+))) (forall ((o_4@@65 T@Ref) (f_5@@65 T@Field_20354_20576) ) (!  (=> (or (or (not (= o_4@@65 null)) (not (IsPredicateField_20354_127891 f_5@@65))) (not (= (getPredWandId_20354_20214 f_5@@65) 1))) (= (select (|PolymorphicMapType_35818_20354_20757#PolymorphicMapType_35818| QPMask@0) o_4@@65 f_5@@65) (select (|PolymorphicMapType_35818_20354_20757#PolymorphicMapType_35818| QPMask@1) o_4@@65 f_5@@65)))
+ :qid |stdinbpl.835:31|
+ :skolemid |141|
+ :pattern ( (select (|PolymorphicMapType_35818_20354_20757#PolymorphicMapType_35818| QPMask@0) o_4@@65 f_5@@65))
+ :pattern ( (select (|PolymorphicMapType_35818_20354_20757#PolymorphicMapType_35818| QPMask@1) o_4@@65 f_5@@65))
+))) (forall ((o_4@@66 T@Ref) (f_5@@66 T@Field_35870_35871) ) (!  (=> (or (or (not (= o_4@@66 null)) (not (IsPredicateField_20354_20355 f_5@@66))) (not (= (getPredWandId_20354_20355 f_5@@66) 1))) (= (select (|PolymorphicMapType_35818_20354_20355#PolymorphicMapType_35818| QPMask@0) o_4@@66 f_5@@66) (select (|PolymorphicMapType_35818_20354_20355#PolymorphicMapType_35818| QPMask@1) o_4@@66 f_5@@66)))
+ :qid |stdinbpl.835:31|
+ :skolemid |141|
+ :pattern ( (select (|PolymorphicMapType_35818_20354_20355#PolymorphicMapType_35818| QPMask@0) o_4@@66 f_5@@66))
+ :pattern ( (select (|PolymorphicMapType_35818_20354_20355#PolymorphicMapType_35818| QPMask@1) o_4@@66 f_5@@66))
+))) (forall ((o_4@@67 T@Ref) (f_5@@67 T@Field_35857_53) ) (!  (=> (or (or (not (= o_4@@67 null)) (not (IsPredicateField_20354_53 f_5@@67))) (not (= (getPredWandId_20354_53 f_5@@67) 1))) (= (select (|PolymorphicMapType_35818_20354_53#PolymorphicMapType_35818| QPMask@0) o_4@@67 f_5@@67) (select (|PolymorphicMapType_35818_20354_53#PolymorphicMapType_35818| QPMask@1) o_4@@67 f_5@@67)))
+ :qid |stdinbpl.835:31|
+ :skolemid |141|
+ :pattern ( (select (|PolymorphicMapType_35818_20354_53#PolymorphicMapType_35818| QPMask@0) o_4@@67 f_5@@67))
+ :pattern ( (select (|PolymorphicMapType_35818_20354_53#PolymorphicMapType_35818| QPMask@1) o_4@@67 f_5@@67))
+))) (forall ((o_4@@68 T@Ref) (f_5@@68 T@Field_20354_43193) ) (!  (=> (or (or (not (= o_4@@68 null)) (not (IsPredicateField_20354_181250 f_5@@68))) (not (= (getPredWandId_20354_368817 f_5@@68) 1))) (= (select (|PolymorphicMapType_35818_20354_171425#PolymorphicMapType_35818| QPMask@0) o_4@@68 f_5@@68) (select (|PolymorphicMapType_35818_20354_171425#PolymorphicMapType_35818| QPMask@1) o_4@@68 f_5@@68)))
+ :qid |stdinbpl.835:31|
+ :skolemid |141|
+ :pattern ( (select (|PolymorphicMapType_35818_20354_171425#PolymorphicMapType_35818| QPMask@0) o_4@@68 f_5@@68))
+ :pattern ( (select (|PolymorphicMapType_35818_20354_171425#PolymorphicMapType_35818| QPMask@1) o_4@@68 f_5@@68))
+))) (forall ((o_4@@69 T@Ref) (f_5@@69 T@Field_52884_4202) ) (!  (=> (or (or (not (= o_4@@69 null)) (not (IsPredicateField_20524_4202 f_5@@69))) (not (= (getPredWandId_20524_4202 f_5@@69) 1))) (= (select (|PolymorphicMapType_35818_20524_4202#PolymorphicMapType_35818| QPMask@0) o_4@@69 f_5@@69) (select (|PolymorphicMapType_35818_20524_4202#PolymorphicMapType_35818| QPMask@1) o_4@@69 f_5@@69)))
+ :qid |stdinbpl.835:31|
+ :skolemid |141|
+ :pattern ( (select (|PolymorphicMapType_35818_20524_4202#PolymorphicMapType_35818| QPMask@0) o_4@@69 f_5@@69))
+ :pattern ( (select (|PolymorphicMapType_35818_20524_4202#PolymorphicMapType_35818| QPMask@1) o_4@@69 f_5@@69))
+))) (forall ((o_4@@70 T@Ref) (f_5@@70 T@Field_52884_52885) ) (!  (=> (or (or (not (= o_4@@70 null)) (not (IsPredicateField_20524_20525 f_5@@70))) (not (= (getPredWandId_20524_20525 f_5@@70) 1))) (= (select (|PolymorphicMapType_35818_20524_20525#PolymorphicMapType_35818| QPMask@0) o_4@@70 f_5@@70) (select (|PolymorphicMapType_35818_20524_20525#PolymorphicMapType_35818| QPMask@1) o_4@@70 f_5@@70)))
+ :qid |stdinbpl.835:31|
+ :skolemid |141|
+ :pattern ( (select (|PolymorphicMapType_35818_20524_20525#PolymorphicMapType_35818| QPMask@0) o_4@@70 f_5@@70))
+ :pattern ( (select (|PolymorphicMapType_35818_20524_20525#PolymorphicMapType_35818| QPMask@1) o_4@@70 f_5@@70))
+))) (forall ((o_4@@71 T@Ref) (f_5@@71 T@Field_52884_20355) ) (!  (=> (or (or (not (= o_4@@71 null)) (not (IsPredicateField_20524_20355 f_5@@71))) (not (= (getPredWandId_20524_20355 f_5@@71) 1))) (= (select (|PolymorphicMapType_35818_20524_20355#PolymorphicMapType_35818| QPMask@0) o_4@@71 f_5@@71) (select (|PolymorphicMapType_35818_20524_20355#PolymorphicMapType_35818| QPMask@1) o_4@@71 f_5@@71)))
+ :qid |stdinbpl.835:31|
+ :skolemid |141|
+ :pattern ( (select (|PolymorphicMapType_35818_20524_20355#PolymorphicMapType_35818| QPMask@0) o_4@@71 f_5@@71))
+ :pattern ( (select (|PolymorphicMapType_35818_20524_20355#PolymorphicMapType_35818| QPMask@1) o_4@@71 f_5@@71))
+))) (forall ((o_4@@72 T@Ref) (f_5@@72 T@Field_52884_53) ) (!  (=> (or (or (not (= o_4@@72 null)) (not (IsPredicateField_20524_53 f_5@@72))) (not (= (getPredWandId_20524_53 f_5@@72) 1))) (= (select (|PolymorphicMapType_35818_20524_53#PolymorphicMapType_35818| QPMask@0) o_4@@72 f_5@@72) (select (|PolymorphicMapType_35818_20524_53#PolymorphicMapType_35818| QPMask@1) o_4@@72 f_5@@72)))
+ :qid |stdinbpl.835:31|
+ :skolemid |141|
+ :pattern ( (select (|PolymorphicMapType_35818_20524_53#PolymorphicMapType_35818| QPMask@0) o_4@@72 f_5@@72))
+ :pattern ( (select (|PolymorphicMapType_35818_20524_53#PolymorphicMapType_35818| QPMask@1) o_4@@72 f_5@@72))
+))) (forall ((o_4@@73 T@Ref) (f_5@@73 T@Field_54199_54204) ) (!  (=> (or (or (not (= o_4@@73 null)) (not (IsPredicateField_20524_182081 f_5@@73))) (not (= (getPredWandId_20524_369626 f_5@@73) 1))) (= (select (|PolymorphicMapType_35818_20524_171836#PolymorphicMapType_35818| QPMask@0) o_4@@73 f_5@@73) (select (|PolymorphicMapType_35818_20524_171836#PolymorphicMapType_35818| QPMask@1) o_4@@73 f_5@@73)))
+ :qid |stdinbpl.835:31|
+ :skolemid |141|
+ :pattern ( (select (|PolymorphicMapType_35818_20524_171836#PolymorphicMapType_35818| QPMask@0) o_4@@73 f_5@@73))
+ :pattern ( (select (|PolymorphicMapType_35818_20524_171836#PolymorphicMapType_35818| QPMask@1) o_4@@73 f_5@@73))
+))) (forall ((o_4@@74 T@Ref) (f_5@@74 T@Field_56169_4202) ) (!  (=> (or (or (not (= o_4@@74 null)) (not (IsPredicateField_20549_4202 f_5@@74))) (not (= (getPredWandId_20549_4202 f_5@@74) 1))) (= (select (|PolymorphicMapType_35818_20549_4202#PolymorphicMapType_35818| QPMask@0) o_4@@74 f_5@@74) (select (|PolymorphicMapType_35818_20549_4202#PolymorphicMapType_35818| QPMask@1) o_4@@74 f_5@@74)))
+ :qid |stdinbpl.835:31|
+ :skolemid |141|
+ :pattern ( (select (|PolymorphicMapType_35818_20549_4202#PolymorphicMapType_35818| QPMask@0) o_4@@74 f_5@@74))
+ :pattern ( (select (|PolymorphicMapType_35818_20549_4202#PolymorphicMapType_35818| QPMask@1) o_4@@74 f_5@@74))
+))) (forall ((o_4@@75 T@Ref) (f_5@@75 T@Field_56169_56170) ) (!  (=> (or (or (not (= o_4@@75 null)) (not (IsPredicateField_20549_20550 f_5@@75))) (not (= (getPredWandId_20549_20550 f_5@@75) 1))) (= (select (|PolymorphicMapType_35818_20549_20550#PolymorphicMapType_35818| QPMask@0) o_4@@75 f_5@@75) (select (|PolymorphicMapType_35818_20549_20550#PolymorphicMapType_35818| QPMask@1) o_4@@75 f_5@@75)))
+ :qid |stdinbpl.835:31|
+ :skolemid |141|
+ :pattern ( (select (|PolymorphicMapType_35818_20549_20550#PolymorphicMapType_35818| QPMask@0) o_4@@75 f_5@@75))
+ :pattern ( (select (|PolymorphicMapType_35818_20549_20550#PolymorphicMapType_35818| QPMask@1) o_4@@75 f_5@@75))
+))) (forall ((o_4@@76 T@Ref) (f_5@@76 T@Field_56169_20355) ) (!  (=> (or (or (not (= o_4@@76 null)) (not (IsPredicateField_20549_20355 f_5@@76))) (not (= (getPredWandId_20549_20355 f_5@@76) 1))) (= (select (|PolymorphicMapType_35818_20549_20355#PolymorphicMapType_35818| QPMask@0) o_4@@76 f_5@@76) (select (|PolymorphicMapType_35818_20549_20355#PolymorphicMapType_35818| QPMask@1) o_4@@76 f_5@@76)))
+ :qid |stdinbpl.835:31|
+ :skolemid |141|
+ :pattern ( (select (|PolymorphicMapType_35818_20549_20355#PolymorphicMapType_35818| QPMask@0) o_4@@76 f_5@@76))
+ :pattern ( (select (|PolymorphicMapType_35818_20549_20355#PolymorphicMapType_35818| QPMask@1) o_4@@76 f_5@@76))
+))) (forall ((o_4@@77 T@Ref) (f_5@@77 T@Field_56169_53) ) (!  (=> (or (or (not (= o_4@@77 null)) (not (IsPredicateField_20549_53 f_5@@77))) (not (= (getPredWandId_20549_53 f_5@@77) 1))) (= (select (|PolymorphicMapType_35818_20549_53#PolymorphicMapType_35818| QPMask@0) o_4@@77 f_5@@77) (select (|PolymorphicMapType_35818_20549_53#PolymorphicMapType_35818| QPMask@1) o_4@@77 f_5@@77)))
+ :qid |stdinbpl.835:31|
+ :skolemid |141|
+ :pattern ( (select (|PolymorphicMapType_35818_20549_53#PolymorphicMapType_35818| QPMask@0) o_4@@77 f_5@@77))
+ :pattern ( (select (|PolymorphicMapType_35818_20549_53#PolymorphicMapType_35818| QPMask@1) o_4@@77 f_5@@77))
+))) (forall ((o_4@@78 T@Ref) (f_5@@78 T@Field_56424_56429) ) (!  (=> (or (or (not (= o_4@@78 null)) (not (IsPredicateField_20549_182912 f_5@@78))) (not (= (getPredWandId_20549_370435 f_5@@78) 1))) (= (select (|PolymorphicMapType_35818_20549_172247#PolymorphicMapType_35818| QPMask@0) o_4@@78 f_5@@78) (select (|PolymorphicMapType_35818_20549_172247#PolymorphicMapType_35818| QPMask@1) o_4@@78 f_5@@78)))
+ :qid |stdinbpl.835:31|
+ :skolemid |141|
+ :pattern ( (select (|PolymorphicMapType_35818_20549_172247#PolymorphicMapType_35818| QPMask@0) o_4@@78 f_5@@78))
+ :pattern ( (select (|PolymorphicMapType_35818_20549_172247#PolymorphicMapType_35818| QPMask@1) o_4@@78 f_5@@78))
+))) (forall ((o_4@@79 T@Ref) (f_5@@79 T@Field_20575_4202) ) (!  (=> (or (or (not (= o_4@@79 null)) (not (IsPredicateField_20575_4202 f_5@@79))) (not (= (getPredWandId_20575_4202 f_5@@79) 1))) (= (select (|PolymorphicMapType_35818_20575_4202#PolymorphicMapType_35818| QPMask@0) o_4@@79 f_5@@79) (select (|PolymorphicMapType_35818_20575_4202#PolymorphicMapType_35818| QPMask@1) o_4@@79 f_5@@79)))
+ :qid |stdinbpl.835:31|
+ :skolemid |141|
+ :pattern ( (select (|PolymorphicMapType_35818_20575_4202#PolymorphicMapType_35818| QPMask@0) o_4@@79 f_5@@79))
+ :pattern ( (select (|PolymorphicMapType_35818_20575_4202#PolymorphicMapType_35818| QPMask@1) o_4@@79 f_5@@79))
+))) (forall ((o_4@@80 T@Ref) (f_5@@80 T@Field_56951_56952) ) (!  (=> (or (or (not (= o_4@@80 null)) (not (IsPredicateField_20575_20576 f_5@@80))) (not (= (getPredWandId_20575_20576 f_5@@80) 1))) (= (select (|PolymorphicMapType_35818_20575_20576#PolymorphicMapType_35818| QPMask@0) o_4@@80 f_5@@80) (select (|PolymorphicMapType_35818_20575_20576#PolymorphicMapType_35818| QPMask@1) o_4@@80 f_5@@80)))
+ :qid |stdinbpl.835:31|
+ :skolemid |141|
+ :pattern ( (select (|PolymorphicMapType_35818_20575_20576#PolymorphicMapType_35818| QPMask@0) o_4@@80 f_5@@80))
+ :pattern ( (select (|PolymorphicMapType_35818_20575_20576#PolymorphicMapType_35818| QPMask@1) o_4@@80 f_5@@80))
+))) (forall ((o_4@@81 T@Ref) (f_5@@81 T@Field_20575_20355) ) (!  (=> (or (or (not (= o_4@@81 null)) (not (IsPredicateField_20575_20355 f_5@@81))) (not (= (getPredWandId_20575_20355 f_5@@81) 1))) (= (select (|PolymorphicMapType_35818_20575_20355#PolymorphicMapType_35818| QPMask@0) o_4@@81 f_5@@81) (select (|PolymorphicMapType_35818_20575_20355#PolymorphicMapType_35818| QPMask@1) o_4@@81 f_5@@81)))
+ :qid |stdinbpl.835:31|
+ :skolemid |141|
+ :pattern ( (select (|PolymorphicMapType_35818_20575_20355#PolymorphicMapType_35818| QPMask@0) o_4@@81 f_5@@81))
+ :pattern ( (select (|PolymorphicMapType_35818_20575_20355#PolymorphicMapType_35818| QPMask@1) o_4@@81 f_5@@81))
+))) (forall ((o_4@@82 T@Ref) (f_5@@82 T@Field_20575_53) ) (!  (=> (or (or (not (= o_4@@82 null)) (not (IsPredicateField_20575_53 f_5@@82))) (not (= (getPredWandId_20575_53 f_5@@82) 1))) (= (select (|PolymorphicMapType_35818_20575_53#PolymorphicMapType_35818| QPMask@0) o_4@@82 f_5@@82) (select (|PolymorphicMapType_35818_20575_53#PolymorphicMapType_35818| QPMask@1) o_4@@82 f_5@@82)))
+ :qid |stdinbpl.835:31|
+ :skolemid |141|
+ :pattern ( (select (|PolymorphicMapType_35818_20575_53#PolymorphicMapType_35818| QPMask@0) o_4@@82 f_5@@82))
+ :pattern ( (select (|PolymorphicMapType_35818_20575_53#PolymorphicMapType_35818| QPMask@1) o_4@@82 f_5@@82))
+))) (forall ((o_4@@83 T@Ref) (f_5@@83 T@Field_56974_56979) ) (!  (=> (or (or (not (= o_4@@83 null)) (not (IsPredicateField_20575_184574 f_5@@83))) (not (= (getPredWandId_20575_371244 f_5@@83) 1))) (= (select (|PolymorphicMapType_35818_20575_173069#PolymorphicMapType_35818| QPMask@0) o_4@@83 f_5@@83) (select (|PolymorphicMapType_35818_20575_173069#PolymorphicMapType_35818| QPMask@1) o_4@@83 f_5@@83)))
+ :qid |stdinbpl.835:31|
+ :skolemid |141|
+ :pattern ( (select (|PolymorphicMapType_35818_20575_173069#PolymorphicMapType_35818| QPMask@0) o_4@@83 f_5@@83))
+ :pattern ( (select (|PolymorphicMapType_35818_20575_173069#PolymorphicMapType_35818| QPMask@1) o_4@@83 f_5@@83))
+))) (forall ((o_4@@84 T@Ref) (f_5@@84 T@Field_58189_4202) ) (!  (=> (or (or (not (= o_4@@84 null)) (not (IsPredicateField_20648_4202 f_5@@84))) (not (= (getPredWandId_20648_4202 f_5@@84) 1))) (= (select (|PolymorphicMapType_35818_20648_4202#PolymorphicMapType_35818| QPMask@0) o_4@@84 f_5@@84) (select (|PolymorphicMapType_35818_20648_4202#PolymorphicMapType_35818| QPMask@1) o_4@@84 f_5@@84)))
+ :qid |stdinbpl.835:31|
+ :skolemid |141|
+ :pattern ( (select (|PolymorphicMapType_35818_20648_4202#PolymorphicMapType_35818| QPMask@0) o_4@@84 f_5@@84))
+ :pattern ( (select (|PolymorphicMapType_35818_20648_4202#PolymorphicMapType_35818| QPMask@1) o_4@@84 f_5@@84))
+))) (forall ((o_4@@85 T@Ref) (f_5@@85 T@Field_58189_58190) ) (!  (=> (or (or (not (= o_4@@85 null)) (not (IsPredicateField_20648_20649 f_5@@85))) (not (= (getPredWandId_20648_20649 f_5@@85) 1))) (= (select (|PolymorphicMapType_35818_20648_20649#PolymorphicMapType_35818| QPMask@0) o_4@@85 f_5@@85) (select (|PolymorphicMapType_35818_20648_20649#PolymorphicMapType_35818| QPMask@1) o_4@@85 f_5@@85)))
+ :qid |stdinbpl.835:31|
+ :skolemid |141|
+ :pattern ( (select (|PolymorphicMapType_35818_20648_20649#PolymorphicMapType_35818| QPMask@0) o_4@@85 f_5@@85))
+ :pattern ( (select (|PolymorphicMapType_35818_20648_20649#PolymorphicMapType_35818| QPMask@1) o_4@@85 f_5@@85))
+))) (forall ((o_4@@86 T@Ref) (f_5@@86 T@Field_58189_20355) ) (!  (=> (or (or (not (= o_4@@86 null)) (not (IsPredicateField_20648_20355 f_5@@86))) (not (= (getPredWandId_20648_20355 f_5@@86) 1))) (= (select (|PolymorphicMapType_35818_20648_20355#PolymorphicMapType_35818| QPMask@0) o_4@@86 f_5@@86) (select (|PolymorphicMapType_35818_20648_20355#PolymorphicMapType_35818| QPMask@1) o_4@@86 f_5@@86)))
+ :qid |stdinbpl.835:31|
+ :skolemid |141|
+ :pattern ( (select (|PolymorphicMapType_35818_20648_20355#PolymorphicMapType_35818| QPMask@0) o_4@@86 f_5@@86))
+ :pattern ( (select (|PolymorphicMapType_35818_20648_20355#PolymorphicMapType_35818| QPMask@1) o_4@@86 f_5@@86))
+))) (forall ((o_4@@87 T@Ref) (f_5@@87 T@Field_58189_53) ) (!  (=> (or (or (not (= o_4@@87 null)) (not (IsPredicateField_20648_53 f_5@@87))) (not (= (getPredWandId_20648_53 f_5@@87) 1))) (= (select (|PolymorphicMapType_35818_20648_53#PolymorphicMapType_35818| QPMask@0) o_4@@87 f_5@@87) (select (|PolymorphicMapType_35818_20648_53#PolymorphicMapType_35818| QPMask@1) o_4@@87 f_5@@87)))
+ :qid |stdinbpl.835:31|
+ :skolemid |141|
+ :pattern ( (select (|PolymorphicMapType_35818_20648_53#PolymorphicMapType_35818| QPMask@0) o_4@@87 f_5@@87))
+ :pattern ( (select (|PolymorphicMapType_35818_20648_53#PolymorphicMapType_35818| QPMask@1) o_4@@87 f_5@@87))
+))) (forall ((o_4@@88 T@Ref) (f_5@@88 T@Field_58490_58495) ) (!  (=> (or (or (not (= o_4@@88 null)) (not (IsPredicateField_20648_183743 f_5@@88))) (not (= (getPredWandId_20648_372053 f_5@@88) 1))) (= (select (|PolymorphicMapType_35818_20648_172658#PolymorphicMapType_35818| QPMask@0) o_4@@88 f_5@@88) (select (|PolymorphicMapType_35818_20648_172658#PolymorphicMapType_35818| QPMask@1) o_4@@88 f_5@@88)))
+ :qid |stdinbpl.835:31|
+ :skolemid |141|
+ :pattern ( (select (|PolymorphicMapType_35818_20648_172658#PolymorphicMapType_35818| QPMask@0) o_4@@88 f_5@@88))
+ :pattern ( (select (|PolymorphicMapType_35818_20648_172658#PolymorphicMapType_35818| QPMask@1) o_4@@88 f_5@@88))
+))) (forall ((o_4@@89 T@Ref) (f_5@@89 T@Field_48667_4202) ) (!  (=> (or (or (not (= o_4@@89 null)) (not (IsPredicateField_20706_4202 f_5@@89))) (not (= (getPredWandId_20706_4202 f_5@@89) 1))) (= (select (|PolymorphicMapType_35818_20706_4202#PolymorphicMapType_35818| QPMask@0) o_4@@89 f_5@@89) (select (|PolymorphicMapType_35818_20706_4202#PolymorphicMapType_35818| QPMask@1) o_4@@89 f_5@@89)))
+ :qid |stdinbpl.835:31|
+ :skolemid |141|
+ :pattern ( (select (|PolymorphicMapType_35818_20706_4202#PolymorphicMapType_35818| QPMask@0) o_4@@89 f_5@@89))
+ :pattern ( (select (|PolymorphicMapType_35818_20706_4202#PolymorphicMapType_35818| QPMask@1) o_4@@89 f_5@@89))
+))) (forall ((o_4@@90 T@Ref) (f_5@@90 T@Field_48667_48668) ) (!  (=> (or (or (not (= o_4@@90 null)) (not (IsPredicateField_20706_20707 f_5@@90))) (not (= (getPredWandId_20706_20707 f_5@@90) 1))) (= (select (|PolymorphicMapType_35818_20706_20707#PolymorphicMapType_35818| QPMask@0) o_4@@90 f_5@@90) (select (|PolymorphicMapType_35818_20706_20707#PolymorphicMapType_35818| QPMask@1) o_4@@90 f_5@@90)))
+ :qid |stdinbpl.835:31|
+ :skolemid |141|
+ :pattern ( (select (|PolymorphicMapType_35818_20706_20707#PolymorphicMapType_35818| QPMask@0) o_4@@90 f_5@@90))
+ :pattern ( (select (|PolymorphicMapType_35818_20706_20707#PolymorphicMapType_35818| QPMask@1) o_4@@90 f_5@@90))
+))) (forall ((o_4@@91 T@Ref) (f_5@@91 T@Field_48667_20355) ) (!  (=> (or (or (not (= o_4@@91 null)) (not (IsPredicateField_20706_20355 f_5@@91))) (not (= (getPredWandId_20706_20355 f_5@@91) 1))) (= (select (|PolymorphicMapType_35818_20706_20355#PolymorphicMapType_35818| QPMask@0) o_4@@91 f_5@@91) (select (|PolymorphicMapType_35818_20706_20355#PolymorphicMapType_35818| QPMask@1) o_4@@91 f_5@@91)))
+ :qid |stdinbpl.835:31|
+ :skolemid |141|
+ :pattern ( (select (|PolymorphicMapType_35818_20706_20355#PolymorphicMapType_35818| QPMask@0) o_4@@91 f_5@@91))
+ :pattern ( (select (|PolymorphicMapType_35818_20706_20355#PolymorphicMapType_35818| QPMask@1) o_4@@91 f_5@@91))
+))) (forall ((o_4@@92 T@Ref) (f_5@@92 T@Field_48667_53) ) (!  (=> (or (or (not (= o_4@@92 null)) (not (IsPredicateField_20706_53 f_5@@92))) (not (= (getPredWandId_20706_53 f_5@@92) 1))) (= (select (|PolymorphicMapType_35818_20706_53#PolymorphicMapType_35818| QPMask@0) o_4@@92 f_5@@92) (select (|PolymorphicMapType_35818_20706_53#PolymorphicMapType_35818| QPMask@1) o_4@@92 f_5@@92)))
+ :qid |stdinbpl.835:31|
+ :skolemid |141|
+ :pattern ( (select (|PolymorphicMapType_35818_20706_53#PolymorphicMapType_35818| QPMask@0) o_4@@92 f_5@@92))
+ :pattern ( (select (|PolymorphicMapType_35818_20706_53#PolymorphicMapType_35818| QPMask@1) o_4@@92 f_5@@92))
+))) (forall ((o_4@@93 T@Ref) (f_5@@93 T@Field_59245_59250) ) (!  (=> (or (or (not (= o_4@@93 null)) (not (IsPredicateField_20706_179602 f_5@@93))) (not (= (getPredWandId_20706_372862 f_5@@93) 1))) (= (select (|PolymorphicMapType_35818_20706_170603#PolymorphicMapType_35818| QPMask@0) o_4@@93 f_5@@93) (select (|PolymorphicMapType_35818_20706_170603#PolymorphicMapType_35818| QPMask@1) o_4@@93 f_5@@93)))
+ :qid |stdinbpl.835:31|
+ :skolemid |141|
+ :pattern ( (select (|PolymorphicMapType_35818_20706_170603#PolymorphicMapType_35818| QPMask@0) o_4@@93 f_5@@93))
+ :pattern ( (select (|PolymorphicMapType_35818_20706_170603#PolymorphicMapType_35818| QPMask@1) o_4@@93 f_5@@93))
+))) (forall ((o_4@@94 T@Ref) (f_5@@94 T@Field_20728_4202) ) (!  (=> (or (or (not (= o_4@@94 null)) (not (IsPredicateField_20728_4202 f_5@@94))) (not (= (getPredWandId_20728_4202 f_5@@94) 1))) (= (select (|PolymorphicMapType_35818_20728_4202#PolymorphicMapType_35818| QPMask@0) o_4@@94 f_5@@94) (select (|PolymorphicMapType_35818_20728_4202#PolymorphicMapType_35818| QPMask@1) o_4@@94 f_5@@94)))
+ :qid |stdinbpl.835:31|
+ :skolemid |141|
+ :pattern ( (select (|PolymorphicMapType_35818_20728_4202#PolymorphicMapType_35818| QPMask@0) o_4@@94 f_5@@94))
+ :pattern ( (select (|PolymorphicMapType_35818_20728_4202#PolymorphicMapType_35818| QPMask@1) o_4@@94 f_5@@94))
+))) (forall ((o_4@@95 T@Ref) (f_5@@95 T@Field_51131_51132) ) (!  (=> (or (or (not (= o_4@@95 null)) (not (IsPredicateField_20728_20729 f_5@@95))) (not (= (getPredWandId_20728_20729 f_5@@95) 1))) (= (select (|PolymorphicMapType_35818_20728_20729#PolymorphicMapType_35818| QPMask@0) o_4@@95 f_5@@95) (select (|PolymorphicMapType_35818_20728_20729#PolymorphicMapType_35818| QPMask@1) o_4@@95 f_5@@95)))
+ :qid |stdinbpl.835:31|
+ :skolemid |141|
+ :pattern ( (select (|PolymorphicMapType_35818_20728_20729#PolymorphicMapType_35818| QPMask@0) o_4@@95 f_5@@95))
+ :pattern ( (select (|PolymorphicMapType_35818_20728_20729#PolymorphicMapType_35818| QPMask@1) o_4@@95 f_5@@95))
+))) (forall ((o_4@@96 T@Ref) (f_5@@96 T@Field_20728_20355) ) (!  (=> (or (or (not (= o_4@@96 null)) (not (IsPredicateField_20728_20355 f_5@@96))) (not (= (getPredWandId_20728_20355 f_5@@96) 1))) (= (select (|PolymorphicMapType_35818_20728_20355#PolymorphicMapType_35818| QPMask@0) o_4@@96 f_5@@96) (select (|PolymorphicMapType_35818_20728_20355#PolymorphicMapType_35818| QPMask@1) o_4@@96 f_5@@96)))
+ :qid |stdinbpl.835:31|
+ :skolemid |141|
+ :pattern ( (select (|PolymorphicMapType_35818_20728_20355#PolymorphicMapType_35818| QPMask@0) o_4@@96 f_5@@96))
+ :pattern ( (select (|PolymorphicMapType_35818_20728_20355#PolymorphicMapType_35818| QPMask@1) o_4@@96 f_5@@96))
+))) (forall ((o_4@@97 T@Ref) (f_5@@97 T@Field_20728_53) ) (!  (=> (or (or (not (= o_4@@97 null)) (not (IsPredicateField_20728_53 f_5@@97))) (not (= (getPredWandId_20728_53 f_5@@97) 1))) (= (select (|PolymorphicMapType_35818_20728_53#PolymorphicMapType_35818| QPMask@0) o_4@@97 f_5@@97) (select (|PolymorphicMapType_35818_20728_53#PolymorphicMapType_35818| QPMask@1) o_4@@97 f_5@@97)))
+ :qid |stdinbpl.835:31|
+ :skolemid |141|
+ :pattern ( (select (|PolymorphicMapType_35818_20728_53#PolymorphicMapType_35818| QPMask@0) o_4@@97 f_5@@97))
+ :pattern ( (select (|PolymorphicMapType_35818_20728_53#PolymorphicMapType_35818| QPMask@1) o_4@@97 f_5@@97))
+))) (forall ((o_4@@98 T@Ref) (f_5@@98 T@Field_53810_53815) ) (!  (=> (or (or (not (= o_4@@98 null)) (not (IsPredicateField_20728_180433 f_5@@98))) (not (= (getPredWandId_20728_373671 f_5@@98) 1))) (= (select (|PolymorphicMapType_35818_20728_171014#PolymorphicMapType_35818| QPMask@0) o_4@@98 f_5@@98) (select (|PolymorphicMapType_35818_20728_171014#PolymorphicMapType_35818| QPMask@1) o_4@@98 f_5@@98)))
+ :qid |stdinbpl.835:31|
+ :skolemid |141|
+ :pattern ( (select (|PolymorphicMapType_35818_20728_171014#PolymorphicMapType_35818| QPMask@0) o_4@@98 f_5@@98))
+ :pattern ( (select (|PolymorphicMapType_35818_20728_171014#PolymorphicMapType_35818| QPMask@1) o_4@@98 f_5@@98))
+))) (forall ((o_4@@99 T@Ref) (f_5@@99 T@Field_20756_4202) ) (!  (=> (or (or (not (= o_4@@99 null)) (not (IsPredicateField_20756_4202 f_5@@99))) (not (= (getPredWandId_20756_4202 f_5@@99) 1))) (= (select (|PolymorphicMapType_35818_20756_4202#PolymorphicMapType_35818| QPMask@0) o_4@@99 f_5@@99) (select (|PolymorphicMapType_35818_20756_4202#PolymorphicMapType_35818| QPMask@1) o_4@@99 f_5@@99)))
+ :qid |stdinbpl.835:31|
+ :skolemid |141|
+ :pattern ( (select (|PolymorphicMapType_35818_20756_4202#PolymorphicMapType_35818| QPMask@0) o_4@@99 f_5@@99))
+ :pattern ( (select (|PolymorphicMapType_35818_20756_4202#PolymorphicMapType_35818| QPMask@1) o_4@@99 f_5@@99))
+))) (forall ((o_4@@100 T@Ref) (f_5@@100 T@Field_46129_46130) ) (!  (=> (or (or (not (= o_4@@100 null)) (not (IsPredicateField_20756_20757 f_5@@100))) (not (= (getPredWandId_20756_20757 f_5@@100) 1))) (= (select (|PolymorphicMapType_35818_20756_20757#PolymorphicMapType_35818| QPMask@0) o_4@@100 f_5@@100) (select (|PolymorphicMapType_35818_20756_20757#PolymorphicMapType_35818| QPMask@1) o_4@@100 f_5@@100)))
+ :qid |stdinbpl.835:31|
+ :skolemid |141|
+ :pattern ( (select (|PolymorphicMapType_35818_20756_20757#PolymorphicMapType_35818| QPMask@0) o_4@@100 f_5@@100))
+ :pattern ( (select (|PolymorphicMapType_35818_20756_20757#PolymorphicMapType_35818| QPMask@1) o_4@@100 f_5@@100))
+))) (forall ((o_4@@101 T@Ref) (f_5@@101 T@Field_20756_20355) ) (!  (=> (or (or (not (= o_4@@101 null)) (not (IsPredicateField_20756_20355 f_5@@101))) (not (= (getPredWandId_20756_20355 f_5@@101) 1))) (= (select (|PolymorphicMapType_35818_20756_20355#PolymorphicMapType_35818| QPMask@0) o_4@@101 f_5@@101) (select (|PolymorphicMapType_35818_20756_20355#PolymorphicMapType_35818| QPMask@1) o_4@@101 f_5@@101)))
+ :qid |stdinbpl.835:31|
+ :skolemid |141|
+ :pattern ( (select (|PolymorphicMapType_35818_20756_20355#PolymorphicMapType_35818| QPMask@0) o_4@@101 f_5@@101))
+ :pattern ( (select (|PolymorphicMapType_35818_20756_20355#PolymorphicMapType_35818| QPMask@1) o_4@@101 f_5@@101))
+))) (forall ((o_4@@102 T@Ref) (f_5@@102 T@Field_20756_53) ) (!  (=> (or (or (not (= o_4@@102 null)) (not (IsPredicateField_20756_53 f_5@@102))) (not (= (getPredWandId_20756_53 f_5@@102) 1))) (= (select (|PolymorphicMapType_35818_20756_53#PolymorphicMapType_35818| QPMask@0) o_4@@102 f_5@@102) (select (|PolymorphicMapType_35818_20756_53#PolymorphicMapType_35818| QPMask@1) o_4@@102 f_5@@102)))
+ :qid |stdinbpl.835:31|
+ :skolemid |141|
+ :pattern ( (select (|PolymorphicMapType_35818_20756_53#PolymorphicMapType_35818| QPMask@0) o_4@@102 f_5@@102))
+ :pattern ( (select (|PolymorphicMapType_35818_20756_53#PolymorphicMapType_35818| QPMask@1) o_4@@102 f_5@@102))
+))) (forall ((o_4@@103 T@Ref) (f_5@@103 T@Field_60906_60911) ) (!  (=> (or (or (not (= o_4@@103 null)) (not (IsPredicateField_20756_178771 f_5@@103))) (not (= (getPredWandId_20756_374480 f_5@@103) 1))) (= (select (|PolymorphicMapType_35818_20756_170192#PolymorphicMapType_35818| QPMask@0) o_4@@103 f_5@@103) (select (|PolymorphicMapType_35818_20756_170192#PolymorphicMapType_35818| QPMask@1) o_4@@103 f_5@@103)))
+ :qid |stdinbpl.835:31|
+ :skolemid |141|
+ :pattern ( (select (|PolymorphicMapType_35818_20756_170192#PolymorphicMapType_35818| QPMask@0) o_4@@103 f_5@@103))
+ :pattern ( (select (|PolymorphicMapType_35818_20756_170192#PolymorphicMapType_35818| QPMask@1) o_4@@103 f_5@@103))
+))) (forall ((o_4@@104 T@Ref) (f_5@@104 T@Field_20866_4202) ) (!  (=> (or (or (not (= o_4@@104 null)) (not (IsPredicateField_20866_4202 f_5@@104))) (not (= (getPredWandId_20866_4202 f_5@@104) 1))) (= (select (|PolymorphicMapType_35818_20866_4202#PolymorphicMapType_35818| QPMask@0) o_4@@104 f_5@@104) (select (|PolymorphicMapType_35818_20866_4202#PolymorphicMapType_35818| QPMask@1) o_4@@104 f_5@@104)))
+ :qid |stdinbpl.835:31|
+ :skolemid |141|
+ :pattern ( (select (|PolymorphicMapType_35818_20866_4202#PolymorphicMapType_35818| QPMask@0) o_4@@104 f_5@@104))
+ :pattern ( (select (|PolymorphicMapType_35818_20866_4202#PolymorphicMapType_35818| QPMask@1) o_4@@104 f_5@@104))
+))) (forall ((o_4@@105 T@Ref) (f_5@@105 T@Field_69392_69393) ) (!  (=> (or (or (not (= o_4@@105 null)) (not (IsPredicateField_20866_20867 f_5@@105))) (not (= (getPredWandId_20866_20867 f_5@@105) 1))) (= (select (|PolymorphicMapType_35818_20866_20867#PolymorphicMapType_35818| QPMask@0) o_4@@105 f_5@@105) (select (|PolymorphicMapType_35818_20866_20867#PolymorphicMapType_35818| QPMask@1) o_4@@105 f_5@@105)))
+ :qid |stdinbpl.835:31|
+ :skolemid |141|
+ :pattern ( (select (|PolymorphicMapType_35818_20866_20867#PolymorphicMapType_35818| QPMask@0) o_4@@105 f_5@@105))
+ :pattern ( (select (|PolymorphicMapType_35818_20866_20867#PolymorphicMapType_35818| QPMask@1) o_4@@105 f_5@@105))
+))) (forall ((o_4@@106 T@Ref) (f_5@@106 T@Field_20866_20355) ) (!  (=> (or (or (not (= o_4@@106 null)) (not (IsPredicateField_20866_20355 f_5@@106))) (not (= (getPredWandId_20866_20355 f_5@@106) 1))) (= (select (|PolymorphicMapType_35818_20866_20355#PolymorphicMapType_35818| QPMask@0) o_4@@106 f_5@@106) (select (|PolymorphicMapType_35818_20866_20355#PolymorphicMapType_35818| QPMask@1) o_4@@106 f_5@@106)))
+ :qid |stdinbpl.835:31|
+ :skolemid |141|
+ :pattern ( (select (|PolymorphicMapType_35818_20866_20355#PolymorphicMapType_35818| QPMask@0) o_4@@106 f_5@@106))
+ :pattern ( (select (|PolymorphicMapType_35818_20866_20355#PolymorphicMapType_35818| QPMask@1) o_4@@106 f_5@@106))
+))) (forall ((o_4@@107 T@Ref) (f_5@@107 T@Field_20866_53) ) (!  (=> (or (or (not (= o_4@@107 null)) (not (IsPredicateField_20866_53 f_5@@107))) (not (= (getPredWandId_20866_53 f_5@@107) 1))) (= (select (|PolymorphicMapType_35818_20866_53#PolymorphicMapType_35818| QPMask@0) o_4@@107 f_5@@107) (select (|PolymorphicMapType_35818_20866_53#PolymorphicMapType_35818| QPMask@1) o_4@@107 f_5@@107)))
+ :qid |stdinbpl.835:31|
+ :skolemid |141|
+ :pattern ( (select (|PolymorphicMapType_35818_20866_53#PolymorphicMapType_35818| QPMask@0) o_4@@107 f_5@@107))
+ :pattern ( (select (|PolymorphicMapType_35818_20866_53#PolymorphicMapType_35818| QPMask@1) o_4@@107 f_5@@107))
+))) (forall ((o_4@@108 T@Ref) (f_5@@108 T@Field_69405_69410) ) (!  (=> (or (or (not (= o_4@@108 null)) (not (IsPredicateField_20866_187039 f_5@@108))) (not (= (getPredWandId_20866_375289 f_5@@108) 1))) (= (select (|PolymorphicMapType_35818_20866_174308#PolymorphicMapType_35818| QPMask@0) o_4@@108 f_5@@108) (select (|PolymorphicMapType_35818_20866_174308#PolymorphicMapType_35818| QPMask@1) o_4@@108 f_5@@108)))
+ :qid |stdinbpl.835:31|
+ :skolemid |141|
+ :pattern ( (select (|PolymorphicMapType_35818_20866_174308#PolymorphicMapType_35818| QPMask@0) o_4@@108 f_5@@108))
+ :pattern ( (select (|PolymorphicMapType_35818_20866_174308#PolymorphicMapType_35818| QPMask@1) o_4@@108 f_5@@108))
+))) (forall ((x_3_1_1@@1 T@Ref) ) (!  (=> (not (and (and (select (|Map#Domain_20446_645| (select (|Map#Elements_5453_45984| lft_1@@27) 1)) (invRecv2 x_3_1_1@@1)) (< NoPerm (select (|Map#Elements_20483_645| (select (|Map#Elements_5453_45984| lft_1@@27) 1)) (invRecv2 x_3_1_1@@1)))) (qpRange2 x_3_1_1@@1))) (= (select (|PolymorphicMapType_35818_20728_20729#PolymorphicMapType_35818| QPMask@1) null (lft_List x_3_1_1@@1)) (select (|PolymorphicMapType_35818_20728_20729#PolymorphicMapType_35818| QPMask@0) null (lft_List x_3_1_1@@1))))
+ :qid |stdinbpl.839:24|
+ :skolemid |142|
+ :pattern ( (select (|PolymorphicMapType_35818_20728_20729#PolymorphicMapType_35818| QPMask@1) null (lft_List x_3_1_1@@1)))
+))) (and (and (state Heap@@173 QPMask@1) (state Heap@@173 QPMask@1)) (and (|lft_List#trigger_20728| Heap@@173 (lft_List x@@101)) (= (select (|PolymorphicMapType_35797_20728_20729#PolymorphicMapType_35797| Heap@@173) null (lft_List x@@101)) (CombineFrames (FrameFragment_20355 (select (|PolymorphicMapType_35797_19827_19828#PolymorphicMapType_35797| Heap@@173) x@@101 ref_2)) (select (|PolymorphicMapType_35797_20524_20525#PolymorphicMapType_35797| Heap@@173) null (List (select (|PolymorphicMapType_35797_19827_19828#PolymorphicMapType_35797| Heap@@173) x@@101 ref_2)))))))) (and (=> (= (ControlFlow 0 4) (- 0 5)) (=> (< NoPerm FullPerm) (< NoPerm (select (|PolymorphicMapType_35818_20728_20729#PolymorphicMapType_35818| QPMask@1) null (lft_List x@@101))))) (=> (=> (< NoPerm FullPerm) (< NoPerm (select (|PolymorphicMapType_35818_20728_20729#PolymorphicMapType_35818| QPMask@1) null (lft_List x@@101)))) (=> (and (> wildcard@0 NoPerm) (not (= x@@101 null))) (=> (and (and (and (= Unfolding1Mask@0 (PolymorphicMapType_35818 (|PolymorphicMapType_35818_20756_20757#PolymorphicMapType_35818| QPMask@1) (|PolymorphicMapType_35818_20706_20707#PolymorphicMapType_35818| QPMask@1) (|PolymorphicMapType_35818_20728_20729#PolymorphicMapType_35818| QPMask@1) (store (|PolymorphicMapType_35818_20354_20355#PolymorphicMapType_35818| QPMask@1) x@@101 ref_2 (+ (select (|PolymorphicMapType_35818_20354_20355#PolymorphicMapType_35818| QPMask@1) x@@101 ref_2) wildcard@0)) (|PolymorphicMapType_35818_20524_20525#PolymorphicMapType_35818| QPMask@1) (|PolymorphicMapType_35818_20549_20550#PolymorphicMapType_35818| QPMask@1) (|PolymorphicMapType_35818_20648_20649#PolymorphicMapType_35818| QPMask@1) (|PolymorphicMapType_35818_20575_20576#PolymorphicMapType_35818| QPMask@1) (|PolymorphicMapType_35818_20192_4202#PolymorphicMapType_35818| QPMask@1) (|PolymorphicMapType_35818_20286_4612#PolymorphicMapType_35818| QPMask@1) (|PolymorphicMapType_35818_20866_20867#PolymorphicMapType_35818| QPMask@1) (|PolymorphicMapType_35818_20756_20355#PolymorphicMapType_35818| QPMask@1) (|PolymorphicMapType_35818_20756_4202#PolymorphicMapType_35818| QPMask@1) (|PolymorphicMapType_35818_20756_53#PolymorphicMapType_35818| QPMask@1) (|PolymorphicMapType_35818_20756_170192#PolymorphicMapType_35818| QPMask@1) (|PolymorphicMapType_35818_20706_20355#PolymorphicMapType_35818| QPMask@1) (|PolymorphicMapType_35818_20706_4202#PolymorphicMapType_35818| QPMask@1) (|PolymorphicMapType_35818_20706_53#PolymorphicMapType_35818| QPMask@1) (|PolymorphicMapType_35818_20706_170603#PolymorphicMapType_35818| QPMask@1) (|PolymorphicMapType_35818_20728_20355#PolymorphicMapType_35818| QPMask@1) (|PolymorphicMapType_35818_20728_4202#PolymorphicMapType_35818| QPMask@1) (|PolymorphicMapType_35818_20728_53#PolymorphicMapType_35818| QPMask@1) (|PolymorphicMapType_35818_20728_171014#PolymorphicMapType_35818| QPMask@1) (|PolymorphicMapType_35818_20354_20757#PolymorphicMapType_35818| QPMask@1) (|PolymorphicMapType_35818_20354_4202#PolymorphicMapType_35818| QPMask@1) (|PolymorphicMapType_35818_20354_53#PolymorphicMapType_35818| QPMask@1) (|PolymorphicMapType_35818_20354_171425#PolymorphicMapType_35818| QPMask@1) (|PolymorphicMapType_35818_20524_20355#PolymorphicMapType_35818| QPMask@1) (|PolymorphicMapType_35818_20524_4202#PolymorphicMapType_35818| QPMask@1) (|PolymorphicMapType_35818_20524_53#PolymorphicMapType_35818| QPMask@1) (|PolymorphicMapType_35818_20524_171836#PolymorphicMapType_35818| QPMask@1) (|PolymorphicMapType_35818_20549_20355#PolymorphicMapType_35818| QPMask@1) (|PolymorphicMapType_35818_20549_4202#PolymorphicMapType_35818| QPMask@1) (|PolymorphicMapType_35818_20549_53#PolymorphicMapType_35818| QPMask@1) (|PolymorphicMapType_35818_20549_172247#PolymorphicMapType_35818| QPMask@1) (|PolymorphicMapType_35818_20648_20355#PolymorphicMapType_35818| QPMask@1) (|PolymorphicMapType_35818_20648_4202#PolymorphicMapType_35818| QPMask@1) (|PolymorphicMapType_35818_20648_53#PolymorphicMapType_35818| QPMask@1) (|PolymorphicMapType_35818_20648_172658#PolymorphicMapType_35818| QPMask@1) (|PolymorphicMapType_35818_20575_20355#PolymorphicMapType_35818| QPMask@1) (|PolymorphicMapType_35818_20575_4202#PolymorphicMapType_35818| QPMask@1) (|PolymorphicMapType_35818_20575_53#PolymorphicMapType_35818| QPMask@1) (|PolymorphicMapType_35818_20575_173069#PolymorphicMapType_35818| QPMask@1) (|PolymorphicMapType_35818_20192_20757#PolymorphicMapType_35818| QPMask@1) (|PolymorphicMapType_35818_20192_20355#PolymorphicMapType_35818| QPMask@1) (|PolymorphicMapType_35818_20192_53#PolymorphicMapType_35818| QPMask@1) (|PolymorphicMapType_35818_20192_173483#PolymorphicMapType_35818| QPMask@1) (|PolymorphicMapType_35818_20286_20757#PolymorphicMapType_35818| QPMask@1) (|PolymorphicMapType_35818_20286_20355#PolymorphicMapType_35818| QPMask@1) (|PolymorphicMapType_35818_20286_53#PolymorphicMapType_35818| QPMask@1) (|PolymorphicMapType_35818_20286_173897#PolymorphicMapType_35818| QPMask@1) (|PolymorphicMapType_35818_20866_20355#PolymorphicMapType_35818| QPMask@1) (|PolymorphicMapType_35818_20866_4202#PolymorphicMapType_35818| QPMask@1) (|PolymorphicMapType_35818_20866_53#PolymorphicMapType_35818| QPMask@1) (|PolymorphicMapType_35818_20866_174308#PolymorphicMapType_35818| QPMask@1))) (state Heap@@173 Unfolding1Mask@0)) (and (> wildcard@1 NoPerm) (= Unfolding1Mask@1 (PolymorphicMapType_35818 (|PolymorphicMapType_35818_20756_20757#PolymorphicMapType_35818| Unfolding1Mask@0) (|PolymorphicMapType_35818_20706_20707#PolymorphicMapType_35818| Unfolding1Mask@0) (|PolymorphicMapType_35818_20728_20729#PolymorphicMapType_35818| Unfolding1Mask@0) (|PolymorphicMapType_35818_20354_20355#PolymorphicMapType_35818| Unfolding1Mask@0) (store (|PolymorphicMapType_35818_20524_20525#PolymorphicMapType_35818| Unfolding1Mask@0) null (List (select (|PolymorphicMapType_35797_19827_19828#PolymorphicMapType_35797| Heap@@173) x@@101 ref_2)) (+ (select (|PolymorphicMapType_35818_20524_20525#PolymorphicMapType_35818| Unfolding1Mask@0) null (List (select (|PolymorphicMapType_35797_19827_19828#PolymorphicMapType_35797| Heap@@173) x@@101 ref_2))) wildcard@1)) (|PolymorphicMapType_35818_20549_20550#PolymorphicMapType_35818| Unfolding1Mask@0) (|PolymorphicMapType_35818_20648_20649#PolymorphicMapType_35818| Unfolding1Mask@0) (|PolymorphicMapType_35818_20575_20576#PolymorphicMapType_35818| Unfolding1Mask@0) (|PolymorphicMapType_35818_20192_4202#PolymorphicMapType_35818| Unfolding1Mask@0) (|PolymorphicMapType_35818_20286_4612#PolymorphicMapType_35818| Unfolding1Mask@0) (|PolymorphicMapType_35818_20866_20867#PolymorphicMapType_35818| Unfolding1Mask@0) (|PolymorphicMapType_35818_20756_20355#PolymorphicMapType_35818| Unfolding1Mask@0) (|PolymorphicMapType_35818_20756_4202#PolymorphicMapType_35818| Unfolding1Mask@0) (|PolymorphicMapType_35818_20756_53#PolymorphicMapType_35818| Unfolding1Mask@0) (|PolymorphicMapType_35818_20756_170192#PolymorphicMapType_35818| Unfolding1Mask@0) (|PolymorphicMapType_35818_20706_20355#PolymorphicMapType_35818| Unfolding1Mask@0) (|PolymorphicMapType_35818_20706_4202#PolymorphicMapType_35818| Unfolding1Mask@0) (|PolymorphicMapType_35818_20706_53#PolymorphicMapType_35818| Unfolding1Mask@0) (|PolymorphicMapType_35818_20706_170603#PolymorphicMapType_35818| Unfolding1Mask@0) (|PolymorphicMapType_35818_20728_20355#PolymorphicMapType_35818| Unfolding1Mask@0) (|PolymorphicMapType_35818_20728_4202#PolymorphicMapType_35818| Unfolding1Mask@0) (|PolymorphicMapType_35818_20728_53#PolymorphicMapType_35818| Unfolding1Mask@0) (|PolymorphicMapType_35818_20728_171014#PolymorphicMapType_35818| Unfolding1Mask@0) (|PolymorphicMapType_35818_20354_20757#PolymorphicMapType_35818| Unfolding1Mask@0) (|PolymorphicMapType_35818_20354_4202#PolymorphicMapType_35818| Unfolding1Mask@0) (|PolymorphicMapType_35818_20354_53#PolymorphicMapType_35818| Unfolding1Mask@0) (|PolymorphicMapType_35818_20354_171425#PolymorphicMapType_35818| Unfolding1Mask@0) (|PolymorphicMapType_35818_20524_20355#PolymorphicMapType_35818| Unfolding1Mask@0) (|PolymorphicMapType_35818_20524_4202#PolymorphicMapType_35818| Unfolding1Mask@0) (|PolymorphicMapType_35818_20524_53#PolymorphicMapType_35818| Unfolding1Mask@0) (|PolymorphicMapType_35818_20524_171836#PolymorphicMapType_35818| Unfolding1Mask@0) (|PolymorphicMapType_35818_20549_20355#PolymorphicMapType_35818| Unfolding1Mask@0) (|PolymorphicMapType_35818_20549_4202#PolymorphicMapType_35818| Unfolding1Mask@0) (|PolymorphicMapType_35818_20549_53#PolymorphicMapType_35818| Unfolding1Mask@0) (|PolymorphicMapType_35818_20549_172247#PolymorphicMapType_35818| Unfolding1Mask@0) (|PolymorphicMapType_35818_20648_20355#PolymorphicMapType_35818| Unfolding1Mask@0) (|PolymorphicMapType_35818_20648_4202#PolymorphicMapType_35818| Unfolding1Mask@0) (|PolymorphicMapType_35818_20648_53#PolymorphicMapType_35818| Unfolding1Mask@0) (|PolymorphicMapType_35818_20648_172658#PolymorphicMapType_35818| Unfolding1Mask@0) (|PolymorphicMapType_35818_20575_20355#PolymorphicMapType_35818| Unfolding1Mask@0) (|PolymorphicMapType_35818_20575_4202#PolymorphicMapType_35818| Unfolding1Mask@0) (|PolymorphicMapType_35818_20575_53#PolymorphicMapType_35818| Unfolding1Mask@0) (|PolymorphicMapType_35818_20575_173069#PolymorphicMapType_35818| Unfolding1Mask@0) (|PolymorphicMapType_35818_20192_20757#PolymorphicMapType_35818| Unfolding1Mask@0) (|PolymorphicMapType_35818_20192_20355#PolymorphicMapType_35818| Unfolding1Mask@0) (|PolymorphicMapType_35818_20192_53#PolymorphicMapType_35818| Unfolding1Mask@0) (|PolymorphicMapType_35818_20192_173483#PolymorphicMapType_35818| Unfolding1Mask@0) (|PolymorphicMapType_35818_20286_20757#PolymorphicMapType_35818| Unfolding1Mask@0) (|PolymorphicMapType_35818_20286_20355#PolymorphicMapType_35818| Unfolding1Mask@0) (|PolymorphicMapType_35818_20286_53#PolymorphicMapType_35818| Unfolding1Mask@0) (|PolymorphicMapType_35818_20286_173897#PolymorphicMapType_35818| Unfolding1Mask@0) (|PolymorphicMapType_35818_20866_20355#PolymorphicMapType_35818| Unfolding1Mask@0) (|PolymorphicMapType_35818_20866_4202#PolymorphicMapType_35818| Unfolding1Mask@0) (|PolymorphicMapType_35818_20866_53#PolymorphicMapType_35818| Unfolding1Mask@0) (|PolymorphicMapType_35818_20866_174308#PolymorphicMapType_35818| Unfolding1Mask@0))))) (and (and (InsidePredicate_20728_20524 (lft_List x@@101) (select (|PolymorphicMapType_35797_20728_20729#PolymorphicMapType_35797| Heap@@173) null (lft_List x@@101)) (List (select (|PolymorphicMapType_35797_19827_19828#PolymorphicMapType_35797| Heap@@173) x@@101 ref_2)) (select (|PolymorphicMapType_35797_20524_20525#PolymorphicMapType_35797| Heap@@173) null (List (select (|PolymorphicMapType_35797_19827_19828#PolymorphicMapType_35797| Heap@@173) x@@101 ref_2)))) (state Heap@@173 Unfolding1Mask@1)) (and (state Heap@@173 Unfolding1Mask@1) (= (ControlFlow 0 4) (- 0 3))))) (HasDirectPerm_20354_20355 Unfolding1Mask@1 x@@101 ref_2))))))))))))))))))))))))))))
+(let ((anon6_Then_correct true))
+(let ((anon5_Else_correct  (=> (valid_lft Heap@@173 lft_1@@27) (=> (and (and (= Mask@0 (PolymorphicMapType_35818 (store (|PolymorphicMapType_35818_20756_20757#PolymorphicMapType_35818| ZeroMask) null (LifetimeP lft_1@@27) (+ (select (|PolymorphicMapType_35818_20756_20757#PolymorphicMapType_35818| ZeroMask) null (LifetimeP lft_1@@27)) FullPerm)) (|PolymorphicMapType_35818_20706_20707#PolymorphicMapType_35818| ZeroMask) (|PolymorphicMapType_35818_20728_20729#PolymorphicMapType_35818| ZeroMask) (|PolymorphicMapType_35818_20354_20355#PolymorphicMapType_35818| ZeroMask) (|PolymorphicMapType_35818_20524_20525#PolymorphicMapType_35818| ZeroMask) (|PolymorphicMapType_35818_20549_20550#PolymorphicMapType_35818| ZeroMask) (|PolymorphicMapType_35818_20648_20649#PolymorphicMapType_35818| ZeroMask) (|PolymorphicMapType_35818_20575_20576#PolymorphicMapType_35818| ZeroMask) (|PolymorphicMapType_35818_20192_4202#PolymorphicMapType_35818| ZeroMask) (|PolymorphicMapType_35818_20286_4612#PolymorphicMapType_35818| ZeroMask) (|PolymorphicMapType_35818_20866_20867#PolymorphicMapType_35818| ZeroMask) (|PolymorphicMapType_35818_20756_20355#PolymorphicMapType_35818| ZeroMask) (|PolymorphicMapType_35818_20756_4202#PolymorphicMapType_35818| ZeroMask) (|PolymorphicMapType_35818_20756_53#PolymorphicMapType_35818| ZeroMask) (|PolymorphicMapType_35818_20756_170192#PolymorphicMapType_35818| ZeroMask) (|PolymorphicMapType_35818_20706_20355#PolymorphicMapType_35818| ZeroMask) (|PolymorphicMapType_35818_20706_4202#PolymorphicMapType_35818| ZeroMask) (|PolymorphicMapType_35818_20706_53#PolymorphicMapType_35818| ZeroMask) (|PolymorphicMapType_35818_20706_170603#PolymorphicMapType_35818| ZeroMask) (|PolymorphicMapType_35818_20728_20355#PolymorphicMapType_35818| ZeroMask) (|PolymorphicMapType_35818_20728_4202#PolymorphicMapType_35818| ZeroMask) (|PolymorphicMapType_35818_20728_53#PolymorphicMapType_35818| ZeroMask) (|PolymorphicMapType_35818_20728_171014#PolymorphicMapType_35818| ZeroMask) (|PolymorphicMapType_35818_20354_20757#PolymorphicMapType_35818| ZeroMask) (|PolymorphicMapType_35818_20354_4202#PolymorphicMapType_35818| ZeroMask) (|PolymorphicMapType_35818_20354_53#PolymorphicMapType_35818| ZeroMask) (|PolymorphicMapType_35818_20354_171425#PolymorphicMapType_35818| ZeroMask) (|PolymorphicMapType_35818_20524_20355#PolymorphicMapType_35818| ZeroMask) (|PolymorphicMapType_35818_20524_4202#PolymorphicMapType_35818| ZeroMask) (|PolymorphicMapType_35818_20524_53#PolymorphicMapType_35818| ZeroMask) (|PolymorphicMapType_35818_20524_171836#PolymorphicMapType_35818| ZeroMask) (|PolymorphicMapType_35818_20549_20355#PolymorphicMapType_35818| ZeroMask) (|PolymorphicMapType_35818_20549_4202#PolymorphicMapType_35818| ZeroMask) (|PolymorphicMapType_35818_20549_53#PolymorphicMapType_35818| ZeroMask) (|PolymorphicMapType_35818_20549_172247#PolymorphicMapType_35818| ZeroMask) (|PolymorphicMapType_35818_20648_20355#PolymorphicMapType_35818| ZeroMask) (|PolymorphicMapType_35818_20648_4202#PolymorphicMapType_35818| ZeroMask) (|PolymorphicMapType_35818_20648_53#PolymorphicMapType_35818| ZeroMask) (|PolymorphicMapType_35818_20648_172658#PolymorphicMapType_35818| ZeroMask) (|PolymorphicMapType_35818_20575_20355#PolymorphicMapType_35818| ZeroMask) (|PolymorphicMapType_35818_20575_4202#PolymorphicMapType_35818| ZeroMask) (|PolymorphicMapType_35818_20575_53#PolymorphicMapType_35818| ZeroMask) (|PolymorphicMapType_35818_20575_173069#PolymorphicMapType_35818| ZeroMask) (|PolymorphicMapType_35818_20192_20757#PolymorphicMapType_35818| ZeroMask) (|PolymorphicMapType_35818_20192_20355#PolymorphicMapType_35818| ZeroMask) (|PolymorphicMapType_35818_20192_53#PolymorphicMapType_35818| ZeroMask) (|PolymorphicMapType_35818_20192_173483#PolymorphicMapType_35818| ZeroMask) (|PolymorphicMapType_35818_20286_20757#PolymorphicMapType_35818| ZeroMask) (|PolymorphicMapType_35818_20286_20355#PolymorphicMapType_35818| ZeroMask) (|PolymorphicMapType_35818_20286_53#PolymorphicMapType_35818| ZeroMask) (|PolymorphicMapType_35818_20286_173897#PolymorphicMapType_35818| ZeroMask) (|PolymorphicMapType_35818_20866_20355#PolymorphicMapType_35818| ZeroMask) (|PolymorphicMapType_35818_20866_4202#PolymorphicMapType_35818| ZeroMask) (|PolymorphicMapType_35818_20866_53#PolymorphicMapType_35818| ZeroMask) (|PolymorphicMapType_35818_20866_174308#PolymorphicMapType_35818| ZeroMask))) (state Heap@@173 Mask@0)) (and (state Heap@@173 Mask@0) (state Heap@@173 Mask@0))) (and (=> (= (ControlFlow 0 12) 2) anon6_Then_correct) (=> (= (ControlFlow 0 12) 4) anon6_Else_correct))))))
+(let ((anon5_Then_correct true))
+(let ((anon0_correct  (=> (state Heap@@173 ZeroMask) (=> (and (and (not AssumePermUpperBound) (select (|PolymorphicMapType_35797_19824_53#PolymorphicMapType_35797| Heap@@173) x@@101 $allocated)) (and (= AssumeFunctionsAbove 0) (state Heap@@173 ZeroMask))) (and (=> (= (ControlFlow 0 13) 1) anon5_Then_correct) (=> (= (ControlFlow 0 13) 12) anon5_Else_correct))))))
+(let ((PreconditionGeneratedEntry_correct  (=> (and (and (> wildcard NoPerm) true) (= (ControlFlow 0 14) 13)) anon0_correct)))
+PreconditionGeneratedEntry_correct)))))))
+))
+(check-sat)
+(get-info :rlimit)
+(pop 1)
+; Valid

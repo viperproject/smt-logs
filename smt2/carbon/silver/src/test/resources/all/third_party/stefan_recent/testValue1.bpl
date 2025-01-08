@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-07 14:21:57
+// Date:         2025-01-08 21:57:01
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/third_party/stefan_recent/testValue1.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/third_party/stefan_recent/testValue1-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -190,10 +190,10 @@ procedure Test__main1(diz: Ref, current_thread_id: int, t1_6: Ref, t2_1: Ref) re
 {
   var wildcard: real where wildcard > NoPerm;
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -238,15 +238,15 @@ procedure Test__main1(diz: Ref, current_thread_id: int, t1_6: Ref, t2_1: Ref) re
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: if (t1 == t2) -- testValue1.vpr@14.3--18.4
     if (t1_6 == t2_1) {
       
       // -- Translating statement: assert false -- testValue1.vpr@17.5--17.17
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Assert might fail. Assertion false might not hold. (testValue1.vpr@17.12--17.17) [163208]"}
           false;
         assume state(Heap, Mask);
@@ -261,8 +261,8 @@ procedure Test__main1(diz: Ref, current_thread_id: int, t1_6: Ref, t2_1: Ref) re
 procedure Test__Test(current_thread_id: int) returns (sys__result: Ref)
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var perm: Perm;
@@ -270,8 +270,8 @@ procedure Test__Test(current_thread_id: int) returns (sys__result: Ref)
   var freshObj: Ref;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -286,8 +286,8 @@ procedure Test__Test(current_thread_id: int) returns (sys__result: Ref)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -334,8 +334,8 @@ procedure Test__Test(current_thread_id: int) returns (sys__result: Ref)
   //   (acc(sys__result.Test__next, write) && sys__result.Test__next == null) -- testValue1.vpr@30.3--30.107
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
+    ExhaleWellDef0Mask := AssertMask;
     assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (testValue1.vpr@30.10--30.107) [163211]"}
       sys__result != null;
     perm := FullPerm;
@@ -358,8 +358,8 @@ procedure Test__Test(current_thread_id: int) returns (sys__result: Ref)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of Test__Test might not hold. Assertion sys__result != null might not hold. (testValue1.vpr@23.11--23.30) [163216]"}
       sys__result != null;
     perm := FullPerm;

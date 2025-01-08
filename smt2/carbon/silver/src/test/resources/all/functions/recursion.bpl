@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-07 14:20:49
+// Date:         2025-01-08 21:55:55
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/functions/recursion.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/functions/recursion-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -230,8 +230,8 @@ function  fac#triggerStateless(n: int): int;
 procedure fac#definedness(n: int) returns (Result: int)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -250,8 +250,8 @@ procedure fac#definedness(n: int) returns (Result: int)
       } else {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           assert {:msg "  Precondition of function fac might not hold. Assertion n - 1 >= 0 might not hold. (recursion.vpr@9.19--9.29) [155689]"}
             n - 1 >= 0;
           // Stop execution
@@ -266,8 +266,8 @@ procedure fac#definedness(n: int) returns (Result: int)
     Result := (if n < 2 then n else n * fac(Heap, n - 1));
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of fac might not hold. Assertion result >= 0 might not hold. (recursion.vpr@8.11--8.22) [155690]"}
       Result >= 0;
 }
@@ -317,8 +317,8 @@ function  err1#triggerStateless(n: int): int;
 procedure err1#definedness(n: int) returns (Result: int)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -337,8 +337,8 @@ procedure err1#definedness(n: int) returns (Result: int)
       } else {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           assert {:msg "  Precondition of function err1 might not hold. Assertion n - 1 >= 0 might not hold. (recursion.vpr@27.16--27.27) [155691]"}
             n - 1 >= 0;
           // Stop execution
@@ -353,8 +353,8 @@ procedure err1#definedness(n: int) returns (Result: int)
     Result := (if n <= 1 then 1 else err1(Heap, n - 1) - n);
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of err1 might not hold. Assertion result >= 0 might not hold. (recursion.vpr@26.11--26.22) [155692]"}
       Result >= 0;
 }
@@ -366,12 +366,12 @@ procedure err1#definedness(n: int) returns (Result: int)
 procedure test() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
-  var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -382,18 +382,18 @@ procedure test() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert fac(0) == 0 -- recursion.vpr@12.3--12.21
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of fac(0) == 0
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         // Stop execution
         assume false;
       }
@@ -402,14 +402,14 @@ procedure test() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert fac(1) == 1 -- recursion.vpr@13.3--13.21
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of fac(1) == 1
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         // Stop execution
         assume false;
       }
@@ -418,14 +418,14 @@ procedure test() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert fac(2) == 2 -- recursion.vpr@14.3--14.21
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of fac(2) == 2
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         // Stop execution
         assume false;
       }
@@ -434,14 +434,14 @@ procedure test() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert fac(3) == 6 -- recursion.vpr@15.3--15.21
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of fac(3) == 6
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         // Stop execution
         assume false;
       }
@@ -450,14 +450,14 @@ procedure test() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert fac(4) == 24 -- recursion.vpr@16.3--16.22
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of fac(4) == 24
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         // Stop execution
         assume false;
       }
@@ -466,14 +466,14 @@ procedure test() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert fac(7) >= 0 -- recursion.vpr@18.3--18.21
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of fac(7) >= 0
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         // Stop execution
         assume false;
       }

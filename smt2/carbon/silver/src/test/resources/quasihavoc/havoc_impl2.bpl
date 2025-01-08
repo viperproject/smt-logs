@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-07 14:01:14
+// Date:         2025-01-08 21:36:34
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quasihavoc/havoc_impl2.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quasihavoc/havoc_impl2-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -189,10 +189,10 @@ procedure foo_1(x: Ref, y: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var perm_temp_quasihavoc__1: Perm;
   var ExhaleHeap: HeapType;
   
@@ -220,15 +220,15 @@ procedure foo_1(x: Ref, y: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: if (false) -- <no position>
     assume state(Heap, Mask);
   
   // -- Translating statement: assert x.f == 3 -- havoc_impl2.vpr@7.5--7.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of x.f == 3
       assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (havoc_impl2.vpr@7.12--7.20) [78217]"}
@@ -244,8 +244,8 @@ procedure foo_1(x: Ref, y: Ref) returns ()
       assume state(Heap, Mask);
     
     // -- Translating statement: exhale acc(x.f, perm_temp_quasihavoc_) -- <no position>
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       perm := perm_temp_quasihavoc__1;
       assert {:msg "  Exhale might fail. Fraction perm_temp_quasihavoc_ might be negative. (<no position>) [78219]"}
         perm >= NoPerm;
@@ -272,8 +272,8 @@ procedure foo_1(x: Ref, y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert x.f == 3 -- havoc_impl2.vpr@11.5--11.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of x.f == 3
       assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (havoc_impl2.vpr@11.12--11.20) [78222]"}

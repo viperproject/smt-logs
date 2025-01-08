@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-07 14:27:23
+// Date:         2025-01-08 22:02:25
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0076.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0076-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -657,14 +657,14 @@ procedure contentNodes#definedness(this: Ref, end: Ref) returns (Result: (Seq Re
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var Unfolding1Heap: HeapType;
   var Unfolding1Mask: MaskType;
   var newPMask: PMaskType;
   var ExhaleHeap: HeapType;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var i_22: int;
   var j_14: int;
   var i_2_1: int;
@@ -693,8 +693,8 @@ procedure contentNodes#definedness(this: Ref, end: Ref) returns (Result: (Seq Re
         UnfoldingMask := Mask;
         assume Lseg#trigger(UnfoldingHeap, Lseg(this, end));
         assume UnfoldingHeap[null, Lseg(this, end)] == FrameFragment((if this != end then CombineFrames(FrameFragment(UnfoldingHeap[this, data]), CombineFrames(FrameFragment(UnfoldingHeap[this, next]), FrameFragment((if UnfoldingHeap[this, next] != null then UnfoldingHeap[null, Lseg(UnfoldingHeap[this, next], end)] else EmptyFrame)))) else EmptyFrame));
-        ExhaleWellDef0Heap := UnfoldingHeap;
         ExhaleWellDef0Mask := UnfoldingMask;
+        ExhaleWellDef0Heap := UnfoldingHeap;
         perm := FullPerm;
         assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Lseg(this, end) (0076.vpr@21.1--35.2) [195089]"}
           NoPerm < perm ==> NoPerm < UnfoldingMask[null, Lseg(this, end)];
@@ -721,8 +721,8 @@ procedure contentNodes#definedness(this: Ref, end: Ref) returns (Result: (Seq Re
               Unfolding1Mask := UnfoldingMask;
               assume Lseg#trigger(Unfolding1Heap, Lseg(Unfolding1Heap[this, next], end));
               assume Unfolding1Heap[null, Lseg(Unfolding1Heap[this, next], end)] == FrameFragment((if Unfolding1Heap[this, next] != end then CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[this, next], data]), CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[this, next], next]), FrameFragment((if Unfolding1Heap[Unfolding1Heap[this, next], next] != null then Unfolding1Heap[null, Lseg(Unfolding1Heap[Unfolding1Heap[this, next], next], end)] else EmptyFrame)))) else EmptyFrame));
-              ExhaleWellDef0Heap := Unfolding1Heap;
               ExhaleWellDef0Mask := Unfolding1Mask;
+              ExhaleWellDef0Heap := Unfolding1Heap;
               perm := FullPerm;
               if (Unfolding1Heap[this, next] != end) {
                 perm := FullPerm;
@@ -789,8 +789,8 @@ procedure contentNodes#definedness(this: Ref, end: Ref) returns (Result: (Seq Re
             HasDirectPerm(UnfoldingMask, this, next);
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := UnfoldingHeap;
             ExhaleWellDef0Mask := UnfoldingMask;
+            ExhaleWellDef0Heap := UnfoldingHeap;
             perm := FullPerm;
             assert {:msg "  Precondition of function contentNodes might not hold. There might be insufficient permission to access Lseg(this.next, end) (0076.vpr@33.73--33.101) [195093]"}
               NoPerm < perm ==> NoPerm < UnfoldingMask[null, Lseg(UnfoldingHeap[this, next], end)];
@@ -826,8 +826,8 @@ procedure contentNodes#definedness(this: Ref, end: Ref) returns (Result: (Seq Re
     Result := (if this == end then (Seq#Empty(): Seq Ref) else Seq#Append(Seq#Singleton(Heap[this, data]), (if Heap[this, next] == null then (Seq#Empty(): Seq Ref) else contentNodes(Heap, Heap[this, next], end))));
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of contentNodes might not hold. Assertion (this == end) == (result == Seq[Ref]()) might not hold. (0076.vpr@23.12--23.49) [195094]"}
       (this == end) == Seq#Equal(Result, (Seq#Empty(): Seq Ref));
     if (this != end) {
@@ -843,8 +843,8 @@ procedure contentNodes#definedness(this: Ref, end: Ref) returns (Result: (Seq Re
         UnfoldingMask := ExhaleWellDef0Mask;
         assume Lseg#trigger(UnfoldingHeap, Lseg(this, end));
         assume UnfoldingHeap[null, Lseg(this, end)] == FrameFragment((if this != end then CombineFrames(FrameFragment(UnfoldingHeap[this, data]), CombineFrames(FrameFragment(UnfoldingHeap[this, next]), FrameFragment((if UnfoldingHeap[this, next] != null then UnfoldingHeap[null, Lseg(UnfoldingHeap[this, next], end)] else EmptyFrame)))) else EmptyFrame));
-        ExhaleWellDef1Heap := UnfoldingHeap;
         ExhaleWellDef1Mask := UnfoldingMask;
+        ExhaleWellDef1Heap := UnfoldingHeap;
         perm := FullPerm;
         assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access Lseg(this, end) (0076.vpr@25.12--25.84) [195097]"}
           NoPerm < perm ==> NoPerm < UnfoldingMask[null, Lseg(this, end)];
@@ -871,8 +871,8 @@ procedure contentNodes#definedness(this: Ref, end: Ref) returns (Result: (Seq Re
               Unfolding1Mask := UnfoldingMask;
               assume Lseg#trigger(Unfolding1Heap, Lseg(Unfolding1Heap[this, next], end));
               assume Unfolding1Heap[null, Lseg(Unfolding1Heap[this, next], end)] == FrameFragment((if Unfolding1Heap[this, next] != end then CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[this, next], data]), CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[this, next], next]), FrameFragment((if Unfolding1Heap[Unfolding1Heap[this, next], next] != null then Unfolding1Heap[null, Lseg(Unfolding1Heap[Unfolding1Heap[this, next], next], end)] else EmptyFrame)))) else EmptyFrame));
-              ExhaleWellDef1Heap := Unfolding1Heap;
               ExhaleWellDef1Mask := Unfolding1Mask;
+              ExhaleWellDef1Heap := Unfolding1Heap;
               perm := FullPerm;
               if (Unfolding1Heap[this, next] != end) {
                 perm := FullPerm;
@@ -1058,8 +1058,8 @@ procedure Lseg#definedness(this: Ref, end: Ref) returns ()
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var Unfolding1Heap: HeapType;
   var Unfolding1Mask: MaskType;
   var newPMask: PMaskType;
@@ -1101,8 +1101,8 @@ procedure Lseg#definedness(this: Ref, end: Ref) returns ()
           UnfoldingMask := Mask;
           assume Lseg#trigger(UnfoldingHeap, Lseg(UnfoldingHeap[this, next], end));
           assume UnfoldingHeap[null, Lseg(UnfoldingHeap[this, next], end)] == FrameFragment((if UnfoldingHeap[this, next] != end then CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[this, next], data]), CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[this, next], next]), FrameFragment((if UnfoldingHeap[UnfoldingHeap[this, next], next] != null then UnfoldingHeap[null, Lseg(UnfoldingHeap[UnfoldingHeap[this, next], next], end)] else EmptyFrame)))) else EmptyFrame));
-          ExhaleWellDef0Heap := UnfoldingHeap;
           ExhaleWellDef0Mask := UnfoldingMask;
+          ExhaleWellDef0Heap := UnfoldingHeap;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  Predicate might not be well-formed. There might be insufficient permission to access Lseg(this.next, end) (0076.vpr@13.1--19.2) [195107]"}
@@ -1132,8 +1132,8 @@ procedure Lseg#definedness(this: Ref, end: Ref) returns ()
                 Unfolding1Mask := UnfoldingMask;
                 assume Lseg#trigger(Unfolding1Heap, Lseg(Unfolding1Heap[Unfolding1Heap[this, next], next], end));
                 assume Unfolding1Heap[null, Lseg(Unfolding1Heap[Unfolding1Heap[this, next], next], end)] == FrameFragment((if Unfolding1Heap[Unfolding1Heap[this, next], next] != end then CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[this, next], next], data]), CombineFrames(FrameFragment(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[this, next], next], next]), FrameFragment((if Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[this, next], next], next] != null then Unfolding1Heap[null, Lseg(Unfolding1Heap[Unfolding1Heap[Unfolding1Heap[this, next], next], next], end)] else EmptyFrame)))) else EmptyFrame));
-                ExhaleWellDef0Heap := Unfolding1Heap;
                 ExhaleWellDef0Mask := Unfolding1Mask;
+                ExhaleWellDef0Heap := Unfolding1Heap;
                 perm := FullPerm;
                 Unfolding1Mask := Unfolding1Mask[null, Lseg(Unfolding1Heap[Unfolding1Heap[this, next], next], end):=Unfolding1Mask[null, Lseg(Unfolding1Heap[Unfolding1Heap[this, next], next], end)] - perm];
                 if (Unfolding1Heap[Unfolding1Heap[this, next], next] != end) {
@@ -1232,8 +1232,8 @@ procedure Lseg#definedness(this: Ref, end: Ref) returns ()
           UnfoldingMask := Mask;
           assume Lseg#trigger(UnfoldingHeap, Lseg(UnfoldingHeap[this, next], end));
           assume UnfoldingHeap[null, Lseg(UnfoldingHeap[this, next], end)] == FrameFragment((if UnfoldingHeap[this, next] != end then CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[this, next], data]), CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[this, next], next]), FrameFragment((if UnfoldingHeap[UnfoldingHeap[this, next], next] != null then UnfoldingHeap[null, Lseg(UnfoldingHeap[UnfoldingHeap[this, next], next], end)] else EmptyFrame)))) else EmptyFrame));
-          ExhaleWellDef0Heap := UnfoldingHeap;
           ExhaleWellDef0Mask := UnfoldingMask;
+          ExhaleWellDef0Heap := UnfoldingHeap;
           perm := FullPerm;
           UnfoldingMask := UnfoldingMask[null, Lseg(UnfoldingHeap[this, next], end):=UnfoldingMask[null, Lseg(UnfoldingHeap[this, next], end)] - perm];
           if (UnfoldingHeap[this, next] != end) {

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-07 14:38:30
+// Date:         2025-01-08 22:13:30
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/termination/methods/loops/whileLoop.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/termination/methods/loops/whileLoop-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -220,11 +220,11 @@ axiom !IsWandField(v_36);
 procedure m(x: int) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var y: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var loopHeap: HeapType;
   var loopMask: MaskType;
   var old_W1_T0: int;
@@ -239,8 +239,8 @@ procedure m(x: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: y := x -- whileLoop.vpr@8.5--8.20
     y := x;
@@ -251,8 +251,8 @@ procedure m(x: int) returns ()
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Loop invariant y <= x might not hold on entry. Assertion y <= x might not hold. (whileLoop.vpr@11.19--11.25) [224507]"}
           y <= x;
     
@@ -292,8 +292,8 @@ procedure m(x: int) returns ()
           
           // -- Translating statement: assert (decreasing(y, old(x)): Bool) && (bounded(old(x)): Bool) ||
   //   y == old(x) && false -- <no position>
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             assert {:msg "  Assert might fail. Assertion (decreasing(y, old(x)): Bool) && (bounded(old(x)): Bool) || y == old(x) && false might not hold. (<no position>) [224508]"}
               (decreasing(y, x): bool) && (bounded(x): bool);
             assume state(Heap, Mask);
@@ -309,16 +309,16 @@ procedure m(x: int) returns ()
           // -- Translating statement: assert true && y >= 0 ==>
   //   (decreasing(y, old_W1_T0): Bool) && (bounded(old_W1_T0): Bool) ||
   //   y == old_W1_T0 && false -- <no position>
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             if (y >= 0) {
               assert {:msg "  Assert might fail. Assertion (decreasing(y, old_W1_T0): Bool) && (bounded(old_W1_T0): Bool) || y == old_W1_T0 && false might not hold. (<no position>) [224509]"}
                 (decreasing(y, old_W1_T0): bool) && (bounded(old_W1_T0): bool);
             }
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Loop invariant y <= x might not be preserved. Assertion y <= x might not hold. (whileLoop.vpr@11.19--11.25) [224510]"}
           y <= x;
         // Terminate execution
@@ -340,14 +340,14 @@ procedure m(x: int) returns ()
 procedure m_e(x: int) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var y: int;
   var loopHeap: HeapType;
   var loopMask: MaskType;
   var old_W2_T0: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -357,8 +357,8 @@ procedure m_e(x: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: y := x -- whileLoop.vpr@21.5--21.20
     y := x;
@@ -404,8 +404,8 @@ procedure m_e(x: int) returns ()
           // -- Translating statement: assert true && y >= 0 ==>
   //   (decreasing(y, old_W2_T0): Bool) && (bounded(old_W2_T0): Bool) ||
   //   y == old_W2_T0 && false -- <no position>
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             if (y >= 0) {
               assert {:msg "  Assert might fail. Assertion (decreasing(y, old_W2_T0): Bool) && (bounded(old_W2_T0): Bool) || y == old_W2_T0 && false might not hold. (<no position>) [224511]"}
                 (decreasing(y, old_W2_T0): bool) && (bounded(old_W2_T0): bool);
@@ -429,14 +429,14 @@ procedure m_e(x: int) returns ()
 procedure m_e2(x: int) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var y: int;
   var loopHeap: HeapType;
   var loopMask: MaskType;
   var old_W3_T0: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
   
@@ -448,8 +448,8 @@ procedure m_e2(x: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: y := x -- whileLoop.vpr@34.5--34.20
     y := x;
@@ -490,8 +490,8 @@ procedure m_e2(x: int) returns ()
           
           // -- Translating statement: assert (decreasing(y, old(x)): Bool) && (bounded(old(x)): Bool) ||
   //   y == old(x) && false -- <no position>
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             assert {:msg "  Assert might fail. Assertion (decreasing(y, old(x)): Bool) && (bounded(old(x)): Bool) || y == old(x) && false might not hold. (<no position>) [224512]"}
               (decreasing(y, x): bool) && (bounded(x): bool);
             assume state(Heap, Mask);
@@ -507,8 +507,8 @@ procedure m_e2(x: int) returns ()
           // -- Translating statement: assert true && y >= 0 ==>
   //   (decreasing(y, old_W3_T0): Bool) && (bounded(old_W3_T0): Bool) ||
   //   y == old_W3_T0 && false -- <no position>
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             if (y >= 0) {
               assert {:msg "  Assert might fail. Assertion (decreasing(y, old_W3_T0): Bool) && (bounded(old_W3_T0): Bool) || y == old_W3_T0 && false might not hold. (<no position>) [224513]"}
                 (decreasing(y, old_W3_T0): bool) && (bounded(old_W3_T0): bool);
@@ -533,12 +533,12 @@ procedure m2(r_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var loopHeap: HeapType;
   var loopMask: MaskType;
@@ -564,8 +564,8 @@ procedure m2(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -593,8 +593,8 @@ procedure m2(r_1: Ref) returns ()
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Loop invariant acc(r.v, write) might not hold on entry. There might be insufficient permission to access r.v (whileLoop.vpr@54.19--54.27) [224516]"}
@@ -670,8 +670,8 @@ procedure m2(r_1: Ref) returns ()
           
           // -- Translating statement: assert (decreasing(r.v, old(r.v)): Bool) && (bounded(old(r.v)): Bool) ||
   //   r.v == old(r.v) && false -- <no position>
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             
             // -- Check definedness of (decreasing(r.v, old(r.v)): Bool) && (bounded(old(r.v)): Bool) || r.v == old(r.v) && false
               assert {:msg "  Assert might fail. There might be insufficient permission to access r.v (<no position>) [224524]"}
@@ -697,8 +697,8 @@ procedure m2(r_1: Ref) returns ()
             PreCallMask := Mask;
             
             // -- Exhaling precondition
-              ExhaleWellDef0Heap := Heap;
               ExhaleWellDef0Mask := Mask;
+              ExhaleWellDef0Heap := Heap;
               perm := FullPerm;
               if (perm != NoPerm) {
                 assert {:msg "  The precondition of method m2 might not hold. There might be insufficient permission to access r.v (whileLoop.vpr@59.9--59.14) [224530]"}
@@ -722,8 +722,8 @@ procedure m2(r_1: Ref) returns ()
           // -- Translating statement: assert true && r.v >= 0 ==>
   //   (decreasing(r.v, old_W4_T0): Bool) && (bounded(old_W4_T0): Bool) ||
   //   r.v == old_W4_T0 && false -- <no position>
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             
             // -- Check definedness of true && r.v >= 0
               assert {:msg "  Assert might fail. There might be insufficient permission to access r.v (<no position>) [224531]"}
@@ -742,8 +742,8 @@ procedure m2(r_1: Ref) returns ()
             }
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Loop invariant acc(r.v, write) might not be preserved. There might be insufficient permission to access r.v (whileLoop.vpr@54.19--54.27) [224535]"}
@@ -772,8 +772,8 @@ procedure m2(r_1: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of m2 might not hold. There might be insufficient permission to access r.v (whileLoop.vpr@50.13--50.28) [224537]"}
@@ -796,12 +796,12 @@ procedure m2_e(r_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var loopHeap: HeapType;
   var loopMask: MaskType;
@@ -827,8 +827,8 @@ procedure m2_e(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -856,8 +856,8 @@ procedure m2_e(r_1: Ref) returns ()
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Loop invariant acc(r.v, write) might not hold on entry. There might be insufficient permission to access r.v (whileLoop.vpr@70.19--70.27) [224541]"}
@@ -923,8 +923,8 @@ procedure m2_e(r_1: Ref) returns ()
           
           // -- Translating statement: assert (decreasing(r.v, old(r.v)): Bool) && (bounded(old(r.v)): Bool) ||
   //   r.v == old(r.v) && false -- <no position>
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             
             // -- Check definedness of (decreasing(r.v, old(r.v)): Bool) && (bounded(old(r.v)): Bool) || r.v == old(r.v) && false
               assert {:msg "  Assert might fail. There might be insufficient permission to access r.v (<no position>) [224547]"}
@@ -950,8 +950,8 @@ procedure m2_e(r_1: Ref) returns ()
             PreCallMask := Mask;
             
             // -- Exhaling precondition
-              ExhaleWellDef0Heap := Heap;
               ExhaleWellDef0Mask := Mask;
+              ExhaleWellDef0Heap := Heap;
               perm := FullPerm;
               if (perm != NoPerm) {
                 assert {:msg "  The precondition of method m2_e might not hold. There might be insufficient permission to access r.v (whileLoop.vpr@75.9--75.16) [224553]"}
@@ -985,8 +985,8 @@ procedure m2_e(r_1: Ref) returns ()
           // -- Translating statement: assert true && r.v >= 0 ==>
   //   (decreasing(r.v, old_W5_T0): Bool) && (bounded(old_W5_T0): Bool) ||
   //   r.v == old_W5_T0 && false -- <no position>
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             
             // -- Check definedness of true && r.v >= 0
               assert {:msg "  Assert might fail. There might be insufficient permission to access r.v (<no position>) [224556]"}
@@ -1005,8 +1005,8 @@ procedure m2_e(r_1: Ref) returns ()
             }
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Loop invariant acc(r.v, write) might not be preserved. There might be insufficient permission to access r.v (whileLoop.vpr@70.19--70.27) [224560]"}
@@ -1035,8 +1035,8 @@ procedure m2_e(r_1: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of m2_e might not hold. There might be insufficient permission to access r.v (whileLoop.vpr@66.13--66.28) [224562]"}
@@ -1059,12 +1059,12 @@ procedure m3(r_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var loopHeap: HeapType;
   var loopMask: MaskType;
@@ -1090,8 +1090,8 @@ procedure m3(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1111,8 +1111,8 @@ procedure m3(r_1: Ref) returns ()
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Loop invariant acc(r.v, write) might not hold on entry. There might be insufficient permission to access r.v (whileLoop.vpr@87.19--87.27) [224564]"}
@@ -1220,8 +1220,8 @@ procedure m3(r_1: Ref) returns ()
                   // -- Translating statement: assert true && y >= 0 ==>
   //   (decreasing(y, old_W6_T0): Bool) && (bounded(old_W6_T0): Bool) ||
   //   y == old_W6_T0 && false -- <no position>
-                    ExhaleWellDef0Heap := Heap;
                     ExhaleWellDef0Mask := Mask;
+                    ExhaleWellDef0Heap := Heap;
                     if (y >= 0) {
                       assert {:msg "  Assert might fail. Assertion (decreasing(y, old_W6_T0): Bool) && (bounded(old_W6_T0): Bool) || y == old_W6_T0 && false might not hold. (<no position>) [224571]"}
                         (decreasing(y, old_W6_T0): bool) && (bounded(old_W6_T0): bool);
@@ -1250,8 +1250,8 @@ procedure m3(r_1: Ref) returns ()
           // -- Translating statement: assert true && r.v >= 0 ==>
   //   (decreasing(r.v, old_W7_T0): Bool) && (bounded(old_W7_T0): Bool) ||
   //   r.v == old_W7_T0 && false -- <no position>
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             
             // -- Check definedness of true && r.v >= 0
               assert {:msg "  Assert might fail. There might be insufficient permission to access r.v (<no position>) [224574]"}
@@ -1270,8 +1270,8 @@ procedure m3(r_1: Ref) returns ()
             }
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Loop invariant acc(r.v, write) might not be preserved. There might be insufficient permission to access r.v (whileLoop.vpr@87.19--87.27) [224578]"}
@@ -1300,8 +1300,8 @@ procedure m3(r_1: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of m3 might not hold. There might be insufficient permission to access r.v (whileLoop.vpr@84.13--84.28) [224580]"}
@@ -1322,12 +1322,12 @@ procedure m3_e(r_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var loopHeap: HeapType;
   var loopMask: MaskType;
@@ -1353,8 +1353,8 @@ procedure m3_e(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1374,8 +1374,8 @@ procedure m3_e(r_1: Ref) returns ()
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Loop invariant acc(r.v, write) might not hold on entry. There might be insufficient permission to access r.v (whileLoop.vpr@108.19--108.27) [224581]"}
@@ -1483,8 +1483,8 @@ procedure m3_e(r_1: Ref) returns ()
                   // -- Translating statement: assert true && y >= 0 ==>
   //   (decreasing(y, old_W8_T0): Bool) && (bounded(old_W8_T0): Bool) ||
   //   y == old_W8_T0 && false -- <no position>
-                    ExhaleWellDef0Heap := Heap;
                     ExhaleWellDef0Mask := Mask;
+                    ExhaleWellDef0Heap := Heap;
                     if (y >= 0) {
                       assert {:msg "  Assert might fail. Assertion (decreasing(y, old_W8_T0): Bool) && (bounded(old_W8_T0): Bool) || y == old_W8_T0 && false might not hold. (<no position>) [224588]"}
                         (decreasing(y, old_W8_T0): bool) && (bounded(old_W8_T0): bool);
@@ -1513,8 +1513,8 @@ procedure m3_e(r_1: Ref) returns ()
           // -- Translating statement: assert true && r.v >= 0 ==>
   //   (decreasing(r.v, old_W9_T0): Bool) && (bounded(old_W9_T0): Bool) ||
   //   r.v == old_W9_T0 && false -- <no position>
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             
             // -- Check definedness of true && r.v >= 0
               assert {:msg "  Assert might fail. There might be insufficient permission to access r.v (<no position>) [224591]"}
@@ -1533,8 +1533,8 @@ procedure m3_e(r_1: Ref) returns ()
             }
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Loop invariant acc(r.v, write) might not be preserved. There might be insufficient permission to access r.v (whileLoop.vpr@108.19--108.27) [224595]"}
@@ -1563,8 +1563,8 @@ procedure m3_e(r_1: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of m3_e might not hold. There might be insufficient permission to access r.v (whileLoop.vpr@105.13--105.28) [224597]"}
@@ -1585,13 +1585,13 @@ procedure m4(r_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var y: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var loopHeap: HeapType;
   var loopMask: MaskType;
@@ -1616,8 +1616,8 @@ procedure m4(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1641,8 +1641,8 @@ procedure m4(r_1: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert !(old(true) && y >= 0) || y >= 0 -- <no position>
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion !(old(true) && y >= 0) || y >= 0 might not hold. (<no position>) [224599]"}
       !(y >= 0) || y >= 0;
     assume state(Heap, Mask);
@@ -1652,8 +1652,8 @@ procedure m4(r_1: Ref) returns ()
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Loop invariant acc(r.v, write) might not hold on entry. There might be insufficient permission to access r.v (whileLoop.vpr@132.19--132.27) [224600]"}
@@ -1719,8 +1719,8 @@ procedure m4(r_1: Ref) returns ()
             assume state(Heap, Mask);
           
           // -- Translating statement: assert !(old_W10_C && y >= 0) || y >= 0 -- <no position>
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             assert {:msg "  Assert might fail. Assertion !(old_W10_C && y >= 0) || y >= 0 might not hold. (<no position>) [224603]"}
               !(old_W10_C && y >= 0) || y >= 0;
             assume state(Heap, Mask);
@@ -1728,16 +1728,16 @@ procedure m4(r_1: Ref) returns ()
           // -- Translating statement: assert old_W10_C && y >= 0 ==>
   //   (decreasing(y, old_W10_T0): Bool) && (bounded(old_W10_T0): Bool) ||
   //   y == old_W10_T0 && false -- <no position>
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             if (old_W10_C && y >= 0) {
               assert {:msg "  Assert might fail. Assertion (decreasing(y, old_W10_T0): Bool) && (bounded(old_W10_T0): Bool) || y == old_W10_T0 && false might not hold. (<no position>) [224604]"}
                 (decreasing(y, old_W10_T0): bool) && (bounded(old_W10_T0): bool);
             }
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Loop invariant acc(r.v, write) might not be preserved. There might be insufficient permission to access r.v (whileLoop.vpr@132.19--132.27) [224605]"}
@@ -1766,8 +1766,8 @@ procedure m4(r_1: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of m4 might not hold. There might be insufficient permission to access r.v (whileLoop.vpr@128.13--128.28) [224607]"}
@@ -1788,13 +1788,13 @@ procedure m4_e(r_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var y: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var loopHeap: HeapType;
   var loopMask: MaskType;
@@ -1819,8 +1819,8 @@ procedure m4_e(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1844,8 +1844,8 @@ procedure m4_e(r_1: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert !(old(true) && y >= 0) || y > 0 -- <no position>
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion !(old(true) && y >= 0) || y > 0 might not hold. (<no position>) [224609]"}
       !(y >= 0) || y > 0;
     assume state(Heap, Mask);
@@ -1855,8 +1855,8 @@ procedure m4_e(r_1: Ref) returns ()
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Loop invariant acc(r.v, write) might not hold on entry. There might be insufficient permission to access r.v (whileLoop.vpr@149.19--149.27) [224610]"}
@@ -1922,8 +1922,8 @@ procedure m4_e(r_1: Ref) returns ()
             assume state(Heap, Mask);
           
           // -- Translating statement: assert !(old_W11_C && y >= 0) || y > 0 -- <no position>
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             assert {:msg "  Assert might fail. Assertion !(old_W11_C && y >= 0) || y > 0 might not hold. (<no position>) [224613]"}
               !(old_W11_C && y >= 0) || y > 0;
             assume state(Heap, Mask);
@@ -1931,16 +1931,16 @@ procedure m4_e(r_1: Ref) returns ()
           // -- Translating statement: assert old_W11_C && y >= 0 ==>
   //   (decreasing(y, old_W11_T0): Bool) && (bounded(old_W11_T0): Bool) ||
   //   y == old_W11_T0 && false -- <no position>
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             if (old_W11_C && y >= 0) {
               assert {:msg "  Assert might fail. Assertion (decreasing(y, old_W11_T0): Bool) && (bounded(old_W11_T0): Bool) || y == old_W11_T0 && false might not hold. (<no position>) [224614]"}
                 (decreasing(y, old_W11_T0): bool) && (bounded(old_W11_T0): bool);
             }
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Loop invariant acc(r.v, write) might not be preserved. There might be insufficient permission to access r.v (whileLoop.vpr@149.19--149.27) [224615]"}
@@ -1969,8 +1969,8 @@ procedure m4_e(r_1: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of m4_e might not hold. There might be insufficient permission to access r.v (whileLoop.vpr@143.13--143.28) [224617]"}
@@ -1991,13 +1991,13 @@ procedure m4_e2(r_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var y: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var loopHeap: HeapType;
   var loopMask: MaskType;
@@ -2022,8 +2022,8 @@ procedure m4_e2(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -2051,8 +2051,8 @@ procedure m4_e2(r_1: Ref) returns ()
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Loop invariant acc(r.v, write) might not hold on entry. There might be insufficient permission to access r.v (whileLoop.vpr@163.19--163.27) [224619]"}
@@ -2118,8 +2118,8 @@ procedure m4_e2(r_1: Ref) returns ()
             assume state(Heap, Mask);
           
           // -- Translating statement: assert !(old_W12_C && y >= 0) || y > 0 -- <no position>
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             assert {:msg "  Assert might fail. Assertion !(old_W12_C && y >= 0) || y > 0 might not hold. (<no position>) [224622]"}
               !(old_W12_C && y >= 0) || y > 0;
             assume state(Heap, Mask);
@@ -2127,16 +2127,16 @@ procedure m4_e2(r_1: Ref) returns ()
           // -- Translating statement: assert old_W12_C && y >= 0 ==>
   //   (decreasing(y, old_W12_T0): Bool) && (bounded(old_W12_T0): Bool) ||
   //   y == old_W12_T0 && false -- <no position>
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             if (old_W12_C && y >= 0) {
               assert {:msg "  Assert might fail. Assertion (decreasing(y, old_W12_T0): Bool) && (bounded(old_W12_T0): Bool) || y == old_W12_T0 && false might not hold. (<no position>) [224623]"}
                 (decreasing(y, old_W12_T0): bool) && (bounded(old_W12_T0): bool);
             }
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Loop invariant acc(r.v, write) might not be preserved. There might be insufficient permission to access r.v (whileLoop.vpr@163.19--163.27) [224624]"}
@@ -2165,8 +2165,8 @@ procedure m4_e2(r_1: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of m4_e2 might not hold. There might be insufficient permission to access r.v (whileLoop.vpr@159.13--159.28) [224626]"}

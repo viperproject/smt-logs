@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-07 14:38:37
+// Date:         2025-01-08 22:13:38
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/termination/methods/basic/specOrder.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/termination/methods/basic/specOrder-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -212,12 +212,12 @@ function  bounded<T>(arg1_1: T): bool;
 procedure m1(x: int, y: int) returns (res: int)
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
   
@@ -234,8 +234,8 @@ procedure m1(x: int, y: int) returns (res: int)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -255,8 +255,8 @@ procedure m1(x: int, y: int) returns (res: int)
     } else {
       
       // -- Translating statement: assert false -- <no position>
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Assert might fail. Assertion false might not hold. (<no position>) [225341]"}
           false;
         assume state(Heap, Mask);
@@ -266,8 +266,8 @@ procedure m1(x: int, y: int) returns (res: int)
         PreCallMask := Mask;
         
         // -- Exhaling precondition
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           assert {:msg "  The precondition of method m1 might not hold. Assertion y > 0 might not hold. (specOrder.vpr@18.5--18.20) [225342]"}
             y > 0;
           assert {:msg "  The precondition of method m1 might not hold. Assertion y > 0 might not hold. (specOrder.vpr@18.5--18.20) [225343]"}
@@ -283,8 +283,8 @@ procedure m1(x: int, y: int) returns (res: int)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
 }
 
 // ==================================================
@@ -294,12 +294,12 @@ procedure m1(x: int, y: int) returns (res: int)
 procedure m2(x: int, y: int) returns (res: int)
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
   
@@ -316,8 +316,8 @@ procedure m2(x: int, y: int) returns (res: int)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -337,8 +337,8 @@ procedure m2(x: int, y: int) returns (res: int)
     } else {
       
       // -- Translating statement: assert false -- <no position>
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Assert might fail. Assertion false might not hold. (<no position>) [225344]"}
           false;
         assume state(Heap, Mask);
@@ -348,8 +348,8 @@ procedure m2(x: int, y: int) returns (res: int)
         PreCallMask := Mask;
         
         // -- Exhaling precondition
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           assert {:msg "  The precondition of method m2 might not hold. Assertion y > 0 might not hold. (specOrder.vpr@31.5--31.20) [225345]"}
             y > 0;
           assert {:msg "  The precondition of method m2 might not hold. Assertion y > 0 might not hold. (specOrder.vpr@31.5--31.20) [225346]"}
@@ -365,8 +365,8 @@ procedure m2(x: int, y: int) returns (res: int)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
 }
 
 // ==================================================
@@ -376,12 +376,12 @@ procedure m2(x: int, y: int) returns (res: int)
 procedure m3(x: int, y: int) returns (res: int)
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
   
@@ -398,8 +398,8 @@ procedure m3(x: int, y: int) returns (res: int)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -419,8 +419,8 @@ procedure m3(x: int, y: int) returns (res: int)
     } else {
       
       // -- Translating statement: assert false -- <no position>
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Assert might fail. Assertion false might not hold. (<no position>) [225347]"}
           false;
         assume state(Heap, Mask);
@@ -430,8 +430,8 @@ procedure m3(x: int, y: int) returns (res: int)
         PreCallMask := Mask;
         
         // -- Exhaling precondition
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           assert {:msg "  The precondition of method m3 might not hold. Assertion y > 0 might not hold. (specOrder.vpr@44.5--44.20) [225348]"}
             y > 0;
           assert {:msg "  The precondition of method m3 might not hold. Assertion y > 0 might not hold. (specOrder.vpr@44.5--44.20) [225349]"}
@@ -447,8 +447,8 @@ procedure m3(x: int, y: int) returns (res: int)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
 }
 
 // ==================================================
@@ -458,12 +458,12 @@ procedure m3(x: int, y: int) returns (res: int)
 procedure m4(x: int, y: int) returns (res: int)
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
   
@@ -480,8 +480,8 @@ procedure m4(x: int, y: int) returns (res: int)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -501,8 +501,8 @@ procedure m4(x: int, y: int) returns (res: int)
     } else {
       
       // -- Translating statement: assert !old(y < x) || y < y -- <no position>
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Assert might fail. Assertion !old(y < x) || y < y might not hold. (<no position>) [225350]"}
           !(y < x) || y < y;
         assume state(Heap, Mask);
@@ -510,8 +510,8 @@ procedure m4(x: int, y: int) returns (res: int)
       // -- Translating statement: assert old(y < x) ==>
   //   (decreasing(y, old(x)): Bool) && (bounded(old(x)): Bool) ||
   //   y == old(x) && false -- <no position>
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         if (y < x) {
           assert {:msg "  Assert might fail. Assertion (decreasing(y, old(x)): Bool) && (bounded(old(x)): Bool) || y == old(x) && false might not hold. (<no position>) [225351]"}
             (decreasing(y, x): bool) && (bounded(x): bool);
@@ -523,8 +523,8 @@ procedure m4(x: int, y: int) returns (res: int)
         PreCallMask := Mask;
         
         // -- Exhaling precondition
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           assert {:msg "  The precondition of method m4 might not hold. Assertion y > 0 might not hold. (specOrder.vpr@62.5--62.20) [225352]"}
             y > 0;
           assert {:msg "  The precondition of method m4 might not hold. Assertion y > 0 might not hold. (specOrder.vpr@62.5--62.20) [225353]"}
@@ -540,8 +540,8 @@ procedure m4(x: int, y: int) returns (res: int)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
 }
 
 // ==================================================
@@ -551,12 +551,12 @@ procedure m4(x: int, y: int) returns (res: int)
 procedure m5(x: int, y: int) returns (res: int)
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
   
@@ -573,8 +573,8 @@ procedure m5(x: int, y: int) returns (res: int)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -594,8 +594,8 @@ procedure m5(x: int, y: int) returns (res: int)
     } else {
       
       // -- Translating statement: assert !old(y < x) || y < y -- <no position>
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Assert might fail. Assertion !old(y < x) || y < y might not hold. (<no position>) [225354]"}
           !(y < x) || y < y;
         assume state(Heap, Mask);
@@ -603,8 +603,8 @@ procedure m5(x: int, y: int) returns (res: int)
       // -- Translating statement: assert old(y < x) ==>
   //   (decreasing(y, old(x)): Bool) && (bounded(old(x)): Bool) ||
   //   y == old(x) && false -- <no position>
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         if (y < x) {
           assert {:msg "  Assert might fail. Assertion (decreasing(y, old(x)): Bool) && (bounded(old(x)): Bool) || y == old(x) && false might not hold. (<no position>) [225355]"}
             (decreasing(y, x): bool) && (bounded(x): bool);
@@ -616,8 +616,8 @@ procedure m5(x: int, y: int) returns (res: int)
         PreCallMask := Mask;
         
         // -- Exhaling precondition
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           assert {:msg "  The precondition of method m5 might not hold. Assertion y > 0 might not hold. (specOrder.vpr@76.5--76.20) [225356]"}
             y > 0;
           assert {:msg "  The precondition of method m5 might not hold. Assertion y > 0 might not hold. (specOrder.vpr@76.5--76.20) [225357]"}
@@ -633,8 +633,8 @@ procedure m5(x: int, y: int) returns (res: int)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
 }
 
 // ==================================================
@@ -644,12 +644,12 @@ procedure m5(x: int, y: int) returns (res: int)
 procedure m6(x: int, y: int) returns (res: int)
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
   
@@ -666,8 +666,8 @@ procedure m6(x: int, y: int) returns (res: int)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -687,8 +687,8 @@ procedure m6(x: int, y: int) returns (res: int)
     } else {
       
       // -- Translating statement: assert !old(y < x) || y < y -- <no position>
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Assert might fail. Assertion !old(y < x) || y < y might not hold. (<no position>) [225358]"}
           !(y < x) || y < y;
         assume state(Heap, Mask);
@@ -696,8 +696,8 @@ procedure m6(x: int, y: int) returns (res: int)
       // -- Translating statement: assert old(y < x) ==>
   //   (decreasing(y, old(x)): Bool) && (bounded(old(x)): Bool) ||
   //   y == old(x) && false -- <no position>
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         if (y < x) {
           assert {:msg "  Assert might fail. Assertion (decreasing(y, old(x)): Bool) && (bounded(old(x)): Bool) || y == old(x) && false might not hold. (<no position>) [225359]"}
             (decreasing(y, x): bool) && (bounded(x): bool);
@@ -709,8 +709,8 @@ procedure m6(x: int, y: int) returns (res: int)
         PreCallMask := Mask;
         
         // -- Exhaling precondition
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           assert {:msg "  The precondition of method m6 might not hold. Assertion y > 0 might not hold. (specOrder.vpr@90.5--90.20) [225360]"}
             y > 0;
           assert {:msg "  The precondition of method m6 might not hold. Assertion y > 0 might not hold. (specOrder.vpr@90.5--90.20) [225361]"}
@@ -726,6 +726,6 @@ procedure m6(x: int, y: int) returns (res: int)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
 }

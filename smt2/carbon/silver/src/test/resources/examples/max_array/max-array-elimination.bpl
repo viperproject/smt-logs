@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-07 14:06:11
+// Date:         2025-01-08 21:41:24
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/examples/max_array/max-array-elimination.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/examples/max_array/max-array-elimination-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -265,15 +265,15 @@ procedure vmax_1(a_2: IArrayDomainType) returns (x: int)
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var j$1: int;
   var j$2: int;
   var y: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var j$4: int;
   var ExhaleHeap: HeapType;
   var j$4_1: int;
@@ -335,8 +335,8 @@ procedure vmax_1(a_2: IArrayDomainType) returns (x: int)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -445,8 +445,8 @@ procedure vmax_1(a_2: IArrayDomainType) returns (x: int)
         // -- Before loop head
           
           // -- Exhale loop invariant before loop
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             havoc QPMask;
             
             // -- check that the permission amount is positive
@@ -701,8 +701,8 @@ procedure vmax_1(a_2: IArrayDomainType) returns (x: int)
                 }
                 assume state(Heap, Mask);
             // Exhale invariant
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             havoc QPMask;
             
             // -- check that the permission amount is positive
@@ -834,8 +834,8 @@ procedure vmax_1(a_2: IArrayDomainType) returns (x: int)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     havoc QPMask;
     
     // -- check that the permission amount is positive
@@ -921,15 +921,15 @@ procedure vmax_1(a_2: IArrayDomainType) returns (x: int)
 procedure client() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var a_2: IArrayDomainType;
   var QPMask: MaskType;
   var i_12: int;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var x: int;
   
@@ -941,8 +941,8 @@ procedure client() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale len(a) == 3 -- max-array-elimination.vpr@46.3--46.21
     assume (len_1(a_2): int) == 3;
@@ -1018,8 +1018,8 @@ procedure client() returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       havoc QPMask;
       
       // -- check that the permission amount is positive
@@ -1122,8 +1122,8 @@ procedure client() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert loc(a, 0).val <= x -- max-array-elimination.vpr@53.3--53.28
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of loc(a, 0).val <= x
       assert {:msg "  Assert might fail. There might be insufficient permission to access loc(a, 0).val (max-array-elimination.vpr@53.10--53.28) [111157]"}
@@ -1133,8 +1133,8 @@ procedure client() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert x == loc(a, len(a) - 1).val -- max-array-elimination.vpr@55.3--55.37
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of x == loc(a, len(a) - 1).val
       assert {:msg "  Assert might fail. There might be insufficient permission to access loc(a, len(a) - 1).val (max-array-elimination.vpr@55.10--55.37) [111159]"}
@@ -1144,15 +1144,15 @@ procedure client() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert x == 2 -- max-array-elimination.vpr@58.3--58.16
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion x == 2 might not hold. (max-array-elimination.vpr@58.10--58.16) [111161]"}
       x == 2;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert loc(a, 1).val < x -- max-array-elimination.vpr@60.3--60.27
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of loc(a, 1).val < x
       assert {:msg "  Assert might fail. There might be insufficient permission to access loc(a, 1).val (max-array-elimination.vpr@60.10--60.27) [111162]"}

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-07 14:19:05
+// Date:         2025-01-08 21:54:13
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/chalice/setset.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/chalice/setset-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -226,8 +226,8 @@ procedure get#definedness(this: Ref) returns (Result: int)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -249,8 +249,8 @@ procedure get#definedness(this: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume valid#trigger(UnfoldingHeap, valid(this));
       assume UnfoldingHeap[null, valid(this)] == FrameFragment(UnfoldingHeap[this, value]);
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access valid(this) (setset.vpr@12.3--14.56) [147081]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, valid(this)];
@@ -333,12 +333,12 @@ procedure init(this: Ref, v_2: int) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var freshVersion: FrameType;
   var ExhaleHeap: HeapType;
   
@@ -361,8 +361,8 @@ procedure init(this: Ref, v_2: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -383,8 +383,8 @@ procedure init(this: Ref, v_2: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(valid(this), write) -- setset.vpr@10.5--10.33
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding valid(this) might fail. There might be insufficient permission to access this.value (setset.vpr@10.5--10.33) [147086]"}
@@ -407,8 +407,8 @@ procedure init(this: Ref, v_2: int) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of init might not hold. There might be insufficient permission to access valid(this) (setset.vpr@7.13--7.36) [147088]"}
@@ -429,12 +429,12 @@ procedure set(this: Ref, v_2: int) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var newVersion: FrameType;
   var freshVersion: FrameType;
@@ -457,8 +457,8 @@ procedure set(this: Ref, v_2: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -472,8 +472,8 @@ procedure set(this: Ref, v_2: int) returns ()
     // -- Check definedness of get(this) == v
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
+        ExhaleWellDef0Mask := PostMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function get might not hold. There might be insufficient permission to access valid(this) (setset.vpr@17.42--17.51) [147089]"}
           NoPerm < perm ==> NoPerm < PostMask[null, valid(this)];
@@ -493,8 +493,8 @@ procedure set(this: Ref, v_2: int) returns ()
   // -- Translating statement: unfold acc(valid(this), write) -- setset.vpr@19.5--19.35
     assume valid#trigger(Heap, valid(this));
     assume Heap[null, valid(this)] == FrameFragment(Heap[this, value]);
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding valid(this) might fail. There might be insufficient permission to access valid(this) (setset.vpr@19.5--19.35) [147092]"}
@@ -521,8 +521,8 @@ procedure set(this: Ref, v_2: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(valid(this), write) -- setset.vpr@21.5--21.33
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding valid(this) might fail. There might be insufficient permission to access this.value (setset.vpr@21.5--21.33) [147097]"}
@@ -545,8 +545,8 @@ procedure set(this: Ref, v_2: int) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of set might not hold. There might be insufficient permission to access valid(this) (setset.vpr@17.13--17.60) [147099]"}
@@ -569,17 +569,17 @@ procedure main(this: Ref, x: Ref, y: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var newVersion: FrameType;
   var freshVersion: FrameType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -607,16 +607,16 @@ procedure main(this: Ref, x: Ref, y: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: set(x, 3) -- setset.vpr@28.5--28.14
     PreCallHeap := Heap;
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  The precondition of method set might not hold. There might be insufficient permission to access valid(x) (setset.vpr@28.5--28.14) [147101]"}
@@ -642,8 +642,8 @@ procedure main(this: Ref, x: Ref, y: Ref) returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  The precondition of method set might not hold. There might be insufficient permission to access valid(y) (setset.vpr@29.5--29.14) [147102]"}
@@ -669,8 +669,8 @@ procedure main(this: Ref, x: Ref, y: Ref) returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  The precondition of method set might not hold. There might be insufficient permission to access valid(x) (setset.vpr@30.5--30.14) [147103]"}
@@ -696,8 +696,8 @@ procedure main(this: Ref, x: Ref, y: Ref) returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  The precondition of method set might not hold. There might be insufficient permission to access valid(y) (setset.vpr@31.5--31.14) [147104]"}
@@ -723,8 +723,8 @@ procedure main(this: Ref, x: Ref, y: Ref) returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  The precondition of method set might not hold. There might be insufficient permission to access valid(x) (setset.vpr@32.5--32.14) [147105]"}
@@ -750,8 +750,8 @@ procedure main(this: Ref, x: Ref, y: Ref) returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  The precondition of method set might not hold. There might be insufficient permission to access valid(y) (setset.vpr@33.5--33.14) [147106]"}
@@ -777,8 +777,8 @@ procedure main(this: Ref, x: Ref, y: Ref) returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  The precondition of method set might not hold. There might be insufficient permission to access valid(x) (setset.vpr@34.5--34.14) [147107]"}
@@ -802,8 +802,8 @@ procedure main(this: Ref, x: Ref, y: Ref) returns ()
   // -- Translating statement: unfold acc(valid(x), write) -- setset.vpr@35.5--35.32
     assume valid#trigger(Heap, valid(x));
     assume Heap[null, valid(x)] == FrameFragment(Heap[x, value]);
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding valid(x) might fail. There might be insufficient permission to access valid(x) (setset.vpr@35.5--35.32) [147110]"}
@@ -830,8 +830,8 @@ procedure main(this: Ref, x: Ref, y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(valid(x), write) -- setset.vpr@37.5--37.30
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding valid(x) might fail. There might be insufficient permission to access x.value (setset.vpr@37.5--37.30) [147115]"}
@@ -858,8 +858,8 @@ procedure main(this: Ref, x: Ref, y: Ref) returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  The precondition of method set might not hold. There might be insufficient permission to access valid(y) (setset.vpr@38.5--38.14) [147117]"}
@@ -885,8 +885,8 @@ procedure main(this: Ref, x: Ref, y: Ref) returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  The precondition of method set might not hold. There might be insufficient permission to access valid(x) (setset.vpr@39.5--39.14) [147118]"}
@@ -912,8 +912,8 @@ procedure main(this: Ref, x: Ref, y: Ref) returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  The precondition of method set might not hold. There might be insufficient permission to access valid(y) (setset.vpr@40.5--40.14) [147119]"}
@@ -937,8 +937,8 @@ procedure main(this: Ref, x: Ref, y: Ref) returns ()
   // -- Translating statement: unfold acc(valid(x), write) -- setset.vpr@41.5--41.32
     assume valid#trigger(Heap, valid(x));
     assume Heap[null, valid(x)] == FrameFragment(Heap[x, value]);
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding valid(x) might fail. There might be insufficient permission to access valid(x) (setset.vpr@41.5--41.32) [147122]"}
@@ -965,8 +965,8 @@ procedure main(this: Ref, x: Ref, y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(valid(x), write) -- setset.vpr@43.5--43.30
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding valid(x) might fail. There might be insufficient permission to access x.value (setset.vpr@43.5--43.30) [147127]"}
@@ -991,8 +991,8 @@ procedure main(this: Ref, x: Ref, y: Ref) returns ()
   // -- Translating statement: unfold acc(valid(x), write) -- setset.vpr@44.5--44.32
     assume valid#trigger(Heap, valid(x));
     assume Heap[null, valid(x)] == FrameFragment(Heap[x, value]);
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding valid(x) might fail. There might be insufficient permission to access valid(x) (setset.vpr@44.5--44.32) [147131]"}
@@ -1019,8 +1019,8 @@ procedure main(this: Ref, x: Ref, y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(valid(x), write) -- setset.vpr@46.5--46.30
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding valid(x) might fail. There might be insufficient permission to access x.value (setset.vpr@46.5--46.30) [147136]"}
@@ -1047,8 +1047,8 @@ procedure main(this: Ref, x: Ref, y: Ref) returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  The precondition of method set might not hold. There might be insufficient permission to access valid(x) (setset.vpr@47.5--47.14) [147138]"}
@@ -1074,8 +1074,8 @@ procedure main(this: Ref, x: Ref, y: Ref) returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  The precondition of method set might not hold. There might be insufficient permission to access valid(y) (setset.vpr@48.5--48.14) [147139]"}
@@ -1101,8 +1101,8 @@ procedure main(this: Ref, x: Ref, y: Ref) returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  The precondition of method set might not hold. There might be insufficient permission to access valid(x) (setset.vpr@49.5--49.14) [147140]"}
@@ -1124,14 +1124,14 @@ procedure main(this: Ref, x: Ref, y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert get(y) == 3 -- setset.vpr@50.5--50.29
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of get(y) == 3
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function get might not hold. There might be insufficient permission to access valid(y) (setset.vpr@50.14--50.20) [147141]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, valid(y)];
@@ -1147,14 +1147,14 @@ procedure main(this: Ref, x: Ref, y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert get(x) == 3 -- setset.vpr@52.5--52.29
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of get(x) == 3
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function get might not hold. There might be insufficient permission to access valid(x) (setset.vpr@52.14--52.20) [147143]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, valid(x)];

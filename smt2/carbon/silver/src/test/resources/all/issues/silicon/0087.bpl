@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-07 14:34:07
+// Date:         2025-01-08 22:09:08
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0087.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0087-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -188,12 +188,12 @@ axiom !IsWandField(f_7);
 procedure test01(b_24: bool) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -214,8 +214,8 @@ procedure test01(b_24: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -242,8 +242,8 @@ procedure test01(b_24: bool) returns ()
   }
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     if (b_24) {
       assert {:msg "  Postcondition of test01 might not hold. Assertion b might not hold. (0087.vpr@8.11--8.37) [218819]"}
         b_24;
@@ -258,12 +258,12 @@ procedure test02(b1: bool, b2: bool, x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -304,8 +304,8 @@ procedure test02(b1: bool, b2: bool, x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -334,8 +334,8 @@ procedure test02(b1: bool, b2: bool, x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of test02 might not hold. There might be insufficient permission to access x.f (0087.vpr@16.11--16.19) [218821]"}
@@ -355,13 +355,13 @@ procedure test02(b1: bool, b2: bool, x: Ref) returns ()
 procedure test03(x: Ref, b_24: bool, b1: bool, b2: bool) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
@@ -377,8 +377,8 @@ procedure test03(x: Ref, b_24: bool, b1: bool, b2: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: if (b) -- 0087.vpr@24.3--30.4
     if (b_24) {
@@ -396,8 +396,8 @@ procedure test03(x: Ref, b_24: bool, b1: bool, b2: bool) returns ()
         PreCallMask := Mask;
         
         // -- Exhaling precondition
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           if (b1) {
             if (b2) {
               perm := FullPerm;
@@ -443,8 +443,8 @@ procedure test03(x: Ref, b_24: bool, b1: bool, b2: bool) returns ()
         PreCallMask := Mask;
         
         // -- Exhaling precondition
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           if (b1) {
             if (b2) {
               perm := FullPerm;
@@ -473,8 +473,8 @@ procedure test03(x: Ref, b_24: bool, b1: bool, b2: bool) returns ()
   // -- Translating statement: assert acc(x.f, 1 / 2) && acc(x.f, 1 / 2) -- 0087.vpr@32.3--32.40
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Heap := AssertHeap;
     ExhaleWellDef0Mask := AssertMask;
+    ExhaleWellDef0Heap := AssertHeap;
     perm := 1 / 2;
     assert {:msg "  Assert might fail. Fraction 1 / 2 might be negative. (0087.vpr@32.10--32.40) [218827]"}
       perm >= NoPerm;

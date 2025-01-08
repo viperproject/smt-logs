@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-07 14:20:41
+// Date:         2025-01-08 21:55:47
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/functions/basic.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/functions/basic-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -428,15 +428,15 @@ procedure tern#definedness(x: Ref, b_24: bool) returns (Result: int)
 procedure test1() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var x: Ref;
   var y: Ref;
   var freshObj: Ref;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
-  var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var perm: Perm;
   var ExhaleHeap: HeapType;
   
@@ -449,8 +449,8 @@ procedure test1() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[x, $allocated];
@@ -495,14 +495,14 @@ procedure test1() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert add(x) == add(y) -- basic.vpr@21.3--21.26
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of add(x) == add(y)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function add might not hold. There might be insufficient permission to access x.f (basic.vpr@21.10--21.16) [154381]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[x, f_7];
@@ -518,8 +518,8 @@ procedure test1() returns ()
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function add might not hold. There might be insufficient permission to access y.f (basic.vpr@21.20--21.26) [154383]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[y, f_7];
@@ -548,14 +548,14 @@ procedure test1() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert add(x) == add(y) -- basic.vpr@25.3--25.26
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of add(x) == add(y)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function add might not hold. There might be insufficient permission to access x.f (basic.vpr@25.10--25.16) [154388]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[x, f_7];
@@ -571,8 +571,8 @@ procedure test1() returns ()
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function add might not hold. There might be insufficient permission to access y.f (basic.vpr@25.20--25.26) [154390]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[y, f_7];
@@ -598,14 +598,14 @@ procedure test1() returns ()
 procedure test2() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var x: Ref;
   var freshObj: Ref;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
-  var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var perm: Perm;
   var ExhaleHeap: HeapType;
   
@@ -618,8 +618,8 @@ procedure test2() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[x, $allocated];
@@ -640,14 +640,14 @@ procedure test2() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert add3(x, 0) == add(x) -- basic.vpr@32.3--32.30
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of add3(x, 0) == add(x)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         perm := 1 / 2;
         assert {:msg "  Precondition of function add3 might not hold. Fraction 1 / 2 might be negative. (basic.vpr@32.10--32.20) [154394]"}
           perm >= NoPerm;
@@ -672,8 +672,8 @@ procedure test2() returns ()
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function add might not hold. There might be insufficient permission to access x.f (basic.vpr@32.24--32.30) [154400]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[x, f_7];
@@ -698,14 +698,14 @@ procedure test2() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert add3(x, 5) == 0 -- basic.vpr@34.3--34.25
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of add3(x, 5) == 0
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         perm := 1 / 2;
         assert {:msg "  Precondition of function add3 might not hold. Fraction 1 / 2 might be negative. (basic.vpr@34.10--34.20) [154404]"}
           perm >= NoPerm;
@@ -733,14 +733,14 @@ procedure test2() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert add3(x, 1) == add(x) -- basic.vpr@36.3--36.30
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of add3(x, 1) == add(x)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         perm := 1 / 2;
         assert {:msg "  Precondition of function add3 might not hold. Fraction 1 / 2 might be negative. (basic.vpr@36.10--36.20) [154411]"}
           perm >= NoPerm;
@@ -765,8 +765,8 @@ procedure test2() returns ()
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function add might not hold. There might be insufficient permission to access x.f (basic.vpr@36.24--36.30) [154417]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[x, f_7];
@@ -792,16 +792,16 @@ procedure test2() returns ()
 procedure test3() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var x: Ref;
   var freshObj: Ref;
   var b1: bool;
   var b2: bool;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
-  var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var perm: Perm;
   var ExhaleHeap: HeapType;
   
@@ -814,8 +814,8 @@ procedure test3() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[x, $allocated];
@@ -862,14 +862,14 @@ procedure test3() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert tern(x, b1) == x.g -- basic.vpr@50.3--50.28
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of tern(x, b1) == x.g
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         if (b1) {
           perm := FullPerm;
           assert {:msg "  Precondition of function tern might not hold. There might be insufficient permission to access x.f (basic.vpr@50.10--50.21) [154426]"}
@@ -893,14 +893,14 @@ procedure test3() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert tern(x, !b1) == x.f -- basic.vpr@51.3--51.29
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of tern(x, !b1) == x.f
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         if (!b1) {
           perm := FullPerm;
           assert {:msg "  Precondition of function tern might not hold. There might be insufficient permission to access x.f (basic.vpr@51.10--51.22) [154430]"}
@@ -924,14 +924,14 @@ procedure test3() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert tern(x, b2) > 0 -- basic.vpr@52.3--52.25
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of tern(x, b2) > 0
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         if (b2) {
           perm := FullPerm;
           assert {:msg "  Precondition of function tern might not hold. There might be insufficient permission to access x.f (basic.vpr@52.10--52.21) [154434]"}
@@ -953,14 +953,14 @@ procedure test3() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert tern(x, !b2) > 1 -- basic.vpr@54.3--54.26
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of tern(x, !b2) > 1
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         if (!b2) {
           perm := FullPerm;
           assert {:msg "  Precondition of function tern might not hold. There might be insufficient permission to access x.f (basic.vpr@54.10--54.22) [154437]"}

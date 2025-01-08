@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-07 14:20:24
+// Date:         2025-01-08 21:55:30
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/asserting/other-fail.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/asserting/other-fail-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -188,14 +188,14 @@ axiom !IsWandField(x_36);
 procedure test1() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var assertingHeap: HeapType;
   var assertingMask: MaskType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -205,13 +205,13 @@ procedure test1() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert (asserting (1 \ 0 == 0) in
   //     true) -- other-fail.vpr@8.3--8.40
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (asserting (1 \ 0 == 0) in true)
       
@@ -221,8 +221,8 @@ procedure test1() returns ()
       assertingHeap := Heap;
       assertingMask := Mask;
       // Exhale assertion of asserting
-      ExhaleWellDef1Mask := assertingMask;
       ExhaleWellDef1Heap := assertingHeap;
+      ExhaleWellDef1Mask := assertingMask;
       
       // -- Check definedness of 1 \ 0 == 0
         assert {:msg "  Assert might fail. Divisor 0 might be zero. (other-fail.vpr@8.10--8.40) [153115]"}
@@ -239,14 +239,14 @@ procedure test1() returns ()
 procedure test2() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var assertingHeap: HeapType;
   var assertingMask: MaskType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -256,20 +256,20 @@ procedure test2() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert (asserting (true) in
   //     1 \ 0 == 0) -- other-fail.vpr@13.3--13.42
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (asserting (true) in 1 \ 0 == 0)
       assertingHeap := Heap;
       assertingMask := Mask;
       // Exhale assertion of asserting
-      ExhaleWellDef1Mask := assertingMask;
       ExhaleWellDef1Heap := assertingHeap;
+      ExhaleWellDef1Mask := assertingMask;
       
       // -- Check definedness of 1 \ 0 == 0
         assert {:msg "  Assert might fail. Divisor 0 might be zero. (other-fail.vpr@13.10--13.42) [153118]"}
@@ -286,14 +286,14 @@ procedure test2() returns ()
 procedure test3(r_1: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var assertingHeap: HeapType;
   var assertingMask: MaskType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var perm: Perm;
   var ExhaleHeap: HeapType;
   
@@ -308,20 +308,20 @@ procedure test3(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert (asserting (true && acc(r.x, write)) in
   //     true) -- other-fail.vpr@18.3--18.46
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (asserting (true && acc(r.x, write)) in true)
       assertingHeap := Heap;
       assertingMask := Mask;
       // Exhale assertion of asserting
-      ExhaleWellDef1Mask := assertingMask;
       ExhaleWellDef1Heap := assertingHeap;
+      ExhaleWellDef1Mask := assertingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Assert might fail. There might be insufficient permission to access r.x (other-fail.vpr@18.10--18.46) [153120]"}

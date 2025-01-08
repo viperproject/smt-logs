@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-07 14:23:41
+// Date:         2025-01-08 21:58:44
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/third_party/stefan_recent/test_list.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/third_party/stefan_recent/test_list-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -593,8 +593,8 @@ procedure node__contents#definedness(diz: Ref) returns (Result: (Seq int))
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var newPMask: PMaskType;
   
@@ -620,8 +620,8 @@ procedure node__contents#definedness(diz: Ref) returns (Result: (Seq int))
       UnfoldingMask := Mask;
       assume node__state#trigger(UnfoldingHeap, node__state(diz));
       assume UnfoldingHeap[null, node__state(diz)] == CombineFrames(FrameFragment(UnfoldingHeap[diz, node__val]), CombineFrames(FrameFragment(UnfoldingHeap[diz, node__next]), FrameFragment((if UnfoldingHeap[diz, node__next] != null then UnfoldingHeap[null, node__state(UnfoldingHeap[diz, node__next])] else EmptyFrame))));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access node__state(diz) (test_list.vpr@8.1--13.2) [180305]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, node__state(diz)];
@@ -654,8 +654,8 @@ procedure node__contents#definedness(diz: Ref) returns (Result: (Seq int))
           HasDirectPerm(UnfoldingMask, diz, node__next);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
+          ExhaleWellDef0Mask := UnfoldingMask;
           assert {:msg "  Precondition of function node__contents might not hold. Assertion diz.node__next != null might not hold. (test_list.vpr@12.115--12.145) [180310]"}
             UnfoldingHeap[diz, node__next] != null;
           perm := FullPerm;
@@ -770,12 +770,12 @@ procedure node__node(current_thread_id: int, v_2: int, n: Ref) returns (sys__res
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var diz: Ref;
   var __flatten_2: Ref;
@@ -787,8 +787,8 @@ procedure node__node(current_thread_id: int, v_2: int, n: Ref) returns (sys__res
   var newPMask: PMaskType;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -812,8 +812,8 @@ procedure node__node(current_thread_id: int, v_2: int, n: Ref) returns (sys__res
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -830,8 +830,8 @@ procedure node__node(current_thread_id: int, v_2: int, n: Ref) returns (sys__res
     // -- Check definedness of node__contents(sys__result) == (n == null ? Seq(v) : Seq(v) ++ old(node__contents(n)))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
+        ExhaleWellDef0Mask := PostMask;
         assert {:msg "  Precondition of function node__contents might not hold. Assertion sys__result != null might not hold. (test_list.vpr@24.11--24.38) [180314]"}
           sys__result != null;
         perm := FullPerm;
@@ -848,8 +848,8 @@ procedure node__node(current_thread_id: int, v_2: int, n: Ref) returns (sys__res
       } else {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := oldMask;
           ExhaleWellDef0Heap := oldHeap;
+          ExhaleWellDef0Mask := oldMask;
           assert {:msg "  Precondition of function node__contents might not hold. Assertion n != null might not hold. (test_list.vpr@24.78--24.95) [180316]"}
             n != null;
           perm := FullPerm;
@@ -909,8 +909,8 @@ procedure node__node(current_thread_id: int, v_2: int, n: Ref) returns (sys__res
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(node__state(diz), write) -- test_list.vpr@38.3--38.36
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding node__state(diz) might fail. There might be insufficient permission to access diz.node__val (test_list.vpr@38.3--38.36) [180322]"}
@@ -968,8 +968,8 @@ procedure node__node(current_thread_id: int, v_2: int, n: Ref) returns (sys__res
   //   (n == null ? Seq(v) : Seq(v) ++ old(node__contents(n)))) -- test_list.vpr@40.3--40.163
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
+    ExhaleWellDef0Mask := AssertMask;
     assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (test_list.vpr@40.10--40.163) [180328]"}
       sys__result != null;
     perm := FullPerm;
@@ -982,8 +982,8 @@ procedure node__node(current_thread_id: int, v_2: int, n: Ref) returns (sys__res
     // -- Check definedness of node__contents(sys__result) == (n == null ? Seq(v) : Seq(v) ++ old(node__contents(n)))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         assert {:msg "  Precondition of function node__contents might not hold. Assertion sys__result != null might not hold. (test_list.vpr@40.76--40.103) [180331]"}
           sys__result != null;
         perm := FullPerm;
@@ -1000,8 +1000,8 @@ procedure node__node(current_thread_id: int, v_2: int, n: Ref) returns (sys__res
       } else {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef1Mask := oldMask;
           ExhaleWellDef1Heap := oldHeap;
+          ExhaleWellDef1Mask := oldMask;
           assert {:msg "  Precondition of function node__contents might not hold. Assertion n != null might not hold. (test_list.vpr@40.143--40.160) [180333]"}
             n != null;
           perm := FullPerm;
@@ -1022,8 +1022,8 @@ procedure node__node(current_thread_id: int, v_2: int, n: Ref) returns (sys__res
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of node__node might not hold. Assertion sys__result != null might not hold. (test_list.vpr@22.11--22.30) [180336]"}
       sys__result != null;
     perm := FullPerm;
@@ -1047,19 +1047,19 @@ procedure node__node(current_thread_id: int, v_2: int, n: Ref) returns (sys__res
 procedure node__main(diz: Ref, current_thread_id: int) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var l_2: Ref;
   var __flatten_3: Ref;
   var tmp: (Seq int);
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
   var perm: Perm;
   var ExhaleHeap: HeapType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1079,8 +1079,8 @@ procedure node__main(diz: Ref, current_thread_id: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[l_2, $allocated];
@@ -1091,15 +1091,15 @@ procedure node__main(diz: Ref, current_thread_id: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert tmp == Seq(1) ++ Seq(2, 3) -- test_list.vpr@52.3--52.36
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion tmp == Seq(1) ++ Seq(2, 3) might not hold. (test_list.vpr@52.10--52.36) [180339]"}
       Seq#Equal(tmp, Seq#Append(Seq#Singleton(1), Seq#Append(Seq#Singleton(2), Seq#Singleton(3))));
     assume state(Heap, Mask);
   
   // -- Translating statement: assert tmp[0] == 1 -- test_list.vpr@53.3--53.21
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of tmp[0] == 1
       assert {:msg "  Assert might fail. Index tmp[0] into tmp might exceed sequence length. (test_list.vpr@53.10--53.21) [180340]"}
@@ -1109,8 +1109,8 @@ procedure node__main(diz: Ref, current_thread_id: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert tmp[1..] == Seq(2, 3) -- test_list.vpr@54.3--54.31
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion tmp[1..] == Seq(2, 3) might not hold. (test_list.vpr@54.10--54.31) [180342]"}
       Seq#Equal(Seq#Drop(tmp, 1), Seq#Append(Seq#Singleton(2), Seq#Singleton(3)));
     assume state(Heap, Mask);
@@ -1120,8 +1120,8 @@ procedure node__main(diz: Ref, current_thread_id: int) returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       assert {:msg "  The precondition of method node__node might not hold. Assertion current_thread_id >= 0 might not hold. (test_list.vpr@55.3--55.57) [180343]"}
         current_thread_id >= 0;
       if (null != null) {
@@ -1156,14 +1156,14 @@ procedure node__main(diz: Ref, current_thread_id: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert node__contents(l) == Seq(37) -- test_list.vpr@57.3--57.38
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of node__contents(l) == Seq(37)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         assert {:msg "  Precondition of function node__contents might not hold. Assertion l != null might not hold. (test_list.vpr@57.10--57.27) [180345]"}
           l_2 != null;
         perm := FullPerm;
@@ -1181,14 +1181,14 @@ procedure node__main(diz: Ref, current_thread_id: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (37 in node__contents(l)) -- test_list.vpr@58.3--58.35
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (37 in node__contents(l))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         assert {:msg "  Precondition of function node__contents might not hold. Assertion l != null might not hold. (test_list.vpr@58.17--58.34) [180348]"}
           l_2 != null;
         perm := FullPerm;

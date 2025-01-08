@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-07 14:31:11
+// Date:         2025-01-08 22:06:12
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0228a.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0228a-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -299,12 +299,12 @@ procedure ok(self$1: Ref, len: int, rd$1: Perm) returns (res$1: Ref)
   var j_5: int;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var QPMask: MaskType;
   var j: int;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -336,8 +336,8 @@ procedure ok(self$1: Ref, len: int, rd$1: Perm) returns (res$1: Ref)
             rd$1 > NoPerm;
           assume valid__Array#trigger(UnfoldingHeap, valid__Array(self$1));
           assume UnfoldingHeap[null, valid__Array(self$1)] == CombineFrames(FrameFragment(UnfoldingHeap[self$1, Array__ptr]), FrameFragment(UnfoldingHeap[self$1, Array__len]));
-          ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
+          ExhaleWellDef0Mask := UnfoldingMask;
           perm := rd$1 / 2;
           assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might be negative. (0228a.vpr@8.12--8.135) [208221]"}
             perm >= NoPerm;
@@ -424,8 +424,8 @@ procedure ok(self$1: Ref, len: int, rd$1: Perm) returns (res$1: Ref)
             rd$1 > NoPerm;
           assume valid__Array#trigger(UnfoldingHeap, valid__Array(self$1));
           assume UnfoldingHeap[null, valid__Array(self$1)] == CombineFrames(FrameFragment(UnfoldingHeap[self$1, Array__ptr]), FrameFragment(UnfoldingHeap[self$1, Array__len]));
-          ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
+          ExhaleWellDef0Mask := UnfoldingMask;
           perm := rd$1 / 2;
           assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might be negative. (0228a.vpr@10.12--10.142) [208228]"}
             perm >= NoPerm;
@@ -513,8 +513,8 @@ procedure ok(self$1: Ref, len: int, rd$1: Perm) returns (res$1: Ref)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
 }
 
 // ==================================================
@@ -528,12 +528,12 @@ procedure not_ok(self$1: Ref, rd$1: Perm) returns (res$1: Ref)
   var j_6: int;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var QPMask: MaskType;
   var j_2: int;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -563,8 +563,8 @@ procedure not_ok(self$1: Ref, rd$1: Perm) returns (res$1: Ref)
             rd$1 > NoPerm;
           assume valid__Array#trigger(UnfoldingHeap, valid__Array(self$1));
           assume UnfoldingHeap[null, valid__Array(self$1)] == CombineFrames(FrameFragment(UnfoldingHeap[self$1, Array__ptr]), FrameFragment(UnfoldingHeap[self$1, Array__len]));
-          ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
+          ExhaleWellDef0Mask := UnfoldingMask;
           perm := rd$1 / 2;
           assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might be negative. (0228a.vpr@17.12--17.200) [208237]"}
             perm >= NoPerm;
@@ -606,8 +606,8 @@ procedure not_ok(self$1: Ref, rd$1: Perm) returns (res$1: Ref)
             rd$1 > NoPerm;
           assume valid__Array#trigger(UnfoldingHeap, valid__Array(self$1));
           assume UnfoldingHeap[null, valid__Array(self$1)] == CombineFrames(FrameFragment(UnfoldingHeap[self$1, Array__ptr]), FrameFragment(UnfoldingHeap[self$1, Array__len]));
-          ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
+          ExhaleWellDef0Mask := UnfoldingMask;
           perm := rd$1 / 2;
           assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might be negative. (0228a.vpr@17.12--17.200) [208243]"}
             perm >= NoPerm;
@@ -694,8 +694,8 @@ procedure not_ok(self$1: Ref, rd$1: Perm) returns (res$1: Ref)
             rd$1 > NoPerm;
           assume valid__Array#trigger(UnfoldingHeap, valid__Array(self$1));
           assume UnfoldingHeap[null, valid__Array(self$1)] == CombineFrames(FrameFragment(UnfoldingHeap[self$1, Array__ptr]), FrameFragment(UnfoldingHeap[self$1, Array__len]));
-          ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
+          ExhaleWellDef0Mask := UnfoldingMask;
           perm := rd$1 / 2;
           assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might be negative. (0228a.vpr@19.12--19.207) [208250]"}
             perm >= NoPerm;
@@ -737,8 +737,8 @@ procedure not_ok(self$1: Ref, rd$1: Perm) returns (res$1: Ref)
             rd$1 > NoPerm;
           assume valid__Array#trigger(UnfoldingHeap, valid__Array(self$1));
           assume UnfoldingHeap[null, valid__Array(self$1)] == CombineFrames(FrameFragment(UnfoldingHeap[self$1, Array__ptr]), FrameFragment(UnfoldingHeap[self$1, Array__len]));
-          ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
+          ExhaleWellDef0Mask := UnfoldingMask;
           perm := rd$1 / 2;
           assert {:msg "  Contract might not be well-formed. Fraction rd$1 / 2 might be negative. (0228a.vpr@19.12--19.207) [208256]"}
             perm >= NoPerm;
@@ -826,6 +826,6 @@ procedure not_ok(self$1: Ref, rd$1: Perm) returns (res$1: Ref)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
 }

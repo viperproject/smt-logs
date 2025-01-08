@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-07 14:29:50
+// Date:         2025-01-08 22:04:51
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0336b.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0336b-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -614,12 +614,12 @@ procedure bad(b_24: (Set Ref), l_2: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var newVersion: FrameType;
   var QPMask: MaskType;
   var l$0_6: Ref;
@@ -628,8 +628,8 @@ procedure bad(b_24: (Set Ref), l_2: Ref) returns ()
   var newPMask: PMaskType;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var n: int;
   var n_2: int;
   
@@ -652,8 +652,8 @@ procedure bad(b_24: (Set Ref), l_2: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -668,8 +668,8 @@ procedure bad(b_24: (Set Ref), l_2: Ref) returns ()
   // -- Translating statement: unfold acc(uf_bank(b), write) -- 0336b.vpr@20.3--20.20
     assume uf_bank#trigger(Heap, uf_bank(b_24));
     assume Heap[null, uf_bank(b_24)] == CombineFrames(FrameFragment(uf_bank#condqp1(Heap, b_24)), FrameFragment(uf_bank#condqp2(Heap, b_24)));
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding uf_bank(b) might fail. There might be insufficient permission to access uf_bank(b) (0336b.vpr@20.3--20.20) [202664]"}
@@ -762,8 +762,8 @@ procedure bad(b_24: (Set Ref), l_2: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(uf_bank(b), write) -- 0336b.vpr@21.3--21.18
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     havoc QPMask;
     
     // -- check that the permission amount is positive
@@ -909,16 +909,16 @@ procedure bad(b_24: (Set Ref), l_2: Ref) returns ()
   // -- Translating statement: assert (let n ==
   //     ((unfolding acc(uf_bank(b), write) in l.rank)) in
   //     n > n) -- 0336b.vpr@22.3--25.10
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (let n == ((unfolding acc(uf_bank(b), write) in l.rank)) in n > n)
       UnfoldingHeap := ExhaleWellDef0Heap;
       UnfoldingMask := ExhaleWellDef0Mask;
       assume uf_bank#trigger(UnfoldingHeap, uf_bank(b_24));
       assume UnfoldingHeap[null, uf_bank(b_24)] == CombineFrames(FrameFragment(uf_bank#condqp1(UnfoldingHeap, b_24)), FrameFragment(uf_bank#condqp2(UnfoldingHeap, b_24)));
-      ExhaleWellDef1Heap := UnfoldingHeap;
       ExhaleWellDef1Mask := UnfoldingMask;
+      ExhaleWellDef1Heap := UnfoldingHeap;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Assert might fail. There might be insufficient permission to access uf_bank(b) (0336b.vpr@24.5--25.10) [202678]"}
@@ -1038,8 +1038,8 @@ procedure bad(b_24: (Set Ref), l_2: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of bad might not hold. Assertion false might not hold. (0336b.vpr@18.11--18.16) [202683]"}
       false;
 }
@@ -1051,14 +1051,14 @@ procedure bad(b_24: (Set Ref), l_2: Ref) returns ()
 procedure veryBad() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var l_2: Ref;
   var freshObj: Ref;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var QPMask: MaskType;
   var l$0_2: Ref;
   var l$0_4: Ref;
@@ -1078,8 +1078,8 @@ procedure veryBad() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1116,8 +1116,8 @@ procedure veryBad() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(uf_bank(Set(l)), write) -- 0336b.vpr@35.3--35.23
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     havoc QPMask;
     
     // -- check that the permission amount is positive
@@ -1266,8 +1266,8 @@ procedure veryBad() returns ()
     arg_b := Set#Singleton(l_2);
     
     // -- Exhaling precondition
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  The precondition of method bad might not hold. There might be insufficient permission to access uf_bank(Set(l)) (0336b.vpr@36.3--36.16) [202697]"}
@@ -1287,8 +1287,8 @@ procedure veryBad() returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of veryBad might not hold. Assertion false might not hold. (0336b.vpr@29.11--29.16) [202699]"}
       false;
 }

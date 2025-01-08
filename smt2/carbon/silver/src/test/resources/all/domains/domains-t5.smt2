@@ -440,7 +440,7 @@
  :qid |stdinbpl.199:19|
  :skolemid |24|
 )))
-; Valid
+; Invalid
 (push 1)
 (declare-fun ControlFlow (Int Int) Int)
 (set-info :boogie-vc-id t5)

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-07 14:00:24
+// Date:         2025-01-08 21:35:46
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/issues/unofficial_0002.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/issues/unofficial_0002-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -408,16 +408,16 @@ procedure trav(graph: (Set Ref), node: Ref) returns ()
 {
   var QPMask: MaskType;
   var x_31: Ref;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var perm: Perm;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
   var arg_node: Ref;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var x_2_2: Ref;
   var ExhaleHeap: HeapType;
   
@@ -538,8 +538,8 @@ procedure trav(graph: (Set Ref), node: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -589,8 +589,8 @@ procedure trav(graph: (Set Ref), node: Ref) returns ()
         arg_node := Heap[node, left];
         
         // -- Exhaling precondition
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           assert {:msg "  The precondition of method trav might not hold. Assertion (node.left in graph) might not hold. (unofficial_0002.vpr@26.3--26.25) [73416]"}
             graph[arg_node];
           assert {:msg "  The precondition of method trav might not hold. Assertion !((null in graph)) might not hold. (unofficial_0002.vpr@26.3--26.25) [73417]"}
@@ -709,8 +709,8 @@ procedure trav(graph: (Set Ref), node: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert node.is_marked -- unofficial_0002.vpr@29.3--29.24
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of node.is_marked
       assert {:msg "  Assert might fail. There might be insufficient permission to access node.is_marked (unofficial_0002.vpr@29.10--29.24) [73424]"}
@@ -720,8 +720,8 @@ procedure trav(graph: (Set Ref), node: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of trav might not hold. There might be insufficient permission to access node.is_marked (unofficial_0002.vpr@21.10--21.29) [73426]"}

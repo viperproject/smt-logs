@@ -681,15 +681,15 @@
 (declare-const fuel%impl&%0.arrow_0. FuelId)
 (declare-const fuel%impl&%0.arrow_Some_0. FuelId)
 (declare-const fuel%some_fn. FuelId)
-(declare-const fuel%impl&%1.arrow_0. FuelId)
 (declare-const fuel%impl&%1.arrow_1. FuelId)
+(declare-const fuel%impl&%1.arrow_0. FuelId)
 (declare-const fuel%impl&%1.arrow_Bar_0. FuelId)
 (declare-const fuel%impl&%1.arrow_Bar_1. FuelId)
 (declare-const fuel%impl&%1.arrow_Qux_0. FuelId)
 (declare-const fuel%impl&%1.arrow_Zaz_0. FuelId)
 (assert
- (distinct fuel%impl&%0.arrow_0. fuel%impl&%0.arrow_Some_0. fuel%some_fn. fuel%impl&%1.arrow_0.
-  fuel%impl&%1.arrow_1. fuel%impl&%1.arrow_Bar_0. fuel%impl&%1.arrow_Bar_1. fuel%impl&%1.arrow_Qux_0.
+ (distinct fuel%impl&%0.arrow_0. fuel%impl&%0.arrow_Some_0. fuel%some_fn. fuel%impl&%1.arrow_1.
+  fuel%impl&%1.arrow_0. fuel%impl&%1.arrow_Bar_0. fuel%impl&%1.arrow_Bar_1. fuel%impl&%1.arrow_Qux_0.
   fuel%impl&%1.arrow_Zaz_0.
 ))
 
@@ -1033,11 +1033,11 @@
 ;; Function-Decl crate::some_fn
 (declare-fun some_fn.? (Poly) tuple%2.)
 
-;; Function-Decl crate::Foo::arrow_0
-(declare-fun impl&%1.arrow_0.? (Poly) Bool)
-
 ;; Function-Decl crate::Foo::arrow_1
 (declare-fun impl&%1.arrow_1.? (Poly) Opt.)
+
+;; Function-Decl crate::Foo::arrow_0
+(declare-fun impl&%1.arrow_0.? (Poly) Bool)
 
 ;; Function-Decl crate::Foo::arrow_Bar_0
 (declare-fun impl&%1.arrow_Bar_0.? (Poly) Int)
@@ -1145,20 +1145,6 @@
    :skolemid skolem_internal_some_fn.?_pre_post_definition
 )))
 
-;; Function-Axioms crate::Foo::arrow_0
-(assert
- (fuel_bool_default fuel%impl&%1.arrow_0.)
-)
-(assert
- (=>
-  (fuel_bool fuel%impl&%1.arrow_0.)
-  (forall ((self! Poly)) (!
-    (= (impl&%1.arrow_0.? self!) (Foo./Zaz/0 (%Poly%Foo. self!)))
-    :pattern ((impl&%1.arrow_0.? self!))
-    :qid internal_impl&__1.arrow_0.?_definition
-    :skolemid skolem_internal_impl&__1.arrow_0.?_definition
-))))
-
 ;; Function-Axioms crate::Foo::arrow_1
 (assert
  (fuel_bool_default fuel%impl&%1.arrow_1.)
@@ -1182,6 +1168,20 @@
    :qid internal_impl&__1.arrow_1.?_pre_post_definition
    :skolemid skolem_internal_impl&__1.arrow_1.?_pre_post_definition
 )))
+
+;; Function-Axioms crate::Foo::arrow_0
+(assert
+ (fuel_bool_default fuel%impl&%1.arrow_0.)
+)
+(assert
+ (=>
+  (fuel_bool fuel%impl&%1.arrow_0.)
+  (forall ((self! Poly)) (!
+    (= (impl&%1.arrow_0.? self!) (Foo./Zaz/0 (%Poly%Foo. self!)))
+    :pattern ((impl&%1.arrow_0.? self!))
+    :qid internal_impl&__1.arrow_0.?_definition
+    :skolemid skolem_internal_impl&__1.arrow_0.?_definition
+))))
 
 ;; Function-Axioms crate::Foo::arrow_Bar_0
 (assert

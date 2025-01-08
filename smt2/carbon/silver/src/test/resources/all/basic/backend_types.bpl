@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-07 14:24:59
+// Date:         2025-01-08 22:00:03
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/basic/backend_types.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/basic/backend_types-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -566,14 +566,14 @@ axiom !IsWandField(ff);
 procedure test() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var r_1: Ref;
   var tmp: bv32;
   var freshObj: Ref;
   var fs: (Seq float24e8);
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -583,8 +583,8 @@ procedure test() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[r_1, $allocated];
@@ -613,8 +613,8 @@ procedure test() returns ()
   
   // -- Translating statement: assert fp_eq(fp_min(tofp(tmp), r.ff), fs[0]) &&
   //   fp_eq(fp_max(tofp(toBV32(1081081856)), tofp(toBV32(1103888384))), tofp(toBV32(1103888384))) -- backend_types.vpr@31.3--32.96
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of fp_eq(fp_min(tofp(tmp), r.ff), fs[0])
       assert {:msg "  Assert might fail. There might be insufficient permission to access r.ff (backend_types.vpr@31.10--32.96) [188220]"}
@@ -629,8 +629,8 @@ procedure test() returns ()
   
   // -- Translating statement: assert fp_eq(fp_min(tofp(tmp), r.ff), fs[0]) &&
   //   fp_eq(fp_max(tofp(toBV32(1081081856)), tofp(toBV32(1103888384))), tofp(toBV32(110388838))) -- backend_types.vpr@35.3--36.95
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of fp_eq(fp_min(tofp(tmp), r.ff), fs[0])
       assert {:msg "  Assert might fail. There might be insufficient permission to access r.ff (backend_types.vpr@35.10--36.95) [188224]"}
@@ -651,16 +651,16 @@ procedure test() returns ()
 procedure testOp() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var first_1: float24e8;
   var second_1: float24e8;
   var res: float24e8;
   var zero: float24e8;
   var addition: float24e8;
   var result_addition: float24e8;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -670,8 +670,8 @@ procedure testOp() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: first := tofp(toBV32(1081081856)) -- backend_types.vpr@47.5--47.38
     first_1 := (tofp((toBV32(1081081856): bv32)): float24e8);
@@ -698,15 +698,15 @@ procedure testOp() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert addition == result_addition -- backend_types.vpr@57.5--57.39
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion addition == result_addition might not hold. (backend_types.vpr@57.12--57.39) [188228]"}
       addition == result_addition;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert gt(addition, result_addition) -- backend_types.vpr@59.5--59.41
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion gt(addition, result_addition) might not hold. (backend_types.vpr@59.12--59.41) [188229]"}
       (gt(addition, result_addition): bool);
     assume state(Heap, Mask);

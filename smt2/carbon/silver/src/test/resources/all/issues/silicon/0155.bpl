@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-07 14:28:26
+// Date:         2025-01-08 22:03:25
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0155.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0155-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -227,8 +227,8 @@ procedure i#definedness(this: Ref, x: int, y: bool) returns (Result: bool)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var newPMask: PMaskType;
   
@@ -255,8 +255,8 @@ procedure i#definedness(this: Ref, x: int, y: bool) returns (Result: bool)
       UnfoldingMask := Mask;
       assume valid#trigger(UnfoldingHeap, valid(this));
       assume UnfoldingHeap[null, valid(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, next]), UnfoldingHeap[null, valid(UnfoldingHeap[this, next])]);
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access valid(this) (0155.vpr@7.1--12.2) [198959]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, valid(this)];
@@ -278,8 +278,8 @@ procedure i#definedness(this: Ref, x: int, y: bool) returns (Result: bool)
         HasDirectPerm(UnfoldingMask, this, next);
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := UnfoldingHeap;
         ExhaleWellDef0Mask := UnfoldingMask;
+        ExhaleWellDef0Heap := UnfoldingHeap;
         assert {:msg "  Precondition of function i might not hold. Assertion this.next != null might not hold. (0155.vpr@11.44--11.62) [198961]"}
           UnfoldingHeap[this, next] != null;
         perm := FullPerm;
@@ -385,11 +385,11 @@ procedure triggersSix$(this: Ref, c: int, d: int) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   
@@ -417,8 +417,8 @@ procedure triggersSix$(this: Ref, c: int, d: int) returns ()
       if (*) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           assert {:msg "  Precondition of function i might not hold. Assertion this != null might not hold. (0155.vpr@22.39--22.56) [198965]"}
             this != null;
           perm := FullPerm;
@@ -442,8 +442,8 @@ procedure triggersSix$(this: Ref, c: int, d: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -458,8 +458,8 @@ procedure triggersSix$(this: Ref, c: int, d: int) returns ()
     // -- Check definedness of i(this, 4, true)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := PostHeap;
         ExhaleWellDef0Mask := PostMask;
+        ExhaleWellDef0Heap := PostHeap;
         assert {:msg "  Precondition of function i might not hold. Assertion this != null might not hold. (0155.vpr@24.11--24.27) [198967]"}
           this != null;
         perm := FullPerm;
@@ -479,8 +479,8 @@ procedure triggersSix$(this: Ref, c: int, d: int) returns ()
   }
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of triggersSix$ might not hold. There might be insufficient permission to access valid(this) (0155.vpr@23.11--23.34) [198969]"}

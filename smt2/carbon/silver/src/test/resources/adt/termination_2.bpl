@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-07 14:37:29
+// Date:         2025-01-08 22:12:29
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/adt/termination_2.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/adt/termination_2-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -324,8 +324,8 @@ function  len#triggerStateless(l_2: (ListDomainType ValDomainType)): int;
 procedure len#definedness(l_2: (ListDomainType ValDomainType)) returns (Result: int)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -351,8 +351,8 @@ procedure len#definedness(l_2: (ListDomainType ValDomainType)) returns (Result: 
     Result := (if (List_tag(l_2): int) == 1 then 0 else 1 + len_3(Heap, (get_List_tail(l_2): ListDomainType ValDomainType)));
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of len might not hold. Assertion result >= 0 might not hold. (termination_2.vpr@17.11--17.22) [222846]"}
       Result >= 0;
 }
@@ -402,8 +402,8 @@ function  len2#triggerStateless(l_2: (ListDomainType ValDomainType)): int;
 procedure len2#definedness(l_2: (ListDomainType ValDomainType)) returns (Result: int)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -432,8 +432,8 @@ procedure len2#definedness(l_2: (ListDomainType ValDomainType)) returns (Result:
     Result := (if (List_tag(l_2): int) == 1 then 0 else (if (List_tag((get_List_tail(l_2): ListDomainType ValDomainType)): int) == 1 then 1 else 2 + len2(Heap, (get_List_tail((get_List_tail(l_2): ListDomainType ValDomainType)): ListDomainType ValDomainType))));
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of len2 might not hold. Assertion result >= 0 might not hold. (termination_2.vpr@24.11--24.22) [222847]"}
       Result >= 0;
 }
@@ -483,8 +483,8 @@ function  lenBad#triggerStateless(l_2: (ListDomainType ValDomainType), v_2: ValD
 procedure lenBad#definedness(l_2: (ListDomainType ValDomainType), v_2: ValDomainType) returns (Result: int)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -507,8 +507,8 @@ procedure lenBad#definedness(l_2: (ListDomainType ValDomainType), v_2: ValDomain
     Result := lenBad(Heap, (Cons(v_2, (Nil(): ListDomainType ValDomainType)): ListDomainType ValDomainType), v_2);
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of lenBad might not hold. Assertion result >= 0 might not hold. (termination_2.vpr@31.10--31.21) [222848]"}
       Result >= 0;
 }
@@ -558,8 +558,8 @@ function  lenBad2#triggerStateless(l_2: (ListDomainType ValDomainType)): int;
 procedure lenBad2#definedness(l_2: (ListDomainType ValDomainType)) returns (Result: int)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -582,8 +582,8 @@ procedure lenBad2#definedness(l_2: (ListDomainType ValDomainType)) returns (Resu
     Result := 1 + lenBad2(Heap, l_2);
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of lenBad2 might not hold. Assertion result >= 0 might not hold. (termination_2.vpr@39.10--39.21) [222849]"}
       Result >= 0;
 }
@@ -595,10 +595,10 @@ procedure lenBad2#definedness(l_2: (ListDomainType ValDomainType)) returns (Resu
 procedure len_termination_proof(l_2: (ListDomainType ValDomainType)) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -609,8 +609,8 @@ procedure len_termination_proof(l_2: (ListDomainType ValDomainType)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: if ((List_tag(l): Int) == 1) -- <no position>
     if ((List_tag(l_2): int) == 1) {
@@ -618,8 +618,8 @@ procedure len_termination_proof(l_2: (ListDomainType ValDomainType)) returns ()
       
       // -- Translating statement: assert (decreasing((get_List_tail(l): List[Val]), old(l)): Bool) &&
   //   (bounded(old(l)): Bool) -- <no position>
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Assert might fail. Assertion (decreasing((get_List_tail(l): List[Val]), old(l)): Bool) might not hold. (<no position>) [222850]"}
           (decreasing((get_List_tail(l_2): ListDomainType ValDomainType), l_2): bool);
         assert {:msg "  Assert might fail. Assertion (bounded(old(l)): Bool) might not hold. (<no position>) [222851]"}
@@ -636,10 +636,10 @@ procedure len_termination_proof(l_2: (ListDomainType ValDomainType)) returns ()
 procedure len2_termination_proof(l_2: (ListDomainType ValDomainType)) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -650,8 +650,8 @@ procedure len2_termination_proof(l_2: (ListDomainType ValDomainType)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: if ((List_tag(l): Int) == 1) -- <no position>
     if ((List_tag(l_2): int) == 1) {
@@ -664,8 +664,8 @@ procedure len2_termination_proof(l_2: (ListDomainType ValDomainType)) returns ()
           // -- Translating statement: assert (decreasing((get_List_tail((get_List_tail(l): List[Val])): List[Val]),
   //   old(l)): Bool) &&
   //   (bounded(old(l)): Bool) -- <no position>
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             assert {:msg "  Assert might fail. Assertion (decreasing((get_List_tail((get_List_tail(l): List[Val])): List[Val]), old(l)): Bool) might not hold. (<no position>) [222852]"}
               (decreasing((get_List_tail((get_List_tail(l_2): ListDomainType ValDomainType)): ListDomainType ValDomainType), l_2): bool);
             assert {:msg "  Assert might fail. Assertion (bounded(old(l)): Bool) might not hold. (<no position>) [222853]"}
@@ -684,10 +684,10 @@ procedure len2_termination_proof(l_2: (ListDomainType ValDomainType)) returns ()
 procedure lenBad_termination_proof(l_2: (ListDomainType ValDomainType), v_2: ValDomainType) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -698,13 +698,13 @@ procedure lenBad_termination_proof(l_2: (ListDomainType ValDomainType), v_2: Val
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert (decreasing((Cons(v, (Nil(): List[Val])): List[Val]), old(l)): Bool) &&
   //   (bounded(old(l)): Bool) -- <no position>
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion (decreasing((Cons(v, (Nil(): List[Val])): List[Val]), old(l)): Bool) might not hold. (<no position>) [222854]"}
       (decreasing((Cons(v_2, (Nil(): ListDomainType ValDomainType)): ListDomainType ValDomainType), l_2): bool);
     assert {:msg "  Assert might fail. Assertion (bounded(old(l)): Bool) might not hold. (<no position>) [222855]"}
@@ -719,10 +719,10 @@ procedure lenBad_termination_proof(l_2: (ListDomainType ValDomainType), v_2: Val
 procedure lenBad2_termination_proof(l_2: (ListDomainType ValDomainType)) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -733,12 +733,12 @@ procedure lenBad2_termination_proof(l_2: (ListDomainType ValDomainType)) returns
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert (decreasing(l, old(l)): Bool) && (bounded(old(l)): Bool) -- <no position>
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion (decreasing(l, old(l)): Bool) might not hold. (<no position>) [222856]"}
       (decreasing(l_2, l_2): bool);
     assert {:msg "  Assert might fail. Assertion (bounded(old(l)): Bool) might not hold. (<no position>) [222857]"}

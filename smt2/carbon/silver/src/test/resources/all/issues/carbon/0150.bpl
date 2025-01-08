@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-07 14:27:30
+// Date:         2025-01-08 22:02:31
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0150.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0150-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -247,10 +247,10 @@ procedure callee(self: Ref) returns ()
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
-  var oldMask: MaskType;
+  var ExhaleWellDef0Mask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -271,8 +271,8 @@ procedure callee(self: Ref) returns ()
       UnfoldingMask := Mask;
       assume Tree_valid#trigger(UnfoldingHeap, Tree_valid(self));
       assume UnfoldingHeap[null, Tree_valid(self)] == FrameFragment(UnfoldingHeap[self, Tree_height]);
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access Tree_valid(self) (0150.vpr@12.13--12.76) [195163]"}
@@ -298,8 +298,8 @@ procedure callee(self: Ref) returns ()
       UnfoldingMask := Mask;
       assume Tree_valid#trigger(UnfoldingHeap, Tree_valid(self));
       assume UnfoldingHeap[null, Tree_valid(self)] == FrameFragment(UnfoldingHeap[self, Tree_height]);
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       UnfoldingMask := UnfoldingMask[null, Tree_valid(self):=UnfoldingMask[null, Tree_valid(self)] - perm];
       perm := 1 / 10;
@@ -313,8 +313,8 @@ procedure callee(self: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
 }
 
 // ==================================================
@@ -325,17 +325,17 @@ procedure test(self: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newVersion: FrameType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -355,14 +355,14 @@ procedure test(self: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: unfold acc(Tree_valid(self), write) -- 0150.vpr@19.5--19.40
     assume Tree_valid#trigger(Heap, Tree_valid(self));
     assume Heap[null, Tree_valid(self)] == FrameFragment(Heap[self, Tree_height]);
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Tree_valid(self) might fail. There might be insufficient permission to access Tree_valid(self) (0150.vpr@19.5--19.40) [195168]"}
@@ -395,8 +395,8 @@ procedure test(self: Ref) returns ()
         UnfoldingMask := Mask;
         assume Tree_valid#trigger(UnfoldingHeap, Tree_valid(self));
         assume UnfoldingHeap[null, Tree_valid(self)] == FrameFragment(UnfoldingHeap[self, Tree_height]);
-        ExhaleWellDef0Mask := UnfoldingMask;
         ExhaleWellDef0Heap := UnfoldingHeap;
+        ExhaleWellDef0Mask := UnfoldingMask;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  The precondition of method callee might not hold. There might be insufficient permission to access Tree_valid(self) (0150.vpr@21.5--21.17) [195170]"}
@@ -414,8 +414,8 @@ procedure test(self: Ref) returns ()
         // -- Free assumptions (exp module)
           Heap := Heap[null, Tree_valid#sm(self):=Heap[null, Tree_valid#sm(self)][self, Tree_height:=true]];
           assume state(Heap, Mask);
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  The precondition of method callee might not hold. There might be insufficient permission to access Tree_valid(self) (0150.vpr@21.5--21.17) [195172]"}
@@ -428,8 +428,8 @@ procedure test(self: Ref) returns ()
         UnfoldingMask := ExhaleWellDef0Mask;
         assume Tree_valid#trigger(UnfoldingHeap, Tree_valid(self));
         assume UnfoldingHeap[null, Tree_valid(self)] == FrameFragment(UnfoldingHeap[self, Tree_height]);
-        ExhaleWellDef1Mask := UnfoldingMask;
         ExhaleWellDef1Heap := UnfoldingHeap;
+        ExhaleWellDef1Mask := UnfoldingMask;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  The precondition of method callee might not hold. There might be insufficient permission to access Tree_valid(self) (0150.vpr@21.5--21.17) [195173]"}

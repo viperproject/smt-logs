@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-07 14:09:35
+// Date:         2025-01-08 21:44:45
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/unfolding_ambiguity2.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/unfolding_ambiguity2-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -311,8 +311,8 @@ procedure P#definedness(x: Ref) returns ()
 procedure t01(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var Ops_1Heap: HeapType;
   var Ops_1Mask: MaskType;
   var b_1_1: bool;
@@ -320,11 +320,11 @@ procedure t01(x: Ref) returns ()
   var UsedMask: MaskType;
   var b_2: bool;
   var perm: Perm;
-  var Labellhs1Heap: HeapType;
   var Labellhs1Mask: MaskType;
+  var Labellhs1Heap: HeapType;
   var boolCur: bool;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var Used_1Heap: HeapType;
   var Used_1Mask: MaskType;
   var b_2_1: bool;
@@ -348,8 +348,8 @@ procedure t01(x: Ref) returns ()
   var Result_1Mask: MaskType;
   var WandDefLHSHeap: HeapType;
   var WandDefLHSMask: MaskType;
-  var Labellhs3Heap: HeapType;
   var Labellhs3Mask: MaskType;
+  var Labellhs3Heap: HeapType;
   var WandDefRHSHeap: HeapType;
   var WandDefRHSMask: MaskType;
   var ExhaleHeap: HeapType;
@@ -365,8 +365,8 @@ procedure t01(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: package acc(P(x), write) --* acc(x.f, write) {
   //   unfold acc(P(x), write)
@@ -388,8 +388,8 @@ procedure t01(x: Ref) returns ()
     
     // -- Translating statement: label lhs1 -- unfolding_ambiguity2.vpr@7.11--7.35
       lhs1:
-      Labellhs1Heap := Ops_1Heap;
       Labellhs1Mask := Ops_1Mask;
+      Labellhs1Heap := Ops_1Heap;
       b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);
     boolCur := true;
     if (b_1_1) {
@@ -397,8 +397,8 @@ procedure t01(x: Ref) returns ()
       // -- Translating statement: unfold acc(P(x), write) -- unfolding_ambiguity2.vpr@8.7--8.18
         assume P#trigger(Ops_1Heap, P(x));
         assume Ops_1Heap[null, P(x)] == FrameFragment(Ops_1Heap[x, f_7]);
-        ExhaleWellDef0Heap := Ops_1Heap;
         ExhaleWellDef0Mask := Ops_1Mask;
+        ExhaleWellDef0Heap := Ops_1Heap;
         havoc Used_1Heap;
         Used_1Mask := ZeroMask;
         b_2_1 := b_2_1 && state(Used_1Heap, Used_1Mask);
@@ -544,8 +544,8 @@ procedure t01(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(P(x), write) --* acc(x.f, write) -- unfolding_ambiguity2.vpr@11.3--11.34
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of acc(P(x), write) --* acc(x.f, write)
       if (*) {
@@ -558,8 +558,8 @@ procedure t01(x: Ref) returns ()
         
         // -- Translating statement: label lhs3 -- unfolding_ambiguity2.vpr@11.11--11.33
           lhs3:
-          Labellhs3Heap := WandDefLHSHeap;
           Labellhs3Mask := WandDefLHSMask;
+          Labellhs3Heap := WandDefLHSHeap;
           assume state(WandDefLHSHeap, WandDefLHSMask);
         havoc WandDefRHSHeap;
         WandDefRHSMask := ZeroMask;
@@ -588,8 +588,8 @@ procedure t01(x: Ref) returns ()
 procedure t02(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var Ops_3Heap: HeapType;
   var Ops_3Mask: MaskType;
   var b_7: bool;
@@ -597,11 +597,11 @@ procedure t02(x: Ref) returns ()
   var Used_3Mask: MaskType;
   var b_6: bool;
   var perm: Perm;
-  var Labellhs4Heap: HeapType;
   var Labellhs4Mask: MaskType;
+  var Labellhs4Heap: HeapType;
   var boolCur_1: bool;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var Used_4Heap: HeapType;
   var Used_4Mask: MaskType;
   var b_8: bool;
@@ -621,8 +621,8 @@ procedure t02(x: Ref) returns ()
   var b_10: bool;
   var WandDefLHSHeap: HeapType;
   var WandDefLHSMask: MaskType;
-  var Labellhs6Heap: HeapType;
   var Labellhs6Mask: MaskType;
+  var Labellhs6Heap: HeapType;
   var WandDefRHSHeap: HeapType;
   var WandDefRHSMask: MaskType;
   var ExhaleHeap: HeapType;
@@ -638,8 +638,8 @@ procedure t02(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: package acc(P(x), write) --* true {
   //   unfold acc(P(x), write)
@@ -661,8 +661,8 @@ procedure t02(x: Ref) returns ()
     
     // -- Translating statement: label lhs4 -- unfolding_ambiguity2.vpr@21.11--21.31
       lhs4:
-      Labellhs4Heap := Ops_3Heap;
       Labellhs4Mask := Ops_3Mask;
+      Labellhs4Heap := Ops_3Heap;
       b_7 := b_7 && state(Ops_3Heap, Ops_3Mask);
     boolCur_1 := true;
     if (b_7) {
@@ -670,8 +670,8 @@ procedure t02(x: Ref) returns ()
       // -- Translating statement: unfold acc(P(x), write) -- unfolding_ambiguity2.vpr@22.7--22.18
         assume P#trigger(Ops_3Heap, P(x));
         assume Ops_3Heap[null, P(x)] == FrameFragment(Ops_3Heap[x, f_7]);
-        ExhaleWellDef0Heap := Ops_3Heap;
         ExhaleWellDef0Mask := Ops_3Mask;
+        ExhaleWellDef0Heap := Ops_3Heap;
         havoc Used_4Heap;
         Used_4Mask := ZeroMask;
         b_8 := b_8 && state(Used_4Heap, Used_4Mask);
@@ -759,8 +759,8 @@ procedure t02(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(P(x), write) --* true -- unfolding_ambiguity2.vpr@25.3--25.30
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of acc(P(x), write) --* true
       if (*) {
@@ -773,8 +773,8 @@ procedure t02(x: Ref) returns ()
         
         // -- Translating statement: label lhs6 -- unfolding_ambiguity2.vpr@25.11--25.29
           lhs6:
-          Labellhs6Heap := WandDefLHSHeap;
           Labellhs6Mask := WandDefLHSMask;
+          Labellhs6Heap := WandDefLHSHeap;
           assume state(WandDefLHSHeap, WandDefLHSMask);
         havoc WandDefRHSHeap;
         WandDefRHSMask := ZeroMask;

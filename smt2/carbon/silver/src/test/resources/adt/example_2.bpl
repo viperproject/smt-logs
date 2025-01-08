@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-07 14:37:54
+// Date:         2025-01-08 22:12:54
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/adt/example_2.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/adt/example_2-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -866,14 +866,14 @@ procedure children_seq#definedness(ts: (Seq TreeDomainType)) returns (Result: (S
 procedure computeTreeHeight(t_2: TreeDomainType) returns (res: int)
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var current: (Seq TreeDomainType);
   var next_1: (Seq TreeDomainType);
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var i: int;
   var i_14: int;
   var loopHeap: HeapType;
@@ -897,8 +897,8 @@ procedure computeTreeHeight(t_2: TreeDomainType) returns (res: int)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -942,8 +942,8 @@ procedure computeTreeHeight(t_2: TreeDomainType) returns (res: int)
         // -- Before loop head
           
           // -- Exhale loop invariant before loop
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             if (*) {
               if (i >= 0 && i < Seq#Length(current)) {
                 assert {:msg "  Loop invariant (forall i: Int :: { Tree_tag(current[i]) } i >= 0 && i < |current| ==> Tree_tag(current[i]) == 1) might not hold on entry. Assertion Tree_tag(current[i]) == 1 might not hold. (example_2.vpr@77.17--77.79) [222978]"}
@@ -1034,8 +1034,8 @@ procedure computeTreeHeight(t_2: TreeDomainType) returns (res: int)
                 // -- Before loop head
                   
                   // -- Exhale loop invariant before loop
-                    ExhaleWellDef0Mask := Mask;
                     ExhaleWellDef0Heap := Heap;
+                    ExhaleWellDef0Mask := Mask;
                     if (*) {
                       if (i_5 >= 0 && i_5 < Seq#Length(current)) {
                         assert {:msg "  Loop invariant (forall i: Int :: { Tree_tag(current[i]) } i >= 0 && i < |current| ==> Tree_tag(current[i]) == 1) might not hold on entry. Assertion Tree_tag(current[i]) == 1 might not hold. (example_2.vpr@88.19--88.81) [222982]"}
@@ -1169,8 +1169,8 @@ procedure computeTreeHeight(t_2: TreeDomainType) returns (res: int)
                         }
                         assume state(Heap, Mask);
                     // Exhale invariant
-                    ExhaleWellDef0Mask := Mask;
                     ExhaleWellDef0Heap := Heap;
+                    ExhaleWellDef0Mask := Mask;
                     if (*) {
                       if (i_15 >= 0 && i_15 < Seq#Length(current)) {
                         assert {:msg "  Loop invariant (forall i: Int :: { Tree_tag(current[i]) } i >= 0 && i < |current| ==> Tree_tag(current[i]) == 1) might not be preserved. Assertion Tree_tag(current[i]) == 1 might not hold. (example_2.vpr@88.19--88.81) [222990]"}
@@ -1219,8 +1219,8 @@ procedure computeTreeHeight(t_2: TreeDomainType) returns (res: int)
                 current := next_1;
                 assume state(Heap, Mask);
             // Exhale invariant
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             if (*) {
               if (i_21 >= 0 && i_21 < Seq#Length(current)) {
                 assert {:msg "  Loop invariant (forall i: Int :: { Tree_tag(current[i]) } i >= 0 && i < |current| ==> Tree_tag(current[i]) == 1) might not be preserved. Assertion Tree_tag(current[i]) == 1 might not hold. (example_2.vpr@77.17--77.79) [222993]"}
@@ -1253,8 +1253,8 @@ procedure computeTreeHeight(t_2: TreeDomainType) returns (res: int)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of computeTreeHeight might not hold. Assertion height(t) == res might not hold. (example_2.vpr@62.11--62.27) [222995]"}
       height_1(Heap, t_2) == res;
 }

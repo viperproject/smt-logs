@@ -3794,89 +3794,55 @@ axiom (forall #$T0: Ty, #$T1: Ty, #$T2: Ty, #$R: Ty, f#0: HandleType, $h: Heap :
   $IsAlloc(f#0, Tclass._System.___hTotalFunc3(#$T0, #$T1, #$T2, #$R), $h)
      <==> $IsAlloc(f#0, Tclass._System.___hPartialFunc3(#$T0, #$T1, #$T2, #$R), $h));
 
-const unique class.IntOrder.__default: ClassName;
+const unique class.intOrder.__default: ClassName;
 
-// function declaration for IntOrder._default.Leq
-function IntOrder.__default.Leq(a#0: DatatypeType, b#0: DatatypeType) : bool
+// function declaration for intOrder._default.Leq
+function intOrder.__default.Leq(a#0: int, b#0: int) : bool
 uses {
-// consequence axiom for IntOrder.__default.Leq
+// consequence axiom for intOrder.__default.Leq
 axiom 1 <= $FunctionContextHeight
-   ==> (forall a#0: DatatypeType, b#0: DatatypeType :: 
-    { IntOrder.__default.Leq(a#0, b#0) } 
-    IntOrder.__default.Leq#canCall(a#0, b#0)
-         || (1 < $FunctionContextHeight
-           && 
-          $Is(a#0, Tclass.IntOrder.T())
-           && $Is(b#0, Tclass.IntOrder.T()))
+   ==> (forall a#0: int, b#0: int :: 
+    { intOrder.__default.Leq(a#0, b#0) } 
+    intOrder.__default.Leq#canCall(a#0, b#0) || 1 < $FunctionContextHeight
        ==> 
-      IntOrder.__default.Leq(a#0, b#0)
-       ==> IntOrder.T.i(a#0) <= IntOrder.T.i(b#0));
-// definition axiom for IntOrder.__default.Leq (revealed)
-axiom {:id "id178"} 1 <= $FunctionContextHeight
-   ==> (forall a#0: DatatypeType, b#0: DatatypeType :: 
-    { IntOrder.__default.Leq(a#0, b#0) } 
-    IntOrder.__default.Leq#canCall(a#0, b#0)
-         || (1 < $FunctionContextHeight
-           && 
-          $Is(a#0, Tclass.IntOrder.T())
-           && $Is(b#0, Tclass.IntOrder.T()))
-       ==> IntOrder.T.Int_q(a#0)
-         && IntOrder.T.Int_q(b#0)
-         && IntOrder.__default.Leq(a#0, b#0) == (IntOrder.T.i(a#0) <= IntOrder.T.i(b#0)));
-// definition axiom for IntOrder.__default.Leq for all literals (revealed)
-axiom {:id "id179"} 1 <= $FunctionContextHeight
-   ==> (forall a#0: DatatypeType, b#0: DatatypeType :: 
-    {:weight 3} { IntOrder.__default.Leq(Lit(a#0), Lit(b#0)) } 
-    IntOrder.__default.Leq#canCall(Lit(a#0), Lit(b#0))
-         || (1 < $FunctionContextHeight
-           && 
-          $Is(a#0, Tclass.IntOrder.T())
-           && $Is(b#0, Tclass.IntOrder.T()))
-       ==> IntOrder.T.Int_q(Lit(a#0))
-         && IntOrder.T.Int_q(Lit(b#0))
-         && IntOrder.__default.Leq(Lit(a#0), Lit(b#0))
-           == (LitInt(IntOrder.T.i(Lit(a#0))) <= LitInt(IntOrder.T.i(Lit(b#0)))));
+      intOrder.__default.Leq(a#0, b#0)
+       ==> a#0 <= b#0);
+// definition axiom for intOrder.__default.Leq (revealed)
+axiom {:id "id443"} 1 <= $FunctionContextHeight
+   ==> (forall a#0: int, b#0: int :: 
+    { intOrder.__default.Leq(a#0, b#0) } 
+    intOrder.__default.Leq#canCall(a#0, b#0) || 1 < $FunctionContextHeight
+       ==> intOrder.__default.Leq(a#0, b#0) == (a#0 <= b#0));
+// definition axiom for intOrder.__default.Leq for all literals (revealed)
+axiom {:id "id444"} 1 <= $FunctionContextHeight
+   ==> (forall a#0: int, b#0: int :: 
+    {:weight 3} { intOrder.__default.Leq(LitInt(a#0), LitInt(b#0)) } 
+    intOrder.__default.Leq#canCall(LitInt(a#0), LitInt(b#0))
+         || 1 < $FunctionContextHeight
+       ==> intOrder.__default.Leq(LitInt(a#0), LitInt(b#0)) == (LitInt(a#0) <= LitInt(b#0)));
 }
 
-function IntOrder.__default.Leq#canCall(a#0: DatatypeType, b#0: DatatypeType) : bool;
+function intOrder.__default.Leq#canCall(a#0: int, b#0: int) : bool;
 
-function Tclass.IntOrder.T() : Ty
-uses {
-// Tclass.IntOrder.T Tag
-axiom Tag(Tclass.IntOrder.T()) == Tagclass.IntOrder.T
-   && TagFamily(Tclass.IntOrder.T()) == tytagFamily$T;
-}
+function intOrder.__default.Leq#requires(int, int) : bool;
 
-const unique Tagclass.IntOrder.T: TyTag;
+// #requires axiom for intOrder.__default.Leq
+axiom (forall a#0: int, b#0: int :: 
+  { intOrder.__default.Leq#requires(a#0, b#0) } 
+  intOrder.__default.Leq#requires(a#0, b#0) == true);
 
-// Box/unbox axiom for Tclass.IntOrder.T
-axiom (forall bx: Box :: 
-  { $IsBox(bx, Tclass.IntOrder.T()) } 
-  $IsBox(bx, Tclass.IntOrder.T())
-     ==> $Box($Unbox(bx): DatatypeType) == bx
-       && $Is($Unbox(bx): DatatypeType, Tclass.IntOrder.T()));
-
-function IntOrder.__default.Leq#requires(DatatypeType, DatatypeType) : bool;
-
-// #requires axiom for IntOrder.__default.Leq
-axiom (forall a#0: DatatypeType, b#0: DatatypeType :: 
-  { IntOrder.__default.Leq#requires(a#0, b#0) } 
-  $Is(a#0, Tclass.IntOrder.T()) && $Is(b#0, Tclass.IntOrder.T())
-     ==> IntOrder.__default.Leq#requires(a#0, b#0) == true);
-
-procedure {:verboseName "IntOrder.Leq (well-formedness)"} CheckWellformed$$IntOrder.__default.Leq(a#0: DatatypeType where $Is(a#0, Tclass.IntOrder.T()), 
-    b#0: DatatypeType where $Is(b#0, Tclass.IntOrder.T()));
+procedure {:verboseName "intOrder.Leq (well-formedness)"} CheckWellformed$$intOrder.__default.Leq(a#0: int, b#0: int);
   free requires 1 == $FunctionContextHeight;
   modifies $Heap;
-  ensures {:id "id180"} IntOrder.__default.Leq(a#0, b#0) ==> IntOrder.T.i(a#0) <= IntOrder.T.i(b#0);
+  ensures {:id "id445"} intOrder.__default.Leq(a#0, b#0) ==> a#0 <= b#0;
 
 
 
-implementation {:smt_option "smt.arith.solver", "2"} {:verboseName "IntOrder.Leq (well-formedness)"} CheckWellformed$$IntOrder.__default.Leq(a#0: DatatypeType, b#0: DatatypeType)
+implementation {:smt_option "smt.arith.solver", "2"} {:verboseName "intOrder.Leq (well-formedness)"} CheckWellformed$$intOrder.__default.Leq(a#0: int, b#0: int)
 {
   var $_ReadsFrame: [ref,Field]bool;
-  var ##a#0: DatatypeType;
-  var ##b#0: DatatypeType;
+  var ##a#0: int;
+  var ##b#0: int;
 
 
     $_ReadsFrame := (lambda $o: ref, $f: Field :: 
@@ -3892,24 +3858,20 @@ implementation {:smt_option "smt.arith.solver", "2"} {:verboseName "IntOrder.Leq
         {
             ##a#0 := a#0;
             // assume allocatedness for argument to function
-            assume $IsAlloc(##a#0, Tclass.IntOrder.T(), $Heap);
+            assume $IsAlloc(##a#0, TInt, $Heap);
             ##b#0 := b#0;
             // assume allocatedness for argument to function
-            assume $IsAlloc(##b#0, Tclass.IntOrder.T(), $Heap);
-            assert {:id "id181"} (IntOrder.T#Equal(a#0, a#0) && IntOrder.T#Equal(b#0, b#0))
-               || 
-              DtRank(##a#0) < DtRank(a#0)
-               || (DtRank(##a#0) == DtRank(a#0) && DtRank(##b#0) < DtRank(b#0));
-            assume (IntOrder.T#Equal(a#0, a#0) && IntOrder.T#Equal(b#0, b#0))
-               || IntOrder.__default.Leq#canCall(a#0, b#0);
-            assume {:id "id182"} IntOrder.__default.Leq(a#0, b#0);
-            assume IntOrder.T.Int_q(a#0);
-            assume IntOrder.T.Int_q(b#0);
-            assume {:id "id183"} IntOrder.T.i(a#0) <= IntOrder.T.i(b#0);
+            assume $IsAlloc(##b#0, TInt, $Heap);
+            assert {:id "id446"} 0 <= a#0 || ##a#0 == a#0;
+            assert {:id "id447"} 0 <= b#0 || ##a#0 < a#0 || ##b#0 == b#0;
+            assert {:id "id448"} (a#0 == a#0 && b#0 == b#0) || ##a#0 < a#0 || (##a#0 == a#0 && ##b#0 < b#0);
+            assume (a#0 == a#0 && b#0 == b#0) || intOrder.__default.Leq#canCall(a#0, b#0);
+            assume {:id "id449"} intOrder.__default.Leq(a#0, b#0);
+            assume {:id "id450"} a#0 <= b#0;
         }
         else
         {
-            assume {:id "id184"} IntOrder.__default.Leq(a#0, b#0) ==> IntOrder.T.i(a#0) <= IntOrder.T.i(b#0);
+            assume {:id "id451"} intOrder.__default.Leq(a#0, b#0) ==> a#0 <= b#0;
         }
 
         assume false;
@@ -3917,12 +3879,10 @@ implementation {:smt_option "smt.arith.solver", "2"} {:verboseName "IntOrder.Leq
     else
     {
         // Check well-formedness of body and result subset type constraint
-        assume IntOrder.T.Int_q(a#0);
-        assume IntOrder.T.Int_q(b#0);
-        assume {:id "id185"} IntOrder.__default.Leq(a#0, b#0) == (IntOrder.T.i(a#0) <= IntOrder.T.i(b#0));
-        assume IntOrder.T.Int_q(a#0) && IntOrder.T.Int_q(b#0);
+        assume {:id "id452"} intOrder.__default.Leq(a#0, b#0) == (a#0 <= b#0);
+        assume true;
         // CheckWellformedWithResult: any expression
-        assume $Is(IntOrder.__default.Leq(a#0, b#0), TBool);
+        assume $Is(intOrder.__default.Leq(a#0, b#0), TBool);
         return;
 
         assume false;
@@ -3931,66 +3891,44 @@ implementation {:smt_option "smt.arith.solver", "2"} {:verboseName "IntOrder.Leq
 
 
 
-procedure {:verboseName "IntOrder.Antisymmetry (well-formedness)"} CheckWellFormed$$IntOrder.__default.Antisymmetry(a#0: DatatypeType
-       where $Is(a#0, Tclass.IntOrder.T())
-         && $IsAlloc(a#0, Tclass.IntOrder.T(), $Heap)
-         && $IsA#IntOrder.T(a#0), 
-    b#0: DatatypeType
-       where $Is(b#0, Tclass.IntOrder.T())
-         && $IsAlloc(b#0, Tclass.IntOrder.T(), $Heap)
-         && $IsA#IntOrder.T(b#0));
+procedure {:verboseName "intOrder.Antisymmetry (well-formedness)"} CheckWellFormed$$intOrder.__default.Antisymmetry(a#0: int, b#0: int);
   free requires 2 == $FunctionContextHeight;
   modifies $Heap;
 
 
 
-procedure {:verboseName "IntOrder.Antisymmetry (call)"} Call$$IntOrder.__default.Antisymmetry(a#0: DatatypeType
-       where $Is(a#0, Tclass.IntOrder.T())
-         && $IsAlloc(a#0, Tclass.IntOrder.T(), $Heap)
-         && $IsA#IntOrder.T(a#0), 
-    b#0: DatatypeType
-       where $Is(b#0, Tclass.IntOrder.T())
-         && $IsAlloc(b#0, Tclass.IntOrder.T(), $Heap)
-         && $IsA#IntOrder.T(b#0));
+procedure {:verboseName "intOrder.Antisymmetry (call)"} Call$$intOrder.__default.Antisymmetry(a#0: int, b#0: int);
   // user-defined preconditions
-  requires {:id "id189"} IntOrder.__default.Leq(a#0, b#0);
-  requires {:id "id190"} IntOrder.__default.Leq(b#0, a#0);
+  requires {:id "id456"} intOrder.__default.Leq(a#0, b#0);
+  requires {:id "id457"} intOrder.__default.Leq(b#0, a#0);
   modifies $Heap;
   // user-defined postconditions
-  free ensures $IsA#IntOrder.T(a#0) && $IsA#IntOrder.T(b#0);
-  ensures {:id "id191"} IntOrder.T#Equal(a#0, b#0);
+  free ensures true;
+  ensures {:id "id458"} a#0 == b#0;
   // frame condition
   free ensures old($Heap) == $Heap;
 
 
 
-procedure {:verboseName "IntOrder.Antisymmetry (correctness)"} Impl$$IntOrder.__default.Antisymmetry(a#0: DatatypeType
-       where $Is(a#0, Tclass.IntOrder.T())
-         && $IsAlloc(a#0, Tclass.IntOrder.T(), $Heap)
-         && $IsA#IntOrder.T(a#0), 
-    b#0: DatatypeType
-       where $Is(b#0, Tclass.IntOrder.T())
-         && $IsAlloc(b#0, Tclass.IntOrder.T(), $Heap)
-         && $IsA#IntOrder.T(b#0))
-   returns ($_reverifyPost: bool);
+procedure {:verboseName "intOrder.Antisymmetry (correctness)"} Impl$$intOrder.__default.Antisymmetry(a#0: int, b#0: int) returns ($_reverifyPost: bool);
   free requires 2 == $FunctionContextHeight;
   // user-defined preconditions
-  requires {:id "id192"} IntOrder.__default.Leq(a#0, b#0);
-  requires {:id "id193"} IntOrder.__default.Leq(b#0, a#0);
+  requires {:id "id459"} intOrder.__default.Leq(a#0, b#0);
+  requires {:id "id460"} intOrder.__default.Leq(b#0, a#0);
   modifies $Heap;
   // user-defined postconditions
-  free ensures $IsA#IntOrder.T(a#0) && $IsA#IntOrder.T(b#0);
-  ensures {:id "id194"} IntOrder.T#Equal(a#0, b#0);
+  free ensures true;
+  ensures {:id "id461"} a#0 == b#0;
   // frame condition
   free ensures old($Heap) == $Heap;
 
 
 
-implementation {:smt_option "smt.arith.solver", "2"} {:verboseName "IntOrder.Antisymmetry (correctness)"} Impl$$IntOrder.__default.Antisymmetry(a#0: DatatypeType, b#0: DatatypeType) returns ($_reverifyPost: bool)
+implementation {:smt_option "smt.arith.solver", "2"} {:verboseName "intOrder.Antisymmetry (correctness)"} Impl$$intOrder.__default.Antisymmetry(a#0: int, b#0: int) returns ($_reverifyPost: bool)
 {
   var $_ModifiesFrame: [ref,Field]bool;
 
-    // AddMethodImpl: Antisymmetry, Impl$$IntOrder.__default.Antisymmetry
+    // AddMethodImpl: Antisymmetry, Impl$$intOrder.__default.Antisymmetry
     $_ModifiesFrame := (lambda $o: ref, $f: Field :: 
       $o != null && $Unbox(read($Heap, $o, alloc)): bool ==> false);
     $_reverifyPost := false;
@@ -3998,83 +3936,48 @@ implementation {:smt_option "smt.arith.solver", "2"} {:verboseName "IntOrder.Ant
 
 
 
-procedure {:verboseName "IntOrder.Transitivity (well-formedness)"} CheckWellFormed$$IntOrder.__default.Transitivity(a#0: DatatypeType
-       where $Is(a#0, Tclass.IntOrder.T())
-         && $IsAlloc(a#0, Tclass.IntOrder.T(), $Heap)
-         && $IsA#IntOrder.T(a#0), 
-    b#0: DatatypeType
-       where $Is(b#0, Tclass.IntOrder.T())
-         && $IsAlloc(b#0, Tclass.IntOrder.T(), $Heap)
-         && $IsA#IntOrder.T(b#0), 
-    c#0: DatatypeType
-       where $Is(c#0, Tclass.IntOrder.T())
-         && $IsAlloc(c#0, Tclass.IntOrder.T(), $Heap)
-         && $IsA#IntOrder.T(c#0));
+procedure {:verboseName "intOrder.Transitivity (well-formedness)"} CheckWellFormed$$intOrder.__default.Transitivity(a#0: int, b#0: int, c#0: int);
   free requires 2 == $FunctionContextHeight;
   modifies $Heap;
 
 
 
-procedure {:verboseName "IntOrder.Transitivity (call)"} Call$$IntOrder.__default.Transitivity(a#0: DatatypeType
-       where $Is(a#0, Tclass.IntOrder.T())
-         && $IsAlloc(a#0, Tclass.IntOrder.T(), $Heap)
-         && $IsA#IntOrder.T(a#0), 
-    b#0: DatatypeType
-       where $Is(b#0, Tclass.IntOrder.T())
-         && $IsAlloc(b#0, Tclass.IntOrder.T(), $Heap)
-         && $IsA#IntOrder.T(b#0), 
-    c#0: DatatypeType
-       where $Is(c#0, Tclass.IntOrder.T())
-         && $IsAlloc(c#0, Tclass.IntOrder.T(), $Heap)
-         && $IsA#IntOrder.T(c#0));
+procedure {:verboseName "intOrder.Transitivity (call)"} Call$$intOrder.__default.Transitivity(a#0: int, b#0: int, c#0: int);
   // user-defined preconditions
-  requires {:id "id198"} IntOrder.__default.Leq(a#0, b#0);
-  requires {:id "id199"} IntOrder.__default.Leq(b#0, c#0);
+  requires {:id "id465"} intOrder.__default.Leq(a#0, b#0);
+  requires {:id "id466"} intOrder.__default.Leq(b#0, c#0);
   modifies $Heap;
   // user-defined postconditions
-  free ensures IntOrder.__default.Leq#canCall(a#0, c#0);
-  free ensures {:id "id200"} IntOrder.__default.Leq#canCall(a#0, c#0)
+  free ensures intOrder.__default.Leq#canCall(a#0, c#0);
+  free ensures {:id "id467"} intOrder.__default.Leq#canCall(a#0, c#0)
      && 
-    IntOrder.__default.Leq(a#0, c#0)
-     && IntOrder.T.i(a#0) <= IntOrder.T.i(c#0);
+    intOrder.__default.Leq(a#0, c#0)
+     && a#0 <= c#0;
   // frame condition
   free ensures old($Heap) == $Heap;
 
 
 
-procedure {:verboseName "IntOrder.Transitivity (correctness)"} Impl$$IntOrder.__default.Transitivity(a#0: DatatypeType
-       where $Is(a#0, Tclass.IntOrder.T())
-         && $IsAlloc(a#0, Tclass.IntOrder.T(), $Heap)
-         && $IsA#IntOrder.T(a#0), 
-    b#0: DatatypeType
-       where $Is(b#0, Tclass.IntOrder.T())
-         && $IsAlloc(b#0, Tclass.IntOrder.T(), $Heap)
-         && $IsA#IntOrder.T(b#0), 
-    c#0: DatatypeType
-       where $Is(c#0, Tclass.IntOrder.T())
-         && $IsAlloc(c#0, Tclass.IntOrder.T(), $Heap)
-         && $IsA#IntOrder.T(c#0))
-   returns ($_reverifyPost: bool);
+procedure {:verboseName "intOrder.Transitivity (correctness)"} Impl$$intOrder.__default.Transitivity(a#0: int, b#0: int, c#0: int) returns ($_reverifyPost: bool);
   free requires 2 == $FunctionContextHeight;
   // user-defined preconditions
-  requires {:id "id201"} IntOrder.__default.Leq(a#0, b#0);
-  requires {:id "id202"} IntOrder.__default.Leq(b#0, c#0);
+  requires {:id "id468"} intOrder.__default.Leq(a#0, b#0);
+  requires {:id "id469"} intOrder.__default.Leq(b#0, c#0);
   modifies $Heap;
   // user-defined postconditions
-  free ensures IntOrder.__default.Leq#canCall(a#0, c#0);
-  ensures {:id "id203"} IntOrder.__default.Leq#canCall(a#0, c#0)
-     ==> IntOrder.__default.Leq(a#0, c#0) || IntOrder.T.i(a#0) <= IntOrder.T.i(c#0);
+  free ensures intOrder.__default.Leq#canCall(a#0, c#0);
+  ensures {:id "id470"} intOrder.__default.Leq#canCall(a#0, c#0)
+     ==> intOrder.__default.Leq(a#0, c#0) || a#0 <= c#0;
   // frame condition
   free ensures old($Heap) == $Heap;
 
 
 
-implementation {:smt_option "smt.arith.solver", "2"} {:verboseName "IntOrder.Transitivity (correctness)"} Impl$$IntOrder.__default.Transitivity(a#0: DatatypeType, b#0: DatatypeType, c#0: DatatypeType)
-   returns ($_reverifyPost: bool)
+implementation {:smt_option "smt.arith.solver", "2"} {:verboseName "intOrder.Transitivity (correctness)"} Impl$$intOrder.__default.Transitivity(a#0: int, b#0: int, c#0: int) returns ($_reverifyPost: bool)
 {
   var $_ModifiesFrame: [ref,Field]bool;
 
-    // AddMethodImpl: Transitivity, Impl$$IntOrder.__default.Transitivity
+    // AddMethodImpl: Transitivity, Impl$$intOrder.__default.Transitivity
     $_ModifiesFrame := (lambda $o: ref, $f: Field :: 
       $o != null && $Unbox(read($Heap, $o, alloc)): bool ==> false);
     $_reverifyPost := false;
@@ -4082,148 +3985,46 @@ implementation {:smt_option "smt.arith.solver", "2"} {:verboseName "IntOrder.Tra
 
 
 
-procedure {:verboseName "IntOrder.Totality (well-formedness)"} CheckWellFormed$$IntOrder.__default.Totality(a#0: DatatypeType
-       where $Is(a#0, Tclass.IntOrder.T())
-         && $IsAlloc(a#0, Tclass.IntOrder.T(), $Heap)
-         && $IsA#IntOrder.T(a#0), 
-    b#0: DatatypeType
-       where $Is(b#0, Tclass.IntOrder.T())
-         && $IsAlloc(b#0, Tclass.IntOrder.T(), $Heap)
-         && $IsA#IntOrder.T(b#0));
+procedure {:verboseName "intOrder.Totality (well-formedness)"} CheckWellFormed$$intOrder.__default.Totality(a#0: int, b#0: int);
   free requires 2 == $FunctionContextHeight;
   modifies $Heap;
 
 
 
-procedure {:verboseName "IntOrder.Totality (call)"} Call$$IntOrder.__default.Totality(a#0: DatatypeType
-       where $Is(a#0, Tclass.IntOrder.T())
-         && $IsAlloc(a#0, Tclass.IntOrder.T(), $Heap)
-         && $IsA#IntOrder.T(a#0), 
-    b#0: DatatypeType
-       where $Is(b#0, Tclass.IntOrder.T())
-         && $IsAlloc(b#0, Tclass.IntOrder.T(), $Heap)
-         && $IsA#IntOrder.T(b#0));
+procedure {:verboseName "intOrder.Totality (call)"} Call$$intOrder.__default.Totality(a#0: int, b#0: int);
   modifies $Heap;
   // user-defined postconditions
-  free ensures IntOrder.__default.Leq#canCall(a#0, b#0)
-     && (!IntOrder.__default.Leq(a#0, b#0) ==> IntOrder.__default.Leq#canCall(b#0, a#0));
-  ensures {:id "id207"} IntOrder.__default.Leq(a#0, b#0) || IntOrder.__default.Leq(b#0, a#0);
+  free ensures intOrder.__default.Leq#canCall(a#0, b#0)
+     && (!intOrder.__default.Leq(a#0, b#0) ==> intOrder.__default.Leq#canCall(b#0, a#0));
+  ensures {:id "id474"} intOrder.__default.Leq(a#0, b#0) || intOrder.__default.Leq(b#0, a#0);
   // frame condition
   free ensures old($Heap) == $Heap;
 
 
 
-procedure {:verboseName "IntOrder.Totality (correctness)"} Impl$$IntOrder.__default.Totality(a#0: DatatypeType
-       where $Is(a#0, Tclass.IntOrder.T())
-         && $IsAlloc(a#0, Tclass.IntOrder.T(), $Heap)
-         && $IsA#IntOrder.T(a#0), 
-    b#0: DatatypeType
-       where $Is(b#0, Tclass.IntOrder.T())
-         && $IsAlloc(b#0, Tclass.IntOrder.T(), $Heap)
-         && $IsA#IntOrder.T(b#0))
-   returns ($_reverifyPost: bool);
+procedure {:verboseName "intOrder.Totality (correctness)"} Impl$$intOrder.__default.Totality(a#0: int, b#0: int) returns ($_reverifyPost: bool);
   free requires 2 == $FunctionContextHeight;
   modifies $Heap;
   // user-defined postconditions
-  free ensures IntOrder.__default.Leq#canCall(a#0, b#0)
-     && (!IntOrder.__default.Leq(a#0, b#0) ==> IntOrder.__default.Leq#canCall(b#0, a#0));
-  ensures {:id "id208"} IntOrder.__default.Leq(a#0, b#0) || IntOrder.__default.Leq(b#0, a#0);
+  free ensures intOrder.__default.Leq#canCall(a#0, b#0)
+     && (!intOrder.__default.Leq(a#0, b#0) ==> intOrder.__default.Leq#canCall(b#0, a#0));
+  ensures {:id "id475"} intOrder.__default.Leq(a#0, b#0) || intOrder.__default.Leq(b#0, a#0);
   // frame condition
   free ensures old($Heap) == $Heap;
 
 
 
-implementation {:smt_option "smt.arith.solver", "2"} {:verboseName "IntOrder.Totality (correctness)"} Impl$$IntOrder.__default.Totality(a#0: DatatypeType, b#0: DatatypeType) returns ($_reverifyPost: bool)
+implementation {:smt_option "smt.arith.solver", "2"} {:verboseName "intOrder.Totality (correctness)"} Impl$$intOrder.__default.Totality(a#0: int, b#0: int) returns ($_reverifyPost: bool)
 {
   var $_ModifiesFrame: [ref,Field]bool;
 
-    // AddMethodImpl: Totality, Impl$$IntOrder.__default.Totality
+    // AddMethodImpl: Totality, Impl$$intOrder.__default.Totality
     $_ModifiesFrame := (lambda $o: ref, $f: Field :: 
       $o != null && $Unbox(read($Heap, $o, alloc)): bool ==> false);
     $_reverifyPost := false;
 }
 
 
-
-// Constructor function declaration
-function #IntOrder.T.Int(int) : DatatypeType;
-
-const unique ##IntOrder.T.Int: DtCtorId
-uses {
-// Constructor identifier
-axiom (forall a#0#0#0: int :: 
-  { #IntOrder.T.Int(a#0#0#0) } 
-  DatatypeCtorId(#IntOrder.T.Int(a#0#0#0)) == ##IntOrder.T.Int);
-}
-
-function IntOrder.T.Int_q(DatatypeType) : bool;
-
-// Questionmark and identifier
-axiom (forall d: DatatypeType :: 
-  { IntOrder.T.Int_q(d) } 
-  IntOrder.T.Int_q(d) <==> DatatypeCtorId(d) == ##IntOrder.T.Int);
-
-// Constructor questionmark has arguments
-axiom (forall d: DatatypeType :: 
-  { IntOrder.T.Int_q(d) } 
-  IntOrder.T.Int_q(d) ==> (exists a#1#0#0: int :: d == #IntOrder.T.Int(a#1#0#0)));
-
-// Constructor $Is
-axiom (forall a#2#0#0: int :: 
-  { $Is(#IntOrder.T.Int(a#2#0#0), Tclass.IntOrder.T()) } 
-  $Is(#IntOrder.T.Int(a#2#0#0), Tclass.IntOrder.T()) <==> $Is(a#2#0#0, TInt));
-
-// Destructor $IsAlloc
-axiom (forall d: DatatypeType, $h: Heap :: 
-  { $IsAlloc(IntOrder.T.i(d), TInt, $h) } 
-  $IsGoodHeap($h) && IntOrder.T.Int_q(d) && $IsAlloc(d, Tclass.IntOrder.T(), $h)
-     ==> $IsAlloc(IntOrder.T.i(d), TInt, $h));
-
-// Constructor literal
-axiom (forall a#3#0#0: int :: 
-  { #IntOrder.T.Int(LitInt(a#3#0#0)) } 
-  #IntOrder.T.Int(LitInt(a#3#0#0)) == Lit(#IntOrder.T.Int(a#3#0#0)));
-
-function IntOrder.T.i(DatatypeType) : int;
-
-// Constructor injectivity
-axiom (forall a#4#0#0: int :: 
-  { #IntOrder.T.Int(a#4#0#0) } 
-  IntOrder.T.i(#IntOrder.T.Int(a#4#0#0)) == a#4#0#0);
-
-// Datatype $IsAlloc
-axiom (forall d: DatatypeType, $h: Heap :: 
-  { $IsAlloc(d, Tclass.IntOrder.T(), $h) } 
-  $IsGoodHeap($h) && $Is(d, Tclass.IntOrder.T())
-     ==> $IsAlloc(d, Tclass.IntOrder.T(), $h));
-
-// Depth-one case-split function
-function $IsA#IntOrder.T(DatatypeType) : bool;
-
-// Depth-one case-split axiom
-axiom (forall d: DatatypeType :: 
-  { $IsA#IntOrder.T(d) } 
-  $IsA#IntOrder.T(d) ==> IntOrder.T.Int_q(d));
-
-// Questionmark data type disjunctivity
-axiom (forall d: DatatypeType :: 
-  { IntOrder.T.Int_q(d), $Is(d, Tclass.IntOrder.T()) } 
-  $Is(d, Tclass.IntOrder.T()) ==> IntOrder.T.Int_q(d));
-
-// Datatype extensional equality declaration
-function IntOrder.T#Equal(DatatypeType, DatatypeType) : bool;
-
-// Datatype extensional equality definition: #IntOrder.T.Int
-axiom (forall a: DatatypeType, b: DatatypeType :: 
-  { IntOrder.T#Equal(a, b) } 
-  IntOrder.T#Equal(a, b) <==> IntOrder.T.i(a) == IntOrder.T.i(b));
-
-// Datatype extensionality axiom: IntOrder.T
-axiom (forall a: DatatypeType, b: DatatypeType :: 
-  { IntOrder.T#Equal(a, b) } 
-  IntOrder.T#Equal(a, b) <==> a == b);
-
-const unique class.IntOrder.T: ClassName;
 
 const unique tytagFamily$nat: TyTagFamily;
 
@@ -4258,5 +4059,3 @@ const unique tytagFamily$_#Func3: TyTagFamily;
 const unique tytagFamily$_#PartialFunc3: TyTagFamily;
 
 const unique tytagFamily$_#TotalFunc3: TyTagFamily;
-
-const unique tytagFamily$T: TyTagFamily;

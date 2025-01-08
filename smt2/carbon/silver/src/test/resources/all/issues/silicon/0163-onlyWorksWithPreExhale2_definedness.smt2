@@ -624,7 +624,7 @@
  :skolemid |57|
  :pattern ( (state Heap@@59 Mask@@43) (main_1 Heap@@59 r2@@3))
 )))
-; Invalid
+; Valid
 (push 1)
 (declare-fun ControlFlow (Int Int) Int)
 (declare-fun i2_1@@7 () Int)

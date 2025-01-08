@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-07 13:54:33
+// Date:         2025-01-08 21:29:59
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/third_party/max-two-range.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/third_party/max-two-range-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -639,8 +639,8 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
   var j_5: int;
   var i_2: int;
   var QPMask: MaskType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var i_4: int;
@@ -649,8 +649,8 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
   var half: int;
   var offset: int;
   var k: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var i_7: int;
   var i_12_1: int;
   var i_14_1: int;
@@ -823,8 +823,8 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1029,8 +1029,8 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
         assume state(Heap, Mask);
       
       // -- Translating statement: assert this.dst[tid].Integer_value >= this.src[offset].Integer_value -- max-two-range.vpr@54.5--54.73
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         
         // -- Check definedness of this.dst[tid].Integer_value >= this.src[offset].Integer_value
           assert {:msg "  Assert might fail. There might be insufficient permission to access this.dst (max-two-range.vpr@54.12--54.73) [15019]"}
@@ -1054,8 +1054,8 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
         assume state(Heap, Mask);
       
       // -- Translating statement: assert this.dst[tid].Integer_value >= this.src[offset + 0].Integer_value -- max-two-range.vpr@55.5--55.77
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         
         // -- Check definedness of this.dst[tid].Integer_value >= this.src[offset + 0].Integer_value
           assert {:msg "  Assert might fail. There might be insufficient permission to access this.dst (max-two-range.vpr@55.12--55.77) [15028]"}
@@ -1080,8 +1080,8 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
       
       // -- Translating statement: assert (forall i: Int ::0 <= i && i < k ==>
   //     this.dst[tid].Integer_value >= this.src[offset + i].Integer_value) -- max-two-range.vpr@56.5--56.122
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         
         // -- Check definedness of (forall i: Int ::0 <= i && i < k ==> this.dst[tid].Integer_value >= this.src[offset + i].Integer_value)
           if (*) {
@@ -1123,8 +1123,8 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
         // -- Before loop head
           
           // -- Exhale loop invariant before loop
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             assert {:msg "  Loop invariant 0 <= tid might not hold on entry. Assertion 0 <= tid might not hold. (max-two-range.vpr@58.17--58.25) [15046]"}
               0 <= tid;
             assert {:msg "  Loop invariant tid < tcount might not hold on entry. Assertion tid < tcount might not hold. (max-two-range.vpr@59.17--59.29) [15047]"}
@@ -1574,8 +1574,8 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
                 assume state(Heap, Mask);
               
               // -- Translating statement: assert 0 <= offset + k && offset + k < gsize -- max-two-range.vpr@79.7--79.55
-                ExhaleWellDef0Heap := Heap;
                 ExhaleWellDef0Mask := Mask;
+                ExhaleWellDef0Heap := Heap;
                 assert {:msg "  Assert might fail. Assertion 0 <= offset + k might not hold. (max-two-range.vpr@79.14--79.55) [15100]"}
                   0 <= offset + k;
                 assert {:msg "  Assert might fail. Assertion offset + k < gsize might not hold. (max-two-range.vpr@79.14--79.55) [15101]"}
@@ -1633,8 +1633,8 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
                 k := k + 1;
                 assume state(Heap, Mask);
             // Exhale invariant
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             assert {:msg "  Loop invariant 0 <= tid might not be preserved. Assertion 0 <= tid might not hold. (max-two-range.vpr@58.17--58.25) [15118]"}
               0 <= tid;
             assert {:msg "  Loop invariant tid < tcount might not be preserved. Assertion tid < tcount might not hold. (max-two-range.vpr@59.17--59.29) [15119]"}
@@ -1877,8 +1877,8 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
     assume state(Heap, Mask);
   
   // -- Translating statement: assert true -- max-two-range.vpr@87.3--87.14
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assume state(Heap, Mask);
   
   // -- Translating statement: __last_barrier := main_barrier(this, tcount, gsize, tid, gid, lid, 1, __last_barrier,
@@ -1888,8 +1888,8 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
     arg_last_barrier := __last_barrier;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       assert {:msg "  The precondition of method main_barrier might not hold. Assertion false || __last_barrier == 0 might not hold. (max-two-range.vpr@88.3--88.105) [15144]"}
         arg_last_barrier == 0;
       assert {:msg "  The precondition of method main_barrier might not hold. Assertion 0 <= tid might not hold. (max-two-range.vpr@88.3--88.105) [15145]"}
@@ -2141,8 +2141,8 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
   //     { this.src[i] }
   //     0 <= i && i < half ==>
   //     this.dst[0].Integer_value >= this.src[i].Integer_value) -- max-two-range.vpr@89.3--89.127
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     if (tid == 0) {
       
       // -- Check definedness of (forall i: Int :: { this.src[i] } 0 <= i && i < half ==> this.dst[0].Integer_value >= this.src[i].Integer_value)
@@ -2184,8 +2184,8 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
   //     { this.src[i] }
   //     half <= i && i < gsize ==>
   //     this.dst[1].Integer_value >= this.src[i].Integer_value) -- max-two-range.vpr@90.3--90.131
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     if (tid == 0) {
       
       // -- Check definedness of (forall i: Int :: { this.src[i] } half <= i && i < gsize ==> this.dst[1].Integer_value >= this.src[i].Integer_value)
@@ -2267,8 +2267,8 @@ procedure main_main(this: Ref, tcount: int, gsize: int, tid: int, gid: int, lid:
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of main_main might not hold. Assertion 0 <= tid might not hold. (max-two-range.vpr@27.11--27.19) [15196]"}
       0 <= tid;
     assert {:msg "  Postcondition of main_main might not hold. Assertion tid < tcount might not hold. (max-two-range.vpr@28.11--28.23) [15197]"}
@@ -2388,15 +2388,15 @@ procedure main_barrier(this: Ref, tcount: int, gsize: int, tid: int, gid: int, l
   var QPMask: MaskType;
   var i_13: int;
   var i_20: int;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var i_22: int;
   var i_24: int;
   var i_29: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var i_15: int;
   var i_17: int;
   var ExhaleHeap: HeapType;
@@ -2642,8 +2642,8 @@ procedure main_barrier(this: Ref, tcount: int, gsize: int, tid: int, gid: int, l
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -2873,8 +2873,8 @@ procedure main_barrier(this: Ref, tcount: int, gsize: int, tid: int, gid: int, l
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of main_barrier might not hold. Assertion 0 <= tid might not hold. (max-two-range.vpr@118.11--118.19) [15282]"}
       0 <= tid;
     assert {:msg "  Postcondition of main_barrier might not hold. Assertion tid < tcount might not hold. (max-two-range.vpr@119.11--119.23) [15283]"}
@@ -3032,13 +3032,13 @@ procedure main_resources_of_1(this: Ref, tcount: int, gsize: int, gid: int, k: i
   var i_32: int;
   var j_23: int;
   var tid_21: int;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var i_34: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -3238,8 +3238,8 @@ procedure main_resources_of_1(this: Ref, tcount: int, gsize: int, gid: int, k: i
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -3380,8 +3380,8 @@ procedure main_resources_of_1(this: Ref, tcount: int, gsize: int, gid: int, k: i
   }
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of main_resources_of_1 might not hold. Assertion tcount == gsize might not hold. (max-two-range.vpr@154.11--154.26) [15344]"}
       tcount == gsize;
     assert {:msg "  Postcondition of main_resources_of_1 might not hold. Assertion gid == 0 might not hold. (max-two-range.vpr@155.11--155.19) [15345]"}
@@ -3493,15 +3493,15 @@ procedure main_post_check_1(this: Ref, tcount: int, gsize: int, tid: int, gid: i
   var _x_tid_13: int;
   var i_45: int;
   var i_56: int;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var i_47: int;
   var i_48: int;
   var i_58: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var i_17: int;
   var i_19: int;
   var ExhaleHeap: HeapType;
@@ -3767,8 +3767,8 @@ procedure main_post_check_1(this: Ref, tcount: int, gsize: int, tid: int, gid: i
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -3971,8 +3971,8 @@ procedure main_post_check_1(this: Ref, tcount: int, gsize: int, tid: int, gid: i
   }
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of main_post_check_1 might not hold. Assertion 0 <= tid might not hold. (max-two-range.vpr@189.11--189.19) [15427]"}
       0 <= tid;
     assert {:msg "  Postcondition of main_post_check_1 might not hold. Assertion tid < tcount might not hold. (max-two-range.vpr@190.11--190.23) [15428]"}

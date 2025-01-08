@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-07 14:27:35
+// Date:         2025-01-08 22:02:36
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0200.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0200-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -230,8 +230,8 @@ procedure SCIONPath_get_hof#definedness(self: Ref) returns (Result: Ref)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var idx_0_1: int;
   
   // -- Initializing the state
@@ -255,8 +255,8 @@ procedure SCIONPath_get_hof#definedness(self: Ref) returns (Result: Ref)
       UnfoldingMask := Mask;
       assume outer#trigger(UnfoldingHeap, outer(self));
       assume UnfoldingHeap[null, outer(self)] == FrameFragment(UnfoldingHeap[self, whatever]);
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access outer(self) (0200.vpr@4.1--12.2) [195306]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, outer(self)];
@@ -279,8 +279,8 @@ procedure SCIONPath_get_hof#definedness(self: Ref) returns (Result: Ref)
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Precondition of function unbox might not hold. Assertion isBool(box(false)) might not hold. (0200.vpr@11.4--11.21) [195308]"}
           isBool(Heap, box(Heap, false));
         // Stop execution

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-07 14:25:43
+// Date:         2025-01-08 22:00:47
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0157.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0157-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -232,10 +232,10 @@ axiom (forall <T> x0: Ref, y0: Ref ::
 procedure test1() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -245,19 +245,19 @@ procedure test1() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert (Nil(): List[Int]) == (Nil(): List[Int]) -- 0157.vpr@6.3--6.24
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion (Nil(): List[Int]) == (Nil(): List[Int]) might not hold. (0157.vpr@6.10--6.24) [191319]"}
       (Nil(): ListDomainType int) == (Nil(): ListDomainType int);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (Nil(): List[Int]) == (Nil(): List[Int]) -- 0157.vpr@7.3--7.50
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion (Nil(): List[Int]) == (Nil(): List[Int]) might not hold. (0157.vpr@7.10--7.50) [191320]"}
       (Nil(): ListDomainType int) == (Nil(): ListDomainType int);
     assume state(Heap, Mask);
@@ -270,8 +270,8 @@ procedure test1() returns ()
 procedure test2(r_1: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -284,8 +284,8 @@ procedure test2(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale (nested((loc(null): Loc[Int]), (loc(r): Loc[Int])): Bool) -- 0157.vpr@19.10--19.35
     assume (nested((loc(null): LocDomainType int), (loc(r_1): LocDomainType int)): bool);
