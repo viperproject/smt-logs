@@ -1,5 +1,10 @@
 Z3_EXE=${Z3_EXE:-"z3"}
 Z3_VERSION=${Z3_VERSION:-$(eval "$Z3_EXE" --version | sed -E 's/.* ([0-9]+\.[0-9]+\.[0-9]+).*/\1/g')}
+
+# Set the timeout (s) and memory (mb) limit for the Z3 solver
+TIMEOUT=${TIMEOUT:-10}
+MEMORY=${MEMORY:-15872}
+
 Z3_VERSION_REGEX="${Z3_VERSION//./\\.}"
 
 file_relative="${1#"$(dirname "$0")/"}"
@@ -31,7 +36,7 @@ echo "[.log] $file_relative"
 # the output so that it doesn't get printed and listen for a
 # timeout message in which case we remove the last line of the log
 # file since it may be incomplete (and cause parsing errors).
-output=$(eval "$Z3_EXE" trace=true proof=true -memory:15872 -T:10 trace-file-name=$log_file_name "$1" 2>&1)
+output=$(eval "$Z3_EXE" trace=true proof=true -memory:$MEMORY -T:$TIMEOUT trace-file-name=$log_file_name "$1")
 echo "$output" | grep -q "timeout" || exit 0
 echo "[Timeout] Removing last line of logfile"
 tail -n 1 "$log_file_name" | wc -c | xargs -I {} truncate -s -{} "$log_file_name"
