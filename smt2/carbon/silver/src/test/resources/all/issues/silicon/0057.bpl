@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 13:25:53
+// Date:         2025-01-13 18:29:41
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0057.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0057-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -189,11 +189,11 @@ procedure m(o_193: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var i: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var loopHeap: HeapType;
   var loopMask: MaskType;
@@ -216,8 +216,8 @@ procedure m(o_193: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: i := 0 -- 0057.vpr@9.3--9.17
     i := 0;
@@ -228,8 +228,8 @@ procedure m(o_193: Ref) returns ()
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Loop invariant acc(o.f, write) might not hold on entry. There might be insufficient permission to access o.f (0057.vpr@11.15--11.30) [218236]"}
@@ -283,8 +283,8 @@ procedure m(o_193: Ref) returns ()
             Heap := Heap[o_193, f_7:=5];
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Loop invariant acc(o.f, write) might not be preserved. There might be insufficient permission to access o.f (0057.vpr@11.15--11.30) [218238]"}
@@ -310,8 +310,8 @@ procedure m(o_193: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert o.f == old(o.f) -- 0057.vpr@17.3--17.27
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of o.f == old(o.f)
       assert {:msg "  Assert might fail. There might be insufficient permission to access o.f (0057.vpr@17.11--17.26) [218239]"}

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 12:53:52
+// Date:         2025-01-13 17:58:11
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/graphs/static/examples/graph_mark.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/graphs/static/examples/graph_mark-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -877,15 +877,15 @@ procedure mark(g_1: (Set Ref), roots: (Set Ref)) returns (marked: (Set Ref))
   var QPMask: MaskType;
   var n_45: Ref;
   var n$0_25: Ref;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var n$3_8: Ref;
   var n$4_14: Ref;
   var v_21: Ref;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var v_22: Ref;
   var x: Ref;
@@ -1027,8 +1027,8 @@ procedure mark(g_1: (Set Ref), roots: (Set Ref)) returns (marked: (Set Ref))
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1152,8 +1152,8 @@ procedure mark(g_1: (Set Ref), roots: (Set Ref)) returns (marked: (Set Ref))
           if (marked[v_21]) {
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Heap := PostHeap;
               ExhaleWellDef0Mask := PostMask;
+              ExhaleWellDef0Heap := PostHeap;
               havoc QPMask;
               
               // -- check that the permission amount is positive
@@ -1233,8 +1233,8 @@ procedure mark(g_1: (Set Ref), roots: (Set Ref)) returns (marked: (Set Ref))
         if (g_1[v_22]) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := PostHeap;
             ExhaleWellDef0Mask := PostMask;
+            ExhaleWellDef0Heap := PostHeap;
             havoc QPMask;
             
             // -- check that the permission amount is positive
@@ -1318,8 +1318,8 @@ procedure mark(g_1: (Set Ref), roots: (Set Ref)) returns (marked: (Set Ref))
     // -- Check definedness of get(roots)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Precondition of function get might not hold. Assertion |roots| > 0 might not hold. (graph_mark.vpr@199.18--199.28) [87821]"}
           Set#Card(roots) > 0;
         // Stop execution
@@ -1341,8 +1341,8 @@ procedure mark(g_1: (Set Ref), roots: (Set Ref)) returns (marked: (Set Ref))
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Loop invariant !((null in g)) && (true && ((forall n$9: Ref :: { n$9.car } (n$9 in g) ==> acc(n$9.car, write)) && (forall n$10: Ref :: { n$10.cdr } (n$10 in g) ==> acc(n$10.cdr, write))) && ((forall n$7: Ref :: { (n$7.car in g) } { (n$7 in g), n$7.car } (n$7 in g) ==> (n$7.car in g)) && (forall n$8: Ref :: { (n$8.cdr in g) } { (n$8 in g), n$8.cdr } (n$8 in g) ==> (n$8.cdr in g)))) might not hold on entry. Assertion !((null in g)) might not hold. (graph_mark.vpr@205.19--205.27) [87822]"}
           !g_1[null];
         havoc QPMask;
@@ -1617,8 +1617,8 @@ procedure mark(g_1: (Set Ref), roots: (Set Ref)) returns (marked: (Set Ref))
         // -- Check definedness of exists_spath($$(g), roots, x)
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             havoc QPMask;
             
             // -- check that the permission amount is positive
@@ -1694,8 +1694,8 @@ procedure mark(g_1: (Set Ref), roots: (Set Ref)) returns (marked: (Set Ref))
               HasDirectPerm(Mask, x, cdr);
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Heap := Heap;
               ExhaleWellDef0Mask := Mask;
+              ExhaleWellDef0Heap := Heap;
               havoc QPMask;
               
               // -- check that the permission amount is positive
@@ -1762,8 +1762,8 @@ procedure mark(g_1: (Set Ref), roots: (Set Ref)) returns (marked: (Set Ref))
             if ($$(Heap, g_1)[(create_edge(x, Heap[x, cdr]): EdgeDomainType)]) {
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Heap := Heap;
                 ExhaleWellDef0Mask := Mask;
+                ExhaleWellDef0Heap := Heap;
                 havoc QPMask;
                 
                 // -- check that the permission amount is positive
@@ -1838,8 +1838,8 @@ procedure mark(g_1: (Set Ref), roots: (Set Ref)) returns (marked: (Set Ref))
             // -- Check definedness of exists_path($$(g), x, x.cdr)
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Heap := Heap;
                 ExhaleWellDef0Mask := Mask;
+                ExhaleWellDef0Heap := Heap;
                 havoc QPMask;
                 
                 // -- check that the permission amount is positive
@@ -1919,8 +1919,8 @@ procedure mark(g_1: (Set Ref), roots: (Set Ref)) returns (marked: (Set Ref))
               HasDirectPerm(Mask, x, car);
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Heap := Heap;
               ExhaleWellDef0Mask := Mask;
+              ExhaleWellDef0Heap := Heap;
               havoc QPMask;
               
               // -- check that the permission amount is positive
@@ -1987,8 +1987,8 @@ procedure mark(g_1: (Set Ref), roots: (Set Ref)) returns (marked: (Set Ref))
             if ($$(Heap, g_1)[(create_edge(x, Heap[x, car]): EdgeDomainType)]) {
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Heap := Heap;
                 ExhaleWellDef0Mask := Mask;
+                ExhaleWellDef0Heap := Heap;
                 havoc QPMask;
                 
                 // -- check that the permission amount is positive
@@ -2063,8 +2063,8 @@ procedure mark(g_1: (Set Ref), roots: (Set Ref)) returns (marked: (Set Ref))
             // -- Check definedness of exists_path($$(g), x, x.car)
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Heap := Heap;
                 ExhaleWellDef0Mask := Mask;
+                ExhaleWellDef0Heap := Heap;
                 havoc QPMask;
                 
                 // -- check that the permission amount is positive
@@ -2173,8 +2173,8 @@ procedure mark(g_1: (Set Ref), roots: (Set Ref)) returns (marked: (Set Ref))
                   if (pending[n_46] || marked[n_46]) {
                     if (*) {
                       // Exhale precondition of function application
-                      ExhaleWellDef0Heap := Heap;
                       ExhaleWellDef0Mask := Mask;
+                      ExhaleWellDef0Heap := Heap;
                       havoc QPMask;
                       
                       // -- check that the permission amount is positive
@@ -2249,8 +2249,8 @@ procedure mark(g_1: (Set Ref), roots: (Set Ref)) returns (marked: (Set Ref))
                     if (marked[n1_2] && (g_1[n2_1] && (!marked[n2_1] && !pending[n2_1]))) {
                       if (*) {
                         // Exhale precondition of function application
-                        ExhaleWellDef0Heap := Heap;
                         ExhaleWellDef0Mask := Mask;
+                        ExhaleWellDef0Heap := Heap;
                         havoc QPMask;
                         
                         // -- check that the permission amount is positive
@@ -2478,8 +2478,8 @@ procedure mark(g_1: (Set Ref), roots: (Set Ref)) returns (marked: (Set Ref))
             // -- Check definedness of get(pending)
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Heap := Heap;
                 ExhaleWellDef0Mask := Mask;
+                ExhaleWellDef0Heap := Heap;
                 assert {:msg "  Precondition of function get might not hold. Assertion |pending| > 0 might not hold. (graph_mark.vpr@226.14--226.26) [87888]"}
                   Set#Card(pending) > 0;
                 // Stop execution
@@ -2538,8 +2538,8 @@ procedure mark(g_1: (Set Ref), roots: (Set Ref)) returns (marked: (Set Ref))
             }
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Loop invariant !((null in g)) && (true && ((forall n$9: Ref :: { n$9.car } (n$9 in g) ==> acc(n$9.car, write)) && (forall n$10: Ref :: { n$10.cdr } (n$10 in g) ==> acc(n$10.cdr, write))) && ((forall n$7: Ref :: { (n$7.car in g) } { (n$7 in g), n$7.car } (n$7 in g) ==> (n$7.car in g)) && (forall n$8: Ref :: { (n$8.cdr in g) } { (n$8 in g), n$8.cdr } (n$8 in g) ==> (n$8.cdr in g)))) might not be preserved. Assertion !((null in g)) might not hold. (graph_mark.vpr@205.19--205.27) [87895]"}
           !g_1[null];
         havoc QPMask;
@@ -2820,8 +2820,8 @@ procedure mark(g_1: (Set Ref), roots: (Set Ref)) returns (marked: (Set Ref))
     // -- Check definedness of apply_noExit($$(g), g, marked)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         havoc QPMask;
         
         // -- check that the permission amount is positive
@@ -2890,8 +2890,8 @@ procedure mark(g_1: (Set Ref), roots: (Set Ref)) returns (marked: (Set Ref))
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of mark might not hold. Assertion (roots subset marked) might not hold. (graph_mark.vpr@193.13--193.32) [87915]"}
       Set#Subset(roots, marked);
     assert {:msg "  Postcondition of mark might not hold. Assertion (marked subset g) might not hold. (graph_mark.vpr@194.13--194.28) [87916]"}

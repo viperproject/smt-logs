@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 13:12:28
+// Date:         2025-01-13 18:16:34
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/asserting/function.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/asserting/function-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -227,8 +227,8 @@ procedure fplusone#definedness(x: Ref, y: Ref) returns (Result: int)
   var perm: Perm;
   var assertingHeap: HeapType;
   var assertingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -251,8 +251,8 @@ procedure fplusone#definedness(x: Ref, y: Ref) returns (Result: int)
       assertingHeap := Heap;
       assertingMask := Mask;
       // Exhale assertion of asserting
-      ExhaleWellDef0Mask := assertingMask;
       ExhaleWellDef0Heap := assertingHeap;
+      ExhaleWellDef0Mask := assertingMask;
       assert {:msg "  Function might not be well-formed. Assertion x != null might not hold. (function.vpr@6.1--10.2) [153265]"}
         x != null;
       
@@ -306,8 +306,8 @@ procedure fplusone2#definedness(x: Ref, y: Ref) returns (Result: int)
   var perm: Perm;
   var assertingHeap: HeapType;
   var assertingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -330,8 +330,8 @@ procedure fplusone2#definedness(x: Ref, y: Ref) returns (Result: int)
       assertingHeap := Heap;
       assertingMask := Mask;
       // Exhale assertion of asserting
-      ExhaleWellDef0Mask := assertingMask;
       ExhaleWellDef0Heap := assertingHeap;
+      ExhaleWellDef0Mask := assertingMask;
       assert {:msg "  Function might not be well-formed. Assertion x != y might not hold. (function.vpr@13.1--17.2) [153267]"}
         x != y;
       
@@ -350,12 +350,12 @@ procedure fplusone2#definedness(x: Ref, y: Ref) returns (Result: int)
 procedure main() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var x: Ref;
   var freshObj: Ref;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var perm: Perm;
   var ExhaleHeap: HeapType;
   var hmm: int;
@@ -371,8 +371,8 @@ procedure main() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[x, $allocated];
@@ -390,8 +390,8 @@ procedure main() returns ()
     // -- Check definedness of fplusone(x, x)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function fplusone might not hold. There might be insufficient permission to access x.f (function.vpr@25.10--25.24) [153269]"}
           NoPerm < perm ==> NoPerm < Mask[x, f_7];
@@ -416,8 +416,8 @@ procedure main() returns ()
       assertingHeap := Heap;
       assertingMask := Mask;
       // Exhale assertion of asserting
-      ExhaleWellDef0Mask := assertingMask;
       ExhaleWellDef0Heap := assertingHeap;
+      ExhaleWellDef0Mask := assertingMask;
       
       // -- Check definedness of hmm == x.f + 1
         assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (function.vpr@26.3--26.43) [153271]"}
@@ -435,12 +435,12 @@ procedure main() returns ()
 procedure main2() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var x: Ref;
   var freshObj: Ref;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var perm: Perm;
   var ExhaleHeap: HeapType;
   var hmm: int;
@@ -456,8 +456,8 @@ procedure main2() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[x, $allocated];
@@ -475,8 +475,8 @@ procedure main2() returns ()
     // -- Check definedness of fplusone(x, x)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function fplusone might not hold. There might be insufficient permission to access x.f (function.vpr@35.10--35.24) [153273]"}
           NoPerm < perm ==> NoPerm < Mask[x, f_7];
@@ -501,8 +501,8 @@ procedure main2() returns ()
       assertingHeap := Heap;
       assertingMask := Mask;
       // Exhale assertion of asserting
-      ExhaleWellDef0Mask := assertingMask;
       ExhaleWellDef0Heap := assertingHeap;
+      ExhaleWellDef0Mask := assertingMask;
       
       // -- Check definedness of hmm == x.f
         assert {:msg "  Assignment might fail. There might be insufficient permission to access x.f (function.vpr@37.3--37.39) [153275]"}

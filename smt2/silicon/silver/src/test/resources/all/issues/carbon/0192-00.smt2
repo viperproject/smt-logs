@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 12:40:52
+; Started: 2025-01-13 17:45:23
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -974,7 +974,7 @@
     lambda180_26$e@3@00))
   :pattern ((inv@4@00 s@$ hdrs@0@00 index@1@00 lambda180_26$e@3@00))
   :pattern ((img@5@00 s@$ hdrs@0@00 index@1@00 lambda180_26$e@3@00))
-  :qid |quant-u-23692|)))
+  :qid |quant-u-23633|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -1004,11 +1004,11 @@
     (extension_len_rec%limited s@$ hdrs@0@00 index@1@00)
     (extension_len_rec s@$ hdrs@0@00 index@1@00))
   :pattern ((extension_len_rec s@$ hdrs@0@00 index@1@00))
-  :qid |quant-u-23689|)))
+  :qid |quant-u-23630|)))
 (assert (forall ((s@$ $Snap) (hdrs@0@00 $Ref) (index@1@00 Int)) (!
   (extension_len_rec%stateless hdrs@0@00 index@1@00)
   :pattern ((extension_len_rec%limited s@$ hdrs@0@00 index@1@00))
-  :qid |quant-u-23690|)))
+  :qid |quant-u-23631|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (forall ((r $Ref)) (!
@@ -1042,7 +1042,7 @@
     lambda180_26$e@3@00))
   :pattern ((inv@4@00 s@$ hdrs@0@00 index@1@00 lambda180_26$e@3@00))
   :pattern ((img@5@00 s@$ hdrs@0@00 index@1@00 lambda180_26$e@3@00))
-  :qid |quant-u-23692|)))
+  :qid |quant-u-23633|)))
 (assert (=
   ($Snap.second ($Snap.second s@$))
   ($Snap.combine
@@ -1186,7 +1186,7 @@
         $Perm.No)
       $Perm.No))
   
-  :qid |quant-u-23694|))))
+  :qid |quant-u-23635|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -1476,7 +1476,7 @@
         lambda180_26$e@3@00))
       :pattern ((inv@4@00 s@$ hdrs@0@00 index@1@00 lambda180_26$e@3@00))
       :pattern ((img@5@00 s@$ hdrs@0@00 index@1@00 lambda180_26$e@3@00))
-      :qid |quant-u-23692|))
+      :qid |quant-u-23633|))
     (forall ((r $Ref)) (!
       (=>
         (and
@@ -1570,7 +1570,7 @@
               ($SortWrappers.$PSF<asdasd>To$Snap (sm@10@00 s@$ hdrs@0@00 index@1@00))
               ($Snap.combine $Snap.unit $Snap.unit))) hdrs@0@00 (+ index@1@00 1)))))))
   :pattern ((extension_len_rec s@$ hdrs@0@00 index@1@00))
-  :qid |quant-u-23695|)))
+  :qid |quant-u-23636|)))
 (assert (forall ((s@$ $Snap) (hdrs@0@00 $Ref) (index@1@00 Int)) (!
   (=>
     (extension_len_rec%precondition s@$ hdrs@0@00 index@1@00)
@@ -1585,7 +1585,7 @@
           ($SortWrappers.$PSF<asdasd>To$Snap (sm@10@00 s@$ hdrs@0@00 index@1@00))
           ($Snap.combine $Snap.unit $Snap.unit))) hdrs@0@00 (+ index@1@00 1)))))
   :pattern ((extension_len_rec s@$ hdrs@0@00 index@1@00))
-  :qid |quant-u-23696|)))
+  :qid |quant-u-23637|)))
 ; ---------- asdasd ----------
 (declare-const r@12@00 $Ref)
 (push) ; 1

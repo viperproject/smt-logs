@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 12:43:57
+; Started: 2025-01-13 17:48:23
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -651,19 +651,19 @@
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   (= (nonTerminating%limited s@$ x@0@00) (nonTerminating s@$ x@0@00))
   :pattern ((nonTerminating s@$ x@0@00))
-  :qid |quant-u-26521|)))
+  :qid |quant-u-26463|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   (nonTerminating%stateless x@0@00)
   :pattern ((nonTerminating%limited s@$ x@0@00))
-  :qid |quant-u-26522|)))
+  :qid |quant-u-26464|)))
 (assert (forall ((s@$ $Snap) (x@2@00 $Ref)) (!
   (= (test%limited s@$ x@2@00) (test s@$ x@2@00))
   :pattern ((test s@$ x@2@00))
-  :qid |quant-u-26523|)))
+  :qid |quant-u-26465|)))
 (assert (forall ((s@$ $Snap) (x@2@00 $Ref)) (!
   (test%stateless x@2@00)
   :pattern ((test%limited s@$ x@2@00))
-  :qid |quant-u-26524|)))
+  :qid |quant-u-26466|)))
 (assert (forall ((s@$ $Snap) (x@2@00 $Ref)) (!
   (and
     (forall ((x2@6@00 $Ref)) (!
@@ -674,7 +674,7 @@
           (img@8@00 s@$ x@2@00 x2@6@00)))
       :pattern ((inv@7@00 s@$ x@2@00 x2@6@00))
       :pattern ((img@8@00 s@$ x@2@00 x2@6@00))
-      :qid |quant-u-26528|))
+      :qid |quant-u-26470|))
     (forall ((r $Ref)) (!
       (=>
         (and (img@8@00 s@$ x@2@00 r) (= x@2@00 (inv@7@00 s@$ x@2@00 r)))
@@ -683,27 +683,27 @@
       :qid |f-fctOfInv|))
     (=> (test%precondition s@$ x@2@00) (= (test s@$ x@2@00) true)))
   :pattern ((test s@$ x@2@00))
-  :qid |quant-u-26529|)))
+  :qid |quant-u-26471|)))
 (assert (forall ((s@$ $Snap) (x@2@00 $Ref)) (!
   true
   :pattern ((test s@$ x@2@00))
-  :qid |quant-u-26530|)))
+  :qid |quant-u-26472|)))
 (assert (forall ((s@$ $Snap) (x@4@00 $Ref)) (!
   (= (test2%limited s@$ x@4@00) (test2 s@$ x@4@00))
   :pattern ((test2 s@$ x@4@00))
-  :qid |quant-u-26525|)))
+  :qid |quant-u-26467|)))
 (assert (forall ((s@$ $Snap) (x@4@00 $Ref)) (!
   (test2%stateless x@4@00)
   :pattern ((test2%limited s@$ x@4@00))
-  :qid |quant-u-26526|)))
+  :qid |quant-u-26468|)))
 (assert (forall ((s@$ $Snap) (x@4@00 $Ref)) (!
   (=> (test2%precondition s@$ x@4@00) (= (test2 s@$ x@4@00) true))
   :pattern ((test2 s@$ x@4@00))
-  :qid |quant-u-26531|)))
+  :qid |quant-u-26473|)))
 (assert (forall ((s@$ $Snap) (x@4@00 $Ref)) (!
   true
   :pattern ((test2 s@$ x@4@00))
-  :qid |quant-u-26532|)))
+  :qid |quant-u-26474|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- test_pres_termination_proof ----------
@@ -887,7 +887,7 @@
     (and (= (inv@9@01 x2@7@01) x2@7@01) (img@10@01 x2@7@01)))
   :pattern ((inv@9@01 x2@7@01))
   :pattern ((img@10@01 x2@7@01))
-  :qid |quant-u-26534|)))
+  :qid |quant-u-26476|)))
 (assert (forall ((r $Ref)) (!
   (=> (and (img@10@01 r) (= x@1@01 (inv@9@01 r))) (= (inv@9@01 r) r))
   :pattern ((inv@9@01 r))

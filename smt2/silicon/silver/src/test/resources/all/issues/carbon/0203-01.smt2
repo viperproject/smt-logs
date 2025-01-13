@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 12:40:40
+; Started: 2025-01-13 17:45:11
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -691,7 +691,7 @@
 (assert (not (forall ((r $Ref)) (!
   false
   
-  :qid |quant-u-23445|))))
+  :qid |quant-u-23386|))))
 (check-sat)
 ; unknown
 (pop) ; 4
@@ -708,7 +708,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (and (img@3@01 r) (= r (inv@2@01 r))) false)
   
-  :qid |quant-u-23446|))))
+  :qid |quant-u-23387|))))
 (check-sat)
 ; unknown
 (pop) ; 4
@@ -733,7 +733,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (and (img@3@01 r) (= r (inv@2@01 r))) false)
   
-  :qid |quant-u-23447|))))
+  :qid |quant-u-23388|))))
 (check-sat)
 ; unknown
 (pop) ; 4
@@ -759,7 +759,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (and (img@3@01 r) (= r (inv@2@01 r))) false)
   
-  :qid |quant-u-23448|))))
+  :qid |quant-u-23389|))))
 (check-sat)
 ; unknown
 (pop) ; 4
@@ -784,7 +784,7 @@
 (assert (not (forall ((r $Ref)) (!
   false
   
-  :qid |quant-u-23449|))))
+  :qid |quant-u-23390|))))
 (check-sat)
 ; unknown
 (pop) ; 4
@@ -801,7 +801,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (and (img@3@01 r) (= r (inv@2@01 r))) false)
   
-  :qid |quant-u-23450|))))
+  :qid |quant-u-23391|))))
 (check-sat)
 ; unknown
 (pop) ; 4
@@ -826,7 +826,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (and (img@3@01 r) (= r (inv@2@01 r))) false)
   
-  :qid |quant-u-23451|))))
+  :qid |quant-u-23392|))))
 (check-sat)
 ; unknown
 (pop) ; 4
@@ -852,7 +852,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (and (img@3@01 r) (= r (inv@2@01 r))) false)
   
-  :qid |quant-u-23452|))))
+  :qid |quant-u-23393|))))
 (check-sat)
 ; unknown
 (pop) ; 4
@@ -895,7 +895,7 @@
 (assert (not (forall ((r $Ref)) (!
   false
   
-  :qid |quant-u-23454|))))
+  :qid |quant-u-23395|))))
 (check-sat)
 ; unknown
 (pop) ; 4
@@ -912,7 +912,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (and (img@24@01 r) (= r (inv@23@01 r))) false)
   
-  :qid |quant-u-23455|))))
+  :qid |quant-u-23396|))))
 (check-sat)
 ; unknown
 (pop) ; 4
@@ -937,7 +937,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (and (img@24@01 r) (= r (inv@23@01 r))) false)
   
-  :qid |quant-u-23456|))))
+  :qid |quant-u-23397|))))
 (check-sat)
 ; unknown
 (pop) ; 4
@@ -963,7 +963,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (and (img@24@01 r) (= r (inv@23@01 r))) false)
   
-  :qid |quant-u-23457|))))
+  :qid |quant-u-23398|))))
 (check-sat)
 ; unknown
 (pop) ; 4
@@ -988,7 +988,7 @@
 (assert (not (forall ((r $Ref)) (!
   false
   
-  :qid |quant-u-23458|))))
+  :qid |quant-u-23399|))))
 (check-sat)
 ; unknown
 (pop) ; 4
@@ -1005,7 +1005,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (and (img@24@01 r) (= r (inv@23@01 r))) false)
   
-  :qid |quant-u-23459|))))
+  :qid |quant-u-23400|))))
 (check-sat)
 ; unknown
 (pop) ; 4
@@ -1030,7 +1030,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (and (img@24@01 r) (= r (inv@23@01 r))) false)
   
-  :qid |quant-u-23460|))))
+  :qid |quant-u-23401|))))
 (check-sat)
 ; unknown
 (pop) ; 4
@@ -1056,7 +1056,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (and (img@24@01 r) (= r (inv@23@01 r))) false)
   
-  :qid |quant-u-23461|))))
+  :qid |quant-u-23402|))))
 (check-sat)
 ; unknown
 (pop) ; 4
@@ -1079,6 +1079,6 @@
 (assert (forall (($t@43@01 $Snap)) (!
   (= (MWSF_apply mwsf@45@01 $t@43@01) $t@44@01)
   :pattern ((MWSF_apply mwsf@45@01 $t@43@01))
-  :qid |quant-u-23462|)))
+  :qid |quant-u-23403|)))
 (pop) ; 2
 (pop) ; 1

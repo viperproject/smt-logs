@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 13:15:42
+// Date:         2025-01-13 18:19:46
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/third_party/stefan_recent/testPVLSyntax.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/third_party/stefan_recent/testPVLSyntax-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -544,11 +544,11 @@ axiom (forall min: int, max: int, v: int :: {Seq#Contains(Seq#Range(min, max),v)
 procedure Test__minus(diz: Ref, current_thread_id: int) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var x: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -567,8 +567,8 @@ procedure Test__minus(diz: Ref, current_thread_id: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: x := -1 -- testPVLSyntax.vpr@9.3--9.10
     x := -1;
@@ -579,8 +579,8 @@ procedure Test__minus(diz: Ref, current_thread_id: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert x > 0 -- testPVLSyntax.vpr@11.3--11.15
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion x > 0 might not hold. (testPVLSyntax.vpr@11.10--11.15) [180356]"}
       x > 0;
     assume state(Heap, Mask);
@@ -593,11 +593,11 @@ procedure Test__minus(diz: Ref, current_thread_id: int) returns ()
 procedure Test__seq_of_object(diz: Ref, current_thread_id: int) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var L: (Seq Ref);
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -616,16 +616,16 @@ procedure Test__seq_of_object(diz: Ref, current_thread_id: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: L := Seq[Ref]() -- testPVLSyntax.vpr@19.3--19.18
     L := (Seq#Empty(): Seq Ref);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert |L| == 0 -- testPVLSyntax.vpr@20.3--20.18
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion |L| == 0 might not hold. (testPVLSyntax.vpr@20.10--20.18) [180357]"}
       Seq#Length(L) == 0;
     assume state(Heap, Mask);
@@ -638,14 +638,14 @@ procedure Test__seq_of_object(diz: Ref, current_thread_id: int) returns ()
 procedure Test__Test(current_thread_id: int) returns (sys__result: Ref)
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var diz: Ref;
   var freshObj: Ref;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -659,8 +659,8 @@ procedure Test__Test(current_thread_id: int) returns (sys__result: Ref)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -687,8 +687,8 @@ procedure Test__Test(current_thread_id: int) returns (sys__result: Ref)
     assume state(Heap, Mask);
   
   // -- Translating statement: assert sys__result != null -- testPVLSyntax.vpr@30.3--30.29
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (testPVLSyntax.vpr@30.10--30.29) [180358]"}
       sys__result != null;
     assume state(Heap, Mask);
@@ -699,8 +699,8 @@ procedure Test__Test(current_thread_id: int) returns (sys__result: Ref)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of Test__Test might not hold. Assertion sys__result != null might not hold. (testPVLSyntax.vpr@25.11--25.30) [180359]"}
       sys__result != null;
 }

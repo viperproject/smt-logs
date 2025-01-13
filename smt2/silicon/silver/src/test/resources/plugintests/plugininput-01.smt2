@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 12:35:14
+; Started: 2025-01-13 17:39:52
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -118,19 +118,19 @@
 (assert (forall ((s@$ $Snap)) (!
   (= (getRandomNumber%limited s@$) (getRandomNumber s@$))
   :pattern ((getRandomNumber s@$))
-  :qid |quant-u-15753|)))
+  :qid |quant-u-15612|)))
 (assert (forall ((s@$ $Snap)) (!
   (as getRandomNumber%stateless  Bool)
   :pattern ((getRandomNumber%limited s@$))
-  :qid |quant-u-15754|)))
+  :qid |quant-u-15613|)))
 (assert (forall ((s@$ $Snap)) (!
   (=> (getRandomNumber%precondition s@$) (= (getRandomNumber s@$) 4))
   :pattern ((getRandomNumber s@$))
-  :qid |quant-u-15755|)))
+  :qid |quant-u-15614|)))
 (assert (forall ((s@$ $Snap)) (!
   true
   :pattern ((getRandomNumber s@$))
-  :qid |quant-u-15756|)))
+  :qid |quant-u-15615|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- meth ----------

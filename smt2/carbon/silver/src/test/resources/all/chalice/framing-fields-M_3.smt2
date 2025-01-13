@@ -1166,3 +1166,5 @@
 PreconditionGeneratedEntry_correct))))))))))))))))))))))))))))))))))))))))))))))))
 ))
 (check-sat)
+(get-info :reason-unknown)
+(get-info :rlimit)

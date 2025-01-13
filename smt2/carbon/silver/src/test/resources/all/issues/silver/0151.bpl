@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 13:28:43
+// Date:         2025-01-13 18:32:26
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0151.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0151-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -233,11 +233,11 @@ procedure level#definedness(this: Ref) returns (Result: Perm)
 procedure transfer(this: Ref, to: Ref, amount: int) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var x_33: Ref;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var x$0_9: Ref;
   var perm: Perm;
   var x$1_2: Ref;
@@ -255,8 +255,8 @@ procedure transfer(this: Ref, to: Ref, amount: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale (forperm x: Ref [x.held] :: level(x) < level(this)) &&
   //   level(this) < level(to) -- 0151.vpr@19.3--19.48
@@ -298,8 +298,8 @@ procedure transfer(this: Ref, to: Ref, amount: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale (forperm x$0: Ref [x$0.held] :: level(x$0) < level(this)) -- 0151.vpr@14.3--14.18
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forperm x$0: Ref [x$0.held] :: level(x$0) < level(this))
       if (*) {
@@ -333,8 +333,8 @@ procedure transfer(this: Ref, to: Ref, amount: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale (forperm x$1: Ref [x$1.held] :: level(x$1) < level(to)) -- 0151.vpr@14.3--14.18
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forperm x$1: Ref [x$1.held] :: level(x$1) < level(to))
       if (*) {

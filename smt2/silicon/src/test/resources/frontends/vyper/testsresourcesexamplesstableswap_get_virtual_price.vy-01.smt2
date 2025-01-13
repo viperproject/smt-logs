@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 12:25:55
+; Started: 2025-01-13 17:30:50
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -10477,7 +10477,7 @@
 (check-sat)
 ; unsat
 (pop) ; 13
-; 0.24s
+; 0.19s
 ; (get-info :all-statistics)
 (assert (=>
   (forall ((q$i@393@01 Int)) (!
@@ -10641,7 +10641,7 @@
 (check-sat)
 ; unsat
 (pop) ; 16
-; 0.12s
+; 0.06s
 ; (get-info :all-statistics)
 (assert (<=
   0
@@ -10659,7 +10659,7 @@
 (check-sat)
 ; unsat
 (pop) ; 16
-; 0.07s
+; 0.01s
 ; (get-info :all-statistics)
 (assert (>
   ($unwrap<Int> ($wrap<$Int> (+
@@ -11195,7 +11195,7 @@
 (check-sat)
 ; unsat
 (pop) ; 13
-; 0.11s
+; 0.12s
 ; (get-info :all-statistics)
 (assert (=>
   (forall ((q$i@395@01 Int)) (!
@@ -12418,3 +12418,7389 @@
     :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1094@11@1094@75|))
   (= ($unwrap<Int> l$D$2@218@01) ($unwrap<Int> l$D$2@396@01)))))
 (check-sat)
+; unsat
+(pop) ; 24
+; 0.26s
+; (get-info :all-statistics)
+(assert (=>
+  (forall ((q$i@397@01 Int)) (!
+    (=>
+      (and (<= 0 q$i@397@01) (< q$i@397@01 3))
+      (= (Seq_index l$xp@166@01 0) (Seq_index l$xp@166@01 q$i@397@01)))
+    :pattern ((Seq_index l$xp@166@01 q$i@397@01))
+    :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1094@11@1094@75|))
+  (= ($unwrap<Int> l$D$2@218@01) ($unwrap<Int> l$D$2@396@01))))
+; [eval] $unwrap(l$D$2) > $unwrap(l$Dprev$1)
+; [eval] $unwrap(l$D$2)
+; [eval] $unwrap(l$Dprev$1)
+(push) ; 24
+(set-option :timeout 10)
+(assert (not (not (> ($unwrap<Int> l$D$2@396@01) ($unwrap<Int> l$D$2@218@01)))))
+(check-sat)
+; unknown
+(pop) ; 24
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 24
+(set-option :timeout 10)
+(assert (not (> ($unwrap<Int> l$D$2@396@01) ($unwrap<Int> l$D$2@218@01))))
+(check-sat)
+; unknown
+(pop) ; 24
+; 0.01s
+; (get-info :all-statistics)
+; [then-branch: 133 | $unwrap[Int](l$D$2@396@01) > $unwrap[Int](l$D$2@218@01) | live]
+; [else-branch: 133 | !($unwrap[Int](l$D$2@396@01) > $unwrap[Int](l$D$2@218@01)) | live]
+(set-option :timeout 0)
+(push) ; 24
+; [then-branch: 133 | $unwrap[Int](l$D$2@396@01) > $unwrap[Int](l$D$2@218@01)]
+(assert (> ($unwrap<Int> l$D$2@396@01) ($unwrap<Int> l$D$2@218@01)))
+; [eval] $unwrap(l$D$2) - $unwrap(l$Dprev$1) < 0
+; [eval] $unwrap(l$D$2) - $unwrap(l$Dprev$1)
+; [eval] $unwrap(l$D$2)
+; [eval] $unwrap(l$Dprev$1)
+(push) ; 25
+(set-option :timeout 10)
+(assert (not (not (< (- ($unwrap<Int> l$D$2@396@01) ($unwrap<Int> l$D$2@218@01)) 0))))
+(check-sat)
+; unsat
+(pop) ; 25
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 134 | $unwrap[Int](l$D$2@396@01) - $unwrap[Int](l$D$2@218@01) < 0 | dead]
+; [else-branch: 134 | !($unwrap[Int](l$D$2@396@01) - $unwrap[Int](l$D$2@218@01) < 0) | live]
+(set-option :timeout 0)
+(push) ; 25
+; [else-branch: 134 | !($unwrap[Int](l$D$2@396@01) - $unwrap[Int](l$D$2@218@01) < 0)]
+(assert (not (< (- ($unwrap<Int> l$D$2@396@01) ($unwrap<Int> l$D$2@218@01)) 0)))
+(pop) ; 25
+; [eval] !($unwrap(l$D$2) - $unwrap(l$Dprev$1) < 0)
+; [eval] $unwrap(l$D$2) - $unwrap(l$Dprev$1) < 0
+; [eval] $unwrap(l$D$2) - $unwrap(l$Dprev$1)
+; [eval] $unwrap(l$D$2)
+; [eval] $unwrap(l$Dprev$1)
+(push) ; 25
+(set-option :timeout 10)
+(assert (not (< (- ($unwrap<Int> l$D$2@396@01) ($unwrap<Int> l$D$2@218@01)) 0)))
+(check-sat)
+; unknown
+(pop) ; 25
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 25
+(set-option :timeout 10)
+(assert (not (not (< (- ($unwrap<Int> l$D$2@396@01) ($unwrap<Int> l$D$2@218@01)) 0))))
+(check-sat)
+; unsat
+(pop) ; 25
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 135 | !($unwrap[Int](l$D$2@396@01) - $unwrap[Int](l$D$2@218@01) < 0) | live]
+; [else-branch: 135 | $unwrap[Int](l$D$2@396@01) - $unwrap[Int](l$D$2@218@01) < 0 | dead]
+(set-option :timeout 0)
+(push) ; 25
+; [then-branch: 135 | !($unwrap[Int](l$D$2@396@01) - $unwrap[Int](l$D$2@218@01) < 0)]
+(assert (not (< (- ($unwrap<Int> l$D$2@396@01) ($unwrap<Int> l$D$2@218@01)) 0)))
+; [eval] $unwrap(l$D$2) - $unwrap(l$Dprev$1) <= 1
+; [eval] $unwrap(l$D$2) - $unwrap(l$Dprev$1)
+; [eval] $unwrap(l$D$2)
+; [eval] $unwrap(l$Dprev$1)
+(push) ; 26
+(set-option :timeout 10)
+(assert (not (not (<= (- ($unwrap<Int> l$D$2@396@01) ($unwrap<Int> l$D$2@218@01)) 1))))
+(check-sat)
+; unknown
+(pop) ; 26
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 26
+(set-option :timeout 10)
+(assert (not (<= (- ($unwrap<Int> l$D$2@396@01) ($unwrap<Int> l$D$2@218@01)) 1)))
+(check-sat)
+; unknown
+(pop) ; 26
+; 0.01s
+; (get-info :all-statistics)
+; [then-branch: 136 | $unwrap[Int](l$D$2@396@01) - $unwrap[Int](l$D$2@218@01) <= 1 | live]
+; [else-branch: 136 | !($unwrap[Int](l$D$2@396@01) - $unwrap[Int](l$D$2@218@01) <= 1) | live]
+(set-option :timeout 0)
+(push) ; 26
+; [then-branch: 136 | $unwrap[Int](l$D$2@396@01) - $unwrap[Int](l$D$2@218@01) <= 1]
+(assert (<= (- ($unwrap<Int> l$D$2@396@01) ($unwrap<Int> l$D$2@218@01)) 1))
+; [exec]
+; label break_1
+; [exec]
+; $res := $unwrap(l$D$2)
+; [eval] $unwrap(l$D$2)
+(declare-const $res@398@01 Int)
+(assert (= $res@398@01 ($unwrap<Int> l$D$2@396@01)))
+; [exec]
+; label return
+(push) ; 27
+(set-option :timeout 10)
+(assert (not (not $out_of_gas@219@01)))
+(check-sat)
+; unknown
+(pop) ; 27
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 27
+(set-option :timeout 10)
+(assert (not $out_of_gas@219@01))
+(check-sat)
+; unknown
+(pop) ; 27
+; 0.01s
+; (get-info :all-statistics)
+; [then-branch: 137 | $out_of_gas@219@01 | live]
+; [else-branch: 137 | !($out_of_gas@219@01) | live]
+(set-option :timeout 0)
+(push) ; 27
+; [then-branch: 137 | $out_of_gas@219@01]
+(assert $out_of_gas@219@01)
+; [exec]
+; label revert
+; [exec]
+; $succ := false
+; [exec]
+; $res := l$havoc$12
+; [exec]
+; self := $pre_self
+; [exec]
+; $contracts := $pre_$contracts
+; [exec]
+; $old_self := $pre_old_self
+; [exec]
+; $old_$contracts := $pre_old_$contracts
+; [exec]
+; label end
+; [exec]
+; exhale $succ ==>
+;   (forall q$i: Int ::
+;     { l$xp[q$i] }
+;     0 <= q$i ==> q$i < 3 ==> l$xp[0] == l$xp[q$i]) ==>
+;   $res == 3 * $unwrap($wrap(l$xp[0]))
+; [eval] $succ ==> (forall q$i: Int :: { l$xp[q$i] } 0 <= q$i ==> q$i < 3 ==> l$xp[0] == l$xp[q$i]) ==> $res == 3 * $unwrap($wrap(l$xp[0]))
+(push) ; 28
+; [then-branch: 138 | False | dead]
+; [else-branch: 138 | True | live]
+(push) ; 29
+; [else-branch: 138 | True]
+(pop) ; 29
+(pop) ; 28
+; Joined path conditions
+(pop) ; 27
+(push) ; 27
+; [else-branch: 137 | !($out_of_gas@219@01)]
+(assert (not $out_of_gas@219@01))
+(pop) ; 27
+; [eval] !$out_of_gas
+(push) ; 27
+(set-option :timeout 10)
+(assert (not $out_of_gas@219@01))
+(check-sat)
+; unknown
+(pop) ; 27
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 27
+(set-option :timeout 10)
+(assert (not (not $out_of_gas@219@01)))
+(check-sat)
+; unknown
+(pop) ; 27
+; 0.01s
+; (get-info :all-statistics)
+; [then-branch: 139 | !($out_of_gas@219@01) | live]
+; [else-branch: 139 | $out_of_gas@219@01 | live]
+(set-option :timeout 0)
+(push) ; 27
+; [then-branch: 139 | !($out_of_gas@219@01)]
+(assert (not $out_of_gas@219@01))
+; [exec]
+; label end
+; [exec]
+; exhale $succ ==>
+;   (forall q$i: Int ::
+;     { l$xp[q$i] }
+;     0 <= q$i ==> q$i < 3 ==> l$xp[0] == l$xp[q$i]) ==>
+;   $res == 3 * $unwrap($wrap(l$xp[0]))
+; [eval] $succ ==> (forall q$i: Int :: { l$xp[q$i] } 0 <= q$i ==> q$i < 3 ==> l$xp[0] == l$xp[q$i]) ==> $res == 3 * $unwrap($wrap(l$xp[0]))
+(push) ; 28
+(push) ; 29
+(set-option :timeout 10)
+(assert (not false))
+(check-sat)
+; unknown
+(pop) ; 29
+; 0.01s
+; (get-info :all-statistics)
+; [then-branch: 140 | True | live]
+; [else-branch: 140 | False | dead]
+(set-option :timeout 0)
+(push) ; 29
+; [then-branch: 140 | True]
+; [eval] (forall q$i: Int :: { l$xp[q$i] } 0 <= q$i ==> q$i < 3 ==> l$xp[0] == l$xp[q$i]) ==> $res == 3 * $unwrap($wrap(l$xp[0]))
+; [eval] (forall q$i: Int :: { l$xp[q$i] } 0 <= q$i ==> q$i < 3 ==> l$xp[0] == l$xp[q$i])
+(declare-const q$i@399@01 Int)
+(push) ; 30
+; [eval] 0 <= q$i ==> q$i < 3 ==> l$xp[0] == l$xp[q$i]
+; [eval] 0 <= q$i
+(push) ; 31
+; [then-branch: 141 | 0 <= q$i@399@01 | live]
+; [else-branch: 141 | !(0 <= q$i@399@01) | live]
+(push) ; 32
+; [then-branch: 141 | 0 <= q$i@399@01]
+(assert (<= 0 q$i@399@01))
+; [eval] q$i < 3 ==> l$xp[0] == l$xp[q$i]
+; [eval] q$i < 3
+(push) ; 33
+; [then-branch: 142 | q$i@399@01 < 3 | live]
+; [else-branch: 142 | !(q$i@399@01 < 3) | live]
+(push) ; 34
+; [then-branch: 142 | q$i@399@01 < 3]
+(assert (< q$i@399@01 3))
+; [eval] l$xp[0] == l$xp[q$i]
+; [eval] l$xp[0]
+(push) ; 35
+(assert (not (< 0 (Seq_length l$xp@166@01))))
+(check-sat)
+; unsat
+(pop) ; 35
+; 0.00s
+; (get-info :all-statistics)
+; [eval] l$xp[q$i]
+(push) ; 35
+(assert (not (>= q$i@399@01 0)))
+(check-sat)
+; unsat
+(pop) ; 35
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 35
+(assert (not (< q$i@399@01 (Seq_length l$xp@166@01))))
+(check-sat)
+; unsat
+(pop) ; 35
+; 0.00s
+; (get-info :all-statistics)
+(pop) ; 34
+(push) ; 34
+; [else-branch: 142 | !(q$i@399@01 < 3)]
+(assert (not (< q$i@399@01 3)))
+(pop) ; 34
+(pop) ; 33
+; Joined path conditions
+; Joined path conditions
+(assert (or (not (< q$i@399@01 3)) (< q$i@399@01 3)))
+(pop) ; 32
+(push) ; 32
+; [else-branch: 141 | !(0 <= q$i@399@01)]
+(assert (not (<= 0 q$i@399@01)))
+(pop) ; 32
+(pop) ; 31
+; Joined path conditions
+(assert (=>
+  (<= 0 q$i@399@01)
+  (and (<= 0 q$i@399@01) (or (not (< q$i@399@01 3)) (< q$i@399@01 3)))))
+; Joined path conditions
+(assert (or (not (<= 0 q$i@399@01)) (<= 0 q$i@399@01)))
+(pop) ; 30
+; Nested auxiliary terms: globals (aux)
+; Nested auxiliary terms: non-globals (aux)
+(assert (forall ((q$i@399@01 Int)) (!
+  (and
+    (=>
+      (<= 0 q$i@399@01)
+      (and (<= 0 q$i@399@01) (or (not (< q$i@399@01 3)) (< q$i@399@01 3))))
+    (or (not (<= 0 q$i@399@01)) (<= 0 q$i@399@01)))
+  :pattern ((Seq_index l$xp@166@01 q$i@399@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1141@21@1141@85-aux|)))
+(push) ; 30
+(push) ; 31
+(set-option :timeout 10)
+(assert (not (not
+  (forall ((q$i@399@01 Int)) (!
+    (=>
+      (and (<= 0 q$i@399@01) (< q$i@399@01 3))
+      (= (Seq_index l$xp@166@01 0) (Seq_index l$xp@166@01 q$i@399@01)))
+    :pattern ((Seq_index l$xp@166@01 q$i@399@01))
+    :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1141@21@1141@85|)))))
+(check-sat)
+; unknown
+(pop) ; 31
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 31
+(set-option :timeout 10)
+(assert (not (forall ((q$i@399@01 Int)) (!
+  (=>
+    (and (<= 0 q$i@399@01) (< q$i@399@01 3))
+    (= (Seq_index l$xp@166@01 0) (Seq_index l$xp@166@01 q$i@399@01)))
+  :pattern ((Seq_index l$xp@166@01 q$i@399@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1141@21@1141@85|))))
+(check-sat)
+; unknown
+(pop) ; 31
+; 0.01s
+; (get-info :all-statistics)
+; [then-branch: 143 | QA q$i@399@01 :: 0 <= q$i@399@01 && q$i@399@01 < 3 ==> l$xp@166@01[0] == l$xp@166@01[q$i@399@01] | live]
+; [else-branch: 143 | !(QA q$i@399@01 :: 0 <= q$i@399@01 && q$i@399@01 < 3 ==> l$xp@166@01[0] == l$xp@166@01[q$i@399@01]) | live]
+(set-option :timeout 0)
+(push) ; 31
+; [then-branch: 143 | QA q$i@399@01 :: 0 <= q$i@399@01 && q$i@399@01 < 3 ==> l$xp@166@01[0] == l$xp@166@01[q$i@399@01]]
+(assert (forall ((q$i@399@01 Int)) (!
+  (=>
+    (and (<= 0 q$i@399@01) (< q$i@399@01 3))
+    (= (Seq_index l$xp@166@01 0) (Seq_index l$xp@166@01 q$i@399@01)))
+  :pattern ((Seq_index l$xp@166@01 q$i@399@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1141@21@1141@85|)))
+; [eval] $res == 3 * $unwrap($wrap(l$xp[0]))
+; [eval] 3 * $unwrap($wrap(l$xp[0]))
+; [eval] $unwrap($wrap(l$xp[0]))
+; [eval] $wrap(l$xp[0])
+; [eval] l$xp[0]
+(push) ; 32
+(assert (not (< 0 (Seq_length l$xp@166@01))))
+(check-sat)
+; unsat
+(pop) ; 32
+; 0.00s
+; (get-info :all-statistics)
+(pop) ; 31
+(push) ; 31
+; [else-branch: 143 | !(QA q$i@399@01 :: 0 <= q$i@399@01 && q$i@399@01 < 3 ==> l$xp@166@01[0] == l$xp@166@01[q$i@399@01])]
+(assert (not
+  (forall ((q$i@399@01 Int)) (!
+    (=>
+      (and (<= 0 q$i@399@01) (< q$i@399@01 3))
+      (= (Seq_index l$xp@166@01 0) (Seq_index l$xp@166@01 q$i@399@01)))
+    :pattern ((Seq_index l$xp@166@01 q$i@399@01))
+    :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1141@21@1141@85|))))
+(pop) ; 31
+(pop) ; 30
+; Joined path conditions
+; Joined path conditions
+(assert (or
+  (not
+    (forall ((q$i@399@01 Int)) (!
+      (=>
+        (and (<= 0 q$i@399@01) (< q$i@399@01 3))
+        (= (Seq_index l$xp@166@01 0) (Seq_index l$xp@166@01 q$i@399@01)))
+      :pattern ((Seq_index l$xp@166@01 q$i@399@01))
+      :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1141@21@1141@85|)))
+  (forall ((q$i@399@01 Int)) (!
+    (=>
+      (and (<= 0 q$i@399@01) (< q$i@399@01 3))
+      (= (Seq_index l$xp@166@01 0) (Seq_index l$xp@166@01 q$i@399@01)))
+    :pattern ((Seq_index l$xp@166@01 q$i@399@01))
+    :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1141@21@1141@85|))))
+(pop) ; 29
+(pop) ; 28
+; Joined path conditions
+(assert (and
+  (forall ((q$i@399@01 Int)) (!
+    (and
+      (=>
+        (<= 0 q$i@399@01)
+        (and (<= 0 q$i@399@01) (or (not (< q$i@399@01 3)) (< q$i@399@01 3))))
+      (or (not (<= 0 q$i@399@01)) (<= 0 q$i@399@01)))
+    :pattern ((Seq_index l$xp@166@01 q$i@399@01))
+    :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1141@21@1141@85-aux|))
+  (or
+    (not
+      (forall ((q$i@399@01 Int)) (!
+        (=>
+          (and (<= 0 q$i@399@01) (< q$i@399@01 3))
+          (= (Seq_index l$xp@166@01 0) (Seq_index l$xp@166@01 q$i@399@01)))
+        :pattern ((Seq_index l$xp@166@01 q$i@399@01))
+        :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1141@21@1141@85|)))
+    (forall ((q$i@399@01 Int)) (!
+      (=>
+        (and (<= 0 q$i@399@01) (< q$i@399@01 3))
+        (= (Seq_index l$xp@166@01 0) (Seq_index l$xp@166@01 q$i@399@01)))
+      :pattern ((Seq_index l$xp@166@01 q$i@399@01))
+      :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1141@21@1141@85|)))))
+(push) ; 28
+(assert (not (=>
+  (forall ((q$i@399@01 Int)) (!
+    (=>
+      (and (<= 0 q$i@399@01) (< q$i@399@01 3))
+      (= (Seq_index l$xp@166@01 0) (Seq_index l$xp@166@01 q$i@399@01)))
+    :pattern ((Seq_index l$xp@166@01 q$i@399@01))
+    :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1141@21@1141@85|))
+  (= $res@398@01 (* 3 ($unwrap<Int> ($wrap<$Int> (Seq_index l$xp@166@01 0))))))))
+(check-sat)
+; unsat
+(pop) ; 28
+; 0.18s
+; (get-info :all-statistics)
+(assert (=>
+  (forall ((q$i@399@01 Int)) (!
+    (=>
+      (and (<= 0 q$i@399@01) (< q$i@399@01 3))
+      (= (Seq_index l$xp@166@01 0) (Seq_index l$xp@166@01 q$i@399@01)))
+    :pattern ((Seq_index l$xp@166@01 q$i@399@01))
+    :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1141@21@1141@85|))
+  (= $res@398@01 (* 3 ($unwrap<Int> ($wrap<$Int> (Seq_index l$xp@166@01 0)))))))
+(pop) ; 27
+(push) ; 27
+; [else-branch: 139 | $out_of_gas@219@01]
+(assert $out_of_gas@219@01)
+(pop) ; 27
+(pop) ; 26
+(push) ; 26
+; [else-branch: 136 | !($unwrap[Int](l$D$2@396@01) - $unwrap[Int](l$D$2@218@01) <= 1)]
+(assert (not (<= (- ($unwrap<Int> l$D$2@396@01) ($unwrap<Int> l$D$2@218@01)) 1)))
+(pop) ; 26
+; [eval] !($unwrap(l$D$2) - $unwrap(l$Dprev$1) <= 1)
+; [eval] $unwrap(l$D$2) - $unwrap(l$Dprev$1) <= 1
+; [eval] $unwrap(l$D$2) - $unwrap(l$Dprev$1)
+; [eval] $unwrap(l$D$2)
+; [eval] $unwrap(l$Dprev$1)
+(push) ; 26
+(set-option :timeout 10)
+(assert (not (<= (- ($unwrap<Int> l$D$2@396@01) ($unwrap<Int> l$D$2@218@01)) 1)))
+(check-sat)
+; unknown
+(pop) ; 26
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 26
+(set-option :timeout 10)
+(assert (not (not (<= (- ($unwrap<Int> l$D$2@396@01) ($unwrap<Int> l$D$2@218@01)) 1))))
+(check-sat)
+; unknown
+(pop) ; 26
+; 0.01s
+; (get-info :all-statistics)
+; [then-branch: 144 | !($unwrap[Int](l$D$2@396@01) - $unwrap[Int](l$D$2@218@01) <= 1) | live]
+; [else-branch: 144 | $unwrap[Int](l$D$2@396@01) - $unwrap[Int](l$D$2@218@01) <= 1 | live]
+(set-option :timeout 0)
+(push) ; 26
+; [then-branch: 144 | !($unwrap[Int](l$D$2@396@01) - $unwrap[Int](l$D$2@218@01) <= 1)]
+(assert (not (<= (- ($unwrap<Int> l$D$2@396@01) ($unwrap<Int> l$D$2@218@01)) 1)))
+; [exec]
+; label continue_3
+; [exec]
+; l$$idx := l$$idx + 1
+; [eval] l$$idx + 1
+(declare-const l$$idx@400@01 Int)
+(assert (= l$$idx@400@01 (+ l$havoc@194@01 1)))
+; [eval] l$$idx == 255
+(push) ; 27
+(set-option :timeout 10)
+(assert (not (not (= l$$idx@400@01 255))))
+(check-sat)
+; unknown
+(pop) ; 27
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 27
+(set-option :timeout 10)
+(assert (not (= l$$idx@400@01 255)))
+(check-sat)
+; unknown
+(pop) ; 27
+; 0.01s
+; (get-info :all-statistics)
+; [then-branch: 145 | l$$idx@400@01 == 255 | live]
+; [else-branch: 145 | l$$idx@400@01 != 255 | live]
+(set-option :timeout 0)
+(push) ; 27
+; [then-branch: 145 | l$$idx@400@01 == 255]
+(assert (= l$$idx@400@01 255))
+; [exec]
+; label break_1
+; [exec]
+; $res := $unwrap(l$D$2)
+; [eval] $unwrap(l$D$2)
+(declare-const $res@401@01 Int)
+(assert (= $res@401@01 ($unwrap<Int> l$D$2@396@01)))
+; [exec]
+; label return
+(push) ; 28
+(set-option :timeout 10)
+(assert (not (not $out_of_gas@219@01)))
+(check-sat)
+; unknown
+(pop) ; 28
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 28
+(set-option :timeout 10)
+(assert (not $out_of_gas@219@01))
+(check-sat)
+; unknown
+(pop) ; 28
+; 0.01s
+; (get-info :all-statistics)
+; [then-branch: 146 | $out_of_gas@219@01 | live]
+; [else-branch: 146 | !($out_of_gas@219@01) | live]
+(set-option :timeout 0)
+(push) ; 28
+; [then-branch: 146 | $out_of_gas@219@01]
+(assert $out_of_gas@219@01)
+; [exec]
+; label revert
+; [exec]
+; $succ := false
+; [exec]
+; $res := l$havoc$12
+; [exec]
+; self := $pre_self
+; [exec]
+; $contracts := $pre_$contracts
+; [exec]
+; $old_self := $pre_old_self
+; [exec]
+; $old_$contracts := $pre_old_$contracts
+; [exec]
+; label end
+; [exec]
+; exhale $succ ==>
+;   (forall q$i: Int ::
+;     { l$xp[q$i] }
+;     0 <= q$i ==> q$i < 3 ==> l$xp[0] == l$xp[q$i]) ==>
+;   $res == 3 * $unwrap($wrap(l$xp[0]))
+; [eval] $succ ==> (forall q$i: Int :: { l$xp[q$i] } 0 <= q$i ==> q$i < 3 ==> l$xp[0] == l$xp[q$i]) ==> $res == 3 * $unwrap($wrap(l$xp[0]))
+(push) ; 29
+; [then-branch: 147 | False | dead]
+; [else-branch: 147 | True | live]
+(push) ; 30
+; [else-branch: 147 | True]
+(pop) ; 30
+(pop) ; 29
+; Joined path conditions
+(pop) ; 28
+(push) ; 28
+; [else-branch: 146 | !($out_of_gas@219@01)]
+(assert (not $out_of_gas@219@01))
+(pop) ; 28
+; [eval] !$out_of_gas
+(push) ; 28
+(set-option :timeout 10)
+(assert (not $out_of_gas@219@01))
+(check-sat)
+; unknown
+(pop) ; 28
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 28
+(set-option :timeout 10)
+(assert (not (not $out_of_gas@219@01)))
+(check-sat)
+; unknown
+(pop) ; 28
+; 0.01s
+; (get-info :all-statistics)
+; [then-branch: 148 | !($out_of_gas@219@01) | live]
+; [else-branch: 148 | $out_of_gas@219@01 | live]
+(set-option :timeout 0)
+(push) ; 28
+; [then-branch: 148 | !($out_of_gas@219@01)]
+(assert (not $out_of_gas@219@01))
+; [exec]
+; label end
+; [exec]
+; exhale $succ ==>
+;   (forall q$i: Int ::
+;     { l$xp[q$i] }
+;     0 <= q$i ==> q$i < 3 ==> l$xp[0] == l$xp[q$i]) ==>
+;   $res == 3 * $unwrap($wrap(l$xp[0]))
+; [eval] $succ ==> (forall q$i: Int :: { l$xp[q$i] } 0 <= q$i ==> q$i < 3 ==> l$xp[0] == l$xp[q$i]) ==> $res == 3 * $unwrap($wrap(l$xp[0]))
+(push) ; 29
+(push) ; 30
+(set-option :timeout 10)
+(assert (not false))
+(check-sat)
+; unknown
+(pop) ; 30
+; 0.01s
+; (get-info :all-statistics)
+; [then-branch: 149 | True | live]
+; [else-branch: 149 | False | dead]
+(set-option :timeout 0)
+(push) ; 30
+; [then-branch: 149 | True]
+; [eval] (forall q$i: Int :: { l$xp[q$i] } 0 <= q$i ==> q$i < 3 ==> l$xp[0] == l$xp[q$i]) ==> $res == 3 * $unwrap($wrap(l$xp[0]))
+; [eval] (forall q$i: Int :: { l$xp[q$i] } 0 <= q$i ==> q$i < 3 ==> l$xp[0] == l$xp[q$i])
+(declare-const q$i@402@01 Int)
+(push) ; 31
+; [eval] 0 <= q$i ==> q$i < 3 ==> l$xp[0] == l$xp[q$i]
+; [eval] 0 <= q$i
+(push) ; 32
+; [then-branch: 150 | 0 <= q$i@402@01 | live]
+; [else-branch: 150 | !(0 <= q$i@402@01) | live]
+(push) ; 33
+; [then-branch: 150 | 0 <= q$i@402@01]
+(assert (<= 0 q$i@402@01))
+; [eval] q$i < 3 ==> l$xp[0] == l$xp[q$i]
+; [eval] q$i < 3
+(push) ; 34
+; [then-branch: 151 | q$i@402@01 < 3 | live]
+; [else-branch: 151 | !(q$i@402@01 < 3) | live]
+(push) ; 35
+; [then-branch: 151 | q$i@402@01 < 3]
+(assert (< q$i@402@01 3))
+; [eval] l$xp[0] == l$xp[q$i]
+; [eval] l$xp[0]
+(push) ; 36
+(assert (not (< 0 (Seq_length l$xp@166@01))))
+(check-sat)
+; unsat
+(pop) ; 36
+; 0.00s
+; (get-info :all-statistics)
+; [eval] l$xp[q$i]
+(push) ; 36
+(assert (not (>= q$i@402@01 0)))
+(check-sat)
+; unsat
+(pop) ; 36
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 36
+(assert (not (< q$i@402@01 (Seq_length l$xp@166@01))))
+(check-sat)
+; unsat
+(pop) ; 36
+; 0.00s
+; (get-info :all-statistics)
+(pop) ; 35
+(push) ; 35
+; [else-branch: 151 | !(q$i@402@01 < 3)]
+(assert (not (< q$i@402@01 3)))
+(pop) ; 35
+(pop) ; 34
+; Joined path conditions
+; Joined path conditions
+(assert (or (not (< q$i@402@01 3)) (< q$i@402@01 3)))
+(pop) ; 33
+(push) ; 33
+; [else-branch: 150 | !(0 <= q$i@402@01)]
+(assert (not (<= 0 q$i@402@01)))
+(pop) ; 33
+(pop) ; 32
+; Joined path conditions
+(assert (=>
+  (<= 0 q$i@402@01)
+  (and (<= 0 q$i@402@01) (or (not (< q$i@402@01 3)) (< q$i@402@01 3)))))
+; Joined path conditions
+(assert (or (not (<= 0 q$i@402@01)) (<= 0 q$i@402@01)))
+(pop) ; 31
+; Nested auxiliary terms: globals (aux)
+; Nested auxiliary terms: non-globals (aux)
+(assert (forall ((q$i@402@01 Int)) (!
+  (and
+    (=>
+      (<= 0 q$i@402@01)
+      (and (<= 0 q$i@402@01) (or (not (< q$i@402@01 3)) (< q$i@402@01 3))))
+    (or (not (<= 0 q$i@402@01)) (<= 0 q$i@402@01)))
+  :pattern ((Seq_index l$xp@166@01 q$i@402@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1141@21@1141@85-aux|)))
+(push) ; 31
+(push) ; 32
+(set-option :timeout 10)
+(assert (not (not
+  (forall ((q$i@402@01 Int)) (!
+    (=>
+      (and (<= 0 q$i@402@01) (< q$i@402@01 3))
+      (= (Seq_index l$xp@166@01 0) (Seq_index l$xp@166@01 q$i@402@01)))
+    :pattern ((Seq_index l$xp@166@01 q$i@402@01))
+    :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1141@21@1141@85|)))))
+(check-sat)
+; unknown
+(pop) ; 32
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 32
+(set-option :timeout 10)
+(assert (not (forall ((q$i@402@01 Int)) (!
+  (=>
+    (and (<= 0 q$i@402@01) (< q$i@402@01 3))
+    (= (Seq_index l$xp@166@01 0) (Seq_index l$xp@166@01 q$i@402@01)))
+  :pattern ((Seq_index l$xp@166@01 q$i@402@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1141@21@1141@85|))))
+(check-sat)
+; unknown
+(pop) ; 32
+; 0.01s
+; (get-info :all-statistics)
+; [then-branch: 152 | QA q$i@402@01 :: 0 <= q$i@402@01 && q$i@402@01 < 3 ==> l$xp@166@01[0] == l$xp@166@01[q$i@402@01] | live]
+; [else-branch: 152 | !(QA q$i@402@01 :: 0 <= q$i@402@01 && q$i@402@01 < 3 ==> l$xp@166@01[0] == l$xp@166@01[q$i@402@01]) | live]
+(set-option :timeout 0)
+(push) ; 32
+; [then-branch: 152 | QA q$i@402@01 :: 0 <= q$i@402@01 && q$i@402@01 < 3 ==> l$xp@166@01[0] == l$xp@166@01[q$i@402@01]]
+(assert (forall ((q$i@402@01 Int)) (!
+  (=>
+    (and (<= 0 q$i@402@01) (< q$i@402@01 3))
+    (= (Seq_index l$xp@166@01 0) (Seq_index l$xp@166@01 q$i@402@01)))
+  :pattern ((Seq_index l$xp@166@01 q$i@402@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1141@21@1141@85|)))
+; [eval] $res == 3 * $unwrap($wrap(l$xp[0]))
+; [eval] 3 * $unwrap($wrap(l$xp[0]))
+; [eval] $unwrap($wrap(l$xp[0]))
+; [eval] $wrap(l$xp[0])
+; [eval] l$xp[0]
+(push) ; 33
+(assert (not (< 0 (Seq_length l$xp@166@01))))
+(check-sat)
+; unsat
+(pop) ; 33
+; 0.00s
+; (get-info :all-statistics)
+(pop) ; 32
+(push) ; 32
+; [else-branch: 152 | !(QA q$i@402@01 :: 0 <= q$i@402@01 && q$i@402@01 < 3 ==> l$xp@166@01[0] == l$xp@166@01[q$i@402@01])]
+(assert (not
+  (forall ((q$i@402@01 Int)) (!
+    (=>
+      (and (<= 0 q$i@402@01) (< q$i@402@01 3))
+      (= (Seq_index l$xp@166@01 0) (Seq_index l$xp@166@01 q$i@402@01)))
+    :pattern ((Seq_index l$xp@166@01 q$i@402@01))
+    :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1141@21@1141@85|))))
+(pop) ; 32
+(pop) ; 31
+; Joined path conditions
+; Joined path conditions
+(assert (or
+  (not
+    (forall ((q$i@402@01 Int)) (!
+      (=>
+        (and (<= 0 q$i@402@01) (< q$i@402@01 3))
+        (= (Seq_index l$xp@166@01 0) (Seq_index l$xp@166@01 q$i@402@01)))
+      :pattern ((Seq_index l$xp@166@01 q$i@402@01))
+      :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1141@21@1141@85|)))
+  (forall ((q$i@402@01 Int)) (!
+    (=>
+      (and (<= 0 q$i@402@01) (< q$i@402@01 3))
+      (= (Seq_index l$xp@166@01 0) (Seq_index l$xp@166@01 q$i@402@01)))
+    :pattern ((Seq_index l$xp@166@01 q$i@402@01))
+    :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1141@21@1141@85|))))
+(pop) ; 30
+(pop) ; 29
+; Joined path conditions
+(assert (and
+  (forall ((q$i@402@01 Int)) (!
+    (and
+      (=>
+        (<= 0 q$i@402@01)
+        (and (<= 0 q$i@402@01) (or (not (< q$i@402@01 3)) (< q$i@402@01 3))))
+      (or (not (<= 0 q$i@402@01)) (<= 0 q$i@402@01)))
+    :pattern ((Seq_index l$xp@166@01 q$i@402@01))
+    :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1141@21@1141@85-aux|))
+  (or
+    (not
+      (forall ((q$i@402@01 Int)) (!
+        (=>
+          (and (<= 0 q$i@402@01) (< q$i@402@01 3))
+          (= (Seq_index l$xp@166@01 0) (Seq_index l$xp@166@01 q$i@402@01)))
+        :pattern ((Seq_index l$xp@166@01 q$i@402@01))
+        :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1141@21@1141@85|)))
+    (forall ((q$i@402@01 Int)) (!
+      (=>
+        (and (<= 0 q$i@402@01) (< q$i@402@01 3))
+        (= (Seq_index l$xp@166@01 0) (Seq_index l$xp@166@01 q$i@402@01)))
+      :pattern ((Seq_index l$xp@166@01 q$i@402@01))
+      :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1141@21@1141@85|)))))
+(push) ; 29
+(assert (not (=>
+  (forall ((q$i@402@01 Int)) (!
+    (=>
+      (and (<= 0 q$i@402@01) (< q$i@402@01 3))
+      (= (Seq_index l$xp@166@01 0) (Seq_index l$xp@166@01 q$i@402@01)))
+    :pattern ((Seq_index l$xp@166@01 q$i@402@01))
+    :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1141@21@1141@85|))
+  (= $res@401@01 (* 3 ($unwrap<Int> ($wrap<$Int> (Seq_index l$xp@166@01 0))))))))
+(check-sat)
+; unsat
+(pop) ; 29
+; 0.25s
+; (get-info :all-statistics)
+(assert (=>
+  (forall ((q$i@402@01 Int)) (!
+    (=>
+      (and (<= 0 q$i@402@01) (< q$i@402@01 3))
+      (= (Seq_index l$xp@166@01 0) (Seq_index l$xp@166@01 q$i@402@01)))
+    :pattern ((Seq_index l$xp@166@01 q$i@402@01))
+    :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1141@21@1141@85|))
+  (= $res@401@01 (* 3 ($unwrap<Int> ($wrap<$Int> (Seq_index l$xp@166@01 0)))))))
+(pop) ; 28
+(push) ; 28
+; [else-branch: 148 | $out_of_gas@219@01]
+(assert $out_of_gas@219@01)
+(pop) ; 28
+(pop) ; 27
+(push) ; 27
+; [else-branch: 145 | l$$idx@400@01 != 255]
+(assert (not (= l$$idx@400@01 255)))
+(pop) ; 27
+; [eval] !(l$$idx == 255)
+; [eval] l$$idx == 255
+(push) ; 27
+(set-option :timeout 10)
+(assert (not (= l$$idx@400@01 255)))
+(check-sat)
+; unknown
+(pop) ; 27
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 27
+(set-option :timeout 10)
+(assert (not (not (= l$$idx@400@01 255))))
+(check-sat)
+; unknown
+(pop) ; 27
+; 0.01s
+; (get-info :all-statistics)
+; [then-branch: 153 | l$$idx@400@01 != 255 | live]
+; [else-branch: 153 | l$$idx@400@01 == 255 | live]
+(set-option :timeout 0)
+(push) ; 27
+; [then-branch: 153 | l$$idx@400@01 != 255]
+(assert (not (= l$$idx@400@01 255)))
+; [exec]
+; l$_i := $wrap($range(0, 255)[l$$idx])
+; [eval] $wrap($range(0, 255)[l$$idx])
+; [eval] $range(0, 255)[l$$idx]
+; [eval] $range(0, 255)
+(push) ; 28
+(assert (not (>= l$$idx@400@01 0)))
+(check-sat)
+; unsat
+(pop) ; 28
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 28
+(assert (not (< l$$idx@400@01 (Seq_length ($range<Seq<Int>> 0 255)))))
+(check-sat)
+; unsat
+(pop) ; 28
+; 0.00s
+; (get-info :all-statistics)
+(declare-const l$_i@403@01 $Int)
+(assert (= l$_i@403@01 ($wrap<$Int> (Seq_index ($range<Seq<Int>> 0 255) l$$idx@400@01))))
+; [exec]
+; exhale $unwrap(l$S$3) == $unwrap(l$S$1) &&
+;   $unwrap(l$Ann$1) == $unwrap(l$Ann)
+; [eval] $unwrap(l$S$3) == $unwrap(l$S$1)
+; [eval] $unwrap(l$S$3)
+; [eval] $unwrap(l$S$1)
+(push) ; 28
+(assert (not (= ($unwrap<Int> l$S$3@217@01) ($unwrap<Int> l$S$1@278@01))))
+(check-sat)
+; unsat
+(pop) ; 28
+; 0.00s
+; (get-info :all-statistics)
+(assert (= ($unwrap<Int> l$S$3@217@01) ($unwrap<Int> l$S$1@278@01)))
+; [eval] $unwrap(l$Ann$1) == $unwrap(l$Ann)
+; [eval] $unwrap(l$Ann$1)
+; [eval] $unwrap(l$Ann)
+; [exec]
+; exhale (forall q$i: Int ::
+;     { l$xp[q$i] }
+;     0 <= q$i ==> q$i < 3 ==> l$xp[0] == l$xp[q$i]) ==>
+;   $unwrap(l$D$2) == $unwrap(l$S$3)
+; [eval] (forall q$i: Int :: { l$xp[q$i] } 0 <= q$i ==> q$i < 3 ==> l$xp[0] == l$xp[q$i]) ==> $unwrap(l$D$2) == $unwrap(l$S$3)
+; [eval] (forall q$i: Int :: { l$xp[q$i] } 0 <= q$i ==> q$i < 3 ==> l$xp[0] == l$xp[q$i])
+(declare-const q$i@404@01 Int)
+(push) ; 28
+; [eval] 0 <= q$i ==> q$i < 3 ==> l$xp[0] == l$xp[q$i]
+; [eval] 0 <= q$i
+(push) ; 29
+; [then-branch: 154 | 0 <= q$i@404@01 | live]
+; [else-branch: 154 | !(0 <= q$i@404@01) | live]
+(push) ; 30
+; [then-branch: 154 | 0 <= q$i@404@01]
+(assert (<= 0 q$i@404@01))
+; [eval] q$i < 3 ==> l$xp[0] == l$xp[q$i]
+; [eval] q$i < 3
+(push) ; 31
+; [then-branch: 155 | q$i@404@01 < 3 | live]
+; [else-branch: 155 | !(q$i@404@01 < 3) | live]
+(push) ; 32
+; [then-branch: 155 | q$i@404@01 < 3]
+(assert (< q$i@404@01 3))
+; [eval] l$xp[0] == l$xp[q$i]
+; [eval] l$xp[0]
+(push) ; 33
+(assert (not (< 0 (Seq_length l$xp@166@01))))
+(check-sat)
+; unsat
+(pop) ; 33
+; 0.00s
+; (get-info :all-statistics)
+; [eval] l$xp[q$i]
+(push) ; 33
+(assert (not (>= q$i@404@01 0)))
+(check-sat)
+; unsat
+(pop) ; 33
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 33
+(assert (not (< q$i@404@01 (Seq_length l$xp@166@01))))
+(check-sat)
+; unsat
+(pop) ; 33
+; 0.00s
+; (get-info :all-statistics)
+(pop) ; 32
+(push) ; 32
+; [else-branch: 155 | !(q$i@404@01 < 3)]
+(assert (not (< q$i@404@01 3)))
+(pop) ; 32
+(pop) ; 31
+; Joined path conditions
+; Joined path conditions
+(assert (or (not (< q$i@404@01 3)) (< q$i@404@01 3)))
+(pop) ; 30
+(push) ; 30
+; [else-branch: 154 | !(0 <= q$i@404@01)]
+(assert (not (<= 0 q$i@404@01)))
+(pop) ; 30
+(pop) ; 29
+; Joined path conditions
+(assert (=>
+  (<= 0 q$i@404@01)
+  (and (<= 0 q$i@404@01) (or (not (< q$i@404@01 3)) (< q$i@404@01 3)))))
+; Joined path conditions
+(assert (or (not (<= 0 q$i@404@01)) (<= 0 q$i@404@01)))
+(pop) ; 28
+; Nested auxiliary terms: globals (aux)
+; Nested auxiliary terms: non-globals (aux)
+(assert (forall ((q$i@404@01 Int)) (!
+  (and
+    (=>
+      (<= 0 q$i@404@01)
+      (and (<= 0 q$i@404@01) (or (not (< q$i@404@01 3)) (< q$i@404@01 3))))
+    (or (not (<= 0 q$i@404@01)) (<= 0 q$i@404@01)))
+  :pattern ((Seq_index l$xp@166@01 q$i@404@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1119@11@1119@75-aux|)))
+(push) ; 28
+(push) ; 29
+(set-option :timeout 10)
+(assert (not (not
+  (forall ((q$i@404@01 Int)) (!
+    (=>
+      (and (<= 0 q$i@404@01) (< q$i@404@01 3))
+      (= (Seq_index l$xp@166@01 0) (Seq_index l$xp@166@01 q$i@404@01)))
+    :pattern ((Seq_index l$xp@166@01 q$i@404@01))
+    :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1119@11@1119@75|)))))
+(check-sat)
+; unknown
+(pop) ; 29
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 29
+(set-option :timeout 10)
+(assert (not (forall ((q$i@404@01 Int)) (!
+  (=>
+    (and (<= 0 q$i@404@01) (< q$i@404@01 3))
+    (= (Seq_index l$xp@166@01 0) (Seq_index l$xp@166@01 q$i@404@01)))
+  :pattern ((Seq_index l$xp@166@01 q$i@404@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1119@11@1119@75|))))
+(check-sat)
+; unknown
+(pop) ; 29
+; 0.01s
+; (get-info :all-statistics)
+; [then-branch: 156 | QA q$i@404@01 :: 0 <= q$i@404@01 && q$i@404@01 < 3 ==> l$xp@166@01[0] == l$xp@166@01[q$i@404@01] | live]
+; [else-branch: 156 | !(QA q$i@404@01 :: 0 <= q$i@404@01 && q$i@404@01 < 3 ==> l$xp@166@01[0] == l$xp@166@01[q$i@404@01]) | live]
+(set-option :timeout 0)
+(push) ; 29
+; [then-branch: 156 | QA q$i@404@01 :: 0 <= q$i@404@01 && q$i@404@01 < 3 ==> l$xp@166@01[0] == l$xp@166@01[q$i@404@01]]
+(assert (forall ((q$i@404@01 Int)) (!
+  (=>
+    (and (<= 0 q$i@404@01) (< q$i@404@01 3))
+    (= (Seq_index l$xp@166@01 0) (Seq_index l$xp@166@01 q$i@404@01)))
+  :pattern ((Seq_index l$xp@166@01 q$i@404@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1119@11@1119@75|)))
+; [eval] $unwrap(l$D$2) == $unwrap(l$S$3)
+; [eval] $unwrap(l$D$2)
+; [eval] $unwrap(l$S$3)
+(pop) ; 29
+(push) ; 29
+; [else-branch: 156 | !(QA q$i@404@01 :: 0 <= q$i@404@01 && q$i@404@01 < 3 ==> l$xp@166@01[0] == l$xp@166@01[q$i@404@01])]
+(assert (not
+  (forall ((q$i@404@01 Int)) (!
+    (=>
+      (and (<= 0 q$i@404@01) (< q$i@404@01 3))
+      (= (Seq_index l$xp@166@01 0) (Seq_index l$xp@166@01 q$i@404@01)))
+    :pattern ((Seq_index l$xp@166@01 q$i@404@01))
+    :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1119@11@1119@75|))))
+(pop) ; 29
+(pop) ; 28
+; Joined path conditions
+; Joined path conditions
+(assert (or
+  (not
+    (forall ((q$i@404@01 Int)) (!
+      (=>
+        (and (<= 0 q$i@404@01) (< q$i@404@01 3))
+        (= (Seq_index l$xp@166@01 0) (Seq_index l$xp@166@01 q$i@404@01)))
+      :pattern ((Seq_index l$xp@166@01 q$i@404@01))
+      :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1119@11@1119@75|)))
+  (forall ((q$i@404@01 Int)) (!
+    (=>
+      (and (<= 0 q$i@404@01) (< q$i@404@01 3))
+      (= (Seq_index l$xp@166@01 0) (Seq_index l$xp@166@01 q$i@404@01)))
+    :pattern ((Seq_index l$xp@166@01 q$i@404@01))
+    :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1119@11@1119@75|))))
+(push) ; 28
+(assert (not (=>
+  (forall ((q$i@404@01 Int)) (!
+    (=>
+      (and (<= 0 q$i@404@01) (< q$i@404@01 3))
+      (= (Seq_index l$xp@166@01 0) (Seq_index l$xp@166@01 q$i@404@01)))
+    :pattern ((Seq_index l$xp@166@01 q$i@404@01))
+    :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1119@11@1119@75|))
+  (= ($unwrap<Int> l$D$2@396@01) ($unwrap<Int> l$S$3@217@01)))))
+(check-sat)
+; unsat
+(pop) ; 28
+; 0.00s
+; (get-info :all-statistics)
+(assert (=>
+  (forall ((q$i@404@01 Int)) (!
+    (=>
+      (and (<= 0 q$i@404@01) (< q$i@404@01 3))
+      (= (Seq_index l$xp@166@01 0) (Seq_index l$xp@166@01 q$i@404@01)))
+    :pattern ((Seq_index l$xp@166@01 q$i@404@01))
+    :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1119@11@1119@75|))
+  (= ($unwrap<Int> l$D$2@396@01) ($unwrap<Int> l$S$3@217@01))))
+; [exec]
+; inhale false
+(pop) ; 27
+(push) ; 27
+; [else-branch: 153 | l$$idx@400@01 == 255]
+(assert (= l$$idx@400@01 255))
+(pop) ; 27
+(pop) ; 26
+(push) ; 26
+; [else-branch: 144 | $unwrap[Int](l$D$2@396@01) - $unwrap[Int](l$D$2@218@01) <= 1]
+(assert (<= (- ($unwrap<Int> l$D$2@396@01) ($unwrap<Int> l$D$2@218@01)) 1))
+(pop) ; 26
+(pop) ; 25
+(pop) ; 24
+(push) ; 24
+; [else-branch: 133 | !($unwrap[Int](l$D$2@396@01) > $unwrap[Int](l$D$2@218@01))]
+(assert (not (> ($unwrap<Int> l$D$2@396@01) ($unwrap<Int> l$D$2@218@01))))
+(pop) ; 24
+; [eval] !($unwrap(l$D$2) > $unwrap(l$Dprev$1))
+; [eval] $unwrap(l$D$2) > $unwrap(l$Dprev$1)
+; [eval] $unwrap(l$D$2)
+; [eval] $unwrap(l$Dprev$1)
+(push) ; 24
+(set-option :timeout 10)
+(assert (not (> ($unwrap<Int> l$D$2@396@01) ($unwrap<Int> l$D$2@218@01))))
+(check-sat)
+; unknown
+(pop) ; 24
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 24
+(set-option :timeout 10)
+(assert (not (not (> ($unwrap<Int> l$D$2@396@01) ($unwrap<Int> l$D$2@218@01)))))
+(check-sat)
+; unknown
+(pop) ; 24
+; 0.01s
+; (get-info :all-statistics)
+; [then-branch: 157 | !($unwrap[Int](l$D$2@396@01) > $unwrap[Int](l$D$2@218@01)) | live]
+; [else-branch: 157 | $unwrap[Int](l$D$2@396@01) > $unwrap[Int](l$D$2@218@01) | live]
+(set-option :timeout 0)
+(push) ; 24
+; [then-branch: 157 | !($unwrap[Int](l$D$2@396@01) > $unwrap[Int](l$D$2@218@01))]
+(assert (not (> ($unwrap<Int> l$D$2@396@01) ($unwrap<Int> l$D$2@218@01))))
+; [eval] $unwrap(l$Dprev$1) - $unwrap(l$D$2) < 0
+; [eval] $unwrap(l$Dprev$1) - $unwrap(l$D$2)
+; [eval] $unwrap(l$Dprev$1)
+; [eval] $unwrap(l$D$2)
+(push) ; 25
+(set-option :timeout 10)
+(assert (not (not (< (- ($unwrap<Int> l$D$2@218@01) ($unwrap<Int> l$D$2@396@01)) 0))))
+(check-sat)
+; unsat
+(pop) ; 25
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 158 | $unwrap[Int](l$D$2@218@01) - $unwrap[Int](l$D$2@396@01) < 0 | dead]
+; [else-branch: 158 | !($unwrap[Int](l$D$2@218@01) - $unwrap[Int](l$D$2@396@01) < 0) | live]
+(set-option :timeout 0)
+(push) ; 25
+; [else-branch: 158 | !($unwrap[Int](l$D$2@218@01) - $unwrap[Int](l$D$2@396@01) < 0)]
+(assert (not (< (- ($unwrap<Int> l$D$2@218@01) ($unwrap<Int> l$D$2@396@01)) 0)))
+(pop) ; 25
+; [eval] !($unwrap(l$Dprev$1) - $unwrap(l$D$2) < 0)
+; [eval] $unwrap(l$Dprev$1) - $unwrap(l$D$2) < 0
+; [eval] $unwrap(l$Dprev$1) - $unwrap(l$D$2)
+; [eval] $unwrap(l$Dprev$1)
+; [eval] $unwrap(l$D$2)
+(push) ; 25
+(set-option :timeout 10)
+(assert (not (< (- ($unwrap<Int> l$D$2@218@01) ($unwrap<Int> l$D$2@396@01)) 0)))
+(check-sat)
+; unknown
+(pop) ; 25
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 25
+(set-option :timeout 10)
+(assert (not (not (< (- ($unwrap<Int> l$D$2@218@01) ($unwrap<Int> l$D$2@396@01)) 0))))
+(check-sat)
+; unsat
+(pop) ; 25
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 159 | !($unwrap[Int](l$D$2@218@01) - $unwrap[Int](l$D$2@396@01) < 0) | live]
+; [else-branch: 159 | $unwrap[Int](l$D$2@218@01) - $unwrap[Int](l$D$2@396@01) < 0 | dead]
+(set-option :timeout 0)
+(push) ; 25
+; [then-branch: 159 | !($unwrap[Int](l$D$2@218@01) - $unwrap[Int](l$D$2@396@01) < 0)]
+(assert (not (< (- ($unwrap<Int> l$D$2@218@01) ($unwrap<Int> l$D$2@396@01)) 0)))
+; [eval] $unwrap(l$Dprev$1) - $unwrap(l$D$2) <= 1
+; [eval] $unwrap(l$Dprev$1) - $unwrap(l$D$2)
+; [eval] $unwrap(l$Dprev$1)
+; [eval] $unwrap(l$D$2)
+(push) ; 26
+(set-option :timeout 10)
+(assert (not (not (<= (- ($unwrap<Int> l$D$2@218@01) ($unwrap<Int> l$D$2@396@01)) 1))))
+(check-sat)
+; unknown
+(pop) ; 26
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 26
+(set-option :timeout 10)
+(assert (not (<= (- ($unwrap<Int> l$D$2@218@01) ($unwrap<Int> l$D$2@396@01)) 1)))
+(check-sat)
+; unknown
+(pop) ; 26
+; 0.01s
+; (get-info :all-statistics)
+; [then-branch: 160 | $unwrap[Int](l$D$2@218@01) - $unwrap[Int](l$D$2@396@01) <= 1 | live]
+; [else-branch: 160 | !($unwrap[Int](l$D$2@218@01) - $unwrap[Int](l$D$2@396@01) <= 1) | live]
+(set-option :timeout 0)
+(push) ; 26
+; [then-branch: 160 | $unwrap[Int](l$D$2@218@01) - $unwrap[Int](l$D$2@396@01) <= 1]
+(assert (<= (- ($unwrap<Int> l$D$2@218@01) ($unwrap<Int> l$D$2@396@01)) 1))
+; [exec]
+; label break_1
+; [exec]
+; $res := $unwrap(l$D$2)
+; [eval] $unwrap(l$D$2)
+(declare-const $res@405@01 Int)
+(assert (= $res@405@01 ($unwrap<Int> l$D$2@396@01)))
+; [exec]
+; label return
+(push) ; 27
+(set-option :timeout 10)
+(assert (not (not $out_of_gas@219@01)))
+(check-sat)
+; unknown
+(pop) ; 27
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 27
+(set-option :timeout 10)
+(assert (not $out_of_gas@219@01))
+(check-sat)
+; unknown
+(pop) ; 27
+; 0.01s
+; (get-info :all-statistics)
+; [then-branch: 161 | $out_of_gas@219@01 | live]
+; [else-branch: 161 | !($out_of_gas@219@01) | live]
+(set-option :timeout 0)
+(push) ; 27
+; [then-branch: 161 | $out_of_gas@219@01]
+(assert $out_of_gas@219@01)
+; [exec]
+; label revert
+; [exec]
+; $succ := false
+; [exec]
+; $res := l$havoc$12
+; [exec]
+; self := $pre_self
+; [exec]
+; $contracts := $pre_$contracts
+; [exec]
+; $old_self := $pre_old_self
+; [exec]
+; $old_$contracts := $pre_old_$contracts
+; [exec]
+; label end
+; [exec]
+; exhale $succ ==>
+;   (forall q$i: Int ::
+;     { l$xp[q$i] }
+;     0 <= q$i ==> q$i < 3 ==> l$xp[0] == l$xp[q$i]) ==>
+;   $res == 3 * $unwrap($wrap(l$xp[0]))
+; [eval] $succ ==> (forall q$i: Int :: { l$xp[q$i] } 0 <= q$i ==> q$i < 3 ==> l$xp[0] == l$xp[q$i]) ==> $res == 3 * $unwrap($wrap(l$xp[0]))
+(push) ; 28
+; [then-branch: 162 | False | dead]
+; [else-branch: 162 | True | live]
+(push) ; 29
+; [else-branch: 162 | True]
+(pop) ; 29
+(pop) ; 28
+; Joined path conditions
+(pop) ; 27
+(push) ; 27
+; [else-branch: 161 | !($out_of_gas@219@01)]
+(assert (not $out_of_gas@219@01))
+(pop) ; 27
+; [eval] !$out_of_gas
+(push) ; 27
+(set-option :timeout 10)
+(assert (not $out_of_gas@219@01))
+(check-sat)
+; unknown
+(pop) ; 27
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 27
+(set-option :timeout 10)
+(assert (not (not $out_of_gas@219@01)))
+(check-sat)
+; unknown
+(pop) ; 27
+; 0.01s
+; (get-info :all-statistics)
+; [then-branch: 163 | !($out_of_gas@219@01) | live]
+; [else-branch: 163 | $out_of_gas@219@01 | live]
+(set-option :timeout 0)
+(push) ; 27
+; [then-branch: 163 | !($out_of_gas@219@01)]
+(assert (not $out_of_gas@219@01))
+; [exec]
+; label end
+; [exec]
+; exhale $succ ==>
+;   (forall q$i: Int ::
+;     { l$xp[q$i] }
+;     0 <= q$i ==> q$i < 3 ==> l$xp[0] == l$xp[q$i]) ==>
+;   $res == 3 * $unwrap($wrap(l$xp[0]))
+; [eval] $succ ==> (forall q$i: Int :: { l$xp[q$i] } 0 <= q$i ==> q$i < 3 ==> l$xp[0] == l$xp[q$i]) ==> $res == 3 * $unwrap($wrap(l$xp[0]))
+(push) ; 28
+(push) ; 29
+(set-option :timeout 10)
+(assert (not false))
+(check-sat)
+; unknown
+(pop) ; 29
+; 0.01s
+; (get-info :all-statistics)
+; [then-branch: 164 | True | live]
+; [else-branch: 164 | False | dead]
+(set-option :timeout 0)
+(push) ; 29
+; [then-branch: 164 | True]
+; [eval] (forall q$i: Int :: { l$xp[q$i] } 0 <= q$i ==> q$i < 3 ==> l$xp[0] == l$xp[q$i]) ==> $res == 3 * $unwrap($wrap(l$xp[0]))
+; [eval] (forall q$i: Int :: { l$xp[q$i] } 0 <= q$i ==> q$i < 3 ==> l$xp[0] == l$xp[q$i])
+(declare-const q$i@406@01 Int)
+(push) ; 30
+; [eval] 0 <= q$i ==> q$i < 3 ==> l$xp[0] == l$xp[q$i]
+; [eval] 0 <= q$i
+(push) ; 31
+; [then-branch: 165 | 0 <= q$i@406@01 | live]
+; [else-branch: 165 | !(0 <= q$i@406@01) | live]
+(push) ; 32
+; [then-branch: 165 | 0 <= q$i@406@01]
+(assert (<= 0 q$i@406@01))
+; [eval] q$i < 3 ==> l$xp[0] == l$xp[q$i]
+; [eval] q$i < 3
+(push) ; 33
+; [then-branch: 166 | q$i@406@01 < 3 | live]
+; [else-branch: 166 | !(q$i@406@01 < 3) | live]
+(push) ; 34
+; [then-branch: 166 | q$i@406@01 < 3]
+(assert (< q$i@406@01 3))
+; [eval] l$xp[0] == l$xp[q$i]
+; [eval] l$xp[0]
+(push) ; 35
+(assert (not (< 0 (Seq_length l$xp@166@01))))
+(check-sat)
+; unsat
+(pop) ; 35
+; 0.00s
+; (get-info :all-statistics)
+; [eval] l$xp[q$i]
+(push) ; 35
+(assert (not (>= q$i@406@01 0)))
+(check-sat)
+; unsat
+(pop) ; 35
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 35
+(assert (not (< q$i@406@01 (Seq_length l$xp@166@01))))
+(check-sat)
+; unsat
+(pop) ; 35
+; 0.00s
+; (get-info :all-statistics)
+(pop) ; 34
+(push) ; 34
+; [else-branch: 166 | !(q$i@406@01 < 3)]
+(assert (not (< q$i@406@01 3)))
+(pop) ; 34
+(pop) ; 33
+; Joined path conditions
+; Joined path conditions
+(assert (or (not (< q$i@406@01 3)) (< q$i@406@01 3)))
+(pop) ; 32
+(push) ; 32
+; [else-branch: 165 | !(0 <= q$i@406@01)]
+(assert (not (<= 0 q$i@406@01)))
+(pop) ; 32
+(pop) ; 31
+; Joined path conditions
+(assert (=>
+  (<= 0 q$i@406@01)
+  (and (<= 0 q$i@406@01) (or (not (< q$i@406@01 3)) (< q$i@406@01 3)))))
+; Joined path conditions
+(assert (or (not (<= 0 q$i@406@01)) (<= 0 q$i@406@01)))
+(pop) ; 30
+; Nested auxiliary terms: globals (aux)
+; Nested auxiliary terms: non-globals (aux)
+(assert (forall ((q$i@406@01 Int)) (!
+  (and
+    (=>
+      (<= 0 q$i@406@01)
+      (and (<= 0 q$i@406@01) (or (not (< q$i@406@01 3)) (< q$i@406@01 3))))
+    (or (not (<= 0 q$i@406@01)) (<= 0 q$i@406@01)))
+  :pattern ((Seq_index l$xp@166@01 q$i@406@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1141@21@1141@85-aux|)))
+(push) ; 30
+(push) ; 31
+(set-option :timeout 10)
+(assert (not (not
+  (forall ((q$i@406@01 Int)) (!
+    (=>
+      (and (<= 0 q$i@406@01) (< q$i@406@01 3))
+      (= (Seq_index l$xp@166@01 0) (Seq_index l$xp@166@01 q$i@406@01)))
+    :pattern ((Seq_index l$xp@166@01 q$i@406@01))
+    :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1141@21@1141@85|)))))
+(check-sat)
+; unknown
+(pop) ; 31
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 31
+(set-option :timeout 10)
+(assert (not (forall ((q$i@406@01 Int)) (!
+  (=>
+    (and (<= 0 q$i@406@01) (< q$i@406@01 3))
+    (= (Seq_index l$xp@166@01 0) (Seq_index l$xp@166@01 q$i@406@01)))
+  :pattern ((Seq_index l$xp@166@01 q$i@406@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1141@21@1141@85|))))
+(check-sat)
+; unknown
+(pop) ; 31
+; 0.01s
+; (get-info :all-statistics)
+; [then-branch: 167 | QA q$i@406@01 :: 0 <= q$i@406@01 && q$i@406@01 < 3 ==> l$xp@166@01[0] == l$xp@166@01[q$i@406@01] | live]
+; [else-branch: 167 | !(QA q$i@406@01 :: 0 <= q$i@406@01 && q$i@406@01 < 3 ==> l$xp@166@01[0] == l$xp@166@01[q$i@406@01]) | live]
+(set-option :timeout 0)
+(push) ; 31
+; [then-branch: 167 | QA q$i@406@01 :: 0 <= q$i@406@01 && q$i@406@01 < 3 ==> l$xp@166@01[0] == l$xp@166@01[q$i@406@01]]
+(assert (forall ((q$i@406@01 Int)) (!
+  (=>
+    (and (<= 0 q$i@406@01) (< q$i@406@01 3))
+    (= (Seq_index l$xp@166@01 0) (Seq_index l$xp@166@01 q$i@406@01)))
+  :pattern ((Seq_index l$xp@166@01 q$i@406@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1141@21@1141@85|)))
+; [eval] $res == 3 * $unwrap($wrap(l$xp[0]))
+; [eval] 3 * $unwrap($wrap(l$xp[0]))
+; [eval] $unwrap($wrap(l$xp[0]))
+; [eval] $wrap(l$xp[0])
+; [eval] l$xp[0]
+(push) ; 32
+(assert (not (< 0 (Seq_length l$xp@166@01))))
+(check-sat)
+; unsat
+(pop) ; 32
+; 0.00s
+; (get-info :all-statistics)
+(pop) ; 31
+(push) ; 31
+; [else-branch: 167 | !(QA q$i@406@01 :: 0 <= q$i@406@01 && q$i@406@01 < 3 ==> l$xp@166@01[0] == l$xp@166@01[q$i@406@01])]
+(assert (not
+  (forall ((q$i@406@01 Int)) (!
+    (=>
+      (and (<= 0 q$i@406@01) (< q$i@406@01 3))
+      (= (Seq_index l$xp@166@01 0) (Seq_index l$xp@166@01 q$i@406@01)))
+    :pattern ((Seq_index l$xp@166@01 q$i@406@01))
+    :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1141@21@1141@85|))))
+(pop) ; 31
+(pop) ; 30
+; Joined path conditions
+; Joined path conditions
+(assert (or
+  (not
+    (forall ((q$i@406@01 Int)) (!
+      (=>
+        (and (<= 0 q$i@406@01) (< q$i@406@01 3))
+        (= (Seq_index l$xp@166@01 0) (Seq_index l$xp@166@01 q$i@406@01)))
+      :pattern ((Seq_index l$xp@166@01 q$i@406@01))
+      :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1141@21@1141@85|)))
+  (forall ((q$i@406@01 Int)) (!
+    (=>
+      (and (<= 0 q$i@406@01) (< q$i@406@01 3))
+      (= (Seq_index l$xp@166@01 0) (Seq_index l$xp@166@01 q$i@406@01)))
+    :pattern ((Seq_index l$xp@166@01 q$i@406@01))
+    :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1141@21@1141@85|))))
+(pop) ; 29
+(pop) ; 28
+; Joined path conditions
+(assert (and
+  (forall ((q$i@406@01 Int)) (!
+    (and
+      (=>
+        (<= 0 q$i@406@01)
+        (and (<= 0 q$i@406@01) (or (not (< q$i@406@01 3)) (< q$i@406@01 3))))
+      (or (not (<= 0 q$i@406@01)) (<= 0 q$i@406@01)))
+    :pattern ((Seq_index l$xp@166@01 q$i@406@01))
+    :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1141@21@1141@85-aux|))
+  (or
+    (not
+      (forall ((q$i@406@01 Int)) (!
+        (=>
+          (and (<= 0 q$i@406@01) (< q$i@406@01 3))
+          (= (Seq_index l$xp@166@01 0) (Seq_index l$xp@166@01 q$i@406@01)))
+        :pattern ((Seq_index l$xp@166@01 q$i@406@01))
+        :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1141@21@1141@85|)))
+    (forall ((q$i@406@01 Int)) (!
+      (=>
+        (and (<= 0 q$i@406@01) (< q$i@406@01 3))
+        (= (Seq_index l$xp@166@01 0) (Seq_index l$xp@166@01 q$i@406@01)))
+      :pattern ((Seq_index l$xp@166@01 q$i@406@01))
+      :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1141@21@1141@85|)))))
+(push) ; 28
+(assert (not (=>
+  (forall ((q$i@406@01 Int)) (!
+    (=>
+      (and (<= 0 q$i@406@01) (< q$i@406@01 3))
+      (= (Seq_index l$xp@166@01 0) (Seq_index l$xp@166@01 q$i@406@01)))
+    :pattern ((Seq_index l$xp@166@01 q$i@406@01))
+    :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1141@21@1141@85|))
+  (= $res@405@01 (* 3 ($unwrap<Int> ($wrap<$Int> (Seq_index l$xp@166@01 0))))))))
+(check-sat)
+; unsat
+(pop) ; 28
+; 0.35s
+; (get-info :all-statistics)
+(assert (=>
+  (forall ((q$i@406@01 Int)) (!
+    (=>
+      (and (<= 0 q$i@406@01) (< q$i@406@01 3))
+      (= (Seq_index l$xp@166@01 0) (Seq_index l$xp@166@01 q$i@406@01)))
+    :pattern ((Seq_index l$xp@166@01 q$i@406@01))
+    :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1141@21@1141@85|))
+  (= $res@405@01 (* 3 ($unwrap<Int> ($wrap<$Int> (Seq_index l$xp@166@01 0)))))))
+(pop) ; 27
+(push) ; 27
+; [else-branch: 163 | $out_of_gas@219@01]
+(assert $out_of_gas@219@01)
+(pop) ; 27
+(pop) ; 26
+(push) ; 26
+; [else-branch: 160 | !($unwrap[Int](l$D$2@218@01) - $unwrap[Int](l$D$2@396@01) <= 1)]
+(assert (not (<= (- ($unwrap<Int> l$D$2@218@01) ($unwrap<Int> l$D$2@396@01)) 1)))
+(pop) ; 26
+; [eval] !($unwrap(l$Dprev$1) - $unwrap(l$D$2) <= 1)
+; [eval] $unwrap(l$Dprev$1) - $unwrap(l$D$2) <= 1
+; [eval] $unwrap(l$Dprev$1) - $unwrap(l$D$2)
+; [eval] $unwrap(l$Dprev$1)
+; [eval] $unwrap(l$D$2)
+(push) ; 26
+(set-option :timeout 10)
+(assert (not (<= (- ($unwrap<Int> l$D$2@218@01) ($unwrap<Int> l$D$2@396@01)) 1)))
+(check-sat)
+; unknown
+(pop) ; 26
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 26
+(set-option :timeout 10)
+(assert (not (not (<= (- ($unwrap<Int> l$D$2@218@01) ($unwrap<Int> l$D$2@396@01)) 1))))
+(check-sat)
+; unknown
+(pop) ; 26
+; 0.01s
+; (get-info :all-statistics)
+; [then-branch: 168 | !($unwrap[Int](l$D$2@218@01) - $unwrap[Int](l$D$2@396@01) <= 1) | live]
+; [else-branch: 168 | $unwrap[Int](l$D$2@218@01) - $unwrap[Int](l$D$2@396@01) <= 1 | live]
+(set-option :timeout 0)
+(push) ; 26
+; [then-branch: 168 | !($unwrap[Int](l$D$2@218@01) - $unwrap[Int](l$D$2@396@01) <= 1)]
+(assert (not (<= (- ($unwrap<Int> l$D$2@218@01) ($unwrap<Int> l$D$2@396@01)) 1)))
+; [exec]
+; label continue_3
+; [exec]
+; l$$idx := l$$idx + 1
+; [eval] l$$idx + 1
+(declare-const l$$idx@407@01 Int)
+(assert (= l$$idx@407@01 (+ l$havoc@194@01 1)))
+; [eval] l$$idx == 255
+(push) ; 27
+(set-option :timeout 10)
+(assert (not (not (= l$$idx@407@01 255))))
+(check-sat)
+; unknown
+(pop) ; 27
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 27
+(set-option :timeout 10)
+(assert (not (= l$$idx@407@01 255)))
+(check-sat)
+; unknown
+(pop) ; 27
+; 0.01s
+; (get-info :all-statistics)
+; [then-branch: 169 | l$$idx@407@01 == 255 | live]
+; [else-branch: 169 | l$$idx@407@01 != 255 | live]
+(set-option :timeout 0)
+(push) ; 27
+; [then-branch: 169 | l$$idx@407@01 == 255]
+(assert (= l$$idx@407@01 255))
+; [exec]
+; label break_1
+; [exec]
+; $res := $unwrap(l$D$2)
+; [eval] $unwrap(l$D$2)
+(declare-const $res@408@01 Int)
+(assert (= $res@408@01 ($unwrap<Int> l$D$2@396@01)))
+; [exec]
+; label return
+(push) ; 28
+(set-option :timeout 10)
+(assert (not (not $out_of_gas@219@01)))
+(check-sat)
+; unknown
+(pop) ; 28
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 28
+(set-option :timeout 10)
+(assert (not $out_of_gas@219@01))
+(check-sat)
+; unknown
+(pop) ; 28
+; 0.01s
+; (get-info :all-statistics)
+; [then-branch: 170 | $out_of_gas@219@01 | live]
+; [else-branch: 170 | !($out_of_gas@219@01) | live]
+(set-option :timeout 0)
+(push) ; 28
+; [then-branch: 170 | $out_of_gas@219@01]
+(assert $out_of_gas@219@01)
+; [exec]
+; label revert
+; [exec]
+; $succ := false
+; [exec]
+; $res := l$havoc$12
+; [exec]
+; self := $pre_self
+; [exec]
+; $contracts := $pre_$contracts
+; [exec]
+; $old_self := $pre_old_self
+; [exec]
+; $old_$contracts := $pre_old_$contracts
+; [exec]
+; label end
+; [exec]
+; exhale $succ ==>
+;   (forall q$i: Int ::
+;     { l$xp[q$i] }
+;     0 <= q$i ==> q$i < 3 ==> l$xp[0] == l$xp[q$i]) ==>
+;   $res == 3 * $unwrap($wrap(l$xp[0]))
+; [eval] $succ ==> (forall q$i: Int :: { l$xp[q$i] } 0 <= q$i ==> q$i < 3 ==> l$xp[0] == l$xp[q$i]) ==> $res == 3 * $unwrap($wrap(l$xp[0]))
+(push) ; 29
+; [then-branch: 171 | False | dead]
+; [else-branch: 171 | True | live]
+(push) ; 30
+; [else-branch: 171 | True]
+(pop) ; 30
+(pop) ; 29
+; Joined path conditions
+(pop) ; 28
+(push) ; 28
+; [else-branch: 170 | !($out_of_gas@219@01)]
+(assert (not $out_of_gas@219@01))
+(pop) ; 28
+; [eval] !$out_of_gas
+(push) ; 28
+(set-option :timeout 10)
+(assert (not $out_of_gas@219@01))
+(check-sat)
+; unknown
+(pop) ; 28
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 28
+(set-option :timeout 10)
+(assert (not (not $out_of_gas@219@01)))
+(check-sat)
+; unknown
+(pop) ; 28
+; 0.01s
+; (get-info :all-statistics)
+; [then-branch: 172 | !($out_of_gas@219@01) | live]
+; [else-branch: 172 | $out_of_gas@219@01 | live]
+(set-option :timeout 0)
+(push) ; 28
+; [then-branch: 172 | !($out_of_gas@219@01)]
+(assert (not $out_of_gas@219@01))
+; [exec]
+; label end
+; [exec]
+; exhale $succ ==>
+;   (forall q$i: Int ::
+;     { l$xp[q$i] }
+;     0 <= q$i ==> q$i < 3 ==> l$xp[0] == l$xp[q$i]) ==>
+;   $res == 3 * $unwrap($wrap(l$xp[0]))
+; [eval] $succ ==> (forall q$i: Int :: { l$xp[q$i] } 0 <= q$i ==> q$i < 3 ==> l$xp[0] == l$xp[q$i]) ==> $res == 3 * $unwrap($wrap(l$xp[0]))
+(push) ; 29
+(push) ; 30
+(set-option :timeout 10)
+(assert (not false))
+(check-sat)
+; unknown
+(pop) ; 30
+; 0.01s
+; (get-info :all-statistics)
+; [then-branch: 173 | True | live]
+; [else-branch: 173 | False | dead]
+(set-option :timeout 0)
+(push) ; 30
+; [then-branch: 173 | True]
+; [eval] (forall q$i: Int :: { l$xp[q$i] } 0 <= q$i ==> q$i < 3 ==> l$xp[0] == l$xp[q$i]) ==> $res == 3 * $unwrap($wrap(l$xp[0]))
+; [eval] (forall q$i: Int :: { l$xp[q$i] } 0 <= q$i ==> q$i < 3 ==> l$xp[0] == l$xp[q$i])
+(declare-const q$i@409@01 Int)
+(push) ; 31
+; [eval] 0 <= q$i ==> q$i < 3 ==> l$xp[0] == l$xp[q$i]
+; [eval] 0 <= q$i
+(push) ; 32
+; [then-branch: 174 | 0 <= q$i@409@01 | live]
+; [else-branch: 174 | !(0 <= q$i@409@01) | live]
+(push) ; 33
+; [then-branch: 174 | 0 <= q$i@409@01]
+(assert (<= 0 q$i@409@01))
+; [eval] q$i < 3 ==> l$xp[0] == l$xp[q$i]
+; [eval] q$i < 3
+(push) ; 34
+; [then-branch: 175 | q$i@409@01 < 3 | live]
+; [else-branch: 175 | !(q$i@409@01 < 3) | live]
+(push) ; 35
+; [then-branch: 175 | q$i@409@01 < 3]
+(assert (< q$i@409@01 3))
+; [eval] l$xp[0] == l$xp[q$i]
+; [eval] l$xp[0]
+(push) ; 36
+(assert (not (< 0 (Seq_length l$xp@166@01))))
+(check-sat)
+; unsat
+(pop) ; 36
+; 0.00s
+; (get-info :all-statistics)
+; [eval] l$xp[q$i]
+(push) ; 36
+(assert (not (>= q$i@409@01 0)))
+(check-sat)
+; unsat
+(pop) ; 36
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 36
+(assert (not (< q$i@409@01 (Seq_length l$xp@166@01))))
+(check-sat)
+; unsat
+(pop) ; 36
+; 0.00s
+; (get-info :all-statistics)
+(pop) ; 35
+(push) ; 35
+; [else-branch: 175 | !(q$i@409@01 < 3)]
+(assert (not (< q$i@409@01 3)))
+(pop) ; 35
+(pop) ; 34
+; Joined path conditions
+; Joined path conditions
+(assert (or (not (< q$i@409@01 3)) (< q$i@409@01 3)))
+(pop) ; 33
+(push) ; 33
+; [else-branch: 174 | !(0 <= q$i@409@01)]
+(assert (not (<= 0 q$i@409@01)))
+(pop) ; 33
+(pop) ; 32
+; Joined path conditions
+(assert (=>
+  (<= 0 q$i@409@01)
+  (and (<= 0 q$i@409@01) (or (not (< q$i@409@01 3)) (< q$i@409@01 3)))))
+; Joined path conditions
+(assert (or (not (<= 0 q$i@409@01)) (<= 0 q$i@409@01)))
+(pop) ; 31
+; Nested auxiliary terms: globals (aux)
+; Nested auxiliary terms: non-globals (aux)
+(assert (forall ((q$i@409@01 Int)) (!
+  (and
+    (=>
+      (<= 0 q$i@409@01)
+      (and (<= 0 q$i@409@01) (or (not (< q$i@409@01 3)) (< q$i@409@01 3))))
+    (or (not (<= 0 q$i@409@01)) (<= 0 q$i@409@01)))
+  :pattern ((Seq_index l$xp@166@01 q$i@409@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1141@21@1141@85-aux|)))
+(push) ; 31
+(push) ; 32
+(set-option :timeout 10)
+(assert (not (not
+  (forall ((q$i@409@01 Int)) (!
+    (=>
+      (and (<= 0 q$i@409@01) (< q$i@409@01 3))
+      (= (Seq_index l$xp@166@01 0) (Seq_index l$xp@166@01 q$i@409@01)))
+    :pattern ((Seq_index l$xp@166@01 q$i@409@01))
+    :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1141@21@1141@85|)))))
+(check-sat)
+; unknown
+(pop) ; 32
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 32
+(set-option :timeout 10)
+(assert (not (forall ((q$i@409@01 Int)) (!
+  (=>
+    (and (<= 0 q$i@409@01) (< q$i@409@01 3))
+    (= (Seq_index l$xp@166@01 0) (Seq_index l$xp@166@01 q$i@409@01)))
+  :pattern ((Seq_index l$xp@166@01 q$i@409@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1141@21@1141@85|))))
+(check-sat)
+; unknown
+(pop) ; 32
+; 0.01s
+; (get-info :all-statistics)
+; [then-branch: 176 | QA q$i@409@01 :: 0 <= q$i@409@01 && q$i@409@01 < 3 ==> l$xp@166@01[0] == l$xp@166@01[q$i@409@01] | live]
+; [else-branch: 176 | !(QA q$i@409@01 :: 0 <= q$i@409@01 && q$i@409@01 < 3 ==> l$xp@166@01[0] == l$xp@166@01[q$i@409@01]) | live]
+(set-option :timeout 0)
+(push) ; 32
+; [then-branch: 176 | QA q$i@409@01 :: 0 <= q$i@409@01 && q$i@409@01 < 3 ==> l$xp@166@01[0] == l$xp@166@01[q$i@409@01]]
+(assert (forall ((q$i@409@01 Int)) (!
+  (=>
+    (and (<= 0 q$i@409@01) (< q$i@409@01 3))
+    (= (Seq_index l$xp@166@01 0) (Seq_index l$xp@166@01 q$i@409@01)))
+  :pattern ((Seq_index l$xp@166@01 q$i@409@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1141@21@1141@85|)))
+; [eval] $res == 3 * $unwrap($wrap(l$xp[0]))
+; [eval] 3 * $unwrap($wrap(l$xp[0]))
+; [eval] $unwrap($wrap(l$xp[0]))
+; [eval] $wrap(l$xp[0])
+; [eval] l$xp[0]
+(push) ; 33
+(assert (not (< 0 (Seq_length l$xp@166@01))))
+(check-sat)
+; unsat
+(pop) ; 33
+; 0.00s
+; (get-info :all-statistics)
+(pop) ; 32
+(push) ; 32
+; [else-branch: 176 | !(QA q$i@409@01 :: 0 <= q$i@409@01 && q$i@409@01 < 3 ==> l$xp@166@01[0] == l$xp@166@01[q$i@409@01])]
+(assert (not
+  (forall ((q$i@409@01 Int)) (!
+    (=>
+      (and (<= 0 q$i@409@01) (< q$i@409@01 3))
+      (= (Seq_index l$xp@166@01 0) (Seq_index l$xp@166@01 q$i@409@01)))
+    :pattern ((Seq_index l$xp@166@01 q$i@409@01))
+    :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1141@21@1141@85|))))
+(pop) ; 32
+(pop) ; 31
+; Joined path conditions
+; Joined path conditions
+(assert (or
+  (not
+    (forall ((q$i@409@01 Int)) (!
+      (=>
+        (and (<= 0 q$i@409@01) (< q$i@409@01 3))
+        (= (Seq_index l$xp@166@01 0) (Seq_index l$xp@166@01 q$i@409@01)))
+      :pattern ((Seq_index l$xp@166@01 q$i@409@01))
+      :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1141@21@1141@85|)))
+  (forall ((q$i@409@01 Int)) (!
+    (=>
+      (and (<= 0 q$i@409@01) (< q$i@409@01 3))
+      (= (Seq_index l$xp@166@01 0) (Seq_index l$xp@166@01 q$i@409@01)))
+    :pattern ((Seq_index l$xp@166@01 q$i@409@01))
+    :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1141@21@1141@85|))))
+(pop) ; 30
+(pop) ; 29
+; Joined path conditions
+(assert (and
+  (forall ((q$i@409@01 Int)) (!
+    (and
+      (=>
+        (<= 0 q$i@409@01)
+        (and (<= 0 q$i@409@01) (or (not (< q$i@409@01 3)) (< q$i@409@01 3))))
+      (or (not (<= 0 q$i@409@01)) (<= 0 q$i@409@01)))
+    :pattern ((Seq_index l$xp@166@01 q$i@409@01))
+    :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1141@21@1141@85-aux|))
+  (or
+    (not
+      (forall ((q$i@409@01 Int)) (!
+        (=>
+          (and (<= 0 q$i@409@01) (< q$i@409@01 3))
+          (= (Seq_index l$xp@166@01 0) (Seq_index l$xp@166@01 q$i@409@01)))
+        :pattern ((Seq_index l$xp@166@01 q$i@409@01))
+        :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1141@21@1141@85|)))
+    (forall ((q$i@409@01 Int)) (!
+      (=>
+        (and (<= 0 q$i@409@01) (< q$i@409@01 3))
+        (= (Seq_index l$xp@166@01 0) (Seq_index l$xp@166@01 q$i@409@01)))
+      :pattern ((Seq_index l$xp@166@01 q$i@409@01))
+      :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1141@21@1141@85|)))))
+(push) ; 29
+(assert (not (=>
+  (forall ((q$i@409@01 Int)) (!
+    (=>
+      (and (<= 0 q$i@409@01) (< q$i@409@01 3))
+      (= (Seq_index l$xp@166@01 0) (Seq_index l$xp@166@01 q$i@409@01)))
+    :pattern ((Seq_index l$xp@166@01 q$i@409@01))
+    :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1141@21@1141@85|))
+  (= $res@408@01 (* 3 ($unwrap<Int> ($wrap<$Int> (Seq_index l$xp@166@01 0))))))))
+(check-sat)
+; unsat
+(pop) ; 29
+; 0.26s
+; (get-info :all-statistics)
+(assert (=>
+  (forall ((q$i@409@01 Int)) (!
+    (=>
+      (and (<= 0 q$i@409@01) (< q$i@409@01 3))
+      (= (Seq_index l$xp@166@01 0) (Seq_index l$xp@166@01 q$i@409@01)))
+    :pattern ((Seq_index l$xp@166@01 q$i@409@01))
+    :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1141@21@1141@85|))
+  (= $res@408@01 (* 3 ($unwrap<Int> ($wrap<$Int> (Seq_index l$xp@166@01 0)))))))
+(pop) ; 28
+(push) ; 28
+; [else-branch: 172 | $out_of_gas@219@01]
+(assert $out_of_gas@219@01)
+(pop) ; 28
+(pop) ; 27
+(push) ; 27
+; [else-branch: 169 | l$$idx@407@01 != 255]
+(assert (not (= l$$idx@407@01 255)))
+(pop) ; 27
+; [eval] !(l$$idx == 255)
+; [eval] l$$idx == 255
+(push) ; 27
+(set-option :timeout 10)
+(assert (not (= l$$idx@407@01 255)))
+(check-sat)
+; unknown
+(pop) ; 27
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 27
+(set-option :timeout 10)
+(assert (not (not (= l$$idx@407@01 255))))
+(check-sat)
+; unknown
+(pop) ; 27
+; 0.01s
+; (get-info :all-statistics)
+; [then-branch: 177 | l$$idx@407@01 != 255 | live]
+; [else-branch: 177 | l$$idx@407@01 == 255 | live]
+(set-option :timeout 0)
+(push) ; 27
+; [then-branch: 177 | l$$idx@407@01 != 255]
+(assert (not (= l$$idx@407@01 255)))
+; [exec]
+; l$_i := $wrap($range(0, 255)[l$$idx])
+; [eval] $wrap($range(0, 255)[l$$idx])
+; [eval] $range(0, 255)[l$$idx]
+; [eval] $range(0, 255)
+(push) ; 28
+(assert (not (>= l$$idx@407@01 0)))
+(check-sat)
+; unsat
+(pop) ; 28
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 28
+(assert (not (< l$$idx@407@01 (Seq_length ($range<Seq<Int>> 0 255)))))
+(check-sat)
+; unsat
+(pop) ; 28
+; 0.00s
+; (get-info :all-statistics)
+(declare-const l$_i@410@01 $Int)
+(assert (= l$_i@410@01 ($wrap<$Int> (Seq_index ($range<Seq<Int>> 0 255) l$$idx@407@01))))
+; [exec]
+; exhale $unwrap(l$S$3) == $unwrap(l$S$1) &&
+;   $unwrap(l$Ann$1) == $unwrap(l$Ann)
+; [eval] $unwrap(l$S$3) == $unwrap(l$S$1)
+; [eval] $unwrap(l$S$3)
+; [eval] $unwrap(l$S$1)
+(push) ; 28
+(assert (not (= ($unwrap<Int> l$S$3@217@01) ($unwrap<Int> l$S$1@278@01))))
+(check-sat)
+; unsat
+(pop) ; 28
+; 0.00s
+; (get-info :all-statistics)
+(assert (= ($unwrap<Int> l$S$3@217@01) ($unwrap<Int> l$S$1@278@01)))
+; [eval] $unwrap(l$Ann$1) == $unwrap(l$Ann)
+; [eval] $unwrap(l$Ann$1)
+; [eval] $unwrap(l$Ann)
+; [exec]
+; exhale (forall q$i: Int ::
+;     { l$xp[q$i] }
+;     0 <= q$i ==> q$i < 3 ==> l$xp[0] == l$xp[q$i]) ==>
+;   $unwrap(l$D$2) == $unwrap(l$S$3)
+; [eval] (forall q$i: Int :: { l$xp[q$i] } 0 <= q$i ==> q$i < 3 ==> l$xp[0] == l$xp[q$i]) ==> $unwrap(l$D$2) == $unwrap(l$S$3)
+; [eval] (forall q$i: Int :: { l$xp[q$i] } 0 <= q$i ==> q$i < 3 ==> l$xp[0] == l$xp[q$i])
+(declare-const q$i@411@01 Int)
+(push) ; 28
+; [eval] 0 <= q$i ==> q$i < 3 ==> l$xp[0] == l$xp[q$i]
+; [eval] 0 <= q$i
+(push) ; 29
+; [then-branch: 178 | 0 <= q$i@411@01 | live]
+; [else-branch: 178 | !(0 <= q$i@411@01) | live]
+(push) ; 30
+; [then-branch: 178 | 0 <= q$i@411@01]
+(assert (<= 0 q$i@411@01))
+; [eval] q$i < 3 ==> l$xp[0] == l$xp[q$i]
+; [eval] q$i < 3
+(push) ; 31
+; [then-branch: 179 | q$i@411@01 < 3 | live]
+; [else-branch: 179 | !(q$i@411@01 < 3) | live]
+(push) ; 32
+; [then-branch: 179 | q$i@411@01 < 3]
+(assert (< q$i@411@01 3))
+; [eval] l$xp[0] == l$xp[q$i]
+; [eval] l$xp[0]
+(push) ; 33
+(assert (not (< 0 (Seq_length l$xp@166@01))))
+(check-sat)
+; unsat
+(pop) ; 33
+; 0.00s
+; (get-info :all-statistics)
+; [eval] l$xp[q$i]
+(push) ; 33
+(assert (not (>= q$i@411@01 0)))
+(check-sat)
+; unsat
+(pop) ; 33
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 33
+(assert (not (< q$i@411@01 (Seq_length l$xp@166@01))))
+(check-sat)
+; unsat
+(pop) ; 33
+; 0.00s
+; (get-info :all-statistics)
+(pop) ; 32
+(push) ; 32
+; [else-branch: 179 | !(q$i@411@01 < 3)]
+(assert (not (< q$i@411@01 3)))
+(pop) ; 32
+(pop) ; 31
+; Joined path conditions
+; Joined path conditions
+(assert (or (not (< q$i@411@01 3)) (< q$i@411@01 3)))
+(pop) ; 30
+(push) ; 30
+; [else-branch: 178 | !(0 <= q$i@411@01)]
+(assert (not (<= 0 q$i@411@01)))
+(pop) ; 30
+(pop) ; 29
+; Joined path conditions
+(assert (=>
+  (<= 0 q$i@411@01)
+  (and (<= 0 q$i@411@01) (or (not (< q$i@411@01 3)) (< q$i@411@01 3)))))
+; Joined path conditions
+(assert (or (not (<= 0 q$i@411@01)) (<= 0 q$i@411@01)))
+(pop) ; 28
+; Nested auxiliary terms: globals (aux)
+; Nested auxiliary terms: non-globals (aux)
+(assert (forall ((q$i@411@01 Int)) (!
+  (and
+    (=>
+      (<= 0 q$i@411@01)
+      (and (<= 0 q$i@411@01) (or (not (< q$i@411@01 3)) (< q$i@411@01 3))))
+    (or (not (<= 0 q$i@411@01)) (<= 0 q$i@411@01)))
+  :pattern ((Seq_index l$xp@166@01 q$i@411@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1119@11@1119@75-aux|)))
+(push) ; 28
+(push) ; 29
+(set-option :timeout 10)
+(assert (not (not
+  (forall ((q$i@411@01 Int)) (!
+    (=>
+      (and (<= 0 q$i@411@01) (< q$i@411@01 3))
+      (= (Seq_index l$xp@166@01 0) (Seq_index l$xp@166@01 q$i@411@01)))
+    :pattern ((Seq_index l$xp@166@01 q$i@411@01))
+    :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1119@11@1119@75|)))))
+(check-sat)
+; unknown
+(pop) ; 29
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 29
+(set-option :timeout 10)
+(assert (not (forall ((q$i@411@01 Int)) (!
+  (=>
+    (and (<= 0 q$i@411@01) (< q$i@411@01 3))
+    (= (Seq_index l$xp@166@01 0) (Seq_index l$xp@166@01 q$i@411@01)))
+  :pattern ((Seq_index l$xp@166@01 q$i@411@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1119@11@1119@75|))))
+(check-sat)
+; unknown
+(pop) ; 29
+; 0.01s
+; (get-info :all-statistics)
+; [then-branch: 180 | QA q$i@411@01 :: 0 <= q$i@411@01 && q$i@411@01 < 3 ==> l$xp@166@01[0] == l$xp@166@01[q$i@411@01] | live]
+; [else-branch: 180 | !(QA q$i@411@01 :: 0 <= q$i@411@01 && q$i@411@01 < 3 ==> l$xp@166@01[0] == l$xp@166@01[q$i@411@01]) | live]
+(set-option :timeout 0)
+(push) ; 29
+; [then-branch: 180 | QA q$i@411@01 :: 0 <= q$i@411@01 && q$i@411@01 < 3 ==> l$xp@166@01[0] == l$xp@166@01[q$i@411@01]]
+(assert (forall ((q$i@411@01 Int)) (!
+  (=>
+    (and (<= 0 q$i@411@01) (< q$i@411@01 3))
+    (= (Seq_index l$xp@166@01 0) (Seq_index l$xp@166@01 q$i@411@01)))
+  :pattern ((Seq_index l$xp@166@01 q$i@411@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1119@11@1119@75|)))
+; [eval] $unwrap(l$D$2) == $unwrap(l$S$3)
+; [eval] $unwrap(l$D$2)
+; [eval] $unwrap(l$S$3)
+(pop) ; 29
+(push) ; 29
+; [else-branch: 180 | !(QA q$i@411@01 :: 0 <= q$i@411@01 && q$i@411@01 < 3 ==> l$xp@166@01[0] == l$xp@166@01[q$i@411@01])]
+(assert (not
+  (forall ((q$i@411@01 Int)) (!
+    (=>
+      (and (<= 0 q$i@411@01) (< q$i@411@01 3))
+      (= (Seq_index l$xp@166@01 0) (Seq_index l$xp@166@01 q$i@411@01)))
+    :pattern ((Seq_index l$xp@166@01 q$i@411@01))
+    :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1119@11@1119@75|))))
+(pop) ; 29
+(pop) ; 28
+; Joined path conditions
+; Joined path conditions
+(assert (or
+  (not
+    (forall ((q$i@411@01 Int)) (!
+      (=>
+        (and (<= 0 q$i@411@01) (< q$i@411@01 3))
+        (= (Seq_index l$xp@166@01 0) (Seq_index l$xp@166@01 q$i@411@01)))
+      :pattern ((Seq_index l$xp@166@01 q$i@411@01))
+      :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1119@11@1119@75|)))
+  (forall ((q$i@411@01 Int)) (!
+    (=>
+      (and (<= 0 q$i@411@01) (< q$i@411@01 3))
+      (= (Seq_index l$xp@166@01 0) (Seq_index l$xp@166@01 q$i@411@01)))
+    :pattern ((Seq_index l$xp@166@01 q$i@411@01))
+    :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1119@11@1119@75|))))
+(push) ; 28
+(assert (not (=>
+  (forall ((q$i@411@01 Int)) (!
+    (=>
+      (and (<= 0 q$i@411@01) (< q$i@411@01 3))
+      (= (Seq_index l$xp@166@01 0) (Seq_index l$xp@166@01 q$i@411@01)))
+    :pattern ((Seq_index l$xp@166@01 q$i@411@01))
+    :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1119@11@1119@75|))
+  (= ($unwrap<Int> l$D$2@396@01) ($unwrap<Int> l$S$3@217@01)))))
+(check-sat)
+; unsat
+(pop) ; 28
+; 0.00s
+; (get-info :all-statistics)
+(assert (=>
+  (forall ((q$i@411@01 Int)) (!
+    (=>
+      (and (<= 0 q$i@411@01) (< q$i@411@01 3))
+      (= (Seq_index l$xp@166@01 0) (Seq_index l$xp@166@01 q$i@411@01)))
+    :pattern ((Seq_index l$xp@166@01 q$i@411@01))
+    :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1119@11@1119@75|))
+  (= ($unwrap<Int> l$D$2@396@01) ($unwrap<Int> l$S$3@217@01))))
+; [exec]
+; inhale false
+(pop) ; 27
+(push) ; 27
+; [else-branch: 177 | l$$idx@407@01 == 255]
+(assert (= l$$idx@407@01 255))
+(pop) ; 27
+(pop) ; 26
+(push) ; 26
+; [else-branch: 168 | $unwrap[Int](l$D$2@218@01) - $unwrap[Int](l$D$2@396@01) <= 1]
+(assert (<= (- ($unwrap<Int> l$D$2@218@01) ($unwrap<Int> l$D$2@396@01)) 1))
+(pop) ; 26
+(pop) ; 25
+(pop) ; 24
+(push) ; 24
+; [else-branch: 157 | $unwrap[Int](l$D$2@396@01) > $unwrap[Int](l$D$2@218@01)]
+(assert (> ($unwrap<Int> l$D$2@396@01) ($unwrap<Int> l$D$2@218@01)))
+(pop) ; 24
+(pop) ; 23
+(push) ; 23
+; [else-branch: 128 | $unwrap[Int]($w_div[$Int]($w_mul[$Int]($wrap[$Int]($unwrap[Int]($w_mul[$Int](l$Ann$1@201@01, l$S$3@217@01)) + $unwrap[Int](l$D_P$1@391@01) * 3), l$D$2@218@01), $wrap[$Int]($unwrap[Int]($w_mul[$Int]($wrap[$Int]($unwrap[Int](l$Ann$1@201@01) - 1), l$D$2@218@01)) + 4 * $unwrap[Int](l$D_P$1@391@01)))) < 0]
+(assert (<
+  ($unwrap<Int> ($w_div<$Int> ($w_mul<$Int> ($wrap<$Int> (+
+    ($unwrap<Int> ($w_mul<$Int> l$Ann$1@201@01 l$S$3@217@01))
+    (* ($unwrap<Int> l$D_P$1@391@01) 3))) l$D$2@218@01) ($wrap<$Int> (+
+    ($unwrap<Int> ($w_mul<$Int> ($wrap<$Int> (- ($unwrap<Int> l$Ann$1@201@01) 1)) l$D$2@218@01))
+    (* 4 ($unwrap<Int> l$D_P$1@391@01))))))
+  0))
+(pop) ; 23
+(pop) ; 22
+(push) ; 22
+; [else-branch: 123 | $unwrap[Int]($wrap[$Int]($unwrap[Int]($w_mul[$Int]($wrap[$Int]($unwrap[Int](l$Ann$1@201@01) - 1), l$D$2@218@01)) + 4 * $unwrap[Int](l$D_P$1@391@01))) == 0]
+(assert (=
+  ($unwrap<Int> ($wrap<$Int> (+
+    ($unwrap<Int> ($w_mul<$Int> ($wrap<$Int> (- ($unwrap<Int> l$Ann$1@201@01) 1)) l$D$2@218@01))
+    (* 4 ($unwrap<Int> l$D_P$1@391@01)))))
+  0))
+(pop) ; 22
+(pop) ; 21
+(pop) ; 20
+(pop) ; 19
+(pop) ; 18
+(pop) ; 17
+(push) ; 17
+; [else-branch: 112 | $unwrap[Int](l$Ann$1@201@01) - 1 < 0]
+(assert (< (- ($unwrap<Int> l$Ann$1@201@01) 1) 0))
+(pop) ; 17
+(pop) ; 16
+(pop) ; 15
+(pop) ; 14
+(pop) ; 13
+(pop) ; 12
+(push) ; 12
+; [else-branch: 91 | l$$idx$1@392@01 != 3]
+(assert (not (= l$$idx$1@392@01 3)))
+(pop) ; 12
+; [eval] !(l$$idx$1 == 3)
+; [eval] l$$idx$1 == 3
+(push) ; 12
+(set-option :timeout 10)
+(assert (not (= l$$idx$1@392@01 3)))
+(check-sat)
+; unknown
+(pop) ; 12
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 12
+(set-option :timeout 10)
+(assert (not (not (= l$$idx$1@392@01 3))))
+(check-sat)
+; unknown
+(pop) ; 12
+; 0.01s
+; (get-info :all-statistics)
+; [then-branch: 181 | l$$idx$1@392@01 != 3 | live]
+; [else-branch: 181 | l$$idx$1@392@01 == 3 | live]
+(set-option :timeout 0)
+(push) ; 12
+; [then-branch: 181 | l$$idx$1@392@01 != 3]
+(assert (not (= l$$idx$1@392@01 3)))
+; [exec]
+; l$_x$2 := $wrap(l$xp[l$$idx$1])
+; [eval] $wrap(l$xp[l$$idx$1])
+; [eval] l$xp[l$$idx$1]
+(push) ; 13
+(assert (not (>= l$$idx$1@392@01 0)))
+(check-sat)
+; unsat
+(pop) ; 13
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 13
+(assert (not (< l$$idx$1@392@01 (Seq_length l$xp@166@01))))
+(check-sat)
+; unsat
+(pop) ; 13
+; 0.00s
+; (get-info :all-statistics)
+(declare-const l$_x$2@412@01 $Int)
+(assert (= l$_x$2@412@01 ($wrap<$Int> (Seq_index l$xp@166@01 l$$idx$1@392@01))))
+; [exec]
+; exhale $unwrap(l$S$3) == $unwrap(l$S$2) && $unwrap(l$D$2) == $unwrap(l$D$1)
+; [eval] $unwrap(l$S$3) == $unwrap(l$S$2)
+; [eval] $unwrap(l$S$3)
+; [eval] $unwrap(l$S$2)
+; [eval] $unwrap(l$D$2) == $unwrap(l$D$1)
+; [eval] $unwrap(l$D$2)
+; [eval] $unwrap(l$D$1)
+; [exec]
+; exhale (forall q$i: Int ::
+;     { l$xp[q$i] }
+;     0 <= q$i ==> q$i < 3 ==> l$xp[0] == l$xp[q$i]) ==>
+;   $unwrap(l$D_P$1) == $unwrap(l$D$2)
+; [eval] (forall q$i: Int :: { l$xp[q$i] } 0 <= q$i ==> q$i < 3 ==> l$xp[0] == l$xp[q$i]) ==> $unwrap(l$D_P$1) == $unwrap(l$D$2)
+; [eval] (forall q$i: Int :: { l$xp[q$i] } 0 <= q$i ==> q$i < 3 ==> l$xp[0] == l$xp[q$i])
+(declare-const q$i@413@01 Int)
+(push) ; 13
+; [eval] 0 <= q$i ==> q$i < 3 ==> l$xp[0] == l$xp[q$i]
+; [eval] 0 <= q$i
+(push) ; 14
+; [then-branch: 182 | 0 <= q$i@413@01 | live]
+; [else-branch: 182 | !(0 <= q$i@413@01) | live]
+(push) ; 15
+; [then-branch: 182 | 0 <= q$i@413@01]
+(assert (<= 0 q$i@413@01))
+; [eval] q$i < 3 ==> l$xp[0] == l$xp[q$i]
+; [eval] q$i < 3
+(push) ; 16
+; [then-branch: 183 | q$i@413@01 < 3 | live]
+; [else-branch: 183 | !(q$i@413@01 < 3) | live]
+(push) ; 17
+; [then-branch: 183 | q$i@413@01 < 3]
+(assert (< q$i@413@01 3))
+; [eval] l$xp[0] == l$xp[q$i]
+; [eval] l$xp[0]
+(push) ; 18
+(assert (not (< 0 (Seq_length l$xp@166@01))))
+(check-sat)
+; unsat
+(pop) ; 18
+; 0.00s
+; (get-info :all-statistics)
+; [eval] l$xp[q$i]
+(push) ; 18
+(assert (not (>= q$i@413@01 0)))
+(check-sat)
+; unsat
+(pop) ; 18
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 18
+(assert (not (< q$i@413@01 (Seq_length l$xp@166@01))))
+(check-sat)
+; unsat
+(pop) ; 18
+; 0.00s
+; (get-info :all-statistics)
+(pop) ; 17
+(push) ; 17
+; [else-branch: 183 | !(q$i@413@01 < 3)]
+(assert (not (< q$i@413@01 3)))
+(pop) ; 17
+(pop) ; 16
+; Joined path conditions
+; Joined path conditions
+(assert (or (not (< q$i@413@01 3)) (< q$i@413@01 3)))
+(pop) ; 15
+(push) ; 15
+; [else-branch: 182 | !(0 <= q$i@413@01)]
+(assert (not (<= 0 q$i@413@01)))
+(pop) ; 15
+(pop) ; 14
+; Joined path conditions
+(assert (=>
+  (<= 0 q$i@413@01)
+  (and (<= 0 q$i@413@01) (or (not (< q$i@413@01 3)) (< q$i@413@01 3)))))
+; Joined path conditions
+(assert (or (not (<= 0 q$i@413@01)) (<= 0 q$i@413@01)))
+(pop) ; 13
+; Nested auxiliary terms: globals (aux)
+; Nested auxiliary terms: non-globals (aux)
+(assert (forall ((q$i@413@01 Int)) (!
+  (and
+    (=>
+      (<= 0 q$i@413@01)
+      (and (<= 0 q$i@413@01) (or (not (< q$i@413@01 3)) (< q$i@413@01 3))))
+    (or (not (<= 0 q$i@413@01)) (<= 0 q$i@413@01)))
+  :pattern ((Seq_index l$xp@166@01 q$i@413@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1052@11@1052@75-aux|)))
+(push) ; 13
+(push) ; 14
+(set-option :timeout 10)
+(assert (not (not
+  (forall ((q$i@413@01 Int)) (!
+    (=>
+      (and (<= 0 q$i@413@01) (< q$i@413@01 3))
+      (= (Seq_index l$xp@166@01 0) (Seq_index l$xp@166@01 q$i@413@01)))
+    :pattern ((Seq_index l$xp@166@01 q$i@413@01))
+    :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1052@11@1052@75|)))))
+(check-sat)
+; unknown
+(pop) ; 14
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 14
+(set-option :timeout 10)
+(assert (not (forall ((q$i@413@01 Int)) (!
+  (=>
+    (and (<= 0 q$i@413@01) (< q$i@413@01 3))
+    (= (Seq_index l$xp@166@01 0) (Seq_index l$xp@166@01 q$i@413@01)))
+  :pattern ((Seq_index l$xp@166@01 q$i@413@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1052@11@1052@75|))))
+(check-sat)
+; unknown
+(pop) ; 14
+; 0.01s
+; (get-info :all-statistics)
+; [then-branch: 184 | QA q$i@413@01 :: 0 <= q$i@413@01 && q$i@413@01 < 3 ==> l$xp@166@01[0] == l$xp@166@01[q$i@413@01] | live]
+; [else-branch: 184 | !(QA q$i@413@01 :: 0 <= q$i@413@01 && q$i@413@01 < 3 ==> l$xp@166@01[0] == l$xp@166@01[q$i@413@01]) | live]
+(set-option :timeout 0)
+(push) ; 14
+; [then-branch: 184 | QA q$i@413@01 :: 0 <= q$i@413@01 && q$i@413@01 < 3 ==> l$xp@166@01[0] == l$xp@166@01[q$i@413@01]]
+(assert (forall ((q$i@413@01 Int)) (!
+  (=>
+    (and (<= 0 q$i@413@01) (< q$i@413@01 3))
+    (= (Seq_index l$xp@166@01 0) (Seq_index l$xp@166@01 q$i@413@01)))
+  :pattern ((Seq_index l$xp@166@01 q$i@413@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1052@11@1052@75|)))
+; [eval] $unwrap(l$D_P$1) == $unwrap(l$D$2)
+; [eval] $unwrap(l$D_P$1)
+; [eval] $unwrap(l$D$2)
+(pop) ; 14
+(push) ; 14
+; [else-branch: 184 | !(QA q$i@413@01 :: 0 <= q$i@413@01 && q$i@413@01 < 3 ==> l$xp@166@01[0] == l$xp@166@01[q$i@413@01])]
+(assert (not
+  (forall ((q$i@413@01 Int)) (!
+    (=>
+      (and (<= 0 q$i@413@01) (< q$i@413@01 3))
+      (= (Seq_index l$xp@166@01 0) (Seq_index l$xp@166@01 q$i@413@01)))
+    :pattern ((Seq_index l$xp@166@01 q$i@413@01))
+    :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1052@11@1052@75|))))
+(pop) ; 14
+(pop) ; 13
+; Joined path conditions
+; Joined path conditions
+(assert (or
+  (not
+    (forall ((q$i@413@01 Int)) (!
+      (=>
+        (and (<= 0 q$i@413@01) (< q$i@413@01 3))
+        (= (Seq_index l$xp@166@01 0) (Seq_index l$xp@166@01 q$i@413@01)))
+      :pattern ((Seq_index l$xp@166@01 q$i@413@01))
+      :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1052@11@1052@75|)))
+  (forall ((q$i@413@01 Int)) (!
+    (=>
+      (and (<= 0 q$i@413@01) (< q$i@413@01 3))
+      (= (Seq_index l$xp@166@01 0) (Seq_index l$xp@166@01 q$i@413@01)))
+    :pattern ((Seq_index l$xp@166@01 q$i@413@01))
+    :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1052@11@1052@75|))))
+(push) ; 13
+(assert (not (=>
+  (forall ((q$i@413@01 Int)) (!
+    (=>
+      (and (<= 0 q$i@413@01) (< q$i@413@01 3))
+      (= (Seq_index l$xp@166@01 0) (Seq_index l$xp@166@01 q$i@413@01)))
+    :pattern ((Seq_index l$xp@166@01 q$i@413@01))
+    :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1052@11@1052@75|))
+  (= ($unwrap<Int> l$D_P$1@391@01) ($unwrap<Int> l$D$2@218@01)))))
+(check-sat)
+; unsat
+(pop) ; 13
+; 0.07s
+; (get-info :all-statistics)
+(assert (=>
+  (forall ((q$i@413@01 Int)) (!
+    (=>
+      (and (<= 0 q$i@413@01) (< q$i@413@01 3))
+      (= (Seq_index l$xp@166@01 0) (Seq_index l$xp@166@01 q$i@413@01)))
+    :pattern ((Seq_index l$xp@166@01 q$i@413@01))
+    :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1052@11@1052@75|))
+  (= ($unwrap<Int> l$D_P$1@391@01) ($unwrap<Int> l$D$2@218@01))))
+; [exec]
+; inhale false
+(pop) ; 12
+(push) ; 12
+; [else-branch: 181 | l$$idx$1@392@01 == 3]
+(assert (= l$$idx$1@392@01 3))
+(pop) ; 12
+(pop) ; 11
+(push) ; 11
+; [else-branch: 89 | $unwrap[Int]($w_div[$Int]($w_mul[$Int](l$D_P$1@216@01, l$D$2@218@01), $wrap[$Int]($unwrap[Int](l$_x$2@384@01) * 3))) < 0]
+(assert (<
+  ($unwrap<Int> ($w_div<$Int> ($w_mul<$Int> l$D_P$1@216@01 l$D$2@218@01) ($wrap<$Int> (*
+    ($unwrap<Int> l$_x$2@384@01)
+    3))))
+  0))
+(pop) ; 11
+(pop) ; 10
+(push) ; 10
+; [else-branch: 84 | $unwrap[Int]($wrap[$Int]($unwrap[Int](l$_x$2@384@01) * 3)) == 0]
+(assert (= ($unwrap<Int> ($wrap<$Int> (* ($unwrap<Int> l$_x$2@384@01) 3))) 0))
+(pop) ; 10
+(pop) ; 9
+(pop) ; 8
+(pop) ; 7
+(pop) ; 6
+(push) ; 6
+; [else-branch: 34 | $unwrap[Int](l$S$1@278@01) == 0]
+(assert (= ($unwrap<Int> l$S$1@278@01) 0))
+(pop) ; 6
+(pop) ; 5
+(pop) ; 4
+(pop) ; 3
+(pop) ; 2
+(pop) ; 1
+; ---------- f$get_virtual_price ----------
+(declare-const $succ@414@01 Bool)
+(declare-const $res@415@01 Int)
+(declare-const $succ@416@01 Bool)
+(declare-const $res@417@01 Int)
+(push) ; 1
+; State saturation: after contract
+(set-option :timeout 50)
+(check-sat)
+; unknown
+(set-option :timeout 0)
+(push) ; 2
+(pop) ; 2
+(push) ; 2
+; [exec]
+; var msg: $Struct
+(declare-const msg@418@01 $Struct)
+; [exec]
+; var block: $Struct
+(declare-const block@419@01 $Struct)
+; [exec]
+; var chain: $Struct
+(declare-const chain@420@01 $Struct)
+; [exec]
+; var tx: $Struct
+(declare-const tx@421@01 $Struct)
+; [exec]
+; var self: $Struct
+(declare-const self@422@01 $Struct)
+; [exec]
+; var $contracts: $Map[Int, $Struct]
+(declare-const $contracts@423@01 $Map<Int~_$Struct>)
+; [exec]
+; var $old_self: $Struct
+(declare-const $old_self@424@01 $Struct)
+; [exec]
+; var $old_$contracts: $Map[Int, $Struct]
+(declare-const $old_$contracts@425@01 $Map<Int~_$Struct>)
+; [exec]
+; var $pre_self: $Struct
+(declare-const $pre_self@426@01 $Struct)
+; [exec]
+; var $pre_$contracts: $Map[Int, $Struct]
+(declare-const $pre_$contracts@427@01 $Map<Int~_$Struct>)
+; [exec]
+; var $issued_self: $Struct
+(declare-const $issued_self@428@01 $Struct)
+; [exec]
+; var $issued_$contracts: $Map[Int, $Struct]
+(declare-const $issued_$contracts@429@01 $Map<Int~_$Struct>)
+; [exec]
+; var $overflow: Bool
+(declare-const $overflow@430@01 Bool)
+; [exec]
+; var i0$$res: Seq[Int]
+(declare-const i0$$res@431@01 Seq<Int>)
+; [exec]
+; var l$i0$result: Seq[Int]
+(declare-const l$i0$result@432@01 Seq<Int>)
+; [exec]
+; var l$i0$i: $Int
+(declare-const l$i0$i@433@01 $Int)
+; [exec]
+; var l$i1$xp: Seq[Int]
+(declare-const l$i1$xp@434@01 Seq<Int>)
+; [exec]
+; var i1$$succ: Bool
+(declare-const i1$$succ@435@01 Bool)
+; [exec]
+; var i1$$res: Int
+(declare-const i1$$res@436@01 Int)
+; [exec]
+; var l$D: $Int
+(declare-const l$D@437@01 $Int)
+; [exec]
+; var l$send_fail: Bool
+(declare-const l$send_fail@438@01 Bool)
+; [exec]
+; var l$raw_ret: Int
+(declare-const l$raw_ret@439@01 Int)
+; [exec]
+; var l$token_supply: $Int
+(declare-const l$token_supply@440@01 $Int)
+; [exec]
+; var $out_of_gas: Bool
+(declare-const $out_of_gas@441@01 Bool)
+; [exec]
+; var l$havoc: Int
+(declare-const l$havoc@442@01 Int)
+; [exec]
+; var l$havoc$1: Int
+(declare-const l$havoc$1@443@01 Int)
+; [exec]
+; var l$havoc$2: $Map[Int, $Struct]
+(declare-const l$havoc$2@444@01 $Map<Int~_$Struct>)
+; [exec]
+; inhale |($struct_get($struct_loc(self, 0)): Seq[Int])| == 3
+(declare-const $t@445@01 $Snap)
+(assert (= $t@445@01 $Snap.unit))
+; [eval] |($struct_get($struct_loc(self, 0)): Seq[Int])| == 3
+; [eval] |($struct_get($struct_loc(self, 0)): Seq[Int])|
+; [eval] ($struct_get($struct_loc(self, 0)): Seq[Int])
+; [eval] $struct_loc(self, 0)
+(assert (= (Seq_length ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0))) 3))
+; State saturation: after inhale
+(set-option :timeout 20)
+(check-sat)
+; unknown
+; [exec]
+; inhale (forall $q0: Int ::
+;     { ($struct_get($struct_loc(self, 0)): Seq[Int])[$q0] }
+;     0 <= $q0 && $q0 < |($struct_get($struct_loc(self, 0)): Seq[Int])| ==>
+;     0 <= ($struct_get($struct_loc(self, 0)): Seq[Int])[$q0])
+(declare-const $t@446@01 $Snap)
+(assert (= $t@446@01 $Snap.unit))
+; [eval] (forall $q0: Int :: { ($struct_get($struct_loc(self, 0)): Seq[Int])[$q0] } 0 <= $q0 && $q0 < |($struct_get($struct_loc(self, 0)): Seq[Int])| ==> 0 <= ($struct_get($struct_loc(self, 0)): Seq[Int])[$q0])
+(declare-const $q0@447@01 Int)
+(set-option :timeout 0)
+(push) ; 3
+; [eval] 0 <= $q0 && $q0 < |($struct_get($struct_loc(self, 0)): Seq[Int])| ==> 0 <= ($struct_get($struct_loc(self, 0)): Seq[Int])[$q0]
+; [eval] 0 <= $q0 && $q0 < |($struct_get($struct_loc(self, 0)): Seq[Int])|
+; [eval] 0 <= $q0
+(push) ; 4
+; [then-branch: 185 | !(0 <= $q0@447@01) | live]
+; [else-branch: 185 | 0 <= $q0@447@01 | live]
+(push) ; 5
+; [then-branch: 185 | !(0 <= $q0@447@01)]
+(assert (not (<= 0 $q0@447@01)))
+(pop) ; 5
+(push) ; 5
+; [else-branch: 185 | 0 <= $q0@447@01]
+(assert (<= 0 $q0@447@01))
+; [eval] $q0 < |($struct_get($struct_loc(self, 0)): Seq[Int])|
+; [eval] |($struct_get($struct_loc(self, 0)): Seq[Int])|
+; [eval] ($struct_get($struct_loc(self, 0)): Seq[Int])
+; [eval] $struct_loc(self, 0)
+(pop) ; 5
+(pop) ; 4
+; Joined path conditions
+; Joined path conditions
+(assert (or (<= 0 $q0@447@01) (not (<= 0 $q0@447@01))))
+(push) ; 4
+; [then-branch: 186 | 0 <= $q0@447@01 && $q0@447@01 < |$struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))| | live]
+; [else-branch: 186 | !(0 <= $q0@447@01 && $q0@447@01 < |$struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))|) | live]
+(push) ; 5
+; [then-branch: 186 | 0 <= $q0@447@01 && $q0@447@01 < |$struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))|]
+(assert (and
+  (<= 0 $q0@447@01)
+  (<
+    $q0@447@01
+    (Seq_length ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0))))))
+; [eval] 0 <= ($struct_get($struct_loc(self, 0)): Seq[Int])[$q0]
+; [eval] ($struct_get($struct_loc(self, 0)): Seq[Int])[$q0]
+; [eval] ($struct_get($struct_loc(self, 0)): Seq[Int])
+; [eval] $struct_loc(self, 0)
+(push) ; 6
+(assert (not (>= $q0@447@01 0)))
+(check-sat)
+; unsat
+(pop) ; 6
+; 0.00s
+; (get-info :all-statistics)
+(pop) ; 5
+(push) ; 5
+; [else-branch: 186 | !(0 <= $q0@447@01 && $q0@447@01 < |$struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))|)]
+(assert (not
+  (and
+    (<= 0 $q0@447@01)
+    (<
+      $q0@447@01
+      (Seq_length ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0)))))))
+(pop) ; 5
+(pop) ; 4
+; Joined path conditions
+; Joined path conditions
+(assert (or
+  (not
+    (and
+      (<= 0 $q0@447@01)
+      (<
+        $q0@447@01
+        (Seq_length ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0))))))
+  (and
+    (<= 0 $q0@447@01)
+    (<
+      $q0@447@01
+      (Seq_length ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0)))))))
+(pop) ; 3
+; Nested auxiliary terms: globals (aux)
+; Nested auxiliary terms: non-globals (aux)
+(assert (forall (($q0@447@01 Int)) (!
+  (and
+    (or (<= 0 $q0@447@01) (not (<= 0 $q0@447@01)))
+    (or
+      (not
+        (and
+          (<= 0 $q0@447@01)
+          (<
+            $q0@447@01
+            (Seq_length ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0))))))
+      (and
+        (<= 0 $q0@447@01)
+        (<
+          $q0@447@01
+          (Seq_length ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0)))))))
+  :pattern ((Seq_index
+    ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0))
+    $q0@447@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1175@11@1175@210-aux|)))
+(assert (forall (($q0@447@01 Int)) (!
+  (=>
+    (and
+      (<= 0 $q0@447@01)
+      (<
+        $q0@447@01
+        (Seq_length ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0)))))
+    (<=
+      0
+      (Seq_index
+        ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0))
+        $q0@447@01)))
+  :pattern ((Seq_index
+    ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0))
+    $q0@447@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1175@11@1175@210|)))
+; State saturation: after inhale
+(set-option :timeout 20)
+(check-sat)
+; unknown
+; [exec]
+; inhale 0 <= ($struct_get($struct_loc(self, 1)): Int)
+(declare-const $t@448@01 $Snap)
+(assert (= $t@448@01 $Snap.unit))
+; [eval] 0 <= ($struct_get($struct_loc(self, 1)): Int)
+; [eval] ($struct_get($struct_loc(self, 1)): Int)
+; [eval] $struct_loc(self, 1)
+(assert (<= 0 ($struct_get<Int> ($struct_loc<Int> self@422@01 1))))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale 0 <= ($struct_get($struct_loc(self, 2)): Int)
+(declare-const $t@449@01 $Snap)
+(assert (= $t@449@01 $Snap.unit))
+; [eval] 0 <= ($struct_get($struct_loc(self, 2)): Int)
+; [eval] ($struct_get($struct_loc(self, 2)): Int)
+; [eval] $struct_loc(self, 2)
+(assert (<= 0 ($struct_get<Int> ($struct_loc<Int> self@422@01 2))))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale 0 <= ($struct_get($struct_loc(self, 3)): Int)
+(declare-const $t@450@01 $Snap)
+(assert (= $t@450@01 $Snap.unit))
+; [eval] 0 <= ($struct_get($struct_loc(self, 3)): Int)
+; [eval] ($struct_get($struct_loc(self, 3)): Int)
+; [eval] $struct_loc(self, 3)
+(assert (<= 0 ($struct_get<Int> ($struct_loc<Int> self@422@01 3))))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale true
+(declare-const $t@451@01 $Snap)
+(assert (= $t@451@01 $Snap.unit))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale (forall $q1: Int ::
+;     { ($map_get(($struct_get($struct_loc(self, 6)): $Map[Int, Int]), $q1): Int) }
+;     0 <=
+;     ($map_get(($struct_get($struct_loc(self, 6)): $Map[Int, Int]), $q1): Int))
+(declare-const $t@452@01 $Snap)
+(assert (= $t@452@01 $Snap.unit))
+; [eval] (forall $q1: Int :: { ($map_get(($struct_get($struct_loc(self, 6)): $Map[Int, Int]), $q1): Int) } 0 <= ($map_get(($struct_get($struct_loc(self, 6)): $Map[Int, Int]), $q1): Int))
+(declare-const $q1@453@01 Int)
+(set-option :timeout 0)
+(push) ; 3
+; [eval] 0 <= ($map_get(($struct_get($struct_loc(self, 6)): $Map[Int, Int]), $q1): Int)
+; [eval] ($map_get(($struct_get($struct_loc(self, 6)): $Map[Int, Int]), $q1): Int)
+; [eval] ($struct_get($struct_loc(self, 6)): $Map[Int, Int])
+; [eval] $struct_loc(self, 6)
+(pop) ; 3
+; Nested auxiliary terms: globals (aux)
+; Nested auxiliary terms: non-globals (aux)
+(assert (forall (($q1@453@01 Int)) (!
+  (<=
+    0
+    ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@422@01 6)) $q1@453@01))
+  :pattern (($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@422@01 6)) $q1@453@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1180@11@1180@186|)))
+; State saturation: after inhale
+(set-option :timeout 20)
+(check-sat)
+; unknown
+; [exec]
+; inhale (forall $q1: Int ::
+;     { ($map_get(($struct_get($struct_loc(self, 6)): $Map[Int, Int]), $q1): Int) }
+;     ($map_get(($struct_get($struct_loc(self, 6)): $Map[Int, Int]), $q1): Int) <=
+;     ($map_sum(($struct_get($struct_loc(self, 6)): $Map[Int, Int])): Int))
+(declare-const $t@454@01 $Snap)
+(assert (= $t@454@01 $Snap.unit))
+; [eval] (forall $q1: Int :: { ($map_get(($struct_get($struct_loc(self, 6)): $Map[Int, Int]), $q1): Int) } ($map_get(($struct_get($struct_loc(self, 6)): $Map[Int, Int]), $q1): Int) <= ($map_sum(($struct_get($struct_loc(self, 6)): $Map[Int, Int])): Int))
+(declare-const $q1@455@01 Int)
+(set-option :timeout 0)
+(push) ; 3
+; [eval] ($map_get(($struct_get($struct_loc(self, 6)): $Map[Int, Int]), $q1): Int) <= ($map_sum(($struct_get($struct_loc(self, 6)): $Map[Int, Int])): Int)
+; [eval] ($map_get(($struct_get($struct_loc(self, 6)): $Map[Int, Int]), $q1): Int)
+; [eval] ($struct_get($struct_loc(self, 6)): $Map[Int, Int])
+; [eval] $struct_loc(self, 6)
+; [eval] ($map_sum(($struct_get($struct_loc(self, 6)): $Map[Int, Int])): Int)
+; [eval] ($struct_get($struct_loc(self, 6)): $Map[Int, Int])
+; [eval] $struct_loc(self, 6)
+(pop) ; 3
+; Nested auxiliary terms: globals (aux)
+; Nested auxiliary terms: non-globals (aux)
+(assert (forall (($q1@455@01 Int)) (!
+  (<=
+    ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@422@01 6)) $q1@455@01)
+    ($map_sum<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@422@01 6))))
+  :pattern (($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@422@01 6)) $q1@455@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1181@11@1181@253|)))
+; State saturation: after inhale
+(set-option :timeout 20)
+(check-sat)
+; unknown
+; [exec]
+; inhale (forall $q2: Int ::
+;     { ($map_get(($struct_get($struct_loc(self, 7)): $Map[Int, Int]), $q2): Int) }
+;     0 <=
+;     ($map_get(($struct_get($struct_loc(self, 7)): $Map[Int, Int]), $q2): Int))
+(declare-const $t@456@01 $Snap)
+(assert (= $t@456@01 $Snap.unit))
+; [eval] (forall $q2: Int :: { ($map_get(($struct_get($struct_loc(self, 7)): $Map[Int, Int]), $q2): Int) } 0 <= ($map_get(($struct_get($struct_loc(self, 7)): $Map[Int, Int]), $q2): Int))
+(declare-const $q2@457@01 Int)
+(set-option :timeout 0)
+(push) ; 3
+; [eval] 0 <= ($map_get(($struct_get($struct_loc(self, 7)): $Map[Int, Int]), $q2): Int)
+; [eval] ($map_get(($struct_get($struct_loc(self, 7)): $Map[Int, Int]), $q2): Int)
+; [eval] ($struct_get($struct_loc(self, 7)): $Map[Int, Int])
+; [eval] $struct_loc(self, 7)
+(pop) ; 3
+; Nested auxiliary terms: globals (aux)
+; Nested auxiliary terms: non-globals (aux)
+(assert (forall (($q2@457@01 Int)) (!
+  (<=
+    0
+    ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@422@01 7)) $q2@457@01))
+  :pattern (($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@422@01 7)) $q2@457@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1182@11@1182@186|)))
+; State saturation: after inhale
+(set-option :timeout 20)
+(check-sat)
+; unknown
+; [exec]
+; inhale (forall $q2: Int ::
+;     { ($map_get(($struct_get($struct_loc(self, 7)): $Map[Int, Int]), $q2): Int) }
+;     ($map_get(($struct_get($struct_loc(self, 7)): $Map[Int, Int]), $q2): Int) <=
+;     ($map_sum(($struct_get($struct_loc(self, 7)): $Map[Int, Int])): Int))
+(declare-const $t@458@01 $Snap)
+(assert (= $t@458@01 $Snap.unit))
+; [eval] (forall $q2: Int :: { ($map_get(($struct_get($struct_loc(self, 7)): $Map[Int, Int]), $q2): Int) } ($map_get(($struct_get($struct_loc(self, 7)): $Map[Int, Int]), $q2): Int) <= ($map_sum(($struct_get($struct_loc(self, 7)): $Map[Int, Int])): Int))
+(declare-const $q2@459@01 Int)
+(set-option :timeout 0)
+(push) ; 3
+; [eval] ($map_get(($struct_get($struct_loc(self, 7)): $Map[Int, Int]), $q2): Int) <= ($map_sum(($struct_get($struct_loc(self, 7)): $Map[Int, Int])): Int)
+; [eval] ($map_get(($struct_get($struct_loc(self, 7)): $Map[Int, Int]), $q2): Int)
+; [eval] ($struct_get($struct_loc(self, 7)): $Map[Int, Int])
+; [eval] $struct_loc(self, 7)
+; [eval] ($map_sum(($struct_get($struct_loc(self, 7)): $Map[Int, Int])): Int)
+; [eval] ($struct_get($struct_loc(self, 7)): $Map[Int, Int])
+; [eval] $struct_loc(self, 7)
+(pop) ; 3
+; Nested auxiliary terms: globals (aux)
+; Nested auxiliary terms: non-globals (aux)
+(assert (forall (($q2@459@01 Int)) (!
+  (<=
+    ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@422@01 7)) $q2@459@01)
+    ($map_sum<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@422@01 7))))
+  :pattern (($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@422@01 7)) $q2@459@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1183@11@1183@253|)))
+; State saturation: after inhale
+(set-option :timeout 20)
+(check-sat)
+; unknown
+; [exec]
+; inhale ($struct_get($struct_loc(self, -1)): Int) ==
+;   9122519725869122497593506884710
+(declare-const $t@460@01 $Snap)
+(assert (= $t@460@01 $Snap.unit))
+; [eval] ($struct_get($struct_loc(self, -1)): Int) == 9122519725869122497593506884710
+; [eval] ($struct_get($struct_loc(self, -1)): Int)
+; [eval] $struct_loc(self, -1)
+; [eval] -1
+(assert (=
+  ($struct_get<Int> ($struct_loc<Int> self@422@01 (- 0 1)))
+  9122519725869122497593506884710))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale 0 <= $self_address()
+(declare-const $t@461@01 $Snap)
+(assert (= $t@461@01 $Snap.unit))
+; [eval] 0 <= $self_address()
+; [eval] $self_address()
+(assert (<= 0 (as $self_address<Int>  Int)))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale 0 <= ($struct_get($struct_loc(block, 0)): Int)
+(declare-const $t@462@01 $Snap)
+(assert (= $t@462@01 $Snap.unit))
+; [eval] 0 <= ($struct_get($struct_loc(block, 0)): Int)
+; [eval] ($struct_get($struct_loc(block, 0)): Int)
+; [eval] $struct_loc(block, 0)
+(assert (<= 0 ($struct_get<Int> ($struct_loc<Int> block@419@01 0))))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale 0 <= ($struct_get($struct_loc(block, 1)): Int)
+(declare-const $t@463@01 $Snap)
+(assert (= $t@463@01 $Snap.unit))
+; [eval] 0 <= ($struct_get($struct_loc(block, 1)): Int)
+; [eval] ($struct_get($struct_loc(block, 1)): Int)
+; [eval] $struct_loc(block, 1)
+(assert (<= 0 ($struct_get<Int> ($struct_loc<Int> block@419@01 1))))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale 0 <= ($struct_get($struct_loc(block, 2)): Int)
+(declare-const $t@464@01 $Snap)
+(assert (= $t@464@01 $Snap.unit))
+; [eval] 0 <= ($struct_get($struct_loc(block, 2)): Int)
+; [eval] ($struct_get($struct_loc(block, 2)): Int)
+; [eval] $struct_loc(block, 2)
+(assert (<= 0 ($struct_get<Int> ($struct_loc<Int> block@419@01 2))))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale |($struct_get($struct_loc(block, 3)): Seq[Int])| == 32
+(declare-const $t@465@01 $Snap)
+(assert (= $t@465@01 $Snap.unit))
+; [eval] |($struct_get($struct_loc(block, 3)): Seq[Int])| == 32
+; [eval] |($struct_get($struct_loc(block, 3)): Seq[Int])|
+; [eval] ($struct_get($struct_loc(block, 3)): Seq[Int])
+; [eval] $struct_loc(block, 3)
+(assert (= (Seq_length ($struct_get<Seq<Int>> ($struct_loc<Int> block@419@01 3))) 32))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale 0 <= ($struct_get($struct_loc(block, 4)): Int)
+(declare-const $t@466@01 $Snap)
+(assert (= $t@466@01 $Snap.unit))
+; [eval] 0 <= ($struct_get($struct_loc(block, 4)): Int)
+; [eval] ($struct_get($struct_loc(block, 4)): Int)
+; [eval] $struct_loc(block, 4)
+(assert (<= 0 ($struct_get<Int> ($struct_loc<Int> block@419@01 4))))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale ($struct_get($struct_loc(block, -1)): Int) ==
+;   2335365049822495359383864865678187
+(declare-const $t@467@01 $Snap)
+(assert (= $t@467@01 $Snap.unit))
+; [eval] ($struct_get($struct_loc(block, -1)): Int) == 2335365049822495359383864865678187
+; [eval] ($struct_get($struct_loc(block, -1)): Int)
+; [eval] $struct_loc(block, -1)
+; [eval] -1
+(assert (=
+  ($struct_get<Int> ($struct_loc<Int> block@419@01 (- 0 1)))
+  2335365049822495359383864865678187))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale 0 <= ($struct_get($struct_loc(msg, 0)): Int)
+(declare-const $t@468@01 $Snap)
+(assert (= $t@468@01 $Snap.unit))
+; [eval] 0 <= ($struct_get($struct_loc(msg, 0)): Int)
+; [eval] ($struct_get($struct_loc(msg, 0)): Int)
+; [eval] $struct_loc(msg, 0)
+(assert (<= 0 ($struct_get<Int> ($struct_loc<Int> msg@418@01 0))))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale 0 <= ($struct_get($struct_loc(msg, 1)): Int)
+(declare-const $t@469@01 $Snap)
+(assert (= $t@469@01 $Snap.unit))
+; [eval] 0 <= ($struct_get($struct_loc(msg, 1)): Int)
+; [eval] ($struct_get($struct_loc(msg, 1)): Int)
+; [eval] $struct_loc(msg, 1)
+(assert (<= 0 ($struct_get<Int> ($struct_loc<Int> msg@418@01 1))))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale 0 <= ($struct_get($struct_loc(msg, 2)): Int)
+(declare-const $t@470@01 $Snap)
+(assert (= $t@470@01 $Snap.unit))
+; [eval] 0 <= ($struct_get($struct_loc(msg, 2)): Int)
+; [eval] ($struct_get($struct_loc(msg, 2)): Int)
+; [eval] $struct_loc(msg, 2)
+(assert (<= 0 ($struct_get<Int> ($struct_loc<Int> msg@418@01 2))))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale ($struct_get($struct_loc(msg, -1)): Int) ==
+;   35634842679176259756224246631
+(declare-const $t@471@01 $Snap)
+(assert (= $t@471@01 $Snap.unit))
+; [eval] ($struct_get($struct_loc(msg, -1)): Int) == 35634842679176259756224246631
+; [eval] ($struct_get($struct_loc(msg, -1)): Int)
+; [eval] $struct_loc(msg, -1)
+; [eval] -1
+(assert (=
+  ($struct_get<Int> ($struct_loc<Int> msg@418@01 (- 0 1)))
+  35634842679176259756224246631))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale ($struct_get($struct_loc(msg, 0)): Int) != 0
+(declare-const $t@472@01 $Snap)
+(assert (= $t@472@01 $Snap.unit))
+; [eval] ($struct_get($struct_loc(msg, 0)): Int) != 0
+; [eval] ($struct_get($struct_loc(msg, 0)): Int)
+; [eval] $struct_loc(msg, 0)
+(assert (not (= ($struct_get<Int> ($struct_loc<Int> msg@418@01 0)) 0)))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale (forall $a: Int ::
+;     { ($map_get(($struct_get($struct_loc(self, 6)): $Map[Int, Int]), $a): Int) }
+;     ($map_get(($struct_get($struct_loc(self, 6)): $Map[Int, Int]), $a): Int) >=
+;     ($map_get(($struct_get($struct_loc(self, 6)): $Map[Int, Int]), $a): Int))
+(declare-const $t@473@01 $Snap)
+(assert (= $t@473@01 $Snap.unit))
+; [eval] (forall $a: Int :: { ($map_get(($struct_get($struct_loc(self, 6)): $Map[Int, Int]), $a): Int) } ($map_get(($struct_get($struct_loc(self, 6)): $Map[Int, Int]), $a): Int) >= ($map_get(($struct_get($struct_loc(self, 6)): $Map[Int, Int]), $a): Int))
+(declare-const $a@474@01 Int)
+(set-option :timeout 0)
+(push) ; 3
+; [eval] ($map_get(($struct_get($struct_loc(self, 6)): $Map[Int, Int]), $a): Int) >= ($map_get(($struct_get($struct_loc(self, 6)): $Map[Int, Int]), $a): Int)
+; [eval] ($map_get(($struct_get($struct_loc(self, 6)): $Map[Int, Int]), $a): Int)
+; [eval] ($struct_get($struct_loc(self, 6)): $Map[Int, Int])
+; [eval] $struct_loc(self, 6)
+; [eval] ($map_get(($struct_get($struct_loc(self, 6)): $Map[Int, Int]), $a): Int)
+; [eval] ($struct_get($struct_loc(self, 6)): $Map[Int, Int])
+; [eval] $struct_loc(self, 6)
+(pop) ; 3
+; Nested auxiliary terms: globals (aux)
+; Nested auxiliary terms: non-globals (aux)
+; State saturation: after inhale
+(set-option :timeout 20)
+(check-sat)
+; unknown
+; [exec]
+; $pre_self := self
+; [exec]
+; $pre_$contracts := $contracts
+; [exec]
+; $old_self := self
+; [exec]
+; $old_$contracts := $contracts
+; [exec]
+; $succ := true
+; [exec]
+; $overflow := false
+; [exec]
+; inhale ($struct_get($struct_loc(msg, 1)): Int) == 0
+(declare-const $t@475@01 $Snap)
+(assert (= $t@475@01 $Snap.unit))
+; [eval] ($struct_get($struct_loc(msg, 1)): Int) == 0
+; [eval] ($struct_get($struct_loc(msg, 1)): Int)
+; [eval] $struct_loc(msg, 1)
+(assert (= ($struct_get<Int> ($struct_loc<Int> msg@418@01 1)) 0))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [eval] 1 < 0
+; [then-branch: 187 | False | dead]
+; [else-branch: 187 | True | live]
+(set-option :timeout 0)
+(push) ; 3
+; [else-branch: 187 | True]
+(pop) ; 3
+; [eval] !(1 < 0)
+; [eval] 1 < 0
+(push) ; 3
+(set-option :timeout 10)
+(assert (not false))
+(check-sat)
+; unknown
+(pop) ; 3
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 188 | True | live]
+; [else-branch: 188 | False | dead]
+(set-option :timeout 0)
+(push) ; 3
+; [then-branch: 188 | True]
+; [eval] 1000000000000 < 0
+; [then-branch: 189 | False | dead]
+; [else-branch: 189 | True | live]
+(push) ; 4
+; [else-branch: 189 | True]
+(pop) ; 4
+; [eval] !(1000000000000 < 0)
+; [eval] 1000000000000 < 0
+(push) ; 4
+(set-option :timeout 10)
+(assert (not false))
+(check-sat)
+; unknown
+(pop) ; 4
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 190 | True | live]
+; [else-branch: 190 | False | dead]
+(set-option :timeout 0)
+(push) ; 4
+; [then-branch: 190 | True]
+; [eval] 1000000000000 < 0
+; [then-branch: 191 | False | dead]
+; [else-branch: 191 | True | live]
+(push) ; 5
+; [else-branch: 191 | True]
+(pop) ; 5
+; [eval] !(1000000000000 < 0)
+; [eval] 1000000000000 < 0
+(push) ; 5
+(set-option :timeout 10)
+(assert (not false))
+(check-sat)
+; unknown
+(pop) ; 5
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 192 | True | live]
+; [else-branch: 192 | False | dead]
+(set-option :timeout 0)
+(push) ; 5
+; [then-branch: 192 | True]
+; [exec]
+; l$i0$result := Seq(1, 1000000000000, 1000000000000)
+; [eval] Seq(1, 1000000000000, 1000000000000)
+(assert (=
+  (Seq_length
+    (Seq_append
+      (Seq_append (Seq_singleton 1) (Seq_singleton 1000000000000))
+      (Seq_singleton 1000000000000)))
+  3))
+(declare-const l$i0$result@476@01 Seq<Int>)
+(assert (=
+  l$i0$result@476@01
+  (Seq_append
+    (Seq_append (Seq_singleton 1) (Seq_singleton 1000000000000))
+    (Seq_singleton 1000000000000))))
+; [exec]
+; l$i0$i := $wrap($range(0, 3)[0])
+; [eval] $wrap($range(0, 3)[0])
+; [eval] $range(0, 3)[0]
+; [eval] $range(0, 3)
+(push) ; 6
+(assert (not (< 0 (Seq_length ($range<Seq<Int>> 0 3)))))
+(check-sat)
+; unsat
+(pop) ; 6
+; 0.00s
+; (get-info :all-statistics)
+(declare-const l$i0$i@477@01 $Int)
+(assert (= l$i0$i@477@01 ($wrap<$Int> (Seq_index ($range<Seq<Int>> 0 3) 0))))
+; [eval] !(0 <= $unwrap(l$i0$i) && $unwrap(l$i0$i) < |l$i0$result|)
+; [eval] 0 <= $unwrap(l$i0$i) && $unwrap(l$i0$i) < |l$i0$result|
+; [eval] 0 <= $unwrap(l$i0$i)
+; [eval] $unwrap(l$i0$i)
+(push) ; 6
+; [then-branch: 193 | !(0 <= $unwrap[Int](l$i0$i@477@01)) | live]
+; [else-branch: 193 | 0 <= $unwrap[Int](l$i0$i@477@01) | live]
+(push) ; 7
+; [then-branch: 193 | !(0 <= $unwrap[Int](l$i0$i@477@01))]
+(assert (not (<= 0 ($unwrap<Int> l$i0$i@477@01))))
+(pop) ; 7
+(push) ; 7
+; [else-branch: 193 | 0 <= $unwrap[Int](l$i0$i@477@01)]
+(assert (<= 0 ($unwrap<Int> l$i0$i@477@01)))
+; [eval] $unwrap(l$i0$i) < |l$i0$result|
+; [eval] $unwrap(l$i0$i)
+; [eval] |l$i0$result|
+(pop) ; 7
+(pop) ; 6
+; Joined path conditions
+; Joined path conditions
+(assert (or
+  (<= 0 ($unwrap<Int> l$i0$i@477@01))
+  (not (<= 0 ($unwrap<Int> l$i0$i@477@01)))))
+(push) ; 6
+(set-option :timeout 10)
+(assert (not (and
+  (<= 0 ($unwrap<Int> l$i0$i@477@01))
+  (< ($unwrap<Int> l$i0$i@477@01) (Seq_length l$i0$result@476@01)))))
+(check-sat)
+; unsat
+(pop) ; 6
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 194 | !(0 <= $unwrap[Int](l$i0$i@477@01) && $unwrap[Int](l$i0$i@477@01) < |l$i0$result@476@01|) | dead]
+; [else-branch: 194 | 0 <= $unwrap[Int](l$i0$i@477@01) && $unwrap[Int](l$i0$i@477@01) < |l$i0$result@476@01| | live]
+(set-option :timeout 0)
+(push) ; 6
+; [else-branch: 194 | 0 <= $unwrap[Int](l$i0$i@477@01) && $unwrap[Int](l$i0$i@477@01) < |l$i0$result@476@01|]
+(assert (and
+  (<= 0 ($unwrap<Int> l$i0$i@477@01))
+  (< ($unwrap<Int> l$i0$i@477@01) (Seq_length l$i0$result@476@01))))
+(pop) ; 6
+; [eval] !!(0 <= $unwrap(l$i0$i) && $unwrap(l$i0$i) < |l$i0$result|)
+; [eval] !(0 <= $unwrap(l$i0$i) && $unwrap(l$i0$i) < |l$i0$result|)
+; [eval] 0 <= $unwrap(l$i0$i) && $unwrap(l$i0$i) < |l$i0$result|
+; [eval] 0 <= $unwrap(l$i0$i)
+; [eval] $unwrap(l$i0$i)
+(push) ; 6
+; [then-branch: 195 | !(0 <= $unwrap[Int](l$i0$i@477@01)) | live]
+; [else-branch: 195 | 0 <= $unwrap[Int](l$i0$i@477@01) | live]
+(push) ; 7
+; [then-branch: 195 | !(0 <= $unwrap[Int](l$i0$i@477@01))]
+(assert (not (<= 0 ($unwrap<Int> l$i0$i@477@01))))
+(pop) ; 7
+(push) ; 7
+; [else-branch: 195 | 0 <= $unwrap[Int](l$i0$i@477@01)]
+(assert (<= 0 ($unwrap<Int> l$i0$i@477@01)))
+; [eval] $unwrap(l$i0$i) < |l$i0$result|
+; [eval] $unwrap(l$i0$i)
+; [eval] |l$i0$result|
+(pop) ; 7
+(pop) ; 6
+; Joined path conditions
+; Joined path conditions
+(push) ; 6
+(set-option :timeout 10)
+(assert (not (not
+  (and
+    (<= 0 ($unwrap<Int> l$i0$i@477@01))
+    (< ($unwrap<Int> l$i0$i@477@01) (Seq_length l$i0$result@476@01))))))
+(check-sat)
+; unknown
+(pop) ; 6
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 6
+(set-option :timeout 10)
+(assert (not (and
+  (<= 0 ($unwrap<Int> l$i0$i@477@01))
+  (< ($unwrap<Int> l$i0$i@477@01) (Seq_length l$i0$result@476@01)))))
+(check-sat)
+; unsat
+(pop) ; 6
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 196 | 0 <= $unwrap[Int](l$i0$i@477@01) && $unwrap[Int](l$i0$i@477@01) < |l$i0$result@476@01| | live]
+; [else-branch: 196 | !(0 <= $unwrap[Int](l$i0$i@477@01) && $unwrap[Int](l$i0$i@477@01) < |l$i0$result@476@01|) | dead]
+(set-option :timeout 0)
+(push) ; 6
+; [then-branch: 196 | 0 <= $unwrap[Int](l$i0$i@477@01) && $unwrap[Int](l$i0$i@477@01) < |l$i0$result@476@01|]
+(assert (and
+  (<= 0 ($unwrap<Int> l$i0$i@477@01))
+  (< ($unwrap<Int> l$i0$i@477@01) (Seq_length l$i0$result@476@01))))
+; [eval] !(0 <= $unwrap(l$i0$i) && $unwrap(l$i0$i) < |($struct_get($struct_loc(self, 0)): Seq[Int])|)
+; [eval] 0 <= $unwrap(l$i0$i) && $unwrap(l$i0$i) < |($struct_get($struct_loc(self, 0)): Seq[Int])|
+; [eval] 0 <= $unwrap(l$i0$i)
+; [eval] $unwrap(l$i0$i)
+(push) ; 7
+; [then-branch: 197 | !(0 <= $unwrap[Int](l$i0$i@477@01)) | live]
+; [else-branch: 197 | 0 <= $unwrap[Int](l$i0$i@477@01) | live]
+(push) ; 8
+; [then-branch: 197 | !(0 <= $unwrap[Int](l$i0$i@477@01))]
+(assert (not (<= 0 ($unwrap<Int> l$i0$i@477@01))))
+(pop) ; 8
+(push) ; 8
+; [else-branch: 197 | 0 <= $unwrap[Int](l$i0$i@477@01)]
+; [eval] $unwrap(l$i0$i) < |($struct_get($struct_loc(self, 0)): Seq[Int])|
+; [eval] $unwrap(l$i0$i)
+; [eval] |($struct_get($struct_loc(self, 0)): Seq[Int])|
+; [eval] ($struct_get($struct_loc(self, 0)): Seq[Int])
+; [eval] $struct_loc(self, 0)
+(pop) ; 8
+(pop) ; 7
+; Joined path conditions
+; Joined path conditions
+(push) ; 7
+(set-option :timeout 10)
+(assert (not (and
+  (<= 0 ($unwrap<Int> l$i0$i@477@01))
+  (<
+    ($unwrap<Int> l$i0$i@477@01)
+    (Seq_length ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0)))))))
+(check-sat)
+; unsat
+(pop) ; 7
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 198 | !(0 <= $unwrap[Int](l$i0$i@477@01) && $unwrap[Int](l$i0$i@477@01) < |$struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))|) | dead]
+; [else-branch: 198 | 0 <= $unwrap[Int](l$i0$i@477@01) && $unwrap[Int](l$i0$i@477@01) < |$struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))| | live]
+(set-option :timeout 0)
+(push) ; 7
+; [else-branch: 198 | 0 <= $unwrap[Int](l$i0$i@477@01) && $unwrap[Int](l$i0$i@477@01) < |$struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))|]
+(assert (and
+  (<= 0 ($unwrap<Int> l$i0$i@477@01))
+  (<
+    ($unwrap<Int> l$i0$i@477@01)
+    (Seq_length ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0))))))
+(pop) ; 7
+; [eval] !!(0 <= $unwrap(l$i0$i) && $unwrap(l$i0$i) < |($struct_get($struct_loc(self, 0)): Seq[Int])|)
+; [eval] !(0 <= $unwrap(l$i0$i) && $unwrap(l$i0$i) < |($struct_get($struct_loc(self, 0)): Seq[Int])|)
+; [eval] 0 <= $unwrap(l$i0$i) && $unwrap(l$i0$i) < |($struct_get($struct_loc(self, 0)): Seq[Int])|
+; [eval] 0 <= $unwrap(l$i0$i)
+; [eval] $unwrap(l$i0$i)
+(push) ; 7
+; [then-branch: 199 | !(0 <= $unwrap[Int](l$i0$i@477@01)) | live]
+; [else-branch: 199 | 0 <= $unwrap[Int](l$i0$i@477@01) | live]
+(push) ; 8
+; [then-branch: 199 | !(0 <= $unwrap[Int](l$i0$i@477@01))]
+(assert (not (<= 0 ($unwrap<Int> l$i0$i@477@01))))
+(pop) ; 8
+(push) ; 8
+; [else-branch: 199 | 0 <= $unwrap[Int](l$i0$i@477@01)]
+(assert (<= 0 ($unwrap<Int> l$i0$i@477@01)))
+; [eval] $unwrap(l$i0$i) < |($struct_get($struct_loc(self, 0)): Seq[Int])|
+; [eval] $unwrap(l$i0$i)
+; [eval] |($struct_get($struct_loc(self, 0)): Seq[Int])|
+; [eval] ($struct_get($struct_loc(self, 0)): Seq[Int])
+; [eval] $struct_loc(self, 0)
+(pop) ; 8
+(pop) ; 7
+; Joined path conditions
+; Joined path conditions
+(push) ; 7
+(set-option :timeout 10)
+(assert (not (not
+  (and
+    (<= 0 ($unwrap<Int> l$i0$i@477@01))
+    (<
+      ($unwrap<Int> l$i0$i@477@01)
+      (Seq_length ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0))))))))
+(check-sat)
+; unknown
+(pop) ; 7
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 7
+(set-option :timeout 10)
+(assert (not (and
+  (<= 0 ($unwrap<Int> l$i0$i@477@01))
+  (<
+    ($unwrap<Int> l$i0$i@477@01)
+    (Seq_length ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0)))))))
+(check-sat)
+; unsat
+(pop) ; 7
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 200 | 0 <= $unwrap[Int](l$i0$i@477@01) && $unwrap[Int](l$i0$i@477@01) < |$struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))| | live]
+; [else-branch: 200 | !(0 <= $unwrap[Int](l$i0$i@477@01) && $unwrap[Int](l$i0$i@477@01) < |$struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))|) | dead]
+(set-option :timeout 0)
+(push) ; 7
+; [then-branch: 200 | 0 <= $unwrap[Int](l$i0$i@477@01) && $unwrap[Int](l$i0$i@477@01) < |$struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))|]
+(assert (and
+  (<= 0 ($unwrap<Int> l$i0$i@477@01))
+  (<
+    ($unwrap<Int> l$i0$i@477@01)
+    (Seq_length ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0))))))
+; [eval] $unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))) < 0
+; [eval] $unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)])))
+; [eval] $w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))
+; [eval] $wrap(l$i0$result[$unwrap(l$i0$i)])
+; [eval] l$i0$result[$unwrap(l$i0$i)]
+; [eval] $unwrap(l$i0$i)
+(push) ; 8
+(assert (not (>= ($unwrap<Int> l$i0$i@477@01) 0)))
+(check-sat)
+; unsat
+(pop) ; 8
+; 0.00s
+; (get-info :all-statistics)
+; [eval] $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)])
+; [eval] ($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]
+; [eval] ($struct_get($struct_loc(self, 0)): Seq[Int])
+; [eval] $struct_loc(self, 0)
+; [eval] $unwrap(l$i0$i)
+(push) ; 8
+(assert (not (>= ($unwrap<Int> l$i0$i@477@01) 0)))
+(check-sat)
+; unsat
+(pop) ; 8
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 8
+(set-option :timeout 10)
+(assert (not (not
+  (<
+    ($unwrap<Int> ($w_mul<$Int> ($wrap<$Int> (Seq_index
+      l$i0$result@476@01
+      ($unwrap<Int> l$i0$i@477@01))) ($wrap<$Int> (Seq_index
+      ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0))
+      ($unwrap<Int> l$i0$i@477@01)))))
+    0))))
+(check-sat)
+; unsat
+(pop) ; 8
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 201 | $unwrap[Int]($w_mul[$Int]($wrap[$Int](l$i0$result@476@01[$unwrap[Int](l$i0$i@477@01)]), $wrap[$Int]($struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))[$unwrap[Int](l$i0$i@477@01)]))) < 0 | dead]
+; [else-branch: 201 | !($unwrap[Int]($w_mul[$Int]($wrap[$Int](l$i0$result@476@01[$unwrap[Int](l$i0$i@477@01)]), $wrap[$Int]($struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))[$unwrap[Int](l$i0$i@477@01)]))) < 0) | live]
+(set-option :timeout 0)
+(push) ; 8
+; [else-branch: 201 | !($unwrap[Int]($w_mul[$Int]($wrap[$Int](l$i0$result@476@01[$unwrap[Int](l$i0$i@477@01)]), $wrap[$Int]($struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))[$unwrap[Int](l$i0$i@477@01)]))) < 0)]
+(assert (not
+  (<
+    ($unwrap<Int> ($w_mul<$Int> ($wrap<$Int> (Seq_index
+      l$i0$result@476@01
+      ($unwrap<Int> l$i0$i@477@01))) ($wrap<$Int> (Seq_index
+      ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0))
+      ($unwrap<Int> l$i0$i@477@01)))))
+    0)))
+(pop) ; 8
+; [eval] !($unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))) < 0)
+; [eval] $unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))) < 0
+; [eval] $unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)])))
+; [eval] $w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))
+; [eval] $wrap(l$i0$result[$unwrap(l$i0$i)])
+; [eval] l$i0$result[$unwrap(l$i0$i)]
+; [eval] $unwrap(l$i0$i)
+(push) ; 8
+(assert (not (>= ($unwrap<Int> l$i0$i@477@01) 0)))
+(check-sat)
+; unsat
+(pop) ; 8
+; 0.00s
+; (get-info :all-statistics)
+; [eval] $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)])
+; [eval] ($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]
+; [eval] ($struct_get($struct_loc(self, 0)): Seq[Int])
+; [eval] $struct_loc(self, 0)
+; [eval] $unwrap(l$i0$i)
+(push) ; 8
+(assert (not (>= ($unwrap<Int> l$i0$i@477@01) 0)))
+(check-sat)
+; unsat
+(pop) ; 8
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 8
+(set-option :timeout 10)
+(assert (not (<
+  ($unwrap<Int> ($w_mul<$Int> ($wrap<$Int> (Seq_index
+    l$i0$result@476@01
+    ($unwrap<Int> l$i0$i@477@01))) ($wrap<$Int> (Seq_index
+    ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0))
+    ($unwrap<Int> l$i0$i@477@01)))))
+  0)))
+(check-sat)
+; unknown
+(pop) ; 8
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 8
+(set-option :timeout 10)
+(assert (not (not
+  (<
+    ($unwrap<Int> ($w_mul<$Int> ($wrap<$Int> (Seq_index
+      l$i0$result@476@01
+      ($unwrap<Int> l$i0$i@477@01))) ($wrap<$Int> (Seq_index
+      ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0))
+      ($unwrap<Int> l$i0$i@477@01)))))
+    0))))
+(check-sat)
+; unsat
+(pop) ; 8
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 202 | !($unwrap[Int]($w_mul[$Int]($wrap[$Int](l$i0$result@476@01[$unwrap[Int](l$i0$i@477@01)]), $wrap[$Int]($struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))[$unwrap[Int](l$i0$i@477@01)]))) < 0) | live]
+; [else-branch: 202 | $unwrap[Int]($w_mul[$Int]($wrap[$Int](l$i0$result@476@01[$unwrap[Int](l$i0$i@477@01)]), $wrap[$Int]($struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))[$unwrap[Int](l$i0$i@477@01)]))) < 0 | dead]
+(set-option :timeout 0)
+(push) ; 8
+; [then-branch: 202 | !($unwrap[Int]($w_mul[$Int]($wrap[$Int](l$i0$result@476@01[$unwrap[Int](l$i0$i@477@01)]), $wrap[$Int]($struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))[$unwrap[Int](l$i0$i@477@01)]))) < 0)]
+(assert (not
+  (<
+    ($unwrap<Int> ($w_mul<$Int> ($wrap<$Int> (Seq_index
+      l$i0$result@476@01
+      ($unwrap<Int> l$i0$i@477@01))) ($wrap<$Int> (Seq_index
+      ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0))
+      ($unwrap<Int> l$i0$i@477@01)))))
+    0)))
+; [eval] 1000000000000000000 == 0
+; [then-branch: 203 | False | dead]
+; [else-branch: 203 | True | live]
+(push) ; 9
+; [else-branch: 203 | True]
+(pop) ; 9
+; [eval] !(1000000000000000000 == 0)
+; [eval] 1000000000000000000 == 0
+(push) ; 9
+(set-option :timeout 10)
+(assert (not false))
+(check-sat)
+; unknown
+(pop) ; 9
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 204 | True | live]
+; [else-branch: 204 | False | dead]
+(set-option :timeout 0)
+(push) ; 9
+; [then-branch: 204 | True]
+; [eval] $div($unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))), 1000000000000000000, $unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))) \ 1000000000000000000) < 0
+; [eval] $div($unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))), 1000000000000000000, $unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))) \ 1000000000000000000)
+; [eval] $unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)])))
+; [eval] $w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))
+; [eval] $wrap(l$i0$result[$unwrap(l$i0$i)])
+; [eval] l$i0$result[$unwrap(l$i0$i)]
+; [eval] $unwrap(l$i0$i)
+(push) ; 10
+(assert (not (>= ($unwrap<Int> l$i0$i@477@01) 0)))
+(check-sat)
+; unsat
+(pop) ; 10
+; 0.00s
+; (get-info :all-statistics)
+; [eval] $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)])
+; [eval] ($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]
+; [eval] ($struct_get($struct_loc(self, 0)): Seq[Int])
+; [eval] $struct_loc(self, 0)
+; [eval] $unwrap(l$i0$i)
+(push) ; 10
+(assert (not (>= ($unwrap<Int> l$i0$i@477@01) 0)))
+(check-sat)
+; unsat
+(pop) ; 10
+; 0.00s
+; (get-info :all-statistics)
+; [eval] $unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))) \ 1000000000000000000
+; [eval] $unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)])))
+; [eval] $w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))
+; [eval] $wrap(l$i0$result[$unwrap(l$i0$i)])
+; [eval] l$i0$result[$unwrap(l$i0$i)]
+; [eval] $unwrap(l$i0$i)
+(push) ; 10
+(assert (not (>= ($unwrap<Int> l$i0$i@477@01) 0)))
+(check-sat)
+; unsat
+(pop) ; 10
+; 0.00s
+; (get-info :all-statistics)
+; [eval] $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)])
+; [eval] ($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]
+; [eval] ($struct_get($struct_loc(self, 0)): Seq[Int])
+; [eval] $struct_loc(self, 0)
+; [eval] $unwrap(l$i0$i)
+(push) ; 10
+(assert (not (>= ($unwrap<Int> l$i0$i@477@01) 0)))
+(check-sat)
+; unsat
+(pop) ; 10
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 10
+(set-option :timeout 10)
+(assert (not (not
+  (<
+    ($div<Int> ($unwrap<Int> ($w_mul<$Int> ($wrap<$Int> (Seq_index
+      l$i0$result@476@01
+      ($unwrap<Int> l$i0$i@477@01))) ($wrap<$Int> (Seq_index
+      ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0))
+      ($unwrap<Int> l$i0$i@477@01))))) 1000000000000000000 (div
+      ($unwrap<Int> ($w_mul<$Int> ($wrap<$Int> (Seq_index
+        l$i0$result@476@01
+        ($unwrap<Int> l$i0$i@477@01))) ($wrap<$Int> (Seq_index
+        ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0))
+        ($unwrap<Int> l$i0$i@477@01)))))
+      1000000000000000000))
+    0))))
+(check-sat)
+; unsat
+(pop) ; 10
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 205 | $div[Int]($unwrap[Int]($w_mul[$Int]($wrap[$Int](l$i0$result@476@01[$unwrap[Int](l$i0$i@477@01)]), $wrap[$Int]($struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))[$unwrap[Int](l$i0$i@477@01)]))), 1000000000000000000, $unwrap[Int]($w_mul[$Int]($wrap[$Int](l$i0$result@476@01[$unwrap[Int](l$i0$i@477@01)]), $wrap[$Int]($struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))[$unwrap[Int](l$i0$i@477@01)]))) / 1000000000000000000) < 0 | dead]
+; [else-branch: 205 | !($div[Int]($unwrap[Int]($w_mul[$Int]($wrap[$Int](l$i0$result@476@01[$unwrap[Int](l$i0$i@477@01)]), $wrap[$Int]($struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))[$unwrap[Int](l$i0$i@477@01)]))), 1000000000000000000, $unwrap[Int]($w_mul[$Int]($wrap[$Int](l$i0$result@476@01[$unwrap[Int](l$i0$i@477@01)]), $wrap[$Int]($struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))[$unwrap[Int](l$i0$i@477@01)]))) / 1000000000000000000) < 0) | live]
+(set-option :timeout 0)
+(push) ; 10
+; [else-branch: 205 | !($div[Int]($unwrap[Int]($w_mul[$Int]($wrap[$Int](l$i0$result@476@01[$unwrap[Int](l$i0$i@477@01)]), $wrap[$Int]($struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))[$unwrap[Int](l$i0$i@477@01)]))), 1000000000000000000, $unwrap[Int]($w_mul[$Int]($wrap[$Int](l$i0$result@476@01[$unwrap[Int](l$i0$i@477@01)]), $wrap[$Int]($struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))[$unwrap[Int](l$i0$i@477@01)]))) / 1000000000000000000) < 0)]
+(assert (not
+  (<
+    ($div<Int> ($unwrap<Int> ($w_mul<$Int> ($wrap<$Int> (Seq_index
+      l$i0$result@476@01
+      ($unwrap<Int> l$i0$i@477@01))) ($wrap<$Int> (Seq_index
+      ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0))
+      ($unwrap<Int> l$i0$i@477@01))))) 1000000000000000000 (div
+      ($unwrap<Int> ($w_mul<$Int> ($wrap<$Int> (Seq_index
+        l$i0$result@476@01
+        ($unwrap<Int> l$i0$i@477@01))) ($wrap<$Int> (Seq_index
+        ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0))
+        ($unwrap<Int> l$i0$i@477@01)))))
+      1000000000000000000))
+    0)))
+(pop) ; 10
+; [eval] !($div($unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))), 1000000000000000000, $unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))) \ 1000000000000000000) < 0)
+; [eval] $div($unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))), 1000000000000000000, $unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))) \ 1000000000000000000) < 0
+; [eval] $div($unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))), 1000000000000000000, $unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))) \ 1000000000000000000)
+; [eval] $unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)])))
+; [eval] $w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))
+; [eval] $wrap(l$i0$result[$unwrap(l$i0$i)])
+; [eval] l$i0$result[$unwrap(l$i0$i)]
+; [eval] $unwrap(l$i0$i)
+(push) ; 10
+(assert (not (>= ($unwrap<Int> l$i0$i@477@01) 0)))
+(check-sat)
+; unsat
+(pop) ; 10
+; 0.00s
+; (get-info :all-statistics)
+; [eval] $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)])
+; [eval] ($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]
+; [eval] ($struct_get($struct_loc(self, 0)): Seq[Int])
+; [eval] $struct_loc(self, 0)
+; [eval] $unwrap(l$i0$i)
+(push) ; 10
+(assert (not (>= ($unwrap<Int> l$i0$i@477@01) 0)))
+(check-sat)
+; unsat
+(pop) ; 10
+; 0.00s
+; (get-info :all-statistics)
+; [eval] $unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))) \ 1000000000000000000
+; [eval] $unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)])))
+; [eval] $w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))
+; [eval] $wrap(l$i0$result[$unwrap(l$i0$i)])
+; [eval] l$i0$result[$unwrap(l$i0$i)]
+; [eval] $unwrap(l$i0$i)
+(push) ; 10
+(assert (not (>= ($unwrap<Int> l$i0$i@477@01) 0)))
+(check-sat)
+; unsat
+(pop) ; 10
+; 0.00s
+; (get-info :all-statistics)
+; [eval] $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)])
+; [eval] ($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]
+; [eval] ($struct_get($struct_loc(self, 0)): Seq[Int])
+; [eval] $struct_loc(self, 0)
+; [eval] $unwrap(l$i0$i)
+(push) ; 10
+(assert (not (>= ($unwrap<Int> l$i0$i@477@01) 0)))
+(check-sat)
+; unsat
+(pop) ; 10
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 10
+(set-option :timeout 10)
+(assert (not (<
+  ($div<Int> ($unwrap<Int> ($w_mul<$Int> ($wrap<$Int> (Seq_index
+    l$i0$result@476@01
+    ($unwrap<Int> l$i0$i@477@01))) ($wrap<$Int> (Seq_index
+    ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0))
+    ($unwrap<Int> l$i0$i@477@01))))) 1000000000000000000 (div
+    ($unwrap<Int> ($w_mul<$Int> ($wrap<$Int> (Seq_index
+      l$i0$result@476@01
+      ($unwrap<Int> l$i0$i@477@01))) ($wrap<$Int> (Seq_index
+      ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0))
+      ($unwrap<Int> l$i0$i@477@01)))))
+    1000000000000000000))
+  0)))
+(check-sat)
+; unknown
+(pop) ; 10
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 10
+(set-option :timeout 10)
+(assert (not (not
+  (<
+    ($div<Int> ($unwrap<Int> ($w_mul<$Int> ($wrap<$Int> (Seq_index
+      l$i0$result@476@01
+      ($unwrap<Int> l$i0$i@477@01))) ($wrap<$Int> (Seq_index
+      ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0))
+      ($unwrap<Int> l$i0$i@477@01))))) 1000000000000000000 (div
+      ($unwrap<Int> ($w_mul<$Int> ($wrap<$Int> (Seq_index
+        l$i0$result@476@01
+        ($unwrap<Int> l$i0$i@477@01))) ($wrap<$Int> (Seq_index
+        ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0))
+        ($unwrap<Int> l$i0$i@477@01)))))
+      1000000000000000000))
+    0))))
+(check-sat)
+; unsat
+(pop) ; 10
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 206 | !($div[Int]($unwrap[Int]($w_mul[$Int]($wrap[$Int](l$i0$result@476@01[$unwrap[Int](l$i0$i@477@01)]), $wrap[$Int]($struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))[$unwrap[Int](l$i0$i@477@01)]))), 1000000000000000000, $unwrap[Int]($w_mul[$Int]($wrap[$Int](l$i0$result@476@01[$unwrap[Int](l$i0$i@477@01)]), $wrap[$Int]($struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))[$unwrap[Int](l$i0$i@477@01)]))) / 1000000000000000000) < 0) | live]
+; [else-branch: 206 | $div[Int]($unwrap[Int]($w_mul[$Int]($wrap[$Int](l$i0$result@476@01[$unwrap[Int](l$i0$i@477@01)]), $wrap[$Int]($struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))[$unwrap[Int](l$i0$i@477@01)]))), 1000000000000000000, $unwrap[Int]($w_mul[$Int]($wrap[$Int](l$i0$result@476@01[$unwrap[Int](l$i0$i@477@01)]), $wrap[$Int]($struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))[$unwrap[Int](l$i0$i@477@01)]))) / 1000000000000000000) < 0 | dead]
+(set-option :timeout 0)
+(push) ; 10
+; [then-branch: 206 | !($div[Int]($unwrap[Int]($w_mul[$Int]($wrap[$Int](l$i0$result@476@01[$unwrap[Int](l$i0$i@477@01)]), $wrap[$Int]($struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))[$unwrap[Int](l$i0$i@477@01)]))), 1000000000000000000, $unwrap[Int]($w_mul[$Int]($wrap[$Int](l$i0$result@476@01[$unwrap[Int](l$i0$i@477@01)]), $wrap[$Int]($struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))[$unwrap[Int](l$i0$i@477@01)]))) / 1000000000000000000) < 0)]
+(assert (not
+  (<
+    ($div<Int> ($unwrap<Int> ($w_mul<$Int> ($wrap<$Int> (Seq_index
+      l$i0$result@476@01
+      ($unwrap<Int> l$i0$i@477@01))) ($wrap<$Int> (Seq_index
+      ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0))
+      ($unwrap<Int> l$i0$i@477@01))))) 1000000000000000000 (div
+      ($unwrap<Int> ($w_mul<$Int> ($wrap<$Int> (Seq_index
+        l$i0$result@476@01
+        ($unwrap<Int> l$i0$i@477@01))) ($wrap<$Int> (Seq_index
+        ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0))
+        ($unwrap<Int> l$i0$i@477@01)))))
+      1000000000000000000))
+    0)))
+; [eval] !(0 <= $unwrap(l$i0$i) && $unwrap(l$i0$i) < |l$i0$result|)
+; [eval] 0 <= $unwrap(l$i0$i) && $unwrap(l$i0$i) < |l$i0$result|
+; [eval] 0 <= $unwrap(l$i0$i)
+; [eval] $unwrap(l$i0$i)
+(push) ; 11
+; [then-branch: 207 | !(0 <= $unwrap[Int](l$i0$i@477@01)) | live]
+; [else-branch: 207 | 0 <= $unwrap[Int](l$i0$i@477@01) | live]
+(push) ; 12
+; [then-branch: 207 | !(0 <= $unwrap[Int](l$i0$i@477@01))]
+(assert (not (<= 0 ($unwrap<Int> l$i0$i@477@01))))
+(pop) ; 12
+(push) ; 12
+; [else-branch: 207 | 0 <= $unwrap[Int](l$i0$i@477@01)]
+; [eval] $unwrap(l$i0$i) < |l$i0$result|
+; [eval] $unwrap(l$i0$i)
+; [eval] |l$i0$result|
+(pop) ; 12
+(pop) ; 11
+; Joined path conditions
+; Joined path conditions
+(push) ; 11
+(set-option :timeout 10)
+(assert (not (and
+  (<= 0 ($unwrap<Int> l$i0$i@477@01))
+  (< ($unwrap<Int> l$i0$i@477@01) (Seq_length l$i0$result@476@01)))))
+(check-sat)
+; unsat
+(pop) ; 11
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 208 | !(0 <= $unwrap[Int](l$i0$i@477@01) && $unwrap[Int](l$i0$i@477@01) < |l$i0$result@476@01|) | dead]
+; [else-branch: 208 | 0 <= $unwrap[Int](l$i0$i@477@01) && $unwrap[Int](l$i0$i@477@01) < |l$i0$result@476@01| | live]
+(set-option :timeout 0)
+(push) ; 11
+; [else-branch: 208 | 0 <= $unwrap[Int](l$i0$i@477@01) && $unwrap[Int](l$i0$i@477@01) < |l$i0$result@476@01|]
+(assert (and
+  (<= 0 ($unwrap<Int> l$i0$i@477@01))
+  (< ($unwrap<Int> l$i0$i@477@01) (Seq_length l$i0$result@476@01))))
+(pop) ; 11
+; [eval] !!(0 <= $unwrap(l$i0$i) && $unwrap(l$i0$i) < |l$i0$result|)
+; [eval] !(0 <= $unwrap(l$i0$i) && $unwrap(l$i0$i) < |l$i0$result|)
+; [eval] 0 <= $unwrap(l$i0$i) && $unwrap(l$i0$i) < |l$i0$result|
+; [eval] 0 <= $unwrap(l$i0$i)
+; [eval] $unwrap(l$i0$i)
+(push) ; 11
+; [then-branch: 209 | !(0 <= $unwrap[Int](l$i0$i@477@01)) | live]
+; [else-branch: 209 | 0 <= $unwrap[Int](l$i0$i@477@01) | live]
+(push) ; 12
+; [then-branch: 209 | !(0 <= $unwrap[Int](l$i0$i@477@01))]
+(assert (not (<= 0 ($unwrap<Int> l$i0$i@477@01))))
+(pop) ; 12
+(push) ; 12
+; [else-branch: 209 | 0 <= $unwrap[Int](l$i0$i@477@01)]
+(assert (<= 0 ($unwrap<Int> l$i0$i@477@01)))
+; [eval] $unwrap(l$i0$i) < |l$i0$result|
+; [eval] $unwrap(l$i0$i)
+; [eval] |l$i0$result|
+(pop) ; 12
+(pop) ; 11
+; Joined path conditions
+; Joined path conditions
+(push) ; 11
+(set-option :timeout 10)
+(assert (not (not
+  (and
+    (<= 0 ($unwrap<Int> l$i0$i@477@01))
+    (< ($unwrap<Int> l$i0$i@477@01) (Seq_length l$i0$result@476@01))))))
+(check-sat)
+; unknown
+(pop) ; 11
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 11
+(set-option :timeout 10)
+(assert (not (and
+  (<= 0 ($unwrap<Int> l$i0$i@477@01))
+  (< ($unwrap<Int> l$i0$i@477@01) (Seq_length l$i0$result@476@01)))))
+(check-sat)
+; unsat
+(pop) ; 11
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 210 | 0 <= $unwrap[Int](l$i0$i@477@01) && $unwrap[Int](l$i0$i@477@01) < |l$i0$result@476@01| | live]
+; [else-branch: 210 | !(0 <= $unwrap[Int](l$i0$i@477@01) && $unwrap[Int](l$i0$i@477@01) < |l$i0$result@476@01|) | dead]
+(set-option :timeout 0)
+(push) ; 11
+; [then-branch: 210 | 0 <= $unwrap[Int](l$i0$i@477@01) && $unwrap[Int](l$i0$i@477@01) < |l$i0$result@476@01|]
+(assert (and
+  (<= 0 ($unwrap<Int> l$i0$i@477@01))
+  (< ($unwrap<Int> l$i0$i@477@01) (Seq_length l$i0$result@476@01))))
+; [exec]
+; l$i0$result := l$i0$result[$unwrap(l$i0$i) :=
+;   $unwrap($wrap($div($unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self,
+;   0)): Seq[Int])[$unwrap(l$i0$i)]))), 1000000000000000000, $unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]),
+;   $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))) \
+;   1000000000000000000)))]
+; [eval] l$i0$result[$unwrap(l$i0$i) := $unwrap($wrap($div($unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))), 1000000000000000000, $unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))) \ 1000000000000000000)))]
+; [eval] $unwrap(l$i0$i)
+; [eval] $unwrap($wrap($div($unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))), 1000000000000000000, $unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))) \ 1000000000000000000)))
+; [eval] $wrap($div($unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))), 1000000000000000000, $unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))) \ 1000000000000000000))
+; [eval] $div($unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))), 1000000000000000000, $unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))) \ 1000000000000000000)
+; [eval] $unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)])))
+; [eval] $w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))
+; [eval] $wrap(l$i0$result[$unwrap(l$i0$i)])
+; [eval] l$i0$result[$unwrap(l$i0$i)]
+; [eval] $unwrap(l$i0$i)
+(push) ; 12
+(assert (not (>= ($unwrap<Int> l$i0$i@477@01) 0)))
+(check-sat)
+; unsat
+(pop) ; 12
+; 0.00s
+; (get-info :all-statistics)
+; [eval] $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)])
+; [eval] ($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]
+; [eval] ($struct_get($struct_loc(self, 0)): Seq[Int])
+; [eval] $struct_loc(self, 0)
+; [eval] $unwrap(l$i0$i)
+(push) ; 12
+(assert (not (>= ($unwrap<Int> l$i0$i@477@01) 0)))
+(check-sat)
+; unsat
+(pop) ; 12
+; 0.00s
+; (get-info :all-statistics)
+; [eval] $unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))) \ 1000000000000000000
+; [eval] $unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)])))
+; [eval] $w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))
+; [eval] $wrap(l$i0$result[$unwrap(l$i0$i)])
+; [eval] l$i0$result[$unwrap(l$i0$i)]
+; [eval] $unwrap(l$i0$i)
+(push) ; 12
+(assert (not (>= ($unwrap<Int> l$i0$i@477@01) 0)))
+(check-sat)
+; unsat
+(pop) ; 12
+; 0.00s
+; (get-info :all-statistics)
+; [eval] $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)])
+; [eval] ($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]
+; [eval] ($struct_get($struct_loc(self, 0)): Seq[Int])
+; [eval] $struct_loc(self, 0)
+; [eval] $unwrap(l$i0$i)
+(push) ; 12
+(assert (not (>= ($unwrap<Int> l$i0$i@477@01) 0)))
+(check-sat)
+; unsat
+(pop) ; 12
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 12
+(assert (not (>= ($unwrap<Int> l$i0$i@477@01) 0)))
+(check-sat)
+; unsat
+(pop) ; 12
+; 0.00s
+; (get-info :all-statistics)
+(declare-const l$i0$result@478@01 Seq<Int>)
+(assert (=
+  l$i0$result@478@01
+  (Seq_append
+    (Seq_take l$i0$result@476@01 ($unwrap<Int> l$i0$i@477@01))
+    (Seq_append
+      (Seq_singleton ($unwrap<Int> ($wrap<$Int> ($div<Int> ($unwrap<Int> ($w_mul<$Int> ($wrap<$Int> (Seq_index
+        l$i0$result@476@01
+        ($unwrap<Int> l$i0$i@477@01))) ($wrap<$Int> (Seq_index
+        ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0))
+        ($unwrap<Int> l$i0$i@477@01))))) 1000000000000000000 (div
+        ($unwrap<Int> ($w_mul<$Int> ($wrap<$Int> (Seq_index
+          l$i0$result@476@01
+          ($unwrap<Int> l$i0$i@477@01))) ($wrap<$Int> (Seq_index
+          ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0))
+          ($unwrap<Int> l$i0$i@477@01)))))
+        1000000000000000000)))))
+      (Seq_drop l$i0$result@476@01 (+ ($unwrap<Int> l$i0$i@477@01) 1))))))
+; [exec]
+; label continue_0
+; [exec]
+; l$i0$i := $wrap($range(0, 3)[1])
+; [eval] $wrap($range(0, 3)[1])
+; [eval] $range(0, 3)[1]
+; [eval] $range(0, 3)
+(push) ; 12
+(assert (not (< 1 (Seq_length ($range<Seq<Int>> 0 3)))))
+(check-sat)
+; unsat
+(pop) ; 12
+; 0.00s
+; (get-info :all-statistics)
+(declare-const l$i0$i@479@01 $Int)
+(assert (= l$i0$i@479@01 ($wrap<$Int> (Seq_index ($range<Seq<Int>> 0 3) 1))))
+; [eval] !(0 <= $unwrap(l$i0$i) && $unwrap(l$i0$i) < |l$i0$result|)
+; [eval] 0 <= $unwrap(l$i0$i) && $unwrap(l$i0$i) < |l$i0$result|
+; [eval] 0 <= $unwrap(l$i0$i)
+; [eval] $unwrap(l$i0$i)
+(push) ; 12
+; [then-branch: 211 | !(0 <= $unwrap[Int](l$i0$i@479@01)) | live]
+; [else-branch: 211 | 0 <= $unwrap[Int](l$i0$i@479@01) | live]
+(push) ; 13
+; [then-branch: 211 | !(0 <= $unwrap[Int](l$i0$i@479@01))]
+(assert (not (<= 0 ($unwrap<Int> l$i0$i@479@01))))
+(pop) ; 13
+(push) ; 13
+; [else-branch: 211 | 0 <= $unwrap[Int](l$i0$i@479@01)]
+(assert (<= 0 ($unwrap<Int> l$i0$i@479@01)))
+; [eval] $unwrap(l$i0$i) < |l$i0$result|
+; [eval] $unwrap(l$i0$i)
+; [eval] |l$i0$result|
+(pop) ; 13
+(pop) ; 12
+; Joined path conditions
+; Joined path conditions
+(assert (or
+  (<= 0 ($unwrap<Int> l$i0$i@479@01))
+  (not (<= 0 ($unwrap<Int> l$i0$i@479@01)))))
+(push) ; 12
+(set-option :timeout 10)
+(assert (not (and
+  (<= 0 ($unwrap<Int> l$i0$i@479@01))
+  (< ($unwrap<Int> l$i0$i@479@01) (Seq_length l$i0$result@478@01)))))
+(check-sat)
+; unsat
+(pop) ; 12
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 212 | !(0 <= $unwrap[Int](l$i0$i@479@01) && $unwrap[Int](l$i0$i@479@01) < |l$i0$result@478@01|) | dead]
+; [else-branch: 212 | 0 <= $unwrap[Int](l$i0$i@479@01) && $unwrap[Int](l$i0$i@479@01) < |l$i0$result@478@01| | live]
+(set-option :timeout 0)
+(push) ; 12
+; [else-branch: 212 | 0 <= $unwrap[Int](l$i0$i@479@01) && $unwrap[Int](l$i0$i@479@01) < |l$i0$result@478@01|]
+(assert (and
+  (<= 0 ($unwrap<Int> l$i0$i@479@01))
+  (< ($unwrap<Int> l$i0$i@479@01) (Seq_length l$i0$result@478@01))))
+(pop) ; 12
+; [eval] !!(0 <= $unwrap(l$i0$i) && $unwrap(l$i0$i) < |l$i0$result|)
+; [eval] !(0 <= $unwrap(l$i0$i) && $unwrap(l$i0$i) < |l$i0$result|)
+; [eval] 0 <= $unwrap(l$i0$i) && $unwrap(l$i0$i) < |l$i0$result|
+; [eval] 0 <= $unwrap(l$i0$i)
+; [eval] $unwrap(l$i0$i)
+(push) ; 12
+; [then-branch: 213 | !(0 <= $unwrap[Int](l$i0$i@479@01)) | live]
+; [else-branch: 213 | 0 <= $unwrap[Int](l$i0$i@479@01) | live]
+(push) ; 13
+; [then-branch: 213 | !(0 <= $unwrap[Int](l$i0$i@479@01))]
+(assert (not (<= 0 ($unwrap<Int> l$i0$i@479@01))))
+(pop) ; 13
+(push) ; 13
+; [else-branch: 213 | 0 <= $unwrap[Int](l$i0$i@479@01)]
+(assert (<= 0 ($unwrap<Int> l$i0$i@479@01)))
+; [eval] $unwrap(l$i0$i) < |l$i0$result|
+; [eval] $unwrap(l$i0$i)
+; [eval] |l$i0$result|
+(pop) ; 13
+(pop) ; 12
+; Joined path conditions
+; Joined path conditions
+(push) ; 12
+(set-option :timeout 10)
+(assert (not (not
+  (and
+    (<= 0 ($unwrap<Int> l$i0$i@479@01))
+    (< ($unwrap<Int> l$i0$i@479@01) (Seq_length l$i0$result@478@01))))))
+(check-sat)
+; unknown
+(pop) ; 12
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 12
+(set-option :timeout 10)
+(assert (not (and
+  (<= 0 ($unwrap<Int> l$i0$i@479@01))
+  (< ($unwrap<Int> l$i0$i@479@01) (Seq_length l$i0$result@478@01)))))
+(check-sat)
+; unsat
+(pop) ; 12
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 214 | 0 <= $unwrap[Int](l$i0$i@479@01) && $unwrap[Int](l$i0$i@479@01) < |l$i0$result@478@01| | live]
+; [else-branch: 214 | !(0 <= $unwrap[Int](l$i0$i@479@01) && $unwrap[Int](l$i0$i@479@01) < |l$i0$result@478@01|) | dead]
+(set-option :timeout 0)
+(push) ; 12
+; [then-branch: 214 | 0 <= $unwrap[Int](l$i0$i@479@01) && $unwrap[Int](l$i0$i@479@01) < |l$i0$result@478@01|]
+(assert (and
+  (<= 0 ($unwrap<Int> l$i0$i@479@01))
+  (< ($unwrap<Int> l$i0$i@479@01) (Seq_length l$i0$result@478@01))))
+; [eval] !(0 <= $unwrap(l$i0$i) && $unwrap(l$i0$i) < |($struct_get($struct_loc(self, 0)): Seq[Int])|)
+; [eval] 0 <= $unwrap(l$i0$i) && $unwrap(l$i0$i) < |($struct_get($struct_loc(self, 0)): Seq[Int])|
+; [eval] 0 <= $unwrap(l$i0$i)
+; [eval] $unwrap(l$i0$i)
+(push) ; 13
+; [then-branch: 215 | !(0 <= $unwrap[Int](l$i0$i@479@01)) | live]
+; [else-branch: 215 | 0 <= $unwrap[Int](l$i0$i@479@01) | live]
+(push) ; 14
+; [then-branch: 215 | !(0 <= $unwrap[Int](l$i0$i@479@01))]
+(assert (not (<= 0 ($unwrap<Int> l$i0$i@479@01))))
+(pop) ; 14
+(push) ; 14
+; [else-branch: 215 | 0 <= $unwrap[Int](l$i0$i@479@01)]
+; [eval] $unwrap(l$i0$i) < |($struct_get($struct_loc(self, 0)): Seq[Int])|
+; [eval] $unwrap(l$i0$i)
+; [eval] |($struct_get($struct_loc(self, 0)): Seq[Int])|
+; [eval] ($struct_get($struct_loc(self, 0)): Seq[Int])
+; [eval] $struct_loc(self, 0)
+(pop) ; 14
+(pop) ; 13
+; Joined path conditions
+; Joined path conditions
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (and
+  (<= 0 ($unwrap<Int> l$i0$i@479@01))
+  (<
+    ($unwrap<Int> l$i0$i@479@01)
+    (Seq_length ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0)))))))
+(check-sat)
+; unsat
+(pop) ; 13
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 216 | !(0 <= $unwrap[Int](l$i0$i@479@01) && $unwrap[Int](l$i0$i@479@01) < |$struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))|) | dead]
+; [else-branch: 216 | 0 <= $unwrap[Int](l$i0$i@479@01) && $unwrap[Int](l$i0$i@479@01) < |$struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))| | live]
+(set-option :timeout 0)
+(push) ; 13
+; [else-branch: 216 | 0 <= $unwrap[Int](l$i0$i@479@01) && $unwrap[Int](l$i0$i@479@01) < |$struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))|]
+(assert (and
+  (<= 0 ($unwrap<Int> l$i0$i@479@01))
+  (<
+    ($unwrap<Int> l$i0$i@479@01)
+    (Seq_length ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0))))))
+(pop) ; 13
+; [eval] !!(0 <= $unwrap(l$i0$i) && $unwrap(l$i0$i) < |($struct_get($struct_loc(self, 0)): Seq[Int])|)
+; [eval] !(0 <= $unwrap(l$i0$i) && $unwrap(l$i0$i) < |($struct_get($struct_loc(self, 0)): Seq[Int])|)
+; [eval] 0 <= $unwrap(l$i0$i) && $unwrap(l$i0$i) < |($struct_get($struct_loc(self, 0)): Seq[Int])|
+; [eval] 0 <= $unwrap(l$i0$i)
+; [eval] $unwrap(l$i0$i)
+(push) ; 13
+; [then-branch: 217 | !(0 <= $unwrap[Int](l$i0$i@479@01)) | live]
+; [else-branch: 217 | 0 <= $unwrap[Int](l$i0$i@479@01) | live]
+(push) ; 14
+; [then-branch: 217 | !(0 <= $unwrap[Int](l$i0$i@479@01))]
+(assert (not (<= 0 ($unwrap<Int> l$i0$i@479@01))))
+(pop) ; 14
+(push) ; 14
+; [else-branch: 217 | 0 <= $unwrap[Int](l$i0$i@479@01)]
+(assert (<= 0 ($unwrap<Int> l$i0$i@479@01)))
+; [eval] $unwrap(l$i0$i) < |($struct_get($struct_loc(self, 0)): Seq[Int])|
+; [eval] $unwrap(l$i0$i)
+; [eval] |($struct_get($struct_loc(self, 0)): Seq[Int])|
+; [eval] ($struct_get($struct_loc(self, 0)): Seq[Int])
+; [eval] $struct_loc(self, 0)
+(pop) ; 14
+(pop) ; 13
+; Joined path conditions
+; Joined path conditions
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (not
+  (and
+    (<= 0 ($unwrap<Int> l$i0$i@479@01))
+    (<
+      ($unwrap<Int> l$i0$i@479@01)
+      (Seq_length ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0))))))))
+(check-sat)
+; unknown
+(pop) ; 13
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 13
+(set-option :timeout 10)
+(assert (not (and
+  (<= 0 ($unwrap<Int> l$i0$i@479@01))
+  (<
+    ($unwrap<Int> l$i0$i@479@01)
+    (Seq_length ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0)))))))
+(check-sat)
+; unsat
+(pop) ; 13
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 218 | 0 <= $unwrap[Int](l$i0$i@479@01) && $unwrap[Int](l$i0$i@479@01) < |$struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))| | live]
+; [else-branch: 218 | !(0 <= $unwrap[Int](l$i0$i@479@01) && $unwrap[Int](l$i0$i@479@01) < |$struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))|) | dead]
+(set-option :timeout 0)
+(push) ; 13
+; [then-branch: 218 | 0 <= $unwrap[Int](l$i0$i@479@01) && $unwrap[Int](l$i0$i@479@01) < |$struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))|]
+(assert (and
+  (<= 0 ($unwrap<Int> l$i0$i@479@01))
+  (<
+    ($unwrap<Int> l$i0$i@479@01)
+    (Seq_length ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0))))))
+; [eval] $unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))) < 0
+; [eval] $unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)])))
+; [eval] $w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))
+; [eval] $wrap(l$i0$result[$unwrap(l$i0$i)])
+; [eval] l$i0$result[$unwrap(l$i0$i)]
+; [eval] $unwrap(l$i0$i)
+(push) ; 14
+(assert (not (>= ($unwrap<Int> l$i0$i@479@01) 0)))
+(check-sat)
+; unsat
+(pop) ; 14
+; 0.00s
+; (get-info :all-statistics)
+; [eval] $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)])
+; [eval] ($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]
+; [eval] ($struct_get($struct_loc(self, 0)): Seq[Int])
+; [eval] $struct_loc(self, 0)
+; [eval] $unwrap(l$i0$i)
+(push) ; 14
+(assert (not (>= ($unwrap<Int> l$i0$i@479@01) 0)))
+(check-sat)
+; unsat
+(pop) ; 14
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 14
+(set-option :timeout 10)
+(assert (not (not
+  (<
+    ($unwrap<Int> ($w_mul<$Int> ($wrap<$Int> (Seq_index
+      l$i0$result@478@01
+      ($unwrap<Int> l$i0$i@479@01))) ($wrap<$Int> (Seq_index
+      ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0))
+      ($unwrap<Int> l$i0$i@479@01)))))
+    0))))
+(check-sat)
+; unsat
+(pop) ; 14
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 219 | $unwrap[Int]($w_mul[$Int]($wrap[$Int](l$i0$result@478@01[$unwrap[Int](l$i0$i@479@01)]), $wrap[$Int]($struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))[$unwrap[Int](l$i0$i@479@01)]))) < 0 | dead]
+; [else-branch: 219 | !($unwrap[Int]($w_mul[$Int]($wrap[$Int](l$i0$result@478@01[$unwrap[Int](l$i0$i@479@01)]), $wrap[$Int]($struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))[$unwrap[Int](l$i0$i@479@01)]))) < 0) | live]
+(set-option :timeout 0)
+(push) ; 14
+; [else-branch: 219 | !($unwrap[Int]($w_mul[$Int]($wrap[$Int](l$i0$result@478@01[$unwrap[Int](l$i0$i@479@01)]), $wrap[$Int]($struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))[$unwrap[Int](l$i0$i@479@01)]))) < 0)]
+(assert (not
+  (<
+    ($unwrap<Int> ($w_mul<$Int> ($wrap<$Int> (Seq_index
+      l$i0$result@478@01
+      ($unwrap<Int> l$i0$i@479@01))) ($wrap<$Int> (Seq_index
+      ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0))
+      ($unwrap<Int> l$i0$i@479@01)))))
+    0)))
+(pop) ; 14
+; [eval] !($unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))) < 0)
+; [eval] $unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))) < 0
+; [eval] $unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)])))
+; [eval] $w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))
+; [eval] $wrap(l$i0$result[$unwrap(l$i0$i)])
+; [eval] l$i0$result[$unwrap(l$i0$i)]
+; [eval] $unwrap(l$i0$i)
+(push) ; 14
+(assert (not (>= ($unwrap<Int> l$i0$i@479@01) 0)))
+(check-sat)
+; unsat
+(pop) ; 14
+; 0.00s
+; (get-info :all-statistics)
+; [eval] $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)])
+; [eval] ($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]
+; [eval] ($struct_get($struct_loc(self, 0)): Seq[Int])
+; [eval] $struct_loc(self, 0)
+; [eval] $unwrap(l$i0$i)
+(push) ; 14
+(assert (not (>= ($unwrap<Int> l$i0$i@479@01) 0)))
+(check-sat)
+; unsat
+(pop) ; 14
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 14
+(set-option :timeout 10)
+(assert (not (<
+  ($unwrap<Int> ($w_mul<$Int> ($wrap<$Int> (Seq_index
+    l$i0$result@478@01
+    ($unwrap<Int> l$i0$i@479@01))) ($wrap<$Int> (Seq_index
+    ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0))
+    ($unwrap<Int> l$i0$i@479@01)))))
+  0)))
+(check-sat)
+; unknown
+(pop) ; 14
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 14
+(set-option :timeout 10)
+(assert (not (not
+  (<
+    ($unwrap<Int> ($w_mul<$Int> ($wrap<$Int> (Seq_index
+      l$i0$result@478@01
+      ($unwrap<Int> l$i0$i@479@01))) ($wrap<$Int> (Seq_index
+      ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0))
+      ($unwrap<Int> l$i0$i@479@01)))))
+    0))))
+(check-sat)
+; unsat
+(pop) ; 14
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 220 | !($unwrap[Int]($w_mul[$Int]($wrap[$Int](l$i0$result@478@01[$unwrap[Int](l$i0$i@479@01)]), $wrap[$Int]($struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))[$unwrap[Int](l$i0$i@479@01)]))) < 0) | live]
+; [else-branch: 220 | $unwrap[Int]($w_mul[$Int]($wrap[$Int](l$i0$result@478@01[$unwrap[Int](l$i0$i@479@01)]), $wrap[$Int]($struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))[$unwrap[Int](l$i0$i@479@01)]))) < 0 | dead]
+(set-option :timeout 0)
+(push) ; 14
+; [then-branch: 220 | !($unwrap[Int]($w_mul[$Int]($wrap[$Int](l$i0$result@478@01[$unwrap[Int](l$i0$i@479@01)]), $wrap[$Int]($struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))[$unwrap[Int](l$i0$i@479@01)]))) < 0)]
+(assert (not
+  (<
+    ($unwrap<Int> ($w_mul<$Int> ($wrap<$Int> (Seq_index
+      l$i0$result@478@01
+      ($unwrap<Int> l$i0$i@479@01))) ($wrap<$Int> (Seq_index
+      ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0))
+      ($unwrap<Int> l$i0$i@479@01)))))
+    0)))
+; [eval] 1000000000000000000 == 0
+; [then-branch: 221 | False | dead]
+; [else-branch: 221 | True | live]
+(push) ; 15
+; [else-branch: 221 | True]
+(pop) ; 15
+; [eval] !(1000000000000000000 == 0)
+; [eval] 1000000000000000000 == 0
+(push) ; 15
+(set-option :timeout 10)
+(assert (not false))
+(check-sat)
+; unknown
+(pop) ; 15
+; 0.01s
+; (get-info :all-statistics)
+; [then-branch: 222 | True | live]
+; [else-branch: 222 | False | dead]
+(set-option :timeout 0)
+(push) ; 15
+; [then-branch: 222 | True]
+; [eval] $div($unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))), 1000000000000000000, $unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))) \ 1000000000000000000) < 0
+; [eval] $div($unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))), 1000000000000000000, $unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))) \ 1000000000000000000)
+; [eval] $unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)])))
+; [eval] $w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))
+; [eval] $wrap(l$i0$result[$unwrap(l$i0$i)])
+; [eval] l$i0$result[$unwrap(l$i0$i)]
+; [eval] $unwrap(l$i0$i)
+(push) ; 16
+(assert (not (>= ($unwrap<Int> l$i0$i@479@01) 0)))
+(check-sat)
+; unsat
+(pop) ; 16
+; 0.00s
+; (get-info :all-statistics)
+; [eval] $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)])
+; [eval] ($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]
+; [eval] ($struct_get($struct_loc(self, 0)): Seq[Int])
+; [eval] $struct_loc(self, 0)
+; [eval] $unwrap(l$i0$i)
+(push) ; 16
+(assert (not (>= ($unwrap<Int> l$i0$i@479@01) 0)))
+(check-sat)
+; unsat
+(pop) ; 16
+; 0.00s
+; (get-info :all-statistics)
+; [eval] $unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))) \ 1000000000000000000
+; [eval] $unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)])))
+; [eval] $w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))
+; [eval] $wrap(l$i0$result[$unwrap(l$i0$i)])
+; [eval] l$i0$result[$unwrap(l$i0$i)]
+; [eval] $unwrap(l$i0$i)
+(push) ; 16
+(assert (not (>= ($unwrap<Int> l$i0$i@479@01) 0)))
+(check-sat)
+; unsat
+(pop) ; 16
+; 0.00s
+; (get-info :all-statistics)
+; [eval] $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)])
+; [eval] ($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]
+; [eval] ($struct_get($struct_loc(self, 0)): Seq[Int])
+; [eval] $struct_loc(self, 0)
+; [eval] $unwrap(l$i0$i)
+(push) ; 16
+(assert (not (>= ($unwrap<Int> l$i0$i@479@01) 0)))
+(check-sat)
+; unsat
+(pop) ; 16
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 16
+(set-option :timeout 10)
+(assert (not (not
+  (<
+    ($div<Int> ($unwrap<Int> ($w_mul<$Int> ($wrap<$Int> (Seq_index
+      l$i0$result@478@01
+      ($unwrap<Int> l$i0$i@479@01))) ($wrap<$Int> (Seq_index
+      ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0))
+      ($unwrap<Int> l$i0$i@479@01))))) 1000000000000000000 (div
+      ($unwrap<Int> ($w_mul<$Int> ($wrap<$Int> (Seq_index
+        l$i0$result@478@01
+        ($unwrap<Int> l$i0$i@479@01))) ($wrap<$Int> (Seq_index
+        ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0))
+        ($unwrap<Int> l$i0$i@479@01)))))
+      1000000000000000000))
+    0))))
+(check-sat)
+; unsat
+(pop) ; 16
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 223 | $div[Int]($unwrap[Int]($w_mul[$Int]($wrap[$Int](l$i0$result@478@01[$unwrap[Int](l$i0$i@479@01)]), $wrap[$Int]($struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))[$unwrap[Int](l$i0$i@479@01)]))), 1000000000000000000, $unwrap[Int]($w_mul[$Int]($wrap[$Int](l$i0$result@478@01[$unwrap[Int](l$i0$i@479@01)]), $wrap[$Int]($struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))[$unwrap[Int](l$i0$i@479@01)]))) / 1000000000000000000) < 0 | dead]
+; [else-branch: 223 | !($div[Int]($unwrap[Int]($w_mul[$Int]($wrap[$Int](l$i0$result@478@01[$unwrap[Int](l$i0$i@479@01)]), $wrap[$Int]($struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))[$unwrap[Int](l$i0$i@479@01)]))), 1000000000000000000, $unwrap[Int]($w_mul[$Int]($wrap[$Int](l$i0$result@478@01[$unwrap[Int](l$i0$i@479@01)]), $wrap[$Int]($struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))[$unwrap[Int](l$i0$i@479@01)]))) / 1000000000000000000) < 0) | live]
+(set-option :timeout 0)
+(push) ; 16
+; [else-branch: 223 | !($div[Int]($unwrap[Int]($w_mul[$Int]($wrap[$Int](l$i0$result@478@01[$unwrap[Int](l$i0$i@479@01)]), $wrap[$Int]($struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))[$unwrap[Int](l$i0$i@479@01)]))), 1000000000000000000, $unwrap[Int]($w_mul[$Int]($wrap[$Int](l$i0$result@478@01[$unwrap[Int](l$i0$i@479@01)]), $wrap[$Int]($struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))[$unwrap[Int](l$i0$i@479@01)]))) / 1000000000000000000) < 0)]
+(assert (not
+  (<
+    ($div<Int> ($unwrap<Int> ($w_mul<$Int> ($wrap<$Int> (Seq_index
+      l$i0$result@478@01
+      ($unwrap<Int> l$i0$i@479@01))) ($wrap<$Int> (Seq_index
+      ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0))
+      ($unwrap<Int> l$i0$i@479@01))))) 1000000000000000000 (div
+      ($unwrap<Int> ($w_mul<$Int> ($wrap<$Int> (Seq_index
+        l$i0$result@478@01
+        ($unwrap<Int> l$i0$i@479@01))) ($wrap<$Int> (Seq_index
+        ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0))
+        ($unwrap<Int> l$i0$i@479@01)))))
+      1000000000000000000))
+    0)))
+(pop) ; 16
+; [eval] !($div($unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))), 1000000000000000000, $unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))) \ 1000000000000000000) < 0)
+; [eval] $div($unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))), 1000000000000000000, $unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))) \ 1000000000000000000) < 0
+; [eval] $div($unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))), 1000000000000000000, $unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))) \ 1000000000000000000)
+; [eval] $unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)])))
+; [eval] $w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))
+; [eval] $wrap(l$i0$result[$unwrap(l$i0$i)])
+; [eval] l$i0$result[$unwrap(l$i0$i)]
+; [eval] $unwrap(l$i0$i)
+(push) ; 16
+(assert (not (>= ($unwrap<Int> l$i0$i@479@01) 0)))
+(check-sat)
+; unsat
+(pop) ; 16
+; 0.00s
+; (get-info :all-statistics)
+; [eval] $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)])
+; [eval] ($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]
+; [eval] ($struct_get($struct_loc(self, 0)): Seq[Int])
+; [eval] $struct_loc(self, 0)
+; [eval] $unwrap(l$i0$i)
+(push) ; 16
+(assert (not (>= ($unwrap<Int> l$i0$i@479@01) 0)))
+(check-sat)
+; unsat
+(pop) ; 16
+; 0.00s
+; (get-info :all-statistics)
+; [eval] $unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))) \ 1000000000000000000
+; [eval] $unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)])))
+; [eval] $w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))
+; [eval] $wrap(l$i0$result[$unwrap(l$i0$i)])
+; [eval] l$i0$result[$unwrap(l$i0$i)]
+; [eval] $unwrap(l$i0$i)
+(push) ; 16
+(assert (not (>= ($unwrap<Int> l$i0$i@479@01) 0)))
+(check-sat)
+; unsat
+(pop) ; 16
+; 0.00s
+; (get-info :all-statistics)
+; [eval] $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)])
+; [eval] ($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]
+; [eval] ($struct_get($struct_loc(self, 0)): Seq[Int])
+; [eval] $struct_loc(self, 0)
+; [eval] $unwrap(l$i0$i)
+(push) ; 16
+(assert (not (>= ($unwrap<Int> l$i0$i@479@01) 0)))
+(check-sat)
+; unsat
+(pop) ; 16
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 16
+(set-option :timeout 10)
+(assert (not (<
+  ($div<Int> ($unwrap<Int> ($w_mul<$Int> ($wrap<$Int> (Seq_index
+    l$i0$result@478@01
+    ($unwrap<Int> l$i0$i@479@01))) ($wrap<$Int> (Seq_index
+    ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0))
+    ($unwrap<Int> l$i0$i@479@01))))) 1000000000000000000 (div
+    ($unwrap<Int> ($w_mul<$Int> ($wrap<$Int> (Seq_index
+      l$i0$result@478@01
+      ($unwrap<Int> l$i0$i@479@01))) ($wrap<$Int> (Seq_index
+      ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0))
+      ($unwrap<Int> l$i0$i@479@01)))))
+    1000000000000000000))
+  0)))
+(check-sat)
+; unknown
+(pop) ; 16
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 16
+(set-option :timeout 10)
+(assert (not (not
+  (<
+    ($div<Int> ($unwrap<Int> ($w_mul<$Int> ($wrap<$Int> (Seq_index
+      l$i0$result@478@01
+      ($unwrap<Int> l$i0$i@479@01))) ($wrap<$Int> (Seq_index
+      ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0))
+      ($unwrap<Int> l$i0$i@479@01))))) 1000000000000000000 (div
+      ($unwrap<Int> ($w_mul<$Int> ($wrap<$Int> (Seq_index
+        l$i0$result@478@01
+        ($unwrap<Int> l$i0$i@479@01))) ($wrap<$Int> (Seq_index
+        ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0))
+        ($unwrap<Int> l$i0$i@479@01)))))
+      1000000000000000000))
+    0))))
+(check-sat)
+; unsat
+(pop) ; 16
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 224 | !($div[Int]($unwrap[Int]($w_mul[$Int]($wrap[$Int](l$i0$result@478@01[$unwrap[Int](l$i0$i@479@01)]), $wrap[$Int]($struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))[$unwrap[Int](l$i0$i@479@01)]))), 1000000000000000000, $unwrap[Int]($w_mul[$Int]($wrap[$Int](l$i0$result@478@01[$unwrap[Int](l$i0$i@479@01)]), $wrap[$Int]($struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))[$unwrap[Int](l$i0$i@479@01)]))) / 1000000000000000000) < 0) | live]
+; [else-branch: 224 | $div[Int]($unwrap[Int]($w_mul[$Int]($wrap[$Int](l$i0$result@478@01[$unwrap[Int](l$i0$i@479@01)]), $wrap[$Int]($struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))[$unwrap[Int](l$i0$i@479@01)]))), 1000000000000000000, $unwrap[Int]($w_mul[$Int]($wrap[$Int](l$i0$result@478@01[$unwrap[Int](l$i0$i@479@01)]), $wrap[$Int]($struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))[$unwrap[Int](l$i0$i@479@01)]))) / 1000000000000000000) < 0 | dead]
+(set-option :timeout 0)
+(push) ; 16
+; [then-branch: 224 | !($div[Int]($unwrap[Int]($w_mul[$Int]($wrap[$Int](l$i0$result@478@01[$unwrap[Int](l$i0$i@479@01)]), $wrap[$Int]($struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))[$unwrap[Int](l$i0$i@479@01)]))), 1000000000000000000, $unwrap[Int]($w_mul[$Int]($wrap[$Int](l$i0$result@478@01[$unwrap[Int](l$i0$i@479@01)]), $wrap[$Int]($struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))[$unwrap[Int](l$i0$i@479@01)]))) / 1000000000000000000) < 0)]
+(assert (not
+  (<
+    ($div<Int> ($unwrap<Int> ($w_mul<$Int> ($wrap<$Int> (Seq_index
+      l$i0$result@478@01
+      ($unwrap<Int> l$i0$i@479@01))) ($wrap<$Int> (Seq_index
+      ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0))
+      ($unwrap<Int> l$i0$i@479@01))))) 1000000000000000000 (div
+      ($unwrap<Int> ($w_mul<$Int> ($wrap<$Int> (Seq_index
+        l$i0$result@478@01
+        ($unwrap<Int> l$i0$i@479@01))) ($wrap<$Int> (Seq_index
+        ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0))
+        ($unwrap<Int> l$i0$i@479@01)))))
+      1000000000000000000))
+    0)))
+; [eval] !(0 <= $unwrap(l$i0$i) && $unwrap(l$i0$i) < |l$i0$result|)
+; [eval] 0 <= $unwrap(l$i0$i) && $unwrap(l$i0$i) < |l$i0$result|
+; [eval] 0 <= $unwrap(l$i0$i)
+; [eval] $unwrap(l$i0$i)
+(push) ; 17
+; [then-branch: 225 | !(0 <= $unwrap[Int](l$i0$i@479@01)) | live]
+; [else-branch: 225 | 0 <= $unwrap[Int](l$i0$i@479@01) | live]
+(push) ; 18
+; [then-branch: 225 | !(0 <= $unwrap[Int](l$i0$i@479@01))]
+(assert (not (<= 0 ($unwrap<Int> l$i0$i@479@01))))
+(pop) ; 18
+(push) ; 18
+; [else-branch: 225 | 0 <= $unwrap[Int](l$i0$i@479@01)]
+; [eval] $unwrap(l$i0$i) < |l$i0$result|
+; [eval] $unwrap(l$i0$i)
+; [eval] |l$i0$result|
+(pop) ; 18
+(pop) ; 17
+; Joined path conditions
+; Joined path conditions
+(push) ; 17
+(set-option :timeout 10)
+(assert (not (and
+  (<= 0 ($unwrap<Int> l$i0$i@479@01))
+  (< ($unwrap<Int> l$i0$i@479@01) (Seq_length l$i0$result@478@01)))))
+(check-sat)
+; unsat
+(pop) ; 17
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 226 | !(0 <= $unwrap[Int](l$i0$i@479@01) && $unwrap[Int](l$i0$i@479@01) < |l$i0$result@478@01|) | dead]
+; [else-branch: 226 | 0 <= $unwrap[Int](l$i0$i@479@01) && $unwrap[Int](l$i0$i@479@01) < |l$i0$result@478@01| | live]
+(set-option :timeout 0)
+(push) ; 17
+; [else-branch: 226 | 0 <= $unwrap[Int](l$i0$i@479@01) && $unwrap[Int](l$i0$i@479@01) < |l$i0$result@478@01|]
+(assert (and
+  (<= 0 ($unwrap<Int> l$i0$i@479@01))
+  (< ($unwrap<Int> l$i0$i@479@01) (Seq_length l$i0$result@478@01))))
+(pop) ; 17
+; [eval] !!(0 <= $unwrap(l$i0$i) && $unwrap(l$i0$i) < |l$i0$result|)
+; [eval] !(0 <= $unwrap(l$i0$i) && $unwrap(l$i0$i) < |l$i0$result|)
+; [eval] 0 <= $unwrap(l$i0$i) && $unwrap(l$i0$i) < |l$i0$result|
+; [eval] 0 <= $unwrap(l$i0$i)
+; [eval] $unwrap(l$i0$i)
+(push) ; 17
+; [then-branch: 227 | !(0 <= $unwrap[Int](l$i0$i@479@01)) | live]
+; [else-branch: 227 | 0 <= $unwrap[Int](l$i0$i@479@01) | live]
+(push) ; 18
+; [then-branch: 227 | !(0 <= $unwrap[Int](l$i0$i@479@01))]
+(assert (not (<= 0 ($unwrap<Int> l$i0$i@479@01))))
+(pop) ; 18
+(push) ; 18
+; [else-branch: 227 | 0 <= $unwrap[Int](l$i0$i@479@01)]
+(assert (<= 0 ($unwrap<Int> l$i0$i@479@01)))
+; [eval] $unwrap(l$i0$i) < |l$i0$result|
+; [eval] $unwrap(l$i0$i)
+; [eval] |l$i0$result|
+(pop) ; 18
+(pop) ; 17
+; Joined path conditions
+; Joined path conditions
+(push) ; 17
+(set-option :timeout 10)
+(assert (not (not
+  (and
+    (<= 0 ($unwrap<Int> l$i0$i@479@01))
+    (< ($unwrap<Int> l$i0$i@479@01) (Seq_length l$i0$result@478@01))))))
+(check-sat)
+; unknown
+(pop) ; 17
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 17
+(set-option :timeout 10)
+(assert (not (and
+  (<= 0 ($unwrap<Int> l$i0$i@479@01))
+  (< ($unwrap<Int> l$i0$i@479@01) (Seq_length l$i0$result@478@01)))))
+(check-sat)
+; unsat
+(pop) ; 17
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 228 | 0 <= $unwrap[Int](l$i0$i@479@01) && $unwrap[Int](l$i0$i@479@01) < |l$i0$result@478@01| | live]
+; [else-branch: 228 | !(0 <= $unwrap[Int](l$i0$i@479@01) && $unwrap[Int](l$i0$i@479@01) < |l$i0$result@478@01|) | dead]
+(set-option :timeout 0)
+(push) ; 17
+; [then-branch: 228 | 0 <= $unwrap[Int](l$i0$i@479@01) && $unwrap[Int](l$i0$i@479@01) < |l$i0$result@478@01|]
+(assert (and
+  (<= 0 ($unwrap<Int> l$i0$i@479@01))
+  (< ($unwrap<Int> l$i0$i@479@01) (Seq_length l$i0$result@478@01))))
+; [exec]
+; l$i0$result := l$i0$result[$unwrap(l$i0$i) :=
+;   $unwrap($wrap($div($unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self,
+;   0)): Seq[Int])[$unwrap(l$i0$i)]))), 1000000000000000000, $unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]),
+;   $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))) \
+;   1000000000000000000)))]
+; [eval] l$i0$result[$unwrap(l$i0$i) := $unwrap($wrap($div($unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))), 1000000000000000000, $unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))) \ 1000000000000000000)))]
+; [eval] $unwrap(l$i0$i)
+; [eval] $unwrap($wrap($div($unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))), 1000000000000000000, $unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))) \ 1000000000000000000)))
+; [eval] $wrap($div($unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))), 1000000000000000000, $unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))) \ 1000000000000000000))
+; [eval] $div($unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))), 1000000000000000000, $unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))) \ 1000000000000000000)
+; [eval] $unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)])))
+; [eval] $w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))
+; [eval] $wrap(l$i0$result[$unwrap(l$i0$i)])
+; [eval] l$i0$result[$unwrap(l$i0$i)]
+; [eval] $unwrap(l$i0$i)
+(push) ; 18
+(assert (not (>= ($unwrap<Int> l$i0$i@479@01) 0)))
+(check-sat)
+; unsat
+(pop) ; 18
+; 0.00s
+; (get-info :all-statistics)
+; [eval] $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)])
+; [eval] ($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]
+; [eval] ($struct_get($struct_loc(self, 0)): Seq[Int])
+; [eval] $struct_loc(self, 0)
+; [eval] $unwrap(l$i0$i)
+(push) ; 18
+(assert (not (>= ($unwrap<Int> l$i0$i@479@01) 0)))
+(check-sat)
+; unsat
+(pop) ; 18
+; 0.00s
+; (get-info :all-statistics)
+; [eval] $unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))) \ 1000000000000000000
+; [eval] $unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)])))
+; [eval] $w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))
+; [eval] $wrap(l$i0$result[$unwrap(l$i0$i)])
+; [eval] l$i0$result[$unwrap(l$i0$i)]
+; [eval] $unwrap(l$i0$i)
+(push) ; 18
+(assert (not (>= ($unwrap<Int> l$i0$i@479@01) 0)))
+(check-sat)
+; unsat
+(pop) ; 18
+; 0.00s
+; (get-info :all-statistics)
+; [eval] $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)])
+; [eval] ($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]
+; [eval] ($struct_get($struct_loc(self, 0)): Seq[Int])
+; [eval] $struct_loc(self, 0)
+; [eval] $unwrap(l$i0$i)
+(push) ; 18
+(assert (not (>= ($unwrap<Int> l$i0$i@479@01) 0)))
+(check-sat)
+; unsat
+(pop) ; 18
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 18
+(assert (not (>= ($unwrap<Int> l$i0$i@479@01) 0)))
+(check-sat)
+; unsat
+(pop) ; 18
+; 0.00s
+; (get-info :all-statistics)
+(declare-const l$i0$result@480@01 Seq<Int>)
+(assert (=
+  l$i0$result@480@01
+  (Seq_append
+    (Seq_take l$i0$result@478@01 ($unwrap<Int> l$i0$i@479@01))
+    (Seq_append
+      (Seq_singleton ($unwrap<Int> ($wrap<$Int> ($div<Int> ($unwrap<Int> ($w_mul<$Int> ($wrap<$Int> (Seq_index
+        l$i0$result@478@01
+        ($unwrap<Int> l$i0$i@479@01))) ($wrap<$Int> (Seq_index
+        ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0))
+        ($unwrap<Int> l$i0$i@479@01))))) 1000000000000000000 (div
+        ($unwrap<Int> ($w_mul<$Int> ($wrap<$Int> (Seq_index
+          l$i0$result@478@01
+          ($unwrap<Int> l$i0$i@479@01))) ($wrap<$Int> (Seq_index
+          ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0))
+          ($unwrap<Int> l$i0$i@479@01)))))
+        1000000000000000000)))))
+      (Seq_drop l$i0$result@478@01 (+ ($unwrap<Int> l$i0$i@479@01) 1))))))
+; [exec]
+; label continue_1
+; [exec]
+; l$i0$i := $wrap($range(0, 3)[2])
+; [eval] $wrap($range(0, 3)[2])
+; [eval] $range(0, 3)[2]
+; [eval] $range(0, 3)
+(push) ; 18
+(assert (not (< 2 (Seq_length ($range<Seq<Int>> 0 3)))))
+(check-sat)
+; unsat
+(pop) ; 18
+; 0.00s
+; (get-info :all-statistics)
+(declare-const l$i0$i@481@01 $Int)
+(assert (= l$i0$i@481@01 ($wrap<$Int> (Seq_index ($range<Seq<Int>> 0 3) 2))))
+; [eval] !(0 <= $unwrap(l$i0$i) && $unwrap(l$i0$i) < |l$i0$result|)
+; [eval] 0 <= $unwrap(l$i0$i) && $unwrap(l$i0$i) < |l$i0$result|
+; [eval] 0 <= $unwrap(l$i0$i)
+; [eval] $unwrap(l$i0$i)
+(push) ; 18
+; [then-branch: 229 | !(0 <= $unwrap[Int](l$i0$i@481@01)) | live]
+; [else-branch: 229 | 0 <= $unwrap[Int](l$i0$i@481@01) | live]
+(push) ; 19
+; [then-branch: 229 | !(0 <= $unwrap[Int](l$i0$i@481@01))]
+(assert (not (<= 0 ($unwrap<Int> l$i0$i@481@01))))
+(pop) ; 19
+(push) ; 19
+; [else-branch: 229 | 0 <= $unwrap[Int](l$i0$i@481@01)]
+(assert (<= 0 ($unwrap<Int> l$i0$i@481@01)))
+; [eval] $unwrap(l$i0$i) < |l$i0$result|
+; [eval] $unwrap(l$i0$i)
+; [eval] |l$i0$result|
+(pop) ; 19
+(pop) ; 18
+; Joined path conditions
+; Joined path conditions
+(assert (or
+  (<= 0 ($unwrap<Int> l$i0$i@481@01))
+  (not (<= 0 ($unwrap<Int> l$i0$i@481@01)))))
+(push) ; 18
+(set-option :timeout 10)
+(assert (not (and
+  (<= 0 ($unwrap<Int> l$i0$i@481@01))
+  (< ($unwrap<Int> l$i0$i@481@01) (Seq_length l$i0$result@480@01)))))
+(check-sat)
+; unsat
+(pop) ; 18
+; 0.01s
+; (get-info :all-statistics)
+; [then-branch: 230 | !(0 <= $unwrap[Int](l$i0$i@481@01) && $unwrap[Int](l$i0$i@481@01) < |l$i0$result@480@01|) | dead]
+; [else-branch: 230 | 0 <= $unwrap[Int](l$i0$i@481@01) && $unwrap[Int](l$i0$i@481@01) < |l$i0$result@480@01| | live]
+(set-option :timeout 0)
+(push) ; 18
+; [else-branch: 230 | 0 <= $unwrap[Int](l$i0$i@481@01) && $unwrap[Int](l$i0$i@481@01) < |l$i0$result@480@01|]
+(assert (and
+  (<= 0 ($unwrap<Int> l$i0$i@481@01))
+  (< ($unwrap<Int> l$i0$i@481@01) (Seq_length l$i0$result@480@01))))
+(pop) ; 18
+; [eval] !!(0 <= $unwrap(l$i0$i) && $unwrap(l$i0$i) < |l$i0$result|)
+; [eval] !(0 <= $unwrap(l$i0$i) && $unwrap(l$i0$i) < |l$i0$result|)
+; [eval] 0 <= $unwrap(l$i0$i) && $unwrap(l$i0$i) < |l$i0$result|
+; [eval] 0 <= $unwrap(l$i0$i)
+; [eval] $unwrap(l$i0$i)
+(push) ; 18
+; [then-branch: 231 | !(0 <= $unwrap[Int](l$i0$i@481@01)) | live]
+; [else-branch: 231 | 0 <= $unwrap[Int](l$i0$i@481@01) | live]
+(push) ; 19
+; [then-branch: 231 | !(0 <= $unwrap[Int](l$i0$i@481@01))]
+(assert (not (<= 0 ($unwrap<Int> l$i0$i@481@01))))
+(pop) ; 19
+(push) ; 19
+; [else-branch: 231 | 0 <= $unwrap[Int](l$i0$i@481@01)]
+(assert (<= 0 ($unwrap<Int> l$i0$i@481@01)))
+; [eval] $unwrap(l$i0$i) < |l$i0$result|
+; [eval] $unwrap(l$i0$i)
+; [eval] |l$i0$result|
+(pop) ; 19
+(pop) ; 18
+; Joined path conditions
+; Joined path conditions
+(push) ; 18
+(set-option :timeout 10)
+(assert (not (not
+  (and
+    (<= 0 ($unwrap<Int> l$i0$i@481@01))
+    (< ($unwrap<Int> l$i0$i@481@01) (Seq_length l$i0$result@480@01))))))
+(check-sat)
+; unknown
+(pop) ; 18
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 18
+(set-option :timeout 10)
+(assert (not (and
+  (<= 0 ($unwrap<Int> l$i0$i@481@01))
+  (< ($unwrap<Int> l$i0$i@481@01) (Seq_length l$i0$result@480@01)))))
+(check-sat)
+; unsat
+(pop) ; 18
+; 0.01s
+; (get-info :all-statistics)
+; [then-branch: 232 | 0 <= $unwrap[Int](l$i0$i@481@01) && $unwrap[Int](l$i0$i@481@01) < |l$i0$result@480@01| | live]
+; [else-branch: 232 | !(0 <= $unwrap[Int](l$i0$i@481@01) && $unwrap[Int](l$i0$i@481@01) < |l$i0$result@480@01|) | dead]
+(set-option :timeout 0)
+(push) ; 18
+; [then-branch: 232 | 0 <= $unwrap[Int](l$i0$i@481@01) && $unwrap[Int](l$i0$i@481@01) < |l$i0$result@480@01|]
+(assert (and
+  (<= 0 ($unwrap<Int> l$i0$i@481@01))
+  (< ($unwrap<Int> l$i0$i@481@01) (Seq_length l$i0$result@480@01))))
+; [eval] !(0 <= $unwrap(l$i0$i) && $unwrap(l$i0$i) < |($struct_get($struct_loc(self, 0)): Seq[Int])|)
+; [eval] 0 <= $unwrap(l$i0$i) && $unwrap(l$i0$i) < |($struct_get($struct_loc(self, 0)): Seq[Int])|
+; [eval] 0 <= $unwrap(l$i0$i)
+; [eval] $unwrap(l$i0$i)
+(push) ; 19
+; [then-branch: 233 | !(0 <= $unwrap[Int](l$i0$i@481@01)) | live]
+; [else-branch: 233 | 0 <= $unwrap[Int](l$i0$i@481@01) | live]
+(push) ; 20
+; [then-branch: 233 | !(0 <= $unwrap[Int](l$i0$i@481@01))]
+(assert (not (<= 0 ($unwrap<Int> l$i0$i@481@01))))
+(pop) ; 20
+(push) ; 20
+; [else-branch: 233 | 0 <= $unwrap[Int](l$i0$i@481@01)]
+; [eval] $unwrap(l$i0$i) < |($struct_get($struct_loc(self, 0)): Seq[Int])|
+; [eval] $unwrap(l$i0$i)
+; [eval] |($struct_get($struct_loc(self, 0)): Seq[Int])|
+; [eval] ($struct_get($struct_loc(self, 0)): Seq[Int])
+; [eval] $struct_loc(self, 0)
+(pop) ; 20
+(pop) ; 19
+; Joined path conditions
+; Joined path conditions
+(push) ; 19
+(set-option :timeout 10)
+(assert (not (and
+  (<= 0 ($unwrap<Int> l$i0$i@481@01))
+  (<
+    ($unwrap<Int> l$i0$i@481@01)
+    (Seq_length ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0)))))))
+(check-sat)
+; unsat
+(pop) ; 19
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 234 | !(0 <= $unwrap[Int](l$i0$i@481@01) && $unwrap[Int](l$i0$i@481@01) < |$struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))|) | dead]
+; [else-branch: 234 | 0 <= $unwrap[Int](l$i0$i@481@01) && $unwrap[Int](l$i0$i@481@01) < |$struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))| | live]
+(set-option :timeout 0)
+(push) ; 19
+; [else-branch: 234 | 0 <= $unwrap[Int](l$i0$i@481@01) && $unwrap[Int](l$i0$i@481@01) < |$struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))|]
+(assert (and
+  (<= 0 ($unwrap<Int> l$i0$i@481@01))
+  (<
+    ($unwrap<Int> l$i0$i@481@01)
+    (Seq_length ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0))))))
+(pop) ; 19
+; [eval] !!(0 <= $unwrap(l$i0$i) && $unwrap(l$i0$i) < |($struct_get($struct_loc(self, 0)): Seq[Int])|)
+; [eval] !(0 <= $unwrap(l$i0$i) && $unwrap(l$i0$i) < |($struct_get($struct_loc(self, 0)): Seq[Int])|)
+; [eval] 0 <= $unwrap(l$i0$i) && $unwrap(l$i0$i) < |($struct_get($struct_loc(self, 0)): Seq[Int])|
+; [eval] 0 <= $unwrap(l$i0$i)
+; [eval] $unwrap(l$i0$i)
+(push) ; 19
+; [then-branch: 235 | !(0 <= $unwrap[Int](l$i0$i@481@01)) | live]
+; [else-branch: 235 | 0 <= $unwrap[Int](l$i0$i@481@01) | live]
+(push) ; 20
+; [then-branch: 235 | !(0 <= $unwrap[Int](l$i0$i@481@01))]
+(assert (not (<= 0 ($unwrap<Int> l$i0$i@481@01))))
+(pop) ; 20
+(push) ; 20
+; [else-branch: 235 | 0 <= $unwrap[Int](l$i0$i@481@01)]
+(assert (<= 0 ($unwrap<Int> l$i0$i@481@01)))
+; [eval] $unwrap(l$i0$i) < |($struct_get($struct_loc(self, 0)): Seq[Int])|
+; [eval] $unwrap(l$i0$i)
+; [eval] |($struct_get($struct_loc(self, 0)): Seq[Int])|
+; [eval] ($struct_get($struct_loc(self, 0)): Seq[Int])
+; [eval] $struct_loc(self, 0)
+(pop) ; 20
+(pop) ; 19
+; Joined path conditions
+; Joined path conditions
+(push) ; 19
+(set-option :timeout 10)
+(assert (not (not
+  (and
+    (<= 0 ($unwrap<Int> l$i0$i@481@01))
+    (<
+      ($unwrap<Int> l$i0$i@481@01)
+      (Seq_length ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0))))))))
+(check-sat)
+; unknown
+(pop) ; 19
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 19
+(set-option :timeout 10)
+(assert (not (and
+  (<= 0 ($unwrap<Int> l$i0$i@481@01))
+  (<
+    ($unwrap<Int> l$i0$i@481@01)
+    (Seq_length ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0)))))))
+(check-sat)
+; unsat
+(pop) ; 19
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 236 | 0 <= $unwrap[Int](l$i0$i@481@01) && $unwrap[Int](l$i0$i@481@01) < |$struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))| | live]
+; [else-branch: 236 | !(0 <= $unwrap[Int](l$i0$i@481@01) && $unwrap[Int](l$i0$i@481@01) < |$struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))|) | dead]
+(set-option :timeout 0)
+(push) ; 19
+; [then-branch: 236 | 0 <= $unwrap[Int](l$i0$i@481@01) && $unwrap[Int](l$i0$i@481@01) < |$struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))|]
+(assert (and
+  (<= 0 ($unwrap<Int> l$i0$i@481@01))
+  (<
+    ($unwrap<Int> l$i0$i@481@01)
+    (Seq_length ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0))))))
+; [eval] $unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))) < 0
+; [eval] $unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)])))
+; [eval] $w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))
+; [eval] $wrap(l$i0$result[$unwrap(l$i0$i)])
+; [eval] l$i0$result[$unwrap(l$i0$i)]
+; [eval] $unwrap(l$i0$i)
+(push) ; 20
+(assert (not (>= ($unwrap<Int> l$i0$i@481@01) 0)))
+(check-sat)
+; unsat
+(pop) ; 20
+; 0.00s
+; (get-info :all-statistics)
+; [eval] $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)])
+; [eval] ($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]
+; [eval] ($struct_get($struct_loc(self, 0)): Seq[Int])
+; [eval] $struct_loc(self, 0)
+; [eval] $unwrap(l$i0$i)
+(push) ; 20
+(assert (not (>= ($unwrap<Int> l$i0$i@481@01) 0)))
+(check-sat)
+; unsat
+(pop) ; 20
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 20
+(set-option :timeout 10)
+(assert (not (not
+  (<
+    ($unwrap<Int> ($w_mul<$Int> ($wrap<$Int> (Seq_index
+      l$i0$result@480@01
+      ($unwrap<Int> l$i0$i@481@01))) ($wrap<$Int> (Seq_index
+      ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0))
+      ($unwrap<Int> l$i0$i@481@01)))))
+    0))))
+(check-sat)
+; unknown
+(pop) ; 20
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 20
+(set-option :timeout 10)
+(assert (not (<
+  ($unwrap<Int> ($w_mul<$Int> ($wrap<$Int> (Seq_index
+    l$i0$result@480@01
+    ($unwrap<Int> l$i0$i@481@01))) ($wrap<$Int> (Seq_index
+    ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0))
+    ($unwrap<Int> l$i0$i@481@01)))))
+  0)))
+(check-sat)
+; unknown
+(pop) ; 20
+; 0.01s
+; (get-info :all-statistics)
+; [then-branch: 237 | $unwrap[Int]($w_mul[$Int]($wrap[$Int](l$i0$result@480@01[$unwrap[Int](l$i0$i@481@01)]), $wrap[$Int]($struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))[$unwrap[Int](l$i0$i@481@01)]))) < 0 | live]
+; [else-branch: 237 | !($unwrap[Int]($w_mul[$Int]($wrap[$Int](l$i0$result@480@01[$unwrap[Int](l$i0$i@481@01)]), $wrap[$Int]($struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))[$unwrap[Int](l$i0$i@481@01)]))) < 0) | live]
+(set-option :timeout 0)
+(push) ; 20
+; [then-branch: 237 | $unwrap[Int]($w_mul[$Int]($wrap[$Int](l$i0$result@480@01[$unwrap[Int](l$i0$i@481@01)]), $wrap[$Int]($struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))[$unwrap[Int](l$i0$i@481@01)]))) < 0]
+(assert (<
+  ($unwrap<Int> ($w_mul<$Int> ($wrap<$Int> (Seq_index
+    l$i0$result@480@01
+    ($unwrap<Int> l$i0$i@481@01))) ($wrap<$Int> (Seq_index
+    ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0))
+    ($unwrap<Int> l$i0$i@481@01)))))
+  0))
+; [exec]
+; label revert
+; [exec]
+; $succ := false
+; [exec]
+; $res := l$havoc
+; [exec]
+; self := $pre_self
+; [exec]
+; $contracts := $pre_$contracts
+; [exec]
+; $old_self := $pre_self
+; [exec]
+; $old_$contracts := $pre_$contracts
+; [exec]
+; label end
+; [eval] !$succ
+(push) ; 21
+(set-option :timeout 10)
+(assert (not false))
+(check-sat)
+; unknown
+(pop) ; 21
+; 0.01s
+; (get-info :all-statistics)
+; [then-branch: 238 | True | live]
+; [else-branch: 238 | False | dead]
+(set-option :timeout 0)
+(push) ; 21
+; [then-branch: 238 | True]
+; [exec]
+; inhale l$havoc$1 >= 0
+(declare-const $t@482@01 $Snap)
+(assert (= $t@482@01 $Snap.unit))
+; [eval] l$havoc$1 >= 0
+(assert (>= l$havoc$1@443@01 0))
+; State saturation: after inhale
+(set-option :timeout 20)
+(check-sat)
+; unsat
+; [exec]
+; self := ($struct_set(self, 3, ($struct_get($struct_loc(self, 3)): Int) +
+;   l$havoc$1): $Struct)
+; [eval] ($struct_set(self, 3, ($struct_get($struct_loc(self, 3)): Int) + l$havoc$1): $Struct)
+; [eval] ($struct_get($struct_loc(self, 3)): Int) + l$havoc$1
+; [eval] ($struct_get($struct_loc(self, 3)): Int)
+; [eval] $struct_loc(self, 3)
+(declare-const self@483@01 $Struct)
+(assert (=
+  self@483@01
+  ($struct_set<$Struct> self@422@01 3 (+
+    ($struct_get<Int> ($struct_loc<Int> self@422@01 3))
+    l$havoc$1@443@01))))
+; [exec]
+; $contracts := l$havoc$2
+(pop) ; 21
+; [then-branch: 239 | False | dead]
+; [else-branch: 239 | True | live]
+(set-option :timeout 0)
+(push) ; 21
+; [else-branch: 239 | True]
+(pop) ; 21
+(pop) ; 20
+(push) ; 20
+; [else-branch: 237 | !($unwrap[Int]($w_mul[$Int]($wrap[$Int](l$i0$result@480@01[$unwrap[Int](l$i0$i@481@01)]), $wrap[$Int]($struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))[$unwrap[Int](l$i0$i@481@01)]))) < 0)]
+(assert (not
+  (<
+    ($unwrap<Int> ($w_mul<$Int> ($wrap<$Int> (Seq_index
+      l$i0$result@480@01
+      ($unwrap<Int> l$i0$i@481@01))) ($wrap<$Int> (Seq_index
+      ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0))
+      ($unwrap<Int> l$i0$i@481@01)))))
+    0)))
+(pop) ; 20
+; [eval] !($unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))) < 0)
+; [eval] $unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))) < 0
+; [eval] $unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)])))
+; [eval] $w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))
+; [eval] $wrap(l$i0$result[$unwrap(l$i0$i)])
+; [eval] l$i0$result[$unwrap(l$i0$i)]
+; [eval] $unwrap(l$i0$i)
+(push) ; 20
+(assert (not (>= ($unwrap<Int> l$i0$i@481@01) 0)))
+(check-sat)
+; unsat
+(pop) ; 20
+; 0.00s
+; (get-info :all-statistics)
+; [eval] $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)])
+; [eval] ($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]
+; [eval] ($struct_get($struct_loc(self, 0)): Seq[Int])
+; [eval] $struct_loc(self, 0)
+; [eval] $unwrap(l$i0$i)
+(push) ; 20
+(assert (not (>= ($unwrap<Int> l$i0$i@481@01) 0)))
+(check-sat)
+; unsat
+(pop) ; 20
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 20
+(set-option :timeout 10)
+(assert (not (<
+  ($unwrap<Int> ($w_mul<$Int> ($wrap<$Int> (Seq_index
+    l$i0$result@480@01
+    ($unwrap<Int> l$i0$i@481@01))) ($wrap<$Int> (Seq_index
+    ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0))
+    ($unwrap<Int> l$i0$i@481@01)))))
+  0)))
+(check-sat)
+; unknown
+(pop) ; 20
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 20
+(set-option :timeout 10)
+(assert (not (not
+  (<
+    ($unwrap<Int> ($w_mul<$Int> ($wrap<$Int> (Seq_index
+      l$i0$result@480@01
+      ($unwrap<Int> l$i0$i@481@01))) ($wrap<$Int> (Seq_index
+      ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0))
+      ($unwrap<Int> l$i0$i@481@01)))))
+    0))))
+(check-sat)
+; unsat
+(pop) ; 20
+; 0.01s
+; (get-info :all-statistics)
+; [then-branch: 240 | !($unwrap[Int]($w_mul[$Int]($wrap[$Int](l$i0$result@480@01[$unwrap[Int](l$i0$i@481@01)]), $wrap[$Int]($struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))[$unwrap[Int](l$i0$i@481@01)]))) < 0) | live]
+; [else-branch: 240 | $unwrap[Int]($w_mul[$Int]($wrap[$Int](l$i0$result@480@01[$unwrap[Int](l$i0$i@481@01)]), $wrap[$Int]($struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))[$unwrap[Int](l$i0$i@481@01)]))) < 0 | dead]
+(set-option :timeout 0)
+(push) ; 20
+; [then-branch: 240 | !($unwrap[Int]($w_mul[$Int]($wrap[$Int](l$i0$result@480@01[$unwrap[Int](l$i0$i@481@01)]), $wrap[$Int]($struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))[$unwrap[Int](l$i0$i@481@01)]))) < 0)]
+(assert (not
+  (<
+    ($unwrap<Int> ($w_mul<$Int> ($wrap<$Int> (Seq_index
+      l$i0$result@480@01
+      ($unwrap<Int> l$i0$i@481@01))) ($wrap<$Int> (Seq_index
+      ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0))
+      ($unwrap<Int> l$i0$i@481@01)))))
+    0)))
+; [eval] 1000000000000000000 == 0
+; [then-branch: 241 | False | dead]
+; [else-branch: 241 | True | live]
+(push) ; 21
+; [else-branch: 241 | True]
+(pop) ; 21
+; [eval] !(1000000000000000000 == 0)
+; [eval] 1000000000000000000 == 0
+(push) ; 21
+(set-option :timeout 10)
+(assert (not false))
+(check-sat)
+; unknown
+(pop) ; 21
+; 0.01s
+; (get-info :all-statistics)
+; [then-branch: 242 | True | live]
+; [else-branch: 242 | False | dead]
+(set-option :timeout 0)
+(push) ; 21
+; [then-branch: 242 | True]
+; [eval] $div($unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))), 1000000000000000000, $unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))) \ 1000000000000000000) < 0
+; [eval] $div($unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))), 1000000000000000000, $unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))) \ 1000000000000000000)
+; [eval] $unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)])))
+; [eval] $w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))
+; [eval] $wrap(l$i0$result[$unwrap(l$i0$i)])
+; [eval] l$i0$result[$unwrap(l$i0$i)]
+; [eval] $unwrap(l$i0$i)
+(push) ; 22
+(assert (not (>= ($unwrap<Int> l$i0$i@481@01) 0)))
+(check-sat)
+; unsat
+(pop) ; 22
+; 0.00s
+; (get-info :all-statistics)
+; [eval] $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)])
+; [eval] ($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]
+; [eval] ($struct_get($struct_loc(self, 0)): Seq[Int])
+; [eval] $struct_loc(self, 0)
+; [eval] $unwrap(l$i0$i)
+(push) ; 22
+(assert (not (>= ($unwrap<Int> l$i0$i@481@01) 0)))
+(check-sat)
+; unsat
+(pop) ; 22
+; 0.00s
+; (get-info :all-statistics)
+; [eval] $unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))) \ 1000000000000000000
+; [eval] $unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)])))
+; [eval] $w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))
+; [eval] $wrap(l$i0$result[$unwrap(l$i0$i)])
+; [eval] l$i0$result[$unwrap(l$i0$i)]
+; [eval] $unwrap(l$i0$i)
+(push) ; 22
+(assert (not (>= ($unwrap<Int> l$i0$i@481@01) 0)))
+(check-sat)
+; unsat
+(pop) ; 22
+; 0.00s
+; (get-info :all-statistics)
+; [eval] $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)])
+; [eval] ($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]
+; [eval] ($struct_get($struct_loc(self, 0)): Seq[Int])
+; [eval] $struct_loc(self, 0)
+; [eval] $unwrap(l$i0$i)
+(push) ; 22
+(assert (not (>= ($unwrap<Int> l$i0$i@481@01) 0)))
+(check-sat)
+; unsat
+(pop) ; 22
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 22
+(set-option :timeout 10)
+(assert (not (not
+  (<
+    ($div<Int> ($unwrap<Int> ($w_mul<$Int> ($wrap<$Int> (Seq_index
+      l$i0$result@480@01
+      ($unwrap<Int> l$i0$i@481@01))) ($wrap<$Int> (Seq_index
+      ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0))
+      ($unwrap<Int> l$i0$i@481@01))))) 1000000000000000000 (div
+      ($unwrap<Int> ($w_mul<$Int> ($wrap<$Int> (Seq_index
+        l$i0$result@480@01
+        ($unwrap<Int> l$i0$i@481@01))) ($wrap<$Int> (Seq_index
+        ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0))
+        ($unwrap<Int> l$i0$i@481@01)))))
+      1000000000000000000))
+    0))))
+(check-sat)
+; unsat
+(pop) ; 22
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 243 | $div[Int]($unwrap[Int]($w_mul[$Int]($wrap[$Int](l$i0$result@480@01[$unwrap[Int](l$i0$i@481@01)]), $wrap[$Int]($struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))[$unwrap[Int](l$i0$i@481@01)]))), 1000000000000000000, $unwrap[Int]($w_mul[$Int]($wrap[$Int](l$i0$result@480@01[$unwrap[Int](l$i0$i@481@01)]), $wrap[$Int]($struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))[$unwrap[Int](l$i0$i@481@01)]))) / 1000000000000000000) < 0 | dead]
+; [else-branch: 243 | !($div[Int]($unwrap[Int]($w_mul[$Int]($wrap[$Int](l$i0$result@480@01[$unwrap[Int](l$i0$i@481@01)]), $wrap[$Int]($struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))[$unwrap[Int](l$i0$i@481@01)]))), 1000000000000000000, $unwrap[Int]($w_mul[$Int]($wrap[$Int](l$i0$result@480@01[$unwrap[Int](l$i0$i@481@01)]), $wrap[$Int]($struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))[$unwrap[Int](l$i0$i@481@01)]))) / 1000000000000000000) < 0) | live]
+(set-option :timeout 0)
+(push) ; 22
+; [else-branch: 243 | !($div[Int]($unwrap[Int]($w_mul[$Int]($wrap[$Int](l$i0$result@480@01[$unwrap[Int](l$i0$i@481@01)]), $wrap[$Int]($struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))[$unwrap[Int](l$i0$i@481@01)]))), 1000000000000000000, $unwrap[Int]($w_mul[$Int]($wrap[$Int](l$i0$result@480@01[$unwrap[Int](l$i0$i@481@01)]), $wrap[$Int]($struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))[$unwrap[Int](l$i0$i@481@01)]))) / 1000000000000000000) < 0)]
+(assert (not
+  (<
+    ($div<Int> ($unwrap<Int> ($w_mul<$Int> ($wrap<$Int> (Seq_index
+      l$i0$result@480@01
+      ($unwrap<Int> l$i0$i@481@01))) ($wrap<$Int> (Seq_index
+      ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0))
+      ($unwrap<Int> l$i0$i@481@01))))) 1000000000000000000 (div
+      ($unwrap<Int> ($w_mul<$Int> ($wrap<$Int> (Seq_index
+        l$i0$result@480@01
+        ($unwrap<Int> l$i0$i@481@01))) ($wrap<$Int> (Seq_index
+        ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0))
+        ($unwrap<Int> l$i0$i@481@01)))))
+      1000000000000000000))
+    0)))
+(pop) ; 22
+; [eval] !($div($unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))), 1000000000000000000, $unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))) \ 1000000000000000000) < 0)
+; [eval] $div($unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))), 1000000000000000000, $unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))) \ 1000000000000000000) < 0
+; [eval] $div($unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))), 1000000000000000000, $unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))) \ 1000000000000000000)
+; [eval] $unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)])))
+; [eval] $w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))
+; [eval] $wrap(l$i0$result[$unwrap(l$i0$i)])
+; [eval] l$i0$result[$unwrap(l$i0$i)]
+; [eval] $unwrap(l$i0$i)
+(push) ; 22
+(assert (not (>= ($unwrap<Int> l$i0$i@481@01) 0)))
+(check-sat)
+; unsat
+(pop) ; 22
+; 0.00s
+; (get-info :all-statistics)
+; [eval] $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)])
+; [eval] ($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]
+; [eval] ($struct_get($struct_loc(self, 0)): Seq[Int])
+; [eval] $struct_loc(self, 0)
+; [eval] $unwrap(l$i0$i)
+(push) ; 22
+(assert (not (>= ($unwrap<Int> l$i0$i@481@01) 0)))
+(check-sat)
+; unsat
+(pop) ; 22
+; 0.00s
+; (get-info :all-statistics)
+; [eval] $unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))) \ 1000000000000000000
+; [eval] $unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)])))
+; [eval] $w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))
+; [eval] $wrap(l$i0$result[$unwrap(l$i0$i)])
+; [eval] l$i0$result[$unwrap(l$i0$i)]
+; [eval] $unwrap(l$i0$i)
+(push) ; 22
+(assert (not (>= ($unwrap<Int> l$i0$i@481@01) 0)))
+(check-sat)
+; unsat
+(pop) ; 22
+; 0.00s
+; (get-info :all-statistics)
+; [eval] $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)])
+; [eval] ($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]
+; [eval] ($struct_get($struct_loc(self, 0)): Seq[Int])
+; [eval] $struct_loc(self, 0)
+; [eval] $unwrap(l$i0$i)
+(push) ; 22
+(assert (not (>= ($unwrap<Int> l$i0$i@481@01) 0)))
+(check-sat)
+; unsat
+(pop) ; 22
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 22
+(set-option :timeout 10)
+(assert (not (<
+  ($div<Int> ($unwrap<Int> ($w_mul<$Int> ($wrap<$Int> (Seq_index
+    l$i0$result@480@01
+    ($unwrap<Int> l$i0$i@481@01))) ($wrap<$Int> (Seq_index
+    ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0))
+    ($unwrap<Int> l$i0$i@481@01))))) 1000000000000000000 (div
+    ($unwrap<Int> ($w_mul<$Int> ($wrap<$Int> (Seq_index
+      l$i0$result@480@01
+      ($unwrap<Int> l$i0$i@481@01))) ($wrap<$Int> (Seq_index
+      ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0))
+      ($unwrap<Int> l$i0$i@481@01)))))
+    1000000000000000000))
+  0)))
+(check-sat)
+; unknown
+(pop) ; 22
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 22
+(set-option :timeout 10)
+(assert (not (not
+  (<
+    ($div<Int> ($unwrap<Int> ($w_mul<$Int> ($wrap<$Int> (Seq_index
+      l$i0$result@480@01
+      ($unwrap<Int> l$i0$i@481@01))) ($wrap<$Int> (Seq_index
+      ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0))
+      ($unwrap<Int> l$i0$i@481@01))))) 1000000000000000000 (div
+      ($unwrap<Int> ($w_mul<$Int> ($wrap<$Int> (Seq_index
+        l$i0$result@480@01
+        ($unwrap<Int> l$i0$i@481@01))) ($wrap<$Int> (Seq_index
+        ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0))
+        ($unwrap<Int> l$i0$i@481@01)))))
+      1000000000000000000))
+    0))))
+(check-sat)
+; unsat
+(pop) ; 22
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 244 | !($div[Int]($unwrap[Int]($w_mul[$Int]($wrap[$Int](l$i0$result@480@01[$unwrap[Int](l$i0$i@481@01)]), $wrap[$Int]($struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))[$unwrap[Int](l$i0$i@481@01)]))), 1000000000000000000, $unwrap[Int]($w_mul[$Int]($wrap[$Int](l$i0$result@480@01[$unwrap[Int](l$i0$i@481@01)]), $wrap[$Int]($struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))[$unwrap[Int](l$i0$i@481@01)]))) / 1000000000000000000) < 0) | live]
+; [else-branch: 244 | $div[Int]($unwrap[Int]($w_mul[$Int]($wrap[$Int](l$i0$result@480@01[$unwrap[Int](l$i0$i@481@01)]), $wrap[$Int]($struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))[$unwrap[Int](l$i0$i@481@01)]))), 1000000000000000000, $unwrap[Int]($w_mul[$Int]($wrap[$Int](l$i0$result@480@01[$unwrap[Int](l$i0$i@481@01)]), $wrap[$Int]($struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))[$unwrap[Int](l$i0$i@481@01)]))) / 1000000000000000000) < 0 | dead]
+(set-option :timeout 0)
+(push) ; 22
+; [then-branch: 244 | !($div[Int]($unwrap[Int]($w_mul[$Int]($wrap[$Int](l$i0$result@480@01[$unwrap[Int](l$i0$i@481@01)]), $wrap[$Int]($struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))[$unwrap[Int](l$i0$i@481@01)]))), 1000000000000000000, $unwrap[Int]($w_mul[$Int]($wrap[$Int](l$i0$result@480@01[$unwrap[Int](l$i0$i@481@01)]), $wrap[$Int]($struct_get[Seq[Int]]($struct_loc[Int](self@422@01, 0))[$unwrap[Int](l$i0$i@481@01)]))) / 1000000000000000000) < 0)]
+(assert (not
+  (<
+    ($div<Int> ($unwrap<Int> ($w_mul<$Int> ($wrap<$Int> (Seq_index
+      l$i0$result@480@01
+      ($unwrap<Int> l$i0$i@481@01))) ($wrap<$Int> (Seq_index
+      ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0))
+      ($unwrap<Int> l$i0$i@481@01))))) 1000000000000000000 (div
+      ($unwrap<Int> ($w_mul<$Int> ($wrap<$Int> (Seq_index
+        l$i0$result@480@01
+        ($unwrap<Int> l$i0$i@481@01))) ($wrap<$Int> (Seq_index
+        ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0))
+        ($unwrap<Int> l$i0$i@481@01)))))
+      1000000000000000000))
+    0)))
+; [eval] !(0 <= $unwrap(l$i0$i) && $unwrap(l$i0$i) < |l$i0$result|)
+; [eval] 0 <= $unwrap(l$i0$i) && $unwrap(l$i0$i) < |l$i0$result|
+; [eval] 0 <= $unwrap(l$i0$i)
+; [eval] $unwrap(l$i0$i)
+(push) ; 23
+; [then-branch: 245 | !(0 <= $unwrap[Int](l$i0$i@481@01)) | live]
+; [else-branch: 245 | 0 <= $unwrap[Int](l$i0$i@481@01) | live]
+(push) ; 24
+; [then-branch: 245 | !(0 <= $unwrap[Int](l$i0$i@481@01))]
+(assert (not (<= 0 ($unwrap<Int> l$i0$i@481@01))))
+(pop) ; 24
+(push) ; 24
+; [else-branch: 245 | 0 <= $unwrap[Int](l$i0$i@481@01)]
+; [eval] $unwrap(l$i0$i) < |l$i0$result|
+; [eval] $unwrap(l$i0$i)
+; [eval] |l$i0$result|
+(pop) ; 24
+(pop) ; 23
+; Joined path conditions
+; Joined path conditions
+(push) ; 23
+(set-option :timeout 10)
+(assert (not (and
+  (<= 0 ($unwrap<Int> l$i0$i@481@01))
+  (< ($unwrap<Int> l$i0$i@481@01) (Seq_length l$i0$result@480@01)))))
+(check-sat)
+; unsat
+(pop) ; 23
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 246 | !(0 <= $unwrap[Int](l$i0$i@481@01) && $unwrap[Int](l$i0$i@481@01) < |l$i0$result@480@01|) | dead]
+; [else-branch: 246 | 0 <= $unwrap[Int](l$i0$i@481@01) && $unwrap[Int](l$i0$i@481@01) < |l$i0$result@480@01| | live]
+(set-option :timeout 0)
+(push) ; 23
+; [else-branch: 246 | 0 <= $unwrap[Int](l$i0$i@481@01) && $unwrap[Int](l$i0$i@481@01) < |l$i0$result@480@01|]
+(assert (and
+  (<= 0 ($unwrap<Int> l$i0$i@481@01))
+  (< ($unwrap<Int> l$i0$i@481@01) (Seq_length l$i0$result@480@01))))
+(pop) ; 23
+; [eval] !!(0 <= $unwrap(l$i0$i) && $unwrap(l$i0$i) < |l$i0$result|)
+; [eval] !(0 <= $unwrap(l$i0$i) && $unwrap(l$i0$i) < |l$i0$result|)
+; [eval] 0 <= $unwrap(l$i0$i) && $unwrap(l$i0$i) < |l$i0$result|
+; [eval] 0 <= $unwrap(l$i0$i)
+; [eval] $unwrap(l$i0$i)
+(push) ; 23
+; [then-branch: 247 | !(0 <= $unwrap[Int](l$i0$i@481@01)) | live]
+; [else-branch: 247 | 0 <= $unwrap[Int](l$i0$i@481@01) | live]
+(push) ; 24
+; [then-branch: 247 | !(0 <= $unwrap[Int](l$i0$i@481@01))]
+(assert (not (<= 0 ($unwrap<Int> l$i0$i@481@01))))
+(pop) ; 24
+(push) ; 24
+; [else-branch: 247 | 0 <= $unwrap[Int](l$i0$i@481@01)]
+(assert (<= 0 ($unwrap<Int> l$i0$i@481@01)))
+; [eval] $unwrap(l$i0$i) < |l$i0$result|
+; [eval] $unwrap(l$i0$i)
+; [eval] |l$i0$result|
+(pop) ; 24
+(pop) ; 23
+; Joined path conditions
+; Joined path conditions
+(push) ; 23
+(set-option :timeout 10)
+(assert (not (not
+  (and
+    (<= 0 ($unwrap<Int> l$i0$i@481@01))
+    (< ($unwrap<Int> l$i0$i@481@01) (Seq_length l$i0$result@480@01))))))
+(check-sat)
+; unknown
+(pop) ; 23
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 23
+(set-option :timeout 10)
+(assert (not (and
+  (<= 0 ($unwrap<Int> l$i0$i@481@01))
+  (< ($unwrap<Int> l$i0$i@481@01) (Seq_length l$i0$result@480@01)))))
+(check-sat)
+; unsat
+(pop) ; 23
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 248 | 0 <= $unwrap[Int](l$i0$i@481@01) && $unwrap[Int](l$i0$i@481@01) < |l$i0$result@480@01| | live]
+; [else-branch: 248 | !(0 <= $unwrap[Int](l$i0$i@481@01) && $unwrap[Int](l$i0$i@481@01) < |l$i0$result@480@01|) | dead]
+(set-option :timeout 0)
+(push) ; 23
+; [then-branch: 248 | 0 <= $unwrap[Int](l$i0$i@481@01) && $unwrap[Int](l$i0$i@481@01) < |l$i0$result@480@01|]
+(assert (and
+  (<= 0 ($unwrap<Int> l$i0$i@481@01))
+  (< ($unwrap<Int> l$i0$i@481@01) (Seq_length l$i0$result@480@01))))
+; [exec]
+; l$i0$result := l$i0$result[$unwrap(l$i0$i) :=
+;   $unwrap($wrap($div($unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self,
+;   0)): Seq[Int])[$unwrap(l$i0$i)]))), 1000000000000000000, $unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]),
+;   $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))) \
+;   1000000000000000000)))]
+; [eval] l$i0$result[$unwrap(l$i0$i) := $unwrap($wrap($div($unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))), 1000000000000000000, $unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))) \ 1000000000000000000)))]
+; [eval] $unwrap(l$i0$i)
+; [eval] $unwrap($wrap($div($unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))), 1000000000000000000, $unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))) \ 1000000000000000000)))
+; [eval] $wrap($div($unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))), 1000000000000000000, $unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))) \ 1000000000000000000))
+; [eval] $div($unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))), 1000000000000000000, $unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))) \ 1000000000000000000)
+; [eval] $unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)])))
+; [eval] $w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))
+; [eval] $wrap(l$i0$result[$unwrap(l$i0$i)])
+; [eval] l$i0$result[$unwrap(l$i0$i)]
+; [eval] $unwrap(l$i0$i)
+(push) ; 24
+(assert (not (>= ($unwrap<Int> l$i0$i@481@01) 0)))
+(check-sat)
+; unsat
+(pop) ; 24
+; 0.00s
+; (get-info :all-statistics)
+; [eval] $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)])
+; [eval] ($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]
+; [eval] ($struct_get($struct_loc(self, 0)): Seq[Int])
+; [eval] $struct_loc(self, 0)
+; [eval] $unwrap(l$i0$i)
+(push) ; 24
+(assert (not (>= ($unwrap<Int> l$i0$i@481@01) 0)))
+(check-sat)
+; unsat
+(pop) ; 24
+; 0.00s
+; (get-info :all-statistics)
+; [eval] $unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))) \ 1000000000000000000
+; [eval] $unwrap($w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)])))
+; [eval] $w_mul($wrap(l$i0$result[$unwrap(l$i0$i)]), $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]))
+; [eval] $wrap(l$i0$result[$unwrap(l$i0$i)])
+; [eval] l$i0$result[$unwrap(l$i0$i)]
+; [eval] $unwrap(l$i0$i)
+(push) ; 24
+(assert (not (>= ($unwrap<Int> l$i0$i@481@01) 0)))
+(check-sat)
+; unsat
+(pop) ; 24
+; 0.00s
+; (get-info :all-statistics)
+; [eval] $wrap(($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)])
+; [eval] ($struct_get($struct_loc(self, 0)): Seq[Int])[$unwrap(l$i0$i)]
+; [eval] ($struct_get($struct_loc(self, 0)): Seq[Int])
+; [eval] $struct_loc(self, 0)
+; [eval] $unwrap(l$i0$i)
+(push) ; 24
+(assert (not (>= ($unwrap<Int> l$i0$i@481@01) 0)))
+(check-sat)
+; unsat
+(pop) ; 24
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 24
+(assert (not (>= ($unwrap<Int> l$i0$i@481@01) 0)))
+(check-sat)
+; unsat
+(pop) ; 24
+; 0.00s
+; (get-info :all-statistics)
+(declare-const l$i0$result@484@01 Seq<Int>)
+(assert (=
+  l$i0$result@484@01
+  (Seq_append
+    (Seq_take l$i0$result@480@01 ($unwrap<Int> l$i0$i@481@01))
+    (Seq_append
+      (Seq_singleton ($unwrap<Int> ($wrap<$Int> ($div<Int> ($unwrap<Int> ($w_mul<$Int> ($wrap<$Int> (Seq_index
+        l$i0$result@480@01
+        ($unwrap<Int> l$i0$i@481@01))) ($wrap<$Int> (Seq_index
+        ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0))
+        ($unwrap<Int> l$i0$i@481@01))))) 1000000000000000000 (div
+        ($unwrap<Int> ($w_mul<$Int> ($wrap<$Int> (Seq_index
+          l$i0$result@480@01
+          ($unwrap<Int> l$i0$i@481@01))) ($wrap<$Int> (Seq_index
+          ($struct_get<Seq<Int>> ($struct_loc<Int> self@422@01 0))
+          ($unwrap<Int> l$i0$i@481@01)))))
+        1000000000000000000)))))
+      (Seq_drop l$i0$result@480@01 (+ ($unwrap<Int> l$i0$i@481@01) 1))))))
+; [exec]
+; label continue_2
+; [exec]
+; label break_0
+; [exec]
+; i0$$res := l$i0$result
+; [exec]
+; label i0$return
+; [exec]
+; l$i1$xp := i0$$res
+; [exec]
+; inhale i1$$succ ==>
+;   (forall q$i: Int ::
+;     { l$i1$xp[q$i] }
+;     0 <= q$i ==> q$i < 3 ==> l$i1$xp[0] == l$i1$xp[q$i]) ==>
+;   i1$$res == 3 * $unwrap($wrap(l$i1$xp[0]))
+(declare-const $t@485@01 $Snap)
+(assert (= $t@485@01 $Snap.unit))
+; [eval] i1$$succ ==> (forall q$i: Int :: { l$i1$xp[q$i] } 0 <= q$i ==> q$i < 3 ==> l$i1$xp[0] == l$i1$xp[q$i]) ==> i1$$res == 3 * $unwrap($wrap(l$i1$xp[0]))
+(push) ; 24
+(push) ; 25
+(set-option :timeout 10)
+(assert (not (not i1$$succ@435@01)))
+(check-sat)
+; unknown
+(pop) ; 25
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 25
+(set-option :timeout 10)
+(assert (not i1$$succ@435@01))
+(check-sat)
+; unknown
+(pop) ; 25
+; 0.01s
+; (get-info :all-statistics)
+; [then-branch: 249 | i1$$succ@435@01 | live]
+; [else-branch: 249 | !(i1$$succ@435@01) | live]
+(set-option :timeout 0)
+(push) ; 25
+; [then-branch: 249 | i1$$succ@435@01]
+(assert i1$$succ@435@01)
+; [eval] (forall q$i: Int :: { l$i1$xp[q$i] } 0 <= q$i ==> q$i < 3 ==> l$i1$xp[0] == l$i1$xp[q$i]) ==> i1$$res == 3 * $unwrap($wrap(l$i1$xp[0]))
+; [eval] (forall q$i: Int :: { l$i1$xp[q$i] } 0 <= q$i ==> q$i < 3 ==> l$i1$xp[0] == l$i1$xp[q$i])
+(declare-const q$i@486@01 Int)
+(push) ; 26
+; [eval] 0 <= q$i ==> q$i < 3 ==> l$i1$xp[0] == l$i1$xp[q$i]
+; [eval] 0 <= q$i
+(push) ; 27
+; [then-branch: 250 | 0 <= q$i@486@01 | live]
+; [else-branch: 250 | !(0 <= q$i@486@01) | live]
+(push) ; 28
+; [then-branch: 250 | 0 <= q$i@486@01]
+(assert (<= 0 q$i@486@01))
+; [eval] q$i < 3 ==> l$i1$xp[0] == l$i1$xp[q$i]
+; [eval] q$i < 3
+(push) ; 29
+; [then-branch: 251 | q$i@486@01 < 3 | live]
+; [else-branch: 251 | !(q$i@486@01 < 3) | live]
+(push) ; 30
+; [then-branch: 251 | q$i@486@01 < 3]
+(assert (< q$i@486@01 3))
+; [eval] l$i1$xp[0] == l$i1$xp[q$i]
+; [eval] l$i1$xp[0]
+(push) ; 31
+(assert (not (< 0 (Seq_length l$i0$result@484@01))))
+(check-sat)
+; unsat
+(pop) ; 31
+; 0.01s
+; (get-info :all-statistics)
+; [eval] l$i1$xp[q$i]
+(push) ; 31
+(assert (not (>= q$i@486@01 0)))
+(check-sat)
+; unsat
+(pop) ; 31
+; 0.00s
+; (get-info :all-statistics)
+(push) ; 31
+(assert (not (< q$i@486@01 (Seq_length l$i0$result@484@01))))
+(check-sat)
+; unsat
+(pop) ; 31
+; 0.01s
+; (get-info :all-statistics)
+(pop) ; 30
+(push) ; 30
+; [else-branch: 251 | !(q$i@486@01 < 3)]
+(assert (not (< q$i@486@01 3)))
+(pop) ; 30
+(pop) ; 29
+; Joined path conditions
+; Joined path conditions
+(assert (or (not (< q$i@486@01 3)) (< q$i@486@01 3)))
+(pop) ; 28
+(push) ; 28
+; [else-branch: 250 | !(0 <= q$i@486@01)]
+(assert (not (<= 0 q$i@486@01)))
+(pop) ; 28
+(pop) ; 27
+; Joined path conditions
+(assert (=>
+  (<= 0 q$i@486@01)
+  (and (<= 0 q$i@486@01) (or (not (< q$i@486@01 3)) (< q$i@486@01 3)))))
+; Joined path conditions
+(assert (or (not (<= 0 q$i@486@01)) (<= 0 q$i@486@01)))
+(pop) ; 26
+; Nested auxiliary terms: globals (aux)
+; Nested auxiliary terms: non-globals (aux)
+(assert (forall ((q$i@486@01 Int)) (!
+  (and
+    (=>
+      (<= 0 q$i@486@01)
+      (and (<= 0 q$i@486@01) (or (not (< q$i@486@01 3)) (< q$i@486@01 3))))
+    (or (not (<= 0 q$i@486@01)) (<= 0 q$i@486@01)))
+  :pattern ((Seq_index l$i0$result@484@01 q$i@486@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1301@24@1301@94-aux|)))
+(push) ; 26
+(push) ; 27
+(set-option :timeout 10)
+(assert (not (not
+  (forall ((q$i@486@01 Int)) (!
+    (=>
+      (and (<= 0 q$i@486@01) (< q$i@486@01 3))
+      (=
+        (Seq_index l$i0$result@484@01 0)
+        (Seq_index l$i0$result@484@01 q$i@486@01)))
+    :pattern ((Seq_index l$i0$result@484@01 q$i@486@01))
+    :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1301@24@1301@94|)))))
+(check-sat)
+; unknown
+(pop) ; 27
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 27
+(set-option :timeout 10)
+(assert (not (forall ((q$i@486@01 Int)) (!
+  (=>
+    (and (<= 0 q$i@486@01) (< q$i@486@01 3))
+    (=
+      (Seq_index l$i0$result@484@01 0)
+      (Seq_index l$i0$result@484@01 q$i@486@01)))
+  :pattern ((Seq_index l$i0$result@484@01 q$i@486@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1301@24@1301@94|))))
+(check-sat)
+; unknown
+(pop) ; 27
+; 0.01s
+; (get-info :all-statistics)
+; [then-branch: 252 | QA q$i@486@01 :: 0 <= q$i@486@01 && q$i@486@01 < 3 ==> l$i0$result@484@01[0] == l$i0$result@484@01[q$i@486@01] | live]
+; [else-branch: 252 | !(QA q$i@486@01 :: 0 <= q$i@486@01 && q$i@486@01 < 3 ==> l$i0$result@484@01[0] == l$i0$result@484@01[q$i@486@01]) | live]
+(set-option :timeout 0)
+(push) ; 27
+; [then-branch: 252 | QA q$i@486@01 :: 0 <= q$i@486@01 && q$i@486@01 < 3 ==> l$i0$result@484@01[0] == l$i0$result@484@01[q$i@486@01]]
+(assert (forall ((q$i@486@01 Int)) (!
+  (=>
+    (and (<= 0 q$i@486@01) (< q$i@486@01 3))
+    (=
+      (Seq_index l$i0$result@484@01 0)
+      (Seq_index l$i0$result@484@01 q$i@486@01)))
+  :pattern ((Seq_index l$i0$result@484@01 q$i@486@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1301@24@1301@94|)))
+; [eval] i1$$res == 3 * $unwrap($wrap(l$i1$xp[0]))
+; [eval] 3 * $unwrap($wrap(l$i1$xp[0]))
+; [eval] $unwrap($wrap(l$i1$xp[0]))
+; [eval] $wrap(l$i1$xp[0])
+; [eval] l$i1$xp[0]
+(push) ; 28
+(assert (not (< 0 (Seq_length l$i0$result@484@01))))
+(check-sat)
+; unsat
+(pop) ; 28
+; 0.01s
+; (get-info :all-statistics)
+(pop) ; 27
+(push) ; 27
+; [else-branch: 252 | !(QA q$i@486@01 :: 0 <= q$i@486@01 && q$i@486@01 < 3 ==> l$i0$result@484@01[0] == l$i0$result@484@01[q$i@486@01])]
+(assert (not
+  (forall ((q$i@486@01 Int)) (!
+    (=>
+      (and (<= 0 q$i@486@01) (< q$i@486@01 3))
+      (=
+        (Seq_index l$i0$result@484@01 0)
+        (Seq_index l$i0$result@484@01 q$i@486@01)))
+    :pattern ((Seq_index l$i0$result@484@01 q$i@486@01))
+    :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1301@24@1301@94|))))
+(pop) ; 27
+(pop) ; 26
+; Joined path conditions
+; Joined path conditions
+(assert (or
+  (not
+    (forall ((q$i@486@01 Int)) (!
+      (=>
+        (and (<= 0 q$i@486@01) (< q$i@486@01 3))
+        (=
+          (Seq_index l$i0$result@484@01 0)
+          (Seq_index l$i0$result@484@01 q$i@486@01)))
+      :pattern ((Seq_index l$i0$result@484@01 q$i@486@01))
+      :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1301@24@1301@94|)))
+  (forall ((q$i@486@01 Int)) (!
+    (=>
+      (and (<= 0 q$i@486@01) (< q$i@486@01 3))
+      (=
+        (Seq_index l$i0$result@484@01 0)
+        (Seq_index l$i0$result@484@01 q$i@486@01)))
+    :pattern ((Seq_index l$i0$result@484@01 q$i@486@01))
+    :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1301@24@1301@94|))))
+(pop) ; 25
+(push) ; 25
+; [else-branch: 249 | !(i1$$succ@435@01)]
+(assert (not i1$$succ@435@01))
+(pop) ; 25
+(pop) ; 24
+; Joined path conditions
+(assert (=>
+  i1$$succ@435@01
+  (and
+    i1$$succ@435@01
+    (forall ((q$i@486@01 Int)) (!
+      (and
+        (=>
+          (<= 0 q$i@486@01)
+          (and (<= 0 q$i@486@01) (or (not (< q$i@486@01 3)) (< q$i@486@01 3))))
+        (or (not (<= 0 q$i@486@01)) (<= 0 q$i@486@01)))
+      :pattern ((Seq_index l$i0$result@484@01 q$i@486@01))
+      :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1301@24@1301@94-aux|))
+    (or
+      (not
+        (forall ((q$i@486@01 Int)) (!
+          (=>
+            (and (<= 0 q$i@486@01) (< q$i@486@01 3))
+            (=
+              (Seq_index l$i0$result@484@01 0)
+              (Seq_index l$i0$result@484@01 q$i@486@01)))
+          :pattern ((Seq_index l$i0$result@484@01 q$i@486@01))
+          :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1301@24@1301@94|)))
+      (forall ((q$i@486@01 Int)) (!
+        (=>
+          (and (<= 0 q$i@486@01) (< q$i@486@01 3))
+          (=
+            (Seq_index l$i0$result@484@01 0)
+            (Seq_index l$i0$result@484@01 q$i@486@01)))
+        :pattern ((Seq_index l$i0$result@484@01 q$i@486@01))
+        :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1301@24@1301@94|))))))
+; Joined path conditions
+(assert (or (not i1$$succ@435@01) i1$$succ@435@01))
+(assert (=>
+  (and
+    i1$$succ@435@01
+    (forall ((q$i@486@01 Int)) (!
+      (=>
+        (and (<= 0 q$i@486@01) (< q$i@486@01 3))
+        (=
+          (Seq_index l$i0$result@484@01 0)
+          (Seq_index l$i0$result@484@01 q$i@486@01)))
+      :pattern ((Seq_index l$i0$result@484@01 q$i@486@01))
+      :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1301@24@1301@94|)))
+  (=
+    i1$$res@436@01
+    (* 3 ($unwrap<Int> ($wrap<$Int> (Seq_index l$i0$result@484@01 0)))))))
+; State saturation: after inhale
+(set-option :timeout 20)
+(check-sat)
+; unknown
+; [eval] !i1$$succ
+(set-option :timeout 0)
+(push) ; 24
+(set-option :timeout 10)
+(assert (not i1$$succ@435@01))
+(check-sat)
+; unknown
+(pop) ; 24
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 24
+(set-option :timeout 10)
+(assert (not (not i1$$succ@435@01)))
+(check-sat)
+; unknown
+(pop) ; 24
+; 0.01s
+; (get-info :all-statistics)
+; [then-branch: 253 | !(i1$$succ@435@01) | live]
+; [else-branch: 253 | i1$$succ@435@01 | live]
+(set-option :timeout 0)
+(push) ; 24
+; [then-branch: 253 | !(i1$$succ@435@01)]
+(assert (not i1$$succ@435@01))
+; [exec]
+; label revert
+; [exec]
+; $succ := false
+; [exec]
+; $res := l$havoc
+; [exec]
+; self := $pre_self
+; [exec]
+; $contracts := $pre_$contracts
+; [exec]
+; $old_self := $pre_self
+; [exec]
+; $old_$contracts := $pre_$contracts
+; [exec]
+; label end
+; [eval] !$succ
+(push) ; 25
+(set-option :timeout 10)
+(assert (not false))
+(check-sat)
+; unknown
+(pop) ; 25
+; 0.01s
+; (get-info :all-statistics)
+; [then-branch: 254 | True | live]
+; [else-branch: 254 | False | dead]
+(set-option :timeout 0)
+(push) ; 25
+; [then-branch: 254 | True]
+; [exec]
+; inhale l$havoc$1 >= 0
+(declare-const $t@487@01 $Snap)
+(assert (= $t@487@01 $Snap.unit))
+; [eval] l$havoc$1 >= 0
+(assert (>= l$havoc$1@443@01 0))
+; State saturation: after inhale
+(set-option :timeout 20)
+(check-sat)
+; unknown
+; [exec]
+; self := ($struct_set(self, 3, ($struct_get($struct_loc(self, 3)): Int) +
+;   l$havoc$1): $Struct)
+; [eval] ($struct_set(self, 3, ($struct_get($struct_loc(self, 3)): Int) + l$havoc$1): $Struct)
+; [eval] ($struct_get($struct_loc(self, 3)): Int) + l$havoc$1
+; [eval] ($struct_get($struct_loc(self, 3)): Int)
+; [eval] $struct_loc(self, 3)
+(declare-const self@488@01 $Struct)
+(assert (=
+  self@488@01
+  ($struct_set<$Struct> self@422@01 3 (+
+    ($struct_get<Int> ($struct_loc<Int> self@422@01 3))
+    l$havoc$1@443@01))))
+; [exec]
+; $contracts := l$havoc$2
+(pop) ; 25
+; [then-branch: 255 | False | dead]
+; [else-branch: 255 | True | live]
+(set-option :timeout 0)
+(push) ; 25
+; [else-branch: 255 | True]
+(pop) ; 25
+(pop) ; 24
+(push) ; 24
+; [else-branch: 253 | i1$$succ@435@01]
+(assert i1$$succ@435@01)
+(pop) ; 24
+; [eval] !!i1$$succ
+; [eval] !i1$$succ
+(push) ; 24
+(set-option :timeout 10)
+(assert (not (not i1$$succ@435@01)))
+(check-sat)
+; unknown
+(pop) ; 24
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 24
+(set-option :timeout 10)
+(assert (not i1$$succ@435@01))
+(check-sat)
+; unknown
+(pop) ; 24
+; 0.01s
+; (get-info :all-statistics)
+; [then-branch: 256 | i1$$succ@435@01 | live]
+; [else-branch: 256 | !(i1$$succ@435@01) | live]
+(set-option :timeout 0)
+(push) ; 24
+; [then-branch: 256 | i1$$succ@435@01]
+(assert i1$$succ@435@01)
+; [exec]
+; l$D := $wrap(i1$$res)
+; [eval] $wrap(i1$$res)
+(declare-const l$D@489@01 $Int)
+(assert (= l$D@489@01 ($wrap<$Int> i1$$res@436@01)))
+; [exec]
+; inhale 0 <= l$raw_ret
+(declare-const $t@490@01 $Snap)
+(assert (= $t@490@01 $Snap.unit))
+; [eval] 0 <= l$raw_ret
+(assert (<= 0 l$raw_ret@439@01))
+; State saturation: after inhale
+(set-option :timeout 20)
+(check-sat)
+; unknown
+(set-option :timeout 0)
+(push) ; 25
+(set-option :timeout 10)
+(assert (not (not l$send_fail@438@01)))
+(check-sat)
+; unknown
+(pop) ; 25
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 25
+(set-option :timeout 10)
+(assert (not l$send_fail@438@01))
+(check-sat)
+; unknown
+(pop) ; 25
+; 0.01s
+; (get-info :all-statistics)
+; [then-branch: 257 | l$send_fail@438@01 | live]
+; [else-branch: 257 | !(l$send_fail@438@01) | live]
+(set-option :timeout 0)
+(push) ; 25
+; [then-branch: 257 | l$send_fail@438@01]
+(assert l$send_fail@438@01)
+; [exec]
+; inhale acc($failed(($struct_get($struct_loc(self, 2)): Int)), write)
+; [eval] ($struct_get($struct_loc(self, 2)): Int)
+; [eval] $struct_loc(self, 2)
+(declare-const $t@491@01 $Snap)
+; State saturation: after inhale
+(set-option :timeout 20)
+(check-sat)
+; unknown
+; [exec]
+; label revert
+; [exec]
+; $succ := false
+; [exec]
+; $res := l$havoc
+; [exec]
+; self := $pre_self
+; [exec]
+; $contracts := $pre_$contracts
+; [exec]
+; $old_self := $pre_self
+; [exec]
+; $old_$contracts := $pre_$contracts
+; [exec]
+; label end
+; [eval] !$succ
+(set-option :timeout 0)
+(push) ; 26
+(set-option :timeout 10)
+(assert (not false))
+(check-sat)
+; unknown
+(pop) ; 26
+; 0.01s
+; (get-info :all-statistics)
+; [then-branch: 258 | True | live]
+; [else-branch: 258 | False | dead]
+(set-option :timeout 0)
+(push) ; 26
+; [then-branch: 258 | True]
+; [exec]
+; inhale l$havoc$1 >= 0
+(declare-const $t@492@01 $Snap)
+(assert (= $t@492@01 $Snap.unit))
+; [eval] l$havoc$1 >= 0
+(assert (>= l$havoc$1@443@01 0))
+; State saturation: after inhale
+(set-option :timeout 20)
+(check-sat)
+; unknown
+; [exec]
+; self := ($struct_set(self, 3, ($struct_get($struct_loc(self, 3)): Int) +
+;   l$havoc$1): $Struct)
+; [eval] ($struct_set(self, 3, ($struct_get($struct_loc(self, 3)): Int) + l$havoc$1): $Struct)
+; [eval] ($struct_get($struct_loc(self, 3)): Int) + l$havoc$1
+; [eval] ($struct_get($struct_loc(self, 3)): Int)
+; [eval] $struct_loc(self, 3)
+(declare-const self@493@01 $Struct)
+(assert (=
+  self@493@01
+  ($struct_set<$Struct> self@422@01 3 (+
+    ($struct_get<Int> ($struct_loc<Int> self@422@01 3))
+    l$havoc$1@443@01))))
+; [exec]
+; $contracts := l$havoc$2
+(pop) ; 26
+; [then-branch: 259 | False | dead]
+; [else-branch: 259 | True | live]
+(set-option :timeout 0)
+(push) ; 26
+; [else-branch: 259 | True]
+(pop) ; 26
+(pop) ; 25
+(push) ; 25
+; [else-branch: 257 | !(l$send_fail@438@01)]
+(assert (not l$send_fail@438@01))
+(pop) ; 25
+; [eval] !l$send_fail
+(push) ; 25
+(set-option :timeout 10)
+(assert (not l$send_fail@438@01))
+(check-sat)
+; unknown
+(pop) ; 25
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 25
+(set-option :timeout 10)
+(assert (not (not l$send_fail@438@01)))
+(check-sat)
+; unknown
+(pop) ; 25
+; 0.01s
+; (get-info :all-statistics)
+; [then-branch: 260 | !(l$send_fail@438@01) | live]
+; [else-branch: 260 | l$send_fail@438@01 | live]
+(set-option :timeout 0)
+(push) ; 25
+; [then-branch: 260 | !(l$send_fail@438@01)]
+(assert (not l$send_fail@438@01))
+; [exec]
+; $old_self := self
+; [exec]
+; $old_$contracts := $contracts
+; [exec]
+; $old_self := self
+; [exec]
+; $old_$contracts := $contracts
+; [exec]
+; l$token_supply := $wrap(l$raw_ret)
+; [eval] $wrap(l$raw_ret)
+(declare-const l$token_supply@494@01 $Int)
+(assert (= l$token_supply@494@01 ($wrap<$Int> l$raw_ret@439@01)))
+; [eval] $unwrap(l$D) * 1000000000000000000 < 0
+; [eval] $unwrap(l$D) * 1000000000000000000
+; [eval] $unwrap(l$D)
+(push) ; 26
+(set-option :timeout 10)
+(assert (not (not (< (* ($unwrap<Int> l$D@489@01) 1000000000000000000) 0))))
+(check-sat)
+; unknown
+(pop) ; 26
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 26
+(set-option :timeout 10)
+(assert (not (< (* ($unwrap<Int> l$D@489@01) 1000000000000000000) 0)))
+(check-sat)
+; unknown
+(pop) ; 26
+; 0.01s
+; (get-info :all-statistics)
+; [then-branch: 261 | $unwrap[Int](l$D@489@01) * 1000000000000000000 < 0 | live]
+; [else-branch: 261 | !($unwrap[Int](l$D@489@01) * 1000000000000000000 < 0) | live]
+(set-option :timeout 0)
+(push) ; 26
+; [then-branch: 261 | $unwrap[Int](l$D@489@01) * 1000000000000000000 < 0]
+(assert (< (* ($unwrap<Int> l$D@489@01) 1000000000000000000) 0))
+; [exec]
+; label revert
+; [exec]
+; $succ := false
+; [exec]
+; $res := l$havoc
+; [exec]
+; self := $pre_self
+; [exec]
+; $contracts := $pre_$contracts
+; [exec]
+; $old_self := $pre_self
+; [exec]
+; $old_$contracts := $pre_$contracts
+; [exec]
+; label end
+; [eval] !$succ
+(push) ; 27
+(set-option :timeout 10)
+(assert (not false))
+(check-sat)
+; unknown
+(pop) ; 27
+; 0.01s
+; (get-info :all-statistics)
+; [then-branch: 262 | True | live]
+; [else-branch: 262 | False | dead]
+(set-option :timeout 0)
+(push) ; 27
+; [then-branch: 262 | True]
+; [exec]
+; inhale l$havoc$1 >= 0
+(declare-const $t@495@01 $Snap)
+(assert (= $t@495@01 $Snap.unit))
+; [eval] l$havoc$1 >= 0
+(assert (>= l$havoc$1@443@01 0))
+; State saturation: after inhale
+(set-option :timeout 20)
+(check-sat)
+; unknown
+; [exec]
+; self := ($struct_set(self, 3, ($struct_get($struct_loc(self, 3)): Int) +
+;   l$havoc$1): $Struct)
+; [eval] ($struct_set(self, 3, ($struct_get($struct_loc(self, 3)): Int) + l$havoc$1): $Struct)
+; [eval] ($struct_get($struct_loc(self, 3)): Int) + l$havoc$1
+; [eval] ($struct_get($struct_loc(self, 3)): Int)
+; [eval] $struct_loc(self, 3)
+(declare-const self@496@01 $Struct)
+(assert (=
+  self@496@01
+  ($struct_set<$Struct> self@422@01 3 (+
+    ($struct_get<Int> ($struct_loc<Int> self@422@01 3))
+    l$havoc$1@443@01))))
+; [exec]
+; $contracts := l$havoc$2
+(pop) ; 27
+; [then-branch: 263 | False | dead]
+; [else-branch: 263 | True | live]
+(set-option :timeout 0)
+(push) ; 27
+; [else-branch: 263 | True]
+(pop) ; 27
+(pop) ; 26
+(push) ; 26
+; [else-branch: 261 | !($unwrap[Int](l$D@489@01) * 1000000000000000000 < 0)]
+(assert (not (< (* ($unwrap<Int> l$D@489@01) 1000000000000000000) 0)))
+(pop) ; 26
+; [eval] !($unwrap(l$D) * 1000000000000000000 < 0)
+; [eval] $unwrap(l$D) * 1000000000000000000 < 0
+; [eval] $unwrap(l$D) * 1000000000000000000
+; [eval] $unwrap(l$D)
+(push) ; 26
+(set-option :timeout 10)
+(assert (not (< (* ($unwrap<Int> l$D@489@01) 1000000000000000000) 0)))
+(check-sat)
+; unknown
+(pop) ; 26
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 26
+(set-option :timeout 10)
+(assert (not (not (< (* ($unwrap<Int> l$D@489@01) 1000000000000000000) 0))))
+(check-sat)
+; unknown
+(pop) ; 26
+; 0.01s
+; (get-info :all-statistics)
+; [then-branch: 264 | !($unwrap[Int](l$D@489@01) * 1000000000000000000 < 0) | live]
+; [else-branch: 264 | $unwrap[Int](l$D@489@01) * 1000000000000000000 < 0 | live]
+(set-option :timeout 0)
+(push) ; 26
+; [then-branch: 264 | !($unwrap[Int](l$D@489@01) * 1000000000000000000 < 0)]
+(assert (not (< (* ($unwrap<Int> l$D@489@01) 1000000000000000000) 0)))
+; [eval] $unwrap(l$token_supply) == 0
+; [eval] $unwrap(l$token_supply)
+(push) ; 27
+(set-option :timeout 10)
+(assert (not (not (= ($unwrap<Int> l$token_supply@494@01) 0))))
+(check-sat)
+; unknown
+(pop) ; 27
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 27
+(set-option :timeout 10)
+(assert (not (= ($unwrap<Int> l$token_supply@494@01) 0)))
+(check-sat)
+; unknown
+(pop) ; 27
+; 0.01s
+; (get-info :all-statistics)
+; [then-branch: 265 | $unwrap[Int](l$token_supply@494@01) == 0 | live]
+; [else-branch: 265 | $unwrap[Int](l$token_supply@494@01) != 0 | live]
+(set-option :timeout 0)
+(push) ; 27
+; [then-branch: 265 | $unwrap[Int](l$token_supply@494@01) == 0]
+(assert (= ($unwrap<Int> l$token_supply@494@01) 0))
+; [exec]
+; label revert
+; [exec]
+; $succ := false
+; [exec]
+; $res := l$havoc
+; [exec]
+; self := $pre_self
+; [exec]
+; $contracts := $pre_$contracts
+; [exec]
+; $old_self := $pre_self
+; [exec]
+; $old_$contracts := $pre_$contracts
+; [exec]
+; label end
+; [eval] !$succ
+(push) ; 28
+(set-option :timeout 10)
+(assert (not false))
+(check-sat)
+; unknown
+(pop) ; 28
+; 0.01s
+; (get-info :all-statistics)
+; [then-branch: 266 | True | live]
+; [else-branch: 266 | False | dead]
+(set-option :timeout 0)
+(push) ; 28
+; [then-branch: 266 | True]
+; [exec]
+; inhale l$havoc$1 >= 0
+(declare-const $t@497@01 $Snap)
+(assert (= $t@497@01 $Snap.unit))
+; [eval] l$havoc$1 >= 0
+(assert (>= l$havoc$1@443@01 0))
+; State saturation: after inhale
+(set-option :timeout 20)
+(check-sat)
+; unknown
+; [exec]
+; self := ($struct_set(self, 3, ($struct_get($struct_loc(self, 3)): Int) +
+;   l$havoc$1): $Struct)
+; [eval] ($struct_set(self, 3, ($struct_get($struct_loc(self, 3)): Int) + l$havoc$1): $Struct)
+; [eval] ($struct_get($struct_loc(self, 3)): Int) + l$havoc$1
+; [eval] ($struct_get($struct_loc(self, 3)): Int)
+; [eval] $struct_loc(self, 3)
+(declare-const self@498@01 $Struct)
+(assert (=
+  self@498@01
+  ($struct_set<$Struct> self@422@01 3 (+
+    ($struct_get<Int> ($struct_loc<Int> self@422@01 3))
+    l$havoc$1@443@01))))
+; [exec]
+; $contracts := l$havoc$2
+(pop) ; 28
+; [then-branch: 267 | False | dead]
+; [else-branch: 267 | True | live]
+(set-option :timeout 0)
+(push) ; 28
+; [else-branch: 267 | True]
+(pop) ; 28
+(pop) ; 27
+(push) ; 27
+; [else-branch: 265 | $unwrap[Int](l$token_supply@494@01) != 0]
+(assert (not (= ($unwrap<Int> l$token_supply@494@01) 0)))
+(pop) ; 27
+; [eval] !($unwrap(l$token_supply) == 0)
+; [eval] $unwrap(l$token_supply) == 0
+; [eval] $unwrap(l$token_supply)
+(push) ; 27
+(set-option :timeout 10)
+(assert (not (= ($unwrap<Int> l$token_supply@494@01) 0)))
+(check-sat)
+; unknown
+(pop) ; 27
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 27
+(set-option :timeout 10)
+(assert (not (not (= ($unwrap<Int> l$token_supply@494@01) 0))))
+(check-sat)
+; unknown
+(pop) ; 27
+; 0.01s
+; (get-info :all-statistics)
+; [then-branch: 268 | $unwrap[Int](l$token_supply@494@01) != 0 | live]
+; [else-branch: 268 | $unwrap[Int](l$token_supply@494@01) == 0 | live]
+(set-option :timeout 0)
+(push) ; 27
+; [then-branch: 268 | $unwrap[Int](l$token_supply@494@01) != 0]
+(assert (not (= ($unwrap<Int> l$token_supply@494@01) 0)))
+; [eval] $unwrap((0 == $unwrap(l$token_supply) ? $wrap($unwrap($wrap($unwrap(l$D) * 1000000000000000000)) \ $unwrap(l$token_supply)) : $w_div($wrap($unwrap(l$D) * 1000000000000000000), l$token_supply))) < 0
+; [eval] $unwrap((0 == $unwrap(l$token_supply) ? $wrap($unwrap($wrap($unwrap(l$D) * 1000000000000000000)) \ $unwrap(l$token_supply)) : $w_div($wrap($unwrap(l$D) * 1000000000000000000), l$token_supply)))
+; [eval] (0 == $unwrap(l$token_supply) ? $wrap($unwrap($wrap($unwrap(l$D) * 1000000000000000000)) \ $unwrap(l$token_supply)) : $w_div($wrap($unwrap(l$D) * 1000000000000000000), l$token_supply))
+; [eval] 0 == $unwrap(l$token_supply)
+; [eval] $unwrap(l$token_supply)
+(push) ; 28
+(push) ; 29
+(set-option :timeout 10)
+(assert (not (not (= 0 ($unwrap<Int> l$token_supply@494@01)))))
+(check-sat)
+; unsat
+(pop) ; 29
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 269 | 0 == $unwrap[Int](l$token_supply@494@01) | dead]
+; [else-branch: 269 | 0 != $unwrap[Int](l$token_supply@494@01) | live]
+(set-option :timeout 0)
+(push) ; 29
+; [else-branch: 269 | 0 != $unwrap[Int](l$token_supply@494@01)]
+(assert (not (= 0 ($unwrap<Int> l$token_supply@494@01))))
+; [eval] $w_div($wrap($unwrap(l$D) * 1000000000000000000), l$token_supply)
+; [eval] $wrap($unwrap(l$D) * 1000000000000000000)
+; [eval] $unwrap(l$D) * 1000000000000000000
+; [eval] $unwrap(l$D)
+(pop) ; 29
+(pop) ; 28
+; Joined path conditions
+(assert (not (= 0 ($unwrap<Int> l$token_supply@494@01))))
+(push) ; 28
+(set-option :timeout 10)
+(assert (not (not
+  (<
+    ($unwrap<Int> ($w_div<$Int> ($wrap<$Int> (*
+      ($unwrap<Int> l$D@489@01)
+      1000000000000000000)) l$token_supply@494@01))
+    0))))
+(check-sat)
+; unsat
+(pop) ; 28
+; 0.01s
+; (get-info :all-statistics)
+; [then-branch: 270 | $unwrap[Int]($w_div[$Int]($wrap[$Int]($unwrap[Int](l$D@489@01) * 1000000000000000000), l$token_supply@494@01)) < 0 | dead]
+; [else-branch: 270 | !($unwrap[Int]($w_div[$Int]($wrap[$Int]($unwrap[Int](l$D@489@01) * 1000000000000000000), l$token_supply@494@01)) < 0) | live]
+(set-option :timeout 0)
+(push) ; 28
+; [else-branch: 270 | !($unwrap[Int]($w_div[$Int]($wrap[$Int]($unwrap[Int](l$D@489@01) * 1000000000000000000), l$token_supply@494@01)) < 0)]
+(assert (not
+  (<
+    ($unwrap<Int> ($w_div<$Int> ($wrap<$Int> (*
+      ($unwrap<Int> l$D@489@01)
+      1000000000000000000)) l$token_supply@494@01))
+    0)))
+(pop) ; 28
+; [eval] !($unwrap((0 == $unwrap(l$token_supply) ? $wrap($unwrap($wrap($unwrap(l$D) * 1000000000000000000)) \ $unwrap(l$token_supply)) : $w_div($wrap($unwrap(l$D) * 1000000000000000000), l$token_supply))) < 0)
+; [eval] $unwrap((0 == $unwrap(l$token_supply) ? $wrap($unwrap($wrap($unwrap(l$D) * 1000000000000000000)) \ $unwrap(l$token_supply)) : $w_div($wrap($unwrap(l$D) * 1000000000000000000), l$token_supply))) < 0
+; [eval] $unwrap((0 == $unwrap(l$token_supply) ? $wrap($unwrap($wrap($unwrap(l$D) * 1000000000000000000)) \ $unwrap(l$token_supply)) : $w_div($wrap($unwrap(l$D) * 1000000000000000000), l$token_supply)))
+; [eval] (0 == $unwrap(l$token_supply) ? $wrap($unwrap($wrap($unwrap(l$D) * 1000000000000000000)) \ $unwrap(l$token_supply)) : $w_div($wrap($unwrap(l$D) * 1000000000000000000), l$token_supply))
+; [eval] 0 == $unwrap(l$token_supply)
+; [eval] $unwrap(l$token_supply)
+(push) ; 28
+; [then-branch: 271 | 0 == $unwrap[Int](l$token_supply@494@01) | dead]
+; [else-branch: 271 | 0 != $unwrap[Int](l$token_supply@494@01) | live]
+(push) ; 29
+; [else-branch: 271 | 0 != $unwrap[Int](l$token_supply@494@01)]
+; [eval] $w_div($wrap($unwrap(l$D) * 1000000000000000000), l$token_supply)
+; [eval] $wrap($unwrap(l$D) * 1000000000000000000)
+; [eval] $unwrap(l$D) * 1000000000000000000
+; [eval] $unwrap(l$D)
+(pop) ; 29
+(pop) ; 28
+; Joined path conditions
+(push) ; 28
+(set-option :timeout 10)
+(assert (not (<
+  ($unwrap<Int> ($w_div<$Int> ($wrap<$Int> (*
+    ($unwrap<Int> l$D@489@01)
+    1000000000000000000)) l$token_supply@494@01))
+  0)))
+(check-sat)
+; unknown
+(pop) ; 28
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 28
+(set-option :timeout 10)
+(assert (not (not
+  (<
+    ($unwrap<Int> ($w_div<$Int> ($wrap<$Int> (*
+      ($unwrap<Int> l$D@489@01)
+      1000000000000000000)) l$token_supply@494@01))
+    0))))
+(check-sat)
+; unsat
+(pop) ; 28
+; 0.01s
+; (get-info :all-statistics)
+; [then-branch: 272 | !($unwrap[Int]($w_div[$Int]($wrap[$Int]($unwrap[Int](l$D@489@01) * 1000000000000000000), l$token_supply@494@01)) < 0) | live]
+; [else-branch: 272 | $unwrap[Int]($w_div[$Int]($wrap[$Int]($unwrap[Int](l$D@489@01) * 1000000000000000000), l$token_supply@494@01)) < 0 | dead]
+(set-option :timeout 0)
+(push) ; 28
+; [then-branch: 272 | !($unwrap[Int]($w_div[$Int]($wrap[$Int]($unwrap[Int](l$D@489@01) * 1000000000000000000), l$token_supply@494@01)) < 0)]
+(assert (not
+  (<
+    ($unwrap<Int> ($w_div<$Int> ($wrap<$Int> (*
+      ($unwrap<Int> l$D@489@01)
+      1000000000000000000)) l$token_supply@494@01))
+    0)))
+; [exec]
+; $res := $unwrap((0 == $unwrap(l$token_supply) ?
+;     $wrap($unwrap($wrap($unwrap(l$D) * 1000000000000000000)) \
+;     $unwrap(l$token_supply)) :
+;     $w_div($wrap($unwrap(l$D) * 1000000000000000000), l$token_supply)))
+; [eval] $unwrap((0 == $unwrap(l$token_supply) ? $wrap($unwrap($wrap($unwrap(l$D) * 1000000000000000000)) \ $unwrap(l$token_supply)) : $w_div($wrap($unwrap(l$D) * 1000000000000000000), l$token_supply)))
+; [eval] (0 == $unwrap(l$token_supply) ? $wrap($unwrap($wrap($unwrap(l$D) * 1000000000000000000)) \ $unwrap(l$token_supply)) : $w_div($wrap($unwrap(l$D) * 1000000000000000000), l$token_supply))
+; [eval] 0 == $unwrap(l$token_supply)
+; [eval] $unwrap(l$token_supply)
+(push) ; 29
+; [then-branch: 273 | 0 == $unwrap[Int](l$token_supply@494@01) | dead]
+; [else-branch: 273 | 0 != $unwrap[Int](l$token_supply@494@01) | live]
+(push) ; 30
+; [else-branch: 273 | 0 != $unwrap[Int](l$token_supply@494@01)]
+; [eval] $w_div($wrap($unwrap(l$D) * 1000000000000000000), l$token_supply)
+; [eval] $wrap($unwrap(l$D) * 1000000000000000000)
+; [eval] $unwrap(l$D) * 1000000000000000000
+; [eval] $unwrap(l$D)
+(pop) ; 30
+(pop) ; 29
+; Joined path conditions
+(declare-const $res@499@01 Int)
+(assert (=
+  $res@499@01
+  ($unwrap<Int> ($w_div<$Int> ($wrap<$Int> (*
+    ($unwrap<Int> l$D@489@01)
+    1000000000000000000)) l$token_supply@494@01))))
+; [exec]
+; label return
+(push) ; 29
+(set-option :timeout 10)
+(assert (not (not $out_of_gas@441@01)))
+(check-sat)
+; unknown
+(pop) ; 29
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 29
+(set-option :timeout 10)
+(assert (not $out_of_gas@441@01))
+(check-sat)
+; unknown
+(pop) ; 29
+; 0.01s
+; (get-info :all-statistics)
+; [then-branch: 274 | $out_of_gas@441@01 | live]
+; [else-branch: 274 | !($out_of_gas@441@01) | live]
+(set-option :timeout 0)
+(push) ; 29
+; [then-branch: 274 | $out_of_gas@441@01]
+(assert $out_of_gas@441@01)
+; [exec]
+; label revert
+; [exec]
+; $succ := false
+; [exec]
+; $res := l$havoc
+; [exec]
+; self := $pre_self
+; [exec]
+; $contracts := $pre_$contracts
+; [exec]
+; $old_self := $pre_self
+; [exec]
+; $old_$contracts := $pre_$contracts
+; [exec]
+; label end
+; [eval] !$succ
+(push) ; 30
+(set-option :timeout 10)
+(assert (not false))
+(check-sat)
+; unknown
+(pop) ; 30
+; 0.01s
+; (get-info :all-statistics)
+; [then-branch: 275 | True | live]
+; [else-branch: 275 | False | dead]
+(set-option :timeout 0)
+(push) ; 30
+; [then-branch: 275 | True]
+; [exec]
+; inhale l$havoc$1 >= 0
+(declare-const $t@500@01 $Snap)
+(assert (= $t@500@01 $Snap.unit))
+; [eval] l$havoc$1 >= 0
+(assert (>= l$havoc$1@443@01 0))
+; State saturation: after inhale
+(set-option :timeout 20)
+(check-sat)
+; unknown
+; [exec]
+; self := ($struct_set(self, 3, ($struct_get($struct_loc(self, 3)): Int) +
+;   l$havoc$1): $Struct)
+; [eval] ($struct_set(self, 3, ($struct_get($struct_loc(self, 3)): Int) + l$havoc$1): $Struct)
+; [eval] ($struct_get($struct_loc(self, 3)): Int) + l$havoc$1
+; [eval] ($struct_get($struct_loc(self, 3)): Int)
+; [eval] $struct_loc(self, 3)
+(declare-const self@501@01 $Struct)
+(assert (=
+  self@501@01
+  ($struct_set<$Struct> self@422@01 3 (+
+    ($struct_get<Int> ($struct_loc<Int> self@422@01 3))
+    l$havoc$1@443@01))))
+; [exec]
+; $contracts := l$havoc$2
+(pop) ; 30
+; [then-branch: 276 | False | dead]
+; [else-branch: 276 | True | live]
+(set-option :timeout 0)
+(push) ; 30
+; [else-branch: 276 | True]
+(pop) ; 30
+(pop) ; 29
+(push) ; 29
+; [else-branch: 274 | !($out_of_gas@441@01)]
+(assert (not $out_of_gas@441@01))
+(pop) ; 29
+; [eval] !$out_of_gas
+(push) ; 29
+(set-option :timeout 10)
+(assert (not $out_of_gas@441@01))
+(check-sat)
+; unknown
+(pop) ; 29
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 29
+(set-option :timeout 10)
+(assert (not (not $out_of_gas@441@01)))
+(check-sat)
+; unknown
+(pop) ; 29
+; 0.01s
+; (get-info :all-statistics)
+; [then-branch: 277 | !($out_of_gas@441@01) | live]
+; [else-branch: 277 | $out_of_gas@441@01 | live]
+(set-option :timeout 0)
+(push) ; 29
+; [then-branch: 277 | !($out_of_gas@441@01)]
+(assert (not $out_of_gas@441@01))
+; [exec]
+; label end
+; [eval] !$succ
+; [then-branch: 278 | False | dead]
+; [else-branch: 278 | True | live]
+(push) ; 30
+; [else-branch: 278 | True]
+(pop) ; 30
+(push) ; 30
+(set-option :timeout 10)
+(assert (not false))
+(check-sat)
+; unknown
+(pop) ; 30
+; 0.01s
+; (get-info :all-statistics)
+; [then-branch: 279 | True | live]
+; [else-branch: 279 | False | dead]
+(set-option :timeout 0)
+(push) ; 30
+; [then-branch: 279 | True]
+; [exec]
+; inhale l$havoc$1 >= 0
+(declare-const $t@502@01 $Snap)
+(assert (= $t@502@01 $Snap.unit))
+; [eval] l$havoc$1 >= 0
+(assert (>= l$havoc$1@443@01 0))
+; State saturation: after inhale
+(set-option :timeout 20)
+(check-sat)
+; unknown
+; [exec]
+; self := ($struct_set(self, 3, ($struct_get($struct_loc(self, 3)): Int) +
+;   l$havoc$1): $Struct)
+; [eval] ($struct_set(self, 3, ($struct_get($struct_loc(self, 3)): Int) + l$havoc$1): $Struct)
+; [eval] ($struct_get($struct_loc(self, 3)): Int) + l$havoc$1
+; [eval] ($struct_get($struct_loc(self, 3)): Int)
+; [eval] $struct_loc(self, 3)
+(declare-const self@503@01 $Struct)
+(assert (=
+  self@503@01
+  ($struct_set<$Struct> self@422@01 3 (+
+    ($struct_get<Int> ($struct_loc<Int> self@422@01 3))
+    l$havoc$1@443@01))))
+; [exec]
+; $contracts := l$havoc$2
+(pop) ; 30
+(pop) ; 29
+(set-option :timeout 0)
+(push) ; 29
+; [else-branch: 277 | $out_of_gas@441@01]
+(assert $out_of_gas@441@01)
+(pop) ; 29
+(pop) ; 28
+(pop) ; 27
+(push) ; 27
+; [else-branch: 268 | $unwrap[Int](l$token_supply@494@01) == 0]
+(assert (= ($unwrap<Int> l$token_supply@494@01) 0))
+(pop) ; 27
+(pop) ; 26
+(push) ; 26
+; [else-branch: 264 | $unwrap[Int](l$D@489@01) * 1000000000000000000 < 0]
+(assert (< (* ($unwrap<Int> l$D@489@01) 1000000000000000000) 0))
+(pop) ; 26
+(pop) ; 25
+(push) ; 25
+; [else-branch: 260 | l$send_fail@438@01]
+(assert l$send_fail@438@01)
+(pop) ; 25
+(pop) ; 24
+(push) ; 24
+; [else-branch: 256 | !(i1$$succ@435@01)]
+(assert (not i1$$succ@435@01))
+(pop) ; 24
+(pop) ; 23
+(pop) ; 22
+(pop) ; 21
+(pop) ; 20
+(pop) ; 19
+(pop) ; 18
+(pop) ; 17
+(pop) ; 16
+(pop) ; 15
+(pop) ; 14
+(pop) ; 13
+(pop) ; 12
+(pop) ; 11
+(pop) ; 10
+(pop) ; 9
+(pop) ; 8
+(pop) ; 7
+(pop) ; 6
+(pop) ; 5
+(pop) ; 4
+(pop) ; 3
+(pop) ; 2
+(pop) ; 1
+; ---------- f$__init__ ----------
+(declare-const $succ@504@01 Bool)
+(declare-const $succ@505@01 Bool)
+(push) ; 1
+; State saturation: after contract
+(set-option :timeout 50)
+(check-sat)
+; unknown
+(set-option :timeout 0)
+(push) ; 2
+(pop) ; 2
+(push) ; 2
+; [exec]
+; var msg: $Struct
+(declare-const msg@506@01 $Struct)
+; [exec]
+; var block: $Struct
+(declare-const block@507@01 $Struct)
+; [exec]
+; var chain: $Struct
+(declare-const chain@508@01 $Struct)
+; [exec]
+; var tx: $Struct
+(declare-const tx@509@01 $Struct)
+; [exec]
+; var self: $Struct
+(declare-const self@510@01 $Struct)
+; [exec]
+; var $contracts: $Map[Int, $Struct]
+(declare-const $contracts@511@01 $Map<Int~_$Struct>)
+; [exec]
+; var $old_self: $Struct
+(declare-const $old_self@512@01 $Struct)
+; [exec]
+; var $old_$contracts: $Map[Int, $Struct]
+(declare-const $old_$contracts@513@01 $Map<Int~_$Struct>)
+; [exec]
+; var $pre_self: $Struct
+(declare-const $pre_self@514@01 $Struct)
+; [exec]
+; var $pre_$contracts: $Map[Int, $Struct]
+(declare-const $pre_$contracts@515@01 $Map<Int~_$Struct>)
+; [exec]
+; var $issued_self: $Struct
+(declare-const $issued_self@516@01 $Struct)
+; [exec]
+; var $issued_$contracts: $Map[Int, $Struct]
+(declare-const $issued_$contracts@517@01 $Map<Int~_$Struct>)
+; [exec]
+; var $overflow: Bool
+(declare-const $overflow@518@01 Bool)
+; [exec]
+; var $first_public_state: Bool
+(declare-const $first_public_state@519@01 Bool)
+; [exec]
+; var l$havoc: Int
+(declare-const l$havoc@520@01 Int)
+; [exec]
+; var $out_of_gas: Bool
+(declare-const $out_of_gas@521@01 Bool)
+; [exec]
+; var l$havoc$1: Int
+(declare-const l$havoc$1@522@01 Int)
+; [exec]
+; var l$havoc$2: $Map[Int, $Struct]
+(declare-const l$havoc$2@523@01 $Map<Int~_$Struct>)
+; [exec]
+; inhale |($struct_get($struct_loc(self, 0)): Seq[Int])| == 3
+(declare-const $t@524@01 $Snap)
+(assert (= $t@524@01 $Snap.unit))
+; [eval] |($struct_get($struct_loc(self, 0)): Seq[Int])| == 3
+; [eval] |($struct_get($struct_loc(self, 0)): Seq[Int])|
+; [eval] ($struct_get($struct_loc(self, 0)): Seq[Int])
+; [eval] $struct_loc(self, 0)
+(assert (= (Seq_length ($struct_get<Seq<Int>> ($struct_loc<Int> self@510@01 0))) 3))
+; State saturation: after inhale
+(set-option :timeout 20)
+(check-sat)
+; unknown
+; [exec]
+; inhale (forall $q0: Int ::
+;     { ($struct_get($struct_loc(self, 0)): Seq[Int])[$q0] }
+;     0 <= $q0 && $q0 < |($struct_get($struct_loc(self, 0)): Seq[Int])| ==>
+;     0 <= ($struct_get($struct_loc(self, 0)): Seq[Int])[$q0])
+(declare-const $t@525@01 $Snap)
+(assert (= $t@525@01 $Snap.unit))
+; [eval] (forall $q0: Int :: { ($struct_get($struct_loc(self, 0)): Seq[Int])[$q0] } 0 <= $q0 && $q0 < |($struct_get($struct_loc(self, 0)): Seq[Int])| ==> 0 <= ($struct_get($struct_loc(self, 0)): Seq[Int])[$q0])
+(declare-const $q0@526@01 Int)
+(set-option :timeout 0)
+(push) ; 3
+; [eval] 0 <= $q0 && $q0 < |($struct_get($struct_loc(self, 0)): Seq[Int])| ==> 0 <= ($struct_get($struct_loc(self, 0)): Seq[Int])[$q0]
+; [eval] 0 <= $q0 && $q0 < |($struct_get($struct_loc(self, 0)): Seq[Int])|
+; [eval] 0 <= $q0
+(push) ; 4
+; [then-branch: 280 | !(0 <= $q0@526@01) | live]
+; [else-branch: 280 | 0 <= $q0@526@01 | live]
+(push) ; 5
+; [then-branch: 280 | !(0 <= $q0@526@01)]
+(assert (not (<= 0 $q0@526@01)))
+(pop) ; 5
+(push) ; 5
+; [else-branch: 280 | 0 <= $q0@526@01]
+(assert (<= 0 $q0@526@01))
+; [eval] $q0 < |($struct_get($struct_loc(self, 0)): Seq[Int])|
+; [eval] |($struct_get($struct_loc(self, 0)): Seq[Int])|
+; [eval] ($struct_get($struct_loc(self, 0)): Seq[Int])
+; [eval] $struct_loc(self, 0)
+(pop) ; 5
+(pop) ; 4
+; Joined path conditions
+; Joined path conditions
+(assert (or (<= 0 $q0@526@01) (not (<= 0 $q0@526@01))))
+(push) ; 4
+; [then-branch: 281 | 0 <= $q0@526@01 && $q0@526@01 < |$struct_get[Seq[Int]]($struct_loc[Int](self@510@01, 0))| | live]
+; [else-branch: 281 | !(0 <= $q0@526@01 && $q0@526@01 < |$struct_get[Seq[Int]]($struct_loc[Int](self@510@01, 0))|) | live]
+(push) ; 5
+; [then-branch: 281 | 0 <= $q0@526@01 && $q0@526@01 < |$struct_get[Seq[Int]]($struct_loc[Int](self@510@01, 0))|]
+(assert (and
+  (<= 0 $q0@526@01)
+  (<
+    $q0@526@01
+    (Seq_length ($struct_get<Seq<Int>> ($struct_loc<Int> self@510@01 0))))))
+; [eval] 0 <= ($struct_get($struct_loc(self, 0)): Seq[Int])[$q0]
+; [eval] ($struct_get($struct_loc(self, 0)): Seq[Int])[$q0]
+; [eval] ($struct_get($struct_loc(self, 0)): Seq[Int])
+; [eval] $struct_loc(self, 0)
+(push) ; 6
+(assert (not (>= $q0@526@01 0)))
+(check-sat)
+; unsat
+(pop) ; 6
+; 0.00s
+; (get-info :all-statistics)
+(pop) ; 5
+(push) ; 5
+; [else-branch: 281 | !(0 <= $q0@526@01 && $q0@526@01 < |$struct_get[Seq[Int]]($struct_loc[Int](self@510@01, 0))|)]
+(assert (not
+  (and
+    (<= 0 $q0@526@01)
+    (<
+      $q0@526@01
+      (Seq_length ($struct_get<Seq<Int>> ($struct_loc<Int> self@510@01 0)))))))
+(pop) ; 5
+(pop) ; 4
+; Joined path conditions
+; Joined path conditions
+(assert (or
+  (not
+    (and
+      (<= 0 $q0@526@01)
+      (<
+        $q0@526@01
+        (Seq_length ($struct_get<Seq<Int>> ($struct_loc<Int> self@510@01 0))))))
+  (and
+    (<= 0 $q0@526@01)
+    (<
+      $q0@526@01
+      (Seq_length ($struct_get<Seq<Int>> ($struct_loc<Int> self@510@01 0)))))))
+(pop) ; 3
+; Nested auxiliary terms: globals (aux)
+; Nested auxiliary terms: non-globals (aux)
+(assert (forall (($q0@526@01 Int)) (!
+  (and
+    (or (<= 0 $q0@526@01) (not (<= 0 $q0@526@01)))
+    (or
+      (not
+        (and
+          (<= 0 $q0@526@01)
+          (<
+            $q0@526@01
+            (Seq_length ($struct_get<Seq<Int>> ($struct_loc<Int> self@510@01 0))))))
+      (and
+        (<= 0 $q0@526@01)
+        (<
+          $q0@526@01
+          (Seq_length ($struct_get<Seq<Int>> ($struct_loc<Int> self@510@01 0)))))))
+  :pattern ((Seq_index
+    ($struct_get<Seq<Int>> ($struct_loc<Int> self@510@01 0))
+    $q0@526@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1376@11@1376@210-aux|)))
+(assert (forall (($q0@526@01 Int)) (!
+  (=>
+    (and
+      (<= 0 $q0@526@01)
+      (<
+        $q0@526@01
+        (Seq_length ($struct_get<Seq<Int>> ($struct_loc<Int> self@510@01 0)))))
+    (<=
+      0
+      (Seq_index
+        ($struct_get<Seq<Int>> ($struct_loc<Int> self@510@01 0))
+        $q0@526@01)))
+  :pattern ((Seq_index
+    ($struct_get<Seq<Int>> ($struct_loc<Int> self@510@01 0))
+    $q0@526@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1376@11@1376@210|)))
+; State saturation: after inhale
+(set-option :timeout 20)
+(check-sat)
+; unknown
+; [exec]
+; inhale 0 <= ($struct_get($struct_loc(self, 1)): Int)
+(declare-const $t@527@01 $Snap)
+(assert (= $t@527@01 $Snap.unit))
+; [eval] 0 <= ($struct_get($struct_loc(self, 1)): Int)
+; [eval] ($struct_get($struct_loc(self, 1)): Int)
+; [eval] $struct_loc(self, 1)
+(assert (<= 0 ($struct_get<Int> ($struct_loc<Int> self@510@01 1))))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale 0 <= ($struct_get($struct_loc(self, 2)): Int)
+(declare-const $t@528@01 $Snap)
+(assert (= $t@528@01 $Snap.unit))
+; [eval] 0 <= ($struct_get($struct_loc(self, 2)): Int)
+; [eval] ($struct_get($struct_loc(self, 2)): Int)
+; [eval] $struct_loc(self, 2)
+(assert (<= 0 ($struct_get<Int> ($struct_loc<Int> self@510@01 2))))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale 0 <= ($struct_get($struct_loc(self, 3)): Int)
+(declare-const $t@529@01 $Snap)
+(assert (= $t@529@01 $Snap.unit))
+; [eval] 0 <= ($struct_get($struct_loc(self, 3)): Int)
+; [eval] ($struct_get($struct_loc(self, 3)): Int)
+; [eval] $struct_loc(self, 3)
+(assert (<= 0 ($struct_get<Int> ($struct_loc<Int> self@510@01 3))))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale true
+(declare-const $t@530@01 $Snap)
+(assert (= $t@530@01 $Snap.unit))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale (forall $q1: Int ::
+;     { ($map_get(($struct_get($struct_loc(self, 6)): $Map[Int, Int]), $q1): Int) }
+;     0 <=
+;     ($map_get(($struct_get($struct_loc(self, 6)): $Map[Int, Int]), $q1): Int))
+(declare-const $t@531@01 $Snap)
+(assert (= $t@531@01 $Snap.unit))
+; [eval] (forall $q1: Int :: { ($map_get(($struct_get($struct_loc(self, 6)): $Map[Int, Int]), $q1): Int) } 0 <= ($map_get(($struct_get($struct_loc(self, 6)): $Map[Int, Int]), $q1): Int))
+(declare-const $q1@532@01 Int)
+(set-option :timeout 0)
+(push) ; 3
+; [eval] 0 <= ($map_get(($struct_get($struct_loc(self, 6)): $Map[Int, Int]), $q1): Int)
+; [eval] ($map_get(($struct_get($struct_loc(self, 6)): $Map[Int, Int]), $q1): Int)
+; [eval] ($struct_get($struct_loc(self, 6)): $Map[Int, Int])
+; [eval] $struct_loc(self, 6)
+(pop) ; 3
+; Nested auxiliary terms: globals (aux)
+; Nested auxiliary terms: non-globals (aux)
+(assert (forall (($q1@532@01 Int)) (!
+  (<=
+    0
+    ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@510@01 6)) $q1@532@01))
+  :pattern (($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@510@01 6)) $q1@532@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1381@11@1381@186|)))
+; State saturation: after inhale
+(set-option :timeout 20)
+(check-sat)
+; unknown
+; [exec]
+; inhale (forall $q1: Int ::
+;     { ($map_get(($struct_get($struct_loc(self, 6)): $Map[Int, Int]), $q1): Int) }
+;     ($map_get(($struct_get($struct_loc(self, 6)): $Map[Int, Int]), $q1): Int) <=
+;     ($map_sum(($struct_get($struct_loc(self, 6)): $Map[Int, Int])): Int))
+(declare-const $t@533@01 $Snap)
+(assert (= $t@533@01 $Snap.unit))
+; [eval] (forall $q1: Int :: { ($map_get(($struct_get($struct_loc(self, 6)): $Map[Int, Int]), $q1): Int) } ($map_get(($struct_get($struct_loc(self, 6)): $Map[Int, Int]), $q1): Int) <= ($map_sum(($struct_get($struct_loc(self, 6)): $Map[Int, Int])): Int))
+(declare-const $q1@534@01 Int)
+(set-option :timeout 0)
+(push) ; 3
+; [eval] ($map_get(($struct_get($struct_loc(self, 6)): $Map[Int, Int]), $q1): Int) <= ($map_sum(($struct_get($struct_loc(self, 6)): $Map[Int, Int])): Int)
+; [eval] ($map_get(($struct_get($struct_loc(self, 6)): $Map[Int, Int]), $q1): Int)
+; [eval] ($struct_get($struct_loc(self, 6)): $Map[Int, Int])
+; [eval] $struct_loc(self, 6)
+; [eval] ($map_sum(($struct_get($struct_loc(self, 6)): $Map[Int, Int])): Int)
+; [eval] ($struct_get($struct_loc(self, 6)): $Map[Int, Int])
+; [eval] $struct_loc(self, 6)
+(pop) ; 3
+; Nested auxiliary terms: globals (aux)
+; Nested auxiliary terms: non-globals (aux)
+(assert (forall (($q1@534@01 Int)) (!
+  (<=
+    ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@510@01 6)) $q1@534@01)
+    ($map_sum<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@510@01 6))))
+  :pattern (($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@510@01 6)) $q1@534@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1382@11@1382@253|)))
+; State saturation: after inhale
+(set-option :timeout 20)
+(check-sat)
+; unknown
+; [exec]
+; inhale (forall $q2: Int ::
+;     { ($map_get(($struct_get($struct_loc(self, 7)): $Map[Int, Int]), $q2): Int) }
+;     0 <=
+;     ($map_get(($struct_get($struct_loc(self, 7)): $Map[Int, Int]), $q2): Int))
+(declare-const $t@535@01 $Snap)
+(assert (= $t@535@01 $Snap.unit))
+; [eval] (forall $q2: Int :: { ($map_get(($struct_get($struct_loc(self, 7)): $Map[Int, Int]), $q2): Int) } 0 <= ($map_get(($struct_get($struct_loc(self, 7)): $Map[Int, Int]), $q2): Int))
+(declare-const $q2@536@01 Int)
+(set-option :timeout 0)
+(push) ; 3
+; [eval] 0 <= ($map_get(($struct_get($struct_loc(self, 7)): $Map[Int, Int]), $q2): Int)
+; [eval] ($map_get(($struct_get($struct_loc(self, 7)): $Map[Int, Int]), $q2): Int)
+; [eval] ($struct_get($struct_loc(self, 7)): $Map[Int, Int])
+; [eval] $struct_loc(self, 7)
+(pop) ; 3
+; Nested auxiliary terms: globals (aux)
+; Nested auxiliary terms: non-globals (aux)
+(assert (forall (($q2@536@01 Int)) (!
+  (<=
+    0
+    ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@510@01 7)) $q2@536@01))
+  :pattern (($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@510@01 7)) $q2@536@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1383@11@1383@186|)))
+; State saturation: after inhale
+(set-option :timeout 20)
+(check-sat)
+; unknown
+; [exec]
+; inhale (forall $q2: Int ::
+;     { ($map_get(($struct_get($struct_loc(self, 7)): $Map[Int, Int]), $q2): Int) }
+;     ($map_get(($struct_get($struct_loc(self, 7)): $Map[Int, Int]), $q2): Int) <=
+;     ($map_sum(($struct_get($struct_loc(self, 7)): $Map[Int, Int])): Int))
+(declare-const $t@537@01 $Snap)
+(assert (= $t@537@01 $Snap.unit))
+; [eval] (forall $q2: Int :: { ($map_get(($struct_get($struct_loc(self, 7)): $Map[Int, Int]), $q2): Int) } ($map_get(($struct_get($struct_loc(self, 7)): $Map[Int, Int]), $q2): Int) <= ($map_sum(($struct_get($struct_loc(self, 7)): $Map[Int, Int])): Int))
+(declare-const $q2@538@01 Int)
+(set-option :timeout 0)
+(push) ; 3
+; [eval] ($map_get(($struct_get($struct_loc(self, 7)): $Map[Int, Int]), $q2): Int) <= ($map_sum(($struct_get($struct_loc(self, 7)): $Map[Int, Int])): Int)
+; [eval] ($map_get(($struct_get($struct_loc(self, 7)): $Map[Int, Int]), $q2): Int)
+; [eval] ($struct_get($struct_loc(self, 7)): $Map[Int, Int])
+; [eval] $struct_loc(self, 7)
+; [eval] ($map_sum(($struct_get($struct_loc(self, 7)): $Map[Int, Int])): Int)
+; [eval] ($struct_get($struct_loc(self, 7)): $Map[Int, Int])
+; [eval] $struct_loc(self, 7)
+(pop) ; 3
+; Nested auxiliary terms: globals (aux)
+; Nested auxiliary terms: non-globals (aux)
+(assert (forall (($q2@538@01 Int)) (!
+  (<=
+    ($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@510@01 7)) $q2@538@01)
+    ($map_sum<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@510@01 7))))
+  :pattern (($map_get<Int> ($struct_get<$Map<Int~_Int>> ($struct_loc<Int> self@510@01 7)) $q2@538@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/vyper/testsresourcesexamplesstableswap_get_virtual_price.vy.vpr@1384@11@1384@253|)))
+; State saturation: after inhale
+(set-option :timeout 20)
+(check-sat)
+; unknown
+; [exec]
+; inhale ($struct_get($struct_loc(self, -1)): Int) ==
+;   9122519725869122497593506884710
+(declare-const $t@539@01 $Snap)
+(assert (= $t@539@01 $Snap.unit))
+; [eval] ($struct_get($struct_loc(self, -1)): Int) == 9122519725869122497593506884710
+; [eval] ($struct_get($struct_loc(self, -1)): Int)
+; [eval] $struct_loc(self, -1)
+; [eval] -1
+(assert (=
+  ($struct_get<Int> ($struct_loc<Int> self@510@01 (- 0 1)))
+  9122519725869122497593506884710))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale 0 <= $self_address()
+(declare-const $t@540@01 $Snap)
+(assert (= $t@540@01 $Snap.unit))
+; [eval] 0 <= $self_address()
+; [eval] $self_address()
+(assert (<= 0 (as $self_address<Int>  Int)))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale 0 <= ($struct_get($struct_loc(block, 0)): Int)
+(declare-const $t@541@01 $Snap)
+(assert (= $t@541@01 $Snap.unit))
+; [eval] 0 <= ($struct_get($struct_loc(block, 0)): Int)
+; [eval] ($struct_get($struct_loc(block, 0)): Int)
+; [eval] $struct_loc(block, 0)
+(assert (<= 0 ($struct_get<Int> ($struct_loc<Int> block@507@01 0))))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale 0 <= ($struct_get($struct_loc(block, 1)): Int)
+(declare-const $t@542@01 $Snap)
+(assert (= $t@542@01 $Snap.unit))
+; [eval] 0 <= ($struct_get($struct_loc(block, 1)): Int)
+; [eval] ($struct_get($struct_loc(block, 1)): Int)
+; [eval] $struct_loc(block, 1)
+(assert (<= 0 ($struct_get<Int> ($struct_loc<Int> block@507@01 1))))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale 0 <= ($struct_get($struct_loc(block, 2)): Int)
+(declare-const $t@543@01 $Snap)
+(assert (= $t@543@01 $Snap.unit))
+; [eval] 0 <= ($struct_get($struct_loc(block, 2)): Int)
+; [eval] ($struct_get($struct_loc(block, 2)): Int)
+; [eval] $struct_loc(block, 2)
+(assert (<= 0 ($struct_get<Int> ($struct_loc<Int> block@507@01 2))))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale |($struct_get($struct_loc(block, 3)): Seq[Int])| == 32
+(declare-const $t@544@01 $Snap)
+(assert (= $t@544@01 $Snap.unit))
+; [eval] |($struct_get($struct_loc(block, 3)): Seq[Int])| == 32
+; [eval] |($struct_get($struct_loc(block, 3)): Seq[Int])|
+; [eval] ($struct_get($struct_loc(block, 3)): Seq[Int])
+; [eval] $struct_loc(block, 3)
+(assert (= (Seq_length ($struct_get<Seq<Int>> ($struct_loc<Int> block@507@01 3))) 32))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale 0 <= ($struct_get($struct_loc(block, 4)): Int)
+(declare-const $t@545@01 $Snap)
+(assert (= $t@545@01 $Snap.unit))
+; [eval] 0 <= ($struct_get($struct_loc(block, 4)): Int)
+; [eval] ($struct_get($struct_loc(block, 4)): Int)
+; [eval] $struct_loc(block, 4)
+(assert (<= 0 ($struct_get<Int> ($struct_loc<Int> block@507@01 4))))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale ($struct_get($struct_loc(block, -1)): Int) ==
+;   2335365049822495359383864865678187
+(declare-const $t@546@01 $Snap)
+(assert (= $t@546@01 $Snap.unit))
+; [eval] ($struct_get($struct_loc(block, -1)): Int) == 2335365049822495359383864865678187
+; [eval] ($struct_get($struct_loc(block, -1)): Int)
+; [eval] $struct_loc(block, -1)
+; [eval] -1
+(assert (=
+  ($struct_get<Int> ($struct_loc<Int> block@507@01 (- 0 1)))
+  2335365049822495359383864865678187))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale 0 <= ($struct_get($struct_loc(msg, 0)): Int)
+(declare-const $t@547@01 $Snap)
+(assert (= $t@547@01 $Snap.unit))
+; [eval] 0 <= ($struct_get($struct_loc(msg, 0)): Int)
+; [eval] ($struct_get($struct_loc(msg, 0)): Int)
+; [eval] $struct_loc(msg, 0)
+(assert (<= 0 ($struct_get<Int> ($struct_loc<Int> msg@506@01 0))))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale 0 <= ($struct_get($struct_loc(msg, 1)): Int)
+(declare-const $t@548@01 $Snap)
+(assert (= $t@548@01 $Snap.unit))
+; [eval] 0 <= ($struct_get($struct_loc(msg, 1)): Int)
+; [eval] ($struct_get($struct_loc(msg, 1)): Int)
+; [eval] $struct_loc(msg, 1)
+(assert (<= 0 ($struct_get<Int> ($struct_loc<Int> msg@506@01 1))))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale 0 <= ($struct_get($struct_loc(msg, 2)): Int)
+(declare-const $t@549@01 $Snap)
+(assert (= $t@549@01 $Snap.unit))
+; [eval] 0 <= ($struct_get($struct_loc(msg, 2)): Int)
+; [eval] ($struct_get($struct_loc(msg, 2)): Int)
+; [eval] $struct_loc(msg, 2)
+(assert (<= 0 ($struct_get<Int> ($struct_loc<Int> msg@506@01 2))))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale ($struct_get($struct_loc(msg, -1)): Int) ==
+;   35634842679176259756224246631
+(declare-const $t@550@01 $Snap)
+(assert (= $t@550@01 $Snap.unit))
+; [eval] ($struct_get($struct_loc(msg, -1)): Int) == 35634842679176259756224246631
+; [eval] ($struct_get($struct_loc(msg, -1)): Int)
+; [eval] $struct_loc(msg, -1)
+; [eval] -1
+(assert (=
+  ($struct_get<Int> ($struct_loc<Int> msg@506@01 (- 0 1)))
+  35634842679176259756224246631))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; inhale ($struct_get($struct_loc(msg, 0)): Int) != 0
+(declare-const $t@551@01 $Snap)
+(assert (= $t@551@01 $Snap.unit))
+; [eval] ($struct_get($struct_loc(msg, 0)): Int) != 0
+; [eval] ($struct_get($struct_loc(msg, 0)): Int)
+; [eval] $struct_loc(msg, 0)
+(assert (not (= ($struct_get<Int> ($struct_loc<Int> msg@506@01 0)) 0)))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; $pre_self := self
+; [exec]
+; $pre_$contracts := $contracts
+; [exec]
+; $old_self := self
+; [exec]
+; $old_$contracts := $contracts
+; [exec]
+; $succ := true
+; [exec]
+; $overflow := false
+; [exec]
+; $first_public_state := true
+; [exec]
+; self := s$struct$self$init(($array_init(0, 3): Seq[Int]), 0, 0, 0, 0, false,
+;   ($map_init(0): $Map[Int, Int]), ($map_init(0): $Map[Int, Int]), false)
+; [eval] s$struct$self$init(($array_init(0, 3): Seq[Int]), 0, 0, 0, 0, false, ($map_init(0): $Map[Int, Int]), ($map_init(0): $Map[Int, Int]), false)
+; [eval] ($array_init(0, 3): Seq[Int])
+; [eval] ($map_init(0): $Map[Int, Int])
+; [eval] ($map_init(0): $Map[Int, Int])
+(declare-const self@552@01 $Struct)
+(assert (=
+  self@552@01
+  (s$struct$self$init<$Struct> ($array_init<Seq<Int>> 0 3) 0 0 0 0 false ($map_init<$Map<Int~_Int>> 0) ($map_init<$Map<Int~_Int>> 0) false)))
+; [exec]
+; inhale l$havoc >= 0
+(declare-const $t@553@01 $Snap)
+(assert (= $t@553@01 $Snap.unit))
+; [eval] l$havoc >= 0
+(assert (>= l$havoc@520@01 0))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; self := ($struct_set(self, 3, ($struct_get($struct_loc(self, 3)): Int) +
+;   l$havoc): $Struct)
+; [eval] ($struct_set(self, 3, ($struct_get($struct_loc(self, 3)): Int) + l$havoc): $Struct)
+; [eval] ($struct_get($struct_loc(self, 3)): Int) + l$havoc
+; [eval] ($struct_get($struct_loc(self, 3)): Int)
+; [eval] $struct_loc(self, 3)
+(declare-const self@554@01 $Struct)
+(assert (=
+  self@554@01
+  ($struct_set<$Struct> self@552@01 3 (+
+    ($struct_get<Int> ($struct_loc<Int> self@552@01 3))
+    l$havoc@520@01))))
+; [exec]
+; inhale ($struct_get($struct_loc(msg, 1)): Int) == 0
+(declare-const $t@555@01 $Snap)
+(assert (= $t@555@01 $Snap.unit))
+; [eval] ($struct_get($struct_loc(msg, 1)): Int) == 0
+; [eval] ($struct_get($struct_loc(msg, 1)): Int)
+; [eval] $struct_loc(msg, 1)
+(assert (= ($struct_get<Int> ($struct_loc<Int> msg@506@01 1)) 0))
+; State saturation: after inhale
+(check-sat)
+; unknown
+; [exec]
+; label return
+(set-option :timeout 0)
+(push) ; 3
+(set-option :timeout 10)
+(assert (not (not $out_of_gas@521@01)))
+(check-sat)
+; unknown
+(pop) ; 3
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 3
+(set-option :timeout 10)
+(assert (not $out_of_gas@521@01))
+(check-sat)
+; unknown
+(pop) ; 3
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 282 | $out_of_gas@521@01 | live]
+; [else-branch: 282 | !($out_of_gas@521@01) | live]
+(set-option :timeout 0)
+(push) ; 3
+; [then-branch: 282 | $out_of_gas@521@01]
+(assert $out_of_gas@521@01)
+; [exec]
+; label revert
+; [exec]
+; $succ := false
+; [exec]
+; self := $pre_self
+; [exec]
+; $contracts := $pre_$contracts
+; [exec]
+; $old_self := $pre_self
+; [exec]
+; $old_$contracts := $pre_$contracts
+; [exec]
+; label end
+(push) ; 4
+(set-option :timeout 10)
+(assert (not false))
+(check-sat)
+; unknown
+(pop) ; 4
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 283 | True | live]
+; [else-branch: 283 | False | dead]
+(set-option :timeout 0)
+(push) ; 4
+; [then-branch: 283 | True]
+; [exec]
+; $old_self := self
+; [eval] !$succ
+(push) ; 5
+(set-option :timeout 10)
+(assert (not false))
+(check-sat)
+; unknown
+(pop) ; 5
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 284 | True | live]
+; [else-branch: 284 | False | dead]
+(set-option :timeout 0)
+(push) ; 5
+; [then-branch: 284 | True]
+; [exec]
+; inhale l$havoc$1 >= 0
+(declare-const $t@556@01 $Snap)
+(assert (= $t@556@01 $Snap.unit))
+; [eval] l$havoc$1 >= 0
+(assert (>= l$havoc$1@522@01 0))
+; State saturation: after inhale
+(set-option :timeout 20)
+(check-sat)
+; unknown
+; [exec]
+; self := ($struct_set(self, 3, ($struct_get($struct_loc(self, 3)): Int) +
+;   l$havoc$1): $Struct)
+; [eval] ($struct_set(self, 3, ($struct_get($struct_loc(self, 3)): Int) + l$havoc$1): $Struct)
+; [eval] ($struct_get($struct_loc(self, 3)): Int) + l$havoc$1
+; [eval] ($struct_get($struct_loc(self, 3)): Int)
+; [eval] $struct_loc(self, 3)
+(declare-const self@557@01 $Struct)
+(assert (=
+  self@557@01
+  ($struct_set<$Struct> self@510@01 3 (+
+    ($struct_get<Int> ($struct_loc<Int> self@510@01 3))
+    l$havoc$1@522@01))))
+; [exec]
+; $contracts := l$havoc$2
+(set-option :timeout 0)
+(push) ; 6
+(set-option :timeout 10)
+(assert (not false))
+(check-sat)
+; unknown
+(pop) ; 6
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 285 | True | live]
+; [else-branch: 285 | False | dead]
+(set-option :timeout 0)
+(push) ; 6
+; [then-branch: 285 | True]
+; [exec]
+; $old_self := self
+(pop) ; 6
+; [eval] !$first_public_state
+; [then-branch: 286 | False | dead]
+; [else-branch: 286 | True | live]
+(push) ; 6
+; [else-branch: 286 | True]
+(pop) ; 6
+(pop) ; 5
+; [then-branch: 287 | False | dead]
+; [else-branch: 287 | True | live]
+(push) ; 5
+; [else-branch: 287 | True]
+(pop) ; 5
+(pop) ; 4
+; [eval] !$first_public_state
+; [then-branch: 288 | False | dead]
+; [else-branch: 288 | True | live]
+(push) ; 4
+; [else-branch: 288 | True]
+(pop) ; 4
+(pop) ; 3
+(push) ; 3
+; [else-branch: 282 | !($out_of_gas@521@01)]
+(assert (not $out_of_gas@521@01))
+(pop) ; 3
+; [eval] !$out_of_gas
+(push) ; 3
+(set-option :timeout 10)
+(assert (not $out_of_gas@521@01))
+(check-sat)
+; unknown
+(pop) ; 3
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 3
+(set-option :timeout 10)
+(assert (not (not $out_of_gas@521@01)))
+(check-sat)
+; unknown
+(pop) ; 3
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 289 | !($out_of_gas@521@01) | live]
+; [else-branch: 289 | $out_of_gas@521@01 | live]
+(set-option :timeout 0)
+(push) ; 3
+; [then-branch: 289 | !($out_of_gas@521@01)]
+(assert (not $out_of_gas@521@01))
+; [exec]
+; label end
+(push) ; 4
+(set-option :timeout 10)
+(assert (not false))
+(check-sat)
+; unknown
+(pop) ; 4
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 290 | True | live]
+; [else-branch: 290 | False | dead]
+(set-option :timeout 0)
+(push) ; 4
+; [then-branch: 290 | True]
+; [exec]
+; $old_self := self
+; [eval] !$succ
+; [then-branch: 291 | False | dead]
+; [else-branch: 291 | True | live]
+(push) ; 5
+; [else-branch: 291 | True]
+(pop) ; 5
+(push) ; 5
+(set-option :timeout 10)
+(assert (not false))
+(check-sat)
+; unknown
+(pop) ; 5
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 292 | True | live]
+; [else-branch: 292 | False | dead]
+(set-option :timeout 0)
+(push) ; 5
+; [then-branch: 292 | True]
+; [exec]
+; inhale l$havoc$1 >= 0
+(declare-const $t@558@01 $Snap)
+(assert (= $t@558@01 $Snap.unit))
+; [eval] l$havoc$1 >= 0
+(assert (>= l$havoc$1@522@01 0))
+; State saturation: after inhale
+(set-option :timeout 20)
+(check-sat)
+; unknown
+; [exec]
+; self := ($struct_set(self, 3, ($struct_get($struct_loc(self, 3)): Int) +
+;   l$havoc$1): $Struct)
+; [eval] ($struct_set(self, 3, ($struct_get($struct_loc(self, 3)): Int) + l$havoc$1): $Struct)
+; [eval] ($struct_get($struct_loc(self, 3)): Int) + l$havoc$1
+; [eval] ($struct_get($struct_loc(self, 3)): Int)
+; [eval] $struct_loc(self, 3)
+(declare-const self@559@01 $Struct)
+(assert (=
+  self@559@01
+  ($struct_set<$Struct> self@554@01 3 (+
+    ($struct_get<Int> ($struct_loc<Int> self@554@01 3))
+    l$havoc$1@522@01))))
+; [exec]
+; $contracts := l$havoc$2
+(set-option :timeout 0)
+(push) ; 6
+(set-option :timeout 10)
+(assert (not false))
+(check-sat)
+; unknown
+(pop) ; 6
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 293 | True | live]
+; [else-branch: 293 | False | dead]
+(set-option :timeout 0)
+(push) ; 6
+; [then-branch: 293 | True]
+; [exec]
+; $old_self := self
+(pop) ; 6
+; [eval] !$first_public_state
+; [then-branch: 294 | False | dead]
+; [else-branch: 294 | True | live]
+(push) ; 6
+; [else-branch: 294 | True]
+(pop) ; 6
+(pop) ; 5
+(pop) ; 4
+; [eval] !$first_public_state
+; [then-branch: 295 | False | dead]
+; [else-branch: 295 | True | live]
+(push) ; 4
+; [else-branch: 295 | True]
+(pop) ; 4
+(pop) ; 3
+(push) ; 3
+; [else-branch: 289 | $out_of_gas@521@01]
+(assert $out_of_gas@521@01)
+(pop) ; 3
+(pop) ; 2
+(pop) ; 1

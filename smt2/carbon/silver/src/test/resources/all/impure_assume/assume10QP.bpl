@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 13:11:52
+// Date:         2025-01-13 18:15:57
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/impure_assume/assume10QP.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/impure_assume/assume10QP-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -586,13 +586,13 @@ axiom !IsWandField(f_7);
 procedure m(xs1: (Set Ref), xs2: (Set Ref), xs3: (Set Ref), xs4: (Set Ref), xs5: (Set Ref), xs6: (Set Ref), xs7: (Set Ref), xs8: (Set Ref), xs9: (Set Ref), xs10: (Set Ref), xs11: (Set Ref), x: Ref, p_1: Perm) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm: Perm;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -609,8 +609,8 @@ procedure m(xs1: (Set Ref), xs2: (Set Ref), xs3: (Set Ref), xs4: (Set Ref), xs5:
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale acc(x.f, p) -- assume10QP.vpr@12.3--12.21
     perm := p_1;
@@ -1180,8 +1180,8 @@ procedure m(xs1: (Set Ref), xs2: (Set Ref), xs3: (Set Ref), xs4: (Set Ref), xs5:
   // -- Translating statement: assert acc(x.f, p) -- assume10QP.vpr@27.4--27.22
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Heap := AssertHeap;
     ExhaleWellDef0Mask := AssertMask;
+    ExhaleWellDef0Heap := AssertHeap;
     perm := p_1;
     assert {:msg "  Assert might fail. Fraction p might be negative. (assume10QP.vpr@27.11--27.22) [149925]"}
       perm >= NoPerm;
@@ -1193,8 +1193,8 @@ procedure m(xs1: (Set Ref), xs2: (Set Ref), xs3: (Set Ref), xs4: (Set Ref), xs5:
     assume state(Heap, Mask);
   
   // -- Translating statement: assert p > none ==> false -- assume10QP.vpr@30.4--30.29
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     if (NoPerm < p_1) {
       assert {:msg "  Assert might fail. Assertion false might not hold. (assume10QP.vpr@30.11--30.29) [149927]"}
         false;
@@ -1202,8 +1202,8 @@ procedure m(xs1: (Set Ref), xs2: (Set Ref), xs3: (Set Ref), xs4: (Set Ref), xs5:
     assume state(Heap, Mask);
   
   // -- Translating statement: assert |xs1| > 0 && (x in xs1) ==> p < write -- assume10QP.vpr@31.4--31.46
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     if (Set#Card(xs1) > 0 && xs1[x]) {
       assert {:msg "  Assert might fail. Assertion p < write might not hold. (assume10QP.vpr@31.11--31.46) [149928]"}
         p_1 < FullPerm;

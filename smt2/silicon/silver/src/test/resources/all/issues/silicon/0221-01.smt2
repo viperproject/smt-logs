@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 12:42:05
+; Started: 2025-01-13 17:46:35
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -173,14 +173,14 @@
 (assert (forall (($t@2@01 $Snap)) (!
   (= (MWSF_apply mwsf@3@01 $t@2@01) $Snap.unit)
   :pattern ((MWSF_apply mwsf@3@01 $t@2@01))
-  :qid |quant-u-25334|)))
+  :qid |quant-u-25276|)))
 (pop) ; 3
 (set-option :timeout 0)
 (push) ; 3
 (assert (forall (($t@2@01 $Snap)) (!
   (= (MWSF_apply mwsf@3@01 $t@2@01) $Snap.unit)
   :pattern ((MWSF_apply mwsf@3@01 $t@2@01))
-  :qid |quant-u-25335|)))
+  :qid |quant-u-25277|)))
 (assert true)
 ; [exec]
 ; assert acc(P(x), write) --* true
@@ -230,13 +230,13 @@
 (assert (forall (($t@6@01 $Snap)) (!
   (= (MWSF_apply mwsf@7@01 $t@6@01) ($Snap.combine $t@6@01 $Snap.unit))
   :pattern ((MWSF_apply mwsf@7@01 $t@6@01))
-  :qid |quant-u-25336|)))
+  :qid |quant-u-25278|)))
 (pop) ; 3
 (push) ; 3
 (assert (forall (($t@6@01 $Snap)) (!
   (= (MWSF_apply mwsf@7@01 $t@6@01) ($Snap.combine $t@6@01 $Snap.unit))
   :pattern ((MWSF_apply mwsf@7@01 $t@6@01))
-  :qid |quant-u-25337|)))
+  :qid |quant-u-25279|)))
 (assert true)
 ; [exec]
 ; assert acc(P(x), write) --*
@@ -409,7 +409,7 @@
     (MWSF_apply mwsf@16@01 $t@15@01)
     ($Snap.combine ($Snap.second $t@15@01) $Snap.unit))
   :pattern ((MWSF_apply mwsf@16@01 $t@15@01))
-  :qid |quant-u-25338|)))
+  :qid |quant-u-25280|)))
 (pop) ; 3
 (push) ; 3
 (assert (forall (($t@15@01 $Snap)) (!
@@ -417,7 +417,7 @@
     (MWSF_apply mwsf@16@01 $t@15@01)
     ($Snap.combine ($Snap.second $t@15@01) $Snap.unit))
   :pattern ((MWSF_apply mwsf@16@01 $t@15@01))
-  :qid |quant-u-25339|)))
+  :qid |quant-u-25281|)))
 (assert true)
 ; [exec]
 ; assert acc(P(y), write) && acc(P(z), write) --*
@@ -1115,6 +1115,6 @@
 (assert (forall (($t@23@01 $Snap)) (!
   (= (MWSF_apply mwsf@25@01 $t@23@01) $t@24@01)
   :pattern ((MWSF_apply mwsf@25@01 $t@23@01))
-  :qid |quant-u-25340|)))
+  :qid |quant-u-25282|)))
 (pop) ; 2
 (pop) ; 1

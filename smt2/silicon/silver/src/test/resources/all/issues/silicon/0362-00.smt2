@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 12:42:01
+; Started: 2025-01-13 17:46:31
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -1036,11 +1036,11 @@
 (assert (forall ((s@$ $Snap) (r@0@00 $Ref) (x@1@00 Int)) (!
   (= (P_state%limited s@$ r@0@00 x@1@00) (P_state s@$ r@0@00 x@1@00))
   :pattern ((P_state s@$ r@0@00 x@1@00))
-  :qid |quant-u-25250|)))
+  :qid |quant-u-25192|)))
 (assert (forall ((s@$ $Snap) (r@0@00 $Ref) (x@1@00 Int)) (!
   (P_state%stateless r@0@00 x@1@00)
   :pattern ((P_state%limited s@$ r@0@00 x@1@00))
-  :qid |quant-u-25251|)))
+  :qid |quant-u-25193|)))
 ; ---------- P ----------
 (declare-const r@3@00 $Ref)
 (declare-const x@4@00 Int)

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 12:51:33
+// Date:         2025-01-13 17:55:55
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/sequences/parallel_max.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/sequences/parallel_max-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -594,8 +594,8 @@ procedure parallel_max(a_2: Ref, start: int, end: int, kperm: Perm) returns (mx:
   var j_5: int;
   var i_2: int;
   var QPMask: MaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var i_4: int;
@@ -603,8 +603,8 @@ procedure parallel_max(a_2: Ref, start: int, end: int, kperm: Perm) returns (mx:
   var i_6: int;
   var l_5: int;
   var middle: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var i1_25: int;
   var i2_9: int;
@@ -740,8 +740,8 @@ procedure parallel_max(a_2: Ref, start: int, end: int, kperm: Perm) returns (mx:
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -884,15 +884,15 @@ procedure parallel_max(a_2: Ref, start: int, end: int, kperm: Perm) returns (mx:
         assume state(Heap, Mask);
       
       // -- Translating statement: exhale a != null -- parallel_max.vpr@39.9--39.25
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Exhale might fail. Assertion a != null might not hold. (parallel_max.vpr@39.16--39.25) [64863]"}
           a_2 != null;
         assume state(Heap, Mask);
       
       // -- Translating statement: exhale acc(a.array, wildcard) -- parallel_max.vpr@40.9--40.38
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Exhale might fail. There might be insufficient permission to access a.array (parallel_max.vpr@40.16--40.38) [64864]"}
           Mask[a_2, array] > NoPerm;
         havoc wildcard;
@@ -905,8 +905,8 @@ procedure parallel_max(a_2: Ref, start: int, end: int, kperm: Perm) returns (mx:
         assume state(Heap, Mask);
       
       // -- Translating statement: exhale 0 <= start && (start < middle && middle < |a.array|) -- parallel_max.vpr@41.9--41.66
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Exhale might fail. Assertion 0 <= start might not hold. (parallel_max.vpr@41.16--41.66) [64865]"}
           0 <= start;
         assert {:msg "  Exhale might fail. Assertion start < middle might not hold. (parallel_max.vpr@41.16--41.66) [64866]"}
@@ -923,8 +923,8 @@ procedure parallel_max(a_2: Ref, start: int, end: int, kperm: Perm) returns (mx:
   //     { (i1 in [start..middle)) }
   //     { a.array[i1] }
   //     (i1 in [start..middle)) ==> acc(a.array[i1].value, 1 / 2 * kperm)) -- parallel_max.vpr@42.9--42.98
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         
         // -- Check definedness of (forall i1: Int :: { (i1 in [start..middle)) } { a.array[i1] } (i1 in [start..middle)) ==> acc(a.array[i1].value, 1 / 2 * kperm))
           if (*) {
@@ -990,8 +990,8 @@ procedure parallel_max(a_2: Ref, start: int, end: int, kperm: Perm) returns (mx:
         assume state(Heap, Mask);
       
       // -- Translating statement: exhale |a.array| >= 1 -- parallel_max.vpr@43.9--43.30
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         
         // -- Check definedness of |a.array| >= 1
           assert {:msg "  Exhale might fail. There might be insufficient permission to access a.array (parallel_max.vpr@43.16--43.30) [64875]"}
@@ -1001,8 +1001,8 @@ procedure parallel_max(a_2: Ref, start: int, end: int, kperm: Perm) returns (mx:
         assume state(Heap, Mask);
       
       // -- Translating statement: exhale none < 1 / 2 * kperm && 1 / 2 * kperm < write -- parallel_max.vpr@44.9--44.65
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Exhale might fail. Assertion none < 1 / 2 * kperm might not hold. (parallel_max.vpr@44.16--44.65) [64877]"}
           NoPerm < 1 / 2 * kperm;
         assert {:msg "  Exhale might fail. Assertion 1 / 2 * kperm < write might not hold. (parallel_max.vpr@44.16--44.65) [64878]"}
@@ -1010,15 +1010,15 @@ procedure parallel_max(a_2: Ref, start: int, end: int, kperm: Perm) returns (mx:
         assume state(Heap, Mask);
       
       // -- Translating statement: exhale a != null -- parallel_max.vpr@47.9--47.25
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Exhale might fail. Assertion a != null might not hold. (parallel_max.vpr@47.16--47.25) [64879]"}
           a_2 != null;
         assume state(Heap, Mask);
       
       // -- Translating statement: exhale acc(a.array, wildcard) -- parallel_max.vpr@48.9--48.38
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Exhale might fail. There might be insufficient permission to access a.array (parallel_max.vpr@48.16--48.38) [64880]"}
           Mask[a_2, array] > NoPerm;
         havoc wildcard;
@@ -1031,8 +1031,8 @@ procedure parallel_max(a_2: Ref, start: int, end: int, kperm: Perm) returns (mx:
         assume state(Heap, Mask);
       
       // -- Translating statement: exhale 0 <= middle && (middle < end && end < |a.array|) -- parallel_max.vpr@49.9--49.62
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Exhale might fail. Assertion 0 <= middle might not hold. (parallel_max.vpr@49.16--49.62) [64881]"}
           0 <= middle;
         assert {:msg "  Exhale might fail. Assertion middle < end might not hold. (parallel_max.vpr@49.16--49.62) [64882]"}
@@ -1049,8 +1049,8 @@ procedure parallel_max(a_2: Ref, start: int, end: int, kperm: Perm) returns (mx:
   //     { (i2 in [middle..end)) }
   //     { a.array[i2] }
   //     (i2 in [middle..end)) ==> acc(a.array[i2].value, 1 / 2 * kperm)) -- parallel_max.vpr@50.9--50.96
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         
         // -- Check definedness of (forall i2: Int :: { (i2 in [middle..end)) } { a.array[i2] } (i2 in [middle..end)) ==> acc(a.array[i2].value, 1 / 2 * kperm))
           if (*) {
@@ -1116,8 +1116,8 @@ procedure parallel_max(a_2: Ref, start: int, end: int, kperm: Perm) returns (mx:
         assume state(Heap, Mask);
       
       // -- Translating statement: exhale |a.array| >= 1 -- parallel_max.vpr@51.9--51.30
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         
         // -- Check definedness of |a.array| >= 1
           assert {:msg "  Exhale might fail. There might be insufficient permission to access a.array (parallel_max.vpr@51.16--51.30) [64891]"}
@@ -1127,8 +1127,8 @@ procedure parallel_max(a_2: Ref, start: int, end: int, kperm: Perm) returns (mx:
         assume state(Heap, Mask);
       
       // -- Translating statement: exhale none < 1 / 2 * kperm && 1 / 2 * kperm < write -- parallel_max.vpr@52.9--52.65
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Exhale might fail. Assertion none < 1 / 2 * kperm might not hold. (parallel_max.vpr@52.16--52.65) [64893]"}
           NoPerm < 1 / 2 * kperm;
         assert {:msg "  Exhale might fail. Assertion 1 / 2 * kperm < write might not hold. (parallel_max.vpr@52.16--52.65) [64894]"}
@@ -1428,8 +1428,8 @@ procedure parallel_max(a_2: Ref, start: int, end: int, kperm: Perm) returns (mx:
   //     { (i6 in [start..end)) }
   //     { old(a.array[i6]) }
   //     (i6 in [start..end)) ==> a.array[i6].value == old(a.array[i6].value)) -- parallel_max.vpr@78.5--78.95
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall i6: Int :: { (i6 in [start..end)) } { old(a.array[i6]) } (i6 in [start..end)) ==> a.array[i6].value == old(a.array[i6].value))
       if (*) {
@@ -1467,8 +1467,8 @@ procedure parallel_max(a_2: Ref, start: int, end: int, kperm: Perm) returns (mx:
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of parallel_max might not hold. There might be insufficient permission to access a.array (parallel_max.vpr@19.11--19.33) [64936]"}
       Mask[a_2, array] > NoPerm;
     havoc wildcard;

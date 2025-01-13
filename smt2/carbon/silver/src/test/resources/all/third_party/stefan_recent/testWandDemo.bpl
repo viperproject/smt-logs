@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 13:14:25
+// Date:         2025-01-13 18:18:30
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/third_party/stefan_recent/testWandDemo.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/third_party/stefan_recent/testWandDemo-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -246,8 +246,8 @@ procedure Wand_readonly_for_writeonly__get_in_1#definedness(diz: Ref) returns (R
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var wildcard: real where wildcard > NoPerm;
   
   // -- Initializing the state
@@ -272,8 +272,8 @@ procedure Wand_readonly_for_writeonly__get_in_1#definedness(diz: Ref) returns (R
       UnfoldingMask := Mask;
       assume Wand_readonly_for_writeonly__valid_wand#trigger(UnfoldingHeap, Wand_readonly_for_writeonly__valid_wand(diz));
       assume UnfoldingHeap[null, Wand_readonly_for_writeonly__valid_wand(diz)] == CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_readonly_for_writeonly__lemma]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_readonly_for_writeonly__in_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_readonly_for_writeonly__out_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_readonly_for_writeonly__this_1]), FrameFragment((if UnfoldingHeap[diz, Wand_readonly_for_writeonly__lemma] == 1 then FrameFragment(UnfoldingHeap[UnfoldingHeap[diz, Wand_readonly_for_writeonly__this_1], WandDemo__x]) else EmptyFrame))))));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Wand_readonly_for_writeonly__valid_wand(diz) (testWandDemo.vpr@14.1--20.2) [170323]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, Wand_readonly_for_writeonly__valid_wand(diz)];
@@ -330,8 +330,8 @@ procedure Wand_readonly_for_writeonly__get_in_1#definedness(diz: Ref) returns (R
     Result := Heap[diz, Wand_readonly_for_writeonly__in_1];
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of Wand_readonly_for_writeonly__get_in_1 might not hold. Assertion result != null might not hold. (testWandDemo.vpr@17.11--17.25) [170326]"}
       Result != null;
 }
@@ -384,8 +384,8 @@ procedure Wand_readonly_for_writeonly__get_out_1#definedness(diz: Ref) returns (
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var wildcard: real where wildcard > NoPerm;
   
   // -- Initializing the state
@@ -410,8 +410,8 @@ procedure Wand_readonly_for_writeonly__get_out_1#definedness(diz: Ref) returns (
       UnfoldingMask := Mask;
       assume Wand_readonly_for_writeonly__valid_wand#trigger(UnfoldingHeap, Wand_readonly_for_writeonly__valid_wand(diz));
       assume UnfoldingHeap[null, Wand_readonly_for_writeonly__valid_wand(diz)] == CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_readonly_for_writeonly__lemma]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_readonly_for_writeonly__in_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_readonly_for_writeonly__out_1]), CombineFrames(FrameFragment(UnfoldingHeap[diz, Wand_readonly_for_writeonly__this_1]), FrameFragment((if UnfoldingHeap[diz, Wand_readonly_for_writeonly__lemma] == 1 then FrameFragment(UnfoldingHeap[UnfoldingHeap[diz, Wand_readonly_for_writeonly__this_1], WandDemo__x]) else EmptyFrame))))));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Wand_readonly_for_writeonly__valid_wand(diz) (testWandDemo.vpr@22.1--28.2) [170327]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, Wand_readonly_for_writeonly__valid_wand(diz)];
@@ -468,8 +468,8 @@ procedure Wand_readonly_for_writeonly__get_out_1#definedness(diz: Ref) returns (
     Result := Heap[diz, Wand_readonly_for_writeonly__out_1];
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of Wand_readonly_for_writeonly__get_out_1 might not hold. Assertion result != null might not hold. (testWandDemo.vpr@25.11--25.25) [170330]"}
       Result != null;
 }
@@ -516,8 +516,8 @@ procedure WandDemo__get#definedness(diz: Ref) returns (Result: int)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -541,8 +541,8 @@ procedure WandDemo__get#definedness(diz: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume WandDemo__readonly#trigger(UnfoldingHeap, WandDemo__readonly(diz));
       assume UnfoldingHeap[null, WandDemo__readonly(diz)] == FrameFragment(UnfoldingHeap[diz, WandDemo__x]);
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access WandDemo__readonly(diz) (testWandDemo.vpr@30.1--35.2) [170331]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, WandDemo__readonly(diz)];
@@ -811,11 +811,11 @@ procedure Wand_readonly_for_writeonly___apply(diz: Ref, current_thread_id: int) 
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var newVersion: FrameType;
@@ -823,8 +823,8 @@ procedure Wand_readonly_for_writeonly___apply(diz: Ref, current_thread_id: int) 
   var freshVersion: FrameType;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -849,8 +849,8 @@ procedure Wand_readonly_for_writeonly___apply(diz: Ref, current_thread_id: int) 
     // -- Check definedness of acc(WandDemo__readonly(Wand_readonly_for_writeonly__get_in_1(diz)), write)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Precondition of function Wand_readonly_for_writeonly__get_in_1 might not hold. Assertion diz != null might not hold. (testWandDemo.vpr@53.35--53.77) [170347]"}
           diz != null;
         perm := FullPerm;
@@ -872,8 +872,8 @@ procedure Wand_readonly_for_writeonly___apply(diz: Ref, current_thread_id: int) 
     // -- Check definedness of Wand_readonly_for_writeonly__get_out_1(diz) != null
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Precondition of function Wand_readonly_for_writeonly__get_out_1 might not hold. Assertion diz != null might not hold. (testWandDemo.vpr@54.12--54.55) [170349]"}
           diz != null;
         perm := FullPerm;
@@ -892,8 +892,8 @@ procedure Wand_readonly_for_writeonly___apply(diz: Ref, current_thread_id: int) 
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -904,8 +904,8 @@ procedure Wand_readonly_for_writeonly___apply(diz: Ref, current_thread_id: int) 
     // -- Check definedness of acc(WandDemo__writeonly(old(Wand_readonly_for_writeonly__get_out_1(diz))), write)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := oldHeap;
         ExhaleWellDef0Mask := oldMask;
+        ExhaleWellDef0Heap := oldHeap;
         assert {:msg "  Precondition of function Wand_readonly_for_writeonly__get_out_1 might not hold. Assertion diz != null might not hold. (testWandDemo.vpr@55.39--55.82) [170351]"}
           diz != null;
         perm := FullPerm;
@@ -926,8 +926,8 @@ procedure Wand_readonly_for_writeonly___apply(diz: Ref, current_thread_id: int) 
   // -- Translating statement: unfold acc(Wand_readonly_for_writeonly__valid_wand(diz), write) -- testWandDemo.vpr@57.3--57.66
     assume Wand_readonly_for_writeonly__valid_wand#trigger(Heap, Wand_readonly_for_writeonly__valid_wand(diz));
     assume Heap[null, Wand_readonly_for_writeonly__valid_wand(diz)] == CombineFrames(FrameFragment(Heap[diz, Wand_readonly_for_writeonly__lemma]), CombineFrames(FrameFragment(Heap[diz, Wand_readonly_for_writeonly__in_1]), CombineFrames(FrameFragment(Heap[diz, Wand_readonly_for_writeonly__out_1]), CombineFrames(FrameFragment(Heap[diz, Wand_readonly_for_writeonly__this_1]), FrameFragment((if Heap[diz, Wand_readonly_for_writeonly__lemma] == 1 then FrameFragment(Heap[Heap[diz, Wand_readonly_for_writeonly__this_1], WandDemo__x]) else EmptyFrame))))));
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Wand_readonly_for_writeonly__valid_wand(diz) might fail. There might be insufficient permission to access Wand_readonly_for_writeonly__valid_wand(diz) (testWandDemo.vpr@57.3--57.66) [170355]"}
@@ -992,8 +992,8 @@ procedure Wand_readonly_for_writeonly___apply(diz: Ref, current_thread_id: int) 
             HasDirectPerm(Mask, diz, Wand_readonly_for_writeonly__this_1);
         assume WandDemo__readonly#trigger(Heap, WandDemo__readonly(Heap[diz, Wand_readonly_for_writeonly__this_1]));
         assume Heap[null, WandDemo__readonly(Heap[diz, Wand_readonly_for_writeonly__this_1])] == FrameFragment(Heap[Heap[diz, Wand_readonly_for_writeonly__this_1], WandDemo__x]);
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Unfolding WandDemo__readonly(diz.Wand_readonly_for_writeonly__this_1) might fail. There might be insufficient permission to access WandDemo__readonly(diz.Wand_readonly_for_writeonly__this_1) (testWandDemo.vpr@59.5--59.83) [170361]"}
@@ -1020,8 +1020,8 @@ procedure Wand_readonly_for_writeonly___apply(diz: Ref, current_thread_id: int) 
         // -- Check definedness of acc(WandDemo__writeonly(diz.Wand_readonly_for_writeonly__this_1), write)
           assert {:msg "  Folding WandDemo__writeonly(diz.Wand_readonly_for_writeonly__this_1) might fail. There might be insufficient permission to access diz.Wand_readonly_for_writeonly__this_1 (testWandDemo.vpr@60.5--60.82) [170363]"}
             HasDirectPerm(Mask, diz, Wand_readonly_for_writeonly__this_1);
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Folding WandDemo__writeonly(diz.Wand_readonly_for_writeonly__this_1) might fail. There might be insufficient permission to access diz.Wand_readonly_for_writeonly__this_1.WandDemo__x (testWandDemo.vpr@60.5--60.82) [170366]"}
@@ -1046,14 +1046,14 @@ procedure Wand_readonly_for_writeonly___apply(diz: Ref, current_thread_id: int) 
       // -- Translating statement: assert acc(WandDemo__writeonly(old(Wand_readonly_for_writeonly__get_out_1(diz))), write) -- testWandDemo.vpr@61.5--61.93
         AssertHeap := Heap;
         AssertMask := Mask;
-        ExhaleWellDef0Heap := AssertHeap;
         ExhaleWellDef0Mask := AssertMask;
+        ExhaleWellDef0Heap := AssertHeap;
         
         // -- Check definedness of acc(WandDemo__writeonly(old(Wand_readonly_for_writeonly__get_out_1(diz))), write)
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef1Heap := oldHeap;
             ExhaleWellDef1Mask := oldMask;
+            ExhaleWellDef1Heap := oldHeap;
             assert {:msg "  Precondition of function Wand_readonly_for_writeonly__get_out_1 might not hold. Assertion diz != null might not hold. (testWandDemo.vpr@61.40--61.83) [170368]"}
               diz != null;
             perm := FullPerm;
@@ -1079,8 +1079,8 @@ procedure Wand_readonly_for_writeonly___apply(diz: Ref, current_thread_id: int) 
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of Wand_readonly_for_writeonly___apply might not hold. There might be insufficient permission to access WandDemo__writeonly(old(Wand_readonly_for_writeonly__get_out_1(diz))) (testWandDemo.vpr@55.11--55.92) [170372]"}
@@ -1100,8 +1100,8 @@ procedure Wand_readonly_for_writeonly___apply(diz: Ref, current_thread_id: int) 
 procedure Wand_readonly_for_writeonly__Wand_readonly_for_writeonly(current_thread_id: int) returns (sys__result: Ref)
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var perm: Perm;
@@ -1111,8 +1111,8 @@ procedure Wand_readonly_for_writeonly__Wand_readonly_for_writeonly(current_threa
   var __flatten_15: int;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -1128,8 +1128,8 @@ procedure Wand_readonly_for_writeonly__Wand_readonly_for_writeonly(current_threa
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1242,8 +1242,8 @@ procedure Wand_readonly_for_writeonly__Wand_readonly_for_writeonly(current_threa
   //   sys__result.Wand_readonly_for_writeonly__this_1 == null)))) -- testWandDemo.vpr@85.3--85.524
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Heap := AssertHeap;
     ExhaleWellDef0Mask := AssertMask;
+    ExhaleWellDef0Heap := AssertHeap;
     assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (testWandDemo.vpr@85.10--85.524) [170381]"}
       sys__result != null;
     perm := FullPerm;
@@ -1302,8 +1302,8 @@ procedure Wand_readonly_for_writeonly__Wand_readonly_for_writeonly(current_threa
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of Wand_readonly_for_writeonly__Wand_readonly_for_writeonly might not hold. Assertion sys__result != null might not hold. (testWandDemo.vpr@68.11--68.30) [170398]"}
       sys__result != null;
     perm := FullPerm;
@@ -1351,15 +1351,15 @@ procedure Wand_readonly_for_writeonly__Wand_readonly_for_writeonly(current_threa
 procedure WandDemo__WandDemo(current_thread_id: int) returns (sys__result: Ref)
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var perm: Perm;
   var diz: Ref;
   var freshObj: Ref;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var freshVersion: FrameType;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
@@ -1378,8 +1378,8 @@ procedure WandDemo__WandDemo(current_thread_id: int) returns (sys__result: Ref)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1407,8 +1407,8 @@ procedure WandDemo__WandDemo(current_thread_id: int) returns (sys__result: Ref)
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(WandDemo__writeonly(diz), write) -- testWandDemo.vpr@96.3--96.44
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding WandDemo__writeonly(diz) might fail. There might be insufficient permission to access diz.WandDemo__x (testWandDemo.vpr@96.3--96.44) [170409]"}
@@ -1437,8 +1437,8 @@ procedure WandDemo__WandDemo(current_thread_id: int) returns (sys__result: Ref)
   // -- Translating statement: assert sys__result != null && acc(WandDemo__writeonly(sys__result), write) -- testWandDemo.vpr@98.3--98.79
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Heap := AssertHeap;
     ExhaleWellDef0Mask := AssertMask;
+    ExhaleWellDef0Heap := AssertHeap;
     assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (testWandDemo.vpr@98.10--98.79) [170411]"}
       sys__result != null;
     perm := FullPerm;
@@ -1455,8 +1455,8 @@ procedure WandDemo__WandDemo(current_thread_id: int) returns (sys__result: Ref)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of WandDemo__WandDemo might not hold. Assertion sys__result != null might not hold. (testWandDemo.vpr@91.11--91.30) [170414]"}
       sys__result != null;
     perm := FullPerm;
@@ -1479,12 +1479,12 @@ procedure WandDemo__Wand_readonly_for_writeonly_lemma_1(diz: Ref, current_thread
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var vwand: Ref;
   var __flatten_2: Ref;
@@ -1503,8 +1503,8 @@ procedure WandDemo__Wand_readonly_for_writeonly_lemma_1(diz: Ref, current_thread
   var freshVersion: FrameType;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1544,8 +1544,8 @@ procedure WandDemo__Wand_readonly_for_writeonly_lemma_1(diz: Ref, current_thread
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1562,8 +1562,8 @@ procedure WandDemo__Wand_readonly_for_writeonly_lemma_1(diz: Ref, current_thread
     // -- Check definedness of Wand_readonly_for_writeonly__get_in_1(sys__result) == in_1
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := PostHeap;
         ExhaleWellDef0Mask := PostMask;
+        ExhaleWellDef0Heap := PostHeap;
         assert {:msg "  Precondition of function Wand_readonly_for_writeonly__get_in_1 might not hold. Assertion sys__result != null might not hold. (testWandDemo.vpr@113.11--113.61) [170417]"}
           sys__result != null;
         perm := FullPerm;
@@ -1583,8 +1583,8 @@ procedure WandDemo__Wand_readonly_for_writeonly_lemma_1(diz: Ref, current_thread
     // -- Check definedness of Wand_readonly_for_writeonly__get_out_1(sys__result) == out_1
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := PostHeap;
         ExhaleWellDef0Mask := PostMask;
+        ExhaleWellDef0Heap := PostHeap;
         assert {:msg "  Precondition of function Wand_readonly_for_writeonly__get_out_1 might not hold. Assertion sys__result != null might not hold. (testWandDemo.vpr@114.11--114.62) [170419]"}
           sys__result != null;
         perm := FullPerm;
@@ -1619,8 +1619,8 @@ procedure WandDemo__Wand_readonly_for_writeonly_lemma_1(diz: Ref, current_thread
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       assert {:msg "  The precondition of method Wand_readonly_for_writeonly__Wand_readonly_for_writeonly might not hold. Assertion current_thread_id >= 0 might not hold. (testWandDemo.vpr@127.3--127.93) [170421]"}
         current_thread_id >= 0;
     
@@ -1714,8 +1714,8 @@ procedure WandDemo__Wand_readonly_for_writeonly_lemma_1(diz: Ref, current_thread
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Wand_readonly_for_writeonly__valid_wand(vwand), write) -- testWandDemo.vpr@141.3--141.66
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Folding Wand_readonly_for_writeonly__valid_wand(vwand) might fail. There might be insufficient permission to access vwand.Wand_readonly_for_writeonly__lemma (testWandDemo.vpr@141.3--141.66) [170427]"}
       Mask[vwand, Wand_readonly_for_writeonly__lemma] > NoPerm;
     havoc wildcard;
@@ -1795,8 +1795,8 @@ procedure WandDemo__Wand_readonly_for_writeonly_lemma_1(diz: Ref, current_thread
   //   Wand_readonly_for_writeonly__get_out_1(sys__result) == out_1)) -- testWandDemo.vpr@144.3--144.229
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Heap := AssertHeap;
     ExhaleWellDef0Mask := AssertMask;
+    ExhaleWellDef0Heap := AssertHeap;
     assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (testWandDemo.vpr@144.10--144.229) [170441]"}
       sys__result != null;
     perm := FullPerm;
@@ -1809,8 +1809,8 @@ procedure WandDemo__Wand_readonly_for_writeonly_lemma_1(diz: Ref, current_thread
     // -- Check definedness of Wand_readonly_for_writeonly__get_in_1(sys__result) == in_1
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         assert {:msg "  Precondition of function Wand_readonly_for_writeonly__get_in_1 might not hold. Assertion sys__result != null might not hold. (testWandDemo.vpr@144.104--144.154) [170444]"}
           sys__result != null;
         perm := FullPerm;
@@ -1829,8 +1829,8 @@ procedure WandDemo__Wand_readonly_for_writeonly_lemma_1(diz: Ref, current_thread
     // -- Check definedness of Wand_readonly_for_writeonly__get_out_1(sys__result) == out_1
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         assert {:msg "  Precondition of function Wand_readonly_for_writeonly__get_out_1 might not hold. Assertion sys__result != null might not hold. (testWandDemo.vpr@144.168--144.219) [170447]"}
           sys__result != null;
         perm := FullPerm;
@@ -1853,8 +1853,8 @@ procedure WandDemo__Wand_readonly_for_writeonly_lemma_1(diz: Ref, current_thread
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of WandDemo__Wand_readonly_for_writeonly_lemma_1 might not hold. Assertion sys__result != null might not hold. (testWandDemo.vpr@111.11--111.30) [170450]"}
       sys__result != null;
     perm := FullPerm;
@@ -1881,12 +1881,12 @@ procedure WandDemo__set(diz: Ref, current_thread_id: int, v_2: int) returns (vwa
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var __flatten_9: Ref;
   var newVersion: FrameType;
@@ -1918,8 +1918,8 @@ procedure WandDemo__set(diz: Ref, current_thread_id: int, v_2: int) returns (vwa
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1940,8 +1940,8 @@ procedure WandDemo__set(diz: Ref, current_thread_id: int, v_2: int) returns (vwa
     // -- Check definedness of Wand_readonly_for_writeonly__get_in_1(vwand) == diz
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := PostHeap;
         ExhaleWellDef0Mask := PostMask;
+        ExhaleWellDef0Heap := PostHeap;
         assert {:msg "  Precondition of function Wand_readonly_for_writeonly__get_in_1 might not hold. Assertion vwand != null might not hold. (testWandDemo.vpr@155.11--155.55) [170454]"}
           vwand != null;
         perm := FullPerm;
@@ -1961,8 +1961,8 @@ procedure WandDemo__set(diz: Ref, current_thread_id: int, v_2: int) returns (vwa
     // -- Check definedness of Wand_readonly_for_writeonly__get_out_1(vwand) == diz
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := PostHeap;
         ExhaleWellDef0Mask := PostMask;
+        ExhaleWellDef0Heap := PostHeap;
         assert {:msg "  Precondition of function Wand_readonly_for_writeonly__get_out_1 might not hold. Assertion vwand != null might not hold. (testWandDemo.vpr@156.11--156.56) [170456]"}
           vwand != null;
         perm := FullPerm;
@@ -1987,8 +1987,8 @@ procedure WandDemo__set(diz: Ref, current_thread_id: int, v_2: int) returns (vwa
   // -- Translating statement: unfold acc(WandDemo__writeonly(diz), write) -- testWandDemo.vpr@161.3--161.46
     assume WandDemo__writeonly#trigger(Heap, WandDemo__writeonly(diz));
     assume Heap[null, WandDemo__writeonly(diz)] == FrameFragment(Heap[diz, WandDemo__x]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding WandDemo__writeonly(diz) might fail. There might be insufficient permission to access WandDemo__writeonly(diz) (testWandDemo.vpr@161.3--161.46) [170460]"}
@@ -2023,8 +2023,8 @@ procedure WandDemo__set(diz: Ref, current_thread_id: int, v_2: int) returns (vwa
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(WandDemo__readonly(diz), write) -- testWandDemo.vpr@165.3--165.43
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := 1 / 4;
     assert {:msg "  Folding WandDemo__readonly(diz) might fail. Fraction 1 / 4 might be negative. (testWandDemo.vpr@165.3--165.43) [170464]"}
       perm >= NoPerm;
@@ -2054,8 +2054,8 @@ procedure WandDemo__set(diz: Ref, current_thread_id: int, v_2: int) returns (vwa
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       assert {:msg "  The precondition of method WandDemo__Wand_readonly_for_writeonly_lemma_1 might not hold. Assertion diz != null might not hold. (testWandDemo.vpr@166.3--166.102) [170467]"}
         diz != null;
       assert {:msg "  The precondition of method WandDemo__Wand_readonly_for_writeonly_lemma_1 might not hold. Assertion current_thread_id >= 0 might not hold. (testWandDemo.vpr@166.3--166.102) [170468]"}
@@ -2104,8 +2104,8 @@ procedure WandDemo__set(diz: Ref, current_thread_id: int, v_2: int) returns (vwa
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of WandDemo__set might not hold. There might be insufficient permission to access WandDemo__readonly(diz) (testWandDemo.vpr@152.11--152.46) [170476]"}
@@ -2137,15 +2137,15 @@ procedure WandDemo__set(diz: Ref, current_thread_id: int, v_2: int) returns (vwa
 procedure WandDemo__demo(diz: Ref, current_thread_id: int) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var vwand: Ref;
   var d: Ref;
   var __flatten_10: Ref;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var perm: Perm;
   var i: int;
   var ExhaleHeap: HeapType;
@@ -2174,8 +2174,8 @@ procedure WandDemo__demo(diz: Ref, current_thread_id: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[vwand, $allocated];
@@ -2187,8 +2187,8 @@ procedure WandDemo__demo(diz: Ref, current_thread_id: int) returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       assert {:msg "  The precondition of method WandDemo__WandDemo might not hold. Assertion current_thread_id >= 0 might not hold. (testWandDemo.vpr@182.3--182.56) [170481]"}
         current_thread_id >= 0;
     
@@ -2217,8 +2217,8 @@ procedure WandDemo__demo(diz: Ref, current_thread_id: int) returns ()
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Loop invariant acc(WandDemo__writeonly(d), write) might not hold on entry. There might be insufficient permission to access WandDemo__writeonly(d) (testWandDemo.vpr@186.15--186.49) [170482]"}
@@ -2265,8 +2265,8 @@ procedure WandDemo__demo(diz: Ref, current_thread_id: int) returns ()
             PreCallMask := Mask;
             
             // -- Exhaling precondition
-              ExhaleWellDef0Heap := Heap;
               ExhaleWellDef0Mask := Mask;
+              ExhaleWellDef0Heap := Heap;
               assert {:msg "  The precondition of method WandDemo__set might not hold. Assertion d != null might not hold. (testWandDemo.vpr@188.5--188.52) [170483]"}
                 d != null;
               assert {:msg "  The precondition of method WandDemo__set might not hold. Assertion current_thread_id >= 0 might not hold. (testWandDemo.vpr@188.5--188.52) [170484]"}
@@ -2306,8 +2306,8 @@ procedure WandDemo__demo(diz: Ref, current_thread_id: int) returns ()
             // -- Check definedness of WandDemo__get(d)
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Heap := Heap;
                 ExhaleWellDef0Mask := Mask;
+                ExhaleWellDef0Heap := Heap;
                 assert {:msg "  Precondition of function WandDemo__get might not hold. Assertion d != null might not hold. (testWandDemo.vpr@189.21--189.37) [170486]"}
                   d != null;
                 perm := FullPerm;
@@ -2332,8 +2332,8 @@ procedure WandDemo__demo(diz: Ref, current_thread_id: int) returns ()
             // -- Check definedness of WandDemo__get(d)
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Heap := Heap;
                 ExhaleWellDef0Mask := Mask;
+                ExhaleWellDef0Heap := Heap;
                 assert {:msg "  Precondition of function WandDemo__get might not hold. Assertion d != null might not hold. (testWandDemo.vpr@191.21--191.37) [170488]"}
                   d != null;
                 perm := FullPerm;
@@ -2362,8 +2362,8 @@ procedure WandDemo__demo(diz: Ref, current_thread_id: int) returns ()
             PreCallMask := Mask;
             
             // -- Exhaling precondition
-              ExhaleWellDef0Heap := Heap;
               ExhaleWellDef0Mask := Mask;
+              ExhaleWellDef0Heap := Heap;
               assert {:msg "  The precondition of method Wand_readonly_for_writeonly___apply might not hold. Assertion vwand != null might not hold. (testWandDemo.vpr@194.5--194.66) [170490]"}
                 vwand != null;
               assert {:msg "  The precondition of method Wand_readonly_for_writeonly___apply might not hold. Assertion current_thread_id >= 0 might not hold. (testWandDemo.vpr@194.5--194.66) [170491]"}
@@ -2395,8 +2395,8 @@ procedure WandDemo__demo(diz: Ref, current_thread_id: int) returns ()
               assume state(Heap, Mask);
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Loop invariant acc(WandDemo__writeonly(d), write) might not be preserved. There might be insufficient permission to access WandDemo__writeonly(d) (testWandDemo.vpr@186.15--186.49) [170495]"}

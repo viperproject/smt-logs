@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 12:53:04
+// Date:         2025-01-13 17:57:26
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quasihavoc/havoc_qp5.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quasihavoc/havoc_qp5-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -640,17 +640,17 @@ procedure foo_1(x: Ref, y: Ref, s_2: (Seq Ref), t_2: (Seq Ref)) returns ()
   var i_4: int;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var perm_temp_quasihavoc_: Perm;
   var ExhaleHeap: HeapType;
   var newVersion: FrameType;
   var i_6: int;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var i_8_2: int;
   
   // -- Initializing the state
@@ -746,8 +746,8 @@ procedure foo_1(x: Ref, y: Ref, s_2: (Seq Ref), t_2: (Seq Ref)) returns ()
           UnfoldingMask := Mask;
           assume Pair#trigger(UnfoldingHeap, Pair(Seq#Index(s_2, i_4), Seq#Index(t_2, i_4)));
           assume UnfoldingHeap[null, Pair(Seq#Index(s_2, i_4), Seq#Index(t_2, i_4))] == CombineFrames(FrameFragment(UnfoldingHeap[Seq#Index(s_2, i_4), f_7]), FrameFragment(UnfoldingHeap[Seq#Index(t_2, i_4), f_7]));
-          ExhaleWellDef0Heap := UnfoldingHeap;
           ExhaleWellDef0Mask := UnfoldingMask;
+          ExhaleWellDef0Heap := UnfoldingHeap;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access Pair(s[i], t[i]) (havoc_qp5.vpr@13.14--14.58) [77605]"}
@@ -806,16 +806,16 @@ procedure foo_1(x: Ref, y: Ref, s_2: (Seq Ref), t_2: (Seq Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: perm_temp_quasihavoc_ := perm(Pair(x, y)) -- <no position>
     perm_temp_quasihavoc_ := Mask[null, Pair(x, y)];
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(Pair(x, y), perm_temp_quasihavoc_) -- <no position>
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := perm_temp_quasihavoc_;
     assert {:msg "  Exhale might fail. Fraction perm_temp_quasihavoc_ might be negative. (<no position>) [77615]"}
       perm >= NoPerm;
@@ -842,8 +842,8 @@ procedure foo_1(x: Ref, y: Ref, s_2: (Seq Ref), t_2: (Seq Ref)) returns ()
   // -- Translating statement: unfold acc(Pair(x, y), write) -- havoc_qp5.vpr@18.5--18.22
     assume Pair#trigger(Heap, Pair(x, y));
     assume Heap[null, Pair(x, y)] == CombineFrames(FrameFragment(Heap[x, f_7]), FrameFragment(Heap[y, f_7]));
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Pair(x, y) might fail. There might be insufficient permission to access Pair(x, y) (havoc_qp5.vpr@18.5--18.22) [77620]"}
@@ -873,8 +873,8 @@ procedure foo_1(x: Ref, y: Ref, s_2: (Seq Ref), t_2: (Seq Ref)) returns ()
   //     { t[i] }
   //     1 <= i && i < |s| ==>
   //     (unfolding acc(Pair(s[i], t[i]), write) in s[i].f == i)) -- havoc_qp5.vpr@21.5--22.54
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall i: Int :: { s[i] } { t[i] } 1 <= i && i < |s| ==> (unfolding acc(Pair(s[i], t[i]), write) in s[i].f == i))
       if (*) {
@@ -883,8 +883,8 @@ procedure foo_1(x: Ref, y: Ref, s_2: (Seq Ref), t_2: (Seq Ref)) returns ()
           UnfoldingMask := ExhaleWellDef0Mask;
           assume Pair#trigger(UnfoldingHeap, Pair(Seq#Index(s_2, i_6), Seq#Index(t_2, i_6)));
           assume UnfoldingHeap[null, Pair(Seq#Index(s_2, i_6), Seq#Index(t_2, i_6))] == CombineFrames(FrameFragment(UnfoldingHeap[Seq#Index(s_2, i_6), f_7]), FrameFragment(UnfoldingHeap[Seq#Index(t_2, i_6), f_7]));
-          ExhaleWellDef1Heap := UnfoldingHeap;
           ExhaleWellDef1Mask := UnfoldingMask;
+          ExhaleWellDef1Heap := UnfoldingHeap;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  Assert might fail. There might be insufficient permission to access Pair(s[i], t[i]) (havoc_qp5.vpr@21.12--22.54) [77623]"}
@@ -931,8 +931,8 @@ procedure foo_1(x: Ref, y: Ref, s_2: (Seq Ref), t_2: (Seq Ref)) returns ()
           UnfoldingMask := ExhaleWellDef0Mask;
           assume Pair#trigger(UnfoldingHeap, Pair(Seq#Index(s_2, i_8_2), Seq#Index(t_2, i_8_2)));
           assume UnfoldingHeap[null, Pair(Seq#Index(s_2, i_8_2), Seq#Index(t_2, i_8_2))] == CombineFrames(FrameFragment(UnfoldingHeap[Seq#Index(s_2, i_8_2), f_7]), FrameFragment(UnfoldingHeap[Seq#Index(t_2, i_8_2), f_7]));
-          ExhaleWellDef1Heap := UnfoldingHeap;
           ExhaleWellDef1Mask := UnfoldingMask;
+          ExhaleWellDef1Heap := UnfoldingHeap;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  Assert might fail. There might be insufficient permission to access Pair(s[i], t[i]) (havoc_qp5.vpr@21.12--22.54) [77633]"}

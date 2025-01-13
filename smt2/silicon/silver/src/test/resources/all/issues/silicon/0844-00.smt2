@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 12:42:42
+; Started: 2025-01-13 17:47:10
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -738,11 +738,11 @@
 (assert (forall ((s@$ $Snap) (a@0@00 Array_) (i@1@00 Int)) (!
   (= (aloc%limited s@$ a@0@00 i@1@00) (aloc s@$ a@0@00 i@1@00))
   :pattern ((aloc s@$ a@0@00 i@1@00))
-  :qid |quant-u-25956|)))
+  :qid |quant-u-25898|)))
 (assert (forall ((s@$ $Snap) (a@0@00 Array_) (i@1@00 Int)) (!
   (aloc%stateless a@0@00 i@1@00)
   :pattern ((aloc%limited s@$ a@0@00 i@1@00))
-  :qid |quant-u-25957|)))
+  :qid |quant-u-25899|)))
 (assert (forall ((s@$ $Snap) (a@0@00 Array_) (i@1@00 Int)) (!
   (let ((result@2@00 (aloc%limited s@$ a@0@00 i@1@00))) (=>
     (aloc%precondition s@$ a@0@00 i@1@00)
@@ -750,15 +750,15 @@
       (= (loc_inv_1<Array> result@2@00) a@0@00)
       (= (loc_inv_2<Int> result@2@00) i@1@00))))
   :pattern ((aloc%limited s@$ a@0@00 i@1@00))
-  :qid |quant-u-25958|)))
+  :qid |quant-u-25900|)))
 (assert (forall ((s@$ $Snap) (a@0@00 Array_) (i@1@00 Int)) (!
   (let ((result@2@00 (aloc%limited s@$ a@0@00 i@1@00))) true)
   :pattern ((aloc%limited s@$ a@0@00 i@1@00))
-  :qid |quant-u-25959|)))
+  :qid |quant-u-25901|)))
 (assert (forall ((s@$ $Snap) (a@0@00 Array_) (i@1@00 Int)) (!
   (let ((result@2@00 (aloc%limited s@$ a@0@00 i@1@00))) true)
   :pattern ((aloc%limited s@$ a@0@00 i@1@00))
-  :qid |quant-u-25960|)))
+  :qid |quant-u-25902|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (= s@$ ($Snap.combine ($Snap.first s@$) ($Snap.second s@$))))
@@ -799,11 +799,11 @@
     (aloc%precondition s@$ a@0@00 i@1@00)
     (= (aloc s@$ a@0@00 i@1@00) (array_loc<Ref> a@0@00 i@1@00)))
   :pattern ((aloc s@$ a@0@00 i@1@00))
-  :qid |quant-u-25961|)))
+  :qid |quant-u-25903|)))
 (assert (forall ((s@$ $Snap) (a@0@00 Array_) (i@1@00 Int)) (!
   true
   :pattern ((aloc s@$ a@0@00 i@1@00))
-  :qid |quant-u-25962|)))
+  :qid |quant-u-25904|)))
 ; ---------- hide0 ----------
 (declare-const x@4@00 Array_)
 (declare-const n@5@00 Int)

@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 12:37:13
+; Started: 2025-01-13 17:41:50
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -135,11 +135,11 @@
 (assert (forall ((s@$ $Snap) (ys@0@00 $Ref)) (!
   (= (sum_rec%limited s@$ ys@0@00) (sum_rec s@$ ys@0@00))
   :pattern ((sum_rec s@$ ys@0@00))
-  :qid |quant-u-19605|)))
+  :qid |quant-u-19546|)))
 (assert (forall ((s@$ $Snap) (ys@0@00 $Ref)) (!
   (sum_rec%stateless ys@0@00)
   :pattern ((sum_rec%limited s@$ ys@0@00))
-  :qid |quant-u-19606|)))
+  :qid |quant-u-19547|)))
 (assert (forall ((s@$ $Snap) (ys@0@00 $Ref)) (!
   (=>
     (sum_rec%precondition s@$ ys@0@00)
@@ -155,7 +155,7 @@
           (sum_rec%limited ($Snap.second ($Snap.second s@$)) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$))))))))
   :pattern ((sum_rec s@$ ys@0@00))
   :pattern ((sum_rec%stateless ys@0@00) (List%trigger s@$ ys@0@00))
-  :qid |quant-u-19607|)))
+  :qid |quant-u-19548|)))
 (assert (forall ((s@$ $Snap) (ys@0@00 $Ref)) (!
   (=>
     (sum_rec%precondition s@$ ys@0@00)
@@ -164,7 +164,7 @@
       true
       (sum_rec%precondition ($Snap.second ($Snap.second s@$)) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$))))))
   :pattern ((sum_rec s@$ ys@0@00))
-  :qid |quant-u-19608|)))
+  :qid |quant-u-19549|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- sum_it ----------
@@ -291,7 +291,7 @@
     (MWSF_apply mwsf@10@01 $t@9@01)
     ($Snap.combine ($Snap.first $t@9@01) $Snap.unit))
   :pattern ((MWSF_apply mwsf@10@01 $t@9@01))
-  :qid |quant-u-19609|)))
+  :qid |quant-u-19550|)))
 ; [eval] xs != null
 ; [eval] old(sum_rec(ys))
 ; [eval] sum_rec(ys)
@@ -306,7 +306,7 @@
     (MWSF_apply mwsf@10@01 $t@9@01)
     ($Snap.combine ($Snap.first $t@9@01) $Snap.unit))
   :pattern ((MWSF_apply mwsf@10@01 $t@9@01))
-  :qid |quant-u-19610|)))
+  :qid |quant-u-19551|)))
 (assert true)
 (declare-const oldXs@11@01 $Ref)
 (declare-const oldOld_sum_xs@12@01 Int)
@@ -966,7 +966,7 @@
         $Snap.unit)))
       $Snap.unit))
   :pattern ((MWSF_apply mwsf@25@01 $t@24@01))
-  :qid |quant-u-19611|)))
+  :qid |quant-u-19552|)))
 ; [eval] xs != null
 ; [eval] old(sum_rec(ys))
 ; [eval] sum_rec(ys)
@@ -999,7 +999,7 @@
         $Snap.unit)))
       $Snap.unit))
   :pattern ((MWSF_apply mwsf@25@01 $t@24@01))
-  :qid |quant-u-19612|)))
+  :qid |quant-u-19553|)))
 (assert true)
 ; Loop head block: Re-establish invariant
 ; [eval] xs != null
@@ -1384,7 +1384,7 @@
         $Snap.unit)))
       $Snap.unit))
   :pattern ((MWSF_apply mwsf@29@01 $t@28@01))
-  :qid |quant-u-19613|)))
+  :qid |quant-u-19554|)))
 ; [eval] xs != null
 ; [eval] old(sum_rec(ys))
 ; [eval] sum_rec(ys)
@@ -1416,7 +1416,7 @@
         $Snap.unit)))
       $Snap.unit))
   :pattern ((MWSF_apply mwsf@29@01 $t@28@01))
-  :qid |quant-u-19614|)))
+  :qid |quant-u-19555|)))
 (assert true)
 ; Loop head block: Re-establish invariant
 ; [eval] xs != null

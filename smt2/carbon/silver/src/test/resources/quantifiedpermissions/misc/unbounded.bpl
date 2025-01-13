@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 12:52:04
+// Date:         2025-01-13 17:56:27
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/misc/unbounded.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/misc/unbounded-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -222,14 +222,14 @@ axiom !IsWandField(f_7);
 procedure test01(y: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var z: Ref;
   var QPMask: MaskType;
   var x_10: Ref;
   var freshObj: Ref;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -242,8 +242,8 @@ procedure test01(y: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[z, $allocated];
@@ -316,15 +316,15 @@ procedure test01(y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert NN(z) -- unbounded.vpr@26.3--26.15
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion NN(z) might not hold. (unbounded.vpr@26.10--26.15) [69319]"}
       (NN(z): bool);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert z.f == 0 -- unbounded.vpr@27.3--27.18
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of z.f == 0
       assert {:msg "  Assert might fail. There might be insufficient permission to access z.f (unbounded.vpr@27.10--27.18) [69320]"}
@@ -334,8 +334,8 @@ procedure test01(y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- unbounded.vpr@32.3--32.15
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion false might not hold. (unbounded.vpr@32.10--32.15) [69322]"}
       false;
     assume state(Heap, Mask);
@@ -348,14 +348,14 @@ procedure test01(y: Ref) returns ()
 procedure test02(y: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var z: Ref;
   var QPMask: MaskType;
   var x_11: Ref;
   var freshObj: Ref;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -368,8 +368,8 @@ procedure test02(y: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[z, $allocated];
@@ -444,15 +444,15 @@ procedure test02(y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert NN(z) -- unbounded.vpr@47.3--47.15
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion NN(z) might not hold. (unbounded.vpr@47.10--47.15) [69325]"}
       (NN(z): bool);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert z.f == 0 -- unbounded.vpr@48.3--48.18
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of z.f == 0
       assert {:msg "  Assert might fail. There might be insufficient permission to access z.f (unbounded.vpr@48.10--48.18) [69326]"}
@@ -462,8 +462,8 @@ procedure test02(y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- unbounded.vpr@52.3--52.15
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion false might not hold. (unbounded.vpr@52.10--52.15) [69328]"}
       false;
     assume state(Heap, Mask);

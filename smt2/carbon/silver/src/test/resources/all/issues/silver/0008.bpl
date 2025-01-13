@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 13:27:54
+// Date:         2025-01-13 18:31:39
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0008.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0008-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -727,16 +727,16 @@ procedure test(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var a_2: int;
   var freshVersion: FrameType;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var wildcard: real where wildcard > NoPerm;
   
   // -- Initializing the state
@@ -771,8 +771,8 @@ procedure test(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale false -- 0008.vpr@19.10--19.15
     assume false;
@@ -780,8 +780,8 @@ procedure test(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- 0008.vpr@20.3--20.15
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion false might not hold. (0008.vpr@20.10--20.15) [221119]"}
       false;
     assume state(Heap, Mask);
@@ -791,18 +791,18 @@ procedure test(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert 1 + 1 > 0 -- 0008.vpr@24.3--24.19
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert 0 < 1 + 1 -- 0008.vpr@25.3--25.19
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert x.g > 1 + 1 -- 0008.vpr@26.3--26.21
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of x.g > 1 + 1
       assert {:msg "  Assert might fail. There might be insufficient permission to access x.g (0008.vpr@26.10--26.21) [221122]"}
@@ -812,8 +812,8 @@ procedure test(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert x.g > 1 + x.g -- 0008.vpr@27.3--27.23
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of x.g > 1 + x.g
       assert {:msg "  Assert might fail. There might be insufficient permission to access x.g (0008.vpr@27.10--27.23) [221124]"}
@@ -825,8 +825,8 @@ procedure test(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert x.g > x.g + 1 -- 0008.vpr@28.3--28.23
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of x.g > x.g + 1
       assert {:msg "  Assert might fail. There might be insufficient permission to access x.g (0008.vpr@28.10--28.23) [221127]"}
@@ -838,8 +838,8 @@ procedure test(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert x.f.g > x.f.g + 1 -- 0008.vpr@29.3--29.27
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of x.f.g > x.f.g + 1
       assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (0008.vpr@29.10--29.27) [221130]"}
@@ -855,13 +855,13 @@ procedure test(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert 1 != 1 - 1 * 1 -- 0008.vpr@30.3--30.24
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert sq(a) * sq(a) < a -- 0008.vpr@31.3--31.27
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of sq(a) * sq(a) < a
       if (*) {
@@ -877,8 +877,8 @@ procedure test(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert 1 + sq(a) * sq(a) + sq(x.g) != 3 -- 0008.vpr@32.3--32.42
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of 1 + sq(a) * sq(a) + sq(x.g) != 3
       if (*) {
@@ -932,8 +932,8 @@ procedure test(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(P(x), write) -- 0008.vpr@39.3--39.24
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding P(x) might fail. There might be insufficient permission to access x.g (0008.vpr@39.3--39.24) [221145]"}
@@ -958,8 +958,8 @@ procedure test(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(P(x), write) -- 0008.vpr@40.3--40.17
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding P(x) might fail. There might be insufficient permission to access x.g (0008.vpr@40.3--40.17) [221150]"}
@@ -984,8 +984,8 @@ procedure test(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert id(x).g == (unfolding acc(P(x), write) in x.g) -- 0008.vpr@42.3--42.47
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of id(x).g == (unfolding acc(P(x), write) in x.g)
       if (*) {
@@ -998,8 +998,8 @@ procedure test(x: Ref) returns ()
       UnfoldingMask := ExhaleWellDef0Mask;
       assume P#trigger(UnfoldingHeap, P(x));
       assume UnfoldingHeap[null, P(x)] == FrameFragment(UnfoldingHeap[x, g]);
-      ExhaleWellDef1Heap := UnfoldingHeap;
       ExhaleWellDef1Mask := UnfoldingMask;
+      ExhaleWellDef1Heap := UnfoldingHeap;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Assert might fail. There might be insufficient permission to access P(x) (0008.vpr@42.10--42.47) [221154]"}
@@ -1031,8 +1031,8 @@ procedure test(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert id(x).g == (unfolding acc(P(x), write) in x).g -- 0008.vpr@43.3--43.49
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of id(x).g == (unfolding acc(P(x), write) in x).g
       if (*) {
@@ -1045,8 +1045,8 @@ procedure test(x: Ref) returns ()
       UnfoldingMask := ExhaleWellDef0Mask;
       assume P#trigger(UnfoldingHeap, P(x));
       assume UnfoldingHeap[null, P(x)] == FrameFragment(UnfoldingHeap[x, g]);
-      ExhaleWellDef1Heap := UnfoldingHeap;
       ExhaleWellDef1Mask := UnfoldingMask;
+      ExhaleWellDef1Heap := UnfoldingHeap;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Assert might fail. There might be insufficient permission to access P(x) (0008.vpr@43.10--43.49) [221158]"}
@@ -1082,8 +1082,8 @@ procedure test(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert |[-1..10)| == 11 -- 0008.vpr@45.3--45.26
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion |[-1..10)| == 11 might not hold. (0008.vpr@45.10--45.26) [221161]"}
       Seq#Length(Seq#Range(-1, 10)) == 11;
     assume state(Heap, Mask);
@@ -1111,12 +1111,12 @@ procedure foo_1(x: Ref) returns (n: int)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -1138,8 +1138,8 @@ procedure foo_1(x: Ref) returns (n: int)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1174,8 +1174,8 @@ procedure foo_1(x: Ref) returns (n: int)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of foo might not hold. There might be insufficient permission to access x.integer (0008.vpr@55.11--55.42) [221165]"}
@@ -1198,10 +1198,10 @@ procedure test2(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1223,8 +1223,8 @@ procedure test2(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale false -- 0008.vpr@66.10--66.15
     assume false;
@@ -1232,8 +1232,8 @@ procedure test2(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert this != this.Node_n -- 0008.vpr@67.3--67.29
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of this != this.Node_n
       assert {:msg "  Assert might fail. There might be insufficient permission to access this.Node_n (0008.vpr@67.10--67.29) [221167]"}

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 13:25:47
+// Date:         2025-01-13 18:29:34
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0314d.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0314d-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -588,15 +588,15 @@ axiom !IsWandField(f_7);
 procedure test01(xs: (Seq Ref), p_1: Perm) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var i_14: int;
   var j_5: int;
   var i_2: int;
   var QPMask: MaskType;
   var k: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var i_4: int;
   var ExhaleHeap: HeapType;
   var i_6: int;
@@ -610,8 +610,8 @@ procedure test01(xs: (Seq Ref), p_1: Perm) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale none < p && p < write -- 0314d.vpr@7.3--7.31
     assume NoPerm < p_1;
@@ -715,8 +715,8 @@ procedure test01(xs: (Seq Ref), p_1: Perm) returns ()
   // -- Translating statement: exhale (forall i: Int ::
   //     { xs[i].f }
   //     k <= i && i < |xs| ==> acc(xs[i].f, p / 2)) -- 0314d.vpr@14.3--14.77
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall i: Int :: { xs[i].f } k <= i && i < |xs| ==> acc(xs[i].f, p / 2))
       if (*) {
@@ -839,8 +839,8 @@ procedure test01(xs: (Seq Ref), p_1: Perm) returns ()
   // -- Translating statement: exhale (forall i: Int ::
   //     { xs[i].f }
   //     0 <= i && i < |xs| ==> acc(xs[i].f, p)) -- 0314d.vpr@17.3--17.75
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall i: Int :: { xs[i].f } 0 <= i && i < |xs| ==> acc(xs[i].f, p))
       if (*) {
@@ -911,15 +911,15 @@ procedure test01(xs: (Seq Ref), p_1: Perm) returns ()
 procedure test02(xs: (Seq Ref), p_1: Perm) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var i_8: int;
   var j_3: int;
   var i_9: int;
   var QPMask: MaskType;
   var k: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var i_10: int;
   var ExhaleHeap: HeapType;
   var i_11: int;
@@ -933,8 +933,8 @@ procedure test02(xs: (Seq Ref), p_1: Perm) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale none < p && p < write -- 0314d.vpr@21.3--21.31
     assume NoPerm < p_1;
@@ -1036,8 +1036,8 @@ procedure test02(xs: (Seq Ref), p_1: Perm) returns ()
   // -- Translating statement: exhale (forall i: Int ::
   //     { xs[i] }
   //     k <= i && i < |xs| ==> acc(xs[i].f, p / 2)) -- 0314d.vpr@28.3--28.75
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall i: Int :: { xs[i] } k <= i && i < |xs| ==> acc(xs[i].f, p / 2))
       if (*) {
@@ -1158,8 +1158,8 @@ procedure test02(xs: (Seq Ref), p_1: Perm) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale (forall i: Int :: { xs[i] } 0 <= i && i < |xs| ==> acc(xs[i].f, p)) -- 0314d.vpr@31.3--31.73
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall i: Int :: { xs[i] } 0 <= i && i < |xs| ==> acc(xs[i].f, p))
       if (*) {

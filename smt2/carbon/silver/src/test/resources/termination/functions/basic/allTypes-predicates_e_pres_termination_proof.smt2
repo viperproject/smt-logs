@@ -1910,7 +1910,7 @@
  :skolemid |132|
  :pattern ( (bounded_645 int1@@2))
 )))
-; Valid
+; Invalid
 (push 1)
 (declare-fun ControlFlow (Int Int) Int)
 (set-info :boogie-vc-id predicates_e_pres_termination_proof)

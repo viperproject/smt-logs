@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 12:39:21
+; Started: 2025-01-13 17:43:54
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -1232,8 +1232,8 @@
 (assert (not (= diz@244@01 $Ref.null)))
 (declare-const Worker__input@245@01 Int)
 (declare-const Worker__output@246@01 Int)
-(assert (not (= diz@244@01 diz@241@01)))
 (assert (not (= diz@244@01 sys__result@237@01)))
+(assert (not (= diz@244@01 diz@241@01)))
 (assert (not (= diz@244@01 sys__thrown@236@01)))
 ; [exec]
 ; inhale type_of(diz) == class_Worker()
@@ -1737,9 +1737,9 @@
 ; diz := new()
 (declare-const diz@291@01 $Ref)
 (assert (not (= diz@291@01 $Ref.null)))
-(assert (not (= diz@291@01 diz@290@01)))
-(assert (not (= diz@291@01 sys__result@287@01)))
 (assert (not (= diz@291@01 sys__thrown@286@01)))
+(assert (not (= diz@291@01 sys__result@287@01)))
+(assert (not (= diz@291@01 diz@290@01)))
 ; [exec]
 ; inhale type_of(diz) == class_Main()
 (declare-const $t@292@01 $Snap)

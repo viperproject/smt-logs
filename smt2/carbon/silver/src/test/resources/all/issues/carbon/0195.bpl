@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 13:17:42
+// Date:         2025-01-13 18:21:43
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0195.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0195-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -232,8 +232,8 @@ procedure func#definedness(r_1: Ref) returns (Result: bool)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var v1_1: int;
   
   // -- Initializing the state
@@ -256,8 +256,8 @@ procedure func#definedness(r_1: Ref) returns (Result: bool)
       UnfoldingMask := Mask;
       assume vperm#trigger(UnfoldingHeap, vperm(r_1));
       assume UnfoldingHeap[null, vperm(r_1)] == FrameFragment(UnfoldingHeap[r_1, v_36]);
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access vperm(r) (0195.vpr@8.1--14.1) [191312]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, vperm(r_1)];
@@ -277,8 +277,8 @@ procedure func#definedness(r_1: Ref) returns (Result: bool)
       UnfoldingMask := Mask;
       assume vperm#trigger(UnfoldingHeap, vperm(r_1));
       assume UnfoldingHeap[null, vperm(r_1)] == FrameFragment(UnfoldingHeap[r_1, v_36]);
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access vperm(r) (0195.vpr@8.1--14.1) [191314]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, vperm(r_1)];
@@ -298,8 +298,8 @@ procedure func#definedness(r_1: Ref) returns (Result: bool)
     Result := Heap[r_1, v_36] == Heap[r_1, v_36];
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of func might not hold. Assertion result might not hold. (0195.vpr@10.13--10.19) [191316]"}
       Result;
 }

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 13:27:37
+// Date:         2025-01-13 18:31:22
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0208.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0208-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -294,10 +294,10 @@ procedure test05#definedness() returns ()
 procedure test(i: int, j_9: int, m_17: int) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -307,8 +307,8 @@ procedure test(i: int, j_9: int, m_17: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale i - 1 == j -- 0208.vpr@7.10--7.18
     assume i - 1 == j_9;
@@ -326,8 +326,8 @@ procedure test(i: int, j_9: int, m_17: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert 0 < m && m <= i - 1 -- 0208.vpr@9.3--9.28
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion 0 < m might not hold. (0208.vpr@9.10--9.28) [220890]"}
       0 < m_17;
     assert {:msg "  Assert might fail. Assertion m <= i - 1 might not hold. (0208.vpr@9.10--9.28) [220891]"}
@@ -342,10 +342,10 @@ procedure test(i: int, j_9: int, m_17: int) returns ()
 procedure test02(i: int) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var j_1: int;
   var i$0_1: int;
   
@@ -357,19 +357,19 @@ procedure test02(i: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert foo(i, i) -- 0208.vpr@22.3--22.19
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion foo(i, i) might not hold. (0208.vpr@22.10--22.19) [220892]"}
       (foo(i, i): bool);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forall j: Int :: { foo(j, j) } foo(j, j)) -- 0208.vpr@23.3--23.36
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall j: Int :: { foo(j, j) } foo(j, j))
       if (*) {
@@ -387,8 +387,8 @@ procedure test02(i: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forall i$0: Int :: { foo(i, i$0) } foo(i, i$0)) -- 0208.vpr@25.3--25.14
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall i$0: Int :: { foo(i, i$0) } foo(i, i$0))
       if (*) {
@@ -413,8 +413,8 @@ procedure test02(i: int) returns ()
 procedure test03() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -424,8 +424,8 @@ procedure test03() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale (forall i: Int ::(forall i$0: Int :: { foo(i, i$0) } foo(i, i$0))) -- 0208.vpr@29.10--29.31
     

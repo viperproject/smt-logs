@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 12:28:05
+; Started: 2025-01-13 17:32:54
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -2746,11 +2746,11 @@
       ($pure$success_get s@$ x@0@00)
       ($struct_get<Bool> ($struct_loc<Int> x@0@00 0))))
   :pattern (($pure$success_get s@$ x@0@00))
-  :qid |quant-u-1734|)))
+  :qid |quant-u-1729|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Struct)) (!
   true
   :pattern (($pure$success_get s@$ x@0@00))
-  :qid |quant-u-1735|)))
+  :qid |quant-u-1730|)))
 ; ---------- FUNCTION $pure$return_get----------
 (declare-fun x@2@00 () $Struct)
 (declare-fun result@3@00 () Int)
@@ -2791,11 +2791,11 @@
     ($pure$return_get%precondition s@$ x@2@00)
     (= ($pure$return_get s@$ x@2@00) ($struct_loc<Int> x@2@00 1)))
   :pattern (($pure$return_get s@$ x@2@00))
-  :qid |quant-u-1736|)))
+  :qid |quant-u-1731|)))
 (assert (forall ((s@$ $Snap) (x@2@00 $Struct)) (!
   true
   :pattern (($pure$return_get s@$ x@2@00))
-  :qid |quant-u-1737|)))
+  :qid |quant-u-1732|)))
 ; ---------- FUNCTION $range_sum----------
 (declare-fun $x@4@00 () Int)
 (declare-fun $y@5@00 () Int)
@@ -3108,7 +3108,7 @@
           (+ (- $y_exclusive $x_exclusive) $x@4@00)
           (+ (- (- $y_exclusive $y@5@00) $x_exclusive) $x@4@00)))))))))
   :pattern (($range_sum s@$ $x@4@00 $y@5@00))
-  :qid |quant-u-1742|)))
+  :qid |quant-u-1733|)))
 (assert (forall ((s@$ $Snap) ($x@4@00 Int) ($y@5@00 Int)) (!
   (=>
     ($range_sum%precondition s@$ $x@4@00 $y@5@00)
@@ -3120,7 +3120,7 @@
       (div (* (- $y@5@00 1) $y@5@00) 2)
       (div (* (- (- 0 $y@5@00) 1) (- 0 $y@5@00)) 2)))) true)))))
   :pattern (($range_sum s@$ $x@4@00 $y@5@00))
-  :qid |quant-u-1744|)))
+  :qid |quant-u-1734|)))
 ; ---------- $failed ----------
 (declare-const $address@11@00 Int)
 ; ---------- $failed_0 ----------

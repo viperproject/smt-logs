@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 12:55:49
+// Date:         2025-01-13 18:00:04
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/transformations/CountAdditions/traverseEverything.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/transformations/CountAdditions/traverseEverything-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -228,8 +228,8 @@ function  fun#triggerStateless(): bool;
 procedure fun#definedness() returns (Result: bool)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -244,8 +244,8 @@ procedure fun#definedness() returns (Result: bool)
     Result := true;
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
 }
 
 // ==================================================
@@ -287,13 +287,13 @@ procedure pred#definedness() returns ()
 procedure main() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var b_24: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var loopHeap: HeapType;
   var loopMask: MaskType;
   
@@ -309,8 +309,8 @@ procedure main() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -326,8 +326,8 @@ procedure main() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert b + 4 == 9 + 1 -- traverseEverything.vpr@9.4--9.27
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion b + 4 == 9 + 1 might not hold. (traverseEverything.vpr@9.11--9.26) [101692]"}
       b_24 + 4 == 10;
     assume state(Heap, Mask);
@@ -337,8 +337,8 @@ procedure main() returns ()
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Loop invariant b == 6 might not hold on entry. Assertion b == 6 might not hold. (traverseEverything.vpr@12.15--12.22) [101693]"}
           b_24 == 6;
     
@@ -371,8 +371,8 @@ procedure main() returns ()
             b_24 := 6;
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Loop invariant b == 6 might not be preserved. Assertion b == 6 might not hold. (traverseEverything.vpr@12.15--12.22) [101694]"}
           b_24 == 6;
         // Terminate execution
@@ -387,6 +387,6 @@ procedure main() returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
 }

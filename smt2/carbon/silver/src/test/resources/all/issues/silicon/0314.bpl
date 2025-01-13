@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 13:20:02
+// Date:         2025-01-13 18:23:53
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0314.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0314-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -414,12 +414,12 @@ axiom (forall Heap: HeapType, n: int ::
 procedure test(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var perm: Perm;
   var n0: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var m_23: int;
   var S1: (Set int);
@@ -437,8 +437,8 @@ procedure test(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale acc(x.f, write) && x.f == n0 -- 0314.vpr@11.3--11.31
     perm := FullPerm;
@@ -461,8 +461,8 @@ procedure test(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(x.f, write) -- 0314.vpr@14.3--14.18
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (0314.vpr@14.10--14.18) [196901]"}
@@ -524,8 +524,8 @@ procedure test(x: Ref) returns ()
         assume state(Heap, Mask);
       
       // -- Translating statement: assert x.f == n0 -- 0314.vpr@28.5--28.21
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         
         // -- Check definedness of x.f == n0
           assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (0314.vpr@28.12--28.21) [196904]"}
@@ -544,8 +544,8 @@ procedure test(x: Ref) returns ()
             assume state(Heap, Mask);
           
           // -- Translating statement: assert n1 == n0 -- 0314.vpr@33.5--33.20
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             assert {:msg "  Assert might fail. Assertion n1 == n0 might not hold. (0314.vpr@33.12--33.20) [196906]"}
               n1_1 == n0;
             assume state(Heap, Mask);

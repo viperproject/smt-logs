@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 12:40:35
+; Started: 2025-01-13 17:45:07
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -1007,7 +1007,7 @@
             (<= (+ (- q2@3@01 (height<Int> m@1@01)) 1) 0)
             (and (< q1@2@01 (width<Int> m@1@01)) (= q2@3@01 q1@2@01)))))))
   
-  :qid |quant-u-23292|))))
+  :qid |quant-u-23233|))))
 (check-sat)
 ; unsat
 (pop) ; 2
@@ -1065,7 +1065,7 @@
         (img@6@01 (loc<Ref> m@1@01 q1@2@01 q2@3@01))
         (img@8@01 (loc<Ref> m@1@01 q1@2@01 q2@3@01)))))
   :pattern ((loc<Ref> m@1@01 q1@2@01 q2@3@01))
-  :qid |quant-u-23293|)))
+  :qid |quant-u-23234|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and

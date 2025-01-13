@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 13:14:11
+// Date:         2025-01-13 18:18:16
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/third_party/stefan_recent/test_example2.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/third_party/stefan_recent/test_example2-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -189,13 +189,13 @@ procedure Loop__incr(diz: Ref, current_thread_id: int, c: Ref, y: int) returns (
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var i: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var __flatten_4: int;
   var __flatten_1: int;
@@ -229,8 +229,8 @@ procedure Loop__incr(diz: Ref, current_thread_id: int, c: Ref, y: int) returns (
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -264,8 +264,8 @@ procedure Loop__incr(diz: Ref, current_thread_id: int, c: Ref, y: int) returns (
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Loop invariant 0 <= i && i <= y might not hold on entry. Assertion 0 <= i might not hold. (test_example2.vpr@21.15--21.35) [166951]"}
           0 <= i;
         assert {:msg "  Loop invariant 0 <= i && i <= y might not hold on entry. Assertion i <= y might not hold. (test_example2.vpr@21.15--21.35) [166952]"}
@@ -356,8 +356,8 @@ procedure Loop__incr(diz: Ref, current_thread_id: int, c: Ref, y: int) returns (
             i := i + 1;
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Loop invariant 0 <= i && i <= y might not be preserved. Assertion 0 <= i might not hold. (test_example2.vpr@21.15--21.35) [166960]"}
           0 <= i;
         assert {:msg "  Loop invariant 0 <= i && i <= y might not be preserved. Assertion i <= y might not hold. (test_example2.vpr@21.15--21.35) [166961]"}
@@ -395,8 +395,8 @@ procedure Loop__incr(diz: Ref, current_thread_id: int, c: Ref, y: int) returns (
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of Loop__incr might not hold. Assertion c != null might not hold. (test_example2.vpr@12.11--12.20) [166965]"}
       c != null;
     perm := FullPerm;
@@ -420,14 +420,14 @@ procedure Loop__incr(diz: Ref, current_thread_id: int, c: Ref, y: int) returns (
 procedure Loop__Loop(current_thread_id: int) returns (sys__result: Ref)
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var diz: Ref;
   var freshObj: Ref;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -441,8 +441,8 @@ procedure Loop__Loop(current_thread_id: int) returns (sys__result: Ref)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -469,8 +469,8 @@ procedure Loop__Loop(current_thread_id: int) returns (sys__result: Ref)
     assume state(Heap, Mask);
   
   // -- Translating statement: assert sys__result != null -- test_example2.vpr@40.3--40.29
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (test_example2.vpr@40.10--40.29) [166968]"}
       sys__result != null;
     assume state(Heap, Mask);
@@ -481,8 +481,8 @@ procedure Loop__Loop(current_thread_id: int) returns (sys__result: Ref)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of Loop__Loop might not hold. Assertion sys__result != null might not hold. (test_example2.vpr@35.11--35.30) [166969]"}
       sys__result != null;
 }
@@ -495,14 +495,14 @@ procedure Counter__incr(diz: Ref, current_thread_id: int) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var __flatten_2: int;
   var __flatten_5: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -527,8 +527,8 @@ procedure Counter__incr(diz: Ref, current_thread_id: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -570,8 +570,8 @@ procedure Counter__incr(diz: Ref, current_thread_id: int) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of Counter__incr might not hold. There might be insufficient permission to access diz.Counter__x (test_example2.vpr@48.11--48.37) [166974]"}
@@ -593,8 +593,8 @@ procedure Counter__incr(diz: Ref, current_thread_id: int) returns ()
 procedure Counter__Counter(current_thread_id: int) returns (sys__result: Ref)
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var perm: Perm;
@@ -604,8 +604,8 @@ procedure Counter__Counter(current_thread_id: int) returns (sys__result: Ref)
   var __flatten_6: int;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -620,8 +620,8 @@ procedure Counter__Counter(current_thread_id: int) returns (sys__result: Ref)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -676,8 +676,8 @@ procedure Counter__Counter(current_thread_id: int) returns (sys__result: Ref)
   //   (acc(sys__result.Counter__x, write) && sys__result.Counter__x == 0) -- test_example2.vpr@71.3--71.104
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
+    ExhaleWellDef0Mask := AssertMask;
     assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (test_example2.vpr@71.10--71.104) [166978]"}
       sys__result != null;
     perm := FullPerm;
@@ -700,8 +700,8 @@ procedure Counter__Counter(current_thread_id: int) returns (sys__result: Ref)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of Counter__Counter might not hold. Assertion sys__result != null might not hold. (test_example2.vpr@60.11--60.30) [166983]"}
       sys__result != null;
     perm := FullPerm;

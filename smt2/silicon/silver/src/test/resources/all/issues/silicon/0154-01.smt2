@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 12:41:29
+; Started: 2025-01-13 17:45:59
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -131,11 +131,11 @@
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (= (Nodet$%limited s@$ this@0@00) (Nodet$ s@$ this@0@00))
   :pattern ((Nodet$ s@$ this@0@00))
-  :qid |quant-u-24477|)))
+  :qid |quant-u-24418|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (Nodet$%stateless this@0@00)
   :pattern ((Nodet$%limited s@$ this@0@00))
-  :qid |quant-u-24478|)))
+  :qid |quant-u-24419|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (and
     ($Perm.isReadVar $k@4@00)
@@ -150,20 +150,20 @@
         (Nodet$%limited ($Snap.combine $Snap.unit ($Snap.second s@$)) this@0@00))))
   :pattern ((Nodet$ s@$ this@0@00))
   :pattern ((Nodet$%stateless this@0@00) (Nodevalid$%trigger ($Snap.second s@$) this@0@00))
-  :qid |quant-u-24481|)))
+  :qid |quant-u-24422|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (=>
     (Nodet$%precondition s@$ this@0@00)
     (Nodet$%precondition ($Snap.combine $Snap.unit ($Snap.second s@$)) this@0@00))
   :pattern ((Nodet$ s@$ this@0@00))
-  :qid |quant-u-24482|)))
+  :qid |quant-u-24423|)))
 (assert (forall ((s@$ $Snap) (this@2@00 $Ref)) (!
   (= (Nodet2$%limited s@$ this@2@00) (Nodet2$ s@$ this@2@00))
   :pattern ((Nodet2$ s@$ this@2@00))
-  :qid |quant-u-24479|)))
+  :qid |quant-u-24420|)))
 (assert (forall ((s@$ $Snap) (this@2@00 $Ref)) (!
   (Nodet2$%stateless this@2@00)
   :pattern ((Nodet2$%limited s@$ this@2@00))
-  :qid |quant-u-24480|)))
+  :qid |quant-u-24421|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------

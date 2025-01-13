@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 13:24:26
+// Date:         2025-01-13 18:28:15
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0333.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0333-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -271,8 +271,8 @@ procedure I2#definedness(t_2: Ref) returns (Result: bool)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var up_1: Ref;
   var dn_1: Ref;
   var ExhaleHeap: HeapType;
@@ -300,8 +300,8 @@ procedure I2#definedness(t_2: Ref) returns (Result: bool)
       UnfoldingMask := Mask;
       assume I#trigger(UnfoldingHeap, I_1(t_2));
       assume UnfoldingHeap[null, I_1(t_2)] == FrameFragment((if t_2 != null then CombineFrames(FrameFragment(UnfoldingHeap[t_2, r_6]), CombineFrames(FrameFragment(UnfoldingHeap[t_2, l_8]), FrameFragment((if p(UnfoldingHeap) then CombineFrames(UnfoldingHeap[null, I_1(UnfoldingHeap[t_2, r_6])], UnfoldingHeap[null, I_1(UnfoldingHeap[t_2, l_8])]) else CombineFrames(UnfoldingHeap[null, I_1(UnfoldingHeap[t_2, r_6])], UnfoldingHeap[null, I_1(UnfoldingHeap[t_2, l_8])]))))) else EmptyFrame));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access I(t) (0333.vpr@14.1--21.2) [214287]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, I_1(t_2)];
@@ -370,8 +370,8 @@ procedure I2#definedness(t_2: Ref) returns (Result: bool)
         dn_1 := (if p(UnfoldingHeap) then UnfoldingHeap[t_2, r_6] else UnfoldingHeap[t_2, l_8]);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := UnfoldingHeap;
           ExhaleWellDef0Mask := UnfoldingMask;
+          ExhaleWellDef0Heap := UnfoldingHeap;
           perm := FullPerm;
           assert {:msg "  Precondition of function I2 might not hold. There might be insufficient permission to access I(dn) (0333.vpr@20.5--20.11) [214292]"}
             NoPerm < perm ==> NoPerm < UnfoldingMask[null, I_1(dn_1)];
@@ -388,8 +388,8 @@ procedure I2#definedness(t_2: Ref) returns (Result: bool)
         if (I2(UnfoldingHeap, dn_1)) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := UnfoldingHeap;
             ExhaleWellDef0Mask := UnfoldingMask;
+            ExhaleWellDef0Heap := UnfoldingHeap;
             perm := FullPerm;
             assert {:msg "  Precondition of function I2 might not hold. There might be insufficient permission to access I(up) (0333.vpr@20.15--20.21) [214293]"}
               NoPerm < perm ==> NoPerm < UnfoldingMask[null, I_1(up_1)];
@@ -551,12 +551,12 @@ procedure I#definedness(t_2: Ref) returns ()
 procedure fail() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -567,8 +567,8 @@ procedure fail() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -581,8 +581,8 @@ procedure fail() returns ()
   }
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of fail might not hold. Assertion false might not hold. (0333.vpr@25.11--25.16) [214298]"}
       false;
 }

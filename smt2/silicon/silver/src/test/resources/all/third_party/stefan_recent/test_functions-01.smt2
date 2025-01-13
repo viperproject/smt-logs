@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 12:39:04
+; Started: 2025-01-13 17:43:37
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -119,21 +119,21 @@
 (assert (forall ((s@$ $Snap) (diz@0@00 $Ref)) (!
   (= (counter__get%limited s@$ diz@0@00) (counter__get s@$ diz@0@00))
   :pattern ((counter__get s@$ diz@0@00))
-  :qid |quant-u-22421|)))
+  :qid |quant-u-22362|)))
 (assert (forall ((s@$ $Snap) (diz@0@00 $Ref)) (!
   (counter__get%stateless diz@0@00)
   :pattern ((counter__get%limited s@$ diz@0@00))
-  :qid |quant-u-22422|)))
+  :qid |quant-u-22363|)))
 (assert (forall ((s@$ $Snap) (diz@0@00 $Ref)) (!
   (=>
     (counter__get%precondition s@$ diz@0@00)
     (= (counter__get s@$ diz@0@00) ($SortWrappers.$SnapToInt ($Snap.second s@$))))
   :pattern ((counter__get s@$ diz@0@00))
-  :qid |quant-u-22423|)))
+  :qid |quant-u-22364|)))
 (assert (forall ((s@$ $Snap) (diz@0@00 $Ref)) (!
   true
   :pattern ((counter__get s@$ diz@0@00))
-  :qid |quant-u-22424|)))
+  :qid |quant-u-22365|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- counter__counter ----------
@@ -197,8 +197,8 @@
 (declare-const diz@11@01 $Ref)
 (assert (not (= diz@11@01 $Ref.null)))
 (declare-const counter__x@12@01 Int)
-(assert (not (= diz@11@01 sys__result@5@01)))
 (assert (not (= diz@11@01 diz@8@01)))
+(assert (not (= diz@11@01 sys__result@5@01)))
 ; [exec]
 ; __flatten_1 := v
 ; [exec]

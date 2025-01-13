@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 13:01:25
+// Date:         2025-01-13 18:05:36
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/issue015.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/issue015-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -351,8 +351,8 @@ procedure Q#definedness(x: Ref) returns ()
 procedure m(l_2: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var Ops_1Heap: HeapType;
   var Ops_1Mask: MaskType;
   var b_1_1: bool;
@@ -360,11 +360,11 @@ procedure m(l_2: Ref) returns ()
   var UsedMask: MaskType;
   var b_2: bool;
   var perm: Perm;
-  var Labellhs1Mask: MaskType;
   var Labellhs1Heap: HeapType;
+  var Labellhs1Mask: MaskType;
   var boolCur: bool;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var Used_1Heap: HeapType;
   var Used_1Mask: MaskType;
   var b_2_1: bool;
@@ -412,8 +412,8 @@ procedure m(l_2: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: package acc(P(l), write) --* acc(Q(l), write) {
   //   unfold acc(P(l), write)
@@ -436,8 +436,8 @@ procedure m(l_2: Ref) returns ()
     
     // -- Translating statement: label lhs1 -- issue015.vpr@14.11--14.36
       lhs1:
-      Labellhs1Mask := Ops_1Mask;
       Labellhs1Heap := Ops_1Heap;
+      Labellhs1Mask := Ops_1Mask;
       b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);
     boolCur := true;
     if (b_1_1) {
@@ -445,8 +445,8 @@ procedure m(l_2: Ref) returns ()
       // -- Translating statement: unfold acc(P(l), write) -- issue015.vpr@15.7--15.18
         assume P#trigger(Ops_1Heap, P(l_2));
         assume Ops_1Heap[null, P(l_2)] == CombineFrames(FrameFragment(Ops_1Heap[l_2, next]), Ops_1Heap[null, Q(Ops_1Heap[l_2, next])]);
-        ExhaleWellDef0Mask := Ops_1Mask;
         ExhaleWellDef0Heap := Ops_1Heap;
+        ExhaleWellDef0Mask := Ops_1Mask;
         havoc Used_1Heap;
         Used_1Mask := ZeroMask;
         b_2_1 := b_2_1 && state(Used_1Heap, Used_1Mask);
@@ -534,8 +534,8 @@ procedure m(l_2: Ref) returns ()
     if (b_1_1) {
       
       // -- Translating statement: fold acc(Q(l), write) -- issue015.vpr@16.7--16.16
-        ExhaleWellDef0Mask := Ops_1Mask;
         ExhaleWellDef0Heap := Ops_1Heap;
+        ExhaleWellDef0Mask := Ops_1Mask;
         havoc Used_2Heap;
         Used_2Mask := ZeroMask;
         b_4 := b_4 && state(Used_2Heap, Used_2Mask);
@@ -784,8 +784,8 @@ procedure m(l_2: Ref) returns ()
   // -- Translating statement: apply acc(P(l), write) --* acc(Q(l), write) -- issue015.vpr@20.3--20.32
     
     // -- check if wand is held and remove an instance
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       // permLe
       assert {:msg "  Applying wand might fail. Magic wand instance not found. (issue015.vpr@20.3--20.32) [125624]"}
         FullPerm <= Mask[null, wand(l_2, l_2)];
@@ -793,8 +793,8 @@ procedure m(l_2: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- check if LHS holds and remove permissions 
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Applying wand might fail. There might be insufficient permission to access P(l) (issue015.vpr@20.3--20.32) [125626]"}
@@ -817,8 +817,8 @@ procedure m(l_2: Ref) returns ()
   // -- Translating statement: unfold acc(Q(l), write) -- issue015.vpr@22.3--22.19
     assume Q#trigger(Heap, Q(l_2));
     assume Heap[null, Q(l_2)] == CombineFrames(FrameFragment(Heap[l_2, next]), ConditionalFrame((if Heap[l_2, next] != null then FullPerm else NoPerm), Heap[null, Q(Heap[l_2, next])]));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Q(l) might fail. There might be insufficient permission to access Q(l) (issue015.vpr@22.3--22.19) [125630]"}
@@ -847,8 +847,8 @@ procedure m(l_2: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- issue015.vpr@25.3--25.15
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion false might not hold. (issue015.vpr@25.10--25.15) [125633]"}
       false;
     assume state(Heap, Mask);

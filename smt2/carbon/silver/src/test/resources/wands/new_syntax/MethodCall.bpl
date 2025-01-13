@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 13:09:30
+// Date:         2025-01-13 18:13:36
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/new_syntax/MethodCall.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/new_syntax/MethodCall-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -312,12 +312,12 @@ procedure callee(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var newVersion: FrameType;
   var ExhaleHeap: HeapType;
   
@@ -338,8 +338,8 @@ procedure callee(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -362,8 +362,8 @@ procedure callee(x: Ref) returns ()
   // -- Translating statement: unfold acc(Cell(x), write) -- MethodCall.vpr@13.5--13.19
     assume Cell#trigger(Heap, Cell(x));
     assume Heap[null, Cell(x)] == FrameFragment(Heap[x, f_7]);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Cell(x) might fail. There might be insufficient permission to access Cell(x) (MethodCall.vpr@13.5--13.19) [140221]"}
@@ -390,8 +390,8 @@ procedure callee(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of callee might not hold. There might be insufficient permission to access x.f (MethodCall.vpr@12.9--12.29) [140224]"}
@@ -414,8 +414,8 @@ procedure test0(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var Ops_1Heap: HeapType;
@@ -424,13 +424,13 @@ procedure test0(x: Ref) returns ()
   var UsedHeap: HeapType;
   var UsedMask: MaskType;
   var b_2: bool;
-  var Labellhs1Heap: HeapType;
   var Labellhs1Mask: MaskType;
+  var Labellhs1Heap: HeapType;
   var boolCur: bool;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var Used_1Heap: HeapType;
   var Used_1Mask: MaskType;
   var b_2_1: bool;
@@ -471,8 +471,8 @@ procedure test0(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -506,8 +506,8 @@ procedure test0(x: Ref) returns ()
     
     // -- Translating statement: label lhs1 -- MethodCall.vpr@20.13--20.33
       lhs1:
-      Labellhs1Heap := Ops_1Heap;
       Labellhs1Mask := Ops_1Mask;
+      Labellhs1Heap := Ops_1Heap;
       b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);
     boolCur := true;
     if (b_1_1) {
@@ -517,8 +517,8 @@ procedure test0(x: Ref) returns ()
         PreCallMask := Ops_1Mask;
         
         // -- Exhaling precondition
-          ExhaleWellDef0Heap := Ops_1Heap;
           ExhaleWellDef0Mask := Ops_1Mask;
+          ExhaleWellDef0Heap := Ops_1Heap;
           havoc Used_1Heap;
           Used_1Mask := ZeroMask;
           b_2_1 := b_2_1 && state(Used_1Heap, Used_1Mask);
@@ -670,8 +670,8 @@ procedure test0(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of test0 might not hold. There might be insufficient permission to access Cell(x) (MethodCall.vpr@19.9--19.16) [140230]"}
@@ -692,8 +692,8 @@ procedure test1(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var Ops_3Heap: HeapType;
@@ -702,13 +702,13 @@ procedure test1(x: Ref) returns ()
   var Used_3Heap: HeapType;
   var Used_3Mask: MaskType;
   var b_6: bool;
-  var Labellhs3Heap: HeapType;
   var Labellhs3Mask: MaskType;
+  var Labellhs3Heap: HeapType;
   var boolCur_1: bool;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var Used_4Heap: HeapType;
   var Used_4Mask: MaskType;
   var b_8: bool;
@@ -749,8 +749,8 @@ procedure test1(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -781,8 +781,8 @@ procedure test1(x: Ref) returns ()
     
     // -- Translating statement: label lhs3 -- MethodCall.vpr@29.13--29.30
       lhs3:
-      Labellhs3Heap := Ops_3Heap;
       Labellhs3Mask := Ops_3Mask;
+      Labellhs3Heap := Ops_3Heap;
       b_7 := b_7 && state(Ops_3Heap, Ops_3Mask);
     boolCur_1 := true;
     if (b_7) {
@@ -792,8 +792,8 @@ procedure test1(x: Ref) returns ()
         PreCallMask := Ops_3Mask;
         
         // -- Exhaling precondition
-          ExhaleWellDef0Heap := Ops_3Heap;
           ExhaleWellDef0Mask := Ops_3Mask;
+          ExhaleWellDef0Heap := Ops_3Heap;
           havoc Used_4Heap;
           Used_4Mask := ZeroMask;
           b_8 := b_8 && state(Used_4Heap, Used_4Mask);
@@ -945,8 +945,8 @@ procedure test1(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of test1 might not hold. There might be insufficient permission to access Cell(x) (MethodCall.vpr@28.9--28.16) [140235]"}

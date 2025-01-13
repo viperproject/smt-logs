@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 13:21:17
+// Date:         2025-01-13 18:25:06
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/unofficial004.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/unofficial004-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -265,11 +265,11 @@ procedure TestunfoldVRd$(this: Ref, k: Perm) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var tk1: Ref;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newVersion: FrameType;
   var freshObj: Ref;
   var freshVersion: FrameType;
@@ -297,8 +297,8 @@ procedure TestunfoldVRd$(this: Ref, k: Perm) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[tk1, $allocated];
@@ -308,8 +308,8 @@ procedure TestunfoldVRd$(this: Ref, k: Perm) returns ()
       k > NoPerm;
     assume P#trigger(Heap, P(this));
     assume Heap[null, P(this)] == FrameFragment(Heap[this, f_7]);
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := k;
     assert {:msg "  Unfolding P(this) might fail. Fraction k might be negative. (unofficial004.vpr@32.3--32.25) [201165]"}
       perm >= NoPerm;
@@ -387,8 +387,8 @@ procedure TestunfoldVRd$(this: Ref, k: Perm) returns ()
   // -- Translating statement: fold acc(P(this), k) -- unofficial004.vpr@43.3--43.23
     assert {:msg "  Folding P(this) might fail. Fraction k might not be positive. (unofficial004.vpr@43.3--43.23) [201175]"}
       k > NoPerm;
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm * k;
     assert {:msg "  Folding P(this) might fail. Fraction write * k might be negative. (unofficial004.vpr@43.3--43.23) [201176]"}
       perm >= NoPerm;

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 12:55:54
+// Date:         2025-01-13 18:00:09
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/transformations/Macros/Hygienic/forallRef.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/transformations/Macros/Hygienic/forallRef-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -180,12 +180,12 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 procedure main() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var a_2: int;
   var b_24: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var i_1: int;
   var i$0_1: int;
   
@@ -197,8 +197,8 @@ procedure main() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: a := 6 -- forallRef.vpr@8.5--8.20
     a_2 := 6;
@@ -209,8 +209,8 @@ procedure main() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forall i: Int ::0 <= i && i < b ==> i < a) -- forallRef.vpr@10.5--10.55
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall i: Int ::0 <= i && i < b ==> i < a)
       if (*) {
@@ -230,8 +230,8 @@ procedure main() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forall i$0: Int ::0 <= i$0 && i$0 < b ==> i$0 < a) -- forallRef.vpr@11.5--11.63
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall i$0: Int ::0 <= i$0 && i$0 < b ==> i$0 < a)
       if (*) {

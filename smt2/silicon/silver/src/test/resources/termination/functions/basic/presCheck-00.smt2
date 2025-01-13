@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 12:44:02
+; Started: 2025-01-13 17:48:28
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -175,21 +175,21 @@
 (assert (forall ((s@$ $Snap) (x@0@00 Int)) (!
   (= (f1%limited s@$ x@0@00) (f1 s@$ x@0@00))
   :pattern ((f1 s@$ x@0@00))
-  :qid |quant-u-26734|)))
+  :qid |quant-u-26676|)))
 (assert (forall ((s@$ $Snap) (x@0@00 Int)) (!
   (f1%stateless x@0@00)
   :pattern ((f1%limited s@$ x@0@00))
-  :qid |quant-u-26735|)))
+  :qid |quant-u-26677|)))
 (assert (forall ((s@$ $Snap) (x@0@00 Int)) (!
   (let ((result@1@00 (f1%limited s@$ x@0@00))) (=>
     (f1%precondition s@$ x@0@00)
     (= result@1@00 x@0@00)))
   :pattern ((f1%limited s@$ x@0@00))
-  :qid |quant-u-26742|)))
+  :qid |quant-u-26684|)))
 (assert (forall ((s@$ $Snap) (x@0@00 Int)) (!
   (let ((result@1@00 (f1%limited s@$ x@0@00))) true)
   :pattern ((f1%limited s@$ x@0@00))
-  :qid |quant-u-26743|)))
+  :qid |quant-u-26685|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -219,11 +219,11 @@
     (f1%precondition s@$ x@0@00)
     (= (f1 s@$ x@0@00) (f1%limited $Snap.unit x@0@00)))
   :pattern ((f1 s@$ x@0@00))
-  :qid |quant-u-26744|)))
+  :qid |quant-u-26686|)))
 (assert (forall ((s@$ $Snap) (x@0@00 Int)) (!
   (=> (f1%precondition s@$ x@0@00) (f1%precondition $Snap.unit x@0@00))
   :pattern ((f1 s@$ x@0@00))
-  :qid |quant-u-26745|)))
+  :qid |quant-u-26687|)))
 ; ---------- FUNCTION f----------
 (declare-fun x@2@00 () Int)
 (declare-fun result@3@00 () Int)
@@ -237,21 +237,21 @@
 (assert (forall ((s@$ $Snap) (x@2@00 Int)) (!
   (= (f%limited s@$ x@2@00) (f s@$ x@2@00))
   :pattern ((f s@$ x@2@00))
-  :qid |quant-u-26736|)))
+  :qid |quant-u-26678|)))
 (assert (forall ((s@$ $Snap) (x@2@00 Int)) (!
   (f%stateless x@2@00)
   :pattern ((f%limited s@$ x@2@00))
-  :qid |quant-u-26737|)))
+  :qid |quant-u-26679|)))
 (assert (forall ((s@$ $Snap) (x@2@00 Int)) (!
   (let ((result@3@00 (f%limited s@$ x@2@00))) (=>
     (f%precondition s@$ x@2@00)
     (= result@3@00 x@2@00)))
   :pattern ((f%limited s@$ x@2@00))
-  :qid |quant-u-26746|)))
+  :qid |quant-u-26688|)))
 (assert (forall ((s@$ $Snap) (x@2@00 Int)) (!
   (let ((result@3@00 (f%limited s@$ x@2@00))) true)
   :pattern ((f%limited s@$ x@2@00))
-  :qid |quant-u-26747|)))
+  :qid |quant-u-26689|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -281,11 +281,11 @@
     (f%precondition s@$ x@2@00)
     (= (f s@$ x@2@00) (f%limited $Snap.unit x@2@00)))
   :pattern ((f s@$ x@2@00))
-  :qid |quant-u-26748|)))
+  :qid |quant-u-26690|)))
 (assert (forall ((s@$ $Snap) (x@2@00 Int)) (!
   (=> (f%precondition s@$ x@2@00) (f%precondition $Snap.unit x@2@00))
   :pattern ((f s@$ x@2@00))
-  :qid |quant-u-26749|)))
+  :qid |quant-u-26691|)))
 ; ---------- FUNCTION h_e----------
 (declare-fun x@4@00 () Int)
 (declare-fun result@5@00 () Int)
@@ -304,11 +304,11 @@
 (assert (forall ((s@$ $Snap) (x@4@00 Int)) (!
   (= (h_e%limited s@$ x@4@00) (h_e s@$ x@4@00))
   :pattern ((h_e s@$ x@4@00))
-  :qid |quant-u-26738|)))
+  :qid |quant-u-26680|)))
 (assert (forall ((s@$ $Snap) (x@4@00 Int)) (!
   (h_e%stateless x@4@00)
   :pattern ((h_e%limited s@$ x@4@00))
-  :qid |quant-u-26739|)))
+  :qid |quant-u-26681|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (= s@$ $Snap.unit))
@@ -396,13 +396,13 @@
       (h_e s@$ x@4@00)
       (ite (<= x@4@00 0) 0 (+ 1 (h_e%limited $Snap.unit (- x@4@00 1))))))
   :pattern ((h_e s@$ x@4@00))
-  :qid |quant-u-26750|)))
+  :qid |quant-u-26692|)))
 (assert (forall ((s@$ $Snap) (x@4@00 Int)) (!
   (=>
     (h_e%precondition s@$ x@4@00)
     (ite (<= x@4@00 0) true (h_e%precondition $Snap.unit (- x@4@00 1))))
   :pattern ((h_e s@$ x@4@00))
-  :qid |quant-u-26751|)))
+  :qid |quant-u-26693|)))
 ; ---------- FUNCTION h----------
 (declare-fun x@6@00 () Int)
 (declare-fun result@7@00 () Int)
@@ -458,11 +458,11 @@
 (assert (forall ((s@$ $Snap) (x@6@00 Int)) (!
   (= (h%limited s@$ x@6@00) (h s@$ x@6@00))
   :pattern ((h s@$ x@6@00))
-  :qid |quant-u-26740|)))
+  :qid |quant-u-26682|)))
 (assert (forall ((s@$ $Snap) (x@6@00 Int)) (!
   (h%stateless x@6@00)
   :pattern ((h%limited s@$ x@6@00))
-  :qid |quant-u-26741|)))
+  :qid |quant-u-26683|)))
 (declare-const $unresolved@11@00 $Snap)
 (assert (forall ((s@$ $Snap) (x@6@00 Int)) (!
   (let ((result@7@00 (h%limited s@$ x@6@00))) (=>
@@ -473,17 +473,17 @@
         (> result@7@00 0)
         (= result@7@00 (+ (h%limited $unresolved@11@00 (- result@7@00 1)) 1))))))
   :pattern ((h%limited s@$ x@6@00))
-  :qid |quant-u-26752|)))
+  :qid |quant-u-26694|)))
 (assert (forall ((s@$ $Snap) (x@6@00 Int)) (!
   (let ((result@7@00 (h%limited s@$ x@6@00))) true)
   :pattern ((h%limited s@$ x@6@00))
-  :qid |quant-u-26753|)))
+  :qid |quant-u-26695|)))
 (assert (forall ((s@$ $Snap) (x@6@00 Int)) (!
   (let ((result@7@00 (h%limited s@$ x@6@00))) (=>
     (and (h%precondition s@$ x@6@00) (> result@7@00 0))
     (h%precondition $unresolved@11@00 (- result@7@00 1))))
   :pattern ((h%limited s@$ x@6@00))
-  :qid |quant-u-26754|)))
+  :qid |quant-u-26696|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (= s@$ ($Snap.combine ($Snap.first s@$) ($Snap.second s@$))))
@@ -568,10 +568,10 @@
       (h s@$ x@6@00)
       (ite (= x@6@00 0) 0 (+ 1 (h%limited $unresolved@12@00 (- x@6@00 1))))))
   :pattern ((h s@$ x@6@00))
-  :qid |quant-u-26755|)))
+  :qid |quant-u-26697|)))
 (assert (forall ((s@$ $Snap) (x@6@00 Int)) (!
   (=>
     (h%precondition s@$ x@6@00)
     (ite (= x@6@00 0) true (h%precondition $unresolved@12@00 (- x@6@00 1))))
   :pattern ((h s@$ x@6@00))
-  :qid |quant-u-26756|)))
+  :qid |quant-u-26698|)))

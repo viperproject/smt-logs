@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 13:16:28
+// Date:         2025-01-13 18:20:31
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/basic/while.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/basic/while-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -188,11 +188,11 @@ axiom !IsWandField(f_7);
 procedure t1(n: int) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var i: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var loopHeap: HeapType;
   var loopMask: MaskType;
   
@@ -208,8 +208,8 @@ procedure t1(n: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: i := 0 -- while.vpr@10.5--10.20
     i := 0;
@@ -220,8 +220,8 @@ procedure t1(n: int) returns ()
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Loop invariant i <= n might not hold on entry. Assertion i <= n might not hold. (while.vpr@13.19--13.25) [185793]"}
           i <= n;
     
@@ -255,8 +255,8 @@ procedure t1(n: int) returns ()
             i := i + 1;
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Loop invariant i <= n might not be preserved. Assertion i <= n might not hold. (while.vpr@13.19--13.25) [185794]"}
           i <= n;
         // Terminate execution
@@ -278,11 +278,11 @@ procedure t1(n: int) returns ()
 procedure t2(n: int) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var i: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var loopHeap: HeapType;
   var loopMask: MaskType;
   
@@ -298,8 +298,8 @@ procedure t2(n: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: i := 0 -- while.vpr@22.5--22.20
     i := 0;
@@ -310,8 +310,8 @@ procedure t2(n: int) returns ()
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Loop invariant i < n might not hold on entry. Assertion i < n might not hold. (while.vpr@26.19--26.24) [185795]"}
           i < n;
     
@@ -345,8 +345,8 @@ procedure t2(n: int) returns ()
             i := i + 1;
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Loop invariant i < n might not be preserved. Assertion i < n might not hold. (while.vpr@26.19--26.24) [185796]"}
           i < n;
         // Terminate execution
@@ -368,11 +368,11 @@ procedure t2(n: int) returns ()
 procedure t3(n: int) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var i: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var loopHeap: HeapType;
   var loopMask: MaskType;
   
@@ -388,8 +388,8 @@ procedure t3(n: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: i := 2 -- while.vpr@35.5--35.20
     i := 2;
@@ -400,8 +400,8 @@ procedure t3(n: int) returns ()
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Loop invariant i <= n might not hold on entry. Assertion i <= n might not hold. (while.vpr@39.19--39.25) [185797]"}
           i <= n;
     
@@ -435,8 +435,8 @@ procedure t3(n: int) returns ()
             i := i + 1;
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Loop invariant i <= n might not be preserved. Assertion i <= n might not hold. (while.vpr@39.19--39.25) [185798]"}
           i <= n;
         // Terminate execution
@@ -458,8 +458,8 @@ procedure t3(n: int) returns ()
 procedure t4(n: int, r_1: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var i: int;
   var loopHeap: HeapType;
   var loopMask: MaskType;
@@ -481,8 +481,8 @@ procedure t4(n: int, r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: i := 2 -- while.vpr@49.5--49.20
     i := 2;
@@ -539,11 +539,11 @@ procedure t5(n: int, r_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var i: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var loopHeap: HeapType;
   var loopMask: MaskType;
@@ -568,8 +568,8 @@ procedure t5(n: int, r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: i := 2 -- while.vpr@62.5--62.20
     i := 2;
@@ -580,8 +580,8 @@ procedure t5(n: int, r_1: Ref) returns ()
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Loop invariant acc(r.f, write) might not hold on entry. There might be insufficient permission to access r.f (while.vpr@65.19--65.34) [185800]"}
@@ -633,8 +633,8 @@ procedure t5(n: int, r_1: Ref) returns ()
             i := i + 1;
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Loop invariant acc(r.f, write) might not be preserved. There might be insufficient permission to access r.f (while.vpr@65.19--65.34) [185802]"}
@@ -667,8 +667,8 @@ procedure t5(n: int, r_1: Ref) returns ()
 procedure t6(r_1: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var loopHeap: HeapType;
   var loopMask: MaskType;
   
@@ -683,8 +683,8 @@ procedure t6(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: while (perm(r.f) == none) -- while.vpr@73.5--75.6
     
@@ -723,14 +723,14 @@ procedure t6(r_1: Ref) returns ()
 procedure t7(r_1: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var i: int;
   var j_9: int;
   var loopHeap: HeapType;
   var loopMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -743,8 +743,8 @@ procedure t7(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: i := 1 -- while.vpr@80.5--80.20
     i := 1;
@@ -779,15 +779,15 @@ procedure t7(r_1: Ref) returns ()
         // -- Translate loop body
           
           // -- Translating statement: assert i == 1 -- while.vpr@85.9--85.22
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             assert {:msg "  Assert might fail. Assertion i == 1 might not hold. (while.vpr@85.16--85.22) [185803]"}
               i == 1;
             assume state(Heap, Mask);
           
           // -- Translating statement: assert j == 2 -- while.vpr@87.9--87.22
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             assert {:msg "  Assert might fail. Assertion j == 2 might not hold. (while.vpr@87.16--87.22) [185804]"}
               j_9 == 2;
             assume state(Heap, Mask);
@@ -813,13 +813,13 @@ procedure t7(r_1: Ref) returns ()
 procedure t8(r_1: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var j_9: int;
   var loopHeap: HeapType;
   var loopMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -832,8 +832,8 @@ procedure t8(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: j := 2 -- while.vpr@94.5--94.20
     j_9 := 2;
@@ -878,15 +878,15 @@ procedure t8(r_1: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert j >= 10 -- while.vpr@101.5--101.19
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion j >= 10 might not hold. (while.vpr@101.12--101.19) [185805]"}
       j_9 >= 10;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- while.vpr@103.5--103.17
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion false might not hold. (while.vpr@103.12--103.17) [185806]"}
       false;
     assume state(Heap, Mask);
@@ -900,11 +900,11 @@ procedure t9(r_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var j_9: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var loopHeap: HeapType;
   var loopMask: MaskType;
@@ -927,8 +927,8 @@ procedure t9(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: j := 2 -- while.vpr@109.5--109.20
     j_9 := 2;
@@ -939,8 +939,8 @@ procedure t9(r_1: Ref) returns ()
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Loop invariant acc(r.f, write) might not hold on entry. There might be insufficient permission to access r.f (while.vpr@111.19--111.34) [185807]"}
@@ -992,8 +992,8 @@ procedure t9(r_1: Ref) returns ()
             j_9 := j_9 + 1;
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Loop invariant acc(r.f, write) might not be preserved. There might be insufficient permission to access r.f (while.vpr@111.19--111.34) [185809]"}
@@ -1019,8 +1019,8 @@ procedure t9(r_1: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert j >= r.f -- while.vpr@115.5--115.22
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of j >= r.f
       assert {:msg "  Assert might fail. There might be insufficient permission to access r.f (while.vpr@115.12--115.22) [185810]"}
@@ -1038,13 +1038,13 @@ procedure t10(r_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var j_9: int;
   var loopHeap: HeapType;
   var loopMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1064,8 +1064,8 @@ procedure t10(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: j := 2 -- while.vpr@121.5--121.20
     j_9 := 2;
@@ -1114,8 +1114,8 @@ procedure t10(r_1: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert j >= r.f -- while.vpr@128.5--128.22
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of j >= r.f
       assert {:msg "  Assert might fail. There might be insufficient permission to access r.f (while.vpr@128.12--128.22) [185813]"}
@@ -1132,11 +1132,11 @@ procedure t10(r_1: Ref) returns ()
 procedure t11(r_1: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var j_9: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var loopHeap: HeapType;
   var loopMask: MaskType;
   
@@ -1155,8 +1155,8 @@ procedure t11(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: j := 2 -- while.vpr@134.5--134.20
     j_9 := 2;
@@ -1167,8 +1167,8 @@ procedure t11(r_1: Ref) returns ()
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Loop invariant r != null && r.f == 2 might not hold on entry. Assertion r != null might not hold. (while.vpr@140.19--140.40) [185815]"}
           r_1 != null;
         assert {:msg "  Loop invariant r != null && r.f == 2 might not hold on entry. Assertion r.f == 2 might not hold. (while.vpr@140.19--140.40) [185816]"}
@@ -1210,8 +1210,8 @@ procedure t11(r_1: Ref) returns ()
             j_9 := j_9 + 1;
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Loop invariant r != null && r.f == 2 might not be preserved. Assertion r != null might not hold. (while.vpr@140.19--140.40) [185818]"}
           r_1 != null;
         assert {:msg "  Loop invariant r != null && r.f == 2 might not be preserved. Assertion r.f == 2 might not hold. (while.vpr@140.19--140.40) [185819]"}

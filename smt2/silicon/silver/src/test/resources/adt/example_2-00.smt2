@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 12:43:54
+; Started: 2025-01-13 17:48:20
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -453,11 +453,11 @@
 (assert (forall ((s@$ $Snap) (t@0@00 Tree)) (!
   (= (children%limited s@$ t@0@00) (children s@$ t@0@00))
   :pattern ((children s@$ t@0@00))
-  :qid |quant-u-26471|)))
+  :qid |quant-u-26413|)))
 (assert (forall ((s@$ $Snap) (t@0@00 Tree)) (!
   (children%stateless t@0@00)
   :pattern ((children%limited s@$ t@0@00))
-  :qid |quant-u-26472|)))
+  :qid |quant-u-26414|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -898,11 +898,11 @@
             (Seq_singleton (get_Tree_left<Tree> t@0@00))
             (Seq_singleton (get_Tree_right<Tree> t@0@00)))))))
   :pattern ((children s@$ t@0@00))
-  :qid |quant-u-26479|)))
+  :qid |quant-u-26421|)))
 (assert (forall ((s@$ $Snap) (t@0@00 Tree)) (!
   true
   :pattern ((children s@$ t@0@00))
-  :qid |quant-u-26480|)))
+  :qid |quant-u-26422|)))
 ; ---------- FUNCTION children_seq----------
 (declare-fun ts@2@00 () Seq<Tree>)
 (declare-fun result@3@00 () Seq<Tree>)
@@ -912,11 +912,11 @@
 (assert (forall ((s@$ $Snap) (ts@2@00 Seq<Tree>)) (!
   (= (children_seq%limited s@$ ts@2@00) (children_seq s@$ ts@2@00))
   :pattern ((children_seq s@$ ts@2@00))
-  :qid |quant-u-26473|)))
+  :qid |quant-u-26415|)))
 (assert (forall ((s@$ $Snap) (ts@2@00 Seq<Tree>)) (!
   (children_seq%stateless ts@2@00)
   :pattern ((children_seq%limited s@$ ts@2@00))
-  :qid |quant-u-26474|)))
+  :qid |quant-u-26416|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -1087,7 +1087,7 @@
             (children_seq%limited $Snap.unit (Seq_drop ts@2@00 1))
             (children $Snap.unit (Seq_index ts@2@00 0)))))))
   :pattern ((children_seq s@$ ts@2@00))
-  :qid |quant-u-26481|)))
+  :qid |quant-u-26423|)))
 (assert (forall ((s@$ $Snap) (ts@2@00 Seq<Tree>)) (!
   (=>
     (children_seq%precondition s@$ ts@2@00)
@@ -1101,7 +1101,7 @@
           (children_seq%precondition $Snap.unit (Seq_drop ts@2@00 1))
           (children%precondition $Snap.unit (Seq_index ts@2@00 0))))))
   :pattern ((children_seq s@$ ts@2@00))
-  :qid |quant-u-26482|)))
+  :qid |quant-u-26424|)))
 ; ---------- FUNCTION height_recursive----------
 (declare-fun ts@4@00 () Seq<Tree>)
 (declare-fun result@5@00 () Int)
@@ -1111,11 +1111,11 @@
 (assert (forall ((s@$ $Snap) (ts@4@00 Seq<Tree>)) (!
   (= (height_recursive%limited s@$ ts@4@00) (height_recursive s@$ ts@4@00))
   :pattern ((height_recursive s@$ ts@4@00))
-  :qid |quant-u-26475|)))
+  :qid |quant-u-26417|)))
 (assert (forall ((s@$ $Snap) (ts@4@00 Seq<Tree>)) (!
   (height_recursive%stateless ts@4@00)
   :pattern ((height_recursive%limited s@$ ts@4@00))
-  :qid |quant-u-26476|)))
+  :qid |quant-u-26418|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -1197,7 +1197,7 @@
           1
           (height_recursive%limited $Snap.unit (children_seq $Snap.unit ts@4@00))))))
   :pattern ((height_recursive s@$ ts@4@00))
-  :qid |quant-u-26483|)))
+  :qid |quant-u-26425|)))
 (assert (forall ((s@$ $Snap) (ts@4@00 Seq<Tree>)) (!
   (=>
     (height_recursive%precondition s@$ ts@4@00)
@@ -1208,7 +1208,7 @@
         (children_seq%precondition $Snap.unit ts@4@00)
         (height_recursive%precondition $Snap.unit (children_seq $Snap.unit ts@4@00)))))
   :pattern ((height_recursive s@$ ts@4@00))
-  :qid |quant-u-26484|)))
+  :qid |quant-u-26426|)))
 ; ---------- FUNCTION height----------
 (declare-fun t@6@00 () Tree)
 (declare-fun result@7@00 () Int)
@@ -1218,11 +1218,11 @@
 (assert (forall ((s@$ $Snap) (t@6@00 Tree)) (!
   (= (height%limited s@$ t@6@00) (height s@$ t@6@00))
   :pattern ((height s@$ t@6@00))
-  :qid |quant-u-26477|)))
+  :qid |quant-u-26419|)))
 (assert (forall ((s@$ $Snap) (t@6@00 Tree)) (!
   (height%stateless t@6@00)
   :pattern ((height%limited s@$ t@6@00))
-  :qid |quant-u-26478|)))
+  :qid |quant-u-26420|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -1297,7 +1297,7 @@
         0
         (height_recursive $Snap.unit (Seq_singleton t@6@00)))))
   :pattern ((height s@$ t@6@00))
-  :qid |quant-u-26485|)))
+  :qid |quant-u-26427|)))
 (assert (forall ((s@$ $Snap) (t@6@00 Tree)) (!
   (=>
     (height%precondition s@$ t@6@00)
@@ -1306,4 +1306,4 @@
       true
       (height_recursive%precondition $Snap.unit (Seq_singleton t@6@00))))
   :pattern ((height s@$ t@6@00))
-  :qid |quant-u-26486|)))
+  :qid |quant-u-26428|)))

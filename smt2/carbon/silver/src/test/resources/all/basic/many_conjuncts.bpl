@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 13:16:44
+// Date:         2025-01-13 18:20:46
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/basic/many_conjuncts.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/basic/many_conjuncts-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -260,12 +260,12 @@ procedure read(data_1: Ref, count_1: Ref, ghost: Ref) returns (v_2: int)
 {
   var perm: Perm;
   var wildcard: real where wildcard > NoPerm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -329,8 +329,8 @@ procedure read(data_1: Ref, count_1: Ref, ghost: Ref) returns (v_2: int)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -459,8 +459,8 @@ procedure read(data_1: Ref, count_1: Ref, ghost: Ref) returns (v_2: int)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of read might not hold. Assertion heap(data) == 0 might not hold. (many_conjuncts.vpr@32.11--32.364) [187048]"}
       (heap(data_1): int) == 0;
     assert {:msg "  Postcondition of read might not hold. Assertion heap(count) == 0 might not hold. (many_conjuncts.vpr@32.11--32.364) [187049]"}
@@ -528,12 +528,12 @@ procedure read_erroneous(data_1: Ref, count_1: Ref, ghost: Ref) returns (v_2: in
 {
   var perm: Perm;
   var wildcard: real where wildcard > NoPerm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -597,8 +597,8 @@ procedure read_erroneous(data_1: Ref, count_1: Ref, ghost: Ref) returns (v_2: in
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -729,8 +729,8 @@ procedure read_erroneous(data_1: Ref, count_1: Ref, ghost: Ref) returns (v_2: in
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of read_erroneous might not hold. Assertion heap(data) == 0 might not hold. (many_conjuncts.vpr@40.11--40.373) [187079]"}
       (heap(data_1): int) == 0;
     assert {:msg "  Postcondition of read_erroneous might not hold. Assertion heap(count) == 0 might not hold. (many_conjuncts.vpr@40.11--40.373) [187080]"}
@@ -800,12 +800,12 @@ procedure read2(data_1: Ref, count_1: Ref, ghost: Ref) returns (v_2: int)
 {
   var perm: Perm;
   var wildcard: real where wildcard > NoPerm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -869,8 +869,8 @@ procedure read2(data_1: Ref, count_1: Ref, ghost: Ref) returns (v_2: int)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -999,8 +999,8 @@ procedure read2(data_1: Ref, count_1: Ref, ghost: Ref) returns (v_2: int)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of read2 might not hold. Assertion heap(data) == 0 might not hold. (many_conjuncts.vpr@61.5--74.35) [187111]"}
       (heap(data_1): int) == 0;
     assert {:msg "  Postcondition of read2 might not hold. Assertion heap(count) == 0 might not hold. (many_conjuncts.vpr@61.5--74.35) [187112]"}
@@ -1068,12 +1068,12 @@ procedure read2_erroneous(data_1: Ref, count_1: Ref, ghost: Ref) returns (v_2: i
 {
   var perm: Perm;
   var wildcard: real where wildcard > NoPerm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -1137,8 +1137,8 @@ procedure read2_erroneous(data_1: Ref, count_1: Ref, ghost: Ref) returns (v_2: i
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1269,8 +1269,8 @@ procedure read2_erroneous(data_1: Ref, count_1: Ref, ghost: Ref) returns (v_2: i
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of read2_erroneous might not hold. Assertion heap(data) == 0 might not hold. (many_conjuncts.vpr@96.5--110.10) [187142]"}
       (heap(data_1): int) == 0;
     assert {:msg "  Postcondition of read2_erroneous might not hold. Assertion heap(count) == 0 might not hold. (many_conjuncts.vpr@96.5--110.10) [187143]"}

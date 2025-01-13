@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 12:43:35
+; Started: 2025-01-13 17:48:02
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -798,11 +798,11 @@
     (length2_impl%limited s@$ xs@0@00 y@1@00 akk@2@00 res@3@00)
     (length2_impl s@$ xs@0@00 y@1@00 akk@2@00 res@3@00))
   :pattern ((length2_impl s@$ xs@0@00 y@1@00 akk@2@00 res@3@00))
-  :qid |quant-u-26220|)))
+  :qid |quant-u-26162|)))
 (assert (forall ((s@$ $Snap) (xs@0@00 Set<$Ref>) (y@1@00 $Ref) (akk@2@00 Int) (res@3@00 Int)) (!
   (length2_impl%stateless xs@0@00 y@1@00 akk@2@00 res@3@00)
   :pattern ((length2_impl%limited s@$ xs@0@00 y@1@00 akk@2@00 res@3@00))
-  :qid |quant-u-26221|)))
+  :qid |quant-u-26163|)))
 (assert (forall ((s@$ $Snap) (xs@0@00 Set<$Ref>) (y@1@00 $Ref) (akk@2@00 Int) (res@3@00 Int)) (!
   (and
     (forall ((x@18@00 $Ref)) (!
@@ -814,7 +814,7 @@
       :pattern ((Set_in x@18@00 xs@0@00))
       :pattern ((inv@20@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00 x@18@00))
       :pattern ((img@21@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00 x@18@00))
-      :qid |quant-u-26229|))
+      :qid |quant-u-26171|))
     (forall ((x $Ref)) (!
       (=>
         (and
@@ -998,7 +998,7 @@
           :pattern (($FVF.lookup_next (sm@28@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00) x))
           )))))
   :pattern ((length2_impl s@$ xs@0@00 y@1@00 akk@2@00 res@3@00))
-  :qid |quant-u-26238|)))
+  :qid |quant-u-26180|)))
 (assert (forall ((s@$ $Snap) (xs@0@00 Set<$Ref>) (y@1@00 $Ref) (akk@2@00 Int) (res@3@00 Int)) (!
   (=>
     (length2_impl%precondition s@$ xs@0@00 y@1@00 akk@2@00 res@3@00)
@@ -1024,17 +1024,17 @@
       :pattern (($FVF.lookup_next (sm@28@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00) x))
       )))
   :pattern ((length2_impl s@$ xs@0@00 y@1@00 akk@2@00 res@3@00))
-  :qid |quant-u-26239|)))
+  :qid |quant-u-26181|)))
 (assert (forall ((s@$ $Snap) (xs@5@00 Set<$Ref>) (y@6@00 $Ref) (akk@7@00 Int) (res@8@00 Int)) (!
   (=
     (length_impl%limited s@$ xs@5@00 y@6@00 akk@7@00 res@8@00)
     (length_impl s@$ xs@5@00 y@6@00 akk@7@00 res@8@00))
   :pattern ((length_impl s@$ xs@5@00 y@6@00 akk@7@00 res@8@00))
-  :qid |quant-u-26222|)))
+  :qid |quant-u-26164|)))
 (assert (forall ((s@$ $Snap) (xs@5@00 Set<$Ref>) (y@6@00 $Ref) (akk@7@00 Int) (res@8@00 Int)) (!
   (length_impl%stateless xs@5@00 y@6@00 akk@7@00 res@8@00)
   :pattern ((length_impl%limited s@$ xs@5@00 y@6@00 akk@7@00 res@8@00))
-  :qid |quant-u-26223|)))
+  :qid |quant-u-26165|)))
 (assert (forall ((s@$ $Snap) (xs@5@00 Set<$Ref>) (y@6@00 $Ref) (akk@7@00 Int) (res@8@00 Int)) (!
   (and
     (=
@@ -1096,7 +1096,7 @@
           :pattern (($FVF.lookup_next (sm@55@00 s@$ xs@5@00 y@6@00 akk@7@00 res@8@00) x))
           )))))
   :pattern ((length_impl s@$ xs@5@00 y@6@00 akk@7@00 res@8@00))
-  :qid |quant-u-26243|)))
+  :qid |quant-u-26185|)))
 (assert (forall ((s@$ $Snap) (xs@5@00 Set<$Ref>) (y@6@00 $Ref) (akk@7@00 Int) (res@8@00 Int)) (!
   (=>
     (length_impl%precondition s@$ xs@5@00 y@6@00 akk@7@00 res@8@00)
@@ -1122,17 +1122,17 @@
       :pattern (($FVF.lookup_next (sm@55@00 s@$ xs@5@00 y@6@00 akk@7@00 res@8@00) x))
       )))
   :pattern ((length_impl s@$ xs@5@00 y@6@00 akk@7@00 res@8@00))
-  :qid |quant-u-26244|)))
+  :qid |quant-u-26186|)))
 (assert (forall ((s@$ $Snap) (xs@10@00 Set<$Ref>) (y@11@00 $Ref) (akk@12@00 Int) (res@13@00 Int)) (!
   (=
     (length3_impl%limited s@$ xs@10@00 y@11@00 akk@12@00 res@13@00)
     (length3_impl s@$ xs@10@00 y@11@00 akk@12@00 res@13@00))
   :pattern ((length3_impl s@$ xs@10@00 y@11@00 akk@12@00 res@13@00))
-  :qid |quant-u-26224|)))
+  :qid |quant-u-26166|)))
 (assert (forall ((s@$ $Snap) (xs@10@00 Set<$Ref>) (y@11@00 $Ref) (akk@12@00 Int) (res@13@00 Int)) (!
   (length3_impl%stateless xs@10@00 y@11@00 akk@12@00 res@13@00)
   :pattern ((length3_impl%limited s@$ xs@10@00 y@11@00 akk@12@00 res@13@00))
-  :qid |quant-u-26225|)))
+  :qid |quant-u-26167|)))
 (assert (forall ((s@$ $Snap) (xs@10@00 Set<$Ref>) (y@11@00 $Ref) (akk@12@00 Int) (res@13@00 Int)) (!
   (and
     (forall ((x@61@00 $Ref)) (!
@@ -1145,7 +1145,7 @@
           (img@66@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00 x@61@00)))
       :pattern ((Set_in x@61@00 xs@10@00))
       :pattern (($PSF.loc_list ($PSF.lookup_list ($SortWrappers.$SnapTo$PSF<list> s@$) ($SortWrappers.$RefTo$Snap x@61@00)) ($SortWrappers.$RefTo$Snap x@61@00)))
-      :qid |quant-u-26246|))
+      :qid |quant-u-26188|))
     (forall ((x $Ref)) (!
       (=>
         (and
@@ -1337,7 +1337,7 @@
           :pattern (($FVF.lookup_next (sm@73@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00) x))
           )))))
   :pattern ((length3_impl s@$ xs@10@00 y@11@00 akk@12@00 res@13@00))
-  :qid |quant-u-26255|)))
+  :qid |quant-u-26197|)))
 (assert (forall ((s@$ $Snap) (xs@10@00 Set<$Ref>) (y@11@00 $Ref) (akk@12@00 Int) (res@13@00 Int)) (!
   (=>
     (length3_impl%precondition s@$ xs@10@00 y@11@00 akk@12@00 res@13@00)
@@ -1363,15 +1363,15 @@
       :pattern (($FVF.lookup_next (sm@73@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00) x))
       )))
   :pattern ((length3_impl s@$ xs@10@00 y@11@00 akk@12@00 res@13@00))
-  :qid |quant-u-26256|)))
+  :qid |quant-u-26198|)))
 (assert (forall ((s@$ $Snap) (l@15@00 $Ref) (i@16@00 Int)) (!
   (= (foo%limited s@$ l@15@00 i@16@00) (foo s@$ l@15@00 i@16@00))
   :pattern ((foo s@$ l@15@00 i@16@00))
-  :qid |quant-u-26226|)))
+  :qid |quant-u-26168|)))
 (assert (forall ((s@$ $Snap) (l@15@00 $Ref) (i@16@00 Int)) (!
   (foo%stateless l@15@00 i@16@00)
   :pattern ((foo%limited s@$ l@15@00 i@16@00))
-  :qid |quant-u-26227|)))
+  :qid |quant-u-26169|)))
 (assert (forall ((s@$ $Snap) (l@15@00 $Ref) (i@16@00 Int)) (!
   (and
     (=
@@ -1466,7 +1466,7 @@
             ($SortWrappers.IntTo$Snap j)))))) j))
           )))))
   :pattern ((foo s@$ l@15@00 i@16@00))
-  :qid |quant-u-26260|)))
+  :qid |quant-u-26202|)))
 ; WARNING: (1430,11): 'not' cannot be used in patterns.
 ; WARNING: (1430,11): 'if' cannot be used in patterns.
 (assert (forall ((s@$ $Snap) (l@15@00 $Ref) (i@16@00 Int)) (!
@@ -1525,7 +1525,7 @@
         ($SortWrappers.IntTo$Snap j)))))) j))
       )))
   :pattern ((foo s@$ l@15@00 i@16@00))
-  :qid |quant-u-26261|)))
+  :qid |quant-u-26203|)))
 ; WARNING: (1487,7): 'not' cannot be used in patterns.
 ; WARNING: (1487,7): 'if' cannot be used in patterns.
 ; End function- and predicate-related preamble
@@ -1612,8 +1612,8 @@
 (assert (not (= x1@6@01 $Ref.null)))
 (declare-const elem@7@01 Int)
 (declare-const next@8@01 $Ref)
-(assert (not (= x1@6@01 x2@5@01)))
 (assert (not (= x1@6@01 x1@4@01)))
+(assert (not (= x1@6@01 x2@5@01)))
 ; [exec]
 ; x1.next := null
 ; [exec]
@@ -1793,10 +1793,10 @@
 (assert (not (= x1@16@01 $Ref.null)))
 (declare-const elem@17@01 Int)
 (declare-const next@18@01 $Ref)
+(assert (not (= x1@16@01 x3@14@01)))
+(assert (not (= x1@16@01 x1@12@01)))
 (assert (not (= x1@16@01 x4@15@01)))
 (assert (not (= x1@16@01 x2@13@01)))
-(assert (not (= x1@16@01 x1@12@01)))
-(assert (not (= x1@16@01 x3@14@01)))
 ; [exec]
 ; x1.next := null
 ; [exec]
@@ -1815,10 +1815,10 @@
 (assert (not (= x2@19@01 $Ref.null)))
 (declare-const elem@20@01 Int)
 (declare-const next@21@01 $Ref)
-(assert (not (= x2@19@01 x4@15@01)))
-(assert (not (= x2@19@01 x1@16@01)))
-(assert (not (= x2@19@01 x2@13@01)))
 (assert (not (= x2@19@01 x3@14@01)))
+(assert (not (= x2@19@01 x1@16@01)))
+(assert (not (= x2@19@01 x4@15@01)))
+(assert (not (= x2@19@01 x2@13@01)))
 ; [exec]
 ; x2.next := x1
 ; [exec]
@@ -1850,10 +1850,10 @@
 (assert (not (= x3@22@01 $Ref.null)))
 (declare-const elem@23@01 Int)
 (declare-const next@24@01 $Ref)
-(assert (not (= x3@22@01 x2@19@01)))
-(assert (not (= x3@22@01 x4@15@01)))
-(assert (not (= x3@22@01 x1@16@01)))
 (assert (not (= x3@22@01 x3@14@01)))
+(assert (not (= x3@22@01 x1@16@01)))
+(assert (not (= x3@22@01 x4@15@01)))
+(assert (not (= x3@22@01 x2@19@01)))
 ; [exec]
 ; x3.next := x2
 ; [exec]
@@ -1889,10 +1889,10 @@
 (assert (not (= x4@25@01 $Ref.null)))
 (declare-const elem@26@01 Int)
 (declare-const next@27@01 $Ref)
+(assert (not (= x4@25@01 x1@16@01)))
+(assert (not (= x4@25@01 x4@15@01)))
 (assert (not (= x4@25@01 x2@19@01)))
 (assert (not (= x4@25@01 x3@22@01)))
-(assert (not (= x4@25@01 x4@15@01)))
-(assert (not (= x4@25@01 x1@16@01)))
 ; [exec]
 ; x4.next := x3
 ; [exec]
@@ -2243,8 +2243,8 @@
 (declare-const x2@41@01 $Ref)
 (assert (not (= x2@41@01 $Ref.null)))
 (declare-const next@42@01 $Ref)
-(assert (not (= x2@41@01 x2@36@01)))
 (assert (not (= x2@41@01 x1@39@01)))
+(assert (not (= x2@41@01 x2@36@01)))
 (assert (not (Set_in x2@41@01 xs@37@01)))
 ; [exec]
 ; x2.next := x1
@@ -2403,10 +2403,10 @@
 (declare-const x1@51@01 $Ref)
 (assert (not (= x1@51@01 $Ref.null)))
 (declare-const next@52@01 $Ref)
+(assert (not (= x1@51@01 x4@48@01)))
 (assert (not (= x1@51@01 x3@47@01)))
 (assert (not (= x1@51@01 x1@45@01)))
 (assert (not (= x1@51@01 x2@46@01)))
-(assert (not (= x1@51@01 x4@48@01)))
 (assert (not (Set_in x1@51@01 xs@49@01)))
 ; [exec]
 ; x1.next := null
@@ -2423,9 +2423,9 @@
 (declare-const x2@53@01 $Ref)
 (assert (not (= x2@53@01 $Ref.null)))
 (declare-const next@54@01 $Ref)
+(assert (not (= x2@53@01 x4@48@01)))
 (assert (not (= x2@53@01 x3@47@01)))
 (assert (not (= x2@53@01 x2@46@01)))
-(assert (not (= x2@53@01 x4@48@01)))
 (assert (not (= x2@53@01 x1@51@01)))
 (assert (not (Set_in x2@53@01 xs@49@01)))
 ; [exec]
@@ -2454,9 +2454,9 @@
 (declare-const x3@55@01 $Ref)
 (assert (not (= x3@55@01 $Ref.null)))
 (declare-const next@56@01 $Ref)
+(assert (not (= x3@55@01 x4@48@01)))
 (assert (not (= x3@55@01 x3@47@01)))
 (assert (not (= x3@55@01 x2@53@01)))
-(assert (not (= x3@55@01 x4@48@01)))
 (assert (not (= x3@55@01 x1@51@01)))
 (assert (not (Set_in x3@55@01 xs@49@01)))
 ; [exec]
@@ -2487,9 +2487,9 @@
 (declare-const x4@57@01 $Ref)
 (assert (not (= x4@57@01 $Ref.null)))
 (declare-const next@58@01 $Ref)
+(assert (not (= x4@57@01 x4@48@01)))
 (assert (not (= x4@57@01 x2@53@01)))
 (assert (not (= x4@57@01 x3@55@01)))
-(assert (not (= x4@57@01 x4@48@01)))
 (assert (not (= x4@57@01 x1@51@01)))
 (assert (not (Set_in x4@57@01 xs@49@01)))
 ; [exec]
@@ -2684,7 +2684,7 @@
 (assert (not (forall ((x@69@01 $Ref)) (!
   (=> (Set_in x@69@01 xs@67@01) (or (= $k@70@01 $Perm.No) (< $Perm.No $k@70@01)))
   
-  :qid |quant-u-26262|))))
+  :qid |quant-u-26204|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -2731,7 +2731,7 @@
       (> $k@70@01 $Perm.No))
     (> (ite (= x x1@64@01) $Perm.Write $Perm.No) $Perm.No))
   
-  :qid |quant-u-26263|))))
+  :qid |quant-u-26205|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -2914,8 +2914,8 @@
 (declare-const x1@79@01 $Ref)
 (assert (not (= x1@79@01 $Ref.null)))
 (declare-const next@80@01 $Ref)
-(assert (not (= x1@79@01 x1@75@01)))
 (assert (not (= x1@79@01 x2@76@01)))
+(assert (not (= x1@79@01 x1@75@01)))
 (assert (not (Set_in x1@79@01 xs@77@01)))
 ; [exec]
 ; x1.next := null
@@ -2952,8 +2952,8 @@
 (declare-const x2@83@01 $Ref)
 (assert (not (= x2@83@01 $Ref.null)))
 (declare-const next@84@01 $Ref)
-(assert (not (= x2@83@01 x1@79@01)))
 (assert (not (= x2@83@01 x2@76@01)))
+(assert (not (= x2@83@01 x1@79@01)))
 (assert (not (Set_in x2@83@01 xs@77@01)))
 ; [exec]
 ; x2.next := x1
@@ -3017,7 +3017,7 @@
 (assert (not (forall ((x $Ref)) (!
   (=> (= x x1@79@01) (= (- $k@85@01 (pTaken@86@01 x)) $Perm.No))
   
-  :qid |quant-u-26266|))))
+  :qid |quant-u-26208|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -3094,7 +3094,7 @@
 (assert (not (forall ((x@92@01 $Ref)) (!
   (=> (Set_in x@92@01 xs@90@01) (or (= $k@93@01 $Perm.No) (< $Perm.No $k@93@01)))
   
-  :qid |quant-u-26267|))))
+  :qid |quant-u-26209|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -3145,7 +3145,7 @@
         (ite (= x x1@79@01) (- $k@81@01 (pTaken@86@01 x)) $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-26268|))))
+  :qid |quant-u-26210|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -3659,9 +3659,9 @@
 (declare-const x1@104@01 $Ref)
 (assert (not (= x1@104@01 $Ref.null)))
 (declare-const next@105@01 $Ref)
-(assert (not (= x1@104@01 x2@99@01)))
-(assert (not (= x1@104@01 x4@101@01)))
 (assert (not (= x1@104@01 x3@100@01)))
+(assert (not (= x1@104@01 x4@101@01)))
+(assert (not (= x1@104@01 x2@99@01)))
 (assert (not (= x1@104@01 x1@98@01)))
 (assert (not (Set_in x1@104@01 xs@102@01)))
 ; [exec]
@@ -3699,10 +3699,10 @@
 (declare-const x2@108@01 $Ref)
 (assert (not (= x2@108@01 $Ref.null)))
 (declare-const next@109@01 $Ref)
-(assert (not (= x2@108@01 x2@99@01)))
-(assert (not (= x2@108@01 x4@101@01)))
-(assert (not (= x2@108@01 x3@100@01)))
 (assert (not (= x2@108@01 x1@104@01)))
+(assert (not (= x2@108@01 x3@100@01)))
+(assert (not (= x2@108@01 x4@101@01)))
+(assert (not (= x2@108@01 x2@99@01)))
 (assert (not (Set_in x2@108@01 xs@102@01)))
 ; [exec]
 ; x2.next := x1
@@ -3766,7 +3766,7 @@
 (assert (not (forall ((x $Ref)) (!
   (=> (= x x1@104@01) (= (- $k@110@01 (pTaken@111@01 x)) $Perm.No))
   
-  :qid |quant-u-26271|))))
+  :qid |quant-u-26213|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -3800,10 +3800,10 @@
 (declare-const x3@115@01 $Ref)
 (assert (not (= x3@115@01 $Ref.null)))
 (declare-const next@116@01 $Ref)
+(assert (not (= x3@115@01 x1@104@01)))
+(assert (not (= x3@115@01 x3@100@01)))
 (assert (not (= x3@115@01 x4@101@01)))
 (assert (not (= x3@115@01 x2@108@01)))
-(assert (not (= x3@115@01 x3@100@01)))
-(assert (not (= x3@115@01 x1@104@01)))
 (assert (not (Set_in x3@115@01 xs@102@01)))
 ; [exec]
 ; x3.next := x2
@@ -3884,7 +3884,7 @@
 (assert (not (forall ((x $Ref)) (!
   (=> (= x x2@108@01) (= (- $k@117@01 (pTaken@118@01 x)) $Perm.No))
   
-  :qid |quant-u-26274|))))
+  :qid |quant-u-26216|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -3928,10 +3928,10 @@
 (declare-const x4@123@01 $Ref)
 (assert (not (= x4@123@01 $Ref.null)))
 (declare-const next@124@01 $Ref)
+(assert (not (= x4@123@01 x1@104@01)))
 (assert (not (= x4@123@01 x4@101@01)))
 (assert (not (= x4@123@01 x2@108@01)))
 (assert (not (= x4@123@01 x3@115@01)))
-(assert (not (= x4@123@01 x1@104@01)))
 (assert (not (Set_in x4@123@01 xs@102@01)))
 ; [exec]
 ; x4.next := x3
@@ -4028,7 +4028,7 @@
 (assert (not (forall ((x $Ref)) (!
   (=> (= x x3@115@01) (= (- $k@125@01 (pTaken@126@01 x)) $Perm.No))
   
-  :qid |quant-u-26277|))))
+  :qid |quant-u-26219|))))
 (check-sat)
 ; unsat
 (pop) ; 7
@@ -4109,7 +4109,7 @@
     (Set_in x@134@01 xs@132@01)
     (or (= $k@135@01 $Perm.No) (< $Perm.No $k@135@01)))
   
-  :qid |quant-u-26278|))))
+  :qid |quant-u-26220|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -4164,7 +4164,7 @@
         (ite (= x x3@115@01) (- $k@117@01 (pTaken@126@01 x)) $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-26279|))))
+  :qid |quant-u-26221|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -6339,7 +6339,7 @@
     (Set_in x@150@01 xs@148@01)
     (or (= $k@151@01 $Perm.No) (< $Perm.No $k@151@01)))
   
-  :qid |quant-u-26280|))))
+  :qid |quant-u-26222|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -6393,7 +6393,7 @@
     (Set_in (inv@152@01 x) xs@148@01)
     ($PSF.loc_list ($PSF.lookup_list (as sm@146@01  $PSF<list>) ($SortWrappers.$RefTo$Snap x)) ($SortWrappers.$RefTo$Snap x)))
   :pattern ((inv@152@01 x))
-  :qid |quant-u-26281|)))
+  :qid |quant-u-26223|)))
 (push) ; 5
 (assert (not (forall ((x $Ref)) (!
   (=>
@@ -6402,7 +6402,7 @@
       (> $k@151@01 $Perm.No))
     (> (ite (= x x1@143@01) $Perm.Write $Perm.No) $Perm.No))
   
-  :qid |quant-u-26282|))))
+  :qid |quant-u-26224|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -6510,7 +6510,7 @@
       (Set_in (inv@152@01 x) xs@148@01)
       ($PSF.loc_list ($PSF.lookup_list (as sm@146@01  $PSF<list>) ($SortWrappers.$RefTo$Snap x)) ($SortWrappers.$RefTo$Snap x)))
     :pattern ((inv@152@01 x))
-    :qid |quant-u-26281|))
+    :qid |quant-u-26223|))
   (length3_impl%precondition ($SortWrappers.$PSF<list>To$Snap (as sm@154@01  $PSF<list>)) xs@148@01 x1@143@01 1 res@142@01)))
 (assert (length3_impl ($SortWrappers.$PSF<list>To$Snap (as sm@154@01  $PSF<list>)) xs@148@01 x1@143@01 1 res@142@01))
 ; State saturation: after inhale
@@ -6600,8 +6600,8 @@
 (declare-const x1@160@01 $Ref)
 (assert (not (= x1@160@01 $Ref.null)))
 (declare-const next@161@01 $Ref)
-(assert (not (= x1@160@01 x1@156@01)))
 (assert (not (= x1@160@01 x2@157@01)))
+(assert (not (= x1@160@01 x1@156@01)))
 (assert (not (Set_in x1@160@01 xs@158@01)))
 ; [exec]
 ; x1.next := null
@@ -6728,7 +6728,7 @@
 (assert (not (forall ((x $Ref)) (!
   (=> (= x x1@160@01) (= (- $k@168@01 (pTaken@169@01 x)) $Perm.No))
   
-  :qid |quant-u-26285|))))
+  :qid |quant-u-26227|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -6847,7 +6847,7 @@
     (Set_in x@175@01 xs@173@01)
     (or (= $k@176@01 $Perm.No) (< $Perm.No $k@176@01)))
   
-  :qid |quant-u-26286|))))
+  :qid |quant-u-26228|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -6901,7 +6901,7 @@
     (Set_in (inv@177@01 x) xs@173@01)
     ($PSF.loc_list ($PSF.lookup_list (as sm@171@01  $PSF<list>) ($SortWrappers.$RefTo$Snap x)) ($SortWrappers.$RefTo$Snap x)))
   :pattern ((inv@177@01 x))
-  :qid |quant-u-26287|)))
+  :qid |quant-u-26229|)))
 (push) ; 6
 (assert (not (forall ((x $Ref)) (!
   (=>
@@ -6914,7 +6914,7 @@
         (ite (= x x1@160@01) (- $k@162@01 (pTaken@169@01 x)) $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-26288|))))
+  :qid |quant-u-26230|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -7074,7 +7074,7 @@
       (Set_in (inv@177@01 x) xs@173@01)
       ($PSF.loc_list ($PSF.lookup_list (as sm@171@01  $PSF<list>) ($SortWrappers.$RefTo$Snap x)) ($SortWrappers.$RefTo$Snap x)))
     :pattern ((inv@177@01 x))
-    :qid |quant-u-26287|))
+    :qid |quant-u-26229|))
   (length3_impl%precondition ($SortWrappers.$PSF<list>To$Snap (as sm@179@01  $PSF<list>)) xs@173@01 x2@166@01 1 res@159@01)))
 (assert (length3_impl ($SortWrappers.$PSF<list>To$Snap (as sm@179@01  $PSF<list>)) xs@173@01 x2@166@01 1 res@159@01))
 ; State saturation: after inhale
@@ -7460,9 +7460,9 @@
 (assert (not (= x1@187@01 $Ref.null)))
 (declare-const next@188@01 $Ref)
 (assert (not (= x1@187@01 x1@181@01)))
+(assert (not (= x1@187@01 x2@182@01)))
 (assert (not (= x1@187@01 x3@183@01)))
 (assert (not (= x1@187@01 x4@184@01)))
-(assert (not (= x1@187@01 x2@182@01)))
 (assert (not (Set_in x1@187@01 xs@185@01)))
 ; [exec]
 ; x1.next := null
@@ -7522,10 +7522,10 @@
 (declare-const x2@193@01 $Ref)
 (assert (not (= x2@193@01 $Ref.null)))
 (declare-const next@194@01 $Ref)
-(assert (not (= x2@193@01 x3@183@01)))
-(assert (not (= x2@193@01 x4@184@01)))
 (assert (not (= x2@193@01 x2@182@01)))
+(assert (not (= x2@193@01 x3@183@01)))
 (assert (not (= x2@193@01 x1@187@01)))
+(assert (not (= x2@193@01 x4@184@01)))
 (assert (not (Set_in x2@193@01 xs@185@01)))
 ; [exec]
 ; x2.next := x1
@@ -7591,7 +7591,7 @@
 (assert (not (forall ((x $Ref)) (!
   (=> (= x x1@187@01) (= (- $k@195@01 (pTaken@196@01 x)) $Perm.No))
   
-  :qid |quant-u-26291|))))
+  :qid |quant-u-26233|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -7665,10 +7665,10 @@
 (declare-const x3@200@01 $Ref)
 (assert (not (= x3@200@01 $Ref.null)))
 (declare-const next@201@01 $Ref)
-(assert (not (= x3@200@01 x3@183@01)))
-(assert (not (= x3@200@01 x4@184@01)))
-(assert (not (= x3@200@01 x1@187@01)))
 (assert (not (= x3@200@01 x2@193@01)))
+(assert (not (= x3@200@01 x3@183@01)))
+(assert (not (= x3@200@01 x1@187@01)))
+(assert (not (= x3@200@01 x4@184@01)))
 (assert (not (Set_in x3@200@01 xs@185@01)))
 ; [exec]
 ; x3.next := x2
@@ -7751,7 +7751,7 @@
 (assert (not (forall ((x $Ref)) (!
   (=> (= x x2@193@01) (= (- $k@202@01 (pTaken@203@01 x)) $Perm.No))
   
-  :qid |quant-u-26294|))))
+  :qid |quant-u-26236|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -7854,10 +7854,10 @@
 (declare-const x4@208@01 $Ref)
 (assert (not (= x4@208@01 $Ref.null)))
 (declare-const next@209@01 $Ref)
-(assert (not (= x4@208@01 x4@184@01)))
-(assert (not (= x4@208@01 x1@187@01)))
-(assert (not (= x4@208@01 x3@200@01)))
 (assert (not (= x4@208@01 x2@193@01)))
+(assert (not (= x4@208@01 x1@187@01)))
+(assert (not (= x4@208@01 x4@184@01)))
+(assert (not (= x4@208@01 x3@200@01)))
 (assert (not (Set_in x4@208@01 xs@185@01)))
 ; [exec]
 ; x4.next := x3
@@ -7956,7 +7956,7 @@
 (assert (not (forall ((x $Ref)) (!
   (=> (= x x3@200@01) (= (- $k@210@01 (pTaken@211@01 x)) $Perm.No))
   
-  :qid |quant-u-26297|))))
+  :qid |quant-u-26239|))))
 (check-sat)
 ; unsat
 (pop) ; 7
@@ -8114,7 +8114,7 @@
     (Set_in x@219@01 xs@217@01)
     (or (= $k@220@01 $Perm.No) (< $Perm.No $k@220@01)))
   
-  :qid |quant-u-26298|))))
+  :qid |quant-u-26240|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -8168,7 +8168,7 @@
     (Set_in (inv@221@01 x) xs@217@01)
     ($PSF.loc_list ($PSF.lookup_list (as sm@215@01  $PSF<list>) ($SortWrappers.$RefTo$Snap x)) ($SortWrappers.$RefTo$Snap x)))
   :pattern ((inv@221@01 x))
-  :qid |quant-u-26299|)))
+  :qid |quant-u-26241|)))
 (push) ; 8
 (assert (not (forall ((x $Ref)) (!
   (=>
@@ -8185,7 +8185,7 @@
         (ite (= x x3@200@01) (- $k@202@01 (pTaken@211@01 x)) $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-26300|))))
+  :qid |quant-u-26242|))))
 (check-sat)
 ; unsat
 (pop) ; 8
@@ -8433,7 +8433,7 @@
       (Set_in (inv@221@01 x) xs@217@01)
       ($PSF.loc_list ($PSF.lookup_list (as sm@215@01  $PSF<list>) ($SortWrappers.$RefTo$Snap x)) ($SortWrappers.$RefTo$Snap x)))
     :pattern ((inv@221@01 x))
-    :qid |quant-u-26299|))
+    :qid |quant-u-26241|))
   (length3_impl%precondition ($SortWrappers.$PSF<list>To$Snap (as sm@223@01  $PSF<list>)) xs@217@01 x4@208@01 1 res@186@01)))
 (assert (length3_impl ($SortWrappers.$PSF<list>To$Snap (as sm@223@01  $PSF<list>)) xs@217@01 x4@208@01 1 res@186@01))
 ; State saturation: after inhale

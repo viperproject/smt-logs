@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 13:26:23
+// Date:         2025-01-13 18:30:10
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0508a.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0508a-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -823,12 +823,12 @@ procedure test03a(trees: (Set Ref)) returns ()
   var s1_1: Ref;
   var s2_1: Ref;
   var r_28: Ref;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var s_14: Ref;
   var wildcard: real where wildcard > 0.000000000;
   
@@ -954,16 +954,16 @@ procedure test03a(trees: (Set Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert (forall s: Ref ::
   //     { (s in trees) }
   //     (s in trees) ==> acc(s.item.bool_prop, wildcard)) -- 0508a.vpr@19.3--19.86
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
+    ExhaleWellDef0Mask := AssertMask;
     
     // -- Check definedness of (forall s: Ref :: { (s in trees) } (s in trees) ==> acc(s.item.bool_prop, wildcard))
       if (*) {
@@ -1041,12 +1041,12 @@ procedure test03b(trees: (Set Ref)) returns ()
 {
   var QPMask: MaskType;
   var r_41: Ref;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var s_18: Ref;
   var wildcard: real where wildcard > 0.000000000;
   
@@ -1153,16 +1153,16 @@ procedure test03b(trees: (Set Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert (forall s: Ref ::
   //     { (id(s): Ref) }
   //     (s in trees) ==> acc((id(s): Ref).item.bool_prop, wildcard)) -- 0508a.vpr@30.3--30.85
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
+    ExhaleWellDef0Mask := AssertMask;
     
     // -- Check definedness of (forall s: Ref :: { (id(s): Ref) } (s in trees) ==> acc((id(s): Ref).item.bool_prop, wildcard))
       if (*) {
@@ -1242,12 +1242,12 @@ procedure test03c(trees: (Set Ref)) returns ()
   var s1_9: Ref;
   var s2_9: Ref;
   var r_13: Ref;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var s_12: Ref;
   var wildcard: real where wildcard > 0.000000000;
   
@@ -1373,16 +1373,16 @@ procedure test03c(trees: (Set Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert (forall s: Ref ::
   //     { (id(s): Ref) }
   //     (s in trees) ==> acc((id(s): Ref).item.bool_prop, wildcard)) -- 0508a.vpr@38.4--38.86
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
+    ExhaleWellDef0Mask := AssertMask;
     
     // -- Check definedness of (forall s: Ref :: { (id(s): Ref) } (s in trees) ==> acc((id(s): Ref).item.bool_prop, wildcard))
       if (*) {
@@ -1462,12 +1462,12 @@ procedure test04(trees: (Set Ref)) returns ()
   var s1_10: Ref;
   var s2_10: Ref;
   var r_46: Ref;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var s_15: Ref;
   var wildcard: real where wildcard > 0.000000000;
   
@@ -1593,16 +1593,16 @@ procedure test04(trees: (Set Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert (forall s: Ref ::
   //     { (s in trees) }
   //     (s in trees) ==> acc((id(s): Ref).item.bool_prop, wildcard)) -- 0508a.vpr@48.3--48.90
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
+    ExhaleWellDef0Mask := AssertMask;
     
     // -- Check definedness of (forall s: Ref :: { (s in trees) } (s in trees) ==> acc((id(s): Ref).item.bool_prop, wildcard))
       if (*) {
@@ -1685,12 +1685,12 @@ procedure test01(trees: (Seq Ref), g_1: int) returns ()
   var i_30: int;
   var j_22: int;
   var i_31: int;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var j_23: int;
   var wildcard: real where wildcard > 0.000000000;
   
@@ -1857,16 +1857,16 @@ procedure test01(trees: (Seq Ref), g_1: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert (forall j: Int ::
   //     { trees[j] }
   //     0 <= j && j < g ==> acc(trees[j].item.bool_prop, wildcard)) -- 0508a.vpr@60.3--60.96
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
+    ExhaleWellDef0Mask := AssertMask;
     
     // -- Check definedness of (forall j: Int :: { trees[j] } 0 <= j && j < g ==> acc(trees[j].item.bool_prop, wildcard))
       if (*) {

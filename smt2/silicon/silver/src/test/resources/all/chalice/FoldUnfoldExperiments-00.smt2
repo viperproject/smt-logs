@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 12:38:21
+; Started: 2025-01-13 17:42:55
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -128,11 +128,11 @@
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (= (getX%limited s@$ this@0@00) (getX s@$ this@0@00))
   :pattern ((getX s@$ this@0@00))
-  :qid |quant-u-21816|)))
+  :qid |quant-u-21757|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (getX%stateless this@0@00)
   :pattern ((getX%limited s@$ this@0@00))
-  :qid |quant-u-21817|)))
+  :qid |quant-u-21758|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -154,11 +154,11 @@
     (getX%precondition s@$ this@0@00)
     (= (getX s@$ this@0@00) ($SortWrappers.$SnapToInt s@$)))
   :pattern ((getX s@$ this@0@00))
-  :qid |quant-u-21820|)))
+  :qid |quant-u-21761|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   true
   :pattern ((getX s@$ this@0@00))
-  :qid |quant-u-21821|)))
+  :qid |quant-u-21762|)))
 ; ---------- FUNCTION getY----------
 (declare-fun this@2@00 () $Ref)
 (declare-fun result@3@00 () Int)
@@ -168,11 +168,11 @@
 (assert (forall ((s@$ $Snap) (this@2@00 $Ref)) (!
   (= (getY%limited s@$ this@2@00) (getY s@$ this@2@00))
   :pattern ((getY s@$ this@2@00))
-  :qid |quant-u-21818|)))
+  :qid |quant-u-21759|)))
 (assert (forall ((s@$ $Snap) (this@2@00 $Ref)) (!
   (getY%stateless this@2@00)
   :pattern ((getY%limited s@$ this@2@00))
-  :qid |quant-u-21819|)))
+  :qid |quant-u-21760|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -194,11 +194,11 @@
     (getY%precondition s@$ this@2@00)
     (= (getY s@$ this@2@00) ($SortWrappers.$SnapToInt s@$)))
   :pattern ((getY s@$ this@2@00))
-  :qid |quant-u-21822|)))
+  :qid |quant-u-21763|)))
 (assert (forall ((s@$ $Snap) (this@2@00 $Ref)) (!
   true
   :pattern ((getY s@$ this@2@00))
-  :qid |quant-u-21823|)))
+  :qid |quant-u-21764|)))
 ; ---------- X ----------
 (declare-const this@4@00 $Ref)
 (push) ; 1

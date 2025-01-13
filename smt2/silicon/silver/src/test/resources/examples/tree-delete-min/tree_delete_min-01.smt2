@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 12:36:27
+; Started: 2025-01-13 17:41:04
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -426,11 +426,11 @@
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   (= (vals%limited s@$ x@0@00) (vals s@$ x@0@00))
   :pattern ((vals s@$ x@0@00))
-  :qid |quant-u-18700|)))
+  :qid |quant-u-18559|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   (vals%stateless x@0@00)
   :pattern ((vals%limited s@$ x@0@00))
-  :qid |quant-u-18701|)))
+  :qid |quant-u-18560|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   (=>
     (vals%precondition s@$ x@0@00)
@@ -446,7 +446,7 @@
           (vals%limited ($Snap.second ($Snap.second ($Snap.second ($Snap.second s@$)))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second s@$))))))))))
   :pattern ((vals s@$ x@0@00))
   :pattern ((vals%stateless x@0@00) (Tree%trigger s@$ x@0@00))
-  :qid |quant-u-18704|)))
+  :qid |quant-u-18563|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   (=>
     (vals%precondition s@$ x@0@00)
@@ -457,15 +457,15 @@
         (vals%precondition ($Snap.first ($Snap.second ($Snap.second s@$))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$))))
         (vals%precondition ($Snap.second ($Snap.second ($Snap.second ($Snap.second s@$)))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second s@$)))))))))
   :pattern ((vals s@$ x@0@00))
-  :qid |quant-u-18705|)))
+  :qid |quant-u-18564|)))
 (assert (forall ((s@$ $Snap) (x@2@00 $Ref)) (!
   (= (val%limited s@$ x@2@00) (val s@$ x@2@00))
   :pattern ((val s@$ x@2@00))
-  :qid |quant-u-18702|)))
+  :qid |quant-u-18561|)))
 (assert (forall ((s@$ $Snap) (x@2@00 $Ref)) (!
   (val%stateless x@2@00)
   :pattern ((val%limited s@$ x@2@00))
-  :qid |quant-u-18703|)))
+  :qid |quant-u-18562|)))
 (assert (forall ((s@$ $Snap) (x@2@00 $Ref)) (!
   (=>
     (val%precondition s@$ x@2@00)
@@ -473,11 +473,11 @@
       (val s@$ x@2@00)
       ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second s@$)))))
   :pattern ((val s@$ x@2@00))
-  :qid |quant-u-18706|)))
+  :qid |quant-u-18565|)))
 (assert (forall ((s@$ $Snap) (x@2@00 $Ref)) (!
   true
   :pattern ((val s@$ x@2@00))
-  :qid |quant-u-18707|)))
+  :qid |quant-u-18566|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- tree_delete_min ----------
@@ -942,7 +942,7 @@
               ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@4@01)))))))))
       $Snap.unit))
   :pattern ((MWSF_apply mwsf@11@01 $t@10@01))
-  :qid |quant-u-18708|)))
+  :qid |quant-u-18567|)))
 ; [eval] plvs[1..]
 ; [eval] old(vals(x))[1..]
 ; [eval] old(vals(x))
@@ -974,7 +974,7 @@
               ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@4@01)))))))))
       $Snap.unit))
   :pattern ((MWSF_apply mwsf@11@01 $t@10@01))
-  :qid |quant-u-18709|)))
+  :qid |quant-u-18568|)))
 (assert true)
 (declare-const oldP@12@01 $Ref)
 (declare-const oldPlvs@13@01 Seq<Int>)
@@ -1539,7 +1539,7 @@
 (check-sat)
 ; unknown
 (pop) ; 12
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (check-sat)
 ; unknown
@@ -1598,7 +1598,7 @@
 (check-sat)
 ; unknown
 (pop) ; 12
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (check-sat)
 ; unknown
@@ -1644,7 +1644,7 @@
 (check-sat)
 ; unknown
 (pop) ; 12
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (check-sat)
 ; unknown
@@ -1659,7 +1659,7 @@
 (check-sat)
 ; unknown
 (pop) ; 12
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (check-sat)
 ; unknown
@@ -1674,7 +1674,7 @@
 (check-sat)
 ; unknown
 (pop) ; 12
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (check-sat)
 ; unknown
@@ -1888,7 +1888,7 @@
           $Snap.unit))))
       $Snap.unit))
   :pattern ((MWSF_apply mwsf@22@01 $t@21@01))
-  :qid |quant-u-18710|)))
+  :qid |quant-u-18569|)))
 ; [eval] plvs[1..]
 ; [eval] old(vals(x))[1..]
 ; [eval] old(vals(x))
@@ -1939,7 +1939,7 @@
           $Snap.unit))))
       $Snap.unit))
   :pattern ((MWSF_apply mwsf@22@01 $t@21@01))
-  :qid |quant-u-18711|)))
+  :qid |quant-u-18570|)))
 (assert true)
 ; Loop head block: Re-establish invariant
 ; [eval] p != null

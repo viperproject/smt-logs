@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 13:10:32
+// Date:         2025-01-13 18:14:38
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/chalice/framing-fields.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/chalice/framing-fields-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -263,12 +263,12 @@ procedure set(this: Ref, x: int, y: int) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -288,8 +288,8 @@ procedure set(this: Ref, x: int, y: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -304,8 +304,8 @@ procedure set(this: Ref, x: int, y: int) returns ()
   }
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of set might not hold. There might be insufficient permission to access valid(this) (framing-fields.vpr@9.13--9.36) [143352]"}
@@ -326,20 +326,20 @@ procedure M_3(this: Ref, x: Ref, y: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var newPMask: PMaskType;
   var i: int;
   var j_9: int;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
   var ExhaleHeap: HeapType;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -366,8 +366,8 @@ procedure M_3(this: Ref, x: Ref, y: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: i := (unfolding acc(valid(x), write) in x.value) -- framing-fields.vpr@15.5--15.62
     
@@ -376,8 +376,8 @@ procedure M_3(this: Ref, x: Ref, y: Ref) returns ()
       UnfoldingMask := Mask;
       assume valid#trigger(UnfoldingHeap, valid(x));
       assume UnfoldingHeap[null, valid(x)] == CombineFrames(FrameFragment(UnfoldingHeap[x, value]), CombineFrames(FrameFragment(UnfoldingHeap[x, next]), FrameFragment((if UnfoldingHeap[x, next] != null then UnfoldingHeap[null, valid(UnfoldingHeap[x, next])] else EmptyFrame))));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Assignment might fail. There might be insufficient permission to access valid(x) (framing-fields.vpr@15.5--15.62) [143353]"}
@@ -426,8 +426,8 @@ procedure M_3(this: Ref, x: Ref, y: Ref) returns ()
       UnfoldingMask := Mask;
       assume valid#trigger(UnfoldingHeap, valid(y));
       assume UnfoldingHeap[null, valid(y)] == CombineFrames(FrameFragment(UnfoldingHeap[y, value]), CombineFrames(FrameFragment(UnfoldingHeap[y, next]), FrameFragment((if UnfoldingHeap[y, next] != null then UnfoldingHeap[null, valid(UnfoldingHeap[y, next])] else EmptyFrame))));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Assignment might fail. There might be insufficient permission to access valid(y) (framing-fields.vpr@16.5--16.62) [143355]"}
@@ -474,8 +474,8 @@ procedure M_3(this: Ref, x: Ref, y: Ref) returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  The precondition of method set might not hold. There might be insufficient permission to access valid(y) (framing-fields.vpr@17.5--17.18) [143357]"}
@@ -495,16 +495,16 @@ procedure M_3(this: Ref, x: Ref, y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (unfolding acc(valid(x), write) in i == x.value) -- framing-fields.vpr@18.5--18.66
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (unfolding acc(valid(x), write) in i == x.value)
       UnfoldingHeap := ExhaleWellDef0Heap;
       UnfoldingMask := ExhaleWellDef0Mask;
       assume valid#trigger(UnfoldingHeap, valid(x));
       assume UnfoldingHeap[null, valid(x)] == CombineFrames(FrameFragment(UnfoldingHeap[x, value]), CombineFrames(FrameFragment(UnfoldingHeap[x, next]), FrameFragment((if UnfoldingHeap[x, next] != null then UnfoldingHeap[null, valid(UnfoldingHeap[x, next])] else EmptyFrame))));
-      ExhaleWellDef1Heap := UnfoldingHeap;
       ExhaleWellDef1Mask := UnfoldingMask;
+      ExhaleWellDef1Heap := UnfoldingHeap;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Assert might fail. There might be insufficient permission to access valid(x) (framing-fields.vpr@18.13--18.65) [143358]"}
@@ -561,16 +561,16 @@ procedure M_3(this: Ref, x: Ref, y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (unfolding acc(valid(y), write) in j == y.value) -- framing-fields.vpr@20.5--20.66
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (unfolding acc(valid(y), write) in j == y.value)
       UnfoldingHeap := ExhaleWellDef0Heap;
       UnfoldingMask := ExhaleWellDef0Mask;
       assume valid#trigger(UnfoldingHeap, valid(y));
       assume UnfoldingHeap[null, valid(y)] == CombineFrames(FrameFragment(UnfoldingHeap[y, value]), CombineFrames(FrameFragment(UnfoldingHeap[y, next]), FrameFragment((if UnfoldingHeap[y, next] != null then UnfoldingHeap[null, valid(UnfoldingHeap[y, next])] else EmptyFrame))));
-      ExhaleWellDef1Heap := UnfoldingHeap;
       ExhaleWellDef1Mask := UnfoldingMask;
+      ExhaleWellDef1Heap := UnfoldingHeap;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Assert might fail. There might be insufficient permission to access valid(y) (framing-fields.vpr@20.13--20.65) [143361]"}

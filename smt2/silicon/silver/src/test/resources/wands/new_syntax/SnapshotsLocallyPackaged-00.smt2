@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 12:37:58
+; Started: 2025-01-13 17:42:32
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -143,11 +143,11 @@
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   (= (sum%limited s@$ x@0@00) (sum s@$ x@0@00))
   :pattern ((sum s@$ x@0@00))
-  :qid |quant-u-21496|)))
+  :qid |quant-u-21437|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   (sum%stateless x@0@00)
   :pattern ((sum%limited s@$ x@0@00))
-  :qid |quant-u-21497|)))
+  :qid |quant-u-21438|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -182,11 +182,11 @@
         ($SortWrappers.$SnapToInt ($Snap.first s@$))
         ($SortWrappers.$SnapToInt ($Snap.second s@$)))))
   :pattern ((sum s@$ x@0@00))
-  :qid |quant-u-21500|)))
+  :qid |quant-u-21441|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   true
   :pattern ((sum s@$ x@0@00))
-  :qid |quant-u-21501|)))
+  :qid |quant-u-21442|)))
 ; ---------- FUNCTION length----------
 (declare-fun x@2@00 () $Ref)
 (declare-fun result@3@00 () Int)
@@ -196,11 +196,11 @@
 (assert (forall ((s@$ $Snap) (x@2@00 $Ref)) (!
   (= (length%limited s@$ x@2@00) (length s@$ x@2@00))
   :pattern ((length s@$ x@2@00))
-  :qid |quant-u-21498|)))
+  :qid |quant-u-21439|)))
 (assert (forall ((s@$ $Snap) (x@2@00 $Ref)) (!
   (length%stateless x@2@00)
   :pattern ((length%limited s@$ x@2@00))
-  :qid |quant-u-21499|)))
+  :qid |quant-u-21440|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -368,7 +368,7 @@
           (length%limited ($Snap.second ($Snap.second s@$)) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$))))))))
   :pattern ((length s@$ x@2@00))
   :pattern ((length%stateless x@2@00) (List%trigger s@$ x@2@00))
-  :qid |quant-u-21502|)))
+  :qid |quant-u-21443|)))
 (assert (forall ((s@$ $Snap) (x@2@00 $Ref)) (!
   (=>
     (length%precondition s@$ x@2@00)
@@ -377,7 +377,7 @@
       true
       (length%precondition ($Snap.second ($Snap.second s@$)) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$))))))
   :pattern ((length s@$ x@2@00))
-  :qid |quant-u-21503|)))
+  :qid |quant-u-21444|)))
 ; ---------- List ----------
 (declare-const x@5@00 $Ref)
 (push) ; 1

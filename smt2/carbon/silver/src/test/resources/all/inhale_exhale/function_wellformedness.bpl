@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 13:17:03
+// Date:         2025-01-13 18:21:05
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/inhale_exhale/function_wellformedness.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/inhale_exhale/function_wellformedness-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -368,8 +368,8 @@ function  s1#triggerStateless(this: Ref): int;
 procedure s1#definedness(this: Ref) returns (Result: int)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -382,8 +382,8 @@ procedure s1#definedness(this: Ref) returns (Result: int)
     Result := 0;
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of s1 might not hold. Assertion this != null might not hold. (function_wellformedness.vpr@27.11--27.38) [188565]"}
       this != null;
     
@@ -684,8 +684,8 @@ function  i1#triggerStateless(this: Ref): int;
 procedure i1#definedness(this: Ref) returns (Result: int)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -712,8 +712,8 @@ procedure i1#definedness(this: Ref) returns (Result: int)
       }
     
     // -- Normally exhale the exhale part.
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
 }
 
 // ==================================================
@@ -950,8 +950,8 @@ function  e1#triggerStateless(this: Ref): int;
 procedure e1#definedness(this: Ref) returns (Result: int)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -972,8 +972,8 @@ procedure e1#definedness(this: Ref) returns (Result: int)
       }
     
     // -- Normally exhale the exhale part.
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       assert {:msg "  Postcondition of e1 might not hold. Assertion this != null might not hold. (function_wellformedness.vpr@89.11--89.46) [188576]"}
         this != null;
       
@@ -1230,8 +1230,8 @@ function  ie1#triggerStateless(this: Ref): int;
 procedure ie1#definedness(this: Ref) returns (Result: int)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1258,8 +1258,8 @@ procedure ie1#definedness(this: Ref) returns (Result: int)
       }
     
     // -- Normally exhale the exhale part.
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       assert {:msg "  Postcondition of ie1 might not hold. Assertion this != null might not hold. (function_wellformedness.vpr@118.11--118.69) [188585]"}
         this != null;
       
@@ -1666,8 +1666,8 @@ procedure t3#definedness(this: Ref) returns (Result: int)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1708,8 +1708,8 @@ procedure t3#definedness(this: Ref) returns (Result: int)
       }
     
     // -- Normally exhale the exhale part.
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       assert {:msg "  Postcondition of t3 might not hold. Assertion this != null might not hold. (function_wellformedness.vpr@179.11--179.46) [188595]"}
         this != null;
       
@@ -1846,8 +1846,8 @@ procedure t4#definedness(this: Ref) returns (Result: int)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1888,8 +1888,8 @@ procedure t4#definedness(this: Ref) returns (Result: int)
       }
     
     // -- Normally exhale the exhale part.
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       assert {:msg "  Postcondition of t4 might not hold. Assertion this != null might not hold. (function_wellformedness.vpr@200.11--200.46) [188601]"}
         this != null;
       
@@ -2029,8 +2029,8 @@ procedure t5#definedness(this: Ref) returns (Result: int)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -2072,8 +2072,8 @@ procedure t5#definedness(this: Ref) returns (Result: int)
       }
     
     // -- Normally exhale the exhale part.
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
 }
 
 // ==================================================
@@ -2203,8 +2203,8 @@ procedure t6#definedness(this: Ref) returns (Result: int)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -2246,8 +2246,8 @@ procedure t6#definedness(this: Ref) returns (Result: int)
       }
     
     // -- Normally exhale the exhale part.
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
 }
 
 // ==================================================

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 12:49:43
+// Date:         2025-01-13 17:54:07
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/third_party/testTranspose.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/third_party/testTranspose-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -774,8 +774,8 @@ function  sum_list#triggerStateless(i: int, hi: int, ar: (Seq int)): int;
 procedure sum_list#definedness(i: int, hi: int, ar: (Seq int)) returns (Result: int)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -800,8 +800,8 @@ procedure sum_list#definedness(i: int, hi: int, ar: (Seq int)) returns (Result: 
           i < Seq#Length(ar);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           assert {:msg "  Precondition of function sum_list might not hold. Assertion 0 <= i + 1 might not hold. (testTranspose.vpr@24.21--24.44) [43076]"}
             0 <= i + 1;
           assert {:msg "  Precondition of function sum_list might not hold. Assertion i + 1 <= hi might not hold. (testTranspose.vpr@24.21--24.44) [43077]"}
@@ -877,8 +877,8 @@ procedure sum_array#definedness(i: int, lo: int, hi: int, ar: (Seq Ref)) returns
   var k_2: int;
   var QPMask: MaskType;
   var wildcard: real where wildcard > 0.000000000;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var j_4_1: int;
   var k_9: int;
   var ExhaleHeap: HeapType;
@@ -975,8 +975,8 @@ procedure sum_array#definedness(i: int, lo: int, hi: int, ar: (Seq Ref)) returns
           HasDirectPerm(Mask, Seq#Index(ar, i), Ref__Integer_value);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           assert {:msg "  Precondition of function sum_array might not hold. Assertion 0 <= lo might not hold. (testTranspose.vpr@33.40--33.68) [43089]"}
             0 <= lo;
           assert {:msg "  Precondition of function sum_array might not hold. Assertion lo <= i + 1 might not hold. (testTranspose.vpr@33.40--33.68) [43090]"}
@@ -1112,8 +1112,8 @@ procedure sum_square#definedness(i: int, lo: int, hi: int, step: int, vmin: int,
   var k_7: int;
   var QPMask: MaskType;
   var wildcard: real where wildcard > 0.000000000;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var j_4_1: int;
   var k_9: int;
   var ExhaleHeap: HeapType;
@@ -1233,8 +1233,8 @@ procedure sum_square#definedness(i: int, lo: int, hi: int, step: int, vmin: int,
         }
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           assert {:msg "  Precondition of function sum_square might not hold. Assertion 0 <= lo might not hold. (testTranspose.vpr@43.85--43.130) [43112]"}
             0 <= lo;
           assert {:msg "  Precondition of function sum_square might not hold. Assertion lo <= hi might not hold. (testTranspose.vpr@43.85--43.130) [43113]"}
@@ -1378,8 +1378,8 @@ procedure count_square#definedness(i: int, lo: int, hi: int, step: int, vmin: in
   var k_12: int;
   var QPMask: MaskType;
   var wildcard: real where wildcard > 0.000000000;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var j_4_1: int;
   var k_9: int;
   var ExhaleHeap: HeapType;
@@ -1499,8 +1499,8 @@ procedure count_square#definedness(i: int, lo: int, hi: int, step: int, vmin: in
         }
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           assert {:msg "  Precondition of function count_square might not hold. Assertion 0 <= lo might not hold. (testTranspose.vpr@53.97--53.147) [43139]"}
             0 <= lo;
           assert {:msg "  Precondition of function count_square might not hold. Assertion lo <= hi might not hold. (testTranspose.vpr@53.97--53.147) [43140]"}
@@ -1626,8 +1626,8 @@ function  count_list#triggerStateless(i: int, hi: int, ar: (Seq int), v_2: int):
 procedure count_list#definedness(i: int, hi: int, ar: (Seq int), v_2: int) returns (Result: int)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1652,8 +1652,8 @@ procedure count_list#definedness(i: int, hi: int, ar: (Seq int), v_2: int) retur
           i < Seq#Length(ar);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           assert {:msg "  Precondition of function count_list might not hold. Assertion 0 <= i + 1 might not hold. (testTranspose.vpr@60.36--60.64) [43154]"}
             0 <= i + 1;
           assert {:msg "  Precondition of function count_list might not hold. Assertion i + 1 <= hi might not hold. (testTranspose.vpr@60.36--60.64) [43155]"}
@@ -1729,8 +1729,8 @@ procedure count_array#definedness(i: int, hi: int, ar: (Seq Ref), v_2: int) retu
   var k_16: int;
   var QPMask: MaskType;
   var wildcard: real where wildcard > 0.000000000;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var j_4_1: int;
   var k_9: int;
   var ExhaleHeap: HeapType;
@@ -1826,8 +1826,8 @@ procedure count_array#definedness(i: int, hi: int, ar: (Seq Ref), v_2: int) retu
           HasDirectPerm(Mask, Seq#Index(ar, i), Ref__Integer_value);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           assert {:msg "  Precondition of function count_array might not hold. Assertion 0 <= i + 1 might not hold. (testTranspose.vpr@69.55--69.84) [43167]"}
             0 <= i + 1;
           assert {:msg "  Precondition of function count_array might not hold. Assertion i + 1 <= hi might not hold. (testTranspose.vpr@69.55--69.84) [43168]"}
@@ -1918,16 +1918,16 @@ procedure Ref__loop_main_68(diz: Ref, current_thread_id: int, N: int, M: int, in
   var j_18: int;
   var k_19: int;
   var i_18: int;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var j_12: int;
   var i_20: int;
   var i_22: int;
   var j_14: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var i_7_1: int;
   var j_11_2: int;
   var ExhaleHeap: HeapType;
@@ -2092,8 +2092,8 @@ procedure Ref__loop_main_68(diz: Ref, current_thread_id: int, N: int, M: int, in
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -2204,8 +2204,8 @@ procedure Ref__loop_main_68(diz: Ref, current_thread_id: int, N: int, M: int, in
         if (0 <= i_22 && (i_22 < M && (0 <= j_14 && j_14 < N))) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := PostHeap;
             ExhaleWellDef0Mask := PostMask;
+            ExhaleWellDef0Heap := PostHeap;
             assert {:msg "  Precondition of function Ref__multidim_index_2 might not hold. Assertion 0 <= i might not hold. (testTranspose.vpr@83.89--83.122) [43197]"}
               0 <= i_22;
             assert {:msg "  Precondition of function Ref__multidim_index_2 might not hold. Assertion i < M might not hold. (testTranspose.vpr@83.89--83.122) [43198]"}
@@ -2229,8 +2229,8 @@ procedure Ref__loop_main_68(diz: Ref, current_thread_id: int, N: int, M: int, in
             HasDirectPerm(PostMask, Seq#Index(out, Ref__multidim_index_2(PostHeap, M, N, i_22, j_14)), Ref__Integer_value);
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := PostHeap;
             ExhaleWellDef0Mask := PostMask;
+            ExhaleWellDef0Heap := PostHeap;
             assert {:msg "  Precondition of function Ref__multidim_index_2 might not hold. Assertion 0 <= j might not hold. (testTranspose.vpr@83.150--83.183) [43206]"}
               0 <= j_14;
             assert {:msg "  Precondition of function Ref__multidim_index_2 might not hold. Assertion j < N might not hold. (testTranspose.vpr@83.150--83.183) [43207]"}
@@ -2270,8 +2270,8 @@ procedure Ref__loop_main_68(diz: Ref, current_thread_id: int, N: int, M: int, in
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     havoc QPMask;
     
     // -- check that the permission amount is positive
@@ -2382,11 +2382,11 @@ procedure Ref__loop_main_68(diz: Ref, current_thread_id: int, N: int, M: int, in
 procedure Ref__loop_body_68(diz: Ref, current_thread_id: int, j_9: int, out: (Seq Ref), i: int, inp: (Seq Ref), N: int, M: int) returns ()
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var __flatten_6: Ref;
@@ -2422,8 +2422,8 @@ procedure Ref__loop_body_68(diz: Ref, current_thread_id: int, j_9: int, out: (Se
     // -- Check definedness of Ref__multidim_index_2(M, N, i, j) < |out|
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Precondition of function Ref__multidim_index_2 might not hold. Assertion 0 <= i might not hold. (testTranspose.vpr@92.12--92.45) [43221]"}
           0 <= i;
         assert {:msg "  Precondition of function Ref__multidim_index_2 might not hold. Assertion i < M might not hold. (testTranspose.vpr@92.12--92.45) [43222]"}
@@ -2446,8 +2446,8 @@ procedure Ref__loop_body_68(diz: Ref, current_thread_id: int, j_9: int, out: (Se
     // -- Check definedness of acc(out[Ref__multidim_index_2(M, N, i, j)].Ref__Integer_value, write)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Precondition of function Ref__multidim_index_2 might not hold. Assertion 0 <= i might not hold. (testTranspose.vpr@93.20--93.53) [43227]"}
           0 <= i;
         assert {:msg "  Precondition of function Ref__multidim_index_2 might not hold. Assertion i < M might not hold. (testTranspose.vpr@93.20--93.53) [43228]"}
@@ -2477,8 +2477,8 @@ procedure Ref__loop_body_68(diz: Ref, current_thread_id: int, j_9: int, out: (Se
     // -- Check definedness of Ref__multidim_index_2(N, M, j, i) < |inp|
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Precondition of function Ref__multidim_index_2 might not hold. Assertion 0 <= j might not hold. (testTranspose.vpr@94.12--94.45) [43235]"}
           0 <= j_9;
         assert {:msg "  Precondition of function Ref__multidim_index_2 might not hold. Assertion j < N might not hold. (testTranspose.vpr@94.12--94.45) [43236]"}
@@ -2501,8 +2501,8 @@ procedure Ref__loop_body_68(diz: Ref, current_thread_id: int, j_9: int, out: (Se
     // -- Check definedness of acc(inp[Ref__multidim_index_2(N, M, j, i)].Ref__Integer_value, 1 / 4)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Precondition of function Ref__multidim_index_2 might not hold. Assertion 0 <= j might not hold. (testTranspose.vpr@95.20--95.53) [43241]"}
           0 <= j_9;
         assert {:msg "  Precondition of function Ref__multidim_index_2 might not hold. Assertion j < N might not hold. (testTranspose.vpr@95.20--95.53) [43242]"}
@@ -2533,8 +2533,8 @@ procedure Ref__loop_body_68(diz: Ref, current_thread_id: int, j_9: int, out: (Se
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -2550,8 +2550,8 @@ procedure Ref__loop_body_68(diz: Ref, current_thread_id: int, j_9: int, out: (Se
     // -- Check definedness of acc(out[Ref__multidim_index_2(M, N, i, j)].Ref__Integer_value, write)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := PostHeap;
         ExhaleWellDef0Mask := PostMask;
+        ExhaleWellDef0Heap := PostHeap;
         assert {:msg "  Precondition of function Ref__multidim_index_2 might not hold. Assertion 0 <= i might not hold. (testTranspose.vpr@97.19--97.52) [43250]"}
           0 <= i;
         assert {:msg "  Precondition of function Ref__multidim_index_2 might not hold. Assertion i < M might not hold. (testTranspose.vpr@97.19--97.52) [43251]"}
@@ -2581,8 +2581,8 @@ procedure Ref__loop_body_68(diz: Ref, current_thread_id: int, j_9: int, out: (Se
     // -- Check definedness of acc(inp[Ref__multidim_index_2(N, M, j, i)].Ref__Integer_value, 1 / 4)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := PostHeap;
         ExhaleWellDef0Mask := PostMask;
+        ExhaleWellDef0Heap := PostHeap;
         assert {:msg "  Precondition of function Ref__multidim_index_2 might not hold. Assertion 0 <= j might not hold. (testTranspose.vpr@98.19--98.52) [43258]"}
           0 <= j_9;
         assert {:msg "  Precondition of function Ref__multidim_index_2 might not hold. Assertion j < N might not hold. (testTranspose.vpr@98.19--98.52) [43259]"}
@@ -2614,8 +2614,8 @@ procedure Ref__loop_body_68(diz: Ref, current_thread_id: int, j_9: int, out: (Se
     // -- Check definedness of out[Ref__multidim_index_2(M, N, i, j)].Ref__Integer_value == inp[Ref__multidim_index_2(N, M, j, i)].Ref__Integer_value
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := PostHeap;
         ExhaleWellDef0Mask := PostMask;
+        ExhaleWellDef0Heap := PostHeap;
         assert {:msg "  Precondition of function Ref__multidim_index_2 might not hold. Assertion 0 <= i might not hold. (testTranspose.vpr@99.15--99.48) [43267]"}
           0 <= i;
         assert {:msg "  Precondition of function Ref__multidim_index_2 might not hold. Assertion i < M might not hold. (testTranspose.vpr@99.15--99.48) [43268]"}
@@ -2639,8 +2639,8 @@ procedure Ref__loop_body_68(diz: Ref, current_thread_id: int, j_9: int, out: (Se
         HasDirectPerm(PostMask, Seq#Index(out, Ref__multidim_index_2(PostHeap, M, N, i, j_9)), Ref__Integer_value);
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := PostHeap;
         ExhaleWellDef0Mask := PostMask;
+        ExhaleWellDef0Heap := PostHeap;
         assert {:msg "  Precondition of function Ref__multidim_index_2 might not hold. Assertion 0 <= j might not hold. (testTranspose.vpr@99.76--99.109) [43276]"}
           0 <= j_9;
         assert {:msg "  Precondition of function Ref__multidim_index_2 might not hold. Assertion j < N might not hold. (testTranspose.vpr@99.76--99.109) [43277]"}
@@ -2677,8 +2677,8 @@ procedure Ref__loop_body_68(diz: Ref, current_thread_id: int, j_9: int, out: (Se
     // -- Check definedness of Ref__multidim_index_2(M, N, i, j)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Precondition of function Ref__multidim_index_2 might not hold. Assertion 0 <= i might not hold. (testTranspose.vpr@108.18--108.51) [43285]"}
           0 <= i;
         assert {:msg "  Precondition of function Ref__multidim_index_2 might not hold. Assertion i < M might not hold. (testTranspose.vpr@108.18--108.51) [43286]"}
@@ -2706,8 +2706,8 @@ procedure Ref__loop_body_68(diz: Ref, current_thread_id: int, j_9: int, out: (Se
     // -- Check definedness of Ref__multidim_index_2(N, M, j, i)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Precondition of function Ref__multidim_index_2 might not hold. Assertion 0 <= j might not hold. (testTranspose.vpr@110.18--110.51) [43291]"}
           0 <= j_9;
         assert {:msg "  Precondition of function Ref__multidim_index_2 might not hold. Assertion j < N might not hold. (testTranspose.vpr@110.18--110.51) [43292]"}
@@ -2765,8 +2765,8 @@ procedure Ref__loop_body_68(diz: Ref, current_thread_id: int, j_9: int, out: (Se
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of Ref__loop_body_68 might not hold. Assertion 0 <= i might not hold. (testTranspose.vpr@96.11--96.55) [43303]"}
       0 <= i;
     assert {:msg "  Postcondition of Ref__loop_body_68 might not hold. Assertion i < M might not hold. (testTranspose.vpr@96.11--96.55) [43304]"}
@@ -2811,16 +2811,16 @@ procedure Ref__transpose(diz: Ref, current_thread_id: int, M: int, N: int, out: 
   var j_22: int;
   var k_23: int;
   var j1_16: int;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var j1: int;
   var j1_2: int;
   var i_34: int;
   var j_30: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var i_35: int;
   var j_20: int;
   var PreCallHeap: HeapType;
@@ -2998,8 +2998,8 @@ procedure Ref__transpose(diz: Ref, current_thread_id: int, M: int, N: int, out: 
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -3113,8 +3113,8 @@ procedure Ref__transpose(diz: Ref, current_thread_id: int, M: int, N: int, out: 
         if (0 <= i_34 && (i_34 < M && (0 <= j_30 && j_30 < N))) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := PostHeap;
             ExhaleWellDef0Mask := PostMask;
+            ExhaleWellDef0Heap := PostHeap;
             assert {:msg "  Precondition of function Ref__multidim_index_2 might not hold. Assertion 0 <= i might not hold. (testTranspose.vpr@131.89--131.122) [43333]"}
               0 <= i_34;
             assert {:msg "  Precondition of function Ref__multidim_index_2 might not hold. Assertion i < M might not hold. (testTranspose.vpr@131.89--131.122) [43334]"}
@@ -3138,8 +3138,8 @@ procedure Ref__transpose(diz: Ref, current_thread_id: int, M: int, N: int, out: 
             HasDirectPerm(PostMask, Seq#Index(out, Ref__multidim_index_2(PostHeap, M, N, i_34, j_30)), Ref__Integer_value);
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := PostHeap;
             ExhaleWellDef0Mask := PostMask;
+            ExhaleWellDef0Heap := PostHeap;
             assert {:msg "  Precondition of function Ref__multidim_index_2 might not hold. Assertion 0 <= j might not hold. (testTranspose.vpr@131.150--131.183) [43342]"}
               0 <= j_30;
             assert {:msg "  Precondition of function Ref__multidim_index_2 might not hold. Assertion j < N might not hold. (testTranspose.vpr@131.150--131.183) [43343]"}
@@ -3176,8 +3176,8 @@ procedure Ref__transpose(diz: Ref, current_thread_id: int, M: int, N: int, out: 
         if (0 <= i_35 && (i_35 < M && (0 <= j_20 && j_20 < N))) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := PostHeap;
             ExhaleWellDef0Mask := PostMask;
+            ExhaleWellDef0Heap := PostHeap;
             assert {:msg "  Precondition of function Ref__multidim_index_2 might not hold. Assertion 0 <= j might not hold. (testTranspose.vpr@132.89--132.122) [43351]"}
               0 <= j_20;
             assert {:msg "  Precondition of function Ref__multidim_index_2 might not hold. Assertion j < N might not hold. (testTranspose.vpr@132.89--132.122) [43352]"}
@@ -3201,8 +3201,8 @@ procedure Ref__transpose(diz: Ref, current_thread_id: int, M: int, N: int, out: 
             HasDirectPerm(PostMask, Seq#Index(inp, Ref__multidim_index_2(PostHeap, N, M, j_20, i_35)), Ref__Integer_value);
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := oldHeap;
             ExhaleWellDef0Mask := oldMask;
+            ExhaleWellDef0Heap := oldHeap;
             assert {:msg "  Precondition of function Ref__multidim_index_2 might not hold. Assertion 0 <= j might not hold. (testTranspose.vpr@132.154--132.187) [43360]"}
               0 <= j_20;
             assert {:msg "  Precondition of function Ref__multidim_index_2 might not hold. Assertion j < N might not hold. (testTranspose.vpr@132.154--132.187) [43361]"}
@@ -3241,8 +3241,8 @@ procedure Ref__transpose(diz: Ref, current_thread_id: int, M: int, N: int, out: 
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       assert {:msg "  The precondition of method Ref__loop_main_68 might not hold. Assertion diz != null might not hold. (testTranspose.vpr@134.3--134.60) [43369]"}
         diz != null;
       assert {:msg "  The precondition of method Ref__loop_main_68 might not hold. Assertion current_thread_id >= 0 might not hold. (testTranspose.vpr@134.3--134.60) [43370]"}
@@ -3448,8 +3448,8 @@ procedure Ref__transpose(diz: Ref, current_thread_id: int, M: int, N: int, out: 
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of Ref__transpose might not hold. Assertion M > 0 might not hold. (testTranspose.vpr@128.11--128.29) [43383]"}
       M > 0;
     assert {:msg "  Postcondition of Ref__transpose might not hold. Assertion N > 0 might not hold. (testTranspose.vpr@128.11--128.29) [43384]"}
@@ -3575,14 +3575,14 @@ procedure Ref__transpose(diz: Ref, current_thread_id: int, M: int, N: int, out: 
 procedure Ref__Ref(current_thread_id: int) returns (sys__result: Ref)
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var diz: Ref;
   var freshObj: Ref;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -3597,8 +3597,8 @@ procedure Ref__Ref(current_thread_id: int) returns (sys__result: Ref)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -3626,8 +3626,8 @@ procedure Ref__Ref(current_thread_id: int) returns (sys__result: Ref)
     assume state(Heap, Mask);
   
   // -- Translating statement: assert sys__result != null -- testTranspose.vpr@144.3--144.29
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (testTranspose.vpr@144.10--144.29) [43392]"}
       sys__result != null;
     assume state(Heap, Mask);
@@ -3638,8 +3638,8 @@ procedure Ref__Ref(current_thread_id: int) returns (sys__result: Ref)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of Ref__Ref might not hold. Assertion sys__result != null might not hold. (testTranspose.vpr@139.11--139.30) [43393]"}
       sys__result != null;
 }

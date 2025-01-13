@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 13:25:15
+// Date:         2025-01-13 18:29:03
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0483b.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0483b-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -420,11 +420,11 @@ procedure Property#definedness(a_2: (ArrayDomainType Ref), b_24: (ArrayDomainTyp
 procedure Test(a_2: (ArrayDomainType Ref), b_24: (ArrayDomainType Ref)) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var QPMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var tmp1: bool;
   var i_8: int;
@@ -439,8 +439,8 @@ procedure Test(a_2: (ArrayDomainType Ref), b_24: (ArrayDomainType Ref)) returns 
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale (forall i: Int ::
   //     { (loc(a, i): Ref) }
@@ -549,8 +549,8 @@ procedure Test(a_2: (ArrayDomainType Ref), b_24: (ArrayDomainType Ref)) returns 
     // -- Check definedness of Property(a, b)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         havoc QPMask;
         
         // -- check that the permission amount is positive
@@ -644,8 +644,8 @@ procedure Test(a_2: (ArrayDomainType Ref), b_24: (ArrayDomainType Ref)) returns 
     assume state(Heap, Mask);
   
   // -- Translating statement: assert tmp1 == tmp2 -- 0483b.vpr@31.3--31.22
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion tmp1 == tmp2 might not hold. (0483b.vpr@31.10--31.22) [216579]"}
       tmp1 == tmp2;
     assume state(Heap, Mask);

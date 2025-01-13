@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 12:53:54
+// Date:         2025-01-13 17:58:12
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/graphs/static/examples/list_reverse.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/graphs/static/examples/list_reverse-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -801,13 +801,13 @@ procedure link(g_1: (Set Ref), x: Ref, y: Ref) returns ()
   var perm: Perm;
   var QPMask: MaskType;
   var n$0_33: Ref;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var n$2_35: Ref;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var v1_27: Ref;
   var v2_27: Ref;
@@ -913,8 +913,8 @@ procedure link(g_1: (Set Ref), x: Ref, y: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1001,8 +1001,8 @@ procedure link(g_1: (Set Ref), x: Ref, y: Ref) returns ()
       // -- Check definedness of $$(g) == old($$(g))
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := PostHeap;
           ExhaleWellDef0Mask := PostMask;
+          ExhaleWellDef0Heap := PostHeap;
           havoc QPMask;
           
           // -- check that the permission amount is positive
@@ -1044,8 +1044,8 @@ procedure link(g_1: (Set Ref), x: Ref, y: Ref) returns ()
         }
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := oldHeap;
           ExhaleWellDef0Mask := oldMask;
+          ExhaleWellDef0Heap := oldHeap;
           havoc QPMask;
           
           // -- check that the permission amount is positive
@@ -1092,8 +1092,8 @@ procedure link(g_1: (Set Ref), x: Ref, y: Ref) returns ()
         if (*) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := PostHeap;
             ExhaleWellDef0Mask := PostMask;
+            ExhaleWellDef0Heap := PostHeap;
             havoc QPMask;
             
             // -- check that the permission amount is positive
@@ -1135,8 +1135,8 @@ procedure link(g_1: (Set Ref), x: Ref, y: Ref) returns ()
           }
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := oldHeap;
             ExhaleWellDef0Mask := oldMask;
+            ExhaleWellDef0Heap := oldHeap;
             havoc QPMask;
             
             // -- check that the permission amount is positive
@@ -1189,8 +1189,8 @@ procedure link(g_1: (Set Ref), x: Ref, y: Ref) returns ()
           if (v1_27 != v2_27) {
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Heap := PostHeap;
               ExhaleWellDef0Mask := PostMask;
+              ExhaleWellDef0Heap := PostHeap;
               havoc QPMask;
               
               // -- check that the permission amount is positive
@@ -1232,8 +1232,8 @@ procedure link(g_1: (Set Ref), x: Ref, y: Ref) returns ()
             }
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Heap := oldHeap;
               ExhaleWellDef0Mask := oldMask;
+              ExhaleWellDef0Heap := oldHeap;
               havoc QPMask;
               
               // -- check that the permission amount is positive
@@ -1273,8 +1273,8 @@ procedure link(g_1: (Set Ref), x: Ref, y: Ref) returns ()
             if (!(exists_path($$(oldHeap, g_1), v1_27, v2_27): bool)) {
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Heap := oldHeap;
                 ExhaleWellDef0Mask := oldMask;
+                ExhaleWellDef0Heap := oldHeap;
                 havoc QPMask;
                 
                 // -- check that the permission amount is positive
@@ -1314,8 +1314,8 @@ procedure link(g_1: (Set Ref), x: Ref, y: Ref) returns ()
               if ((exists_path($$(oldHeap, g_1), v1_27, x): bool)) {
                 if (*) {
                   // Exhale precondition of function application
-                  ExhaleWellDef0Heap := oldHeap;
                   ExhaleWellDef0Mask := oldMask;
+                  ExhaleWellDef0Heap := oldHeap;
                   havoc QPMask;
                   
                   // -- check that the permission amount is positive
@@ -1373,8 +1373,8 @@ procedure link(g_1: (Set Ref), x: Ref, y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of link might not hold. Assertion !((null in g)) might not hold. (list_reverse.vpr@278.13--278.33) [88824]"}
       !g_1[null];
     assert {:msg "  Postcondition of link might not hold. Assertion (x in g) might not hold. (list_reverse.vpr@278.13--278.33) [88825]"}
@@ -1487,13 +1487,13 @@ procedure unlink(g_1: (Set Ref), x: Ref) returns ()
   var perm: Perm;
   var QPMask: MaskType;
   var n$0_34: Ref;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var n$2_36: Ref;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var v1_28: Ref;
   var v2_28: Ref;
@@ -1590,8 +1590,8 @@ procedure unlink(g_1: (Set Ref), x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1682,8 +1682,8 @@ procedure unlink(g_1: (Set Ref), x: Ref) returns ()
       // -- Check definedness of $$(g) == old($$(g))
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := PostHeap;
           ExhaleWellDef0Mask := PostMask;
+          ExhaleWellDef0Heap := PostHeap;
           havoc QPMask;
           
           // -- check that the permission amount is positive
@@ -1725,8 +1725,8 @@ procedure unlink(g_1: (Set Ref), x: Ref) returns ()
         }
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := oldHeap;
           ExhaleWellDef0Mask := oldMask;
+          ExhaleWellDef0Heap := oldHeap;
           havoc QPMask;
           
           // -- check that the permission amount is positive
@@ -1777,8 +1777,8 @@ procedure unlink(g_1: (Set Ref), x: Ref) returns ()
         if (*) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := PostHeap;
             ExhaleWellDef0Mask := PostMask;
+            ExhaleWellDef0Heap := PostHeap;
             havoc QPMask;
             
             // -- check that the permission amount is positive
@@ -1820,8 +1820,8 @@ procedure unlink(g_1: (Set Ref), x: Ref) returns ()
           }
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := oldHeap;
             ExhaleWellDef0Mask := oldMask;
+            ExhaleWellDef0Heap := oldHeap;
             havoc QPMask;
             
             // -- check that the permission amount is positive
@@ -1884,8 +1884,8 @@ procedure unlink(g_1: (Set Ref), x: Ref) returns ()
           if (v1_29 != v2_29) {
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Heap := PostHeap;
               ExhaleWellDef0Mask := PostMask;
+              ExhaleWellDef0Heap := PostHeap;
               havoc QPMask;
               
               // -- check that the permission amount is positive
@@ -1927,8 +1927,8 @@ procedure unlink(g_1: (Set Ref), x: Ref) returns ()
             }
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Heap := oldHeap;
               ExhaleWellDef0Mask := oldMask;
+              ExhaleWellDef0Heap := oldHeap;
               havoc QPMask;
               
               // -- check that the permission amount is positive
@@ -1968,8 +1968,8 @@ procedure unlink(g_1: (Set Ref), x: Ref) returns ()
             if ((exists_path($$(oldHeap, g_1), v1_29, v2_29): bool)) {
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Heap := oldHeap;
                 ExhaleWellDef0Mask := oldMask;
+                ExhaleWellDef0Heap := oldHeap;
                 havoc QPMask;
                 
                 // -- check that the permission amount is positive
@@ -2009,8 +2009,8 @@ procedure unlink(g_1: (Set Ref), x: Ref) returns ()
               if ((exists_path($$(oldHeap, g_1), v1_29, x): bool)) {
                 if (*) {
                   // Exhale precondition of function application
-                  ExhaleWellDef0Heap := oldHeap;
                   ExhaleWellDef0Mask := oldMask;
+                  ExhaleWellDef0Heap := oldHeap;
                   havoc QPMask;
                   
                   // -- check that the permission amount is positive
@@ -2070,8 +2070,8 @@ procedure unlink(g_1: (Set Ref), x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of unlink might not hold. Assertion !((null in g)) might not hold. (list_reverse.vpr@293.13--293.33) [88873]"}
       !g_1[null];
     assert {:msg "  Postcondition of unlink might not hold. Assertion (x in g) might not hold. (list_reverse.vpr@293.13--293.33) [88874]"}
@@ -2183,12 +2183,12 @@ procedure reverse(g_1: (Set Ref), xe: Ref) returns (y: Ref)
 {
   var QPMask: MaskType;
   var n$0_35: Ref;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var v_30: Ref;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var t_2: Ref;
   var x: Ref;
   var old_g: (Set EdgeDomainType);
@@ -2215,8 +2215,8 @@ procedure reverse(g_1: (Set Ref), xe: Ref) returns (y: Ref)
   var n$0_6: Ref;
   var v1_30: Ref;
   var v2_30: Ref;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var v1_15: Ref;
   var v2_15: Ref;
   var n$2_7: Ref;
@@ -2301,8 +2301,8 @@ procedure reverse(g_1: (Set Ref), xe: Ref) returns (y: Ref)
     // -- Check definedness of acyclic_graph($$(g))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         havoc QPMask;
         
         // -- check that the permission amount is positive
@@ -2349,8 +2349,8 @@ procedure reverse(g_1: (Set Ref), xe: Ref) returns (y: Ref)
     // -- Check definedness of unshared_graph($$(g))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         havoc QPMask;
         
         // -- check that the permission amount is positive
@@ -2397,8 +2397,8 @@ procedure reverse(g_1: (Set Ref), xe: Ref) returns (y: Ref)
     // -- Check definedness of func_graph($$(g))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         havoc QPMask;
         
         // -- check that the permission amount is positive
@@ -2447,8 +2447,8 @@ procedure reverse(g_1: (Set Ref), xe: Ref) returns (y: Ref)
         if (g_1[v_30]) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             havoc QPMask;
             
             // -- check that the permission amount is positive
@@ -2500,8 +2500,8 @@ procedure reverse(g_1: (Set Ref), xe: Ref) returns (y: Ref)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[t_2, $allocated];
@@ -2512,8 +2512,8 @@ procedure reverse(g_1: (Set Ref), xe: Ref) returns (y: Ref)
     // -- Check definedness of $$(g)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         havoc QPMask;
         
         // -- check that the permission amount is positive
@@ -2573,8 +2573,8 @@ procedure reverse(g_1: (Set Ref), xe: Ref) returns (y: Ref)
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Loop invariant !((null in g)) && ((forall n$1: Ref :: { n$1.next } (n$1 in g) ==> acc(n$1.next, write)) && (forall n$2: Ref :: { (n$2.next in g) } { (n$2 in g), n$2.next } (n$2 in g) && n$2.next != null ==> (n$2.next in g))) might not hold on entry. Assertion !((null in g)) might not hold. (list_reverse.vpr@405.19--405.27) [88902]"}
           !g_1[null];
         havoc QPMask;
@@ -2774,8 +2774,8 @@ procedure reverse(g_1: (Set Ref), xe: Ref) returns (y: Ref)
             if (g_1[n_49]) {
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Heap := Heap;
                 ExhaleWellDef0Mask := Mask;
+                ExhaleWellDef0Heap := Heap;
                 havoc QPMask;
                 
                 // -- check that the permission amount is positive
@@ -2818,8 +2818,8 @@ procedure reverse(g_1: (Set Ref), xe: Ref) returns (y: Ref)
               if (!(exists_path($$(Heap, g_1), x, n_49): bool)) {
                 if (*) {
                   // Exhale precondition of function application
-                  ExhaleWellDef0Heap := Heap;
                   ExhaleWellDef0Mask := Mask;
+                  ExhaleWellDef0Heap := Heap;
                   havoc QPMask;
                   
                   // -- check that the permission amount is positive
@@ -2873,8 +2873,8 @@ procedure reverse(g_1: (Set Ref), xe: Ref) returns (y: Ref)
         // -- Check definedness of acyclic_graph($$(g))
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             havoc QPMask;
             
             // -- check that the permission amount is positive
@@ -2921,8 +2921,8 @@ procedure reverse(g_1: (Set Ref), xe: Ref) returns (y: Ref)
         // -- Check definedness of unshared_graph($$(g))
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             havoc QPMask;
             
             // -- check that the permission amount is positive
@@ -2969,8 +2969,8 @@ procedure reverse(g_1: (Set Ref), xe: Ref) returns (y: Ref)
         // -- Check definedness of func_graph($$(g))
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             havoc QPMask;
             
             // -- check that the permission amount is positive
@@ -3018,8 +3018,8 @@ procedure reverse(g_1: (Set Ref), xe: Ref) returns (y: Ref)
           // -- Check definedness of !exists_path($$(g), x, xe)
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Heap := Heap;
               ExhaleWellDef0Mask := Mask;
+              ExhaleWellDef0Heap := Heap;
               havoc QPMask;
               
               // -- check that the permission amount is positive
@@ -3068,8 +3068,8 @@ procedure reverse(g_1: (Set Ref), xe: Ref) returns (y: Ref)
           // -- Check definedness of !edge($$(g), x, y)
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Heap := Heap;
               ExhaleWellDef0Mask := Mask;
+              ExhaleWellDef0Heap := Heap;
               havoc QPMask;
               
               // -- check that the permission amount is positive
@@ -3118,8 +3118,8 @@ procedure reverse(g_1: (Set Ref), xe: Ref) returns (y: Ref)
           if (*) {
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Heap := Heap;
               ExhaleWellDef0Mask := Mask;
+              ExhaleWellDef0Heap := Heap;
               havoc QPMask;
               
               // -- check that the permission amount is positive
@@ -3162,8 +3162,8 @@ procedure reverse(g_1: (Set Ref), xe: Ref) returns (y: Ref)
             if ((exists_path($$(Heap, g_1), x, v1_5): bool)) {
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Heap := Heap;
                 ExhaleWellDef0Mask := Mask;
+                ExhaleWellDef0Heap := Heap;
                 havoc QPMask;
                 
                 // -- check that the permission amount is positive
@@ -3217,8 +3217,8 @@ procedure reverse(g_1: (Set Ref), xe: Ref) returns (y: Ref)
           if (*) {
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Heap := Heap;
               ExhaleWellDef0Mask := Mask;
+              ExhaleWellDef0Heap := Heap;
               havoc QPMask;
               
               // -- check that the permission amount is positive
@@ -3261,8 +3261,8 @@ procedure reverse(g_1: (Set Ref), xe: Ref) returns (y: Ref)
             if ((exists_path($$(Heap, g_1), y, v2_7): bool) && v1_7 != y) {
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Heap := Heap;
                 ExhaleWellDef0Mask := Mask;
+                ExhaleWellDef0Heap := Heap;
                 havoc QPMask;
                 
                 // -- check that the permission amount is positive
@@ -3418,8 +3418,8 @@ procedure reverse(g_1: (Set Ref), xe: Ref) returns (y: Ref)
             // -- Check definedness of $$(g)
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Heap := Heap;
                 ExhaleWellDef0Mask := Mask;
+                ExhaleWellDef0Heap := Heap;
                 havoc QPMask;
                 
                 // -- check that the permission amount is positive
@@ -3483,8 +3483,8 @@ procedure reverse(g_1: (Set Ref), xe: Ref) returns (y: Ref)
             PreCallMask := Mask;
             
             // -- Exhaling precondition
-              ExhaleWellDef0Heap := Heap;
               ExhaleWellDef0Mask := Mask;
+              ExhaleWellDef0Heap := Heap;
               assert {:msg "  The precondition of method unlink might not hold. Assertion (x in g) might not hold. (list_reverse.vpr@442.9--442.20) [88958]"}
                 g_1[x];
               assert {:msg "  The precondition of method unlink might not hold. Assertion !((null in g)) might not hold. (list_reverse.vpr@442.9--442.20) [88959]"}
@@ -3636,8 +3636,8 @@ procedure reverse(g_1: (Set Ref), xe: Ref) returns (y: Ref)
             PreCallMask := Mask;
             
             // -- Exhaling precondition
-              ExhaleWellDef0Heap := Heap;
               ExhaleWellDef0Mask := Mask;
+              ExhaleWellDef0Heap := Heap;
               assert {:msg "  The precondition of method link might not hold. Assertion (x in g) might not hold. (list_reverse.vpr@443.9--443.20) [88968]"}
                 g_1[x];
               if (y != null) {
@@ -3804,8 +3804,8 @@ procedure reverse(g_1: (Set Ref), xe: Ref) returns (y: Ref)
   //     (v1 in g) && (v2 in g) ==>
   //     edge($$(g), v1, v2) ==
   //     (edge(save_g, v1, v2) && v1 != save_x || v1 == save_x && v2 == save_y)) -- list_reverse.vpr@454.9--457.14
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             if (save_y != null) {
               
               // -- Check definedness of (forall v1: Ref, v2: Ref :: { (v1 in g), (v2 in g) } (v1 in g) && (v2 in g) ==> edge($$(g), v1, v2) == (edge(save_g, v1, v2) && v1 != save_x || v1 == save_x && v2 == save_y))
@@ -3813,8 +3813,8 @@ procedure reverse(g_1: (Set Ref), xe: Ref) returns (y: Ref)
                   if (g_1[v1_30] && g_1[v2_30]) {
                     if (*) {
                       // Exhale precondition of function application
-                      ExhaleWellDef1Heap := ExhaleWellDef0Heap;
                       ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+                      ExhaleWellDef1Heap := ExhaleWellDef0Heap;
                       havoc QPMask;
                       
                       // -- check that the permission amount is positive
@@ -3871,8 +3871,8 @@ procedure reverse(g_1: (Set Ref), xe: Ref) returns (y: Ref)
             }
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Loop invariant !((null in g)) && ((forall n$1: Ref :: { n$1.next } (n$1 in g) ==> acc(n$1.next, write)) && (forall n$2: Ref :: { (n$2.next in g) } { (n$2 in g), n$2.next } (n$2 in g) && n$2.next != null ==> (n$2.next in g))) might not be preserved. Assertion !((null in g)) might not hold. (list_reverse.vpr@405.19--405.27) [88984]"}
           !g_1[null];
         havoc QPMask;

@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 12:41:55
+; Started: 2025-01-13 17:46:24
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -971,11 +971,11 @@
     (CheckBounded%limited s@$ order@0@00 maxLen@1@00)
     (CheckBounded s@$ order@0@00 maxLen@1@00))
   :pattern ((CheckBounded s@$ order@0@00 maxLen@1@00))
-  :qid |quant-u-25073|)))
+  :qid |quant-u-25015|)))
 (assert (forall ((s@$ $Snap) (order@0@00 Seq<Int>) (maxLen@1@00 Int)) (!
   (CheckBounded%stateless order@0@00 maxLen@1@00)
   :pattern ((CheckBounded%limited s@$ order@0@00 maxLen@1@00))
-  :qid |quant-u-25074|)))
+  :qid |quant-u-25016|)))
 (assert (forall ((s@$ $Snap) (order@0@00 Seq<Int>) (maxLen@1@00 Int)) (!
   (let ((result@2@00 (CheckBounded%limited s@$ order@0@00 maxLen@1@00))) (=>
     (CheckBounded%precondition s@$ order@0@00 maxLen@1@00)
@@ -990,21 +990,21 @@
         :pattern ((Seq_index order@0@00 i))
         )))))
   :pattern ((CheckBounded%limited s@$ order@0@00 maxLen@1@00))
-  :qid |quant-u-25077|)))
+  :qid |quant-u-25019|)))
 (assert (forall ((s@$ $Snap) (order@0@00 Seq<Int>) (maxLen@1@00 Int)) (!
   (let ((result@2@00 (CheckBounded%limited s@$ order@0@00 maxLen@1@00))) true)
   :pattern ((CheckBounded%limited s@$ order@0@00 maxLen@1@00))
-  :qid |quant-u-25078|)))
+  :qid |quant-u-25020|)))
 (assert (forall ((s@$ $Snap) (origL@3@00 VCTArray<Ref>) (newO@4@00 Seq<Int>) (newL@5@00 VCTArray<Ref>) (maxLen@6@00 Int)) (!
   (=
     (IsReordered%limited s@$ origL@3@00 newO@4@00 newL@5@00 maxLen@6@00)
     (IsReordered s@$ origL@3@00 newO@4@00 newL@5@00 maxLen@6@00))
   :pattern ((IsReordered s@$ origL@3@00 newO@4@00 newL@5@00 maxLen@6@00))
-  :qid |quant-u-25075|)))
+  :qid |quant-u-25017|)))
 (assert (forall ((s@$ $Snap) (origL@3@00 VCTArray<Ref>) (newO@4@00 Seq<Int>) (newL@5@00 VCTArray<Ref>) (maxLen@6@00 Int)) (!
   (IsReordered%stateless origL@3@00 newO@4@00 newL@5@00 maxLen@6@00)
   :pattern ((IsReordered%limited s@$ origL@3@00 newO@4@00 newL@5@00 maxLen@6@00))
-  :qid |quant-u-25076|)))
+  :qid |quant-u-25018|)))
 (assert (forall ((s@$ $Snap) (origL@3@00 VCTArray<Ref>) (newO@4@00 Seq<Int>) (newL@5@00 VCTArray<Ref>) (maxLen@6@00 Int)) (!
   (let ((result@7@00 (IsReordered%limited s@$ origL@3@00 newO@4@00 newL@5@00 maxLen@6@00))) (and
     (forall ((i@10@00 Int)) (!
@@ -1016,7 +1016,7 @@
             i@10@00)
           (img@12@00 s@$ origL@3@00 newO@4@00 newL@5@00 maxLen@6@00 (loc<Ref> origL@3@00 i@10@00))))
       :pattern ((loc<Ref> origL@3@00 i@10@00))
-      :qid |quant-u-25080|))
+      :qid |quant-u-25022|))
     (forall ((r $Ref)) (!
       (=>
         (and
@@ -1040,7 +1040,7 @@
             i@13@00)
           (img@15@00 s@$ origL@3@00 newO@4@00 newL@5@00 maxLen@6@00 (loc<Ref> newL@5@00 i@13@00))))
       :pattern ((loc<Ref> newL@5@00 i@13@00))
-      :qid |quant-u-25082|))
+      :qid |quant-u-25024|))
     (forall ((r $Ref)) (!
       (=>
         (and
@@ -1103,10 +1103,10 @@
                       (and (<= 0 i) (< i (Seq_length newO@4@00)))
                       (ite
                         (and
-                          (<= maxLen@6@00 (alen<Int> newL@5@00))
+                          (<= maxLen@6@00 (alen<Int> origL@3@00))
                           (not (= origL@3@00 newL@5@00))
-                          (CheckBounded $Snap.unit newO@4@00 maxLen@6@00)
-                          (<= maxLen@6@00 (alen<Int> origL@3@00)))
+                          (<= maxLen@6@00 (alen<Int> newL@5@00))
+                          (CheckBounded $Snap.unit newO@4@00 maxLen@6@00))
                         ($FVF.lookup_Integer__item (sm@18@00 s@$ origL@3@00 newO@4@00 newL@5@00 maxLen@6@00) (loc<Ref> newL@5@00 i))
                         ($FVF.lookup_Integer__item ($SortWrappers.$SnapTo$FVF<Integer__item> ($Snap.first s@$)) (loc<Ref> newL@5@00 i)))
                       ($FVF.lookup_Integer__item ($SortWrappers.$SnapTo$FVF<Integer__item> ($Snap.first s@$)) (loc<Ref> newL@5@00 i)))
@@ -1114,10 +1114,10 @@
                       (and (<= 0 i) (< i (Seq_length newO@4@00)))
                       (ite
                         (and
-                          (<= maxLen@6@00 (alen<Int> newL@5@00))
+                          (<= maxLen@6@00 (alen<Int> origL@3@00))
                           (not (= origL@3@00 newL@5@00))
-                          (CheckBounded $Snap.unit newO@4@00 maxLen@6@00)
-                          (<= maxLen@6@00 (alen<Int> origL@3@00)))
+                          (<= maxLen@6@00 (alen<Int> newL@5@00))
+                          (CheckBounded $Snap.unit newO@4@00 maxLen@6@00))
                         ($FVF.lookup_Integer__item (sm@18@00 s@$ origL@3@00 newO@4@00 newL@5@00 maxLen@6@00) (loc<Ref> origL@3@00 (Seq_index
                           newO@4@00
                           i)))
@@ -1130,7 +1130,7 @@
                 :pattern ((loc<Ref> origL@3@00 (Seq_index newO@4@00 i)))
                 )))))))))
   :pattern ((IsReordered%limited s@$ origL@3@00 newO@4@00 newL@5@00 maxLen@6@00))
-  :qid |quant-u-25084|)))
+  :qid |quant-u-25026|)))
 (assert (forall ((s@$ $Snap) (origL@3@00 VCTArray<Ref>) (newO@4@00 Seq<Int>) (newL@5@00 VCTArray<Ref>) (maxLen@6@00 Int)) (!
   (let ((result@7@00 (IsReordered%limited s@$ origL@3@00 newO@4@00 newL@5@00 maxLen@6@00))) (=>
     (and
@@ -1149,14 +1149,16 @@
               (and (<= 0 i) (< i (Seq_length newO@4@00)))
               (=>
                 (and
-                  (<= maxLen@6@00 (alen<Int> newL@5@00))
-                  (not (= origL@3@00 newL@5@00)))
+                  (<= maxLen@6@00 (alen<Int> origL@3@00))
+                  (and
+                    (not (= origL@3@00 newL@5@00))
+                    (<= maxLen@6@00 (alen<Int> newL@5@00))))
                 (CheckBounded%precondition $Snap.unit newO@4@00 maxLen@6@00))
               true))
           :pattern ((loc<Ref> origL@3@00 (Seq_index newO@4@00 i)))
           ))))))
   :pattern ((IsReordered%limited s@$ origL@3@00 newO@4@00 newL@5@00 maxLen@6@00))
-  :qid |quant-u-25085|)))
+  :qid |quant-u-25027|)))
 (assert (forall ((s@$ $Snap) (origL@3@00 VCTArray<Ref>) (newO@4@00 Seq<Int>) (newL@5@00 VCTArray<Ref>) (maxLen@6@00 Int)) (!
   (and
     (forall ((i@10@00 Int)) (!
@@ -1168,7 +1170,7 @@
             i@10@00)
           (img@12@00 s@$ origL@3@00 newO@4@00 newL@5@00 maxLen@6@00 (loc<Ref> origL@3@00 i@10@00))))
       :pattern ((loc<Ref> origL@3@00 i@10@00))
-      :qid |quant-u-25080|))
+      :qid |quant-u-25022|))
     (forall ((r $Ref)) (!
       (=>
         (and
@@ -1192,7 +1194,7 @@
             i@13@00)
           (img@15@00 s@$ origL@3@00 newO@4@00 newL@5@00 maxLen@6@00 (loc<Ref> newL@5@00 i@13@00))))
       :pattern ((loc<Ref> newL@5@00 i@13@00))
-      :qid |quant-u-25082|))
+      :qid |quant-u-25024|))
     (forall ((r $Ref)) (!
       (=>
         (and
@@ -1255,19 +1257,19 @@
                       (and (<= 0 i) (< i (Seq_length newO@4@00)))
                       (ite
                         (and
-                          (<= maxLen@6@00 (alen<Int> newL@5@00))
+                          (<= maxLen@6@00 (alen<Int> origL@3@00))
                           (not (= origL@3@00 newL@5@00))
-                          (CheckBounded $Snap.unit newO@4@00 maxLen@6@00)
-                          (<= maxLen@6@00 (alen<Int> origL@3@00)))
+                          (<= maxLen@6@00 (alen<Int> newL@5@00))
+                          (CheckBounded $Snap.unit newO@4@00 maxLen@6@00))
                         ($FVF.lookup_Integer__item (sm@23@00 s@$ origL@3@00 newO@4@00 newL@5@00 maxLen@6@00) (loc<Ref> newL@5@00 i))
                         (ite
                           (and (<= 0 i) (< i (Seq_length newO@4@00)))
                           (ite
                             (and
-                              (<= maxLen@6@00 (alen<Int> newL@5@00))
+                              (<= maxLen@6@00 (alen<Int> origL@3@00))
                               (not (= origL@3@00 newL@5@00))
-                              (CheckBounded $Snap.unit newO@4@00 maxLen@6@00)
-                              (<= maxLen@6@00 (alen<Int> origL@3@00)))
+                              (<= maxLen@6@00 (alen<Int> newL@5@00))
+                              (CheckBounded $Snap.unit newO@4@00 maxLen@6@00))
                             ($FVF.lookup_Integer__item (sm@23@00 s@$ origL@3@00 newO@4@00 newL@5@00 maxLen@6@00) (loc<Ref> newL@5@00 i))
                             ($FVF.lookup_Integer__item ($SortWrappers.$SnapTo$FVF<Integer__item> ($Snap.first s@$)) (loc<Ref> newL@5@00 i)))
                           ($FVF.lookup_Integer__item ($SortWrappers.$SnapTo$FVF<Integer__item> ($Snap.first s@$)) (loc<Ref> newL@5@00 i))))
@@ -1275,10 +1277,10 @@
                         (and (<= 0 i) (< i (Seq_length newO@4@00)))
                         (ite
                           (and
-                            (<= maxLen@6@00 (alen<Int> newL@5@00))
+                            (<= maxLen@6@00 (alen<Int> origL@3@00))
                             (not (= origL@3@00 newL@5@00))
-                            (CheckBounded $Snap.unit newO@4@00 maxLen@6@00)
-                            (<= maxLen@6@00 (alen<Int> origL@3@00)))
+                            (<= maxLen@6@00 (alen<Int> newL@5@00))
+                            (CheckBounded $Snap.unit newO@4@00 maxLen@6@00))
                           ($FVF.lookup_Integer__item (sm@23@00 s@$ origL@3@00 newO@4@00 newL@5@00 maxLen@6@00) (loc<Ref> newL@5@00 i))
                           ($FVF.lookup_Integer__item ($SortWrappers.$SnapTo$FVF<Integer__item> ($Snap.first s@$)) (loc<Ref> newL@5@00 i)))
                         ($FVF.lookup_Integer__item ($SortWrappers.$SnapTo$FVF<Integer__item> ($Snap.first s@$)) (loc<Ref> newL@5@00 i))))
@@ -1286,10 +1288,10 @@
                       (and (<= 0 i) (< i (Seq_length newO@4@00)))
                       (ite
                         (and
-                          (<= maxLen@6@00 (alen<Int> newL@5@00))
+                          (<= maxLen@6@00 (alen<Int> origL@3@00))
                           (not (= origL@3@00 newL@5@00))
-                          (CheckBounded $Snap.unit newO@4@00 maxLen@6@00)
-                          (<= maxLen@6@00 (alen<Int> origL@3@00)))
+                          (<= maxLen@6@00 (alen<Int> newL@5@00))
+                          (CheckBounded $Snap.unit newO@4@00 maxLen@6@00))
                         ($FVF.lookup_Integer__item (sm@23@00 s@$ origL@3@00 newO@4@00 newL@5@00 maxLen@6@00) (loc<Ref> origL@3@00 (Seq_index
                           newO@4@00
                           i)))
@@ -1297,10 +1299,10 @@
                           (and (<= 0 i) (< i (Seq_length newO@4@00)))
                           (ite
                             (and
-                              (<= maxLen@6@00 (alen<Int> newL@5@00))
+                              (<= maxLen@6@00 (alen<Int> origL@3@00))
                               (not (= origL@3@00 newL@5@00))
-                              (CheckBounded $Snap.unit newO@4@00 maxLen@6@00)
-                              (<= maxLen@6@00 (alen<Int> origL@3@00)))
+                              (<= maxLen@6@00 (alen<Int> newL@5@00))
+                              (CheckBounded $Snap.unit newO@4@00 maxLen@6@00))
                             ($FVF.lookup_Integer__item (sm@23@00 s@$ origL@3@00 newO@4@00 newL@5@00 maxLen@6@00) (loc<Ref> origL@3@00 (Seq_index
                               newO@4@00
                               i)))
@@ -1314,10 +1316,10 @@
                         (and (<= 0 i) (< i (Seq_length newO@4@00)))
                         (ite
                           (and
-                            (<= maxLen@6@00 (alen<Int> newL@5@00))
+                            (<= maxLen@6@00 (alen<Int> origL@3@00))
                             (not (= origL@3@00 newL@5@00))
-                            (CheckBounded $Snap.unit newO@4@00 maxLen@6@00)
-                            (<= maxLen@6@00 (alen<Int> origL@3@00)))
+                            (<= maxLen@6@00 (alen<Int> newL@5@00))
+                            (CheckBounded $Snap.unit newO@4@00 maxLen@6@00))
                           ($FVF.lookup_Integer__item (sm@23@00 s@$ origL@3@00 newO@4@00 newL@5@00 maxLen@6@00) (loc<Ref> origL@3@00 (Seq_index
                             newO@4@00
                             i)))
@@ -1330,7 +1332,7 @@
                 :pattern ((loc<Ref> origL@3@00 (Seq_index newO@4@00 i)))
                 ))))))))
   :pattern ((IsReordered s@$ origL@3@00 newO@4@00 newL@5@00 maxLen@6@00))
-  :qid |quant-u-25086|)))
+  :qid |quant-u-25028|)))
 (assert (forall ((s@$ $Snap) (origL@3@00 VCTArray<Ref>) (newO@4@00 Seq<Int>) (newL@5@00 VCTArray<Ref>) (maxLen@6@00 Int)) (!
   (=>
     (and
@@ -1350,36 +1352,42 @@
               (and
                 (=>
                   (and
-                    (<= maxLen@6@00 (alen<Int> newL@5@00))
-                    (not (= origL@3@00 newL@5@00)))
+                    (<= maxLen@6@00 (alen<Int> origL@3@00))
+                    (and
+                      (not (= origL@3@00 newL@5@00))
+                      (<= maxLen@6@00 (alen<Int> newL@5@00))))
                   (CheckBounded%precondition $Snap.unit newO@4@00 maxLen@6@00))
                 (ite
                   (and
-                    (<= maxLen@6@00 (alen<Int> newL@5@00))
+                    (<= maxLen@6@00 (alen<Int> origL@3@00))
                     (not (= origL@3@00 newL@5@00))
-                    (CheckBounded $Snap.unit newO@4@00 maxLen@6@00)
-                    (<= maxLen@6@00 (alen<Int> origL@3@00)))
+                    (<= maxLen@6@00 (alen<Int> newL@5@00))
+                    (CheckBounded $Snap.unit newO@4@00 maxLen@6@00))
                   true
                   (ite
                     (and (<= 0 i) (< i (Seq_length newO@4@00)))
                     (=>
                       (and
-                        (<= maxLen@6@00 (alen<Int> newL@5@00))
-                        (not (= origL@3@00 newL@5@00)))
+                        (<= maxLen@6@00 (alen<Int> origL@3@00))
+                        (and
+                          (not (= origL@3@00 newL@5@00))
+                          (<= maxLen@6@00 (alen<Int> newL@5@00))))
                       (CheckBounded%precondition $Snap.unit newO@4@00 maxLen@6@00))
                     true)))
               (ite
                 (and (<= 0 i) (< i (Seq_length newO@4@00)))
                 (=>
                   (and
-                    (<= maxLen@6@00 (alen<Int> newL@5@00))
-                    (not (= origL@3@00 newL@5@00)))
+                    (<= maxLen@6@00 (alen<Int> origL@3@00))
+                    (and
+                      (not (= origL@3@00 newL@5@00))
+                      (<= maxLen@6@00 (alen<Int> newL@5@00))))
                   (CheckBounded%precondition $Snap.unit newO@4@00 maxLen@6@00))
                 true)))
           :pattern ((loc<Ref> origL@3@00 (Seq_index newO@4@00 i)))
           )))))
   :pattern ((IsReordered s@$ origL@3@00 newO@4@00 newL@5@00 maxLen@6@00))
-  :qid |quant-u-25087|)))
+  :qid |quant-u-25029|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- PermutationLemma ----------
@@ -1453,7 +1461,7 @@
       (= (inv@10@01 (loc<Ref> origL@4@01 i@9@01)) i@9@01)
       (img@11@01 (loc<Ref> origL@4@01 i@9@01))))
   :pattern ((loc<Ref> origL@4@01 i@9@01))
-  :qid |quant-u-25089|)))
+  :qid |quant-u-25031|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -1553,7 +1561,7 @@
       (= (inv@13@01 (loc<Ref> newL@6@01 i@12@01)) i@12@01)
       (img@14@01 (loc<Ref> newL@6@01 i@12@01))))
   :pattern ((loc<Ref> newL@6@01 i@12@01))
-  :qid |quant-u-25091|)))
+  :qid |quant-u-25033|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -1584,7 +1592,7 @@
         (img@11@01 r)
         (and (<= 0 (inv@10@01 r)) (< (inv@10@01 r) (alen<Int> origL@4@01))))))
   
-  :qid |quant-u-25092|))))
+  :qid |quant-u-25034|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -1678,7 +1686,7 @@
 (assert (not (forall ((i@16@01 Int)) (!
   (= (loc<Ref> origL@4@01 i@16@01) (loc<Ref> newL@6@01 i@16@01))
   
-  :qid |quant-u-25094|))))
+  :qid |quant-u-25036|))))
 (check-sat)
 ; unknown
 (pop) ; 5
@@ -1708,7 +1716,7 @@
           $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-25095|))))
+  :qid |quant-u-25037|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -1847,7 +1855,7 @@
 (assert (not (forall ((i@20@01 Int)) (!
   (= (loc<Ref> newL@6@01 i@20@01) (loc<Ref> origL@4@01 i@20@01))
   
-  :qid |quant-u-25097|))))
+  :qid |quant-u-25039|))))
 (check-sat)
 ; unknown
 (pop) ; 6
@@ -1877,7 +1885,7 @@
           $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-25098|))))
+  :qid |quant-u-25040|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -3300,7 +3308,7 @@
         $Perm.No)
       $Perm.No))
   
-  :qid |quant-u-25100|))))
+  :qid |quant-u-25042|))))
 (check-sat)
 ; unsat
 (pop) ; 5

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 13:19:16
+// Date:         2025-01-13 18:23:12
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0070.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0070-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -189,11 +189,11 @@ procedure test(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var b_24: bool;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var loopHeap: HeapType;
   var loopMask: MaskType;
   
@@ -220,8 +220,8 @@ procedure test(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: b := true -- 0070.vpr@10.3--10.12
     b_24 := true;
@@ -232,8 +232,8 @@ procedure test(x: Ref) returns ()
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Loop invariant x != null && x.f != 3 might not hold on entry. Assertion x != null might not hold. (0070.vpr@14.15--14.36) [194386]"}
           x != null;
         assert {:msg "  Loop invariant x != null && x.f != 3 might not hold on entry. Assertion x.f != 3 might not hold. (0070.vpr@14.15--14.36) [194387]"}
@@ -281,8 +281,8 @@ procedure test(x: Ref) returns ()
             b_24 := false;
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Loop invariant x != null && x.f != 3 might not be preserved. Assertion x != null might not hold. (0070.vpr@14.15--14.36) [194390]"}
           x != null;
         assert {:msg "  Loop invariant x != null && x.f != 3 might not be preserved. Assertion x.f != 3 might not hold. (0070.vpr@14.15--14.36) [194391]"}

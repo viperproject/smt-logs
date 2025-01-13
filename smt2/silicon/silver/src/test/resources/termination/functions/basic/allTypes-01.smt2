@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 12:44:00
+; Started: 2025-01-13 17:48:26
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -1446,21 +1446,21 @@
 (assert (forall ((s@$ $Snap) (seq@0@00 Seq<Int>)) (!
   (= (sequences%limited s@$ seq@0@00) (sequences s@$ seq@0@00))
   :pattern ((sequences s@$ seq@0@00))
-  :qid |quant-u-26613|)))
+  :qid |quant-u-26555|)))
 (assert (forall ((s@$ $Snap) (seq@0@00 Seq<Int>)) (!
   (sequences%stateless seq@0@00)
   :pattern ((sequences%limited s@$ seq@0@00))
-  :qid |quant-u-26614|)))
+  :qid |quant-u-26556|)))
 (assert (forall ((s@$ $Snap) (seq@0@00 Seq<Int>)) (!
   (let ((result@1@00 (sequences%limited s@$ seq@0@00))) (=>
     (sequences%precondition s@$ seq@0@00)
     (= result@1@00 (Seq_length seq@0@00))))
   :pattern ((sequences%limited s@$ seq@0@00))
-  :qid |quant-u-26649|)))
+  :qid |quant-u-26591|)))
 (assert (forall ((s@$ $Snap) (seq@0@00 Seq<Int>)) (!
   (let ((result@1@00 (sequences%limited s@$ seq@0@00))) true)
   :pattern ((sequences%limited s@$ seq@0@00))
-  :qid |quant-u-26650|)))
+  :qid |quant-u-26592|)))
 (assert (forall ((s@$ $Snap) (seq@0@00 Seq<Int>)) (!
   (=>
     (sequences%precondition s@$ seq@0@00)
@@ -1471,7 +1471,7 @@
         (+ 1 (sequences%limited $Snap.unit (Seq_drop seq@0@00 1)))
         0)))
   :pattern ((sequences s@$ seq@0@00))
-  :qid |quant-u-26651|)))
+  :qid |quant-u-26593|)))
 (assert (forall ((s@$ $Snap) (seq@0@00 Seq<Int>)) (!
   (=>
     (sequences%precondition s@$ seq@0@00)
@@ -1480,15 +1480,15 @@
       (sequences%precondition $Snap.unit (Seq_drop seq@0@00 1))
       true))
   :pattern ((sequences s@$ seq@0@00))
-  :qid |quant-u-26652|)))
+  :qid |quant-u-26594|)))
 (assert (forall ((s@$ $Snap) (x@2@00 Int)) (!
   (= (fact%limited s@$ x@2@00) (fact s@$ x@2@00))
   :pattern ((fact s@$ x@2@00))
-  :qid |quant-u-26615|)))
+  :qid |quant-u-26557|)))
 (assert (forall ((s@$ $Snap) (x@2@00 Int)) (!
   (fact%stateless x@2@00)
   :pattern ((fact%limited s@$ x@2@00))
-  :qid |quant-u-26616|)))
+  :qid |quant-u-26558|)))
 (assert (forall ((s@$ $Snap) (x@2@00 Int)) (!
   (=>
     (fact%precondition s@$ x@2@00)
@@ -1496,21 +1496,21 @@
       (fact s@$ x@2@00)
       (ite (= x@2@00 0) 1 (* x@2@00 (fact%limited $Snap.unit (- x@2@00 1))))))
   :pattern ((fact s@$ x@2@00))
-  :qid |quant-u-26653|)))
+  :qid |quant-u-26595|)))
 (assert (forall ((s@$ $Snap) (x@2@00 Int)) (!
   (=>
     (fact%precondition s@$ x@2@00)
     (ite (= x@2@00 0) true (fact%precondition $Snap.unit (- x@2@00 1))))
   :pattern ((fact s@$ x@2@00))
-  :qid |quant-u-26654|)))
+  :qid |quant-u-26596|)))
 (assert (forall ((s@$ $Snap) (xs@4@00 $Ref)) (!
   (= (predicates_e%limited s@$ xs@4@00) (predicates_e s@$ xs@4@00))
   :pattern ((predicates_e s@$ xs@4@00))
-  :qid |quant-u-26617|)))
+  :qid |quant-u-26559|)))
 (assert (forall ((s@$ $Snap) (xs@4@00 $Ref)) (!
   (predicates_e%stateless xs@4@00)
   :pattern ((predicates_e%limited s@$ xs@4@00))
-  :qid |quant-u-26618|)))
+  :qid |quant-u-26560|)))
 (assert (forall ((s@$ $Snap) (xs@4@00 $Ref)) (!
   (=>
     (predicates_e%precondition s@$ xs@4@00)
@@ -1521,7 +1521,7 @@
         (predicates_e%limited s@$ xs@4@00)
         0)))
   :pattern ((predicates_e s@$ xs@4@00))
-  :qid |quant-u-26655|)))
+  :qid |quant-u-26597|)))
 (assert (forall ((s@$ $Snap) (xs@4@00 $Ref)) (!
   (=>
     (predicates_e%precondition s@$ xs@4@00)
@@ -1530,15 +1530,15 @@
       (predicates_e%precondition s@$ xs@4@00)
       true))
   :pattern ((predicates_e s@$ xs@4@00))
-  :qid |quant-u-26656|)))
+  :qid |quant-u-26598|)))
 (assert (forall ((s@$ $Snap) (xs@6@00 $Ref)) (!
   (= (predicates%limited s@$ xs@6@00) (predicates s@$ xs@6@00))
   :pattern ((predicates s@$ xs@6@00))
-  :qid |quant-u-26619|)))
+  :qid |quant-u-26561|)))
 (assert (forall ((s@$ $Snap) (xs@6@00 $Ref)) (!
   (predicates%stateless xs@6@00)
   :pattern ((predicates%limited s@$ xs@6@00))
-  :qid |quant-u-26620|)))
+  :qid |quant-u-26562|)))
 (assert (forall ((s@$ $Snap) (xs@6@00 $Ref)) (!
   (=>
     (predicates%precondition s@$ xs@6@00)
@@ -1550,7 +1550,7 @@
         0)))
   :pattern ((predicates s@$ xs@6@00))
   :pattern ((predicates%stateless xs@6@00) (list%trigger s@$ xs@6@00))
-  :qid |quant-u-26657|)))
+  :qid |quant-u-26599|)))
 (assert (forall ((s@$ $Snap) (xs@6@00 $Ref)) (!
   (=>
     (predicates%precondition s@$ xs@6@00)
@@ -1559,15 +1559,15 @@
       (predicates%precondition ($Snap.second s@$) ($SortWrappers.$SnapTo$Ref ($Snap.first s@$)))
       true))
   :pattern ((predicates s@$ xs@6@00))
-  :qid |quant-u-26658|)))
+  :qid |quant-u-26600|)))
 (assert (forall ((s@$ $Snap) (r@8@00 $Perm)) (!
   (= (rationals_e%limited s@$ r@8@00) (rationals_e s@$ r@8@00))
   :pattern ((rationals_e s@$ r@8@00))
-  :qid |quant-u-26621|)))
+  :qid |quant-u-26563|)))
 (assert (forall ((s@$ $Snap) (r@8@00 $Perm)) (!
   (rationals_e%stateless r@8@00)
   :pattern ((rationals_e%limited s@$ r@8@00))
-  :qid |quant-u-26622|)))
+  :qid |quant-u-26564|)))
 (assert (forall ((s@$ $Snap) (r@8@00 $Perm)) (!
   (=>
     (rationals_e%precondition s@$ r@8@00)
@@ -1578,7 +1578,7 @@
         (rationals_e%limited $Snap.unit (/ r@8@00 (to_real 2)))
         r@8@00)))
   :pattern ((rationals_e s@$ r@8@00))
-  :qid |quant-u-26659|)))
+  :qid |quant-u-26601|)))
 (assert (forall ((s@$ $Snap) (r@8@00 $Perm)) (!
   (=>
     (rationals_e%precondition s@$ r@8@00)
@@ -1587,15 +1587,15 @@
       (rationals_e%precondition $Snap.unit (/ r@8@00 (to_real 2)))
       true))
   :pattern ((rationals_e s@$ r@8@00))
-  :qid |quant-u-26660|)))
+  :qid |quant-u-26602|)))
 (assert (forall ((s@$ $Snap) (s@10@00 Set<Int>)) (!
   (= (sets_e%limited s@$ s@10@00) (sets_e s@$ s@10@00))
   :pattern ((sets_e s@$ s@10@00))
-  :qid |quant-u-26623|)))
+  :qid |quant-u-26565|)))
 (assert (forall ((s@$ $Snap) (s@10@00 Set<Int>)) (!
   (sets_e%stateless s@10@00)
   :pattern ((sets_e%limited s@$ s@10@00))
-  :qid |quant-u-26624|)))
+  :qid |quant-u-26566|)))
 (assert (forall ((s@$ $Snap) (s@10@00 Set<Int>)) (!
   (=>
     (sets_e%precondition s@$ s@10@00)
@@ -1606,7 +1606,7 @@
         1
         (sets_e%limited $Snap.unit (Set_difference s@10@00 (Set_singleton (Set_card s@10@00)))))))
   :pattern ((sets_e s@$ s@10@00))
-  :qid |quant-u-26661|)))
+  :qid |quant-u-26603|)))
 (assert (forall ((s@$ $Snap) (s@10@00 Set<Int>)) (!
   (=>
     (sets_e%precondition s@$ s@10@00)
@@ -1615,15 +1615,15 @@
       true
       (sets_e%precondition $Snap.unit (Set_difference s@10@00 (Set_singleton (Set_card s@10@00))))))
   :pattern ((sets_e s@$ s@10@00))
-  :qid |quant-u-26662|)))
+  :qid |quant-u-26604|)))
 (assert (forall ((s@$ $Snap) (x@12@00 Int)) (!
   (= (fact_e%limited s@$ x@12@00) (fact_e s@$ x@12@00))
   :pattern ((fact_e s@$ x@12@00))
-  :qid |quant-u-26625|)))
+  :qid |quant-u-26567|)))
 (assert (forall ((s@$ $Snap) (x@12@00 Int)) (!
   (fact_e%stateless x@12@00)
   :pattern ((fact_e%limited s@$ x@12@00))
-  :qid |quant-u-26626|)))
+  :qid |quant-u-26568|)))
 (assert (forall ((s@$ $Snap) (x@12@00 Int)) (!
   (=>
     (fact_e%precondition s@$ x@12@00)
@@ -1631,21 +1631,21 @@
       (fact_e s@$ x@12@00)
       (ite (= x@12@00 0) 1 (* x@12@00 (fact_e%limited $Snap.unit x@12@00)))))
   :pattern ((fact_e s@$ x@12@00))
-  :qid |quant-u-26663|)))
+  :qid |quant-u-26605|)))
 (assert (forall ((s@$ $Snap) (x@12@00 Int)) (!
   (=>
     (fact_e%precondition s@$ x@12@00)
     (ite (= x@12@00 0) true (fact_e%precondition $Snap.unit x@12@00)))
   :pattern ((fact_e s@$ x@12@00))
-  :qid |quant-u-26664|)))
+  :qid |quant-u-26606|)))
 (assert (forall ((s@$ $Snap) (s@14@00 Multiset<Int>)) (!
   (= (multiSets%limited s@$ s@14@00) (multiSets s@$ s@14@00))
   :pattern ((multiSets s@$ s@14@00))
-  :qid |quant-u-26627|)))
+  :qid |quant-u-26569|)))
 (assert (forall ((s@$ $Snap) (s@14@00 Multiset<Int>)) (!
   (multiSets%stateless s@14@00)
   :pattern ((multiSets%limited s@$ s@14@00))
-  :qid |quant-u-26628|)))
+  :qid |quant-u-26570|)))
 (assert (forall ((s@$ $Snap) (s@14@00 Multiset<Int>)) (!
   (=>
     (multiSets%precondition s@$ s@14@00)
@@ -1658,7 +1658,7 @@
         (multiSets%limited $Snap.unit (Multiset_difference s@14@00 (Multiset_singleton (Multiset_card s@14@00))))
         1)))
   :pattern ((multiSets s@$ s@14@00))
-  :qid |quant-u-26665|)))
+  :qid |quant-u-26607|)))
 (assert (forall ((s@$ $Snap) (s@14@00 Multiset<Int>)) (!
   (=>
     (multiSets%precondition s@$ s@14@00)
@@ -1669,15 +1669,15 @@
       (multiSets%precondition $Snap.unit (Multiset_difference s@14@00 (Multiset_singleton (Multiset_card s@14@00))))
       true))
   :pattern ((multiSets s@$ s@14@00))
-  :qid |quant-u-26666|)))
+  :qid |quant-u-26608|)))
 (assert (forall ((s@$ $Snap) (r@16@00 $Ref)) (!
   (= (references%limited s@$ r@16@00) (references s@$ r@16@00))
   :pattern ((references s@$ r@16@00))
-  :qid |quant-u-26629|)))
+  :qid |quant-u-26571|)))
 (assert (forall ((s@$ $Snap) (r@16@00 $Ref)) (!
   (references%stateless r@16@00)
   :pattern ((references%limited s@$ r@16@00))
-  :qid |quant-u-26630|)))
+  :qid |quant-u-26572|)))
 (assert (forall ((s@$ $Snap) (r@16@00 $Ref)) (!
   (=>
     (references%precondition s@$ r@16@00)
@@ -1685,7 +1685,7 @@
       (references s@$ r@16@00)
       (ite (= r@16@00 $Ref.null) 1 (references%limited $Snap.unit $Ref.null))))
   :pattern ((references s@$ r@16@00))
-  :qid |quant-u-26667|)))
+  :qid |quant-u-26609|)))
 (assert (forall ((s@$ $Snap) (r@16@00 $Ref)) (!
   (=>
     (references%precondition s@$ r@16@00)
@@ -1694,25 +1694,25 @@
       true
       (references%precondition $Snap.unit $Ref.null)))
   :pattern ((references s@$ r@16@00))
-  :qid |quant-u-26668|)))
+  :qid |quant-u-26610|)))
 (assert (forall ((s@$ $Snap) (b@18@00 Bool)) (!
   (= (booleans_e%limited s@$ b@18@00) (booleans_e s@$ b@18@00))
   :pattern ((booleans_e s@$ b@18@00))
-  :qid |quant-u-26631|)))
+  :qid |quant-u-26573|)))
 (assert (forall ((s@$ $Snap) (b@18@00 Bool)) (!
   (booleans_e%stateless b@18@00)
   :pattern ((booleans_e%limited s@$ b@18@00))
-  :qid |quant-u-26632|)))
+  :qid |quant-u-26574|)))
 (assert (forall ((s@$ $Snap) (b@18@00 Bool)) (!
   (let ((result@19@00 (booleans_e%limited s@$ b@18@00))) (=>
     (booleans_e%precondition s@$ b@18@00)
     (= result@19@00 1)))
   :pattern ((booleans_e%limited s@$ b@18@00))
-  :qid |quant-u-26669|)))
+  :qid |quant-u-26611|)))
 (assert (forall ((s@$ $Snap) (b@18@00 Bool)) (!
   (let ((result@19@00 (booleans_e%limited s@$ b@18@00))) true)
   :pattern ((booleans_e%limited s@$ b@18@00))
-  :qid |quant-u-26670|)))
+  :qid |quant-u-26612|)))
 (assert (forall ((s@$ $Snap) (b@18@00 Bool)) (!
   (=>
     (booleans_e%precondition s@$ b@18@00)
@@ -1720,29 +1720,29 @@
       (booleans_e s@$ b@18@00)
       (ite (not b@18@00) (booleans_e%limited $Snap.unit (not b@18@00)) 1)))
   :pattern ((booleans_e s@$ b@18@00))
-  :qid |quant-u-26671|)))
+  :qid |quant-u-26613|)))
 (assert (forall ((s@$ $Snap) (b@18@00 Bool)) (!
   (=>
     (booleans_e%precondition s@$ b@18@00)
     (ite (not b@18@00) (booleans_e%precondition $Snap.unit (not b@18@00)) true))
   :pattern ((booleans_e s@$ b@18@00))
-  :qid |quant-u-26672|)))
+  :qid |quant-u-26614|)))
 (assert (forall ((s@$ $Snap) (xs@20@00 $Ref)) (!
   (= (PI_list%limited s@$ xs@20@00) (PI_list s@$ xs@20@00))
   :pattern ((PI_list s@$ xs@20@00))
-  :qid |quant-u-26633|)))
+  :qid |quant-u-26575|)))
 (assert (forall ((s@$ $Snap) (xs@20@00 $Ref)) (!
   (PI_list%stateless xs@20@00)
   :pattern ((PI_list%limited s@$ xs@20@00))
-  :qid |quant-u-26634|)))
+  :qid |quant-u-26576|)))
 (assert (forall ((s@$ $Snap) (r@22@00 $Ref)) (!
   (= (references_e%limited s@$ r@22@00) (references_e s@$ r@22@00))
   :pattern ((references_e s@$ r@22@00))
-  :qid |quant-u-26635|)))
+  :qid |quant-u-26577|)))
 (assert (forall ((s@$ $Snap) (r@22@00 $Ref)) (!
   (references_e%stateless r@22@00)
   :pattern ((references_e%limited s@$ r@22@00))
-  :qid |quant-u-26636|)))
+  :qid |quant-u-26578|)))
 (assert (forall ((s@$ $Snap) (r@22@00 $Ref)) (!
   (=>
     (references_e%precondition s@$ r@22@00)
@@ -1750,7 +1750,7 @@
       (references_e s@$ r@22@00)
       (ite (= r@22@00 $Ref.null) 1 (references_e%limited $Snap.unit r@22@00))))
   :pattern ((references_e s@$ r@22@00))
-  :qid |quant-u-26673|)))
+  :qid |quant-u-26615|)))
 (assert (forall ((s@$ $Snap) (r@22@00 $Ref)) (!
   (=>
     (references_e%precondition s@$ r@22@00)
@@ -1759,15 +1759,15 @@
       true
       (references_e%precondition $Snap.unit r@22@00)))
   :pattern ((references_e s@$ r@22@00))
-  :qid |quant-u-26674|)))
+  :qid |quant-u-26616|)))
 (assert (forall ((s@$ $Snap) (r@24@00 $Perm)) (!
   (= (rationals%limited s@$ r@24@00) (rationals s@$ r@24@00))
   :pattern ((rationals s@$ r@24@00))
-  :qid |quant-u-26637|)))
+  :qid |quant-u-26579|)))
 (assert (forall ((s@$ $Snap) (r@24@00 $Perm)) (!
   (rationals%stateless r@24@00)
   :pattern ((rationals%limited s@$ r@24@00))
-  :qid |quant-u-26638|)))
+  :qid |quant-u-26580|)))
 (assert (forall ((s@$ $Snap) (r@24@00 $Perm)) (!
   (=>
     (rationals%precondition s@$ r@24@00)
@@ -1778,7 +1778,7 @@
         (rationals%limited $Snap.unit (- r@24@00 $Perm.Write))
         r@24@00)))
   :pattern ((rationals s@$ r@24@00))
-  :qid |quant-u-26675|)))
+  :qid |quant-u-26617|)))
 (assert (forall ((s@$ $Snap) (r@24@00 $Perm)) (!
   (=>
     (rationals%precondition s@$ r@24@00)
@@ -1787,15 +1787,15 @@
       (rationals%precondition $Snap.unit (- r@24@00 $Perm.Write))
       true))
   :pattern ((rationals s@$ r@24@00))
-  :qid |quant-u-26676|)))
+  :qid |quant-u-26618|)))
 (assert (forall ((s@$ $Snap) (s@26@00 Multiset<Int>)) (!
   (= (multiSets_e%limited s@$ s@26@00) (multiSets_e s@$ s@26@00))
   :pattern ((multiSets_e s@$ s@26@00))
-  :qid |quant-u-26639|)))
+  :qid |quant-u-26581|)))
 (assert (forall ((s@$ $Snap) (s@26@00 Multiset<Int>)) (!
   (multiSets_e%stateless s@26@00)
   :pattern ((multiSets_e%limited s@$ s@26@00))
-  :qid |quant-u-26640|)))
+  :qid |quant-u-26582|)))
 (assert (forall ((s@$ $Snap) (s@26@00 Multiset<Int>)) (!
   (=>
     (multiSets_e%precondition s@$ s@26@00)
@@ -1808,7 +1808,7 @@
         1
         (multiSets_e%limited $Snap.unit (Multiset_difference s@26@00 (Multiset_singleton (Multiset_card s@26@00)))))))
   :pattern ((multiSets_e s@$ s@26@00))
-  :qid |quant-u-26677|)))
+  :qid |quant-u-26619|)))
 (assert (forall ((s@$ $Snap) (s@26@00 Multiset<Int>)) (!
   (=>
     (multiSets_e%precondition s@$ s@26@00)
@@ -1819,15 +1819,15 @@
       true
       (multiSets_e%precondition $Snap.unit (Multiset_difference s@26@00 (Multiset_singleton (Multiset_card s@26@00))))))
   :pattern ((multiSets_e s@$ s@26@00))
-  :qid |quant-u-26678|)))
+  :qid |quant-u-26620|)))
 (assert (forall ((s@$ $Snap) (s@28@00 Set<Int>)) (!
   (= (sets%limited s@$ s@28@00) (sets s@$ s@28@00))
   :pattern ((sets s@$ s@28@00))
-  :qid |quant-u-26641|)))
+  :qid |quant-u-26583|)))
 (assert (forall ((s@$ $Snap) (s@28@00 Set<Int>)) (!
   (sets%stateless s@28@00)
   :pattern ((sets%limited s@$ s@28@00))
-  :qid |quant-u-26642|)))
+  :qid |quant-u-26584|)))
 (assert (forall ((s@$ $Snap) (s@28@00 Set<Int>)) (!
   (=>
     (sets%precondition s@$ s@28@00)
@@ -1838,7 +1838,7 @@
         (sets%limited $Snap.unit (Set_difference s@28@00 (Set_singleton (Set_card s@28@00))))
         1)))
   :pattern ((sets s@$ s@28@00))
-  :qid |quant-u-26679|)))
+  :qid |quant-u-26621|)))
 (assert (forall ((s@$ $Snap) (s@28@00 Set<Int>)) (!
   (=>
     (sets%precondition s@$ s@28@00)
@@ -1847,25 +1847,25 @@
       (sets%precondition $Snap.unit (Set_difference s@28@00 (Set_singleton (Set_card s@28@00))))
       true))
   :pattern ((sets s@$ s@28@00))
-  :qid |quant-u-26680|)))
+  :qid |quant-u-26622|)))
 (assert (forall ((s@$ $Snap) (b@30@00 Bool)) (!
   (= (booleans%limited s@$ b@30@00) (booleans s@$ b@30@00))
   :pattern ((booleans s@$ b@30@00))
-  :qid |quant-u-26643|)))
+  :qid |quant-u-26585|)))
 (assert (forall ((s@$ $Snap) (b@30@00 Bool)) (!
   (booleans%stateless b@30@00)
   :pattern ((booleans%limited s@$ b@30@00))
-  :qid |quant-u-26644|)))
+  :qid |quant-u-26586|)))
 (assert (forall ((s@$ $Snap) (b@30@00 Bool)) (!
   (let ((result@31@00 (booleans%limited s@$ b@30@00))) (=>
     (booleans%precondition s@$ b@30@00)
     (= result@31@00 1)))
   :pattern ((booleans%limited s@$ b@30@00))
-  :qid |quant-u-26681|)))
+  :qid |quant-u-26623|)))
 (assert (forall ((s@$ $Snap) (b@30@00 Bool)) (!
   (let ((result@31@00 (booleans%limited s@$ b@30@00))) true)
   :pattern ((booleans%limited s@$ b@30@00))
-  :qid |quant-u-26682|)))
+  :qid |quant-u-26624|)))
 (assert (forall ((s@$ $Snap) (b@30@00 Bool)) (!
   (=>
     (booleans%precondition s@$ b@30@00)
@@ -1873,21 +1873,21 @@
       (booleans s@$ b@30@00)
       (ite b@30@00 (booleans%limited $Snap.unit (not b@30@00)) 1)))
   :pattern ((booleans s@$ b@30@00))
-  :qid |quant-u-26683|)))
+  :qid |quant-u-26625|)))
 (assert (forall ((s@$ $Snap) (b@30@00 Bool)) (!
   (=>
     (booleans%precondition s@$ b@30@00)
     (ite b@30@00 (booleans%precondition $Snap.unit (not b@30@00)) true))
   :pattern ((booleans s@$ b@30@00))
-  :qid |quant-u-26684|)))
+  :qid |quant-u-26626|)))
 (assert (forall ((s@$ $Snap) (seq@32@00 Seq<Bool>)) (!
   (= (numberOfUsers%limited s@$ seq@32@00) (numberOfUsers s@$ seq@32@00))
   :pattern ((numberOfUsers s@$ seq@32@00))
-  :qid |quant-u-26645|)))
+  :qid |quant-u-26587|)))
 (assert (forall ((s@$ $Snap) (seq@32@00 Seq<Bool>)) (!
   (numberOfUsers%stateless seq@32@00)
   :pattern ((numberOfUsers%limited s@$ seq@32@00))
-  :qid |quant-u-26646|)))
+  :qid |quant-u-26588|)))
 (assert (forall ((s@$ $Snap) (seq@32@00 Seq<Bool>)) (!
   (=>
     (numberOfUsers%precondition s@$ seq@32@00)
@@ -1901,7 +1901,7 @@
           (+ 1 (numberOfUsers%limited $Snap.unit (Seq_drop seq@32@00 1)))
           (numberOfUsers%limited $Snap.unit (Seq_drop seq@32@00 1))))))
   :pattern ((numberOfUsers s@$ seq@32@00))
-  :qid |quant-u-26685|)))
+  :qid |quant-u-26627|)))
 (assert (forall ((s@$ $Snap) (seq@32@00 Seq<Bool>)) (!
   (=>
     (numberOfUsers%precondition s@$ seq@32@00)
@@ -1910,25 +1910,25 @@
       true
       (numberOfUsers%precondition $Snap.unit (Seq_drop seq@32@00 1))))
   :pattern ((numberOfUsers s@$ seq@32@00))
-  :qid |quant-u-26686|)))
+  :qid |quant-u-26628|)))
 (assert (forall ((s@$ $Snap) (seq@34@00 Seq<Int>)) (!
   (= (sequences_e%limited s@$ seq@34@00) (sequences_e s@$ seq@34@00))
   :pattern ((sequences_e s@$ seq@34@00))
-  :qid |quant-u-26647|)))
+  :qid |quant-u-26589|)))
 (assert (forall ((s@$ $Snap) (seq@34@00 Seq<Int>)) (!
   (sequences_e%stateless seq@34@00)
   :pattern ((sequences_e%limited s@$ seq@34@00))
-  :qid |quant-u-26648|)))
+  :qid |quant-u-26590|)))
 (assert (forall ((s@$ $Snap) (seq@34@00 Seq<Int>)) (!
   (let ((result@35@00 (sequences_e%limited s@$ seq@34@00))) (=>
     (sequences_e%precondition s@$ seq@34@00)
     (= result@35@00 (Seq_length seq@34@00))))
   :pattern ((sequences_e%limited s@$ seq@34@00))
-  :qid |quant-u-26687|)))
+  :qid |quant-u-26629|)))
 (assert (forall ((s@$ $Snap) (seq@34@00 Seq<Int>)) (!
   (let ((result@35@00 (sequences_e%limited s@$ seq@34@00))) true)
   :pattern ((sequences_e%limited s@$ seq@34@00))
-  :qid |quant-u-26688|)))
+  :qid |quant-u-26630|)))
 (assert (forall ((s@$ $Snap) (seq@34@00 Seq<Int>)) (!
   (=>
     (sequences_e%precondition s@$ seq@34@00)
@@ -1941,7 +1941,7 @@
           (Seq_singleton 1)))
         0)))
   :pattern ((sequences_e s@$ seq@34@00))
-  :qid |quant-u-26689|)))
+  :qid |quant-u-26631|)))
 (assert (forall ((s@$ $Snap) (seq@34@00 Seq<Int>)) (!
   (=>
     (sequences_e%precondition s@$ seq@34@00)
@@ -1952,7 +1952,7 @@
         (Seq_singleton 1)))
       true))
   :pattern ((sequences_e s@$ seq@34@00))
-  :qid |quant-u-26690|)))
+  :qid |quant-u-26632|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- otherMultiSetTests ----------

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 13:08:18
+// Date:         2025-01-13 18:12:24
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/new_syntax/VariableAccess.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/new_syntax/VariableAccess-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -263,8 +263,8 @@ procedure getNext#definedness(x: Ref) returns (Result: Ref)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -286,8 +286,8 @@ procedure getNext#definedness(x: Ref) returns (Result: Ref)
       UnfoldingMask := Mask;
       assume TrueListNode#trigger(UnfoldingHeap, TrueListNode(x));
       assume UnfoldingHeap[null, TrueListNode(x)] == CombineFrames(FrameFragment(UnfoldingHeap[x, next]), FrameFragment(UnfoldingHeap[UnfoldingHeap[x, next], next]));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access TrueListNode(x) (VariableAccess.vpr@10.1--13.2) [138540]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, TrueListNode(x)];
@@ -389,8 +389,8 @@ procedure test0(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var n: Ref;
   var freshObj: Ref;
   var Ops_1Heap: HeapType;
@@ -399,14 +399,14 @@ procedure test0(x: Ref) returns ()
   var UsedHeap: HeapType;
   var UsedMask: MaskType;
   var b_2: bool;
-  var Labellhs1Heap: HeapType;
   var Labellhs1Mask: MaskType;
+  var Labellhs1Heap: HeapType;
   var boolCur: bool;
   var tmp: Ref;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var Used_1Heap: HeapType;
   var Used_1Mask: MaskType;
   var b_2_1: bool;
@@ -462,8 +462,8 @@ procedure test0(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[n, $allocated];
@@ -502,8 +502,8 @@ procedure test0(x: Ref) returns ()
     
     // -- Translating statement: label lhs1 -- VariableAccess.vpr@20.13--20.56
       lhs1:
-      Labellhs1Heap := Ops_1Heap;
       Labellhs1Mask := Ops_1Mask;
+      Labellhs1Heap := Ops_1Heap;
       b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);
     boolCur := true;
     
@@ -520,8 +520,8 @@ procedure test0(x: Ref) returns ()
       // -- Translating statement: assert acc(x.next, write) && x.next == tmp -- VariableAccess.vpr@22.9--22.44
         AssertHeap := Ops_1Heap;
         AssertMask := Ops_1Mask;
-        ExhaleWellDef0Heap := AssertHeap;
         ExhaleWellDef0Mask := AssertMask;
+        ExhaleWellDef0Heap := AssertHeap;
         havoc Used_1Heap;
         Used_1Mask := ZeroMask;
         b_2_1 := b_2_1 && state(Used_1Heap, Used_1Mask);
@@ -640,8 +640,8 @@ procedure test0(x: Ref) returns ()
     if (b_1_1) {
       
       // -- Translating statement: fold acc(TrueListNode(x), write) -- VariableAccess.vpr@23.9--23.29
-        ExhaleWellDef0Heap := Ops_1Heap;
         ExhaleWellDef0Mask := Ops_1Mask;
+        ExhaleWellDef0Heap := Ops_1Heap;
         havoc Used_2Heap;
         Used_2Mask := ZeroMask;
         b_5 := b_5 && state(Used_2Heap, Used_2Mask);
@@ -879,8 +879,8 @@ procedure test0(x: Ref) returns ()
         // -- Check definedness of getNext(x) == n
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := Result_4Heap;
             ExhaleWellDef0Mask := Result_4Mask;
+            ExhaleWellDef0Heap := Result_4Heap;
             perm := FullPerm;
             assert {:msg "  Precondition of function getNext might not hold. There might be insufficient permission to access TrueListNode(x) (VariableAccess.vpr@20.41--20.51) [138562]"}
               NoPerm < perm ==> NoPerm < Result_4Mask[null, TrueListNode(x)];

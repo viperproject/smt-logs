@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 13:12:49
+// Date:         2025-01-13 18:16:54
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/functions/framing_abstract_functions.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/functions/framing_abstract_functions-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -252,13 +252,13 @@ procedure test01(x: Ref, b_24: bool) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -284,8 +284,8 @@ procedure test01(x: Ref, b_24: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale fun01(x, true) == 1 -- framing_abstract_functions.vpr@14.3--14.29
     assume state(Heap, Mask);
@@ -293,8 +293,8 @@ procedure test01(x: Ref, b_24: bool) returns ()
     // -- Check definedness of fun01(x, true) == 1
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function fun01 might not hold. There might be insufficient permission to access x.f (framing_abstract_functions.vpr@14.10--14.24) [155652]"}
           NoPerm < perm ==> NoPerm < Mask[x, f_7];
@@ -315,8 +315,8 @@ procedure test01(x: Ref, b_24: bool) returns ()
     // -- Check definedness of fun01(x, false) == -1
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function fun01 might not hold. There might be insufficient permission to access x.g (framing_abstract_functions.vpr@15.10--15.25) [155653]"}
           NoPerm < perm ==> NoPerm < Mask[x, g];
@@ -338,14 +338,14 @@ procedure test01(x: Ref, b_24: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert fun01(x, true) == 1 -- framing_abstract_functions.vpr@17.3--17.29
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of fun01(x, true) == 1
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function fun01 might not hold. There might be insufficient permission to access x.f (framing_abstract_functions.vpr@17.10--17.24) [155655]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[x, f_7];
@@ -361,14 +361,14 @@ procedure test01(x: Ref, b_24: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert fun01(x, false) == -1 -- framing_abstract_functions.vpr@20.3--20.31
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of fun01(x, false) == -1
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function fun01 might not hold. There might be insufficient permission to access x.g (framing_abstract_functions.vpr@20.10--20.25) [155657]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[x, g];

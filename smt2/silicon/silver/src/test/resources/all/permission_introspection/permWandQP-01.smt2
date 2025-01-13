@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 12:38:11
+; Started: 2025-01-13 17:42:45
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -746,7 +746,7 @@
   :pattern ((Set_in a@6@01 as@5@01))
   :pattern ((inv@8@01 a@6@01))
   :pattern ((img@9@01 a@6@01))
-  :qid |quant-u-21725|)))
+  :qid |quant-u-21666|)))
 (assert (forall ((r $Ref)) (!
   (=> (and (img@9@01 r) (Set_in (inv@8@01 r) as@5@01)) (= (inv@8@01 r) r))
   :pattern ((inv@8@01 r))
@@ -803,7 +803,7 @@
   :pattern ((Set_in a@10@01 as@5@01))
   :pattern ((inv@12@01 a@10@01 $Perm.Write x@3@01 $Perm.Write))
   :pattern ((img@13@01 a@10@01 $Perm.Write x@3@01 $Perm.Write))
-  :qid |quant-u-21727|)))
+  :qid |quant-u-21668|)))
 (assert (forall ((x0 $Ref) (x1 $Perm) (x2 $Ref) (x3 $Perm)) (!
   (=>
     (and (img@13@01 x0 x1 x2 x3) (Set_in (inv@12@01 x0 x1 x2 x3) as@5@01))
@@ -1212,7 +1212,7 @@
   :pattern ((Set_in a@32@01 as@31@01))
   :pattern ((inv@34@01 a@32@01))
   :pattern ((img@35@01 a@32@01))
-  :qid |quant-u-21729|)))
+  :qid |quant-u-21670|)))
 (assert (forall ((r $Ref)) (!
   (=> (and (img@35@01 r) (Set_in (inv@34@01 r) as@31@01)) (= (inv@34@01 r) r))
   :pattern ((inv@34@01 r))
@@ -1313,7 +1313,7 @@
   :pattern (($FVF.lookup_f $t@33@01 a@37@01))
   :pattern ((inv@39@01 a@37@01 $Perm.Write x@29@01 $Perm.Write))
   :pattern ((img@40@01 a@37@01 $Perm.Write x@29@01 $Perm.Write))
-  :qid |quant-u-21731|)))
+  :qid |quant-u-21672|)))
 (assert (forall ((x0 $Ref) (x1 $Perm) (x2 $Ref) (x3 $Perm)) (!
   (=>
     (and

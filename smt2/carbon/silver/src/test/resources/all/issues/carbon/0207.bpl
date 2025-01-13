@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 13:19:00
+// Date:         2025-01-13 18:22:57
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0207.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0207-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -944,17 +944,17 @@ procedure swap01(a_2: ArrayDomainType, x: int, y: int) returns ()
 {
   var pre_lblGuard: bool;
   var QPMask: MaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var LabelpreMask: MaskType;
+  var oldMask: MaskType;
   var LabelpreHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var LabelpreMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var e_7: int;
   var tmp: int;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1016,13 +1016,13 @@ procedure swap01(a_2: ArrayDomainType, x: int, y: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: label pre -- 0207.vpr@18.3--18.12
     pre:
-    LabelpreMask := Mask;
     LabelpreHeap := Heap;
+    LabelpreMask := Mask;
     pre_lblGuard := true;
     assume state(Heap, Mask);
   
@@ -1036,8 +1036,8 @@ procedure swap01(a_2: ArrayDomainType, x: int, y: int) returns ()
       if (*) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           havoc QPMask;
           
           // -- check that the permission amount is positive
@@ -1115,14 +1115,14 @@ procedure swap01(a_2: ArrayDomainType, x: int, y: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert elements(a) == old(elements(a)) -- 0207.vpr@27.4--27.42
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of elements(a) == old(elements(a))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         havoc QPMask;
         
         // -- check that the permission amount is positive
@@ -1160,8 +1160,8 @@ procedure swap01(a_2: ArrayDomainType, x: int, y: int) returns ()
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := oldMask;
         ExhaleWellDef1Heap := oldHeap;
+        ExhaleWellDef1Mask := oldMask;
         havoc QPMask;
         
         // -- check that the permission amount is positive
@@ -1199,14 +1199,14 @@ procedure swap01(a_2: ArrayDomainType, x: int, y: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert elements(a) == old[pre](elements(a)) -- 0207.vpr@28.4--28.47
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of elements(a) == old[pre](elements(a))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         havoc QPMask;
         
         // -- check that the permission amount is positive
@@ -1246,8 +1246,8 @@ procedure swap01(a_2: ArrayDomainType, x: int, y: int) returns ()
         pre_lblGuard;
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := LabelpreMask;
         ExhaleWellDef1Heap := LabelpreHeap;
+        ExhaleWellDef1Mask := LabelpreMask;
         havoc QPMask;
         
         // -- check that the permission amount is positive
@@ -1296,18 +1296,18 @@ procedure swap02(a_2: ArrayDomainType, x: int, y: int) returns ()
   modifies Heap, Mask;
 {
   var pre_lblGuard: bool;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var QPMask: MaskType;
-  var LabelpreMask: MaskType;
   var LabelpreHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var LabelpreMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var e_8: int;
   var tmp: int;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1319,8 +1319,8 @@ procedure swap02(a_2: ArrayDomainType, x: int, y: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale (forall i: Int ::
   //     { loc(a, i).val }
@@ -1387,8 +1387,8 @@ procedure swap02(a_2: ArrayDomainType, x: int, y: int) returns ()
   
   // -- Translating statement: label pre -- 0207.vpr@41.3--41.12
     pre:
-    LabelpreMask := Mask;
     LabelpreHeap := Heap;
+    LabelpreMask := Mask;
     pre_lblGuard := true;
     assume state(Heap, Mask);
   
@@ -1402,8 +1402,8 @@ procedure swap02(a_2: ArrayDomainType, x: int, y: int) returns ()
       if (*) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           havoc QPMask;
           
           // -- check that the permission amount is positive
@@ -1481,14 +1481,14 @@ procedure swap02(a_2: ArrayDomainType, x: int, y: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert elements(a) == old[pre](elements(a)) -- 0207.vpr@50.3--50.46
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of elements(a) == old[pre](elements(a))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         havoc QPMask;
         
         // -- check that the permission amount is positive
@@ -1528,8 +1528,8 @@ procedure swap02(a_2: ArrayDomainType, x: int, y: int) returns ()
         pre_lblGuard;
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := LabelpreMask;
         ExhaleWellDef1Heap := LabelpreHeap;
+        ExhaleWellDef1Mask := LabelpreMask;
         havoc QPMask;
         
         // -- check that the permission amount is positive

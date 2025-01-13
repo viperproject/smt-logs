@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 13:29:43
+// Date:         2025-01-13 18:33:26
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/adt/example_5.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/adt/example_5-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -878,11 +878,11 @@ axiom (forall <T> t_2: (DAGDomainType T) ::
 procedure client() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var dag: (DAGDomainType int);
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -892,8 +892,8 @@ procedure client() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: dag := (Node(1, Seq((Node(2, Seq((Node(3, Seq[DAG[Int]]()): DAG[Int]))): DAG[Int]),
   //   (Node(2, Seq((Node(3, Seq[DAG[Int]]()): DAG[Int]))): DAG[Int]), (Node(2, Seq[DAG[Int]]()): DAG[Int]),
@@ -903,15 +903,15 @@ procedure client() returns ()
   
   // -- Translating statement: assert (toSeq(dag): Seq[Int]) ==
   //   Seq(1) ++ (toSeq((get_DAG_successor(dag): Seq[DAG[Int]])): Seq[Int]) -- example_5.vpr@68.4--68.55
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion (toSeq(dag): Seq[Int]) == Seq(1) ++ (toSeq((get_DAG_successor(dag): Seq[DAG[Int]])): Seq[Int]) might not hold. (example_5.vpr@68.11--68.55) [222880]"}
       Seq#Equal((toSeq(dag): Seq int), Seq#Append(Seq#Singleton(1), (toSeq((get_DAG_successor(dag): Seq (DAGDomainType int))): Seq int)));
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (toSeq(dag): Seq[Int]) == Seq(1, 2, 3, 2, 3, 2, 2, 2) -- example_5.vpr@70.4--70.52
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion (toSeq(dag): Seq[Int]) == Seq(1, 2, 3, 2, 3, 2, 2, 2) might not hold. (example_5.vpr@70.11--70.52) [222881]"}
       Seq#Equal((toSeq(dag): Seq int), Seq#Append(Seq#Append(Seq#Append(Seq#Append(Seq#Append(Seq#Append(Seq#Append(Seq#Singleton(1), Seq#Singleton(2)), Seq#Singleton(3)), Seq#Singleton(2)), Seq#Singleton(3)), Seq#Singleton(2)), Seq#Singleton(2)), Seq#Singleton(2)));
     assume state(Heap, Mask);

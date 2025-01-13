@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 13:18:19
+// Date:         2025-01-13 18:22:19
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0241.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0241-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -328,10 +328,10 @@ procedure _treeToArray(a_2: ArrayDomainType) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newVersion: FrameType;
   var QPMask: MaskType;
   var freshVersion: FrameType;
@@ -351,14 +351,14 @@ procedure _treeToArray(a_2: ArrayDomainType) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: unfold acc(array(a), write) -- 0241.vpr@23.5--23.20
     assume array#trigger(Heap, array(a_2));
     assume Heap[null, array(a_2)] == FrameFragment(array#condqp1(Heap, a_2));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding array(a) might fail. There might be insufficient permission to access array(a) (0241.vpr@23.5--23.20) [192620]"}
@@ -409,8 +409,8 @@ procedure _treeToArray(a_2: ArrayDomainType) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(array(a), write) -- 0241.vpr@24.5--24.18
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     havoc QPMask;
     
     // -- check that the permission amount is positive

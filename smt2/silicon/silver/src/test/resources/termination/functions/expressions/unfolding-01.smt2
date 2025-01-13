@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 12:43:56
+; Started: 2025-01-13 17:48:23
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -133,48 +133,48 @@
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   (= (nonTerminating%limited s@$ x@0@00) (nonTerminating s@$ x@0@00))
   :pattern ((nonTerminating s@$ x@0@00))
-  :qid |quant-u-26505|)))
+  :qid |quant-u-26447|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   (nonTerminating%stateless x@0@00)
   :pattern ((nonTerminating%limited s@$ x@0@00))
-  :qid |quant-u-26506|)))
+  :qid |quant-u-26448|)))
 (assert (forall ((s@$ $Snap) (x@2@00 $Ref)) (!
   (= (partiallyTerminating%limited s@$ x@2@00) (partiallyTerminating s@$ x@2@00))
   :pattern ((partiallyTerminating s@$ x@2@00))
-  :qid |quant-u-26507|)))
+  :qid |quant-u-26449|)))
 (assert (forall ((s@$ $Snap) (x@2@00 $Ref)) (!
   (partiallyTerminating%stateless x@2@00)
   :pattern ((partiallyTerminating%limited s@$ x@2@00))
-  :qid |quant-u-26508|)))
+  :qid |quant-u-26450|)))
 (assert (forall ((s@$ $Snap) (x@4@00 $Ref)) (!
   (= (test%limited s@$ x@4@00) (test s@$ x@4@00))
   :pattern ((test s@$ x@4@00))
-  :qid |quant-u-26509|)))
+  :qid |quant-u-26451|)))
 (assert (forall ((s@$ $Snap) (x@4@00 $Ref)) (!
   (test%stateless x@4@00)
   :pattern ((test%limited s@$ x@4@00))
-  :qid |quant-u-26510|)))
+  :qid |quant-u-26452|)))
 (assert (forall ((s@$ $Snap) (x@4@00 $Ref)) (!
   (=>
     (test%precondition s@$ x@4@00)
     (= (test s@$ x@4@00) (nonTerminating $Snap.unit x@4@00)))
   :pattern ((test s@$ x@4@00))
   :pattern ((test%stateless x@4@00) (foo%trigger s@$ x@4@00))
-  :qid |quant-u-26513|)))
+  :qid |quant-u-26455|)))
 (assert (forall ((s@$ $Snap) (x@4@00 $Ref)) (!
   (=>
     (test%precondition s@$ x@4@00)
     (nonTerminating%precondition $Snap.unit x@4@00))
   :pattern ((test s@$ x@4@00))
-  :qid |quant-u-26514|)))
+  :qid |quant-u-26456|)))
 (assert (forall ((s@$ $Snap) (x@6@00 $Ref)) (!
   (= (test2%limited s@$ x@6@00) (test2 s@$ x@6@00))
   :pattern ((test2 s@$ x@6@00))
-  :qid |quant-u-26511|)))
+  :qid |quant-u-26453|)))
 (assert (forall ((s@$ $Snap) (x@6@00 $Ref)) (!
   (test2%stateless x@6@00)
   :pattern ((test2%limited s@$ x@6@00))
-  :qid |quant-u-26512|)))
+  :qid |quant-u-26454|)))
 (assert (forall ((s@$ $Snap) (x@6@00 $Ref)) (!
   (and
     ($Perm.isReadVar $k@9@00)
@@ -183,13 +183,13 @@
       (= (test2 s@$ x@6@00) (partiallyTerminating ($Snap.first s@$) x@6@00))))
   :pattern ((test2 s@$ x@6@00))
   :pattern ((test2%stateless x@6@00) (foo%trigger s@$ x@6@00))
-  :qid |quant-u-26515|)))
+  :qid |quant-u-26457|)))
 (assert (forall ((s@$ $Snap) (x@6@00 $Ref)) (!
   (=>
     (test2%precondition s@$ x@6@00)
     (partiallyTerminating%precondition ($Snap.first s@$) x@6@00))
   :pattern ((test2 s@$ x@6@00))
-  :qid |quant-u-26516|)))
+  :qid |quant-u-26458|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- test_termination_proof ----------

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 13:25:37
+// Date:         2025-01-13 18:29:25
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0164.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0164-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -180,11 +180,11 @@ axiom (forall <A> p: (Field A FrameType), v_1: FrameType, w: FrameType ::
 procedure loopTrueFalse(this: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var i: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var loopHeap: HeapType;
   var loopMask: MaskType;
   
@@ -199,8 +199,8 @@ procedure loopTrueFalse(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: i := 1 -- 0164.vpr@7.3--7.9
     i := 1;
@@ -211,8 +211,8 @@ procedure loopTrueFalse(this: Ref) returns ()
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Loop invariant [true, false] might not hold on entry. Assertion false might not hold. (0164.vpr@10.15--10.28) [217236]"}
           false;
     
@@ -244,8 +244,8 @@ procedure loopTrueFalse(this: Ref) returns ()
             i := i + 1;
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Loop invariant [true, false] might not be preserved. Assertion false might not hold. (0164.vpr@10.15--10.28) [217237]"}
           false;
         // Terminate execution
@@ -266,11 +266,11 @@ procedure loopTrueFalse(this: Ref) returns ()
 procedure loopFalse(this: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var i: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var loopHeap: HeapType;
   var loopMask: MaskType;
   
@@ -285,8 +285,8 @@ procedure loopFalse(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: i := 1 -- 0164.vpr@19.3--19.9
     i := 1;
@@ -297,8 +297,8 @@ procedure loopFalse(this: Ref) returns ()
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Loop invariant false might not hold on entry. Assertion false might not hold. (0164.vpr@22.15--22.20) [217238]"}
           false;
     
@@ -332,8 +332,8 @@ procedure loopFalse(this: Ref) returns ()
             i := i + 1;
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Loop invariant false might not be preserved. Assertion false might not hold. (0164.vpr@22.15--22.20) [217239]"}
           false;
         // Terminate execution

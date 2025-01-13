@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 13:13:59
+// Date:         2025-01-13 18:18:04
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/third_party/stefan_recent/test_example1.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/third_party/stefan_recent/test_example1-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -188,14 +188,14 @@ axiom !IsWandField(Counter__x);
 procedure Main__main(diz: Ref, current_thread_id: int) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var c: Ref;
   var __flatten_1: Ref;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var perm: Perm;
   var __flatten_2: int;
   var __flatten_8: int;
@@ -218,8 +218,8 @@ procedure Main__main(diz: Ref, current_thread_id: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[c, $allocated];
@@ -230,8 +230,8 @@ procedure Main__main(diz: Ref, current_thread_id: int) returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       assert {:msg "  The precondition of method Counter__Counter might not hold. Assertion current_thread_id >= 0 might not hold. (test_example1.vpr@14.3--14.53) [163477]"}
         current_thread_id >= 0;
     
@@ -272,8 +272,8 @@ procedure Main__main(diz: Ref, current_thread_id: int) returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       assert {:msg "  The precondition of method Counter__incr might not hold. Assertion c != null might not hold. (test_example1.vpr@19.3--19.38) [163479]"}
         c != null;
       assert {:msg "  The precondition of method Counter__incr might not hold. Assertion current_thread_id >= 0 might not hold. (test_example1.vpr@19.3--19.38) [163480]"}
@@ -299,8 +299,8 @@ procedure Main__main(diz: Ref, current_thread_id: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert c.Counter__x == 17 -- test_example1.vpr@20.3--20.28
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of c.Counter__x == 17
       assert {:msg "  Assert might fail. There might be insufficient permission to access c.Counter__x (test_example1.vpr@20.10--20.28) [163482]"}
@@ -314,8 +314,8 @@ procedure Main__main(diz: Ref, current_thread_id: int) returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       assert {:msg "  The precondition of method Counter__incr might not hold. Assertion c != null might not hold. (test_example1.vpr@21.3--21.38) [163484]"}
         c != null;
       assert {:msg "  The precondition of method Counter__incr might not hold. Assertion current_thread_id >= 0 might not hold. (test_example1.vpr@21.3--21.38) [163485]"}
@@ -341,8 +341,8 @@ procedure Main__main(diz: Ref, current_thread_id: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert c.Counter__x == 17 -- test_example1.vpr@24.3--24.28
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of c.Counter__x == 17
       assert {:msg "  Assert might fail. There might be insufficient permission to access c.Counter__x (test_example1.vpr@24.10--24.28) [163487]"}
@@ -359,14 +359,14 @@ procedure Main__main(diz: Ref, current_thread_id: int) returns ()
 procedure Main__Main(current_thread_id: int) returns (sys__result: Ref)
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var diz: Ref;
   var freshObj: Ref;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -380,8 +380,8 @@ procedure Main__Main(current_thread_id: int) returns (sys__result: Ref)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -408,8 +408,8 @@ procedure Main__Main(current_thread_id: int) returns (sys__result: Ref)
     assume state(Heap, Mask);
   
   // -- Translating statement: assert sys__result != null -- test_example1.vpr@34.3--34.29
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (test_example1.vpr@34.10--34.29) [163489]"}
       sys__result != null;
     assume state(Heap, Mask);
@@ -420,8 +420,8 @@ procedure Main__Main(current_thread_id: int) returns (sys__result: Ref)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of Main__Main might not hold. Assertion sys__result != null might not hold. (test_example1.vpr@29.11--29.30) [163490]"}
       sys__result != null;
 }
@@ -434,14 +434,14 @@ procedure Counter__incr(diz: Ref, current_thread_id: int) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var __flatten_5: int;
   var __flatten_11: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -466,8 +466,8 @@ procedure Counter__incr(diz: Ref, current_thread_id: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -509,8 +509,8 @@ procedure Counter__incr(diz: Ref, current_thread_id: int) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of Counter__incr might not hold. There might be insufficient permission to access diz.Counter__x (test_example1.vpr@42.11--42.37) [163495]"}
@@ -532,8 +532,8 @@ procedure Counter__incr(diz: Ref, current_thread_id: int) returns ()
 procedure Counter__Counter(current_thread_id: int) returns (sys__result: Ref)
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var perm: Perm;
@@ -543,8 +543,8 @@ procedure Counter__Counter(current_thread_id: int) returns (sys__result: Ref)
   var __flatten_12: int;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -559,8 +559,8 @@ procedure Counter__Counter(current_thread_id: int) returns (sys__result: Ref)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -615,8 +615,8 @@ procedure Counter__Counter(current_thread_id: int) returns (sys__result: Ref)
   //   (acc(sys__result.Counter__x, write) && sys__result.Counter__x == 0) -- test_example1.vpr@65.3--65.104
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
+    ExhaleWellDef0Mask := AssertMask;
     assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (test_example1.vpr@65.10--65.104) [163499]"}
       sys__result != null;
     perm := FullPerm;
@@ -639,8 +639,8 @@ procedure Counter__Counter(current_thread_id: int) returns (sys__result: Ref)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of Counter__Counter might not hold. Assertion sys__result != null might not hold. (test_example1.vpr@54.11--54.30) [163504]"}
       sys__result != null;
     perm := FullPerm;

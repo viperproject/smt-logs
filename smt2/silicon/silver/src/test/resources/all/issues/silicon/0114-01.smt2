@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 12:42:05
+; Started: 2025-01-13 17:46:34
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -140,37 +140,37 @@
     (fun2%limited s@$ b@0@00 x@1@00 y@2@00 j@3@00)
     (fun2 s@$ b@0@00 x@1@00 y@2@00 j@3@00))
   :pattern ((fun2 s@$ b@0@00 x@1@00 y@2@00 j@3@00))
-  :qid |quant-u-25320|)))
+  :qid |quant-u-25262|)))
 (assert (forall ((s@$ $Snap) (b@0@00 Bool) (x@1@00 $Ref) (y@2@00 $Ref) (j@3@00 Int)) (!
   (fun2%stateless b@0@00 x@1@00 y@2@00 j@3@00)
   :pattern ((fun2%limited s@$ b@0@00 x@1@00 y@2@00 j@3@00))
-  :qid |quant-u-25321|)))
+  :qid |quant-u-25263|)))
 (assert (forall ((s@$ $Snap) (b@0@00 Bool) (x@1@00 $Ref) (y@2@00 $Ref) (j@3@00 Int)) (!
   (=>
     (fun2%precondition s@$ b@0@00 x@1@00 y@2@00 j@3@00)
     (= (fun2 s@$ b@0@00 x@1@00 y@2@00 j@3@00) 10))
   :pattern ((fun2 s@$ b@0@00 x@1@00 y@2@00 j@3@00))
-  :qid |quant-u-25324|)))
+  :qid |quant-u-25266|)))
 (assert (forall ((s@$ $Snap) (b@0@00 Bool) (x@1@00 $Ref) (y@2@00 $Ref) (j@3@00 Int)) (!
   true
   :pattern ((fun2 s@$ b@0@00 x@1@00 y@2@00 j@3@00))
-  :qid |quant-u-25325|)))
+  :qid |quant-u-25267|)))
 (assert (forall ((s@$ $Snap) (j@5@00 Int)) (!
   (= (fun1%limited s@$ j@5@00) (fun1 s@$ j@5@00))
   :pattern ((fun1 s@$ j@5@00))
-  :qid |quant-u-25322|)))
+  :qid |quant-u-25264|)))
 (assert (forall ((s@$ $Snap) (j@5@00 Int)) (!
   (fun1%stateless j@5@00)
   :pattern ((fun1%limited s@$ j@5@00))
-  :qid |quant-u-25323|)))
+  :qid |quant-u-25265|)))
 (assert (forall ((s@$ $Snap) (j@5@00 Int)) (!
   (=> (fun1%precondition s@$ j@5@00) (= (fun1 s@$ j@5@00) 10))
   :pattern ((fun1 s@$ j@5@00))
-  :qid |quant-u-25326|)))
+  :qid |quant-u-25268|)))
 (assert (forall ((s@$ $Snap) (j@5@00 Int)) (!
   true
   :pattern ((fun1 s@$ j@5@00))
-  :qid |quant-u-25327|)))
+  :qid |quant-u-25269|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- test02 ----------

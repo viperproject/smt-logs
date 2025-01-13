@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 13:20:36
+// Date:         2025-01-13 18:24:26
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0242b.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0242b-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -499,16 +499,16 @@ procedure purify_node#definedness(n: Ref) returns (Result: NodeDomainType)
 procedure test() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var vroot: Ref;
   var root: Ref;
   var freshObj: Ref;
   var graph: (Set Ref);
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var QPMask: MaskType;
   var n$2_42: Ref;
   var n$2_1_1: Ref;
@@ -527,8 +527,8 @@ procedure test() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[vroot, $allocated];
@@ -600,8 +600,8 @@ procedure test() returns ()
   //     (n$3 in graph) && n$3.r != null ==> (n$3.r in graph)))))) -- 0242b.vpr@45.5--45.24
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
+    ExhaleWellDef0Mask := AssertMask;
     assert {:msg "  Assert might fail. Assertion !((null in graph)) might not hold. (0242b.vpr@45.12--45.24) [199443]"}
       !graph[null];
     
@@ -793,8 +793,8 @@ procedure test() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (root in graph) -- 0242b.vpr@46.5--46.25
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion (root in graph) might not hold. (0242b.vpr@46.12--46.25) [199459]"}
       graph[root];
     assume state(Heap, Mask);
@@ -811,8 +811,8 @@ procedure test() returns ()
         if (graph[n_45]) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
             assert {:msg "  Precondition of function purify_node might not hold. There might be insufficient permission to access n.m (0242b.vpr@47.57--47.71) [199460]"}
               NoPerm < perm ==> NoPerm < Mask[n_45, m_22];
@@ -840,8 +840,8 @@ procedure test() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- 0242b.vpr@50.5--50.17
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion false might not hold. (0242b.vpr@50.12--50.17) [199463]"}
       false;
     assume state(Heap, Mask);

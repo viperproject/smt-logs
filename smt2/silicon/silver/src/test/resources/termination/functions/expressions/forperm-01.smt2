@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 12:43:57
+; Started: 2025-01-13 17:48:24
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -126,43 +126,43 @@
 (assert (forall ((s@$ $Snap) (v@0@00 Int)) (!
   (= (nonTerminating%limited s@$ v@0@00) (nonTerminating s@$ v@0@00))
   :pattern ((nonTerminating s@$ v@0@00))
-  :qid |quant-u-26535|)))
+  :qid |quant-u-26477|)))
 (assert (forall ((s@$ $Snap) (v@0@00 Int)) (!
   (nonTerminating%stateless v@0@00)
   :pattern ((nonTerminating%limited s@$ v@0@00))
-  :qid |quant-u-26536|)))
+  :qid |quant-u-26478|)))
 (assert (forall ((s@$ $Snap) (x@2@00 $Ref)) (!
   (= (test%limited s@$ x@2@00) (test s@$ x@2@00))
   :pattern ((test s@$ x@2@00))
-  :qid |quant-u-26537|)))
+  :qid |quant-u-26479|)))
 (assert (forall ((s@$ $Snap) (x@2@00 $Ref)) (!
   (test%stateless x@2@00)
   :pattern ((test%limited s@$ x@2@00))
-  :qid |quant-u-26538|)))
+  :qid |quant-u-26480|)))
 (assert (forall ((s@$ $Snap) (x@2@00 $Ref)) (!
   (=> (test%precondition s@$ x@2@00) (= (test s@$ x@2@00) true))
   :pattern ((test s@$ x@2@00))
-  :qid |quant-u-26541|)))
+  :qid |quant-u-26483|)))
 (assert (forall ((s@$ $Snap) (x@2@00 $Ref)) (!
   true
   :pattern ((test s@$ x@2@00))
-  :qid |quant-u-26542|)))
+  :qid |quant-u-26484|)))
 (assert (forall ((s@$ $Snap) (x@4@00 $Ref)) (!
   (= (test2%limited s@$ x@4@00) (test2 s@$ x@4@00))
   :pattern ((test2 s@$ x@4@00))
-  :qid |quant-u-26539|)))
+  :qid |quant-u-26481|)))
 (assert (forall ((s@$ $Snap) (x@4@00 $Ref)) (!
   (test2%stateless x@4@00)
   :pattern ((test2%limited s@$ x@4@00))
-  :qid |quant-u-26540|)))
+  :qid |quant-u-26482|)))
 (assert (forall ((s@$ $Snap) (x@4@00 $Ref)) (!
   (=> (test2%precondition s@$ x@4@00) (= (test2 s@$ x@4@00) true))
   :pattern ((test2 s@$ x@4@00))
-  :qid |quant-u-26543|)))
+  :qid |quant-u-26485|)))
 (assert (forall ((s@$ $Snap) (x@4@00 $Ref)) (!
   true
   :pattern ((test2 s@$ x@4@00))
-  :qid |quant-u-26544|)))
+  :qid |quant-u-26486|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- test_pres_termination_proof ----------

@@ -440,7 +440,7 @@
  :qid |stdinbpl.199:19|
  :skolemid |24|
 )))
-; Valid
+; Invalid
 (push 1)
 (declare-fun ControlFlow (Int Int) Int)
 (declare-fun Heap@@15 () T@PolymorphicMapType_5857)

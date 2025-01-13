@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 13:18:16
+// Date:         2025-01-13 18:22:16
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0125.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0125-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -242,11 +242,11 @@ procedure P#definedness(x: Ref) returns ()
 procedure test1(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newVersion: FrameType;
   
   // -- Initializing the state
@@ -260,8 +260,8 @@ procedure test1(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale acc(P(x), write) -- 0125.vpr@9.3--9.14
     perm := FullPerm;
@@ -275,8 +275,8 @@ procedure test1(x: Ref) returns ()
       false;
     assume P#trigger(Heap, P(x));
     assume Heap[null, P(x)] == FrameFragment(Heap[x, f_7]);
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := -(1 / 2);
     assert {:msg "  Unfolding P(x) might fail. Fraction -(1 / 2) might be negative. (0125.vpr@11.3--11.27) [192491]"}
       perm >= NoPerm;
@@ -308,12 +308,12 @@ procedure test1(x: Ref) returns ()
 procedure test2(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var p_1: Perm;
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newVersion: FrameType;
   
   // -- Initializing the state
@@ -327,8 +327,8 @@ procedure test2(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale p == -(1 / 2) -- 0125.vpr@16.10--16.21
     assume p_1 == -(1 / 2);
@@ -347,8 +347,8 @@ procedure test2(x: Ref) returns ()
       p_1 > NoPerm;
     assume P#trigger(Heap, P(x));
     assume Heap[null, P(x)] == FrameFragment(Heap[x, f_7]);
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := p_1;
     assert {:msg "  Unfolding P(x) might fail. Fraction p might be negative. (0125.vpr@20.3--20.22) [192496]"}
       perm >= NoPerm;
@@ -380,10 +380,10 @@ procedure test2(x: Ref) returns ()
 procedure test3() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -393,12 +393,12 @@ procedure test3() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert -(1 / 2) < none -- 0125.vpr@24.3--24.23
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion -(1 / 2) < none might not hold. (0125.vpr@24.10--24.23) [192499]"}
       -(1 / 2) < NoPerm;
     assume state(Heap, Mask);

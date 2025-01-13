@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 12:42:04
+; Started: 2025-01-13 17:46:33
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -122,30 +122,30 @@
 (assert (forall ((s@$ $Snap)) (!
   (= (foo%limited s@$) (foo s@$))
   :pattern ((foo s@$))
-  :qid |quant-u-25314|)))
+  :qid |quant-u-25256|)))
 (assert (forall ((s@$ $Snap)) (!
   (as foo%stateless  Bool)
   :pattern ((foo%limited s@$))
-  :qid |quant-u-25315|)))
+  :qid |quant-u-25257|)))
 (assert (forall ((s@$ $Snap)) (!
   (= (bar%limited s@$) (bar s@$))
   :pattern ((bar s@$))
-  :qid |quant-u-25316|)))
+  :qid |quant-u-25258|)))
 (assert (forall ((s@$ $Snap)) (!
   (as bar%stateless  Bool)
   :pattern ((bar%limited s@$))
-  :qid |quant-u-25317|)))
+  :qid |quant-u-25259|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@1@00 (bar%limited s@$))) (=>
     (bar%precondition s@$)
     (foo $Snap.unit)))
   :pattern ((bar%limited s@$))
-  :qid |quant-u-25318|)))
+  :qid |quant-u-25260|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@1@00 (bar%limited s@$))) (=>
     (bar%precondition s@$)
     (foo%precondition $Snap.unit)))
   :pattern ((bar%limited s@$))
-  :qid |quant-u-25319|)))
+  :qid |quant-u-25261|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------

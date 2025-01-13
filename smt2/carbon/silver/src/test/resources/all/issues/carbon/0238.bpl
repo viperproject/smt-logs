@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 13:19:18
+// Date:         2025-01-13 18:23:14
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0238.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0238-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -226,8 +226,8 @@ procedure get#definedness(x: Ref) returns (Result: int)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -249,8 +249,8 @@ procedure get#definedness(x: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume cell#trigger(UnfoldingHeap, cell_4(x));
       assume UnfoldingHeap[null, cell_4(x)] == FrameFragment(UnfoldingHeap[x, val]);
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access cell(x) (0238.vpr@11.1--15.2) [194583]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, cell_4(x)];
@@ -333,20 +333,20 @@ procedure m(x: Ref, y: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var z: Ref;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var w_2: Ref;
   var Unfolding1Heap: HeapType;
   var Unfolding1Mask: MaskType;
   var w_1: Ref;
   var ExhaleHeap: HeapType;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -370,8 +370,8 @@ procedure m(x: Ref, y: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale (let z ==
   //     (x) in
@@ -386,8 +386,8 @@ procedure m(x: Ref, y: Ref) returns ()
       UnfoldingMask := Mask;
       assume cell#trigger(UnfoldingHeap, cell_4(x));
       assume UnfoldingHeap[null, cell_4(x)] == FrameFragment(UnfoldingHeap[x, val]);
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Inhale might fail. There might be insufficient permission to access cell(x) (0238.vpr@20.13--20.103) [194585]"}
@@ -404,8 +404,8 @@ procedure m(x: Ref, y: Ref) returns ()
       Unfolding1Mask := UnfoldingMask;
       assume cell#trigger(Unfolding1Heap, cell_4(w_2));
       assume Unfolding1Heap[null, cell_4(w_2)] == FrameFragment(Unfolding1Heap[w_2, val]);
-      ExhaleWellDef0Heap := Unfolding1Heap;
       ExhaleWellDef0Mask := Unfolding1Mask;
+      ExhaleWellDef0Heap := Unfolding1Heap;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Inhale might fail. There might be insufficient permission to access cell(w) (0238.vpr@20.13--20.103) [194586]"}
@@ -438,8 +438,8 @@ procedure m(x: Ref, y: Ref) returns ()
       UnfoldingMask := Mask;
       assume cell#trigger(UnfoldingHeap, cell_4(x));
       assume UnfoldingHeap[null, cell_4(x)] == FrameFragment(UnfoldingHeap[x, val]);
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       UnfoldingMask := UnfoldingMask[null, cell_4(x):=UnfoldingMask[null, cell_4(x)] - perm];
       perm := FullPerm;
@@ -458,8 +458,8 @@ procedure m(x: Ref, y: Ref) returns ()
       UnfoldingMask := Mask;
       assume cell#trigger(UnfoldingHeap, cell_4(y));
       assume UnfoldingHeap[null, cell_4(y)] == FrameFragment(UnfoldingHeap[y, val]);
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Inhale might fail. There might be insufficient permission to access cell(y) (0238.vpr@21.13--21.44) [194589]"}
@@ -483,8 +483,8 @@ procedure m(x: Ref, y: Ref) returns ()
       UnfoldingMask := Mask;
       assume cell#trigger(UnfoldingHeap, cell_4(y));
       assume UnfoldingHeap[null, cell_4(y)] == FrameFragment(UnfoldingHeap[y, val]);
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       UnfoldingMask := UnfoldingMask[null, cell_4(y):=UnfoldingMask[null, cell_4(y)] - perm];
       perm := FullPerm;
@@ -497,8 +497,8 @@ procedure m(x: Ref, y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(cell(y), write) -- 0238.vpr@22.6--22.20
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Exhale might fail. There might be insufficient permission to access cell(y) (0238.vpr@22.13--22.20) [194592]"}
@@ -512,14 +512,14 @@ procedure m(x: Ref, y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert get(x) == 3 -- 0238.vpr@23.6--23.24
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of get(x) == 3
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function get might not hold. There might be insufficient permission to access cell(x) (0238.vpr@23.13--23.19) [194593]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, cell_4(x)];
@@ -542,14 +542,14 @@ procedure m(x: Ref, y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert get(x) == 3 -- 0238.vpr@25.6--25.24
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of get(x) == 3
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function get might not hold. There might be insufficient permission to access cell(x) (0238.vpr@25.13--25.19) [194596]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, cell_4(x)];
@@ -565,14 +565,14 @@ procedure m(x: Ref, y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert get(y) == 3 -- 0238.vpr@27.6--27.24
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of get(y) == 3
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         perm := FullPerm;
         assert {:msg "  Precondition of function get might not hold. There might be insufficient permission to access cell(y) (0238.vpr@27.13--27.19) [194598]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, cell_4(y)];

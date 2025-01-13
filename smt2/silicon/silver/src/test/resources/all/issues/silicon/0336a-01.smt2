@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 12:41:03
+; Started: 2025-01-13 17:45:34
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -739,7 +739,7 @@
     (Set_in l@6@01 b@2@01)
     (and (= (inv@7@01 l@6@01) l@6@01) (img@8@01 l@6@01)))
   :pattern ((Set_in l@6@01 b@2@01))
-  :qid |quant-u-23930|)))
+  :qid |quant-u-23871|)))
 (assert (forall ((r $Ref)) (!
   (=> (and (img@8@01 r) (Set_in (inv@7@01 r) b@2@01)) (= (inv@7@01 r) r))
   :pattern ((inv@7@01 r))
@@ -784,7 +784,7 @@
     (Set_in l@9@01 b@2@01)
     (and (= (inv@10@01 l@9@01) l@9@01) (img@11@01 l@9@01)))
   :pattern ((Set_in l@9@01 b@2@01))
-  :qid |quant-u-23932|)))
+  :qid |quant-u-23873|)))
 (assert (forall ((r $Ref)) (!
   (=> (and (img@11@01 r) (Set_in (inv@10@01 r) b@2@01)) (= (inv@10@01 r) r))
   :pattern ((inv@10@01 r))
@@ -911,7 +911,7 @@
       (pTaken@16@01 r))
     $Perm.No)
   
-  :qid |quant-u-23935|))))
+  :qid |quant-u-23876|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -926,7 +926,7 @@
     (and (Set_in (inv@14@01 r) b@2@01) (img@15@01 r) (= r (inv@14@01 r)))
     (= (- $Perm.Write (pTaken@16@01 r)) $Perm.No))
   
-  :qid |quant-u-23936|))))
+  :qid |quant-u-23877|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -1022,7 +1022,7 @@
       (pTaken@21@01 r))
     $Perm.No)
   
-  :qid |quant-u-23939|))))
+  :qid |quant-u-23880|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -1037,7 +1037,7 @@
     (and (Set_in (inv@19@01 r) b@2@01) (img@20@01 r) (= r (inv@19@01 r)))
     (= (- $Perm.Write (pTaken@21@01 r)) $Perm.No))
   
-  :qid |quant-u-23940|))))
+  :qid |quant-u-23881|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -1162,7 +1162,7 @@
     (Set_in l@24@01 b@2@01)
     (and (= (inv@25@01 l@24@01) l@24@01) (img@26@01 l@24@01)))
   :pattern ((Set_in l@24@01 b@2@01))
-  :qid |quant-u-23942|)))
+  :qid |quant-u-23883|)))
 (assert (forall ((r $Ref)) (!
   (=> (and (img@26@01 r) (Set_in (inv@25@01 r) b@2@01)) (= (inv@25@01 r) r))
   :pattern ((inv@25@01 r))
@@ -1202,7 +1202,7 @@
     (Set_in l@27@01 b@2@01)
     (and (= (inv@28@01 l@27@01) l@27@01) (img@29@01 l@27@01)))
   :pattern ((Set_in l@27@01 b@2@01))
-  :qid |quant-u-23944|)))
+  :qid |quant-u-23885|)))
 (assert (forall ((r $Ref)) (!
   (=> (and (img@29@01 r) (Set_in (inv@28@01 r) b@2@01)) (= (inv@28@01 r) r))
   :pattern ((inv@28@01 r))

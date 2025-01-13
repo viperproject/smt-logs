@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 13:21:00
+// Date:         2025-01-13 18:24:50
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0384.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0384-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -188,13 +188,13 @@ axiom !IsWandField(f_7);
 procedure test2() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var x: Ref;
   var perm: Perm;
   var p_1: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -205,8 +205,8 @@ procedure test2() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[x, $allocated];
@@ -235,8 +235,8 @@ procedure test2() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(x.f, p) -- 0384.vpr@8.3--8.21
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := p_1;
     assert {:msg "  Exhale might fail. Fraction p might be negative. (0384.vpr@8.10--8.21) [200463]"}
       perm >= NoPerm;
@@ -267,8 +267,8 @@ procedure test2() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert x.f == 1 -- 0384.vpr@13.3--13.18
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of x.f == 1
       assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (0384.vpr@13.10--13.18) [200466]"}

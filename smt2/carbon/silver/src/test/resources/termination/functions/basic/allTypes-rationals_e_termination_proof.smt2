@@ -1910,7 +1910,7 @@
  :skolemid |132|
  :pattern ( (bounded_645 int1@@2))
 )))
-; Invalid
+; Valid
 (push 1)
 (declare-fun ControlFlow (Int Int) Int)
 (declare-fun r_1@@15 () Real)

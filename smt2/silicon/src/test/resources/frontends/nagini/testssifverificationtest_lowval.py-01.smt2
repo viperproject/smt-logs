@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 12:29:39
+; Started: 2025-01-13 17:34:25
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -1805,19 +1805,19 @@
 (assert (forall ((s@$ $Snap) (self@0@00 $Ref)) (!
   (= (tuple___val__%limited s@$ self@0@00) (tuple___val__ s@$ self@0@00))
   :pattern ((tuple___val__ s@$ self@0@00))
-  :qid |quant-u-4004|)))
+  :qid |quant-u-3961|)))
 (assert (forall ((s@$ $Snap) (self@0@00 $Ref)) (!
   (tuple___val__%stateless self@0@00)
   :pattern ((tuple___val__%limited s@$ self@0@00))
-  :qid |quant-u-4005|)))
+  :qid |quant-u-3962|)))
 (assert (forall ((s@$ $Snap) (self@2@00 $Ref)) (!
   (= (tuple___len__%limited s@$ self@2@00) (tuple___len__ s@$ self@2@00))
   :pattern ((tuple___len__ s@$ self@2@00))
-  :qid |quant-u-4006|)))
+  :qid |quant-u-3963|)))
 (assert (forall ((s@$ $Snap) (self@2@00 $Ref)) (!
   (tuple___len__%stateless self@2@00)
   :pattern ((tuple___len__%limited s@$ self@2@00))
-  :qid |quant-u-4007|)))
+  :qid |quant-u-3964|)))
 (assert (forall ((s@$ $Snap) (self@2@00 $Ref)) (!
   (let ((result@3@00 (tuple___len__%limited s@$ self@2@00))) (=>
     (tuple___len__%precondition s@$ self@2@00)
@@ -1827,53 +1827,53 @@
         (Seq_length (tuple_args<Seq<PyType>> (typeof<PyType> self@2@00))))
       (= result@3@00 (Seq_length (tuple___val__ $Snap.unit self@2@00))))))
   :pattern ((tuple___len__%limited s@$ self@2@00))
-  :qid |quant-u-4044|)))
+  :qid |quant-u-4001|)))
 (assert (forall ((s@$ $Snap) (self@2@00 $Ref)) (!
   (let ((result@3@00 (tuple___len__%limited s@$ self@2@00))) true)
   :pattern ((tuple___len__%limited s@$ self@2@00))
-  :qid |quant-u-4045|)))
+  :qid |quant-u-4002|)))
 (assert (forall ((s@$ $Snap) (self@2@00 $Ref)) (!
   (let ((result@3@00 (tuple___len__%limited s@$ self@2@00))) (=>
     (tuple___len__%precondition s@$ self@2@00)
     (tuple___val__%precondition $Snap.unit self@2@00)))
   :pattern ((tuple___len__%limited s@$ self@2@00))
-  :qid |quant-u-4046|)))
+  :qid |quant-u-4003|)))
 (assert (forall ((s@$ $Snap) (self@4@00 $Ref)) (!
   (= (str___val__%limited s@$ self@4@00) (str___val__ s@$ self@4@00))
   :pattern ((str___val__ s@$ self@4@00))
-  :qid |quant-u-4008|)))
+  :qid |quant-u-3965|)))
 (assert (forall ((s@$ $Snap) (self@4@00 $Ref)) (!
   (str___val__%stateless self@4@00)
   :pattern ((str___val__%limited s@$ self@4@00))
-  :qid |quant-u-4009|)))
+  :qid |quant-u-3966|)))
 (assert (forall ((s@$ $Snap) (self@6@00 $Ref)) (!
   (= (str___len__%limited s@$ self@6@00) (str___len__ s@$ self@6@00))
   :pattern ((str___len__ s@$ self@6@00))
-  :qid |quant-u-4010|)))
+  :qid |quant-u-3967|)))
 (assert (forall ((s@$ $Snap) (self@6@00 $Ref)) (!
   (str___len__%stateless self@6@00)
   :pattern ((str___len__%limited s@$ self@6@00))
-  :qid |quant-u-4011|)))
+  :qid |quant-u-3968|)))
 (assert (forall ((s@$ $Snap) (self@6@00 $Ref)) (!
   (let ((result@7@00 (str___len__%limited s@$ self@6@00))) (=>
     (str___len__%precondition s@$ self@6@00)
     (>= result@7@00 0)))
   :pattern ((str___len__%limited s@$ self@6@00))
-  :qid |quant-u-4047|)))
+  :qid |quant-u-4004|)))
 (assert (forall ((s@$ $Snap) (self@6@00 $Ref)) (!
   (let ((result@7@00 (str___len__%limited s@$ self@6@00))) true)
   :pattern ((str___len__%limited s@$ self@6@00))
-  :qid |quant-u-4048|)))
+  :qid |quant-u-4005|)))
 (assert (forall ((s@$ $Snap) (self@8@00 $Ref) (key@9@00 Int)) (!
   (=
     (tuple___getitem__%limited s@$ self@8@00 key@9@00)
     (tuple___getitem__ s@$ self@8@00 key@9@00))
   :pattern ((tuple___getitem__ s@$ self@8@00 key@9@00))
-  :qid |quant-u-4012|)))
+  :qid |quant-u-3969|)))
 (assert (forall ((s@$ $Snap) (self@8@00 $Ref) (key@9@00 Int)) (!
   (tuple___getitem__%stateless self@8@00 key@9@00)
   :pattern ((tuple___getitem__%limited s@$ self@8@00 key@9@00))
-  :qid |quant-u-4013|)))
+  :qid |quant-u-3970|)))
 (assert (forall ((s@$ $Snap) (self@8@00 $Ref) (key@9@00 Int)) (!
   (let ((result@10@00 (tuple___getitem__%limited s@$ self@8@00 key@9@00))) (=>
     (tuple___getitem__%precondition s@$ self@8@00 key@9@00)
@@ -1899,23 +1899,23 @@
             (tuple___val__ $Snap.unit self@8@00)
             (+ (tuple___len__ $Snap.unit self@8@00) key@9@00)))))))
   :pattern ((tuple___getitem__%limited s@$ self@8@00 key@9@00))
-  :qid |quant-u-4049|)))
+  :qid |quant-u-4006|)))
 (assert (forall ((s@$ $Snap) (self@8@00 $Ref) (key@9@00 Int)) (!
   (let ((result@10@00 (tuple___getitem__%limited s@$ self@8@00 key@9@00))) true)
   :pattern ((tuple___getitem__%limited s@$ self@8@00 key@9@00))
-  :qid |quant-u-4050|)))
+  :qid |quant-u-4007|)))
 (assert (forall ((s@$ $Snap) (self@8@00 $Ref) (key@9@00 Int)) (!
   (let ((result@10@00 (tuple___getitem__%limited s@$ self@8@00 key@9@00))) (=>
     (and (tuple___getitem__%precondition s@$ self@8@00 key@9@00) (< key@9@00 0))
     (tuple___len__%precondition $Snap.unit self@8@00)))
   :pattern ((tuple___getitem__%limited s@$ self@8@00 key@9@00))
-  :qid |quant-u-4051|)))
+  :qid |quant-u-4008|)))
 (assert (forall ((s@$ $Snap) (self@8@00 $Ref) (key@9@00 Int)) (!
   (let ((result@10@00 (tuple___getitem__%limited s@$ self@8@00 key@9@00))) (=>
     (and (tuple___getitem__%precondition s@$ self@8@00 key@9@00) (>= key@9@00 0))
     (tuple___val__%precondition $Snap.unit self@8@00)))
   :pattern ((tuple___getitem__%limited s@$ self@8@00 key@9@00))
-  :qid |quant-u-4052|)))
+  :qid |quant-u-4009|)))
 (assert (forall ((s@$ $Snap) (self@8@00 $Ref) (key@9@00 Int)) (!
   (let ((result@10@00 (tuple___getitem__%limited s@$ self@8@00 key@9@00))) (=>
     (and (tuple___getitem__%precondition s@$ self@8@00 key@9@00) (< key@9@00 0))
@@ -1923,45 +1923,45 @@
       (tuple___val__%precondition $Snap.unit self@8@00)
       (tuple___len__%precondition $Snap.unit self@8@00))))
   :pattern ((tuple___getitem__%limited s@$ self@8@00 key@9@00))
-  :qid |quant-u-4053|)))
+  :qid |quant-u-4010|)))
 (assert (forall ((s@$ $Snap) (id@11@00 Int)) (!
   (= (_isDefined%limited s@$ id@11@00) (_isDefined s@$ id@11@00))
   :pattern ((_isDefined s@$ id@11@00))
-  :qid |quant-u-4014|)))
+  :qid |quant-u-3971|)))
 (assert (forall ((s@$ $Snap) (id@11@00 Int)) (!
   (_isDefined%stateless id@11@00)
   :pattern ((_isDefined%limited s@$ id@11@00))
-  :qid |quant-u-4015|)))
+  :qid |quant-u-3972|)))
 (assert (forall ((s@$ $Snap) (box@13@00 $Ref)) (!
   (= (bool___unbox__%limited s@$ box@13@00) (bool___unbox__ s@$ box@13@00))
   :pattern ((bool___unbox__ s@$ box@13@00))
-  :qid |quant-u-4016|)))
+  :qid |quant-u-3973|)))
 (assert (forall ((s@$ $Snap) (box@13@00 $Ref)) (!
   (bool___unbox__%stateless box@13@00)
   :pattern ((bool___unbox__%limited s@$ box@13@00))
-  :qid |quant-u-4017|)))
+  :qid |quant-u-3974|)))
 (assert (forall ((s@$ $Snap) (box@13@00 $Ref)) (!
   (let ((result@14@00 (bool___unbox__%limited s@$ box@13@00))) (=>
     (bool___unbox__%precondition s@$ box@13@00)
     (= (__prim__bool___box__%limited $Snap.unit result@14@00) box@13@00)))
   :pattern ((bool___unbox__%limited s@$ box@13@00))
-  :qid |quant-u-4054|)))
+  :qid |quant-u-4011|)))
 (assert (forall ((s@$ $Snap) (box@13@00 $Ref)) (!
   (let ((result@14@00 (bool___unbox__%limited s@$ box@13@00))) (=>
     (bool___unbox__%precondition s@$ box@13@00)
     (__prim__bool___box__%precondition $Snap.unit result@14@00)))
   :pattern ((bool___unbox__%limited s@$ box@13@00))
-  :qid |quant-u-4055|)))
+  :qid |quant-u-4012|)))
 (assert (forall ((s@$ $Snap) (prim@15@00 Bool)) (!
   (=
     (__prim__bool___box__%limited s@$ prim@15@00)
     (__prim__bool___box__ s@$ prim@15@00))
   :pattern ((__prim__bool___box__ s@$ prim@15@00))
-  :qid |quant-u-4018|)))
+  :qid |quant-u-3975|)))
 (assert (forall ((s@$ $Snap) (prim@15@00 Bool)) (!
   (__prim__bool___box__%stateless prim@15@00)
   :pattern ((__prim__bool___box__%limited s@$ prim@15@00))
-  :qid |quant-u-4019|)))
+  :qid |quant-u-3976|)))
 (assert (forall ((s@$ $Snap) (prim@15@00 Bool)) (!
   (let ((result@16@00 (__prim__bool___box__%limited s@$ prim@15@00))) (=>
     (__prim__bool___box__%precondition s@$ prim@15@00)
@@ -1970,31 +1970,31 @@
       (= (bool___unbox__%limited $Snap.unit result@16@00) prim@15@00)
       (= (int___unbox__%limited $Snap.unit result@16@00) (ite prim@15@00 1 0)))))
   :pattern ((__prim__bool___box__%limited s@$ prim@15@00))
-  :qid |quant-u-4056|)))
+  :qid |quant-u-4013|)))
 (assert (forall ((s@$ $Snap) (prim@15@00 Bool)) (!
   (let ((result@16@00 (__prim__bool___box__%limited s@$ prim@15@00))) true)
   :pattern ((__prim__bool___box__%limited s@$ prim@15@00))
-  :qid |quant-u-4057|)))
+  :qid |quant-u-4014|)))
 (assert (forall ((s@$ $Snap) (prim@15@00 Bool)) (!
   (let ((result@16@00 (__prim__bool___box__%limited s@$ prim@15@00))) (=>
     (__prim__bool___box__%precondition s@$ prim@15@00)
     (bool___unbox__%precondition $Snap.unit result@16@00)))
   :pattern ((__prim__bool___box__%limited s@$ prim@15@00))
-  :qid |quant-u-4058|)))
+  :qid |quant-u-4015|)))
 (assert (forall ((s@$ $Snap) (prim@15@00 Bool)) (!
   (let ((result@16@00 (__prim__bool___box__%limited s@$ prim@15@00))) (=>
     (__prim__bool___box__%precondition s@$ prim@15@00)
     (int___unbox__%precondition $Snap.unit result@16@00)))
   :pattern ((__prim__bool___box__%limited s@$ prim@15@00))
-  :qid |quant-u-4059|)))
+  :qid |quant-u-4016|)))
 (assert (forall ((s@$ $Snap) (box@17@00 $Ref)) (!
   (= (int___unbox__%limited s@$ box@17@00) (int___unbox__ s@$ box@17@00))
   :pattern ((int___unbox__ s@$ box@17@00))
-  :qid |quant-u-4020|)))
+  :qid |quant-u-3977|)))
 (assert (forall ((s@$ $Snap) (box@17@00 $Ref)) (!
   (int___unbox__%stateless box@17@00)
   :pattern ((int___unbox__%limited s@$ box@17@00))
-  :qid |quant-u-4021|)))
+  :qid |quant-u-3978|)))
 (assert (forall ((s@$ $Snap) (box@17@00 $Ref)) (!
   (let ((result@18@00 (int___unbox__%limited s@$ box@17@00))) (=>
     (int___unbox__%precondition s@$ box@17@00)
@@ -2009,7 +2009,7 @@
           (__prim__bool___box__%limited $Snap.unit (not (= result@18@00 0)))
           box@17@00)))))
   :pattern ((int___unbox__%limited s@$ box@17@00))
-  :qid |quant-u-4060|)))
+  :qid |quant-u-4017|)))
 (assert (forall ((s@$ $Snap) (box@17@00 $Ref)) (!
   (let ((result@18@00 (int___unbox__%limited s@$ box@17@00))) (=>
     (and
@@ -2018,7 +2018,7 @@
         (issubtype<Bool> (typeof<PyType> box@17@00) (as bool<PyType>  PyType))))
     (__prim__int___box__%precondition $Snap.unit result@18@00)))
   :pattern ((int___unbox__%limited s@$ box@17@00))
-  :qid |quant-u-4061|)))
+  :qid |quant-u-4018|)))
 (assert (forall ((s@$ $Snap) (box@17@00 $Ref)) (!
   (let ((result@18@00 (int___unbox__%limited s@$ box@17@00))) (=>
     (and
@@ -2026,17 +2026,17 @@
       (issubtype<Bool> (typeof<PyType> box@17@00) (as bool<PyType>  PyType)))
     (__prim__bool___box__%precondition $Snap.unit (not (= result@18@00 0)))))
   :pattern ((int___unbox__%limited s@$ box@17@00))
-  :qid |quant-u-4062|)))
+  :qid |quant-u-4019|)))
 (assert (forall ((s@$ $Snap) (prim@19@00 Int)) (!
   (=
     (__prim__int___box__%limited s@$ prim@19@00)
     (__prim__int___box__ s@$ prim@19@00))
   :pattern ((__prim__int___box__ s@$ prim@19@00))
-  :qid |quant-u-4022|)))
+  :qid |quant-u-3979|)))
 (assert (forall ((s@$ $Snap) (prim@19@00 Int)) (!
   (__prim__int___box__%stateless prim@19@00)
   :pattern ((__prim__int___box__%limited s@$ prim@19@00))
-  :qid |quant-u-4023|)))
+  :qid |quant-u-3980|)))
 (assert (forall ((s@$ $Snap) (prim@19@00 Int)) (!
   (let ((result@20@00 (__prim__int___box__%limited s@$ prim@19@00))) (=>
     (__prim__int___box__%precondition s@$ prim@19@00)
@@ -2044,35 +2044,35 @@
       (= (typeof<PyType> result@20@00) (as int<PyType>  PyType))
       (= (int___unbox__%limited $Snap.unit result@20@00) prim@19@00))))
   :pattern ((__prim__int___box__%limited s@$ prim@19@00))
-  :qid |quant-u-4063|)))
+  :qid |quant-u-4020|)))
 (assert (forall ((s@$ $Snap) (prim@19@00 Int)) (!
   (let ((result@20@00 (__prim__int___box__%limited s@$ prim@19@00))) true)
   :pattern ((__prim__int___box__%limited s@$ prim@19@00))
-  :qid |quant-u-4064|)))
+  :qid |quant-u-4021|)))
 (assert (forall ((s@$ $Snap) (prim@19@00 Int)) (!
   (let ((result@20@00 (__prim__int___box__%limited s@$ prim@19@00))) (=>
     (__prim__int___box__%precondition s@$ prim@19@00)
     (int___unbox__%precondition $Snap.unit result@20@00)))
   :pattern ((__prim__int___box__%limited s@$ prim@19@00))
-  :qid |quant-u-4065|)))
+  :qid |quant-u-4022|)))
 (assert (forall ((s@$ $Snap) (r@21@00 $Ref)) (!
   (= (Level%limited s@$ r@21@00) (Level s@$ r@21@00))
   :pattern ((Level s@$ r@21@00))
-  :qid |quant-u-4024|)))
+  :qid |quant-u-3981|)))
 (assert (forall ((s@$ $Snap) (r@21@00 $Ref)) (!
   (Level%stateless r@21@00)
   :pattern ((Level%limited s@$ r@21@00))
-  :qid |quant-u-4025|)))
+  :qid |quant-u-3982|)))
 (assert (forall ((s@$ $Snap) (len@23@00 Int) (value@24@00 Int)) (!
   (=
     (str___create__%limited s@$ len@23@00 value@24@00)
     (str___create__ s@$ len@23@00 value@24@00))
   :pattern ((str___create__ s@$ len@23@00 value@24@00))
-  :qid |quant-u-4026|)))
+  :qid |quant-u-3983|)))
 (assert (forall ((s@$ $Snap) (len@23@00 Int) (value@24@00 Int)) (!
   (str___create__%stateless len@23@00 value@24@00)
   :pattern ((str___create__%limited s@$ len@23@00 value@24@00))
-  :qid |quant-u-4027|)))
+  :qid |quant-u-3984|)))
 (assert (forall ((s@$ $Snap) (len@23@00 Int) (value@24@00 Int)) (!
   (let ((result@25@00 (str___create__%limited s@$ len@23@00 value@24@00))) (=>
     (str___create__%precondition s@$ len@23@00 value@24@00)
@@ -2081,33 +2081,33 @@
       (= (str___val__ $Snap.unit result@25@00) value@24@00)
       (= (typeof<PyType> result@25@00) (as str<PyType>  PyType)))))
   :pattern ((str___create__%limited s@$ len@23@00 value@24@00))
-  :qid |quant-u-4066|)))
+  :qid |quant-u-4023|)))
 (assert (forall ((s@$ $Snap) (len@23@00 Int) (value@24@00 Int)) (!
   (let ((result@25@00 (str___create__%limited s@$ len@23@00 value@24@00))) (=>
     (str___create__%precondition s@$ len@23@00 value@24@00)
     (str___len__%precondition $Snap.unit result@25@00)))
   :pattern ((str___create__%limited s@$ len@23@00 value@24@00))
-  :qid |quant-u-4067|)))
+  :qid |quant-u-4024|)))
 (assert (forall ((s@$ $Snap) (len@23@00 Int) (value@24@00 Int)) (!
   (let ((result@25@00 (str___create__%limited s@$ len@23@00 value@24@00))) (=>
     (str___create__%precondition s@$ len@23@00 value@24@00)
     (str___val__%precondition $Snap.unit result@25@00)))
   :pattern ((str___create__%limited s@$ len@23@00 value@24@00))
-  :qid |quant-u-4068|)))
+  :qid |quant-u-4025|)))
 (assert (forall ((s@$ $Snap) (len@23@00 Int) (value@24@00 Int)) (!
   (let ((result@25@00 (str___create__%limited s@$ len@23@00 value@24@00))) true)
   :pattern ((str___create__%limited s@$ len@23@00 value@24@00))
-  :qid |quant-u-4069|)))
+  :qid |quant-u-4026|)))
 (assert (forall ((s@$ $Snap) (arg0@26@00 $Ref) (arg1@27@00 $Ref) (t0@28@00 PyType) (t1@29@00 PyType) (ctr@30@00 Int)) (!
   (=
     (tuple___create2__%limited s@$ arg0@26@00 arg1@27@00 t0@28@00 t1@29@00 ctr@30@00)
     (tuple___create2__ s@$ arg0@26@00 arg1@27@00 t0@28@00 t1@29@00 ctr@30@00))
   :pattern ((tuple___create2__ s@$ arg0@26@00 arg1@27@00 t0@28@00 t1@29@00 ctr@30@00))
-  :qid |quant-u-4028|)))
+  :qid |quant-u-3985|)))
 (assert (forall ((s@$ $Snap) (arg0@26@00 $Ref) (arg1@27@00 $Ref) (t0@28@00 PyType) (t1@29@00 PyType) (ctr@30@00 Int)) (!
   (tuple___create2__%stateless arg0@26@00 arg1@27@00 t0@28@00 t1@29@00 ctr@30@00)
   :pattern ((tuple___create2__%limited s@$ arg0@26@00 arg1@27@00 t0@28@00 t1@29@00 ctr@30@00))
-  :qid |quant-u-4029|)))
+  :qid |quant-u-3986|)))
 (assert (forall ((s@$ $Snap) (arg0@26@00 $Ref) (arg1@27@00 $Ref) (t0@28@00 PyType) (t1@29@00 PyType) (ctr@30@00 Int)) (!
   (let ((result@31@00 (tuple___create2__%limited s@$ arg0@26@00 arg1@27@00 t0@28@00 t1@29@00 ctr@30@00))) (=>
     (tuple___create2__%precondition s@$ arg0@26@00 arg1@27@00 t0@28@00 t1@29@00 ctr@30@00)
@@ -2130,29 +2130,29 @@
           (= (tuple___getitem__ $Snap.unit result@31@00 0) arg0@26@00)
           (= (tuple___getitem__ $Snap.unit result@31@00 1) arg1@27@00))))))
   :pattern ((tuple___create2__%limited s@$ arg0@26@00 arg1@27@00 t0@28@00 t1@29@00 ctr@30@00))
-  :qid |quant-u-4070|)))
+  :qid |quant-u-4027|)))
 (assert (forall ((s@$ $Snap) (arg0@26@00 $Ref) (arg1@27@00 $Ref) (t0@28@00 PyType) (t1@29@00 PyType) (ctr@30@00 Int)) (!
   (let ((result@31@00 (tuple___create2__%limited s@$ arg0@26@00 arg1@27@00 t0@28@00 t1@29@00 ctr@30@00))) true)
   :pattern ((tuple___create2__%limited s@$ arg0@26@00 arg1@27@00 t0@28@00 t1@29@00 ctr@30@00))
-  :qid |quant-u-4071|)))
+  :qid |quant-u-4028|)))
 (assert (forall ((s@$ $Snap) (arg0@26@00 $Ref) (arg1@27@00 $Ref) (t0@28@00 PyType) (t1@29@00 PyType) (ctr@30@00 Int)) (!
   (let ((result@31@00 (tuple___create2__%limited s@$ arg0@26@00 arg1@27@00 t0@28@00 t1@29@00 ctr@30@00))) true)
   :pattern ((tuple___create2__%limited s@$ arg0@26@00 arg1@27@00 t0@28@00 t1@29@00 ctr@30@00))
-  :qid |quant-u-4072|)))
+  :qid |quant-u-4029|)))
 (assert (forall ((s@$ $Snap) (arg0@26@00 $Ref) (arg1@27@00 $Ref) (t0@28@00 PyType) (t1@29@00 PyType) (ctr@30@00 Int)) (!
   (let ((result@31@00 (tuple___create2__%limited s@$ arg0@26@00 arg1@27@00 t0@28@00 t1@29@00 ctr@30@00))) true)
   :pattern ((tuple___create2__%limited s@$ arg0@26@00 arg1@27@00 t0@28@00 t1@29@00 ctr@30@00))
-  :qid |quant-u-4073|)))
+  :qid |quant-u-4030|)))
 (assert (forall ((s@$ $Snap) (arg0@26@00 $Ref) (arg1@27@00 $Ref) (t0@28@00 PyType) (t1@29@00 PyType) (ctr@30@00 Int)) (!
   (let ((result@31@00 (tuple___create2__%limited s@$ arg0@26@00 arg1@27@00 t0@28@00 t1@29@00 ctr@30@00))) true)
   :pattern ((tuple___create2__%limited s@$ arg0@26@00 arg1@27@00 t0@28@00 t1@29@00 ctr@30@00))
-  :qid |quant-u-4074|)))
+  :qid |quant-u-4031|)))
 (assert (forall ((s@$ $Snap) (arg0@26@00 $Ref) (arg1@27@00 $Ref) (t0@28@00 PyType) (t1@29@00 PyType) (ctr@30@00 Int)) (!
   (let ((result@31@00 (tuple___create2__%limited s@$ arg0@26@00 arg1@27@00 t0@28@00 t1@29@00 ctr@30@00))) (=>
     (tuple___create2__%precondition s@$ arg0@26@00 arg1@27@00 t0@28@00 t1@29@00 ctr@30@00)
     (tuple___val__%precondition $Snap.unit result@31@00)))
   :pattern ((tuple___create2__%limited s@$ arg0@26@00 arg1@27@00 t0@28@00 t1@29@00 ctr@30@00))
-  :qid |quant-u-4075|)))
+  :qid |quant-u-4032|)))
 (assert (forall ((s@$ $Snap) (arg0@26@00 $Ref) (arg1@27@00 $Ref) (t0@28@00 PyType) (t1@29@00 PyType) (ctr@30@00 Int)) (!
   (let ((result@31@00 (tuple___create2__%limited s@$ arg0@26@00 arg1@27@00 t0@28@00 t1@29@00 ctr@30@00))) (=>
     (tuple___create2__%precondition s@$ arg0@26@00 arg1@27@00 t0@28@00 t1@29@00 ctr@30@00)
@@ -2166,17 +2166,17 @@
             (= (tuple___getitem__ $Snap.unit result@31@00 0) arg0@26@00)
             (tuple___getitem__%precondition $Snap.unit result@31@00 1)))))))
   :pattern ((tuple___create2__%limited s@$ arg0@26@00 arg1@27@00 t0@28@00 t1@29@00 ctr@30@00))
-  :qid |quant-u-4076|)))
+  :qid |quant-u-4033|)))
 (assert (forall ((s@$ $Snap) (self@32@00 $Ref) (other@33@00 $Ref)) (!
   (=
     (str___eq__%limited s@$ self@32@00 other@33@00)
     (str___eq__ s@$ self@32@00 other@33@00))
   :pattern ((str___eq__ s@$ self@32@00 other@33@00))
-  :qid |quant-u-4030|)))
+  :qid |quant-u-3987|)))
 (assert (forall ((s@$ $Snap) (self@32@00 $Ref) (other@33@00 $Ref)) (!
   (str___eq__%stateless self@32@00 other@33@00)
   :pattern ((str___eq__%limited s@$ self@32@00 other@33@00))
-  :qid |quant-u-4031|)))
+  :qid |quant-u-3988|)))
 (assert (forall ((s@$ $Snap) (self@32@00 $Ref) (other@33@00 $Ref)) (!
   (let ((result@34@00 (str___eq__%limited s@$ self@32@00 other@33@00))) (=>
     (str___eq__%precondition s@$ self@32@00 other@33@00)
@@ -2192,7 +2192,7 @@
           (str___len__ $Snap.unit self@32@00)
           (str___len__ $Snap.unit other@33@00))))))
   :pattern ((str___eq__%limited s@$ self@32@00 other@33@00))
-  :qid |quant-u-4077|)))
+  :qid |quant-u-4034|)))
 (assert (forall ((s@$ $Snap) (self@32@00 $Ref) (other@33@00 $Ref)) (!
   (let ((result@34@00 (str___eq__%limited s@$ self@32@00 other@33@00))) (=>
     (str___eq__%precondition s@$ self@32@00 other@33@00)
@@ -2200,7 +2200,7 @@
       (str___val__%precondition $Snap.unit self@32@00)
       (str___val__%precondition $Snap.unit other@33@00))))
   :pattern ((str___eq__%limited s@$ self@32@00 other@33@00))
-  :qid |quant-u-4078|)))
+  :qid |quant-u-4035|)))
 (assert (forall ((s@$ $Snap) (self@32@00 $Ref) (other@33@00 $Ref)) (!
   (let ((result@34@00 (str___eq__%limited s@$ self@32@00 other@33@00))) (=>
     (and (str___eq__%precondition s@$ self@32@00 other@33@00) result@34@00)
@@ -2208,37 +2208,37 @@
       (str___len__%precondition $Snap.unit self@32@00)
       (str___len__%precondition $Snap.unit other@33@00))))
   :pattern ((str___eq__%limited s@$ self@32@00 other@33@00))
-  :qid |quant-u-4079|)))
+  :qid |quant-u-4036|)))
 (assert (forall ((s@$ $Snap) (self@35@00 Int) (other@36@00 Int)) (!
   (=
     (int___add__%limited s@$ self@35@00 other@36@00)
     (int___add__ s@$ self@35@00 other@36@00))
   :pattern ((int___add__ s@$ self@35@00 other@36@00))
-  :qid |quant-u-4032|)))
+  :qid |quant-u-3989|)))
 (assert (forall ((s@$ $Snap) (self@35@00 Int) (other@36@00 Int)) (!
   (int___add__%stateless self@35@00 other@36@00)
   :pattern ((int___add__%limited s@$ self@35@00 other@36@00))
-  :qid |quant-u-4033|)))
+  :qid |quant-u-3990|)))
 (assert (forall ((s@$ $Snap) (self@35@00 Int) (other@36@00 Int)) (!
   (=>
     (int___add__%precondition s@$ self@35@00 other@36@00)
     (= (int___add__ s@$ self@35@00 other@36@00) (+ self@35@00 other@36@00)))
   :pattern ((int___add__ s@$ self@35@00 other@36@00))
-  :qid |quant-u-4080|)))
+  :qid |quant-u-4037|)))
 (assert (forall ((s@$ $Snap) (self@35@00 Int) (other@36@00 Int)) (!
   true
   :pattern ((int___add__ s@$ self@35@00 other@36@00))
-  :qid |quant-u-4081|)))
+  :qid |quant-u-4038|)))
 (assert (forall ((s@$ $Snap) (self@38@00 $Ref) (other@39@00 $Ref)) (!
   (=
     (tuple___eq__%limited s@$ self@38@00 other@39@00)
     (tuple___eq__ s@$ self@38@00 other@39@00))
   :pattern ((tuple___eq__ s@$ self@38@00 other@39@00))
-  :qid |quant-u-4034|)))
+  :qid |quant-u-3991|)))
 (assert (forall ((s@$ $Snap) (self@38@00 $Ref) (other@39@00 $Ref)) (!
   (tuple___eq__%stateless self@38@00 other@39@00)
   :pattern ((tuple___eq__%limited s@$ self@38@00 other@39@00))
-  :qid |quant-u-4035|)))
+  :qid |quant-u-3992|)))
 (assert (forall ((s@$ $Snap) (self@38@00 $Ref) (other@39@00 $Ref)) (!
   (let ((result@40@00 (tuple___eq__%limited s@$ self@38@00 other@39@00))) (=>
     (and
@@ -2257,7 +2257,7 @@
           ))))
     result@40@00))
   :pattern ((tuple___eq__%limited s@$ self@38@00 other@39@00))
-  :qid |quant-u-4082|)))
+  :qid |quant-u-4039|)))
 (assert (forall ((s@$ $Snap) (self@38@00 $Ref) (other@39@00 $Ref)) (!
   (let ((result@40@00 (tuple___eq__%limited s@$ self@38@00 other@39@00))) (=>
     (tuple___eq__%precondition s@$ self@38@00 other@39@00)
@@ -2280,45 +2280,45 @@
           :pattern ((tuple___getitem__%limited $Snap.unit self@38@00 i) (tuple___getitem__%limited $Snap.unit other@39@00 i))
           ))))))
   :pattern ((tuple___eq__%limited s@$ self@38@00 other@39@00))
-  :qid |quant-u-4083|)))
+  :qid |quant-u-4040|)))
 (assert (forall ((s@$ $Snap)) (!
   (= (__file__%limited s@$) (__file__ s@$))
   :pattern ((__file__ s@$))
-  :qid |quant-u-4036|)))
+  :qid |quant-u-3993|)))
 (assert (forall ((s@$ $Snap)) (!
   (as __file__%stateless  Bool)
   :pattern ((__file__%limited s@$))
-  :qid |quant-u-4037|)))
+  :qid |quant-u-3994|)))
 (assert (forall ((s@$ $Snap) (val@42@00 $Ref) (id@43@00 Int)) (!
   (=
     (_checkDefined%limited s@$ val@42@00 id@43@00)
     (_checkDefined s@$ val@42@00 id@43@00))
   :pattern ((_checkDefined s@$ val@42@00 id@43@00))
-  :qid |quant-u-4038|)))
+  :qid |quant-u-3995|)))
 (assert (forall ((s@$ $Snap) (val@42@00 $Ref) (id@43@00 Int)) (!
   (_checkDefined%stateless val@42@00 id@43@00)
   :pattern ((_checkDefined%limited s@$ val@42@00 id@43@00))
-  :qid |quant-u-4039|)))
+  :qid |quant-u-3996|)))
 (assert (forall ((s@$ $Snap) (val@42@00 $Ref) (id@43@00 Int)) (!
   (=>
     (_checkDefined%precondition s@$ val@42@00 id@43@00)
     (= (_checkDefined s@$ val@42@00 id@43@00) val@42@00))
   :pattern ((_checkDefined s@$ val@42@00 id@43@00))
-  :qid |quant-u-4084|)))
+  :qid |quant-u-4041|)))
 (assert (forall ((s@$ $Snap) (val@42@00 $Ref) (id@43@00 Int)) (!
   true
   :pattern ((_checkDefined s@$ val@42@00 id@43@00))
-  :qid |quant-u-4085|)))
+  :qid |quant-u-4042|)))
 (assert (forall ((s@$ $Snap) (self@45@00 $Ref) (other@46@00 $Ref)) (!
   (=
     (int___eq__%limited s@$ self@45@00 other@46@00)
     (int___eq__ s@$ self@45@00 other@46@00))
   :pattern ((int___eq__ s@$ self@45@00 other@46@00))
-  :qid |quant-u-4040|)))
+  :qid |quant-u-3997|)))
 (assert (forall ((s@$ $Snap) (self@45@00 $Ref) (other@46@00 $Ref)) (!
   (int___eq__%stateless self@45@00 other@46@00)
   :pattern ((int___eq__%limited s@$ self@45@00 other@46@00))
-  :qid |quant-u-4041|)))
+  :qid |quant-u-3998|)))
 (assert (forall ((s@$ $Snap) (self@45@00 $Ref) (other@46@00 $Ref)) (!
   (=>
     (int___eq__%precondition s@$ self@45@00 other@46@00)
@@ -2328,7 +2328,7 @@
         (int___unbox__ $Snap.unit self@45@00)
         (int___unbox__ $Snap.unit other@46@00))))
   :pattern ((int___eq__ s@$ self@45@00 other@46@00))
-  :qid |quant-u-4086|)))
+  :qid |quant-u-4043|)))
 (assert (forall ((s@$ $Snap) (self@45@00 $Ref) (other@46@00 $Ref)) (!
   (=>
     (int___eq__%precondition s@$ self@45@00 other@46@00)
@@ -2336,15 +2336,15 @@
       (int___unbox__%precondition $Snap.unit self@45@00)
       (int___unbox__%precondition $Snap.unit other@46@00)))
   :pattern ((int___eq__ s@$ self@45@00 other@46@00))
-  :qid |quant-u-4087|)))
+  :qid |quant-u-4044|)))
 (assert (forall ((s@$ $Snap)) (!
   (= (__name__%limited s@$) (__name__ s@$))
   :pattern ((__name__ s@$))
-  :qid |quant-u-4042|)))
+  :qid |quant-u-3999|)))
 (assert (forall ((s@$ $Snap)) (!
   (as __name__%stateless  Bool)
   :pattern ((__name__%limited s@$))
-  :qid |quant-u-4043|)))
+  :qid |quant-u-4000|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- example_low ----------
@@ -4113,20 +4113,20 @@
 ; tmp := new()
 (declare-const tmp@55@01 $Ref)
 (assert (not (= tmp@55@01 $Ref.null)))
-(assert (not (= tmp@55@01 b_6@37@01)))
-(assert (not (= tmp@55@01 Example_res_9@41@01)))
-(assert (not (= tmp@55@01 secret_23@23@01)))
-(assert (not (= tmp@55@01 a@34@01)))
-(assert (not (= tmp@55@01 tmp@48@01)))
-(assert (not (= tmp@55@01 secret@22@01)))
-(assert (not (= tmp@55@01 a_6@35@01)))
-(assert (not (= tmp@55@01 Example_res@40@01)))
-(assert (not (= tmp@55@01 Example_res_0_0@43@01)))
 (assert (not (= tmp@55@01 Example_res_0@42@01)))
-(assert (not (= tmp@55@01 _cthread_158@16@01)))
-(assert (not (= tmp@55@01 b@36@01)))
 (assert (not (= tmp@55@01 _cthread_158_0@17@01)))
+(assert (not (= tmp@55@01 a@34@01)))
+(assert (not (= tmp@55@01 Example_res@40@01)))
+(assert (not (= tmp@55@01 b@36@01)))
+(assert (not (= tmp@55@01 tmp@48@01)))
+(assert (not (= tmp@55@01 secret_23@23@01)))
+(assert (not (= tmp@55@01 b_6@37@01)))
+(assert (not (= tmp@55@01 Example_res_0_0@43@01)))
+(assert (not (= tmp@55@01 secret@22@01)))
+(assert (not (= tmp@55@01 Example_res_9@41@01)))
 (assert (not (= tmp@55@01 tmp_0@49@01)))
+(assert (not (= tmp@55@01 _cthread_158@16@01)))
+(assert (not (= tmp@55@01 a_6@35@01)))
 ; [eval] p1 && !ret1
 (push) ; 5
 ; [then-branch: 63 | !(p1@14@01) | live]
@@ -5759,14 +5759,14 @@
 ; tmp_0 := new()
 (declare-const tmp_0@77@01 $Ref)
 (assert (not (= tmp_0@77@01 $Ref.null)))
-(assert (not (= tmp_0@77@01 b_6@37@01)))
-(assert (not (= tmp_0@77@01 secret_23@23@01)))
-(assert (not (= tmp_0@77@01 secret@22@01)))
-(assert (not (= tmp_0@77@01 Example_res_0_0@43@01)))
-(assert (not (= tmp_0@77@01 Example_res_0@42@01)))
-(assert (not (= tmp_0@77@01 _cthread_158@16@01)))
-(assert (not (= tmp_0@77@01 b@36@01)))
 (assert (not (= tmp_0@77@01 tmp@55@01)))
+(assert (not (= tmp_0@77@01 Example_res_0@42@01)))
+(assert (not (= tmp_0@77@01 _cthread_158_0@17@01)))
+(assert (not (= tmp_0@77@01 b@36@01)))
+(assert (not (= tmp_0@77@01 secret_23@23@01)))
+(assert (not (= tmp_0@77@01 b_6@37@01)))
+(assert (not (= tmp_0@77@01 Example_res_0_0@43@01)))
+(assert (not (= tmp_0@77@01 secret@22@01)))
 (assert (not
   (=
     tmp_0@77@01
@@ -5783,8 +5783,8 @@
   (=
     tmp_0@77@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second $t@74@01)))))))
-(assert (not (= tmp_0@77@01 _cthread_158_0@17@01)))
 (assert (not (= tmp_0@77@01 tmp_0@49@01)))
+(assert (not (= tmp_0@77@01 _cthread_158@16@01)))
 ; [eval] p1 && !ret1
 (set-option :timeout 0)
 (push) ; 24
@@ -12122,20 +12122,20 @@
 ; tmp_1 := new()
 (declare-const tmp_1@159@01 $Ref)
 (assert (not (= tmp_1@159@01 $Ref.null)))
-(assert (not (= tmp_1@159@01 Example_res_1@144@01)))
-(assert (not (= tmp_1@159@01 Example_res_1_0@145@01)))
-(assert (not (= tmp_1@159@01 tmp_2@153@01)))
-(assert (not (= tmp_1@159@01 _cthread_159_0@121@01)))
-(assert (not (= tmp_1@159@01 _cthread_159@120@01)))
-(assert (not (= tmp_1@159@01 a_0_0@139@01)))
-(assert (not (= tmp_1@159@01 Example_res_2_0@147@01)))
-(assert (not (= tmp_1@159@01 b_0@140@01)))
-(assert (not (= tmp_1@159@01 b_0_0@141@01)))
-(assert (not (= tmp_1@159@01 secret_0_0@127@01)))
-(assert (not (= tmp_1@159@01 tmp_1@152@01)))
-(assert (not (= tmp_1@159@01 secret_0@126@01)))
 (assert (not (= tmp_1@159@01 Example_res_2@146@01)))
 (assert (not (= tmp_1@159@01 a_0@138@01)))
+(assert (not (= tmp_1@159@01 b_0@140@01)))
+(assert (not (= tmp_1@159@01 secret_0@126@01)))
+(assert (not (= tmp_1@159@01 _cthread_159@120@01)))
+(assert (not (= tmp_1@159@01 Example_res_1_0@145@01)))
+(assert (not (= tmp_1@159@01 Example_res_2_0@147@01)))
+(assert (not (= tmp_1@159@01 tmp_2@153@01)))
+(assert (not (= tmp_1@159@01 secret_0_0@127@01)))
+(assert (not (= tmp_1@159@01 tmp_1@152@01)))
+(assert (not (= tmp_1@159@01 b_0_0@141@01)))
+(assert (not (= tmp_1@159@01 a_0_0@139@01)))
+(assert (not (= tmp_1@159@01 _cthread_159_0@121@01)))
+(assert (not (= tmp_1@159@01 Example_res_1@144@01)))
 ; [eval] p1_1 && !ret1_0
 (push) ; 5
 ; [then-branch: 336 | !(p1_1@118@01) | live]
@@ -13768,12 +13768,14 @@
 ; tmp_2 := new()
 (declare-const tmp_2@181@01 $Ref)
 (assert (not (= tmp_2@181@01 $Ref.null)))
-(assert (not (= tmp_2@181@01 tmp_2@153@01)))
-(assert (not (= tmp_2@181@01 _cthread_159_0@121@01)))
-(assert (not (= tmp_2@181@01 tmp_1@159@01)))
-(assert (not (= tmp_2@181@01 _cthread_159@120@01)))
-(assert (not (= tmp_2@181@01 Example_res_2_0@147@01)))
+(assert (not (= tmp_2@181@01 Example_res_2@146@01)))
 (assert (not (= tmp_2@181@01 b_0@140@01)))
+(assert (not (= tmp_2@181@01 secret_0@126@01)))
+(assert (not (= tmp_2@181@01 _cthread_159@120@01)))
+(assert (not (= tmp_2@181@01 tmp_1@159@01)))
+(assert (not (= tmp_2@181@01 Example_res_2_0@147@01)))
+(assert (not (= tmp_2@181@01 tmp_2@153@01)))
+(assert (not (= tmp_2@181@01 secret_0_0@127@01)))
 (assert (not
   (=
     tmp_2@181@01
@@ -13791,9 +13793,7 @@
     tmp_2@181@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second $t@178@01)))))))
 (assert (not (= tmp_2@181@01 b_0_0@141@01)))
-(assert (not (= tmp_2@181@01 secret_0_0@127@01)))
-(assert (not (= tmp_2@181@01 secret_0@126@01)))
-(assert (not (= tmp_2@181@01 Example_res_2@146@01)))
+(assert (not (= tmp_2@181@01 _cthread_159_0@121@01)))
 ; [eval] p1_1 && !ret1_0
 (set-option :timeout 0)
 (push) ; 24
@@ -20212,20 +20212,20 @@
 ; tmp_3 := new()
 (declare-const tmp_3@263@01 $Ref)
 (assert (not (= tmp_3@263@01 $Ref.null)))
-(assert (not (= tmp_3@263@01 Example_res_3@248@01)))
-(assert (not (= tmp_3@263@01 b_1@244@01)))
-(assert (not (= tmp_3@263@01 Example_res_3_0@249@01)))
 (assert (not (= tmp_3@263@01 b_1_0@245@01)))
-(assert (not (= tmp_3@263@01 secret_1_0@231@01)))
 (assert (not (= tmp_3@263@01 tmp_3@256@01)))
-(assert (not (= tmp_3@263@01 _cthread_160@224@01)))
+(assert (not (= tmp_3@263@01 b_1@244@01)))
 (assert (not (= tmp_3@263@01 Example_res_4@250@01)))
-(assert (not (= tmp_3@263@01 a_1@242@01)))
-(assert (not (= tmp_3@263@01 _cthread_160_0@225@01)))
-(assert (not (= tmp_3@263@01 Example_res_4_0@251@01)))
+(assert (not (= tmp_3@263@01 _cthread_160@224@01)))
+(assert (not (= tmp_3@263@01 Example_res_3@248@01)))
 (assert (not (= tmp_3@263@01 a_1_0@243@01)))
-(assert (not (= tmp_3@263@01 tmp_4@257@01)))
 (assert (not (= tmp_3@263@01 secret_1@230@01)))
+(assert (not (= tmp_3@263@01 Example_res_4_0@251@01)))
+(assert (not (= tmp_3@263@01 Example_res_3_0@249@01)))
+(assert (not (= tmp_3@263@01 _cthread_160_0@225@01)))
+(assert (not (= tmp_3@263@01 secret_1_0@231@01)))
+(assert (not (= tmp_3@263@01 tmp_4@257@01)))
+(assert (not (= tmp_3@263@01 a_1@242@01)))
 ; [eval] p1_3 && !ret1_1
 (push) ; 5
 ; [then-branch: 609 | !(p1_3@222@01) | live]
@@ -21858,6 +21858,13 @@
 ; tmp_4 := new()
 (declare-const tmp_4@285@01 $Ref)
 (assert (not (= tmp_4@285@01 $Ref.null)))
+(assert (not (= tmp_4@285@01 b_1_0@245@01)))
+(assert (not (= tmp_4@285@01 b_1@244@01)))
+(assert (not (= tmp_4@285@01 Example_res_4@250@01)))
+(assert (not (= tmp_4@285@01 _cthread_160@224@01)))
+(assert (not (= tmp_4@285@01 secret_1@230@01)))
+(assert (not (= tmp_4@285@01 Example_res_4_0@251@01)))
+(assert (not (= tmp_4@285@01 _cthread_160_0@225@01)))
 (assert (not
   (=
     tmp_4@285@01
@@ -21874,16 +21881,9 @@
   (=
     tmp_4@285@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second $t@282@01)))))))
-(assert (not (= tmp_4@285@01 b_1@244@01)))
-(assert (not (= tmp_4@285@01 b_1_0@245@01)))
 (assert (not (= tmp_4@285@01 secret_1_0@231@01)))
-(assert (not (= tmp_4@285@01 _cthread_160@224@01)))
-(assert (not (= tmp_4@285@01 Example_res_4@250@01)))
-(assert (not (= tmp_4@285@01 _cthread_160_0@225@01)))
-(assert (not (= tmp_4@285@01 Example_res_4_0@251@01)))
-(assert (not (= tmp_4@285@01 tmp_4@257@01)))
 (assert (not (= tmp_4@285@01 tmp_3@263@01)))
-(assert (not (= tmp_4@285@01 secret_1@230@01)))
+(assert (not (= tmp_4@285@01 tmp_4@257@01)))
 ; [eval] p1_3 && !ret1_1
 (set-option :timeout 0)
 (push) ; 24
@@ -24432,7 +24432,7 @@
 (check-sat)
 ; unknown
 (pop) ; 51
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [state consolidation]
 ; State saturation: before repetition
@@ -26189,7 +26189,7 @@
 (check-sat)
 ; unknown
 (pop) ; 51
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (pop) ; 50
 (pop) ; 49
@@ -28103,20 +28103,20 @@
 ; tmp_5 := new()
 (declare-const tmp_5@367@01 $Ref)
 (assert (not (= tmp_5@367@01 $Ref.null)))
-(assert (not (= tmp_5@367@01 Example_res_5_0@353@01)))
-(assert (not (= tmp_5@367@01 secret_2@334@01)))
-(assert (not (= tmp_5@367@01 _cthread_161_0@329@01)))
-(assert (not (= tmp_5@367@01 tmp_5@360@01)))
-(assert (not (= tmp_5@367@01 b_2@348@01)))
 (assert (not (= tmp_5@367@01 a_2_0@347@01)))
+(assert (not (= tmp_5@367@01 tmp_5@360@01)))
 (assert (not (= tmp_5@367@01 a_2@346@01)))
+(assert (not (= tmp_5@367@01 tmp_6@361@01)))
+(assert (not (= tmp_5@367@01 Example_res_5_0@353@01)))
+(assert (not (= tmp_5@367@01 Example_res_5@352@01)))
+(assert (not (= tmp_5@367@01 _cthread_161_0@329@01)))
 (assert (not (= tmp_5@367@01 Example_res_6@354@01)))
 (assert (not (= tmp_5@367@01 secret_2_0@335@01)))
-(assert (not (= tmp_5@367@01 Example_res_6_0@355@01)))
-(assert (not (= tmp_5@367@01 _cthread_161@328@01)))
-(assert (not (= tmp_5@367@01 Example_res_5@352@01)))
 (assert (not (= tmp_5@367@01 b_2_0@349@01)))
-(assert (not (= tmp_5@367@01 tmp_6@361@01)))
+(assert (not (= tmp_5@367@01 _cthread_161@328@01)))
+(assert (not (= tmp_5@367@01 b_2@348@01)))
+(assert (not (= tmp_5@367@01 Example_res_6_0@355@01)))
+(assert (not (= tmp_5@367@01 secret_2@334@01)))
 ; [eval] p1_5 && !ret1_2
 (push) ; 5
 ; [then-branch: 852 | !(p1_5@326@01) | live]
@@ -29749,16 +29749,6 @@
 ; tmp_6 := new()
 (declare-const tmp_6@389@01 $Ref)
 (assert (not (= tmp_6@389@01 $Ref.null)))
-(assert (not (= tmp_6@389@01 secret_2@334@01)))
-(assert (not (= tmp_6@389@01 _cthread_161_0@329@01)))
-(assert (not (= tmp_6@389@01 tmp_5@367@01)))
-(assert (not (= tmp_6@389@01 b_2@348@01)))
-(assert (not (= tmp_6@389@01 Example_res_6@354@01)))
-(assert (not (= tmp_6@389@01 secret_2_0@335@01)))
-(assert (not (= tmp_6@389@01 Example_res_6_0@355@01)))
-(assert (not (= tmp_6@389@01 _cthread_161@328@01)))
-(assert (not (= tmp_6@389@01 b_2_0@349@01)))
-(assert (not (= tmp_6@389@01 tmp_6@361@01)))
 (assert (not
   (=
     tmp_6@389@01
@@ -29775,6 +29765,16 @@
   (=
     tmp_6@389@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second $t@386@01)))))))
+(assert (not (= tmp_6@389@01 tmp_6@361@01)))
+(assert (not (= tmp_6@389@01 tmp_5@367@01)))
+(assert (not (= tmp_6@389@01 _cthread_161_0@329@01)))
+(assert (not (= tmp_6@389@01 Example_res_6@354@01)))
+(assert (not (= tmp_6@389@01 secret_2_0@335@01)))
+(assert (not (= tmp_6@389@01 b_2_0@349@01)))
+(assert (not (= tmp_6@389@01 _cthread_161@328@01)))
+(assert (not (= tmp_6@389@01 b_2@348@01)))
+(assert (not (= tmp_6@389@01 Example_res_6_0@355@01)))
+(assert (not (= tmp_6@389@01 secret_2@334@01)))
 ; [eval] p1_5 && !ret1_2
 (set-option :timeout 0)
 (push) ; 24
@@ -33005,7 +33005,7 @@
 (check-sat)
 ; unknown
 (pop) ; 51
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [state consolidation]
 ; State saturation: before repetition
@@ -34155,7 +34155,7 @@
 (check-sat)
 ; unknown
 (pop) ; 51
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (pop) ; 50
 (pop) ; 49
@@ -36198,20 +36198,20 @@
 ; tmp_7 := new()
 (declare-const tmp_7@471@01 $Ref)
 (assert (not (= tmp_7@471@01 $Ref.null)))
-(assert (not (= tmp_7@471@01 a_3_0@451@01)))
-(assert (not (= tmp_7@471@01 Example_res_8@458@01)))
-(assert (not (= tmp_7@471@01 tmp_7@464@01)))
-(assert (not (= tmp_7@471@01 _cthread_162@432@01)))
-(assert (not (= tmp_7@471@01 Example_res_7@456@01)))
 (assert (not (= tmp_7@471@01 secret_3@438@01)))
-(assert (not (= tmp_7@471@01 b_3@452@01)))
+(assert (not (= tmp_7@471@01 Example_res_8@458@01)))
+(assert (not (= tmp_7@471@01 _cthread_162@432@01)))
 (assert (not (= tmp_7@471@01 Example_res_7_0@457@01)))
-(assert (not (= tmp_7@471@01 _cthread_162_0@433@01)))
-(assert (not (= tmp_7@471@01 secret_3_0@439@01)))
-(assert (not (= tmp_7@471@01 Example_res_8_0@459@01)))
-(assert (not (= tmp_7@471@01 tmp_8@465@01)))
 (assert (not (= tmp_7@471@01 b_3_0@453@01)))
 (assert (not (= tmp_7@471@01 a_3@450@01)))
+(assert (not (= tmp_7@471@01 tmp_7@464@01)))
+(assert (not (= tmp_7@471@01 Example_res_7@456@01)))
+(assert (not (= tmp_7@471@01 b_3@452@01)))
+(assert (not (= tmp_7@471@01 secret_3_0@439@01)))
+(assert (not (= tmp_7@471@01 a_3_0@451@01)))
+(assert (not (= tmp_7@471@01 tmp_8@465@01)))
+(assert (not (= tmp_7@471@01 _cthread_162_0@433@01)))
+(assert (not (= tmp_7@471@01 Example_res_8_0@459@01)))
 ; [eval] p1_7 && !ret1_3
 (push) ; 5
 ; [then-branch: 1103 | !(p1_7@430@01) | live]
@@ -37844,11 +37844,9 @@
 ; tmp_8 := new()
 (declare-const tmp_8@493@01 $Ref)
 (assert (not (= tmp_8@493@01 $Ref.null)))
+(assert (not (= tmp_8@493@01 secret_3@438@01)))
 (assert (not (= tmp_8@493@01 Example_res_8@458@01)))
 (assert (not (= tmp_8@493@01 _cthread_162@432@01)))
-(assert (not (= tmp_8@493@01 secret_3@438@01)))
-(assert (not (= tmp_8@493@01 b_3@452@01)))
-(assert (not (= tmp_8@493@01 _cthread_162_0@433@01)))
 (assert (not
   (=
     tmp_8@493@01
@@ -37865,11 +37863,13 @@
   (=
     tmp_8@493@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second $t@490@01)))))))
+(assert (not (= tmp_8@493@01 b_3_0@453@01)))
+(assert (not (= tmp_8@493@01 b_3@452@01)))
 (assert (not (= tmp_8@493@01 tmp_7@471@01)))
 (assert (not (= tmp_8@493@01 secret_3_0@439@01)))
-(assert (not (= tmp_8@493@01 Example_res_8_0@459@01)))
 (assert (not (= tmp_8@493@01 tmp_8@465@01)))
-(assert (not (= tmp_8@493@01 b_3_0@453@01)))
+(assert (not (= tmp_8@493@01 _cthread_162_0@433@01)))
+(assert (not (= tmp_8@493@01 Example_res_8_0@459@01)))
 ; [eval] p1_7 && !ret1_3
 (set-option :timeout 0)
 (push) ; 24
@@ -43949,23 +43949,23 @@
 ; tmp_7 := new()
 (declare-const tmp_7@522@01 $Ref)
 (assert (not (= tmp_7@522@01 $Ref.null)))
-(assert (not (= tmp_7@522@01 a_3_0@451@01)))
-(assert (not (= tmp_7@522@01 Example_res_8@458@01)))
-(assert (not (= tmp_7@522@01 _res_4@443@01)))
-(assert (not (= tmp_7@522@01 tmp_7@464@01)))
-(assert (not (= tmp_7@522@01 _cthread_162@432@01)))
-(assert (not (= tmp_7@522@01 Example_res_7@456@01)))
 (assert (not (= tmp_7@522@01 secret_3@438@01)))
-(assert (not (= tmp_7@522@01 _err_4@449@01)))
-(assert (not (= tmp_7@522@01 b_3@452@01)))
+(assert (not (= tmp_7@522@01 Example_res_8@458@01)))
+(assert (not (= tmp_7@522@01 _cthread_162@432@01)))
 (assert (not (= tmp_7@522@01 Example_res_7_0@457@01)))
-(assert (not (= tmp_7@522@01 _cthread_162_0@433@01)))
-(assert (not (= tmp_7@522@01 secret_3_0@439@01)))
-(assert (not (= tmp_7@522@01 Example_res_8_0@459@01)))
-(assert (not (= tmp_7@522@01 tmp_8@465@01)))
-(assert (not (= tmp_7@522@01 secret_15_0@455@01)))
 (assert (not (= tmp_7@522@01 b_3_0@453@01)))
 (assert (not (= tmp_7@522@01 a_3@450@01)))
+(assert (not (= tmp_7@522@01 tmp_7@464@01)))
+(assert (not (= tmp_7@522@01 secret_15_0@455@01)))
+(assert (not (= tmp_7@522@01 _err_4@449@01)))
+(assert (not (= tmp_7@522@01 Example_res_7@456@01)))
+(assert (not (= tmp_7@522@01 b_3@452@01)))
+(assert (not (= tmp_7@522@01 _res_4@443@01)))
+(assert (not (= tmp_7@522@01 secret_3_0@439@01)))
+(assert (not (= tmp_7@522@01 a_3_0@451@01)))
+(assert (not (= tmp_7@522@01 tmp_8@465@01)))
+(assert (not (= tmp_7@522@01 _cthread_162_0@433@01)))
+(assert (not (= tmp_7@522@01 Example_res_8_0@459@01)))
 ; [eval] p1_7 && !ret1_3
 (push) ; 5
 ; [then-branch: 1441 | !(p1_7@430@01) | live]
@@ -45295,10 +45295,12 @@
 ; tmp_8 := new()
 (declare-const tmp_8@540@01 $Ref)
 (assert (not (= tmp_8@540@01 $Ref.null)))
-(assert (not (= tmp_8@540@01 a_3_0@451@01)))
+(assert (not (= tmp_8@540@01 secret_3@438@01)))
 (assert (not (= tmp_8@540@01 Example_res_8@458@01)))
-(assert (not (= tmp_8@540@01 _res_4@443@01)))
 (assert (not (= tmp_8@540@01 _cthread_162@432@01)))
+(assert (not (= tmp_8@540@01 Example_res_7_0@457@01)))
+(assert (not (= tmp_8@540@01 b_3_0@453@01)))
+(assert (not (= tmp_8@540@01 tmp2_39@527@01)))
 (assert (not
   (=
     tmp_8@540@01
@@ -45307,19 +45309,17 @@
   (=
     tmp_8@540@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second $t@538@01)))))))
-(assert (not (= tmp_8@540@01 secret_3@438@01)))
+(assert (not (= tmp_8@540@01 tmp_7@522@01)))
+(assert (not (= tmp_8@540@01 secret_15_0@455@01)))
 (assert (not (= tmp_8@540@01 _err_4@449@01)))
 (assert (not (= tmp_8@540@01 b_3@452@01)))
-(assert (not (= tmp_8@540@01 Example_res_7_0@457@01)))
-(assert (not (= tmp_8@540@01 _cthread_162_0@433@01)))
+(assert (not (= tmp_8@540@01 _res_4@443@01)))
 (assert (not (= tmp_8@540@01 secret_3_0@439@01)))
 (assert (not (= tmp_8@540@01 tmp2_42@533@01)))
-(assert (not (= tmp_8@540@01 Example_res_8_0@459@01)))
-(assert (not (= tmp_8@540@01 tmp2_39@527@01)))
+(assert (not (= tmp_8@540@01 a_3_0@451@01)))
 (assert (not (= tmp_8@540@01 tmp_8@465@01)))
-(assert (not (= tmp_8@540@01 secret_15_0@455@01)))
-(assert (not (= tmp_8@540@01 tmp_7@522@01)))
-(assert (not (= tmp_8@540@01 b_3_0@453@01)))
+(assert (not (= tmp_8@540@01 _cthread_162_0@433@01)))
+(assert (not (= tmp_8@540@01 Example_res_8_0@459@01)))
 ; [eval] p1_7 && !ret1_3
 (push) ; 24
 ; [then-branch: 1515 | !(p1_7@430@01) | live]
@@ -69103,21 +69103,21 @@
 ; tmp_9 := new()
 (declare-const tmp_9@921@01 $Ref)
 (assert (not (= tmp_9@921@01 $Ref.null)))
-(assert (not (= tmp_9@921@01 tmp_10@915@01)))
 (assert (not (= tmp_9@921@01 x_2@886@01)))
-(assert (not (= tmp_9@921@01 _cthread_168@878@01)))
-(assert (not (= tmp_9@921@01 StringContainer_res_0_0@909@01)))
-(assert (not (= tmp_9@921@01 StringContainer_res_3@907@01)))
-(assert (not (= tmp_9@921@01 tmp_9@914@01)))
-(assert (not (= tmp_9@921@01 a_4@898@01)))
-(assert (not (= tmp_9@921@01 secret_9_0@885@01)))
-(assert (not (= tmp_9@921@01 b_4_0@901@01)))
-(assert (not (= tmp_9@921@01 StringContainer_res_0@908@01)))
-(assert (not (= tmp_9@921@01 b_4@900@01)))
-(assert (not (= tmp_9@921@01 secret_9@884@01)))
-(assert (not (= tmp_9@921@01 _cthread_168_0@879@01)))
 (assert (not (= tmp_9@921@01 a_4_0@899@01)))
+(assert (not (= tmp_9@921@01 StringContainer_res_0@908@01)))
+(assert (not (= tmp_9@921@01 secret_9@884@01)))
 (assert (not (= tmp_9@921@01 StringContainer_res@906@01)))
+(assert (not (= tmp_9@921@01 secret_9_0@885@01)))
+(assert (not (= tmp_9@921@01 _cthread_168_0@879@01)))
+(assert (not (= tmp_9@921@01 StringContainer_res_3@907@01)))
+(assert (not (= tmp_9@921@01 StringContainer_res_0_0@909@01)))
+(assert (not (= tmp_9@921@01 b_4_0@901@01)))
+(assert (not (= tmp_9@921@01 b_4@900@01)))
+(assert (not (= tmp_9@921@01 tmp_9@914@01)))
+(assert (not (= tmp_9@921@01 tmp_10@915@01)))
+(assert (not (= tmp_9@921@01 _cthread_168@878@01)))
+(assert (not (= tmp_9@921@01 a_4@898@01)))
 (assert (not (= tmp_9@921@01 x_2_0@887@01)))
 ; [eval] p1_19 && !ret1_9
 (push) ; 5
@@ -70460,11 +70460,16 @@
 ; tmp_10 := new()
 (declare-const tmp_10@943@01 $Ref)
 (assert (not (= tmp_10@943@01 $Ref.null)))
-(assert (not (= tmp_10@943@01 tmp_10@915@01)))
 (assert (not (= tmp_10@943@01 x_2@886@01)))
-(assert (not (= tmp_10@943@01 _cthread_168@878@01)))
-(assert (not (= tmp_10@943@01 StringContainer_res_0_0@909@01)))
+(assert (not (= tmp_10@943@01 StringContainer_res_0@908@01)))
+(assert (not (= tmp_10@943@01 secret_9@884@01)))
 (assert (not (= tmp_10@943@01 secret_9_0@885@01)))
+(assert (not (= tmp_10@943@01 _cthread_168_0@879@01)))
+(assert (not (= tmp_10@943@01 tmp_9@921@01)))
+(assert (not (= tmp_10@943@01 StringContainer_res_0_0@909@01)))
+(assert (not (= tmp_10@943@01 b_4_0@901@01)))
+(assert (not (= tmp_10@943@01 b_4@900@01)))
+(assert (not (= tmp_10@943@01 tmp_10@915@01)))
 (assert (not
   (=
     tmp_10@943@01
@@ -70473,13 +70478,8 @@
   (=
     tmp_10@943@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second $t@940@01)))))))
-(assert (not (= tmp_10@943@01 b_4_0@901@01)))
-(assert (not (= tmp_10@943@01 StringContainer_res_0@908@01)))
-(assert (not (= tmp_10@943@01 b_4@900@01)))
-(assert (not (= tmp_10@943@01 secret_9@884@01)))
-(assert (not (= tmp_10@943@01 _cthread_168_0@879@01)))
+(assert (not (= tmp_10@943@01 _cthread_168@878@01)))
 (assert (not (= tmp_10@943@01 x_2_0@887@01)))
-(assert (not (= tmp_10@943@01 tmp_9@921@01)))
 ; [eval] p1_19 && !ret1_9
 (set-option :timeout 0)
 (push) ; 20
@@ -75941,22 +75941,22 @@
 ; tmp_11 := new()
 (declare-const tmp_11@1032@01 $Ref)
 (assert (not (= tmp_11@1032@01 $Ref.null)))
-(assert (not (= tmp_11@1032@01 StringContainer_res_2_0@1020@01)))
-(assert (not (= tmp_11@1032@01 x_3_0@998@01)))
-(assert (not (= tmp_11@1032@01 StringContainer_res_1_0@1018@01)))
-(assert (not (= tmp_11@1032@01 a_5_0@1010@01)))
-(assert (not (= tmp_11@1032@01 a_5@1009@01)))
-(assert (not (= tmp_11@1032@01 secret_10_0@996@01)))
-(assert (not (= tmp_11@1032@01 StringContainer_res_2@1019@01)))
-(assert (not (= tmp_11@1032@01 tmp_12@1026@01)))
-(assert (not (= tmp_11@1032@01 _cthread_169@989@01)))
-(assert (not (= tmp_11@1032@01 b_5_0@1012@01)))
-(assert (not (= tmp_11@1032@01 x_3@997@01)))
-(assert (not (= tmp_11@1032@01 b_5@1011@01)))
-(assert (not (= tmp_11@1032@01 tmp_11@1025@01)))
 (assert (not (= tmp_11@1032@01 _cthread_169_0@990@01)))
-(assert (not (= tmp_11@1032@01 StringContainer_res_1@1017@01)))
+(assert (not (= tmp_11@1032@01 a_5@1009@01)))
+(assert (not (= tmp_11@1032@01 StringContainer_res_2_0@1020@01)))
 (assert (not (= tmp_11@1032@01 secret_10@995@01)))
+(assert (not (= tmp_11@1032@01 b_5_0@1012@01)))
+(assert (not (= tmp_11@1032@01 StringContainer_res_2@1019@01)))
+(assert (not (= tmp_11@1032@01 x_3@997@01)))
+(assert (not (= tmp_11@1032@01 StringContainer_res_1@1017@01)))
+(assert (not (= tmp_11@1032@01 _cthread_169@989@01)))
+(assert (not (= tmp_11@1032@01 tmp_12@1026@01)))
+(assert (not (= tmp_11@1032@01 StringContainer_res_1_0@1018@01)))
+(assert (not (= tmp_11@1032@01 tmp_11@1025@01)))
+(assert (not (= tmp_11@1032@01 x_3_0@998@01)))
+(assert (not (= tmp_11@1032@01 secret_10_0@996@01)))
+(assert (not (= tmp_11@1032@01 a_5_0@1010@01)))
+(assert (not (= tmp_11@1032@01 b_5@1011@01)))
 ; [eval] p1_21 && !ret1_10
 (push) ; 5
 ; [then-branch: 2708 | !(p1_21@987@01) | live]
@@ -77298,7 +77298,15 @@
 ; tmp_12 := new()
 (declare-const tmp_12@1054@01 $Ref)
 (assert (not (= tmp_12@1054@01 $Ref.null)))
+(assert (not (= tmp_12@1054@01 _cthread_169_0@990@01)))
+(assert (not (= tmp_12@1054@01 tmp_11@1032@01)))
 (assert (not (= tmp_12@1054@01 StringContainer_res_2_0@1020@01)))
+(assert (not (= tmp_12@1054@01 secret_10@995@01)))
+(assert (not (= tmp_12@1054@01 b_5_0@1012@01)))
+(assert (not (= tmp_12@1054@01 StringContainer_res_2@1019@01)))
+(assert (not (= tmp_12@1054@01 x_3@997@01)))
+(assert (not (= tmp_12@1054@01 _cthread_169@989@01)))
+(assert (not (= tmp_12@1054@01 tmp_12@1026@01)))
 (assert (not (= tmp_12@1054@01 x_3_0@998@01)))
 (assert (not
   (=
@@ -77309,15 +77317,7 @@
     tmp_12@1054@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second $t@1051@01)))))))
 (assert (not (= tmp_12@1054@01 secret_10_0@996@01)))
-(assert (not (= tmp_12@1054@01 StringContainer_res_2@1019@01)))
-(assert (not (= tmp_12@1054@01 tmp_12@1026@01)))
-(assert (not (= tmp_12@1054@01 _cthread_169@989@01)))
-(assert (not (= tmp_12@1054@01 b_5_0@1012@01)))
-(assert (not (= tmp_12@1054@01 x_3@997@01)))
 (assert (not (= tmp_12@1054@01 b_5@1011@01)))
-(assert (not (= tmp_12@1054@01 tmp_11@1032@01)))
-(assert (not (= tmp_12@1054@01 _cthread_169_0@990@01)))
-(assert (not (= tmp_12@1054@01 secret_10@995@01)))
 ; [eval] p1_21 && !ret1_10
 (set-option :timeout 0)
 (push) ; 20
@@ -82352,26 +82352,26 @@
 ; tmp_11 := new()
 (declare-const tmp_11@1087@01 $Ref)
 (assert (not (= tmp_11@1087@01 $Ref.null)))
-(assert (not (= tmp_11@1087@01 StringContainer_res_2_0@1020@01)))
-(assert (not (= tmp_11@1087@01 _res_11@1002@01)))
-(assert (not (= tmp_11@1087@01 x_3_0@998@01)))
-(assert (not (= tmp_11@1087@01 StringContainer_res_1_0@1018@01)))
-(assert (not (= tmp_11@1087@01 a_5_0@1010@01)))
-(assert (not (= tmp_11@1087@01 a_5@1009@01)))
-(assert (not (= tmp_11@1087@01 _err_11@1008@01)))
-(assert (not (= tmp_11@1087@01 secret_10_0@996@01)))
-(assert (not (= tmp_11@1087@01 StringContainer_res_2@1019@01)))
-(assert (not (= tmp_11@1087@01 tmp_12@1026@01)))
-(assert (not (= tmp_11@1087@01 _cthread_169@989@01)))
-(assert (not (= tmp_11@1087@01 b_5_0@1012@01)))
-(assert (not (= tmp_11@1087@01 x_3@997@01)))
-(assert (not (= tmp_11@1087@01 b_5@1011@01)))
-(assert (not (= tmp_11@1087@01 x_7_0@1016@01)))
-(assert (not (= tmp_11@1087@01 tmp_11@1025@01)))
 (assert (not (= tmp_11@1087@01 _cthread_169_0@990@01)))
+(assert (not (= tmp_11@1087@01 a_5@1009@01)))
+(assert (not (= tmp_11@1087@01 StringContainer_res_2_0@1020@01)))
+(assert (not (= tmp_11@1087@01 secret_10@995@01)))
+(assert (not (= tmp_11@1087@01 b_5_0@1012@01)))
+(assert (not (= tmp_11@1087@01 StringContainer_res_2@1019@01)))
+(assert (not (= tmp_11@1087@01 x_3@997@01)))
 (assert (not (= tmp_11@1087@01 StringContainer_res_1@1017@01)))
 (assert (not (= tmp_11@1087@01 secret_22_0@1014@01)))
-(assert (not (= tmp_11@1087@01 secret_10@995@01)))
+(assert (not (= tmp_11@1087@01 _res_11@1002@01)))
+(assert (not (= tmp_11@1087@01 _cthread_169@989@01)))
+(assert (not (= tmp_11@1087@01 tmp_12@1026@01)))
+(assert (not (= tmp_11@1087@01 x_7_0@1016@01)))
+(assert (not (= tmp_11@1087@01 StringContainer_res_1_0@1018@01)))
+(assert (not (= tmp_11@1087@01 tmp_11@1025@01)))
+(assert (not (= tmp_11@1087@01 x_3_0@998@01)))
+(assert (not (= tmp_11@1087@01 secret_10_0@996@01)))
+(assert (not (= tmp_11@1087@01 a_5_0@1010@01)))
+(assert (not (= tmp_11@1087@01 b_5@1011@01)))
+(assert (not (= tmp_11@1087@01 _err_11@1008@01)))
 ; [eval] p1_21 && !ret1_10
 (push) ; 5
 ; [then-branch: 3006 | !(p1_21@987@01) | live]
@@ -83518,30 +83518,30 @@
 ; tmp_12 := new()
 (declare-const tmp_12@1106@01 $Ref)
 (assert (not (= tmp_12@1106@01 $Ref.null)))
-(assert (not (= tmp_12@1106@01 StringContainer_res_2_0@1020@01)))
-(assert (not (= tmp_12@1106@01 _res_11@1002@01)))
-(assert (not (= tmp_12@1106@01 x_3_0@998@01)))
 (assert (not (= tmp_12@1106@01 tmp2_65@1099@01)))
-(assert (not (= tmp_12@1106@01 StringContainer_res_1_0@1018@01)))
-(assert (not (= tmp_12@1106@01 a_5_0@1010@01)))
-(assert (not (= tmp_12@1106@01 tmp2_61@1091@01)))
-(assert (not (= tmp_12@1106@01 _err_11@1008@01)))
-(assert (not (= tmp_12@1106@01 tmp2_64@1097@01)))
-(assert (not (= tmp_12@1106@01 secret_10_0@996@01)))
-(assert (not (= tmp_12@1106@01 StringContainer_res_2@1019@01)))
-(assert (not (= tmp_12@1106@01 tmp_12@1026@01)))
-(assert (not (= tmp_12@1106@01 _cthread_169@989@01)))
+(assert (not (= tmp_12@1106@01 _cthread_169_0@990@01)))
+(assert (not (= tmp_12@1106@01 StringContainer_res_2_0@1020@01)))
+(assert (not (= tmp_12@1106@01 secret_10@995@01)))
 (assert (not (= tmp_12@1106@01 b_5_0@1012@01)))
+(assert (not (= tmp_12@1106@01 StringContainer_res_2@1019@01)))
 (assert (not (= tmp_12@1106@01 x_3@997@01)))
-(assert (not (= tmp_12@1106@01 b_5@1011@01)))
+(assert (not (= tmp_12@1106@01 secret_22_0@1014@01)))
+(assert (not (= tmp_12@1106@01 _res_11@1002@01)))
+(assert (not (= tmp_12@1106@01 _cthread_169@989@01)))
+(assert (not (= tmp_12@1106@01 tmp_12@1026@01)))
 (assert (not (= tmp_12@1106@01 x_7_0@1016@01)))
+(assert (not (= tmp_12@1106@01 StringContainer_res_1_0@1018@01)))
+(assert (not (= tmp_12@1106@01 x_3_0@998@01)))
 (assert (not
   (=
     tmp_12@1106@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second $t@1104@01)))))))
-(assert (not (= tmp_12@1106@01 _cthread_169_0@990@01)))
-(assert (not (= tmp_12@1106@01 secret_22_0@1014@01)))
-(assert (not (= tmp_12@1106@01 secret_10@995@01)))
+(assert (not (= tmp_12@1106@01 secret_10_0@996@01)))
+(assert (not (= tmp_12@1106@01 tmp2_61@1091@01)))
+(assert (not (= tmp_12@1106@01 a_5_0@1010@01)))
+(assert (not (= tmp_12@1106@01 b_5@1011@01)))
+(assert (not (= tmp_12@1106@01 _err_11@1008@01)))
+(assert (not (= tmp_12@1106@01 tmp2_64@1097@01)))
 (assert (not (= tmp_12@1106@01 tmp_11@1087@01)))
 ; [eval] p1_21 && !ret1_10
 (push) ; 20
@@ -91357,4 +91357,641 @@
 (push) ; 3
 ; [then-branch: 3450 | p1_26@1257@01]
 (assert p1_26@1257@01)
-; ---------- main ----------
+; [eval] _cthread_157 != null
+(pop) ; 3
+(push) ; 3
+; [else-branch: 3450 | !(p1_26@1257@01)]
+(assert (not p1_26@1257@01))
+(pop) ; 3
+(pop) ; 2
+; Joined path conditions
+; Joined path conditions
+(assert (or (not p1_26@1257@01) p1_26@1257@01))
+(assert (=> p1_26@1257@01 (not (= _cthread_157@1259@01 $Ref.null))))
+(assert (=
+  ($Snap.second $t@1271@01)
+  ($Snap.combine
+    ($Snap.first ($Snap.second $t@1271@01))
+    ($Snap.second ($Snap.second $t@1271@01)))))
+(assert (= ($Snap.first ($Snap.second $t@1271@01)) $Snap.unit))
+; [eval] p2_26 ==> _cthread_157_0 != null
+(push) ; 2
+(push) ; 3
+(set-option :timeout 10)
+(assert (not (not p2_26@1258@01)))
+(check-sat)
+; unknown
+(pop) ; 3
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 3
+(set-option :timeout 10)
+(assert (not p2_26@1258@01))
+(check-sat)
+; unknown
+(pop) ; 3
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 3451 | p2_26@1258@01 | live]
+; [else-branch: 3451 | !(p2_26@1258@01) | live]
+(set-option :timeout 0)
+(push) ; 3
+; [then-branch: 3451 | p2_26@1258@01]
+(assert p2_26@1258@01)
+; [eval] _cthread_157_0 != null
+(pop) ; 3
+(push) ; 3
+; [else-branch: 3451 | !(p2_26@1258@01)]
+(assert (not p2_26@1258@01))
+(pop) ; 3
+(pop) ; 2
+; Joined path conditions
+; Joined path conditions
+(assert (or (not p2_26@1258@01) p2_26@1258@01))
+(assert (=> p2_26@1258@01 (not (= _cthread_157_0@1260@01 $Ref.null))))
+(assert (=
+  ($Snap.second ($Snap.second $t@1271@01))
+  ($Snap.combine
+    ($Snap.first ($Snap.second ($Snap.second $t@1271@01)))
+    ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))
+(assert (= ($Snap.first ($Snap.second ($Snap.second $t@1271@01))) $Snap.unit))
+; [eval] p1_26 ==> issubtype(typeof(_cthread_157), Thread_0())
+(push) ; 2
+(push) ; 3
+(set-option :timeout 10)
+(assert (not (not p1_26@1257@01)))
+(check-sat)
+; unknown
+(pop) ; 3
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 3
+(set-option :timeout 10)
+(assert (not p1_26@1257@01))
+(check-sat)
+; unknown
+(pop) ; 3
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 3452 | p1_26@1257@01 | live]
+; [else-branch: 3452 | !(p1_26@1257@01) | live]
+(set-option :timeout 0)
+(push) ; 3
+; [then-branch: 3452 | p1_26@1257@01]
+(assert p1_26@1257@01)
+; [eval] issubtype(typeof(_cthread_157), Thread_0())
+; [eval] typeof(_cthread_157)
+; [eval] Thread_0()
+(pop) ; 3
+(push) ; 3
+; [else-branch: 3452 | !(p1_26@1257@01)]
+(assert (not p1_26@1257@01))
+(pop) ; 3
+(pop) ; 2
+; Joined path conditions
+; Joined path conditions
+(assert (=>
+  p1_26@1257@01
+  (issubtype<Bool> (typeof<PyType> _cthread_157@1259@01) (as Thread_0<PyType>  PyType))))
+(assert (=
+  ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))
+  ($Snap.combine
+    ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))
+    ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))
+(assert (=
+  ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))
+  $Snap.unit))
+; [eval] p2_26 ==> issubtype(typeof(_cthread_157_0), Thread_0())
+(push) ; 2
+(push) ; 3
+(set-option :timeout 10)
+(assert (not (not p2_26@1258@01)))
+(check-sat)
+; unknown
+(pop) ; 3
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 3
+(set-option :timeout 10)
+(assert (not p2_26@1258@01))
+(check-sat)
+; unknown
+(pop) ; 3
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 3453 | p2_26@1258@01 | live]
+; [else-branch: 3453 | !(p2_26@1258@01) | live]
+(set-option :timeout 0)
+(push) ; 3
+; [then-branch: 3453 | p2_26@1258@01]
+(assert p2_26@1258@01)
+; [eval] issubtype(typeof(_cthread_157_0), Thread_0())
+; [eval] typeof(_cthread_157_0)
+; [eval] Thread_0()
+(pop) ; 3
+(push) ; 3
+; [else-branch: 3453 | !(p2_26@1258@01)]
+(assert (not p2_26@1258@01))
+(pop) ; 3
+(pop) ; 2
+; Joined path conditions
+; Joined path conditions
+(assert (=>
+  p2_26@1258@01
+  (issubtype<Bool> (typeof<PyType> _cthread_157_0@1260@01) (as Thread_0<PyType>  PyType))))
+(assert (=
+  ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))
+  ($Snap.combine
+    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))
+    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))
+(assert (=
+  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))
+  $Snap.unit))
+; [eval] p1_26 ==> self_0 != null
+(push) ; 2
+(push) ; 3
+(set-option :timeout 10)
+(assert (not (not p1_26@1257@01)))
+(check-sat)
+; unknown
+(pop) ; 3
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 3
+(set-option :timeout 10)
+(assert (not p1_26@1257@01))
+(check-sat)
+; unknown
+(pop) ; 3
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 3454 | p1_26@1257@01 | live]
+; [else-branch: 3454 | !(p1_26@1257@01) | live]
+(set-option :timeout 0)
+(push) ; 3
+; [then-branch: 3454 | p1_26@1257@01]
+(assert p1_26@1257@01)
+; [eval] self_0 != null
+(pop) ; 3
+(push) ; 3
+; [else-branch: 3454 | !(p1_26@1257@01)]
+(assert (not p1_26@1257@01))
+(pop) ; 3
+(pop) ; 2
+; Joined path conditions
+; Joined path conditions
+(assert (=> p1_26@1257@01 (not (= self_0@1265@01 $Ref.null))))
+(assert (=
+  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))
+  ($Snap.combine
+    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))
+    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))
+(assert (=
+  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))
+  $Snap.unit))
+; [eval] p2_26 ==> self_0_0 != null
+(push) ; 2
+(push) ; 3
+(set-option :timeout 10)
+(assert (not (not p2_26@1258@01)))
+(check-sat)
+; unknown
+(pop) ; 3
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 3
+(set-option :timeout 10)
+(assert (not p2_26@1258@01))
+(check-sat)
+; unknown
+(pop) ; 3
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 3455 | p2_26@1258@01 | live]
+; [else-branch: 3455 | !(p2_26@1258@01) | live]
+(set-option :timeout 0)
+(push) ; 3
+; [then-branch: 3455 | p2_26@1258@01]
+(assert p2_26@1258@01)
+; [eval] self_0_0 != null
+(pop) ; 3
+(push) ; 3
+; [else-branch: 3455 | !(p2_26@1258@01)]
+(assert (not p2_26@1258@01))
+(pop) ; 3
+(pop) ; 2
+; Joined path conditions
+; Joined path conditions
+(assert (=> p2_26@1258@01 (not (= self_0_0@1266@01 $Ref.null))))
+(assert (=
+  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))
+  ($Snap.combine
+    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))
+    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))))
+(push) ; 2
+(set-option :timeout 10)
+(assert (not (not p1_26@1257@01)))
+(check-sat)
+; unknown
+(pop) ; 2
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 2
+(set-option :timeout 10)
+(assert (not p1_26@1257@01))
+(check-sat)
+; unknown
+(pop) ; 2
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 3456 | p1_26@1257@01 | live]
+; [else-branch: 3456 | !(p1_26@1257@01) | live]
+(set-option :timeout 0)
+(push) ; 2
+; [then-branch: 3456 | p1_26@1257@01]
+(assert p1_26@1257@01)
+(assert (=
+  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))
+  ($Snap.combine
+    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))
+    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))))
+(push) ; 3
+(set-option :timeout 10)
+(assert (not (not p2_26@1258@01)))
+(check-sat)
+; unknown
+(pop) ; 3
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 3
+(set-option :timeout 10)
+(assert (not p2_26@1258@01))
+(check-sat)
+; unknown
+(pop) ; 3
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 3457 | p2_26@1258@01 | live]
+; [else-branch: 3457 | !(p2_26@1258@01) | live]
+(set-option :timeout 0)
+(push) ; 3
+; [then-branch: 3457 | p2_26@1258@01]
+(assert p2_26@1258@01)
+(assert (=
+  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))
+  ($Snap.combine
+    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))
+    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))))))
+(assert (=
+  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))
+  $Snap.unit))
+; [eval] p1_26 ==> issubtype(typeof(self_0), StringContainer())
+(push) ; 4
+(push) ; 5
+(set-option :timeout 10)
+(assert (not (not p1_26@1257@01)))
+(check-sat)
+; unknown
+(pop) ; 5
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 3458 | p1_26@1257@01 | live]
+; [else-branch: 3458 | !(p1_26@1257@01) | dead]
+(set-option :timeout 0)
+(push) ; 5
+; [then-branch: 3458 | p1_26@1257@01]
+; [eval] issubtype(typeof(self_0), StringContainer())
+; [eval] typeof(self_0)
+; [eval] StringContainer()
+(pop) ; 5
+(pop) ; 4
+; Joined path conditions
+(assert (=>
+  p1_26@1257@01
+  (issubtype<Bool> (typeof<PyType> self_0@1265@01) (as StringContainer<PyType>  PyType))))
+(assert (=
+  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))
+  ($Snap.combine
+    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))))
+    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))))))
+(assert (=
+  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))))
+  $Snap.unit))
+; [eval] p2_26 ==> issubtype(typeof(self_0_0), StringContainer())
+(push) ; 4
+(push) ; 5
+(set-option :timeout 10)
+(assert (not (not p2_26@1258@01)))
+(check-sat)
+; unknown
+(pop) ; 5
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 3459 | p2_26@1258@01 | live]
+; [else-branch: 3459 | !(p2_26@1258@01) | dead]
+(set-option :timeout 0)
+(push) ; 5
+; [then-branch: 3459 | p2_26@1258@01]
+; [eval] issubtype(typeof(self_0_0), StringContainer())
+; [eval] typeof(self_0_0)
+; [eval] StringContainer()
+(pop) ; 5
+(pop) ; 4
+; Joined path conditions
+(assert (=>
+  p2_26@1258@01
+  (issubtype<Bool> (typeof<PyType> self_0_0@1266@01) (as StringContainer<PyType>  PyType))))
+(assert (=
+  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))))
+  ($Snap.combine
+    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))))
+    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))))))))
+(assert (=
+  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))))
+  $Snap.unit))
+; [eval] p1_26 ==> issubtype(typeof(s), str())
+(push) ; 4
+(push) ; 5
+(set-option :timeout 10)
+(assert (not (not p1_26@1257@01)))
+(check-sat)
+; unknown
+(pop) ; 5
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 3460 | p1_26@1257@01 | live]
+; [else-branch: 3460 | !(p1_26@1257@01) | dead]
+(set-option :timeout 0)
+(push) ; 5
+; [then-branch: 3460 | p1_26@1257@01]
+; [eval] issubtype(typeof(s), str())
+; [eval] typeof(s)
+; [eval] str()
+(pop) ; 5
+(pop) ; 4
+; Joined path conditions
+(assert (=>
+  p1_26@1257@01
+  (issubtype<Bool> (typeof<PyType> s@1267@01) (as str<PyType>  PyType))))
+(assert (=
+  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))))
+  ($Snap.combine
+    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))))))
+    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))))))))
+(assert (=
+  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))))))
+  $Snap.unit))
+; [eval] p2_26 ==> issubtype(typeof(s_1), str())
+(push) ; 4
+(push) ; 5
+(set-option :timeout 10)
+(assert (not (not p2_26@1258@01)))
+(check-sat)
+; unknown
+(pop) ; 5
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 3461 | p2_26@1258@01 | live]
+; [else-branch: 3461 | !(p2_26@1258@01) | dead]
+(set-option :timeout 0)
+(push) ; 5
+; [then-branch: 3461 | p2_26@1258@01]
+; [eval] issubtype(typeof(s_1), str())
+; [eval] typeof(s_1)
+; [eval] str()
+(pop) ; 5
+(pop) ; 4
+; Joined path conditions
+(assert (=>
+  p2_26@1258@01
+  (issubtype<Bool> (typeof<PyType> s_1@1268@01) (as str<PyType>  PyType))))
+(assert (=
+  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))))))
+  ($Snap.combine
+    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))))))
+    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))))))))))
+(assert (=
+  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))))))
+  $Snap.unit))
+; [eval] p1_26 ==> self_0 != null
+(push) ; 4
+(push) ; 5
+(set-option :timeout 10)
+(assert (not (not p1_26@1257@01)))
+(check-sat)
+; unknown
+(pop) ; 5
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 3462 | p1_26@1257@01 | live]
+; [else-branch: 3462 | !(p1_26@1257@01) | dead]
+(set-option :timeout 0)
+(push) ; 5
+; [then-branch: 3462 | p1_26@1257@01]
+; [eval] self_0 != null
+(pop) ; 5
+(pop) ; 4
+; Joined path conditions
+(assert (=
+  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))))))
+  ($Snap.combine
+    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))))))))
+    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))))))))))
+(assert (=
+  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))))))))
+  $Snap.unit))
+; [eval] p2_26 ==> self_0_0 != null
+(push) ; 4
+(push) ; 5
+(set-option :timeout 10)
+(assert (not (not p2_26@1258@01)))
+(check-sat)
+; unknown
+(pop) ; 5
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 3463 | p2_26@1258@01 | live]
+; [else-branch: 3463 | !(p2_26@1258@01) | dead]
+(set-option :timeout 0)
+(push) ; 5
+; [then-branch: 3463 | p2_26@1258@01]
+; [eval] self_0_0 != null
+(pop) ; 5
+(pop) ; 4
+; Joined path conditions
+(assert (=
+  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))))))))
+  ($Snap.combine
+    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))))))))
+    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01))))))))))))))))))
+(assert (=
+  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))))))))
+  $Snap.unit))
+; [eval] p1_26 ==> true
+(push) ; 4
+(push) ; 5
+(set-option :timeout 10)
+(assert (not (not p1_26@1257@01)))
+(check-sat)
+; unknown
+(pop) ; 5
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 3464 | p1_26@1257@01 | live]
+; [else-branch: 3464 | !(p1_26@1257@01) | dead]
+(set-option :timeout 0)
+(push) ; 5
+; [then-branch: 3464 | p1_26@1257@01]
+(pop) ; 5
+(pop) ; 4
+; Joined path conditions
+(assert (=
+  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@1271@01)))))))))))))))
+  $Snap.unit))
+; [eval] p2_26 ==> true
+(push) ; 4
+(push) ; 5
+(set-option :timeout 10)
+(assert (not (not p2_26@1258@01)))
+(check-sat)
+; unknown
+(pop) ; 5
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 3465 | p2_26@1258@01 | live]
+; [else-branch: 3465 | !(p2_26@1258@01) | dead]
+(set-option :timeout 0)
+(push) ; 5
+; [then-branch: 3465 | p2_26@1258@01]
+(pop) ; 5
+(pop) ; 4
+; Joined path conditions
+; State saturation: after contract
+(set-option :timeout 50)
+(check-sat)
+; unknown
+(set-option :timeout 0)
+(push) ; 4
+(declare-const $t@1272@01 $Snap)
+(assert (= $t@1272@01 ($Snap.combine ($Snap.first $t@1272@01) ($Snap.second $t@1272@01))))
+(assert (= ($Snap.first $t@1272@01) $Snap.unit))
+; [eval] p1_26 ==> (forperm _r_38: Ref [_r_38.MustReleaseBounded] :: Level(_r_38) <= _current_wait_level_157) && ((forperm _r_38: Ref [_r_38.MustReleaseUnbounded] :: Level(_r_38) <= _current_wait_level_157) && _residue_157 <= _current_wait_level_157)
+(push) ; 5
+(push) ; 6
+(set-option :timeout 10)
+(assert (not (not p1_26@1257@01)))
+(check-sat)
+; unknown
+(pop) ; 6
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 3466 | p1_26@1257@01 | live]
+; [else-branch: 3466 | !(p1_26@1257@01) | dead]
+(set-option :timeout 0)
+(push) ; 6
+; [then-branch: 3466 | p1_26@1257@01]
+; [eval] (forperm _r_38: Ref [_r_38.MustReleaseBounded] :: Level(_r_38) <= _current_wait_level_157) && ((forperm _r_38: Ref [_r_38.MustReleaseUnbounded] :: Level(_r_38) <= _current_wait_level_157) && _residue_157 <= _current_wait_level_157)
+; [eval] (forperm _r_38: Ref [_r_38.MustReleaseBounded] :: Level(_r_38) <= _current_wait_level_157)
+(push) ; 7
+; [then-branch: 3467 | False | live]
+; [else-branch: 3467 | True | live]
+(push) ; 8
+; [then-branch: 3467 | False]
+(assert false)
+(pop) ; 8
+(push) ; 8
+; [else-branch: 3467 | True]
+; [eval] (forperm _r_38: Ref [_r_38.MustReleaseUnbounded] :: Level(_r_38) <= _current_wait_level_157)
+(push) ; 9
+; [then-branch: 3468 | False | live]
+; [else-branch: 3468 | True | live]
+(push) ; 10
+; [then-branch: 3468 | False]
+(assert false)
+(pop) ; 10
+(push) ; 10
+; [else-branch: 3468 | True]
+; [eval] _residue_157 <= _current_wait_level_157
+(pop) ; 10
+(pop) ; 9
+; Joined path conditions
+; Joined path conditions
+(pop) ; 8
+(pop) ; 7
+; Joined path conditions
+; Joined path conditions
+(pop) ; 6
+(pop) ; 5
+; Joined path conditions
+(assert (=> p1_26@1257@01 (<= _residue_157@1263@01 _current_wait_level_157@1269@01)))
+(assert (=
+  ($Snap.second $t@1272@01)
+  ($Snap.combine
+    ($Snap.first ($Snap.second $t@1272@01))
+    ($Snap.second ($Snap.second $t@1272@01)))))
+(assert (= ($Snap.first ($Snap.second $t@1272@01)) $Snap.unit))
+; [eval] p2_26 ==> (forperm _r_38: Ref [_r_38.MustReleaseBoundedp] :: Level(_r_38) <= _current_wait_level_157_0) && ((forperm _r_38: Ref [_r_38.MustReleaseUnboundedp] :: Level(_r_38) <= _current_wait_level_157_0) && _residue_157_0 <= _current_wait_level_157_0)
+(push) ; 5
+(push) ; 6
+(set-option :timeout 10)
+(assert (not (not p2_26@1258@01)))
+(check-sat)
+; unknown
+(pop) ; 6
+; 0.00s
+; (get-info :all-statistics)
+; [then-branch: 3469 | p2_26@1258@01 | live]
+; [else-branch: 3469 | !(p2_26@1258@01) | dead]
+(set-option :timeout 0)
+(push) ; 6
+; [then-branch: 3469 | p2_26@1258@01]
+; [eval] (forperm _r_38: Ref [_r_38.MustReleaseBoundedp] :: Level(_r_38) <= _current_wait_level_157_0) && ((forperm _r_38: Ref [_r_38.MustReleaseUnboundedp] :: Level(_r_38) <= _current_wait_level_157_0) && _residue_157_0 <= _current_wait_level_157_0)
+; [eval] (forperm _r_38: Ref [_r_38.MustReleaseBoundedp] :: Level(_r_38) <= _current_wait_level_157_0)
+(push) ; 7
+; [then-branch: 3470 | False | live]
+; [else-branch: 3470 | True | live]
+(push) ; 8
+; [then-branch: 3470 | False]
+(assert false)
+(pop) ; 8
+(push) ; 8
+; [else-branch: 3470 | True]
+; [eval] (forperm _r_38: Ref [_r_38.MustReleaseUnboundedp] :: Level(_r_38) <= _current_wait_level_157_0)
+(push) ; 9
+; [then-branch: 3471 | False | live]
+; [else-branch: 3471 | True | live]
+(push) ; 10
+; [then-branch: 3471 | False]
+(assert false)
+(pop) ; 10
+(push) ; 10
+; [else-branch: 3471 | True]
+; [eval] _residue_157_0 <= _current_wait_level_157_0
+(pop) ; 10
+(pop) ; 9
+; Joined path conditions
+; Joined path conditions
+(pop) ; 8
+(pop) ; 7
+; Joined path conditions
+; Joined path conditions
+(pop) ; 6
+(pop) ; 5
+; Joined path conditions
+(assert (=> p2_26@1258@01 (<= _residue_157_0@1264@01 _current_wait_level_157_0@1270@01)))
+(assert (=
+  ($Snap.second ($Snap.second $t@1272@01))
+  ($Snap.combine
+    ($Snap.first ($Snap.second ($Snap.second $t@1272@01)))
+    ($Snap.second ($Snap.second ($Snap.second $t@1272@01))))))
+(push) ; 5
+(set-option :timeout 10)
+(assert (not (not p1_26@1257@01)))
+(check-sat)

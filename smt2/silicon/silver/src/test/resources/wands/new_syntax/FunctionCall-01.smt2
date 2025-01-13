@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 12:37:55
+; Started: 2025-01-13 17:42:30
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -134,21 +134,21 @@
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   (= (getAndTransform%limited s@$ x@0@00) (getAndTransform s@$ x@0@00))
   :pattern ((getAndTransform s@$ x@0@00))
-  :qid |quant-u-21442|)))
+  :qid |quant-u-21383|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   (getAndTransform%stateless x@0@00)
   :pattern ((getAndTransform%limited s@$ x@0@00))
-  :qid |quant-u-21443|)))
+  :qid |quant-u-21384|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   (=>
     (getAndTransform%precondition s@$ x@0@00)
     (= (getAndTransform s@$ x@0@00) (+ ($SortWrappers.$SnapToInt s@$) 2)))
   :pattern ((getAndTransform s@$ x@0@00))
-  :qid |quant-u-21444|)))
+  :qid |quant-u-21385|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   true
   :pattern ((getAndTransform s@$ x@0@00))
-  :qid |quant-u-21445|)))
+  :qid |quant-u-21386|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- test0 ----------
@@ -262,7 +262,7 @@
     (MWSF_apply mwsf@5@01 $t@4@01)
     ($Snap.combine ($Snap.first $t@4@01) $Snap.unit))
   :pattern ((MWSF_apply mwsf@5@01 $t@4@01))
-  :qid |quant-u-21446|)))
+  :qid |quant-u-21387|)))
 (pop) ; 4
 (pop) ; 3
 (push) ; 3
@@ -272,7 +272,7 @@
     (MWSF_apply mwsf@5@01 $t@4@01)
     ($Snap.combine ($Snap.first $t@4@01) $Snap.unit))
   :pattern ((MWSF_apply mwsf@5@01 $t@4@01))
-  :qid |quant-u-21447|)))
+  :qid |quant-u-21388|)))
 (assert true)
 (pop) ; 3
 (pop) ; 2
@@ -398,7 +398,7 @@
     (MWSF_apply mwsf@11@01 $t@10@01)
     ($Snap.combine ($SortWrappers.IntTo$Snap 0) $Snap.unit))
   :pattern ((MWSF_apply mwsf@11@01 $t@10@01))
-  :qid |quant-u-21448|)))
+  :qid |quant-u-21389|)))
 (pop) ; 4
 (pop) ; 3
 (push) ; 3
@@ -408,7 +408,7 @@
     (MWSF_apply mwsf@11@01 $t@10@01)
     ($Snap.combine ($SortWrappers.IntTo$Snap 0) $Snap.unit))
   :pattern ((MWSF_apply mwsf@11@01 $t@10@01))
-  :qid |quant-u-21449|)))
+  :qid |quant-u-21390|)))
 (assert true)
 (check-sat)
 ; unknown

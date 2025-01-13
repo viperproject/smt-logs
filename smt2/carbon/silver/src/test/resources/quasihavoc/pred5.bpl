@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 12:52:58
+// Date:         2025-01-13 17:57:19
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quasihavoc/pred5.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quasihavoc/pred5-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -257,10 +257,10 @@ procedure foo_1(x: Ref, y: Ref, b_24: bool) returns ()
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
-  var oldMask: MaskType;
+  var ExhaleWellDef0Mask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var perm_temp_quasihavoc_: Perm;
   var ExhaleHeap: HeapType;
   var newVersion: FrameType;
@@ -285,8 +285,8 @@ procedure foo_1(x: Ref, y: Ref, b_24: bool) returns ()
       UnfoldingMask := Mask;
       assume Pair#trigger(UnfoldingHeap, Pair(x, y));
       assume UnfoldingHeap[null, Pair(x, y)] == CombineFrames(FrameFragment(UnfoldingHeap[x, f_7]), FrameFragment(UnfoldingHeap[y, f_7]));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access Pair(x, y) (pred5.vpr@10.14--10.46) [77246]"}
@@ -316,8 +316,8 @@ procedure foo_1(x: Ref, y: Ref, b_24: bool) returns ()
       UnfoldingMask := Mask;
       assume Pair#trigger(UnfoldingHeap, Pair(x, y));
       assume UnfoldingHeap[null, Pair(x, y)] == CombineFrames(FrameFragment(UnfoldingHeap[x, f_7]), FrameFragment(UnfoldingHeap[y, f_7]));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       UnfoldingMask := UnfoldingMask[null, Pair(x, y):=UnfoldingMask[null, Pair(x, y)] - perm];
       perm := FullPerm;
@@ -336,8 +336,8 @@ procedure foo_1(x: Ref, y: Ref, b_24: bool) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: if (b) -- <no position>
     if (b_24) {
@@ -347,8 +347,8 @@ procedure foo_1(x: Ref, y: Ref, b_24: bool) returns ()
         assume state(Heap, Mask);
       
       // -- Translating statement: exhale acc(Pair(x, y), perm_temp_quasihavoc_) -- <no position>
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := perm_temp_quasihavoc_;
         assert {:msg "  Exhale might fail. Fraction perm_temp_quasihavoc_ might be negative. (<no position>) [77248]"}
           perm >= NoPerm;
@@ -377,8 +377,8 @@ procedure foo_1(x: Ref, y: Ref, b_24: bool) returns ()
   // -- Translating statement: unfold acc(Pair(x, y), write) -- pred5.vpr@13.5--13.22
     assume Pair#trigger(Heap, Pair(x, y));
     assume Heap[null, Pair(x, y)] == CombineFrames(FrameFragment(Heap[x, f_7]), FrameFragment(Heap[y, f_7]));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Pair(x, y) might fail. There might be insufficient permission to access Pair(x, y) (pred5.vpr@13.5--13.22) [77253]"}
@@ -409,8 +409,8 @@ procedure foo_1(x: Ref, y: Ref, b_24: bool) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert y.f == 3 -- pred5.vpr@16.5--16.20
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of y.f == 3
       assert {:msg "  Assert might fail. There might be insufficient permission to access y.f (pred5.vpr@16.12--16.20) [77256]"}

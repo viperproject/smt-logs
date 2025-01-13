@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 13:20:20
+// Date:         2025-01-13 18:24:11
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0512.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0512-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -726,8 +726,8 @@ procedure seqToSeqHelper_wild#definedness(xs: (Seq Ref), i: int) returns (Result
   var k_4: int;
   var j_6: int;
   var j_2: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var k_6: int;
   var j_14_1: int;
   var ExhaleHeap: HeapType;
@@ -901,8 +901,8 @@ procedure seqToSeqHelper_wild#definedness(xs: (Seq Ref), i: int) returns (Result
         HasDirectPerm(Mask, Seq#Index(xs, i), item_1);
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Precondition of function seqToSeqHelper_wild might not hold. Assertion 0 <= i + 1 might not hold. (0512.vpr@15.22--15.52) [198288]"}
           0 <= i + 1;
         assert {:msg "  Precondition of function seqToSeqHelper_wild might not hold. Assertion i + 1 <= |xs| might not hold. (0512.vpr@15.22--15.52) [198289]"}
@@ -976,8 +976,8 @@ procedure seqToSeqHelper_wild#definedness(xs: (Seq Ref), i: int) returns (Result
     Result := Seq#Append(Seq#Singleton(Heap[Seq#Index(xs, i), item_1]), seqToSeqHelper_wild(Heap, xs, i + 1));
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of seqToSeqHelper_wild might not hold. Assertion |result| == |xs| - i might not hold. (0512.vpr@12.11--12.31) [198295]"}
       Seq#Length(Result) == Seq#Length(xs) - i;
     
@@ -1088,8 +1088,8 @@ procedure seqToSeqHelper_frac#definedness(xs: (Seq Ref), i: int) returns (Result
   var k_16: int;
   var j_4: int;
   var j_11: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var k_6: int;
   var j_14_1: int;
   var ExhaleHeap: HeapType;
@@ -1275,8 +1275,8 @@ procedure seqToSeqHelper_frac#definedness(xs: (Seq Ref), i: int) returns (Result
         HasDirectPerm(Mask, Seq#Index(xs, i), item_1);
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Precondition of function seqToSeqHelper_frac might not hold. Assertion 0 <= i + 1 might not hold. (0512.vpr@27.22--27.52) [198321]"}
           0 <= i + 1;
         assert {:msg "  Precondition of function seqToSeqHelper_frac might not hold. Assertion i + 1 <= |xs| might not hold. (0512.vpr@27.22--27.52) [198322]"}
@@ -1339,8 +1339,8 @@ procedure seqToSeqHelper_frac#definedness(xs: (Seq Ref), i: int) returns (Result
     Result := Seq#Append(Seq#Singleton(Heap[Seq#Index(xs, i), item_1]), seqToSeqHelper_frac(Heap, xs, i + 1));
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of seqToSeqHelper_frac might not hold. Assertion |result| == |xs| - i might not hold. (0512.vpr@24.11--24.31) [198327]"}
       Seq#Length(Result) == Seq#Length(xs) - i;
     
@@ -1424,8 +1424,8 @@ procedure sumContrib#definedness(A_1: (VCTArrayDomainType Ref), i: int, P_1: Per
 {
   var QPMask: MaskType;
   var wildcard: real where wildcard > 0.000000000;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -1491,8 +1491,8 @@ procedure sumContrib#definedness(A_1: (VCTArrayDomainType Ref), i: int, P_1: Per
           HasDirectPerm(Mask, (loc(A_1, i): Ref), item_1);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           assert {:msg "  Precondition of function sumContrib might not hold. Assertion 0 / 1 < P might not hold. (0512.vpr@90.40--90.63) [198336]"}
             0 / 1 < P_1;
           assert {:msg "  Precondition of function sumContrib might not hold. Assertion P < 1 / 1 might not hold. (0512.vpr@90.40--90.63) [198337]"}
@@ -1572,8 +1572,8 @@ procedure method_seqToSeqHelper(xs: (Seq Ref), i: int) returns (res: (Seq int))
   var j_12: int;
   var QPMask: MaskType;
   var wildcard: real where wildcard > 0.000000000;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var j_13: int;
@@ -1581,8 +1581,8 @@ procedure method_seqToSeqHelper(xs: (Seq Ref), i: int) returns (res: (Seq int))
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
   var arg_i: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var k_2_1: int;
   var j_11_2: int;
   var ExhaleHeap: HeapType;
@@ -1669,8 +1669,8 @@ procedure method_seqToSeqHelper(xs: (Seq Ref), i: int) returns (res: (Seq int))
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1762,8 +1762,8 @@ procedure method_seqToSeqHelper(xs: (Seq Ref), i: int) returns (res: (Seq int))
         arg_i := i + 1;
         
         // -- Exhaling precondition
-          ExhaleWellDef0Heap := Heap;
           ExhaleWellDef0Mask := Mask;
+          ExhaleWellDef0Heap := Heap;
           assert {:msg "  The precondition of method method_seqToSeqHelper might not hold. Assertion 0 <= i + 1 might not hold. (0512.vpr@42.5--42.45) [198359]"}
             0 <= arg_i;
           assert {:msg "  The precondition of method method_seqToSeqHelper might not hold. Assertion i + 1 <= |xs| might not hold. (0512.vpr@42.5--42.45) [198360]"}
@@ -1908,8 +1908,8 @@ procedure method_seqToSeqHelper(xs: (Seq Ref), i: int) returns (res: (Seq int))
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of method_seqToSeqHelper might not hold. Assertion 0 <= i might not hold. (0512.vpr@34.11--34.30) [198370]"}
       0 <= i;
     assert {:msg "  Postcondition of method_seqToSeqHelper might not hold. Assertion i <= |xs| might not hold. (0512.vpr@34.11--34.30) [198371]"}
@@ -2001,14 +2001,14 @@ procedure method_seqToSeqHelper2(xs: (Seq Ref), i: int) returns (res: (Seq int))
   var j_16: int;
   var QPMask: MaskType;
   var wildcard: real where wildcard > 0.000000000;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var j_22: int;
   var j_19: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var k_2_1: int;
   var j_11_2: int;
   var ExhaleHeap: HeapType;
@@ -2095,8 +2095,8 @@ procedure method_seqToSeqHelper2(xs: (Seq Ref), i: int) returns (res: (Seq int))
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -2187,8 +2187,8 @@ procedure method_seqToSeqHelper2(xs: (Seq Ref), i: int) returns (res: (Seq int))
         // -- Check definedness of seqToSeqHelper_wild(xs, i + 1)
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             assert {:msg "  Precondition of function seqToSeqHelper_wild might not hold. Assertion 0 <= i + 1 might not hold. (0512.vpr@61.13--61.43) [198393]"}
               0 <= i + 1;
             assert {:msg "  Precondition of function seqToSeqHelper_wild might not hold. Assertion i + 1 <= |xs| might not hold. (0512.vpr@61.13--61.43) [198394]"}
@@ -2277,8 +2277,8 @@ procedure method_seqToSeqHelper2(xs: (Seq Ref), i: int) returns (res: (Seq int))
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of method_seqToSeqHelper2 might not hold. Assertion 0 <= i might not hold. (0512.vpr@53.11--53.30) [198403]"}
       0 <= i;
     assert {:msg "  Postcondition of method_seqToSeqHelper2 might not hold. Assertion i <= |xs| might not hold. (0512.vpr@53.11--53.30) [198404]"}
@@ -2368,12 +2368,12 @@ procedure lemmaSumInit(xs: (VCTArrayDomainType Ref), i: int, P_1: Perm) returns 
   var QPMask: MaskType;
   var wildcard: real where wildcard > 0.000000000;
   var j_17: int;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
-  var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -2447,21 +2447,21 @@ procedure lemmaSumInit(xs: (VCTArrayDomainType Ref), i: int, P_1: Perm) returns 
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert sumContrib(xs, i, P) ==
   //   (i == (alen(xs): Int) ?
   //     0 :
   //     (loc(xs, i): Ref).item + sumContrib(xs, i + 1, P)) -- 0512.vpr@99.5--99.100
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of sumContrib(xs, i, P) == (i == (alen(xs): Int) ? 0 : (loc(xs, i): Ref).item + sumContrib(xs, i + 1, P))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+        ExhaleWellDef1Heap := ExhaleWellDef0Heap;
         assert {:msg "  Precondition of function sumContrib might not hold. Assertion 0 / 1 < P might not hold. (0512.vpr@99.12--99.32) [198413]"}
           0 / 1 < P_1;
         assert {:msg "  Precondition of function sumContrib might not hold. Assertion P < 1 / 1 might not hold. (0512.vpr@99.12--99.32) [198414]"}
@@ -2526,8 +2526,8 @@ procedure lemmaSumInit(xs: (VCTArrayDomainType Ref), i: int, P_1: Perm) returns 
           HasDirectPerm(ExhaleWellDef0Mask, (loc(xs, i): Ref), item_1);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef1Heap := ExhaleWellDef0Heap;
           ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+          ExhaleWellDef1Heap := ExhaleWellDef0Heap;
           assert {:msg "  Precondition of function sumContrib might not hold. Assertion 0 / 1 < P might not hold. (0512.vpr@99.75--99.99) [198422]"}
             0 / 1 < P_1;
           assert {:msg "  Precondition of function sumContrib might not hold. Assertion P < 1 / 1 might not hold. (0512.vpr@99.75--99.99) [198423]"}

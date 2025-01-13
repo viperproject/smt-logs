@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 12:44:01
+; Started: 2025-01-13 17:48:27
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -175,11 +175,11 @@
 (assert (forall ((s@$ $Snap) (y@0@00 Int)) (!
   (= (g%limited s@$ y@0@00) (g s@$ y@0@00))
   :pattern ((g s@$ y@0@00))
-  :qid |quant-u-26716|)))
+  :qid |quant-u-26658|)))
 (assert (forall ((s@$ $Snap) (y@0@00 Int)) (!
   (g%stateless y@0@00)
   :pattern ((g%limited s@$ y@0@00))
-  :qid |quant-u-26717|)))
+  :qid |quant-u-26659|)))
 ; ---------- FUNCTION f1----------
 (declare-fun x@2@00 () Int)
 (declare-fun result@3@00 () Int)
@@ -189,11 +189,11 @@
 (assert (forall ((s@$ $Snap) (x@2@00 Int)) (!
   (= (f1%limited s@$ x@2@00) (f1 s@$ x@2@00))
   :pattern ((f1 s@$ x@2@00))
-  :qid |quant-u-26718|)))
+  :qid |quant-u-26660|)))
 (assert (forall ((s@$ $Snap) (x@2@00 Int)) (!
   (f1%stateless x@2@00)
   :pattern ((f1%limited s@$ x@2@00))
-  :qid |quant-u-26719|)))
+  :qid |quant-u-26661|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -296,7 +296,7 @@
             (f2%limited $Snap.unit (- 0 (- x@2@00 1))))
           (g $Snap.unit x@2@00)))))
   :pattern ((f1 s@$ x@2@00))
-  :qid |quant-u-26726|)))
+  :qid |quant-u-26668|)))
 (assert (forall ((s@$ $Snap) (x@2@00 Int)) (!
   (=>
     (f1%precondition s@$ x@2@00)
@@ -309,7 +309,7 @@
           (f2%precondition $Snap.unit (- 0 (- x@2@00 1))))
         (g%precondition $Snap.unit x@2@00))))
   :pattern ((f1 s@$ x@2@00))
-  :qid |quant-u-26727|)))
+  :qid |quant-u-26669|)))
 ; ---------- FUNCTION f2----------
 (declare-fun x@4@00 () Int)
 (declare-fun result@5@00 () Int)
@@ -319,11 +319,11 @@
 (assert (forall ((s@$ $Snap) (x@4@00 Int)) (!
   (= (f2%limited s@$ x@4@00) (f2 s@$ x@4@00))
   :pattern ((f2 s@$ x@4@00))
-  :qid |quant-u-26720|)))
+  :qid |quant-u-26662|)))
 (assert (forall ((s@$ $Snap) (x@4@00 Int)) (!
   (f2%stateless x@4@00)
   :pattern ((f2%limited s@$ x@4@00))
-  :qid |quant-u-26721|)))
+  :qid |quant-u-26663|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -427,7 +427,7 @@
             (f1%limited $Snap.unit (- 0 (+ x@4@00 1))))
           (g $Snap.unit (- 0 x@4@00))))))
   :pattern ((f2 s@$ x@4@00))
-  :qid |quant-u-26728|)))
+  :qid |quant-u-26670|)))
 (assert (forall ((s@$ $Snap) (x@4@00 Int)) (!
   (=>
     (f2%precondition s@$ x@4@00)
@@ -440,7 +440,7 @@
           (f1%precondition $Snap.unit (- 0 (+ x@4@00 1))))
         (g%precondition $Snap.unit (- 0 x@4@00)))))
   :pattern ((f2 s@$ x@4@00))
-  :qid |quant-u-26729|)))
+  :qid |quant-u-26671|)))
 ; ---------- FUNCTION f1_e----------
 (declare-fun x@6@00 () Int)
 (declare-fun result@7@00 () Int)
@@ -450,11 +450,11 @@
 (assert (forall ((s@$ $Snap) (x@6@00 Int)) (!
   (= (f1_e%limited s@$ x@6@00) (f1_e s@$ x@6@00))
   :pattern ((f1_e s@$ x@6@00))
-  :qid |quant-u-26722|)))
+  :qid |quant-u-26664|)))
 (assert (forall ((s@$ $Snap) (x@6@00 Int)) (!
   (f1_e%stateless x@6@00)
   :pattern ((f1_e%limited s@$ x@6@00))
-  :qid |quant-u-26723|)))
+  :qid |quant-u-26665|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -556,7 +556,7 @@
             (f2_e%limited $Snap.unit (- x@6@00 1)))
           (g $Snap.unit x@6@00)))))
   :pattern ((f1_e s@$ x@6@00))
-  :qid |quant-u-26730|)))
+  :qid |quant-u-26672|)))
 (assert (forall ((s@$ $Snap) (x@6@00 Int)) (!
   (=>
     (f1_e%precondition s@$ x@6@00)
@@ -569,7 +569,7 @@
           (f2_e%precondition $Snap.unit (- x@6@00 1)))
         (g%precondition $Snap.unit x@6@00))))
   :pattern ((f1_e s@$ x@6@00))
-  :qid |quant-u-26731|)))
+  :qid |quant-u-26673|)))
 ; ---------- FUNCTION f2_e----------
 (declare-fun x@8@00 () Int)
 (declare-fun result@9@00 () Int)
@@ -579,11 +579,11 @@
 (assert (forall ((s@$ $Snap) (x@8@00 Int)) (!
   (= (f2_e%limited s@$ x@8@00) (f2_e s@$ x@8@00))
   :pattern ((f2_e s@$ x@8@00))
-  :qid |quant-u-26724|)))
+  :qid |quant-u-26666|)))
 (assert (forall ((s@$ $Snap) (x@8@00 Int)) (!
   (f2_e%stateless x@8@00)
   :pattern ((f2_e%limited s@$ x@8@00))
-  :qid |quant-u-26725|)))
+  :qid |quant-u-26667|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -686,7 +686,7 @@
             (f1_e%limited $Snap.unit (- 0 (+ x@8@00 1))))
           (g $Snap.unit x@8@00)))))
   :pattern ((f2_e s@$ x@8@00))
-  :qid |quant-u-26732|)))
+  :qid |quant-u-26674|)))
 (assert (forall ((s@$ $Snap) (x@8@00 Int)) (!
   (=>
     (f2_e%precondition s@$ x@8@00)
@@ -699,4 +699,4 @@
           (f1_e%precondition $Snap.unit (- 0 (+ x@8@00 1))))
         (g%precondition $Snap.unit x@8@00))))
   :pattern ((f2_e s@$ x@8@00))
-  :qid |quant-u-26733|)))
+  :qid |quant-u-26675|)))

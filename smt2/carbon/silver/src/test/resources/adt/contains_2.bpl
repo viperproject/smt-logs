@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 13:29:23
+// Date:         2025-01-13 18:33:06
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/adt/contains_2.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/adt/contains_2-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -267,10 +267,10 @@ axiom (forall a_2: (ListDomainType int), b_24: (ListDomainType int), c: (ListDom
 procedure contains_2a() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -280,12 +280,12 @@ procedure contains_2a() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert (contains(2, (Cons(2, (Nil(): List[Int])): List[Int])): Bool) -- contains_2.vpr@13.3--13.36
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion (contains(2, (Cons(2, (Nil(): List[Int])): List[Int])): Bool) might not hold. (contains_2.vpr@13.10--13.36) [222725]"}
       (contains_1(2, (Cons(2, (Nil(): ListDomainType int)): ListDomainType int)): bool);
     assume state(Heap, Mask);
@@ -298,13 +298,13 @@ procedure contains_2a() returns ()
 procedure contains_2b() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var a_2: (ListDomainType int);
   var b_24: (ListDomainType int);
   var c: (ListDomainType int);
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -314,8 +314,8 @@ procedure contains_2b() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: a := (Nil(): List[Int]) -- contains_2.vpr@20.3--20.13
     a_2 := (Nil(): ListDomainType int);
@@ -330,29 +330,29 @@ procedure contains_2b() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (contains(a, b): Bool) -- contains_2.vpr@28.3--28.23
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion (contains(a, b): Bool) might not hold. (contains_2.vpr@28.10--28.23) [222726]"}
       (contains_1(a_2, b_24): bool);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (contains(b, c): Bool) -- contains_2.vpr@29.3--29.23
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion (contains(b, c): Bool) might not hold. (contains_2.vpr@29.10--29.23) [222727]"}
       (contains_1(b_24, c): bool);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (contains(a, c): Bool) -- contains_2.vpr@30.3--30.23
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion (contains(a, c): Bool) might not hold. (contains_2.vpr@30.10--30.23) [222728]"}
       (contains_1(a_2, c): bool);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (contains(2, c): Bool) -- contains_2.vpr@32.3--32.23
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion (contains(2, c): Bool) might not hold. (contains_2.vpr@32.10--32.23) [222729]"}
       (contains_1(2, c): bool);
     assume state(Heap, Mask);

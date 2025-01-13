@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 13:22:10
+// Date:         2025-01-13 18:25:59
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0379a.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0379a-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -236,8 +236,8 @@ procedure f#definedness(_pure_1: Ref) returns (Result: bool)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var Unfolding1Heap: HeapType;
   var Unfolding1Mask: MaskType;
   var newPMask: PMaskType;
@@ -273,8 +273,8 @@ procedure f#definedness(_pure_1: Ref) returns (Result: bool)
         read$(UnfoldingHeap) > NoPerm;
       assume P#trigger(UnfoldingHeap, P(_pure_1));
       assume UnfoldingHeap[null, P(_pure_1)] == CombineFrames(FrameFragment(UnfoldingHeap[_pure_1, f$m2]), CombineFrames(UnfoldingHeap[null, u32(UnfoldingHeap[_pure_1, f$m2])], CombineFrames(FrameFragment(UnfoldingHeap[_pure_1, f$m5]), UnfoldingHeap[null, u32(UnfoldingHeap[_pure_1, f$m5])])));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := read$(UnfoldingHeap);
       assert {:msg "  Function might not be well-formed. Fraction read$() might be negative. (0379a.vpr@9.1--17.2) [203347]"}
         perm >= NoPerm;
@@ -323,8 +323,8 @@ procedure f#definedness(_pure_1: Ref) returns (Result: bool)
         read$(Unfolding1Heap) > NoPerm;
       assume u32#trigger(Unfolding1Heap, u32(Unfolding1Heap[_pure_1, f$m2]));
       assume Unfolding1Heap[null, u32(Unfolding1Heap[_pure_1, f$m2])] == FrameFragment(Unfolding1Heap[Unfolding1Heap[_pure_1, f$m2], val_int]);
-      ExhaleWellDef0Mask := Unfolding1Mask;
       ExhaleWellDef0Heap := Unfolding1Heap;
+      ExhaleWellDef0Mask := Unfolding1Mask;
       perm := read$(Unfolding1Heap);
       assert {:msg "  Function might not be well-formed. Fraction read$() might be negative. (0379a.vpr@9.1--17.2) [203354]"}
         perm >= NoPerm;
@@ -398,8 +398,8 @@ procedure f#definedness(_pure_1: Ref) returns (Result: bool)
           read$(UnfoldingHeap) > NoPerm;
         assume P#trigger(UnfoldingHeap, P(_pure_1));
         assume UnfoldingHeap[null, P(_pure_1)] == CombineFrames(FrameFragment(UnfoldingHeap[_pure_1, f$m2]), CombineFrames(UnfoldingHeap[null, u32(UnfoldingHeap[_pure_1, f$m2])], CombineFrames(FrameFragment(UnfoldingHeap[_pure_1, f$m5]), UnfoldingHeap[null, u32(UnfoldingHeap[_pure_1, f$m5])])));
-        ExhaleWellDef0Mask := UnfoldingMask;
         ExhaleWellDef0Heap := UnfoldingHeap;
+        ExhaleWellDef0Mask := UnfoldingMask;
         perm := read$(UnfoldingHeap);
         assert {:msg "  Function might not be well-formed. Fraction read$() might be negative. (0379a.vpr@9.1--17.2) [203361]"}
           perm >= NoPerm;
@@ -448,8 +448,8 @@ procedure f#definedness(_pure_1: Ref) returns (Result: bool)
           read$(Unfolding1Heap) > NoPerm;
         assume u32#trigger(Unfolding1Heap, u32(Unfolding1Heap[_pure_1, f$m2]));
         assume Unfolding1Heap[null, u32(Unfolding1Heap[_pure_1, f$m2])] == FrameFragment(Unfolding1Heap[Unfolding1Heap[_pure_1, f$m2], val_int]);
-        ExhaleWellDef0Mask := Unfolding1Mask;
         ExhaleWellDef0Heap := Unfolding1Heap;
+        ExhaleWellDef0Mask := Unfolding1Mask;
         perm := read$(Unfolding1Heap);
         assert {:msg "  Function might not be well-formed. Fraction read$() might be negative. (0379a.vpr@9.1--17.2) [203368]"}
           perm >= NoPerm;
@@ -543,8 +543,8 @@ procedure f#definedness(_pure_1: Ref) returns (Result: bool)
           read$(UnfoldingHeap) > NoPerm;
         assume P#trigger(UnfoldingHeap, P(_pure_1));
         assume UnfoldingHeap[null, P(_pure_1)] == CombineFrames(FrameFragment(UnfoldingHeap[_pure_1, f$m2]), CombineFrames(UnfoldingHeap[null, u32(UnfoldingHeap[_pure_1, f$m2])], CombineFrames(FrameFragment(UnfoldingHeap[_pure_1, f$m5]), UnfoldingHeap[null, u32(UnfoldingHeap[_pure_1, f$m5])])));
-        ExhaleWellDef0Mask := UnfoldingMask;
         ExhaleWellDef0Heap := UnfoldingHeap;
+        ExhaleWellDef0Mask := UnfoldingMask;
         perm := read$(UnfoldingHeap);
         assert {:msg "  Function might not be well-formed. Fraction read$() might be negative. (0379a.vpr@9.1--17.2) [203375]"}
           perm >= NoPerm;
@@ -593,8 +593,8 @@ procedure f#definedness(_pure_1: Ref) returns (Result: bool)
           read$(Unfolding1Heap) > NoPerm;
         assume u32#trigger(Unfolding1Heap, u32(Unfolding1Heap[_pure_1, f$m2]));
         assume Unfolding1Heap[null, u32(Unfolding1Heap[_pure_1, f$m2])] == FrameFragment(Unfolding1Heap[Unfolding1Heap[_pure_1, f$m2], val_int]);
-        ExhaleWellDef0Mask := Unfolding1Mask;
         ExhaleWellDef0Heap := Unfolding1Heap;
+        ExhaleWellDef0Mask := Unfolding1Mask;
         perm := read$(Unfolding1Heap);
         assert {:msg "  Function might not be well-formed. Fraction read$() might be negative. (0379a.vpr@9.1--17.2) [203382]"}
           perm >= NoPerm;

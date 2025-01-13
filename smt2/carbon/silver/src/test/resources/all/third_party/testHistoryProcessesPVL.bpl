@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 13:15:48
+// Date:         2025-01-13 18:19:52
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/third_party/testHistoryProcessesPVL.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/third_party/testHistoryProcessesPVL-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -195,12 +195,12 @@ procedure Ref__empty(diz: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -223,8 +223,8 @@ procedure Ref__empty(diz: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -253,8 +253,8 @@ procedure Ref__empty(diz: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of Ref__empty might not hold. There might be insufficient permission to access diz.Ref__x (testHistoryProcessesPVL.vpr@13.11--13.33) [181721]"}
@@ -277,12 +277,12 @@ procedure Ref__incr(diz: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -305,8 +305,8 @@ procedure Ref__incr(diz: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -335,8 +335,8 @@ procedure Ref__incr(diz: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of Ref__incr might not hold. There might be insufficient permission to access diz.Ref__x (testHistoryProcessesPVL.vpr@22.11--22.33) [181725]"}
@@ -359,14 +359,14 @@ procedure Ref__single(diz: Ref, n: int) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var arg_n: int;
   
@@ -392,8 +392,8 @@ procedure Ref__single(diz: Ref, n: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -424,8 +424,8 @@ procedure Ref__single(diz: Ref, n: int) returns ()
         PreCallMask := Mask;
         
         // -- Exhaling precondition
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           assert {:msg "  The precondition of method Ref__incr might not hold. Assertion diz != null might not hold. (testHistoryProcessesPVL.vpr@37.5--37.19) [181729]"}
             diz != null;
           perm := FullPerm;
@@ -454,8 +454,8 @@ procedure Ref__single(diz: Ref, n: int) returns ()
         arg_n := n - 1;
         
         // -- Exhaling precondition
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           assert {:msg "  The precondition of method Ref__single might not hold. Assertion diz != null might not hold. (testHistoryProcessesPVL.vpr@38.5--38.28) [181731]"}
             diz != null;
           perm := FullPerm;
@@ -486,8 +486,8 @@ procedure Ref__single(diz: Ref, n: int) returns ()
         PreCallMask := Mask;
         
         // -- Exhaling precondition
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           assert {:msg "  The precondition of method Ref__empty might not hold. Assertion diz != null might not hold. (testHistoryProcessesPVL.vpr@40.5--40.20) [181734]"}
             diz != null;
           perm := FullPerm;
@@ -513,8 +513,8 @@ procedure Ref__single(diz: Ref, n: int) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of Ref__single might not hold. There might be insufficient permission to access diz.Ref__x (testHistoryProcessesPVL.vpr@32.11--32.33) [181736]"}
@@ -537,14 +537,14 @@ procedure Ref__dual(diz: Ref, n: int, m_17: int) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var __flatten_5: bool;
   var __flatten_4: bool;
   var if_any_bool: bool;
@@ -575,8 +575,8 @@ procedure Ref__dual(diz: Ref, n: int, m_17: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -604,8 +604,8 @@ procedure Ref__dual(diz: Ref, n: int, m_17: int) returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       assert {:msg "  The precondition of method Ref__if_any_random might not hold. Assertion diz != null might not hold. (testHistoryProcessesPVL.vpr@54.3--54.41) [181740]"}
         diz != null;
     
@@ -635,8 +635,8 @@ procedure Ref__dual(diz: Ref, n: int, m_17: int) returns ()
             PreCallMask := Mask;
             
             // -- Exhaling precondition
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               assert {:msg "  The precondition of method Ref__incr might not hold. Assertion diz != null might not hold. (testHistoryProcessesPVL.vpr@59.7--59.21) [181741]"}
                 diz != null;
               perm := FullPerm;
@@ -665,8 +665,8 @@ procedure Ref__dual(diz: Ref, n: int, m_17: int) returns ()
             arg_n := n - 1;
             
             // -- Exhaling precondition
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               assert {:msg "  The precondition of method Ref__dual might not hold. Assertion diz != null might not hold. (testHistoryProcessesPVL.vpr@60.7--60.31) [181743]"}
                 diz != null;
               perm := FullPerm;
@@ -699,8 +699,8 @@ procedure Ref__dual(diz: Ref, n: int, m_17: int) returns ()
             PreCallMask := Mask;
             
             // -- Exhaling precondition
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               assert {:msg "  The precondition of method Ref__empty might not hold. Assertion diz != null might not hold. (testHistoryProcessesPVL.vpr@62.7--62.22) [181747]"}
                 diz != null;
               perm := FullPerm;
@@ -728,8 +728,8 @@ procedure Ref__dual(diz: Ref, n: int, m_17: int) returns ()
             PreCallMask := Mask;
             
             // -- Exhaling precondition
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               assert {:msg "  The precondition of method Ref__single might not hold. Assertion diz != null might not hold. (testHistoryProcessesPVL.vpr@63.7--63.26) [181749]"}
                 diz != null;
               perm := FullPerm;
@@ -765,8 +765,8 @@ procedure Ref__dual(diz: Ref, n: int, m_17: int) returns ()
             PreCallMask := Mask;
             
             // -- Exhaling precondition
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               assert {:msg "  The precondition of method Ref__incr might not hold. Assertion diz != null might not hold. (testHistoryProcessesPVL.vpr@66.5--66.19) [181752]"}
                 diz != null;
               perm := FullPerm;
@@ -795,8 +795,8 @@ procedure Ref__dual(diz: Ref, n: int, m_17: int) returns ()
             arg_n_1 := m_17 - 1;
             
             // -- Exhaling precondition
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               assert {:msg "  The precondition of method Ref__dual might not hold. Assertion diz != null might not hold. (testHistoryProcessesPVL.vpr@67.5--67.29) [181754]"}
                 diz != null;
               perm := FullPerm;
@@ -829,8 +829,8 @@ procedure Ref__dual(diz: Ref, n: int, m_17: int) returns ()
             PreCallMask := Mask;
             
             // -- Exhaling precondition
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               assert {:msg "  The precondition of method Ref__empty might not hold. Assertion diz != null might not hold. (testHistoryProcessesPVL.vpr@69.5--69.20) [181758]"}
                 diz != null;
               perm := FullPerm;
@@ -858,8 +858,8 @@ procedure Ref__dual(diz: Ref, n: int, m_17: int) returns ()
             PreCallMask := Mask;
             
             // -- Exhaling precondition
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               assert {:msg "  The precondition of method Ref__single might not hold. Assertion diz != null might not hold. (testHistoryProcessesPVL.vpr@70.5--70.24) [181760]"}
                 diz != null;
               perm := FullPerm;
@@ -889,8 +889,8 @@ procedure Ref__dual(diz: Ref, n: int, m_17: int) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of Ref__dual might not hold. There might be insufficient permission to access diz.Ref__x (testHistoryProcessesPVL.vpr@48.11--48.33) [181763]"}
@@ -913,14 +913,14 @@ procedure Ref__triple21(diz: Ref, n: int, m_17: int, k: int) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var __flatten_15: bool;
   var __flatten_14: bool;
   var if_any_bool: bool;
@@ -955,8 +955,8 @@ procedure Ref__triple21(diz: Ref, n: int, m_17: int, k: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -984,8 +984,8 @@ procedure Ref__triple21(diz: Ref, n: int, m_17: int, k: int) returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       assert {:msg "  The precondition of method Ref__if_any_random might not hold. Assertion diz != null might not hold. (testHistoryProcessesPVL.vpr@86.3--86.42) [181767]"}
         diz != null;
     
@@ -1012,8 +1012,8 @@ procedure Ref__triple21(diz: Ref, n: int, m_17: int, k: int) returns ()
         PreCallMask := Mask;
         
         // -- Exhaling precondition
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           assert {:msg "  The precondition of method Ref__if_any_random might not hold. Assertion diz != null might not hold. (testHistoryProcessesPVL.vpr@90.5--90.44) [181768]"}
             diz != null;
         
@@ -1043,8 +1043,8 @@ procedure Ref__triple21(diz: Ref, n: int, m_17: int, k: int) returns ()
                 PreCallMask := Mask;
                 
                 // -- Exhaling precondition
-                  ExhaleWellDef0Mask := Mask;
                   ExhaleWellDef0Heap := Heap;
+                  ExhaleWellDef0Mask := Mask;
                   assert {:msg "  The precondition of method Ref__incr might not hold. Assertion diz != null might not hold. (testHistoryProcessesPVL.vpr@95.9--95.23) [181769]"}
                     diz != null;
                   perm := FullPerm;
@@ -1073,8 +1073,8 @@ procedure Ref__triple21(diz: Ref, n: int, m_17: int, k: int) returns ()
                 arg_n := n - 1;
                 
                 // -- Exhaling precondition
-                  ExhaleWellDef0Mask := Mask;
                   ExhaleWellDef0Heap := Heap;
+                  ExhaleWellDef0Mask := Mask;
                   assert {:msg "  The precondition of method Ref__triple21 might not hold. Assertion diz != null might not hold. (testHistoryProcessesPVL.vpr@96.9--96.40) [181771]"}
                     diz != null;
                   perm := FullPerm;
@@ -1109,8 +1109,8 @@ procedure Ref__triple21(diz: Ref, n: int, m_17: int, k: int) returns ()
                 PreCallMask := Mask;
                 
                 // -- Exhaling precondition
-                  ExhaleWellDef0Mask := Mask;
                   ExhaleWellDef0Heap := Heap;
+                  ExhaleWellDef0Mask := Mask;
                   assert {:msg "  The precondition of method Ref__empty might not hold. Assertion diz != null might not hold. (testHistoryProcessesPVL.vpr@98.9--98.24) [181776]"}
                     diz != null;
                   perm := FullPerm;
@@ -1138,8 +1138,8 @@ procedure Ref__triple21(diz: Ref, n: int, m_17: int, k: int) returns ()
                 PreCallMask := Mask;
                 
                 // -- Exhaling precondition
-                  ExhaleWellDef0Mask := Mask;
                   ExhaleWellDef0Heap := Heap;
+                  ExhaleWellDef0Mask := Mask;
                   assert {:msg "  The precondition of method Ref__dual might not hold. Assertion diz != null might not hold. (testHistoryProcessesPVL.vpr@99.9--99.29) [181778]"}
                     diz != null;
                   perm := FullPerm;
@@ -1177,8 +1177,8 @@ procedure Ref__triple21(diz: Ref, n: int, m_17: int, k: int) returns ()
                 PreCallMask := Mask;
                 
                 // -- Exhaling precondition
-                  ExhaleWellDef0Mask := Mask;
                   ExhaleWellDef0Heap := Heap;
+                  ExhaleWellDef0Mask := Mask;
                   assert {:msg "  The precondition of method Ref__incr might not hold. Assertion diz != null might not hold. (testHistoryProcessesPVL.vpr@102.7--102.21) [181782]"}
                     diz != null;
                   perm := FullPerm;
@@ -1207,8 +1207,8 @@ procedure Ref__triple21(diz: Ref, n: int, m_17: int, k: int) returns ()
                 arg_n_1 := m_17 - 1;
                 
                 // -- Exhaling precondition
-                  ExhaleWellDef0Mask := Mask;
                   ExhaleWellDef0Heap := Heap;
+                  ExhaleWellDef0Mask := Mask;
                   assert {:msg "  The precondition of method Ref__triple21 might not hold. Assertion diz != null might not hold. (testHistoryProcessesPVL.vpr@103.7--103.38) [181784]"}
                     diz != null;
                   perm := FullPerm;
@@ -1243,8 +1243,8 @@ procedure Ref__triple21(diz: Ref, n: int, m_17: int, k: int) returns ()
                 PreCallMask := Mask;
                 
                 // -- Exhaling precondition
-                  ExhaleWellDef0Mask := Mask;
                   ExhaleWellDef0Heap := Heap;
+                  ExhaleWellDef0Mask := Mask;
                   assert {:msg "  The precondition of method Ref__empty might not hold. Assertion diz != null might not hold. (testHistoryProcessesPVL.vpr@105.7--105.22) [181789]"}
                     diz != null;
                   perm := FullPerm;
@@ -1272,8 +1272,8 @@ procedure Ref__triple21(diz: Ref, n: int, m_17: int, k: int) returns ()
                 PreCallMask := Mask;
                 
                 // -- Exhaling precondition
-                  ExhaleWellDef0Mask := Mask;
                   ExhaleWellDef0Heap := Heap;
+                  ExhaleWellDef0Mask := Mask;
                   assert {:msg "  The precondition of method Ref__dual might not hold. Assertion diz != null might not hold. (testHistoryProcessesPVL.vpr@106.7--106.27) [181791]"}
                     diz != null;
                   perm := FullPerm;
@@ -1313,8 +1313,8 @@ procedure Ref__triple21(diz: Ref, n: int, m_17: int, k: int) returns ()
             PreCallMask := Mask;
             
             // -- Exhaling precondition
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               assert {:msg "  The precondition of method Ref__incr might not hold. Assertion diz != null might not hold. (testHistoryProcessesPVL.vpr@109.5--109.19) [181795]"}
                 diz != null;
               perm := FullPerm;
@@ -1343,8 +1343,8 @@ procedure Ref__triple21(diz: Ref, n: int, m_17: int, k: int) returns ()
             arg_n_2 := k - 1;
             
             // -- Exhaling precondition
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               assert {:msg "  The precondition of method Ref__triple12 might not hold. Assertion diz != null might not hold. (testHistoryProcessesPVL.vpr@110.5--110.36) [181797]"}
                 diz != null;
               perm := FullPerm;
@@ -1379,8 +1379,8 @@ procedure Ref__triple21(diz: Ref, n: int, m_17: int, k: int) returns ()
             PreCallMask := Mask;
             
             // -- Exhaling precondition
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               assert {:msg "  The precondition of method Ref__empty might not hold. Assertion diz != null might not hold. (testHistoryProcessesPVL.vpr@112.5--112.20) [181802]"}
                 diz != null;
               perm := FullPerm;
@@ -1408,8 +1408,8 @@ procedure Ref__triple21(diz: Ref, n: int, m_17: int, k: int) returns ()
             PreCallMask := Mask;
             
             // -- Exhaling precondition
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               assert {:msg "  The precondition of method Ref__dual might not hold. Assertion diz != null might not hold. (testHistoryProcessesPVL.vpr@113.5--113.25) [181804]"}
                 diz != null;
               perm := FullPerm;
@@ -1441,8 +1441,8 @@ procedure Ref__triple21(diz: Ref, n: int, m_17: int, k: int) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of Ref__triple21 might not hold. There might be insufficient permission to access diz.Ref__x (testHistoryProcessesPVL.vpr@78.11--78.33) [181808]"}
@@ -1465,14 +1465,14 @@ procedure Ref__triple12(diz: Ref, n: int, m_17: int, k: int) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var __flatten_31: bool;
   var __flatten_30: bool;
   var if_any_bool: bool;
@@ -1507,8 +1507,8 @@ procedure Ref__triple12(diz: Ref, n: int, m_17: int, k: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1536,8 +1536,8 @@ procedure Ref__triple12(diz: Ref, n: int, m_17: int, k: int) returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       assert {:msg "  The precondition of method Ref__if_any_random might not hold. Assertion diz != null might not hold. (testHistoryProcessesPVL.vpr@129.3--129.42) [181812]"}
         diz != null;
     
@@ -1567,8 +1567,8 @@ procedure Ref__triple12(diz: Ref, n: int, m_17: int, k: int) returns ()
             PreCallMask := Mask;
             
             // -- Exhaling precondition
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               assert {:msg "  The precondition of method Ref__incr might not hold. Assertion diz != null might not hold. (testHistoryProcessesPVL.vpr@134.7--134.21) [181813]"}
                 diz != null;
               perm := FullPerm;
@@ -1597,8 +1597,8 @@ procedure Ref__triple12(diz: Ref, n: int, m_17: int, k: int) returns ()
             arg_n := n - 1;
             
             // -- Exhaling precondition
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               assert {:msg "  The precondition of method Ref__triple12 might not hold. Assertion diz != null might not hold. (testHistoryProcessesPVL.vpr@135.7--135.38) [181815]"}
                 diz != null;
               perm := FullPerm;
@@ -1633,8 +1633,8 @@ procedure Ref__triple12(diz: Ref, n: int, m_17: int, k: int) returns ()
             PreCallMask := Mask;
             
             // -- Exhaling precondition
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               assert {:msg "  The precondition of method Ref__empty might not hold. Assertion diz != null might not hold. (testHistoryProcessesPVL.vpr@137.7--137.22) [181820]"}
                 diz != null;
               perm := FullPerm;
@@ -1662,8 +1662,8 @@ procedure Ref__triple12(diz: Ref, n: int, m_17: int, k: int) returns ()
             PreCallMask := Mask;
             
             // -- Exhaling precondition
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               assert {:msg "  The precondition of method Ref__dual might not hold. Assertion diz != null might not hold. (testHistoryProcessesPVL.vpr@138.7--138.27) [181822]"}
                 diz != null;
               perm := FullPerm;
@@ -1698,8 +1698,8 @@ procedure Ref__triple12(diz: Ref, n: int, m_17: int, k: int) returns ()
         PreCallMask := Mask;
         
         // -- Exhaling precondition
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           assert {:msg "  The precondition of method Ref__if_any_random might not hold. Assertion diz != null might not hold. (testHistoryProcessesPVL.vpr@141.5--141.44) [181826]"}
             diz != null;
         
@@ -1729,8 +1729,8 @@ procedure Ref__triple12(diz: Ref, n: int, m_17: int, k: int) returns ()
                 PreCallMask := Mask;
                 
                 // -- Exhaling precondition
-                  ExhaleWellDef0Mask := Mask;
                   ExhaleWellDef0Heap := Heap;
+                  ExhaleWellDef0Mask := Mask;
                   assert {:msg "  The precondition of method Ref__incr might not hold. Assertion diz != null might not hold. (testHistoryProcessesPVL.vpr@146.9--146.23) [181827]"}
                     diz != null;
                   perm := FullPerm;
@@ -1759,8 +1759,8 @@ procedure Ref__triple12(diz: Ref, n: int, m_17: int, k: int) returns ()
                 arg_n_1 := m_17 - 1;
                 
                 // -- Exhaling precondition
-                  ExhaleWellDef0Mask := Mask;
                   ExhaleWellDef0Heap := Heap;
+                  ExhaleWellDef0Mask := Mask;
                   assert {:msg "  The precondition of method Ref__triple21 might not hold. Assertion diz != null might not hold. (testHistoryProcessesPVL.vpr@147.9--147.40) [181829]"}
                     diz != null;
                   perm := FullPerm;
@@ -1795,8 +1795,8 @@ procedure Ref__triple12(diz: Ref, n: int, m_17: int, k: int) returns ()
                 PreCallMask := Mask;
                 
                 // -- Exhaling precondition
-                  ExhaleWellDef0Mask := Mask;
                   ExhaleWellDef0Heap := Heap;
+                  ExhaleWellDef0Mask := Mask;
                   assert {:msg "  The precondition of method Ref__empty might not hold. Assertion diz != null might not hold. (testHistoryProcessesPVL.vpr@149.9--149.24) [181834]"}
                     diz != null;
                   perm := FullPerm;
@@ -1824,8 +1824,8 @@ procedure Ref__triple12(diz: Ref, n: int, m_17: int, k: int) returns ()
                 PreCallMask := Mask;
                 
                 // -- Exhaling precondition
-                  ExhaleWellDef0Mask := Mask;
                   ExhaleWellDef0Heap := Heap;
+                  ExhaleWellDef0Mask := Mask;
                   assert {:msg "  The precondition of method Ref__dual might not hold. Assertion diz != null might not hold. (testHistoryProcessesPVL.vpr@150.9--150.29) [181836]"}
                     diz != null;
                   perm := FullPerm;
@@ -1863,8 +1863,8 @@ procedure Ref__triple12(diz: Ref, n: int, m_17: int, k: int) returns ()
                 PreCallMask := Mask;
                 
                 // -- Exhaling precondition
-                  ExhaleWellDef0Mask := Mask;
                   ExhaleWellDef0Heap := Heap;
+                  ExhaleWellDef0Mask := Mask;
                   assert {:msg "  The precondition of method Ref__incr might not hold. Assertion diz != null might not hold. (testHistoryProcessesPVL.vpr@153.7--153.21) [181840]"}
                     diz != null;
                   perm := FullPerm;
@@ -1893,8 +1893,8 @@ procedure Ref__triple12(diz: Ref, n: int, m_17: int, k: int) returns ()
                 arg_n_2 := k - 1;
                 
                 // -- Exhaling precondition
-                  ExhaleWellDef0Mask := Mask;
                   ExhaleWellDef0Heap := Heap;
+                  ExhaleWellDef0Mask := Mask;
                   assert {:msg "  The precondition of method Ref__triple21 might not hold. Assertion diz != null might not hold. (testHistoryProcessesPVL.vpr@154.7--154.38) [181842]"}
                     diz != null;
                   perm := FullPerm;
@@ -1929,8 +1929,8 @@ procedure Ref__triple12(diz: Ref, n: int, m_17: int, k: int) returns ()
                 PreCallMask := Mask;
                 
                 // -- Exhaling precondition
-                  ExhaleWellDef0Mask := Mask;
                   ExhaleWellDef0Heap := Heap;
+                  ExhaleWellDef0Mask := Mask;
                   assert {:msg "  The precondition of method Ref__empty might not hold. Assertion diz != null might not hold. (testHistoryProcessesPVL.vpr@156.7--156.22) [181847]"}
                     diz != null;
                   perm := FullPerm;
@@ -1958,8 +1958,8 @@ procedure Ref__triple12(diz: Ref, n: int, m_17: int, k: int) returns ()
                 PreCallMask := Mask;
                 
                 // -- Exhaling precondition
-                  ExhaleWellDef0Mask := Mask;
                   ExhaleWellDef0Heap := Heap;
+                  ExhaleWellDef0Mask := Mask;
                   assert {:msg "  The precondition of method Ref__dual might not hold. Assertion diz != null might not hold. (testHistoryProcessesPVL.vpr@157.7--157.27) [181849]"}
                     diz != null;
                   perm := FullPerm;
@@ -1993,8 +1993,8 @@ procedure Ref__triple12(diz: Ref, n: int, m_17: int, k: int) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of Ref__triple12 might not hold. There might be insufficient permission to access diz.Ref__x (testHistoryProcessesPVL.vpr@121.11--121.33) [181853]"}
@@ -2017,14 +2017,14 @@ procedure Ref__destroy_check(diz: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var arg_n: int;
   
@@ -2048,8 +2048,8 @@ procedure Ref__destroy_check(diz: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -2083,8 +2083,8 @@ procedure Ref__destroy_check(diz: Ref) returns ()
       PreCallMask := Mask;
       
       // -- Exhaling precondition
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  The precondition of method Ref__incr might not hold. Assertion diz != null might not hold. (testHistoryProcessesPVL.vpr@170.5--170.19) [181857]"}
           diz != null;
         perm := FullPerm;
@@ -2113,8 +2113,8 @@ procedure Ref__destroy_check(diz: Ref) returns ()
       arg_n := 0;
       
       // -- Exhaling precondition
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  The precondition of method Ref__single might not hold. Assertion diz != null might not hold. (testHistoryProcessesPVL.vpr@171.5--171.28) [181859]"}
           diz != null;
         perm := FullPerm;
@@ -2141,8 +2141,8 @@ procedure Ref__destroy_check(diz: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of Ref__destroy_check might not hold. There might be insufficient permission to access diz.Ref__x (testHistoryProcessesPVL.vpr@165.11--165.33) [181864]"}
@@ -2166,8 +2166,8 @@ procedure Ref__destroy_check(diz: Ref) returns ()
 procedure Ref__Ref() returns (sys__result: Ref)
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var perm: Perm;
@@ -2176,8 +2176,8 @@ procedure Ref__Ref() returns (sys__result: Ref)
   var freshObj: Ref;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -2188,8 +2188,8 @@ procedure Ref__Ref() returns (sys__result: Ref)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -2243,8 +2243,8 @@ procedure Ref__Ref() returns (sys__result: Ref)
   //   (acc(sys__result.Ref__x, write) && sys__result.Ref__x == 0) -- testHistoryProcessesPVL.vpr@187.3--187.96
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
+    ExhaleWellDef0Mask := AssertMask;
     assert {:msg "  Assert might fail. Assertion sys__result != null might not hold. (testHistoryProcessesPVL.vpr@187.10--187.96) [181868]"}
       sys__result != null;
     perm := FullPerm;
@@ -2267,8 +2267,8 @@ procedure Ref__Ref() returns (sys__result: Ref)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of Ref__Ref might not hold. Assertion sys__result != null might not hold. (testHistoryProcessesPVL.vpr@178.11--178.30) [181873]"}
       sys__result != null;
     perm := FullPerm;
@@ -2292,8 +2292,8 @@ procedure Ref__Ref() returns (sys__result: Ref)
 procedure Ref__empty_begin(diz: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -2310,8 +2310,8 @@ procedure Ref__empty_begin(diz: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale false -- testHistoryProcessesPVL.vpr@194.3--194.15
     assume false;
@@ -2326,8 +2326,8 @@ procedure Ref__empty_begin(diz: Ref) returns ()
 procedure Ref__empty_commit(diz: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -2344,8 +2344,8 @@ procedure Ref__empty_commit(diz: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale false -- testHistoryProcessesPVL.vpr@200.3--200.15
     assume false;
@@ -2360,8 +2360,8 @@ procedure Ref__empty_commit(diz: Ref) returns ()
 procedure Ref__incr_begin(diz: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -2378,8 +2378,8 @@ procedure Ref__incr_begin(diz: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale false -- testHistoryProcessesPVL.vpr@206.3--206.15
     assume false;
@@ -2394,8 +2394,8 @@ procedure Ref__incr_begin(diz: Ref) returns ()
 procedure Ref__incr_commit(diz: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -2412,8 +2412,8 @@ procedure Ref__incr_commit(diz: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale false -- testHistoryProcessesPVL.vpr@212.3--212.15
     assume false;
@@ -2428,8 +2428,8 @@ procedure Ref__incr_commit(diz: Ref) returns ()
 procedure Ref__if_any_random(diz: Ref) returns (sys__result: bool)
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -2446,8 +2446,8 @@ procedure Ref__if_any_random(diz: Ref) returns (sys__result: bool)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale false -- testHistoryProcessesPVL.vpr@218.3--218.15
     assume false;

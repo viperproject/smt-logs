@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 12:37:12
+; Started: 2025-01-13 17:41:49
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -430,11 +430,11 @@
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   (= (vals%limited s@$ x@0@00) (vals s@$ x@0@00))
   :pattern ((vals s@$ x@0@00))
-  :qid |quant-u-19593|)))
+  :qid |quant-u-19534|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   (vals%stateless x@0@00)
   :pattern ((vals%limited s@$ x@0@00))
-  :qid |quant-u-19594|)))
+  :qid |quant-u-19535|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -633,7 +633,7 @@
           (vals%limited ($Snap.second ($Snap.second ($Snap.second ($Snap.second s@$)))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second s@$))))))))))
   :pattern ((vals s@$ x@0@00))
   :pattern ((vals%stateless x@0@00) (Tree%trigger s@$ x@0@00))
-  :qid |quant-u-19597|)))
+  :qid |quant-u-19538|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   (=>
     (vals%precondition s@$ x@0@00)
@@ -644,7 +644,7 @@
         (vals%precondition ($Snap.first ($Snap.second ($Snap.second s@$))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$))))
         (vals%precondition ($Snap.second ($Snap.second ($Snap.second ($Snap.second s@$)))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second s@$)))))))))
   :pattern ((vals s@$ x@0@00))
-  :qid |quant-u-19598|)))
+  :qid |quant-u-19539|)))
 ; ---------- FUNCTION val----------
 (declare-fun x@2@00 () $Ref)
 (declare-fun result@3@00 () Int)
@@ -658,11 +658,11 @@
 (assert (forall ((s@$ $Snap) (x@2@00 $Ref)) (!
   (= (val%limited s@$ x@2@00) (val s@$ x@2@00))
   :pattern ((val s@$ x@2@00))
-  :qid |quant-u-19595|)))
+  :qid |quant-u-19536|)))
 (assert (forall ((s@$ $Snap) (x@2@00 $Ref)) (!
   (val%stateless x@2@00)
   :pattern ((val%limited s@$ x@2@00))
-  :qid |quant-u-19596|)))
+  :qid |quant-u-19537|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (= s@$ ($Snap.combine ($Snap.first s@$) ($Snap.second s@$))))
@@ -769,11 +769,11 @@
       (val s@$ x@2@00)
       ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second s@$)))))
   :pattern ((val s@$ x@2@00))
-  :qid |quant-u-19599|)))
+  :qid |quant-u-19540|)))
 (assert (forall ((s@$ $Snap) (x@2@00 $Ref)) (!
   true
   :pattern ((val s@$ x@2@00))
-  :qid |quant-u-19600|)))
+  :qid |quant-u-19541|)))
 ; ---------- Tree ----------
 (declare-const x@4@00 $Ref)
 (set-option :timeout 0)

@@ -791,7 +791,7 @@
  :skolemid |89|
  :pattern ( (state Heap@@63 Mask@@46) (stupidFunc Heap@@63 p_1@@2))
 )))
-; Invalid
+; Valid
 (push 1)
 (declare-fun ControlFlow (Int Int) Int)
 (declare-fun Heap@@64 () T@PolymorphicMapType_11906)

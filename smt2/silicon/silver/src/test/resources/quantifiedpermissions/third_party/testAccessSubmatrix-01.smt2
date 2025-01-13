@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 12:32:19
+; Started: 2025-01-13 17:37:01
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -914,11 +914,11 @@
     (Ref__multidim_index_2%limited s@$ N0@0@00 N1@1@00 i0@2@00 i1@3@00)
     (Ref__multidim_index_2 s@$ N0@0@00 N1@1@00 i0@2@00 i1@3@00))
   :pattern ((Ref__multidim_index_2 s@$ N0@0@00 N1@1@00 i0@2@00 i1@3@00))
-  :qid |quant-u-9596|)))
+  :qid |quant-u-9553|)))
 (assert (forall ((s@$ $Snap) (N0@0@00 Int) (N1@1@00 Int) (i0@2@00 Int) (i1@3@00 Int)) (!
   (Ref__multidim_index_2%stateless N0@0@00 N1@1@00 i0@2@00 i1@3@00)
   :pattern ((Ref__multidim_index_2%limited s@$ N0@0@00 N1@1@00 i0@2@00 i1@3@00))
-  :qid |quant-u-9597|)))
+  :qid |quant-u-9554|)))
 (assert (forall ((s@$ $Snap) (N0@0@00 Int) (N1@1@00 Int) (i0@2@00 Int) (i1@3@00 Int)) (!
   (let ((result@4@00 (Ref__multidim_index_2%limited s@$ N0@0@00 N1@1@00 i0@2@00 i1@3@00))) (=>
     (Ref__multidim_index_2%precondition s@$ N0@0@00 N1@1@00 i0@2@00 i1@3@00)
@@ -929,27 +929,27 @@
       (= (mod result@4@00 N1@1@00) i1@3@00)
       (< (mod result@4@00 N1@1@00) N0@0@00))))
   :pattern ((Ref__multidim_index_2%limited s@$ N0@0@00 N1@1@00 i0@2@00 i1@3@00))
-  :qid |quant-u-9598|)))
+  :qid |quant-u-9555|)))
 (assert (forall ((s@$ $Snap) (N0@0@00 Int) (N1@1@00 Int) (i0@2@00 Int) (i1@3@00 Int)) (!
   (let ((result@4@00 (Ref__multidim_index_2%limited s@$ N0@0@00 N1@1@00 i0@2@00 i1@3@00))) true)
   :pattern ((Ref__multidim_index_2%limited s@$ N0@0@00 N1@1@00 i0@2@00 i1@3@00))
-  :qid |quant-u-9599|)))
+  :qid |quant-u-9556|)))
 (assert (forall ((s@$ $Snap) (N0@0@00 Int) (N1@1@00 Int) (i0@2@00 Int) (i1@3@00 Int)) (!
   (let ((result@4@00 (Ref__multidim_index_2%limited s@$ N0@0@00 N1@1@00 i0@2@00 i1@3@00))) true)
   :pattern ((Ref__multidim_index_2%limited s@$ N0@0@00 N1@1@00 i0@2@00 i1@3@00))
-  :qid |quant-u-9600|)))
+  :qid |quant-u-9557|)))
 (assert (forall ((s@$ $Snap) (N0@0@00 Int) (N1@1@00 Int) (i0@2@00 Int) (i1@3@00 Int)) (!
   (let ((result@4@00 (Ref__multidim_index_2%limited s@$ N0@0@00 N1@1@00 i0@2@00 i1@3@00))) true)
   :pattern ((Ref__multidim_index_2%limited s@$ N0@0@00 N1@1@00 i0@2@00 i1@3@00))
-  :qid |quant-u-9601|)))
+  :qid |quant-u-9558|)))
 (assert (forall ((s@$ $Snap) (N0@0@00 Int) (N1@1@00 Int) (i0@2@00 Int) (i1@3@00 Int)) (!
   (let ((result@4@00 (Ref__multidim_index_2%limited s@$ N0@0@00 N1@1@00 i0@2@00 i1@3@00))) true)
   :pattern ((Ref__multidim_index_2%limited s@$ N0@0@00 N1@1@00 i0@2@00 i1@3@00))
-  :qid |quant-u-9602|)))
+  :qid |quant-u-9559|)))
 (assert (forall ((s@$ $Snap) (N0@0@00 Int) (N1@1@00 Int) (i0@2@00 Int) (i1@3@00 Int)) (!
   (let ((result@4@00 (Ref__multidim_index_2%limited s@$ N0@0@00 N1@1@00 i0@2@00 i1@3@00))) true)
   :pattern ((Ref__multidim_index_2%limited s@$ N0@0@00 N1@1@00 i0@2@00 i1@3@00))
-  :qid |quant-u-9603|)))
+  :qid |quant-u-9560|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- Ref__zero ----------
@@ -1427,7 +1427,7 @@
       (= (inv@16@01 (Seq_index matrix@11@01 j1@15@01)) j1@15@01)
       (img@17@01 (Seq_index matrix@11@01 j1@15@01))))
   :pattern ((Seq_index matrix@11@01 j1@15@01))
-  :qid |quant-u-9605|)))
+  :qid |quant-u-9562|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -1613,7 +1613,7 @@
       (pTaken@24@01 r))
     $Perm.No)
   
-  :qid |quant-u-9607|))))
+  :qid |quant-u-9564|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -1625,7 +1625,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@24@01 r) $Perm.No)
   
-  :qid |quant-u-9608|))))
+  :qid |quant-u-9565|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -1638,7 +1638,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (= r __flatten_3@23@01) (= (- $Perm.Write (pTaken@24@01 r)) $Perm.No))
   
-  :qid |quant-u-9609|))))
+  :qid |quant-u-9566|))))
 (check-sat)
 ; unsat
 (pop) ; 3

@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 12:38:26
+; Started: 2025-01-13 17:43:00
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -126,63 +126,63 @@
 (assert (forall ((s@$ $Snap)) (!
   (= (main%limited s@$) (main s@$))
   :pattern ((main s@$))
-  :qid |quant-u-21890|)))
+  :qid |quant-u-21831|)))
 (assert (forall ((s@$ $Snap)) (!
   (as main%stateless  Bool)
   :pattern ((main%limited s@$))
-  :qid |quant-u-21891|)))
+  :qid |quant-u-21832|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@0@00 (main%limited s@$))) (=>
     (main%precondition s@$)
     (= result@0@00 (liba%limited $Snap.unit))))
   :pattern ((main%limited s@$))
-  :qid |quant-u-21896|)))
+  :qid |quant-u-21837|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@0@00 (main%limited s@$))) (=>
     (main%precondition s@$)
     (liba%precondition $Snap.unit)))
   :pattern ((main%limited s@$))
-  :qid |quant-u-21897|)))
+  :qid |quant-u-21838|)))
 (assert (forall ((s@$ $Snap)) (!
   (= (libb%limited s@$) (libb s@$))
   :pattern ((libb s@$))
-  :qid |quant-u-21892|)))
+  :qid |quant-u-21833|)))
 (assert (forall ((s@$ $Snap)) (!
   (as libb%stateless  Bool)
   :pattern ((libb%limited s@$))
-  :qid |quant-u-21893|)))
+  :qid |quant-u-21834|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@1@00 (libb%limited s@$))) (=>
     (libb%precondition s@$)
     (= result@1@00 (main%limited $Snap.unit))))
   :pattern ((libb%limited s@$))
-  :qid |quant-u-21898|)))
+  :qid |quant-u-21839|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@1@00 (libb%limited s@$))) (=>
     (libb%precondition s@$)
     (main%precondition $Snap.unit)))
   :pattern ((libb%limited s@$))
-  :qid |quant-u-21899|)))
+  :qid |quant-u-21840|)))
 (assert (forall ((s@$ $Snap)) (!
   (= (liba%limited s@$) (liba s@$))
   :pattern ((liba s@$))
-  :qid |quant-u-21894|)))
+  :qid |quant-u-21835|)))
 (assert (forall ((s@$ $Snap)) (!
   (as liba%stateless  Bool)
   :pattern ((liba%limited s@$))
-  :qid |quant-u-21895|)))
+  :qid |quant-u-21836|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@2@00 (liba%limited s@$))) (=>
     (liba%precondition s@$)
     (= result@2@00 (libb%limited $Snap.unit))))
   :pattern ((liba%limited s@$))
-  :qid |quant-u-21900|)))
+  :qid |quant-u-21841|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@2@00 (liba%limited s@$))) (=>
     (liba%precondition s@$)
     (libb%precondition $Snap.unit)))
   :pattern ((liba%limited s@$))
-  :qid |quant-u-21901|)))
+  :qid |quant-u-21842|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- test ----------

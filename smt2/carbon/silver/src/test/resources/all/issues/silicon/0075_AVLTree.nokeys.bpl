@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 13:24:15
+// Date:         2025-01-13 18:28:04
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0075_AVLTree.nokeys.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0075_AVLTree.nokeys-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -575,12 +575,12 @@ procedure headinit(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var freshVersion: FrameType;
   var newPMask: PMaskType;
   var ExhaleHeap: HeapType;
@@ -603,8 +603,8 @@ procedure headinit(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -625,8 +625,8 @@ procedure headinit(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(headvalid(this), write) -- 0075_AVLTree.nokeys.vpr@18.3--18.34
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding headvalid(this) might fail. There might be insufficient permission to access this.root (0075_AVLTree.nokeys.vpr@18.3--18.34) [213370]"}
@@ -694,8 +694,8 @@ procedure headinit(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of headinit might not hold. There might be insufficient permission to access headvalid(this) (0075_AVLTree.nokeys.vpr@15.11--15.37) [213378]"}
@@ -716,12 +716,12 @@ procedure headhas(this: Ref, k: int) returns (b_24: bool)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newVersion: FrameType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
@@ -748,8 +748,8 @@ procedure headhas(this: Ref, k: int) returns (b_24: bool)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -766,8 +766,8 @@ procedure headhas(this: Ref, k: int) returns (b_24: bool)
   // -- Translating statement: unfold acc(headvalid(this), write) -- 0075_AVLTree.nokeys.vpr@27.3--27.36
     assume headvalid#trigger(Heap, headvalid(this));
     assume Heap[null, headvalid(this)] == CombineFrames(FrameFragment(Heap[this, root_1]), CombineFrames(FrameFragment((if Heap[this, root_1] != null then Heap[null, valid(Heap[this, root_1])] else EmptyFrame)), CombineFrames(FrameFragment((if Heap[this, root_1] != null then FrameFragment(Heap[Heap[this, root_1], height_2]) else EmptyFrame)), FrameFragment((if Heap[this, root_1] != null then FrameFragment(Heap[Heap[this, root_1], balanceFactor]) else EmptyFrame)))));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding headvalid(this) might fail. There might be insufficient permission to access headvalid(this) (0075_AVLTree.nokeys.vpr@27.3--27.36) [213381]"}
@@ -833,8 +833,8 @@ procedure headhas(this: Ref, k: int) returns (b_24: bool)
         arg_this := Heap[this, root_1];
         
         // -- Exhaling precondition
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  The precondition of method has might not hold. There might be insufficient permission to access valid(this.root) (0075_AVLTree.nokeys.vpr@31.4--31.25) [213388]"}
@@ -863,8 +863,8 @@ procedure headhas(this: Ref, k: int) returns (b_24: bool)
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(headvalid(this), write) -- 0075_AVLTree.nokeys.vpr@34.3--34.34
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding headvalid(this) might fail. There might be insufficient permission to access this.root (0075_AVLTree.nokeys.vpr@34.3--34.34) [213391]"}
@@ -932,8 +932,8 @@ procedure headhas(this: Ref, k: int) returns (b_24: bool)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of headhas might not hold. There might be insufficient permission to access headvalid(this) (0075_AVLTree.nokeys.vpr@24.11--24.37) [213399]"}
@@ -954,14 +954,14 @@ procedure init(this: Ref, k: int) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -1002,8 +1002,8 @@ procedure init(this: Ref, k: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1066,8 +1066,8 @@ procedure init(this: Ref, k: int) returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  The precondition of method close might not hold. There might be insufficient permission to access this.key (0075_AVLTree.nokeys.vpr@82.3--82.14) [213407]"}
@@ -1185,8 +1185,8 @@ procedure init(this: Ref, k: int) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of init might not hold. There might be insufficient permission to access valid(this) (0075_AVLTree.nokeys.vpr@73.11--73.33) [213426]"}
@@ -1227,12 +1227,12 @@ procedure has(this: Ref, k: int) returns (b_24: bool)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newVersion: FrameType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
@@ -1259,8 +1259,8 @@ procedure has(this: Ref, k: int) returns (b_24: bool)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1277,8 +1277,8 @@ procedure has(this: Ref, k: int) returns (b_24: bool)
   // -- Translating statement: unfold acc(valid(this), write) -- 0075_AVLTree.nokeys.vpr@96.3--96.32
     assume valid#trigger(Heap, valid(this));
     assume Heap[null, valid(this)] == CombineFrames(FrameFragment(Heap[this, key]), CombineFrames(FrameFragment(Heap[this, height_2]), CombineFrames(FrameFragment(Heap[this, left]), CombineFrames(FrameFragment(Heap[this, right_1]), CombineFrames(FrameFragment(Heap[this, balanceFactor]), CombineFrames(FrameFragment((if Heap[this, left] != null then Heap[null, valid(Heap[this, left])] else EmptyFrame)), CombineFrames(FrameFragment((if Heap[this, left] != null then FrameFragment(Heap[Heap[this, left], height_2]) else EmptyFrame)), CombineFrames(FrameFragment((if Heap[this, left] != null then FrameFragment(Heap[Heap[this, left], balanceFactor]) else EmptyFrame)), CombineFrames(FrameFragment((if Heap[this, left] != null then EmptyFrame else EmptyFrame)), CombineFrames(FrameFragment((if Heap[this, right_1] != null then Heap[null, valid(Heap[this, right_1])] else EmptyFrame)), CombineFrames(FrameFragment((if Heap[this, right_1] != null then FrameFragment(Heap[Heap[this, right_1], height_2]) else EmptyFrame)), CombineFrames(FrameFragment((if Heap[this, right_1] != null then FrameFragment(Heap[Heap[this, right_1], balanceFactor]) else EmptyFrame)), FrameFragment((if Heap[this, right_1] != null then EmptyFrame else EmptyFrame))))))))))))));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding valid(this) might fail. There might be insufficient permission to access valid(this) (0075_AVLTree.nokeys.vpr@96.3--96.32) [213435]"}
@@ -1413,8 +1413,8 @@ procedure has(this: Ref, k: int) returns (b_24: bool)
                 arg_this := Heap[this, left];
                 
                 // -- Exhaling precondition
-                  ExhaleWellDef0Mask := Mask;
                   ExhaleWellDef0Heap := Heap;
+                  ExhaleWellDef0Mask := Mask;
                   perm := FullPerm;
                   if (perm != NoPerm) {
                     assert {:msg "  The precondition of method has might not hold. There might be insufficient permission to access valid(this.left) (0075_AVLTree.nokeys.vpr@102.6--102.27) [213451]"}
@@ -1461,8 +1461,8 @@ procedure has(this: Ref, k: int) returns (b_24: bool)
                 arg_this_1 := Heap[this, right_1];
                 
                 // -- Exhaling precondition
-                  ExhaleWellDef0Mask := Mask;
                   ExhaleWellDef0Heap := Heap;
+                  ExhaleWellDef0Mask := Mask;
                   perm := FullPerm;
                   if (perm != NoPerm) {
                     assert {:msg "  The precondition of method has might not hold. There might be insufficient permission to access valid(this.right) (0075_AVLTree.nokeys.vpr@108.6--108.28) [213454]"}
@@ -1496,8 +1496,8 @@ procedure has(this: Ref, k: int) returns (b_24: bool)
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(valid(this), write) -- 0075_AVLTree.nokeys.vpr@114.3--114.30
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding valid(this) might fail. There might be insufficient permission to access this.key (0075_AVLTree.nokeys.vpr@114.3--114.30) [213457]"}
@@ -1660,8 +1660,8 @@ procedure has(this: Ref, k: int) returns (b_24: bool)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of has might not hold. There might be insufficient permission to access valid(this) (0075_AVLTree.nokeys.vpr@94.11--94.33) [213486]"}
@@ -1682,21 +1682,21 @@ procedure getBalanceFactor(this: Ref, rd_1: Perm) returns (bf: int)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newPMask: PMaskType;
   var newVersion: FrameType;
   var lh: int;
   var rh: int;
   var freshVersion: FrameType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -1725,8 +1725,8 @@ procedure getBalanceFactor(this: Ref, rd_1: Perm) returns (bf: int)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1755,8 +1755,8 @@ procedure getBalanceFactor(this: Ref, rd_1: Perm) returns (bf: int)
       UnfoldingMask := PostMask;
       assume valid#trigger(UnfoldingHeap, valid(this));
       assume UnfoldingHeap[null, valid(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, key]), CombineFrames(FrameFragment(UnfoldingHeap[this, height_2]), CombineFrames(FrameFragment(UnfoldingHeap[this, left]), CombineFrames(FrameFragment(UnfoldingHeap[this, right_1]), CombineFrames(FrameFragment(UnfoldingHeap[this, balanceFactor]), CombineFrames(FrameFragment((if UnfoldingHeap[this, left] != null then UnfoldingHeap[null, valid(UnfoldingHeap[this, left])] else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[this, left] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[this, left], height_2]) else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[this, left] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[this, left], balanceFactor]) else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[this, left] != null then EmptyFrame else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[this, right_1] != null then UnfoldingHeap[null, valid(UnfoldingHeap[this, right_1])] else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[this, right_1] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[this, right_1], height_2]) else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[this, right_1] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[this, right_1], balanceFactor]) else EmptyFrame)), FrameFragment((if UnfoldingHeap[this, right_1] != null then EmptyFrame else EmptyFrame))))))))))))));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access valid(this) (0075_AVLTree.nokeys.vpr@126.11--126.72) [213490]"}
@@ -1893,8 +1893,8 @@ procedure getBalanceFactor(this: Ref, rd_1: Perm) returns (bf: int)
       UnfoldingMask := PostMask;
       assume valid#trigger(UnfoldingHeap, valid(this));
       assume UnfoldingHeap[null, valid(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, key]), CombineFrames(FrameFragment(UnfoldingHeap[this, height_2]), CombineFrames(FrameFragment(UnfoldingHeap[this, left]), CombineFrames(FrameFragment(UnfoldingHeap[this, right_1]), CombineFrames(FrameFragment(UnfoldingHeap[this, balanceFactor]), CombineFrames(FrameFragment((if UnfoldingHeap[this, left] != null then UnfoldingHeap[null, valid(UnfoldingHeap[this, left])] else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[this, left] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[this, left], height_2]) else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[this, left] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[this, left], balanceFactor]) else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[this, left] != null then EmptyFrame else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[this, right_1] != null then UnfoldingHeap[null, valid(UnfoldingHeap[this, right_1])] else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[this, right_1] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[this, right_1], height_2]) else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[this, right_1] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[this, right_1], balanceFactor]) else EmptyFrame)), FrameFragment((if UnfoldingHeap[this, right_1] != null then EmptyFrame else EmptyFrame))))))))))))));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       UnfoldingMask := UnfoldingMask[null, valid(this):=UnfoldingMask[null, valid(this)] - perm];
       perm := FullPerm;
@@ -1977,8 +1977,8 @@ procedure getBalanceFactor(this: Ref, rd_1: Perm) returns (bf: int)
       UnfoldingMask := PostMask;
       assume valid#trigger(UnfoldingHeap, valid(this));
       assume UnfoldingHeap[null, valid(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, key]), CombineFrames(FrameFragment(UnfoldingHeap[this, height_2]), CombineFrames(FrameFragment(UnfoldingHeap[this, left]), CombineFrames(FrameFragment(UnfoldingHeap[this, right_1]), CombineFrames(FrameFragment(UnfoldingHeap[this, balanceFactor]), CombineFrames(FrameFragment((if UnfoldingHeap[this, left] != null then UnfoldingHeap[null, valid(UnfoldingHeap[this, left])] else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[this, left] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[this, left], height_2]) else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[this, left] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[this, left], balanceFactor]) else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[this, left] != null then EmptyFrame else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[this, right_1] != null then UnfoldingHeap[null, valid(UnfoldingHeap[this, right_1])] else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[this, right_1] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[this, right_1], height_2]) else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[this, right_1] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[this, right_1], balanceFactor]) else EmptyFrame)), FrameFragment((if UnfoldingHeap[this, right_1] != null then EmptyFrame else EmptyFrame))))))))))))));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access valid(this) (0075_AVLTree.nokeys.vpr@127.11--127.72) [213498]"}
@@ -2115,8 +2115,8 @@ procedure getBalanceFactor(this: Ref, rd_1: Perm) returns (bf: int)
       UnfoldingMask := PostMask;
       assume valid#trigger(UnfoldingHeap, valid(this));
       assume UnfoldingHeap[null, valid(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, key]), CombineFrames(FrameFragment(UnfoldingHeap[this, height_2]), CombineFrames(FrameFragment(UnfoldingHeap[this, left]), CombineFrames(FrameFragment(UnfoldingHeap[this, right_1]), CombineFrames(FrameFragment(UnfoldingHeap[this, balanceFactor]), CombineFrames(FrameFragment((if UnfoldingHeap[this, left] != null then UnfoldingHeap[null, valid(UnfoldingHeap[this, left])] else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[this, left] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[this, left], height_2]) else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[this, left] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[this, left], balanceFactor]) else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[this, left] != null then EmptyFrame else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[this, right_1] != null then UnfoldingHeap[null, valid(UnfoldingHeap[this, right_1])] else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[this, right_1] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[this, right_1], height_2]) else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[this, right_1] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[this, right_1], balanceFactor]) else EmptyFrame)), FrameFragment((if UnfoldingHeap[this, right_1] != null then EmptyFrame else EmptyFrame))))))))))))));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       UnfoldingMask := UnfoldingMask[null, valid(this):=UnfoldingMask[null, valid(this)] - perm];
       perm := FullPerm;
@@ -2200,8 +2200,8 @@ procedure getBalanceFactor(this: Ref, rd_1: Perm) returns (bf: int)
   // -- Translating statement: unfold acc(valid(this), write) -- 0075_AVLTree.nokeys.vpr@129.3--129.32
     assume valid#trigger(Heap, valid(this));
     assume Heap[null, valid(this)] == CombineFrames(FrameFragment(Heap[this, key]), CombineFrames(FrameFragment(Heap[this, height_2]), CombineFrames(FrameFragment(Heap[this, left]), CombineFrames(FrameFragment(Heap[this, right_1]), CombineFrames(FrameFragment(Heap[this, balanceFactor]), CombineFrames(FrameFragment((if Heap[this, left] != null then Heap[null, valid(Heap[this, left])] else EmptyFrame)), CombineFrames(FrameFragment((if Heap[this, left] != null then FrameFragment(Heap[Heap[this, left], height_2]) else EmptyFrame)), CombineFrames(FrameFragment((if Heap[this, left] != null then FrameFragment(Heap[Heap[this, left], balanceFactor]) else EmptyFrame)), CombineFrames(FrameFragment((if Heap[this, left] != null then EmptyFrame else EmptyFrame)), CombineFrames(FrameFragment((if Heap[this, right_1] != null then Heap[null, valid(Heap[this, right_1])] else EmptyFrame)), CombineFrames(FrameFragment((if Heap[this, right_1] != null then FrameFragment(Heap[Heap[this, right_1], height_2]) else EmptyFrame)), CombineFrames(FrameFragment((if Heap[this, right_1] != null then FrameFragment(Heap[Heap[this, right_1], balanceFactor]) else EmptyFrame)), FrameFragment((if Heap[this, right_1] != null then EmptyFrame else EmptyFrame))))))))))))));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding valid(this) might fail. There might be insufficient permission to access valid(this) (0075_AVLTree.nokeys.vpr@129.3--129.32) [213508]"}
@@ -2335,8 +2335,8 @@ procedure getBalanceFactor(this: Ref, rd_1: Perm) returns (bf: int)
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(valid(this), write) -- 0075_AVLTree.nokeys.vpr@134.3--134.30
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding valid(this) might fail. There might be insufficient permission to access this.key (0075_AVLTree.nokeys.vpr@134.3--134.30) [213528]"}
@@ -2499,8 +2499,8 @@ procedure getBalanceFactor(this: Ref, rd_1: Perm) returns (bf: int)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of getBalanceFactor might not hold. There might be insufficient permission to access valid(this) (0075_AVLTree.nokeys.vpr@122.11--122.33) [213557]"}
@@ -2523,8 +2523,8 @@ procedure getBalanceFactor(this: Ref, rd_1: Perm) returns (bf: int)
       UnfoldingMask := ExhaleWellDef0Mask;
       assume valid#trigger(UnfoldingHeap, valid(this));
       assume UnfoldingHeap[null, valid(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, key]), CombineFrames(FrameFragment(UnfoldingHeap[this, height_2]), CombineFrames(FrameFragment(UnfoldingHeap[this, left]), CombineFrames(FrameFragment(UnfoldingHeap[this, right_1]), CombineFrames(FrameFragment(UnfoldingHeap[this, balanceFactor]), CombineFrames(FrameFragment((if UnfoldingHeap[this, left] != null then UnfoldingHeap[null, valid(UnfoldingHeap[this, left])] else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[this, left] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[this, left], height_2]) else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[this, left] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[this, left], balanceFactor]) else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[this, left] != null then EmptyFrame else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[this, right_1] != null then UnfoldingHeap[null, valid(UnfoldingHeap[this, right_1])] else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[this, right_1] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[this, right_1], height_2]) else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[this, right_1] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[this, right_1], balanceFactor]) else EmptyFrame)), FrameFragment((if UnfoldingHeap[this, right_1] != null then EmptyFrame else EmptyFrame))))))))))))));
-      ExhaleWellDef1Mask := UnfoldingMask;
       ExhaleWellDef1Heap := UnfoldingHeap;
+      ExhaleWellDef1Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Postcondition of getBalanceFactor might not hold. There might be insufficient permission to access valid(this) (0075_AVLTree.nokeys.vpr@126.11--126.72) [213561]"}
@@ -2625,8 +2625,8 @@ procedure getBalanceFactor(this: Ref, rd_1: Perm) returns (bf: int)
       UnfoldingMask := ExhaleWellDef0Mask;
       assume valid#trigger(UnfoldingHeap, valid(this));
       assume UnfoldingHeap[null, valid(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, key]), CombineFrames(FrameFragment(UnfoldingHeap[this, height_2]), CombineFrames(FrameFragment(UnfoldingHeap[this, left]), CombineFrames(FrameFragment(UnfoldingHeap[this, right_1]), CombineFrames(FrameFragment(UnfoldingHeap[this, balanceFactor]), CombineFrames(FrameFragment((if UnfoldingHeap[this, left] != null then UnfoldingHeap[null, valid(UnfoldingHeap[this, left])] else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[this, left] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[this, left], height_2]) else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[this, left] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[this, left], balanceFactor]) else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[this, left] != null then EmptyFrame else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[this, right_1] != null then UnfoldingHeap[null, valid(UnfoldingHeap[this, right_1])] else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[this, right_1] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[this, right_1], height_2]) else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[this, right_1] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[this, right_1], balanceFactor]) else EmptyFrame)), FrameFragment((if UnfoldingHeap[this, right_1] != null then EmptyFrame else EmptyFrame))))))))))))));
-      ExhaleWellDef1Mask := UnfoldingMask;
       ExhaleWellDef1Heap := UnfoldingHeap;
+      ExhaleWellDef1Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Postcondition of getBalanceFactor might not hold. There might be insufficient permission to access valid(this) (0075_AVLTree.nokeys.vpr@127.11--127.72) [213569]"}
@@ -2805,18 +2805,18 @@ procedure getBalanceFactorI(this: Ref, rd_1: Perm) returns (bf: int)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var lh: int;
   var rh: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var newPMask: PMaskType;
   var ExhaleHeap: HeapType;
   
@@ -2911,8 +2911,8 @@ procedure getBalanceFactorI(this: Ref, rd_1: Perm) returns (bf: int)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -3064,8 +3064,8 @@ procedure getBalanceFactorI(this: Ref, rd_1: Perm) returns (bf: int)
   
   // -- Translating statement: assert this.right != null ==>
   //   (unfolding acc(valid(this.right), write) in true) -- 0075_AVLTree.nokeys.vpr@162.3--162.80
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of this.right != null
       assert {:msg "  Assert might fail. There might be insufficient permission to access this.right (0075_AVLTree.nokeys.vpr@162.10--162.80) [213614]"}
@@ -3077,8 +3077,8 @@ procedure getBalanceFactorI(this: Ref, rd_1: Perm) returns (bf: int)
         UnfoldingMask := ExhaleWellDef0Mask;
         assume valid#trigger(UnfoldingHeap, valid(UnfoldingHeap[this, right_1]));
         assume UnfoldingHeap[null, valid(UnfoldingHeap[this, right_1])] == CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[this, right_1], key]), CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[this, right_1], height_2]), CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[this, right_1], left]), CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[this, right_1], right_1]), CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[this, right_1], balanceFactor]), CombineFrames(FrameFragment((if UnfoldingHeap[UnfoldingHeap[this, right_1], left] != null then UnfoldingHeap[null, valid(UnfoldingHeap[UnfoldingHeap[this, right_1], left])] else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[UnfoldingHeap[this, right_1], left] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[this, right_1], left], height_2]) else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[UnfoldingHeap[this, right_1], left] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[this, right_1], left], balanceFactor]) else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[UnfoldingHeap[this, right_1], left] != null then EmptyFrame else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[UnfoldingHeap[this, right_1], right_1] != null then UnfoldingHeap[null, valid(UnfoldingHeap[UnfoldingHeap[this, right_1], right_1])] else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[UnfoldingHeap[this, right_1], right_1] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[this, right_1], right_1], height_2]) else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[UnfoldingHeap[this, right_1], right_1] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[this, right_1], right_1], balanceFactor]) else EmptyFrame)), FrameFragment((if UnfoldingHeap[UnfoldingHeap[this, right_1], right_1] != null then EmptyFrame else EmptyFrame))))))))))))));
-        ExhaleWellDef1Mask := UnfoldingMask;
         ExhaleWellDef1Heap := UnfoldingHeap;
+        ExhaleWellDef1Mask := UnfoldingMask;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Assert might fail. There might be insufficient permission to access valid(this.right) (0075_AVLTree.nokeys.vpr@162.10--162.80) [213615]"}
@@ -3247,8 +3247,8 @@ procedure getBalanceFactorI(this: Ref, rd_1: Perm) returns (bf: int)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := rd_1;
     assert {:msg "  Postcondition of getBalanceFactorI might not hold. Fraction rd might be negative. (0075_AVLTree.nokeys.vpr@146.11--146.28) [213624]"}
       perm >= NoPerm;
@@ -3321,18 +3321,18 @@ procedure close(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var lh: int;
   var rh: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var newPMask: PMaskType;
   var freshVersion: FrameType;
   var ExhaleHeap: HeapType;
@@ -3515,8 +3515,8 @@ procedure close(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -3722,8 +3722,8 @@ procedure close(this: Ref) returns ()
   
   // -- Translating statement: assert this.left != null ==>
   //   (unfolding acc(valid(this.left), write) in true) -- 0075_AVLTree.nokeys.vpr@201.3--201.79
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of this.left != null
       assert {:msg "  Assert might fail. There might be insufficient permission to access this.left (0075_AVLTree.nokeys.vpr@201.10--201.79) [213712]"}
@@ -3735,8 +3735,8 @@ procedure close(this: Ref) returns ()
         UnfoldingMask := ExhaleWellDef0Mask;
         assume valid#trigger(UnfoldingHeap, valid(UnfoldingHeap[this, left]));
         assume UnfoldingHeap[null, valid(UnfoldingHeap[this, left])] == CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[this, left], key]), CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[this, left], height_2]), CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[this, left], left]), CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[this, left], right_1]), CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[this, left], balanceFactor]), CombineFrames(FrameFragment((if UnfoldingHeap[UnfoldingHeap[this, left], left] != null then UnfoldingHeap[null, valid(UnfoldingHeap[UnfoldingHeap[this, left], left])] else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[UnfoldingHeap[this, left], left] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[this, left], left], height_2]) else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[UnfoldingHeap[this, left], left] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[this, left], left], balanceFactor]) else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[UnfoldingHeap[this, left], left] != null then EmptyFrame else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[UnfoldingHeap[this, left], right_1] != null then UnfoldingHeap[null, valid(UnfoldingHeap[UnfoldingHeap[this, left], right_1])] else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[UnfoldingHeap[this, left], right_1] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[this, left], right_1], height_2]) else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[UnfoldingHeap[this, left], right_1] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[this, left], right_1], balanceFactor]) else EmptyFrame)), FrameFragment((if UnfoldingHeap[UnfoldingHeap[this, left], right_1] != null then EmptyFrame else EmptyFrame))))))))))))));
-        ExhaleWellDef1Mask := UnfoldingMask;
         ExhaleWellDef1Heap := UnfoldingHeap;
+        ExhaleWellDef1Mask := UnfoldingMask;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Assert might fail. There might be insufficient permission to access valid(this.left) (0075_AVLTree.nokeys.vpr@201.10--201.79) [213713]"}
@@ -3906,8 +3906,8 @@ procedure close(this: Ref) returns ()
   
   // -- Translating statement: assert this.right != null ==>
   //   (unfolding acc(valid(this.right), write) in true) -- 0075_AVLTree.nokeys.vpr@202.3--202.79
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of this.right != null
       assert {:msg "  Assert might fail. There might be insufficient permission to access this.right (0075_AVLTree.nokeys.vpr@202.10--202.79) [213722]"}
@@ -3919,8 +3919,8 @@ procedure close(this: Ref) returns ()
         UnfoldingMask := ExhaleWellDef0Mask;
         assume valid#trigger(UnfoldingHeap, valid(UnfoldingHeap[this, right_1]));
         assume UnfoldingHeap[null, valid(UnfoldingHeap[this, right_1])] == CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[this, right_1], key]), CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[this, right_1], height_2]), CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[this, right_1], left]), CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[this, right_1], right_1]), CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[this, right_1], balanceFactor]), CombineFrames(FrameFragment((if UnfoldingHeap[UnfoldingHeap[this, right_1], left] != null then UnfoldingHeap[null, valid(UnfoldingHeap[UnfoldingHeap[this, right_1], left])] else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[UnfoldingHeap[this, right_1], left] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[this, right_1], left], height_2]) else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[UnfoldingHeap[this, right_1], left] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[this, right_1], left], balanceFactor]) else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[UnfoldingHeap[this, right_1], left] != null then EmptyFrame else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[UnfoldingHeap[this, right_1], right_1] != null then UnfoldingHeap[null, valid(UnfoldingHeap[UnfoldingHeap[this, right_1], right_1])] else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[UnfoldingHeap[this, right_1], right_1] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[this, right_1], right_1], height_2]) else EmptyFrame)), CombineFrames(FrameFragment((if UnfoldingHeap[UnfoldingHeap[this, right_1], right_1] != null then FrameFragment(UnfoldingHeap[UnfoldingHeap[UnfoldingHeap[this, right_1], right_1], balanceFactor]) else EmptyFrame)), FrameFragment((if UnfoldingHeap[UnfoldingHeap[this, right_1], right_1] != null then EmptyFrame else EmptyFrame))))))))))))));
-        ExhaleWellDef1Mask := UnfoldingMask;
         ExhaleWellDef1Heap := UnfoldingHeap;
+        ExhaleWellDef1Mask := UnfoldingMask;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Assert might fail. There might be insufficient permission to access valid(this.right) (0075_AVLTree.nokeys.vpr@202.10--202.79) [213723]"}
@@ -4089,8 +4089,8 @@ procedure close(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(valid(this), write) -- 0075_AVLTree.nokeys.vpr@204.3--204.30
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding valid(this) might fail. There might be insufficient permission to access this.key (0075_AVLTree.nokeys.vpr@204.3--204.30) [213734]"}
@@ -4253,8 +4253,8 @@ procedure close(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of close might not hold. There might be insufficient permission to access valid(this) (0075_AVLTree.nokeys.vpr@179.11--179.33) [213763]"}
@@ -4295,12 +4295,12 @@ procedure rebalanceRL(this: Ref) returns (r_1: Ref)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newVersion: FrameType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
@@ -4454,8 +4454,8 @@ procedure rebalanceRL(this: Ref) returns (r_1: Ref)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -4501,8 +4501,8 @@ procedure rebalanceRL(this: Ref) returns (r_1: Ref)
         HasDirectPerm(Mask, this, left);
     assume valid#trigger(Heap, valid(Heap[this, left]));
     assume Heap[null, valid(Heap[this, left])] == CombineFrames(FrameFragment(Heap[Heap[this, left], key]), CombineFrames(FrameFragment(Heap[Heap[this, left], height_2]), CombineFrames(FrameFragment(Heap[Heap[this, left], left]), CombineFrames(FrameFragment(Heap[Heap[this, left], right_1]), CombineFrames(FrameFragment(Heap[Heap[this, left], balanceFactor]), CombineFrames(FrameFragment((if Heap[Heap[this, left], left] != null then Heap[null, valid(Heap[Heap[this, left], left])] else EmptyFrame)), CombineFrames(FrameFragment((if Heap[Heap[this, left], left] != null then FrameFragment(Heap[Heap[Heap[this, left], left], height_2]) else EmptyFrame)), CombineFrames(FrameFragment((if Heap[Heap[this, left], left] != null then FrameFragment(Heap[Heap[Heap[this, left], left], balanceFactor]) else EmptyFrame)), CombineFrames(FrameFragment((if Heap[Heap[this, left], left] != null then EmptyFrame else EmptyFrame)), CombineFrames(FrameFragment((if Heap[Heap[this, left], right_1] != null then Heap[null, valid(Heap[Heap[this, left], right_1])] else EmptyFrame)), CombineFrames(FrameFragment((if Heap[Heap[this, left], right_1] != null then FrameFragment(Heap[Heap[Heap[this, left], right_1], height_2]) else EmptyFrame)), CombineFrames(FrameFragment((if Heap[Heap[this, left], right_1] != null then FrameFragment(Heap[Heap[Heap[this, left], right_1], balanceFactor]) else EmptyFrame)), FrameFragment((if Heap[Heap[this, left], right_1] != null then EmptyFrame else EmptyFrame))))))))))))));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding valid(this.left) might fail. There might be insufficient permission to access valid(this.left) (0075_AVLTree.nokeys.vpr@228.3--228.37) [213799]"}
@@ -4614,8 +4614,8 @@ procedure rebalanceRL(this: Ref) returns (r_1: Ref)
   // -- Translating statement: unfold acc(valid(r), write) -- 0075_AVLTree.nokeys.vpr@230.3--230.29
     assume valid#trigger(Heap, valid(r_1));
     assume Heap[null, valid(r_1)] == CombineFrames(FrameFragment(Heap[r_1, key]), CombineFrames(FrameFragment(Heap[r_1, height_2]), CombineFrames(FrameFragment(Heap[r_1, left]), CombineFrames(FrameFragment(Heap[r_1, right_1]), CombineFrames(FrameFragment(Heap[r_1, balanceFactor]), CombineFrames(FrameFragment((if Heap[r_1, left] != null then Heap[null, valid(Heap[r_1, left])] else EmptyFrame)), CombineFrames(FrameFragment((if Heap[r_1, left] != null then FrameFragment(Heap[Heap[r_1, left], height_2]) else EmptyFrame)), CombineFrames(FrameFragment((if Heap[r_1, left] != null then FrameFragment(Heap[Heap[r_1, left], balanceFactor]) else EmptyFrame)), CombineFrames(FrameFragment((if Heap[r_1, left] != null then EmptyFrame else EmptyFrame)), CombineFrames(FrameFragment((if Heap[r_1, right_1] != null then Heap[null, valid(Heap[r_1, right_1])] else EmptyFrame)), CombineFrames(FrameFragment((if Heap[r_1, right_1] != null then FrameFragment(Heap[Heap[r_1, right_1], height_2]) else EmptyFrame)), CombineFrames(FrameFragment((if Heap[r_1, right_1] != null then FrameFragment(Heap[Heap[r_1, right_1], balanceFactor]) else EmptyFrame)), FrameFragment((if Heap[r_1, right_1] != null then EmptyFrame else EmptyFrame))))))))))))));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding valid(r) might fail. There might be insufficient permission to access valid(r) (0075_AVLTree.nokeys.vpr@230.3--230.29) [213815]"}
@@ -4738,8 +4738,8 @@ procedure rebalanceRL(this: Ref) returns (r_1: Ref)
     arg_this := Heap[this, left];
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  The precondition of method close might not hold. There might be insufficient permission to access this.left.key (0075_AVLTree.nokeys.vpr@233.3--233.19) [213831]"}
@@ -4881,8 +4881,8 @@ procedure rebalanceRL(this: Ref) returns (r_1: Ref)
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  The precondition of method close might not hold. There might be insufficient permission to access this.key (0075_AVLTree.nokeys.vpr@237.3--237.14) [213854]"}
@@ -5010,8 +5010,8 @@ procedure rebalanceRL(this: Ref) returns (r_1: Ref)
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  The precondition of method close might not hold. There might be insufficient permission to access r.key (0075_AVLTree.nokeys.vpr@239.3--239.11) [213874]"}
@@ -5129,8 +5129,8 @@ procedure rebalanceRL(this: Ref) returns (r_1: Ref)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of rebalanceRL might not hold. Assertion r != null might not hold. (0075_AVLTree.nokeys.vpr@223.11--223.43) [213893]"}
       r_1 != null;
     perm := FullPerm;
@@ -5171,12 +5171,12 @@ procedure rebalanceRR(this: Ref) returns (r_1: Ref)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newVersion: FrameType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
@@ -5329,8 +5329,8 @@ procedure rebalanceRR(this: Ref) returns (r_1: Ref)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -5384,8 +5384,8 @@ procedure rebalanceRR(this: Ref) returns (r_1: Ref)
         HasDirectPerm(Mask, this, left);
     assume valid#trigger(Heap, valid(Heap[this, left]));
     assume Heap[null, valid(Heap[this, left])] == CombineFrames(FrameFragment(Heap[Heap[this, left], key]), CombineFrames(FrameFragment(Heap[Heap[this, left], height_2]), CombineFrames(FrameFragment(Heap[Heap[this, left], left]), CombineFrames(FrameFragment(Heap[Heap[this, left], right_1]), CombineFrames(FrameFragment(Heap[Heap[this, left], balanceFactor]), CombineFrames(FrameFragment((if Heap[Heap[this, left], left] != null then Heap[null, valid(Heap[Heap[this, left], left])] else EmptyFrame)), CombineFrames(FrameFragment((if Heap[Heap[this, left], left] != null then FrameFragment(Heap[Heap[Heap[this, left], left], height_2]) else EmptyFrame)), CombineFrames(FrameFragment((if Heap[Heap[this, left], left] != null then FrameFragment(Heap[Heap[Heap[this, left], left], balanceFactor]) else EmptyFrame)), CombineFrames(FrameFragment((if Heap[Heap[this, left], left] != null then EmptyFrame else EmptyFrame)), CombineFrames(FrameFragment((if Heap[Heap[this, left], right_1] != null then Heap[null, valid(Heap[Heap[this, left], right_1])] else EmptyFrame)), CombineFrames(FrameFragment((if Heap[Heap[this, left], right_1] != null then FrameFragment(Heap[Heap[Heap[this, left], right_1], height_2]) else EmptyFrame)), CombineFrames(FrameFragment((if Heap[Heap[this, left], right_1] != null then FrameFragment(Heap[Heap[Heap[this, left], right_1], balanceFactor]) else EmptyFrame)), FrameFragment((if Heap[Heap[this, left], right_1] != null then EmptyFrame else EmptyFrame))))))))))))));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding valid(this.left) might fail. There might be insufficient permission to access valid(this.left) (0075_AVLTree.nokeys.vpr@262.3--262.37) [213932]"}
@@ -5507,8 +5507,8 @@ procedure rebalanceRR(this: Ref) returns (r_1: Ref)
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  The precondition of method close might not hold. There might be insufficient permission to access this.key (0075_AVLTree.nokeys.vpr@265.3--265.14) [213947]"}
@@ -5636,8 +5636,8 @@ procedure rebalanceRR(this: Ref) returns (r_1: Ref)
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  The precondition of method close might not hold. There might be insufficient permission to access r.key (0075_AVLTree.nokeys.vpr@267.3--267.11) [213967]"}
@@ -5755,8 +5755,8 @@ procedure rebalanceRR(this: Ref) returns (r_1: Ref)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of rebalanceRR might not hold. Assertion r != null might not hold. (0075_AVLTree.nokeys.vpr@257.11--257.43) [213986]"}
       r_1 != null;
     perm := FullPerm;
@@ -5797,12 +5797,12 @@ procedure rebalanceLR(this: Ref) returns (r_1: Ref)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newVersion: FrameType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
@@ -5956,8 +5956,8 @@ procedure rebalanceLR(this: Ref) returns (r_1: Ref)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -6003,8 +6003,8 @@ procedure rebalanceLR(this: Ref) returns (r_1: Ref)
         HasDirectPerm(Mask, this, right_1);
     assume valid#trigger(Heap, valid(Heap[this, right_1]));
     assume Heap[null, valid(Heap[this, right_1])] == CombineFrames(FrameFragment(Heap[Heap[this, right_1], key]), CombineFrames(FrameFragment(Heap[Heap[this, right_1], height_2]), CombineFrames(FrameFragment(Heap[Heap[this, right_1], left]), CombineFrames(FrameFragment(Heap[Heap[this, right_1], right_1]), CombineFrames(FrameFragment(Heap[Heap[this, right_1], balanceFactor]), CombineFrames(FrameFragment((if Heap[Heap[this, right_1], left] != null then Heap[null, valid(Heap[Heap[this, right_1], left])] else EmptyFrame)), CombineFrames(FrameFragment((if Heap[Heap[this, right_1], left] != null then FrameFragment(Heap[Heap[Heap[this, right_1], left], height_2]) else EmptyFrame)), CombineFrames(FrameFragment((if Heap[Heap[this, right_1], left] != null then FrameFragment(Heap[Heap[Heap[this, right_1], left], balanceFactor]) else EmptyFrame)), CombineFrames(FrameFragment((if Heap[Heap[this, right_1], left] != null then EmptyFrame else EmptyFrame)), CombineFrames(FrameFragment((if Heap[Heap[this, right_1], right_1] != null then Heap[null, valid(Heap[Heap[this, right_1], right_1])] else EmptyFrame)), CombineFrames(FrameFragment((if Heap[Heap[this, right_1], right_1] != null then FrameFragment(Heap[Heap[Heap[this, right_1], right_1], height_2]) else EmptyFrame)), CombineFrames(FrameFragment((if Heap[Heap[this, right_1], right_1] != null then FrameFragment(Heap[Heap[Heap[this, right_1], right_1], balanceFactor]) else EmptyFrame)), FrameFragment((if Heap[Heap[this, right_1], right_1] != null then EmptyFrame else EmptyFrame))))))))))))));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding valid(this.right) might fail. There might be insufficient permission to access valid(this.right) (0075_AVLTree.nokeys.vpr@291.3--291.38) [214022]"}
@@ -6116,8 +6116,8 @@ procedure rebalanceLR(this: Ref) returns (r_1: Ref)
   // -- Translating statement: unfold acc(valid(r), write) -- 0075_AVLTree.nokeys.vpr@293.3--293.29
     assume valid#trigger(Heap, valid(r_1));
     assume Heap[null, valid(r_1)] == CombineFrames(FrameFragment(Heap[r_1, key]), CombineFrames(FrameFragment(Heap[r_1, height_2]), CombineFrames(FrameFragment(Heap[r_1, left]), CombineFrames(FrameFragment(Heap[r_1, right_1]), CombineFrames(FrameFragment(Heap[r_1, balanceFactor]), CombineFrames(FrameFragment((if Heap[r_1, left] != null then Heap[null, valid(Heap[r_1, left])] else EmptyFrame)), CombineFrames(FrameFragment((if Heap[r_1, left] != null then FrameFragment(Heap[Heap[r_1, left], height_2]) else EmptyFrame)), CombineFrames(FrameFragment((if Heap[r_1, left] != null then FrameFragment(Heap[Heap[r_1, left], balanceFactor]) else EmptyFrame)), CombineFrames(FrameFragment((if Heap[r_1, left] != null then EmptyFrame else EmptyFrame)), CombineFrames(FrameFragment((if Heap[r_1, right_1] != null then Heap[null, valid(Heap[r_1, right_1])] else EmptyFrame)), CombineFrames(FrameFragment((if Heap[r_1, right_1] != null then FrameFragment(Heap[Heap[r_1, right_1], height_2]) else EmptyFrame)), CombineFrames(FrameFragment((if Heap[r_1, right_1] != null then FrameFragment(Heap[Heap[r_1, right_1], balanceFactor]) else EmptyFrame)), FrameFragment((if Heap[r_1, right_1] != null then EmptyFrame else EmptyFrame))))))))))))));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding valid(r) might fail. There might be insufficient permission to access valid(r) (0075_AVLTree.nokeys.vpr@293.3--293.29) [214038]"}
@@ -6240,8 +6240,8 @@ procedure rebalanceLR(this: Ref) returns (r_1: Ref)
     arg_this := Heap[this, right_1];
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  The precondition of method close might not hold. There might be insufficient permission to access this.right.key (0075_AVLTree.nokeys.vpr@295.3--295.20) [214054]"}
@@ -6383,8 +6383,8 @@ procedure rebalanceLR(this: Ref) returns (r_1: Ref)
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  The precondition of method close might not hold. There might be insufficient permission to access this.key (0075_AVLTree.nokeys.vpr@298.3--298.14) [214077]"}
@@ -6512,8 +6512,8 @@ procedure rebalanceLR(this: Ref) returns (r_1: Ref)
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  The precondition of method close might not hold. There might be insufficient permission to access r.key (0075_AVLTree.nokeys.vpr@300.3--300.11) [214097]"}
@@ -6631,8 +6631,8 @@ procedure rebalanceLR(this: Ref) returns (r_1: Ref)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of rebalanceLR might not hold. Assertion r != null might not hold. (0075_AVLTree.nokeys.vpr@286.11--286.43) [214116]"}
       r_1 != null;
     perm := FullPerm;
@@ -6673,12 +6673,12 @@ procedure rebalanceLL(this: Ref) returns (r_1: Ref)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newVersion: FrameType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
@@ -6831,8 +6831,8 @@ procedure rebalanceLL(this: Ref) returns (r_1: Ref)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -6886,8 +6886,8 @@ procedure rebalanceLL(this: Ref) returns (r_1: Ref)
         HasDirectPerm(Mask, this, right_1);
     assume valid#trigger(Heap, valid(Heap[this, right_1]));
     assume Heap[null, valid(Heap[this, right_1])] == CombineFrames(FrameFragment(Heap[Heap[this, right_1], key]), CombineFrames(FrameFragment(Heap[Heap[this, right_1], height_2]), CombineFrames(FrameFragment(Heap[Heap[this, right_1], left]), CombineFrames(FrameFragment(Heap[Heap[this, right_1], right_1]), CombineFrames(FrameFragment(Heap[Heap[this, right_1], balanceFactor]), CombineFrames(FrameFragment((if Heap[Heap[this, right_1], left] != null then Heap[null, valid(Heap[Heap[this, right_1], left])] else EmptyFrame)), CombineFrames(FrameFragment((if Heap[Heap[this, right_1], left] != null then FrameFragment(Heap[Heap[Heap[this, right_1], left], height_2]) else EmptyFrame)), CombineFrames(FrameFragment((if Heap[Heap[this, right_1], left] != null then FrameFragment(Heap[Heap[Heap[this, right_1], left], balanceFactor]) else EmptyFrame)), CombineFrames(FrameFragment((if Heap[Heap[this, right_1], left] != null then EmptyFrame else EmptyFrame)), CombineFrames(FrameFragment((if Heap[Heap[this, right_1], right_1] != null then Heap[null, valid(Heap[Heap[this, right_1], right_1])] else EmptyFrame)), CombineFrames(FrameFragment((if Heap[Heap[this, right_1], right_1] != null then FrameFragment(Heap[Heap[Heap[this, right_1], right_1], height_2]) else EmptyFrame)), CombineFrames(FrameFragment((if Heap[Heap[this, right_1], right_1] != null then FrameFragment(Heap[Heap[Heap[this, right_1], right_1], balanceFactor]) else EmptyFrame)), FrameFragment((if Heap[Heap[this, right_1], right_1] != null then EmptyFrame else EmptyFrame))))))))))))));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding valid(this.right) might fail. There might be insufficient permission to access valid(this.right) (0075_AVLTree.nokeys.vpr@323.3--323.38) [214155]"}
@@ -7009,8 +7009,8 @@ procedure rebalanceLL(this: Ref) returns (r_1: Ref)
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  The precondition of method close might not hold. There might be insufficient permission to access this.key (0075_AVLTree.nokeys.vpr@326.3--326.14) [214170]"}
@@ -7138,8 +7138,8 @@ procedure rebalanceLL(this: Ref) returns (r_1: Ref)
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  The precondition of method close might not hold. There might be insufficient permission to access r.key (0075_AVLTree.nokeys.vpr@328.3--328.11) [214190]"}
@@ -7257,8 +7257,8 @@ procedure rebalanceLL(this: Ref) returns (r_1: Ref)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of rebalanceLL might not hold. Assertion r != null might not hold. (0075_AVLTree.nokeys.vpr@318.11--318.43) [214209]"}
       r_1 != null;
     perm := FullPerm;

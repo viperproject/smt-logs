@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 13:16:42
+// Date:         2025-01-13 18:20:44
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/basic/syntax2.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/basic/syntax2-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -221,10 +221,10 @@ axiom (forall <T> x: (D1DomainType T) ::
 procedure m1() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var d1x: (D1DomainType int);
   
   // -- Initializing the state
@@ -235,12 +235,12 @@ procedure m1() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert (f1b(d1x): Int) >= 0 ==> (f1b(d1x): Int) == 0 -- syntax2.vpr@25.4--25.42
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     if ((f1b(d1x): int) >= 0) {
       assert {:msg "  Assert might fail. Assertion (f1b(d1x): Int) == 0 might not hold. (syntax2.vpr@25.11--25.42) [186650]"}
         (f1b(d1x): int) == 0;
@@ -255,8 +255,8 @@ procedure m1() returns ()
 procedure m2() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var d11x: (D1DomainType (D1DomainType int));
   
   // -- Initializing the state
@@ -267,8 +267,8 @@ procedure m2() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: d11x := (make((make(1): D1[Int])): D1[D1[Int]]) -- syntax2.vpr@31.4--31.25
     d11x := (make((make(1): D1DomainType int)): D1DomainType (D1DomainType int));

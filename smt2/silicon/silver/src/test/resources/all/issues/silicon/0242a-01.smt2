@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 12:41:43
+; Started: 2025-01-13 17:46:13
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -641,11 +641,11 @@
 (assert (forall ((s@$ $Snap) (n@0@00 $Ref)) (!
   (= (foo%limited s@$ n@0@00) (foo s@$ n@0@00))
   :pattern ((foo s@$ n@0@00))
-  :qid |quant-u-24729|)))
+  :qid |quant-u-24671|)))
 (assert (forall ((s@$ $Snap) (n@0@00 $Ref)) (!
   (foo%stateless n@0@00)
   :pattern ((foo%limited s@$ n@0@00))
-  :qid |quant-u-24730|)))
+  :qid |quant-u-24672|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- test ----------
@@ -720,7 +720,7 @@
   :pattern ((Set_in n@5@01 graph@3@01))
   :pattern ((inv@7@01 n@5@01))
   :pattern ((img@8@01 n@5@01))
-  :qid |quant-u-24732|)))
+  :qid |quant-u-24674|)))
 (assert (forall ((r $Ref)) (!
   (=> (and (img@8@01 r) (Set_in (inv@7@01 r) graph@3@01)) (= (inv@7@01 r) r))
   :pattern ((inv@7@01 r))
@@ -770,7 +770,7 @@
         $Perm.No)
       $Perm.No))
   
-  :qid |quant-u-24733|))))
+  :qid |quant-u-24675|))))
 (check-sat)
 ; unsat
 (pop) ; 7
@@ -874,7 +874,7 @@
         $Perm.No)
       $Perm.No))
   
-  :qid |quant-u-24734|))))
+  :qid |quant-u-24676|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -910,7 +910,7 @@
         $Perm.No)
       $Perm.No))
   
-  :qid |quant-u-24735|))))
+  :qid |quant-u-24677|))))
 (check-sat)
 ; unsat
 (pop) ; 4

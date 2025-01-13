@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-13 13:29:56
+// Date:         2025-01-13 18:33:38
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/adt/example_1.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/adt/example_1-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -478,8 +478,8 @@ procedure allNodesGreaterThan#definedness(t_2: TreeDomainType, value_1: int) ret
 procedure insertValue(v_2: int, t_2: TreeDomainType) returns (res: TreeDomainType)
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var i_14: int;
@@ -490,8 +490,8 @@ procedure insertValue(v_2: int, t_2: TreeDomainType) returns (res: TreeDomainTyp
   var new_leftsubtree: TreeDomainType;
   var arg_t_1: TreeDomainType;
   var new_rightsubtree: TreeDomainType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var i_4_1: int;
   var i_6_1: int;
   
@@ -504,8 +504,8 @@ procedure insertValue(v_2: int, t_2: TreeDomainType) returns (res: TreeDomainTyp
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -661,8 +661,8 @@ procedure insertValue(v_2: int, t_2: TreeDomainType) returns (res: TreeDomainTyp
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     if (*) {
       if (allNodesGreaterThan(Heap, t_2, i_4_1) && i_4_1 < v_2) {
         assert {:msg "  Postcondition of insertValue might not hold. Assertion allNodesGreaterThan(res, i) might not hold. (example_1.vpr@30.13--30.94) [223008]"}

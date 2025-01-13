@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 12:40:20
+; Started: 2025-01-13 17:44:52
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -126,11 +126,11 @@
 (assert (forall ((s@$ $Snap) (self@0@00 $Ref)) (!
   (= (readValid%limited s@$ self@0@00) (readValid s@$ self@0@00))
   :pattern ((readValid s@$ self@0@00))
-  :qid |quant-u-23114|)))
+  :qid |quant-u-23055|)))
 (assert (forall ((s@$ $Snap) (self@0@00 $Ref)) (!
   (readValid%stateless self@0@00)
   :pattern ((readValid%limited s@$ self@0@00))
-  :qid |quant-u-23115|)))
+  :qid |quant-u-23056|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert ($Perm.isReadVar $k@2@00))
@@ -198,11 +198,11 @@
       (readValid%precondition s@$ self@0@00)
       (= (readValid s@$ self@0@00) ($SortWrappers.$SnapToInt s@$))))
   :pattern ((readValid s@$ self@0@00))
-  :qid |quant-u-23116|)))
+  :qid |quant-u-23057|)))
 (assert (forall ((s@$ $Snap) (self@0@00 $Ref)) (!
   true
   :pattern ((readValid s@$ self@0@00))
-  :qid |quant-u-23117|)))
+  :qid |quant-u-23058|)))
 ; ---------- valid ----------
 (declare-const self@5@00 $Ref)
 (set-option :timeout 0)

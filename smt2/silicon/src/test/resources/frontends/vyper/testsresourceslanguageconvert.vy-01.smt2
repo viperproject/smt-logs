@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-13 12:25:33
+; Started: 2025-01-13 17:30:29
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -6644,7 +6644,7 @@
 (check-sat)
 ; unsat
 (pop) ; 18
-; 0.02s
+; 0.03s
 ; (get-info :all-statistics)
 (assert (=
   ($div<Int> (- 0 l$e@177@01) 10000000000 (div (- 0 l$e@177@01) 10000000000))
@@ -6725,36 +6725,6 @@
 (check-sat)
 ; unknown
 (pop) ; 21
-; 0.51s
-; (get-info :all-statistics)
-; [state consolidation]
-; State saturation: before repetition
-(set-option :timeout 10)
-(check-sat)
-; unknown
-; [eval] l$i == l$u + 1
-; [eval] l$u + 1
-(set-option :timeout 0)
-(push) ; 21
-(assert (not false))
-(check-sat)
-; unknown
-(pop) ; 21
-; 0.50s
-; (get-info :all-statistics)
-; [state consolidation]
-; State saturation: before repetition
-(set-option :timeout 10)
-(check-sat)
-; unknown
-; [eval] l$i == l$u + 1
-; [eval] l$u + 1
-(set-option :timeout 0)
-(push) ; 21
-(assert (not false))
-(check-sat)
-; unknown
-(pop) ; 21
 ; 0.46s
 ; (get-info :all-statistics)
 ; [state consolidation]
@@ -6770,7 +6740,37 @@
 (check-sat)
 ; unknown
 (pop) ; 21
-; 0.45s
+; 0.48s
+; (get-info :all-statistics)
+; [state consolidation]
+; State saturation: before repetition
+(set-option :timeout 10)
+(check-sat)
+; unknown
+; [eval] l$i == l$u + 1
+; [eval] l$u + 1
+(set-option :timeout 0)
+(push) ; 21
+(assert (not false))
+(check-sat)
+; unknown
+(pop) ; 21
+; 0.43s
+; (get-info :all-statistics)
+; [state consolidation]
+; State saturation: before repetition
+(set-option :timeout 10)
+(check-sat)
+; unknown
+; [eval] l$i == l$u + 1
+; [eval] l$u + 1
+(set-option :timeout 0)
+(push) ; 21
+(assert (not false))
+(check-sat)
+; unknown
+(pop) ; 21
+; 0.42s
 ; (get-info :all-statistics)
 (pop) ; 20
 (pop) ; 19
@@ -11769,7 +11769,7 @@
 (check-sat)
 ; unsat
 (pop) ; 5
-; 2.21s
+; 0.66s
 ; (get-info :all-statistics)
 (assert (=
   (not
