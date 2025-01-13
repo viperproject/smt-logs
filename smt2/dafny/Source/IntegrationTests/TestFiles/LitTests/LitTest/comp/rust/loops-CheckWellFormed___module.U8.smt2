@@ -125,7 +125,7 @@
  (=> (= (ControlFlow 0 0) 8) (let ((anon4_correct true))
 (let ((anon8_Else_correct  (=> (and (< |x#0| (LitInt 0)) (= (ControlFlow 0 6) 4)) anon4_correct)))
 (let ((anon8_Then_correct  (=> (and (<= (LitInt 0) |x#0|) (= (ControlFlow 0 5) 4)) anon4_correct)))
-(let ((anon9_Then_correct  (and (=> (= (ControlFlow 0 2) (- 0 3)) (<= (LitInt 0) (LitInt 0))) (=> (= (ControlFlow 0 2) (- 0 1)) (<= (LitInt 0) (LitInt 255))))))
+(let ((anon9_Then_correct  (and (=> (= (ControlFlow 0 2) (- 0 3)) (<= (LitInt 0) (LitInt 0))) (=> (= (ControlFlow 0 2) (- 0 1)) (U_2_bool (Lit boolType (bool_2_U (< 0 10))))))))
 (let ((anon0_correct  (=> (= $_ReadsFrame@0 (|lambda#0| null $Heap alloc false)) (and (and (=> (= (ControlFlow 0 7) 2) anon9_Then_correct) (=> (= (ControlFlow 0 7) 5) anon8_Then_correct)) (=> (= (ControlFlow 0 7) 6) anon8_Else_correct)))))
 (let ((PreconditionGeneratedEntry_correct  (=> (and (and ($IsGoodHeap $Heap) ($IsHeapAnchor $Heap)) (and (= 0 $FunctionContextHeight) (= (ControlFlow 0 8) 7))) anon0_correct)))
 PreconditionGeneratedEntry_correct)))))))
@@ -134,3 +134,7 @@ PreconditionGeneratedEntry_correct)))))))
 (get-info :rlimit)
 (pop 1)
 ; Valid
+(reset)
+(set-option :rlimit 0)
+; did a full reset
+(reset)
