@@ -1,2 +1,2 @@
 FSTAR="$(realpath "$(dirname "$0")")/fstar"
-find -L "$FSTAR/tests" "$FSTAR/examples" -name "Makefile" -type f
+find -L "$FSTAR/tests" "$FSTAR/examples" "$FSTAR/doc" -name "Makefile" -type f

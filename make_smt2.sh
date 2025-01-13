@@ -3,9 +3,10 @@
 
 VERIFIERS="$@"
 if [ -z "$VERIFIERS" ]; then
-    VERIFIERS="smt-comp verus fstar dafny silicon carbon"
+    VERIFIERS="fstar smt-comp verus dafny silicon carbon"
 fi
 
+echo "Initialising submodules"
 git submodule update --init --recursive &> /dev/null
 
 DIRNAME="$(realpath "$(dirname "$0")")"

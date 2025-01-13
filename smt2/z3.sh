@@ -36,7 +36,7 @@ echo "[.log] $file_relative"
 # the output so that it doesn't get printed and listen for a
 # timeout message in which case we remove the last line of the log
 # file since it may be incomplete (and cause parsing errors).
-output=$(eval "$Z3_EXE" trace=true proof=true -memory:$MEMORY -T:$TIMEOUT trace-file-name=$log_file_name "$1")
+output=$("$Z3_EXE" trace=true proof=true -memory:$MEMORY -T:$TIMEOUT trace-file-name=$log_file_name "$1")
 echo "$output" | grep -q "timeout" || exit 0
 echo "[Timeout] Removing last line of logfile"
 tail -n 1 "$log_file_name" | wc -c | xargs -I {} truncate -s -{} "$log_file_name"
