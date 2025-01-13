@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-08 22:04:44
+// Date:         2025-01-13 13:21:46
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0267a.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0267a-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -291,8 +291,8 @@ function  ANOTHER_GLOBAL_VAR#triggerStateless(): Ref;
 procedure ANOTHER_GLOBAL_VAR#definedness() returns (Result: Ref)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -312,8 +312,8 @@ procedure ANOTHER_GLOBAL_VAR#definedness() returns (Result: Ref)
     Result := __prim__bool___box__(Heap, true);
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of ANOTHER_GLOBAL_VAR might not hold. Assertion issubtype(typeof(result), bool()) might not hold. (0267a.vpr@15.11--15.44) [202097]"}
       (issubtype((typeof(Result): PyTypeDomainType), vbool): bool);
     
@@ -375,8 +375,8 @@ function  SO_MANY_GLOBAL_VARS#triggerStateless(): Ref;
 procedure SO_MANY_GLOBAL_VARS#definedness() returns (Result: Ref)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -411,8 +411,8 @@ procedure SO_MANY_GLOBAL_VARS#definedness() returns (Result: Ref)
     Result := (if bool___unbox__(Heap, ANOTHER_GLOBAL_VAR(Heap)) then OTHER_GLOBAL_VAR(Heap) else __prim__int___box__(Heap, 44));
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of SO_MANY_GLOBAL_VARS might not hold. Assertion issubtype(typeof(result), int()) might not hold. (0267a.vpr@23.11--23.43) [202099]"}
       (issubtype((typeof(Result): PyTypeDomainType), vint): bool);
     

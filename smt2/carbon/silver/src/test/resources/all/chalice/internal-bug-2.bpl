@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-08 21:54:26
+// Date:         2025-01-13 13:11:20
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/chalice/internal-bug-2.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/chalice/internal-bug-2-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -243,14 +243,14 @@ procedure koko(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -269,8 +269,8 @@ procedure koko(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: this.x := this.x + 1 -- internal-bug-2.vpr@12.3--12.23
     
@@ -284,16 +284,16 @@ procedure koko(this: Ref) returns ()
   
   // -- Translating statement: assert (unfolding acc(inv(this), write) in this.x) ==
   //   old((unfolding acc(inv(this), write) in this.x)) -- internal-bug-2.vpr@14.3--14.111
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (unfolding acc(inv(this), write) in this.x) == old((unfolding acc(inv(this), write) in this.x))
       UnfoldingHeap := ExhaleWellDef0Heap;
       UnfoldingMask := ExhaleWellDef0Mask;
       assume inv#trigger(UnfoldingHeap, inv(this));
       assume UnfoldingHeap[null, inv(this)] == FrameFragment(UnfoldingHeap[this, x_36]);
-      ExhaleWellDef1Heap := UnfoldingHeap;
       ExhaleWellDef1Mask := UnfoldingMask;
+      ExhaleWellDef1Heap := UnfoldingHeap;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Assert might fail. There might be insufficient permission to access inv(this) (internal-bug-2.vpr@14.11--14.110) [147566]"}
@@ -315,8 +315,8 @@ procedure koko(this: Ref) returns ()
       UnfoldingMask := oldMask;
       assume inv#trigger(UnfoldingHeap, inv(this));
       assume UnfoldingHeap[null, inv(this)] == FrameFragment(UnfoldingHeap[this, x_36]);
-      ExhaleWellDef1Heap := UnfoldingHeap;
       ExhaleWellDef1Mask := UnfoldingMask;
+      ExhaleWellDef1Heap := UnfoldingHeap;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Assert might fail. There might be insufficient permission to access inv(this) (internal-bug-2.vpr@14.11--14.110) [147568]"}

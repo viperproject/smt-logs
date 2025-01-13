@@ -14729,8 +14729,3 @@
 (let ((PreconditionGeneratedEntry_correct  (=> (= (ControlFlow 0 7) 5) anon0_correct)))
 PreconditionGeneratedEntry_correct))))))
 ))
-(check-sat)
-(get-info :rlimit)
-(pop 1)
-; Valid
-(reset)

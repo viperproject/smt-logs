@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-08 21:20:59
+; Started: 2025-01-13 12:37:27
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -139,11 +139,11 @@
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   (= (fun%limited s@$ x@0@00) (fun s@$ x@0@00))
   :pattern ((fun s@$ x@0@00))
-  :qid |quant-u-19848|)))
+  :qid |quant-u-19955|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   (fun%stateless x@0@00)
   :pattern ((fun%limited s@$ x@0@00))
-  :qid |quant-u-19849|)))
+  :qid |quant-u-19956|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -165,11 +165,11 @@
     (fun%precondition s@$ x@0@00)
     (= (fun s@$ x@0@00) ($SortWrappers.$SnapToInt s@$)))
   :pattern ((fun s@$ x@0@00))
-  :qid |quant-u-19850|)))
+  :qid |quant-u-19957|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   true
   :pattern ((fun s@$ x@0@00))
-  :qid |quant-u-19851|)))
+  :qid |quant-u-19958|)))
 ; ---------- Pair ----------
 (declare-const x@2@00 $Ref)
 (push) ; 1

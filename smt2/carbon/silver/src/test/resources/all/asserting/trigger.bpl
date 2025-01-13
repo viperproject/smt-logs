@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-08 21:55:32
+// Date:         2025-01-13 13:12:27
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/asserting/trigger.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/asserting/trigger-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -598,14 +598,14 @@ procedure triggerUse(s_2: (Seq int)) returns ()
   modifies Heap, Mask;
 {
   var i_14: int;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var assertingHeap: HeapType;
   var assertingMask: MaskType;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -637,13 +637,13 @@ procedure triggerUse(s_2: (Seq int)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert (asserting (trigger(0)) in
   //     s[0] > 0) -- trigger.vpr@13.3--13.44
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (asserting (trigger(0)) in s[0] > 0)
       
@@ -655,8 +655,8 @@ procedure triggerUse(s_2: (Seq int)) returns ()
       assertingHeap := Heap;
       assertingMask := Mask;
       // Exhale assertion of asserting
-      ExhaleWellDef1Heap := assertingHeap;
       ExhaleWellDef1Mask := assertingMask;
+      ExhaleWellDef1Heap := assertingHeap;
       
       // -- Check definedness of trigger(0)
         if (*) {
@@ -682,10 +682,10 @@ procedure triggerUse2(s_2: (Seq int)) returns ()
   modifies Heap, Mask;
 {
   var i_2: int;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -717,12 +717,12 @@ procedure triggerUse2(s_2: (Seq int)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert s[0] > 0 -- trigger.vpr@21.3--21.18
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of s[0] > 0
       assert {:msg "  Assert might fail. Index s[0] into s might exceed sequence length. (trigger.vpr@21.10--21.18) [153213]"}

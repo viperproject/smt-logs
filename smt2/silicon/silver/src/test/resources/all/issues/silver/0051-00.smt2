@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-08 21:26:28
+; Started: 2025-01-13 12:43:06
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -450,11 +450,11 @@
 (assert (forall ((s@$ $Snap)) (!
   (= (Nodes%limited s@$) (Nodes s@$))
   :pattern ((Nodes s@$))
-  :qid |quant-u-25961|)))
+  :qid |quant-u-26068|)))
 (assert (forall ((s@$ $Snap)) (!
   (as Nodes%stateless  Bool)
   :pattern ((Nodes%limited s@$))
-  :qid |quant-u-25962|)))
+  :qid |quant-u-26069|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@0@00 (Nodes%limited s@$))) (=>
     (Nodes%precondition s@$)
@@ -465,11 +465,11 @@
       :pattern ((Seq_contains_trigger (Seq_range 0 result@0@00) i))
       ))))
   :pattern ((Nodes%limited s@$))
-  :qid |quant-u-25963|)))
+  :qid |quant-u-26070|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@0@00 (Nodes%limited s@$))) true)
   :pattern ((Nodes%limited s@$))
-  :qid |quant-u-25964|)))
+  :qid |quant-u-26071|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -521,8 +521,8 @@
 (assert (forall ((s@$ $Snap)) (!
   (=> (Nodes%precondition s@$) (= (Nodes s@$) 5))
   :pattern ((Nodes s@$))
-  :qid |quant-u-25965|)))
+  :qid |quant-u-26072|)))
 (assert (forall ((s@$ $Snap)) (!
   true
   :pattern ((Nodes s@$))
-  :qid |quant-u-25966|)))
+  :qid |quant-u-26073|)))

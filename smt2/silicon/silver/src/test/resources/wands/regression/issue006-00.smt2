@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-08 21:21:05
+; Started: 2025-01-13 12:37:34
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -444,11 +444,11 @@
 (assert (forall ((s@$ $Snap) (xs@0@00 Seq<Int>)) (!
   (= (sum%limited s@$ xs@0@00) (sum s@$ xs@0@00))
   :pattern ((sum s@$ xs@0@00))
-  :qid |quant-u-19964|)))
+  :qid |quant-u-20071|)))
 (assert (forall ((s@$ $Snap) (xs@0@00 Seq<Int>)) (!
   (sum%stateless xs@0@00)
   :pattern ((sum%limited s@$ xs@0@00))
-  :qid |quant-u-19965|)))
+  :qid |quant-u-20072|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -530,7 +530,7 @@
         0
         (+ (Seq_index xs@0@00 0) (sum%limited $Snap.unit (Seq_drop xs@0@00 1))))))
   :pattern ((sum s@$ xs@0@00))
-  :qid |quant-u-19966|)))
+  :qid |quant-u-20073|)))
 (assert (forall ((s@$ $Snap) (xs@0@00 Seq<Int>)) (!
   (=>
     (sum%precondition s@$ xs@0@00)
@@ -539,4 +539,4 @@
       true
       (sum%precondition $Snap.unit (Seq_drop xs@0@00 1))))
   :pattern ((sum s@$ xs@0@00))
-  :qid |quant-u-19967|)))
+  :qid |quant-u-20074|)))

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-08 22:12:56
+// Date:         2025-01-13 13:29:55
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/adt/destructors_5.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/adt/destructors_5-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -293,10 +293,10 @@ axiom (forall <T> t_2: (TreeDomainType T) ::
 procedure destructors_5a() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -306,12 +306,12 @@ procedure destructors_5a() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert (get_List_value((Nil(): List[Int])): Int) == 1 -- destructors_5.vpr@17.5--17.28
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion (get_List_value((Nil(): List[Int])): Int) == 1 might not hold. (destructors_5.vpr@17.12--17.28) [222999]"}
       (get_List_value((Nil(): ListDomainType int)): int) == 1;
     assume state(Heap, Mask);
@@ -324,10 +324,10 @@ procedure destructors_5a() returns ()
 procedure destructors_5b() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -337,12 +337,12 @@ procedure destructors_5b() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert (get_List_value((Cons(1, (Nil(): List[Int])): List[Int])): Int) == 2 -- destructors_5.vpr@23.5--23.37
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion (get_List_value((Cons(1, (Nil(): List[Int])): List[Int])): Int) == 2 might not hold. (destructors_5.vpr@23.12--23.37) [223000]"}
       (get_List_value((Cons(1, (Nil(): ListDomainType int)): ListDomainType int)): int) == 2;
     assume state(Heap, Mask);
@@ -355,10 +355,10 @@ procedure destructors_5b() returns ()
 procedure destructors_5c() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -368,13 +368,13 @@ procedure destructors_5c() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert (get_List_tail((Cons(1, (Cons(1, (Nil(): List[Int])): List[Int])): List[Int])): List[Int]) ==
   //   (Nil(): List[Int]) -- destructors_5.vpr@29.5--29.49
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion (get_List_tail((Cons(1, (Cons(1, (Nil(): List[Int])): List[Int])): List[Int])): List[Int]) == (Nil(): List[Int]) might not hold. (destructors_5.vpr@29.12--29.49) [223001]"}
       (get_List_tail((Cons(1, (Cons(1, (Nil(): ListDomainType int)): ListDomainType int)): ListDomainType int)): ListDomainType int) == (Nil(): ListDomainType int);
     assume state(Heap, Mask);

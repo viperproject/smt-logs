@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-08 22:08:08
+// Date:         2025-01-13 13:25:08
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0120b.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0120b-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -260,8 +260,8 @@ procedure length#definedness(this: Ref) returns (Result: int)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var newPMask: PMaskType;
   
@@ -285,8 +285,8 @@ procedure length#definedness(this: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume node#trigger(UnfoldingHeap, node_2(this));
       assume UnfoldingHeap[null, node_2(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, val]), CombineFrames(FrameFragment(UnfoldingHeap[this, next]), FrameFragment((if (typeOf(UnfoldingHeap[this, next]): TypeDomainType) == A then CombineFrames(FrameFragment(UnfoldingHeap[UnfoldingHeap[this, next], a_6]), UnfoldingHeap[null, node_2(UnfoldingHeap[UnfoldingHeap[this, next], a_6])]) else EmptyFrame))));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access node(this) (0120b.vpr@29.1--36.2) [215793]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, node_2(this)];
@@ -321,8 +321,8 @@ procedure length#definedness(this: Ref) returns (Result: int)
           HasDirectPerm(UnfoldingMask, UnfoldingHeap[this, next], a_6);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
+          ExhaleWellDef0Mask := UnfoldingMask;
           perm := FullPerm;
           assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access node(this.next.a) (0120b.vpr@34.42--34.61) [215797]"}
             NoPerm < perm ==> NoPerm < UnfoldingMask[null, node_2(UnfoldingHeap[UnfoldingHeap[this, next], a_6])];
@@ -356,8 +356,8 @@ procedure length#definedness(this: Ref) returns (Result: int)
     Result := (if (typeOf(Heap[this, next]): TypeDomainType) == B then 1 else 1 + length(Heap, Heap[Heap[this, next], a_6]));
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of length might not hold. Assertion result >= 1 might not hold. (0120b.vpr@31.11--31.22) [215798]"}
       Result >= 1;
 }
@@ -452,12 +452,12 @@ procedure prepend(tail_1: Ref, v_2: int) returns (res: Ref)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var tmp: Ref;
   var freshObj: Ref;
@@ -483,8 +483,8 @@ procedure prepend(tail_1: Ref, v_2: int) returns (res: Ref)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -499,8 +499,8 @@ procedure prepend(tail_1: Ref, v_2: int) returns (res: Ref)
     // -- Check definedness of length(res) == old(length(tail)) + 1
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
+        ExhaleWellDef0Mask := PostMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access node(res) (0120b.vpr@43.11--43.22) [215803]"}
           NoPerm < perm ==> NoPerm < PostMask[null, node_2(res)];
@@ -513,8 +513,8 @@ procedure prepend(tail_1: Ref, v_2: int) returns (res: Ref)
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := oldMask;
         ExhaleWellDef0Heap := oldHeap;
+        ExhaleWellDef0Mask := oldMask;
         perm := FullPerm;
         assert {:msg "  Precondition of function length might not hold. There might be insufficient permission to access node(tail) (0120b.vpr@43.30--43.42) [215804]"}
           NoPerm < perm ==> NoPerm < oldMask[null, node_2(tail_1)];
@@ -574,8 +574,8 @@ procedure prepend(tail_1: Ref, v_2: int) returns (res: Ref)
   // -- Translating statement: unfold acc(node(tail), write) -- 0120b.vpr@57.3--57.25
     assume node#trigger(Heap, node_2(tail_1));
     assume Heap[null, node_2(tail_1)] == CombineFrames(FrameFragment(Heap[tail_1, val]), CombineFrames(FrameFragment(Heap[tail_1, next]), FrameFragment((if (typeOf(Heap[tail_1, next]): TypeDomainType) == A then CombineFrames(FrameFragment(Heap[Heap[tail_1, next], a_6]), Heap[null, node_2(Heap[Heap[tail_1, next], a_6])]) else EmptyFrame))));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding node(tail) might fail. There might be insufficient permission to access node(tail) (0120b.vpr@57.3--57.25) [215810]"}
@@ -612,8 +612,8 @@ procedure prepend(tail_1: Ref, v_2: int) returns (res: Ref)
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(node(tail), write) -- 0120b.vpr@58.3--58.23
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding node(tail) might fail. There might be insufficient permission to access tail.val (0120b.vpr@58.3--58.23) [215817]"}
@@ -669,8 +669,8 @@ procedure prepend(tail_1: Ref, v_2: int) returns (res: Ref)
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(node(res), write) -- 0120b.vpr@60.3--60.22
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding node(res) might fail. There might be insufficient permission to access res.val (0120b.vpr@60.3--60.22) [215827]"}
@@ -726,8 +726,8 @@ procedure prepend(tail_1: Ref, v_2: int) returns (res: Ref)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of prepend might not hold. There might be insufficient permission to access node(res) (0120b.vpr@40.11--40.25) [215835]"}

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-08 21:28:48
+// Date:         2025-01-13 12:45:30
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/sets/snapshots2.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/sets/snapshots2-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -503,8 +503,8 @@ procedure fun#definedness(xs: (Set Ref), x: Ref, n: int) returns (Result: int)
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -569,8 +569,8 @@ procedure fun#definedness(xs: (Set Ref), x: Ref, n: int) returns (Result: int)
       } else {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           havoc QPMask;
           
           // -- check that the permission amount is positive
@@ -627,14 +627,14 @@ procedure test01(xs: (Set Ref), x: Ref, n: int) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var v_2: int;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -694,16 +694,16 @@ procedure test01(xs: (Set Ref), x: Ref, n: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: v := fun(xs, x, n) -- snapshots2.vpr@17.3--17.30
     
     // -- Check definedness of fun(xs, x, n)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         havoc QPMask;
         
         // -- check that the permission amount is positive
@@ -747,14 +747,14 @@ procedure test01(xs: (Set Ref), x: Ref, n: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert v == fun(xs, x, n) -- snapshots2.vpr@18.3--18.28
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of v == fun(xs, x, n)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         havoc QPMask;
         
         // -- check that the permission amount is positive
@@ -807,14 +807,14 @@ procedure test02(xs: (Set Ref), x: Ref, y: Ref, n: int) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var v_2: int;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -876,16 +876,16 @@ procedure test02(xs: (Set Ref), x: Ref, y: Ref, n: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: v := fun(xs, x, n) -- snapshots2.vpr@26.3--26.30
     
     // -- Check definedness of fun(xs, x, n)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         havoc QPMask;
         
         // -- check that the permission amount is positive
@@ -935,14 +935,14 @@ procedure test02(xs: (Set Ref), x: Ref, y: Ref, n: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert v == fun(xs, x, n) -- snapshots2.vpr@36.3--36.28
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of v == fun(xs, x, n)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         havoc QPMask;
         
         // -- check that the permission amount is positive
@@ -995,14 +995,14 @@ procedure test05(xs: (Set Ref), x: Ref, y: Ref, n: int) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var v_2: int;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1066,16 +1066,16 @@ procedure test05(xs: (Set Ref), x: Ref, y: Ref, n: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: v := fun(xs, x, n) -- snapshots2.vpr@45.3--45.30
     
     // -- Check definedness of fun(xs, x, n)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         havoc QPMask;
         
         // -- check that the permission amount is positive
@@ -1129,14 +1129,14 @@ procedure test05(xs: (Set Ref), x: Ref, y: Ref, n: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert v == fun(xs, x, n) -- snapshots2.vpr@47.3--47.28
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of v == fun(xs, x, n)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         havoc QPMask;
         
         // -- check that the permission amount is positive
@@ -1189,15 +1189,15 @@ procedure test06(xs: (Set Ref), x: Ref, y: Ref, n: int) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var v_2: int;
   var yf: int;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1261,16 +1261,16 @@ procedure test06(xs: (Set Ref), x: Ref, y: Ref, n: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: v := fun(xs, x, n) -- snapshots2.vpr@56.3--56.30
     
     // -- Check definedness of fun(xs, x, n)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         havoc QPMask;
         
         // -- check that the permission amount is positive
@@ -1334,14 +1334,14 @@ procedure test06(xs: (Set Ref), x: Ref, y: Ref, n: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert v == fun(xs, x, n) -- snapshots2.vpr@60.3--60.28
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of v == fun(xs, x, n)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         havoc QPMask;
         
         // -- check that the permission amount is positive
@@ -1394,14 +1394,14 @@ procedure test07(xs: (Set Ref), x: Ref, y: Ref, n: int) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var v_2: int;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1465,16 +1465,16 @@ procedure test07(xs: (Set Ref), x: Ref, y: Ref, n: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: v := fun(xs, x, n) -- snapshots2.vpr@69.3--69.30
     
     // -- Check definedness of fun(xs, x, n)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         havoc QPMask;
         
         // -- check that the permission amount is positive
@@ -1534,14 +1534,14 @@ procedure test07(xs: (Set Ref), x: Ref, y: Ref, n: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert v == fun(xs, x, n) -- snapshots2.vpr@72.3--72.28
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of v == fun(xs, x, n)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         havoc QPMask;
         
         // -- check that the permission amount is positive
@@ -1594,14 +1594,14 @@ procedure test03(xs: (Set Ref), x: Ref, y: Ref, n: int) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var v_2: int;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1665,16 +1665,16 @@ procedure test03(xs: (Set Ref), x: Ref, y: Ref, n: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: v := fun(xs, x, 0) -- snapshots2.vpr@81.3--81.30
     
     // -- Check definedness of fun(xs, x, 0)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         havoc QPMask;
         
         // -- check that the permission amount is positive
@@ -1722,14 +1722,14 @@ procedure test03(xs: (Set Ref), x: Ref, y: Ref, n: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert v == fun(xs, x, 0) -- snapshots2.vpr@83.3--83.28
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of v == fun(xs, x, 0)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         havoc QPMask;
         
         // -- check that the permission amount is positive
@@ -1780,10 +1780,10 @@ procedure test04(xs: (Set Ref), ys: (Set Ref), x: Ref, y: Ref, n: int) returns (
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var z_3: Ref;
   var ExhaleHeap: HeapType;
   var v_2: int;
@@ -1854,15 +1854,15 @@ procedure test04(xs: (Set Ref), ys: (Set Ref), x: Ref, y: Ref, n: int) returns (
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert (forall z: Ref ::
   //     { (z in (xs union ys)) }
   //     { (z in xs) }
   //     (z in (xs union ys)) ==> z != null) -- snapshots2.vpr@94.3--94.89
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall z: Ref :: { (z in (xs union ys)) } { (z in xs) } (z in (xs union ys)) ==> z != null)
       if (*) {
@@ -1886,8 +1886,8 @@ procedure test04(xs: (Set Ref), ys: (Set Ref), x: Ref, y: Ref, n: int) returns (
     // -- Check definedness of fun(xs, x, n)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         havoc QPMask;
         
         // -- check that the permission amount is positive

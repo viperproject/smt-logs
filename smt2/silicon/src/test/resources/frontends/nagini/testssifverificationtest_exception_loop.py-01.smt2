@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-08 21:12:44
+; Started: 2025-01-13 12:29:01
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -1762,59 +1762,59 @@
 (assert (forall ((s@$ $Snap) (self@0@00 $Ref)) (!
   (= (str___val__%limited s@$ self@0@00) (str___val__ s@$ self@0@00))
   :pattern ((str___val__ s@$ self@0@00))
-  :qid |quant-u-3074|)))
+  :qid |quant-u-3146|)))
 (assert (forall ((s@$ $Snap) (self@0@00 $Ref)) (!
   (str___val__%stateless self@0@00)
   :pattern ((str___val__%limited s@$ self@0@00))
-  :qid |quant-u-3075|)))
+  :qid |quant-u-3147|)))
 (assert (forall ((s@$ $Snap) (self@2@00 $Ref)) (!
   (= (str___len__%limited s@$ self@2@00) (str___len__ s@$ self@2@00))
   :pattern ((str___len__ s@$ self@2@00))
-  :qid |quant-u-3076|)))
+  :qid |quant-u-3148|)))
 (assert (forall ((s@$ $Snap) (self@2@00 $Ref)) (!
   (str___len__%stateless self@2@00)
   :pattern ((str___len__%limited s@$ self@2@00))
-  :qid |quant-u-3077|)))
+  :qid |quant-u-3149|)))
 (assert (forall ((s@$ $Snap) (self@2@00 $Ref)) (!
   (let ((result@3@00 (str___len__%limited s@$ self@2@00))) (=>
     (str___len__%precondition s@$ self@2@00)
     (>= result@3@00 0)))
   :pattern ((str___len__%limited s@$ self@2@00))
-  :qid |quant-u-3098|)))
+  :qid |quant-u-3170|)))
 (assert (forall ((s@$ $Snap) (self@2@00 $Ref)) (!
   (let ((result@3@00 (str___len__%limited s@$ self@2@00))) true)
   :pattern ((str___len__%limited s@$ self@2@00))
-  :qid |quant-u-3099|)))
+  :qid |quant-u-3171|)))
 (assert (forall ((s@$ $Snap) (box@4@00 $Ref)) (!
   (= (bool___unbox__%limited s@$ box@4@00) (bool___unbox__ s@$ box@4@00))
   :pattern ((bool___unbox__ s@$ box@4@00))
-  :qid |quant-u-3078|)))
+  :qid |quant-u-3150|)))
 (assert (forall ((s@$ $Snap) (box@4@00 $Ref)) (!
   (bool___unbox__%stateless box@4@00)
   :pattern ((bool___unbox__%limited s@$ box@4@00))
-  :qid |quant-u-3079|)))
+  :qid |quant-u-3151|)))
 (assert (forall ((s@$ $Snap) (box@4@00 $Ref)) (!
   (let ((result@5@00 (bool___unbox__%limited s@$ box@4@00))) (=>
     (bool___unbox__%precondition s@$ box@4@00)
     (= (__prim__bool___box__%limited $Snap.unit result@5@00) box@4@00)))
   :pattern ((bool___unbox__%limited s@$ box@4@00))
-  :qid |quant-u-3100|)))
+  :qid |quant-u-3172|)))
 (assert (forall ((s@$ $Snap) (box@4@00 $Ref)) (!
   (let ((result@5@00 (bool___unbox__%limited s@$ box@4@00))) (=>
     (bool___unbox__%precondition s@$ box@4@00)
     (__prim__bool___box__%precondition $Snap.unit result@5@00)))
   :pattern ((bool___unbox__%limited s@$ box@4@00))
-  :qid |quant-u-3101|)))
+  :qid |quant-u-3173|)))
 (assert (forall ((s@$ $Snap) (prim@6@00 Bool)) (!
   (=
     (__prim__bool___box__%limited s@$ prim@6@00)
     (__prim__bool___box__ s@$ prim@6@00))
   :pattern ((__prim__bool___box__ s@$ prim@6@00))
-  :qid |quant-u-3080|)))
+  :qid |quant-u-3152|)))
 (assert (forall ((s@$ $Snap) (prim@6@00 Bool)) (!
   (__prim__bool___box__%stateless prim@6@00)
   :pattern ((__prim__bool___box__%limited s@$ prim@6@00))
-  :qid |quant-u-3081|)))
+  :qid |quant-u-3153|)))
 (assert (forall ((s@$ $Snap) (prim@6@00 Bool)) (!
   (let ((result@7@00 (__prim__bool___box__%limited s@$ prim@6@00))) (=>
     (__prim__bool___box__%precondition s@$ prim@6@00)
@@ -1823,31 +1823,31 @@
       (= (bool___unbox__%limited $Snap.unit result@7@00) prim@6@00)
       (= (int___unbox__%limited $Snap.unit result@7@00) (ite prim@6@00 1 0)))))
   :pattern ((__prim__bool___box__%limited s@$ prim@6@00))
-  :qid |quant-u-3102|)))
+  :qid |quant-u-3174|)))
 (assert (forall ((s@$ $Snap) (prim@6@00 Bool)) (!
   (let ((result@7@00 (__prim__bool___box__%limited s@$ prim@6@00))) true)
   :pattern ((__prim__bool___box__%limited s@$ prim@6@00))
-  :qid |quant-u-3103|)))
+  :qid |quant-u-3175|)))
 (assert (forall ((s@$ $Snap) (prim@6@00 Bool)) (!
   (let ((result@7@00 (__prim__bool___box__%limited s@$ prim@6@00))) (=>
     (__prim__bool___box__%precondition s@$ prim@6@00)
     (bool___unbox__%precondition $Snap.unit result@7@00)))
   :pattern ((__prim__bool___box__%limited s@$ prim@6@00))
-  :qid |quant-u-3104|)))
+  :qid |quant-u-3176|)))
 (assert (forall ((s@$ $Snap) (prim@6@00 Bool)) (!
   (let ((result@7@00 (__prim__bool___box__%limited s@$ prim@6@00))) (=>
     (__prim__bool___box__%precondition s@$ prim@6@00)
     (int___unbox__%precondition $Snap.unit result@7@00)))
   :pattern ((__prim__bool___box__%limited s@$ prim@6@00))
-  :qid |quant-u-3105|)))
+  :qid |quant-u-3177|)))
 (assert (forall ((s@$ $Snap) (box@8@00 $Ref)) (!
   (= (int___unbox__%limited s@$ box@8@00) (int___unbox__ s@$ box@8@00))
   :pattern ((int___unbox__ s@$ box@8@00))
-  :qid |quant-u-3082|)))
+  :qid |quant-u-3154|)))
 (assert (forall ((s@$ $Snap) (box@8@00 $Ref)) (!
   (int___unbox__%stateless box@8@00)
   :pattern ((int___unbox__%limited s@$ box@8@00))
-  :qid |quant-u-3083|)))
+  :qid |quant-u-3155|)))
 (assert (forall ((s@$ $Snap) (box@8@00 $Ref)) (!
   (let ((result@9@00 (int___unbox__%limited s@$ box@8@00))) (=>
     (int___unbox__%precondition s@$ box@8@00)
@@ -1862,7 +1862,7 @@
           (__prim__bool___box__%limited $Snap.unit (not (= result@9@00 0)))
           box@8@00)))))
   :pattern ((int___unbox__%limited s@$ box@8@00))
-  :qid |quant-u-3106|)))
+  :qid |quant-u-3178|)))
 (assert (forall ((s@$ $Snap) (box@8@00 $Ref)) (!
   (let ((result@9@00 (int___unbox__%limited s@$ box@8@00))) (=>
     (and
@@ -1870,7 +1870,7 @@
       (not (issubtype<Bool> (typeof<PyType> box@8@00) (as bool<PyType>  PyType))))
     (__prim__int___box__%precondition $Snap.unit result@9@00)))
   :pattern ((int___unbox__%limited s@$ box@8@00))
-  :qid |quant-u-3107|)))
+  :qid |quant-u-3179|)))
 (assert (forall ((s@$ $Snap) (box@8@00 $Ref)) (!
   (let ((result@9@00 (int___unbox__%limited s@$ box@8@00))) (=>
     (and
@@ -1878,17 +1878,17 @@
       (issubtype<Bool> (typeof<PyType> box@8@00) (as bool<PyType>  PyType)))
     (__prim__bool___box__%precondition $Snap.unit (not (= result@9@00 0)))))
   :pattern ((int___unbox__%limited s@$ box@8@00))
-  :qid |quant-u-3108|)))
+  :qid |quant-u-3180|)))
 (assert (forall ((s@$ $Snap) (prim@10@00 Int)) (!
   (=
     (__prim__int___box__%limited s@$ prim@10@00)
     (__prim__int___box__ s@$ prim@10@00))
   :pattern ((__prim__int___box__ s@$ prim@10@00))
-  :qid |quant-u-3084|)))
+  :qid |quant-u-3156|)))
 (assert (forall ((s@$ $Snap) (prim@10@00 Int)) (!
   (__prim__int___box__%stateless prim@10@00)
   :pattern ((__prim__int___box__%limited s@$ prim@10@00))
-  :qid |quant-u-3085|)))
+  :qid |quant-u-3157|)))
 (assert (forall ((s@$ $Snap) (prim@10@00 Int)) (!
   (let ((result@11@00 (__prim__int___box__%limited s@$ prim@10@00))) (=>
     (__prim__int___box__%precondition s@$ prim@10@00)
@@ -1896,35 +1896,35 @@
       (= (typeof<PyType> result@11@00) (as int<PyType>  PyType))
       (= (int___unbox__%limited $Snap.unit result@11@00) prim@10@00))))
   :pattern ((__prim__int___box__%limited s@$ prim@10@00))
-  :qid |quant-u-3109|)))
+  :qid |quant-u-3181|)))
 (assert (forall ((s@$ $Snap) (prim@10@00 Int)) (!
   (let ((result@11@00 (__prim__int___box__%limited s@$ prim@10@00))) true)
   :pattern ((__prim__int___box__%limited s@$ prim@10@00))
-  :qid |quant-u-3110|)))
+  :qid |quant-u-3182|)))
 (assert (forall ((s@$ $Snap) (prim@10@00 Int)) (!
   (let ((result@11@00 (__prim__int___box__%limited s@$ prim@10@00))) (=>
     (__prim__int___box__%precondition s@$ prim@10@00)
     (int___unbox__%precondition $Snap.unit result@11@00)))
   :pattern ((__prim__int___box__%limited s@$ prim@10@00))
-  :qid |quant-u-3111|)))
+  :qid |quant-u-3183|)))
 (assert (forall ((s@$ $Snap) (r@12@00 $Ref)) (!
   (= (Level%limited s@$ r@12@00) (Level s@$ r@12@00))
   :pattern ((Level s@$ r@12@00))
-  :qid |quant-u-3086|)))
+  :qid |quant-u-3158|)))
 (assert (forall ((s@$ $Snap) (r@12@00 $Ref)) (!
   (Level%stateless r@12@00)
   :pattern ((Level%limited s@$ r@12@00))
-  :qid |quant-u-3087|)))
+  :qid |quant-u-3159|)))
 (assert (forall ((s@$ $Snap) (len@14@00 Int) (value@15@00 Int)) (!
   (=
     (str___create__%limited s@$ len@14@00 value@15@00)
     (str___create__ s@$ len@14@00 value@15@00))
   :pattern ((str___create__ s@$ len@14@00 value@15@00))
-  :qid |quant-u-3088|)))
+  :qid |quant-u-3160|)))
 (assert (forall ((s@$ $Snap) (len@14@00 Int) (value@15@00 Int)) (!
   (str___create__%stateless len@14@00 value@15@00)
   :pattern ((str___create__%limited s@$ len@14@00 value@15@00))
-  :qid |quant-u-3089|)))
+  :qid |quant-u-3161|)))
 (assert (forall ((s@$ $Snap) (len@14@00 Int) (value@15@00 Int)) (!
   (let ((result@16@00 (str___create__%limited s@$ len@14@00 value@15@00))) (=>
     (str___create__%precondition s@$ len@14@00 value@15@00)
@@ -1933,33 +1933,33 @@
       (= (str___val__ $Snap.unit result@16@00) value@15@00)
       (= (typeof<PyType> result@16@00) (as str<PyType>  PyType)))))
   :pattern ((str___create__%limited s@$ len@14@00 value@15@00))
-  :qid |quant-u-3112|)))
+  :qid |quant-u-3184|)))
 (assert (forall ((s@$ $Snap) (len@14@00 Int) (value@15@00 Int)) (!
   (let ((result@16@00 (str___create__%limited s@$ len@14@00 value@15@00))) (=>
     (str___create__%precondition s@$ len@14@00 value@15@00)
     (str___len__%precondition $Snap.unit result@16@00)))
   :pattern ((str___create__%limited s@$ len@14@00 value@15@00))
-  :qid |quant-u-3113|)))
+  :qid |quant-u-3185|)))
 (assert (forall ((s@$ $Snap) (len@14@00 Int) (value@15@00 Int)) (!
   (let ((result@16@00 (str___create__%limited s@$ len@14@00 value@15@00))) (=>
     (str___create__%precondition s@$ len@14@00 value@15@00)
     (str___val__%precondition $Snap.unit result@16@00)))
   :pattern ((str___create__%limited s@$ len@14@00 value@15@00))
-  :qid |quant-u-3114|)))
+  :qid |quant-u-3186|)))
 (assert (forall ((s@$ $Snap) (len@14@00 Int) (value@15@00 Int)) (!
   (let ((result@16@00 (str___create__%limited s@$ len@14@00 value@15@00))) true)
   :pattern ((str___create__%limited s@$ len@14@00 value@15@00))
-  :qid |quant-u-3115|)))
+  :qid |quant-u-3187|)))
 (assert (forall ((s@$ $Snap) (self@17@00 $Ref) (other@18@00 $Ref)) (!
   (=
     (str___eq__%limited s@$ self@17@00 other@18@00)
     (str___eq__ s@$ self@17@00 other@18@00))
   :pattern ((str___eq__ s@$ self@17@00 other@18@00))
-  :qid |quant-u-3090|)))
+  :qid |quant-u-3162|)))
 (assert (forall ((s@$ $Snap) (self@17@00 $Ref) (other@18@00 $Ref)) (!
   (str___eq__%stateless self@17@00 other@18@00)
   :pattern ((str___eq__%limited s@$ self@17@00 other@18@00))
-  :qid |quant-u-3091|)))
+  :qid |quant-u-3163|)))
 (assert (forall ((s@$ $Snap) (self@17@00 $Ref) (other@18@00 $Ref)) (!
   (let ((result@19@00 (str___eq__%limited s@$ self@17@00 other@18@00))) (=>
     (str___eq__%precondition s@$ self@17@00 other@18@00)
@@ -1975,7 +1975,7 @@
           (str___len__ $Snap.unit self@17@00)
           (str___len__ $Snap.unit other@18@00))))))
   :pattern ((str___eq__%limited s@$ self@17@00 other@18@00))
-  :qid |quant-u-3116|)))
+  :qid |quant-u-3188|)))
 (assert (forall ((s@$ $Snap) (self@17@00 $Ref) (other@18@00 $Ref)) (!
   (let ((result@19@00 (str___eq__%limited s@$ self@17@00 other@18@00))) (=>
     (str___eq__%precondition s@$ self@17@00 other@18@00)
@@ -1983,7 +1983,7 @@
       (str___val__%precondition $Snap.unit self@17@00)
       (str___val__%precondition $Snap.unit other@18@00))))
   :pattern ((str___eq__%limited s@$ self@17@00 other@18@00))
-  :qid |quant-u-3117|)))
+  :qid |quant-u-3189|)))
 (assert (forall ((s@$ $Snap) (self@17@00 $Ref) (other@18@00 $Ref)) (!
   (let ((result@19@00 (str___eq__%limited s@$ self@17@00 other@18@00))) (=>
     (and (str___eq__%precondition s@$ self@17@00 other@18@00) result@19@00)
@@ -1991,25 +1991,25 @@
       (str___len__%precondition $Snap.unit self@17@00)
       (str___len__%precondition $Snap.unit other@18@00))))
   :pattern ((str___eq__%limited s@$ self@17@00 other@18@00))
-  :qid |quant-u-3118|)))
+  :qid |quant-u-3190|)))
 (assert (forall ((s@$ $Snap)) (!
   (= (__file__%limited s@$) (__file__ s@$))
   :pattern ((__file__ s@$))
-  :qid |quant-u-3092|)))
+  :qid |quant-u-3164|)))
 (assert (forall ((s@$ $Snap)) (!
   (as __file__%stateless  Bool)
   :pattern ((__file__%limited s@$))
-  :qid |quant-u-3093|)))
+  :qid |quant-u-3165|)))
 (assert (forall ((s@$ $Snap) (self@21@00 $Ref) (other@22@00 $Ref)) (!
   (=
     (int___eq__%limited s@$ self@21@00 other@22@00)
     (int___eq__ s@$ self@21@00 other@22@00))
   :pattern ((int___eq__ s@$ self@21@00 other@22@00))
-  :qid |quant-u-3094|)))
+  :qid |quant-u-3166|)))
 (assert (forall ((s@$ $Snap) (self@21@00 $Ref) (other@22@00 $Ref)) (!
   (int___eq__%stateless self@21@00 other@22@00)
   :pattern ((int___eq__%limited s@$ self@21@00 other@22@00))
-  :qid |quant-u-3095|)))
+  :qid |quant-u-3167|)))
 (assert (forall ((s@$ $Snap) (self@21@00 $Ref) (other@22@00 $Ref)) (!
   (=>
     (int___eq__%precondition s@$ self@21@00 other@22@00)
@@ -2019,7 +2019,7 @@
         (int___unbox__ $Snap.unit self@21@00)
         (int___unbox__ $Snap.unit other@22@00))))
   :pattern ((int___eq__ s@$ self@21@00 other@22@00))
-  :qid |quant-u-3119|)))
+  :qid |quant-u-3191|)))
 (assert (forall ((s@$ $Snap) (self@21@00 $Ref) (other@22@00 $Ref)) (!
   (=>
     (int___eq__%precondition s@$ self@21@00 other@22@00)
@@ -2027,15 +2027,15 @@
       (int___unbox__%precondition $Snap.unit self@21@00)
       (int___unbox__%precondition $Snap.unit other@22@00)))
   :pattern ((int___eq__ s@$ self@21@00 other@22@00))
-  :qid |quant-u-3120|)))
+  :qid |quant-u-3192|)))
 (assert (forall ((s@$ $Snap)) (!
   (= (__name__%limited s@$) (__name__ s@$))
   :pattern ((__name__ s@$))
-  :qid |quant-u-3096|)))
+  :qid |quant-u-3168|)))
 (assert (forall ((s@$ $Snap)) (!
   (as __name__%stateless  Bool)
   :pattern ((__name__%limited s@$))
-  :qid |quant-u-3097|)))
+  :qid |quant-u-3169|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- break_out_exception ----------
@@ -9344,23 +9344,23 @@
 ; tmp := new()
 (declare-const tmp@138@01 $Ref)
 (assert (not (= tmp@138@01 $Ref.null)))
-(assert (not (= tmp@138@01 tmp@123@01)))
-(assert (not (= tmp@138@01 tmp1_2@66@01)))
-(assert (not (= tmp@138@01 Exception_res@100@01)))
-(assert (not (= tmp@138@01 Container_valuep@137@01)))
-(assert (not (= tmp@138@01 c_9@25@01)))
 (assert (not (= tmp@138@01 tmp2_0@63@01)))
+(assert (not (= tmp@138@01 tmp1_2@66@01)))
+(assert (not (= tmp@138@01 Container_valuep@137@01)))
+(assert (not (= tmp@138@01 _err@102@01)))
+(assert (not (= tmp@138@01 tmp@123@01)))
 (assert (not (= tmp@138@01 _cthread_157_0@19@01)))
+(assert (not (= tmp@138@01 tmp2_2@67@01)))
 (assert (not (= tmp@138@01 b_9@27@01)))
+(assert (not (= tmp@138@01 c@24@01)))
+(assert (not (= tmp@138@01 c_9@25@01)))
+(assert (not (= tmp@138@01 _cthread_157@18@01)))
+(assert (not (= tmp@138@01 b@26@01)))
+(assert (not (= tmp@138@01 _err_0@104@01)))
+(assert (not (= tmp@138@01 Exception_res_2@101@01)))
+(assert (not (= tmp@138@01 Exception_res@100@01)))
 (assert (not (= tmp@138@01 Container_value@136@01)))
 (assert (not (= tmp@138@01 tmp1_0@62@01)))
-(assert (not (= tmp@138@01 Exception_res_2@101@01)))
-(assert (not (= tmp@138@01 _err_0@104@01)))
-(assert (not (= tmp@138@01 tmp2_2@67@01)))
-(assert (not (= tmp@138@01 b@26@01)))
-(assert (not (= tmp@138@01 _cthread_157@18@01)))
-(assert (not (= tmp@138@01 _err@102@01)))
-(assert (not (= tmp@138@01 c@24@01)))
 ; [eval] p1_1 && (!break1 && !except1)
 (push) ; 20
 ; [then-branch: 287 | !(p1_1@130@01) | live]
@@ -11882,26 +11882,26 @@
 ; tmp := new()
 (declare-const tmp@141@01 $Ref)
 (assert (not (= tmp@141@01 $Ref.null)))
-(assert (not (= tmp@141@01 tmp@123@01)))
-(assert (not (= tmp@141@01 tmp1_2@66@01)))
-(assert (not (= tmp@141@01 Exception_res@100@01)))
-(assert (not (= tmp@141@01 c_9@25@01)))
 (assert (not (= tmp@141@01 tmp2_0@63@01)))
-(assert (not (= tmp@141@01 _cthread_157_0@19@01)))
-(assert (not (= tmp@141@01 b_9@27@01)))
-(assert (not (= tmp@141@01 Container_value@136@01)))
-(assert (not (= tmp@141@01 tmp1_0@62@01)))
-(assert (not (= tmp@141@01 Exception_res_2@101@01)))
-(assert (not (= tmp@141@01 _err_0@104@01)))
-(assert (not (= tmp@141@01 tmp2_2@67@01)))
-(assert (not (= tmp@141@01 b@26@01)))
-(assert (not (= tmp@141@01 _cthread_157@18@01)))
+(assert (not (= tmp@141@01 tmp1_2@66@01)))
 (assert (not (= tmp@141@01 _err@102@01)))
+(assert (not (= tmp@141@01 tmp@123@01)))
+(assert (not (= tmp@141@01 _cthread_157_0@19@01)))
+(assert (not (= tmp@141@01 tmp2_2@67@01)))
+(assert (not (= tmp@141@01 b_9@27@01)))
 (assert (not (= tmp@141@01 c@24@01)))
+(assert (not (= tmp@141@01 c_9@25@01)))
+(assert (not (= tmp@141@01 _cthread_157@18@01)))
+(assert (not (= tmp@141@01 b@26@01)))
+(assert (not (= tmp@141@01 _err_0@104@01)))
+(assert (not (= tmp@141@01 Exception_res_2@101@01)))
 (assert (not
   (=
     tmp@141@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@114@01))))))))
+(assert (not (= tmp@141@01 Exception_res@100@01)))
+(assert (not (= tmp@141@01 Container_value@136@01)))
+(assert (not (= tmp@141@01 tmp1_0@62@01)))
 ; [eval] p1_1 && (!break1 && !except1)
 (push) ; 20
 ; [then-branch: 436 | !(p1_1@130@01) | live]
@@ -14486,26 +14486,26 @@
 ; tmp := new()
 (declare-const tmp@146@01 $Ref)
 (assert (not (= tmp@146@01 $Ref.null)))
-(assert (not (= tmp@146@01 tmp@123@01)))
-(assert (not (= tmp@146@01 tmp1_2@66@01)))
-(assert (not (= tmp@146@01 Exception_res@100@01)))
-(assert (not (= tmp@146@01 c_9@25@01)))
 (assert (not (= tmp@146@01 tmp2_0@63@01)))
-(assert (not (= tmp@146@01 _cthread_157_0@19@01)))
-(assert (not (= tmp@146@01 b_9@27@01)))
-(assert (not (= tmp@146@01 Container_valuep@145@01)))
-(assert (not (= tmp@146@01 tmp1_0@62@01)))
-(assert (not (= tmp@146@01 Exception_res_2@101@01)))
-(assert (not (= tmp@146@01 _err_0@104@01)))
-(assert (not (= tmp@146@01 tmp2_2@67@01)))
-(assert (not (= tmp@146@01 b@26@01)))
-(assert (not (= tmp@146@01 _cthread_157@18@01)))
+(assert (not (= tmp@146@01 tmp1_2@66@01)))
 (assert (not (= tmp@146@01 _err@102@01)))
+(assert (not (= tmp@146@01 tmp@123@01)))
+(assert (not (= tmp@146@01 _cthread_157_0@19@01)))
+(assert (not (= tmp@146@01 tmp2_2@67@01)))
+(assert (not (= tmp@146@01 b_9@27@01)))
 (assert (not (= tmp@146@01 c@24@01)))
+(assert (not (= tmp@146@01 c_9@25@01)))
+(assert (not (= tmp@146@01 _cthread_157@18@01)))
+(assert (not (= tmp@146@01 b@26@01)))
+(assert (not (= tmp@146@01 _err_0@104@01)))
+(assert (not (= tmp@146@01 Exception_res_2@101@01)))
+(assert (not (= tmp@146@01 Container_valuep@145@01)))
 (assert (not
   (=
     tmp@146@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second $t@114@01)))))))
+(assert (not (= tmp@146@01 Exception_res@100@01)))
+(assert (not (= tmp@146@01 tmp1_0@62@01)))
 ; [eval] p1_1 && (!break1 && !except1)
 (push) ; 20
 ; [then-branch: 587 | !(p1_1@130@01) | live]
@@ -17017,21 +17017,19 @@
 ; tmp := new()
 (declare-const tmp@150@01 $Ref)
 (assert (not (= tmp@150@01 $Ref.null)))
-(assert (not (= tmp@150@01 tmp@123@01)))
-(assert (not (= tmp@150@01 tmp1_2@66@01)))
-(assert (not (= tmp@150@01 Exception_res@100@01)))
-(assert (not (= tmp@150@01 c_9@25@01)))
 (assert (not (= tmp@150@01 tmp2_0@63@01)))
-(assert (not (= tmp@150@01 _cthread_157_0@19@01)))
-(assert (not (= tmp@150@01 b_9@27@01)))
-(assert (not (= tmp@150@01 tmp1_0@62@01)))
-(assert (not (= tmp@150@01 Exception_res_2@101@01)))
-(assert (not (= tmp@150@01 _err_0@104@01)))
-(assert (not (= tmp@150@01 tmp2_2@67@01)))
-(assert (not (= tmp@150@01 b@26@01)))
-(assert (not (= tmp@150@01 _cthread_157@18@01)))
+(assert (not (= tmp@150@01 tmp1_2@66@01)))
 (assert (not (= tmp@150@01 _err@102@01)))
+(assert (not (= tmp@150@01 tmp@123@01)))
+(assert (not (= tmp@150@01 _cthread_157_0@19@01)))
+(assert (not (= tmp@150@01 tmp2_2@67@01)))
+(assert (not (= tmp@150@01 b_9@27@01)))
 (assert (not (= tmp@150@01 c@24@01)))
+(assert (not (= tmp@150@01 c_9@25@01)))
+(assert (not (= tmp@150@01 _cthread_157@18@01)))
+(assert (not (= tmp@150@01 b@26@01)))
+(assert (not (= tmp@150@01 _err_0@104@01)))
+(assert (not (= tmp@150@01 Exception_res_2@101@01)))
 (assert (not
   (=
     tmp@150@01
@@ -17040,6 +17038,8 @@
   (=
     tmp@150@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second $t@114@01)))))))
+(assert (not (= tmp@150@01 Exception_res@100@01)))
+(assert (not (= tmp@150@01 tmp1_0@62@01)))
 ; [eval] p1_1 && (!break1 && !except1)
 (push) ; 20
 ; [then-branch: 735 | !(p1_1@130@01) | live]
@@ -20412,26 +20412,26 @@
 ; tmp := new()
 (declare-const tmp@162@01 $Ref)
 (assert (not (= tmp@162@01 $Ref.null)))
-(assert (not (= tmp@162@01 tmp@123@01)))
-(assert (not (= tmp@162@01 Container_value@161@01)))
-(assert (not (= tmp@162@01 tmp1_2@66@01)))
-(assert (not (= tmp@162@01 Exception_res@100@01)))
-(assert (not (= tmp@162@01 c_9@25@01)))
 (assert (not (= tmp@162@01 tmp2_0@63@01)))
-(assert (not (= tmp@162@01 _cthread_157_0@19@01)))
-(assert (not (= tmp@162@01 b_9@27@01)))
-(assert (not (= tmp@162@01 tmp1_0@62@01)))
-(assert (not (= tmp@162@01 Exception_res_2@101@01)))
-(assert (not (= tmp@162@01 _err_0@104@01)))
-(assert (not (= tmp@162@01 tmp2_2@67@01)))
-(assert (not (= tmp@162@01 b@26@01)))
-(assert (not (= tmp@162@01 _cthread_157@18@01)))
+(assert (not (= tmp@162@01 tmp1_2@66@01)))
 (assert (not (= tmp@162@01 _err@102@01)))
+(assert (not (= tmp@162@01 tmp@123@01)))
+(assert (not (= tmp@162@01 _cthread_157_0@19@01)))
+(assert (not (= tmp@162@01 tmp2_2@67@01)))
+(assert (not (= tmp@162@01 b_9@27@01)))
+(assert (not (= tmp@162@01 Container_value@161@01)))
 (assert (not (= tmp@162@01 c@24@01)))
+(assert (not (= tmp@162@01 c_9@25@01)))
+(assert (not (= tmp@162@01 _cthread_157@18@01)))
+(assert (not (= tmp@162@01 b@26@01)))
+(assert (not (= tmp@162@01 _err_0@104@01)))
+(assert (not (= tmp@162@01 Exception_res_2@101@01)))
 (assert (not
   (=
     tmp@162@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@114@01))))))))
+(assert (not (= tmp@162@01 Exception_res@100@01)))
+(assert (not (= tmp@162@01 tmp1_0@62@01)))
 ; [eval] p1_1 && (!break1 && !except1)
 (push) ; 20
 ; [then-branch: 919 | !(p1_1@155@01) | live]
@@ -23056,21 +23056,19 @@
 ; tmp := new()
 (declare-const tmp@165@01 $Ref)
 (assert (not (= tmp@165@01 $Ref.null)))
-(assert (not (= tmp@165@01 tmp@123@01)))
-(assert (not (= tmp@165@01 tmp1_2@66@01)))
-(assert (not (= tmp@165@01 Exception_res@100@01)))
-(assert (not (= tmp@165@01 c_9@25@01)))
 (assert (not (= tmp@165@01 tmp2_0@63@01)))
-(assert (not (= tmp@165@01 _cthread_157_0@19@01)))
-(assert (not (= tmp@165@01 b_9@27@01)))
-(assert (not (= tmp@165@01 tmp1_0@62@01)))
-(assert (not (= tmp@165@01 Exception_res_2@101@01)))
-(assert (not (= tmp@165@01 _err_0@104@01)))
-(assert (not (= tmp@165@01 tmp2_2@67@01)))
-(assert (not (= tmp@165@01 b@26@01)))
-(assert (not (= tmp@165@01 _cthread_157@18@01)))
+(assert (not (= tmp@165@01 tmp1_2@66@01)))
 (assert (not (= tmp@165@01 _err@102@01)))
+(assert (not (= tmp@165@01 tmp@123@01)))
+(assert (not (= tmp@165@01 _cthread_157_0@19@01)))
+(assert (not (= tmp@165@01 tmp2_2@67@01)))
+(assert (not (= tmp@165@01 b_9@27@01)))
 (assert (not (= tmp@165@01 c@24@01)))
+(assert (not (= tmp@165@01 c_9@25@01)))
+(assert (not (= tmp@165@01 _cthread_157@18@01)))
+(assert (not (= tmp@165@01 b@26@01)))
+(assert (not (= tmp@165@01 _err_0@104@01)))
+(assert (not (= tmp@165@01 Exception_res_2@101@01)))
 (assert (not
   (=
     tmp@165@01
@@ -23079,6 +23077,8 @@
   (=
     tmp@165@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second $t@114@01)))))))
+(assert (not (= tmp@165@01 Exception_res@100@01)))
+(assert (not (= tmp@165@01 tmp1_0@62@01)))
 ; [eval] p1_1 && (!break1 && !except1)
 (push) ; 20
 ; [then-branch: 1076 | !(p1_1@155@01) | live]
@@ -26499,26 +26499,26 @@
 ; tmp := new()
 (declare-const tmp@176@01 $Ref)
 (assert (not (= tmp@176@01 $Ref.null)))
-(assert (not (= tmp@176@01 tmp@123@01)))
-(assert (not (= tmp@176@01 tmp1_2@66@01)))
-(assert (not (= tmp@176@01 Exception_res@100@01)))
-(assert (not (= tmp@176@01 c_9@25@01)))
 (assert (not (= tmp@176@01 tmp2_0@63@01)))
-(assert (not (= tmp@176@01 _cthread_157_0@19@01)))
-(assert (not (= tmp@176@01 b_9@27@01)))
-(assert (not (= tmp@176@01 tmp1_0@62@01)))
-(assert (not (= tmp@176@01 Exception_res_2@101@01)))
-(assert (not (= tmp@176@01 _err_0@104@01)))
-(assert (not (= tmp@176@01 tmp2_2@67@01)))
-(assert (not (= tmp@176@01 b@26@01)))
-(assert (not (= tmp@176@01 _cthread_157@18@01)))
+(assert (not (= tmp@176@01 tmp1_2@66@01)))
 (assert (not (= tmp@176@01 _err@102@01)))
+(assert (not (= tmp@176@01 tmp@123@01)))
+(assert (not (= tmp@176@01 _cthread_157_0@19@01)))
+(assert (not (= tmp@176@01 tmp2_2@67@01)))
+(assert (not (= tmp@176@01 b_9@27@01)))
+(assert (not (= tmp@176@01 Container_valuep@175@01)))
 (assert (not (= tmp@176@01 c@24@01)))
+(assert (not (= tmp@176@01 c_9@25@01)))
+(assert (not (= tmp@176@01 _cthread_157@18@01)))
+(assert (not (= tmp@176@01 b@26@01)))
+(assert (not (= tmp@176@01 _err_0@104@01)))
+(assert (not (= tmp@176@01 Exception_res_2@101@01)))
 (assert (not
   (=
     tmp@176@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second $t@114@01)))))))
-(assert (not (= tmp@176@01 Container_valuep@175@01)))
+(assert (not (= tmp@176@01 Exception_res@100@01)))
+(assert (not (= tmp@176@01 tmp1_0@62@01)))
 ; [eval] p1_1 && (!break1 && !except1)
 (push) ; 20
 ; [then-branch: 1266 | !(p1_1@169@01) | live]
@@ -29038,21 +29038,19 @@
 ; tmp := new()
 (declare-const tmp@179@01 $Ref)
 (assert (not (= tmp@179@01 $Ref.null)))
-(assert (not (= tmp@179@01 tmp@123@01)))
-(assert (not (= tmp@179@01 tmp1_2@66@01)))
-(assert (not (= tmp@179@01 Exception_res@100@01)))
-(assert (not (= tmp@179@01 c_9@25@01)))
 (assert (not (= tmp@179@01 tmp2_0@63@01)))
-(assert (not (= tmp@179@01 _cthread_157_0@19@01)))
-(assert (not (= tmp@179@01 b_9@27@01)))
-(assert (not (= tmp@179@01 tmp1_0@62@01)))
-(assert (not (= tmp@179@01 Exception_res_2@101@01)))
-(assert (not (= tmp@179@01 _err_0@104@01)))
-(assert (not (= tmp@179@01 tmp2_2@67@01)))
-(assert (not (= tmp@179@01 b@26@01)))
-(assert (not (= tmp@179@01 _cthread_157@18@01)))
+(assert (not (= tmp@179@01 tmp1_2@66@01)))
 (assert (not (= tmp@179@01 _err@102@01)))
+(assert (not (= tmp@179@01 tmp@123@01)))
+(assert (not (= tmp@179@01 _cthread_157_0@19@01)))
+(assert (not (= tmp@179@01 tmp2_2@67@01)))
+(assert (not (= tmp@179@01 b_9@27@01)))
 (assert (not (= tmp@179@01 c@24@01)))
+(assert (not (= tmp@179@01 c_9@25@01)))
+(assert (not (= tmp@179@01 _cthread_157@18@01)))
+(assert (not (= tmp@179@01 b@26@01)))
+(assert (not (= tmp@179@01 _err_0@104@01)))
+(assert (not (= tmp@179@01 Exception_res_2@101@01)))
 (assert (not
   (=
     tmp@179@01
@@ -29061,6 +29059,8 @@
   (=
     tmp@179@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second $t@114@01)))))))
+(assert (not (= tmp@179@01 Exception_res@100@01)))
+(assert (not (= tmp@179@01 tmp1_0@62@01)))
 ; [eval] p1_1 && (!break1 && !except1)
 (push) ; 20
 ; [then-branch: 1417 | !(p1_1@169@01) | live]
@@ -33070,23 +33070,23 @@
 ; tmp := new()
 (declare-const tmp@204@01 $Ref)
 (assert (not (= tmp@204@01 $Ref.null)))
-(assert (not (= tmp@204@01 Container_valuep@203@01)))
-(assert (not (= tmp@204@01 tmp1_2@66@01)))
-(assert (not (= tmp@204@01 Exception_res@100@01)))
-(assert (not (= tmp@204@01 c_9@25@01)))
-(assert (not (= tmp@204@01 tmp@191@01)))
-(assert (not (= tmp@204@01 tmp2_0@63@01)))
-(assert (not (= tmp@204@01 _cthread_157_0@19@01)))
-(assert (not (= tmp@204@01 b_9@27@01)))
-(assert (not (= tmp@204@01 tmp1_0@62@01)))
-(assert (not (= tmp@204@01 Exception_res_2@101@01)))
-(assert (not (= tmp@204@01 _err_0@104@01)))
-(assert (not (= tmp@204@01 tmp2_2@67@01)))
 (assert (not (= tmp@204@01 Container_value@202@01)))
-(assert (not (= tmp@204@01 b@26@01)))
-(assert (not (= tmp@204@01 _cthread_157@18@01)))
+(assert (not (= tmp@204@01 tmp2_0@63@01)))
+(assert (not (= tmp@204@01 tmp1_2@66@01)))
+(assert (not (= tmp@204@01 tmp@191@01)))
+(assert (not (= tmp@204@01 Container_valuep@203@01)))
 (assert (not (= tmp@204@01 _err@102@01)))
+(assert (not (= tmp@204@01 _cthread_157_0@19@01)))
+(assert (not (= tmp@204@01 tmp2_2@67@01)))
+(assert (not (= tmp@204@01 b_9@27@01)))
 (assert (not (= tmp@204@01 c@24@01)))
+(assert (not (= tmp@204@01 c_9@25@01)))
+(assert (not (= tmp@204@01 _cthread_157@18@01)))
+(assert (not (= tmp@204@01 b@26@01)))
+(assert (not (= tmp@204@01 _err_0@104@01)))
+(assert (not (= tmp@204@01 Exception_res_2@101@01)))
+(assert (not (= tmp@204@01 Exception_res@100@01)))
+(assert (not (= tmp@204@01 tmp1_0@62@01)))
 ; [eval] p1_1 && (!break1 && !except1)
 (push) ; 21
 ; [then-branch: 1641 | !(p1_1@198@01) | live]
@@ -35229,26 +35229,26 @@
 ; tmp := new()
 (declare-const tmp@209@01 $Ref)
 (assert (not (= tmp@209@01 $Ref.null)))
-(assert (not (= tmp@209@01 tmp1_2@66@01)))
-(assert (not (= tmp@209@01 Exception_res@100@01)))
-(assert (not (= tmp@209@01 c_9@25@01)))
-(assert (not (= tmp@209@01 tmp@191@01)))
-(assert (not (= tmp@209@01 tmp2_0@63@01)))
-(assert (not (= tmp@209@01 _cthread_157_0@19@01)))
-(assert (not (= tmp@209@01 b_9@27@01)))
-(assert (not (= tmp@209@01 tmp1_0@62@01)))
-(assert (not (= tmp@209@01 Exception_res_2@101@01)))
-(assert (not (= tmp@209@01 _err_0@104@01)))
-(assert (not (= tmp@209@01 tmp2_2@67@01)))
 (assert (not (= tmp@209@01 Container_value@202@01)))
-(assert (not (= tmp@209@01 b@26@01)))
-(assert (not (= tmp@209@01 _cthread_157@18@01)))
+(assert (not (= tmp@209@01 tmp2_0@63@01)))
+(assert (not (= tmp@209@01 tmp1_2@66@01)))
+(assert (not (= tmp@209@01 tmp@191@01)))
 (assert (not (= tmp@209@01 _err@102@01)))
+(assert (not (= tmp@209@01 _cthread_157_0@19@01)))
+(assert (not (= tmp@209@01 tmp2_2@67@01)))
+(assert (not (= tmp@209@01 b_9@27@01)))
 (assert (not (= tmp@209@01 c@24@01)))
+(assert (not (= tmp@209@01 c_9@25@01)))
+(assert (not (= tmp@209@01 _cthread_157@18@01)))
+(assert (not (= tmp@209@01 b@26@01)))
+(assert (not (= tmp@209@01 _err_0@104@01)))
+(assert (not (= tmp@209@01 Exception_res_2@101@01)))
 (assert (not
   (=
     tmp@209@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@114@01))))))))
+(assert (not (= tmp@209@01 Exception_res@100@01)))
+(assert (not (= tmp@209@01 tmp1_0@62@01)))
 ; [eval] p1_1 && (!break1 && !except1)
 (push) ; 21
 ; [then-branch: 1778 | !(p1_1@198@01) | live]
@@ -37412,26 +37412,26 @@
 ; tmp := new()
 (declare-const tmp@215@01 $Ref)
 (assert (not (= tmp@215@01 $Ref.null)))
-(assert (not (= tmp@215@01 Container_valuep@214@01)))
-(assert (not (= tmp@215@01 tmp1_2@66@01)))
-(assert (not (= tmp@215@01 Exception_res@100@01)))
-(assert (not (= tmp@215@01 c_9@25@01)))
-(assert (not (= tmp@215@01 tmp@191@01)))
 (assert (not (= tmp@215@01 tmp2_0@63@01)))
-(assert (not (= tmp@215@01 _cthread_157_0@19@01)))
-(assert (not (= tmp@215@01 b_9@27@01)))
-(assert (not (= tmp@215@01 tmp1_0@62@01)))
-(assert (not (= tmp@215@01 Exception_res_2@101@01)))
-(assert (not (= tmp@215@01 _err_0@104@01)))
-(assert (not (= tmp@215@01 tmp2_2@67@01)))
-(assert (not (= tmp@215@01 b@26@01)))
-(assert (not (= tmp@215@01 _cthread_157@18@01)))
+(assert (not (= tmp@215@01 tmp1_2@66@01)))
+(assert (not (= tmp@215@01 Container_valuep@214@01)))
+(assert (not (= tmp@215@01 tmp@191@01)))
 (assert (not (= tmp@215@01 _err@102@01)))
+(assert (not (= tmp@215@01 _cthread_157_0@19@01)))
+(assert (not (= tmp@215@01 tmp2_2@67@01)))
+(assert (not (= tmp@215@01 b_9@27@01)))
 (assert (not (= tmp@215@01 c@24@01)))
+(assert (not (= tmp@215@01 c_9@25@01)))
+(assert (not (= tmp@215@01 _cthread_157@18@01)))
+(assert (not (= tmp@215@01 b@26@01)))
+(assert (not (= tmp@215@01 _err_0@104@01)))
+(assert (not (= tmp@215@01 Exception_res_2@101@01)))
 (assert (not
   (=
     tmp@215@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second $t@114@01)))))))
+(assert (not (= tmp@215@01 Exception_res@100@01)))
+(assert (not (= tmp@215@01 tmp1_0@62@01)))
 ; [eval] p1_1 && (!break1 && !except1)
 (push) ; 21
 ; [then-branch: 1916 | !(p1_1@198@01) | live]
@@ -39527,21 +39527,19 @@
 ; tmp := new()
 (declare-const tmp@220@01 $Ref)
 (assert (not (= tmp@220@01 $Ref.null)))
-(assert (not (= tmp@220@01 tmp1_2@66@01)))
-(assert (not (= tmp@220@01 Exception_res@100@01)))
-(assert (not (= tmp@220@01 c_9@25@01)))
-(assert (not (= tmp@220@01 tmp@191@01)))
 (assert (not (= tmp@220@01 tmp2_0@63@01)))
-(assert (not (= tmp@220@01 _cthread_157_0@19@01)))
-(assert (not (= tmp@220@01 b_9@27@01)))
-(assert (not (= tmp@220@01 tmp1_0@62@01)))
-(assert (not (= tmp@220@01 Exception_res_2@101@01)))
-(assert (not (= tmp@220@01 _err_0@104@01)))
-(assert (not (= tmp@220@01 tmp2_2@67@01)))
-(assert (not (= tmp@220@01 b@26@01)))
-(assert (not (= tmp@220@01 _cthread_157@18@01)))
+(assert (not (= tmp@220@01 tmp1_2@66@01)))
+(assert (not (= tmp@220@01 tmp@191@01)))
 (assert (not (= tmp@220@01 _err@102@01)))
+(assert (not (= tmp@220@01 _cthread_157_0@19@01)))
+(assert (not (= tmp@220@01 tmp2_2@67@01)))
+(assert (not (= tmp@220@01 b_9@27@01)))
 (assert (not (= tmp@220@01 c@24@01)))
+(assert (not (= tmp@220@01 c_9@25@01)))
+(assert (not (= tmp@220@01 _cthread_157@18@01)))
+(assert (not (= tmp@220@01 b@26@01)))
+(assert (not (= tmp@220@01 _err_0@104@01)))
+(assert (not (= tmp@220@01 Exception_res_2@101@01)))
 (assert (not
   (=
     tmp@220@01
@@ -39550,6 +39548,8 @@
   (=
     tmp@220@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second $t@114@01)))))))
+(assert (not (= tmp@220@01 Exception_res@100@01)))
+(assert (not (= tmp@220@01 tmp1_0@62@01)))
 ; [eval] p1_1 && (!break1 && !except1)
 (push) ; 21
 ; [then-branch: 2051 | !(p1_1@198@01) | live]
@@ -46710,24 +46710,24 @@
 ; tmp := new()
 (declare-const tmp@328@01 $Ref)
 (assert (not (= tmp@328@01 $Ref.null)))
-(assert (not (= tmp@328@01 _err_0@295@01)))
 (assert (not (= tmp@328@01 Exception_res@291@01)))
-(assert (not (= tmp@328@01 tmp1_2@258@01)))
-(assert (not (= tmp@328@01 _err_0@31@01)))
-(assert (not (= tmp@328@01 _err@293@01)))
-(assert (not (= tmp@328@01 Exception_res_2@245@01)))
-(assert (not (= tmp@328@01 c_9@25@01)))
 (assert (not (= tmp@328@01 Exception_res_2@292@01)))
-(assert (not (= tmp@328@01 _cthread_157_0@19@01)))
-(assert (not (= tmp@328@01 Container_value@327@01)))
-(assert (not (= tmp@328@01 b_9@27@01)))
-(assert (not (= tmp@328@01 tmp1_0@254@01)))
-(assert (not (= tmp@328@01 b@26@01)))
-(assert (not (= tmp@328@01 _cthread_157@18@01)))
+(assert (not (= tmp@328@01 _err_0@295@01)))
 (assert (not (= tmp@328@01 c_4_0@231@01)))
-(assert (not (= tmp@328@01 tmp@314@01)))
-(assert (not (= tmp@328@01 c@24@01)))
 (assert (not (= tmp@328@01 b_4_0@233@01)))
+(assert (not (= tmp@328@01 _cthread_157_0@19@01)))
+(assert (not (= tmp@328@01 Exception_res_2@245@01)))
+(assert (not (= tmp@328@01 b_9@27@01)))
+(assert (not (= tmp@328@01 tmp@314@01)))
+(assert (not (= tmp@328@01 Container_value@327@01)))
+(assert (not (= tmp@328@01 _err_0@31@01)))
+(assert (not (= tmp@328@01 tmp1_2@258@01)))
+(assert (not (= tmp@328@01 tmp1_0@254@01)))
+(assert (not (= tmp@328@01 c@24@01)))
+(assert (not (= tmp@328@01 c_9@25@01)))
+(assert (not (= tmp@328@01 _cthread_157@18@01)))
+(assert (not (= tmp@328@01 b@26@01)))
+(assert (not (= tmp@328@01 _err@293@01)))
 ; [eval] p1_1 && (!break1 && !except1)
 (push) ; 20
 ; [then-branch: 2412 | !(p1_1@321@01) | live]
@@ -49071,27 +49071,27 @@
 ; tmp := new()
 (declare-const tmp@331@01 $Ref)
 (assert (not (= tmp@331@01 $Ref.null)))
-(assert (not (= tmp@331@01 _err_0@295@01)))
 (assert (not (= tmp@331@01 Exception_res@291@01)))
-(assert (not (= tmp@331@01 tmp1_2@258@01)))
+(assert (not (= tmp@331@01 Exception_res_2@292@01)))
+(assert (not (= tmp@331@01 _err_0@295@01)))
+(assert (not (= tmp@331@01 c_4_0@231@01)))
+(assert (not (= tmp@331@01 b_4_0@233@01)))
+(assert (not (= tmp@331@01 _cthread_157_0@19@01)))
+(assert (not (= tmp@331@01 Exception_res_2@245@01)))
+(assert (not (= tmp@331@01 b_9@27@01)))
+(assert (not (= tmp@331@01 tmp@314@01)))
 (assert (not (= tmp@331@01 _err_0@31@01)))
+(assert (not (= tmp@331@01 tmp1_2@258@01)))
+(assert (not (= tmp@331@01 tmp1_0@254@01)))
+(assert (not (= tmp@331@01 c@24@01)))
+(assert (not (= tmp@331@01 c_9@25@01)))
+(assert (not (= tmp@331@01 _cthread_157@18@01)))
+(assert (not (= tmp@331@01 b@26@01)))
 (assert (not (= tmp@331@01 _err@293@01)))
 (assert (not
   (=
     tmp@331@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second $t@305@01)))))))
-(assert (not (= tmp@331@01 Exception_res_2@245@01)))
-(assert (not (= tmp@331@01 c_9@25@01)))
-(assert (not (= tmp@331@01 Exception_res_2@292@01)))
-(assert (not (= tmp@331@01 _cthread_157_0@19@01)))
-(assert (not (= tmp@331@01 b_9@27@01)))
-(assert (not (= tmp@331@01 tmp1_0@254@01)))
-(assert (not (= tmp@331@01 b@26@01)))
-(assert (not (= tmp@331@01 _cthread_157@18@01)))
-(assert (not (= tmp@331@01 c_4_0@231@01)))
-(assert (not (= tmp@331@01 tmp@314@01)))
-(assert (not (= tmp@331@01 c@24@01)))
-(assert (not (= tmp@331@01 b_4_0@233@01)))
 ; [eval] p1_1 && (!break1 && !except1)
 (push) ; 20
 ; [then-branch: 2557 | !(p1_1@321@01) | live]
@@ -52840,24 +52840,24 @@
 ; tmp := new()
 (declare-const tmp@355@01 $Ref)
 (assert (not (= tmp@355@01 $Ref.null)))
-(assert (not (= tmp@355@01 _err_0@295@01)))
 (assert (not (= tmp@355@01 Exception_res@291@01)))
-(assert (not (= tmp@355@01 tmp1_2@258@01)))
-(assert (not (= tmp@355@01 _err_0@31@01)))
-(assert (not (= tmp@355@01 _err@293@01)))
-(assert (not (= tmp@355@01 Exception_res_2@245@01)))
-(assert (not (= tmp@355@01 tmp@343@01)))
-(assert (not (= tmp@355@01 c_9@25@01)))
 (assert (not (= tmp@355@01 Exception_res_2@292@01)))
-(assert (not (= tmp@355@01 _cthread_157_0@19@01)))
-(assert (not (= tmp@355@01 b_9@27@01)))
-(assert (not (= tmp@355@01 tmp1_0@254@01)))
-(assert (not (= tmp@355@01 b@26@01)))
-(assert (not (= tmp@355@01 _cthread_157@18@01)))
+(assert (not (= tmp@355@01 _err_0@295@01)))
 (assert (not (= tmp@355@01 c_4_0@231@01)))
-(assert (not (= tmp@355@01 c@24@01)))
-(assert (not (= tmp@355@01 b_4_0@233@01)))
+(assert (not (= tmp@355@01 tmp@343@01)))
 (assert (not (= tmp@355@01 Container_value@354@01)))
+(assert (not (= tmp@355@01 b_4_0@233@01)))
+(assert (not (= tmp@355@01 _cthread_157_0@19@01)))
+(assert (not (= tmp@355@01 Exception_res_2@245@01)))
+(assert (not (= tmp@355@01 b_9@27@01)))
+(assert (not (= tmp@355@01 _err_0@31@01)))
+(assert (not (= tmp@355@01 tmp1_2@258@01)))
+(assert (not (= tmp@355@01 tmp1_0@254@01)))
+(assert (not (= tmp@355@01 c@24@01)))
+(assert (not (= tmp@355@01 c_9@25@01)))
+(assert (not (= tmp@355@01 _cthread_157@18@01)))
+(assert (not (= tmp@355@01 b@26@01)))
+(assert (not (= tmp@355@01 _err@293@01)))
 ; [eval] p1_1 && (!break1 && !except1)
 (push) ; 21
 ; [then-branch: 2775 | !(p1_1@350@01) | live]
@@ -54896,27 +54896,27 @@
 ; tmp := new()
 (declare-const tmp@359@01 $Ref)
 (assert (not (= tmp@359@01 $Ref.null)))
-(assert (not (= tmp@359@01 _err_0@295@01)))
 (assert (not (= tmp@359@01 Exception_res@291@01)))
-(assert (not (= tmp@359@01 tmp1_2@258@01)))
+(assert (not (= tmp@359@01 Exception_res_2@292@01)))
+(assert (not (= tmp@359@01 _err_0@295@01)))
+(assert (not (= tmp@359@01 c_4_0@231@01)))
+(assert (not (= tmp@359@01 tmp@343@01)))
+(assert (not (= tmp@359@01 b_4_0@233@01)))
+(assert (not (= tmp@359@01 _cthread_157_0@19@01)))
+(assert (not (= tmp@359@01 Exception_res_2@245@01)))
+(assert (not (= tmp@359@01 b_9@27@01)))
 (assert (not (= tmp@359@01 _err_0@31@01)))
+(assert (not (= tmp@359@01 tmp1_2@258@01)))
+(assert (not (= tmp@359@01 tmp1_0@254@01)))
+(assert (not (= tmp@359@01 c@24@01)))
+(assert (not (= tmp@359@01 c_9@25@01)))
+(assert (not (= tmp@359@01 _cthread_157@18@01)))
+(assert (not (= tmp@359@01 b@26@01)))
 (assert (not (= tmp@359@01 _err@293@01)))
 (assert (not
   (=
     tmp@359@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second $t@305@01)))))))
-(assert (not (= tmp@359@01 Exception_res_2@245@01)))
-(assert (not (= tmp@359@01 tmp@343@01)))
-(assert (not (= tmp@359@01 c_9@25@01)))
-(assert (not (= tmp@359@01 Exception_res_2@292@01)))
-(assert (not (= tmp@359@01 _cthread_157_0@19@01)))
-(assert (not (= tmp@359@01 b_9@27@01)))
-(assert (not (= tmp@359@01 tmp1_0@254@01)))
-(assert (not (= tmp@359@01 b@26@01)))
-(assert (not (= tmp@359@01 _cthread_157@18@01)))
-(assert (not (= tmp@359@01 c_4_0@231@01)))
-(assert (not (= tmp@359@01 c@24@01)))
-(assert (not (= tmp@359@01 b_4_0@233@01)))
 ; [eval] p1_1 && (!break1 && !except1)
 (push) ; 21
 ; [then-branch: 2913 | !(p1_1@350@01) | live]
@@ -65868,23 +65868,23 @@
 ; tmp_0 := new()
 (declare-const tmp_0@597@01 $Ref)
 (assert (not (= tmp_0@597@01 $Ref.null)))
-(assert (not (= tmp_0@597@01 _cthread_158_0@478@01)))
+(assert (not (= tmp_0@597@01 Container_value@595@01)))
+(assert (not (= tmp_0@597@01 c_0_0@484@01)))
+(assert (not (= tmp_0@597@01 _err_1@563@01)))
+(assert (not (= tmp_0@597@01 tmp1_6@521@01)))
+(assert (not (= tmp_0@597@01 Exception_res_0@559@01)))
+(assert (not (= tmp_0@597@01 tmp2_6@522@01)))
+(assert (not (= tmp_0@597@01 tmp1_8@525@01)))
 (assert (not (= tmp_0@597@01 tmp2_8@526@01)))
-(assert (not (= tmp_0@597@01 tmp_0@582@01)))
 (assert (not (= tmp_0@597@01 Exception_res_0_0@560@01)))
 (assert (not (= tmp_0@597@01 c_0@483@01)))
-(assert (not (= tmp_0@597@01 _err@561@01)))
 (assert (not (= tmp_0@597@01 b_0@485@01)))
-(assert (not (= tmp_0@597@01 b_0_0@486@01)))
-(assert (not (= tmp_0@597@01 tmp1_8@525@01)))
 (assert (not (= tmp_0@597@01 Container_valuep@596@01)))
+(assert (not (= tmp_0@597@01 tmp_0@582@01)))
+(assert (not (= tmp_0@597@01 _err@561@01)))
 (assert (not (= tmp_0@597@01 _cthread_158@477@01)))
-(assert (not (= tmp_0@597@01 c_0_0@484@01)))
-(assert (not (= tmp_0@597@01 tmp1_6@521@01)))
-(assert (not (= tmp_0@597@01 tmp2_6@522@01)))
-(assert (not (= tmp_0@597@01 _err_1@563@01)))
-(assert (not (= tmp_0@597@01 Exception_res_0@559@01)))
-(assert (not (= tmp_0@597@01 Container_value@595@01)))
+(assert (not (= tmp_0@597@01 b_0_0@486@01)))
+(assert (not (= tmp_0@597@01 _cthread_158_0@478@01)))
 ; [eval] p1_6 && (!break1_0 && !except1_0)
 (push) ; 20
 ; [then-branch: 3401 | !(p1_6@589@01) | live]
@@ -68408,26 +68408,26 @@
 ; tmp_0 := new()
 (declare-const tmp_0@600@01 $Ref)
 (assert (not (= tmp_0@600@01 $Ref.null)))
-(assert (not (= tmp_0@600@01 _cthread_158_0@478@01)))
+(assert (not (= tmp_0@600@01 Container_value@595@01)))
+(assert (not (= tmp_0@600@01 c_0_0@484@01)))
+(assert (not (= tmp_0@600@01 _err_1@563@01)))
+(assert (not (= tmp_0@600@01 tmp1_6@521@01)))
+(assert (not (= tmp_0@600@01 Exception_res_0@559@01)))
+(assert (not (= tmp_0@600@01 tmp2_6@522@01)))
+(assert (not (= tmp_0@600@01 tmp1_8@525@01)))
 (assert (not (= tmp_0@600@01 tmp2_8@526@01)))
-(assert (not (= tmp_0@600@01 tmp_0@582@01)))
 (assert (not (= tmp_0@600@01 Exception_res_0_0@560@01)))
 (assert (not (= tmp_0@600@01 c_0@483@01)))
-(assert (not (= tmp_0@600@01 _err@561@01)))
 (assert (not (= tmp_0@600@01 b_0@485@01)))
 (assert (not
   (=
     tmp_0@600@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@573@01))))))))
-(assert (not (= tmp_0@600@01 b_0_0@486@01)))
-(assert (not (= tmp_0@600@01 tmp1_8@525@01)))
+(assert (not (= tmp_0@600@01 tmp_0@582@01)))
+(assert (not (= tmp_0@600@01 _err@561@01)))
 (assert (not (= tmp_0@600@01 _cthread_158@477@01)))
-(assert (not (= tmp_0@600@01 c_0_0@484@01)))
-(assert (not (= tmp_0@600@01 tmp1_6@521@01)))
-(assert (not (= tmp_0@600@01 tmp2_6@522@01)))
-(assert (not (= tmp_0@600@01 _err_1@563@01)))
-(assert (not (= tmp_0@600@01 Exception_res_0@559@01)))
-(assert (not (= tmp_0@600@01 Container_value@595@01)))
+(assert (not (= tmp_0@600@01 b_0_0@486@01)))
+(assert (not (= tmp_0@600@01 _cthread_158_0@478@01)))
 ; [eval] p1_6 && (!break1_0 && !except1_0)
 (push) ; 20
 ; [then-branch: 3550 | !(p1_6@589@01) | live]
@@ -71016,26 +71016,26 @@
 ; tmp_0 := new()
 (declare-const tmp_0@605@01 $Ref)
 (assert (not (= tmp_0@605@01 $Ref.null)))
-(assert (not (= tmp_0@605@01 _cthread_158_0@478@01)))
+(assert (not (= tmp_0@605@01 c_0_0@484@01)))
+(assert (not (= tmp_0@605@01 _err_1@563@01)))
+(assert (not (= tmp_0@605@01 tmp1_6@521@01)))
+(assert (not (= tmp_0@605@01 Exception_res_0@559@01)))
+(assert (not (= tmp_0@605@01 tmp2_6@522@01)))
+(assert (not (= tmp_0@605@01 tmp1_8@525@01)))
 (assert (not (= tmp_0@605@01 tmp2_8@526@01)))
-(assert (not (= tmp_0@605@01 tmp_0@582@01)))
 (assert (not (= tmp_0@605@01 Exception_res_0_0@560@01)))
 (assert (not (= tmp_0@605@01 c_0@483@01)))
-(assert (not (= tmp_0@605@01 _err@561@01)))
 (assert (not (= tmp_0@605@01 b_0@485@01)))
 (assert (not
   (=
     tmp_0@605@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second $t@573@01)))))))
-(assert (not (= tmp_0@605@01 b_0_0@486@01)))
-(assert (not (= tmp_0@605@01 tmp1_8@525@01)))
+(assert (not (= tmp_0@605@01 tmp_0@582@01)))
+(assert (not (= tmp_0@605@01 _err@561@01)))
 (assert (not (= tmp_0@605@01 _cthread_158@477@01)))
-(assert (not (= tmp_0@605@01 c_0_0@484@01)))
-(assert (not (= tmp_0@605@01 tmp1_6@521@01)))
-(assert (not (= tmp_0@605@01 tmp2_6@522@01)))
-(assert (not (= tmp_0@605@01 _err_1@563@01)))
-(assert (not (= tmp_0@605@01 Exception_res_0@559@01)))
 (assert (not (= tmp_0@605@01 Container_valuep@604@01)))
+(assert (not (= tmp_0@605@01 b_0_0@486@01)))
+(assert (not (= tmp_0@605@01 _cthread_158_0@478@01)))
 ; [eval] p1_6 && (!break1_0 && !except1_0)
 (push) ; 20
 ; [then-branch: 3701 | !(p1_6@589@01) | live]
@@ -73551,12 +73551,15 @@
 ; tmp_0 := new()
 (declare-const tmp_0@609@01 $Ref)
 (assert (not (= tmp_0@609@01 $Ref.null)))
-(assert (not (= tmp_0@609@01 _cthread_158_0@478@01)))
+(assert (not (= tmp_0@609@01 c_0_0@484@01)))
+(assert (not (= tmp_0@609@01 _err_1@563@01)))
+(assert (not (= tmp_0@609@01 tmp1_6@521@01)))
+(assert (not (= tmp_0@609@01 Exception_res_0@559@01)))
+(assert (not (= tmp_0@609@01 tmp2_6@522@01)))
+(assert (not (= tmp_0@609@01 tmp1_8@525@01)))
 (assert (not (= tmp_0@609@01 tmp2_8@526@01)))
-(assert (not (= tmp_0@609@01 tmp_0@582@01)))
 (assert (not (= tmp_0@609@01 Exception_res_0_0@560@01)))
 (assert (not (= tmp_0@609@01 c_0@483@01)))
-(assert (not (= tmp_0@609@01 _err@561@01)))
 (assert (not (= tmp_0@609@01 b_0@485@01)))
 (assert (not
   (=
@@ -73566,14 +73569,11 @@
   (=
     tmp_0@609@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second $t@573@01)))))))
-(assert (not (= tmp_0@609@01 b_0_0@486@01)))
-(assert (not (= tmp_0@609@01 tmp1_8@525@01)))
+(assert (not (= tmp_0@609@01 tmp_0@582@01)))
+(assert (not (= tmp_0@609@01 _err@561@01)))
 (assert (not (= tmp_0@609@01 _cthread_158@477@01)))
-(assert (not (= tmp_0@609@01 c_0_0@484@01)))
-(assert (not (= tmp_0@609@01 tmp1_6@521@01)))
-(assert (not (= tmp_0@609@01 tmp2_6@522@01)))
-(assert (not (= tmp_0@609@01 _err_1@563@01)))
-(assert (not (= tmp_0@609@01 Exception_res_0@559@01)))
+(assert (not (= tmp_0@609@01 b_0_0@486@01)))
+(assert (not (= tmp_0@609@01 _cthread_158_0@478@01)))
 ; [eval] p1_6 && (!break1_0 && !except1_0)
 (push) ; 20
 ; [then-branch: 3849 | !(p1_6@589@01) | live]
@@ -76956,26 +76956,26 @@
 ; tmp_0 := new()
 (declare-const tmp_0@621@01 $Ref)
 (assert (not (= tmp_0@621@01 $Ref.null)))
-(assert (not (= tmp_0@621@01 _cthread_158_0@478@01)))
+(assert (not (= tmp_0@621@01 c_0_0@484@01)))
+(assert (not (= tmp_0@621@01 _err_1@563@01)))
+(assert (not (= tmp_0@621@01 tmp1_6@521@01)))
+(assert (not (= tmp_0@621@01 Exception_res_0@559@01)))
+(assert (not (= tmp_0@621@01 tmp2_6@522@01)))
+(assert (not (= tmp_0@621@01 tmp1_8@525@01)))
 (assert (not (= tmp_0@621@01 tmp2_8@526@01)))
-(assert (not (= tmp_0@621@01 Container_value@620@01)))
-(assert (not (= tmp_0@621@01 tmp_0@582@01)))
 (assert (not (= tmp_0@621@01 Exception_res_0_0@560@01)))
 (assert (not (= tmp_0@621@01 c_0@483@01)))
-(assert (not (= tmp_0@621@01 _err@561@01)))
 (assert (not (= tmp_0@621@01 b_0@485@01)))
 (assert (not
   (=
     tmp_0@621@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@573@01))))))))
-(assert (not (= tmp_0@621@01 b_0_0@486@01)))
-(assert (not (= tmp_0@621@01 tmp1_8@525@01)))
+(assert (not (= tmp_0@621@01 tmp_0@582@01)))
+(assert (not (= tmp_0@621@01 _err@561@01)))
+(assert (not (= tmp_0@621@01 Container_value@620@01)))
 (assert (not (= tmp_0@621@01 _cthread_158@477@01)))
-(assert (not (= tmp_0@621@01 c_0_0@484@01)))
-(assert (not (= tmp_0@621@01 tmp1_6@521@01)))
-(assert (not (= tmp_0@621@01 tmp2_6@522@01)))
-(assert (not (= tmp_0@621@01 _err_1@563@01)))
-(assert (not (= tmp_0@621@01 Exception_res_0@559@01)))
+(assert (not (= tmp_0@621@01 b_0_0@486@01)))
+(assert (not (= tmp_0@621@01 _cthread_158_0@478@01)))
 ; [eval] p1_6 && (!break1_0 && !except1_0)
 (push) ; 20
 ; [then-branch: 4033 | !(p1_6@614@01) | live]
@@ -79604,12 +79604,15 @@
 ; tmp_0 := new()
 (declare-const tmp_0@624@01 $Ref)
 (assert (not (= tmp_0@624@01 $Ref.null)))
-(assert (not (= tmp_0@624@01 _cthread_158_0@478@01)))
+(assert (not (= tmp_0@624@01 c_0_0@484@01)))
+(assert (not (= tmp_0@624@01 _err_1@563@01)))
+(assert (not (= tmp_0@624@01 tmp1_6@521@01)))
+(assert (not (= tmp_0@624@01 Exception_res_0@559@01)))
+(assert (not (= tmp_0@624@01 tmp2_6@522@01)))
+(assert (not (= tmp_0@624@01 tmp1_8@525@01)))
 (assert (not (= tmp_0@624@01 tmp2_8@526@01)))
-(assert (not (= tmp_0@624@01 tmp_0@582@01)))
 (assert (not (= tmp_0@624@01 Exception_res_0_0@560@01)))
 (assert (not (= tmp_0@624@01 c_0@483@01)))
-(assert (not (= tmp_0@624@01 _err@561@01)))
 (assert (not (= tmp_0@624@01 b_0@485@01)))
 (assert (not
   (=
@@ -79619,14 +79622,11 @@
   (=
     tmp_0@624@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second $t@573@01)))))))
-(assert (not (= tmp_0@624@01 b_0_0@486@01)))
-(assert (not (= tmp_0@624@01 tmp1_8@525@01)))
+(assert (not (= tmp_0@624@01 tmp_0@582@01)))
+(assert (not (= tmp_0@624@01 _err@561@01)))
 (assert (not (= tmp_0@624@01 _cthread_158@477@01)))
-(assert (not (= tmp_0@624@01 c_0_0@484@01)))
-(assert (not (= tmp_0@624@01 tmp1_6@521@01)))
-(assert (not (= tmp_0@624@01 tmp2_6@522@01)))
-(assert (not (= tmp_0@624@01 _err_1@563@01)))
-(assert (not (= tmp_0@624@01 Exception_res_0@559@01)))
+(assert (not (= tmp_0@624@01 b_0_0@486@01)))
+(assert (not (= tmp_0@624@01 _cthread_158_0@478@01)))
 ; [eval] p1_6 && (!break1_0 && !except1_0)
 (push) ; 20
 ; [then-branch: 4190 | !(p1_6@614@01) | live]
@@ -83057,26 +83057,26 @@
 ; tmp_0 := new()
 (declare-const tmp_0@635@01 $Ref)
 (assert (not (= tmp_0@635@01 $Ref.null)))
-(assert (not (= tmp_0@635@01 _cthread_158_0@478@01)))
+(assert (not (= tmp_0@635@01 c_0_0@484@01)))
+(assert (not (= tmp_0@635@01 _err_1@563@01)))
+(assert (not (= tmp_0@635@01 tmp1_6@521@01)))
+(assert (not (= tmp_0@635@01 Exception_res_0@559@01)))
+(assert (not (= tmp_0@635@01 tmp2_6@522@01)))
+(assert (not (= tmp_0@635@01 tmp1_8@525@01)))
+(assert (not (= tmp_0@635@01 Container_valuep@634@01)))
 (assert (not (= tmp_0@635@01 tmp2_8@526@01)))
-(assert (not (= tmp_0@635@01 tmp_0@582@01)))
 (assert (not (= tmp_0@635@01 Exception_res_0_0@560@01)))
 (assert (not (= tmp_0@635@01 c_0@483@01)))
-(assert (not (= tmp_0@635@01 _err@561@01)))
 (assert (not (= tmp_0@635@01 b_0@485@01)))
 (assert (not
   (=
     tmp_0@635@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second $t@573@01)))))))
-(assert (not (= tmp_0@635@01 b_0_0@486@01)))
-(assert (not (= tmp_0@635@01 tmp1_8@525@01)))
+(assert (not (= tmp_0@635@01 tmp_0@582@01)))
+(assert (not (= tmp_0@635@01 _err@561@01)))
 (assert (not (= tmp_0@635@01 _cthread_158@477@01)))
-(assert (not (= tmp_0@635@01 c_0_0@484@01)))
-(assert (not (= tmp_0@635@01 Container_valuep@634@01)))
-(assert (not (= tmp_0@635@01 tmp1_6@521@01)))
-(assert (not (= tmp_0@635@01 tmp2_6@522@01)))
-(assert (not (= tmp_0@635@01 _err_1@563@01)))
-(assert (not (= tmp_0@635@01 Exception_res_0@559@01)))
+(assert (not (= tmp_0@635@01 b_0_0@486@01)))
+(assert (not (= tmp_0@635@01 _cthread_158_0@478@01)))
 ; [eval] p1_6 && (!break1_0 && !except1_0)
 (push) ; 20
 ; [then-branch: 4380 | !(p1_6@628@01) | live]
@@ -85600,12 +85600,15 @@
 ; tmp_0 := new()
 (declare-const tmp_0@638@01 $Ref)
 (assert (not (= tmp_0@638@01 $Ref.null)))
-(assert (not (= tmp_0@638@01 _cthread_158_0@478@01)))
+(assert (not (= tmp_0@638@01 c_0_0@484@01)))
+(assert (not (= tmp_0@638@01 _err_1@563@01)))
+(assert (not (= tmp_0@638@01 tmp1_6@521@01)))
+(assert (not (= tmp_0@638@01 Exception_res_0@559@01)))
+(assert (not (= tmp_0@638@01 tmp2_6@522@01)))
+(assert (not (= tmp_0@638@01 tmp1_8@525@01)))
 (assert (not (= tmp_0@638@01 tmp2_8@526@01)))
-(assert (not (= tmp_0@638@01 tmp_0@582@01)))
 (assert (not (= tmp_0@638@01 Exception_res_0_0@560@01)))
 (assert (not (= tmp_0@638@01 c_0@483@01)))
-(assert (not (= tmp_0@638@01 _err@561@01)))
 (assert (not (= tmp_0@638@01 b_0@485@01)))
 (assert (not
   (=
@@ -85615,14 +85618,11 @@
   (=
     tmp_0@638@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second $t@573@01)))))))
-(assert (not (= tmp_0@638@01 b_0_0@486@01)))
-(assert (not (= tmp_0@638@01 tmp1_8@525@01)))
+(assert (not (= tmp_0@638@01 tmp_0@582@01)))
+(assert (not (= tmp_0@638@01 _err@561@01)))
 (assert (not (= tmp_0@638@01 _cthread_158@477@01)))
-(assert (not (= tmp_0@638@01 c_0_0@484@01)))
-(assert (not (= tmp_0@638@01 tmp1_6@521@01)))
-(assert (not (= tmp_0@638@01 tmp2_6@522@01)))
-(assert (not (= tmp_0@638@01 _err_1@563@01)))
-(assert (not (= tmp_0@638@01 Exception_res_0@559@01)))
+(assert (not (= tmp_0@638@01 b_0_0@486@01)))
+(assert (not (= tmp_0@638@01 _cthread_158_0@478@01)))
 ; [eval] p1_6 && (!break1_0 && !except1_0)
 (push) ; 20
 ; [then-branch: 4531 | !(p1_6@628@01) | live]
@@ -89664,23 +89664,23 @@
 ; tmp_0 := new()
 (declare-const tmp_0@663@01 $Ref)
 (assert (not (= tmp_0@663@01 $Ref.null)))
-(assert (not (= tmp_0@663@01 _cthread_158_0@478@01)))
-(assert (not (= tmp_0@663@01 tmp2_8@526@01)))
-(assert (not (= tmp_0@663@01 tmp_0@650@01)))
-(assert (not (= tmp_0@663@01 Exception_res_0_0@560@01)))
-(assert (not (= tmp_0@663@01 c_0@483@01)))
-(assert (not (= tmp_0@663@01 _err@561@01)))
-(assert (not (= tmp_0@663@01 Container_value@661@01)))
-(assert (not (= tmp_0@663@01 b_0@485@01)))
-(assert (not (= tmp_0@663@01 b_0_0@486@01)))
-(assert (not (= tmp_0@663@01 tmp1_8@525@01)))
-(assert (not (= tmp_0@663@01 _cthread_158@477@01)))
 (assert (not (= tmp_0@663@01 c_0_0@484@01)))
-(assert (not (= tmp_0@663@01 tmp1_6@521@01)))
-(assert (not (= tmp_0@663@01 Container_valuep@662@01)))
-(assert (not (= tmp_0@663@01 tmp2_6@522@01)))
 (assert (not (= tmp_0@663@01 _err_1@563@01)))
+(assert (not (= tmp_0@663@01 tmp1_6@521@01)))
 (assert (not (= tmp_0@663@01 Exception_res_0@559@01)))
+(assert (not (= tmp_0@663@01 tmp2_6@522@01)))
+(assert (not (= tmp_0@663@01 tmp1_8@525@01)))
+(assert (not (= tmp_0@663@01 tmp2_8@526@01)))
+(assert (not (= tmp_0@663@01 Exception_res_0_0@560@01)))
+(assert (not (= tmp_0@663@01 Container_valuep@662@01)))
+(assert (not (= tmp_0@663@01 Container_value@661@01)))
+(assert (not (= tmp_0@663@01 c_0@483@01)))
+(assert (not (= tmp_0@663@01 b_0@485@01)))
+(assert (not (= tmp_0@663@01 _err@561@01)))
+(assert (not (= tmp_0@663@01 _cthread_158@477@01)))
+(assert (not (= tmp_0@663@01 tmp_0@650@01)))
+(assert (not (= tmp_0@663@01 b_0_0@486@01)))
+(assert (not (= tmp_0@663@01 _cthread_158_0@478@01)))
 ; [eval] p1_6 && (!break1_0 && !except1_0)
 (push) ; 21
 ; [then-branch: 4755 | !(p1_6@657@01) | live]
@@ -91825,26 +91825,26 @@
 ; tmp_0 := new()
 (declare-const tmp_0@668@01 $Ref)
 (assert (not (= tmp_0@668@01 $Ref.null)))
-(assert (not (= tmp_0@668@01 _cthread_158_0@478@01)))
+(assert (not (= tmp_0@668@01 c_0_0@484@01)))
+(assert (not (= tmp_0@668@01 _err_1@563@01)))
+(assert (not (= tmp_0@668@01 tmp1_6@521@01)))
+(assert (not (= tmp_0@668@01 Exception_res_0@559@01)))
+(assert (not (= tmp_0@668@01 tmp2_6@522@01)))
+(assert (not (= tmp_0@668@01 tmp1_8@525@01)))
 (assert (not (= tmp_0@668@01 tmp2_8@526@01)))
-(assert (not (= tmp_0@668@01 tmp_0@650@01)))
 (assert (not (= tmp_0@668@01 Exception_res_0_0@560@01)))
-(assert (not (= tmp_0@668@01 c_0@483@01)))
-(assert (not (= tmp_0@668@01 _err@561@01)))
 (assert (not (= tmp_0@668@01 Container_value@661@01)))
+(assert (not (= tmp_0@668@01 c_0@483@01)))
 (assert (not (= tmp_0@668@01 b_0@485@01)))
 (assert (not
   (=
     tmp_0@668@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@573@01))))))))
-(assert (not (= tmp_0@668@01 b_0_0@486@01)))
-(assert (not (= tmp_0@668@01 tmp1_8@525@01)))
+(assert (not (= tmp_0@668@01 _err@561@01)))
 (assert (not (= tmp_0@668@01 _cthread_158@477@01)))
-(assert (not (= tmp_0@668@01 c_0_0@484@01)))
-(assert (not (= tmp_0@668@01 tmp1_6@521@01)))
-(assert (not (= tmp_0@668@01 tmp2_6@522@01)))
-(assert (not (= tmp_0@668@01 _err_1@563@01)))
-(assert (not (= tmp_0@668@01 Exception_res_0@559@01)))
+(assert (not (= tmp_0@668@01 tmp_0@650@01)))
+(assert (not (= tmp_0@668@01 b_0_0@486@01)))
+(assert (not (= tmp_0@668@01 _cthread_158_0@478@01)))
 ; [eval] p1_6 && (!break1_0 && !except1_0)
 (push) ; 21
 ; [then-branch: 4892 | !(p1_6@657@01) | live]
@@ -101265,23 +101265,23 @@
 ; tmp_1 := new()
 (declare-const tmp_1@811@01 $Ref)
 (assert (not (= tmp_1@811@01 $Ref.null)))
-(assert (not (= tmp_1@811@01 c_1@697@01)))
-(assert (not (= tmp_1@811@01 tmp2_14@740@01)))
-(assert (not (= tmp_1@811@01 c_1_0@698@01)))
 (assert (not (= tmp_1@811@01 tmp1_12@735@01)))
-(assert (not (= tmp_1@811@01 tmp1_14@739@01)))
-(assert (not (= tmp_1@811@01 _cthread_159_0@692@01)))
-(assert (not (= tmp_1@811@01 _err@775@01)))
+(assert (not (= tmp_1@811@01 tmp2_14@740@01)))
 (assert (not (= tmp_1@811@01 Exception_res_1_0@774@01)))
-(assert (not (= tmp_1@811@01 b_1@699@01)))
+(assert (not (= tmp_1@811@01 _err@775@01)))
 (assert (not (= tmp_1@811@01 _err_2@777@01)))
+(assert (not (= tmp_1@811@01 c_1@697@01)))
 (assert (not (= tmp_1@811@01 Exception_res_1@773@01)))
-(assert (not (= tmp_1@811@01 Container_value@809@01)))
-(assert (not (= tmp_1@811@01 tmp2_12@736@01)))
 (assert (not (= tmp_1@811@01 b_1_0@700@01)))
+(assert (not (= tmp_1@811@01 tmp2_12@736@01)))
+(assert (not (= tmp_1@811@01 c_1_0@698@01)))
+(assert (not (= tmp_1@811@01 tmp_1@796@01)))
+(assert (not (= tmp_1@811@01 b_1@699@01)))
 (assert (not (= tmp_1@811@01 _cthread_159@691@01)))
 (assert (not (= tmp_1@811@01 Container_valuep@810@01)))
-(assert (not (= tmp_1@811@01 tmp_1@796@01)))
+(assert (not (= tmp_1@811@01 tmp1_14@739@01)))
+(assert (not (= tmp_1@811@01 Container_value@809@01)))
+(assert (not (= tmp_1@811@01 _cthread_159_0@692@01)))
 ; [eval] p1_11 && (!break1_1 && !except1_1)
 (push) ; 20
 ; [then-branch: 5278 | !(p1_11@803@01) | live]
@@ -103805,26 +103805,26 @@
 ; tmp_1 := new()
 (declare-const tmp_1@814@01 $Ref)
 (assert (not (= tmp_1@814@01 $Ref.null)))
-(assert (not (= tmp_1@814@01 c_1@697@01)))
-(assert (not (= tmp_1@814@01 tmp2_14@740@01)))
-(assert (not (= tmp_1@814@01 c_1_0@698@01)))
 (assert (not (= tmp_1@814@01 tmp1_12@735@01)))
-(assert (not (= tmp_1@814@01 tmp1_14@739@01)))
-(assert (not (= tmp_1@814@01 _cthread_159_0@692@01)))
-(assert (not (= tmp_1@814@01 _err@775@01)))
+(assert (not (= tmp_1@814@01 tmp2_14@740@01)))
 (assert (not (= tmp_1@814@01 Exception_res_1_0@774@01)))
-(assert (not (= tmp_1@814@01 b_1@699@01)))
-(assert (not (= tmp_1@814@01 _err_2@777@01)))
-(assert (not (= tmp_1@814@01 Exception_res_1@773@01)))
-(assert (not (= tmp_1@814@01 Container_value@809@01)))
-(assert (not (= tmp_1@814@01 tmp2_12@736@01)))
+(assert (not (= tmp_1@814@01 _err@775@01)))
 (assert (not
   (=
     tmp_1@814@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@787@01))))))))
+(assert (not (= tmp_1@814@01 _err_2@777@01)))
+(assert (not (= tmp_1@814@01 c_1@697@01)))
+(assert (not (= tmp_1@814@01 Exception_res_1@773@01)))
 (assert (not (= tmp_1@814@01 b_1_0@700@01)))
-(assert (not (= tmp_1@814@01 _cthread_159@691@01)))
+(assert (not (= tmp_1@814@01 tmp2_12@736@01)))
+(assert (not (= tmp_1@814@01 c_1_0@698@01)))
 (assert (not (= tmp_1@814@01 tmp_1@796@01)))
+(assert (not (= tmp_1@814@01 b_1@699@01)))
+(assert (not (= tmp_1@814@01 _cthread_159@691@01)))
+(assert (not (= tmp_1@814@01 tmp1_14@739@01)))
+(assert (not (= tmp_1@814@01 Container_value@809@01)))
+(assert (not (= tmp_1@814@01 _cthread_159_0@692@01)))
 ; [eval] p1_11 && (!break1_1 && !except1_1)
 (push) ; 20
 ; [then-branch: 5427 | !(p1_11@803@01) | live]
@@ -106413,26 +106413,26 @@
 ; tmp_1 := new()
 (declare-const tmp_1@819@01 $Ref)
 (assert (not (= tmp_1@819@01 $Ref.null)))
-(assert (not (= tmp_1@819@01 c_1@697@01)))
-(assert (not (= tmp_1@819@01 tmp2_14@740@01)))
-(assert (not (= tmp_1@819@01 c_1_0@698@01)))
 (assert (not (= tmp_1@819@01 tmp1_12@735@01)))
-(assert (not (= tmp_1@819@01 tmp1_14@739@01)))
-(assert (not (= tmp_1@819@01 _cthread_159_0@692@01)))
-(assert (not (= tmp_1@819@01 _err@775@01)))
+(assert (not (= tmp_1@819@01 tmp2_14@740@01)))
 (assert (not (= tmp_1@819@01 Exception_res_1_0@774@01)))
-(assert (not (= tmp_1@819@01 Container_valuep@818@01)))
-(assert (not (= tmp_1@819@01 b_1@699@01)))
-(assert (not (= tmp_1@819@01 _err_2@777@01)))
-(assert (not (= tmp_1@819@01 Exception_res_1@773@01)))
-(assert (not (= tmp_1@819@01 tmp2_12@736@01)))
+(assert (not (= tmp_1@819@01 _err@775@01)))
 (assert (not
   (=
     tmp_1@819@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second $t@787@01)))))))
+(assert (not (= tmp_1@819@01 _err_2@777@01)))
+(assert (not (= tmp_1@819@01 Container_valuep@818@01)))
+(assert (not (= tmp_1@819@01 c_1@697@01)))
+(assert (not (= tmp_1@819@01 Exception_res_1@773@01)))
 (assert (not (= tmp_1@819@01 b_1_0@700@01)))
-(assert (not (= tmp_1@819@01 _cthread_159@691@01)))
+(assert (not (= tmp_1@819@01 tmp2_12@736@01)))
+(assert (not (= tmp_1@819@01 c_1_0@698@01)))
 (assert (not (= tmp_1@819@01 tmp_1@796@01)))
+(assert (not (= tmp_1@819@01 b_1@699@01)))
+(assert (not (= tmp_1@819@01 _cthread_159@691@01)))
+(assert (not (= tmp_1@819@01 tmp1_14@739@01)))
+(assert (not (= tmp_1@819@01 _cthread_159_0@692@01)))
 ; [eval] p1_11 && (!break1_1 && !except1_1)
 (push) ; 20
 ; [then-branch: 5578 | !(p1_11@803@01) | live]
@@ -108948,18 +108948,10 @@
 ; tmp_1 := new()
 (declare-const tmp_1@823@01 $Ref)
 (assert (not (= tmp_1@823@01 $Ref.null)))
-(assert (not (= tmp_1@823@01 c_1@697@01)))
-(assert (not (= tmp_1@823@01 tmp2_14@740@01)))
-(assert (not (= tmp_1@823@01 c_1_0@698@01)))
 (assert (not (= tmp_1@823@01 tmp1_12@735@01)))
-(assert (not (= tmp_1@823@01 tmp1_14@739@01)))
-(assert (not (= tmp_1@823@01 _cthread_159_0@692@01)))
-(assert (not (= tmp_1@823@01 _err@775@01)))
+(assert (not (= tmp_1@823@01 tmp2_14@740@01)))
 (assert (not (= tmp_1@823@01 Exception_res_1_0@774@01)))
-(assert (not (= tmp_1@823@01 b_1@699@01)))
-(assert (not (= tmp_1@823@01 _err_2@777@01)))
-(assert (not (= tmp_1@823@01 Exception_res_1@773@01)))
-(assert (not (= tmp_1@823@01 tmp2_12@736@01)))
+(assert (not (= tmp_1@823@01 _err@775@01)))
 (assert (not
   (=
     tmp_1@823@01
@@ -108968,9 +108960,17 @@
   (=
     tmp_1@823@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second $t@787@01)))))))
+(assert (not (= tmp_1@823@01 _err_2@777@01)))
+(assert (not (= tmp_1@823@01 c_1@697@01)))
+(assert (not (= tmp_1@823@01 Exception_res_1@773@01)))
 (assert (not (= tmp_1@823@01 b_1_0@700@01)))
-(assert (not (= tmp_1@823@01 _cthread_159@691@01)))
+(assert (not (= tmp_1@823@01 tmp2_12@736@01)))
+(assert (not (= tmp_1@823@01 c_1_0@698@01)))
 (assert (not (= tmp_1@823@01 tmp_1@796@01)))
+(assert (not (= tmp_1@823@01 b_1@699@01)))
+(assert (not (= tmp_1@823@01 _cthread_159@691@01)))
+(assert (not (= tmp_1@823@01 tmp1_14@739@01)))
+(assert (not (= tmp_1@823@01 _cthread_159_0@692@01)))
 ; [eval] p1_11 && (!break1_1 && !except1_1)
 (push) ; 20
 ; [then-branch: 5726 | !(p1_11@803@01) | live]
@@ -112353,26 +112353,26 @@
 ; tmp_1 := new()
 (declare-const tmp_1@835@01 $Ref)
 (assert (not (= tmp_1@835@01 $Ref.null)))
-(assert (not (= tmp_1@835@01 c_1@697@01)))
-(assert (not (= tmp_1@835@01 tmp2_14@740@01)))
-(assert (not (= tmp_1@835@01 c_1_0@698@01)))
 (assert (not (= tmp_1@835@01 tmp1_12@735@01)))
-(assert (not (= tmp_1@835@01 tmp1_14@739@01)))
-(assert (not (= tmp_1@835@01 _cthread_159_0@692@01)))
-(assert (not (= tmp_1@835@01 _err@775@01)))
+(assert (not (= tmp_1@835@01 tmp2_14@740@01)))
 (assert (not (= tmp_1@835@01 Exception_res_1_0@774@01)))
-(assert (not (= tmp_1@835@01 b_1@699@01)))
-(assert (not (= tmp_1@835@01 _err_2@777@01)))
-(assert (not (= tmp_1@835@01 Exception_res_1@773@01)))
-(assert (not (= tmp_1@835@01 tmp2_12@736@01)))
+(assert (not (= tmp_1@835@01 _err@775@01)))
 (assert (not
   (=
     tmp_1@835@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@787@01))))))))
+(assert (not (= tmp_1@835@01 _err_2@777@01)))
+(assert (not (= tmp_1@835@01 c_1@697@01)))
+(assert (not (= tmp_1@835@01 Exception_res_1@773@01)))
 (assert (not (= tmp_1@835@01 b_1_0@700@01)))
-(assert (not (= tmp_1@835@01 _cthread_159@691@01)))
+(assert (not (= tmp_1@835@01 tmp2_12@736@01)))
+(assert (not (= tmp_1@835@01 c_1_0@698@01)))
 (assert (not (= tmp_1@835@01 tmp_1@796@01)))
 (assert (not (= tmp_1@835@01 Container_value@834@01)))
+(assert (not (= tmp_1@835@01 b_1@699@01)))
+(assert (not (= tmp_1@835@01 _cthread_159@691@01)))
+(assert (not (= tmp_1@835@01 tmp1_14@739@01)))
+(assert (not (= tmp_1@835@01 _cthread_159_0@692@01)))
 ; [eval] p1_11 && (!break1_1 && !except1_1)
 (push) ; 20
 ; [then-branch: 5910 | !(p1_11@828@01) | live]
@@ -115001,18 +115001,10 @@
 ; tmp_1 := new()
 (declare-const tmp_1@838@01 $Ref)
 (assert (not (= tmp_1@838@01 $Ref.null)))
-(assert (not (= tmp_1@838@01 c_1@697@01)))
-(assert (not (= tmp_1@838@01 tmp2_14@740@01)))
-(assert (not (= tmp_1@838@01 c_1_0@698@01)))
 (assert (not (= tmp_1@838@01 tmp1_12@735@01)))
-(assert (not (= tmp_1@838@01 tmp1_14@739@01)))
-(assert (not (= tmp_1@838@01 _cthread_159_0@692@01)))
-(assert (not (= tmp_1@838@01 _err@775@01)))
+(assert (not (= tmp_1@838@01 tmp2_14@740@01)))
 (assert (not (= tmp_1@838@01 Exception_res_1_0@774@01)))
-(assert (not (= tmp_1@838@01 b_1@699@01)))
-(assert (not (= tmp_1@838@01 _err_2@777@01)))
-(assert (not (= tmp_1@838@01 Exception_res_1@773@01)))
-(assert (not (= tmp_1@838@01 tmp2_12@736@01)))
+(assert (not (= tmp_1@838@01 _err@775@01)))
 (assert (not
   (=
     tmp_1@838@01
@@ -115021,9 +115013,17 @@
   (=
     tmp_1@838@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second $t@787@01)))))))
+(assert (not (= tmp_1@838@01 _err_2@777@01)))
+(assert (not (= tmp_1@838@01 c_1@697@01)))
+(assert (not (= tmp_1@838@01 Exception_res_1@773@01)))
 (assert (not (= tmp_1@838@01 b_1_0@700@01)))
-(assert (not (= tmp_1@838@01 _cthread_159@691@01)))
+(assert (not (= tmp_1@838@01 tmp2_12@736@01)))
+(assert (not (= tmp_1@838@01 c_1_0@698@01)))
 (assert (not (= tmp_1@838@01 tmp_1@796@01)))
+(assert (not (= tmp_1@838@01 b_1@699@01)))
+(assert (not (= tmp_1@838@01 _cthread_159@691@01)))
+(assert (not (= tmp_1@838@01 tmp1_14@739@01)))
+(assert (not (= tmp_1@838@01 _cthread_159_0@692@01)))
 ; [eval] p1_11 && (!break1_1 && !except1_1)
 (push) ; 20
 ; [then-branch: 6067 | !(p1_11@828@01) | live]
@@ -118454,26 +118454,26 @@
 ; tmp_1 := new()
 (declare-const tmp_1@849@01 $Ref)
 (assert (not (= tmp_1@849@01 $Ref.null)))
-(assert (not (= tmp_1@849@01 c_1@697@01)))
-(assert (not (= tmp_1@849@01 tmp2_14@740@01)))
-(assert (not (= tmp_1@849@01 c_1_0@698@01)))
-(assert (not (= tmp_1@849@01 Container_valuep@848@01)))
 (assert (not (= tmp_1@849@01 tmp1_12@735@01)))
-(assert (not (= tmp_1@849@01 tmp1_14@739@01)))
-(assert (not (= tmp_1@849@01 _cthread_159_0@692@01)))
-(assert (not (= tmp_1@849@01 _err@775@01)))
+(assert (not (= tmp_1@849@01 tmp2_14@740@01)))
 (assert (not (= tmp_1@849@01 Exception_res_1_0@774@01)))
-(assert (not (= tmp_1@849@01 b_1@699@01)))
-(assert (not (= tmp_1@849@01 _err_2@777@01)))
-(assert (not (= tmp_1@849@01 Exception_res_1@773@01)))
-(assert (not (= tmp_1@849@01 tmp2_12@736@01)))
+(assert (not (= tmp_1@849@01 _err@775@01)))
 (assert (not
   (=
     tmp_1@849@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second $t@787@01)))))))
+(assert (not (= tmp_1@849@01 _err_2@777@01)))
+(assert (not (= tmp_1@849@01 c_1@697@01)))
+(assert (not (= tmp_1@849@01 Exception_res_1@773@01)))
 (assert (not (= tmp_1@849@01 b_1_0@700@01)))
-(assert (not (= tmp_1@849@01 _cthread_159@691@01)))
+(assert (not (= tmp_1@849@01 tmp2_12@736@01)))
+(assert (not (= tmp_1@849@01 c_1_0@698@01)))
 (assert (not (= tmp_1@849@01 tmp_1@796@01)))
+(assert (not (= tmp_1@849@01 b_1@699@01)))
+(assert (not (= tmp_1@849@01 _cthread_159@691@01)))
+(assert (not (= tmp_1@849@01 tmp1_14@739@01)))
+(assert (not (= tmp_1@849@01 Container_valuep@848@01)))
+(assert (not (= tmp_1@849@01 _cthread_159_0@692@01)))
 ; [eval] p1_11 && (!break1_1 && !except1_1)
 (push) ; 20
 ; [then-branch: 6257 | !(p1_11@842@01) | live]
@@ -120997,18 +120997,10 @@
 ; tmp_1 := new()
 (declare-const tmp_1@852@01 $Ref)
 (assert (not (= tmp_1@852@01 $Ref.null)))
-(assert (not (= tmp_1@852@01 c_1@697@01)))
-(assert (not (= tmp_1@852@01 tmp2_14@740@01)))
-(assert (not (= tmp_1@852@01 c_1_0@698@01)))
 (assert (not (= tmp_1@852@01 tmp1_12@735@01)))
-(assert (not (= tmp_1@852@01 tmp1_14@739@01)))
-(assert (not (= tmp_1@852@01 _cthread_159_0@692@01)))
-(assert (not (= tmp_1@852@01 _err@775@01)))
+(assert (not (= tmp_1@852@01 tmp2_14@740@01)))
 (assert (not (= tmp_1@852@01 Exception_res_1_0@774@01)))
-(assert (not (= tmp_1@852@01 b_1@699@01)))
-(assert (not (= tmp_1@852@01 _err_2@777@01)))
-(assert (not (= tmp_1@852@01 Exception_res_1@773@01)))
-(assert (not (= tmp_1@852@01 tmp2_12@736@01)))
+(assert (not (= tmp_1@852@01 _err@775@01)))
 (assert (not
   (=
     tmp_1@852@01
@@ -121017,9 +121009,17 @@
   (=
     tmp_1@852@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second $t@787@01)))))))
+(assert (not (= tmp_1@852@01 _err_2@777@01)))
+(assert (not (= tmp_1@852@01 c_1@697@01)))
+(assert (not (= tmp_1@852@01 Exception_res_1@773@01)))
 (assert (not (= tmp_1@852@01 b_1_0@700@01)))
-(assert (not (= tmp_1@852@01 _cthread_159@691@01)))
+(assert (not (= tmp_1@852@01 tmp2_12@736@01)))
+(assert (not (= tmp_1@852@01 c_1_0@698@01)))
 (assert (not (= tmp_1@852@01 tmp_1@796@01)))
+(assert (not (= tmp_1@852@01 b_1@699@01)))
+(assert (not (= tmp_1@852@01 _cthread_159@691@01)))
+(assert (not (= tmp_1@852@01 tmp1_14@739@01)))
+(assert (not (= tmp_1@852@01 _cthread_159_0@692@01)))
 ; [eval] p1_11 && (!break1_1 && !except1_1)
 (push) ; 20
 ; [then-branch: 6408 | !(p1_11@842@01) | live]
@@ -125061,23 +125061,23 @@
 ; tmp_1 := new()
 (declare-const tmp_1@877@01 $Ref)
 (assert (not (= tmp_1@877@01 $Ref.null)))
-(assert (not (= tmp_1@877@01 c_1@697@01)))
-(assert (not (= tmp_1@877@01 tmp2_14@740@01)))
-(assert (not (= tmp_1@877@01 c_1_0@698@01)))
-(assert (not (= tmp_1@877@01 tmp1_12@735@01)))
-(assert (not (= tmp_1@877@01 tmp1_14@739@01)))
-(assert (not (= tmp_1@877@01 _cthread_159_0@692@01)))
-(assert (not (= tmp_1@877@01 _err@775@01)))
-(assert (not (= tmp_1@877@01 Exception_res_1_0@774@01)))
-(assert (not (= tmp_1@877@01 Container_value@875@01)))
 (assert (not (= tmp_1@877@01 tmp_1@864@01)))
-(assert (not (= tmp_1@877@01 Container_valuep@876@01)))
-(assert (not (= tmp_1@877@01 b_1@699@01)))
+(assert (not (= tmp_1@877@01 tmp1_12@735@01)))
+(assert (not (= tmp_1@877@01 tmp2_14@740@01)))
+(assert (not (= tmp_1@877@01 Exception_res_1_0@774@01)))
+(assert (not (= tmp_1@877@01 _err@775@01)))
+(assert (not (= tmp_1@877@01 Container_value@875@01)))
 (assert (not (= tmp_1@877@01 _err_2@777@01)))
+(assert (not (= tmp_1@877@01 c_1@697@01)))
 (assert (not (= tmp_1@877@01 Exception_res_1@773@01)))
-(assert (not (= tmp_1@877@01 tmp2_12@736@01)))
 (assert (not (= tmp_1@877@01 b_1_0@700@01)))
+(assert (not (= tmp_1@877@01 tmp2_12@736@01)))
+(assert (not (= tmp_1@877@01 c_1_0@698@01)))
+(assert (not (= tmp_1@877@01 b_1@699@01)))
 (assert (not (= tmp_1@877@01 _cthread_159@691@01)))
+(assert (not (= tmp_1@877@01 tmp1_14@739@01)))
+(assert (not (= tmp_1@877@01 Container_valuep@876@01)))
+(assert (not (= tmp_1@877@01 _cthread_159_0@692@01)))
 ; [eval] p1_11 && (!break1_1 && !except1_1)
 (push) ; 21
 ; [then-branch: 6632 | !(p1_11@871@01) | live]
@@ -134861,3826 +134861,4 @@
 (push) ; 22
 (set-option :timeout 10)
 (assert (not (and p1_15@976@01 (not break1_2@967@01))))
-(check-sat)
-; unknown
-(pop) ; 22
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 7101 | !(p1_15@976@01 && !(break1_2@967@01)) | live]
-; [else-branch: 7101 | p1_15@976@01 && !(break1_2@967@01) | dead]
-(set-option :timeout 0)
-(push) ; 22
-; [then-branch: 7101 | !(p1_15@976@01 && !(break1_2@967@01))]
-; [eval] p2_15 && !break2_2
-(push) ; 23
-; [then-branch: 7102 | !(p2_15@977@01) | live]
-; [else-branch: 7102 | p2_15@977@01 | live]
-(push) ; 24
-; [then-branch: 7102 | !(p2_15@977@01)]
-(assert (not p2_15@977@01))
-(pop) ; 24
-(push) ; 24
-; [else-branch: 7102 | p2_15@977@01]
-; [eval] !break2_2
-(pop) ; 24
-(pop) ; 23
-; Joined path conditions
-; Joined path conditions
-; [then-branch: 7103 | False | dead]
-; [else-branch: 7103 | True | live]
-(push) ; 23
-; [else-branch: 7103 | True]
-(pop) ; 23
-; [eval] !(p2_15 && !break2_2)
-; [eval] p2_15 && !break2_2
-(push) ; 23
-; [then-branch: 7104 | !(p2_15@977@01) | live]
-; [else-branch: 7104 | p2_15@977@01 | live]
-(push) ; 24
-; [then-branch: 7104 | !(p2_15@977@01)]
-(assert (not p2_15@977@01))
-(pop) ; 24
-(push) ; 24
-; [else-branch: 7104 | p2_15@977@01]
-; [eval] !break2_2
-(pop) ; 24
-(pop) ; 23
-; Joined path conditions
-; Joined path conditions
-(push) ; 23
-(set-option :timeout 10)
-(assert (not false))
-(check-sat)
-; unknown
-(pop) ; 23
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 7105 | True | live]
-; [else-branch: 7105 | False | dead]
-(set-option :timeout 0)
-(push) ; 23
-; [then-branch: 7105 | True]
-; [exec]
-; assert (p1_15 && !break1_2 ==> _loop_termination_flag_2 ==> !true) &&
-;   (p2_15 && !break2_2 ==> _loop_termination_flag_2_0 ==> !true)
-; [eval] p1_15 && !break1_2 ==> _loop_termination_flag_2 ==> !true
-; [eval] p1_15 && !break1_2
-(push) ; 24
-; [then-branch: 7106 | !(p1_15@976@01) | live]
-; [else-branch: 7106 | p1_15@976@01 | live]
-(push) ; 25
-; [then-branch: 7106 | !(p1_15@976@01)]
-(assert (not p1_15@976@01))
-(pop) ; 25
-(push) ; 25
-; [else-branch: 7106 | p1_15@976@01]
-(assert p1_15@976@01)
-; [eval] !break1_2
-(pop) ; 25
-(pop) ; 24
-; Joined path conditions
-; Joined path conditions
-(push) ; 24
-; [then-branch: 7107 | p1_15@976@01 && !(break1_2@967@01) | dead]
-; [else-branch: 7107 | !(p1_15@976@01 && !(break1_2@967@01)) | live]
-(push) ; 25
-; [else-branch: 7107 | !(p1_15@976@01 && !(break1_2@967@01))]
-(pop) ; 25
-(pop) ; 24
-; Joined path conditions
-; [eval] p2_15 && !break2_2 ==> _loop_termination_flag_2_0 ==> !true
-; [eval] p2_15 && !break2_2
-(push) ; 24
-; [then-branch: 7108 | !(p2_15@977@01) | live]
-; [else-branch: 7108 | p2_15@977@01 | live]
-(push) ; 25
-; [then-branch: 7108 | !(p2_15@977@01)]
-(assert (not p2_15@977@01))
-(pop) ; 25
-(push) ; 25
-; [else-branch: 7108 | p2_15@977@01]
-; [eval] !break2_2
-(pop) ; 25
-(pop) ; 24
-; Joined path conditions
-; Joined path conditions
-(push) ; 24
-; [then-branch: 7109 | False | dead]
-; [else-branch: 7109 | True | live]
-(push) ; 25
-; [else-branch: 7109 | True]
-(pop) ; 25
-(pop) ; 24
-; Joined path conditions
-; Loop head block: Re-establish invariant
-; [eval] p1_14 && !bypass1_2 ==> true
-; [eval] p1_14 && !bypass1_2
-(push) ; 24
-; [then-branch: 7110 | !(p1_14@898@01) | live]
-; [else-branch: 7110 | p1_14@898@01 | live]
-(push) ; 25
-; [then-branch: 7110 | !(p1_14@898@01)]
-(assert (not p1_14@898@01))
-(pop) ; 25
-(push) ; 25
-; [else-branch: 7110 | p1_14@898@01]
-(assert p1_14@898@01)
-; [eval] !bypass1_2
-(pop) ; 25
-(pop) ; 24
-; Joined path conditions
-; Joined path conditions
-(push) ; 24
-(push) ; 25
-(set-option :timeout 10)
-(assert (not (not (and p1_14@898@01 (not bypass1_2@955@01)))))
-(check-sat)
-; unknown
-(pop) ; 25
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 25
-(set-option :timeout 10)
-(assert (not (and p1_14@898@01 (not bypass1_2@955@01))))
-(check-sat)
-; unsat
-(pop) ; 25
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 7111 | p1_14@898@01 && !(bypass1_2@955@01) | live]
-; [else-branch: 7111 | !(p1_14@898@01 && !(bypass1_2@955@01)) | dead]
-(set-option :timeout 0)
-(push) ; 25
-; [then-branch: 7111 | p1_14@898@01 && !(bypass1_2@955@01)]
-(assert (and p1_14@898@01 (not bypass1_2@955@01)))
-(pop) ; 25
-(pop) ; 24
-; Joined path conditions
-(assert (and p1_14@898@01 (not bypass1_2@955@01)))
-; [eval] p2_14 && !bypass2_2 ==> true
-; [eval] p2_14 && !bypass2_2
-(push) ; 24
-; [then-branch: 7112 | !(p2_14@899@01) | live]
-; [else-branch: 7112 | p2_14@899@01 | live]
-(push) ; 25
-; [then-branch: 7112 | !(p2_14@899@01)]
-(assert (not p2_14@899@01))
-(pop) ; 25
-(push) ; 25
-; [else-branch: 7112 | p2_14@899@01]
-(assert p2_14@899@01)
-; [eval] !bypass2_2
-(pop) ; 25
-(pop) ; 24
-; Joined path conditions
-; Joined path conditions
-(push) ; 24
-(push) ; 25
-(set-option :timeout 10)
-(assert (not (not (and p2_14@899@01 (not bypass2_2@956@01)))))
-(check-sat)
-; unknown
-(pop) ; 25
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 25
-(set-option :timeout 10)
-(assert (not (and p2_14@899@01 (not bypass2_2@956@01))))
-(check-sat)
-; unsat
-(pop) ; 25
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 7113 | p2_14@899@01 && !(bypass2_2@956@01) | live]
-; [else-branch: 7113 | !(p2_14@899@01 && !(bypass2_2@956@01)) | dead]
-(set-option :timeout 0)
-(push) ; 25
-; [then-branch: 7113 | p2_14@899@01 && !(bypass2_2@956@01)]
-(assert (and p2_14@899@01 (not bypass2_2@956@01)))
-(pop) ; 25
-(pop) ; 24
-; Joined path conditions
-(assert (and p2_14@899@01 (not bypass2_2@956@01)))
-; [eval] p1_14 && !bypass1_2
-(push) ; 24
-; [then-branch: 7114 | !(p1_14@898@01) | live]
-; [else-branch: 7114 | p1_14@898@01 | live]
-(push) ; 25
-; [then-branch: 7114 | !(p1_14@898@01)]
-(assert (not p1_14@898@01))
-(pop) ; 25
-(push) ; 25
-; [else-branch: 7114 | p1_14@898@01]
-; [eval] !bypass1_2
-(pop) ; 25
-(pop) ; 24
-; Joined path conditions
-; Joined path conditions
-(push) ; 24
-(set-option :timeout 10)
-(assert (not (not (and p1_14@898@01 (not bypass1_2@955@01)))))
-(check-sat)
-; unknown
-(pop) ; 24
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 24
-(set-option :timeout 10)
-(assert (not (and p1_14@898@01 (not bypass1_2@955@01))))
-(check-sat)
-; unsat
-(pop) ; 24
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 7115 | p1_14@898@01 && !(bypass1_2@955@01) | live]
-; [else-branch: 7115 | !(p1_14@898@01 && !(bypass1_2@955@01)) | dead]
-(set-option :timeout 0)
-(push) ; 24
-; [then-branch: 7115 | p1_14@898@01 && !(bypass1_2@955@01)]
-(assert (and p1_14@898@01 (not bypass1_2@955@01)))
-; [eval] p2_14 && !bypass2_2
-(push) ; 25
-; [then-branch: 7116 | !(p2_14@899@01) | live]
-; [else-branch: 7116 | p2_14@899@01 | live]
-(push) ; 26
-; [then-branch: 7116 | !(p2_14@899@01)]
-(assert (not p2_14@899@01))
-(pop) ; 26
-(push) ; 26
-; [else-branch: 7116 | p2_14@899@01]
-; [eval] !bypass2_2
-(pop) ; 26
-(pop) ; 25
-; Joined path conditions
-; Joined path conditions
-(push) ; 25
-(set-option :timeout 10)
-(assert (not (not (and p2_14@899@01 (not bypass2_2@956@01)))))
-(check-sat)
-; unknown
-(pop) ; 25
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 25
-(set-option :timeout 10)
-(assert (not (and p2_14@899@01 (not bypass2_2@956@01))))
-(check-sat)
-; unsat
-(pop) ; 25
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 7117 | p2_14@899@01 && !(bypass2_2@956@01) | live]
-; [else-branch: 7117 | !(p2_14@899@01 && !(bypass2_2@956@01)) | dead]
-(set-option :timeout 0)
-(push) ; 25
-; [then-branch: 7117 | p2_14@899@01 && !(bypass2_2@956@01)]
-(assert (and p2_14@899@01 (not bypass2_2@956@01)))
-; [eval] p1_14 && !bypass1_2 ==> issubtype(typeof(c_7.Container_value), int())
-; [eval] p1_14 && !bypass1_2
-(push) ; 26
-; [then-branch: 7118 | !(p1_14@898@01) | live]
-; [else-branch: 7118 | p1_14@898@01 | live]
-(push) ; 27
-; [then-branch: 7118 | !(p1_14@898@01)]
-(assert (not p1_14@898@01))
-(pop) ; 27
-(push) ; 27
-; [else-branch: 7118 | p1_14@898@01]
-; [eval] !bypass1_2
-(pop) ; 27
-(pop) ; 26
-; Joined path conditions
-; Joined path conditions
-(push) ; 26
-(push) ; 27
-(set-option :timeout 10)
-(assert (not (not (and p1_14@898@01 (not bypass1_2@955@01)))))
-(check-sat)
-; unknown
-(pop) ; 27
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 27
-(set-option :timeout 10)
-(assert (not (and p1_14@898@01 (not bypass1_2@955@01))))
-(check-sat)
-; unsat
-(pop) ; 27
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 7119 | p1_14@898@01 && !(bypass1_2@955@01) | live]
-; [else-branch: 7119 | !(p1_14@898@01 && !(bypass1_2@955@01)) | dead]
-(set-option :timeout 0)
-(push) ; 27
-; [then-branch: 7119 | p1_14@898@01 && !(bypass1_2@955@01)]
-(assert (and p1_14@898@01 (not bypass1_2@955@01)))
-; [eval] issubtype(typeof(c_7.Container_value), int())
-; [eval] typeof(c_7.Container_value)
-; [eval] int()
-(pop) ; 27
-(pop) ; 26
-; Joined path conditions
-(assert (and p1_14@898@01 (not bypass1_2@955@01)))
-; [eval] p2_14 && !bypass2_2 ==> issubtype(typeof(c_7_0.Container_valuep), int())
-; [eval] p2_14 && !bypass2_2
-(push) ; 26
-; [then-branch: 7120 | !(p2_14@899@01) | live]
-; [else-branch: 7120 | p2_14@899@01 | live]
-(push) ; 27
-; [then-branch: 7120 | !(p2_14@899@01)]
-(assert (not p2_14@899@01))
-(pop) ; 27
-(push) ; 27
-; [else-branch: 7120 | p2_14@899@01]
-; [eval] !bypass2_2
-(pop) ; 27
-(pop) ; 26
-; Joined path conditions
-; Joined path conditions
-(push) ; 26
-(push) ; 27
-(set-option :timeout 10)
-(assert (not (not (and p2_14@899@01 (not bypass2_2@956@01)))))
-(check-sat)
-; unknown
-(pop) ; 27
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 27
-(set-option :timeout 10)
-(assert (not (and p2_14@899@01 (not bypass2_2@956@01))))
-(check-sat)
-; unsat
-(pop) ; 27
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 7121 | p2_14@899@01 && !(bypass2_2@956@01) | live]
-; [else-branch: 7121 | !(p2_14@899@01 && !(bypass2_2@956@01)) | dead]
-(set-option :timeout 0)
-(push) ; 27
-; [then-branch: 7121 | p2_14@899@01 && !(bypass2_2@956@01)]
-(assert (and p2_14@899@01 (not bypass2_2@956@01)))
-; [eval] issubtype(typeof(c_7_0.Container_valuep), int())
-; [eval] typeof(c_7_0.Container_valuep)
-; [eval] int()
-(pop) ; 27
-(pop) ; 26
-; Joined path conditions
-(assert (and p2_14@899@01 (not bypass2_2@956@01)))
-(push) ; 26
-(assert (not (=>
-  (and p2_14@899@01 (not bypass2_2@956@01))
-  (issubtype<Bool> (typeof<PyType> Container_valuep@987@01) (as int<PyType>  PyType)))))
-(check-sat)
-; unsat
-(pop) ; 26
-; 0.00s
-; (get-info :all-statistics)
-(assert (=>
-  (and p2_14@899@01 (not bypass2_2@956@01))
-  (issubtype<Bool> (typeof<PyType> Container_valuep@987@01) (as int<PyType>  PyType))))
-; [eval] p1_14 && !bypass1_2 ==> !idle1_2 ==> _loop_check_before_2 ==> _loop_termination_flag_2 || perm(MustTerminate(_cthread_160)) == none && ((forperm _r_15: Ref [MustInvokeBounded(_r_15)] :: false) && ((forperm _r_15: Ref [MustInvokeUnbounded(_r_15)] :: false) && ((forperm _r_15: Ref [_r_15.MustReleaseBounded] :: false) && (forperm _r_15: Ref [_r_15.MustReleaseUnbounded] :: false))))
-; [eval] p1_14 && !bypass1_2
-(push) ; 26
-; [then-branch: 7122 | !(p1_14@898@01) | live]
-; [else-branch: 7122 | p1_14@898@01 | live]
-(push) ; 27
-; [then-branch: 7122 | !(p1_14@898@01)]
-(assert (not p1_14@898@01))
-(pop) ; 27
-(push) ; 27
-; [else-branch: 7122 | p1_14@898@01]
-; [eval] !bypass1_2
-(pop) ; 27
-(pop) ; 26
-; Joined path conditions
-; Joined path conditions
-(push) ; 26
-(push) ; 27
-(set-option :timeout 10)
-(assert (not (not (and p1_14@898@01 (not bypass1_2@955@01)))))
-(check-sat)
-; unknown
-(pop) ; 27
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 27
-(set-option :timeout 10)
-(assert (not (and p1_14@898@01 (not bypass1_2@955@01))))
-(check-sat)
-; unsat
-(pop) ; 27
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 7123 | p1_14@898@01 && !(bypass1_2@955@01) | live]
-; [else-branch: 7123 | !(p1_14@898@01 && !(bypass1_2@955@01)) | dead]
-(set-option :timeout 0)
-(push) ; 27
-; [then-branch: 7123 | p1_14@898@01 && !(bypass1_2@955@01)]
-(assert (and p1_14@898@01 (not bypass1_2@955@01)))
-; [eval] !idle1_2 ==> _loop_check_before_2 ==> _loop_termination_flag_2 || perm(MustTerminate(_cthread_160)) == none && ((forperm _r_15: Ref [MustInvokeBounded(_r_15)] :: false) && ((forperm _r_15: Ref [MustInvokeUnbounded(_r_15)] :: false) && ((forperm _r_15: Ref [_r_15.MustReleaseBounded] :: false) && (forperm _r_15: Ref [_r_15.MustReleaseUnbounded] :: false))))
-; [eval] !idle1_2
-(push) ; 28
-(push) ; 29
-(set-option :timeout 10)
-(assert (not false))
-(check-sat)
-; unknown
-(pop) ; 29
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 7124 | True | live]
-; [else-branch: 7124 | False | dead]
-(set-option :timeout 0)
-(push) ; 29
-; [then-branch: 7124 | True]
-; [eval] _loop_check_before_2 ==> _loop_termination_flag_2 || perm(MustTerminate(_cthread_160)) == none && ((forperm _r_15: Ref [MustInvokeBounded(_r_15)] :: false) && ((forperm _r_15: Ref [MustInvokeUnbounded(_r_15)] :: false) && ((forperm _r_15: Ref [_r_15.MustReleaseBounded] :: false) && (forperm _r_15: Ref [_r_15.MustReleaseUnbounded] :: false))))
-(push) ; 30
-(push) ; 31
-(set-option :timeout 10)
-(assert (not (not _loop_check_before_2@969@01)))
-(check-sat)
-; unknown
-(pop) ; 31
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 31
-(set-option :timeout 10)
-(assert (not _loop_check_before_2@969@01))
-(check-sat)
-; unknown
-(pop) ; 31
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 7125 | _loop_check_before_2@969@01 | live]
-; [else-branch: 7125 | !(_loop_check_before_2@969@01) | live]
-(set-option :timeout 0)
-(push) ; 31
-; [then-branch: 7125 | _loop_check_before_2@969@01]
-(assert _loop_check_before_2@969@01)
-; [eval] _loop_termination_flag_2 || perm(MustTerminate(_cthread_160)) == none && ((forperm _r_15: Ref [MustInvokeBounded(_r_15)] :: false) && ((forperm _r_15: Ref [MustInvokeUnbounded(_r_15)] :: false) && ((forperm _r_15: Ref [_r_15.MustReleaseBounded] :: false) && (forperm _r_15: Ref [_r_15.MustReleaseUnbounded] :: false))))
-(push) ; 32
-; [then-branch: 7126 | False | live]
-; [else-branch: 7126 | True | live]
-(push) ; 33
-; [then-branch: 7126 | False]
-(assert false)
-(pop) ; 33
-(push) ; 33
-; [else-branch: 7126 | True]
-; [eval] perm(MustTerminate(_cthread_160)) == none && ((forperm _r_15: Ref [MustInvokeBounded(_r_15)] :: false) && ((forperm _r_15: Ref [MustInvokeUnbounded(_r_15)] :: false) && ((forperm _r_15: Ref [_r_15.MustReleaseBounded] :: false) && (forperm _r_15: Ref [_r_15.MustReleaseUnbounded] :: false))))
-; [eval] perm(MustTerminate(_cthread_160)) == none
-; [eval] perm(MustTerminate(_cthread_160))
-(push) ; 34
-; [then-branch: 7127 | False | live]
-; [else-branch: 7127 | True | live]
-(push) ; 35
-; [then-branch: 7127 | False]
-(assert false)
-(pop) ; 35
-(push) ; 35
-; [else-branch: 7127 | True]
-; [eval] (forperm _r_15: Ref [MustInvokeBounded(_r_15)] :: false)
-(push) ; 36
-; [then-branch: 7128 | False | live]
-; [else-branch: 7128 | True | live]
-(push) ; 37
-; [then-branch: 7128 | False]
-(assert false)
-(pop) ; 37
-(push) ; 37
-; [else-branch: 7128 | True]
-; [eval] (forperm _r_15: Ref [MustInvokeUnbounded(_r_15)] :: false)
-(push) ; 38
-; [then-branch: 7129 | False | live]
-; [else-branch: 7129 | True | live]
-(push) ; 39
-; [then-branch: 7129 | False]
-(assert false)
-(pop) ; 39
-(push) ; 39
-; [else-branch: 7129 | True]
-; [eval] (forperm _r_15: Ref [_r_15.MustReleaseBounded] :: false)
-(push) ; 40
-; [then-branch: 7130 | False | live]
-; [else-branch: 7130 | True | live]
-(push) ; 41
-; [then-branch: 7130 | False]
-(assert false)
-(pop) ; 41
-(push) ; 41
-; [else-branch: 7130 | True]
-; [eval] (forperm _r_15: Ref [_r_15.MustReleaseUnbounded] :: false)
-(pop) ; 41
-(pop) ; 40
-; Joined path conditions
-; Joined path conditions
-(pop) ; 39
-(pop) ; 38
-; Joined path conditions
-; Joined path conditions
-(pop) ; 37
-(pop) ; 36
-; Joined path conditions
-; Joined path conditions
-(pop) ; 35
-(pop) ; 34
-; Joined path conditions
-; Joined path conditions
-(pop) ; 33
-(pop) ; 32
-; Joined path conditions
-; Joined path conditions
-(pop) ; 31
-(push) ; 31
-; [else-branch: 7125 | !(_loop_check_before_2@969@01)]
-(assert (not _loop_check_before_2@969@01))
-(pop) ; 31
-(pop) ; 30
-; Joined path conditions
-; Joined path conditions
-(assert (or (not _loop_check_before_2@969@01) _loop_check_before_2@969@01))
-(pop) ; 29
-(pop) ; 28
-; Joined path conditions
-(assert (or (not _loop_check_before_2@969@01) _loop_check_before_2@969@01))
-(pop) ; 27
-(pop) ; 26
-; Joined path conditions
-(assert (=>
-  (and p1_14@898@01 (not bypass1_2@955@01))
-  (and
-    p1_14@898@01
-    (not bypass1_2@955@01)
-    (or (not _loop_check_before_2@969@01) _loop_check_before_2@969@01))))
-(assert (and p1_14@898@01 (not bypass1_2@955@01)))
-; [eval] p2_14 && !bypass2_2 ==> !idle2_2 ==> _loop_check_before_2_0 ==> _loop_termination_flag_2_0 || perm(MustTerminate_0(_cthread_160_0)) == none && ((forperm _r_15: Ref [MustInvokeBounded_0(_r_15)] :: false) && ((forperm _r_15: Ref [MustInvokeUnbounded_0(_r_15)] :: false) && ((forperm _r_15: Ref [_r_15.MustReleaseBoundedp] :: false) && (forperm _r_15: Ref [_r_15.MustReleaseUnboundedp] :: false))))
-; [eval] p2_14 && !bypass2_2
-(push) ; 26
-; [then-branch: 7131 | !(p2_14@899@01) | live]
-; [else-branch: 7131 | p2_14@899@01 | live]
-(push) ; 27
-; [then-branch: 7131 | !(p2_14@899@01)]
-(assert (not p2_14@899@01))
-(pop) ; 27
-(push) ; 27
-; [else-branch: 7131 | p2_14@899@01]
-; [eval] !bypass2_2
-(pop) ; 27
-(pop) ; 26
-; Joined path conditions
-; Joined path conditions
-(push) ; 26
-(push) ; 27
-(set-option :timeout 10)
-(assert (not (not (and p2_14@899@01 (not bypass2_2@956@01)))))
-(check-sat)
-; unknown
-(pop) ; 27
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 27
-(set-option :timeout 10)
-(assert (not (and p2_14@899@01 (not bypass2_2@956@01))))
-(check-sat)
-; unsat
-(pop) ; 27
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 7132 | p2_14@899@01 && !(bypass2_2@956@01) | live]
-; [else-branch: 7132 | !(p2_14@899@01 && !(bypass2_2@956@01)) | dead]
-(set-option :timeout 0)
-(push) ; 27
-; [then-branch: 7132 | p2_14@899@01 && !(bypass2_2@956@01)]
-(assert (and p2_14@899@01 (not bypass2_2@956@01)))
-; [eval] !idle2_2 ==> _loop_check_before_2_0 ==> _loop_termination_flag_2_0 || perm(MustTerminate_0(_cthread_160_0)) == none && ((forperm _r_15: Ref [MustInvokeBounded_0(_r_15)] :: false) && ((forperm _r_15: Ref [MustInvokeUnbounded_0(_r_15)] :: false) && ((forperm _r_15: Ref [_r_15.MustReleaseBoundedp] :: false) && (forperm _r_15: Ref [_r_15.MustReleaseUnboundedp] :: false))))
-; [eval] !idle2_2
-(push) ; 28
-(push) ; 29
-(set-option :timeout 10)
-(assert (not false))
-(check-sat)
-; unknown
-(pop) ; 29
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 7133 | True | live]
-; [else-branch: 7133 | False | dead]
-(set-option :timeout 0)
-(push) ; 29
-; [then-branch: 7133 | True]
-; [eval] _loop_check_before_2_0 ==> _loop_termination_flag_2_0 || perm(MustTerminate_0(_cthread_160_0)) == none && ((forperm _r_15: Ref [MustInvokeBounded_0(_r_15)] :: false) && ((forperm _r_15: Ref [MustInvokeUnbounded_0(_r_15)] :: false) && ((forperm _r_15: Ref [_r_15.MustReleaseBoundedp] :: false) && (forperm _r_15: Ref [_r_15.MustReleaseUnboundedp] :: false))))
-(push) ; 30
-(push) ; 31
-(set-option :timeout 10)
-(assert (not (not _loop_check_before_2_0@970@01)))
-(check-sat)
-; unknown
-(pop) ; 31
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 31
-(set-option :timeout 10)
-(assert (not _loop_check_before_2_0@970@01))
-(check-sat)
-; unknown
-(pop) ; 31
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 7134 | _loop_check_before_2_0@970@01 | live]
-; [else-branch: 7134 | !(_loop_check_before_2_0@970@01) | live]
-(set-option :timeout 0)
-(push) ; 31
-; [then-branch: 7134 | _loop_check_before_2_0@970@01]
-(assert _loop_check_before_2_0@970@01)
-; [eval] _loop_termination_flag_2_0 || perm(MustTerminate_0(_cthread_160_0)) == none && ((forperm _r_15: Ref [MustInvokeBounded_0(_r_15)] :: false) && ((forperm _r_15: Ref [MustInvokeUnbounded_0(_r_15)] :: false) && ((forperm _r_15: Ref [_r_15.MustReleaseBoundedp] :: false) && (forperm _r_15: Ref [_r_15.MustReleaseUnboundedp] :: false))))
-(push) ; 32
-; [then-branch: 7135 | False | live]
-; [else-branch: 7135 | True | live]
-(push) ; 33
-; [then-branch: 7135 | False]
-(assert false)
-(pop) ; 33
-(push) ; 33
-; [else-branch: 7135 | True]
-; [eval] perm(MustTerminate_0(_cthread_160_0)) == none && ((forperm _r_15: Ref [MustInvokeBounded_0(_r_15)] :: false) && ((forperm _r_15: Ref [MustInvokeUnbounded_0(_r_15)] :: false) && ((forperm _r_15: Ref [_r_15.MustReleaseBoundedp] :: false) && (forperm _r_15: Ref [_r_15.MustReleaseUnboundedp] :: false))))
-; [eval] perm(MustTerminate_0(_cthread_160_0)) == none
-; [eval] perm(MustTerminate_0(_cthread_160_0))
-(push) ; 34
-; [then-branch: 7136 | False | live]
-; [else-branch: 7136 | True | live]
-(push) ; 35
-; [then-branch: 7136 | False]
-(assert false)
-(pop) ; 35
-(push) ; 35
-; [else-branch: 7136 | True]
-; [eval] (forperm _r_15: Ref [MustInvokeBounded_0(_r_15)] :: false)
-(push) ; 36
-; [then-branch: 7137 | False | live]
-; [else-branch: 7137 | True | live]
-(push) ; 37
-; [then-branch: 7137 | False]
-(assert false)
-(pop) ; 37
-(push) ; 37
-; [else-branch: 7137 | True]
-; [eval] (forperm _r_15: Ref [MustInvokeUnbounded_0(_r_15)] :: false)
-(push) ; 38
-; [then-branch: 7138 | False | live]
-; [else-branch: 7138 | True | live]
-(push) ; 39
-; [then-branch: 7138 | False]
-(assert false)
-(pop) ; 39
-(push) ; 39
-; [else-branch: 7138 | True]
-; [eval] (forperm _r_15: Ref [_r_15.MustReleaseBoundedp] :: false)
-(push) ; 40
-; [then-branch: 7139 | False | live]
-; [else-branch: 7139 | True | live]
-(push) ; 41
-; [then-branch: 7139 | False]
-(assert false)
-(pop) ; 41
-(push) ; 41
-; [else-branch: 7139 | True]
-; [eval] (forperm _r_15: Ref [_r_15.MustReleaseUnboundedp] :: false)
-(pop) ; 41
-(pop) ; 40
-; Joined path conditions
-; Joined path conditions
-(pop) ; 39
-(pop) ; 38
-; Joined path conditions
-; Joined path conditions
-(pop) ; 37
-(pop) ; 36
-; Joined path conditions
-; Joined path conditions
-(pop) ; 35
-(pop) ; 34
-; Joined path conditions
-; Joined path conditions
-(pop) ; 33
-(pop) ; 32
-; Joined path conditions
-; Joined path conditions
-(pop) ; 31
-(push) ; 31
-; [else-branch: 7134 | !(_loop_check_before_2_0@970@01)]
-(assert (not _loop_check_before_2_0@970@01))
-(pop) ; 31
-(pop) ; 30
-; Joined path conditions
-; Joined path conditions
-(assert (or (not _loop_check_before_2_0@970@01) _loop_check_before_2_0@970@01))
-(pop) ; 29
-(pop) ; 28
-; Joined path conditions
-(assert (or (not _loop_check_before_2_0@970@01) _loop_check_before_2_0@970@01))
-(pop) ; 27
-(pop) ; 26
-; Joined path conditions
-(assert (=>
-  (and p2_14@899@01 (not bypass2_2@956@01))
-  (and
-    p2_14@899@01
-    (not bypass2_2@956@01)
-    (or (not _loop_check_before_2_0@970@01) _loop_check_before_2_0@970@01))))
-(assert (and p2_14@899@01 (not bypass2_2@956@01)))
-; [eval] p1_14 && !bypass1_2 ==> !idle1_2 ==> !_loop_check_before_2 ==> (forperm _r_15: Ref [MustInvokeBounded(_r_15)] :: false) && ((forperm _r_15: Ref [MustInvokeUnbounded(_r_15)] :: false) && ((forperm _r_15: Ref [_r_15.MustReleaseBounded] :: false) && (forperm _r_15: Ref [_r_15.MustReleaseUnbounded] :: false)))
-; [eval] p1_14 && !bypass1_2
-(push) ; 26
-; [then-branch: 7140 | !(p1_14@898@01) | live]
-; [else-branch: 7140 | p1_14@898@01 | live]
-(push) ; 27
-; [then-branch: 7140 | !(p1_14@898@01)]
-(assert (not p1_14@898@01))
-(pop) ; 27
-(push) ; 27
-; [else-branch: 7140 | p1_14@898@01]
-; [eval] !bypass1_2
-(pop) ; 27
-(pop) ; 26
-; Joined path conditions
-; Joined path conditions
-(push) ; 26
-(push) ; 27
-(set-option :timeout 10)
-(assert (not (not (and p1_14@898@01 (not bypass1_2@955@01)))))
-(check-sat)
-; unknown
-(pop) ; 27
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 27
-(set-option :timeout 10)
-(assert (not (and p1_14@898@01 (not bypass1_2@955@01))))
-(check-sat)
-; unsat
-(pop) ; 27
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 7141 | p1_14@898@01 && !(bypass1_2@955@01) | live]
-; [else-branch: 7141 | !(p1_14@898@01 && !(bypass1_2@955@01)) | dead]
-(set-option :timeout 0)
-(push) ; 27
-; [then-branch: 7141 | p1_14@898@01 && !(bypass1_2@955@01)]
-(assert (and p1_14@898@01 (not bypass1_2@955@01)))
-; [eval] !idle1_2 ==> !_loop_check_before_2 ==> (forperm _r_15: Ref [MustInvokeBounded(_r_15)] :: false) && ((forperm _r_15: Ref [MustInvokeUnbounded(_r_15)] :: false) && ((forperm _r_15: Ref [_r_15.MustReleaseBounded] :: false) && (forperm _r_15: Ref [_r_15.MustReleaseUnbounded] :: false)))
-; [eval] !idle1_2
-(push) ; 28
-(push) ; 29
-(set-option :timeout 10)
-(assert (not false))
-(check-sat)
-; unknown
-(pop) ; 29
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 7142 | True | live]
-; [else-branch: 7142 | False | dead]
-(set-option :timeout 0)
-(push) ; 29
-; [then-branch: 7142 | True]
-; [eval] !_loop_check_before_2 ==> (forperm _r_15: Ref [MustInvokeBounded(_r_15)] :: false) && ((forperm _r_15: Ref [MustInvokeUnbounded(_r_15)] :: false) && ((forperm _r_15: Ref [_r_15.MustReleaseBounded] :: false) && (forperm _r_15: Ref [_r_15.MustReleaseUnbounded] :: false)))
-; [eval] !_loop_check_before_2
-(push) ; 30
-(push) ; 31
-(set-option :timeout 10)
-(assert (not _loop_check_before_2@969@01))
-(check-sat)
-; unknown
-(pop) ; 31
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 31
-(set-option :timeout 10)
-(assert (not (not _loop_check_before_2@969@01)))
-(check-sat)
-; unknown
-(pop) ; 31
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 7143 | !(_loop_check_before_2@969@01) | live]
-; [else-branch: 7143 | _loop_check_before_2@969@01 | live]
-(set-option :timeout 0)
-(push) ; 31
-; [then-branch: 7143 | !(_loop_check_before_2@969@01)]
-(assert (not _loop_check_before_2@969@01))
-; [eval] (forperm _r_15: Ref [MustInvokeBounded(_r_15)] :: false) && ((forperm _r_15: Ref [MustInvokeUnbounded(_r_15)] :: false) && ((forperm _r_15: Ref [_r_15.MustReleaseBounded] :: false) && (forperm _r_15: Ref [_r_15.MustReleaseUnbounded] :: false)))
-; [eval] (forperm _r_15: Ref [MustInvokeBounded(_r_15)] :: false)
-(push) ; 32
-; [then-branch: 7144 | False | live]
-; [else-branch: 7144 | True | live]
-(push) ; 33
-; [then-branch: 7144 | False]
-(assert false)
-(pop) ; 33
-(push) ; 33
-; [else-branch: 7144 | True]
-; [eval] (forperm _r_15: Ref [MustInvokeUnbounded(_r_15)] :: false)
-(push) ; 34
-; [then-branch: 7145 | False | live]
-; [else-branch: 7145 | True | live]
-(push) ; 35
-; [then-branch: 7145 | False]
-(assert false)
-(pop) ; 35
-(push) ; 35
-; [else-branch: 7145 | True]
-; [eval] (forperm _r_15: Ref [_r_15.MustReleaseBounded] :: false)
-(push) ; 36
-; [then-branch: 7146 | False | live]
-; [else-branch: 7146 | True | live]
-(push) ; 37
-; [then-branch: 7146 | False]
-(assert false)
-(pop) ; 37
-(push) ; 37
-; [else-branch: 7146 | True]
-; [eval] (forperm _r_15: Ref [_r_15.MustReleaseUnbounded] :: false)
-(pop) ; 37
-(pop) ; 36
-; Joined path conditions
-; Joined path conditions
-(pop) ; 35
-(pop) ; 34
-; Joined path conditions
-; Joined path conditions
-(pop) ; 33
-(pop) ; 32
-; Joined path conditions
-; Joined path conditions
-(pop) ; 31
-(push) ; 31
-; [else-branch: 7143 | _loop_check_before_2@969@01]
-(assert _loop_check_before_2@969@01)
-(pop) ; 31
-(pop) ; 30
-; Joined path conditions
-; Joined path conditions
-(assert (or _loop_check_before_2@969@01 (not _loop_check_before_2@969@01)))
-(pop) ; 29
-(pop) ; 28
-; Joined path conditions
-(assert (or _loop_check_before_2@969@01 (not _loop_check_before_2@969@01)))
-(pop) ; 27
-(pop) ; 26
-; Joined path conditions
-(assert (=>
-  (and p1_14@898@01 (not bypass1_2@955@01))
-  (and
-    p1_14@898@01
-    (not bypass1_2@955@01)
-    (or _loop_check_before_2@969@01 (not _loop_check_before_2@969@01)))))
-(assert (and p1_14@898@01 (not bypass1_2@955@01)))
-; [eval] p2_14 && !bypass2_2 ==> !idle2_2 ==> !_loop_check_before_2_0 ==> (forperm _r_15: Ref [MustInvokeBounded_0(_r_15)] :: false) && ((forperm _r_15: Ref [MustInvokeUnbounded_0(_r_15)] :: false) && ((forperm _r_15: Ref [_r_15.MustReleaseBoundedp] :: false) && (forperm _r_15: Ref [_r_15.MustReleaseUnboundedp] :: false)))
-; [eval] p2_14 && !bypass2_2
-(push) ; 26
-; [then-branch: 7147 | !(p2_14@899@01) | live]
-; [else-branch: 7147 | p2_14@899@01 | live]
-(push) ; 27
-; [then-branch: 7147 | !(p2_14@899@01)]
-(assert (not p2_14@899@01))
-(pop) ; 27
-(push) ; 27
-; [else-branch: 7147 | p2_14@899@01]
-; [eval] !bypass2_2
-(pop) ; 27
-(pop) ; 26
-; Joined path conditions
-; Joined path conditions
-(push) ; 26
-(push) ; 27
-(set-option :timeout 10)
-(assert (not (not (and p2_14@899@01 (not bypass2_2@956@01)))))
-(check-sat)
-; unknown
-(pop) ; 27
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 27
-(set-option :timeout 10)
-(assert (not (and p2_14@899@01 (not bypass2_2@956@01))))
-(check-sat)
-; unsat
-(pop) ; 27
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 7148 | p2_14@899@01 && !(bypass2_2@956@01) | live]
-; [else-branch: 7148 | !(p2_14@899@01 && !(bypass2_2@956@01)) | dead]
-(set-option :timeout 0)
-(push) ; 27
-; [then-branch: 7148 | p2_14@899@01 && !(bypass2_2@956@01)]
-(assert (and p2_14@899@01 (not bypass2_2@956@01)))
-; [eval] !idle2_2 ==> !_loop_check_before_2_0 ==> (forperm _r_15: Ref [MustInvokeBounded_0(_r_15)] :: false) && ((forperm _r_15: Ref [MustInvokeUnbounded_0(_r_15)] :: false) && ((forperm _r_15: Ref [_r_15.MustReleaseBoundedp] :: false) && (forperm _r_15: Ref [_r_15.MustReleaseUnboundedp] :: false)))
-; [eval] !idle2_2
-(push) ; 28
-(push) ; 29
-(set-option :timeout 10)
-(assert (not false))
-(check-sat)
-; unknown
-(pop) ; 29
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 7149 | True | live]
-; [else-branch: 7149 | False | dead]
-(set-option :timeout 0)
-(push) ; 29
-; [then-branch: 7149 | True]
-; [eval] !_loop_check_before_2_0 ==> (forperm _r_15: Ref [MustInvokeBounded_0(_r_15)] :: false) && ((forperm _r_15: Ref [MustInvokeUnbounded_0(_r_15)] :: false) && ((forperm _r_15: Ref [_r_15.MustReleaseBoundedp] :: false) && (forperm _r_15: Ref [_r_15.MustReleaseUnboundedp] :: false)))
-; [eval] !_loop_check_before_2_0
-(push) ; 30
-(push) ; 31
-(set-option :timeout 10)
-(assert (not _loop_check_before_2_0@970@01))
-(check-sat)
-; unknown
-(pop) ; 31
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 31
-(set-option :timeout 10)
-(assert (not (not _loop_check_before_2_0@970@01)))
-(check-sat)
-; unknown
-(pop) ; 31
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 7150 | !(_loop_check_before_2_0@970@01) | live]
-; [else-branch: 7150 | _loop_check_before_2_0@970@01 | live]
-(set-option :timeout 0)
-(push) ; 31
-; [then-branch: 7150 | !(_loop_check_before_2_0@970@01)]
-(assert (not _loop_check_before_2_0@970@01))
-; [eval] (forperm _r_15: Ref [MustInvokeBounded_0(_r_15)] :: false) && ((forperm _r_15: Ref [MustInvokeUnbounded_0(_r_15)] :: false) && ((forperm _r_15: Ref [_r_15.MustReleaseBoundedp] :: false) && (forperm _r_15: Ref [_r_15.MustReleaseUnboundedp] :: false)))
-; [eval] (forperm _r_15: Ref [MustInvokeBounded_0(_r_15)] :: false)
-(push) ; 32
-; [then-branch: 7151 | False | live]
-; [else-branch: 7151 | True | live]
-(push) ; 33
-; [then-branch: 7151 | False]
-(assert false)
-(pop) ; 33
-(push) ; 33
-; [else-branch: 7151 | True]
-; [eval] (forperm _r_15: Ref [MustInvokeUnbounded_0(_r_15)] :: false)
-(push) ; 34
-; [then-branch: 7152 | False | live]
-; [else-branch: 7152 | True | live]
-(push) ; 35
-; [then-branch: 7152 | False]
-(assert false)
-(pop) ; 35
-(push) ; 35
-; [else-branch: 7152 | True]
-; [eval] (forperm _r_15: Ref [_r_15.MustReleaseBoundedp] :: false)
-(push) ; 36
-; [then-branch: 7153 | False | live]
-; [else-branch: 7153 | True | live]
-(push) ; 37
-; [then-branch: 7153 | False]
-(assert false)
-(pop) ; 37
-(push) ; 37
-; [else-branch: 7153 | True]
-; [eval] (forperm _r_15: Ref [_r_15.MustReleaseUnboundedp] :: false)
-(pop) ; 37
-(pop) ; 36
-; Joined path conditions
-; Joined path conditions
-(pop) ; 35
-(pop) ; 34
-; Joined path conditions
-; Joined path conditions
-(pop) ; 33
-(pop) ; 32
-; Joined path conditions
-; Joined path conditions
-(pop) ; 31
-(push) ; 31
-; [else-branch: 7150 | _loop_check_before_2_0@970@01]
-(assert _loop_check_before_2_0@970@01)
-(pop) ; 31
-(pop) ; 30
-; Joined path conditions
-; Joined path conditions
-(assert (or _loop_check_before_2_0@970@01 (not _loop_check_before_2_0@970@01)))
-(pop) ; 29
-(pop) ; 28
-; Joined path conditions
-(assert (or _loop_check_before_2_0@970@01 (not _loop_check_before_2_0@970@01)))
-(pop) ; 27
-(pop) ; 26
-; Joined path conditions
-(assert (=>
-  (and p2_14@899@01 (not bypass2_2@956@01))
-  (and
-    p2_14@899@01
-    (not bypass2_2@956@01)
-    (or _loop_check_before_2_0@970@01 (not _loop_check_before_2_0@970@01)))))
-(assert (and p2_14@899@01 (not bypass2_2@956@01)))
-; [eval] bypass1_2 ==> tmp1_17 == _loop_measures_2
-(push) ; 26
-; [then-branch: 7154 | bypass1_2@955@01 | dead]
-; [else-branch: 7154 | !(bypass1_2@955@01) | live]
-(push) ; 27
-; [else-branch: 7154 | !(bypass1_2@955@01)]
-(pop) ; 27
-(pop) ; 26
-; Joined path conditions
-; [eval] bypass1_2 ==> tmp1_18 == _loop_check_before_2
-(push) ; 26
-; [then-branch: 7155 | bypass1_2@955@01 | dead]
-; [else-branch: 7155 | !(bypass1_2@955@01) | live]
-(push) ; 27
-; [else-branch: 7155 | !(bypass1_2@955@01)]
-(pop) ; 27
-(pop) ; 26
-; Joined path conditions
-; [eval] bypass1_2 ==> tmp1_19 == break1_2
-(push) ; 26
-; [then-branch: 7156 | bypass1_2@955@01 | dead]
-; [else-branch: 7156 | !(bypass1_2@955@01) | live]
-(push) ; 27
-; [else-branch: 7156 | !(bypass1_2@955@01)]
-(pop) ; 27
-(pop) ; 26
-; Joined path conditions
-; [eval] bypass2_2 ==> tmp2_17 == _loop_measures_2_0
-(push) ; 26
-; [then-branch: 7157 | bypass2_2@956@01 | dead]
-; [else-branch: 7157 | !(bypass2_2@956@01) | live]
-(push) ; 27
-; [else-branch: 7157 | !(bypass2_2@956@01)]
-(pop) ; 27
-(pop) ; 26
-; Joined path conditions
-; [eval] bypass2_2 ==> tmp2_18 == _loop_check_before_2_0
-(push) ; 26
-; [then-branch: 7158 | bypass2_2@956@01 | dead]
-; [else-branch: 7158 | !(bypass2_2@956@01) | live]
-(push) ; 27
-; [else-branch: 7158 | !(bypass2_2@956@01)]
-(pop) ; 27
-(pop) ; 26
-; Joined path conditions
-; [eval] bypass2_2 ==> tmp2_19 == break2_2
-(push) ; 26
-; [then-branch: 7159 | bypass2_2@956@01 | dead]
-; [else-branch: 7159 | !(bypass2_2@956@01) | live]
-(push) ; 27
-; [else-branch: 7159 | !(bypass2_2@956@01)]
-(pop) ; 27
-(pop) ; 26
-; Joined path conditions
-(pop) ; 25
-(pop) ; 24
-(pop) ; 23
-(pop) ; 22
-(pop) ; 21
-; [eval] !(p2_15 && !break2_2)
-; [eval] p2_15 && !break2_2
-(push) ; 21
-; [then-branch: 7160 | !(p2_15@977@01) | live]
-; [else-branch: 7160 | p2_15@977@01 | live]
-(push) ; 22
-; [then-branch: 7160 | !(p2_15@977@01)]
-(assert (not p2_15@977@01))
-(pop) ; 22
-(push) ; 22
-; [else-branch: 7160 | p2_15@977@01]
-(assert p2_15@977@01)
-; [eval] !break2_2
-(pop) ; 22
-(pop) ; 21
-; Joined path conditions
-; Joined path conditions
-(push) ; 21
-(set-option :timeout 10)
-(assert (not (and p2_15@977@01 (not break2_2@968@01))))
-(check-sat)
-; unsat
-(pop) ; 21
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 7161 | !(p2_15@977@01 && !(break2_2@968@01)) | dead]
-; [else-branch: 7161 | p2_15@977@01 && !(break2_2@968@01) | live]
-(set-option :timeout 0)
-(push) ; 21
-; [else-branch: 7161 | p2_15@977@01 && !(break2_2@968@01)]
-(assert (and p2_15@977@01 (not break2_2@968@01)))
-(pop) ; 21
-(pop) ; 20
-(pop) ; 19
-; [eval] !(p2_15 && !break2_2)
-; [eval] p2_15 && !break2_2
-(push) ; 19
-; [then-branch: 7162 | !(p2_15@977@01) | live]
-; [else-branch: 7162 | p2_15@977@01 | live]
-(push) ; 20
-; [then-branch: 7162 | !(p2_15@977@01)]
-(assert (not p2_15@977@01))
-(pop) ; 20
-(push) ; 20
-; [else-branch: 7162 | p2_15@977@01]
-(assert p2_15@977@01)
-; [eval] !break2_2
-(pop) ; 20
-(pop) ; 19
-; Joined path conditions
-; Joined path conditions
-(push) ; 19
-(set-option :timeout 10)
-(assert (not (and p2_15@977@01 (not break2_2@968@01))))
-(check-sat)
-; unsat
-(pop) ; 19
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 7163 | !(p2_15@977@01 && !(break2_2@968@01)) | dead]
-; [else-branch: 7163 | p2_15@977@01 && !(break2_2@968@01) | live]
-(set-option :timeout 0)
-(push) ; 19
-; [else-branch: 7163 | p2_15@977@01 && !(break2_2@968@01)]
-(assert (and p2_15@977@01 (not break2_2@968@01)))
-(pop) ; 19
-(pop) ; 18
-(pop) ; 17
-(pop) ; 16
-(pop) ; 15
-; [eval] !(p2_15 && !break2_2)
-; [eval] p2_15 && !break2_2
-(push) ; 15
-; [then-branch: 7164 | !(p2_15@977@01) | live]
-; [else-branch: 7164 | p2_15@977@01 | live]
-(push) ; 16
-; [then-branch: 7164 | !(p2_15@977@01)]
-(assert (not p2_15@977@01))
-(pop) ; 16
-(push) ; 16
-; [else-branch: 7164 | p2_15@977@01]
-(assert p2_15@977@01)
-; [eval] !break2_2
-(pop) ; 16
-(pop) ; 15
-; Joined path conditions
-; Joined path conditions
-(push) ; 15
-(set-option :timeout 10)
-(assert (not (and p2_15@977@01 (not break2_2@968@01))))
-(check-sat)
-; unsat
-(pop) ; 15
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 7165 | !(p2_15@977@01 && !(break2_2@968@01)) | dead]
-; [else-branch: 7165 | p2_15@977@01 && !(break2_2@968@01) | live]
-(set-option :timeout 0)
-(push) ; 15
-; [else-branch: 7165 | p2_15@977@01 && !(break2_2@968@01)]
-(assert (and p2_15@977@01 (not break2_2@968@01)))
-(pop) ; 15
-(pop) ; 14
-(push) ; 14
-; [else-branch: 7071 | p1_15@976@01 && !(break1_2@967@01)]
-(assert (and p1_15@976@01 (not break1_2@967@01)))
-(pop) ; 14
-(pop) ; 13
-(push) ; 13
-; [else-branch: 6875 | !(p1_14@898@01 && !(break1_2@967@01) && !(bypass1_2@955@01) || p2_14@899@01 && !(break2_2@968@01) && !(bypass2_2@956@01))]
-(assert (not
-  (or
-    (and p1_14@898@01 (and (not break1_2@967@01) (not bypass1_2@955@01)))
-    (and p2_14@899@01 (and (not break2_2@968@01) (not bypass2_2@956@01))))))
-(pop) ; 13
-; [eval] !(p1_14 && (!break1_2 && (!bypass1_2 && true)) || p2_14 && (!break2_2 && (!bypass2_2 && true)))
-; [eval] p1_14 && (!break1_2 && (!bypass1_2 && true)) || p2_14 && (!break2_2 && (!bypass2_2 && true))
-; [eval] p1_14 && (!break1_2 && (!bypass1_2 && true))
-(push) ; 13
-; [then-branch: 7166 | !(p1_14@898@01) | live]
-; [else-branch: 7166 | p1_14@898@01 | live]
-(push) ; 14
-; [then-branch: 7166 | !(p1_14@898@01)]
-(assert (not p1_14@898@01))
-(pop) ; 14
-(push) ; 14
-; [else-branch: 7166 | p1_14@898@01]
-(assert p1_14@898@01)
-; [eval] !break1_2
-(push) ; 15
-; [then-branch: 7167 | break1_2@967@01 | live]
-; [else-branch: 7167 | !(break1_2@967@01) | live]
-(push) ; 16
-; [then-branch: 7167 | break1_2@967@01]
-(assert break1_2@967@01)
-(pop) ; 16
-(push) ; 16
-; [else-branch: 7167 | !(break1_2@967@01)]
-(assert (not break1_2@967@01))
-; [eval] !bypass1_2
-(push) ; 17
-; [then-branch: 7168 | bypass1_2@955@01 | live]
-; [else-branch: 7168 | !(bypass1_2@955@01) | live]
-(push) ; 18
-; [then-branch: 7168 | bypass1_2@955@01]
-(assert bypass1_2@955@01)
-(pop) ; 18
-(push) ; 18
-; [else-branch: 7168 | !(bypass1_2@955@01)]
-(assert (not bypass1_2@955@01))
-(pop) ; 18
-(pop) ; 17
-; Joined path conditions
-; Joined path conditions
-(assert (or (not bypass1_2@955@01) bypass1_2@955@01))
-(pop) ; 16
-(pop) ; 15
-; Joined path conditions
-; Joined path conditions
-(assert (=>
-  (not break1_2@967@01)
-  (and (not break1_2@967@01) (or (not bypass1_2@955@01) bypass1_2@955@01))))
-(assert (or (not break1_2@967@01) break1_2@967@01))
-(pop) ; 14
-(pop) ; 13
-; Joined path conditions
-; Joined path conditions
-(push) ; 13
-; [then-branch: 7169 | p1_14@898@01 && !(break1_2@967@01) && !(bypass1_2@955@01) | live]
-; [else-branch: 7169 | !(p1_14@898@01 && !(break1_2@967@01) && !(bypass1_2@955@01)) | live]
-(push) ; 14
-; [then-branch: 7169 | p1_14@898@01 && !(break1_2@967@01) && !(bypass1_2@955@01)]
-(assert (and p1_14@898@01 (and (not break1_2@967@01) (not bypass1_2@955@01))))
-(pop) ; 14
-(push) ; 14
-; [else-branch: 7169 | !(p1_14@898@01 && !(break1_2@967@01) && !(bypass1_2@955@01))]
-(assert (not (and p1_14@898@01 (and (not break1_2@967@01) (not bypass1_2@955@01)))))
-; [eval] p2_14 && (!break2_2 && (!bypass2_2 && true))
-(push) ; 15
-; [then-branch: 7170 | !(p2_14@899@01) | live]
-; [else-branch: 7170 | p2_14@899@01 | live]
-(push) ; 16
-; [then-branch: 7170 | !(p2_14@899@01)]
-(assert (not p2_14@899@01))
-(pop) ; 16
-(push) ; 16
-; [else-branch: 7170 | p2_14@899@01]
-(assert p2_14@899@01)
-; [eval] !break2_2
-(push) ; 17
-; [then-branch: 7171 | break2_2@968@01 | live]
-; [else-branch: 7171 | !(break2_2@968@01) | live]
-(push) ; 18
-; [then-branch: 7171 | break2_2@968@01]
-(assert break2_2@968@01)
-(pop) ; 18
-(push) ; 18
-; [else-branch: 7171 | !(break2_2@968@01)]
-(assert (not break2_2@968@01))
-; [eval] !bypass2_2
-(push) ; 19
-; [then-branch: 7172 | bypass2_2@956@01 | live]
-; [else-branch: 7172 | !(bypass2_2@956@01) | live]
-(push) ; 20
-; [then-branch: 7172 | bypass2_2@956@01]
-(assert bypass2_2@956@01)
-(pop) ; 20
-(push) ; 20
-; [else-branch: 7172 | !(bypass2_2@956@01)]
-(assert (not bypass2_2@956@01))
-(pop) ; 20
-(pop) ; 19
-; Joined path conditions
-; Joined path conditions
-(assert (or (not bypass2_2@956@01) bypass2_2@956@01))
-(pop) ; 18
-(pop) ; 17
-; Joined path conditions
-; Joined path conditions
-(assert (=>
-  (not break2_2@968@01)
-  (and (not break2_2@968@01) (or (not bypass2_2@956@01) bypass2_2@956@01))))
-(assert (or (not break2_2@968@01) break2_2@968@01))
-(pop) ; 16
-(pop) ; 15
-; Joined path conditions
-; Joined path conditions
-(assert (=>
-  p2_14@899@01
-  (and
-    p2_14@899@01
-    (=>
-      (not break2_2@968@01)
-      (and (not break2_2@968@01) (or (not bypass2_2@956@01) bypass2_2@956@01)))
-    (or (not break2_2@968@01) break2_2@968@01))))
-(pop) ; 14
-(pop) ; 13
-; Joined path conditions
-; Joined path conditions
-(assert (=>
-  (not (and p1_14@898@01 (and (not break1_2@967@01) (not bypass1_2@955@01))))
-  (and
-    (not (and p1_14@898@01 (and (not break1_2@967@01) (not bypass1_2@955@01))))
-    (=>
-      p2_14@899@01
-      (and
-        p2_14@899@01
-        (=>
-          (not break2_2@968@01)
-          (and
-            (not break2_2@968@01)
-            (or (not bypass2_2@956@01) bypass2_2@956@01)))
-        (or (not break2_2@968@01) break2_2@968@01))))))
-(push) ; 13
-(set-option :timeout 10)
-(assert (not (or
-  (and p1_14@898@01 (and (not break1_2@967@01) (not bypass1_2@955@01)))
-  (and p2_14@899@01 (and (not break2_2@968@01) (not bypass2_2@956@01))))))
-(check-sat)
-; unknown
-(pop) ; 13
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 13
-(set-option :timeout 10)
-(assert (not (not
-  (or
-    (and p1_14@898@01 (and (not break1_2@967@01) (not bypass1_2@955@01)))
-    (and p2_14@899@01 (and (not break2_2@968@01) (not bypass2_2@956@01)))))))
-(check-sat)
-; unknown
-(pop) ; 13
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 7173 | !(p1_14@898@01 && !(break1_2@967@01) && !(bypass1_2@955@01) || p2_14@899@01 && !(break2_2@968@01) && !(bypass2_2@956@01)) | live]
-; [else-branch: 7173 | p1_14@898@01 && !(break1_2@967@01) && !(bypass1_2@955@01) || p2_14@899@01 && !(break2_2@968@01) && !(bypass2_2@956@01) | live]
-(set-option :timeout 0)
-(push) ; 13
-; [then-branch: 7173 | !(p1_14@898@01 && !(break1_2@967@01) && !(bypass1_2@955@01) || p2_14@899@01 && !(break2_2@968@01) && !(bypass2_2@956@01))]
-(assert (not
-  (or
-    (and p1_14@898@01 (and (not break1_2@967@01) (not bypass1_2@955@01)))
-    (and p2_14@899@01 (and (not break2_2@968@01) (not bypass2_2@956@01))))))
-; [eval] !bypass1_2 && break1_2 || !bypass2_2 && break2_2
-; [eval] !bypass1_2 && break1_2
-; [eval] !bypass1_2
-(push) ; 14
-; [then-branch: 7174 | bypass1_2@955@01 | live]
-; [else-branch: 7174 | !(bypass1_2@955@01) | live]
-(push) ; 15
-; [then-branch: 7174 | bypass1_2@955@01]
-(assert bypass1_2@955@01)
-(pop) ; 15
-(push) ; 15
-; [else-branch: 7174 | !(bypass1_2@955@01)]
-(assert (not bypass1_2@955@01))
-(pop) ; 15
-(pop) ; 14
-; Joined path conditions
-; Joined path conditions
-(assert (or (not bypass1_2@955@01) bypass1_2@955@01))
-(push) ; 14
-; [then-branch: 7175 | !(bypass1_2@955@01) && break1_2@967@01 | live]
-; [else-branch: 7175 | !(!(bypass1_2@955@01) && break1_2@967@01) | live]
-(push) ; 15
-; [then-branch: 7175 | !(bypass1_2@955@01) && break1_2@967@01]
-(assert (and (not bypass1_2@955@01) break1_2@967@01))
-(pop) ; 15
-(push) ; 15
-; [else-branch: 7175 | !(!(bypass1_2@955@01) && break1_2@967@01)]
-(assert (not (and (not bypass1_2@955@01) break1_2@967@01)))
-; [eval] !bypass2_2 && break2_2
-; [eval] !bypass2_2
-(push) ; 16
-; [then-branch: 7176 | bypass2_2@956@01 | live]
-; [else-branch: 7176 | !(bypass2_2@956@01) | live]
-(push) ; 17
-; [then-branch: 7176 | bypass2_2@956@01]
-(assert bypass2_2@956@01)
-(pop) ; 17
-(push) ; 17
-; [else-branch: 7176 | !(bypass2_2@956@01)]
-(assert (not bypass2_2@956@01))
-(pop) ; 17
-(pop) ; 16
-; Joined path conditions
-; Joined path conditions
-(assert (or (not bypass2_2@956@01) bypass2_2@956@01))
-(pop) ; 15
-(pop) ; 14
-; Joined path conditions
-; Joined path conditions
-(assert (=>
-  (not (and (not bypass1_2@955@01) break1_2@967@01))
-  (and
-    (not (and (not bypass1_2@955@01) break1_2@967@01))
-    (or (not bypass2_2@956@01) bypass2_2@956@01))))
-(assert (or
-  (not (and (not bypass1_2@955@01) break1_2@967@01))
-  (and (not bypass1_2@955@01) break1_2@967@01)))
-(push) ; 14
-(set-option :timeout 10)
-(assert (not (not
-  (or
-    (and (not bypass1_2@955@01) break1_2@967@01)
-    (and (not bypass2_2@956@01) break2_2@968@01)))))
-(check-sat)
-; unknown
-(pop) ; 14
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 14
-(set-option :timeout 10)
-(assert (not (or
-  (and (not bypass1_2@955@01) break1_2@967@01)
-  (and (not bypass2_2@956@01) break2_2@968@01))))
-(check-sat)
-; unsat
-(pop) ; 14
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 7177 | !(bypass1_2@955@01) && break1_2@967@01 || !(bypass2_2@956@01) && break2_2@968@01 | live]
-; [else-branch: 7177 | !(!(bypass1_2@955@01) && break1_2@967@01 || !(bypass2_2@956@01) && break2_2@968@01) | dead]
-(set-option :timeout 0)
-(push) ; 14
-; [then-branch: 7177 | !(bypass1_2@955@01) && break1_2@967@01 || !(bypass2_2@956@01) && break2_2@968@01]
-(assert (or
-  (and (not bypass1_2@955@01) break1_2@967@01)
-  (and (not bypass2_2@956@01) break2_2@968@01)))
-; [exec]
-; var p1_16: Bool
-(declare-const p1_16@988@01 Bool)
-; [exec]
-; var p2_16: Bool
-(declare-const p2_16@989@01 Bool)
-; [exec]
-; var p3_8: Bool
-(declare-const p3_8@990@01 Bool)
-; [exec]
-; var p4_8: Bool
-(declare-const p4_8@991@01 Bool)
-; [exec]
-; break1_2 := oldbreak1_2
-; [exec]
-; break2_2 := oldbreak2_2
-; [exec]
-; inhale p1_14 && !break1_2 ==> true
-(declare-const $t@992@01 $Snap)
-(assert (= $t@992@01 $Snap.unit))
-; [eval] p1_14 && !break1_2 ==> true
-; [eval] p1_14 && !break1_2
-(push) ; 15
-; [then-branch: 7178 | !(p1_14@898@01) | live]
-; [else-branch: 7178 | p1_14@898@01 | live]
-(push) ; 16
-; [then-branch: 7178 | !(p1_14@898@01)]
-(assert (not p1_14@898@01))
-(pop) ; 16
-(push) ; 16
-; [else-branch: 7178 | p1_14@898@01]
-(assert p1_14@898@01)
-; [eval] !break1_2
-(pop) ; 16
-(pop) ; 15
-; Joined path conditions
-; Joined path conditions
-(push) ; 15
-(push) ; 16
-(set-option :timeout 10)
-(assert (not (not p1_14@898@01)))
-(check-sat)
-; unknown
-(pop) ; 16
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 16
-(set-option :timeout 10)
-(assert (not p1_14@898@01))
-(check-sat)
-; unsat
-(pop) ; 16
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 7179 | p1_14@898@01 | live]
-; [else-branch: 7179 | !(p1_14@898@01) | dead]
-(set-option :timeout 0)
-(push) ; 16
-; [then-branch: 7179 | p1_14@898@01]
-(assert p1_14@898@01)
-(pop) ; 16
-(pop) ; 15
-; Joined path conditions
-(assert p1_14@898@01)
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [exec]
-; inhale p2_14 && !break1_2 ==> true
-(declare-const $t@993@01 $Snap)
-(assert (= $t@993@01 $Snap.unit))
-; [eval] p2_14 && !break1_2 ==> true
-; [eval] p2_14 && !break1_2
-(set-option :timeout 0)
-(push) ; 15
-; [then-branch: 7180 | !(p2_14@899@01) | live]
-; [else-branch: 7180 | p2_14@899@01 | live]
-(push) ; 16
-; [then-branch: 7180 | !(p2_14@899@01)]
-(assert (not p2_14@899@01))
-(pop) ; 16
-(push) ; 16
-; [else-branch: 7180 | p2_14@899@01]
-(assert p2_14@899@01)
-; [eval] !break1_2
-(pop) ; 16
-(pop) ; 15
-; Joined path conditions
-; Joined path conditions
-(push) ; 15
-(push) ; 16
-(set-option :timeout 10)
-(assert (not (not p2_14@899@01)))
-(check-sat)
-; unknown
-(pop) ; 16
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 16
-(set-option :timeout 10)
-(assert (not p2_14@899@01))
-(check-sat)
-; unsat
-(pop) ; 16
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 7181 | p2_14@899@01 | live]
-; [else-branch: 7181 | !(p2_14@899@01) | dead]
-(set-option :timeout 0)
-(push) ; 16
-; [then-branch: 7181 | p2_14@899@01]
-(assert p2_14@899@01)
-(pop) ; 16
-(pop) ; 15
-; Joined path conditions
-(assert p2_14@899@01)
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [exec]
-; p1_15 := p1_14 && (!break1_2 && true)
-; [eval] p1_14 && (!break1_2 && true)
-(set-option :timeout 0)
-(push) ; 15
-; [then-branch: 7182 | !(p1_14@898@01) | live]
-; [else-branch: 7182 | p1_14@898@01 | live]
-(push) ; 16
-; [then-branch: 7182 | !(p1_14@898@01)]
-(assert (not p1_14@898@01))
-(pop) ; 16
-(push) ; 16
-; [else-branch: 7182 | p1_14@898@01]
-; [eval] !break1_2
-(push) ; 17
-; [then-branch: 7183 | False | live]
-; [else-branch: 7183 | True | live]
-(push) ; 18
-; [then-branch: 7183 | False]
-(assert false)
-(pop) ; 18
-(push) ; 18
-; [else-branch: 7183 | True]
-(pop) ; 18
-(pop) ; 17
-; Joined path conditions
-; Joined path conditions
-(pop) ; 16
-(pop) ; 15
-; Joined path conditions
-; Joined path conditions
-; [exec]
-; p2_15 := p2_14 && (!break2_2 && true)
-; [eval] p2_14 && (!break2_2 && true)
-(push) ; 15
-; [then-branch: 7184 | !(p2_14@899@01) | live]
-; [else-branch: 7184 | p2_14@899@01 | live]
-(push) ; 16
-; [then-branch: 7184 | !(p2_14@899@01)]
-(assert (not p2_14@899@01))
-(pop) ; 16
-(push) ; 16
-; [else-branch: 7184 | p2_14@899@01]
-; [eval] !break2_2
-(push) ; 17
-; [then-branch: 7185 | False | live]
-; [else-branch: 7185 | True | live]
-(push) ; 18
-; [then-branch: 7185 | False]
-(assert false)
-(pop) ; 18
-(push) ; 18
-; [else-branch: 7185 | True]
-(pop) ; 18
-(pop) ; 17
-; Joined path conditions
-; Joined path conditions
-(pop) ; 16
-(pop) ; 15
-; Joined path conditions
-; Joined path conditions
-; [exec]
-; idle1_2 := p1_14 && (!break1_2 && !true)
-; [eval] p1_14 && (!break1_2 && !true)
-(push) ; 15
-; [then-branch: 7186 | !(p1_14@898@01) | live]
-; [else-branch: 7186 | p1_14@898@01 | live]
-(push) ; 16
-; [then-branch: 7186 | !(p1_14@898@01)]
-(assert (not p1_14@898@01))
-(pop) ; 16
-(push) ; 16
-; [else-branch: 7186 | p1_14@898@01]
-; [eval] !break1_2
-(push) ; 17
-; [then-branch: 7187 | False | live]
-; [else-branch: 7187 | True | live]
-(push) ; 18
-; [then-branch: 7187 | False]
-(assert false)
-(pop) ; 18
-(push) ; 18
-; [else-branch: 7187 | True]
-; [eval] !true
-(pop) ; 18
-(pop) ; 17
-; Joined path conditions
-; Joined path conditions
-(pop) ; 16
-(pop) ; 15
-; Joined path conditions
-; Joined path conditions
-; [exec]
-; idle2_2 := p2_14 && (!break2_2 && !true)
-; [eval] p2_14 && (!break2_2 && !true)
-(push) ; 15
-; [then-branch: 7188 | !(p2_14@899@01) | live]
-; [else-branch: 7188 | p2_14@899@01 | live]
-(push) ; 16
-; [then-branch: 7188 | !(p2_14@899@01)]
-(assert (not p2_14@899@01))
-(pop) ; 16
-(push) ; 16
-; [else-branch: 7188 | p2_14@899@01]
-; [eval] !break2_2
-(push) ; 17
-; [then-branch: 7189 | False | live]
-; [else-branch: 7189 | True | live]
-(push) ; 18
-; [then-branch: 7189 | False]
-(assert false)
-(pop) ; 18
-(push) ; 18
-; [else-branch: 7189 | True]
-; [eval] !true
-(pop) ; 18
-(pop) ; 17
-; Joined path conditions
-; Joined path conditions
-(pop) ; 16
-(pop) ; 15
-; Joined path conditions
-; Joined path conditions
-; [eval] p1_15 && !break1_2
-(push) ; 15
-; [then-branch: 7190 | !(p1_14@898@01) | live]
-; [else-branch: 7190 | p1_14@898@01 | live]
-(push) ; 16
-; [then-branch: 7190 | !(p1_14@898@01)]
-(assert (not p1_14@898@01))
-(pop) ; 16
-(push) ; 16
-; [else-branch: 7190 | p1_14@898@01]
-; [eval] !break1_2
-(pop) ; 16
-(pop) ; 15
-; Joined path conditions
-; Joined path conditions
-(push) ; 15
-(set-option :timeout 10)
-(assert (not (not p1_14@898@01)))
-(check-sat)
-; unknown
-(pop) ; 15
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 7191 | p1_14@898@01 | live]
-; [else-branch: 7191 | !(p1_14@898@01) | dead]
-(set-option :timeout 0)
-(push) ; 15
-; [then-branch: 7191 | p1_14@898@01]
-; [exec]
-; _loop_measures_2 := Seq[Measure$]()
-; [eval] Seq[Measure$]()
-; [eval] p2_15 && !break2_2
-(push) ; 16
-; [then-branch: 7192 | !(p2_14@899@01) | live]
-; [else-branch: 7192 | p2_14@899@01 | live]
-(push) ; 17
-; [then-branch: 7192 | !(p2_14@899@01)]
-(assert (not p2_14@899@01))
-(pop) ; 17
-(push) ; 17
-; [else-branch: 7192 | p2_14@899@01]
-; [eval] !break2_2
-(pop) ; 17
-(pop) ; 16
-; Joined path conditions
-; Joined path conditions
-(push) ; 16
-(set-option :timeout 10)
-(assert (not (not p2_14@899@01)))
-(check-sat)
-; unknown
-(pop) ; 16
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 7193 | p2_14@899@01 | live]
-; [else-branch: 7193 | !(p2_14@899@01) | dead]
-(set-option :timeout 0)
-(push) ; 16
-; [then-branch: 7193 | p2_14@899@01]
-; [exec]
-; _loop_measures_2_0 := Seq[Measure$]()
-; [eval] Seq[Measure$]()
-; [exec]
-; p1_16 := p1_15 &&
-;   (!break1_2 &&
-;   perm(_MaySet(c_7, 526803611440346310908232101056638787)) > none)
-; [eval] p1_15 && (!break1_2 && perm(_MaySet(c_7, 526803611440346310908232101056638787)) > none)
-(push) ; 17
-; [then-branch: 7194 | !(p1_14@898@01) | live]
-; [else-branch: 7194 | p1_14@898@01 | live]
-(push) ; 18
-; [then-branch: 7194 | !(p1_14@898@01)]
-(assert (not p1_14@898@01))
-(pop) ; 18
-(push) ; 18
-; [else-branch: 7194 | p1_14@898@01]
-; [eval] !break1_2
-(push) ; 19
-; [then-branch: 7195 | False | live]
-; [else-branch: 7195 | True | live]
-(push) ; 20
-; [then-branch: 7195 | False]
-(assert false)
-(pop) ; 20
-(push) ; 20
-; [else-branch: 7195 | True]
-; [eval] perm(_MaySet(c_7, 526803611440346310908232101056638787)) > none
-; [eval] perm(_MaySet(c_7, 526803611440346310908232101056638787))
-(pop) ; 20
-(pop) ; 19
-; Joined path conditions
-; Joined path conditions
-(pop) ; 18
-(pop) ; 17
-; Joined path conditions
-; Joined path conditions
-; [exec]
-; p2_16 := p2_15 &&
-;   (!break2_2 &&
-;   perm(_MaySet_0(c_7_0, 526803611440346310908232101056638787)) > none)
-; [eval] p2_15 && (!break2_2 && perm(_MaySet_0(c_7_0, 526803611440346310908232101056638787)) > none)
-(push) ; 17
-; [then-branch: 7196 | !(p2_14@899@01) | live]
-; [else-branch: 7196 | p2_14@899@01 | live]
-(push) ; 18
-; [then-branch: 7196 | !(p2_14@899@01)]
-(assert (not p2_14@899@01))
-(pop) ; 18
-(push) ; 18
-; [else-branch: 7196 | p2_14@899@01]
-; [eval] !break2_2
-(push) ; 19
-; [then-branch: 7197 | False | live]
-; [else-branch: 7197 | True | live]
-(push) ; 20
-; [then-branch: 7197 | False]
-(assert false)
-(pop) ; 20
-(push) ; 20
-; [else-branch: 7197 | True]
-; [eval] perm(_MaySet_0(c_7_0, 526803611440346310908232101056638787)) > none
-; [eval] perm(_MaySet_0(c_7_0, 526803611440346310908232101056638787))
-(pop) ; 20
-(pop) ; 19
-; Joined path conditions
-; Joined path conditions
-(pop) ; 18
-(pop) ; 17
-; Joined path conditions
-; Joined path conditions
-; [exec]
-; p3_8 := p1_15 &&
-;   (!break1_2 &&
-;   !(perm(_MaySet(c_7, 526803611440346310908232101056638787)) > none))
-; [eval] p1_15 && (!break1_2 && !(perm(_MaySet(c_7, 526803611440346310908232101056638787)) > none))
-(push) ; 17
-; [then-branch: 7198 | !(p1_14@898@01) | live]
-; [else-branch: 7198 | p1_14@898@01 | live]
-(push) ; 18
-; [then-branch: 7198 | !(p1_14@898@01)]
-(assert (not p1_14@898@01))
-(pop) ; 18
-(push) ; 18
-; [else-branch: 7198 | p1_14@898@01]
-; [eval] !break1_2
-(push) ; 19
-; [then-branch: 7199 | False | live]
-; [else-branch: 7199 | True | live]
-(push) ; 20
-; [then-branch: 7199 | False]
-(assert false)
-(pop) ; 20
-(push) ; 20
-; [else-branch: 7199 | True]
-; [eval] !(perm(_MaySet(c_7, 526803611440346310908232101056638787)) > none)
-; [eval] perm(_MaySet(c_7, 526803611440346310908232101056638787)) > none
-; [eval] perm(_MaySet(c_7, 526803611440346310908232101056638787))
-(pop) ; 20
-(pop) ; 19
-; Joined path conditions
-; Joined path conditions
-(pop) ; 18
-(pop) ; 17
-; Joined path conditions
-; Joined path conditions
-; [exec]
-; p4_8 := p2_15 &&
-;   (!break2_2 &&
-;   !(perm(_MaySet_0(c_7_0, 526803611440346310908232101056638787)) > none))
-; [eval] p2_15 && (!break2_2 && !(perm(_MaySet_0(c_7_0, 526803611440346310908232101056638787)) > none))
-(push) ; 17
-; [then-branch: 7200 | !(p2_14@899@01) | live]
-; [else-branch: 7200 | p2_14@899@01 | live]
-(push) ; 18
-; [then-branch: 7200 | !(p2_14@899@01)]
-(assert (not p2_14@899@01))
-(pop) ; 18
-(push) ; 18
-; [else-branch: 7200 | p2_14@899@01]
-; [eval] !break2_2
-(push) ; 19
-; [then-branch: 7201 | False | live]
-; [else-branch: 7201 | True | live]
-(push) ; 20
-; [then-branch: 7201 | False]
-(assert false)
-(pop) ; 20
-(push) ; 20
-; [else-branch: 7201 | True]
-; [eval] !(perm(_MaySet_0(c_7_0, 526803611440346310908232101056638787)) > none)
-; [eval] perm(_MaySet_0(c_7_0, 526803611440346310908232101056638787)) > none
-; [eval] perm(_MaySet_0(c_7_0, 526803611440346310908232101056638787))
-(pop) ; 20
-(pop) ; 19
-; Joined path conditions
-; Joined path conditions
-(pop) ; 18
-(pop) ; 17
-; Joined path conditions
-; Joined path conditions
-; [eval] p1_16 && !break1_2
-; [then-branch: 7202 | False | dead]
-; [else-branch: 7202 | True | live]
-(push) ; 17
-; [else-branch: 7202 | True]
-(pop) ; 17
-; [eval] !(p1_16 && !break1_2)
-; [eval] p1_16 && !break1_2
-(push) ; 17
-(set-option :timeout 10)
-(assert (not false))
-(check-sat)
-; unknown
-(pop) ; 17
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 7203 | True | live]
-; [else-branch: 7203 | False | dead]
-(set-option :timeout 0)
-(push) ; 17
-; [then-branch: 7203 | True]
-; [eval] p2_16 && !break2_2
-; [then-branch: 7204 | False | dead]
-; [else-branch: 7204 | True | live]
-(push) ; 18
-; [else-branch: 7204 | True]
-(pop) ; 18
-; [eval] !(p2_16 && !break2_2)
-; [eval] p2_16 && !break2_2
-(push) ; 18
-(set-option :timeout 10)
-(assert (not false))
-(check-sat)
-; unknown
-(pop) ; 18
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 7205 | True | live]
-; [else-branch: 7205 | False | dead]
-(set-option :timeout 0)
-(push) ; 18
-; [then-branch: 7205 | True]
-; [eval] p1_15 && !break1_2
-(push) ; 19
-; [then-branch: 7206 | !(p1_14@898@01) | live]
-; [else-branch: 7206 | p1_14@898@01 | live]
-(push) ; 20
-; [then-branch: 7206 | !(p1_14@898@01)]
-(assert (not p1_14@898@01))
-(pop) ; 20
-(push) ; 20
-; [else-branch: 7206 | p1_14@898@01]
-; [eval] !break1_2
-(pop) ; 20
-(pop) ; 19
-; Joined path conditions
-; Joined path conditions
-(push) ; 19
-(set-option :timeout 10)
-(assert (not (not p1_14@898@01)))
-(check-sat)
-; unknown
-(pop) ; 19
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 7207 | p1_14@898@01 | live]
-; [else-branch: 7207 | !(p1_14@898@01) | dead]
-(set-option :timeout 0)
-(push) ; 19
-; [then-branch: 7207 | p1_14@898@01]
-; [exec]
-; c_7.Container_value := __prim__int___box__(8)
-; [eval] __prim__int___box__(8)
-(push) ; 20
-(assert (__prim__int___box__%precondition $Snap.unit 8))
-(pop) ; 20
-; Joined path conditions
-(assert (__prim__int___box__%precondition $Snap.unit 8))
-(declare-const Container_value@994@01 $Ref)
-(assert (= Container_value@994@01 (__prim__int___box__ $Snap.unit 8)))
-; [eval] p2_15 && !break2_2
-(push) ; 20
-; [then-branch: 7208 | !(p2_14@899@01) | live]
-; [else-branch: 7208 | p2_14@899@01 | live]
-(push) ; 21
-; [then-branch: 7208 | !(p2_14@899@01)]
-(assert (not p2_14@899@01))
-(pop) ; 21
-(push) ; 21
-; [else-branch: 7208 | p2_14@899@01]
-; [eval] !break2_2
-(pop) ; 21
-(pop) ; 20
-; Joined path conditions
-; Joined path conditions
-(push) ; 20
-(set-option :timeout 10)
-(assert (not (not p2_14@899@01)))
-(check-sat)
-; unknown
-(pop) ; 20
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 7209 | p2_14@899@01 | live]
-; [else-branch: 7209 | !(p2_14@899@01) | dead]
-(set-option :timeout 0)
-(push) ; 20
-; [then-branch: 7209 | p2_14@899@01]
-; [exec]
-; c_7_0.Container_valuep := __prim__int___box__(8)
-; [eval] __prim__int___box__(8)
-(push) ; 21
-(pop) ; 21
-; Joined path conditions
-(declare-const Container_valuep@995@01 $Ref)
-(assert (= Container_valuep@995@01 (__prim__int___box__ $Snap.unit 8)))
-; [eval] p1_15 && !break1_2
-(push) ; 21
-; [then-branch: 7210 | !(p1_14@898@01) | live]
-; [else-branch: 7210 | p1_14@898@01 | live]
-(push) ; 22
-; [then-branch: 7210 | !(p1_14@898@01)]
-(assert (not p1_14@898@01))
-(pop) ; 22
-(push) ; 22
-; [else-branch: 7210 | p1_14@898@01]
-; [eval] !break1_2
-(pop) ; 22
-(pop) ; 21
-; Joined path conditions
-; Joined path conditions
-(push) ; 21
-(set-option :timeout 10)
-(assert (not (not p1_14@898@01)))
-(check-sat)
-; unknown
-(pop) ; 21
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 7211 | p1_14@898@01 | live]
-; [else-branch: 7211 | !(p1_14@898@01) | dead]
-(set-option :timeout 0)
-(push) ; 21
-; [then-branch: 7211 | p1_14@898@01]
-; [exec]
-; break1_2 := true
-; [eval] p2_15 && !break2_2
-(push) ; 22
-; [then-branch: 7212 | !(p2_14@899@01) | live]
-; [else-branch: 7212 | p2_14@899@01 | live]
-(push) ; 23
-; [then-branch: 7212 | !(p2_14@899@01)]
-(assert (not p2_14@899@01))
-(pop) ; 23
-(push) ; 23
-; [else-branch: 7212 | p2_14@899@01]
-; [eval] !break2_2
-(pop) ; 23
-(pop) ; 22
-; Joined path conditions
-; Joined path conditions
-(push) ; 22
-(set-option :timeout 10)
-(assert (not (not p2_14@899@01)))
-(check-sat)
-; unknown
-(pop) ; 22
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 7213 | p2_14@899@01 | live]
-; [else-branch: 7213 | !(p2_14@899@01) | dead]
-(set-option :timeout 0)
-(push) ; 22
-; [then-branch: 7213 | p2_14@899@01]
-; [exec]
-; break2_2 := true
-; [eval] p1_15 && !break1_2
-(push) ; 23
-; [then-branch: 7214 | !(p1_14@898@01) | live]
-; [else-branch: 7214 | p1_14@898@01 | live]
-(push) ; 24
-; [then-branch: 7214 | !(p1_14@898@01)]
-(assert (not p1_14@898@01))
-(pop) ; 24
-(push) ; 24
-; [else-branch: 7214 | p1_14@898@01]
-; [eval] !break1_2
-(pop) ; 24
-(pop) ; 23
-; Joined path conditions
-; Joined path conditions
-; [then-branch: 7215 | False | dead]
-; [else-branch: 7215 | True | live]
-(push) ; 23
-; [else-branch: 7215 | True]
-(pop) ; 23
-; [eval] !(p1_15 && !break1_2)
-; [eval] p1_15 && !break1_2
-(push) ; 23
-; [then-branch: 7216 | !(p1_14@898@01) | live]
-; [else-branch: 7216 | p1_14@898@01 | live]
-(push) ; 24
-; [then-branch: 7216 | !(p1_14@898@01)]
-(assert (not p1_14@898@01))
-(pop) ; 24
-(push) ; 24
-; [else-branch: 7216 | p1_14@898@01]
-; [eval] !break1_2
-(pop) ; 24
-(pop) ; 23
-; Joined path conditions
-; Joined path conditions
-(push) ; 23
-(set-option :timeout 10)
-(assert (not false))
-(check-sat)
-; unknown
-(pop) ; 23
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 7217 | True | live]
-; [else-branch: 7217 | False | dead]
-(set-option :timeout 0)
-(push) ; 23
-; [then-branch: 7217 | True]
-; [eval] p2_15 && !break2_2
-(push) ; 24
-; [then-branch: 7218 | !(p2_14@899@01) | live]
-; [else-branch: 7218 | p2_14@899@01 | live]
-(push) ; 25
-; [then-branch: 7218 | !(p2_14@899@01)]
-(assert (not p2_14@899@01))
-(pop) ; 25
-(push) ; 25
-; [else-branch: 7218 | p2_14@899@01]
-; [eval] !break2_2
-(pop) ; 25
-(pop) ; 24
-; Joined path conditions
-; Joined path conditions
-; [then-branch: 7219 | False | dead]
-; [else-branch: 7219 | True | live]
-(push) ; 24
-; [else-branch: 7219 | True]
-(pop) ; 24
-; [eval] !(p2_15 && !break2_2)
-; [eval] p2_15 && !break2_2
-(push) ; 24
-; [then-branch: 7220 | !(p2_14@899@01) | live]
-; [else-branch: 7220 | p2_14@899@01 | live]
-(push) ; 25
-; [then-branch: 7220 | !(p2_14@899@01)]
-(assert (not p2_14@899@01))
-(pop) ; 25
-(push) ; 25
-; [else-branch: 7220 | p2_14@899@01]
-; [eval] !break2_2
-(pop) ; 25
-(pop) ; 24
-; Joined path conditions
-; Joined path conditions
-(push) ; 24
-(set-option :timeout 10)
-(assert (not false))
-(check-sat)
-; unknown
-(pop) ; 24
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 7221 | True | live]
-; [else-branch: 7221 | False | dead]
-(set-option :timeout 0)
-(push) ; 24
-; [then-branch: 7221 | True]
-; [exec]
-; assert (p1_15 && !break1_2 ==> _loop_termination_flag_2 ==> !true) &&
-;   (p2_15 && !break2_2 ==> _loop_termination_flag_2_0 ==> !true)
-; [eval] p1_15 && !break1_2 ==> _loop_termination_flag_2 ==> !true
-; [eval] p1_15 && !break1_2
-(push) ; 25
-; [then-branch: 7222 | !(p1_14@898@01) | live]
-; [else-branch: 7222 | p1_14@898@01 | live]
-(push) ; 26
-; [then-branch: 7222 | !(p1_14@898@01)]
-(assert (not p1_14@898@01))
-(pop) ; 26
-(push) ; 26
-; [else-branch: 7222 | p1_14@898@01]
-; [eval] !break1_2
-(pop) ; 26
-(pop) ; 25
-; Joined path conditions
-; Joined path conditions
-(push) ; 25
-; [then-branch: 7223 | False | dead]
-; [else-branch: 7223 | True | live]
-(push) ; 26
-; [else-branch: 7223 | True]
-(pop) ; 26
-(pop) ; 25
-; Joined path conditions
-; [eval] p2_15 && !break2_2 ==> _loop_termination_flag_2_0 ==> !true
-; [eval] p2_15 && !break2_2
-(push) ; 25
-; [then-branch: 7224 | !(p2_14@899@01) | live]
-; [else-branch: 7224 | p2_14@899@01 | live]
-(push) ; 26
-; [then-branch: 7224 | !(p2_14@899@01)]
-(assert (not p2_14@899@01))
-(pop) ; 26
-(push) ; 26
-; [else-branch: 7224 | p2_14@899@01]
-; [eval] !break2_2
-(pop) ; 26
-(pop) ; 25
-; Joined path conditions
-; Joined path conditions
-(push) ; 25
-; [then-branch: 7225 | False | dead]
-; [else-branch: 7225 | True | live]
-(push) ; 26
-; [else-branch: 7225 | True]
-(pop) ; 26
-(pop) ; 25
-; Joined path conditions
-; [exec]
-; inhale !p1_15 || !!break1_2
-(declare-const $t@996@01 $Snap)
-(assert (= $t@996@01 $Snap.unit))
-; [eval] !p1_15 || !!break1_2
-; [eval] !p1_15
-(push) ; 25
-; [then-branch: 7226 | !(p1_14@898@01) | live]
-; [else-branch: 7226 | p1_14@898@01 | live]
-(push) ; 26
-; [then-branch: 7226 | !(p1_14@898@01)]
-(assert (not p1_14@898@01))
-(pop) ; 26
-(push) ; 26
-; [else-branch: 7226 | p1_14@898@01]
-; [eval] !!break1_2
-; [eval] !break1_2
-(pop) ; 26
-(pop) ; 25
-; Joined path conditions
-; Joined path conditions
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [exec]
-; inhale !p2_15 || !!break2_2
-(declare-const $t@997@01 $Snap)
-(assert (= $t@997@01 $Snap.unit))
-; [eval] !p2_15 || !!break2_2
-; [eval] !p2_15
-(set-option :timeout 0)
-(push) ; 25
-; [then-branch: 7227 | !(p2_14@899@01) | live]
-; [else-branch: 7227 | p2_14@899@01 | live]
-(push) ; 26
-; [then-branch: 7227 | !(p2_14@899@01)]
-(assert (not p2_14@899@01))
-(pop) ; 26
-(push) ; 26
-; [else-branch: 7227 | p2_14@899@01]
-; [eval] !!break2_2
-; [eval] !break2_2
-(pop) ; 26
-(pop) ; 25
-; Joined path conditions
-; Joined path conditions
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [eval] !bypass1_2
-(set-option :timeout 0)
-(push) ; 25
-(set-option :timeout 10)
-(assert (not bypass1_2@955@01))
-(check-sat)
-; unknown
-(pop) ; 25
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 25
-(set-option :timeout 10)
-(assert (not (not bypass1_2@955@01)))
-(check-sat)
-; unsat
-(pop) ; 25
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 7228 | !(bypass1_2@955@01) | live]
-; [else-branch: 7228 | bypass1_2@955@01 | dead]
-(set-option :timeout 0)
-(push) ; 25
-; [then-branch: 7228 | !(bypass1_2@955@01)]
-(assert (not bypass1_2@955@01))
-; [exec]
-; break1_2 := false
-; [eval] !bypass2_2
-(push) ; 26
-(set-option :timeout 10)
-(assert (not bypass2_2@956@01))
-(check-sat)
-; unknown
-(pop) ; 26
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 26
-(set-option :timeout 10)
-(assert (not (not bypass2_2@956@01)))
-(check-sat)
-; unsat
-(pop) ; 26
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 7229 | !(bypass2_2@956@01) | live]
-; [else-branch: 7229 | bypass2_2@956@01 | dead]
-(set-option :timeout 0)
-(push) ; 26
-; [then-branch: 7229 | !(bypass2_2@956@01)]
-(assert (not bypass2_2@956@01))
-; [exec]
-; break2_2 := false
-; [eval] p1_14 && !break1_2
-(push) ; 27
-; [then-branch: 7230 | !(p1_14@898@01) | live]
-; [else-branch: 7230 | p1_14@898@01 | live]
-(push) ; 28
-; [then-branch: 7230 | !(p1_14@898@01)]
-(assert (not p1_14@898@01))
-(pop) ; 28
-(push) ; 28
-; [else-branch: 7230 | p1_14@898@01]
-; [eval] !break1_2
-(pop) ; 28
-(pop) ; 27
-; Joined path conditions
-; Joined path conditions
-(push) ; 27
-(set-option :timeout 10)
-(assert (not (not p1_14@898@01)))
-(check-sat)
-; unknown
-(pop) ; 27
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 7231 | p1_14@898@01 | live]
-; [else-branch: 7231 | !(p1_14@898@01) | dead]
-(set-option :timeout 0)
-(push) ; 27
-; [then-branch: 7231 | p1_14@898@01]
-; [exec]
-; exhale perm(MustTerminate(_cthread_160)) > none ==>
-;   acc(MustTerminate(_cthread_160), perm(MustTerminate(_cthread_160)) -
-;   _loop_original_must_terminate_2)
-; [eval] perm(MustTerminate(_cthread_160)) > none
-; [eval] perm(MustTerminate(_cthread_160))
-; [then-branch: 7232 | False | dead]
-; [else-branch: 7232 | True | live]
-(push) ; 28
-; [else-branch: 7232 | True]
-; [exec]
-; _res := null
-; [eval] p2_14 && !break2_2
-(push) ; 29
-; [then-branch: 7233 | !(p2_14@899@01) | live]
-; [else-branch: 7233 | p2_14@899@01 | live]
-(push) ; 30
-; [then-branch: 7233 | !(p2_14@899@01)]
-(assert (not p2_14@899@01))
-(pop) ; 30
-(push) ; 30
-; [else-branch: 7233 | p2_14@899@01]
-; [eval] !break2_2
-(pop) ; 30
-(pop) ; 29
-; Joined path conditions
-; Joined path conditions
-(push) ; 29
-(set-option :timeout 10)
-(assert (not (not p2_14@899@01)))
-(check-sat)
-; unknown
-(pop) ; 29
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 7234 | p2_14@899@01 | live]
-; [else-branch: 7234 | !(p2_14@899@01) | dead]
-(set-option :timeout 0)
-(push) ; 29
-; [then-branch: 7234 | p2_14@899@01]
-; [exec]
-; exhale perm(MustTerminate_0(_cthread_160_0)) > none ==>
-;   acc(MustTerminate_0(_cthread_160_0), perm(MustTerminate_0(_cthread_160_0)) -
-;   _loop_original_must_terminate_2_0)
-; [eval] perm(MustTerminate_0(_cthread_160_0)) > none
-; [eval] perm(MustTerminate_0(_cthread_160_0))
-; [then-branch: 7235 | False | dead]
-; [else-branch: 7235 | True | live]
-(push) ; 30
-; [else-branch: 7235 | True]
-; [exec]
-; _res_0 := null
-; [exec]
-; assert true
-; [eval] p1_14 ==> true
-(push) ; 31
-(push) ; 32
-(set-option :timeout 10)
-(assert (not (not p1_14@898@01)))
-(check-sat)
-; unknown
-(pop) ; 32
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 7236 | p1_14@898@01 | live]
-; [else-branch: 7236 | !(p1_14@898@01) | dead]
-(set-option :timeout 0)
-(push) ; 32
-; [then-branch: 7236 | p1_14@898@01]
-(pop) ; 32
-(pop) ; 31
-; Joined path conditions
-; [eval] p2_14 ==> true
-(push) ; 31
-(push) ; 32
-(set-option :timeout 10)
-(assert (not (not p2_14@899@01)))
-(check-sat)
-; unknown
-(pop) ; 32
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 7237 | p2_14@899@01 | live]
-; [else-branch: 7237 | !(p2_14@899@01) | dead]
-(set-option :timeout 0)
-(push) ; 32
-; [then-branch: 7237 | p2_14@899@01]
-(pop) ; 32
-(pop) ; 31
-; Joined path conditions
-; [eval] p1_14 ==> _res == null || issubtype(typeof(_res), int())
-(push) ; 31
-(push) ; 32
-(set-option :timeout 10)
-(assert (not (not p1_14@898@01)))
-(check-sat)
-; unknown
-(pop) ; 32
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 7238 | p1_14@898@01 | live]
-; [else-branch: 7238 | !(p1_14@898@01) | dead]
-(set-option :timeout 0)
-(push) ; 32
-; [then-branch: 7238 | p1_14@898@01]
-; [eval] _res == null || issubtype(typeof(_res), int())
-; [eval] _res == null
-(pop) ; 32
-(pop) ; 31
-; Joined path conditions
-; [eval] p2_14 ==> _res_0 == null || issubtype(typeof(_res_0), int())
-(push) ; 31
-(push) ; 32
-(set-option :timeout 10)
-(assert (not (not p2_14@899@01)))
-(check-sat)
-; unknown
-(pop) ; 32
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 7239 | p2_14@899@01 | live]
-; [else-branch: 7239 | !(p2_14@899@01) | dead]
-(set-option :timeout 0)
-(push) ; 32
-; [then-branch: 7239 | p2_14@899@01]
-; [eval] _res_0 == null || issubtype(typeof(_res_0), int())
-; [eval] _res_0 == null
-(pop) ; 32
-(pop) ; 31
-; Joined path conditions
-(push) ; 31
-(set-option :timeout 10)
-(assert (not (not p1_14@898@01)))
-(check-sat)
-; unknown
-(pop) ; 31
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 7240 | p1_14@898@01 | live]
-; [else-branch: 7240 | !(p1_14@898@01) | dead]
-(set-option :timeout 0)
-(push) ; 31
-; [then-branch: 7240 | p1_14@898@01]
-(push) ; 32
-(set-option :timeout 10)
-(assert (not (not p2_14@899@01)))
-(check-sat)
-; unknown
-(pop) ; 32
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 7241 | p2_14@899@01 | live]
-; [else-branch: 7241 | !(p2_14@899@01) | dead]
-(set-option :timeout 0)
-(push) ; 32
-; [then-branch: 7241 | p2_14@899@01]
-; [eval] p1_14 ==> issubtype(typeof(c_2.Container_value), int())
-(push) ; 33
-(push) ; 34
-(set-option :timeout 10)
-(assert (not (not p1_14@898@01)))
-(check-sat)
-; unknown
-(pop) ; 34
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 7242 | p1_14@898@01 | live]
-; [else-branch: 7242 | !(p1_14@898@01) | dead]
-(set-option :timeout 0)
-(push) ; 34
-; [then-branch: 7242 | p1_14@898@01]
-; [eval] issubtype(typeof(c_2.Container_value), int())
-; [eval] typeof(c_2.Container_value)
-; [eval] int()
-(pop) ; 34
-(pop) ; 33
-; Joined path conditions
-(push) ; 33
-(assert (not (=>
-  p1_14@898@01
-  (issubtype<Bool> (typeof<PyType> Container_value@994@01) (as int<PyType>  PyType)))))
-(check-sat)
-; unsat
-(pop) ; 33
-; 0.00s
-; (get-info :all-statistics)
-(assert (=>
-  p1_14@898@01
-  (issubtype<Bool> (typeof<PyType> Container_value@994@01) (as int<PyType>  PyType))))
-; [eval] p2_14 ==> issubtype(typeof(c_2_0.Container_valuep), int())
-(push) ; 33
-(push) ; 34
-(set-option :timeout 10)
-(assert (not (not p2_14@899@01)))
-(check-sat)
-; unknown
-(pop) ; 34
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 7243 | p2_14@899@01 | live]
-; [else-branch: 7243 | !(p2_14@899@01) | dead]
-(set-option :timeout 0)
-(push) ; 34
-; [then-branch: 7243 | p2_14@899@01]
-; [eval] issubtype(typeof(c_2_0.Container_valuep), int())
-; [eval] typeof(c_2_0.Container_valuep)
-; [eval] int()
-(pop) ; 34
-(pop) ; 33
-; Joined path conditions
-(push) ; 33
-(assert (not (=>
-  p2_14@899@01
-  (issubtype<Bool> (typeof<PyType> Container_valuep@995@01) (as int<PyType>  PyType)))))
-(check-sat)
-; unsat
-(pop) ; 33
-; 0.00s
-; (get-info :all-statistics)
-(assert (=>
-  p2_14@899@01
-  (issubtype<Bool> (typeof<PyType> Container_valuep@995@01) (as int<PyType>  PyType))))
-; [eval] p1_14 ==> int___eq__(c_2.Container_value, __prim__int___box__(8))
-(push) ; 33
-(push) ; 34
-(set-option :timeout 10)
-(assert (not (not p1_14@898@01)))
-(check-sat)
-; unknown
-(pop) ; 34
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 7244 | p1_14@898@01 | live]
-; [else-branch: 7244 | !(p1_14@898@01) | dead]
-(set-option :timeout 0)
-(push) ; 34
-; [then-branch: 7244 | p1_14@898@01]
-; [eval] int___eq__(c_2.Container_value, __prim__int___box__(8))
-; [eval] __prim__int___box__(8)
-(push) ; 35
-(pop) ; 35
-; Joined path conditions
-(push) ; 35
-; [eval] issubtype(typeof(self), int())
-; [eval] typeof(self)
-; [eval] int()
-(push) ; 36
-(assert (not (issubtype<Bool> (typeof<PyType> Container_value@994@01) (as int<PyType>  PyType))))
-(check-sat)
-; unsat
-(pop) ; 36
-; 0.00s
-; (get-info :all-statistics)
-(assert (issubtype<Bool> (typeof<PyType> Container_value@994@01) (as int<PyType>  PyType)))
-; [eval] issubtype(typeof(other), int())
-; [eval] typeof(other)
-; [eval] int()
-(push) ; 36
-(assert (not (issubtype<Bool> (typeof<PyType> (__prim__int___box__ $Snap.unit 8)) (as int<PyType>  PyType))))
-(check-sat)
-; unsat
-(pop) ; 36
-; 0.00s
-; (get-info :all-statistics)
-(assert (issubtype<Bool> (typeof<PyType> (__prim__int___box__ $Snap.unit 8)) (as int<PyType>  PyType)))
-(assert (int___eq__%precondition ($Snap.combine $Snap.unit $Snap.unit) Container_value@994@01 (__prim__int___box__ $Snap.unit 8)))
-(pop) ; 35
-; Joined path conditions
-(assert (and
-  (issubtype<Bool> (typeof<PyType> Container_value@994@01) (as int<PyType>  PyType))
-  (issubtype<Bool> (typeof<PyType> (__prim__int___box__ $Snap.unit 8)) (as int<PyType>  PyType))
-  (int___eq__%precondition ($Snap.combine $Snap.unit $Snap.unit) Container_value@994@01 (__prim__int___box__ $Snap.unit 8))))
-(pop) ; 34
-(pop) ; 33
-; Joined path conditions
-(assert (=>
-  p1_14@898@01
-  (and
-    (issubtype<Bool> (typeof<PyType> Container_value@994@01) (as int<PyType>  PyType))
-    (issubtype<Bool> (typeof<PyType> (__prim__int___box__ $Snap.unit 8)) (as int<PyType>  PyType))
-    (int___eq__%precondition ($Snap.combine $Snap.unit $Snap.unit) Container_value@994@01 (__prim__int___box__ $Snap.unit 8)))))
-(push) ; 33
-(assert (not (=>
-  p1_14@898@01
-  (int___eq__ ($Snap.combine $Snap.unit $Snap.unit) Container_value@994@01 (__prim__int___box__ $Snap.unit 8)))))
-(check-sat)
-; unsat
-(pop) ; 33
-; 0.00s
-; (get-info :all-statistics)
-(assert (=>
-  p1_14@898@01
-  (int___eq__ ($Snap.combine $Snap.unit $Snap.unit) Container_value@994@01 (__prim__int___box__ $Snap.unit 8))))
-; [eval] p2_14 ==> int___eq__(c_2_0.Container_valuep, __prim__int___box__(8))
-(push) ; 33
-(push) ; 34
-(set-option :timeout 10)
-(assert (not (not p2_14@899@01)))
-(check-sat)
-; unknown
-(pop) ; 34
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 7245 | p2_14@899@01 | live]
-; [else-branch: 7245 | !(p2_14@899@01) | dead]
-(set-option :timeout 0)
-(push) ; 34
-; [then-branch: 7245 | p2_14@899@01]
-; [eval] int___eq__(c_2_0.Container_valuep, __prim__int___box__(8))
-; [eval] __prim__int___box__(8)
-(push) ; 35
-(pop) ; 35
-; Joined path conditions
-(push) ; 35
-; [eval] issubtype(typeof(self), int())
-; [eval] typeof(self)
-; [eval] int()
-(push) ; 36
-(assert (not (issubtype<Bool> (typeof<PyType> Container_valuep@995@01) (as int<PyType>  PyType))))
-(check-sat)
-; unsat
-(pop) ; 36
-; 0.00s
-; (get-info :all-statistics)
-(assert (issubtype<Bool> (typeof<PyType> Container_valuep@995@01) (as int<PyType>  PyType)))
-; [eval] issubtype(typeof(other), int())
-; [eval] typeof(other)
-; [eval] int()
-(push) ; 36
-(assert (not (issubtype<Bool> (typeof<PyType> (__prim__int___box__ $Snap.unit 8)) (as int<PyType>  PyType))))
-(check-sat)
-; unsat
-(pop) ; 36
-; 0.00s
-; (get-info :all-statistics)
-(assert (issubtype<Bool> (typeof<PyType> (__prim__int___box__ $Snap.unit 8)) (as int<PyType>  PyType)))
-(assert (int___eq__%precondition ($Snap.combine $Snap.unit $Snap.unit) Container_valuep@995@01 (__prim__int___box__ $Snap.unit 8)))
-(pop) ; 35
-; Joined path conditions
-(assert (and
-  (issubtype<Bool> (typeof<PyType> Container_valuep@995@01) (as int<PyType>  PyType))
-  (issubtype<Bool> (typeof<PyType> (__prim__int___box__ $Snap.unit 8)) (as int<PyType>  PyType))
-  (int___eq__%precondition ($Snap.combine $Snap.unit $Snap.unit) Container_valuep@995@01 (__prim__int___box__ $Snap.unit 8))))
-(pop) ; 34
-(pop) ; 33
-; Joined path conditions
-(assert (=>
-  p2_14@899@01
-  (and
-    (issubtype<Bool> (typeof<PyType> Container_valuep@995@01) (as int<PyType>  PyType))
-    (issubtype<Bool> (typeof<PyType> (__prim__int___box__ $Snap.unit 8)) (as int<PyType>  PyType))
-    (int___eq__%precondition ($Snap.combine $Snap.unit $Snap.unit) Container_valuep@995@01 (__prim__int___box__ $Snap.unit 8)))))
-(push) ; 33
-(assert (not (=>
-  p2_14@899@01
-  (int___eq__ ($Snap.combine $Snap.unit $Snap.unit) Container_valuep@995@01 (__prim__int___box__ $Snap.unit 8)))))
-(check-sat)
-; unsat
-(pop) ; 33
-; 0.00s
-; (get-info :all-statistics)
-(assert (=>
-  p2_14@899@01
-  (int___eq__ ($Snap.combine $Snap.unit $Snap.unit) Container_valuep@995@01 (__prim__int___box__ $Snap.unit 8))))
-; [eval] p1_14 ==> (forperm _r_17: Ref [MustInvokeBounded(_r_17)] :: false) && ((forperm _r_17: Ref [MustInvokeUnbounded(_r_17)] :: false) && ((forperm _r_17: Ref [_r_17.MustReleaseBounded] :: false) && (forperm _r_17: Ref [_r_17.MustReleaseUnbounded] :: false)))
-(push) ; 33
-(push) ; 34
-(set-option :timeout 10)
-(assert (not (not p1_14@898@01)))
-(check-sat)
-; unknown
-(pop) ; 34
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 7246 | p1_14@898@01 | live]
-; [else-branch: 7246 | !(p1_14@898@01) | dead]
-(set-option :timeout 0)
-(push) ; 34
-; [then-branch: 7246 | p1_14@898@01]
-; [eval] (forperm _r_17: Ref [MustInvokeBounded(_r_17)] :: false) && ((forperm _r_17: Ref [MustInvokeUnbounded(_r_17)] :: false) && ((forperm _r_17: Ref [_r_17.MustReleaseBounded] :: false) && (forperm _r_17: Ref [_r_17.MustReleaseUnbounded] :: false)))
-; [eval] (forperm _r_17: Ref [MustInvokeBounded(_r_17)] :: false)
-(push) ; 35
-; [then-branch: 7247 | False | live]
-; [else-branch: 7247 | True | live]
-(push) ; 36
-; [then-branch: 7247 | False]
-(assert false)
-(pop) ; 36
-(push) ; 36
-; [else-branch: 7247 | True]
-; [eval] (forperm _r_17: Ref [MustInvokeUnbounded(_r_17)] :: false)
-(push) ; 37
-; [then-branch: 7248 | False | live]
-; [else-branch: 7248 | True | live]
-(push) ; 38
-; [then-branch: 7248 | False]
-(assert false)
-(pop) ; 38
-(push) ; 38
-; [else-branch: 7248 | True]
-; [eval] (forperm _r_17: Ref [_r_17.MustReleaseBounded] :: false)
-(push) ; 39
-; [then-branch: 7249 | False | live]
-; [else-branch: 7249 | True | live]
-(push) ; 40
-; [then-branch: 7249 | False]
-(assert false)
-(pop) ; 40
-(push) ; 40
-; [else-branch: 7249 | True]
-; [eval] (forperm _r_17: Ref [_r_17.MustReleaseUnbounded] :: false)
-(pop) ; 40
-(pop) ; 39
-; Joined path conditions
-; Joined path conditions
-(pop) ; 38
-(pop) ; 37
-; Joined path conditions
-; Joined path conditions
-(pop) ; 36
-(pop) ; 35
-; Joined path conditions
-; Joined path conditions
-(pop) ; 34
-(pop) ; 33
-; Joined path conditions
-; [eval] p2_14 ==> (forperm _r_17: Ref [MustInvokeBounded_0(_r_17)] :: false) && ((forperm _r_17: Ref [MustInvokeUnbounded_0(_r_17)] :: false) && ((forperm _r_17: Ref [_r_17.MustReleaseBoundedp] :: false) && (forperm _r_17: Ref [_r_17.MustReleaseUnboundedp] :: false)))
-(push) ; 33
-(push) ; 34
-(set-option :timeout 10)
-(assert (not (not p2_14@899@01)))
-(check-sat)
-; unknown
-(pop) ; 34
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 7250 | p2_14@899@01 | live]
-; [else-branch: 7250 | !(p2_14@899@01) | dead]
-(set-option :timeout 0)
-(push) ; 34
-; [then-branch: 7250 | p2_14@899@01]
-; [eval] (forperm _r_17: Ref [MustInvokeBounded_0(_r_17)] :: false) && ((forperm _r_17: Ref [MustInvokeUnbounded_0(_r_17)] :: false) && ((forperm _r_17: Ref [_r_17.MustReleaseBoundedp] :: false) && (forperm _r_17: Ref [_r_17.MustReleaseUnboundedp] :: false)))
-; [eval] (forperm _r_17: Ref [MustInvokeBounded_0(_r_17)] :: false)
-(push) ; 35
-; [then-branch: 7251 | False | live]
-; [else-branch: 7251 | True | live]
-(push) ; 36
-; [then-branch: 7251 | False]
-(assert false)
-(pop) ; 36
-(push) ; 36
-; [else-branch: 7251 | True]
-; [eval] (forperm _r_17: Ref [MustInvokeUnbounded_0(_r_17)] :: false)
-(push) ; 37
-; [then-branch: 7252 | False | live]
-; [else-branch: 7252 | True | live]
-(push) ; 38
-; [then-branch: 7252 | False]
-(assert false)
-(pop) ; 38
-(push) ; 38
-; [else-branch: 7252 | True]
-; [eval] (forperm _r_17: Ref [_r_17.MustReleaseBoundedp] :: false)
-(push) ; 39
-; [then-branch: 7253 | False | live]
-; [else-branch: 7253 | True | live]
-(push) ; 40
-; [then-branch: 7253 | False]
-(assert false)
-(pop) ; 40
-(push) ; 40
-; [else-branch: 7253 | True]
-; [eval] (forperm _r_17: Ref [_r_17.MustReleaseUnboundedp] :: false)
-(pop) ; 40
-(pop) ; 39
-; Joined path conditions
-; Joined path conditions
-(pop) ; 38
-(pop) ; 37
-; Joined path conditions
-; Joined path conditions
-(pop) ; 36
-(pop) ; 35
-; Joined path conditions
-; Joined path conditions
-(pop) ; 34
-(pop) ; 33
-; Joined path conditions
-(pop) ; 32
-(pop) ; 31
-(pop) ; 30
-(pop) ; 29
-; [eval] !(p2_14 && !break2_2)
-; [eval] p2_14 && !break2_2
-(push) ; 29
-; [then-branch: 7254 | !(p2_14@899@01) | live]
-; [else-branch: 7254 | p2_14@899@01 | live]
-(push) ; 30
-; [then-branch: 7254 | !(p2_14@899@01)]
-(assert (not p2_14@899@01))
-(pop) ; 30
-(push) ; 30
-; [else-branch: 7254 | p2_14@899@01]
-; [eval] !break2_2
-(pop) ; 30
-(pop) ; 29
-; Joined path conditions
-; Joined path conditions
-; [then-branch: 7255 | !(p2_14@899@01) | dead]
-; [else-branch: 7255 | p2_14@899@01 | live]
-(push) ; 29
-; [else-branch: 7255 | p2_14@899@01]
-(pop) ; 29
-(pop) ; 28
-(pop) ; 27
-; [eval] !(p1_14 && !break1_2)
-; [eval] p1_14 && !break1_2
-(push) ; 27
-; [then-branch: 7256 | !(p1_14@898@01) | live]
-; [else-branch: 7256 | p1_14@898@01 | live]
-(push) ; 28
-; [then-branch: 7256 | !(p1_14@898@01)]
-(assert (not p1_14@898@01))
-(pop) ; 28
-(push) ; 28
-; [else-branch: 7256 | p1_14@898@01]
-; [eval] !break1_2
-(pop) ; 28
-(pop) ; 27
-; Joined path conditions
-; Joined path conditions
-; [then-branch: 7257 | !(p1_14@898@01) | dead]
-; [else-branch: 7257 | p1_14@898@01 | live]
-(push) ; 27
-; [else-branch: 7257 | p1_14@898@01]
-(pop) ; 27
-(pop) ; 26
-; [eval] !!bypass2_2
-; [eval] !bypass2_2
-(push) ; 26
-(set-option :timeout 10)
-(assert (not (not bypass2_2@956@01)))
-(check-sat)
-; unsat
-(pop) ; 26
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 7258 | bypass2_2@956@01 | dead]
-; [else-branch: 7258 | !(bypass2_2@956@01) | live]
-(set-option :timeout 0)
-(push) ; 26
-; [else-branch: 7258 | !(bypass2_2@956@01)]
-(assert (not bypass2_2@956@01))
-(pop) ; 26
-(pop) ; 25
-; [eval] !!bypass1_2
-; [eval] !bypass1_2
-(push) ; 25
-(set-option :timeout 10)
-(assert (not (not bypass1_2@955@01)))
-(check-sat)
-; unsat
-(pop) ; 25
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 7259 | bypass1_2@955@01 | dead]
-; [else-branch: 7259 | !(bypass1_2@955@01) | live]
-(set-option :timeout 0)
-(push) ; 25
-; [else-branch: 7259 | !(bypass1_2@955@01)]
-(assert (not bypass1_2@955@01))
-(pop) ; 25
-(pop) ; 24
-(pop) ; 23
-(pop) ; 22
-; [eval] !(p2_15 && !break2_2)
-; [eval] p2_15 && !break2_2
-(push) ; 22
-; [then-branch: 7260 | !(p2_14@899@01) | live]
-; [else-branch: 7260 | p2_14@899@01 | live]
-(push) ; 23
-; [then-branch: 7260 | !(p2_14@899@01)]
-(assert (not p2_14@899@01))
-(pop) ; 23
-(push) ; 23
-; [else-branch: 7260 | p2_14@899@01]
-; [eval] !break2_2
-(pop) ; 23
-(pop) ; 22
-; Joined path conditions
-; Joined path conditions
-; [then-branch: 7261 | !(p2_14@899@01) | dead]
-; [else-branch: 7261 | p2_14@899@01 | live]
-(push) ; 22
-; [else-branch: 7261 | p2_14@899@01]
-(pop) ; 22
-(pop) ; 21
-; [eval] !(p1_15 && !break1_2)
-; [eval] p1_15 && !break1_2
-(push) ; 21
-; [then-branch: 7262 | !(p1_14@898@01) | live]
-; [else-branch: 7262 | p1_14@898@01 | live]
-(push) ; 22
-; [then-branch: 7262 | !(p1_14@898@01)]
-(assert (not p1_14@898@01))
-(pop) ; 22
-(push) ; 22
-; [else-branch: 7262 | p1_14@898@01]
-; [eval] !break1_2
-(pop) ; 22
-(pop) ; 21
-; Joined path conditions
-; Joined path conditions
-; [then-branch: 7263 | !(p1_14@898@01) | dead]
-; [else-branch: 7263 | p1_14@898@01 | live]
-(push) ; 21
-; [else-branch: 7263 | p1_14@898@01]
-(pop) ; 21
-(pop) ; 20
-; [eval] !(p2_15 && !break2_2)
-; [eval] p2_15 && !break2_2
-(push) ; 20
-; [then-branch: 7264 | !(p2_14@899@01) | live]
-; [else-branch: 7264 | p2_14@899@01 | live]
-(push) ; 21
-; [then-branch: 7264 | !(p2_14@899@01)]
-(assert (not p2_14@899@01))
-(pop) ; 21
-(push) ; 21
-; [else-branch: 7264 | p2_14@899@01]
-; [eval] !break2_2
-(pop) ; 21
-(pop) ; 20
-; Joined path conditions
-; Joined path conditions
-; [then-branch: 7265 | !(p2_14@899@01) | dead]
-; [else-branch: 7265 | p2_14@899@01 | live]
-(push) ; 20
-; [else-branch: 7265 | p2_14@899@01]
-(pop) ; 20
-(pop) ; 19
-; [eval] !(p1_15 && !break1_2)
-; [eval] p1_15 && !break1_2
-(push) ; 19
-; [then-branch: 7266 | !(p1_14@898@01) | live]
-; [else-branch: 7266 | p1_14@898@01 | live]
-(push) ; 20
-; [then-branch: 7266 | !(p1_14@898@01)]
-(assert (not p1_14@898@01))
-(pop) ; 20
-(push) ; 20
-; [else-branch: 7266 | p1_14@898@01]
-; [eval] !break1_2
-(pop) ; 20
-(pop) ; 19
-; Joined path conditions
-; Joined path conditions
-; [then-branch: 7267 | !(p1_14@898@01) | dead]
-; [else-branch: 7267 | p1_14@898@01 | live]
-(push) ; 19
-; [else-branch: 7267 | p1_14@898@01]
-(pop) ; 19
-(pop) ; 18
-(pop) ; 17
-(pop) ; 16
-; [eval] !(p2_15 && !break2_2)
-; [eval] p2_15 && !break2_2
-(push) ; 16
-; [then-branch: 7268 | !(p2_14@899@01) | live]
-; [else-branch: 7268 | p2_14@899@01 | live]
-(push) ; 17
-; [then-branch: 7268 | !(p2_14@899@01)]
-(assert (not p2_14@899@01))
-(pop) ; 17
-(push) ; 17
-; [else-branch: 7268 | p2_14@899@01]
-; [eval] !break2_2
-(pop) ; 17
-(pop) ; 16
-; Joined path conditions
-; Joined path conditions
-; [then-branch: 7269 | !(p2_14@899@01) | dead]
-; [else-branch: 7269 | p2_14@899@01 | live]
-(push) ; 16
-; [else-branch: 7269 | p2_14@899@01]
-(pop) ; 16
-(pop) ; 15
-; [eval] !(p1_15 && !break1_2)
-; [eval] p1_15 && !break1_2
-(push) ; 15
-; [then-branch: 7270 | !(p1_14@898@01) | live]
-; [else-branch: 7270 | p1_14@898@01 | live]
-(push) ; 16
-; [then-branch: 7270 | !(p1_14@898@01)]
-(assert (not p1_14@898@01))
-(pop) ; 16
-(push) ; 16
-; [else-branch: 7270 | p1_14@898@01]
-; [eval] !break1_2
-(pop) ; 16
-(pop) ; 15
-; Joined path conditions
-; Joined path conditions
-; [then-branch: 7271 | !(p1_14@898@01) | dead]
-; [else-branch: 7271 | p1_14@898@01 | live]
-(push) ; 15
-; [else-branch: 7271 | p1_14@898@01]
-(pop) ; 15
-(pop) ; 14
-; [eval] !(!bypass1_2 && break1_2 || !bypass2_2 && break2_2)
-; [eval] !bypass1_2 && break1_2 || !bypass2_2 && break2_2
-; [eval] !bypass1_2 && break1_2
-; [eval] !bypass1_2
-(push) ; 14
-; [then-branch: 7272 | bypass1_2@955@01 | live]
-; [else-branch: 7272 | !(bypass1_2@955@01) | live]
-(push) ; 15
-; [then-branch: 7272 | bypass1_2@955@01]
-(assert bypass1_2@955@01)
-(pop) ; 15
-(push) ; 15
-; [else-branch: 7272 | !(bypass1_2@955@01)]
-(assert (not bypass1_2@955@01))
-(pop) ; 15
-(pop) ; 14
-; Joined path conditions
-; Joined path conditions
-(push) ; 14
-; [then-branch: 7273 | !(bypass1_2@955@01) && break1_2@967@01 | live]
-; [else-branch: 7273 | !(!(bypass1_2@955@01) && break1_2@967@01) | live]
-(push) ; 15
-; [then-branch: 7273 | !(bypass1_2@955@01) && break1_2@967@01]
-(assert (and (not bypass1_2@955@01) break1_2@967@01))
-(pop) ; 15
-(push) ; 15
-; [else-branch: 7273 | !(!(bypass1_2@955@01) && break1_2@967@01)]
-(assert (not (and (not bypass1_2@955@01) break1_2@967@01)))
-; [eval] !bypass2_2 && break2_2
-; [eval] !bypass2_2
-(push) ; 16
-; [then-branch: 7274 | bypass2_2@956@01 | live]
-; [else-branch: 7274 | !(bypass2_2@956@01) | live]
-(push) ; 17
-; [then-branch: 7274 | bypass2_2@956@01]
-(assert bypass2_2@956@01)
-(pop) ; 17
-(push) ; 17
-; [else-branch: 7274 | !(bypass2_2@956@01)]
-(assert (not bypass2_2@956@01))
-(pop) ; 17
-(pop) ; 16
-; Joined path conditions
-; Joined path conditions
-(assert (or (not bypass2_2@956@01) bypass2_2@956@01))
-(pop) ; 15
-(pop) ; 14
-; Joined path conditions
-; Joined path conditions
-(push) ; 14
-(set-option :timeout 10)
-(assert (not (or
-  (and (not bypass1_2@955@01) break1_2@967@01)
-  (and (not bypass2_2@956@01) break2_2@968@01))))
-(check-sat)
-; unsat
-(pop) ; 14
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 7275 | !(!(bypass1_2@955@01) && break1_2@967@01 || !(bypass2_2@956@01) && break2_2@968@01) | dead]
-; [else-branch: 7275 | !(bypass1_2@955@01) && break1_2@967@01 || !(bypass2_2@956@01) && break2_2@968@01 | live]
-(set-option :timeout 0)
-(push) ; 14
-; [else-branch: 7275 | !(bypass1_2@955@01) && break1_2@967@01 || !(bypass2_2@956@01) && break2_2@968@01]
-(assert (or
-  (and (not bypass1_2@955@01) break1_2@967@01)
-  (and (not bypass2_2@956@01) break2_2@968@01)))
-(pop) ; 14
-(pop) ; 13
-(push) ; 13
-; [else-branch: 7173 | p1_14@898@01 && !(break1_2@967@01) && !(bypass1_2@955@01) || p2_14@899@01 && !(break2_2@968@01) && !(bypass2_2@956@01)]
-(assert (or
-  (and p1_14@898@01 (and (not break1_2@967@01) (not bypass1_2@955@01)))
-  (and p2_14@899@01 (and (not break2_2@968@01) (not bypass2_2@956@01)))))
-(pop) ; 13
-(pop) ; 12
-(pop) ; 11
-(pop) ; 10
-(pop) ; 9
-(pop) ; 8
-(pop) ; 7
-(pop) ; 6
-; [eval] !(p2_14 && !break2_2)
-; [eval] p2_14 && !break2_2
-(push) ; 6
-; [then-branch: 7276 | !(p2_14@899@01) | live]
-; [else-branch: 7276 | p2_14@899@01 | live]
-(push) ; 7
-; [then-branch: 7276 | !(p2_14@899@01)]
-(assert (not p2_14@899@01))
-(pop) ; 7
-(push) ; 7
-; [else-branch: 7276 | p2_14@899@01]
-(assert p2_14@899@01)
-; [eval] !break2_2
-(pop) ; 7
-(pop) ; 6
-; Joined path conditions
-; Joined path conditions
-(push) ; 6
-(set-option :timeout 10)
-(assert (not p2_14@899@01))
-(check-sat)
-; unsat
-(pop) ; 6
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 7277 | !(p2_14@899@01) | dead]
-; [else-branch: 7277 | p2_14@899@01 | live]
-(set-option :timeout 0)
-(push) ; 6
-; [else-branch: 7277 | p2_14@899@01]
-(assert p2_14@899@01)
-(pop) ; 6
-(pop) ; 5
-; [eval] !(p1_14 && !break1_2)
-; [eval] p1_14 && !break1_2
-(push) ; 5
-; [then-branch: 7278 | !(p1_14@898@01) | live]
-; [else-branch: 7278 | p1_14@898@01 | live]
-(push) ; 6
-; [then-branch: 7278 | !(p1_14@898@01)]
-(assert (not p1_14@898@01))
-(pop) ; 6
-(push) ; 6
-; [else-branch: 7278 | p1_14@898@01]
-(assert p1_14@898@01)
-; [eval] !break1_2
-(pop) ; 6
-(pop) ; 5
-; Joined path conditions
-; Joined path conditions
-(push) ; 5
-(set-option :timeout 10)
-(assert (not p1_14@898@01))
-(check-sat)
-; unsat
-(pop) ; 5
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 7279 | !(p1_14@898@01) | dead]
-; [else-branch: 7279 | p1_14@898@01 | live]
-(set-option :timeout 0)
-(push) ; 5
-; [else-branch: 7279 | p1_14@898@01]
-(assert p1_14@898@01)
-(pop) ; 5
-(pop) ; 4
-(pop) ; 3
-(push) ; 3
-; [else-branch: 6747 | !(p2_14@899@01)]
-(assert (not p2_14@899@01))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@914@01))))))))))
-  $Snap.unit))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@914@01))))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@914@01)))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@914@01))))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@914@01)))))))))))
-  $Snap.unit))
-; [eval] p1_14 ==> issubtype(typeof(c_2.Container_value), int())
-(push) ; 4
-(push) ; 5
-(set-option :timeout 10)
-(assert (not (not p1_14@898@01)))
-(check-sat)
-; unknown
-(pop) ; 5
-; 0.00s
-; (get-info :all-statistics)
-(set-option :timeout 0)
-(push) ; 5
-(set-option :timeout 10)
-(assert (not p1_14@898@01))
-(check-sat)
-; unsat
-(pop) ; 5
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 7280 | p1_14@898@01 | live]
-; [else-branch: 7280 | !(p1_14@898@01) | dead]
-(set-option :timeout 0)
-(push) ; 5
-; [then-branch: 7280 | p1_14@898@01]
-(assert p1_14@898@01)
-; [eval] issubtype(typeof(c_2.Container_value), int())
-; [eval] typeof(c_2.Container_value)
-; [eval] int()
-(pop) ; 5
-(pop) ; 4
-; Joined path conditions
-(assert p1_14@898@01)
-(assert (=>
-  p1_14@898@01
-  (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@914@01))))))))))) (as int<PyType>  PyType))))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@914@01)))))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@914@01))))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@914@01)))))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@914@01))))))))))))
-  $Snap.unit))
-; [eval] p2_14 ==> issubtype(typeof(c_2_0.Container_valuep), int())
-(push) ; 4
-; [then-branch: 7281 | p2_14@899@01 | dead]
-; [else-branch: 7281 | !(p2_14@899@01) | live]
-(push) ; 5
-; [else-branch: 7281 | !(p2_14@899@01)]
-(pop) ; 5
-(pop) ; 4
-; Joined path conditions
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@914@01))))))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@914@01)))))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@914@01))))))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@914@01)))))))))))))
-  $Snap.unit))
-; [eval] p1_14 ==> true
-(push) ; 4
-(push) ; 5
-(set-option :timeout 10)
-(assert (not (not p1_14@898@01)))
-(check-sat)
-; unknown
-(pop) ; 5
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 7282 | p1_14@898@01 | live]
-; [else-branch: 7282 | !(p1_14@898@01) | dead]
-(set-option :timeout 0)
-(push) ; 5
-; [then-branch: 7282 | p1_14@898@01]
-(pop) ; 5
-(pop) ; 4
-; Joined path conditions
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@914@01)))))))))))))
-  $Snap.unit))
-; [eval] p2_14 ==> true
-(push) ; 4
-; [then-branch: 7283 | p2_14@899@01 | dead]
-; [else-branch: 7283 | !(p2_14@899@01) | live]
-(push) ; 5
-; [else-branch: 7283 | !(p2_14@899@01)]
-(pop) ; 5
-(pop) ; 4
-; Joined path conditions
-; State saturation: after contract
-(set-option :timeout 50)
-(check-sat)
-; unknown
-(set-option :timeout 0)
-(push) ; 4
-(declare-const $t@998@01 $Snap)
-(assert (= $t@998@01 ($Snap.combine ($Snap.first $t@998@01) ($Snap.second $t@998@01))))
-(assert (= ($Snap.first $t@998@01) $Snap.unit))
-; [eval] p1_14 ==> (forperm _r_16: Ref [_r_16.MustReleaseBounded] :: Level(_r_16) <= _current_wait_level_160) && ((forperm _r_16: Ref [_r_16.MustReleaseUnbounded] :: Level(_r_16) <= _current_wait_level_160) && _residue_160 <= _current_wait_level_160)
-(push) ; 5
-(push) ; 6
-(set-option :timeout 10)
-(assert (not (not p1_14@898@01)))
-(check-sat)
-; unknown
-(pop) ; 6
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 7284 | p1_14@898@01 | live]
-; [else-branch: 7284 | !(p1_14@898@01) | dead]
-(set-option :timeout 0)
-(push) ; 6
-; [then-branch: 7284 | p1_14@898@01]
-; [eval] (forperm _r_16: Ref [_r_16.MustReleaseBounded] :: Level(_r_16) <= _current_wait_level_160) && ((forperm _r_16: Ref [_r_16.MustReleaseUnbounded] :: Level(_r_16) <= _current_wait_level_160) && _residue_160 <= _current_wait_level_160)
-; [eval] (forperm _r_16: Ref [_r_16.MustReleaseBounded] :: Level(_r_16) <= _current_wait_level_160)
-(push) ; 7
-; [then-branch: 7285 | False | live]
-; [else-branch: 7285 | True | live]
-(push) ; 8
-; [then-branch: 7285 | False]
-(assert false)
-(pop) ; 8
-(push) ; 8
-; [else-branch: 7285 | True]
-; [eval] (forperm _r_16: Ref [_r_16.MustReleaseUnbounded] :: Level(_r_16) <= _current_wait_level_160)
-(push) ; 9
-; [then-branch: 7286 | False | live]
-; [else-branch: 7286 | True | live]
-(push) ; 10
-; [then-branch: 7286 | False]
-(assert false)
-(pop) ; 10
-(push) ; 10
-; [else-branch: 7286 | True]
-; [eval] _residue_160 <= _current_wait_level_160
-(pop) ; 10
-(pop) ; 9
-; Joined path conditions
-; Joined path conditions
-(pop) ; 8
-(pop) ; 7
-; Joined path conditions
-; Joined path conditions
-(pop) ; 6
-(pop) ; 5
-; Joined path conditions
-(assert (=> p1_14@898@01 (<= _residue_160@904@01 _current_wait_level_160@910@01)))
-(assert (=
-  ($Snap.second $t@998@01)
-  ($Snap.combine
-    ($Snap.first ($Snap.second $t@998@01))
-    ($Snap.second ($Snap.second $t@998@01)))))
-(assert (= ($Snap.first ($Snap.second $t@998@01)) $Snap.unit))
-; [eval] p2_14 ==> (forperm _r_16: Ref [_r_16.MustReleaseBoundedp] :: Level(_r_16) <= _current_wait_level_160_0) && ((forperm _r_16: Ref [_r_16.MustReleaseUnboundedp] :: Level(_r_16) <= _current_wait_level_160_0) && _residue_160_0 <= _current_wait_level_160_0)
-(push) ; 5
-; [then-branch: 7287 | p2_14@899@01 | dead]
-; [else-branch: 7287 | !(p2_14@899@01) | live]
-(push) ; 6
-; [else-branch: 7287 | !(p2_14@899@01)]
-(pop) ; 6
-(pop) ; 5
-; Joined path conditions
-(assert (=
-  ($Snap.second ($Snap.second $t@998@01))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second $t@998@01)))
-    ($Snap.second ($Snap.second ($Snap.second $t@998@01))))))
-(assert (= ($Snap.first ($Snap.second ($Snap.second $t@998@01))) $Snap.unit))
-; [eval] p1_14 ==> _res == null || issubtype(typeof(_res), int())
-(push) ; 5
-(push) ; 6
-(set-option :timeout 10)
-(assert (not (not p1_14@898@01)))
-(check-sat)
-; unknown
-(pop) ; 6
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 7288 | p1_14@898@01 | live]
-; [else-branch: 7288 | !(p1_14@898@01) | dead]
-(set-option :timeout 0)
-(push) ; 6
-; [then-branch: 7288 | p1_14@898@01]
-; [eval] _res == null || issubtype(typeof(_res), int())
-; [eval] _res == null
-(push) ; 7
-; [then-branch: 7289 | _res@912@01 == Null | live]
-; [else-branch: 7289 | _res@912@01 != Null | live]
-(push) ; 8
-; [then-branch: 7289 | _res@912@01 == Null]
-(assert (= _res@912@01 $Ref.null))
-(pop) ; 8
-(push) ; 8
-; [else-branch: 7289 | _res@912@01 != Null]
-(assert (not (= _res@912@01 $Ref.null)))
-; [eval] issubtype(typeof(_res), int())
-; [eval] typeof(_res)
-; [eval] int()
-(pop) ; 8
-(pop) ; 7
-; Joined path conditions
-; Joined path conditions
-(assert (or (not (= _res@912@01 $Ref.null)) (= _res@912@01 $Ref.null)))
-(pop) ; 6
-(pop) ; 5
-; Joined path conditions
-(assert (=> p1_14@898@01 (or (not (= _res@912@01 $Ref.null)) (= _res@912@01 $Ref.null))))
-(assert (=>
-  p1_14@898@01
-  (or
-    (= _res@912@01 $Ref.null)
-    (issubtype<Bool> (typeof<PyType> _res@912@01) (as int<PyType>  PyType)))))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second $t@998@01)))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@998@01))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@998@01)))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second $t@998@01))))
-  $Snap.unit))
-; [eval] p2_14 ==> _res_0 == null || issubtype(typeof(_res_0), int())
-(push) ; 5
-; [then-branch: 7290 | p2_14@899@01 | dead]
-; [else-branch: 7290 | !(p2_14@899@01) | live]
-(push) ; 6
-; [else-branch: 7290 | !(p2_14@899@01)]
-(pop) ; 6
-(pop) ; 5
-; Joined path conditions
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@998@01))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@998@01)))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@998@01))))))))
-(push) ; 5
-(set-option :timeout 10)
-(assert (not (not p1_14@898@01)))
-(check-sat)
-; unknown
-(pop) ; 5
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 7291 | p1_14@898@01 | live]
-; [else-branch: 7291 | !(p1_14@898@01) | dead]
-(set-option :timeout 0)
-(push) ; 5
-; [then-branch: 7291 | p1_14@898@01]
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@998@01)))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@998@01))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@998@01)))))))))
-; [then-branch: 7292 | p2_14@899@01 | dead]
-; [else-branch: 7292 | !(p2_14@899@01) | live]
-(push) ; 6
-; [else-branch: 7292 | !(p2_14@899@01)]
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@998@01))))))
-  $Snap.unit))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@998@01))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@998@01)))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@998@01))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@998@01)))))))
-  $Snap.unit))
-; [eval] p1_14 ==> issubtype(typeof(c_2.Container_value), int())
-(push) ; 7
-(push) ; 8
-(set-option :timeout 10)
-(assert (not (not p1_14@898@01)))
-(check-sat)
-; unknown
-(pop) ; 8
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 7293 | p1_14@898@01 | live]
-; [else-branch: 7293 | !(p1_14@898@01) | dead]
-(set-option :timeout 0)
-(push) ; 8
-; [then-branch: 7293 | p1_14@898@01]
-; [eval] issubtype(typeof(c_2.Container_value), int())
-; [eval] typeof(c_2.Container_value)
-; [eval] int()
-(pop) ; 8
-(pop) ; 7
-; Joined path conditions
-(assert (=>
-  p1_14@898@01
-  (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@998@01))))))) (as int<PyType>  PyType))))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@998@01)))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@998@01))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@998@01)))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@998@01))))))))
-  $Snap.unit))
-; [eval] p2_14 ==> issubtype(typeof(c_2_0.Container_valuep), int())
-(push) ; 7
-; [then-branch: 7294 | p2_14@899@01 | dead]
-; [else-branch: 7294 | !(p2_14@899@01) | live]
-(push) ; 8
-; [else-branch: 7294 | !(p2_14@899@01)]
-(pop) ; 8
-(pop) ; 7
-; Joined path conditions
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@998@01))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@998@01)))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@998@01))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@998@01)))))))))
-  $Snap.unit))
-; [eval] p1_14 ==> int___eq__(c_2.Container_value, __prim__int___box__(8))
-(push) ; 7
-(push) ; 8
-(set-option :timeout 10)
-(assert (not (not p1_14@898@01)))
-(check-sat)
-; unknown
-(pop) ; 8
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 7295 | p1_14@898@01 | live]
-; [else-branch: 7295 | !(p1_14@898@01) | dead]
-(set-option :timeout 0)
-(push) ; 8
-; [then-branch: 7295 | p1_14@898@01]
-; [eval] int___eq__(c_2.Container_value, __prim__int___box__(8))
-; [eval] __prim__int___box__(8)
-(push) ; 9
-(assert (__prim__int___box__%precondition $Snap.unit 8))
-(pop) ; 9
-; Joined path conditions
-(assert (__prim__int___box__%precondition $Snap.unit 8))
-(push) ; 9
-; [eval] issubtype(typeof(self), int())
-; [eval] typeof(self)
-; [eval] int()
-(push) ; 10
-(assert (not (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@998@01))))))) (as int<PyType>  PyType))))
-(check-sat)
-; unsat
-(pop) ; 10
-; 0.00s
-; (get-info :all-statistics)
-(assert (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@998@01))))))) (as int<PyType>  PyType)))
-; [eval] issubtype(typeof(other), int())
-; [eval] typeof(other)
-; [eval] int()
-(push) ; 10
-(assert (not (issubtype<Bool> (typeof<PyType> (__prim__int___box__ $Snap.unit 8)) (as int<PyType>  PyType))))
-(check-sat)
-; unsat
-(pop) ; 10
-; 0.00s
-; (get-info :all-statistics)
-(assert (issubtype<Bool> (typeof<PyType> (__prim__int___box__ $Snap.unit 8)) (as int<PyType>  PyType)))
-(assert (int___eq__%precondition ($Snap.combine $Snap.unit $Snap.unit) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@998@01)))))) (__prim__int___box__ $Snap.unit 8)))
-(pop) ; 9
-; Joined path conditions
-(assert (and
-  (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@998@01))))))) (as int<PyType>  PyType))
-  (issubtype<Bool> (typeof<PyType> (__prim__int___box__ $Snap.unit 8)) (as int<PyType>  PyType))
-  (int___eq__%precondition ($Snap.combine $Snap.unit $Snap.unit) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@998@01)))))) (__prim__int___box__ $Snap.unit 8))))
-(pop) ; 8
-(pop) ; 7
-; Joined path conditions
-(assert (=>
-  p1_14@898@01
-  (and
-    (__prim__int___box__%precondition $Snap.unit 8)
-    (issubtype<Bool> (typeof<PyType> ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@998@01))))))) (as int<PyType>  PyType))
-    (issubtype<Bool> (typeof<PyType> (__prim__int___box__ $Snap.unit 8)) (as int<PyType>  PyType))
-    (int___eq__%precondition ($Snap.combine $Snap.unit $Snap.unit) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@998@01)))))) (__prim__int___box__ $Snap.unit 8)))))
-(assert (=>
-  p1_14@898@01
-  (int___eq__ ($Snap.combine $Snap.unit $Snap.unit) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@998@01)))))) (__prim__int___box__ $Snap.unit 8))))
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@998@01)))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@998@01))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@998@01)))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@998@01))))))))))
-  $Snap.unit))
-; [eval] p2_14 ==> int___eq__(c_2_0.Container_valuep, __prim__int___box__(8))
-(push) ; 7
-; [then-branch: 7296 | p2_14@899@01 | dead]
-; [else-branch: 7296 | !(p2_14@899@01) | live]
-(push) ; 8
-; [else-branch: 7296 | !(p2_14@899@01)]
-(pop) ; 8
-(pop) ; 7
-; Joined path conditions
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@998@01))))))))))
-  ($Snap.combine
-    ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@998@01)))))))))))
-    ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@998@01))))))))))))))
-(assert (=
-  ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@998@01)))))))))))
-  $Snap.unit))
-; [eval] p1_14 ==> true
-(push) ; 7
-(push) ; 8
-(set-option :timeout 10)
-(assert (not (not p1_14@898@01)))
-(check-sat)
-; unknown
-(pop) ; 8
-; 0.00s
-; (get-info :all-statistics)
-; [then-branch: 7297 | p1_14@898@01 | live]
-; [else-branch: 7297 | !(p1_14@898@01) | dead]
-(set-option :timeout 0)
-(push) ; 8
-; [then-branch: 7297 | p1_14@898@01]
-(pop) ; 8
-(pop) ; 7
-; Joined path conditions
-(assert (=
-  ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@998@01)))))))))))
-  $Snap.unit))
-; [eval] p2_14 ==> true
-(push) ; 7
-; [then-branch: 7298 | p2_14@899@01 | dead]
-; [else-branch: 7298 | !(p2_14@899@01) | live]
-(push) ; 8
-; [else-branch: 7298 | !(p2_14@899@01)]
-(pop) ; 8
-(pop) ; 7
-; Joined path conditions
-(pop) ; 6
-(pop) ; 5
-(pop) ; 4
-(push) ; 4
-; [exec]
-; var break1_2: Bool
-(declare-const break1_2@999@01 Bool)
-; [exec]
-; var break2_2: Bool
-(declare-const break2_2@1000@01 Bool)
-; [exec]
-; var _err: Ref
-(declare-const _err@1001@01 $Ref)
-; [exec]
-; var _err_3: Ref
-(declare-const _err_3@1002@01 $Ref)
-; [exec]
-; var c_7: Ref
-(declare-const c_7@1003@01 $Ref)
-; [exec]
-; var c_7_0: Ref
-(declare-const c_7_0@1004@01 $Ref)
-; [exec]
-; var b_7: Ref
-(declare-const b_7@1005@01 $Ref)
-; [exec]
-; var b_7_0: Ref
-(declare-const b_7_0@1006@01 $Ref)
-; [exec]
-; var _loop_measures_2: Seq[Measure$]
-(declare-const _loop_measures_2@1007@01 Seq<Measure$>)
-; [exec]
-; var _loop_measures_2_0: Seq[Measure$]
-(declare-const _loop_measures_2_0@1008@01 Seq<Measure$>)
-; [exec]
-; var _loop_check_before_2: Bool
-(declare-const _loop_check_before_2@1009@01 Bool)
-; [exec]
-; var _loop_check_before_2_0: Bool
-(declare-const _loop_check_before_2_0@1010@01 Bool)
-; [exec]
-; var _loop_termination_flag_2: Bool
-(declare-const _loop_termination_flag_2@1011@01 Bool)
-; [exec]
-; var _loop_termination_flag_2_0: Bool
-(declare-const _loop_termination_flag_2_0@1012@01 Bool)
-; [exec]
-; var _loop_original_must_terminate_2: Perm
-(declare-const _loop_original_must_terminate_2@1013@01 $Perm)
-; [exec]
-; var _loop_original_must_terminate_2_0: Perm
-(declare-const _loop_original_must_terminate_2_0@1014@01 $Perm)
-; [exec]
-; var _residue_165: Perm
-(declare-const _residue_165@1015@01 $Perm)
-; [exec]
-; var _residue_165_0: Perm
-(declare-const _residue_165_0@1016@01 $Perm)
-; [exec]
-; var _cwl_160: Perm
-(declare-const _cwl_160@1017@01 $Perm)
-; [exec]
-; var _cwl_160_0: Perm
-(declare-const _cwl_160_0@1018@01 $Perm)
-; [exec]
-; var _method_measures_160: Seq[Measure$]
-(declare-const _method_measures_160@1019@01 Seq<Measure$>)
-; [exec]
-; var _method_measures_160_0: Seq[Measure$]
-(declare-const _method_measures_160_0@1020@01 Seq<Measure$>)
-; [exec]
-; var bypass1_2: Bool
-(declare-const bypass1_2@1021@01 Bool)
-; [exec]
-; var bypass2_2: Bool
-(declare-const bypass2_2@1022@01 Bool)
-; [exec]
-; var tmp1_17: Seq[Measure$]
-(declare-const tmp1_17@1023@01 Seq<Measure$>)
-; [exec]
-; var tmp2_17: Seq[Measure$]
-(declare-const tmp2_17@1024@01 Seq<Measure$>)
-; [exec]
-; var tmp1_18: Bool
-(declare-const tmp1_18@1025@01 Bool)
-; [exec]
-; var tmp2_18: Bool
-(declare-const tmp2_18@1026@01 Bool)
-; [exec]
-; var tmp1_19: Bool
-(declare-const tmp1_19@1027@01 Bool)
-; [exec]
-; var tmp2_19: Bool
-(declare-const tmp2_19@1028@01 Bool)
-; [exec]
-; var oldbreak1_2: Bool
-(declare-const oldbreak1_2@1029@01 Bool)
-; [exec]
-; var oldbreak2_2: Bool
-(declare-const oldbreak2_2@1030@01 Bool)
-; [exec]
-; var p1_15: Bool
-(declare-const p1_15@1031@01 Bool)
-; [exec]
-; var p2_15: Bool
-(declare-const p2_15@1032@01 Bool)
-; [exec]
-; var idle1_2: Bool
-(declare-const idle1_2@1033@01 Bool)
-; [exec]
-; var idle2_2: Bool
-(declare-const idle2_2@1034@01 Bool)
-; [exec]
-; inhale p1_14
-(declare-const $t@1035@01 $Snap)
-(assert (= $t@1035@01 $Snap.unit))
-; State saturation: after inhale
-(set-option :timeout 20)
-(check-sat)
-; unknown
-; [exec]
-; break1_2 := false
-; [exec]
-; break2_2 := false
-; [eval] p1_14 && !break1_2
-(set-option :timeout 0)
-(push) ; 5
-; [then-branch: 7299 | !(p1_14@898@01) | live]
-; [else-branch: 7299 | p1_14@898@01 | live]
-(push) ; 6
-; [then-branch: 7299 | !(p1_14@898@01)]
-(assert (not p1_14@898@01))
-(pop) ; 6
-(push) ; 6
-; [else-branch: 7299 | p1_14@898@01]
-; [eval] !break1_2
-(pop) ; 6
-(pop) ; 5
-; Joined path conditions
-; Joined path conditions
-(assert (or p1_14@898@01 (not p1_14@898@01)))
-(push) ; 5
-(set-option :timeout 10)
-(assert (not (not p1_14@898@01)))
 (check-sat)

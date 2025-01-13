@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-08 21:26:56
+; Started: 2025-01-13 12:43:35
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -763,7 +763,7 @@
 (assert (not (forall ((x@18@00 $Ref)) (!
   (=> (Set_in x@18@00 xs@0@00) (or (= $k@19@00 $Perm.No) (< $Perm.No $k@19@00)))
   
-  :qid |quant-u-26121|))))
+  :qid |quant-u-26228|))))
 (check-sat)
 ; unsat
 (pop) ; 2
@@ -795,7 +795,7 @@
   :pattern ((Set_in x@18@00 xs@0@00))
   :pattern ((inv@20@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00 x@18@00))
   :pattern ((img@21@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00 x@18@00))
-  :qid |quant-u-26122|)))
+  :qid |quant-u-26229|)))
 (assert (forall ((x $Ref)) (!
   (=>
     (and
@@ -841,18 +841,18 @@
     (Set_in (inv@20@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00 x) xs@0@00)
     ($PSF.loc_list ($PSF.lookup_list (sm@22@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00) ($SortWrappers.$RefTo$Snap x)) ($SortWrappers.$RefTo$Snap x)))
   :pattern ((inv@20@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00 x))
-  :qid |quant-u-26123|)))
+  :qid |quant-u-26230|)))
 (pop) ; 1
 (assert (forall ((s@$ $Snap) (xs@0@00 Set<$Ref>) (y@1@00 $Ref) (akk@2@00 Int) (res@3@00 Int)) (!
   (=
     (length2_impl%limited s@$ xs@0@00 y@1@00 akk@2@00 res@3@00)
     (length2_impl s@$ xs@0@00 y@1@00 akk@2@00 res@3@00))
   :pattern ((length2_impl s@$ xs@0@00 y@1@00 akk@2@00 res@3@00))
-  :qid |quant-u-26113|)))
+  :qid |quant-u-26220|)))
 (assert (forall ((s@$ $Snap) (xs@0@00 Set<$Ref>) (y@1@00 $Ref) (akk@2@00 Int) (res@3@00 Int)) (!
   (length2_impl%stateless xs@0@00 y@1@00 akk@2@00 res@3@00)
   :pattern ((length2_impl%limited s@$ xs@0@00 y@1@00 akk@2@00 res@3@00))
-  :qid |quant-u-26114|)))
+  :qid |quant-u-26221|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (forall ((x $Ref)) (!
@@ -894,7 +894,7 @@
   :pattern ((Set_in x@18@00 xs@0@00))
   :pattern ((inv@20@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00 x@18@00))
   :pattern ((img@21@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00 x@18@00))
-  :qid |quant-u-26122|)))
+  :qid |quant-u-26229|)))
 (assert (forall ((x@18@00 $Ref)) (!
   (<= $Perm.No $k@19@00)
   :pattern ((Set_in x@18@00 xs@0@00))
@@ -906,7 +906,7 @@
     (Set_in (inv@20@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00 x) xs@0@00)
     ($PSF.loc_list ($PSF.lookup_list (sm@22@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00) ($SortWrappers.$RefTo$Snap x)) ($SortWrappers.$RefTo$Snap x)))
   :pattern ((inv@20@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00 x))
-  :qid |quant-u-26123|)))
+  :qid |quant-u-26230|)))
 (assert ($Perm.isReadVar $k@19@00))
 ; State saturation: after contract
 (set-option :timeout 50)
@@ -969,7 +969,7 @@
         $Perm.No)
       $Perm.No))
   
-  :qid |quant-u-26124|))))
+  :qid |quant-u-26231|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -1161,7 +1161,7 @@
 (assert (not (forall ((x@32@00 $Ref)) (!
   (=> (Set_in x@32@00 xs@0@00) (or (= $k@33@00 $Perm.No) (< $Perm.No $k@33@00)))
   
-  :qid |quant-u-26125|))))
+  :qid |quant-u-26232|))))
 (check-sat)
 ; unsat
 (pop) ; 10
@@ -1259,7 +1259,7 @@
     (Set_in (inv@34@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00 x) xs@0@00)
     ($PSF.loc_list ($PSF.lookup_list (sm@36@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00) ($SortWrappers.$RefTo$Snap x)) ($SortWrappers.$RefTo$Snap x)))
   :pattern ((inv@34@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00 x))
-  :qid |quant-u-26126|)))
+  :qid |quant-u-26233|)))
 (push) ; 10
 (assert (not (forall ((x $Ref)) (!
   (=>
@@ -1285,7 +1285,7 @@
           $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-26127|))))
+  :qid |quant-u-26234|))))
 (check-sat)
 ; unsat
 (pop) ; 10
@@ -1445,7 +1445,7 @@
       (Set_in (inv@34@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00 x) xs@0@00)
       ($PSF.loc_list ($PSF.lookup_list (sm@36@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00) ($SortWrappers.$RefTo$Snap x)) ($SortWrappers.$RefTo$Snap x)))
     :pattern ((inv@34@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00 x))
-    :qid |quant-u-26126|))
+    :qid |quant-u-26233|))
   (forall ((s@39@00 $Snap)) (!
     (=>
       (and
@@ -1600,7 +1600,7 @@
         (Set_in (inv@34@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00 x) xs@0@00)
         ($PSF.loc_list ($PSF.lookup_list (sm@36@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00) ($SortWrappers.$RefTo$Snap x)) ($SortWrappers.$RefTo$Snap x)))
       :pattern ((inv@34@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00 x))
-      :qid |quant-u-26126|))
+      :qid |quant-u-26233|))
     (forall ((s@39@00 $Snap)) (!
       (=>
         (and
@@ -1745,7 +1745,7 @@
 (assert (not (forall ((x@40@00 $Ref)) (!
   (=> (Set_in x@40@00 xs@0@00) (or (= $k@41@00 $Perm.No) (< $Perm.No $k@41@00)))
   
-  :qid |quant-u-26128|))))
+  :qid |quant-u-26235|))))
 (check-sat)
 ; unsat
 (pop) ; 10
@@ -1803,7 +1803,7 @@
     (Set_in (inv@42@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00 x) xs@0@00)
     ($PSF.loc_list ($PSF.lookup_list (sm@22@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00) ($SortWrappers.$RefTo$Snap x)) ($SortWrappers.$RefTo$Snap x)))
   :pattern ((inv@42@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00 x))
-  :qid |quant-u-26129|)))
+  :qid |quant-u-26236|)))
 (push) ; 10
 (assert (not (forall ((x $Ref)) (!
   (=>
@@ -1822,7 +1822,7 @@
         $Perm.No)
       $Perm.No))
   
-  :qid |quant-u-26130|))))
+  :qid |quant-u-26237|))))
 (check-sat)
 ; unsat
 (pop) ; 10
@@ -1946,7 +1946,7 @@
       (Set_in (inv@42@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00 x) xs@0@00)
       ($PSF.loc_list ($PSF.lookup_list (sm@22@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00) ($SortWrappers.$RefTo$Snap x)) ($SortWrappers.$RefTo$Snap x)))
     :pattern ((inv@42@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00 x))
-    :qid |quant-u-26129|))
+    :qid |quant-u-26236|))
   (length2_impl%precondition ($SortWrappers.$PSF<list>To$Snap (sm@44@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00)) xs@0@00 ($FVF.lookup_next (sm@28@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00) x@24@00) (+
     akk@2@00
     1) res@3@00)))
@@ -2044,7 +2044,7 @@
         (Set_in (inv@42@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00 x) xs@0@00)
         ($PSF.loc_list ($PSF.lookup_list (sm@22@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00) ($SortWrappers.$RefTo$Snap x)) ($SortWrappers.$RefTo$Snap x)))
       :pattern ((inv@42@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00 x))
-      :qid |quant-u-26129|))
+      :qid |quant-u-26236|))
     (length2_impl%precondition ($SortWrappers.$PSF<list>To$Snap (sm@44@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00)) xs@0@00 ($FVF.lookup_next (sm@28@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00) x@24@00) (+
       akk@2@00
       1) res@3@00))))
@@ -2284,7 +2284,7 @@
             (Set_in (inv@34@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00 x) xs@0@00)
             ($PSF.loc_list ($PSF.lookup_list (sm@36@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00) ($SortWrappers.$RefTo$Snap x)) ($SortWrappers.$RefTo$Snap x)))
           :pattern ((inv@34@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00 x))
-          :qid |quant-u-26126|))
+          :qid |quant-u-26233|))
         (forall ((s@39@00 $Snap)) (!
           (=>
             (and
@@ -2500,7 +2500,7 @@
             (Set_in (inv@42@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00 x) xs@0@00)
             ($PSF.loc_list ($PSF.lookup_list (sm@22@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00) ($SortWrappers.$RefTo$Snap x)) ($SortWrappers.$RefTo$Snap x)))
           :pattern ((inv@42@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00 x))
-          :qid |quant-u-26129|))
+          :qid |quant-u-26236|))
         (length2_impl%precondition ($SortWrappers.$PSF<list>To$Snap (sm@44@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00)) xs@0@00 ($FVF.lookup_next (sm@28@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00) x@24@00) (+
           akk@2@00
           1) res@3@00)))
@@ -2817,7 +2817,7 @@
                 (Set_in (inv@34@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00 x) xs@0@00)
                 ($PSF.loc_list ($PSF.lookup_list (sm@36@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00) ($SortWrappers.$RefTo$Snap x)) ($SortWrappers.$RefTo$Snap x)))
               :pattern ((inv@34@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00 x))
-              :qid |quant-u-26126|))
+              :qid |quant-u-26233|))
             (forall ((s@39@00 $Snap)) (!
               (=>
                 (and
@@ -2929,7 +2929,7 @@
                 (Set_in (inv@42@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00 x) xs@0@00)
                 ($PSF.loc_list ($PSF.lookup_list (sm@22@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00) ($SortWrappers.$RefTo$Snap x)) ($SortWrappers.$RefTo$Snap x)))
               :pattern ((inv@42@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00 x))
-              :qid |quant-u-26129|))
+              :qid |quant-u-26236|))
             (length2_impl%precondition ($SortWrappers.$PSF<list>To$Snap (sm@44@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00)) xs@0@00 ($FVF.lookup_next (sm@28@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00) x@24@00) (+
               akk@2@00
               1) res@3@00)))
@@ -3252,7 +3252,7 @@
                     (Set_in (inv@34@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00 x) xs@0@00)
                     ($PSF.loc_list ($PSF.lookup_list (sm@36@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00) ($SortWrappers.$RefTo$Snap x)) ($SortWrappers.$RefTo$Snap x)))
                   :pattern ((inv@34@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00 x))
-                  :qid |quant-u-26126|))
+                  :qid |quant-u-26233|))
                 (forall ((s@39@00 $Snap)) (!
                   (=>
                     (and
@@ -3364,7 +3364,7 @@
                     (Set_in (inv@42@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00 x) xs@0@00)
                     ($PSF.loc_list ($PSF.lookup_list (sm@22@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00) ($SortWrappers.$RefTo$Snap x)) ($SortWrappers.$RefTo$Snap x)))
                   :pattern ((inv@42@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00 x))
-                  :qid |quant-u-26129|))
+                  :qid |quant-u-26236|))
                 (length2_impl%precondition ($SortWrappers.$PSF<list>To$Snap (sm@44@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00)) xs@0@00 ($FVF.lookup_next (sm@28@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00) x@24@00) (+
                   akk@2@00
                   1) res@3@00)))
@@ -3581,7 +3581,7 @@
                     (Set_in (inv@34@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00 x) xs@0@00)
                     ($PSF.loc_list ($PSF.lookup_list (sm@36@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00) ($SortWrappers.$RefTo$Snap x)) ($SortWrappers.$RefTo$Snap x)))
                   :pattern ((inv@34@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00 x))
-                  :qid |quant-u-26126|))
+                  :qid |quant-u-26233|))
                 (forall ((s@39@00 $Snap)) (!
                   (=>
                     (and
@@ -3693,7 +3693,7 @@
                     (Set_in (inv@42@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00 x) xs@0@00)
                     ($PSF.loc_list ($PSF.lookup_list (sm@22@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00) ($SortWrappers.$RefTo$Snap x)) ($SortWrappers.$RefTo$Snap x)))
                   :pattern ((inv@42@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00 x))
-                  :qid |quant-u-26129|))
+                  :qid |quant-u-26236|))
                 (length2_impl%precondition ($SortWrappers.$PSF<list>To$Snap (sm@44@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00)) xs@0@00 ($FVF.lookup_next (sm@28@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00) x@24@00) (+
                   akk@2@00
                   1) res@3@00)))
@@ -3910,7 +3910,7 @@
                     (Set_in (inv@34@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00 x) xs@0@00)
                     ($PSF.loc_list ($PSF.lookup_list (sm@36@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00) ($SortWrappers.$RefTo$Snap x)) ($SortWrappers.$RefTo$Snap x)))
                   :pattern ((inv@34@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00 x))
-                  :qid |quant-u-26126|))
+                  :qid |quant-u-26233|))
                 (forall ((s@39@00 $Snap)) (!
                   (=>
                     (and
@@ -4022,7 +4022,7 @@
                     (Set_in (inv@42@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00 x) xs@0@00)
                     ($PSF.loc_list ($PSF.lookup_list (sm@22@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00) ($SortWrappers.$RefTo$Snap x)) ($SortWrappers.$RefTo$Snap x)))
                   :pattern ((inv@42@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00 x))
-                  :qid |quant-u-26129|))
+                  :qid |quant-u-26236|))
                 (length2_impl%precondition ($SortWrappers.$PSF<list>To$Snap (sm@44@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00)) xs@0@00 ($FVF.lookup_next (sm@28@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00) x@24@00) (+
                   akk@2@00
                   1) res@3@00)))
@@ -4069,7 +4069,7 @@
       :pattern ((Set_in x@18@00 xs@0@00))
       :pattern ((inv@20@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00 x@18@00))
       :pattern ((img@21@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00 x@18@00))
-      :qid |quant-u-26122|))
+      :qid |quant-u-26229|))
     (forall ((x $Ref)) (!
       (=>
         (and
@@ -4253,7 +4253,7 @@
           :pattern (($FVF.lookup_next (sm@28@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00) x))
           )))))
   :pattern ((length2_impl s@$ xs@0@00 y@1@00 akk@2@00 res@3@00))
-  :qid |quant-u-26131|)))
+  :qid |quant-u-26238|)))
 (assert (forall ((s@$ $Snap) (xs@0@00 Set<$Ref>) (y@1@00 $Ref) (akk@2@00 Int) (res@3@00 Int)) (!
   (=>
     (length2_impl%precondition s@$ xs@0@00 y@1@00 akk@2@00 res@3@00)
@@ -4279,7 +4279,7 @@
       :pattern (($FVF.lookup_next (sm@28@00 s@$ xs@0@00 y@1@00 akk@2@00 res@3@00) x))
       )))
   :pattern ((length2_impl s@$ xs@0@00 y@1@00 akk@2@00 res@3@00))
-  :qid |quant-u-26132|)))
+  :qid |quant-u-26239|)))
 ; ---------- FUNCTION length_impl----------
 (declare-fun xs@5@00 () Set<$Ref>)
 (declare-fun y@6@00 () $Ref)
@@ -4303,11 +4303,11 @@
     (length_impl%limited s@$ xs@5@00 y@6@00 akk@7@00 res@8@00)
     (length_impl s@$ xs@5@00 y@6@00 akk@7@00 res@8@00))
   :pattern ((length_impl s@$ xs@5@00 y@6@00 akk@7@00 res@8@00))
-  :qid |quant-u-26115|)))
+  :qid |quant-u-26222|)))
 (assert (forall ((s@$ $Snap) (xs@5@00 Set<$Ref>) (y@6@00 $Ref) (akk@7@00 Int) (res@8@00 Int)) (!
   (length_impl%stateless xs@5@00 y@6@00 akk@7@00 res@8@00)
   :pattern ((length_impl%limited s@$ xs@5@00 y@6@00 akk@7@00 res@8@00))
-  :qid |quant-u-26116|)))
+  :qid |quant-u-26223|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (=
@@ -4381,7 +4381,7 @@
 (assert (not (forall ((x $Ref)) (!
   (=> (= x x@51@00) (> (ite (= x y@6@00) $Perm.Write $Perm.No) $Perm.No))
   
-  :qid |quant-u-26133|))))
+  :qid |quant-u-26240|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -4588,7 +4588,7 @@
         (ite (= x y@6@00) $Perm.Write $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-26134|))))
+  :qid |quant-u-26241|))))
 (check-sat)
 ; unsat
 (pop) ; 10
@@ -4857,7 +4857,7 @@
       ($FVF.lookup_next (sm@55@00 s@$ xs@5@00 y@6@00 akk@7@00 res@8@00) x@51@00))
     (> (ite (= x y@6@00) $Perm.Write $Perm.No) $Perm.No))
   
-  :qid |quant-u-26135|))))
+  :qid |quant-u-26242|))))
 (check-sat)
 ; unsat
 (pop) ; 10
@@ -6588,7 +6588,7 @@
           :pattern (($FVF.lookup_next (sm@55@00 s@$ xs@5@00 y@6@00 akk@7@00 res@8@00) x))
           )))))
   :pattern ((length_impl s@$ xs@5@00 y@6@00 akk@7@00 res@8@00))
-  :qid |quant-u-26136|)))
+  :qid |quant-u-26243|)))
 (assert (forall ((s@$ $Snap) (xs@5@00 Set<$Ref>) (y@6@00 $Ref) (akk@7@00 Int) (res@8@00 Int)) (!
   (=>
     (length_impl%precondition s@$ xs@5@00 y@6@00 akk@7@00 res@8@00)
@@ -6614,7 +6614,7 @@
       :pattern (($FVF.lookup_next (sm@55@00 s@$ xs@5@00 y@6@00 akk@7@00 res@8@00) x))
       )))
   :pattern ((length_impl s@$ xs@5@00 y@6@00 akk@7@00 res@8@00))
-  :qid |quant-u-26137|)))
+  :qid |quant-u-26244|)))
 ; ---------- FUNCTION length3_impl----------
 (declare-fun xs@10@00 () Set<$Ref>)
 (declare-fun y@11@00 () $Ref)
@@ -6642,7 +6642,7 @@
 (assert (not (forall ((x@61@00 $Ref)) (!
   (=> (Set_in x@61@00 xs@10@00) (or (= $k@62@00 $Perm.No) (< $Perm.No $k@62@00)))
   
-  :qid |quant-u-26138|))))
+  :qid |quant-u-26245|))))
 (check-sat)
 ; unsat
 (pop) ; 2
@@ -6673,7 +6673,7 @@
       (img@66@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00 x@61@00)))
   :pattern ((Set_in x@61@00 xs@10@00))
   :pattern (($PSF.loc_list ($PSF.lookup_list ($SortWrappers.$SnapTo$PSF<list> s@$) ($SortWrappers.$RefTo$Snap x@61@00)) ($SortWrappers.$RefTo$Snap x@61@00)))
-  :qid |quant-u-26139|)))
+  :qid |quant-u-26246|)))
 (assert (forall ((x $Ref)) (!
   (=>
     (and
@@ -6718,18 +6718,18 @@
     (Set_in (inv@65@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00 x) xs@10@00)
     ($PSF.loc_list ($PSF.lookup_list (sm@67@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00) ($SortWrappers.$RefTo$Snap x)) ($SortWrappers.$RefTo$Snap x)))
   :pattern ((inv@65@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00 x))
-  :qid |quant-u-26140|)))
+  :qid |quant-u-26247|)))
 (pop) ; 1
 (assert (forall ((s@$ $Snap) (xs@10@00 Set<$Ref>) (y@11@00 $Ref) (akk@12@00 Int) (res@13@00 Int)) (!
   (=
     (length3_impl%limited s@$ xs@10@00 y@11@00 akk@12@00 res@13@00)
     (length3_impl s@$ xs@10@00 y@11@00 akk@12@00 res@13@00))
   :pattern ((length3_impl s@$ xs@10@00 y@11@00 akk@12@00 res@13@00))
-  :qid |quant-u-26117|)))
+  :qid |quant-u-26224|)))
 (assert (forall ((s@$ $Snap) (xs@10@00 Set<$Ref>) (y@11@00 $Ref) (akk@12@00 Int) (res@13@00 Int)) (!
   (length3_impl%stateless xs@10@00 y@11@00 akk@12@00 res@13@00)
   :pattern ((length3_impl%limited s@$ xs@10@00 y@11@00 akk@12@00 res@13@00))
-  :qid |quant-u-26118|)))
+  :qid |quant-u-26225|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (forall ((x $Ref)) (!
@@ -6770,7 +6770,7 @@
       (img@66@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00 x@61@00)))
   :pattern ((Set_in x@61@00 xs@10@00))
   :pattern (($PSF.loc_list ($PSF.lookup_list ($SortWrappers.$SnapTo$PSF<list> s@$) ($SortWrappers.$RefTo$Snap x@61@00)) ($SortWrappers.$RefTo$Snap x@61@00)))
-  :qid |quant-u-26139|)))
+  :qid |quant-u-26246|)))
 (assert (forall ((x@61@00 $Ref)) (!
   (<= $Perm.No $k@62@00)
   :pattern ((Set_in x@61@00 xs@10@00))
@@ -6781,7 +6781,7 @@
     (Set_in (inv@65@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00 x) xs@10@00)
     ($PSF.loc_list ($PSF.lookup_list (sm@67@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00) ($SortWrappers.$RefTo$Snap x)) ($SortWrappers.$RefTo$Snap x)))
   :pattern ((inv@65@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00 x))
-  :qid |quant-u-26140|)))
+  :qid |quant-u-26247|)))
 (assert ($Perm.isReadVar $k@62@00))
 ; State saturation: after contract
 (set-option :timeout 50)
@@ -6844,7 +6844,7 @@
         $Perm.No)
       $Perm.No))
   
-  :qid |quant-u-26141|))))
+  :qid |quant-u-26248|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -7036,7 +7036,7 @@
 (assert (not (forall ((x@77@00 $Ref)) (!
   (=> (Set_in x@77@00 xs@10@00) (or (= $k@78@00 $Perm.No) (< $Perm.No $k@78@00)))
   
-  :qid |quant-u-26142|))))
+  :qid |quant-u-26249|))))
 (check-sat)
 ; unsat
 (pop) ; 10
@@ -7134,7 +7134,7 @@
     (Set_in (inv@79@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00 x) xs@10@00)
     ($PSF.loc_list ($PSF.lookup_list (sm@81@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00) ($SortWrappers.$RefTo$Snap x)) ($SortWrappers.$RefTo$Snap x)))
   :pattern ((inv@79@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00 x))
-  :qid |quant-u-26143|)))
+  :qid |quant-u-26250|)))
 (push) ; 10
 (assert (not (forall ((x $Ref)) (!
   (=>
@@ -7160,7 +7160,7 @@
           $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-26144|))))
+  :qid |quant-u-26251|))))
 (check-sat)
 ; unsat
 (pop) ; 10
@@ -7320,7 +7320,7 @@
       (Set_in (inv@79@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00 x) xs@10@00)
       ($PSF.loc_list ($PSF.lookup_list (sm@81@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00) ($SortWrappers.$RefTo$Snap x)) ($SortWrappers.$RefTo$Snap x)))
     :pattern ((inv@79@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00 x))
-    :qid |quant-u-26143|))
+    :qid |quant-u-26250|))
   (forall ((s@84@00 $Snap)) (!
     (=>
       (and
@@ -7475,7 +7475,7 @@
         (Set_in (inv@79@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00 x) xs@10@00)
         ($PSF.loc_list ($PSF.lookup_list (sm@81@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00) ($SortWrappers.$RefTo$Snap x)) ($SortWrappers.$RefTo$Snap x)))
       :pattern ((inv@79@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00 x))
-      :qid |quant-u-26143|))
+      :qid |quant-u-26250|))
     (forall ((s@84@00 $Snap)) (!
       (=>
         (and
@@ -7620,7 +7620,7 @@
 (assert (not (forall ((x@85@00 $Ref)) (!
   (=> (Set_in x@85@00 xs@10@00) (or (= $k@86@00 $Perm.No) (< $Perm.No $k@86@00)))
   
-  :qid |quant-u-26145|))))
+  :qid |quant-u-26252|))))
 (check-sat)
 ; unsat
 (pop) ; 10
@@ -7678,7 +7678,7 @@
     (Set_in (inv@87@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00 x) xs@10@00)
     ($PSF.loc_list ($PSF.lookup_list (sm@67@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00) ($SortWrappers.$RefTo$Snap x)) ($SortWrappers.$RefTo$Snap x)))
   :pattern ((inv@87@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00 x))
-  :qid |quant-u-26146|)))
+  :qid |quant-u-26253|)))
 (push) ; 10
 (assert (not (forall ((x $Ref)) (!
   (=>
@@ -7697,7 +7697,7 @@
         $Perm.No)
       $Perm.No))
   
-  :qid |quant-u-26147|))))
+  :qid |quant-u-26254|))))
 (check-sat)
 ; unsat
 (pop) ; 10
@@ -7821,7 +7821,7 @@
       (Set_in (inv@87@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00 x) xs@10@00)
       ($PSF.loc_list ($PSF.lookup_list (sm@67@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00) ($SortWrappers.$RefTo$Snap x)) ($SortWrappers.$RefTo$Snap x)))
     :pattern ((inv@87@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00 x))
-    :qid |quant-u-26146|))
+    :qid |quant-u-26253|))
   (length3_impl%precondition ($SortWrappers.$PSF<list>To$Snap (sm@89@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00)) xs@10@00 ($FVF.lookup_next (sm@73@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00) x@69@00) (+
     akk@12@00
     1) res@13@00)))
@@ -7919,7 +7919,7 @@
         (Set_in (inv@87@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00 x) xs@10@00)
         ($PSF.loc_list ($PSF.lookup_list (sm@67@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00) ($SortWrappers.$RefTo$Snap x)) ($SortWrappers.$RefTo$Snap x)))
       :pattern ((inv@87@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00 x))
-      :qid |quant-u-26146|))
+      :qid |quant-u-26253|))
     (length3_impl%precondition ($SortWrappers.$PSF<list>To$Snap (sm@89@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00)) xs@10@00 ($FVF.lookup_next (sm@73@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00) x@69@00) (+
       akk@12@00
       1) res@13@00))))
@@ -8159,7 +8159,7 @@
             (Set_in (inv@79@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00 x) xs@10@00)
             ($PSF.loc_list ($PSF.lookup_list (sm@81@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00) ($SortWrappers.$RefTo$Snap x)) ($SortWrappers.$RefTo$Snap x)))
           :pattern ((inv@79@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00 x))
-          :qid |quant-u-26143|))
+          :qid |quant-u-26250|))
         (forall ((s@84@00 $Snap)) (!
           (=>
             (and
@@ -8375,7 +8375,7 @@
             (Set_in (inv@87@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00 x) xs@10@00)
             ($PSF.loc_list ($PSF.lookup_list (sm@67@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00) ($SortWrappers.$RefTo$Snap x)) ($SortWrappers.$RefTo$Snap x)))
           :pattern ((inv@87@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00 x))
-          :qid |quant-u-26146|))
+          :qid |quant-u-26253|))
         (length3_impl%precondition ($SortWrappers.$PSF<list>To$Snap (sm@89@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00)) xs@10@00 ($FVF.lookup_next (sm@73@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00) x@69@00) (+
           akk@12@00
           1) res@13@00)))
@@ -8692,7 +8692,7 @@
                 (Set_in (inv@79@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00 x) xs@10@00)
                 ($PSF.loc_list ($PSF.lookup_list (sm@81@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00) ($SortWrappers.$RefTo$Snap x)) ($SortWrappers.$RefTo$Snap x)))
               :pattern ((inv@79@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00 x))
-              :qid |quant-u-26143|))
+              :qid |quant-u-26250|))
             (forall ((s@84@00 $Snap)) (!
               (=>
                 (and
@@ -8804,7 +8804,7 @@
                 (Set_in (inv@87@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00 x) xs@10@00)
                 ($PSF.loc_list ($PSF.lookup_list (sm@67@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00) ($SortWrappers.$RefTo$Snap x)) ($SortWrappers.$RefTo$Snap x)))
               :pattern ((inv@87@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00 x))
-              :qid |quant-u-26146|))
+              :qid |quant-u-26253|))
             (length3_impl%precondition ($SortWrappers.$PSF<list>To$Snap (sm@89@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00)) xs@10@00 ($FVF.lookup_next (sm@73@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00) x@69@00) (+
               akk@12@00
               1) res@13@00)))
@@ -9127,7 +9127,7 @@
                     (Set_in (inv@79@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00 x) xs@10@00)
                     ($PSF.loc_list ($PSF.lookup_list (sm@81@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00) ($SortWrappers.$RefTo$Snap x)) ($SortWrappers.$RefTo$Snap x)))
                   :pattern ((inv@79@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00 x))
-                  :qid |quant-u-26143|))
+                  :qid |quant-u-26250|))
                 (forall ((s@84@00 $Snap)) (!
                   (=>
                     (and
@@ -9239,7 +9239,7 @@
                     (Set_in (inv@87@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00 x) xs@10@00)
                     ($PSF.loc_list ($PSF.lookup_list (sm@67@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00) ($SortWrappers.$RefTo$Snap x)) ($SortWrappers.$RefTo$Snap x)))
                   :pattern ((inv@87@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00 x))
-                  :qid |quant-u-26146|))
+                  :qid |quant-u-26253|))
                 (length3_impl%precondition ($SortWrappers.$PSF<list>To$Snap (sm@89@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00)) xs@10@00 ($FVF.lookup_next (sm@73@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00) x@69@00) (+
                   akk@12@00
                   1) res@13@00)))
@@ -9456,7 +9456,7 @@
                     (Set_in (inv@79@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00 x) xs@10@00)
                     ($PSF.loc_list ($PSF.lookup_list (sm@81@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00) ($SortWrappers.$RefTo$Snap x)) ($SortWrappers.$RefTo$Snap x)))
                   :pattern ((inv@79@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00 x))
-                  :qid |quant-u-26143|))
+                  :qid |quant-u-26250|))
                 (forall ((s@84@00 $Snap)) (!
                   (=>
                     (and
@@ -9568,7 +9568,7 @@
                     (Set_in (inv@87@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00 x) xs@10@00)
                     ($PSF.loc_list ($PSF.lookup_list (sm@67@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00) ($SortWrappers.$RefTo$Snap x)) ($SortWrappers.$RefTo$Snap x)))
                   :pattern ((inv@87@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00 x))
-                  :qid |quant-u-26146|))
+                  :qid |quant-u-26253|))
                 (length3_impl%precondition ($SortWrappers.$PSF<list>To$Snap (sm@89@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00)) xs@10@00 ($FVF.lookup_next (sm@73@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00) x@69@00) (+
                   akk@12@00
                   1) res@13@00)))
@@ -9785,7 +9785,7 @@
                     (Set_in (inv@79@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00 x) xs@10@00)
                     ($PSF.loc_list ($PSF.lookup_list (sm@81@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00) ($SortWrappers.$RefTo$Snap x)) ($SortWrappers.$RefTo$Snap x)))
                   :pattern ((inv@79@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00 x))
-                  :qid |quant-u-26143|))
+                  :qid |quant-u-26250|))
                 (forall ((s@84@00 $Snap)) (!
                   (=>
                     (and
@@ -9897,7 +9897,7 @@
                     (Set_in (inv@87@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00 x) xs@10@00)
                     ($PSF.loc_list ($PSF.lookup_list (sm@67@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00) ($SortWrappers.$RefTo$Snap x)) ($SortWrappers.$RefTo$Snap x)))
                   :pattern ((inv@87@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00 x))
-                  :qid |quant-u-26146|))
+                  :qid |quant-u-26253|))
                 (length3_impl%precondition ($SortWrappers.$PSF<list>To$Snap (sm@89@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00)) xs@10@00 ($FVF.lookup_next (sm@73@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00) x@69@00) (+
                   akk@12@00
                   1) res@13@00)))
@@ -9945,7 +9945,7 @@
           (img@66@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00 x@61@00)))
       :pattern ((Set_in x@61@00 xs@10@00))
       :pattern (($PSF.loc_list ($PSF.lookup_list ($SortWrappers.$SnapTo$PSF<list> s@$) ($SortWrappers.$RefTo$Snap x@61@00)) ($SortWrappers.$RefTo$Snap x@61@00)))
-      :qid |quant-u-26139|))
+      :qid |quant-u-26246|))
     (forall ((x $Ref)) (!
       (=>
         (and
@@ -10137,7 +10137,7 @@
           :pattern (($FVF.lookup_next (sm@73@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00) x))
           )))))
   :pattern ((length3_impl s@$ xs@10@00 y@11@00 akk@12@00 res@13@00))
-  :qid |quant-u-26148|)))
+  :qid |quant-u-26255|)))
 (assert (forall ((s@$ $Snap) (xs@10@00 Set<$Ref>) (y@11@00 $Ref) (akk@12@00 Int) (res@13@00 Int)) (!
   (=>
     (length3_impl%precondition s@$ xs@10@00 y@11@00 akk@12@00 res@13@00)
@@ -10163,7 +10163,7 @@
       :pattern (($FVF.lookup_next (sm@73@00 s@$ xs@10@00 y@11@00 akk@12@00 res@13@00) x))
       )))
   :pattern ((length3_impl s@$ xs@10@00 y@11@00 akk@12@00 res@13@00))
-  :qid |quant-u-26149|)))
+  :qid |quant-u-26256|)))
 ; ---------- FUNCTION foo----------
 (declare-fun l@15@00 () $Ref)
 (declare-fun i@16@00 () Int)
@@ -10189,11 +10189,11 @@
 (assert (forall ((s@$ $Snap) (l@15@00 $Ref) (i@16@00 Int)) (!
   (= (foo%limited s@$ l@15@00 i@16@00) (foo s@$ l@15@00 i@16@00))
   :pattern ((foo s@$ l@15@00 i@16@00))
-  :qid |quant-u-26119|)))
+  :qid |quant-u-26226|)))
 (assert (forall ((s@$ $Snap) (l@15@00 $Ref) (i@16@00 Int)) (!
   (foo%stateless l@15@00 i@16@00)
   :pattern ((foo%limited s@$ l@15@00 i@16@00))
-  :qid |quant-u-26120|)))
+  :qid |quant-u-26227|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (=
@@ -10255,7 +10255,7 @@
     (and (= this l@15@00) (= i j@96@00))
     (> (ite (and (= this l@15@00) (= i i@16@00)) $Perm.Write $Perm.No) $Perm.No))
   
-  :qid |quant-u-26150|))))
+  :qid |quant-u-26257|))))
 (check-sat)
 ; unsat
 (pop) ; 6
@@ -10467,7 +10467,7 @@
         (ite (and (= this l@15@00) (= i i@16@00)) $Perm.Write $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-26151|))))
+  :qid |quant-u-26258|))))
 (check-sat)
 ; unsat
 (pop) ; 10
@@ -10903,7 +10903,7 @@
       (= i j@96@00))
     (> (ite (and (= this l@15@00) (= i i@16@00)) $Perm.Write $Perm.No) $Perm.No))
   
-  :qid |quant-u-26152|))))
+  :qid |quant-u-26259|))))
 (check-sat)
 ; unsat
 (pop) ; 10
@@ -12931,7 +12931,7 @@
             ($SortWrappers.IntTo$Snap j)))))) j))
           )))))
   :pattern ((foo s@$ l@15@00 i@16@00))
-  :qid |quant-u-26153|)))
+  :qid |quant-u-26260|)))
 ; WARNING: (12457,11): 'not' cannot be used in patterns.
 ; WARNING: (12457,11): 'if' cannot be used in patterns.
 (assert (forall ((s@$ $Snap) (l@15@00 $Ref) (i@16@00 Int)) (!
@@ -12990,7 +12990,7 @@
         ($SortWrappers.IntTo$Snap j)))))) j))
       )))
   :pattern ((foo s@$ l@15@00 i@16@00))
-  :qid |quant-u-26154|)))
+  :qid |quant-u-26261|)))
 ; WARNING: (12514,7): 'not' cannot be used in patterns.
 ; WARNING: (12514,7): 'if' cannot be used in patterns.
 ; ---------- list2 ----------

@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-08 21:22:17
+; Started: 2025-01-13 12:38:47
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -134,11 +134,11 @@
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   (= (fun2%limited s@$ x@0@00) (fun2 s@$ x@0@00))
   :pattern ((fun2 s@$ x@0@00))
-  :qid |quant-u-21982|)))
+  :qid |quant-u-22089|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   (fun2%stateless x@0@00)
   :pattern ((fun2%limited s@$ x@0@00))
-  :qid |quant-u-21983|)))
+  :qid |quant-u-22090|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -209,11 +209,11 @@
 (assert (forall ((s@$ $Snap)) (!
   (= (fun%limited s@$) (fun s@$))
   :pattern ((fun s@$))
-  :qid |quant-u-21984|)))
+  :qid |quant-u-22091|)))
 (assert (forall ((s@$ $Snap)) (!
   (as fun%stateless  Bool)
   :pattern ((fun%limited s@$))
-  :qid |quant-u-21985|)))
+  :qid |quant-u-22092|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -283,11 +283,11 @@
 (assert (forall ((s@$ $Snap) (x@3@00 $Ref)) (!
   (= (fun4%limited s@$ x@3@00) (fun4 s@$ x@3@00))
   :pattern ((fun4 s@$ x@3@00))
-  :qid |quant-u-21986|)))
+  :qid |quant-u-22093|)))
 (assert (forall ((s@$ $Snap) (x@3@00 $Ref)) (!
   (fun4%stateless x@3@00)
   :pattern ((fun4%limited s@$ x@3@00))
-  :qid |quant-u-21987|)))
+  :qid |quant-u-22094|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (= s@$ ($Snap.combine ($Snap.first s@$) ($Snap.second s@$))))
@@ -314,11 +314,11 @@
 (assert (forall ((s@$ $Snap) (x@3@00 $Ref)) (!
   (=> (fun4%precondition s@$ x@3@00) (= (fun4 s@$ x@3@00) 0))
   :pattern ((fun4 s@$ x@3@00))
-  :qid |quant-u-21990|)))
+  :qid |quant-u-22097|)))
 (assert (forall ((s@$ $Snap) (x@3@00 $Ref)) (!
   true
   :pattern ((fun4 s@$ x@3@00))
-  :qid |quant-u-21991|)))
+  :qid |quant-u-22098|)))
 ; ---------- FUNCTION fun3----------
 (declare-fun x@5@00 () $Ref)
 (declare-fun result@6@00 () Int)
@@ -329,11 +329,11 @@
 (assert (forall ((s@$ $Snap) (x@5@00 $Ref)) (!
   (= (fun3%limited s@$ x@5@00) (fun3 s@$ x@5@00))
   :pattern ((fun3 s@$ x@5@00))
-  :qid |quant-u-21988|)))
+  :qid |quant-u-22095|)))
 (assert (forall ((s@$ $Snap) (x@5@00 $Ref)) (!
   (fun3%stateless x@5@00)
   :pattern ((fun3%limited s@$ x@5@00))
-  :qid |quant-u-21989|)))
+  :qid |quant-u-22096|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (not (= x@5@00 $Ref.null)))

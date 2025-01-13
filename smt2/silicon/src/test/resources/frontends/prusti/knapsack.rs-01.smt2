@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-08 21:06:58
+; Started: 2025-01-13 12:23:10
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -57144,7 +57144,7 @@
 (check-sat)
 ; unknown
 (pop) ; 8
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 8
@@ -57191,7 +57191,7 @@
 (check-sat)
 ; unknown
 (pop) ; 8
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 8
@@ -57200,7 +57200,7 @@
 (check-sat)
 ; unknown
 (pop) ; 8
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 8
@@ -57209,7 +57209,7 @@
 (check-sat)
 ; unknown
 (pop) ; 8
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 8
@@ -57220,7 +57220,7 @@
 (check-sat)
 ; unknown
 (pop) ; 8
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [eval] 0 <= self.val_int
 (set-option :timeout 0)
@@ -57276,7 +57276,7 @@
 (check-sat)
 ; unknown
 (pop) ; 8
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 8
@@ -57287,7 +57287,7 @@
 (check-sat)
 ; unknown
 (pop) ; 8
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [exec]
 ; label l32
@@ -57298,7 +57298,7 @@
 (check-sat)
 ; unknown
 (pop) ; 8
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 79 | True | live]
 ; [else-branch: 79 | False | dead]
@@ -57346,7 +57346,7 @@
 (check-sat)
 ; unknown
 (pop) ; 9
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 9
@@ -57374,7 +57374,7 @@
 (check-sat)
 ; unknown
 (pop) ; 9
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 9
@@ -57533,7 +57533,7 @@
 (check-sat)
 ; unknown
 (pop) ; 9
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 9
@@ -57564,7 +57564,7 @@
 (check-sat)
 ; unknown
 (pop) ; 9
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 9
@@ -57604,7 +57604,7 @@
 (check-sat)
 ; unknown
 (pop) ; 9
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 9
@@ -58180,7 +58180,7 @@
 (check-sat)
 ; unknown
 (pop) ; 9
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 9
@@ -58274,7 +58274,7 @@
 (check-sat)
 ; unknown
 (pop) ; 9
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 9
@@ -65466,4 +65466,72 @@
 (push) ; 11
 (set-option :timeout 10)
 (assert (not (= ret@473@01 $t@528@01)))
+(check-sat)
+; unknown
+(pop) ; 11
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 11
+(set-option :timeout 10)
+(assert (not (= ret@379@01 $t@528@01)))
+(check-sat)
+; unknown
+(pop) ; 11
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 11
+(set-option :timeout 10)
+(assert (not (= ret@253@01 $t@528@01)))
+(check-sat)
+; unknown
+(pop) ; 11
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 11
+(set-option :timeout 10)
+(assert (not (= $t@225@01 $t@528@01)))
+(check-sat)
+; unknown
+(pop) ; 11
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 11
+(set-option :timeout 10)
+(assert (not (= $t@210@01 $t@528@01)))
+(check-sat)
+; unknown
+(pop) ; 11
+; 0.01s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 11
+(set-option :timeout 10)
+(assert (not (= $t@508@01 $t@528@01)))
+(check-sat)
+; unknown
+(pop) ; 11
+; 0.01s
+; (get-info :all-statistics)
+; [exec]
+; __t62 := _136.tuple_1.val_bool
+; [exec]
+; assert !__t62
+; [eval] !__t62
+; [exec]
+; label loop9_group3_loop17_group3_bb38
+; [exec]
+; __t26 := true
+; [exec]
+; _51 := _136.tuple_0
+; [exec]
+; label l59
+; [exec]
+; _18 := builtin$havoc_ref()
+(declare-const ret@531@01 $Ref)
+; State saturation: after contract
+(set-option :timeout 50)
 (check-sat)

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-08 21:28:54
+// Date:         2025-01-13 12:45:36
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/sets/snapshots3.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/sets/snapshots3-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -643,10 +643,10 @@ procedure test01(xs: (Set Ref), y: Ref) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var perm: Perm;
   var freshVersion: FrameType;
   var newPMask: PMaskType;
@@ -713,12 +713,12 @@ procedure test01(xs: (Set Ref), y: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: assert y.f == 5 -- snapshots3.vpr@16.3--16.18
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of y.f == 5
       assert {:msg "  Assert might fail. There might be insufficient permission to access y.f (snapshots3.vpr@16.10--16.18) [4079]"}
@@ -728,8 +728,8 @@ procedure test01(xs: (Set Ref), y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(P(xs), write) -- snapshots3.vpr@18.3--18.13
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     havoc QPMask;
     
     // -- check that the permission amount is positive
@@ -799,8 +799,8 @@ procedure test01(xs: (Set Ref), y: Ref) returns ()
   // -- Translating statement: unfold acc(P(xs), write) -- snapshots3.vpr@19.3--19.15
     assume P#trigger(Heap, P(xs));
     assume Heap[null, P(xs)] == FrameFragment(P#condqp1(Heap, xs));
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding P(xs) might fail. There might be insufficient permission to access P(xs) (snapshots3.vpr@19.3--19.15) [4088]"}
@@ -851,8 +851,8 @@ procedure test01(xs: (Set Ref), y: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert y.f == 5 -- snapshots3.vpr@21.3--21.18
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of y.f == 5
       assert {:msg "  Assert might fail. There might be insufficient permission to access y.f (snapshots3.vpr@21.10--21.18) [4090]"}
@@ -870,11 +870,11 @@ procedure m1(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var t_2: Ref;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var newVersion: FrameType;
   var QPMask: MaskType;
   var a_2: int;
@@ -899,8 +899,8 @@ procedure m1(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[t_2, $allocated];
@@ -908,8 +908,8 @@ procedure m1(this: Ref) returns ()
   // -- Translating statement: unfold acc(inv(this), write) -- snapshots3.vpr@31.2--31.23
     assume inv#trigger(Heap, inv(this));
     assume Heap[null, inv(this)] == CombineFrames(FrameFragment(Heap[this, n_10]), FrameFragment(inv#condqp2(Heap, this)));
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding inv(this) might fail. There might be insufficient permission to access inv(this) (snapshots3.vpr@31.2--31.23) [4094]"}
@@ -981,8 +981,8 @@ procedure m1(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(inv(this), write) -- snapshots3.vpr@38.2--38.21
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding inv(this) might fail. There might be insufficient permission to access this.n (snapshots3.vpr@38.2--38.21) [4101]"}
@@ -1059,8 +1059,8 @@ procedure m1(this: Ref) returns ()
   // -- Translating statement: unfold acc(inv(this), write) -- snapshots3.vpr@39.2--39.23
     assume inv#trigger(Heap, inv(this));
     assume Heap[null, inv(this)] == CombineFrames(FrameFragment(Heap[this, n_10]), FrameFragment(inv#condqp2(Heap, this)));
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding inv(this) might fail. There might be insufficient permission to access inv(this) (snapshots3.vpr@39.2--39.23) [4108]"}
@@ -1115,8 +1115,8 @@ procedure m1(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert a == t.f -- snapshots3.vpr@40.2--40.17
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of a == t.f
       assert {:msg "  Assert might fail. There might be insufficient permission to access t.f (snapshots3.vpr@40.9--40.17) [4111]"}
@@ -1130,8 +1130,8 @@ procedure m1(this: Ref) returns ()
     // -- Check definedness of acc(P(this.n), write)
       assert {:msg "  Folding P(this.n) might fail. There might be insufficient permission to access this.n (snapshots3.vpr@42.2--42.21) [4113]"}
         HasDirectPerm(Mask, this, n_10);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     havoc QPMask;
     
     // -- check that the permission amount is positive
@@ -1199,8 +1199,8 @@ procedure m1(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(P(this.n), write) -- snapshots3.vpr@43.4--43.25
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of acc(P(this.n), write)
       assert {:msg "  Exhale might fail. There might be insufficient permission to access this.n (snapshots3.vpr@43.11--43.25) [4119]"}
@@ -1235,8 +1235,8 @@ procedure m1(this: Ref) returns ()
         HasDirectPerm(Mask, this, n_10);
     assume P#trigger(Heap, P(Heap[this, n_10]));
     assume Heap[null, P(Heap[this, n_10])] == FrameFragment(P#condqp1(Heap, Heap[this, n_10]));
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding P(this.n) might fail. There might be insufficient permission to access P(this.n) (snapshots3.vpr@45.2--45.23) [4127]"}
@@ -1287,8 +1287,8 @@ procedure m1(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert a == t.f -- snapshots3.vpr@48.2--48.17
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of a == t.f
       assert {:msg "  Assert might fail. There might be insufficient permission to access t.f (snapshots3.vpr@48.9--48.17) [4129]"}
@@ -1306,13 +1306,13 @@ procedure m1_carbon_regression(this: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var t_2: Ref;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var newVersion: FrameType;
   var QPMask: MaskType;
   var a_2: int;
@@ -1337,8 +1337,8 @@ procedure m1_carbon_regression(this: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1358,8 +1358,8 @@ procedure m1_carbon_regression(this: Ref) returns ()
   // -- Translating statement: unfold acc(inv(this), write) -- snapshots3.vpr@55.2--55.23
     assume inv#trigger(Heap, inv(this));
     assume Heap[null, inv(this)] == CombineFrames(FrameFragment(Heap[this, n_10]), FrameFragment(inv#condqp2(Heap, this)));
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding inv(this) might fail. There might be insufficient permission to access inv(this) (snapshots3.vpr@55.2--55.23) [4133]"}
@@ -1431,8 +1431,8 @@ procedure m1_carbon_regression(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(inv(this), write) -- snapshots3.vpr@62.2--62.21
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding inv(this) might fail. There might be insufficient permission to access this.n (snapshots3.vpr@62.2--62.21) [4140]"}
@@ -1509,8 +1509,8 @@ procedure m1_carbon_regression(this: Ref) returns ()
   // -- Translating statement: unfold acc(inv(this), write) -- snapshots3.vpr@63.2--63.23
     assume inv#trigger(Heap, inv(this));
     assume Heap[null, inv(this)] == CombineFrames(FrameFragment(Heap[this, n_10]), FrameFragment(inv#condqp2(Heap, this)));
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding inv(this) might fail. There might be insufficient permission to access inv(this) (snapshots3.vpr@63.2--63.23) [4147]"}
@@ -1565,8 +1565,8 @@ procedure m1_carbon_regression(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert a == t.f -- snapshots3.vpr@64.2--64.17
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of a == t.f
       assert {:msg "  Assert might fail. There might be insufficient permission to access t.f (snapshots3.vpr@64.9--64.17) [4150]"}
@@ -1580,8 +1580,8 @@ procedure m1_carbon_regression(this: Ref) returns ()
     // -- Check definedness of acc(P(this.n), write)
       assert {:msg "  Folding P(this.n) might fail. There might be insufficient permission to access this.n (snapshots3.vpr@66.2--66.21) [4152]"}
         HasDirectPerm(Mask, this, n_10);
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     havoc QPMask;
     
     // -- check that the permission amount is positive
@@ -1649,15 +1649,15 @@ procedure m1_carbon_regression(this: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- snapshots3.vpr@68.9--68.21
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion false might not hold. (snapshots3.vpr@68.16--68.21) [4158]"}
       false;
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Postcondition of m1_carbon_regression might not hold. There might be insufficient permission to access inv(this) (snapshots3.vpr@53.11--53.25) [4159]"}

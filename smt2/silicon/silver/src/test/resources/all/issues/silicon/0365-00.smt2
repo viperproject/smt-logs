@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-08 21:24:39
+; Started: 2025-01-13 12:41:14
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -180,11 +180,11 @@
 (assert (forall ((s@$ $Snap)) (!
   (= (resource%limited s@$) (resource s@$))
   :pattern ((resource s@$))
-  :qid |quant-u-24141|)))
+  :qid |quant-u-24248|)))
 (assert (forall ((s@$ $Snap)) (!
   (as resource%stateless  Bool)
   :pattern ((resource%limited s@$))
-  :qid |quant-u-24142|)))
+  :qid |quant-u-24249|)))
 ; ---------- FUNCTION tokCountRef----------
 (declare-fun r@1@00 () $Ref)
 (declare-fun result@2@00 () $Ref)
@@ -205,23 +205,23 @@
 (assert (forall ((s@$ $Snap) (r@1@00 $Ref)) (!
   (= (tokCountRef%limited s@$ r@1@00) (tokCountRef s@$ r@1@00))
   :pattern ((tokCountRef s@$ r@1@00))
-  :qid |quant-u-24143|)))
+  :qid |quant-u-24250|)))
 (assert (forall ((s@$ $Snap) (r@1@00 $Ref)) (!
   (tokCountRef%stateless r@1@00)
   :pattern ((tokCountRef%limited s@$ r@1@00))
-  :qid |quant-u-24144|)))
+  :qid |quant-u-24251|)))
 (assert (forall ((s@$ $Snap) (r@1@00 $Ref)) (!
   (let ((result@2@00 (tokCountRef%limited s@$ r@1@00))) (=>
     (tokCountRef%precondition s@$ r@1@00)
     (= (tokCountRef%limited $Snap.unit (temp<Ref> r@1@00)) result@2@00)))
   :pattern ((tokCountRef%limited s@$ r@1@00))
-  :qid |quant-u-24147|)))
+  :qid |quant-u-24254|)))
 (assert (forall ((s@$ $Snap) (r@1@00 $Ref)) (!
   (let ((result@2@00 (tokCountRef%limited s@$ r@1@00))) (=>
     (tokCountRef%precondition s@$ r@1@00)
     (tokCountRef%precondition $Snap.unit (temp<Ref> r@1@00))))
   :pattern ((tokCountRef%limited s@$ r@1@00))
-  :qid |quant-u-24148|)))
+  :qid |quant-u-24255|)))
 ; ---------- FUNCTION readers----------
 (declare-fun result@3@00 () $Ref)
 ; ----- Well-definedness of specifications -----
@@ -230,8 +230,8 @@
 (assert (forall ((s@$ $Snap)) (!
   (= (readers%limited s@$) (readers s@$))
   :pattern ((readers s@$))
-  :qid |quant-u-24145|)))
+  :qid |quant-u-24252|)))
 (assert (forall ((s@$ $Snap)) (!
   (as readers%stateless  Bool)
   :pattern ((readers%limited s@$))
-  :qid |quant-u-24146|)))
+  :qid |quant-u-24253|)))

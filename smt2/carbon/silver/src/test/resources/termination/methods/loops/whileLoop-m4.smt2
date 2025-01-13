@@ -373,7 +373,7 @@
 )))
 (assert (= NoPerm 0.0))
 (assert (= FullPerm 1.0))
-; Valid
+; Invalid
 (push 1)
 (declare-fun ControlFlow (Int Int) Int)
 (declare-fun Mask@6 () T@PolymorphicMapType_17006)

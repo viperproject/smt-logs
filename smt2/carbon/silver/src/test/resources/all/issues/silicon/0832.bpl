@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-08 22:08:13
+// Date:         2025-01-13 13:25:12
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0832.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0832-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -285,8 +285,8 @@ function  aloc#triggerStateless(a_2: ArrayDomainType, i: int): Ref;
 procedure aloc#definedness(a_2: ArrayDomainType, i: int) returns (Result: Ref)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -304,8 +304,8 @@ procedure aloc#definedness(a_2: ArrayDomainType, i: int) returns (Result: Ref)
     Result := (array_loc(a_2, i): Ref);
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of aloc might not hold. Assertion loc_inv_1(result) == a might not hold. (0832.vpr@48.11--48.33) [216473]"}
       (loc_inv_1(Result): ArrayDomainType) == a_2;
     assert {:msg "  Postcondition of aloc might not hold. Assertion loc_inv_2(result) == i might not hold. (0832.vpr@49.11--49.33) [216474]"}
@@ -350,8 +350,8 @@ axiom (forall Heap: HeapType, x: int, a_2: ArrayDomainType, n: int ::
 procedure arrR#definedness(x: int, a_2: ArrayDomainType, n: int) returns ()
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var perm: Perm;
   
   // -- Check definedness of predicate body of arrR
@@ -369,8 +369,8 @@ procedure arrR#definedness(x: int, a_2: ArrayDomainType, n: int) returns ()
     // -- Check definedness of acc(aloc(a, x).int, write)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Precondition of function aloc might not hold. Assertion 0 <= x might not hold. (0832.vpr@18.42--18.52) [216475]"}
           0 <= x;
         assert {:msg "  Precondition of function aloc might not hold. Assertion x < alen(a) might not hold. (0832.vpr@18.42--18.52) [216476]"}
@@ -435,8 +435,8 @@ procedure arr#definedness(a_2: ArrayDomainType, n: int) returns ()
   modifies Heap, Mask;
 {
   var i_14: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var QPMask: MaskType;
   
   // -- Check definedness of predicate body of arr
@@ -454,8 +454,8 @@ procedure arr#definedness(a_2: ArrayDomainType, n: int) returns ()
         if (0 <= i_14 && i_14 < (alen(a_2): int)) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             assert {:msg "  Precondition of function aloc might not hold. Assertion 0 <= i might not hold. (0832.vpr@22.82--22.92) [216477]"}
               0 <= i_14;
             assert {:msg "  Precondition of function aloc might not hold. Assertion i < alen(a) might not hold. (0832.vpr@22.82--22.92) [216478]"}
@@ -515,14 +515,14 @@ procedure test(x0: ArrayDomainType, x1_2: ArrayDomainType) returns ()
   var j_10: int;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newPMask: PMaskType;
   var j_4: int;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef1Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -586,8 +586,8 @@ procedure test(x0: ArrayDomainType, x1_2: ArrayDomainType) returns ()
           UnfoldingMask := Mask;
           assume arr#trigger(UnfoldingHeap, arr_1(x1_2, 10));
           assume UnfoldingHeap[null, arr_1(x1_2, 10)] == FrameFragment(arr#condqp1(UnfoldingHeap, x1_2, 10));
-          ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
+          ExhaleWellDef0Mask := UnfoldingMask;
           perm := FullPerm / 2;
           assert {:msg "  Contract might not be well-formed. Fraction write / 2 might be negative. (0832.vpr@8.13--9.87) [216481]"}
             perm >= NoPerm;
@@ -641,8 +641,8 @@ procedure test(x0: ArrayDomainType, x1_2: ArrayDomainType) returns ()
           assume state(UnfoldingHeap, UnfoldingMask);
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := UnfoldingMask;
             ExhaleWellDef0Heap := UnfoldingHeap;
+            ExhaleWellDef0Mask := UnfoldingMask;
             assert {:msg "  Precondition of function aloc might not hold. Assertion 0 <= j might not hold. (0832.vpr@9.66--9.77) [216485]"}
               0 <= j_10;
             assert {:msg "  Precondition of function aloc might not hold. Assertion j < alen(x1) might not hold. (0832.vpr@9.66--9.77) [216486]"}
@@ -697,8 +697,8 @@ procedure test(x0: ArrayDomainType, x1_2: ArrayDomainType) returns ()
           UnfoldingMask := Mask;
           assume arrR#trigger(UnfoldingHeap, arrR(j_4, x0, 10));
           assume UnfoldingHeap[null, arrR(j_4, x0, 10)] == FrameFragment(UnfoldingHeap[aloc_1(UnfoldingHeap, x0, j_4), vint_1]);
-          ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
+          ExhaleWellDef0Mask := UnfoldingMask;
           perm := FullPerm;
           if (perm != NoPerm) {
             assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access arrR(j, x0, 10) (0832.vpr@10.13--11.81) [216488]"}
@@ -716,8 +716,8 @@ procedure test(x0: ArrayDomainType, x1_2: ArrayDomainType) returns ()
           assume state(UnfoldingHeap, UnfoldingMask);
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := UnfoldingMask;
             ExhaleWellDef0Heap := UnfoldingHeap;
+            ExhaleWellDef0Mask := UnfoldingMask;
             assert {:msg "  Precondition of function aloc might not hold. Assertion 0 <= j might not hold. (0832.vpr@11.56--11.67) [216489]"}
               0 <= j_4;
             assert {:msg "  Precondition of function aloc might not hold. Assertion j < alen(x0) might not hold. (0832.vpr@11.56--11.67) [216490]"}
@@ -743,20 +743,20 @@ procedure test(x0: ArrayDomainType, x1_2: ArrayDomainType) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert (unfolding acc(arrR(0, x0, 10), write) in aloc(x0, 0).int == 3 * 0) -- 0832.vpr@13.3--14.38
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (unfolding acc(arrR(0, x0, 10), write) in aloc(x0, 0).int == 3 * 0)
       UnfoldingHeap := ExhaleWellDef0Heap;
       UnfoldingMask := ExhaleWellDef0Mask;
       assume arrR#trigger(UnfoldingHeap, arrR(0, x0, 10));
       assume UnfoldingHeap[null, arrR(0, x0, 10)] == FrameFragment(UnfoldingHeap[aloc_1(UnfoldingHeap, x0, 0), vint_1]);
-      ExhaleWellDef1Mask := UnfoldingMask;
       ExhaleWellDef1Heap := UnfoldingHeap;
+      ExhaleWellDef1Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Assert might fail. There might be insufficient permission to access arrR(0, x0, 10) (0832.vpr@13.11--14.37) [216492]"}
@@ -772,8 +772,8 @@ procedure test(x0: ArrayDomainType, x1_2: ArrayDomainType) returns ()
       assume state(UnfoldingHeap, UnfoldingMask);
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := UnfoldingMask;
         ExhaleWellDef1Heap := UnfoldingHeap;
+        ExhaleWellDef1Mask := UnfoldingMask;
         assert {:msg "  Precondition of function aloc might not hold. Assertion 0 < alen(x0) might not hold. (0832.vpr@14.13--14.24) [216493]"}
           0 < (alen(x0): int);
         // Stop execution
@@ -801,8 +801,8 @@ procedure test(x0: ArrayDomainType, x1_2: ArrayDomainType) returns ()
 procedure aloc_pres_termination_proof(a_2: ArrayDomainType, i: int) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var b_24: bool;
   
   // -- Initializing the state
@@ -814,8 +814,8 @@ procedure aloc_pres_termination_proof(a_2: ArrayDomainType, i: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: if (b) -- 0832.vpr@45.12--45.18
     if (b_24) {

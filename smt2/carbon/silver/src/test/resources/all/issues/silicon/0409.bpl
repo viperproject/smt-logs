@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-08 22:03:30
+// Date:         2025-01-13 13:20:34
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0409.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0409-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -400,12 +400,12 @@ axiom !IsWandField(f_7);
 procedure test0(xs: (Set Ref), x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var wildcard: real where wildcard > NoPerm;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -419,8 +419,8 @@ procedure test0(xs: (Set Ref), x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale (x in xs) ==> acc(x.f, wildcard) -- 0409.vpr@4.3--4.40
     if (xs[x]) {
@@ -434,8 +434,8 @@ procedure test0(xs: (Set Ref), x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale (x in xs) ==> acc(x.f, wildcard) -- 0409.vpr@5.3--5.40
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     if (xs[x]) {
       assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (0409.vpr@5.10--5.40) [199344]"}
         Mask[x, f_7] > NoPerm;
@@ -450,8 +450,8 @@ procedure test0(xs: (Set Ref), x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale (x in xs) ==> acc(x.f, wildcard) -- 0409.vpr@6.3--6.40
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     if (xs[x]) {
       assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (0409.vpr@6.10--6.40) [199345]"}
         Mask[x, f_7] > NoPerm;
@@ -473,12 +473,12 @@ procedure test0(xs: (Set Ref), x: Ref) returns ()
 procedure test01(xs: (Set Ref)) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var QPMask: MaskType;
   var wildcard: real where wildcard > 0.000000000;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -489,8 +489,8 @@ procedure test01(xs: (Set Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale (forall x: Ref :: { x.f } (x in xs) ==> acc(x.f, wildcard)) -- 0409.vpr@10.3--10.63
     
@@ -536,8 +536,8 @@ procedure test01(xs: (Set Ref)) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale (forall x: Ref :: { x.f } (x in xs) ==> acc(x.f, wildcard)) -- 0409.vpr@11.3--11.63
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall x: Ref :: { x.f } (x in xs) ==> acc(x.f, wildcard))
       if (*) {
@@ -606,8 +606,8 @@ procedure test01(xs: (Set Ref)) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale (forall x: Ref :: { x.f } (x in xs) ==> acc(x.f, wildcard)) -- 0409.vpr@12.3--12.63
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall x: Ref :: { x.f } (x in xs) ==> acc(x.f, wildcard))
       if (*) {

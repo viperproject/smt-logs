@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-08 21:16:32
+; Started: 2025-01-13 12:32:56
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -1658,7 +1658,7 @@
   :pattern ((Seq_index
     ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first $t@2@01))
     i@6@01))
-  :qid |quant-u-12165|)))
+  :qid |quant-u-12237|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -1797,7 +1797,7 @@
   :pattern ((Seq_index
     ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first $t@2@01))
     i@9@01))
-  :qid |quant-u-12167|)))
+  :qid |quant-u-12239|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -2107,8 +2107,8 @@
 (declare-const sm@15@01 $FVF<next>)
 ; Definitional axioms for singleton-FVF's value
 (assert (= ($FVF.lookup_next (as sm@15@01  $FVF<next>) n@13@01) next@14@01))
-(assert (not (= n@13@01 this@1@01)))
 (assert (not (= n@13@01 n@3@01)))
+(assert (not (= n@13@01 this@1@01)))
 (assert (not
   (Seq_contains ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first $t@2@01)) n@13@01)))
 ; [exec]
@@ -2694,7 +2694,7 @@
       (pTaken@21@01 r))
     $Perm.No)
   
-  :qid |quant-u-12170|))))
+  :qid |quant-u-12242|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -2720,7 +2720,7 @@
           (inv@19@01 r))))
     (= (- $Perm.Write (pTaken@21@01 r)) $Perm.No))
   
-  :qid |quant-u-12171|))))
+  :qid |quant-u-12243|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -2964,7 +2964,7 @@
       (pTaken@26@01 r))
     $Perm.No)
   
-  :qid |quant-u-12174|))))
+  :qid |quant-u-12246|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -2990,7 +2990,7 @@
           (inv@24@01 r))))
     (= (- $Perm.Write (pTaken@26@01 r)) $Perm.No))
   
-  :qid |quant-u-12175|))))
+  :qid |quant-u-12247|))))
 (check-sat)
 ; unsat
 (pop) ; 3

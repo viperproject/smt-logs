@@ -2211,10 +2211,9 @@
 anon0_correct)))))
 ))
 (check-sat)
-(get-info :reason-unknown)
 (get-info :rlimit)
 (pop 1)
-; Timed out
+; Valid
 (reset)
 (set-option :rlimit 0)
 ; did a full reset

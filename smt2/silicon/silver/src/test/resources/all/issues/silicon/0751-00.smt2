@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-08 21:25:43
+; Started: 2025-01-13 12:42:20
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -170,11 +170,11 @@
 (assert (forall ((s@$ $Snap) (x@0@00 $Perm)) (!
   (= (round%limited s@$ x@0@00) (round s@$ x@0@00))
   :pattern ((round s@$ x@0@00))
-  :qid |quant-u-25434|)))
+  :qid |quant-u-25541|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Perm)) (!
   (round%stateless x@0@00)
   :pattern ((round%limited s@$ x@0@00))
-  :qid |quant-u-25435|)))
+  :qid |quant-u-25542|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Perm)) (!
   (let ((result@1@00 (round%limited s@$ x@0@00))) (=>
     (round%precondition s@$ x@0@00)
@@ -184,15 +184,15 @@
         (= result@1@00 (/ (to_real 3) (to_real 2))))
       (= result@1@00 (/ (to_real (to_int x@0@00)) (to_real 1))))))
   :pattern ((round%limited s@$ x@0@00))
-  :qid |quant-u-25436|)))
+  :qid |quant-u-25543|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Perm)) (!
   (let ((result@1@00 (round%limited s@$ x@0@00))) true)
   :pattern ((round%limited s@$ x@0@00))
-  :qid |quant-u-25437|)))
+  :qid |quant-u-25544|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Perm)) (!
   (let ((result@1@00 (round%limited s@$ x@0@00))) true)
   :pattern ((round%limited s@$ x@0@00))
-  :qid |quant-u-25438|)))
+  :qid |quant-u-25545|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract

@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-08 21:22:06
+; Started: 2025-01-13 12:38:37
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -4916,7 +4916,7 @@
 (assert (not (forall ((r $Ref)) (!
   (=> (= r x@24@01) (= (- p@25@01 (pTaken@109@01 r)) $Perm.No))
   
-  :qid |quant-u-21877|))))
+  :qid |quant-u-21984|))))
 (check-sat)
 ; unsat
 (pop) ; 3

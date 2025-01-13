@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-08 22:13:16
+// Date:         2025-01-13 13:30:16
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/termination/functions/basic/conditions.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/termination/functions/basic/conditions-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -260,8 +260,8 @@ function  f1#triggerStateless(i: int): int;
 procedure f1#definedness(i: int) returns (Result: int)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -280,8 +280,8 @@ procedure f1#definedness(i: int) returns (Result: int)
       } else {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           assert {:msg "  Precondition of function f1 might not hold. Assertion i - 1 >= 0 might not hold. (conditions.vpr@10.19--10.26) [223876]"}
             i - 1 >= 0;
           // Stop execution
@@ -293,8 +293,8 @@ procedure f1#definedness(i: int) returns (Result: int)
         if (!(f1_3(Heap, i - 1) < 4)) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             assert {:msg "  Precondition of function f1 might not hold. Assertion i - 3 >= 0 might not hold. (conditions.vpr@10.35--10.42) [223877]"}
               i - 3 >= 0;
             // Stop execution
@@ -308,8 +308,8 @@ procedure f1#definedness(i: int) returns (Result: int)
         } else {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             assert {:msg "  Precondition of function f1 might not hold. Assertion i - 1 >= 0 might not hold. (conditions.vpr@10.54--10.61) [223878]"}
               i - 1 >= 0;
             // Stop execution
@@ -515,8 +515,8 @@ procedure f6#definedness(xs: Ref, x: int) returns (Result: int)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -547,8 +547,8 @@ procedure f6#definedness(xs: Ref, x: int) returns (Result: int)
       if (x != 0) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           perm := FullPerm;
           assert {:msg "  Precondition of function f6 might not hold. There might be insufficient permission to access list(xs) (conditions.vpr@46.14--46.25) [223879]"}
             NoPerm < perm ==> NoPerm < Mask[null, list(xs)];
@@ -698,10 +698,10 @@ procedure list#definedness(xs: Ref) returns ()
 procedure f1_termination_proof(i: int) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -716,16 +716,16 @@ procedure f1_termination_proof(i: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: if (i < 10) -- <no position>
     if (i < 10) {
     } else {
       
       // -- Translating statement: assert (decreasing(i - 1, old(i)): Bool) && (bounded(old(i)): Bool) -- <no position>
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Assert might fail. Assertion (decreasing(i - 1, old(i)): Bool) might not hold. (<no position>) [223884]"}
           (decreasing(i - 1, i): bool);
         assert {:msg "  Assert might fail. Assertion (bounded(old(i)): Bool) might not hold. (<no position>) [223885]"}
@@ -737,8 +737,8 @@ procedure f1_termination_proof(i: int) returns ()
         // -- Check definedness of f1(i - 1) >= 4
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             assert {:msg "  Precondition of function f1 might not hold. Assertion i - 1 >= 0 might not hold. (conditions.vpr@10.19--10.26) [223886]"}
               i - 1 >= 0;
             // Stop execution
@@ -747,8 +747,8 @@ procedure f1_termination_proof(i: int) returns ()
         if (f1_3(Heap, i - 1) >= 4) {
           
           // -- Translating statement: assert (decreasing(i - 3, old(i)): Bool) && (bounded(old(i)): Bool) -- <no position>
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             assert {:msg "  Assert might fail. Assertion (decreasing(i - 3, old(i)): Bool) might not hold. (<no position>) [223887]"}
               (decreasing(i - 3, i): bool);
             assert {:msg "  Assert might fail. Assertion (bounded(old(i)): Bool) might not hold. (<no position>) [223888]"}
@@ -762,8 +762,8 @@ procedure f1_termination_proof(i: int) returns ()
         // -- Check definedness of f1(i - 1) < 4 || f1(i - 3) < 6
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             assert {:msg "  Precondition of function f1 might not hold. Assertion i - 1 >= 0 might not hold. (conditions.vpr@10.19--10.26) [223889]"}
               i - 1 >= 0;
             // Stop execution
@@ -772,8 +772,8 @@ procedure f1_termination_proof(i: int) returns ()
           if (!(f1_3(Heap, i - 1) < 4)) {
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               assert {:msg "  Precondition of function f1 might not hold. Assertion i - 3 >= 0 might not hold. (conditions.vpr@10.35--10.42) [223890]"}
                 i - 3 >= 0;
               // Stop execution
@@ -784,8 +784,8 @@ procedure f1_termination_proof(i: int) returns ()
         } else {
           
           // -- Translating statement: assert (decreasing(i - 1, old(i)): Bool) && (bounded(old(i)): Bool) -- <no position>
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             assert {:msg "  Assert might fail. Assertion (decreasing(i - 1, old(i)): Bool) might not hold. (<no position>) [223891]"}
               (decreasing(i - 1, i): bool);
             assert {:msg "  Assert might fail. Assertion (bounded(old(i)): Bool) might not hold. (<no position>) [223892]"}
@@ -805,10 +805,10 @@ procedure f6_termination_proof(xs: Ref, x: int) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -837,15 +837,15 @@ procedure f6_termination_proof(xs: Ref, x: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: if (x != 0) -- <no position>
     if (x != 0) {
       
       // -- Translating statement: assert (decreasing(x - 1, old(x)): Bool) && (bounded(old(x)): Bool) -- <no position>
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Assert might fail. Assertion (decreasing(x - 1, old(x)): Bool) might not hold. (<no position>) [223893]"}
           (decreasing(x - 1, x): bool);
         assert {:msg "  Assert might fail. Assertion (bounded(old(x)): Bool) might not hold. (<no position>) [223894]"}
@@ -862,13 +862,13 @@ procedure f6_termination_proof(xs: Ref, x: int) returns ()
 procedure f6_pres_termination_proof(xs: Ref, x: int) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var b1: bool;
   var b_24: bool;
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -882,8 +882,8 @@ procedure f6_pres_termination_proof(xs: Ref, x: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: if (b1) -- conditions.vpr@43.14--43.43
     if (b1) {
@@ -930,8 +930,8 @@ procedure f6_pres_termination_proof(xs: Ref, x: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert x >= 0 -- <no position>
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion x >= 0 might not hold. (conditions.vpr@51.18--51.24) [223898]"}
       x >= 0;
     assume state(Heap, Mask);

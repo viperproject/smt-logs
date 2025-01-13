@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-08 22:04:27
+// Date:         2025-01-13 13:21:29
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0120a.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0120a-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -623,8 +623,8 @@ procedure Nodevals$#definedness(this$_2: Ref) returns (Result: (Seq int))
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var newPMask: PMaskType;
   
@@ -651,8 +651,8 @@ procedure Nodevals$#definedness(this$_2: Ref) returns (Result: (Seq int))
       UnfoldingMask := Mask;
       assume Nodelist$#trigger(UnfoldingHeap, Nodelist$(this$_2));
       assume UnfoldingHeap[null, Nodelist$(this$_2)] == CombineFrames(FrameFragment(UnfoldingHeap[this$_2, Nodenext$]), CombineFrames(FrameFragment(UnfoldingHeap[this$_2, Nodeval$]), FrameFragment((if UnfoldingHeap[this$_2, Nodenext$] != null then UnfoldingHeap[null, Nodelist$(UnfoldingHeap[this$_2, Nodenext$])] else EmptyFrame))));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Nodelist$(this$_2) (0120a.vpr@27.1--32.2) [201820]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, Nodelist$(this$_2)];
@@ -688,8 +688,8 @@ procedure Nodevals$#definedness(this$_2: Ref) returns (Result: (Seq int))
           HasDirectPerm(UnfoldingMask, this$_2, Nodenext$);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
+          ExhaleWellDef0Mask := UnfoldingMask;
           assert {:msg "  Precondition of function Nodevals$ might not hold. Assertion this$_2.Nodenext$ != null might not hold. (0120a.vpr@31.129--31.157) [201825]"}
             UnfoldingHeap[this$_2, Nodenext$] != null;
           perm := FullPerm;
@@ -767,8 +767,8 @@ procedure Nodereverse_vals$#definedness(this$_3: Ref) returns (Result: (Seq int)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var newPMask: PMaskType;
   
@@ -795,8 +795,8 @@ procedure Nodereverse_vals$#definedness(this$_3: Ref) returns (Result: (Seq int)
       UnfoldingMask := Mask;
       assume Nodelist$#trigger(UnfoldingHeap, Nodelist$(this$_3));
       assume UnfoldingHeap[null, Nodelist$(this$_3)] == CombineFrames(FrameFragment(UnfoldingHeap[this$_3, Nodenext$]), CombineFrames(FrameFragment(UnfoldingHeap[this$_3, Nodeval$]), FrameFragment((if UnfoldingHeap[this$_3, Nodenext$] != null then UnfoldingHeap[null, Nodelist$(UnfoldingHeap[this$_3, Nodenext$])] else EmptyFrame))));
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Nodelist$(this$_3) (0120a.vpr@34.1--39.2) [201827]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, Nodelist$(this$_3)];
@@ -830,8 +830,8 @@ procedure Nodereverse_vals$#definedness(this$_3: Ref) returns (Result: (Seq int)
           HasDirectPerm(UnfoldingMask, this$_3, Nodenext$);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := UnfoldingMask;
           ExhaleWellDef0Heap := UnfoldingHeap;
+          ExhaleWellDef0Mask := UnfoldingMask;
           assert {:msg "  Precondition of function Nodereverse_vals$ might not hold. Assertion this$_3.Nodenext$ != null might not hold. (0120a.vpr@38.104--38.140) [201831]"}
             UnfoldingHeap[this$_3, Nodenext$] != null;
           perm := FullPerm;
@@ -998,12 +998,12 @@ procedure Nodereverse_in_place$(this$_4: Ref, k$: Perm) returns (r_1: Ref)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var n$: Ref;
   var a$: Ref;
@@ -1041,8 +1041,8 @@ procedure Nodereverse_in_place$(this$_4: Ref, k$: Perm) returns (r_1: Ref)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1058,8 +1058,8 @@ procedure Nodereverse_in_place$(this$_4: Ref, k$: Perm) returns (r_1: Ref)
     // -- Check definedness of Nodevals$(r) == old(Nodereverse_vals$(this$_4))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
+        ExhaleWellDef0Mask := PostMask;
         assert {:msg "  Precondition of function Nodevals$ might not hold. Assertion r != null might not hold. (0120a.vpr@55.11--55.23) [201836]"}
           r_1 != null;
         perm := FullPerm;
@@ -1074,8 +1074,8 @@ procedure Nodereverse_in_place$(this$_4: Ref, k$: Perm) returns (r_1: Ref)
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := oldMask;
         ExhaleWellDef0Heap := oldHeap;
+        ExhaleWellDef0Mask := oldMask;
         assert {:msg "  Precondition of function Nodereverse_vals$ might not hold. Assertion this$_4 != null might not hold. (0120a.vpr@55.31--55.57) [201838]"}
           this$_4 != null;
         perm := FullPerm;
@@ -1112,8 +1112,8 @@ procedure Nodereverse_in_place$(this$_4: Ref, k$: Perm) returns (r_1: Ref)
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         if (l_2 != null) {
           perm := FullPerm;
           if (perm != NoPerm) {
@@ -1162,8 +1162,8 @@ procedure Nodereverse_in_place$(this$_4: Ref, k$: Perm) returns (r_1: Ref)
         // -- Check definedness of old(Nodereverse_vals$(this$_4)) == (l == null ? Seq[Int]() : Nodereverse_vals$(l)) ++ (r == null ? Seq[Int]() : Nodevals$(r))
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Mask := oldMask;
             ExhaleWellDef0Heap := oldHeap;
+            ExhaleWellDef0Mask := oldMask;
             assert {:msg "  Precondition of function Nodereverse_vals$ might not hold. Assertion this$_4 != null might not hold. (0120a.vpr@68.19--68.45) [201843]"}
               this$_4 != null;
             perm := FullPerm;
@@ -1177,8 +1177,8 @@ procedure Nodereverse_in_place$(this$_4: Ref, k$: Perm) returns (r_1: Ref)
           } else {
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               assert {:msg "  Precondition of function Nodereverse_vals$ might not hold. Assertion l != null might not hold. (0120a.vpr@68.76--68.96) [201845]"}
                 l_2 != null;
               perm := FullPerm;
@@ -1196,8 +1196,8 @@ procedure Nodereverse_in_place$(this$_4: Ref, k$: Perm) returns (r_1: Ref)
           } else {
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef0Mask := Mask;
               ExhaleWellDef0Heap := Heap;
+              ExhaleWellDef0Mask := Mask;
               assert {:msg "  Precondition of function Nodevals$ might not hold. Assertion r != null might not hold. (0120a.vpr@68.127--68.139) [201847]"}
                 r_1 != null;
               perm := FullPerm;
@@ -1249,8 +1249,8 @@ procedure Nodereverse_in_place$(this$_4: Ref, k$: Perm) returns (r_1: Ref)
               // -- Translating statement: unfold acc(Nodelist$(r), write) -- 0120a.vpr@71.7--71.38
                 assume Nodelist$#trigger(Heap, Nodelist$(r_1));
                 assume Heap[null, Nodelist$(r_1)] == CombineFrames(FrameFragment(Heap[r_1, Nodenext$]), CombineFrames(FrameFragment(Heap[r_1, Nodeval$]), FrameFragment((if Heap[r_1, Nodenext$] != null then Heap[null, Nodelist$(Heap[r_1, Nodenext$])] else EmptyFrame))));
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 perm := FullPerm;
                 if (perm != NoPerm) {
                   assert {:msg "  Unfolding Nodelist$(r) might fail. There might be insufficient permission to access Nodelist$(r) (0120a.vpr@71.7--71.38) [201849]"}
@@ -1283,8 +1283,8 @@ procedure Nodereverse_in_place$(this$_4: Ref, k$: Perm) returns (r_1: Ref)
                 assume state(Heap, Mask);
               
               // -- Translating statement: fold acc(Nodelist$(r), write) -- 0120a.vpr@72.7--72.36
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 perm := FullPerm;
                 if (perm != NoPerm) {
                   assert {:msg "  Folding Nodelist$(r) might fail. There might be insufficient permission to access r.Nodenext$ (0120a.vpr@72.7--72.36) [201850]"}
@@ -1337,8 +1337,8 @@ procedure Nodereverse_in_place$(this$_4: Ref, k$: Perm) returns (r_1: Ref)
           // -- Translating statement: unfold acc(Nodelist$(l), write) -- 0120a.vpr@74.5--74.36
             assume Nodelist$#trigger(Heap, Nodelist$(l_2));
             assume Heap[null, Nodelist$(l_2)] == CombineFrames(FrameFragment(Heap[l_2, Nodenext$]), CombineFrames(FrameFragment(Heap[l_2, Nodeval$]), FrameFragment((if Heap[l_2, Nodenext$] != null then Heap[null, Nodelist$(Heap[l_2, Nodenext$])] else EmptyFrame))));
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
             if (perm != NoPerm) {
               assert {:msg "  Unfolding Nodelist$(l) might fail. There might be insufficient permission to access Nodelist$(l) (0120a.vpr@74.5--74.36) [201853]"}
@@ -1384,8 +1384,8 @@ procedure Nodereverse_in_place$(this$_4: Ref, k$: Perm) returns (r_1: Ref)
                     HasDirectPerm(Mask, l_2, Nodenext$);
                 assume Nodelist$#trigger(Heap, Nodelist$(Heap[l_2, Nodenext$]));
                 assume Heap[null, Nodelist$(Heap[l_2, Nodenext$])] == CombineFrames(FrameFragment(Heap[Heap[l_2, Nodenext$], Nodenext$]), CombineFrames(FrameFragment(Heap[Heap[l_2, Nodenext$], Nodeval$]), FrameFragment((if Heap[Heap[l_2, Nodenext$], Nodenext$] != null then Heap[null, Nodelist$(Heap[Heap[l_2, Nodenext$], Nodenext$])] else EmptyFrame))));
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 perm := FullPerm;
                 if (perm != NoPerm) {
                   assert {:msg "  Unfolding Nodelist$(l.Nodenext$) might fail. There might be insufficient permission to access Nodelist$(l.Nodenext$) (0120a.vpr@76.7--76.48) [201856]"}
@@ -1422,8 +1422,8 @@ procedure Nodereverse_in_place$(this$_4: Ref, k$: Perm) returns (r_1: Ref)
                 // -- Check definedness of acc(Nodelist$(l.Nodenext$), write)
                   assert {:msg "  Folding Nodelist$(l.Nodenext$) might fail. There might be insufficient permission to access l.Nodenext$ (0120a.vpr@77.7--77.46) [201857]"}
                     HasDirectPerm(Mask, l_2, Nodenext$);
-                ExhaleWellDef0Mask := Mask;
                 ExhaleWellDef0Heap := Heap;
+                ExhaleWellDef0Mask := Mask;
                 perm := FullPerm;
                 if (perm != NoPerm) {
                   assert {:msg "  Folding Nodelist$(l.Nodenext$) might fail. There might be insufficient permission to access l.Nodenext$.Nodenext$ (0120a.vpr@77.7--77.46) [201858]"}
@@ -1492,8 +1492,8 @@ procedure Nodereverse_in_place$(this$_4: Ref, k$: Perm) returns (r_1: Ref)
             assume state(Heap, Mask);
           
           // -- Translating statement: fold acc(Nodelist$(r), write) -- 0120a.vpr@82.5--82.34
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             perm := FullPerm;
             if (perm != NoPerm) {
               assert {:msg "  Folding Nodelist$(r) might fail. There might be insufficient permission to access r.Nodenext$ (0120a.vpr@82.5--82.34) [201863]"}
@@ -1545,8 +1545,8 @@ procedure Nodereverse_in_place$(this$_4: Ref, k$: Perm) returns (r_1: Ref)
             l_2 := y;
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         if (l_2 != null) {
           perm := FullPerm;
           if (perm != NoPerm) {
@@ -1592,8 +1592,8 @@ procedure Nodereverse_in_place$(this$_4: Ref, k$: Perm) returns (r_1: Ref)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of Nodereverse_in_place$ might not hold. Assertion r != null might not hold. (0120a.vpr@54.11--54.50) [201869]"}
       r_1 != null;
     perm := FullPerm;

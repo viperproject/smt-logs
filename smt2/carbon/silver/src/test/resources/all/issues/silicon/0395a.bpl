@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-08 22:06:33
+// Date:         2025-01-13 13:23:34
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0395a.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0395a-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -290,12 +290,12 @@ axiom (forall Heap: HeapType, msg_sender: int, amount: int, parameter: int ::
 procedure test1() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var QPMask: MaskType;
   var balance_1: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var msg_sender: int;
   
   // -- Initializing the state
@@ -307,8 +307,8 @@ procedure test1() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale (forall a: Int, i: Int, j: Int ::
   //     { accessible_withdraw(a, i, j) }
@@ -359,8 +359,8 @@ procedure test1() returns ()
   
   // -- Translating statement: assert perm(accessible_withdraw(msg_sender, balance + 1, balance + 2)) ==
   //   none -- 0395a.vpr@7.3--7.81
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion perm(accessible_withdraw(msg_sender, balance + 1, balance + 2)) == none might not hold. (0395a.vpr@7.10--7.81) [208840]"}
       Mask[null, accessible_withdraw(msg_sender, balance_1 + 1, balance_1 + 2)] == NoPerm;
     assume state(Heap, Mask);
@@ -373,13 +373,13 @@ procedure test1() returns ()
 procedure test2() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var a_4: int;
   var QPMask: MaskType;
   var balance_1: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var msg_sender: int;
   
   // -- Initializing the state
@@ -391,8 +391,8 @@ procedure test2() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale (forall a: Int, i: Int, j: Int ::
   //     { accessible_withdraw(a, i, j) }
@@ -455,8 +455,8 @@ procedure test2() returns ()
   
   // -- Translating statement: assert perm(accessible_withdraw(msg_sender, balance + 1, balance + 2)) ==
   //   none -- 0395a.vpr@16.3--16.81
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion perm(accessible_withdraw(msg_sender, balance + 1, balance + 2)) == none might not hold. (0395a.vpr@16.10--16.81) [208842]"}
       Mask[null, accessible_withdraw(msg_sender, balance_1 + 1, balance_1 + 2)] == NoPerm;
     assume state(Heap, Mask);

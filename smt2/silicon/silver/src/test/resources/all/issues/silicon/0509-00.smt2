@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-08 21:24:31
+; Started: 2025-01-13 12:41:06
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -131,21 +131,21 @@
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   (= (len%limited s@$ x@0@00) (len s@$ x@0@00))
   :pattern ((len s@$ x@0@00))
-  :qid |quant-u-23912|)))
+  :qid |quant-u-24019|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   (len%stateless x@0@00)
   :pattern ((len%limited s@$ x@0@00))
-  :qid |quant-u-23913|)))
+  :qid |quant-u-24020|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   (let ((result@1@00 (len%limited s@$ x@0@00))) (=>
     (len%precondition s@$ x@0@00)
     (>= result@1@00 0)))
   :pattern ((len%limited s@$ x@0@00))
-  :qid |quant-u-23916|)))
+  :qid |quant-u-24023|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   (let ((result@1@00 (len%limited s@$ x@0@00))) true)
   :pattern ((len%limited s@$ x@0@00))
-  :qid |quant-u-23917|)))
+  :qid |quant-u-24024|)))
 ; ---------- FUNCTION lookup----------
 (declare-fun self@2@00 () $Ref)
 (declare-fun index@3@00 () Int)
@@ -174,10 +174,10 @@
 (assert (forall ((s@$ $Snap) (self@2@00 $Ref) (index@3@00 Int)) (!
   (= (lookup%limited s@$ self@2@00 index@3@00) (lookup s@$ self@2@00 index@3@00))
   :pattern ((lookup s@$ self@2@00 index@3@00))
-  :qid |quant-u-23914|)))
+  :qid |quant-u-24021|)))
 (assert (forall ((s@$ $Snap) (self@2@00 $Ref) (index@3@00 Int)) (!
   (lookup%stateless self@2@00 index@3@00)
   :pattern ((lookup%limited s@$ self@2@00 index@3@00))
-  :qid |quant-u-23915|)))
+  :qid |quant-u-24022|)))
 ; ---------- VecI32 ----------
 (declare-const x@6@00 $Ref)

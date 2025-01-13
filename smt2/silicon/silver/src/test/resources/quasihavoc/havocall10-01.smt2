@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-08 21:17:09
+; Started: 2025-01-13 12:33:33
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -202,7 +202,7 @@
     (MWSF_apply mwsf@4@01 $t@3@01)
     ($Snap.combine ($Snap.first $t@2@01) $t@3@01))
   :pattern ((MWSF_apply mwsf@4@01 $t@3@01))
-  :qid |quant-u-13439|)))
+  :qid |quant-u-13511|)))
 (pop) ; 3
 (set-option :timeout 0)
 (push) ; 3
@@ -211,7 +211,7 @@
     (MWSF_apply mwsf@4@01 $t@3@01)
     ($Snap.combine ($Snap.first $t@2@01) $t@3@01))
   :pattern ((MWSF_apply mwsf@4@01 $t@3@01))
-  :qid |quant-u-13440|)))
+  :qid |quant-u-13512|)))
 (assert true)
 ; [exec]
 ; quasihavocall z: Ref :: true ==> acc(z.f2, write) --* acc(p(z), write)

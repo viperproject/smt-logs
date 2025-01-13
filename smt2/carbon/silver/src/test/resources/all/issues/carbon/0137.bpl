@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-08 22:02:21
+// Date:         2025-01-13 13:19:21
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0137.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0137-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -722,10 +722,10 @@ procedure test(xs: (Seq Ref)) returns ()
 {
   var QPMask: MaskType;
   var xx: Ref;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var perm: Perm;
   var freshVersion: FrameType;
   var newPMask: PMaskType;
@@ -803,12 +803,12 @@ procedure test(xs: (Seq Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: fold acc(wrap(xs), write) -- 0137.vpr@16.3--16.21
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     havoc QPMask;
     
     // -- check that the permission amount is positive
@@ -878,8 +878,8 @@ procedure test(xs: (Seq Ref)) returns ()
   // -- Translating statement: unfold acc(wrap(xs), write) -- 0137.vpr@17.3--17.23
     assume wrap#trigger(Heap, wrap(xs));
     assume Heap[null, wrap(xs)] == FrameFragment(wrap#condqp1(Heap, xs));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding wrap(xs) might fail. There might be insufficient permission to access wrap(xs) (0137.vpr@17.3--17.23) [194754]"}
@@ -930,8 +930,8 @@ procedure test(xs: (Seq Ref)) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale (forall x: Ref :: { (x in xs) } { fun(x.f) } (x in xs) ==> fun(x.f)) -- 0137.vpr@18.3--18.47
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall x: Ref :: { (x in xs) } { fun(x.f) } (x in xs) ==> fun(x.f))
       if (*) {

@@ -696,13 +696,13 @@
 (declare-const fuel%vstd!view.impl&%12.view. FuelId)
 (declare-const fuel%vstd!view.impl&%20.view. FuelId)
 (declare-const fuel%vstd!view.impl&%24.view. FuelId)
-(declare-const fuel%test_crate!impl&%0.arrow_seqno. FuelId)
 (declare-const fuel%test_crate!impl&%0.arrow_other. FuelId)
+(declare-const fuel%test_crate!impl&%0.arrow_seqno. FuelId)
 (declare-const fuel%test_crate!impl&%0.arrow_Message_seqno. FuelId)
 (declare-const fuel%test_crate!impl&%0.arrow_Message_other. FuelId)
 (declare-const fuel%test_crate!impl&%1.view. FuelId)
-(declare-const fuel%test_crate!impl&%2.arrow_seqno. FuelId)
 (declare-const fuel%test_crate!impl&%2.arrow_other. FuelId)
+(declare-const fuel%test_crate!impl&%2.arrow_seqno. FuelId)
 (declare-const fuel%test_crate!impl&%2.arrow_Message_seqno. FuelId)
 (declare-const fuel%test_crate!impl&%2.arrow_Message_other. FuelId)
 (declare-const fuel%test_crate!impl&%3.view. FuelId)
@@ -728,9 +728,9 @@
   fuel%vstd!seq.axiom_seq_ext_equal. fuel%vstd!seq.axiom_seq_ext_equal_deep. fuel%vstd!view.impl&%0.view.
   fuel%vstd!view.impl&%2.view. fuel%vstd!view.impl&%4.view. fuel%vstd!view.impl&%6.view.
   fuel%vstd!view.impl&%10.view. fuel%vstd!view.impl&%12.view. fuel%vstd!view.impl&%20.view.
-  fuel%vstd!view.impl&%24.view. fuel%test_crate!impl&%0.arrow_seqno. fuel%test_crate!impl&%0.arrow_other.
+  fuel%vstd!view.impl&%24.view. fuel%test_crate!impl&%0.arrow_other. fuel%test_crate!impl&%0.arrow_seqno.
   fuel%test_crate!impl&%0.arrow_Message_seqno. fuel%test_crate!impl&%0.arrow_Message_other.
-  fuel%test_crate!impl&%1.view. fuel%test_crate!impl&%2.arrow_seqno. fuel%test_crate!impl&%2.arrow_other.
+  fuel%test_crate!impl&%1.view. fuel%test_crate!impl&%2.arrow_other. fuel%test_crate!impl&%2.arrow_seqno.
   fuel%test_crate!impl&%2.arrow_Message_seqno. fuel%test_crate!impl&%2.arrow_Message_other.
   fuel%test_crate!impl&%3.view. fuel%vstd!array.group_array_axioms. fuel%vstd!map.group_map_axioms.
   fuel%vstd!multiset.group_multiset_axioms. fuel%vstd!raw_ptr.group_raw_ptr_axioms.
@@ -1900,11 +1900,11 @@
 ;; Function-Decl vstd::seq::impl&%0::spec_index
 (declare-fun vstd!seq.impl&%0.spec_index.? (Dcr Type Poly Poly) Poly)
 
-;; Function-Decl test_crate::SingleMessage::arrow_seqno
-(declare-fun test_crate!impl&%0.arrow_seqno.? (Poly) Int)
-
 ;; Function-Decl test_crate::SingleMessage::arrow_other
 (declare-fun test_crate!impl&%0.arrow_other.? (Poly) Int)
+
+;; Function-Decl test_crate::SingleMessage::arrow_seqno
+(declare-fun test_crate!impl&%0.arrow_seqno.? (Poly) Int)
 
 ;; Function-Decl test_crate::SingleMessage::arrow_Message_seqno
 (declare-fun test_crate!impl&%0.arrow_Message_seqno.? (Poly) Int)
@@ -1918,11 +1918,11 @@
 ;; Function-Decl test_crate::CPacket::view
 (declare-fun test_crate!impl&%1.view.? (Poly) test_crate!Packet.)
 
-;; Function-Decl test_crate::CSingleMessage::arrow_seqno
-(declare-fun test_crate!impl&%2.arrow_seqno.? (Poly) Int)
-
 ;; Function-Decl test_crate::CSingleMessage::arrow_other
 (declare-fun test_crate!impl&%2.arrow_other.? (Poly) Int)
+
+;; Function-Decl test_crate::CSingleMessage::arrow_seqno
+(declare-fun test_crate!impl&%2.arrow_seqno.? (Poly) Int)
 
 ;; Function-Decl test_crate::CSingleMessage::arrow_Message_seqno
 (declare-fun test_crate!impl&%2.arrow_Message_seqno.? (Poly) Int)
@@ -2497,32 +2497,6 @@
     :skolemid skolem_internal_vstd!view.View.view.?_definition
 ))))
 
-;; Function-Axioms test_crate::SingleMessage::arrow_seqno
-(assert
- (fuel_bool_default fuel%test_crate!impl&%0.arrow_seqno.)
-)
-(assert
- (=>
-  (fuel_bool fuel%test_crate!impl&%0.arrow_seqno.)
-  (forall ((self! Poly)) (!
-    (= (test_crate!impl&%0.arrow_seqno.? self!) (test_crate!SingleMessage./Message/seqno
-      (%Poly%test_crate!SingleMessage. self!)
-    ))
-    :pattern ((test_crate!impl&%0.arrow_seqno.? self!))
-    :qid internal_test_crate!impl&__0.arrow_seqno.?_definition
-    :skolemid skolem_internal_test_crate!impl&__0.arrow_seqno.?_definition
-))))
-(assert
- (forall ((self! Poly)) (!
-   (=>
-    (has_type self! TYPE%test_crate!SingleMessage.)
-    (<= 0 (test_crate!impl&%0.arrow_seqno.? self!))
-   )
-   :pattern ((test_crate!impl&%0.arrow_seqno.? self!))
-   :qid internal_test_crate!impl&__0.arrow_seqno.?_pre_post_definition
-   :skolemid skolem_internal_test_crate!impl&__0.arrow_seqno.?_pre_post_definition
-)))
-
 ;; Function-Axioms test_crate::SingleMessage::arrow_other
 (assert
  (fuel_bool_default fuel%test_crate!impl&%0.arrow_other.)
@@ -2547,6 +2521,32 @@
    :pattern ((test_crate!impl&%0.arrow_other.? self!))
    :qid internal_test_crate!impl&__0.arrow_other.?_pre_post_definition
    :skolemid skolem_internal_test_crate!impl&__0.arrow_other.?_pre_post_definition
+)))
+
+;; Function-Axioms test_crate::SingleMessage::arrow_seqno
+(assert
+ (fuel_bool_default fuel%test_crate!impl&%0.arrow_seqno.)
+)
+(assert
+ (=>
+  (fuel_bool fuel%test_crate!impl&%0.arrow_seqno.)
+  (forall ((self! Poly)) (!
+    (= (test_crate!impl&%0.arrow_seqno.? self!) (test_crate!SingleMessage./Message/seqno
+      (%Poly%test_crate!SingleMessage. self!)
+    ))
+    :pattern ((test_crate!impl&%0.arrow_seqno.? self!))
+    :qid internal_test_crate!impl&__0.arrow_seqno.?_definition
+    :skolemid skolem_internal_test_crate!impl&__0.arrow_seqno.?_definition
+))))
+(assert
+ (forall ((self! Poly)) (!
+   (=>
+    (has_type self! TYPE%test_crate!SingleMessage.)
+    (<= 0 (test_crate!impl&%0.arrow_seqno.? self!))
+   )
+   :pattern ((test_crate!impl&%0.arrow_seqno.? self!))
+   :qid internal_test_crate!impl&__0.arrow_seqno.?_pre_post_definition
+   :skolemid skolem_internal_test_crate!impl&__0.arrow_seqno.?_pre_post_definition
 )))
 
 ;; Function-Axioms test_crate::SingleMessage::arrow_Message_seqno
@@ -2656,32 +2656,6 @@
    :skolemid skolem_internal_test_crate!impl&__1.view.?_pre_post_definition
 )))
 
-;; Function-Axioms test_crate::CSingleMessage::arrow_seqno
-(assert
- (fuel_bool_default fuel%test_crate!impl&%2.arrow_seqno.)
-)
-(assert
- (=>
-  (fuel_bool fuel%test_crate!impl&%2.arrow_seqno.)
-  (forall ((self! Poly)) (!
-    (= (test_crate!impl&%2.arrow_seqno.? self!) (test_crate!CSingleMessage./Message/seqno
-      (%Poly%test_crate!CSingleMessage. self!)
-    ))
-    :pattern ((test_crate!impl&%2.arrow_seqno.? self!))
-    :qid internal_test_crate!impl&__2.arrow_seqno.?_definition
-    :skolemid skolem_internal_test_crate!impl&__2.arrow_seqno.?_definition
-))))
-(assert
- (forall ((self! Poly)) (!
-   (=>
-    (has_type self! TYPE%test_crate!CSingleMessage.)
-    (uInv 64 (test_crate!impl&%2.arrow_seqno.? self!))
-   )
-   :pattern ((test_crate!impl&%2.arrow_seqno.? self!))
-   :qid internal_test_crate!impl&__2.arrow_seqno.?_pre_post_definition
-   :skolemid skolem_internal_test_crate!impl&__2.arrow_seqno.?_pre_post_definition
-)))
-
 ;; Function-Axioms test_crate::CSingleMessage::arrow_other
 (assert
  (fuel_bool_default fuel%test_crate!impl&%2.arrow_other.)
@@ -2706,6 +2680,32 @@
    :pattern ((test_crate!impl&%2.arrow_other.? self!))
    :qid internal_test_crate!impl&__2.arrow_other.?_pre_post_definition
    :skolemid skolem_internal_test_crate!impl&__2.arrow_other.?_pre_post_definition
+)))
+
+;; Function-Axioms test_crate::CSingleMessage::arrow_seqno
+(assert
+ (fuel_bool_default fuel%test_crate!impl&%2.arrow_seqno.)
+)
+(assert
+ (=>
+  (fuel_bool fuel%test_crate!impl&%2.arrow_seqno.)
+  (forall ((self! Poly)) (!
+    (= (test_crate!impl&%2.arrow_seqno.? self!) (test_crate!CSingleMessage./Message/seqno
+      (%Poly%test_crate!CSingleMessage. self!)
+    ))
+    :pattern ((test_crate!impl&%2.arrow_seqno.? self!))
+    :qid internal_test_crate!impl&__2.arrow_seqno.?_definition
+    :skolemid skolem_internal_test_crate!impl&__2.arrow_seqno.?_definition
+))))
+(assert
+ (forall ((self! Poly)) (!
+   (=>
+    (has_type self! TYPE%test_crate!CSingleMessage.)
+    (uInv 64 (test_crate!impl&%2.arrow_seqno.? self!))
+   )
+   :pattern ((test_crate!impl&%2.arrow_seqno.? self!))
+   :qid internal_test_crate!impl&__2.arrow_seqno.?_pre_post_definition
+   :skolemid skolem_internal_test_crate!impl&__2.arrow_seqno.?_pre_post_definition
 )))
 
 ;; Function-Axioms test_crate::CSingleMessage::arrow_Message_seqno

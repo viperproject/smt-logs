@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-08 21:25:18
+; Started: 2025-01-13 12:41:55
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -129,18 +129,18 @@
 (assert (forall ((s@$ $Snap)) (!
   (= (globalRd%limited s@$) (globalRd s@$))
   :pattern ((globalRd s@$))
-  :qid |quant-u-24962|)))
+  :qid |quant-u-25069|)))
 (assert (forall ((s@$ $Snap)) (!
   (as globalRd%stateless  Bool)
   :pattern ((globalRd%limited s@$))
-  :qid |quant-u-24963|)))
+  :qid |quant-u-25070|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@0@00 (globalRd%limited s@$))) (=>
     (globalRd%precondition s@$)
     (and (< $Perm.No result@0@00) (< result@0@00 $Perm.Write))))
   :pattern ((globalRd%limited s@$))
-  :qid |quant-u-24964|)))
+  :qid |quant-u-25071|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@0@00 (globalRd%limited s@$))) true)
   :pattern ((globalRd%limited s@$))
-  :qid |quant-u-24965|)))
+  :qid |quant-u-25072|)))

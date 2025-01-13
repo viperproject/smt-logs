@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-08 21:20:45
+; Started: 2025-01-13 12:37:12
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -426,11 +426,11 @@
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   (= (vals%limited s@$ x@0@00) (vals s@$ x@0@00))
   :pattern ((vals s@$ x@0@00))
-  :qid |quant-u-19486|)))
+  :qid |quant-u-19593|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   (vals%stateless x@0@00)
   :pattern ((vals%limited s@$ x@0@00))
-  :qid |quant-u-19487|)))
+  :qid |quant-u-19594|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   (=>
     (vals%precondition s@$ x@0@00)
@@ -446,7 +446,7 @@
           (vals%limited ($Snap.second ($Snap.second ($Snap.second ($Snap.second s@$)))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second s@$))))))))))
   :pattern ((vals s@$ x@0@00))
   :pattern ((vals%stateless x@0@00) (Tree%trigger s@$ x@0@00))
-  :qid |quant-u-19490|)))
+  :qid |quant-u-19597|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   (=>
     (vals%precondition s@$ x@0@00)
@@ -457,15 +457,15 @@
         (vals%precondition ($Snap.first ($Snap.second ($Snap.second s@$))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$))))
         (vals%precondition ($Snap.second ($Snap.second ($Snap.second ($Snap.second s@$)))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second s@$)))))))))
   :pattern ((vals s@$ x@0@00))
-  :qid |quant-u-19491|)))
+  :qid |quant-u-19598|)))
 (assert (forall ((s@$ $Snap) (x@2@00 $Ref)) (!
   (= (val%limited s@$ x@2@00) (val s@$ x@2@00))
   :pattern ((val s@$ x@2@00))
-  :qid |quant-u-19488|)))
+  :qid |quant-u-19595|)))
 (assert (forall ((s@$ $Snap) (x@2@00 $Ref)) (!
   (val%stateless x@2@00)
   :pattern ((val%limited s@$ x@2@00))
-  :qid |quant-u-19489|)))
+  :qid |quant-u-19596|)))
 (assert (forall ((s@$ $Snap) (x@2@00 $Ref)) (!
   (=>
     (val%precondition s@$ x@2@00)
@@ -473,11 +473,11 @@
       (val s@$ x@2@00)
       ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second s@$)))))
   :pattern ((val s@$ x@2@00))
-  :qid |quant-u-19492|)))
+  :qid |quant-u-19599|)))
 (assert (forall ((s@$ $Snap) (x@2@00 $Ref)) (!
   true
   :pattern ((val s@$ x@2@00))
-  :qid |quant-u-19493|)))
+  :qid |quant-u-19600|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- tree_delete_min ----------
@@ -942,7 +942,7 @@
               ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@4@01)))))))))
       $Snap.unit))
   :pattern ((MWSF_apply mwsf@11@01 $t@10@01))
-  :qid |quant-u-19494|)))
+  :qid |quant-u-19601|)))
 ; [eval] plvs[1..]
 ; [eval] old(vals(x))[1..]
 ; [eval] old(vals(x))
@@ -974,7 +974,7 @@
               ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@4@01)))))))))
       $Snap.unit))
   :pattern ((MWSF_apply mwsf@11@01 $t@10@01))
-  :qid |quant-u-19495|)))
+  :qid |quant-u-19602|)))
 (assert true)
 (declare-const oldP@12@01 $Ref)
 (declare-const oldPlvs@13@01 Seq<Int>)
@@ -1598,7 +1598,7 @@
 (check-sat)
 ; unknown
 (pop) ; 12
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (check-sat)
 ; unknown
@@ -1644,7 +1644,7 @@
 (check-sat)
 ; unknown
 (pop) ; 12
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (check-sat)
 ; unknown
@@ -1659,7 +1659,7 @@
 (check-sat)
 ; unknown
 (pop) ; 12
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (check-sat)
 ; unknown
@@ -1674,7 +1674,7 @@
 (check-sat)
 ; unknown
 (pop) ; 12
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (check-sat)
 ; unknown
@@ -1888,7 +1888,7 @@
           $Snap.unit))))
       $Snap.unit))
   :pattern ((MWSF_apply mwsf@22@01 $t@21@01))
-  :qid |quant-u-19496|)))
+  :qid |quant-u-19603|)))
 ; [eval] plvs[1..]
 ; [eval] old(vals(x))[1..]
 ; [eval] old(vals(x))
@@ -1939,7 +1939,7 @@
           $Snap.unit))))
       $Snap.unit))
   :pattern ((MWSF_apply mwsf@22@01 $t@21@01))
-  :qid |quant-u-19497|)))
+  :qid |quant-u-19604|)))
 (assert true)
 ; Loop head block: Re-establish invariant
 ; [eval] p != null

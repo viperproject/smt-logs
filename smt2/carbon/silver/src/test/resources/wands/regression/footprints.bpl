@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-08 21:48:22
+// Date:         2025-01-13 13:05:16
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/footprints.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/footprints-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -293,18 +293,18 @@ procedure test1(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var Ops_1Heap: HeapType;
   var Ops_1Mask: MaskType;
   var b_1_1: bool;
   var UsedHeap: HeapType;
   var UsedMask: MaskType;
   var b_2: bool;
-  var Labellhs1Mask: MaskType;
   var Labellhs1Heap: HeapType;
+  var Labellhs1Mask: MaskType;
   var boolCur: bool;
   var Used_1Heap: HeapType;
   var Used_1Mask: MaskType;
@@ -348,12 +348,12 @@ procedure test1(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert x.l != null -- footprints.vpr@10.3--10.21
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of x.l != null
       assert {:msg "  Assert might fail. There might be insufficient permission to access x.l (footprints.vpr@10.10--10.21) [131523]"}
@@ -381,8 +381,8 @@ procedure test1(x: Ref) returns ()
     
     // -- Translating statement: label lhs1 -- footprints.vpr@13.11--13.46
       lhs1:
-      Labellhs1Mask := Ops_1Mask;
       Labellhs1Heap := Ops_1Heap;
+      Labellhs1Mask := Ops_1Mask;
       b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);
     boolCur := true;
     // Translating exec of non-ghost operationacc(x.l, write) && acc(x.l.v, write)
@@ -529,18 +529,18 @@ procedure test2(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var Ops_3Heap: HeapType;
   var Ops_3Mask: MaskType;
   var b_6: bool;
   var Used_2Heap: HeapType;
   var Used_2Mask: MaskType;
   var b_5: bool;
-  var Labellhs3Mask: MaskType;
   var Labellhs3Heap: HeapType;
+  var Labellhs3Mask: MaskType;
   var boolCur_1: bool;
   var Used_3Heap: HeapType;
   var Used_3Mask: MaskType;
@@ -591,12 +591,12 @@ procedure test2(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert x.l != null -- footprints.vpr@20.3--20.21
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of x.l != null
       assert {:msg "  Assert might fail. There might be insufficient permission to access x.l (footprints.vpr@20.10--20.21) [131533]"}
@@ -636,8 +636,8 @@ procedure test2(x: Ref) returns ()
     
     // -- Translating statement: label lhs3 -- footprints.vpr@23.11--23.61
       lhs3:
-      Labellhs3Mask := Ops_3Mask;
       Labellhs3Heap := Ops_3Heap;
+      Labellhs3Mask := Ops_3Mask;
       b_6 := b_6 && state(Ops_3Heap, Ops_3Mask);
     boolCur_1 := true;
     // Translating exec of non-ghost operationacc(x.l, write) && acc(x.l.v, write)
@@ -784,22 +784,22 @@ procedure test3(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var Ops_5Heap: HeapType;
   var Ops_5Mask: MaskType;
   var b_11: bool;
   var Used_4Heap: HeapType;
   var Used_4Mask: MaskType;
   var b_10: bool;
-  var Labellhs5Mask: MaskType;
   var Labellhs5Heap: HeapType;
+  var Labellhs5Mask: MaskType;
   var boolCur_2: bool;
   var Used_5Heap: HeapType;
   var Used_5Mask: MaskType;
   var b_12: bool;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -820,8 +820,8 @@ procedure test3(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: x.v := true -- footprints.vpr@33.3--33.14
     assert {:msg "  Assignment might fail. There might be insufficient permission to access x.v (footprints.vpr@33.3--33.14) [131541]"}
@@ -845,8 +845,8 @@ procedure test3(x: Ref) returns ()
     
     // -- Translating statement: label lhs5 -- footprints.vpr@39.11--39.23
       lhs5:
-      Labellhs5Mask := Ops_5Mask;
       Labellhs5Heap := Ops_5Heap;
+      Labellhs5Mask := Ops_5Mask;
       b_11 := b_11 && state(Ops_5Heap, Ops_5Mask);
     boolCur_2 := true;
     // Translating exec of non-ghost operationx.v
@@ -877,8 +877,8 @@ procedure test3(x: Ref) returns ()
   // -- Translating statement: apply true --* x.v -- footprints.vpr@43.3--43.21
     
     // -- check if wand is held and remove an instance
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       // permLe
       assert {:msg "  Applying wand might fail. Magic wand instance not found. (footprints.vpr@43.3--43.21) [131545]"}
         FullPerm <= Mask[null, wand_2(true, x)];
@@ -886,8 +886,8 @@ procedure test3(x: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- check if LHS holds and remove permissions 
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
     assume state(Heap, Mask);
     
     // -- inhale the RHS of the wand
@@ -900,8 +900,8 @@ procedure test3(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- footprints.vpr@44.3--44.15
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion false might not hold. (footprints.vpr@44.10--44.15) [131547]"}
       false;
     assume state(Heap, Mask);

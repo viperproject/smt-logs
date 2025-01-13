@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-08 21:55:23
+// Date:         2025-01-13 13:12:18
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/annotation/opaque.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/annotation/opaque-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -241,8 +241,8 @@ function  isGreaterOne#triggerStateless(i: int): bool;
 procedure isGreaterOne#definedness(i: int) returns (Result: bool)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -258,8 +258,8 @@ procedure isGreaterOne#definedness(i: int) returns (Result: bool)
     Result := i > 1;
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     if (i > 60) {
       assert {:msg "  Postcondition of isGreaterOne might not hold. Assertion result might not hold. (opaque.vpr@9.13--9.32) [152706]"}
         Result;
@@ -312,8 +312,8 @@ procedure isGreaterOne2#definedness(r_1: Ref) returns (Result: bool)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -341,8 +341,8 @@ procedure isGreaterOne2#definedness(r_1: Ref) returns (Result: bool)
         HasDirectPerm(Mask, r_1, f_7);
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Precondition of function isGreaterOne might not hold. Assertion r.f > -60 might not hold. (opaque.vpr@16.3--16.20) [152709]"}
           Heap[r_1, f_7] > -60;
         // Stop execution
@@ -353,8 +353,8 @@ procedure isGreaterOne2#definedness(r_1: Ref) returns (Result: bool)
     Result := isGreaterOne'(Heap, Heap[r_1, f_7]);
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of r.f > 60
       assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.f (opaque.vpr@15.13--15.34) [152710]"}
@@ -415,8 +415,8 @@ procedure isGreaterOne22#definedness(r_1: Ref) returns (Result: bool)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -444,8 +444,8 @@ procedure isGreaterOne22#definedness(r_1: Ref) returns (Result: bool)
         HasDirectPerm(Mask, r_1, f_7);
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Precondition of function isGreaterOne might not hold. Assertion r.f > -60 might not hold. (opaque.vpr@24.3--24.20) [152714]"}
           Heap[r_1, f_7] > -60;
         // Stop execution
@@ -456,8 +456,8 @@ procedure isGreaterOne22#definedness(r_1: Ref) returns (Result: bool)
     Result := isGreaterOne'(Heap, Heap[r_1, f_7]);
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of r.f > 60
       assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.f (opaque.vpr@21.13--21.34) [152715]"}
@@ -520,8 +520,8 @@ procedure isGreaterOne3#definedness(r_1: Ref) returns (Result: bool)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -549,8 +549,8 @@ procedure isGreaterOne3#definedness(r_1: Ref) returns (Result: bool)
         HasDirectPerm(Mask, r_1, f_7);
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Precondition of function isGreaterOne might not hold. Assertion r.f > -60 might not hold. (opaque.vpr@30.3--30.30) [152721]"}
           Heap[r_1, f_7] > -60;
         // Stop execution
@@ -561,8 +561,8 @@ procedure isGreaterOne3#definedness(r_1: Ref) returns (Result: bool)
     Result := isGreaterOne(Heap, Heap[r_1, f_7]);
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of r.f > 60
       assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.f (opaque.vpr@29.13--29.34) [152722]"}
@@ -623,8 +623,8 @@ procedure isGreaterOne32#definedness(r_1: Ref) returns (Result: bool)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -652,8 +652,8 @@ procedure isGreaterOne32#definedness(r_1: Ref) returns (Result: bool)
         HasDirectPerm(Mask, r_1, f_7);
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Precondition of function isGreaterOne might not hold. Assertion r.f > -60 might not hold. (opaque.vpr@37.3--37.30) [152726]"}
           Heap[r_1, f_7] > -60;
         // Stop execution
@@ -664,8 +664,8 @@ procedure isGreaterOne32#definedness(r_1: Ref) returns (Result: bool)
     Result := isGreaterOne(Heap, Heap[r_1, f_7]);
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of r.f > 60
       assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.f (opaque.vpr@35.13--35.34) [152727]"}
@@ -728,8 +728,8 @@ procedure isGreaterOne33#definedness(r_1: Ref) returns (Result: bool)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -752,8 +752,8 @@ procedure isGreaterOne33#definedness(r_1: Ref) returns (Result: bool)
         HasDirectPerm(Mask, r_1, f_7);
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Precondition of function isGreaterOne might not hold. Assertion r.f > -60 might not hold. (opaque.vpr@44.3--44.30) [152732]"}
           Heap[r_1, f_7] > -60;
         // Stop execution
@@ -764,8 +764,8 @@ procedure isGreaterOne33#definedness(r_1: Ref) returns (Result: bool)
     Result := isGreaterOne(Heap, Heap[r_1, f_7]);
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of r.f > 60
       assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.f (opaque.vpr@42.13--42.34) [152733]"}
@@ -822,8 +822,8 @@ procedure isGreaterOne34#definedness(r_1: Ref) returns (Result: bool)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -851,8 +851,8 @@ procedure isGreaterOne34#definedness(r_1: Ref) returns (Result: bool)
         HasDirectPerm(Mask, r_1, f_7);
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Precondition of function isGreaterOne might not hold. Assertion r.f > -60 might not hold. (opaque.vpr@49.3--49.30) [152737]"}
           Heap[r_1, f_7] > -60;
         // Stop execution
@@ -863,8 +863,8 @@ procedure isGreaterOne34#definedness(r_1: Ref) returns (Result: bool)
     Result := isGreaterOne(Heap, Heap[r_1, f_7]);
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of r.f > 60
       assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.f (opaque.vpr@48.13--48.34) [152738]"}
@@ -921,8 +921,8 @@ procedure isGreaterOne35#definedness(r_1: Ref) returns (Result: bool)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -950,8 +950,8 @@ procedure isGreaterOne35#definedness(r_1: Ref) returns (Result: bool)
         HasDirectPerm(Mask, r_1, f_7);
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Precondition of function isGreaterOne might not hold. Assertion r.f > -60 might not hold. (opaque.vpr@54.3--54.20) [152742]"}
           Heap[r_1, f_7] > -60;
         // Stop execution
@@ -962,8 +962,8 @@ procedure isGreaterOne35#definedness(r_1: Ref) returns (Result: bool)
     Result := isGreaterOne'(Heap, Heap[r_1, f_7]);
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of r.f > 60
       assert {:msg "  Contract might not be well-formed. There might be insufficient permission to access r.f (opaque.vpr@53.13--53.34) [152743]"}
@@ -1208,8 +1208,8 @@ procedure funP#definedness(x: Ref) returns (Result: int)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1231,8 +1231,8 @@ procedure funP#definedness(x: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume P#trigger(UnfoldingHeap, P(x));
       assume UnfoldingHeap[null, P(x)] == FrameFragment(UnfoldingHeap[x, f_7]);
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access P(x) (opaque.vpr@298.1--303.2) [152745]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, P(x)];
@@ -1294,8 +1294,8 @@ procedure funP2#definedness(x: Ref) returns (Result: int)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1317,8 +1317,8 @@ procedure funP2#definedness(x: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume P#trigger(UnfoldingHeap, P(x));
       assume UnfoldingHeap[null, P(x)] == FrameFragment(UnfoldingHeap[x, f_7]);
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access P(x) (opaque.vpr@305.1--309.2) [152747]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, P(x)];
@@ -1400,10 +1400,10 @@ procedure P#definedness(x: Ref) returns ()
 procedure mPre(j_9: int) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var tmp: bool;
   
   // -- Initializing the state
@@ -1415,16 +1415,16 @@ procedure mPre(j_9: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: tmp := isGreaterOne(j) -- opaque.vpr@61.5--61.27
     
     // -- Check definedness of isGreaterOne(j)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Precondition of function isGreaterOne might not hold. Assertion j > -60 might not hold. (opaque.vpr@61.12--61.27) [152749]"}
           j_9 > -60;
         // Stop execution
@@ -1441,10 +1441,10 @@ procedure mPre(j_9: int) returns ()
 procedure mPre2(j_9: int) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var tmp: bool;
   
   // -- Initializing the state
@@ -1456,8 +1456,8 @@ procedure mPre2(j_9: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: tmp := @reveal()
   //   (isGreaterOne(j)) -- opaque.vpr@68.5--68.37
@@ -1465,8 +1465,8 @@ procedure mPre2(j_9: int) returns ()
     // -- Check definedness of @reveal() (isGreaterOne(j))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Precondition of function isGreaterOne might not hold. Assertion j > -60 might not hold. (opaque.vpr@68.12--68.37) [152750]"}
           j_9 > -60;
         // Stop execution
@@ -1483,10 +1483,10 @@ procedure mPre2(j_9: int) returns ()
 procedure mPost() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var tmp: bool;
   
   // -- Initializing the state
@@ -1498,16 +1498,16 @@ procedure mPost() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: tmp := isGreaterOne(70) -- opaque.vpr@74.5--74.28
     
     // -- Check definedness of isGreaterOne(70)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         // Stop execution
         assume false;
       }
@@ -1515,8 +1515,8 @@ procedure mPost() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert tmp -- opaque.vpr@75.5--75.15
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion tmp might not hold. (opaque.vpr@75.12--75.15) [152751]"}
       tmp;
     assume state(Heap, Mask);
@@ -1529,10 +1529,10 @@ procedure mPost() returns ()
 procedure mPost2() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var tmp: bool;
   
   // -- Initializing the state
@@ -1544,8 +1544,8 @@ procedure mPost2() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: tmp := @reveal()
   //   (isGreaterOne(70)) -- opaque.vpr@81.5--81.38
@@ -1553,8 +1553,8 @@ procedure mPost2() returns ()
     // -- Check definedness of @reveal() (isGreaterOne(70))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         // Stop execution
         assume false;
       }
@@ -1562,8 +1562,8 @@ procedure mPost2() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert tmp -- opaque.vpr@82.5--82.15
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion tmp might not hold. (opaque.vpr@82.12--82.15) [152752]"}
       tmp;
     assume state(Heap, Mask);
@@ -1576,10 +1576,10 @@ procedure mPost2() returns ()
 procedure mDef(j_9: int) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1594,8 +1594,8 @@ procedure mDef(j_9: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale isGreaterOne(j) -- opaque.vpr@88.12--88.27
     assume state(Heap, Mask);
@@ -1603,8 +1603,8 @@ procedure mDef(j_9: int) returns ()
     // -- Check definedness of isGreaterOne(j)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Precondition of function isGreaterOne might not hold. Assertion j > -60 might not hold. (opaque.vpr@88.12--88.27) [152753]"}
           j_9 > -60;
         // Stop execution
@@ -1615,8 +1615,8 @@ procedure mDef(j_9: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert j > 1 -- opaque.vpr@90.5--90.17
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion j > 1 might not hold. (opaque.vpr@90.12--90.17) [152754]"}
       j_9 > 1;
     assume state(Heap, Mask);
@@ -1629,10 +1629,10 @@ procedure mDef(j_9: int) returns ()
 procedure mDef2(j_9: int) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1647,8 +1647,8 @@ procedure mDef2(j_9: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: @reveal()
   // inhale @reveal()
@@ -1658,8 +1658,8 @@ procedure mDef2(j_9: int) returns ()
     // -- Check definedness of @reveal() (isGreaterOne(j))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Precondition of function isGreaterOne might not hold. Assertion j > -60 might not hold. (opaque.vpr@96.12--96.37) [152755]"}
           j_9 > -60;
         // Stop execution
@@ -1670,8 +1670,8 @@ procedure mDef2(j_9: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert j > 1 -- opaque.vpr@97.5--97.17
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion j > 1 might not hold. (opaque.vpr@97.12--97.17) [152756]"}
       j_9 > 1;
     assume state(Heap, Mask);
@@ -1684,12 +1684,12 @@ procedure mDef2(j_9: int) returns ()
 procedure mProveFun(j_9: int) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
-  var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1704,18 +1704,18 @@ procedure mProveFun(j_9: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert isGreaterOne(j) -- opaque.vpr@104.5--104.27
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of isGreaterOne(j)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         assert {:msg "  Precondition of function isGreaterOne might not hold. Assertion j > -60 might not hold. (opaque.vpr@104.12--104.27) [152757]"}
           j_9 > -60;
         // Stop execution
@@ -1733,12 +1733,12 @@ procedure mProveFun(j_9: int) returns ()
 procedure mProveFun2(j_9: int) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
-  var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1753,19 +1753,19 @@ procedure mProveFun2(j_9: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert @reveal()
   //   (isGreaterOne(j)) -- opaque.vpr@110.5--110.37
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of @reveal() (isGreaterOne(j))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         assert {:msg "  Precondition of function isGreaterOne might not hold. Assertion j > -60 might not hold. (opaque.vpr@110.12--110.37) [152759]"}
           j_9 > -60;
         // Stop execution
@@ -1783,12 +1783,12 @@ procedure mProveFun2(j_9: int) returns ()
 procedure mProveRevealed(j_9: int) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
-  var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1803,8 +1803,8 @@ procedure mProveRevealed(j_9: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale isGreaterOne(j) -- opaque.vpr@116.12--116.27
     assume state(Heap, Mask);
@@ -1812,8 +1812,8 @@ procedure mProveRevealed(j_9: int) returns ()
     // -- Check definedness of isGreaterOne(j)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Precondition of function isGreaterOne might not hold. Assertion j > -60 might not hold. (opaque.vpr@116.12--116.27) [152761]"}
           j_9 > -60;
         // Stop execution
@@ -1825,14 +1825,14 @@ procedure mProveRevealed(j_9: int) returns ()
   
   // -- Translating statement: assert @reveal()
   //   (isGreaterOne(j)) -- opaque.vpr@117.5--117.37
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of @reveal() (isGreaterOne(j))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         assert {:msg "  Precondition of function isGreaterOne might not hold. Assertion j > -60 might not hold. (opaque.vpr@117.12--117.37) [152762]"}
           j_9 > -60;
         // Stop execution
@@ -1843,8 +1843,8 @@ procedure mProveRevealed(j_9: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert j > 1 -- opaque.vpr@118.5--118.17
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion j > 1 might not hold. (opaque.vpr@118.12--118.17) [152764]"}
       j_9 > 1;
     assume state(Heap, Mask);
@@ -1857,10 +1857,10 @@ procedure mProveRevealed(j_9: int) returns ()
 procedure mProveRevealed2(j_9: int) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1875,8 +1875,8 @@ procedure mProveRevealed2(j_9: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale isGreaterOne(j) -- opaque.vpr@124.12--124.27
     assume state(Heap, Mask);
@@ -1884,8 +1884,8 @@ procedure mProveRevealed2(j_9: int) returns ()
     // -- Check definedness of isGreaterOne(j)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Precondition of function isGreaterOne might not hold. Assertion j > -60 might not hold. (opaque.vpr@124.12--124.27) [152765]"}
           j_9 > -60;
         // Stop execution
@@ -1896,8 +1896,8 @@ procedure mProveRevealed2(j_9: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert j > 1 -- opaque.vpr@126.5--126.17
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion j > 1 might not hold. (opaque.vpr@126.12--126.17) [152766]"}
       j_9 > 1;
     assume state(Heap, Mask);
@@ -1910,12 +1910,12 @@ procedure mProveRevealed2(j_9: int) returns ()
 procedure mProveOpaque(j_9: int) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
-  var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -1930,8 +1930,8 @@ procedure mProveOpaque(j_9: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: @reveal()
   // inhale @reveal()
@@ -1941,8 +1941,8 @@ procedure mProveOpaque(j_9: int) returns ()
     // -- Check definedness of @reveal() (isGreaterOne(j))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Precondition of function isGreaterOne might not hold. Assertion j > -60 might not hold. (opaque.vpr@132.12--132.37) [152767]"}
           j_9 > -60;
         // Stop execution
@@ -1953,14 +1953,14 @@ procedure mProveOpaque(j_9: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert isGreaterOne(j) -- opaque.vpr@133.5--133.27
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of isGreaterOne(j)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         assert {:msg "  Precondition of function isGreaterOne might not hold. Assertion j > -60 might not hold. (opaque.vpr@133.12--133.27) [152768]"}
           j_9 > -60;
         // Stop execution
@@ -1971,8 +1971,8 @@ procedure mProveOpaque(j_9: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- opaque.vpr@135.5--135.17
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion false might not hold. (opaque.vpr@135.12--135.17) [152770]"}
       false;
     assume state(Heap, Mask);
@@ -1986,10 +1986,10 @@ procedure mNestedFunc(r_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -2016,8 +2016,8 @@ procedure mNestedFunc(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale isGreaterOne2(r) -- opaque.vpr@141.12--141.28
     assume state(Heap, Mask);
@@ -2025,8 +2025,8 @@ procedure mNestedFunc(r_1: Ref) returns ()
     // -- Check definedness of isGreaterOne2(r)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function isGreaterOne2 might not hold. There might be insufficient permission to access r.f (opaque.vpr@141.12--141.28) [152772]"}
           NoPerm < perm ==> NoPerm < Mask[r_1, f_7];
@@ -2044,8 +2044,8 @@ procedure mNestedFunc(r_1: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert r.f > 1 -- opaque.vpr@143.5--143.19
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of r.f > 1
       assert {:msg "  Assert might fail. There might be insufficient permission to access r.f (opaque.vpr@143.12--143.19) [152774]"}
@@ -2063,10 +2063,10 @@ procedure mNestedFunc2(r_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -2093,8 +2093,8 @@ procedure mNestedFunc2(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: @reveal()
   // inhale @reveal()
@@ -2104,8 +2104,8 @@ procedure mNestedFunc2(r_1: Ref) returns ()
     // -- Check definedness of @reveal() (isGreaterOne2(r))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function isGreaterOne2 might not hold. There might be insufficient permission to access r.f (opaque.vpr@149.12--149.38) [152777]"}
           NoPerm < perm ==> NoPerm < Mask[r_1, f_7];
@@ -2123,8 +2123,8 @@ procedure mNestedFunc2(r_1: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert r.f > 1 -- opaque.vpr@151.5--151.19
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of r.f > 1
       assert {:msg "  Assert might fail. There might be insufficient permission to access r.f (opaque.vpr@151.12--151.19) [152779]"}
@@ -2142,10 +2142,10 @@ procedure mNestedFunc3(r_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -2172,8 +2172,8 @@ procedure mNestedFunc3(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale isGreaterOne3(r) -- opaque.vpr@157.12--157.28
     assume state(Heap, Mask);
@@ -2181,8 +2181,8 @@ procedure mNestedFunc3(r_1: Ref) returns ()
     // -- Check definedness of isGreaterOne3(r)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function isGreaterOne3 might not hold. There might be insufficient permission to access r.f (opaque.vpr@157.12--157.28) [152782]"}
           NoPerm < perm ==> NoPerm < Mask[r_1, f_7];
@@ -2200,8 +2200,8 @@ procedure mNestedFunc3(r_1: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert r.f > 1 -- opaque.vpr@159.5--159.19
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of r.f > 1
       assert {:msg "  Assert might fail. There might be insufficient permission to access r.f (opaque.vpr@159.12--159.19) [152784]"}
@@ -2219,10 +2219,10 @@ procedure mNestedFunc4(r_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -2249,8 +2249,8 @@ procedure mNestedFunc4(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: @reveal()
   // inhale @reveal()
@@ -2260,8 +2260,8 @@ procedure mNestedFunc4(r_1: Ref) returns ()
     // -- Check definedness of @reveal() (isGreaterOne3(r))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function isGreaterOne3 might not hold. There might be insufficient permission to access r.f (opaque.vpr@165.12--165.38) [152787]"}
           NoPerm < perm ==> NoPerm < Mask[r_1, f_7];
@@ -2279,8 +2279,8 @@ procedure mNestedFunc4(r_1: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert r.f > 1 -- opaque.vpr@166.5--166.19
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of r.f > 1
       assert {:msg "  Assert might fail. There might be insufficient permission to access r.f (opaque.vpr@166.12--166.19) [152789]"}
@@ -2298,10 +2298,10 @@ procedure mNestedFunc5(r_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -2328,8 +2328,8 @@ procedure mNestedFunc5(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale isGreaterOne34(r) -- opaque.vpr@172.12--172.29
     assume state(Heap, Mask);
@@ -2337,8 +2337,8 @@ procedure mNestedFunc5(r_1: Ref) returns ()
     // -- Check definedness of isGreaterOne34(r)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function isGreaterOne34 might not hold. There might be insufficient permission to access r.f (opaque.vpr@172.12--172.29) [152792]"}
           NoPerm < perm ==> NoPerm < Mask[r_1, f_7];
@@ -2356,8 +2356,8 @@ procedure mNestedFunc5(r_1: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert r.f > 1 -- opaque.vpr@173.5--173.19
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of r.f > 1
       assert {:msg "  Assert might fail. There might be insufficient permission to access r.f (opaque.vpr@173.12--173.19) [152794]"}
@@ -2375,10 +2375,10 @@ procedure mNestedFunc6(r_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -2405,8 +2405,8 @@ procedure mNestedFunc6(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale isGreaterOne35(r) -- opaque.vpr@179.12--179.29
     assume state(Heap, Mask);
@@ -2414,8 +2414,8 @@ procedure mNestedFunc6(r_1: Ref) returns ()
     // -- Check definedness of isGreaterOne35(r)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function isGreaterOne35 might not hold. There might be insufficient permission to access r.f (opaque.vpr@179.12--179.29) [152797]"}
           NoPerm < perm ==> NoPerm < Mask[r_1, f_7];
@@ -2433,8 +2433,8 @@ procedure mNestedFunc6(r_1: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert r.f > 1 -- opaque.vpr@181.5--181.19
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of r.f > 1
       assert {:msg "  Assert might fail. There might be insufficient permission to access r.f (opaque.vpr@181.12--181.19) [152799]"}
@@ -2451,11 +2451,11 @@ procedure mNestedFunc6(r_1: Ref) returns ()
 procedure mFac1_1() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var tmp: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -2466,8 +2466,8 @@ procedure mFac1_1() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: tmp := fac1(3) -- opaque.vpr@204.5--204.19
     
@@ -2480,8 +2480,8 @@ procedure mFac1_1() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert tmp == 6 -- opaque.vpr@206.5--206.20
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion tmp == 6 might not hold. (opaque.vpr@206.12--206.20) [152801]"}
       tmp == 6;
     assume state(Heap, Mask);
@@ -2494,11 +2494,11 @@ procedure mFac1_1() returns ()
 procedure mFac1_2() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var tmp: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -2509,8 +2509,8 @@ procedure mFac1_2() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: tmp := fac1(3) -- opaque.vpr@212.5--212.19
     
@@ -2523,8 +2523,8 @@ procedure mFac1_2() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert tmp == 3 * fac1(2) -- opaque.vpr@213.5--213.30
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of tmp == 3 * fac1(2)
       if (*) {
@@ -2536,8 +2536,8 @@ procedure mFac1_2() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert tmp == 3 * 2 * fac1(1) -- opaque.vpr@214.5--214.34
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of tmp == 3 * 2 * fac1(1)
       if (*) {
@@ -2549,8 +2549,8 @@ procedure mFac1_2() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert tmp == 6 -- opaque.vpr@215.5--215.20
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion tmp == 6 might not hold. (opaque.vpr@215.12--215.20) [152804]"}
       tmp == 6;
     assume state(Heap, Mask);
@@ -2563,11 +2563,11 @@ procedure mFac1_2() returns ()
 procedure mFac2_1() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var tmp: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -2578,8 +2578,8 @@ procedure mFac2_1() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: tmp := fac2(3) -- opaque.vpr@221.5--221.19
     
@@ -2592,8 +2592,8 @@ procedure mFac2_1() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert tmp == 6 -- opaque.vpr@223.5--223.20
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion tmp == 6 might not hold. (opaque.vpr@223.12--223.20) [152805]"}
       tmp == 6;
     assume state(Heap, Mask);
@@ -2606,11 +2606,11 @@ procedure mFac2_1() returns ()
 procedure mFac2_2() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var tmp: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -2621,8 +2621,8 @@ procedure mFac2_2() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: tmp := fac2(3) -- opaque.vpr@229.5--229.19
     
@@ -2635,8 +2635,8 @@ procedure mFac2_2() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert tmp == 3 * fac2(2) -- opaque.vpr@231.5--231.30
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of tmp == 3 * fac2(2)
       if (*) {
@@ -2655,11 +2655,11 @@ procedure mFac2_2() returns ()
 procedure mFac2_3() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var tmp: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -2670,8 +2670,8 @@ procedure mFac2_3() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: tmp := @reveal()
   //   (fac2(3)) -- opaque.vpr@237.5--237.29
@@ -2685,8 +2685,8 @@ procedure mFac2_3() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert tmp == 3 * @reveal() (fac2(2)) -- opaque.vpr@238.5--238.40
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of tmp == 3 * @reveal() (fac2(2))
       if (*) {
@@ -2698,8 +2698,8 @@ procedure mFac2_3() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert tmp == 3 * 2 * @reveal() (fac2(1)) -- opaque.vpr@239.5--239.44
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of tmp == 3 * 2 * @reveal() (fac2(1))
       if (*) {
@@ -2711,8 +2711,8 @@ procedure mFac2_3() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert tmp == 6 -- opaque.vpr@240.5--240.20
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion tmp == 6 might not hold. (opaque.vpr@240.12--240.20) [152809]"}
       tmp == 6;
     assume state(Heap, Mask);
@@ -2725,11 +2725,11 @@ procedure mFac2_3() returns ()
 procedure mFac2_4() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var tmp: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -2740,8 +2740,8 @@ procedure mFac2_4() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: tmp := @reveal()
   //   (fac2(3)) -- opaque.vpr@246.5--246.29
@@ -2755,8 +2755,8 @@ procedure mFac2_4() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert tmp == 3 * fac2(2) -- opaque.vpr@247.5--247.30
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of tmp == 3 * fac2(2)
       if (*) {
@@ -2768,8 +2768,8 @@ procedure mFac2_4() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert tmp == 3 * 2 * fac2(1) -- opaque.vpr@249.5--249.34
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of tmp == 3 * 2 * fac2(1)
       if (*) {
@@ -2788,11 +2788,11 @@ procedure mFac2_4() returns ()
 procedure mFac3_1() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var tmp: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -2803,8 +2803,8 @@ procedure mFac3_1() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: tmp := fac3(3) -- opaque.vpr@255.5--255.19
     
@@ -2817,8 +2817,8 @@ procedure mFac3_1() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert tmp == 6 -- opaque.vpr@257.5--257.20
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion tmp == 6 might not hold. (opaque.vpr@257.12--257.20) [152812]"}
       tmp == 6;
     assume state(Heap, Mask);
@@ -2831,11 +2831,11 @@ procedure mFac3_1() returns ()
 procedure mFac3_2() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var tmp: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -2846,8 +2846,8 @@ procedure mFac3_2() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: tmp := fac3(3) -- opaque.vpr@263.5--263.19
     
@@ -2860,8 +2860,8 @@ procedure mFac3_2() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert tmp == 3 * fac3(2) -- opaque.vpr@265.5--265.30
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of tmp == 3 * fac3(2)
       if (*) {
@@ -2880,11 +2880,11 @@ procedure mFac3_2() returns ()
 procedure mFac3_3() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var tmp: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -2895,8 +2895,8 @@ procedure mFac3_3() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: tmp := @reveal()
   //   (fac3(3)) -- opaque.vpr@271.5--271.29
@@ -2910,8 +2910,8 @@ procedure mFac3_3() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert tmp == 3 * @reveal() (fac3(2)) -- opaque.vpr@272.5--272.40
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of tmp == 3 * @reveal() (fac3(2))
       if (*) {
@@ -2923,8 +2923,8 @@ procedure mFac3_3() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert tmp == 3 * 2 * @reveal() (fac3(1)) -- opaque.vpr@273.5--273.44
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of tmp == 3 * 2 * @reveal() (fac3(1))
       if (*) {
@@ -2936,8 +2936,8 @@ procedure mFac3_3() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert tmp == 6 -- opaque.vpr@274.5--274.20
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion tmp == 6 might not hold. (opaque.vpr@274.12--274.20) [152816]"}
       tmp == 6;
     assume state(Heap, Mask);
@@ -2950,11 +2950,11 @@ procedure mFac3_3() returns ()
 procedure mFac3_4() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var tmp: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -2965,8 +2965,8 @@ procedure mFac3_4() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: tmp := @reveal()
   //   (fac3(3)) -- opaque.vpr@280.5--280.29
@@ -2980,8 +2980,8 @@ procedure mFac3_4() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert tmp == 3 * fac3(2) -- opaque.vpr@281.5--281.30
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of tmp == 3 * fac3(2)
       if (*) {
@@ -2993,8 +2993,8 @@ procedure mFac3_4() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert tmp == 3 * 2 * fac3(1) -- opaque.vpr@283.5--283.34
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of tmp == 3 * 2 * fac3(1)
       if (*) {
@@ -3013,11 +3013,11 @@ procedure mFac3_4() returns ()
 procedure mFac3_5() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var tmp: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -3028,8 +3028,8 @@ procedure mFac3_5() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: tmp := @reveal()
   //   (fac3(3)) -- opaque.vpr@289.5--289.29
@@ -3043,8 +3043,8 @@ procedure mFac3_5() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert tmp == 6 -- opaque.vpr@291.5--291.20
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion tmp == 6 might not hold. (opaque.vpr@291.12--291.20) [152819]"}
       tmp == 6;
     assume state(Heap, Mask);
@@ -3058,14 +3058,14 @@ procedure mFold(r_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var tmp: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var freshVersion: FrameType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -3087,8 +3087,8 @@ procedure mFold(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: tmp := r.f -- opaque.vpr@315.5--315.15
     
@@ -3099,8 +3099,8 @@ procedure mFold(r_1: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(P(r), write) -- opaque.vpr@316.5--316.14
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding P(r) might fail. There might be insufficient permission to access r.f (opaque.vpr@316.5--316.14) [152823]"}
@@ -3123,14 +3123,14 @@ procedure mFold(r_1: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert funP(r) == tmp -- opaque.vpr@318.5--318.26
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of funP(r) == tmp
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function funP might not hold. There might be insufficient permission to access P(r) (opaque.vpr@318.12--318.19) [152825]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, P(r_1)];
@@ -3154,14 +3154,14 @@ procedure mFold2(r_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var tmp: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var freshVersion: FrameType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -3183,8 +3183,8 @@ procedure mFold2(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: tmp := r.f -- opaque.vpr@325.5--325.15
     
@@ -3195,8 +3195,8 @@ procedure mFold2(r_1: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(P(r), write) -- opaque.vpr@326.5--326.14
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding P(r) might fail. There might be insufficient permission to access r.f (opaque.vpr@326.5--326.14) [152830]"}
@@ -3219,14 +3219,14 @@ procedure mFold2(r_1: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert @reveal() (funP(r)) == tmp -- opaque.vpr@327.5--327.36
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of @reveal() (funP(r)) == tmp
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function funP might not hold. There might be insufficient permission to access P(r) (opaque.vpr@327.12--327.29) [152832]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, P(r_1)];
@@ -3250,14 +3250,14 @@ procedure mFold3(r_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var tmp: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var freshVersion: FrameType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -3279,8 +3279,8 @@ procedure mFold3(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: tmp := r.f -- opaque.vpr@334.5--334.15
     
@@ -3291,8 +3291,8 @@ procedure mFold3(r_1: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(P(r), write) -- opaque.vpr@335.5--335.14
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Folding P(r) might fail. There might be insufficient permission to access r.f (opaque.vpr@335.5--335.14) [152837]"}
@@ -3315,14 +3315,14 @@ procedure mFold3(r_1: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert funP2(r) == tmp -- opaque.vpr@336.5--336.27
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of funP2(r) == tmp
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function funP2 might not hold. There might be insufficient permission to access P(r) (opaque.vpr@336.12--336.20) [152839]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, P(r_1)];

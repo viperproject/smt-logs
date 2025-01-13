@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-08 22:00:36
+// Date:         2025-01-13 13:17:32
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0282.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0282-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -246,12 +246,12 @@ procedure f1#definedness(idx_1: int) returns (Result: bool)
 procedure m1(j_9: int) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var i_2_1: int;
   
   // -- Initializing the state
@@ -267,8 +267,8 @@ procedure m1(j_9: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -294,8 +294,8 @@ procedure m1(j_9: int) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     if (*) {
       assert {:msg "  Postcondition of m1 might not hold. Assertion foo(i, j) might not hold. (0282.vpr@10.11--10.49) [191029]"}
         (foo(i_2_1, j_9): bool);
@@ -314,13 +314,13 @@ procedure m1(j_9: int) returns ()
 procedure m2() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var i: int;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var j_1: int;
   
   // -- Initializing the state
@@ -332,8 +332,8 @@ procedure m2() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: i := 0 -- 0282.vpr@14.3--14.18
     i := 0;
@@ -344,8 +344,8 @@ procedure m2() returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       assert {:msg "  The precondition of method m1 might not hold. Assertion i == 0 might not hold. (0282.vpr@15.3--15.8) [191030]"}
         i == 0;
     
@@ -358,8 +358,8 @@ procedure m2() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (forall j: Int :: { foo(j, j) } foo(j, j)) -- 0282.vpr@17.3--17.48
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (forall j: Int :: { foo(j, j) } foo(j, j))
       if (*) {
@@ -384,11 +384,11 @@ procedure m2() returns ()
 procedure m3() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var i: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var i$0: int;
   var b_24: bool;
   
@@ -401,8 +401,8 @@ procedure m3() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale (forall j: Int :: { foo(j, i) } 0 <= j && j < 10 ==> foo(j, i)) -- 0282.vpr@26.10--26.69
     
@@ -422,8 +422,8 @@ procedure m3() returns ()
     // -- Check definedness of f1(i)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         if (*) {
           if (0 <= i$0 && i$0 < 10) {
             assert {:msg "  Precondition of function f1 might not hold. Assertion foo(i$0, i) might not hold. (0282.vpr@27.18--27.23) [191032]"}

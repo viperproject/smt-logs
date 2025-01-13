@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-08 21:24:57
+; Started: 2025-01-13 12:41:33
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -714,18 +714,18 @@
 (assert (forall ((s@$ $Snap) (v@0@00 $Ref)) (!
   (= (alwaysTrue%limited s@$ v@0@00) (alwaysTrue s@$ v@0@00))
   :pattern ((alwaysTrue s@$ v@0@00))
-  :qid |quant-u-24459|)))
+  :qid |quant-u-24566|)))
 (assert (forall ((s@$ $Snap) (v@0@00 $Ref)) (!
   (alwaysTrue%stateless v@0@00)
   :pattern ((alwaysTrue%limited s@$ v@0@00))
-  :qid |quant-u-24460|)))
+  :qid |quant-u-24567|)))
 (assert (forall ((s@$ $Snap) (v@0@00 $Ref)) (!
   (let ((result@1@00 (alwaysTrue%limited s@$ v@0@00))) (=>
     (alwaysTrue%precondition s@$ v@0@00)
     (= result@1@00 true)))
   :pattern ((alwaysTrue%limited s@$ v@0@00))
-  :qid |quant-u-24461|)))
+  :qid |quant-u-24568|)))
 (assert (forall ((s@$ $Snap) (v@0@00 $Ref)) (!
   (let ((result@1@00 (alwaysTrue%limited s@$ v@0@00))) true)
   :pattern ((alwaysTrue%limited s@$ v@0@00))
-  :qid |quant-u-24462|)))
+  :qid |quant-u-24569|)))

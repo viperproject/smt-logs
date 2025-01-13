@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-08 21:24:15
+; Started: 2025-01-13 12:40:49
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -128,11 +128,11 @@
 (assert (forall ((s@$ $Snap) (r@0@00 $Ref)) (!
   (= (req%limited s@$ r@0@00) (req s@$ r@0@00))
   :pattern ((req s@$ r@0@00))
-  :qid |quant-u-23542|)))
+  :qid |quant-u-23649|)))
 (assert (forall ((s@$ $Snap) (r@0@00 $Ref)) (!
   (req%stateless r@0@00)
   :pattern ((req%limited s@$ r@0@00))
-  :qid |quant-u-23543|)))
+  :qid |quant-u-23650|)))
 ; ---------- FUNCTION actual----------
 (declare-fun r@2@00 () $Ref)
 (declare-fun result@3@00 () Int)
@@ -150,11 +150,11 @@
 (assert (forall ((s@$ $Snap) (r@2@00 $Ref)) (!
   (= (actual%limited s@$ r@2@00) (actual s@$ r@2@00))
   :pattern ((actual s@$ r@2@00))
-  :qid |quant-u-23544|)))
+  :qid |quant-u-23651|)))
 (assert (forall ((s@$ $Snap) (r@2@00 $Ref)) (!
   (actual%stateless r@2@00)
   :pattern ((actual%limited s@$ r@2@00))
-  :qid |quant-u-23545|)))
+  :qid |quant-u-23652|)))
 ; ---------- outer ----------
 (declare-const r@4@00 $Ref)
 (push) ; 1

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-08 22:08:04
+// Date:         2025-01-13 13:25:04
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0045.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0045-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -799,14 +799,14 @@ type AnyDomainType;
 procedure property01() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var l_0: (ListDomainType NaturalDomainType);
   var e_0: NaturalDomainType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var n_3_2: NaturalDomainType;
   var t_0_2: NaturalDomainType;
   var l_0_2: (ListDomainType NaturalDomainType);
@@ -821,8 +821,8 @@ procedure property01() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -902,8 +902,8 @@ procedure property01() returns ()
   }
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     if (*) {
       if (*) {
         assert {:msg "  Postcondition of property01 might not hold. Assertion (concatenate((take(n_3, (nil(t_0): List[Natural])): List[Natural]), (drop(n_3, (nil(t_0): List[Natural])): List[Natural])): List[Natural]) == (nil(t_0): List[Natural]) might not hold. (0045.vpr@438.11--459.74) [215594]"}

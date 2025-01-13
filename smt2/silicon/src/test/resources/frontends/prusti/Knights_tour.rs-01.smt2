@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-08 21:07:12
+; Started: 2025-01-13 12:23:24
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -38751,7 +38751,7 @@
 (check-sat)
 ; unknown
 (pop) ; 19
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 19
@@ -42759,3 +42759,536 @@
 (push) ; 21
 (pop) ; 21
 ; Joined path conditions
+; [eval] 0 <= _pure_3
+; [eval] _pure_3 < m_Knights_tour$$size$opensqu$0$closesqu$__$TY$__$int$()
+; [eval] m_Knights_tour$$size$opensqu$0$closesqu$__$TY$__$int$()
+(push) ; 21
+(pop) ; 21
+; Joined path conditions
+(assert (m_Knights_tour$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$5$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_Knights_tour$$VecVecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%precondition ($Snap.combine
+  ($Snap.second $t@745@01)
+  ($Snap.combine
+    $Snap.unit
+    ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit)))) val_ref@994@01 px@1009@01 py@1010@01))
+(pop) ; 20
+; Joined path conditions
+(assert (m_Knights_tour$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$5$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_Knights_tour$$VecVecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%precondition ($Snap.combine
+  ($Snap.second $t@745@01)
+  ($Snap.combine
+    $Snap.unit
+    ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit)))) val_ref@994@01 px@1009@01 py@1010@01))
+(pop) ; 19
+(push) ; 19
+; [else-branch: 83 | !(0 <= px@1009@01 && px@1009@01 < m_Knights_tour$$size$opensqu$0$closesqu$__$TY$__$int$((_, _)) && px@1009@01 != val_int@997@01 && 0 <= py@1010@01 && py@1010@01 < m_Knights_tour$$size$opensqu$0$closesqu$__$TY$__$int$((_, _)) && py@1010@01 != val_int@1000@01)]
+(assert (not
+  (and
+    (<= 0 px@1009@01)
+    (and
+      (<
+        px@1009@01
+        (m_Knights_tour$$size$opensqu$0$closesqu$__$TY$__$int$ ($Snap.combine
+          $Snap.unit
+          $Snap.unit)))
+      (and
+        (not (= px@1009@01 val_int@997@01))
+        (and
+          (<= 0 py@1010@01)
+          (and
+            (<
+              py@1010@01
+              (m_Knights_tour$$size$opensqu$0$closesqu$__$TY$__$int$ ($Snap.combine
+                $Snap.unit
+                $Snap.unit)))
+            (not (= py@1010@01 val_int@1000@01)))))))))
+(pop) ; 19
+(pop) ; 18
+; Joined path conditions
+(assert (=>
+  (and
+    (<= 0 px@1009@01)
+    (and
+      (<
+        px@1009@01
+        (m_Knights_tour$$size$opensqu$0$closesqu$__$TY$__$int$ ($Snap.combine
+          $Snap.unit
+          $Snap.unit)))
+      (and
+        (not (= px@1009@01 val_int@997@01))
+        (and
+          (<= 0 py@1010@01)
+          (and
+            (<
+              py@1010@01
+              (m_Knights_tour$$size$opensqu$0$closesqu$__$TY$__$int$ ($Snap.combine
+                $Snap.unit
+                $Snap.unit)))
+            (not (= py@1010@01 val_int@1000@01)))))))
+  (and
+    (<= 0 px@1009@01)
+    (<
+      px@1009@01
+      (m_Knights_tour$$size$opensqu$0$closesqu$__$TY$__$int$ ($Snap.combine
+        $Snap.unit
+        $Snap.unit)))
+    (not (= px@1009@01 val_int@997@01))
+    (<= 0 py@1010@01)
+    (<
+      py@1010@01
+      (m_Knights_tour$$size$opensqu$0$closesqu$__$TY$__$int$ ($Snap.combine
+        $Snap.unit
+        $Snap.unit)))
+    (not (= py@1010@01 val_int@1000@01))
+    (m_Knights_tour$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$5$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_Knights_tour$$VecVecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%precondition ($Snap.combine
+      $t@1005@01
+      ($Snap.combine
+        $Snap.unit
+        ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit)))) val_ref@994@01 px@1009@01 py@1010@01)
+    (m_Knights_tour$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$5$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_Knights_tour$$VecVecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%precondition ($Snap.combine
+      ($Snap.second $t@745@01)
+      ($Snap.combine
+        $Snap.unit
+        ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit)))) val_ref@994@01 px@1009@01 py@1010@01))))
+; Joined path conditions
+(assert (or
+  (not
+    (and
+      (<= 0 px@1009@01)
+      (and
+        (<
+          px@1009@01
+          (m_Knights_tour$$size$opensqu$0$closesqu$__$TY$__$int$ ($Snap.combine
+            $Snap.unit
+            $Snap.unit)))
+        (and
+          (not (= px@1009@01 val_int@997@01))
+          (and
+            (<= 0 py@1010@01)
+            (and
+              (<
+                py@1010@01
+                (m_Knights_tour$$size$opensqu$0$closesqu$__$TY$__$int$ ($Snap.combine
+                  $Snap.unit
+                  $Snap.unit)))
+              (not (= py@1010@01 val_int@1000@01))))))))
+  (and
+    (<= 0 px@1009@01)
+    (and
+      (<
+        px@1009@01
+        (m_Knights_tour$$size$opensqu$0$closesqu$__$TY$__$int$ ($Snap.combine
+          $Snap.unit
+          $Snap.unit)))
+      (and
+        (not (= px@1009@01 val_int@997@01))
+        (and
+          (<= 0 py@1010@01)
+          (and
+            (<
+              py@1010@01
+              (m_Knights_tour$$size$opensqu$0$closesqu$__$TY$__$int$ ($Snap.combine
+                $Snap.unit
+                $Snap.unit)))
+            (not (= py@1010@01 val_int@1000@01)))))))))
+(pop) ; 17
+; Nested auxiliary terms: globals (aux)
+; Nested auxiliary terms: non-globals (aux)
+(assert (forall ((px@1009@01 Int) (py@1010@01 Int)) (!
+  (and
+    (=>
+      (<= 0 px@1009@01)
+      (and
+        (<= 0 px@1009@01)
+        (=>
+          (<
+            px@1009@01
+            (m_Knights_tour$$size$opensqu$0$closesqu$__$TY$__$int$ ($Snap.combine
+              $Snap.unit
+              $Snap.unit)))
+          (and
+            (<
+              px@1009@01
+              (m_Knights_tour$$size$opensqu$0$closesqu$__$TY$__$int$ ($Snap.combine
+                $Snap.unit
+                $Snap.unit)))
+            (=>
+              (not (= px@1009@01 val_int@997@01))
+              (and
+                (not (= px@1009@01 val_int@997@01))
+                (=>
+                  (<= 0 py@1010@01)
+                  (and
+                    (<= 0 py@1010@01)
+                    (or
+                      (<
+                        py@1010@01
+                        (m_Knights_tour$$size$opensqu$0$closesqu$__$TY$__$int$ ($Snap.combine
+                          $Snap.unit
+                          $Snap.unit)))
+                      (not
+                        (<
+                          py@1010@01
+                          (m_Knights_tour$$size$opensqu$0$closesqu$__$TY$__$int$ ($Snap.combine
+                            $Snap.unit
+                            $Snap.unit)))))))
+                (or (<= 0 py@1010@01) (not (<= 0 py@1010@01)))))
+            (or
+              (not (= px@1009@01 val_int@997@01))
+              (= px@1009@01 val_int@997@01))))
+        (or
+          (<
+            px@1009@01
+            (m_Knights_tour$$size$opensqu$0$closesqu$__$TY$__$int$ ($Snap.combine
+              $Snap.unit
+              $Snap.unit)))
+          (not
+            (<
+              px@1009@01
+              (m_Knights_tour$$size$opensqu$0$closesqu$__$TY$__$int$ ($Snap.combine
+                $Snap.unit
+                $Snap.unit)))))))
+    (or (<= 0 px@1009@01) (not (<= 0 px@1009@01)))
+    (=>
+      (and
+        (<= 0 px@1009@01)
+        (and
+          (<
+            px@1009@01
+            (m_Knights_tour$$size$opensqu$0$closesqu$__$TY$__$int$ ($Snap.combine
+              $Snap.unit
+              $Snap.unit)))
+          (and
+            (not (= px@1009@01 val_int@997@01))
+            (and
+              (<= 0 py@1010@01)
+              (and
+                (<
+                  py@1010@01
+                  (m_Knights_tour$$size$opensqu$0$closesqu$__$TY$__$int$ ($Snap.combine
+                    $Snap.unit
+                    $Snap.unit)))
+                (not (= py@1010@01 val_int@1000@01)))))))
+      (and
+        (<= 0 px@1009@01)
+        (<
+          px@1009@01
+          (m_Knights_tour$$size$opensqu$0$closesqu$__$TY$__$int$ ($Snap.combine
+            $Snap.unit
+            $Snap.unit)))
+        (not (= px@1009@01 val_int@997@01))
+        (<= 0 py@1010@01)
+        (<
+          py@1010@01
+          (m_Knights_tour$$size$opensqu$0$closesqu$__$TY$__$int$ ($Snap.combine
+            $Snap.unit
+            $Snap.unit)))
+        (not (= py@1010@01 val_int@1000@01))
+        (m_Knights_tour$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$5$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_Knights_tour$$VecVecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%precondition ($Snap.combine
+          $t@1005@01
+          ($Snap.combine
+            $Snap.unit
+            ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit)))) val_ref@994@01 px@1009@01 py@1010@01)
+        (m_Knights_tour$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$5$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_Knights_tour$$VecVecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%precondition ($Snap.combine
+          ($Snap.second $t@745@01)
+          ($Snap.combine
+            $Snap.unit
+            ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit)))) val_ref@994@01 px@1009@01 py@1010@01)))
+    (or
+      (not
+        (and
+          (<= 0 px@1009@01)
+          (and
+            (<
+              px@1009@01
+              (m_Knights_tour$$size$opensqu$0$closesqu$__$TY$__$int$ ($Snap.combine
+                $Snap.unit
+                $Snap.unit)))
+            (and
+              (not (= px@1009@01 val_int@997@01))
+              (and
+                (<= 0 py@1010@01)
+                (and
+                  (<
+                    py@1010@01
+                    (m_Knights_tour$$size$opensqu$0$closesqu$__$TY$__$int$ ($Snap.combine
+                      $Snap.unit
+                      $Snap.unit)))
+                  (not (= py@1010@01 val_int@1000@01))))))))
+      (and
+        (<= 0 px@1009@01)
+        (and
+          (<
+            px@1009@01
+            (m_Knights_tour$$size$opensqu$0$closesqu$__$TY$__$int$ ($Snap.combine
+              $Snap.unit
+              $Snap.unit)))
+          (and
+            (not (= px@1009@01 val_int@997@01))
+            (and
+              (<= 0 py@1010@01)
+              (and
+                (<
+                  py@1010@01
+                  (m_Knights_tour$$size$opensqu$0$closesqu$__$TY$__$int$ ($Snap.combine
+                    $Snap.unit
+                    $Snap.unit)))
+                (not (= py@1010@01 val_int@1000@01)))))))))
+  :pattern ((m_Knights_tour$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$5$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_Knights_tour$$VecVecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%limited ($Snap.combine
+    $t@1005@01
+    ($Snap.combine
+      $Snap.unit
+      ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit)))) val_ref@994@01 px@1009@01 py@1010@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/Knights_tour.rs.vpr@3147@313@3147@1033-aux|)))
+(assert (forall ((px@1009@01 Int) (py@1010@01 Int)) (!
+  (and
+    (=>
+      (<= 0 px@1009@01)
+      (and
+        (<= 0 px@1009@01)
+        (=>
+          (<
+            px@1009@01
+            (m_Knights_tour$$size$opensqu$0$closesqu$__$TY$__$int$ ($Snap.combine
+              $Snap.unit
+              $Snap.unit)))
+          (and
+            (<
+              px@1009@01
+              (m_Knights_tour$$size$opensqu$0$closesqu$__$TY$__$int$ ($Snap.combine
+                $Snap.unit
+                $Snap.unit)))
+            (=>
+              (not (= px@1009@01 val_int@997@01))
+              (and
+                (not (= px@1009@01 val_int@997@01))
+                (=>
+                  (<= 0 py@1010@01)
+                  (and
+                    (<= 0 py@1010@01)
+                    (or
+                      (<
+                        py@1010@01
+                        (m_Knights_tour$$size$opensqu$0$closesqu$__$TY$__$int$ ($Snap.combine
+                          $Snap.unit
+                          $Snap.unit)))
+                      (not
+                        (<
+                          py@1010@01
+                          (m_Knights_tour$$size$opensqu$0$closesqu$__$TY$__$int$ ($Snap.combine
+                            $Snap.unit
+                            $Snap.unit)))))))
+                (or (<= 0 py@1010@01) (not (<= 0 py@1010@01)))))
+            (or
+              (not (= px@1009@01 val_int@997@01))
+              (= px@1009@01 val_int@997@01))))
+        (or
+          (<
+            px@1009@01
+            (m_Knights_tour$$size$opensqu$0$closesqu$__$TY$__$int$ ($Snap.combine
+              $Snap.unit
+              $Snap.unit)))
+          (not
+            (<
+              px@1009@01
+              (m_Knights_tour$$size$opensqu$0$closesqu$__$TY$__$int$ ($Snap.combine
+                $Snap.unit
+                $Snap.unit)))))))
+    (or (<= 0 px@1009@01) (not (<= 0 px@1009@01)))
+    (=>
+      (and
+        (<= 0 px@1009@01)
+        (and
+          (<
+            px@1009@01
+            (m_Knights_tour$$size$opensqu$0$closesqu$__$TY$__$int$ ($Snap.combine
+              $Snap.unit
+              $Snap.unit)))
+          (and
+            (not (= px@1009@01 val_int@997@01))
+            (and
+              (<= 0 py@1010@01)
+              (and
+                (<
+                  py@1010@01
+                  (m_Knights_tour$$size$opensqu$0$closesqu$__$TY$__$int$ ($Snap.combine
+                    $Snap.unit
+                    $Snap.unit)))
+                (not (= py@1010@01 val_int@1000@01)))))))
+      (and
+        (<= 0 px@1009@01)
+        (<
+          px@1009@01
+          (m_Knights_tour$$size$opensqu$0$closesqu$__$TY$__$int$ ($Snap.combine
+            $Snap.unit
+            $Snap.unit)))
+        (not (= px@1009@01 val_int@997@01))
+        (<= 0 py@1010@01)
+        (<
+          py@1010@01
+          (m_Knights_tour$$size$opensqu$0$closesqu$__$TY$__$int$ ($Snap.combine
+            $Snap.unit
+            $Snap.unit)))
+        (not (= py@1010@01 val_int@1000@01))
+        (m_Knights_tour$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$5$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_Knights_tour$$VecVecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%precondition ($Snap.combine
+          $t@1005@01
+          ($Snap.combine
+            $Snap.unit
+            ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit)))) val_ref@994@01 px@1009@01 py@1010@01)
+        (m_Knights_tour$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$5$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_Knights_tour$$VecVecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%precondition ($Snap.combine
+          ($Snap.second $t@745@01)
+          ($Snap.combine
+            $Snap.unit
+            ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit)))) val_ref@994@01 px@1009@01 py@1010@01)))
+    (or
+      (not
+        (and
+          (<= 0 px@1009@01)
+          (and
+            (<
+              px@1009@01
+              (m_Knights_tour$$size$opensqu$0$closesqu$__$TY$__$int$ ($Snap.combine
+                $Snap.unit
+                $Snap.unit)))
+            (and
+              (not (= px@1009@01 val_int@997@01))
+              (and
+                (<= 0 py@1010@01)
+                (and
+                  (<
+                    py@1010@01
+                    (m_Knights_tour$$size$opensqu$0$closesqu$__$TY$__$int$ ($Snap.combine
+                      $Snap.unit
+                      $Snap.unit)))
+                  (not (= py@1010@01 val_int@1000@01))))))))
+      (and
+        (<= 0 px@1009@01)
+        (and
+          (<
+            px@1009@01
+            (m_Knights_tour$$size$opensqu$0$closesqu$__$TY$__$int$ ($Snap.combine
+              $Snap.unit
+              $Snap.unit)))
+          (and
+            (not (= px@1009@01 val_int@997@01))
+            (and
+              (<= 0 py@1010@01)
+              (and
+                (<
+                  py@1010@01
+                  (m_Knights_tour$$size$opensqu$0$closesqu$__$TY$__$int$ ($Snap.combine
+                    $Snap.unit
+                    $Snap.unit)))
+                (not (= py@1010@01 val_int@1000@01)))))))))
+  :pattern ((m_Knights_tour$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$5$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_Knights_tour$$VecVecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%limited ($Snap.combine
+    ($Snap.second $t@745@01)
+    ($Snap.combine
+      $Snap.unit
+      ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit)))) val_ref@994@01 px@1009@01 py@1010@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/Knights_tour.rs.vpr@3147@313@3147@1033-aux|)))
+(assert (forall ((px@1009@01 Int) (py@1010@01 Int)) (!
+  (=>
+    (and
+      (<= 0 px@1009@01)
+      (and
+        (<
+          px@1009@01
+          (m_Knights_tour$$size$opensqu$0$closesqu$__$TY$__$int$ ($Snap.combine
+            $Snap.unit
+            $Snap.unit)))
+        (and
+          (not (= px@1009@01 val_int@997@01))
+          (and
+            (<= 0 py@1010@01)
+            (and
+              (<
+                py@1010@01
+                (m_Knights_tour$$size$opensqu$0$closesqu$__$TY$__$int$ ($Snap.combine
+                  $Snap.unit
+                  $Snap.unit)))
+              (not (= py@1010@01 val_int@1000@01)))))))
+    (=
+      (m_Knights_tour$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$5$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_Knights_tour$$VecVecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$ ($Snap.combine
+        $t@1005@01
+        ($Snap.combine
+          $Snap.unit
+          ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit)))) val_ref@994@01 px@1009@01 py@1010@01)
+      (m_Knights_tour$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$5$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_Knights_tour$$VecVecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$ ($Snap.combine
+        ($Snap.second $t@745@01)
+        ($Snap.combine
+          $Snap.unit
+          ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit)))) val_ref@994@01 px@1009@01 py@1010@01)))
+  :pattern ((m_Knights_tour$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$5$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_Knights_tour$$VecVecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%limited ($Snap.combine
+    $t@1005@01
+    ($Snap.combine
+      $Snap.unit
+      ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit)))) val_ref@994@01 px@1009@01 py@1010@01))
+  :pattern ((m_Knights_tour$$$opencur$$opencur$impl$closecur$$closecur$$opensqu$5$closesqu$$$lookup$opensqu$0$closesqu$__$TY$__m_Knights_tour$$VecVecWrapperI32$opensqu$0$closesqu$$_beg_$_end_$$int$$$int$$$int$%limited ($Snap.combine
+    ($Snap.second $t@745@01)
+    ($Snap.combine
+      $Snap.unit
+      ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit)))) val_ref@994@01 px@1009@01 py@1010@01))
+  :qid |prog./home/runner/work/smt-logs/smt-logs/viper/viperserver/silicon/src/test/resources/frontends/prusti/Knights_tour.rs.vpr@3147@313@3147@1033|)))
+; State saturation: after inhale
+(set-option :timeout 20)
+(check-sat)
+; unknown
+; [exec]
+; label l125
+; [exec]
+; label l126
+; [exec]
+; label loop10_group3_bb74
+; [exec]
+; __t51 := true
+; [exec]
+; _132 := builtin$havoc_ref()
+(declare-const ret@1011@01 $Ref)
+; State saturation: after contract
+(set-option :timeout 50)
+(check-sat)
+; unknown
+; [exec]
+; inhale acc(_132.tuple_0, write)
+(declare-const $t@1012@01 $Ref)
+(set-option :timeout 0)
+(push) ; 17
+(set-option :timeout 10)
+(assert (not (=
+  ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@988@01))))))
+  ret@1011@01)))
+(check-sat)
+; unknown
+(pop) ; 17
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 17
+(set-option :timeout 10)
+(assert (not (= ret@876@01 ret@1011@01)))
+(check-sat)
+; unknown
+(pop) ; 17
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 17
+(set-option :timeout 10)
+(assert (not (= ret@857@01 ret@1011@01)))
+(check-sat)
+; unknown
+(pop) ; 17
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 17
+(set-option :timeout 10)
+(assert (not (= ret@802@01 ret@1011@01)))
+(check-sat)
+; unknown
+(pop) ; 17
+; 0.00s
+; (get-info :all-statistics)
+(set-option :timeout 0)
+(push) ; 17
+(set-option :timeout 10)
+(assert (not (= ret@751@01 ret@1011@01)))
+(check-sat)

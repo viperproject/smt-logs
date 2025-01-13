@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-08 22:11:46
+// Date:         2025-01-13 13:28:46
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0257.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silver/0257-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -181,14 +181,14 @@ procedure m() returns ()
   modifies Heap, Mask;
 {
   var then_1_lblGuard: bool;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var x: bool;
   var y: int;
-  var Labelthen_1Mask: MaskType;
   var Labelthen_1Heap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var Labelthen_1Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -199,8 +199,8 @@ procedure m() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: if (!x) -- 0257.vpr@8.3--13.4
     if (!x) {
@@ -216,16 +216,16 @@ procedure m() returns ()
       
       // -- Translating statement: label then_1 -- 0257.vpr@12.5--12.17
         then_1:
-        Labelthen_1Mask := Mask;
         Labelthen_1Heap := Heap;
+        Labelthen_1Mask := Mask;
         then_1_lblGuard := true;
         assume state(Heap, Mask);
     }
     assume state(Heap, Mask);
   
   // -- Translating statement: assert !x ==> y == 123 -- 0257.vpr@15.3--15.27
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     if (!x) {
       assert {:msg "  Assert might fail. Assertion y == 123 might not hold. (0257.vpr@15.10--15.27) [222414]"}
         y == 123;
@@ -241,14 +241,14 @@ procedure n_12() returns ()
   modifies Heap, Mask;
 {
   var then_1_lblGuard: bool;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var x: bool;
   var y: int;
-  var Labelthen_1Mask: MaskType;
   var Labelthen_1Heap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var Labelthen_1Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -259,8 +259,8 @@ procedure n_12() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: if (!x) -- 0257.vpr@22.3--27.4
     if (!x) {
@@ -272,8 +272,8 @@ procedure n_12() returns ()
       
       // -- Translating statement: label then_1 -- 0257.vpr@25.5--25.17
         then_1:
-        Labelthen_1Mask := Mask;
         Labelthen_1Heap := Heap;
+        Labelthen_1Mask := Mask;
         then_1_lblGuard := true;
         assume state(Heap, Mask);
       
@@ -284,8 +284,8 @@ procedure n_12() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert !x ==> y != 123 -- 0257.vpr@30.3--30.27
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     if (!x) {
       assert {:msg "  Assert might fail. Assertion y != 123 might not hold. (0257.vpr@30.10--30.27) [222415]"}
         y != 123;

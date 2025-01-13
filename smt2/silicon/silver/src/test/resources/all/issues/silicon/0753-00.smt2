@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-08 21:25:44
+; Started: 2025-01-13 12:42:22
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -219,21 +219,21 @@
 (assert (forall ((s@$ $Snap) (l@0@00 List<Val>)) (!
   (= (len%limited s@$ l@0@00) (len s@$ l@0@00))
   :pattern ((len s@$ l@0@00))
-  :qid |quant-u-25445|)))
+  :qid |quant-u-25552|)))
 (assert (forall ((s@$ $Snap) (l@0@00 List<Val>)) (!
   (len%stateless l@0@00)
   :pattern ((len%limited s@$ l@0@00))
-  :qid |quant-u-25446|)))
+  :qid |quant-u-25553|)))
 (assert (forall ((s@$ $Snap) (l@0@00 List<Val>)) (!
   (let ((result@1@00 (len%limited s@$ l@0@00))) (=>
     (len%precondition s@$ l@0@00)
     (>= result@1@00 0)))
   :pattern ((len%limited s@$ l@0@00))
-  :qid |quant-u-25447|)))
+  :qid |quant-u-25554|)))
 (assert (forall ((s@$ $Snap) (l@0@00 List<Val>)) (!
   (let ((result@1@00 (len%limited s@$ l@0@00))) true)
   :pattern ((len%limited s@$ l@0@00))
-  :qid |quant-u-25448|)))
+  :qid |quant-u-25555|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -316,7 +316,7 @@
         0
         (+ 1 (len%limited $Snap.unit (get_List_tail<List<Val>> l@0@00))))))
   :pattern ((len s@$ l@0@00))
-  :qid |quant-u-25449|)))
+  :qid |quant-u-25556|)))
 (assert (forall ((s@$ $Snap) (l@0@00 List<Val>)) (!
   (=>
     (len%precondition s@$ l@0@00)
@@ -325,4 +325,4 @@
       true
       (len%precondition $Snap.unit (get_List_tail<List<Val>> l@0@00))))
   :pattern ((len s@$ l@0@00))
-  :qid |quant-u-25450|)))
+  :qid |quant-u-25557|)))

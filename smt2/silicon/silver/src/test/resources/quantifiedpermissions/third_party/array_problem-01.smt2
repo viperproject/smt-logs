@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-08 21:15:57
+; Started: 2025-01-13 12:32:19
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -1556,11 +1556,11 @@
 (assert (forall ((s@$ $Snap) (l@0@00 Seq<$Ref>) (n@1@00 Int)) (!
   (= (count%limited s@$ l@0@00 n@1@00) (count s@$ l@0@00 n@1@00))
   :pattern ((count s@$ l@0@00 n@1@00))
-  :qid |quant-u-9538|)))
+  :qid |quant-u-9610|)))
 (assert (forall ((s@$ $Snap) (l@0@00 Seq<$Ref>) (n@1@00 Int)) (!
   (count%stateless l@0@00 n@1@00)
   :pattern ((count%limited s@$ l@0@00 n@1@00))
-  :qid |quant-u-9539|)))
+  :qid |quant-u-9611|)))
 (assert (forall ((s@$ $Snap) (l@0@00 Seq<$Ref>) (n@1@00 Int)) (!
   (and
     (forall ((i@6@00 Int)) (!
@@ -1570,7 +1570,7 @@
           (= (inv@7@00 s@$ l@0@00 n@1@00 (Seq_index l@0@00 i@6@00)) i@6@00)
           (img@8@00 s@$ l@0@00 n@1@00 (Seq_index l@0@00 i@6@00))))
       :pattern ((Seq_index l@0@00 i@6@00))
-      :qid |quant-u-9541|))
+      :qid |quant-u-9613|))
     (forall ((r $Ref)) (!
       (=>
         (and
@@ -1662,7 +1662,7 @@
               1
               0))))))
   :pattern ((count s@$ l@0@00 n@1@00))
-  :qid |quant-u-9544|)))
+  :qid |quant-u-9616|)))
 (assert (forall ((s@$ $Snap) (l@0@00 Seq<$Ref>) (n@1@00 Int)) (!
   (=>
     (count%precondition s@$ l@0@00 n@1@00)
@@ -1681,7 +1681,7 @@
                 ($SortWrappers.$FVF<val>To$Snap (sm@15@00 s@$ l@0@00 n@1@00))
                 $Snap.unit))))) l@0@00 (- n@1@00 1))))
   :pattern ((count s@$ l@0@00 n@1@00))
-  :qid |quant-u-9545|)))
+  :qid |quant-u-9617|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- main ----------
@@ -3059,7 +3059,7 @@
   :pattern ((Seq_index
     ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first $t@2@01))
     i@7@01))
-  :qid |quant-u-9547|)))
+  :qid |quant-u-9619|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -3667,7 +3667,7 @@
         $Perm.No)
       $Perm.No))
   
-  :qid |quant-u-9549|))))
+  :qid |quant-u-9621|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -4225,7 +4225,7 @@
     (= r (Seq_index ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first $t@2@01)) 3))
     (= (- $Perm.Write (pTaken@21@01 r)) $Perm.No))
   
-  :qid |quant-u-9552|))))
+  :qid |quant-u-9624|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -4251,7 +4251,7 @@
       (pTaken@22@01 r))
     $Perm.No)
   
-  :qid |quant-u-9553|))))
+  :qid |quant-u-9625|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -4263,7 +4263,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@22@01 r) $Perm.No)
   
-  :qid |quant-u-9554|))))
+  :qid |quant-u-9626|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -4278,7 +4278,7 @@
     (= r (Seq_index ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first $t@2@01)) 3))
     (= (- (- $Perm.Write (pTaken@21@01 r)) (pTaken@22@01 r)) $Perm.No))
   
-  :qid |quant-u-9555|))))
+  :qid |quant-u-9627|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -4847,7 +4847,7 @@
         (ite (= r this@1@01) $Perm.Write $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-9557|))))
+  :qid |quant-u-9629|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -5731,7 +5731,7 @@
         (ite (= r this@1@01) $Perm.Write $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-9559|))))
+  :qid |quant-u-9631|))))
 (check-sat)
 ; unsat
 (pop) ; 4

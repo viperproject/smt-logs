@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-08 22:04:38
+// Date:         2025-01-13 13:21:41
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0678b.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0678b-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -228,15 +228,15 @@ procedure mWand(r_1: Ref) returns ()
   var WandDefLHSHeap: HeapType;
   var WandDefLHSMask: MaskType;
   var perm: Perm;
-  var Labellhs1Heap: HeapType;
   var Labellhs1Mask: MaskType;
+  var Labellhs1Heap: HeapType;
   var WandDefRHSHeap: HeapType;
   var WandDefRHSMask: MaskType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var x_33: Ref;
-  var Labellhs2Heap: HeapType;
   var Labellhs2Mask: MaskType;
+  var Labellhs2Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -260,8 +260,8 @@ procedure mWand(r_1: Ref) returns ()
         
         // -- Translating statement: label lhs1 -- 0678b.vpr@8.14--8.32
           lhs1:
-          Labellhs1Heap := WandDefLHSHeap;
           Labellhs1Mask := WandDefLHSMask;
+          Labellhs1Heap := WandDefLHSHeap;
           assume state(WandDefLHSHeap, WandDefLHSMask);
         havoc WandDefRHSHeap;
         WandDefRHSMask := ZeroMask;
@@ -276,8 +276,8 @@ procedure mWand(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale (exists x: Ref :: { acc(x.f, write) --* false } perm(acc(x.f, write) --*
   //     false) >
@@ -296,8 +296,8 @@ procedure mWand(r_1: Ref) returns ()
           
           // -- Translating statement: label lhs2 -- 0678b.vpr@10.57--10.75
             lhs2:
-            Labellhs2Heap := WandDefLHSHeap;
             Labellhs2Mask := WandDefLHSMask;
+            Labellhs2Heap := WandDefLHSHeap;
             assume state(WandDefLHSHeap, WandDefLHSMask);
           havoc WandDefRHSHeap;
           WandDefRHSMask := ZeroMask;

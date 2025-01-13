@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-08 21:23:07
+; Started: 2025-01-13 12:39:39
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -123,11 +123,11 @@
 (assert (forall ((s@$ $Snap) (n@0@00 Int)) (!
   (= (Fib__fib%limited s@$ n@0@00) (Fib__fib s@$ n@0@00))
   :pattern ((Fib__fib s@$ n@0@00))
-  :qid |quant-u-22466|)))
+  :qid |quant-u-22573|)))
 (assert (forall ((s@$ $Snap) (n@0@00 Int)) (!
   (Fib__fib%stateless n@0@00)
   :pattern ((Fib__fib%limited s@$ n@0@00))
-  :qid |quant-u-22467|)))
+  :qid |quant-u-22574|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -210,7 +210,7 @@
           (Fib__fib%limited $Snap.unit (- n@0@00 1))
           (Fib__fib%limited $Snap.unit (- n@0@00 2))))))
   :pattern ((Fib__fib s@$ n@0@00))
-  :qid |quant-u-22468|)))
+  :qid |quant-u-22575|)))
 (assert (forall ((s@$ $Snap) (n@0@00 Int)) (!
   (=>
     (Fib__fib%precondition s@$ n@0@00)
@@ -221,6 +221,6 @@
         (Fib__fib%precondition $Snap.unit (- n@0@00 1))
         (Fib__fib%precondition $Snap.unit (- n@0@00 2)))))
   :pattern ((Fib__fib s@$ n@0@00))
-  :qid |quant-u-22469|)))
+  :qid |quant-u-22576|)))
 ; ---------- Fib__joinToken ----------
 (declare-const diz@2@00 $Ref)

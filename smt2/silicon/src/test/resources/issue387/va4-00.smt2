@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-08 21:14:48
+; Started: 2025-01-13 12:31:07
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -125,11 +125,11 @@
     (Option$discriminant%limited s@$ self@0@00)
     (Option$discriminant s@$ self@0@00))
   :pattern ((Option$discriminant s@$ self@0@00))
-  :qid |quant-u-5044|)))
+  :qid |quant-u-5116|)))
 (assert (forall ((s@$ $Snap) (self@0@00 $Ref)) (!
   (Option$discriminant%stateless self@0@00)
   :pattern ((Option$discriminant%limited s@$ self@0@00))
-  :qid |quant-u-5045|)))
+  :qid |quant-u-5117|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -151,11 +151,11 @@
     (Option$discriminant%precondition s@$ self@0@00)
     (= (Option$discriminant s@$ self@0@00) ($SortWrappers.$SnapToInt s@$)))
   :pattern ((Option$discriminant s@$ self@0@00))
-  :qid |quant-u-5046|)))
+  :qid |quant-u-5118|)))
 (assert (forall ((s@$ $Snap) (self@0@00 $Ref)) (!
   true
   :pattern ((Option$discriminant s@$ self@0@00))
-  :qid |quant-u-5047|)))
+  :qid |quant-u-5119|)))
 ; ---------- Option ----------
 (declare-const self@2@00 $Ref)
 (push) ; 1

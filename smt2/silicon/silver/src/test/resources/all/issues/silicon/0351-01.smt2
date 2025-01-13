@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-08 21:25:13
+; Started: 2025-01-13 12:41:49
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -482,11 +482,11 @@
 (assert (forall ((s@$ $Snap) (b@0@00 Bool)) (!
   (= (dummy%limited s@$ b@0@00) (dummy s@$ b@0@00))
   :pattern ((dummy s@$ b@0@00))
-  :qid |quant-u-24823|)))
+  :qid |quant-u-24930|)))
 (assert (forall ((s@$ $Snap) (b@0@00 Bool)) (!
   (dummy%stateless b@0@00)
   :pattern ((dummy%limited s@$ b@0@00))
-  :qid |quant-u-24824|)))
+  :qid |quant-u-24931|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- inhExhTestA ----------
@@ -528,7 +528,7 @@
     (Set_in n_0@2@01 g@1@01)
     (and (= (inv@5@01 n_0@2@01) n_0@2@01) (img@6@01 n_0@2@01)))
   :pattern (($FVF.loc_next ($FVF.lookup_next $t@4@01 n_0@2@01) n_0@2@01))
-  :qid |quant-u-24826|)))
+  :qid |quant-u-24933|)))
 (assert (forall ((r $Ref)) (!
   (=> (and (img@6@01 r) (Set_in (inv@5@01 r) g@1@01)) (= (inv@5@01 r) r))
   :pattern ((inv@5@01 r))
@@ -560,7 +560,7 @@
     (Set_in (inv@5@01 r) g@1@01)
     ($FVF.loc_next ($FVF.lookup_next (as sm@7@01  $FVF<next>) r) r))
   :pattern ((inv@5@01 r))
-  :qid |quant-u-24827|)))
+  :qid |quant-u-24934|)))
 ; State saturation: after contract
 (set-option :timeout 50)
 (check-sat)
@@ -601,7 +601,7 @@
     (Set_in n_0@8@01 g@1@01)
     (and (= (inv@11@01 n_0@8@01) n_0@8@01) (img@12@01 n_0@8@01)))
   :pattern (($FVF.loc_next ($FVF.lookup_next $t@10@01 n_0@8@01) n_0@8@01))
-  :qid |quant-u-24829|)))
+  :qid |quant-u-24936|)))
 (assert (forall ((r $Ref)) (!
   (=> (and (img@12@01 r) (Set_in (inv@11@01 r) g@1@01)) (= (inv@11@01 r) r))
   :pattern ((inv@11@01 r))
@@ -633,7 +633,7 @@
     (Set_in (inv@11@01 r) g@1@01)
     ($FVF.loc_next ($FVF.lookup_next (as sm@13@01  $FVF<next>) r) r))
   :pattern ((inv@11@01 r))
-  :qid |quant-u-24830|)))
+  :qid |quant-u-24937|)))
 (pop) ; 2
 (push) ; 2
 ; [exec]
@@ -687,7 +687,7 @@
     (Set_in (inv@15@01 r) g@1@01)
     ($FVF.loc_next ($FVF.lookup_next (as sm@7@01  $FVF<next>) r) r))
   :pattern ((inv@15@01 r))
-  :qid |quant-u-24832|)))
+  :qid |quant-u-24939|)))
 ; Precomputing data for removing quantified permissions
 (define-fun pTaken@17@01 ((r $Ref)) $Perm
   (ite
@@ -712,7 +712,7 @@
       (pTaken@17@01 r))
     $Perm.No)
   
-  :qid |quant-u-24834|))))
+  :qid |quant-u-24941|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -727,7 +727,7 @@
     (and (Set_in (inv@15@01 r) g@1@01) (img@16@01 r) (= r (inv@15@01 r)))
     (= (- $Perm.Write (pTaken@17@01 r)) $Perm.No))
   
-  :qid |quant-u-24835|))))
+  :qid |quant-u-24942|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -774,7 +774,7 @@
     (Set_in n_0@18@01 g@1@01)
     (and (= (inv@21@01 n_0@18@01) n_0@18@01) (img@22@01 n_0@18@01)))
   :pattern (($FVF.loc_next ($FVF.lookup_next $t@20@01 n_0@18@01) n_0@18@01))
-  :qid |quant-u-24837|)))
+  :qid |quant-u-24944|)))
 (assert (forall ((r $Ref)) (!
   (=> (and (img@22@01 r) (Set_in (inv@21@01 r) g@1@01)) (= (inv@21@01 r) r))
   :pattern ((inv@21@01 r))
@@ -806,7 +806,7 @@
     (Set_in (inv@21@01 r) g@1@01)
     ($FVF.loc_next ($FVF.lookup_next (as sm@23@01  $FVF<next>) r) r))
   :pattern ((inv@21@01 r))
-  :qid |quant-u-24838|)))
+  :qid |quant-u-24945|)))
 ; State saturation: after inhale
 (set-option :timeout 20)
 (check-sat)
@@ -859,7 +859,7 @@
     (Set_in (inv@25@01 r) g@1@01)
     ($FVF.loc_next ($FVF.lookup_next (as sm@23@01  $FVF<next>) r) r))
   :pattern ((inv@25@01 r))
-  :qid |quant-u-24840|)))
+  :qid |quant-u-24947|)))
 ; Precomputing data for removing quantified permissions
 (define-fun pTaken@27@01 ((r $Ref)) $Perm
   (ite
@@ -890,7 +890,7 @@
       (pTaken@27@01 r))
     $Perm.No)
   
-  :qid |quant-u-24842|))))
+  :qid |quant-u-24949|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -905,7 +905,7 @@
     (and (Set_in (inv@25@01 r) g@1@01) (img@26@01 r) (= r (inv@25@01 r)))
     (= (- $Perm.Write (pTaken@27@01 r)) $Perm.No))
   
-  :qid |quant-u-24843|))))
+  :qid |quant-u-24950|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -954,7 +954,7 @@
     (Set_in n_0@30@01 g@29@01)
     (and (= (inv@33@01 n_0@30@01) n_0@30@01) (img@34@01 n_0@30@01)))
   :pattern (($FVF.loc_next ($FVF.lookup_next $t@32@01 n_0@30@01) n_0@30@01))
-  :qid |quant-u-24845|)))
+  :qid |quant-u-24952|)))
 (assert (forall ((r $Ref)) (!
   (=> (and (img@34@01 r) (Set_in (inv@33@01 r) g@29@01)) (= (inv@33@01 r) r))
   :pattern ((inv@33@01 r))
@@ -986,7 +986,7 @@
     (Set_in (inv@33@01 r) g@29@01)
     ($FVF.loc_next ($FVF.lookup_next (as sm@35@01  $FVF<next>) r) r))
   :pattern ((inv@33@01 r))
-  :qid |quant-u-24846|)))
+  :qid |quant-u-24953|)))
 ; State saturation: after contract
 (set-option :timeout 50)
 (check-sat)
@@ -1027,7 +1027,7 @@
     (Set_in n_0@36@01 g@29@01)
     (and (= (inv@39@01 n_0@36@01) n_0@36@01) (img@40@01 n_0@36@01)))
   :pattern (($FVF.loc_next ($FVF.lookup_next $t@38@01 n_0@36@01) n_0@36@01))
-  :qid |quant-u-24848|)))
+  :qid |quant-u-24955|)))
 (assert (forall ((r $Ref)) (!
   (=> (and (img@40@01 r) (Set_in (inv@39@01 r) g@29@01)) (= (inv@39@01 r) r))
   :pattern ((inv@39@01 r))
@@ -1059,7 +1059,7 @@
     (Set_in (inv@39@01 r) g@29@01)
     ($FVF.loc_next ($FVF.lookup_next (as sm@41@01  $FVF<next>) r) r))
   :pattern ((inv@39@01 r))
-  :qid |quant-u-24849|)))
+  :qid |quant-u-24956|)))
 (pop) ; 2
 (push) ; 2
 ; [exec]
@@ -1113,7 +1113,7 @@
     (Set_in (inv@43@01 r) g@29@01)
     ($FVF.loc_next ($FVF.lookup_next (as sm@35@01  $FVF<next>) r) r))
   :pattern ((inv@43@01 r))
-  :qid |quant-u-24851|)))
+  :qid |quant-u-24958|)))
 ; Precomputing data for removing quantified permissions
 (define-fun pTaken@45@01 ((r $Ref)) $Perm
   (ite
@@ -1144,7 +1144,7 @@
       (pTaken@45@01 r))
     $Perm.No)
   
-  :qid |quant-u-24853|))))
+  :qid |quant-u-24960|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -1156,7 +1156,7 @@
 (assert (not (forall ((r $Ref)) (!
   (= (pTaken@45@01 r) $Perm.No)
   
-  :qid |quant-u-24854|))))
+  :qid |quant-u-24961|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -1171,7 +1171,7 @@
     (and (Set_in (inv@43@01 r) g@29@01) (img@44@01 r) (= r (inv@43@01 r)))
     (= (- (/ (to_real 1) (to_real 2)) (pTaken@45@01 r)) $Perm.No))
   
-  :qid |quant-u-24855|))))
+  :qid |quant-u-24962|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -1250,7 +1250,7 @@
     (Set_in n_0@46@01 g@29@01)
     (and (= (inv@49@01 n_0@46@01) n_0@46@01) (img@50@01 n_0@46@01)))
   :pattern (($FVF.loc_next ($FVF.lookup_next $t@48@01 n_0@46@01) n_0@46@01))
-  :qid |quant-u-24857|)))
+  :qid |quant-u-24964|)))
 (assert (forall ((r $Ref)) (!
   (=> (and (img@50@01 r) (Set_in (inv@49@01 r) g@29@01)) (= (inv@49@01 r) r))
   :pattern ((inv@49@01 r))
@@ -1271,7 +1271,7 @@
       (and (img@50@01 r) (Set_in (inv@49@01 r) g@29@01))
       (and (img@34@01 r) (Set_in (inv@33@01 r) g@29@01))))
   
-  :qid |quant-u-24858|))))
+  :qid |quant-u-24965|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -1311,7 +1311,7 @@
     (Set_in (inv@49@01 r) g@29@01)
     ($FVF.loc_next ($FVF.lookup_next (as sm@51@01  $FVF<next>) r) r))
   :pattern ((inv@49@01 r))
-  :qid |quant-u-24859|)))
+  :qid |quant-u-24966|)))
 ; State saturation: after inhale
 (set-option :timeout 20)
 (check-sat)
@@ -1364,7 +1364,7 @@
     (Set_in (inv@53@01 r) g@29@01)
     ($FVF.loc_next ($FVF.lookup_next (as sm@51@01  $FVF<next>) r) r))
   :pattern ((inv@53@01 r))
-  :qid |quant-u-24861|)))
+  :qid |quant-u-24968|)))
 ; Precomputing data for removing quantified permissions
 (define-fun pTaken@55@01 ((r $Ref)) $Perm
   (ite
@@ -1405,7 +1405,7 @@
       (pTaken@55@01 r))
     $Perm.No)
   
-  :qid |quant-u-24863|))))
+  :qid |quant-u-24970|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -1420,7 +1420,7 @@
     (and (Set_in (inv@53@01 r) g@29@01) (img@54@01 r) (= r (inv@53@01 r)))
     (= (- $Perm.Write (pTaken@55@01 r)) $Perm.No))
   
-  :qid |quant-u-24864|))))
+  :qid |quant-u-24971|))))
 (check-sat)
 ; unknown
 (pop) ; 3
@@ -1440,7 +1440,7 @@
       (pTaken@56@01 r))
     $Perm.No)
   
-  :qid |quant-u-24865|))))
+  :qid |quant-u-24972|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -1455,7 +1455,7 @@
     (and (Set_in (inv@53@01 r) g@29@01) (img@54@01 r) (= r (inv@53@01 r)))
     (= (- (- $Perm.Write (pTaken@55@01 r)) (pTaken@56@01 r)) $Perm.No))
   
-  :qid |quant-u-24866|))))
+  :qid |quant-u-24973|))))
 (check-sat)
 ; unsat
 (pop) ; 3

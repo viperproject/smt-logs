@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-08 21:23:30
+; Started: 2025-01-13 12:40:03
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -147,11 +147,11 @@
 (assert (forall ((s@$ $Snap) (r@0@00 $Ref)) (!
   (= (f4%limited s@$ r@0@00) (f4 s@$ r@0@00))
   :pattern ((f4 s@$ r@0@00))
-  :qid |quant-u-22761|)))
+  :qid |quant-u-22868|)))
 (assert (forall ((s@$ $Snap) (r@0@00 $Ref)) (!
   (f4%stateless r@0@00)
   :pattern ((f4%limited s@$ r@0@00))
-  :qid |quant-u-22762|)))
+  :qid |quant-u-22869|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (= s@$ ($Snap.combine ($Snap.first s@$) ($Snap.second s@$))))
@@ -167,11 +167,11 @@
 (assert (forall ((s@$ $Snap) (r@0@00 $Ref)) (!
   (=> (f4%precondition s@$ r@0@00) (= (f4 s@$ r@0@00) 2))
   :pattern ((f4 s@$ r@0@00))
-  :qid |quant-u-22773|)))
+  :qid |quant-u-22880|)))
 (assert (forall ((s@$ $Snap) (r@0@00 $Ref)) (!
   true
   :pattern ((f4 s@$ r@0@00))
-  :qid |quant-u-22774|)))
+  :qid |quant-u-22881|)))
 ; ---------- FUNCTION f5----------
 (declare-fun r@2@00 () $Ref)
 (declare-fun result@3@00 () Int)
@@ -185,11 +185,11 @@
 (assert (forall ((s@$ $Snap) (r@2@00 $Ref)) (!
   (= (f5%limited s@$ r@2@00) (f5 s@$ r@2@00))
   :pattern ((f5 s@$ r@2@00))
-  :qid |quant-u-22763|)))
+  :qid |quant-u-22870|)))
 (assert (forall ((s@$ $Snap) (r@2@00 $Ref)) (!
   (f5%stateless r@2@00)
   :pattern ((f5%limited s@$ r@2@00))
-  :qid |quant-u-22764|)))
+  :qid |quant-u-22871|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (= s@$ $Snap.unit))
@@ -263,11 +263,11 @@
 (assert (forall ((s@$ $Snap) (r@8@00 $Ref)) (!
   (= (f1%limited s@$ r@8@00) (f1 s@$ r@8@00))
   :pattern ((f1 s@$ r@8@00))
-  :qid |quant-u-22769|)))
+  :qid |quant-u-22876|)))
 (assert (forall ((s@$ $Snap) (r@8@00 $Ref)) (!
   (f1%stateless r@8@00)
   :pattern ((f1%limited s@$ r@8@00))
-  :qid |quant-u-22770|)))
+  :qid |quant-u-22877|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert ($Perm.isReadVar $k@12@00))
@@ -295,11 +295,11 @@
       (f1%precondition s@$ r@8@00)
       (= (f1 s@$ r@8@00) ($SortWrappers.$SnapToInt s@$))))
   :pattern ((f1 s@$ r@8@00))
-  :qid |quant-u-22775|)))
+  :qid |quant-u-22882|)))
 (assert (forall ((s@$ $Snap) (r@8@00 $Ref)) (!
   true
   :pattern ((f1 s@$ r@8@00))
-  :qid |quant-u-22776|)))
+  :qid |quant-u-22883|)))
 ; ---------- FUNCTION f6----------
 (declare-fun r@10@00 () $Ref)
 (declare-fun result@11@00 () Int)
@@ -313,11 +313,11 @@
 (assert (forall ((s@$ $Snap) (r@10@00 $Ref)) (!
   (= (f6%limited s@$ r@10@00) (f6 s@$ r@10@00))
   :pattern ((f6 s@$ r@10@00))
-  :qid |quant-u-22771|)))
+  :qid |quant-u-22878|)))
 (assert (forall ((s@$ $Snap) (r@10@00 $Ref)) (!
   (f6%stateless r@10@00)
   :pattern ((f6%limited s@$ r@10@00))
-  :qid |quant-u-22772|)))
+  :qid |quant-u-22879|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (= s@$ $Snap.unit))

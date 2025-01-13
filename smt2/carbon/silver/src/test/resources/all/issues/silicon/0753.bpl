@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-08 22:08:05
+// Date:         2025-01-13 13:25:05
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0753.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0753-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -315,8 +315,8 @@ function  len#triggerStateless(l_2: (ListDomainType ValDomainType)): int;
 procedure len#definedness(l_2: (ListDomainType ValDomainType)) returns (Result: int)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -342,8 +342,8 @@ procedure len#definedness(l_2: (ListDomainType ValDomainType)) returns (Result: 
     Result := (if (List_tag(l_2): int) == 1 then 0 else 1 + len_3(Heap, (get_List_tail(l_2): ListDomainType ValDomainType)));
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of len might not hold. Assertion result >= 0 might not hold. (0753.vpr@76.11--76.22) [215600]"}
       Result >= 0;
 }
@@ -355,10 +355,10 @@ procedure len#definedness(l_2: (ListDomainType ValDomainType)) returns (Result: 
 procedure len_termination_proof(l_2: (ListDomainType ValDomainType)) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -369,8 +369,8 @@ procedure len_termination_proof(l_2: (ListDomainType ValDomainType)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: if ((List_tag(l): Int) == 1) -- 0753.vpr@84.3--87.31
     if ((List_tag(l_2): int) == 1) {
@@ -378,8 +378,8 @@ procedure len_termination_proof(l_2: (ListDomainType ValDomainType)) returns ()
       
       // -- Translating statement: assert (decreasing((get_List_tail(l): List[Val]), old(l)): Bool) &&
   //   (bounded(old(l)): Bool) -- 0753.vpr@86.5--87.30
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Assert might fail. Assertion (decreasing((get_List_tail(l): List[Val]), old(l)): Bool) might not hold. (0753.vpr@86.12--87.30) [215601]"}
           (decreasing((get_List_tail(l_2): ListDomainType ValDomainType), l_2): bool);
         assert {:msg "  Assert might fail. Assertion (bounded(old(l)): Bool) might not hold. (0753.vpr@86.12--87.30) [215602]"}

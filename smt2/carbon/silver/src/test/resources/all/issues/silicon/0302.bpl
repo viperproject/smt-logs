@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-08 22:03:18
+// Date:         2025-01-13 13:20:23
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0302.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0302-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -327,12 +327,12 @@ procedure testspec_skipping_indices1(arr: ArrayDomainType, size_1: int, rdAmount
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var j_7_1: int;
   var j_10_2: int;
   
@@ -401,16 +401,16 @@ procedure testspec_skipping_indices1(arr: ArrayDomainType, size_1: int, rdAmount
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert (forall j: Int ::
   //     { loc(arr, j) }
   //     acc(loc(arr, j).val, (j < 0 || j >= size ? none : write))) -- 0302.vpr@33.5--33.84
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
+    ExhaleWellDef0Mask := AssertMask;
     
     // -- Check definedness of (forall j: Int :: { loc(arr, j) } acc(loc(arr, j).val, (j < 0 || j >= size ? none : write)))
       if (*) {
@@ -470,8 +470,8 @@ procedure testspec_skipping_indices1(arr: ArrayDomainType, size_1: int, rdAmount
   //       (j % 2 == 0 ? rdAmount : write)))) -- 0302.vpr@34.5--34.110
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
+    ExhaleWellDef0Mask := AssertMask;
     
     // -- Check definedness of (forall j: Int :: { loc(arr, j) } acc(loc(arr, j).val, (j < 0 || j >= size ? none : (j % 2 == 0 ? rdAmount : write))))
       if (*) {
@@ -528,8 +528,8 @@ procedure testspec_skipping_indices1(arr: ArrayDomainType, size_1: int, rdAmount
   //     { p(j, size, rdAmount) }
   //     (j < 0 || j >= size ? none : (j % 2 == 0 ? rdAmount : write)) <=
   //     p(j, size, rdAmount)) -- 0302.vpr@35.5--35.113
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall j: Int :: { p(j, size, rdAmount) } (j < 0 || j >= size ? none : (j % 2 == 0 ? rdAmount : write)) <= p(j, size, rdAmount))
       if (*) {
@@ -554,8 +554,8 @@ procedure testspec_skipping_indices1(arr: ArrayDomainType, size_1: int, rdAmount
   //     { p(j, size, rdAmount) }
   //     (j < 0 || j >= size ? none : (j % 2 == 0 ? rdAmount : write)) >=
   //     p(j, size, rdAmount)) -- 0302.vpr@36.5--36.113
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall j: Int :: { p(j, size, rdAmount) } (j < 0 || j >= size ? none : (j % 2 == 0 ? rdAmount : write)) >= p(j, size, rdAmount))
       if (*) {
@@ -581,8 +581,8 @@ procedure testspec_skipping_indices1(arr: ArrayDomainType, size_1: int, rdAmount
   //     acc(loc(arr, j).val, (j < 0 || j >= size ? none : write))) -- 0302.vpr@37.5--37.84
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
+    ExhaleWellDef0Mask := AssertMask;
     
     // -- Check definedness of (forall j: Int :: { loc(arr, j) } acc(loc(arr, j).val, (j < 0 || j >= size ? none : write)))
       if (*) {
@@ -644,12 +644,12 @@ procedure testspec_skipping_indices2(arr: ArrayDomainType, size_1: int, rdAmount
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var j_5_1: int;
   var j_8: int;
   
@@ -718,8 +718,8 @@ procedure testspec_skipping_indices2(arr: ArrayDomainType, size_1: int, rdAmount
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert (forall j: Int ::
   //     { loc(arr, j) }
@@ -728,8 +728,8 @@ procedure testspec_skipping_indices2(arr: ArrayDomainType, size_1: int, rdAmount
   //       (j % 2 == 0 ? rdAmount : write)))) -- 0302.vpr@45.5--45.110
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
+    ExhaleWellDef0Mask := AssertMask;
     
     // -- Check definedness of (forall j: Int :: { loc(arr, j) } acc(loc(arr, j).val, (j < 0 || j >= size ? none : (j % 2 == 0 ? rdAmount : write))))
       if (*) {
@@ -786,8 +786,8 @@ procedure testspec_skipping_indices2(arr: ArrayDomainType, size_1: int, rdAmount
   //     { p(j, size, rdAmount) }
   //     (j < 0 || j >= size ? none : (j % 2 == 0 ? rdAmount : write)) <=
   //     p(j, size, rdAmount)) -- 0302.vpr@46.5--46.113
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall j: Int :: { p(j, size, rdAmount) } (j < 0 || j >= size ? none : (j % 2 == 0 ? rdAmount : write)) <= p(j, size, rdAmount))
       if (*) {
@@ -812,8 +812,8 @@ procedure testspec_skipping_indices2(arr: ArrayDomainType, size_1: int, rdAmount
   //     { p(j, size, rdAmount) }
   //     (j < 0 || j >= size ? none : (j % 2 == 0 ? rdAmount : write)) >=
   //     p(j, size, rdAmount)) -- 0302.vpr@47.5--47.113
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall j: Int :: { p(j, size, rdAmount) } (j < 0 || j >= size ? none : (j % 2 == 0 ? rdAmount : write)) >= p(j, size, rdAmount))
       if (*) {
@@ -839,8 +839,8 @@ procedure testspec_skipping_indices2(arr: ArrayDomainType, size_1: int, rdAmount
   //     acc(loc(arr, j).val, (j < 0 || j >= size ? none : write))) -- 0302.vpr@49.5--49.84
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
+    ExhaleWellDef0Mask := AssertMask;
     
     // -- Check definedness of (forall j: Int :: { loc(arr, j) } acc(loc(arr, j).val, (j < 0 || j >= size ? none : write)))
       if (*) {

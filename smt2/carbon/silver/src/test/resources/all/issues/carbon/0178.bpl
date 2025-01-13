@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-08 22:01:20
+// Date:         2025-01-13 13:18:17
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0178.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0178-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -562,10 +562,10 @@ procedure test(x: Ref, x__wset: (Set Ref)) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var newVersion: FrameType;
   var QPMask: MaskType;
   var freshVersion: FrameType;
@@ -588,14 +588,14 @@ procedure test(x: Ref, x__wset: (Set Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: unfold acc(Node__isolated(x, x__wset), write) -- 0178.vpr@14.5--14.43
     assume Node__isolated#trigger(Heap, Node__isolated(x, x__wset));
     assume Heap[null, Node__isolated(x, x__wset)] == CombineFrames(FrameFragment(Node__isolated#condqp1(Heap, x, x__wset)), FrameFragment(Node__isolated#condqp2(Heap, x, x__wset)));
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding Node__isolated(x, x__wset) might fail. There might be insufficient permission to access Node__isolated(x, x__wset) (0178.vpr@14.5--14.43) [192531]"}
@@ -682,8 +682,8 @@ procedure test(x: Ref, x__wset: (Set Ref)) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(Node__isolated(x, x__wset), write) -- 0178.vpr@15.5--15.41
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     havoc QPMask;
     
     // -- check that the permission amount is positive

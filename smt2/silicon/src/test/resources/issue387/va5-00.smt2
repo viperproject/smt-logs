@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-08 21:14:47
+; Started: 2025-01-13 12:31:07
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -130,11 +130,11 @@
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   (= (fun0%limited s@$ x@0@00) (fun0 s@$ x@0@00))
   :pattern ((fun0 s@$ x@0@00))
-  :qid |quant-u-5036|)))
+  :qid |quant-u-5108|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   (fun0%stateless x@0@00)
   :pattern ((fun0%limited s@$ x@0@00))
-  :qid |quant-u-5037|)))
+  :qid |quant-u-5109|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (= s@$ ($Snap.combine ($Snap.first s@$) ($Snap.second s@$))))
@@ -151,11 +151,11 @@
     (fun0%precondition s@$ x@0@00)
     (= (fun0 s@$ x@0@00) ($SortWrappers.$SnapToInt ($Snap.second s@$))))
   :pattern ((fun0 s@$ x@0@00))
-  :qid |quant-u-5040|)))
+  :qid |quant-u-5112|)))
 (assert (forall ((s@$ $Snap) (x@0@00 $Ref)) (!
   true
   :pattern ((fun0 s@$ x@0@00))
-  :qid |quant-u-5041|)))
+  :qid |quant-u-5113|)))
 ; ---------- FUNCTION fun5----------
 (declare-fun x@2@00 () $Ref)
 (declare-fun result@3@00 () Int)
@@ -166,11 +166,11 @@
 (assert (forall ((s@$ $Snap) (x@2@00 $Ref)) (!
   (= (fun5%limited s@$ x@2@00) (fun5 s@$ x@2@00))
   :pattern ((fun5 s@$ x@2@00))
-  :qid |quant-u-5038|)))
+  :qid |quant-u-5110|)))
 (assert (forall ((s@$ $Snap) (x@2@00 $Ref)) (!
   (fun5%stateless x@2@00)
   :pattern ((fun5%limited s@$ x@2@00))
-  :qid |quant-u-5039|)))
+  :qid |quant-u-5111|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -309,11 +309,11 @@
           0
           ($SortWrappers.$SnapToInt ($Snap.second ($Snap.second s@$)))))))
   :pattern ((fun5 s@$ x@2@00))
-  :qid |quant-u-5042|)))
+  :qid |quant-u-5114|)))
 (assert (forall ((s@$ $Snap) (x@2@00 $Ref)) (!
   true
   :pattern ((fun5 s@$ x@2@00))
-  :qid |quant-u-5043|)))
+  :qid |quant-u-5115|)))
 ; ---------- Q ----------
 (declare-const x@5@00 $Ref)
 (push) ; 1

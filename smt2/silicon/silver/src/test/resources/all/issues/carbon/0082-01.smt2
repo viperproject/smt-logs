@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-08 21:23:47
+; Started: 2025-01-13 12:40:20
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -122,11 +122,11 @@
 (assert (forall ((s@$ $Snap) (self@0@00 $Ref)) (!
   (= (readValid%limited s@$ self@0@00) (readValid s@$ self@0@00))
   :pattern ((readValid s@$ self@0@00))
-  :qid |quant-u-23007|)))
+  :qid |quant-u-23114|)))
 (assert (forall ((s@$ $Snap) (self@0@00 $Ref)) (!
   (readValid%stateless self@0@00)
   :pattern ((readValid%limited s@$ self@0@00))
-  :qid |quant-u-23008|)))
+  :qid |quant-u-23115|)))
 (assert (forall ((s@$ $Snap) (self@0@00 $Ref)) (!
   (and
     ($Perm.isReadVar $k@2@00)
@@ -136,10 +136,10 @@
       (readValid%precondition s@$ self@0@00)
       (= (readValid s@$ self@0@00) ($SortWrappers.$SnapToInt s@$))))
   :pattern ((readValid s@$ self@0@00))
-  :qid |quant-u-23009|)))
+  :qid |quant-u-23116|)))
 (assert (forall ((s@$ $Snap) (self@0@00 $Ref)) (!
   true
   :pattern ((readValid s@$ self@0@00))
-  :qid |quant-u-23010|)))
+  :qid |quant-u-23117|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------

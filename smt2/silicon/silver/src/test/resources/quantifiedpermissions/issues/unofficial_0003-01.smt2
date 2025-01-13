@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-08 21:16:43
+; Started: 2025-01-13 12:33:07
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -1552,19 +1552,19 @@
 (assert (forall ((s@$ $Snap) (i@0@00 Int)) (!
   (= (trigger%limited s@$ i@0@00) (trigger s@$ i@0@00))
   :pattern ((trigger s@$ i@0@00))
-  :qid |quant-u-12635|)))
+  :qid |quant-u-12707|)))
 (assert (forall ((s@$ $Snap) (i@0@00 Int)) (!
   (trigger%stateless i@0@00)
   :pattern ((trigger%limited s@$ i@0@00))
-  :qid |quant-u-12636|)))
+  :qid |quant-u-12708|)))
 (assert (forall ((s@$ $Snap) (i@0@00 Int)) (!
   (=> (trigger%precondition s@$ i@0@00) (= (trigger s@$ i@0@00) true))
   :pattern ((trigger s@$ i@0@00))
-  :qid |quant-u-12637|)))
+  :qid |quant-u-12709|)))
 (assert (forall ((s@$ $Snap) (i@0@00 Int)) (!
   true
   :pattern ((trigger s@$ i@0@00))
-  :qid |quant-u-12638|)))
+  :qid |quant-u-12710|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- append ----------
@@ -2069,7 +2069,7 @@
   :pattern ((Seq_index
     ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first $t@4@01))
     i@7@01))
-  :qid |quant-u-12642|)))
+  :qid |quant-u-12714|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and

@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-08 21:25:53
+; Started: 2025-01-13 12:42:31
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -645,11 +645,11 @@
 (assert (forall ((s@$ $Snap) (set@0@00 Set<$Ref>)) (!
   (= (foo%limited s@$ set@0@00) (foo s@$ set@0@00))
   :pattern ((foo s@$ set@0@00))
-  :qid |quant-u-25626|)))
+  :qid |quant-u-25733|)))
 (assert (forall ((s@$ $Snap) (set@0@00 Set<$Ref>)) (!
   (foo%stateless set@0@00)
   :pattern ((foo%limited s@$ set@0@00))
-  :qid |quant-u-25627|)))
+  :qid |quant-u-25734|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- meth ----------
@@ -690,7 +690,7 @@
     (Set_in a@3@01 set@1@01)
     (and (= (inv@6@01 a@3@01) a@3@01) (img@7@01 a@3@01)))
   :pattern (($PSF.loc_p ($PSF.lookup_p ($SortWrappers.$SnapTo$PSF<p> ($Snap.first $t@2@01)) ($SortWrappers.$RefTo$Snap a@3@01)) ($SortWrappers.$RefTo$Snap a@3@01)))
-  :qid |quant-u-25632|)))
+  :qid |quant-u-25739|)))
 (assert (forall ((a $Ref)) (!
   (=> (and (img@7@01 a) (Set_in (inv@6@01 a) set@1@01)) (= (inv@6@01 a) a))
   :pattern ((inv@6@01 a))
@@ -721,7 +721,7 @@
     (Set_in (inv@6@01 a) set@1@01)
     ($PSF.loc_p ($PSF.lookup_p (as sm@8@01  $PSF<p>) ($SortWrappers.$RefTo$Snap a)) ($SortWrappers.$RefTo$Snap a)))
   :pattern ((inv@6@01 a))
-  :qid |quant-u-25633|)))
+  :qid |quant-u-25740|)))
 (assert (= ($Snap.second $t@2@01) $Snap.unit))
 ; [eval] foo(set) == 0
 ; [eval] foo(set)
@@ -775,7 +775,7 @@
     (Set_in (inv@11@01 a) set@1@01)
     ($PSF.loc_p ($PSF.lookup_p (as sm@8@01  $PSF<p>) ($SortWrappers.$RefTo$Snap a)) ($SortWrappers.$RefTo$Snap a)))
   :pattern ((inv@11@01 a))
-  :qid |quant-u-25635|)))
+  :qid |quant-u-25742|)))
 (push) ; 3
 (assert (not (forall ((a $Ref)) (!
   (=>
@@ -787,7 +787,7 @@
         $Perm.No)
       $Perm.No))
   
-  :qid |quant-u-25636|))))
+  :qid |quant-u-25743|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -888,7 +888,7 @@
       (Set_in (inv@11@01 a) set@1@01)
       ($PSF.loc_p ($PSF.lookup_p (as sm@8@01  $PSF<p>) ($SortWrappers.$RefTo$Snap a)) ($SortWrappers.$RefTo$Snap a)))
     :pattern ((inv@11@01 a))
-    :qid |quant-u-25635|))
+    :qid |quant-u-25742|))
   (foo%precondition ($SortWrappers.$PSF<p>To$Snap (as sm@13@01  $PSF<p>)) set@1@01)))
 (assert (= (foo ($SortWrappers.$PSF<p>To$Snap (as sm@13@01  $PSF<p>)) set@1@01) 0))
 ; State saturation: after contract
@@ -972,7 +972,7 @@
     (Set_in (inv@16@01 a) set@1@01)
     ($PSF.loc_p ($PSF.lookup_p (as sm@18@01  $PSF<p>) ($SortWrappers.$RefTo$Snap a)) ($SortWrappers.$RefTo$Snap a)))
   :pattern ((inv@16@01 a))
-  :qid |quant-u-25638|)))
+  :qid |quant-u-25745|)))
 (push) ; 4
 (assert (not (forall ((a $Ref)) (!
   (=>
@@ -984,7 +984,7 @@
         $Perm.No)
       $Perm.No))
   
-  :qid |quant-u-25639|))))
+  :qid |quant-u-25746|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -1102,7 +1102,7 @@
       (Set_in (inv@16@01 a) set@1@01)
       ($PSF.loc_p ($PSF.lookup_p (as sm@18@01  $PSF<p>) ($SortWrappers.$RefTo$Snap a)) ($SortWrappers.$RefTo$Snap a)))
     :pattern ((inv@16@01 a))
-    :qid |quant-u-25638|))
+    :qid |quant-u-25745|))
   (foo%precondition ($SortWrappers.$PSF<p>To$Snap (as sm@20@01  $PSF<p>)) set@1@01)))
 (push) ; 3
 (assert (not (= (foo ($SortWrappers.$PSF<p>To$Snap (as sm@20@01  $PSF<p>)) set@1@01) 0)))

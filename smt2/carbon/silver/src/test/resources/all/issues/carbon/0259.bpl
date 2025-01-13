@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-08 22:02:03
+// Date:         2025-01-13 13:19:01
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0259.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0259-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -243,18 +243,18 @@ procedure test(x: Ref, y: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var i: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var loopHeap: HeapType;
   var loopMask: MaskType;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -277,8 +277,8 @@ procedure test(x: Ref, y: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: i := 0 -- 0259.vpr@11.5--11.20
     i := 0;
@@ -289,8 +289,8 @@ procedure test(x: Ref, y: Ref) returns ()
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := 1 / 2;
         assert {:msg "  Loop invariant acc(P(x), 1 / 2) && (acc(P(y), 1 / 2) && i <= 10) might not hold on entry. Fraction 1 / 2 might be negative. (0259.vpr@15.19--15.62) [193651]"}
           perm >= NoPerm;
@@ -364,8 +364,8 @@ procedure test(x: Ref, y: Ref) returns ()
             i := i + 1;
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         perm := 1 / 2;
         assert {:msg "  Loop invariant acc(P(x), 1 / 2) && (acc(P(y), 1 / 2) && i <= 10) might not be preserved. Fraction 1 / 2 might be negative. (0259.vpr@15.19--15.62) [193660]"}
           perm >= NoPerm;
@@ -411,16 +411,16 @@ procedure test(x: Ref, y: Ref) returns ()
   
   // -- Translating statement: assert (unfolding acc(P(x), write) in x.f) ==
   //   old((unfolding acc(P(x), write) in x.f)) -- 0259.vpr@20.5--20.65
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (unfolding acc(P(x), write) in x.f) == old((unfolding acc(P(x), write) in x.f))
       UnfoldingHeap := ExhaleWellDef0Heap;
       UnfoldingMask := ExhaleWellDef0Mask;
       assume P#trigger(UnfoldingHeap, P(x));
       assume UnfoldingHeap[null, P(x)] == FrameFragment(UnfoldingHeap[x, f_7]);
-      ExhaleWellDef1Heap := UnfoldingHeap;
       ExhaleWellDef1Mask := UnfoldingMask;
+      ExhaleWellDef1Heap := UnfoldingHeap;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Assert might fail. There might be insufficient permission to access P(x) (0259.vpr@20.12--20.65) [193667]"}
@@ -442,8 +442,8 @@ procedure test(x: Ref, y: Ref) returns ()
       UnfoldingMask := oldMask;
       assume P#trigger(UnfoldingHeap, P(x));
       assume UnfoldingHeap[null, P(x)] == FrameFragment(UnfoldingHeap[x, f_7]);
-      ExhaleWellDef1Heap := UnfoldingHeap;
       ExhaleWellDef1Mask := UnfoldingMask;
+      ExhaleWellDef1Heap := UnfoldingHeap;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Assert might fail. There might be insufficient permission to access P(x) (0259.vpr@20.12--20.65) [193669]"}
@@ -471,16 +471,16 @@ procedure test(x: Ref, y: Ref) returns ()
   
   // -- Translating statement: assert (unfolding acc(P(y), write) in y.f) ==
   //   old((unfolding acc(P(y), write) in y.f)) -- 0259.vpr@22.5--22.65
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of (unfolding acc(P(y), write) in y.f) == old((unfolding acc(P(y), write) in y.f))
       UnfoldingHeap := ExhaleWellDef0Heap;
       UnfoldingMask := ExhaleWellDef0Mask;
       assume P#trigger(UnfoldingHeap, P(y));
       assume UnfoldingHeap[null, P(y)] == FrameFragment(UnfoldingHeap[y, f_7]);
-      ExhaleWellDef1Heap := UnfoldingHeap;
       ExhaleWellDef1Mask := UnfoldingMask;
+      ExhaleWellDef1Heap := UnfoldingHeap;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Assert might fail. There might be insufficient permission to access P(y) (0259.vpr@22.12--22.65) [193672]"}
@@ -502,8 +502,8 @@ procedure test(x: Ref, y: Ref) returns ()
       UnfoldingMask := oldMask;
       assume P#trigger(UnfoldingHeap, P(y));
       assume UnfoldingHeap[null, P(y)] == FrameFragment(UnfoldingHeap[y, f_7]);
-      ExhaleWellDef1Heap := UnfoldingHeap;
       ExhaleWellDef1Mask := UnfoldingMask;
+      ExhaleWellDef1Heap := UnfoldingHeap;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Assert might fail. There might be insufficient permission to access P(y) (0259.vpr@22.12--22.65) [193674]"}

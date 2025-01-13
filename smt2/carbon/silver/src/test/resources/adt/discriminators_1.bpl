@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-08 22:12:05
+// Date:         2025-01-13 13:29:04
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/adt/discriminators_1.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/adt/discriminators_1-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -293,11 +293,11 @@ axiom (forall <T> t_2: (TreeDomainType T) ::
 procedure discriminators_1a() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var list_2: (ListDomainType int);
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -307,30 +307,30 @@ procedure discriminators_1a() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: list := (Cons(1, (Nil(): List[Int])): List[Int]) -- discriminators_1.vpr@16.5--16.27
     list_2 := (Cons(1, (Nil(): ListDomainType int)): ListDomainType int);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (List_tag(list): Int) == 0 -- discriminators_1.vpr@18.5--18.23
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion (List_tag(list): Int) == 0 might not hold. (discriminators_1.vpr@18.12--18.23) [222576]"}
       (List_tag(list_2): int) == 0;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (List_tag((get_List_tail(list): List[Int])): Int) == 1 -- discriminators_1.vpr@19.5--19.27
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion (List_tag((get_List_tail(list): List[Int])): Int) == 1 might not hold. (discriminators_1.vpr@19.12--19.27) [222577]"}
       (List_tag((get_List_tail(list_2): ListDomainType int)): int) == 1;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert !((List_tag((get_List_tail(list): List[Int])): Int) == 0) -- discriminators_1.vpr@20.5--20.29
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion !((List_tag((get_List_tail(list): List[Int])): Int) == 0) might not hold. (discriminators_1.vpr@20.12--20.29) [222578]"}
       !((List_tag((get_List_tail(list_2): ListDomainType int)): int) == 0);
     assume state(Heap, Mask);
@@ -343,11 +343,11 @@ procedure discriminators_1a() returns ()
 procedure discriminators_1b() returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var tree_1: (TreeDomainType int);
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -357,8 +357,8 @@ procedure discriminators_1b() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: tree := (Node(42, (Node(42, (Leaf(): Tree[Int]), (Leaf(): Tree[Int])): Tree[Int]),
   //   (Node(42, (Leaf(): Tree[Int]), (Leaf(): Tree[Int])): Tree[Int])): Tree[Int]) -- discriminators_1.vpr@27.5--27.73
@@ -366,38 +366,38 @@ procedure discriminators_1b() returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert !((Tree_tag(tree): Int) == 0) -- discriminators_1.vpr@29.5--29.24
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion !((Tree_tag(tree): Int) == 0) might not hold. (discriminators_1.vpr@29.12--29.24) [222579]"}
       !((Tree_tag(tree_1): int) == 0);
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (Tree_tag((get_Tree_left((get_Tree_left(tree): Tree[Int])): Tree[Int])): Int) ==
   //   0 -- discriminators_1.vpr@30.5--30.33
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion (Tree_tag((get_Tree_left((get_Tree_left(tree): Tree[Int])): Tree[Int])): Int) == 0 might not hold. (discriminators_1.vpr@30.12--30.33) [222580]"}
       (Tree_tag((get_Tree_left((get_Tree_left(tree_1): TreeDomainType int)): TreeDomainType int)): int) == 0;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (Tree_tag((get_Tree_right((get_Tree_left(tree): Tree[Int])): Tree[Int])): Int) ==
   //   0 -- discriminators_1.vpr@31.5--31.34
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion (Tree_tag((get_Tree_right((get_Tree_left(tree): Tree[Int])): Tree[Int])): Int) == 0 might not hold. (discriminators_1.vpr@31.12--31.34) [222581]"}
       (Tree_tag((get_Tree_right((get_Tree_left(tree_1): TreeDomainType int)): TreeDomainType int)): int) == 0;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert (Tree_tag((get_Tree_left(tree): Tree[Int])): Int) == 1 -- discriminators_1.vpr@32.5--32.28
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion (Tree_tag((get_Tree_left(tree): Tree[Int])): Int) == 1 might not hold. (discriminators_1.vpr@32.12--32.28) [222582]"}
       (Tree_tag((get_Tree_left(tree_1): TreeDomainType int)): int) == 1;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert !((Tree_tag((get_Tree_right(tree): Tree[Int])): Int) == 0) -- discriminators_1.vpr@33.5--33.30
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion !((Tree_tag((get_Tree_right(tree): Tree[Int])): Int) == 0) might not hold. (discriminators_1.vpr@33.12--33.30) [222583]"}
       !((Tree_tag((get_Tree_right(tree_1): TreeDomainType int)): int) == 0);
     assume state(Heap, Mask);

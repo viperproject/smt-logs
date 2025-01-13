@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-08 21:24:03
+; Started: 2025-01-13 12:40:36
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -122,21 +122,21 @@
 (assert (forall ((s@$ $Snap) (this@2@00 $Ref)) (!
   (= (postFunction2%limited s@$ this@2@00) (postFunction2 s@$ this@2@00))
   :pattern ((postFunction2 s@$ this@2@00))
-  :qid |quant-u-23198|)))
+  :qid |quant-u-23305|)))
 (assert (forall ((s@$ $Snap) (this@2@00 $Ref)) (!
   (postFunction2%stateless this@2@00)
   :pattern ((postFunction2%limited s@$ this@2@00))
-  :qid |quant-u-23199|)))
+  :qid |quant-u-23306|)))
 (assert (forall ((s@$ $Snap) (this@2@00 $Ref)) (!
   (let ((result@3@00 (postFunction2%limited s@$ this@2@00))) (=>
     (postFunction2%precondition s@$ this@2@00)
     (= ($SortWrappers.$SnapToInt ($Snap.second s@$)) 0)))
   :pattern ((postFunction2%limited s@$ this@2@00))
-  :qid |quant-u-23200|)))
+  :qid |quant-u-23307|)))
 (assert (forall ((s@$ $Snap) (this@2@00 $Ref)) (!
   (let ((result@3@00 (postFunction2%limited s@$ this@2@00))) true)
   :pattern ((postFunction2%limited s@$ this@2@00))
-  :qid |quant-u-23201|)))
+  :qid |quant-u-23308|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- postMethod ----------

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-08 22:13:01
+// Date:         2025-01-13 13:30:00
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/termination/functions/expressions/forall.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/termination/functions/expressions/forall-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -444,15 +444,15 @@ procedure nonTerminating#definedness(x: Ref) returns (Result: bool)
 procedure test_pres_termination_proof(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var b_24: bool;
   var x21: Ref;
   var perm: Perm;
   var QPMask: MaskType;
   var x22: Ref;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -466,8 +466,8 @@ procedure test_pres_termination_proof(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: if (b) -- forall.vpr@10.14--10.75
     if (b_24) {
@@ -546,8 +546,8 @@ procedure test_pres_termination_proof(x: Ref) returns ()
     if (x == x22) {
       
       // -- Translating statement: assert false -- <no position>
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Assert might fail. Assertion false might not hold. (<no position>) [223094]"}
           false;
         assume state(Heap, Mask);
@@ -562,12 +562,12 @@ procedure test_pres_termination_proof(x: Ref) returns ()
 procedure test2_pres_termination_proof(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var x23: Ref;
   var b1: bool;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -581,8 +581,8 @@ procedure test2_pres_termination_proof(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[x23, $allocated];
@@ -607,8 +607,8 @@ procedure test2_pres_termination_proof(x: Ref) returns ()
         assume state(Heap, Mask);
       
       // -- Translating statement: assert false -- <no position>
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Assert might fail. Assertion false might not hold. (<no position>) [223095]"}
           false;
         assume state(Heap, Mask);

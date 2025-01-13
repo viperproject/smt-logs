@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-08 21:35:05
+// Date:         2025-01-13 12:51:51
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/misc/arrays.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/misc/arrays-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -635,12 +635,12 @@ procedure test01(a_2: IArrayDomainType, n: int) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -695,8 +695,8 @@ procedure test01(a_2: IArrayDomainType, n: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -769,8 +769,8 @@ procedure test01(a_2: IArrayDomainType, n: int) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     havoc QPMask;
     
     // -- check that the permission amount is positive
@@ -828,10 +828,10 @@ procedure test02(a1: IArrayDomainType, a2: IArrayDomainType, n: int) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var i_5: int;
   
   // -- Initializing the state
@@ -938,16 +938,16 @@ procedure test02(a1: IArrayDomainType, a2: IArrayDomainType, n: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert (forall i: Int ::
   //     { (i in [0..n)) }
   //     { loc(a1, i) }
   //     { loc(a2, i) }
   //     (i in [0..n)) ==> loc(a1, i) != loc(a2, i)) -- arrays.vpr@52.3--52.67
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall i: Int :: { (i in [0..n)) } { loc(a1, i) } { loc(a2, i) } (i in [0..n)) ==> loc(a1, i) != loc(a2, i))
       if (*) {
@@ -974,15 +974,15 @@ procedure test02(a1: IArrayDomainType, a2: IArrayDomainType, n: int) returns ()
 procedure test03(a_2: IArrayDomainType, left_1: int, right: int, pw1: (Seq int), pw2: (Seq int)) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var QPMask: MaskType;
   var i_9: int;
   var i_10: int;
   var j_11: int;
   var j_25: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var j_18: int;
   var j_5_1: int;
   var k_20: int;
@@ -996,8 +996,8 @@ procedure test03(a_2: IArrayDomainType, left_1: int, right: int, pw1: (Seq int),
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale left == 0 -- arrays.vpr@56.3--56.19
     assume left_1 == 0;
@@ -1176,8 +1176,8 @@ procedure test03(a_2: IArrayDomainType, left_1: int, right: int, pw1: (Seq int),
   // -- Translating statement: assert (forall j: Int ::
   //     { loc(a, pw1[j]) }
   //     0 <= j && j < |pw1| ==> loc(a, j + left).val == loc(a, pw1[j]).val) -- arrays.vpr@71.3--71.110
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall j: Int :: { loc(a, pw1[j]) } 0 <= j && j < |pw1| ==> loc(a, j + left).val == loc(a, pw1[j]).val)
       if (*) {
@@ -1210,8 +1210,8 @@ procedure test03(a_2: IArrayDomainType, left_1: int, right: int, pw1: (Seq int),
   //     { loc(a, k) }
   //     0 <= k - left && k - left < |pw2| ==>
   //     loc_limited(a, k).val == loc(a, pw2[k - left]).val) -- arrays.vpr@73.3--73.126
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (forall k: Int :: { loc(a, k) } 0 <= k - left && k - left < |pw2| ==> loc_limited(a, k).val == loc(a, pw2[k - left]).val)
       if (*) {

@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-08 21:23:09
+; Started: 2025-01-13 12:39:40
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -408,21 +408,21 @@
 (assert (forall ((s@$ $Snap) (t@0@00 $Ref)) (!
   (= (Tree__contents%limited s@$ t@0@00) (Tree__contents s@$ t@0@00))
   :pattern ((Tree__contents s@$ t@0@00))
-  :qid |quant-u-22470|)))
+  :qid |quant-u-22577|)))
 (assert (forall ((s@$ $Snap) (t@0@00 $Ref)) (!
   (Tree__contents%stateless t@0@00)
   :pattern ((Tree__contents%limited s@$ t@0@00))
-  :qid |quant-u-22471|)))
+  :qid |quant-u-22578|)))
 (assert (forall ((s@$ $Snap) (t@0@00 $Ref)) (!
   (let ((result@1@00 (Tree__contents%limited s@$ t@0@00))) (=>
     (and (Tree__contents%precondition s@$ t@0@00) (not (= t@0@00 $Ref.null)))
     (> (Seq_length result@1@00) 0)))
   :pattern ((Tree__contents%limited s@$ t@0@00))
-  :qid |quant-u-22472|)))
+  :qid |quant-u-22579|)))
 (assert (forall ((s@$ $Snap) (t@0@00 $Ref)) (!
   (let ((result@1@00 (Tree__contents%limited s@$ t@0@00))) true)
   :pattern ((Tree__contents%limited s@$ t@0@00))
-  :qid |quant-u-22473|)))
+  :qid |quant-u-22580|)))
 (assert (forall ((s@$ $Snap) (t@0@00 $Ref)) (!
   (=>
     (Tree__contents%precondition s@$ t@0@00)
@@ -450,7 +450,7 @@
             $Snap.unit) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second s@$)))))))))
   :pattern ((Tree__contents s@$ t@0@00))
   :pattern ((Tree__contents%stateless t@0@00) (Tree__state%trigger s@$ t@0@00))
-  :qid |quant-u-22474|)))
+  :qid |quant-u-22581|)))
 (assert (forall ((s@$ $Snap) (t@0@00 $Ref)) (!
   (=>
     (Tree__contents%precondition s@$ t@0@00)
@@ -473,7 +473,7 @@
           ($Snap.second ($Snap.second ($Snap.second ($Snap.second s@$))))
           $Snap.unit) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second s@$))))))))
   :pattern ((Tree__contents s@$ t@0@00))
-  :qid |quant-u-22475|)))
+  :qid |quant-u-22582|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- Tree__del_min ----------

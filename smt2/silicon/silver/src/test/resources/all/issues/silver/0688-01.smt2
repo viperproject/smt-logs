@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-08 21:26:55
+; Started: 2025-01-13 12:43:33
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -168,21 +168,21 @@
 (assert (forall ((s@$ $Snap)) (!
   (= (lemmaLEqualR67%limited s@$) (lemmaLEqualR67 s@$))
   :pattern ((lemmaLEqualR67 s@$))
-  :qid |quant-u-26103|)))
+  :qid |quant-u-26210|)))
 (assert (forall ((s@$ $Snap)) (!
   (as lemmaLEqualR67%stateless  Bool)
   :pattern ((lemmaLEqualR67%limited s@$))
-  :qid |quant-u-26104|)))
+  :qid |quant-u-26211|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@0@00 (lemmaLEqualR67%limited s@$))) (=>
     (lemmaLEqualR67%precondition s@$)
     (= (as L67<Int>  Int) (as R67<Int>  Int))))
   :pattern ((lemmaLEqualR67%limited s@$))
-  :qid |quant-u-26107|)))
+  :qid |quant-u-26214|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@0@00 (lemmaLEqualR67%limited s@$))) true)
   :pattern ((lemmaLEqualR67%limited s@$))
-  :qid |quant-u-26108|)))
+  :qid |quant-u-26215|)))
 (assert (forall ((s@$ $Snap)) (!
   (=>
     (lemmaLEqualR67%precondition s@$)
@@ -190,20 +190,20 @@
       (lemmaLEqualR67 s@$)
       (let ((x (F67<Int> (as L67<Int>  Int) (as R67<Int>  Int)))) (as unit<Unit>  Unit))))
   :pattern ((lemmaLEqualR67 s@$))
-  :qid |quant-u-26109|)))
+  :qid |quant-u-26216|)))
 (assert (forall ((s@$ $Snap)) (!
   (=>
     (lemmaLEqualR67%precondition s@$)
     (let ((x (F67<Int> (as L67<Int>  Int) (as R67<Int>  Int)))) true))
   :pattern ((lemmaLEqualR67 s@$))
-  :qid |quant-u-26110|)))
+  :qid |quant-u-26217|)))
 (assert (forall ((s@$ $Snap) (x@1@00 Int)) (!
   (= (functionUnit%limited s@$ x@1@00) (functionUnit s@$ x@1@00))
   :pattern ((functionUnit s@$ x@1@00))
-  :qid |quant-u-26105|)))
+  :qid |quant-u-26212|)))
 (assert (forall ((s@$ $Snap) (x@1@00 Int)) (!
   (functionUnit%stateless x@1@00)
   :pattern ((functionUnit%limited s@$ x@1@00))
-  :qid |quant-u-26106|)))
+  :qid |quant-u-26213|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------

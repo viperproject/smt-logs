@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-08 21:15:46
+; Started: 2025-01-13 12:32:07
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -1175,21 +1175,21 @@
 (assert (forall ((s@$ $Snap)) (!
   (= (Map__DELETED%limited s@$) (Map__DELETED s@$))
   :pattern ((Map__DELETED s@$))
-  :qid |quant-u-8685|)))
+  :qid |quant-u-8757|)))
 (assert (forall ((s@$ $Snap)) (!
   (as Map__DELETED%stateless  Bool)
   :pattern ((Map__DELETED%limited s@$))
-  :qid |quant-u-8686|)))
+  :qid |quant-u-8758|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@0@00 (Map__DELETED%limited s@$))) (=>
     (Map__DELETED%precondition s@$)
     (= result@0@00 (- 0 2))))
   :pattern ((Map__DELETED%limited s@$))
-  :qid |quant-u-8691|)))
+  :qid |quant-u-8763|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@0@00 (Map__DELETED%limited s@$))) true)
   :pattern ((Map__DELETED%limited s@$))
-  :qid |quant-u-8692|)))
+  :qid |quant-u-8764|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -1204,11 +1204,11 @@
 (assert (forall ((s@$ $Snap)) (!
   (=> (Map__DELETED%precondition s@$) (= (Map__DELETED s@$) (- 0 2)))
   :pattern ((Map__DELETED s@$))
-  :qid |quant-u-8693|)))
+  :qid |quant-u-8765|)))
 (assert (forall ((s@$ $Snap)) (!
   true
   :pattern ((Map__DELETED s@$))
-  :qid |quant-u-8694|)))
+  :qid |quant-u-8766|)))
 ; ---------- FUNCTION Map__EMPTY----------
 (declare-fun result@1@00 () Int)
 ; ----- Well-definedness of specifications -----
@@ -1223,21 +1223,21 @@
 (assert (forall ((s@$ $Snap)) (!
   (= (Map__EMPTY%limited s@$) (Map__EMPTY s@$))
   :pattern ((Map__EMPTY s@$))
-  :qid |quant-u-8687|)))
+  :qid |quant-u-8759|)))
 (assert (forall ((s@$ $Snap)) (!
   (as Map__EMPTY%stateless  Bool)
   :pattern ((Map__EMPTY%limited s@$))
-  :qid |quant-u-8688|)))
+  :qid |quant-u-8760|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@1@00 (Map__EMPTY%limited s@$))) (=>
     (Map__EMPTY%precondition s@$)
     (= result@1@00 (- 0 1))))
   :pattern ((Map__EMPTY%limited s@$))
-  :qid |quant-u-8695|)))
+  :qid |quant-u-8767|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@1@00 (Map__EMPTY%limited s@$))) true)
   :pattern ((Map__EMPTY%limited s@$))
-  :qid |quant-u-8696|)))
+  :qid |quant-u-8768|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -1252,11 +1252,11 @@
 (assert (forall ((s@$ $Snap)) (!
   (=> (Map__EMPTY%precondition s@$) (= (Map__EMPTY s@$) (- 0 1)))
   :pattern ((Map__EMPTY s@$))
-  :qid |quant-u-8697|)))
+  :qid |quant-u-8769|)))
 (assert (forall ((s@$ $Snap)) (!
   true
   :pattern ((Map__EMPTY s@$))
-  :qid |quant-u-8698|)))
+  :qid |quant-u-8770|)))
 ; ---------- FUNCTION Map__indexOfLoop----------
 (declare-fun diz@2@00 () $Ref)
 (declare-fun hash@3@00 () Int)
@@ -1875,7 +1875,7 @@
   :pattern ((Seq_index
     ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second s@$)))
     i2@11@00))
-  :qid |quant-u-8700|)))
+  :qid |quant-u-8772|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -2470,7 +2470,7 @@
   :pattern ((Seq_index
     ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second s@$))))
     i3@16@00))
-  :qid |quant-u-8702|)))
+  :qid |quant-u-8774|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -2537,7 +2537,7 @@
             (Seq_length
               ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second s@$)))))))))
   
-  :qid |quant-u-8703|))))
+  :qid |quant-u-8775|))))
 (check-sat)
 ; unknown
 (pop) ; 2
@@ -3415,11 +3415,11 @@
     (Map__indexOfLoop%limited s@$ diz@2@00 hash@3@00 ignoreDeleted@4@00 cap@5@00)
     (Map__indexOfLoop s@$ diz@2@00 hash@3@00 ignoreDeleted@4@00 cap@5@00))
   :pattern ((Map__indexOfLoop s@$ diz@2@00 hash@3@00 ignoreDeleted@4@00 cap@5@00))
-  :qid |quant-u-8689|)))
+  :qid |quant-u-8761|)))
 (assert (forall ((s@$ $Snap) (diz@2@00 $Ref) (hash@3@00 Int) (ignoreDeleted@4@00 Bool) (cap@5@00 Int)) (!
   (Map__indexOfLoop%stateless diz@2@00 hash@3@00 ignoreDeleted@4@00 cap@5@00)
   :pattern ((Map__indexOfLoop%limited s@$ diz@2@00 hash@3@00 ignoreDeleted@4@00 cap@5@00))
-  :qid |quant-u-8690|)))
+  :qid |quant-u-8762|)))
 (assert (forall ((s@$ $Snap) (diz@2@00 $Ref) (hash@3@00 Int) (ignoreDeleted@4@00 Bool) (cap@5@00 Int)) (!
   (let ((result@6@00 (Map__indexOfLoop%limited s@$ diz@2@00 hash@3@00 ignoreDeleted@4@00 cap@5@00))) (and
     (forall ((i2@11@00 Int)) (!
@@ -3442,7 +3442,7 @@
       :pattern ((Seq_index
         ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second s@$)))
         i2@11@00))
-      :qid |quant-u-8700|))
+      :qid |quant-u-8772|))
     (forall ((r $Ref)) (!
       (=>
         (and
@@ -3482,7 +3482,7 @@
       :pattern ((Seq_index
         ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second s@$))))
         i3@16@00))
-      :qid |quant-u-8702|))
+      :qid |quant-u-8774|))
     (forall ((r $Ref)) (!
       (=>
         (and
@@ -3549,13 +3549,13 @@
             (Seq_length
               ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second s@$))))))))))
   :pattern ((Map__indexOfLoop%limited s@$ diz@2@00 hash@3@00 ignoreDeleted@4@00 cap@5@00))
-  :qid |quant-u-8704|)))
+  :qid |quant-u-8776|)))
 (assert (forall ((s@$ $Snap) (diz@2@00 $Ref) (hash@3@00 Int) (ignoreDeleted@4@00 Bool) (cap@5@00 Int)) (!
   (let ((result@6@00 (Map__indexOfLoop%limited s@$ diz@2@00 hash@3@00 ignoreDeleted@4@00 cap@5@00))) (=>
     (Map__indexOfLoop%precondition s@$ diz@2@00 hash@3@00 ignoreDeleted@4@00 cap@5@00)
     (Map__EMPTY%precondition $Snap.unit)))
   :pattern ((Map__indexOfLoop%limited s@$ diz@2@00 hash@3@00 ignoreDeleted@4@00 cap@5@00))
-  :qid |quant-u-8705|)))
+  :qid |quant-u-8777|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert (forall ((r $Ref)) (!
@@ -3659,7 +3659,7 @@
   :pattern ((Seq_index
     ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second s@$))))
     i3@16@00))
-  :qid |quant-u-8702|)))
+  :qid |quant-u-8774|)))
 (assert (forall ((i3@16@00 Int)) (!
   (=>
     (and
@@ -3852,7 +3852,7 @@
   :pattern ((Seq_index
     ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second s@$)))
     i2@11@00))
-  :qid |quant-u-8700|)))
+  :qid |quant-u-8772|)))
 (assert (forall ((i2@11@00 Int)) (!
   (=>
     (and
@@ -4805,7 +4805,7 @@
       ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second s@$))))
       i2@25@00))
   
-  :qid |quant-u-8707|))))
+  :qid |quant-u-8779|))))
 (check-sat)
 ; unknown
 (pop) ; 5
@@ -4858,7 +4858,7 @@
           $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-8708|))))
+  :qid |quant-u-8780|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -5435,7 +5435,7 @@
       ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second s@$)))
       i3@31@00))
   
-  :qid |quant-u-8710|))))
+  :qid |quant-u-8782|))))
 (check-sat)
 ; unknown
 (pop) ; 5
@@ -5488,7 +5488,7 @@
           $Perm.No))
       $Perm.No))
   
-  :qid |quant-u-8711|))))
+  :qid |quant-u-8783|))))
 (check-sat)
 ; unsat
 (pop) ; 5
@@ -7482,7 +7482,7 @@
       :pattern ((Seq_index
         ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second s@$)))
         i2@11@00))
-      :qid |quant-u-8700|))
+      :qid |quant-u-8772|))
     (forall ((r $Ref)) (!
       (=>
         (and
@@ -7522,7 +7522,7 @@
       :pattern ((Seq_index
         ($SortWrappers.$SnapToSeq<$Ref> ($Snap.first ($Snap.second ($Snap.second s@$))))
         i3@16@00))
-      :qid |quant-u-8702|))
+      :qid |quant-u-8774|))
     (forall ((r $Ref)) (!
       (=>
         (and
@@ -7904,7 +7904,7 @@
             cap@5@00
             1))))))
   :pattern ((Map__indexOfLoop s@$ diz@2@00 hash@3@00 ignoreDeleted@4@00 cap@5@00))
-  :qid |quant-u-8712|)))
+  :qid |quant-u-8784|)))
 (assert (forall ((s@$ $Snap) (diz@2@00 $Ref) (hash@3@00 Int) (ignoreDeleted@4@00 Bool) (cap@5@00 Int)) (!
   (=>
     (Map__indexOfLoop%precondition s@$ diz@2@00 hash@3@00 ignoreDeleted@4@00 cap@5@00)
@@ -7942,4 +7942,4 @@
         cap@5@00
         1))))
   :pattern ((Map__indexOfLoop s@$ diz@2@00 hash@3@00 ignoreDeleted@4@00 cap@5@00))
-  :qid |quant-u-8713|)))
+  :qid |quant-u-8785|)))

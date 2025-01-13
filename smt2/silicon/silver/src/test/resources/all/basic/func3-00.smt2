@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-08 21:23:36
+; Started: 2025-01-13 12:40:08
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -154,21 +154,21 @@
 (assert (forall ((s@$ $Snap) (r@0@00 $Ref)) (!
   (= (f3%limited s@$ r@0@00) (f3 s@$ r@0@00))
   :pattern ((f3 s@$ r@0@00))
-  :qid |quant-u-22809|)))
+  :qid |quant-u-22916|)))
 (assert (forall ((s@$ $Snap) (r@0@00 $Ref)) (!
   (f3%stateless r@0@00)
   :pattern ((f3%limited s@$ r@0@00))
-  :qid |quant-u-22810|)))
+  :qid |quant-u-22917|)))
 (assert (forall ((s@$ $Snap) (r@0@00 $Ref)) (!
   (let ((result@1@00 (f3%limited s@$ r@0@00))) (and
     ($Perm.isReadVar $k@8@00)
     (=> (f3%precondition s@$ r@0@00) (= result@1@00 2))))
   :pattern ((f3%limited s@$ r@0@00))
-  :qid |quant-u-22817|)))
+  :qid |quant-u-22924|)))
 (assert (forall ((s@$ $Snap) (r@0@00 $Ref)) (!
   (let ((result@1@00 (f3%limited s@$ r@0@00))) true)
   :pattern ((f3%limited s@$ r@0@00))
-  :qid |quant-u-22818|)))
+  :qid |quant-u-22925|)))
 ; ----- Verification of function body and postcondition -----
 (set-option :timeout 0)
 (push) ; 1
@@ -210,11 +210,11 @@
       (f3%precondition s@$ r@0@00)
       (= (f3 s@$ r@0@00) ($SortWrappers.$SnapToInt ($Snap.first s@$)))))
   :pattern ((f3 s@$ r@0@00))
-  :qid |quant-u-22819|)))
+  :qid |quant-u-22926|)))
 (assert (forall ((s@$ $Snap) (r@0@00 $Ref)) (!
   true
   :pattern ((f3 s@$ r@0@00))
-  :qid |quant-u-22820|)))
+  :qid |quant-u-22927|)))
 ; ---------- FUNCTION f2----------
 (declare-fun r@2@00 () $Ref)
 (declare-fun result@3@00 () Int)
@@ -232,21 +232,21 @@
 (assert (forall ((s@$ $Snap) (r@2@00 $Ref)) (!
   (= (f2%limited s@$ r@2@00) (f2 s@$ r@2@00))
   :pattern ((f2 s@$ r@2@00))
-  :qid |quant-u-22811|)))
+  :qid |quant-u-22918|)))
 (assert (forall ((s@$ $Snap) (r@2@00 $Ref)) (!
   (f2%stateless r@2@00)
   :pattern ((f2%limited s@$ r@2@00))
-  :qid |quant-u-22812|)))
+  :qid |quant-u-22919|)))
 (assert (forall ((s@$ $Snap) (r@2@00 $Ref)) (!
   (let ((result@3@00 (f2%limited s@$ r@2@00))) (and
     ($Perm.isReadVar $k@10@00)
     (=> (f2%precondition s@$ r@2@00) (= result@3@00 2))))
   :pattern ((f2%limited s@$ r@2@00))
-  :qid |quant-u-22821|)))
+  :qid |quant-u-22928|)))
 (assert (forall ((s@$ $Snap) (r@2@00 $Ref)) (!
   (let ((result@3@00 (f2%limited s@$ r@2@00))) true)
   :pattern ((f2%limited s@$ r@2@00))
-  :qid |quant-u-22822|)))
+  :qid |quant-u-22929|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert ($Perm.isReadVar $k@10@00))
@@ -343,11 +343,11 @@
 (assert (forall ((s@$ $Snap) (r@4@00 $Ref)) (!
   (= (f1%limited s@$ r@4@00) (f1 s@$ r@4@00))
   :pattern ((f1 s@$ r@4@00))
-  :qid |quant-u-22813|)))
+  :qid |quant-u-22920|)))
 (assert (forall ((s@$ $Snap) (r@4@00 $Ref)) (!
   (f1%stateless r@4@00)
   :pattern ((f1%limited s@$ r@4@00))
-  :qid |quant-u-22814|)))
+  :qid |quant-u-22921|)))
 (assert (forall ((s@$ $Snap) (r@4@00 $Ref)) (!
   (let ((result@5@00 (f1%limited s@$ r@4@00))) (and
     ($Perm.isReadVar $k@12@00)
@@ -355,11 +355,11 @@
       (f1%precondition s@$ r@4@00)
       (= result@5@00 ($SortWrappers.$SnapToInt s@$)))))
   :pattern ((f1%limited s@$ r@4@00))
-  :qid |quant-u-22823|)))
+  :qid |quant-u-22930|)))
 (assert (forall ((s@$ $Snap) (r@4@00 $Ref)) (!
   (let ((result@5@00 (f1%limited s@$ r@4@00))) true)
   :pattern ((f1%limited s@$ r@4@00))
-  :qid |quant-u-22824|)))
+  :qid |quant-u-22931|)))
 ; ----- Verification of function body and postcondition -----
 (set-option :timeout 0)
 (push) ; 1
@@ -398,11 +398,11 @@
       (f1%precondition s@$ r@4@00)
       (= (f1 s@$ r@4@00) ($SortWrappers.$SnapToInt s@$))))
   :pattern ((f1 s@$ r@4@00))
-  :qid |quant-u-22825|)))
+  :qid |quant-u-22932|)))
 (assert (forall ((s@$ $Snap) (r@4@00 $Ref)) (!
   true
   :pattern ((f1 s@$ r@4@00))
-  :qid |quant-u-22826|)))
+  :qid |quant-u-22933|)))
 ; ---------- FUNCTION f4----------
 (declare-fun r@6@00 () $Ref)
 (declare-fun result@7@00 () $Ref)
@@ -417,11 +417,11 @@
 (assert (forall ((s@$ $Snap) (r@6@00 $Ref)) (!
   (= (f4%limited s@$ r@6@00) (f4 s@$ r@6@00))
   :pattern ((f4 s@$ r@6@00))
-  :qid |quant-u-22815|)))
+  :qid |quant-u-22922|)))
 (assert (forall ((s@$ $Snap) (r@6@00 $Ref)) (!
   (f4%stateless r@6@00)
   :pattern ((f4%limited s@$ r@6@00))
-  :qid |quant-u-22816|)))
+  :qid |quant-u-22923|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 (assert ($Perm.isReadVar $k@14@00))
@@ -449,8 +449,8 @@
       (f4%precondition s@$ r@6@00)
       (= (f4 s@$ r@6@00) ($SortWrappers.$SnapTo$Ref s@$))))
   :pattern ((f4 s@$ r@6@00))
-  :qid |quant-u-22827|)))
+  :qid |quant-u-22934|)))
 (assert (forall ((s@$ $Snap) (r@6@00 $Ref)) (!
   true
   :pattern ((f4 s@$ r@6@00))
-  :qid |quant-u-22828|)))
+  :qid |quant-u-22935|)))

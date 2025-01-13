@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-08 21:22:12
+; Started: 2025-01-13 12:38:43
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -167,39 +167,39 @@
 (assert (forall ((s@$ $Snap) (i@0@00 Int)) (!
   (= (isGreaterOne%limited s@$ i@0@00) (isGreaterOne s@$ i@0@00))
   :pattern ((isGreaterOne s@$ i@0@00))
-  :qid |quant-u-21892|)))
+  :qid |quant-u-21999|)))
 (assert (forall ((s@$ $Snap) (i@0@00 Int)) (!
   (isGreaterOne%stateless i@0@00)
   :pattern ((isGreaterOne%limited s@$ i@0@00))
-  :qid |quant-u-21893|)))
+  :qid |quant-u-22000|)))
 (assert (forall ((s@$ $Snap) (i@0@00 Int)) (!
   (let ((result@1@00 (isGreaterOne%limited s@$ i@0@00))) (=>
     (and (isGreaterOne%precondition s@$ i@0@00) (> i@0@00 60))
     result@1@00))
   :pattern ((isGreaterOne%limited s@$ i@0@00))
-  :qid |quant-u-21918|)))
+  :qid |quant-u-22025|)))
 (assert (forall ((s@$ $Snap) (i@0@00 Int)) (!
   (let ((result@1@00 (isGreaterOne%limited s@$ i@0@00))) true)
   :pattern ((isGreaterOne%limited s@$ i@0@00))
-  :qid |quant-u-21919|)))
+  :qid |quant-u-22026|)))
 (assert (forall ((s@$ $Snap) (i@0@00 Int)) (!
   (=>
     (isGreaterOne%precondition s@$ i@0@00)
     (= (isGreaterOne s@$ i@0@00) (> i@0@00 1)))
   :pattern ((isGreaterOne s@$ i@0@00))
-  :qid |quant-u-21920|)))
+  :qid |quant-u-22027|)))
 (assert (forall ((s@$ $Snap) (i@0@00 Int)) (!
   true
   :pattern ((isGreaterOne s@$ i@0@00))
-  :qid |quant-u-21921|)))
+  :qid |quant-u-22028|)))
 (assert (forall ((s@$ $Snap) (i@2@00 Int)) (!
   (= (fac1%limited s@$ i@2@00) (fac1 s@$ i@2@00))
   :pattern ((fac1 s@$ i@2@00))
-  :qid |quant-u-21894|)))
+  :qid |quant-u-22001|)))
 (assert (forall ((s@$ $Snap) (i@2@00 Int)) (!
   (fac1%stateless i@2@00)
   :pattern ((fac1%limited s@$ i@2@00))
-  :qid |quant-u-21895|)))
+  :qid |quant-u-22002|)))
 (assert (forall ((s@$ $Snap) (i@2@00 Int)) (!
   (=>
     (fac1%precondition s@$ i@2@00)
@@ -207,21 +207,21 @@
       (fac1 s@$ i@2@00)
       (ite (<= i@2@00 1) 1 (* i@2@00 (fac1%limited $Snap.unit (- i@2@00 1))))))
   :pattern ((fac1 s@$ i@2@00))
-  :qid |quant-u-21922|)))
+  :qid |quant-u-22029|)))
 (assert (forall ((s@$ $Snap) (i@2@00 Int)) (!
   (=>
     (fac1%precondition s@$ i@2@00)
     (ite (<= i@2@00 1) true (fac1%precondition $Snap.unit (- i@2@00 1))))
   :pattern ((fac1 s@$ i@2@00))
-  :qid |quant-u-21923|)))
+  :qid |quant-u-22030|)))
 (assert (forall ((s@$ $Snap) (i@4@00 Int)) (!
   (= (fac3%limited s@$ i@4@00) (fac3 s@$ i@4@00))
   :pattern ((fac3 s@$ i@4@00))
-  :qid |quant-u-21896|)))
+  :qid |quant-u-22003|)))
 (assert (forall ((s@$ $Snap) (i@4@00 Int)) (!
   (fac3%stateless i@4@00)
   :pattern ((fac3%limited s@$ i@4@00))
-  :qid |quant-u-21897|)))
+  :qid |quant-u-22004|)))
 (assert (forall ((s@$ $Snap) (i@4@00 Int)) (!
   (=>
     (fac3%precondition s@$ i@4@00)
@@ -229,39 +229,39 @@
       (fac3 s@$ i@4@00)
       (ite (<= i@4@00 1) 1 (* i@4@00 (fac3%limited $Snap.unit (- i@4@00 1))))))
   :pattern ((fac3 s@$ i@4@00))
-  :qid |quant-u-21924|)))
+  :qid |quant-u-22031|)))
 (assert (forall ((s@$ $Snap) (i@4@00 Int)) (!
   (=>
     (fac3%precondition s@$ i@4@00)
     (ite (<= i@4@00 1) true (fac3%precondition $Snap.unit (- i@4@00 1))))
   :pattern ((fac3 s@$ i@4@00))
-  :qid |quant-u-21925|)))
+  :qid |quant-u-22032|)))
 (assert (forall ((s@$ $Snap) (x@6@00 $Ref)) (!
   (= (funP2%limited s@$ x@6@00) (funP2 s@$ x@6@00))
   :pattern ((funP2 s@$ x@6@00))
-  :qid |quant-u-21898|)))
+  :qid |quant-u-22005|)))
 (assert (forall ((s@$ $Snap) (x@6@00 $Ref)) (!
   (funP2%stateless x@6@00)
   :pattern ((funP2%limited s@$ x@6@00))
-  :qid |quant-u-21899|)))
+  :qid |quant-u-22006|)))
 (assert (forall ((s@$ $Snap) (x@6@00 $Ref)) (!
   (=>
     (funP2%precondition s@$ x@6@00)
     (= (funP2 s@$ x@6@00) ($SortWrappers.$SnapToInt s@$)))
   :pattern ((funP2 s@$ x@6@00))
-  :qid |quant-u-21926|)))
+  :qid |quant-u-22033|)))
 (assert (forall ((s@$ $Snap) (x@6@00 $Ref)) (!
   true
   :pattern ((funP2 s@$ x@6@00))
-  :qid |quant-u-21927|)))
+  :qid |quant-u-22034|)))
 (assert (forall ((s@$ $Snap) (r@8@00 $Ref)) (!
   (= (isGreaterOne35%limited s@$ r@8@00) (isGreaterOne35 s@$ r@8@00))
   :pattern ((isGreaterOne35 s@$ r@8@00))
-  :qid |quant-u-21900|)))
+  :qid |quant-u-22007|)))
 (assert (forall ((s@$ $Snap) (r@8@00 $Ref)) (!
   (isGreaterOne35%stateless r@8@00)
   :pattern ((isGreaterOne35%limited s@$ r@8@00))
-  :qid |quant-u-21901|)))
+  :qid |quant-u-22008|)))
 (assert (forall ((s@$ $Snap) (r@8@00 $Ref)) (!
   (let ((result@9@00 (isGreaterOne35%limited s@$ r@8@00))) (=>
     (and
@@ -269,11 +269,11 @@
       (> ($SortWrappers.$SnapToInt ($Snap.first s@$)) 60))
     result@9@00))
   :pattern ((isGreaterOne35%limited s@$ r@8@00))
-  :qid |quant-u-21928|)))
+  :qid |quant-u-22035|)))
 (assert (forall ((s@$ $Snap) (r@8@00 $Ref)) (!
   (let ((result@9@00 (isGreaterOne35%limited s@$ r@8@00))) true)
   :pattern ((isGreaterOne35%limited s@$ r@8@00))
-  :qid |quant-u-21929|)))
+  :qid |quant-u-22036|)))
 (assert (forall ((s@$ $Snap) (r@8@00 $Ref)) (!
   (=>
     (isGreaterOne35%precondition s@$ r@8@00)
@@ -281,21 +281,21 @@
       (isGreaterOne35 s@$ r@8@00)
       (isGreaterOne%limited $Snap.unit ($SortWrappers.$SnapToInt ($Snap.first s@$)))))
   :pattern ((isGreaterOne35 s@$ r@8@00))
-  :qid |quant-u-21930|)))
+  :qid |quant-u-22037|)))
 (assert (forall ((s@$ $Snap) (r@8@00 $Ref)) (!
   (=>
     (isGreaterOne35%precondition s@$ r@8@00)
     (isGreaterOne%precondition $Snap.unit ($SortWrappers.$SnapToInt ($Snap.first s@$))))
   :pattern ((isGreaterOne35 s@$ r@8@00))
-  :qid |quant-u-21931|)))
+  :qid |quant-u-22038|)))
 (assert (forall ((s@$ $Snap) (r@10@00 $Ref)) (!
   (= (isGreaterOne32%limited s@$ r@10@00) (isGreaterOne32 s@$ r@10@00))
   :pattern ((isGreaterOne32 s@$ r@10@00))
-  :qid |quant-u-21902|)))
+  :qid |quant-u-22009|)))
 (assert (forall ((s@$ $Snap) (r@10@00 $Ref)) (!
   (isGreaterOne32%stateless r@10@00)
   :pattern ((isGreaterOne32%limited s@$ r@10@00))
-  :qid |quant-u-21903|)))
+  :qid |quant-u-22010|)))
 (assert (forall ((s@$ $Snap) (r@10@00 $Ref)) (!
   (let ((result@11@00 (isGreaterOne32%limited s@$ r@10@00))) (=>
     (isGreaterOne32%precondition s@$ r@10@00)
@@ -303,15 +303,15 @@
       (=> (> ($SortWrappers.$SnapToInt ($Snap.first s@$)) 60) result@11@00)
       (= result@11@00 (> ($SortWrappers.$SnapToInt ($Snap.first s@$)) 1)))))
   :pattern ((isGreaterOne32%limited s@$ r@10@00))
-  :qid |quant-u-21932|)))
+  :qid |quant-u-22039|)))
 (assert (forall ((s@$ $Snap) (r@10@00 $Ref)) (!
   (let ((result@11@00 (isGreaterOne32%limited s@$ r@10@00))) true)
   :pattern ((isGreaterOne32%limited s@$ r@10@00))
-  :qid |quant-u-21933|)))
+  :qid |quant-u-22040|)))
 (assert (forall ((s@$ $Snap) (r@10@00 $Ref)) (!
   (let ((result@11@00 (isGreaterOne32%limited s@$ r@10@00))) true)
   :pattern ((isGreaterOne32%limited s@$ r@10@00))
-  :qid |quant-u-21934|)))
+  :qid |quant-u-22041|)))
 (assert (forall ((s@$ $Snap) (r@10@00 $Ref)) (!
   (=>
     (isGreaterOne32%precondition s@$ r@10@00)
@@ -319,21 +319,21 @@
       (isGreaterOne32 s@$ r@10@00)
       (isGreaterOne $Snap.unit ($SortWrappers.$SnapToInt ($Snap.first s@$)))))
   :pattern ((isGreaterOne32 s@$ r@10@00))
-  :qid |quant-u-21935|)))
+  :qid |quant-u-22042|)))
 (assert (forall ((s@$ $Snap) (r@10@00 $Ref)) (!
   (=>
     (isGreaterOne32%precondition s@$ r@10@00)
     (isGreaterOne%precondition $Snap.unit ($SortWrappers.$SnapToInt ($Snap.first s@$))))
   :pattern ((isGreaterOne32 s@$ r@10@00))
-  :qid |quant-u-21936|)))
+  :qid |quant-u-22043|)))
 (assert (forall ((s@$ $Snap) (r@12@00 $Ref)) (!
   (= (isGreaterOne34%limited s@$ r@12@00) (isGreaterOne34 s@$ r@12@00))
   :pattern ((isGreaterOne34 s@$ r@12@00))
-  :qid |quant-u-21904|)))
+  :qid |quant-u-22011|)))
 (assert (forall ((s@$ $Snap) (r@12@00 $Ref)) (!
   (isGreaterOne34%stateless r@12@00)
   :pattern ((isGreaterOne34%limited s@$ r@12@00))
-  :qid |quant-u-21905|)))
+  :qid |quant-u-22012|)))
 (assert (forall ((s@$ $Snap) (r@12@00 $Ref)) (!
   (let ((result@13@00 (isGreaterOne34%limited s@$ r@12@00))) (=>
     (and
@@ -341,11 +341,11 @@
       (> ($SortWrappers.$SnapToInt ($Snap.first s@$)) 60))
     result@13@00))
   :pattern ((isGreaterOne34%limited s@$ r@12@00))
-  :qid |quant-u-21937|)))
+  :qid |quant-u-22044|)))
 (assert (forall ((s@$ $Snap) (r@12@00 $Ref)) (!
   (let ((result@13@00 (isGreaterOne34%limited s@$ r@12@00))) true)
   :pattern ((isGreaterOne34%limited s@$ r@12@00))
-  :qid |quant-u-21938|)))
+  :qid |quant-u-22045|)))
 (assert (forall ((s@$ $Snap) (r@12@00 $Ref)) (!
   (=>
     (isGreaterOne34%precondition s@$ r@12@00)
@@ -353,39 +353,39 @@
       (isGreaterOne34 s@$ r@12@00)
       (isGreaterOne $Snap.unit ($SortWrappers.$SnapToInt ($Snap.first s@$)))))
   :pattern ((isGreaterOne34 s@$ r@12@00))
-  :qid |quant-u-21939|)))
+  :qid |quant-u-22046|)))
 (assert (forall ((s@$ $Snap) (r@12@00 $Ref)) (!
   (=>
     (isGreaterOne34%precondition s@$ r@12@00)
     (isGreaterOne%precondition $Snap.unit ($SortWrappers.$SnapToInt ($Snap.first s@$))))
   :pattern ((isGreaterOne34 s@$ r@12@00))
-  :qid |quant-u-21940|)))
+  :qid |quant-u-22047|)))
 (assert (forall ((s@$ $Snap) (x@14@00 $Ref)) (!
   (= (funP%limited s@$ x@14@00) (funP s@$ x@14@00))
   :pattern ((funP s@$ x@14@00))
-  :qid |quant-u-21906|)))
+  :qid |quant-u-22013|)))
 (assert (forall ((s@$ $Snap) (x@14@00 $Ref)) (!
   (funP%stateless x@14@00)
   :pattern ((funP%limited s@$ x@14@00))
-  :qid |quant-u-21907|)))
+  :qid |quant-u-22014|)))
 (assert (forall ((s@$ $Snap) (x@14@00 $Ref)) (!
   (=>
     (funP%precondition s@$ x@14@00)
     (= (funP s@$ x@14@00) ($SortWrappers.$SnapToInt s@$)))
   :pattern ((funP s@$ x@14@00))
-  :qid |quant-u-21941|)))
+  :qid |quant-u-22048|)))
 (assert (forall ((s@$ $Snap) (x@14@00 $Ref)) (!
   true
   :pattern ((funP s@$ x@14@00))
-  :qid |quant-u-21942|)))
+  :qid |quant-u-22049|)))
 (assert (forall ((s@$ $Snap) (r@16@00 $Ref)) (!
   (= (isGreaterOne22%limited s@$ r@16@00) (isGreaterOne22 s@$ r@16@00))
   :pattern ((isGreaterOne22 s@$ r@16@00))
-  :qid |quant-u-21908|)))
+  :qid |quant-u-22015|)))
 (assert (forall ((s@$ $Snap) (r@16@00 $Ref)) (!
   (isGreaterOne22%stateless r@16@00)
   :pattern ((isGreaterOne22%limited s@$ r@16@00))
-  :qid |quant-u-21909|)))
+  :qid |quant-u-22016|)))
 (assert (forall ((s@$ $Snap) (r@16@00 $Ref)) (!
   (let ((result@17@00 (isGreaterOne22%limited s@$ r@16@00))) (=>
     (isGreaterOne22%precondition s@$ r@16@00)
@@ -393,23 +393,23 @@
       (=> (> ($SortWrappers.$SnapToInt ($Snap.first s@$)) 60) result@17@00)
       (= result@17@00 (> ($SortWrappers.$SnapToInt ($Snap.first s@$)) 1)))))
   :pattern ((isGreaterOne22%limited s@$ r@16@00))
-  :qid |quant-u-21943|)))
+  :qid |quant-u-22050|)))
 (assert (forall ((s@$ $Snap) (r@16@00 $Ref)) (!
   (let ((result@17@00 (isGreaterOne22%limited s@$ r@16@00))) true)
   :pattern ((isGreaterOne22%limited s@$ r@16@00))
-  :qid |quant-u-21944|)))
+  :qid |quant-u-22051|)))
 (assert (forall ((s@$ $Snap) (r@16@00 $Ref)) (!
   (let ((result@17@00 (isGreaterOne22%limited s@$ r@16@00))) true)
   :pattern ((isGreaterOne22%limited s@$ r@16@00))
-  :qid |quant-u-21945|)))
+  :qid |quant-u-22052|)))
 (assert (forall ((s@$ $Snap) (r@18@00 $Ref)) (!
   (= (isGreaterOne2%limited s@$ r@18@00) (isGreaterOne2 s@$ r@18@00))
   :pattern ((isGreaterOne2 s@$ r@18@00))
-  :qid |quant-u-21910|)))
+  :qid |quant-u-22017|)))
 (assert (forall ((s@$ $Snap) (r@18@00 $Ref)) (!
   (isGreaterOne2%stateless r@18@00)
   :pattern ((isGreaterOne2%limited s@$ r@18@00))
-  :qid |quant-u-21911|)))
+  :qid |quant-u-22018|)))
 (assert (forall ((s@$ $Snap) (r@18@00 $Ref)) (!
   (let ((result@19@00 (isGreaterOne2%limited s@$ r@18@00))) (=>
     (and
@@ -417,11 +417,11 @@
       (> ($SortWrappers.$SnapToInt ($Snap.first s@$)) 60))
     result@19@00))
   :pattern ((isGreaterOne2%limited s@$ r@18@00))
-  :qid |quant-u-21946|)))
+  :qid |quant-u-22053|)))
 (assert (forall ((s@$ $Snap) (r@18@00 $Ref)) (!
   (let ((result@19@00 (isGreaterOne2%limited s@$ r@18@00))) true)
   :pattern ((isGreaterOne2%limited s@$ r@18@00))
-  :qid |quant-u-21947|)))
+  :qid |quant-u-22054|)))
 (assert (forall ((s@$ $Snap) (r@18@00 $Ref)) (!
   (=>
     (isGreaterOne2%precondition s@$ r@18@00)
@@ -429,21 +429,21 @@
       (isGreaterOne2 s@$ r@18@00)
       (isGreaterOne%limited $Snap.unit ($SortWrappers.$SnapToInt ($Snap.first s@$)))))
   :pattern ((isGreaterOne2 s@$ r@18@00))
-  :qid |quant-u-21948|)))
+  :qid |quant-u-22055|)))
 (assert (forall ((s@$ $Snap) (r@18@00 $Ref)) (!
   (=>
     (isGreaterOne2%precondition s@$ r@18@00)
     (isGreaterOne%precondition $Snap.unit ($SortWrappers.$SnapToInt ($Snap.first s@$))))
   :pattern ((isGreaterOne2 s@$ r@18@00))
-  :qid |quant-u-21949|)))
+  :qid |quant-u-22056|)))
 (assert (forall ((s@$ $Snap) (i@20@00 Int)) (!
   (= (fac2%limited s@$ i@20@00) (fac2 s@$ i@20@00))
   :pattern ((fac2 s@$ i@20@00))
-  :qid |quant-u-21912|)))
+  :qid |quant-u-22019|)))
 (assert (forall ((s@$ $Snap) (i@20@00 Int)) (!
   (fac2%stateless i@20@00)
   :pattern ((fac2%limited s@$ i@20@00))
-  :qid |quant-u-21913|)))
+  :qid |quant-u-22020|)))
 (assert (forall ((s@$ $Snap) (i@20@00 Int)) (!
   (=>
     (fac2%precondition s@$ i@20@00)
@@ -451,21 +451,21 @@
       (fac2 s@$ i@20@00)
       (ite (<= i@20@00 1) 1 (* i@20@00 (fac2%limited $Snap.unit (- i@20@00 1))))))
   :pattern ((fac2 s@$ i@20@00))
-  :qid |quant-u-21950|)))
+  :qid |quant-u-22057|)))
 (assert (forall ((s@$ $Snap) (i@20@00 Int)) (!
   (=>
     (fac2%precondition s@$ i@20@00)
     (ite (<= i@20@00 1) true (fac2%precondition $Snap.unit (- i@20@00 1))))
   :pattern ((fac2 s@$ i@20@00))
-  :qid |quant-u-21951|)))
+  :qid |quant-u-22058|)))
 (assert (forall ((s@$ $Snap) (r@22@00 $Ref)) (!
   (= (isGreaterOne33%limited s@$ r@22@00) (isGreaterOne33 s@$ r@22@00))
   :pattern ((isGreaterOne33 s@$ r@22@00))
-  :qid |quant-u-21914|)))
+  :qid |quant-u-22021|)))
 (assert (forall ((s@$ $Snap) (r@22@00 $Ref)) (!
   (isGreaterOne33%stateless r@22@00)
   :pattern ((isGreaterOne33%limited s@$ r@22@00))
-  :qid |quant-u-21915|)))
+  :qid |quant-u-22022|)))
 (assert (forall ((s@$ $Snap) (r@22@00 $Ref)) (!
   (let ((result@23@00 (isGreaterOne33%limited s@$ r@22@00))) (=>
     (and
@@ -473,19 +473,19 @@
       (> ($SortWrappers.$SnapToInt s@$) 60))
     result@23@00))
   :pattern ((isGreaterOne33%limited s@$ r@22@00))
-  :qid |quant-u-21952|)))
+  :qid |quant-u-22059|)))
 (assert (forall ((s@$ $Snap) (r@22@00 $Ref)) (!
   (let ((result@23@00 (isGreaterOne33%limited s@$ r@22@00))) true)
   :pattern ((isGreaterOne33%limited s@$ r@22@00))
-  :qid |quant-u-21953|)))
+  :qid |quant-u-22060|)))
 (assert (forall ((s@$ $Snap) (r@24@00 $Ref)) (!
   (= (isGreaterOne3%limited s@$ r@24@00) (isGreaterOne3 s@$ r@24@00))
   :pattern ((isGreaterOne3 s@$ r@24@00))
-  :qid |quant-u-21916|)))
+  :qid |quant-u-22023|)))
 (assert (forall ((s@$ $Snap) (r@24@00 $Ref)) (!
   (isGreaterOne3%stateless r@24@00)
   :pattern ((isGreaterOne3%limited s@$ r@24@00))
-  :qid |quant-u-21917|)))
+  :qid |quant-u-22024|)))
 (assert (forall ((s@$ $Snap) (r@24@00 $Ref)) (!
   (let ((result@25@00 (isGreaterOne3%limited s@$ r@24@00))) (=>
     (and
@@ -493,11 +493,11 @@
       (> ($SortWrappers.$SnapToInt ($Snap.first s@$)) 60))
     result@25@00))
   :pattern ((isGreaterOne3%limited s@$ r@24@00))
-  :qid |quant-u-21954|)))
+  :qid |quant-u-22061|)))
 (assert (forall ((s@$ $Snap) (r@24@00 $Ref)) (!
   (let ((result@25@00 (isGreaterOne3%limited s@$ r@24@00))) true)
   :pattern ((isGreaterOne3%limited s@$ r@24@00))
-  :qid |quant-u-21955|)))
+  :qid |quant-u-22062|)))
 (assert (forall ((s@$ $Snap) (r@24@00 $Ref)) (!
   (=>
     (isGreaterOne3%precondition s@$ r@24@00)
@@ -505,13 +505,13 @@
       (isGreaterOne3 s@$ r@24@00)
       (isGreaterOne $Snap.unit ($SortWrappers.$SnapToInt ($Snap.first s@$)))))
   :pattern ((isGreaterOne3 s@$ r@24@00))
-  :qid |quant-u-21956|)))
+  :qid |quant-u-22063|)))
 (assert (forall ((s@$ $Snap) (r@24@00 $Ref)) (!
   (=>
     (isGreaterOne3%precondition s@$ r@24@00)
     (isGreaterOne%precondition $Snap.unit ($SortWrappers.$SnapToInt ($Snap.first s@$))))
   :pattern ((isGreaterOne3 s@$ r@24@00))
-  :qid |quant-u-21957|)))
+  :qid |quant-u-22064|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- mPre ----------

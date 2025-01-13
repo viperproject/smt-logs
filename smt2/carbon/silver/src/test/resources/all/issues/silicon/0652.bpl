@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-08 22:08:00
+// Date:         2025-01-13 13:25:00
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0652.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0652-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -342,14 +342,14 @@ procedure main(arr1: arrayDomainType, arr2: arrayDomainType) returns ()
   modifies Heap, Mask;
 {
   var i_14: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var QPMask: MaskType;
   var i_2: int;
   var i_4: int;
   var i_6: int;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var x: int;
   var ExhaleHeap: HeapType;
   var i_7: int;
@@ -357,8 +357,8 @@ procedure main(arr1: arrayDomainType, arr2: arrayDomainType) returns ()
   var i_9: int;
   var loopHeap: HeapType;
   var loopMask: MaskType;
-  var ExhaleWellDef1Heap: HeapType;
   var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef1Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -378,8 +378,8 @@ procedure main(arr1: arrayDomainType, arr2: arrayDomainType) returns ()
         if (0 <= i_14 && i_14 < 6) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             assert {:msg "  Precondition of function aloc might not hold. Assertion 0 <= i might not hold. (0652.vpr@31.78--31.91) [215373]"}
               0 <= i_14;
             assert {:msg "  Precondition of function aloc might not hold. Assertion i < alen(arr1) might not hold. (0652.vpr@31.78--31.91) [215374]"}
@@ -438,8 +438,8 @@ procedure main(arr1: arrayDomainType, arr2: arrayDomainType) returns ()
         if (0 <= i_2 && i_2 < 6) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             assert {:msg "  Precondition of function aloc might not hold. Assertion 0 <= i might not hold. (0652.vpr@32.74--32.87) [215377]"}
               0 <= i_2;
             assert {:msg "  Precondition of function aloc might not hold. Assertion i < alen(arr1) might not hold. (0652.vpr@32.74--32.87) [215378]"}
@@ -464,8 +464,8 @@ procedure main(arr1: arrayDomainType, arr2: arrayDomainType) returns ()
         if (0 <= i_4 && i_4 < 12) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             assert {:msg "  Precondition of function aloc might not hold. Assertion 0 <= i might not hold. (0652.vpr@34.79--34.92) [215380]"}
               0 <= i_4;
             assert {:msg "  Precondition of function aloc might not hold. Assertion i < alen(arr2) might not hold. (0652.vpr@34.79--34.92) [215381]"}
@@ -518,8 +518,8 @@ procedure main(arr1: arrayDomainType, arr2: arrayDomainType) returns ()
         if (0 <= i_6 && i_6 < 6) {
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             assert {:msg "  Precondition of function aloc might not hold. Assertion 0 <= i might not hold. (0652.vpr@35.74--35.87) [215383]"}
               0 <= i_6;
             assert {:msg "  Precondition of function aloc might not hold. Assertion i < alen(arr2) might not hold. (0652.vpr@35.74--35.87) [215384]"}
@@ -531,8 +531,8 @@ procedure main(arr1: arrayDomainType, arr2: arrayDomainType) returns ()
             HasDirectPerm(Mask, aloc_1(Heap, arr2, i_6), vint_1);
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             assert {:msg "  Precondition of function aloc might not hold. Assertion 0 <= i might not hold. (0652.vpr@35.100--35.113) [215386]"}
               0 <= i_6;
             assert {:msg "  Precondition of function aloc might not hold. Assertion i < alen(arr1) might not hold. (0652.vpr@35.100--35.113) [215387]"}
@@ -544,8 +544,8 @@ procedure main(arr1: arrayDomainType, arr2: arrayDomainType) returns ()
             HasDirectPerm(Mask, aloc_1(Heap, arr1, i_6), vint_1);
           if (*) {
             // Exhale precondition of function application
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             assert {:msg "  Precondition of function aloc might not hold. Assertion 0 < alen(arr1) might not hold. (0652.vpr@35.120--35.133) [215389]"}
               0 < (alen(arr1): int);
             // Stop execution
@@ -565,8 +565,8 @@ procedure main(arr1: arrayDomainType, arr2: arrayDomainType) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: x := 0 -- 0652.vpr@37.3--37.18
     x := 0;
@@ -577,8 +577,8 @@ procedure main(arr1: arrayDomainType, arr2: arrayDomainType) returns ()
     // -- Before loop head
       
       // -- Exhale loop invariant before loop
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Loop invariant x == x might not hold on entry. Assertion x == x might not hold. (0652.vpr@39.15--39.21) [215391]"}
           x == x;
         havoc QPMask;
@@ -728,8 +728,8 @@ procedure main(arr1: arrayDomainType, arr2: arrayDomainType) returns ()
             if (0 <= i_7 && i_7 < 6) {
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Heap := Heap;
                 ExhaleWellDef0Mask := Mask;
+                ExhaleWellDef0Heap := Heap;
                 assert {:msg "  Precondition of function aloc might not hold. Assertion 0 <= i might not hold. (0652.vpr@40.81--40.94) [215400]"}
                   0 <= i_7;
                 assert {:msg "  Precondition of function aloc might not hold. Assertion i < alen(arr2) might not hold. (0652.vpr@40.81--40.94) [215401]"}
@@ -782,8 +782,8 @@ procedure main(arr1: arrayDomainType, arr2: arrayDomainType) returns ()
             if (6 <= i_8 && i_8 < 12) {
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Heap := Heap;
                 ExhaleWellDef0Mask := Mask;
+                ExhaleWellDef0Heap := Heap;
                 assert {:msg "  Precondition of function aloc might not hold. Assertion 0 <= i might not hold. (0652.vpr@41.82--41.95) [215403]"}
                   0 <= i_8;
                 assert {:msg "  Precondition of function aloc might not hold. Assertion i < alen(arr2) might not hold. (0652.vpr@41.82--41.95) [215404]"}
@@ -842,8 +842,8 @@ procedure main(arr1: arrayDomainType, arr2: arrayDomainType) returns ()
             if (0 <= i_9 && i_9 < 6) {
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef0Heap := Heap;
                 ExhaleWellDef0Mask := Mask;
+                ExhaleWellDef0Heap := Heap;
                 assert {:msg "  Precondition of function aloc might not hold. Assertion 0 <= i might not hold. (0652.vpr@42.81--42.94) [215407]"}
                   0 <= i_9;
                 assert {:msg "  Precondition of function aloc might not hold. Assertion i < alen(arr1) might not hold. (0652.vpr@42.81--42.94) [215408]"}
@@ -1031,14 +1031,14 @@ procedure main(arr1: arrayDomainType, arr2: arrayDomainType) returns ()
         // -- Translate loop body
           
           // -- Translating statement: assert aloc(arr2, 6).int == aloc(arr2, 6).int -- 0652.vpr@44.5--44.50
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             
             // -- Check definedness of aloc(arr2, 6).int == aloc(arr2, 6).int
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef1Heap := ExhaleWellDef0Heap;
                 ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+                ExhaleWellDef1Heap := ExhaleWellDef0Heap;
                 assert {:msg "  Precondition of function aloc might not hold. Assertion 6 < alen(arr2) might not hold. (0652.vpr@44.12--44.25) [215416]"}
                   6 < (alen(arr2): int);
                 // Stop execution
@@ -1048,8 +1048,8 @@ procedure main(arr1: arrayDomainType, arr2: arrayDomainType) returns ()
                 HasDirectPerm(ExhaleWellDef0Mask, aloc_1(Heap, arr2, 6), vint_1);
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef1Heap := ExhaleWellDef0Heap;
                 ExhaleWellDef1Mask := ExhaleWellDef0Mask;
+                ExhaleWellDef1Heap := ExhaleWellDef0Heap;
                 assert {:msg "  Precondition of function aloc might not hold. Assertion 6 < alen(arr2) might not hold. (0652.vpr@44.33--44.46) [215418]"}
                   6 < (alen(arr2): int);
                 // Stop execution
@@ -1062,14 +1062,14 @@ procedure main(arr1: arrayDomainType, arr2: arrayDomainType) returns ()
             assume state(Heap, Mask);
           
           // -- Translating statement: assert 3 + 8 == 38 -- 0652.vpr@46.5--46.23
-            ExhaleWellDef0Heap := Heap;
             ExhaleWellDef0Mask := Mask;
+            ExhaleWellDef0Heap := Heap;
             assert {:msg "  Assert might fail. Assertion 3 + 8 == 38 might not hold. (0652.vpr@46.12--46.23) [215421]"}
               false;
             assume state(Heap, Mask);
         // Exhale invariant
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Loop invariant x == x might not be preserved. Assertion x == x might not hold. (0652.vpr@39.15--39.21) [215422]"}
           x == x;
         havoc QPMask;

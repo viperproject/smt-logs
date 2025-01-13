@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-08 22:11:48
+// Date:         2025-01-13 13:28:48
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/parsing/typed_call_ambig2.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/parsing/typed_call_ambig2-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -235,26 +235,26 @@ axiom !IsWandField(f_7);
 procedure m() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var x: Ref;
   var y: Ref;
   var perm: Perm;
   var WandDefLHSHeap: HeapType;
   var WandDefLHSMask: MaskType;
-  var Labellhs1Mask: MaskType;
   var Labellhs1Heap: HeapType;
+  var Labellhs1Mask: MaskType;
   var WandDefRHSHeap: HeapType;
   var WandDefRHSMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ApplyingHeap: HeapType;
   var ApplyingMask: MaskType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var ExhaleHeap: HeapType;
-  var Labellhs3Mask: MaskType;
   var Labellhs3Heap: HeapType;
+  var Labellhs3Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -264,8 +264,8 @@ procedure m() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Assumptions about local variables
     assume Heap[x, $allocated];
@@ -289,8 +289,8 @@ procedure m() returns ()
         
         // -- Translating statement: label lhs1 -- typed_call_ambig2.vpr@12.23--12.44
           lhs1:
-          Labellhs1Mask := WandDefLHSMask;
           Labellhs1Heap := WandDefLHSHeap;
+          Labellhs1Mask := WandDefLHSMask;
           assume state(WandDefLHSHeap, WandDefLHSMask);
         havoc WandDefRHSHeap;
         WandDefRHSMask := ZeroMask;
@@ -309,16 +309,16 @@ procedure m() returns ()
   // -- Translating statement: assert myfun((applying acc(x.f, write) --* acc(y.f, write) in
   //     y.f == 0)) ||
   //   true -- typed_call_ambig2.vpr@13.3--13.71
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of myfun((applying acc(x.f, write) --* acc(y.f, write) in y.f == 0)) || true
       ApplyingHeap := Heap;
       ApplyingMask := Mask;
       
       // -- check if wand is held and remove an instance
-        ExhaleWellDef1Mask := ApplyingMask;
         ExhaleWellDef1Heap := ApplyingHeap;
+        ExhaleWellDef1Mask := ApplyingMask;
         // permLe
         assert {:msg "  Assert might fail. Magic wand instance not found. (typed_call_ambig2.vpr@13.10--13.71) [222439]"}
           FullPerm <= ApplyingMask[null, wand(x, FullPerm, y, FullPerm)];
@@ -326,8 +326,8 @@ procedure m() returns ()
       assume state(ApplyingHeap, ApplyingMask);
       
       // -- check if LHS holds and remove permissions 
-        ExhaleWellDef1Mask := ApplyingMask;
         ExhaleWellDef1Heap := ApplyingHeap;
+        ExhaleWellDef1Mask := ApplyingMask;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Assert might fail. There might be insufficient permission to access x.f (typed_call_ambig2.vpr@13.10--13.71) [222440]"}
@@ -357,8 +357,8 @@ procedure m() returns ()
         
         // -- Translating statement: label lhs3 -- typed_call_ambig2.vpr@13.27--13.48
           lhs3:
-          Labellhs3Mask := WandDefLHSMask;
           Labellhs3Heap := WandDefLHSHeap;
+          Labellhs3Mask := WandDefLHSMask;
           assume state(WandDefLHSHeap, WandDefLHSMask);
         havoc WandDefRHSHeap;
         WandDefRHSMask := ZeroMask;

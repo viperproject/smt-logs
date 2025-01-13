@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-08 21:12:24
+; Started: 2025-01-13 12:28:41
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -1841,37 +1841,37 @@
 (assert (forall ((s@$ $Snap) (self@0@00 $Ref)) (!
   (= (str___val__%limited s@$ self@0@00) (str___val__ s@$ self@0@00))
   :pattern ((str___val__ s@$ self@0@00))
-  :qid |quant-u-2346|)))
+  :qid |quant-u-2418|)))
 (assert (forall ((s@$ $Snap) (self@0@00 $Ref)) (!
   (str___val__%stateless self@0@00)
   :pattern ((str___val__%limited s@$ self@0@00))
-  :qid |quant-u-2347|)))
+  :qid |quant-u-2419|)))
 (assert (forall ((s@$ $Snap) (self@2@00 $Ref)) (!
   (= (str___len__%limited s@$ self@2@00) (str___len__ s@$ self@2@00))
   :pattern ((str___len__ s@$ self@2@00))
-  :qid |quant-u-2348|)))
+  :qid |quant-u-2420|)))
 (assert (forall ((s@$ $Snap) (self@2@00 $Ref)) (!
   (str___len__%stateless self@2@00)
   :pattern ((str___len__%limited s@$ self@2@00))
-  :qid |quant-u-2349|)))
+  :qid |quant-u-2421|)))
 (assert (forall ((s@$ $Snap) (self@2@00 $Ref)) (!
   (let ((result@3@00 (str___len__%limited s@$ self@2@00))) (=>
     (str___len__%precondition s@$ self@2@00)
     (>= result@3@00 0)))
   :pattern ((str___len__%limited s@$ self@2@00))
-  :qid |quant-u-2404|)))
+  :qid |quant-u-2476|)))
 (assert (forall ((s@$ $Snap) (self@2@00 $Ref)) (!
   (let ((result@3@00 (str___len__%limited s@$ self@2@00))) true)
   :pattern ((str___len__%limited s@$ self@2@00))
-  :qid |quant-u-2405|)))
+  :qid |quant-u-2477|)))
 (assert (forall ((s@$ $Snap) (self@4@00 $Ref)) (!
   (= (object___bool__%limited s@$ self@4@00) (object___bool__ s@$ self@4@00))
   :pattern ((object___bool__ s@$ self@4@00))
-  :qid |quant-u-2350|)))
+  :qid |quant-u-2422|)))
 (assert (forall ((s@$ $Snap) (self@4@00 $Ref)) (!
   (object___bool__%stateless self@4@00)
   :pattern ((object___bool__%limited s@$ self@4@00))
-  :qid |quant-u-2351|)))
+  :qid |quant-u-2423|)))
 (assert (forall ((s@$ $Snap) (self@4@00 $Ref)) (!
   (let ((result@5@00 (object___bool__%limited s@$ self@4@00))) (=>
     (object___bool__%precondition s@$ self@4@00)
@@ -1888,11 +1888,11 @@
                 (issubtype<Bool> t (dict<PyType> (dict_arg<PyType> t 0) (dict_arg<PyType> t 1))))))
           result@5@00))))))
   :pattern ((object___bool__%limited s@$ self@4@00))
-  :qid |quant-u-2406|)))
+  :qid |quant-u-2478|)))
 (assert (forall ((s@$ $Snap) (self@4@00 $Ref)) (!
   (let ((result@5@00 (object___bool__%limited s@$ self@4@00))) true)
   :pattern ((object___bool__%limited s@$ self@4@00))
-  :qid |quant-u-2407|)))
+  :qid |quant-u-2479|)))
 (assert (forall ((s@$ $Snap) (self@4@00 $Ref)) (!
   (let ((result@5@00 (object___bool__%limited s@$ self@4@00))) (=>
     (and
@@ -1900,17 +1900,17 @@
       (not (= self@4@00 $Ref.null)))
     (let ((t (typeof<PyType> self@4@00))) true)))
   :pattern ((object___bool__%limited s@$ self@4@00))
-  :qid |quant-u-2408|)))
+  :qid |quant-u-2480|)))
 (assert (forall ((s@$ $Snap) (prim@6@00 Bool)) (!
   (=
     (__prim__bool___box__%limited s@$ prim@6@00)
     (__prim__bool___box__ s@$ prim@6@00))
   :pattern ((__prim__bool___box__ s@$ prim@6@00))
-  :qid |quant-u-2352|)))
+  :qid |quant-u-2424|)))
 (assert (forall ((s@$ $Snap) (prim@6@00 Bool)) (!
   (__prim__bool___box__%stateless prim@6@00)
   :pattern ((__prim__bool___box__%limited s@$ prim@6@00))
-  :qid |quant-u-2353|)))
+  :qid |quant-u-2425|)))
 (assert (forall ((s@$ $Snap) (prim@6@00 Bool)) (!
   (let ((result@7@00 (__prim__bool___box__%limited s@$ prim@6@00))) (=>
     (__prim__bool___box__%precondition s@$ prim@6@00)
@@ -1919,31 +1919,31 @@
       (= (bool___unbox__%limited $Snap.unit result@7@00) prim@6@00)
       (= (int___unbox__%limited $Snap.unit result@7@00) (ite prim@6@00 1 0)))))
   :pattern ((__prim__bool___box__%limited s@$ prim@6@00))
-  :qid |quant-u-2409|)))
+  :qid |quant-u-2481|)))
 (assert (forall ((s@$ $Snap) (prim@6@00 Bool)) (!
   (let ((result@7@00 (__prim__bool___box__%limited s@$ prim@6@00))) true)
   :pattern ((__prim__bool___box__%limited s@$ prim@6@00))
-  :qid |quant-u-2410|)))
+  :qid |quant-u-2482|)))
 (assert (forall ((s@$ $Snap) (prim@6@00 Bool)) (!
   (let ((result@7@00 (__prim__bool___box__%limited s@$ prim@6@00))) (=>
     (__prim__bool___box__%precondition s@$ prim@6@00)
     (bool___unbox__%precondition $Snap.unit result@7@00)))
   :pattern ((__prim__bool___box__%limited s@$ prim@6@00))
-  :qid |quant-u-2411|)))
+  :qid |quant-u-2483|)))
 (assert (forall ((s@$ $Snap) (prim@6@00 Bool)) (!
   (let ((result@7@00 (__prim__bool___box__%limited s@$ prim@6@00))) (=>
     (__prim__bool___box__%precondition s@$ prim@6@00)
     (int___unbox__%precondition $Snap.unit result@7@00)))
   :pattern ((__prim__bool___box__%limited s@$ prim@6@00))
-  :qid |quant-u-2412|)))
+  :qid |quant-u-2484|)))
 (assert (forall ((s@$ $Snap) (box@8@00 $Ref)) (!
   (= (int___unbox__%limited s@$ box@8@00) (int___unbox__ s@$ box@8@00))
   :pattern ((int___unbox__ s@$ box@8@00))
-  :qid |quant-u-2354|)))
+  :qid |quant-u-2426|)))
 (assert (forall ((s@$ $Snap) (box@8@00 $Ref)) (!
   (int___unbox__%stateless box@8@00)
   :pattern ((int___unbox__%limited s@$ box@8@00))
-  :qid |quant-u-2355|)))
+  :qid |quant-u-2427|)))
 (assert (forall ((s@$ $Snap) (box@8@00 $Ref)) (!
   (let ((result@9@00 (int___unbox__%limited s@$ box@8@00))) (=>
     (int___unbox__%precondition s@$ box@8@00)
@@ -1958,7 +1958,7 @@
           (__prim__bool___box__%limited $Snap.unit (not (= result@9@00 0)))
           box@8@00)))))
   :pattern ((int___unbox__%limited s@$ box@8@00))
-  :qid |quant-u-2413|)))
+  :qid |quant-u-2485|)))
 (assert (forall ((s@$ $Snap) (box@8@00 $Ref)) (!
   (let ((result@9@00 (int___unbox__%limited s@$ box@8@00))) (=>
     (and
@@ -1966,7 +1966,7 @@
       (not (issubtype<Bool> (typeof<PyType> box@8@00) (as bool<PyType>  PyType))))
     (__prim__int___box__%precondition $Snap.unit result@9@00)))
   :pattern ((int___unbox__%limited s@$ box@8@00))
-  :qid |quant-u-2414|)))
+  :qid |quant-u-2486|)))
 (assert (forall ((s@$ $Snap) (box@8@00 $Ref)) (!
   (let ((result@9@00 (int___unbox__%limited s@$ box@8@00))) (=>
     (and
@@ -1974,37 +1974,37 @@
       (issubtype<Bool> (typeof<PyType> box@8@00) (as bool<PyType>  PyType)))
     (__prim__bool___box__%precondition $Snap.unit (not (= result@9@00 0)))))
   :pattern ((int___unbox__%limited s@$ box@8@00))
-  :qid |quant-u-2415|)))
+  :qid |quant-u-2487|)))
 (assert (forall ((s@$ $Snap) (box@10@00 $Ref)) (!
   (= (bool___unbox__%limited s@$ box@10@00) (bool___unbox__ s@$ box@10@00))
   :pattern ((bool___unbox__ s@$ box@10@00))
-  :qid |quant-u-2356|)))
+  :qid |quant-u-2428|)))
 (assert (forall ((s@$ $Snap) (box@10@00 $Ref)) (!
   (bool___unbox__%stateless box@10@00)
   :pattern ((bool___unbox__%limited s@$ box@10@00))
-  :qid |quant-u-2357|)))
+  :qid |quant-u-2429|)))
 (assert (forall ((s@$ $Snap) (box@10@00 $Ref)) (!
   (let ((result@11@00 (bool___unbox__%limited s@$ box@10@00))) (=>
     (bool___unbox__%precondition s@$ box@10@00)
     (= (__prim__bool___box__%limited $Snap.unit result@11@00) box@10@00)))
   :pattern ((bool___unbox__%limited s@$ box@10@00))
-  :qid |quant-u-2416|)))
+  :qid |quant-u-2488|)))
 (assert (forall ((s@$ $Snap) (box@10@00 $Ref)) (!
   (let ((result@11@00 (bool___unbox__%limited s@$ box@10@00))) (=>
     (bool___unbox__%precondition s@$ box@10@00)
     (__prim__bool___box__%precondition $Snap.unit result@11@00)))
   :pattern ((bool___unbox__%limited s@$ box@10@00))
-  :qid |quant-u-2417|)))
+  :qid |quant-u-2489|)))
 (assert (forall ((s@$ $Snap) (prim@12@00 Int)) (!
   (=
     (__prim__int___box__%limited s@$ prim@12@00)
     (__prim__int___box__ s@$ prim@12@00))
   :pattern ((__prim__int___box__ s@$ prim@12@00))
-  :qid |quant-u-2358|)))
+  :qid |quant-u-2430|)))
 (assert (forall ((s@$ $Snap) (prim@12@00 Int)) (!
   (__prim__int___box__%stateless prim@12@00)
   :pattern ((__prim__int___box__%limited s@$ prim@12@00))
-  :qid |quant-u-2359|)))
+  :qid |quant-u-2431|)))
 (assert (forall ((s@$ $Snap) (prim@12@00 Int)) (!
   (let ((result@13@00 (__prim__int___box__%limited s@$ prim@12@00))) (=>
     (__prim__int___box__%precondition s@$ prim@12@00)
@@ -2012,83 +2012,83 @@
       (= (typeof<PyType> result@13@00) (as int<PyType>  PyType))
       (= (int___unbox__%limited $Snap.unit result@13@00) prim@12@00))))
   :pattern ((__prim__int___box__%limited s@$ prim@12@00))
-  :qid |quant-u-2418|)))
+  :qid |quant-u-2490|)))
 (assert (forall ((s@$ $Snap) (prim@12@00 Int)) (!
   (let ((result@13@00 (__prim__int___box__%limited s@$ prim@12@00))) true)
   :pattern ((__prim__int___box__%limited s@$ prim@12@00))
-  :qid |quant-u-2419|)))
+  :qid |quant-u-2491|)))
 (assert (forall ((s@$ $Snap) (prim@12@00 Int)) (!
   (let ((result@13@00 (__prim__int___box__%limited s@$ prim@12@00))) (=>
     (__prim__int___box__%precondition s@$ prim@12@00)
     (int___unbox__%precondition $Snap.unit result@13@00)))
   :pattern ((__prim__int___box__%limited s@$ prim@12@00))
-  :qid |quant-u-2420|)))
+  :qid |quant-u-2492|)))
 (assert (forall ((s@$ $Snap) (self@14@00 Int) (other@15@00 Int)) (!
   (=
     (int___gt__%limited s@$ self@14@00 other@15@00)
     (int___gt__ s@$ self@14@00 other@15@00))
   :pattern ((int___gt__ s@$ self@14@00 other@15@00))
-  :qid |quant-u-2360|)))
+  :qid |quant-u-2432|)))
 (assert (forall ((s@$ $Snap) (self@14@00 Int) (other@15@00 Int)) (!
   (int___gt__%stateless self@14@00 other@15@00)
   :pattern ((int___gt__%limited s@$ self@14@00 other@15@00))
-  :qid |quant-u-2361|)))
+  :qid |quant-u-2433|)))
 (assert (forall ((s@$ $Snap) (self@14@00 Int) (other@15@00 Int)) (!
   (=>
     (int___gt__%precondition s@$ self@14@00 other@15@00)
     (= (int___gt__ s@$ self@14@00 other@15@00) (> self@14@00 other@15@00)))
   :pattern ((int___gt__ s@$ self@14@00 other@15@00))
-  :qid |quant-u-2421|)))
+  :qid |quant-u-2493|)))
 (assert (forall ((s@$ $Snap) (self@14@00 Int) (other@15@00 Int)) (!
   true
   :pattern ((int___gt__ s@$ self@14@00 other@15@00))
-  :qid |quant-u-2422|)))
+  :qid |quant-u-2494|)))
 (assert (forall ((s@$ $Snap) (self@17@00 Int) (other@18@00 Int)) (!
   (=
     (int___lt__%limited s@$ self@17@00 other@18@00)
     (int___lt__ s@$ self@17@00 other@18@00))
   :pattern ((int___lt__ s@$ self@17@00 other@18@00))
-  :qid |quant-u-2362|)))
+  :qid |quant-u-2434|)))
 (assert (forall ((s@$ $Snap) (self@17@00 Int) (other@18@00 Int)) (!
   (int___lt__%stateless self@17@00 other@18@00)
   :pattern ((int___lt__%limited s@$ self@17@00 other@18@00))
-  :qid |quant-u-2363|)))
+  :qid |quant-u-2435|)))
 (assert (forall ((s@$ $Snap) (self@17@00 Int) (other@18@00 Int)) (!
   (=>
     (int___lt__%precondition s@$ self@17@00 other@18@00)
     (= (int___lt__ s@$ self@17@00 other@18@00) (< self@17@00 other@18@00)))
   :pattern ((int___lt__ s@$ self@17@00 other@18@00))
-  :qid |quant-u-2423|)))
+  :qid |quant-u-2495|)))
 (assert (forall ((s@$ $Snap) (self@17@00 Int) (other@18@00 Int)) (!
   true
   :pattern ((int___lt__ s@$ self@17@00 other@18@00))
-  :qid |quant-u-2424|)))
+  :qid |quant-u-2496|)))
 (assert (forall ((s@$ $Snap) (id@20@00 Int)) (!
   (= (_isDefined%limited s@$ id@20@00) (_isDefined s@$ id@20@00))
   :pattern ((_isDefined s@$ id@20@00))
-  :qid |quant-u-2364|)))
+  :qid |quant-u-2436|)))
 (assert (forall ((s@$ $Snap) (id@20@00 Int)) (!
   (_isDefined%stateless id@20@00)
   :pattern ((_isDefined%limited s@$ id@20@00))
-  :qid |quant-u-2365|)))
+  :qid |quant-u-2437|)))
 (assert (forall ((s@$ $Snap) (r@22@00 $Ref)) (!
   (= (Level%limited s@$ r@22@00) (Level s@$ r@22@00))
   :pattern ((Level s@$ r@22@00))
-  :qid |quant-u-2366|)))
+  :qid |quant-u-2438|)))
 (assert (forall ((s@$ $Snap) (r@22@00 $Ref)) (!
   (Level%stateless r@22@00)
   :pattern ((Level%limited s@$ r@22@00))
-  :qid |quant-u-2367|)))
+  :qid |quant-u-2439|)))
 (assert (forall ((s@$ $Snap) (len@24@00 Int) (value@25@00 Int)) (!
   (=
     (str___create__%limited s@$ len@24@00 value@25@00)
     (str___create__ s@$ len@24@00 value@25@00))
   :pattern ((str___create__ s@$ len@24@00 value@25@00))
-  :qid |quant-u-2368|)))
+  :qid |quant-u-2440|)))
 (assert (forall ((s@$ $Snap) (len@24@00 Int) (value@25@00 Int)) (!
   (str___create__%stateless len@24@00 value@25@00)
   :pattern ((str___create__%limited s@$ len@24@00 value@25@00))
-  :qid |quant-u-2369|)))
+  :qid |quant-u-2441|)))
 (assert (forall ((s@$ $Snap) (len@24@00 Int) (value@25@00 Int)) (!
   (let ((result@26@00 (str___create__%limited s@$ len@24@00 value@25@00))) (=>
     (str___create__%precondition s@$ len@24@00 value@25@00)
@@ -2097,63 +2097,63 @@
       (= (str___val__ $Snap.unit result@26@00) value@25@00)
       (= (typeof<PyType> result@26@00) (as str<PyType>  PyType)))))
   :pattern ((str___create__%limited s@$ len@24@00 value@25@00))
-  :qid |quant-u-2425|)))
+  :qid |quant-u-2497|)))
 (assert (forall ((s@$ $Snap) (len@24@00 Int) (value@25@00 Int)) (!
   (let ((result@26@00 (str___create__%limited s@$ len@24@00 value@25@00))) (=>
     (str___create__%precondition s@$ len@24@00 value@25@00)
     (str___len__%precondition $Snap.unit result@26@00)))
   :pattern ((str___create__%limited s@$ len@24@00 value@25@00))
-  :qid |quant-u-2426|)))
+  :qid |quant-u-2498|)))
 (assert (forall ((s@$ $Snap) (len@24@00 Int) (value@25@00 Int)) (!
   (let ((result@26@00 (str___create__%limited s@$ len@24@00 value@25@00))) (=>
     (str___create__%precondition s@$ len@24@00 value@25@00)
     (str___val__%precondition $Snap.unit result@26@00)))
   :pattern ((str___create__%limited s@$ len@24@00 value@25@00))
-  :qid |quant-u-2427|)))
+  :qid |quant-u-2499|)))
 (assert (forall ((s@$ $Snap) (len@24@00 Int) (value@25@00 Int)) (!
   (let ((result@26@00 (str___create__%limited s@$ len@24@00 value@25@00))) true)
   :pattern ((str___create__%limited s@$ len@24@00 value@25@00))
-  :qid |quant-u-2428|)))
+  :qid |quant-u-2500|)))
 (assert (forall ((s@$ $Snap) (val@27@00 $Ref) (ass@28@00 Bool)) (!
   (=
     (_asserting%limited s@$ val@27@00 ass@28@00)
     (_asserting s@$ val@27@00 ass@28@00))
   :pattern ((_asserting s@$ val@27@00 ass@28@00))
-  :qid |quant-u-2370|)))
+  :qid |quant-u-2442|)))
 (assert (forall ((s@$ $Snap) (val@27@00 $Ref) (ass@28@00 Bool)) (!
   (_asserting%stateless val@27@00 ass@28@00)
   :pattern ((_asserting%limited s@$ val@27@00 ass@28@00))
-  :qid |quant-u-2371|)))
+  :qid |quant-u-2443|)))
 (assert (forall ((s@$ $Snap) (val@27@00 $Ref) (ass@28@00 Bool)) (!
   (=>
     (_asserting%precondition s@$ val@27@00 ass@28@00)
     (= (_asserting s@$ val@27@00 ass@28@00) val@27@00))
   :pattern ((_asserting s@$ val@27@00 ass@28@00))
-  :qid |quant-u-2429|)))
+  :qid |quant-u-2501|)))
 (assert (forall ((s@$ $Snap) (val@27@00 $Ref) (ass@28@00 Bool)) (!
   true
   :pattern ((_asserting s@$ val@27@00 ass@28@00))
-  :qid |quant-u-2430|)))
+  :qid |quant-u-2502|)))
 (assert (forall ((s@$ $Snap) (self_1@30@00 $Ref)) (!
   (=
     (TreeNode_isRoot%limited s@$ self_1@30@00)
     (TreeNode_isRoot s@$ self_1@30@00))
   :pattern ((TreeNode_isRoot s@$ self_1@30@00))
-  :qid |quant-u-2372|)))
+  :qid |quant-u-2444|)))
 (assert (forall ((s@$ $Snap) (self_1@30@00 $Ref)) (!
   (TreeNode_isRoot%stateless self_1@30@00)
   :pattern ((TreeNode_isRoot%limited s@$ self_1@30@00))
-  :qid |quant-u-2373|)))
+  :qid |quant-u-2445|)))
 (assert (forall ((s@$ $Snap) (self_1@30@00 $Ref)) (!
   (let ((result@31@00 (TreeNode_isRoot%limited s@$ self_1@30@00))) (=>
     (TreeNode_isRoot%precondition s@$ self_1@30@00)
     (issubtype<Bool> (typeof<PyType> result@31@00) (as bool<PyType>  PyType))))
   :pattern ((TreeNode_isRoot%limited s@$ self_1@30@00))
-  :qid |quant-u-2431|)))
+  :qid |quant-u-2503|)))
 (assert (forall ((s@$ $Snap) (self_1@30@00 $Ref)) (!
   (let ((result@31@00 (TreeNode_isRoot%limited s@$ self_1@30@00))) true)
   :pattern ((TreeNode_isRoot%limited s@$ self_1@30@00))
-  :qid |quant-u-2432|)))
+  :qid |quant-u-2504|)))
 (assert (forall ((s@$ $Snap) (self_1@30@00 $Ref)) (!
   (=>
     (TreeNode_isRoot%precondition s@$ self_1@30@00)
@@ -2163,7 +2163,7 @@
         (object___bool__ $Snap.unit ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second s@$)))))))))))))))))))
   :pattern ((TreeNode_isRoot s@$ self_1@30@00))
   :pattern ((TreeNode_isRoot%stateless self_1@30@00) (tree%trigger ($Snap.second ($Snap.second s@$)) self_1@30@00))
-  :qid |quant-u-2433|)))
+  :qid |quant-u-2505|)))
 (assert (forall ((s@$ $Snap) (self_1@30@00 $Ref)) (!
   (=>
     (TreeNode_isRoot%precondition s@$ self_1@30@00)
@@ -2172,17 +2172,17 @@
       (__prim__bool___box__%precondition $Snap.unit (not
         (object___bool__ $Snap.unit ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second s@$)))))))))))))))))))
   :pattern ((TreeNode_isRoot s@$ self_1@30@00))
-  :qid |quant-u-2434|)))
+  :qid |quant-u-2506|)))
 (assert (forall ((s@$ $Snap) (self_4@32@00 $Ref)) (!
   (=
     (TreeNode_hasBothChildren%limited s@$ self_4@32@00)
     (TreeNode_hasBothChildren s@$ self_4@32@00))
   :pattern ((TreeNode_hasBothChildren s@$ self_4@32@00))
-  :qid |quant-u-2374|)))
+  :qid |quant-u-2446|)))
 (assert (forall ((s@$ $Snap) (self_4@32@00 $Ref)) (!
   (TreeNode_hasBothChildren%stateless self_4@32@00)
   :pattern ((TreeNode_hasBothChildren%limited s@$ self_4@32@00))
-  :qid |quant-u-2375|)))
+  :qid |quant-u-2447|)))
 (assert (forall ((s@$ $Snap) (self_4@32@00 $Ref)) (!
   (let ((result@33@00 (TreeNode_hasBothChildren%limited s@$ self_4@32@00))) (=>
     (TreeNode_hasBothChildren%precondition s@$ self_4@32@00)
@@ -2190,11 +2190,11 @@
       (= result@33@00 $Ref.null)
       (issubtype<Bool> (typeof<PyType> result@33@00) (as TreeNode<PyType>  PyType)))))
   :pattern ((TreeNode_hasBothChildren%limited s@$ self_4@32@00))
-  :qid |quant-u-2435|)))
+  :qid |quant-u-2507|)))
 (assert (forall ((s@$ $Snap) (self_4@32@00 $Ref)) (!
   (let ((result@33@00 (TreeNode_hasBothChildren%limited s@$ self_4@32@00))) true)
   :pattern ((TreeNode_hasBothChildren%limited s@$ self_4@32@00))
-  :qid |quant-u-2436|)))
+  :qid |quant-u-2508|)))
 (assert (forall ((s@$ $Snap) (self_4@32@00 $Ref)) (!
   (=>
     (TreeNode_hasBothChildren%precondition s@$ self_4@32@00)
@@ -2206,33 +2206,33 @@
         ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second s@$)))))))))))))))
   :pattern ((TreeNode_hasBothChildren s@$ self_4@32@00))
   :pattern ((TreeNode_hasBothChildren%stateless self_4@32@00) (tree%trigger ($Snap.second ($Snap.second s@$)) self_4@32@00))
-  :qid |quant-u-2437|)))
+  :qid |quant-u-2509|)))
 (assert (forall ((s@$ $Snap) (self_4@32@00 $Ref)) (!
   (=>
     (TreeNode_hasBothChildren%precondition s@$ self_4@32@00)
     (object___bool__%precondition $Snap.unit ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second s@$))))))))))))))
   :pattern ((TreeNode_hasBothChildren s@$ self_4@32@00))
-  :qid |quant-u-2438|)))
+  :qid |quant-u-2510|)))
 (assert (forall ((s@$ $Snap) (n_0@34@00 $Ref) (upper_0@35@00 $Ref) (lower_0@36@00 $Ref)) (!
   (=
     (sorted%limited s@$ n_0@34@00 upper_0@35@00 lower_0@36@00)
     (sorted s@$ n_0@34@00 upper_0@35@00 lower_0@36@00))
   :pattern ((sorted s@$ n_0@34@00 upper_0@35@00 lower_0@36@00))
-  :qid |quant-u-2376|)))
+  :qid |quant-u-2448|)))
 (assert (forall ((s@$ $Snap) (n_0@34@00 $Ref) (upper_0@35@00 $Ref) (lower_0@36@00 $Ref)) (!
   (sorted%stateless n_0@34@00 upper_0@35@00 lower_0@36@00)
   :pattern ((sorted%limited s@$ n_0@34@00 upper_0@35@00 lower_0@36@00))
-  :qid |quant-u-2377|)))
+  :qid |quant-u-2449|)))
 (assert (forall ((s@$ $Snap) (n_0@34@00 $Ref) (upper_0@35@00 $Ref) (lower_0@36@00 $Ref)) (!
   (let ((result@37@00 (sorted%limited s@$ n_0@34@00 upper_0@35@00 lower_0@36@00))) (=>
     (sorted%precondition s@$ n_0@34@00 upper_0@35@00 lower_0@36@00)
     (issubtype<Bool> (typeof<PyType> result@37@00) (as bool<PyType>  PyType))))
   :pattern ((sorted%limited s@$ n_0@34@00 upper_0@35@00 lower_0@36@00))
-  :qid |quant-u-2439|)))
+  :qid |quant-u-2511|)))
 (assert (forall ((s@$ $Snap) (n_0@34@00 $Ref) (upper_0@35@00 $Ref) (lower_0@36@00 $Ref)) (!
   (let ((result@37@00 (sorted%limited s@$ n_0@34@00 upper_0@35@00 lower_0@36@00))) true)
   :pattern ((sorted%limited s@$ n_0@34@00 upper_0@35@00 lower_0@36@00))
-  :qid |quant-u-2440|)))
+  :qid |quant-u-2512|)))
 (assert (forall ((s@$ $Snap) (n_0@34@00 $Ref) (upper_0@35@00 $Ref) (lower_0@36@00 $Ref)) (!
   (=>
     (sorted%precondition s@$ n_0@34@00 upper_0@35@00 lower_0@36@00)
@@ -2273,7 +2273,7 @@
                     ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second s@$)))))))))))))))))))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second s@$))))))))))))) upper_0@35@00 ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second s@$))))))))))))))))
   :pattern ((sorted s@$ n_0@34@00 upper_0@35@00 lower_0@36@00))
   :pattern ((sorted%stateless n_0@34@00 upper_0@35@00 lower_0@36@00) (tree%trigger ($Snap.second ($Snap.second ($Snap.second s@$))) n_0@34@00))
-  :qid |quant-u-2441|)))
+  :qid |quant-u-2513|)))
 (assert (forall ((s@$ $Snap) (n_0@34@00 $Ref) (upper_0@35@00 $Ref) (lower_0@36@00 $Ref)) (!
   (=>
     (sorted%precondition s@$ n_0@34@00 upper_0@35@00 lower_0@36@00)
@@ -2388,45 +2388,45 @@
                     $Snap.unit
                     ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second s@$)))))))))))))))))))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second s@$))))))))))))) upper_0@35@00 ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second s@$))))))))))))))))
   :pattern ((sorted s@$ n_0@34@00 upper_0@35@00 lower_0@36@00))
-  :qid |quant-u-2442|)))
+  :qid |quant-u-2514|)))
 (assert (forall ((s@$ $Snap)) (!
   (= (__file__%limited s@$) (__file__ s@$))
   :pattern ((__file__ s@$))
-  :qid |quant-u-2378|)))
+  :qid |quant-u-2450|)))
 (assert (forall ((s@$ $Snap)) (!
   (as __file__%stateless  Bool)
   :pattern ((__file__%limited s@$))
-  :qid |quant-u-2379|)))
+  :qid |quant-u-2451|)))
 (assert (forall ((s@$ $Snap) (val@39@00 $Ref) (id@40@00 Int)) (!
   (=
     (_checkDefined%limited s@$ val@39@00 id@40@00)
     (_checkDefined s@$ val@39@00 id@40@00))
   :pattern ((_checkDefined s@$ val@39@00 id@40@00))
-  :qid |quant-u-2380|)))
+  :qid |quant-u-2452|)))
 (assert (forall ((s@$ $Snap) (val@39@00 $Ref) (id@40@00 Int)) (!
   (_checkDefined%stateless val@39@00 id@40@00)
   :pattern ((_checkDefined%limited s@$ val@39@00 id@40@00))
-  :qid |quant-u-2381|)))
+  :qid |quant-u-2453|)))
 (assert (forall ((s@$ $Snap) (val@39@00 $Ref) (id@40@00 Int)) (!
   (=>
     (_checkDefined%precondition s@$ val@39@00 id@40@00)
     (= (_checkDefined s@$ val@39@00 id@40@00) val@39@00))
   :pattern ((_checkDefined s@$ val@39@00 id@40@00))
-  :qid |quant-u-2443|)))
+  :qid |quant-u-2515|)))
 (assert (forall ((s@$ $Snap) (val@39@00 $Ref) (id@40@00 Int)) (!
   true
   :pattern ((_checkDefined s@$ val@39@00 id@40@00))
-  :qid |quant-u-2444|)))
+  :qid |quant-u-2516|)))
 (assert (forall ((s@$ $Snap) (self@42@00 $Ref)) (!
   (=
     (TreeNode_hasLeftChild%limited s@$ self@42@00)
     (TreeNode_hasLeftChild s@$ self@42@00))
   :pattern ((TreeNode_hasLeftChild s@$ self@42@00))
-  :qid |quant-u-2382|)))
+  :qid |quant-u-2454|)))
 (assert (forall ((s@$ $Snap) (self@42@00 $Ref)) (!
   (TreeNode_hasLeftChild%stateless self@42@00)
   :pattern ((TreeNode_hasLeftChild%limited s@$ self@42@00))
-  :qid |quant-u-2383|)))
+  :qid |quant-u-2455|)))
 (assert (forall ((s@$ $Snap) (self@42@00 $Ref)) (!
   (let ((result@43@00 (TreeNode_hasLeftChild%limited s@$ self@42@00))) (=>
     (TreeNode_hasLeftChild%precondition s@$ self@42@00)
@@ -2434,11 +2434,11 @@
       (= result@43@00 $Ref.null)
       (issubtype<Bool> (typeof<PyType> result@43@00) (as TreeNode<PyType>  PyType)))))
   :pattern ((TreeNode_hasLeftChild%limited s@$ self@42@00))
-  :qid |quant-u-2445|)))
+  :qid |quant-u-2517|)))
 (assert (forall ((s@$ $Snap) (self@42@00 $Ref)) (!
   (let ((result@43@00 (TreeNode_hasLeftChild%limited s@$ self@42@00))) true)
   :pattern ((TreeNode_hasLeftChild%limited s@$ self@42@00))
-  :qid |quant-u-2446|)))
+  :qid |quant-u-2518|)))
 (assert (forall ((s@$ $Snap) (self@42@00 $Ref)) (!
   (=>
     (TreeNode_hasLeftChild%precondition s@$ self@42@00)
@@ -2446,21 +2446,21 @@
       (TreeNode_hasLeftChild s@$ self@42@00)
       ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second s@$))))))
   :pattern ((TreeNode_hasLeftChild s@$ self@42@00))
-  :qid |quant-u-2447|)))
+  :qid |quant-u-2519|)))
 (assert (forall ((s@$ $Snap) (self@42@00 $Ref)) (!
   true
   :pattern ((TreeNode_hasLeftChild s@$ self@42@00))
-  :qid |quant-u-2448|)))
+  :qid |quant-u-2520|)))
 (assert (forall ((s@$ $Snap) (self_3@44@00 $Ref)) (!
   (=
     (TreeNode_hasAnyChildren%limited s@$ self_3@44@00)
     (TreeNode_hasAnyChildren s@$ self_3@44@00))
   :pattern ((TreeNode_hasAnyChildren s@$ self_3@44@00))
-  :qid |quant-u-2384|)))
+  :qid |quant-u-2456|)))
 (assert (forall ((s@$ $Snap) (self_3@44@00 $Ref)) (!
   (TreeNode_hasAnyChildren%stateless self_3@44@00)
   :pattern ((TreeNode_hasAnyChildren%limited s@$ self_3@44@00))
-  :qid |quant-u-2385|)))
+  :qid |quant-u-2457|)))
 (assert (forall ((s@$ $Snap) (self_3@44@00 $Ref)) (!
   (let ((result@45@00 (TreeNode_hasAnyChildren%limited s@$ self_3@44@00))) (=>
     (TreeNode_hasAnyChildren%precondition s@$ self_3@44@00)
@@ -2468,11 +2468,11 @@
       (= result@45@00 $Ref.null)
       (issubtype<Bool> (typeof<PyType> result@45@00) (as TreeNode<PyType>  PyType)))))
   :pattern ((TreeNode_hasAnyChildren%limited s@$ self_3@44@00))
-  :qid |quant-u-2449|)))
+  :qid |quant-u-2521|)))
 (assert (forall ((s@$ $Snap) (self_3@44@00 $Ref)) (!
   (let ((result@45@00 (TreeNode_hasAnyChildren%limited s@$ self_3@44@00))) true)
   :pattern ((TreeNode_hasAnyChildren%limited s@$ self_3@44@00))
-  :qid |quant-u-2450|)))
+  :qid |quant-u-2522|)))
 (assert (forall ((s@$ $Snap) (self_3@44@00 $Ref)) (!
   (=>
     (TreeNode_hasAnyChildren%precondition s@$ self_3@44@00)
@@ -2484,33 +2484,33 @@
         ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second s@$)))))))))))))
   :pattern ((TreeNode_hasAnyChildren s@$ self_3@44@00))
   :pattern ((TreeNode_hasAnyChildren%stateless self_3@44@00) (tree%trigger ($Snap.second ($Snap.second s@$)) self_3@44@00))
-  :qid |quant-u-2451|)))
+  :qid |quant-u-2523|)))
 (assert (forall ((s@$ $Snap) (self_3@44@00 $Ref)) (!
   (=>
     (TreeNode_hasAnyChildren%precondition s@$ self_3@44@00)
     (object___bool__%precondition $Snap.unit ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second s@$))))))))))))))
   :pattern ((TreeNode_hasAnyChildren s@$ self_3@44@00))
-  :qid |quant-u-2452|)))
+  :qid |quant-u-2524|)))
 (assert (forall ((s@$ $Snap) (self_2@46@00 $Ref)) (!
   (=
     (TreeNode_isLeaf%limited s@$ self_2@46@00)
     (TreeNode_isLeaf s@$ self_2@46@00))
   :pattern ((TreeNode_isLeaf s@$ self_2@46@00))
-  :qid |quant-u-2386|)))
+  :qid |quant-u-2458|)))
 (assert (forall ((s@$ $Snap) (self_2@46@00 $Ref)) (!
   (TreeNode_isLeaf%stateless self_2@46@00)
   :pattern ((TreeNode_isLeaf%limited s@$ self_2@46@00))
-  :qid |quant-u-2387|)))
+  :qid |quant-u-2459|)))
 (assert (forall ((s@$ $Snap) (self_2@46@00 $Ref)) (!
   (let ((result@47@00 (TreeNode_isLeaf%limited s@$ self_2@46@00))) (=>
     (TreeNode_isLeaf%precondition s@$ self_2@46@00)
     (issubtype<Bool> (typeof<PyType> result@47@00) (as bool<PyType>  PyType))))
   :pattern ((TreeNode_isLeaf%limited s@$ self_2@46@00))
-  :qid |quant-u-2453|)))
+  :qid |quant-u-2525|)))
 (assert (forall ((s@$ $Snap) (self_2@46@00 $Ref)) (!
   (let ((result@47@00 (TreeNode_isLeaf%limited s@$ self_2@46@00))) true)
   :pattern ((TreeNode_isLeaf%limited s@$ self_2@46@00))
-  :qid |quant-u-2454|)))
+  :qid |quant-u-2526|)))
 (assert (forall ((s@$ $Snap) (self_2@46@00 $Ref)) (!
   (=>
     (TreeNode_isLeaf%precondition s@$ self_2@46@00)
@@ -2523,7 +2523,7 @@
           ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second s@$))))))))))))))))
   :pattern ((TreeNode_isLeaf s@$ self_2@46@00))
   :pattern ((TreeNode_isLeaf%stateless self_2@46@00) (tree%trigger ($Snap.second ($Snap.second s@$)) self_2@46@00))
-  :qid |quant-u-2455|)))
+  :qid |quant-u-2527|)))
 (assert (forall ((s@$ $Snap) (self_2@46@00 $Ref)) (!
   (=>
     (TreeNode_isLeaf%precondition s@$ self_2@46@00)
@@ -2540,17 +2540,17 @@
           ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second s@$))))))))))))
           ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second s@$))))))))))))))))
   :pattern ((TreeNode_isLeaf s@$ self_2@46@00))
-  :qid |quant-u-2456|)))
+  :qid |quant-u-2528|)))
 (assert (forall ((s@$ $Snap) (self_0@48@00 $Ref)) (!
   (=
     (TreeNode_hasRightChild%limited s@$ self_0@48@00)
     (TreeNode_hasRightChild s@$ self_0@48@00))
   :pattern ((TreeNode_hasRightChild s@$ self_0@48@00))
-  :qid |quant-u-2388|)))
+  :qid |quant-u-2460|)))
 (assert (forall ((s@$ $Snap) (self_0@48@00 $Ref)) (!
   (TreeNode_hasRightChild%stateless self_0@48@00)
   :pattern ((TreeNode_hasRightChild%limited s@$ self_0@48@00))
-  :qid |quant-u-2389|)))
+  :qid |quant-u-2461|)))
 (assert (forall ((s@$ $Snap) (self_0@48@00 $Ref)) (!
   (let ((result@49@00 (TreeNode_hasRightChild%limited s@$ self_0@48@00))) (=>
     (TreeNode_hasRightChild%precondition s@$ self_0@48@00)
@@ -2558,11 +2558,11 @@
       (= result@49@00 $Ref.null)
       (issubtype<Bool> (typeof<PyType> result@49@00) (as TreeNode<PyType>  PyType)))))
   :pattern ((TreeNode_hasRightChild%limited s@$ self_0@48@00))
-  :qid |quant-u-2457|)))
+  :qid |quant-u-2529|)))
 (assert (forall ((s@$ $Snap) (self_0@48@00 $Ref)) (!
   (let ((result@49@00 (TreeNode_hasRightChild%limited s@$ self_0@48@00))) true)
   :pattern ((TreeNode_hasRightChild%limited s@$ self_0@48@00))
-  :qid |quant-u-2458|)))
+  :qid |quant-u-2530|)))
 (assert (forall ((s@$ $Snap) (self_0@48@00 $Ref)) (!
   (=>
     (TreeNode_hasRightChild%precondition s@$ self_0@48@00)
@@ -2570,21 +2570,21 @@
       (TreeNode_hasRightChild s@$ self_0@48@00)
       ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second s@$))))))
   :pattern ((TreeNode_hasRightChild s@$ self_0@48@00))
-  :qid |quant-u-2459|)))
+  :qid |quant-u-2531|)))
 (assert (forall ((s@$ $Snap) (self_0@48@00 $Ref)) (!
   true
   :pattern ((TreeNode_hasRightChild s@$ self_0@48@00))
-  :qid |quant-u-2460|)))
+  :qid |quant-u-2532|)))
 (assert (forall ((s@$ $Snap) (self@50@00 $Ref) (other@51@00 $Ref)) (!
   (=
     (str___eq__%limited s@$ self@50@00 other@51@00)
     (str___eq__ s@$ self@50@00 other@51@00))
   :pattern ((str___eq__ s@$ self@50@00 other@51@00))
-  :qid |quant-u-2390|)))
+  :qid |quant-u-2462|)))
 (assert (forall ((s@$ $Snap) (self@50@00 $Ref) (other@51@00 $Ref)) (!
   (str___eq__%stateless self@50@00 other@51@00)
   :pattern ((str___eq__%limited s@$ self@50@00 other@51@00))
-  :qid |quant-u-2391|)))
+  :qid |quant-u-2463|)))
 (assert (forall ((s@$ $Snap) (self@50@00 $Ref) (other@51@00 $Ref)) (!
   (let ((result@52@00 (str___eq__%limited s@$ self@50@00 other@51@00))) (=>
     (str___eq__%precondition s@$ self@50@00 other@51@00)
@@ -2600,7 +2600,7 @@
           (str___len__ $Snap.unit self@50@00)
           (str___len__ $Snap.unit other@51@00))))))
   :pattern ((str___eq__%limited s@$ self@50@00 other@51@00))
-  :qid |quant-u-2461|)))
+  :qid |quant-u-2533|)))
 (assert (forall ((s@$ $Snap) (self@50@00 $Ref) (other@51@00 $Ref)) (!
   (let ((result@52@00 (str___eq__%limited s@$ self@50@00 other@51@00))) (=>
     (str___eq__%precondition s@$ self@50@00 other@51@00)
@@ -2608,7 +2608,7 @@
       (str___val__%precondition $Snap.unit self@50@00)
       (str___val__%precondition $Snap.unit other@51@00))))
   :pattern ((str___eq__%limited s@$ self@50@00 other@51@00))
-  :qid |quant-u-2462|)))
+  :qid |quant-u-2534|)))
 (assert (forall ((s@$ $Snap) (self@50@00 $Ref) (other@51@00 $Ref)) (!
   (let ((result@52@00 (str___eq__%limited s@$ self@50@00 other@51@00))) (=>
     (and (str___eq__%precondition s@$ self@50@00 other@51@00) result@52@00)
@@ -2616,73 +2616,73 @@
       (str___len__%precondition $Snap.unit self@50@00)
       (str___len__%precondition $Snap.unit other@51@00))))
   :pattern ((str___eq__%limited s@$ self@50@00 other@51@00))
-  :qid |quant-u-2463|)))
+  :qid |quant-u-2535|)))
 (assert (forall ((s@$ $Snap) (self@53@00 Int) (other@54@00 Int)) (!
   (=
     (int___mul__%limited s@$ self@53@00 other@54@00)
     (int___mul__ s@$ self@53@00 other@54@00))
   :pattern ((int___mul__ s@$ self@53@00 other@54@00))
-  :qid |quant-u-2392|)))
+  :qid |quant-u-2464|)))
 (assert (forall ((s@$ $Snap) (self@53@00 Int) (other@54@00 Int)) (!
   (int___mul__%stateless self@53@00 other@54@00)
   :pattern ((int___mul__%limited s@$ self@53@00 other@54@00))
-  :qid |quant-u-2393|)))
+  :qid |quant-u-2465|)))
 (assert (forall ((s@$ $Snap) (self@53@00 Int) (other@54@00 Int)) (!
   (=>
     (int___mul__%precondition s@$ self@53@00 other@54@00)
     (= (int___mul__ s@$ self@53@00 other@54@00) (* self@53@00 other@54@00)))
   :pattern ((int___mul__ s@$ self@53@00 other@54@00))
-  :qid |quant-u-2464|)))
+  :qid |quant-u-2536|)))
 (assert (forall ((s@$ $Snap) (self@53@00 Int) (other@54@00 Int)) (!
   true
   :pattern ((int___mul__ s@$ self@53@00 other@54@00))
-  :qid |quant-u-2465|)))
+  :qid |quant-u-2537|)))
 (assert (forall ((s@$ $Snap) (self@56@00 Int) (other@57@00 Int)) (!
   (=
     (int___add__%limited s@$ self@56@00 other@57@00)
     (int___add__ s@$ self@56@00 other@57@00))
   :pattern ((int___add__ s@$ self@56@00 other@57@00))
-  :qid |quant-u-2394|)))
+  :qid |quant-u-2466|)))
 (assert (forall ((s@$ $Snap) (self@56@00 Int) (other@57@00 Int)) (!
   (int___add__%stateless self@56@00 other@57@00)
   :pattern ((int___add__%limited s@$ self@56@00 other@57@00))
-  :qid |quant-u-2395|)))
+  :qid |quant-u-2467|)))
 (assert (forall ((s@$ $Snap) (self@56@00 Int) (other@57@00 Int)) (!
   (=>
     (int___add__%precondition s@$ self@56@00 other@57@00)
     (= (int___add__ s@$ self@56@00 other@57@00) (+ self@56@00 other@57@00)))
   :pattern ((int___add__ s@$ self@56@00 other@57@00))
-  :qid |quant-u-2466|)))
+  :qid |quant-u-2538|)))
 (assert (forall ((s@$ $Snap) (self@56@00 Int) (other@57@00 Int)) (!
   true
   :pattern ((int___add__ s@$ self@56@00 other@57@00))
-  :qid |quant-u-2467|)))
+  :qid |quant-u-2539|)))
 (assert (forall ((s@$ $Snap)) (!
   (= (mytree%limited s@$) (mytree s@$))
   :pattern ((mytree s@$))
-  :qid |quant-u-2396|)))
+  :qid |quant-u-2468|)))
 (assert (forall ((s@$ $Snap)) (!
   (as mytree%stateless  Bool)
   :pattern ((mytree%limited s@$))
-  :qid |quant-u-2397|)))
+  :qid |quant-u-2469|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@59@00 (mytree%limited s@$))) (=>
     (mytree%precondition s@$)
     (issubtype<Bool> (typeof<PyType> result@59@00) (as BinarySearchTree<PyType>  PyType))))
   :pattern ((mytree%limited s@$))
-  :qid |quant-u-2468|)))
+  :qid |quant-u-2540|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@59@00 (mytree%limited s@$))) true)
   :pattern ((mytree%limited s@$))
-  :qid |quant-u-2469|)))
+  :qid |quant-u-2541|)))
 (assert (forall ((s@$ $Snap) (node@60@00 $Ref)) (!
   (= (getParent%limited s@$ node@60@00) (getParent s@$ node@60@00))
   :pattern ((getParent s@$ node@60@00))
-  :qid |quant-u-2398|)))
+  :qid |quant-u-2470|)))
 (assert (forall ((s@$ $Snap) (node@60@00 $Ref)) (!
   (getParent%stateless node@60@00)
   :pattern ((getParent%limited s@$ node@60@00))
-  :qid |quant-u-2399|)))
+  :qid |quant-u-2471|)))
 (assert (forall ((s@$ $Snap) (node@60@00 $Ref)) (!
   (let ((result@61@00 (getParent%limited s@$ node@60@00))) (=>
     (getParent%precondition s@$ node@60@00)
@@ -2690,11 +2690,11 @@
       (= result@61@00 $Ref.null)
       (issubtype<Bool> (typeof<PyType> result@61@00) (as TreeNode<PyType>  PyType)))))
   :pattern ((getParent%limited s@$ node@60@00))
-  :qid |quant-u-2470|)))
+  :qid |quant-u-2542|)))
 (assert (forall ((s@$ $Snap) (node@60@00 $Ref)) (!
   (let ((result@61@00 (getParent%limited s@$ node@60@00))) true)
   :pattern ((getParent%limited s@$ node@60@00))
-  :qid |quant-u-2471|)))
+  :qid |quant-u-2543|)))
 (assert (forall ((s@$ $Snap) (node@60@00 $Ref)) (!
   (=>
     (getParent%precondition s@$ node@60@00)
@@ -2702,21 +2702,21 @@
       (getParent s@$ node@60@00)
       ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second s@$)))))))))))))))
   :pattern ((getParent s@$ node@60@00))
-  :qid |quant-u-2472|)))
+  :qid |quant-u-2544|)))
 (assert (forall ((s@$ $Snap) (node@60@00 $Ref)) (!
   true
   :pattern ((getParent s@$ node@60@00))
-  :qid |quant-u-2473|)))
+  :qid |quant-u-2545|)))
 (assert (forall ((s@$ $Snap) (self@62@00 $Ref) (other@63@00 $Ref)) (!
   (=
     (int___eq__%limited s@$ self@62@00 other@63@00)
     (int___eq__ s@$ self@62@00 other@63@00))
   :pattern ((int___eq__ s@$ self@62@00 other@63@00))
-  :qid |quant-u-2400|)))
+  :qid |quant-u-2472|)))
 (assert (forall ((s@$ $Snap) (self@62@00 $Ref) (other@63@00 $Ref)) (!
   (int___eq__%stateless self@62@00 other@63@00)
   :pattern ((int___eq__%limited s@$ self@62@00 other@63@00))
-  :qid |quant-u-2401|)))
+  :qid |quant-u-2473|)))
 (assert (forall ((s@$ $Snap) (self@62@00 $Ref) (other@63@00 $Ref)) (!
   (=>
     (int___eq__%precondition s@$ self@62@00 other@63@00)
@@ -2726,7 +2726,7 @@
         (int___unbox__ $Snap.unit self@62@00)
         (int___unbox__ $Snap.unit other@63@00))))
   :pattern ((int___eq__ s@$ self@62@00 other@63@00))
-  :qid |quant-u-2474|)))
+  :qid |quant-u-2546|)))
 (assert (forall ((s@$ $Snap) (self@62@00 $Ref) (other@63@00 $Ref)) (!
   (=>
     (int___eq__%precondition s@$ self@62@00 other@63@00)
@@ -2734,15 +2734,15 @@
       (int___unbox__%precondition $Snap.unit self@62@00)
       (int___unbox__%precondition $Snap.unit other@63@00)))
   :pattern ((int___eq__ s@$ self@62@00 other@63@00))
-  :qid |quant-u-2475|)))
+  :qid |quant-u-2547|)))
 (assert (forall ((s@$ $Snap)) (!
   (= (__name__%limited s@$) (__name__ s@$))
   :pattern ((__name__ s@$))
-  :qid |quant-u-2402|)))
+  :qid |quant-u-2474|)))
 (assert (forall ((s@$ $Snap)) (!
   (as __name__%stateless  Bool)
   :pattern ((__name__%limited s@$))
-  :qid |quant-u-2403|)))
+  :qid |quant-u-2475|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- print_0 ----------
@@ -5056,10 +5056,9 @@
 ; TreeNode_res := new()
 (declare-const TreeNode_res@104@01 $Ref)
 (assert (not (= TreeNode_res@104@01 $Ref.null)))
-(assert (not (= TreeNode_res@104@01 key_1@84@01)))
-(assert (not (= TreeNode_res@104@01 TreeNode_res@95@01)))
 (assert (not (= TreeNode_res@104@01 increased_size@90@01)))
-(assert (not (= TreeNode_res@104@01 _cthread_164@80@01)))
+(assert (not (= TreeNode_res@104@01 key_1@84@01)))
+(assert (not (= TreeNode_res@104@01 self_7@83@01)))
 (assert (not
   (=
     TreeNode_res@104@01
@@ -5069,8 +5068,9 @@
     TreeNode_res@104@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@87@01))))))))))))))))
 (assert (not (= TreeNode_res@104@01 val_0@85@01)))
+(assert (not (= TreeNode_res@104@01 _cthread_164@80@01)))
 (assert (not (= TreeNode_res@104@01 _put_res@94@01)))
-(assert (not (= TreeNode_res@104@01 self_7@83@01)))
+(assert (not (= TreeNode_res@104@01 TreeNode_res@95@01)))
 ; [exec]
 ; inhale typeof(TreeNode_res) == TreeNode()
 (declare-const $t@105@01 $Snap)
@@ -5254,10 +5254,9 @@
 ; TreeNode_res := new()
 (declare-const TreeNode_res@111@01 $Ref)
 (assert (not (= TreeNode_res@111@01 $Ref.null)))
-(assert (not (= TreeNode_res@111@01 key_1@84@01)))
-(assert (not (= TreeNode_res@111@01 TreeNode_res@95@01)))
 (assert (not (= TreeNode_res@111@01 increased_size@90@01)))
-(assert (not (= TreeNode_res@111@01 _cthread_164@80@01)))
+(assert (not (= TreeNode_res@111@01 key_1@84@01)))
+(assert (not (= TreeNode_res@111@01 self_7@83@01)))
 (assert (not
   (=
     TreeNode_res@111@01
@@ -5267,8 +5266,9 @@
     TreeNode_res@111@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@87@01))))))))))))))
 (assert (not (= TreeNode_res@111@01 val_0@85@01)))
+(assert (not (= TreeNode_res@111@01 _cthread_164@80@01)))
 (assert (not (= TreeNode_res@111@01 _put_res@94@01)))
-(assert (not (= TreeNode_res@111@01 self_7@83@01)))
+(assert (not (= TreeNode_res@111@01 TreeNode_res@95@01)))
 ; [exec]
 ; inhale typeof(TreeNode_res) == TreeNode()
 (declare-const $t@112@01 $Snap)
@@ -10837,18 +10837,11 @@
 ; TreeNode_res_1 := new()
 (declare-const TreeNode_res_1@174@01 $Ref)
 (assert (not (= TreeNode_res_1@174@01 $Ref.null)))
-(assert (not (= TreeNode_res_1@174@01 upper@141@01)))
-(assert (not (= TreeNode_res_1@174@01 currentNode@140@01)))
-(assert (not (= TreeNode_res_1@174@01 self_8@137@01)))
-(assert (not (= TreeNode_res_1@174@01 _put_res_1@157@01)))
-(assert (not (= TreeNode_res_1@174@01 val_1@139@01)))
-(assert (not (= TreeNode_res_1@174@01 key_2@138@01)))
-(assert (not (= TreeNode_res_1@174@01 _cthread_165@134@01)))
-(assert (not (= TreeNode_res_1@174@01 _put_res_0@155@01)))
-(assert (not (= TreeNode_res_1@174@01 TreeNode_res_1@158@01)))
-(assert (not (= TreeNode_res_1@174@01 res@162@01)))
-(assert (not (= TreeNode_res_1@174@01 TreeNode_res_0@156@01)))
 (assert (not (= TreeNode_res_1@174@01 lower@142@01)))
+(assert (not (= TreeNode_res_1@174@01 self_8@137@01)))
+(assert (not (= TreeNode_res_1@174@01 _put_res_0@155@01)))
+(assert (not (= TreeNode_res_1@174@01 _put_res_1@157@01)))
+(assert (not (= TreeNode_res_1@174@01 key_2@138@01)))
 (assert (not
   (=
     TreeNode_res_1@174@01
@@ -10869,6 +10862,13 @@
   (=
     TreeNode_res_1@174@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@145@01)))))))))))))))))
+(assert (not (= TreeNode_res_1@174@01 currentNode@140@01)))
+(assert (not (= TreeNode_res_1@174@01 upper@141@01)))
+(assert (not (= TreeNode_res_1@174@01 res@162@01)))
+(assert (not (= TreeNode_res_1@174@01 _cthread_165@134@01)))
+(assert (not (= TreeNode_res_1@174@01 TreeNode_res_1@158@01)))
+(assert (not (= TreeNode_res_1@174@01 val_1@139@01)))
+(assert (not (= TreeNode_res_1@174@01 TreeNode_res_0@156@01)))
 ; [exec]
 ; inhale typeof(TreeNode_res_1) == TreeNode()
 (declare-const $t@175@01 $Snap)
@@ -12025,7 +12025,7 @@
 (check-sat)
 ; unsat
 (pop) ; 6
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 122 | object___bool__(_, TreeNode_hasLeftChild((_, (_, (First:(Second:(Second:(Second:(Second:(Second:(Second:(First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@145@01))))))))))))))))), _))), currentNode@140@01)) | live]
 ; [else-branch: 122 | !(object___bool__(_, TreeNode_hasLeftChild((_, (_, (First:(Second:(Second:(Second:(Second:(Second:(Second:(First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@145@01))))))))))))))))), _))), currentNode@140@01))) | dead]
@@ -13687,17 +13687,11 @@
 ; TreeNode_res_1 := new()
 (declare-const TreeNode_res_1@191@01 $Ref)
 (assert (not (= TreeNode_res_1@191@01 $Ref.null)))
-(assert (not (= TreeNode_res_1@191@01 upper@141@01)))
-(assert (not (= TreeNode_res_1@191@01 currentNode@140@01)))
-(assert (not (= TreeNode_res_1@191@01 self_8@137@01)))
-(assert (not (= TreeNode_res_1@191@01 _put_res_1@157@01)))
-(assert (not (= TreeNode_res_1@191@01 val_1@139@01)))
-(assert (not (= TreeNode_res_1@191@01 key_2@138@01)))
-(assert (not (= TreeNode_res_1@191@01 _cthread_165@134@01)))
-(assert (not (= TreeNode_res_1@191@01 _put_res_0@155@01)))
-(assert (not (= TreeNode_res_1@191@01 TreeNode_res_1@158@01)))
-(assert (not (= TreeNode_res_1@191@01 TreeNode_res_0@156@01)))
 (assert (not (= TreeNode_res_1@191@01 lower@142@01)))
+(assert (not (= TreeNode_res_1@191@01 self_8@137@01)))
+(assert (not (= TreeNode_res_1@191@01 _put_res_0@155@01)))
+(assert (not (= TreeNode_res_1@191@01 _put_res_1@157@01)))
+(assert (not (= TreeNode_res_1@191@01 key_2@138@01)))
 (assert (not (= TreeNode_res_1@191@01 res@184@01)))
 (assert (not
   (=
@@ -13719,6 +13713,12 @@
   (=
     TreeNode_res_1@191@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@145@01)))))))))))))))))
+(assert (not (= TreeNode_res_1@191@01 currentNode@140@01)))
+(assert (not (= TreeNode_res_1@191@01 upper@141@01)))
+(assert (not (= TreeNode_res_1@191@01 _cthread_165@134@01)))
+(assert (not (= TreeNode_res_1@191@01 TreeNode_res_1@158@01)))
+(assert (not (= TreeNode_res_1@191@01 val_1@139@01)))
+(assert (not (= TreeNode_res_1@191@01 TreeNode_res_0@156@01)))
 ; [exec]
 ; inhale typeof(TreeNode_res_1) == TreeNode()
 (declare-const $t@192@01 $Snap)
@@ -16793,18 +16793,11 @@
 ; TreeNode_res_0 := new()
 (declare-const TreeNode_res_0@206@01 $Ref)
 (assert (not (= TreeNode_res_0@206@01 $Ref.null)))
-(assert (not (= TreeNode_res_0@206@01 upper@141@01)))
-(assert (not (= TreeNode_res_0@206@01 currentNode@140@01)))
-(assert (not (= TreeNode_res_0@206@01 self_8@137@01)))
-(assert (not (= TreeNode_res_0@206@01 _put_res_1@157@01)))
-(assert (not (= TreeNode_res_0@206@01 val_1@139@01)))
-(assert (not (= TreeNode_res_0@206@01 key_2@138@01)))
-(assert (not (= TreeNode_res_0@206@01 _cthread_165@134@01)))
-(assert (not (= TreeNode_res_0@206@01 res@204@01)))
-(assert (not (= TreeNode_res_0@206@01 _put_res_0@155@01)))
-(assert (not (= TreeNode_res_0@206@01 TreeNode_res_1@158@01)))
-(assert (not (= TreeNode_res_0@206@01 TreeNode_res_0@156@01)))
 (assert (not (= TreeNode_res_0@206@01 lower@142@01)))
+(assert (not (= TreeNode_res_0@206@01 self_8@137@01)))
+(assert (not (= TreeNode_res_0@206@01 _put_res_0@155@01)))
+(assert (not (= TreeNode_res_0@206@01 _put_res_1@157@01)))
+(assert (not (= TreeNode_res_0@206@01 key_2@138@01)))
 (assert (not
   (=
     TreeNode_res_0@206@01
@@ -16825,6 +16818,13 @@
   (=
     TreeNode_res_0@206@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@145@01)))))))))))))))))
+(assert (not (= TreeNode_res_0@206@01 currentNode@140@01)))
+(assert (not (= TreeNode_res_0@206@01 upper@141@01)))
+(assert (not (= TreeNode_res_0@206@01 _cthread_165@134@01)))
+(assert (not (= TreeNode_res_0@206@01 TreeNode_res_1@158@01)))
+(assert (not (= TreeNode_res_0@206@01 val_1@139@01)))
+(assert (not (= TreeNode_res_0@206@01 TreeNode_res_0@156@01)))
+(assert (not (= TreeNode_res_0@206@01 res@204@01)))
 ; [exec]
 ; inhale typeof(TreeNode_res_0) == TreeNode()
 (declare-const $t@207@01 $Snap)
@@ -18933,12 +18933,12 @@
       ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@145@01)))))))))))))))))))
       $Snap.unit))) currentNode@140@01))))
 (check-sat)
-; unsat
+; unknown
 (pop) ; 7
 ; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 201 | object___bool__(_, TreeNode_hasRightChild((_, (_, (First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@145@01))))))))))))))))))), _))), currentNode@140@01)) | live]
-; [else-branch: 201 | !(object___bool__(_, TreeNode_hasRightChild((_, (_, (First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@145@01))))))))))))))))))), _))), currentNode@140@01))) | dead]
+; [else-branch: 201 | !(object___bool__(_, TreeNode_hasRightChild((_, (_, (First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@145@01))))))))))))))))))), _))), currentNode@140@01))) | live]
 (set-option :timeout 0)
 (push) ; 7
 ; [then-branch: 201 | object___bool__(_, TreeNode_hasRightChild((_, (_, (First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@145@01))))))))))))))))))), _))), currentNode@140@01))]
@@ -19179,7 +19179,7 @@
 (check-sat)
 ; unknown
 (pop) ; 9
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 9
@@ -20272,6 +20272,17 @@
 (pop) ; 9
 (pop) ; 8
 (pop) ; 7
+(push) ; 7
+; [else-branch: 201 | !(object___bool__(_, TreeNode_hasRightChild((_, (_, (First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(First:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:(Second:($t@145@01))))))))))))))))))), _))), currentNode@140@01)))]
+(assert (not
+  (object___bool__ $Snap.unit (TreeNode_hasRightChild ($Snap.combine
+    $Snap.unit
+    ($Snap.combine
+      $Snap.unit
+      ($Snap.combine
+        ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@145@01)))))))))))))))))))
+        $Snap.unit))) currentNode@140@01))))
+(pop) ; 7
 ; [eval] !object___bool__(TreeNode_hasRightChild(currentNode_1))
 ; [eval] object___bool__(TreeNode_hasRightChild(currentNode_1))
 ; [eval] TreeNode_hasRightChild(currentNode_1)
@@ -20352,18 +20363,11 @@
 ; TreeNode_res_1 := new()
 (declare-const TreeNode_res_1@221@01 $Ref)
 (assert (not (= TreeNode_res_1@221@01 $Ref.null)))
-(assert (not (= TreeNode_res_1@221@01 upper@141@01)))
-(assert (not (= TreeNode_res_1@221@01 currentNode@140@01)))
-(assert (not (= TreeNode_res_1@221@01 self_8@137@01)))
-(assert (not (= TreeNode_res_1@221@01 _put_res_1@157@01)))
-(assert (not (= TreeNode_res_1@221@01 val_1@139@01)))
-(assert (not (= TreeNode_res_1@221@01 key_2@138@01)))
-(assert (not (= TreeNode_res_1@221@01 _cthread_165@134@01)))
-(assert (not (= TreeNode_res_1@221@01 res@204@01)))
-(assert (not (= TreeNode_res_1@221@01 _put_res_0@155@01)))
-(assert (not (= TreeNode_res_1@221@01 TreeNode_res_1@158@01)))
-(assert (not (= TreeNode_res_1@221@01 TreeNode_res_0@156@01)))
 (assert (not (= TreeNode_res_1@221@01 lower@142@01)))
+(assert (not (= TreeNode_res_1@221@01 self_8@137@01)))
+(assert (not (= TreeNode_res_1@221@01 _put_res_0@155@01)))
+(assert (not (= TreeNode_res_1@221@01 _put_res_1@157@01)))
+(assert (not (= TreeNode_res_1@221@01 key_2@138@01)))
 (assert (not
   (=
     TreeNode_res_1@221@01
@@ -20384,6 +20388,13 @@
   (=
     TreeNode_res_1@221@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@145@01)))))))))))))))))
+(assert (not (= TreeNode_res_1@221@01 currentNode@140@01)))
+(assert (not (= TreeNode_res_1@221@01 upper@141@01)))
+(assert (not (= TreeNode_res_1@221@01 _cthread_165@134@01)))
+(assert (not (= TreeNode_res_1@221@01 TreeNode_res_1@158@01)))
+(assert (not (= TreeNode_res_1@221@01 val_1@139@01)))
+(assert (not (= TreeNode_res_1@221@01 TreeNode_res_0@156@01)))
+(assert (not (= TreeNode_res_1@221@01 res@204@01)))
 ; [exec]
 ; inhale typeof(TreeNode_res_1) == TreeNode()
 (declare-const $t@222@01 $Snap)
@@ -21577,17 +21588,11 @@
 ; TreeNode_res_0 := new()
 (declare-const TreeNode_res_0@233@01 $Ref)
 (assert (not (= TreeNode_res_0@233@01 $Ref.null)))
-(assert (not (= TreeNode_res_0@233@01 upper@141@01)))
-(assert (not (= TreeNode_res_0@233@01 currentNode@140@01)))
-(assert (not (= TreeNode_res_0@233@01 self_8@137@01)))
-(assert (not (= TreeNode_res_0@233@01 _put_res_1@157@01)))
-(assert (not (= TreeNode_res_0@233@01 val_1@139@01)))
-(assert (not (= TreeNode_res_0@233@01 key_2@138@01)))
-(assert (not (= TreeNode_res_0@233@01 _cthread_165@134@01)))
-(assert (not (= TreeNode_res_0@233@01 _put_res_0@155@01)))
-(assert (not (= TreeNode_res_0@233@01 TreeNode_res_1@158@01)))
-(assert (not (= TreeNode_res_0@233@01 TreeNode_res_0@156@01)))
 (assert (not (= TreeNode_res_0@233@01 lower@142@01)))
+(assert (not (= TreeNode_res_0@233@01 self_8@137@01)))
+(assert (not (= TreeNode_res_0@233@01 _put_res_0@155@01)))
+(assert (not (= TreeNode_res_0@233@01 _put_res_1@157@01)))
+(assert (not (= TreeNode_res_0@233@01 key_2@138@01)))
 (assert (not (= TreeNode_res_0@233@01 res@231@01)))
 (assert (not
   (=
@@ -21609,6 +21614,12 @@
   (=
     TreeNode_res_0@233@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@145@01)))))))))))))))))
+(assert (not (= TreeNode_res_0@233@01 currentNode@140@01)))
+(assert (not (= TreeNode_res_0@233@01 upper@141@01)))
+(assert (not (= TreeNode_res_0@233@01 _cthread_165@134@01)))
+(assert (not (= TreeNode_res_0@233@01 TreeNode_res_1@158@01)))
+(assert (not (= TreeNode_res_0@233@01 val_1@139@01)))
+(assert (not (= TreeNode_res_0@233@01 TreeNode_res_0@156@01)))
 ; [exec]
 ; inhale typeof(TreeNode_res_0) == TreeNode()
 (declare-const $t@234@01 $Snap)
@@ -23745,17 +23756,11 @@
 ; TreeNode_res_1 := new()
 (declare-const TreeNode_res_1@243@01 $Ref)
 (assert (not (= TreeNode_res_1@243@01 $Ref.null)))
-(assert (not (= TreeNode_res_1@243@01 upper@141@01)))
-(assert (not (= TreeNode_res_1@243@01 currentNode@140@01)))
-(assert (not (= TreeNode_res_1@243@01 self_8@137@01)))
-(assert (not (= TreeNode_res_1@243@01 _put_res_1@157@01)))
-(assert (not (= TreeNode_res_1@243@01 val_1@139@01)))
-(assert (not (= TreeNode_res_1@243@01 key_2@138@01)))
-(assert (not (= TreeNode_res_1@243@01 _cthread_165@134@01)))
-(assert (not (= TreeNode_res_1@243@01 _put_res_0@155@01)))
-(assert (not (= TreeNode_res_1@243@01 TreeNode_res_1@158@01)))
-(assert (not (= TreeNode_res_1@243@01 TreeNode_res_0@156@01)))
 (assert (not (= TreeNode_res_1@243@01 lower@142@01)))
+(assert (not (= TreeNode_res_1@243@01 self_8@137@01)))
+(assert (not (= TreeNode_res_1@243@01 _put_res_0@155@01)))
+(assert (not (= TreeNode_res_1@243@01 _put_res_1@157@01)))
+(assert (not (= TreeNode_res_1@243@01 key_2@138@01)))
 (assert (not (= TreeNode_res_1@243@01 res@231@01)))
 (assert (not
   (=
@@ -23777,6 +23782,12 @@
   (=
     TreeNode_res_1@243@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@145@01)))))))))))))))))
+(assert (not (= TreeNode_res_1@243@01 currentNode@140@01)))
+(assert (not (= TreeNode_res_1@243@01 upper@141@01)))
+(assert (not (= TreeNode_res_1@243@01 _cthread_165@134@01)))
+(assert (not (= TreeNode_res_1@243@01 TreeNode_res_1@158@01)))
+(assert (not (= TreeNode_res_1@243@01 val_1@139@01)))
+(assert (not (= TreeNode_res_1@243@01 TreeNode_res_0@156@01)))
 ; [exec]
 ; inhale typeof(TreeNode_res_1) == TreeNode()
 (declare-const $t@244@01 $Snap)
@@ -27046,7 +27057,7 @@
 (check-sat)
 ; unsat
 (pop) ; 4
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 289 | object___bool__(_, First:(Second:(Second:(First:(Second:(Second:(Second:(Second:(Second:($t@295@01)))))))))) | live]
 ; [else-branch: 289 | !(object___bool__(_, First:(Second:(Second:(First:(Second:(Second:(Second:(Second:(Second:($t@295@01))))))))))) | dead]
@@ -27678,7 +27689,7 @@
 (check-sat)
 ; unsat
 (pop) ; 4
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 297 | !(object___bool__(_, First:(Second:(Second:(First:(Second:(Second:(Second:(Second:(Second:($t@295@01))))))))))) | dead]
 ; [else-branch: 297 | object___bool__(_, First:(Second:(Second:(First:(Second:(Second:(Second:(Second:(Second:($t@295@01)))))))))) | live]
@@ -28210,7 +28221,7 @@
 (check-sat)
 ; unsat
 (pop) ; 4
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [then-branch: 307 | object___bool__(_, currentNode_0@325@01) | live]
 ; [else-branch: 307 | !(object___bool__(_, currentNode_0@325@01)) | dead]
@@ -30187,7 +30198,7 @@
 (check-sat)
 ; unsat
 (pop) ; 12
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (assert (=
   (getParent ($Snap.combine $Snap.unit $t@348@01) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.first ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@329@01))))))))))))))))))
@@ -38737,24 +38748,24 @@
 ; BinarySearchTree_res := new()
 (declare-const BinarySearchTree_res@483@01 $Ref)
 (assert (not (= BinarySearchTree_res@483@01 $Ref.null)))
-(assert (not (= BinarySearchTree_res@483@01 target_0@448@01)))
-(assert (not (= BinarySearchTree_res@483@01 BinarySearchTree_res@446@01)))
 (assert (not (= BinarySearchTree_res@483@01 target_1@449@01)))
-(assert (not (= BinarySearchTree_res@483@01 target_2@450@01)))
-(assert (not
-  (=
-    BinarySearchTree_res@483@01
-    ($SortWrappers.$SnapTo$Ref ($Snap.first $t@460@01)))))
 (assert (not (= BinarySearchTree_res@483@01 target_3@451@01)))
-(assert (not (= BinarySearchTree_res@483@01 (__name__ $Snap.unit))))
-(assert (not (= BinarySearchTree_res@483@01 (__file__ $Snap.unit))))
+(assert (not (= BinarySearchTree_res@483@01 target_0@448@01)))
 (assert (not (= BinarySearchTree_res@483@01 _cthread_175@440@01)))
-(assert (not (= BinarySearchTree_res@483@01 target_4@452@01)))
-(assert (not (= BinarySearchTree_res@483@01 target@447@01)))
+(assert (not (= BinarySearchTree_res@483@01 (__name__ $Snap.unit))))
 (assert (not
   (=
     BinarySearchTree_res@483@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first $t@458@01)))))
+(assert (not (= BinarySearchTree_res@483@01 (__file__ $Snap.unit))))
+(assert (not
+  (=
+    BinarySearchTree_res@483@01
+    ($SortWrappers.$SnapTo$Ref ($Snap.first $t@460@01)))))
+(assert (not (= BinarySearchTree_res@483@01 target_2@450@01)))
+(assert (not (= BinarySearchTree_res@483@01 BinarySearchTree_res@446@01)))
+(assert (not (= BinarySearchTree_res@483@01 target@447@01)))
+(assert (not (= BinarySearchTree_res@483@01 target_4@452@01)))
 ; [exec]
 ; inhale typeof(BinarySearchTree_res) == BinarySearchTree()
 (declare-const $t@484@01 $Snap)

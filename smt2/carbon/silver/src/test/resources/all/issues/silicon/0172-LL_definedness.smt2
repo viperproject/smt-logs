@@ -2425,3 +2425,6 @@
 PreconditionGeneratedEntry_correct)))))))))
 ))
 (check-sat)
+(get-info :rlimit)
+(pop 1)
+; Valid

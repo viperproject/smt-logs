@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-08 21:40:11
+// Date:         2025-01-13 12:57:02
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpredicates/examples/two_blocks_array.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpredicates/examples/two_blocks_array-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -336,10 +336,10 @@ procedure readTwo(a_2: IArrayDomainType, i: int) returns (sum_1: int)
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var newVersion: FrameType;
   
   // -- Initializing the state
@@ -357,14 +357,14 @@ procedure readTwo(a_2: IArrayDomainType, i: int) returns (sum_1: int)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: unfold acc(access(a, i), write) -- two_blocks_array.vpr@14.5--14.23
     assume access#trigger(Heap, access(a_2, i));
     assume Heap[null, access(a_2, i)] == FrameFragment((if i mod 2 == 0 then CombineFrames(FrameFragment(Heap[(loc(a_2, i): Ref), val]), FrameFragment(Heap[(loc(a_2, i + 1): Ref), val])) else EmptyFrame));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding access(a, i) might fail. There might be insufficient permission to access access(a, i) (two_blocks_array.vpr@14.5--14.23) [106527]"}
@@ -409,15 +409,15 @@ procedure totalSum(a_2: IArrayDomainType, i: int) returns (sum_1: int)
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
   var arg_i: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var perm: Perm;
   var newVersion: FrameType;
@@ -480,8 +480,8 @@ procedure totalSum(a_2: IArrayDomainType, i: int) returns (sum_1: int)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -545,8 +545,8 @@ procedure totalSum(a_2: IArrayDomainType, i: int) returns (sum_1: int)
         arg_i := i + 2;
         
         // -- Exhaling precondition
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           assert {:msg "  The precondition of method totalSum might not hold. Assertion i + 2 >= 0 might not hold. (two_blocks_array.vpr@27.9--27.31) [106534]"}
             arg_i >= 0;
           assert {:msg "  The precondition of method totalSum might not hold. Assertion i + 2 + 1 < len(a) might not hold. (two_blocks_array.vpr@27.9--27.31) [106535]"}
@@ -651,8 +651,8 @@ procedure totalSum(a_2: IArrayDomainType, i: int) returns (sum_1: int)
       // -- Translating statement: unfold acc(access(a, i), write) -- two_blocks_array.vpr@28.9--28.28
         assume access#trigger(Heap, access(a_2, i));
         assume Heap[null, access(a_2, i)] == FrameFragment((if i mod 2 == 0 then CombineFrames(FrameFragment(Heap[(loc(a_2, i): Ref), val]), FrameFragment(Heap[(loc(a_2, i + 1): Ref), val])) else EmptyFrame));
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Unfolding access(a, i) might fail. There might be insufficient permission to access access(a, i) (two_blocks_array.vpr@28.9--28.28) [106542]"}
@@ -689,8 +689,8 @@ procedure totalSum(a_2: IArrayDomainType, i: int) returns (sum_1: int)
         assume state(Heap, Mask);
       
       // -- Translating statement: fold acc(access(a, i), write) -- two_blocks_array.vpr@30.9--30.26
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         if (i mod 2 == 0) {
           perm := FullPerm;
           if (perm != NoPerm) {
@@ -727,8 +727,8 @@ procedure totalSum(a_2: IArrayDomainType, i: int) returns (sum_1: int)
       // -- Translating statement: unfold acc(access(a, i), write) -- two_blocks_array.vpr@32.9--32.28
         assume access#trigger(Heap, access(a_2, i));
         assume Heap[null, access(a_2, i)] == FrameFragment((if i mod 2 == 0 then CombineFrames(FrameFragment(Heap[(loc(a_2, i): Ref), val]), FrameFragment(Heap[(loc(a_2, i + 1): Ref), val])) else EmptyFrame));
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         perm := FullPerm;
         if (perm != NoPerm) {
           assert {:msg "  Unfolding access(a, i) might fail. There might be insufficient permission to access access(a, i) (two_blocks_array.vpr@32.9--32.28) [106555]"}
@@ -765,8 +765,8 @@ procedure totalSum(a_2: IArrayDomainType, i: int) returns (sum_1: int)
         assume state(Heap, Mask);
       
       // -- Translating statement: fold acc(access(a, i), write) -- two_blocks_array.vpr@34.9--34.26
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         if (i mod 2 == 0) {
           perm := FullPerm;
           if (perm != NoPerm) {
@@ -802,8 +802,8 @@ procedure totalSum(a_2: IArrayDomainType, i: int) returns (sum_1: int)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of totalSum might not hold. Assertion i >= 0 might not hold. (two_blocks_array.vpr@23.9--23.30) [106566]"}
       i >= 0;
     assert {:msg "  Postcondition of totalSum might not hold. Assertion i <= len(a) might not hold. (two_blocks_array.vpr@23.9--23.30) [106567]"}
@@ -867,19 +867,19 @@ procedure setVal(a_2: IArrayDomainType, i: int, newVal: int) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var perm: Perm;
   var newVersion: FrameType;
   var freshVersion: FrameType;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
   var arg_i: int;
@@ -944,8 +944,8 @@ procedure setVal(a_2: IArrayDomainType, i: int, newVal: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1005,8 +1005,8 @@ procedure setVal(a_2: IArrayDomainType, i: int, newVal: int) returns ()
   // -- Translating statement: unfold acc(access(a, i), write) -- two_blocks_array.vpr@49.5--49.23
     assume access#trigger(Heap, access(a_2, i));
     assume Heap[null, access(a_2, i)] == FrameFragment((if i mod 2 == 0 then CombineFrames(FrameFragment(Heap[(loc(a_2, i): Ref), val]), FrameFragment(Heap[(loc(a_2, i + 1): Ref), val])) else EmptyFrame));
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding access(a, i) might fail. There might be insufficient permission to access access(a, i) (two_blocks_array.vpr@49.5--49.23) [106574]"}
@@ -1045,8 +1045,8 @@ procedure setVal(a_2: IArrayDomainType, i: int, newVal: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: fold acc(access(a, i), write) -- two_blocks_array.vpr@52.2--52.18
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     if (i mod 2 == 0) {
       perm := FullPerm;
       if (perm != NoPerm) {
@@ -1081,16 +1081,16 @@ procedure setVal(a_2: IArrayDomainType, i: int, newVal: int) returns ()
   
   // -- Translating statement: assert (unfolding acc(access(a, i), write) in loc(a, i).val == newVal) &&
   //   (unfolding acc(access(a, i), write) in loc(a, i + 1).val == newVal) -- two_blocks_array.vpr@53.2--53.131
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (unfolding acc(access(a, i), write) in loc(a, i).val == newVal)
       UnfoldingHeap := ExhaleWellDef0Heap;
       UnfoldingMask := ExhaleWellDef0Mask;
       assume access#trigger(UnfoldingHeap, access(a_2, i));
       assume UnfoldingHeap[null, access(a_2, i)] == FrameFragment((if i mod 2 == 0 then CombineFrames(FrameFragment(UnfoldingHeap[(loc(a_2, i): Ref), val]), FrameFragment(UnfoldingHeap[(loc(a_2, i + 1): Ref), val])) else EmptyFrame));
-      ExhaleWellDef1Mask := UnfoldingMask;
       ExhaleWellDef1Heap := UnfoldingHeap;
+      ExhaleWellDef1Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Assert might fail. There might be insufficient permission to access access(a, i) (two_blocks_array.vpr@53.9--53.131) [106585]"}
@@ -1125,8 +1125,8 @@ procedure setVal(a_2: IArrayDomainType, i: int, newVal: int) returns ()
       UnfoldingMask := ExhaleWellDef0Mask;
       assume access#trigger(UnfoldingHeap, access(a_2, i));
       assume UnfoldingHeap[null, access(a_2, i)] == FrameFragment((if i mod 2 == 0 then CombineFrames(FrameFragment(UnfoldingHeap[(loc(a_2, i): Ref), val]), FrameFragment(UnfoldingHeap[(loc(a_2, i + 1): Ref), val])) else EmptyFrame));
-      ExhaleWellDef1Mask := UnfoldingMask;
       ExhaleWellDef1Heap := UnfoldingHeap;
+      ExhaleWellDef1Mask := UnfoldingMask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Assert might fail. There might be insufficient permission to access access(a, i) (two_blocks_array.vpr@53.9--53.131) [106588]"}
@@ -1178,8 +1178,8 @@ procedure setVal(a_2: IArrayDomainType, i: int, newVal: int) returns ()
         arg_i := i + 2;
         
         // -- Exhaling precondition
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           assert {:msg "  The precondition of method setVal might not hold. Assertion i + 2 >= 0 might not hold. (two_blocks_array.vpr@56.14--56.36) [106591]"}
             arg_i >= 0;
           assert {:msg "  The precondition of method setVal might not hold. Assertion i + 2 < len(a) might not hold. (two_blocks_array.vpr@56.14--56.36) [106592]"}
@@ -1284,8 +1284,8 @@ procedure setVal(a_2: IArrayDomainType, i: int, newVal: int) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of setVal might not hold. Assertion i >= 0 might not hold. (two_blocks_array.vpr@45.9--45.29) [106598]"}
       i >= 0;
     assert {:msg "  Postcondition of setVal might not hold. Assertion i < len(a) might not hold. (two_blocks_array.vpr@45.9--45.29) [106599]"}
@@ -1351,8 +1351,8 @@ procedure setVal2(a_2: IArrayDomainType, i: int, newVal: int) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var j_10: int;
@@ -1360,8 +1360,8 @@ procedure setVal2(a_2: IArrayDomainType, i: int, newVal: int) returns ()
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
   var arg_i: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var j_7_1: int;
   
@@ -1418,8 +1418,8 @@ procedure setVal2(a_2: IArrayDomainType, i: int, newVal: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1523,8 +1523,8 @@ procedure setVal2(a_2: IArrayDomainType, i: int, newVal: int) returns ()
         arg_i := i + 1;
         
         // -- Exhaling precondition
-          ExhaleWellDef0Mask := Mask;
           ExhaleWellDef0Heap := Heap;
+          ExhaleWellDef0Mask := Mask;
           assert {:msg "  The precondition of method setVal2 might not hold. Assertion i + 1 >= 0 might not hold. (two_blocks_array.vpr@73.9--73.32) [106608]"}
             arg_i >= 0;
           assert {:msg "  The precondition of method setVal2 might not hold. Assertion i + 1 < len(a) might not hold. (two_blocks_array.vpr@73.9--73.32) [106609]"}
@@ -1622,8 +1622,8 @@ procedure setVal2(a_2: IArrayDomainType, i: int, newVal: int) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of setVal2 might not hold. Assertion i >= 0 might not hold. (two_blocks_array.vpr@64.9--64.29) [106613]"}
       i >= 0;
     assert {:msg "  Postcondition of setVal2 might not hold. Assertion i < len(a) might not hold. (two_blocks_array.vpr@64.9--64.29) [106614]"}

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-08 21:29:07
+// Date:         2025-01-13 12:45:49
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/sets/generalised_shape.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/sets/generalised_shape-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -781,8 +781,8 @@ procedure test05(xs: (Set Ref), ys: (Set Ref), x1_2: Ref, x2: Ref) returns ()
   modifies Heap, Mask;
 {
   var QPMask: MaskType;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var a_2: int;
   
   // -- Initializing the state
@@ -839,8 +839,8 @@ procedure test05(xs: (Set Ref), ys: (Set Ref), x1_2: Ref, x2: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale (x1 in xs) -- generalised_shape.vpr@10.10--10.18
     assume xs[x1_2];
@@ -893,8 +893,8 @@ procedure test07(xs: (Set Ref), y1: Ref) returns ()
 {
   var QPMask: MaskType;
   var x_12: Ref;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var r_1: Ref;
   var a_2: int;
   
@@ -997,8 +997,8 @@ procedure test07(xs: (Set Ref), y1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[r_1, $allocated];
@@ -1028,13 +1028,13 @@ procedure test12(x1_2: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var QPMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -1055,8 +1055,8 @@ procedure test12(x1_2: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1112,8 +1112,8 @@ procedure test12(x1_2: Ref) returns ()
   }
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     havoc QPMask;
     
     // -- check that the permission amount is positive
@@ -1175,14 +1175,14 @@ procedure test14(x1_2: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var QPMask: MaskType;
   var x_13: Ref;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -1211,8 +1211,8 @@ procedure test14(x1_2: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1307,8 +1307,8 @@ procedure test14(x1_2: Ref) returns ()
   }
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     havoc QPMask;
     
     // -- check that the permission amount is positive
@@ -1405,14 +1405,14 @@ procedure test13(x1_2: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var x_14: Ref;
   var QPMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -1441,8 +1441,8 @@ procedure test13(x1_2: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1497,8 +1497,8 @@ procedure test13(x1_2: Ref) returns ()
   }
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     havoc QPMask;
     
     // -- check that the permission amount is positive
@@ -1555,14 +1555,14 @@ procedure test10(x1_2: Ref, x2: Ref) returns ()
 {
   var perm: Perm;
   var wildcard: real where wildcard > 0.000000000;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var QPMask: MaskType;
   var x_15: Ref;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -1607,8 +1607,8 @@ procedure test10(x1_2: Ref, x2: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1703,8 +1703,8 @@ procedure test10(x1_2: Ref, x2: Ref) returns ()
   }
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     havoc QPMask;
     // wild card assumptions
     havoc wildcard;
@@ -1831,15 +1831,15 @@ procedure test15(x1_2: Ref, x2: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var QPMask: MaskType;
   var wildcard: real where wildcard > 0.000000000;
   var x_16: Ref;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -1886,8 +1886,8 @@ procedure test15(x1_2: Ref, x2: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1990,8 +1990,8 @@ procedure test15(x1_2: Ref, x2: Ref) returns ()
   }
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     havoc QPMask;
     // wild card assumptions
     havoc wildcard;
@@ -2120,12 +2120,12 @@ procedure test11(x1_2: Ref, x2: Ref, x3: Ref, x4: Ref, x5: Ref, x6: Ref) returns
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var wildcard: real where wildcard > NoPerm;
   var ExhaleHeap: HeapType;
   var QPMask: MaskType;
@@ -2226,16 +2226,16 @@ procedure test11(x1_2: Ref, x2: Ref, x3: Ref, x4: Ref, x5: Ref, x6: Ref) returns
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: test10(x1, x6) -- generalised_shape.vpr@74.3--74.17
     PreCallHeap := Heap;
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  The precondition of method test10 might not hold. There might be insufficient permission to access x1.g (generalised_shape.vpr@74.3--74.17) [4821]"}
@@ -2340,8 +2340,8 @@ procedure test11(x1_2: Ref, x2: Ref, x3: Ref, x4: Ref, x5: Ref, x6: Ref) returns
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  The precondition of method test10 might not hold. There might be insufficient permission to access x2.g (generalised_shape.vpr@77.3--77.17) [4827]"}
@@ -2446,8 +2446,8 @@ procedure test11(x1_2: Ref, x2: Ref, x3: Ref, x4: Ref, x5: Ref, x6: Ref) returns
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  The precondition of method test10 might not hold. There might be insufficient permission to access x3.g (generalised_shape.vpr@80.3--80.17) [4833]"}
@@ -2559,11 +2559,11 @@ procedure test06(xs: (Set Ref), y1: Ref, y2: Ref, y3: Ref) returns ()
   var x1_4: Ref;
   var x2_2: Ref;
   var x_17: Ref;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var a_2: int;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -2686,8 +2686,8 @@ procedure test06(xs: (Set Ref), y1: Ref, y2: Ref, y3: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: inhale y1.g != null -- generalised_shape.vpr@90.10--90.22
     
@@ -2718,8 +2718,8 @@ procedure test06(xs: (Set Ref), y1: Ref, y2: Ref, y3: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert y1.g != y2.g -- generalised_shape.vpr@94.3--94.22
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of y1.g != y2.g
       assert {:msg "  Assert might fail. There might be insufficient permission to access y1.g (generalised_shape.vpr@94.10--94.22) [4848]"}
@@ -2731,8 +2731,8 @@ procedure test06(xs: (Set Ref), y1: Ref, y2: Ref, y3: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert y1.g != y3.g || y2.g != y3.g -- generalised_shape.vpr@95.3--95.38
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of y1.g != y3.g || y2.g != y3.g
       assert {:msg "  Assert might fail. There might be insufficient permission to access y1.g (generalised_shape.vpr@95.10--95.38) [4851]"}
@@ -2750,8 +2750,8 @@ procedure test06(xs: (Set Ref), y1: Ref, y2: Ref, y3: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert y1.g != y3.g && y2.g != y3.g -- generalised_shape.vpr@98.3--98.38
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     
     // -- Check definedness of y1.g != y3.g
       assert {:msg "  Assert might fail. There might be insufficient permission to access y1.g (generalised_shape.vpr@98.10--98.38) [4856]"}
@@ -2779,10 +2779,10 @@ procedure test01(xs: (Set Ref), ys: (Set Ref), x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
+  var oldHeap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var newVersion: FrameType;
   var QPMask: MaskType;
   var a_2: int;
@@ -2804,14 +2804,14 @@ procedure test01(xs: (Set Ref), ys: (Set Ref), x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: unfold acc(P(xs, ys), write) -- generalised_shape.vpr@128.3--128.24
     assume P#trigger(Heap, P(xs, ys));
     assume Heap[null, P(xs, ys)] == CombineFrames(FrameFragment(P#condqp1(Heap, xs, ys)), CombineFrames(FrameFragment(P#condqp2(Heap, xs, ys)), FrameFragment(P#condqp3(Heap, xs, ys))));
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding P(xs, ys) might fail. There might be insufficient permission to access P(xs, ys) (generalised_shape.vpr@128.3--128.24) [4864]"}
@@ -2960,11 +2960,11 @@ procedure test02(xs: (Set Ref), ys: (Set Ref), x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var b_24: Ref;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var newVersion: FrameType;
   var QPMask: MaskType;
   var a_2: int;
@@ -2986,8 +2986,8 @@ procedure test02(xs: (Set Ref), ys: (Set Ref), x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[b_24, $allocated];
@@ -2995,8 +2995,8 @@ procedure test02(xs: (Set Ref), ys: (Set Ref), x: Ref) returns ()
   // -- Translating statement: unfold acc(P(xs, ys), write) -- generalised_shape.vpr@139.3--139.24
     assume P#trigger(Heap, P(xs, ys));
     assume Heap[null, P(xs, ys)] == CombineFrames(FrameFragment(P#condqp1(Heap, xs, ys)), CombineFrames(FrameFragment(P#condqp2(Heap, xs, ys)), FrameFragment(P#condqp3(Heap, xs, ys))));
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding P(xs, ys) might fail. There might be insufficient permission to access P(xs, ys) (generalised_shape.vpr@139.3--139.24) [4871]"}
@@ -3158,11 +3158,11 @@ procedure test03(xs: (Set Ref), ys: (Set Ref), x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var b_24: Ref;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var newVersion: FrameType;
   var QPMask: MaskType;
   var a_2: int;
@@ -3184,8 +3184,8 @@ procedure test03(xs: (Set Ref), ys: (Set Ref), x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[b_24, $allocated];
@@ -3193,8 +3193,8 @@ procedure test03(xs: (Set Ref), ys: (Set Ref), x: Ref) returns ()
   // -- Translating statement: unfold acc(P(xs, ys), write) -- generalised_shape.vpr@151.3--151.24
     assume P#trigger(Heap, P(xs, ys));
     assume Heap[null, P(xs, ys)] == CombineFrames(FrameFragment(P#condqp1(Heap, xs, ys)), CombineFrames(FrameFragment(P#condqp2(Heap, xs, ys)), FrameFragment(P#condqp3(Heap, xs, ys))));
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding P(xs, ys) might fail. There might be insufficient permission to access P(xs, ys) (generalised_shape.vpr@151.3--151.24) [4879]"}
@@ -3371,11 +3371,11 @@ procedure test04(xs: (Set Ref), ys: (Set Ref), x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var b_24: Ref;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var newVersion: FrameType;
   var QPMask: MaskType;
   var a_2: int;
@@ -3397,8 +3397,8 @@ procedure test04(xs: (Set Ref), ys: (Set Ref), x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Assumptions about local variables
     assume Heap[b_24, $allocated];
@@ -3406,8 +3406,8 @@ procedure test04(xs: (Set Ref), ys: (Set Ref), x: Ref) returns ()
   // -- Translating statement: unfold acc(P(xs, ys), write) -- generalised_shape.vpr@167.3--167.24
     assume P#trigger(Heap, P(xs, ys));
     assume Heap[null, P(xs, ys)] == CombineFrames(FrameFragment(P#condqp1(Heap, xs, ys)), CombineFrames(FrameFragment(P#condqp2(Heap, xs, ys)), FrameFragment(P#condqp3(Heap, xs, ys))));
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Unfolding P(xs, ys) might fail. There might be insufficient permission to access P(xs, ys) (generalised_shape.vpr@167.3--167.24) [4889]"}

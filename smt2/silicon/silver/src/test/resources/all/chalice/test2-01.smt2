@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-08 21:21:46
+; Started: 2025-01-13 12:38:16
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -129,57 +129,57 @@
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (= (getX%limited s@$ this@0@00) (getX s@$ this@0@00))
   :pattern ((getX s@$ this@0@00))
-  :qid |quant-u-21657|)))
+  :qid |quant-u-21764|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (getX%stateless this@0@00)
   :pattern ((getX%limited s@$ this@0@00))
-  :qid |quant-u-21658|)))
+  :qid |quant-u-21765|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (=>
     (getX%precondition s@$ this@0@00)
     (= (getX s@$ this@0@00) ($SortWrappers.$SnapToInt s@$)))
   :pattern ((getX s@$ this@0@00))
-  :qid |quant-u-21663|)))
+  :qid |quant-u-21770|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   true
   :pattern ((getX s@$ this@0@00))
-  :qid |quant-u-21664|)))
+  :qid |quant-u-21771|)))
 (assert (forall ((s@$ $Snap) (this@2@00 $Ref)) (!
   (= (getZ%limited s@$ this@2@00) (getZ s@$ this@2@00))
   :pattern ((getZ s@$ this@2@00))
-  :qid |quant-u-21659|)))
+  :qid |quant-u-21766|)))
 (assert (forall ((s@$ $Snap) (this@2@00 $Ref)) (!
   (getZ%stateless this@2@00)
   :pattern ((getZ%limited s@$ this@2@00))
-  :qid |quant-u-21660|)))
+  :qid |quant-u-21767|)))
 (assert (forall ((s@$ $Snap) (this@2@00 $Ref)) (!
   (=>
     (getZ%precondition s@$ this@2@00)
     (= (getZ s@$ this@2@00) ($SortWrappers.$SnapToInt s@$)))
   :pattern ((getZ s@$ this@2@00))
-  :qid |quant-u-21665|)))
+  :qid |quant-u-21772|)))
 (assert (forall ((s@$ $Snap) (this@2@00 $Ref)) (!
   true
   :pattern ((getZ s@$ this@2@00))
-  :qid |quant-u-21666|)))
+  :qid |quant-u-21773|)))
 (assert (forall ((s@$ $Snap) (this@4@00 $Ref)) (!
   (= (getY%limited s@$ this@4@00) (getY s@$ this@4@00))
   :pattern ((getY s@$ this@4@00))
-  :qid |quant-u-21661|)))
+  :qid |quant-u-21768|)))
 (assert (forall ((s@$ $Snap) (this@4@00 $Ref)) (!
   (getY%stateless this@4@00)
   :pattern ((getY%limited s@$ this@4@00))
-  :qid |quant-u-21662|)))
+  :qid |quant-u-21769|)))
 (assert (forall ((s@$ $Snap) (this@4@00 $Ref)) (!
   (=>
     (getY%precondition s@$ this@4@00)
     (= (getY s@$ this@4@00) ($SortWrappers.$SnapToInt s@$)))
   :pattern ((getY s@$ this@4@00))
-  :qid |quant-u-21667|)))
+  :qid |quant-u-21774|)))
 (assert (forall ((s@$ $Snap) (this@4@00 $Ref)) (!
   true
   :pattern ((getY s@$ this@4@00))
-  :qid |quant-u-21668|)))
+  :qid |quant-u-21775|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- setX ----------

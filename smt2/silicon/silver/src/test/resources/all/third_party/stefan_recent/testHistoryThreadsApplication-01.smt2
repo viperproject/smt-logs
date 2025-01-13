@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-08 21:22:32
+; Started: 2025-01-13 12:39:03
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -253,11 +253,11 @@
     (History__hist_get_x%limited s@$ diz@0@00)
     (History__hist_get_x s@$ diz@0@00))
   :pattern ((History__hist_get_x s@$ diz@0@00))
-  :qid |quant-u-22306|)))
+  :qid |quant-u-22413|)))
 (assert (forall ((s@$ $Snap) (diz@0@00 $Ref)) (!
   (History__hist_get_x%stateless diz@0@00)
   :pattern ((History__hist_get_x%limited s@$ diz@0@00))
-  :qid |quant-u-22307|)))
+  :qid |quant-u-22414|)))
 (assert (forall ((s@$ $Snap) (diz@0@00 $Ref)) (!
   (and
     ($Perm.isReadVar $k@4@00)
@@ -267,21 +267,21 @@
         (History__hist_get_x s@$ diz@0@00)
         ($SortWrappers.$SnapToInt ($Snap.second s@$)))))
   :pattern ((History__hist_get_x s@$ diz@0@00))
-  :qid |quant-u-22310|)))
+  :qid |quant-u-22417|)))
 (assert (forall ((s@$ $Snap) (diz@0@00 $Ref)) (!
   true
   :pattern ((History__hist_get_x s@$ diz@0@00))
-  :qid |quant-u-22311|)))
+  :qid |quant-u-22418|)))
 (assert (forall ((s@$ $Snap) (diz@2@00 $Ref)) (!
   (=
     (History__free_get_x%limited s@$ diz@2@00)
     (History__free_get_x s@$ diz@2@00))
   :pattern ((History__free_get_x s@$ diz@2@00))
-  :qid |quant-u-22308|)))
+  :qid |quant-u-22415|)))
 (assert (forall ((s@$ $Snap) (diz@2@00 $Ref)) (!
   (History__free_get_x%stateless diz@2@00)
   :pattern ((History__free_get_x%limited s@$ diz@2@00))
-  :qid |quant-u-22309|)))
+  :qid |quant-u-22416|)))
 (assert (forall ((s@$ $Snap) (diz@2@00 $Ref)) (!
   (and
     ($Perm.isReadVar $k@5@00)
@@ -291,11 +291,11 @@
         (History__free_get_x s@$ diz@2@00)
         ($SortWrappers.$SnapToInt ($Snap.second s@$)))))
   :pattern ((History__free_get_x s@$ diz@2@00))
-  :qid |quant-u-22312|)))
+  :qid |quant-u-22419|)))
 (assert (forall ((s@$ $Snap) (diz@2@00 $Ref)) (!
   true
   :pattern ((History__free_get_x s@$ diz@2@00))
-  :qid |quant-u-22313|)))
+  :qid |quant-u-22420|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- History__incr_begin ----------
@@ -1031,9 +1031,9 @@
 (declare-const History__x_hist_mode@103@01 Int)
 (declare-const History__x_hist_init@104@01 Int)
 (declare-const History__x_hist_act@105@01 Int)
-(assert (not (= diz@101@01 sys__thrown@88@01)))
 (assert (not (= diz@101@01 diz@92@01)))
 (assert (not (= diz@101@01 sys__result@89@01)))
+(assert (not (= diz@101@01 sys__thrown@88@01)))
 ; [exec]
 ; __flatten_33 := 0
 ; [exec]
@@ -1308,11 +1308,11 @@
 (declare-const diz@141@01 $Ref)
 (assert (not (= diz@141@01 $Ref.null)))
 (declare-const SubjectLock__subject@142@01 $Ref)
+(assert (not (= diz@141@01 __flatten_105@140@01)))
 (assert (not (= diz@141@01 __flatten_37@139@01)))
-(assert (not (= diz@141@01 diz@138@01)))
 (assert (not (= diz@141@01 sys__thrown@133@01)))
 (assert (not (= diz@141@01 sys__result@134@01)))
-(assert (not (= diz@141@01 __flatten_105@140@01)))
+(assert (not (= diz@141@01 diz@138@01)))
 (assert (not (= diz@141@01 s@132@01)))
 ; [exec]
 ; inhale type_of(diz) == class_SubjectLock()
@@ -2047,9 +2047,9 @@
 ; diz := new()
 (declare-const diz@269@01 $Ref)
 (assert (not (= diz@269@01 $Ref.null)))
-(assert (not (= diz@269@01 sys__result@265@01)))
-(assert (not (= diz@269@01 sys__thrown@264@01)))
 (assert (not (= diz@269@01 diz@268@01)))
+(assert (not (= diz@269@01 sys__thrown@264@01)))
+(assert (not (= diz@269@01 sys__result@265@01)))
 ; [exec]
 ; inhale type_of(diz) == class_Thread()
 (declare-const $t@270@01 $Snap)
@@ -2985,18 +2985,18 @@
 (assert (not (= diz@459@01 $Ref.null)))
 (declare-const Worker__l@460@01 $Ref)
 (declare-const Worker__s@461@01 $Ref)
-(assert (not (= diz@459@01 sys__thrown@447@01)))
-(assert (not (= diz@459@01 diz@454@01)))
 (assert (not (= diz@459@01 l@446@01)))
+(assert (not (= diz@459@01 sys__result@448@01)))
+(assert (not (= diz@459@01 diz@454@01)))
+(assert (not (= diz@459@01 __flatten_38@455@01)))
 (assert (not (= diz@459@01 __flatten_39@456@01)))
-(assert (not (= diz@459@01 s@445@01)))
+(assert (not (= diz@459@01 __flatten_107@458@01)))
+(assert (not (= diz@459@01 sys__thrown@447@01)))
 (assert (not
   (=
     diz@459@01
     ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second $t@449@01))))))
-(assert (not (= diz@459@01 __flatten_107@458@01)))
-(assert (not (= diz@459@01 __flatten_38@455@01)))
-(assert (not (= diz@459@01 sys__result@448@01)))
+(assert (not (= diz@459@01 s@445@01)))
 (assert (not (= diz@459@01 __flatten_106@457@01)))
 ; [exec]
 ; inhale type_of(diz) == class_Worker()

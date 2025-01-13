@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-08 21:25:23
+; Started: 2025-01-13 12:42:00
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -685,11 +685,11 @@
 (assert (forall ((s@$ $Snap)) (!
   (= (havoc%limited s@$) (havoc s@$))
   :pattern ((havoc s@$))
-  :qid |quant-u-25125|)))
+  :qid |quant-u-25232|)))
 (assert (forall ((s@$ $Snap)) (!
   (as havoc%stateless  Bool)
   :pattern ((havoc%limited s@$))
-  :qid |quant-u-25126|)))
+  :qid |quant-u-25233|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- test ----------
@@ -1053,7 +1053,7 @@
       (= ($FVF.perm_val (as pm@26@01  $FPM) r@25@01) $Perm.No)
       (< $Perm.No ($FVF.perm_val (as pm@26@01  $FPM) r@25@01))))
   
-  :qid |quant-u-25127|))))
+  :qid |quant-u-25234|))))
 (check-sat)
 ; unsat
 (pop) ; 3
@@ -1108,7 +1108,7 @@
     (Set_in (inv@27@01 r) refSet_b1@20@01)
     ($FVF.loc_val ($FVF.lookup_val (as sm@23@01  $FVF<val>) r) r))
   :pattern ((inv@27@01 r))
-  :qid |quant-u-25128|)))
+  :qid |quant-u-25235|)))
 ; Precomputing data for removing quantified permissions
 (define-fun pTaken@29@01 ((r $Ref)) $Perm
   (ite
@@ -1149,7 +1149,7 @@
       (- ($FVF.perm_val (as pm@26@01  $FPM) (inv@27@01 r)) (pTaken@29@01 r))
       $Perm.No))
   
-  :qid |quant-u-25131|))))
+  :qid |quant-u-25238|))))
 (check-sat)
 ; unsat
 (pop) ; 3

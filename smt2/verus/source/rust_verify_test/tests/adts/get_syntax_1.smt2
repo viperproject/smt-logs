@@ -678,12 +678,12 @@
 ;; MODULE 'root module'
 
 ;; Fuel
-(declare-const fuel%impl&%0.arrow_v. FuelId)
 (declare-const fuel%impl&%0.arrow_0. FuelId)
+(declare-const fuel%impl&%0.arrow_v. FuelId)
 (declare-const fuel%impl&%0.arrow_This_0. FuelId)
 (declare-const fuel%impl&%0.arrow_That_v. FuelId)
 (assert
- (distinct fuel%impl&%0.arrow_v. fuel%impl&%0.arrow_0. fuel%impl&%0.arrow_This_0. fuel%impl&%0.arrow_That_v.)
+ (distinct fuel%impl&%0.arrow_0. fuel%impl&%0.arrow_v. fuel%impl&%0.arrow_This_0. fuel%impl&%0.arrow_That_v.)
 )
 
 ;; Datatypes
@@ -784,31 +784,17 @@
    :skolemid skolem_internal_crate__tuple__0_has_type_always_definition
 )))
 
-;; Function-Decl crate::ThisOrThat::arrow_v
-(declare-fun impl&%0.arrow_v.? (Poly) Int)
-
 ;; Function-Decl crate::ThisOrThat::arrow_0
 (declare-fun impl&%0.arrow_0.? (Poly) Int)
+
+;; Function-Decl crate::ThisOrThat::arrow_v
+(declare-fun impl&%0.arrow_v.? (Poly) Int)
 
 ;; Function-Decl crate::ThisOrThat::arrow_This_0
 (declare-fun impl&%0.arrow_This_0.? (Poly) Int)
 
 ;; Function-Decl crate::ThisOrThat::arrow_That_v
 (declare-fun impl&%0.arrow_That_v.? (Poly) Int)
-
-;; Function-Axioms crate::ThisOrThat::arrow_v
-(assert
- (fuel_bool_default fuel%impl&%0.arrow_v.)
-)
-(assert
- (=>
-  (fuel_bool fuel%impl&%0.arrow_v.)
-  (forall ((self! Poly)) (!
-    (= (impl&%0.arrow_v.? self!) (ThisOrThat./That/v (%Poly%ThisOrThat. self!)))
-    :pattern ((impl&%0.arrow_v.? self!))
-    :qid internal_impl&__0.arrow_v.?_definition
-    :skolemid skolem_internal_impl&__0.arrow_v.?_definition
-))))
 
 ;; Function-Axioms crate::ThisOrThat::arrow_0
 (assert
@@ -833,6 +819,20 @@
    :qid internal_impl&__0.arrow_0.?_pre_post_definition
    :skolemid skolem_internal_impl&__0.arrow_0.?_pre_post_definition
 )))
+
+;; Function-Axioms crate::ThisOrThat::arrow_v
+(assert
+ (fuel_bool_default fuel%impl&%0.arrow_v.)
+)
+(assert
+ (=>
+  (fuel_bool fuel%impl&%0.arrow_v.)
+  (forall ((self! Poly)) (!
+    (= (impl&%0.arrow_v.? self!) (ThisOrThat./That/v (%Poly%ThisOrThat. self!)))
+    :pattern ((impl&%0.arrow_v.? self!))
+    :qid internal_impl&__0.arrow_v.?_definition
+    :skolemid skolem_internal_impl&__0.arrow_v.?_definition
+))))
 
 ;; Function-Axioms crate::ThisOrThat::arrow_This_0
 (assert

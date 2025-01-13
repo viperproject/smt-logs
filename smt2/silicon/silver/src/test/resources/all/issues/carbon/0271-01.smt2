@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-08 21:24:01
+; Started: 2025-01-13 12:40:34
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -975,29 +975,29 @@
     (listLength%limited s@$ l1@0@00 l2@1@00 k@2@00)
     (listLength s@$ l1@0@00 l2@1@00 k@2@00))
   :pattern ((listLength s@$ l1@0@00 l2@1@00 k@2@00))
-  :qid |quant-u-23165|)))
+  :qid |quant-u-23272|)))
 (assert (forall ((s@$ $Snap) (l1@0@00 $Ref) (l2@1@00 $Ref) (k@2@00 Int)) (!
   (listLength%stateless l1@0@00 l2@1@00 k@2@00)
   :pattern ((listLength%limited s@$ l1@0@00 l2@1@00 k@2@00))
-  :qid |quant-u-23166|)))
+  :qid |quant-u-23273|)))
 (assert (forall ((s@$ $Snap) (l1@0@00 $Ref) (l2@1@00 $Ref) (k@2@00 Int)) (!
   (let ((result@3@00 (listLength%limited s@$ l1@0@00 l2@1@00 k@2@00))) (=>
     (listLength%precondition s@$ l1@0@00 l2@1@00 k@2@00)
     (> result@3@00 0)))
   :pattern ((listLength%limited s@$ l1@0@00 l2@1@00 k@2@00))
-  :qid |quant-u-23171|)))
+  :qid |quant-u-23278|)))
 (assert (forall ((s@$ $Snap) (l1@0@00 $Ref) (l2@1@00 $Ref) (k@2@00 Int)) (!
   (let ((result@3@00 (listLength%limited s@$ l1@0@00 l2@1@00 k@2@00))) true)
   :pattern ((listLength%limited s@$ l1@0@00 l2@1@00 k@2@00))
-  :qid |quant-u-23172|)))
+  :qid |quant-u-23279|)))
 (assert (forall ((s@$ $Snap) (l@4@00 $Ref)) (!
   (= (someFun%limited s@$ l@4@00) (someFun s@$ l@4@00))
   :pattern ((someFun s@$ l@4@00))
-  :qid |quant-u-23167|)))
+  :qid |quant-u-23274|)))
 (assert (forall ((s@$ $Snap) (l@4@00 $Ref)) (!
   (someFun%stateless l@4@00)
   :pattern ((someFun%limited s@$ l@4@00))
-  :qid |quant-u-23168|)))
+  :qid |quant-u-23275|)))
 (assert (forall ((s@$ $Snap) (l@4@00 $Ref)) (!
   (and
     (forall ((i@11@00 Int)) (!
@@ -1006,7 +1006,7 @@
         (img@13@00 s@$ l@4@00 l@4@00 i@11@00))
       :pattern ((inv@12@00 s@$ l@4@00 l@4@00 i@11@00))
       :pattern ((img@13@00 s@$ l@4@00 l@4@00 i@11@00))
-      :qid |quant-u-23174|))
+      :qid |quant-u-23281|))
     (forall ((this $Ref) (i Int)) (!
       (=>
         (img@13@00 s@$ l@4@00 this i)
@@ -1019,19 +1019,19 @@
         (someFun s@$ l@4@00)
         (+ 1 ($SortWrappers.$SnapToInt ($Snap.first ($Snap.second s@$)))))))
   :pattern ((someFun s@$ l@4@00))
-  :qid |quant-u-23175|)))
+  :qid |quant-u-23282|)))
 (assert (forall ((s@$ $Snap) (l@4@00 $Ref)) (!
   true
   :pattern ((someFun s@$ l@4@00))
-  :qid |quant-u-23176|)))
+  :qid |quant-u-23283|)))
 (assert (forall ((s@$ $Snap) (s@6@00 Seq<$Ref>)) (!
   (= (foo%limited s@$ s@6@00) (foo s@$ s@6@00))
   :pattern ((foo s@$ s@6@00))
-  :qid |quant-u-23169|)))
+  :qid |quant-u-23276|)))
 (assert (forall ((s@$ $Snap) (s@6@00 Seq<$Ref>)) (!
   (foo%stateless s@6@00)
   :pattern ((foo%limited s@$ s@6@00))
-  :qid |quant-u-23170|)))
+  :qid |quant-u-23277|)))
 (assert (forall ((s@$ $Snap) (s@6@00 Seq<$Ref>)) (!
   (and
     (forall ((i@16@00 Int)) (!
@@ -1041,7 +1041,7 @@
           (= (inv@17@00 s@$ s@6@00 (Seq_index s@6@00 i@16@00)) i@16@00)
           (img@18@00 s@$ s@6@00 (Seq_index s@6@00 i@16@00))))
       :pattern ((Seq_index s@6@00 i@16@00))
-      :qid |quant-u-23178|))
+      :qid |quant-u-23285|))
     (forall ((self $Ref)) (!
       (=>
         (and
@@ -1054,11 +1054,11 @@
       :qid |P-fctOfInv|))
     (=> (foo%precondition s@$ s@6@00) (= (foo s@$ s@6@00) true)))
   :pattern ((foo s@$ s@6@00))
-  :qid |quant-u-23179|)))
+  :qid |quant-u-23286|)))
 (assert (forall ((s@$ $Snap) (s@6@00 Seq<$Ref>)) (!
   true
   :pattern ((foo s@$ s@6@00))
-  :qid |quant-u-23180|)))
+  :qid |quant-u-23287|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- clientFoo ----------
@@ -1387,7 +1387,7 @@
       (= (inv@7@01 (Seq_index s@1@01 i@5@01)) i@5@01)
       (img@8@01 (Seq_index s@1@01 i@5@01))))
   :pattern ((Seq_index s@1@01 i@5@01))
-  :qid |quant-u-23182|)))
+  :qid |quant-u-23289|)))
 (assert (forall ((self $Ref)) (!
   (=>
     (and
@@ -1698,7 +1698,7 @@
         $Perm.No)
       $Perm.No))
   
-  :qid |quant-u-23184|))))
+  :qid |quant-u-23291|))))
 (check-sat)
 ; unsat
 (pop) ; 4

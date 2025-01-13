@@ -687,9 +687,9 @@
 (declare-const fuel%test_crate!X.impl&%1.get_tr1_1. FuelId)
 (declare-const fuel%test_crate!X.impl&%1.is_dummy_to_use_type_params. FuelId)
 (declare-const fuel%test_crate!X.impl&%1.get_dummy_to_use_type_params_0. FuelId)
+(declare-const fuel%test_crate!X.impl&%2.arrow_1. FuelId)
 (declare-const fuel%test_crate!X.impl&%2.arrow_2. FuelId)
 (declare-const fuel%test_crate!X.impl&%2.arrow_3. FuelId)
-(declare-const fuel%test_crate!X.impl&%2.arrow_1. FuelId)
 (declare-const fuel%test_crate!X.impl&%2.arrow_initialize_0. FuelId)
 (declare-const fuel%test_crate!X.impl&%2.arrow_initialize_1. FuelId)
 (declare-const fuel%test_crate!X.impl&%2.arrow_initialize_2. FuelId)
@@ -735,7 +735,7 @@
   fuel%test_crate!X.impl&%0.arrow_tr1_1. fuel%test_crate!X.impl&%0.arrow_dummy_to_use_type_params_0.
   fuel%test_crate!X.impl&%1.is_tr1. fuel%test_crate!X.impl&%1.get_tr1_0. fuel%test_crate!X.impl&%1.get_tr1_1.
   fuel%test_crate!X.impl&%1.is_dummy_to_use_type_params. fuel%test_crate!X.impl&%1.get_dummy_to_use_type_params_0.
-  fuel%test_crate!X.impl&%2.arrow_2. fuel%test_crate!X.impl&%2.arrow_3. fuel%test_crate!X.impl&%2.arrow_1.
+  fuel%test_crate!X.impl&%2.arrow_1. fuel%test_crate!X.impl&%2.arrow_2. fuel%test_crate!X.impl&%2.arrow_3.
   fuel%test_crate!X.impl&%2.arrow_initialize_0. fuel%test_crate!X.impl&%2.arrow_initialize_1.
   fuel%test_crate!X.impl&%2.arrow_initialize_2. fuel%test_crate!X.impl&%2.arrow_initialize_3.
   fuel%test_crate!X.impl&%2.arrow_dummy_to_use_type_params_0. fuel%test_crate!X.impl&%3.is_initialize.
@@ -1105,14 +1105,14 @@
 ;; Function-Decl test_crate::X::Step::get_dummy_to_use_type_params_0
 (declare-fun test_crate!X.impl&%1.get_dummy_to_use_type_params_0.? (Poly) test_crate!X.State.)
 
+;; Function-Decl test_crate::X::Config::arrow_1
+(declare-fun test_crate!X.impl&%2.arrow_1.? (Poly) Int)
+
 ;; Function-Decl test_crate::X::Config::arrow_2
 (declare-fun test_crate!X.impl&%2.arrow_2.? (Poly) Int)
 
 ;; Function-Decl test_crate::X::Config::arrow_3
 (declare-fun test_crate!X.impl&%2.arrow_3.? (Poly) test_crate!Foo.)
-
-;; Function-Decl test_crate::X::Config::arrow_1
-(declare-fun test_crate!X.impl&%2.arrow_1.? (Poly) Int)
 
 ;; Function-Decl test_crate::X::Config::arrow_initialize_0
 (declare-fun test_crate!X.impl&%2.arrow_initialize_0.? (Poly) Int)
@@ -1620,6 +1620,22 @@
     :skolemid skolem_internal_test_crate!X.impl&__1.get_dummy_to_use_type_params_0.?_definition
 ))))
 
+;; Function-Axioms test_crate::X::Config::arrow_1
+(assert
+ (fuel_bool_default fuel%test_crate!X.impl&%2.arrow_1.)
+)
+(assert
+ (=>
+  (fuel_bool fuel%test_crate!X.impl&%2.arrow_1.)
+  (forall ((self! Poly)) (!
+    (= (test_crate!X.impl&%2.arrow_1.? self!) (test_crate!X.Config./initialize/1 (%Poly%test_crate!X.Config.
+       self!
+    )))
+    :pattern ((test_crate!X.impl&%2.arrow_1.? self!))
+    :qid internal_test_crate!X.impl&__2.arrow_1.?_definition
+    :skolemid skolem_internal_test_crate!X.impl&__2.arrow_1.?_definition
+))))
+
 ;; Function-Axioms test_crate::X::Config::arrow_2
 (assert
  (fuel_bool_default fuel%test_crate!X.impl&%2.arrow_2.)
@@ -1650,22 +1666,6 @@
     :pattern ((test_crate!X.impl&%2.arrow_3.? self!))
     :qid internal_test_crate!X.impl&__2.arrow_3.?_definition
     :skolemid skolem_internal_test_crate!X.impl&__2.arrow_3.?_definition
-))))
-
-;; Function-Axioms test_crate::X::Config::arrow_1
-(assert
- (fuel_bool_default fuel%test_crate!X.impl&%2.arrow_1.)
-)
-(assert
- (=>
-  (fuel_bool fuel%test_crate!X.impl&%2.arrow_1.)
-  (forall ((self! Poly)) (!
-    (= (test_crate!X.impl&%2.arrow_1.? self!) (test_crate!X.Config./initialize/1 (%Poly%test_crate!X.Config.
-       self!
-    )))
-    :pattern ((test_crate!X.impl&%2.arrow_1.? self!))
-    :qid internal_test_crate!X.impl&__2.arrow_1.?_definition
-    :skolemid skolem_internal_test_crate!X.impl&__2.arrow_1.?_definition
 ))))
 
 ;; Function-Axioms test_crate::X::Config::arrow_initialize_0

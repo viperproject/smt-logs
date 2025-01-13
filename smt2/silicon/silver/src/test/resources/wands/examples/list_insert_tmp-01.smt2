@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-08 21:21:17
+; Started: 2025-01-13 12:37:46
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -428,29 +428,29 @@
 (assert (forall ((s@$ $Snap) (xs@0@00 $Ref)) (!
   (= (head%limited s@$ xs@0@00) (head s@$ xs@0@00))
   :pattern ((head s@$ xs@0@00))
-  :qid |quant-u-20232|)))
+  :qid |quant-u-20339|)))
 (assert (forall ((s@$ $Snap) (xs@0@00 $Ref)) (!
   (head%stateless xs@0@00)
   :pattern ((head%limited s@$ xs@0@00))
-  :qid |quant-u-20233|)))
+  :qid |quant-u-20340|)))
 (assert (forall ((s@$ $Snap) (xs@0@00 $Ref)) (!
   (=>
     (head%precondition s@$ xs@0@00)
     (= (head s@$ xs@0@00) ($SortWrappers.$SnapToInt ($Snap.first s@$))))
   :pattern ((head s@$ xs@0@00))
-  :qid |quant-u-20236|)))
+  :qid |quant-u-20343|)))
 (assert (forall ((s@$ $Snap) (xs@0@00 $Ref)) (!
   true
   :pattern ((head s@$ xs@0@00))
-  :qid |quant-u-20237|)))
+  :qid |quant-u-20344|)))
 (assert (forall ((s@$ $Snap) (xs@2@00 $Ref)) (!
   (= (elems%limited s@$ xs@2@00) (elems s@$ xs@2@00))
   :pattern ((elems s@$ xs@2@00))
-  :qid |quant-u-20234|)))
+  :qid |quant-u-20341|)))
 (assert (forall ((s@$ $Snap) (xs@2@00 $Ref)) (!
   (elems%stateless xs@2@00)
   :pattern ((elems%limited s@$ xs@2@00))
-  :qid |quant-u-20235|)))
+  :qid |quant-u-20342|)))
 (assert (forall ((s@$ $Snap) (xs@2@00 $Ref)) (!
   (=>
     (elems%precondition s@$ xs@2@00)
@@ -466,7 +466,7 @@
           (elems%limited ($Snap.second ($Snap.second s@$)) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$))))))))
   :pattern ((elems s@$ xs@2@00))
   :pattern ((elems%stateless xs@2@00) (List%trigger s@$ xs@2@00))
-  :qid |quant-u-20238|)))
+  :qid |quant-u-20345|)))
 (assert (forall ((s@$ $Snap) (xs@2@00 $Ref)) (!
   (=>
     (elems%precondition s@$ xs@2@00)
@@ -475,7 +475,7 @@
       true
       (elems%precondition ($Snap.second ($Snap.second s@$)) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second s@$))))))
   :pattern ((elems s@$ xs@2@00))
-  :qid |quant-u-20239|)))
+  :qid |quant-u-20346|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- insert ----------
@@ -700,7 +700,7 @@
     (MWSF_apply mwsf@15@01 $t@14@01)
     ($Snap.combine ($Snap.first $t@14@01) $Snap.unit))
   :pattern ((MWSF_apply mwsf@15@01 $t@14@01))
-  :qid |quant-u-20240|)))
+  :qid |quant-u-20347|)))
 ; [eval] Seq(x) ++ crtElems
 ; [eval] Seq(x)
 ; [eval] old(elems(xs))[0..i] ++ (Seq(x) ++ crtElems)
@@ -720,7 +720,7 @@
     (MWSF_apply mwsf@15@01 $t@14@01)
     ($Snap.combine ($Snap.first $t@14@01) $Snap.unit))
   :pattern ((MWSF_apply mwsf@15@01 $t@14@01))
-  :qid |quant-u-20241|)))
+  :qid |quant-u-20348|)))
 (assert true)
 (declare-const prev@16@01 $Ref)
 (declare-const oElems@17@01 Seq<Int>)
@@ -1670,7 +1670,7 @@
 (check-sat)
 ; unknown
 (pop) ; 11
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (check-sat)
 ; unknown
@@ -1685,7 +1685,7 @@
 (check-sat)
 ; unknown
 (pop) ; 11
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (check-sat)
 ; unknown
@@ -1703,7 +1703,7 @@
 (check-sat)
 ; unknown
 (pop) ; 11
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 13 | First:(Second:(Second:(Second:(Second:($t@23@01))))) != Null | live]
 ; [else-branch: 13 | First:(Second:(Second:(Second:(Second:($t@23@01))))) == Null | dead]
@@ -1716,7 +1716,7 @@
 (check-sat)
 ; unknown
 (pop) ; 12
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (check-sat)
 ; unknown
@@ -1750,7 +1750,7 @@
 (check-sat)
 ; unknown
 (pop) ; 12
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (check-sat)
 ; unknown
@@ -1765,7 +1765,7 @@
 (check-sat)
 ; unknown
 (pop) ; 12
-; 0.00s
+; 0.01s
 ; (get-info :all-statistics)
 (check-sat)
 ; unknown
@@ -1798,7 +1798,7 @@
 (check-sat)
 ; unknown
 (pop) ; 12
-; 0.01s
+; 0.02s
 ; (get-info :all-statistics)
 ; [state consolidation]
 ; State saturation: before repetition
@@ -1824,7 +1824,7 @@
 (check-sat)
 ; unknown
 (pop) ; 12
-; 0.06s
+; 0.02s
 ; (get-info :all-statistics)
 ; [state consolidation]
 ; State saturation: before repetition
@@ -1850,7 +1850,7 @@
 (check-sat)
 ; unknown
 (pop) ; 12
-; 0.01s
+; 0.02s
 ; (get-info :all-statistics)
 ; [state consolidation]
 ; State saturation: before repetition
@@ -1876,7 +1876,7 @@
 (check-sat)
 ; unknown
 (pop) ; 12
-; 0.01s
+; 0.02s
 ; (get-info :all-statistics)
 (pop) ; 11
 (pop) ; 10
@@ -1887,7 +1887,7 @@
 (assert (forall (($t@31@01 $Snap)) (!
   (= (MWSF_apply mwsf@33@01 $t@31@01) $t@32@01)
   :pattern ((MWSF_apply mwsf@33@01 $t@31@01))
-  :qid |quant-u-20242|)))
+  :qid |quant-u-20349|)))
 ; [eval] Seq(x) ++ crtElems
 ; [eval] Seq(x)
 ; [eval] old(elems(xs))[0..i] ++ (Seq(x) ++ crtElems)

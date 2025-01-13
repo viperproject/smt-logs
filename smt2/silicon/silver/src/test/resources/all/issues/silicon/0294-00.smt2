@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-08 21:25:23
+; Started: 2025-01-13 12:42:00
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -688,8 +688,8 @@
 (assert (forall ((s@$ $Snap)) (!
   (= (havoc%limited s@$) (havoc s@$))
   :pattern ((havoc s@$))
-  :qid |quant-u-25125|)))
+  :qid |quant-u-25232|)))
 (assert (forall ((s@$ $Snap)) (!
   (as havoc%stateless  Bool)
   :pattern ((havoc%limited s@$))
-  :qid |quant-u-25126|)))
+  :qid |quant-u-25233|)))

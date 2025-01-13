@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-08 21:24:07
+; Started: 2025-01-13 12:40:41
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -129,11 +129,11 @@
     (range___contains__%limited s@$ self@0@00 item@1@00)
     (range___contains__ s@$ self@0@00 item@1@00))
   :pattern ((range___contains__ s@$ self@0@00 item@1@00))
-  :qid |quant-u-23357|)))
+  :qid |quant-u-23464|)))
 (assert (forall ((s@$ $Snap) (self@0@00 $Ref) (item@1@00 Int)) (!
   (range___contains__%stateless self@0@00 item@1@00)
   :pattern ((range___contains__%limited s@$ self@0@00 item@1@00))
-  :qid |quant-u-23358|)))
+  :qid |quant-u-23465|)))
 ; ---------- FUNCTION range___create__----------
 (declare-fun result@3@00 () $Ref)
 ; ----- Well-definedness of specifications -----
@@ -164,11 +164,11 @@
 (assert (forall ((s@$ $Snap)) (!
   (= (range___create__%limited s@$) (range___create__ s@$))
   :pattern ((range___create__ s@$))
-  :qid |quant-u-23359|)))
+  :qid |quant-u-23466|)))
 (assert (forall ((s@$ $Snap)) (!
   (as range___create__%stateless  Bool)
   :pattern ((range___create__%limited s@$))
-  :qid |quant-u-23360|)))
+  :qid |quant-u-23467|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@3@00 (range___create__%limited s@$))) (=>
     (range___create__%precondition s@$)
@@ -177,7 +177,7 @@
       :pattern ((range___contains__%limited $Snap.unit result@3@00 i))
       ))))
   :pattern ((range___create__%limited s@$))
-  :qid |quant-u-23361|)))
+  :qid |quant-u-23468|)))
 (assert (forall ((s@$ $Snap)) (!
   (let ((result@3@00 (range___create__%limited s@$))) (=>
     (range___create__%precondition s@$)
@@ -186,4 +186,4 @@
       :pattern ((range___contains__%limited $Snap.unit result@3@00 i))
       ))))
   :pattern ((range___create__%limited s@$))
-  :qid |quant-u-23362|)))
+  :qid |quant-u-23469|)))

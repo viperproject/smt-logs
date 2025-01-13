@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-08 21:27:24
+; Started: 2025-01-13 12:44:04
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -156,11 +156,11 @@
 (assert (forall ((s@$ $Snap) (n@0@00 Int)) (!
   (= (factorialPure%limited s@$ n@0@00) (factorialPure s@$ n@0@00))
   :pattern ((factorialPure s@$ n@0@00))
-  :qid |quant-u-26718|)))
+  :qid |quant-u-26825|)))
 (assert (forall ((s@$ $Snap) (n@0@00 Int)) (!
   (factorialPure%stateless n@0@00)
   :pattern ((factorialPure%limited s@$ n@0@00))
-  :qid |quant-u-26719|)))
+  :qid |quant-u-26826|)))
 (assert (forall ((s@$ $Snap) (n@0@00 Int)) (!
   (=>
     (factorialPure%precondition s@$ n@0@00)
@@ -168,13 +168,13 @@
       (factorialPure s@$ n@0@00)
       (ite (= n@0@00 0) 1 (factorialPure%limited $Snap.unit (- n@0@00 1)))))
   :pattern ((factorialPure s@$ n@0@00))
-  :qid |quant-u-26720|)))
+  :qid |quant-u-26827|)))
 (assert (forall ((s@$ $Snap) (n@0@00 Int)) (!
   (=>
     (factorialPure%precondition s@$ n@0@00)
     (ite (= n@0@00 0) true (factorialPure%precondition $Snap.unit (- n@0@00 1))))
   :pattern ((factorialPure s@$ n@0@00))
-  :qid |quant-u-26721|)))
+  :qid |quant-u-26828|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- length ----------

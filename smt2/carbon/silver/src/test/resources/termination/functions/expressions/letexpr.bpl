@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-08 22:13:03
+// Date:         2025-01-13 13:30:02
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/termination/functions/expressions/letexpr.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/termination/functions/expressions/letexpr-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -255,8 +255,8 @@ procedure f#definedness(x: int) returns (Result: int)
   modifies Heap, Mask;
 {
   var y_1: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -289,8 +289,8 @@ procedure f#definedness(x: int) returns (Result: int)
     Result := (if x > 0 then f_6(Heap, f_6(Heap, x - 1)) + 1 else x);
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of f might not hold. Assertion result == x might not hold. (letexpr.vpr@7.11--7.22) [223146]"}
       Result == x;
 }
@@ -374,10 +374,10 @@ procedure g#definedness(y: int) returns (Result: int)
 procedure f_termination_proof(x: int) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var y: int;
   
   // -- Initializing the state
@@ -389,23 +389,23 @@ procedure f_termination_proof(x: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: if (x > 0) -- <no position>
     if (x > 0) {
       
       // -- Translating statement: assert !old(x >= 0) || x - 1 >= 0 -- <no position>
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Assert might fail. Assertion !old(x >= 0) || x - 1 >= 0 might not hold. (<no position>) [223147]"}
           !(x >= 0) || x - 1 >= 0;
         assume state(Heap, Mask);
       
       // -- Translating statement: assert old(x >= 0) ==>
   //   (decreasing(x - 1, old(x)): Bool) && (bounded(old(x)): Bool) -- <no position>
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         if (x >= 0) {
           assert {:msg "  Assert might fail. Assertion (decreasing(x - 1, old(x)): Bool) might not hold. (<no position>) [223148]"}
             (decreasing(x - 1, x): bool);
@@ -427,16 +427,16 @@ procedure f_termination_proof(x: int) returns ()
         assume state(Heap, Mask);
       
       // -- Translating statement: assert !old(x >= 0) || y >= 0 -- <no position>
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Assert might fail. Assertion !old(x >= 0) || y >= 0 might not hold. (<no position>) [223150]"}
           !(x >= 0) || y >= 0;
         assume state(Heap, Mask);
       
       // -- Translating statement: assert old(x >= 0) ==>
   //   (decreasing(y, old(x)): Bool) && (bounded(old(x)): Bool) -- <no position>
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         if (x >= 0) {
           assert {:msg "  Assert might fail. Assertion (decreasing(y, old(x)): Bool) might not hold. (<no position>) [223151]"}
             (decreasing(y, x): bool);
@@ -455,10 +455,10 @@ procedure f_termination_proof(x: int) returns ()
 procedure g_termination_proof(y: int) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var i: int;
   
   // -- Initializing the state
@@ -470,20 +470,20 @@ procedure g_termination_proof(y: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert !old(y >= 0) || y >= 0 -- <no position>
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion !old(y >= 0) || y >= 0 might not hold. (<no position>) [223153]"}
       !(y >= 0) || y >= 0;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert old(y >= 0) ==>
   //   (decreasing(y, old(y)): Bool) && (bounded(old(y)): Bool) -- <no position>
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     if (y >= 0) {
       assert {:msg "  Assert might fail. Assertion (decreasing(y, old(y)): Bool) might not hold. (<no position>) [223154]"}
         (decreasing(y, y): bool);
@@ -508,16 +508,16 @@ procedure g_termination_proof(y: int) returns ()
     if (y != 0) {
       
       // -- Translating statement: assert !old(y >= 0) || y - 1 >= 0 -- <no position>
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         assert {:msg "  Assert might fail. Assertion !old(y >= 0) || y - 1 >= 0 might not hold. (<no position>) [223156]"}
           !(y >= 0) || y - 1 >= 0;
         assume state(Heap, Mask);
       
       // -- Translating statement: assert old(y >= 0) ==>
   //   (decreasing(y - 1, old(y)): Bool) && (bounded(old(y)): Bool) -- <no position>
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         if (y >= 0) {
           assert {:msg "  Assert might fail. Assertion (decreasing(y - 1, old(y)): Bool) might not hold. (<no position>) [223157]"}
             (decreasing(y - 1, y): bool);

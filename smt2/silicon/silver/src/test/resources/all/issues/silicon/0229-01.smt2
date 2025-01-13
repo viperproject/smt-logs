@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-08 21:24:53
+; Started: 2025-01-13 12:41:28
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -190,7 +190,7 @@
 (assert (forall (($t@4@01 $Snap)) (!
   (= (MWSF_apply mwsf@5@01 $t@4@01) $Snap.unit)
   :pattern ((MWSF_apply mwsf@5@01 $t@4@01))
-  :qid |quant-u-24366|)))
+  :qid |quant-u-24473|)))
 ; [eval] old((unfolding acc(valid2(x), write) in x.r))
 ; [eval] (unfolding acc(valid2(x), write) in x.r)
 (push) ; 4
@@ -201,7 +201,7 @@
 (assert (forall (($t@4@01 $Snap)) (!
   (= (MWSF_apply mwsf@5@01 $t@4@01) $Snap.unit)
   :pattern ((MWSF_apply mwsf@5@01 $t@4@01))
-  :qid |quant-u-24367|)))
+  :qid |quant-u-24474|)))
 ; [eval] old((unfolding acc(valid2(x), write) in x.r))
 ; [eval] (unfolding acc(valid2(x), write) in x.r)
 (push) ; 4
@@ -821,7 +821,7 @@
             ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@12@01))))))))
       $Snap.unit))
   :pattern ((MWSF_apply mwsf@16@01 $t@15@01))
-  :qid |quant-u-24368|)))
+  :qid |quant-u-24475|)))
 ; [eval] rd$1 / 2
 ; [eval] old((unfolding acc(valid__Foo(x$1), rd$1 / 2) in x$1.Foo__v2.Int__v))
 ; [eval] (unfolding acc(valid__Foo(x$1), rd$1 / 2) in x$1.Foo__v2.Int__v)
@@ -944,7 +944,7 @@
             ($Snap.second ($Snap.second ($Snap.second ($Snap.second ($Snap.second $t@12@01))))))))
       $Snap.unit))
   :pattern ((MWSF_apply mwsf@16@01 $t@15@01))
-  :qid |quant-u-24369|)))
+  :qid |quant-u-24476|)))
 (assert true)
 (push) ; 4
 (set-option :timeout 10)

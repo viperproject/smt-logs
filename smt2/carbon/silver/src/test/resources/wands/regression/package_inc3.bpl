@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-08 21:46:26
+// Date:         2025-01-13 13:03:19
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/package_inc3.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/package_inc3-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -359,8 +359,8 @@ axiom !IsWandField(h);
 procedure test01(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var Ops_1Heap: HeapType;
   var Ops_1Mask: MaskType;
   var b_1_1: bool;
@@ -368,8 +368,8 @@ procedure test01(x: Ref) returns ()
   var UsedMask: MaskType;
   var b_2: bool;
   var perm: Perm;
-  var Labellhs2Heap: HeapType;
   var Labellhs2Mask: MaskType;
+  var Labellhs2Heap: HeapType;
   var boolCur: bool;
   var Ops_3Heap: HeapType;
   var Ops_3Mask: MaskType;
@@ -377,8 +377,8 @@ procedure test01(x: Ref) returns ()
   var Used_1Heap: HeapType;
   var Used_1Mask: MaskType;
   var b_2_1: bool;
-  var Labellhs4Heap: HeapType;
   var Labellhs4Mask: MaskType;
+  var Labellhs4Heap: HeapType;
   var boolCur_1: bool;
   var Used_2Heap: HeapType;
   var Used_2Mask: MaskType;
@@ -397,15 +397,15 @@ procedure test01(x: Ref) returns ()
   var b_6: bool;
   var WandDefLHSHeap: HeapType;
   var WandDefLHSMask: MaskType;
-  var Labellhs6Heap: HeapType;
   var Labellhs6Mask: MaskType;
+  var Labellhs6Heap: HeapType;
   var WandDefRHSHeap: HeapType;
   var WandDefRHSMask: MaskType;
   var b_7: bool;
   var Result_1Heap: HeapType;
   var Result_1Mask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -419,8 +419,8 @@ procedure test01(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: package acc(x.f, write) --* acc(x.f, write) --* acc(x.f, write) {
   //   package acc(x.f, write) --* acc(x.f, write) {
@@ -443,8 +443,8 @@ procedure test01(x: Ref) returns ()
     
     // -- Translating statement: label lhs2 -- package_inc3.vpr@9.11--9.49
       lhs2:
-      Labellhs2Heap := Ops_1Heap;
       Labellhs2Mask := Ops_1Mask;
+      Labellhs2Heap := Ops_1Heap;
       b_1_1 := b_1_1 && state(Ops_1Heap, Ops_1Mask);
     boolCur := true;
     if (b_1_1) {
@@ -468,8 +468,8 @@ procedure test01(x: Ref) returns ()
         
         // -- Translating statement: label lhs4 -- package_inc3.vpr@10.16--10.37
           lhs4:
-          Labellhs4Heap := Ops_3Heap;
           Labellhs4Mask := Ops_3Mask;
+          Labellhs4Heap := Ops_3Heap;
           b_3 := b_3 && state(Ops_3Heap, Ops_3Mask);
         boolCur_1 := true;
         // Translating exec of non-ghost operationacc(x.f, write)
@@ -583,8 +583,8 @@ procedure test01(x: Ref) returns ()
                 
                 // -- Translating statement: label lhs6 -- package_inc3.vpr@9.27--9.48
                   lhs6:
-                  Labellhs6Heap := WandDefLHSHeap;
                   Labellhs6Mask := WandDefLHSMask;
+                  Labellhs6Heap := WandDefLHSHeap;
                   assume state(WandDefLHSHeap, WandDefLHSMask);
                 havoc WandDefRHSHeap;
                 WandDefRHSMask := ZeroMask;
@@ -665,8 +665,8 @@ procedure test01(x: Ref) returns ()
   // -- Translating statement: apply acc(x.f, write) --* acc(x.f, write) --* acc(x.f, write) -- package_inc3.vpr@13.3--13.45
     
     // -- check if wand is held and remove an instance
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       // permLe
       assert {:msg "  Applying wand might fail. Magic wand instance not found. (package_inc3.vpr@13.3--13.45) [127875]"}
         FullPerm <= Mask[null, wand(x, FullPerm, x, FullPerm, x, FullPerm)];
@@ -674,8 +674,8 @@ procedure test01(x: Ref) returns ()
     assume state(Heap, Mask);
     
     // -- check if LHS holds and remove permissions 
-      ExhaleWellDef0Heap := Heap;
       ExhaleWellDef0Mask := Mask;
+      ExhaleWellDef0Heap := Heap;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  Applying wand might fail. There might be insufficient permission to access x.f (package_inc3.vpr@13.3--13.45) [127877]"}
@@ -695,8 +695,8 @@ procedure test01(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- package_inc3.vpr@16.3--16.15
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion false might not hold. (package_inc3.vpr@16.10--16.15) [127878]"}
       false;
     assume state(Heap, Mask);
@@ -709,16 +709,16 @@ procedure test01(x: Ref) returns ()
 procedure test02(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var Ops_5Heap: HeapType;
   var Ops_5Mask: MaskType;
   var b_9: bool;
   var Used_4Heap: HeapType;
   var Used_4Mask: MaskType;
   var b_8: bool;
-  var Labellhs9Heap: HeapType;
   var Labellhs9Mask: MaskType;
+  var Labellhs9Heap: HeapType;
   var boolCur_2: bool;
   var Ops_7Heap: HeapType;
   var Ops_7Mask: MaskType;
@@ -727,8 +727,8 @@ procedure test02(x: Ref) returns ()
   var Used_5Mask: MaskType;
   var b_10: bool;
   var perm: Perm;
-  var Labellhs11Heap: HeapType;
   var Labellhs11Mask: MaskType;
+  var Labellhs11Heap: HeapType;
   var boolCur_3: bool;
   var Used_6Heap: HeapType;
   var Used_6Mask: MaskType;
@@ -747,15 +747,15 @@ procedure test02(x: Ref) returns ()
   var b_14: bool;
   var WandDefLHSHeap: HeapType;
   var WandDefLHSMask: MaskType;
-  var Labellhs13Heap: HeapType;
   var Labellhs13Mask: MaskType;
+  var Labellhs13Heap: HeapType;
   var WandDefRHSHeap: HeapType;
   var WandDefRHSMask: MaskType;
   var b_15: bool;
   var Result_3Heap: HeapType;
   var Result_3Mask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -768,8 +768,8 @@ procedure test02(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: package false --* acc(x.f, write) --* acc(x.g, write) {
   //   package acc(x.f, write) --* acc(x.f, write) {
@@ -789,8 +789,8 @@ procedure test02(x: Ref) returns ()
     
     // -- Translating statement: label lhs9 -- package_inc3.vpr@20.11--20.46
       lhs9:
-      Labellhs9Heap := Ops_5Heap;
       Labellhs9Mask := Ops_5Mask;
+      Labellhs9Heap := Ops_5Heap;
       b_9 := b_9 && state(Ops_5Heap, Ops_5Mask);
     boolCur_2 := true;
     if (b_9) {
@@ -814,8 +814,8 @@ procedure test02(x: Ref) returns ()
         
         // -- Translating statement: label lhs11 -- package_inc3.vpr@21.16--21.37
           lhs11:
-          Labellhs11Heap := Ops_7Heap;
           Labellhs11Mask := Ops_7Mask;
+          Labellhs11Heap := Ops_7Heap;
           b_11 := b_11 && state(Ops_7Heap, Ops_7Mask);
         boolCur_3 := true;
         // Translating exec of non-ghost operationacc(x.f, write)
@@ -929,8 +929,8 @@ procedure test02(x: Ref) returns ()
                 
                 // -- Translating statement: label lhs13 -- package_inc3.vpr@20.24--20.45
                   lhs13:
-                  Labellhs13Heap := WandDefLHSHeap;
                   Labellhs13Mask := WandDefLHSMask;
+                  Labellhs13Heap := WandDefLHSHeap;
                   assume state(WandDefLHSHeap, WandDefLHSMask);
                 havoc WandDefRHSHeap;
                 WandDefRHSMask := ZeroMask;
@@ -1001,8 +1001,8 @@ procedure test02(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- package_inc3.vpr@25.3--25.15
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion false might not hold. (package_inc3.vpr@25.10--25.15) [127883]"}
       false;
     assume state(Heap, Mask);
@@ -1016,16 +1016,16 @@ procedure test03(x: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldHeap: HeapType;
   var oldMask: MaskType;
+  var oldHeap: HeapType;
   var Ops_9Heap: HeapType;
   var Ops_9Mask: MaskType;
   var b_17: bool;
   var Used_8Heap: HeapType;
   var Used_8Mask: MaskType;
   var b_16: bool;
-  var Labellhs14Heap: HeapType;
   var Labellhs14Mask: MaskType;
+  var Labellhs14Heap: HeapType;
   var boolCur_4: bool;
   var Used_9Heap: HeapType;
   var Used_9Mask: MaskType;
@@ -1039,8 +1039,8 @@ procedure test03(x: Ref) returns ()
   var b_19: bool;
   var Result_4Heap: HeapType;
   var Result_4Mask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -1061,8 +1061,8 @@ procedure test03(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldHeap := Heap;
       oldMask := Mask;
+      oldHeap := Heap;
   
   // -- Translating statement: package acc(x.f, 1 / 2) && (x.f == 2 && x.f == 3) --*
   // acc(x.f, write) && false {
@@ -1108,8 +1108,8 @@ procedure test03(x: Ref) returns ()
     
     // -- Translating statement: label lhs14 -- package_inc3.vpr@31.11--31.63
       lhs14:
-      Labellhs14Heap := Ops_9Heap;
       Labellhs14Mask := Ops_9Mask;
+      Labellhs14Heap := Ops_9Heap;
       b_17 := b_17 && state(Ops_9Heap, Ops_9Mask);
     boolCur_4 := true;
     // Translating exec of non-ghost operationacc(x.f, write) && false
@@ -1182,8 +1182,8 @@ procedure test03(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(x.f, write) -- package_inc3.vpr@33.3--33.18
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Exhale might fail. There might be insufficient permission to access x.f (package_inc3.vpr@33.10--33.18) [127891]"}
@@ -1197,8 +1197,8 @@ procedure test03(x: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- package_inc3.vpr@36.3--36.15
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Assert might fail. Assertion false might not hold. (package_inc3.vpr@36.10--36.15) [127892]"}
       false;
     assume state(Heap, Mask);

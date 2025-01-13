@@ -678,12 +678,12 @@
 ;; MODULE 'module A'
 
 ;; Fuel
-(declare-const fuel%A.impl&%0.arrow_a. FuelId)
 (declare-const fuel%A.impl&%0.arrow_0. FuelId)
+(declare-const fuel%A.impl&%0.arrow_a. FuelId)
 (declare-const fuel%A.impl&%0.arrow_A_a. FuelId)
 (declare-const fuel%A.impl&%0.arrow_B_0. FuelId)
 (assert
- (distinct fuel%A.impl&%0.arrow_a. fuel%A.impl&%0.arrow_0. fuel%A.impl&%0.arrow_A_a.
+ (distinct fuel%A.impl&%0.arrow_0. fuel%A.impl&%0.arrow_a. fuel%A.impl&%0.arrow_A_a.
   fuel%A.impl&%0.arrow_B_0.
 ))
 
@@ -766,41 +766,17 @@
    :skolemid skolem_internal_A.E./B/0_invariant_definition
 )))
 
-;; Function-Decl crate::A::E::arrow_a
-(declare-fun A.impl&%0.arrow_a.? (Poly) Int)
-
 ;; Function-Decl crate::A::E::arrow_0
 (declare-fun A.impl&%0.arrow_0.? (Poly) Int)
+
+;; Function-Decl crate::A::E::arrow_a
+(declare-fun A.impl&%0.arrow_a.? (Poly) Int)
 
 ;; Function-Decl crate::A::E::arrow_A_a
 (declare-fun A.impl&%0.arrow_A_a.? (Poly) Int)
 
 ;; Function-Decl crate::A::E::arrow_B_0
 (declare-fun A.impl&%0.arrow_B_0.? (Poly) Int)
-
-;; Function-Axioms crate::A::E::arrow_a
-(assert
- (fuel_bool_default fuel%A.impl&%0.arrow_a.)
-)
-(assert
- (=>
-  (fuel_bool fuel%A.impl&%0.arrow_a.)
-  (forall ((self! Poly)) (!
-    (= (A.impl&%0.arrow_a.? self!) (A.E./A/a (%Poly%A.E. self!)))
-    :pattern ((A.impl&%0.arrow_a.? self!))
-    :qid internal_A.impl&__0.arrow_a.?_definition
-    :skolemid skolem_internal_A.impl&__0.arrow_a.?_definition
-))))
-(assert
- (forall ((self! Poly)) (!
-   (=>
-    (has_type self! TYPE%A.E.)
-    (uInv 64 (A.impl&%0.arrow_a.? self!))
-   )
-   :pattern ((A.impl&%0.arrow_a.? self!))
-   :qid internal_A.impl&__0.arrow_a.?_pre_post_definition
-   :skolemid skolem_internal_A.impl&__0.arrow_a.?_pre_post_definition
-)))
 
 ;; Function-Axioms crate::A::E::arrow_0
 (assert
@@ -824,6 +800,30 @@
    :pattern ((A.impl&%0.arrow_0.? self!))
    :qid internal_A.impl&__0.arrow_0.?_pre_post_definition
    :skolemid skolem_internal_A.impl&__0.arrow_0.?_pre_post_definition
+)))
+
+;; Function-Axioms crate::A::E::arrow_a
+(assert
+ (fuel_bool_default fuel%A.impl&%0.arrow_a.)
+)
+(assert
+ (=>
+  (fuel_bool fuel%A.impl&%0.arrow_a.)
+  (forall ((self! Poly)) (!
+    (= (A.impl&%0.arrow_a.? self!) (A.E./A/a (%Poly%A.E. self!)))
+    :pattern ((A.impl&%0.arrow_a.? self!))
+    :qid internal_A.impl&__0.arrow_a.?_definition
+    :skolemid skolem_internal_A.impl&__0.arrow_a.?_definition
+))))
+(assert
+ (forall ((self! Poly)) (!
+   (=>
+    (has_type self! TYPE%A.E.)
+    (uInv 64 (A.impl&%0.arrow_a.? self!))
+   )
+   :pattern ((A.impl&%0.arrow_a.? self!))
+   :qid internal_A.impl&__0.arrow_a.?_pre_post_definition
+   :skolemid skolem_internal_A.impl&__0.arrow_a.?_pre_post_definition
 )))
 
 ;; Function-Axioms crate::A::E::arrow_A_a

@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-08 21:25:57
+; Started: 2025-01-13 12:42:35
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -495,21 +495,21 @@
 (assert (forall ((s@$ $Snap) (ref@0@00 $Ref)) (!
   (= ($%limited s@$ ref@0@00) ($ s@$ ref@0@00))
   :pattern (($ s@$ ref@0@00))
-  :qid |quant-u-25698|)))
+  :qid |quant-u-25805|)))
 (assert (forall ((s@$ $Snap) (ref@0@00 $Ref)) (!
   ($%stateless ref@0@00)
   :pattern (($%limited s@$ ref@0@00))
-  :qid |quant-u-25699|)))
+  :qid |quant-u-25806|)))
 (assert (forall ((s@$ $Snap) (ref@0@00 $Ref)) (!
   (let ((result@1@00 ($%limited s@$ ref@0@00))) (=>
     ($%precondition s@$ ref@0@00)
     (= result@1@00 true)))
   :pattern (($%limited s@$ ref@0@00))
-  :qid |quant-u-25702|)))
+  :qid |quant-u-25809|)))
 (assert (forall ((s@$ $Snap) (ref@0@00 $Ref)) (!
   (let ((result@1@00 ($%limited s@$ ref@0@00))) true)
   :pattern (($%limited s@$ ref@0@00))
-  :qid |quant-u-25703|)))
+  :qid |quant-u-25810|)))
 ; ---------- FUNCTION f----------
 (declare-fun uref@2@00 () $Ref)
 (declare-fun vref@3@00 () $Ref)
@@ -570,18 +570,18 @@
 (assert (forall ((s@$ $Snap) (uref@2@00 $Ref) (vref@3@00 $Ref)) (!
   (= (f%limited s@$ uref@2@00 vref@3@00) (f s@$ uref@2@00 vref@3@00))
   :pattern ((f s@$ uref@2@00 vref@3@00))
-  :qid |quant-u-25700|)))
+  :qid |quant-u-25807|)))
 (assert (forall ((s@$ $Snap) (uref@2@00 $Ref) (vref@3@00 $Ref)) (!
   (f%stateless uref@2@00 vref@3@00)
   :pattern ((f%limited s@$ uref@2@00 vref@3@00))
-  :qid |quant-u-25701|)))
+  :qid |quant-u-25808|)))
 (assert (forall ((s@$ $Snap) (uref@2@00 $Ref) (vref@3@00 $Ref)) (!
   (let ((result@4@00 (f%limited s@$ uref@2@00 vref@3@00))) (=>
     (f%precondition s@$ uref@2@00 vref@3@00)
     (= result@4@00 true)))
   :pattern ((f%limited s@$ uref@2@00 vref@3@00))
-  :qid |quant-u-25704|)))
+  :qid |quant-u-25811|)))
 (assert (forall ((s@$ $Snap) (uref@2@00 $Ref) (vref@3@00 $Ref)) (!
   (let ((result@4@00 (f%limited s@$ uref@2@00 vref@3@00))) true)
   :pattern ((f%limited s@$ uref@2@00 vref@3@00))
-  :qid |quant-u-25705|)))
+  :qid |quant-u-25812|)))

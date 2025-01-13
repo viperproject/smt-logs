@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-08 22:01:52
+// Date:         2025-01-13 13:18:50
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0112.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0112-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -301,8 +301,8 @@ function  fun02#triggerStateless(): int;
 procedure fun02#definedness() returns (Result: int)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -314,8 +314,8 @@ procedure fun02#definedness() returns (Result: int)
     Result := 1;
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of fun02 might not hold. Assertion result != 0 might not hold. (0112.vpr@9.11--9.22) [193217]"}
       Result != 0;
     
@@ -450,8 +450,8 @@ function  fun04#triggerStateless(): int;
 procedure fun04#definedness() returns (Result: int)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -478,8 +478,8 @@ procedure fun04#definedness() returns (Result: int)
       }
     
     // -- Normally exhale the exhale part.
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       
       // -- Check definedness of 1 \ result != 2
         assert {:msg "  Contract might not be well-formed. Divisor result might be zero. (0112.vpr@21.11--21.26) [193223]"}
@@ -606,8 +606,8 @@ function  fun06#triggerStateless(): int;
 procedure fun06#definedness() returns (Result: int)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -633,8 +633,8 @@ procedure fun06#definedness() returns (Result: int)
       }
     
     // -- Normally exhale the exhale part.
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       assert {:msg "  Postcondition of fun06 might not hold. Assertion result != 0 might not hold. (0112.vpr@30.11--30.30) [193228]"}
         Result != 0;
       
@@ -752,8 +752,8 @@ function  fun08#triggerStateless(): int;
 procedure fun08#definedness() returns (Result: int)
   modifies Heap, Mask;
 {
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -774,8 +774,8 @@ procedure fun08#definedness() returns (Result: int)
       }
     
     // -- Normally exhale the exhale part.
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       assert {:msg "  Postcondition of fun08 might not hold. Assertion result != 0 might not hold. (0112.vpr@40.11--40.30) [193232]"}
         Result != 0;
       

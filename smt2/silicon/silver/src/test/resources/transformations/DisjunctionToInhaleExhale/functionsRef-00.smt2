@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-08 21:19:10
+; Started: 2025-01-13 12:35:34
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -133,11 +133,11 @@
     (NonDet2%limited s@$ vari1@0@00 vari2@1@00)
     (NonDet2 s@$ vari1@0@00 vari2@1@00))
   :pattern ((NonDet2 s@$ vari1@0@00 vari2@1@00))
-  :qid |quant-u-15698|)))
+  :qid |quant-u-15861|)))
 (assert (forall ((s@$ $Snap) (vari1@0@00 Bool) (vari2@1@00 Bool)) (!
   (NonDet2%stateless vari1@0@00 vari2@1@00)
   :pattern ((NonDet2%limited s@$ vari1@0@00 vari2@1@00))
-  :qid |quant-u-15699|)))
+  :qid |quant-u-15862|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -151,11 +151,11 @@
     (NonDet2%precondition s@$ vari1@0@00 vari2@1@00)
     (= (NonDet2 s@$ vari1@0@00 vari2@1@00) true))
   :pattern ((NonDet2 s@$ vari1@0@00 vari2@1@00))
-  :qid |quant-u-15704|)))
+  :qid |quant-u-15867|)))
 (assert (forall ((s@$ $Snap) (vari1@0@00 Bool) (vari2@1@00 Bool)) (!
   true
   :pattern ((NonDet2 s@$ vari1@0@00 vari2@1@00))
-  :qid |quant-u-15705|)))
+  :qid |quant-u-15868|)))
 ; ---------- FUNCTION NonDet1----------
 (declare-fun vari1@3@00 () Bool)
 (declare-fun result@4@00 () Bool)
@@ -166,11 +166,11 @@
 (assert (forall ((s@$ $Snap) (vari1@3@00 Bool)) (!
   (= (NonDet1%limited s@$ vari1@3@00) (NonDet1 s@$ vari1@3@00))
   :pattern ((NonDet1 s@$ vari1@3@00))
-  :qid |quant-u-15700|)))
+  :qid |quant-u-15863|)))
 (assert (forall ((s@$ $Snap) (vari1@3@00 Bool)) (!
   (NonDet1%stateless vari1@3@00)
   :pattern ((NonDet1%limited s@$ vari1@3@00))
-  :qid |quant-u-15701|)))
+  :qid |quant-u-15864|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -182,11 +182,11 @@
 (assert (forall ((s@$ $Snap) (vari1@3@00 Bool)) (!
   (=> (NonDet1%precondition s@$ vari1@3@00) (= (NonDet1 s@$ vari1@3@00) true))
   :pattern ((NonDet1 s@$ vari1@3@00))
-  :qid |quant-u-15706|)))
+  :qid |quant-u-15869|)))
 (assert (forall ((s@$ $Snap) (vari1@3@00 Bool)) (!
   true
   :pattern ((NonDet1 s@$ vari1@3@00))
-  :qid |quant-u-15707|)))
+  :qid |quant-u-15870|)))
 ; ---------- FUNCTION func----------
 (declare-fun b@5@00 () Bool)
 (declare-fun result@6@00 () Bool)
@@ -427,11 +427,11 @@
 (assert (forall ((s@$ $Snap) (b@5@00 Bool)) (!
   (= (func%limited s@$ b@5@00) (func s@$ b@5@00))
   :pattern ((func s@$ b@5@00))
-  :qid |quant-u-15702|)))
+  :qid |quant-u-15865|)))
 (assert (forall ((s@$ $Snap) (b@5@00 Bool)) (!
   (func%stateless b@5@00)
   :pattern ((func%limited s@$ b@5@00))
-  :qid |quant-u-15703|)))
+  :qid |quant-u-15866|)))
 (assert (forall ((s@$ $Snap) (b@5@00 Bool)) (!
   (let ((result@6@00 (func%limited s@$ b@5@00))) (=>
     (func%precondition s@$ b@5@00)
@@ -451,7 +451,7 @@
       :pattern ((NonDet1%limited $Snap.unit k))
       ))))
   :pattern ((func%limited s@$ b@5@00))
-  :qid |quant-u-15708|)))
+  :qid |quant-u-15871|)))
 (assert (forall ((s@$ $Snap) (b@5@00 Bool)) (!
   (let ((result@6@00 (func%limited s@$ b@5@00))) (=>
     (func%precondition s@$ b@5@00)
@@ -475,7 +475,7 @@
       :pattern ((NonDet1%limited $Snap.unit k))
       ))))
   :pattern ((func%limited s@$ b@5@00))
-  :qid |quant-u-15709|)))
+  :qid |quant-u-15872|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -506,8 +506,8 @@
 (assert (forall ((s@$ $Snap) (b@5@00 Bool)) (!
   (=> (func%precondition s@$ b@5@00) (= (func s@$ b@5@00) true))
   :pattern ((func s@$ b@5@00))
-  :qid |quant-u-15710|)))
+  :qid |quant-u-15873|)))
 (assert (forall ((s@$ $Snap) (b@5@00 Bool)) (!
   true
   :pattern ((func s@$ b@5@00))
-  :qid |quant-u-15711|)))
+  :qid |quant-u-15874|)))

@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-08 22:02:09
+// Date:         2025-01-13 13:19:08
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0210.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/carbon/0210-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -588,13 +588,13 @@ procedure reverse_impl(g_1: (Set Ref)) returns ()
 {
   var QPMask: MaskType;
   var n$0_33: Ref;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var n$2_35: Ref;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var n$0_2_1: Ref;
   var ExhaleHeap: HeapType;
   var n$0_4: Ref;
@@ -677,8 +677,8 @@ procedure reverse_impl(g_1: (Set Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -748,8 +748,8 @@ procedure reverse_impl(g_1: (Set Ref)) returns ()
       if (*) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := PostMask;
           ExhaleWellDef0Heap := PostHeap;
+          ExhaleWellDef0Mask := PostMask;
           assert {:msg "  Precondition of function hfun might not hold. Assertion !((null in g)) might not hold. (0210.vpr@26.40--26.47) [194059]"}
             !g_1[null];
           havoc QPMask;
@@ -800,8 +800,8 @@ procedure reverse_impl(g_1: (Set Ref)) returns ()
         }
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := oldMask;
           ExhaleWellDef0Heap := oldHeap;
+          ExhaleWellDef0Mask := oldMask;
           assert {:msg "  Precondition of function hfun might not hold. Assertion !((null in g)) might not hold. (0210.vpr@26.64--26.71) [194063]"}
             !g_1[null];
           havoc QPMask;
@@ -860,8 +860,8 @@ procedure reverse_impl(g_1: (Set Ref)) returns ()
       if (*) {
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := PostMask;
           ExhaleWellDef0Heap := PostHeap;
+          ExhaleWellDef0Mask := PostMask;
           assert {:msg "  Precondition of function hfun might not hold. Assertion !((null in g)) might not hold. (0210.vpr@27.40--27.47) [194067]"}
             !g_1[null];
           havoc QPMask;
@@ -912,8 +912,8 @@ procedure reverse_impl(g_1: (Set Ref)) returns ()
         }
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Mask := oldMask;
           ExhaleWellDef0Heap := oldHeap;
+          ExhaleWellDef0Mask := oldMask;
           assert {:msg "  Precondition of function hfun might not hold. Assertion !((null in g)) might not hold. (0210.vpr@27.64--27.71) [194071]"}
             !g_1[null];
           havoc QPMask;
@@ -971,8 +971,8 @@ procedure reverse_impl(g_1: (Set Ref)) returns ()
     // -- Check definedness of hfun(g) != old(hfun(g))
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := PostMask;
         ExhaleWellDef0Heap := PostHeap;
+        ExhaleWellDef0Mask := PostMask;
         assert {:msg "  Precondition of function hfun might not hold. Assertion !((null in g)) might not hold. (0210.vpr@28.13--28.20) [194075]"}
           !g_1[null];
         havoc QPMask;
@@ -1023,8 +1023,8 @@ procedure reverse_impl(g_1: (Set Ref)) returns ()
       }
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Mask := oldMask;
         ExhaleWellDef0Heap := oldHeap;
+        ExhaleWellDef0Mask := oldMask;
         assert {:msg "  Precondition of function hfun might not hold. Assertion !((null in g)) might not hold. (0210.vpr@28.29--28.36) [194079]"}
           !g_1[null];
         havoc QPMask;
@@ -1082,8 +1082,8 @@ procedure reverse_impl(g_1: (Set Ref)) returns ()
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of reverse_impl might not hold. Assertion !((null in g)) might not hold. (0210.vpr@25.13--25.21) [194083]"}
       !g_1[null];
     havoc QPMask;
@@ -1173,17 +1173,17 @@ procedure reverse(g_1: (Set Ref)) returns ()
 {
   var QPMask: MaskType;
   var n$0_34: Ref;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var n$0_2_1: Ref;
   var ExhaleHeap: HeapType;
   var b1: bool;
-  var ExhaleWellDef1Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var n$0_4: Ref;
   var n$0_6: Ref;
   var x_3: Ref;
@@ -1271,16 +1271,16 @@ procedure reverse(g_1: (Set Ref)) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: reverse_impl(g) -- 0210.vpr@34.5--34.20
     PreCallHeap := Heap;
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       assert {:msg "  The precondition of method reverse_impl might not hold. Assertion !((null in g)) might not hold. (0210.vpr@34.5--34.20) [194093]"}
         !g_1[null];
       havoc QPMask;
@@ -1402,15 +1402,15 @@ procedure reverse(g_1: (Set Ref)) returns ()
   //     { foo(hfun(g), x, y) }
   //     { foo(old(hfun(g)), y, x) }
   //     foo(hfun(g), x, y) == foo(old(hfun(g)), y, x)) -- 0210.vpr@42.9--42.80
-        ExhaleWellDef0Mask := Mask;
         ExhaleWellDef0Heap := Heap;
+        ExhaleWellDef0Mask := Mask;
         
         // -- Check definedness of (forall x: Ref, y: Ref :: { foo(hfun(g), x, y) } { foo(old(hfun(g)), y, x) } foo(hfun(g), x, y) == foo(old(hfun(g)), y, x))
           if (*) {
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef1Mask := ExhaleWellDef0Mask;
               ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+              ExhaleWellDef1Mask := ExhaleWellDef0Mask;
               assert {:msg "  Precondition of function hfun might not hold. Assertion !((null in g)) might not hold. (0210.vpr@42.43--42.50) [194098]"}
                 !g_1[null];
               havoc QPMask;
@@ -1461,8 +1461,8 @@ procedure reverse(g_1: (Set Ref)) returns ()
             }
             if (*) {
               // Exhale precondition of function application
-              ExhaleWellDef1Mask := oldMask;
               ExhaleWellDef1Heap := oldHeap;
+              ExhaleWellDef1Mask := oldMask;
               assert {:msg "  Precondition of function hfun might not hold. Assertion !((null in g)) might not hold. (0210.vpr@42.67--42.74) [194102]"}
                 !g_1[null];
               havoc QPMask;
@@ -1534,15 +1534,15 @@ procedure reverse(g_1: (Set Ref)) returns ()
   //     { foo(hfun(g), x, y) }
   //     { foo(old(hfun(g)), x, y) }
   //     foo(hfun(g), x, y) == foo(old(hfun(g)), x, y)) -- 0210.vpr@51.9--51.80
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             
             // -- Check definedness of (forall x: Ref, y: Ref :: { foo(hfun(g), x, y) } { foo(old(hfun(g)), x, y) } foo(hfun(g), x, y) == foo(old(hfun(g)), x, y))
               if (*) {
                 if (*) {
                   // Exhale precondition of function application
-                  ExhaleWellDef1Mask := ExhaleWellDef0Mask;
                   ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+                  ExhaleWellDef1Mask := ExhaleWellDef0Mask;
                   assert {:msg "  Precondition of function hfun might not hold. Assertion !((null in g)) might not hold. (0210.vpr@51.43--51.50) [194107]"}
                     !g_1[null];
                   havoc QPMask;
@@ -1593,8 +1593,8 @@ procedure reverse(g_1: (Set Ref)) returns ()
                 }
                 if (*) {
                   // Exhale precondition of function application
-                  ExhaleWellDef1Mask := oldMask;
                   ExhaleWellDef1Heap := oldHeap;
+                  ExhaleWellDef1Mask := oldMask;
                   assert {:msg "  Precondition of function hfun might not hold. Assertion !((null in g)) might not hold. (0210.vpr@51.67--51.74) [194111]"}
                     !g_1[null];
                   havoc QPMask;
@@ -1654,14 +1654,14 @@ procedure reverse(g_1: (Set Ref)) returns ()
             assume state(Heap, Mask);
           
           // -- Translating statement: assert hfun(g) == old(hfun(g)) -- 0210.vpr@57.9--57.41
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             
             // -- Check definedness of hfun(g) == old(hfun(g))
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef1Mask := ExhaleWellDef0Mask;
                 ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+                ExhaleWellDef1Mask := ExhaleWellDef0Mask;
                 assert {:msg "  Precondition of function hfun might not hold. Assertion !((null in g)) might not hold. (0210.vpr@57.16--57.23) [194116]"}
                   !g_1[null];
                 havoc QPMask;
@@ -1712,8 +1712,8 @@ procedure reverse(g_1: (Set Ref)) returns ()
               }
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef1Mask := oldMask;
                 ExhaleWellDef1Heap := oldHeap;
+                ExhaleWellDef1Mask := oldMask;
                 assert {:msg "  Precondition of function hfun might not hold. Assertion !((null in g)) might not hold. (0210.vpr@57.32--57.39) [194120]"}
                   !g_1[null];
                 havoc QPMask;
@@ -1764,14 +1764,14 @@ procedure reverse(g_1: (Set Ref)) returns ()
             assume state(Heap, Mask);
           
           // -- Translating statement: assert hfun(g) != old(hfun(g)) -- 0210.vpr@60.9--60.41
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             
             // -- Check definedness of hfun(g) != old(hfun(g))
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef1Mask := ExhaleWellDef0Mask;
                 ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+                ExhaleWellDef1Mask := ExhaleWellDef0Mask;
                 assert {:msg "  Precondition of function hfun might not hold. Assertion !((null in g)) might not hold. (0210.vpr@60.16--60.23) [194125]"}
                   !g_1[null];
                 havoc QPMask;
@@ -1822,8 +1822,8 @@ procedure reverse(g_1: (Set Ref)) returns ()
               }
               if (*) {
                 // Exhale precondition of function application
-                ExhaleWellDef1Mask := oldMask;
                 ExhaleWellDef1Heap := oldHeap;
+                ExhaleWellDef1Mask := oldMask;
                 assert {:msg "  Precondition of function hfun might not hold. Assertion !((null in g)) might not hold. (0210.vpr@60.32--60.39) [194129]"}
                   !g_1[null];
                 havoc QPMask;
@@ -1877,15 +1877,15 @@ procedure reverse(g_1: (Set Ref)) returns ()
   //     { foo(hfun(g), x, y) }
   //     { foo(old(hfun(g)), x, y) }
   //     foo(hfun(g), x, y) != foo(old(hfun(g)), x, y)) -- 0210.vpr@63.9--63.80
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             
             // -- Check definedness of (forall x: Ref, y: Ref :: { foo(hfun(g), x, y) } { foo(old(hfun(g)), x, y) } foo(hfun(g), x, y) != foo(old(hfun(g)), x, y))
               if (*) {
                 if (*) {
                   // Exhale precondition of function application
-                  ExhaleWellDef1Mask := ExhaleWellDef0Mask;
                   ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+                  ExhaleWellDef1Mask := ExhaleWellDef0Mask;
                   assert {:msg "  Precondition of function hfun might not hold. Assertion !((null in g)) might not hold. (0210.vpr@63.43--63.50) [194134]"}
                     !g_1[null];
                   havoc QPMask;
@@ -1936,8 +1936,8 @@ procedure reverse(g_1: (Set Ref)) returns ()
                 }
                 if (*) {
                   // Exhale precondition of function application
-                  ExhaleWellDef1Mask := oldMask;
                   ExhaleWellDef1Heap := oldHeap;
+                  ExhaleWellDef1Mask := oldMask;
                   assert {:msg "  Precondition of function hfun might not hold. Assertion !((null in g)) might not hold. (0210.vpr@63.67--63.74) [194138]"}
                     !g_1[null];
                   havoc QPMask;
@@ -1997,8 +1997,8 @@ procedure reverse(g_1: (Set Ref)) returns ()
             assume state(Heap, Mask);
           
           // -- Translating statement: assert false -- 0210.vpr@66.9--66.21
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             assert {:msg "  Assert might fail. Assertion false might not hold. (0210.vpr@66.16--66.21) [194143]"}
               false;
             assume state(Heap, Mask);
@@ -2013,8 +2013,8 @@ procedure reverse(g_1: (Set Ref)) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert false -- 0210.vpr@75.4--75.16
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion false might not hold. (0210.vpr@75.11--75.16) [194144]"}
       false;
     assume state(Heap, Mask);

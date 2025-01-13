@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-08 22:00:19
+// Date:         2025-01-13 13:17:16
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/permissions/various.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/permissions/various-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -189,12 +189,12 @@ procedure t1(r_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -215,16 +215,16 @@ procedure t1(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: t1(r) -- various.vpr@9.5--9.10
     PreCallHeap := Heap;
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  The precondition of method t1 might not hold. There might be insufficient permission to access r.f (various.vpr@9.5--9.10) [189597]"}
@@ -248,12 +248,12 @@ procedure t1(r_1: Ref) returns ()
 procedure t1b() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var perm: Perm;
   var ExhaleHeap: HeapType;
   
@@ -265,16 +265,16 @@ procedure t1b() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: t1(null) -- various.vpr@14.5--14.13
     PreCallHeap := Heap;
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  The precondition of method t1 might not hold. There might be insufficient permission to access null.f (various.vpr@14.5--14.13) [189598]"}
@@ -298,12 +298,12 @@ procedure t1b() returns ()
 procedure t1c(r_1: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var perm: Perm;
   var ExhaleHeap: HeapType;
   
@@ -322,16 +322,16 @@ procedure t1c(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: t1(r) -- various.vpr@21.5--21.10
     PreCallHeap := Heap;
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       perm := FullPerm;
       if (perm != NoPerm) {
         assert {:msg "  The precondition of method t1 might not hold. There might be insufficient permission to access r.f (various.vpr@21.5--21.10) [189599]"}
@@ -356,13 +356,13 @@ procedure t2(r_1: Ref, p_1: Perm) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
   var arg_p: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -387,8 +387,8 @@ procedure t2(r_1: Ref, p_1: Perm) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: t2(r, none) -- various.vpr@28.5--28.16
     PreCallHeap := Heap;
@@ -396,8 +396,8 @@ procedure t2(r_1: Ref, p_1: Perm) returns ()
     arg_p := NoPerm;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       assert {:msg "  The precondition of method t2 might not hold. Assertion none >= none might not hold. (various.vpr@28.5--28.16) [189601]"}
         NoPerm <= arg_p;
       perm := arg_p;
@@ -427,12 +427,12 @@ procedure t3(r_1: Ref) returns ()
 {
   var wildcard: real where wildcard > NoPerm;
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PreCallHeap: HeapType;
   var PreCallMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var arg_p: Perm;
   
@@ -455,16 +455,16 @@ procedure t3(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: t3(r) -- various.vpr@34.5--34.10
     PreCallHeap := Heap;
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       assert {:msg "  The precondition of method t3 might not hold. There might be insufficient permission to access r.f (various.vpr@34.5--34.10) [189604]"}
         Mask[r_1, f_7] > NoPerm;
       havoc wildcard;
@@ -484,8 +484,8 @@ procedure t3(r_1: Ref) returns ()
     PreCallMask := Mask;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       assert {:msg "  The precondition of method t3 might not hold. There might be insufficient permission to access r.f (various.vpr@35.5--35.10) [189605]"}
         Mask[r_1, f_7] > NoPerm;
       havoc wildcard;
@@ -506,8 +506,8 @@ procedure t3(r_1: Ref) returns ()
     arg_p := FullPerm;
     
     // -- Exhaling precondition
-      ExhaleWellDef0Mask := Mask;
       ExhaleWellDef0Heap := Heap;
+      ExhaleWellDef0Mask := Mask;
       assert {:msg "  The precondition of method t2 might not hold. Assertion write >= none might not hold. (various.vpr@37.5--37.17) [189606]"}
         NoPerm <= arg_p;
       perm := arg_p;
@@ -536,12 +536,12 @@ procedure t4(r_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -562,14 +562,14 @@ procedure t4(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert acc(r.f, write) -- various.vpr@43.5--43.27
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
+    ExhaleWellDef0Mask := AssertMask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Assert might fail. There might be insufficient permission to access r.f (various.vpr@43.12--43.27) [189610]"}
@@ -581,8 +581,8 @@ procedure t4(r_1: Ref) returns ()
   // -- Translating statement: assert acc(r.f, write) -- various.vpr@44.5--44.27
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
+    ExhaleWellDef0Mask := AssertMask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Assert might fail. There might be insufficient permission to access r.f (various.vpr@44.12--44.27) [189612]"}
@@ -594,8 +594,8 @@ procedure t4(r_1: Ref) returns ()
   // -- Translating statement: assert acc(r.f, write) -- various.vpr@45.5--45.27
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
+    ExhaleWellDef0Mask := AssertMask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Assert might fail. There might be insufficient permission to access r.f (various.vpr@45.12--45.27) [189614]"}
@@ -605,8 +605,8 @@ procedure t4(r_1: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(r.f, write) -- various.vpr@46.5--46.27
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Exhale might fail. There might be insufficient permission to access r.f (various.vpr@46.12--46.27) [189616]"}
@@ -620,8 +620,8 @@ procedure t4(r_1: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert perm(r.f) == none -- various.vpr@47.5--47.31
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion perm(r.f) == none might not hold. (various.vpr@47.13--47.30) [189617]"}
       Mask[r_1, f_7] == NoPerm;
     assume state(Heap, Mask);
@@ -629,8 +629,8 @@ procedure t4(r_1: Ref) returns ()
   // -- Translating statement: assert acc(r.f, write) -- various.vpr@49.5--49.27
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
+    ExhaleWellDef0Mask := AssertMask;
     perm := FullPerm;
     if (perm != NoPerm) {
       assert {:msg "  Assert might fail. There might be insufficient permission to access r.f (various.vpr@49.12--49.27) [189619]"}
@@ -648,10 +648,10 @@ procedure t5(r_1: Ref) returns ()
   modifies Heap, Mask;
 {
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var AssertHeap: HeapType;
   var AssertMask: MaskType;
@@ -675,12 +675,12 @@ procedure t5(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: exhale acc(r.f, 1 / 3) -- various.vpr@55.5--55.25
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := 1 / 3;
     assert {:msg "  Exhale might fail. Fraction 1 / 3 might be negative. (various.vpr@55.12--55.25) [189620]"}
       perm >= NoPerm;
@@ -696,8 +696,8 @@ procedure t5(r_1: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert perm(r.f) == 2 / 3 -- various.vpr@56.5--56.32
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion perm(r.f) == 2 / 3 might not hold. (various.vpr@56.13--56.31) [189622]"}
       Mask[r_1, f_7] == 2 / 3;
     assume state(Heap, Mask);
@@ -705,8 +705,8 @@ procedure t5(r_1: Ref) returns ()
   // -- Translating statement: assert acc(r.f, wildcard) -- various.vpr@57.5--57.30
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
+    ExhaleWellDef0Mask := AssertMask;
     assert {:msg "  Assert might fail. There might be insufficient permission to access r.f (various.vpr@57.12--57.30) [189623]"}
       AssertMask[r_1, f_7] > NoPerm;
     havoc wildcard;
@@ -717,8 +717,8 @@ procedure t5(r_1: Ref) returns ()
   // -- Translating statement: assert acc(r.f, wildcard) -- various.vpr@58.5--58.30
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
+    ExhaleWellDef0Mask := AssertMask;
     assert {:msg "  Assert might fail. There might be insufficient permission to access r.f (various.vpr@58.12--58.30) [189624]"}
       AssertMask[r_1, f_7] > NoPerm;
     havoc wildcard;
@@ -727,8 +727,8 @@ procedure t5(r_1: Ref) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale acc(r.f, perm(r.f)) -- various.vpr@59.5--59.31
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     perm := Mask[r_1, f_7];
     assert {:msg "  Exhale might fail. Fraction perm(r.f) might be negative. (various.vpr@59.12--59.31) [189625]"}
       perm >= NoPerm;
@@ -746,8 +746,8 @@ procedure t5(r_1: Ref) returns ()
   // -- Translating statement: assert acc(r.f, wildcard) -- various.vpr@61.5--61.30
     AssertHeap := Heap;
     AssertMask := Mask;
-    ExhaleWellDef0Mask := AssertMask;
     ExhaleWellDef0Heap := AssertHeap;
+    ExhaleWellDef0Mask := AssertMask;
     assert {:msg "  Assert might fail. There might be insufficient permission to access r.f (various.vpr@61.12--61.30) [189627]"}
       AssertMask[r_1, f_7] > NoPerm;
     havoc wildcard;
@@ -763,10 +763,10 @@ procedure t5(r_1: Ref) returns ()
 procedure t6(r_1: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -779,19 +779,19 @@ procedure t6(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert none == none -- various.vpr@66.5--66.26
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion none == none might not hold. (various.vpr@66.13--66.25) [189628]"}
       NoPerm == NoPerm;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert none != write -- various.vpr@67.5--67.27
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion none != write might not hold. (various.vpr@67.13--67.26) [189629]"}
       NoPerm != FullPerm;
     assume state(Heap, Mask);
@@ -804,10 +804,10 @@ procedure t6(r_1: Ref) returns ()
 procedure t7(r_1: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -820,26 +820,26 @@ procedure t7(r_1: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert 1 / 3 == (2 - 1) / 3 -- various.vpr@72.5--72.30
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion 1 / 3 == (2 - 1) / 3 might not hold. (various.vpr@72.13--72.29) [189630]"}
       1 / 3 == 1 / 3;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert write > 1 / 10000 -- various.vpr@73.5--73.31
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion write > 1 / 10000 might not hold. (various.vpr@73.13--73.30) [189631]"}
       1 / 10000 < FullPerm;
     assume state(Heap, Mask);
   
   // -- Translating statement: assert write < 1 / 10000 -- various.vpr@75.5--75.31
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Assert might fail. Assertion write < 1 / 10000 might not hold. (various.vpr@75.13--75.30) [189632]"}
       FullPerm < 1 / 10000;
     assume state(Heap, Mask);

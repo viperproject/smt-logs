@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-08 21:22:49
+; Started: 2025-01-13 12:39:21
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -525,8 +525,8 @@
 (declare-const diz@55@01 $Ref)
 (assert (not (= diz@55@01 $Ref.null)))
 (declare-const Counter__x@56@01 Int)
-(assert (not (= diz@55@01 diz@52@01)))
 (assert (not (= diz@55@01 sys__result@49@01)))
+(assert (not (= diz@55@01 diz@52@01)))
 ; [exec]
 ; __flatten_6 := 0
 ; [exec]

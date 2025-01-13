@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-08 21:22:30
+; Started: 2025-01-13 12:39:01
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -751,8 +751,8 @@
 (declare-const Lock__owner@49@01 $Ref)
 (declare-const Lock__user@50@01 $Ref)
 (assert (not (= diz@48@01 sys__result@42@01)))
-(assert (not (= diz@48@01 owner@40@01)))
 (assert (not (= diz@48@01 user@41@01)))
+(assert (not (= diz@48@01 owner@40@01)))
 (assert (not (= diz@48@01 diz@47@01)))
 ; [exec]
 ; inhale false
@@ -1759,8 +1759,8 @@
 (declare-const diz@111@01 $Ref)
 (assert (not (= diz@111@01 $Ref.null)))
 (declare-const Client__x@112@01 Int)
-(assert (not (= diz@111@01 sys__result@105@01)))
 (assert (not (= diz@111@01 diz@108@01)))
+(assert (not (= diz@111@01 sys__result@105@01)))
 ; [exec]
 ; __flatten_11 := 0
 ; [exec]

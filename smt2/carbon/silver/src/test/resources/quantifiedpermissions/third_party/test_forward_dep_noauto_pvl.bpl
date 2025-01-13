@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-08 21:31:10
+// Date:         2025-01-13 12:47:53
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/third_party/test_forward_dep_noauto_pvl.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/quantifiedpermissions/third_party/test_forward_dep_noauto_pvl-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -593,8 +593,8 @@ procedure Ref__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: i
 {
   var wildcard: real where wildcard > NoPerm;
   var perm: Perm;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var __flatten_1: Ref;
@@ -603,8 +603,8 @@ procedure Ref__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: i
   var __flatten_6: Ref;
   var __last_barrier: int;
   var __flatten_2: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   var __flatten_5: int;
   
@@ -724,8 +724,8 @@ procedure Ref__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: i
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -969,8 +969,8 @@ procedure Ref__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: i
     assume state(Heap, Mask);
   
   // -- Translating statement: assert tid < tcount - 1 ==> diz.Ref__a[tid].Ref__Integer_value == tid + 1 -- test_forward_dep_noauto_pvl.vpr@65.3--65.80
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     if (tid < tcount - 1) {
       
       // -- Check definedness of diz.Ref__a[tid].Ref__Integer_value == tid + 1
@@ -988,8 +988,8 @@ procedure Ref__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: i
     assume state(Heap, Mask);
   
   // -- Translating statement: exhale tid < tcount - 1 ==> acc(diz.Ref__a[tid].Ref__Integer_value, 1 / 2) -- test_forward_dep_noauto_pvl.vpr@66.3--66.79
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     if (tid < tcount - 1) {
       
       // -- Check definedness of acc(diz.Ref__a[tid].Ref__Integer_value, 1 / 2)
@@ -1095,8 +1095,8 @@ procedure Ref__main_main(diz: Ref, current_thread_id: int, tcount: int, gsize: i
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of Ref__main_main might not hold. Assertion 0 <= tid might not hold. (test_forward_dep_noauto_pvl.vpr@30.11--30.19) [26681]"}
       0 <= tid;
     assert {:msg "  Postcondition of Ref__main_main might not hold. Assertion tid < tcount might not hold. (test_forward_dep_noauto_pvl.vpr@31.11--31.23) [26682]"}
@@ -1204,13 +1204,13 @@ procedure Ref__main_resources_of_1(diz: Ref, current_thread_id: int, tcount: int
   var tid_24: int;
   var QPMask: MaskType;
   var tid_20: int;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var tid_2: int;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -1378,8 +1378,8 @@ procedure Ref__main_resources_of_1(diz: Ref, current_thread_id: int, tcount: int
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -1508,8 +1508,8 @@ procedure Ref__main_resources_of_1(diz: Ref, current_thread_id: int, tcount: int
   }
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of Ref__main_resources_of_1 might not hold. Assertion tcount == gsize might not hold. (test_forward_dep_noauto_pvl.vpr@91.11--91.26) [26741]"}
       tcount == gsize;
     assert {:msg "  Postcondition of Ref__main_resources_of_1 might not hold. Assertion gid == 0 might not hold. (test_forward_dep_noauto_pvl.vpr@92.11--92.19) [26742]"}
@@ -1612,12 +1612,12 @@ procedure Ref__main_post_check_1(diz: Ref, current_thread_id: int, tcount: int, 
   var _x_tid_9: int;
   var _x_tid_10: int;
   var _x_tid_11: int;
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleHeap: HeapType;
   
   // -- Initializing the state
@@ -1955,8 +1955,8 @@ procedure Ref__main_post_check_1(diz: Ref, current_thread_id: int, tcount: int, 
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -2068,8 +2068,8 @@ procedure Ref__main_post_check_1(diz: Ref, current_thread_id: int, tcount: int, 
   }
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of Ref__main_post_check_1 might not hold. Assertion 0 <= tid might not hold. (test_forward_dep_noauto_pvl.vpr@127.11--127.19) [26816]"}
       0 <= tid;
     assert {:msg "  Postcondition of Ref__main_post_check_1 might not hold. Assertion tid < tcount might not hold. (test_forward_dep_noauto_pvl.vpr@128.11--128.23) [26817]"}

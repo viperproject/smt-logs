@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-08 22:08:27
+// Date:         2025-01-13 13:25:27
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0118.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0118-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -241,8 +241,8 @@ procedure Nodelen#definedness(this: Ref) returns (Result: int)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var newPMask: PMaskType;
   
@@ -269,8 +269,8 @@ procedure Nodelen#definedness(this: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume Nodeinv#trigger(UnfoldingHeap, Nodeinv(this));
       assume UnfoldingHeap[null, Nodeinv(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, Nodev]), CombineFrames(FrameFragment(UnfoldingHeap[this, Noden]), FrameFragment((if UnfoldingHeap[this, Noden] != null then UnfoldingHeap[null, Nodeinv(UnfoldingHeap[this, Noden])] else EmptyFrame))));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Nodeinv(this) (0118.vpr@10.1--16.2) [216809]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, Nodeinv(this)];
@@ -302,8 +302,8 @@ procedure Nodelen#definedness(this: Ref) returns (Result: int)
           HasDirectPerm(UnfoldingMask, this, Noden);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := UnfoldingHeap;
           ExhaleWellDef0Mask := UnfoldingMask;
+          ExhaleWellDef0Heap := UnfoldingHeap;
           assert {:msg "  Precondition of function Nodelen might not hold. Assertion this.Noden != null might not hold. (0118.vpr@15.76--15.95) [216812]"}
             UnfoldingHeap[this, Noden] != null;
           perm := FullPerm;
@@ -338,8 +338,8 @@ procedure Nodelen#definedness(this: Ref) returns (Result: int)
     Result := (if Heap[this, Noden] == null then 1 else 1 + Nodelen(Heap, Heap[this, Noden]));
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of Nodelen might not hold. Assertion result > 0 might not hold. (0118.vpr@13.11--13.21) [216814]"}
       Result > 0;
 }
@@ -385,8 +385,8 @@ procedure Nodeget#definedness(this: Ref, i: int) returns (Result: int)
 {
   var wildcard: real where wildcard > NoPerm;
   var perm: Perm;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
@@ -412,8 +412,8 @@ procedure Nodeget#definedness(this: Ref, i: int) returns (Result: int)
     // -- Check definedness of i < Nodelen(this)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef0Heap := Heap;
         ExhaleWellDef0Mask := Mask;
+        ExhaleWellDef0Heap := Heap;
         assert {:msg "  Precondition of function Nodelen might not hold. Assertion this != null might not hold. (0118.vpr@20.61--20.74) [216815]"}
           this != null;
         perm := FullPerm;
@@ -436,8 +436,8 @@ procedure Nodeget#definedness(this: Ref, i: int) returns (Result: int)
       UnfoldingMask := Mask;
       assume Nodeinv#trigger(UnfoldingHeap, Nodeinv(this));
       assume UnfoldingHeap[null, Nodeinv(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, Nodev]), CombineFrames(FrameFragment(UnfoldingHeap[this, Noden]), FrameFragment((if UnfoldingHeap[this, Noden] != null then UnfoldingHeap[null, Nodeinv(UnfoldingHeap[this, Noden])] else EmptyFrame))));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Nodeinv(this) (0118.vpr@18.1--23.2) [216817]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, Nodeinv(this)];
@@ -469,8 +469,8 @@ procedure Nodeget#definedness(this: Ref, i: int) returns (Result: int)
           HasDirectPerm(UnfoldingMask, this, Noden);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := UnfoldingHeap;
           ExhaleWellDef0Mask := UnfoldingMask;
+          ExhaleWellDef0Heap := UnfoldingHeap;
           assert {:msg "  Precondition of function Nodeget might not hold. Assertion this.Noden != null might not hold. (0118.vpr@22.69--22.95) [216820]"}
             UnfoldingHeap[this, Noden] != null;
           perm := FullPerm;
@@ -558,8 +558,8 @@ procedure Listlen#definedness(this: Ref) returns (Result: int)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Heap: HeapType;
   var ExhaleWellDef0Mask: MaskType;
+  var ExhaleWellDef0Heap: HeapType;
   var ExhaleHeap: HeapType;
   var newPMask: PMaskType;
   
@@ -586,8 +586,8 @@ procedure Listlen#definedness(this: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume Listinv#trigger(UnfoldingHeap, Listinv(this));
       assume UnfoldingHeap[null, Listinv(this)] == CombineFrames(FrameFragment(UnfoldingHeap[this, Listc]), FrameFragment((if UnfoldingHeap[this, Listc] != null then UnfoldingHeap[null, Nodeinv(UnfoldingHeap[this, Listc])] else EmptyFrame)));
-      ExhaleWellDef0Heap := UnfoldingHeap;
       ExhaleWellDef0Mask := UnfoldingMask;
+      ExhaleWellDef0Heap := UnfoldingHeap;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access Listinv(this) (0118.vpr@25.1--31.2) [216824]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, Listinv(this)];
@@ -614,8 +614,8 @@ procedure Listlen#definedness(this: Ref) returns (Result: int)
           HasDirectPerm(UnfoldingMask, this, Listc);
         if (*) {
           // Exhale precondition of function application
-          ExhaleWellDef0Heap := UnfoldingHeap;
           ExhaleWellDef0Mask := UnfoldingMask;
+          ExhaleWellDef0Heap := UnfoldingHeap;
           assert {:msg "  Precondition of function Nodelen might not hold. Assertion this.Listc != null might not hold. (0118.vpr@30.72--30.91) [216827]"}
             UnfoldingHeap[this, Listc] != null;
           perm := FullPerm;
@@ -646,8 +646,8 @@ procedure Listlen#definedness(this: Ref) returns (Result: int)
     Result := (if Heap[this, Listc] == null then 0 else Nodelen(Heap, Heap[this, Listc]));
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Heap := Heap;
     ExhaleWellDef0Mask := Mask;
+    ExhaleWellDef0Heap := Heap;
     assert {:msg "  Postcondition of Listlen might not hold. Assertion result >= 0 might not hold. (0118.vpr@28.11--28.22) [216829]"}
       Result >= 0;
 }

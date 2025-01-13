@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-08 21:24:41
+; Started: 2025-01-13 12:41:16
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -689,11 +689,11 @@
     (f_loop%limited s@$ a@0@00 x@1@00 y@2@00 n@3@00)
     (f_loop s@$ a@0@00 x@1@00 y@2@00 n@3@00))
   :pattern ((f_loop s@$ a@0@00 x@1@00 y@2@00 n@3@00))
-  :qid |quant-u-24155|)))
+  :qid |quant-u-24262|)))
 (assert (forall ((s@$ $Snap) (a@0@00 IArray) (x@1@00 Int) (y@2@00 Int) (n@3@00 Int)) (!
   (f_loop%stateless a@0@00 x@1@00 y@2@00 n@3@00)
   :pattern ((f_loop%limited s@$ a@0@00 x@1@00 y@2@00 n@3@00))
-  :qid |quant-u-24156|)))
+  :qid |quant-u-24263|)))
 (assert (forall ((s@$ $Snap) (a@0@00 IArray) (x@1@00 Int) (y@2@00 Int) (n@3@00 Int)) (!
   (let ((result@4@00 (f_loop%limited s@$ a@0@00 x@1@00 y@2@00 n@3@00))) (and
     (forall ((k@11@00 Int)) (!
@@ -705,7 +705,7 @@
             k@11@00)
           (img@13@00 s@$ a@0@00 x@1@00 y@2@00 n@3@00 (loc<Ref> a@0@00 k@11@00))))
       :pattern ((loc<Ref> a@0@00 k@11@00))
-      :qid |quant-u-24162|))
+      :qid |quant-u-24269|))
     (forall ((r $Ref)) (!
       (=>
         (and
@@ -739,15 +739,15 @@
                 y@2@00
                 result@4@00))))))))))
   :pattern ((f_loop%limited s@$ a@0@00 x@1@00 y@2@00 n@3@00))
-  :qid |quant-u-24163|)))
+  :qid |quant-u-24270|)))
 (assert (forall ((s@$ $Snap) (a@0@00 IArray) (x@1@00 Int) (y@2@00 Int) (n@3@00 Int)) (!
   (let ((result@4@00 (f_loop%limited s@$ a@0@00 x@1@00 y@2@00 n@3@00))) true)
   :pattern ((f_loop%limited s@$ a@0@00 x@1@00 y@2@00 n@3@00))
-  :qid |quant-u-24164|)))
+  :qid |quant-u-24271|)))
 (assert (forall ((s@$ $Snap) (a@0@00 IArray) (x@1@00 Int) (y@2@00 Int) (n@3@00 Int)) (!
   (let ((result@4@00 (f_loop%limited s@$ a@0@00 x@1@00 y@2@00 n@3@00))) true)
   :pattern ((f_loop%limited s@$ a@0@00 x@1@00 y@2@00 n@3@00))
-  :qid |quant-u-24165|)))
+  :qid |quant-u-24272|)))
 (assert (forall ((s@$ $Snap) (a@0@00 IArray) (x@1@00 Int) (y@2@00 Int) (n@3@00 Int)) (!
   (and
     (forall ((k@11@00 Int)) (!
@@ -759,7 +759,7 @@
             k@11@00)
           (img@13@00 s@$ a@0@00 x@1@00 y@2@00 n@3@00 (loc<Ref> a@0@00 k@11@00))))
       :pattern ((loc<Ref> a@0@00 k@11@00))
-      :qid |quant-u-24162|))
+      :qid |quant-u-24269|))
     (forall ((r $Ref)) (!
       (=>
         (and
@@ -872,7 +872,7 @@
             1))
           n@3@00))))
   :pattern ((f_loop s@$ a@0@00 x@1@00 y@2@00 n@3@00))
-  :qid |quant-u-24168|)))
+  :qid |quant-u-24275|)))
 (assert (forall ((s@$ $Snap) (a@0@00 IArray) (x@1@00 Int) (y@2@00 Int) (n@3@00 Int)) (!
   (=>
     (f_loop%precondition s@$ a@0@00 x@1@00 y@2@00 n@3@00)
@@ -903,15 +903,15 @@
         1))
       true))
   :pattern ((f_loop s@$ a@0@00 x@1@00 y@2@00 n@3@00))
-  :qid |quant-u-24169|)))
+  :qid |quant-u-24276|)))
 (assert (forall ((s@$ $Snap) (a@5@00 IArray) (x@6@00 Int) (y@7@00 Int)) (!
   (= (f_lcp%limited s@$ a@5@00 x@6@00 y@7@00) (f_lcp s@$ a@5@00 x@6@00 y@7@00))
   :pattern ((f_lcp s@$ a@5@00 x@6@00 y@7@00))
-  :qid |quant-u-24157|)))
+  :qid |quant-u-24264|)))
 (assert (forall ((s@$ $Snap) (a@5@00 IArray) (x@6@00 Int) (y@7@00 Int)) (!
   (f_lcp%stateless a@5@00 x@6@00 y@7@00)
   :pattern ((f_lcp%limited s@$ a@5@00 x@6@00 y@7@00))
-  :qid |quant-u-24158|)))
+  :qid |quant-u-24265|)))
 (assert (forall ((s@$ $Snap) (a@5@00 IArray) (x@6@00 Int) (y@7@00 Int)) (!
   (let ((result@8@00 (f_lcp%limited s@$ a@5@00 x@6@00 y@7@00))) (and
     (forall ((k@19@00 Int)) (!
@@ -923,7 +923,7 @@
             k@19@00)
           (img@21@00 s@$ a@5@00 x@6@00 y@7@00 (loc<Ref> a@5@00 k@19@00))))
       :pattern ((loc<Ref> a@5@00 k@19@00))
-      :qid |quant-u-24171|))
+      :qid |quant-u-24278|))
     (forall ((r $Ref)) (!
       (=>
         (and
@@ -955,15 +955,15 @@
                 y@7@00
                 result@8@00))))))))))
   :pattern ((f_lcp%limited s@$ a@5@00 x@6@00 y@7@00))
-  :qid |quant-u-24172|)))
+  :qid |quant-u-24279|)))
 (assert (forall ((s@$ $Snap) (a@5@00 IArray) (x@6@00 Int) (y@7@00 Int)) (!
   (let ((result@8@00 (f_lcp%limited s@$ a@5@00 x@6@00 y@7@00))) true)
   :pattern ((f_lcp%limited s@$ a@5@00 x@6@00 y@7@00))
-  :qid |quant-u-24173|)))
+  :qid |quant-u-24280|)))
 (assert (forall ((s@$ $Snap) (a@5@00 IArray) (x@6@00 Int) (y@7@00 Int)) (!
   (let ((result@8@00 (f_lcp%limited s@$ a@5@00 x@6@00 y@7@00))) true)
   :pattern ((f_lcp%limited s@$ a@5@00 x@6@00 y@7@00))
-  :qid |quant-u-24174|)))
+  :qid |quant-u-24281|)))
 (assert (forall ((s@$ $Snap) (a@5@00 IArray) (x@6@00 Int) (y@7@00 Int)) (!
   (and
     (forall ((k@19@00 Int)) (!
@@ -975,7 +975,7 @@
             k@19@00)
           (img@21@00 s@$ a@5@00 x@6@00 y@7@00 (loc<Ref> a@5@00 k@19@00))))
       :pattern ((loc<Ref> a@5@00 k@19@00))
-      :qid |quant-u-24171|))
+      :qid |quant-u-24278|))
     (forall ((r $Ref)) (!
       (=>
         (and
@@ -1061,7 +1061,7 @@
                     $Snap.unit
                     ($Snap.combine $Snap.unit $Snap.unit))))))) a@5@00 x@6@00 y@7@00 0))))
   :pattern ((f_lcp s@$ a@5@00 x@6@00 y@7@00))
-  :qid |quant-u-24177|)))
+  :qid |quant-u-24284|)))
 (assert (forall ((s@$ $Snap) (a@5@00 IArray) (x@6@00 Int) (y@7@00 Int)) (!
   (=>
     (f_lcp%precondition s@$ a@5@00 x@6@00 y@7@00)
@@ -1077,15 +1077,15 @@
               $Snap.unit
               ($Snap.combine $Snap.unit ($Snap.combine $Snap.unit $Snap.unit))))))) a@5@00 x@6@00 y@7@00 0))
   :pattern ((f_lcp s@$ a@5@00 x@6@00 y@7@00))
-  :qid |quant-u-24178|)))
+  :qid |quant-u-24285|)))
 (assert (forall ((s@$ $Snap) (a@9@00 IArray)) (!
   (= (f_loop_simpl%limited s@$ a@9@00) (f_loop_simpl s@$ a@9@00))
   :pattern ((f_loop_simpl s@$ a@9@00))
-  :qid |quant-u-24159|)))
+  :qid |quant-u-24266|)))
 (assert (forall ((s@$ $Snap) (a@9@00 IArray)) (!
   (f_loop_simpl%stateless a@9@00)
   :pattern ((f_loop_simpl%limited s@$ a@9@00))
-  :qid |quant-u-24160|)))
+  :qid |quant-u-24267|)))
 (assert (forall ((s@$ $Snap) (a@9@00 IArray)) (!
   (let ((result@10@00 (f_loop_simpl%limited s@$ a@9@00))) (and
     (forall ((k@27@00 Int)) (!
@@ -1095,7 +1095,7 @@
           (= (inv@28@00 s@$ a@9@00 (loc<Ref> a@9@00 k@27@00)) k@27@00)
           (img@29@00 s@$ a@9@00 (loc<Ref> a@9@00 k@27@00))))
       :pattern ((loc<Ref> a@9@00 k@27@00))
-      :qid |quant-u-24180|))
+      :qid |quant-u-24287|))
     (forall ((r $Ref)) (!
       (=>
         (and
@@ -1117,11 +1117,11 @@
               ($FVF.lookup_val ($SortWrappers.$SnapTo$FVF<val> s@$) (loc<Ref> a@9@00 result@10@00))
               0)))))))
   :pattern ((f_loop_simpl%limited s@$ a@9@00))
-  :qid |quant-u-24181|)))
+  :qid |quant-u-24288|)))
 (assert (forall ((s@$ $Snap) (a@9@00 IArray)) (!
   (let ((result@10@00 (f_loop_simpl%limited s@$ a@9@00))) true)
   :pattern ((f_loop_simpl%limited s@$ a@9@00))
-  :qid |quant-u-24182|)))
+  :qid |quant-u-24289|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- test01 ----------
@@ -1189,7 +1189,7 @@
       (= (inv@4@01 (loc<Ref> a@1@01 k@3@01)) k@3@01)
       (img@5@01 (loc<Ref> a@1@01 k@3@01))))
   :pattern ((loc<Ref> a@1@01 k@3@01))
-  :qid |quant-u-24184|)))
+  :qid |quant-u-24291|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -1309,7 +1309,7 @@
         $Perm.No)
       $Perm.No))
   
-  :qid |quant-u-24186|))))
+  :qid |quant-u-24293|))))
 (check-sat)
 ; unsat
 (pop) ; 4
@@ -1519,7 +1519,7 @@
       (= (inv@21@01 (loc<Ref> a@15@01 k@19@01)) k@19@01)
       (img@22@01 (loc<Ref> a@15@01 k@19@01))))
   :pattern ((loc<Ref> a@15@01 k@19@01))
-  :qid |quant-u-24188|)))
+  :qid |quant-u-24295|)))
 (assert (forall ((r $Ref)) (!
   (=>
     (and
@@ -1767,7 +1767,7 @@
         $Perm.No)
       $Perm.No))
   
-  :qid |quant-u-24190|))))
+  :qid |quant-u-24297|))))
 (check-sat)
 ; unsat
 (pop) ; 6

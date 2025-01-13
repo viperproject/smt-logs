@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-08 21:25:45
+; Started: 2025-01-13 12:42:23
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -144,21 +144,21 @@
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (= (length%limited s@$ this@0@00) (length s@$ this@0@00))
   :pattern ((length s@$ this@0@00))
-  :qid |quant-u-25451|)))
+  :qid |quant-u-25558|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (length%stateless this@0@00)
   :pattern ((length%limited s@$ this@0@00))
-  :qid |quant-u-25452|)))
+  :qid |quant-u-25559|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (let ((result@1@00 (length%limited s@$ this@0@00))) (=>
     (length%precondition s@$ this@0@00)
     (>= result@1@00 1)))
   :pattern ((length%limited s@$ this@0@00))
-  :qid |quant-u-25453|)))
+  :qid |quant-u-25560|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (let ((result@1@00 (length%limited s@$ this@0@00))) true)
   :pattern ((length%limited s@$ this@0@00))
-  :qid |quant-u-25454|)))
+  :qid |quant-u-25561|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (=>
     (length%precondition s@$ this@0@00)
@@ -174,7 +174,7 @@
           (length%limited ($Snap.second ($Snap.second ($Snap.second s@$))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second s@$)))))))))
   :pattern ((length s@$ this@0@00))
   :pattern ((length%stateless this@0@00) (node%trigger s@$ this@0@00))
-  :qid |quant-u-25455|)))
+  :qid |quant-u-25562|)))
 (assert (forall ((s@$ $Snap) (this@0@00 $Ref)) (!
   (=>
     (length%precondition s@$ this@0@00)
@@ -185,7 +185,7 @@
       true
       (length%precondition ($Snap.second ($Snap.second ($Snap.second s@$))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second s@$)))))))
   :pattern ((length s@$ this@0@00))
-  :qid |quant-u-25456|)))
+  :qid |quant-u-25563|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- prepend ----------
@@ -234,9 +234,9 @@
 (assert (not (= res@9@01 $Ref.null)))
 (declare-const val@10@01 Int)
 (declare-const next@11@01 $Ref)
-(assert (not (= res@9@01 tmp@8@01)))
-(assert (not (= res@9@01 tail@3@01)))
 (assert (not (= res@9@01 res@5@01)))
+(assert (not (= res@9@01 tail@3@01)))
+(assert (not (= res@9@01 tmp@8@01)))
 ; [exec]
 ; res.val := v
 ; [exec]
@@ -244,10 +244,10 @@
 (declare-const tmp@12@01 $Ref)
 (assert (not (= tmp@12@01 $Ref.null)))
 (declare-const a@13@01 $Ref)
-(assert (not (= tmp@12@01 next@11@01)))
 (assert (not (= tmp@12@01 res@9@01)))
-(assert (not (= tmp@12@01 tmp@8@01)))
+(assert (not (= tmp@12@01 next@11@01)))
 (assert (not (= tmp@12@01 tail@3@01)))
+(assert (not (= tmp@12@01 tmp@8@01)))
 ; [exec]
 ; tmp.a := tail
 ; [exec]

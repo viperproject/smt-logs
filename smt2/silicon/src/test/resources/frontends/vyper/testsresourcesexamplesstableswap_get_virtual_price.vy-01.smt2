@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-08 21:09:42
+; Started: 2025-01-13 12:25:55
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -9517,7 +9517,7 @@
 (check-sat)
 ; unknown
 (pop) ; 9
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (set-option :timeout 0)
 (push) ; 9
@@ -10203,12 +10203,12 @@
       3))))
     0))))
 (check-sat)
-; unsat
+; unknown
 (pop) ; 11
 ; 0.01s
 ; (get-info :all-statistics)
 ; [then-branch: 89 | !($unwrap[Int]($w_div[$Int]($w_mul[$Int](l$D_P$1@216@01, l$D$2@218@01), $wrap[$Int]($unwrap[Int](l$_x$2@384@01) * 3))) < 0) | live]
-; [else-branch: 89 | $unwrap[Int]($w_div[$Int]($w_mul[$Int](l$D_P$1@216@01, l$D$2@218@01), $wrap[$Int]($unwrap[Int](l$_x$2@384@01) * 3))) < 0 | dead]
+; [else-branch: 89 | $unwrap[Int]($w_div[$Int]($w_mul[$Int](l$D_P$1@216@01, l$D$2@218@01), $wrap[$Int]($unwrap[Int](l$_x$2@384@01) * 3))) < 0 | live]
 (set-option :timeout 0)
 (push) ; 11
 ; [then-branch: 89 | !($unwrap[Int]($w_div[$Int]($w_mul[$Int](l$D_P$1@216@01, l$D$2@218@01), $wrap[$Int]($unwrap[Int](l$_x$2@384@01) * 3))) < 0)]
@@ -10477,7 +10477,7 @@
 (check-sat)
 ; unsat
 (pop) ; 13
-; 0.06s
+; 0.24s
 ; (get-info :all-statistics)
 (assert (=>
   (forall ((q$i@393@01 Int)) (!
@@ -10641,7 +10641,7 @@
 (check-sat)
 ; unsat
 (pop) ; 16
-; 0.08s
+; 0.12s
 ; (get-info :all-statistics)
 (assert (<=
   0
@@ -11024,7 +11024,7 @@
 (check-sat)
 ; unsat
 (pop) ; 17
-; 0.06s
+; 0.07s
 ; (get-info :all-statistics)
 (pop) ; 16
 (push) ; 16
@@ -11195,7 +11195,7 @@
 (check-sat)
 ; unsat
 (pop) ; 13
-; 0.10s
+; 0.11s
 ; (get-info :all-statistics)
 (assert (=>
   (forall ((q$i@395@01 Int)) (!

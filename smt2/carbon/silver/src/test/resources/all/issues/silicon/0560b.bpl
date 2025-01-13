@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-08 22:05:03
+// Date:         2025-01-13 13:22:04
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0560b.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/all/issues/silicon/0560b-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -720,14 +720,14 @@ procedure height#definedness(t_2: TreeDomainType) returns (Result: int)
 procedure computeTreeHeight(t_2: TreeDomainType) returns (res: int)
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var PostHeap: HeapType;
   var PostMask: MaskType;
   var current: (Seq TreeDomainType);
   var next_1: (Seq TreeDomainType);
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var loopHeap: HeapType;
   var loopMask: MaskType;
   var i: int;
@@ -751,8 +751,8 @@ procedure computeTreeHeight(t_2: TreeDomainType) returns (res: int)
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   if (*) {
     havoc PostHeap;
     PostMask := ZeroMask;
@@ -796,8 +796,8 @@ procedure computeTreeHeight(t_2: TreeDomainType) returns (res: int)
         // -- Before loop head
           
           // -- Exhale loop invariant before loop
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             if (Seq#Length(current) == 0) {
               assert {:msg "  Loop invariant |current| == 0 ==> res == height(t) might not hold on entry. Assertion res == height(t) might not hold. (0560b.vpr@91.17--91.52) [203067]"}
                 res == height_1(Heap, t_2);
@@ -854,8 +854,8 @@ procedure computeTreeHeight(t_2: TreeDomainType) returns (res: int)
                 // -- Before loop head
                   
                   // -- Exhale loop invariant before loop
-                    ExhaleWellDef0Mask := Mask;
                     ExhaleWellDef0Heap := Heap;
+                    ExhaleWellDef0Mask := Mask;
                     if (*) {
                       assert {:msg "  Loop invariant (forall i: Int :: { height(current[i]) } i >= 0 && (i < |current| && ((forall k: Int :: { height(current[k]) } k >= 0 && (k < |current| && height(current[i]) > height(current[k]))) && (forall j: Int :: { height(next[j]) } j >= 0 && (j < |next| && (forall k: Int :: { height(next[k]) } k >= 0 && (k < |next| && height(next[j]) > height(next[k])))) ==> height(next[j]) == height(current[i]) - 1)))) might not hold on entry. Assertion i >= 0 might not hold. (0560b.vpr@100.19--106.60) [203068]"}
                         i >= 0;
@@ -1077,8 +1077,8 @@ procedure computeTreeHeight(t_2: TreeDomainType) returns (res: int)
                         }
                         assume state(Heap, Mask);
                     // Exhale invariant
-                    ExhaleWellDef0Mask := Mask;
                     ExhaleWellDef0Heap := Heap;
+                    ExhaleWellDef0Mask := Mask;
                     if (*) {
                       assert {:msg "  Loop invariant (forall i: Int :: { height(current[i]) } i >= 0 && (i < |current| && ((forall k: Int :: { height(current[k]) } k >= 0 && (k < |current| && height(current[i]) > height(current[k]))) && (forall j: Int :: { height(next[j]) } j >= 0 && (j < |next| && (forall k: Int :: { height(next[k]) } k >= 0 && (k < |next| && height(next[j]) > height(next[k])))) ==> height(next[j]) == height(current[i]) - 1)))) might not be preserved. Assertion i >= 0 might not hold. (0560b.vpr@100.19--106.60) [203087]"}
                         i_5 >= 0;
@@ -1157,8 +1157,8 @@ procedure computeTreeHeight(t_2: TreeDomainType) returns (res: int)
                 current := next_1;
                 assume state(Heap, Mask);
             // Exhale invariant
-            ExhaleWellDef0Mask := Mask;
             ExhaleWellDef0Heap := Heap;
+            ExhaleWellDef0Mask := Mask;
             if (Seq#Length(current) == 0) {
               assert {:msg "  Loop invariant |current| == 0 ==> res == height(t) might not be preserved. Assertion res == height(t) might not hold. (0560b.vpr@91.17--91.52) [203093]"}
                 res == height_1(Heap, t_2);
@@ -1180,8 +1180,8 @@ procedure computeTreeHeight(t_2: TreeDomainType) returns (res: int)
     assume state(Heap, Mask);
   
   // -- Exhaling postcondition
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of computeTreeHeight might not hold. Assertion res == height(t) might not hold. (0560b.vpr@77.11--77.27) [203094]"}
       res == height_1(Heap, t_2);
 }

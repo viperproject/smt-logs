@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-08 21:23:15
+; Started: 2025-01-13 12:39:46
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -1231,11 +1231,11 @@
     (valid%limited s@$ s@0@00 lenTiles@1@00 isStart@2@00)
     (valid s@$ s@0@00 lenTiles@1@00 isStart@2@00))
   :pattern ((valid s@$ s@0@00 lenTiles@1@00 isStart@2@00))
-  :qid |quant-u-22480|)))
+  :qid |quant-u-22587|)))
 (assert (forall ((s@$ $Snap) (s@0@00 Seq<Int>) (lenTiles@1@00 Int) (isStart@2@00 Bool)) (!
   (valid%stateless s@0@00 lenTiles@1@00 isStart@2@00)
   :pattern ((valid%limited s@$ s@0@00 lenTiles@1@00 isStart@2@00))
-  :qid |quant-u-22481|)))
+  :qid |quant-u-22588|)))
 ; ----- Verification of function body and postcondition -----
 (push) ; 1
 ; State saturation: after contract
@@ -1793,7 +1793,7 @@
                 (- lenTiles@1@00 (Seq_index s@0@00 1))
                 (Seq_index s@0@00 0)) false)))))))
   :pattern ((valid s@$ s@0@00 lenTiles@1@00 isStart@2@00))
-  :qid |quant-u-22482|)))
+  :qid |quant-u-22589|)))
 (assert (forall ((s@$ $Snap) (s@0@00 Seq<Int>) (lenTiles@1@00 Int) (isStart@2@00 Bool)) (!
   (=>
     (valid%precondition s@$ s@0@00 lenTiles@1@00 isStart@2@00)
@@ -1814,4 +1814,4 @@
             (- lenTiles@1@00 (Seq_index s@0@00 1))
             (Seq_index s@0@00 0)) false)))))
   :pattern ((valid s@$ s@0@00 lenTiles@1@00 isStart@2@00))
-  :qid |quant-u-22483|)))
+  :qid |quant-u-22590|)))

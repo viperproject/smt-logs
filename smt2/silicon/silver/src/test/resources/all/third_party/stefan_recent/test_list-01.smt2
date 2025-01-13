@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-08 21:23:11
+; Started: 2025-01-13 12:39:43
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -408,11 +408,11 @@
 (assert (forall ((s@$ $Snap) (diz@0@00 $Ref)) (!
   (= (node__contents%limited s@$ diz@0@00) (node__contents s@$ diz@0@00))
   :pattern ((node__contents s@$ diz@0@00))
-  :qid |quant-u-22476|)))
+  :qid |quant-u-22583|)))
 (assert (forall ((s@$ $Snap) (diz@0@00 $Ref)) (!
   (node__contents%stateless diz@0@00)
   :pattern ((node__contents%limited s@$ diz@0@00))
-  :qid |quant-u-22477|)))
+  :qid |quant-u-22584|)))
 (assert (forall ((s@$ $Snap) (diz@0@00 $Ref)) (!
   (=>
     (node__contents%precondition s@$ diz@0@00)
@@ -430,7 +430,7 @@
             ($Snap.second ($Snap.second ($Snap.second s@$)))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second s@$)))))))))
   :pattern ((node__contents s@$ diz@0@00))
   :pattern ((node__contents%stateless diz@0@00) (node__state%trigger ($Snap.second s@$) diz@0@00))
-  :qid |quant-u-22478|)))
+  :qid |quant-u-22585|)))
 (assert (forall ((s@$ $Snap) (diz@0@00 $Ref)) (!
   (=>
     (node__contents%precondition s@$ diz@0@00)
@@ -443,7 +443,7 @@
         $Snap.unit
         ($Snap.second ($Snap.second ($Snap.second s@$)))) ($SortWrappers.$SnapTo$Ref ($Snap.first ($Snap.second ($Snap.second s@$)))))))
   :pattern ((node__contents s@$ diz@0@00))
-  :qid |quant-u-22479|)))
+  :qid |quant-u-22586|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- node__node ----------
@@ -572,10 +572,10 @@
 (declare-const node__val@16@01 Int)
 (declare-const node__next@17@01 $Ref)
 (assert (not (= diz@15@01 n@6@01)))
-(assert (not (= diz@15@01 sys__result@7@01)))
 (assert (not (= diz@15@01 __flatten_2@12@01)))
-(assert (not (= diz@15@01 __flatten_5@14@01)))
 (assert (not (= diz@15@01 diz@10@01)))
+(assert (not (= diz@15@01 sys__result@7@01)))
+(assert (not (= diz@15@01 __flatten_5@14@01)))
 ; [exec]
 ; __flatten_1 := v
 ; [exec]
@@ -772,10 +772,10 @@
 (declare-const node__val@25@01 Int)
 (declare-const node__next@26@01 $Ref)
 (assert (not (= diz@24@01 n@6@01)))
-(assert (not (= diz@24@01 __flatten_2@21@01)))
 (assert (not (= diz@24@01 sys__result@7@01)))
-(assert (not (= diz@24@01 __flatten_5@23@01)))
 (assert (not (= diz@24@01 diz@19@01)))
+(assert (not (= diz@24@01 __flatten_5@23@01)))
+(assert (not (= diz@24@01 __flatten_2@21@01)))
 ; [exec]
 ; __flatten_1 := v
 ; [exec]

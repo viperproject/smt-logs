@@ -1,7 +1,7 @@
 // 
 // Translation of Viper program.
 // 
-// Date:         2025-01-08 21:44:30
+// Date:         2025-01-13 13:01:23
 // Tool:         carbon 1.0
 // Arguments: :  --disableCaching --boogieExe /home/runner/.dotnet/tools/boogie --timeout 10 --print /home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/let.bpl --boogieOpt /proverLog:/home/runner/work/smt-logs/smt-logs/carbon/../smt2/carbon/silver/src/test/resources/wands/regression/let-@PROC@.smt2 --ignoreFile dummy-file-to-prevent-cli-parser-from-complaining-about-missing-file-name.silver
 // Dependencies:
@@ -236,8 +236,8 @@ procedure fun#definedness(x: Ref) returns (Result: int)
   var perm: Perm;
   var UnfoldingHeap: HeapType;
   var UnfoldingMask: MaskType;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   
   // -- Initializing the state
     Mask := ZeroMask;
@@ -260,8 +260,8 @@ procedure fun#definedness(x: Ref) returns (Result: int)
       UnfoldingMask := Mask;
       assume P#trigger(UnfoldingHeap, P(x));
       assume UnfoldingHeap[null, P(x)] == FrameFragment(UnfoldingHeap[x, g]);
-      ExhaleWellDef0Mask := UnfoldingMask;
       ExhaleWellDef0Heap := UnfoldingHeap;
+      ExhaleWellDef0Mask := UnfoldingMask;
       perm := FullPerm;
       assert {:msg "  Function might not be well-formed. There might be insufficient permission to access P(x) (let.vpr@18.1--21.41) [125511]"}
         NoPerm < perm ==> NoPerm < UnfoldingMask[null, P(x)];
@@ -283,8 +283,8 @@ procedure fun#definedness(x: Ref) returns (Result: int)
     Result := Heap[x, g];
   
   // -- Exhaling postcondition (with checking)
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     assert {:msg "  Postcondition of fun might not hold. Assertion result > 0 might not hold. (let.vpr@20.11--20.21) [125513]"}
       Result > 0;
 }
@@ -356,10 +356,10 @@ procedure P#definedness(x: Ref) returns ()
 procedure test00() returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var y: int;
   var y_2: int;
   
@@ -372,14 +372,14 @@ procedure test00() returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert (let y ==
   //     (0) in
   //     y == 0) -- let.vpr@8.3--8.32
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (let y == (0) in y == 0)
       y := 0;
@@ -396,10 +396,10 @@ procedure test00() returns ()
 procedure test01(x: int) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
-  var ExhaleWellDef0Mask: MaskType;
+  var oldMask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
+  var ExhaleWellDef0Mask: MaskType;
   var y: int;
   var y_2: int;
   var y_3_2: int;
@@ -415,14 +415,14 @@ procedure test01(x: int) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: assert (let y ==
   //     (x + x) in
   //     y == 2 * x) -- let.vpr@12.3--12.38
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (let y == (x + x) in y == 2 * x)
       y := x + x;
@@ -434,8 +434,8 @@ procedure test01(x: int) returns ()
     assume state(Heap, Mask);
   
   // -- Translating statement: assert 2 * x == (let y == (x + x) in y) -- let.vpr@13.3--13.38
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of 2 * x == (let y == (x + x) in y)
       y_3_2 := x + x;
@@ -457,13 +457,13 @@ procedure test01(x: int) returns ()
 procedure test02(x: Ref) returns ()
   modifies Heap, Mask;
 {
-  var oldMask: MaskType;
   var oldHeap: HeapType;
+  var oldMask: MaskType;
   var perm: Perm;
-  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef0Heap: HeapType;
-  var ExhaleWellDef1Mask: MaskType;
+  var ExhaleWellDef0Mask: MaskType;
   var ExhaleWellDef1Heap: HeapType;
+  var ExhaleWellDef1Mask: MaskType;
   var ExhaleHeap: HeapType;
   var y: int;
   var y_2: int;
@@ -480,8 +480,8 @@ procedure test02(x: Ref) returns ()
   // -- Initializing of old state
     
     // -- Initializing the old state
-      oldMask := Mask;
       oldHeap := Heap;
+      oldMask := Mask;
   
   // -- Translating statement: inhale acc(P(x), write) -- let.vpr@24.3--24.19
     perm := FullPerm;
@@ -493,14 +493,14 @@ procedure test02(x: Ref) returns ()
   // -- Translating statement: assert (let y ==
   //     (fun(x)) in
   //     y * y + y > 0) -- let.vpr@25.3--25.40
-    ExhaleWellDef0Mask := Mask;
     ExhaleWellDef0Heap := Heap;
+    ExhaleWellDef0Mask := Mask;
     
     // -- Check definedness of (let y == (fun(x)) in y * y + y > 0)
       if (*) {
         // Exhale precondition of function application
-        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         ExhaleWellDef1Heap := ExhaleWellDef0Heap;
+        ExhaleWellDef1Mask := ExhaleWellDef0Mask;
         perm := FullPerm;
         assert {:msg "  Precondition of function fun might not hold. There might be insufficient permission to access P(x) (let.vpr@25.20--25.26) [125519]"}
           NoPerm < perm ==> NoPerm < ExhaleWellDef0Mask[null, P(x)];

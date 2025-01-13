@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-08 21:23:17
+; Started: 2025-01-13 12:39:48
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -666,19 +666,19 @@
 (assert (forall ((s@$ $Snap) (i@0@00 Int)) (!
   (= (trivial%limited s@$ i@0@00) (trivial s@$ i@0@00))
   :pattern ((trivial s@$ i@0@00))
-  :qid |quant-u-22705|)))
+  :qid |quant-u-22812|)))
 (assert (forall ((s@$ $Snap) (i@0@00 Int)) (!
   (trivial%stateless i@0@00)
   :pattern ((trivial%limited s@$ i@0@00))
-  :qid |quant-u-22706|)))
+  :qid |quant-u-22813|)))
 (assert (forall ((s@$ $Snap) (i@0@00 Int)) (!
   (=> (trivial%precondition s@$ i@0@00) (= (trivial s@$ i@0@00) true))
   :pattern ((trivial s@$ i@0@00))
-  :qid |quant-u-22707|)))
+  :qid |quant-u-22814|)))
 (assert (forall ((s@$ $Snap) (i@0@00 Int)) (!
   true
   :pattern ((trivial s@$ i@0@00))
-  :qid |quant-u-22708|)))
+  :qid |quant-u-22815|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- t1 ----------
@@ -1468,7 +1468,7 @@
 (check-sat)
 ; unknown
 (pop) ; 3
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 ; [state consolidation]
 ; State saturation: before repetition
@@ -1502,7 +1502,7 @@
 (check-sat)
 ; unknown
 (pop) ; 3
-; 0.01s
+; 0.00s
 ; (get-info :all-statistics)
 (pop) ; 2
 (pop) ; 1

@@ -1,6 +1,6 @@
 (get-info :version)
 ; (:version "4.12.1")
-; Started: 2025-01-08 21:25:53
+; Started: 2025-01-13 12:42:31
 ; Silicon.version: 1.1-SNAPSHOT (457c6eca@(detached))
 ; Input file: <unknown>
 ; Verifier id: 00
@@ -145,11 +145,11 @@
 (assert (forall ((s@$ $Snap) (y@0@00 $Ref) (x@1@00 $Ref)) (!
   (= (foo_2_2%limited s@$ y@0@00 x@1@00) (foo_2_2 s@$ y@0@00 x@1@00))
   :pattern ((foo_2_2 s@$ y@0@00 x@1@00))
-  :qid |quant-u-25610|)))
+  :qid |quant-u-25717|)))
 (assert (forall ((s@$ $Snap) (y@0@00 $Ref) (x@1@00 $Ref)) (!
   (foo_2_2%stateless y@0@00 x@1@00)
   :pattern ((foo_2_2%limited s@$ y@0@00 x@1@00))
-  :qid |quant-u-25611|)))
+  :qid |quant-u-25718|)))
 (assert (forall ((s@$ $Snap) (y@0@00 $Ref) (x@1@00 $Ref)) (!
   (=>
     (foo_2_2%precondition s@$ y@0@00 x@1@00)
@@ -157,19 +157,19 @@
       (foo_2_2 s@$ y@0@00 x@1@00)
       (=> (guard<Bool> y@0@00) ($SortWrappers.$SnapToBool ($Snap.second s@$)))))
   :pattern ((foo_2_2 s@$ y@0@00 x@1@00))
-  :qid |quant-u-25618|)))
+  :qid |quant-u-25725|)))
 (assert (forall ((s@$ $Snap) (y@0@00 $Ref) (x@1@00 $Ref)) (!
   true
   :pattern ((foo_2_2 s@$ y@0@00 x@1@00))
-  :qid |quant-u-25619|)))
+  :qid |quant-u-25726|)))
 (assert (forall ((s@$ $Snap) (y@3@00 $Ref) (x@4@00 $Ref)) (!
   (= (foo_2_1%limited s@$ y@3@00 x@4@00) (foo_2_1 s@$ y@3@00 x@4@00))
   :pattern ((foo_2_1 s@$ y@3@00 x@4@00))
-  :qid |quant-u-25612|)))
+  :qid |quant-u-25719|)))
 (assert (forall ((s@$ $Snap) (y@3@00 $Ref) (x@4@00 $Ref)) (!
   (foo_2_1%stateless y@3@00 x@4@00)
   :pattern ((foo_2_1%limited s@$ y@3@00 x@4@00))
-  :qid |quant-u-25613|)))
+  :qid |quant-u-25720|)))
 (assert (forall ((s@$ $Snap) (y@3@00 $Ref) (x@4@00 $Ref)) (!
   (=>
     (foo_2_1%precondition s@$ y@3@00 x@4@00)
@@ -182,19 +182,19 @@
           ($SortWrappers.$SnapToBool ($Snap.second s@$))
           ($SortWrappers.$SnapToBool s@$)))))
   :pattern ((foo_2_1 s@$ y@3@00 x@4@00))
-  :qid |quant-u-25620|)))
+  :qid |quant-u-25727|)))
 (assert (forall ((s@$ $Snap) (y@3@00 $Ref) (x@4@00 $Ref)) (!
   true
   :pattern ((foo_2_1 s@$ y@3@00 x@4@00))
-  :qid |quant-u-25621|)))
+  :qid |quant-u-25728|)))
 (assert (forall ((s@$ $Snap) (y@6@00 $Ref) (x@7@00 $Ref)) (!
   (= (foo_1_2%limited s@$ y@6@00 x@7@00) (foo_1_2 s@$ y@6@00 x@7@00))
   :pattern ((foo_1_2 s@$ y@6@00 x@7@00))
-  :qid |quant-u-25614|)))
+  :qid |quant-u-25721|)))
 (assert (forall ((s@$ $Snap) (y@6@00 $Ref) (x@7@00 $Ref)) (!
   (foo_1_2%stateless y@6@00 x@7@00)
   :pattern ((foo_1_2%limited s@$ y@6@00 x@7@00))
-  :qid |quant-u-25615|)))
+  :qid |quant-u-25722|)))
 (assert (forall ((s@$ $Snap) (y@6@00 $Ref) (x@7@00 $Ref)) (!
   (=>
     (foo_1_2%precondition s@$ y@6@00 x@7@00)
@@ -202,19 +202,19 @@
       (foo_1_2 s@$ y@6@00 x@7@00)
       (=> (guard<Bool> y@6@00) ($SortWrappers.$SnapToBool ($Snap.second s@$)))))
   :pattern ((foo_1_2 s@$ y@6@00 x@7@00))
-  :qid |quant-u-25622|)))
+  :qid |quant-u-25729|)))
 (assert (forall ((s@$ $Snap) (y@6@00 $Ref) (x@7@00 $Ref)) (!
   true
   :pattern ((foo_1_2 s@$ y@6@00 x@7@00))
-  :qid |quant-u-25623|)))
+  :qid |quant-u-25730|)))
 (assert (forall ((s@$ $Snap) (y@9@00 $Ref) (x@10@00 $Ref)) (!
   (= (foo_1_1%limited s@$ y@9@00 x@10@00) (foo_1_1 s@$ y@9@00 x@10@00))
   :pattern ((foo_1_1 s@$ y@9@00 x@10@00))
-  :qid |quant-u-25616|)))
+  :qid |quant-u-25723|)))
 (assert (forall ((s@$ $Snap) (y@9@00 $Ref) (x@10@00 $Ref)) (!
   (foo_1_1%stateless y@9@00 x@10@00)
   :pattern ((foo_1_1%limited s@$ y@9@00 x@10@00))
-  :qid |quant-u-25617|)))
+  :qid |quant-u-25724|)))
 (assert (forall ((s@$ $Snap) (y@9@00 $Ref) (x@10@00 $Ref)) (!
   (=>
     (foo_1_1%precondition s@$ y@9@00 x@10@00)
@@ -227,11 +227,11 @@
           ($SortWrappers.$SnapToBool ($Snap.second s@$))
           ($SortWrappers.$SnapToBool ($Snap.first s@$))))))
   :pattern ((foo_1_1 s@$ y@9@00 x@10@00))
-  :qid |quant-u-25624|)))
+  :qid |quant-u-25731|)))
 (assert (forall ((s@$ $Snap) (y@9@00 $Ref) (x@10@00 $Ref)) (!
   true
   :pattern ((foo_1_1 s@$ y@9@00 x@10@00))
-  :qid |quant-u-25625|)))
+  :qid |quant-u-25732|)))
 ; End function- and predicate-related preamble
 ; ------------------------------------------------------------
 ; ---------- testA ----------
