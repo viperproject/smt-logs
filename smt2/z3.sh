@@ -9,7 +9,7 @@ Z3_VERSION_REGEX="${Z3_VERSION//./\\.}"
 
 file_relative="${1#"$(dirname "$0")/"}"
 # Check if the first line contains my Z3 version (and skip if it does)
-[ "$(sed -n '/^;[^\n]*$Z3_VERSION_REGEX/p;q' "$1")" ] && echo "Skipping \"$file_relative\" as the first line contains \"$Z3_VERSION\"" && exit 0 || true
+[ -n "$CAN_SKIP_REGEX" ] && [ "$(sed -n '/^;[^\n]*$Z3_VERSION_REGEX/p;q' "$1")" ] && echo "Skipping \"$file_relative\" as the first line contains \"$Z3_VERSION\"" && exit 0 || true
 
 # Check if the (non-empty) log file exists
 file_hash=$(shasum -a 256 "$0" | cut -d' ' -f1)
@@ -27,7 +27,7 @@ while read -r old_file; do
     # Remove old log
     rm -f "$old_file"
 done <<< "$old_files"
-test -s "$log_file_name" && echo "Skipping \"$file_relative\" as \"$file_hash\" exists" && exit 0 || true
+[ ! -n "$FORCE_RUN_Z3" ] && test -s "$log_file_name" && echo "Skipping \"$file_relative\" as \"$file_hash\" exists" && exit 0 || true
 
 echo "[.log] $file_relative"
 # Run Z3 solver for the file and save the log in the '../logs' directory.

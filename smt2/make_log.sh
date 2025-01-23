@@ -1,5 +1,6 @@
 export Z3_EXE=${Z3_EXE:-"z3"}
 export Z3_VERSION=${Z3_VERSION:-$(eval "$Z3_EXE" --version | sed -E 's/.* ([0-9]+\.[0-9]+\.[0-9]+).*/\1/g')}
+export CAN_SKIP_REGEX="true"
 DIRNAME="$(realpath "$(dirname "$0")")"
 
 if [ -z "$1" ]; then
