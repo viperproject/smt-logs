@@ -15,4 +15,4 @@
 	url = https://github.com/verus-lang/verus.git
 [submodule "smt-comp/smt-comp"]
 	path = smt-comp/smt-comp
-	url = https://github.com/SMT-LIB/benchmark-submission.git
+	url = https://github.com/SMT-LIB/benchmark-submission-2024.git
